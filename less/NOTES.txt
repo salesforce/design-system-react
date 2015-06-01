@@ -1,1 +1,0 @@
-This directory will contain LESS files specific to this POC.
