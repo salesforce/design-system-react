@@ -2,9 +2,22 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title></title>
+	<title>Landmark JS POC</title>
+
+	<script src="node_modules/requirejs/require.js"></script>
+
+	<script>
+		requirejs.config({
+			paths: {
+				'landmark': 'dist/landmark'
+			}
+		});
+		require(['index'], function(){ });
+	</script>
 </head>
 <body>
+
+	<!--ADD CONTROLS HERE-->
 
 </body>
 </html>

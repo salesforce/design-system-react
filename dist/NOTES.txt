@@ -1,1 +1,0 @@
-This directory will contain built files intended for distribution, which the index page will use as an example.

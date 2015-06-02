@@ -10,7 +10,11 @@
   "dependencies": {},
   "description": "Testing our vanilliajs -> many frameworks concept by converting Fuel UX controls to this new approach",
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-beautify": "^1.1.2",
+    "gulp-concat-util": "^0.5.2",
+    "gulp-serve": "^1.0.0",
+    "requirejs": "^2.1.18"
   },
   "engines": {
     "node": "0.11.x"
