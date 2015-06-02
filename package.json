@@ -1,0 +1,34 @@
+{
+  "author": {
+    "email": "kparkerson@exacttarget.com",
+    "name": "Salesforce Marketing Cloud",
+    "url": "http://fuelux.herokuapp.com/"
+  },
+  "bugs": {
+    "url": "https://github.exacttarget.com/uxarchitecture/landmark-js-poc/issues"
+  },
+  "dependencies": {},
+  "description": "Testing our vanilliajs -> many frameworks concept by converting Fuel UX controls to this new approach",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-beautify": "^1.1.2",
+    "gulp-concat-util": "^0.5.2",
+    "gulp-serve": "^1.0.0",
+    "requirejs": "^2.1.18"
+  },
+  "engines": {
+    "node": "0.11.x"
+  },
+  "homepage": "https://github.exacttarget.com/uxarchitecture/landmark-js-poc",
+  "keywords": [],
+  "license": {},
+  "name": "landmark-js-poc",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.exacttarget.com/uxarchitecture/landmark-js-poc.git"
+  },
+  "scripts": {},
+  "title": "Landmark JS POC",
+  "version": "0.0.1"
+}
