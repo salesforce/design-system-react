@@ -1,4 +1,4 @@
-//*****LANDMARK CORE FILE*****//
+// ---- LANDMARK CORE FILE ---- //
 
 // -- BEGIN MODULE CODE HERE -- //
 // UMD wrapper

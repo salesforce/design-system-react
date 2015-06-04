@@ -16,7 +16,8 @@ gulp.task('default', function() {
 			var header = '(function(landmark){\n';
 			var footer = '}(landmark));\n\n';
 
-			if (src.search(/(\/\/\*\*\*\*\*LANDMARK CORE FILE\*\*\*\*\*\/\/)/) === 0) {
+			//TODO: is there a better / faster way to determine this is the core.js file? Using the filenname would be ideal, but from my initial search it wasn't exposed to this plugin
+			if (src.substr(0, 34) === '// ---- LANDMARK CORE FILE ---- //') {
 				header = '';
 				footer = '';
 			}
