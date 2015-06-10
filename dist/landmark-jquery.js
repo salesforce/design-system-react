@@ -26,11 +26,11 @@
 
 	(function ($, landmark) {
 
-		var Selectlist = landmark.controls.selectlist;
+		var selectlist = landmark.controls.selectlist;
 
 		var old = $.fn.selectlist;
 
-		// SELECTLIST PLUGIN DEFINITION
+		// Selectlist jQuery plugin definition
 		$.fn.selectlist = function (option) {
 			var args = Array.prototype.slice.call(arguments, 1);
 			var methodReturn;
@@ -41,7 +41,7 @@
 				var options = typeof option === 'object' && option;
 
 				if (!data) {
-					$this.data('landmark.selectlist', (data = new Selectlist(this, options)));
+					$this.data('landmark.selectlist', (data = new selectlist.Constructor(this, options)));
 				}
 
 				if (typeof option === 'string') {
@@ -52,17 +52,14 @@
 			return (methodReturn === undefined) ? $set : methodReturn;
 		};
 
-		$.fn.selectlist.defaults = {};
-
-		$.fn.selectlist.Constructor = Selectlist;
+		$.fn.selectlist.Constructor = selectlist.Constructor;
 
 		$.fn.selectlist.noConflict = function () {
 			$.fn.selectlist = old;
 			return this;
 		};
 
-
-		// DATA-API
+		// Data-api
 		$(document).on('mousedown.landmark.selectlist.data-api', '[data-initialize=selectlist]', function (e) {
 			var $control = $(e.target).closest('.selectlist');
 			if (!$control.data('landmark.selectlist')) {
