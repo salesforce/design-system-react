@@ -1,0 +1,52 @@
+.btn-panel {
+	border: 1px solid #ddd;
+	border-top: none;
+	background: #f6f6f6;
+	padding: 20px;
+}
+
+.thin-box {
+	border: 1px solid #ddd;
+	padding: 20px 20px;
+}
+
+#loaderWrapper .loader {
+	float: left;
+	margin-right: 20px;
+}
+
+#mainWrapper {
+	padding-bottom: 1.5rem;
+}
+
+#mainWrapper section {
+	padding-bottom: 1.5rem;
+}
+
+#mainWrapper section section {
+	padding-bottom: 1.5rem;
+}
+
+#myInfiniteScroll1, #myInfiniteScroll2 {
+	border: 1px solid #ddd;
+	float: left;
+	height: 200px;
+	width: 45%;
+}
+
+#myInfiniteScroll2 {
+	float: right;
+}
+
+#myPlacard1, #myPlacard2, #myPlacard3 {
+	width: 300px;
+}
+
+.example-pill-class {
+	font-style: italic;
+	font-weight: bold;
+}
+
+#myRepeater[data-currentview="list.frozen"] table thead tr th, #myRepeater[data-currentview="list.frozen"] .repeater-list-heading {
+	width: 400px;
+}

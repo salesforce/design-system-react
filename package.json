@@ -14,6 +14,7 @@
     "gulp-beautify": "^1.1.2",
     "gulp-concat-util": "^0.5.2",
     "gulp-serve": "^1.0.0",
+    "jquery": "^2.1.4",
     "requirejs": "^2.1.18"
   },
   "engines": {

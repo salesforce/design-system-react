@@ -1,0 +1,96 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/kparkerson/.nvm/v0.11.14/bin/node',
+1 verbose cli   '/Users/kparkerson/.nvm/v0.11.14/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'fuelux' ]
+2 info using npm@2.0.0
+3 info using node@v0.11.14
+4 verbose readDependencies using package.json deps
+5 verbose cache add [ 'fuelux', null ]
+6 verbose cache add spec="fuelux" args=["fuelux",null]
+7 verbose parsed spec { raw: 'fuelux',
+7 verbose parsed spec   scope: null,
+7 verbose parsed spec   name: 'fuelux',
+7 verbose parsed spec   rawSpec: '',
+7 verbose parsed spec   spec: '*',
+7 verbose parsed spec   type: 'range' }
+8 verbose parsed spec { raw: 'fuelux',
+8 verbose parsed spec   scope: null,
+8 verbose parsed spec   name: 'fuelux',
+8 verbose parsed spec   rawSpec: '',
+8 verbose parsed spec   spec: '*',
+8 verbose parsed spec   type: 'range' }
+9 verbose addNamed [ 'fuelux', '*' ]
+10 verbose addNamed [ null, '*' ]
+11 silly lockFile e77704d9-fuelux fuelux@*
+12 verbose lock fuelux@* /Users/kparkerson/.npm/e77704d9-fuelux.lock
+13 silly addNameRange { name: 'fuelux', range: '*', hasData: false }
+14 verbose mapToRegistry name fuelux
+15 verbose mapToRegistry uri https://registry.npmjs.org/fuelux
+16 verbose request on initialization, where is /fuelux
+17 verbose request after pass 1, where is /fuelux
+18 verbose request url raw /fuelux
+19 verbose request resolving registry [ 'https://registry.npmjs.org/', './fuelux' ]
+20 verbose request after pass 2, where is https://registry.npmjs.org/fuelux
+21 verbose request no auth needed
+22 info attempt registry request try #1 at 21:14:44
+23 verbose request id 70d9ae66b0d2cc82
+24 http request GET https://registry.npmjs.org/fuelux
+25 http 404 https://registry.npmjs.org/fuelux
+26 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+26 verbose headers   'content-type': 'application/json',
+26 verbose headers   'cache-control': 'max-age=0',
+26 verbose headers   'content-length': '51',
+26 verbose headers   'accept-ranges': 'bytes',
+26 verbose headers   date: 'Wed, 10 Jun 2015 01:14:45 GMT',
+26 verbose headers   via: '1.1 varnish',
+26 verbose headers   age: '0',
+26 verbose headers   connection: 'close',
+26 verbose headers   'x-served-by': 'cache-dfw1823-DFW',
+26 verbose headers   'x-cache': 'MISS',
+26 verbose headers   'x-cache-hits': '0',
+26 verbose headers   'x-timer': 'S1433898884.911419,VS0,VE266' }
+27 silly registry.get cb [ 404,
+27 silly registry.get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+27 silly registry.get     'content-type': 'application/json',
+27 silly registry.get     'cache-control': 'max-age=0',
+27 silly registry.get     'content-length': '51',
+27 silly registry.get     'accept-ranges': 'bytes',
+27 silly registry.get     date: 'Wed, 10 Jun 2015 01:14:45 GMT',
+27 silly registry.get     via: '1.1 varnish',
+27 silly registry.get     age: '0',
+27 silly registry.get     connection: 'close',
+27 silly registry.get     'x-served-by': 'cache-dfw1823-DFW',
+27 silly registry.get     'x-cache': 'MISS',
+27 silly registry.get     'x-cache-hits': '0',
+27 silly registry.get     'x-timer': 'S1433898884.911419,VS0,VE266' } ]
+28 silly lockFile e77704d9-fuelux fuelux@*
+29 silly lockFile e77704d9-fuelux fuelux@*
+30 verbose stack Error: 404 Not Found: fuelux
+30 verbose stack     at RegClient.<anonymous> (/Users/kparkerson/.nvm/v0.11.14/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:259:14)
+30 verbose stack     at Request._callback (/Users/kparkerson/.nvm/v0.11.14/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:198:65)
+30 verbose stack     at Request.self.callback (/Users/kparkerson/.nvm/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:236:22)
+30 verbose stack     at Request.emit (events.js:110:17)
+30 verbose stack     at Request.<anonymous> (/Users/kparkerson/.nvm/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:1142:14)
+30 verbose stack     at Request.emit (events.js:129:20)
+30 verbose stack     at IncomingMessage.<anonymous> (/Users/kparkerson/.nvm/v0.11.14/lib/node_modules/npm/node_modules/request/request.js:1096:12)
+30 verbose stack     at IncomingMessage.emit (events.js:129:20)
+30 verbose stack     at _stream_readable.js:907:16
+30 verbose stack     at process._tickCallback (node.js:372:11)
+31 verbose statusCode 404
+32 verbose pkgid fuelux
+33 verbose cwd /Users/kparkerson/ExactTarget/landmark-js-poc
+34 error Darwin 13.4.0
+35 error argv "/Users/kparkerson/.nvm/v0.11.14/bin/node" "/Users/kparkerson/.nvm/v0.11.14/bin/npm" "install" "fuelux"
+36 error node v0.11.14
+37 error npm  v2.0.0
+38 error code E404
+39 error 404 Not Found: fuelux
+39 error 404
+39 error 404 'fuelux' is not in the npm registry.
+39 error 404 You should bug the author to publish it (or use the name yourself!)
+39 error 404 It was specified as a dependency of 'landmark-js-poc'
+39 error 404
+39 error 404 Note that you can also install from a
+39 error 404 tarball, folder, http url, or git url.
+40 verbose exit [ 1, true ]

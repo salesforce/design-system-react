@@ -5,8 +5,8 @@ var concat = require('gulp-concat-util');
 var pkg = require('./package.json');
 var serve = require('gulp-serve');
 
-// Default gulp task, builds the dist file(s).
-gulp.task('default', function() {
+// Builds the vanilla library
+gulp.task('buildVanillaLibrary', function() {
 	var banner = '/*!\n' +
 		' * Landmark JS POC v' + pkg.version + ' \n' +
 		' */\n\n';
@@ -32,6 +32,18 @@ gulp.task('default', function() {
 		.pipe(beautify({ indentChar: '\t', indentSize: 1 }))
 		.pipe(gulp.dest('dist'));
 });
+
+// Builds the jQuery extension
+gulp.task('buildJQueryExtension', function() {
+	//add jQuery build code here
+});
+
+// Default gulp task, builds the dist file(s) for the vanilla library and jQuery extension (currently).
+gulp.task('default', [
+	'buildVanillaLibrary'/*,
+	 'buildJQueryExtension'
+	 */
+], function() { });
 
 // Gulp serve task
 gulp.task('serve', serve('./'));
