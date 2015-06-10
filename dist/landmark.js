@@ -15,6 +15,7 @@
 		root.landmark = factory();
 	}
 }(this, function () {
+
 	// Create landmark core object
 	var landmark = {
 		controls: {},
@@ -23,10 +24,6 @@
 	};
 
 	(function (landmark) {
-
-		if (typeof landmark !== 'object') {
-			throw new Error('landmark core must be included prior to any controls');
-		}
 
 		landmark.controls = landmark.controls || {};
 

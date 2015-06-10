@@ -10,16 +10,19 @@
 		// Browser globals
 		factory(this.jQuery, this.landmark, this.landmark.controls.selectlist);
 	}
-}(this, function ($, landmark, Selectlist) {
+}(this, function ($, landmark) {
+
+	if (typeof $ !== 'function') {
+		throw new Error('jQuery must be included prior to landmark jQuery selectlist extension');
+	}
+
+	if (typeof landmark !== 'object' || typeof landmark.controls.selectlist !== 'function') {
+		throw new Error('landmark core and landmark selectlist must be included prior to landmark jQuery selectlist extension');
+	}
+
 // -- BEGIN MODULE CODE HERE -- //
 
-	if (typeof landmark !== 'object') {
-		throw new Error('landmark core must be included prior to selectlist and jQuery selectlist extension');
-	}
-
-	if (typeof Selectlist !== 'function') {
-		throw new Error('selectlist must be included prior to jQuery selectlist extension');
-	}
+	var Selectlist = landmark.controls.selectlist;
 
 	var old = $.fn.selectlist;
 

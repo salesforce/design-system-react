@@ -14,6 +14,7 @@
 		root.landmark = factory();
 	}
 }(this, function () {
+
 	// Create landmark core object
 	var landmark = {
 		controls: {},

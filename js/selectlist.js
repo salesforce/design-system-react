@@ -11,11 +11,12 @@
 		factory(this.landmark);
 	}
 }(this, function (landmark) {
-// -- BEGIN MODULE CODE HERE -- //
 
 	if (typeof landmark !== 'object') {
-		throw new Error('landmark core must be included prior to any controls');
+		throw new Error('landmark core must be included prior to landmark selectlist control');
 	}
+
+// -- BEGIN MODULE CODE HERE -- //
 
 	landmark.controls = landmark.controls || {};
 
