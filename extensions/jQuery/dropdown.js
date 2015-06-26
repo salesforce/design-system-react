@@ -62,11 +62,11 @@
 		.on('click.landmark.dropdown.data-api', dropdown.clearMenus)
 		.on('click.landmark.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
 		.on('click.landmark.dropdown.data-api', '[data-toggle="dropdown"]', function (e) {
-			var $control = $(e.target).closest('.dropdown');
+			var $control = $(e.target);
 			if (!$control.data('landmark.dropdown')) {
 				$control.dropdown($control.data());
+				$control.dropdown('toggleMenu', e);
 			}
-			$control.dropdown('toggleMenu');
 			return false;
 		});
 		//.on('keydown.landmark.dropdown.data-api', toggle, Dropdown.prototype.keydown)

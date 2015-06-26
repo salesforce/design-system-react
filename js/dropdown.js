@@ -30,16 +30,7 @@
 			this.element = element;
 			this.options = lu.extend({}, landmark.controls.dropdown.defaults, options);
 
-			this.button = element.querySelector('button.dropdown-toggle');
-
-			this.button.addEventListener('click', lu.proxy(this.toggleMenu, this));
-			//var self = this;
-			//this.button.addEventListener('click', function(){
-			//	self.toggleMenu();
-			//	return false;
-			//});
-
-			console.log('CONSTRUCTOR');
+			this.element.addEventListener('click', this.toggleMenu);
 		},
 
 		defaults: {},
@@ -54,7 +45,7 @@
 			lu.remove(document.querySelectorAll('.dropdown-backdrop'));
 			toggleElements = document.querySelectorAll('[data-toggle="dropdown"]');
 			for (i = 0, l = toggleElements.length; i < l; i++) {
-				parent = toggleElements[i].parentNode;
+				parent = getParent(toggleElements[i]);
 				relatedTarget = { relatedTarget: toggleElements[i] };
 
 				if (!lu.hasClass(parent, 'open')) { continue; }
@@ -70,8 +61,6 @@
 
 				lu.trigger(parent, 'custom', 'hidden.landmark.dropdown', relatedTarget);
 			}
-
-			console.log('CLEAR MENUS');
 		}
 	};
 
@@ -82,40 +71,41 @@
 		constructor: landmark.controls.dropdown.Constructor,
 
 		toggleMenu: function (e) {
-			if (lu.hasClass(this.element, 'disabled') || this.element.getAttribute('disabled') !== null) { return; }
+			var element = e.target;
 
-			var isActive = lu.hasClass(this.element, 'open');
+			if (lu.hasClass(element, 'disabled') || element.getAttribute('disabled') !== null) { return; }
+
+			var parent = getParent(element);
+			var isActive = lu.hasClass(parent, 'open');
 
 			landmark.controls.dropdown.clearMenus();
 
 			if (!isActive) {
-				if ('ontouchstart' in document.documentElement && !this.element.querySelector('.navbar-nav')) {
+				if ('ontouchstart' in document.documentElement && !parent.querySelector('.navbar-nav')) {
 					var backdrop = document.createElement('div');
 					backdrop.className += 'dropdown-backdrop';
-					if (backdrop.nextSibling) {
-						this.element.parentNode.insertBefore(backdrop, this.element.nextSibling);
+					if (element.nextSibling) {
+						parent.insertBefore(backdrop, element.nextSibling);
 					} else {
-						this.element.parentNode.appendChild(backdrop);
+						parent.appendChild(backdrop);
 					}
 					backdrop.addEventListener('click', landmark.controls.dropdown.clearMenus);
 				}
 
 				var relatedTaret = { relatedTarget: this };
-				e = lu.trigger(this.element, 'custom', 'show.landmark.dropdown', relatedTaret);
+				e = lu.trigger(parent, 'custom', 'show.landmark.dropdown', relatedTaret);
 
 				if (e.defaultPrevented) { return; }
 
-				lu.trigger(this.button, 'focus');
-				this.button.setAttribute('aria-expanded', 'true');
+				lu.trigger(element, 'focus');
+				element.setAttribute('aria-expanded', 'true');
 
-				if(lu.hasClass(this.element, 'open')) {
-					lu.removeClass(this.element, 'open');
+				if(lu.hasClass(parent, 'open')) {
+					lu.removeClass(parent, 'open');
 				} else {
-					lu.addClass(this.element, 'open');
+					lu.addClass(parent, 'open');
 				}
-				lu.trigger(this.element, 'custom', 'shown.landmark.dropdown', relatedTaret);
-
-				console.log('TOGGLE', this.element, lu.hasClass(this.element, 'open'));
+				lu.trigger(parent, 'custom', 'shown.landmark.dropdown', relatedTaret);
 			}
 
 			return false;
@@ -139,18 +129,18 @@
 		return false;
 	}
 
-	//function getParent (element) {
-	//	var selector = element.getAttribute('data-target');
-	//
-	//	if (!selector) {
-	//		selector = element.getAttribute('href');
-	//		selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '');
-	//	}
-	//
-	//	var parent = selector && document.querySelector(selector);
-	//
-	//	return (parent) ? parent : element.parentNode;
-	//}
+	function getParent (element) {
+		var selector = element.getAttribute('data-target');
+
+		if (!selector) {
+			selector = element.getAttribute('href');
+			selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '');
+		}
+
+		var parent = selector && document.querySelector(selector);
+
+		return (parent) ? parent : element.parentNode;
+	}
 
 	return landmark.controls.dropdown;
 
