@@ -18,6 +18,15 @@
 
 	// Create landmark core object
 	var landmark = (function () {
+		function addClass(element, classNames) {
+			classNames = classNames.split(' ');
+			for (var i = 0, l = classNames.length; i < l; i++) {
+				if (!hasClass(element, classNames[i])) {
+					element.className = element.className.trim() + ' ' + classNames[i];
+				}
+			}
+		}
+
 		function allKeys(obj) {
 			if (!isObject(obj)) {
 				return [];
@@ -37,8 +46,7 @@
 			for (var index = 1; index < length; index++) {
 				var source = arguments[index];
 				var keys = allKeys(source);
-				var l = keys.length;
-				for (var i = 0; i < l; i++) {
+				for (var i = 0, l = keys.length; i < l; i++) {
 					var key = keys[i];
 					obj[key] = source[key];
 				}
@@ -46,17 +54,84 @@
 			return obj;
 		}
 
+		function hasClass(element, className) {
+			return (element.className.match(new RegExp('\\b' + className + '\\b')) !== null);
+		}
+
 		function isObject(obj) {
 			var type = typeof obj;
 			return type === 'function' || type === 'object' && !! obj;
 		}
 
+		function proxy(fn, context) {
+			var slice = Array.prototype.slice;
+			var args = slice.call(arguments, 2);
+			return function () {
+				return fn.apply(context || this, slice.call(arguments).concat(args));
+			};
+		}
+
+		function remove(elements) {
+			if (!elements) {
+				return;
+			}
+			elements = (elements.length === undefined) ? [elements] : elements;
+			for (var i = 0, l = elements.length; i < l; i++) {
+				var parent = elements[i].parentNode;
+				parent.removeChild(elements[i]);
+			}
+		}
+
+		function removeClass(element, classNames) {
+			classNames = classNames.split(' ');
+			for (var i = 0, l = classNames.length; i < l; i++) {
+				element.className = element.className.replace(new RegExp('\\b' + classNames[i] + '\\b'), '');
+			}
+			if (element.className.trim() === '') {
+				element.removeAttribute('class');
+			}
+		}
+
+		function trigger(element, eventType, eventName, details) {
+			var evt, type;
+
+			//will need to expand on this to support more event types
+			switch (eventType) {
+			case 'click':
+			case 'mousedown':
+			case 'mouseup':
+				type = 'MouseEvent';
+				break;
+			case 'custom':
+			default:
+				type = 'CustomEvent';
+				break;
+			}
+
+			//using older ways of creating events since IE doesn't support event constructors
+			evt = document.createEvent(type);
+			if (type !== 'CustomEvent') {
+				evt.initEvent(eventType, true, true);
+			} else {
+				evt.initCustomEvent(eventName, true, true, details);
+			}
+
+			element.dispatchEvent(evt);
+			return evt;
+		}
+
 		return {
 			controls: {},
 			utilities: {
+				addClass: addClass,
 				allKeys: allKeys,
 				extend: extend,
-				isObject: isObject
+				hasClass: hasClass,
+				isObject: isObject,
+				proxy: proxy,
+				remove: remove,
+				removeClass: removeClass,
+				trigger: trigger
 			},
 			version: '0.0.1'
 		};
@@ -67,19 +142,214 @@
 
 		landmark.controls = landmark.controls || {};
 
-		landmark.controls.selectlist = {
+		// Module vars
+		var lu = landmark.utilities;
+
+		// Constructor and defaults
+		landmark.controls.dropdown = {
 			Constructor: function (element, options) {
 				this.element = element;
-				this.options = landmark.utilities.extend({}, landmark.controls.selectlist.defaults, options);
+				this.options = lu.extend({}, landmark.controls.dropdown.defaults, options);
+
+				this.element.addEventListener('click', this.toggleMenu);
 			},
 
-			defaults: {}
+			defaults: {},
+
+			clearMenus: function (e) {
+				if (e && e.which === 3) {
+					return;
+				}
+
+				var i, l, parent, relatedTarget, toggleElements;
+
+				lu.remove(document.querySelectorAll('.dropdown-backdrop'));
+				toggleElements = document.querySelectorAll('[data-toggle="dropdown"]');
+				for (i = 0, l = toggleElements.length; i < l; i++) {
+					parent = getParent(toggleElements[i]);
+					relatedTarget = {
+						relatedTarget: toggleElements[i]
+					};
+
+					if (!lu.hasClass(parent, 'open')) {
+						continue;
+					}
+
+					if (e && e.type === 'click' && /input|textarea/i.test(e.target.tagName) && contains(parent, e.target)) {
+						continue;
+					}
+
+					e = lu.trigger(parent, 'custom', 'hide.landmark.dropdown', relatedTarget);
+
+					if (e.defaultPrevented) {
+						continue;
+					}
+
+					toggleElements[i].setAttribute('aria-expanded', 'false');
+					lu.removeClass(parent, 'open');
+
+					lu.trigger(parent, 'custom', 'hidden.landmark.dropdown', relatedTarget);
+				}
+			}
 		};
 
-		landmark.controls.selectlist.Constructor.prototype = {
+		// Public methods
+		landmark.controls.dropdown.Constructor.prototype = {
 
-			constructor: landmark.controls.selectlist.Constructor
+			constructor: landmark.controls.dropdown.Constructor,
 
+			keydown: function (e) {
+				if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) {
+					return;
+				}
+				var element = e.currentTarget;
+
+				e.preventDefault();
+				e.stopPropagation();
+
+				if (lu.hasClass(element, 'disabled') || element.getAttribute('disabled') !== null) {
+					return;
+				}
+
+				var parent = getParent(element);
+				var isActive = lu.hasClass(parent, 'open');
+
+				if (!isActive && e.which != 27 || isActive && e.which == 27) {
+					if (e.which == 27) {
+						var toggle = parent.querySelector('[data-toggle="dropdown"]');
+						if (toggle) {
+							toggle.focus();
+						}
+					}
+					return lu.trigger(element, 'click');
+				}
+
+				var items = Array.prototype.slice.call(parent.querySelectorAll('.dropdown-menu li:not(.disabled) a'), 0);
+
+				var index = -1;
+				for (var i = 0; i < items.length; i++) {
+					if (items[i].style.display !== 'none' && items[i].style.visibility !== 'hidden') {
+						if (items[i] === e.target) {
+							index = i;
+						}
+					} else {
+						items.splice(i, 1);
+						i--;
+					}
+				}
+
+				if (!items.length) {
+					return;
+				}
+
+				if (e.which == 38 && index > 0) {
+					index--;
+				} // up
+				if (e.which == 40 && index < items.length - 1) {
+					index++;
+				} // down
+				if (index < 0) {
+					index = 0;
+				}
+
+				items[index].focus();
+			},
+
+			toggleMenu: function (e) {
+				var element = e.target;
+
+				if (lu.hasClass(element, 'disabled') || element.getAttribute('disabled') !== null) {
+					return;
+				}
+
+				var parent = getParent(element);
+				var isActive = lu.hasClass(parent, 'open');
+
+				landmark.controls.dropdown.clearMenus();
+
+				if (!isActive) {
+					if ('ontouchstart' in document.documentElement && !parent.querySelector('.navbar-nav')) {
+						var backdrop = document.createElement('div');
+						backdrop.className += 'dropdown-backdrop';
+						if (element.nextSibling) {
+							parent.insertBefore(backdrop, element.nextSibling);
+						} else {
+							parent.appendChild(backdrop);
+						}
+						backdrop.addEventListener('click', landmark.controls.dropdown.clearMenus);
+					}
+
+					var relatedTaret = {
+						relatedTarget: this
+					};
+					e = lu.trigger(parent, 'custom', 'show.landmark.dropdown', relatedTaret);
+
+					if (e.defaultPrevented) {
+						return;
+					}
+
+					element.focus();
+					element.setAttribute('aria-expanded', 'true');
+
+					if (lu.hasClass(parent, 'open')) {
+						lu.removeClass(parent, 'open');
+					} else {
+						lu.addClass(parent, 'open');
+					}
+					lu.trigger(parent, 'custom', 'shown.landmark.dropdown', relatedTaret);
+				}
+
+				return false;
+			}
+
+		};
+
+		// Private methods
+
+		function contains(container, element) {
+			var i, l;
+			if (container.childNodes.length > 0) {
+				for (i = 0, l = container.childNodes.length; i < l; i++) {
+					if (container.childNodes[i] === element) {
+						return true;
+					} else if (contains(container.childNodes[i], element)) {
+						return true
+					}
+				}
+			}
+			return false;
+		}
+
+		function getParent(element) {
+			var selector = element.getAttribute('data-target');
+
+			if (!selector) {
+				selector = element.getAttribute('href');
+				selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '');
+			}
+
+			var parent = selector && document.querySelector(selector);
+
+			return (parent) ? parent : element.parentNode;
+		}
+
+		return landmark.controls.dropdown;
+
+	}(landmark));
+
+
+	(function (landmark) {
+
+		landmark.controls = landmark.controls || {};
+
+		// Module vars
+		var lu = landmark.utilities;
+
+		// Constructor and defaults
+		landmark.controls.selectlist = {
+			Constructor: function (element, options) {},
+
+			defaults: {}
 		};
 
 		return landmark.controls.selectlist;

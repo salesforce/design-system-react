@@ -26,6 +26,56 @@
 
 	(function ($, landmark) {
 
+		var dropdown = landmark.controls.dropdown;
+
+		var old = $.fn.dropdown;
+
+		// Selectlist jQuery plugin definition
+		$.fn.dropdown = function (option) {
+			var args = Array.prototype.slice.call(arguments, 1);
+			var methodReturn;
+
+			var $set = this.each(function () {
+				var $this = $(this);
+				var data = $this.data('landmark.dropdown');
+				var options = typeof option === 'object' && option;
+
+				if (!data) {
+					$this.data('landmark.dropdown', (data = new dropdown.Constructor(this, options)));
+				}
+
+				if (typeof option === 'string') {
+					methodReturn = data[option].apply(data, args);
+				}
+			});
+
+			return (methodReturn === undefined) ? $set : methodReturn;
+		};
+
+		$.fn.dropdown.Constructor = dropdown.Constructor;
+
+		$.fn.dropdown.noConflict = function () {
+			$.fn.dropdown = old;
+			return this;
+		};
+
+		// Data-api
+		$(document).on('click.landmark.dropdown.data-api', dropdown.clearMenus).on('click.landmark.dropdown.data-api', '.dropdown form', function (e) {
+			e.stopPropagation()
+		}).on('click.landmark.dropdown.data-api', '[data-toggle="dropdown"]', function (e) {
+			var $control = $(e.target);
+			if (!$control.data('landmark.dropdown')) {
+				$control.dropdown($control.data());
+				$control.dropdown('toggleMenu', e);
+			}
+			return false;
+		}).on('keydown.landmark.dropdown.data-api', '[data-toggle="dropdown"]', dropdown.Constructor.prototype.keydown).on('keydown.landmark.dropdown.data-api', '.dropdown-menu', dropdown.Constructor.prototype.keydown);
+
+	}($, landmark));
+
+
+	(function ($, landmark) {
+
 		var selectlist = landmark.controls.selectlist;
 
 		var old = $.fn.selectlist;

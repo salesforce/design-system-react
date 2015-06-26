@@ -1,5 +1,3 @@
-//TODO: THIS NEEDS TO BE UPDATED SINCE I HAVE MOVED IT TO DROPDOWN
-
 // UMD wrapper
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
@@ -10,7 +8,7 @@
 		module.exports = factory(require('jquery'), require('landmark/core'), require('landmark/selectlist'));
 	} else {
 		// Browser globals
-		factory(this.jQuery, this.landmark, this.landmark.controls.selectlist);
+		factory(this.jQuery, this.landmark);
 	}
 }(this, function ($, landmark) {
 

@@ -92,18 +92,12 @@
 		function trigger (element, eventType, eventName, details) {
 			var evt, type;
 
-			//if additional eventTypes are needed add them here
+			//will need to expand on this to support more event types
 			switch (eventType) {
 				case 'click':
 				case 'mousedown':
 				case 'mouseup':
-					type = 'MouseEvents';
-					break;
-				case 'focus':
-				case 'change':
-				case 'blur':
-				case 'select':
-					type = 'HTMLEvents';
+					type = 'MouseEvent';
 					break;
 				case 'custom':
 				default:

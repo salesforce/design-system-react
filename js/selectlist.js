@@ -1,5 +1,3 @@
-//TODO: this needs to be updated since I have moved it to dropdown!
-
 // UMD wrapper
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
@@ -14,9 +12,9 @@
 	}
 }(this, function (landmark) {
 
-	//if (typeof landmark !== 'object' && ()) {
-	//	throw new Error('landmark core must be included prior to landmark selectlist control');
-	//}
+	if (typeof landmark !== 'object' || !landmark.controls || !landmark.controls.dropdown) {
+		throw new Error('landmark core and landmark dropdown control must be included prior to landmark selectlist control');
+	}
 
 // -- BEGIN MODULE CODE HERE -- //
 
@@ -28,8 +26,7 @@
 	// Constructor and defaults
 
 	landmark.controls.selectlist = {
-		Constructor: function (element, options) {
-		},
+		Constructor: function (element, options) { },
 
 		defaults: {}
 	};

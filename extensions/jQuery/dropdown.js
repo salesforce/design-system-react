@@ -68,9 +68,9 @@
 				$control.dropdown('toggleMenu', e);
 			}
 			return false;
-		});
-		//.on('keydown.landmark.dropdown.data-api', toggle, Dropdown.prototype.keydown)
-		//.on('keydown.landmark.dropdown.data-api', '.dropdown-menu', Dropdown.prototype.keydown)
+		})
+		.on('keydown.landmark.dropdown.data-api', '[data-toggle="dropdown"]', dropdown.Constructor.prototype.keydown)
+		.on('keydown.landmark.dropdown.data-api', '.dropdown-menu', dropdown.Constructor.prototype.keydown);
 
 // -- END MODULE CODE HERE -- //
 }));

@@ -70,6 +70,51 @@
 
 		constructor: landmark.controls.dropdown.Constructor,
 
+		keydown: function (e) {
+			if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) { return; }
+			var element = e.currentTarget;
+
+			e.preventDefault();
+			e.stopPropagation();
+
+			if (lu.hasClass(element, 'disabled') || element.getAttribute('disabled') !== null) { return; }
+
+			var parent  = getParent(element);
+			var isActive = lu.hasClass(parent, 'open');
+
+			if (!isActive && e.which != 27 || isActive && e.which == 27) {
+				if (e.which == 27) {
+					var toggle = parent.querySelector('[data-toggle="dropdown"]');
+					if (toggle) {
+						toggle.focus();
+					}
+				}
+				return lu.trigger(element, 'click');
+			}
+
+			var items = Array.prototype.slice.call(parent.querySelectorAll('.dropdown-menu li:not(.disabled) a'), 0);
+
+			var index = -1;
+			for(var i = 0; i < items.length; i++) {
+				if (items[i].style.display !== 'none' && items[i].style.visibility !== 'hidden') {
+					if (items[i] === e.target) {
+						index = i;
+					}
+				} else {
+					items.splice(i, 1);
+					i--;
+				}
+			}
+
+			if (!items.length) { return; }
+
+			if (e.which == 38 && index > 0) { index--; } // up
+			if (e.which == 40 && index < items.length - 1) { index++; } // down
+			if (index < 0) { index = 0; }
+
+			items[index].focus();
+		},
+
 		toggleMenu: function (e) {
 			var element = e.target;
 
@@ -97,7 +142,7 @@
 
 				if (e.defaultPrevented) { return; }
 
-				lu.trigger(element, 'focus');
+				element.focus();
 				element.setAttribute('aria-expanded', 'true');
 
 				if(lu.hasClass(parent, 'open')) {

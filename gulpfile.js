@@ -13,7 +13,7 @@ gulp.task('buildVanillaLibrary', function() {
 		' * Landmark JS POC v' + pkg.version + ' \n' +
 		' */\n\n';
 
-	gulp.src('./js/*.js')
+	gulp.src('./js/*.js')	//NOTE: might need a file order eventually
 		.pipe(concat('landmark.js', { process: function(src) {
 			var header = '(function(landmark){\n';
 			var footer = '}(landmark));\n\n';
