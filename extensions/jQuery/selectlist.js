@@ -1,3 +1,5 @@
+//TODO: THIS NEEDS TO BE UPDATED SINCE I HAVE MOVED IT TO DROPDOWN
+
 // UMD wrapper
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
