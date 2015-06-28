@@ -86,59 +86,59 @@
 
 			e.preventDefault();
 
-			// is clicked element different from currently selected element?
 			if (!(e.target.parentNode === this.selectedItemEl)) {
 				this.itemChanged(e);
 			}
 
-			// return focus to control after selecting an option
 			this.button.focus();
 		},
 
 		itemChanged: function (e) {
-			//selectedItem needs to be <li> since the data is stored there, not in <a>
 			this.doSelect(e.target.parentNode);
 
-			// pass object including text and any data-attributes to onchange event
 			var data = this.selectedItem();
 
-			// trigger changed event
 			lu.trigger(this.element, 'custom', 'changed.landmark.selectlist', data);
 		},
 
 		resize: function () {
-			//var width = 0;
-			//var newWidth = 0;
-			//var sizer = $('<div/>').addClass('selectlist-sizer');
-			//
-			//
-			//if (Boolean($(document).find('html').hasClass('fuelux'))) {
-			//	// default behavior for fuel ux setup. means fuelux was a class on the html tag
-			//	$(document.body).append(sizer);
-			//} else {
-			//	// fuelux is not a class on the html tag. So we'll look for the first one we find so the correct styles get applied to the sizer
-			//	$('.fuelux:first').append(sizer);
-			//}
-			//
-			//sizer.append(this.$element.clone());
-			//
-			//this.$element.find('a').each(function () {
-			//	sizer.find('.selected-label').text($(this).text());
-			//	newWidth = sizer.find('.selectlist').outerWidth();
-			//	newWidth = newWidth + sizer.find('.sr-only').outerWidth();
-			//	if (newWidth > width) {
-			//		width = newWidth;
-			//	}
-			//});
-			//
-			//if (width <= 1) {
-			//	return;
-			//}
-			//
-			//this.$button.css('width', width);
-			//this.$dropdownMenu.css('width', width);
-			//
-			//sizer.remove();
+			var newWidth = 0;
+			var sizer = document.createElement('div');
+			var width = 0;
+			var tmp;
+
+			sizer.className = 'selectlist-sizer';
+
+			if (lu.hasClass(document.querySelector('html'))) {
+				document.querySelector('body').appendChild(sizer);
+			} else {
+				tmp = document.querySelector('.fuelux');
+				if (tmp) { tmp.appendChild(sizer); }
+			}
+
+			sizer.innerHTML = this.element.outerHTML;
+
+			var links = this.dropdownMenu.querySelectorAll('a');
+			for (var i = 0, l = links.length; i < l; i++) {
+				sizer.querySelector('.selected-label').textContent = links[i].textContent;
+				newWidth = sizer.querySelector('.selectlist').offsetWidth;
+				tmp = sizer.querySelector('.sr-only');
+				newWidth += ((tmp) ? tmp.offsetWidth : 0);
+				if (newWidth > width) {
+					width = newWidth;
+				}
+			}
+
+			if (width <= 1) {
+				return;
+			} else {
+				width += 'px';
+			}
+
+			this.button.style.width = width;
+			this.dropdownMenu.style.width = width;
+
+			lu.remove(sizer);
 		},
 
 		selectedItem: function () {
