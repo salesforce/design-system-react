@@ -60,7 +60,7 @@
 		};
 
 		// Data-api
-		$(document).on('click.landmark.dropdown.data-api', dropdown.clearMenus).on('click.landmark.dropdown.data-api', '.dropdown form', function (e) {
+		$(document).on('click.landmark.dropdown.data-api', dropdown.Constructor.prototype.clearMenus).on('click.landmark.dropdown.data-api', '.dropdown form', function (e) {
 			e.stopPropagation()
 		}).on('click.landmark.dropdown.data-api', '[data-toggle="dropdown"]', function (e) {
 			var $control = $(e.target);
