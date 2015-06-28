@@ -31,9 +31,10 @@
 			this.options = lu.extend({}, landmark.controls.dropdown.defaults, options);
 
 			this.button = element.querySelector('.btn.dropdown-toggle');
+			this.dropdownMenu = element.querySelector('.dropdown-menu');
 			this.hiddenField = element.querySelector('.hidden-field');
 			this.label = element.querySelector('.selected-label');
-			this.dropdownMenu = element.querySelector('.dropdown-menu');
+			this.selectedItemEl = null;
 
 			var self = this;
 			element.addEventListener('click', function (e) {
@@ -58,56 +59,51 @@
 		constructor: landmark.controls.selectlist.Constructor,
 
 		destroy: function () {
-			//this.$element.remove();
-			//// any external bindings
-			//// [none]
-			//// empty elements to return to original markup
-			//// [none]
-			//// returns string of markup
-			//return this.$element[0].outerHTML;
+			lu.remove(this.element);
+
+			return this.element.outerHTML;
 		},
 
-		doSelect: function ($item) {
-			//var $selectedItem;
-			//this.$selectedItem = $selectedItem = $item;
-			//
-			//this.$hiddenField.val(this.$selectedItem.attr('data-value'));
-			//this.$label.html($(this.$selectedItem.children()[0]).html());
-			//
-			//// clear and set selected item to allow declarative init state
-			//// unlike other controls, selectlist's value is stored internal, not in an input
-			//this.$element.find('li').each(function () {
-			//	if ($selectedItem.is($(this))) {
-			//		$(this).attr('data-selected', true);
-			//	} else {
-			//		$(this).removeData('selected').removeAttr('data-selected');
-			//	}
-			//});
+		doSelect: function (item) {
+			var selectedItemEl;
+			this.selectedItemEl = selectedItemEl = item;
+
+			this.hiddenField.value = this.selectedItemEl.getAttribute('data-value');
+			this.label.innerHTML = (this.selectedItemEl.childNodes.length) ? this.selectedItemEl.childNodes[0].innerHTML : '';
+
+			var items = this.dropdownMenu.querySelectorAll('li');
+			for (var i = 0, l = items.length; i < l; i++) {
+				if (selectedItemEl === items[i]) {
+					items[i].setAttribute('data-selected', 'true');
+				} else {
+					items[i].removeAttribute('data-selected');
+				}
+			}
 		},
 
 		itemClicked: function (e) {
-			//this.$element.trigger('clicked.fu.selectlist', this.$selectedItem);
-			//
-			//e.preventDefault();
-			//
-			//// is clicked element different from currently selected element?
-			//if (!($(e.target).parent().is(this.$selectedItem))) {
-			//	this.itemChanged(e);
-			//}
-			//
-			//// return focus to control after selecting an option
-			//this.$element.find('.dropdown-toggle').focus();
+			lu.trigger(this.element, 'custom', 'clicked.fu.selectlist', { selectedItem: this.selectedItemEl });
+
+			e.preventDefault();
+
+			// is clicked element different from currently selected element?
+			if (!(e.target.parentNode === this.selectedItemEl)) {
+				this.itemChanged(e);
+			}
+
+			// return focus to control after selecting an option
+			this.button.focus();
 		},
 
 		itemChanged: function (e) {
-			////selectedItem needs to be <li> since the data is stored there, not in <a>
-			//this.doSelect($(e.target).closest('li'));
-			//
-			//// pass object including text and any data-attributes
-			//// to onchange event
-			//var data = this.selectedItem();
-			//// trigger changed event
-			//this.$element.trigger('changed.fu.selectlist', data);
+			//selectedItem needs to be <li> since the data is stored there, not in <a>
+			this.doSelect(e.target.parentNode);
+
+			// pass object including text and any data-attributes to onchange event
+			var data = this.selectedItem();
+
+			// trigger changed event
+			lu.trigger(this.element, 'custom', 'changed.landmark.selectlist', data);
 		},
 
 		resize: function () {
@@ -146,57 +142,60 @@
 		},
 
 		selectedItem: function () {
-			//var txt = this.$selectedItem.text();
-			//return $.extend({
-			//	text: txt
-			//}, this.$selectedItem.data());
+			var txt = this.selectedItemEl.textContent;
+
+			return lu.extend({
+				test: txt
+			}, lu.data(this.selectedItemEl));
 		},
 
 		selectByText: function (text) {
-			//var $item = $([]);
-			//this.$element.find('li').each(function () {
-			//	if ((this.textContent || this.innerText || $(this).text() || '').toLowerCase() === (text || '').toLowerCase()) {
-			//		$item = $(this);
-			//		return false;
-			//	}
-			//});
-			//this.doSelect($item);
+			var item = null;
+			var items = this.dropdownMenu.querySelectorAll('li');
+
+			for (var i = 0, l = items.length; i < l; i++) {
+				if ((items[i].textContent || '').toLowerCase() === (text || '').toLowerCase()) {
+					item = items[i];
+					break;
+				}
+			}
+
+			if (item) { this.doSelect(item); }
 		},
 
 		selectByValue: function (value) {
-			//var selector = 'li[data-value="' + value + '"]';
-			//this.selectBySelector(selector);
+			var selector = 'li[data-value="' + value + '"]';
+			this.selectBySelector(selector);
 		},
 
 		selectByIndex: function (index) {
-			//// zero-based index
-			//var selector = 'li:eq(' + index + ')';
-			//this.selectBySelector(selector);
+			var selector = 'li:eq(' + index + ')';	// zero-based index
+			this.selectBySelector(selector);
 		},
 
-		selectBySelector: function (selector) {
-			//var $item = this.$element.find(selector);
-			//this.doSelect($item);
+		selectBySelector: function (selector) {	//TODO: override in jQuery plugin for better query selection?
+			var item = this.dropdownMenu.querySelector(selector);
+			this.doSelect(item);
 		},
 
 		setDefaultSelection: function () {
-			//var $item = this.$element.find('li[data-selected=true]').eq(0);
-			//
-			//if ($item.length === 0) {
-			//	$item = this.$element.find('li').has('a').eq(0);
-			//}
-			//
-			//this.doSelect($item);
+			var item = this.dropdownMenu.querySelector('li[data-selected=true]');
+
+			if (!item) {
+				item = this.dropdownMenu.querySelector('li a').parentNode;
+			}
+
+			this.doSelect(item);
 		},
 
 		enable: function () {
-			//this.$element.removeClass('disabled');
-			//this.$button.removeClass('disabled');
+			lu.removeClass(this.element, 'disabled');
+			lu.removeClass(this.button, 'disabled');
 		},
 
 		disable: function () {
-			//this.$element.addClass('disabled');
-			//this.$button.addClass('disabled');
+			lu.addClass(this.element, 'disabled');
+			lu.addClass(this.element, 'disabled');
 		}
 
 	};

@@ -53,6 +53,18 @@
 			return obj;
 		}
 
+		function data (element) {
+			var attr = element.attributes;
+			var data = {};
+			var exp = /^data\-/;
+			for (var i = 0, l = attr.length; i < l; i++) {
+				if (attr[i].nodeName.match(exp) !== null) {
+					data[attr[i].nodeName.replace(exp, '')] = attr[i].value;
+				}
+			}
+			return data;
+		}
+
 		function hasClass (element, className) {
 			return (element.className.match(new RegExp('\\b' + className + '\\b')) !== null);
 		}
@@ -122,6 +134,7 @@
 			utilities: {
 				addClass: addClass,
 				allKeys: allKeys,
+				data: data,
 				extend: extend,
 				hasClass: hasClass,
 				isObject: isObject,
