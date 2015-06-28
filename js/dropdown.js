@@ -33,7 +33,14 @@
 			this.element.addEventListener('click', this.toggleMenu);
 		},
 
-		defaults: {},
+		defaults: {}
+	};
+
+	// Public methods
+
+	landmark.controls.dropdown.Constructor.prototype = {
+
+		constructor: landmark.controls.dropdown.Constructor,
 
 		clearMenus: function (e) {
 			if (e && e.which === 3) {
@@ -61,14 +68,7 @@
 
 				lu.trigger(parent, 'custom', 'hidden.landmark.dropdown', relatedTarget);
 			}
-		}
-	};
-
-	// Public methods
-
-	landmark.controls.dropdown.Constructor.prototype = {
-
-		constructor: landmark.controls.dropdown.Constructor,
+		},
 
 		keydown: function (e) {
 			if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) { return; }
@@ -123,7 +123,7 @@
 			var parent = getParent(element);
 			var isActive = lu.hasClass(parent, 'open');
 
-			landmark.controls.dropdown.clearMenus();
+			landmark.controls.dropdown.Constructor.prototype.clearMenus();
 
 			if (!isActive) {
 				if ('ontouchstart' in document.documentElement && !parent.querySelector('.navbar-nav')) {
