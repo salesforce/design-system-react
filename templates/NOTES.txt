@@ -1,0 +1,12 @@
+selectlist
+----------------------------------------------------------------------------------------------------
+
+- Can have  data-initialize="selectlist" on ".selectlist"
+- Can have  data-resize="auto" property on ".selectlist"
+- Can have n number of "selectlist-item" templates as children of ".selectlist .dropdown-menu"
+
+	selectlist-item
+	--------------------------------------------------
+
+	- Can have data-selected="true" on "li"
+

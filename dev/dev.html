@@ -1,22 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="fuelux">
 <head>
 	<meta charset="utf-8">
 	<title>Landmark JS POC - Dev</title>
+
+	<!-- bootstrap styles - should be removed later once using landmark markup -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- fuelux styles - should be removed later once using landmark markup -->
+	<link rel="stylesheet" href="../lib/fuelux/dist/css/fuelux.css">
+
+	<style>
+		body {
+			padding: 20px;
+		}
+	</style>
 </head>
 <body>
-	<!--ADD CONTROL MARKUP HERE-->
+
+	<h3>Dropdown</h3>
+	<div class="dropdown" id="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			Dropdown
+			<span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			<li><a href="#">Action</a></li>
+			<li><a href="#">Another action</a></li>
+			<li><a href="#">Something else here</a></li>
+			<li><a href="#">Yet another thing</a></li>
+		</ul>
+	</div>
+
+	<h3>Selectlist</h3>
+	<div class="btn-group selectlist" data-resize="auto" data-initialize="selectlist" id="mySelectlist">
+		<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+			<span class="selected-label"></span>
+			<span class="caret"></span>
+			<span class="sr-only">Toggle Dropdown</span>
+		</button>
+		<ul class="dropdown-menu" role="menu">
+			<li data-value="1"><a href="#">One</a></li>
+			<li data-value="2"><a href="#">Two</a></li>
+			<li data-value="3"><a href="#">Three</a></li>
+			<li data-value="4" data-selected="true"><a href="#">Four</a></li>
+			<li data-value="5"><a href="#">Five</a></li>
+		</ul>
+		<input class="hidden hidden-field" name="mySelectlist" readonly="readonly" aria-hidden="true" type="text"/>
+	</div>
+
+	<script src="../node_modules/jquery/dist/jquery.js"></script>
 
 	<script src="../js/core.js"></script>
+	<script src="../js/dropdown.js"></script>
 	<script src="../js/selectlist.js"></script>
 
-	<script>
-		//TODO: remove this eventually
-		if (window && window.console && window.console.log) {
-			window.console.log(landmark);
-		}
+	<script src="../extensions/jQuery/dropdown.js"></script>
+	<script src="../extensions/jQuery/selectlist.js"></script>
 
-		//add dev page code here
+	<script>
+		//$('#dropdownMenu1').dropdown();
+		//$('#mySelectlist').selectlist();
 	</script>
+
 </body>
 </html>

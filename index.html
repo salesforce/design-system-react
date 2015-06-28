@@ -1,23 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" class="fuelux">
 <head>
 	<meta charset="utf-8">
 	<title>Landmark JS POC</title>
 
-	<script src="node_modules/requirejs/require.js"></script>
+	<!-- bootstrap styles - should be removed later once using landmark markup -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 
-	<script>
-		requirejs.config({
-			paths: {
-				'landmark': 'dist/landmark'
-			}
-		});
-		require(['index'], function(){ });
-	</script>
+	<!-- fuelux styles - should be removed later once using landmark markup -->
+	<link rel="stylesheet" href="lib/fuelux/dist/css/fuelux.css">
+
+	<style>
+		body {
+			padding: 20px;
+		}
+
+		.container {
+			text-align: center;
+		}
+	</style>
 </head>
 <body>
 
-	<!--ADD CONTROLS HERE-->
+	<div class="container">
+		<h2>Landmark JS POC</h2>
+		<div class="well">
+			<a href="jquery-extension.html">jQuery Extension</a>
+		</div>
+	</div>
 
 </body>
 </html>
