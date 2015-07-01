@@ -362,7 +362,7 @@
 		landmark.controls.selectlist = {
 			Constructor: function (element, options) {
 				this.element = element;
-				this.options = lu.extend({}, landmark.controls.dropdown.defaults, options);
+				this.options = lu.extend({}, landmark.controls.selectlist.defaults, options);
 
 				this.button = element.querySelector('.btn.dropdown-toggle');
 				this.dropdownMenu = element.querySelector('.dropdown-menu');

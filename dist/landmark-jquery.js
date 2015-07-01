@@ -26,6 +26,43 @@
 
 	(function ($, landmark) {
 
+		landmark.utilities = $.extend(landmark.utilities, {
+
+			addClass: function (element, classNames) {
+				$(element).addClass(classNames);
+			},
+
+			data: function (element) {
+				return $(element).data();
+			},
+
+			extend: $.extend,
+
+			hasClass: function (element, className) {
+				return $(element).hasClass(className);
+			},
+
+			proxy: $.proxy,
+
+			remove: function (elements) {
+				$(elements).remove();
+			},
+
+			removeClass: function (element, className) {
+				$(element).removeClass(className);
+			},
+
+			trigger: function (element, eventType, eventName, details) {
+				return $(element).trigger(eventName, details);
+			}
+
+		});
+
+	}($, landmark));
+
+
+	(function ($, landmark) {
+
 		var dropdown = landmark.controls.dropdown;
 
 		var old = $.fn.dropdown;

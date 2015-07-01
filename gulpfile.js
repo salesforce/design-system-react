@@ -37,7 +37,7 @@ gulp.task('buildVanillaLibrary', function() {
 
 // Builds the jQuery extension
 gulp.task('buildJQueryExtension', function() {
-	fs.readFile('./extensions/jQuery/umd-open.txt', 'utf8', function (err, umdOpen) {
+	fs.readFile('./js/extensions/jQuery/umd-open.txt', 'utf8', function (err, umdOpen) {
 		if (err) {
 			return console.log('Error loading umd-open.txt for buildJQueryExtension task: ', err);
 		}
@@ -49,7 +49,7 @@ gulp.task('buildJQueryExtension', function() {
 			umdOpen + '\n';
 		var footer = '}));\n';
 
-		gulp.src('./extensions/jQuery/*.js')
+		gulp.src('./js/extensions/jQuery/*.js')
 			.pipe(concat('landmark-jquery.js', { process: function(src) {
 				src = src.replace(/(\n|.)*\/\/ -- BEGIN MODULE CODE HERE -- \/\/\n/g, '(function($, landmark){\n');
 				src = src.replace(/\/\/ -- END MODULE CODE HERE -- \/\/(\n|.)*/g, '}($, landmark));\n\n');

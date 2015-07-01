@@ -2,10 +2,10 @@
 (function (root, factory) {
 	if ( typeof define === 'function' && define.amd ) {
 		// AMD. Register as an anonymous module.
-		define(['jquery', 'landmark/core', 'landmark/dropdown'], factory);
+		define(['jquery', 'landmark/core', 'landmark/extensions/jQuery/core', 'landmark/dropdown'], factory);
 	} else if ( typeof exports === 'object' ) {
 		// Node/CommonJS
-		module.exports = factory(require('jquery'), require('landmark/core'), require('landmark/dropdown'));
+		module.exports = factory(require('jquery'), require('landmark/core'), require('landmark/extensions/jQuery/core'), require('landmark/dropdown'));
 	} else {
 		// Browser globals
 		factory(this.jQuery, this.landmark);
