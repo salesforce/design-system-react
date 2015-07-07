@@ -74,7 +74,7 @@ module.exports={
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.selectlist);
+    factory(mod.exports, global.Selectlist);
     global.sample = mod.exports;
   }
 })(this, function (exports, _selectlist) {
@@ -82,7 +82,10 @@ module.exports={
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-  var _selectlist2 = _interopRequireDefault(_selectlist);
+  var _Selectlist = _interopRequireDefault(_selectlist);
+
+  var options = {};
+  var selectlist = new _Selectlist["default"](options);
 });
 
 },{"./selectlist":4}],4:[function(require,module,exports){
@@ -95,7 +98,7 @@ module.exports={
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.landmark);
+    factory(mod.exports, global.Landmark);
     global.selectlist = mod.exports;
   }
 })(this, function (exports, _landmark) {
@@ -104,7 +107,7 @@ module.exports={
 
   function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-  var _landmark2 = _interopRequireDefault(_landmark);
+  var _Landmark = _interopRequireDefault(_landmark);
 });
 
 },{"./landmark":2}]},{},[3]);
