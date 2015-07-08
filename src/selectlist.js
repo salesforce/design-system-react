@@ -11,7 +11,7 @@ export class Selectlist {
 		this._selection = null;
 		
 		if (options && options.initialSelection) {
-			this.setSelection(options.initialSelection);
+			this._setSelection(options.initialSelection);
 		}
 		
 		if (options && options.resize === 'auto') {
@@ -23,17 +23,12 @@ export class Selectlist {
 	
 	get selection () {
 		return Landmark.findWhere(collection, {id: this._selection});
-	};
+	}
 	
 	_setSelection (newSelection) {
-		// TO-DO:
-		// • Handle multi-select
-		
 		if (!newSelection || !newSelection.id) {
-			return;
-		}
-		
-		if (this._selection !== newSelection.id) {
+			this._selection = null;
+		} else if (this._selection !== newSelection.id) {
 			if (Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
 			this._selection = newSelection.id;
 			if (Landmark.isFunction(this.onSelected)) this.onSelected();
@@ -44,13 +39,13 @@ export class Selectlist {
 		var item = Landmark.findWhere(collection, {text: text});
 		
 		this._setSelection(item);
-	};
+	}
 	
 	setSelectionByValue (value) {
 		var item = Landmark.findWhere(collection, {value: value});
 		
 		this._setSelection(item);
-	};
+	}
 	
 	setSelectionByIndex (index) {
 		if (!collection) {
@@ -60,5 +55,15 @@ export class Selectlist {
 		var item = collection[index];
 		
 		this._setSelection(item);
-	};
+	}
+	
+	enable () {
+		this.element.toggleClass('disabled', false);
+		this.button.toggleClass('disabled', false); // Why is it neccessary to do this to both elements?
+	}
+
+	disable () {
+		this.element.toggleClass('disabled', true);
+		this.button.toggleClass('disabled', true);
+	}
 };
