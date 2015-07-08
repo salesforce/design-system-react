@@ -29,7 +29,17 @@ module.exports = function(grunt) {
 		watch: {
 			scripts: {
 				files: "src/**/*.js",
-				tasks: ["browserify:dist", "browserify:react"]
+				tasks: ["browserify:dist", "browserify:react"],
+				options: {
+					livereload: true
+				}
+			},
+			react: {
+				files: ["src/**/*.js", "src/**/*.jsx"],
+				tasks: ["browserify:react"],
+				options: {
+					livereload: true
+				}
 			}
 		},
 		connect: {
@@ -54,5 +64,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
 	grunt.registerTask("default", ["browserify"]);
-	grunt.registerTask("serve", ["connect:server", "browserify:react", "browserify:dist", "watch"]);
+	grunt.registerTask("serve", ["connect:server", "browserify:react", "browserify:dist", "watch:scripts"]);
+	grunt.registerTask("serve-react", ["connect:server", "browserify:react", "watch:react"]);
 };
