@@ -11025,6 +11025,8 @@ module.exports={
 	var collection = {};
 	var wrapper;
 
+	// TO-DO: This is basically the FuelUX declarative-compatibility version. What I want to do is render from a collection and template when directly instantiated but still support that old declarative syntax. This will take some readjustment and an overloaded constructor
+
 	var Selectlist = (function (_SelectlistCore) {
 		function Selectlist() {
 			_classCallCheck(this, Selectlist);

@@ -5,6 +5,8 @@ var old = $.fn.selectlist;
 var collection = {};
 var wrapper;
 
+// TO-DO: This is basically the FuelUX declarative-compatibility version. What I want to do is render from a collection and template when directly instantiated but still support that old declarative syntax. This will take some readjustment and an overloaded constructor
+
 export class Selectlist extends SelectlistCore {
 	onBeforeInitialize (collection, options) {
 		this.elements.wrapper = wrapper;
