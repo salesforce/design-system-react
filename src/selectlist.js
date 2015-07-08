@@ -21,6 +21,13 @@ export class Selectlist {
 		if (Landmark.isFunction(this.onInitialized)) this.onInitialized();
 	}
 	
+	// TO-DO: Is there a better pattern for this using constants?
+	get cssClass () {
+		return {
+			disabled: 'disabled'
+		}
+	}
+	
 	get selection () {
 		return Landmark.findWhere(collection, {id: this._selection});
 	}
@@ -58,12 +65,12 @@ export class Selectlist {
 	}
 	
 	enable () {
-		this.element.toggleClass('disabled', false);
-		this.button.toggleClass('disabled', false); // Why is it neccessary to do this to both elements?
+		this.elements.wrapper.toggleClass(this.cssClass.disabled, false);
+		this.elements.button.toggleClass(this.cssClass.disabled, false); // Why is it neccessary to do this to both elements?
 	}
 
 	disable () {
-		this.element.toggleClass('disabled', true);
-		this.button.toggleClass('disabled', true);
+		this.elements.wrapper.toggleClass(this.cssClass.disabled, true);
+		this.elements.button.toggleClass(this.cssClass.disabled, true);
 	}
 };

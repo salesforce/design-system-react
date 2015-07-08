@@ -191,14 +191,21 @@ module.exports={
 		}, {
 			key: 'enable',
 			value: function enable() {
-				this.element.toggleClass('disabled', false);
-				this.button.toggleClass('disabled', false); // Why is it neccessary to do this to both elements?
+				this.element.toggleClass(this.cssClass.disabled, false);
+				this.button.toggleClass(this.cssClass.disabled, false); // Why is it neccessary to do this to both elements?
 			}
 		}, {
 			key: 'disable',
 			value: function disable() {
-				this.element.toggleClass('disabled', true);
-				this.button.toggleClass('disabled', true);
+				this.element.toggleClass(this.cssClass.disabled, true);
+				this.button.toggleClass(this.cssClass.disabled, true);
+			}
+		}, {
+			key: 'cssClass',
+			get: function get() {
+				return {
+					disabled: 'disabled'
+				};
 			}
 		}, {
 			key: 'selection',
