@@ -10,7 +10,9 @@ module.exports = function(grunt) {
 					}]]
 				},
 				files: {
-					"dist/jQuery/sample.js": "src/jQuery/sample.js"
+					"dist/jQuery/sample.js": "src/jQuery/sample.js",
+					"dist/Backbone/sample.js": "src/Backbone/sample.js",
+					"dist/React/sample.js": "src/React/sample.js"
 				}
 			}
 		},
