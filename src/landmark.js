@@ -1,15 +1,16 @@
 // TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
-import {version} from "../package.json"
+import {version} from "../package.json";
 
-export class landmark {
+export class Landmark {
 	constructor () {
-		this.version = version;
-		this.utilities.log('Create the base class here');
+		Landmark.log('Running version ' + this.version);
 	}
 	
-	static utilities = {
-		log (val) {
-			console.log(val);
-		}
+	get version () {
+		return version;
 	}
-}
+	
+	static log (val) {
+		console.log(val);
+	}
+};

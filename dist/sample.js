@@ -40,28 +40,30 @@ module.exports={
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var landmark = (function () {
-		function landmark() {
-			_classCallCheck(this, landmark);
+	var Landmark = (function () {
+		function Landmark() {
+			_classCallCheck(this, Landmark);
 
-			this.version = _packageJson.version;
-			this.utilities.log("Create the base class here");
+			Landmark.log("Running version " + this.version);
 		}
 
-		_createClass(landmark, null, [{
-			key: "utilities",
-			value: {
-				log: function log(val) {
-					console.log(val);
-				}
-			},
-			enumerable: true
+		_createClass(Landmark, [{
+			key: "version",
+			get: function get() {
+				return _packageJson.version;
+			}
+		}], [{
+			key: "log",
+			value: function log(val) {
+				console.log(val);
+			}
 		}]);
 
-		return landmark;
+		return Landmark;
 	})();
 
-	exports.landmark = landmark;
+	exports.Landmark = Landmark;
+	;
 });
 
 },{"../package.json":1}],3:[function(require,module,exports){
@@ -74,18 +76,14 @@ module.exports={
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Selectlist);
+    factory(mod.exports, global.selectlist);
     global.sample = mod.exports;
   }
 })(this, function (exports, _selectlist) {
   "use strict";
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-  var _Selectlist = _interopRequireDefault(_selectlist);
-
   var options = {};
-  var selectlist = new _Selectlist["default"](options);
+  var selectlist = new _selectlist.Selectlist(options);
 });
 
 },{"./selectlist":4}],4:[function(require,module,exports){
@@ -98,16 +96,37 @@ module.exports={
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Landmark);
+    factory(mod.exports, global.landmark);
     global.selectlist = mod.exports;
   }
 })(this, function (exports, _landmark) {
   // This doesn't work, still need to figure out how to do proper named imports
   "use strict";
 
-  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
 
-  var _Landmark = _interopRequireDefault(_landmark);
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+
+  var Selectlist = (function (_Landmark) {
+    function Selectlist() {
+      _classCallCheck(this, Selectlist);
+
+      _get(Object.getPrototypeOf(Selectlist.prototype), "constructor", this).apply(this, arguments);
+    }
+
+    _inherits(Selectlist, _Landmark);
+
+    return Selectlist;
+  })(_landmark.Landmark);
+
+  exports.Selectlist = Selectlist;
+  ;
 });
 
 },{"./landmark":2}]},{},[3]);
