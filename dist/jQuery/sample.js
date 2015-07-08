@@ -1579,7 +1579,7 @@ module.exports={
 			exports: {}
 		};
 		factory(mod.exports, global._package, global._);
-		global.landmark = mod.exports;
+		global.Landmark = mod.exports;
 	}
 })(this, function (exports, _packageJson, _node_modulesUnderscoreUnderscore) {
 	// TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
@@ -1638,40 +1638,18 @@ module.exports={
 
 },{"../node_modules/underscore/underscore":1,"../package.json":2}],4:[function(require,module,exports){
 (function (global, factory) {
-  if (typeof define === "function" && define.amd) {
-    define(["exports", "./selectlist"], factory);
-  } else if (typeof exports !== "undefined") {
-    factory(exports, require("./selectlist"));
-  } else {
-    var mod = {
-      exports: {}
-    };
-    factory(mod.exports, global.selectlist);
-    global.sample = mod.exports;
-  }
-})(this, function (exports, _selectlist) {
-  "use strict";
-
-  var collection = [];
-  var options = {};
-  var selectlist = new _selectlist.Selectlist(collection, options);
-  selectlist.Landmark.log("Running version " + selectlist.Landmark.version);
-});
-
-},{"./selectlist":5}],5:[function(require,module,exports){
-(function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', './landmark'], factory);
+		define(['exports', './Landmark'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('./landmark'));
+		factory(exports, require('./Landmark'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.landmark);
-		global.selectlist = mod.exports;
+		factory(mod.exports, global.Landmark);
+		global.SelectlistCore = mod.exports;
 	}
-})(this, function (exports, _landmark) {
+})(this, function (exports, _Landmark) {
 	// This doesn't work, still need to figure out how to do proper named imports
 	'use strict';
 
@@ -1683,13 +1661,13 @@ module.exports={
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	var Selectlist = (function () {
-		function Selectlist(collection, options) {
-			_classCallCheck(this, Selectlist);
+	var SelectlistCore = (function () {
+		function SelectlistCore(collection, options) {
+			_classCallCheck(this, SelectlistCore);
 
-			this.Landmark = _landmark.Landmark;
+			this.Landmark = _Landmark.Landmark;
 
-			if (_landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize();
+			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize();
 
 			this._collection = collection || {};
 			this._selection = null;
@@ -1699,34 +1677,34 @@ module.exports={
 			}
 
 			if (options && options.resize === 'auto') {
-				if (_landmark.Landmark.isFunction(this.resize)) this.resize();
+				if (_Landmark.Landmark.isFunction(this.resize)) this.resize();
 			}
 
-			if (_landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized();
+			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized();
 		}
 
-		_createClass(Selectlist, [{
+		_createClass(SelectlistCore, [{
 			key: '_setSelection',
 			value: function _setSelection(newSelection) {
 				if (!newSelection || !newSelection.id) {
 					this._selection = null;
 				} else if (this._selection !== newSelection.id) {
-					if (_landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
+					if (_Landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
 					this._selection = newSelection.id;
-					if (_landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
+					if (_Landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
 				}
 			}
 		}, {
 			key: 'setSelectionByText',
 			value: function setSelectionByText(text) {
-				var item = _landmark.Landmark.findWhere(collection, { text: text });
+				var item = _Landmark.Landmark.findWhere(collection, { text: text });
 
 				this._setSelection(item);
 			}
 		}, {
 			key: 'setSelectionByValue',
 			value: function setSelectionByValue(value) {
-				var item = _landmark.Landmark.findWhere(collection, { value: value });
+				var item = _Landmark.Landmark.findWhere(collection, { value: value });
 
 				this._setSelection(item);
 			}
@@ -1765,15 +1743,79 @@ module.exports={
 		}, {
 			key: 'selection',
 			get: function get() {
-				return _landmark.Landmark.findWhere(collection, { id: this._selection });
+				return _Landmark.Landmark.findWhere(collection, { id: this._selection });
 			}
 		}]);
 
-		return Selectlist;
+		return SelectlistCore;
 	})();
 
-	exports.Selectlist = Selectlist;
+	exports.SelectlistCore = SelectlistCore;
 	;
 });
 
-},{"./landmark":3}]},{},[4]);
+},{"./Landmark":3}],5:[function(require,module,exports){
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(["exports", "./selectlist"], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require("./selectlist"));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod.exports, global.selectlist);
+    global.sample = mod.exports;
+  }
+})(this, function (exports, _selectlist) {
+  "use strict";
+
+  var collection = [];
+  var options = {};
+  var selectlist = new _selectlist.Selectlist(collection, options);
+  selectlist.Landmark.log("Running version " + selectlist.Landmark.version);
+});
+
+},{"./selectlist":6}],6:[function(require,module,exports){
+(function (global, factory) {
+  if (typeof define === "function" && define.amd) {
+    define(["exports", "../SelectlistCore"], factory);
+  } else if (typeof exports !== "undefined") {
+    factory(exports, require("../SelectlistCore"));
+  } else {
+    var mod = {
+      exports: {}
+    };
+    factory(mod.exports, global.SelectlistCore);
+    global.selectlist = mod.exports;
+  }
+})(this, function (exports, _SelectlistCore2) {
+  "use strict";
+
+  Object.defineProperty(exports, "__esModule", {
+    value: true
+  });
+
+  var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+
+  var Selectlist = (function (_SelectlistCore) {
+    function Selectlist() {
+      _classCallCheck(this, Selectlist);
+
+      _get(Object.getPrototypeOf(Selectlist.prototype), "constructor", this).apply(this, arguments);
+    }
+
+    _inherits(Selectlist, _SelectlistCore);
+
+    return Selectlist;
+  })(_SelectlistCore2.SelectlistCore);
+
+  exports.Selectlist = Selectlist;
+  ;
+});
+
+},{"../SelectlistCore":4}]},{},[5]);

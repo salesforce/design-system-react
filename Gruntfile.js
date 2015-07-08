@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 					}]]
 				},
 				files: {
-					"dist/sample.js": "src/sample.js"
+					"dist/jQuery/sample.js": "src/jQuery/sample.js"
 				}
 			}
 		},
