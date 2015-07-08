@@ -53,6 +53,17 @@ module.exports={
 				console.log(val);
 			}
 		}, {
+			key: "isFunction",
+			value: function isFunction(obj) {
+				return toString.call(obj) === "[object Function]";
+			}
+		}, {
+			key: "findWhere",
+			value: function findWhere(collection, criteria) {
+				// TO-DO: Implement this. Should it delegate to frameworks somehow or is a vanilla implementation best?
+				return {};
+			}
+		}, {
 			key: "version",
 			get: function get() {
 				return _packageJson.version;
@@ -87,8 +98,9 @@ module.exports={
 })(this, function (exports, _selectlist) {
   "use strict";
 
+  var collection = [];
   var options = {};
-  var selectlist = new _selectlist.Selectlist(options);
+  var selectlist = new _selectlist.Selectlist(collection, options);
   selectlist.Landmark.log("Running version " + selectlist.Landmark.version);
 });
 
@@ -113,14 +125,82 @@ module.exports={
 		value: true
 	});
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Selectlist = function Selectlist() {
-		_classCallCheck(this, Selectlist);
+	var Selectlist = (function () {
+		function Selectlist(collection, options) {
+			_classCallCheck(this, Selectlist);
 
-		this.Landmark = _landmark.Landmark;
-		_landmark.Landmark.log("I am a Selectlist");
-	};
+			this.Landmark = _landmark.Landmark;
+
+			if (_landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize();
+
+			this._collection = collection || {};
+			this._selection = null;
+
+			if (options && options.initialSelection) {
+				this.setSelection(options.initialSelection);
+			}
+
+			if (options && options.resize === "auto") {
+				if (_landmark.Landmark.isFunction(this.resize)) this.resize();
+			}
+
+			if (_landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized();
+		}
+
+		_createClass(Selectlist, [{
+			key: "_setSelection",
+			value: function _setSelection(newSelection) {
+				// TO-DO:
+				// • Handle multi-select
+
+				if (!newSelection || !newSelection.id) {
+					return;
+				}
+
+				if (this._selection !== newSelection.id) {
+					if (_landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
+					this._selection = newSelection.id;
+					if (_landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
+				}
+			}
+		}, {
+			key: "setSelectionByText",
+			value: function setSelectionByText(text) {
+				var item = _landmark.Landmark.findWhere(collection, { text: text });
+
+				this._setSelection(item);
+			}
+		}, {
+			key: "setSelectionByValue",
+			value: function setSelectionByValue(value) {
+				var item = _landmark.Landmark.findWhere(collection, { value: value });
+
+				this._setSelection(item);
+			}
+		}, {
+			key: "setSelectionByIndex",
+			value: function setSelectionByIndex(index) {
+				if (!collection) {
+					return;
+				}
+
+				var item = collection[index];
+
+				this._setSelection(item);
+			}
+		}, {
+			key: "selection",
+			get: function get() {
+				return _landmark.Landmark.findWhere(collection, { id: this._selection });
+			}
+		}]);
+
+		return Selectlist;
+	})();
 
 	exports.Selectlist = Selectlist;
 	;

@@ -15,4 +15,13 @@ export class Landmark {
 	static log (val) {
 		console.log(val);
 	}
+	
+	static isFunction (obj) {
+		return toString.call(obj) === '[object Function]';
+	}
+	
+	static findWhere (collection, criteria) {
+		// TO-DO: Implement this. Should it delegate to frameworks somehow or is a vanilla implementation best?
+		return {};
+	}
 };
