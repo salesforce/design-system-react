@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 			},
 			react: {
 				files: {
-					'dist/React/build.js': ['src/react/selectlist.jsx']
+					'dist/React/build.js': ['src/React/selectlist.jsx']
 				},
 				options: {
 					transform: [
