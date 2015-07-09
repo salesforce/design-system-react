@@ -22929,10 +22929,6 @@ var DATA = {
 	items: [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }]
 };
 
-var menuItemSelected = function menuItemSelected(eventKey, href, target) {
-	undefined.props.model.selected = undefined.props.model.items[eventKey].name;
-};
-
 var Selectlist = React.createClass({
 	displayName: 'Selectlist',
 
@@ -22961,8 +22957,7 @@ var Selectlist = React.createClass({
 	},
 
 	selected: function selected() {
-		self = this;
-		return typeof this.state.selectedKey === 'undefined' ? 'None Selected' : self.props.model.items[this.state.selectedKey].name;
+		return typeof this.state.selectedKey === 'undefined' ? 'None Selected' : this.props.model.items[this.state.selectedKey].name;
 	},
 
 	render: function render() {

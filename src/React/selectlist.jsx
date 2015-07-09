@@ -16,10 +16,6 @@ var DATA = {
 	]
 };
 
-var menuItemSelected = (eventKey, href, target)=> {
-	this.props.model.selected = this.props.model.items[eventKey].name;
-};
-
 var Selectlist = React.createClass({
 	getInitialState: function() {
 		return {
@@ -42,9 +38,8 @@ var Selectlist = React.createClass({
 	},
 
 	selected: function() {
-		self = this;
 		return typeof(this.state.selectedKey) === 'undefined' ? 'None Selected' : 
-			self.props.model.items[this.state.selectedKey].name;
+			this.props.model.items[this.state.selectedKey].name;
 	},
 
 	render () {
