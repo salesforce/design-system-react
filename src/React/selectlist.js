@@ -1,21 +1,47 @@
-var React = require('react');
-import {SelectlistCore} from '../SelectlistCore';
+//test
 
-export class Selectlist extends SelectlistCore {
-	onBeforeInitialize (collection, options) {
-		// TO-DO: Of course we actually want this to be dynamic, just leaving it here for simplicty at the moment
-		var menuItems = collection.map((menuItem) => {
-			return <li>{menuItem.name}</li>; 
+var React = require('react');
+import {SelectlistCore} from "../SelectlistCore";
+var DropdownButton = require('react-bootstrap/lib/DropdownButton');
+var MenuItem = require('react-bootstrap/lib/MenuItem');
+
+var Selectlist = React.createClass({
+	getInitialState: function() {
+		return {
+			selectedKey: undefined
+		};
+	},
+
+	handleMenuItemClicked: function(eventKey, href, target) {
+		this.setState({
+			selectedKey: eventKey
 		});
-		
-		this.component = React.createClass({
-			render () {
-				return (
-					<div>
-						<ul>{menuItems}</ul>
-					</div>
-				);
-			}
+	},
+
+	menuItems: function() {
+		return this.props.model.items.map( (menuItem) => {
+			return <MenuItem eventKey={menuItem.id} onSelect={this.handleMenuItemClicked}>
+					{menuItem.name}
+				</MenuItem>;
 		});
+	},
+
+	selected: function() {
+		return typeof(this.state.selectedKey) === 'undefined' ? 'None Selected' : 
+			this.props.model.items[this.state.selectedKey].name;
+	},
+
+	render () {
+		return (
+			<div>
+				<h1>SelectList</h1>
+				<ul>{this.menuItems}</ul>
+				<DropdownButton title={this.selected()} key={this.props.model.id}>{this.menuItems()}</DropdownButton>
+			</div>
+		);
 	}
-}
+});
+
+// React.render(<Selectlist model={collection}/>, document.body.querySelector('.selectlist'), () => {});
+
+export default Selectlist;

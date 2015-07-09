@@ -17,7 +17,7 @@ module.exports = function(grunt) {
 			},
 			react: {
 				files: {
-					'dist/React/sample.js': ['src/react/sample.js']
+					'dist/React/sample.js': ['src/react/app.js']
 				},
 				options: {
 					transform: [
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
 					base: {
 						path: '.',
 						options: {
-							index: ['src/index.html'],
+							index: ['dist/index.html'],
 						}
 					},
 					port: process.env.PORT || 8000,
