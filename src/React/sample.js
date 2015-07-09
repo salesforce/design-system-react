@@ -7,6 +7,8 @@ var collection = [
 		{ id: 3, name: 'tostada', type: 'mexican' },
 		{ id: 4, name: 'hush puppies', type: 'southern' }
 	];
-var options = {};
+var options = {
+	initialSelection: { id: 2, name: 'burrito', type: 'mexican' }
+};
 var Samplelist = new Selectlist(collection, options);
 React.render(<Samplelist.component/>, document.body, () => {});

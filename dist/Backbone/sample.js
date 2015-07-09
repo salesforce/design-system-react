@@ -1559,12 +1559,14 @@ module.exports={
   "version": "0.0.1",
   "devDependencies": {
     "babelify": "^6.1.2",
+    "classnames": "^2.1.3",
     "connect": "^3.4.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.8.0",
     "grunt-contrib-connect": "^0.10.1",
     "grunt-contrib-watch": "^0.6.1",
     "react": "^0.13.3",
+    "react-bootstrap": "^0.23.7",
     "reactify": "^1.1.1",
     "serve-static": "^1.10.0"
   },
@@ -1815,7 +1817,7 @@ module.exports={
 		}, {
 			key: 'selection',
 			get: function get() {
-				return _Landmark.Landmark.findWhere(collection, { id: this._selection });
+				return _Landmark.Landmark.findWhere(this._collection, { id: this._selection });
 			}
 		}]);
 
