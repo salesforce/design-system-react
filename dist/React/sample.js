@@ -22816,115 +22816,136 @@ module.exports={
 },{"../node_modules/underscore/underscore":171,"../package.json":172}],174:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports'], factory);
+		define(['exports', './selectlist'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports);
+		factory(exports, require('./selectlist'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports);
+		factory(mod.exports, global.selectlist);
 		global.sample = mod.exports;
 	}
-})(this, function (exports) {
+})(this, function (exports, _selectlist) {
 	'use strict';
 
 	var React = require('react');
-	var Selectlist = require('./selectlist');
 
-	// state and model of sample selectlist
-	var collection = {
-		selected: 'None selected',
-		id: 'selectlist1',
-		items: [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }],
-		options: {}
-	};
+	var element = document.getElementById('sampleSelectlist');
+	var collection = [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }];
+	var options = {};
 
-	React.render(React.createElement(Selectlist, {
-		model: collection
-	}), document.getElementById('sampleSelectlist'));
+	var rendered = new _selectlist.Selectlist(element, collection, options);
 });
-
-// add display options here
 
 },{"./selectlist":175,"react":170}],175:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', 'module', '../SelectlistCore'], factory);
-	} else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-		factory(exports, module, require('../SelectlistCore'));
+		define(['exports', '../SelectlistCore'], factory);
+	} else if (typeof exports !== 'undefined') {
+		factory(exports, require('../SelectlistCore'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, mod, global.SelectlistCore);
+		factory(mod.exports, global.SelectlistCore);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, module, _SelectlistCore) {
+})(this, function (exports, _SelectlistCore2) {
 	// SELECTLIST COMPONENT
 
 	'use strict';
 
-	var React = require('react');
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+
+	var React = require('react'); // TO-DO: Get rid of all these requires
 	var DropdownButton = require('react-bootstrap/lib/DropdownButton');
 	var MenuItem = require('react-bootstrap/lib/MenuItem');
 
-	var Selectlist = React.createClass({
-		displayName: 'Selectlist',
+	var Selectlist = (function (_SelectlistCore) {
+		function Selectlist() {
+			_classCallCheck(this, Selectlist);
 
-		getInitialState: function getInitialState() {
-			return {
-				selectedKey: undefined
-			};
-		},
-
-		handleMenuItemClicked: function handleMenuItemClicked(eventKey, href, target) {
-			this.setState({
-				selectedKey: eventKey
-			});
-		},
-
-		menuItems: function menuItems() {
-			var _this = this;
-
-			return this.props.model.items.map(function (menuItem) {
-				return React.createElement(
-					MenuItem,
-					{ eventKey: menuItem.id, onSelect: _this.handleMenuItemClicked },
-					menuItem.name
-				);
-			});
-		},
-
-		selected: function selected() {
-			return typeof this.state.selectedKey === 'undefined' ? 'None Selected' : this.props.model.items[this.state.selectedKey].name;
-		},
-
-		render: function render() {
-			return React.createElement(
-				'div',
-				null,
-				React.createElement(
-					'h1',
-					null,
-					'SelectList'
-				),
-				React.createElement(
-					'ul',
-					null,
-					this.menuItems
-				),
-				React.createElement(
-					DropdownButton,
-					{ title: this.selected(), key: this.props.model.id },
-					this.menuItems()
-				)
-			);
+			_get(Object.getPrototypeOf(Selectlist.prototype), 'constructor', this).apply(this, arguments);
 		}
-	});
 
-	module.exports = Selectlist;
+		_inherits(Selectlist, _SelectlistCore);
+
+		_createClass(Selectlist, [{
+			key: 'onBeforeInitialize',
+			value: function onBeforeInitialize(element, collection, options) {
+				var self = this;
+				this.Component = React.createClass({
+					displayName: 'Component',
+					// TO-DO: Saving this here for now even though it's clearly wrong
+					handleMenuItemClicked: function handleMenuItemClicked(eventKey, href, target) {
+						self.setSelectionByKey('id', eventKey);
+					},
+
+					menuItems: function menuItems() {
+						var _this = this;
+
+						return self._collection.map(function (menuItem) {
+							return React.createElement(
+								MenuItem,
+								{ eventKey: menuItem.id, onSelect: _this.handleMenuItemClicked },
+								menuItem.name
+							);
+						});
+					},
+
+					render: function render() {
+						return React.createElement(
+							'div',
+							null,
+							React.createElement(
+								'ul',
+								null,
+								this.menuItems
+							),
+							React.createElement(
+								DropdownButton,
+								{ title: self.selection.name, key: this.props.id },
+								this.menuItems()
+							)
+						);
+					}
+				});
+			}
+		}, {
+			key: 'onInitialized',
+			value: function onInitialized(element, collection, options) {
+				this.component = React.render(React.createElement(this.Component, {
+					id: 'selectlist1' // TO-DO: Obviously this isn't how we'll really set the ID in the end
+				}), element);
+			}
+		}, {
+			key: 'onSelected',
+			value: function onSelected() {
+				this.component.forceUpdate(); // TO-DO: We shouldn't have to force this, but we also don't want to manage state in two places. What's the best way to get the best of both worlds?
+			}
+		}, {
+			key: 'selection',
+			get: function get() {
+				return _get(Object.getPrototypeOf(Selectlist.prototype), 'selection', this) || { name: 'None selected' }; // TO-DO: Another hack...
+			}
+		}]);
+
+		return Selectlist;
+	})(_SelectlistCore2.SelectlistCore);
+
+	exports.Selectlist = Selectlist;
+	;
 });
 
 },{"../SelectlistCore":176,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}],176:[function(require,module,exports){
@@ -22952,12 +22973,13 @@ module.exports={
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	var SelectlistCore = (function () {
-		function SelectlistCore(collection, options) {
+		function SelectlistCore(element, collection, options) {
 			_classCallCheck(this, SelectlistCore);
 
+			// Adding the element here for now, though what I really want is to be able to do that later
 			this.Landmark = _Landmark.Landmark;
 
-			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(collection, options);
+			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(element, collection, options);
 
 			this._collection = collection || {};
 			this._selection = null;
@@ -22970,13 +22992,13 @@ module.exports={
 				if (_Landmark.Landmark.isFunction(this.resize)) this.resize();
 			}
 
-			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized();
+			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(element, collection, options);
 		}
 
 		_createClass(SelectlistCore, [{
 			key: '_setSelection',
 			value: function _setSelection(newSelection) {
-				if (!newSelection || !newSelection.id) {
+				if (!newSelection) {
 					this._selection = null;
 				} else if (this._selection !== newSelection.id) {
 					if (_Landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
@@ -22994,18 +23016,18 @@ module.exports={
 			value: function setSelectionByKey(key, value) {
 				var criteria = {};
 				criteria[key] = value;
-				var item = _Landmark.Landmark.findWhere(collection, criteria);
+				var item = _Landmark.Landmark.findWhere(this._collection, criteria);
 
 				return this._setSelection(item);
 			}
 		}, {
 			key: 'setSelectionByIndex',
 			value: function setSelectionByIndex(index) {
-				if (!collection) {
+				if (!this._collection) {
 					return;
 				}
 
-				var item = collection[index];
+				var item = this._collection[index];
 
 				return this._setSelection(item);
 			}

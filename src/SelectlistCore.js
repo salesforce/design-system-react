@@ -1,10 +1,10 @@
 import {Landmark} from './Landmark';
 
 export class SelectlistCore {
-	constructor (collection, options) {
+	constructor (element, collection, options) { // Adding the element here for now, though what I really want is to be able to do that later
 		this.Landmark = Landmark;
 		
-		if (Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(collection, options);
+		if (Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(element, collection, options);
 		
 		this._collection = collection || {};
 		this._selection = null;
@@ -17,7 +17,7 @@ export class SelectlistCore {
 			if (Landmark.isFunction(this.resize)) this.resize();
 		}
 		
-		if (Landmark.isFunction(this.onInitialized)) this.onInitialized();
+		if (Landmark.isFunction(this.onInitialized)) this.onInitialized(element, collection, options);
 	}
 	
 	// TO-DO: Is there a better pattern for this using constants?
@@ -32,7 +32,7 @@ export class SelectlistCore {
 	}
 	
 	_setSelection (newSelection) {
-		if (!newSelection || !newSelection.id) {
+		if (!newSelection) {
 			this._selection = null;
 		} else if (this._selection !== newSelection.id) {
 			if (Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
@@ -48,17 +48,17 @@ export class SelectlistCore {
 	setSelectionByKey (key, value) {
 		var criteria = {};
 		criteria[key] = value;
-		var item = Landmark.findWhere(collection, criteria);
+		var item = Landmark.findWhere(this._collection, criteria);
 		
 		return this._setSelection(item);
 	}
 	
 	setSelectionByIndex (index) {
-		if (!collection) {
+		if (!this._collection) {
 			return;
 		}
 		
-		var item = collection[index];
+		var item = this._collection[index];
 		
 		return this._setSelection(item);
 	}

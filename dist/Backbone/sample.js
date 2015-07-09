@@ -1735,12 +1735,13 @@ module.exports={
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 	var SelectlistCore = (function () {
-		function SelectlistCore(collection, options) {
+		function SelectlistCore(element, collection, options) {
 			_classCallCheck(this, SelectlistCore);
 
+			// Adding the element here for now, though what I really want is to be able to do that later
 			this.Landmark = _Landmark.Landmark;
 
-			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(collection, options);
+			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(element, collection, options);
 
 			this._collection = collection || {};
 			this._selection = null;
@@ -1753,13 +1754,13 @@ module.exports={
 				if (_Landmark.Landmark.isFunction(this.resize)) this.resize();
 			}
 
-			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized();
+			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(element, collection, options);
 		}
 
 		_createClass(SelectlistCore, [{
 			key: '_setSelection',
 			value: function _setSelection(newSelection) {
-				if (!newSelection || !newSelection.id) {
+				if (!newSelection) {
 					this._selection = null;
 				} else if (this._selection !== newSelection.id) {
 					if (_Landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
@@ -1777,18 +1778,18 @@ module.exports={
 			value: function setSelectionByKey(key, value) {
 				var criteria = {};
 				criteria[key] = value;
-				var item = _Landmark.Landmark.findWhere(collection, criteria);
+				var item = _Landmark.Landmark.findWhere(this._collection, criteria);
 
 				return this._setSelection(item);
 			}
 		}, {
 			key: 'setSelectionByIndex',
 			value: function setSelectionByIndex(index) {
-				if (!collection) {
+				if (!this._collection) {
 					return;
 				}
 
-				var item = collection[index];
+				var item = this._collection[index];
 
 				return this._setSelection(item);
 			}
