@@ -11,32 +11,15 @@ module.exports = function(grunt) {
 				},
 				files: {
 					"dist/jQuery/sample.js": "src/jQuery/sample.js",
-					"dist/Backbone/sample.js": "src/Backbone/sample.js"
-					// "dist/React/sample.js": "src/React/sample.js"
+					"dist/Backbone/sample.js": "src/Backbone/sample.js",
+					"dist/React/sample.js": "src/React/sample.js"
 				}
-			},
-			react: {
-				files: {
-					'dist/React/sample.js': ['src/react/app.js']
-				},
-				options: {
-					transform: [
-						'babelify'
-					]
-				},
-			},
+			}
 		},
 		watch: {
 			scripts: {
 				files: "src/**/*.js",
-				tasks: ["browserify:dist", "browserify:react"],
-				options: {
-					livereload: true
-				}
-			},
-			react: {
-				files: ["src/**/*.js", "src/**/*.jsx"],
-				tasks: ["browserify:react"],
+				tasks: ["browserify:dist"],
 				options: {
 					livereload: true
 				}
@@ -47,13 +30,10 @@ module.exports = function(grunt) {
 				options: {
 					hostname: '*',
 					base: {
-						path: '.',
-						options: {
-							index: ['dist/index.html'],
-						}
+						path: './dist'
 					},
 					port: process.env.PORT || 8000,
-					useAvailablePort: true // increment port number, if unavailable...
+					useAvailablePort: true // increment port number, if unavailable
 				}
 			}
 		}
@@ -64,6 +44,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks("grunt-contrib-watch");
 
 	grunt.registerTask("default", ["browserify"]);
-	grunt.registerTask("serve", ["connect:server", "browserify:react", "browserify:dist", "watch:scripts"]);
-	grunt.registerTask("serve-react", ["connect:server", "browserify:react", "watch:react"]);
+	grunt.registerTask("serve", ["connect:server", "browserify:dist", "watch:scripts"]);
 };

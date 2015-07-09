@@ -28,7 +28,7 @@ export class SelectlistCore {
 	}
 	
 	get selection () {
-		return Landmark.findWhere(collection, {id: this._selection});
+		return Landmark.findWhere(this._collection, {id: this._selection});
 	}
 	
 	_setSelection (newSelection) {

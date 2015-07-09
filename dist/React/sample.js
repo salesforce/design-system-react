@@ -22746,259 +22746,302 @@ module.exports={
 }
 
 },{}],173:[function(require,module,exports){
-// TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-	value: true
-});
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
-
-var _packageJson = require('../package.json');
-
-var _node_modulesUnderscoreUnderscore = require('../node_modules/underscore/underscore');
-
-var _node_modulesUnderscoreUnderscore2 = _interopRequireDefault(_node_modulesUnderscoreUnderscore);
-
-var components = {};
-
-var Landmark = (function (_ref) {
-	function Landmark() {
-		_classCallCheck(this, Landmark);
-
-		_get(Object.getPrototypeOf(Landmark.prototype), 'constructor', this).apply(this, arguments);
+(function (global, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(['exports', '../package.json', '../node_modules/underscore/underscore'], factory);
+	} else if (typeof exports !== 'undefined') {
+		factory(exports, require('../package.json'), require('../node_modules/underscore/underscore'));
+	} else {
+		var mod = {
+			exports: {}
+		};
+		factory(mod.exports, global._package, global._);
+		global.Landmark = mod.exports;
 	}
+})(this, function (exports, _packageJson, _node_modulesUnderscoreUnderscore) {
+	// TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
+	'use strict';
 
-	_inherits(Landmark, _ref);
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
 
-	_createClass(Landmark, null, [{
-		key: 'log',
-		value: function log(val) {
-			console.log(val);
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
+
+	var _2 = _interopRequireDefault(_node_modulesUnderscoreUnderscore);
+
+	var components = {};
+
+	var Landmark = (function (_ref) {
+		function Landmark() {
+			_classCallCheck(this, Landmark);
+
+			_get(Object.getPrototypeOf(Landmark.prototype), 'constructor', this).apply(this, arguments);
 		}
-	}, {
-		key: 'version',
-		get: function get() {
-			return _packageJson.version;
-		}
-	}, {
-		key: 'components',
-		get: function get() {
-			return components;
-		}
-	}]);
 
-	return Landmark;
-})(_node_modulesUnderscoreUnderscore2['default']);
+		_inherits(Landmark, _ref);
 
-exports.Landmark = Landmark;
-;
+		_createClass(Landmark, null, [{
+			key: 'log',
+			value: function log(val) {
+				console.log(val);
+			}
+		}, {
+			key: 'version',
+			get: function get() {
+				return _packageJson.version;
+			}
+		}, {
+			key: 'components',
+			get: function get() {
+				return components;
+			}
+		}]);
+
+		return Landmark;
+	})(_2['default']);
+
+	exports.Landmark = Landmark;
+	;
+});
 
 },{"../node_modules/underscore/underscore":171,"../package.json":172}],174:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-	value: true
-});
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-var _Landmark = require('./Landmark');
-
-var SelectlistCore = (function () {
-	function SelectlistCore(collection, options) {
-		_classCallCheck(this, SelectlistCore);
-
-		this.Landmark = _Landmark.Landmark;
-
-		if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(collection, options);
-
-		this._collection = collection || {};
-		this._selection = null;
-
-		if (options && options.initialSelection) {
-			this._setSelection(options.initialSelection);
-		}
-
-		if (options && options.resize === 'auto') {
-			if (_Landmark.Landmark.isFunction(this.resize)) this.resize();
-		}
-
-		if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized();
-	}
-
-	_createClass(SelectlistCore, [{
-		key: '_setSelection',
-		value: function _setSelection(newSelection) {
-			if (!newSelection || !newSelection.id) {
-				this._selection = null;
-			} else if (this._selection !== newSelection.id) {
-				if (_Landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
-				this._selection = newSelection.id;
-				if (_Landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
-			}
-		}
-	}, {
-		key: 'setSelectionByText',
-		value: function setSelectionByText(text) {
-			return this.setSelectionByKey('text', text);
-		}
-	}, {
-		key: 'setSelectionByKey',
-		value: function setSelectionByKey(key, value) {
-			var criteria = {};
-			criteria[key] = value;
-			var item = _Landmark.Landmark.findWhere(collection, criteria);
-
-			return this._setSelection(item);
-		}
-	}, {
-		key: 'setSelectionByIndex',
-		value: function setSelectionByIndex(index) {
-			if (!collection) {
-				return;
-			}
-
-			var item = collection[index];
-
-			return this._setSelection(item);
-		}
-	}, {
-		key: 'enable',
-		value: function enable() {
-			this.elements.wrapper.toggleClass(this.cssClass.disabled, false);
-			this.elements.button.toggleClass(this.cssClass.disabled, false); // Why is it neccessary to do this to both elements?
-		}
-	}, {
-		key: 'disable',
-		value: function disable() {
-			this.elements.wrapper.toggleClass(this.cssClass.disabled, true);
-			this.elements.button.toggleClass(this.cssClass.disabled, true);
-		}
-	}, {
-		key: 'cssClass',
-
-		// TO-DO: Is there a better pattern for this using constants?
-		get: function get() {
-			return {
-				disabled: 'disabled'
-			};
-		}
-	}, {
-		key: 'selection',
-		get: function get() {
-			return _Landmark.Landmark.findWhere(collection, { id: this._selection });
-		}
-	}]);
-
-	return SelectlistCore;
-})();
-
-exports.SelectlistCore = SelectlistCore;
-;
-
-},{"./Landmark":173}],175:[function(require,module,exports){
-'use strict';
-
-var React = require('react');
-var Selectlist = require('./selectlist');
-// import Selectlist from "./selectlist";
-
-var collection = {
-	selected: 'None selected',
-	id: 'selectlist1',
-	items: [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }],
-	options: {}
-};
-
-React.render(React.createElement(Selectlist, {
-	model: collection
-}), document.getElementById('sampleSelectlist'));
-
-},{"./selectlist":176,"react":170}],176:[function(require,module,exports){
-//test
-
-'use strict';
-
-Object.defineProperty(exports, '__esModule', {
-	value: true
-});
-
-var _SelectlistCore = require('../SelectlistCore');
-
-var React = require('react');
-
-var DropdownButton = require('react-bootstrap/lib/DropdownButton');
-var MenuItem = require('react-bootstrap/lib/MenuItem');
-
-var Selectlist = React.createClass({
-	displayName: 'Selectlist',
-
-	getInitialState: function getInitialState() {
-		return {
-			selectedKey: undefined
+(function (global, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(['exports'], factory);
+	} else if (typeof exports !== 'undefined') {
+		factory(exports);
+	} else {
+		var mod = {
+			exports: {}
 		};
-	},
-
-	handleMenuItemClicked: function handleMenuItemClicked(eventKey, href, target) {
-		this.setState({
-			selectedKey: eventKey
-		});
-	},
-
-	menuItems: function menuItems() {
-		var _this = this;
-
-		return this.props.model.items.map(function (menuItem) {
-			return React.createElement(
-				MenuItem,
-				{ eventKey: menuItem.id, onSelect: _this.handleMenuItemClicked },
-				menuItem.name
-			);
-		});
-	},
-
-	selected: function selected() {
-		return typeof this.state.selectedKey === 'undefined' ? 'None Selected' : this.props.model.items[this.state.selectedKey].name;
-	},
-
-	render: function render() {
-		return React.createElement(
-			'div',
-			null,
-			React.createElement(
-				'h1',
-				null,
-				'SelectList'
-			),
-			React.createElement(
-				'ul',
-				null,
-				this.menuItems
-			),
-			React.createElement(
-				DropdownButton,
-				{ title: this.selected(), key: this.props.model.id },
-				this.menuItems()
-			)
-		);
+		factory(mod.exports);
+		global.sample = mod.exports;
 	}
+})(this, function (exports) {
+	'use strict';
+
+	var React = require('react');
+	var Selectlist = require('./selectlist');
+	// import Selectlist from "./selectlist";
+
+	var collection = {
+		selected: 'None selected',
+		id: 'selectlist1',
+		items: [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }],
+		options: {}
+	};
+
+	React.render(React.createElement(Selectlist, {
+		model: collection
+	}), document.getElementById('sampleSelectlist'));
 });
 
-// React.render(<Selectlist model={collection}/>, document.body.querySelector('.selectlist'), () => {});
+},{"./selectlist":175,"react":170}],175:[function(require,module,exports){
+(function (global, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(['exports', 'module', '../SelectlistCore'], factory);
+	} else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
+		factory(exports, module, require('../SelectlistCore'));
+	} else {
+		var mod = {
+			exports: {}
+		};
+		factory(mod.exports, mod, global.SelectlistCore);
+		global.selectlist = mod.exports;
+	}
+})(this, function (exports, module, _SelectlistCore) {
+	//test
 
-exports['default'] = Selectlist;
-module.exports = exports['default'];
+	'use strict';
 
-},{"../SelectlistCore":174,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}]},{},[175]);
+	var React = require('react');
+
+	var DropdownButton = require('react-bootstrap/lib/DropdownButton');
+	var MenuItem = require('react-bootstrap/lib/MenuItem');
+
+	var Selectlist = React.createClass({
+		displayName: 'Selectlist',
+
+		getInitialState: function getInitialState() {
+			return {
+				selectedKey: undefined
+			};
+		},
+
+		handleMenuItemClicked: function handleMenuItemClicked(eventKey, href, target) {
+			this.setState({
+				selectedKey: eventKey
+			});
+		},
+
+		menuItems: function menuItems() {
+			var _this = this;
+
+			return this.props.model.items.map(function (menuItem) {
+				return React.createElement(
+					MenuItem,
+					{ eventKey: menuItem.id, onSelect: _this.handleMenuItemClicked },
+					menuItem.name
+				);
+			});
+		},
+
+		selected: function selected() {
+			return typeof this.state.selectedKey === 'undefined' ? 'None Selected' : this.props.model.items[this.state.selectedKey].name;
+		},
+
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'h1',
+					null,
+					'SelectList'
+				),
+				React.createElement(
+					'ul',
+					null,
+					this.menuItems
+				),
+				React.createElement(
+					DropdownButton,
+					{ title: this.selected(), key: this.props.model.id },
+					this.menuItems()
+				)
+			);
+		}
+	});
+
+	// React.render(<Selectlist model={collection}/>, document.body.querySelector('.selectlist'), () => {});
+
+	module.exports = Selectlist;
+});
+
+},{"../SelectlistCore":176,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}],176:[function(require,module,exports){
+(function (global, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(['exports', './Landmark'], factory);
+	} else if (typeof exports !== 'undefined') {
+		factory(exports, require('./Landmark'));
+	} else {
+		var mod = {
+			exports: {}
+		};
+		factory(mod.exports, global.Landmark);
+		global.SelectlistCore = mod.exports;
+	}
+})(this, function (exports, _Landmark) {
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	var SelectlistCore = (function () {
+		function SelectlistCore(collection, options) {
+			_classCallCheck(this, SelectlistCore);
+
+			this.Landmark = _Landmark.Landmark;
+
+			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(collection, options);
+
+			this._collection = collection || {};
+			this._selection = null;
+
+			if (options && options.initialSelection) {
+				this._setSelection(options.initialSelection);
+			}
+
+			if (options && options.resize === 'auto') {
+				if (_Landmark.Landmark.isFunction(this.resize)) this.resize();
+			}
+
+			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized();
+		}
+
+		_createClass(SelectlistCore, [{
+			key: '_setSelection',
+			value: function _setSelection(newSelection) {
+				if (!newSelection || !newSelection.id) {
+					this._selection = null;
+				} else if (this._selection !== newSelection.id) {
+					if (_Landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
+					this._selection = newSelection.id;
+					if (_Landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
+				}
+			}
+		}, {
+			key: 'setSelectionByText',
+			value: function setSelectionByText(text) {
+				return this.setSelectionByKey('text', text);
+			}
+		}, {
+			key: 'setSelectionByKey',
+			value: function setSelectionByKey(key, value) {
+				var criteria = {};
+				criteria[key] = value;
+				var item = _Landmark.Landmark.findWhere(collection, criteria);
+
+				return this._setSelection(item);
+			}
+		}, {
+			key: 'setSelectionByIndex',
+			value: function setSelectionByIndex(index) {
+				if (!collection) {
+					return;
+				}
+
+				var item = collection[index];
+
+				return this._setSelection(item);
+			}
+		}, {
+			key: 'enable',
+			value: function enable() {
+				this.elements.wrapper.toggleClass(this.cssClass.disabled, false);
+				this.elements.button.toggleClass(this.cssClass.disabled, false); // Why is it neccessary to do this to both elements?
+			}
+		}, {
+			key: 'disable',
+			value: function disable() {
+				this.elements.wrapper.toggleClass(this.cssClass.disabled, true);
+				this.elements.button.toggleClass(this.cssClass.disabled, true);
+			}
+		}, {
+			key: 'cssClass',
+
+			// TO-DO: Is there a better pattern for this using constants?
+			get: function get() {
+				return {
+					disabled: 'disabled'
+				};
+			}
+		}, {
+			key: 'selection',
+			get: function get() {
+				return _Landmark.Landmark.findWhere(this._collection, { id: this._selection });
+			}
+		}]);
+
+		return SelectlistCore;
+	})();
+
+	exports.SelectlistCore = SelectlistCore;
+	;
+});
+
+},{"./Landmark":173}]},{},[174]);
