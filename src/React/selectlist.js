@@ -1,4 +1,4 @@
-//test
+// SELECTLIST COMPONENT
 
 var React = require('react');
 import {SelectlistCore} from "../SelectlistCore";
@@ -41,7 +41,5 @@ var Selectlist = React.createClass({
 		);
 	}
 });
-
-// React.render(<Selectlist model={collection}/>, document.body.querySelector('.selectlist'), () => {});
 
 export default Selectlist;

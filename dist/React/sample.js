@@ -22831,8 +22831,8 @@ module.exports={
 
 	var React = require('react');
 	var Selectlist = require('./selectlist');
-	// import Selectlist from "./selectlist";
 
+	// state and model of sample selectlist
 	var collection = {
 		selected: 'None selected',
 		id: 'selectlist1',
@@ -22844,6 +22844,8 @@ module.exports={
 		model: collection
 	}), document.getElementById('sampleSelectlist'));
 });
+
+// add display options here
 
 },{"./selectlist":175,"react":170}],175:[function(require,module,exports){
 (function (global, factory) {
@@ -22859,7 +22861,7 @@ module.exports={
 		global.selectlist = mod.exports;
 	}
 })(this, function (exports, module, _SelectlistCore) {
-	//test
+	// SELECTLIST COMPONENT
 
 	'use strict';
 
@@ -22921,8 +22923,6 @@ module.exports={
 			);
 		}
 	});
-
-	// React.render(<Selectlist model={collection}/>, document.body.querySelector('.selectlist'), () => {});
 
 	module.exports = Selectlist;
 });

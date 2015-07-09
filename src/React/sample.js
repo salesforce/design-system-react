@@ -1,7 +1,7 @@
 var React = require('react');
 var Selectlist = require('./selectlist');
-// import Selectlist from "./selectlist";
 
+// state and model of sample selectlist
 var collection = {
 	selected: 'None selected',
 	id: 'selectlist1',
@@ -11,7 +11,9 @@ var collection = {
 		{ id: 2, name: 'tostada', type: 'mexican' },
 		{ id: 3, name: 'hush puppies', type: 'southern' }
 	],
-	options: {}
+	options: {
+		// add display options here
+	}
 };
 
 React.render(React.createElement(Selectlist, {
