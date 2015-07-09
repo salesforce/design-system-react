@@ -22930,16 +22930,8 @@ var DATA = {
 };
 
 var menuItemSelected = function menuItemSelected(eventKey, href, target) {
-	DATA.selected = DATA.items[eventKey].name;
+	undefined.props.model.selected = undefined.props.model.items[eventKey].name;
 };
-//Selectlist.handleMenuItemClicked
-var menuItems = DATA.items.map(function (menuItem) {
-	return React.createElement(
-		MenuItem,
-		{ eventKey: menuItem.id },
-		menuItem.name
-	);
-});
 
 var Selectlist = React.createClass({
 	displayName: 'Selectlist',
@@ -22959,7 +22951,7 @@ var Selectlist = React.createClass({
 	menuItems: function menuItems() {
 		var _this = this;
 
-		return DATA.items.map(function (menuItem) {
+		return this.props.model.items.map(function (menuItem) {
 			return React.createElement(
 				MenuItem,
 				{ eventKey: menuItem.id, onSelect: _this.handleMenuItemClicked },
@@ -22969,7 +22961,8 @@ var Selectlist = React.createClass({
 	},
 
 	selected: function selected() {
-		return typeof this.state.selectedKey === 'undefined' ? 'None Selected' : DATA.items[this.state.selectedKey].name;
+		self = this;
+		return typeof this.state.selectedKey === 'undefined' ? 'None Selected' : self.props.model.items[this.state.selectedKey].name;
 	},
 
 	render: function render() {
@@ -22988,14 +22981,14 @@ var Selectlist = React.createClass({
 			),
 			React.createElement(
 				DropdownButton,
-				{ title: this.selected(), key: DATA.id },
+				{ title: this.selected(), key: this.props.model.id },
 				this.menuItems()
 			)
 		);
 	}
 });
 
-React.render(React.createElement(Selectlist, null), document.body, function () {});
+React.render(React.createElement(Selectlist, { model: DATA }), document.body, function () {});
 
 
 },{"../SelectlistCore":174,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}]},{},[175]);

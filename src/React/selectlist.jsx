@@ -17,12 +17,8 @@ var DATA = {
 };
 
 var menuItemSelected = (eventKey, href, target)=> {
-	DATA.selected = DATA.items[eventKey].name;
+	this.props.model.selected = this.props.model.items[eventKey].name;
 };
-//Selectlist.handleMenuItemClicked
-var menuItems = DATA.items.map( (menuItem) => {
-	return <MenuItem eventKey={menuItem.id}>{menuItem.name}</MenuItem>;
-});
 
 var Selectlist = React.createClass({
 	getInitialState: function() {
@@ -38,13 +34,17 @@ var Selectlist = React.createClass({
 	},
 
 	menuItems: function() {
-		return DATA.items.map( (menuItem) => {
-			return <MenuItem eventKey={menuItem.id} onSelect={this.handleMenuItemClicked}>{menuItem.name}</MenuItem>;
+		return this.props.model.items.map( (menuItem) => {
+			return <MenuItem eventKey={menuItem.id} onSelect={this.handleMenuItemClicked}>
+					{menuItem.name}
+				</MenuItem>;
 		});
 	},
 
 	selected: function() {
-		return typeof(this.state.selectedKey) === 'undefined' ? 'None Selected' : DATA.items[this.state.selectedKey].name;
+		self = this;
+		return typeof(this.state.selectedKey) === 'undefined' ? 'None Selected' : 
+			self.props.model.items[this.state.selectedKey].name;
 	},
 
 	render () {
@@ -52,10 +52,10 @@ var Selectlist = React.createClass({
 			<div>
 				<h1>SelectList</h1>
 				<ul>{this.menuItems}</ul>
-				<DropdownButton title={this.selected()} key={DATA.id}>{this.menuItems()}</DropdownButton>
+				<DropdownButton title={this.selected()} key={this.props.model.id}>{this.menuItems()}</DropdownButton>
 			</div>
 		);
 	}
 });
 
-React.render(<Selectlist/>, document.body, () => {});
+React.render(<Selectlist model={DATA}/>, document.body, () => {});
