@@ -17,11 +17,11 @@ module.exports = function(grunt) {
 			},
 			react: {
 				files: {
-					'dist/React/build.js': ['src/react/selectlist.jsx']
+					'dist/React/sample.js': ['src/react/sample.js']
 				},
 				options: {
 					transform: [
-						'babelify', 'reactify'
+						'babelify'
 					]
 				},
 			},
@@ -49,7 +49,7 @@ module.exports = function(grunt) {
 					base: {
 						path: '.',
 						options: {
-							index: ['src/react/index.html'],
+							index: ['src/index.html'],
 						}
 					},
 					port: process.env.PORT || 8000,

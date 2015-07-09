@@ -16,7 +16,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "react": "^0.13.3",
     "react-bootstrap": "^0.23.7",
-    "reactify": "^1.1.1",
     "serve-static": "^1.10.0"
   },
   "dependencies": {
