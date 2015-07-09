@@ -1,4 +1,3 @@
-// This doesn't work, still need to figure out how to do proper named imports
 import {Landmark} from './Landmark';
 
 export class SelectlistCore {
@@ -43,15 +42,15 @@ export class SelectlistCore {
 	}
 	
 	setSelectionByText (text) {
-		var item = Landmark.findWhere(collection, {text: text});
-		
-		this._setSelection(item);
+		return this.setSelectionByKey('text', text);
 	}
 	
-	setSelectionByValue (value) {
-		var item = Landmark.findWhere(collection, {value: value});
+	setSelectionByKey (key, value) {
+		var criteria = {};
+		criteria[key] = value;
+		var item = Landmark.findWhere(collection, criteria);
 		
-		this._setSelection(item);
+		return this._setSelection(item);
 	}
 	
 	setSelectionByIndex (index) {
@@ -61,7 +60,7 @@ export class SelectlistCore {
 		
 		var item = collection[index];
 		
-		this._setSelection(item);
+		return this._setSelection(item);
 	}
 	
 	enable () {

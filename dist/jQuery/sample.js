@@ -10771,13 +10771,21 @@ module.exports={
   "version": "0.0.1",
   "devDependencies": {
     "babelify": "^6.1.2",
+    "connect": "^3.4.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.8.0",
-    "grunt-contrib-watch": "^0.6.1"
+    "grunt-contrib-connect": "^0.10.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "react": "^0.13.3",
+    "reactify": "^1.1.1",
+    "serve-static": "^1.10.0"
   },
   "dependencies": {
     "jquery": "^2.1.4",
     "underscore": "^1.8.3"
+  },
+  "scripts": {
+    "start": "webpack-dev-server --inline --no-info --port 8000 --content-base react"
   }
 }
 
@@ -10863,7 +10871,6 @@ module.exports={
 		global.SelectlistCore = mod.exports;
 	}
 })(this, function (exports, _Landmark) {
-	// This doesn't work, still need to figure out how to do proper named imports
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -10910,16 +10917,16 @@ module.exports={
 		}, {
 			key: 'setSelectionByText',
 			value: function setSelectionByText(text) {
-				var item = _Landmark.Landmark.findWhere(collection, { text: text });
-
-				this._setSelection(item);
+				return this.setSelectionByKey('text', text);
 			}
 		}, {
-			key: 'setSelectionByValue',
-			value: function setSelectionByValue(value) {
-				var item = _Landmark.Landmark.findWhere(collection, { value: value });
+			key: 'setSelectionByKey',
+			value: function setSelectionByKey(key, value) {
+				var criteria = {};
+				criteria[key] = value;
+				var item = _Landmark.Landmark.findWhere(collection, criteria);
 
-				this._setSelection(item);
+				return this._setSelection(item);
 			}
 		}, {
 			key: 'setSelectionByIndex',
@@ -10930,7 +10937,7 @@ module.exports={
 
 				var item = collection[index];
 
-				this._setSelection(item);
+				return this._setSelection(item);
 			}
 		}, {
 			key: 'enable',
