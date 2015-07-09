@@ -21521,6 +21521,7 @@ module.exports={
 		_createClass(Selectlist, [{
 			key: 'onBeforeInitialize',
 			value: function onBeforeInitialize(collection, options) {
+				// TO-DO: Of course we actually want this to be dynamic, just leaving it here for simplicty at the moment
 				var menuItems = collection.map(function (menuItem) {
 					return React.createElement(
 						'li',
