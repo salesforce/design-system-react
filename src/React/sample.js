@@ -8,6 +8,5 @@ var collection = [
 		{ id: 2, name: 'tostada', type: 'mexican' },
 		{ id: 3, name: 'hush puppies', type: 'southern' }
 	];
-var options = {};
 	
-var rendered = new Selectlist(element, collection, options);
+React.render(<Selectlist collection={collection}/>, element, () => {});

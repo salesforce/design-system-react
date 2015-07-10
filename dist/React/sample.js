@@ -22815,43 +22815,42 @@ module.exports={
 
 },{"../node_modules/underscore/underscore":171,"../package.json":172}],174:[function(require,module,exports){
 (function (global, factory) {
-	if (typeof define === 'function' && define.amd) {
-		define(['exports', './selectlist'], factory);
-	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('./selectlist'));
-	} else {
-		var mod = {
-			exports: {}
-		};
-		factory(mod.exports, global.selectlist);
-		global.sample = mod.exports;
-	}
+		if (typeof define === 'function' && define.amd) {
+				define(['exports', './selectlist'], factory);
+		} else if (typeof exports !== 'undefined') {
+				factory(exports, require('./selectlist'));
+		} else {
+				var mod = {
+						exports: {}
+				};
+				factory(mod.exports, global.selectlist);
+				global.sample = mod.exports;
+		}
 })(this, function (exports, _selectlist) {
-	'use strict';
+		'use strict';
 
-	var React = require('react');
+		var React = require('react');
 
-	var element = document.getElementById('sampleSelectlist');
-	var collection = [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }];
-	var options = {};
+		var element = document.getElementById('sampleSelectlist');
+		var collection = [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }];
 
-	var rendered = new _selectlist.Selectlist(element, collection, options);
+		React.render(React.createElement(_selectlist.Selectlist, { collection: collection }), element, function () {});
 });
 
 },{"./selectlist":175,"react":170}],175:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../SelectlistCore'], factory);
+		define(['exports', '../Landmark', '../SelectlistCore'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../SelectlistCore'));
+		factory(exports, require('../Landmark'), require('../SelectlistCore'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.SelectlistCore);
+		factory(mod.exports, global.Landmark, global.SelectlistCore);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _SelectlistCore2) {
+})(this, function (exports, _Landmark, _SelectlistCore) {
 	// SELECTLIST COMPONENT
 
 	'use strict';
@@ -22860,95 +22859,56 @@ module.exports={
 		value: true
 	});
 
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
-
 	var React = require('react'); // TO-DO: Get rid of all these requires
 	var DropdownButton = require('react-bootstrap/lib/DropdownButton');
 	var MenuItem = require('react-bootstrap/lib/MenuItem');
 
-	var Selectlist = (function (_SelectlistCore) {
-		function Selectlist() {
-			_classCallCheck(this, Selectlist);
+	var Selectlist = React.createClass(_Landmark.Landmark.extend({
+		menuItems: function menuItems() {
+			var _this = this;
 
-			_get(Object.getPrototypeOf(Selectlist.prototype), 'constructor', this).apply(this, arguments);
+			return this._collection.map(function (menuItem) {
+				return React.createElement(
+					MenuItem,
+					{ eventKey: menuItem.id, onSelect: _this.handleMenuItemClicked },
+					menuItem.name
+				);
+			});
+		},
+
+		render: function render() {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					'ul',
+					null,
+					this.menuItems
+				),
+				React.createElement(
+					DropdownButton,
+					{ title: this.selection() ? this.selection().name : 'None selected', key: this.props.id },
+					this.menuItems()
+				)
+			);
+		},
+
+		componentWillMount: function componentWillMount() {
+			this.__constructor(this.props);
+		},
+
+		handleMenuItemClicked: function handleMenuItemClicked(eventKey, href, target) {
+			this.setSelectionByKey('id', eventKey);
+		},
+
+		onSelected: function onSelected() {
+			this.forceUpdate(); // TO-DO: We shouldn't have to force this, but we also don't want to manage state in two places. What's the best way to get the best of both worlds?
 		}
-
-		_inherits(Selectlist, _SelectlistCore);
-
-		_createClass(Selectlist, [{
-			key: 'onBeforeInitialize',
-			value: function onBeforeInitialize(element, collection, options) {
-				var self = this;
-				this.Component = React.createClass({
-					displayName: 'Component',
-					// TO-DO: Saving this here for now even though it's clearly wrong
-					handleMenuItemClicked: function handleMenuItemClicked(eventKey, href, target) {
-						self.setSelectionByKey('id', eventKey);
-					},
-
-					menuItems: function menuItems() {
-						var _this = this;
-
-						return self._collection.map(function (menuItem) {
-							return React.createElement(
-								MenuItem,
-								{ eventKey: menuItem.id, onSelect: _this.handleMenuItemClicked },
-								menuItem.name
-							);
-						});
-					},
-
-					render: function render() {
-						return React.createElement(
-							'div',
-							null,
-							React.createElement(
-								'ul',
-								null,
-								this.menuItems
-							),
-							React.createElement(
-								DropdownButton,
-								{ title: self.selection.name, key: this.props.id },
-								this.menuItems()
-							)
-						);
-					}
-				});
-			}
-		}, {
-			key: 'onInitialized',
-			value: function onInitialized(element, collection, options) {
-				this.component = React.render(React.createElement(this.Component, {
-					id: 'selectlist1' // TO-DO: Obviously this isn't how we'll really set the ID in the end
-				}), element);
-			}
-		}, {
-			key: 'onSelected',
-			value: function onSelected() {
-				this.component.forceUpdate(); // TO-DO: We shouldn't have to force this, but we also don't want to manage state in two places. What's the best way to get the best of both worlds?
-			}
-		}, {
-			key: 'selection',
-			get: function get() {
-				return _get(Object.getPrototypeOf(Selectlist.prototype), 'selection', this) || { name: 'None selected' }; // TO-DO: Another hack...
-			}
-		}]);
-
-		return Selectlist;
-	})(_SelectlistCore2.SelectlistCore);
-
+	}, _SelectlistCore.SelectlistCore));
 	exports.Selectlist = Selectlist;
-	;
 });
 
-},{"../SelectlistCore":176,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}],176:[function(require,module,exports){
+},{"../Landmark":173,"../SelectlistCore":176,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}],176:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', './Landmark'], factory);
@@ -22967,103 +22927,78 @@ module.exports={
 	Object.defineProperty(exports, '__esModule', {
 		value: true
 	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	var SelectlistCore = (function () {
-		function SelectlistCore(element, collection, options) {
-			_classCallCheck(this, SelectlistCore);
-
-			// Adding the element here for now, though what I really want is to be able to do that later
+	var SelectlistCore = {
+		__constructor: function __constructor(options) {
 			this.Landmark = _Landmark.Landmark;
 
-			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(element, collection, options);
+			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
-			this._collection = collection || {};
+			this._collection = options.collection || {};
 			this._selection = null;
 
 			if (options && options.initialSelection) {
-				this._setSelection(options.initialSelection);
+				this.__setSelection(options.initialSelection);
 			}
 
 			if (options && options.resize === 'auto') {
 				if (_Landmark.Landmark.isFunction(this.resize)) this.resize();
 			}
 
-			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(element, collection, options);
+			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
+		},
+
+		__setSelection: function __setSelection(newSelection) {
+			if (!newSelection) {
+				this._selection = null;
+			} else if (this._selection !== newSelection.id) {
+				if (_Landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
+				this._selection = newSelection.id;
+				if (_Landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
+			}
+		},
+
+		// TO-DO: Is there a better pattern for this using constants?
+		cssClass: {
+			disabled: 'disabled'
+		},
+
+		selection: function selection() {
+			return _Landmark.Landmark.findWhere(this._collection, { id: this._selection });
+		},
+
+		setSelectionByText: function setSelectionByText(text) {
+			return this.setSelectionByKey('text', text);
+		},
+
+		setSelectionByKey: function setSelectionByKey(key, value) {
+			var criteria = {};
+			criteria[key] = value;
+			var item = _Landmark.Landmark.findWhere(this._collection, criteria);
+
+			return this.__setSelection(item);
+		},
+
+		setSelectionByIndex: function setSelectionByIndex(index) {
+			if (!this._collection) {
+				return;
+			}
+
+			var item = this._collection[index];
+
+			return this.__setSelection(item);
+		},
+
+		enable: function enable() {
+			this.elements.wrapper.toggleClass(this.cssClass.disabled, false);
+			this.elements.button.toggleClass(this.cssClass.disabled, false); // Why is it neccessary to do this to both elements?
+		},
+
+		disable: function disable() {
+			this.elements.wrapper.toggleClass(this.cssClass.disabled, true);
+			this.elements.button.toggleClass(this.cssClass.disabled, true);
 		}
-
-		_createClass(SelectlistCore, [{
-			key: '_setSelection',
-			value: function _setSelection(newSelection) {
-				if (!newSelection) {
-					this._selection = null;
-				} else if (this._selection !== newSelection.id) {
-					if (_Landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
-					this._selection = newSelection.id;
-					if (_Landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
-				}
-			}
-		}, {
-			key: 'setSelectionByText',
-			value: function setSelectionByText(text) {
-				return this.setSelectionByKey('text', text);
-			}
-		}, {
-			key: 'setSelectionByKey',
-			value: function setSelectionByKey(key, value) {
-				var criteria = {};
-				criteria[key] = value;
-				var item = _Landmark.Landmark.findWhere(this._collection, criteria);
-
-				return this._setSelection(item);
-			}
-		}, {
-			key: 'setSelectionByIndex',
-			value: function setSelectionByIndex(index) {
-				if (!this._collection) {
-					return;
-				}
-
-				var item = this._collection[index];
-
-				return this._setSelection(item);
-			}
-		}, {
-			key: 'enable',
-			value: function enable() {
-				this.elements.wrapper.toggleClass(this.cssClass.disabled, false);
-				this.elements.button.toggleClass(this.cssClass.disabled, false); // Why is it neccessary to do this to both elements?
-			}
-		}, {
-			key: 'disable',
-			value: function disable() {
-				this.elements.wrapper.toggleClass(this.cssClass.disabled, true);
-				this.elements.button.toggleClass(this.cssClass.disabled, true);
-			}
-		}, {
-			key: 'cssClass',
-
-			// TO-DO: Is there a better pattern for this using constants?
-			get: function get() {
-				return {
-					disabled: 'disabled'
-				};
-			}
-		}, {
-			key: 'selection',
-			get: function get() {
-				return _Landmark.Landmark.findWhere(this._collection, { id: this._selection });
-			}
-		}]);
-
-		return SelectlistCore;
-	})();
-
+	};
 	exports.SelectlistCore = SelectlistCore;
-	;
 });
 
 },{"./Landmark":173}]},{},[174]);
