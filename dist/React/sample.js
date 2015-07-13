@@ -22815,61 +22815,151 @@ module.exports={
 
 },{"../node_modules/underscore/underscore":171,"../package.json":172}],174:[function(require,module,exports){
 (function (global, factory) {
-		if (typeof define === 'function' && define.amd) {
-				define(['exports', './selectlist'], factory);
-		} else if (typeof exports !== 'undefined') {
-				factory(exports, require('./selectlist'));
-		} else {
-				var mod = {
-						exports: {}
-				};
-				factory(mod.exports, global.selectlist);
-				global.sample = mod.exports;
-		}
-})(this, function (exports, _selectlist) {
-		'use strict';
-
-		var React = require('react');
-
-		var element = document.getElementById('sampleSelectlist');
-		var collection = [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }];
-
-		React.render(React.createElement(_selectlist.Selectlist, { collection: collection }), element, function () {});
-});
-
-},{"./selectlist":175,"react":170}],175:[function(require,module,exports){
-(function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../Landmark', '../SelectlistCore'], factory);
-	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../Landmark'), require('../SelectlistCore'));
+		define(['exports', 'module', 'react', './selectlist'], factory);
+	} else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
+		factory(exports, module, require('react'), require('./selectlist'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.Landmark, global.SelectlistCore);
+		factory(mod.exports, mod, global.React, global.selectlist);
+		global.page = mod.exports;
+	}
+})(this, function (exports, module, _react, _selectlist) {
+	'use strict';
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _React = _interopRequireDefault(_react);
+
+	var Page = _React['default'].createClass({
+		displayName: 'Page',
+
+		changeCollection: function changeCollection() {
+			console.log(this.props.collection.selectlist1[0].name);
+			this.props.collection.selectlist1[0].name = 'chimichanga'; // this should trigger a DOM change
+			this.forceUpdate();
+		},
+
+		render: function render() {
+			return _React['default'].createElement(
+				'div',
+				null,
+				_React['default'].createElement(
+					'ul',
+					null,
+					_React['default'].createElement(
+						'li',
+						null,
+						_React['default'].createElement(_selectlist.Selectlist, { collection: this.props.collection.selectlist1, key: 1 })
+					),
+					_React['default'].createElement(
+						'li',
+						null,
+						_React['default'].createElement(_selectlist.Selectlist, { collection: this.props.collection.selectlist2, key: 2 })
+					),
+					_React['default'].createElement(
+						'li',
+						null,
+						_React['default'].createElement(_selectlist.Selectlist, { collection: this.props.collection.selectlist3, key: 3 })
+					),
+					_React['default'].createElement(
+						'li',
+						null,
+						_React['default'].createElement(_selectlist.Selectlist, { collection: this.props.collection.selectlist4, key: 4 })
+					)
+				),
+				_React['default'].createElement(
+					'button',
+					{ onClickCapture: this.changeCollection },
+					'Update dropdown list'
+				)
+			);
+		}
+	});
+
+	module.exports = Page;
+});
+
+},{"./selectlist":176,"react":170}],175:[function(require,module,exports){
+(function (global, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(['exports', 'react', './page'], factory);
+	} else if (typeof exports !== 'undefined') {
+		factory(exports, require('react'), require('./page'));
+	} else {
+		var mod = {
+			exports: {}
+		};
+		factory(mod.exports, global.React, global.Page);
+		global.sample = mod.exports;
+	}
+})(this, function (exports, _react, _page) {
+	'use strict';
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _React = _interopRequireDefault(_react);
+
+	var _Page = _interopRequireDefault(_page);
+
+	var element = document.getElementById('selectlist-react');
+	var collection = [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }];
+
+	var superCollection = {
+		selectlist1: collection,
+		selectlist2: collection,
+		selectlist3: collection,
+		selectlist4: collection
+	};
+
+	// Page is a list of multiple selectlists
+	_React['default'].render(_React['default'].createElement(_Page['default'], { collection: superCollection }), element, function () {});
+});
+
+},{"./page":174,"react":170}],176:[function(require,module,exports){
+(function (global, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(['exports', '../Landmark', '../SelectlistCore', 'react', 'react-bootstrap/lib/DropdownButton', 'react-bootstrap/lib/MenuItem'], factory);
+	} else if (typeof exports !== 'undefined') {
+		factory(exports, require('../Landmark'), require('../SelectlistCore'), require('react'), require('react-bootstrap/lib/DropdownButton'), require('react-bootstrap/lib/MenuItem'));
+	} else {
+		var mod = {
+			exports: {}
+		};
+		factory(mod.exports, global.Landmark, global.SelectlistCore, global.React, global.DropdownButton, global.MenuItem);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _Landmark, _SelectlistCore) {
+})(this, function (exports, _Landmark, _SelectlistCore, _react, _reactBootstrapLibDropdownButton, _reactBootstrapLibMenuItem) {
 	// SELECTLIST COMPONENT
 
+	// core
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
 		value: true
 	});
 
-	var React = require('react'); // TO-DO: Get rid of all these requires
-	var DropdownButton = require('react-bootstrap/lib/DropdownButton');
-	var MenuItem = require('react-bootstrap/lib/MenuItem');
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var Selectlist = React.createClass(_Landmark.Landmark.extend({
+	// framework specific
+
+	var _React = _interopRequireDefault(_react);
+
+	// TO-DO: Get rid of all these requires
+
+	var _DropdownButton = _interopRequireDefault(_reactBootstrapLibDropdownButton);
+
+	var _MenuItem = _interopRequireDefault(_reactBootstrapLibMenuItem);
+
+	var Selectlist = _React['default'].createClass(_Landmark.Landmark.extend({
 		menuItems: function menuItems() {
 			var _this = this;
 
 			return this._collection.map(function (menuItem) {
-				return React.createElement(
-					MenuItem,
+				return _React['default'].createElement(
+					_MenuItem['default'],
 					{ eventKey: menuItem.id, onSelect: _this.handleMenuItemClicked },
 					menuItem.name
 				);
@@ -22877,16 +22967,16 @@ module.exports={
 		},
 
 		render: function render() {
-			return React.createElement(
+			return _React['default'].createElement(
 				'div',
 				null,
-				React.createElement(
+				_React['default'].createElement(
 					'ul',
 					null,
 					this.menuItems
 				),
-				React.createElement(
-					DropdownButton,
+				_React['default'].createElement(
+					_DropdownButton['default'],
 					{ title: this.selection() ? this.selection().name : 'None selected', key: this.props.id },
 					this.menuItems()
 				)
@@ -22908,7 +22998,7 @@ module.exports={
 	exports.Selectlist = Selectlist;
 });
 
-},{"../Landmark":173,"../SelectlistCore":176,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}],176:[function(require,module,exports){
+},{"../Landmark":173,"../SelectlistCore":177,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}],177:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', './Landmark'], factory);
@@ -23001,4 +23091,4 @@ module.exports={
 	exports.SelectlistCore = SelectlistCore;
 });
 
-},{"./Landmark":173}]},{},[174]);
+},{"./Landmark":173}]},{},[175]);

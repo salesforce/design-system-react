@@ -1,11 +1,14 @@
 // SELECTLIST COMPONENT
 
+// core
 import {Landmark} from '../Landmark';
 import {SelectlistCore} from '../SelectlistCore';
 
-var React = require('react'); // TO-DO: Get rid of all these requires
-var DropdownButton = require('react-bootstrap/lib/DropdownButton');
-var MenuItem = require('react-bootstrap/lib/MenuItem');
+// framework specific
+import React from 'react';
+// TO-DO: Get rid of all these requires
+import DropdownButton from 'react-bootstrap/lib/DropdownButton';
+import MenuItem from 'react-bootstrap/lib/MenuItem';
 
 export var Selectlist = React.createClass(Landmark.extend({
 	menuItems () {
