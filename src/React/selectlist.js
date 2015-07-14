@@ -1,4 +1,4 @@
-// SELECTLIST COMPONENT
+// SELECTLIST CONTROL
 
 // core
 import {Landmark} from '../Landmark';
@@ -10,7 +10,7 @@ import React from 'react';
 import DropdownButton from 'react-bootstrap/lib/DropdownButton';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 
-export var Selectlist = React.createClass(Landmark.extend({
+export var Selectlist = React.createClass(Object.assign({}, Landmark, SelectlistCore, {
 	menuItems () {
 		return this._collection.map((menuItem) => {
 			return <MenuItem eventKey={menuItem.id} onSelect={this.handleMenuItemClicked}>
@@ -20,6 +20,7 @@ export var Selectlist = React.createClass(Landmark.extend({
 	},
 	
 	render () {
+		console.log(this.cssClasses);
 		return (
 			<div>
 				<ul>{this.menuItems}</ul>
@@ -39,4 +40,4 @@ export var Selectlist = React.createClass(Landmark.extend({
 	onSelected () {
 		this.forceUpdate(); // TO-DO: We shouldn't have to force this, but we also don't want to manage state in two places. What's the best way to get the best of both worlds?
 	}
-}, SelectlistCore));
+}) );

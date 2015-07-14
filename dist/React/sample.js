@@ -22725,6 +22725,9 @@ module.exports={
   },
   "version": "0.0.1",
   "devDependencies": {
+    "babel": "^5.6.14",
+    "babel-core": "^5.6.20",
+    "babel-plugin-object-assign": "^1.2.0",
     "babelify": "^6.1.2",
     "classnames": "^2.1.3",
     "connect": "^3.4.0",
@@ -22803,6 +22806,15 @@ module.exports={
 			key: 'components',
 			get: function get() {
 				return components;
+			}
+		}, {
+			key: 'cssClasses',
+
+			// CSS classes used across all controls
+			get: function get() {
+				return {
+					DISABLED: 'disabled'
+				};
 			}
 		}]);
 
@@ -22932,7 +22944,7 @@ module.exports={
 		global.selectlist = mod.exports;
 	}
 })(this, function (exports, _Landmark, _SelectlistCore, _react, _reactBootstrapLibDropdownButton, _reactBootstrapLibMenuItem) {
-	// SELECTLIST COMPONENT
+	// SELECTLIST CONTROL
 
 	// core
 	'use strict';
@@ -22940,6 +22952,8 @@ module.exports={
 	Object.defineProperty(exports, '__esModule', {
 		value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -22953,7 +22967,7 @@ module.exports={
 
 	var _MenuItem = _interopRequireDefault(_reactBootstrapLibMenuItem);
 
-	var Selectlist = _React['default'].createClass(_Landmark.Landmark.extend({
+	var Selectlist = _React['default'].createClass(_extends({}, _Landmark.Landmark, _SelectlistCore.SelectlistCore, {
 		menuItems: function menuItems() {
 			var _this = this;
 
@@ -22967,6 +22981,7 @@ module.exports={
 		},
 
 		render: function render() {
+			console.log(this.cssClasses);
 			return _React['default'].createElement(
 				'div',
 				null,
@@ -22994,7 +23009,7 @@ module.exports={
 		onSelected: function onSelected() {
 			this.forceUpdate(); // TO-DO: We shouldn't have to force this, but we also don't want to manage state in two places. What's the best way to get the best of both worlds?
 		}
-	}, _SelectlistCore.SelectlistCore));
+	}));
 	exports.Selectlist = Selectlist;
 });
 
@@ -23026,6 +23041,11 @@ module.exports={
 			this._collection = options.collection || {};
 			this._selection = null;
 
+			// CSS classes used within this control
+			this.cssClasses = _Landmark.Landmark.extend({
+				SELECTED: 'selected'
+			}, _Landmark.Landmark.cssClasses);
+
 			if (options && options.initialSelection) {
 				this.__setSelection(options.initialSelection);
 			}
@@ -23045,11 +23065,6 @@ module.exports={
 				this._selection = newSelection.id;
 				if (_Landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
 			}
-		},
-
-		// TO-DO: Is there a better pattern for this using constants?
-		cssClass: {
-			disabled: 'disabled'
 		},
 
 		selection: function selection() {

@@ -10770,6 +10770,9 @@ module.exports={
   },
   "version": "0.0.1",
   "devDependencies": {
+    "babel": "^5.6.14",
+    "babel-core": "^5.6.20",
+    "babel-plugin-object-assign": "^1.2.0",
     "babelify": "^6.1.2",
     "classnames": "^2.1.3",
     "connect": "^3.4.0",
@@ -10849,6 +10852,15 @@ module.exports={
 			get: function get() {
 				return components;
 			}
+		}, {
+			key: 'cssClasses',
+
+			// CSS classes used across all controls
+			get: function get() {
+				return {
+					DISABLED: 'disabled'
+				};
+			}
 		}]);
 
 		return Landmark;
@@ -10886,6 +10898,11 @@ module.exports={
 			this._collection = options.collection || {};
 			this._selection = null;
 
+			// CSS classes used within this control
+			this.cssClasses = _Landmark.Landmark.extend({
+				SELECTED: 'selected'
+			}, _Landmark.Landmark.cssClasses);
+
 			if (options && options.initialSelection) {
 				this.__setSelection(options.initialSelection);
 			}
@@ -10905,11 +10922,6 @@ module.exports={
 				this._selection = newSelection.id;
 				if (_Landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
 			}
-		},
-
-		// TO-DO: Is there a better pattern for this using constants?
-		cssClass: {
-			disabled: 'disabled'
 		},
 
 		selection: function selection() {

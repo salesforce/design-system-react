@@ -6,7 +6,8 @@ module.exports = function(grunt) {
 				options: {
 					transform: [["babelify", {
 						"stage": 0,
-						"modules": "umd"
+						"modules": "umd",
+						"plugins": ["object-assign"]
 					}]]
 				},
 				files: {
