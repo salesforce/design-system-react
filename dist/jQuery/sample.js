@@ -10858,6 +10858,7 @@ module.exports={
 			// CSS classes used across all controls
 			get: function get() {
 				return {
+					CONTROL: undefined,
 					DISABLED: 'disabled'
 				};
 			}
@@ -10889,6 +10890,9 @@ module.exports={
 	Object.defineProperty(exports, '__esModule', {
 		value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var SelectlistCore = {
 		__constructor: function __constructor(options) {
 			this.Landmark = _Landmark.Landmark;
@@ -10899,9 +10903,11 @@ module.exports={
 			this._selection = null;
 
 			// CSS classes used within this control
-			this.cssClasses = _Landmark.Landmark.extend({
+			var cssClasses = {
+				CONTROL: 'selectlist',
 				SELECTED: 'selected'
-			}, _Landmark.Landmark.cssClasses);
+			};
+			this.cssClasses = _extends(_Landmark.Landmark.cssClasses, cssClasses);
 
 			if (options && options.initialSelection) {
 				this.__setSelection(options.initialSelection);

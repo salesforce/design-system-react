@@ -22813,6 +22813,7 @@ module.exports={
 			// CSS classes used across all controls
 			get: function get() {
 				return {
+					CONTROL: undefined,
 					DISABLED: 'disabled'
 				};
 			}
@@ -22851,7 +22852,8 @@ module.exports={
 		changeCollection: function changeCollection() {
 			console.log(this.props.collection.selectlist1[0].name);
 			this.props.collection.selectlist1[0].name = 'chimichanga'; // this should trigger a DOM change
-			this.forceUpdate();
+			// updates after selection or use forceUpdate
+			//this.forceUpdate();
 		},
 
 		render: function render() {
@@ -22864,7 +22866,7 @@ module.exports={
 					_React['default'].createElement(
 						'li',
 						null,
-						_React['default'].createElement(_selectlist.Selectlist, { collection: this.props.collection.selectlist1, key: 1 })
+						_React['default'].createElement(_selectlist.Selectlist, { collection: this.props.collection.selectlist1, disabled: true, key: 1 })
 					),
 					_React['default'].createElement(
 						'li',
@@ -22968,10 +22970,17 @@ module.exports={
 	var _MenuItem = _interopRequireDefault(_reactBootstrapLibMenuItem);
 
 	var Selectlist = _React['default'].createClass(_extends({}, _Landmark.Landmark, _SelectlistCore.SelectlistCore, {
+		propTypes: {
+			disabled: _React['default'].PropTypes.bool,
+			selected: _React['default'].PropTypes.number,
+			collection: _React['default'].PropTypes.array
+		},
+
 		menuItems: function menuItems() {
 			var _this = this;
 
-			return this._collection.map(function (menuItem) {
+			console.log(this.props.collection);
+			return this.props.collection.map(function (menuItem) {
 				return _React['default'].createElement(
 					_MenuItem['default'],
 					{ eventKey: menuItem.id, onSelect: _this.handleMenuItemClicked },
@@ -22981,10 +22990,9 @@ module.exports={
 		},
 
 		render: function render() {
-			console.log(this.cssClasses);
 			return _React['default'].createElement(
 				'div',
-				null,
+				_extends({ className: this.cssClasses.CONTROL }, this.props),
 				_React['default'].createElement(
 					'ul',
 					null,
@@ -22992,7 +23000,7 @@ module.exports={
 				),
 				_React['default'].createElement(
 					_DropdownButton['default'],
-					{ title: this.selection() ? this.selection().name : 'None selected', key: this.props.id },
+					{ disabled: this.props.disabled, title: this.selection() ? this.selection().name : 'None selected', key: this.props.id },
 					this.menuItems()
 				)
 			);
@@ -23032,6 +23040,9 @@ module.exports={
 	Object.defineProperty(exports, '__esModule', {
 		value: true
 	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 	var SelectlistCore = {
 		__constructor: function __constructor(options) {
 			this.Landmark = _Landmark.Landmark;
@@ -23042,9 +23053,11 @@ module.exports={
 			this._selection = null;
 
 			// CSS classes used within this control
-			this.cssClasses = _Landmark.Landmark.extend({
+			var cssClasses = {
+				CONTROL: 'selectlist',
 				SELECTED: 'selected'
-			}, _Landmark.Landmark.cssClasses);
+			};
+			this.cssClasses = _extends(_Landmark.Landmark.cssClasses, cssClasses);
 
 			if (options && options.initialSelection) {
 				this.__setSelection(options.initialSelection);

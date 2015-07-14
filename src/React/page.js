@@ -5,14 +5,15 @@ var Page = React.createClass({
 	changeCollection () {
 		console.log(this.props.collection.selectlist1[0].name);
 		this.props.collection.selectlist1[0].name = 'chimichanga';	// this should trigger a DOM change
-		this.forceUpdate();
+		// updates after selection or use forceUpdate
+		//this.forceUpdate();
 	},
 
 	render () {
 		return (
 			<div>
 			<ul>
-				<li><Selectlist collection={this.props.collection.selectlist1} key={1}/></li>
+				<li><Selectlist collection={this.props.collection.selectlist1} disabled={true} key={1}/></li>
 				<li><Selectlist collection={this.props.collection.selectlist2} key={2}/></li>
 				<li><Selectlist collection={this.props.collection.selectlist3} key={3}/></li>
 				<li><Selectlist collection={this.props.collection.selectlist4} key={4}/></li>

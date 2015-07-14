@@ -10,9 +10,11 @@ export var SelectlistCore = {
 		this._selection = null;
 		
 		// CSS classes used within this control
-		this.cssClasses = Landmark.extend({
+		var cssClasses = {
+			CONTROL: 'selectlist',
 			SELECTED: 'selected'
-		}, Landmark.cssClasses);
+		}
+		this.cssClasses = Object.assign(Landmark.cssClasses, cssClasses);
 
 		if (options && options.initialSelection) {
 			this.__setSelection(options.initialSelection);

@@ -20,6 +20,7 @@ export class Landmark extends _ {
 	// CSS classes used across all controls
 	static get cssClasses () {
 		return {
+			CONTROL: undefined,
 			DISABLED: 'disabled'
 		};
 	}

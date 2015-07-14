@@ -11,8 +11,15 @@ import DropdownButton from 'react-bootstrap/lib/DropdownButton';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 
 export var Selectlist = React.createClass(Object.assign({}, Landmark, SelectlistCore, {
+	propTypes: {
+		disabled: React.PropTypes.bool,
+		selected: React.PropTypes.number,
+		collection: React.PropTypes.array
+	},
+		
 	menuItems () {
-		return this._collection.map((menuItem) => {
+		console.log(this.props.collection);
+		return this.props.collection.map((menuItem) => {
 			return <MenuItem eventKey={menuItem.id} onSelect={this.handleMenuItemClicked}>
 					{menuItem.name}
 				</MenuItem>;
@@ -20,11 +27,10 @@ export var Selectlist = React.createClass(Object.assign({}, Landmark, Selectlist
 	},
 	
 	render () {
-		console.log(this.cssClasses);
 		return (
-			<div>
+			<div className={this.cssClasses.CONTROL} {...this.props}>
 				<ul>{this.menuItems}</ul>
-				<DropdownButton title={this.selection() ? this.selection().name : 'None selected'} key={this.props.id}>{this.menuItems()}</DropdownButton>
+				<DropdownButton disabled={this.props.disabled} title={this.selection() ? this.selection().name : 'None selected'} key={this.props.id}>{this.menuItems()}</DropdownButton>
 			</div>
 		);
 	},
