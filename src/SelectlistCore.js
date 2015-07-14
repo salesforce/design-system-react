@@ -9,6 +9,11 @@ export var SelectlistCore = {
 		this._collection = options.collection || {};
 		this._selection = null;
 		
+		// CSS classes used within this control
+		this.cssClasses = Landmark.extend({
+			SELECTED: 'selected'
+		}, Landmark.cssClasses);
+
 		if (options && options.initialSelection) {
 			this.__setSelection(options.initialSelection);
 		}
@@ -28,11 +33,6 @@ export var SelectlistCore = {
 			this._selection = newSelection.id;
 			if (Landmark.isFunction(this.onSelected)) this.onSelected();
 		}
-	},
-	
-	// TO-DO: Is there a better pattern for this using constants?
-	cssClass: {
-		disabled: 'disabled'
 	},
 	
 	selection () {
