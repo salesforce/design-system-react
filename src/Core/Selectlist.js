@@ -55,16 +55,19 @@ export var SelectlistCore = Object.assign({}, Base, {
 		return this.Landmark.findWhere(this._collection, {id: this.__getState('selection')});
 	},
 	
+	// Pass any combination of key / value pairs
 	setSelection (criteria) {
 		var item = this.Landmark.findWhere(this._collection, criteria);
 		
 		return this.__setSelection(item);
 	},
 	
+	// Legacy FuelUX functionality - select by the display text
 	setSelectionByName (name) {
 		return this.setSelectionByKey({ name: name });
 	},
 	
+	// Legacy FuelUX functionality - select by position
 	setSelectionByIndex (index) {
 		if (!this._collection) {
 			return;

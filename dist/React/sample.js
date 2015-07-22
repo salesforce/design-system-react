@@ -22893,16 +22893,19 @@ module.exports={
 			return this.Landmark.findWhere(this._collection, { id: this.__getState('selection') });
 		},
 
+		// Pass any combination of key / value pairs
 		setSelection: function setSelection(criteria) {
 			var item = this.Landmark.findWhere(this._collection, criteria);
 
 			return this.__setSelection(item);
 		},
 
+		// Legacy FuelUX functionality - select by the display text
 		setSelectionByName: function setSelectionByName(name) {
 			return this.setSelectionByKey({ name: name });
 		},
 
+		// Legacy FuelUX functionality - select by position
 		setSelectionByIndex: function setSelectionByIndex(index) {
 			if (!this._collection) {
 				return;
@@ -23090,6 +23093,8 @@ module.exports={
 
 	var _classNames = _interopRequireDefault(_classnames);
 
+	// TO-DO: Let's strip out react-bootstrap and just use conventional bootstrap since this will most often be used in existing apps (for now)
+
 	var _DropdownButton = _interopRequireDefault(_reactBootstrapLibDropdownButton);
 
 	var _MenuItem = _interopRequireDefault(_reactBootstrapLibMenuItem);
@@ -23097,8 +23102,9 @@ module.exports={
 	var Selectlist = _React['default'].createClass(_extends({}, _CoreSelectlist.SelectlistCore, {
 		propTypes: {
 			disabled: _React['default'].PropTypes.bool,
-			selection: _React['default'].PropTypes.number,
-			collection: _React['default'].PropTypes.array
+			selection: _React['default'].PropTypes.oneOfType([_React['default'].PropTypes.number, _React['default'].PropTypes.object]),
+			collection: _React['default'].PropTypes.oneOfType([_React['default'].PropTypes.array, _React['default'].PropTypes.object]).isRequired,
+			name: _React['default'].PropTypes.string
 		},
 
 		getInitialState: function getInitialState() {
@@ -23113,7 +23119,7 @@ module.exports={
 			return this.props.collection.map(function (menuItem) {
 				return _React['default'].createElement(
 					_MenuItem['default'],
-					{ eventKey: menuItem.id, onSelect: _this.handleMenuItemClicked },
+					{ eventKey: menuItem.id, key: menuItem.id, onSelect: _this.handleMenuItemClicked },
 					menuItem.name
 				);
 			});
@@ -23129,7 +23135,8 @@ module.exports={
 			return _React['default'].createElement(
 				_DropdownButton['default'],
 				{ className: (0, _classNames['default'])(this.cssClasses.CONTROL, this.state.wrapperClasses), disabled: this.state.disabled, title: selection ? selection.name : 'None selected', key: this.props.id },
-				this.menuItems()
+				this.menuItems(),
+				_React['default'].createElement('input', { name: this.props.name, className: 'hidden hidden-field', readOnly: true, 'aria-hidden': 'true', type: 'text', value: JSON.stringify(selection) })
 			);
 		},
 
