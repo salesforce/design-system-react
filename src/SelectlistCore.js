@@ -7,7 +7,7 @@ export var SelectlistCore = {
 		if (Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 		
 		this._collection = options.collection || {};
-		this._selection = null;
+		this._state = this._state || {};
 		
 		// CSS classes used within this control
 		this._cssClasses = {
@@ -27,18 +27,22 @@ export var SelectlistCore = {
 		if (Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
 	},
 	
+	__setState (values) {
+		Object.assign(this._state, values);
+	},
+	
 	__setSelection (newSelection) {
 		if (!newSelection) {
-			this._selection = null;
-		} else if (this._selection !== newSelection.id) {
+			this.__setState({ selection: null });
+		} else if (this._state.selection !== newSelection.id) {
 			if (Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
-			this._selection = newSelection.id;
+			this.__setState({ selection: newSelection.id });
 			if (Landmark.isFunction(this.onSelected)) this.onSelected();
 		}
 	},
 	
-	selection () {
-		return Landmark.findWhere(this._collection, {id: this._selection});
+	getSelection () {
+		return Landmark.findWhere(this._collection, {id: this._state.selection});
 	},
 	
 	setSelectionByText (text) {
