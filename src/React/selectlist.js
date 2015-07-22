@@ -2,7 +2,7 @@
 
 // core
 import {Landmark} from '../Landmark';
-import {SelectlistCore} from '../SelectlistCore';
+import {SelectlistCore} from "../Core/Selectlist";
 
 // framework specific
 import React from 'react';

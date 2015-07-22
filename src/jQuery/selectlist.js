@@ -1,4 +1,4 @@
-import {SelectlistCore} from '../SelectlistCore';
+import {SelectlistCore} from "../Core/Selectlist";
 import $ from '../../node_modules/jquery/dist/jquery';
 
 var old = $.fn.selectlist;

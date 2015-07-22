@@ -1,6 +1,6 @@
-import {BaseCore} from './BaseCore';
+import {Base} from './Base';
 
-export var SelectlistCore = Object.assign({}, BaseCore, {
+export var SelectlistCore = Object.assign({}, Base, {
 	// CSS classes used within this control
 	_cssClasses: {
 		CONTROL: 'selectlist',
@@ -22,8 +22,12 @@ export var SelectlistCore = Object.assign({}, BaseCore, {
 			this._collection = {};
 		}
 		
-		if (options && options.selection !== undefined) {
+		if (options && this.Landmark.isNumber(options.selection)) {
+			this.setSelection({ id: options.selection });
+		} else if (options && this.Landmark.isObject(options.selection)) {
 			this.setSelection(options.selection);
+		} else {
+			this.clearSelection();
 		}
 		
 		if (options && options.disabled === true) {
@@ -57,8 +61,8 @@ export var SelectlistCore = Object.assign({}, BaseCore, {
 		return this.__setSelection(item);
 	},
 	
-	setSelectionByText (text) {
-		return this.setSelectionByKey({ text: text });
+	setSelectionByName (name) {
+		return this.setSelectionByKey({ name: name });
 	},
 	
 	setSelectionByIndex (index) {
@@ -69,6 +73,10 @@ export var SelectlistCore = Object.assign({}, BaseCore, {
 		var item = this._collection[index];
 		
 		return this.__setSelection(item);
+	},
+	
+	clearSelection () {
+		this.__setSelection();
 	},
 	
 	enable () {

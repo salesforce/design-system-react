@@ -1,11 +1,11 @@
-import {Landmark} from './Landmark';
+import {Landmark} from '../Landmark';
 
 // CSS classes used across every control
 var sharedCssClasses = {
 		DISABLED: 'disabled'
 	};
 
-export var BaseCore = {	
+export var Base = {	
 	__constructor (options) {
 		if (Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 		
