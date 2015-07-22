@@ -1,5 +1,7 @@
+import {Landmark} from '../Landmark';
 import React from 'react';
 import Page from './page';
+import {Selectlist} from './selectlist';
 
 var element = document.getElementById('selectlist-react');
 var collection = [
@@ -9,12 +11,28 @@ var collection = [
 		{ id: 3, name: 'hush puppies', type: 'southern' }
 	];
 
-var superCollection = {
-	selectlist1: collection,
-	selectlist2: collection,
-	selectlist3: collection,
-	selectlist4: collection
+var superModel = {
+	selectlist1: {
+		collection: collection,
+		disabled: false,
+		selection: 1
+	},
+	selectlist2: {
+		collection: collection,
+		disabled: true,
+		selection: null
+	},
+	selectlist3: {
+		collection: collection,
+		disabled: false,
+		selection: null
+	},
+	selectlist4: {
+		collection: collection,
+		disabled: false,
+		selection: null
+	}
 }
 
 // Page is a list of multiple selectlists
-React.render(<Page collection={superCollection}/>, element, () => {});
+React.render(<Page model={superModel}/>, element, () => {});

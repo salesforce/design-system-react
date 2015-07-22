@@ -16,12 +16,4 @@ export class Landmark extends _ {
 	static log () {
 		console.log(...arguments);
 	}
-
-	// CSS classes used across all controls
-	static get cssClasses () {
-		return {
-			DISABLED: 'disabled'
-		};
-	}
-
 };

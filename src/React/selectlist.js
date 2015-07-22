@@ -17,7 +17,7 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	},
 	
 	getInitialState () {
-		return this._getInitialState();
+		return this.__getInitialState();
 	},
 		
 	menuItems () {
@@ -28,13 +28,15 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		});
 	},
 	
+	componentWillReceiveProps(nextProps) {
+		this.__initializeOptions(nextProps);
+	},
+	
 	render () {
 		var selection = this.getSelection();
 		
 		return (
-			<div className={this._cssClasses.CONTROL}>
-				<DropdownButton disabled={this.state.disabled} title={selection ? selection.name : 'None selected'} key={this.props.id}>{this.menuItems()}</DropdownButton>
-			</div>
+			<DropdownButton className={this.cssClasses.CONTROL} disabled={this.state.disabled} title={selection ? selection.name : 'None selected'} key={this.props.id}>{this.menuItems()}</DropdownButton>
 		);
 	},
 	

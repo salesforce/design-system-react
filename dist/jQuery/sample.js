@@ -10796,6 +10796,68 @@ module.exports={
 },{}],4:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
+		define(['exports', './Landmark'], factory);
+	} else if (typeof exports !== 'undefined') {
+		factory(exports, require('./Landmark'));
+	} else {
+		var mod = {
+			exports: {}
+		};
+		factory(mod.exports, global.Landmark);
+		global.BaseCore = mod.exports;
+	}
+})(this, function (exports, _Landmark) {
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	// CSS classes used across every control
+	var sharedCssClasses = {
+		DISABLED: 'disabled'
+	};
+
+	var BaseCore = {
+		__constructor: function __constructor(options) {
+			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
+
+			if (_Landmark.Landmark.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
+
+			this.Landmark = _Landmark.Landmark;
+			this._collection = {};
+
+			this.cssClasses = _extends({}, this._cssClasses, sharedCssClasses);
+
+			if (_Landmark.Landmark.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
+
+			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
+		},
+
+		__setState: function __setState(values) {
+			_extends(this._state, values);
+
+			if (this.setState) {
+				this.__setState = this.setState;
+				this.__setState(this._state);
+			}
+		},
+
+		__getState: function __getState(key) {
+			if (!key) return this.state || this._state;
+			if (_Landmark.Landmark.isObject(this.state)) return this.state[key];
+			if (_Landmark.Landmark.isObject(this._state)) return this._state[key];
+			return null;
+		}
+	};
+	exports.BaseCore = BaseCore;
+});
+
+},{"./Landmark":5}],5:[function(require,module,exports){
+(function (global, factory) {
+	if (typeof define === 'function' && define.amd) {
 		define(['exports', '../package.json', '../node_modules/underscore/underscore'], factory);
 	} else if (typeof exports !== 'undefined') {
 		factory(exports, require('../package.json'), require('../node_modules/underscore/underscore'));
@@ -10852,15 +10914,6 @@ module.exports={
 			get: function get() {
 				return components;
 			}
-		}, {
-			key: 'cssClasses',
-
-			// CSS classes used across all controls
-			get: function get() {
-				return {
-					DISABLED: 'disabled'
-				};
-			}
 		}]);
 
 		return Landmark;
@@ -10870,20 +10923,20 @@ module.exports={
 	;
 });
 
-},{"../node_modules/underscore/underscore":2,"../package.json":3}],5:[function(require,module,exports){
+},{"../node_modules/underscore/underscore":2,"../package.json":3}],6:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', './Landmark'], factory);
+		define(['exports', './BaseCore'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('./Landmark'));
+		factory(exports, require('./BaseCore'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.Landmark);
+		factory(mod.exports, global.BaseCore);
 		global.SelectlistCore = mod.exports;
 	}
-})(this, function (exports, _Landmark) {
+})(this, function (exports, _BaseCore) {
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -10892,72 +10945,52 @@ module.exports={
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var SelectlistCore = {
-		_getInitialState: function _getInitialState() {
+	var SelectlistCore = _extends({}, _BaseCore.BaseCore, {
+		__getInitialState: function __getInitialState() {
 			return {
 				selection: null,
 				disabled: false
 			};
 		},
 
-		__constructor: function __constructor(options) {
-			this.Landmark = _Landmark.Landmark;
-
-			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
-
-			this._collection = options.collection || {};
-			this._state = this._getInitialState();
-
-			// CSS classes used within this control
-			this._cssClasses = {
-				CONTROL: 'selectlist',
-				SELECTED: 'selected'
-			};
-			_extends(this._cssClasses, _Landmark.Landmark.cssClasses);
-
-			if (options && options.selection) {
-				this.__setSelection(options.selection);
+		__initializeOptions: function __initializeOptions(options) {
+			if (options && options.collection) {
+				this._collection = options.collection;
 			}
 
-			if (options && options.disabled) {
+			if (options && options.selection) {
+				this.setSelectionByKey('id', options.selection);
+			}
+
+			if (options && options.disabled === true) {
 				this.disable();
+			} else if (options && options.disabled === false) {
+				this.enable();
 			}
 
 			if (options && options.resize === 'auto') {
-				if (_Landmark.Landmark.isFunction(this.resize)) this.resize();
+				if (this.Landmark.isFunction(this.resize)) this.resize();
 			}
-
-			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
-		},
-
-		__setState: function __setState(values) {
-			_extends(this._state, values);
-
-			if (this.setState) {
-				this.__setState = this.setState;
-				this.__setState(this._state);
-			}
-		},
-
-		__getState: function __getState(key) {
-			if (!key) return this.state || this._state;
-			if (_Landmark.Landmark.isObject(this.state)) return this.state[key];
-			if (_Landmark.Landmark.isObject(this._state)) return this._state[key];
-			return null;
 		},
 
 		__setSelection: function __setSelection(newSelection) {
 			if (!newSelection) {
 				this.__setState({ selection: null });
 			} else if (this.__getState('selection') !== newSelection.id) {
-				if (_Landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
+				if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
 				this.__setState({ selection: newSelection.id });
-				if (_Landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
+				if (this.Landmark.isFunction(this.onSelected)) this.onSelected();
 			}
 		},
 
+		// CSS classes used within this control
+		_cssClasses: {
+			CONTROL: 'selectlist',
+			SELECTED: 'selected'
+		},
+
 		getSelection: function getSelection() {
-			return _Landmark.Landmark.findWhere(this._collection, { id: this.__getState('selection') });
+			return this.Landmark.findWhere(this._collection, { id: this.__getState('selection') });
 		},
 
 		setSelectionByText: function setSelectionByText(text) {
@@ -10967,7 +11000,7 @@ module.exports={
 		setSelectionByKey: function setSelectionByKey(key, value) {
 			var criteria = {};
 			criteria[key] = value;
-			var item = _Landmark.Landmark.findWhere(this._collection, criteria);
+			var item = this.Landmark.findWhere(this._collection, criteria);
 
 			return this.__setSelection(item);
 		},
@@ -10983,21 +11016,21 @@ module.exports={
 		},
 
 		enable: function enable() {
-			this.elements.wrapper.toggleClass(this._cssClasses.DISABLED, false);
-			this.setState({ disabled: false });
-			if (_Landmark.Landmark.isFunction(this.onEnabled)) this.onEnabled();
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
+			this.__setState({ disabled: false });
+			if (this.Landmark.isFunction(this.onEnabled)) this.onEnabled();
 		},
 
 		disable: function disable() {
-			this.elements.wrapper.toggleClass(this._cssClasses.DISABLED, true);
-			this.setState({ disabled: true });
-			if (_Landmark.Landmark.isFunction(this.onDisabled)) this.onDisabled();
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
+			this.__setState({ disabled: true });
+			if (this.Landmark.isFunction(this.onDisabled)) this.onDisabled();
 		}
-	};
+	});
 	exports.SelectlistCore = SelectlistCore;
 });
 
-},{"./Landmark":4}],6:[function(require,module,exports){
+},{"./BaseCore":4}],7:[function(require,module,exports){
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
     define(["exports", "./selectlist"], factory);
@@ -11019,7 +11052,7 @@ module.exports={
   selectlist.Landmark.log("Running version " + selectlist.Landmark.version);
 });
 
-},{"./selectlist":7}],7:[function(require,module,exports){
+},{"./selectlist":8}],8:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', '../SelectlistCore', '../../node_modules/jquery/dist/jquery'], factory);
@@ -11176,4 +11209,4 @@ module.exports={
 	});
 });
 
-},{"../../node_modules/jquery/dist/jquery":1,"../SelectlistCore":5}]},{},[6]);
+},{"../../node_modules/jquery/dist/jquery":1,"../SelectlistCore":6}]},{},[7]);

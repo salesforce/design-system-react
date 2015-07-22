@@ -1,71 +1,51 @@
-import {Landmark} from './Landmark';
+import {BaseCore} from './BaseCore';
 
-export var SelectlistCore = {
-	_getInitialState () {
+export var SelectlistCore = Object.assign({}, BaseCore, {
+	__getInitialState () {
 		return {
 			selection: null,
 			disabled: false
 		};
 	},
 	
-	__constructor (options) {
-		this.Landmark = Landmark;
-		
-		if (Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
-		
-		this._collection = options.collection || {};
-		this._state = this._getInitialState();
-		
-		// CSS classes used within this control
-		this._cssClasses = {
-			CONTROL: 'selectlist',
-			SELECTED: 'selected'
+	__initializeOptions (options) {
+		if (options && options.collection) {
+			this._collection = options.collection;
 		}
-		Object.assign(this._cssClasses, Landmark.cssClasses);
-
+		
 		if (options && options.selection) {
-			this.__setSelection(options.selection);
+			this.setSelectionByKey('id', options.selection);
 		}
 		
-		if (options && options.disabled) {
+		if (options && options.disabled === true) {
 			this.disable();
+		} else if (options && options.disabled === false) {
+			this.enable();
 		}
 		
 		if (options && options.resize === 'auto') {
-			if (Landmark.isFunction(this.resize)) this.resize();
+			if (this.Landmark.isFunction(this.resize)) this.resize();
 		}
-		
-		if (Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
-	},
-	
-	__setState (values) {
-		Object.assign(this._state, values);
-		
-		if (this.setState) {
-			this.__setState = this.setState;
-			this.__setState(this._state);
-		}
-	},
-	
-	__getState (key) {
-		if (!key) return this.state || this._state;
-		if (Landmark.isObject(this.state)) return this.state[key];
-		if (Landmark.isObject(this._state)) return this._state[key];
-		return null;
 	},
 	
 	__setSelection (newSelection) {
 		if (!newSelection) {
 			this.__setState({ selection: null });
 		} else if (this.__getState('selection') !== newSelection.id) {
-			if (Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
+			if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
 			this.__setState({ selection: newSelection.id });
-			if (Landmark.isFunction(this.onSelected)) this.onSelected();
+			if (this.Landmark.isFunction(this.onSelected)) this.onSelected();
 		}
 	},
 	
+	// CSS classes used within this control
+	_cssClasses: {
+		CONTROL: 'selectlist',
+		SELECTED: 'selected'
+	},
+	
 	getSelection () {
-		return Landmark.findWhere(this._collection, {id: this.__getState('selection')});
+		return this.Landmark.findWhere(this._collection, {id: this.__getState('selection')});
 	},
 	
 	setSelectionByText (text) {
@@ -75,7 +55,7 @@ export var SelectlistCore = {
 	setSelectionByKey (key, value) {
 		var criteria = {};
 		criteria[key] = value;
-		var item = Landmark.findWhere(this._collection, criteria);
+		var item = this.Landmark.findWhere(this._collection, criteria);
 		
 		return this.__setSelection(item);
 	},
@@ -91,14 +71,14 @@ export var SelectlistCore = {
 	},
 	
 	enable () {
-		this.elements.wrapper.toggleClass(this._cssClasses.DISABLED, false);
-		this.setState({ disabled: false });
-		if (Landmark.isFunction(this.onEnabled)) this.onEnabled();
+		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
+		this.__setState({ disabled: false });
+		if (this.Landmark.isFunction(this.onEnabled)) this.onEnabled();
 	},
 
 	disable () {
-		this.elements.wrapper.toggleClass(this._cssClasses.DISABLED, true);
-		this.setState({ disabled: true });
-		if (Landmark.isFunction(this.onDisabled)) this.onDisabled();
+		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
+		this.__setState({ disabled: true });
+		if (this.Landmark.isFunction(this.onDisabled)) this.onDisabled();
 	}
-};
+});
