@@ -22794,8 +22794,8 @@ module.exports={
 
 		_createClass(Landmark, null, [{
 			key: 'log',
-			value: function log(val) {
-				console.log(val);
+			value: function log() {
+				console.log.apply(console, arguments);
 			}
 		}, {
 			key: 'version',
@@ -22966,8 +22966,12 @@ module.exports={
 	var Selectlist = _React['default'].createClass(_extends({}, _SelectlistCore.SelectlistCore, {
 		propTypes: {
 			disabled: _React['default'].PropTypes.bool,
-			selected: _React['default'].PropTypes.number,
+			selection: _React['default'].PropTypes.number,
 			collection: _React['default'].PropTypes.array
+		},
+
+		getInitialState: function getInitialState() {
+			return this._getInitialState();
 		},
 
 		menuItems: function menuItems() {
@@ -22987,16 +22991,24 @@ module.exports={
 
 			return _React['default'].createElement(
 				'div',
-				_extends({ className: this._cssClasses.CONTROL }, this.props),
+				{ className: this._cssClasses.CONTROL },
 				_React['default'].createElement(
 					_DropdownButton['default'],
-					{ disabled: this.props.disabled, title: selection ? selection.name : 'None selected', key: this.props.id },
+					{ disabled: this.state.disabled, title: selection ? selection.name : 'None selected', key: this.props.id },
 					this.menuItems()
 				)
 			);
 		},
 
 		componentWillMount: function componentWillMount() {
+			this.elements = {
+				wrapper: {
+					toggleClass: function toggleClass(cssClass, state) {
+						_Landmark.Landmark.log(cssClass, state);
+					}
+				}
+			};
+
 			this.__constructor(this.props);
 		},
 
@@ -23030,13 +23042,20 @@ module.exports={
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var SelectlistCore = {
+		_getInitialState: function _getInitialState() {
+			return {
+				selection: null,
+				disabled: false
+			};
+		},
+
 		__constructor: function __constructor(options) {
 			this.Landmark = _Landmark.Landmark;
 
 			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
 			this._collection = options.collection || {};
-			this._state = {};
+			this._state = this._getInitialState();
 
 			// CSS classes used within this control
 			this._cssClasses = {
@@ -23045,8 +23064,12 @@ module.exports={
 			};
 			_extends(this._cssClasses, _Landmark.Landmark.cssClasses);
 
-			if (options && options.initialSelection) {
-				this.__setSelection(options.initialSelection);
+			if (options && options.selection) {
+				this.__setSelection(options.selection);
+			}
+
+			if (options && options.disabled) {
+				this.disable();
 			}
 
 			if (options && options.resize === 'auto') {
@@ -23109,11 +23132,15 @@ module.exports={
 		},
 
 		enable: function enable() {
-			this.elements.wrapper.toggleClass(this._cssClasses.disabled, false);
+			this.elements.wrapper.toggleClass(this._cssClasses.DISABLED, false);
+			this.setState({ disabled: false });
+			if (_Landmark.Landmark.isFunction(this.onEnabled)) this.onEnabled();
 		},
 
 		disable: function disable() {
-			this.elements.wrapper.toggleClass(this._cssClasses.disabled, true);
+			this.elements.wrapper.toggleClass(this._cssClasses.DISABLED, true);
+			this.setState({ disabled: true });
+			if (_Landmark.Landmark.isFunction(this.onDisabled)) this.onDisabled();
 		}
 	};
 	exports.SelectlistCore = SelectlistCore;

@@ -1,13 +1,20 @@
 import {Landmark} from './Landmark';
 
 export var SelectlistCore = {
+	_getInitialState () {
+		return {
+			selection: null,
+			disabled: false
+		};
+	},
+	
 	__constructor (options) {
 		this.Landmark = Landmark;
 		
 		if (Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 		
 		this._collection = options.collection || {};
-		this._state = {};
+		this._state = this._getInitialState();
 		
 		// CSS classes used within this control
 		this._cssClasses = {
@@ -16,8 +23,12 @@ export var SelectlistCore = {
 		}
 		Object.assign(this._cssClasses, Landmark.cssClasses);
 
-		if (options && options.initialSelection) {
-			this.__setSelection(options.initialSelection);
+		if (options && options.selection) {
+			this.__setSelection(options.selection);
+		}
+		
+		if (options && options.disabled) {
+			this.disable();
 		}
 		
 		if (options && options.resize === 'auto') {
@@ -80,10 +91,14 @@ export var SelectlistCore = {
 	},
 	
 	enable () {
-		this.elements.wrapper.toggleClass(this._cssClasses.disabled, false);
+		this.elements.wrapper.toggleClass(this._cssClasses.DISABLED, false);
+		this.setState({ disabled: false });
+		if (Landmark.isFunction(this.onEnabled)) this.onEnabled();
 	},
 
 	disable () {
-		this.elements.wrapper.toggleClass(this._cssClasses.disabled, true);
+		this.elements.wrapper.toggleClass(this._cssClasses.DISABLED, true);
+		this.setState({ disabled: true });
+		if (Landmark.isFunction(this.onDisabled)) this.onDisabled();
 	}
 };

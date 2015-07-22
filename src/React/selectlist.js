@@ -9,11 +9,15 @@ import React from 'react';
 import DropdownButton from 'react-bootstrap/lib/DropdownButton';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 
-export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
+export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {	
 	propTypes: {
 		disabled: React.PropTypes.bool,
-		selected: React.PropTypes.number,
+		selection: React.PropTypes.number,
 		collection: React.PropTypes.array
+	},
+	
+	getInitialState () {
+		return this._getInitialState();
 	},
 		
 	menuItems () {
@@ -28,13 +32,21 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		var selection = this.getSelection();
 		
 		return (
-			<div className={this._cssClasses.CONTROL} {...this.props}>
-				<DropdownButton disabled={this.props.disabled} title={selection ? selection.name : 'None selected'} key={this.props.id}>{this.menuItems()}</DropdownButton>
+			<div className={this._cssClasses.CONTROL}>
+				<DropdownButton disabled={this.state.disabled} title={selection ? selection.name : 'None selected'} key={this.props.id}>{this.menuItems()}</DropdownButton>
 			</div>
 		);
 	},
 	
 	componentWillMount () {
+		this.elements = {
+			wrapper: {
+				toggleClass: function (cssClass, state) {
+					Landmark.log(cssClass, state);
+				}
+			}
+		}
+		
 		this.__constructor(this.props);
 	},
 	

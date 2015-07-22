@@ -13,8 +13,8 @@ export class Landmark extends _ {
 		return components;
 	}
 	
-	static log (val) {
-		console.log(val);
+	static log () {
+		console.log(...arguments);
 	}
 
 	// CSS classes used across all controls

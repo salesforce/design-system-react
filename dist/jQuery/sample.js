@@ -10839,8 +10839,8 @@ module.exports={
 
 		_createClass(Landmark, null, [{
 			key: 'log',
-			value: function log(val) {
-				console.log(val);
+			value: function log() {
+				console.log.apply(console, arguments);
 			}
 		}, {
 			key: 'version',
@@ -10893,13 +10893,20 @@ module.exports={
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var SelectlistCore = {
+		_getInitialState: function _getInitialState() {
+			return {
+				selection: null,
+				disabled: false
+			};
+		},
+
 		__constructor: function __constructor(options) {
 			this.Landmark = _Landmark.Landmark;
 
 			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
 			this._collection = options.collection || {};
-			this._state = {};
+			this._state = this._getInitialState();
 
 			// CSS classes used within this control
 			this._cssClasses = {
@@ -10908,8 +10915,12 @@ module.exports={
 			};
 			_extends(this._cssClasses, _Landmark.Landmark.cssClasses);
 
-			if (options && options.initialSelection) {
-				this.__setSelection(options.initialSelection);
+			if (options && options.selection) {
+				this.__setSelection(options.selection);
+			}
+
+			if (options && options.disabled) {
+				this.disable();
 			}
 
 			if (options && options.resize === 'auto') {
@@ -10972,11 +10983,15 @@ module.exports={
 		},
 
 		enable: function enable() {
-			this.elements.wrapper.toggleClass(this._cssClasses.disabled, false);
+			this.elements.wrapper.toggleClass(this._cssClasses.DISABLED, false);
+			this.setState({ disabled: false });
+			if (_Landmark.Landmark.isFunction(this.onEnabled)) this.onEnabled();
 		},
 
 		disable: function disable() {
-			this.elements.wrapper.toggleClass(this._cssClasses.disabled, true);
+			this.elements.wrapper.toggleClass(this._cssClasses.DISABLED, true);
+			this.setState({ disabled: true });
+			if (_Landmark.Landmark.isFunction(this.onDisabled)) this.onDisabled();
 		}
 	};
 	exports.SelectlistCore = SelectlistCore;
