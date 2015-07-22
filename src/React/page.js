@@ -7,7 +7,6 @@ var Page = React.createClass({
 		model.selectlist1.collection[0].name = 'chimichanga';
 		model.selectlist2.disabled = false;
 		model.selectlist3.disabled = true;
-		model.selectlist3.selection = 2;
 		
 		this.setProps({
 			model: model

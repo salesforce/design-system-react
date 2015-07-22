@@ -1,6 +1,13 @@
 import {BaseCore} from './BaseCore';
 
 export var SelectlistCore = Object.assign({}, BaseCore, {
+	// CSS classes used within this control
+	_cssClasses: {
+		CONTROL: 'selectlist',
+		SELECTED: 'selected'
+	},
+	
+	// Set the defaults
 	__getInitialState () {
 		return {
 			selection: null,
@@ -11,10 +18,12 @@ export var SelectlistCore = Object.assign({}, BaseCore, {
 	__initializeOptions (options) {
 		if (options && options.collection) {
 			this._collection = options.collection;
+		} else if (!this._collection) {
+			this._collection = {};
 		}
 		
 		if (options && options.selection) {
-			this.setSelectionByKey('id', options.selection);
+			this.setSelection(options.selection);
 		}
 		
 		if (options && options.disabled === true) {
@@ -38,26 +47,18 @@ export var SelectlistCore = Object.assign({}, BaseCore, {
 		}
 	},
 	
-	// CSS classes used within this control
-	_cssClasses: {
-		CONTROL: 'selectlist',
-		SELECTED: 'selected'
-	},
-	
 	getSelection () {
 		return this.Landmark.findWhere(this._collection, {id: this.__getState('selection')});
 	},
 	
-	setSelectionByText (text) {
-		return this.setSelectionByKey('text', text);
-	},
-	
-	setSelectionByKey (key, value) {
-		var criteria = {};
-		criteria[key] = value;
+	setSelection (criteria) {
 		var item = this.Landmark.findWhere(this._collection, criteria);
 		
 		return this.__setSelection(item);
+	},
+	
+	setSelectionByText (text) {
+		return this.setSelectionByKey({ text: text });
 	},
 	
 	setSelectionByIndex (index) {

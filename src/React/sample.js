@@ -15,7 +15,7 @@ var superModel = {
 	selectlist1: {
 		collection: collection,
 		disabled: false,
-		selection: 1
+		selection: collection[0]
 	},
 	selectlist2: {
 		collection: collection,

@@ -53,6 +53,6 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	},
 	
 	handleMenuItemClicked (eventKey, href, target) {
-		this.setSelectionByKey('id', eventKey);
+		this.setSelection({ id: eventKey });
 	}
 }));

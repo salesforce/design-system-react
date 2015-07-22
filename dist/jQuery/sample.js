@@ -10824,18 +10824,22 @@ module.exports={
 		__constructor: function __constructor(options) {
 			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
+			// If this control has any sort of internal state, set it up here
 			if (_Landmark.Landmark.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
 
+			// Add an internal reference to Landmark for the child to use
 			this.Landmark = _Landmark.Landmark;
-			this._collection = {};
 
-			this.cssClasses = _extends({}, this._cssClasses, sharedCssClasses);
+			// Combine any classes defined on the child with global defaults
+			this.cssClasses = _extends({}, sharedCssClasses, this._cssClasses);
 
+			// If this controls does anything with options that are passed to it, do that now
 			if (_Landmark.Landmark.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
 
 			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
 		},
 
+		// If this is a React control there is built in state management that we want to use instead
 		__setState: function __setState(values) {
 			_extends(this._state, values);
 
@@ -10845,6 +10849,7 @@ module.exports={
 			}
 		},
 
+		// If this is a React control there is a built in state store that we want to use instead
 		__getState: function __getState(key) {
 			if (!key) return this.state || this._state;
 			if (_Landmark.Landmark.isObject(this.state)) return this.state[key];
@@ -10946,6 +10951,13 @@ module.exports={
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var SelectlistCore = _extends({}, _BaseCore.BaseCore, {
+		// CSS classes used within this control
+		_cssClasses: {
+			CONTROL: 'selectlist',
+			SELECTED: 'selected'
+		},
+
+		// Set the defaults
 		__getInitialState: function __getInitialState() {
 			return {
 				selection: null,
@@ -10956,10 +10968,12 @@ module.exports={
 		__initializeOptions: function __initializeOptions(options) {
 			if (options && options.collection) {
 				this._collection = options.collection;
+			} else if (!this._collection) {
+				this._collection = {};
 			}
 
 			if (options && options.selection) {
-				this.setSelectionByKey('id', options.selection);
+				this.setSelection(options.selection);
 			}
 
 			if (options && options.disabled === true) {
@@ -10983,26 +10997,18 @@ module.exports={
 			}
 		},
 
-		// CSS classes used within this control
-		_cssClasses: {
-			CONTROL: 'selectlist',
-			SELECTED: 'selected'
-		},
-
 		getSelection: function getSelection() {
 			return this.Landmark.findWhere(this._collection, { id: this.__getState('selection') });
 		},
 
-		setSelectionByText: function setSelectionByText(text) {
-			return this.setSelectionByKey('text', text);
-		},
-
-		setSelectionByKey: function setSelectionByKey(key, value) {
-			var criteria = {};
-			criteria[key] = value;
+		setSelection: function setSelection(criteria) {
 			var item = this.Landmark.findWhere(this._collection, criteria);
 
 			return this.__setSelection(item);
+		},
+
+		setSelectionByText: function setSelectionByText(text) {
+			return this.setSelectionByKey({ text: text });
 		},
 
 		setSelectionByIndex: function setSelectionByIndex(index) {
