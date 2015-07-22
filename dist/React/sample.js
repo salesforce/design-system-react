@@ -22740,6 +22740,7 @@ module.exports={
     "serve-static": "^1.10.0"
   },
   "dependencies": {
+    "classnames": "^2.1.3",
     "jquery": "^2.1.4",
     "underscore": "^1.8.3"
   },
@@ -22990,18 +22991,15 @@ module.exports={
 		},
 		selectlist2: {
 			collection: collection,
-			disabled: true,
-			selection: null
+			disabled: true
 		},
 		selectlist3: {
 			collection: collection,
-			disabled: false,
-			selection: null
+			disabled: false
 		},
 		selectlist4: {
 			collection: collection,
-			disabled: false,
-			selection: null
+			disabled: false
 		}
 	};
 
@@ -23012,17 +23010,17 @@ module.exports={
 },{"../Landmark":174,"./page":175,"./selectlist":177,"react":170}],177:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../Landmark', '../SelectlistCore', 'react', 'react-bootstrap/lib/DropdownButton', 'react-bootstrap/lib/MenuItem'], factory);
+		define(['exports', '../Landmark', '../SelectlistCore', 'react', 'classnames', 'react-bootstrap/lib/DropdownButton', 'react-bootstrap/lib/MenuItem'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../Landmark'), require('../SelectlistCore'), require('react'), require('react-bootstrap/lib/DropdownButton'), require('react-bootstrap/lib/MenuItem'));
+		factory(exports, require('../Landmark'), require('../SelectlistCore'), require('react'), require('classnames'), require('react-bootstrap/lib/DropdownButton'), require('react-bootstrap/lib/MenuItem'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.Landmark, global.SelectlistCore, global.React, global.DropdownButton, global.MenuItem);
+		factory(mod.exports, global.Landmark, global.SelectlistCore, global.React, global.classNames, global.DropdownButton, global.MenuItem);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _Landmark, _SelectlistCore, _react, _reactBootstrapLibDropdownButton, _reactBootstrapLibMenuItem) {
+})(this, function (exports, _Landmark, _SelectlistCore, _react, _classnames, _reactBootstrapLibDropdownButton, _reactBootstrapLibMenuItem) {
 	// SELECTLIST CONTROL
 
 	// core
@@ -23040,6 +23038,8 @@ module.exports={
 
 	var _React = _interopRequireDefault(_react);
 
+	var _classNames = _interopRequireDefault(_classnames);
+
 	var _DropdownButton = _interopRequireDefault(_reactBootstrapLibDropdownButton);
 
 	var _MenuItem = _interopRequireDefault(_reactBootstrapLibMenuItem);
@@ -23052,7 +23052,9 @@ module.exports={
 		},
 
 		getInitialState: function getInitialState() {
-			return this.__getInitialState();
+			return _extends(this.__getInitialState(), {
+				wrapperClasses: {}
+			});
 		},
 
 		menuItems: function menuItems() {
@@ -23076,16 +23078,23 @@ module.exports={
 
 			return _React['default'].createElement(
 				_DropdownButton['default'],
-				{ className: this.cssClasses.CONTROL, disabled: this.state.disabled, title: selection ? selection.name : 'None selected', key: this.props.id },
+				{ className: (0, _classNames['default'])(this.cssClasses.CONTROL, this.state.wrapperClasses), disabled: this.state.disabled, title: selection ? selection.name : 'None selected', key: this.props.id },
 				this.menuItems()
 			);
 		},
 
 		componentWillMount: function componentWillMount() {
+			var self = this;
+
 			this.elements = {
 				wrapper: {
 					toggleClass: function toggleClass(cssClass, state) {
-						_Landmark.Landmark.log(cssClass, state);
+						var wrapperClasses = self.state.wrapperClasses;
+						wrapperClasses[cssClass] = state;
+
+						self.setState({
+							wrapperClasses: wrapperClasses
+						});
 					}
 				}
 			};
@@ -23100,7 +23109,7 @@ module.exports={
 	exports.Selectlist = Selectlist;
 });
 
-},{"../Landmark":174,"../SelectlistCore":178,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}],178:[function(require,module,exports){
+},{"../Landmark":174,"../SelectlistCore":178,"classnames":1,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}],178:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', './BaseCore'], factory);
@@ -23144,7 +23153,7 @@ module.exports={
 				this._collection = {};
 			}
 
-			if (options && options.selection) {
+			if (options && options.selection !== undefined) {
 				this.setSelection(options.selection);
 			}
 

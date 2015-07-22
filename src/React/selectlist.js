@@ -6,6 +6,7 @@ import {SelectlistCore} from '../SelectlistCore';
 
 // framework specific
 import React from 'react';
+import classNames from 'classnames';
 import DropdownButton from 'react-bootstrap/lib/DropdownButton';
 import MenuItem from 'react-bootstrap/lib/MenuItem';
 
@@ -17,7 +18,9 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	},
 	
 	getInitialState () {
-		return this.__getInitialState();
+		return Object.assign(this.__getInitialState(), {
+			wrapperClasses: {}
+		});
 	},
 		
 	menuItems () {
@@ -36,15 +39,22 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		var selection = this.getSelection();
 		
 		return (
-			<DropdownButton className={this.cssClasses.CONTROL} disabled={this.state.disabled} title={selection ? selection.name : 'None selected'} key={this.props.id}>{this.menuItems()}</DropdownButton>
+			<DropdownButton className={classNames(this.cssClasses.CONTROL, this.state.wrapperClasses)} disabled={this.state.disabled} title={selection ? selection.name : 'None selected'} key={this.props.id}>{this.menuItems()}</DropdownButton>
 		);
 	},
 	
 	componentWillMount () {
+		var self = this;
+		
 		this.elements = {
 			wrapper: {
 				toggleClass: function (cssClass, state) {
-					Landmark.log(cssClass, state);
+					var wrapperClasses = self.state.wrapperClasses;
+					wrapperClasses[cssClass] = state
+					
+					self.setState({
+						wrapperClasses: wrapperClasses
+					});
 				}
 			}
 		}

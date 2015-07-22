@@ -19,18 +19,15 @@ var superModel = {
 	},
 	selectlist2: {
 		collection: collection,
-		disabled: true,
-		selection: null
+		disabled: true
 	},
 	selectlist3: {
 		collection: collection,
-		disabled: false,
-		selection: null
+		disabled: false
 	},
 	selectlist4: {
 		collection: collection,
-		disabled: false,
-		selection: null
+		disabled: false
 	}
 }
 

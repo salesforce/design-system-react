@@ -22,7 +22,7 @@ export var SelectlistCore = Object.assign({}, BaseCore, {
 			this._collection = {};
 		}
 		
-		if (options && options.selection) {
+		if (options && options.selection !== undefined) {
 			this.setSelection(options.selection);
 		}
 		

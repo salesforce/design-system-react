@@ -1573,6 +1573,7 @@ module.exports={
     "serve-static": "^1.10.0"
   },
   "dependencies": {
+    "classnames": "^2.1.3",
     "jquery": "^2.1.4",
     "underscore": "^1.8.3"
   },
@@ -1824,7 +1825,7 @@ module.exports={
 				this._collection = {};
 			}
 
-			if (options && options.selection) {
+			if (options && options.selection !== undefined) {
 				this.setSelection(options.selection);
 			}
 
