@@ -10,11 +10,11 @@ export var SelectlistCore = {
 		this._selection = null;
 		
 		// CSS classes used within this control
-		var cssClasses = {
+		this._cssClasses = {
 			CONTROL: 'selectlist',
 			SELECTED: 'selected'
 		}
-		this.cssClasses = Object.assign(Landmark.cssClasses, cssClasses);
+		Object.assign(this._cssClasses, Landmark.cssClasses);
 
 		if (options && options.initialSelection) {
 			this.__setSelection(options.initialSelection);
@@ -64,12 +64,10 @@ export var SelectlistCore = {
 	},
 	
 	enable () {
-		this.elements.wrapper.toggleClass(this.cssClass.disabled, false);
-		this.elements.button.toggleClass(this.cssClass.disabled, false); // Why is it neccessary to do this to both elements?
+		this.elements.wrapper.toggleClass(this._cssClasses.disabled, false);
 	},
 
 	disable () {
-		this.elements.wrapper.toggleClass(this.cssClass.disabled, true);
-		this.elements.button.toggleClass(this.cssClass.disabled, true);
+		this.elements.wrapper.toggleClass(this._cssClasses.disabled, true);
 	}
 };
