@@ -1,3 +1,3 @@
-import {SelectlistCore} from "../Core/Selectlist";
+import {SelectlistCore} from "../Core/selectlist";
 
 export class Selectlist extends SelectlistCore {};

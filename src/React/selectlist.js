@@ -1,8 +1,8 @@
 // SELECTLIST CONTROL
 
 // core
-import {Landmark} from '../Landmark';
-import {SelectlistCore} from "../Core/Selectlist";
+import {Landmark} from '../landmark';
+import {SelectlistCore} from "../Core/selectlist";
 
 // framework specific
 import React from 'react';

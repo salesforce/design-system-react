@@ -1,4 +1,4 @@
-import {Landmark} from '../Landmark';
+import {Landmark} from '../landmark';
 
 // CSS classes used across every control
 var sharedCssClasses = {

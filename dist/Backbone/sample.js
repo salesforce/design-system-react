@@ -1607,14 +1607,14 @@ module.exports={
 },{"./selectlist":4}],4:[function(require,module,exports){
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(["exports", "../Core/Selectlist"], factory);
+    define(["exports", "../Core/selectlist"], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require("../Core/Selectlist"));
+    factory(exports, require("../Core/selectlist"));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.Selectlist);
+    factory(mod.exports, global.selectlist);
     global.selectlist = mod.exports;
   }
 })(this, function (exports, _CoreSelectlist) {
@@ -1646,20 +1646,20 @@ module.exports={
   ;
 });
 
-},{"../Core/Selectlist":6}],5:[function(require,module,exports){
+},{"../Core/selectlist":6}],5:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../Landmark'], factory);
+		define(['exports', '../landmark'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../Landmark'));
+		factory(exports, require('../landmark'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.Landmark);
-		global.Base = mod.exports;
+		factory(mod.exports, global.landmark);
+		global.base = mod.exports;
 	}
-})(this, function (exports, _Landmark) {
+})(this, function (exports, _landmark) {
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -1675,21 +1675,21 @@ module.exports={
 
 	var Base = {
 		__constructor: function __constructor(options) {
-			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
+			if (_landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
 			// If this control has any sort of internal state, set it up here
-			if (_Landmark.Landmark.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
+			if (_landmark.Landmark.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
 
 			// Add an internal reference to Landmark for the child to use
-			this.Landmark = _Landmark.Landmark;
+			this.Landmark = _landmark.Landmark;
 
 			// Combine any classes defined on the child with global defaults
 			this.cssClasses = _extends({}, sharedCssClasses, this._cssClasses);
 
 			// If this controls does anything with options that are passed to it, do that now
-			if (_Landmark.Landmark.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
+			if (_landmark.Landmark.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
 
-			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
+			if (_landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
 		},
 
 		// If this is a React control there is built in state management that we want to use instead
@@ -1705,28 +1705,28 @@ module.exports={
 		// If this is a React control there is a built in state store that we want to use instead
 		__getState: function __getState(key) {
 			if (!key) return this.state || this._state;
-			if (_Landmark.Landmark.isObject(this.state)) return this.state[key];
-			if (_Landmark.Landmark.isObject(this._state)) return this._state[key];
+			if (_landmark.Landmark.isObject(this.state)) return this.state[key];
+			if (_landmark.Landmark.isObject(this._state)) return this._state[key];
 			return null;
 		}
 	};
 	exports.Base = Base;
 });
 
-},{"../Landmark":7}],6:[function(require,module,exports){
+},{"../landmark":7}],6:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', './Base'], factory);
+		define(['exports', './base'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('./Base'));
+		factory(exports, require('./base'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.Base);
-		global.Selectlist = mod.exports;
+		factory(mod.exports, global.base);
+		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _Base) {
+})(this, function (exports, _base) {
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -1735,7 +1735,7 @@ module.exports={
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-	var SelectlistCore = _extends({}, _Base.Base, {
+	var SelectlistCore = _extends({}, _base.Base, {
 		// CSS classes used within this control
 		_cssClasses: {
 			CONTROL: 'selectlist',
@@ -1829,7 +1829,7 @@ module.exports={
 	exports.SelectlistCore = SelectlistCore;
 });
 
-},{"./Base":5}],7:[function(require,module,exports){
+},{"./base":5}],7:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', '../package.json', '../node_modules/underscore/underscore'], factory);
@@ -1840,7 +1840,7 @@ module.exports={
 			exports: {}
 		};
 		factory(mod.exports, global._package, global._);
-		global.Landmark = mod.exports;
+		global.landmark = mod.exports;
 	}
 })(this, function (exports, _packageJson, _node_modulesUnderscoreUnderscore) {
 	// TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?

@@ -1,4 +1,4 @@
-import {Landmark} from '../Landmark';
+import {Landmark} from '../landmark';
 import React from 'react';
 import Page from './page';
 import {Selectlist} from './selectlist';

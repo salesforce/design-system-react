@@ -1,4 +1,4 @@
-import {Base} from './Base';
+import {Base} from './base';
 
 export var SelectlistCore = Object.assign({}, Base, {
 	// CSS classes used within this control
