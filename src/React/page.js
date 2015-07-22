@@ -3,10 +3,7 @@ import {Selectlist} from './selectlist';
 
 var Page = React.createClass({
 	changeCollection () {
-		console.log(this.props.collection.selectlist1[0].name);
 		this.props.collection.selectlist1[0].name = 'chimichanga';	// this should trigger a DOM change
-		// updates after selection or use forceUpdate
-		//this.forceUpdate();
 	},
 
 	render () {

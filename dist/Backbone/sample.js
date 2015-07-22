@@ -1710,7 +1710,6 @@ module.exports={
 			// CSS classes used across all controls
 			get: function get() {
 				return {
-					CONTROL: undefined,
 					DISABLED: 'disabled'
 				};
 			}
@@ -1752,14 +1751,14 @@ module.exports={
 			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
 			this._collection = options.collection || {};
-			this._selection = null;
+			this._state = {};
 
 			// CSS classes used within this control
-			var cssClasses = {
+			this._cssClasses = {
 				CONTROL: 'selectlist',
 				SELECTED: 'selected'
 			};
-			this.cssClasses = _extends(_Landmark.Landmark.cssClasses, cssClasses);
+			_extends(this._cssClasses, _Landmark.Landmark.cssClasses);
 
 			if (options && options.initialSelection) {
 				this.__setSelection(options.initialSelection);
@@ -1772,18 +1771,34 @@ module.exports={
 			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
 		},
 
+		__setState: function __setState(values) {
+			_extends(this._state, values);
+
+			if (this.setState) {
+				this.__setState = this.setState;
+				this.__setState(this._state);
+			}
+		},
+
+		__getState: function __getState(key) {
+			if (!key) return this.state || this._state;
+			if (_Landmark.Landmark.isObject(this.state)) return this.state[key];
+			if (_Landmark.Landmark.isObject(this._state)) return this._state[key];
+			return null;
+		},
+
 		__setSelection: function __setSelection(newSelection) {
 			if (!newSelection) {
-				this._selection = null;
-			} else if (this._selection !== newSelection.id) {
+				this.__setState({ selection: null });
+			} else if (this.__getState('selection') !== newSelection.id) {
 				if (_Landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
-				this._selection = newSelection.id;
+				this.__setState({ selection: newSelection.id });
 				if (_Landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
 			}
 		},
 
-		selection: function selection() {
-			return _Landmark.Landmark.findWhere(this._collection, { id: this._selection });
+		getSelection: function getSelection() {
+			return _Landmark.Landmark.findWhere(this._collection, { id: this.__getState('selection') });
 		},
 
 		setSelectionByText: function setSelectionByText(text) {
@@ -1809,13 +1824,11 @@ module.exports={
 		},
 
 		enable: function enable() {
-			this.elements.wrapper.toggleClass(this.cssClass.disabled, false);
-			this.elements.button.toggleClass(this.cssClass.disabled, false); // Why is it neccessary to do this to both elements?
+			this.elements.wrapper.toggleClass(this._cssClasses.disabled, false);
 		},
 
 		disable: function disable() {
-			this.elements.wrapper.toggleClass(this.cssClass.disabled, true);
-			this.elements.button.toggleClass(this.cssClass.disabled, true);
+			this.elements.wrapper.toggleClass(this._cssClasses.disabled, true);
 		}
 	};
 	exports.SelectlistCore = SelectlistCore;

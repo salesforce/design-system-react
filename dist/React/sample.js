@@ -22813,7 +22813,6 @@ module.exports={
 			// CSS classes used across all controls
 			get: function get() {
 				return {
-					CONTROL: undefined,
 					DISABLED: 'disabled'
 				};
 			}
@@ -22850,10 +22849,7 @@ module.exports={
 		displayName: 'Page',
 
 		changeCollection: function changeCollection() {
-			console.log(this.props.collection.selectlist1[0].name);
 			this.props.collection.selectlist1[0].name = 'chimichanga'; // this should trigger a DOM change
-			// updates after selection or use forceUpdate
-			//this.forceUpdate();
 		},
 
 		render: function render() {
@@ -22963,13 +22959,11 @@ module.exports={
 
 	var _React = _interopRequireDefault(_react);
 
-	// TO-DO: Get rid of all these requires
-
 	var _DropdownButton = _interopRequireDefault(_reactBootstrapLibDropdownButton);
 
 	var _MenuItem = _interopRequireDefault(_reactBootstrapLibMenuItem);
 
-	var Selectlist = _React['default'].createClass(_extends({}, _Landmark.Landmark, _SelectlistCore.SelectlistCore, {
+	var Selectlist = _React['default'].createClass(_extends({}, _SelectlistCore.SelectlistCore, {
 		propTypes: {
 			disabled: _React['default'].PropTypes.bool,
 			selected: _React['default'].PropTypes.number,
@@ -22979,7 +22973,6 @@ module.exports={
 		menuItems: function menuItems() {
 			var _this = this;
 
-			console.log(this.props.collection);
 			return this.props.collection.map(function (menuItem) {
 				return _React['default'].createElement(
 					_MenuItem['default'],
@@ -22990,17 +22983,14 @@ module.exports={
 		},
 
 		render: function render() {
+			var selection = this.getSelection();
+
 			return _React['default'].createElement(
 				'div',
-				_extends({ className: this.cssClasses.CONTROL }, this.props),
-				_React['default'].createElement(
-					'ul',
-					null,
-					this.menuItems
-				),
+				_extends({ className: this._cssClasses.CONTROL }, this.props),
 				_React['default'].createElement(
 					_DropdownButton['default'],
-					{ disabled: this.props.disabled, title: this.selection() ? this.selection().name : 'None selected', key: this.props.id },
+					{ disabled: this.props.disabled, title: selection ? selection.name : 'None selected', key: this.props.id },
 					this.menuItems()
 				)
 			);
@@ -23012,10 +23002,6 @@ module.exports={
 
 		handleMenuItemClicked: function handleMenuItemClicked(eventKey, href, target) {
 			this.setSelectionByKey('id', eventKey);
-		},
-
-		onSelected: function onSelected() {
-			this.forceUpdate(); // TO-DO: We shouldn't have to force this, but we also don't want to manage state in two places. What's the best way to get the best of both worlds?
 		}
 	}));
 	exports.Selectlist = Selectlist;
@@ -23050,14 +23036,14 @@ module.exports={
 			if (_Landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
 			this._collection = options.collection || {};
-			this._selection = null;
+			this._state = {};
 
 			// CSS classes used within this control
-			var cssClasses = {
+			this._cssClasses = {
 				CONTROL: 'selectlist',
 				SELECTED: 'selected'
 			};
-			this.cssClasses = _extends(_Landmark.Landmark.cssClasses, cssClasses);
+			_extends(this._cssClasses, _Landmark.Landmark.cssClasses);
 
 			if (options && options.initialSelection) {
 				this.__setSelection(options.initialSelection);
@@ -23070,18 +23056,34 @@ module.exports={
 			if (_Landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
 		},
 
+		__setState: function __setState(values) {
+			_extends(this._state, values);
+
+			if (this.setState) {
+				this.__setState = this.setState;
+				this.__setState(this._state);
+			}
+		},
+
+		__getState: function __getState(key) {
+			if (!key) return this.state || this._state;
+			if (_Landmark.Landmark.isObject(this.state)) return this.state[key];
+			if (_Landmark.Landmark.isObject(this._state)) return this._state[key];
+			return null;
+		},
+
 		__setSelection: function __setSelection(newSelection) {
 			if (!newSelection) {
-				this._selection = null;
-			} else if (this._selection !== newSelection.id) {
+				this.__setState({ selection: null });
+			} else if (this.__getState('selection') !== newSelection.id) {
 				if (_Landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
-				this._selection = newSelection.id;
+				this.__setState({ selection: newSelection.id });
 				if (_Landmark.Landmark.isFunction(this.onSelected)) this.onSelected();
 			}
 		},
 
-		selection: function selection() {
-			return _Landmark.Landmark.findWhere(this._collection, { id: this._selection });
+		getSelection: function getSelection() {
+			return _Landmark.Landmark.findWhere(this._collection, { id: this.__getState('selection') });
 		},
 
 		setSelectionByText: function setSelectionByText(text) {
@@ -23107,13 +23109,11 @@ module.exports={
 		},
 
 		enable: function enable() {
-			this.elements.wrapper.toggleClass(this.cssClass.disabled, false);
-			this.elements.button.toggleClass(this.cssClass.disabled, false); // Why is it neccessary to do this to both elements?
+			this.elements.wrapper.toggleClass(this._cssClasses.disabled, false);
 		},
 
 		disable: function disable() {
-			this.elements.wrapper.toggleClass(this.cssClass.disabled, true);
-			this.elements.button.toggleClass(this.cssClass.disabled, true);
+			this.elements.wrapper.toggleClass(this._cssClasses.disabled, true);
 		}
 	};
 	exports.SelectlistCore = SelectlistCore;

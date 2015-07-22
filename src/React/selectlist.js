@@ -17,7 +17,6 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	},
 		
 	menuItems () {
-		console.log(this.props.collection);
 		return this.props.collection.map((menuItem) => {
 			return <MenuItem eventKey={menuItem.id} onSelect={this.handleMenuItemClicked}>
 					{menuItem.name}
@@ -30,15 +29,12 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		
 		return (
 			<div className={this._cssClasses.CONTROL} {...this.props}>
-				<ul>{this.menuItems}</ul>
 				<DropdownButton disabled={this.props.disabled} title={selection ? selection.name : 'None selected'} key={this.props.id}>{this.menuItems()}</DropdownButton>
 			</div>
 		);
 	},
 	
 	componentWillMount () {
-		this._state = this.state;
-		this.__setState = this.setState;
 		this.__constructor(this.props);
 	},
 	
