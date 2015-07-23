@@ -21430,7 +21430,6 @@ module.exports={
     "grunt-contrib-connect": "^0.10.1",
     "grunt-contrib-watch": "^0.6.1",
     "react": "^0.13.3",
-    "react-bootstrap": "^0.23.7",
     "serve-static": "^1.10.0"
   },
   "dependencies": {
@@ -21781,17 +21780,17 @@ module.exports={
 },{"./selectlist":165,"react":157,"underscore":158}],164:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../landmark', 'react', './page', './selectlist'], factory);
+		define(['exports', 'react', './page'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../landmark'), require('react'), require('./page'), require('./selectlist'));
+		factory(exports, require('react'), require('./page'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.landmark, global.React, global.Page, global.selectlist);
+		factory(mod.exports, global.React, global.Page);
 		global.sample = mod.exports;
 	}
-})(this, function (exports, _landmark, _react, _page, _selectlist) {
+})(this, function (exports, _react, _page) {
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -21830,7 +21829,7 @@ module.exports={
 	_React['default'].render(_React['default'].createElement(_Page['default'], { models: models }), element, function () {});
 });
 
-},{"../landmark":166,"./page":163,"./selectlist":165,"react":157}],165:[function(require,module,exports){
+},{"./page":163,"react":157}],165:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', '../Core/selectlist', 'react', 'classnames', './menuitem'], factory);
@@ -21846,7 +21845,7 @@ module.exports={
 })(this, function (exports, _CoreSelectlist, _react, _classnames, _menuitem) {
 	// SELECTLIST CONTROL
 
-	// core
+	// Core
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -21857,7 +21856,7 @@ module.exports={
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	// framework specific
+	// Framework specific
 
 	var _React = _interopRequireDefault(_react);
 
@@ -21947,6 +21946,8 @@ module.exports={
 	}));
 	exports.Selectlist = Selectlist;
 });
+
+// Children
 
 },{"../Core/selectlist":161,"./menuitem":162,"classnames":1,"react":157}],166:[function(require,module,exports){
 (function (global, factory) {

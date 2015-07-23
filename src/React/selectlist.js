@@ -1,12 +1,13 @@
 // SELECTLIST CONTROL
 
-// core
+// Core
 import {SelectlistCore} from "../Core/selectlist";
 
-// framework specific
+// Framework specific
 import React from 'react';
 import classNames from 'classnames';
 
+// Children
 import {MenuItem} from './menuitem';
 
 export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {	

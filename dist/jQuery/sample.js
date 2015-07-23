@@ -10781,7 +10781,6 @@ module.exports={
     "grunt-contrib-connect": "^0.10.1",
     "grunt-contrib-watch": "^0.6.1",
     "react": "^0.13.3",
-    "react-bootstrap": "^0.23.7",
     "serve-static": "^1.10.0"
   },
   "dependencies": {
