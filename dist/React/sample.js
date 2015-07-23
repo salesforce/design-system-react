@@ -23057,6 +23057,8 @@ module.exports={
 	var element = document.getElementById('selectlist-react');
 	var collection = [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }];
 
+	// TO-DO: Rewrite this to a sample that is more real-life
+	// For example, this could be a collection of people and their food preference rather than a perfect set of models
 	var models = {
 		selectlist1: {
 			collection: collection,

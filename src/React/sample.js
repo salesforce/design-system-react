@@ -11,6 +11,8 @@ var collection = [
 	{ id: 3, name: 'hush puppies', type: 'southern' }
 ];
 
+// TO-DO: Rewrite this to a sample that is more real-life
+// For example, this could be a collection of people and their food preference rather than a perfect set of models
 var models = {
 	selectlist1: {
 		collection: collection,
