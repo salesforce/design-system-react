@@ -7,9 +7,7 @@ import {SelectlistCore} from "../Core/selectlist";
 import React from 'react';
 import classNames from 'classnames';
 
-// TO-DO: Let's strip out react-bootstrap and just use conventional bootstrap since this will most often be used in existing apps (for now)
-import DropdownButton from 'react-bootstrap/lib/DropdownButton';
-import MenuItem from 'react-bootstrap/lib/MenuItem';
+import {MenuItem} from './menuitem';
 
 export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {	
 	propTypes: {
@@ -33,21 +31,31 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		
 	menuItems () {
 		return this.props.collection.map((menuItem) => {
-			return <MenuItem eventKey={menuItem.id} key={menuItem.id} onSelect={this.handleMenuItemClicked}>
-					{menuItem.name}
-				</MenuItem>;
+			return (
+				<MenuItem key={menuItem.id} item={menuItem} onSelected={this.handleMenuItemSelected}></MenuItem>
+			);
 		});
 	},
 	
 	componentWillReceiveProps(nextProps) {
 		this.__initializeOptions(nextProps);
 	},
-	
+		
 	render () {
 		var selection = this.getSelection();
 		
 		return (
-			<DropdownButton className={classNames(this.cssClasses.CONTROL, this.state.wrapperClasses)} disabled={this.state.disabled} title={selection ? selection.name : 'None selected'} key={this.props.id}>{this.menuItems()}<input name={this.props.name} className="hidden hidden-field" readOnly aria-hidden="true" type="text" value={JSON.stringify(selection)}></input></DropdownButton>
+			<div className={classNames(this.cssClasses.CONTROL, 'btn-group', this.state.wrapperClasses)}>
+				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled}>
+					<span className="selected-label">{selection ? selection.name : 'None selected'}</span>
+					<span className="caret"></span>
+					<span className="sr-only">Toggle Dropdown</span>
+				</button>
+				<ul className="dropdown-menu" role="menu">
+					{this.menuItems()}
+				</ul>
+				<input name={this.props.name} className="hidden hidden-field" readOnly aria-hidden="true" type="text" value={JSON.stringify(selection)}></input>
+			</div>
 		);
 	},
 	
@@ -73,7 +81,7 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		if (this.Landmark.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 	},
 	
-	handleMenuItemClicked (eventKey, href, target) {
-		this.setSelection({ id: eventKey });
+	handleMenuItemSelected (selection) {
+		this.setSelection(selection);
 	}
 }));
