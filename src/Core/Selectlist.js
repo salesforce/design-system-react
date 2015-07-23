@@ -15,6 +15,7 @@ export var SelectlistCore = Object.assign({}, Base, {
 		};
 	},
 	
+	// TO-DO: Basically a bunch of if-else blocks. Can this be improved?
 	__initializeOptions (options) {
 		if (options && options.collection) {
 			this._collection = options.collection;
@@ -42,22 +43,28 @@ export var SelectlistCore = Object.assign({}, Base, {
 	},
 	
 	__setSelection (newSelection) {
-		if (!newSelection) {
-			this.__setState({ selection: null });
-		} else if (this.__getState('selection') !== newSelection.id) {
-			if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
-			this.__setState({ selection: newSelection.id });
-			if (this.Landmark.isFunction(this.onSelected)) this.onSelected();
+		if (this.__getState('selection') !== newSelection) {
+			if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
+			this.__setState({ selection: newSelection });
+			if (this.Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
 		}
 	},
 	
+	__findWhere (criteria) {
+		if (!criteria) {
+			return null;
+		}
+		
+		return this.Landmark.findWhere(this._collection, criteria) || null;
+	},
+	
 	getSelection () {
-		return this.Landmark.findWhere(this._collection, {id: this.__getState('selection')});
+		return this.__findWhere(this.__getState('selection'));
 	},
 	
 	// Pass any combination of key / value pairs
 	setSelection (criteria) {
-		var item = this.Landmark.findWhere(this._collection, criteria);
+		var item = this.__findWhere(criteria);
 		
 		return this.__setSelection(item);
 	},
@@ -82,6 +89,8 @@ export var SelectlistCore = Object.assign({}, Base, {
 		this.__setSelection();
 	},
 	
+	// These methods make sense for jQuery components but much less sense for React components
+	// TO-DO: Should methods that don't make sense for a particular facade be overidden with warnings?
 	enable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 		this.__setState({ disabled: false });

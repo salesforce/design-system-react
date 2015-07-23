@@ -1,5 +1,5 @@
 import {SelectlistCore} from "../Core/selectlist";
-import $ from '../../node_modules/jquery/dist/jquery';
+import $ from 'jquery';
 
 var old = $.fn.selectlist;
 var collection = {};

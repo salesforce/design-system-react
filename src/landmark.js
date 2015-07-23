@@ -1,6 +1,6 @@
 // TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
 import {version} from '../package.json';
-import _ from '../node_modules/underscore/underscore';
+import _ from 'underscore';
 
 var components = {};
 

@@ -22853,6 +22853,7 @@ module.exports={
 			};
 		},
 
+		// TO-DO: Basically a bunch of if-else blocks. Can this be improved?
 		__initializeOptions: function __initializeOptions(options) {
 			if (options && options.collection) {
 				this._collection = options.collection;
@@ -22880,22 +22881,28 @@ module.exports={
 		},
 
 		__setSelection: function __setSelection(newSelection) {
-			if (!newSelection) {
-				this.__setState({ selection: null });
-			} else if (this.__getState('selection') !== newSelection.id) {
-				if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
-				this.__setState({ selection: newSelection.id });
-				if (this.Landmark.isFunction(this.onSelected)) this.onSelected();
+			if (this.__getState('selection') !== newSelection) {
+				if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
+				this.__setState({ selection: newSelection });
+				if (this.Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
 			}
 		},
 
+		__findWhere: function __findWhere(criteria) {
+			if (!criteria) {
+				return null;
+			}
+
+			return this.Landmark.findWhere(this._collection, criteria) || null;
+		},
+
 		getSelection: function getSelection() {
-			return this.Landmark.findWhere(this._collection, { id: this.__getState('selection') });
+			return this.__findWhere(this.__getState('selection'));
 		},
 
 		// Pass any combination of key / value pairs
 		setSelection: function setSelection(criteria) {
-			var item = this.Landmark.findWhere(this._collection, criteria);
+			var item = this.__findWhere(criteria);
 
 			return this.__setSelection(item);
 		},
@@ -22920,6 +22927,8 @@ module.exports={
 			this.__setSelection();
 		},
 
+		// These methods make sense for jQuery components but much less sense for React components
+		// TO-DO: Should methods that don't make sense for a particular facade be overidden with warnings?
 		enable: function enable() {
 			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 			this.__setState({ disabled: false });
@@ -22938,38 +22947,52 @@ module.exports={
 },{"./base":173}],175:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', 'module', 'react', './selectlist'], factory);
+		define(['exports', 'module', 'react', 'underscore', './selectlist'], factory);
 	} else if (typeof exports !== 'undefined' && typeof module !== 'undefined') {
-		factory(exports, module, require('react'), require('./selectlist'));
+		factory(exports, module, require('react'), require('underscore'), require('./selectlist'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, mod, global.React, global.selectlist);
+		factory(mod.exports, mod, global.React, global._, global.selectlist);
 		global.page = mod.exports;
 	}
-})(this, function (exports, module, _react, _selectlist) {
+})(this, function (exports, module, _react, _underscore, _selectlist) {
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	var _React = _interopRequireDefault(_react);
 
+	var _2 = _interopRequireDefault(_underscore);
+
 	var Page = _React['default'].createClass({
 		displayName: 'Page',
 
 		changeCollection: function changeCollection() {
-			var model = this.props.model;
-			model.selectlist1.collection[0].name = 'chimichanga';
-			model.selectlist2.disabled = false;
-			model.selectlist3.disabled = true;
+			var models = this.props.models;
+
+			_2['default'].each(models, function (selectlist) {
+				selectlist.disabled = !selectlist.disabled;
+			});
 
 			this.setProps({
-				model: model
+				models: models
 			});
 		},
 
+		getSelectionHandler: function getSelectionHandler(model) {
+			return function (selection) {
+				model.selection = selection;
+			};
+		},
+
 		render: function render() {
+			this.props.models.selectlist1.onSelected = this.getSelectionHandler(this.props.models.selectlist1);
+			this.props.models.selectlist2.onSelected = this.getSelectionHandler(this.props.models.selectlist2);
+			this.props.models.selectlist3.onSelected = this.getSelectionHandler(this.props.models.selectlist3);
+			this.props.models.selectlist4.onSelected = this.getSelectionHandler(this.props.models.selectlist4);
+
 			return _React['default'].createElement(
 				'div',
 				null,
@@ -22979,28 +23002,28 @@ module.exports={
 					_React['default'].createElement(
 						'li',
 						null,
-						_React['default'].createElement(_selectlist.Selectlist, { collection: this.props.model.selectlist1.collection, selection: this.props.model.selectlist1.selection, disabled: this.props.model.selectlist1.disabled, key: 1 })
+						_React['default'].createElement(_selectlist.Selectlist, this.props.models.selectlist1)
 					),
 					_React['default'].createElement(
 						'li',
 						null,
-						_React['default'].createElement(_selectlist.Selectlist, { collection: this.props.model.selectlist2.collection, selection: this.props.model.selectlist2.selection, disabled: this.props.model.selectlist2.disabled, key: 2 })
+						_React['default'].createElement(_selectlist.Selectlist, this.props.models.selectlist2)
 					),
 					_React['default'].createElement(
 						'li',
 						null,
-						_React['default'].createElement(_selectlist.Selectlist, { collection: this.props.model.selectlist3.collection, selection: this.props.model.selectlist3.selection, disabled: this.props.model.selectlist3.disabled, key: 3 })
+						_React['default'].createElement(_selectlist.Selectlist, this.props.models.selectlist3)
 					),
 					_React['default'].createElement(
 						'li',
 						null,
-						_React['default'].createElement(_selectlist.Selectlist, { collection: this.props.model.selectlist4.collection, selection: this.props.model.selectlist4.selection, disabled: this.props.model.selectlist4.disabled, key: 4 })
+						_React['default'].createElement(_selectlist.Selectlist, this.props.models.selectlist4)
 					)
 				),
 				_React['default'].createElement(
 					'button',
 					{ onClick: this.changeCollection },
-					'Update dropdown list'
+					'Toggle Enabled / Disabled'
 				)
 			);
 		}
@@ -23009,7 +23032,7 @@ module.exports={
 	module.exports = Page;
 });
 
-},{"./selectlist":177,"react":170}],176:[function(require,module,exports){
+},{"./selectlist":177,"react":170,"underscore":171}],176:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', '../landmark', 'react', './page', './selectlist'], factory);
@@ -23034,7 +23057,7 @@ module.exports={
 	var element = document.getElementById('selectlist-react');
 	var collection = [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }];
 
-	var superModel = {
+	var models = {
 		selectlist1: {
 			collection: collection,
 			disabled: false,
@@ -23042,38 +23065,37 @@ module.exports={
 		},
 		selectlist2: {
 			collection: collection,
-			disabled: true,
-			selection: null
-		},
-		selectlist3: {
-			collection: collection,
 			disabled: false,
 			selection: { name: 'tostada' }
 		},
-		selectlist4: {
+		selectlist3: {
 			collection: collection,
 			disabled: false
+		},
+		selectlist4: {
+			collection: collection,
+			disabled: true
 		}
 	};
 
 	// Page is a list of multiple selectlists
-	_React['default'].render(_React['default'].createElement(_Page['default'], { model: superModel }), element, function () {});
+	_React['default'].render(_React['default'].createElement(_Page['default'], { models: models }), element, function () {});
 });
 
 },{"../landmark":178,"./page":175,"./selectlist":177,"react":170}],177:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../landmark', '../Core/selectlist', 'react', 'classnames', 'react-bootstrap/lib/DropdownButton', 'react-bootstrap/lib/MenuItem'], factory);
+		define(['exports', '../Core/selectlist', 'react', 'classnames', 'react-bootstrap/lib/DropdownButton', 'react-bootstrap/lib/MenuItem'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../landmark'), require('../Core/selectlist'), require('react'), require('classnames'), require('react-bootstrap/lib/DropdownButton'), require('react-bootstrap/lib/MenuItem'));
+		factory(exports, require('../Core/selectlist'), require('react'), require('classnames'), require('react-bootstrap/lib/DropdownButton'), require('react-bootstrap/lib/MenuItem'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.landmark, global.selectlist, global.React, global.classNames, global.DropdownButton, global.MenuItem);
+		factory(mod.exports, global.selectlist, global.React, global.classNames, global.DropdownButton, global.MenuItem);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _landmark, _CoreSelectlist, _react, _classnames, _reactBootstrapLibDropdownButton, _reactBootstrapLibMenuItem) {
+})(this, function (exports, _CoreSelectlist, _react, _classnames, _reactBootstrapLibDropdownButton, _reactBootstrapLibMenuItem) {
 	// SELECTLIST CONTROL
 
 	// core
@@ -23157,6 +23179,9 @@ module.exports={
 			};
 
 			this.__constructor(this.props);
+
+			if (this.Landmark.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
+			if (this.Landmark.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 		},
 
 		handleMenuItemClicked: function handleMenuItemClicked(eventKey, href, target) {
@@ -23166,12 +23191,12 @@ module.exports={
 	exports.Selectlist = Selectlist;
 });
 
-},{"../Core/selectlist":174,"../landmark":178,"classnames":1,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}],178:[function(require,module,exports){
+},{"../Core/selectlist":174,"classnames":1,"react":170,"react-bootstrap/lib/DropdownButton":6,"react-bootstrap/lib/MenuItem":9}],178:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../package.json', '../node_modules/underscore/underscore'], factory);
+		define(['exports', '../package.json', 'underscore'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../package.json'), require('../node_modules/underscore/underscore'));
+		factory(exports, require('../package.json'), require('underscore'));
 	} else {
 		var mod = {
 			exports: {}
@@ -23179,7 +23204,7 @@ module.exports={
 		factory(mod.exports, global._package, global._);
 		global.landmark = mod.exports;
 	}
-})(this, function (exports, _packageJson, _node_modulesUnderscoreUnderscore) {
+})(this, function (exports, _packageJson, _underscore) {
 	// TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
 	'use strict';
 
@@ -23197,7 +23222,7 @@ module.exports={
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
 
-	var _2 = _interopRequireDefault(_node_modulesUnderscoreUnderscore);
+	var _2 = _interopRequireDefault(_underscore);
 
 	var components = {};
 
@@ -23234,4 +23259,4 @@ module.exports={
 	;
 });
 
-},{"../node_modules/underscore/underscore":171,"../package.json":172}]},{},[176]);
+},{"../package.json":172,"underscore":171}]},{},[176]);

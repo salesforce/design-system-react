@@ -10898,6 +10898,7 @@ module.exports={
 			};
 		},
 
+		// TO-DO: Basically a bunch of if-else blocks. Can this be improved?
 		__initializeOptions: function __initializeOptions(options) {
 			if (options && options.collection) {
 				this._collection = options.collection;
@@ -10925,22 +10926,28 @@ module.exports={
 		},
 
 		__setSelection: function __setSelection(newSelection) {
-			if (!newSelection) {
-				this.__setState({ selection: null });
-			} else if (this.__getState('selection') !== newSelection.id) {
-				if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection();
-				this.__setState({ selection: newSelection.id });
-				if (this.Landmark.isFunction(this.onSelected)) this.onSelected();
+			if (this.__getState('selection') !== newSelection) {
+				if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
+				this.__setState({ selection: newSelection });
+				if (this.Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
 			}
 		},
 
+		__findWhere: function __findWhere(criteria) {
+			if (!criteria) {
+				return null;
+			}
+
+			return this.Landmark.findWhere(this._collection, criteria) || null;
+		},
+
 		getSelection: function getSelection() {
-			return this.Landmark.findWhere(this._collection, { id: this.__getState('selection') });
+			return this.__findWhere(this.__getState('selection'));
 		},
 
 		// Pass any combination of key / value pairs
 		setSelection: function setSelection(criteria) {
-			var item = this.Landmark.findWhere(this._collection, criteria);
+			var item = this.__findWhere(criteria);
 
 			return this.__setSelection(item);
 		},
@@ -10965,6 +10972,8 @@ module.exports={
 			this.__setSelection();
 		},
 
+		// These methods make sense for jQuery components but much less sense for React components
+		// TO-DO: Should methods that don't make sense for a particular facade be overidden with warnings?
 		enable: function enable() {
 			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 			this.__setState({ disabled: false });
@@ -11005,9 +11014,9 @@ module.exports={
 },{"./selectlist":7}],7:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../Core/selectlist', '../../node_modules/jquery/dist/jquery'], factory);
+		define(['exports', '../Core/selectlist', 'jquery'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../Core/selectlist'), require('../../node_modules/jquery/dist/jquery'));
+		factory(exports, require('../Core/selectlist'), require('jquery'));
 	} else {
 		var mod = {
 			exports: {}
@@ -11015,7 +11024,7 @@ module.exports={
 		factory(mod.exports, global.selectlist, global.$);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _CoreSelectlist, _node_modulesJqueryDistJquery) {
+})(this, function (exports, _CoreSelectlist, _jquery) {
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -11032,7 +11041,7 @@ module.exports={
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
 
-	var _$ = _interopRequireDefault(_node_modulesJqueryDistJquery);
+	var _$ = _interopRequireDefault(_jquery);
 
 	var old = _$['default'].fn.selectlist;
 	var collection = {};
@@ -11159,12 +11168,12 @@ module.exports={
 	});
 });
 
-},{"../../node_modules/jquery/dist/jquery":1,"../Core/selectlist":5}],8:[function(require,module,exports){
+},{"../Core/selectlist":5,"jquery":1}],8:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../package.json', '../node_modules/underscore/underscore'], factory);
+		define(['exports', '../package.json', 'underscore'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../package.json'), require('../node_modules/underscore/underscore'));
+		factory(exports, require('../package.json'), require('underscore'));
 	} else {
 		var mod = {
 			exports: {}
@@ -11172,7 +11181,7 @@ module.exports={
 		factory(mod.exports, global._package, global._);
 		global.landmark = mod.exports;
 	}
-})(this, function (exports, _packageJson, _node_modulesUnderscoreUnderscore) {
+})(this, function (exports, _packageJson, _underscore) {
 	// TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
 	'use strict';
 
@@ -11190,7 +11199,7 @@ module.exports={
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
 
-	var _2 = _interopRequireDefault(_node_modulesUnderscoreUnderscore);
+	var _2 = _interopRequireDefault(_underscore);
 
 	var components = {};
 
@@ -11227,4 +11236,4 @@ module.exports={
 	;
 });
 
-},{"../node_modules/underscore/underscore":2,"../package.json":3}]},{},[6]);
+},{"../package.json":3,"underscore":2}]},{},[6]);

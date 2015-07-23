@@ -1,7 +1,6 @@
 // SELECTLIST CONTROL
 
 // core
-import {Landmark} from '../landmark';
 import {SelectlistCore} from "../Core/selectlist";
 
 // framework specific
@@ -69,6 +68,9 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		}
 		
 		this.__constructor(this.props);
+		
+		if (this.Landmark.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
+		if (this.Landmark.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 	},
 	
 	handleMenuItemClicked (eventKey, href, target) {

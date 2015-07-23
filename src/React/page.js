@@ -1,28 +1,45 @@
 import React from 'react';
+import _ from 'underscore';
 import {Selectlist} from './selectlist';
 
 var Page = React.createClass({
 	changeCollection () {
-		var model = this.props.model;
-		model.selectlist1.collection[0].name = 'chimichanga';
-		model.selectlist2.disabled = false;
-		model.selectlist3.disabled = true;
+		var models = this.props.models;
+		
+		_.each(models, function (selectlist) {
+			selectlist.disabled = !selectlist.disabled;
+		});
 		
 		this.setProps({
-			model: model
+			models: models
 		});
+	},
+	
+	getSelectionHandler: function (model) {
+		return function (selection) {
+			model.selection = selection;
+		}
 	},
 
 	render () {
+		this.props.models.selectlist1.onSelected = this.getSelectionHandler(this.props.models.selectlist1);
+		this.props.models.selectlist2.onSelected = this.getSelectionHandler(this.props.models.selectlist2);
+		this.props.models.selectlist3.onSelected = this.getSelectionHandler(this.props.models.selectlist3);
+		this.props.models.selectlist4.onSelected = this.getSelectionHandler(this.props.models.selectlist4);
+		
 		return (
 			<div>
-			<ul>
-				<li><Selectlist collection={this.props.model.selectlist1.collection} selection={this.props.model.selectlist1.selection} disabled={this.props.model.selectlist1.disabled} key={1}/></li>
-				<li><Selectlist collection={this.props.model.selectlist2.collection} selection={this.props.model.selectlist2.selection} disabled={this.props.model.selectlist2.disabled} key={2}/></li>
-				<li><Selectlist collection={this.props.model.selectlist3.collection} selection={this.props.model.selectlist3.selection} disabled={this.props.model.selectlist3.disabled} key={3}/></li>
-				<li><Selectlist collection={this.props.model.selectlist4.collection} selection={this.props.model.selectlist4.selection} disabled={this.props.model.selectlist4.disabled} key={4}/></li>
-			</ul>
-			<button onClick={this.changeCollection}>Update dropdown list</button>
+				<ul>
+					<li>{React.createElement(Selectlist, this.props.models.selectlist1)}</li>
+					
+					<li>{React.createElement(Selectlist, this.props.models.selectlist2)}</li>
+					
+					<li>{React.createElement(Selectlist, this.props.models.selectlist3)}</li>
+					
+					<li>{React.createElement(Selectlist, this.props.models.selectlist4)}</li>
+				</ul>
+				
+				<button onClick={this.changeCollection}>Toggle Enabled / Disabled</button>
 			</div>
 		);
 	}
