@@ -1,7 +1,6 @@
 import {Selectlist} from "./selectlist";
 
 // Framework specific
-import $ from 'jquery';
 import Backbone from 'backbone';
 
 var $element = $('#selectlist');

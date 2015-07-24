@@ -6,12 +6,18 @@ import {SelectlistCore} from "../Core/selectlist";
 // Framework specific
 import _ from 'underscore';
 import Backbone from 'backbone';
+import classNames from 'classnames';
+
+// Children
+import {MenuItem} from './menuitem';
 
 // Template imports
 var fs = require('fs');
 
 export var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
-	className: 'selectlist btn-group',
+	className () {
+		return classNames(this._cssClasses.CONTROL, 'btn-group')
+	},
 	
 	template: _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8')),
 	
@@ -24,7 +30,7 @@ export var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 	},
 	
 	initialize (options) {
-		_.bindAll(this, 'setState', 'getState', 'render');
+		_.bindAll(this, 'setState', 'getState', 'render', 'renderMenuItems', 'handleMenuItemSelected');
 		
 		var self = this;
 		
@@ -39,6 +45,20 @@ export var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 		this.model = this.model || new Backbone.Model(this.__getInitialState());
 		
 		this.__constructor(options);
+		
+		// Put this after the contructor so that we don't call render during initialization
+		this.listenTo(this.model, 'change', this.render);
+		
+		// Only update the children when the collection has changed
+		this.listenTo(this._collection, 'all', function () {
+			_.each(self._renderedMenuItems, function (menuItem) {
+				menuItem.remove();
+			});
+			
+			self._renderedMenuItems = null;
+			
+			self.render();
+		});
 	},
 		
 	render () {
@@ -48,6 +68,37 @@ export var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 		}
 		
 		this.$el.html(this.template(attrs));
+		
+		this.renderMenuItems();
+		
 		return this;
+	},
+	
+	renderMenuItems () {
+		var $menu = this.$('ul.dropdown-menu');
+		
+		var handleMenuItemSelected = this.handleMenuItemSelected;
+		
+		if (!this._renderedMenuItems) {
+			this._renderedMenuItems = this._collection.map(function (item) {
+				var menuItem = new MenuItem({
+					model: item,
+					onSelected: handleMenuItemSelected
+				});
+				
+				menuItem.render();
+				
+				return menuItem;
+			});
+		}
+		
+		_.each(this._renderedMenuItems, function (menuItem) {
+			$menu.append(menuItem.el);
+			menuItem.delegateEvents();
+		});
+	},
+	
+	handleMenuItemSelected (selection) {
+		this.setSelection(selection);
 	}
 }));

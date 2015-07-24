@@ -1875,7 +1875,58 @@
 }));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"jquery":2,"underscore":3}],2:[function(require,module,exports){
+},{"jquery":3,"underscore":4}],2:[function(require,module,exports){
+/*!
+  Copyright (c) 2015 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
+(function () {
+	'use strict';
+
+	function classNames () {
+
+		var classes = '';
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if ('string' === argType || 'number' === argType) {
+				classes += ' ' + arg;
+
+			} else if (Array.isArray(arg)) {
+				classes += ' ' + classNames.apply(null, arg);
+
+			} else if ('object' === argType) {
+				for (var key in arg) {
+					if (arg.hasOwnProperty(key) && arg[key]) {
+						classes += ' ' + key;
+					}
+				}
+			}
+		}
+
+		return classes.substr(1);
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = classNames;
+	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd){
+		// AMD. Register as an anonymous module.
+		define(function () {
+			return classNames;
+		});
+	} else {
+		window.classNames = classNames;
+	}
+
+}());
+
+},{}],3:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
@@ -11087,7 +11138,7 @@ return jQuery;
 
 }));
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 //     Underscore.js 1.8.3
 //     http://underscorejs.org
 //     (c) 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -12637,7 +12688,7 @@ return jQuery;
   }
 }.call(this));
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 module.exports={
   "name": "landmark-js-poc",
   "private": true,
@@ -12673,31 +12724,86 @@ module.exports={
   }
 }
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', './selectlist', 'jquery', 'backbone'], factory);
+		define(['exports', 'underscore', 'backbone'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('./selectlist'), require('jquery'), require('backbone'));
+		factory(exports, require('underscore'), require('backbone'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.selectlist, global.$, global.Backbone);
+		factory(mod.exports, global._, global.Backbone);
+		global.menuitem = mod.exports;
+	}
+})(this, function (exports, _underscore, _backbone) {
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _2 = _interopRequireDefault(_underscore);
+
+	var _Backbone = _interopRequireDefault(_backbone);
+
+	var MenuItem = _Backbone['default'].View.extend({
+		tagName: 'li',
+
+		template: _2['default'].template('<a href="#"><%- name %></a>'),
+
+		events: {
+			'click a': 'handleClicked'
+		},
+
+		initialize: function initialize(options) {
+			_2['default'].bindAll(this, 'render', 'handleClicked');
+
+			this.onSelected = options.onSelected;
+		},
+
+		render: function render() {
+			var attrs = this.model.toJSON();
+
+			this.$el.html(this.template(attrs));
+
+			return this;
+		},
+
+		handleClicked: function handleClicked(e) {
+			e.preventDefault();
+			this.onSelected(this.model);
+		}
+	});
+	exports.MenuItem = MenuItem;
+});
+
+},{"backbone":1,"underscore":4}],7:[function(require,module,exports){
+(function (global, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(['exports', './selectlist', 'backbone'], factory);
+	} else if (typeof exports !== 'undefined') {
+		factory(exports, require('./selectlist'), require('backbone'));
+	} else {
+		var mod = {
+			exports: {}
+		};
+		factory(mod.exports, global.selectlist, global.Backbone);
 		global.sample = mod.exports;
 	}
-})(this, function (exports, _selectlist, _jquery, _backbone) {
+})(this, function (exports, _selectlist, _backbone) {
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 	// Framework specific
 
-	var _$ = _interopRequireDefault(_jquery);
-
 	var _Backbone = _interopRequireDefault(_backbone);
 
-	var $element = (0, _$['default'])('#selectlist');
+	var $element = $('#selectlist');
 
 	var collection = new _Backbone['default'].Collection([{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }]);
 
@@ -12710,20 +12816,20 @@ module.exports={
 	$element.append(view.render().el);
 });
 
-},{"./selectlist":6,"backbone":1,"jquery":2}],6:[function(require,module,exports){
+},{"./selectlist":8,"backbone":1}],8:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../Core/selectlist', 'underscore', 'backbone'], factory);
+		define(['exports', '../Core/selectlist', 'underscore', 'backbone', 'classnames', './menuitem'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../Core/selectlist'), require('underscore'), require('backbone'));
+		factory(exports, require('../Core/selectlist'), require('underscore'), require('backbone'), require('classnames'), require('./menuitem'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.selectlist, global._, global.Backbone);
+		factory(mod.exports, global.selectlist, global._, global.Backbone, global.classNames, global.menuitem);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _CoreSelectlist, _underscore, _backbone) {
+})(this, function (exports, _CoreSelectlist, _underscore, _backbone, _classnames, _menuitem) {
 	// SELECTLIST CONTROL
 
 	// Core
@@ -12743,11 +12849,15 @@ module.exports={
 
 	var _Backbone = _interopRequireDefault(_backbone);
 
+	var _classNames = _interopRequireDefault(_classnames);
+
 	// Template imports
 	
 
 	var Selectlist = _Backbone['default'].View.extend(_extends({}, _CoreSelectlist.SelectlistCore, {
-		className: 'selectlist btn-group',
+		className: function className() {
+			return (0, _classNames['default'])(this._cssClasses.CONTROL, 'btn-group');
+		},
 
 		template: _2['default'].template("<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\"<% if (disabled) { %> disabled<% } %>>\n\t<span class=\"selected-label\"><% if (selection) { %><%- selection.name %><% } else { %>None selected<% } %></span>\n\t<span class=\"caret\"></span>\n\t<span class=\"sr-only\">Toggle Dropdown</span>\n</button>\n<ul class=\"dropdown-menu\" role=\"menu\">\n</ul>\n<input class=\"hidden hidden-field\" readonly aria-hidden=\"true\" type=\"text\" value=\"<% JSON.stringify(selection) %>\"></input>"),
 
@@ -12760,7 +12870,7 @@ module.exports={
 		},
 
 		initialize: function initialize(options) {
-			_2['default'].bindAll(this, 'setState', 'getState', 'render');
+			_2['default'].bindAll(this, 'setState', 'getState', 'render', 'renderMenuItems', 'handleMenuItemSelected');
 
 			var self = this;
 
@@ -12775,6 +12885,20 @@ module.exports={
 			this.model = this.model || new _Backbone['default'].Model(this.__getInitialState());
 
 			this.__constructor(options);
+
+			// Put this after the contructor so that we don't call render during initialization
+			this.listenTo(this.model, 'change', this.render);
+
+			// Only update the children when the collection has changed
+			this.listenTo(this._collection, 'all', function () {
+				_2['default'].each(self._renderedMenuItems, function (menuItem) {
+					menuItem.remove();
+				});
+
+				self._renderedMenuItems = null;
+
+				self.render();
+			});
 		},
 
 		render: function render() {
@@ -12784,13 +12908,46 @@ module.exports={
 			}
 
 			this.$el.html(this.template(attrs));
+
+			this.renderMenuItems();
+
 			return this;
+		},
+
+		renderMenuItems: function renderMenuItems() {
+			var $menu = this.$('ul.dropdown-menu');
+
+			var handleMenuItemSelected = this.handleMenuItemSelected;
+
+			if (!this._renderedMenuItems) {
+				this._renderedMenuItems = this._collection.map(function (item) {
+					var menuItem = new _menuitem.MenuItem({
+						model: item,
+						onSelected: handleMenuItemSelected
+					});
+
+					menuItem.render();
+
+					return menuItem;
+				});
+			}
+
+			_2['default'].each(this._renderedMenuItems, function (menuItem) {
+				$menu.append(menuItem.el);
+				menuItem.delegateEvents();
+			});
+		},
+
+		handleMenuItemSelected: function handleMenuItemSelected(selection) {
+			this.setSelection(selection);
 		}
 	}));
 	exports.Selectlist = Selectlist;
 });
 
-},{"../Core/selectlist":8,"backbone":1,"underscore":3}],7:[function(require,module,exports){
+// Children
+
+},{"../Core/selectlist":10,"./menuitem":6,"backbone":1,"classnames":2,"underscore":4}],9:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', '../landmark'], factory);
@@ -12860,7 +13017,7 @@ module.exports={
 	exports.Base = Base;
 });
 
-},{"../landmark":9}],8:[function(require,module,exports){
+},{"../landmark":11}],10:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', './base'], factory);
@@ -13004,7 +13161,7 @@ module.exports={
 	exports.SelectlistCore = SelectlistCore;
 });
 
-},{"./base":7}],9:[function(require,module,exports){
+},{"./base":9}],11:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', '../package.json', 'underscore'], factory);
@@ -13072,4 +13229,4 @@ module.exports={
 	;
 });
 
-},{"../package.json":4,"underscore":3}]},{},[5]);
+},{"../package.json":5,"underscore":4}]},{},[7]);
