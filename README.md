@@ -1,13 +1,13 @@
 # landmark-js-poc
-Testing our vanilliajs -> many frameworks concept by converting Fuel UX controls to this new approach
+Testing a core abstraction layer with many facades approach for FuelUX
 
 ### Setup
 * Clone the project
-* Have [Node.js](https://nodejs.org/) and [Gulp](http://gulpjs.com/) installed
+* Have [Node.js](https://nodejs.org/) and [Grunt](http://gruntjs.com/) installed
 * Run `npm install` via terminal in the directory where the project has been cloned
 
-### Building
-* Run `gulp` for the default build. This will create the dist file(s)
+### Running
+* Run `npm start` to start a static server on port 3000. You can navigate to `http://localhost:3000/` to see a simple index page with links to examples in each facade
 
-### Serving
-* Run `gulp serve` to start a static server on port 3000. You can navigate to `http://localhost:3000/` to see a simple index page with examples, or `http://localhost:3000/dev/dev.html` to work on a control in isolation
+### Building
+* Run `grunt` for the default build. This will create the example file(s). Note that the serve task also has a watch task so this step is optional

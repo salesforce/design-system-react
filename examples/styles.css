@@ -1,0 +1,18 @@
+body {
+	margin: 100px;
+}
+
+#selectlist .selectlist-examples {
+	list-style-type: none;
+	margin: 20px 0;
+	padding: 0;
+}
+
+#selectlist .selectlist-examples > li {
+	margin: 0 0 20px;
+	padding: 0;
+}
+
+#selectlist .selectlist-action {
+	margin: 0 0 20px;
+}
