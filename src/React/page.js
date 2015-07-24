@@ -29,7 +29,7 @@ var Page = React.createClass({
 		
 		return (
 			<div>
-				<ul>
+				<ul className="selectlist-examples">
 					<li>{React.createElement(Selectlist, this.props.models.selectlist1)}</li>
 					
 					<li>{React.createElement(Selectlist, this.props.models.selectlist2)}</li>
@@ -39,7 +39,7 @@ var Page = React.createClass({
 					<li>{React.createElement(Selectlist, this.props.models.selectlist4)}</li>
 				</ul>
 				
-				<button onClick={this.changeCollection}>Toggle Enabled / Disabled</button>
+				<button className="selectlist-action btn btn-primary" onClick={this.changeCollection}>Toggle Enabled / Disabled</button>
 			</div>
 		);
 	}

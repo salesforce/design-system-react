@@ -1,7 +1,8 @@
 import React from 'react';
 import Page from './page';
 
-var element = document.getElementById('selectlist-react');
+var element = document.getElementById('selectlist');
+
 var collection = [
 	{ id: 0, name: 'tacos', type: 'mexican' },
 	{ id: 1, name: 'burrito', type: 'mexican' },

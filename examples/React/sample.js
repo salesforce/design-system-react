@@ -21745,7 +21745,7 @@ module.exports={
 				null,
 				_React['default'].createElement(
 					'ul',
-					null,
+					{ className: 'selectlist-examples' },
 					_React['default'].createElement(
 						'li',
 						null,
@@ -21769,7 +21769,7 @@ module.exports={
 				),
 				_React['default'].createElement(
 					'button',
-					{ onClick: this.changeCollection },
+					{ className: 'selectlist-action btn btn-primary', onClick: this.changeCollection },
 					'Toggle Enabled / Disabled'
 				)
 			);
@@ -21801,7 +21801,8 @@ module.exports={
 
 	var _Page = _interopRequireDefault(_page);
 
-	var element = document.getElementById('selectlist-react');
+	var element = document.getElementById('selectlist');
+
 	var collection = [{ id: 0, name: 'tacos', type: 'mexican' }, { id: 1, name: 'burrito', type: 'mexican' }, { id: 2, name: 'tostada', type: 'mexican' }, { id: 3, name: 'hush puppies', type: 'southern' }];
 
 	// TO-DO: Rewrite this to a sample that is more real-life
