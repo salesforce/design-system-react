@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 						"stage": 0,
 						"modules": "umd",
 						"plugins": ["object-assign"]
-					}]]
+					}], ["brfs"]]
 				},
 				files: {
 					"examples/jQuery/sample.js": "src/jQuery/sample.js",

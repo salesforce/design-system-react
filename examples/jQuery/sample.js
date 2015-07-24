@@ -10774,6 +10774,7 @@ module.exports={
     "babel-core": "^5.6.20",
     "babel-plugin-object-assign": "^1.2.0",
     "babelify": "^6.1.2",
+    "brfs": "^1.4.0",
     "classnames": "^2.1.3",
     "connect": "^3.4.0",
     "grunt": "^0.4.5",
