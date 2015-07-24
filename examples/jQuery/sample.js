@@ -10792,7 +10792,7 @@ module.exports={
     "underscore": "^1.8.3"
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --no-info --port 8000 --content-base react"
+    "start": "grunt serve"
   }
 }
 
