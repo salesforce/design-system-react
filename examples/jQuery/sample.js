@@ -10784,6 +10784,8 @@ module.exports={
     "serve-static": "^1.10.0"
   },
   "dependencies": {
+    "backbone": "^1.2.1",
+    "bootstrap": "^3.3.5",
     "classnames": "^2.1.3",
     "jquery": "^2.1.4",
     "underscore": "^1.8.3"
