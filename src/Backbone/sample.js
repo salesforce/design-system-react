@@ -16,7 +16,7 @@ var collection = new Backbone.Collection([
 var view = new Selectlist({
 	collection: collection,
 	disabled: false,
-	selection: collection[0]
+	selection: collection.at(0)
 });
 
 $element.append(view.render().el);

@@ -15,7 +15,17 @@ export var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 	
 	template: _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8')),
 	
-	initialize: function (options) {
+	setState (values) {
+		return this.model.set(values);
+	},
+	
+	getState (key) {
+		return this.model.get(key);
+	},
+	
+	initialize (options) {
+		_.bindAll(this, 'setState', 'getState', 'render');
+		
 		var self = this;
 		
 		this.elements = {
@@ -26,11 +36,18 @@ export var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 			}
 		}
 		
+		this.model = this.model || new Backbone.Model(this.__getInitialState());
+		
 		this.__constructor(options);
 	},
 		
 	render () {
-		this.$el.html(this.template({}));
+		var attrs = this.model.toJSON();
+		if (attrs.selection) {
+			attrs.selection = attrs.selection.toJSON();
+		}
+		
+		this.$el.html(this.template(attrs));
 		return this;
 	}
 }));

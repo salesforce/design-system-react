@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 		},
 		watch: {
 			scripts: {
-				files: "src/**/*.js",
+				files: "src/**/*.*",
 				tasks: ["browserify:examples"],
 				options: {
 					livereload: true

@@ -21491,7 +21491,6 @@ module.exports={
 			if (_landmark.Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
 		},
 
-		// If this is a React control there is built in state management that we want to use instead
 		__setState: function __setState(values) {
 			_extends(this._state, values);
 
@@ -21501,11 +21500,15 @@ module.exports={
 			}
 		},
 
-		// If this is a React control there is a built in state store that we want to use instead
 		__getState: function __getState(key) {
-			if (!key) return this.state || this._state;
-			if (_landmark.Landmark.isObject(this.state)) return this.state[key];
+			if (this.getState) {
+				this.__getState = this.getState;
+				return this.__getState(key);
+			}
+
+			if (!key) return this._state;
 			if (_landmark.Landmark.isObject(this._state)) return this._state[key];
+
 			return null;
 		}
 	};
@@ -21553,8 +21556,10 @@ module.exports={
 		__initializeOptions: function __initializeOptions(options) {
 			if (options && options.collection) {
 				this._collection = options.collection;
+			} else if (this.collection) {
+				this._collection = this.collection;
 			} else if (!this._collection) {
-				this._collection = {};
+				this._collection = [];
 			}
 
 			if (options && this.Landmark.isNumber(options.selection)) {
@@ -21589,7 +21594,15 @@ module.exports={
 				return null;
 			}
 
-			return this.Landmark.findWhere(this._collection, criteria) || null;
+			if (this.Landmark.isFunction(criteria.toJSON)) {
+				criteria = criteria.toJSON();
+			}
+
+			if (this.Landmark.isFunction(this._collection.findWhere)) {
+				return this._collection.findWhere(criteria) || null;
+			} else {
+				return this.Landmark.findWhere(this._collection, criteria) || null;
+			}
 		},
 
 		getSelection: function getSelection() {
@@ -21614,7 +21627,13 @@ module.exports={
 				return;
 			}
 
-			var item = this._collection[index];
+			var item;
+
+			if (this.Landmark.isFunction(_collection.at)) {
+				item = this._collection.at(index);
+			} else {
+				item = this._collection[index];
+			}
 
 			return this.__setSelection(item);
 		},
@@ -21878,6 +21897,10 @@ module.exports={
 			return _extends(this.__getInitialState(), {
 				wrapperClasses: {}
 			});
+		},
+
+		getState: function getState(key) {
+			return this.state[key];
 		},
 
 		menuItems: function menuItems() {

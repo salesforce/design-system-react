@@ -24,7 +24,6 @@ export var Base = {
 		if (Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
 	},
 	
-	// If this is a React control there is built in state management that we want to use instead
 	__setState (values) {
 		Object.assign(this._state, values);
 		
@@ -34,11 +33,15 @@ export var Base = {
 		}
 	},
 	
-	// If this is a React control there is a built in state store that we want to use instead
 	__getState (key) {
-		if (!key) return this.state || this._state;
-		if (Landmark.isObject(this.state)) return this.state[key];
+		if (this.getState) {
+			this.__getState = this.getState;
+			return this.__getState(key);
+		}
+		
+		if (!key) return this._state;
 		if (Landmark.isObject(this._state)) return this._state[key];
+		
 		return null;
 	}
 };

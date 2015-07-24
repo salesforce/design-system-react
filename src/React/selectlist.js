@@ -29,6 +29,10 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 			wrapperClasses: {}
 		});
 	},
+	
+	getState (key) {
+		return this.state[key];
+	},
 		
 	menuItems () {
 		return this.props.collection.map((menuItem) => {

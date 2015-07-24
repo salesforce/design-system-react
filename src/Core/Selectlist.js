@@ -19,8 +19,10 @@ export var SelectlistCore = Object.assign({}, Base, {
 	__initializeOptions (options) {
 		if (options && options.collection) {
 			this._collection = options.collection;
+		} else if (this.collection) {
+			this._collection = this.collection;
 		} else if (!this._collection) {
-			this._collection = {};
+			this._collection = [];
 		}
 		
 		if (options && this.Landmark.isNumber(options.selection)) {
@@ -55,7 +57,15 @@ export var SelectlistCore = Object.assign({}, Base, {
 			return null;
 		}
 		
-		return this.Landmark.findWhere(this._collection, criteria) || null;
+		if (this.Landmark.isFunction(criteria.toJSON)) {
+			criteria = criteria.toJSON();
+		}
+		
+		if (this.Landmark.isFunction(this._collection.findWhere)) {
+			return this._collection.findWhere(criteria) || null;
+		} else {
+			return this.Landmark.findWhere(this._collection, criteria) || null;
+		}
 	},
 	
 	getSelection () {
@@ -80,7 +90,13 @@ export var SelectlistCore = Object.assign({}, Base, {
 			return;
 		}
 		
-		var item = this._collection[index];
+		var item;
+		
+		if (this.Landmark.isFunction(_collection.at)) {
+			item = this._collection.at(index);
+		} else {
+			item = this._collection[index];
+		}
 		
 		return this.__setSelection(item);
 	},
