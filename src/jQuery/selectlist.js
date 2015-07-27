@@ -14,10 +14,14 @@ var old = $.fn.selectlist;
 var Selectlist = function (element, options) {
 	// define for instance, it would great if this didn't have to happen.
 	this.Landmark = Landmark;
-	this._collection = {};
 
 	this.$element = $(element);
 	this.options = $.extend({}, $.fn.selectlist.defaults, options);
+	this._collection = [];
+
+	if( Landmark.isFunction(this.options.dataSource) ) {
+		this.populate();
+	}
 
 	this.$button = this.$element.find('.btn.dropdown-toggle');
 	this.$hiddenField = this.$element.find('.hidden-field');
@@ -121,6 +125,41 @@ Selectlist.prototype = Object.assign({}, SelectlistCore, {
 		this.$element.trigger('changed.fu.selectlist', data);
 	},
 
+	populate: function () {
+		var self = this;
+		var selectlistData = this.$element.data();
+
+		// prep for append
+		this.$element.empty();
+		this.$element.addClass('btn-group');
+
+		this.options.dataSource(selectlistData ? selectlistData : {}, function (items) {
+			self._collection = items;
+			// temporary placeholder, need to build items out
+			var html = '<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">' +
+						'			<span class="selected-label">&nbsp;</span>' +
+						'			<span class="caret"></span>' +
+						'			<span class="sr-only">Toggle Dropdown</span>' +
+						'		</button>' +
+						'		<ul class="dropdown-menu" role="menu">' +
+						'			<li data-value="1"><a href="#">One</a>' +
+						'			</li>' +
+						'			<li data-value="2"><a href="#">Two</a>' +
+						'			</li>' +
+						'			<li data-selected="true" data-value="3"><a href="#">Three</a>' +
+						'			</li>' +
+						'			<li data-value="4"><a href="#">Buzz</a>' +
+						'			</li>' +
+						'			<li data-value="Item Five" data-foo="bar" data-fizz="buzz"><a href="#">Item Five</a>' +
+						'			</li>' +
+						'			<li class="disabled" disabled="disabled" data-value="disabled"><a href="#">Disabled item</a>' +
+						'			</li>' +
+						'		</ul>' +
+						'		<input class="hidden hidden-field" name="mySelectlist" readonly="readonly" aria-hidden="true" type="text" />';
+			self.$element.append(html);
+		});
+	},
+
 	resize: function () {
 		var width = 0;
 		var newWidth = 0;
@@ -212,6 +251,8 @@ Selectlist.prototype = Object.assign({}, SelectlistCore, {
 });
 
 // SELECT PLUGIN DEFINITION
+
+
 
 $.fn.selectlist = function (option) {
 	var args = Array.prototype.slice.call(arguments, 1);
