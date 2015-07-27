@@ -153,6 +153,10 @@ export var SelectlistCore = Object.assign({}, Base, {
 		}
 		
 		// This works great except that we need to remember to check the key for 'None selected' as well once it's internationalized
+		
+		// This list could be long, we might want to cycle through the collection and find the longest name and just select it,
+		// and use that width value. That would make less DOM touches. - @interactivellama
+
 		this.__each(function(item) {
 			if (self.Landmark.isFunction(item.get)) {
 				name = item.get('name');
