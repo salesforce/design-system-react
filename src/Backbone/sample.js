@@ -15,7 +15,8 @@ var collection = new Backbone.Collection([
 var view = new Selectlist({
 	collection: collection,
 	disabled: false,
-	selection: collection.at(0)
+	selection: collection.at(0),
+	resize: 'auto'
 });
 
 $element.append(view.render().el);

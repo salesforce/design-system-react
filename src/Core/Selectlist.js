@@ -68,6 +68,14 @@ export var SelectlistCore = Object.assign({}, Base, {
 		}
 	},
 	
+	__each (iteratee) {
+		if (this.Landmark.isFunction(this._collection.each)) {
+			return this._collection.each(iteratee);
+		} else {
+			return this.Landmark.each(this._collection, iteratee);
+		}
+	},
+	
 	getSelection () {
 		return this.__findWhere(this.__getState('selection'));
 	},
@@ -117,5 +125,51 @@ export var SelectlistCore = Object.assign({}, Base, {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
 		this.__setState({ disabled: true });
 		if (this.Landmark.isFunction(this.onDisabled)) this.onDisabled();
+	},
+	
+	// Vanilla js implementation of this to be shared by the libraries
+	resize () {
+		var self = this;
+		var newWidth = 0;
+		var sizer = document.createElement('div');
+		var width = 0;
+		var parent;
+		var name;
+		
+		// TO-DO: We probably need to add the cssClasses library to the core
+		sizer.className = 'selectlist-sizer';
+		sizer.innerHTML = '<div class="' + this._cssClasses.CONTROL + ' btn-group"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
+		
+		if (this.Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
+			parent = document.querySelector('body');
+		} else {
+			parent = document.querySelector('.fuelux');
+		}
+		
+		if (parent) {
+			parent.appendChild(sizer);
+		} else {
+			return;
+		}
+		
+		// This works great except that we need to remember to check the key for 'None selected' as well once it's internationalized
+		this.__each(function(item) {
+			if (self.Landmark.isFunction(item.get)) {
+				name = item.get('name');
+			} else {
+				name = item.name;
+			}
+			
+			sizer.querySelector('.selected-label').textContent = name;
+			newWidth = sizer.querySelector('.' + self._cssClasses.CONTROL).offsetWidth;
+			if (newWidth > width) {
+				width = newWidth;
+			}
+		});
+		
+		parent.removeChild(sizer);
+		
+		this.__setState({ width: width });
+		if (this.Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
 	}
 });

@@ -21605,6 +21605,14 @@ module.exports={
 			}
 		},
 
+		__each: function __each(iteratee) {
+			if (this.Landmark.isFunction(this._collection.each)) {
+				return this._collection.each(iteratee);
+			} else {
+				return this.Landmark.each(this._collection, iteratee);
+			}
+		},
+
 		getSelection: function getSelection() {
 			return this.__findWhere(this.__getState('selection'));
 		},
@@ -21654,6 +21662,52 @@ module.exports={
 			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
 			this.__setState({ disabled: true });
 			if (this.Landmark.isFunction(this.onDisabled)) this.onDisabled();
+		},
+
+		// Vanilla js implementation of this to be shared by the libraries
+		resize: function resize() {
+			var self = this;
+			var newWidth = 0;
+			var sizer = document.createElement('div');
+			var width = 0;
+			var parent;
+			var name;
+
+			// TO-DO: We probably need to add the cssClasses library to the core
+			sizer.className = 'selectlist-sizer';
+			sizer.innerHTML = '<div class="' + this._cssClasses.CONTROL + ' btn-group"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
+
+			if (this.Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
+				parent = document.querySelector('body');
+			} else {
+				parent = document.querySelector('.fuelux');
+			}
+
+			if (parent) {
+				parent.appendChild(sizer);
+			} else {
+				return;
+			}
+
+			// This works great except that we need to remember to check the key for 'None selected' as well once it's internationalized
+			this.__each(function (item) {
+				if (self.Landmark.isFunction(item.get)) {
+					name = item.get('name');
+				} else {
+					name = item.name;
+				}
+
+				sizer.querySelector('.selected-label').textContent = name;
+				newWidth = sizer.querySelector('.' + self._cssClasses.CONTROL).offsetWidth;
+				if (newWidth > width) {
+					width = newWidth;
+				}
+			});
+
+			parent.removeChild(sizer);
+
+			this.__setState({ width: width });
+			if (this.Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
 		}
 	});
 	exports.SelectlistCore = SelectlistCore;
@@ -21831,7 +21885,8 @@ module.exports={
 		selectlist1: {
 			collection: collection,
 			disabled: false,
-			selection: collection[0]
+			selection: collection[0],
+			resize: 'auto'
 		},
 		selectlist2: {
 			collection: collection,
@@ -21918,12 +21973,16 @@ module.exports={
 		render: function render() {
 			var selection = this.getSelection();
 
+			var styles = {
+				width: this.state.width
+			};
+
 			return _React['default'].createElement(
 				'div',
 				{ className: (0, _classNames['default'])(this.cssClasses.CONTROL, 'btn-group', this.state.wrapperClasses) },
 				_React['default'].createElement(
 					'button',
-					{ className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', type: 'button', disabled: this.state.disabled },
+					{ className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', type: 'button', disabled: this.state.disabled, style: styles },
 					_React['default'].createElement(
 						'span',
 						{ className: 'selected-label' },
@@ -21938,7 +21997,7 @@ module.exports={
 				),
 				_React['default'].createElement(
 					'ul',
-					{ className: 'dropdown-menu', role: 'menu' },
+					{ className: 'dropdown-menu', role: 'menu', style: styles },
 					this.menuItems()
 				),
 				_React['default'].createElement('input', { name: this.props.name, className: 'hidden hidden-field', readOnly: true, 'aria-hidden': 'true', type: 'text', value: JSON.stringify(selection) })
@@ -22009,8 +22068,6 @@ module.exports={
 
 	var _2 = _interopRequireDefault(_underscore);
 
-	var components = {};
-
 	var Landmark = (function (_ref) {
 		function Landmark() {
 			_classCallCheck(this, Landmark);
@@ -22021,6 +22078,11 @@ module.exports={
 		_inherits(Landmark, _ref);
 
 		_createClass(Landmark, null, [{
+			key: 'hasClass',
+			value: function hasClass(element, className) {
+				return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;
+			}
+		}, {
 			key: 'log',
 			value: function log() {
 				console.log.apply(console, arguments);
@@ -22029,11 +22091,6 @@ module.exports={
 			key: 'version',
 			get: function get() {
 				return _packageJson.version;
-			}
-		}, {
-			key: 'components',
-			get: function get() {
-				return components;
 			}
 		}]);
 

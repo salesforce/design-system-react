@@ -49,14 +49,18 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	render () {
 		var selection = this.getSelection();
 		
+		var styles = {
+			width: this.state.width
+		};
+		
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, 'btn-group', this.state.wrapperClasses)}>
-				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled}>
+				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
 					<span className="selected-label">{selection ? selection.name : 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
 				</button>
-				<ul className="dropdown-menu" role="menu">
+				<ul className="dropdown-menu" role="menu" style={styles}>
 					{this.menuItems()}
 				</ul>
 				<input name={this.props.name} className="hidden hidden-field" readOnly aria-hidden="true" type="text" value={JSON.stringify(selection)}></input>

@@ -2,15 +2,13 @@
 import {version} from '../package.json';
 import _ from 'underscore';
 
-var components = {};
-
 export class Landmark extends _ {
 	static get version () {
 		return version;
 	}
 	
-	static get components () {
-		return components;
+	static hasClass (element, className) {
+		return (element.className.match(new RegExp('\\b' + className + '\\b')) !== null);
 	}
 	
 	static log () {

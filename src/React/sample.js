@@ -16,7 +16,8 @@ var models = {
 	selectlist1: {
 		collection: collection,
 		disabled: false,
-		selection: collection[0]
+		selection: collection[0],
+		resize: 'auto'
 	},
 	selectlist2: {
 		collection: collection,
