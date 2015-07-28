@@ -21515,7 +21515,7 @@ module.exports={
 	exports.Base = Base;
 });
 
-},{"../landmark":166}],161:[function(require,module,exports){
+},{"../landmark":162}],161:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', './base'], factory);
@@ -21690,6 +21690,10 @@ module.exports={
 			}
 
 			// This works great except that we need to remember to check the key for 'None selected' as well once it's internationalized
+
+			// This list could be long, we might want to cycle through the collection and find the longest name and just select it,
+			// and use that width value. That would make less DOM touches. - @interactivellama
+
 			this.__each(function (item) {
 				if (self.Landmark.isFunction(item.get)) {
 					name = item.get('name');
@@ -21714,6 +21718,72 @@ module.exports={
 });
 
 },{"./base":160}],162:[function(require,module,exports){
+(function (global, factory) {
+	if (typeof define === 'function' && define.amd) {
+		define(['exports', '../package.json', 'underscore'], factory);
+	} else if (typeof exports !== 'undefined') {
+		factory(exports, require('../package.json'), require('underscore'));
+	} else {
+		var mod = {
+			exports: {}
+		};
+		factory(mod.exports, global._package, global._);
+		global.landmark = mod.exports;
+	}
+})(this, function (exports, _packageJson, _underscore) {
+	// TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var _2 = _interopRequireDefault(_underscore);
+
+	var Landmark = (function (_ref) {
+		_inherits(Landmark, _ref);
+
+		function Landmark() {
+			_classCallCheck(this, Landmark);
+
+			_get(Object.getPrototypeOf(Landmark.prototype), 'constructor', this).apply(this, arguments);
+		}
+
+		_createClass(Landmark, null, [{
+			key: 'hasClass',
+			value: function hasClass(element, className) {
+				return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;
+			}
+		}, {
+			key: 'log',
+			value: function log() {
+				console.log.apply(console, arguments);
+			}
+		}, {
+			key: 'version',
+			get: function get() {
+				return _packageJson.version;
+			}
+		}]);
+
+		return Landmark;
+	})(_2['default']);
+
+	exports.Landmark = Landmark;
+	;
+});
+
+},{"../package.json":159,"underscore":158}],163:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === "function" && define.amd) {
 		define(["exports", "react"], factory);
@@ -21765,7 +21835,7 @@ module.exports={
 	exports.MenuItem = MenuItem;
 });
 
-},{"react":157}],163:[function(require,module,exports){
+},{"react":157}],164:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', 'module', 'react', 'underscore', './selectlist'], factory);
@@ -21819,7 +21889,7 @@ module.exports={
 				null,
 				_React['default'].createElement(
 					'ul',
-					{ className: 'selectlist-examples' },
+					{ className: "selectlist-examples" },
 					_React['default'].createElement(
 						'li',
 						null,
@@ -21843,7 +21913,7 @@ module.exports={
 				),
 				_React['default'].createElement(
 					'button',
-					{ className: 'selectlist-action btn btn-primary', onClick: this.changeCollection },
+					{ className: "selectlist-action btn btn-primary", onClick: this.changeCollection },
 					'Toggle Enabled / Disabled'
 				)
 			);
@@ -21853,7 +21923,7 @@ module.exports={
 	module.exports = Page;
 });
 
-},{"./selectlist":165,"react":157,"underscore":158}],164:[function(require,module,exports){
+},{"./selectlist":166,"react":157,"underscore":158}],165:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', 'react', './page'], factory);
@@ -21907,12 +21977,12 @@ module.exports={
 	_React['default'].render(_React['default'].createElement(_Page['default'], { models: models }), element, function () {});
 });
 
-},{"./page":163,"react":157}],165:[function(require,module,exports){
+},{"./page":164,"react":157}],166:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../Core/selectlist', 'react', 'classnames', './menuitem'], factory);
+		define(['exports', '../core/selectlist', 'react', 'classnames', './menuitem'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../Core/selectlist'), require('react'), require('classnames'), require('./menuitem'));
+		factory(exports, require('../core/selectlist'), require('react'), require('classnames'), require('./menuitem'));
 	} else {
 		var mod = {
 			exports: {}
@@ -21920,7 +21990,7 @@ module.exports={
 		factory(mod.exports, global.selectlist, global.React, global.classNames, global.menuitem);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _CoreSelectlist, _react, _classnames, _menuitem) {
+})(this, function (exports, _coreSelectlist, _react, _classnames, _menuitem) {
 	// SELECTLIST CONTROL
 
 	// Core
@@ -21940,7 +22010,8 @@ module.exports={
 
 	var _classNames = _interopRequireDefault(_classnames);
 
-	var Selectlist = _React['default'].createClass(_extends({}, _CoreSelectlist.SelectlistCore, {
+	// Children
+	var Selectlist = _React['default'].createClass(_extends({}, _coreSelectlist.SelectlistCore, {
 		propTypes: {
 			disabled: _React['default'].PropTypes.bool,
 			selection: _React['default'].PropTypes.oneOfType([_React['default'].PropTypes.number, _React['default'].PropTypes.object]),
@@ -21982,25 +22053,25 @@ module.exports={
 				{ className: (0, _classNames['default'])(this.cssClasses.CONTROL, 'btn-group', this.state.wrapperClasses) },
 				_React['default'].createElement(
 					'button',
-					{ className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', type: 'button', disabled: this.state.disabled, style: styles },
+					{ className: "btn btn-default dropdown-toggle", 'data-toggle': "dropdown", type: "button", disabled: this.state.disabled, style: styles },
 					_React['default'].createElement(
 						'span',
-						{ className: 'selected-label' },
+						{ className: "selected-label" },
 						selection ? selection.name : 'None selected'
 					),
-					_React['default'].createElement('span', { className: 'caret' }),
+					_React['default'].createElement('span', { className: "caret" }),
 					_React['default'].createElement(
 						'span',
-						{ className: 'sr-only' },
+						{ className: "sr-only" },
 						'Toggle Dropdown'
 					)
 				),
 				_React['default'].createElement(
 					'ul',
-					{ className: 'dropdown-menu', role: 'menu', style: styles },
+					{ className: "dropdown-menu", role: "menu", style: styles },
 					this.menuItems()
 				),
-				_React['default'].createElement('input', { name: this.props.name, className: 'hidden hidden-field', readOnly: true, 'aria-hidden': 'true', type: 'text', value: JSON.stringify(selection) })
+				_React['default'].createElement('input', { name: this.props.name, className: "hidden hidden-field", readOnly: true, 'aria-hidden': "true", type: "text", value: JSON.stringify(selection) })
 			);
 		},
 
@@ -22033,72 +22104,4 @@ module.exports={
 	exports.Selectlist = Selectlist;
 });
 
-// Children
-
-},{"../Core/selectlist":161,"./menuitem":162,"classnames":1,"react":157}],166:[function(require,module,exports){
-(function (global, factory) {
-	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../package.json', 'underscore'], factory);
-	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../package.json'), require('underscore'));
-	} else {
-		var mod = {
-			exports: {}
-		};
-		factory(mod.exports, global._package, global._);
-		global.landmark = mod.exports;
-	}
-})(this, function (exports, _packageJson, _underscore) {
-	// TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-		value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
-
-	var _2 = _interopRequireDefault(_underscore);
-
-	var Landmark = (function (_ref) {
-		function Landmark() {
-			_classCallCheck(this, Landmark);
-
-			_get(Object.getPrototypeOf(Landmark.prototype), 'constructor', this).apply(this, arguments);
-		}
-
-		_inherits(Landmark, _ref);
-
-		_createClass(Landmark, null, [{
-			key: 'hasClass',
-			value: function hasClass(element, className) {
-				return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;
-			}
-		}, {
-			key: 'log',
-			value: function log() {
-				console.log.apply(console, arguments);
-			}
-		}, {
-			key: 'version',
-			get: function get() {
-				return _packageJson.version;
-			}
-		}]);
-
-		return Landmark;
-	})(_2['default']);
-
-	exports.Landmark = Landmark;
-	;
-});
-
-},{"../package.json":159,"underscore":158}]},{},[164]);
+},{"../core/selectlist":161,"./menuitem":163,"classnames":1,"react":157}]},{},[165]);

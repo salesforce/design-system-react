@@ -1,7 +1,7 @@
 // SELECTLIST CONTROL
 
 // Core
-import {SelectlistCore} from "../Core/selectlist";
+import {SelectlistCore} from "../core/selectlist";
 
 // Framework specific
 import React from 'react';
@@ -10,7 +10,7 @@ import classNames from 'classnames';
 // Children
 import {MenuItem} from './menuitem';
 
-export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {	
+export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -23,17 +23,17 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		]).isRequired,
 		name: React.PropTypes.string
 	},
-	
+
 	getInitialState () {
 		return Object.assign(this.__getInitialState(), {
 			wrapperClasses: {}
 		});
 	},
-	
+
 	getState (key) {
 		return this.state[key];
 	},
-		
+
 	menuItems () {
 		return this.props.collection.map((menuItem) => {
 			return (
@@ -41,18 +41,18 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 			);
 		});
 	},
-	
+
 	componentWillReceiveProps(nextProps) {
 		this.__initializeOptions(nextProps);
 	},
-		
+
 	render () {
 		var selection = this.getSelection();
-		
+
 		var styles = {
 			width: this.state.width
 		};
-		
+
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, 'btn-group', this.state.wrapperClasses)}>
 				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
@@ -67,29 +67,29 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 			</div>
 		);
 	},
-	
+
 	componentWillMount () {
 		var self = this;
-		
+
 		this.elements = {
 			wrapper: {
 				toggleClass: function (cssClass, state) {
 					var wrapperClasses = self.state.wrapperClasses;
 					wrapperClasses[cssClass] = state
-					
+
 					self.setState({
 						wrapperClasses: wrapperClasses
 					});
 				}
 			}
 		}
-		
+
 		this.__constructor(this.props);
-		
+
 		if (this.Landmark.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
 		if (this.Landmark.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 	},
-	
+
 	handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	}

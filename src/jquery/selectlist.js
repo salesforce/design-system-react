@@ -1,5 +1,5 @@
 import {Landmark} from "../landmark";
-import {SelectlistCore} from "../Core/selectlist";
+import {SelectlistCore} from "../core/selectlist";
 import $ from 'jquery';
 
 var old = $.fn.selectlist;
@@ -47,7 +47,7 @@ var Selectlist = function (element, options) {
 			var $this = $(this);
 			// attach key listener when dropdown is shown
 			$(document).on('keypress.fu.selectlist', function(e){
-				
+
 				// get the key that was pressed
 				var key = String.fromCharCode(e.which);
 				// look the items to find the first item with the first character match and set focus
@@ -57,7 +57,7 @@ var Selectlist = function (element, options) {
 						return false;
 					}
 				});
-				
+
 		});
 	});
 
