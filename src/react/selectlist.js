@@ -1,11 +1,11 @@
-// SELECTLIST CONTROL
+// SELECTLIST CONTROL - REACT FACADE
 
 // Core
+import {Landmark} from '../landmark';
 import {SelectlistCore} from "../core/selectlist";
 
 // Framework specific
 import React from 'react';
-import classNames from 'classnames';
 
 // Children
 import {MenuItem} from './menuitem';
@@ -54,7 +54,7 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		};
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, 'btn-group', this.state.wrapperClasses)}>
+			<div className={this.classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)}>
 				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
 					<span className="selected-label">{selection ? selection.name : 'None selected'}</span>
 					<span className="caret"></span>
@@ -86,8 +86,8 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 
 		this.__constructor(this.props);
 
-		if (this.Landmark.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
-		if (this.Landmark.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
+		if (Landmark.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
+		if (Landmark.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 	},
 
 	handleMenuItemSelected (selection) {

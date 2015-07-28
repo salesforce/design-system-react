@@ -19898,17 +19898,17 @@ module.exports={
 },{}],159:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../landmark'], factory);
+		define(['exports', '../landmark', 'classnames'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../landmark'));
+		factory(exports, require('../landmark'), require('classnames'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.landmark);
+		factory(mod.exports, global.landmark, global.classNames);
 		global.base = mod.exports;
 	}
-})(this, function (exports, _landmark) {
+})(this, function (exports, _landmark, _classnames) {
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -19917,20 +19917,24 @@ module.exports={
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _classNames = _interopRequireDefault(_classnames);
+
 	// CSS classes used across every control
 	var sharedCssClasses = {
 		DISABLED: 'disabled'
 	};
 
 	var Base = {
+		// Add an internal reference to the classnames library for the children to use
+		classNames: _classNames['default'],
+
 		__constructor: function __constructor(options) {
 			if (_landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
 			// If this control has any sort of internal state, set it up here
 			if (_landmark.Landmark.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
-
-			// Add an internal reference to Landmark for the child to use
-			this.Landmark = _landmark.Landmark;
 
 			// Combine any classes defined on the child with global defaults
 			this.cssClasses = _extends({}, sharedCssClasses, this._cssClasses);
@@ -19965,20 +19969,22 @@ module.exports={
 	exports.Base = Base;
 });
 
-},{"../landmark":161}],160:[function(require,module,exports){
+},{"../landmark":161,"classnames":1}],160:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', './base'], factory);
+		define(['exports', '../landmark', './base'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('./base'));
+		factory(exports, require('../landmark'), require('./base'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.base);
+		factory(mod.exports, global.landmark, global.base);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _base) {
+})(this, function (exports, _landmark, _base) {
+	// SELECTLIST CONTROL
+
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -19991,7 +19997,8 @@ module.exports={
 		// CSS classes used within this control
 		_cssClasses: {
 			CONTROL: 'selectlist',
-			SELECTED: 'selected'
+			SELECTED: 'selected',
+			BTN_GROUP: 'btn-group'
 		},
 
 		// Set the defaults
@@ -20012,9 +20019,9 @@ module.exports={
 				this._collection = [];
 			}
 
-			if (options && this.Landmark.isNumber(options.selection)) {
+			if (options && _landmark.Landmark.isNumber(options.selection)) {
 				this.setSelection({ id: options.selection });
-			} else if (options && this.Landmark.isObject(options.selection)) {
+			} else if (options && _landmark.Landmark.isObject(options.selection)) {
 				this.setSelection(options.selection);
 			} else {
 				this.clearSelection();
@@ -20027,25 +20034,25 @@ module.exports={
 			}
 
 			if (options && options.resize === 'auto') {
-				if (this.Landmark.isFunction(this.resize)) this.resize();
+				if (_landmark.Landmark.isFunction(this.resize)) this.resize();
 			}
 		},
 
 		__setSelection: function __setSelection(newSelection) {
 			if (this.__getState('selection') !== newSelection) {
-				if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
+				if (_landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
 				this.__setState({ selection: newSelection });
-				if (this.Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
+				if (_landmark.Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
 			}
 		},
 
 		getSelection: function getSelection() {
-			return this.Landmark.findWhere(this._collection, this.__getState('selection'));
+			return _landmark.Landmark.findWhere(this._collection, this.__getState('selection'));
 		},
 
 		// Pass any combination of key / value pairs
 		setSelection: function setSelection(criteria) {
-			var item = this.Landmark.findWhere(this._collection, criteria);
+			var item = _landmark.Landmark.findWhere(this._collection, criteria);
 
 			return this.__setSelection(item);
 		},
@@ -20063,7 +20070,7 @@ module.exports={
 
 			var item;
 
-			if (this.Landmark.isFunction(_collection.at)) {
+			if (_landmark.Landmark.isFunction(_collection.at)) {
 				item = this._collection.at(index);
 			} else {
 				item = this._collection[index];
@@ -20081,13 +20088,13 @@ module.exports={
 		enable: function enable() {
 			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 			this.__setState({ disabled: false });
-			if (this.Landmark.isFunction(this.onEnabled)) this.onEnabled();
+			if (_landmark.Landmark.isFunction(this.onEnabled)) this.onEnabled();
 		},
 
 		disable: function disable() {
 			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
 			this.__setState({ disabled: true });
-			if (this.Landmark.isFunction(this.onDisabled)) this.onDisabled();
+			if (_landmark.Landmark.isFunction(this.onDisabled)) this.onDisabled();
 		},
 
 		// Vanilla js implementation of this to be shared by the libraries
@@ -20101,9 +20108,9 @@ module.exports={
 
 			// TO-DO: We probably need to add the cssClasses library to the core
 			sizer.className = 'selectlist-sizer';
-			sizer.innerHTML = '<div class="' + this._cssClasses.CONTROL + ' btn-group"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
+			sizer.innerHTML = '<div class="' + this.classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
 
-			if (this.Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
+			if (_landmark.Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
 				parent = document.querySelector('body');
 			} else {
 				parent = document.querySelector('.fuelux');
@@ -20121,7 +20128,7 @@ module.exports={
 			// and use that width value. That would make less DOM touches. - @interactivellama
 
 			this._collection.forEach(function (item) {
-				if (self.Landmark.isFunction(item.get)) {
+				if (_landmark.Landmark.isFunction(item.get)) {
 					name = item.get('name');
 				} else {
 					name = item.name;
@@ -20137,13 +20144,13 @@ module.exports={
 			parent.removeChild(sizer);
 
 			this.__setState({ width: width });
-			if (this.Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
+			if (_landmark.Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
 		}
 	});
 	exports.SelectlistCore = SelectlistCore;
 });
 
-},{"./base":159}],161:[function(require,module,exports){
+},{"../landmark":161,"./base":159}],161:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', '../package.json'], factory);
@@ -20443,18 +20450,18 @@ module.exports={
 },{"./page":163,"react":157}],165:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../core/selectlist', 'react', 'classnames', './menuitem'], factory);
+		define(['exports', '../landmark', '../core/selectlist', 'react', './menuitem'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../core/selectlist'), require('react'), require('classnames'), require('./menuitem'));
+		factory(exports, require('../landmark'), require('../core/selectlist'), require('react'), require('./menuitem'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.selectlist, global.React, global.classNames, global.menuitem);
+		factory(mod.exports, global.landmark, global.selectlist, global.React, global.menuitem);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _coreSelectlist, _react, _classnames, _menuitem) {
-	// SELECTLIST CONTROL
+})(this, function (exports, _landmark, _coreSelectlist, _react, _menuitem) {
+	// SELECTLIST CONTROL - REACT FACADE
 
 	// Core
 	'use strict';
@@ -20470,8 +20477,6 @@ module.exports={
 	// Framework specific
 
 	var _React = _interopRequireDefault(_react);
-
-	var _classNames = _interopRequireDefault(_classnames);
 
 	var Selectlist = _React['default'].createClass(_extends({}, _coreSelectlist.SelectlistCore, {
 		propTypes: {
@@ -20512,7 +20517,7 @@ module.exports={
 
 			return _React['default'].createElement(
 				'div',
-				{ className: (0, _classNames['default'])(this.cssClasses.CONTROL, 'btn-group', this.state.wrapperClasses) },
+				{ className: this.classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses) },
 				_React['default'].createElement(
 					'button',
 					{ className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', type: 'button', disabled: this.state.disabled, style: styles },
@@ -20555,8 +20560,8 @@ module.exports={
 
 			this.__constructor(this.props);
 
-			if (this.Landmark.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
-			if (this.Landmark.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
+			if (_landmark.Landmark.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
+			if (_landmark.Landmark.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 		},
 
 		handleMenuItemSelected: function handleMenuItemSelected(selection) {
@@ -20568,4 +20573,4 @@ module.exports={
 
 // Children
 
-},{"../core/selectlist":160,"./menuitem":162,"classnames":1,"react":157}]},{},[164]);
+},{"../core/selectlist":160,"../landmark":161,"./menuitem":162,"react":157}]},{},[164]);

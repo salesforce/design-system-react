@@ -1,5 +1,56 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /*!
+  Copyright (c) 2015 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
+(function () {
+	'use strict';
+
+	function classNames () {
+
+		var classes = '';
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if ('string' === argType || 'number' === argType) {
+				classes += ' ' + arg;
+
+			} else if (Array.isArray(arg)) {
+				classes += ' ' + classNames.apply(null, arg);
+
+			} else if ('object' === argType) {
+				for (var key in arg) {
+					if (arg.hasOwnProperty(key) && arg[key]) {
+						classes += ' ' + key;
+					}
+				}
+			}
+		}
+
+		return classes.substr(1);
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		module.exports = classNames;
+	} else if (typeof define === 'function' && typeof define.amd === 'object' && define.amd){
+		// AMD. Register as an anonymous module.
+		define(function () {
+			return classNames;
+		});
+	} else {
+		window.classNames = classNames;
+	}
+
+}());
+
+},{}],2:[function(require,module,exports){
+/*!
  * jQuery JavaScript Library v2.1.4
  * http://jquery.com/
  *
@@ -9210,7 +9261,7 @@ return jQuery;
 
 }));
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 module.exports={
   "name": "landmark-js-poc",
   "private": true,
@@ -9246,20 +9297,20 @@ module.exports={
   }
 }
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../landmark'], factory);
+		define(['exports', '../landmark', 'classnames'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../landmark'));
+		factory(exports, require('../landmark'), require('classnames'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.landmark);
+		factory(mod.exports, global.landmark, global.classNames);
 		global.base = mod.exports;
 	}
-})(this, function (exports, _landmark) {
+})(this, function (exports, _landmark, _classnames) {
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -9268,20 +9319,24 @@ module.exports={
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _classNames = _interopRequireDefault(_classnames);
+
 	// CSS classes used across every control
 	var sharedCssClasses = {
 		DISABLED: 'disabled'
 	};
 
 	var Base = {
+		// Add an internal reference to the classnames library for the children to use
+		classNames: _classNames['default'],
+
 		__constructor: function __constructor(options) {
 			if (_landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
 			// If this control has any sort of internal state, set it up here
 			if (_landmark.Landmark.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
-
-			// Add an internal reference to Landmark for the child to use
-			this.Landmark = _landmark.Landmark;
 
 			// Combine any classes defined on the child with global defaults
 			this.cssClasses = _extends({}, sharedCssClasses, this._cssClasses);
@@ -9316,20 +9371,22 @@ module.exports={
 	exports.Base = Base;
 });
 
-},{"../landmark":7}],4:[function(require,module,exports){
+},{"../landmark":8,"classnames":1}],5:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', './base'], factory);
+		define(['exports', '../landmark', './base'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('./base'));
+		factory(exports, require('../landmark'), require('./base'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.base);
+		factory(mod.exports, global.landmark, global.base);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _base) {
+})(this, function (exports, _landmark, _base) {
+	// SELECTLIST CONTROL
+
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -9342,7 +9399,8 @@ module.exports={
 		// CSS classes used within this control
 		_cssClasses: {
 			CONTROL: 'selectlist',
-			SELECTED: 'selected'
+			SELECTED: 'selected',
+			BTN_GROUP: 'btn-group'
 		},
 
 		// Set the defaults
@@ -9363,9 +9421,9 @@ module.exports={
 				this._collection = [];
 			}
 
-			if (options && this.Landmark.isNumber(options.selection)) {
+			if (options && _landmark.Landmark.isNumber(options.selection)) {
 				this.setSelection({ id: options.selection });
-			} else if (options && this.Landmark.isObject(options.selection)) {
+			} else if (options && _landmark.Landmark.isObject(options.selection)) {
 				this.setSelection(options.selection);
 			} else {
 				this.clearSelection();
@@ -9378,25 +9436,25 @@ module.exports={
 			}
 
 			if (options && options.resize === 'auto') {
-				if (this.Landmark.isFunction(this.resize)) this.resize();
+				if (_landmark.Landmark.isFunction(this.resize)) this.resize();
 			}
 		},
 
 		__setSelection: function __setSelection(newSelection) {
 			if (this.__getState('selection') !== newSelection) {
-				if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
+				if (_landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
 				this.__setState({ selection: newSelection });
-				if (this.Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
+				if (_landmark.Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
 			}
 		},
 
 		getSelection: function getSelection() {
-			return this.Landmark.findWhere(this._collection, this.__getState('selection'));
+			return _landmark.Landmark.findWhere(this._collection, this.__getState('selection'));
 		},
 
 		// Pass any combination of key / value pairs
 		setSelection: function setSelection(criteria) {
-			var item = this.Landmark.findWhere(this._collection, criteria);
+			var item = _landmark.Landmark.findWhere(this._collection, criteria);
 
 			return this.__setSelection(item);
 		},
@@ -9414,7 +9472,7 @@ module.exports={
 
 			var item;
 
-			if (this.Landmark.isFunction(_collection.at)) {
+			if (_landmark.Landmark.isFunction(_collection.at)) {
 				item = this._collection.at(index);
 			} else {
 				item = this._collection[index];
@@ -9432,13 +9490,13 @@ module.exports={
 		enable: function enable() {
 			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 			this.__setState({ disabled: false });
-			if (this.Landmark.isFunction(this.onEnabled)) this.onEnabled();
+			if (_landmark.Landmark.isFunction(this.onEnabled)) this.onEnabled();
 		},
 
 		disable: function disable() {
 			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
 			this.__setState({ disabled: true });
-			if (this.Landmark.isFunction(this.onDisabled)) this.onDisabled();
+			if (_landmark.Landmark.isFunction(this.onDisabled)) this.onDisabled();
 		},
 
 		// Vanilla js implementation of this to be shared by the libraries
@@ -9452,9 +9510,9 @@ module.exports={
 
 			// TO-DO: We probably need to add the cssClasses library to the core
 			sizer.className = 'selectlist-sizer';
-			sizer.innerHTML = '<div class="' + this._cssClasses.CONTROL + ' btn-group"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
+			sizer.innerHTML = '<div class="' + this.classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
 
-			if (this.Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
+			if (_landmark.Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
 				parent = document.querySelector('body');
 			} else {
 				parent = document.querySelector('.fuelux');
@@ -9472,7 +9530,7 @@ module.exports={
 			// and use that width value. That would make less DOM touches. - @interactivellama
 
 			this._collection.forEach(function (item) {
-				if (self.Landmark.isFunction(item.get)) {
+				if (_landmark.Landmark.isFunction(item.get)) {
 					name = item.get('name');
 				} else {
 					name = item.name;
@@ -9488,13 +9546,13 @@ module.exports={
 			parent.removeChild(sizer);
 
 			this.__setState({ width: width });
-			if (this.Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
+			if (_landmark.Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
 		}
 	});
 	exports.SelectlistCore = SelectlistCore;
 });
 
-},{"./base":3}],5:[function(require,module,exports){
+},{"../landmark":8,"./base":4}],6:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', './selectlist', 'jquery'], factory);
@@ -9607,7 +9665,7 @@ module.exports={
 	});
 });
 
-},{"./selectlist":6,"jquery":1}],6:[function(require,module,exports){
+},{"./selectlist":7,"jquery":2}],7:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === "function" && define.amd) {
 		define(["exports", "../landmark", "../core/selectlist", "jquery"], factory);
@@ -9914,7 +9972,7 @@ module.exports={
 	});
 });
 
-},{"../core/selectlist":4,"../landmark":7,"jquery":1}],7:[function(require,module,exports){
+},{"../core/selectlist":5,"../landmark":8,"jquery":2}],8:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', '../package.json'], factory);
@@ -10020,4 +10078,4 @@ module.exports={
 	;
 });
 
-},{"../package.json":2}]},{},[5]);
+},{"../package.json":3}]},{},[6]);

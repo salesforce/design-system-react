@@ -1,10 +1,14 @@
+// SELECTLIST CONTROL
+
+import {Landmark} from '../landmark';
 import {Base} from './base';
 
 export var SelectlistCore = Object.assign({}, Base, {
 	// CSS classes used within this control
 	_cssClasses: {
 		CONTROL: 'selectlist',
-		SELECTED: 'selected'
+		SELECTED: 'selected',
+		BTN_GROUP: 'btn-group'
 	},
 
 	// Set the defaults
@@ -25,9 +29,9 @@ export var SelectlistCore = Object.assign({}, Base, {
 			this._collection = [];
 		}
 
-		if (options && this.Landmark.isNumber(options.selection)) {
+		if (options && Landmark.isNumber(options.selection)) {
 			this.setSelection({ id: options.selection });
-		} else if (options && this.Landmark.isObject(options.selection)) {
+		} else if (options && Landmark.isObject(options.selection)) {
 			this.setSelection(options.selection);
 		} else {
 			this.clearSelection();
@@ -40,25 +44,25 @@ export var SelectlistCore = Object.assign({}, Base, {
 		}
 
 		if (options && options.resize === 'auto') {
-			if (this.Landmark.isFunction(this.resize)) this.resize();
+			if (Landmark.isFunction(this.resize)) this.resize();
 		}
 	},
 
 	__setSelection (newSelection) {
 		if (this.__getState('selection') !== newSelection) {
-			if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
+			if (Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
 			this.__setState({ selection: newSelection });
-			if (this.Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
+			if (Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
 		}
 	},
 
 	getSelection () {
-		return this.Landmark.findWhere(this._collection, this.__getState('selection'));
+		return Landmark.findWhere(this._collection, this.__getState('selection'));
 	},
 
 	// Pass any combination of key / value pairs
 	setSelection (criteria) {
-		var item = this.Landmark.findWhere(this._collection, criteria);
+		var item = Landmark.findWhere(this._collection, criteria);
 
 		return this.__setSelection(item);
 	},
@@ -76,7 +80,7 @@ export var SelectlistCore = Object.assign({}, Base, {
 
 		var item;
 
-		if (this.Landmark.isFunction(_collection.at)) {
+		if (Landmark.isFunction(_collection.at)) {
 			item = this._collection.at(index);
 		} else {
 			item = this._collection[index];
@@ -94,13 +98,13 @@ export var SelectlistCore = Object.assign({}, Base, {
 	enable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 		this.__setState({ disabled: false });
-		if (this.Landmark.isFunction(this.onEnabled)) this.onEnabled();
+		if (Landmark.isFunction(this.onEnabled)) this.onEnabled();
 	},
 
 	disable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
 		this.__setState({ disabled: true });
-		if (this.Landmark.isFunction(this.onDisabled)) this.onDisabled();
+		if (Landmark.isFunction(this.onDisabled)) this.onDisabled();
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
@@ -114,9 +118,9 @@ export var SelectlistCore = Object.assign({}, Base, {
 
 		// TO-DO: We probably need to add the cssClasses library to the core
 		sizer.className = 'selectlist-sizer';
-		sizer.innerHTML = '<div class="' + this._cssClasses.CONTROL + ' btn-group"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
+		sizer.innerHTML = '<div class="' + this.classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
 
-		if (this.Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
+		if (Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
 			parent = document.querySelector('body');
 		} else {
 			parent = document.querySelector('.fuelux');
@@ -134,7 +138,7 @@ export var SelectlistCore = Object.assign({}, Base, {
 		// and use that width value. That would make less DOM touches. - @interactivellama
 
 		this._collection.forEach(function(item) {
-			if (self.Landmark.isFunction(item.get)) {
+			if (Landmark.isFunction(item.get)) {
 				name = item.get('name');
 			} else {
 				name = item.name;
@@ -150,6 +154,6 @@ export var SelectlistCore = Object.assign({}, Base, {
 		parent.removeChild(sizer);
 
 		this.__setState({ width: width });
-		if (this.Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
+		if (Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
 	}
 });

@@ -12820,18 +12820,18 @@ module.exports={
 },{"./selectlist":8,"backbone":1}],8:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../core/selectlist', 'underscore', 'backbone', 'classnames', './menuitem'], factory);
+		define(['exports', '../landmark', '../core/selectlist', 'underscore', 'backbone', './menuitem'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../core/selectlist'), require('underscore'), require('backbone'), require('classnames'), require('./menuitem'));
+		factory(exports, require('../landmark'), require('../core/selectlist'), require('underscore'), require('backbone'), require('./menuitem'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.selectlist, global._, global.Backbone, global.classNames, global.menuitem);
+		factory(mod.exports, global.landmark, global.selectlist, global._, global.Backbone, global.menuitem);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _coreSelectlist, _underscore, _backbone, _classnames, _menuitem) {
-	// SELECTLIST CONTROL
+})(this, function (exports, _landmark, _coreSelectlist, _underscore, _backbone, _menuitem) {
+	// SELECTLIST CONTROL - BACKBONE FACADE
 
 	// Core
 	'use strict';
@@ -12850,14 +12850,12 @@ module.exports={
 
 	var _Backbone = _interopRequireDefault(_backbone);
 
-	var _classNames = _interopRequireDefault(_classnames);
-
 	// Template imports
 	
 
 	var Selectlist = _Backbone['default'].View.extend(_extends({}, _coreSelectlist.SelectlistCore, {
 		className: function className() {
-			return (0, _classNames['default'])(this._cssClasses.CONTROL, 'btn-group');
+			return this.classNames(this._cssClasses.CONTROL, this._cssClasses.BTN_GROUP);
 		},
 
 		template: _2['default'].template("<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\"<% if (disabled) { %> disabled<% } %><% if (width) { %> style=\"width: <%- width %>px\"<% } %>>\n\t<span class=\"selected-label\"><% if (selection) { %><%- selection.name %><% } else { %>None selected<% } %></span>\n\t<span class=\"caret\"></span>\n\t<span class=\"sr-only\">Toggle Dropdown</span>\n</button>\n<ul class=\"dropdown-menu\" role=\"menu\"<% if (width) { %> style=\"width: <%- width %>px\"<% } %>>\n</ul>\n<input class=\"hidden hidden-field\" readonly aria-hidden=\"true\" type=\"text\" value=\"<% JSON.stringify(selection) %>\"></input>"),
@@ -12948,20 +12946,20 @@ module.exports={
 
 // Children
 
-},{"../core/selectlist":10,"./menuitem":6,"backbone":1,"classnames":2,"underscore":4}],9:[function(require,module,exports){
+},{"../core/selectlist":10,"../landmark":11,"./menuitem":6,"backbone":1,"underscore":4}],9:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../landmark'], factory);
+		define(['exports', '../landmark', 'classnames'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../landmark'));
+		factory(exports, require('../landmark'), require('classnames'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.landmark);
+		factory(mod.exports, global.landmark, global.classNames);
 		global.base = mod.exports;
 	}
-})(this, function (exports, _landmark) {
+})(this, function (exports, _landmark, _classnames) {
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -12970,20 +12968,24 @@ module.exports={
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	var _classNames = _interopRequireDefault(_classnames);
+
 	// CSS classes used across every control
 	var sharedCssClasses = {
 		DISABLED: 'disabled'
 	};
 
 	var Base = {
+		// Add an internal reference to the classnames library for the children to use
+		classNames: _classNames['default'],
+
 		__constructor: function __constructor(options) {
 			if (_landmark.Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
 			// If this control has any sort of internal state, set it up here
 			if (_landmark.Landmark.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
-
-			// Add an internal reference to Landmark for the child to use
-			this.Landmark = _landmark.Landmark;
 
 			// Combine any classes defined on the child with global defaults
 			this.cssClasses = _extends({}, sharedCssClasses, this._cssClasses);
@@ -13018,20 +13020,22 @@ module.exports={
 	exports.Base = Base;
 });
 
-},{"../landmark":11}],10:[function(require,module,exports){
+},{"../landmark":11,"classnames":2}],10:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', './base'], factory);
+		define(['exports', '../landmark', './base'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('./base'));
+		factory(exports, require('../landmark'), require('./base'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global.base);
+		factory(mod.exports, global.landmark, global.base);
 		global.selectlist = mod.exports;
 	}
-})(this, function (exports, _base) {
+})(this, function (exports, _landmark, _base) {
+	// SELECTLIST CONTROL
+
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
@@ -13044,7 +13048,8 @@ module.exports={
 		// CSS classes used within this control
 		_cssClasses: {
 			CONTROL: 'selectlist',
-			SELECTED: 'selected'
+			SELECTED: 'selected',
+			BTN_GROUP: 'btn-group'
 		},
 
 		// Set the defaults
@@ -13065,9 +13070,9 @@ module.exports={
 				this._collection = [];
 			}
 
-			if (options && this.Landmark.isNumber(options.selection)) {
+			if (options && _landmark.Landmark.isNumber(options.selection)) {
 				this.setSelection({ id: options.selection });
-			} else if (options && this.Landmark.isObject(options.selection)) {
+			} else if (options && _landmark.Landmark.isObject(options.selection)) {
 				this.setSelection(options.selection);
 			} else {
 				this.clearSelection();
@@ -13080,25 +13085,25 @@ module.exports={
 			}
 
 			if (options && options.resize === 'auto') {
-				if (this.Landmark.isFunction(this.resize)) this.resize();
+				if (_landmark.Landmark.isFunction(this.resize)) this.resize();
 			}
 		},
 
 		__setSelection: function __setSelection(newSelection) {
 			if (this.__getState('selection') !== newSelection) {
-				if (this.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
+				if (_landmark.Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
 				this.__setState({ selection: newSelection });
-				if (this.Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
+				if (_landmark.Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
 			}
 		},
 
 		getSelection: function getSelection() {
-			return this.Landmark.findWhere(this._collection, this.__getState('selection'));
+			return _landmark.Landmark.findWhere(this._collection, this.__getState('selection'));
 		},
 
 		// Pass any combination of key / value pairs
 		setSelection: function setSelection(criteria) {
-			var item = this.Landmark.findWhere(this._collection, criteria);
+			var item = _landmark.Landmark.findWhere(this._collection, criteria);
 
 			return this.__setSelection(item);
 		},
@@ -13116,7 +13121,7 @@ module.exports={
 
 			var item;
 
-			if (this.Landmark.isFunction(_collection.at)) {
+			if (_landmark.Landmark.isFunction(_collection.at)) {
 				item = this._collection.at(index);
 			} else {
 				item = this._collection[index];
@@ -13134,13 +13139,13 @@ module.exports={
 		enable: function enable() {
 			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 			this.__setState({ disabled: false });
-			if (this.Landmark.isFunction(this.onEnabled)) this.onEnabled();
+			if (_landmark.Landmark.isFunction(this.onEnabled)) this.onEnabled();
 		},
 
 		disable: function disable() {
 			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
 			this.__setState({ disabled: true });
-			if (this.Landmark.isFunction(this.onDisabled)) this.onDisabled();
+			if (_landmark.Landmark.isFunction(this.onDisabled)) this.onDisabled();
 		},
 
 		// Vanilla js implementation of this to be shared by the libraries
@@ -13154,9 +13159,9 @@ module.exports={
 
 			// TO-DO: We probably need to add the cssClasses library to the core
 			sizer.className = 'selectlist-sizer';
-			sizer.innerHTML = '<div class="' + this._cssClasses.CONTROL + ' btn-group"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
+			sizer.innerHTML = '<div class="' + this.classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
 
-			if (this.Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
+			if (_landmark.Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
 				parent = document.querySelector('body');
 			} else {
 				parent = document.querySelector('.fuelux');
@@ -13174,7 +13179,7 @@ module.exports={
 			// and use that width value. That would make less DOM touches. - @interactivellama
 
 			this._collection.forEach(function (item) {
-				if (self.Landmark.isFunction(item.get)) {
+				if (_landmark.Landmark.isFunction(item.get)) {
 					name = item.get('name');
 				} else {
 					name = item.name;
@@ -13190,13 +13195,13 @@ module.exports={
 			parent.removeChild(sizer);
 
 			this.__setState({ width: width });
-			if (this.Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
+			if (_landmark.Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
 		}
 	});
 	exports.SelectlistCore = SelectlistCore;
 });
 
-},{"./base":9}],11:[function(require,module,exports){
+},{"../landmark":11,"./base":9}],11:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
 		define(['exports', '../package.json'], factory);
