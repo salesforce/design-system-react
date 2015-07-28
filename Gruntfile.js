@@ -11,9 +11,9 @@ module.exports = function(grunt) {
 					}], ["brfs"]]
 				},
 				files: {
-					"examples/jQuery/sample.js": "src/jQuery/sample.js",
-					"examples/Backbone/sample.js": "src/Backbone/sample.js",
-					"examples/React/sample.js": "src/React/sample.js"
+					"examples/jquery/sample.js": "src/jquery/sample.js",
+					"examples/backbone/sample.js": "src/backbone/sample.js",
+					"examples/react/sample.js": "src/react/sample.js"
 				}
 			}
 		},
