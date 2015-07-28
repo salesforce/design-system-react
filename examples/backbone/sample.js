@@ -13096,23 +13096,39 @@ module.exports={
 			if (!criteria) {
 				return null;
 			}
+			var found;
 
 			if (this.Landmark.isFunction(criteria.toJSON)) {
 				criteria = criteria.toJSON();
 			}
 
 			if (this.Landmark.isFunction(this._collection.findWhere)) {
-				return this._collection.findWhere(criteria) || null;
+				found = this._collection.findWhere(criteria);
 			} else {
-				return this.Landmark.findWhere(this._collection, criteria) || null;
+				this.__each(function (item) {
+					if (!found) {
+						var match = true;
+						var innerItem = item.attributes ? item.attributes : item;
+						Object.keys(criteria).forEach(function (key) {
+							if (criteria[key] !== innerItem[key]) {
+								match = false;
+							}
+						});
+
+						if (match) {
+							found = item;
+						}
+					}
+				});
 			}
+			return found || null;
 		},
 
 		__each: function __each(iteratee) {
 			if (this.Landmark.isFunction(this._collection.each)) {
 				return this._collection.each(iteratee);
 			} else {
-				return this.Landmark.each(this._collection, iteratee);
+				return this._collection.forEach(iteratee);
 			}
 		},
 
@@ -13223,17 +13239,17 @@ module.exports={
 },{"./base":9}],11:[function(require,module,exports){
 (function (global, factory) {
 	if (typeof define === 'function' && define.amd) {
-		define(['exports', '../package.json', 'underscore'], factory);
+		define(['exports', '../package.json'], factory);
 	} else if (typeof exports !== 'undefined') {
-		factory(exports, require('../package.json'), require('underscore'));
+		factory(exports, require('../package.json'));
 	} else {
 		var mod = {
 			exports: {}
 		};
-		factory(mod.exports, global._package, global._);
+		factory(mod.exports, global._package);
 		global.landmark = mod.exports;
 	}
-})(this, function (exports, _packageJson, _underscore) {
+})(this, function (exports, _packageJson) {
 	// TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
 	'use strict';
 
@@ -13243,23 +13259,11 @@ module.exports={
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _2 = _interopRequireDefault(_underscore);
-
-	var Landmark = (function (_ref) {
-		_inherits(Landmark, _ref);
-
+	var Landmark = (function () {
 		function Landmark() {
 			_classCallCheck(this, Landmark);
-
-			_get(Object.getPrototypeOf(Landmark.prototype), 'constructor', this).apply(this, arguments);
 		}
 
 		_createClass(Landmark, null, [{
@@ -13270,7 +13274,24 @@ module.exports={
 		}, {
 			key: 'log',
 			value: function log() {
-				console.log.apply(console, arguments);
+				if (window.console && window.console.log) {
+					console.log.apply(console, arguments);
+				}
+			}
+		}, {
+			key: 'isFunction',
+			value: function isFunction(potentialFunction) {
+				return typeof potentialFunction === 'function';
+			}
+		}, {
+			key: 'isNumber',
+			value: function isNumber(potentialNumber) {
+				return typeof potentialNumber === 'number' && +potentialNumber !== potentialNumber;
+			}
+		}, {
+			key: 'isObject',
+			value: function isObject(potentialObject) {
+				return typeof potentialObject === 'function' || typeof potentialObject === 'object' && !!potentialObject;
 			}
 		}, {
 			key: 'version',
@@ -13280,10 +13301,10 @@ module.exports={
 		}]);
 
 		return Landmark;
-	})(_2['default']);
+	})();
 
 	exports.Landmark = Landmark;
 	;
 });
 
-},{"../package.json":5,"underscore":4}]},{},[7]);
+},{"../package.json":5}]},{},[7]);
