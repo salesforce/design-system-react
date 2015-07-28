@@ -2,9 +2,13 @@ body {
 	margin: 100px;
 }
 
+.example-group {
+	margin: 20px 0;
+}
+
 #selectlist .selectlist-examples {
 	list-style-type: none;
-	margin: 20px 0;
+	margin: 0;
 	padding: 0;
 }
 
