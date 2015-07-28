@@ -20039,53 +20039,13 @@ module.exports={
 			}
 		},
 
-		__findWhere: function __findWhere(criteria) {
-			if (!criteria) {
-				return null;
-			}
-			var found;
-
-			if (this.Landmark.isFunction(criteria.toJSON)) {
-				criteria = criteria.toJSON();
-			}
-
-			if (this.Landmark.isFunction(this._collection.findWhere)) {
-				found = this._collection.findWhere(criteria);
-			} else {
-				this.__each(function (item) {
-					if (!found) {
-						var match = true;
-						var innerItem = item.attributes ? item.attributes : item;
-						Object.keys(criteria).forEach(function (key) {
-							if (criteria[key] !== innerItem[key]) {
-								match = false;
-							}
-						});
-
-						if (match) {
-							found = item;
-						}
-					}
-				});
-			}
-			return found || null;
-		},
-
-		__each: function __each(iteratee) {
-			if (this.Landmark.isFunction(this._collection.each)) {
-				return this._collection.each(iteratee);
-			} else {
-				return this._collection.forEach(iteratee);
-			}
-		},
-
 		getSelection: function getSelection() {
-			return this.__findWhere(this.__getState('selection'));
+			return this.Landmark.findWhere(this._collection, this.__getState('selection'));
 		},
 
 		// Pass any combination of key / value pairs
 		setSelection: function setSelection(criteria) {
-			var item = this.__findWhere(criteria);
+			var item = this.Landmark.findWhere(this._collection, criteria);
 
 			return this.__setSelection(item);
 		},
@@ -20160,7 +20120,7 @@ module.exports={
 			// This list could be long, we might want to cycle through the collection and find the longest name and just select it,
 			// and use that width value. That would make less DOM touches. - @interactivellama
 
-			this.__each(function (item) {
+			this._collection.forEach(function (item) {
 				if (self.Landmark.isFunction(item.get)) {
 					name = item.get('name');
 				} else {
@@ -20239,6 +20199,41 @@ module.exports={
 			key: 'isObject',
 			value: function isObject(potentialObject) {
 				return typeof potentialObject === 'function' || typeof potentialObject === 'object' && !!potentialObject;
+			}
+		}, {
+			key: 'findWhere',
+			value: function findWhere(collection, criteria) {
+				var found;
+
+				if (!criteria) {
+					return null;
+				}
+
+				if (Landmark.isFunction(criteria.toJSON)) {
+					criteria = criteria.toJSON();
+				}
+
+				if (Landmark.isFunction(collection.findWhere)) {
+					found = collection.findWhere(criteria);
+				} else {
+					collection.forEach(function (item) {
+						if (!found) {
+							var match = true;
+							var innerItem = item.attributes ? item.attributes : item;
+							Object.keys(criteria).forEach(function (key) {
+								if (criteria[key] !== innerItem[key]) {
+									match = false;
+								}
+							});
+
+							if (match) {
+								found = item;
+							}
+						}
+					});
+				}
+
+				return found || null;
 			}
 		}, {
 			key: 'version',
@@ -20357,7 +20352,7 @@ module.exports={
 				null,
 				_React['default'].createElement(
 					'ul',
-					{ className: "selectlist-examples" },
+					{ className: 'selectlist-examples' },
 					_React['default'].createElement(
 						'li',
 						null,
@@ -20381,7 +20376,7 @@ module.exports={
 				),
 				_React['default'].createElement(
 					'button',
-					{ className: "selectlist-action btn btn-primary", onClick: this.changeCollection },
+					{ className: 'selectlist-action btn btn-primary', onClick: this.changeCollection },
 					'Toggle Enabled / Disabled'
 				)
 			);
@@ -20478,7 +20473,6 @@ module.exports={
 
 	var _classNames = _interopRequireDefault(_classnames);
 
-	// Children
 	var Selectlist = _React['default'].createClass(_extends({}, _coreSelectlist.SelectlistCore, {
 		propTypes: {
 			disabled: _React['default'].PropTypes.bool,
@@ -20521,25 +20515,25 @@ module.exports={
 				{ className: (0, _classNames['default'])(this.cssClasses.CONTROL, 'btn-group', this.state.wrapperClasses) },
 				_React['default'].createElement(
 					'button',
-					{ className: "btn btn-default dropdown-toggle", 'data-toggle': "dropdown", type: "button", disabled: this.state.disabled, style: styles },
+					{ className: 'btn btn-default dropdown-toggle', 'data-toggle': 'dropdown', type: 'button', disabled: this.state.disabled, style: styles },
 					_React['default'].createElement(
 						'span',
-						{ className: "selected-label" },
+						{ className: 'selected-label' },
 						selection ? selection.name : 'None selected'
 					),
-					_React['default'].createElement('span', { className: "caret" }),
+					_React['default'].createElement('span', { className: 'caret' }),
 					_React['default'].createElement(
 						'span',
-						{ className: "sr-only" },
+						{ className: 'sr-only' },
 						'Toggle Dropdown'
 					)
 				),
 				_React['default'].createElement(
 					'ul',
-					{ className: "dropdown-menu", role: "menu", style: styles },
+					{ className: 'dropdown-menu', role: 'menu', style: styles },
 					this.menuItems()
 				),
-				_React['default'].createElement('input', { name: this.props.name, className: "hidden hidden-field", readOnly: true, 'aria-hidden': "true", type: "text", value: JSON.stringify(selection) })
+				_React['default'].createElement('input', { name: this.props.name, className: 'hidden hidden-field', readOnly: true, 'aria-hidden': 'true', type: 'text', value: JSON.stringify(selection) })
 			);
 		},
 
@@ -20571,5 +20565,7 @@ module.exports={
 	}));
 	exports.Selectlist = Selectlist;
 });
+
+// Children
 
 },{"../core/selectlist":160,"./menuitem":162,"classnames":1,"react":157}]},{},[164]);

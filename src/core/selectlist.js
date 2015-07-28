@@ -52,53 +52,13 @@ export var SelectlistCore = Object.assign({}, Base, {
 		}
 	},
 
-	__findWhere (criteria) {
-		if (!criteria) {
-			return null;
-		}
-		var found;
-
-		if (this.Landmark.isFunction(criteria.toJSON)) {
-			criteria = criteria.toJSON();
-		}
-
-		if (this.Landmark.isFunction(this._collection.findWhere)) {
-			found = this._collection.findWhere(criteria);
-		} else {
-			this.__each(function(item) {
-				if (!found) {
-					var match = true;
-					var innerItem = item.attributes ? item.attributes : item;
-					Object.keys(criteria).forEach(function(key) {
-						if (criteria[key] !== innerItem[key]) {
-							match = false;
-						}
-					});
-
-					if (match) {
-						found = item;
-					}
-				}
-			});
-		}
-			return found || null;
-	},
-
-	__each (iteratee) {
-		if (this.Landmark.isFunction(this._collection.each)) {
-			return this._collection.each(iteratee);
-		} else {
-			return this._collection.forEach(iteratee);
-		}
-	},
-
 	getSelection () {
-		return this.__findWhere(this.__getState('selection'));
+		return this.Landmark.findWhere(this._collection, this.__getState('selection'));
 	},
 
 	// Pass any combination of key / value pairs
 	setSelection (criteria) {
-		var item = this.__findWhere(criteria);
+		var item = this.Landmark.findWhere(this._collection, criteria);
 
 		return this.__setSelection(item);
 	},
@@ -173,7 +133,7 @@ export var SelectlistCore = Object.assign({}, Base, {
 		// This list could be long, we might want to cycle through the collection and find the longest name and just select it,
 		// and use that width value. That would make less DOM touches. - @interactivellama
 
-		this.__each(function(item) {
+		this._collection.forEach(function(item) {
 			if (self.Landmark.isFunction(item.get)) {
 				name = item.get('name');
 			} else {

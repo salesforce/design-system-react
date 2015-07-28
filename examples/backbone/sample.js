@@ -12756,7 +12756,7 @@ module.exports={
 		template: _2['default'].template('<a href="#"><%- name %></a>'),
 
 		events: {
-			"click a": "handleClicked"
+			'click a': 'handleClicked'
 		},
 
 		initialize: function initialize(options) {
@@ -12852,8 +12852,6 @@ module.exports={
 
 	var _classNames = _interopRequireDefault(_classnames);
 
-	// Children
-
 	// Template imports
 	
 
@@ -12947,6 +12945,8 @@ module.exports={
 	}));
 	exports.Selectlist = Selectlist;
 });
+
+// Children
 
 },{"../core/selectlist":10,"./menuitem":6,"backbone":1,"classnames":2,"underscore":4}],9:[function(require,module,exports){
 (function (global, factory) {
@@ -13092,53 +13092,13 @@ module.exports={
 			}
 		},
 
-		__findWhere: function __findWhere(criteria) {
-			if (!criteria) {
-				return null;
-			}
-			var found;
-
-			if (this.Landmark.isFunction(criteria.toJSON)) {
-				criteria = criteria.toJSON();
-			}
-
-			if (this.Landmark.isFunction(this._collection.findWhere)) {
-				found = this._collection.findWhere(criteria);
-			} else {
-				this.__each(function (item) {
-					if (!found) {
-						var match = true;
-						var innerItem = item.attributes ? item.attributes : item;
-						Object.keys(criteria).forEach(function (key) {
-							if (criteria[key] !== innerItem[key]) {
-								match = false;
-							}
-						});
-
-						if (match) {
-							found = item;
-						}
-					}
-				});
-			}
-			return found || null;
-		},
-
-		__each: function __each(iteratee) {
-			if (this.Landmark.isFunction(this._collection.each)) {
-				return this._collection.each(iteratee);
-			} else {
-				return this._collection.forEach(iteratee);
-			}
-		},
-
 		getSelection: function getSelection() {
-			return this.__findWhere(this.__getState('selection'));
+			return this.Landmark.findWhere(this._collection, this.__getState('selection'));
 		},
 
 		// Pass any combination of key / value pairs
 		setSelection: function setSelection(criteria) {
-			var item = this.__findWhere(criteria);
+			var item = this.Landmark.findWhere(this._collection, criteria);
 
 			return this.__setSelection(item);
 		},
@@ -13213,7 +13173,7 @@ module.exports={
 			// This list could be long, we might want to cycle through the collection and find the longest name and just select it,
 			// and use that width value. That would make less DOM touches. - @interactivellama
 
-			this.__each(function (item) {
+			this._collection.forEach(function (item) {
 				if (self.Landmark.isFunction(item.get)) {
 					name = item.get('name');
 				} else {
@@ -13292,6 +13252,41 @@ module.exports={
 			key: 'isObject',
 			value: function isObject(potentialObject) {
 				return typeof potentialObject === 'function' || typeof potentialObject === 'object' && !!potentialObject;
+			}
+		}, {
+			key: 'findWhere',
+			value: function findWhere(collection, criteria) {
+				var found;
+
+				if (!criteria) {
+					return null;
+				}
+
+				if (Landmark.isFunction(criteria.toJSON)) {
+					criteria = criteria.toJSON();
+				}
+
+				if (Landmark.isFunction(collection.findWhere)) {
+					found = collection.findWhere(criteria);
+				} else {
+					collection.forEach(function (item) {
+						if (!found) {
+							var match = true;
+							var innerItem = item.attributes ? item.attributes : item;
+							Object.keys(criteria).forEach(function (key) {
+								if (criteria[key] !== innerItem[key]) {
+									match = false;
+								}
+							});
+
+							if (match) {
+								found = item;
+							}
+						}
+					});
+				}
+
+				return found || null;
 			}
 		}, {
 			key: 'version',

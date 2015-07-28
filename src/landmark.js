@@ -27,4 +27,38 @@ export class Landmark {
 	static isObject (potentialObject) {
 		return typeof potentialObject === 'function' || typeof potentialObject === 'object' && !!potentialObject;
 	}
+	
+	static findWhere (collection, criteria) {
+		var found;
+		
+		if (!criteria) {
+			return null;
+		}
+		
+		if (Landmark.isFunction(criteria.toJSON)) {
+			criteria = criteria.toJSON();
+		}
+
+		if (Landmark.isFunction(collection.findWhere)) {
+			found = collection.findWhere(criteria);
+		} else {
+			collection.forEach(function(item) {
+				if (!found) {
+					var match = true;
+					var innerItem = item.attributes ? item.attributes : item;
+					Object.keys(criteria).forEach(function(key) {
+						if (criteria[key] !== innerItem[key]) {
+							match = false;
+						}
+					});
+
+					if (match) {
+						found = item;
+					}
+				}
+			});
+		}
+		
+		return found || null;
+	}
 };
