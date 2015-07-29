@@ -13,3 +13,5 @@ _site/*
 
 # node_module cache for TravisCI, etc.
 node_modules.tar.gz
+
+npm-debug.log

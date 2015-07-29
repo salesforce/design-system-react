@@ -14,10 +14,9 @@
 		<link href="/styles.css" rel="stylesheet">
 	</head>
 	<body class="fuelux">
-		<section class="declarative">
-			<h2>Declaritive Example (backwards compatible)</h2>
+		<section class="declarative example-group">
+			<h1>Declaritive Example (backwards compatible)</h1>
 			<div>
-
 				<div class="btn-group selectlist" id="mySelectlist1">
 					<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
 						<span class="selected-label">&nbsp;</span>
@@ -41,6 +40,7 @@
 					<input class="hidden hidden-field" name="mySelectlist" readonly="readonly" aria-hidden="true" type="text" />
 				</div>
 			</div>
+			
 			<div class="btn-panel">
 				<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item/value</button>
 				<button type="button" class="btn btn-default btnSelectlistSelectByValue">set by value (2)</button>
@@ -53,25 +53,22 @@
 			</div>
 		</section>
 
-		<section class="imperative">
-		<h2>Imperative Example (backwards compatible)</h2>
-		<div>
+		<section class="imperative example-group">
+			<h1>Imperative Example</h1>
+			<div>
+				<div id="mySelectlist2"></div>
 
-			<div class="selectlist" id="mySelectlist2"></div>
-
+				<div class="btn-panel">
+					<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item/value</button>
+					<button type="button" class="btn btn-default btnSelectlistSelectByValue">set by value (2)</button>
+					<button type="button" class="btn btn-default btnSelectlistSelectByIndex">set by element index (zero-based) ('4')</button>
+					<button type="button" class="btn btn-default btnSelectlistSelectByText">set by text ('One')</button>
+					<button type="button" class="btn btn-default btnSelectlistSelectBySelector">set by CSS selector ('li[data-fizz=buzz]')</button>
+					<button type="button" class="btn btn-default btnSelectlistEnableSelectlist">enable</button>
+					<button type="button" class="btn btn-default btnSelectlistDisableSelectlist">disable</button>
+					<button type="button" class="btn btn-default btnSelectlistDestroy">destroy and append</button>
+				</div>
 			</div>
-
-			<div class="btn-panel">
-				<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item/value</button>
-				<button type="button" class="btn btn-default btnSelectlistSelectByValue">set by value (2)</button>
-				<button type="button" class="btn btn-default btnSelectlistSelectByIndex">set by element index (zero-based) ('4')</button>
-				<button type="button" class="btn btn-default btnSelectlistSelectByText">set by text ('One')</button>
-				<button type="button" class="btn btn-default btnSelectlistSelectBySelector">set by CSS selector ('li[data-fizz=buzz]')</button>
-				<button type="button" class="btn btn-default btnSelectlistEnableSelectlist">enable</button>
-				<button type="button" class="btn btn-default btnSelectlistDisableSelectlist">disable</button>
-				<button type="button" class="btn btn-default btnSelectlistDestroy">destroy and append</button>
-			</div>
-		</div>
 		</section>
 
 		<!-- Because these controls are meant to play nice with old FuelUX we're still including Bootstrap js on the page for now -->
