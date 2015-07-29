@@ -1,2 +1,0 @@
-//Read Only
-- can be set via options, or by adding 'data-readonly="readonly"' to 'pillbox' classed div

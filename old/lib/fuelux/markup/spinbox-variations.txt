@@ -1,3 +1,0 @@
-//Has default value to begin with
-- add 'value="{{string}}"' to input classed 'spinbox-input'
-    (ex: 'value="10"')

@@ -1,2 +1,0 @@
-//Active step
-- add class 'active' to 'ul.steps li' element of choice to make that step active upon initialization
