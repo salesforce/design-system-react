@@ -67,11 +67,6 @@ var SelectlistCore = Object.assign({}, Base, {
 		return this.__setSelection(item);
 	},
 
-	// Legacy FuelUX functionality - select by the display text
-	setSelectionByName (name) {
-		return this.setSelectionByKey({ name: name });
-	},
-
 	// Legacy FuelUX functionality - select by position
 	setSelectionByIndex (index) {
 		if (!this._collection) {
@@ -80,7 +75,7 @@ var SelectlistCore = Object.assign({}, Base, {
 
 		var item;
 
-		if (Landmark.isFunction(_collection.at)) {
+		if (Landmark.isFunction(this._collection.at)) {
 			item = this._collection.at(index);
 		} else {
 			item = this._collection[index];

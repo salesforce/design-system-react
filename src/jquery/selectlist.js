@@ -24,7 +24,7 @@ var Selectlist = function (element, options) {
 	} else {
 		this.__initElements();
 		
-		// TO-DO: Build options.collection from the HTML
+		this.__buildCollection(options);
 		
 		this.rendered = true;
 	}
@@ -39,6 +39,27 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		this.elements.hiddenField = this.elements.wrapper.find('.hidden-field');
 		this.elements.label = this.elements.wrapper.find('.selected-label');
 		this.elements.dropdownMenu = this.elements.wrapper.find('.dropdown-menu');
+	},
+	
+	__buildCollection (options) {
+		options.collection = [];
+		
+		this.elements.dropdownMenu.find('li').each(function () {
+			var $item = $(this);
+			var item = $item.data();
+			
+			if (!item.name) {
+				item.name = $item.text();
+			}
+			
+			if (item.selected) {
+				delete item.selected;
+				options.selection = item;
+			}
+			
+			$item.data(item);
+			options.collection.push(item);
+		});
 	},
 	
 	onInitialized (options) {
@@ -155,6 +176,34 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 	}
 });
 
+// LEGACY METHODS
+
+var legacyMethods = {
+	selectedItem: function () {
+		return this.getSelection();
+	},
+	
+	selectByValue: function (value) {
+		return this.setSelection({ value: value });
+	},
+	
+	selectByText: function (name) {
+		return this.setSelection({ name: name });
+	},
+	
+	selectBySelector: function (selector) {
+		var $item = $(selector);
+		return this.setSelection($item.data());
+	},
+	
+	selectByIndex: function (index) {
+		if (!Landmark.isNumber(index)) {
+			index = parseInt(index, 10);
+		}
+		return this.setSelectionByIndex(index);
+	}
+};
+
 // SELECT PLUGIN DEFINITION
 
 $.fn.selectlist = function (option) {
@@ -173,7 +222,11 @@ $.fn.selectlist = function (option) {
 
 		// If string, this is a method call, and apply with args
 		if (typeof option === 'string') {
-			methodReturn = data[option].apply(data, args);
+			if (Landmark.isFunction(data[option])) {
+				methodReturn = data[option].apply(data, args);
+			} else {
+				methodReturn = legacyMethods[option].apply(data, args);
+			}
 		}
 	});
 

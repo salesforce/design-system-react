@@ -9,7 +9,7 @@ $(function () {
 		console.log($('#mySelectlist1').selectlist('selectedItem'));
 	});
 	$('.declarative .btnSelectlistSelectByValue').on('click', function () {
-		$('#mySelectlist1').selectlist('selectByValue', '2');
+		$('#mySelectlist1').selectlist('selectByValue', 2);
 	});
 	$('.declarative .btnSelectlistSelectBySelector').on('click', function () {
 		$('#mySelectlist1').selectlist('selectBySelector', 'li[data-fizz=buzz]');
