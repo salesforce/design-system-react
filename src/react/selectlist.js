@@ -1,16 +1,16 @@
 // SELECTLIST CONTROL - REACT FACADE
 
 // Core
-import {Landmark} from '../landmark';
-import {SelectlistCore} from "../core/selectlist";
+import Landmark from '../landmark';
+import SelectlistCore from '../core/selectlist';
 
 // Framework specific
 import React from 'react';
 
 // Children
-import {MenuItem} from './menuitem';
+import SelectlistItem from './selectlist-item';
 
-export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
+var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -37,7 +37,7 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	menuItems () {
 		return this.props.collection.map((menuItem) => {
 			return (
-				<MenuItem key={menuItem.id} item={menuItem} onSelected={this.handleMenuItemSelected}></MenuItem>
+				<SelectlistItem key={menuItem.id} item={menuItem} onSelected={this.handleMenuItemSelected}></SelectlistItem>
 			);
 		});
 	},
@@ -94,3 +94,5 @@ export var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		this.setSelection(selection);
 	}
 }));
+
+export default Selectlist;

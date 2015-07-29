@@ -1,9 +1,9 @@
 // SELECTLIST CONTROL
 
-import {Landmark} from '../landmark';
-import {Base} from './base';
+import Landmark from '../landmark';
+import Base from './base';
 
-export var SelectlistCore = Object.assign({}, Base, {
+var SelectlistCore = Object.assign({}, Base, {
 	// CSS classes used within this control
 	_cssClasses: {
 		CONTROL: 'selectlist',
@@ -157,3 +157,5 @@ export var SelectlistCore = Object.assign({}, Base, {
 		if (Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
 	}
 });
+
+export default SelectlistCore;

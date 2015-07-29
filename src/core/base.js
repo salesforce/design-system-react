@@ -1,4 +1,4 @@
-import {Landmark} from '../landmark';
+import Landmark from '../landmark';
 import classNames from 'classnames';
 
 // CSS classes used across every control
@@ -6,7 +6,7 @@ var sharedCssClasses = {
 		DISABLED: 'disabled'
 	};
 
-export var Base = {
+var Base = {
 	// Add an internal reference to the classnames library for the children to use
 	classNames: classNames,
 	
@@ -46,3 +46,5 @@ export var Base = {
 		return null;
 	}
 };
+
+export default Base;

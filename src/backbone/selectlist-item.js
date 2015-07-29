@@ -1,7 +1,7 @@
 import _ from 'underscore';
 import Backbone from 'backbone';
 
-export var MenuItem = Backbone.View.extend({
+var SelectlistItem = Backbone.View.extend({
 	tagName: 'li',
 	
 	template: _.template('<a href="#"><%- name %></a>'),
@@ -29,3 +29,5 @@ export var MenuItem = Backbone.View.extend({
 		this.onSelected(this.model);
 	}
 });
+
+export default SelectlistItem;

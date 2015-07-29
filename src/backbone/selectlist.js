@@ -1,20 +1,20 @@
 // SELECTLIST CONTROL - BACKBONE FACADE
 
 // Core
-import {Landmark} from '../landmark';
-import {SelectlistCore} from "../core/selectlist";
+import Landmark from '../landmark';
+import SelectlistCore from '../core/selectlist';
 
 // Framework specific
 import _ from 'underscore';
 import Backbone from 'backbone';
 
 // Children
-import {MenuItem} from './menuitem';
+import SelectlistItem from './selectlist-item';
 
 // Template imports
 var fs = require('fs');
 
-export var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
+var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 	className () {
 		return this.classNames(this._cssClasses.CONTROL, this._cssClasses.BTN_GROUP)
 	},
@@ -81,7 +81,7 @@ export var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 
 		if (!this._renderedMenuItems) {
 			this._renderedMenuItems = this._collection.map(function (item) {
-				var menuItem = new MenuItem({
+				var menuItem = new SelectlistItem({
 					model: item,
 					onSelected: handleMenuItemSelected
 				});
@@ -102,3 +102,5 @@ export var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 		this.setSelection(selection);
 	}
 }));
+
+export default Selectlist;

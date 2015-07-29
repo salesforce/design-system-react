@@ -1,6 +1,6 @@
 import React from 'react';
 
-export var MenuItem = React.createClass({	
+var SelectlistItem = React.createClass({	
 	propTypes: {
 		item: React.PropTypes.object.isRequired,
 		onSelected: React.PropTypes.func.isRequired
@@ -19,3 +19,5 @@ export var MenuItem = React.createClass({
 		this.props.onSelected(this.props.item);
 	}
 });
+
+export default SelectlistItem;
