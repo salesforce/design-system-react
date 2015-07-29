@@ -1,19 +1,20 @@
 import {Landmark} from '../landmark';
+import classNames from 'classnames';
 
 // CSS classes used across every control
 var sharedCssClasses = {
 		DISABLED: 'disabled'
 	};
 
-export var Base = {	
+export var Base = {
+	// Add an internal reference to the classnames library for the children to use
+	classNames: classNames,
+	
 	__constructor (options) {
 		if (Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 		
 		// If this control has any sort of internal state, set it up here
 		if (Landmark.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
-		
-		// Add an internal reference to Landmark for the child to use
-		this.Landmark = Landmark;
 		
 		// Combine any classes defined on the child with global defaults
 		this.cssClasses = Object.assign({}, sharedCssClasses, this._cssClasses);

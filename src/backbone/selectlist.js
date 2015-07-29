@@ -1,12 +1,12 @@
-// SELECTLIST CONTROL
+// SELECTLIST CONTROL - BACKBONE FACADE
 
 // Core
+import {Landmark} from '../landmark';
 import {SelectlistCore} from "../core/selectlist";
 
 // Framework specific
 import _ from 'underscore';
 import Backbone from 'backbone';
-import classNames from 'classnames';
 
 // Children
 import {MenuItem} from './menuitem';
@@ -16,7 +16,7 @@ var fs = require('fs');
 
 export var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 	className () {
-		return classNames(this._cssClasses.CONTROL, 'btn-group')
+		return this.classNames(this._cssClasses.CONTROL, this._cssClasses.BTN_GROUP)
 	},
 
 	template: _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8')),
