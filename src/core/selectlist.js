@@ -136,6 +136,8 @@ var SelectlistCore = Object.assign({}, Base, {
 
 		// This list could be long, we might want to cycle through the collection and find the longest name and just select it,
 		// and use that width value. That would make less DOM touches. - @interactivellama
+		
+		// @interactivellama: True, this is just how it was already implemented in current Fuel UX. However, "longest" doesn't always mean widest...
 
 		this._collection.forEach(function(item) {
 			if (Landmark.isFunction(item.get)) {

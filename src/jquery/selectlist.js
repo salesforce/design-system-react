@@ -1,10 +1,17 @@
+// SELECTLIST CONTROL - JQUERY FACADE
+
+// Core
 import Landmark from '../landmark';
 import SelectlistCore from '../core/selectlist';
-import $ from 'jquery';
+
+// Framework specific
+// TO-DO: This might not work with require, need to confirm that it does
+var $ = window.$;
+
+// Template imports
+var fs = require('fs');
 
 var old = $.fn.selectlist;
-
-// SELECT CONSTRUCTOR AND PROTOTYPE
 
 var Selectlist = function (element, options) {
 	this.options = $.extend({}, $.fn.selectlist.defaults, options);
@@ -15,14 +22,78 @@ var Selectlist = function (element, options) {
 	if (options.collection) {
 		this.rendered = false;
 	} else {
-		this.rendered = true;
+		this.__initElements();
+		
 		// TO-DO: Build options.collection from the HTML
+		
+		this.rendered = true;
 	}
 	
 	this.__constructor(options);
 };
 
 Object.assign(Selectlist.prototype, SelectlistCore, {
+	__initElements () {
+		// TO-DO: These should all be in the cssClasses of course
+		this.elements.button = this.elements.wrapper.find('.btn.dropdown-toggle');
+		this.elements.hiddenField = this.elements.wrapper.find('.hidden-field');
+		this.elements.label = this.elements.wrapper.find('.selected-label');
+		this.elements.dropdownMenu = this.elements.wrapper.find('.dropdown-menu');
+	},
+	
+	onInitialized (options) {
+		if (!this.rendered) {
+			this.render();
+		}
+	
+		this.elements.wrapper.on('click.fu.selectlist', '.dropdown-menu a', $.proxy(this.itemClicked, this));
+	},
+	
+	render () {
+		// Prep for append
+		this.elements.wrapper.empty();
+		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
+		this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
+		
+		var selection = this.getSelection();
+		
+		var width = this.__getState('width');
+		var disabled = !!this.__getState('disabled');
+		var selectionName = selection ? selection.name : 'None selected'; // TO-DO: don't hardcode this here
+		var selectionString = selection ? JSON.stringify(selection) : '';
+		
+		var $html = $(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
+		var $button = $html.find('.btn.dropdown-toggle');
+		var $dropdownMenu = $html.find('.dropdown-menu');
+		
+		// Yay for hacked-together templates!
+		// TO-DO: Let's put something better in the Landmark core?
+		$button.prop('disabled', disabled);
+		$html.find('.selected-label').text(selectionName);
+		$html.find('.hidden-field').val(selectionString);
+		$dropdownMenu.width(width);
+		$button.width(width);
+		
+		// Building the menu items
+		this._collection.forEach(function(item) {
+			var $a = $('<a href="#" />');
+			$a.text(item.name);
+			
+			var $li = $('<li />');
+			$li.data(item);
+			$li.append($a);
+			
+			$dropdownMenu.append($li);
+		});
+
+		// TO-DO: Wrapping the "template" in a div right now and then appending the children. Is there a better way?
+		this.elements.wrapper.append($html.children());
+		
+		this.__initElements();
+		
+		this.rendered = true;
+	},
+	
 	destroy () {
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
@@ -44,58 +115,43 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 	},
 
 	onSelected (data) {
-		if (!this.rendered) return;
+		if (!this.elements.hiddenField
+			|| !this.elements.label) {
+			return;
+		}
 		
-		this.elements.hiddenField.val(JSON.stringify(data));
-		this.elements.label.text(data.name);
+		// TO-DO: clearly this isn't the best way to reset the text to "None selected"
+		this.elements.hiddenField.val(JSON.stringify(data) || '');
+		this.elements.label.text((data && data.name) || 'None selected');
 		
 		this.elements.wrapper.trigger('changed.fu.selectlist', data);
 	},
-
-	onInitialized (options) {
-		if (!this.rendered) {
-			this.render();
+	
+	onEnabled () {
+		if (!this.elements.button) {
+			return;
 		}
 		
-		// TO-DO: These should all be in the cssClasses of course
-		this.elements.button = this.elements.wrapper.find('.btn.dropdown-toggle');
-		this.elements.hiddenField = this.elements.wrapper.find('.hidden-field');
-		this.elements.label = this.elements.wrapper.find('.selected-label');
-		this.elements.dropdownMenu = this.elements.wrapper.find('.dropdown-menu');
-	
-		this.elements.wrapper.on('click.fu.selectlist', '.dropdown-menu a', $.proxy(this.itemClicked, this));
+		this.elements.button.prop('disabled', false);
 	},
 	
-	render () {
-		// Prep for append
-		this.elements.wrapper.empty();
-		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-		this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
+	onDisabled () {
+		if (!this.elements.button) {
+			return;
+		}
 		
-		// TO-DO: Actually render this HTML from a template
-		var html = '<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">' +
-					'			<span class="selected-label">&nbsp;</span>' +
-					'			<span class="caret"></span>' +
-					'			<span class="sr-only">Toggle Dropdown</span>' +
-					'		</button>' +
-					'		<ul class="dropdown-menu" role="menu">' +
-					'			<li data-value="1"><a href="#">One</a>' +
-					'			</li>' +
-					'			<li data-value="2"><a href="#">Two</a>' +
-					'			</li>' +
-					'			<li data-selected="true" data-value="3"><a href="#">Three</a>' +
-					'			</li>' +
-					'			<li data-value="4"><a href="#">Buzz</a>' +
-					'			</li>' +
-					'			<li data-value="Item Five" data-foo="bar" data-fizz="buzz"><a href="#">Item Five</a>' +
-					'			</li>' +
-					'			<li class="disabled" disabled="disabled" data-value="disabled"><a href="#">Disabled item</a>' +
-					'			</li>' +
-					'		</ul>' +
-					'		<input class="hidden hidden-field" name="mySelectlist" readonly="readonly" aria-hidden="true" type="text" />';
-
-		this.elements.wrapper.append(html);
-		this.rendered = true;
+		this.elements.button.prop('disabled', true);
+	},
+	
+	resetWidth (width) {
+		if (!this.elements.button
+			|| !this.elements.dropdownMenu) {
+			return;
+		}
+		
+		// TO-DO: Test this. And will this work to remove the style as well?
+		this.elements.button.width(width);
+		this.elements.dropdownMenu.width(width);
 	}
 });
 
@@ -126,7 +182,6 @@ $.fn.selectlist = function (option) {
 
 // TO-DO: Should this really be here?
 $.fn.selectlist.defaults = {
-	emptyLabelHTML: '<li data-value=""><a href="#">No items</a></li>'
 };
 
 $.fn.selectlist.Constructor = Selectlist;
@@ -154,3 +209,5 @@ $(function () {
 		}
 	});
 });
+
+export default Selectlist;

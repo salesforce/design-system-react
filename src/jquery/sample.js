@@ -1,12 +1,9 @@
-import {Selectlist} from "./selectlist";
-import $ from 'jquery';
+import Selectlist from "./selectlist";
+
+// TO-DO: This might not work with require, need to confirm that it does
+var $ = window.$;
 
 $(function () {
-
-	$('#mySelectlist1').selectlist({
-		resize: 'auto'
-	});
-
 	// sample method buttons
 	$('.declarative .btnSelectlistGetSelectedItem').on('click', function () {
 		console.log($('#mySelectlist1').selectlist('selectedItem'));
@@ -38,25 +35,18 @@ $(function () {
 	});
 
 	// events
-	$('#mySelectlist1').on('clicked.fu.selectlist', function (event, target) {
-		console.log('clicked', target);
-	});
 	$('#mySelectlist1').on('changed.fu.selectlist', function (event, data) {
 		console.log('changed', data);
 	});
 
 
 	$('#mySelectlist2').selectlist({
-		dataSource: function (parentData, callback) {
-				callback({
-					data: [
-						{ id: 0, name: 'tacos', type: 'mexican' },
-						{ id: 1, name: 'burrito', type: 'mexican' },
-						{ id: 2, name: 'tostada', type: 'mexican' },
-						{ id: 3, name: 'hush puppies', type: 'southern' }
-					]
-			});
-		},
+		collection: [
+			{ id: 0, name: 'tacos', type: 'mexican' },
+			{ id: 1, name: 'burrito', type: 'mexican' },
+			{ id: 2, name: 'tostada', type: 'mexican' },
+			{ id: 3, name: 'hush puppies', type: 'southern' }
+		],
 		resize: 'auto'
 	});
 
@@ -91,9 +81,6 @@ $(function () {
 	});
 
 	// events
-	$('#mySelectlist2').on('clicked.fu.selectlist', function (event, target) {
-		console.log('clicked', target);
-	});
 	$('#mySelectlist2').on('changed.fu.selectlist', function (event, data) {
 		console.log('changed', data);
 	});
