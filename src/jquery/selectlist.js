@@ -1,5 +1,5 @@
-import {Landmark} from "../landmark";
-import {SelectlistCore} from "../core/selectlist";
+import Landmark from '../landmark';
+import SelectlistCore from '../core/selectlist';
 import $ from 'jquery';
 
 var old = $.fn.selectlist;
@@ -51,7 +51,7 @@ var Selectlist = function (element, options) {
 				// get the key that was pressed
 				var key = String.fromCharCode(e.which);
 				// look the items to find the first item with the first character match and set focus
-				$this.find("li").each(function(idx,item){
+				$this.find('li').each(function(idx,item){
 					if ($(item).text().charAt(0).toLowerCase() === key) {
 						$(item).children('a').focus();
 						return false;

@@ -7,7 +7,7 @@ var SelectlistItem = Backbone.View.extend({
 	template: _.template('<a href="#"><%- name %></a>'),
 	
 	events: {
-		"click a" : "handleClicked"
+		'click a' : 'handleClicked'
 	},
 	
 	initialize (options) {

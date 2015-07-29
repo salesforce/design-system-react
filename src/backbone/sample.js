@@ -1,4 +1,4 @@
-import Selectlist from "./selectlist";
+import Selectlist from './selectlist';
 
 // Framework specific
 import Backbone from 'backbone';
