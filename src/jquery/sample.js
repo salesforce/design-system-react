@@ -40,6 +40,7 @@ $(function () {
 	});
 
 
+	// TO-DO: Should we add another example of this that uses the Selectlist object directly? var selectlist3 = new Selectlist($('#mySelectlist3'), options)
 	$('#mySelectlist2').selectlist({
 		collection: [
 			{ id: 0, name: 'tacos', type: 'mexican' },
@@ -54,17 +55,11 @@ $(function () {
 	$('.imperative .btnSelectlistGetSelectedItem').on('click', function () {
 		console.log($('#mySelectlist2').selectlist('selectedItem'));
 	});
-	$('.imperative .btnSelectlistSelectByValue').on('click', function () {
-		$('#mySelectlist2').selectlist('selectByValue', '2');
-	});
-	$('.imperative .btnSelectlistSelectBySelector').on('click', function () {
-		$('#mySelectlist2').selectlist('selectBySelector', 'li[data-fizz=buzz]');
-	});
 	$('.imperative .btnSelectlistSelectByIndex').on('click', function () {
-		$('#mySelectlist2').selectlist('selectByIndex', '4');
+		$('#mySelectlist2').selectlist('selectByIndex', '1');
 	});
 	$('.imperative .btnSelectlistSelectByText').on('click', function () {
-		$('#mySelectlist2').selectlist('selectByText', 'One');
+		$('#mySelectlist2').selectlist('selectByText', 'tacos');
 	});
 	$('.imperative .btnSelectlistEnableSelectlist').on('click', function () {
 		$('#mySelectlist2').selectlist('enable');

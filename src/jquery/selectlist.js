@@ -14,7 +14,7 @@ var fs = require('fs');
 var old = $.fn.selectlist;
 
 var Selectlist = function (element, options) {
-	this.options = $.extend({}, $.fn.selectlist.defaults, options);
+	this.options = $.extend({}, options);
 	this.elements = {
 		wrapper: $(element)
 	};
@@ -49,7 +49,7 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 			var item = $item.data();
 			
 			if (!item.name) {
-				item.name = $item.text();
+				item.name = $item.text().trim();
 			}
 			
 			if (item.selected) {
@@ -130,9 +130,6 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		if ($li.is('.disabled, :disabled')) { return; }
 
 		this.setSelection($li.data());
-
-		// Return focus to control after selecting an option
-		this.elements.wrapper.find('.dropdown-toggle').focus();
 	},
 
 	onSelected (data) {
@@ -231,10 +228,6 @@ $.fn.selectlist = function (option) {
 	});
 
 	return (methodReturn === undefined) ? $set : methodReturn;
-};
-
-// TO-DO: Should this really be here?
-$.fn.selectlist.defaults = {
 };
 
 $.fn.selectlist.Constructor = Selectlist;
