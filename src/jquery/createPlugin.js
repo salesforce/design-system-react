@@ -9,6 +9,8 @@ var $ = window.$;
 
 var createPlugin = function (name, Constructor, legacyMethods) {
 	var old = $.fn[name];
+	var namespaced = ['fu', name].join('.');
+	var initializeSelector = ['[data-initialize=', name, ']'].join('');
 	
 	$.fn[name] = function (option) {
 		var args = Array.prototype.slice.call(arguments, 1);
@@ -16,12 +18,12 @@ var createPlugin = function (name, Constructor, legacyMethods) {
 	
 		var $set = this.each(function () {
 			var $this = $(this);
-			var data = $this.data('fu.' + name);
+			var data = $this.data(namespaced);
 	
 			// If object, this is an initialization, only overwrite options and init if no data exists
 			var options = typeof option === 'object' && option;
 			if (!data) {
-				$this.data('fu.' + name, (data = new Constructor(this, options)));
+				$this.data(namespaced, (data = new Constructor(this, options)));
 			}
 	
 			// If string, this is a method call, and apply with args
@@ -46,18 +48,18 @@ var createPlugin = function (name, Constructor, legacyMethods) {
 	
 	// DATA-API
 	
-	$(document).on('mousedown.fu.' + name + '.data-api', '[data-initialize=' + name + ']', function (e) {
+	$(document).on(['mousedown', namespaced, 'data-api'].join('.'), initializeSelector, function (e) {
 		var $control = $(e.target).closest('.' + name);
-		if (!$control.data('fu.' + name)) {
+		if (!$control.data(namespaced)) {
 			$control[name]($control.data());
 		}
 	});
 	
 	// Must be domReady for AMD compatibility
 	$(function () {
-		$('[data-initialize=' + name + ']').each(function () {
+		$(initializeSelector).each(function () {
 			var $this = $(this);
-			if (!$this.data('fu.' + name)) {
+			if (!$this.data(namespaced)) {
 				$this[name]($this.data());
 			}
 		});
