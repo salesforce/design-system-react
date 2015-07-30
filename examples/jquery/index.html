@@ -51,12 +51,12 @@
 					<button type="button" class="btn btn-default btnSelectlistSelectBySelector">set by CSS selector ('li[data-fizz=buzz]')</button>
 					<button type="button" class="btn btn-default btnSelectlistEnableSelectlist">enable</button>
 					<button type="button" class="btn btn-default btnSelectlistDisableSelectlist">disable</button>
-					<button type="button" class="btn btn-default btnSelectlistDestroy">destroy and append</button>
+					<button type="button" class="btn btn-default btnSelectlistDestroy">destroy and append</button> <!-- TO-DO: needs events wired back up -->
 				</div>
 			</section>
 	
 			<section class="imperative example-group">
-				<h1>Imperative Example</h1>
+				<h1>Imperative Example (mostly backwards compatible)</h1>
 				
 				<div class="selectlist-example">
 					<div id="mySelectlist2"></div>
@@ -68,7 +68,23 @@
 					<button type="button" class="btn btn-default btnSelectlistSelectByText">set by text ('tacos')</button>
 					<button type="button" class="btn btn-default btnSelectlistEnableSelectlist">enable</button>
 					<button type="button" class="btn btn-default btnSelectlistDisableSelectlist">disable</button>
-					<button type="button" class="btn btn-default btnSelectlistDestroy">destroy and append</button>
+					<button type="button" class="btn btn-default btnSelectlistDestroy">destroy and append</button> <!-- TO-DO: needs events wired back up -->
+				</div>
+			</section>
+		
+			<section class="new-api example-group">
+				<h1>New API Example</h1>
+				
+				<div class="selectlist-example">
+					<div id="mySelectlist3"></div>
+				</div>
+	
+				<div class="btn-panel selectlist-action">
+					<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item/value</button>
+					<button type="button" class="btn btn-default btnSelectlistSelectByIndex">set by element index (zero-based) (1)</button>
+					<button type="button" class="btn btn-default btnSelectlistSelectByObject">set by object</button>
+					<button type="button" class="btn btn-default btnSelectlistEnableSelectlist">enable</button>
+					<button type="button" class="btn btn-default btnSelectlistDisableSelectlist">disable</button>
 				</div>
 			</section>
 		</section>

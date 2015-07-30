@@ -3,6 +3,13 @@ import Selectlist from "./selectlist";
 // TO-DO: This might not work with require, need to confirm that it does
 var $ = window.$;
 
+var collection = [
+	{ id: 0, name: 'tacos', type: 'mexican' },
+	{ id: 1, name: 'burrito', type: 'mexican' },
+	{ id: 2, name: 'tostada', type: 'mexican' },
+	{ id: 3, name: 'hush puppies', type: 'southern' }
+];
+
 $(function () {
 	// sample method buttons
 	$('.declarative .btnSelectlistGetSelectedItem').on('click', function () {
@@ -40,14 +47,8 @@ $(function () {
 	});
 
 
-	// TO-DO: Should we add another example of this that uses the Selectlist object directly? var selectlist3 = new Selectlist($('#mySelectlist3'), options)
 	$('#mySelectlist2').selectlist({
-		collection: [
-			{ id: 0, name: 'tacos', type: 'mexican' },
-			{ id: 1, name: 'burrito', type: 'mexican' },
-			{ id: 2, name: 'tostada', type: 'mexican' },
-			{ id: 3, name: 'hush puppies', type: 'southern' }
-		],
+		collection: collection,
 		resize: 'auto'
 	});
 
@@ -80,4 +81,29 @@ $(function () {
 		console.log('changed', data);
 	});
 
+
+	var selectlist3 = new Selectlist($('#mySelectlist3'), {
+		collection: collection,
+		resize: 'auto'
+	});
+
+	// sample method buttons
+	$('.new-api .btnSelectlistGetSelectedItem').on('click', function () {
+		console.log(selectlist3.getSelection());
+	});
+	$('.new-api .btnSelectlistSelectByIndex').on('click', function () {
+		selectlist3.setSelectionByIndex(1);
+	});
+	$('.new-api .btnSelectlistSelectByObject').on('click', function () {
+		selectlist3.setSelection(collection[3]);
+	});
+	$('.new-api .btnSelectlistEnableSelectlist').on('click', function () {
+		selectlist3.enable();
+	});
+	$('.new-api .btnSelectlistDisableSelectlist').on('click', function () {
+		selectlist3.disable();
+	});
+
+	// events
+	// TO-DO: Add a listener here once we have a framework-agnostic event
 });
