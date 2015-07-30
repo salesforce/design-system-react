@@ -46,17 +46,16 @@ var Page = React.createClass({
 		});
 	},
 
-	getSelectionHandler: function (model) {
+	getSelectionHandler (model) {
 		return function (selection) {
 			model.selection = selection;
 		}
 	},
 
 	render () {
-		this.props.models.selectlist1.onSelected = this.getSelectionHandler(this.props.models.selectlist1);
-		this.props.models.selectlist2.onSelected = this.getSelectionHandler(this.props.models.selectlist2);
-		this.props.models.selectlist3.onSelected = this.getSelectionHandler(this.props.models.selectlist3);
-		this.props.models.selectlist4.onSelected = this.getSelectionHandler(this.props.models.selectlist4);
+		Object.keys(this.props.models).forEach(key => {
+			this.props.models[key].onSelected = this.getSelectionHandler(this.props.models[key]);
+		});
 
 		return (
 			<div>
