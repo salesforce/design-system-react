@@ -7,6 +7,7 @@ import SelectlistCore from '../core/selectlist';
 // Framework specific
 import _ from 'underscore';
 import Backbone from 'backbone';
+import classNames from 'classnames';
 
 // Children
 import SelectlistItem from './selectlist-item';
@@ -16,7 +17,7 @@ var fs = require('fs');
 
 var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 	className () {
-		return this.classNames(this._cssClasses.CONTROL, this._cssClasses.BTN_GROUP)
+		return classNames(this._cssClasses.CONTROL, this._cssClasses.BTN_GROUP)
 	},
 
 	template: _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8')),
