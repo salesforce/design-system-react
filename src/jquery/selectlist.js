@@ -2,16 +2,15 @@
 
 // Core
 import Landmark from '../landmark';
-import SelectlistCore from '../core/selectlist';
+import SelectlistCore, {CONTROL} from '../core/selectlist';
 
 // Framework specific
 // TO-DO: This might not work with require, need to confirm that it does
+import createPlugin from './createPlugin';
 var $ = window.$;
 
 // Template imports
 var fs = require('fs');
-
-var old = $.fn.selectlist;
 
 var Selectlist = function (element, options) {
 	this.options = $.extend({}, options);
@@ -45,6 +44,7 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 	},
 	
 	__buildCollection (options) {
+		options = options || {};
 		options.collection = [];
 		
 		this.elements.dropdownMenu.find('li').each(function () {
@@ -199,59 +199,6 @@ var legacyMethods = {
 	}
 };
 
-// SELECT PLUGIN DEFINITION
-
-$.fn.selectlist = function (option) {
-	var args = Array.prototype.slice.call(arguments, 1);
-	var methodReturn;
-
-	var $set = this.each(function () {
-		var $this = $(this);
-		var data = $this.data('fu.selectlist');
-
-		// If object, this is an initialization, only overwrite options and init if no data exists
-		var options = typeof option === 'object' && option;
-		if (!data) {
-			$this.data('fu.selectlist', (data = new Selectlist(this, options)));
-		}
-
-		// If string, this is a method call, and apply with args
-		if (typeof option === 'string') {
-			if (Landmark.isFunction(data[option])) {
-				methodReturn = data[option].apply(data, args);
-			} else {
-				methodReturn = legacyMethods[option].apply(data, args);
-			}
-		}
-	});
-
-	return (methodReturn === undefined) ? $set : methodReturn;
-};
-
-$.fn.selectlist.Constructor = Selectlist;
-
-$.fn.selectlist.noConflict = function () {
-	$.fn.selectlist = old;
-	return this;
-};
-
-// DATA-API
-
-$(document).on('mousedown.fu.selectlist.data-api', '[data-initialize=selectlist]', function (e) {
-	var $control = $(e.target).closest('.selectlist');
-	if (!$control.data('fu.selectlist')) {
-		$control.selectlist($control.data());
-	}
-});
-
-// Must be domReady for AMD compatibility
-$(function () {
-	$('[data-initialize=selectlist]').each(function () {
-		var $this = $(this);
-		if (!$this.data('fu.selectlist')) {
-			$this.selectlist($this.data());
-		}
-	});
-});
+createPlugin(CONTROL, Selectlist, legacyMethods);
 
 export default Selectlist;

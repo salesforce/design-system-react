@@ -4,10 +4,12 @@ import Landmark from '../landmark';
 import Base from './base';
 import classNames from 'classnames';
 
+export var CONTROL = 'selectlist';
+
 var SelectlistCore = Object.assign({}, Base, {
 	// CSS classes used within this control
 	_cssClasses: {
-		CONTROL: 'selectlist',
+		CONTROL: CONTROL,
 		SELECTED: 'selected',
 		BTN_GROUP: 'btn-group',
 		TOGGLE: 'dropdown-toggle',
