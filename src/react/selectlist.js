@@ -6,6 +6,7 @@ import SelectlistCore from '../core/selectlist';
 
 // Framework specific
 import React from 'react';
+import classNames from 'classnames';
 
 // Children
 import SelectlistItem from './selectlist-item';
@@ -54,7 +55,7 @@ var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		};
 
 		return (
-			<div className={this.classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)}>
+			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)}>
 				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
 					<span className="selected-label">{selection ? selection.name : 'None selected'}</span>
 					<span className="caret"></span>
