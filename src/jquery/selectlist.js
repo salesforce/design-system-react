@@ -22,7 +22,7 @@ var Selectlist = function (element, options) {
 	if (options.collection) {
 		this.rendered = false;
 	} else {
-		this.__initElements();
+		this.__initElements(this.elements.wrapper, this.elements);
 		
 		this.__buildCollection(options);
 		
@@ -33,11 +33,15 @@ var Selectlist = function (element, options) {
 };
 
 Object.assign(Selectlist.prototype, SelectlistCore, {
-	__initElements () {
-		this.elements.button = this.elements.wrapper.find('.' + this._cssClasses.TOGGLE);
-		this.elements.hiddenField = this.elements.wrapper.find('.' + this._cssClasses.HIDDEN);
-		this.elements.label = this.elements.wrapper.find('.' + this._cssClasses.LABEL);
-		this.elements.dropdownMenu = this.elements.wrapper.find('.' + this._cssClasses.MENU);
+	__initElements (base, elements) {
+		elements = elements || {};
+		
+		elements.button = base.find('.' + this._cssClasses.TOGGLE);
+		elements.hiddenField = base.find('.' + this._cssClasses.HIDDEN);
+		elements.label = base.find('.' + this._cssClasses.LABEL);
+		elements.dropdownMenu = base.find('.' + this._cssClasses.MENU);
+		
+		return elements;
 	},
 	
 	__buildCollection (options) {
@@ -82,17 +86,15 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		var selectionName = selection ? selection.name : 'None selected'; // TO-DO: don't hardcode this here
 		var selectionString = selection ? JSON.stringify(selection) : '';
 		
-		var $html = $(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
-		var $button = $html.find('.btn.dropdown-toggle');
-		var $dropdownMenu = $html.find('.' + this.cssClasses.MENU);
+		var $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
+		var elements = this.__initElements($html, this.elements);
 		
-		// Yay for hacked-together templates!
-		// TO-DO: Let's put something better in the Landmark core?
-		$button.prop('disabled', disabled);
-		$html.find('.selected-label').text(selectionName);
-		$html.find('.hidden-field').val(selectionString);
-		$dropdownMenu.width(width);
-		$button.width(width);
+		// Yay for hacked-together "templates"!
+		elements.button.prop('disabled', disabled);
+		elements.button.width(width);
+		elements.label.text(selectionName);
+		elements.hiddenField.val(selectionString);
+		elements.dropdownMenu.width(width);
 		
 		// Building the menu items
 		this._collection.forEach(function(item) {
@@ -103,13 +105,10 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 			$li.data(item);
 			$li.append($a);
 			
-			$dropdownMenu.append($li);
+			elements.dropdownMenu.append($li);
 		});
 
-		// TO-DO: Wrapping the "template" in a div right now and then appending the children. Is there a better way?
 		this.elements.wrapper.append($html.children());
-		
-		this.__initElements();
 		
 		this.rendered = true;
 	},
