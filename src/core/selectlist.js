@@ -2,6 +2,7 @@
 
 import Landmark from '../landmark';
 import Base from './base';
+import classNames from 'classnames';
 
 var SelectlistCore = Object.assign({}, Base, {
 	// CSS classes used within this control
@@ -111,9 +112,8 @@ var SelectlistCore = Object.assign({}, Base, {
 		var parent;
 		var name;
 
-		// TO-DO: We probably need to add the cssClasses library to the core
 		sizer.className = 'selectlist-sizer';
-		sizer.innerHTML = '<div class="' + this.classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
+		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
 
 		if (Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
 			parent = document.querySelector('body');

@@ -1,15 +1,11 @@
 import Landmark from '../landmark';
-import classNames from 'classnames';
 
 // CSS classes used across every control
 var sharedCssClasses = {
 		DISABLED: 'disabled'
 	};
 
-var Base = {
-	// Add an internal reference to the classnames library for the children to use
-	classNames: classNames,
-	
+var Base = {	
 	__constructor (options) {
 		if (Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 		
