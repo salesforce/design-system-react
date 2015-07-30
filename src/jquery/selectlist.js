@@ -34,11 +34,10 @@ var Selectlist = function (element, options) {
 
 Object.assign(Selectlist.prototype, SelectlistCore, {
 	__initElements () {
-		// TO-DO: These should all be in the cssClasses of course
-		this.elements.button = this.elements.wrapper.find('.btn.dropdown-toggle');
-		this.elements.hiddenField = this.elements.wrapper.find('.hidden-field');
-		this.elements.label = this.elements.wrapper.find('.selected-label');
-		this.elements.dropdownMenu = this.elements.wrapper.find('.dropdown-menu');
+		this.elements.button = this.elements.wrapper.find('.' + this._cssClasses.TOGGLE);
+		this.elements.hiddenField = this.elements.wrapper.find('.' + this._cssClasses.HIDDEN);
+		this.elements.label = this.elements.wrapper.find('.' + this._cssClasses.LABEL);
+		this.elements.dropdownMenu = this.elements.wrapper.find('.' + this._cssClasses.MENU);
 	},
 	
 	__buildCollection (options) {
@@ -85,7 +84,7 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		
 		var $html = $(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 		var $button = $html.find('.btn.dropdown-toggle');
-		var $dropdownMenu = $html.find('.dropdown-menu');
+		var $dropdownMenu = $html.find('.' + this.cssClasses.MENU);
 		
 		// Yay for hacked-together templates!
 		// TO-DO: Let's put something better in the Landmark core?
