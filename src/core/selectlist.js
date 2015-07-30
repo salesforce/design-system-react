@@ -8,7 +8,11 @@ var SelectlistCore = Object.assign({}, Base, {
 	_cssClasses: {
 		CONTROL: 'selectlist',
 		SELECTED: 'selected',
-		BTN_GROUP: 'btn-group'
+		BTN_GROUP: 'btn-group',
+		TOGGLE: 'dropdown-toggle',
+		HIDDEN: 'hidden-field',
+		LABEL: 'selected-label',
+		MENU: 'dropdown-menu'
 	},
 
 	// Set the defaults
@@ -141,8 +145,8 @@ var SelectlistCore = Object.assign({}, Base, {
 				name = item.name;
 			}
 
-			sizer.querySelector('.selected-label').textContent = name;
-			newWidth = sizer.querySelector('.' + self._cssClasses.CONTROL).offsetWidth;
+			sizer.querySelector('.' + self._cssClasses.LABEL).textContent = name;
+			newWidth = sizer.querySelector('.' + self.cssClasses.CONTROL).offsetWidth;
 			if (newWidth > width) {
 				width = newWidth;
 			}
