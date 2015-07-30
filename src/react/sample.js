@@ -4,26 +4,10 @@ import Selectlist from './selectlist';
 var element = document.getElementById('selectlist');
 
 var collection = [
-	{
-		id: 0,
-		name: 'tacos',
-		type: 'mexican'
-	},
-	{
-		id: 1,
-		name: 'burrito',
-		type: 'mexican'
-	},
-	{
-		id: 2,
-		name: 'tostada',
-		type: 'mexican'
-	},
-	{
-		id: 3,
-		name: 'hush puppies',
-		type: 'southern'
-	}
+	{ id: 0, name: 'tacos', type: 'mexican' },
+	{ id: 1, name: 'burrito', type: 'mexican' },
+	{ id: 2, name: 'tostada', type: 'mexican' },
+	{ id: 3, name: 'hush puppies', type: 'southern' }
 ];
 
 // TO-DO: Rewrite this to a sample that is more real-life
@@ -38,9 +22,7 @@ var models = {
 	selectlist2: {
 		collection: collection,
 		disabled: false,
-		selection: {
-			name: 'tostada'
-		}
+		selection: { name: 'tostada' }
 	},
 	selectlist3: {
 		collection: collection,
@@ -53,7 +35,7 @@ var models = {
 };
 
 var Page = React.createClass({
-	changeCollection() {
+	changeCollection () {
 		var models = this.props.models;
 		Object.keys(models).forEach(key => {
 			models[key].disabled = !models[key].disabled;
@@ -64,13 +46,13 @@ var Page = React.createClass({
 		});
 	},
 
-	getSelectionHandler: function (model) {
+	getSelectionHandler (model) {
 		return function (selection) {
 			model.selection = selection;
 		}
 	},
 
-	render() {
+	render () {
 		Object.keys(this.props.models).forEach(key => {
 			this.props.models[key].onSelected = this.getSelectionHandler(this.props.models[key]);
 		});
@@ -89,11 +71,9 @@ var Page = React.createClass({
 
 				<button className="selectlist-action btn btn-primary" onClick={this.changeCollection}>Toggle Enabled / Disabled</button>
 			</div>
-			);
+		);
 	}
 });
 
 // Page is a list of multiple selectlists
-React.render(<Page models={models}/>, element, () => {
-});
-
+React.render(<Page models={models}/>, element, () => {});
