@@ -1,3 +1,7 @@
+// Core
+import Landmark from '../landmark';
+
+// Framework specific
 import React from 'react';
 
 var SelectlistItem = React.createClass({	
@@ -9,7 +13,7 @@ var SelectlistItem = React.createClass({
 	render () {
 		return (
 			<li>
-				<a href="#" onClick={this.handleClicked}>{this.props.item.name}</a>
+				<a href="#" onClick={this.handleClicked}>{Landmark.getProp(this.props.item, 'name')}</a>
 			</li>
 		);
 	},

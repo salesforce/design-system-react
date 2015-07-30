@@ -54,8 +54,34 @@ var SelectlistCore = Object.assign({}, Base, {
 			if (Landmark.isFunction(this.resize)) this.resize();
 		}
 	},
+	
+	__jumpToLetter (letter) {
+		var selection;
+		
+		if (Landmark.isNumber(letter)) {
+			letter = String.fromCharCode(letter);
+		}
+		
+		if (letter.length !== 1) {
+			return;
+		}
+		
+		this._collection.forEach(function (item) {
+			var name = Landmark.getProp(item, 'name');
+			
+			if (!selection && name && name.charAt(0).toLowerCase() === letter) {
+				selection = item;
+			}
+		});
+		
+		if (selection) this.__setSelection(selection);
+	},
 
 	__setSelection (newSelection) {
+		if (Landmark.getProp(newSelection, 'disabled')) {
+			return;
+		}
+		
 		if (this.__getState('selection') !== newSelection) {
 			if (Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
 			this.__setState({ selection: newSelection });
@@ -141,11 +167,7 @@ var SelectlistCore = Object.assign({}, Base, {
 		// @interactivellama: True, this is just how it was already implemented in current Fuel UX. However, "longest" doesn't always mean widest...
 
 		this._collection.forEach(function(item) {
-			if (Landmark.isFunction(item.get)) {
-				name = item.get('name');
-			} else {
-				name = item.name;
-			}
+			name = Landmark.getProp(item, 'name');
 
 			sizer.querySelector('.' + self._cssClasses.LABEL).textContent = name;
 			newWidth = sizer.querySelector('.' + self.cssClasses.CONTROL).offsetWidth;

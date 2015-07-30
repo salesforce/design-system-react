@@ -60,6 +60,10 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 				options.selection = item;
 			}
 			
+			if ($item.is('.disabled, :disabled')) {
+				item.disabled = true;
+			}
+			
 			$item.data(item);
 			options.collection.push(item);
 		});
@@ -70,7 +74,8 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 			this.render();
 		}
 	
-		this.elements.wrapper.on('click.fu.selectlist', '.dropdown-menu a', $.proxy(this.itemClicked, this));
+		this.elements.wrapper.on('click.fu.selectlist', '.dropdown-menu a', $.proxy(this.handleClicked, this));
+		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this.handleKeyPress, this));
 	},
 	
 	render () {
@@ -83,7 +88,7 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		
 		var width = this.__getState('width');
 		var disabled = !!this.__getState('disabled');
-		var selectionName = selection ? selection.name : 'None selected'; // TO-DO: don't hardcode this here
+		var selectionName = Landmark.getProp(selection, 'name') || 'None selected'; // TO-DO: don't hardcode this here
 		var selectionString = selection ? JSON.stringify(selection) : '';
 		
 		var $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
@@ -99,7 +104,7 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		// Building the menu items
 		this._collection.forEach(function(item) {
 			var $a = $('<a href="#" />');
-			$a.text(item.name);
+			$a.text(Landmark.getProp(item, 'name'));
 			
 			var $li = $('<li />');
 			$li.data(item);
@@ -118,18 +123,6 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		return this.elements.wrapper[0].outerHTML;
 	},
 
-	itemClicked (e) {
-		e.preventDefault();
-		
-		var $li = $(e.currentTarget).parent('li');
-		
-		// Ignore if a disabled item is clicked
-		// Note that this feature isn't implemented in any other library yet
-		if ($li.is('.disabled, :disabled')) { return; }
-
-		this.setSelection($li.data());
-	},
-
 	onSelected (data) {
 		if (!this.elements.hiddenField
 			|| !this.elements.label) {
@@ -138,7 +131,7 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		
 		// TO-DO: clearly this isn't the best way to reset the text to "None selected"
 		this.elements.hiddenField.val(JSON.stringify(data) || '');
-		this.elements.label.text((data && data.name) || 'None selected');
+		this.elements.label.text(Landmark.getProp(data, 'name') || 'None selected');
 		
 		this.elements.wrapper.trigger('changed.fu.selectlist', data);
 	},
@@ -168,6 +161,19 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		// TO-DO: Test this. And will this work to remove the style as well?
 		this.elements.button.width(width);
 		this.elements.dropdownMenu.width(width);
+	},
+
+	handleClicked (e) {
+		e.preventDefault();
+		
+		var $li = $(e.currentTarget).parent('li');
+
+		this.setSelection($li.data());
+	},
+	
+	handleKeyPress (e) {
+		var key = e.which;
+		if (key) this.__jumpToLetter(key);
 	}
 });
 

@@ -21,11 +21,11 @@ export default class Landmark {
 	}
 
 	static isNumber (potentialNumber) {
-		return typeof potentialNumber === 'number' && +potentialNumber !== potentialNumber;
+		return toString.call(potentialNumber) === '[object Number]';
 	}
 
 	static isObject (potentialObject) {
-		return typeof potentialObject === 'function' || typeof potentialObject === 'object' && !!potentialObject;
+		return typeof potentialObject === 'function' || (typeof potentialObject === 'object' && !!potentialObject);
 	}
 	
 	static findWhere (collection, criteria) {
@@ -60,5 +60,17 @@ export default class Landmark {
 		}
 		
 		return found || null;
+	}
+	
+	static getProp (obj, prop) {
+		if (!obj) {
+			return undefined;
+		}
+		
+		if (Landmark.isFunction(obj.get)) {
+			return obj.get(prop);
+		}
+		
+		return obj[prop];
 	}
 };

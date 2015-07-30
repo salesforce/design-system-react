@@ -38,7 +38,7 @@ var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	menuItems () {
 		return this.props.collection.map((menuItem) => {
 			return (
-				<SelectlistItem key={menuItem.id} item={menuItem} onSelected={this.handleMenuItemSelected}></SelectlistItem>
+				<SelectlistItem key={Landmark.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected}></SelectlistItem>
 			);
 		});
 	},
@@ -55,9 +55,9 @@ var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		};
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)}>
+			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
 				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
-					<span className="selected-label">{selection ? selection.name : 'None selected'}</span>
+					<span className="selected-label">{Landmark.getProp(selection, 'name') || 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
 				</button>
@@ -93,6 +93,11 @@ var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 
 	handleMenuItemSelected (selection) {
 		this.setSelection(selection);
+	},
+	
+	handleKeyPress (e) {
+		var key = e.key || e.keyIdentifier;
+		if (key) this.__jumpToLetter(key);
 	}
 }));
 

@@ -21,6 +21,10 @@ var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 	},
 
 	template: _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8')),
+	
+	events: {
+		'keypress' : 'handleKeyPress'
+	},
 
 	setState (values) {
 		return this.model.set(values);
@@ -31,7 +35,7 @@ var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 	},
 
 	initialize (options) {
-		_.bindAll(this, 'setState', 'getState', 'render', 'renderMenuItems', 'handleMenuItemSelected');
+		_.bindAll(this, 'setState', 'getState', 'render', 'renderMenuItems', 'handleMenuItemSelected', 'handleKeyPress');
 
 		var self = this;
 
@@ -101,6 +105,11 @@ var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
 
 	handleMenuItemSelected (selection) {
 		this.setSelection(selection);
+	},
+	
+	handleKeyPress (e) {
+		var key = e.which;
+		if (key) this.__jumpToLetter(key);
 	}
 }));
 
