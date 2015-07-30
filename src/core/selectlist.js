@@ -69,7 +69,7 @@ var SelectlistCore = Object.assign({}, Base, {
 		this._collection.forEach(function (item) {
 			var name = Landmark.getProp(item, 'name');
 			
-			if (!selection && name && name.charAt(0).toLowerCase() === letter) {
+			if (!selection && name && name.charAt(0).toLowerCase() === letter.toLowerCase()) {
 				selection = item;
 			}
 		});
