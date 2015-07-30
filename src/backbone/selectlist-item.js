@@ -21,6 +21,9 @@ var SelectlistItem = Backbone.View.extend({
 		
 		this.$el.html(this.template(attrs));
 		
+		this.$el.toggleClass('disabled', attrs.disabled);
+		this.$el.prop('disabled', attrs.disabled);
+		
 		return this;
 	},
 	

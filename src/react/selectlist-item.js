@@ -3,6 +3,7 @@ import Landmark from '../landmark';
 
 // Framework specific
 import React from 'react';
+import classNames from 'classnames';
 
 var SelectlistItem = React.createClass({	
 	propTypes: {
@@ -11,8 +12,10 @@ var SelectlistItem = React.createClass({
 	},
 		
 	render () {
+		var disabled = !!Landmark.getProp(this.props.item, 'disabled');
+		
 		return (
-			<li>
+			<li className={classNames({ disabled: disabled })} disabled={disabled}>
 				<a href="#" onClick={this.handleClicked}>{Landmark.getProp(this.props.item, 'name')}</a>
 			</li>
 		);

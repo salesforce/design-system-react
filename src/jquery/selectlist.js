@@ -106,8 +106,11 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 			var $a = $('<a href="#" />');
 			$a.text(Landmark.getProp(item, 'name'));
 			
+			var disabled = !!Landmark.getProp(item, 'disabled');
 			var $li = $('<li />');
 			$li.data(item);
+			$li.toggleClass('disabled', disabled);
+			$li.prop('disabled', disabled);
 			$li.append($a);
 			
 			elements.dropdownMenu.append($li);
