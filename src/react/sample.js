@@ -53,20 +53,19 @@ var Page = React.createClass({
 	},
 
 	render () {
+		var selectlists = [];
+		
 		Object.keys(this.props.models).forEach(key => {
 			this.props.models[key].onSelected = this.getSelectionHandler(this.props.models[key]);
+			selectlists.push(
+				<li>{React.createElement(Selectlist, this.props.models[key])}</li>
+			);
 		});
 
 		return (
 			<div>
 				<ul className="selectlist-examples">
-					<li>{React.createElement(Selectlist, this.props.models.selectlist1)}</li>
-
-					<li>{React.createElement(Selectlist, this.props.models.selectlist2)}</li>
-
-					<li>{React.createElement(Selectlist, this.props.models.selectlist3)}</li>
-
-					<li>{React.createElement(Selectlist, this.props.models.selectlist4)}</li>
+					{selectlists}
 				</ul>
 
 				<button className="selectlist-action btn btn-primary" onClick={this.changeCollection}>Toggle Enabled / Disabled</button>
