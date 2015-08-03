@@ -3,7 +3,7 @@
 	<head>
 		<meta charset=utf-8/>
 
-		<title>React Selectlist</title>
+		<title>Backbone Selectlist</title>
 
 		<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -47,9 +47,34 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
-						<h1>Selectlist Examples</h1>
-						<div id="selectlist">
-						</div>
+						<section id="selectlist">
+							<section class="enabled example-group">
+								<h1>Selectlist example (enabled)</h1>
+								
+								<div class="selectlist-example" id="mySelectlist1">
+								</div>
+								
+								<div class="btn-panel selectlist-action">
+									<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item</button>
+									<button type="button" class="btn btn-default btnSelectlistSelectByValue">set by value (2)</button>
+									<button type="button" class="btn btn-default btnSelectlistEnableSelectlist">enable</button>
+									<button type="button" class="btn btn-default btnSelectlistDisableSelectlist">disable</button>
+								</div>
+							</section>
+							<section class="disabled example-group">
+								<h1>Selectlist example (disabled)</h1>
+								
+								<div class="selectlist-example" id="mySelectlist2">
+								</div>
+								
+								<div class="btn-panel selectlist-action">
+									<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item</button>
+									<button type="button" class="btn btn-default btnSelectlistSelectByObject">set by object (collection.at(3))</button>
+									<button type="button" class="btn btn-default btnSelectlistEnableSelectlist">enable</button>
+									<button type="button" class="btn btn-default btnSelectlistDisableSelectlist">disable</button>
+								</div>
+							</section>
+						</section>
 					</div>
 				</div>
 			</div>
