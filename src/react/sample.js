@@ -4,10 +4,12 @@ import Selectlist from './selectlist';
 var element = document.getElementById('selectlist');
 
 var collection = [
-	{ id: 0, name: 'tacos', type: 'mexican' },
-	{ id: 1, name: 'burrito', type: 'mexican' },
-	{ id: 2, name: 'tostada', type: 'mexican' },
-	{ id: 3, name: 'hush puppies', type: 'southern' }
+	{ id: 0, name: 'One', value: '1'  },
+	{ id: 1, name: 'Two', value: '2'  },
+	{ id: 2, name: 'Three', value: '3'  },
+	{ id: 3, name: 'Buzz', value: '4'  },
+	{ id: 4, name: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
+	{ id: 5, name: 'Disabled item', disabled: true, value: 'disabled' }
 ];
 
 // TO-DO: Rewrite this to a sample that is more real-life
@@ -22,7 +24,7 @@ var models = {
 	selectlist2: {
 		collection: collection,
 		disabled: false,
-		selection: { name: 'tostada' }
+		selection: { name: 'Buzz' }
 	},
 	selectlist3: {
 		collection: collection,
