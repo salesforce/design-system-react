@@ -1,7 +1,7 @@
 // PLUGIN DEFINITION
 
 // Core
-import Landmark from '../landmark';
+import FuelUX from '../fuelux';
 
 // Framework specific
 // TO-DO: This might not work with require, need to confirm that it does
@@ -28,7 +28,7 @@ var createPlugin = function (name, Constructor, legacyMethods) {
 	
 			// If string, this is a method call, and apply with args
 			if (typeof option === 'string') {
-				if (!legacyMethods || Landmark.isFunction(data[option])) {
+				if (!legacyMethods || FuelUX.isFunction(data[option])) {
 					methodReturn = data[option].apply(data, args);
 				} else {
 					methodReturn = legacyMethods[option].apply(data, args);

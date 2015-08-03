@@ -1,7 +1,6 @@
 // SELECTLIST CONTROL - BACKBONE FACADE
 
 // Core
-import Landmark from '../landmark';
 import SelectlistCore from '../core/selectlist';
 
 // Framework specific

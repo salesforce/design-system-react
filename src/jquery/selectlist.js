@@ -1,7 +1,7 @@
 // SELECTLIST CONTROL - JQUERY FACADE
 
 // Core
-import Landmark from '../landmark';
+import FuelUX from '../fuelux';
 import SelectlistCore, {CONTROL} from '../core/selectlist';
 
 // Framework specific
@@ -88,7 +88,7 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		
 		var width = this.__getState('width');
 		var disabled = !!this.__getState('disabled');
-		var selectionName = Landmark.getProp(selection, 'name') || 'None selected'; // TO-DO: don't hardcode this here
+		var selectionName = FuelUX.getProp(selection, 'name') || 'None selected'; // TO-DO: don't hardcode this here
 		var selectionString = selection ? JSON.stringify(selection) : '';
 		
 		var $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
@@ -104,9 +104,9 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		// Building the menu items
 		this._collection.forEach(function(item) {
 			var $a = $('<a href="#" />');
-			$a.text(Landmark.getProp(item, 'name'));
+			$a.text(FuelUX.getProp(item, 'name'));
 			
-			var disabled = !!Landmark.getProp(item, 'disabled');
+			var disabled = !!FuelUX.getProp(item, 'disabled');
 			var $li = $('<li />');
 			$li.data(item);
 			$li.toggleClass('disabled', disabled);
@@ -134,7 +134,7 @@ Object.assign(Selectlist.prototype, SelectlistCore, {
 		
 		// TO-DO: clearly this isn't the best way to reset the text to "None selected"
 		this.elements.hiddenField.val(JSON.stringify(data) || '');
-		this.elements.label.text(Landmark.getProp(data, 'name') || 'None selected');
+		this.elements.label.text(FuelUX.getProp(data, 'name') || 'None selected');
 		
 		this.elements.wrapper.trigger('changed.fu.selectlist', data);
 	},
@@ -201,7 +201,7 @@ var legacyMethods = {
 	},
 	
 	selectByIndex: function (index) {
-		if (!Landmark.isNumber(index)) {
+		if (!FuelUX.isNumber(index)) {
 			index = parseInt(index, 10);
 		}
 		return this.setSelectionByIndex(index);

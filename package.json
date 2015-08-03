@@ -1,11 +1,11 @@
 {
-  "name": "landmark-js-poc",
+  "name": "fuelux-facades",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.exacttarget.com/uxarchitecture/landmark-js-poc.git"
+    "url": "git://github.exacttarget.com/uxarchitecture/fuelux-facades.git"
   },
-  "version": "0.0.1",
+  "version": "0.0.2",
   "devDependencies": {
     "babel": "^5.6.14",
     "babel-core": "^5.6.20",

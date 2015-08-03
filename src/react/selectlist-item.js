@@ -1,5 +1,5 @@
 // Core
-import Landmark from '../landmark';
+import FuelUX from '../fuelux';
 
 // Framework specific
 import React from 'react';
@@ -12,11 +12,11 @@ var SelectlistItem = React.createClass({
 	},
 		
 	render () {
-		var disabled = !!Landmark.getProp(this.props.item, 'disabled');
+		var disabled = !!FuelUX.getProp(this.props.item, 'disabled');
 		
 		return (
 			<li className={classNames({ disabled: disabled })} disabled={disabled}>
-				<a href="#" onClick={this.handleClicked}>{Landmark.getProp(this.props.item, 'name')}</a>
+				<a href="#" onClick={this.handleClicked}>{FuelUX.getProp(this.props.item, 'name')}</a>
 			</li>
 		);
 	},

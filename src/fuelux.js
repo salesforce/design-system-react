@@ -1,7 +1,7 @@
 // TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
 import {version} from '../package.json';
 
-export default class Landmark {
+export default class FuelUX {
 	static get version () {
 		return version;
 	}
@@ -35,11 +35,11 @@ export default class Landmark {
 			return null;
 		}
 		
-		if (Landmark.isFunction(criteria.toJSON)) {
+		if (FuelUX.isFunction(criteria.toJSON)) {
 			criteria = criteria.toJSON();
 		}
 
-		if (Landmark.isFunction(collection.findWhere)) {
+		if (FuelUX.isFunction(collection.findWhere)) {
 			found = collection.findWhere(criteria);
 		} else {
 			collection.forEach(function(item) {
@@ -67,7 +67,7 @@ export default class Landmark {
 			return undefined;
 		}
 		
-		if (Landmark.isFunction(obj.get)) {
+		if (FuelUX.isFunction(obj.get)) {
 			return obj.get(prop);
 		}
 		

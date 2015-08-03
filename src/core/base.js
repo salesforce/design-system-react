@@ -1,4 +1,4 @@
-import Landmark from '../landmark';
+import FuelUX from '../fuelux';
 
 // CSS classes used across every control
 var sharedCssClasses = {
@@ -7,18 +7,18 @@ var sharedCssClasses = {
 
 var Base = {	
 	__constructor (options) {
-		if (Landmark.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
+		if (FuelUX.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 		
 		// If this control has any sort of internal state, set it up here
-		if (Landmark.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
+		if (FuelUX.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
 		
 		// Combine any classes defined on the child with global defaults
 		this.cssClasses = Object.assign({}, sharedCssClasses, this._cssClasses);
 		
 		// If this controls does anything with options that are passed to it, do that now
-		if (Landmark.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
+		if (FuelUX.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
 		
-		if (Landmark.isFunction(this.onInitialized)) this.onInitialized(options);
+		if (FuelUX.isFunction(this.onInitialized)) this.onInitialized(options);
 	},
 	
 	__setState (values) {
@@ -37,7 +37,7 @@ var Base = {
 		}
 		
 		if (!key) return this._state;
-		if (Landmark.isObject(this._state)) return this._state[key];
+		if (FuelUX.isObject(this._state)) return this._state[key];
 		
 		return null;
 	}
