@@ -10,14 +10,73 @@
 		<!-- TO-DO: Get these off of the CDN -->
 		<link href="//www.fuelcdn.com/fuelux/3.6.3/css/fuelux.min.css" rel="stylesheet">
 		<link href="//www.fuelcdn.com/fuelux-mctheme/1.6.0/css/fuelux-mctheme.min.css" rel="stylesheet">
+		<link href="http://getfuelux.com/assets/css/docs.css" rel="stylesheet">
 
 		<link href="/styles.css" rel="stylesheet">
 	</head>
-	<body class="fuelux">
-		<section class="example-group">
-			<h1>Selectlist Examples</h1>
-	
-			<div id="selectlist">
+	<body>
+
+		<header class="navbar navbar-fixed-top fu-docs-nav" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".fu-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/" class="navbar-brand">Fuel UX</a>
+				</div>
+				<nav class="collapse navbar-collapse fu-navbar-collapse" role="navigation">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="/react/">React</a>
+						</li>
+						<li class="active">
+							<a href="/backbone/">Backbone</a>
+						</li>
+						<li>
+							<a href="/jquery/">jQuery</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<section class="example-group fuelux">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<section id="selectlist">
+							<section class="enabled example-group">
+								<h1>Selectlist example (enabled)</h1>
+								
+								<div class="selectlist-example" id="mySelectlist1">
+								</div>
+								
+								<div class="btn-panel selectlist-action">
+									<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item</button>
+									<button type="button" class="btn btn-default btnSelectlistSelectByValue">set by value (2)</button>
+									<button type="button" class="btn btn-default btnSelectlistEnableSelectlist">enable</button>
+									<button type="button" class="btn btn-default btnSelectlistDisableSelectlist">disable</button>
+								</div>
+							</section>
+							<section class="disabled example-group">
+								<h1>Selectlist example (disabled)</h1>
+								
+								<div class="selectlist-example" id="mySelectlist2">
+								</div>
+								
+								<div class="btn-panel selectlist-action">
+									<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item</button>
+									<button type="button" class="btn btn-default btnSelectlistSelectByObject">set by object (collection.at(3))</button>
+									<button type="button" class="btn btn-default btnSelectlistEnableSelectlist">enable</button>
+									<button type="button" class="btn btn-default btnSelectlistDisableSelectlist">disable</button>
+								</div>
+							</section>
+						</section>
+					</div>
+				</div>
 			</div>
 		</section>
 
