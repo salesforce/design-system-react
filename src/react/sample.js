@@ -53,23 +53,56 @@ var Page = React.createClass({
 			model.selection = selection;
 		}
 	},
+	
+	logSelectedItem (key) {
+		// Okay, probably wouldn't do this in React but just demonstrating
+		console.log(this.refs[key].getSelection());
+	},
+	
+	setSelection (key) {
+		models[key].selection = { value: '2' };
+		this.forceUpdate();
+	},
+	
+	enable (key) {
+		models[key].disabled = false;
+		this.forceUpdate();
+	},
+	
+	disable (key) {
+		models[key].disabled = true;
+		this.forceUpdate();
+	},
 
 	render () {
 		var selectlists = [];
 		
+		// TO-DO: This isn't the most "React-y" example
 		Object.keys(this.props.models).forEach(key => {
-			this.props.models[key].onSelected = this.getSelectionHandler(this.props.models[key]);
+			var self = this;
+			var model = this.props.models[key];
+			model.onSelected = this.getSelectionHandler(model);
+			model.ref = key;
+			
 			selectlists.push(
-				<li>{React.createElement(Selectlist, this.props.models[key])}</li>
+				<section className="{key} example-group" key={key}>
+					<h1>Selectlist example ({key})</h1>
+					
+					<div className="selectlist-example">{React.createElement(Selectlist, model)}</div>
+					
+					<div className="btn-panel selectlist-action">
+						<button className="btn btn-default" onClick={self.logSelectedItem.bind(this, key)}>log selected item</button>
+						<button className="btn btn-default" onClick={self.setSelection.bind(this, key)}>set by value ('2')</button>
+						<button className="btn btn-default" onClick={self.enable.bind(this, key)}>enable</button>
+						<button className="btn btn-default" onClick={self.disable.bind(this, key)}>disable</button>
+					</div>
+				</section>
 			);
 		});
 
 		return (
 			<div>
-				<ul className="selectlist-examples">
-					{selectlists}
-				</ul>
-
+				{selectlists}
 				<button className="selectlist-action btn btn-primary" onClick={this.changeCollection}>Toggle Enabled / Disabled</button>
 			</div>
 		);
