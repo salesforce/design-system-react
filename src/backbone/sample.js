@@ -12,7 +12,7 @@ var collection = new Backbone.Collection([
 	{ id: 2, name: 'Three', value: '3'  },
 	{ id: 3, name: 'Buzz', value: '4'  },
 	{ id: 4, name: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
-	{ id: 5, name: 'Disabled item', disabled: true, value: 'disabled' }
+	{ id: 5, name: 'A Disabled Item', disabled: true, value: 'disabled' }
 ]);
 
 var mySelectlist1 = new Selectlist({
