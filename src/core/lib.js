@@ -1,21 +1,21 @@
-// TO-DO: This currently imports the whole package. Surely we can somehow tell the compiler to only grab the relevant bit?
-import {version} from '../package.json';
-
-export default class FuelUX {
+export default class Lib {
 	static get version () {
-		return version;
+		return '__VERSION__';
 	}
 
+	// DOM
 	static hasClass (element, className) {
 		return (element.className.match(new RegExp('\\b' + className + '\\b')) !== null);
 	}
 
+	// Logging
 	static log () {
 		if (window.console && window.console.log) {
 			console.log(...arguments);
 		}
 	}
 
+	// Type Helpers
 	static isFunction (potentialFunction) {
 		return typeof potentialFunction === 'function';
 	}
@@ -25,9 +25,23 @@ export default class FuelUX {
 	}
 
 	static isObject (potentialObject) {
-		return typeof potentialObject === 'function' || (typeof potentialObject === 'object' && !!potentialObject);
+		return Lib.isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
 	}
-	
+
+	// Model Helpers
+	static getProp (obj, prop) {
+		if (!obj) {
+			return undefined;
+		}
+		
+		if (Lib.isFunction(obj.get)) {
+			return obj.get(prop);
+		}
+		
+		return obj[prop];
+	}
+
+	// Collection Helpers
 	static findWhere (collection, criteria) {
 		var found;
 		
@@ -35,11 +49,11 @@ export default class FuelUX {
 			return null;
 		}
 		
-		if (FuelUX.isFunction(criteria.toJSON)) {
+		if (Lib.isFunction(criteria.toJSON)) {
 			criteria = criteria.toJSON();
 		}
 
-		if (FuelUX.isFunction(collection.findWhere)) {
+		if (Lib.isFunction(collection.findWhere)) {
 			found = collection.findWhere(criteria);
 		} else {
 			collection.forEach(function(item) {
@@ -60,17 +74,5 @@ export default class FuelUX {
 		}
 		
 		return found || null;
-	}
-	
-	static getProp (obj, prop) {
-		if (!obj) {
-			return undefined;
-		}
-		
-		if (FuelUX.isFunction(obj.get)) {
-			return obj.get(prop);
-		}
-		
-		return obj[prop];
 	}
 };

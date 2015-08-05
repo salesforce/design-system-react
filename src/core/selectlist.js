@@ -1,6 +1,6 @@
 // SELECTLIST CONTROL
 
-import FuelUX from '../fuelux';
+import Lib from '../core/lib';
 import Base from './base';
 import classNames from 'classnames';
 
@@ -36,9 +36,9 @@ var SelectlistCore = Object.assign({}, Base, {
 			this._collection = [];
 		}
 
-		if (options && FuelUX.isNumber(options.selection)) {
+		if (options && Lib.isNumber(options.selection)) {
 			this.setSelection({ id: options.selection });
-		} else if (options && FuelUX.isObject(options.selection)) {
+		} else if (options && Lib.isObject(options.selection)) {
 			this.setSelection(options.selection);
 		} else {
 			this.clearSelection();
@@ -51,14 +51,14 @@ var SelectlistCore = Object.assign({}, Base, {
 		}
 
 		if (options && options.resize === 'auto') {
-			if (FuelUX.isFunction(this.resize)) this.resize();
+			if (Lib.isFunction(this.resize)) this.resize();
 		}
 	},
 	
 	__jumpToLetter (letter) {
 		var selection;
 		
-		if (FuelUX.isNumber(letter)) {
+		if (Lib.isNumber(letter)) {
 			letter = String.fromCharCode(letter);
 		}
 		
@@ -67,7 +67,7 @@ var SelectlistCore = Object.assign({}, Base, {
 		}
 		
 		this._collection.forEach(function (item) {
-			var name = FuelUX.getProp(item, 'name');
+			var name = Lib.getProp(item, 'name');
 			
 			if (!selection && name && name.charAt(0).toLowerCase() === letter.toLowerCase()) {
 				selection = item;
@@ -78,29 +78,29 @@ var SelectlistCore = Object.assign({}, Base, {
 	},
 
 	__setSelection (newSelection) {
-		if (FuelUX.getProp(newSelection, 'disabled')) {
+		if (Lib.getProp(newSelection, 'disabled')) {
 			return;
 		}
 		
 		if (this.__getState('selection') !== newSelection) {
-			if (FuelUX.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
+			if (Lib.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
 			this.__setState({ selection: newSelection });
-			if (FuelUX.isFunction(this.onSelected)) this.onSelected(newSelection);
+			if (Lib.isFunction(this.onSelected)) this.onSelected(newSelection);
 		}
 	},
 
 	getSelection () {
-		return FuelUX.findWhere(this._collection, this.__getState('selection'));
+		return Lib.findWhere(this._collection, this.__getState('selection'));
 	},
 
 	// Pass any combination of key / value pairs
 	setSelection (criteria) {
-		var item = FuelUX.findWhere(this._collection, criteria);
+		var item = Lib.findWhere(this._collection, criteria);
 
 		return this.__setSelection(item);
 	},
 
-	// Legacy FuelUX functionality - select by position
+	// Legacy Lib functionality - select by position
 	setSelectionByIndex (index) {
 		if (!this._collection) {
 			return;
@@ -108,7 +108,7 @@ var SelectlistCore = Object.assign({}, Base, {
 
 		var item;
 
-		if (FuelUX.isFunction(this._collection.at)) {
+		if (Lib.isFunction(this._collection.at)) {
 			item = this._collection.at(index);
 		} else {
 			item = this._collection[index];
@@ -126,13 +126,13 @@ var SelectlistCore = Object.assign({}, Base, {
 	enable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 		this.__setState({ disabled: false });
-		if (FuelUX.isFunction(this.onEnabled)) this.onEnabled();
+		if (Lib.isFunction(this.onEnabled)) this.onEnabled();
 	},
 
 	disable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
 		this.__setState({ disabled: true });
-		if (FuelUX.isFunction(this.onDisabled)) this.onDisabled();
+		if (Lib.isFunction(this.onDisabled)) this.onDisabled();
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
@@ -147,10 +147,10 @@ var SelectlistCore = Object.assign({}, Base, {
 		sizer.className = 'selectlist-sizer';
 		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
 
-		if (FuelUX.hasClass(document.querySelector('html'), 'fuelux')) {
+		if (Lib.hasClass(document.querySelector('html'), 'Lib')) {
 			parent = document.querySelector('body');
 		} else {
-			parent = document.querySelector('.fuelux');
+			parent = document.querySelector('.Lib');
 		}
 
 		if (parent) {
@@ -167,7 +167,7 @@ var SelectlistCore = Object.assign({}, Base, {
 		// @interactivellama: True, this is just how it was already implemented in current Fuel UX. However, "longest" doesn't always mean widest...
 
 		this._collection.forEach(function(item) {
-			name = FuelUX.getProp(item, 'name');
+			name = Lib.getProp(item, 'name');
 
 			sizer.querySelector('.' + self._cssClasses.LABEL).textContent = name;
 			newWidth = sizer.querySelector('.' + self.cssClasses.CONTROL).offsetWidth;
@@ -179,7 +179,7 @@ var SelectlistCore = Object.assign({}, Base, {
 		parent.removeChild(sizer);
 
 		this.__setState({ width: width });
-		if (FuelUX.isFunction(this.resetWidth)) this.resetWidth(width);
+		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
 	}
 });
 

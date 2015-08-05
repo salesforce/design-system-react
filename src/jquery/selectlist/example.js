@@ -105,7 +105,7 @@ $(function () {
 	$('.new-api .btnSelectlistDisableSelectlist').on('click', function () {
 		selectlist3.disable();
 	});
-
+	
 	// events
 	// TO-DO: Add a listener here once we have a framework-agnostic event
 });

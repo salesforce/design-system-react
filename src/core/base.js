@@ -1,24 +1,24 @@
-import FuelUX from '../fuelux';
+import Lib from '../core/lib';
 
 // CSS classes used across every control
 var sharedCssClasses = {
 		DISABLED: 'disabled'
 	};
 
-var Base = {	
+var Base = {
 	__constructor (options) {
-		if (FuelUX.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
+		if (Lib.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 		
 		// If this control has any sort of internal state, set it up here
-		if (FuelUX.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
+		if (Lib.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
 		
 		// Combine any classes defined on the child with global defaults
 		this.cssClasses = Object.assign({}, sharedCssClasses, this._cssClasses);
 		
 		// If this controls does anything with options that are passed to it, do that now
-		if (FuelUX.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
+		if (Lib.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
 		
-		if (FuelUX.isFunction(this.onInitialized)) this.onInitialized(options);
+		if (Lib.isFunction(this.onInitialized)) this.onInitialized(options);
 	},
 	
 	__setState (values) {
@@ -37,10 +37,12 @@ var Base = {
 		}
 		
 		if (!key) return this._state;
-		if (FuelUX.isObject(this._state)) return this._state[key];
+		if (Lib.isObject(this._state)) return this._state[key];
 		
 		return null;
-	}
+	},
+	
+	version: Lib.version
 };
 
 export default Base;

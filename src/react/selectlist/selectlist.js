@@ -1,7 +1,7 @@
 // SELECTLIST CONTROL - REACT FACADE
 
 // Core
-import FuelUX from '../../fuelux';
+import Lib from '../../core/lib';
 import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
@@ -38,7 +38,7 @@ var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	menuItems () {
 		return this.props.collection.map((menuItem) => {
 			return (
-				<SelectlistItem key={FuelUX.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected}></SelectlistItem>
+				<SelectlistItem key={Lib.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected}></SelectlistItem>
 			);
 		});
 	},
@@ -57,7 +57,7 @@ var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
 				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
-					<span className="selected-label">{FuelUX.getProp(selection, 'name') || 'None selected'}</span>
+					<span className="selected-label">{Lib.getProp(selection, 'name') || 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
 				</button>
@@ -87,8 +87,8 @@ var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 
 		this.__constructor(this.props);
 
-		if (FuelUX.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
-		if (FuelUX.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
+		if (Lib.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
+		if (Lib.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 	},
 
 	handleMenuItemSelected (selection) {
