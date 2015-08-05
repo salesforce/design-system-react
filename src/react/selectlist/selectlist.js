@@ -1,8 +1,8 @@
 // SELECTLIST CONTROL - REACT FACADE
 
 // Core
-import FuelUX from '../fuelux';
-import SelectlistCore from '../core/selectlist';
+import FuelUX from '../../fuelux';
+import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';

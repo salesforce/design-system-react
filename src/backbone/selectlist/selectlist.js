@@ -1,7 +1,7 @@
 // SELECTLIST CONTROL - BACKBONE FACADE
 
 // Core
-import SelectlistCore from '../core/selectlist';
+import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import _ from 'underscore';

@@ -1,5 +1,5 @@
 // Core
-import FuelUX from '../fuelux';
+import FuelUX from '../../fuelux';
 
 // Framework specific
 import React from 'react';

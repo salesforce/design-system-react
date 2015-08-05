@@ -1,12 +1,12 @@
 // SELECTLIST CONTROL - JQUERY FACADE
 
 // Core
-import FuelUX from '../fuelux';
-import SelectlistCore, {CONTROL} from '../core/selectlist';
+import FuelUX from '../../fuelux';
+import SelectlistCore, {CONTROL} from '../../core/selectlist';
 
 // Framework specific
+import createPlugin from '../createPlugin';
 // TO-DO: This might not work with require, need to confirm that it does
-import createPlugin from './createPlugin';
 var $ = window.$;
 
 // Template imports

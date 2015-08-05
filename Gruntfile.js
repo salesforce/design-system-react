@@ -4,23 +4,23 @@ module.exports = function(grunt) {
 		browserify: {
 			examples: {
 				options: {
-					transform: [["babelify", {
-						"stage": 0,
-						"modules": "umd",
-						"plugins": ["object-assign"]
-					}], ["brfs"]]
+					transform: [['babelify', {
+						'stage': 0,
+						'modules': 'umd',
+						'plugins': ['object-assign']
+					}], ['brfs']],
 				},
 				files: {
-					"examples/jquery/sample.js": "src/jquery/sample.js",
-					"examples/backbone/sample.js": "src/backbone/sample.js",
-					"examples/react/sample.js": "src/react/sample.js"
+					'examples/jquery/examples.js': 'src/jquery/examples.js',
+					'examples/backbone/examples.js': 'src/backbone/examples.js',
+					'examples/react/examples.js': 'src/react/examples.js'
 				}
 			}
 		},
 		watch: {
 			scripts: {
-				files: "src/**/*.*",
-				tasks: ["browserify:examples"],
+				files: 'src/**/*.*',
+				tasks: ['browserify'],
 				options: {
 					livereload: true
 				}
@@ -41,10 +41,10 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.loadNpmTasks("grunt-browserify");
-	grunt.loadNpmTasks("grunt-contrib-connect");
-	grunt.loadNpmTasks("grunt-contrib-watch");
+	grunt.loadNpmTasks('grunt-browserify');
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask("default", ["browserify:examples"]);
-	grunt.registerTask("serve", ["connect:server", "browserify:examples", "watch:scripts"]);
+	grunt.registerTask('default', ['browserify']);
+	grunt.registerTask('serve', ['connect:server', 'browserify', 'watch:scripts']);
 };
