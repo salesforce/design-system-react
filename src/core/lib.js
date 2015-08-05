@@ -8,11 +8,16 @@ export default class Lib {
 		return (element.className.match(new RegExp('\\b' + className + '\\b')) !== null);
 	}
 
-	// Logging
+	// Browser
 	static log () {
-		if (window.console && window.console.log) {
+		if (Lib.global.console && Lib.global.console.log) {
 			console.log(...arguments);
 		}
+	}
+	
+	static get global () {
+		return (typeof self == 'object' && self.self == self && self) ||
+			(typeof global == 'object' && global.global == global && global);
 	}
 
 	// Type Helpers

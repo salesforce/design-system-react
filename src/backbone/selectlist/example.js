@@ -1,3 +1,4 @@
+import Lib from '../../core/lib';
 import Selectlist from './selectlist';
 
 // Framework specific
@@ -25,7 +26,7 @@ $mySelectlist1.append(mySelectlist1.render().el);
 
 // sample method buttons
 $('.enabled .btnSelectlistGetSelectedItem').on('click', function () {
-	console.log(mySelectlist1.getSelection());
+	Lib.log(mySelectlist1.getSelection());
 });
 $('.enabled .btnSelectlistSelectByValue').on('click', function () {
 	mySelectlist1.setSelection({ value : '2' });
@@ -48,7 +49,7 @@ $mySelectlist2.append(mySelectlist2.render().el);
 
 // sample method buttons
 $('.disabled .btnSelectlistGetSelectedItem').on('click', function () {
-	console.log(mySelectlist2.getSelection());
+	Lib.log(mySelectlist2.getSelection());
 });
 $('.disabled .btnSelectlistSelectByObject').on('click', function () {
 	mySelectlist2.setSelection(collection.at(3));

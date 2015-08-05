@@ -141,16 +141,15 @@ var SelectlistCore = Object.assign({}, Base, {
 		var newWidth = 0;
 		var sizer = document.createElement('div');
 		var width = 0;
-		var parent;
-		var name;
+		var parent, label, control, name;
 
 		sizer.className = 'selectlist-sizer';
 		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
 
-		if (Lib.hasClass(document.querySelector('html'), 'Lib')) {
+		if (Lib.hasClass(document.querySelector('html'), this.cssClasses.NAMESPACE)) {
 			parent = document.querySelector('body');
 		} else {
-			parent = document.querySelector('.Lib');
+			parent = document.querySelector('.' + this.cssClasses.NAMESPACE);
 		}
 
 		if (parent) {
@@ -166,11 +165,13 @@ var SelectlistCore = Object.assign({}, Base, {
 		
 		// @interactivellama: True, this is just how it was already implemented in current Fuel UX. However, "longest" doesn't always mean widest...
 
+		label = sizer.querySelector('.' + self._cssClasses.LABEL);
+		control = sizer.querySelector('.' + self.cssClasses.CONTROL);
 		this._collection.forEach(function(item) {
 			name = Lib.getProp(item, 'name');
 
-			sizer.querySelector('.' + self._cssClasses.LABEL).textContent = name;
-			newWidth = sizer.querySelector('.' + self.cssClasses.CONTROL).offsetWidth;
+			label.textContent = name;
+			newWidth = control.offsetWidth;
 			if (newWidth > width) {
 				width = newWidth;
 			}

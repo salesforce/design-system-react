@@ -2,7 +2,8 @@ import Lib from '../core/lib';
 
 // CSS classes used across every control
 var sharedCssClasses = {
-		DISABLED: 'disabled'
+		DISABLED: 'disabled',
+		NAMESPACE: 'fuelux'
 	};
 
 var Base = {

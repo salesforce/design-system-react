@@ -1,3 +1,4 @@
+import Lib from '../../core/lib';
 import React from 'react';
 import Selectlist from './selectlist';
 
@@ -56,7 +57,7 @@ var Page = React.createClass({
 	
 	logSelectedItem (key) {
 		// Okay, probably wouldn't do this in React but just demonstrating
-		console.log(this.refs[key].getSelection());
+		Lib.log(this.refs[key].getSelection());
 	},
 	
 	setSelection (key) {

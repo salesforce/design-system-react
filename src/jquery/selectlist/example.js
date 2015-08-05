@@ -1,7 +1,8 @@
+import Lib from '../../core/lib';
 import Selectlist from "./selectlist";
 
 // TO-DO: This might not work with require, need to confirm that it does
-var $ = window.$;
+var $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 var collection = [
 	{ id: 0, name: 'One', value: '1'  },
@@ -15,7 +16,7 @@ var collection = [
 $(function () {
 	// sample method buttons
 	$('.declarative .btnSelectlistGetSelectedItem').on('click', function () {
-		console.log($('#mySelectlist1').selectlist('selectedItem'));
+		Lib.log($('#mySelectlist1').selectlist('selectedItem'));
 	});
 	$('.declarative .btnSelectlistSelectByValue').on('click', function () {
 		$('#mySelectlist1').selectlist('selectByValue', 2);
@@ -38,14 +39,14 @@ $(function () {
 	$('.declarative .btnSelectlistDestroy').on('click', function () {
 		var $container = $('#mySelectlist1').parent();
 		var markup = $('#mySelectlist1').selectlist('destroy');
-		console.log(markup);
+		Lib.log(markup);
 		$container.append(markup);
 		$('#mySelectlist1').selectlist();
 	});
 
 	// events
 	$('#mySelectlist1').on('changed.fu.selectlist', function (event, data) {
-		console.log('changed', data);
+		Lib.log('changed', data);
 	});
 
 
@@ -56,7 +57,7 @@ $(function () {
 
 	// sample method buttons
 	$('.imperative .btnSelectlistGetSelectedItem').on('click', function () {
-		console.log($('#mySelectlist2').selectlist('selectedItem'));
+		Lib.log($('#mySelectlist2').selectlist('selectedItem'));
 	});
 	$('.imperative .btnSelectlistSelectByIndex').on('click', function () {
 		$('#mySelectlist2').selectlist('selectByIndex', '1');
@@ -73,14 +74,14 @@ $(function () {
 	$('.imperative .btnSelectlistDestroy').on('click', function () {
 		var $container = $('#mySelectlist2').parent();
 		var markup = $('#mySelectlist2').selectlist('destroy');
-		console.log(markup);
+		Lib.log(markup);
 		$container.append(markup);
 		$('#mySelectlist2').selectlist();
 	});
 
 	// events
 	$('#mySelectlist2').on('changed.fu.selectlist', function (event, data) {
-		console.log('changed', data);
+		Lib.log('changed', data);
 	});
 
 
@@ -91,7 +92,7 @@ $(function () {
 
 	// sample method buttons
 	$('.new-api .btnSelectlistGetSelectedItem').on('click', function () {
-		console.log(selectlist3.getSelection());
+		Lib.log(selectlist3.getSelection());
 	});
 	$('.new-api .btnSelectlistSelectByIndex').on('click', function () {
 		selectlist3.setSelectionByIndex(1);

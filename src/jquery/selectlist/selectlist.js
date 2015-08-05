@@ -7,7 +7,7 @@ import SelectlistCore, {CONTROL} from '../../core/selectlist';
 // Framework specific
 import createPlugin from '../createPlugin';
 // TO-DO: This might not work with require, need to confirm that it does
-var $ = window.$;
+var $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
 var fs = require('fs');

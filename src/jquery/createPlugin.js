@@ -5,7 +5,7 @@ import Lib from '../core/lib';
 
 // Framework specific
 // TO-DO: This might not work with require, need to confirm that it does
-var $ = window.$;
+var $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 var createPlugin = function (name, Constructor, legacyMethods) {
 	var old = $.fn[name];
