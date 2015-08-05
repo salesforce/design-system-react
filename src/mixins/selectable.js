@@ -57,7 +57,11 @@ var Selectable = {
 			return;
 		}
 		
-		var selection = Lib.findWhere(this._collection, { name: new RegExp('^' + letter, 'i') });
+		if (letter === '\\') {
+			letter = '\\\\';
+		}
+		
+		var selection = Lib.findWhere(this._collection, { name: new RegExp('^[' + letter + ']', 'i') });
 		
 		if (selection) this.__setSelection(selection);
 	}
