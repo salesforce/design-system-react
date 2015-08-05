@@ -28,6 +28,14 @@ export default class Lib {
 	static isNumber (potentialNumber) {
 		return toString.call(potentialNumber) === '[object Number]';
 	}
+	
+	static isString (potentialString) {
+		return toString.call(potentialString) === '[object String]';
+	}
+	
+	static isRegExp (potentialRegExp) {
+		return toString.call(potentialRegExp) === '[object RegExp]';
+	}
 
 	static isObject (potentialObject) {
 		return Lib.isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
@@ -50,6 +58,14 @@ export default class Lib {
 	static findWhere (collection, criteria) {
 		var found;
 		
+		function isRegexMatch(string, regex) {
+			if (!Lib.isString(string) || !Lib.isRegExp(regex)) {
+				return false;
+			}
+			
+			return string.match(regex);
+		}
+		
 		if (!criteria) {
 			return null;
 		}
@@ -66,7 +82,7 @@ export default class Lib {
 					var match = true;
 					var innerItem = item.attributes ? item.attributes : item;
 					Object.keys(criteria).forEach(function(key) {
-						if (criteria[key] !== innerItem[key]) {
+						if (criteria[key] !== innerItem[key] && !isRegexMatch(innerItem[key], criteria[key])) {
 							match = false;
 						}
 					});

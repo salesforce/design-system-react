@@ -58,8 +58,6 @@ var SelectlistCore = Object.assign({}, Base, Disableable, Selectable, {
 	},
 	
 	__jumpToLetter (letter) {
-		var selection;
-		
 		if (Lib.isNumber(letter)) {
 			letter = String.fromCharCode(letter);
 		}
@@ -68,13 +66,7 @@ var SelectlistCore = Object.assign({}, Base, Disableable, Selectable, {
 			return;
 		}
 		
-		this._collection.forEach(function (item) {
-			var name = Lib.getProp(item, 'name');
-			
-			if (!selection && name && name.charAt(0).toLowerCase() === letter.toLowerCase()) {
-				selection = item;
-			}
-		});
+		var selection = Lib.findWhere(this._collection, { name: new RegExp('^' + letter, 'i') });
 		
 		if (selection) this.__setSelection(selection);
 	},
