@@ -17,6 +17,15 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		uglify: {
+			examples: {
+				files: {
+					'examples/jquery/examples.min.js': ['examples/jquery/examples.js'],
+					'examples/backbone/examples.min.js': ['examples/backbone/examples.js'],
+					'examples/react/examples.min.js': ['examples/react/examples.js']
+				}
+			}
+		},
 		watch: {
 			scripts: {
 				files: 'src/**/*.*',
@@ -43,8 +52,9 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default', ['browserify']);
+	grunt.registerTask('default', ['browserify', 'uglify']);
 	grunt.registerTask('serve', ['connect:server', 'browserify', 'watch:scripts']);
 };
