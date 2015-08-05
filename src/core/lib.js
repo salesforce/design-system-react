@@ -59,7 +59,7 @@ export default class Lib {
 		var found;
 		
 		function isRegexMatch(string, regex) {
-			if (!Lib.isString(string) || !Lib.isRegExp(regex)) {
+			if (!Lib.isRegExp(regex) || !Lib.isString(string)) {
 				return false;
 			}
 			

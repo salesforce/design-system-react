@@ -56,20 +56,6 @@ var SelectlistCore = Object.assign({}, Base, Disableable, Selectable, {
 			if (Lib.isFunction(this.resize)) this.resize();
 		}
 	},
-	
-	__jumpToLetter (letter) {
-		if (Lib.isNumber(letter)) {
-			letter = String.fromCharCode(letter);
-		}
-		
-		if (letter.length !== 1) {
-			return;
-		}
-		
-		var selection = Lib.findWhere(this._collection, { name: new RegExp('^' + letter, 'i') });
-		
-		if (selection) this.__setSelection(selection);
-	},
 
 	// Vanilla js implementation of this to be shared by the libraries
 	resize () {

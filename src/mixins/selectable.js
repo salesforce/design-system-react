@@ -45,6 +45,21 @@ var Selectable = {
 
 	clearSelection () {
 		this.__setSelection();
+	},
+	
+	// For keyboard nav
+	__jumpToLetter (letter) {
+		if (Lib.isNumber(letter)) {
+			letter = String.fromCharCode(letter);
+		}
+		
+		if (letter.length !== 1) {
+			return;
+		}
+		
+		var selection = Lib.findWhere(this._collection, { name: new RegExp('^' + letter, 'i') });
+		
+		if (selection) this.__setSelection(selection);
 	}
 };
 
