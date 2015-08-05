@@ -1,12 +1,16 @@
 // SELECTLIST CONTROL
 
-import Lib from '../core/lib';
+import Lib from './lib';
 import Base from './base';
 import classNames from 'classnames';
 
+// Mixins
+import Disableable from '../mixins/disableable';
+import Selectable from '../mixins/selectable';
+
 export var CONTROL = 'selectlist';
 
-var SelectlistCore = Object.assign({}, Base, {
+var SelectlistCore = Object.assign({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
 	_cssClasses: {
 		CONTROL: CONTROL,
@@ -36,9 +40,7 @@ var SelectlistCore = Object.assign({}, Base, {
 			this._collection = [];
 		}
 
-		if (options && Lib.isNumber(options.selection)) {
-			this.setSelection({ id: options.selection });
-		} else if (options && Lib.isObject(options.selection)) {
+		if (options && Lib.isObject(options.selection)) {
 			this.setSelection(options.selection);
 		} else {
 			this.clearSelection();
@@ -75,64 +77,6 @@ var SelectlistCore = Object.assign({}, Base, {
 		});
 		
 		if (selection) this.__setSelection(selection);
-	},
-
-	__setSelection (newSelection) {
-		if (Lib.getProp(newSelection, 'disabled')) {
-			return;
-		}
-		
-		if (this.__getState('selection') !== newSelection) {
-			if (Lib.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
-			this.__setState({ selection: newSelection });
-			if (Lib.isFunction(this.onSelected)) this.onSelected(newSelection);
-		}
-	},
-
-	getSelection () {
-		return Lib.findWhere(this._collection, this.__getState('selection'));
-	},
-
-	// Pass any combination of key / value pairs
-	setSelection (criteria) {
-		var item = Lib.findWhere(this._collection, criteria);
-
-		return this.__setSelection(item);
-	},
-
-	// Legacy Lib functionality - select by position
-	setSelectionByIndex (index) {
-		if (!this._collection) {
-			return;
-		}
-
-		var item;
-
-		if (Lib.isFunction(this._collection.at)) {
-			item = this._collection.at(index);
-		} else {
-			item = this._collection[index];
-		}
-
-		return this.__setSelection(item);
-	},
-
-	clearSelection () {
-		this.__setSelection();
-	},
-
-	// These methods make sense for jQuery components but much less sense for React components
-	// TO-DO: Should methods that don't make sense for a particular facade be overidden with warnings?
-	enable () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-		this.__setState({ disabled: false });
-		if (Lib.isFunction(this.onEnabled)) this.onEnabled();
-	},
-
-	disable () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-		this.__setState({ disabled: true });
-		if (Lib.isFunction(this.onDisabled)) this.onDisabled();
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
