@@ -31,14 +31,14 @@ var Selectlist = function (element, options) {
 	this.__constructor(options);
 };
 
-Object.assign(Selectlist.prototype, SelectlistCore, {
+Lib.extend(Selectlist.prototype, SelectlistCore, {
 	__initElements (base, elements) {
 		elements = elements || {};
 		
-		elements.button = base.find('.' + this._cssClasses.TOGGLE);
-		elements.hiddenField = base.find('.' + this._cssClasses.HIDDEN);
-		elements.label = base.find('.' + this._cssClasses.LABEL);
-		elements.dropdownMenu = base.find('.' + this._cssClasses.MENU);
+		elements.button = base.find('.' + this.cssClasses.TOGGLE);
+		elements.hiddenField = base.find('.' + this.cssClasses.HIDDEN);
+		elements.label = base.find('.' + this.cssClasses.LABEL);
+		elements.dropdownMenu = base.find('.' + this.cssClasses.MENU);
 		
 		return elements;
 	},

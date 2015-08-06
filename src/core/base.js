@@ -1,20 +1,16 @@
 import Lib from '../core/lib';
 
-// CSS classes used across every control
-var sharedCssClasses = {
-		DISABLED: 'disabled',
-		NAMESPACE: 'fuelux'
-	};
-
 var Base = {
+	// CSS classes used across every control
+	cssClasses: {
+		NAMESPACE: 'fuelux'
+	},
+	
 	__constructor (options) {
 		if (Lib.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 		
 		// If this control has any sort of internal state, set it up here
 		if (Lib.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
-		
-		// Combine any classes defined on the child with global defaults
-		this.cssClasses = Object.assign({}, sharedCssClasses, this._cssClasses);
 		
 		// If this controls does anything with options that are passed to it, do that now
 		if (Lib.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
@@ -23,7 +19,7 @@ var Base = {
 	},
 	
 	__setState (values) {
-		Object.assign(this._state, values);
+		Lib.extend(this._state, values);
 		
 		if (this.setState) {
 			this.__setState = this.setState;

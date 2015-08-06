@@ -3,6 +3,10 @@
 import Lib from '../core/lib';
 
 var Disableable = {
+	cssClasses: {
+		DISABLED: 'disabled'
+	},
+	
 	enable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 		this.__setState({ disabled: false });

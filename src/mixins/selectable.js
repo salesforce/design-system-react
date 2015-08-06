@@ -3,6 +3,10 @@
 import Lib from '../core/lib';
 
 var Selectable = {
+	cssClasses: {
+		SELECTED: 'selected'
+	},
+	
 	__setSelection (newSelection) {
 		if (Lib.getProp(newSelection, 'disabled')) {
 			return;

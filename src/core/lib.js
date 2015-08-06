@@ -96,4 +96,24 @@ export default class Lib {
 		
 		return found || null;
 	}
+	
+	static extend (target) {
+		for (var i = 1; i < arguments.length; i++) {
+			var source = arguments[i];
+			
+			for (var key in source) {
+				if (Object.prototype.hasOwnProperty.call(source, key)) {
+					if (Object.prototype.hasOwnProperty.call(target, key) &&
+						target[key] && typeof target[key] === 'object' &&
+						source[key] && typeof source[key] === 'object') {
+						target[key] = Lib.extend(target[key], source[key]); // Combine objects
+					} else {
+						target[key] = source[key];
+					}
+				}
+			}
+		}
+		
+		return target;
+	}
 };

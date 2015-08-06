@@ -11,7 +11,7 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from './selectlist-item';
 
-var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
+var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -26,7 +26,7 @@ var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	},
 
 	getInitialState () {
-		return Object.assign(this.__getInitialState(), {
+		return Lib.extend(this.__getInitialState(), {
 			wrapperClasses: {}
 		});
 	},

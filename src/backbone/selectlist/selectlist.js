@@ -1,6 +1,7 @@
 // SELECTLIST CONTROL - BACKBONE FACADE
 
 // Core
+import Lib from '../../core/lib';
 import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
@@ -14,9 +15,9 @@ import SelectlistItem from './selectlist-item';
 // Template imports
 var fs = require('fs');
 
-var Selectlist = Backbone.View.extend(Object.assign({}, SelectlistCore, {
+var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	className () {
-		return classNames(this._cssClasses.CONTROL, this._cssClasses.BTN_GROUP)
+		return classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP)
 	},
 
 	template: _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8')),

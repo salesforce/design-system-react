@@ -10,11 +10,10 @@ import Selectable from '../mixins/selectable';
 
 export var CONTROL = 'selectlist';
 
-var SelectlistCore = Object.assign({}, Base, Disableable, Selectable, {
+var SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
-	_cssClasses: {
+	cssClasses: {
 		CONTROL: CONTROL,
-		SELECTED: 'selected',
 		BTN_GROUP: 'btn-group',
 		TOGGLE: 'dropdown-toggle',
 		HIDDEN: 'hidden-field',
@@ -87,7 +86,7 @@ var SelectlistCore = Object.assign({}, Base, Disableable, Selectable, {
 		
 		// @interactivellama: True, this is just how it was already implemented in current Fuel UX. However, "longest" doesn't always mean widest...
 
-		label = sizer.querySelector('.' + self._cssClasses.LABEL);
+		label = sizer.querySelector('.' + self.cssClasses.LABEL);
 		control = sizer.querySelector('.' + self.cssClasses.CONTROL);
 		this._collection.forEach(function(item) {
 			name = Lib.getProp(item, 'name');
