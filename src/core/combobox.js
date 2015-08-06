@@ -10,7 +10,7 @@ import Selectable from '../mixins/selectable';
 
 export var CONTROL = 'combobox';
 
-var SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
+var ComboboxCore = Lib.extend({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -55,4 +55,4 @@ var SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 	}
 });
 
-export default SelectlistCore;
+export default ComboboxCore;

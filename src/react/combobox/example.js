@@ -1,6 +1,6 @@
 import Lib from '../../core/lib';
 import React from 'react';
-import Selectlist from './selectlist';
+import Combobox from './combobox';
 
 export default function (element) {
 	var collection = [
@@ -15,28 +15,28 @@ export default function (element) {
 	// TO-DO: Rewrite this to a sample that is more real-life
 	// For example, this could be a collection of people and their food preference rather than a perfect set of models
 	var models = {
-		selectlist1: {
+		combobox1: {
 			collection: collection,
 			disabled: false,
 			selection: collection[0],
 			resize: 'auto'
 		},
-		selectlist2: {
+		combobox2: {
 			collection: collection,
 			disabled: false,
 			selection: { name: 'Buzz' }
 		},
-		selectlist3: {
+		combobox3: {
 			collection: collection,
 			disabled: false,
 		},
-		selectlist4: {
+		combobox4: {
 			collection: collection,
 			disabled: true
 		}
 	};
 	
-	var SelectlistExample = React.createClass({
+	var ComboboxExample = React.createClass({
 		changeCollection () {
 			var models = this.props.models;
 			Object.keys(models).forEach(key => {
@@ -75,7 +75,7 @@ export default function (element) {
 		},
 	
 		render () {
-			var selectlists = [];
+			var comboboxen = [];
 			
 			// TO-DO: This isn't the most "React-y" example
 			Object.keys(this.props.models).forEach(key => {
@@ -84,11 +84,11 @@ export default function (element) {
 				model.onSelected = this.getSelectionHandler(model);
 				model.ref = key;
 				
-				selectlists.push(
+				comboboxen.push(
 					<section className="example-group" key={key}>
-						<h1>Selectlist example ({key})</h1>
+						<h1>Combobox example ({key})</h1>
 						
-						<div className="example">{React.createElement(Selectlist, model)}</div>
+						<div className="example">{React.createElement(Combobox, model)}</div>
 						
 						<div className="btn-panel action">
 							<button className="btn btn-default" onClick={self.logSelectedItem.bind(this, key)}>log selected item</button>
@@ -102,13 +102,12 @@ export default function (element) {
 	
 			return (
 				<div>
-					{selectlists}
+					{comboboxen}
 					<button className="action btn btn-primary" onClick={this.changeCollection}>Toggle Enabled / Disabled</button>
 				</div>
 			);
 		}
 	});
 	
-	// Page is a list of multiple selectlists
-	React.render(<SelectlistExample key={'SelectlistExample'} models={models}/>, element);
+	React.render(<ComboboxExample key={'ComboboxExample'} models={models}/>, element);
 }

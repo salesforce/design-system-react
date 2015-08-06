@@ -1012,18 +1012,12 @@ object {
 	margin: 20px 0;
 }
 
-#selectlist .selectlist-examples {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-}
-
-#selectlist .selectlist-examples > li, .selectlist-example {
+.example-group .example {
 	margin: 0 0 20px;
 	padding: 0;
 }
 
-#selectlist .selectlist-action {
+.example-group .action {
 	margin: 0 0 20px;
 }
 

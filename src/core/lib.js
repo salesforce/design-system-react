@@ -106,7 +106,7 @@ export default class Lib {
 					if (Object.prototype.hasOwnProperty.call(target, key) &&
 						target[key] && typeof target[key] === 'object' &&
 						source[key] && typeof source[key] === 'object') {
-						target[key] = Lib.extend(target[key], source[key]); // Combine objects
+						target[key] = Lib.extend({}, target[key], source[key]); // Combine objects
 					} else {
 						target[key] = source[key];
 					}
