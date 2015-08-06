@@ -4,14 +4,14 @@ import Backbone from 'backbone';
 var SelectlistItem = Backbone.View.extend({
 	tagName: 'li',
 	className () {
-		if (this.model.get('type') === 'header') {
+		if (this.model.get('_itemType') === 'header') {
 			return 'dropdown-header';
-		} else if (this.model.get('type') === 'divider') {
+		} else if (this.model.get('_itemType') === 'divider') {
 			return 'divider';
 		}
 	},
 
-	template: _.template('<% if (type === "item") { %><a href="#"><%- name %></a><% } else if (type === "header") { %><%- name %><% } %>'),
+	template: _.template('<% if (_itemType === "item") { %><a href="#"><%- name %></a><% } else if (_itemType === "header") { %><%- name %><% } %>'),
 
 	events: {
 		'click a' : 'handleClicked'
@@ -26,13 +26,13 @@ var SelectlistItem = Backbone.View.extend({
 
 	render () {
 		var attrs = this.model.toJSON();
-		attrs.type = attrs.type || 'item';
+		attrs._itemType = attrs._itemType || 'item';
 
 		this.$el.html(this.template(attrs));
 
 		this.$el.toggleClass('disabled', !!attrs.disabled);
 		this.$el.prop('disabled', !!attrs.disabled);
-		if (this.model.get('type') === 'divider') {
+		if (this.model.get('_itemType') === 'divider') {
 			this.$el.prop('role', 'separator');
 		}
 

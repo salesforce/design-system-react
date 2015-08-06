@@ -15,16 +15,12 @@ var SelectlistItem = React.createClass({
 		var disabled = !!Lib.getProp(this.props.item, 'disabled');
 
 		var html;
-		switch (Lib.getProp(this.props.item, 'type')){
+		switch (Lib.getProp(this.props.item, '_itemType')){
 			case 'header':
-				html = (
-					<li className="dropdown-header">{Lib.getProp(this.props.item, 'name')}</li>
-				);
+				html = <li className="dropdown-header">{Lib.getProp(this.props.item, 'name')}</li>;
 				break;
 			case 'divider':
-				html = (
-					<li className="divider"></li>
-				);
+				html = <li className="divider"></li>;
 				break;
 			case 'item':
 			default:

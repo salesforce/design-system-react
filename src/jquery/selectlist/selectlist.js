@@ -105,7 +105,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		// Building the menu items
 		this._collection.forEach(function(item) {
 			var $li;
-			switch (item.type) {
+			switch (item._itemType) {
 				case 'header':
 					$li = self.renderHeader(item);
 					break;
