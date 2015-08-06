@@ -5,9 +5,12 @@ import Selectlist from './selectlist';
 var element = document.getElementById('selectlist');
 
 var collection = [
-	{ id: 0, name: 'One', value: '1'  },
-	{ id: 1, name: 'Two', value: '2'  },
-	{ id: 2, name: 'Three', value: '3'  },
+	{ type: 'header', name: 'One thing' },
+	{ id: 0, name: 'One', value: '1' },
+	{ type: 'divider' },
+	{ type: 'header', name: 'All the things' },
+	{ id: 1, name: 'Two', value: '2' },
+	{ type: 'item', id: 2, name: 'Three', value: '3'  },
 	{ id: 3, name: 'Buzz', value: '4'  },
 	{ id: 4, name: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
 	{ id: 5, name: 'A Disabled Item', disabled: true, value: 'disabled' }
@@ -54,22 +57,22 @@ var Page = React.createClass({
 			model.selection = selection;
 		}
 	},
-	
+
 	logSelectedItem (key) {
 		// Okay, probably wouldn't do this in React but just demonstrating
 		Lib.log(this.refs[key].getSelection());
 	},
-	
+
 	setSelection (key) {
 		models[key].selection = { value: '2' };
 		this.forceUpdate();
 	},
-	
+
 	enable (key) {
 		models[key].disabled = false;
 		this.forceUpdate();
 	},
-	
+
 	disable (key) {
 		models[key].disabled = true;
 		this.forceUpdate();
@@ -77,20 +80,20 @@ var Page = React.createClass({
 
 	render () {
 		var selectlists = [];
-		
+
 		// TO-DO: This isn't the most "React-y" example
 		Object.keys(this.props.models).forEach(key => {
 			var self = this;
 			var model = this.props.models[key];
 			model.onSelected = this.getSelectionHandler(model);
 			model.ref = key;
-			
+
 			selectlists.push(
 				<section className="{key} example-group" key={key}>
 					<h1>Selectlist example ({key})</h1>
-					
+
 					<div className="selectlist-example">{React.createElement(Selectlist, model)}</div>
-					
+
 					<div className="btn-panel selectlist-action">
 						<button className="btn btn-default" onClick={self.logSelectedItem.bind(this, key)}>log selected item</button>
 						<button className="btn btn-default" onClick={self.setSelection.bind(this, key)}>set by value ('2')</button>
