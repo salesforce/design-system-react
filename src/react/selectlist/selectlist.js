@@ -6,12 +6,15 @@ import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
+import ReactHelpers from '../helpers';
+
+// Third party
 import classNames from 'classnames';
 
 // Children
 import SelectlistItem from './selectlist-item';
 
-var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
+var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -31,20 +34,12 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
 		});
 	},
 
-	getState (key) {
-		return this.state[key];
-	},
-
 	menuItems () {
 		return this.props.collection.map((menuItem) => {
 			return (
 				<SelectlistItem key={Lib.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected}></SelectlistItem>
 			);
 		});
-	},
-
-	componentWillReceiveProps(nextProps) {
-		this.__initializeOptions(nextProps);
 	},
 
 	render () {
