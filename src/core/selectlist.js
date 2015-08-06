@@ -39,17 +39,9 @@ var SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 			this._collection = [];
 		}
 
-		if (options && Lib.isObject(options.selection)) {
-			this.setSelection(options.selection);
-		} else {
-			this.clearSelection();
-		}
+		this.__initializeSelectable(options);
 
-		if (options && options.disabled === true) {
-			this.disable();
-		} else if (options && options.disabled === false) {
-			this.enable();
-		}
+		this.__initializeDisableable(options);
 
 		if (options && options.resize === 'auto') {
 			if (Lib.isFunction(this.resize)) this.resize();

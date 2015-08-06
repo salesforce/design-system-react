@@ -7,6 +7,14 @@ var Disableable = {
 		DISABLED: 'disabled'
 	},
 	
+	__initializeDisableable (options) {
+		if (options && options.disabled === true) {
+			this.disable();
+		} else if (options && options.disabled === false) {
+			this.enable();
+		}
+	},
+	
 	enable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 		this.__setState({ disabled: false });

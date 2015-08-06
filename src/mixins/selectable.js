@@ -7,6 +7,14 @@ var Selectable = {
 		SELECTED: 'selected'
 	},
 	
+	__initializeSelectable (options) {
+		if (options && Lib.isObject(options.selection)) {
+			this.setSelection(options.selection);
+		} else {
+			this.clearSelection();
+		}
+	},
+	
 	__setSelection (newSelection) {
 		if (Lib.getProp(newSelection, 'disabled')) {
 			return;
