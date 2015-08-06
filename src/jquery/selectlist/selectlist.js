@@ -64,6 +64,14 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 				item.disabled = true;
 			}
 
+			if ($item.hasClass('dropdown-header')) {
+				item._itemType = 'header'
+			} else if ($item.hasClass('divider')) {
+				item._itemType = 'divider';
+			} else {
+				item._itemType = 'item';
+			}
+
 			$item.data(item);
 			options.collection.push(item);
 		});
