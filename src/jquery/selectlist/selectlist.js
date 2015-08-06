@@ -101,24 +101,56 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		elements.hiddenField.val(selectionString);
 		elements.dropdownMenu.width(width);
 
+		var self = this;
 		// Building the menu items
 		this._collection.forEach(function(item) {
-			var $a = $('<a href="#" />');
-			$a.text(Lib.getProp(item, 'name'));
-
-			var disabled = !!Lib.getProp(item, 'disabled');
-			var $li = $('<li />');
-			$li.data(item);
-			$li.toggleClass('disabled', disabled);
-			$li.prop('disabled', disabled);
-			$li.append($a);
-
+			var $li;
+			switch (item.type) {
+				case 'header':
+					$li = self.renderHeader(item);
+					break;
+				case 'divider':
+					$li = self.renderDivider(item);
+					break;
+				case 'item':
+				default:
+					$li = self.renderItem(item);
+			}
 			elements.dropdownMenu.append($li);
 		});
 
 		this.elements.wrapper.append($html.children());
 
 		this.rendered = true;
+	},
+
+	renderItem (data) {
+		var $a = $('<a href="#" />');
+		$a.text(Lib.getProp(data, 'name'));
+
+		var disabled = !!Lib.getProp(data, 'disabled');
+		var $li = $('<li />');
+		$li.data(data);
+		$li.toggleClass('disabled', disabled);
+		$li.prop('disabled', disabled);
+		$li.append($a);
+
+		return $li;
+	},
+
+	renderHeader (data) {
+		var $li = $('<li class="dropdown-header"></li>');
+		$li.data(data);
+		$li.text(Lib.getProp(data, 'name'));
+
+		return $li;
+	},
+
+	renderDivider (data) {
+		var $li = $('<li role="separator" class="divider"></li>');
+		$li.data(data);
+
+		return $li;
 	},
 
 	destroy () {

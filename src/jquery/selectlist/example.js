@@ -5,9 +5,12 @@ import Selectlist from "./selectlist";
 var $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 var collection = [
-	{ id: 0, name: 'One', value: '1'  },
-	{ id: 1, name: 'Two', value: '2'  },
-	{ id: 2, name: 'Three', value: '3'  },
+	{ type: 'header', name: 'One thing' },
+	{ id: 0, name: 'One', value: '1' },
+	{ type: 'divider' },
+	{ type: 'header', name: 'All the things' },
+	{ id: 1, name: 'Two', value: '2' },
+	{ type: 'item', id: 2, name: 'Three', value: '3'  },
 	{ id: 3, name: 'Buzz', value: '4'  },
 	{ id: 4, name: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
 	{ id: 5, name: 'A Disabled Item', disabled: true, value: 'disabled' }
@@ -106,7 +109,7 @@ $(function () {
 	$('.new-api .btnSelectlistDisableSelectlist').on('click', function () {
 		selectlist3.disable();
 	});
-	
+
 	// events
 	// TO-DO: Add a listener here once we have a framework-agnostic event
 });
