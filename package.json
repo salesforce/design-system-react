@@ -12,7 +12,6 @@
     "babelify": "^6.1.2",
     "brfs": "^1.4.0",
     "browserify-versionify": "^1.0.6",
-    "classnames": "^2.1.3",
     "connect": "^3.4.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.8.0",

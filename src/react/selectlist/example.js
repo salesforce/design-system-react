@@ -4,11 +4,14 @@ import Selectlist from './selectlist';
 
 export default function (element) {
 	var collection = [
+		{ _itemType: 'header', name: 'One thing' },
 		{ id: 0, name: 'One', value: '1' },
+		{ _itemType: 'divider' },
+		{ _itemType: 'header', name: 'All the things' },
 		{ id: 1, name: 'Two', value: '2' },
-		{ id: 2, name: 'Three', value: '3' },
-		{ id: 3, name: 'Buzz', value: '4' },
-		{ id: 4, name: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar' },
+		{ _itemType: 'item', id: 2, name: 'Three', value: '3'  },
+		{ id: 3, name: 'Buzz', value: '4'  },
+		{ id: 4, name: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
 		{ id: 5, name: 'A Disabled Item', disabled: true, value: 'disabled' }
 	];
 	

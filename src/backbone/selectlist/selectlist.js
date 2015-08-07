@@ -21,7 +21,7 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	},
 
 	template: _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8')),
-	
+
 	events: {
 		'keypress' : 'handleKeyPress'
 	},
@@ -33,6 +33,8 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	getState (key) {
 		return this.model.get(key);
 	},
+
+	assumeFocus: false,
 
 	initialize (options) {
 		_.bindAll(this, 'setState', 'getState', 'render', 'renderMenuItems', 'handleMenuItemSelected', 'handleKeyPress');
@@ -51,7 +53,7 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 
 		this.__constructor(options);
 
-		// Put this after the contructor so that we don't call render during initialization
+		// Put this after the constructor so that we don't call render during initialization
 		this.listenTo(this.model, 'change', this.render);
 
 		// Only update the children when the collection has changed
@@ -75,6 +77,11 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 		this.$el.html(this.template(attrs));
 
 		this.renderMenuItems();
+
+		if (this.assumeFocus){
+			this.$el.find('button').focus();
+			this.assumeFocus = false;
+		}
 
 		return this;
 	},
@@ -106,9 +113,12 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
-	
+
 	handleKeyPress (e) {
 		var key = e.which;
+
+		this.assumeFocus = true;
+
 		if (key) this.__jumpToLetter(key);
 	}
 }));
