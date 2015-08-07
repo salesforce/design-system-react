@@ -2,16 +2,17 @@
 
 import Lib from '../core/lib';
 
+var isNonDisabledItem = function isNonDisabledItem (item) {
+	var isNonDisabledItem = !Lib.getProp(item, 'disabled') && (!Lib.getProp(item, '_itemType') || Lib.getProp(item, '_itemType') === 'item');
+	return isNonDisabledItem;
+};
+
 var Selectable = {
 	cssClasses: {
 		SELECTED: 'selected'
 	},
-	
+
 	__setSelection (newSelection) {
-		if (Lib.getProp(newSelection, 'disabled')) {
-			return;
-		}
-		
 		if (this.__getState('selection') !== newSelection) {
 			if (Lib.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
 			this.__setState({ selection: newSelection });
@@ -42,7 +43,7 @@ var Selectable = {
 
 		return this.__setSelection(item);
 	},
-	
+
 	getSelection () {
 		return this.__getState('selection') || null;
 	},
@@ -50,23 +51,23 @@ var Selectable = {
 	clearSelection () {
 		this.__setSelection();
 	},
-	
+
 	// For keyboard nav
 	__jumpToLetter (letter) {
 		if (Lib.isNumber(letter)) {
 			letter = String.fromCharCode(letter);
 		}
-		
+
 		if (letter.length !== 1) {
 			return;
 		}
-		
+
 		if (letter === '\\') {
 			letter = '\\\\';
 		}
-		
-		var selection = Lib.findWhere(this._collection, { name: new RegExp('^[' + letter + ']', 'i') });
-		
+
+		var selection = Lib.findWhere(this._collection.filter(isNonDisabledItem), { name: new RegExp('^[' + letter + ']', 'i') });//TODO: Cache the filter results
+
 		if (selection) this.__setSelection(selection);
 	}
 };

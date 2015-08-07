@@ -1,14 +1,14 @@
 import _ from 'underscore';
 import Backbone from 'backbone';
+import classNames from 'classnames';
 
 var SelectlistItem = Backbone.View.extend({
 	tagName: 'li',
 	className () {
-		if (this.model.get('_itemType') === 'header') {
-			return 'dropdown-header';
-		} else if (this.model.get('_itemType') === 'divider') {
-			return 'divider';
-		}
+		return classNames({
+			'dropdown-header': (this.model.get('_itemType') === 'header'),
+			'divider': (this.model.get('_itemType') === 'divider')
+		});
 	},
 
 	template: _.template('<% if (_itemType === "item") { %><a href="#"><%- name %></a><% } else if (_itemType === "header") { %><%- name %><% } %>'),
