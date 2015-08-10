@@ -4,9 +4,9 @@ import Lib from './lib';
 import Base from './base';
 import classNames from 'classnames';
 
-// Mixins
-import Disableable from '../mixins/disableable';
-import Selectable from '../mixins/selectable';
+// Traits
+import Disableable from '../traits/disableable';
+import Selectable from '../traits/selectable';
 
 export var CONTROL = 'selectlist';
 
