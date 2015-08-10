@@ -30,10 +30,7 @@ module.exports = function (grunt) {
 		watch: {
 			scripts: {
 				files: 'src/**/*.*',
-				tasks: ['browserify'],
-				options: {
-					livereload: true
-				}
+				tasks: ['browserify']
 			}
 		},
 		connect: {
@@ -58,5 +55,5 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-eslint');
 
 	grunt.registerTask('default', ['eslint', 'browserify']);
-	grunt.registerTask('serve', ['connect:server', 'browserify', 'watch:scripts']);
+	grunt.registerTask('serve', ['connect:server', 'eslint', 'browserify', 'watch:scripts']);
 };
