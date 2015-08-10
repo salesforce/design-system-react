@@ -1,0 +1,12 @@
+{
+	"extends": "airbnb",
+	"rules": {
+		"indent": [2, "tab"],
+		"space-before-function-paren": [2, "always"],
+		"comma-dangle": [2, "never"],
+		"no-trailing-spaces": [2, { "skipBlankLines": true }],
+		"react/prop-types": 1,
+		"no-param-reassign": 1,
+		"vars-on-top": 1
+	}
+}

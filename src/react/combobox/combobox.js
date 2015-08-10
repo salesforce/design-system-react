@@ -37,7 +37,7 @@ var Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
 	menuItems () {
 		return this.props.collection.map((menuItem) => {
 			return (
-				<SelectlistItem key={Lib.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected}></SelectlistItem>
+				<SelectlistItem key={Lib.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected} />
 			);
 		});
 	},
@@ -67,19 +67,19 @@ var Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
 
 		this.elements = {
 			wrapper: {
-				toggleClass: function (cssClass, state) {
+				toggleClass (cssClass, state) {
 					var wrapperClasses = self.state.wrapperClasses;
-					wrapperClasses[cssClass] = state
+					wrapperClasses[cssClass] = state;
 
 					self.setState({
 						wrapperClasses: wrapperClasses
 					});
 				},
-				outerWidth: function () {
+				outerWidth () {
 					return 0;
 				}
 			}
-		}
+		};
 
 		this.__constructor(this.props);
 

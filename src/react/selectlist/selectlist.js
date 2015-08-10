@@ -37,7 +37,7 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 	menuItems () {
 		return this.props.collection.map((menuItem) => {
 			return (
-				<SelectlistItem key={Lib.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected}></SelectlistItem>
+				<SelectlistItem key={Lib.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected} />
 			);
 		});
 	},
@@ -69,16 +69,16 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 
 		this.elements = {
 			wrapper: {
-				toggleClass: function (cssClass, state) {
+				toggleClass (cssClass, state) {
 					var wrapperClasses = self.state.wrapperClasses;
-					wrapperClasses[cssClass] = state
+					wrapperClasses[cssClass] = state;
 
 					self.setState({
 						wrapperClasses: wrapperClasses
 					});
 				}
 			}
-		}
+		};
 
 		this.__constructor(this.props);
 

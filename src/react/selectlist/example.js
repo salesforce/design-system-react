@@ -17,7 +17,7 @@ export default function (element) {
 	
 	// TO-DO: Rewrite this to a sample that is more real-life
 	// For example, this could be a collection of people and their food preference rather than a perfect set of models
-	var models = {
+	const models = {
 		selectlist1: {
 			collection: collection,
 			disabled: false,
@@ -31,7 +31,7 @@ export default function (element) {
 		},
 		selectlist3: {
 			collection: collection,
-			disabled: false,
+			disabled: false
 		},
 		selectlist4: {
 			collection: collection,
@@ -40,43 +40,12 @@ export default function (element) {
 	};
 	
 	var SelectlistExample = React.createClass({
-		changeCollection () {
-			var models = this.props.models;
-			Object.keys(models).forEach(key => {
-				models[key].disabled = !models[key].disabled;
-			});
-	
-			this.setProps({
-				models: models
-			});
-		},
-	
 		getSelectionHandler (model) {
-			return function (selection) {
+			return function selectionHandler (selection) {
 				model.selection = selection;
-			}
+			};
 		},
 		
-		logSelectedItem (key) {
-			// Okay, probably wouldn't do this in React but just demonstrating
-			Lib.log(this.refs[key].getSelection());
-		},
-		
-		setSelection (key) {
-			models[key].selection = { value: '2' };
-			this.forceUpdate();
-		},
-		
-		enable (key) {
-			models[key].disabled = false;
-			this.forceUpdate();
-		},
-		
-		disable (key) {
-			models[key].disabled = true;
-			this.forceUpdate();
-		},
-	
 		render () {
 			var selectlists = [];
 			
@@ -109,6 +78,38 @@ export default function (element) {
 					<button className="action btn btn-primary" onClick={this.changeCollection}>Toggle Enabled / Disabled</button>
 				</div>
 			);
+		},
+		
+		changeCollection () {
+			const props = this.props;
+			
+			Object.keys(props.models).forEach(key => {
+				props.models[key].disabled = !props.models[key].disabled;
+			});
+	
+			this.setProps({
+				models: props.models
+			});
+		},
+		
+		logSelectedItem (key) {
+			// Okay, probably wouldn't do this in React but just demonstrating
+			Lib.log(this.refs[key].getSelection());
+		},
+		
+		setSelection (key) {
+			models[key].selection = { value: '2' };
+			this.forceUpdate();
+		},
+		
+		enable (key) {
+			models[key].disabled = false;
+			this.forceUpdate();
+		},
+		
+		disable (key) {
+			models[key].disabled = true;
+			this.forceUpdate();
 		}
 	});
 	

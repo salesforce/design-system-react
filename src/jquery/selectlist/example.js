@@ -1,5 +1,5 @@
 import Lib from '../../core/lib';
-import Selectlist from "./selectlist";
+import Selectlist from './selectlist';
 
 // TO-DO: This might not work with require, need to confirm that it does
 var $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;

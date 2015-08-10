@@ -1,13 +1,11 @@
 // REACT HELPERS
 
-import Lib from '../core/lib';
-
 var ReactHelpers = {
 	getState (key) {
 		return this.state[key];
 	},
 	
-	componentWillReceiveProps(nextProps) {
+	componentWillReceiveProps (nextProps) {
 		this.__initializeOptions(nextProps);
 	}
 };

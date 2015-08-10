@@ -12,7 +12,7 @@ var $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.
 // Template imports
 var fs = require('fs');
 
-var Selectlist = function Selectlist(element, options) {
+var Selectlist = function Selectlist (element, options) {
 	this.options = $.extend({}, options);
 	this.elements = {
 		wrapper: $(element)
@@ -65,7 +65,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 			}
 
 			if ($item.hasClass('dropdown-header')) {
-				item._itemType = 'header'
+				item._itemType = 'header';
 			} else if ($item.hasClass('divider')) {
 				item._itemType = 'divider';
 			} else {
@@ -77,7 +77,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		});
 	},
 
-	onInitialized (options) {
+	onInitialized () {
 		if (!this.rendered) {
 			this.render();
 		}
@@ -111,18 +111,18 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 
 		var self = this;
 		// Building the menu items
-		this._collection.forEach(function(item) {
+		this._collection.forEach(function (item) {
 			var $li;
 			switch (item._itemType) {
-				case 'header':
-					$li = self.renderHeader(item);
-					break;
-				case 'divider':
-					$li = self.renderDivider(item);
-					break;
-				case 'item':
-				default:
-					$li = self.renderItem(item);
+			case 'header':
+				$li = self.renderHeader(item);
+				break;
+			case 'divider':
+				$li = self.renderDivider(item);
+				break;
+			case 'item':
+			default:
+				$li = self.renderItem(item);
 			}
 			elements.dropdownMenu.append($li);
 		});
@@ -133,11 +133,15 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	},
 
 	renderItem (data) {
-		var $a = $('<a href="#" />');
+		var $a;
+		var disabled;
+		var $li;
+		
+		$a = $('<a href="#" />');
 		$a.text(Lib.getProp(data, 'name'));
 
-		var disabled = !!Lib.getProp(data, 'disabled');
-		var $li = $('<li />');
+		disabled = !!Lib.getProp(data, 'disabled');
+		$li = $('<li />');
 		$li.data(data);
 		$li.toggleClass('disabled', disabled);
 		$li.prop('disabled', disabled);
@@ -207,15 +211,18 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	},
 
 	handleClicked (e) {
+		var $li;
+		
 		e.preventDefault();
 
-		var $li = $(e.currentTarget).parent('li');
+		$li = $(e.currentTarget).parent('li');
 
 		this.setSelection($li.data());
 	},
 
 	handleKeyPress (e) {
 		var key = e.which;
+		
 		if (key) this.__jumpToLetter(key);
 	}
 });

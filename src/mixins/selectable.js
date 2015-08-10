@@ -3,8 +3,7 @@
 import Lib from '../core/lib';
 
 var isNonDisabledItem = function isNonDisabledItem (item) {
-	var isNonDisabledItem = !Lib.getProp(item, 'disabled') && (!Lib.getProp(item, '_itemType') || Lib.getProp(item, '_itemType') === 'item');
-	return isNonDisabledItem;
+	return !Lib.getProp(item, 'disabled') && (!Lib.getProp(item, '_itemType') || Lib.getProp(item, '_itemType') === 'item');
 };
 
 var Selectable = {
@@ -37,11 +36,11 @@ var Selectable = {
 
 	// Legacy Fuel UX functionality - select by position
 	setSelectionByIndex (index) {
+		var item;
+		
 		if (!this._collection) {
 			return;
 		}
-
-		var item;
 
 		if (Lib.isFunction(this._collection.at)) {
 			item = this._collection.at(index);
@@ -49,7 +48,7 @@ var Selectable = {
 			item = this._collection[index];
 		}
 
-		return this.__setSelection(item);
+		this.__setSelection(item);
 	},
 
 	getSelection () {
@@ -61,7 +60,10 @@ var Selectable = {
 	},
 
 	// For keyboard nav
-	__jumpToLetter (letter) {
+	__jumpToLetter (input) {
+		var letter = input;
+		var selection;
+		
 		if (Lib.isNumber(letter)) {
 			letter = String.fromCharCode(letter);
 		}
@@ -74,7 +76,7 @@ var Selectable = {
 			letter = '\\\\';
 		}
 
-		var selection = Lib.findWhere(this._collection.filter(isNonDisabledItem), { name: new RegExp('^[' + letter + ']', 'i') });//TODO: Cache the filter results
+		selection = Lib.findWhere(this._collection.filter(isNonDisabledItem), { name: new RegExp('^[' + letter + ']', 'i') }); // TODO: Cache the filter results
 
 		if (selection) this.__setSelection(selection);
 	}

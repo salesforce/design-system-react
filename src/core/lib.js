@@ -16,8 +16,8 @@ export default class Lib {
 	}
 	
 	static get global () {
-		return (typeof self == 'object' && self.self == self && self) ||
-			(typeof global == 'object' && global.global == global && global);
+		return (typeof self === 'object' && self.self === self && self) ||
+			(typeof global === 'object' && global.global === global && global);
 	}
 
 	// Type Helpers
@@ -58,7 +58,7 @@ export default class Lib {
 	static findWhere (collection, criteria) {
 		var found;
 		
-		function isRegexMatch(string, regex) {
+		function isRegexMatch (string, regex) {
 			if (!Lib.isRegExp(regex) || !Lib.isString(string)) {
 				return false;
 			}
@@ -77,11 +77,11 @@ export default class Lib {
 		if (Lib.isFunction(collection.findWhere)) {
 			found = collection.findWhere(criteria);
 		} else {
-			collection.forEach(function(item) {
+			collection.forEach(function (item) {
 				if (!found) {
 					var match = true;
 					var innerItem = item.attributes ? item.attributes : item;
-					Object.keys(criteria).forEach(function(key) {
+					Object.keys(criteria).forEach(function (key) {
 						if (criteria[key] !== innerItem[key] && !isRegexMatch(innerItem[key], criteria[key])) {
 							match = false;
 						}
@@ -116,4 +116,4 @@ export default class Lib {
 		
 		return target;
 	}
-};
+}

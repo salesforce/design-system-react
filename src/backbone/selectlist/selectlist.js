@@ -17,13 +17,13 @@ var fs = require('fs');
 
 var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	className () {
-		return classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP)
+		return classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP);
 	},
 
 	template: _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8')),
 
 	events: {
-		'keypress' : 'handleKeyPress'
+		'keypress': 'handleKeyPress'
 	},
 
 	setState (values) {
@@ -43,11 +43,11 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 
 		this.elements = {
 			wrapper: {
-				toggleClass: function (cssClass, state) {
+				toggleClass (cssClass, state) {
 					self.$el.toggleClass(cssClass, state);
 				}
 			}
-		}
+		};
 
 		this.model = this.model || new Backbone.Model(this.__getInitialState());
 
@@ -78,7 +78,7 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 
 		this.renderMenuItems();
 
-		if (this.assumeFocus){
+		if (this.assumeFocus) {
 			this.$el.find('button').focus();
 			this.assumeFocus = false;
 		}

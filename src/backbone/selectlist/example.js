@@ -32,7 +32,7 @@ $('.enabled .btnSelectlistGetSelectedItem').on('click', function () {
 	Lib.log(mySelectlist1.getSelection());
 });
 $('.enabled .btnSelectlistSelectByValue').on('click', function () {
-	mySelectlist1.setSelection({ value : '2' });
+	mySelectlist1.setSelection({ value: '2' });
 });
 $('.enabled .btnSelectlistEnableSelectlist').on('click', function () {
 	mySelectlist1.enable();

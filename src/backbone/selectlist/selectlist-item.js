@@ -14,14 +14,13 @@ var SelectlistItem = Backbone.View.extend({
 	template: _.template('<% if (_itemType === "item") { %><a href="#"><%- name %></a><% } else if (_itemType === "header") { %><%- name %><% } %>'),
 
 	events: {
-		'click a' : 'handleClicked'
+		'click a': 'handleClicked'
 	},
 
 	initialize (options) {
 		_.bindAll(this, 'render', 'handleClicked');
 
 		this.onSelected = options.onSelected;
-
 	},
 
 	render () {

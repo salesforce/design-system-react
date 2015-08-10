@@ -1,5 +1,4 @@
-module.exports = function(grunt) {
-
+module.exports = function (grunt) {
 	grunt.initConfig({
 		browserify: {
 			examples: {
@@ -7,7 +6,7 @@ module.exports = function(grunt) {
 					transform: [['babelify', {
 						'stage': 0,
 						'modules': 'umd'
-					}], ['brfs'], ['browserify-versionify']],
+					}], ['brfs'], ['browserify-versionify']]
 				},
 				files: {
 					'examples/jquery/examples.js': 'src/jquery/examples.js',
@@ -15,6 +14,9 @@ module.exports = function(grunt) {
 					'examples/react/examples.js': 'src/react/examples.js'
 				}
 			}
+		},
+		eslint: {
+			target: ['Gruntfile.js', 'src/**/*.js']
 		},
 		uglify: {
 			examples: {
@@ -53,7 +55,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-eslint');
 
-	grunt.registerTask('default', ['browserify', 'uglify']);
+	grunt.registerTask('default', ['eslint', 'browserify']);
 	grunt.registerTask('serve', ['connect:server', 'browserify', 'watch:scripts']);
 };

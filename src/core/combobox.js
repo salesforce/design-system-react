@@ -2,7 +2,6 @@
 
 import Lib from './lib';
 import Base from './base';
-import classNames from 'classnames';
 
 // Mixins
 import Disableable from '../mixins/disableable';

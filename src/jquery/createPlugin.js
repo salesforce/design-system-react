@@ -64,6 +64,6 @@ var createPlugin = function (name, Constructor, legacyMethods) {
 			}
 		});
 	});
-}
+};
 
 export default createPlugin;
