@@ -14,7 +14,7 @@ export default class Lib {
 			console.log(...arguments);
 		}
 	}
-	
+
 	static get global () {
 		return (typeof self === 'object' && self.self === self && self) ||
 			(typeof global === 'object' && global.global === global && global);
@@ -28,11 +28,11 @@ export default class Lib {
 	static isNumber (potentialNumber) {
 		return toString.call(potentialNumber) === '[object Number]';
 	}
-	
+
 	static isString (potentialString) {
 		return toString.call(potentialString) === '[object String]';
 	}
-	
+
 	static isRegExp (potentialRegExp) {
 		return toString.call(potentialRegExp) === '[object RegExp]';
 	}
@@ -46,43 +46,45 @@ export default class Lib {
 		if (!obj) {
 			return undefined;
 		}
-		
+
 		if (Lib.isFunction(obj.get)) {
 			return obj.get(prop);
 		}
-		
+
 		return obj[prop];
 	}
 
 	// Collection Helpers
 	static findWhere (collection, criteria) {
-		var found;
-		
+		let found;
+		let _criteria = criteria;
+
 		function isRegexMatch (string, regex) {
 			if (!Lib.isRegExp(regex) || !Lib.isString(string)) {
 				return false;
 			}
-			
+
 			return string.match(regex);
 		}
-		
-		if (!criteria) {
+
+		if (!_criteria) {
 			return null;
 		}
-		
-		if (Lib.isFunction(criteria.toJSON)) {
-			criteria = criteria.toJSON();
+
+		if (Lib.isFunction(_criteria.toJSON)) {
+			_criteria = _criteria.toJSON();
 		}
 
 		if (Lib.isFunction(collection.findWhere)) {
-			found = collection.findWhere(criteria);
+			found = collection.findWhere(_criteria);
 		} else {
 			collection.forEach(function (item) {
 				if (!found) {
-					var match = true;
-					var innerItem = item.attributes ? item.attributes : item;
-					Object.keys(criteria).forEach(function (key) {
-						if (criteria[key] !== innerItem[key] && !isRegexMatch(innerItem[key], criteria[key])) {
+					let match = true;
+					const innerItem = item.attributes ? item.attributes : item;
+
+					Object.keys(_criteria).forEach(function (key) {
+						if (_criteria[key] !== innerItem[key] && !isRegexMatch(innerItem[key], _criteria[key])) {
 							match = false;
 						}
 					});
@@ -93,15 +95,15 @@ export default class Lib {
 				}
 			});
 		}
-		
+
 		return found || null;
 	}
-	
+
 	static extend (target) {
-		for (var i = 1; i < arguments.length; i++) {
-			var source = arguments[i];
-			
-			for (var key in source) {
+		for (let i = 1; i < arguments.length; i++) {
+			const source = arguments[i];
+
+			for (const key in source) {
 				if (Object.prototype.hasOwnProperty.call(source, key)) {
 					if (Object.prototype.hasOwnProperty.call(target, key) &&
 						target[key] && typeof target[key] === 'object' &&
@@ -113,7 +115,7 @@ export default class Lib {
 				}
 			}
 		}
-		
+
 		return target;
 	}
 }

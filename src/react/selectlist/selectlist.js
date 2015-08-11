@@ -14,7 +14,7 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from './selectlist-item';
 
-var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, {
+const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -43,9 +43,9 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 	},
 
 	render () {
-		var selection = this.getSelection();
+		const selection = this.getSelection();
 
-		var styles = {
+		const styles = {
 			width: this.state.width
 		};
 
@@ -65,12 +65,12 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 	},
 
 	componentWillMount () {
-		var self = this;
+		const self = this;
 
 		this.elements = {
 			wrapper: {
 				toggleClass (cssClass, state) {
-					var wrapperClasses = self.state.wrapperClasses;
+					const wrapperClasses = self.state.wrapperClasses;
 					wrapperClasses[cssClass] = state;
 
 					self.setState({
@@ -89,9 +89,9 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 	handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
-	
+
 	handleKeyPress (e) {
-		var key = e.key || e.keyIdentifier;
+		const key = e.key || e.keyIdentifier;
 		if (key) this.__jumpToLetter(key);
 	}
 }));

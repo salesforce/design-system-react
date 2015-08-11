@@ -5,16 +5,16 @@ import Lib from '../../core/lib';
 import React from 'react';
 import classNames from 'classnames';
 
-var SelectlistItem = React.createClass({
+const SelectlistItem = React.createClass({
 	propTypes: {
 		item: React.PropTypes.object.isRequired,
 		onSelected: React.PropTypes.func.isRequired
 	},
 
 	render () {
-		var disabled = !!Lib.getProp(this.props.item, 'disabled');
+		const disabled = !!Lib.getProp(this.props.item, 'disabled');
 
-		var html;
+		let html;
 		switch (Lib.getProp(this.props.item, '_itemType')) {
 		case 'header':
 			html = <li className="dropdown-header">{Lib.getProp(this.props.item, 'name')}</li>;
