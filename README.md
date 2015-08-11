@@ -1,4 +1,4 @@
-# landmark-js-poc
+# fuelux-facades
 Testing a core abstraction layer with many facades approach for FuelUX
 
 ### Setup
@@ -14,7 +14,7 @@ Testing a core abstraction layer with many facades approach for FuelUX
 
 ### Contributing
 * Fork the repo!
-* Read up (and feel free to comment on) this [theory doc](https://github.exacttarget.com/uxarchitecture/landmark-js-poc/wiki/Abstract-classes-for-FuelUX-and-Landmark)
+* Read up (and feel free to comment on) this [theory doc](https://docs.google.com/a/salesforce.com/document/d/1w8sy0Eex8nwsQ0vx_MUysIL8alOfOCXWfuq19Ikbky8/edit?usp=sharing)
 * Look at the current issues, or create your own so that we know what you're working on
 * Feel free to shoot questions to mc-uxdev@salesforce.com or dbrainer-banker@salesforce.com
 * **If this is your first contribution you'll be much happier if you communicate early and often**

@@ -1,17 +1,20 @@
 // SELECTLIST CONTROL - REACT FACADE
 
 // Core
-import Landmark from '../landmark';
-import SelectlistCore from '../core/selectlist';
+import Lib from '../../core/lib';
+import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
+import ReactHelpers from '../helpers';
+
+// Third party
 import classNames from 'classnames';
 
 // Children
 import SelectlistItem from './selectlist-item';
 
-var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
+const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -22,42 +25,34 @@ var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		name: React.PropTypes.string
+		text: React.PropTypes.string
 	},
 
 	getInitialState () {
-		return Object.assign(this.__getInitialState(), {
+		return Lib.extend(this.__getInitialState(), {
 			wrapperClasses: {}
 		});
-	},
-
-	getState (key) {
-		return this.state[key];
 	},
 
 	menuItems () {
 		return this.props.collection.map((menuItem) => {
 			return (
-				<SelectlistItem key={Landmark.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected}></SelectlistItem>
+				<SelectlistItem key={Lib.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected} />
 			);
 		});
 	},
 
-	componentWillReceiveProps(nextProps) {
-		this.__initializeOptions(nextProps);
-	},
-
 	render () {
-		var selection = this.getSelection();
+		const selection = this.getSelection();
 
-		var styles = {
+		const styles = {
 			width: this.state.width
 		};
 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
-				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
-					<span className="selected-label">{Landmark.getProp(selection, 'name') || 'None selected'}</span>
+				<button className={classNames('btn btn-default dropdown-toggle', {disabled: this.state.disabled})} data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
+					<span className="selected-label">{Lib.getProp(selection, 'text') || 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
 				</button>
@@ -70,33 +65,33 @@ var Selectlist = React.createClass(Object.assign({}, SelectlistCore, {
 	},
 
 	componentWillMount () {
-		var self = this;
+		const self = this;
 
 		this.elements = {
 			wrapper: {
-				toggleClass: function (cssClass, state) {
-					var wrapperClasses = self.state.wrapperClasses;
-					wrapperClasses[cssClass] = state
+				toggleClass (cssClass, state) {
+					const wrapperClasses = self.state.wrapperClasses;
+					wrapperClasses[cssClass] = state;
 
 					self.setState({
 						wrapperClasses: wrapperClasses
 					});
 				}
 			}
-		}
+		};
 
 		this.__constructor(this.props);
 
-		if (Landmark.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
-		if (Landmark.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
+		if (Lib.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
+		if (Lib.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 	},
 
 	handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
-	
+
 	handleKeyPress (e) {
-		var key = e.key || e.keyIdentifier;
+		const key = e.key || e.keyIdentifier;
 		if (key) this.__jumpToLetter(key);
 	}
 }));

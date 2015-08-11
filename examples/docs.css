@@ -12,7 +12,7 @@
 body {
 	position: relative; /* For scrollyspy */
 	color: #525354;
-	margin-top: 80px;
+	margin-top: 40px;
 }
 
 .bg-danger {
@@ -163,9 +163,7 @@ dt:hover .header-anchor{
 }
 .fu-docs-nav .navbar-nav > li > a {
 	color: #fff;
-	font-size: 1.3rem;
-	padding-top: 15px;
-	padding-bottom: 15px;
+
 }
 .fu-docs-nav .navbar-brand {
 	color: #fff;
@@ -1005,26 +1003,4 @@ h6 {
 img,
 object {
 	max-width: 100%;
-}
-
-
-.example-group {
-	margin: 20px 0;
-}
-
-.example-group .example {
-	margin: 0 0 20px;
-	padding: 0;
-}
-
-.example-group .action {
-	margin: 0 0 20px;
-}
-
-
-#example-link--backbone {
-	padding-top: 13px;
-}
-#example-link--jquery {
-	padding-top: 7px;
 }

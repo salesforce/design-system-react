@@ -1,6 +1,5 @@
 import React from 'react';
 import Selectlist from './selectlist';
-import Tree from './tree';
 
 var element = document.getElementById('selectlist');
 

@@ -1,21 +1,25 @@
-import Selectlist from "./selectlist";
+import Lib from '../../core/lib';
+import Selectlist from './selectlist';
 
 // TO-DO: This might not work with require, need to confirm that it does
-var $ = window.$;
+const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
-var collection = [
-	{ id: 0, name: 'One', value: '1'  },
-	{ id: 1, name: 'Two', value: '2'  },
-	{ id: 2, name: 'Three', value: '3'  },
-	{ id: 3, name: 'Buzz', value: '4'  },
-	{ id: 4, name: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
-	{ id: 5, name: 'Disabled item', disabled: true, value: 'disabled' }
+const collection = [
+	{ _itemType: 'header', text: 'One thing' },
+	{ id: 0, text: 'One', value: '1' },
+	{ _itemType: 'divider' },
+	{ _itemType: 'header', text: 'All the things' },
+	{ id: 1, text: 'Two', value: '2' },
+	{ id: 2, text: 'Three', value: '3'  },
+	{ id: 3, text: 'Buzz', value: '4'  },
+	{ id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
+	{ id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
 ];
 
 $(function () {
 	// sample method buttons
 	$('.declarative .btnSelectlistGetSelectedItem').on('click', function () {
-		console.log($('#mySelectlist1').selectlist('selectedItem'));
+		Lib.log($('#mySelectlist1').selectlist('selectedItem'));
 	});
 	$('.declarative .btnSelectlistSelectByValue').on('click', function () {
 		$('#mySelectlist1').selectlist('selectByValue', 2);
@@ -36,16 +40,16 @@ $(function () {
 		$('#mySelectlist1').selectlist('disable');
 	});
 	$('.declarative .btnSelectlistDestroy').on('click', function () {
-		var $container = $('#mySelectlist1').parent();
-		var markup = $('#mySelectlist1').selectlist('destroy');
-		console.log(markup);
+		const $container = $('#mySelectlist1').parent();
+		const markup = $('#mySelectlist1').selectlist('destroy');
+		Lib.log(markup);
 		$container.append(markup);
 		$('#mySelectlist1').selectlist();
 	});
 
 	// events
 	$('#mySelectlist1').on('changed.fu.selectlist', function (event, data) {
-		console.log('changed', data);
+		Lib.log('changed', data);
 	});
 
 
@@ -56,7 +60,7 @@ $(function () {
 
 	// sample method buttons
 	$('.imperative .btnSelectlistGetSelectedItem').on('click', function () {
-		console.log($('#mySelectlist2').selectlist('selectedItem'));
+		Lib.log($('#mySelectlist2').selectlist('selectedItem'));
 	});
 	$('.imperative .btnSelectlistSelectByIndex').on('click', function () {
 		$('#mySelectlist2').selectlist('selectByIndex', '1');
@@ -71,27 +75,27 @@ $(function () {
 		$('#mySelectlist2').selectlist('disable');
 	});
 	$('.imperative .btnSelectlistDestroy').on('click', function () {
-		var $container = $('#mySelectlist2').parent();
-		var markup = $('#mySelectlist2').selectlist('destroy');
-		console.log(markup);
+		const $container = $('#mySelectlist2').parent();
+		const markup = $('#mySelectlist2').selectlist('destroy');
+		Lib.log(markup);
 		$container.append(markup);
 		$('#mySelectlist2').selectlist();
 	});
 
 	// events
 	$('#mySelectlist2').on('changed.fu.selectlist', function (event, data) {
-		console.log('changed', data);
+		Lib.log('changed', data);
 	});
 
 
-	var selectlist3 = new Selectlist($('#mySelectlist3'), {
+	const selectlist3 = new Selectlist($('#mySelectlist3'), {
 		collection: collection,
 		resize: 'auto'
 	});
 
 	// sample method buttons
 	$('.new-api .btnSelectlistGetSelectedItem').on('click', function () {
-		console.log(selectlist3.getSelection());
+		Lib.log(selectlist3.getSelection());
 	});
 	$('.new-api .btnSelectlistSelectByIndex').on('click', function () {
 		selectlist3.setSelectionByIndex(1);

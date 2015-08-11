@@ -5,6 +5,9 @@
 node_modules
 bower_components
 
+test/tests-compiled.js
+test/tests.js
+
 # gh-pages
 _site/*
 
@@ -15,4 +18,3 @@ _site/*
 node_modules.tar.gz
 
 npm-debug.log
-.esformatter

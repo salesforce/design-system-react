@@ -1,16 +1,19 @@
 // SELECTLIST CONTROL
 
-import Landmark from '../landmark';
+import Lib from './lib';
 import Base from './base';
 import classNames from 'classnames';
 
-export var CONTROL = 'selectlist';
+// Traits
+import Disableable from '../traits/disableable';
+import Selectable from '../traits/selectable';
 
-var SelectlistCore = Object.assign({}, Base, {
+export const CONTROL = 'selectlist';
+
+const SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
-	_cssClasses: {
+	cssClasses: {
 		CONTROL: CONTROL,
-		SELECTED: 'selected',
 		BTN_GROUP: 'btn-group',
 		TOGGLE: 'dropdown-toggle',
 		HIDDEN: 'hidden-field',
@@ -36,121 +39,31 @@ var SelectlistCore = Object.assign({}, Base, {
 			this._collection = [];
 		}
 
-		if (options && Landmark.isNumber(options.selection)) {
-			this.setSelection({ id: options.selection });
-		} else if (options && Landmark.isObject(options.selection)) {
-			this.setSelection(options.selection);
-		} else {
-			this.clearSelection();
-		}
+		this.__initializeSelectable(options);
 
-		if (options && options.disabled === true) {
-			this.disable();
-		} else if (options && options.disabled === false) {
-			this.enable();
-		}
+		this.__initializeDisableable(options);
 
 		if (options && options.resize === 'auto') {
-			if (Landmark.isFunction(this.resize)) this.resize();
+			if (Lib.isFunction(this.resize)) this.resize();
 		}
-	},
-	
-	__jumpToLetter (letter) {
-		var selection;
-		
-		if (Landmark.isNumber(letter)) {
-			letter = String.fromCharCode(letter);
-		}
-		
-		if (letter.length !== 1) {
-			return;
-		}
-		
-		this._collection.forEach(function (item) {
-			var name = Landmark.getProp(item, 'name');
-			
-			if (!selection && name && name.charAt(0).toLowerCase() === letter.toLowerCase()) {
-				selection = item;
-			}
-		});
-		
-		if (selection) this.__setSelection(selection);
-	},
-
-	__setSelection (newSelection) {
-		if (Landmark.getProp(newSelection, 'disabled')) {
-			return;
-		}
-		
-		if (this.__getState('selection') !== newSelection) {
-			if (Landmark.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
-			this.__setState({ selection: newSelection });
-			if (Landmark.isFunction(this.onSelected)) this.onSelected(newSelection);
-		}
-	},
-
-	getSelection () {
-		return Landmark.findWhere(this._collection, this.__getState('selection'));
-	},
-
-	// Pass any combination of key / value pairs
-	setSelection (criteria) {
-		var item = Landmark.findWhere(this._collection, criteria);
-
-		return this.__setSelection(item);
-	},
-
-	// Legacy FuelUX functionality - select by position
-	setSelectionByIndex (index) {
-		if (!this._collection) {
-			return;
-		}
-
-		var item;
-
-		if (Landmark.isFunction(this._collection.at)) {
-			item = this._collection.at(index);
-		} else {
-			item = this._collection[index];
-		}
-
-		return this.__setSelection(item);
-	},
-
-	clearSelection () {
-		this.__setSelection();
-	},
-
-	// These methods make sense for jQuery components but much less sense for React components
-	// TO-DO: Should methods that don't make sense for a particular facade be overidden with warnings?
-	enable () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-		this.__setState({ disabled: false });
-		if (Landmark.isFunction(this.onEnabled)) this.onEnabled();
-	},
-
-	disable () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-		this.__setState({ disabled: true });
-		if (Landmark.isFunction(this.onDisabled)) this.onDisabled();
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
 	resize () {
-		var self = this;
-		var newWidth = 0;
-		var sizer = document.createElement('div');
-		var width = 0;
-		var parent;
-		var name;
+		const self = this;
+		const sizer = document.createElement('div');
+
+		let newWidth = 0;
+		let width = 0;
+		let parent = undefined;
 
 		sizer.className = 'selectlist-sizer';
 		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
 
-		if (Landmark.hasClass(document.querySelector('html'), 'fuelux')) {
+		if (Lib.hasClass(document.querySelector('html'), this.cssClasses.NAMESPACE)) {
 			parent = document.querySelector('body');
 		} else {
-			parent = document.querySelector('.fuelux');
+			parent = document.querySelector('.' + this.cssClasses.NAMESPACE);
 		}
 
 		if (parent) {
@@ -163,14 +76,16 @@ var SelectlistCore = Object.assign({}, Base, {
 
 		// This list could be long, we might want to cycle through the collection and find the longest name and just select it,
 		// and use that width value. That would make less DOM touches. - @interactivellama
-		
+
 		// @interactivellama: True, this is just how it was already implemented in current Fuel UX. However, "longest" doesn't always mean widest...
 
-		this._collection.forEach(function(item) {
-			name = Landmark.getProp(item, 'name');
+		const label = sizer.querySelector('.' + self.cssClasses.LABEL);
+		const control = sizer.querySelector('.' + self.cssClasses.CONTROL);
 
-			sizer.querySelector('.' + self._cssClasses.LABEL).textContent = name;
-			newWidth = sizer.querySelector('.' + self.cssClasses.CONTROL).offsetWidth;
+		this._collection.forEach(function (item) {
+			const text = Lib.getProp(item, 'text');
+			label.textContent = text;
+			newWidth = control.offsetWidth;
 			if (newWidth > width) {
 				width = newWidth;
 			}
@@ -179,7 +94,7 @@ var SelectlistCore = Object.assign({}, Base, {
 		parent.removeChild(sizer);
 
 		this.__setState({ width: width });
-		if (Landmark.isFunction(this.resetWidth)) this.resetWidth(width);
+		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
 	}
 });
 

@@ -1,26 +1,80 @@
 <!doctype html public "library">
 <html lang="en">
-	<head>
-		<meta charset=utf-8/>
 
-		<title>Selectlist</title>
+<head>
+	<meta charset=utf-8/>
+	<title>Fuel UX Facades</title>
+	<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/fuelux/dist/css/fuelux.min.css" rel="stylesheet">
+	
+	<!-- TO-DO: Combine these -->
+	<link href="/fuelux-mctheme.min.css" rel="stylesheet">
+	<link href="/docs.css" rel="stylesheet">
+	<link href="/styles.css" rel="stylesheet">
+</head>
 
-		<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<body>
+	<header class="navbar navbar-fixed-top fu-docs-nav" role="banner">
+		<div class="container">
+			<div class="navbar-header">
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".fu-navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a href="/index.html" class="navbar-brand">Fuel UX</a>
+			</div>
+			<nav class="collapse navbar-collapse fu-navbar-collapse" role="navigation">
+				<ul class="nav navbar-nav">
+					<li>
+						<a href="/react/">React</a>
+					</li>
+					<li>
+						<a href="/marionette/">Marionette</a>
+					</li>
+					<li>
+						<a href="/jquery/">jQuery</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<section class="example-group fuelux">
 
-		<!-- TO-DO: Get these off of the CDN -->
-		<link href="//www.fuelcdn.com/fuelux/3.6.3/css/fuelux.min.css" rel="stylesheet">
-		<link href="//www.fuelcdn.com/fuelux-mctheme/1.6.0/css/fuelux-mctheme.min.css" rel="stylesheet">
+		<div class="container">
+			<div class="jumbotron">
+			<p>
+				Testing a core abstraction layer with many facades approach for FuelUX.
+			</p>
+			<p>
+				Proof of concept stage with <code>selectlist</code>.
+			</p>
+			</div>
 
-		<link href="/styles.css" rel="stylesheet">
-	</head>
-	<body class="fuelux">
-		<section class="example-group">
-			<ul>
-				<li><a href="/react/index.html">React Component</a></li>
-				<li><a href="/react/index-tree.html">React Tree Component</a></li>
-				<li><a href="/backbone/index.html">Backbone Component</a></li>
-				<li><a href="/jquery/index.html">jQuery Component</a></li>
-			</ul>
-		</section>
-	</body>
+				<div class="row">
+					<div class="col-sm-4" id="example-link--react">
+						<a href="/react/">
+							<img src="/assets/react-logo.png">
+							<span class="sr-only sr-only-focusable">React Component</span>
+						</a>
+					</div>
+					<div class="col-sm-4" id="example-link--marionette">
+						<a href="/marionette/">
+							<img src="/assets/backbone-logo.png">
+							<span class="sr-only sr-only-focusable">Marionette Component</span>
+						</a>
+					</div>
+					<div class="col-sm-4" id="example-link--jquery">
+						<a href="/jquery/">
+							<img src="/assets/jquery-logo.png">
+							<span class="sr-only sr-only-focusable">jQuery Component</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
 </html>
