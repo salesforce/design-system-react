@@ -69,5 +69,5 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', ['eslint', 'browserify']);
 	grunt.registerTask('serve', ['connect:server', 'eslint', 'compileTests', 'browserify', 'watch:scripts']);
-	grunt.registerTask('test', ['browserify', 'connect:server', 'mocha']);
+	grunt.registerTask('test', ['browserify', 'compileTests', 'connect:server', 'mocha']);
 };

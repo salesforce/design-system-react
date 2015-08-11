@@ -37,6 +37,7 @@
     "underscore": "^1.8.3"
   },
   "scripts": {
-    "start": "grunt serve"
+    "start": "grunt serve",
+    "test": "grunt test"
   }
 }
