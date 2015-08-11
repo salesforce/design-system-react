@@ -67,34 +67,36 @@ export default class Lib {
 			return string.match(regex);
 		}
 
-		if (!_criteria) {
+		if (!Lib.isObject(_criteria)) {
 			return null;
-		}
-
-		if (Lib.isFunction(_criteria.toJSON)) {
+		} else if (!Lib.isFunction(_criteria) && Lib.isFunction(_criteria.toJSON)) {
 			_criteria = _criteria.toJSON();
 		}
 
-		if (Lib.isFunction(collection.findWhere)) {
-			found = collection.findWhere(_criteria);
-		} else {
-			collection.forEach(function (item) {
-				if (!found) {
-					let match = true;
-					const innerItem = item.attributes ? item.attributes : item;
-
+		collection.forEach(function (item) {
+			if (!found) {
+				let match = true;
+				let innerItem = item;
+				
+				if (Lib.isFunction(_criteria)) {
+					match = _criteria(item);
+				} else {
+					if (Lib.isFunction(innerItem.toJSON)) {
+						innerItem = innerItem.toJSON();
+					}
+	
 					Object.keys(_criteria).forEach(function (key) {
 						if (_criteria[key] !== innerItem[key] && !isRegexMatch(innerItem[key], _criteria[key])) {
 							match = false;
 						}
 					});
-
-					if (match) {
-						found = item;
-					}
 				}
-			});
-		}
+
+				if (match) {
+					found = item;
+				}
+			}
+		});
 
 		return found || null;
 	}

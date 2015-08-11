@@ -252,8 +252,9 @@ const legacyMethods = {
 	},
 
 	selectByText (text) {
-		// TO-DO: Did this for the test. Was the original really case-insensitive??
-		return this.setSelection({ text: new RegExp(text, 'i') });
+		return this.setSelection(function (item) {
+			return item && Lib.isString(item.text) && Lib.isString(text) && item.text.toLowerCase() === text.toLowerCase();
+		});
 	},
 
 	selectBySelector (selector) {
