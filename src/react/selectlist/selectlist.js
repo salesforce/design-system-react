@@ -14,7 +14,7 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from './selectlist-item';
 
-var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, {
+const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -25,7 +25,7 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		name: React.PropTypes.string
+		text: React.PropTypes.string
 	},
 
 	getInitialState () {
@@ -43,16 +43,16 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 	},
 
 	render () {
-		var selection = this.getSelection();
+		const selection = this.getSelection();
 
-		var styles = {
+		const styles = {
 			width: this.state.width
 		};
 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
 				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
-					<span className="selected-label">{Lib.getProp(selection, 'name') || 'None selected'}</span>
+					<span className="selected-label">{Lib.getProp(selection, 'text') || 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
 				</button>
@@ -65,12 +65,12 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 	},
 
 	componentWillMount () {
-		var self = this;
+		const self = this;
 
 		this.elements = {
 			wrapper: {
 				toggleClass (cssClass, state) {
-					var wrapperClasses = self.state.wrapperClasses;
+					const wrapperClasses = self.state.wrapperClasses;
 					wrapperClasses[cssClass] = state;
 
 					self.setState({
@@ -89,9 +89,9 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 	handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
-	
+
 	handleKeyPress (e) {
-		var key = e.key || e.keyIdentifier;
+		const key = e.key || e.keyIdentifier;
 		if (key) this.__jumpToLetter(key);
 	}
 }));

@@ -13,9 +13,9 @@ import classNames from 'classnames';
 import SelectlistItem from './selectlist-item';
 
 // Template imports
-var fs = require('fs');
+const fs = require('fs');
 
-var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
+const Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	className () {
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP);
 	},
@@ -39,7 +39,7 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	initialize (options) {
 		_.bindAll(this, 'setState', 'getState', 'render', 'renderMenuItems', 'handleMenuItemSelected', 'handleKeyPress');
 
-		var self = this;
+		const self = this;
 
 		this.elements = {
 			wrapper: {
@@ -69,7 +69,7 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	},
 
 	render () {
-		var attrs = this.model.toJSON();
+		const attrs = this.model.toJSON();
 		if (attrs.selection) {
 			attrs.selection = attrs.selection.toJSON();
 		}
@@ -87,13 +87,13 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	},
 
 	renderMenuItems () {
-		var $menu = this.$('ul.dropdown-menu');
+		const $menu = this.$('ul.dropdown-menu');
 
-		var handleMenuItemSelected = this.handleMenuItemSelected;
+		const handleMenuItemSelected = this.handleMenuItemSelected;
 
 		if (!this._renderedMenuItems) {
 			this._renderedMenuItems = this._collection.map(function (item) {
-				var menuItem = new SelectlistItem({
+				const menuItem = new SelectlistItem({
 					model: item,
 					onSelected: handleMenuItemSelected
 				});
@@ -115,7 +115,7 @@ var Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	},
 
 	handleKeyPress (e) {
-		var key = e.which;
+		const key = e.which;
 
 		this.assumeFocus = true;
 
