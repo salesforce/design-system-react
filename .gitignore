@@ -18,3 +18,4 @@ _site/*
 node_modules.tar.gz
 
 npm-debug.log
+.esformatter
