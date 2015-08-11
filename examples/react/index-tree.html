@@ -3,7 +3,7 @@
 	<head>
 		<meta charset=utf-8/>
 
-		<title>Selectlist</title>
+		<title>React Tree</title>
 
 		<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -15,12 +15,16 @@
 	</head>
 	<body class="fuelux">
 		<section class="example-group">
-			<ul>
-				<li><a href="/react/index.html">React Component</a></li>
-				<li><a href="/react/index-tree.html">React Tree Component</a></li>
-				<li><a href="/backbone/index.html">Backbone Component</a></li>
-				<li><a href="/jquery/index.html">jQuery Component</a></li>
-			</ul>
+			<h1>Tree Examples</h1>
+	
+			<div id="tree">
+			</div>
 		</section>
+
+		<!-- Because these controls are meant to play nice with old FuelUX we're still including Bootstrap js on the page for now -->
+		<script src="/jquery/dist/jquery.min.js"></script>
+		<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<script src="/react/tree-sample.js"></script>
 	</body>
 </html>
