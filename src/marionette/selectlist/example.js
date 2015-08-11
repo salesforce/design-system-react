@@ -4,10 +4,10 @@ import Selectlist from './selectlist';
 // Framework specific
 import Backbone from 'backbone';
 
-var $mySelectlist1 = $('#mySelectlist1');
-var $mySelectlist2 = $('#mySelectlist2');
+const $mySelectlist1 = $('#mySelectlist1');
+const $mySelectlist2 = $('#mySelectlist2');
 
-var collection = new Backbone.Collection([
+const collection = new Backbone.Collection([
 	{ _itemType: 'header', text: 'One thing' },
 	{ id: 0, text: 'One', value: '1' },
 	{ _itemType: 'divider' },
@@ -19,7 +19,7 @@ var collection = new Backbone.Collection([
 	{ id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
 ]);
 
-var mySelectlist1 = new Selectlist({
+const mySelectlist1 = new Selectlist({
 	collection: collection,
 	disabled: false,
 	resize: 'auto'
@@ -41,7 +41,7 @@ $('.enabled .btnSelectlistDisableSelectlist').on('click', function () {
 	mySelectlist1.disable();
 });
 
-var mySelectlist2 = new Selectlist({
+const mySelectlist2 = new Selectlist({
 	collection: collection,
 	disabled: true,
 	selection: collection.at(0),

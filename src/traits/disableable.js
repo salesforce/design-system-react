@@ -2,11 +2,11 @@
 
 import Lib from '../core/lib';
 
-var Disableable = {
+const Disableable = {
 	cssClasses: {
 		DISABLED: 'disabled'
 	},
-	
+
 	__initializeDisableable (options) {
 		if (options && options.disabled === true) {
 			this.disable();
@@ -14,7 +14,7 @@ var Disableable = {
 			this.enable();
 		}
 	},
-	
+
 	enable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 		this.__setState({ disabled: false });
