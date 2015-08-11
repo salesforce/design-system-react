@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 				},
 				files: {
 					'examples/jquery/examples.js': 'src/jquery/examples.js',
-					'examples/backbone/examples.js': 'src/backbone/examples.js',
+					'examples/marionette/examples.js': 'src/marionette/examples.js',
 					'examples/react/examples.js': 'src/react/examples.js'
 				}
 			},
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
 			examples: {
 				files: {
 					'examples/jquery/examples.min.js': ['examples/jquery/examples.js'],
-					'examples/backbone/examples.min.js': ['examples/backbone/examples.js'],
+					'examples/marionette/examples.min.js': ['examples/marionette/examples.js'],
 					'examples/react/examples.min.js': ['examples/react/examples.js']
 				}
 			}

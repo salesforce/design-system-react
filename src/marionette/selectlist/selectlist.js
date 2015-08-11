@@ -1,4 +1,4 @@
-// SELECTLIST CONTROL - BACKBONE FACADE
+// SELECTLIST CONTROL - Marionette FACADE
 
 // Core
 import Lib from '../../core/lib';
