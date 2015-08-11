@@ -7,7 +7,7 @@ import SelectlistCore from '../../core/selectlist';
 // Framework specific
 import React from 'react';
 import ReactHelpers from '../mixins/helpers';
-import selectable from '../mixins/selectable'
+import selectable from '../mixins/selectable';
 // Third party
 import classNames from 'classnames';
 

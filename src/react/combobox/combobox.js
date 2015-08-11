@@ -7,7 +7,7 @@ import ComboboxCore from '../../core/combobox';
 // Framework specific
 import React from 'react';
 import ReactHelpers from '../mixins/helpers';
-import seelctable from '../mixins/selectable';
+import selectable from '../mixins/selectable';
 
 // Third party
 import classNames from 'classnames';
