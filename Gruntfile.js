@@ -13,7 +13,17 @@ module.exports = function (grunt) {
 				files: {
 					'examples/jquery/examples.js': 'src/jquery/examples.js',
 					'examples/backbone/examples.js': 'src/backbone/examples.js',
-					'examples/react/examples.js': 'src/react/examples.js',
+					'examples/react/examples.js': 'src/react/examples.js'
+				}
+			},
+			tests: {
+				options: {
+					transform: [['babelify', {
+						'stage': 0,
+						'modules': 'umd'
+					}], ['brfs'], ['browserify-versionify']]
+				},
+				files: {
 					'test/tests-compiled.js': 'test/tests.js'
 				}
 			}
@@ -68,6 +78,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-mocha');
 
 	grunt.registerTask('default', ['eslint', 'browserify']);
-	grunt.registerTask('serve', ['connect:server', 'eslint', 'compileTests', 'browserify', 'watch:scripts']);
-	grunt.registerTask('test', ['browserify', 'compileTests', 'connect:server', 'mocha']);
+	grunt.registerTask('serve', ['connect:server', 'eslint', 'browserify', 'compileTests', 'watch:scripts']);
+	grunt.registerTask('test', ['connect:server', 'browserify:tests', 'compileTests', 'mocha']);
 };

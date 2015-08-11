@@ -211,13 +211,17 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	},
 
 	handleClicked (e) {
+		var $a;
 		var $li;
 		
 		e.preventDefault();
 
-		$li = $(e.currentTarget).parent('li');
+		$a = $(e.currentTarget);
+		$li = $a.parent('li');
 
-		this.setSelection($li.data());
+		if (!$li.hasClass(this.cssClasses.DISABLED)) {
+			this.setSelection($li.data());
+		}
 	},
 
 	handleKeyPress (e) {
@@ -233,14 +237,16 @@ var legacyMethods = {
 	selectedItem () {
 		var selection = this.getSelection();
 		
-		if (Lib.isFunction(selection.toJSON)) {
-			selection = selection.toJSON();
-		} else {
-			selection = jQuery.extend({}, selection);
+		if (selection) {
+			if (Lib.isFunction(selection.toJSON)) {
+				selection = selection.toJSON();
+			} else {
+				selection = jQuery.extend({}, selection);
+			}
+			
+			selection.selected = true;
+			delete selection._itemType;
 		}
-		
-		selection.selected = true;
-		delete selection._itemType;
 		
 		return selection;
 	},
@@ -250,7 +256,8 @@ var legacyMethods = {
 	},
 
 	selectByText (text) {
-		return this.setSelection({ text: text });
+		// TO-DO: Did this for the test. Was the original really case-insensitive??
+		return this.setSelection({ text: new RegExp(text, 'i') });
 	},
 
 	selectBySelector (selector) {
