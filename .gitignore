@@ -5,6 +5,9 @@
 node_modules
 bower_components
 
+test/tests-compiled.js
+test/tests.js
+
 # gh-pages
 _site/*
 

@@ -13,6 +13,7 @@
     "babelify": "^6.1.2",
     "brfs": "^1.4.0",
     "browserify-versionify": "^1.0.6",
+    "chai": "^3.2.0",
     "connect": "^3.4.0",
     "eslint": "^1.1.0",
     "eslint-config-airbnb": "0.0.7",
@@ -23,6 +24,8 @@
     "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^17.1.0",
+    "grunt-mocha": "^0.4.13",
+    "mocha": "^1.21.5",
     "react": "^0.13.3",
     "serve-static": "^1.10.0"
   },

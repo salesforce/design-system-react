@@ -1,4 +1,6 @@
 module.exports = function (grunt) {
+	grunt.loadTasks('tasks');
+
 	grunt.initConfig({
 		browserify: {
 			examples: {
@@ -11,12 +13,21 @@ module.exports = function (grunt) {
 				files: {
 					'examples/jquery/examples.js': 'src/jquery/examples.js',
 					'examples/backbone/examples.js': 'src/backbone/examples.js',
-					'examples/react/examples.js': 'src/react/examples.js'
+					'examples/react/examples.js': 'src/react/examples.js',
+					'test/tests-compiled.js': 'test/tests.js'
 				}
 			}
 		},
 		eslint: {
 			target: ['Gruntfile.js', 'src/**/*.js']
+		},
+		mocha: {
+			main: {
+				options: {
+					urls: ['http://localhost:8000/test/index.html'],
+					run: true
+				}
+			}
 		},
 		uglify: {
 			examples: {
@@ -29,7 +40,7 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			scripts: {
-				files: 'src/**/*.*',
+				files: ['src/**/*.*', 'test/**/*.*'],
 				tasks: ['browserify']
 			}
 		},
@@ -39,7 +50,8 @@ module.exports = function (grunt) {
 					hostname: '*',
 					base: [
 						'./examples',
-						'./node_modules'
+						'./node_modules',
+						'.'
 					],
 					port: process.env.PORT || 8000,
 					useAvailablePort: true // increment port number, if unavailable
@@ -53,7 +65,9 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-eslint');
+	grunt.loadNpmTasks('grunt-mocha');
 
 	grunt.registerTask('default', ['eslint', 'browserify']);
-	grunt.registerTask('serve', ['connect:server', 'eslint', 'browserify', 'watch:scripts']);
+	grunt.registerTask('serve', ['connect:server', 'eslint', 'compileTests', 'browserify', 'watch:scripts']);
+	grunt.registerTask('test', ['browserify', 'connect:server', 'mocha']);
 };
