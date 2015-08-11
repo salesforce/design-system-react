@@ -18,17 +18,17 @@ const Selectlist = function Selectlist (element, options) {
 		wrapper: $(element)
 	};
 
-	if (options.collection) {
+	if (this.options.collection) {
 		this.rendered = false;
 	} else {
 		this.__initElements(this.elements.wrapper, this.elements);
 
-		this.__buildCollection(options);
+		this.__buildCollection(this.options);
 
 		this.rendered = true;
 	}
 
-	this.__constructor(options);
+	this.__constructor(this.options);
 };
 
 Lib.extend(Selectlist.prototype, SelectlistCore, {
@@ -51,8 +51,8 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 			const $item = $(this);
 			const item = $item.data();
 
-			if (!item.name) {
-				item.name = $item.text().trim();
+			if (!item.text) {
+				item.text = $item.text().trim();
 			}
 
 			if (item.selected) {
@@ -68,8 +68,6 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 				item._itemType = 'header';
 			} else if ($item.hasClass('divider')) {
 				item._itemType = 'divider';
-			} else {
-				item._itemType = 'item';
 			}
 
 			$item.data(item);
@@ -93,17 +91,16 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
 
 		const selection = this.getSelection();
-
 		const width = this.__getState('width');
 		const disabled = !!this.__getState('disabled');
 		const selectionName = Lib.getProp(selection, 'name') || 'None selected'; // TO-DO: don't hardcode this here
 		const selectionString = selection ? JSON.stringify(selection) : '';
-
 		const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 		const elements = this.__initElements($html, this.elements);
 
 		// Yay for hacked-together "templates"!
 		elements.button.prop('disabled', disabled);
+		elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 		elements.button.width(width);
 		elements.label.text(selectionName);
 		elements.hiddenField.val(selectionString);
@@ -138,7 +135,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		let $li;
 
 		$a = $('<a href="#" />');
-		$a.text(Lib.getProp(data, 'name'));
+		$a.text(Lib.getProp(data, 'text'));
 
 		disabled = !!Lib.getProp(data, 'disabled');
 		$li = $('<li />');
@@ -153,7 +150,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	renderHeader (data) {
 		const $li = $('<li class="dropdown-header"></li>');
 		$li.data(data);
-		$li.text(Lib.getProp(data, 'name'));
+		$li.text(Lib.getProp(data, 'text'));
 
 		return $li;
 	},
@@ -178,7 +175,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 
 		// TO-DO: clearly this isn't the best way to reset the text to "None selected"
 		this.elements.hiddenField.val(JSON.stringify(data) || '');
-		this.elements.label.text(Lib.getProp(data, 'name') || 'None selected');
+		this.elements.label.text(Lib.getProp(data, 'text') || 'None selected');
 
 		this.elements.wrapper.trigger('changed.fu.selectlist', data);
 	},
@@ -189,6 +186,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		}
 
 		this.elements.button.prop('disabled', false);
+		this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
 	},
 
 	onDisabled () {
@@ -197,6 +195,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		}
 
 		this.elements.button.prop('disabled', true);
+		this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
 	},
 
 	resetWidth (width) {
@@ -213,9 +212,12 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	handleClicked (e) {
 		e.preventDefault();
 
-		const $li = $(e.currentTarget).parent('li');
+		const $a = $(e.currentTarget);
+		const $li = $a.parent('li');
 
-		this.setSelection($li.data());
+		if (!$li.hasClass(this.cssClasses.DISABLED)) {
+			this.setSelection($li.data());
+		}
 	},
 
 	handleKeyPress (e) {
@@ -229,15 +231,29 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 
 const legacyMethods = {
 	selectedItem () {
-		return this.getSelection();
+		let selection = this.getSelection();
+
+		if (selection) {
+			if (Lib.isFunction(selection.toJSON)) {
+				selection = selection.toJSON();
+			} else {
+				selection = jQuery.extend({}, selection);
+			}
+
+			selection.selected = true;
+			delete selection._itemType;
+		}
+
+		return selection;
 	},
 
 	selectByValue (value) {
 		return this.setSelection({ value: value });
 	},
 
-	selectByText (name) {
-		return this.setSelection({ name: name });
+	selectByText (text) {
+		// TO-DO: Did this for the test. Was the original really case-insensitive??
+		return this.setSelection({ text: new RegExp(text, 'i') });
 	},
 
 	selectBySelector (selector) {

@@ -81,10 +81,10 @@ const SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 
 		const label = sizer.querySelector('.' + self.cssClasses.LABEL);
 		const control = sizer.querySelector('.' + self.cssClasses.CONTROL);
-		this._collection.forEach(function (item) {
-			const name = Lib.getProp(item, 'name');
 
-			label.textContent = name;
+		this._collection.forEach(function (item) {
+			const text = Lib.getProp(item, 'text');
+			label.textContent = text;
 			newWidth = control.offsetWidth;
 			if (newWidth > width) {
 				width = newWidth;

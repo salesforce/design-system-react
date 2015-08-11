@@ -11,7 +11,7 @@ const SelectlistItem = Backbone.View.extend({
 		});
 	},
 
-	template: _.template('<% if (_itemType === "item") { %><a href="#"><%- name %></a><% } else if (_itemType === "header") { %><%- name %><% } %>'),
+	template: _.template('<% if (_itemType === "item") { %><a href="#"><%- text %></a><% } else if (_itemType === "header") { %><%- text %><% } %>'),
 
 	events: {
 		'click a': 'handleClicked'
