@@ -40,8 +40,8 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			scripts: {
-				files: ['src/**/*.*', 'test/**/*.*'],
-				tasks: ['browserify']
+				files: ['src/**/*.*', 'test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
+				tasks: ['compileTests', 'browserify']
 			}
 		},
 		connect: {
