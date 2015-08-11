@@ -1,7 +1,7 @@
 // SELECTLIST CONTROL - Marionette FACADE
 
 // Core
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 import SelectlistCore from '../../core/selectlist';
 
 // Framework specific

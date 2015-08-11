@@ -1,4 +1,4 @@
-import Lib from '../core/lib';
+import * as Lib from '../core/lib';
 
 const Base = {
 	// CSS classes used across every control

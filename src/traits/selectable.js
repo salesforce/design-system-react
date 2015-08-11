@@ -1,6 +1,6 @@
 // SELECTABLE
 
-import Lib from '../core/lib';
+import * as Lib from '../core/lib';
 
 const isNonDisabledItem = function isNonDisabledItem (item) {
 	return !Lib.getProp(item, 'disabled') && !Lib.getProp(item, '_itemType');

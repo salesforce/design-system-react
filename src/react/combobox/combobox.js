@@ -1,7 +1,7 @@
 // COMBOBOX CONTROL - REACT FACADE
 
 // Core
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 import ComboboxCore from '../../core/combobox';
 
 // Framework specific

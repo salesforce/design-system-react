@@ -1,4 +1,4 @@
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 import React from 'react';
 import Selectlist from './selectlist';
 

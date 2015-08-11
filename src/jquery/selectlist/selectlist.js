@@ -1,7 +1,7 @@
 // SELECTLIST CONTROL - JQUERY FACADE
 
 // Core
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 import SelectlistCore, {CONTROL} from '../../core/selectlist';
 
 // Framework specific

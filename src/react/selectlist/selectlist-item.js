@@ -1,5 +1,5 @@
 // Core
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 
 // Framework specific
 import React from 'react';
