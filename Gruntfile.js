@@ -50,7 +50,7 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			scripts: {
-				files: ['src/**/*.*', 'test/**/*.*'],
+				files: ['src/**/*.*', 'test/**/*.*', '!test/tests-compiled.js'],
 				tasks: ['eslint', 'browserify']
 			}
 		},

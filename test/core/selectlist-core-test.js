@@ -1,21 +1,22 @@
-var fs = require('fs');
 var chai = require('chai');
 var assert = chai.assert;
 var SelectListCore = require('../../src/core/selectlist');
-var containsTrait = require('containsTrait');
+import containsTrait from '../traits/containsTrait';
 
-describe("Fuel UX Selectlist Core Tests", function () {
-    // We can test initial state, and instantiation
-
+describe("Fuel UX Facade Selectlist Core Tests: ", function () {
     // basic instantiation
-    it('should not be falsy after require', function () {
+    it('Should not be falsy after require', function () {
         assert.notEqual(!!SelectListCore, false, 'SelectListCore is not null');
     });
     // test for defaults?
 
     // test for traits?
-    it('should be selectable', function () {
-        assert.equals(containsTrait.call(SelectListCore, 'selectable'), 'SelectListCore is Selectable');
+    it('Should be selectable', function () {
+        assert.equal(containsTrait.call(SelectListCore, 'selectable'), true, 'SelectListCore is Selectable');
+    });
+
+    it('Should be disableable', function () {
+        assert.equal(containsTrait.call(SelectListCore, 'disableable'), true, 'SelectListCore is disableable');
     });
 });
 
