@@ -2,7 +2,7 @@ var fs = require('fs');
 var $ = require('jquery');
 window.$ = window.jQuery = $;
 
-var html = fs.readFileSync('test/jquery/markup/selectlist-markup.html', 'utf8');
+var html = fs.readFileSync('test/compat/markup/selectlist-markup.html', 'utf8');
 var chai = require('chai');
 var assert = chai.assert;
 require('bootstrap');
