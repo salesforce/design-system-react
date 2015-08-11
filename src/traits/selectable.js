@@ -3,7 +3,7 @@
 import Lib from '../core/lib';
 
 var isNonDisabledItem = function isNonDisabledItem (item) {
-	return !Lib.getProp(item, 'disabled') && (!Lib.getProp(item, '_itemType') || Lib.getProp(item, '_itemType') === 'item');
+	return !Lib.getProp(item, 'disabled') && !Lib.getProp(item, '_itemType');
 };
 
 var Selectable = {

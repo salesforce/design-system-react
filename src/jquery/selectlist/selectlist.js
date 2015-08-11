@@ -67,8 +67,6 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 				item._itemType = 'header';
 			} else if ($item.hasClass('divider')) {
 				item._itemType = 'divider';
-			} else {
-				item._itemType = 'item';
 			}
 
 			$item.data(item);
@@ -233,7 +231,18 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 
 var legacyMethods = {
 	selectedItem () {
-		return this.getSelection();
+		var selection = this.getSelection();
+		
+		if (Lib.isFunction(selection.toJSON)) {
+			selection = selection.toJSON();
+		} else {
+			selection = jQuery.extend({}, selection);
+		}
+		
+		selection.selected = true;
+		delete selection._itemType;
+		
+		return selection;
 	},
 
 	selectByValue (value) {

@@ -22,7 +22,6 @@ var SelectlistItem = React.createClass({
 		case 'divider':
 			html = <li className="divider"></li>;
 			break;
-		case 'item':
 		default:
 			html = (
 				<li className={classNames({ disabled: disabled })} disabled={disabled}>
