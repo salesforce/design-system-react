@@ -57,7 +57,7 @@ var SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 		var parent;
 		var label;
 		var control;
-		var name;
+		var text;
 
 		sizer.className = 'selectlist-sizer';
 		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
@@ -84,9 +84,9 @@ var SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 		label = sizer.querySelector('.' + self.cssClasses.LABEL);
 		control = sizer.querySelector('.' + self.cssClasses.CONTROL);
 		this._collection.forEach(function (item) {
-			name = Lib.getProp(item, 'name');
+			text = Lib.getProp(item, 'text');
 
-			label.textContent = name;
+			label.textContent = text;
 			newWidth = control.offsetWidth;
 			if (newWidth > width) {
 				width = newWidth;

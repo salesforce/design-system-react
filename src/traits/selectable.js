@@ -76,7 +76,7 @@ var Selectable = {
 			letter = '\\\\';
 		}
 
-		selection = Lib.findWhere(this._collection.filter(isNonDisabledItem), { name: new RegExp('^[' + letter + ']', 'i') }); // TODO: Cache the filter results
+		selection = Lib.findWhere(this._collection.filter(isNonDisabledItem), { text: new RegExp('^[' + letter + ']', 'i') }); // TODO: Cache the filter results
 
 		if (selection) this.__setSelection(selection);
 	}

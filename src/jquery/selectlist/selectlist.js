@@ -18,17 +18,17 @@ var Selectlist = function Selectlist (element, options) {
 		wrapper: $(element)
 	};
 
-	if (options.collection) {
+	if (this.options.collection) {
 		this.rendered = false;
 	} else {
 		this.__initElements(this.elements.wrapper, this.elements);
 
-		this.__buildCollection(options);
+		this.__buildCollection(this.options);
 
 		this.rendered = true;
 	}
 
-	this.__constructor(options);
+	this.__constructor(this.options);
 };
 
 Lib.extend(Selectlist.prototype, SelectlistCore, {
@@ -44,15 +44,14 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	},
 
 	__buildCollection (options) {
-		options = options || {};
 		options.collection = [];
 
 		this.elements.dropdownMenu.find('li').each(function () {
 			var $item = $(this);
 			var item = $item.data();
 
-			if (!item.name) {
-				item.name = $item.text().trim();
+			if (!item.text) {
+				item.text = $item.text().trim();
 			}
 
 			if (item.selected) {
@@ -96,7 +95,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 
 		var width = this.__getState('width');
 		var disabled = !!this.__getState('disabled');
-		var selectionName = Lib.getProp(selection, 'name') || 'None selected'; // TO-DO: don't hardcode this here
+		var selectionName = Lib.getProp(selection, 'text') || 'None selected'; // TO-DO: don't hardcode this here
 		var selectionString = selection ? JSON.stringify(selection) : '';
 
 		var $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
@@ -139,7 +138,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		var $li;
 		
 		$a = $('<a href="#" />');
-		$a.text(Lib.getProp(data, 'name'));
+		$a.text(Lib.getProp(data, 'text'));
 
 		disabled = !!Lib.getProp(data, 'disabled');
 		$li = $('<li />');
@@ -154,7 +153,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	renderHeader (data) {
 		var $li = $('<li class="dropdown-header"></li>');
 		$li.data(data);
-		$li.text(Lib.getProp(data, 'name'));
+		$li.text(Lib.getProp(data, 'text'));
 
 		return $li;
 	},
@@ -179,7 +178,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 
 		// TO-DO: clearly this isn't the best way to reset the text to "None selected"
 		this.elements.hiddenField.val(JSON.stringify(data) || '');
-		this.elements.label.text(Lib.getProp(data, 'name') || 'None selected');
+		this.elements.label.text(Lib.getProp(data, 'text') || 'None selected');
 
 		this.elements.wrapper.trigger('changed.fu.selectlist', data);
 	},
@@ -241,8 +240,8 @@ var legacyMethods = {
 		return this.setSelection({ value: value });
 	},
 
-	selectByText (name) {
-		return this.setSelection({ name: name });
+	selectByText (text) {
+		return this.setSelection({ text: text });
 	},
 
 	selectBySelector (selector) {
