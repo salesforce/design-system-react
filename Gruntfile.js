@@ -54,8 +54,8 @@ module.exports = function (grunt) {
 				tasks: ['eslint', 'browserify:examples']
 			},
 			tests: {
-				files: ['test/**/*.*'],
-				tasks: ['browserify:tests']
+				files: ['test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
+				tasks: ['compileTests', 'browserify:tests']
 			}
 		},
 		connect: {
@@ -83,5 +83,5 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', ['eslint', 'browserify']);
 	grunt.registerTask('serve', ['connect:server', 'eslint', 'browserify:examples', 'watch:examples']);
-	grunt.registerTask('test', ['connect:server', 'browserify:tests', 'compileTests', 'mocha']);
+	grunt.registerTask('test', ['connect:server', 'compileTests', 'browserify:tests', 'mocha']);
 };
