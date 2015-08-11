@@ -6,15 +6,16 @@ import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
-import ReactHelpers from '../helpers';
-
+import ReactHelpers from '../mixins/helpers';
+import selectable from '../mixins/selectable'
 // Third party
 import classNames from 'classnames';
 
 // Children
 import SelectlistItem from './selectlist-item';
 
-const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, {
+const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
+	mixins: [ReactHelpers, selectable],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -81,9 +82,6 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers
 		};
 
 		this.__constructor(this.props);
-
-		if (Lib.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
-		if (Lib.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 	},
 
 	handleMenuItemSelected (selection) {
