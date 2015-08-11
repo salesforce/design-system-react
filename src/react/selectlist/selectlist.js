@@ -51,7 +51,7 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
-				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
+				<button className={classNames("btn btn-default dropdown-toggle", {disabled: this.state.disabled})} data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
 					<span className="selected-label">{Lib.getProp(selection, 'name') || 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
@@ -89,7 +89,7 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 	handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
-	
+
 	handleKeyPress (e) {
 		var key = e.key || e.keyIdentifier;
 		if (key) this.__jumpToLetter(key);
