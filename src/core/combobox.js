@@ -7,9 +7,9 @@ import Base from './base';
 import Disableable from '../traits/disableable';
 import Selectable from '../traits/selectable';
 
-export var CONTROL = 'combobox';
+export const CONTROL = 'combobox';
 
-var ComboboxCore = Lib.extend({}, Base, Disableable, Selectable, {
+const ComboboxCore = Lib.extend({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -47,8 +47,8 @@ var ComboboxCore = Lib.extend({}, Base, Disableable, Selectable, {
 
 	// TO-DO: Did this need to set the width of the menu each time?
 	resize () {
-		var width = this.elements.wrapper.outerWidth();
-		
+		const width = this.elements.wrapper.outerWidth();
+
 		this.__setState({ width: width });
 		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
 	}

@@ -7,12 +7,12 @@ import SelectlistCore, {CONTROL} from '../../core/selectlist';
 // Framework specific
 import createPlugin from '../createPlugin';
 // TO-DO: This might not work with require, need to confirm that it does
-var $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
-var fs = require('fs');
+const fs = require('fs');
 
-var Selectlist = function Selectlist (element, options) {
+const Selectlist = function Selectlist (element, options) {
 	this.options = $.extend({}, options);
 	this.elements = {
 		wrapper: $(element)
@@ -33,22 +33,23 @@ var Selectlist = function Selectlist (element, options) {
 
 Lib.extend(Selectlist.prototype, SelectlistCore, {
 	__initElements (base, elements) {
-		elements = elements || {};
+		const els = elements || {};
 
-		elements.button = base.find('.' + this.cssClasses.TOGGLE);
-		elements.hiddenField = base.find('.' + this.cssClasses.HIDDEN);
-		elements.label = base.find('.' + this.cssClasses.LABEL);
-		elements.dropdownMenu = base.find('.' + this.cssClasses.MENU);
+		els.button = base.find('.' + this.cssClasses.TOGGLE);
+		els.hiddenField = base.find('.' + this.cssClasses.HIDDEN);
+		els.label = base.find('.' + this.cssClasses.LABEL);
+		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
 
-		return elements;
+		return els;
 	},
 
 	__buildCollection (options) {
-		options.collection = [];
+		const opts = options || {};
+		opts.collection = [];
 
-		this.elements.dropdownMenu.find('li').each(function () {
-			var $item = $(this);
-			var item = $item.data();
+		this.elements.dropdownMenu.find('li').each(function buildCollectionElements () {
+			const $item = $(this);
+			const item = $item.data();
 
 			if (!item.text) {
 				item.text = $item.text().trim();
@@ -56,7 +57,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 
 			if (item.selected) {
 				delete item.selected;
-				options.selection = item;
+				opts.selection = item;
 			}
 
 			if ($item.is('.disabled, :disabled')) {
@@ -70,7 +71,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 			}
 
 			$item.data(item);
-			options.collection.push(item);
+			opts.collection.push(item);
 		});
 	},
 
@@ -89,15 +90,13 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
 		this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
 
-		var selection = this.getSelection();
-
-		var width = this.__getState('width');
-		var disabled = !!this.__getState('disabled');
-		var selectionName = Lib.getProp(selection, 'text') || 'None selected'; // TO-DO: don't hardcode this here
-		var selectionString = selection ? JSON.stringify(selection) : '';
-
-		var $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
-		var elements = this.__initElements($html, this.elements);
+		const selection = this.getSelection();
+		const width = this.__getState('width');
+		const disabled = !!this.__getState('disabled');
+		const selectionName = Lib.getProp(selection, 'name') || 'None selected'; // TO-DO: don't hardcode this here
+		const selectionString = selection ? JSON.stringify(selection) : '';
+		const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
+		const elements = this.__initElements($html, this.elements);
 
 		// Yay for hacked-together "templates"!
 		elements.button.prop('disabled', disabled);
@@ -107,10 +106,10 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		elements.hiddenField.val(selectionString);
 		elements.dropdownMenu.width(width);
 
-		var self = this;
+		const self = this;
 		// Building the menu items
-		this._collection.forEach(function (item) {
-			var $li;
+		this._collection.forEach(function buildMenuItems (item) {
+			let $li;
 			switch (item._itemType) {
 			case 'header':
 				$li = self.renderHeader(item);
@@ -131,10 +130,10 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	},
 
 	renderItem (data) {
-		var $a;
-		var disabled;
-		var $li;
-		
+		let $a;
+		let disabled;
+		let $li;
+
 		$a = $('<a href="#" />');
 		$a.text(Lib.getProp(data, 'text'));
 
@@ -149,7 +148,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	},
 
 	renderHeader (data) {
-		var $li = $('<li class="dropdown-header"></li>');
+		const $li = $('<li class="dropdown-header"></li>');
 		$li.data(data);
 		$li.text(Lib.getProp(data, 'text'));
 
@@ -157,7 +156,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	},
 
 	renderDivider (data) {
-		var $li = $('<li role="separator" class="divider"></li>');
+		const $li = $('<li role="separator" class="divider"></li>');
 		$li.data(data);
 
 		return $li;
@@ -211,13 +210,10 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	},
 
 	handleClicked (e) {
-		var $a;
-		var $li;
-		
 		e.preventDefault();
 
-		$a = $(e.currentTarget);
-		$li = $a.parent('li');
+		const $a = $(e.currentTarget);
+		const $li = $a.parent('li');
 
 		if (!$li.hasClass(this.cssClasses.DISABLED)) {
 			this.setSelection($li.data());
@@ -225,29 +221,29 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 	},
 
 	handleKeyPress (e) {
-		var key = e.which;
-		
+		const key = e.which;
+
 		if (key) this.__jumpToLetter(key);
 	}
 });
 
 // LEGACY METHODS
 
-var legacyMethods = {
+const legacyMethods = {
 	selectedItem () {
-		var selection = this.getSelection();
-		
+		let selection = this.getSelection();
+
 		if (selection) {
 			if (Lib.isFunction(selection.toJSON)) {
 				selection = selection.toJSON();
 			} else {
 				selection = jQuery.extend({}, selection);
 			}
-			
+
 			selection.selected = true;
 			delete selection._itemType;
 		}
-		
+
 		return selection;
 	},
 
@@ -261,15 +257,17 @@ var legacyMethods = {
 	},
 
 	selectBySelector (selector) {
-		var $item = $(selector);
+		const $item = $(selector);
 		return this.setSelection($item.data());
 	},
 
 	selectByIndex (index) {
-		if (!Lib.isNumber(index)) {
-			index = parseInt(index, 10);
+		let i = index;
+
+		if (!Lib.isNumber(i)) {
+			i = parseInt(index, 10);
 		}
-		return this.setSelectionByIndex(index);
+		return this.setSelectionByIndex(i);
 	}
 };
 

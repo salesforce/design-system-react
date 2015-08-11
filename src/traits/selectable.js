@@ -2,11 +2,11 @@
 
 import Lib from '../core/lib';
 
-var isNonDisabledItem = function isNonDisabledItem (item) {
+const isNonDisabledItem = function isNonDisabledItem (item) {
 	return !Lib.getProp(item, 'disabled') && !Lib.getProp(item, '_itemType');
 };
 
-var Selectable = {
+const Selectable = {
 	cssClasses: {
 		SELECTED: 'selected'
 	},
@@ -29,15 +29,15 @@ var Selectable = {
 
 	// Pass any combination of key / value pairs
 	setSelection (criteria) {
-		var item = Lib.findWhere(this._collection, criteria);
+		const item = Lib.findWhere(this._collection, criteria);
 
 		return this.__setSelection(item);
 	},
 
 	// Legacy Fuel UX functionality - select by position
 	setSelectionByIndex (index) {
-		var item;
-		
+		let item;
+
 		if (!this._collection) {
 			return;
 		}
@@ -61,9 +61,9 @@ var Selectable = {
 
 	// For keyboard nav
 	__jumpToLetter (input) {
-		var letter = input;
-		var selection;
-		
+		let letter = input;
+		let selection;
+
 		if (Lib.isNumber(letter)) {
 			letter = String.fromCharCode(letter);
 		}

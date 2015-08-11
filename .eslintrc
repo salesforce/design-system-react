@@ -7,6 +7,8 @@
 		"no-trailing-spaces": [2, { "skipBlankLines": true }],
 		"react/prop-types": 1,
 		"no-param-reassign": 1,
-		"vars-on-top": 1
+		"vars-on-top": 1,
+		"func-names" : 0,
+		"no-console": 0
 	}
 }
