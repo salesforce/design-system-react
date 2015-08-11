@@ -49,9 +49,13 @@ module.exports = function (grunt) {
 			}
 		},
 		watch: {
-			scripts: {
-				files: ['src/**/*.*', 'test/**/*.*'],
-				tasks: ['eslint', 'browserify']
+			examples: {
+				files: ['src/**/*.*'],
+				tasks: ['eslint', 'browserify:examples']
+			},
+			tests: {
+				files: ['test/**/*.*'],
+				tasks: ['browserify:tests']
 			}
 		},
 		connect: {
@@ -78,6 +82,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-mocha');
 
 	grunt.registerTask('default', ['eslint', 'browserify']);
-	grunt.registerTask('serve', ['connect:server', 'eslint', 'browserify', 'compileTests', 'watch:scripts']);
+	grunt.registerTask('serve', ['connect:server', 'eslint', 'browserify:examples', 'watch:examples']);
 	grunt.registerTask('test', ['connect:server', 'browserify:tests', 'compileTests', 'mocha']);
 };
