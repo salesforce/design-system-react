@@ -3,7 +3,7 @@
 import Lib from '../core/lib';
 
 var isNonDisabledItem = function isNonDisabledItem (item) {
-	return !Lib.getProp(item, 'disabled') && (!Lib.getProp(item, '_itemType') || Lib.getProp(item, '_itemType') === 'item');
+	return !Lib.getProp(item, 'disabled') && !Lib.getProp(item, '_itemType');
 };
 
 var Selectable = {
@@ -76,7 +76,7 @@ var Selectable = {
 			letter = '\\\\';
 		}
 
-		selection = Lib.findWhere(this._collection.filter(isNonDisabledItem), { name: new RegExp('^[' + letter + ']', 'i') }); // TODO: Cache the filter results
+		selection = Lib.findWhere(this._collection.filter(isNonDisabledItem), { text: new RegExp('^[' + letter + ']', 'i') }); // TODO: Cache the filter results
 
 		if (selection) this.__setSelection(selection);
 	}

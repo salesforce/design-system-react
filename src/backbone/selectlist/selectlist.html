@@ -1,5 +1,5 @@
 <button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"<% if (disabled) { %> disabled<% } %><% if (width) { %> style="width: <%- width %>px"<% } %>>
-	<span class="selected-label"><% if (selection) { %><%- selection.name %><% } else { %>None selected<% } %></span>
+	<span class="selected-label"><% if (selection) { %><%- selection.text %><% } else { %>None selected<% } %></span>
 	<span class="caret"></span>
 	<span class="sr-only">Toggle Dropdown</span>
 </button>

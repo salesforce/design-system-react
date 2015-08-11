@@ -25,7 +25,7 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		name: React.PropTypes.string
+		text: React.PropTypes.string
 	},
 
 	getInitialState () {
@@ -52,7 +52,7 @@ var Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
 				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
-					<span className="selected-label">{Lib.getProp(selection, 'name') || 'None selected'}</span>
+					<span className="selected-label">{Lib.getProp(selection, 'text') || 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
 				</button>

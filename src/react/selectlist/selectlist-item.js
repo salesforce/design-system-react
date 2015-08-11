@@ -17,16 +17,15 @@ var SelectlistItem = React.createClass({
 		var html;
 		switch (Lib.getProp(this.props.item, '_itemType')) {
 		case 'header':
-			html = <li className="dropdown-header">{Lib.getProp(this.props.item, 'name')}</li>;
+			html = <li className="dropdown-header">{Lib.getProp(this.props.item, 'text')}</li>;
 			break;
 		case 'divider':
 			html = <li className="divider"></li>;
 			break;
-		case 'item':
 		default:
 			html = (
 				<li className={classNames({ disabled: disabled })} disabled={disabled}>
-					<a href="#" onClick={this.handleClicked}>{Lib.getProp(this.props.item, 'name')}</a>
+					<a href="#" onClick={this.handleClicked}>{Lib.getProp(this.props.item, 'text')}</a>
 				</li>
 			);
 		}
