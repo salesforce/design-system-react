@@ -4,15 +4,15 @@ var chai = require('chai');
 var expect = chai.expect;
 
 var defaultArray = [
-  { _itemType: 'header', name: 'One thing' },
-  { id: 0, name: 'One', value: '1' },
+  { _itemType: 'header', text: 'One thing' },
+  { id: 0, text: 'One', value: '1' },
   { _itemType: 'divider' },
-  { _itemType: 'header', name: 'All the things' },
-  { id: 1, name: 'Two', value: '2' },
-  { _itemType: 'item', id: 2, name: 'Three', value: '3'  },
-  { id: 3, name: 'Buzz', value: '4'  },
-  { id: 4, name: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
-  { id: 5, name: 'A Disabled Item', disabled: true, value: 'disabled' }
+  { _itemType: 'header', text: 'All the things' },
+  { id: 1, text: 'Two', value: '2' },
+  { _itemType: 'item', id: 2, text: 'Three', value: '3'  },
+  { id: 3, text: 'Buzz', value: '4'  },
+  { id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
+  { id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
 ];
 
 module.exports = {
@@ -42,11 +42,11 @@ module.exports = {
       var listItems = element.querySelectorAll('li');
       expect(listItems[2].classList.contains('divider')).to.equal(true);
       expect(listItems[3].classList.contains('dropdown-header')).to.equal(true);
-      expect(listItems[3].textContent).to.equal(defaultArray[3].name);
+      expect(listItems[3].textContent).to.equal(defaultArray[3].text);
     });
 
     it('should mark the default selection as selected.', function() {
-      expect(element.querySelector('.selected-label').textContent).to.equal(defaultArray[0].name);
+      expect(element.querySelector('.selected-label').textContent).to.equal(defaultArray[0].text);
     });
 
     it('should be closed by default', function() {
@@ -70,7 +70,7 @@ module.exports = {
     });
 
     it('should mark the default selection as selected.', function() {
-      expect(element.querySelector('.selected-label').textContent).to.equal(defaultArray[0].name);
+      expect(element.querySelector('.selected-label').textContent).to.equal(defaultArray[0].text);
     });
 
     it('should be closed by default', function() {

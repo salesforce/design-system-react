@@ -2,7 +2,7 @@ var fs = require('fs');
 var $ = require('jquery');
 window.$ = window.jQuery = $;
 
-var html = fs.readFileSync('test/jquery/markup/selectlist-markup.html', 'utf8');
+var html = fs.readFileSync('test/compat/markup/selectlist-markup.html', 'utf8');
 var chai = require('chai');
 var assert = chai.assert;
 require('bootstrap');
@@ -60,16 +60,6 @@ describe("Fuel UX Selectlist", function() {
 		});
 		minWidth = $textLengthTester.width();
 		assert.ok(($selectlist9.width() >= minWidth), 'selectlist was hidden, now shown, sized ' + $selectlist9.width() + ' should be greater than ' + minWidth);
-	});
-
-	it("should disable itself if empty", function () {
-		var $selectlist = $(html).find('#selectlistEmpty').selectlist({
-			emptyLabelHTML: '<li data-value=""><a href="#">I am feeling so empty</a></li>'
-		});
-		assert.equal($selectlist.find('.btn').hasClass('disabled'), true, 'element disabled');
-		assert.equal($selectlist.find('.selected-label').html(), 'I am feeling so empty', 'custom emptyLabelHTML set as label');
-		assert.equal($selectlist.selectlist('selectedItem').text, 'I am feeling so empty', 'selectedItem returns correct text');
-		assert.equal($selectlist.selectlist('selectedItem').value, '', 'selectedItem returns correct value');
 	});
 
 	it("should set disabled state", function () {

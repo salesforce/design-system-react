@@ -2,7 +2,7 @@ import _ from 'underscore';
 import Backbone from 'backbone';
 import classNames from 'classnames';
 
-var SelectlistItem = Backbone.View.extend({
+const SelectlistItem = Backbone.View.extend({
 	tagName: 'li',
 	className () {
 		return classNames({
@@ -11,7 +11,7 @@ var SelectlistItem = Backbone.View.extend({
 		});
 	},
 
-	template: _.template('<% if (_itemType === "item") { %><a href="#"><%- name %></a><% } else if (_itemType === "header") { %><%- name %><% } %>'),
+	template: _.template('<% if (_itemType === "item") { %><a href="#"><%- text %></a><% } else if (_itemType === "header") { %><%- text %><% } %>'),
 
 	events: {
 		'click a': 'handleClicked'
@@ -24,7 +24,7 @@ var SelectlistItem = Backbone.View.extend({
 	},
 
 	render () {
-		var attrs = this.model.toJSON();
+		const attrs = this.model.toJSON();
 		attrs._itemType = attrs._itemType || 'item';
 
 		this.$el.html(this.template(attrs));

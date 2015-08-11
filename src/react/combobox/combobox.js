@@ -14,7 +14,7 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from '../selectlist/selectlist-item';
 
-var Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
+const Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -25,9 +25,9 @@ var Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		name: React.PropTypes.string
+		text: React.PropTypes.string
 	},
-	
+
 	getInitialState () {
 		return Lib.extend(this.__getInitialState(), {
 			wrapperClasses: {}
@@ -43,15 +43,15 @@ var Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
 	},
 
 	render () {
-		var selection = this.getSelection();
+		const selection = this.getSelection();
 
-		var styles = {
+		const styles = {
 			width: this.state.width
 		};
 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
-				<input name={this.props.name} className="form-control" type="text" value={Lib.getProp(selection, 'name')} disabled={this.state.disabled} />
+				<input name={this.props.name} className="form-control" type="text" value={Lib.getProp(selection, 'text')} disabled={this.state.disabled} />
 				<div className="input-group-btn">
 					<button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" disabled={this.state.disabled}><span className="caret"></span></button>
 					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles}>
@@ -63,12 +63,12 @@ var Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
 	},
 
 	componentWillMount () {
-		var self = this;
+		const self = this;
 
 		this.elements = {
 			wrapper: {
 				toggleClass (cssClass, state) {
-					var wrapperClasses = self.state.wrapperClasses;
+					const wrapperClasses = self.state.wrapperClasses;
 					wrapperClasses[cssClass] = state;
 
 					self.setState({
@@ -90,9 +90,9 @@ var Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
 	handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
-	
+
 	handleKeyPress (e) {
-		var key = e.key || e.keyIdentifier;
+		const key = e.key || e.keyIdentifier;
 		if (key) this.__jumpToLetter(key);
 	}
 }));
