@@ -4,5 +4,18 @@
 	<span class="sr-only">Toggle Dropdown</span>
 </button>
 <ul class="dropdown-menu" role="menu"<% if (width) { %> style="width: <%- width %>px"<% } %>>
+	<% _.each(items, function (item) {
+		switch (item._itemType) {
+		case 'header':
+			%><li class="<%- _classNames('dropdown-header', { 'disabled': item.disabled }) %>"<%= disabled ? ' disabled' : '' %>><%- item.text %></li><%
+			break;
+		case 'divider':
+			%><li class="<%- _classNames('divider', { 'disabled': item.disabled }) %>" role="separator"<%= disabled ? ' disabled' : '' %>></li><%
+			break;
+		case 'item':
+		default:
+			%><li class="<%- _classNames({ 'disabled': item.disabled }) %>"<%= disabled ? ' disabled' : '' %>><a href="#" data-id="<%- item.id %>"><%- item.text %></a></li><%
+		}
+	}); %>
 </ul>
 <input class="hidden hidden-field" readonly aria-hidden="true" type="text" value="<%- JSON.stringify(selection) %>"></input>
