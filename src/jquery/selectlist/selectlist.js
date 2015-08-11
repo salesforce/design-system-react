@@ -104,6 +104,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 
 		// Yay for hacked-together "templates"!
 		elements.button.prop('disabled', disabled);
+		elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 		elements.button.width(width);
 		elements.label.text(selectionName);
 		elements.hiddenField.val(selectionString);
@@ -189,6 +190,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		}
 
 		this.elements.button.prop('disabled', false);
+		this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
 	},
 
 	onDisabled () {
@@ -197,6 +199,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		}
 
 		this.elements.button.prop('disabled', true);
+		this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
 	},
 
 	resetWidth (width) {
