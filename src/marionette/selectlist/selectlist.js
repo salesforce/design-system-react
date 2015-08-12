@@ -20,23 +20,23 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 	},
 
 	template: selectlistTemplate,
-	
+
 	serializeData () {
-		var attrs;
-		
+		let attrs;
+
 		if (!this.model && !this.collection) {
 			return {};
 		}
-		
+
 		attrs = this.model ? this.serializeModel(this.model) : {};
-		
+
 		if (attrs.selection && Lib.isFunction(attrs.selection.toJSON)) {
 			attrs.selection = attrs.selection.toJSON();
 		}
-		
+
 		attrs.items = this.serializeCollection(this.collection);
 		attrs._classNames = classNames;
-		
+
 		return attrs;
 	},
 
@@ -73,7 +73,7 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 		// Put this after the constructor so that we don't call render during initialization
 		this.listenTo(this.model, 'change', this.render);
 	},
-	
+
 	onRender () {
 		if (this.assumeFocus) {
 			this.$el.find('button').focus();
@@ -82,13 +82,13 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 	},
 
 	handleMenuItemSelected (e) {
-		var id = $(e.currentTarget).data('id');
+		const id = $(e.currentTarget).data('id');
 		this.setSelection({ id: id });
 	},
 
 	handleKeyPress (e) {
 		const key = e.which;
-		
+
 		this.assumeFocus = true;
 
 		if (key) this.__jumpToLetter(key);
