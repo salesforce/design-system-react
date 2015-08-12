@@ -1,10 +1,11 @@
 import * as Lib from '../../src/core/lib';
 const chai = require('chai');
 const assert = chai.assert;
+const expect = chai.expect;
 const $ = require('jquery');
 const Backbone = require('backbone');
 
-describe('FuelUX Facade Lib Tests: ', function () {
+describe('FuelUX Facade Lib Tests', function () {
 	it('can be required', function () {
 		const lib = require('../../src/core/lib');
 		assert.equal(!!lib, true, 'Lib is requireable');
@@ -159,17 +160,17 @@ describe('FuelUX Facade Lib Tests: ', function () {
 
 	it('will extend by combining', function () {
 		const person = {
-			name: 'Joe'
+			name: 'Joe',
+			size: {
+				height: 5.8,
+				weight: 160.1
+			}
 		};
 		const colorPreference = {
 			favoriteColor: 'Red'
 		};
 		const extended = Lib.extend(person, colorPreference);
-		assert.ok(
-			extended.hasOwnProperty('name') &&
-			extended.name === 'Joe' &&
-			extended.hasOwnProperty('favoriteColor') &&
-			extended.favoriteColor === 'Red'
-		);
+		expect(extended).to.include(person);
+		expect(extended).to.include(colorPreference);
 	});
 });

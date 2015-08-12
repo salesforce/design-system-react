@@ -59,15 +59,17 @@ describe('Selectlist React Facade', function () {
 			});
 		});
 
-		it('should fire the on selected callback on an item click.', function () {
+		it('should fire the onChanged callback on an item click.', function () {
 			const options = this.options;
-			options.onSelected = function (item) {
+			let called = false;
+			options.onChanged = function (item) {
+				called = true;
 				chai.expect(item).to.equal(options.collection[4]); // Fourth option is the second clickable.
 			};
 			const component = React.createElement(SelectList, options);
 			this.rendered = React.render(component, targetElement);
-			$(this.rendered.getDOMNode().querySelector('button')).click();
 			TestUtils.Simulate.click(this.rendered.getDOMNode().querySelectorAll('li a')[1]);
+			chai.expect(called).to.be.true;
 		});
 	});
 });
