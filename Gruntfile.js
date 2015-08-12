@@ -29,13 +29,20 @@ module.exports = function (grunt) {
 			}
 		},
 		eslint: {
-			target: ['Gruntfile.js', 'src/**/*.js']
+			target: [
+				'Gruntfile.js',
+				'src/**/*.js',
+				'test/**/*.js',
+				'!test/tests-compiled.js',
+				'!test/tests.js'
+			]
 		},
 		mocha: {
 			main: {
 				options: {
 					urls: ['http://localhost:8000/test/index.html'],
-					run: true
+					run: true,
+					reporter: 'Nyan'
 				}
 			}
 		},
@@ -50,7 +57,7 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			examples: {
-				files: ['src/**/*.*'],
+				files: ['src/**/*.*', 'sample-data/**/*.*'],
 				tasks: ['eslint', 'browserify:examples']
 			},
 			tests: {
@@ -83,5 +90,5 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('default', ['eslint', 'browserify']);
 	grunt.registerTask('serve', ['connect:server', 'eslint', 'browserify:examples', 'watch:examples']);
-	grunt.registerTask('test', ['connect:server', 'compileTests', 'browserify:tests', 'mocha']);
+	grunt.registerTask('test', ['connect:server', 'eslint', 'compileTests', 'browserify:tests', 'mocha']);
 };
