@@ -50,7 +50,7 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			examples: {
-				files: ['src/**/*.*'],
+				files: ['src/**/*.*', 'sample-data/**/*.*'],
 				tasks: ['eslint', 'browserify:examples']
 			},
 			tests: {
