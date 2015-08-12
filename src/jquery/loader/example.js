@@ -12,19 +12,19 @@ const exampleOptions = [
 
 $(function () {
 	// Declarative
-	const loaderDataAttrs = $('.loader-data-attrs').loader();
-	
+	const loaderDataAttrs = $('.declarative .loader-data-attrs').loader();
+
 	// Imperative
-	$('.declarative .loader1').loader();
-	$('.declarative .loader2').loader(exampleOptions[0]);
-	$('.declarative .loader3').loader(exampleOptions[1]);
-	$('.declarative .loader4').loader(exampleOptions[2]);
+	$('.imperative .loader1').loader();
+	$('.imperative .loader2').loader(exampleOptions[0]);
+	$('.imperative .loader3').loader(exampleOptions[1]);
+	$('.imperative .loader4').loader(exampleOptions[2]);
 
 	// New syntax
-	const loader1 = new Loader($('.imperative .loader1'));
-	const loader2 = new Loader($('.imperative .loader2'), exampleOptions[0]);
-	const loader3 = new Loader($('.imperative .loader3'), exampleOptions[1]);
-	const loader4 = new Loader($('.imperative .loader4'), exampleOptions[2]);
+	const loader1 = new Loader($('.new-api .loader1'));
+	const loader2 = new Loader($('.new-api .loader2'), exampleOptions[0]);
+	const loader3 = new Loader($('.new-api .loader3'), exampleOptions[1]);
+	const loader4 = new Loader($('.new-api .loader4'), exampleOptions[2]);
 
 	void(loader1);
 	void(loader2);

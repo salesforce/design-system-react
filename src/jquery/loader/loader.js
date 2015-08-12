@@ -20,7 +20,7 @@ const Loader = function Loader (element, options) {
 		this.elements.wrapper.addClass('iefix');
 		this.isIElt9 = true;
 	}
-	
+
 	this.__constructor(this.options);
 };
 
@@ -58,12 +58,12 @@ const methods = {
 		this._timeout = setTimeout(function () {
 			self._next();
 			self._play();
-		}, this.delay);
+		}, this.__getState('delay'));
 	},
 
 	_next () {
-		var frame = this.__getState('frame');
-		
+		let frame = this.__getState('frame');
+
 		frame++;
 
 		if (frame > this.__getState('end')) {
