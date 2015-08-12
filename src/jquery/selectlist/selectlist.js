@@ -94,7 +94,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, {
 		const selection = this.getSelection();
 		const width = this.__getState('width');
 		const disabled = !!this.__getState('disabled');
-		const selectionName = Lib.getProp(selection, 'name') || 'None selected'; // TO-DO: don't hardcode this here
+		const selectionName = Lib.getProp(selection, 'text') || 'None selected'; // TO-DO: don't hardcode this here
 		const selectionString = selection ? JSON.stringify(selection) : '';
 		const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 		const elements = this.__initElements($html, this.elements);
@@ -111,17 +111,17 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, {
 		// Building the menu items
 		this._collection.forEach(function buildMenuItems (item) {
 			let $li;
-			switch (item._itemType) {
-			case 'header':
-				$li = self.renderHeader(item);
-				break;
-			case 'divider':
-				$li = self.renderDivider(item);
-				break;
-			case 'item':
-			default:
-				$li = self.renderItem(item);
-			}
+			let func;
+			const funcMap = {
+				header: 'renderHeader',
+				divider: 'renderDivider',
+				item: 'renderItem'
+			};
+
+			func = funcMap[ item._itemType ] || 'renderItem';
+
+			$li = self[ func ].call( self, item );
+
 			elements.dropdownMenu.append($li);
 		});
 
