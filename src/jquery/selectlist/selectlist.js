@@ -168,7 +168,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, {
 		return this.elements.wrapper[0].outerHTML;
 	},
 
-	onSelected (data) {
+	_onSelected (data) {
 		if (!this.elements.hiddenField
 			|| !this.elements.label) {
 			return;
