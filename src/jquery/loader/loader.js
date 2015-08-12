@@ -10,94 +10,94 @@ import createPlugin from '../createPlugin';
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 const Loader = function Loader (element, options) {
-  this.options = $.extend({}, options);
+	this.options = $.extend({}, options);
 
-  this.begin = this.options.begin || 1;
-  this.delay = this.options.delay || 150;
-  this.end = this.options.end || 8;
-  this.frame = this.options.frame || 1;
+	this.begin = this.options.begin || 1;
+	this.delay = this.options.delay || 150;
+	this.end = this.options.end || 8;
+	this.frame = this.options.frame || 1;
 
-  // override options with data-* properties
-  this.begin = ($(element).is('[data-begin]')) ? parseInt($(element).attr('data-begin'), 10) : this.begin;
+	// override options with data-* properties
+	this.begin = ($(element).is('[data-begin]')) ? parseInt($(element).attr('data-begin'), 10) : this.begin;
 	this.delay = ($(element).is('[data-delay]')) ? parseFloat($(element).attr('data-delay')) : this.delay;
 	this.end = ($(element).is('[data-end]')) ? parseInt($(element).attr('data-end'), 10) : this.end;
 	this.frame = ($(element).is('[data-frame]')) ? parseInt($(element).attr('data-frame'), 10) : this.begin;
 
 	this.isIElt9 = false;
-  if (this.ieVer !== false && this.ieVer < 9) {
+	if (this.ieVer !== false && this.ieVer < 9) {
 		this.$element.addClass('iefix');
 		this.isIElt9 = true;
 	}
 
-  this.elements = {
-    wrapper: $(element)
-  };
+	this.elements = {
+		wrapper: $(element)
+	};
 
-  this.__constructor(this.options);
+	this.__constructor(this.options);
 };
 
 Lib.extend(Loader.prototype, LoaderCore, {
-  onInitialized () {
-    this.render();
-  },
+	onInitialized () {
+		this.render();
+	},
 
-  ieRepaint: function () {
-    if (this.isIElt9) {
-      this.$element.addClass('iefix_repaint').removeClass('iefix_repaint');
-    }
-  },
+	ieRepaint: function () {
+		if (this.isIElt9) {
+			this.$element.addClass('iefix_repaint').removeClass('iefix_repaint');
+		}
+	},
 
-  msieVersion: function () {
-    const ua = window.navigator.userAgent;
-    const msie = ua.indexOf('MSIE ');
+	msieVersion: function () {
+		const ua = window.navigator.userAgent;
+		const msie = ua.indexOf('MSIE ');
 
-    if (msie > 0) {
-      return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-    }
-    return false;
-  },
+		if (msie > 0) {
+			return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+		}
+		return false;
+	},
 
-  render () {
-    this.elements.wrapper.empty();
+	render () {
+		this.elements.wrapper.empty();
 		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-    this.play();
-  },
+		this.play();
+	},
 
-  play () {
-    const self = this;
+	play () {
+		const self = this;
 		clearTimeout(this.timeout);
 
-    this.timeout = setTimeout(function () {
-      self.next();
-      self.play();
-    }, this.delay);
-  },
+		this.timeout = setTimeout(function () {
+			self.next();
+			self.play();
+		}, this.delay);
+	},
 
-  next () {
-    this.frame++;
+	next () {
+		this.frame++;
 
 		if (this.frame > this.end) {
 			this.frame = this.begin;
 		}
 
 		this.elements.wrapper.attr('data-frame', this.frame + '');
-    this.ieRepaint();
-  },
-
-  pause: function () {
-			clearTimeout(this.timeout);
+		this.ieRepaint();
 	},
 
-  reset: function () {
-    this.frame = this.options.frame;
-  },
+	pause: function () {
+		clearTimeout(this.timeout);
+	},
 
-  destroy () {
-      // clear timeout
-      this.pause();
+	reset: function () {
+		this.frame = this.options.frame;
+	},
 
-      $(this.elements.wrapper).remove();
-  }
+	destroy () {
+		// clear timeout
+		this.pause();
+
+		$(this.elements.wrapper).remove();
+	}
 
 });
 
