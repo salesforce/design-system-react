@@ -23,7 +23,7 @@ const Base = {
 
 		if (this.setState) {
 			this.__setState = this.setState;
-			this.__setState(this._state);
+			this.setState(this._state, callback);
 		}
 	},
 

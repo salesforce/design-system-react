@@ -13,7 +13,8 @@ module.exports = function (grunt) {
 				files: {
 					'examples/jquery/examples.js': 'src/jquery/examples.js',
 					'examples/marionette/examples.js': 'src/marionette/examples.js',
-					'examples/react/examples.js': 'src/react/examples.js'
+					'examples/react/examples.js': 'src/react/examples.js',
+					"examples/react/tree-examples.js": "src/react/tree-examples.js"
 				}
 			},
 			tests: {
