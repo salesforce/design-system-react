@@ -1,12 +1,15 @@
 
+import * as Lib from '../../src/core/lib';
+
 var chai = require('chai');
 var assert = chai.assert;
+var expect = chai.expect;
 
-describe('FuelUX Facade basic trait tests', function () {
-    var disableable = require('../../src/traits/disableable');
-    var selectable = require('../../src/traits/selectable');
-    // create a new selectable object, and then add a _collection member to it
-    // so we can test the selection options.
+describe('FuelUX Facade basic selectable trait tests', function () {
+    var selectable = Lib.extend({}, require('../../src/core/base'), require('../../src/traits/selectable'));
+
+    selectable._state = {};
+    selectable.trigger = $.noop;
     selectable._collection = [{
         title: 'Slaughterhouse Five',
         author: 'Kurt Vonnegut'
@@ -18,10 +21,6 @@ describe('FuelUX Facade basic trait tests', function () {
         author: 'Jack Kerouac'
     }];
 
-    it('can require disableable, and it is defined', function () {
-        assert.equal(!!disableable, true);
-    });
-
     it('can require selectable, and it is defined', function () {
         assert.equal(!!selectable, true);
     });
@@ -29,7 +28,35 @@ describe('FuelUX Facade basic trait tests', function () {
     it('returns the proper item at a given index', function () {
         assert.ok(selectable._collection.every(function (item, index) {
             selectable.setSelectionByIndex(index);
-            return selectable.getSelection() === item;
+            return JSON.stringify(selectable.getSelection()) === JSON.stringify(item);
         }));
+    });
+
+});
+
+describe('FuelUX Facade basic disableable trait tests', function () {
+
+    var disableable = Lib.extend({}, require('../../src/core/base'), require('../../src/traits/disableable'));
+    // We have to monkey patch some members here to be able to test
+    disableable._state = {};
+    disableable.elements = {};
+    disableable.elements.wrapper = $('<div>');
+
+    it('can require disableable, and it is defined', function () {
+        assert.equal(!!disableable, true);
+    });
+
+    it('will have a state of disabled when a disableable object is initialized as disabled', function () {
+        disableable.__initializeDisableable({
+            disabled: true
+        });
+        expect(disableable.__getState('disabled')).to.equal(true);
+    });
+
+    it('will have a state of enabled when a disableable object is initialized as enabled', function () {
+        disableable.__initializeDisableable({
+            disabled: false
+        });
+        expect(disableable.__getState('disabled')).to.equal(false);
     });
 });
