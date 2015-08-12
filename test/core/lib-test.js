@@ -1,4 +1,4 @@
-import Lib from '../../src/core/lib';
+import * as Lib from '../../src/core/lib';
 var chai = require('chai');
 var assert = chai.assert;
 var $ = require('jquery');
