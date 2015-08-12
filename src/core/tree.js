@@ -3,9 +3,12 @@
 import * as Lib from './lib';
 import Base from './base';
 
+// Traits
+import Disableable from '../traits/disableable';
+
 export const CONTROL = 'tree';
 
-const TreeCore = Lib.extend({}, Base, {
+const TreeCore = Lib.extend({}, Base, Disableable, {
 	// CSS classes used within this control
 	_cssClasses: {
 		CONTROL: CONTROL
@@ -21,6 +24,28 @@ const TreeCore = Lib.extend({}, Base, {
 			itemSelect: false,
 			multiSelect: false
 		};
+	},
+	
+	accessors: {
+		getText (item) {
+			return Lib.getProp(item, 'text');
+		},
+		
+		getChildren (item) {
+			return Promise.resolve(Lib.getProp(item, 'children'));
+		},
+		
+		getType (item) {
+			return Lib.getProp(item, '_itemType');
+		},
+		
+		getIconClass (item) {
+			return Lib.getProp(item, '_iconClass');
+		},
+		
+		getExpandable (item) {
+			return !!Lib.getProp(item, '_isExpandable');
+		}
 	},
 
 	__retrieveData (folderInfo) {
@@ -124,18 +149,7 @@ const TreeCore = Lib.extend({}, Base, {
 		});
 
 		return selectedItems;
-	},
-	
-	enable () {
-		this.__setState({ disabled: false });
-		if (Lib.isFunction(this.onEnabled)) this.onEnabled();
-	},
-
-	disable () {
-		this.__setState({ disabled: true });
-		if (Lib.isFunction(this.onDisabled)) this.onDisabled();
 	}
-
 });
 
 export default TreeCore;
