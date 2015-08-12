@@ -5,6 +5,6 @@ module.exports = function(grunt) {
       return 'require(\'./' + file.substring(5) + '\');';
     });
 
-    grunt.file.write('test/tests.js', files.join('\n'));
+    grunt.file.write('test/tests.js', files.join('\n')+'\n');
   });
 };
