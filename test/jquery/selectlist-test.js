@@ -1,19 +1,19 @@
-var fs = require('fs');
-var $ = require('jquery');
+const fs = require('fs');
+const $ = require('jquery');
 window.$ = window.jQuery = $;
 
-var html = fs.readFileSync('test/jquery/markup/selectlist-markup.html', 'utf8');
-var chai = require('chai');
-var assert = chai.assert;
+let html = fs.readFileSync('test/compat/markup/selectlist-markup.html', 'utf8');
+const chai = require('chai');
+const assert = chai.assert;
 require('bootstrap');
 
 import Selectlist from '../../src/jquery/selectlist/selectlist';
 
 console.log('mocha');
 /* FOR DEV TESTING */
-//var html = require('text!dev.html!strip');
+// var html = require('text!dev.html!strip');
 html = $('<div><div id="mainSelectlist"></div></div>');
-var $testFixture = $('body #test-fixture');
+const $testFixture = $('body #test-fixture');
 $testFixture.append(html);
 
 const defaultOptions = {
@@ -30,12 +30,12 @@ const defaultOptions = {
 	]
 };
 
-describe("Fuel UX Selectlist - jQuery facade", function() {
-	after(function() {
+describe('Fuel UX Selectlist - jQuery facade', function () {
+	after(function () {
 		$testFixture.empty();
 	});
 
-	it("should be disablable and then re-enableable", function () {
+	it('should be disablable and then re-enableable', function () {
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), defaultOptions );
 		selectlist.disable();
 		assert.equal(selectlist.elements.wrapper.hasClass('disabled'), true, 'element disabled');
@@ -46,7 +46,7 @@ describe("Fuel UX Selectlist - jQuery facade", function() {
 		selectlist.elements.wrapper.empty();
 	});
 
-	it("should set the default selection", function() {
+	it('should set the default selection', function () {
 		const options = $.extend( defaultOptions, { selection: { id: 3 } } );
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), options );
 		const expectedItem = { id: 3, text: 'Buzz', value: '4'  };
@@ -56,7 +56,7 @@ describe("Fuel UX Selectlist - jQuery facade", function() {
 		selectlist.elements.wrapper.empty();
 	});
 
-	it("should select by value", function() {
+	it('should select by value', function () {
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), defaultOptions );
 		const selectingItem = { id: 1, text: 'Two', value: '2' };
 		selectlist.setSelection( { value: '2' } );
@@ -66,7 +66,7 @@ describe("Fuel UX Selectlist - jQuery facade", function() {
 		selectlist.elements.wrapper.empty();
 	});
 
-	it("should select by value with whitespace", function() {
+	it('should select by value with whitespace', function () {
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), defaultOptions );
 		const selectingItem = { id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  };
 		selectlist.setSelection( { value: 'Item Five' } );
@@ -74,9 +74,9 @@ describe("Fuel UX Selectlist - jQuery facade", function() {
 		assert.deepEqual( selectlist.getSelection(), selectingItem, 'selected by value with whitespace' );
 
 		selectlist.elements.wrapper.empty();
-	})
+	});
 
-	it("should select by text", function() {
+	it('should select by text', function () {
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), defaultOptions );
 		const selectingItem = { id: 2, text: 'Three', value: '3'  };
 		selectlist.setSelection( { text: 'Three' } );
@@ -86,7 +86,7 @@ describe("Fuel UX Selectlist - jQuery facade", function() {
 		selectlist.elements.wrapper.empty();
 	});
 
-	it("should select by text with whitespace", function() {
+	it('should select by text with whitespace', function () {
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), defaultOptions );
 		const selectingItem = { id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  };
 		selectlist.setSelection( { text: 'Item Five' } );
@@ -96,7 +96,7 @@ describe("Fuel UX Selectlist - jQuery facade", function() {
 		selectlist.elements.wrapper.empty();
 	});
 
-	it("should select by index", function() {
+	it('should select by index', function () {
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), defaultOptions );
 		const selectingItem = { id: 3, text: 'Buzz', value: '4'  };
 		selectlist.setSelectionByIndex( 6 );
@@ -106,7 +106,7 @@ describe("Fuel UX Selectlist - jQuery facade", function() {
 		selectlist.elements.wrapper.empty();
 	});
 
-	it("should select by any arbitrary property on an item", function() {
+	it('should select by any arbitrary property on an item', function () {
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), defaultOptions );
 		const selectingItem = { id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  };
 		selectlist.setSelection( { fizz: 'buzz' } );
@@ -116,14 +116,14 @@ describe("Fuel UX Selectlist - jQuery facade", function() {
 		selectlist.elements.wrapper.empty();
 	});
 
-	it("should fire change event", function () {
+	it('should fire change event', function () {
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), defaultOptions );
 		const selectingItem = { id: 0, text: 'One', value: '1' };
 		let eventFired = false;
 		let selectedText;
 		let selectedValue;
 
-		selectlist.elements.wrapper.on( 'changed.fu.selectlist', function( $event, data ) {
+		selectlist.elements.wrapper.on( 'changed.fu.selectlist', function ( $event, data ) {
 			eventFired = true;
 			selectedText = data.text;
 			selectedValue = data.value;
@@ -139,11 +139,11 @@ describe("Fuel UX Selectlist - jQuery facade", function() {
 		selectlist.elements.wrapper.empty();
 	});
 
-	it("should not fire changed event on disabled items", function () {
+	it('should not fire changed event on disabled items', function () {
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), defaultOptions );
 		let eventFired = false;
 
-		selectlist.elements.wrapper.on( 'changed.fu.selectlist', function( $event, data ) {
+		selectlist.elements.wrapper.on('changed.fu.selectlist', function (/* $event, data */) {
 			eventFired = true;
 		});
 
@@ -155,10 +155,10 @@ describe("Fuel UX Selectlist - jQuery facade", function() {
 		selectlist.elements.wrapper.empty();
 	});
 
-	it("should destroy control", function () {
+	it('should destroy control', function () {
 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), defaultOptions );
 
-		assert.equal( typeof( selectlist.destroy() ) , 'string', 'returns string (markup)');
+		assert.equal( typeof( selectlist.destroy() ), 'string', 'returns string (markup)');
 		assert.equal( $( html ).find( '#mainSelectlist' ).length, 0, 'control has been removed from DOM');
 	});
 });
