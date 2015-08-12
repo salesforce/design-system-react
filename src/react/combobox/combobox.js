@@ -6,7 +6,8 @@ import ComboboxCore from '../../core/combobox';
 
 // Framework specific
 import React from 'react';
-import ReactHelpers from '../helpers';
+import ReactHelpers from '../mixins/helpers';
+import selectable from '../mixins/selectable';
 
 // Third party
 import classNames from 'classnames';
@@ -14,7 +15,8 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from '../selectlist/selectlist-item';
 
-const Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
+const Combobox = React.createClass(Lib.extend({}, ComboboxCore, {
+	mixins: [ReactHelpers, selectable],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -82,9 +84,6 @@ const Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
 		};
 
 		this.__constructor(this.props);
-
-		if (Lib.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
-		if (Lib.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 	},
 
 	handleMenuItemSelected (selection) {

@@ -54,7 +54,7 @@ module.exports = function (grunt) {
 				tasks: ['eslint', 'browserify:examples']
 			},
 			tests: {
-				files: ['test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
+				files: ['src/**/*.*', 'test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
 				tasks: ['compileTests', 'browserify:tests']
 			}
 		},
