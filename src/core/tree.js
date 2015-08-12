@@ -24,12 +24,12 @@ const TreeCore = Lib.extend({}, Base, {
 	},
 
 	__retrieveData (folderInfo) {
-		var self = this;
+		const self = this;
 
 		this.dataSource(folderInfo ? folderInfo : {}, function (source) {
-			var currentNodesState = self.__getState('treeNodes');
-			var stateData = {};
-			var currentDeepItem;
+			const currentNodesState = self.__getState('treeNodes');
+			const stateData = {};
+			let currentDeepItem;
 
 			if (folderInfo) {
 				currentDeepItem = self.__findDeepItem(folderInfo._id);
@@ -66,9 +66,9 @@ const TreeCore = Lib.extend({}, Base, {
 	},
 
 	__findDeepItem (id) {
-		var deepTree = this.__getState('treeNodesDeep');
-		var find = (treeItems) => {
-			var foundItem;
+		const deepTree = this.__getState('treeNodesDeep');
+		const find = (treeItems) => {
+			let foundItem;
 
 			treeItems.forEach((treeItem) => {
 				if (foundItem) return;
@@ -114,8 +114,8 @@ const TreeCore = Lib.extend({}, Base, {
 	},
 
 	getSelectedItems () {
-		var allItems = this.__getState('treeNodes');
-		var selectedItems = [];
+		const allItems = this.__getState('treeNodes');
+		const selectedItems = [];
 
 		allItems.forEach((selectedItem) => {
 			if (selectedItem._state.selected) {

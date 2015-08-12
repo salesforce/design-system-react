@@ -7,16 +7,16 @@ import SelectlistCore from '../../core/selectlist';
 // Framework specific
 import React from 'react';
 import ReactHelpers from '../mixins/helpers';
-import selectable from '../mixins/selectable';
-import Events from '../events';
+import Events from '../mixins/events';
+
 // Third party
 import classNames from 'classnames';
 
 // Children
 import SelectlistItem from './selectlist-item';
 
-const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, Events, {
-	mixins: [ReactHelpers, selectable],
+const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
+	mixins: [ReactHelpers, Events],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([

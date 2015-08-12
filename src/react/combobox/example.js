@@ -55,7 +55,7 @@ export default function (element) {
 				const self = this;
 				const model = this.props.models[key];
 
-				model.onSelected = this.getSelectionHandler(model);
+				model.onChanged = this.getSelectionHandler(model);
 				model.ref = key;
 
 				comboboxen.push(

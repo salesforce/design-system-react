@@ -2,11 +2,10 @@
 
 // Core
 import * as Lib from '../../core/lib';
-// import TreeCore, {CONTROL} from '../../core/tree';
-import Base from '../../core/base';
+import TreeCore, {CONTROL} from '../../core/tree';
 
 // Framework Specific
-// import createPlugin from '../createPlugin';
+import createPlugin from '../createPlugin';
 import Events from '../events';
 
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
@@ -44,13 +43,11 @@ const Tree = function Tree (element, options) {
 	this.__constructor(this.options);
 };
 
-Lib.extend(Tree.prototype, Base, Events, {
+Lib.extend(Tree.prototype, TreeCore, Events, {
 	onInitialized () {
 		if (!this.rendered) {
 			this.render();
 		}
-
-		// this.elements.wrapper.on('click.fu.tree');
 	},
 
 	render () {
@@ -110,12 +107,14 @@ Lib.extend(Tree.prototype, Base, Events, {
 	},
 
 	getExpandable ( item ) {
-		return ( item.children && item.children.length > 0 );
+		return ( this.getType( item ) === 'folder' );
 	},
 
 	getChildren ( item ) {
 		return item.children || [];
 	}
 });
+
+createPlugin(CONTROL, Tree);
 
 export default Tree;

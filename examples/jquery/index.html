@@ -3,7 +3,7 @@
 	<head>
 		<meta charset=utf-8/>
 
-		<title>jQuery Selectlist</title>
+		<title>jQuery</title>
 
 		<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="/fuelux/dist/css/fuelux.min.css" rel="stylesheet">
@@ -42,13 +42,14 @@
 			</div>
 		</header>
 
+		<!-- Selectlist -->
 		<section class="example-group fuelux">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
 						<section id="selectlist">
 							<section class="declarative example-group">
-								<h1>Declarative Example (backwards compatible)</h1>
+								<h1>Selectlist Declarative Example (backwards compatible)</h1>
 
 								<div class="example">
 									<div class="btn-group selectlist" id="mySelectlist1" data-initialize="selectlist" data-resize="auto">
@@ -91,12 +92,12 @@
 							</section>
 
 							<section class="imperative example-group">
-								<h1>Imperative Example (mostly backwards compatible)</h1>
+								<h1>Selectlist Imperative Example (mostly backwards compatible)</h1>
 
 								<div class="example">
 									<div id="mySelectlist2"></div>
 								</div>
-					
+
 								<div class="btn-panel action">
 									<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item/value</button>
 									<button type="button" class="btn btn-default btnSelectlistSelectByIndex">set by element index (zero-based) ('1')</button>
@@ -108,12 +109,12 @@
 							</section>
 
 							<section class="new-api example-group">
-								<h1>New API Example</h1>
+								<h1>Selectlist New API Example</h1>
 
 								<div class="example">
 									<div id="mySelectlist3"></div>
 								</div>
-					
+
 								<div class="btn-panel action">
 									<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item/value</button>
 									<button type="button" class="btn btn-default btnSelectlistSelectByIndex">set by element index (zero-based) (1)</button>
@@ -123,14 +124,60 @@
 								</div>
 							</section>
 						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Selectlist -->
 
-						<section>
-							<div id="tree"></div>
+		<!-- Loader -->
+		<section class="example-group fuelux">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+
+						<section class="declarative">
+							<h1>Loader Declarative Example (backwards compatible)</h1>
+
+							<div class="example">
+								<div class="loader-data-attrs" data-initialize="loader" data-frame="1" data-delay="500" data-begin="3" data-end="6"></div>
+							</div>
+
+						</section>
+
+						<section class="imperative">
+							<h1>Loader Imperative Example (mostly backwards compatible)</h1>
+
+							<div class="example">
+								<div class="loader1"></div>
+								<div class="loader2"></div>
+								<div class="loader3"></div>
+								<div class="loader4"></div>
+							</div>
+
+						</section>
+						<section class="new-api">
+							<h1>Loader New API Example</h1>
+
+							<div class="example">
+								<div class="loader1"></div>
+								<div class="loader2"></div>
+								<div class="loader3"></div>
+								<div class="loader4"></div>
+							</div>
+
 						</section>
 					</div>
 				</div>
 			</div>
 		</section>
+		<!-- End Loader -->
+
+		<!-- Begin Tree -->
+		<section>
+			<div id="tree"></div>
+		</section>
+		<!-- End Tree -->
 
 		<!-- Because these controls are meant to play nice with old FuelUX we're still including Bootstrap js on the page for now -->
 		<script src="/jquery/dist/jquery.min.js"></script>
