@@ -39,7 +39,7 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
 	menuItems () {
 		return this.props.collection.map((menuItem, index) => {
 			return (
-				<SelectlistItem key={Lib.getProp(menuItem, 'id')} key={index} item={menuItem} onSelected={this.handleMenuItemSelected} />
+				<SelectlistItem key={index} item={menuItem} onSelected={this.handleMenuItemSelected} />
 			);
 		});
 	},
