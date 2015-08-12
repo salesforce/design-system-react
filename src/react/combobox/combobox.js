@@ -7,7 +7,6 @@ import ComboboxCore from '../../core/combobox';
 // Framework specific
 import React from 'react';
 import ReactHelpers from '../mixins/helpers';
-import selectable from '../mixins/selectable';
 
 // Third party
 import classNames from 'classnames';
@@ -16,7 +15,7 @@ import classNames from 'classnames';
 import SelectlistItem from '../selectlist/selectlist-item';
 
 const Combobox = React.createClass(Lib.extend({}, ComboboxCore, {
-	mixins: [ReactHelpers, selectable],
+	mixins: [ReactHelpers],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
