@@ -11,6 +11,8 @@ const createPlugin = function (name, Constructor, legacyMethods) {
 	const old = $.fn[name];
 	const namespaced = ['fu', name].join('.');
 	const initializeSelector = ['[data-initialize=', name, ']'].join('');
+	
+	Constructor.prototype.eventSuffix = namespaced;
 
 	$.fn[name] = function (option) {
 		const args = Array.prototype.slice.call(arguments, 1);

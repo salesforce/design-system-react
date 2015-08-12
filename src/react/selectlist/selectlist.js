@@ -6,6 +6,7 @@ import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
+import Events from '../events';
 import ReactHelpers from '../helpers';
 
 // Third party
@@ -14,7 +15,7 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from './selectlist-item';
 
-const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, {
+const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, Events, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -82,6 +83,7 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers
 
 		this.__constructor(this.props);
 
+		// TO-DO: Maybe get rid of these now that we have an event framework that is similar?
 		if (Lib.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
 		if (Lib.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 	},
