@@ -1,29 +1,48 @@
 // SELECTLIST CONTROL - Marionette FACADE
 
 // Core
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import _ from 'underscore';
 import Backbone from 'backbone';
+import Marionette from 'backbone.marionette';
 import classNames from 'classnames';
-
-// Children
-import SelectlistItem from './selectlist-item';
 
 // Template imports
 const fs = require('fs');
+const selectlistTemplate = _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 
-const Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
+const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 	className () {
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP);
 	},
 
-	template: _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8')),
+	template: selectlistTemplate,
+	
+	serializeData () {
+		var attrs;
+		
+		if (!this.model && !this.collection) {
+			return {};
+		}
+		
+		attrs = this.model ? this.serializeModel(this.model) : {};
+		
+		if (attrs.selection && Lib.isFunction(attrs.selection.toJSON)) {
+			attrs.selection = attrs.selection.toJSON();
+		}
+		
+		attrs.items = this.serializeCollection(this.collection);
+		attrs._classNames = classNames;
+		
+		return attrs;
+	},
 
 	events: {
-		'keypress': 'handleKeyPress'
+		'keypress': 'handleKeyPress',
+		'click a': 'handleMenuItemSelected'
 	},
 
 	setState (values) {
@@ -37,8 +56,6 @@ const Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 	assumeFocus: false,
 
 	initialize (options) {
-		_.bindAll(this, 'setState', 'getState', 'render', 'renderMenuItems', 'handleMenuItemSelected', 'handleKeyPress');
-
 		const self = this;
 
 		this.elements = {
@@ -55,68 +72,23 @@ const Selectlist = Backbone.View.extend(Lib.extend({}, SelectlistCore, {
 
 		// Put this after the constructor so that we don't call render during initialization
 		this.listenTo(this.model, 'change', this.render);
-
-		// Only update the children when the collection has changed
-		this.listenTo(this._collection, 'all', function () {
-			_.each(self._renderedMenuItems, function (menuItem) {
-				menuItem.remove();
-			});
-
-			self._renderedMenuItems = null;
-
-			self.render();
-		});
 	},
-
-	render () {
-		const attrs = this.model.toJSON();
-		if (attrs.selection) {
-			attrs.selection = attrs.selection.toJSON();
-		}
-
-		this.$el.html(this.template(attrs));
-
-		this.renderMenuItems();
-
+	
+	onRender () {
 		if (this.assumeFocus) {
 			this.$el.find('button').focus();
 			this.assumeFocus = false;
 		}
-
-		return this;
 	},
 
-	renderMenuItems () {
-		const $menu = this.$('ul.dropdown-menu');
-
-		const handleMenuItemSelected = this.handleMenuItemSelected;
-
-		if (!this._renderedMenuItems) {
-			this._renderedMenuItems = this._collection.map(function (item) {
-				const menuItem = new SelectlistItem({
-					model: item,
-					onSelected: handleMenuItemSelected
-				});
-
-				menuItem.render();
-
-				return menuItem;
-			});
-		}
-
-		_.each(this._renderedMenuItems, function (menuItem) {
-			$menu.append(menuItem.el);
-			menuItem.delegateEvents();
-		});
-	},
-
-	handleMenuItemSelected (selection) {
-		this.setSelection(selection);
+	handleMenuItemSelected (e) {
+		var id = $(e.currentTarget).data('id');
+		this.setSelection({ id: id });
 	},
 
 	handleKeyPress (e) {
 		const key = e.which;
-
+		
 		this.assumeFocus = true;
 
 		if (key) this.__jumpToLetter(key);

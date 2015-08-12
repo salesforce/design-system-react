@@ -1,20 +1,21 @@
 // SELECTLIST CONTROL - REACT FACADE
 
 // Core
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
 import ReactHelpers from '../mixins/helpers';
 import selectable from '../mixins/selectable';
+import Events from '../events';
 // Third party
 import classNames from 'classnames';
 
 // Children
 import SelectlistItem from './selectlist-item';
 
-const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
+const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, Events, {
 	mixins: [ReactHelpers, selectable],
 	propTypes: {
 		disabled: React.PropTypes.bool,
