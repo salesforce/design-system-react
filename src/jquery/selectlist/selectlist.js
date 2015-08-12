@@ -1,11 +1,12 @@
 // SELECTLIST CONTROL - JQUERY FACADE
 
 // Core
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 import SelectlistCore, {CONTROL} from '../../core/selectlist';
 
 // Framework specific
 import createPlugin from '../createPlugin';
+import Events from '../events';
 // TO-DO: This might not work with require, need to confirm that it does
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
@@ -31,7 +32,7 @@ const Selectlist = function Selectlist (element, options) {
 	this.__constructor(this.options);
 };
 
-Lib.extend(Selectlist.prototype, SelectlistCore, {
+Lib.extend(Selectlist.prototype, SelectlistCore, Events, {
 	__initElements (base, elements) {
 		const els = elements || {};
 
@@ -93,7 +94,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		const selection = this.getSelection();
 		const width = this.__getState('width');
 		const disabled = !!this.__getState('disabled');
-		const selectionName = Lib.getProp(selection, 'name') || 'None selected'; // TO-DO: don't hardcode this here
+		const selectionName = Lib.getProp(selection, 'text') || 'None selected'; // TO-DO: don't hardcode this here
 		const selectionString = selection ? JSON.stringify(selection) : '';
 		const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 		const elements = this.__initElements($html, this.elements);
@@ -110,17 +111,17 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		// Building the menu items
 		this._collection.forEach(function buildMenuItems (item) {
 			let $li;
-			switch (item._itemType) {
-			case 'header':
-				$li = self.renderHeader(item);
-				break;
-			case 'divider':
-				$li = self.renderDivider(item);
-				break;
-			case 'item':
-			default:
-				$li = self.renderItem(item);
-			}
+			let func;
+			const funcMap = {
+				header: 'renderHeader',
+				divider: 'renderDivider',
+				item: 'renderItem'
+			};
+
+			func = funcMap[ item._itemType ] || 'renderItem';
+
+			$li = self[ func ].call( self, item );
+
 			elements.dropdownMenu.append($li);
 		});
 
@@ -176,8 +177,6 @@ Lib.extend(Selectlist.prototype, SelectlistCore, {
 		// TO-DO: clearly this isn't the best way to reset the text to "None selected"
 		this.elements.hiddenField.val(JSON.stringify(data) || '');
 		this.elements.label.text(Lib.getProp(data, 'text') || 'None selected');
-
-		this.elements.wrapper.trigger('changed.fu.selectlist', data);
 	},
 
 	onEnabled () {
@@ -252,8 +251,9 @@ const legacyMethods = {
 	},
 
 	selectByText (text) {
-		// TO-DO: Did this for the test. Was the original really case-insensitive??
-		return this.setSelection({ text: new RegExp(text, 'i') });
+		return this.setSelection(function (item) {
+			return item && Lib.isString(item.text) && Lib.isString(text) && item.text.toLowerCase() === text.toLowerCase();
+		});
 	},
 
 	selectBySelector (selector) {

@@ -1,4 +1,4 @@
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 import Selectlist from './selectlist';
 
 // TO-DO: This might not work with require, need to confirm that it does
@@ -90,7 +90,8 @@ $(function () {
 
 	const selectlist3 = new Selectlist($('#mySelectlist3'), {
 		collection: collection,
-		resize: 'auto'
+		resize: 'auto',
+		selection: { value: '4' }
 	});
 
 	// sample method buttons
