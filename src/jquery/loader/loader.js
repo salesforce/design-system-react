@@ -1,7 +1,7 @@
 // LOADER CONTROL - JQUERY FACADE
 
 // Core
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 import LoaderCore, {CONTROL} from '../../core/loader';
 
 // Framework specific
@@ -11,44 +11,32 @@ const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.globa
 
 const Loader = function Loader (element, options) {
 	this.options = $.extend({}, options);
-
-	this.begin = this.options.begin || 1;
-	this.delay = this.options.delay || 150;
-	this.end = this.options.end || 8;
-	this.frame = this.options.frame || 1;
-
-	// override options with data-* properties
-	this.begin = ($(element).is('[data-begin]')) ? parseInt($(element).attr('data-begin'), 10) : this.begin;
-	this.delay = ($(element).is('[data-delay]')) ? parseFloat($(element).attr('data-delay')) : this.delay;
-	this.end = ($(element).is('[data-end]')) ? parseInt($(element).attr('data-end'), 10) : this.end;
-	this.frame = ($(element).is('[data-frame]')) ? parseInt($(element).attr('data-frame'), 10) : this.begin;
-
-	this.isIElt9 = false;
-	if (this.ieVer !== false && this.ieVer < 9) {
-		this.$element.addClass('iefix');
-		this.isIElt9 = true;
-	}
-
 	this.elements = {
 		wrapper: $(element)
 	};
 
+	this.isIElt9 = false;
+	if (this.ieVer !== false && this.ieVer < 9) {
+		this.elements.wrapper.addClass('iefix');
+		this.isIElt9 = true;
+	}
+	
 	this.__constructor(this.options);
 };
 
-Lib.extend(Loader.prototype, LoaderCore, {
+const methods = {
 	onInitialized () {
 		this.render();
 	},
 
-	ieRepaint: function () {
+	ieRepaint () {
 		if (this.isIElt9) {
-			this.$element.addClass('iefix_repaint').removeClass('iefix_repaint');
+			this.elements.wrapper.addClass('iefix_repaint').removeClass('iefix_repaint');
 		}
 	},
 
-	msieVersion: function () {
-		const ua = window.navigator.userAgent;
+	msieVersion () {
+		const ua = Lib.global.navigator.userAgent;
 		const msie = ua.indexOf('MSIE ');
 
 		if (msie > 0) {
@@ -60,46 +48,59 @@ Lib.extend(Loader.prototype, LoaderCore, {
 	render () {
 		this.elements.wrapper.empty();
 		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-		this.play();
+		this._play();
 	},
 
-	play () {
+	_play () {
 		const self = this;
-		clearTimeout(this.timeout);
+		clearTimeout(this._timeout);
 
-		this.timeout = setTimeout(function () {
-			self.next();
-			self.play();
+		this._timeout = setTimeout(function () {
+			self._next();
+			self._play();
 		}, this.delay);
 	},
 
-	next () {
-		this.frame++;
+	_next () {
+		var frame = this.__getState('frame');
+		
+		frame++;
 
-		if (this.frame > this.end) {
-			this.frame = this.begin;
+		if (frame > this.__getState('end')) {
+			frame = this.__getState('begin');
 		}
 
-		this.elements.wrapper.attr('data-frame', this.frame + '');
+		this.__setState({ frame });
+
+		this.elements.wrapper.attr('data-frame', frame + '');
 		this.ieRepaint();
 	},
 
-	pause: function () {
-		clearTimeout(this.timeout);
+	_pause () {
+		clearTimeout(this._timeout);
 	},
 
-	reset: function () {
-		this.frame = this.options.frame;
+	_reset () {
+		this.__setState({ frame: this.__getState('begin') });
 	},
 
 	destroy () {
 		// clear timeout
-		this.pause();
+		this._pause();
 
-		$(this.elements.wrapper).remove();
+		this.elements.wrapper.remove();
 	}
+};
 
-});
+Lib.extend(Loader.prototype, LoaderCore, methods);
 
-createPlugin(CONTROL, Loader);
+const legacyMethods = {
+	play: methods._play,
+	next: methods._next,
+	pause: methods._pause,
+	reset: methods._reset
+};
+
+createPlugin(CONTROL, Loader, legacyMethods);
+
 export default Loader;

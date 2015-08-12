@@ -90,7 +90,8 @@ $(function () {
 
 	const selectlist3 = new Selectlist($('#mySelectlist3'), {
 		collection: collection,
-		resize: 'auto'
+		resize: 'auto',
+		selection: { value: '4' }
 	});
 
 	// sample method buttons
