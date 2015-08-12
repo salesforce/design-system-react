@@ -22,8 +22,21 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 			dataSource: null,
 			folderSelect: false,
 			itemSelect: false,
-			multiSelect: false
+			multiSelect: false,
+			itemStates: {}
 		};
+	},
+
+	__initializeOptions (options) {
+		if (options && options.collection) {
+			this._collection = options.collection;
+		} else if (this.collection) {
+			this._collection = this.collection;
+		} else if (!this._collection) {
+			this._collection = [];
+		}
+
+		this.__initializeDisableable(options);
 	},
 	
 	accessors: {
@@ -45,6 +58,22 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		
 		getExpandable (item) {
 			return !!Lib.getProp(item, '_isExpandable');
+		},
+		
+		getItemState (item) {
+			const id = Lib.getProp(item, 'id');
+			const itemStates = self.__getState('itemStates');
+			
+			if (!id) {
+				throw "A unique id is required!";
+			}
+			
+			return itemState = itemStates[id] || {
+					selected: false,
+					open: false,
+					loading: false,
+					item: item
+				};
 		}
 	},
 
@@ -111,40 +140,27 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		return find(deepTree);
 	},
 
-	__toggleItem (item) {
-		item._state.selected = !item._state.selected;
-
+	__selectItem (item) {
+		var itemState = getItemState(item);
+		
+		itemState.selected = true;
 		this.__setState(this._state);
 	},
 
-	__selectFolder (folder) {
-		if (Lib.isFunction(this.selectFolder)) {
-			if (this.options.folderSelect) {
-				this.__setState({ selectedItems: folder });
-				this.selectFolder(folder);
-			} else {
-				this.selectFolder(folder);
-			}
-		}
-	},
-
 	__toggleFolder (folder) {
-		folder._state.open = !folder._state.open;
-
-		if (folder._state.populated) {
-			this.__setState(this._state);
-		} else {
-			this.__retrieveData(folder);
-		}
+		var itemState = getItemState(folder);
+		
+		itemState.open = !itemState.open;
+		this.__setState(this._state);
 	},
 
 	getSelectedItems () {
-		var allItems = this.__getState('treeNodes');
-		var selectedItems = [];
-
-		allItems.forEach((selectedItem) => {
-			if (selectedItem._state.selected) {
-				selectedItems.push(selectedItem);
+		const itemStates = this.__getState('itemStates');
+		let selectedItems = [];
+		
+		itemStates.forEach((itemState) => {
+			if (itemState.selected) {
+				selectedItems.push(itemState.item);
 			}
 		});
 
