@@ -11,9 +11,6 @@ const exampleOptions = [
 ];
 
 $(function () {
-	// Declarative
-	const loaderDataAttrs = $('.declarative .loader-data-attrs').loader();
-
 	// Imperative
 	$('.imperative .loader1').loader();
 	$('.imperative .loader2').loader(exampleOptions[0]);
@@ -30,5 +27,4 @@ $(function () {
 	void(loader2);
 	void(loader3);
 	void(loader4);
-	void(loaderDataAttrs);
 });
