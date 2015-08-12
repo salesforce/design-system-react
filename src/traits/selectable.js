@@ -24,6 +24,9 @@ const Selectable = {
 			if (Lib.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
 			this.__setState({ selection: newSelection });
 			if (Lib.isFunction(this.onSelected)) this.onSelected(newSelection);
+			
+			// Trigger the event using facade-native methods
+			this.trigger('changed', newSelection);
 		}
 	},
 
