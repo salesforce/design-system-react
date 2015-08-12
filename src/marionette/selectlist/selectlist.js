@@ -66,7 +66,7 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 			}
 		};
 
-		this.model = this.model || new Backbone.Model(this.__getInitialState());
+		this.model = this.model || new Backbone.Model();
 
 		this.__constructor(options);
 
