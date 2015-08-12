@@ -7,7 +7,7 @@ var chai = require('chai');
 var assert = chai.assert;
 require('bootstrap');
 require('../../src/jquery/selectlist/selectlist');
-console.log('mocha');
+
 /* FOR DEV TESTING */
 //var html = require('text!dev.html!strip');
 html = $('<div>'+html+'</div>');

@@ -1,20 +1,22 @@
 // SELECTLIST CONTROL - REACT FACADE
 
 // Core
-import Lib from '../../core/lib';
+import * as Lib from '../../core/lib';
 import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
-import ReactHelpers from '../helpers';
-
+import ReactHelpers from '../mixins/helpers';
+import selectable from '../mixins/selectable';
+import Events from '../events';
 // Third party
 import classNames from 'classnames';
 
 // Children
 import SelectlistItem from './selectlist-item';
 
-const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers, {
+const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, Events, {
+	mixins: [ReactHelpers, selectable],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -51,7 +53,7 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers
 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
-				<button className="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
+				<button className={classNames('btn btn-default dropdown-toggle', {disabled: this.state.disabled})} data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
 					<span className="selected-label">{Lib.getProp(selection, 'text') || 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
@@ -81,9 +83,6 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, ReactHelpers
 		};
 
 		this.__constructor(this.props);
-
-		if (Lib.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
-		if (Lib.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
 	},
 
 	handleMenuItemSelected (selection) {

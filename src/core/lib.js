@@ -1,121 +1,125 @@
-export default class Lib {
-	static get version () {
-		return '__VERSION__';
-	}
+export const version = '__VERSION__';
 
-	// DOM
-	static hasClass (element, className) {
-		return (element.className.match(new RegExp('\\b' + className + '\\b')) !== null);
-	}
-
-	// Browser
-	static log () {
-		if (Lib.global.console && Lib.global.console.log) {
-			console.log(...arguments);
-		}
-	}
-
-	static get global () {
-		return (typeof self === 'object' && self.self === self && self) ||
+export const global = (typeof self === 'object' && self.self === self && self) ||
 			(typeof global === 'object' && global.global === global && global);
+
+// DOM
+export function hasClass (element, className) {
+	return (element.className.match(new RegExp('\\b' + className + '\\b')) !== null);
+}
+
+// Browser
+export function log () {
+	if (global.console && global.console.log) {
+		console.log(...arguments);
+	}
+}
+
+// Type Helpers
+export function isFunction (potentialFunction) {
+	return typeof potentialFunction === 'function';
+}
+
+export function isNumber (potentialNumber) {
+	return toString.call(potentialNumber) === '[object Number]';
+}
+
+export function isString (potentialString) {
+	return toString.call(potentialString) === '[object String]';
+}
+
+export function isRegExp (potentialRegExp) {
+	return toString.call(potentialRegExp) === '[object RegExp]';
+}
+
+export function isObject (potentialObject) {
+	return isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
+}
+
+// Model Helpers
+export function getProp (obj, prop) {
+	if (!obj) {
+		return undefined;
 	}
 
-	// Type Helpers
-	static isFunction (potentialFunction) {
-		return typeof potentialFunction === 'function';
+	if (isFunction(obj.get)) {
+		return obj.get(prop);
 	}
 
-	static isNumber (potentialNumber) {
-		return toString.call(potentialNumber) === '[object Number]';
+	return obj[prop];
+}
+
+// Collection Helpers
+function _isRegexMatch (string, regex) {
+	if (!isRegExp(regex) || !isString(string)) {
+		return false;
 	}
 
-	static isString (potentialString) {
-		return toString.call(potentialString) === '[object String]';
+	return string.match(regex);
+}
+
+function _findMatch (collection, isMatch) {
+	let found;
+
+	if (!isFunction(isMatch)) {
+		return null;
 	}
 
-	static isRegExp (potentialRegExp) {
-		return toString.call(potentialRegExp) === '[object RegExp]';
-	}
-
-	static isObject (potentialObject) {
-		return Lib.isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
-	}
-
-	// Model Helpers
-	static getProp (obj, prop) {
-		if (!obj) {
-			return undefined;
+	collection.forEach(function (item) {
+		if (!found) {
+			if (isMatch(item)) {
+				found = item;
+			}
 		}
+	});
 
-		if (Lib.isFunction(obj.get)) {
-			return obj.get(prop);
-		}
+	return found || null;
+}
 
-		return obj[prop];
-	}
+export function findWhere (collection, criteria) {
+	const _criteria = (isObject(_criteria) && isFunction(_criteria.toJSON) && _criteria.toJSON()) || criteria;
+	let _isMatch;
 
-	// Collection Helpers
-	static findWhere (collection, criteria) {
-		let found;
-		let _criteria = criteria;
-
-		function isRegexMatch (string, regex) {
-			if (!Lib.isRegExp(regex) || !Lib.isString(string)) {
-				return false;
+	if (isObject(_criteria) && !isFunction(_criteria)) {
+		_isMatch = function (item) {
+			let match = true;
+			let innerItem = item;
+			
+			if (isFunction(innerItem.toJSON)) {
+				innerItem = innerItem.toJSON();
 			}
 
-			return string.match(regex);
-		}
-
-		if (!_criteria) {
-			return null;
-		}
-
-		if (Lib.isFunction(_criteria.toJSON)) {
-			_criteria = _criteria.toJSON();
-		}
-
-		if (Lib.isFunction(collection.findWhere)) {
-			found = collection.findWhere(_criteria);
-		} else {
-			collection.forEach(function (item) {
-				if (!found) {
-					let match = true;
-					const innerItem = item.attributes ? item.attributes : item;
-
-					Object.keys(_criteria).forEach(function (key) {
-						if (_criteria[key] !== innerItem[key] && !isRegexMatch(innerItem[key], _criteria[key])) {
-							match = false;
-						}
-					});
-
-					if (match) {
-						found = item;
-					}
+			Object.keys(_criteria).forEach(function (key) {
+				if (_criteria[key] !== innerItem[key] && !_isRegexMatch(innerItem[key], _criteria[key])) {
+					match = false;
 				}
 			});
-		}
 
-		return found || null;
+			return match;
+		};
+	} else {
+		_isMatch = _criteria;
 	}
+	
+	return _findMatch(collection, _isMatch);
+}
 
-	static extend (target) {
-		for (let i = 1; i < arguments.length; i++) {
-			const source = arguments[i];
+export function extend (target) {
+	for (let i = 1; i < arguments.length; i++) {
+		const source = arguments[i];
 
-			for (const key in source) {
-				if (Object.prototype.hasOwnProperty.call(source, key)) {
-					if (Object.prototype.hasOwnProperty.call(target, key) &&
-						target[key] && typeof target[key] === 'object' &&
-						source[key] && typeof source[key] === 'object') {
-						target[key] = Lib.extend({}, target[key], source[key]); // Combine objects
-					} else {
-						target[key] = source[key];
-					}
+		for (const key in source) {
+			if (Object.prototype.hasOwnProperty.call(source, key)) {
+				if (Object.prototype.hasOwnProperty.call(target, key) &&
+					target[key] && typeof target[key] === 'object' &&
+					source[key] && typeof source[key] === 'object') {
+					target[key] = extend({}, target[key], source[key]); // Combine objects
+				} else {
+					target[key] = source[key];
 				}
 			}
 		}
-
-		return target;
 	}
+
+	return target;
 }

@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 				},
 				files: {
 					'examples/jquery/examples.js': 'src/jquery/examples.js',
-					'examples/backbone/examples.js': 'src/backbone/examples.js',
+					'examples/marionette/examples.js': 'src/marionette/examples.js',
 					'examples/react/examples.js': 'src/react/examples.js'
 				}
 			},
@@ -43,15 +43,19 @@ module.exports = function (grunt) {
 			examples: {
 				files: {
 					'examples/jquery/examples.min.js': ['examples/jquery/examples.js'],
-					'examples/backbone/examples.min.js': ['examples/backbone/examples.js'],
+					'examples/marionette/examples.min.js': ['examples/marionette/examples.js'],
 					'examples/react/examples.min.js': ['examples/react/examples.js']
 				}
 			}
 		},
 		watch: {
-			scripts: {
-				files: ['src/**/*.*', 'test/**/*.*'],
-				tasks: ['eslint', 'browserify']
+			examples: {
+				files: ['src/**/*.*'],
+				tasks: ['eslint', 'browserify:examples']
+			},
+			tests: {
+				files: ['src/**/*.*', 'test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
+				tasks: ['compileTests', 'browserify:tests']
 			}
 		},
 		connect: {
@@ -78,6 +82,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-mocha');
 
 	grunt.registerTask('default', ['eslint', 'browserify']);
-	grunt.registerTask('serve', ['connect:server', 'eslint', 'browserify', 'compileTests', 'watch:scripts']);
-	grunt.registerTask('test', ['connect:server', 'browserify:tests', 'compileTests', 'mocha']);
+	grunt.registerTask('serve', ['connect:server', 'eslint', 'browserify:examples', 'watch:examples']);
+	grunt.registerTask('test', ['connect:server', 'compileTests', 'browserify:tests', 'mocha']);
 };
