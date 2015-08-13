@@ -6,6 +6,7 @@ import LoaderCore, {CONTROL} from '../../core/loader';
 
 // Framework specific
 import createPlugin from '../createPlugin';
+import State from '../state';
 
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
@@ -21,6 +22,7 @@ const Loader = function Loader (element, options) {
 		this.isIElt9 = true;
 	}
 
+	this.__initializeState();
 	this.__constructor(this.options);
 };
 
@@ -48,6 +50,7 @@ const methods = {
 	render () {
 		this.elements.wrapper.empty();
 		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
+		this.elements.wrapper.attr('data-frame', this.getState('frame') + '');
 		this._play();
 	},
 
@@ -58,19 +61,34 @@ const methods = {
 		this._timeout = setTimeout(function () {
 			self._next();
 			self._play();
-		}, this.__getState('delay'));
+		}, this.getState('delay'));
 	},
 
 	_next () {
-		let frame = this.__getState('frame');
+		let frame = this.getState('frame');
 
 		frame++;
 
-		if (frame > this.__getState('end')) {
-			frame = this.__getState('begin');
+		if (frame > this.getState('end')) {
+			frame = this.getState('begin');
 		}
 
-		this.__setState({ frame });
+		this.setState({ frame });
+
+		this.elements.wrapper.attr('data-frame', frame + '');
+		this.ieRepaint();
+	},
+
+	_previous: function () {
+		let frame = this.getState('frame');
+
+		frame--;
+
+		if (frame < this.getState('begin')) {
+			frame = this.getState('end');
+		}
+
+		this.setState({ frame });
 
 		this.elements.wrapper.attr('data-frame', frame + '');
 		this.ieRepaint();
@@ -81,7 +99,8 @@ const methods = {
 	},
 
 	_reset () {
-		this.__setState({ frame: this.__getState('begin') });
+		this.setState({ frame: this.getState('begin') });
+		this.elements.wrapper.attr('data-frame', this.getState('begin') + '');
 	},
 
 	destroy () {
@@ -89,14 +108,16 @@ const methods = {
 		this._pause();
 
 		this.elements.wrapper.remove();
+		return this.elements.wrapper[0].outerHTML;
 	}
 };
 
-Lib.extend(Loader.prototype, LoaderCore, methods);
+Lib.extend(Loader.prototype, LoaderCore, State, methods);
 
 const legacyMethods = {
 	play: methods._play,
 	next: methods._next,
+	previous: methods._previous,
 	pause: methods._pause,
 	reset: methods._reset
 };

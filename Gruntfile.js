@@ -1,7 +1,10 @@
 module.exports = function (grunt) {
 	grunt.loadTasks('tasks');
 
+	const defaultPort = 8000;
+
 	grunt.initConfig({
+		port: defaultPort,
 		browserify: {
 			examples: {
 				options: {
@@ -40,8 +43,9 @@ module.exports = function (grunt) {
 		mocha: {
 			main: {
 				options: {
-					urls: ['http://localhost:8000/test/index.html'],
+					urls: ['http://localhost:<%= port %>/test/index.html'],
 					run: true,
+					log: true,
 					reporter: 'Nyan'
 				}
 			}
@@ -74,8 +78,14 @@ module.exports = function (grunt) {
 						'./node_modules',
 						'.'
 					],
-					port: process.env.PORT || 8000,
-					useAvailablePort: true // increment port number, if unavailable
+					port: grunt.option('port') || process.env.PORT || defaultPort,
+					useAvailablePort: true, // increment port number, if unavailable
+					onCreateServer: function (server/* , connect, options */) {
+						server.on('listening', function () {
+							// Export the port for consumption by other grunt tasks. async setup of connect isn't considered complete until after all event handlers for 'listening' finish, so this will always run before the next grunt task.
+							grunt.config('port', server.address().port);
+						});
+					}
 				}
 			}
 		}

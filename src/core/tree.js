@@ -63,27 +63,28 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		getItemState (item) {
 			const id = Lib.getProp(item, 'id');
 			const itemStates = this.__getState('itemStates');
-			let itemState;
 			if (!id) {
-				throw "A unique id is required!";
+				throw new Error('A unique id is required!');
 			}
 
-			return itemState = itemStates[id] || {
-					selected: false,
-					open: false,
-					loading: false,
-					item: item
-				};
+			const itemState = itemStates[id] || {
+				selected: false,
+				open: false,
+				loading: false,
+				item: item
+			};
+
+			return itemState;
 		}
 	},
 
 	__retrieveData (folderInfo) {
-		var self = this;
+		const self = this;
 
 		this.dataSource(folderInfo ? folderInfo : {}, function (source) {
-			var currentNodesState = self.__getState('treeNodes');
-			var stateData = {};
-			var currentDeepItem;
+			const currentNodesState = self.__getState('treeNodes');
+			const stateData = {};
+			let currentDeepItem;
 
 			if (folderInfo) {
 				currentDeepItem = self.__findDeepItem(folderInfo._id);
@@ -120,9 +121,9 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	},
 
 	__findDeepItem (id) {
-		var deepTree = this.__getState('treeNodesDeep');
-		var find = (treeItems) => {
-			var foundItem;
+		const deepTree = this.__getState('treeNodesDeep');
+		const find = (treeItems) => {
+			let foundItem;
 
 			treeItems.forEach((treeItem) => {
 				if (foundItem) return;
@@ -163,8 +164,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 
 	getSelectedItems () {
 		const itemStates = this.__getState('itemStates');
-		let selectedItems = [];
-
+		const selectedItems = [];
 		itemStates.forEach((itemState) => {
 			if (itemState.selected) {
 				selectedItems.push(itemState.item);
