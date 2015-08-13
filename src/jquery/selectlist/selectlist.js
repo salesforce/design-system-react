@@ -7,6 +7,7 @@ import SelectlistCore, {CONTROL} from '../../core/selectlist';
 // Framework specific
 import createPlugin from '../createPlugin';
 import Events from '../events';
+import State from '../state';
 // TO-DO: This might not work with require, need to confirm that it does
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
@@ -29,10 +30,11 @@ const Selectlist = function Selectlist (element, options) {
 		this.rendered = true;
 	}
 
+	this.__initializeState();
 	this.__constructor(this.options);
 };
 
-Lib.extend(Selectlist.prototype, SelectlistCore, Events, {
+Lib.extend(Selectlist.prototype, SelectlistCore, Events, State, {
 	__initElements (base, elements) {
 		const els = elements || {};
 
@@ -94,8 +96,8 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, {
 		this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
 
 		const selection = Lib.getItemAdapter(this.getSelection());
-		const width = this.__getState('width');
-		const disabled = !!this.__getState('disabled');
+		const width = this.getState('width');
+		const disabled = !!this.getState('disabled');
 		const selectionName = selection.get('text') || 'None selected'; // TO-DO: don't hardcode this here
 		const selectionString = selection ? JSON.stringify(selection) : '';
 		const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));

@@ -91,7 +91,7 @@ const SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 
 		parent.removeChild(sizer);
 
-		this.__setState({ width: width });
+		this.setState({ width: width });
 		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
 	}
 });

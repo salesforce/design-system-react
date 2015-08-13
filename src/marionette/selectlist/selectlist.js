@@ -6,16 +6,16 @@ import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import _ from 'underscore';
-import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 import classNames from 'classnames';
+import State from '../state';
 import '../../data/backbone';
 
 // Template imports
 const fs = require('fs');
 const selectlistTemplate = _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 
-const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
+const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, State, {
 	className () {
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP);
 	},
@@ -57,18 +57,10 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 		'change': 'render'
 	},
 
-	setState (values) {
-		return this.model.set(values);
-	},
-
-	getState (key) {
-		return this.model.get(key);
-	},
-
 	_assumeFocus: false,
 
 	constructor () {
-		this.model = this.model || new Backbone.Model();
+		this.__initializeState();
 		Marionette.ItemView.prototype.constructor.apply(this, arguments);
 	},
 

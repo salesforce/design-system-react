@@ -20,8 +20,8 @@ const Selectable = {
 	},
 
 	__setSelection (newSelection) {
-		if (this.__getState('selection') !== newSelection) {
-			this.__setState({ selection: newSelection });
+		if (this.getState('selection') !== newSelection) {
+			this.setState({ selection: newSelection });
 			if (Lib.isFunction(this._onSelected)) this._onSelected(newSelection);
 			
 			// Trigger the event using facade-native methods
@@ -42,13 +42,13 @@ const Selectable = {
 
 	// Legacy Fuel UX functionality - select by position
 	setSelectionByIndex (index) {
-		let item = this._collection.at(index);
+		const item = this._collection.at(index);
 
 		this.__setSelection(item);
 	},
 
 	getSelection () {
-		return this.__getState('selection');
+		return this.getState('selection');
 	},
 
 	clearSelection () {

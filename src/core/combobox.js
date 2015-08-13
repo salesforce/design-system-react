@@ -47,7 +47,7 @@ const ComboboxCore = Lib.extend({}, Base, Disableable, Selectable, {
 	resize () {
 		const width = this.elements.wrapper.outerWidth();
 
-		this.__setState({ width: width });
+		this.setState({ width: width });
 		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
 	}
 });
