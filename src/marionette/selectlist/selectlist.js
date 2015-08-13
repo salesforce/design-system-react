@@ -60,7 +60,7 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 		return this.model.get(key);
 	},
 
-	assumeFocus: false,
+	_assumeFocus: false,
 
 	initialize (options) {
 		const self = this;
@@ -82,9 +82,9 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 	},
 
 	onRender () {
-		if (this.assumeFocus) {
+		if (this._assumeFocus) {
 			this.$el.find('button').focus();
-			this.assumeFocus = false;
+			this._assumeFocus = false;
 		}
 	},
 
@@ -104,7 +104,7 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 	handleKeyPress (e) {
 		const key = e.which;
 
-		this.assumeFocus = true;
+		this._assumeFocus = true;
 
 		if (key) this.__jumpToLetter(key);
 	}
