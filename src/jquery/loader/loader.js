@@ -48,6 +48,7 @@ const methods = {
 	render () {
 		this.elements.wrapper.empty();
 		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
+		this.elements.wrapper.attr('data-frame', this.__getState('frame') + '');
 		this._play();
 	},
 
@@ -97,6 +98,7 @@ const methods = {
 
 	_reset () {
 		this.__setState({ frame: this.__getState('begin') });
+		this.elements.wrapper.attr('data-frame', this.__getState('begin') + '');
 	},
 
 	destroy () {
