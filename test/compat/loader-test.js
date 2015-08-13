@@ -2,7 +2,7 @@ const fs = require('fs');
 const $ = require('jquery');
 window.$ = window.jQuery = $;
 
-let html = fs.readFileSync('test/compat/markup/loader-markup.html', 'utf8');
+const html = fs.readFileSync('test/compat/markup/loader-markup.html', 'utf8');
 const chai = require('chai');
 const assert = chai.assert;
 require('bootstrap');
