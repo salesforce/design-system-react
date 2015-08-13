@@ -10,7 +10,7 @@ const Base = {
 		if (Lib.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
 
 		// If this control has any sort of internal state, set it up here
-		if (Lib.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
+		if (Lib.isFunction(this.__getInitialState)) this.__setState(this.__getInitialState());
 
 		// If this controls does anything with options that are passed to it, do that now
 		if (Lib.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
@@ -19,8 +19,13 @@ const Base = {
 	},
 
 	__setState (values) {
+		if (!this._state) {
+			this._state = {};
+		}
+		
 		Lib.extend(this._state, values);
 
+		// Replace self with state method from facade if it exists
 		if (this.setState) {
 			this.__setState = this.setState;
 			this.__setState(this._state);
