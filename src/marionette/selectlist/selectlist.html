@@ -14,7 +14,7 @@
 			break;
 		case 'item':
 		default:
-			%><li class="<%- _classNames({ 'disabled': item.disabled }) %>"<%= disabled ? ' disabled' : '' %>><a href="#" data-id="<%- item.id %>"><%- item.text %></a></li><%
+			%><li class="<%- _classNames({ 'disabled': item.disabled }) %>"<%= disabled ? ' disabled' : '' %>><a href="#" data-index="<%- item._index %>"><%- item.text %></a></li><%
 		}
 	}); %>
 </ul>

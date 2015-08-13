@@ -36,15 +36,15 @@ const Combobox = React.createClass(Lib.extend({}, ComboboxCore, {
 	},
 
 	menuItems () {
-		return this.props.collection.map((menuItem) => {
+		return this.props.collection.map((menuItem, index) => {
 			return (
-				<SelectlistItem key={Lib.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected} />
+				<SelectlistItem key={index} item={menuItem} onSelected={this.handleMenuItemSelected} />
 			);
 		});
 	},
 
 	render () {
-		const selection = this.getSelection();
+		const selection = Lib.getDataAdapter(this.getSelection());
 
 		const styles = {
 			width: this.state.width
@@ -52,7 +52,7 @@ const Combobox = React.createClass(Lib.extend({}, ComboboxCore, {
 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
-				<input name={this.props.name} className="form-control" type="text" value={Lib.getProp(selection, 'text')} disabled={this.state.disabled} />
+				<input name={this.props.name} className="form-control" type="text" value={selection.get('text')} disabled={this.state.disabled} />
 				<div className="input-group-btn">
 					<button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" disabled={this.state.disabled}><span className="caret"></span></button>
 					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles}>
