@@ -5,7 +5,9 @@ import Tree from './tree';
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 $(function () {
-	const tree = new Tree($('#tree'));
+	$( '.imperative .tree1' ).tree();
+
+	const tree = new Tree( $( '.new-api .tree1' ) );
 
 	Lib.log( tree );
 });

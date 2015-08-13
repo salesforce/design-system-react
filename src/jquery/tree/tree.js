@@ -14,7 +14,7 @@ const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.globa
 const fs = require('fs');
 
 const Tree = function Tree (element, options) {
-	this.options = $.extend({}, options);
+	this.options = $.extend({ cacheItems: true }, options);
 	this.elements = {
 		wrapper: $(element)
 	};
@@ -31,6 +31,10 @@ const Tree = function Tree (element, options) {
 				{
 					text: 'Node 1T2',
 					type: 'item'
+				},
+				{
+					text: 'Folder 1T2',
+					type: 'folder'
 				}
 			]
 		},
@@ -39,6 +43,10 @@ const Tree = function Tree (element, options) {
 			type: 'item'
 		}
 	];
+
+	this.elements.wrapper.on( 'click.fu.tree', '.tree-branch-name', $.proxy( function ( $event ) {
+		this.toggleFolder( $event.currentTarget );
+	}, this ) );
 
 	this.__constructor(this.options);
 };
@@ -51,6 +59,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 	},
 
 	render () {
+		this.elements.wrapper.empty();
 		this.$html = $( '<i />' ).append( fs.readFileSync(__dirname + '/tree.html', 'utf8') );
 
 		const $el = this.$html.find( '.tree' ).clone();
@@ -73,9 +82,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 
 		$item.find( '.tree-label' ).text( this.getText( item ) );
 
-		if ( this.getExpandable( item ) ) {
-			this._loopChildren( this.getChildren( item ), $item.find( '.tree-branch-children' ) );
-		}
+		$item.find( '.tree-branch-name' ).data( { open: false } );
 
 		return $item;
 	},
@@ -94,8 +101,78 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 				$li = self.renderItem( item );
 			}
 
+			$li.data( { item: item } );
+
 			$el.append( $li );
 		});
+	},
+
+	populate ( el ) {
+		const $el = $( el );
+		const item = $el.data( 'item' );
+		let children;
+
+		children = this.getChildren( item );
+
+		this._loopChildren( children, $el.find( '.tree-branch-children' ) );
+	},
+
+	toggleFolder ( el ) {
+		const $el = $( el );
+
+		if ( $el.data( 'open' ) ) {
+			this.closeFolder(el);
+		} else {
+			this.discloseFolder(el);
+		}
+	},
+
+	closeFolder ( el ) {
+		const $el = $( el );
+		const $branch = $el.closest('.tree-branch');
+		const $treeFolderContent = $branch.find('.tree-branch-children');
+		const $treeFolderContentFirstChild = $treeFolderContent.eq(0);
+
+		$el.data( { open: false } );
+
+		// take care of the styles
+		$branch.removeClass('tree-open');
+		$branch.attr('aria-expanded', 'false');
+		$treeFolderContentFirstChild.addClass('hidden');
+		$branch.find('> .tree-branch-header .icon-folder').eq(0)
+			.removeClass('glyphicon-folder-open')
+			.addClass('glyphicon-folder-close');
+
+		// remove chidren if no cache
+		if (!this.options.cacheItems) {
+			$treeFolderContentFirstChild.empty();
+		}
+
+		this.elements.wrapper.trigger('closed.fu.tree', $branch.data());
+	},
+
+	discloseFolder ( el ) {
+		const $el = $( el );
+		const $branch = $el.closest('.tree-branch');
+		const $treeFolderContent = $branch.find('.tree-branch-children');
+		const $treeFolderContentFirstChild = $treeFolderContent.eq(0);
+
+		$el.data( { open: true } );
+
+		// take care of the styles
+		$branch.addClass('tree-open');
+		$branch.attr('aria-expanded', 'true');
+		$treeFolderContentFirstChild.removeClass('hide hidden'); // hide is deprecated
+		$branch.find('> .tree-branch-header .icon-folder').eq(0)
+			.removeClass('glyphicon-folder-close')
+			.addClass('glyphicon-folder-open');
+
+		// add the children to the folder
+		if (!$treeFolderContent.children().length) {
+			this.populate( $branch );
+		}
+
+		this.elements.wrapper.trigger('disclosedFolder.fu.tree', $branch.data());
 	},
 
 	getText ( item ) {
@@ -111,7 +188,18 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 	},
 
 	getChildren ( item ) {
-		return item.children || [];
+		const junkKids = [
+			{
+				text: 'Top Branch',
+				type: 'folder'
+			},
+			{
+				text: 'Top Node',
+				type: 'item'
+			}
+		];
+
+		return item.children || junkKids;
 	}
 });
 
