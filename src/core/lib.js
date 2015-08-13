@@ -84,7 +84,7 @@ export function findWhere (collection, criteria) {
 		_isMatch = function (item) {
 			let match = true;
 			let innerItem = item;
-			
+
 			if (isFunction(innerItem.toJSON)) {
 				innerItem = innerItem.toJSON();
 			}
@@ -100,7 +100,7 @@ export function findWhere (collection, criteria) {
 	} else {
 		_isMatch = _criteria;
 	}
-	
+
 	return _findMatch(collection, _isMatch);
 }
 

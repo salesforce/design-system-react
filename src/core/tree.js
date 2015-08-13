@@ -10,7 +10,7 @@ export const CONTROL = 'tree';
 
 const TreeCore = Lib.extend({}, Base, Disableable, {
 	// CSS classes used within this control
-	_cssClasses: {
+	cssClasses: {
 		CONTROL: CONTROL
 	},
 
@@ -38,36 +38,36 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 
 		this.__initializeDisableable(options);
 	},
-	
+
 	accessors: {
 		getText (item) {
 			return Lib.getProp(item, 'text');
 		},
-		
+
 		getChildren (item) {
 			return Promise.resolve(Lib.getProp(item, 'children'));
 		},
-		
+
 		getType (item) {
 			return Lib.getProp(item, '_itemType');
 		},
-		
+
 		getIconClass (item) {
 			return Lib.getProp(item, '_iconClass');
 		},
-		
+
 		getExpandable (item) {
 			return !!Lib.getProp(item, '_isExpandable');
 		},
-		
+
 		getItemState (item) {
 			const id = Lib.getProp(item, 'id');
-			const itemStates = self.__getState('itemStates');
-			
+			const itemStates = this.__getState('itemStates');
+			let itemState;
 			if (!id) {
 				throw "A unique id is required!";
 			}
-			
+
 			return itemState = itemStates[id] || {
 					selected: false,
 					open: false,
@@ -126,7 +126,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 
 			treeItems.forEach((treeItem) => {
 				if (foundItem) return;
-				
+
 				if (id === treeItem._id) {
 					foundItem = treeItem;
 				} else if (treeItem._children && treeItem._children.length) {
@@ -140,24 +140,31 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		return find(deepTree);
 	},
 
+	__setItemState (item, state) {
+		var itemStates = this.__getState('itemStates');
+		let id = Lib.getProp(item, 'id');
+		if (!id) {
+			throw "A unique id is required!";
+		}
+
+		var itemState = this.accessors.getItemState(item);
+		Lib.extend(itemState, state);
+		itemStates[id] = itemState;
+		this.__setState({itemStates});
+	},
+
 	__selectItem (item) {
-		var itemState = getItemState(item);
-		
-		itemState.selected = true;
-		this.__setState(this._state);
+		this.__setItemState(item, {selected: true});
 	},
 
 	__toggleFolder (folder) {
-		var itemState = getItemState(folder);
-		
-		itemState.open = !itemState.open;
-		this.__setState(this._state);
+		this.__setItemState(folder, {open: !this.accessors.getItemState(folder).open});
 	},
 
 	getSelectedItems () {
 		const itemStates = this.__getState('itemStates');
 		let selectedItems = [];
-		
+
 		itemStates.forEach((itemState) => {
 			if (itemState.selected) {
 				selectedItems.push(itemState.item);
