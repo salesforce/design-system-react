@@ -29,11 +29,9 @@ const ComboboxCore = Lib.extend({}, Base, Disableable, Selectable, {
 	// TO-DO: Basically a bunch of if-else blocks. Can this be improved?
 	__initializeOptions (options) {
 		if (options && options.collection) {
-			this._collection = options.collection;
-		} else if (this.collection) {
-			this._collection = this.collection;
+			this._collection = Lib.getDataAdapter(options.collection);
 		} else if (!this._collection) {
-			this._collection = [];
+			this._collection = Lib.getDataAdapter([]);
 		}
 
 		this.__initializeSelectable(options);

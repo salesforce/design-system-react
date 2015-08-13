@@ -9,6 +9,7 @@ import _ from 'underscore';
 import Backbone from 'backbone';
 import Marionette from 'backbone.marionette';
 import classNames from 'classnames';
+import '../../data/backbone';
 
 // Template imports
 const fs = require('fs');
