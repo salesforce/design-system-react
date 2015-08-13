@@ -24,11 +24,17 @@ $('.enabled .btnSelectlistGetSelectedItem').on('click', function () {
 $('.enabled .btnSelectlistSelectByValue').on('click', function () {
 	mySelectlist1.setSelection({ value: '2' });
 });
-$('.enabled .btnSelectlistEnableSelectlist').on('click', function () {
+$('.enabled .btnSelectlistEnableSelectlistViaMethod').on('click', function () {
 	mySelectlist1.enable();
 });
-$('.enabled .btnSelectlistDisableSelectlist').on('click', function () {
+$('.enabled .btnSelectlistDisableSelectlistViaMethod').on('click', function () {
 	mySelectlist1.disable();
+});
+$('.enabled .btnSelectlistEnableSelectlistViaModel').on('click', function () {
+	mySelectlist1.model.set('disabled', false);
+});
+$('.enabled .btnSelectlistDisableSelectlistViaModel').on('click', function () {
+	mySelectlist1.model.set('disabled', true);
 });
 
 const mySelectlist2 = new Selectlist({
@@ -47,9 +53,15 @@ $('.disabled .btnSelectlistGetSelectedItem').on('click', function () {
 $('.disabled .btnSelectlistSelectByObject').on('click', function () {
 	mySelectlist2.setSelection(collection.at(3));
 });
-$('.disabled .btnSelectlistEnableSelectlist').on('click', function () {
+$('.disabled .btnSelectlistEnableSelectlistViaMethod').on('click', function () {
 	mySelectlist2.enable();
 });
-$('.disabled .btnSelectlistDisableSelectlist').on('click', function () {
+$('.disabled .btnSelectlistDisableSelectlistViaMethod').on('click', function () {
 	mySelectlist2.disable();
+});
+$('.disabled .btnSelectlistEnableSelectlistViaModel').on('click', function () {
+	mySelectlist2.model.set('disabled', false);
+});
+$('.disabled .btnSelectlistDisableSelectlistViaModel').on('click', function () {
+	mySelectlist2.model.set('disabled', true);
 });
