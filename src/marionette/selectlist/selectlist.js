@@ -41,6 +41,9 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 
 		attrs._classNames = classNames;
 
+		// Must be defined
+		attrs.width = attrs.width || null;
+
 		return attrs;
 	},
 
