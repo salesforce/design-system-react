@@ -12,7 +12,6 @@ const collection = new Backbone.Collection(sampleData.defaultArray);
 
 const mySelectlist1 = new Selectlist({
 	collection: collection,
-	disabled: false,
 	resize: 'auto'
 });
 
