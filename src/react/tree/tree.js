@@ -3,11 +3,12 @@ import TreeCore from '../../core/tree';
 import * as Lib from '../../core/lib';
 import classNames from 'classnames';
 import ReactHelpers from '../mixins/helpers';
+import genericWillMount from '../mixins/generic-will-mount';
 import TreeBranch from './tree-branch';
 import TreeItem from './tree-item';
 
 const Tree = React.createClass(Lib.extend({}, TreeCore, {
-  mixins: [ReactHelpers],
+  mixins: [ReactHelpers, genericWillMount],
   getInitialState () {
 		return Lib.extend(this.__getInitialState(), {
 			wrapperClasses: {}
@@ -15,12 +16,15 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 	},
 
   render () {
-    var contents = this.props.collection.map(model => {
+    var contents = [];
+    this._collection.forEach(model => {
+      let result;
       if (this.accessors.getType(model) === 'folder') {
-        return <TreeBranch key={Lib.getProp(model, 'id')} item={model} onItemClick={this._handleItemClick} accessors={this.accessors} />;
+        result = <TreeBranch key={model.get('id')} item={model} onItemClick={this._handleItemClick} accessors={this.accessors} />;
       } else {
-        return <TreeItem key={Lib.getProp(model, 'id')} item={model} accessors={this.accessors} />;
+        result = <TreeItem key={model.get('id')} item={model} accessors={this.accessors} />;
       }
+      contents.push(result);
     });
     // bind the context of the accessors so that the children don't have to worry about scope.
     Object.keys(this.accessors).forEach(accessorName => {

@@ -29,11 +29,11 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 
 	__initializeOptions (options) {
 		if (options && options.collection) {
-			this._collection = options.collection;
+			this._collection = Lib.getDataAdapter(options.collection);
 		} else if (this.collection) {
-			this._collection = this.collection;
+			this._collection = Lib.getDataAdapter(this.collection);
 		} else if (!this._collection) {
-			this._collection = [];
+			this._collection = Lib.getDataAdapter([]);
 		}
 
 		this.__initializeDisableable(options);
@@ -41,28 +41,28 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 
 	accessors: {
 		getText (item) {
-			return Lib.getProp(item, 'text');
+			return item.get('text');
 		},
 
 		getChildren (item) {
-			return Promise.resolve(Lib.getProp(item, 'children'));
+			return Promise.resolve(Lib.getDataAdapter(item.get('children')));
 		},
 
 		getType (item) {
-			return Lib.getProp(item, '_itemType');
+			return item.get('_itemType');
 		},
 
 		getIconClass (item) {
-			return Lib.getProp(item, '_iconClass');
+			return item.get('_iconClass');
 		},
 
 		getExpandable (item) {
-			return !!Lib.getProp(item, '_isExpandable');
+			return !!item.get('_isExpandable');
 		},
 
 		getItemState (item) {
-			const id = Lib.getProp(item, 'id');
-			const itemStates = this.__getState('itemStates');
+			const id = item.get('id');
+			const itemStates = this.state.itemStates;
 			if (!id) {
 				throw new Error('A unique id is required!');
 			}
@@ -82,7 +82,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		const self = this;
 
 		this.dataSource(folderInfo ? folderInfo : {}, function (source) {
-			const currentNodesState = self.__getState('treeNodes');
+			const currentNodesState = self.state.treeNodes;
 			const stateData = {};
 			let currentDeepItem;
 
@@ -114,14 +114,14 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 
 				stateData.treeNodes = currentNodesState.concat(source.data);
 
-				self.__setState(stateData);
+				self.setState(stateData);
 				if (Lib.isFunction(self.populateTree)) self.populateTree(folderInfo, source);
 			}
 		});
 	},
 
 	__findDeepItem (id) {
-		const deepTree = this.__getState('treeNodesDeep');
+		const deepTree = this.state.treeNodesDeep;
 		const find = (treeItems) => {
 			let foundItem;
 
@@ -142,8 +142,8 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	},
 
 	__setItemState (item, state) {
-		var itemStates = this.__getState('itemStates');
-		let id = Lib.getProp(item, 'id');
+		var itemStates = this.state.itemStates;
+		let id = item.get('id');
 		if (!id) {
 			throw "A unique id is required!";
 		}
@@ -151,7 +151,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		var itemState = this.accessors.getItemState(item);
 		Lib.extend(itemState, state);
 		itemStates[id] = itemState;
-		this.__setState({itemStates});
+		this.setState({itemStates});
 	},
 
 	__selectItem (item) {
@@ -163,7 +163,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	},
 
 	getSelectedItems () {
-		const itemStates = this.__getState('itemStates');
+		const itemStates = this.state.itemStates;
 		const selectedItems = [];
 		itemStates.forEach((itemState) => {
 			if (itemState.selected) {

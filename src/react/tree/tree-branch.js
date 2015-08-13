@@ -32,12 +32,13 @@ const TreeBranch = React.createClass({
   render () {
     let accessors = this.props.accessors;
     let itemState = (accessors.getItemState(this.props.item));
+    let children = [];
 
-    var children = this.state.children.map(model => {
+    this.state.children.forEach(model => {
       if (accessors.getType(model) === 'folder') {
-        return <TreeBranch key={Lib.getProp(model, 'id')} item={model} accessors={accessors} onItemClick={this._handleFolderClick.bind(this, model)}/>;
+        children.push(<TreeBranch key={model.get('id')} item={model} accessors={accessors} onItemClick={this._handleFolderClick.bind(this, model)}/>);
       } else {
-        return <TreeItem key={Lib.getProp(model, 'id')} item={model} accessors={accessors} />;
+        children.push(<TreeItem key={model.get('id')} item={model} accessors={accessors} />);
       }
     });
 
