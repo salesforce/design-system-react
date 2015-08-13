@@ -35,6 +35,10 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 		}
 
 		attrs.items = this.serializeCollection(this.collection);
+		attrs.items.forEach(function (item, index) {
+			item._index = index;
+		});
+
 		attrs._classNames = classNames;
 
 		return attrs;
@@ -82,8 +86,16 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 	},
 
 	handleMenuItemSelected (e) {
-		const id = $(e.currentTarget).data('id');
-		this.setSelection({ id: id });
+		const index = $(e.currentTarget).data('index');
+		const items = this.serializeCollection(this.collection);
+		const item = items[index];
+		if (item.disabled) {
+			e.preventDefault();
+			e.stopImmediatePropagation();
+			return;
+		}
+
+		this.setSelection(item);
 	},
 
 	handleKeyPress (e) {
