@@ -15,33 +15,35 @@ export default function (element) {
 		{ id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
 	];
 
-	// TO-DO: Rewrite this to a sample that is more real-life
-	// For example, this could be a collection of people and their food preference rather than a perfect set of models
-	const models = {
-		selectlist1: {
-			collection: collection,
-			disabled: false,
-			selection: collection[0],
-			resize: 'auto'
-		},
-		selectlist2: {
-			collection: collection,
-			disabled: false,
-			selection: { text: 'Buzz' }
-		},
-		selectlist3: {
-			collection: collection,
-			disabled: false
-		},
-		selectlist4: {
-			collection: collection,
-			disabled: true
-		}
-	};
-
 	const SelectlistExample = React.createClass({
 		propTypes: {
 			models: React.PropTypes.arrayOf(React.PropTypes.object)
+		},
+
+		getInitialState () {
+			return {
+				models: [
+					{
+						collection: collection,
+						disabled: false,
+						selection: collection[0],
+						resize: 'auto'
+					},
+					{
+						collection: collection,
+						disabled: false,
+						selection: { text: 'Buzz' }
+					},
+					{
+						collection: collection,
+						disabled: false
+					},
+					{
+						collection: collection,
+						disabled: true
+					}
+				]
+			};
 		},
 
 		getSelectionHandler (model) {
@@ -51,27 +53,22 @@ export default function (element) {
 		},
 
 		render () {
-			const selectlists = [];
-
-			// TO-DO: This isn't the most "React-y" example
-			Object.keys(this.props.models).forEach(key => {
-				const self = this;
-				const model = this.props.models[key];
-
+			const selectlists = this.state.models.map((model, index) => {
 				model.onChanged = this.getSelectionHandler(model);
-				model.ref = key;
 
-				selectlists.push(
-					<section className="example-group" key={key}>
-						<h1>Selectlist example ({key})</h1>
+				return (
+					<section className="example-group" key={index}>
+						<h1>Selectlist example (selectlist{index + 1})</h1>
 
-						<div className="example">{React.createElement(Selectlist, model)}</div>
+						<div className="example">
+							<Selectlist {...model} onChanged={this._handleModelChange.bind(this, index)}/>
+						</div>
 
 						<div className="btn-panel action">
-							<button className="btn btn-default" onClick={self.logSelectedItem.bind(this, key)}>log selected item</button>
-							<button className="btn btn-default" onClick={self.setSelection.bind(this, key)}>set by value ('2')</button>
-							<button className="btn btn-default" onClick={self.enable.bind(this, key)}>enable</button>
-							<button className="btn btn-default" onClick={self.disable.bind(this, key)}>disable</button>
+							<button className="btn btn-default" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
+							<button className="btn btn-default" onClick={this.setSelection.bind(this, index)}>set by value ('2')</button>
+							<button className="btn btn-default" onClick={this.enable.bind(this, index)}>enable</button>
+							<button className="btn btn-default" onClick={this.disable.bind(this, index)}>disable</button>
 						</div>
 					</section>
 				);
@@ -80,44 +77,48 @@ export default function (element) {
 			return (
 				<div>
 					{selectlists}
-					<button className="action btn btn-primary" onClick={this.changeCollection}>Toggle Enabled / Disabled</button>
+					<button className="action btn btn-primary" onClick={this.toggleSelectlistsEnabled}>Toggle Enabled / Disabled</button>
 				</div>
 			);
 		},
 
-		changeCollection () {
-			const props = this.props;
+		_handleModelChange (index, selection) {
+			const models = this.state.models;
+			models[index].selection = selection;
+			this.setState({models});
+		},
 
-			Object.keys(props.models).forEach(key => {
-				props.models[key].disabled = !props.models[key].disabled;
+		toggleSelectlistsEnabled () {
+			this.setState({
+				models: this.state.models.map(model => {
+					model.disabled = !model.disabled;
+					return model;
+				})
 			});
-
-			this.setProps({
-				models: props.models
-			});
 		},
 
-		logSelectedItem (key) {
-			// Okay, probably wouldn't do this in React but just demonstrating
-			Lib.log(this.refs[key].getSelection());
+		logSelectedItem (index) {
+			Lib.log(this.state.models[index].selection);
 		},
 
-		setSelection (key) {
-			models[key].selection = { value: '2' };
-			this.forceUpdate();
+		setSelection (index) {
+			const models = this.state.models;
+			models[index].selection = { value: '2' };
+			this.setState({models});
 		},
 
-		enable (key) {
-			models[key].disabled = false;
-			this.forceUpdate();
+		enable (index) {
+			const models = this.state.models;
+			models[index].disabled = false;
+			this.setState({models});
 		},
 
-		disable (key) {
-			models[key].disabled = true;
-			this.forceUpdate();
+		disable (index) {
+			const models = this.state.models;
+			models[index].disabled = true;
+			this.setState({models});
 		}
 	});
 
-	// Page is a list of multiple selectlists
-	React.render(<SelectlistExample key={'SelectlistExample'} models={models}/>, element);
+	React.render(<SelectlistExample />, element);
 }
