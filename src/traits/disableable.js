@@ -17,13 +17,13 @@ const Disableable = {
 
 	enable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-		this.__setState({ disabled: false });
+		this.setState({ disabled: false });
 		if (Lib.isFunction(this.onEnabled)) this.onEnabled();
 	},
 
 	disable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-		this.__setState({ disabled: true });
+		this.setState({ disabled: true });
 		if (Lib.isFunction(this.onDisabled)) this.onDisabled();
 	}
 };

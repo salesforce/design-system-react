@@ -21,7 +21,7 @@ const LoaderCore = Lib.extend({}, Base, {
 	},
 
 	__initializeOptions (options) {
-		this.__setState(options);
+		this.setState(options);
 	}
 });
 

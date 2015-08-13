@@ -3,7 +3,6 @@ const chai = require('chai');
 const assert = chai.assert;
 const expect = chai.expect;
 const $ = require('jquery');
-const Backbone = require('backbone');
 
 describe('FuelUX Facade Lib Tests', function () {
 	it('can be required', function () {
@@ -92,70 +91,6 @@ describe('FuelUX Facade Lib Tests', function () {
 	it('functions like jquery when testing for an Object against undefined', function () {
 		const target = undefined;
 		assert.equal($.isPlainObject(target), Lib.isObject(target));
-	});
-
-	it('will return a value for a given member key on a regular object', function () {
-		const project = {
-			name: 'FuelUX Facade'
-		};
-		assert.equal(Lib.getProp(project, 'name'), project.name);
-	});
-
-	it('will return a value for a given member on a backbone model', function () {
-		const project = new Backbone.Model({
-			name: 'FuelUX Facade'
-		});
-		assert.equal(Lib.getProp(project, 'name'), project.get('name'));
-	});
-
-	it('will locate the appropriate property using findWhere on an array', function () {
-		const collectionArray = [{
-			name: 'Joe',
-			age: 39
-		}, {
-			name: 'Jennifer',
-			age: 38
-		}, {
-			name: 'Isaac',
-			age: 8
-		}, {
-			name: 'William',
-			age: 5
-		}, {
-			name: 'Henry',
-			age: 5
-		}];
-		assert.ok(collectionArray.every(function (person, index) {
-			const foundPerson = Lib.findWhere(collectionArray, {
-				name: person.name
-			});
-			return foundPerson.name === collectionArray[index].name && foundPerson.age === collectionArray[index].age;
-		}));
-	});
-
-	it('will locate the appropriate property using findWhere on a Collection', function () {
-		const collection = new Backbone.Collection([{
-			name: 'Joe',
-			age: 39
-		}, {
-			name: 'Jennifer',
-			age: 38
-		}, {
-			name: 'Isaac',
-			age: 8
-		}, {
-			name: 'William',
-			age: 5
-		}, {
-			name: 'Henry',
-			age: 5
-		}]);
-		assert.ok(collection.every(function (person, index) {
-			const foundPerson = Lib.findWhere(collection, {
-				name: person.get('name')
-			});
-			return foundPerson.get('name') === collection.at(index).get('name') && foundPerson.get('age') === collection.at(index).get('age');
-		}));
 	});
 
 	it('will extend by combining', function () {
