@@ -52,6 +52,10 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 		'click a': 'handleMenuItemSelected'
 	},
 
+	modelEvents: {
+		'change': 'render'
+	},
+
 	setState (values) {
 		return this.model.set(values);
 	},
@@ -61,6 +65,11 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 	},
 
 	_assumeFocus: false,
+
+	constructor () {
+		this.model = this.model || new Backbone.Model();
+		Marionette.ItemView.prototype.constructor.apply(this, arguments);
+	},
 
 	initialize (options) {
 		const self = this;
@@ -73,12 +82,7 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, {
 			}
 		};
 
-		this.model = this.model || new Backbone.Model();
-
 		this.__constructor(options);
-
-		// Put this after the constructor so that we don't call render during initialization
-		this.listenTo(this.model, 'change', this.render);
 	},
 
 	onRender () {
