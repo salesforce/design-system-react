@@ -62,9 +62,10 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		
 		getItemState (item) {
 			const id = Lib.getProp(item, 'id');
-			const itemStates = self.__getState('itemStates');
+			const itemStates = this.__getState('itemStates');
+			let itemState;
 			
-			if (!id) {
+			if ( typeof id === 'undefined' ) {
 				throw new Error('A unique id is required!');
 			}
 
@@ -74,6 +75,10 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 				loading: false,
 				item: item
 			};
+
+			if ( !itemStates[id] ) {
+				itemStates[id] = itemState;
+			}
 			
 			return itemState;
 		}
@@ -143,14 +148,14 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	},
 
 	__selectItem (item) {
-		const itemState = getItemState(item);
+		const itemState = this.accessors.getItemState.call(this, item);
 		
 		itemState.selected = true;
 		this.__setState(this._state);
 	},
 
 	__toggleFolder (folder) {
-		const itemState = getItemState(folder);
+		const itemState = this.accessors.getItemState.call(this, folder);
 		
 		itemState.open = !itemState.open;
 		this.__setState(this._state);
