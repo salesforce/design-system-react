@@ -48,6 +48,7 @@ const methods = {
 	render () {
 		this.elements.wrapper.empty();
 		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
+		this.elements.wrapper.attr('data-frame', this.__getState('frame') + '');
 		this._play();
 	},
 
@@ -76,12 +77,28 @@ const methods = {
 		this.ieRepaint();
 	},
 
+	_previous: function () {
+		let frame = this.__getState('frame');
+
+		frame--;
+
+		if (frame < this.__getState('begin')) {
+			frame = this.__getState('end');
+		}
+
+		this.__setState({ frame });
+
+		this.elements.wrapper.attr('data-frame', frame + '');
+		this.ieRepaint();
+	},
+
 	_pause () {
 		clearTimeout(this._timeout);
 	},
 
 	_reset () {
 		this.__setState({ frame: this.__getState('begin') });
+		this.elements.wrapper.attr('data-frame', this.__getState('begin') + '');
 	},
 
 	destroy () {
@@ -89,6 +106,7 @@ const methods = {
 		this._pause();
 
 		this.elements.wrapper.remove();
+		return this.elements.wrapper[0].outerHTML;
 	}
 };
 
@@ -97,6 +115,7 @@ Lib.extend(Loader.prototype, LoaderCore, methods);
 const legacyMethods = {
 	play: methods._play,
 	next: methods._next,
+	previous: methods._previous,
 	pause: methods._pause,
 	reset: methods._reset
 };

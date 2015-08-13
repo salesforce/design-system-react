@@ -3,9 +3,12 @@
 import * as Lib from './lib';
 import Base from './base';
 
+// Traits
+import Disableable from '../traits/disableable';
+
 export const CONTROL = 'tree';
 
-const TreeCore = Lib.extend({}, Base, {
+const TreeCore = Lib.extend({}, Base, Disableable, {
 	// CSS classes used within this control
 	_cssClasses: {
 		CONTROL: CONTROL
@@ -19,8 +22,61 @@ const TreeCore = Lib.extend({}, Base, {
 			dataSource: null,
 			folderSelect: false,
 			itemSelect: false,
-			multiSelect: false
+			multiSelect: false,
+			itemStates: {}
 		};
+	},
+
+	__initializeOptions (options) {
+		if (options && options.collection) {
+			this._collection = options.collection;
+		} else if (this.collection) {
+			this._collection = this.collection;
+		} else if (!this._collection) {
+			this._collection = [];
+		}
+
+		this.__initializeDisableable(options);
+	},
+	
+	accessors: {
+		getText (item) {
+			return Lib.getProp(item, 'text');
+		},
+		
+		getChildren (item) {
+			return Promise.resolve(Lib.getProp(item, 'children'));
+		},
+		
+		getType (item) {
+			return Lib.getProp(item, '_itemType');
+		},
+		
+		getIconClass (item) {
+			return Lib.getProp(item, '_iconClass');
+		},
+		
+		getExpandable (item) {
+			return !!Lib.getProp(item, '_isExpandable');
+		},
+		
+		getItemState (item) {
+			const id = Lib.getProp(item, 'id');
+			const itemStates = self.__getState('itemStates');
+			
+			if (!id) {
+				throw new Error('A unique id is required!');
+			}
+
+			itemState = itemStates[id] || {
+				selected: false,
+				open: false,
+				loading: false,
+				item: item
+			};
+			
+			return itemState;
+		}
 	},
 
 	__retrieveData (folderInfo) {
@@ -86,56 +142,32 @@ const TreeCore = Lib.extend({}, Base, {
 		return find(deepTree);
 	},
 
-	__toggleItem (item) {
-		item._state.selected = !item._state.selected;
-
+	__selectItem (item) {
+		const itemState = getItemState(item);
+		
+		itemState.selected = true;
 		this.__setState(this._state);
 	},
 
-	__selectFolder (folder) {
-		if (Lib.isFunction(this.selectFolder)) {
-			if (this.options.folderSelect) {
-				this.__setState({ selectedItems: folder });
-				this.selectFolder(folder);
-			} else {
-				this.selectFolder(folder);
-			}
-		}
-	},
-
 	__toggleFolder (folder) {
-		folder._state.open = !folder._state.open;
-
-		if (folder._state.populated) {
-			this.__setState(this._state);
-		} else {
-			this.__retrieveData(folder);
-		}
+		const itemState = getItemState(folder);
+		
+		itemState.open = !itemState.open;
+		this.__setState(this._state);
 	},
 
 	getSelectedItems () {
-		const allItems = this.__getState('treeNodes');
+		const itemStates = this.__getState('itemStates');
 		const selectedItems = [];
-
-		allItems.forEach((selectedItem) => {
-			if (selectedItem._state.selected) {
-				selectedItems.push(selectedItem);
+		
+		itemStates.forEach((itemState) => {
+			if (itemState.selected) {
+				selectedItems.push(itemState.item);
 			}
 		});
 
 		return selectedItems;
-	},
-	
-	enable () {
-		this.__setState({ disabled: false });
-		if (Lib.isFunction(this.onEnabled)) this.onEnabled();
-	},
-
-	disable () {
-		this.__setState({ disabled: true });
-		if (Lib.isFunction(this.onDisabled)) this.onDisabled();
 	}
-
 });
 
 export default TreeCore;
