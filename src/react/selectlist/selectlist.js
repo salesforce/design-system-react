@@ -8,7 +8,7 @@ import SelectlistCore from '../../core/selectlist';
 import React from 'react';
 import ReactHelpers from '../mixins/helpers';
 import Events from '../mixins/events';
-
+import genericWillMount from '../mixins/generic-will-mount';
 // Third party
 import classNames from 'classnames';
 
@@ -16,7 +16,7 @@ import classNames from 'classnames';
 import SelectlistItem from './selectlist-item';
 
 const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
-	mixins: [ReactHelpers, Events],
+	mixins: [ReactHelpers, Events, genericWillMount],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
