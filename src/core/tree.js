@@ -36,6 +36,12 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 			this._collection = Lib.getDataAdapter([]);
 		}
 
+		// TODO - Address this.
+		this.setState({
+			multiSelect: options.multiSelect,
+			folderSelect: options.folderSelect
+		});
+
 		this.__initializeDisableable(options);
 	},
 
@@ -156,7 +162,20 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	},
 
 	__selectItem (item) {
-		this.__setItemState(item, {selected: true});
+		const itemStates = this.state.itemStates;
+
+		if (!this.state.multiSelect) {
+			this.__setItemState(item, {selected: true});
+			Object.keys(itemStates).forEach(itemId => {
+				if (itemId !== item.get('id').toString()) { // Need a toString here because itemId is an object literal key, and therefore a string.
+					this.__setItemState(itemStates[itemId].item, {selected: false});
+				}
+			});
+		} else {
+			const currentItemState = this.accessors.getItemState(item);
+			currentItemState.selected = !currentItemState.selected;
+			this.__setItemState(item, currentItemState);
+		}
 	},
 
 	__toggleFolder (folder) {
