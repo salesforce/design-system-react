@@ -23,7 +23,6 @@ component createComponent( initData )
 		container: containing element for the tree (tree does not have to be immediate child)
 		multiSelect: Boolean, optional, default false
 		folderSelect: Boolean, optional, default true
-		openUpperLimit: Number, optional, default 0
 		children: [
 			{
 				text: String value to show for the node
@@ -123,13 +122,6 @@ openAll( component )
 
 onOpenAllComplete( component , callback )
 	Register an appropriate callback handler to notify when openAll() is complete
-	Should NOT fire if exceeded limit
-	component => returned value from createComponent
-	callback( folders )
-		folders should be an array of the folders which were previously closed and are now opened
-
-onOpenUpperLimitExceeded( component , callback )
-	Register an appropriate callback handler to notify when openAll fails due to the upper limit
 	component => returned value from createComponent
 	callback( folders )
 		folders should be an array of the folders which were previously closed and are now opened
