@@ -41,7 +41,7 @@ const Data = Base.Data.extend({
 	// Instance methods
 	get (criteria) {
 		let result;
-
+		
 		if (this._data && criteria) {
 			result = this.findWhere(this._data, criteria);
 		} else {
@@ -54,7 +54,7 @@ const Data = Base.Data.extend({
 	at (index) {
 		let result;
 
-		if (this._data && index) {
+		if (this._data && Lib.isNumber(index)) {
 			result = this._data[index];
 		}
 
