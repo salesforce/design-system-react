@@ -54,6 +54,10 @@ function _findMatch (collection, isMatch) {
 	return found || null;
 }
 
+export function isObject (potentialObject) {
+	return isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
+}
+
 export function findWhere (collection, criteria) {
 	const _criteria = (isObject(_criteria) && isFunction(_criteria.toJSON) && _criteria.toJSON()) || criteria;
 	let _isMatch;
@@ -80,10 +84,6 @@ export function findWhere (collection, criteria) {
 	}
 
 	return _findMatch(collection, _isMatch);
-}
-
-export function isObject (potentialObject) {
-	return isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
 }
 
 // Data Helpers

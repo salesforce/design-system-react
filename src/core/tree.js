@@ -142,13 +142,14 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	},
 
 	__setItemState (item, state) {
-		var itemStates = this.state.itemStates;
-		let id = item.get('id');
+		const itemState = this.accessors.getItemState(item);
+		const itemStates = this.state.itemStates;
+		const id = item.get('id');
+
 		if (!id) {
-			throw "A unique id is required!";
+			throw new Error('A unique id is required!');
 		}
 
-		var itemState = this.accessors.getItemState(item);
 		Lib.extend(itemState, state);
 		itemStates[id] = itemState;
 		this.setState({itemStates});

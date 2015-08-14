@@ -1,5 +1,5 @@
 const genericWillMount = {
-  componentWillMount () {
+	componentWillMount () {
 		const self = this;
 
 		this.elements = {
@@ -16,7 +16,7 @@ const genericWillMount = {
 		};
 
 		this.__constructor(this.props);
-	},
+	}
 };
 
 export default genericWillMount;
