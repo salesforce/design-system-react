@@ -8,7 +8,7 @@ import SelectlistCore from '../../core/selectlist';
 import React from 'react';
 import ReactHelpers from '../mixins/helpers';
 import Events from '../mixins/events';
-
+import genericWillMount from '../mixins/generic-will-mount';
 // Third party
 import classNames from 'classnames';
 
@@ -16,7 +16,7 @@ import classNames from 'classnames';
 import SelectlistItem from './selectlist-item';
 
 const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
-	mixins: [ReactHelpers, Events],
+	mixins: [ReactHelpers, Events, genericWillMount],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -37,6 +37,7 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
 	},
 
 	menuItems () {
+		// TO-DO: This should really look at this._collection unless we remove collection handling from the React facade
 		return this.props.collection.map((menuItem, index) => {
 			return (
 				<SelectlistItem key={index} item={menuItem} onSelected={this.handleMenuItemSelected} />
@@ -45,7 +46,7 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
 	},
 
 	render () {
-		const selection = this.getSelection();
+		const selection = Lib.getItemAdapter(this.getSelection());
 
 		const styles = {
 			width: this.state.width
@@ -54,7 +55,7 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
 				<button className={classNames('btn btn-default dropdown-toggle', {disabled: this.state.disabled})} data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
-					<span className="selected-label">{Lib.getProp(selection, 'text') || 'None selected'}</span>
+					<span className="selected-label">{selection.get('text') || 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
 				</button>
@@ -64,25 +65,6 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
 				<input name={this.props.name} className="hidden hidden-field" readOnly aria-hidden="true" type="text" value={JSON.stringify(selection)}></input>
 			</div>
 		);
-	},
-
-	componentWillMount () {
-		const self = this;
-
-		this.elements = {
-			wrapper: {
-				toggleClass (cssClass, state) {
-					const wrapperClasses = self.state.wrapperClasses;
-					wrapperClasses[cssClass] = state;
-
-					self.setState({
-						wrapperClasses: wrapperClasses
-					});
-				}
-			}
-		};
-
-		this.__constructor(this.props);
 	},
 
 	handleMenuItemSelected (selection) {

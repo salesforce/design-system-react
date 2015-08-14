@@ -32,30 +32,8 @@ export function isRegExp (potentialRegExp) {
 	return toString.call(potentialRegExp) === '[object RegExp]';
 }
 
-export function isObject (potentialObject) {
-	return isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
-}
-
-// Model Helpers
-export function getProp (obj, prop) {
-	if (!obj) {
-		return undefined;
-	}
-
-	if (isFunction(obj.get)) {
-		return obj.get(prop);
-	}
-
-	return obj[prop];
-}
-
-// Collection Helpers
-function _isRegexMatch (string, regex) {
-	if (!isRegExp(regex) || !isString(string)) {
-		return false;
-	}
-
-	return string.match(regex);
+export function isArray (potentialArray) {
+	return toString.call(potentialArray) === '[object Array]';
 }
 
 function _findMatch (collection, isMatch) {
@@ -76,6 +54,10 @@ function _findMatch (collection, isMatch) {
 	return found || null;
 }
 
+export function isObject (potentialObject) {
+	return isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
+}
+
 export function findWhere (collection, criteria) {
 	const _criteria = (isObject(_criteria) && isFunction(_criteria.toJSON) && _criteria.toJSON()) || criteria;
 	let _isMatch;
@@ -84,7 +66,7 @@ export function findWhere (collection, criteria) {
 		_isMatch = function (item) {
 			let match = true;
 			let innerItem = item;
-			
+
 			if (isFunction(innerItem.toJSON)) {
 				innerItem = innerItem.toJSON();
 			}
@@ -100,10 +82,11 @@ export function findWhere (collection, criteria) {
 	} else {
 		_isMatch = _criteria;
 	}
-	
+
 	return _findMatch(collection, _isMatch);
 }
 
+// Data Helpers
 export function extend (target) {
 	for (let i = 1; i < arguments.length; i++) {
 		const source = arguments[i];
@@ -122,4 +105,41 @@ export function extend (target) {
 	}
 
 	return target;
+}
+
+const _adapters = [];
+
+export function registerAdapter (name, Adapter) {
+	if (!_adapters.name) {
+		_adapters[name] = Adapter;
+		_adapters.unshift(Adapter);
+	}
+}
+
+export function getItemAdapter (item) {
+	let _item;
+
+	_adapters.forEach(function (Adapter) {
+		if (!_item && item instanceof Adapter.Item) {
+			_item = item;
+		} else if (!_item && Adapter.Item.isTypeOf(item)) {
+			_item = new Adapter.Item(item);
+		}
+	});
+
+	return _item;
+}
+
+export function getDataAdapter (data) {
+	let _data;
+
+	_adapters.forEach(function (Adapter) {
+		if (!_data && data instanceof Adapter.Data) {
+			_data = data;
+		} else if (!_data && Adapter.Data.isTypeOf(data)) {
+			_data = new Adapter.Data(data);
+		}
+	});
+
+	return _data;
 }

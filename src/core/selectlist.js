@@ -32,11 +32,9 @@ const SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 	// TO-DO: Basically a bunch of if-else blocks. Can this be improved?
 	__initializeOptions (options) {
 		if (options && options.collection) {
-			this._collection = options.collection;
-		} else if (this.collection) {
-			this._collection = this.collection;
+			this._collection = Lib.getDataAdapter(options.collection);
 		} else if (!this._collection) {
-			this._collection = [];
+			this._collection = Lib.getDataAdapter([]);
 		}
 
 		this.__initializeSelectable(options);
@@ -83,7 +81,7 @@ const SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 		const control = sizer.querySelector('.' + self.cssClasses.CONTROL);
 
 		this._collection.forEach(function (item) {
-			const text = Lib.getProp(item, 'text');
+			const text = item.get('text');
 			label.textContent = text;
 			newWidth = control.offsetWidth;
 			if (newWidth > width) {
@@ -93,7 +91,7 @@ const SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 
 		parent.removeChild(sizer);
 
-		this.__setState({ width: width });
+		this.setState({ width: width });
 		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
 	}
 });

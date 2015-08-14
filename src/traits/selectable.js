@@ -3,7 +3,7 @@
 import * as Lib from '../core/lib';
 
 const isNonDisabledItem = function isNonDisabledItem (item) {
-	return !Lib.getProp(item, 'disabled') && !Lib.getProp(item, '_itemType');
+	return item.get('disabled') && !item.get('_itemType');
 };
 
 const Selectable = {
@@ -20,8 +20,8 @@ const Selectable = {
 	},
 
 	__setSelection (newSelection) {
-		if (this.__getState('selection') !== newSelection) {
-			this.__setState({ selection: newSelection });
+		if (this.getState('selection') !== newSelection) {
+			this.setState({ selection: newSelection });
 			if (Lib.isFunction(this._onSelected)) this._onSelected(newSelection);
 			
 			// Trigger the event using facade-native methods
@@ -31,30 +31,23 @@ const Selectable = {
 
 	// Pass any combination of key / value pairs
 	setSelection (criteria) {
-		const item = Lib.findWhere(this._collection, criteria);
+		let item = this._collection.findWhere(criteria);
+		
+		if (item) {
+			item = item._item;
+		}
 
 		return this.__setSelection(item);
 	},
-
-	// Legacy Fuel UX functionality - select by position
+	
 	setSelectionByIndex (index) {
-		let item;
-
-		if (!this._collection) {
-			return;
-		}
-
-		if (Lib.isFunction(this._collection.at)) {
-			item = this._collection.at(index);
-		} else {
-			item = this._collection[index];
-		}
+		const item = this._collection.at(index);
 
 		this.__setSelection(item);
 	},
 
 	getSelection () {
-		return this.__getState('selection') || null;
+		return this.getState('selection');
 	},
 
 	clearSelection () {
