@@ -268,6 +268,10 @@ describe('Tree Component', function () {
 				});
 
 				describe('tree element', function () {
+					it('should be an unordered list element', function () {
+						expect(tree.is('ul')).to.be.true;
+					});
+
 					it('should have the class "tree"', function () {
 						expect(tree.is('.tree')).to.be.true;
 					});
@@ -277,20 +281,49 @@ describe('Tree Component', function () {
 					});
 
 					describe('outer item element', function () {
-						it('should have the class "tree-item"');
-						it('should have the role "tree"');
+						let item = null;
+
+						beforeEach(function () {
+							item = tree.find('> li').first();
+						});
+
+						it('should have the class "tree-item"', function () {
+							expect(item.is('.tree-item')).to.be.true;
+						});
+
+						it('should have the role "tree"', function () {
+							expect(item.is('[role=tree]')).to.be.true;
+						});
 
 						describe('tree item button', function () {
-							it('should have the class "tree-item-name"');
-							it('should have the type "button"');
+							let button = null;
+
+							beforeEach(function () {
+								button = item.find('> button').first();
+							});
+
+							it('should have the class "tree-item-name"', function () {
+								expect(button.is('.tree-item-name')).to.be.true;
+							});
+
+							it('should have the type "button"', function () {
+								expect(button.is('[type=button]')).to.be.true;
+							});
 
 							describe('tree item icon', function() {
-								it('should have the class "icon-item"');
+								it('should have an element with the class "icon-item"', function () {
+									expect(button.find('.icon-item').length).to.equal(1);
+								});
 							});
 
 							describe('tree item label', function() {
-								it('should have the class "tree-label"');
-								it('should have the text from the data');
+								it('should have an element with the class "tree-label"', function () {
+									expect(button.find('.tree-label').length).to.equal(1);
+								});
+
+								it('should have the text from the data', function () {
+									expect(button.find('.tree-label').text()).to.equal(initData.children[0].text);
+								});
 							});
 						});
 					});
