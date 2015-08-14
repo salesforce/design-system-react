@@ -73,18 +73,32 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 	renderItem ( item ) {
 		const $item = this.$html.find( '.tree-item' ).clone();
+		const itemState = this.accessors.getItemState.call( this, item );
 
 		$item.find( '.tree-label' ).text( this.accessors.getText( item ) );
+		$item.data( { item: item._item } );
+
+		if ( itemState.selected ) {
+			this.__styleNodeSelected( $item, 'item' );
+		}
 
 		return $item;
 	},
 
 	renderBranch ( item ) {
 		const $item = this.$html.find( '.tree-branch' ).clone();
+		const itemState = this.accessors.getItemState.call( this, item );
 
 		$item.find( '.tree-label' ).text( this.accessors.getText( item ) );
+		$item.data( { item: item._item } );
 
-		$item.find( '.tree-branch-name' ).data( { open: false } );
+		if ( itemState.selected ) {
+			this.__styleNodeSelected( $item, 'folder' );
+		}
+
+		if ( itemState.open ) {
+			this.discloseFolder( $item );
+		}
 
 		return $item;
 	},
@@ -102,8 +116,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 			} else if ( type === 'item' ) {
 				$li = self.renderItem( item );
 			}
-
-			$li.data( { item: item._item } );
 
 			$el.append( $li );
 		});
@@ -269,42 +281,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 			self.__styleNodeDeselected( $el, type );
 		});
-	},
-
-	__multiSelectSyncNodes (self, clicked, selected) {
-		// search for currently selected and add to selected data list if needed
-		$.each(selected.$elements, function (index, element) {
-			const $element = $(element);
-			if ($element[0] !== clicked.$element[0]) {
-				selected.dataForEvent.push( $($element).data() );
-			}
-		});
-
-		if (clicked.$element.hasClass('tree-selected')) {
-			this.__styleNodeDeselected(clicked.$element, clicked.$icon);
-			// set event data
-			selected.eventType = 'deselected';
-		} else {
-			this.__styleNodeSelected(clicked.$element, clicked.$icon);
-			// set event data
-			selected.eventType = 'selected';
-			selected.dataForEvent.push(clicked.elementData);
-		}
-	},
-
-	__singleSelectSyncNodes (self, clicked, selected) {
-		// element is not currently selected
-		if (selected.$elements[0] !== clicked.$element[0]) {
-			this.__styleNodeSelected(clicked.$element, clicked.$icon);
-			// set event data
-			selected.eventType = 'selected';
-			selected.dataForEvent = [clicked.elementData];
-		} else {
-			this.__styleNodeDeselected(clicked.$element, clicked.$icon);
-			// set event data
-			selected.eventType = 'deselected';
-			selected.dataForEvent = [];
-		}
 	}
 });
 

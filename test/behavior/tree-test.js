@@ -231,7 +231,7 @@ describe('Tree Component', function () {
 					children: [
 						{
 							text: 'Item 1',
-							type: 'item',
+							type: 'item'
 						},
 						{
 							text: 'Folder 1',
@@ -242,7 +242,7 @@ describe('Tree Component', function () {
 								{
 									text: 'Item 2',
 									type: 'item',
-									iconClass: 'custom-item-icon-class',
+									iconClass: 'custom-item-icon-class'
 								},
 								{
 									text: 'Folder 2',
@@ -310,13 +310,13 @@ describe('Tree Component', function () {
 								expect(button.is('[type=button]')).to.be.true;
 							});
 
-							describe('tree item icon', function() {
+							describe('tree item icon', function () {
 								it('should have an element with the class "icon-item"', function () {
 									expect(button.find('.icon-item').length).to.equal(1);
 								});
 							});
 
-							describe('tree item label', function() {
+							describe('tree item label', function () {
 								it('should have an element with the class "tree-label"', function () {
 									expect(button.find('.tree-label').length).to.equal(1);
 								});
@@ -341,26 +341,26 @@ describe('Tree Component', function () {
 								it('should have the class "tree-branch-name"');
 								it('should have the type "button"');
 
-								describe('tree folder caret', function() {
+								describe('tree folder caret', function () {
 									it('should have the class "icon-caret"');
 								});
 
-								describe('tree folder icon', function() {
+								describe('tree folder icon', function () {
 									it('should have the class "icon-folder"');
 								});
 
-								describe('tree folder label', function() {
+								describe('tree folder label', function () {
 									it('should have the class "tree-label"');
 									it('should have the text from the data');
 								});
 							});
 						});
 
-						describe('tree folder children', function() {
+						describe('tree folder children', function () {
 							it('should have the class "tree-branch-children"');
 							it('should have the role "group"');
 
-							describe('tree folder children example', function() {
+							describe('tree folder children example', function () {
 								describe('outer item element', function () {
 									it('should have the class "tree-item"');
 									it('should have the role "tree"');
@@ -369,12 +369,12 @@ describe('Tree Component', function () {
 										it('should have the class "tree-item-name"');
 										it('should have the type "button"');
 
-										describe('tree item icon', function() {
+										describe('tree item icon', function () {
 											it('should have the class "icon-item"');
 											it('should have the other classes passed in via data');
 										});
 
-										describe('tree item label', function() {
+										describe('tree item label', function () {
 											it('should have the class "tree-label"');
 											it('should have the text from the data');
 										});
@@ -394,33 +394,33 @@ describe('Tree Component', function () {
 											it('should have the class "tree-branch-name"');
 											it('should have the type "button"');
 
-											describe('tree folder caret', function() {
+											describe('tree folder caret', function () {
 												it('should have the class "icon-caret"');
 											});
 
-											describe('tree folder icon', function() {
+											describe('tree folder icon', function () {
 												it('should have the class "icon-folder"');
 												it('should have the other classes passed in via data');
 											});
 
-											describe('tree folder label', function() {
+											describe('tree folder label', function () {
 												it('should have the class "tree-label"');
 												it('should have the text from the data');
 											});
 										});
 									});
 
-									describe('tree folder children', function() {
+									describe('tree folder children', function () {
 										it('should have the class "tree-branch-children"');
 										it('should have the role "group"');
 
-										describe('tree folder children', function() {
+										describe('tree folder children', function () {
 											it('should not have any tree items');
 											it('should not have any tree folders');
 										});
 									});
 
-									describe('tree loader', function() {
+									describe('tree loader', function () {
 										it('should have the class "tree-loader"');
 										it('should have the role "alert"');
 									});
@@ -428,7 +428,7 @@ describe('Tree Component', function () {
 							});
 						});
 
-						describe('tree loader', function() {
+						describe('tree loader', function () {
 							it('should have the class "tree-loader"');
 							it('should have the role "alert"');
 						});
@@ -441,7 +441,7 @@ describe('Tree Component', function () {
 			'createComponent',
 			'destroyComponent'
 			// TODO: Test interactivity
-		], function (testingBehaviorHandlers) {
+		], function ( ) { // testingBehaviorHandlers ) {
 		});
 	});
 });

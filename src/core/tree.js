@@ -77,9 +77,12 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 			const itemState = itemStates[id] || {
 				selected: false,
 				open: false,
-				loading: false,
-				item: _item._item
+				loading: false
 			};
+
+			Lib.extend( itemState, {
+				item: _item._item
+			} );
 
 			if ( !itemStates[id] ) {
 				itemStates[id] = itemState;
