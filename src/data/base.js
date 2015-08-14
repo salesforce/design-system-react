@@ -1,25 +1,25 @@
 import * as Lib from '../core/lib';
 
 function _extend (protoProps) {
-	var parent = this;
-	var child = function () {
+	const parent = this;
+	const child = function () {
 		return parent.apply(this, arguments);
 	};
-	var Surrogate = function () {
+	const Surrogate = function () {
 		this.constructor = child;
 	};
-	
+
 	Lib.extend(child, parent);
-	
+
 	Surrogate.prototype = parent.prototype;
 	child.prototype = new Surrogate;
-	
+
 	if (protoProps) {
 		Lib.extend(child.prototype, protoProps);
 	}
-	
+
 	child.__super__ = parent.prototype;
-	
+
 	return child;
 }
 
@@ -56,7 +56,7 @@ Lib.extend(Item.prototype, {
 	get () {
 		return undefined;
 	},
-	
+
 	keys () {
 		return undefined;
 	}
@@ -75,36 +75,36 @@ Lib.extend(Data.prototype, {
 	// Instance methods
 	findWhere (criteria) {
 		let _isMatch;
-	
+
 		if (Lib.isObject(criteria) && !Lib.isFunction(criteria)) {
 			const _criteria = Lib.getItemAdapter(criteria);
-			
+
 			_isMatch = function (item) {
 				let match = true;
-	
+
 				_criteria.keys().forEach(function (key) {
 					if (_criteria.get(key) !== item.get(key) && !_isRegexMatch(item.get(key), _criteria.get(key))) {
 						match = false;
 					}
 				});
-	
+
 				return match;
 			};
 		} else {
 			_isMatch = criteria;
 		}
-		
+
 		return _findMatch(this, _isMatch);
 	},
-	
+
 	get () {
 		return undefined;
 	},
-	
+
 	at () {
 		return undefined;
 	},
-	
+
 	forEach () { }
 });
 

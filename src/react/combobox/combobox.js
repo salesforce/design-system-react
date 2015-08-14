@@ -8,6 +8,7 @@ import ComboboxCore from '../../core/combobox';
 import React from 'react';
 import ReactHelpers from '../mixins/helpers';
 import Events from '../mixins/events';
+
 // Third party
 import classNames from 'classnames';
 

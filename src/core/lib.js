@@ -36,8 +36,54 @@ export function isArray (potentialArray) {
 	return toString.call(potentialArray) === '[object Array]';
 }
 
+function _findMatch (collection, isMatch) {
+	let found;
+
+	if (!isFunction(isMatch)) {
+		return null;
+	}
+
+	collection.forEach(function (item) {
+		if (!found) {
+			if (isMatch(item)) {
+				found = item;
+			}
+		}
+	});
+
+	return found || null;
+}
+
 export function isObject (potentialObject) {
 	return isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
+}
+
+export function findWhere (collection, criteria) {
+	const _criteria = (isObject(_criteria) && isFunction(_criteria.toJSON) && _criteria.toJSON()) || criteria;
+	let _isMatch;
+
+	if (isObject(_criteria) && !isFunction(_criteria)) {
+		_isMatch = function (item) {
+			let match = true;
+			let innerItem = item;
+
+			if (isFunction(innerItem.toJSON)) {
+				innerItem = innerItem.toJSON();
+			}
+
+			Object.keys(_criteria).forEach(function (key) {
+				if (_criteria[key] !== innerItem[key] && !_isRegexMatch(innerItem[key], _criteria[key])) {
+					match = false;
+				}
+			});
+
+			return match;
+		};
+	} else {
+		_isMatch = _criteria;
+	}
+
+	return _findMatch(collection, _isMatch);
 }
 
 // Data Helpers
@@ -72,7 +118,7 @@ export function registerAdapter (name, Adapter) {
 
 export function getItemAdapter (item) {
 	let _item;
-	
+
 	_adapters.forEach(function (Adapter) {
 		if (!_item && item instanceof Adapter.Item) {
 			_item = item;
@@ -80,13 +126,13 @@ export function getItemAdapter (item) {
 			_item = new Adapter.Item(item);
 		}
 	});
-	
+
 	return _item;
 }
 
 export function getDataAdapter (data) {
 	let _data;
-	
+
 	_adapters.forEach(function (Adapter) {
 		if (!_data && data instanceof Adapter.Data) {
 			_data = data;
@@ -94,6 +140,6 @@ export function getDataAdapter (data) {
 			_data = new Adapter.Data(data);
 		}
 	});
-	
+
 	return _data;
 }
