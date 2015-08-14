@@ -68,6 +68,10 @@ const Data = Base.Data.extend({
 			const _item = new self.ItemType(item);
 			callback.call(thisArg || self, _item);
 		});
+	},
+
+	length () {
+		return this._data.length;
 	}
 });
 

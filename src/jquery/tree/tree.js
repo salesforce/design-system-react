@@ -7,6 +7,7 @@ import TreeCore, {CONTROL} from '../../core/tree';
 // Framework Specific
 import createPlugin from '../createPlugin';
 import Events from '../events';
+import State from '../state';
 
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
@@ -19,98 +20,35 @@ const Tree = function Tree (element, options) {
 		wrapper: $(element)
 	};
 
-	this._collection = [
-		{
-			id: 0,
-			text: 'Top Branch',
-			_itemType: 'folder',
-			children: [
-				{
-					id: 1,
-					text: 'Node 1T1',
-					_itemType: 'item'
-				},
-				{
-					id: 2,
-					text: 'Node 1T2',
-					_itemType: 'item'
-				},
-				{
-					id: 3,
-					text: 'Folder 1T1',
-					_itemType: 'folder',
-					children: [
-						{
-							id: 4,
-							text: 'Node 2T1',
-							_itemType: 'item'
-						},
-						{
-							id: 5,
-							text: 'Node 2T2',
-							_itemType: 'item'
-						}
-					]
-				}
-			]
-		},
-		{
-			id: 6,
-			text: 'Top Node',
-			_itemType: 'item'
-		}
-	];
-
+	this.__initializeState();
 	this.__constructor(this.options);
 };
 
-Lib.extend(Tree.prototype, TreeCore, Events, {
+Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	onInitialized () {
-		if ( this._collection && this._collection.length) {
-			this.statefulizeCollection( this._collection, null );
-		}
-
-		this.__setState( { itemSelect: true } );
-
 		if (!this.rendered) {
 			this.render();
 		}
 
 		this.elements.wrapper.on( 'click.fu.tree', '.tree-branch-name', $.proxy( function ( $event ) {
-			this.toggleFolder( $event.currentTarget );
+			if ( this.getState( 'folderSelect' ) ) {
+				this.selectFolder( $event.currentTarget );
+			} else {
+				this.toggleFolder( $event.currentTarget );
+			}
 		}, this ) );
 
-		if ( this.__getState( 'itemSelect' ) ) {
+		if ( this.getState( 'itemSelect' ) ) {
 			this.elements.wrapper.on( 'click.fu.tree', '.tree-item', $.proxy( function ( $event ) {
 				this.selectItem( $event.currentTarget );
 			}, this ) );
 		}
 
-		if ( this.__getState( 'folderSelect' ) ) {
-			this.elements.wrapper.off( 'click.fu.tree', '.tree-branch-name' );
+		if ( this.getState( 'folderSelect' ) ) {
 			this.elements.wrapper.on( 'click.fu.tree', '.icon-caret', $.proxy( function ( $event ) {
 				this.toggleFolder( $event.currentTarget );
 			}, this ) );
-			this.elements.wrapper.on( 'click.fu.tree', '.tree-branch-name', $.proxy( function ( $event ) {
-				this.selectItem( $event.currentTarget );
-			}, this ) );
 		}
-	},
-
-	statefulizeCollection ( collection, parent ) {
-		if ( collection && collection.length ) {
-			collection.forEach( function ( item ) {
-				if ( typeof item.id === 'undefined' ) {
-					item.id = Symbol();
-				}
-
-				if ( !item._parent ) {
-					item._parent = ( parent && parent.id ) ? parent.id : null;
-				}
-			} );
-		}
-
-		return collection;
 	},
 
 	render () {
@@ -118,7 +56,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 		this.elements.wrapper.empty();
 		const $html = $( '<i />' ).append( fs.readFileSync(__dirname + '/tree.html', 'utf8') );
 
-		if ( this.__getState( 'folderSelect' ) ) {
+		if ( this.getState( 'folderSelect' ) ) {
 			this.$html = $html.find( '.tree.tree-folder-select' ).clone();
 		} else {
 			this.$html = $html.find( '.tree:not(.tree-folder-select)' ).clone();
@@ -126,7 +64,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 
 		$el = this.$html.clone().empty();
 
-		if ( this._collection.length ) {
+		if ( this._collection.length() ) {
 			this._loopChildren( this._collection, $el );
 		}
 
@@ -165,7 +103,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 				$li = self.renderItem( item );
 			}
 
-			$li.data( { item: item } );
+			$li.data( { item: item._item } );
 
 			$el.append( $li );
 		});
@@ -173,14 +111,14 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 
 	populate ( el ) {
 		const $el = $( el );
-		const item = $el.data( 'item' );
+		const item = Lib.getItemAdapter( $el.data( 'item' ) );
 		const self = this;
 		let resp;
 
 		resp = this.accessors.getChildren( item );
 
 		resp.then( function ( children ) {
-			self._loopChildren( self.statefulizeCollection( children, item ), $el.find( '.tree-branch-children' ) );
+			self._loopChildren( children, $el.find( '.tree-branch-children' ) );
 		});
 	},
 
@@ -215,7 +153,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 			.addClass('glyphicon-folder-close');
 
 		// remove chidren if no cache
-		if (!this.__getState( 'cacheItems' ) ) {
+		if (!this.getState( 'cacheItems' ) ) {
 			$treeFolderContentFirstChild.empty();
 		}
 
@@ -245,56 +183,91 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 	},
 
 	selectItem ( el ) {
-		if ( this.__getState( 'itemSelect' ) ) {
-			this.__selectItem( $(el).closest( '.tree-item' ).data( 'item' ) );
+		if ( this.getState( 'itemSelect' ) ) {
+			const $item = $(el).closest( '.tree-item' );
+			const item = Lib.getItemAdapter( $item.data( 'item' ) );
 
-			this.selectTreeNode(el, 'item');
+			this.__selectItem( item );
+
+			this.selectNodes( $item, item, 'item' );
 		}
 	},
 
 	selectFolder ( el ) {
-		if ( this.__getState( 'folderSelect' )  ) {
-			this.__selectItem( $el.closest( '.tree-branch' ).data( 'item' ) );
+		if ( this.getState( 'folderSelect' )  ) {
+			const $folder = $(el).closest( '.tree-branch' );
+			const item = Lib.getItemAdapter( $folder.data( 'item' ) );
 
-			this.selectTreeNode(el, 'folder');
+			this.__selectItem( item );
+
+			this.selectNodes( $folder, item, 'folder' );
 		}
 	},
 
-	selectTreeNode ( el, nodeType ) {
-		const clicked = {};	// object for clicked element
-		const selected = {}; // object for selected elements
+	selectNodes ( el, item, type ) {
+		const itemSelect = this.getState( 'itemSelect' );
+		const folderSelect = this.getState( 'folderSelect' );
+		const multiSelect = this.getState( 'multiSelect' );
+		const selected = this.accessors.getItemState.call( this, item ).selected;
+		const eventType = selected ? 'selected' : 'deselected';
+		const $el = $( el );
+		let selectedItems;
+		
 
-		clicked.$element = $(el);
+		if ( ( type === 'item' && itemSelect ) || ( type === 'folder' && folderSelect ) ) {
+			if ( !multiSelect ) {
+				this.deselectAll();
+				selectedItems = [ item ];
+			} else {
+				selectedItems = this.getSelectedItems();
+			}
 
-		selected.$elements = this.elements.wrapper.find('.tree-selected');
-		selected.dataForEvent = [];
+			if ( selected ) {
+				this.__styleNodeSelected( $el, type );
+			} else {
+				this.__styleNodeDeselected( $el, type );
+			}
 
-		// determine clicked element and it's icon
-		if (nodeType === 'folder') {
-			// make the clicked.$element the container branch
-			clicked.$element = clicked.$element.closest('.tree-branch');
-			clicked.$icon = clicked.$element.find('.icon-folder');
-		} else {
-			clicked.$icon = clicked.$element.find('.icon-item');
+			this.elements.wrapper.trigger(eventType + '.fu.tree', {
+				target: item,
+				selected: selectedItems
+			});
+
+			$el.trigger('updated.fu.tree', {
+				selected: selectedItems,
+				item: $el,
+				eventType: eventType
+			});
 		}
-		clicked.elementData = clicked.$element.data();
+	},
 
-		if ( this.__getState( 'multiSelect' ) ) {
-			this.__multiSelectSyncNodes(this, clicked, selected);
-		} else {
-			this.__singleSelectSyncNodes(this, clicked, selected);
+	__styleNodeSelected ($el, type) {
+		const $icon = $el.find( '.icon-' + type );
+		
+		$el.addClass('tree-selected');
+		if ( type === 'item' && $icon.hasClass('fueluxicon-bullet') ) {
+			$icon.removeClass('fueluxicon-bullet').addClass('glyphicon-ok'); // make checkmark
 		}
+	},
 
-		// all done with the DOM, now fire events
-		this.elements.wrapper.trigger(selected.eventType + '.fu.tree', {
-			target: clicked.elementData,
-			selected: selected.dataForEvent
-		});
+	__styleNodeDeselected ($el, type) {
+		const $icon = $el.find( '.icon-' + type );
 
-		clicked.$element.trigger('updated.fu.tree', {
-			selected: selected.dataForEvent,
-			item: clicked.$element,
-			eventType: selected.eventType
+		$el.removeClass('tree-selected');
+		if ( type === 'item' && $icon.hasClass('glyphicon-ok') ) {
+			$icon.removeClass('glyphicon-ok').addClass('fueluxicon-bullet'); // make bullet
+		}
+	},
+
+	deselectAll () {
+		const self = this;
+
+		this.elements.wrapper.find( '.tree-selected' ).each( function ( index, el ) {
+			const $el = $( el );
+			const item = Lib.getItemAdapter( $el.data( 'item' ) );
+			const type = self.accessors.getType( item );
+
+			self.__styleNodeDeselected( $el, type );
 		});
 	},
 
@@ -331,26 +304,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, {
 			// set event data
 			selected.eventType = 'deselected';
 			selected.dataForEvent = [];
-		}
-	},
-
-	__styleNodeSelected ($element, $icon) {
-		$element.addClass('tree-selected');
-		if ( $element.data('type') === 'item' && $icon.hasClass('fueluxicon-bullet') ) {
-			$icon.removeClass('fueluxicon-bullet').addClass('glyphicon-ok'); // make checkmark
-		}
-	},
-
-	__styleNodeDeselected ($element, $icon) {
-		$element.removeClass('tree-selected');
-		if ( $element.data('type') === 'item' && $icon.hasClass('glyphicon-ok') ) {
-			$icon.removeClass('glyphicon-ok').addClass('fueluxicon-bullet'); // make bullet
-		}
-	},
-
-	accessors: {
-		getExpandable ( item ) {
-			return Lib.getProp( item, '_itemType' ) === 'folder';
 		}
 	}
 });

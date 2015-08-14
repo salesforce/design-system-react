@@ -5,15 +5,15 @@ import * as Lib from '../core/lib';
 
 const State = {
 	__initializeState () {
-		this._state = {};
+		this.state = {};
 	},
 	
 	setState (values) {
-		return Lib.extend(this._state, values);
+		return Lib.extend(this.state, values);
 	},
 
 	getState (key) {
-		return this._state[key];
+		return this.state[key];
 	}
 };
 
