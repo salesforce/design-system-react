@@ -39,8 +39,7 @@ const Selectable = {
 
 		return this.__setSelection(item);
 	},
-
-	// Legacy Fuel UX functionality - select by position
+	
 	setSelectionByIndex (index) {
 		const item = this._collection.at(index);
 
