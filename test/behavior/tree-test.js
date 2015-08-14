@@ -35,6 +35,10 @@ component createComponent( initData )
 		]
 	}
 
+getComponentElement( component )
+	This should return the outermost unordered list element (beginning of the official tree HTML)
+	component => returned value from createComponent
+
 destroyComponent( component )
 	This should perform all cleanup tasks such that it appears the tree never existed.
 	component => returned value from createComponent
@@ -143,6 +147,7 @@ describe('Tree Component', function () {
 	_.each(facades, function (facadeTestLib, facadeName) {
 		registerTestsForBehaviorCallbacks(facadeName, facadeTestLib, [
 			'createComponent',
+			'getComponentElement',
 			'destroyComponent',
 			'getSelectedItems',
 			'select',
@@ -168,6 +173,7 @@ describe('Tree Component', function () {
 
 		registerBehaviorTestCombinations(facadeName, facadeTestLib, [
 			'createComponent',
+			'getComponentElement',
 			'destroyComponent'
 		], function (testingBehaviorHandlers) {
 			let container = null;
@@ -220,40 +226,39 @@ describe('Tree Component', function () {
 			describe('DOM expectations based on data', function () {
 				let component = null;
 				let tree = null;
+				const initData = {
+					container: container,
+					children: [
+						{
+							text: 'Item 1',
+							type: 'item',
+						},
+						{
+							text: 'Folder 1',
+							type: 'folder',
+							initiallyOpen: true,
+							expandable: true,
+							children: [
+								{
+									text: 'Item 2',
+									type: 'item',
+									iconClass: 'custom-item-icon-class',
+								},
+								{
+									text: 'Folder 2',
+									type: 'folder',
+									iconClass: 'custom-folder-icon-class',
+									expandable: true,
+									children: []
+								}
+							]
+						}
+					]
+				};
 
 				beforeEach(function () {
-					component = testingBehaviorHandlers.createComponent( {
-						container: container,
-						children: [
-							{
-								text: 'Item 1',
-								type: 'item',
-							},
-							{
-								text: 'Folder 1',
-								type: 'folder',
-								initiallyOpen: true,
-								expandable: true,
-								children: [
-									{
-										text: 'Item 2',
-										type: 'item',
-										iconClass: 'custom-item-icon-class',
-									},
-									{
-										text: 'Folder 2',
-										type: 'folder',
-										iconClass: 'custom-folder-icon-class',
-										expandable: true,
-										children: []
-									}
-								]
-							}
-						]
-					} );
-
-					// TODO: Better way of getting relevant element from component?
-					tree = $('.tree', container);
+					component = testingBehaviorHandlers.createComponent( JSON.parse( JSON.stringify( initData ) ) );
+					tree = $(testingBehaviorHandlers.getComponentElement(component));
 				});
 
 				afterEach(function () {
