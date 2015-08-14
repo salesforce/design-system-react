@@ -30,8 +30,6 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	__initializeOptions (options) {
 		if (options && options.collection) {
 			this._collection = Lib.getDataAdapter(options.collection);
-		} else if (this.collection) {
-			this._collection = Lib.getDataAdapter(this.collection);
 		} else if (!this._collection) {
 			this._collection = Lib.getDataAdapter([]);
 		}
@@ -39,7 +37,8 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		// TODO - Address this.
 		this.setState({
 			multiSelect: options.multiSelect,
-			folderSelect: options.folderSelect
+			folderSelect: options.folderSelect,
+			itemSelect: options.itemSelect
 		});
 
 		this.__initializeDisableable(options);
@@ -67,18 +66,27 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		},
 
 		getItemState (item) {
-			const id = item.get('id');
+			const _item = Lib.getItemAdapter( item );
+			const id = _item.get('id');
 			const itemStates = this.state.itemStates;
-			if (!id) {
+
+			if ( typeof id === 'undefined' ) {
 				throw new Error('A unique id is required!');
 			}
 
 			const itemState = itemStates[id] || {
 				selected: false,
 				open: false,
-				loading: false,
-				item: item
+				loading: false
 			};
+
+			Lib.extend( itemState, {
+				item: _item._item
+			} );
+
+			if ( !itemStates[id] ) {
+				itemStates[id] = itemState;
+			}
 
 			return itemState;
 		}
@@ -148,11 +156,12 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	},
 
 	__setItemState (item, state) {
-		const itemState = this.accessors.getItemState(item);
+		const itemState = this.accessors.getItemState.call(this, item);
 		const itemStates = this.state.itemStates;
-		const id = item.get('id');
+		const _item = Lib.getItemAdapter( itemState.item );
+		const id = _item.get( 'id' );
 
-		if (!id) {
+		if ( typeof id === 'undefined' ) {
 			throw new Error('A unique id is required!');
 		}
 
@@ -163,31 +172,40 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 
 	__selectItem (item) {
 		const itemStates = this.state.itemStates;
+		const selected = this.accessors.getItemState.call( this, item ).selected;
 
 		if (!this.state.multiSelect) {
-			this.__setItemState(item, {selected: true});
+			this.__setItemState(item, {selected: !selected});
 			Object.keys(itemStates).forEach(itemId => {
 				if (itemId !== item.get('id').toString()) { // Need a toString here because itemId is an object literal key, and therefore a string.
 					this.__setItemState(itemStates[itemId].item, {selected: false});
 				}
 			});
 		} else {
-			const currentItemState = this.accessors.getItemState(item);
+			const currentItemState = this.accessors.getItemState.call(this, item);
 			currentItemState.selected = !currentItemState.selected;
 			this.__setItemState(item, currentItemState);
 		}
 	},
 
+	__deselectAll () {
+		const itemStates = this.state.itemStates;
+
+		Object.keys(itemStates).forEach( itemId => {
+			this.__setItemState( itemStates[itemId].item, { selected: false } );
+		});
+	},
+
 	__toggleFolder (folder) {
-		this.__setItemState(folder, {open: !this.accessors.getItemState(folder).open});
+		this.__setItemState(folder, {open: !this.accessors.getItemState.call(this, folder).open});
 	},
 
 	getSelectedItems () {
 		const itemStates = this.state.itemStates;
 		const selectedItems = [];
-		itemStates.forEach((itemState) => {
-			if (itemState.selected) {
-				selectedItems.push(itemState.item);
+		Object.keys(itemStates).forEach((itemId) => {
+			if (itemStates[itemId].selected) {
+				selectedItems.push(itemStates[itemId].item);
 			}
 		});
 

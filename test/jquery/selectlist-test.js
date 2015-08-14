@@ -9,7 +9,6 @@ require('bootstrap');
 
 import Selectlist from '../../src/jquery/selectlist/selectlist';
 
-console.log('mocha');
 /* FOR DEV TESTING */
 // var html = require('text!dev.html!strip');
 html = $('<div><div id="mainSelectlist"></div></div>');

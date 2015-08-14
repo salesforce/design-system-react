@@ -19,8 +19,8 @@ export function registerTestsForBehaviorCallbacks (facadeName, facadeTestLib, re
 		});
 
 		requiredBehaviorNames.forEach(function (behaviorName) {
-			describe(behaviorName + ' action', function () {
-				it('should export an action object for ' + behaviorName, function () {
+			describe(behaviorName + ' behavior', function () {
+				it('should export a behavior handler object for ' + behaviorName, function () {
 					expect(facadeHandlers[behaviorName]).to.be.an('object');
 				});
 
