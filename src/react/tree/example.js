@@ -56,7 +56,7 @@ const collection = [
 export default function (element) {
 	const TreeExample = React.createClass({
 		render () {
-			return <Tree collection={collection}/>;
+			return <Tree folderSelect={false} collection={collection}/>;
 		}
 	});
 

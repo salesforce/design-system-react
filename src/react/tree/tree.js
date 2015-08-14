@@ -11,8 +11,24 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 	mixins: [ReactHelpers, genericWillMount],
 	getInitialState () {
 		return Lib.extend(this.__getInitialState(), {
-			wrapperClasses: {}
+			wrapperClasses: {},
+			// TODO - Address this tomorrow.
+			folderSelect: this.props.folderSelect,
+			multiSelect: this.props.multiSelect
 		});
+	},
+
+	componentWillRecieveProps (nextProps) {
+		this.setState({
+			folderSelect: nextProps.folderSelect,
+			multiSelect: nextProps.multiSelect
+		});
+	},
+
+	getDefaultProps () {
+		return {
+			folderSelect: true
+		};
 	},
 
 	render () {
@@ -20,9 +36,9 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 		this._collection.forEach(model => {
 			let result;
 			if (this.accessors.getType(model) === 'folder') {
-				result = <TreeBranch key={model.get('id')} item={model} onItemClick={this._handleItemClick} accessors={this.accessors} />;
+				result = <TreeBranch key={model.get('id')} item={model} selectable={this.state.folderSelect} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={this.accessors} />;
 			} else {
-				result = <TreeItem key={model.get('id')} item={model} accessors={this.accessors} />;
+				result = <TreeItem key={model.get('id')} item={model} onClick={this._handleItemClick} accessors={this.accessors} />;
 			}
 			contents.push(result);
 		});
@@ -39,9 +55,15 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 	},
 
 	_handleItemClick (item) {
-		if (this.accessors.getType(item) === 'folder') {
+		if (this.accessors.getType(item) === 'folder' && !this.state.folderSelect) {
 			this.__toggleFolder(item);
+		} else {
+			this.__selectItem(item);
 		}
+	},
+
+	_handleExpandClick (item) {
+		this.__toggleFolder(item);
 	}
 }));
 
