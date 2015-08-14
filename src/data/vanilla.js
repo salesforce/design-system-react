@@ -53,8 +53,8 @@ const Data = Base.Data.extend({
 
 	at (index) {
 		let result;
-
-		if (this._data && index) {
+		
+		if (this._data && Lib.isNumber(index)) {
 			result = this._data[index];
 		}
 

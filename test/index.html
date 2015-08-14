@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html class="fuelux">
-  <head>
-    <title>Mocha</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/mocha/mocha.css" />
-    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/fuelux/dist/css/fuelux.min.css" />
-    <style>
-        #mocha-stats .progress {
-            height: 40px;
-        }
-    </style>
-    <script>
-      (function() {
-  				var Ap = Array.prototype;
-  				var slice = Ap.slice;
-  				var Fp = Function.prototype;
-  				if (!Fp.bind) {
-  				  // PhantomJS doesn't support Function.prototype.bind natively, so
-  				  // polyfill it whenever this module is required.
-  				  Fp.bind = function(context) {
-  				    var func = this;
-  				    var args = slice.call(arguments, 1);
-  				    function bound() {
-  				      var invokedAsConstructor = func.prototype && (this instanceof func);
-  				      return func.apply(
-  				        // Ignore the context parameter when invoking the bound function
-  				        // as a constructor. Note that this includes not only constructor
-  				        // invocations using the new keyword but also calls to base class
-  				        // constructors such as BaseClass.call(this, ...) or super(...).
-  				        !invokedAsConstructor && context || this,
-  				        args.concat(slice.call(arguments))
-  				      );
-  				    }
-  				    // The bound function must share the .prototype of the unbound
-  				    // function so that any object created by one constructor will count
-  				    // as an instance of both constructors.
-  				    bound.prototype = func.prototype;
-  				    return bound;
-  				  };
-  				}
-  			})();
-      </script>
-  </head>
-  <body>
-    <div id="mocha"></div>
-    <div id="test-fixture"></div>
-    <script src="/mocha/mocha.js"></script>
-    <script>mocha.setup('bdd')</script>
-    <script src="tests-compiled.js"></script>
-    <script>
-      if (navigator.userAgent.indexOf('PhantomJS') < 0) {
-        mocha.run();
-      }
-    </script>
-  </body>
+	<head>
+		<title>Mocha</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/mocha/mocha.css" />
+		<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/fuelux/dist/css/fuelux.min.css" />
+		<style>
+				#mocha-stats .progress {
+						height: 40px;
+				}
+		</style>
+		<script>
+			(function() {
+					var Ap = Array.prototype;
+					var slice = Ap.slice;
+					var Fp = Function.prototype;
+					if (!Fp.bind) {
+						// PhantomJS doesn't support Function.prototype.bind natively, so
+						// polyfill it whenever this module is required.
+						Fp.bind = function(context) {
+							var func = this;
+							var args = slice.call(arguments, 1);
+							function bound() {
+								var invokedAsConstructor = func.prototype && (this instanceof func);
+								return func.apply(
+									// Ignore the context parameter when invoking the bound function
+									// as a constructor. Note that this includes not only constructor
+									// invocations using the new keyword but also calls to base class
+									// constructors such as BaseClass.call(this, ...) or super(...).
+									!invokedAsConstructor && context || this,
+									args.concat(slice.call(arguments))
+								);
+							}
+							// The bound function must share the .prototype of the unbound
+							// function so that any object created by one constructor will count
+							// as an instance of both constructors.
+							bound.prototype = func.prototype;
+							return bound;
+						};
+					}
+				})();
+			</script>
+	</head>
+	<body>
+		<div id="mocha"></div>
+		<div id="test-fixture"></div>
+		<script src="/mocha/mocha.js"></script>
+		<script>mocha.setup('bdd')</script>
+		<script src="tests-compiled.js"></script>
+		<script>
+			if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+				var runner = mocha.run();
+				runner.on('end', function () {
+					document.getElementById('test-fixture').style.display = 'none';
+				});
+			}
+		</script>
+	</body>
 </html>
