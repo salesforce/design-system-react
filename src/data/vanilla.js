@@ -7,25 +7,25 @@ const Item = Base.Item.extend({
 	// Instance methods
 	get (key) {
 		let result;
-		
+
 		if (this._item && key) {
 			result = this._item[key];
 		} else {
 			result = this._item;
 		}
-		
+
 		return result;
 	},
-	
+
 	keys () {
 		let result;
-		
+
 		if (this._item) {
 			result = Object.keys(this._item);
 		} else {
 			result = [];
 		}
-		
+
 		return result;
 	}
 });
@@ -37,7 +37,7 @@ Item.isTypeOf = function isTypeOf (item) {
 
 const Data = Base.Data.extend({
 	ItemType: Item,
-	
+
 	// Instance methods
 	get (criteria) {
 		let result;
@@ -47,23 +47,23 @@ const Data = Base.Data.extend({
 		} else {
 			result = this._data;
 		}
-		
+
 		return result;
 	},
-	
+
 	at (index) {
 		let result;
-		
+
 		if (this._data && Lib.isNumber(index)) {
 			result = this._data[index];
 		}
-		
+
 		return result;
 	},
-	
+
 	forEach (callback, thisArg) {
 		const self = this;
-		
+
 		this._data.forEach(function (item) {
 			const _item = new self.ItemType(item);
 			callback.call(thisArg || self, _item);

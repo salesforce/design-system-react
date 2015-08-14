@@ -76,7 +76,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, State, {
 			$item.data(item);
 			collection.push(item);
 		});
-		
+
 		_options.collection = collection;
 	},
 
@@ -173,8 +173,8 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, State, {
 	},
 
 	_onSelected (data) {
-		var _data = Lib.getItemAdapter(data);
-		
+		const _data = Lib.getItemAdapter(data);
+
 		if (!this.elements.hiddenField
 			|| !this.elements.label) {
 			return;
@@ -259,7 +259,7 @@ const legacyMethods = {
 	selectByText (text) {
 		return this.setSelection(function (item) {
 			const itemText = item && item.get('text');
-			
+
 			return item && Lib.isString(itemText) && Lib.isString(text) && itemText.toLowerCase() === text.toLowerCase();
 		});
 	},
