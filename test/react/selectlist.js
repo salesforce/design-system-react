@@ -71,5 +71,15 @@ describe('Selectlist React Facade', function () {
 			TestUtils.Simulate.click(this.rendered.getDOMNode().querySelectorAll('li a')[1]);
 			chai.expect(called).to.be.true;
 		});
+
+		it('should not change it\'s selected value if a selection prop is passed without an onChanged.', function () {
+			const options = this.options;
+			const component = React.createElement(SelectList, options);
+			this.rendered = React.render(component, targetElement);
+			expect(targetElement.querySelector('.selected-label').textContent).to.equal(options.selection.text);
+			const clickableElements = targetElement.querySelectorAll('li a');
+			TestUtils.Simulate.click(clickableElements[clickableElements.length - 2]);
+			expect(targetElement.querySelector('.selected-label').textContent).to.equal(options.selection.text);
+		});
 	});
 });
