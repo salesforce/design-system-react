@@ -54,8 +54,6 @@ export default function (element) {
 
 		render () {
 			const selectlists = this.state.models.map((model, index) => {
-				model.onChanged = this.getSelectionHandler(model);
-
 				return (
 					<section className="example-group" key={index}>
 						<h1>Selectlist example (selectlist{index + 1})</h1>
