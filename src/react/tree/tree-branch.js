@@ -42,7 +42,7 @@ const TreeBranch = React.createClass({
 
 		this.state.children.forEach(model => {
 			if (accessors.getType(model) === 'folder') {
-				children.push(<TreeBranch selectable={this.props.selectable} key={model.get('id')} item={model} accessors={accessors} onExpandClick={this._handleExpandClick.bind(this, model)} onItemClick={this._handleItemClick.bind(this, model)}/>);
+				children.push(<TreeBranch selectable={this.props.selectable} key={model.get('id')} item={model} accessors={accessors} onExpandClick={this._handleExpandClick} onItemClick={this._handleItemClick}/>);
 			} else {
 				children.push(<TreeItem onClick={this._handleItemClick.bind(this, model)} key={model.get('id')} item={model} accessors={accessors} />);
 			}
