@@ -7,7 +7,7 @@ import ComboboxCore from '../../core/combobox';
 // Framework specific
 import React from 'react';
 import Events from '../mixins/events';
-import State from '../state';
+import State from '../mixins/state';
 
 // Third party
 import classNames from 'classnames';
@@ -15,8 +15,8 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from '../selectlist/selectlist-item';
 
-const Combobox = React.createClass(Lib.merge({}, ComboboxCore, State, {
-	mixins: [Events],
+const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
+	mixins: [State, Events],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -28,10 +28,6 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, State, {
 			React.PropTypes.object
 		]).isRequired,
 		text: React.PropTypes.string
-	},
-
-	getInitialState () {
-		return this.__initializeState();
 	},
 
 	menuItems () {
@@ -66,17 +62,13 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, State, {
 	},
 
 	componentWillMount () {
-		this.elements = {
-			wrapper: {
-				toggleClass () {
-				},
-				outerWidth () {
-					return 0;
-				}
-			}
-		};
-
 		this.__initialize(this.props);
+	},
+	
+	componentDidMount () {
+		const elements = this.elements = {};
+		
+		elements.wrapper = Lib.wrapElement(React.findDOMNode(this));
 	},
 
 	handleMenuItemSelected (selection) {

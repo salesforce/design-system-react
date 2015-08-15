@@ -3,9 +3,32 @@ export const version = '__VERSION__';
 export const global = (typeof self === 'object' && self.self === self && self) ||
 			(typeof global === 'object' && global.global === global && global);
 
+// Helpers
+import partial from 'lodash/function/partial';
+export { partial };
+
 // DOM
 export function hasClass (element, className) {
-	return (element.className.match(new RegExp('\\b' + className + '\\b')) !== null);
+	return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;
+}
+
+export function outerWidth (element) {
+	return element.offsetWidth;
+}
+
+export function setWidth (element, width) {
+	element.setAttribute('style', 'width:' + width + 'px');
+	element.style.width = width + 'px';
+}
+
+export function wrapElement (element) {
+	this[0] = element;
+	this.element = element;
+	this.hasClass = partial(hasClass, element);
+	this.outerWidth = partial(outerWidth, element);
+	this.width = partial(setWidth, element);
+	
+	return this;
 }
 
 // Browser
