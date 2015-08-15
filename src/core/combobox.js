@@ -9,7 +9,7 @@ import Selectable from '../traits/selectable';
 
 export const CONTROL = 'combobox';
 
-const ComboboxCore = Lib.extend({}, Base, Disableable, Selectable, {
+const ComboboxCore = Lib.merge({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,

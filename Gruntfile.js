@@ -54,21 +54,25 @@ module.exports = function (grunt) {
 			}
 		},
 		watch: {
+			eslint: {
+				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
+				tasks: ['eslint']
+			},
 			jqueryExamples: {
 				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/marionette/**/*.*', '!src/react/**/*.*'],
-				tasks: ['eslint', 'browserify:jqueryExamples']
+				tasks: ['browserify:jqueryExamples']
 			},
 			marionetteExamples: {
 				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/jquery/**/*.*', '!src/react/**/*.*'],
-				tasks: ['eslint', 'browserify:marionetteExamples']
+				tasks: ['browserify:marionetteExamples']
 			},
 			reactExamples: {
 				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/jquery/**/*.*', '!src/marionette/**/*.*'],
-				tasks: ['eslint', 'browserify:reactExamples']
+				tasks: ['browserify:reactExamples']
 			},
 			tests: {
-				files: ['src/**/*.*', 'test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
-				tasks: ['eslint', 'compileTests', 'browserify:tests']
+				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
+				tasks: ['compileTests', 'browserify:tests']
 			}
 		},
 		connect: {

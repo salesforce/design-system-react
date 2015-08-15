@@ -15,7 +15,7 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from './selectlist-item';
 
-const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
+const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	mixins: [ReactHelpers, Events],
 	propTypes: {
 		disabled: React.PropTypes.bool,

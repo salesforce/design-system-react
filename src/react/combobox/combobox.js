@@ -14,7 +14,7 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from '../selectlist/selectlist-item';
 
-const Combobox = React.createClass(Lib.extend({}, ComboboxCore, {
+const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 	mixins: [ReactHelpers, Events],
 	propTypes: {
 		disabled: React.PropTypes.bool,

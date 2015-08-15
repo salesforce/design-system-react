@@ -15,7 +15,7 @@ const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.globa
 const fs = require('fs');
 
 const Selectlist = function Selectlist (element, options) {
-	this.options = $.extend({}, options);
+	this.options = Lib.extend({}, options);
 	this.elements = {
 		wrapper: $(element)
 	};
@@ -34,7 +34,7 @@ const Selectlist = function Selectlist (element, options) {
 	this.__constructor(this.options);
 };
 
-Lib.extend(Selectlist.prototype, SelectlistCore, Events, State, {
+Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 	__initElements (base, elements) {
 		const els = elements || {};
 
@@ -242,7 +242,7 @@ const legacyMethods = {
 			if (Lib.isFunction(selection.toJSON)) {
 				selection = selection.toJSON();
 			} else {
-				selection = jQuery.extend({}, selection);
+				selection = Lib.extend({}, selection);
 			}
 
 			selection.selected = true;

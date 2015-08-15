@@ -5,7 +5,7 @@ import Base from './base';
 
 export const CONTROL = 'loader';
 
-const LoaderCore = Lib.extend({}, Base, {
+const LoaderCore = Lib.merge({}, Base, {
 	cssClasses: {
 		CONTROL: CONTROL
 	},

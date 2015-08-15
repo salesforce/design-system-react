@@ -11,7 +11,7 @@ import State from '../state';
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 const Loader = function Loader (element, options) {
-	this.options = $.extend({}, options);
+	this.options = Lib.extend({}, options);
 	this.elements = {
 		wrapper: $(element)
 	};
@@ -112,7 +112,7 @@ const methods = {
 	}
 };
 
-Lib.extend(Loader.prototype, LoaderCore, State, methods);
+Lib.merge(Loader.prototype, LoaderCore, State, methods);
 
 const legacyMethods = {
 	play: methods._play,

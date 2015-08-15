@@ -10,7 +10,7 @@ import Selectable from '../traits/selectable';
 
 export const CONTROL = 'selectlist';
 
-const SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
+const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
