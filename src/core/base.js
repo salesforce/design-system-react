@@ -7,16 +7,13 @@ const Base = {
 		NAMESPACE: 'fuelux'
 	},
 
-	__constructor (options) {
-		if (Lib.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
-
-		// If this control has any sort of internal state, set it up here
-		if (Lib.isFunction(this.__getInitialState)) this.setState(this.__getInitialState());
+	__initialize (options) {
+		if (Lib.isFunction(this.__onBeforeInitialize)) this.__onBeforeInitialize(options);
 
 		// If this controls does anything with options that are passed to it, do that now
 		if (Lib.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
 
-		if (Lib.isFunction(this.onInitialized)) this.onInitialized(options);
+		if (Lib.isFunction(this.__onInitialized)) this.__onInitialized(options);
 	},
 
 	version: Lib.version

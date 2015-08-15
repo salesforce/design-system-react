@@ -11,7 +11,7 @@ const LoaderCore = Lib.merge({}, Base, {
 	},
 
 	// Set the defaults
-	__getInitialState () {
+	__getDefaultState () {
 		return {
 			begin: 1,
 			delay: 150,

@@ -23,11 +23,11 @@ const Loader = function Loader (element, options) {
 	}
 
 	this.__initializeState();
-	this.__constructor(this.options);
+	this.__initialize(this.options);
 };
 
 const methods = {
-	onInitialized () {
+	__onInitialized () {
 		this.render();
 	},
 

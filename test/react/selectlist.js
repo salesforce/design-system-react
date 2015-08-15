@@ -2,7 +2,6 @@ const $ = require('jquery');
 window.$ = window.jQuery = $;
 
 const chai = require('chai');
-const expect = chai.expect;
 const domSelectList = require('../dom/selectlist');
 const React = require('react/addons');
 const TestUtils = React.addons.TestUtils;
@@ -41,22 +40,6 @@ describe('Selectlist React Facade', function () {
 			this.options = domSelectList.defaultArrayModel();
 			const component = React.createElement(SelectList, this.options);
 			this.rendered = React.render(component, targetElement);
-		});
-
-		it('should keep the selection state in sync with the props.', function () {
-			const self = this;
-			expect(this.rendered.state.selection).to.equal(this.options.selection);
-			this.rendered.setProps({selection: this.options.collection[1]}, function () {
-				expect(self.rendered.state.selection).to.equal(self.options.collection[1]);
-			});
-		});
-
-		it('should keep the disabled state in sync with the props.', function () {
-			const self = this;
-			expect(this.rendered.state.disabled).to.equal(this.options.disabled);
-			this.rendered.setProps({disabled: !this.options.disabled}, function () {
-				expect(self.rendered.state.disabled).to.equal(!self.options.disabled);
-			});
 		});
 
 		it('should fire the onChanged callback on an item click.', function () {

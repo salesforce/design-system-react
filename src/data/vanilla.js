@@ -68,6 +68,15 @@ const Data = Base.Data.extend({
 			const _item = new self.ItemType(item);
 			callback.call(thisArg || self, _item);
 		});
+	},
+
+	filter (predicate, thisArg) {
+		const self = this;
+
+		return new Data(this._data.filter(function (item) {
+			const _item = new self.ItemType(item);
+			return predicate.call(thisArg || self, _item);
+		}));
 	}
 });
 

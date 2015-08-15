@@ -6,16 +6,17 @@ import ComboboxCore from '../../core/combobox';
 
 // Framework specific
 import React from 'react';
-import ReactHelpers from '../mixins/helpers';
 import Events from '../mixins/events';
+import State from '../state';
+
 // Third party
 import classNames from 'classnames';
 
 // Children
 import SelectlistItem from '../selectlist/selectlist-item';
 
-const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
-	mixins: [ReactHelpers, Events],
+const Combobox = React.createClass(Lib.merge({}, ComboboxCore, State, {
+	mixins: [Events],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -30,9 +31,7 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 	},
 
 	getInitialState () {
-		return Lib.extend(this.__getInitialState(), {
-			wrapperClasses: {}
-		});
+		return this.__initializeState();
 	},
 
 	menuItems () {
@@ -44,17 +43,20 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 	},
 
 	render () {
-		const selection = Lib.getDataAdapter(this.getSelection());
+		const selection = Lib.getItemAdapter(this.getSelection());
 
 		const styles = {
 			width: this.state.width
 		};
+		
+		const disabledClass = {};
+		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
-				<input name={this.props.name} className="form-control" type="text" value={selection.get('text')} disabled={this.state.disabled} />
+			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', disabledClass)} onKeyPress={this.handleKeyPress}>
+				<input name={this.props.name} className="form-control" type="text" value={selection.get('text')} disabled={this.props.disabled} />
 				<div className="input-group-btn">
-					<button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" disabled={this.state.disabled}><span className="caret"></span></button>
+					<button type="button" className={classNames(this.cssClasses.CONTROL, this.cssClasses.TOGGLE, 'btn btn-default', disabledClass)} data-toggle="dropdown" disabled={this.props.disabled}><span className="caret"></span></button>
 					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles}>
 						{this.menuItems()}
 					</ul>
@@ -64,17 +66,9 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 	},
 
 	componentWillMount () {
-		const self = this;
-
 		this.elements = {
 			wrapper: {
-				toggleClass (cssClass, state) {
-					const wrapperClasses = self.state.wrapperClasses;
-					wrapperClasses[cssClass] = state;
-
-					self.setState({
-						wrapperClasses: wrapperClasses
-					});
+				toggleClass () {
 				},
 				outerWidth () {
 					return 0;
@@ -82,7 +76,7 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 			}
 		};
 
-		this.__constructor(this.props);
+		this.__initialize(this.props);
 	},
 
 	handleMenuItemSelected (selection) {

@@ -6,8 +6,8 @@ import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
-import ReactHelpers from '../mixins/helpers';
 import Events from '../mixins/events';
+import State from '../state';
 
 // Third party
 import classNames from 'classnames';
@@ -15,8 +15,8 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from './selectlist-item';
 
-const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
-	mixins: [ReactHelpers, Events],
+const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, State, {
+	mixins: [Events],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -31,9 +31,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	},
 
 	getInitialState () {
-		return Lib.extend(this.__getInitialState(), {
-			wrapperClasses: {}
-		});
+		return this.__initializeState();
 	},
 
 	menuItems () {
@@ -51,10 +49,13 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		const styles = {
 			width: this.state.width
 		};
+		
+		const disabledClass = {};
+		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
-				<button className={classNames('btn btn-default dropdown-toggle', {disabled: this.state.disabled})} data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
+			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, disabledClass)} onKeyPress={this.handleKeyPress}>
+				<button className={classNames('btn btn-default', this.cssClasses.TOGGLE, disabledClass)} data-toggle="dropdown" type="button" disabled={this.props.disabled} style={styles}>
 					<span className="selected-label">{selection.get('text') || 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
@@ -68,22 +69,14 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	},
 
 	componentWillMount () {
-		const self = this;
-
 		this.elements = {
 			wrapper: {
-				toggleClass (cssClass, state) {
-					const wrapperClasses = self.state.wrapperClasses;
-					wrapperClasses[cssClass] = state;
-
-					self.setState({
-						wrapperClasses: wrapperClasses
-					});
+				toggleClass () {
 				}
 			}
 		};
 
-		this.__constructor(this.props);
+		this.__initialize(this.props);
 	},
 
 	handleMenuItemSelected (selection) {

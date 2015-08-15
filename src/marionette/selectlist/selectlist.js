@@ -75,7 +75,7 @@ const Selectlist = Marionette.ItemView.extend(Lib.merge({}, SelectlistCore, Stat
 			}
 		};
 
-		this.__constructor(options);
+		this.__initialize(options);
 	},
 
 	onRender () {

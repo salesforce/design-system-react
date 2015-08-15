@@ -3,7 +3,7 @@
 import * as Lib from '../core/lib';
 
 const isNonDisabledItem = function isNonDisabledItem (item) {
-	return item.get('disabled') && !item.get('_itemType');
+	return !item.get('disabled') && !item.get('_itemType');
 };
 
 const Selectable = {
@@ -20,8 +20,8 @@ const Selectable = {
 	},
 
 	__setSelection (newSelection) {
-		if (this.getState('selection') !== newSelection) {
-			this.setState({ selection: newSelection });
+		if (this.getStore('selection') !== newSelection) {
+			this.setStore({ selection: newSelection });
 			if (Lib.isFunction(this._onSelected)) this._onSelected(newSelection);
 			
 			// Trigger the event using facade-native methods
@@ -47,7 +47,7 @@ const Selectable = {
 	},
 
 	getSelection () {
-		return this.getState('selection');
+		return this.getStore('selection');
 	},
 
 	clearSelection () {
@@ -71,9 +71,9 @@ const Selectable = {
 			letter = '\\\\';
 		}
 
-		selection = Lib.findWhere(this._collection.filter(isNonDisabledItem), { text: new RegExp('^[' + letter + ']', 'i') }); // TODO: Cache the filter results
+		selection = this._collection.filter(isNonDisabledItem).findWhere({ text: new RegExp('^[' + letter + ']', 'i') }); // TODO: Cache the filter results
 
-		if (selection) this.__setSelection(selection);
+		if (selection) this.__setSelection(selection._item);
 	}
 };
 
