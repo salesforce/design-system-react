@@ -2,10 +2,6 @@
 
 import * as Lib from '../core/lib';
 
-const isNonDisabledItem = function isNonDisabledItem (item) {
-	return !item.get('disabled') && !item.get('_itemType');
-};
-
 const Selectable = {
 	cssClasses: {
 		SELECTED: 'selected'
@@ -52,28 +48,6 @@ const Selectable = {
 
 	clearSelection () {
 		this.__setSelection();
-	},
-
-	// For keyboard nav
-	__jumpToLetter (input) {
-		let letter = input;
-		let selection;
-
-		if (Lib.isNumber(letter)) {
-			letter = String.fromCharCode(letter);
-		}
-
-		if (letter.length !== 1) {
-			return;
-		}
-
-		if (letter === '\\') {
-			letter = '\\\\';
-		}
-
-		selection = this._collection.filter(isNonDisabledItem).findWhere({ text: new RegExp('^[' + letter + ']', 'i') }); // TODO: Cache the filter results
-
-		if (selection) this.__setSelection(selection._item);
 	}
 };
 

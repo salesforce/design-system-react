@@ -57,32 +57,22 @@ const Selectlist = Marionette.ItemView.extend(Lib.merge({}, SelectlistCore, Stat
 		'change': 'render'
 	},
 
-	_assumeFocus: false,
-
 	constructor () {
 		this.__initializeState();
 		Marionette.ItemView.prototype.constructor.apply(this, arguments);
 	},
 
 	initialize (options) {
-		const self = this;
-
-		this.elements = {
-			wrapper: {
-				toggleClass (cssClass, state) {
-					self.$el.toggleClass(cssClass, state);
-				}
-			}
-		};
-
 		this.__initialize(options);
 	},
 
 	onRender () {
-		if (this._assumeFocus) {
-			this.$el.find('button').focus();
-			this._assumeFocus = false;
-		}
+		const elements = this.elements = {};
+		
+		elements.wrapper = this.$el;
+		elements.dropdownMenu = this.$('.' + this.cssClasses.MENU);
+		
+		elements.wrapper.toggleClass(this.cssClasses.DISABLED, this.getStore('disabled'));
 	},
 
 	handleMenuItemSelected (e) {
@@ -100,8 +90,6 @@ const Selectlist = Marionette.ItemView.extend(Lib.merge({}, SelectlistCore, Stat
 
 	handleKeyPress (e) {
 		const key = e.which;
-
-		this._assumeFocus = true;
 
 		if (key) this.__jumpToLetter(key);
 	}

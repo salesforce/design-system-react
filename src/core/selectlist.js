@@ -29,7 +29,6 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		};
 	},
 
-	// TO-DO: Basically a bunch of if-else blocks. Can this be improved?
 	__initializeOptions (options) {
 		if (options && options.collection) {
 			this._collection = Lib.getDataAdapter(options.collection);
@@ -93,6 +92,37 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 
 		this.setState({ width: width });
 		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+	},
+
+	// For keyboard nav
+	__jumpToLetter (input) {
+		let letter = input;
+		let selection;
+
+		if (Lib.isNumber(letter)) {
+			letter = String.fromCharCode(letter);
+		}
+
+		if (letter.length !== 1) {
+			return;
+		}
+
+		if (letter === '\\') {
+			letter = '\\\\';
+		}
+		
+		letter = new RegExp('^[' + letter + ']', 'i');
+		
+		const menu = this.elements.dropdownMenu[0];
+		const menuItems = [].slice.call(menu.getElementsByTagName('a'));
+		
+		menuItems.forEach(function compareMenuItem (menuItem) {
+			if (!selection && menuItem.textContent.match(letter)) {
+				selection = menuItem;
+			}
+		});
+
+		if (selection) selection.focus();
 	}
 });
 

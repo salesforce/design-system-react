@@ -16,7 +16,6 @@ const Disableable = {
 	},
 
 	enable () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 		this.setStore({ disabled: false });
 		if (Lib.isFunction(this._onEnabled)) this._onEnabled();
 		
@@ -24,7 +23,6 @@ const Disableable = {
 	},
 
 	disable () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
 		this.setStore({ disabled: true });
 		if (Lib.isFunction(this._onDisabled)) this._onDisabled();
 		

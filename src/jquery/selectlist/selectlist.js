@@ -184,21 +184,21 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 	},
 
 	_onEnabled () {
-		if (!this.elements.button) {
-			return;
+		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
+		
+		if (this.elements.button) {
+			this.elements.button.prop('disabled', false);
+			this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
 		}
-
-		this.elements.button.prop('disabled', false);
-		this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
 	},
 
 	_onDisabled () {
-		if (!this.elements.button) {
-			return;
+		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
+		
+		if (this.elements.button) {
+			this.elements.button.prop('disabled', true);
+			this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
 		}
-
-		this.elements.button.prop('disabled', true);
-		this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
 	},
 
 	resetWidth (width) {

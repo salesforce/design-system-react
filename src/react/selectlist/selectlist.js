@@ -7,7 +7,7 @@ import SelectlistCore from '../../core/selectlist';
 // Framework specific
 import React from 'react';
 import Events from '../mixins/events';
-import State from '../state';
+import State from '../mixins/state';
 
 // Third party
 import classNames from 'classnames';
@@ -15,8 +15,8 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from './selectlist-item';
 
-const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, State, {
-	mixins: [Events],
+const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
+	mixins: [State, Events],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -28,10 +28,6 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, State, {
 			React.PropTypes.object
 		]).isRequired,
 		text: React.PropTypes.string
-	},
-
-	getInitialState () {
-		return this.__initializeState();
 	},
 
 	menuItems () {
@@ -60,7 +56,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, State, {
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
 				</button>
-				<ul className="dropdown-menu" role="menu" style={styles}>
+				<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
 					{this.menuItems()}
 				</ul>
 				<input name={this.props.name} className="hidden hidden-field" readOnly aria-hidden="true" type="text" value={JSON.stringify(selection)}></input>
@@ -69,14 +65,14 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, State, {
 	},
 
 	componentWillMount () {
-		this.elements = {
-			wrapper: {
-				toggleClass () {
-				}
-			}
-		};
-
 		this.__initialize(this.props);
+	},
+	
+	componentDidMount () {
+		const elements = this.elements = {};
+		
+		elements.wrapper = Lib.wrapElement(React.findDOMNode(this));
+		elements.dropdownMenu = Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.MENU]));
 	},
 
 	handleMenuItemSelected (selection) {

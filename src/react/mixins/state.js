@@ -1,13 +1,17 @@
 // STATE - REACT FACADE
 
 // Core
-import * as Lib from '../core/lib';
+import * as Lib from '../../core/lib';
 
 const State = {
-	__initializeState (initialState) {
+	getInitialState () {
 		var defaultState = Lib.isFunction(this.__getDefaultState) ? this.__getDefaultState() : {};
-		var defaults = Lib.extend(defaultState, initialState);
-		return defaults;
+		return defaultState;
+	},
+	
+	getDefaultProps () {
+		var defaultStore = Lib.isFunction(this.__getDefaultStore) ? this.__getDefaultStore() : {};
+		return defaultStore;
 	},
 	
 	getState (key) {
