@@ -17,8 +17,7 @@ module.exports = function (grunt) {
 		browserify: {
 			options: {
 				transform: [['babelify', {
-					'stage': 0,
-					'modules': 'umd'
+					'stage': 0
 				}], ['brfs'], ['browserify-versionify']],
 				watch: true
 			},
