@@ -15,7 +15,7 @@ const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.globa
 const fs = require('fs');
 
 const Selectlist = function Selectlist (element, options) {
-	this.options = $.extend({}, options);
+	this.options = Lib.extend({}, options);
 	this.elements = {
 		wrapper: $(element)
 	};
@@ -29,12 +29,88 @@ const Selectlist = function Selectlist (element, options) {
 
 		this.rendered = true;
 	}
-
+	
 	this.__initializeState();
-	this.__constructor(this.options);
+	this.__initialize(this.options);
 };
 
-Lib.extend(Selectlist.prototype, SelectlistCore, Events, State, {
+function _renderItem (item) {
+	let $a;
+	let disabled;
+	let $li;
+
+	$a = $('<a href="#" />');
+	$a.text(item.get('text'));
+
+	disabled = !!item.get('disabled');
+	$li = $('<li />');
+	$li.data(item.get());
+	$li.toggleClass('disabled', disabled);
+	$li.prop('disabled', disabled);
+	$li.append($a);
+
+	return $li;
+}
+
+function _renderHeader (item) {
+	const $li = $('<li class="dropdown-header"></li>');
+	$li.text(item.get('text'));
+
+	return $li;
+}
+
+function _renderDivider () {
+	const $li = $('<li role="separator" class="divider"></li>');
+
+	return $li;
+}
+
+function _render () {
+	// Prep for append
+	this.elements.wrapper.empty();
+	this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
+	this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
+
+	const selection = Lib.getItemAdapter(this.getSelection());
+	const width = this.getState('width');
+	const disabled = !!this.getStore('disabled');
+	const selectionName = selection.get('text') || 'None selected'; // TO-DO: don't hardcode this here
+	const selectionString = selection ? JSON.stringify(selection) : '';
+	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
+	const elements = this.__initElements($html, this.elements);
+
+	// Yay for hacked-together "templates"!
+	elements.button.prop('disabled', disabled);
+	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
+	elements.button.width(width);
+	elements.label.text(selectionName);
+	elements.hiddenField.val(selectionString);
+	elements.dropdownMenu.width(width);
+
+	const self = this;
+	// Building the menu items
+	this._collection.forEach(function buildMenuItems (item) {
+		let $li;
+		let func;
+		const funcMap = {
+			header: _renderHeader,
+			divider: _renderDivider,
+			item: _renderItem
+		};
+
+		func = funcMap[item.get('_itemType')] || _renderItem;
+
+		$li = func.call(self, item);
+
+		elements.dropdownMenu.append($li);
+	});
+
+	this.elements.wrapper.append($html.children());
+
+	this.rendered = true;
+}
+
+Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 	__initElements (base, elements) {
 		const els = elements || {};
 
@@ -80,91 +156,13 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, State, {
 		_options.collection = collection;
 	},
 
-	onInitialized () {
+	__onInitialized () {
 		if (!this.rendered) {
-			this.render();
+			_render.call(this);
 		}
 
-		this.elements.wrapper.on('click.fu.selectlist', '.dropdown-menu a', $.proxy(this.handleClicked, this));
-		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this.handleKeyPress, this));
-	},
-
-	render () {
-		// Prep for append
-		this.elements.wrapper.empty();
-		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-		this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
-
-		const selection = Lib.getItemAdapter(this.getSelection());
-		const width = this.getState('width');
-		const disabled = !!this.getState('disabled');
-		const selectionName = selection.get('text') || 'None selected'; // TO-DO: don't hardcode this here
-		const selectionString = selection ? JSON.stringify(selection) : '';
-		const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
-		const elements = this.__initElements($html, this.elements);
-
-		// Yay for hacked-together "templates"!
-		elements.button.prop('disabled', disabled);
-		elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
-		elements.button.width(width);
-		elements.label.text(selectionName);
-		elements.hiddenField.val(selectionString);
-		elements.dropdownMenu.width(width);
-
-		const self = this;
-		// Building the menu items
-		this._collection.forEach(function buildMenuItems (item) {
-			let $li;
-			let func;
-			const funcMap = {
-				header: 'renderHeader',
-				divider: 'renderDivider',
-				item: 'renderItem'
-			};
-
-			func = funcMap[item.get('_itemType')] || 'renderItem';
-
-			$li = self[func].call(self, item);
-
-			elements.dropdownMenu.append($li);
-		});
-
-		this.elements.wrapper.append($html.children());
-
-		this.rendered = true;
-	},
-
-	renderItem (data) {
-		let $a;
-		let disabled;
-		let $li;
-
-		$a = $('<a href="#" />');
-		$a.text(data.get('text'));
-
-		disabled = !!data.get('disabled');
-		$li = $('<li />');
-		$li.data(data);
-		$li.toggleClass('disabled', disabled);
-		$li.prop('disabled', disabled);
-		$li.append($a);
-
-		return $li;
-	},
-
-	renderHeader (data) {
-		const $li = $('<li class="dropdown-header"></li>');
-		$li.data(data);
-		$li.text(data.get('text'));
-
-		return $li;
-	},
-
-	renderDivider (data) {
-		const $li = $('<li role="separator" class="divider"></li>');
-		$li.data(data);
-
-		return $li;
+		this.elements.wrapper.on('click.fu.selectlist', '.dropdown-menu a', $.proxy(this._handleClicked, this));
+		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPress, this));
 	},
 
 	destroy () {
@@ -185,7 +183,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, State, {
 		this.elements.label.text(_data.get('text') || 'None selected');
 	},
 
-	onEnabled () {
+	_onEnabled () {
 		if (!this.elements.button) {
 			return;
 		}
@@ -194,7 +192,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, State, {
 		this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
 	},
 
-	onDisabled () {
+	_onDisabled () {
 		if (!this.elements.button) {
 			return;
 		}
@@ -214,7 +212,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, State, {
 		this.elements.dropdownMenu.width(width);
 	},
 
-	handleClicked (e) {
+	_handleClicked (e) {
 		e.preventDefault();
 
 		const $a = $(e.currentTarget);
@@ -225,7 +223,7 @@ Lib.extend(Selectlist.prototype, SelectlistCore, Events, State, {
 		}
 	},
 
-	handleKeyPress (e) {
+	_handleKeyPress (e) {
 		const key = e.which;
 
 		if (key) this.__jumpToLetter(key);
@@ -242,7 +240,7 @@ const legacyMethods = {
 			if (Lib.isFunction(selection.toJSON)) {
 				selection = selection.toJSON();
 			} else {
-				selection = jQuery.extend({}, selection);
+				selection = Lib.extend({}, selection);
 			}
 
 			selection.selected = true;

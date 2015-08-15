@@ -16,50 +16,24 @@ export function log () {
 }
 
 // Type Helpers
-export function isFunction (potentialFunction) {
-	return typeof potentialFunction === 'function';
-}
+export { default as isFunction } from 'lodash/lang/isFunction';
 
-export function isNumber (potentialNumber) {
-	return toString.call(potentialNumber) === '[object Number]';
-}
+export { default as isNumber } from 'lodash/lang/isNumber';
 
-export function isString (potentialString) {
-	return toString.call(potentialString) === '[object String]';
-}
+export { default as isString } from 'lodash/lang/isString';
 
-export function isRegExp (potentialRegExp) {
-	return toString.call(potentialRegExp) === '[object RegExp]';
-}
+export { default as isRegExp } from 'lodash/lang/isRegExp';
 
-export function isArray (potentialArray) {
-	return toString.call(potentialArray) === '[object Array]';
-}
+export { default as isArray } from 'lodash/lang/isArray';
 
-export function isObject (potentialObject) {
-	return isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
-}
+export { default as isBoolean } from 'lodash/lang/isBoolean';
+
+export { default as isObject } from 'lodash/lang/isObject';
 
 // Data Helpers
-export function extend (target) {
-	for (let i = 1; i < arguments.length; i++) {
-		const source = arguments[i];
+export { default as extend } from 'lodash/object/extend';
 
-		for (const key in source) {
-			if (Object.prototype.hasOwnProperty.call(source, key)) {
-				if (Object.prototype.hasOwnProperty.call(target, key) &&
-					target[key] && typeof target[key] === 'object' &&
-					source[key] && typeof source[key] === 'object') {
-					target[key] = extend({}, target[key], source[key]); // Combine objects
-				} else {
-					target[key] = source[key];
-				}
-			}
-		}
-	}
-
-	return target;
-}
+export { default as merge } from 'lodash/object/merge';
 
 const _adapters = [];
 

@@ -17,14 +17,18 @@ const Disableable = {
 
 	enable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-		this.setState({ disabled: false });
-		if (Lib.isFunction(this.onEnabled)) this.onEnabled();
+		this.setStore({ disabled: false });
+		if (Lib.isFunction(this._onEnabled)) this._onEnabled();
+		
+		this.trigger('enabled');
 	},
 
 	disable () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-		this.setState({ disabled: true });
-		if (Lib.isFunction(this.onDisabled)) this.onDisabled();
+		this.setStore({ disabled: true });
+		if (Lib.isFunction(this._onDisabled)) this._onDisabled();
+		
+		this.trigger('disabled');
 	}
 };
 

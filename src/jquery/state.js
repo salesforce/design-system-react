@@ -5,7 +5,10 @@ import * as Lib from '../core/lib';
 
 const State = {
 	__initializeState () {
-		this._state = {};
+		var defaultState = Lib.isFunction(this.__getDefaultState) ? this.__getDefaultState() : {};
+		var defaultStore = Lib.isFunction(this.__getDefaultStore) ? this.__getDefaultStore() : {};
+		var defaults = Lib.extend(defaultState, defaultStore);
+		this._state = defaults;
 	},
 	
 	setState (values) {
@@ -16,5 +19,9 @@ const State = {
 		return this._state[key];
 	}
 };
+
+// Alias
+State.setStore = State.setState;
+State.getStore = State.getState;
 
 export default State;

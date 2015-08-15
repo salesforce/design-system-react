@@ -22,13 +22,12 @@
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.8.0",
     "grunt-contrib-connect": "^0.10.1",
-    "grunt-contrib-uglify": "^0.9.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^17.1.0",
     "grunt-mocha": "^0.4.13",
     "mocha": "^1.21.5",
-    "react": "^0.13.3",
-    "serve-static": "^1.10.0"
+    "serve-static": "^1.10.0",
+    "watchify": "^3.3.1"
   },
   "dependencies": {
     "backbone": "^1.2.1",
@@ -36,6 +35,8 @@
     "bootstrap": "^3.3.5",
     "classnames": "^2.1.3",
     "jquery": "^2.1.4",
+    "lodash": "^3.10.1",
+    "react": "^0.13.3",
     "underscore": "^1.8.3"
   },
   "scripts": {

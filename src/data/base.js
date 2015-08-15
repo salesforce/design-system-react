@@ -24,7 +24,7 @@ function _extend (protoProps) {
 }
 
 function _isRegexMatch (string, regex) {
-	if (!Lib.isRegExp(regex) || !isString(string)) {
+	if (!Lib.isRegExp(regex) || !Lib.isString(string)) {
 		return false;
 	}
 
@@ -103,9 +103,7 @@ Lib.extend(Data.prototype, {
 
 	at () {
 		return undefined;
-	},
-
-	forEach () { }
+	}
 });
 
 // Static methods

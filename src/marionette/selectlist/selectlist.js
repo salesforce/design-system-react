@@ -15,7 +15,7 @@ import '../../data/backbone';
 const fs = require('fs');
 const selectlistTemplate = _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 
-const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, State, {
+const Selectlist = Marionette.ItemView.extend(Lib.merge({}, SelectlistCore, State, {
 	className () {
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP);
 	},
@@ -75,7 +75,7 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, Sta
 			}
 		};
 
-		this.__constructor(options);
+		this.__initialize(options);
 	},
 
 	onRender () {

@@ -38,6 +38,7 @@ describe('FuelUX Facade basic trait tests', function () {
 
 	// We have to monkey patch some members here to be able to test
 	disableable.__initializeState();
+	disableable.trigger = $.noop;
 	disableable.elements = {};
 	disableable.elements.wrapper = $('<div>');
 
