@@ -1,7 +1,8 @@
 var React = require( "react" );
+var TetherDrop = require( "tether-drop" );
 
-var Popover = React.createClass( {
-  displayName: "Popover",
+var SLDSDatePicker = React.createClass( {
+  displayName: "SLDSDatePicker",
 
   propTypes: {
     attachment: React.PropTypes.string,
@@ -18,12 +19,14 @@ var Popover = React.createClass( {
   },
 
   componentWillMount: function() {
+
     var popoverContainer = document.createElement( "span" );
     popoverContainer.className = "datepicker__container";
 
     this._popoverElement = popoverContainer;
 
     document.querySelector( "body" ).appendChild( this._popoverElement );
+
   },
 
   componentDidMount: function() {
@@ -35,55 +38,53 @@ var Popover = React.createClass( {
   },
 
   _popoverComponent: function() {
+
     var className = this.props.className;
     return (
       <div className={className}>
-        {this.props.children}
+        ::{this.props.children}
       </div>
     );
+
   },
 
-  _tetherOptions: function() {
+
+  _dropOptions: function() {
     return {
+      target: this.getDOMNode(),
       element: this._popoverElement,
-      target: this.getDOMNode().parentElement.querySelector( "input" ),
-      attachment: this.props.attachment,
-      targetAttachment: this.props.targetAttachment,
-      targetOffset: this.props.targetOffset,
-      optimizations: {
-        moveElement: false // always moves to <body> anyway!
-      },
-      constraints: [
-        {
-          to: "window",
-          attachment: "together"
-        }
-      ]
+      classes: 'drop-theme-arrows',
+      position: 'bottom left',
+      openOn: 'click'
     };
   },
 
   _renderPopover: function() {
+
     React.render( this._popoverComponent(), this._popoverElement );
 
-    if ( this._tether != null ) {
-      this._tether.setOptions( this._tetherOptions() );
+    if ( this._drop != null ) {
+      this._drop.setOptions( this._dropOptions() );
     } else if ( window && document ) {
-      var Tether = require( "tether" );
-      this._tether = new Tether( this._tetherOptions() );
+//      var Tether = require( "tether" );
+      this._drop = new TetherDrop( this._dropOptions() );
     }
+
   },
 
   componentWillUnmount: function() {
-    this._tether.destroy();
+
+    this._drop.destroy();
     React.unmountComponentAtNode( this._popoverElement );
     if ( this._popoverElement.parentNode ) {
       this._popoverElement.parentNode.removeChild( this._popoverElement );
     }
+
   },
 
   render: function() {
-    return <span/>;
+    return <div>Date Picker</div>;
   }
 } );
 
-module.exports = Popover;
+module.exports = SLDSDatePicker;

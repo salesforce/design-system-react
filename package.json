@@ -37,6 +37,11 @@
     "webpack-dev-server": "^1.8.2"
   },
   "dependencies": {
-    "react": "^0.13.0"
+    "lodash": "^3.10.0",
+    "moment": "^2.10",
+    "react": "^0.13.0",
+    "react-onclickoutside": "0.3.0",
+    "tether": "^1.1.0",
+    "tether-drop": "^1.2.2"
   }
 }
