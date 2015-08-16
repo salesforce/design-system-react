@@ -16,7 +16,19 @@ export default class App extends Component {
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
-        <SLDSDatePicker />
+        <SLDSDatePicker>
+          <div style={{backgroundColor:'red'}}>
+            <ul>
+              <li>!!! MY SUPER HOT STUFF !!!</li>
+              <li>!!! MY SUPER HOT STUFF !!!</li>
+              <li>!!! MY SUPER HOT STUFF !!!</li>
+              <li>!!! MY SUPER HOT STUFF !!!</li>
+              <li>!!! MY SUPER HOT STUFF !!!</li>
+              <li>!!! MY SUPER HOT STUFF !!!</li>
+              <li>!!! MY SUPER HOT STUFF !!!</li>
+            </ul>
+          </div>
+        </SLDSDatePicker>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
@@ -34,6 +46,19 @@ export default class App extends Component {
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
+
+        <div>MORE STUFF IS HERE</div>
+        <div>MORE STUFF IS HERE</div>
+        <div>MORE STUFF IS HERE</div>
+        <div>MORE STUFF IS HERE</div>
+        <div>MORE STUFF IS HERE</div>
+
+                <div>MORE STUFF IS HERE</div>
+        <div>MORE STUFF IS HERE</div>
+        <div>MORE STUFF IS HERE</div>
+        <div>MORE STUFF IS HERE</div>
+        <div>MORE STUFF IS HERE</div>
+
       </section>
     );
   }

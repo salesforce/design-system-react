@@ -14,7 +14,7 @@ var SLDSDatePicker = React.createClass( {
     return {
       attachment: "top left",
       targetAttachment: "bottom left",
-      targetOffset: "-30px 0"
+      targetOffset: "-30px 0",
     };
   },
 
@@ -39,10 +39,12 @@ var SLDSDatePicker = React.createClass( {
 
   _popoverComponent: function() {
 
+
+    console.log('_popoverComponent: ', this.props.children);
     var className = this.props.className;
     return (
       <div className={className}>
-        ::{this.props.children}
+        {this.props.children}
       </div>
     );
 
@@ -51,11 +53,11 @@ var SLDSDatePicker = React.createClass( {
 
   _dropOptions: function() {
     return {
-      target: this.getDOMNode(),
-      element: this._popoverElement,
+      target: this.getDOMNode().parentNode,
+      content: this._popoverElement,
       classes: 'drop-theme-arrows',
       position: 'bottom left',
-      openOn: 'click'
+      tetherOptions: {enabled:true}
     };
   },
 
@@ -64,12 +66,12 @@ var SLDSDatePicker = React.createClass( {
     React.render( this._popoverComponent(), this._popoverElement );
 
     if ( this._drop != null ) {
-      this._drop.setOptions( this._dropOptions() );
+      if(this._drop.setOptions){
+        this._drop.setOptions( this._dropOptions() );
+      }
     } else if ( window && document ) {
-//      var Tether = require( "tether" );
       this._drop = new TetherDrop( this._dropOptions() );
     }
-
   },
 
   componentWillUnmount: function() {
@@ -83,7 +85,7 @@ var SLDSDatePicker = React.createClass( {
   },
 
   render: function() {
-    return <div>Date Picker</div>;
+    return <span></span>;
   }
 } );
 
