@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SLDSSuggest from './slds/SLDSSuggest';
-import SLDSDatePicker from './slds/SLDSDatePicker';
+import SLDSPopover from './slds/SLDSPopover';
 
 
 export default class App extends Component {
@@ -16,23 +16,11 @@ export default class App extends Component {
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
-        <SLDSDatePicker>
-          <div style={{backgroundColor:'red'}}>
-            <ul>
-              <li>!!! MY SUPER HOT STUFF !!!</li>
-              <li>!!! MY SUPER HOT STUFF !!!</li>
-              <li>!!! MY SUPER HOT STUFF !!!</li>
-              <li>!!! MY SUPER HOT STUFF !!!</li>
-              <li>!!! MY SUPER HOT STUFF !!!</li>
-              <li>!!! MY SUPER HOT STUFF !!!</li>
-              <li>!!! MY SUPER HOT STUFF !!!</li>
-            </ul>
-          </div>
-        </SLDSDatePicker>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
+        <SLDSSuggest />
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>

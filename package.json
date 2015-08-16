@@ -40,8 +40,13 @@
     "lodash": "^3.10.0",
     "moment": "^2.10",
     "react": "^0.13.0",
+    "react-motion": "^0.2.7",
     "react-onclickoutside": "0.3.0",
     "tether": "^1.1.0",
-    "tether-drop": "^1.2.2"
+    "tether-drop": "^1.2.2",
+    "@salesforce-ux/landmark": "0.3.6",
+    "css-loader": "^0.9.1",
+    "sass-loader": "^1.0.0",
+    "style-loader": "^0.9.0"
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SLDSDatePicker from './SLDSDatePicker';
+import SLDSPopover from './SLDSPopover';
 
 
 export default class SLDSSuggest extends Component {
@@ -13,7 +13,7 @@ export default class SLDSSuggest extends Component {
   }
   popover() {
     if(this.state && this.state.isOpen){
-      return <SLDSDatePicker>
+      return <SLDSPopover>
         <div style={{backgroundColor:'green'}}>!!AAA!!</div>
         <div style={{backgroundColor:'green'}}>!!AAA!!</div>
         <div style={{backgroundColor:'green'}}>!!AAA!</div>
@@ -21,7 +21,7 @@ export default class SLDSSuggest extends Component {
         <div style={{backgroundColor:'green'}}>!!AAA!</div>
         <div style={{backgroundColor:'green'}}>!!AAA!</div>
         <div style={{backgroundColor:'green'}}>!!AAA!</div>
-      </SLDSDatePicker>;
+      </SLDSPopover>;
     }
     return null;
   }

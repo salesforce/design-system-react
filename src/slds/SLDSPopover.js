@@ -1,7 +1,14 @@
-var React = require( "react" );
+var React = require( "react/addons" );
+var TetherDrop = require( "tether-drop" );
+var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+//var ReactMotion = require( "react-motion" );
+import {TransitionSpring} from 'react-motion';
 
-var Popover = React.createClass( {
-  displayName: "Popover",
+require( "./SLDSPopover.css" );
+
+
+var SLDSPopover = React.createClass( {
+  displayName: "SLDSPopover",
 
   propTypes: {
     attachment: React.PropTypes.string,
@@ -13,17 +20,19 @@ var Popover = React.createClass( {
     return {
       attachment: "top left",
       targetAttachment: "bottom left",
-      targetOffset: "-30px 0"
+      targetOffset: "-30px 0",
     };
   },
 
   componentWillMount: function() {
+
     var popoverContainer = document.createElement( "span" );
     popoverContainer.className = "datepicker__container";
 
     this._popoverElement = popoverContainer;
 
     document.querySelector( "body" ).appendChild( this._popoverElement );
+
   },
 
   componentDidMount: function() {
@@ -35,55 +44,59 @@ var Popover = React.createClass( {
   },
 
   _popoverComponent: function() {
+
+
+    console.log('_popoverComponent: ', this.props.children);
     var className = this.props.className;
     return (
       <div className={className}>
-        {this.props.children}
+        <div className="SLDSPopover">
+          <ReactCSSTransitionGroup transitionName="example" transitionAppear={true}>
+            {this.props.children}
+          </ReactCSSTransitionGroup>
+        </div>
       </div>
     );
+
   },
 
-  _tetherOptions: function() {
+
+  _dropOptions: function() {
     return {
-      element: this._popoverElement,
-      target: this.getDOMNode().parentElement.querySelector( "input" ),
-      attachment: this.props.attachment,
-      targetAttachment: this.props.targetAttachment,
-      targetOffset: this.props.targetOffset,
-      optimizations: {
-        moveElement: false // always moves to <body> anyway!
-      },
-      constraints: [
-        {
-          to: "window",
-          attachment: "together"
-        }
-      ]
+      target: this.getDOMNode().parentNode,
+      content: this._popoverElement,
+      classes: 'drop-theme-arrows',
+      position: 'bottom left',
+      openOn: 'always'
     };
   },
 
   _renderPopover: function() {
+
     React.render( this._popoverComponent(), this._popoverElement );
 
-    if ( this._tether != null ) {
-      this._tether.setOptions( this._tetherOptions() );
+    if ( this._drop != null ) {
+      if(this._drop.setOptions){
+        this._drop.setOptions( this._dropOptions() );
+      }
     } else if ( window && document ) {
-      var Tether = require( "tether" );
-      this._tether = new Tether( this._tetherOptions() );
+      this._drop = new TetherDrop( this._dropOptions() );
     }
   },
 
   componentWillUnmount: function() {
-    this._tether.destroy();
+
+    this._drop.destroy();
     React.unmountComponentAtNode( this._popoverElement );
     if ( this._popoverElement.parentNode ) {
       this._popoverElement.parentNode.removeChild( this._popoverElement );
     }
+
   },
 
   render: function() {
-    return <span/>;
+    return <span></span>;
   }
 } );
 
-module.exports = Popover;
+module.exports = SLDSPopover;
