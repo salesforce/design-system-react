@@ -72,7 +72,6 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		const elements = this.elements = {};
 		
 		elements.wrapper = Lib.wrapElement(React.findDOMNode(this));
-		elements.dropdownMenu = Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.MENU]));
 	},
 
 	handleMenuItemSelected (selection) {
@@ -80,6 +79,8 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	},
 
 	handleKeyPress (e) {
+		this.elements.dropdownMenu = this.elements.dropdownMenu || Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.MENU]));
+		
 		const key = e.key || e.keyIdentifier;
 		if (key) this.__jumpToLetter(key);
 	}
