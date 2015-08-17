@@ -2,6 +2,9 @@
   <head>
     <title>Sample App</title>
   </head>
+
+  <link rel="stylesheet" type="text/css" href="/static/bundle.css">
+
   <style>
     .example-appear {
       opacity: 0.01;
@@ -10,9 +13,11 @@
     .example-appear.example-appear-active {
       opacity: 1;
     }
-
+    html,
+    body {
+      height: auto; 
+    }
   </style>
-  <link rel="stylesheet" type="text/css" href="/static/bundle.css">
 
   <body>
     <div id='root'>
