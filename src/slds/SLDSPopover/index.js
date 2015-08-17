@@ -44,10 +44,8 @@ var SLDSPopover = React.createClass( {
   },
 
   handleClick: function(event){
-    console.log('>>>>> handleClick >>>>>');
     event.preventDefault();
     event.stopPropagation();
-    return false;
   },
 
   _popoverComponent: function() {

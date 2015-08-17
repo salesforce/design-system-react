@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 
 var Day = React.createClass({
 
+  handleClick: function() {
+    console.log('CLICK!!! ',this.props.day);
+    if(this.props.onSelectDate){
+      this.props.onSelectDate(this.props.day);
+    }
+  },
 
   render: function() {
 
@@ -11,7 +17,7 @@ var Day = React.createClass({
               aria-disabled={this.props.day.isCurrentMonth}
               aria-selected={this.props.day.isToday}
               className={"sds-day" + (this.props.day.isToday ? " sds-is-today" : "") + (this.props.day.isCurrentMonth ? "" : " sds-disabled-text") + (this.props.day.date.isSame(this.props.selected) ? " sds-is-selected" : "")} 
-              onClick={this.props.onSelect.bind(null, this.props.day)}
+              onClick={this.handleClick}
             >
           <span className="sds-day">
             {this.props.day.number}

@@ -22,7 +22,8 @@ var Calendar = React.createClass({
     this.setState({ month: month });
   },
 
-  select: function(day) {
+  handleSelectDate: function(day) {
+    console.log('CALENDAR: ',day);
     this.props.selected = day.date;
     this.forceUpdate();
   },
@@ -70,7 +71,12 @@ var Calendar = React.createClass({
       count = 0;
 
     while (!done) {
-      weeks.push(<Week key={date.toString()} date={date.clone()} month={this.state.month} select=    {this.select} selected={this.props.selected} />);
+      weeks.push(<Week 
+          key={date.toString()} 
+          date={date.clone()} 
+          month={this.state.month} 
+          onSelectDate={this.handleSelectDate} 
+          selected={this.props.selected} />);
       date.add(1, "w");
       done = count++ > 2 && monthIndex !== date.month();
       monthIndex = date.month();

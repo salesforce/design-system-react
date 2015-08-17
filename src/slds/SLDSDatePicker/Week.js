@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 import Day from './Day';
 
 var Week = React.createClass({
+
+  handleSelectDate: function(day){
+    if(this.props.onSelectDate){
+      this.props.onSelectDate(day);
+    }
+  },
+
   render: function() {
     var days = [],
       date = this.props.date,
@@ -16,7 +23,7 @@ var Week = React.createClass({
         isToday: date.isSame(new Date(), "day"),
         date: date
       };
-      days.push(<Day day={day} onSelect={this.props.select}/>);
+      days.push(<Day day={day} onSelectDate={this.handleSelectDate}/>);
       date = date.clone();
       date.add(1, "d");
 
