@@ -26,8 +26,7 @@
     "grunt-eslint": "^17.1.0",
     "grunt-mocha": "^0.4.13",
     "mocha": "^1.21.5",
-    "serve-static": "^1.10.0",
-    "watchify": "^3.3.1"
+    "serve-static": "^1.10.0"
   },
   "dependencies": {
     "backbone": "^1.2.1",

@@ -23,14 +23,6 @@ function _extend (protoProps) {
 	return child;
 }
 
-function _isRegexMatch (string, regex) {
-	if (!Lib.isRegExp(regex) || !Lib.isString(string)) {
-		return false;
-	}
-
-	return string.match(regex);
-}
-
 function _findMatch (data, isMatch) {
 	let found;
 
@@ -83,7 +75,7 @@ Lib.extend(Data.prototype, {
 				let match = true;
 
 				_criteria.keys().forEach(function (key) {
-					if (_criteria.get(key) !== item.get(key) && !_isRegexMatch(item.get(key), _criteria.get(key))) {
+					if (_criteria.get(key) !== item.get(key)) {
 						match = false;
 					}
 				});
