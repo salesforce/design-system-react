@@ -5,13 +5,13 @@ import Base from './base';
 
 export const CONTROL = 'loader';
 
-const LoaderCore = Lib.extend({}, Base, {
+const LoaderCore = Lib.merge({}, Base, {
 	cssClasses: {
 		CONTROL: CONTROL
 	},
 
 	// Set the defaults
-	__getInitialState () {
+	_getDefaultState () {
 		return {
 			begin: 1,
 			delay: 150,
@@ -20,7 +20,7 @@ const LoaderCore = Lib.extend({}, Base, {
 		};
 	},
 
-	__initializeOptions (options) {
+	_initializeOptions (options) {
 		this.setState(options);
 	}
 });

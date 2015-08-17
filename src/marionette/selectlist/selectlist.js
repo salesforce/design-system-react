@@ -15,7 +15,7 @@ import '../../data/backbone';
 const fs = require('fs');
 const selectlistTemplate = _.template(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 
-const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, State, {
+const Selectlist = Marionette.ItemView.extend(Lib.merge({}, SelectlistCore, State, {
 	className () {
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP);
 	},
@@ -57,32 +57,22 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, Sta
 		'change': 'render'
 	},
 
-	_assumeFocus: false,
-
 	constructor () {
-		this.__initializeState();
+		this._initializeState();
 		Marionette.ItemView.prototype.constructor.apply(this, arguments);
 	},
 
 	initialize (options) {
-		const self = this;
-
-		this.elements = {
-			wrapper: {
-				toggleClass (cssClass, state) {
-					self.$el.toggleClass(cssClass, state);
-				}
-			}
-		};
-
-		this.__constructor(options);
+		this._initialize(options);
 	},
 
 	onRender () {
-		if (this._assumeFocus) {
-			this.$el.find('button').focus();
-			this._assumeFocus = false;
-		}
+		const elements = this.elements = {};
+		
+		elements.wrapper = this.$el;
+		elements.dropdownMenu = this.$('.' + this.cssClasses.MENU);
+		
+		elements.wrapper.toggleClass(this.cssClasses.DISABLED, this.getStore('disabled'));
 	},
 
 	handleMenuItemSelected (e) {
@@ -101,9 +91,7 @@ const Selectlist = Marionette.ItemView.extend(Lib.extend({}, SelectlistCore, Sta
 	handleKeyPress (e) {
 		const key = e.which;
 
-		this._assumeFocus = true;
-
-		if (key) this.__jumpToLetter(key);
+		if (key) this._jumpToLetter(key);
 	}
 }));
 

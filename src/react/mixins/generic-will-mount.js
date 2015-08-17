@@ -1,21 +1,14 @@
+// Core
+import * as Lib from '../../core/lib';
+
 const genericWillMount = {
 	componentWillMount () {
-		const self = this;
-
-		this.elements = {
-			wrapper: {
-				toggleClass (cssClass, state) {
-					const wrapperClasses = self.state.wrapperClasses;
-					wrapperClasses[cssClass] = state;
-
-					self.setState({
-						wrapperClasses: wrapperClasses
-					});
-				}
-			}
-		};
-
-		this.__constructor(this.props);
+		this.elements = {};
+		this._initialize(this.props);
+	},
+	
+	componentDidMount () {
+		this.elements.wrapper = Lib.wrapElement(React.findDOMNode(this));
 	}
 };
 

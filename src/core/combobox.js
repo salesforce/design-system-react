@@ -9,17 +9,18 @@ import Selectable from '../traits/selectable';
 
 export const CONTROL = 'combobox';
 
-const ComboboxCore = Lib.extend({}, Base, Disableable, Selectable, {
+const ComboboxCore = Lib.merge({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
+		TOGGLE: 'dropdown-toggle',
 		BUTTON: 'btn',
 		INPUT: 'input',
 		MENU: 'dropdown-menu'
 	},
 
 	// Set the defaults
-	__getInitialState () {
+	_getDefaultStore () {
 		return {
 			selection: null,
 			disabled: false
@@ -27,16 +28,16 @@ const ComboboxCore = Lib.extend({}, Base, Disableable, Selectable, {
 	},
 
 	// TO-DO: Basically a bunch of if-else blocks. Can this be improved?
-	__initializeOptions (options) {
+	_initializeOptions (options) {
 		if (options && options.collection) {
 			this._collection = Lib.getDataAdapter(options.collection);
 		} else if (!this._collection) {
 			this._collection = Lib.getDataAdapter([]);
 		}
 
-		this.__initializeSelectable(options);
+		this._initializeSelectable(options);
 
-		this.__initializeDisableable(options);
+		this._initializeDisableable(options);
 
 		if (options && options.resize === 'auto') {
 			if (Lib.isFunction(this.resize)) this.resize();

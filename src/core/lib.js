@@ -3,9 +3,32 @@ export const version = '__VERSION__';
 export const global = (typeof self === 'object' && self.self === self && self) ||
 			(typeof global === 'object' && global.global === global && global);
 
+// Helpers
+import partial from 'lodash/function/partial';
+export { partial };
+
 // DOM
 export function hasClass (element, className) {
-	return (element.className.match(new RegExp('\\b' + className + '\\b')) !== null);
+	return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;
+}
+
+export function outerWidth (element) {
+	return element.offsetWidth;
+}
+
+export function setWidth (element, width) {
+	element.setAttribute('style', 'width:' + width + 'px');
+	element.style.width = width + 'px';
+}
+
+export function wrapElement (element) {
+	this[0] = element;
+	this.element = element;
+	this.hasClass = partial(hasClass, element);
+	this.outerWidth = partial(outerWidth, element);
+	this.width = partial(setWidth, element);
+	
+	return this;
 }
 
 // Browser
@@ -16,96 +39,24 @@ export function log () {
 }
 
 // Type Helpers
-export function isFunction (potentialFunction) {
-	return typeof potentialFunction === 'function';
-}
+export { default as isFunction } from 'lodash/lang/isFunction';
 
-export function isNumber (potentialNumber) {
-	return toString.call(potentialNumber) === '[object Number]';
-}
+export { default as isNumber } from 'lodash/lang/isNumber';
 
-export function isString (potentialString) {
-	return toString.call(potentialString) === '[object String]';
-}
+export { default as isString } from 'lodash/lang/isString';
 
-export function isRegExp (potentialRegExp) {
-	return toString.call(potentialRegExp) === '[object RegExp]';
-}
+export { default as isRegExp } from 'lodash/lang/isRegExp';
 
-export function isArray (potentialArray) {
-	return toString.call(potentialArray) === '[object Array]';
-}
+export { default as isArray } from 'lodash/lang/isArray';
 
-function _findMatch (collection, isMatch) {
-	let found;
+export { default as isBoolean } from 'lodash/lang/isBoolean';
 
-	if (!isFunction(isMatch)) {
-		return null;
-	}
-
-	collection.forEach(function (item) {
-		if (!found) {
-			if (isMatch(item)) {
-				found = item;
-			}
-		}
-	});
-
-	return found || null;
-}
-
-export function isObject (potentialObject) {
-	return isFunction(potentialObject) || (typeof potentialObject === 'object' && !!potentialObject);
-}
-
-export function findWhere (collection, criteria) {
-	const _criteria = (isObject(_criteria) && isFunction(_criteria.toJSON) && _criteria.toJSON()) || criteria;
-	let _isMatch;
-
-	if (isObject(_criteria) && !isFunction(_criteria)) {
-		_isMatch = function (item) {
-			let match = true;
-			let innerItem = item;
-
-			if (isFunction(innerItem.toJSON)) {
-				innerItem = innerItem.toJSON();
-			}
-
-			Object.keys(_criteria).forEach(function (key) {
-				if (_criteria[key] !== innerItem[key] && !_isRegexMatch(innerItem[key], _criteria[key])) {
-					match = false;
-				}
-			});
-
-			return match;
-		};
-	} else {
-		_isMatch = _criteria;
-	}
-
-	return _findMatch(collection, _isMatch);
-}
+export { default as isObject } from 'lodash/lang/isObject';
 
 // Data Helpers
-export function extend (target) {
-	for (let i = 1; i < arguments.length; i++) {
-		const source = arguments[i];
+export { default as extend } from 'lodash/object/extend';
 
-		for (const key in source) {
-			if (Object.prototype.hasOwnProperty.call(source, key)) {
-				if (Object.prototype.hasOwnProperty.call(target, key) &&
-					target[key] && typeof target[key] === 'object' &&
-					source[key] && typeof source[key] === 'object') {
-					target[key] = extend({}, target[key], source[key]); // Combine objects
-				} else {
-					target[key] = source[key];
-				}
-			}
-		}
-	}
-
-	return target;
-}
+export { default as merge } from 'lodash/object/merge';
 
 const _adapters = [];
 

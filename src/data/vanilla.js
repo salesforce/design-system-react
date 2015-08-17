@@ -53,27 +53,16 @@ const Data = Base.Data.extend({
 
 	at (index) {
 		let result;
-		
+
 		if (this._data && Lib.isNumber(index)) {
 			result = this._data[index];
 		}
 
 		return result;
-	},
-
-	forEach (callback, thisArg) {
-		const self = this;
-
-		this._data.forEach(function (item) {
-			const _item = new self.ItemType(item);
-			callback.call(thisArg || self, _item);
-		});
-	},
-
-	length () {
-		return this._data.length;
 	}
 });
+
+Data._addDefaultImplementations(Data, ['forEach', 'filter', 'map', 'every']);
 
 // Static methods
 Data.isTypeOf = function isTypeOf (data) {

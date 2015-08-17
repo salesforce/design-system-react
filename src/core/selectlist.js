@@ -10,7 +10,26 @@ import Selectable from '../traits/selectable';
 
 export const CONTROL = 'selectlist';
 
-const SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
+const KeyBuffer = function () {
+	const self = this;
+	this.buffer = '';
+	
+	return function add (key) {
+		if (self.timeout) {
+			Lib.global.clearTimeout(self.timeout);
+			self.timeout = undefined;
+		}
+		
+		self.timeout = Lib.global.setTimeout(function () {
+			self.buffer = '';
+		}, 400);
+		
+		self.buffer = self.buffer + key;
+		return self.buffer;
+	};
+};
+
+const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -22,28 +41,35 @@ const SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 	},
 
 	// Set the defaults
-	__getInitialState () {
+	_getDefaultStore () {
 		return {
 			selection: null,
 			disabled: false
 		};
 	},
 
-	// TO-DO: Basically a bunch of if-else blocks. Can this be improved?
-	__initializeOptions (options) {
+	_initializeOptions (options) {
 		if (options && options.collection) {
 			this._collection = Lib.getDataAdapter(options.collection);
 		} else if (!this._collection) {
 			this._collection = Lib.getDataAdapter([]);
 		}
 
-		this.__initializeSelectable(options);
+		this._initializeSelectable(options);
 
-		this.__initializeDisableable(options);
+		this._initializeDisableable(options);
 
 		if (options && options.resize === 'auto') {
 			if (Lib.isFunction(this.resize)) this.resize();
 		}
+		
+		this._keyBuffer = new KeyBuffer();
+	},
+	
+	_canSelect (newSelection) {
+		const _item = Lib.getItemAdapter(newSelection);
+		
+		return !_item.get('_itemType') && !_item.get('disabled');
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
@@ -93,6 +119,43 @@ const SelectlistCore = Lib.extend({}, Base, Disableable, Selectable, {
 
 		this.setState({ width: width });
 		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+	},
+
+	// For keyboard nav
+	_jumpToLetter (input) {
+		let letter = input;
+		let selection;
+		let pattern;
+		let consecutive = 0;
+
+		if (Lib.isNumber(letter)) {
+			letter = String.fromCharCode(letter);
+		}
+
+		if (letter.length !== 1) {
+			return;
+		}
+		
+		// Combine subsequent keypresses
+		pattern = this._keyBuffer(letter).toLowerCase();
+		
+		// Support for navigating to the next option of the same letter with repeated presses of the same key
+		if (pattern.length > 1 && new RegExp('^[' + letter.replace('\\', '\\\\') + ']+$').test(pattern)) {
+			consecutive = pattern.length;
+		}
+		
+		const menu = this.elements.dropdownMenu[0];
+		const menuItems = [].slice.call(menu.getElementsByTagName('a'));
+		
+		menuItems.forEach(function compareMenuItem (menuItem) {
+			if ((!selection && menuItem.textContent.substr(0, pattern.length).toLowerCase() === pattern) ||
+				(consecutive > 0 && menuItem.textContent.substr(0, 1).toLowerCase() === letter)) {
+				consecutive--;
+				selection = menuItem;
+			}
+		});
+
+		if (selection) selection.focus();
 	}
 });
 

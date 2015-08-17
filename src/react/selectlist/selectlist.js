@@ -6,17 +6,18 @@ import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
-import ReactHelpers from '../mixins/helpers';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
+import State from '../mixins/state';
+
 // Third party
 import classNames from 'classnames';
 
 // Children
 import SelectlistItem from './selectlist-item';
 
-const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
-	mixins: [ReactHelpers, Events, genericWillMount],
+const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
+	mixins: [State, Events, genericWillMount],
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -28,12 +29,6 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
 			React.PropTypes.object
 		]).isRequired,
 		text: React.PropTypes.string
-	},
-
-	getInitialState () {
-		return Lib.extend(this.__getInitialState(), {
-			wrapperClasses: {}
-		});
 	},
 
 	menuItems () {
@@ -51,18 +46,20 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
 		const styles = {
 			width: this.state.width
 		};
+		
+		const disabledClass = {};
+		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
-				<button className={classNames('btn btn-default dropdown-toggle', {disabled: this.state.disabled})} data-toggle="dropdown" type="button" disabled={this.state.disabled} style={styles}>
+			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, disabledClass)} onKeyPress={this.handleKeyPress}>
+				<button className={classNames('btn btn-default', this.cssClasses.TOGGLE, disabledClass)} data-toggle="dropdown" type="button" disabled={this.props.disabled} style={styles}>
 					<span className="selected-label">{selection.get('text') || 'None selected'}</span>
 					<span className="caret"></span>
 					<span className="sr-only">Toggle Dropdown</span>
 				</button>
-				<ul className="dropdown-menu" role="menu" style={styles}>
+				<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
 					{this.menuItems()}
 				</ul>
-				<input name={this.props.name} className="hidden hidden-field" readOnly aria-hidden="true" type="text" value={JSON.stringify(selection)}></input>
 			</div>
 		);
 	},
@@ -72,8 +69,10 @@ const Selectlist = React.createClass(Lib.extend({}, SelectlistCore, {
 	},
 
 	handleKeyPress (e) {
+		this.elements.dropdownMenu = this.elements.dropdownMenu || Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.MENU]));
+		
 		const key = e.key || e.keyIdentifier;
-		if (key) this.__jumpToLetter(key);
+		if (key) this._jumpToLetter(key);
 	}
 }));
 
