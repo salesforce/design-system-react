@@ -1,3 +1,9 @@
-.SLDSPopover{
-  background-color:red;
+.SLDSPopover {
+  padding: 0.5rem 0;
+  min-width: 240px;
+  max-width: 400px;
+  border: 1px solid #d8dde6;
+  border-radius: 0.25rem;
+  box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.16);
+  background: white; 
 }

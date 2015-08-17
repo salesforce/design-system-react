@@ -1,5 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 module.exports = {
   devtool: 'eval',
@@ -15,10 +17,17 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new ExtractTextPlugin("bundle.css", {
+        allChunks: true
+    })
   ],
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      'sds-scss': '@salesforce-ux/landmark/scss/index.scss',
+      'sds-css': '@salesforce-ux/landmark/assets/styles/salesforce-design-system.css'
+    }
   },
   module: {
     loaders: [{
@@ -28,11 +37,11 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        loader: ExtractTextPlugin.extract('style-loader', 'style!css!sass')
       }
     ]
   }
