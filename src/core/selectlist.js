@@ -10,6 +10,25 @@ import Selectable from '../traits/selectable';
 
 export const CONTROL = 'selectlist';
 
+const KeyBuffer = function () {
+	const self = this;
+	this.buffer = '';
+	
+	return function add (key) {
+		if (self.timeout) {
+			Lib.global.clearTimeout(self.timeout);
+			self.timeout = undefined;
+		}
+		
+		self.timeout = Lib.global.setTimeout(function () {
+			self.buffer = '';
+		}, 400);
+		
+		self.buffer = self.buffer + key;
+		return self.buffer;
+	};
+};
+
 const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
 	cssClasses: {
@@ -43,6 +62,8 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		if (options && options.resize === 'auto') {
 			if (Lib.isFunction(this.resize)) this.resize();
 		}
+		
+		this.__keyBuffer = new KeyBuffer();
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
@@ -98,6 +119,8 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 	__jumpToLetter (input) {
 		let letter = input;
 		let selection;
+		let pattern;
+		let consecutive = 0;
 
 		if (Lib.isNumber(letter)) {
 			letter = String.fromCharCode(letter);
@@ -106,18 +129,22 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		if (letter.length !== 1) {
 			return;
 		}
-
-		if (letter === '\\') {
-			letter = '\\\\';
-		}
 		
-		letter = new RegExp('^[' + letter + ']', 'i');
+		// Combine subsequent keypresses
+		pattern = this.__keyBuffer(letter).toLowerCase();
+		
+		// Support for navigating to the next option of the same letter with repeated presses of the same key
+		if (pattern.length > 1 && new RegExp('^[' + letter.replace('\\', '\\\\') + ']+$').test(pattern)) {
+			consecutive = pattern.length;
+		}
 		
 		const menu = this.elements.dropdownMenu[0];
 		const menuItems = [].slice.call(menu.getElementsByTagName('a'));
 		
 		menuItems.forEach(function compareMenuItem (menuItem) {
-			if (!selection && menuItem.textContent.match(letter)) {
+			if ((!selection && menuItem.textContent.substr(0, pattern.length).toLowerCase() === pattern) ||
+				(consecutive > 0 && menuItem.textContent.substr(0, 1).toLowerCase() === letter)) {
+				consecutive--;
 				selection = menuItem;
 			}
 		});
