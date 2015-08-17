@@ -17,10 +17,8 @@ module.exports = React.createClass( {
   },
 
   handleClick: function(event){
-    console.log('>>>>> handleClick !!! >>>>>');
     event.preventDefault();
     event.stopPropagation();
-    return false;
   },
 
   render() {

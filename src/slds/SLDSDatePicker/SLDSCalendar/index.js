@@ -76,7 +76,7 @@ var Calendar = React.createClass({
           date={date.clone()} 
           month={this.state.month} 
           onSelectDate={this.handleSelectDate} 
-          selected={this.props.selected} />);
+          selectedDay={this.props.selected} />);
       date.add(1, "w");
       done = count++ > 2 && monthIndex !== date.month();
       monthIndex = date.month();

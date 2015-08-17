@@ -11,6 +11,7 @@ var Week = React.createClass({
   },
 
   render: function() {
+    console.log('SELECTED: ',this.props.selectedDay);
     var days = [],
       date = this.props.date,
       month = this.props.month;
@@ -23,7 +24,10 @@ var Week = React.createClass({
         isToday: date.isSame(new Date(), "day"),
         date: date
       };
-      days.push(<Day day={day} onSelectDate={this.handleSelectDate}/>);
+      days.push(<Day 
+          day={day} 
+          selectedDay={this.props.selectedDay}
+          onSelectDate={this.handleSelectDate}/>);
       date = date.clone();
       date.add(1, "d");
 
