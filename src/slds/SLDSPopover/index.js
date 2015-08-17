@@ -25,6 +25,7 @@ var SLDSPopover = React.createClass( {
 
   componentWillMount: function() {
 
+
     var popoverContainer = document.createElement( "span" );
     popoverContainer.className = "datepicker__container";
 
@@ -61,8 +62,9 @@ var SLDSPopover = React.createClass( {
 
 
   _dropOptions: function() {
+    let target = this.props.targetElement?this.props.targetElement.getDOMNode():this.getDOMNode().parentNode;
     return {
-      target: this.getDOMNode().parentNode,
+      target: target,
       content: this._popoverElement,
       classes: 'drop-theme-arrows',
       position: 'bottom left',
