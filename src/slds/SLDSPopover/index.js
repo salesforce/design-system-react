@@ -15,6 +15,16 @@ var SLDSPopover = React.createClass( {
     targetOffset: React.PropTypes.string
   },
 
+  mixins: [ require( "react-onclickoutside" ) ],
+
+  handleClickOutside: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if(this.props.onClose){
+      this.props.onClose();
+    }
+  },
+
   getDefaultProps: function() {
     return {
       attachment: "top left",
@@ -43,13 +53,24 @@ var SLDSPopover = React.createClass( {
     this._renderPopover();
   },
 
+  handleClick: function(event){
+    console.log('>>>>> handleClick >>>>>');
+    event.stopImmediatePropagation();
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+  },
+
   _popoverComponent: function() {
 
 
     console.log('_popoverComponent: ', this.props.children);
     var className = this.props.className;
     return (
-      <div className={className}>
+      <div className={className} 
+        onClick={this.handleClick} 
+        onMousedown={this.handleClick} 
+        onMouseup={this.handleClick}>
         <div className="SLDSPopover">
           <ReactCSSTransitionGroup transitionName="SLDSPopoverAnim" transitionAppear={true}>
             {this.props.children}
@@ -92,7 +113,9 @@ var SLDSPopover = React.createClass( {
     if ( this._popoverElement.parentNode ) {
       this._popoverElement.parentNode.removeChild( this._popoverElement );
     }
-
+    if(this.props.onClose){
+      this.props.onClose();
+    }
   },
 
   render: function() {

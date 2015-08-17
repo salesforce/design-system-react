@@ -4,15 +4,27 @@ import SLDSDatePicker from './SLDSDatePicker';
 
 
 export default class SLDSSuggest extends Component {
-  handleFocus() {
-    this.setState({isOpen:true})
-  }
-  handleBlur() {
+
+  handleClose() {
+    console.log('close!');
     this.setState({isOpen:false})
   }
+
+  handleClick() {
+    this.setState({isOpen:true})
+  }
+
+  handleFocus() {
+//    this.setState({isOpen:true})
+  }
+
+  handleBlur() {
+//    this.setState({isOpen:false})
+  }
+
   popover() {
     if(this.state && this.state.isOpen){
-      return <SLDSPopover targetElement={this.refs.date}>
+      return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose.bind(this)}>
         <SLDSDatePicker />
       </SLDSPopover>;
     }
@@ -37,6 +49,7 @@ export default class SLDSSuggest extends Component {
               type="text" 
               placeholder="Pick a Date" 
               label="Date Picker Label" 
+              onClick={this.handleClick.bind(this)}
               onFocus={this.handleFocus.bind(this)} 
               onBlur={this.handleBlur.bind(this)}
             />

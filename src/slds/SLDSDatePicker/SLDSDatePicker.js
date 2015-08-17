@@ -6,6 +6,7 @@ import moment from 'moment';
 
 export default class SLDSDatePicker extends Component {
 
+
   render() {
     return (
 
@@ -13,8 +14,11 @@ export default class SLDSDatePicker extends Component {
           <div className="sds-datepicker__filter sds-grid">
             <div className="sds-datepicker__filter--month sds-grid sds-grid--align-spread sds-size--3-of-4">
               <div className="sds-align-middle" role="button" aria-labelledby="bn_prev-label" tabIndex="0">
-                <button className="sds-button sds-button--icon-container">
-
+                <button className="sds-button sds-button--icon-container" onClick={(e)=>{
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}>
+                  <span style={{color:'black'}}>AA</span>
                   <span className="sds-assistive-text">Previous Month</span>
                 </button>
               </div>
