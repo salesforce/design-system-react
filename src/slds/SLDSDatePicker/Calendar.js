@@ -6,7 +6,9 @@ export default class Calendar extends Component {
   render() {
     return (
 
-      <table className="datepicker__month" role="grid" aria-labelledby="month" tabIndex="0">
+      <table style={{
+        outline: none;
+      }} className="datepicker__month" role="grid" aria-labelledby="month">
         <thead>
           <tr id="weekdays">
             <th id="Sunday">

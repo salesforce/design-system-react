@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 //import Calendar from './Calendar';
-import Calendar from './cal';
+import Calendar from './SLDSCalendar/index';
 import moment from 'moment';
 
 module.exports = React.createClass( {
