@@ -27,7 +27,7 @@ export default class SLDSSuggest extends Component {
   popover() {
     if(this.state && this.state.isOpen){
       return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose.bind(this)}>
-        <SLDSDatePicker />
+        <SLDSDatePicker onClose={this.handleClose.bind(this)}/>
       </SLDSPopover>;
     }
     return <span />;

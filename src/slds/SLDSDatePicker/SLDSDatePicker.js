@@ -4,12 +4,29 @@ import React, { Component } from 'react';
 import Calendar from './cal';
 import moment from 'moment';
 
-export default class SLDSDatePicker extends Component {
+module.exports = React.createClass( {
+
+  mixins: [ require( "react-onclickoutside" ) ],
+
+  handleClickOutside: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if(this.props.onClose){
+      this.props.onClose();
+    }
+  },
+
+  handleClick: function(event){
+    console.log('>>>>> handleClick !!! >>>>>');
+    event.preventDefault();
+    event.stopPropagation();
+    return false;
+  },
 
   render() {
     return (
 
-      <div className="sds-datepicker" aria-hidden="false" data-selection="single">
+      <div className="sds-datepicker" aria-hidden="false" data-selection="single" onClick={this.handleClick}>
           <div className="sds-datepicker__filter sds-grid">
             <div className="sds-datepicker__filter--month sds-grid sds-grid--align-spread sds-size--3-of-4">
               <div className="sds-align-middle" role="button" aria-labelledby="bn_prev-label" tabIndex="0">
@@ -49,5 +66,5 @@ export default class SLDSDatePicker extends Component {
         </div>
     );
   }
-}
+});
 

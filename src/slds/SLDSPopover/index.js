@@ -15,17 +15,6 @@ var SLDSPopover = React.createClass( {
     targetOffset: React.PropTypes.string
   },
 
-  mixins: [ require( "react-onclickoutside" ) ],
-
-  handleClickOutside: function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-//    alert('YES!');
-    if(this.props.onClose){
-      this.props.onClose();
-    }
-  },
-
   getDefaultProps: function() {
     return {
       attachment: "top left",
@@ -56,7 +45,6 @@ var SLDSPopover = React.createClass( {
 
   handleClick: function(event){
     console.log('>>>>> handleClick >>>>>');
-    event.stopImmediatePropagation();
     event.preventDefault();
     event.stopPropagation();
     return false;
