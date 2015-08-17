@@ -59,7 +59,6 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 				<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
 					{this.menuItems()}
 				</ul>
-				<input name={this.props.name} className="hidden hidden-field" readOnly aria-hidden="true" type="text" value={JSON.stringify(selection)}></input>
 			</div>
 		);
 	},
