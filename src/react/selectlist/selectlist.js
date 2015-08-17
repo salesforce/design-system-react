@@ -6,9 +6,9 @@ import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
+import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
-import State from '../mixins/state';
 
 // Third party
 import classNames from 'classnames';
@@ -18,6 +18,7 @@ import SelectlistItem from './selectlist-item';
 
 const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	mixins: [State, Events, genericWillMount],
+	
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([

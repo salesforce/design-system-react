@@ -1,35 +1,24 @@
-import React from 'react';
-import TreeCore from '../../core/tree';
+// SELECTLIST CONTROL - REACT FACADE
+
+// Core
 import * as Lib from '../../core/lib';
-import classNames from 'classnames';
-import ReactHelpers from '../mixins/helpers';
+import TreeCore from '../../core/tree';
+
+// Framework specific
+import React from 'react';
+import State from '../mixins/state';
+import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
+
+// Third party
+import classNames from 'classnames';
+
+// Children
 import TreeBranch from './tree-branch';
 import TreeItem from './tree-item';
 
 const Tree = React.createClass(Lib.extend({}, TreeCore, {
-	mixins: [ReactHelpers, genericWillMount],
-	getInitialState () {
-		return Lib.extend(this.__getInitialState(), {
-			wrapperClasses: {},
-			// TODO - Address this tomorrow.
-			folderSelect: this.props.folderSelect,
-			multiSelect: this.props.multiSelect
-		});
-	},
-
-	componentWillRecieveProps (nextProps) {
-		this.setState({
-			folderSelect: nextProps.folderSelect,
-			multiSelect: nextProps.multiSelect
-		});
-	},
-
-	getDefaultProps () {
-		return {
-			folderSelect: true
-		};
-	},
+	mixins: [State, Events, genericWillMount],
 
 	render () {
 		const contents = [];
@@ -42,7 +31,9 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 			}
 			contents.push(result);
 		});
-		// bind the context of the accessors so that the children don't have to worry about scope.
+		
+		// Bind the context of the accessors so that the children don't have to worry about scope
+		// TO-DO: This probably needs to move to a more logical place than render
 		Object.keys(this.accessors).forEach(accessorName => {
 			this.accessors[accessorName] = this.accessors[accessorName].bind(this);
 		});
@@ -56,14 +47,14 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 
 	_handleItemClick (item) {
 		if (this.accessors.getType(item) === 'folder' && !this.state.folderSelect) {
-			this.__toggleFolder(item);
+			this._toggleFolder(item);
 		} else {
-			this.__selectItem(item);
+			this._selectItem(item);
 		}
 	},
 
 	_handleExpandClick (item) {
-		this.__toggleFolder(item);
+		this._toggleFolder(item);
 	}
 }));
 
