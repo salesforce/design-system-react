@@ -5,6 +5,8 @@ import SLDSDatePicker from './SLDSDatePicker';
 
 export default class SLDSSuggest extends Component {
 
+
+
   handleClose() {
     console.log('close!');
     this.setState({isOpen:false})
@@ -15,7 +17,7 @@ export default class SLDSSuggest extends Component {
   }
 
   handleFocus() {
-//    this.setState({isOpen:true})
+    this.setState({isOpen:true})
   }
 
   handleBlur() {

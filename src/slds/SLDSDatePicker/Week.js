@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Day from './Day';
+
 var Week = React.createClass({
   render: function() {
     var days = [],
@@ -14,9 +16,7 @@ var Week = React.createClass({
         isToday: date.isSame(new Date(), "day"),
         date: date
       };
-      days.push(<td role="gridcell" aria-disabled="true">
-        <span key={day.date.toString()} className={"sds-day" + (day.isToday ? " today" : "") + (day.isCurrentMonth ? "" : " different-month") + (day.date.isSame(this.props.selected) ? " selected" : "")} onClick={this.props.select.bind(null, day)}>{day.number}</span>
-      </td>);
+      days.push(<Day day={day} onSelect={this.props.select}/>);
       date = date.clone();
       date.add(1, "d");
 

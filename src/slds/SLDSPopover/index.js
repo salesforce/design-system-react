@@ -20,6 +20,7 @@ var SLDSPopover = React.createClass( {
   handleClickOutside: function(e) {
     e.preventDefault();
     e.stopPropagation();
+//    alert('YES!');
     if(this.props.onClose){
       this.props.onClose();
     }
