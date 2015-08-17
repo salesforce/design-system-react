@@ -4,7 +4,7 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 //var ReactMotion = require( "react-motion" );
 import {TransitionSpring} from 'react-motion';
 
-require('./SLDSPopover.css');
+require('./index.css');
 
 var SLDSPopover = React.createClass( {
   displayName: "SLDSPopover",
@@ -50,7 +50,7 @@ var SLDSPopover = React.createClass( {
     return (
       <div className={className}>
         <div className="SLDSPopover">
-          <ReactCSSTransitionGroup transitionName="example" transitionAppear={true}>
+          <ReactCSSTransitionGroup transitionName="SLDSPopoverAnim" transitionAppear={true}>
             {this.props.children}
           </ReactCSSTransitionGroup>
         </div>
