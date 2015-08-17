@@ -59,26 +59,10 @@ const Data = Base.Data.extend({
 		}
 
 		return result;
-	},
-
-	forEach (callback, thisArg) {
-		const self = this;
-
-		this._data.forEach(function (item) {
-			const _item = new self.ItemType(item);
-			callback.call(thisArg || self, _item);
-		});
-	},
-
-	filter (predicate, thisArg) {
-		const self = this;
-
-		return new Data(this._data.filter(function (item) {
-			const _item = new self.ItemType(item);
-			return predicate.call(thisArg || self, _item);
-		}));
 	}
 });
+
+Data._addDefaultImplementations(Data, ['forEach', 'filter', 'map', 'every']);
 
 // Static methods
 Data.isTypeOf = function isTypeOf (data) {

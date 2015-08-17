@@ -5,12 +5,12 @@ import * as Lib from '../../core/lib';
 
 const State = {
 	getInitialState () {
-		var defaultState = Lib.isFunction(this.__getDefaultState) ? this.__getDefaultState() : {};
+		var defaultState = Lib.isFunction(this._getDefaultState) ? this._getDefaultState() : {};
 		return defaultState;
 	},
 	
 	getDefaultProps () {
-		var defaultStore = Lib.isFunction(this.__getDefaultStore) ? this.__getDefaultStore() : {};
+		var defaultStore = Lib.isFunction(this._getDefaultStore) ? this._getDefaultStore() : {};
 		return defaultStore;
 	},
 	

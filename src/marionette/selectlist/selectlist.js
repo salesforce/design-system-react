@@ -58,12 +58,12 @@ const Selectlist = Marionette.ItemView.extend(Lib.merge({}, SelectlistCore, Stat
 	},
 
 	constructor () {
-		this.__initializeState();
+		this._initializeState();
 		Marionette.ItemView.prototype.constructor.apply(this, arguments);
 	},
 
 	initialize (options) {
-		this.__initialize(options);
+		this._initialize(options);
 	},
 
 	onRender () {
@@ -91,7 +91,7 @@ const Selectlist = Marionette.ItemView.extend(Lib.merge({}, SelectlistCore, Stat
 	handleKeyPress (e) {
 		const key = e.which;
 
-		if (key) this.__jumpToLetter(key);
+		if (key) this._jumpToLetter(key);
 	}
 }));
 

@@ -65,7 +65,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	},
 
 	componentWillMount () {
-		this.__initialize(this.props);
+		this._initialize(this.props);
 	},
 	
 	componentDidMount () {
@@ -82,7 +82,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		this.elements.dropdownMenu = this.elements.dropdownMenu || Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.MENU]));
 		
 		const key = e.key || e.keyIdentifier;
-		if (key) this.__jumpToLetter(key);
+		if (key) this._jumpToLetter(key);
 	}
 }));
 

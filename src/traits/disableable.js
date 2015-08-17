@@ -7,7 +7,7 @@ const Disableable = {
 		DISABLED: 'disabled'
 	},
 
-	__initializeDisableable (options) {
+	_initializeDisableable (options) {
 		if (options && options.disabled === true) {
 			this.disable();
 		} else if (options && options.disabled === false) {

@@ -41,29 +41,35 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 	},
 
 	// Set the defaults
-	__getDefaultStore () {
+	_getDefaultStore () {
 		return {
 			selection: null,
 			disabled: false
 		};
 	},
 
-	__initializeOptions (options) {
+	_initializeOptions (options) {
 		if (options && options.collection) {
 			this._collection = Lib.getDataAdapter(options.collection);
 		} else if (!this._collection) {
 			this._collection = Lib.getDataAdapter([]);
 		}
 
-		this.__initializeSelectable(options);
+		this._initializeSelectable(options);
 
-		this.__initializeDisableable(options);
+		this._initializeDisableable(options);
 
 		if (options && options.resize === 'auto') {
 			if (Lib.isFunction(this.resize)) this.resize();
 		}
 		
-		this.__keyBuffer = new KeyBuffer();
+		this._keyBuffer = new KeyBuffer();
+	},
+	
+	_canSelect (newSelection) {
+		const _item = Lib.getItemAdapter(newSelection);
+		
+		return !_item.get('_itemType') && !_item.get('disabled');
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
@@ -116,7 +122,7 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 	},
 
 	// For keyboard nav
-	__jumpToLetter (input) {
+	_jumpToLetter (input) {
 		let letter = input;
 		let selection;
 		let pattern;
@@ -131,7 +137,7 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		}
 		
 		// Combine subsequent keypresses
-		pattern = this.__keyBuffer(letter).toLowerCase();
+		pattern = this._keyBuffer(letter).toLowerCase();
 		
 		// Support for navigating to the next option of the same letter with repeated presses of the same key
 		if (pattern.length > 1 && new RegExp('^[' + letter.replace('\\', '\\\\') + ']+$').test(pattern)) {

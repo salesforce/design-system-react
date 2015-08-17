@@ -26,13 +26,13 @@ export default function (element) {
 					{
 						collection: collection,
 						disabled: false,
-						selection: collection[0],
+						selection: collection[1],
 						resize: 'auto'
 					},
 					{
 						collection: collection,
 						disabled: false,
-						selection: { text: 'Buzz' }
+						selection: collection[6]
 					},
 					{
 						collection: collection,
@@ -66,7 +66,7 @@ export default function (element) {
 
 						<div className="btn-panel action">
 							<button className="btn btn-default" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
-							<button className="btn btn-default" onClick={this.setSelection.bind(this, index)}>set by value ('2')</button>
+							<button className="btn btn-default" onClick={this.setSelection.bind(this, index)}>set by object</button>
 							<button className="btn btn-default" onClick={this.enable.bind(this, index)}>enable</button>
 							<button className="btn btn-default" onClick={this.disable.bind(this, index)}>disable</button>
 						</div>
@@ -103,7 +103,9 @@ export default function (element) {
 
 		setSelection (index) {
 			const models = this.state.models;
-			models[index].selection = { value: '2' };
+			// Note: React requires you to set a complete object because it doesn't run the setSelection code when you update state
+			// TO-DO: Make sure this pattern is appropriate
+			models[index].selection = collection[5];
 			this.setState({models});
 		},
 

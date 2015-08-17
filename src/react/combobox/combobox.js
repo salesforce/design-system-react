@@ -62,7 +62,7 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 	},
 
 	componentWillMount () {
-		this.__initialize(this.props);
+		this._initialize(this.props);
 	},
 	
 	componentDidMount () {
@@ -77,7 +77,7 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 
 	handleKeyPress (e) {
 		const key = e.key || e.keyIdentifier;
-		if (key) this.__jumpToLetter(key);
+		if (key) this._jumpToLetter(key);
 	}
 }));
 

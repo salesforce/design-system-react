@@ -23,15 +23,15 @@ const Selectlist = function Selectlist (element, options) {
 	if (this.options.collection) {
 		this.rendered = false;
 	} else {
-		this.__initElements(this.elements.wrapper, this.elements);
+		this._initElements(this.elements.wrapper, this.elements);
 
-		this.__buildCollection(this.options);
+		this._buildCollection(this.options);
 
 		this.rendered = true;
 	}
 	
-	this.__initializeState();
-	this.__initialize(this.options);
+	this._initializeState();
+	this._initialize(this.options);
 };
 
 function _renderItem (item) {
@@ -77,7 +77,7 @@ function _render () {
 	const selectionName = selection.get('text') || 'None selected'; // TO-DO: don't hardcode this here
 	const selectionString = selection ? JSON.stringify(selection) : '';
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
-	const elements = this.__initElements($html, this.elements);
+	const elements = this._initElements($html, this.elements);
 
 	// Yay for hacked-together "templates"!
 	elements.button.prop('disabled', disabled);
@@ -111,7 +111,7 @@ function _render () {
 }
 
 Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
-	__initElements (base, elements) {
+	_initElements (base, elements) {
 		const els = elements || {};
 
 		els.button = base.find('.' + this.cssClasses.TOGGLE);
@@ -122,7 +122,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		return els;
 	},
 
-	__buildCollection (options) {
+	_buildCollection (options) {
 		const _options = options;
 		const collection = [];
 
@@ -156,7 +156,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		_options.collection = collection;
 	},
 
-	__onInitialized () {
+	_onInitialized () {
 		if (!this.rendered) {
 			_render.call(this);
 		}
@@ -226,7 +226,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 	_handleKeyPress (e) {
 		const key = e.which;
 
-		if (key) this.__jumpToLetter(key);
+		if (key) this._jumpToLetter(key);
 	}
 });
 

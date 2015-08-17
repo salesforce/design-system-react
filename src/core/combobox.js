@@ -20,7 +20,7 @@ const ComboboxCore = Lib.merge({}, Base, Disableable, Selectable, {
 	},
 
 	// Set the defaults
-	__getDefaultStore () {
+	_getDefaultStore () {
 		return {
 			selection: null,
 			disabled: false
@@ -28,16 +28,16 @@ const ComboboxCore = Lib.merge({}, Base, Disableable, Selectable, {
 	},
 
 	// TO-DO: Basically a bunch of if-else blocks. Can this be improved?
-	__initializeOptions (options) {
+	_initializeOptions (options) {
 		if (options && options.collection) {
 			this._collection = Lib.getDataAdapter(options.collection);
 		} else if (!this._collection) {
 			this._collection = Lib.getDataAdapter([]);
 		}
 
-		this.__initializeSelectable(options);
+		this._initializeSelectable(options);
 
-		this.__initializeDisableable(options);
+		this._initializeDisableable(options);
 
 		if (options && options.resize === 'auto') {
 			if (Lib.isFunction(this.resize)) this.resize();

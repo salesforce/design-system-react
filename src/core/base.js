@@ -7,13 +7,13 @@ const Base = {
 		NAMESPACE: 'fuelux'
 	},
 
-	__initialize (options) {
-		if (Lib.isFunction(this.__onBeforeInitialize)) this.__onBeforeInitialize(options);
+	_initialize (options) {
+		if (Lib.isFunction(this._onBeforeInitialize)) this._onBeforeInitialize(options);
 
 		// If this controls does anything with options that are passed to it, do that now
-		if (Lib.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
+		if (Lib.isFunction(this._initializeOptions)) this._initializeOptions(options);
 
-		if (Lib.isFunction(this.__onInitialized)) this.__onInitialized(options);
+		if (Lib.isFunction(this._onInitialized)) this._onInitialized(options);
 	},
 
 	version: Lib.version

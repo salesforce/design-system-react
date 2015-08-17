@@ -22,12 +22,12 @@ const Loader = function Loader (element, options) {
 		this.isIElt9 = true;
 	}
 
-	this.__initializeState();
-	this.__initialize(this.options);
+	this._initializeState();
+	this._initialize(this.options);
 };
 
 const methods = {
-	__onInitialized () {
+	_onInitialized () {
 		this.render();
 	},
 

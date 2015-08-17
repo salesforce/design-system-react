@@ -7,7 +7,7 @@ const Selectable = {
 		SELECTED: 'selected'
 	},
 
-	__initializeSelectable (options) {
+	_initializeSelectable (options) {
 		if (options && Lib.isObject(options.selection)) {
 			this.setSelection(options.selection);
 		} else {
@@ -15,8 +15,8 @@ const Selectable = {
 		}
 	},
 
-	__setSelection (newSelection) {
-		if (this.getStore('selection') !== newSelection) {
+	_setSelection (newSelection) {
+		if (this.getSelection() !== newSelection && (!Lib.isFunction(this._canSelect) || this._canSelect(newSelection))) {
 			this.setStore({ selection: newSelection });
 			if (Lib.isFunction(this._onSelected)) this._onSelected(newSelection);
 			
@@ -33,13 +33,13 @@ const Selectable = {
 			item = item._item;
 		}
 
-		return this.__setSelection(item);
+		return this._setSelection(item);
 	},
 	
 	setSelectionByIndex (index) {
 		const item = this._collection.at(index);
 
-		this.__setSelection(item);
+		this._setSelection(item);
 	},
 
 	getSelection () {
@@ -47,7 +47,7 @@ const Selectable = {
 	},
 
 	clearSelection () {
-		this.__setSelection();
+		this._setSelection();
 	}
 };
 

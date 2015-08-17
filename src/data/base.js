@@ -1,5 +1,6 @@
 import * as Lib from '../core/lib';
 
+// TO-DO: this function can probably be cleaned up a little, and maybe inherit some implementation from lodash
 function _extend (protoProps) {
 	const parent = this;
 	const child = function () {
@@ -37,6 +38,19 @@ function _findMatch (data, isMatch) {
 	}
 
 	return found;
+}
+
+function _addMethods (instance, methods) {
+	methods.forEach(function (method) {
+		instance.prototype[method] = function (callback, ...funcArgs) {
+			const _callback = function (item, ...callbackArgs) {
+				const _item = new instance.prototype.ItemType(item);
+				callback(_item, ...callbackArgs);
+			};
+			
+			this._data[method](_callback, ...funcArgs);
+		};
+	});
 }
 
 function Item (item) {
@@ -102,6 +116,8 @@ Lib.extend(Data.prototype, {
 Data.isTypeOf = function isTypeOf () {
 	return true;
 };
+
+Data._addDefaultImplementations = _addMethods;
 
 Data.extend = Item.extend = _extend;
 
