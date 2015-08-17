@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
-import Calendar from './Calendar';
-
+//import Calendar from './Calendar';
+import Calendar from './cal';
+import moment from 'moment';
 
 export default class SLDSDatePicker extends Component {
 
@@ -17,7 +18,8 @@ export default class SLDSDatePicker extends Component {
                   <span className="sds-assistive-text">Previous Month</span>
                 </button>
               </div>
-              <div id="month" className="sds-align-middle" role="heading" aria-live="assertive" aria-atomic="true">June 2015</div>
+
+              <div id="month" className="sds-align-middle" role="heading" aria-live="assertive" aria-atomic="true">{moment().format("MMMM YYYY")}</div>
               <div className="sds-align-middle" role="button" aria-labelledby="bn_next-label" tabIndex="0">
                 <button className="sds-button sds-button--icon-container">
 
@@ -36,7 +38,7 @@ export default class SLDSDatePicker extends Component {
             </div>
           </div>
 
-          <Calendar />
+          <Calendar selected={moment().startOf("day")} />
 
           <span id="bn_prev-label" className="sds-assistive-text">Go to previous month</span>
           <span id="bn_next-label" className="sds-assistive-text">Go to next month</span>

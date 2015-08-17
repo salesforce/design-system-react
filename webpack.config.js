@@ -26,7 +26,8 @@ module.exports = {
     extensions: ['', '.js', '.jsx'],
     alias: {
       'sds-scss': '@salesforce-ux/landmark/scss/index.scss',
-      'sds-css': '@salesforce-ux/landmark/assets/styles/salesforce-design-system.css'
+      'sds-css': '@salesforce-ux/landmark/assets/styles/salesforce-design-system.css',
+      'ui': '/src/ui'
     }
   },
   module: {

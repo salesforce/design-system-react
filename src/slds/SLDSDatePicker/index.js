@@ -30,6 +30,7 @@ export default class SLDSSuggest extends Component {
               <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
             </svg>
 */}
+
             <input 
               ref="date" 
               className="sds-input" 
