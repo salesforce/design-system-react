@@ -164,9 +164,12 @@ describe('Tree Component', function () {
 	]);
 
 	registerBehaviorTestCombinations(componentFacadeTestLib, [
+		// behaviors being tested
 		'createComponent',
 		'getComponentElement',
 		'destroyComponent'
+	], [
+		// other behaviors required for tests
 	], function (testingBehaviorHandlers) {
 		let container = null;
 
@@ -430,9 +433,13 @@ describe('Tree Component', function () {
 	});
 
 	registerBehaviorTestCombinations(componentFacadeTestLib, [
+		// behaviors being tested
+	], [
+		// other behaviors required for tests
 		'createComponent',
+		'getComponentElement',
 		'destroyComponent'
-		// TODO: Test interactivity
 	], function ( ) { // testingBehaviorHandlers ) {
+		it('should have some tests here');
 	});
 });

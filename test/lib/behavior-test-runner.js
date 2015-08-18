@@ -44,21 +44,60 @@ export function verifyFacadeProvidesBehaviorCallbacks (componentFacadeTestLib, r
  * A1+B3, A2+B1, A2+B2, A2+B3, A3+B1, A3+B2, A3+B3
  *
  * @param {object} componentFacadeTestLib - Should be imported from tests/tests-api.js
- * @param {array} requiredBehaviorNames - An array of strings listing the behaviors expected for this component
+ * @param {array} testingBehaviorNames - An array of strings listing the behaviors expected for this component
+ * @param {array} usedBehaviorNames - An array of strings listing the behaviors expected for this component
  * @param {function} registerTestSuiteCallback - A method which receives a specific combination of approaches for the given behaviors and registers the behavioral tests with Mocha
  *   registerTestSuiteCallback(testingBehaviorHandlers)
  *     testingBehaviorHandlers will be an object
  *       the key on the object will be behaviorName
  *       the value on the object will be one of the functions from facadeTestLib.behaviorHandlers[behaviorName]
  */
-export function registerBehaviorTestCombinations (componentFacadeTestLib, requiredBehaviorNames, registerTestSuiteCallback) {
-	_.each(componentFacadeTestLib, function (facadeTestLib, facadeName) {
-		const facadeHandlers = _.clone(facadeTestLib.behaviorHandlers) || {};
-		requiredBehaviorNames.forEach(function (behaviorName) {
-			facadeHandlers[behaviorName] = facadeHandlers[behaviorName] || {};
-		});
+export function registerBehaviorTestCombinations (componentFacadeTestLib, testingBehaviorNames, usedBehaviorNames, registerTestSuiteCallback) {
+	// A quick check of our input to help developers
+	if (
+		!_.isObject(componentFacadeTestLib)
+		|| !_.isArray(testingBehaviorNames)
+		|| !testingBehaviorNames.length
+		|| !_.isArray(usedBehaviorNames)
+		|| !_.isFunction(registerTestSuiteCallback)
+	) {
+		const err = new Error('invalid call to registerBehaviorTestCombinations');
+		err.args = arguments;
+		throw err;
+	}
 
+	_.each(componentFacadeTestLib, function (facadeTestLib, facadeName) {
 		describe('behavior tests for ' + facadeName, function () {
+			// Deeply clone down to the approaches, and make sure we have
+			// containing objects (even if no approaches were defined)
+			const facadeHandlers = _.clone(facadeTestLib.behaviorHandlers) || {};
+			testingBehaviorNames.concat(usedBehaviorNames).forEach(function (behaviorName) {
+				facadeHandlers[behaviorName] = _.clone(facadeHandlers[behaviorName]) || {};
+			});
+
+			let initialBehaviorHandlers;
+			try {
+				initialBehaviorHandlers = _.reduce(usedBehaviorNames, function (memo, behaviorName) {
+					const facadeBehaviorHandlers = facadeHandlers[behaviorName];
+
+					if (facadeBehaviorHandlers.default) {
+						memo[behaviorName] = facadeBehaviorHandlers.default;
+					} else {
+						const approachName = _.first(_.keys(facadeBehaviorHandlers));
+						memo[behaviorName] = facadeBehaviorHandlers[approachName];
+					}
+
+					if (!memo[behaviorName]) {
+						throw new Error(behaviorName);
+					}
+
+					return memo;
+				}, {});
+			} catch (e) {
+				it('cannot be tested due to lack of behavior handler object for ' + e.message);
+				return;
+			}
+
 			function combineHandlers (behaviorsToSelect, previouslySelectedHandlers) {
 				const remainingBehaviorsToSelect = _.clone(behaviorsToSelect);
 				const behaviorName = remainingBehaviorsToSelect.pop();
@@ -84,7 +123,7 @@ export function registerBehaviorTestCombinations (componentFacadeTestLib, requir
 				});
 			}
 
-			combineHandlers(requiredBehaviorNames, {});
+			combineHandlers(testingBehaviorNames, initialBehaviorHandlers);
 		});
 	});
 }
