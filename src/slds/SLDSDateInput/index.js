@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SLDSPopover from '../SLDSPopover/index';
-import SLDSDatePicker from './SLDSDatePicker';
+import SLDSDatePicker from './SLDSDatePicker/index';
 
 
 export default class SLDSSuggest extends Component {

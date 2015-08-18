@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import SLDSSuggest from './slds/SLDSDatePicker/index';
-import SLDSPopover from './slds/SLDSPopover/index';
+import SLDSDateInput from './slds/SLDSDateInput/index';
 
 
 export default class App extends Component {
@@ -22,7 +21,7 @@ export default class App extends Component {
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
-        <SLDSSuggest />
+        <SLDSDateInput />
 
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
@@ -48,7 +47,7 @@ export default class App extends Component {
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
 
-        <SLDSSuggest />
+        <SLDSDateInput />
 
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
@@ -58,7 +57,7 @@ export default class App extends Component {
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
-        <SLDSSuggest />
+        <SLDSDateInput />
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
@@ -70,14 +69,14 @@ export default class App extends Component {
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
-        <SLDSSuggest />
+        <SLDSDateInput />
 
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
-        <SLDSSuggest />
+        <SLDSDateInput />
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
         <div>MORE STUFF IS HERE</div>
