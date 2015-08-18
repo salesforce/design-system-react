@@ -6,27 +6,28 @@ const expect = chai.expect;
  * This is a facility for registering tests to make sure that the API test
  * libraries export the expected behaviors and approaches for use by the
  * behavior tests
- * @param {string} facadeName - The name of the facade being checked, used for Mocha reporting via describe()
- * @param {object} facadeTestLib - The values exported by the facade's test library for this component
+ * @param {object} componentFacadeTestLib - Should be imported from tests/tests-api.js
  * @param {array} requiredBehaviorNames - An array of strings listing the behaviors expected for this component
  */
-export function registerTestsForBehaviorCallbacks (facadeName, facadeTestLib, requiredBehaviorNames) {
-	const facadeHandlers = facadeTestLib.behaviorHandlers || {};
+export function registerTestsForBehaviorCallbacks (componentFacadeTestLib, requiredBehaviorNames) {
+	_.each(componentFacadeTestLib, function (facadeTestLib, facadeName) {
+		const facadeHandlers = facadeTestLib.behaviorHandlers || {};
 
-	describe('behavior test API expectations for ' + facadeName, function () {
-		it('should export behaviorHandlers', function () {
-			expect(facadeTestLib.behaviorHandlers).to.be.an('object');
-		});
+		describe('behavior test API expectations for ' + facadeName, function () {
+			it('should export behaviorHandlers', function () {
+				expect(facadeTestLib.behaviorHandlers).to.be.an('object');
+			});
 
-		requiredBehaviorNames.forEach(function (behaviorName) {
-			describe(behaviorName + ' behavior', function () {
-				it('should export a behavior handler object for ' + behaviorName, function () {
-					expect(facadeHandlers[behaviorName]).to.be.an('object');
-				});
+			requiredBehaviorNames.forEach(function (behaviorName) {
+				describe(behaviorName + ' behavior', function () {
+					it('should export a behavior handler object for ' + behaviorName, function () {
+						expect(facadeHandlers[behaviorName]).to.be.an('object');
+					});
 
-				_.each(facadeHandlers[behaviorName], function (behaviorHandler, approachName) {
-					it('approach "' + approachName + '" should be a function', function () {
-						expect(behaviorHandler).to.be.a('function');
+					_.each(facadeHandlers[behaviorName], function (behaviorHandler, approachName) {
+						it('approach "' + approachName + '" should be a function', function () {
+							expect(behaviorHandler).to.be.a('function');
+						});
 					});
 				});
 			});
@@ -42,12 +43,7 @@ export function registerTestsForBehaviorCallbacks (facadeName, facadeTestLib, re
  * you would expect to test these combinations to be tested: A1+B1, A1+B2,
  * A1+B3, A2+B1, A2+B2, A2+B3, A3+B1, A3+B2, A3+B3
  *
- * @param {string} facadeName - The name of the facade being checked, used for Mocha reporting via describe()
- * @param {object} facadeTestLib - The values exported by the facade's test library for this component
- *   This should have a property named "behaviorHandlers" which should be an object
- *     facadeTestLib.behaviorHandlers[behaviorName] should be an object of functions
- *       The keys should be the name of this approach for performing this action
- *       The value should be a function which performs the action for this approach
+ * @param {object} componentFacadeTestLib - Should be imported from tests/tests-api.js
  * @param {array} requiredBehaviorNames - An array of strings listing the behaviors expected for this component
  * @param {function} registerTestSuiteCallback - A method which receives a specific combination of approaches for the given behaviors and registers the behavioral tests with Mocha
  *   registerTestSuiteCallback(testingBehaviorHandlers)
@@ -55,38 +51,40 @@ export function registerTestsForBehaviorCallbacks (facadeName, facadeTestLib, re
  *       the key on the object will be behaviorName
  *       the value on the object will be one of the functions from facadeTestLib.behaviorHandlers[behaviorName]
  */
-export function registerBehaviorTestCombinations (facadeName, facadeTestLib, requiredBehaviorNames, registerTestSuiteCallback) {
-	const facadeHandlers = _.clone(facadeTestLib.behaviorHandlers) || {};
-	requiredBehaviorNames.forEach(function (behaviorName) {
-		facadeHandlers[behaviorName] = facadeHandlers[behaviorName] || {};
-	});
+export function registerBehaviorTestCombinations (componentFacadeTestLib, requiredBehaviorNames, registerTestSuiteCallback) {
+	_.each(componentFacadeTestLib, function (facadeTestLib, facadeName) {
+		const facadeHandlers = _.clone(facadeTestLib.behaviorHandlers) || {};
+		requiredBehaviorNames.forEach(function (behaviorName) {
+			facadeHandlers[behaviorName] = facadeHandlers[behaviorName] || {};
+		});
 
-	describe('behavior tests for ' + facadeName, function () {
-		function combineHandlers (behaviorsToSelect, previouslySelectedHandlers) {
-			const remainingBehaviorsToSelect = _.clone(behaviorsToSelect);
-			const behaviorName = remainingBehaviorsToSelect.pop();
+		describe('behavior tests for ' + facadeName, function () {
+			function combineHandlers (behaviorsToSelect, previouslySelectedHandlers) {
+				const remainingBehaviorsToSelect = _.clone(behaviorsToSelect);
+				const behaviorName = remainingBehaviorsToSelect.pop();
 
-			const facadeBehaviorHandlersSize = _.size( facadeHandlers[behaviorName] );
-			_.each(facadeHandlers[behaviorName], function (facadeBehaviorHandler, approachName) {
-				const selectedHandlers = _.clone(previouslySelectedHandlers) || {};
-				selectedHandlers[behaviorName] = facadeBehaviorHandler;
+				const facadeBehaviorHandlersSize = _.size( facadeHandlers[behaviorName] );
+				_.each(facadeHandlers[behaviorName], function (facadeBehaviorHandler, approachName) {
+					const selectedHandlers = _.clone(previouslySelectedHandlers) || {};
+					selectedHandlers[behaviorName] = facadeBehaviorHandler;
 
-				function handleSelected () {
-					if (remainingBehaviorsToSelect.length) {
-						combineHandlers(remainingBehaviorsToSelect, selectedHandlers);
-					} else {
-						registerTestSuiteCallback(selectedHandlers);
+					function handleSelected () {
+						if (remainingBehaviorsToSelect.length) {
+							combineHandlers(remainingBehaviorsToSelect, selectedHandlers);
+						} else {
+							registerTestSuiteCallback(selectedHandlers);
+						}
 					}
-				}
 
-				if (facadeBehaviorHandlersSize !== 1) {
-					describe('using ' + approachName + ' for ' + behaviorName, handleSelected);
-				} else {
-					handleSelected();
-				}
-			});
-		}
+					if (facadeBehaviorHandlersSize !== 1) {
+						describe('using ' + approachName + ' for ' + behaviorName, handleSelected);
+					} else {
+						handleSelected();
+					}
+				});
+			}
 
-		combineHandlers(requiredBehaviorNames, {});
+			combineHandlers(requiredBehaviorNames, {});
+		});
 	});
 }
