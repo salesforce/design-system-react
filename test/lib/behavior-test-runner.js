@@ -9,7 +9,7 @@ const expect = chai.expect;
  * @param {object} componentFacadeTestLib - Should be imported from tests/tests-api.js
  * @param {array} requiredBehaviorNames - An array of strings listing the behaviors expected for this component
  */
-export function registerTestsForBehaviorCallbacks (componentFacadeTestLib, requiredBehaviorNames) {
+export function verifyFacadeProvidesBehaviorCallbacks (componentFacadeTestLib, requiredBehaviorNames) {
 	_.each(componentFacadeTestLib, function (facadeTestLib, facadeName) {
 		const facadeHandlers = facadeTestLib.behaviorHandlers || {};
 

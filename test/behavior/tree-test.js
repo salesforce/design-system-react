@@ -1,4 +1,4 @@
-import { registerTestsForBehaviorCallbacks, registerBehaviorTestCombinations } from '../lib/behavior-test-runner';
+import { verifyFacadeProvidesBehaviorCallbacks, registerBehaviorTestCombinations } from '../lib/behavior-test-runner';
 import { tree as componentFacadeTestLib } from '../tests-api';
 
 const $ = require('jquery');
@@ -137,7 +137,7 @@ onOpenVisibleComplete( component , callback )
 */
 
 describe('Tree Component', function () {
-	registerTestsForBehaviorCallbacks(componentFacadeTestLib, [
+	verifyFacadeProvidesBehaviorCallbacks(componentFacadeTestLib, [
 		'createComponent',
 		'getComponentElement',
 		'destroyComponent',
