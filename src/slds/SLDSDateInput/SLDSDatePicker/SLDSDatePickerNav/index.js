@@ -69,9 +69,7 @@ module.exports = React.createClass( {
               <span style={{color:'black'}}>&nbsp;&nbsp;&darr;</span>
             </button>
           </SLDSSelect>
-{/*
 
-*/}
         </div>
       </div>
 

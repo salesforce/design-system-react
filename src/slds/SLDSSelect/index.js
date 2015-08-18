@@ -54,7 +54,6 @@ export default class SLDSSelect extends Component {
   render() {
     return (
       <div className="sds-form-element">
-        <label className="sds-form-element__label" for="date">Date Picker Label</label>
         <div className="sds-form-element__control">
           <div className="sds-input-has-icon sds-input-has-icon--right">
             <button id="year" 
