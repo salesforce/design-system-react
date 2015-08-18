@@ -7,7 +7,6 @@ const expect = chai.expect;
 
 /* Testing Contract: Expected values on each facade's exported behaviorHandlers
 
-TODO: Write document explaining relationship of behavior tests to facade-specific component tests
 TODO: Decide on formatting for these comments and rewrite to match formatting selection
 
 component createComponent( initData )
