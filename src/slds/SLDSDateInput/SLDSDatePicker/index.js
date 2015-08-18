@@ -7,6 +7,12 @@ module.exports = React.createClass( {
 
   mixins: [ require( "react-onclickoutside" ) ],
 
+  getInitialState: function(){
+    return {
+      month:moment().startOf("day")
+    }
+  },
+
   handleClickOutside: function(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -20,17 +26,32 @@ module.exports = React.createClass( {
     event.stopPropagation();
   },
 
+  handleMonthChange: function(moment){
+    console.log(moment);
+    this.setState({month:moment});
+  },
+
+  handleSelectDate: function(day){
+    console.log('PICKER! ',day);
+    if(this.props.onSelectDate){
+      this.props.onSelectDate(day);
+    }
+  },
+
   render() {
+    console.log('!!! RENDER PICKER: ',this.props.selected);
     return (
-
       <div className="sds-datepicker" aria-hidden="false" data-selection="single" onClick={this.handleClick}>
-          <SLDSDatePickerNav />
-
-          <Calendar selected={moment().startOf("day")} />
-
-          <span id="bn_prev-label" className="sds-assistive-text">Go to previous month</span>
-          <span id="bn_next-label" className="sds-assistive-text">Go to next month</span>
-        </div>
+        <SLDSDatePickerNav 
+          onChangeMonth={this.handleMonthChange} 
+          month={this.state.month}/>
+        <Calendar 
+          selected={this.props.selected} 
+          month={this.state.month} 
+          onSelectDate={this.handleSelectDate.bind(this) }/>
+        <span id="bn_prev-label" className="sds-assistive-text">Go to previous month</span>
+        <span id="bn_next-label" className="sds-assistive-text">Go to next month</span>
+      </div>
     );
   }
 });

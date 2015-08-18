@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import SLDSPopover from '../SLDSPopover/index';
 import SLDSDatePicker from './SLDSDatePicker/index';
-
+import moment from 'moment';
 
 export default class SLDSSuggest extends Component {
 
-
+  handleSelectDate(day) {
+    console.log('INPUT: ',day);
+    this.setState({selectedDate:day})
+  }
 
   handleClose() {
     console.log('close!');
@@ -27,7 +30,11 @@ export default class SLDSSuggest extends Component {
   popover() {
     if(this.state && this.state.isOpen){
       return <SLDSPopover targetElement={this.refs.date}>
-        <SLDSDatePicker onClose={this.handleClose.bind(this)}/>
+        <SLDSDatePicker 
+          onClose={this.handleClose.bind(this)}
+          onSelectDate={this.handleSelectDate.bind(this)}
+          selected={this.state.selectedDate} 
+          month={this.state.selectedDate?this.state.selectedDate:moment()} />
       </SLDSPopover>;
     }
     return <span />;
@@ -39,12 +46,6 @@ export default class SLDSSuggest extends Component {
         <label className="sds-form-element__label" for="date">Date Picker Label</label>
         <div className="sds-form-element__control">
           <div className="sds-input-has-icon sds-input-has-icon--right">
-{/*
-            <svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
-              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#event"></use>
-            </svg>
-*/}
-
             <input 
               ref="date" 
               className="sds-input" 

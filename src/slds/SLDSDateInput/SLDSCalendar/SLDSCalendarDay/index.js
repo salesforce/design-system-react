@@ -4,6 +4,7 @@ var Day = React.createClass({
 
   handleClick: function() {
     if(this.props.onSelectDate){
+      console.log('>>> DAY: ',this.props.day);
       this.props.onSelectDate(this.props.day);
     }
   },
@@ -16,7 +17,7 @@ var Day = React.createClass({
         role="gridcell" 
         aria-disabled={this.props.day.isCurrentMonth}
         aria-selected={this.props.day.isToday}
-        className={"sds-day" + (this.props.day.isToday ? " sds-is-today" : "") + (this.props.day.isCurrentMonth ? "" : " sds-disabled-text") + (this.props.day.date.isSame(this.props.selectedDay) ? " sds-is-selected" : "")} 
+        className={(this.props.day.isToday ? " sds-is-today" : "") + (this.props.day.isCurrentMonth ? "" : " sds-disabled-text") + (this.props.day.date.isSame(this.props.selectedDate.date) ? " sds-is-selected" : "")} 
         onClick={this.handleClick}
       >
         <span className="sds-day">

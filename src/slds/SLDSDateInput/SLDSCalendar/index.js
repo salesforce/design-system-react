@@ -1,33 +1,29 @@
 import React, { Component } from 'react';
 import Week from './SLDSCalendarWeek/index';
+import moment from 'moment';
 
 require('./index.css');
 
 var Calendar = React.createClass({
-  getInitialState: function() {
+
+  getDefaultProps: function(){
     return {
-      month: this.props.selected.clone()
+      month:moment(),
+      selected:moment()
     };
   },
 
-  previous: function() {
-    var month = this.state.month;
-    month.add(-1, "M");
-    this.setState({ month: month });
-  },
-
-  next: function() {
-    var month = this.state.month;
-    month.add(1, "M");
-    this.setState({ month: month });
-  },
-
   handleSelectDate: function(day) {
-    this.props.selected = day.date;
-    this.forceUpdate();
+    console.log('>>> MONTH: ',day);
+    this.setState({selected:day});
+//    this.forceUpdate();
+    if(this.props.onSelectDate){
+      this.props.onSelectDate(day);
+    }
   },
 
   render: function() {
+    console.log('RENDER CALENDAR: ',this.props.selected)
     return <div className="SLDSCalendar">
       <table className="datepicker__month" role="grid" aria-labelledby="month" tabIndex="0">
         <thead>
@@ -65,7 +61,7 @@ var Calendar = React.createClass({
   renderWeeks: function() {
     var weeks = [],
       done = false,
-      date = this.state.month.clone().startOf("month").add("w" -1).day("Sunday"),
+      date = this.props.month.clone().startOf("month").add("w" -1).day("Sunday"),
       monthIndex = date.month(),
       count = 0;
 
@@ -73,12 +69,15 @@ var Calendar = React.createClass({
       weeks.push(<Week 
           key={date.toString()} 
           date={date.clone()} 
-          month={this.state.month} 
+          month={this.props.month} 
           onSelectDate={this.handleSelectDate} 
-          selectedDay={this.props.selected} />);
+          selectedDate={this.props.selected} />);
       date.add(1, "w");
       done = count++ > 2 && monthIndex !== date.month();
       monthIndex = date.month();
+    }
+    while(weeks.length < 6){
+      weeks.push(<tr className="week"><td><span className="sds-day">&nbsp;</span></td></tr>);
     }
 
     return weeks;
