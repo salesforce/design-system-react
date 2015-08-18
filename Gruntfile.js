@@ -3,16 +3,20 @@ module.exports = function (grunt) {
 
 	const defaultPort = 8000;
 
+	const excludePatternGeneratedTestFiles = [
+		'!test/tests.js',
+		'!test/tests-compiled.js'
+	];
+
 	grunt.initConfig({
 		port: defaultPort,
+		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
 		eslint: {
 			target: [
 				'Gruntfile.js',
 				'src/**/*.js',
 				'test/**/*.js',
-				'!test/tests-compiled.js',
-				'!test/tests.js'
-			]
+			].concat(excludePatternGeneratedTestFiles)
 		},
 		browserify: {
 			options: {
@@ -54,7 +58,7 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			eslint: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
+				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
 				tasks: ['eslint']
 			},
 			jqueryExamples: {
@@ -70,7 +74,7 @@ module.exports = function (grunt) {
 				tasks: ['browserify:reactExamples']
 			},
 			tests: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
+				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
 				tasks: ['compileTests', 'browserify:tests']
 			}
 		},
