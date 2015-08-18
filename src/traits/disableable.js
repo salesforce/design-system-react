@@ -8,10 +8,13 @@ const Disableable = {
 	},
 
 	_initializeDisableable (options) {
-		if (options && options.disabled === true) {
-			this.disable();
-		} else if (options && options.disabled === false) {
-			this.enable();
+		var disabled = !!(options && options.disabled);
+		this.setStore({ disabled });
+		
+		if (disabled) {
+			if (Lib.isFunction(this._onDisabled)) this._onDisabled();
+		} else {
+			if (Lib.isFunction(this._onEnabled)) this._onEnabled();
 		}
 	},
 

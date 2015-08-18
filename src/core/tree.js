@@ -28,11 +28,19 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	_initializeOptions (options) {
 		if (options && options.collection) {
 			this._collection = Lib.getDataAdapter(options.collection);
+			delete options.collection;
 		} else if (!this._collection) {
 			this._collection = Lib.getDataAdapter([]);
 		}
 
 		this._initializeDisableable(options);
+		
+		this.setStore({
+			folderSelect: options.folderSelect,
+			multiSelect: options.multiSelect,
+			autoOpen: options.autoOpen,
+			autoOpenLimit: options.autoOpenLimit
+		});
 	},
 
 	accessors: {
