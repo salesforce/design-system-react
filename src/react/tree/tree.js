@@ -33,13 +33,6 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 		onOpened: React.PropTypes.func,
 		onClosed: React.PropTypes.func
 	},
-	
-	getDefaultProps () {
-		return {
-			selection: [],
-			open: []
-		};
-	},
 
 	render () {
 		const children = [];

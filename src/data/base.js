@@ -64,6 +64,10 @@ Lib.extend(Item.prototype, {
 	}
 });
 
+['keys'].forEach(function (method) {
+	Item.prototype[method] = Lib.noop;
+});
+
 // Static methods
 Item.isTypeOf = function isTypeOf () {
 	return true;
@@ -102,6 +106,10 @@ Lib.extend(Data.prototype, {
 	get () {
 		return undefined;
 	}
+});
+
+['at', 'add', 'remove', 'reset', 'forEach', 'filter', 'map', 'every'].forEach(function (method) {
+	Data.prototype[method] = Lib.noop;
 });
 
 // Static methods

@@ -7,6 +7,8 @@ export const global = (typeof self === 'object' && self.self === self && self) |
 import partial from 'lodash/function/partial';
 export { partial };
 
+export { default as noop } from 'lodash/utility/noop';
+
 // DOM
 export function hasClass (element, className) {
 	return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;
