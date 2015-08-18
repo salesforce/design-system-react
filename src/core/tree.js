@@ -102,7 +102,6 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		const selection = Lib.getDataAdapter(this.getSelectedItems());
 		
 		if (this._isItemSelected(item, selection)) {
-			
 			selection.remove(item);
 			
 			this.setStore({ selection });

@@ -4,12 +4,12 @@ import classNames from 'classnames';
 const TreeItem = React.createClass({
 	propTypes: {
 		item: React.PropTypes.object,
+		onClick: React.PropTypes.func.isRequired,
 		accessors: React.PropTypes.shape({
 			getText: React.PropTypes.func.isRequired,
-			getIconClass: React.PropTypes.func.isRequired,
-			getItemState: React.PropTypes.func.isRequired
+			getIconClass: React.PropTypes.func.isRequired
 		}),
-		onClick: React.PropTypes.func.isRequired
+		_isItemSelected: React.PropTypes.func.isRequired
 	},
 
 	render () {

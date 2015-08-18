@@ -18,7 +18,7 @@ const Item = Base.Item.extend({
 	},
 
 	keys () {
-		return Object.keys(this._item);;
+		return Object.keys(this._item);
 	}
 });
 

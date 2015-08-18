@@ -6,16 +6,17 @@ let InnerTreeBranch;
 
 const TreeBranch = React.createClass({
 	propTypes: {
+		item: React.PropTypes.object.isRequired,
+		selectable: React.PropTypes.bool.isRequired,
 		onItemClick: React.PropTypes.func.isRequired,
 		onExpandClick: React.PropTypes.func.isRequired,
 		accessors: React.PropTypes.shape({
 			getText: React.PropTypes.func.isRequired,
 			getType: React.PropTypes.func.isRequired,
-			getItemState: React.PropTypes.func.isRequired,
 			getChildren: React.PropTypes.func.isRequired
 		}),
-		item: React.PropTypes.object.isRequired,
-		selectable: React.PropTypes.bool.isRequired
+		_isFolderOpen: React.PropTypes.func.isRequired,
+		_isItemSelected: React.PropTypes.func.isRequired
 	},
 
 	getInitialState () {
