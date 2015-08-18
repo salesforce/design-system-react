@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Day from './Day';
+import Day from '../SLDSCalendarDay/index';
 
 var Week = React.createClass({
 
@@ -11,7 +11,6 @@ var Week = React.createClass({
   },
 
   render: function() {
-    console.log('SELECTED: ',this.props.selectedDay);
     var days = [],
       date = this.props.date,
       month = this.props.month;

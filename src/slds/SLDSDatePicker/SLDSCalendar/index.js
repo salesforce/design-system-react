@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Week from '../Week';
+import Week from './SLDSCalendarWeek/index';
 
 require('./index.css');
 
@@ -23,7 +23,6 @@ var Calendar = React.createClass({
   },
 
   handleSelectDate: function(day) {
-    console.log('CALENDAR: ',day);
     this.props.selected = day.date;
     this.forceUpdate();
   },
