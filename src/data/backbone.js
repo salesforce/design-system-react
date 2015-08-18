@@ -11,7 +11,7 @@ const Item = Base.Item.extend({
 	get (key) {
 		let result;
 
-		if (this._item && key) {
+		if (key !== undefined) {
 			result = this._item.get(key);
 		} else {
 			result = this._item.toJSON();
@@ -21,15 +21,7 @@ const Item = Base.Item.extend({
 	},
 
 	keys () {
-		let result;
-
-		if (this._item) {
-			result = this._item.keys();
-		} else {
-			result = [];
-		}
-
-		return result;
+		return this._item.keys();
 	}
 });
 
@@ -45,7 +37,7 @@ const Data = Base.Data.extend({
 	get (criteria) {
 		let result;
 
-		if (this._data && criteria) {
+		if (criteria !== undefined) {
 			result = this.findWhere(this._data, criteria);
 		} else {
 			result = this._data.toJSON();
@@ -53,15 +45,37 @@ const Data = Base.Data.extend({
 
 		return result;
 	},
+	
+	length () {
+		return this._data.length;
+	},
 
 	at (index) {
 		let result;
 
-		if (this._data && index) {
+		if (this._data && Lib.isNumber(index)) {
 			result = this._data.at(index);
 		}
 
 		return result;
+	},
+	
+	add (item) {
+		this._data.add(item._item);
+		
+		return this;
+	},
+	
+	remove (item) {
+		this._data.remove(item._item);
+		
+		return this;
+	},
+	
+	reset (item) {
+		this._data.reset(item);
+		
+		return this;
 	}
 });
 

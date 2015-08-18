@@ -7,6 +7,8 @@ export const global = (typeof self === 'object' && self.self === self && self) |
 import partial from 'lodash/function/partial';
 export { partial };
 
+export { default as noop } from 'lodash/utility/noop';
+
 // DOM
 export function hasClass (element, className) {
 	return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;
@@ -69,7 +71,7 @@ export function registerAdapter (name, Adapter) {
 
 export function getItemAdapter (item) {
 	let _item;
-	
+
 	_adapters.forEach(function (Adapter) {
 		if (!_item && item instanceof Adapter.Item) {
 			_item = item;
@@ -77,13 +79,13 @@ export function getItemAdapter (item) {
 			_item = new Adapter.Item(item);
 		}
 	});
-	
+
 	return _item;
 }
 
 export function getDataAdapter (data) {
 	let _data;
-	
+
 	_adapters.forEach(function (Adapter) {
 		if (!_data && data instanceof Adapter.Data) {
 			_data = data;
@@ -91,6 +93,6 @@ export function getDataAdapter (data) {
 			_data = new Adapter.Data(data);
 		}
 	});
-	
+
 	return _data;
 }

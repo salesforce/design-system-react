@@ -3,16 +3,22 @@ module.exports = function (grunt) {
 
 	const defaultPort = 8000;
 
+	const excludePatternGeneratedTestFiles = [
+		'!test/tests.js',
+		'!test/tests-api.js',
+		'!test/tests-compiled.js'
+	];
+
 	grunt.initConfig({
 		port: defaultPort,
+		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
 		eslint: {
 			target: [
 				'Gruntfile.js',
 				'src/**/*.js',
-				'test/**/*.js',
-				'!test/tests-compiled.js',
-				'!test/tests.js'
-			]
+				'tasks/**/*.js',
+				'test/**/*.js'
+			].concat(excludePatternGeneratedTestFiles)
 		},
 		browserify: {
 			options: {
@@ -54,7 +60,7 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			eslint: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
+				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
 				tasks: ['eslint']
 			},
 			jqueryExamples: {
@@ -70,8 +76,8 @@ module.exports = function (grunt) {
 				tasks: ['browserify:reactExamples']
 			},
 			tests: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*', '!test/tests.js', '!test/tests-compiled.js'],
-				tasks: ['compileTests', 'browserify:tests']
+				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
+				tasks: ['compileTests', 'compileTestsApi', 'browserify:tests']
 			}
 		},
 		connect: {
@@ -102,7 +108,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-eslint');
 	grunt.loadNpmTasks('grunt-mocha');
 
-	grunt.registerTask('default', ['eslint', 'compileTests', 'browserify']);
+	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'browserify']);
 	grunt.registerTask('serve', ['connect:server', 'default', 'watch']);
-	grunt.registerTask('test', ['eslint', 'compileTests', 'browserify:tests', 'connect:server', 'mocha']);
+	grunt.registerTask('test', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:tests', 'connect:server', 'mocha']);
 };

@@ -61,11 +61,11 @@ Lib.extend(Item.prototype, {
 	// Instance methods
 	get () {
 		return undefined;
-	},
-
-	keys () {
-		return undefined;
 	}
+});
+
+['keys'].forEach(function (method) {
+	Item.prototype[method] = Lib.noop;
 });
 
 // Static methods
@@ -105,11 +105,11 @@ Lib.extend(Data.prototype, {
 
 	get () {
 		return undefined;
-	},
-
-	at () {
-		return undefined;
 	}
+});
+
+['at', 'length', 'add', 'remove', 'reset', 'forEach', 'filter', 'map', 'every'].forEach(function (method) {
+	Data.prototype[method] = Lib.noop;
 });
 
 // Static methods

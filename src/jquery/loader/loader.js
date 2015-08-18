@@ -26,7 +26,7 @@ const Loader = function Loader (element, options) {
 	this._initialize(this.options);
 };
 
-const methods = {
+const methods = Lib.merge(Loader.prototype, LoaderCore, State, {
 	_onInitialized () {
 		this.render();
 	},
@@ -110,9 +110,7 @@ const methods = {
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
 	}
-};
-
-Lib.merge(Loader.prototype, LoaderCore, State, methods);
+});
 
 const legacyMethods = {
 	play: methods._play,

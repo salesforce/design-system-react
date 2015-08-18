@@ -6,8 +6,9 @@ import SelectlistCore from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
-import Events from '../mixins/events';
 import State from '../mixins/state';
+import Events from '../mixins/events';
+import genericWillMount from '../mixins/generic-will-mount';
 
 // Third party
 import classNames from 'classnames';
@@ -16,7 +17,8 @@ import classNames from 'classnames';
 import SelectlistItem from './selectlist-item';
 
 const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
-	mixins: [State, Events],
+	mixins: [State, Events, genericWillMount],
+	
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -61,16 +63,6 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 				</ul>
 			</div>
 		);
-	},
-
-	componentWillMount () {
-		this._initialize(this.props);
-	},
-	
-	componentDidMount () {
-		const elements = this.elements = {};
-		
-		elements.wrapper = Lib.wrapElement(React.findDOMNode(this));
 	},
 
 	handleMenuItemSelected (selection) {

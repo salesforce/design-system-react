@@ -8,7 +8,7 @@ import SelectlistCore, {CONTROL} from '../../core/selectlist';
 import createPlugin from '../createPlugin';
 import Events from '../events';
 import State from '../state';
-// TO-DO: This might not work with require, need to confirm that it does
+
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
