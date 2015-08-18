@@ -13,8 +13,10 @@ const TreeItem = React.createClass({
 	},
 
 	render () {
+		const isSelected = this.props._isItemSelected(this.props.item);
+		
 		return (
-			<li className={classNames('tree-item', this.props.accessors.getItemState(this.props.item).selected ? 'tree-selected' : '')} data-template="treeitem" role="treeitem">
+			<li className={classNames('tree-item', {'tree-selected': isSelected})} data-template="treeitem" role="treeitem">
 				<button type="button" onClick={this._handleItemClick.bind(this, this.props.item)} className="tree-item-name">
 					<span className={classNames('glyphicon icon-item', this.props.accessors.getIconClass(this.props.item) || 'fueluxicon-bullet')}></span>
 					<span className="tree-label">{this.props.accessors.getText(this.props.item)}</span>

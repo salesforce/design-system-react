@@ -8,7 +8,7 @@ const Item = Base.Item.extend({
 	get (key) {
 		let result;
 
-		if (this._item && key) {
+		if (key !== undefined) {
 			result = this._item[key];
 		} else {
 			result = this._item;
@@ -18,15 +18,7 @@ const Item = Base.Item.extend({
 	},
 
 	keys () {
-		let result;
-
-		if (this._item) {
-			result = Object.keys(this._item);
-		} else {
-			result = [];
-		}
-
-		return result;
+		return Object.keys(this._item);;
 	}
 });
 
@@ -42,7 +34,7 @@ const Data = Base.Data.extend({
 	get (criteria) {
 		let result;
 
-		if (this._data && criteria) {
+		if (criteria !== undefined) {
 			result = this.findWhere(this._data, criteria);
 		} else {
 			result = this._data;
@@ -59,6 +51,34 @@ const Data = Base.Data.extend({
 		}
 
 		return result;
+	},
+	
+	add (item) {
+		this._data.push(item._item);
+		
+		return this;
+	},
+	
+	remove (itemToRemove) {
+		let indexToRemove;
+		
+		this.forEach(function (item, index) {
+			if (indexToRemove === undefined && item._item === itemToRemove._item) {
+				indexToRemove = index;
+			}
+		});
+		
+		if (indexToRemove !== undefined) {
+			this._data = this._data.splice(indexToRemove, 1);
+		}
+		
+		return this;
+	},
+	
+	reset () {
+		this._data.length = 0;
+		
+		return this;
 	}
 });
 

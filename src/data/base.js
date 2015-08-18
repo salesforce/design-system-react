@@ -61,10 +61,6 @@ Lib.extend(Item.prototype, {
 	// Instance methods
 	get () {
 		return undefined;
-	},
-
-	keys () {
-		return undefined;
 	}
 });
 
@@ -104,10 +100,6 @@ Lib.extend(Data.prototype, {
 	},
 
 	get () {
-		return undefined;
-	},
-
-	at () {
 		return undefined;
 	}
 });
