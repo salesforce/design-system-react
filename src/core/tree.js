@@ -17,18 +17,9 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	// Set the defaults
 	_getDefaultStore () {
 		return {
-			cacheItems: false,
 			disabled: false,
-			dataSource: null,
 			folderSelect: false,
-			itemSelect: false,
 			multiSelect: false
-		};
-	},
-
-	_getDefaultState () {
-		return {
-			itemStates: {}
 		};
 	},
 
@@ -47,8 +38,9 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 			return item.get('text');
 		},
 
+		// May return either a promise or a value
 		getChildren (item) {
-			return Promise.resolve(Lib.getDataAdapter(item.get('children')));
+			return item.get('children');
 		},
 
 		getType (item) {
@@ -63,89 +55,120 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 			return !!item.get('_isExpandable');
 		},
 
-		getItemState (item) {
-			const _item = Lib.getItemAdapter( item );
-			const id = _item.get('id');
-			const itemStates = this.getState('itemStates');
-
-			if ( typeof id === 'undefined' ) {
-				throw new Error('A unique id is required!');
-			}
-
-			const itemState = itemStates[id] || {
-				selected: false,
-				open: false,
-				loading: false
-			};
-
-			Lib.extend( itemState, {
-				item: _item._item
-			} );
-
-			if ( !itemStates[id] ) {
-				itemStates[id] = itemState;
-			}
-
-			return itemState;
+		// Reduce the number of fields here if a unique key is available
+		// Result can be either an object with key/value pairs to match or a function
+		getKey (item) {
+			return item.get();
 		}
 	},
-
-	_setItemState (item, state) {
-		const itemState = this.accessors.getItemState.call(this, item);
-		const itemStates = this.getState('itemStates');
-		const _item = Lib.getItemAdapter(itemState.item);
-		const id = _item.get('id');
-
-		if (typeof id === 'undefined') {
-			throw new Error('A unique id is required!');
-		}
-
-		Lib.extend(itemState, state);
-		itemStates[id] = itemState;
-		this.setState({ itemStates });
+	
+	// Proxy this call to the accessor to ensure that we always receive a promise wrapped in a Data Adapter
+	_getChildren (item) {
+		return Promise.resolve(this.accessors.getChildren(item)).then(Lib.getDataAdapter);
 	},
-
-	_selectItem (item) {
-		const itemStates = this.getState('itemStates');
-		const selected = this.accessors.getItemState.call(this, item).selected;
-
-		if (!this.getStore('multiSelect')) {
-			this._setItemState(item, {selected: !selected});
-			Object.keys(itemStates).forEach(itemId => {
-				if (itemId !== item.get('id').toString()) { // Need a toString here because itemId is an object literal key, and therefore a string.
-					this._setItemState(itemStates[itemId].item, { selected: false });
-				}
-			});
-		} else {
-			const currentItemState = this.accessors.getItemState.call(this, item);
-			currentItemState.selected = !currentItemState.selected;
-			this._setItemState(item, currentItemState);
-		}
-	},
-
-	_deselectAll () {
-		const itemStates = this.getState('itemStates');
-
-		Object.keys(itemStates).forEach( itemId => {
-			this._setItemState( itemStates[itemId].item, { selected: false } );
-		});
-	},
-
-	_toggleFolder (folder) {
-		this._setItemState(folder, {open: !this.accessors.getItemState.call(this, folder).open});
-	},
-
+	
+	// TO-DO: We can probably pull this multi-select logic out to a trait
 	getSelectedItems () {
-		const itemStates = this.getState('itemStates');
-		const selectedItems = [];
+		return this.getStore('selection');
+	},
+	
+	_isItemSelected (item, selection) {
+		const _selection = selection || Lib.getDataAdapter(this.getSelectedItems());
+		return !!_selection.findWhere(this.accessors.getKey(item));
+	},
+	
+	_selectItem (item) {
+		const selection = Lib.getDataAdapter(this.getSelectedItems());
 		
-		Object.keys(itemStates).forEach((itemId) => {
-			if (itemStates[itemId].selected) {
-				selectedItems.push(itemStates[itemId].item);
+		if (!this._isItemSelected(item, selection) && (!Lib.isFunction(this._canSelect) || this._canSelect(item))) {
+			if (this.getStore('multiSelect')) {
+				selection.add(item);
+			} else {
+				selection.reset(item);
 			}
-		});
+			
+			this.setStore({ selection });
+			if (Lib.isFunction(this._onSelected)) this._onSelected(selection);
+			
+			this.trigger('changed', selection);
+		}
+	},
+	
+	selectItem (_item) {
+		this._selectItem(Lib.getItemAdapter(_item));
+	},
+	
+	_deselectItem (item) {
+		const selection = Lib.getDataAdapter(this.getSelectedItems());
+		
+		if (this._isItemSelected(item, selection)) {
+			
+			selection.remove(item);
+			
+			this.setStore({ selection });
+			if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
+			
+			this.trigger('changed', selection);
+		}
+	},
+	
+	deselectItem (_item) {
+		this._deselectItem(Lib.getItemAdapter(_item));
+	},
 
-		return selectedItems;
+	deselectAll () {
+		const selection = Lib.getDataAdapter(this.getSelectedItems());
+		
+		selection.reset(null);
+		
+		this.setStore({ selection });
+		if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
+			
+		this.trigger('changed', selection);
+	},
+	
+	// TO-DO: This beginning code is basically the same as multi-select right now
+	getOpenFolders () {
+		return this.getStore('open');
+	},
+	
+	_isFolderOpen (folder, open) {
+		const _open = open || Lib.getDataAdapter(this.getOpenFolders());
+		return !!_open.findWhere(this.accessors.getKey(folder));
+	},
+	
+	_toggleFolder (folder) {
+		const open = Lib.getDataAdapter(this.getOpenFolders());
+		const isOpen = this._isFolderOpen(folder, open);
+		let eventName;
+		
+		if (isOpen) {
+			open.remove(folder);
+			eventName = 'closed';
+		} else {
+			open.add(folder);
+			eventName = 'opened';
+		}
+		
+		this.setStore({ open });
+		if (Lib.isFunction(this._onFolderToggled)) this._onFolderToggled(folder, !isOpen);
+		
+		this.trigger(eventName, folder._item);
+	},
+	
+	toggleFolder (_folder) {
+		this._toggleFolder(Lib.getItemAdapter(_folder));
+	},
+
+	closeAllFolders () {
+		const open = Lib.getDataAdapter(this.getOpenFolders());
+		
+		open.reset(null);
+
+		this.setStore({ open });
+		if (Lib.isFunction(this._onFoldersClosed)) this._onFoldersClosed();
+
+		this.trigger('closed');
 	}
 });
 
