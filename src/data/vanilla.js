@@ -75,8 +75,12 @@ const Data = Base.Data.extend({
 		return this;
 	},
 	
-	reset () {
-		this._data.length = 0;
+	reset (item) {
+		if (!item) {
+			this._data.length = 0;
+		} else {
+			this.reset().add(item);
+		}
 		
 		return this;
 	}

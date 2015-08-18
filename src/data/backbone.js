@@ -68,8 +68,8 @@ const Data = Base.Data.extend({
 		return this;
 	},
 	
-	reset () {
-		this._data.reset();
+	reset (item) {
+		this._data.reset(item);
 		
 		return this;
 	}
