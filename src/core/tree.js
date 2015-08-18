@@ -59,6 +59,10 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		// Result can be either an object with key/value pairs to match or a function
 		getKey (item) {
 			return item.get();
+		},
+		
+		getId (item) {
+			return item.get('id');
 		}
 	},
 	

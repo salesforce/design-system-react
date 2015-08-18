@@ -28,24 +28,22 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 	},
 
 	render () {
-		const contents = [];
+		const children = [];
+		
 		this._collection.forEach(model => {
+			const id = this.accessors.getId(model);
 			const selectable = this.getStore('folderSelect');
-			let result;
 			
 			if (this.accessors.getType(model) === 'folder') {
-				// TO-DO: Using model.get('id') won't work here now that ids are no longer required
-				result = <TreeBranch key={model.get('id')} item={model} selectable={selectable} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={this.accessors} _getChildren={this._getChildren} _isFolderOpen={this._isFolderOpen} _isItemSelected={this._isItemSelected} />;
+				children.push(<TreeBranch key={id} item={model} selectable={selectable} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={this.accessors} _getChildren={this._getChildren} _isFolderOpen={this._isFolderOpen} _isItemSelected={this._isItemSelected} />);
 			} else {
-				result = <TreeItem key={model.get('id')} item={model} onClick={this._handleItemClick} accessors={this.accessors} _isItemSelected={this._isItemSelected} />;
+				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick} accessors={this.accessors} _isItemSelected={this._isItemSelected} />);
 			}
-			
-			contents.push(result);
 		});
 
 		return (
 			<ul className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP)} role="tree">
-				{contents}
+				{children}
 			</ul>
 		);
 	},

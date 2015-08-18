@@ -22,7 +22,8 @@ const TreeBranch = React.createClass({
 		onExpandClick: React.PropTypes.func.isRequired,
 		accessors: React.PropTypes.shape({
 			getText: React.PropTypes.func.isRequired,
-			getType: React.PropTypes.func.isRequired
+			getType: React.PropTypes.func.isRequired,
+			getId: React.PropTypes.func.isRequired
 		}),
 		_getChildren: React.PropTypes.func.isRequired,
 		_isFolderOpen: React.PropTypes.func.isRequired,
@@ -57,10 +58,12 @@ const TreeBranch = React.createClass({
 		const children = [];
 
 		this.state.children.forEach(model => {
+			const id = accessors.getId(model);
+			
 			if (accessors.getType(model) === 'folder') {
-				children.push(<TreeBranch key={model.get('id')} item={model} selectable={this.props.selectable} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={accessors} _getChildren={this.props._getChildren} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
+				children.push(<TreeBranch key={id} item={model} selectable={this.props.selectable} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={accessors} _getChildren={this.props._getChildren} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
 			} else {
-				children.push(<TreeItem key={model.get('id')} item={model} onClick={this._handleItemClick.bind(this, model)} accessors={accessors} _isItemSelected={this.props._isItemSelected} />);
+				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick.bind(this, model)} accessors={accessors} _isItemSelected={this.props._isItemSelected} />);
 			}
 		});
 		
@@ -84,7 +87,7 @@ const TreeBranch = React.createClass({
 				<ul className={classNames('tree-branch-children', {hidden: !isOpen})} role="group">
 					{isOpen ? children : undefined}
 				</ul>
-				<div className={classNames('tree-loader', {hidden: !this.state.loading})} role="alert">Loading...</div>
+				<div className={classNames('tree-loader', {hidden: !this.state.loading || !isOpen})} role="alert">Loading...</div>
 			</li>
 		);
 	},
