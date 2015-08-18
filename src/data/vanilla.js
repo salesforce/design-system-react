@@ -53,6 +53,10 @@ const Data = Base.Data.extend({
 		return result;
 	},
 	
+	length () {
+		return this._data.length;
+	},
+	
 	add (item) {
 		this._data.push(item._item);
 		

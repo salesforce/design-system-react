@@ -12,11 +12,11 @@ const State = {
 	},
 	
 	setState (values) {
-		return Lib.extend(this.state, values);
+		return Lib.extend(this._state, values);
 	},
 
 	getState (key) {
-		return this.state[key];
+		return this._state[key];
 	}
 };
 

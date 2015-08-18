@@ -45,6 +45,10 @@ const Data = Base.Data.extend({
 
 		return result;
 	},
+	
+	length () {
+		return this._data.length;
+	},
 
 	at (index) {
 		let result;

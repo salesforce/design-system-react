@@ -108,7 +108,7 @@ Lib.extend(Data.prototype, {
 	}
 });
 
-['at', 'add', 'remove', 'reset', 'forEach', 'filter', 'map', 'every'].forEach(function (method) {
+['at', 'length', 'add', 'remove', 'reset', 'forEach', 'filter', 'map', 'every'].forEach(function (method) {
 	Data.prototype[method] = Lib.noop;
 });
 

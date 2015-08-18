@@ -58,15 +58,13 @@ const collection = [
 
 const options = {
 	collection: collection,
-	itemSelect: true,
 	folderSelect: true,
 	multiSelect: true
 };
 
 $(function () {
-	$( '.imperative .tree1' ).tree( { collection: collection } );
+	$('.imperative .tree1').tree({ collection: collection });
 
-	const tree = new Tree( $( '.new-api .tree1' ), options );
-
-	Lib.log( tree );
+	const tree = new Tree($('.new-api .tree1'), options);
+	void(tree);
 });
