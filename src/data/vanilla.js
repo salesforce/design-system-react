@@ -69,7 +69,7 @@ const Data = Base.Data.extend({
 		});
 		
 		if (indexToRemove !== undefined) {
-			this._data = this._data.splice(indexToRemove, 1);
+			this._data.splice(indexToRemove, 1);
 		}
 		
 		return this;
