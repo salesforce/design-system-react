@@ -87,10 +87,10 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 				selection.reset(item);
 			}
 			
-			this.setStore({ selection });
+			this.setStore({ selection: selection._data });
 			if (Lib.isFunction(this._onSelected)) this._onSelected(selection);
 			
-			this.trigger('changed', selection);
+			this.trigger('changed', item._item, selection._data);
 		}
 	},
 	
@@ -104,10 +104,10 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		if (this._isItemSelected(item, selection)) {
 			selection.remove(item);
 			
-			this.setStore({ selection });
+			this.setStore({ selection: selection._data });
 			if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
 			
-			this.trigger('changed', selection);
+			this.trigger('changed', selection._item, selection._data);
 		}
 	},
 	
@@ -120,10 +120,10 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		
 		selection.reset(null);
 		
-		this.setStore({ selection });
+		this.setStore({ selection: selection._data });
 		if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
 			
-		this.trigger('changed', selection);
+		this.trigger('changed', null, selection._data);
 	},
 	
 	// TO-DO: This beginning code is basically the same as multi-select right now
@@ -149,10 +149,10 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 			eventName = 'opened';
 		}
 		
-		this.setStore({ open });
+		this.setStore({ open: open._data });
 		if (Lib.isFunction(this._onFolderToggled)) this._onFolderToggled(folder, !isOpen);
 		
-		this.trigger(eventName, folder._item);
+		this.trigger(eventName, folder._item, open._data);
 	},
 	
 	toggleFolder (_folder) {
@@ -164,10 +164,10 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		
 		open.reset(null);
 
-		this.setStore({ open });
+		this.setStore({ open: open._data });
 		if (Lib.isFunction(this._onFoldersClosed)) this._onFoldersClosed();
 
-		this.trigger('closed');
+		this.trigger('closed', null, open._data);
 	}
 });
 

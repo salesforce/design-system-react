@@ -1,4 +1,9 @@
+// TREE ITEM - REACT FACADE
+
+// Framework specific
 import React from 'react';
+
+// Third party
 import classNames from 'classnames';
 
 const TreeItem = React.createClass({

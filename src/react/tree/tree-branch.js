@@ -1,6 +1,16 @@
+// TREE BRANCH - REACT FACADE
+
+// Core
+import * as Lib from '../../core/lib';
+
+// Framework specific
 import React from 'react';
-import TreeItem from './tree-item';
+
+// Third party
 import classNames from 'classnames';
+
+// Children
+import TreeItem from './tree-item';
 
 let InnerTreeBranch;
 
@@ -12,16 +22,17 @@ const TreeBranch = React.createClass({
 		onExpandClick: React.PropTypes.func.isRequired,
 		accessors: React.PropTypes.shape({
 			getText: React.PropTypes.func.isRequired,
-			getType: React.PropTypes.func.isRequired,
-			getChildren: React.PropTypes.func.isRequired
+			getType: React.PropTypes.func.isRequired
 		}),
+		_getChildren: React.PropTypes.func.isRequired,
 		_isFolderOpen: React.PropTypes.func.isRequired,
 		_isItemSelected: React.PropTypes.func.isRequired
 	},
 
 	getInitialState () {
 		return {
-			loading: false
+			children: Lib.getDataAdapter([]),
+			loading: true
 		};
 	},
 
@@ -30,12 +41,8 @@ const TreeBranch = React.createClass({
 			InnerTreeBranch = require('./tree-branch');
 		}
 		
-		this.setState({
-			loading: true
-		});
-		
 		// TO-DO: We should probably handle the rejected state as well
-		this.props.accessors.getChildren(this.props.item).then(resolvedChildren => {
+		this.props._getChildren(this.props.item).then(resolvedChildren => {
 			this.setState({
 				children: resolvedChildren,
 				loading: false
@@ -49,9 +56,9 @@ const TreeBranch = React.createClass({
 		const isSelected = this.props._isItemSelected(this.props.item);
 		const children = [];
 
-		this.getState('children').forEach(model => {
+		this.state.children.forEach(model => {
 			if (accessors.getType(model) === 'folder') {
-				children.push(<TreeBranch key={model.get('id')} item={model} selectable={this.props.selectable} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={accessors} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
+				children.push(<TreeBranch key={model.get('id')} item={model} selectable={this.props.selectable} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={accessors} _getChildren={this.props._getChildren} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
 			} else {
 				children.push(<TreeItem key={model.get('id')} item={model} onClick={this._handleItemClick.bind(this, model)} accessors={accessors} _isItemSelected={this.props._isItemSelected} />);
 			}
@@ -77,7 +84,7 @@ const TreeBranch = React.createClass({
 				<ul className={classNames('tree-branch-children', {hidden: !isOpen})} role="group">
 					{isOpen ? children : undefined}
 				</ul>
-				<div className={classNames('tree-loader', {hidden: this.getState('loading')})} role="alert">Loading...</div>
+				<div className={classNames('tree-loader', {hidden: !this.state.loading})} role="alert">Loading...</div>
 			</li>
 		);
 	},

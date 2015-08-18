@@ -1,6 +1,9 @@
 // Core
 import * as Lib from '../../core/lib';
 
+// Framework specific
+import React from 'react';
+
 const genericWillMount = {
 	componentWillMount () {
 		this.elements = {};

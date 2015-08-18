@@ -55,8 +55,23 @@ const collection = [
 
 export default function (element) {
 	const TreeExample = React.createClass({
+		getInitialState () {
+			return {
+				selection: [],
+				open: []
+			};
+		},
+		
 		render () {
-			return <Tree folderSelect={false} collection={collection}/>;
+			return <Tree folderSelect={false} collection={collection} selection={this.state.selection} open={this.state.open} onChanged={this.handleChanged} onOpened={this.handleToggle} onClosed={this.handleToggle} />;
+		},
+		
+		handleChanged (item, selection) {
+			this.setState({ selection });
+		},
+		
+		handleToggle (item, open) {
+			this.setState({ open });
 		}
 	});
 

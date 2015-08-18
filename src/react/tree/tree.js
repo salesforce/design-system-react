@@ -1,4 +1,4 @@
-// SELECTLIST CONTROL - REACT FACADE
+// TREE CONTROL - REACT FACADE
 
 // Core
 import * as Lib from '../../core/lib';
@@ -19,6 +19,13 @@ import TreeItem from './tree-item';
 
 const Tree = React.createClass(Lib.extend({}, TreeCore, {
 	mixins: [State, Events, genericWillMount],
+	
+	getDefaultProps () {
+		return {
+			selection: [],
+			open: []
+		};
+	},
 
 	render () {
 		const contents = [];
@@ -27,9 +34,9 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 			
 			if (this.accessors.getType(model) === 'folder') {
 				// TO-DO: Using model.get('id') won't work here now that ids are no longer required
-				result = <TreeBranch key={model.get('id')} item={model} selectable={this.getStore('folderSelect')} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={this.accessors} _isFolderOpen={this._isFolderOpen.bind(this)} _isItemSelected={this._isItemSelected.bind(this)} />;
+				result = <TreeBranch key={model.get('id')} item={model} selectable={this.getStore('folderSelect')} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={this.accessors} _getChildren={this._getChildren} _isFolderOpen={this._isFolderOpen} _isItemSelected={this._isItemSelected} />;
 			} else {
-				result = <TreeItem key={model.get('id')} item={model} onClick={this._handleItemClick} accessors={this.accessors} _isItemSelected={this._isItemSelected.bind(this)} />;
+				result = <TreeItem key={model.get('id')} item={model} onClick={this._handleItemClick} accessors={this.accessors} _isItemSelected={this._isItemSelected} />;
 			}
 			
 			contents.push(result);
