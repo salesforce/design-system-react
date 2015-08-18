@@ -63,7 +63,7 @@ export default function (element) {
 		},
 		
 		render () {
-			return <Tree folderSelect={false} multiSelect={true} collection={collection} selection={this.state.selection} open={this.state.open} onChanged={this.handleChanged} onOpened={this.handleToggle} onClosed={this.handleToggle} />;
+			return <Tree folderSelect={false} multiSelect={true} autoOpen={false} collection={collection} selection={this.state.selection} open={this.state.open} onChanged={this.handleChanged} onOpened={this.handleToggle} onClosed={this.handleToggle} />;
 		},
 		
 		handleChanged (item, selection) {

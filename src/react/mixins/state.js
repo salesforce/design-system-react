@@ -10,7 +10,7 @@ const State = {
 	},
 	
 	getDefaultProps () {
-		const defaultStore = Lib.isFunction(this._getDefaultStore) ? this._getDefaultStore() : {};
+		const defaultStore = Lib.isFunction(this.prototype._getDefaultStore) ? this.prototype._getDefaultStore() : {};
 		return defaultStore;
 	},
 	

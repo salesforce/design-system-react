@@ -19,7 +19,9 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		return {
 			disabled: false,
 			folderSelect: false,
-			multiSelect: false
+			multiSelect: false,
+			autoOpen: false,
+			autoOpenLimit: 1
 		};
 	},
 

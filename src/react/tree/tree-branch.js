@@ -18,6 +18,8 @@ const TreeBranch = React.createClass({
 	propTypes: {
 		item: React.PropTypes.object.isRequired,
 		selectable: React.PropTypes.bool.isRequired,
+		autoOpenLevel: React.PropTypes.number.isRequired,
+		autoOpenLimit: React.PropTypes.number.isRequired,
 		onItemClick: React.PropTypes.func.isRequired,
 		onExpandClick: React.PropTypes.func.isRequired,
 		accessors: React.PropTypes.shape({
@@ -42,6 +44,10 @@ const TreeBranch = React.createClass({
 			InnerTreeBranch = require('./tree-branch');
 		}
 		
+		if (this.props.autoOpenLevel <= this.props.autoOpenLimit && !this.props._isFolderOpen(this.props.item)) {
+			this._handleExpandClick(this.props.item);
+		}
+		
 		// TO-DO: We should probably handle the rejected state as well
 		this.props._getChildren(this.props.item).then(resolvedChildren => {
 			this.setState({
@@ -61,7 +67,7 @@ const TreeBranch = React.createClass({
 			const id = accessors.getId(model);
 			
 			if (accessors.getType(model) === 'folder') {
-				children.push(<TreeBranch key={id} item={model} selectable={this.props.selectable} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={accessors} _getChildren={this.props._getChildren} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
+				children.push(<TreeBranch key={id} item={model} selectable={this.props.selectable} autoOpenLevel={this.props.autoOpenLevel + 1} autoOpenLimit={this.props.autoOpenLimit} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={accessors} _getChildren={this.props._getChildren} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
 			} else {
 				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick.bind(this, model)} accessors={accessors} _isItemSelected={this.props._isItemSelected} />);
 			}
