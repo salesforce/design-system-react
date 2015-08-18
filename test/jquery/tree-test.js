@@ -12,7 +12,7 @@ export const behaviorHandlers = {
 		approach2: function () {
 			// TODO: Really call control, these are just to test that the behaviors are working
 			const $ = require('jquery');
-			$('body').append('<div class="tree approach-2"></div>');
+			$(initData.container).append('<div class="tree-whoops approach-2"></div>');
 		}
 	},
 
