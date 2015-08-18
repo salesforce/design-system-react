@@ -5,7 +5,6 @@ import Day from '../SLDSCalendarDay/index';
 var Week = React.createClass({
 
   handleSelectDate: function(day){
-    console.log('>>> WEEK: ',day);
     if(this.props.onSelectDate){
       this.props.onSelectDate(day);
     }

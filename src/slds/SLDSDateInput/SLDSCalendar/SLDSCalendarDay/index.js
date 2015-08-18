@@ -4,13 +4,11 @@ var Day = React.createClass({
 
   handleClick: function() {
     if(this.props.onSelectDate){
-      console.log('>>> DAY: ',this.props.day);
       this.props.onSelectDate(this.props.day);
     }
   },
 
   render: function() {
-
     return (
       <td 
         key={this.props.day.date.toString()}

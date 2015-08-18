@@ -6,12 +6,10 @@ import moment from 'moment';
 export default class SLDSSuggest extends Component {
 
   handleSelectDate(day) {
-    console.log('INPUT: ',day);
     this.setState({selectedDate:day})
   }
 
   handleClose() {
-    console.log('close!');
     this.setState({isOpen:false})
   }
 
@@ -41,7 +39,6 @@ export default class SLDSSuggest extends Component {
   }
   render() {
     return (
-
       <div className="sds-form-element">
         <label className="sds-form-element__label" for="date">Date Picker Label</label>
         <div className="sds-form-element__control">
@@ -54,15 +51,11 @@ export default class SLDSSuggest extends Component {
               label="Date Picker Label" 
               onClick={this.handleClick.bind(this)}
               onFocus={this.handleFocus.bind(this)} 
-              onBlur={this.handleBlur.bind(this)}
-            />
-
+              onBlur={this.handleBlur.bind(this)} />
           </div>
         </div>
         {this.popover()}
-
       </div>
-
     );
   }
 }

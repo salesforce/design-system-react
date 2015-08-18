@@ -39,7 +39,6 @@ module.exports = React.createClass( {
   },
 
   render() {
-    console.log('!!! RENDER PICKER: ',this.props.selected);
     return (
       <div className="sds-datepicker" aria-hidden="false" data-selection="single" onClick={this.handleClick}>
         <SLDSDatePickerNav 
