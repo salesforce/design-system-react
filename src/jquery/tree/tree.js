@@ -60,9 +60,11 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 	renderItem (item, template) {
 		const $item = this.$html.find(template).clone();
+		const id = this.accessors.getId(item);
 
 		$item.find('.tree-label').text(this.accessors.getText(item));
 		$item.data({ item: item._item });
+		$item.data({ id });
 
 		this._styleNode($item, item);
 
