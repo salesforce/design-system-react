@@ -60,7 +60,8 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_renderItem (item) {
-		const template = this.accessors.getType(item) === 'folder' ? '.tree-branch' : '.tree-item';
+		const isFolder = this.accessors.getType(item) === 'folder';
+		const template = isFolder ? '.tree-branch' : '.tree-item';
 		const $item = this.$html.find(template).clone();
 
 		$item.find('.tree-label').text(this.accessors.getText(item));
@@ -70,8 +71,39 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		});
 
 		this._styleNode($item, item);
+		
+		if (isFolder) {
+			this._renderBranch($item, item, this._isFolderOpen(item));
+		}
 
 		return $item;
+	},
+	
+	_renderBranch ($branch, folder, state) {
+		const self = this;
+		const $treeFolderContent = $branch.find('.tree-branch-children');
+		const $treeFolderContentFirstChild = $treeFolderContent.eq(0);
+
+		// Take care of the styles
+		$branch.toggleClass('tree-open', state);
+		$branch.attr('aria-expanded', state);
+		$treeFolderContentFirstChild.toggleClass('hidden', !state);
+		$branch.find('> .tree-branch-header .icon-folder').eq(0)
+			.toggleClass('glyphicon-folder-open', state)
+			.toggleClass('glyphicon-folder-close', !state);
+
+		if (state) {
+			$treeFolderContentFirstChild.append('<div class="tree-loader" role="alert">Loading...</div>');
+			
+			self._getChildren(folder).then(function (children) {
+				self._loopChildren(children, $treeFolderContentFirstChild);
+			});
+		} else {
+			// TO-DO: Possibly cache children
+			$treeFolderContentFirstChild.empty();
+		}
+		
+		return $branch;
 	},
 
 	_loopChildren (children, $el)  {
@@ -104,27 +136,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 			const $branch = $(this);
 			
 			if ($branch.data('id') === id) {
-				const $treeFolderContent = $branch.find('.tree-branch-children');
-				const $treeFolderContentFirstChild = $treeFolderContent.eq(0);
-		
-				// Take care of the styles
-				$branch.toggleClass('tree-open', state);
-				$branch.attr('aria-expanded', state);
-				$treeFolderContentFirstChild.toggleClass('hidden', !state);
-				$branch.find('> .tree-branch-header .icon-folder').eq(0)
-					.toggleClass('glyphicon-folder-open', state)
-					.toggleClass('glyphicon-folder-close', !state);
-
-				if (state) {
-					$treeFolderContentFirstChild.append('<div class="tree-loader" role="alert">Loading...</div>');
-					
-					self._getChildren(folder).then(function (children) {
-						self._loopChildren(children, $treeFolderContentFirstChild);
-					});
-				} else {
-					// TO-DO: Possibly cache children
-					$treeFolderContentFirstChild.empty();
-				}
+				self._renderBranch($branch, folder, state);
 			}
 		});
 	},
