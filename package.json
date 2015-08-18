@@ -41,5 +41,11 @@
   "scripts": {
     "start": "grunt serve",
     "test": "grunt test"
-  }
+  },
+  "facades": [
+    "jquery"
+  ],
+  "components": [
+    "tree"
+  ]
 }

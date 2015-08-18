@@ -1,20 +1,12 @@
-import { registerTestsForBehaviorCallbacks, registerBehaviorTestCombinations } from '../lib/behavior-test-runner';
+import { verifyFacadeProvidesBehaviorCallbacks, registerBehaviorTestCombinations } from '../lib/behavior-test-runner';
+import { tree as componentFacadeTestLib } from '../tests-api';
 
-const _ = require('underscore');
 const $ = require('jquery');
 const chai = require('chai');
 const expect = chai.expect;
 
-// TODO: Load the facades programmatically
-const facades = {
-	jquery: require('../jquery/tree-test'),
-	marionette: require('../marionette/tree-test'),
-	react: require('../react/tree-test')
-};
-
 /* Testing Contract: Expected values on each facade's exported behaviorHandlers
 
-TODO: Write document explaining relationship of behavior tests to facade-specific component tests
 TODO: Decide on formatting for these comments and rewrite to match formatting selection
 
 component createComponent( initData )
@@ -144,305 +136,309 @@ onOpenVisibleComplete( component , callback )
 */
 
 describe('Tree Component', function () {
-	_.each(facades, function (facadeTestLib, facadeName) {
-		registerTestsForBehaviorCallbacks(facadeName, facadeTestLib, [
-			'createComponent',
-			'getComponentElement',
-			'destroyComponent',
-			'getSelectedItems',
-			'select',
-			'deselect',
-			'openFolder',
-			'closeFolder',
-			'toggleFolder',
-			'onSelected',
-			'onDeselected',
-			'onOpened',
-			'onClosed',
-			'updateChildren',
-			'showLoading',
-			'hideLoading',
-			'onChildrenLoaded',
-			'closeAll',
-			'onCloseAllComplete',
-			'openAll',
-			'onOpenAllComplete',
-			'openVisible',
-			'onOpenVisibleComplete'
-		]);
+	verifyFacadeProvidesBehaviorCallbacks(componentFacadeTestLib, [
+		'createComponent',
+		'getComponentElement',
+		'destroyComponent',
+		'getSelectedItems',
+		'select',
+		'deselect',
+		'openFolder',
+		'closeFolder',
+		'toggleFolder',
+		'onSelected',
+		'onDeselected',
+		'onOpened',
+		'onClosed',
+		'updateChildren',
+		'showLoading',
+		'hideLoading',
+		'onChildrenLoaded',
+		'closeAll',
+		'onCloseAllComplete',
+		'openAll',
+		'onOpenAllComplete',
+		'openVisible',
+		'onOpenVisibleComplete'
+	]);
 
-		registerBehaviorTestCombinations(facadeName, facadeTestLib, [
-			'createComponent',
-			'getComponentElement',
-			'destroyComponent'
-		], function (testingBehaviorHandlers) {
-			let container = null;
+	registerBehaviorTestCombinations(componentFacadeTestLib, [
+		// behaviors being tested
+		'createComponent',
+		'getComponentElement',
+		'destroyComponent'
+	], [
+		// other behaviors required for tests
+	], function (testingBehaviorHandlers) {
+		let container = null;
+
+		beforeEach(function () {
+			container = $('<div />');
+			$('body').append(container);
+		});
+
+		afterEach(function () {
+			container.remove();
+			container = null;
+		});
+
+		describe('create and destroy component', function () {
+			it('should create a single tree element on the DOM within the container', function () {
+				const component = testingBehaviorHandlers.createComponent( {
+					container: container,
+					children: []
+				} );
+
+				expect(container.find('.tree').length).to.equal(1);
+
+				testingBehaviorHandlers.destroyComponent(component);
+			});
+
+			it('should return an object representing the component', function () {
+				const component = testingBehaviorHandlers.createComponent( {
+					container: container,
+					children: []
+				} );
+
+				expect(component).to.be.an('object');
+
+				testingBehaviorHandlers.destroyComponent(component);
+			});
+
+			it('destroy should remove tree from container', function () {
+				const component = testingBehaviorHandlers.createComponent( {
+					container: container,
+					children: []
+				} );
+
+				testingBehaviorHandlers.destroyComponent(component);
+
+				expect(container.find('.tree').length).to.equal(0);
+			});
+		});
+
+		describe('DOM expectations based on data', function () {
+			let component = null;
+			let tree = null;
+			const initData = {
+				container: container,
+				children: [
+					{
+						text: 'Item 1',
+						type: 'item'
+					},
+					{
+						text: 'Folder 1',
+						type: 'folder',
+						initiallyOpen: true,
+						expandable: true,
+						children: [
+							{
+								text: 'Item 2',
+								type: 'item',
+								iconClass: 'custom-item-icon-class'
+							},
+							{
+								text: 'Folder 2',
+								type: 'folder',
+								iconClass: 'custom-folder-icon-class',
+								expandable: true,
+								children: []
+							}
+						]
+					}
+				]
+			};
 
 			beforeEach(function () {
-				container = $('<div />');
-				$('body').append(container);
+				component = testingBehaviorHandlers.createComponent( JSON.parse( JSON.stringify( initData ) ) );
+				tree = $(testingBehaviorHandlers.getComponentElement(component));
 			});
 
 			afterEach(function () {
-				container.remove();
-				container = null;
+				testingBehaviorHandlers.destroyComponent(component);
+				component = null;
+				tree = null;
 			});
 
-			describe('create and destroy component', function () {
-				it('should create a single tree element on the DOM within the container', function () {
-					const component = testingBehaviorHandlers.createComponent( {
-						container: container,
-						children: []
-					} );
-
-					expect(container.find('.tree').length).to.equal(1);
-
-					testingBehaviorHandlers.destroyComponent(component);
+			describe('tree element', function () {
+				it('should be an unordered list element', function () {
+					expect(tree.is('ul')).to.be.true;
 				});
 
-				it('should return an object representing the component', function () {
-					const component = testingBehaviorHandlers.createComponent( {
-						container: container,
-						children: []
-					} );
-
-					expect(component).to.be.an('object');
-
-					testingBehaviorHandlers.destroyComponent(component);
+				it('should have the class "tree"', function () {
+					expect(tree.is('.tree')).to.be.true;
 				});
 
-				it('destroy should remove tree from container', function () {
-					const component = testingBehaviorHandlers.createComponent( {
-						container: container,
-						children: []
-					} );
-
-					testingBehaviorHandlers.destroyComponent(component);
-
-					expect(container.find('.tree').length).to.equal(0);
-				});
-			});
-
-			describe('DOM expectations based on data', function () {
-				let component = null;
-				let tree = null;
-				const initData = {
-					container: container,
-					children: [
-						{
-							text: 'Item 1',
-							type: 'item'
-						},
-						{
-							text: 'Folder 1',
-							type: 'folder',
-							initiallyOpen: true,
-							expandable: true,
-							children: [
-								{
-									text: 'Item 2',
-									type: 'item',
-									iconClass: 'custom-item-icon-class'
-								},
-								{
-									text: 'Folder 2',
-									type: 'folder',
-									iconClass: 'custom-folder-icon-class',
-									expandable: true,
-									children: []
-								}
-							]
-						}
-					]
-				};
-
-				beforeEach(function () {
-					component = testingBehaviorHandlers.createComponent( JSON.parse( JSON.stringify( initData ) ) );
-					tree = $(testingBehaviorHandlers.getComponentElement(component));
+				it('should have the aria role "tree"', function () {
+					expect(tree.is('[role=tree]')).to.be.true;
 				});
 
-				afterEach(function () {
-					testingBehaviorHandlers.destroyComponent(component);
-					component = null;
-					tree = null;
-				});
+				describe('outer item element', function () {
+					let item = null;
 
-				describe('tree element', function () {
-					it('should be an unordered list element', function () {
-						expect(tree.is('ul')).to.be.true;
+					beforeEach(function () {
+						item = tree.find('> li').first();
 					});
 
-					it('should have the class "tree"', function () {
-						expect(tree.is('.tree')).to.be.true;
+					it('should have the class "tree-item"', function () {
+						expect(item.is('.tree-item')).to.be.true;
 					});
 
-					it('should have the aria role "tree"', function () {
-						expect(tree.is('[role=tree]')).to.be.true;
+					it('should have the role "tree"', function () {
+						expect(item.is('[role=tree]')).to.be.true;
 					});
 
-					describe('outer item element', function () {
-						let item = null;
+					describe('tree item button', function () {
+						let button = null;
 
 						beforeEach(function () {
-							item = tree.find('> li').first();
+							button = item.find('> button').first();
 						});
 
-						it('should have the class "tree-item"', function () {
-							expect(item.is('.tree-item')).to.be.true;
+						it('should have the class "tree-item-name"', function () {
+							expect(button.is('.tree-item-name')).to.be.true;
 						});
 
-						it('should have the role "tree"', function () {
-							expect(item.is('[role=tree]')).to.be.true;
+						it('should have the type "button"', function () {
+							expect(button.is('[type=button]')).to.be.true;
 						});
 
-						describe('tree item button', function () {
-							let button = null;
+						describe('tree item icon', function () {
+							it('should have an element with the class "icon-item"', function () {
+								expect(button.find('.icon-item').length).to.equal(1);
+							});
+						});
 
-							beforeEach(function () {
-								button = item.find('> button').first();
+						describe('tree item label', function () {
+							it('should have an element with the class "tree-label"', function () {
+								expect(button.find('.tree-label').length).to.equal(1);
 							});
 
-							it('should have the class "tree-item-name"', function () {
-								expect(button.is('.tree-item-name')).to.be.true;
+							it('should have the text from the data', function () {
+								expect(button.find('.tree-label').text()).to.equal(initData.children[0].text);
+							});
+						});
+					});
+				});
+
+				describe('outer folder element', function () {
+					it('should have the class "tree-branch"');
+					it('should have the role "treeitem"');
+					it('should have the class "tree-open"');
+					it('should have the attribute aria-expanded="true"');
+
+					describe('tree folder header', function () {
+						it('should have the class "tree-branch-header"');
+
+						describe('tree folder button', function () {
+							it('should have the class "tree-branch-name"');
+							it('should have the type "button"');
+
+							describe('tree folder caret', function () {
+								it('should have the class "icon-caret"');
 							});
 
-							it('should have the type "button"', function () {
-								expect(button.is('[type=button]')).to.be.true;
+							describe('tree folder icon', function () {
+								it('should have the class "icon-folder"');
 							});
 
-							describe('tree item icon', function () {
-								it('should have an element with the class "icon-item"', function () {
-									expect(button.find('.icon-item').length).to.equal(1);
-								});
-							});
-
-							describe('tree item label', function () {
-								it('should have an element with the class "tree-label"', function () {
-									expect(button.find('.tree-label').length).to.equal(1);
-								});
-
-								it('should have the text from the data', function () {
-									expect(button.find('.tree-label').text()).to.equal(initData.children[0].text);
-								});
+							describe('tree folder label', function () {
+								it('should have the class "tree-label"');
+								it('should have the text from the data');
 							});
 						});
 					});
 
-					describe('outer folder element', function () {
-						it('should have the class "tree-branch"');
-						it('should have the role "treeitem"');
-						it('should have the class "tree-open"');
-						it('should have the attribute aria-expanded="true"');
+					describe('tree folder children', function () {
+						it('should have the class "tree-branch-children"');
+						it('should have the role "group"');
 
-						describe('tree folder header', function () {
-							it('should have the class "tree-branch-header"');
+						describe('tree folder children example', function () {
+							describe('outer item element', function () {
+								it('should have the class "tree-item"');
+								it('should have the role "tree"');
 
-							describe('tree folder button', function () {
-								it('should have the class "tree-branch-name"');
-								it('should have the type "button"');
+								describe('tree item button', function () {
+									it('should have the class "tree-item-name"');
+									it('should have the type "button"');
 
-								describe('tree folder caret', function () {
-									it('should have the class "icon-caret"');
-								});
+									describe('tree item icon', function () {
+										it('should have the class "icon-item"');
+										it('should have the other classes passed in via data');
+									});
 
-								describe('tree folder icon', function () {
-									it('should have the class "icon-folder"');
-								});
-
-								describe('tree folder label', function () {
-									it('should have the class "tree-label"');
-									it('should have the text from the data');
+									describe('tree item label', function () {
+										it('should have the class "tree-label"');
+										it('should have the text from the data');
+									});
 								});
 							});
-						});
 
-						describe('tree folder children', function () {
-							it('should have the class "tree-branch-children"');
-							it('should have the role "group"');
+							describe('outer folder element', function () {
+								it('should have the class "tree-branch"');
+								it('should have the role "treeitem"');
+								it('should have the class "tree-open"');
+								it('should have the attribute aria-expanded="true"');
 
-							describe('tree folder children example', function () {
-								describe('outer item element', function () {
-									it('should have the class "tree-item"');
-									it('should have the role "tree"');
+								describe('tree folder header', function () {
+									it('should have the class "tree-branch-header"');
 
-									describe('tree item button', function () {
-										it('should have the class "tree-item-name"');
+									describe('tree folder button', function () {
+										it('should have the class "tree-branch-name"');
 										it('should have the type "button"');
 
-										describe('tree item icon', function () {
-											it('should have the class "icon-item"');
+										describe('tree folder caret', function () {
+											it('should have the class "icon-caret"');
+										});
+
+										describe('tree folder icon', function () {
+											it('should have the class "icon-folder"');
 											it('should have the other classes passed in via data');
 										});
 
-										describe('tree item label', function () {
+										describe('tree folder label', function () {
 											it('should have the class "tree-label"');
 											it('should have the text from the data');
 										});
 									});
 								});
 
-								describe('outer folder element', function () {
-									it('should have the class "tree-branch"');
-									it('should have the role "treeitem"');
-									it('should have the class "tree-open"');
-									it('should have the attribute aria-expanded="true"');
-
-									describe('tree folder header', function () {
-										it('should have the class "tree-branch-header"');
-
-										describe('tree folder button', function () {
-											it('should have the class "tree-branch-name"');
-											it('should have the type "button"');
-
-											describe('tree folder caret', function () {
-												it('should have the class "icon-caret"');
-											});
-
-											describe('tree folder icon', function () {
-												it('should have the class "icon-folder"');
-												it('should have the other classes passed in via data');
-											});
-
-											describe('tree folder label', function () {
-												it('should have the class "tree-label"');
-												it('should have the text from the data');
-											});
-										});
-									});
+								describe('tree folder children', function () {
+									it('should have the class "tree-branch-children"');
+									it('should have the role "group"');
 
 									describe('tree folder children', function () {
-										it('should have the class "tree-branch-children"');
-										it('should have the role "group"');
-
-										describe('tree folder children', function () {
-											it('should not have any tree items');
-											it('should not have any tree folders');
-										});
+										it('should not have any tree items');
+										it('should not have any tree folders');
 									});
+								});
 
-									describe('tree loader', function () {
-										it('should have the class "tree-loader"');
-										it('should have the role "alert"');
-									});
+								describe('tree loader', function () {
+									it('should have the class "tree-loader"');
+									it('should have the role "alert"');
 								});
 							});
 						});
+					});
 
-						describe('tree loader', function () {
-							it('should have the class "tree-loader"');
-							it('should have the role "alert"');
-						});
+					describe('tree loader', function () {
+						it('should have the class "tree-loader"');
+						it('should have the role "alert"');
 					});
 				});
 			});
 		});
+	});
 
-		registerBehaviorTestCombinations(facadeName, facadeTestLib, [
-			'createComponent',
-			'destroyComponent'
-			// TODO: Test interactivity
-		], function ( ) { // testingBehaviorHandlers ) {
-		});
+	registerBehaviorTestCombinations(componentFacadeTestLib, [
+		// behaviors being tested
+	], [
+		// other behaviors required for tests
+		'createComponent',
+		'getComponentElement',
+		'destroyComponent'
+	], function ( ) { // testingBehaviorHandlers ) {
+		it('should have some tests here');
 	});
 });
-
