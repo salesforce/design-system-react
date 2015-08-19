@@ -19,7 +19,7 @@ module.exports = React.createClass({
         role="gridcell" 
         aria-disabled={isCurrentMonth}
         aria-selected={isToday}
-        className={(isToday ? " sds-is-today" : "") + (isCurrentMonth ? "" : " sds-disabled-text") + (this.props.date.isSame(this.props.selected.date) ? " sds-is-selected" : "")} 
+        className={(isToday ? " sds-is-today" : "") + (isCurrentMonth ? "" : " sds-disabled-text") + (this.props.date.isSame(this.props.selected) ? " sds-is-selected" : "")} 
         onClick={this.handleClick}
       >
         <span className="sds-day">
