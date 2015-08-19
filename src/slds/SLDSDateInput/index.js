@@ -54,17 +54,18 @@ module.exports = React.createClass( {
   render() {
     return (
       <div className="sds-form-element">
-        <label className="sds-form-element__label" for="date">{this.props.label}</label>
+        <label className="sds-form-element__label" htmlFor="date">{this.props.label}</label>
         <div className="sds-form-element__control">
           <div className="sds-input-has-icon sds-input-has-icon--right">
             <input 
+              name="date"
               ref="date" 
               className="sds-input" 
               type="text" 
               placeholder={this.props.placeholder} 
               value={this.state.selected?this.state.selected.format(this.props.format):''}
-              onClick={this.handleClick.bind(this)}
-              onFocus={this.handleFocus.bind(this)}/>
+              onClick={this.handleClick}
+              onFocus={this.handleFocus}/>
           </div>
         </div>
         {this.popover()}
