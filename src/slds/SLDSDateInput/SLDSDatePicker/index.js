@@ -5,9 +5,15 @@ import SLDSDatePickerNav from './SLDSDatePickerNav/index';
 
 module.exports = React.createClass( {
 
+  getDefaultProps: function(){
+    return {
+      month:moment()
+    }
+  },
+
   getInitialState: function(){
     return {
-      month:moment().startOf("day")
+      month:this.props.month
     }
   },
 
@@ -39,18 +45,18 @@ module.exports = React.createClass( {
     return (
       <div className="ignore-react-onclickoutside">
 
-      <div className="sds-datepicker" aria-hidden="false" data-selection="single" onClick={this.handleClick}>
-        <SLDSDatePickerNav 
-          onChangeMonth={this.handleMonthChange} 
-          selected={this.props.selected}
-          moment={this.state.month}/>
-        <Calendar 
-          selected={this.props.selected} 
-          month={this.state.month} 
-          onSelectDate={this.handleSelectDate.bind(this) }/>
-        <span id="bn_prev-label" className="sds-assistive-text">Go to previous month</span>
-        <span id="bn_next-label" className="sds-assistive-text">Go to next month</span>
-      </div>
+        <div className="sds-datepicker" aria-hidden="false" data-selection="single" onClick={this.handleClick}>
+          <SLDSDatePickerNav 
+            onChangeMonth={this.handleMonthChange} 
+            selected={this.props.selected}
+            moment={this.state.month}/>
+          <Calendar 
+            selected={this.props.selected} 
+            month={this.state.month} 
+            onSelectDate={this.handleSelectDate.bind(this) }/>
+          <span id="bn_prev-label" className="sds-assistive-text">Go to previous month</span>
+          <span id="bn_next-label" className="sds-assistive-text">Go to next month</span>
+        </div>
 
       </div>
     );

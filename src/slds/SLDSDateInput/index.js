@@ -7,19 +7,20 @@ module.exports = React.createClass( {
 
   getDefaultProps(){
     return {
-      selected: Moment()
+      selected: Moment(),
+      placeholder: "Pick a Date"
     }
   },
 
   getInitialState(){
     return {
-      selectedDate:this.props.selected
+      selected:this.props.selected
     };
   },
 
   handleChange(moment) {
     this.setState({
-      selectedDate:moment,
+      selected:moment,
       isOpen:false
     })
   },
@@ -38,11 +39,12 @@ module.exports = React.createClass( {
 
   popover() {
     if(this.state && this.state.isOpen){
+      console.log('MONTH: ',this.state.selected);
       return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose.bind(this)}>
         <SLDSDatePicker 
           onChange={this.handleChange.bind(this)}
-          selected={this.state.selectedDate} 
-          month={this.state.selectedDate?this.state.selectedDate:Moment()} />
+          selected={this.state.selected} 
+          month={this.state.selected?this.state.selected:Moment()} />
       </SLDSPopover>;
     }
     return <span />;
@@ -58,8 +60,8 @@ module.exports = React.createClass( {
               ref="date" 
               className="sds-input" 
               type="text" 
-              placeholder="Pick a Date" 
-              value={this.state.selectedDate?this.state.selectedDate.format('MM/DD/YYYY'):''}
+              placeholder={this.props.placeholder} 
+              value={this.state.selected?this.state.selected.format('MM/DD/YYYY'):''}
               onClick={this.handleClick.bind(this)}
               onFocus={this.handleFocus.bind(this)}/>
           </div>
