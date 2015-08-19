@@ -4,7 +4,7 @@ var Day = React.createClass({
 
   handleClick: function() {
     if(this.props.onSelectDate){
-      this.props.onSelectDate(this.props.day);
+      this.props.onSelectDate(this.props.day.date);
     }
   },
 

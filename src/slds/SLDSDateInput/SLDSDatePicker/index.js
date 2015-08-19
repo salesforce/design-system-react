@@ -29,9 +29,9 @@ module.exports = React.createClass( {
     this.setState({month:moment});
   },
 
-  handleSelectDate: function(day){
-    if(this.props.onSelectDate){
-      this.props.onSelectDate(day);
+  handleSelectDate: function(moment){
+    if(this.props.onChange){
+      this.props.onChange(moment);
     }
   },
 
