@@ -20,7 +20,7 @@ var ListItemComponent = React.createClass( {
 
   render() {
     return (
-      <li aria-selected="false" onClick={this.handleClick}>
+      <li className={this.props.isSelected?'sds-is-selected':''} aria-selected={this.props.isSelected} onClick={this.handleClick}>
         { this.props.value }
       </li>
     )
@@ -74,7 +74,10 @@ module.exports = React.createClass( {
     var to = currentYear+this.props.relativeTo;
 
     for(var i=from;i<to;i++){
-      listItems.push(<ListItemComponent onSelect={this.handleSelect} value={i} />);
+      listItems.push(<ListItemComponent 
+          onSelect={this.handleSelect} 
+          isSelected={currentYear===i}
+          value={i} />);
     }
     return listItems;
   },
