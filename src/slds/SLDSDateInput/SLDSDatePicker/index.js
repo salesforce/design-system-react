@@ -53,7 +53,7 @@ module.exports = React.createClass( {
           <Calendar 
             selected={this.props.selected} 
             month={this.state.month} 
-            onSelectDate={this.handleSelectDate.bind(this) }/>
+            onSelectDate={this.handleSelectDate}/>
           <span id="bn_prev-label" className="sds-assistive-text">Go to previous month</span>
           <span id="bn_next-label" className="sds-assistive-text">Go to next month</span>
         </div>

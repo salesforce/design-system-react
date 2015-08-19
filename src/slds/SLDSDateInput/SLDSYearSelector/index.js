@@ -70,7 +70,7 @@ module.exports = React.createClass( {
 
   listItems() {
     var listItems = [];
-    var currentYear = this.props.moment.years();
+    var currentYear = this.props.moment.year();
     var from = currentYear+this.props.relativeFrom;
     var to = currentYear+this.props.relativeTo;
 
@@ -89,7 +89,7 @@ module.exports = React.createClass( {
       return (
         <SLDSPopover targetElement={this.refs.date}>
           <div className="ignore-react-onclickoutside">
-          <ul className="sds-datepicker--time__list" tabindex="0">
+          <ul className="sds-datepicker--time__list" tabIndex="0">
             { this.listItems() }
           </ul>
           </div>

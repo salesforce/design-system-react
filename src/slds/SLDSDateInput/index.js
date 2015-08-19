@@ -7,6 +7,7 @@ module.exports = React.createClass( {
 
   getDefaultProps(){
     return {
+      string:'',
       selected: null,
       placeholder: 'Pick a Date',
       format: 'MM/DD/YYYY'
@@ -15,14 +16,17 @@ module.exports = React.createClass( {
 
   getInitialState(){
     return {
-      selected:this.props.selected
+      isOpen:false,
+      selected:this.props.selected,
+      string:this.props.selected?this.props.selected.format(this.props.format):null
     };
   },
 
   handleChange(moment) {
     this.setState({
       selected:moment,
-      isOpen:false
+      isOpen:false,
+      string:moment.format(this.props.format)
     })
   },
 
@@ -40,14 +44,30 @@ module.exports = React.createClass( {
 
   popover() {
     if(this.state && this.state.isOpen){
-      return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose.bind(this)}>
+      return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose}>
         <SLDSDatePicker 
-          onChange={this.handleChange.bind(this)}
+          onChange={this.handleChange}
           selected={this.state.selected} 
           month={this.state.selected?this.state.selected:Moment()} />
       </SLDSPopover>;
     }
     return <span />;
+  },
+
+  handleInputChange() {
+    var string = this.refs.date.getDOMNode().value;
+    if(Moment().isValid(string)){
+      this.setState({
+        selected:Moment(string,this.props.format),
+        string:string
+      });
+    }
+    else{
+      this.setState({
+        selected:null,
+        string:string
+      });
+    }
   },
 
   render() {
@@ -62,7 +82,8 @@ module.exports = React.createClass( {
               className="sds-input" 
               type="text" 
               placeholder={this.props.placeholder} 
-              value={this.state.selected?this.state.selected.format(this.props.format):''}
+              value={this.state.selected?this.state.string:''}
+              onChange={this.handleInputChange}
               onClick={this.handleClick}
               onFocus={this.handleFocus}/>
           </div>
