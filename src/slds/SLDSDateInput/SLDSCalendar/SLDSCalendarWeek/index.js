@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Day from '../SLDSCalendarDay/index';
 
-var Week = React.createClass({
+module.exports = React.createClass({
 
   handleSelectDate: function(day){
     if(this.props.onSelectDate){
@@ -15,6 +15,7 @@ var Week = React.createClass({
     var date = this.props.date;
     for (var i = 0; i < 7; i++) {
       days.push(<Day 
+          key={date.toString()}
           date={date} 
           month={this.props.month}
           selected={this.props.selectedDate}
@@ -28,5 +29,3 @@ var Week = React.createClass({
     </tr>
   }
 });
-
-module.exports = Week;

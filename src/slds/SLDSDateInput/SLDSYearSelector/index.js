@@ -30,6 +30,8 @@ var ListItemComponent = React.createClass( {
 
 module.exports = React.createClass( {
 
+  displayName: "SLDSYearSelector",
+
   getDefaultProps: function(){
     return {
       moment:Moment(),
@@ -76,6 +78,7 @@ module.exports = React.createClass( {
 
     for(var i=from;i<to;i++){
       listItems.push(<ListItemComponent 
+          key={'year_'+i}
           onSelect={this.handleSelect} 
           isSelected={currentYear===i}
           moment={this.props.moment}

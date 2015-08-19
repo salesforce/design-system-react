@@ -4,7 +4,9 @@ import moment from 'moment';
 
 require('./index.css');
 
-var Calendar = React.createClass({
+module.exports = React.createClass({
+
+  displayName: "SLDSCalendar",
 
   getDefaultProps: function(){
     return {
@@ -73,8 +75,9 @@ var Calendar = React.createClass({
       done = count++ > 2 && monthIndex !== date.month();
       monthIndex = date.month();
     }
+    var extra = 0;
     while(weeks.length < 6){
-      weeks.push(<tr className="week"><td><span className="sds-day">&nbsp;</span></td></tr>);
+      weeks.push(<tr key={'extra_'+extra++} className="week"><td><span className="sds-day">&nbsp;</span></td></tr>);
     }
 
     return weeks;
@@ -82,5 +85,3 @@ var Calendar = React.createClass({
 
 
 });
-
-module.exports = Calendar;

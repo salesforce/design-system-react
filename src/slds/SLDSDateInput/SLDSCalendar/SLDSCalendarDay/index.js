@@ -15,7 +15,6 @@ module.exports = React.createClass({
 
     return (
       <td 
-        key={this.props.date.toString()}
         role="gridcell" 
         aria-disabled={isCurrentMonth}
         aria-selected={isToday}
