@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import SLDSSelect from '../../../SLDSSelect/index';
+import SLDSSelectYear from '../../../SLDSSelectYear/index';
 
 module.exports = React.createClass( {
 
@@ -64,12 +64,7 @@ module.exports = React.createClass( {
           </div>
         </div>
         <div className="sds-picklist datepicker__filter--year sds-shrink-none">
-          <SLDSSelect>
-            <button id="year" className="sds-button sds-button--neutral sds-picklist__label" aria-haspopup="true" aria-expanded="false">2015
-              <span style={{color:'black'}}>&nbsp;&nbsp;&darr;</span>
-            </button>
-          </SLDSSelect>
-
+          <SLDSSelectYear moment={this.props.moment}/>
         </div>
       </div>
 
