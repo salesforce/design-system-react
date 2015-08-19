@@ -40,7 +40,6 @@ module.exports = React.createClass( {
 
   popover() {
     if(this.state && this.state.isOpen){
-      console.log('MONTH: ',this.state.selected);
       return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose.bind(this)}>
         <SLDSDatePicker 
           onChange={this.handleChange.bind(this)}
