@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import Calendar from '../SLDSCalendar/index';
-import moment from 'moment';
+import Moment from 'moment';
 import SLDSDatePickerNav from './SLDSDatePickerNav/index';
 
 module.exports = React.createClass( {
 
   getDefaultProps: function(){
     return {
-      month:moment()
+      month:Moment()
     }
   },
 
