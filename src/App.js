@@ -119,7 +119,7 @@ export default class App extends Component {
             <div>MORE STUFF IS HERE</div>
             <div>MORE STUFF IS HERE</div>
             <div>MORE STUFF IS HERE</div>
-            <SLDSDateInput />
+            <SLDSDateInput label='SUPER DATE PICKER'/>
             <div>MORE STUFF IS HERE</div>
             <div>MORE STUFF IS HERE</div>
             <div>MORE STUFF IS HERE</div>

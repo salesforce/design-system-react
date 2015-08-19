@@ -5,8 +5,6 @@ import SLDSDatePickerNav from './SLDSDatePickerNav/index';
 
 module.exports = React.createClass( {
 
-//  mixins: [ require( "react-onclickoutside" ) ],
-
   getInitialState: function(){
     return {
       month:moment().startOf("day")
@@ -32,7 +30,6 @@ module.exports = React.createClass( {
   },
 
   handleSelectDate: function(day){
-    console.log('PICKER! ',day);
     if(this.props.onSelectDate){
       this.props.onSelectDate(day);
     }
@@ -45,6 +42,7 @@ module.exports = React.createClass( {
       <div className="sds-datepicker" aria-hidden="false" data-selection="single" onClick={this.handleClick}>
         <SLDSDatePickerNav 
           onChangeMonth={this.handleMonthChange} 
+          selected={this.props.selected}
           moment={this.state.month}/>
         <Calendar 
           selected={this.props.selected} 

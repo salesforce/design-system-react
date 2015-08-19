@@ -72,6 +72,7 @@ module.exports = React.createClass( {
         <div className="sds-picklist datepicker__filter--year sds-shrink-none">
           <SLDSSelectYear 
             moment={this.props.moment} 
+            selected={this.props.selected} 
             onSelect={this.handleYearSelect} />
         </div>
       </div>

@@ -40,6 +40,10 @@ module.exports = React.createClass( {
     }
   },
 
+  componentWillReceiveProps(nextProps){
+    this.setState({isOpen:false});
+  },
+
   handleSelectDate(day) {
     this.setState({selectedDate:day})
   },

@@ -39,7 +39,7 @@ export default class SLDSSuggest extends Component {
   render() {
     return (
       <div className="sds-form-element">
-        <label className="sds-form-element__label" for="date">Date Picker Label</label>
+        <label className="sds-form-element__label" for="date">{this.props.label}</label>
         <div className="sds-form-element__control">
           <div className="sds-input-has-icon sds-input-has-icon--right">
             <input 
