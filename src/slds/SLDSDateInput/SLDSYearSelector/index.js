@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SLDSPopover from '../SLDSPopover/index';
+import SLDSPopover from '../../SLDSPopover/index';
 import moment from 'moment';
 
 var ListItemComponent = React.createClass( {
@@ -57,7 +57,10 @@ module.exports = React.createClass( {
   },
 
   handleSelect(moment) {
-    alert(moment.get('year'));
+    if(this.props.onSelect){
+      this.props.onSelect(moment);
+    }
+    this.setState({isOpen:false});
   },
 
   listItems() {
@@ -97,7 +100,7 @@ module.exports = React.createClass( {
               onClick={this.handleClick.bind(this)}
               onFocus={this.handleFocus.bind(this)}
               aria-haspopup="true" 
-              aria-expanded="false">2015
+              aria-expanded="false">{this.props.moment.format('YYYY')}
               <span style={{color:'black'}}>&nbsp;&nbsp;&darr;</span>
             </button>
           </div>

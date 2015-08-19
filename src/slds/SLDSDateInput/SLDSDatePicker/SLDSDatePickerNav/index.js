@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import SLDSSelectYear from '../../../SLDSSelectYear/index';
+import SLDSSelectYear from '../../SLDSYearSelector/index';
 
 module.exports = React.createClass( {
 
   getDefaultProps: function(){
     return {
       selectedMoment:moment(),
-      month:moment(),
+      moment:moment(),
       onChangeMonth:function(){
         console.log('onChangeMonth should be defined');
       }
@@ -43,6 +43,12 @@ module.exports = React.createClass( {
     }
   },
 
+  handleYearSelect(moment) {
+    if(this.props.onChangeMonth){
+      this.props.onChangeMonth(moment);
+    }
+  },
+
   render() {
     return (
 
@@ -55,7 +61,7 @@ module.exports = React.createClass( {
             </button>
           </div>
 
-          <div id="month" className="sds-align-middle" role="heading" aria-live="assertive" aria-atomic="true">{this.props.month.format("MMMM YYYY")}</div>
+          <div id="month" className="sds-align-middle" role="heading" aria-live="assertive" aria-atomic="true">{this.props.moment.format("MMMM YYYY")}</div>
           <div className="sds-align-middle" role="button" aria-labelledby="bn_next-label" tabIndex="0">
             <button className="sds-button sds-button--icon-container" onClick={this.nextMonth}>
               <span style={{color:'black'}}>&raquo;</span>
@@ -64,7 +70,9 @@ module.exports = React.createClass( {
           </div>
         </div>
         <div className="sds-picklist datepicker__filter--year sds-shrink-none">
-          <SLDSSelectYear moment={this.props.moment}/>
+          <SLDSSelectYear 
+            moment={this.props.moment} 
+            onSelect={this.handleYearSelect} />
         </div>
       </div>
 

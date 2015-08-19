@@ -45,7 +45,7 @@ module.exports = React.createClass( {
       <div className="sds-datepicker" aria-hidden="false" data-selection="single" onClick={this.handleClick}>
         <SLDSDatePickerNav 
           onChangeMonth={this.handleMonthChange} 
-          month={this.state.month}/>
+          moment={this.state.month}/>
         <Calendar 
           selected={this.props.selected} 
           month={this.state.month} 
