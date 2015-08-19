@@ -1,8 +1,7 @@
 var React = require( "react/addons" );
 var TetherDrop = require( "tether-drop" );
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-//var ReactMotion = require( "react-motion" );
-import {TransitionSpring} from 'react-motion';
+
 
 require('./index.css');
 
