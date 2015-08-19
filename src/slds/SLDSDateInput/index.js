@@ -36,10 +36,6 @@ module.exports = React.createClass( {
     this.setState({isOpen:true})
   },
 
-  handleBlur() {
-//    this.setState({isOpen:false})
-  },
-
   popover() {
     if(this.state && this.state.isOpen){
       return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose.bind(this)}>
@@ -53,7 +49,6 @@ module.exports = React.createClass( {
   },
 
   render() {
-    console.log('!!! SELECTED DATE: ',this.state.selectedDate);
     return (
       <div className="sds-form-element">
         <label className="sds-form-element__label" for="date">{this.props.label}</label>
@@ -66,8 +61,7 @@ module.exports = React.createClass( {
               placeholder="Pick a Date" 
               value={this.state.selectedDate?this.state.selectedDate.format('MM/DD/YYYY'):''}
               onClick={this.handleClick.bind(this)}
-              onFocus={this.handleFocus.bind(this)} 
-              onBlur={this.handleBlur.bind(this)} />
+              onFocus={this.handleFocus.bind(this)}/>
           </div>
         </div>
         {this.popover()}
