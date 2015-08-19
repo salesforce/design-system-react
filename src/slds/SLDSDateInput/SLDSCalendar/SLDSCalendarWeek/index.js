@@ -11,25 +11,16 @@ var Week = React.createClass({
   },
 
   render: function() {
-    var days = [],
-      date = this.props.date,
-      month = this.props.month;
-
+    var days = [];
+    var date = this.props.date;
     for (var i = 0; i < 7; i++) {
-      var day = {
-        name: date.format("dd").substring(0, 1),
-        number: date.date(),
-        isCurrentMonth: date.month() === month.month(),
-        isToday: date.isSame(new Date(), "day"),
-        date: date
-      };
       days.push(<Day 
-          day={day} 
-          selectedDate={this.props.selectedDate}
+          date={date} 
+          month={this.props.month}
+          selected={this.props.selectedDate}
           onSelectDate={this.handleSelectDate}/>);
       date = date.clone();
       date.add(1, "d");
-
     }
 
     return <tr className="week" key={days[0].toString()}>

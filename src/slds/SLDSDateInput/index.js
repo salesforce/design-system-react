@@ -59,7 +59,6 @@ module.exports = React.createClass( {
         <label className="sds-form-element__label" for="date">{this.props.label}</label>
         <div className="sds-form-element__control">
           <div className="sds-input-has-icon sds-input-has-icon--right">
-            console.log(this.state.selectedDate);
             <input 
               ref="date" 
               className="sds-input" 
