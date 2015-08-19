@@ -6,6 +6,8 @@
   border-radius: 0.25rem;
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.16);
   background: white; 
+  margin-top:0.25rem;
+  margin-bottom:0.35rem;
 }
 .SLDSPopoverAnim-appear {
   opacity: 0.01;

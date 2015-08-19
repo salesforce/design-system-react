@@ -7,8 +7,9 @@ module.exports = React.createClass( {
 
   getDefaultProps(){
     return {
-      selected: Moment(),
-      placeholder: "Pick a Date"
+      selected: null,
+      placeholder: 'Pick a Date',
+      format: 'MM/DD/YYYY'
     }
   },
 
@@ -61,7 +62,7 @@ module.exports = React.createClass( {
               className="sds-input" 
               type="text" 
               placeholder={this.props.placeholder} 
-              value={this.state.selected?this.state.selected.format('MM/DD/YYYY'):''}
+              value={this.state.selected?this.state.selected.format(this.props.format):''}
               onClick={this.handleClick.bind(this)}
               onFocus={this.handleFocus.bind(this)}/>
           </div>

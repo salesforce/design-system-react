@@ -14,39 +14,36 @@ var Calendar = React.createClass({
   },
 
   handleSelectDate: function(day) {
-    console.log('>>> MONTH: ',day);
     this.setState({selected:day});
-//    this.forceUpdate();
     if(this.props.onSelectDate){
       this.props.onSelectDate(day);
     }
   },
 
   render: function() {
-    console.log('RENDER CALENDAR: ',this.props.selected)
     return <div className="SLDSCalendar">
       <table className="datepicker__month" role="grid" aria-labelledby="month" tabIndex="0">
         <thead>
-          <tr id="weekdays">
-            <th id="Sunday">
+          <tr ref="weekdays">
+            <th ref="Sunday">
               <abbr title="Sunday">S</abbr>
             </th>
-            <th id="Monday">
+            <th ref="Monday">
               <abbr title="Monday">M</abbr>
             </th>
-            <th id="Tuesday">
+            <th ref="Tuesday">
               <abbr title="Tuesday">T</abbr>
             </th>
-            <th id="Wednesday">
+            <th ref="Wednesday">
               <abbr title="Wednesday">W</abbr>
             </th>
-            <th id="Thursday">
+            <th ref="Thursday">
               <abbr title="Thursday">T</abbr>
             </th>
-            <th id="Friday">
+            <th ref="Friday">
               <abbr title="Friday">F</abbr>
             </th>
-            <th id="Saturday">
+            <th ref="Saturday">
               <abbr title="Saturday">S</abbr>
             </th>
           </tr>
