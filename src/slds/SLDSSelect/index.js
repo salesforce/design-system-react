@@ -33,6 +33,7 @@ export default class SLDSSelect extends Component {
     if(this.state && this.state.isOpen){
       return (
         <SLDSPopover targetElement={this.refs.date}>
+          <div className="ignore-react-onclickoutside">
           <ul className="sds-datepicker--time__list" tabindex="0" onClick={this.handleSelect}>
             <li aria-selected="false">2015</li>
             <li aria-selected="false">2016</li>
@@ -46,6 +47,7 @@ export default class SLDSSelect extends Component {
             <li aria-selected="false">2024</li>
             <li aria-selected="false">2025</li>
           </ul>
+          </div>
         </SLDSPopover>
       );
     }

@@ -5,7 +5,7 @@ import SLDSDatePickerNav from './SLDSDatePickerNav/index';
 
 module.exports = React.createClass( {
 
-  mixins: [ require( "react-onclickoutside" ) ],
+//  mixins: [ require( "react-onclickoutside" ) ],
 
   getInitialState: function(){
     return {
@@ -40,6 +40,8 @@ module.exports = React.createClass( {
 
   render() {
     return (
+      <div className="ignore-react-onclickoutside">
+
       <div className="sds-datepicker" aria-hidden="false" data-selection="single" onClick={this.handleClick}>
         <SLDSDatePickerNav 
           onChangeMonth={this.handleMonthChange} 
@@ -50,6 +52,8 @@ module.exports = React.createClass( {
           onSelectDate={this.handleSelectDate.bind(this) }/>
         <span id="bn_prev-label" className="sds-assistive-text">Go to previous month</span>
         <span id="bn_next-label" className="sds-assistive-text">Go to next month</span>
+      </div>
+
       </div>
     );
   }

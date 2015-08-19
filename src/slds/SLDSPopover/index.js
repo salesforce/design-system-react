@@ -9,6 +9,16 @@ require('./index.css');
 var SLDSPopover = React.createClass( {
   displayName: "SLDSPopover",
 
+  mixins: [ require( "react-onclickoutside" ) ],
+
+  handleClickOutside: function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if(this.props.onClose){
+      this.props.onClose();
+    }
+  },
+
   propTypes: {
     attachment: React.PropTypes.string,
     targetAttachment: React.PropTypes.string,
