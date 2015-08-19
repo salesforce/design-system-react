@@ -11,8 +11,8 @@ var SLDSPopover = React.createClass( {
   mixins: [ require( "react-onclickoutside" ) ],
 
   handleClickOutside: function(e) {
-    e.preventDefault();
-    e.stopPropagation();
+//    e.preventDefault();
+//    e.stopPropagation();
     if(this.props.onClose){
       this.props.onClose();
     }
