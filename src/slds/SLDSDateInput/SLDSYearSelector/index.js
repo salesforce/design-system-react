@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import SLDSPopover from '../../SLDSPopover/index';
-import moment from 'moment';
+import Moment from 'moment';
 
 var ListItemComponent = React.createClass( {
 
   getDefaultProps: function(){
     return {
-      onSelect:function(moment){
+      moment: Moment(),
+      onSelect: function(moment){
         console.log('onSelect should be defined');
       }
     }
@@ -14,7 +15,7 @@ var ListItemComponent = React.createClass( {
 
   handleClick() {
     if(this.props.onSelect && this.props.value){
-      this.props.onSelect(moment().set('year', this.props.value));
+      this.props.onSelect(this.props.moment.set('year', this.props.value));
     }
   },
 
@@ -31,7 +32,7 @@ module.exports = React.createClass( {
 
   getDefaultProps: function(){
     return {
-      moment:moment(),
+      moment:Moment(),
       relativeFrom:-3,
       relativeTo:15,
       onChange:function(moment){
@@ -77,6 +78,7 @@ module.exports = React.createClass( {
       listItems.push(<ListItemComponent 
           onSelect={this.handleSelect} 
           isSelected={currentYear===i}
+          moment={this.props.moment}
           value={i} />);
     }
     return listItems;

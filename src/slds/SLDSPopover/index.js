@@ -5,14 +5,13 @@ var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
 require('./index.css');
 
-var SLDSPopover = React.createClass( {
+module.exports = React.createClass( {
+
   displayName: "SLDSPopover",
 
   mixins: [ require( "react-onclickoutside" ) ],
 
   handleClickOutside: function(e) {
-//    e.preventDefault();
-//    e.stopPropagation();
     if(this.props.onClose){
       this.props.onClose();
     }
@@ -119,4 +118,3 @@ var SLDSPopover = React.createClass( {
   }
 } );
 
-module.exports = SLDSPopover;
