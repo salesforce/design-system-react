@@ -43,14 +43,9 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		this.elements.wrapper.empty();
 		
 		const $html = $('<i />').append(fs.readFileSync(__dirname + '/tree.html', 'utf8'));
-
-		if (this.getState('folderSelect')) {
-			this.$html = $html.find('.tree.tree-folder-select').clone();
-		} else {
-			this.$html = $html.find('.tree:not(.tree-folder-select)').clone();
-		}
-
-		const $el = this.$html.clone().empty();
+		this.template = $html.find('.tree');
+		
+		const $el = this.template.clone().empty();
 
 		if (this._collection.length()) {
 			this._loopChildren(this._collection, $el);
@@ -62,7 +57,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_renderItem (item) {
 		const isFolder = this.accessors.getType(item) === 'folder';
 		const template = isFolder ? '.tree-branch' : '.tree-item';
-		const $item = this.$html.find(template).clone();
+		const $item = this.template.find(template).clone();
 
 		$item.find('.tree-label').text(this.accessors.getText(item));
 		$item.data({
@@ -87,10 +82,18 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		// Take care of the styles
 		$branch.toggleClass('tree-open', state);
 		$branch.attr('aria-expanded', state);
+		
 		$treeFolderContentFirstChild.toggleClass('hidden', !state);
+		
 		$branch.find('> .tree-branch-header .icon-folder').eq(0)
 			.toggleClass('glyphicon-folder-open', state)
 			.toggleClass('glyphicon-folder-close', !state);
+
+		if (this.getStore('folderSelect')) {
+			$branch.find('span.icon-caret').remove();
+		} else {
+			$branch.find('button.icon-caret').remove();
+		}
 
 		if (state) {
 			$treeFolderContentFirstChild.append('<div class="tree-loader" role="alert">Loading...</div>');
