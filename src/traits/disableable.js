@@ -8,9 +8,9 @@ const Disableable = {
 	},
 
 	_initializeDisableable (options) {
-		var disabled = !!(options && options.disabled);
+		const disabled = !!(options && options.disabled);
 		this.setStore({ disabled });
-		
+
 		if (disabled) {
 			if (Lib.isFunction(this._onDisabled)) this._onDisabled();
 		} else {
@@ -21,14 +21,14 @@ const Disableable = {
 	enable () {
 		this.setStore({ disabled: false });
 		if (Lib.isFunction(this._onEnabled)) this._onEnabled();
-		
+
 		this.trigger('enabled');
 	},
 
 	disable () {
 		this.setStore({ disabled: true });
 		if (Lib.isFunction(this._onDisabled)) this._onDisabled();
-		
+
 		this.trigger('disabled');
 	}
 };
