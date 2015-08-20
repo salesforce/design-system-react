@@ -34,12 +34,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 
 		this._initializeDisableable(options);
 		
-		this.setStore({
-			folderSelect: options.folderSelect,
-			multiSelect: options.multiSelect,
-			autoOpen: options.autoOpen,
-			autoOpenLimit: options.autoOpenLimit
-		});
+		this.setStore(options);
 	},
 
 	accessors: {

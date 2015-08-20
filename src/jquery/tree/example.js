@@ -37,6 +37,12 @@ const collection = [
 						_itemType: 'item',
 						_iconClass: 'glyphicon-file',
 						id: 6
+					},
+					{
+						text: 'Empty folder',
+						_itemType: 'folder',
+						_isExpandable: false,
+						id: 9
 					}
 				]
 			},
@@ -45,6 +51,12 @@ const collection = [
 				_itemType: 'item',
 				_iconClass: 'glyphicon-file',
 				id: 7
+			},
+			{
+				text: 'Empty folder',
+				_itemType: 'folder',
+				_isExpandable: false,
+				id: 10
 			}
 		]
 	},
@@ -63,7 +75,7 @@ const options = {
 };
 
 $(function () {
-	$('.imperative .tree1').tree({ collection: collection });
+	$('.imperative .tree1').tree({ collection: collection, autoOpen: true });
 
 	const tree = new Tree($('.new-api .tree1'), options);
 	void(tree);
