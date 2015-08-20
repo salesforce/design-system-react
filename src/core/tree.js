@@ -56,7 +56,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		},
 
 		getExpandable (item) {
-			return !!item.get('_isExpandable');
+			return item.get('_isExpandable') !== false;
 		},
 
 		// Reduce the number of fields here if a unique key is available
@@ -89,10 +89,14 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		return !!_selection.findWhere(this.accessors.getKey(item));
 	},
 	
+	_canSelect (item) {
+		return this.accessors.getType(item) === 'item' || this.getStore('folderSelect');
+	},
+	
 	_selectItem (item) {
 		const selection = this._getSelectedItems();
 		
-		if (!this._isItemSelected(item, selection) && (!Lib.isFunction(this._canSelect) || this._canSelect(item))) {
+		if (!this._isItemSelected(item, selection) && this._canSelect(item)) {
 			if (this.getStore('multiSelect')) {
 				selection.add(item);
 			} else {
@@ -152,24 +156,30 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		return !!_open.findWhere(this.accessors.getKey(folder));
 	},
 	
+	_canOpen (folder) {
+		return this.accessors.getExpandable(folder);
+	},
+	
 	_toggleFolder (folder, options) {
-		const open = this._getOpenFolders();
-		const isOpen = this._isFolderOpen(folder, open);
-		const silent = options && options.silent;
-		let eventName;
-		
-		if (isOpen) {
-			open.remove(folder);
-			eventName = 'closed';
-		} else {
-			open.add(folder);
-			eventName = 'opened';
+		if (this._canOpen(folder)) {
+			const open = this._getOpenFolders();
+			const isOpen = this._isFolderOpen(folder, open);
+			const silent = options && options.silent;
+			let eventName;
+			
+			if (isOpen) {
+				open.remove(folder);
+				eventName = 'closed';
+			} else {
+				open.add(folder);
+				eventName = 'opened';
+			}
+			
+			this.setStore({ open: open._data });
+			if (!silent && Lib.isFunction(this._onFolderToggled)) this._onFolderToggled(folder, !isOpen);
+			
+			this.trigger(eventName, folder._item, open._data);
 		}
-		
-		this.setStore({ open: open._data });
-		if (!silent && Lib.isFunction(this._onFolderToggled)) this._onFolderToggled(folder, !isOpen);
-		
-		this.trigger(eventName, folder._item, open._data);
 	},
 	
 	toggleFolder (_folder) {

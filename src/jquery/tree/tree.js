@@ -123,8 +123,12 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		if (this._collection.length()) {
 			this._loopChildren(this._collection, $el, 1);
 		}
-
-		this.elements.wrapper.append($el);
+		
+		if (this.elements.wrapper.is('ul.tree')) {
+			this.elements.wrapper.append($el.children());
+		} else {
+			this.elements.wrapper.append($el);
+		}
 	},
 
 	_loopChildren (children, $el, level)  {
@@ -172,6 +176,11 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		});
 		
 		this._renderSelection($branch, branch);
+		
+		// Expandable?
+		const isExpandable = this.accessors.getExpandable(branch);
+		
+		$branch.attr('haschildren', isExpandable ? undefined : 'false');
 		
 		// Take care of the state
 		let isOpen = this._isFolderOpen(branch);
