@@ -34,13 +34,32 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const $html = $('<i />').append(fs.readFileSync(__dirname + '/tree.html', 'utf8'));
 		this.template = $html.find('.tree');
 		
-		if (!this.rendered) {
-			this._render();
-		}
-
-		this.elements.wrapper.on('click.fu.tree', '.tree-branch-name', $.proxy(this._handleItemClicked, this));
-		this.elements.wrapper.on('click.fu.tree', 'button.icon-caret', $.proxy(this._handleFolderClicked, this));
+		this._configureFolderSelect();
+		
 		this.elements.wrapper.on('click.fu.tree', '.tree-item', $.proxy(this._handleItemClicked, this));
+		
+		this._render();
+	},
+	
+	_configureFolderSelect () {
+		const folderSelect = this.getStore('folderSelect');
+		
+		// This class is copied from the example code but I'm not sure it does anything
+		this.template.toggleClass('tree-folder-select', folderSelect);
+		
+		// When folder selection is allowed...
+		if (folderSelect) {
+			// Show the button instead of the span
+			this.template.find('span.icon-caret').remove();
+			
+			// Branch name clicks act like item clicks
+			this.elements.wrapper.on('click.fu.tree', 'button.icon-caret', $.proxy(this._handleFolderClicked, this));
+			this.elements.wrapper.on('click.fu.tree', '.tree-branch-name', $.proxy(this._handleItemClicked, this));
+		} else {
+			this.template.find('button.icon-caret').remove();
+			
+			this.elements.wrapper.on('click.fu.tree', '.tree-branch-name', $.proxy(this._handleFolderClicked, this));
+		}
 	},
 
 	_handleFolderClicked ($event) {
@@ -69,17 +88,12 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_handleItemClicked ($event) {
 		const $el = $($event.currentTarget).closest('.tree-item, .tree-branch');
 		const item = Lib.getItemAdapter($el.data('item'));
+		const selected = this._isItemSelected(item);
 		
-		if (this.accessors.getType(item) === 'folder' && !this.getStore('folderSelect')) {
-			this._handleFolderClicked($event);
+		if (selected) {
+			this._deselectItem(item);
 		} else {
-			const selected = this._isItemSelected(item);
-			
-			if (selected) {
-				this._deselectItem(item);
-			} else {
-				this._selectItem(item);
-			}
+			this._selectItem(item);
 		}
 	},
 	
@@ -167,13 +181,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		
 		const $treeFolderContent = $branch.find('.tree-branch-children');
 		const $treeFolderContentFirstChild = $treeFolderContent.eq(0);
-		
-		// Show the button instead of the span when folder selection is allowed
-		if (this.getStore('folderSelect')) {
-			$branch.find('span.icon-caret').remove();
-		} else {
-			$branch.find('button.icon-caret').remove();
-		}
 		
 		// Take care of the state
 		$branch.toggleClass('tree-open', isOpen);
