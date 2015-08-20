@@ -1,4 +1,4 @@
-# fuelux-facades
+# fuelux-facades [![Build Status](http://teamcity/app/rest/builds/buildType:StackatoCloudApplications_FuelFacades/statusIcon)](http://teamcity/viewType.html?buildTypeId=StackatoCloudApplications_FuelFacades)
 Testing a core abstraction layer with many facades approach for FuelUX
 
 ### Setup
