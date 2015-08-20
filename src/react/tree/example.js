@@ -34,6 +34,12 @@ const collection = [
 						_itemType: 'item',
 						_iconClass: 'glyphicon-file',
 						id: 6
+					},
+					{
+						text: 'Empty folder',
+						_itemType: 'folder',
+						_isExpandable: false,
+						id: 9
 					}
 				]
 			},
@@ -42,6 +48,12 @@ const collection = [
 				_itemType: 'item',
 				_iconClass: 'glyphicon-file',
 				id: 7
+			},
+			{
+				text: 'Empty folder',
+				_itemType: 'folder',
+				_isExpandable: false,
+				id: 10
 			}
 		]
 	},
