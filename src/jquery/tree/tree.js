@@ -34,55 +34,53 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const $html = $('<i />').append(fs.readFileSync(__dirname + '/tree.html', 'utf8'));
 		this.template = $html.find('.tree');
 		
-		this._configureFolderSelect();
+		this._configureBranchSelect();
 		
 		this.elements.wrapper.on('click.fu.tree', '.tree-item', $.proxy(this._handleItemClicked, this));
 		
 		this._render();
 	},
 	
-	_configureFolderSelect () {
-		const folderSelect = this.getStore('folderSelect');
+	_configureBranchSelect () {
+		const branchSelect = this.getStore('folderSelect');
 		
 		// This class is copied from the example code but I'm not sure it does anything
-		this.template.toggleClass('tree-folder-select', folderSelect);
+		this.template.toggleClass('tree-folder-select', branchSelect);
 		
 		// When folder selection is allowed...
-		if (folderSelect) {
+		if (branchSelect) {
 			// Show the button instead of the span
 			this.template.find('span.icon-caret').remove();
 			
 			// Branch name clicks act like item clicks
-			this.elements.wrapper.on('click.fu.tree', 'button.icon-caret', $.proxy(this._handleFolderClicked, this));
+			this.elements.wrapper.on('click.fu.tree', 'button.icon-caret', $.proxy(this._handleBranchClicked, this));
 			this.elements.wrapper.on('click.fu.tree', '.tree-branch-name', $.proxy(this._handleItemClicked, this));
 		} else {
 			this.template.find('button.icon-caret').remove();
 			
-			this.elements.wrapper.on('click.fu.tree', '.tree-branch-name', $.proxy(this._handleFolderClicked, this));
+			this.elements.wrapper.on('click.fu.tree', '.tree-branch-name', $.proxy(this._handleBranchClicked, this));
 		}
 	},
 
-	_handleFolderClicked ($event) {
+	_handleBranchClicked ($event) {
 		const $el = $($event.currentTarget).closest('.tree-item, .tree-branch');
-		const folder = Lib.getItemAdapter($el.data('item'));
+		const branch = Lib.getItemAdapter($el.data('item'));
 		
-		this._toggleFolder(folder);
+		this._toggleFolder(branch);
 	},
 	
-	_onFolderToggled (folder) {
-		if (!this.getStore('autoOpen')) {
-			const self = this;
-			const id = this.accessors.getId(folder);
-			const $branches = this.elements.wrapper.find('.tree-branch');
+	_onFolderToggled (branch) {
+		const self = this;
+		const id = this.accessors.getId(branch);
+		const $branches = this.elements.wrapper.find('.tree-branch');
+		
+		$branches.each(function () {
+			const $branch = $(this);
 			
-			$branches.each(function () {
-				const $branch = $(this);
-				
-				if ($branch.data('id') === id) {
-					self._renderBranch($branch, folder);
-				}
-			});
-		}
+			if ($branch.data('id') === id) {
+				$branch.replaceWith(self._renderBranch(branch));
+			}
+		});
 	},
 	
 	_handleItemClicked ($event) {
@@ -113,7 +111,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 			const $item = $(this);
 			const item = Lib.getItemAdapter($item.data('item'));
 			
-			self._styleNode($item, item, selection);
+			self._renderSelection($item, item, selection);
 		});
 	},
 
@@ -127,10 +125,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		}
 
 		this.elements.wrapper.append($el);
-		
-		this.setStore({
-			autoOpen: false
-		});
 	},
 
 	_loopChildren (children, $el, level)  {
@@ -138,85 +132,97 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const elements = [];
 
 		children.forEach(function buildBranch (item) {
-			const $li = self._renderItem(item, level);
+			const isBranch = self.accessors.getType(item) === 'folder';
 
-			elements.push($li);
+			if (!isBranch) {
+				elements.push(self._renderItem(item));
+			} else {
+				elements.push(self._renderBranch(item, level));
+			}
 		});
 		
 		$el.empty();
 		$el.append(elements);
 	},
 
-	_renderItem (item, level) {
-		const isFolder = this.accessors.getType(item) === 'folder';
-		const template = isFolder ? '.tree-branch' : '.tree-item';
-		const $item = this.template.find(template).clone();
-
+	_renderItem (item) {
+		const $item = this.template.find('.tree-item').clone();
+		
 		$item.find('.tree-label').text(this.accessors.getText(item));
 		$item.data({
-			item: item._item,
-			id: this.accessors.getId(item),
-			level
+			item: item._item
 		});
 
-		this._styleNode($item, item);
-		
-		if (isFolder) {
-			this._renderBranch($item, item);
-		}
+		this._renderSelection($item, item);
 
 		return $item;
 	},
 	
-	_renderBranch ($branch, folder) {
-		const level = $branch.data('level');
-		let isOpen = this._isFolderOpen(folder);
-		
-		if (!isOpen && (this.getStore('autoOpen') && level <= this.getStore('autoOpenLimit'))) {
-			this._toggleFolder(folder);
-			isOpen = this._isFolderOpen(folder);
-		}
-		
+	_renderBranch (branch, level) {
 		const self = this;
+		const $branch = this.template.find('.tree-branch').clone();
+		const $branchContent = $branch.find('.tree-branch-children');
+		const $branchIcon = $branch.find('> .tree-branch-header .icon-folder');
+		const $label = $branch.find('.tree-label');
 		
-		const $treeFolderContent = $branch.find('.tree-branch-children');
-		const $treeFolderContentFirstChild = $treeFolderContent.eq(0);
+		$label.text(this.accessors.getText(branch));
+		$branch.data({
+			item: branch._item,
+			id: this.accessors.getId(branch)
+		});
+		
+		this._renderSelection($branch, branch);
 		
 		// Take care of the state
+		let isOpen = this._isFolderOpen(branch);
+		let _level;
+		
+		if (!isOpen && this._shouldAutoOpen(level)) {
+			this._toggleFolder(branch, true);
+			
+			isOpen = this._isFolderOpen(branch);
+			_level = level + 1;
+		}
+
 		$branch.toggleClass('tree-open', isOpen);
 		$branch.attr('aria-expanded', isOpen);
 		
-		$treeFolderContentFirstChild.toggleClass('hidden', !isOpen);
-		
-		$branch.find('> .tree-branch-header .icon-folder').eq(0)
+		$branchContent.toggleClass('hidden', !isOpen);
+
+		$branchIcon
 			.toggleClass('glyphicon-folder-open', isOpen)
 			.toggleClass('glyphicon-folder-close', !isOpen);
 
 		if (isOpen) {
-			$treeFolderContentFirstChild.append('<div class="tree-loader" role="alert">Loading...</div>');
+			const $loader = this.template.find('.tree-loader').clone();
 			
-			self._getChildren(folder).then(function (children) {
-				self._loopChildren(children, $treeFolderContentFirstChild, level + 1);
+			$branchContent.append($loader);
+			
+			this._getChildren(branch).then(function (children) {
+				self._loopChildren(children, $branchContent, _level);
 			});
 		} else {
 			// TO-DO: Possibly cache children
-			$treeFolderContentFirstChild.empty();
+			$branchContent.empty();
 		}
 		
 		return $branch;
 	},
+	
+	_shouldAutoOpen (level) {
+		const autoOpen = this.getStore('autoOpen');
+		const autoOpenLimit = this.getStore('autoOpenLimit');
+		
+		return autoOpen && Lib.isNumber(level) && Lib.isNumber(autoOpenLimit) && level <= autoOpenLimit;
+	},
 
-	_styleNode ($item, item, selection) {
+	_renderSelection ($item, item, selection) {
 		const selected = this._isItemSelected(item, selection);
-		const type = this.accessors.getType(item);
-		const $icon = $item.find('.icon-' + type);
+		const $icon = $item.find('.icon-item');
 		
 		$item.toggleClass('tree-selected', selected);
-		
-		if (type === 'item') {
-			$icon.toggleClass('fueluxicon-bullet', !selected);
-			$icon.toggleClass('glyphicon-ok', selected);
-		}
+		$icon.toggleClass('glyphicon-ok', selected);
+		$icon.toggleClass('fueluxicon-bullet', !selected);
 	}
 });
 

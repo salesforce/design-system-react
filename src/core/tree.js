@@ -144,7 +144,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		return !!_open.findWhere(this.accessors.getKey(folder));
 	},
 	
-	_toggleFolder (folder) {
+	_toggleFolder (folder, silent) {
 		const open = Lib.getDataAdapter(this.getOpenFolders());
 		const isOpen = this._isFolderOpen(folder, open);
 		let eventName;
@@ -158,7 +158,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		}
 		
 		this.setStore({ open: open._data });
-		if (Lib.isFunction(this._onFolderToggled)) this._onFolderToggled(folder, !isOpen);
+		if (!silent && Lib.isFunction(this._onFolderToggled)) this._onFolderToggled(folder, !isOpen);
 		
 		this.trigger(eventName, folder._item, open._data);
 	},
