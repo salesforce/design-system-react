@@ -152,9 +152,10 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		return !!_open.findWhere(this.accessors.getKey(folder));
 	},
 	
-	_toggleFolder (folder, silent) {
+	_toggleFolder (folder, options) {
 		const open = this._getOpenFolders();
 		const isOpen = this._isFolderOpen(folder, open);
+		const silent = options && options.silent;
 		let eventName;
 		
 		if (isOpen) {

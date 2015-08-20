@@ -178,7 +178,9 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		let _level;
 		
 		if (!isOpen && this._shouldAutoOpen(level)) {
-			this._toggleFolder(branch, true);
+			this._toggleFolder(branch, {
+				silent: true
+			});
 			
 			isOpen = this._isFolderOpen(branch);
 			_level = level + 1;
@@ -226,6 +228,21 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	}
 });
 
-createPlugin(CONTROL, Tree);
+// LEGACY METHODS
+
+const legacyMethods = {
+	discloseVisible () {
+		const self = this;
+		
+		this.elements.wrapper.find('.tree-branch:not(.tree-open)').each(function () {
+			const $branch = $(this);
+			const _branch = $branch.data('item');
+			
+			self.toggleFolder(_branch);
+		});
+	}
+};
+
+createPlugin(CONTROL, Tree, legacyMethods);
 
 export default Tree;
