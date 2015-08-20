@@ -80,13 +80,17 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		return this.getStore('selection');
 	},
 	
+	_getSelectedItems () {
+		return Lib.getDataAdapter(this.getSelectedItems()).clone();
+	},
+	
 	_isItemSelected (item, selection) {
 		const _selection = selection || Lib.getDataAdapter(this.getSelectedItems());
 		return !!_selection.findWhere(this.accessors.getKey(item));
 	},
 	
 	_selectItem (item) {
-		const selection = Lib.getDataAdapter(this.getSelectedItems());
+		const selection = this._getSelectedItems();
 		
 		if (!this._isItemSelected(item, selection) && (!Lib.isFunction(this._canSelect) || this._canSelect(item))) {
 			if (this.getStore('multiSelect')) {
@@ -107,7 +111,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	},
 	
 	_deselectItem (item) {
-		const selection = Lib.getDataAdapter(this.getSelectedItems());
+		const selection = this._getSelectedItems();
 		
 		if (this._isItemSelected(item, selection)) {
 			selection.remove(item);
@@ -124,7 +128,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	},
 
 	deselectAll () {
-		const selection = Lib.getDataAdapter(this.getSelectedItems());
+		const selection = this._getSelectedItems();
 		
 		selection.reset(null);
 		
@@ -139,13 +143,17 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		return this.getStore('open');
 	},
 	
+	_getOpenFolders () {
+		return Lib.getDataAdapter(this.getStore('open')).clone();
+	},
+	
 	_isFolderOpen (folder, open) {
 		const _open = open || Lib.getDataAdapter(this.getOpenFolders());
 		return !!_open.findWhere(this.accessors.getKey(folder));
 	},
 	
 	_toggleFolder (folder, silent) {
-		const open = Lib.getDataAdapter(this.getOpenFolders());
+		const open = this._getOpenFolders();
 		const isOpen = this._isFolderOpen(folder, open);
 		let eventName;
 		
@@ -168,7 +176,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 	},
 
 	closeAllFolders () {
-		const open = Lib.getDataAdapter(this.getOpenFolders());
+		const open = this._getOpenFolders();
 		
 		open.reset(null);
 

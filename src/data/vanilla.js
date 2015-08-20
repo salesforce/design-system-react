@@ -87,6 +87,12 @@ const Data = Base.Data.extend({
 		}
 		
 		return this;
+	},
+	
+	clone () {
+		this._data = this._data.slice(0);
+		
+		return this;
 	}
 });
 

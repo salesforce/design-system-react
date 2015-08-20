@@ -76,6 +76,12 @@ const Data = Base.Data.extend({
 		this._data.reset(item);
 		
 		return this;
+	},
+	
+	clone () {
+		this._data = this._data.clone();
+		
+		return this;
 	}
 });
 
