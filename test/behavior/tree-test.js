@@ -1,3 +1,4 @@
+import * as expectDom from '../lib/expect-dom';
 import { verifyFacadeProvidesBehaviorCallbacks, registerBehaviorTestCombinations } from '../lib/behavior-test-runner';
 import { tree as componentFacadeTestLib } from '../tests-api';
 
@@ -174,11 +175,11 @@ describe('Tree Component', function () {
 
 		beforeEach(function () {
 			container = $('<div />');
-			$('body').append(container);
+			$('body').append(container); // Container must be on the body and visible for tests to work
 		});
 
 		afterEach(function () {
-			container.remove();
+			container.remove(); // Clean up container
 			container = null;
 		});
 
@@ -217,10 +218,11 @@ describe('Tree Component', function () {
 			});
 		});
 
-		describe('DOM expectations based on data', function () {
+		describe('DOM expectations', function () {
 			let component = null;
-			let tree = null;
-			const initData = {
+			let treeEl = null;
+
+			const initDataTemplate = {
 				container: container,
 				children: [
 					{
@@ -251,194 +253,77 @@ describe('Tree Component', function () {
 			};
 
 			beforeEach(function () {
-				component = testingBehaviorHandlers.createComponent( JSON.parse( JSON.stringify( initData ) ) );
-				tree = $(testingBehaviorHandlers.getComponentElement(component));
+				const initData = JSON.parse( JSON.stringify( initDataTemplate ) );
+				initData.container = container;
+
+				component = testingBehaviorHandlers.createComponent( initData );
+
+				treeEl = testingBehaviorHandlers.getComponentElement(component);
 			});
 
 			afterEach(function () {
 				testingBehaviorHandlers.destroyComponent(component);
 				component = null;
-				tree = null;
+				treeEl = null;
 			});
 
-			describe('tree element', function () {
-				it('should be an unordered list element', function () {
-					expect(tree.is('ul')).to.be.true;
-				});
+			function getComponentElement () {
+				return treeEl;
+			}
 
-				it('should have the class "tree"', function () {
-					expect(tree.is('.tree')).to.be.true;
-				});
-
-				it('should have the aria role "tree"', function () {
-					expect(tree.is('[role=tree]')).to.be.true;
-				});
-
-				describe('outer item element', function () {
-					let item = null;
-
-					beforeEach(function () {
-						item = tree.find('> li').first();
-					});
-
-					it('should have the class "tree-item"', function () {
-						expect(item.is('.tree-item')).to.be.true;
-					});
-
-					it('should have the role "tree"', function () {
-						expect(item.is('[role=tree]')).to.be.true;
-					});
-
-					describe('tree item button', function () {
-						let button = null;
-
-						beforeEach(function () {
-							button = item.find('> button').first();
-						});
-
-						it('should have the class "tree-item-name"', function () {
-							expect(button.is('.tree-item-name')).to.be.true;
-						});
-
-						it('should have the type "button"', function () {
-							expect(button.is('[type=button]')).to.be.true;
-						});
-
-						describe('tree item icon', function () {
-							it('should have an element with the class "icon-item"', function () {
-								expect(button.find('.icon-item').length).to.equal(1);
-							});
-						});
-
-						describe('tree item label', function () {
-							it('should have an element with the class "tree-label"', function () {
-								expect(button.find('.tree-label').length).to.equal(1);
-							});
-
-							it('should have the text from the data', function () {
-								expect(button.find('.tree-label').text()).to.equal(initData.children[0].text);
-							});
-						});
-					});
-				});
-
-				describe('outer folder element', function () {
-					it('should have the class "tree-branch"');
-					it('should have the role "treeitem"');
-					it('should have the class "tree-open"');
-					it('should have the attribute aria-expanded="true"');
-
-					describe('tree folder header', function () {
-						it('should have the class "tree-branch-header"');
-
-						describe('tree folder button', function () {
-							it('should have the class "tree-branch-name"');
-							it('should have the type "button"');
-
-							describe('tree folder caret', function () {
-								it('should have the class "icon-caret"');
-							});
-
-							describe('tree folder icon', function () {
-								it('should have the class "icon-folder"');
-							});
-
-							describe('tree folder label', function () {
-								it('should have the class "tree-label"');
-								it('should have the text from the data');
-							});
-						});
-					});
-
-					describe('tree folder children', function () {
-						it('should have the class "tree-branch-children"');
-						it('should have the role "group"');
-
-						describe('tree folder children example', function () {
-							describe('outer item element', function () {
-								it('should have the class "tree-item"');
-								it('should have the role "tree"');
-
-								describe('tree item button', function () {
-									it('should have the class "tree-item-name"');
-									it('should have the type "button"');
-
-									describe('tree item icon', function () {
-										it('should have the class "icon-item"');
-										it('should have the other classes passed in via data');
-									});
-
-									describe('tree item label', function () {
-										it('should have the class "tree-label"');
-										it('should have the text from the data');
-									});
-								});
-							});
-
-							describe('outer folder element', function () {
-								it('should have the class "tree-branch"');
-								it('should have the role "treeitem"');
-								it('should have the class "tree-open"');
-								it('should have the attribute aria-expanded="true"');
-
-								describe('tree folder header', function () {
-									it('should have the class "tree-branch-header"');
-
-									describe('tree folder button', function () {
-										it('should have the class "tree-branch-name"');
-										it('should have the type "button"');
-
-										describe('tree folder caret', function () {
-											it('should have the class "icon-caret"');
-										});
-
-										describe('tree folder icon', function () {
-											it('should have the class "icon-folder"');
-											it('should have the other classes passed in via data');
-										});
-
-										describe('tree folder label', function () {
-											it('should have the class "tree-label"');
-											it('should have the text from the data');
-										});
-									});
-								});
-
-								describe('tree folder children', function () {
-									it('should have the class "tree-branch-children"');
-									it('should have the role "group"');
-
-									describe('tree folder children', function () {
-										it('should not have any tree items');
-										it('should not have any tree folders');
-									});
-								});
-
-								describe('tree loader', function () {
-									it('should have the class "tree-loader"');
-									it('should have the role "alert"');
-								});
-							});
-						});
-					});
-
-					describe('tree loader', function () {
-						it('should have the class "tree-loader"');
-						it('should have the role "alert"');
-					});
-				});
-			});
+			expectDom.matches(getComponentElement, 'ul');
+			expectDom.matches(getComponentElement, '.tree');
+			expectDom.matches(getComponentElement, '[role=tree]');
+			expectDom.found(getComponentElement,   '> li:visible', 2);
+			expectDom.found(getComponentElement,   '> li:visible:eq(0).tree-item');
+			expectDom.found(getComponentElement,   '> li:visible:eq(0)[role=treeitem]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(0) > button');
+			expectDom.found(getComponentElement,   '> li:visible:eq(0) > button:eq(0).tree-item-name');
+			expectDom.found(getComponentElement,   '> li:visible:eq(0) > button:eq(0)[type=button]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(0) > button:eq(0) > .icon-item');
+			expectDom.found(getComponentElement,   '> li:visible:eq(0) > button:eq(0) > .tree-label');
+			expectDom.text(getComponentElement,    '> li:visible:eq(0) > button:eq(0) > .tree-label', initDataTemplate.children[0].text);
+			expectDom.found(getComponentElement,   '> li:visible:eq(1).tree-branch');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1)[role=treeitem]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1).tree-open');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1)[aria-expanded=true]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0).tree-branch-name');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0)[type=button]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .icon-caret');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .icon-folder');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .tree-label');
+			expectDom.text(getComponentElement,    '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .tree-label', initDataTemplate.children[1].text);
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0).tree-branch-children');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0)[role=group]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible', 2);
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0).tree-item');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0)[role=treeitem]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0).tree-item-name');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0)[type=button]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0) > .icon-item');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0) > .icon-item:eq(0).custom-item-icon-class');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0) > .tree-label');
+			expectDom.text(getComponentElement,    '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0) > .tree-label', initDataTemplate.children[1].children[0].text);
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1).tree-branch');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1)[role=treeitem]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1).tree-open');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1)[aria-expanded=true]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0).tree-branch-name');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0)[type=button]');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .icon-caret');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .icon-folder');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .icon-folder:eq(0).custom-folder-icon-class');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .tree-label');
+			expectDom.text(getComponentElement,    '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .tree-label', initDataTemplate.children[1].children[1].text);
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) + ul');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0).tree-branch-children');
+			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0)[role=group]');
 		});
-	});
-
-	registerBehaviorTestCombinations(componentFacadeTestLib, [
-		// behaviors being tested
-	], [
-		// other behaviors required for tests
-		'createComponent',
-		'getComponentElement',
-		'destroyComponent'
-	], function ( ) { // testingBehaviorHandlers ) {
-		it('should have some tests here');
 	});
 });
