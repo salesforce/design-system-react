@@ -4,16 +4,25 @@ import Menu from './slds/SLDSDropdowns/index.react';
 
 
 export default class App extends Component {
+  filterItem(term, item) {
+    console.log('term', term);
+    return true;
+  }
+
+  showSelected(item, idx) {
+    alert(`You selected index ${idx}: ${item.props.children}`);
+  }
+
   render() {
     return (
     <div>
-    <Menu className="slds-dropdown--small">
-      <Menu.Header>
-        <Menu.Filter placeholder="Find in list..." />
-        <Menu.Title>Lists</Menu.Title>
+    <Menu itemSelected={this.showSelected.bind(this)} filterWith={this.filterItem.bind(this)} className="slds-dropdown--small customClass1">
+      <Menu.Header className="customClass2">
+        <Menu.Filter placeholder="Find in list..." className="customClass3" />
+        <Menu.Title className="customClass4">Lists</Menu.Title>
       </Menu.Header>
-      <Menu.List>
-        <Menu.Item href="#">
+      <Menu.List className="customClass5">
+        <Menu.Item href="#" className="customClass6" id="six">
           Opportunities Closing this Quarter
         </Menu.Item>
         <Menu.Item className="slds-is-selected" href="#" aria-selected="true">
