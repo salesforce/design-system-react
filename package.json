@@ -1,51 +1,56 @@
 {
-  "name": "fuelux-facades",
-  "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git://github.exacttarget.com/uxarchitecture/fuelux-facades.git"
-  },
-  "version": "0.0.3",
-  "devDependencies": {
-    "babel": "^5.6.14",
-    "babel-core": "^5.6.20",
-    "babel-eslint": "^4.0.5",
-    "babelify": "^6.1.2",
-    "brfs": "^1.4.0",
-    "browserify-versionify": "^1.0.6",
-    "chai": "^3.2.0",
-    "connect": "^3.4.0",
-    "eslint": "^1.1.0",
-    "eslint-config-airbnb": "0.0.7",
-    "eslint-plugin-react": "^3.2.1",
-    "fuelux": "^3.11.0",
-    "grunt": "^0.4.5",
-    "grunt-browserify": "^3.8.0",
-    "grunt-contrib-connect": "^0.10.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-eslint": "^17.1.0",
-    "grunt-mocha": "^0.4.13",
-    "mocha": "^1.21.5",
-    "serve-static": "^1.10.0"
-  },
-  "dependencies": {
-    "backbone": "^1.2.1",
-    "backbone.marionette": "^2.4.2",
-    "bootstrap": "^3.3.5",
-    "classnames": "^2.1.3",
-    "jquery": "^2.1.4",
-    "lodash": "^3.10.1",
-    "react": "^0.13.3",
-    "underscore": "^1.8.3"
-  },
-  "scripts": {
-    "start": "grunt serve",
-    "test": "grunt test"
-  },
-  "facades": [
-    "jquery"
-  ],
-  "components": [
-    "tree"
-  ]
+	"name": "fuelux-facades",
+	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "git://github.exacttarget.com/uxarchitecture/fuelux-facades.git"
+	},
+	"version": "0.0.3",
+	"devDependencies": {
+		"babel": "^5.6.14",
+		"babel-core": "^5.6.20",
+		"babel-eslint": "^4.0.5",
+		"babelify": "^6.1.2",
+		"brfs": "^1.4.0",
+		"browserify-versionify": "^1.0.6",
+		"chai": "^3.2.0",
+		"connect": "^3.4.0",
+		"eslint": "^1.1.0",
+		"eslint-config-airbnb": "0.0.7",
+		"eslint-plugin-react": "^3.2.1",
+		"grunt": "^0.4.5",
+		"grunt-browserify": "^3.8.0",
+		"grunt-contrib-connect": "^0.10.1",
+		"grunt-contrib-watch": "^0.6.1",
+		"grunt-eslint": "^17.1.0",
+		"grunt-mocha": "^0.4.13",
+		"mocha": "^1.21.5",
+		"serve-static": "^1.10.0"
+	},
+	"dependencies": {
+		"backbone": "^1.2.1",
+		"backbone.marionette": "^2.4.2",
+		"bootstrap": "^3.3.5",
+		"classnames": "^2.1.3",
+		"fuelux": "^3.11.0",
+		"jquery": "^2.1.4",
+		"lodash": "^3.10.1",
+		"react": "^0.13.3",
+		"underscore": "^1.8.3"
+	},
+	"scripts": {
+		"start": "grunt serve",
+		"test": "grunt test"
+	},
+	"facades": [
+		"jquery",
+		"marionette",
+		"react"
+	],
+	"components": [
+		"combobox",
+		"loader",
+		"selectlist",
+		"tree"
+	]
 }

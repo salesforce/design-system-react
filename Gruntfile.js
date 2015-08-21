@@ -108,7 +108,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-eslint');
 	grunt.loadNpmTasks('grunt-mocha');
 
-	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'browserify']);
+	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:jqueryExamples', 'browserify:marionetteExamples', 'browserify:reactExamples']);
 	grunt.registerTask('serve', ['connect:server', 'default', 'watch']);
 	grunt.registerTask('test', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:tests', 'connect:server', 'mocha']);
 };

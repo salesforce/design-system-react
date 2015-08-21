@@ -4,26 +4,22 @@
 import * as Lib from '../../core/lib';
 
 const State = {
-	getInitialState () {
-		const defaultState = Lib.isFunction(this._getDefaultState) ? this._getDefaultState() : {};
-		return defaultState;
+	getDefaultProps () {
+		return Lib.extend({}, this._defaultProperties);
 	},
 	
-	getDefaultProps () {
-		const defaultStore = Lib.isFunction(this.prototype._getDefaultStore) ? this.prototype._getDefaultStore() : {};
-		return defaultStore;
+	getInitialState () {
+		return Lib.extend({}, this._defaultState);
+	},
+	
+	setProperties: Lib.noop,
+
+	getProperty (key) {
+		return this.props[key];
 	},
 	
 	getState (key) {
 		return this.state[key];
-	},
-	
-	setStore () {
-		// Do nothing, intentionally. Perhaps throw an event here some day?
-	},
-
-	getStore (key) {
-		return this.props[key];
 	}
 };
 

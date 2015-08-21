@@ -72,7 +72,7 @@ const Selectlist = Marionette.ItemView.extend(Lib.merge({}, SelectlistCore, Stat
 		elements.wrapper = this.$el;
 		elements.dropdownMenu = this.$('.' + this.cssClasses.MENU);
 		
-		elements.wrapper.toggleClass(this.cssClasses.DISABLED, this.getStore('disabled'));
+		elements.wrapper.toggleClass(this.cssClasses.DISABLED, this.getProperty('disabled'));
 	},
 
 	handleMenuItemSelected (e) {

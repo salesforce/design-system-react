@@ -73,7 +73,7 @@ function _render () {
 
 	const selection = Lib.getItemAdapter(this.getSelection());
 	const width = this.getState('width');
-	const disabled = !!this.getStore('disabled');
+	const disabled = !!this.getProperty('disabled');
 	const selectionName = selection.get('text') || 'None selected'; // TO-DO: don't hardcode this here
 	const selectionString = selection ? JSON.stringify(selection) : '';
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));

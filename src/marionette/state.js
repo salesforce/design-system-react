@@ -8,28 +8,34 @@ import Backbone from 'backbone';
 
 const State = {
 	_initializeState () {
-		const defaultState = Lib.isFunction(this._getDefaultState) ? this._getDefaultState() : {};
-		const defaultStore = Lib.isFunction(this._getDefaultStore) ? this._getDefaultStore() : {};
-		const defaults = Lib.extend(defaultState, defaultStore);
-		
 		if (this.model) {
-			this.model.set(Lib.extend(defaults, this.model.toJSON()));
+			this.model.set(Lib.extend({}, this._defaultProperties, this.model.toJSON()));
 		} else {
-			this.model = new Backbone.Model(defaults);
+			this.model = new Backbone.Model(this._defaultProperties);
+		}
+		
+		if (this.state) {
+			this.state.set(Lib.extend({}, this._defaultState, this.state.toJSON()));
+		} else {
+			this.state = new Backbone.Model(this._defaultState);
 		}
 	},
 	
-	setState (values) {
+	setProperties (values) {
 		return this.model.set(values);
 	},
 
-	getState (key) {
+	getProperty (key) {
 		return this.model.get(key);
+	},
+	
+	setState (values) {
+		return this.state.set(values);
+	},
+
+	getState (key) {
+		return this.state.get(key);
 	}
 };
-
-// Alias
-State.setStore = State.setState;
-State.getStore = State.getState;
 
 export default State;

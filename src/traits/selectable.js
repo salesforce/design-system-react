@@ -17,7 +17,7 @@ const Selectable = {
 
 	_setSelection (newSelection) {
 		if (this.getSelection() !== newSelection && (!Lib.isFunction(this._canSelect) || this._canSelect(newSelection))) {
-			this.setStore({ selection: newSelection });
+			this.setProperties({ selection: newSelection });
 			if (Lib.isFunction(this._onSelected)) this._onSelected(newSelection);
 			
 			// Trigger the event using facade-native methods
@@ -43,7 +43,7 @@ const Selectable = {
 	},
 
 	getSelection () {
-		return this.getStore('selection');
+		return this.getProperty('selection');
 	},
 
 	clearSelection () {

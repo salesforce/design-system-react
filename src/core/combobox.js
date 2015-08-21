@@ -20,11 +20,9 @@ const ComboboxCore = Lib.merge({}, Base, Disableable, Selectable, {
 	},
 
 	// Set the defaults
-	_getDefaultStore () {
-		return {
-			selection: null,
-			disabled: false
-		};
+	_defaultProperties: {
+		selection: null,
+		disabled: false
 	},
 
 	// TO-DO: Basically a bunch of if-else blocks. Can this be improved?

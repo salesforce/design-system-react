@@ -41,11 +41,9 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 	},
 
 	// Set the defaults
-	_getDefaultStore () {
-		return {
-			selection: null,
-			disabled: false
-		};
+	_defaultProperties: {
+		selection: null,
+		disabled: false
 	},
 
 	_initializeOptions (options) {

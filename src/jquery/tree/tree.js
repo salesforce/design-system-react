@@ -42,7 +42,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 	
 	_configureBranchSelect () {
-		const branchSelect = this.getStore('folderSelect');
+		const branchSelect = this.getProperty('folderSelect');
 		
 		// This class is copied from the example code but I'm not sure it does anything
 		this.template.toggleClass('tree-folder-select', branchSelect);
@@ -221,8 +221,8 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 	
 	_shouldAutoOpen (level) {
-		const autoOpen = this.getStore('autoOpen');
-		const autoOpenLimit = this.getStore('autoOpenLimit');
+		const autoOpen = this.getProperty('autoOpen');
+		const autoOpenLimit = this.getProperty('autoOpenLimit');
 		
 		return autoOpen && Lib.isNumber(level) && Lib.isNumber(autoOpenLimit) && level <= autoOpenLimit;
 	},
