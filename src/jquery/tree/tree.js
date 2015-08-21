@@ -180,7 +180,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		// Expandable?
 		const isExpandable = this.accessors.getExpandable(branch);
 		
-		$branch.attr('aria-haschildren', isExpandable ? undefined : 'false');
+		$branch.attr('data-has-children', isExpandable ? undefined : 'false');
 		
 		// Take care of the state
 		let isOpen = this._isFolderOpen(branch);

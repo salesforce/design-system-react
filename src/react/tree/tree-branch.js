@@ -81,7 +81,7 @@ const TreeBranch = React.createClass({
 		);
 
 		return (
-			<li className={classNames('tree-branch', {'tree-open': isOpen, 'tree-selected': isSelected})} dataTemplate="treebranch" role="treeitem" aria-expanded={isOpen ? 'false' : 'true'} aria-haschildren={accessors.getExpandable(this.props.item) ? undefined : false}>
+			<li className={classNames('tree-branch', {'tree-open': isOpen, 'tree-selected': isSelected})} dataTemplate="treebranch" role="treeitem" aria-expanded={isOpen ? 'false' : 'true'} data-has-children={accessors.getExpandable(this.props.item) ? undefined : false}>
 				<div className="tree-branch-header">
 					{this.props.selectable ? expandButton : undefined}
 					<button type="button" className="tree-branch-name" onClick={this._handleItemClick.bind(this, this.props.item)}>
