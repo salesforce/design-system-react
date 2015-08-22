@@ -19,6 +19,19 @@ const State = {
 		} else {
 			this.state = new Backbone.Model(this._defaultState);
 		}
+		
+		const delegateEvents = this.delegateEvents;
+		const undelegateEvents = this.undelegateEvents;
+		
+		this.delegateEvents = function () {
+			this.bindEntityEvents(this.state, this.getOption('stateEvents'));
+			return delegateEvents.apply(this, arguments);
+		};
+		
+		this.undelegateEvents = function () {
+			this.unbindEntityEvents(this.state, this.getOption('stateEvents'));
+			return undelegateEvents.apply(this, arguments);
+		};
 	},
 	
 	setProperties (values) {

@@ -40,7 +40,7 @@ $('.enabled .btnSelectlistDisableSelectlistViaModel').on('click', function () {
 const mySelectlist2 = new Selectlist({
 	collection: collection,
 	disabled: true,
-	selection: collection.at(0),
+	selection: collection.at(1),
 	resize: 'auto'
 });
 

@@ -18,7 +18,7 @@ const LoaderCore = Lib.merge({}, Base, {
 		frame: 1
 	},
 
-	_initializeOptions (options) {
+	_initializer (options) {
 		this.setState(options);
 	}
 });

@@ -40,28 +40,18 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		MENU: 'dropdown-menu'
 	},
 
-	// Set the defaults
-	_defaultProperties: {
-		selection: null,
-		disabled: false
-	},
-
-	_initializeOptions (options) {
+	_initializer (options) {
 		if (options && options.collection) {
 			this._collection = Lib.getDataAdapter(options.collection);
 		} else if (!this._collection) {
 			this._collection = Lib.getDataAdapter([]);
 		}
-
-		this._initializeSelectable(options);
-
-		this._initializeDisableable(options);
-
+		
+		this._keyBuffer = new KeyBuffer();
+		
 		if (options && options.resize === 'auto') {
 			if (Lib.isFunction(this.resize)) this.resize();
 		}
-		
-		this._keyBuffer = new KeyBuffer();
 	},
 	
 	_canSelect (newSelection) {

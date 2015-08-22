@@ -25,7 +25,6 @@ const Tree = function Tree (element, options) {
 	};
 
 	this._initializeState();
-	
 	this._initialize(this.options);
 };
 

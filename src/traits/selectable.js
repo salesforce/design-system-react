@@ -6,8 +6,12 @@ const Selectable = {
 	cssClasses: {
 		SELECTED: 'selected'
 	},
+	
+	_defaultProperties: {
+		selection: null
+	},
 
-	_initializeSelectable (options) {
+	_initializer (options) {
 		if (options && Lib.isObject(options.selection)) {
 			this.setSelection(options.selection);
 		} else {

@@ -7,7 +7,7 @@ const Disableable = {
 		DISABLED: 'disabled'
 	},
 
-	_initializeDisableable (options) {
+	_initializer (options) {
 		const disabled = !!(options && options.disabled);
 		this.setProperties({ disabled });
 
@@ -16,6 +16,10 @@ const Disableable = {
 		} else {
 			if (Lib.isFunction(this._onEnabled)) this._onEnabled();
 		}
+	},
+	
+	_defaultProperties: {
+		disabled: false
 	},
 
 	enable () {

@@ -11,7 +11,7 @@ const Base = {
 		if (Lib.isFunction(this._onBeforeInitialize)) this._onBeforeInitialize(options);
 
 		// If this controls does anything with options that are passed to it, do that now
-		if (Lib.isFunction(this._initializeOptions)) this._initializeOptions(options);
+		if (Lib.isFunction(this._initializer)) this._initializer(options);
 
 		if (Lib.isFunction(this._onInitialized)) this._onInitialized(options);
 	},

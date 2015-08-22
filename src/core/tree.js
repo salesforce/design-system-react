@@ -16,21 +16,18 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 
 	// Set the defaults
 	_defaultProperties: {
-		disabled: false,
 		folderSelect: false,
 		multiSelect: false,
 		autoOpen: false,
 		autoOpenLimit: 1
 	},
 
-	_initializeOptions (options) {
+	_initializer (options) {
 		if (options && options.collection) {
 			this._collection = Lib.getDataAdapter(options.collection);
 		} else if (!this._collection) {
 			this._collection = Lib.getDataAdapter([]);
 		}
-
-		this._initializeDisableable(options);
 		
 		this.setProperties(options);
 	},

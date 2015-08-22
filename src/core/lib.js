@@ -7,6 +7,9 @@ export const global = (typeof self === 'object' && self.self === self && self) |
 import partial from 'lodash/function/partial';
 export { partial };
 
+import partialRight from 'lodash/function/partialRight';
+export { partialRight };
+
 export { default as noop } from 'lodash/utility/noop';
 
 // DOM
@@ -41,7 +44,8 @@ export function log () {
 }
 
 // Type Helpers
-export { default as isFunction } from 'lodash/lang/isFunction';
+import isFunction from 'lodash/lang/isFunction';
+export { isFunction };
 
 export { default as isNumber } from 'lodash/lang/isNumber';
 
@@ -49,7 +53,8 @@ export { default as isString } from 'lodash/lang/isString';
 
 export { default as isRegExp } from 'lodash/lang/isRegExp';
 
-export { default as isArray } from 'lodash/lang/isArray';
+import isArray from 'lodash/lang/isArray';
+export { isArray };
 
 export { default as isBoolean } from 'lodash/lang/isBoolean';
 
@@ -58,7 +63,16 @@ export { default as isObject } from 'lodash/lang/isObject';
 // Data Helpers
 export { default as extend } from 'lodash/object/extend';
 
-export { default as merge } from 'lodash/object/merge';
+import merge from 'lodash/object/merge';
+const customMerge = partialRight(merge, function (a, b, key) {
+	if (key === '_initializer' && isFunction(a) && isFunction(b)) {
+		return function () {
+			b.apply(this, arguments);
+			a.apply(this, arguments);
+		};
+	}
+});
+export { customMerge as merge };
 
 const _adapters = [];
 
