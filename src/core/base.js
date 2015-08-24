@@ -16,6 +16,11 @@ const Base = {
 	_initialize (options) {
 		if (Lib.isFunction(this._onBeforeInitialize)) this._onBeforeInitialize(options);
 
+		if (options && Lib.isObject(options.accessors)) {
+			Lib.extend(this.accessors, options.accessors);
+			delete options.accessors;
+		}
+
 		// If this controls does anything with options that are passed to it, do that now
 		if (Lib.isFunction(this._initializer)) this._initializer(options);
 
