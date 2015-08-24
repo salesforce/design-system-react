@@ -70,11 +70,11 @@ function _render () {
 	this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
 	this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
 
-	const selection = Lib.getItemAdapter(this.getSelection());
+	const item = this._getSelection();
 	const width = this.getState('width');
-	const disabled = this.accessors.getDisabled(selection);
-	const selectionName = this.accessors.getText(selection) || this.strings.NONE_SELECTED;
-	const selectionString = selection ? JSON.stringify(selection) : '';
+	const disabled = this.accessors.getDisabled(item);
+	const selectionName = this.accessors.getText(item) || this.strings.NONE_SELECTED;
+	const selectionString = item ? JSON.stringify(item) : '';
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
 

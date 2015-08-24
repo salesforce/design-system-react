@@ -39,7 +39,7 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 	},
 
 	render () {
-		const selection = Lib.getItemAdapter(this.getSelection());
+		const item = this._getSelection();
 
 		const styles = {
 			width: this.state.width
@@ -50,7 +50,7 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', disabledClass)} onKeyPress={this.handleKeyPress}>
-				<input name={this.props.name} className="form-control" type="text" value={selection.get('text')} disabled={this.props.disabled} />
+				<input name={this.props.name} className="form-control" type="text" value={item.get('text')} disabled={this.props.disabled} />
 				<div className="input-group-btn">
 					<button type="button" className={classNames(this.cssClasses.CONTROL, this.cssClasses.TOGGLE, 'btn btn-default', disabledClass)} data-toggle="dropdown" disabled={this.props.disabled}><span className="caret"></span></button>
 					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles}>

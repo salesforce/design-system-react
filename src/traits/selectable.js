@@ -50,6 +50,10 @@ const Selectable = {
 		return this.getProperty('selection');
 	},
 
+	_getSelection () {
+		return Lib.getItemAdapter(this.getSelection());
+	},
+
 	clearSelection () {
 		this._setSelection();
 	}

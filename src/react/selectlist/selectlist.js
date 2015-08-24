@@ -37,7 +37,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	},
 
 	render () {
-		const selection = Lib.getItemAdapter(this.getSelection());
+		const item = this._getSelection();
 
 		const styles = {
 			width: this.state.width
@@ -49,7 +49,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, disabledClass)} onKeyPress={this.handleKeyPress}>
 				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.TOGGLE, disabledClass)} data-toggle="dropdown" type="button" disabled={this.props.disabled} style={styles}>
-					<span className={this.cssClasses.LABEL}>{this.accessors.getText(selection) || this.strings.NONE_SELECTED}</span>
+					<span className={this.cssClasses.LABEL}>{this.accessors.getText(item) || this.strings.NONE_SELECTED}</span>
 					<span className={this.cssClasses.CARET}></span>
 					<span className={this.cssClasses.SR_ONLY}>this.strings.TOGGLE_DROPDOWN</span>
 				</button>
