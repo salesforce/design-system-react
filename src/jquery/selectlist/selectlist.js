@@ -170,15 +170,13 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		return this.elements.wrapper[0].outerHTML;
 	},
 
-	_onSelected (data) {
-		const item = this._getItemAdapter(data);
-
+	_onSelected (item) {
 		if (!this.elements.hiddenField
 			|| !this.elements.label) {
 			return;
 		}
 
-		this.elements.hiddenField.val(JSON.stringify(data) || '');
+		this.elements.hiddenField.val(JSON.stringify(item._item) || '');
 		this.elements.label.text(item.getText() || this.strings.NONE_SELECTED);
 	},
 

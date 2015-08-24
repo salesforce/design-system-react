@@ -22,7 +22,7 @@ const Selectable = {
 	_setSelection (newSelection) {
 		if (this.getSelection() !== newSelection && (!Lib.isFunction(this._canSelect) || this._canSelect(newSelection))) {
 			this.setProperties({ selection: newSelection });
-			if (Lib.isFunction(this._onSelected)) this._onSelected(newSelection);
+			if (Lib.isFunction(this._onSelected)) this._onSelected(this._getItemAdapter(newSelection));
 			
 			// Trigger the event using facade-native methods
 			this.trigger('changed', newSelection);
