@@ -17,12 +17,12 @@ const Multiselectable = {
 	},
 	
 	_getSelectedItems () {
-		return Lib.getDataAdapter(this.getSelectedItems()).clone();
+		return this._getDataAdapter(this.getSelectedItems()).clone();
 	},
 	
 	_isItemSelected (item, selection) {
-		const _selection = selection || Lib.getDataAdapter(this.getSelectedItems());
-		const key = this.accessors && this.accessors.getKey ? this.accessors.getKey(item) : item._item;
+		const _selection = selection || this._getDataAdapter(this.getSelectedItems());
+		const key = Lib.isFunction(item.getKey) ? item.getKey() : item._item;
 		return !!_selection.findWhere(key);
 	},
 	
@@ -44,7 +44,7 @@ const Multiselectable = {
 	},
 	
 	selectItem (_item) {
-		this._selectItem(Lib.getItemAdapter(_item));
+		this._selectItem(this._getItemAdapter(_item));
 	},
 	
 	_deselectItem (item) {
@@ -61,7 +61,7 @@ const Multiselectable = {
 	},
 	
 	deselectItem (_item) {
-		this._deselectItem(Lib.getItemAdapter(_item));
+		this._deselectItem(this._getItemAdapter(_item));
 	},
 
 	deselectAll () {

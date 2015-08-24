@@ -9,7 +9,7 @@ import Multiselectable from '../traits/multiselectable';
 
 export const CONTROL = 'tree';
 
-const TreeCore = Lib.extend({}, Base, Disableable, Multiselectable, {
+const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL
@@ -25,9 +25,9 @@ const TreeCore = Lib.extend({}, Base, Disableable, Multiselectable, {
 
 	_initializer (options) {
 		if (options && options.collection) {
-			this._collection = Lib.getDataAdapter(options.collection);
+			this._collection = this._getDataAdapter(options.collection);
 		} else if (!this._collection) {
-			this._collection = Lib.getDataAdapter([]);
+			this._collection = this._getDataAdapter([]);
 		}
 		
 		this.setProperties(options);
@@ -68,11 +68,11 @@ const TreeCore = Lib.extend({}, Base, Disableable, Multiselectable, {
 	
 	// Proxy this call to the accessor to ensure that we always receive a promise wrapped in a Data Adapter
 	_getChildren (item) {
-		return Promise.resolve(this.accessors.getChildren(item)).then(Lib.getDataAdapter);
+		return Promise.resolve(item.getChildren()).then(Lib.bind(this._getDataAdapter, this));
 	},
 	
 	_canSelect (item) {
-		return this.accessors.getType(item) === 'item' || this.getProperty('folderSelect');
+		return item.getType() === 'item' || this.getProperty('folderSelect');
 	},
 	
 	// TO-DO: This beginning code is basically the same as multi-select right now
@@ -81,16 +81,16 @@ const TreeCore = Lib.extend({}, Base, Disableable, Multiselectable, {
 	},
 	
 	_getOpenFolders () {
-		return Lib.getDataAdapter(this.getProperty('open')).clone();
+		return this._getDataAdapter(this.getOpenFolders()).clone();
 	},
 	
 	_isFolderOpen (folder, open) {
-		const _open = open || Lib.getDataAdapter(this.getOpenFolders());
-		return !!_open.findWhere(this.accessors.getKey(folder));
+		const _open = open || this._getDataAdapter(this.getOpenFolders());
+		return !!_open.findWhere(folder.getKey());
 	},
 	
 	_canOpen (folder) {
-		return this.accessors.getExpandable(folder);
+		return folder.getExpandable();
 	},
 	
 	_toggleFolder (folder, options) {
@@ -116,7 +116,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, Multiselectable, {
 	},
 	
 	toggleFolder (_folder) {
-		this._toggleFolder(Lib.getItemAdapter(_folder));
+		this._toggleFolder(this._getItemAdapter(_folder));
 	},
 
 	closeAllFolders () {

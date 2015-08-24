@@ -22,11 +22,6 @@ const TreeBranch = React.createClass({
 		autoOpenLimit: React.PropTypes.number.isRequired,
 		onItemClick: React.PropTypes.func.isRequired,
 		onExpandClick: React.PropTypes.func.isRequired,
-		accessors: React.PropTypes.shape({
-			getText: React.PropTypes.func.isRequired,
-			getType: React.PropTypes.func.isRequired,
-			getId: React.PropTypes.func.isRequired
-		}),
 		_getChildren: React.PropTypes.func.isRequired,
 		_isFolderOpen: React.PropTypes.func.isRequired,
 		_isItemSelected: React.PropTypes.func.isRequired
@@ -34,7 +29,7 @@ const TreeBranch = React.createClass({
 
 	getInitialState () {
 		return {
-			children: Lib.getDataAdapter([]),
+			children: Lib.getDataAdapter(),
 			loading: true
 		};
 	},
@@ -58,18 +53,17 @@ const TreeBranch = React.createClass({
 	},
 
 	render () {
-		const accessors = this.props.accessors;
 		const isOpen = this.props._isFolderOpen(this.props.item);
 		const isSelected = this.props._isItemSelected(this.props.item);
 		const children = [];
 
 		this.state.children.forEach(model => {
-			const id = accessors.getId(model);
+			const id = model.getId();
 			
-			if (accessors.getType(model) === 'folder') {
-				children.push(<TreeBranch key={id} item={model} selectable={this.props.selectable} autoOpenLevel={this.props.autoOpenLevel + 1} autoOpenLimit={this.props.autoOpenLimit} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={accessors} _getChildren={this.props._getChildren} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
+			if (model.getType() === 'folder') {
+				children.push(<TreeBranch key={id} item={model} selectable={this.props.selectable} autoOpenLevel={this.props.autoOpenLevel + 1} autoOpenLimit={this.props.autoOpenLimit} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _getChildren={this.props._getChildren} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
 			} else {
-				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick.bind(this, model)} accessors={accessors} _isItemSelected={this.props._isItemSelected} />);
+				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick.bind(this, model)} _isItemSelected={this.props._isItemSelected} />);
 			}
 		});
 		
@@ -81,13 +75,13 @@ const TreeBranch = React.createClass({
 		);
 
 		return (
-			<li className={classNames('tree-branch', {'tree-open': isOpen, 'tree-selected': isSelected})} dataTemplate="treebranch" role="treeitem" aria-expanded={isOpen ? 'false' : 'true'} data-has-children={accessors.getExpandable(this.props.item) ? undefined : false}>
+			<li className={classNames('tree-branch', {'tree-open': isOpen, 'tree-selected': isSelected})} dataTemplate="treebranch" role="treeitem" aria-expanded={isOpen ? 'false' : 'true'} data-has-children={this.props.item.getExpandable() ? undefined : false}>
 				<div className="tree-branch-header">
 					{this.props.selectable ? expandButton : undefined}
 					<button type="button" className="tree-branch-name" onClick={this._handleItemClick.bind(this, this.props.item)}>
 						{!this.props.selectable ? <span className={caretClasses}></span> : undefined}
 						<span className={classNames('glyphicon icon-folder', 'glyphicon-folder-' + (isOpen ? 'open' : 'close'))}></span>
-						<span className="tree-label">{accessors.getText(this.props.item)}</span>
+						<span className="tree-label">{this.props.item.getText()}</span>
 					</button>
 				</div>
 				<ul className={classNames('tree-branch-children', {hidden: !isOpen})} role="group">

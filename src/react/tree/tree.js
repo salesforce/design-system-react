@@ -38,13 +38,13 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 		const children = [];
 		
 		this._collection.forEach(model => {
-			const id = this.accessors.getId(model);
+			const id = model.getId();
 			const selectable = this.getProperty('folderSelect');
 			
-			if (this.accessors.getType(model) === 'folder') {
-				children.push(<TreeBranch key={id} item={model} selectable={selectable} autoOpenLevel={1} autoOpenLimit={this.props.autoOpen ? this.props.autoOpenLimit : 0} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} accessors={this.accessors} _getChildren={this._getChildren} _isFolderOpen={this._isFolderOpen} _isItemSelected={this._isItemSelected} />);
+			if (model.getType() === 'folder') {
+				children.push(<TreeBranch key={id} item={model} selectable={selectable} autoOpenLevel={1} autoOpenLimit={this.props.autoOpen ? this.props.autoOpenLimit : 0} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _getChildren={this._getChildren} _isFolderOpen={this._isFolderOpen} _isItemSelected={this._isItemSelected} />);
 			} else {
-				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick} accessors={this.accessors} _isItemSelected={this._isItemSelected} />);
+				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick} _isItemSelected={this._isItemSelected} />);
 			}
 		});
 
@@ -56,7 +56,7 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 	},
 
 	_handleItemClick (item) {
-		if (this.accessors.getType(item) !== 'folder' || this.getProperty('folderSelect')) {
+		if (item.getType() !== 'folder' || this.getProperty('folderSelect')) {
 			if (this._isItemSelected(item)) {
 				this._deselectItem(item);
 			} else {

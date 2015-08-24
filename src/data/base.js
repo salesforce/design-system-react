@@ -43,8 +43,10 @@ function _findMatch (data, isMatch) {
 function _addMethods (instance, methods) {
 	methods.forEach(function (method) {
 		instance.prototype[method] = function (callback, ...funcArgs) {
+			const self = this;
+			
 			const _callback = function (item, ...callbackArgs) {
-				const _item = new instance.prototype.ItemType(item);
+				const _item = self.getItemAdapter(item);
 				return callback(_item, ...callbackArgs);
 			};
 			
@@ -105,16 +107,24 @@ Lib.extend(Data.prototype, {
 
 	get () {
 		return undefined;
+	},
+	
+	clone () {
+		return this;
 	}
 });
 
-['at', 'length', 'add', 'remove', 'reset', 'clone', 'forEach', 'filter', 'map', 'every'].forEach(function (method) {
+['at', 'length', 'add', 'remove', 'reset', 'forEach', 'filter', 'map', 'every'].forEach(function (method) {
 	Data.prototype[method] = Lib.noop;
 });
 
 // Static methods
 Data.isTypeOf = function isTypeOf () {
 	return true;
+};
+
+Data.getItemAdapter = function (_item) {
+	return new this.ItemType(_item);
 };
 
 Data._addDefaultImplementations = _addMethods;

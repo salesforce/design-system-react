@@ -12,6 +12,8 @@ export { partialRight };
 
 export { default as noop } from 'lodash/utility/noop';
 
+export { default as bind } from 'lodash/function/bind';
+
 // DOM
 export function hasClass (element, className) {
 	return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;

@@ -46,9 +46,9 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 
 	_initializer (options) {
 		if (options && options.collection) {
-			this._collection = Lib.getDataAdapter(options.collection);
+			this._collection = this._getDataAdapter(options.collection);
 		} else if (!this._collection) {
-			this._collection = Lib.getDataAdapter([]);
+			this._collection = this._getDataAdapter([]);
 		}
 		
 		this._keyBuffer = new KeyBuffer();
@@ -79,9 +79,9 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 	},
 	
 	_canSelect (newSelection) {
-		const item = Lib.getItemAdapter(newSelection);
+		const item = this._getItemAdapter(newSelection);
 		
-		return !this.accessors.getType(item) && !this.accessors.getDisabled(item);
+		return !item.getType() && !item.getDisabled();
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
@@ -119,7 +119,7 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		const control = sizer.querySelector('.' + self.cssClasses.CONTROL);
 
 		this._collection.forEach(item => {
-			const text = this.accessors.getText(item);
+			const text = item.getText();
 			label.textContent = text;
 			newWidth = control.offsetWidth;
 			if (newWidth > width) {

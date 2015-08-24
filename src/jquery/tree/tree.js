@@ -62,14 +62,14 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 	_handleBranchClicked ($event) {
 		const $el = $($event.currentTarget).closest('.tree-item, .tree-branch');
-		const branch = Lib.getItemAdapter($el.data('item'));
+		const branch = this._getItemAdapter($el.data('item'));
 		
 		this._toggleFolder(branch);
 	},
 	
 	_onFolderToggled (branch) {
 		const self = this;
-		const id = this.accessors.getId(branch);
+		const id = branch.getId();
 		const $branches = this.elements.wrapper.find('.tree-branch');
 		
 		$branches.each(function () {
@@ -83,7 +83,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	
 	_handleItemClicked ($event) {
 		const $el = $($event.currentTarget).closest('.tree-item, .tree-branch');
-		const item = Lib.getItemAdapter($el.data('item'));
+		const item = this._getItemAdapter($el.data('item'));
 		const selected = this._isItemSelected(item);
 		
 		if (selected) {
@@ -107,7 +107,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		
 		$items.each(function () {
 			const $item = $(this);
-			const item = Lib.getItemAdapter($item.data('item'));
+			const item = self._getItemAdapter($item.data('item'));
 			
 			self._renderSelection($item, item, selection);
 		});
@@ -134,7 +134,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const elements = [];
 
 		children.forEach(function buildBranch (item) {
-			const isBranch = self.accessors.getType(item) === 'folder';
+			const isBranch = item.getType() === 'folder';
 
 			if (!isBranch) {
 				elements.push(self._renderItem(item));
@@ -150,7 +150,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_renderItem (item) {
 		const $item = this.template.find('.tree-item').clone();
 		
-		$item.find('.tree-label').text(this.accessors.getText(item));
+		$item.find('.tree-label').text(item.getText());
 		$item.data({
 			item: item._item
 		});
@@ -167,16 +167,16 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const $branchIcon = $branch.find('> .tree-branch-header .icon-folder');
 		const $label = $branch.find('.tree-label');
 		
-		$label.text(this.accessors.getText(branch));
+		$label.text(branch.getText());
 		$branch.data({
 			item: branch._item,
-			id: this.accessors.getId(branch)
+			id: branch.getId()
 		});
 		
 		this._renderSelection($branch, branch);
 		
 		// Expandable?
-		const isExpandable = this.accessors.getExpandable(branch);
+		const isExpandable = branch.getExpandable();
 		
 		$branch.attr('data-has-children', isExpandable ? undefined : 'false');
 		

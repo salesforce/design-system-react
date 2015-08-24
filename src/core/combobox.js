@@ -21,9 +21,9 @@ const ComboboxCore = Lib.merge({}, Base, Disableable, Selectable, {
 
 	_initializer (options) {
 		if (options && options.collection) {
-			this._collection = Lib.getDataAdapter(options.collection);
+			this._collection = this._getDataAdapter(options.collection);
 		} else if (!this._collection) {
-			this._collection = Lib.getDataAdapter([]);
+			this._collection = this._getDataAdapter([]);
 		}
 
 		if (options && options.resize === 'auto') {

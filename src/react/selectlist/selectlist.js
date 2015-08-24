@@ -31,7 +31,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	menuItems () {
 		return this._collection.map((item, index) => {
 			return (
-				<SelectlistItem key={index} item={item} text={this.accessors.getText(item)} type={this.accessors.getType(item)} disabled={this.accessors.getDisabled(item)} onSelected={this.handleMenuItemSelected} />
+				<SelectlistItem key={index} item={item} text={item.getText()} type={item.getType()} disabled={item.getDisabled()} onSelected={this.handleMenuItemSelected} />
 			);
 		});
 	},
@@ -49,7 +49,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, disabledClass)} onKeyPress={this.handleKeyPress}>
 				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.TOGGLE, disabledClass)} data-toggle="dropdown" type="button" disabled={this.props.disabled} style={styles}>
-					<span className={this.cssClasses.LABEL}>{this.accessors.getText(item) || this.strings.NONE_SELECTED}</span>
+					<span className={this.cssClasses.LABEL}>{item.getText() || this.strings.NONE_SELECTED}</span>
 					<span className={this.cssClasses.CARET}></span>
 					<span className={this.cssClasses.SR_ONLY}>this.strings.TOGGLE_DROPDOWN</span>
 				</button>

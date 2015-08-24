@@ -21,6 +21,27 @@ const Base = {
 
 		if (Lib.isFunction(this._onInitialized)) this._onInitialized(options);
 	},
+	
+	_getItemAdapter (_item, _itemAdapter) {
+		const itemAdapter = _itemAdapter || Lib.getItemAdapter;
+		const item = itemAdapter(_item);
+		
+		if (this.accessors) {
+			Object.keys(this.accessors).forEach(method => {
+				item[method] = Lib.bind(this.accessors[method], this, item);
+			});
+		}
+		
+		return item;
+	},
+	
+	_getDataAdapter (_data) {
+		const data = Lib.getDataAdapter(_data);
+		
+		data.getItemAdapter = Lib.partialRight(Lib.bind(this._getItemAdapter, this), data.getItemAdapter);
+		
+		return data;
+	},
 
 	version: Lib.version
 };

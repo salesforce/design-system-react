@@ -51,7 +51,7 @@ const Selectable = {
 	},
 
 	_getSelection () {
-		return Lib.getItemAdapter(this.getSelection());
+		return this._getItemAdapter(this.getSelection());
 	},
 
 	clearSelection () {

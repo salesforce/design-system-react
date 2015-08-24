@@ -35,12 +35,12 @@ const Selectlist = function Selectlist (element, options) {
 };
 
 function _renderItem (item) {
-	const disabled = this.accessors.getDisabled(item);
+	const disabled = item.getDisabled();
 	let $a;
 	let $li;
 
 	$a = $('<a href="#" />');
-	$a.text(this.accessors.getText(item));
+	$a.text(item.getText());
 
 	$li = $('<li />');
 	$li.data(item.get());
@@ -53,7 +53,7 @@ function _renderItem (item) {
 
 function _renderHeader (item) {
 	const $li = $('<li class="' + this.cssClasses.HEADER + '"></li>');
-	$li.text(this.accessors.getText(item));
+	$li.text(item.getText());
 
 	return $li;
 }
@@ -70,11 +70,11 @@ function _render () {
 	this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
 	this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
 
-	const item = this._getSelection();
+	const selection = this._getSelection();
 	const width = this.getState('width');
-	const disabled = this.accessors.getDisabled(item);
-	const selectionName = this.accessors.getText(item) || this.strings.NONE_SELECTED;
-	const selectionString = item ? JSON.stringify(item) : '';
+	const disabled = selection.getDisabled();
+	const selectionName = selection.getText() || this.strings.NONE_SELECTED;
+	const selectionString = selection ? JSON.stringify(selection) : '';
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
 
@@ -96,7 +96,7 @@ function _render () {
 			item: _renderItem
 		};
 
-		func = funcMap[this.accessors.getType(item)] || _renderItem;
+		func = funcMap[item.getType()] || _renderItem;
 
 		$li = func.call(this, item);
 
@@ -171,7 +171,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 	},
 
 	_onSelected (data) {
-		const item = Lib.getItemAdapter(data);
+		const item = this._getItemAdapter(data);
 
 		if (!this.elements.hiddenField
 			|| !this.elements.label) {
@@ -179,7 +179,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		}
 
 		this.elements.hiddenField.val(JSON.stringify(data) || '');
-		this.elements.label.text(this.accessors.getText(item) || this.strings.NONE_SELECTED);
+		this.elements.label.text(item.getText() || this.strings.NONE_SELECTED);
 	},
 
 	_onEnabled () {
@@ -255,7 +255,7 @@ const legacyMethods = {
 
 	selectByText (text) {
 		return this.setSelection(item => {
-			const itemText = item && this.accessors.getText(item);
+			const itemText = item && item.getText();
 
 			return item && Lib.isString(itemText) && Lib.isString(text) && itemText.toLowerCase() === text.toLowerCase();
 		});
