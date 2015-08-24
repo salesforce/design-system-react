@@ -44,7 +44,6 @@
 	},
 	"facades": [
 		"jquery",
-		"marionette",
 		"react"
 	],
 	"components": [

@@ -32,11 +32,6 @@ module.exports = function (grunt) {
 					'examples/jquery/examples.js': 'src/jquery/examples.js'
 				}
 			},
-			marionetteExamples: {
-				files: {
-					'examples/marionette/examples.js': 'src/marionette/examples.js'
-				}
-			},
 			reactExamples: {
 				files: {
 					'examples/react/examples.js': 'src/react/examples.js'
@@ -66,10 +61,6 @@ module.exports = function (grunt) {
 			jqueryExamples: {
 				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/marionette/**/*.*', '!src/react/**/*.*'],
 				tasks: ['browserify:jqueryExamples']
-			},
-			marionetteExamples: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/jquery/**/*.*', '!src/react/**/*.*'],
-				tasks: ['browserify:marionetteExamples']
 			},
 			reactExamples: {
 				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/jquery/**/*.*', '!src/marionette/**/*.*'],
@@ -108,7 +99,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-eslint');
 	grunt.loadNpmTasks('grunt-mocha');
 
-	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:jqueryExamples', 'browserify:marionetteExamples', 'browserify:reactExamples']);
+	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:jqueryExamples', 'browserify:reactExamples']);
 	grunt.registerTask('serve', ['connect:server', 'default', 'watch']);
 	grunt.registerTask('test', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:tests', 'connect:server', 'mocha']);
 };
