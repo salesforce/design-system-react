@@ -43,6 +43,11 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 			return item.get('children');
 		},
 
+		// Proxy this call to the public accessor to ensure that we always receive a promise wrapped in a Data Adapter
+		_getChildren (item) {
+			return Promise.resolve(item.getChildren()).then(Lib.bind(this._getDataAdapter, this));
+		},
+
 		getType (item) {
 			return item.get('_itemType');
 		},
@@ -65,12 +70,7 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 			return item.get('id');
 		}
 	},
-	
-	// Proxy this call to the accessor to ensure that we always receive a promise wrapped in a Data Adapter
-	_getChildren (item) {
-		return Promise.resolve(item.getChildren()).then(Lib.bind(this._getDataAdapter, this));
-	},
-	
+
 	_canSelect (item) {
 		return item.getType() === 'item' || this.getProperty('folderSelect');
 	},

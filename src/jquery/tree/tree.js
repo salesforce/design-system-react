@@ -207,7 +207,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 			
 			$branchContent.append($loader);
 			
-			this._getChildren(branch).then(function (children) {
+			branch._getChildren().then(function (children) {
 				self._loopChildren(children, $branchContent, _level);
 			});
 		} else {
