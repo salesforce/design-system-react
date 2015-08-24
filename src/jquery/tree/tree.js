@@ -16,7 +16,6 @@ const fs = require('fs');
 
 const Tree = function Tree (element, options) {
 	this.options = Lib.extend({
-		selection: [],
 		open: []
 	}, options);
 	

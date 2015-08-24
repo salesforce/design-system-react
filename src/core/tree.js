@@ -5,10 +5,11 @@ import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
+import Multiselectable from '../traits/multiselectable';
 
 export const CONTROL = 'tree';
 
-const TreeCore = Lib.extend({}, Base, Disableable, {
+const TreeCore = Lib.extend({}, Base, Disableable, Multiselectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL
@@ -57,7 +58,7 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		// Reduce the number of fields here if a unique key is available
 		// Result can be either an object with key/value pairs to match or a function
 		getKey (item) {
-			return item.get();
+			return { id: item.get('id') };
 		},
 		
 		getId (item) {
@@ -70,71 +71,8 @@ const TreeCore = Lib.extend({}, Base, Disableable, {
 		return Promise.resolve(this.accessors.getChildren(item)).then(Lib.getDataAdapter);
 	},
 	
-	// TO-DO: We can probably pull this multi-select logic out to a trait
-	getSelectedItems () {
-		return this.getProperty('selection');
-	},
-	
-	_getSelectedItems () {
-		return Lib.getDataAdapter(this.getSelectedItems()).clone();
-	},
-	
-	_isItemSelected (item, selection) {
-		const _selection = selection || Lib.getDataAdapter(this.getSelectedItems());
-		return !!_selection.findWhere(this.accessors.getKey(item));
-	},
-	
 	_canSelect (item) {
 		return this.accessors.getType(item) === 'item' || this.getProperty('folderSelect');
-	},
-	
-	_selectItem (item) {
-		const selection = this._getSelectedItems();
-		
-		if (!this._isItemSelected(item, selection) && this._canSelect(item)) {
-			if (this.getProperty('multiSelect')) {
-				selection.add(item);
-			} else {
-				selection.reset(item);
-			}
-			
-			this.setProperties({ selection: selection._data });
-			if (Lib.isFunction(this._onSelected)) this._onSelected(selection);
-			
-			this.trigger('changed', item._item, selection._data);
-		}
-	},
-	
-	selectItem (_item) {
-		this._selectItem(Lib.getItemAdapter(_item));
-	},
-	
-	_deselectItem (item) {
-		const selection = this._getSelectedItems();
-		
-		if (this._isItemSelected(item, selection)) {
-			selection.remove(item);
-			
-			this.setProperties({ selection: selection._data });
-			if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
-			
-			this.trigger('changed', selection._item, selection._data);
-		}
-	},
-	
-	deselectItem (_item) {
-		this._deselectItem(Lib.getItemAdapter(_item));
-	},
-
-	deselectAll () {
-		const selection = this._getSelectedItems();
-		
-		selection.reset(null);
-		
-		this.setProperties({ selection: selection._data });
-		if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
-			
-		this.trigger('changed', null, selection._data);
 	},
 	
 	// TO-DO: This beginning code is basically the same as multi-select right now
