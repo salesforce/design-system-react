@@ -35,17 +35,16 @@ const Selectlist = function Selectlist (element, options) {
 };
 
 function _renderItem (item) {
+	const disabled = this.accessors.getDisabled(item);
 	let $a;
-	let disabled;
 	let $li;
 
 	$a = $('<a href="#" />');
-	$a.text(item.get('text'));
+	$a.text(this.accessors.getText(item));
 
-	disabled = !!item.get('disabled');
 	$li = $('<li />');
 	$li.data(item.get());
-	$li.toggleClass('disabled', disabled);
+	$li.toggleClass(this.cssClasses.DISABLED, disabled);
 	$li.prop('disabled', disabled);
 	$li.append($a);
 
@@ -53,14 +52,14 @@ function _renderItem (item) {
 }
 
 function _renderHeader (item) {
-	const $li = $('<li class="dropdown-header"></li>');
-	$li.text(item.get('text'));
+	const $li = $('<li class="' + this.cssClasses.HEADER + '"></li>');
+	$li.text(this.accessors.getText(item));
 
 	return $li;
 }
 
 function _renderDivider () {
-	const $li = $('<li role="separator" class="divider"></li>');
+	const $li = $('<li role="separator" class="' + this.cssClasses.DIVIDER + '"></li>');
 
 	return $li;
 }
@@ -73,23 +72,22 @@ function _render () {
 
 	const selection = Lib.getItemAdapter(this.getSelection());
 	const width = this.getState('width');
-	const disabled = !!this.getProperty('disabled');
-	const selectionName = selection.get('text') || 'None selected'; // TO-DO: don't hardcode this here
+	const disabled = this.accessors.getDisabled(selection);
+	const selectionName = this.accessors.getText(selection) || this.strings.NONE_SELECTED;
 	const selectionString = selection ? JSON.stringify(selection) : '';
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
 
-	// Yay for hacked-together "templates"!
 	elements.button.prop('disabled', disabled);
 	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 	elements.button.width(width);
 	elements.label.text(selectionName);
 	elements.hiddenField.val(selectionString);
 	elements.dropdownMenu.width(width);
+	elements.srOnly.text(this.strings.TOGGLE_DROPDOWN);
 
-	const self = this;
 	// Building the menu items
-	this._collection.forEach(function buildMenuItems (item) {
+	this._collection.forEach(item => {
 		let $li;
 		let func;
 		const funcMap = {
@@ -98,9 +96,9 @@ function _render () {
 			item: _renderItem
 		};
 
-		func = funcMap[item.get('_itemType')] || _renderItem;
+		func = funcMap[this.accessors.getType(item)] || _renderItem;
 
-		$li = func.call(self, item);
+		$li = func.call(this, item);
 
 		elements.dropdownMenu.append($li);
 	});
@@ -118,11 +116,13 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		els.hiddenField = base.find('.' + this.cssClasses.HIDDEN);
 		els.label = base.find('.' + this.cssClasses.LABEL);
 		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
+		els.srOnly = base.find('.' + this.cssClasses.SR_ONLY);
 
 		return els;
 	},
 
 	_buildCollection (options) {
+		const self = this;
 		const _options = options;
 		const collection = [];
 
@@ -143,9 +143,9 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 				item.disabled = true;
 			}
 
-			if ($item.hasClass('dropdown-header')) {
+			if ($item.hasClass(self.cssClasses.HEADER)) {
 				item._itemType = 'header';
-			} else if ($item.hasClass('divider')) {
+			} else if ($item.hasClass(self.cssClasses.DIVIDER)) {
 				item._itemType = 'divider';
 			}
 
@@ -161,7 +161,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 			_render.call(this);
 		}
 
-		this.elements.wrapper.on('click.fu.selectlist', '.dropdown-menu a', $.proxy(this._handleClicked, this));
+		this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.MENU + ' a', $.proxy(this._handleClicked, this));
 		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPress, this));
 	},
 
@@ -171,16 +171,15 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 	},
 
 	_onSelected (data) {
-		const _data = Lib.getItemAdapter(data);
+		const item = Lib.getItemAdapter(data);
 
 		if (!this.elements.hiddenField
 			|| !this.elements.label) {
 			return;
 		}
 
-		// TO-DO: clearly this isn't the best way to reset the text to "None selected"
 		this.elements.hiddenField.val(JSON.stringify(data) || '');
-		this.elements.label.text(_data.get('text') || 'None selected');
+		this.elements.label.text(this.accessors.getText(item) || this.strings.NONE_SELECTED);
 	},
 
 	_onEnabled () {
@@ -255,8 +254,8 @@ const legacyMethods = {
 	},
 
 	selectByText (text) {
-		return this.setSelection(function (item) {
-			const itemText = item && item.get('text');
+		return this.setSelection(item => {
+			const itemText = item && this.accessors.getText(item);
 
 			return item && Lib.isString(itemText) && Lib.isString(text) && itemText.toLowerCase() === text.toLowerCase();
 		});

@@ -33,11 +33,15 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
+		BTN_DEFAULT: 'btn btn-default',
 		BTN_GROUP: 'btn-group',
-		TOGGLE: 'dropdown-toggle',
+		CARET: 'caret',
+		DIVIDER: 'divider',
+		HEADER: 'dropdown-header',
 		HIDDEN: 'hidden-field',
 		LABEL: 'selected-label',
-		MENU: 'dropdown-menu'
+		MENU: 'dropdown-menu',
+		TOGGLE: 'dropdown-toggle'
 	},
 
 	_initializer (options) {
@@ -54,10 +58,30 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		}
 	},
 	
+	accessors: {
+		getText (item) {
+			return item.get('text');
+		},
+
+		getType (item) {
+			return item.get('_itemType');
+		},
+
+		getDisabled (item) {
+			return !!item.get('disabled');
+		},
+
+		// Reduce the number of fields here if a unique key is available
+		// Result can be either an object with key/value pairs to match or a function
+		getKey (item) {
+			return item.get();
+		}
+	},
+	
 	_canSelect (newSelection) {
-		const _item = Lib.getItemAdapter(newSelection);
+		const item = Lib.getItemAdapter(newSelection);
 		
-		return !_item.get('_itemType') && !_item.get('disabled');
+		return !this.accessors.getType(item) && !this.accessors.getDisabled(item);
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
@@ -94,8 +118,8 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		const label = sizer.querySelector('.' + self.cssClasses.LABEL);
 		const control = sizer.querySelector('.' + self.cssClasses.CONTROL);
 
-		this._collection.forEach(function (item) {
-			const text = item.get('text');
+		this._collection.forEach(item => {
+			const text = this.accessors.getText(item);
 			label.textContent = text;
 			newWidth = control.offsetWidth;
 			if (newWidth > width) {

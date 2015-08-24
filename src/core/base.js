@@ -4,7 +4,13 @@ import '../data/vanilla';
 const Base = {
 	// CSS classes used across every control
 	cssClasses: {
-		NAMESPACE: 'fuelux'
+		NAMESPACE: 'fuelux',
+		SR_ONLY: 'sr-only'
+	},
+	
+	strings: {
+		NONE_SELECTED: 'None selected',
+		TOGGLE_DROPDOWN: 'Toggle Dropdown'
 	},
 
 	_initialize (options) {

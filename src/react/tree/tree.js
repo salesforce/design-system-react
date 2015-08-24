@@ -26,7 +26,7 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 		multiSelect: React.PropTypes.bool,
 		autoOpen: React.PropTypes.bool,
 		autoOpenLimit: React.PropTypes.number,
-		collection: React.PropTypes.any,
+		collection: React.PropTypes.any.isRequired,
 		selection: React.PropTypes.any,
 		open: React.PropTypes.any,
 		onChanged: React.PropTypes.func,

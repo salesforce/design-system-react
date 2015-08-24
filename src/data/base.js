@@ -45,10 +45,10 @@ function _addMethods (instance, methods) {
 		instance.prototype[method] = function (callback, ...funcArgs) {
 			const _callback = function (item, ...callbackArgs) {
 				const _item = new instance.prototype.ItemType(item);
-				callback(_item, ...callbackArgs);
+				return callback(_item, ...callbackArgs);
 			};
 			
-			this._data[method](_callback, ...funcArgs);
+			return this._data[method](_callback, ...funcArgs);
 		};
 	});
 }

@@ -22,21 +22,16 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
-			React.PropTypes.number,
 			React.PropTypes.object
 		]),
-		collection: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object
-		]).isRequired,
+		collection: React.PropTypes.any.isRequired,
 		text: React.PropTypes.string
 	},
 
 	menuItems () {
-		// TO-DO: This should really look at this._collection unless we remove collection handling from the React facade
-		return this.props.collection.map((menuItem, index) => {
+		return this._collection.map((item, index) => {
 			return (
-				<SelectlistItem key={index} item={menuItem} onSelected={this.handleMenuItemSelected} />
+				<SelectlistItem key={index} item={item} text={this.accessors.getText(item)} type={this.accessors.getType(item)} disabled={this.accessors.getDisabled(item)} onSelected={this.handleMenuItemSelected} />
 			);
 		});
 	},
@@ -53,10 +48,10 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, disabledClass)} onKeyPress={this.handleKeyPress}>
-				<button className={classNames('btn btn-default', this.cssClasses.TOGGLE, disabledClass)} data-toggle="dropdown" type="button" disabled={this.props.disabled} style={styles}>
-					<span className="selected-label">{selection.get('text') || 'None selected'}</span>
-					<span className="caret"></span>
-					<span className="sr-only">Toggle Dropdown</span>
+				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.TOGGLE, disabledClass)} data-toggle="dropdown" type="button" disabled={this.props.disabled} style={styles}>
+					<span className={this.cssClasses.LABEL}>{this.accessors.getText(selection) || this.strings.NONE_SELECTED}</span>
+					<span className={this.cssClasses.CARET}></span>
+					<span className={this.cssClasses.SR_ONLY}>this.strings.TOGGLE_DROPDOWN</span>
 				</button>
 				<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
 					{this.menuItems()}
