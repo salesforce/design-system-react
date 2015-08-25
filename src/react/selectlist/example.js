@@ -55,18 +55,18 @@ export default function (element) {
 		render () {
 			const selectlists = this.state.models.map((model, index) => {
 				return (
-					<section className="example-group" key={index}>
-						<h1>Selectlist example (selectlist{index + 1})</h1>
-
+					<section className="example-group | slds-p-bottom--x-large" key={index}>
+						<h1 className="slds-text-heading--label">Selectlist example (selectlist{index + 1})</h1>
 						<div className="example slds-form-element">
 							<Selectlist {...model} onChanged={this._handleModelChange.bind(this, index)}/>
 						</div>
-
-						<div className="btn-panel action">
-							<button className="btn btn-default" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
-							<button className="btn btn-default" onClick={this.setSelection.bind(this, index)}>set by object</button>
-							<button className="btn btn-default" onClick={this.enable.bind(this, index)}>enable</button>
-							<button className="btn btn-default" onClick={this.disable.bind(this, index)}>disable</button>
+						<div className="slds-box | slds-theme--shade | slds-p-vertical--medium slds-m-top--medium ">
+							<div className="slds-button-group" role="group">
+								<button className="slds-button slds-button--neutral slds-button--small" onClick={this.logSelectedItem.bind(this, index)}>Log selected item</button>
+								<button className="slds-button slds-button--neutral slds-button--small" onClick={this.setSelection.bind(this, index)}>Set by object</button>
+								<button className="slds-button slds-button--neutral slds-button--small" onClick={this.enable.bind(this, index)}>Enable</button>
+								<button className="slds-button slds-button--neutral slds-button--small" onClick={this.disable.bind(this, index)}>Disable</button>
+							</div>
 						</div>
 					</section>
 				);
@@ -75,7 +75,9 @@ export default function (element) {
 			return (
 				<div>
 					{selectlists}
-					<button className="action btn btn-primary" onClick={this.toggleSelectlistsEnabled}>Toggle Enabled / Disabled</button>
+					<div className="slds-box | slds-theme--shade | slds-p-vertical--medium slds-m-top--x-small ">
+						<button className="slds-button slds-button--neutral slds-button--small" onClick={this.toggleSelectlistsEnabled}>Toggle Enabled / Disabled</button>
+					</div>
 				</div>
 			);
 		},

@@ -1,60 +1,56 @@
 <!doctype html public "library">
 <html lang="en">
+
 	<head>
 		<meta charset=utf-8/>
-
-		<title>React</title>
-
-		<link href="/slds.css" rel="stylesheet">
-		<link href="/styles.css" rel="stylesheet">
+		<title>Fuel UX Facades</title>
+		<link href="/assets/styles/salesforce-lightning-design-system.css" rel="stylesheet">
+		<!-- <link href="/assets/styles/styles.css" rel="stylesheet"> -->
+		<!-- <link href="/assets/styles/site.css" rel="stylesheet"> -->
 	</head>
+
 	<body>
-		<header class="navbar navbar-fixed-top fu-docs-nav" role="banner">
-			<div class="container">
-				<div class="navbar-header">
-					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".fu-navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a href="/" class="navbar-brand">Fuel UX</a>
-				</div>
-				<nav class="collapse navbar-collapse fu-navbar-collapse" role="navigation">
-					<ul class="nav navbar-nav">
-						<li class="active">
-							<a href="/react/">React</a>
+		<header class="slds-page-header | slds-col slds-size--1-of-1 slds-col-rule--bottom | slds-p-around--medium">
+			<a href="/">
+				<h1 class="slds-text-heading--medium slds-truncate" title="First Purchase">
+					<img src="/assets/images/logo.svg" width="150" alt="Salesforce Marketing Cloud" class="logo">
+				</h1>
+			</a>
+		</header>
+		<nav class="slds-grid">
+			<div class="slds-col | slds-has-flexi-truncate">
+				<div class="slds-tabs--default">
+					<ul class="slds-tabs--default__nav" role="tablist">
+						<li class="slds-tabs__item slds-text-heading--label slds-active" title="React" role="presentation">
+							<a href="/react/" role="tab" tabindex="0" aria-selected="true">React</a>
 						</li>
-						<li>
-							<a href="/jquery/">jQuery</a>
+						<li class="slds-tabs__item slds-text-heading--label x-slds-active" title="jQuery" role="presentation">
+							<a href="/jquery/" role="tab" tabindex="-1" aria-selected="false">jQuery</a>
 						</li>
 					</ul>
-				</nav>
-			</div>
-		</header>
-
-		<section class="example-group fuelux">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<section id="selectlist">
-						</section>
-					</div>
 				</div>
 			</div>
-		</section>
+		</nav>
+		<div class="slds-p-around--large">
+			<p>
+				Testing a core abstraction layer with many facades approach for FuelUX.
+			</p>
+		</div>
+		<div class="slds-grid">
 
-		<section class="example-group fuelux">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<section id="tree">
-						</section>
-					</div>
-				</div>
+			<div class="slds-col slds-col--padded-large">
+				<section id="selectlist">
+				</section>
 			</div>
-		</section>
 
+			<div class="slds-col slds-col--padded-large">
+				<section id="tree">
+				</section>
+			</div>
+		</div>
+		</main>
 		<script src="/react/examples.js"></script>
 	</body>
+
 </html>
+
