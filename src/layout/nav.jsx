@@ -10,37 +10,35 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 import {Icon} from "./../slds/SLDSIcons";
 
+import data from "./data";
+
 module.exports = React.createClass( {
 
   getDefaultProps () {
-    return {
-      isOpen:true
-    }
+    isOpen:true
   },
 
-  handleClick () {
-    if(this.props.onNavToggle){
-      this.props.onNavToggle();
-    }
+  getNavItems () {
+    return data.navItems.map(navItem => {
+      return (
+        <li style={{minWidth:200}}>
+          <span className={"slds-icon__container slds-icon-standard-"+navItem.icon+" slds-m-right--small"}>
+            <Icon name={navItem.icon} category="standard" />
+            <span className="slds-assistive-text">{navItem.title}</span>
+          </span>
+          <span className="stage-left__text slds-max-medium-hide">{navItem.title}</span>
+        </li>
+      );
+    });
   },
 
   render () {
     return (
-      <div className="slds-grid">
-        <div className={"stage-left slds-grid slds-size--2-of-12 slds-theme--alt-inverse slds-p-vertical--x-small slds-p-horizontal--medium "+(this.props.isOpen?"open":"")}
-          onClick={this.handleClick}>
-          <span className="slds-icon__container slds-align-middle">
 
-            <Icon name="rows"/>
-            <span className="slds-assistive-text">Toggle Menu</span>
+      <ul role="navigation" className="slds-has-block-links">
+        { this.getNavItems() }
+      </ul>
 
-          </span>
-
-        </div>
-        <div className="slds-p-vertical--x-small slds-p-horizontal--medium">
-          <img src="salesforce-logo.png" style={{height: 44}} />
-        </div>
-      </div>
     );
   }
 

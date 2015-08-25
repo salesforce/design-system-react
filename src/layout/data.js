@@ -6,44 +6,43 @@ Redistributions in binary form must reproduce the above copyright notice, this l
 Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
-import React from "react";
-import {Icon} from "./../slds/SLDSIcons";
-
-module.exports = React.createClass( {
-
-  getDefaultProps () {
-    return {
-      isOpen:true
+module.exports = {
+  navItems:[
+    {
+      title: "Home",
+      icon: "today",
+      url: "http://www.salesforce.com/designsystem"
+    },
+    {
+      title: "Record Workplace",
+      icon: "opportunity",
+      url: "/templates/record/workplace"
+    },
+    {
+      title: "Record Reference",
+      icon: "account",
+      url: "/templates/record/reference"
+    },
+    {
+      title: "Table Listing",
+      icon: "people",
+      url: "/templates/list/table"
+    },
+    {
+      title: "Board",
+      icon: "task",
+      url: "/templates/list/board"
+    },
+    {
+      title: "Notes",
+      icon: "note",
+      url: "/templates/detail/master"
+    },
+    {
+      title: "Dashboards",
+      icon: "dashboard",
+      url: "/templates/detail/master"
     }
-  },
 
-  handleClick () {
-    if(this.props.onNavToggle){
-      this.props.onNavToggle();
-    }
-  },
-
-  render () {
-    return (
-      <div className="slds-grid">
-        <div className={"stage-left slds-grid slds-size--2-of-12 slds-theme--alt-inverse slds-p-vertical--x-small slds-p-horizontal--medium "+(this.props.isOpen?"open":"")}
-          onClick={this.handleClick}>
-          <span className="slds-icon__container slds-align-middle">
-
-            <Icon name="rows"/>
-            <span className="slds-assistive-text">Toggle Menu</span>
-
-          </span>
-
-        </div>
-        <div className="slds-p-vertical--x-small slds-p-horizontal--medium">
-          <img src="salesforce-logo.png" style={{height: 44}} />
-        </div>
-      </div>
-    );
-  }
-
-} );
-
-
+  ]
+};

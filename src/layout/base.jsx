@@ -10,23 +10,32 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 
 import Header from "./header";
+import Nav from "./nav";
 
 module.exports = React.createClass( {
+
+  getInitialState () {
+    return {
+      isOpen: true
+    }
+  },
+
+  handleNavToggle () {
+    this.setState({isOpen:!this.state.isOpen});
+  },
 
   render () {
     return (
       <div className="slds-grid slds-grid--frame slds-grid--vertical">
 
         <header className="header slds-size--1-of-1" role="banner">
-          <Header />
+          <Header onNavToggle={this.handleNavToggle} isOpen={this.state.isOpen}/>
         </header>
 
         <div className="stage-container slds-grid slds-nowrap slds-size--1-of-1">
 
-          <nav className="stage-left slds-size--2-of-12 slds-shrink-none slds-theme--alt-inverse slds-p-around--small open">
-            {/*
-            <%= partial "sections/nav" %>
-            */}
+          <nav className={"stage-left slds-size--2-of-12 slds-shrink-none slds-theme--alt-inverse slds-p-around--small "+(this.state.isOpen?"open":"")}>
+            <Nav isOpen={this.state.isOpen} />
           </nav>
 
           <section className="stage slds-grid slds-grid--vertical slds-nowrap">
