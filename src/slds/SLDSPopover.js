@@ -1,9 +1,15 @@
-var React = require( "react/addons" );
-var TetherDrop = require( "tether-drop" );
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
-import { TransitionSpring, Spring } from 'react-motion';
+/*
+Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
 
-//require('./index.css');
+import React from "react";
+import TetherDrop from "tether-drop";
+import { TransitionSpring, Spring } from 'react-motion';
 
 module.exports = React.createClass( {
 
@@ -18,16 +24,12 @@ module.exports = React.createClass( {
   },
 
   propTypes: {
-    attachment: React.PropTypes.string,
     targetAttachment: React.PropTypes.string,
-    targetOffset: React.PropTypes.string
   },
 
   getDefaultProps: function() {
     return {
-      attachment: "top left",
       targetAttachment: "bottom left",
-      targetOffset: "-30px 0",
     };
   },
 
@@ -37,9 +39,9 @@ module.exports = React.createClass( {
     var popoverContainer = document.createElement( "span" );
     popoverContainer.className = "datepicker__container";
 
-    this._popoverElement = popoverContainer;
+    this.popoverElement = popoverContainer;
 
-    document.querySelector( "body" ).appendChild( this._popoverElement );
+    document.querySelector( "body" ).appendChild( this.popoverElement );
 
   },
 
@@ -93,9 +95,8 @@ module.exports = React.createClass( {
     let target = this.props.targetElement?this.props.targetElement.getDOMNode():this.getDOMNode().parentNode;
     return {
       target: target,
-      content: this._popoverElement,
-      classes: 'drop-theme-arrows',
-      position: 'bottom left',
+      content: this.popoverElement,
+      position: this.props.targetAttachment,
       openOn: 'always',
       beforeClose:this.beforeClose,
       constrainToWindow:true,
@@ -105,14 +106,14 @@ module.exports = React.createClass( {
 
   renderPopover: function() {
 
-    React.render( this.popoverComp(), this._popoverElement );
+    React.render( this.popoverComp(), this.popoverElement );
 
-    if(this._popoverElement && 
-        this._popoverElement.parentNode && 
-        this._popoverElement.parentNode.parentNode &&
-        this._popoverElement.parentNode.parentNode.className &&
-        this._popoverElement.parentNode.parentNode.className.indexOf('drop ') > -1 ){
-      this._popoverElement.parentNode.parentNode.style.zIndex = 10001;
+    if(this.popoverElement && 
+        this.popoverElement.parentNode && 
+        this.popoverElement.parentNode.parentNode &&
+        this.popoverElement.parentNode.parentNode.className &&
+        this.popoverElement.parentNode.parentNode.className.indexOf('drop ') > -1 ){
+      this.popoverElement.parentNode.parentNode.style.zIndex = 10001;
     }
 
     if ( this.drop != null ) {
@@ -127,9 +128,9 @@ module.exports = React.createClass( {
   componentWillUnmount: function() {
 
     this.drop.destroy();
-    React.unmountComponentAtNode( this._popoverElement );
-    if ( this._popoverElement.parentNode ) {
-      this._popoverElement.parentNode.removeChild( this._popoverElement );
+    React.unmountComponentAtNode( this.popoverElement );
+    if ( this.popoverElement.parentNode ) {
+      this.popoverElement.parentNode.removeChild( this.popoverElement );
     }
     if(this.props.onClose){
       this.props.onClose();
