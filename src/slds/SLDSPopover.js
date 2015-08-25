@@ -17,7 +17,7 @@ module.exports = React.createClass( {
 
   mixins: [ require( "react-onclickoutside" ) ],
 
-  handleClickOutside: function(e) {
+  handleClickOutside (e) {
     if(this.props.onClose){
       this.props.onClose();
     }
@@ -27,41 +27,35 @@ module.exports = React.createClass( {
     targetAttachment: React.PropTypes.string,
   },
 
-  getDefaultProps: function() {
+  getDefaultProps () {
     return {
       targetAttachment: "bottom left",
     };
   },
 
-  componentWillMount: function() {
+  componentWillMount () {
 
-
-    var popoverContainer = document.createElement( "span" );
-    popoverContainer.className = "datepicker__container";
-
-    this.popoverElement = popoverContainer;
-
+    this.popoverElement = document.createElement( "span" );
     document.querySelector( "body" ).appendChild( this.popoverElement );
 
   },
 
-  componentDidMount: function() {
+  componentDidMount () {
     this.renderPopover();
   },
 
-  componentDidUpdate: function() {
+  componentDidUpdate () {
     this.renderPopover();
   },
 
-  handleClick: function(event){
+  handleClick (event){
     event.preventDefault();
     event.stopPropagation();
   },
 
-  popoverComp: function() {
-    var className = this.props.className;
+  popoverComp () {
     return (
-      <div className={className} 
+      <div className={this.props.className} 
         onClick={this.handleClick} 
         onMousedown={this.handleClick} 
         onMouseup={this.handleClick}>
@@ -77,8 +71,7 @@ module.exports = React.createClass( {
             defaultValue={{ val:0 }}
             endValue={{ val:1, config: [70, 10] }}>
             {currentVal => {
-                var style = {opacity:currentVal.val};
-                return (<div style={style}>{this.props.children}</div>);
+                return (<div style={{opacity:currentVal.val}}>{this.props.children}</div>);
               }.bind(this)
             }
           </Spring>
@@ -88,10 +81,10 @@ module.exports = React.createClass( {
 
   },
 
-  beforeClose: function(){
+  beforeClose (){
   },
 
-  dropOptions: function() {
+  dropOptions () {
     let target = this.props.targetElement?this.props.targetElement.getDOMNode():this.getDOMNode().parentNode;
     return {
       target: target,
@@ -104,7 +97,7 @@ module.exports = React.createClass( {
     };
   },
 
-  renderPopover: function() {
+  renderPopover () {
 
     React.render( this.popoverComp(), this.popoverElement );
 
@@ -125,7 +118,7 @@ module.exports = React.createClass( {
     }
   },
 
-  componentWillUnmount: function() {
+  componentWillUnmount () {
 
     this.drop.destroy();
     React.unmountComponentAtNode( this.popoverElement );
@@ -137,8 +130,9 @@ module.exports = React.createClass( {
     }
   },
 
-  render: function() {
+  render () {
     return <span></span>;
   }
+
 } );
 
