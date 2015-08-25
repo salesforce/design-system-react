@@ -45,14 +45,17 @@ export let Icon = React.createClass({
         if (this.props.stateful) {
             className += "--stateful";
         }
+        if (this.props.className) {
+            className += " " +this.props.className;
+        }
         if (this.props.size) {
-            className = className + " slds-icon--" + this.props.size;
+            className += " slds-icon--" + this.props.size;
         }
         if (this.props.position) {
-            className = className + " slds-icon--" + this.props.position;
+            className += " slds-icon--" + this.props.position;
         }
-        className = className + " slds-icon-standard-" + (this.props.theme || this.props.name);
-        return <svg  aria-hidden="true" className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
+        className = className + " slds-icon-" + this.props.category + ' - ' + (this.props.theme || this.props.name);
+        return <svg aria-hidden="true" className={className} style={this.props.style} dangerouslySetInnerHTML={{__html: useTag }} />;
     }
 
 });

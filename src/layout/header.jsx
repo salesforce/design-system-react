@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from "react";
-import {Icon,InputIcon} from "./../slds/SLDSIcons";
+import {Icon} from "./../slds/SLDSIcons";
 
 module.exports = React.createClass( {
 
@@ -17,25 +17,15 @@ module.exports = React.createClass( {
       <div className="slds-grid">
         <div className="stage-left slds-grid slds-size--2-of-12 slds-theme--alt-inverse slds-p-vertical--x-small slds-p-horizontal--medium js-nav-toggle open">
           <span className="slds-icon__container slds-align-middle">
-{/*
-            <svg aria-hidden="true" className="slds-icon slds-icon--small">
-              <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#rows"></use>
-            </svg>
 
-*/}
             <Icon name="rows"/>
-
-
             <span className="slds-assistive-text">Toggle Menu</span>
-          </span>
 
-{/*
-          <Icon name="rows"/>
-*/}
+          </span>
 
         </div>
         <div className="slds-p-vertical--x-small slds-p-horizontal--medium">
-          <img src="/assets/img/salesforce-logo.png" style={{height: 44}} />
+          <img src="salesforce-logo.png" style={{height: 44}} />
         </div>
       </div>
     );
