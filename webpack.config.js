@@ -40,7 +40,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'style!css!sass')
+          loader: ExtractTextPlugin.extract('style-loader', 'css!sass')
       },
       {
         test: /\.(woff|woff2|svg)$/,

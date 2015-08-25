@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import SLDSDateInput from './slds/SLDSDateInput/index';
 import Menu from './slds/SLDSDropdowns/index.react';
+import BaseLayout from './layout/base';
 
+require('./index.scss')
 
 export default class App extends Component {
   filterItem(term, item) {
@@ -15,7 +17,7 @@ export default class App extends Component {
 
   render() {
     return (
-    <div>
+    <BaseLayout>
     <Menu itemSelected={this.showSelected.bind(this)} filterWith={this.filterItem.bind(this)} className="slds-dropdown--small customClass1">
       <Menu.Header className="customClass2">
         <Menu.Filter placeholder="Find in list..." className="customClass3" />
@@ -192,7 +194,7 @@ export default class App extends Component {
         </div>
     </div>
 
-    </div>
+    </BaseLayout>
     );
   }
 }
