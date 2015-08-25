@@ -39,15 +39,12 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	render () {
 		const item = this._getSelection();
 		
-		const disabledClass = {};
-		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
-		
 		const hiddenClass = {};
 		hiddenClass[this.cssClasses.HIDDEN] = !this.state.isOpen;
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, disabledClass)} onKeyPress={this.handleKeyPress}>
-				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.PICKLIST_LABEL, disabledClass)} aria-expanded={this.state.isOpen} onClick={this._handleItemClick}>
+			<div className={classNames(this.cssClasses.CONTROL)} onKeyPress={this.handleKeyPress} disabled={this.props.disabled}>
+				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.PICKLIST_LABEL)} aria-expanded={this.state.isOpen} onClick={this._handleItemClick} disabled={this.props.disabled}>
 					<span className={classNames(this.cssClasses.TRUNCATE)}>{item.getText() || this.strings.NONE_SELECTED}</span>
 					<svg aria-hidden="true" className={classNames(this.cssClasses.ICON)} dangerouslySetInnerHTML={{__html: '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'}}></svg>
 				</button>
@@ -65,9 +62,11 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	},
 	
 	_handleItemClick () {
-		this.setState({
-			isOpen: !this.getState('isOpen')
-		});
+		if (!this.props.disabled) {
+			this.setState({
+				isOpen: !this.getState('isOpen')
+			});
+		}
 	},
 
 	handleKeyPress (e) {

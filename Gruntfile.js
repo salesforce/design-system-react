@@ -65,10 +65,6 @@ module.exports = function (grunt) {
 			reactExamples: {
 				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/jquery/**/*.*', '!src/marionette/**/*.*'],
 				tasks: ['browserify:reactExamples']
-			},
-			tests: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
-				tasks: ['compileTests', 'compileTestsApi', 'browserify:tests']
 			}
 		},
 		connect: {
@@ -99,7 +95,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-eslint');
 	grunt.loadNpmTasks('grunt-mocha');
 
-	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:jqueryExamples', 'browserify:reactExamples']);
+	grunt.registerTask('default', ['eslint', 'browserify:jqueryExamples', 'browserify:reactExamples']);
 	grunt.registerTask('serve', ['connect:server', 'default', 'watch']);
 	grunt.registerTask('test', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:tests', 'connect:server', 'mocha']);
 };

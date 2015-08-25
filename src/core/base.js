@@ -8,7 +8,6 @@ const Base = {
 		SR_ONLY: 'sr-only',
 		TRUNCATE: 'slds-truncate',
 		ICON: 'slds-icon',
-		DISABLED: 'slds-disabled',
 		HIDDEN: 'slds-hide'
 	},
 	
