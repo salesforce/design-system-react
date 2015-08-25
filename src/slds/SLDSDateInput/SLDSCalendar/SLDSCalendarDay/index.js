@@ -18,10 +18,10 @@ module.exports = React.createClass({
         role="gridcell" 
         aria-disabled={isCurrentMonth}
         aria-selected={isToday}
-        className={(isToday ? " sds-is-today" : "") + (isCurrentMonth ? "" : " sds-disabled-text") + (this.props.date.isSame(this.props.selected) ? " sds-is-selected" : "")} 
+        className={(isToday ? " slds-is-today" : "") + (isCurrentMonth ? "" : " slds-disabled-text") + (this.props.date.isSame(this.props.selected) ? " slds-is-selected" : "")} 
         onClick={this.handleClick}
       >
-        <span className="sds-day">
+        <span className="slds-day">
           {this.props.date.date()}
         </span>
       </td>

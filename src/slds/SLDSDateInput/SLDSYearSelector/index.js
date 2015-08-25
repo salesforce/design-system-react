@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import SLDSPopover from '../../SLDSPopover/index';
+import SLDSPopover from '../../SLDSPopover';
 import Moment from 'moment';
+import {InputIcon} from "./../../SLDSIcons";
 
 var ListItemComponent = React.createClass( {
 
@@ -21,7 +22,7 @@ var ListItemComponent = React.createClass( {
 
   render() {
     return (
-      <li className={this.props.isSelected?'sds-is-selected':''} aria-selected={this.props.isSelected} onClick={this.handleClick}>
+      <li className={this.props.isSelected?'slds-is-selected':''} aria-selected={this.props.isSelected} onClick={this.handleClick}>
         { this.props.value }
       </li>
     )
@@ -73,8 +74,8 @@ module.exports = React.createClass( {
   listItems() {
     var listItems = [];
     var currentYear = this.props.moment.year();
-    var from = currentYear+this.props.relativeFrom;
-    var to = currentYear+this.props.relativeTo;
+    var from = Moment().add(this.props.relativeFrom,'y').year();
+    var to = Moment().add(this.props.relativeTo,'y').year();
 
     for(var i=from;i<to;i++){
       listItems.push(<ListItemComponent 
@@ -92,7 +93,7 @@ module.exports = React.createClass( {
       return (
         <SLDSPopover targetElement={this.refs.date}>
           <div className="ignore-react-onclickoutside">
-          <ul className="sds-datepicker--time__list" tabIndex="0">
+          <ul className="slds-datepicker--time__list" tabIndex="0">
             { this.listItems() }
           </ul>
           </div>
@@ -104,17 +105,18 @@ module.exports = React.createClass( {
 
   render() {
     return (
-      <div className="sds-form-element">
-        <div className="sds-form-element__control">
-          <div className="sds-input-has-icon sds-input-has-icon--right">
+      <div className="slds-form-element">
+        <div className="slds-form-element__control">
+          <div className="slds-input-has-icon slds-input-has-icon--right">
             <button id="year" 
-              className="sds-button sds-button--neutral sds-picklist__label" 
+              className="slds-button slds-button--neutral slds-picklist__label" 
               onClick={this.handleClick}
               onFocus={this.handleFocus}
               aria-haspopup="true" 
               aria-expanded="false">{this.props.moment.format('YYYY')}
-              <span style={{color:'black'}}>&nbsp;&nbsp;&darr;</span>
+              <span style={{color:'black'}}></span>
             </button>
+            <InputIcon name="down"/>
           </div>
         </div>
         {this.popover()}

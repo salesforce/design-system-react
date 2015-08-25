@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import SLDSSelectYear from '../../SLDSYearSelector/index';
+import {ButtonIcon} from "./../../../SLDSIcons";
 
 module.exports = React.createClass( {
 
@@ -52,24 +53,24 @@ module.exports = React.createClass( {
   render() {
     return (
 
-      <div className="sds-datepicker__filter sds-grid">
-        <div className="sds-datepicker__filter--month sds-grid sds-grid--align-spread sds-size--3-of-4">
-          <div className="sds-align-middle" role="button" aria-labelledby="bn_prev-label" tabIndex="0">
-            <button className="sds-button sds-button--icon-container" onClick={this.previousMonth}>
-              <span style={{color:'black'}}>&laquo;</span>
-              <span className="sds-assistive-text">Previous Month</span>
+      <div className="slds-datepicker__filter slds-grid">
+        <div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
+          <div className="slds-align-middle" role="button" aria-labelledby="bn_prev-label" tabIndex="0">
+            <button className="slds-button slds-button--icon-container" onClick={this.previousMonth}>
+              <ButtonIcon name="left"/>
+              <span className="slds-assistive-text">Previous Month</span>
             </button>
           </div>
 
-          <div id="month" className="sds-align-middle" role="heading" aria-live="assertive" aria-atomic="true">{this.props.moment.format("MMMM YYYY")}</div>
-          <div className="sds-align-middle" role="button" aria-labelledby="bn_next-label" tabIndex="0">
-            <button className="sds-button sds-button--icon-container" onClick={this.nextMonth}>
-              <span style={{color:'black'}}>&raquo;</span>
-              <span className="sds-assistive-text">Next Month</span>
+          <div id="month" className="slds-align-middle" role="heading" aria-live="assertive" aria-atomic="true">{this.props.moment.format("MMMM YYYY")}</div>
+          <div className="slds-align-middle" role="button" aria-labelledby="bn_next-label" tabIndex="0">
+            <button className="slds-button slds-button--icon-container" onClick={this.nextMonth}>
+              <ButtonIcon name="right"/>
+              <span className="slds-assistive-text">Next Month</span>
             </button>
           </div>
         </div>
-        <div className="sds-picklist datepicker__filter--year sds-shrink-none">
+        <div className="slds-picklist datepicker__filter--year slds-shrink-none">
           <SLDSSelectYear 
             moment={this.props.moment} 
             selected={this.props.selected} 

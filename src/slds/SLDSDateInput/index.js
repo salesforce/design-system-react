@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import SLDSPopover from '../SLDSPopover/index';
+import SLDSPopover from '../SLDSPopover';
 import SLDSDatePicker from './SLDSDatePicker/index';
 import Moment from 'moment';
+import {InputIcon} from "./../SLDSIcons";
 
 module.exports = React.createClass( {
 
@@ -10,7 +11,10 @@ module.exports = React.createClass( {
       string:'',
       selected: null,
       placeholder: 'Pick a Date',
-      format: 'MM/DD/YYYY'
+      format: 'MM/DD/YYYY',
+      onDateChange: function(moment){
+        console.log('onDateChage should be defined');
+      }
     }
   },
 
@@ -28,6 +32,9 @@ module.exports = React.createClass( {
       isOpen:false,
       string:moment.format(this.props.format)
     })
+    if(this.props.onDateChange){
+      this.props.onDateChange(moment)
+    }
   },
 
   handleClose() {
@@ -57,10 +64,14 @@ module.exports = React.createClass( {
   handleInputChange() {
     var string = this.refs.date.getDOMNode().value;
     if(Moment().isValid(string)){
+      var selected = Moment(string,this.props.format);
       this.setState({
-        selected:Moment(string,this.props.format),
+        selected:selected,
         string:string
       });
+      if(this.props.onDateChage){
+        this.props.onDateChange(selected)
+      }
     }
     else{
       this.setState({
@@ -72,14 +83,15 @@ module.exports = React.createClass( {
 
   render() {
     return (
-      <div className="sds-form-element">
-        <label className="sds-form-element__label" htmlFor="date">{this.props.label}</label>
-        <div className="sds-form-element__control">
-          <div className="sds-input-has-icon sds-input-has-icon--right">
+      <div className="slds-form-element">
+        <label className="slds-form-element__label" htmlFor="date">{this.props.label}</label>
+        <div className="slds-form-element__control">
+          <div className="slds-input-has-icon slds-input-has-icon--right">
+            <InputIcon name="event"/>
             <input 
               name="date"
               ref="date" 
-              className="sds-input" 
+              className="slds-input" 
               type="text" 
               placeholder={this.props.placeholder} 
               value={this.state.selected?this.state.string:''}

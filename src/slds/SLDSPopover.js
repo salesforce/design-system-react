@@ -1,9 +1,9 @@
 var React = require( "react/addons" );
 var TetherDrop = require( "tether-drop" );
 var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+import { TransitionSpring, Spring } from 'react-motion';
 
-
-require('./index.css');
+//require('./index.css');
 
 module.exports = React.createClass( {
 
@@ -44,11 +44,11 @@ module.exports = React.createClass( {
   },
 
   componentDidMount: function() {
-    this._renderPopover();
+    this.renderPopover();
   },
 
   componentDidUpdate: function() {
-    this._renderPopover();
+    this.renderPopover();
   },
 
   handleClick: function(event){
@@ -56,54 +56,77 @@ module.exports = React.createClass( {
     event.stopPropagation();
   },
 
-  _popoverComponent: function() {
-
-
-    console.log('_popoverComponent: ', this.props.children);
+  popoverComp: function() {
     var className = this.props.className;
     return (
       <div className={className} 
         onClick={this.handleClick} 
         onMousedown={this.handleClick} 
         onMouseup={this.handleClick}>
-        <div className="SLDSPopover">
-          <ReactCSSTransitionGroup transitionName="SLDSPopoverAnim" transitionAppear={true}>
-            {this.props.children}
-          </ReactCSSTransitionGroup>
+        <div className="slds-dropdown" 
+              style={{
+                transform:'none',
+                marginTop:'0.25rem',
+                marginBottom:'0.35rem',
+
+              }}>
+
+          <Spring 
+            defaultValue={{ val:0 }}
+            endValue={{ val:1, config: [70, 10] }}>
+            {currentVal => {
+                var style = {opacity:currentVal.val};
+                return (<div style={style}>{this.props.children}</div>);
+              }.bind(this)
+            }
+          </Spring>
         </div>
       </div>
     );
 
   },
 
+  beforeClose: function(){
+  },
 
-  _dropOptions: function() {
+  dropOptions: function() {
     let target = this.props.targetElement?this.props.targetElement.getDOMNode():this.getDOMNode().parentNode;
     return {
       target: target,
       content: this._popoverElement,
       classes: 'drop-theme-arrows',
       position: 'bottom left',
-      openOn: 'always'
+      openOn: 'always',
+      beforeClose:this.beforeClose,
+      constrainToWindow:true,
+      constrainToScrollParent:false
     };
   },
 
-  _renderPopover: function() {
+  renderPopover: function() {
 
-    React.render( this._popoverComponent(), this._popoverElement );
+    React.render( this.popoverComp(), this._popoverElement );
 
-    if ( this._drop != null ) {
-      if(this._drop.setOptions){
-        this._drop.setOptions( this._dropOptions() );
+    if(this._popoverElement && 
+        this._popoverElement.parentNode && 
+        this._popoverElement.parentNode.parentNode &&
+        this._popoverElement.parentNode.parentNode.className &&
+        this._popoverElement.parentNode.parentNode.className.indexOf('drop ') > -1 ){
+      this._popoverElement.parentNode.parentNode.style.zIndex = 10001;
+    }
+
+    if ( this.drop != null ) {
+      if(this.drop.setOptions){
+        this.drop.setOptions( this.dropOptions() );
       }
     } else if ( window && document ) {
-      this._drop = new TetherDrop( this._dropOptions() );
+      this.drop = new TetherDrop( this.dropOptions() );
     }
   },
 
   componentWillUnmount: function() {
 
-    this._drop.destroy();
+    this.drop.destroy();
     React.unmountComponentAtNode( this._popoverElement );
     if ( this._popoverElement.parentNode ) {
       this._popoverElement.parentNode.removeChild( this._popoverElement );

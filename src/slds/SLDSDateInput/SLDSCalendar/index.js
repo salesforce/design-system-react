@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Week from './SLDSCalendarWeek/index';
 import moment from 'moment';
 
-require('./index.css');
-
 module.exports = React.createClass({
 
   displayName: "SLDSCalendar",
@@ -77,7 +75,7 @@ module.exports = React.createClass({
     }
     var extra = 0;
     while(weeks.length < 6){
-      weeks.push(<tr key={'extra_'+extra++} className="week"><td><span className="sds-day">&nbsp;</span></td></tr>);
+      weeks.push(<tr key={'extra_'+extra++} className="week"><td><span className="slds-day">&nbsp;</span></td></tr>);
     }
 
     return weeks;
