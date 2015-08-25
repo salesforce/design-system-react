@@ -17,76 +17,39 @@ const collection = [
 ];
 
 $(function () {
-	// sample method buttons
-	$('.declarative .btnSelectlistGetSelectedItem').on('click', function () {
-		Lib.log($('#mySelectlist1').selectlist('selectedItem'));
-	});
-	$('.declarative .btnSelectlistSelectByValue').on('click', function () {
-		$('#mySelectlist1').selectlist('selectByValue', 2);
-	});
-	$('.declarative .btnSelectlistSelectBySelector').on('click', function () {
-		$('#mySelectlist1').selectlist('selectBySelector', 'li[data-fizz=buzz]');
-	});
-	$('.declarative .btnSelectlistSelectByIndex').on('click', function () {
-		$('#mySelectlist1').selectlist('selectByIndex', '4');
-	});
-	$('.declarative .btnSelectlistSelectByText').on('click', function () {
-		$('#mySelectlist1').selectlist('selectByText', 'One');
-	});
-	$('.declarative .btnSelectlistEnableSelectlist').on('click', function () {
-		$('#mySelectlist1').selectlist('enable');
-	});
-	$('.declarative .btnSelectlistDisableSelectlist').on('click', function () {
-		$('#mySelectlist1').selectlist('disable');
-	});
-	$('.declarative .btnSelectlistDestroy').on('click', function () {
-		const $container = $('#mySelectlist1').parent();
-		const markup = $('#mySelectlist1').selectlist('destroy');
-		Lib.log(markup);
-		$container.append(markup);
-		$('#mySelectlist1').selectlist();
-	});
-
-	// events
-	$('#mySelectlist1').on('changed.fu.selectlist', function (event, data) {
-		Lib.log('changed', data);
-	});
-
-
-	$('#mySelectlist2').selectlist({
+	$('#mySelectlist2')['slds-picklist']({
 		collection: collection,
 		resize: 'auto'
 	});
 
 	// sample method buttons
 	$('.imperative .btnSelectlistGetSelectedItem').on('click', function () {
-		Lib.log($('#mySelectlist2').selectlist('selectedItem'));
+		Lib.log($('#mySelectlist2')['slds-picklist']('selectedItem'));
 	});
 	$('.imperative .btnSelectlistSelectByIndex').on('click', function () {
-		$('#mySelectlist2').selectlist('selectByIndex', '1');
+		$('#mySelectlist2')['slds-picklist']('selectByIndex', '1');
 	});
 	$('.imperative .btnSelectlistSelectByText').on('click', function () {
-		$('#mySelectlist2').selectlist('selectByText', 'One');
+		$('#mySelectlist2')['slds-picklist']('selectByText', 'One');
 	});
 	$('.imperative .btnSelectlistEnableSelectlist').on('click', function () {
-		$('#mySelectlist2').selectlist('enable');
+		$('#mySelectlist2')['slds-picklist']('enable');
 	});
 	$('.imperative .btnSelectlistDisableSelectlist').on('click', function () {
-		$('#mySelectlist2').selectlist('disable');
+		$('#mySelectlist2')['slds-picklist']('disable');
 	});
 	$('.imperative .btnSelectlistDestroy').on('click', function () {
 		const $container = $('#mySelectlist2').parent();
-		const markup = $('#mySelectlist2').selectlist('destroy');
+		const markup = $('#mySelectlist2')['slds-picklist']('destroy');
 		Lib.log(markup);
 		$container.append(markup);
-		$('#mySelectlist2').selectlist();
+		$('#mySelectlist2')['slds-picklist']();
 	});
 
 	// events
 	$('#mySelectlist2').on('changed.fu.selectlist', function (event, data) {
 		Lib.log('changed', data);
 	});
-
 
 	const selectlist3 = new Selectlist($('#mySelectlist3'), {
 		collection: collection,
@@ -110,7 +73,4 @@ $(function () {
 	$('.new-api .btnSelectlistDisableSelectlist').on('click', function () {
 		selectlist3.disable();
 	});
-
-	// events
-	// TO-DO: Add a listener here once we have a framework-agnostic event
 });

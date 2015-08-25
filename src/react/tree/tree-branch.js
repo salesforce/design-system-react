@@ -67,7 +67,7 @@ const TreeBranch = React.createClass({
 		});
 
 		return (
-			<li className={classNames('slds-tree__branch', {'slds-is-open': isOpen, 'slds-is-selected': isSelected})} dataTemplate="treebranch" role="treeitem" aria-expanded={isOpen ? 'false' : 'true'} data-has-children={this.props.item.getExpandable() ? undefined : false}>
+			<li className={classNames('slds-tree__branch', {'slds-is-open': isOpen, 'x-slds-is-open': !isOpen, 'slds-is-selected': isSelected})} dataTemplate="treebranch" role="treeitem" aria-expanded={isOpen ? 'false' : 'true'} data-has-children={this.props.item.getExpandable() ? undefined : false}>
 				<div className="slds-tree__item">
 					<button className="slds-button slds-button--icon-bare slds-m-right--x-small" onClick={this._handleExpandClick.bind(this, this.props.item)}>
 						<svg aria-hidden="true" className="slds-button__icon slds-button__icon--small" dangerouslySetInnerHTML={{__html: '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>'}}></svg>

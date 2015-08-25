@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import Disableable from '../traits/disableable';
 import Selectable from '../traits/selectable';
 
-export const CONTROL = 'selectlist';
+export const CONTROL = 'slds-picklist';
 
 const KeyBuffer = function () {
 	const self = this;

@@ -75,7 +75,7 @@ const options = {
 };
 
 $(function () {
-	$('.imperative #tree1').tree({ collection: collection, autoOpen: true });
+	$('.imperative #tree1')['slds-tree']({ collection: collection, autoOpen: true });
 
 	const tree = new Tree($('.new-api #tree2'), options);
 	void(tree);

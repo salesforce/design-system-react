@@ -5,7 +5,7 @@ const Base = {
 	// CSS classes used across every control
 	cssClasses: {
 		NAMESPACE: 'slds',
-		SR_ONLY: 'sr-only',
+		SR_ONLY: 'slds-assistive-text',
 		TRUNCATE: 'slds-truncate',
 		ICON: 'slds-icon',
 		HIDDEN: 'slds-hide'
