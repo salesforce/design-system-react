@@ -13,17 +13,17 @@ export const CONTROL = 'selectlist';
 const KeyBuffer = function () {
 	const self = this;
 	this.buffer = '';
-	
-	return function add (key) {
+
+	return function add(key) {
 		if (self.timeout) {
 			Lib.global.clearTimeout(self.timeout);
 			self.timeout = undefined;
 		}
-		
+
 		self.timeout = Lib.global.setTimeout(function () {
 			self.buffer = '';
 		}, 400);
-		
+
 		self.buffer = self.buffer + key;
 		return self.buffer;
 	};
@@ -44,48 +44,48 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		TOGGLE: 'dropdown-toggle'
 	},
 
-	_initializer (options) {
+	_initializer(options) {
 		if (options && options.collection) {
 			this._collection = this._getDataAdapter(options.collection);
 		} else if (!this._collection) {
 			this._collection = this._getDataAdapter([]);
 		}
-		
+
 		this._keyBuffer = new KeyBuffer();
-		
+
 		if (options && options.resize === 'auto') {
 			if (Lib.isFunction(this.resize)) this.resize();
 		}
 	},
-	
+
 	accessors: {
-		getText (item) {
+		getText(item) {
 			return item.get('text');
 		},
 
-		getType (item) {
+		getType(item) {
 			return item.get('_itemType');
 		},
 
-		getDisabled (item) {
+		getDisabled(item) {
 			return !!item.get('disabled');
 		},
 
 		// Reduce the number of fields here if a unique key is available
 		// Result can be either an object with key/value pairs to match or a function
-		getKey (item) {
+		getKey(item) {
 			return item.get();
 		}
 	},
-	
-	_canSelect (newSelection) {
+
+	_canSelect(newSelection) {
 		const item = this._getItemAdapter(newSelection);
-		
+
 		return !item.getType() && !item.getDisabled();
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
-	resize () {
+	resize() {
 		const self = this;
 		const sizer = document.createElement('div');
 
@@ -125,16 +125,19 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 			if (newWidth > width) {
 				width = newWidth;
 			}
+
 		});
 
 		parent.removeChild(sizer);
 
-		this.setState({ width: width });
+		this.setState({
+			width: width
+		});
 		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
 	},
 
 	// For keyboard nav
-	_jumpToLetter (input) {
+	_jumpToLetter(input) {
 		let letter = input;
 		let selection;
 		let pattern;
@@ -147,19 +150,19 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		if (letter.length !== 1) {
 			return;
 		}
-		
+
 		// Combine subsequent keypresses
 		pattern = this._keyBuffer(letter).toLowerCase();
-		
+
 		// Support for navigating to the next option of the same letter with repeated presses of the same key
 		if (pattern.length > 1 && new RegExp('^[' + letter.replace('\\', '\\\\') + ']+$').test(pattern)) {
 			consecutive = pattern.length;
 		}
-		
+
 		const menu = this.elements.dropdownMenu[0];
 		const menuItems = [].slice.call(menu.getElementsByTagName('a'));
-		
-		menuItems.forEach(function compareMenuItem (menuItem) {
+
+		menuItems.forEach(function compareMenuItem(menuItem) {
 			if ((!selection && menuItem.textContent.substr(0, pattern.length).toLowerCase() === pattern) ||
 				(consecutive > 0 && menuItem.textContent.substr(0, 1).toLowerCase() === letter)) {
 				consecutive--;
@@ -172,3 +175,4 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 });
 
 export default SelectlistCore;
+
