@@ -58,7 +58,7 @@ export default function (element) {
 					<section className="example-group" key={index}>
 						<h1>Selectlist example (selectlist{index + 1})</h1>
 
-						<div className="example">
+						<div className="example slds-form-element">
 							<Selectlist {...model} onChanged={this._handleModelChange.bind(this, index)}/>
 						</div>
 

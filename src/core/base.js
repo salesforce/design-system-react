@@ -9,7 +9,7 @@ const Base = {
 	},
 	
 	strings: {
-		NONE_SELECTED: 'None selected',
+		NONE_SELECTED: 'Select an Option',
 		TOGGLE_DROPDOWN: 'Toggle Dropdown'
 	},
 
