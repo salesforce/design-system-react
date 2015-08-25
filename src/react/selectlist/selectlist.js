@@ -41,14 +41,16 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		
 		const disabledClass = {};
 		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
+		
+		const isOpen = this.getState('isOpen');
 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL)} onKeyPress={this.handleKeyPress}>
-				<button className="slds-button slds-button--neutral slds-picklist__label" aria-expanded="false">
+				<button className="slds-button slds-button--neutral slds-picklist__label" aria-expanded={isOpen} onClick={this._handleItemClick}>
 					<span className="slds-truncate">{item.getText() || this.strings.NONE_SELECTED}</span>
 					<svg aria-hidden="true" className="slds-icon" dangerouslySetInnerHTML={{__html: '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'}}></svg>
 				</button>
-				<div className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu slds-hide" hidden="true">
+				<div className={classNames('slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu', {'slds-hide': !isOpen})} hidden={!isOpen}>
 					<ul className="slds-dropdown__list" role="menu">
 						{this.menuItems()}
 					</ul>
@@ -59,6 +61,12 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 
 	handleMenuItemSelected (selection) {
 		this.setSelection(selection);
+	},
+	
+	_handleItemClick () {
+		this.setState({
+			isOpen: !this.getState('isOpen')
+		});
 	},
 
 	handleKeyPress (e) {
