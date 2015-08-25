@@ -67,7 +67,7 @@ function _render () {
 	this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
 
 	const selection = this._getSelection();
-	const disabled = selection.getDisabled();
+	const disabled = !!this.getProperty('disabled');
 	const selectionName = selection.getText() || this.strings.NONE_SELECTED;
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
@@ -76,6 +76,8 @@ function _render () {
 	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 	elements.label.text(selectionName);
 	elements.srOnly.text(this.strings.TOGGLE_DROPDOWN);
+	
+	this._onExpandOrCollapse();
 
 	// Building the menu items
 	this._collection.forEach(item => {
@@ -105,7 +107,8 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 
 		els.button = base.find('button.slds-picklist__label');
 		els.label = els.button.find('span');
-		els.dropdownMenu = base.find('.slds-dropdown__list');
+		els.menuWrapper = base.find('.slds-dropdown--menu');
+		els.dropdownMenu = els.menuWrapper.find('.slds-dropdown__list');
 		els.srOnly = base.find('.' + this.cssClasses.SR_ONLY);
 
 		return els;
@@ -116,13 +119,26 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 			_render.call(this);
 		}
 
-		this.elements.wrapper.on('click.fu.selectlist', '.slds-dropdown__list a', $.proxy(this._handleClicked, this));
+		this.elements.wrapper.on('click.fu.selectlist', 'button.slds-picklist__label', $.proxy(this._handleClicked, this));
+		this.elements.wrapper.on('click.fu.selectlist', '.slds-dropdown__list a', $.proxy(this._handleItemClicked, this));
 		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPress, this));
+		
+		this._closeMenu = $.proxy(this._closeMenu, this);
+		document.addEventListener('click', this._closeMenu, false);
 	},
 
 	destroy () {
+		document.removeEventListener('click', this._closeMenu, false);
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
+	},
+	
+	_onExpandOrCollapse () {
+		const isOpen = this.getState('isOpen');
+		
+		this.elements.button.prop('aria-expanded', isOpen);
+		this.elements.menuWrapper.toggleClass(this.cssClasses.HIDDEN, !isOpen);
+		this.elements.button.prop('hidden', !isOpen);
 	},
 
 	_onSelected (item) {
@@ -150,8 +166,31 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 			this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
 		}
 	},
-
+	
+	_closeMenu (e) {
+		if (e.originator !== this) {
+			this.setState({
+				isOpen: false
+			});
+			
+			this._onExpandOrCollapse();
+		}
+	},
+	
 	_handleClicked (e) {
+		const disabled = !!this.getProperty('disabled');
+		e.originalEvent.originator = this;
+		
+		if (!disabled) {
+			this.setState({
+				isOpen: !this.getState('isOpen')
+			});
+			
+			this._onExpandOrCollapse();
+		}
+	},
+
+	_handleItemClicked (e) {
 		e.preventDefault();
 
 		const $a = $(e.currentTarget);
