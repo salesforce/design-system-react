@@ -55,12 +55,12 @@ export default function (element) {
 		render () {
 			const selectlists = this.state.models.map((model, index) => {
 				return (
-					<section className="example-group" key={index}>
+					<section className="example-group | slds-p-bottom--x-large" key={index}>
 						<h1 className="slds-text-heading--label">Selectlist example (selectlist{index + 1})</h1>
 						<div className="example slds-form-element">
 							<Selectlist {...model} onChanged={this._handleModelChange.bind(this, index)}/>
 						</div>
-						<div className="slds-p-vertical--medium">
+						<div className="slds-box | slds-theme--shade | slds-p-vertical--medium slds-m-top--medium ">
 							<div className="slds-button-group" role="group">
 								<button className="slds-button slds-button--neutral slds-button--small" onClick={this.logSelectedItem.bind(this, index)}>Log selected item</button>
 								<button className="slds-button slds-button--neutral slds-button--small" onClick={this.setSelection.bind(this, index)}>Set by object</button>
@@ -75,7 +75,7 @@ export default function (element) {
 			return (
 				<div>
 					{selectlists}
-					<div className="slds-p-vertical--x-small">
+					<div className="slds-box | slds-theme--shade | slds-p-vertical--medium slds-m-top--x-small ">
 						<button className="slds-button slds-button--neutral slds-button--small" onClick={this.toggleSelectlistsEnabled}>Toggle Enabled / Disabled</button>
 					</div>
 				</div>
