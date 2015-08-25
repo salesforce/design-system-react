@@ -7,7 +7,7 @@ import Base from './base';
 import Disableable from '../traits/disableable';
 import Multiselectable from '../traits/multiselectable';
 
-export const CONTROL = 'tree';
+export const CONTROL = 'slds-tree';
 
 const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	// CSS classes used within this control

@@ -49,7 +49,7 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 		});
 
 		return (
-			<ul className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP)} role="tree">
+			<ul className={classNames(this.cssClasses.CONTROL)} role="tree">
 				{children}
 			</ul>
 		);

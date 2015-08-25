@@ -51,7 +51,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.TOGGLE, disabledClass)} data-toggle="dropdown" type="button" disabled={this.props.disabled} style={styles}>
 					<span className={this.cssClasses.LABEL}>{item.getText() || this.strings.NONE_SELECTED}</span>
 					<span className={this.cssClasses.CARET}></span>
-					<span className={this.cssClasses.SR_ONLY}>this.strings.TOGGLE_DROPDOWN</span>
+					<span className={this.cssClasses.SR_ONLY}>{this.strings.TOGGLE_DROPDOWN}</span>
 				</button>
 				<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
 					{this.menuItems()}
