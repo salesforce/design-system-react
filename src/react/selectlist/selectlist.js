@@ -64,18 +64,27 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	componentWillUnmount () {
 		document.removeEventListener('click', this._closeMenu, false);
 	},
+	
+	_onSelected () {
+		this.setState({
+			isOpen: false
+		});
+	},
 
 	_handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
 	
-	_closeMenu () {
-		// TO-DO: Implement this
+	_closeMenu (e) {
+		if (e.originator !== this) {
+			this.setState({
+				isOpen: false
+			});
+		}
 	},
 	
 	_handleClick (e) {
-		e.preventDefault();
-		e.stopPropagation();
+		e.nativeEvent.originator = this;
 		
 		if (!this.props.disabled) {
 			this.setState({
