@@ -4,7 +4,7 @@ import * as Lib from '../core/lib';
 
 const Disableable = {
 	cssClasses: {
-		DISABLED: 'disabled'
+		DISABLED: 'slds-disabled'
 	},
 
 	_initializer (options) {

@@ -4,8 +4,11 @@ import '../data/vanilla';
 const Base = {
 	// CSS classes used across every control
 	cssClasses: {
-		NAMESPACE: 'fuelux',
-		SR_ONLY: 'sr-only'
+		NAMESPACE: 'slds',
+		SR_ONLY: 'sr-only',
+		TRUNCATE: 'slds-truncate',
+		ICON: 'slds-icon',
+		HIDDEN: 'slds-hide'
 	},
 	
 	strings: {

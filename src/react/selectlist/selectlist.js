@@ -39,19 +39,17 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	render () {
 		const item = this._getSelection();
 		
-		const disabledClass = {};
-		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
-		
-		const isOpen = this.getState('isOpen');
+		const hiddenClass = {};
+		hiddenClass[this.cssClasses.HIDDEN] = !this.state.isOpen;
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL)} onKeyPress={this.handleKeyPress}>
-				<button className="slds-button slds-button--neutral slds-picklist__label" aria-expanded={isOpen} onClick={this._handleItemClick}>
-					<span className="slds-truncate">{item.getText() || this.strings.NONE_SELECTED}</span>
-					<svg aria-hidden="true" className="slds-icon" dangerouslySetInnerHTML={{__html: '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'}}></svg>
+			<div className={classNames(this.cssClasses.CONTROL)} onKeyPress={this.handleKeyPress} disabled={this.props.disabled}>
+				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.PICKLIST_LABEL)} aria-expanded={this.state.isOpen} onClick={this._handleItemClick} disabled={this.props.disabled}>
+					<span className={classNames(this.cssClasses.TRUNCATE)}>{item.getText() || this.strings.NONE_SELECTED}</span>
+					<svg aria-hidden="true" className={classNames(this.cssClasses.ICON)} dangerouslySetInnerHTML={{__html: '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'}}></svg>
 				</button>
-				<div className={classNames('slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu', {'slds-hide': !isOpen})} hidden={!isOpen}>
-					<ul className="slds-dropdown__list" role="menu">
+				<div className={classNames(this.cssClasses.MENU, hiddenClass)} hidden={!this.state.isOpen}>
+					<ul className={classNames(this.cssClasses.DROPDOWN_LIST)} role="menu" ref={this.cssClasses.DROPDOWN_LIST}>
 						{this.menuItems()}
 					</ul>
 				</div>
@@ -64,13 +62,15 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	},
 	
 	_handleItemClick () {
-		this.setState({
-			isOpen: !this.getState('isOpen')
-		});
+		if (!this.props.disabled) {
+			this.setState({
+				isOpen: !this.getState('isOpen')
+			});
+		}
 	},
 
 	handleKeyPress (e) {
-		this.elements.dropdownMenu = this.elements.dropdownMenu || Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.MENU]));
+		this.elements.dropdownMenu = this.elements.dropdownMenu || Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.DROPDOWN_LIST]));
 		
 		const key = e.key || e.keyIdentifier;
 		if (key) this._jumpToLetter(key);
