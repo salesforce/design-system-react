@@ -31,7 +31,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	menuItems () {
 		return this._collection.map((item, index) => {
 			return (
-				<SelectlistItem key={index} item={item} text={item.getText()} type={item.getType()} disabled={item.getDisabled()} onSelected={this.handleMenuItemSelected} />
+				<SelectlistItem key={index} item={item} text={item.getText()} type={item.getType()} disabled={item.getDisabled()} onSelected={this._handleMenuItemSelected} />
 			);
 		});
 	},
@@ -43,8 +43,8 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		hiddenClass[this.cssClasses.HIDDEN] = !this.state.isOpen;
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL)} onKeyPress={this.handleKeyPress} disabled={this.props.disabled}>
-				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.PICKLIST_LABEL)} aria-expanded={this.state.isOpen} onClick={this._handleItemClick} disabled={this.props.disabled}>
+			<div className={classNames(this.cssClasses.CONTROL)} onKeyPress={this._handleKeyPress} disabled={this.props.disabled}>
+				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.PICKLIST_LABEL)} aria-expanded={this.state.isOpen} onClick={this._handleClick} disabled={this.props.disabled}>
 					<span className={classNames(this.cssClasses.TRUNCATE)}>{item.getText() || this.strings.NONE_SELECTED}</span>
 					<svg aria-hidden="true" className={classNames(this.cssClasses.ICON)} dangerouslySetInnerHTML={{__html: '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'}}></svg>
 				</button>
@@ -56,12 +56,27 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 			</div>
 		);
 	},
+	
+	componentDidMount () {
+		document.addEventListener('click', this._closeMenu, false);
+	},
+	
+	componentWillUnmount () {
+		document.removeEventListener('click', this._closeMenu, false);
+	},
 
-	handleMenuItemSelected (selection) {
+	_handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
 	
-	_handleItemClick () {
+	_closeMenu () {
+		// TO-DO: Implement this
+	},
+	
+	_handleClick (e) {
+		e.preventDefault();
+		e.stopPropagation();
+		
 		if (!this.props.disabled) {
 			this.setState({
 				isOpen: !this.getState('isOpen')
@@ -69,7 +84,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		}
 	},
 
-	handleKeyPress (e) {
+	_handleKeyPress (e) {
 		this.elements.dropdownMenu = this.elements.dropdownMenu || Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.DROPDOWN_LIST]));
 		
 		const key = e.key || e.keyIdentifier;
