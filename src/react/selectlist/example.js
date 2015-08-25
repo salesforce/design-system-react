@@ -73,9 +73,9 @@ export default function (element) {
 			});
 
 			return (
-				<div>
+				<div className="example-group | slds-p-bottom--x-large">
 					{selectlists}
-					<div className="slds-box | slds-theme--shade | slds-p-vertical--medium slds-m-top--x-small ">
+					<div className="slds-box | slds-theme--shade | slds-p-vertical--medium slds-m-top--x-small">
 						<button className="slds-button slds-button--neutral slds-button--small" onClick={this.toggleSelectlistsEnabled}>Toggle Enabled / Disabled</button>
 					</div>
 				</div>

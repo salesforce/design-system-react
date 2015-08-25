@@ -77,6 +77,8 @@ export default function (element) {
 		render () {
 			return (
 				<div className="slds-tree-container" role="application">
+					<h4 className="slds-text-heading--label">Tree Example</h4>
+				
 					<Tree folderSelect={false} multiSelect={true} autoOpen={false} collection={collection} selection={this.state.selection} open={this.state.open} onChanged={this.handleChanged} onOpened={this.handleToggle} onClosed={this.handleToggle} />
 				</div>
 			);
