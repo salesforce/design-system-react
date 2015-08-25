@@ -33,15 +33,10 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
-		BTN_DEFAULT: 'btn btn-default',
-		BTN_GROUP: 'btn-group',
-		CARET: 'caret',
-		DIVIDER: 'divider',
-		HEADER: 'dropdown-header',
-		HIDDEN: 'hidden-field',
-		LABEL: 'selected-label',
-		MENU: 'dropdown-menu',
-		TOGGLE: 'dropdown-toggle'
+		BTN_DEFAULT: 'slds-button slds-button--neutral',
+		PICKLIST_LABEL: 'slds-picklist__label',
+		MENU: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
+		DROPDOWN_LIST: 'slds-dropdown__list'
 	},
 	
 	_defaultState: {
