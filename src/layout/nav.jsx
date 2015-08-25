@@ -22,11 +22,13 @@ module.exports = React.createClass( {
     return data.navItems.map(navItem => {
       return (
         <li style={{minWidth:200}}>
+          <a href="#">
           <span className={"slds-icon__container slds-icon-standard-"+navItem.icon+" slds-m-right--small"}>
             <Icon name={navItem.icon} category="standard" />
             <span className="slds-assistive-text">{navItem.title}</span>
           </span>
           <span className="stage-left__text slds-max-medium-hide">{navItem.title}</span>
+          </a>
         </li>
       );
     });

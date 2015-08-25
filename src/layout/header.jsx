@@ -31,7 +31,7 @@ module.exports = React.createClass( {
           onClick={this.handleClick}>
           <span className="slds-icon__container slds-align-middle">
 
-            <Icon name="rows"/>
+            <Icon name="rows" size="small" />
             <span className="slds-assistive-text">Toggle Menu</span>
 
           </span>
