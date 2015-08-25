@@ -43,6 +43,10 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		MENU: 'dropdown-menu',
 		TOGGLE: 'dropdown-toggle'
 	},
+	
+	_defaultState: {
+		isOpen: false
+	},
 
 	_initializer(options) {
 		if (options && options.collection) {
