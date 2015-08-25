@@ -25,8 +25,6 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      'sds-scss': '@salesforce-ux/landmark/scss/index.scss',
-      'sds-css': '@salesforce-ux/landmark/assets/styles/salesforce-design-system.css',
       'ui': '/src/ui'
     }
   },
@@ -43,7 +41,12 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract('style-loader', 'style!css!sass')
+      },
+      {
+        test: /\.(woff|woff2|svg)$/,
+        loader: 'url-loader?limit=100000'
       }
     ]
-  }
+  },
+
 };

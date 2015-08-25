@@ -1,0 +1,18 @@
+# Lightning Design System
+# Version: v0.8.0
+Lightning Design System
+
+Contents:
+
+assets/
+  fonts/ - the Salesforce Sans font
+  icons/ - PNG, SVG and SVG spritemap versions of icons
+  images/ - including spinners
+  styles/ - pre-built regular and namespaced CSS
+
+examples/ - example code
+
+scss/ - the Sass source for the Lightning Design System CSS
+
+slds.ase/slds.clr - adobe and ios swatch formats, respectively. See https://helpx.adobe.com/photoshop/using/customizing-color-pickers-swatches.html
+
