@@ -22,12 +22,6 @@ const Selectlist = function Selectlist (element, options) {
 
 	if (this.options.collection) {
 		this.rendered = false;
-	} else {
-		this._initElements(this.elements.wrapper, this.elements);
-
-		this._buildCollection(this.options);
-
-		this.rendered = true;
 	}
 	
 	this._initializeState();
@@ -39,10 +33,10 @@ function _renderItem (item) {
 	let $a;
 	let $li;
 
-	$a = $('<a href="#" />');
+	$a = $('<a href="#" tabIndex="-1" className="slds-truncate" />');
 	$a.text(item.getText());
 
-	$li = $('<li />');
+	$li = $('<li class="slds-dropdown__item slds-has-icon--left slds-dropdown__item has-icon--left" role="menuitem option" tabIndex="0" />');
 	$li.data(item.get());
 	$li.toggleClass(this.cssClasses.DISABLED, disabled);
 	$li.prop('disabled', disabled);
@@ -52,14 +46,17 @@ function _renderItem (item) {
 }
 
 function _renderHeader (item) {
-	const $li = $('<li class="' + this.cssClasses.HEADER + '"></li>');
-	$li.text(item.getText());
+	const $li = $('<li class="slds-dropdown__header"></li>');
+	
+	const $span = $('<span class="slds-text-heading--label"></span>');
+	$span.text(item.getText());
+	$li.append($span);
 
 	return $li;
 }
 
 function _renderDivider () {
-	const $li = $('<li role="separator" class="' + this.cssClasses.DIVIDER + '"></li>');
+	const $li = $('<li class="slds-dropdown__header"> - </li>');
 
 	return $li;
 }
@@ -68,22 +65,16 @@ function _render () {
 	// Prep for append
 	this.elements.wrapper.empty();
 	this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-	this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
 
 	const selection = this._getSelection();
-	const width = this.getState('width');
 	const disabled = selection.getDisabled();
 	const selectionName = selection.getText() || this.strings.NONE_SELECTED;
-	const selectionString = selection ? JSON.stringify(selection) : '';
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
 
 	elements.button.prop('disabled', disabled);
 	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
-	elements.button.width(width);
 	elements.label.text(selectionName);
-	elements.hiddenField.val(selectionString);
-	elements.dropdownMenu.width(width);
 	elements.srOnly.text(this.strings.TOGGLE_DROPDOWN);
 
 	// Building the menu items
@@ -112,48 +103,12 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 	_initElements (base, elements) {
 		const els = elements || {};
 
-		els.button = base.find('.' + this.cssClasses.TOGGLE);
-		els.hiddenField = base.find('.' + this.cssClasses.HIDDEN);
-		els.label = base.find('.' + this.cssClasses.LABEL);
-		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
+		els.button = base.find('button.slds-picklist__label');
+		els.label = els.button.find('span');
+		els.dropdownMenu = base.find('.slds-dropdown__list');
 		els.srOnly = base.find('.' + this.cssClasses.SR_ONLY);
 
 		return els;
-	},
-
-	_buildCollection (options) {
-		const self = this;
-		const _options = options;
-		const collection = [];
-
-		this.elements.dropdownMenu.find('li').each(function buildCollectionElements () {
-			const $item = $(this);
-			const item = $item.data();
-
-			if (!item.text) {
-				item.text = $item.text().trim();
-			}
-
-			if (item.selected) {
-				delete item.selected;
-				_options.selection = item;
-			}
-
-			if ($item.is('.disabled, :disabled')) {
-				item.disabled = true;
-			}
-
-			if ($item.hasClass(self.cssClasses.HEADER)) {
-				item._itemType = 'header';
-			} else if ($item.hasClass(self.cssClasses.DIVIDER)) {
-				item._itemType = 'divider';
-			}
-
-			$item.data(item);
-			collection.push(item);
-		});
-
-		_options.collection = collection;
 	},
 
 	_onInitialized () {
@@ -161,7 +116,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 			_render.call(this);
 		}
 
-		this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.MENU + ' a', $.proxy(this._handleClicked, this));
+		this.elements.wrapper.on('click.fu.selectlist', '.slds-dropdown__list a', $.proxy(this._handleClicked, this));
 		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPress, this));
 	},
 
@@ -171,12 +126,10 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 	},
 
 	_onSelected (item) {
-		if (!this.elements.hiddenField
-			|| !this.elements.label) {
+		if (!this.elements.label) {
 			return;
 		}
-
-		this.elements.hiddenField.val(JSON.stringify(item._item) || '');
+		
 		this.elements.label.text(item.getText() || this.strings.NONE_SELECTED);
 	},
 
@@ -196,17 +149,6 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 			this.elements.button.prop('disabled', true);
 			this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
 		}
-	},
-
-	resetWidth (width) {
-		if (!this.elements.button
-			|| !this.elements.dropdownMenu) {
-			return;
-		}
-
-		// TO-DO: Test this. And will this work to remove the style as well?
-		this.elements.button.width(width);
-		this.elements.dropdownMenu.width(width);
 	},
 
 	_handleClicked (e) {
