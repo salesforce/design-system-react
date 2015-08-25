@@ -1,6 +1,5 @@
 // Framework specific
 import React from 'react';
-import classNames from 'classnames';
 
 const SelectlistItem = React.createClass({
 	propTypes: {
@@ -16,15 +15,15 @@ const SelectlistItem = React.createClass({
 		
 		switch (this.props.type) {
 		case 'header':
-			html = <li className="dropdown-header">{this.props.text}</li>;
+			html = <li className="slds-dropdown__header"><span className="slds-text-heading--label">{this.props.text}</span></li>;
 			break;
 		case 'divider':
-			html = <li className="divider"></li>;
+			html = <li className="slds-dropdown__header"> - </li>;
 			break;
 		default:
 			html = (
-				<li className={classNames({ disabled: this.props.disabled })} disabled={this.props.disabled}>
-					<a href="#" onClick={this.handleClicked}>{this.props.text}</a>
+				<li className="slds-dropdown__item slds-has-icon--left slds-dropdown__item has-icon--left" role="menuitem option" tabIndex="0">
+					<a href="#" onClick={this.handleClicked} tabIndex="-1" className="slds-truncate">{this.props.text}</a>
 				</li>
 			);
 		}

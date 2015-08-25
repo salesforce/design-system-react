@@ -38,24 +38,21 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 
 	render () {
 		const item = this._getSelection();
-
-		const styles = {
-			width: this.state.width
-		};
 		
 		const disabledClass = {};
 		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, disabledClass)} onKeyPress={this.handleKeyPress}>
-				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.TOGGLE, disabledClass)} data-toggle="dropdown" type="button" disabled={this.props.disabled} style={styles}>
-					<span className={this.cssClasses.LABEL}>{item.getText() || this.strings.NONE_SELECTED}</span>
-					<span className={this.cssClasses.CARET}></span>
-					<span className={this.cssClasses.SR_ONLY}>{this.strings.TOGGLE_DROPDOWN}</span>
+			<div className={classNames(this.cssClasses.CONTROL)} onKeyPress={this.handleKeyPress}>
+				<button className="slds-button slds-button--neutral slds-picklist__label" aria-expanded="false">
+					<span className="slds-truncate">{item.getText() || this.strings.NONE_SELECTED}</span>
+					<svg aria-hidden="true" className="slds-icon" dangerouslySetInnerHTML={{__html: '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'}}></svg>
 				</button>
-				<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
-					{this.menuItems()}
-				</ul>
+				<div className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu slds-hide" hidden="true">
+					<ul className="slds-dropdown__list" role="menu">
+						{this.menuItems()}
+					</ul>
+				</div>
 			</div>
 		);
 	},
