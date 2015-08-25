@@ -75,7 +75,11 @@ export default function (element) {
 		},
 		
 		render () {
-			return <Tree folderSelect={false} multiSelect={true} autoOpen={false} collection={collection} selection={this.state.selection} open={this.state.open} onChanged={this.handleChanged} onOpened={this.handleToggle} onClosed={this.handleToggle} />;
+			return (
+				<div className="slds-tree-container" role="application">
+					<Tree folderSelect={false} multiSelect={true} autoOpen={false} collection={collection} selection={this.state.selection} open={this.state.open} onChanged={this.handleChanged} onOpened={this.handleToggle} onClosed={this.handleToggle} />
+				</div>
+			);
 		},
 		
 		handleChanged (item, selection) {
