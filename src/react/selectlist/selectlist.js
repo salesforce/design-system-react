@@ -44,11 +44,11 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 
 		return (
 			<div className={classNames(this.cssClasses.CONTROL)} onKeyPress={this.handleKeyPress}>
-				<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true">
+				<button className="slds-button slds-button--neutral slds-picklist__label" aria-expanded="false">
 					<span className="slds-truncate">{item.getText() || this.strings.NONE_SELECTED}</span>
 					<svg aria-hidden="true" className="slds-icon" dangerouslySetInnerHTML={{__html: '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'}}></svg>
 				</button>
-				<div className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu">
+				<div className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu slds-hide" hidden="true">
 					<ul className="slds-dropdown__list" role="menu">
 						{this.menuItems()}
 					</ul>
