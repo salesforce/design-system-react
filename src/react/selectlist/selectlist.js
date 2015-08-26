@@ -31,7 +31,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	menuItems () {
 		return this._collection.map((item, index) => {
 			return (
-				<SelectlistItem key={index} item={item} text={item.getText()} type={item.getType()} disabled={item.getDisabled()} onSelected={this.handleMenuItemSelected} />
+				<SelectlistItem key={index} item={item} text={item.getText()} type={item.getType()} disabled={item.getDisabled()} onSelected={this._handleMenuItemSelected} />
 			);
 		});
 	},
@@ -46,12 +46,15 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		const disabledClass = {};
 		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
 
+		const openClass = {};
+		openClass[this.cssClasses.OPEN] = this.state.isOpen;
+
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, disabledClass)} onKeyPress={this.handleKeyPress}>
-				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.TOGGLE, disabledClass)} data-toggle="dropdown" type="button" disabled={this.props.disabled} style={styles}>
+			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, disabledClass, openClass)} onKeyPress={this._handleKeyPressed}>
+				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.TOGGLE, disabledClass)} type="button" disabled={this.props.disabled} style={styles} aria-haspopup="true" aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
 					<span className={this.cssClasses.LABEL}>{item.getText() || this.strings.NONE_SELECTED}</span>
 					<span className={this.cssClasses.CARET}></span>
-					<span className={this.cssClasses.SR_ONLY}>this.strings.TOGGLE_DROPDOWN</span>
+					<span className={this.cssClasses.SR_ONLY}>{this.strings.TOGGLE_DROPDOWN}</span>
 				</button>
 				<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
 					{this.menuItems()}
@@ -59,12 +62,44 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 			</div>
 		);
 	},
-
-	handleMenuItemSelected (selection) {
-		this.setSelection(selection);
+	
+	componentDidMount () {
+		document.addEventListener('click', this._closeMenu, false);
+	},
+	
+	componentWillUnmount () {
+		document.removeEventListener('click', this._closeMenu, false);
+	},
+	
+	_closeMenu (e) {
+		if (e.originator !== this) {
+			this.setState({
+				isOpen: false
+			});
+		}
+	},
+	
+	_onSelected () {
+		this.setState({
+			isOpen: false
+		});
 	},
 
-	handleKeyPress (e) {
+	_handleMenuItemSelected (selection) {
+		this.setSelection(selection);
+	},
+	
+	_handleClicked (e) {
+		e.nativeEvent.originator = this;
+		
+		if (!this.props.disabled) {
+			this.setState({
+				isOpen: !this.getState('isOpen')
+			});
+		}
+	},
+
+	_handleKeyPressed (e) {
 		this.elements.dropdownMenu = this.elements.dropdownMenu || Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.MENU]));
 		
 		const key = e.key || e.keyIdentifier;
