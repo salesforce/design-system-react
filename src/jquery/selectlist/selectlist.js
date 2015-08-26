@@ -117,6 +117,17 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		els.label = base.find('.' + this.cssClasses.LABEL);
 		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
 		els.srOnly = base.find('.' + this.cssClasses.SR_ONLY);
+		
+		els.menuItems = [];
+		const menuItems = els.dropdownMenu[0].getElementsByTagName('li');
+		
+		for (let i = 0; i < menuItems.length; i++) {
+			const menuItem = menuItems[i].getElementsByTagName('a');
+			
+			if (!menuItems[i].disabled && menuItem.length === 1) {
+				els.menuItems.push(menuItem[0]);
+			}
+		}
 
 		return els;
 	},
@@ -161,8 +172,9 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 			_render.call(this);
 		}
 
-		this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.MENU + ' a', $.proxy(this._handleClicked, this));
-		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPress, this));
+		this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.MENU + ' a', $.proxy(this._handleMenuItemSelected, this));
+		this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
+		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
 	},
 
 	destroy () {
@@ -209,7 +221,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		this.elements.dropdownMenu.width(width);
 	},
 
-	_handleClicked (e) {
+	_handleMenuItemSelected (e) {
 		e.preventDefault();
 
 		const $a = $(e.currentTarget);
@@ -220,10 +232,28 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		}
 	},
 
-	_handleKeyPress (e) {
-		const key = e.which;
+	_handleKeyDown (e) {
+		let key;
+		
+		if (/(38)/.test(e.which)) {
+			key = 'ArrowUp';
+		} else if (/(40)/.test(e.which)) {
+			key = 'ArrowDown';
+		}
 
-		if (key) this._jumpToLetter(key);
+		if (key) {
+			e.preventDefault();
+			this._keyboardNav(key, this.elements.menuItems);
+		}
+	},
+
+	_handleKeyPressed (e) {
+		const key = String.fromCharCode(e.which);
+
+		if (key && key.length === 1) {
+			e.preventDefault();
+			this._keyboardNav(key, this.elements.menuItems);
+		}
 	}
 });
 
