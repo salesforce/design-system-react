@@ -10,6 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 import {Icon} from "./../slds/SLDSIcons";
 
+import Router from 'react-router';
+const { Route, DefaultRoute, RouteHandler, Link } = Router;
+
+
 import data from "./data";
 
 module.exports = React.createClass( {
@@ -22,13 +26,13 @@ module.exports = React.createClass( {
     return data.navItems.map(navItem => {
       return (
         <li>
-          <a href="#">
+          <Link to={navItem.to}>
           <span className={"slds-icon__container slds-icon-standard-"+navItem.icon+" slds-m-right--small"}>
             <Icon name={navItem.icon} category="standard" />
             <span className="slds-assistive-text">{navItem.title}</span>
           </span>
           <span className="stage-left__text slds-max-medium-hide">{navItem.title}</span>
-          </a>
+          </Link>
         </li>
       );
     });

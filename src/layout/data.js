@@ -11,37 +11,44 @@ module.exports = {
     {
       title: "Home",
       icon: "today",
-      url: "http://www.salesforce.com/designsystem"
+      url: "http://www.salesforce.com/designsystem",
+      to:'home'
     },
     {
       title: "Record Workplace",
       icon: "opportunity",
-      url: "/templates/record/workplace"
+      url: "/templates/record/workplace",
+      to:'workspace'
     },
     {
       title: "Record Reference",
       icon: "account",
-      url: "/templates/record/reference"
+      url: "/templates/record/reference",
+      to:'reference'
     },
     {
       title: "Table Listing",
       icon: "people",
-      url: "/templates/list/table"
+      url: "/templates/list/table",
+      to:'home'
     },
     {
       title: "Board",
       icon: "task",
-      url: "/templates/list/board"
+      url: "/templates/list/board",
+      to:'home'
     },
     {
       title: "Notes",
       icon: "note",
-      url: "/templates/detail/master"
+      url: "/templates/detail/master",
+      to:'home'
     },
     {
       title: "Dashboards",
       icon: "dashboard",
-      url: "/templates/detail/master"
+      url: "/templates/detail/master",
+      to:'home'
     }
 
   ]

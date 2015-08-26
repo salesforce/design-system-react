@@ -38,9 +38,8 @@ module.exports = React.createClass( {
             <Nav isOpen={this.state.isOpen} />
           </nav>
 
-          <section className="stage slds-grid slds-grid--vertical slds-nowrap">
-            {this.props.children}
-          </section>
+          {this.props.children}
+
         </div>
       </div>
     );

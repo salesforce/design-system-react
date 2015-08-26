@@ -50,6 +50,7 @@
     "react-dom": "^0.14.0-beta3",
     "react-motion": "^0.2.7",
     "react-onclickoutside": "0.3.0",
+    "react-router": "^0.13.3",
     "sass-loader": "^1.0.0",
     "style-loader": "^0.9.0",
     "tether": "^1.1.0",
