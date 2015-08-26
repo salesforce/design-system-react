@@ -23,6 +23,8 @@ const Selectlist = function Selectlist (element, options) {
 	if (this.options.collection) {
 		this.rendered = false;
 	} else {
+		this.isBootstrap3 = Lib.isFunction($().emulateTransitionEnd);
+		
 		this._initElements(this.elements.wrapper, this.elements);
 
 		this._buildCollection(this.options);
@@ -72,7 +74,7 @@ function _render () {
 
 	const selection = this._getSelection();
 	const width = this.getState('width');
-	const disabled = selection.getDisabled();
+	const disabled = !!this.getProperty('disabled');
 	const selectionName = selection.getText() || this.strings.NONE_SELECTED;
 	const selectionString = selection ? JSON.stringify(selection) : '';
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
@@ -85,6 +87,8 @@ function _render () {
 	elements.hiddenField.val(selectionString);
 	elements.dropdownMenu.width(width);
 	elements.srOnly.text(this.strings.TOGGLE_DROPDOWN);
+	
+	this._onExpandOrCollapse();
 
 	// Building the menu items
 	this._collection.forEach(item => {
@@ -104,6 +108,18 @@ function _render () {
 	});
 
 	this.elements.wrapper.append($html.children());
+	
+	// Get the menu items for keyboard nav
+	this.elements.menuItems = [];
+	const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
+	
+	for (let i = 0; i < menuItems.length; i++) {
+		const menuItem = menuItems[i].getElementsByTagName('a');
+		
+		if (!menuItems[i].disabled && menuItem.length === 1) {
+			this.elements.menuItems.push(menuItem[0]);
+		}
+	}
 
 	this.rendered = true;
 }
@@ -117,17 +133,6 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		els.label = base.find('.' + this.cssClasses.LABEL);
 		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
 		els.srOnly = base.find('.' + this.cssClasses.SR_ONLY);
-		
-		els.menuItems = [];
-		const menuItems = els.dropdownMenu[0].getElementsByTagName('li');
-		
-		for (let i = 0; i < menuItems.length; i++) {
-			const menuItem = menuItems[i].getElementsByTagName('a');
-			
-			if (!menuItems[i].disabled && menuItem.length === 1) {
-				els.menuItems.push(menuItem[0]);
-			}
-		}
 
 		return els;
 	},
@@ -172,14 +177,26 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 			_render.call(this);
 		}
 
+		if (!this.isBootstrap3) this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.TOGGLE, $.proxy(this._handleClicked, this));
 		this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.MENU + ' a', $.proxy(this._handleMenuItemSelected, this));
-		this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
+		if (!this.isBootstrap3) this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
+		
+		this._closeMenu = $.proxy(this._closeMenu, this);
+		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
 	},
 
 	destroy () {
+		if (!this.isBootstrap3) document.removeEventListener('click', this._closeMenu, false);
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
+	},
+	
+	_onExpandOrCollapse () {
+		const isOpen = this.getState('isOpen');
+		
+		this.elements.button.prop('aria-expanded', isOpen);
+		this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
 	},
 
 	_onSelected (item) {
@@ -190,6 +207,16 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 
 		this.elements.hiddenField.val(JSON.stringify(item._item) || '');
 		this.elements.label.text(item.getText() || this.strings.NONE_SELECTED);
+	},
+	
+	_closeMenu (e) {
+		if (e.originator !== this) {
+			this.setState({
+				isOpen: false
+			});
+			
+			this._onExpandOrCollapse();
+		}
 	},
 
 	_onEnabled () {
@@ -221,6 +248,19 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		this.elements.dropdownMenu.width(width);
 	},
 
+	_handleClicked (e) {
+		const disabled = !!this.getProperty('disabled');
+		e.originalEvent.originator = this;
+		
+		if (!disabled) {
+			this.setState({
+				isOpen: !this.getState('isOpen')
+			});
+			
+			this._onExpandOrCollapse();
+		}
+	},
+
 	_handleMenuItemSelected (e) {
 		e.preventDefault();
 
@@ -244,6 +284,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		if (key) {
 			e.preventDefault();
 			this._keyboardNav(key, this.elements.menuItems);
+			this._onExpandOrCollapse();
 		}
 	},
 
@@ -253,6 +294,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		if (key && key.length === 1) {
 			e.preventDefault();
 			this._keyboardNav(key, this.elements.menuItems);
+			this._onExpandOrCollapse();
 		}
 	}
 });
