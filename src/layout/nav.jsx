@@ -21,7 +21,7 @@ module.exports = React.createClass( {
   getNavItems () {
     return data.navItems.map(navItem => {
       return (
-        <li style={{minWidth:200}}>
+        <li>
           <a href="#">
           <span className={"slds-icon__container slds-icon-standard-"+navItem.icon+" slds-m-right--small"}>
             <Icon name={navItem.icon} category="standard" />
