@@ -18,6 +18,7 @@ const TreeBranch = React.createClass({
 	propTypes: {
 		item: React.PropTypes.object.isRequired,
 		selectable: React.PropTypes.bool.isRequired,
+		strings: React.PropTypes.object.isRequired,
 		autoOpenLevel: React.PropTypes.number.isRequired,
 		autoOpenLimit: React.PropTypes.number.isRequired,
 		onItemClick: React.PropTypes.func.isRequired,
@@ -60,7 +61,7 @@ const TreeBranch = React.createClass({
 			const id = model.getId();
 			
 			if (model.getType() === 'folder') {
-				children.push(<TreeBranch key={id} item={model} selectable={this.props.selectable} autoOpenLevel={this.props.autoOpenLevel + 1} autoOpenLimit={this.props.autoOpenLimit} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
+				children.push(<TreeBranch key={id} item={model} selectable={this.props.selectable} strings={this.props.strings} autoOpenLevel={this.props.autoOpenLevel + 1} autoOpenLimit={this.props.autoOpenLimit} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
 			} else {
 				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick.bind(this, model)} _isItemSelected={this.props._isItemSelected} />);
 			}

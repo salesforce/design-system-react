@@ -38,14 +38,19 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 
 	render () {
 		const item = this._getSelection();
+
+		const selectionName = (item && item.getText()) || this.state.strings.NONE_SELECTED;
 		
 		const hiddenClass = {};
 		hiddenClass[this.cssClasses.HIDDEN] = !this.state.isOpen;
 
+		const openClass = {};
+		openClass[this.cssClasses.OPEN] = this.state.isOpen;
+
 		return (
-			<div className={classNames(this.cssClasses.CONTROL)} onKeyPress={this._handleKeyPress} disabled={this.props.disabled}>
-				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.PICKLIST_LABEL)} aria-expanded={this.state.isOpen} onClick={this._handleClick} disabled={this.props.disabled}>
-					<span className={classNames(this.cssClasses.TRUNCATE)}>{item.getText() || this.strings.NONE_SELECTED}</span>
+			<div className={classNames(this.cssClasses.CONTROL)} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} disabled={this.props.disabled}>
+				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.PICKLIST_LABEL)} aria-expanded={this.state.isOpen} onClick={this._handleClicked} disabled={this.props.disabled}>
+					<span className={classNames(this.cssClasses.TRUNCATE)}>{selectionName}</span>
 					<svg aria-hidden="true" className={classNames(this.cssClasses.ICON)} dangerouslySetInnerHTML={{__html: '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'}}></svg>
 				</button>
 				<div className={classNames(this.cssClasses.MENU, hiddenClass)} hidden={!this.state.isOpen}>
@@ -59,12 +64,32 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	
 	componentDidMount () {
 		document.addEventListener('click', this._closeMenu, false);
+		this._findElements();
+	},
+	
+	componentDidUpdate () {
+		this._findElements();
 	},
 	
 	componentWillUnmount () {
 		document.removeEventListener('click', this._closeMenu, false);
 	},
-	
+
+	_findElements () {
+		this.elements.dropdownMenu = Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.DROPDOWN_LIST]));
+		
+		this.elements.menuItems = [];
+		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
+		
+		for (let i = 0; i < menuItems.length; i++) {
+			const menuItem = menuItems[i].getElementsByTagName('a');
+			
+			if (!menuItems[i].disabled && menuItem.length === 1) {
+				this.elements.menuItems.push(menuItem[0]);
+			}
+		}
+	},
+
 	_onSelected () {
 		this.setState({
 			isOpen: false
@@ -74,7 +99,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 	_handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
-	
+
 	_closeMenu (e) {
 		if (e.originator !== this) {
 			this.setState({
@@ -83,7 +108,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		}
 	},
 	
-	_handleClick (e) {
+	_handleClicked (e) {
 		e.nativeEvent.originator = this;
 		
 		if (!this.props.disabled) {
@@ -93,11 +118,11 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		}
 	},
 
-	_handleKeyPress (e) {
-		this.elements.dropdownMenu = this.elements.dropdownMenu || Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.DROPDOWN_LIST]));
-		
-		const key = e.key || e.keyIdentifier;
-		if (key) this._jumpToLetter(key);
+	_handleKeyPressed (e) {
+		if (e.key && (/(ArrowUp|ArrowDown)/.test(e.key) || e.key.length === 1)) {
+			e.preventDefault();
+			this._keyboardNav(e.key, this.elements.menuItems);
+		}
 	}
 }));
 

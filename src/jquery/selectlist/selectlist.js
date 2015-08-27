@@ -62,20 +62,22 @@ function _renderDivider () {
 }
 
 function _render () {
+	const strings = this.getState('strings');
+	
 	// Prep for append
 	this.elements.wrapper.empty();
 	this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
 
 	const selection = this._getSelection();
 	const disabled = !!this.getProperty('disabled');
-	const selectionName = selection.getText() || this.strings.NONE_SELECTED;
+	const selectionName = (selection && selection.getText()) || strings.NONE_SELECTED;
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
 
 	elements.button.prop('disabled', disabled);
 	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 	elements.label.text(selectionName);
-	elements.srOnly.text(this.strings.TOGGLE_DROPDOWN);
+	elements.srOnly.text(strings.TOGGLE_DROPDOWN);
 	
 	this._onExpandOrCollapse();
 
@@ -118,10 +120,23 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		if (!this.rendered) {
 			_render.call(this);
 		}
+		
+		// Get the menu items for keyboard nav
+		this.elements.menuItems = [];
+		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
+		
+		for (let i = 0; i < menuItems.length; i++) {
+			const menuItem = menuItems[i].getElementsByTagName('a');
+			
+			if (!menuItems[i].disabled && menuItem.length === 1) {
+				this.elements.menuItems.push(menuItem[0]);
+			}
+		}
 
 		this.elements.wrapper.on('click.fu.selectlist', 'button.slds-picklist__label', $.proxy(this._handleClicked, this));
-		this.elements.wrapper.on('click.fu.selectlist', '.slds-dropdown__list a', $.proxy(this._handleItemClicked, this));
-		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPress, this));
+		this.elements.wrapper.on('click.fu.selectlist', '.slds-dropdown__list a', $.proxy(this._handleMenuItemSelected, this));
+		this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
+		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
 		
 		this._closeMenu = $.proxy(this._closeMenu, this);
 		document.addEventListener('click', this._closeMenu, false);
@@ -142,11 +157,13 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 	},
 
 	_onSelected (item) {
+		const strings = this.getState('strings');
+		
 		if (!this.elements.label) {
 			return;
 		}
 		
-		this.elements.label.text(item.getText() || this.strings.NONE_SELECTED);
+		this.elements.label.text(item.getText() || strings.NONE_SELECTED);
 	},
 
 	_onEnabled () {
@@ -190,7 +207,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		}
 	},
 
-	_handleItemClicked (e) {
+	_handleMenuItemSelected (e) {
 		e.preventDefault();
 
 		const $a = $(e.currentTarget);
@@ -201,10 +218,30 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 		}
 	},
 
-	_handleKeyPress (e) {
-		const key = e.which;
+	_handleKeyDown (e) {
+		let key;
+		
+		if (/(38)/.test(e.which)) {
+			key = 'ArrowUp';
+		} else if (/(40)/.test(e.which)) {
+			key = 'ArrowDown';
+		}
 
-		if (key) this._jumpToLetter(key);
+		if (key) {
+			e.preventDefault();
+			this._keyboardNav(key, this.elements.menuItems);
+			this._onExpandOrCollapse();
+		}
+	},
+
+	_handleKeyPressed (e) {
+		const key = String.fromCharCode(e.which);
+
+		if (key && key.length === 1) {
+			e.preventDefault();
+			this._keyboardNav(key, this.elements.menuItems);
+			this._onExpandOrCollapse();
+		}
 	}
 });
 
@@ -212,14 +249,10 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 
 const legacyMethods = {
 	selectedItem () {
-		let selection = this.getSelection();
+		let selection = this._getSelection();
 
 		if (selection) {
-			if (Lib.isFunction(selection.toJSON)) {
-				selection = selection.toJSON();
-			} else {
-				selection = Lib.extend({}, selection);
-			}
+			selection = Lib.extend({}, selection.get());
 
 			selection.selected = true;
 			delete selection._itemType;

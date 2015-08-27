@@ -52,8 +52,10 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		}
 	},
 
-	_handleBranchClicked ($event) {
-		const $el = $($event.currentTarget).closest('li.slds-tree__item, li.slds-tree__branch');
+	_handleBranchClicked (e) {
+		e.preventDefault();
+		
+		const $el = $(e.currentTarget).closest('li.slds-tree__item, li.slds-tree__branch');
 		const branch = this._getItemAdapter($el.data('item'));
 		
 		this._toggleFolder(branch);
@@ -73,8 +75,10 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		});
 	},
 	
-	_handleItemClicked ($event) {
-		const $el = $($event.currentTarget).closest('li.slds-tree__item, li.slds-tree__branch');
+	_handleItemClicked (e) {
+		e.preventDefault();
+		
+		const $el = $(e.currentTarget).closest('li.slds-tree__item, li.slds-tree__branch');
 		const item = this._getItemAdapter($el.data('item'));
 		const selected = this._isItemSelected(item);
 		

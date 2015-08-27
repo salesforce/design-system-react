@@ -10,24 +10,35 @@ const Base = {
 		ICON: 'slds-icon',
 		HIDDEN: 'slds-hide'
 	},
-	
-	strings: {
-		NONE_SELECTED: 'Select an Option',
-		TOGGLE_DROPDOWN: 'Toggle Dropdown'
+
+	_defaultState: {
+		strings: {}
 	},
 
 	_initialize (options) {
 		if (Lib.isFunction(this._onBeforeInitialize)) this._onBeforeInitialize(options);
 
+		// Accessors cannot be updated after initialization
 		if (options && Lib.isObject(options.accessors)) {
 			Lib.extend(this.accessors, options.accessors);
 			delete options.accessors;
 		}
+		
+		this.setProperties(options);
+		
+		const collection = this.getProperty('collection');
+		if (collection) this._collection = this._getDataAdapter(collection);
 
-		// If this controls does anything with options that are passed to it, do that now
-		if (Lib.isFunction(this._initializer)) this._initializer(options);
+		// Run any initializers provided by the control and/or the traits
+		if (Lib.isFunction(this._initializer)) this._initializer();
 
-		if (Lib.isFunction(this._onInitialized)) this._onInitialized(options);
+		this._getStrings(strings => {
+			this.setState({
+				strings
+			});
+			
+			if (Lib.isFunction(this._onInitialized)) this._onInitialized();
+		});
 	},
 	
 	_getItemAdapter (_item, _itemAdapter) {
@@ -49,6 +60,20 @@ const Base = {
 		data.getItemAdapter = Lib.partialRight(Lib.bind(this._getItemAdapter, this), data.getItemAdapter);
 		
 		return data;
+	},
+	
+	_getStrings (callback) {
+		Lib.getStrings().then(_strings => {
+			let strings = this.getProperty('strings');
+			
+			if (strings) {
+				strings = Lib.extend({}, _strings, strings);
+			} else {
+				strings = _strings;
+			}
+			
+			return strings;
+		}).then(callback);
 	},
 
 	version: Lib.version

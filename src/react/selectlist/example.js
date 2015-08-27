@@ -9,6 +9,7 @@ export default function (element) {
 		{ _itemType: 'divider' },
 		{ _itemType: 'header', text: 'All the things' },
 		{ id: 1, text: 'Two', value: '2' },
+		{ id: 6, text: 'Taste', value: '2' },
 		{ id: 2, text: 'Three', value: '3'  },
 		{ id: 3, text: 'Buzz', value: '4'  },
 		{ id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },

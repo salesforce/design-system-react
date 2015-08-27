@@ -11,15 +11,20 @@ const LoaderCore = Lib.merge({}, Base, {
 	},
 
 	// Set the defaults
-	_defaultState: {
+	_defaultProperties: {
 		begin: 1,
 		delay: 150,
 		end: 8,
 		frame: 1
 	},
 
-	_initializer (options) {
-		this.setState(options);
+	_initializer () {
+		this.setState({
+			begin: this.getProperty('begin'),
+			delay: this.getProperty('delay'),
+			end: this.getProperty('end'),
+			frame: this.getProperty('frame')
+		});
 	}
 });
 

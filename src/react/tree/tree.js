@@ -42,7 +42,7 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 			const selectable = this.getProperty('folderSelect');
 			
 			if (model.getType() === 'folder') {
-				children.push(<TreeBranch key={id} item={model} selectable={selectable} autoOpenLevel={1} autoOpenLimit={this.props.autoOpen ? this.props.autoOpenLimit : 0} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _isFolderOpen={this._isFolderOpen} _isItemSelected={this._isItemSelected} />);
+				children.push(<TreeBranch key={id} item={model} selectable={selectable} strings={this.state.strings} autoOpenLevel={1} autoOpenLimit={this.props.autoOpen ? this.props.autoOpenLimit : 0} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _isFolderOpen={this._isFolderOpen} _isItemSelected={this._isItemSelected} />);
 			} else {
 				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick} _isItemSelected={this._isItemSelected} />);
 			}
