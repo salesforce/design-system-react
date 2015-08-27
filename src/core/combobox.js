@@ -15,6 +15,18 @@ const ComboboxCore = Lib.merge({}, SelectlistCore, {
 		MENU: 'dropdown-menu',
 		TOGGLE: 'dropdown-toggle'
 	},
+	
+	_canSelect (newSelection) {
+		let canSelect = Lib.isString(newSelection);
+		
+		if (!canSelect) {
+			const item = this._getItemAdapter(newSelection);
+			
+			canSelect = !item.getType() && !item.getDisabled();
+		}
+		
+		return canSelect;
+	},
 
 	resize () {
 		if (this.elements.wrapper) {

@@ -54,9 +54,9 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 		openClass[this.cssClasses.OPEN] = this.state.isOpen;
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', disabledClass)} onKeyDown={this._handleKeyPressed} onKeyPress={this.handleKeyPress}>
-				<input name={this.props.name} className="form-control" type="text" value={selectionName} disabled={this.props.disabled} />
-				<div className={classNames('input-group-btn', openClass)}>
+			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', disabledClass)}>
+				<input name={this.props.name} className="form-control" type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} />
+				<div className={classNames('input-group-btn', openClass)} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 					<button type="button" className={classNames(this.cssClasses.CONTROL, this.cssClasses.TOGGLE, 'btn btn-default', disabledClass)} disabled={this.props.disabled} aria-haspopup="true" aria-expanded={this.state.isOpen} onClick={this._handleClicked}><span className="caret"></span></button>
 					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles} ref={this.cssClasses.MENU}>
 						{this.menuItems()}
@@ -114,6 +114,10 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 
 	_handleMenuItemSelected (selection) {
 		this.setSelection(selection);
+	},
+	
+	_handleChanged (e) {
+		this._setSelection(e.target.value);
 	},
 	
 	_handleClicked (e) {
