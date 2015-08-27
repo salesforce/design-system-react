@@ -1,36 +1,28 @@
 // COMBOBOX CONTROL
 
 import * as Lib from './lib';
-import Base from './base';
-
-// Traits
-import Disableable from '../traits/disableable';
-import Selectable from '../traits/selectable';
+import SelectlistCore from './selectlist';
+import '../data/string';
 
 export const CONTROL = 'combobox';
 
-const ComboboxCore = Lib.merge({}, Base, Disableable, Selectable, {
+const ComboboxCore = Lib.merge({}, SelectlistCore, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
-		TOGGLE: 'dropdown-toggle',
 		BUTTON: 'btn',
 		INPUT: 'input',
-		MENU: 'dropdown-menu'
+		MENU: 'dropdown-menu',
+		TOGGLE: 'dropdown-toggle'
 	},
 
-	_initializer () {
-		if (this.getProperty('resize') === 'auto') {
-			if (Lib.isFunction(this.resize)) this.resize();
-		}
-	},
-
-	// TO-DO: Did this need to set the width of the menu each time?
 	resize () {
-		const width = this.elements.wrapper.outerWidth();
-
-		this.setState({ width: width });
-		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+		if (this.elements.wrapper) {
+			const width = this.elements.wrapper.outerWidth();
+	
+			this.setState({ width });
+			if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+		}
 	}
 });
 

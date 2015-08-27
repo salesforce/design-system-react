@@ -47,12 +47,6 @@ export default function (element) {
 			};
 		},
 
-		getSelectionHandler (model) {
-			return function selectionHandler (selection) {
-				model.selection = selection;
-			};
-		},
-
 		render () {
 			const selectlists = this.state.models.map((model, index) => {
 				return (
@@ -102,8 +96,6 @@ export default function (element) {
 
 		setSelection (index) {
 			const models = this.state.models;
-			// Note: React requires you to set a complete object because it doesn't run the setSelection code when you update state
-			// TO-DO: Make sure this pattern is appropriate
 			models[index].selection = collection[5];
 			this.setState({models});
 		},

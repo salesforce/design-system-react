@@ -6,8 +6,9 @@ import ComboboxCore from '../../core/combobox';
 
 // Framework specific
 import React from 'react';
-import Events from '../mixins/events';
 import State from '../mixins/state';
+import Events from '../mixins/events';
+import genericWillMount from '../mixins/generic-will-mount';
 
 // Third party
 import classNames from 'classnames';
@@ -16,24 +17,24 @@ import classNames from 'classnames';
 import SelectlistItem from '../selectlist/selectlist-item';
 
 const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
-	mixins: [State, Events],
+	mixins: [State, Events, genericWillMount],
+	
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
-			React.PropTypes.number,
+			React.PropTypes.string,
 			React.PropTypes.object
 		]),
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
-		]).isRequired,
-		text: React.PropTypes.string
+		]).isRequired
 	},
 
 	menuItems () {
-		return this.props.collection.map((menuItem, index) => {
+		return this._collection.map((item, index) => {
 			return (
-				<SelectlistItem key={index} item={menuItem} onSelected={this.handleMenuItemSelected} />
+				<SelectlistItem key={index} item={item} text={item.getText()} type={item.getType()} disabled={item.getDisabled()} onSelected={this._handleMenuItemSelected} />
 			);
 		});
 	},
@@ -49,36 +50,87 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 		const disabledClass = {};
 		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
 
+		const openClass = {};
+		openClass[this.cssClasses.OPEN] = this.state.isOpen;
+
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', disabledClass)} onKeyPress={this.handleKeyPress}>
+			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', disabledClass)} onKeyDown={this._handleKeyPressed} onKeyPress={this.handleKeyPress}>
 				<input name={this.props.name} className="form-control" type="text" value={selectionName} disabled={this.props.disabled} />
-				<div className="input-group-btn">
-					<button type="button" className={classNames(this.cssClasses.CONTROL, this.cssClasses.TOGGLE, 'btn btn-default', disabledClass)} data-toggle="dropdown" disabled={this.props.disabled}><span className="caret"></span></button>
-					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles}>
+				<div className={classNames('input-group-btn', openClass)}>
+					<button type="button" className={classNames(this.cssClasses.CONTROL, this.cssClasses.TOGGLE, 'btn btn-default', disabledClass)} disabled={this.props.disabled} aria-haspopup="true" aria-expanded={this.state.isOpen} onClick={this._handleClicked}><span className="caret"></span></button>
+					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles} ref={this.cssClasses.MENU}>
 						{this.menuItems()}
 					</ul>
 				</div>
 			</div>
 		);
 	},
-
-	componentWillMount () {
-		this._initialize(this.props);
-	},
 	
 	componentDidMount () {
-		const elements = this.elements = {};
+		document.addEventListener('click', this._closeMenu, false);
+		this._findElements();
 		
-		elements.wrapper = Lib.wrapElement(React.findDOMNode(this));
+		if (this.getProperty('resize') === 'auto') {
+			this.resize();
+		}
+	},
+	
+	componentDidUpdate () {
+		this._findElements();
+	},
+	
+	componentWillUnmount () {
+		document.removeEventListener('click', this._closeMenu, false);
+	},
+	
+	_findElements () {
+		this.elements.dropdownMenu = Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.MENU]));
+		
+		this.elements.menuItems = [];
+		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
+		
+		for (let i = 0; i < menuItems.length; i++) {
+			const menuItem = menuItems[i].getElementsByTagName('a');
+			
+			if (!menuItems[i].disabled && menuItem.length === 1) {
+				this.elements.menuItems.push(menuItem[0]);
+			}
+		}
+	},
+	
+	_closeMenu (e) {
+		if (e.originator !== this) {
+			this.setState({
+				isOpen: false
+			});
+		}
+	},
+	
+	_onSelected () {
+		this.setState({
+			isOpen: false
+		});
 	},
 
-	handleMenuItemSelected (selection) {
+	_handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
+	
+	_handleClicked (e) {
+		e.nativeEvent.originator = this;
+		
+		if (!this.props.disabled) {
+			this.setState({
+				isOpen: !this.getState('isOpen')
+			});
+		}
+	},
 
-	handleKeyPress (e) {
-		const key = e.key || e.keyIdentifier;
-		if (key) this._jumpToLetter(key);
+	_handleKeyPressed (e) {
+		if (e.key && (/(ArrowUp|ArrowDown)/.test(e.key) || e.key.length === 1)) {
+			e.preventDefault();
+			this._keyboardNav(e.key, this.elements.menuItems);
+		}
 	}
 }));
 

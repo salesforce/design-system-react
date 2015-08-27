@@ -28,7 +28,7 @@ export function setWidth (element, width) {
 	element.style.width = width + 'px';
 }
 
-export function wrapElement (element) {
+function WrappedElement (element) {
 	this[0] = element;
 	this.element = element;
 	this.hasClass = partial(hasClass, element);
@@ -36,6 +36,10 @@ export function wrapElement (element) {
 	this.width = partial(setWidth, element);
 	
 	return this;
+}
+
+export function wrapElement (element) {
+	return new WrappedElement(element);
 }
 
 // Browser

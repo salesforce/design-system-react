@@ -24,8 +24,10 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.object
 		]),
-		collection: React.PropTypes.any.isRequired,
-		text: React.PropTypes.string
+		collection: React.PropTypes.oneOfType([
+			React.PropTypes.array,
+			React.PropTypes.object
+		]).isRequired
 	},
 
 	menuItems () {
