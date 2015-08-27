@@ -9,9 +9,8 @@ const Base = {
 		OPEN: 'open'
 	},
 	
-	strings: {
-		NONE_SELECTED: 'None selected',
-		TOGGLE_DROPDOWN: 'Toggle Dropdown'
+	_defaultState: {
+		strings: {}
 	},
 
 	_initialize (options) {
@@ -25,7 +24,13 @@ const Base = {
 		// If this controls does anything with options that are passed to it, do that now
 		if (Lib.isFunction(this._initializer)) this._initializer(options);
 
-		if (Lib.isFunction(this._onInitialized)) this._onInitialized(options);
+		this._getStrings(strings => {
+			this.setState({
+				strings
+			});
+			
+			if (Lib.isFunction(this._onInitialized)) this._onInitialized(options);
+		});
 	},
 	
 	_getItemAdapter (_item, _itemAdapter) {
@@ -47,6 +52,10 @@ const Base = {
 		data.getItemAdapter = Lib.partialRight(Lib.bind(this._getItemAdapter, this), data.getItemAdapter);
 		
 		return data;
+	},
+	
+	_getStrings (callback) {
+		Lib.getStrings().then(callback);
 	},
 
 	version: Lib.version

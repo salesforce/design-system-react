@@ -67,6 +67,8 @@ function _renderDivider () {
 }
 
 function _render () {
+	const strings = this.getState('strings');
+	
 	// Prep for append
 	this.elements.wrapper.empty();
 	this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
@@ -75,7 +77,7 @@ function _render () {
 	const selection = this._getSelection();
 	const width = this.getState('width');
 	const disabled = !!this.getProperty('disabled');
-	const selectionName = selection.getText() || this.strings.NONE_SELECTED;
+	const selectionName = selection.getText() || strings.NONE_SELECTED;
 	const selectionString = selection ? JSON.stringify(selection) : '';
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
@@ -86,7 +88,7 @@ function _render () {
 	elements.label.text(selectionName);
 	elements.hiddenField.val(selectionString);
 	elements.dropdownMenu.width(width);
-	elements.srOnly.text(this.strings.TOGGLE_DROPDOWN);
+	elements.srOnly.text(strings.TOGGLE_DROPDOWN);
 	
 	this._onExpandOrCollapse();
 
@@ -200,13 +202,15 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 	},
 
 	_onSelected (item) {
+		const strings = this.getState('strings');
+		
 		if (!this.elements.hiddenField
 			|| !this.elements.label) {
 			return;
 		}
 
 		this.elements.hiddenField.val(JSON.stringify(item._item) || '');
-		this.elements.label.text(item.getText() || this.strings.NONE_SELECTED);
+		this.elements.label.text(item.getText() || strings.NONE_SELECTED);
 	},
 	
 	_closeMenu (e) {

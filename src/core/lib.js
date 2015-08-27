@@ -62,7 +62,7 @@ export { default as isBoolean } from 'lodash/lang/isBoolean';
 
 export { default as isObject } from 'lodash/lang/isObject';
 
-// Data Helpers
+// Data
 export { default as extend } from 'lodash/object/extend';
 
 import merge from 'lodash/object/merge';
@@ -111,4 +111,16 @@ export function getDataAdapter (data) {
 	});
 
 	return _data;
+}
+
+// Strings
+import defaultStrings from './strings.json';
+let _strings = defaultStrings;
+
+export function registerStrings (strings) {
+	_strings = strings;
+}
+
+export function getStrings () {
+	return Promise.resolve(_strings);
 }

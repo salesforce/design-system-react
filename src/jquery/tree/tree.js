@@ -32,6 +32,9 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const $html = $('<i />').append(fs.readFileSync(__dirname + '/tree.html', 'utf8'));
 		this.template = $html.find('.tree');
 		
+		const strings = this.getState('strings');
+		this.template.find('.tree-loader').text(strings.LOADING);
+		
 		this._configureBranchSelect();
 		
 		this.elements.wrapper.on('click.fu.tree', '.tree-item', $.proxy(this._handleItemClicked, this));
