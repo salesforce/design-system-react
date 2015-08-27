@@ -53,7 +53,7 @@ export default function (element) {
 					<section className="example-group" key={index}>
 						<h1>Combobox example (combobox{index + 1})</h1>
 
-						<div className="example">
+						<div className="example" style={{ width: 200 }}>
 							<Combobox {...model} onChanged={this._handleModelChange.bind(this, index)}/>
 						</div>
 
