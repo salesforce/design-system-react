@@ -9,6 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { Component } from 'react';
 import SLDSDateInput from '../slds/SLDSDateInput/index';
+import SLDSLookup from '../slds/SLDSLookup/index';
 import SLDSDropdown from '../slds/SLDSDropdowns/index';
 import SLDSPopover from '../slds/SLDSPopover';
 import {ButtonIcon, Icon} from "./../slds/SLDSIcons";
@@ -73,6 +74,9 @@ export default class HomePage extends Component {
             </div>
             <div className="slds-p-around--medium">
               <SLDSDateInput />
+            </div>
+            <div className="slds-p-around--medium">
+              <SLDSLookup />
             </div>
           </div>
           <div className="region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
