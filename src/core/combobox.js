@@ -19,14 +19,8 @@ const ComboboxCore = Lib.merge({}, Base, Disableable, Selectable, {
 		MENU: 'dropdown-menu'
 	},
 
-	_initializer (options) {
-		if (options && options.collection) {
-			this._collection = this._getDataAdapter(options.collection);
-		} else if (!this._collection) {
-			this._collection = this._getDataAdapter([]);
-		}
-
-		if (options && options.resize === 'auto') {
+	_initializer () {
+		if (this.getProperty('resize') === 'auto') {
 			if (Lib.isFunction(this.resize)) this.resize();
 		}
 	},

@@ -17,20 +17,11 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 
 	// Set the defaults
 	_defaultProperties: {
+		collection: [],
 		folderSelect: false,
 		multiSelect: false,
 		autoOpen: false,
 		autoOpenLimit: 1
-	},
-
-	_initializer (options) {
-		if (options && options.collection) {
-			this._collection = this._getDataAdapter(options.collection);
-		} else if (!this._collection) {
-			this._collection = this._getDataAdapter([]);
-		}
-		
-		this.setProperties(options);
 	},
 
 	accessors: {

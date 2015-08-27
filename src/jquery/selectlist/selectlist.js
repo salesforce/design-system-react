@@ -77,7 +77,7 @@ function _render () {
 	const selection = this._getSelection();
 	const width = this.getState('width');
 	const disabled = !!this.getProperty('disabled');
-	const selectionName = selection.getText() || strings.NONE_SELECTED;
+	const selectionName = (selection && selection.getText()) || strings.NONE_SELECTED;
 	const selectionString = selection ? JSON.stringify(selection) : '';
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
@@ -313,14 +313,10 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 
 const legacyMethods = {
 	selectedItem () {
-		let selection = this.getSelection();
+		let selection = this._getSelection();
 
 		if (selection) {
-			if (Lib.isFunction(selection.toJSON)) {
-				selection = selection.toJSON();
-			} else {
-				selection = Lib.extend({}, selection);
-			}
+			selection = Lib.extend({}, selection.get());
 
 			selection.selected = true;
 			delete selection._itemType;

@@ -38,6 +38,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 
 	render () {
 		const item = this._getSelection();
+		const selectionName = (item && item.getText()) || this.state.strings.NONE_SELECTED;
 
 		const styles = {
 			width: this.state.width
@@ -52,7 +53,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 		return (
 			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, disabledClass, openClass)} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.TOGGLE, disabledClass)} type="button" disabled={this.props.disabled} style={styles} aria-haspopup="true" aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
-					<span className={this.cssClasses.LABEL}>{item.getText() || this.state.strings.NONE_SELECTED}</span>
+					<span className={this.cssClasses.LABEL}>{selectionName}</span>
 					<span className={this.cssClasses.CARET}></span>
 					<span className={this.cssClasses.SR_ONLY}>{this.state.strings.TOGGLE_DROPDOWN}</span>
 				</button>

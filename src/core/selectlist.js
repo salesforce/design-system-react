@@ -44,22 +44,20 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, {
 		TOGGLE: 'dropdown-toggle'
 	},
 	
+	_defaultProperties: {
+		collection: []
+	},
+	
 	_defaultState: {
 		isOpen: false,
 		focusedIndex: -1
 	},
 
-	_initializer (options) {
-		if (options && options.collection) {
-			this._collection = this._getDataAdapter(options.collection);
-		} else if (!this._collection) {
-			this._collection = this._getDataAdapter([]);
-		}
-		
+	_initializer () {
 		this._keyBuffer = new KeyBuffer();
 		
-		if (options && options.resize === 'auto') {
-			if (Lib.isFunction(this.resize)) this.resize();
+		if (this.getProperty('resize') === 'auto') {
+			this.resize();
 		}
 	},
 	

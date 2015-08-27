@@ -11,14 +11,6 @@ const Selectable = {
 		selection: null
 	},
 
-	_initializer (options) {
-		if (options && Lib.isObject(options.selection)) {
-			this.setSelection(options.selection);
-		} else {
-			this.clearSelection();
-		}
-	},
-
 	_setSelection (newSelection) {
 		if (this.getSelection() !== newSelection && (!Lib.isFunction(this._canSelect) || this._canSelect(newSelection))) {
 			this.setProperties({ selection: newSelection });
@@ -51,7 +43,7 @@ const Selectable = {
 	},
 
 	_getSelection () {
-		return this._getItemAdapter(this.getSelection());
+		return this._collection.findWhere(this.getSelection());
 	},
 
 	clearSelection () {

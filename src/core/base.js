@@ -16,20 +16,26 @@ const Base = {
 	_initialize (options) {
 		if (Lib.isFunction(this._onBeforeInitialize)) this._onBeforeInitialize(options);
 
+		// Accessors cannot be updated after initialization
 		if (options && Lib.isObject(options.accessors)) {
 			Lib.extend(this.accessors, options.accessors);
 			delete options.accessors;
 		}
+		
+		this.setProperties(options);
+		
+		const collection = this.getProperty('collection');
+		if (collection) this._collection = this._getDataAdapter(collection);
 
-		// If this controls does anything with options that are passed to it, do that now
-		if (Lib.isFunction(this._initializer)) this._initializer(options);
+		// Run any initializers provided by the control and/or the traits
+		if (Lib.isFunction(this._initializer)) this._initializer();
 
 		this._getStrings(strings => {
 			this.setState({
 				strings
 			});
 			
-			if (Lib.isFunction(this._onInitialized)) this._onInitialized(options);
+			if (Lib.isFunction(this._onInitialized)) this._onInitialized();
 		});
 	},
 	
@@ -55,7 +61,17 @@ const Base = {
 	},
 	
 	_getStrings (callback) {
-		Lib.getStrings().then(callback);
+		Lib.getStrings().then(_strings => {
+			let strings = this.getProperty('strings');
+			
+			if (strings) {
+				strings = Lib.extend({}, _strings, strings);
+			} else {
+				strings = _strings;
+			}
+			
+			return strings;
+		}).then(callback);
 	},
 
 	version: Lib.version

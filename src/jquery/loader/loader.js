@@ -99,8 +99,8 @@ const methods = Lib.merge(Loader.prototype, LoaderCore, State, {
 	},
 
 	_reset () {
-		this.setState({ frame: this.getState('begin') });
-		this.elements.wrapper.attr('data-frame', this.getState('begin') + '');
+		this.setState({ frame: this.getProperty('begin') });
+		this.elements.wrapper.attr('data-frame', this.getState('frame') + '');
 	},
 
 	destroy () {

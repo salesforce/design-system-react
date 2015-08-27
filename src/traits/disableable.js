@@ -6,17 +6,6 @@ const Disableable = {
 	cssClasses: {
 		DISABLED: 'disabled'
 	},
-
-	_initializer (options) {
-		const disabled = !!(options && options.disabled);
-		this.setProperties({ disabled });
-
-		if (disabled) {
-			if (Lib.isFunction(this._onDisabled)) this._onDisabled();
-		} else {
-			if (Lib.isFunction(this._onEnabled)) this._onEnabled();
-		}
-	},
 	
 	_defaultProperties: {
 		disabled: false
