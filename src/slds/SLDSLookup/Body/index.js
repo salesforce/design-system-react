@@ -92,11 +92,6 @@ module.exports = React.createClass({
         }}
         role="listbox">
         <ul className="slds-lookup__list" role="presentation">
-          <li className="slds-lookup__item" role="presentation">
-            <a href="#" role="option">
-              <Icon name="search" />&quot;ac&quot; in Accounts
-            </a>
-          </li>
           {this.items()}
         </ul>
       </div>

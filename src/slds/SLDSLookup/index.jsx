@@ -66,7 +66,7 @@ module.exports = React.createClass( {
   },
 
   selectedItemContents() {
-    return this.state.currentSelectedIndex.props.children;
+    return this.state.currentSelectedItem.props.children;
   },
 
   selectedItemPill() {
@@ -84,41 +84,34 @@ module.exports = React.createClass( {
   },
 
   popover() {
-    if(this.state && this.state.isOpen){
-      return <SLDSPopover className={"slds-lookup__menu"} targetElement={this.refs.date} onClose={this.handleClose}>
-        <Body
+      return <Body
           searchTerm={this.state.searchTerm}
           filterWith={this.props.filterWith}
           selectedItem={this.selectedItem}
           items={this.props.items}
+          label={this.props.label}
           onChange={this.handleChange} />
-      </SLDSPopover>;
-    }
-    return <span />;
   },
 
   render() {
     return (
-      <div className="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true">
+      <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">
         <div className="slds-form-element">
-          <label className="slds-form-element__label" htmlFor="date">{this.props.label}</label>
-          <div className="slds-form-element__control">
-            <div className="slds-input-has-icon slds-input-has-icon--right">
-              { this.state.currentSelectedIndex ? this.selectedItemPill() : null }
-              <InputIcon name="event"/>
-              <input
-                className="slds-input"
-                type="text"
-                aria-label="lookup"
-                aria-haspopup="true"
-                aria-autocomplete="list"
-                role="combobox"
-                onChange={this.handleChange}
-                placeholder={this.props.placeholder}
-                onBlur={this.handleBlur}
-                onFocus={this.handleFocus}
-                onClick={this.handleClick} />
-            </div>
+          <label className="slds-form-element__label">{this.props.label}</label>
+          <div className="slds-form-element__control slds-lookup__control slds-input-has-icon slds-input-has-icon--right ">
+            { this.state.currentSelectedItem ? this.selectedItemPill() : null }
+            <InputIcon name="event"/>
+            <input
+              className="slds-input--bare"
+              type="text"
+              aria-label="lookup"
+              aria-haspopup="true"
+              aria-autocomplete="list"
+              role="combobox"
+              onChange={this.handleChange}
+              onBlur={this.handleBlur}
+              onFocus={this.handleFocus}
+              onClick={this.handleClick} />
           </div>
           {this.popover()}
         </div>
