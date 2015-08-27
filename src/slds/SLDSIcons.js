@@ -11,8 +11,14 @@ import React from 'react';
 
 export let ButtonIcon = React.createClass({
 
+    getDefaultProps() {
+        return {
+            category: "utility"
+        }
+    },
+
     render() {
-        let useTag = '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#' + this.props.name + '" />';
+        let useTag = '<use xlink:href="/assets/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
         let className  = "slds-button__icon";
         if (this.props.stateful) {
             className += "--stateful";
@@ -35,7 +41,7 @@ export let Icon = React.createClass({
 
     getDefaultProps() {
         return {
-            category: "utility"
+            category: "standard"
         }
     },
 

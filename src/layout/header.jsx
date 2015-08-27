@@ -38,7 +38,7 @@ module.exports = React.createClass( {
 
         </div>
         <div className="slds-p-vertical--x-small slds-p-horizontal--medium">
-          <img src="salesforce-logo.png" style={{height: 44}} />
+          <img src="/demo_assets/salesforce-logo.png" style={{height: 44}} />
         </div>
       </div>
     );
