@@ -84,17 +84,20 @@ Lib.extend(Data.prototype, {
 	findWhere (criteria) {
 		let _isMatch;
 
-		if (Lib.isObject(criteria) && !Lib.isFunction(criteria)) {
+		if (!Lib.isFunction(criteria)) {
 			const _criteria = Lib.getItemAdapter(criteria);
 
 			_isMatch = function (item) {
-				let match = true;
+				const keys = _criteria.keys();
+				let match = keys && keys.length > 0;
 
-				_criteria.keys().forEach(function (key) {
-					if (_criteria.get(key) !== item.get(key)) {
-						match = false;
-					}
-				});
+				if (match) {
+					keys.forEach(function (key) {
+						if (!match || _criteria.get(key) !== item.get(key)) {
+							match = false;
+						}
+					});
+				}
 
 				return match;
 			};

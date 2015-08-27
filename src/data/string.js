@@ -10,7 +10,7 @@ const Item = Base.Item.extend({
 	},
 
 	keys () {
-		return ['string'];
+		return ['text'];
 	}
 });
 
