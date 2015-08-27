@@ -66,6 +66,7 @@ module.exports = React.createClass({
   },
 
   selectedItem: function(idx, item) {
+    console.log(this.props.selectedItem);
     if(this.props.selectedItem) this.props.selectedItem(item);
     this.setState({currentSelectedIndex: idx});
   },

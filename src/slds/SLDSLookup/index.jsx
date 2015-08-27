@@ -11,6 +11,7 @@ import React, { Component } from 'react';
 import SLDSPopover from '../SLDSPopover';
 import Body from './Body/index';
 import {InputIcon} from "./../SLDSIcons";
+import {Icon} from "../SLDSIcons";
 import _ from "lodash";
 
 const defaultFilter = (term, item) => {
@@ -58,13 +59,37 @@ module.exports = React.createClass( {
     this.setState({isOpen:true})
   },
 
+  selectedItem(item) {
+    if(this.props.onItemSelect) this.props.onItemSelect(item);
+    console.log('selected', item);
+    this.setState({currentSelectedItem: item});
+  },
+
+  selectedItemContents() {
+    return this.state.currentSelectedIndex.props.children;
+  },
+
+  selectedItemPill() {
+    return (
+      <span className="slds-pill slds-pill--bare">
+        <a href="#" className="slds-pill__label">
+          { this.selectedItemContents() }
+        </a>
+        <button className="slds-button slds-button--icon-bare">
+          <Icon className="slds-button__icon" name="close" />
+          <span className="slds-assistive-text">Remove</span>
+        </button>
+      </span>
+    );
+  },
+
   popover() {
     if(this.state && this.state.isOpen){
       return <SLDSPopover className={"slds-lookup__menu"} targetElement={this.refs.date} onClose={this.handleClose}>
         <Body
           searchTerm={this.state.searchTerm}
           filterWith={this.props.filterWith}
-          selectedItem={this.props.onItemSelect}
+          selectedItem={this.selectedItem}
           items={this.props.items}
           onChange={this.handleChange} />
       </SLDSPopover>;
@@ -79,6 +104,7 @@ module.exports = React.createClass( {
           <label className="slds-form-element__label" htmlFor="date">{this.props.label}</label>
           <div className="slds-form-element__control">
             <div className="slds-input-has-icon slds-input-has-icon--right">
+              { this.state.currentSelectedIndex ? this.selectedItemPill() : null }
               <InputIcon name="event"/>
               <input
                 className="slds-input"
@@ -90,7 +116,7 @@ module.exports = React.createClass( {
                 onChange={this.handleChange}
                 placeholder={this.props.placeholder}
                 onBlur={this.handleBlur}
-                onFocus={this.handleFocus}/>
+                onFocus={this.handleFocus}
                 onClick={this.handleClick} />
             </div>
           </div>

@@ -34,11 +34,6 @@ module.exports = React.createClass( {
     }
   },
 
-  handleBGClick: function(event){
-//    event.preventDefault();
-//    event.stopPropagation();
-  },
-
   handleMonthChange: function(moment){
     this.setState({month:moment});
   },
