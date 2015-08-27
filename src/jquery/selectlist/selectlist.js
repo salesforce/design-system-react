@@ -78,7 +78,7 @@ function _render () {
 	const width = this.getState('width');
 	const disabled = !!this.getProperty('disabled');
 	const selectionName = selection.getText() || strings.NONE_SELECTED;
-	const selectionString = JSON.stringify(selection._item);
+	const selectionString = selection._item && JSON.stringify(selection._item);
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
 
@@ -86,7 +86,7 @@ function _render () {
 	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 	elements.button.width(width);
 	elements.label.text(selectionName);
-	elements.hiddenField.val(selectionString);
+	elements.hiddenField.text(selectionString);
 	elements.dropdownMenu.width(width);
 	elements.srOnly.text(strings.TOGGLE_DROPDOWN);
 	
@@ -209,7 +209,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 			return;
 		}
 
-		this.elements.hiddenField.val(JSON.stringify(item._item));
+		this.elements.hiddenField.text(item._item && JSON.stringify(item._item));
 		this.elements.label.text(item.getText() || strings.NONE_SELECTED);
 	},
 	
