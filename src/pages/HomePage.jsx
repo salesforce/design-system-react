@@ -38,10 +38,14 @@ export default class HomePage extends Component {
         </div>
         <main className="stage-main slds-grid slds-wrap slds-grow slds-scrollable--y" role="main">
           <div className="region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
-            <SLDSDateInput />
-            <PrismCode className='language-markup'>
-              {require("raw-loader!../code-snippets/SLDSDateInputPage.txt")}
-            </PrismCode>
+            <div className="slds-p-around--medium">
+              <PrismCode className='language-markup'>
+                {require("raw-loader!../code-snippets/SLDSDateInputPage.txt")}
+              </PrismCode>
+            </div>
+            <div className="slds-p-around--medium">
+              <SLDSDateInput />
+            </div>
           </div>
         </main>
     </section>
