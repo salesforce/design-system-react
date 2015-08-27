@@ -11,11 +11,16 @@ import React, { Component } from 'react';
 
 module.exports = React.createClass({
 
-  handleClick: function() {
+  handleClick: function(event) {
     if(this.props.onSelectDate){
       this.props.onSelectDate(this.props.date);
     }
+    if(event.nativeEvent){
+      event.nativeEvent.stopImmediatePropagation();
+      event.nativeEvent.preventDefault();
+    }
   },
+
 
   render: function() {
 
@@ -29,6 +34,7 @@ module.exports = React.createClass({
         aria-selected={isToday}
         className={(isToday ? " slds-is-today" : "") + (isCurrentMonth ? "" : " slds-disabled-text") + (this.props.date.isSame(this.props.selected) ? " slds-is-selected" : "")} 
         onClick={this.handleClick}
+        onMouseDown={this.handleClick}
       >
         <span className="slds-day">
           {this.props.date.date()}

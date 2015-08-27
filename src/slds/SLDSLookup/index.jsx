@@ -53,6 +53,10 @@ module.exports = React.createClass( {
     this.setState({isOpen:true})
   },
 
+  handleBlur() {
+    this.setState({isOpen:false})
+  },
+
   handleFocus() {
     this.setState({isOpen:true})
   },
@@ -105,6 +109,7 @@ module.exports = React.createClass( {
               value={this.state.selected?this.state.string:''}
               onChange={this.handleInputChange}
               onClick={this.handleClick}
+              onBlur={this.handleBlur}
               onFocus={this.handleFocus}/>
           </div>
         </div>

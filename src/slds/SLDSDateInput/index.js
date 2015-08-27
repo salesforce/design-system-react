@@ -58,11 +58,24 @@ module.exports = React.createClass( {
     this.setState({isOpen:true})
   },
 
+  handleBlur() {
+    this.setState({isOpen:false})
+  },
+
+  handleBGClick(event) {
+    if(event.nativeEvent){
+      event.nativeEvent.stopImmediatePropagation();
+      event.nativeEvent.preventDefault();
+    }
+  },
+
   popover() {
     if(this.state && this.state.isOpen){
       return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose}>
         <SLDSDatePicker 
           onChange={this.handleChange}
+          onMouseDown={this.handleBGClick}
+          onClick={this.handleBGClick}
           selected={this.state.selected} 
           month={this.state.selected?this.state.selected:Moment()} />
       </SLDSPopover>;
@@ -106,6 +119,7 @@ module.exports = React.createClass( {
               value={this.state.selected?this.state.string:''}
               onChange={this.handleInputChange}
               onClick={this.handleClick}
+              onBlur={this.handleBlur}
               onFocus={this.handleFocus}/>
           </div>
         </div>
