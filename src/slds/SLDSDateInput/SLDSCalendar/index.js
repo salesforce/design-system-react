@@ -22,7 +22,7 @@ module.exports = React.createClass({
 
   render: function() {
     return <div className="SLDSCalendar">
-      <table className="datepicker__month" role="grid" aria-labelledby="month" tabIndex="0">
+      <table className="datepicker__month" role="grid" aria-labelledby="month">
         <thead>
           <tr ref="weekdays">
             <th ref="Sunday">
