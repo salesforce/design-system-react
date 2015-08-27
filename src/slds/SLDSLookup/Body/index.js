@@ -20,7 +20,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    return <div className="SLDSLookup">
+    return <div className="SLDSLookup ignore-react-onclickoutside">
       !!!LOOKUP!!!
     </div>;
   },
