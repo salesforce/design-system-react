@@ -23,7 +23,7 @@ export default class HomePage extends Component {
               <div className="slds-col slds-has-flexi-truncate">
                 <div className="slds-media">
                   <div className="slds-media__figure">
-                    <Icon name="opportunity" category="standard" size="large" position="left" />
+                    <Icon name="lead" category="standard" size="large" position="left" />
                   </div>
                   <div className="slds-media__body">
                     <p className="slds-text-heading--label">Interactive</p>

@@ -61,7 +61,7 @@ export let Icon = React.createClass({
             className += " slds-icon--" + this.props.position;
         }
         className = className + " slds-icon-" + this.props.category + '-' + (this.props.theme || this.props.name);
-        return <svg aria-hidden="true" className={className} style={this.props.style} dangerouslySetInnerHTML={{__html: useTag }} />;
+        return <span className="slds-icon__container"><svg aria-hidden="true" className={className} style={this.props.style} dangerouslySetInnerHTML={{__html: useTag }} /></span>;
     }
 
 });

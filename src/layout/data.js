@@ -10,7 +10,7 @@ module.exports = {
   navItems:[
     {
       title: "Interactive Components",
-      icon: "today",
+      icon: "lead",
       url: "http://www.salesforce.com/designsystem",
       to:'home'
     },
