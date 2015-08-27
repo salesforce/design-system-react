@@ -60,7 +60,7 @@ module.exports = React.createClass( {
 
   popover() {
     if(this.state && this.state.isOpen){
-      return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose}>
+      return <SLDSPopover className={"slds-lookup__menu"} targetElement={this.refs.date} onClose={this.handleClose}>
         <Body
           searchTerm={this.state.searchTerm}
           filterWith={this.props.filterWith}

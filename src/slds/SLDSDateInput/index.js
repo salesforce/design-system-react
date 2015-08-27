@@ -64,7 +64,7 @@ module.exports = React.createClass( {
 
   popover() {
     if(this.state && this.state.isOpen){
-      return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose}>
+      return <SLDSPopover className="slds-dropdown" targetElement={this.refs.date} onClose={this.handleClose}>
         <SLDSDatePicker 
           onChange={this.handleChange}
           selected={this.state.selected} 

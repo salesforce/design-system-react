@@ -83,7 +83,13 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div className="slds-lookup__menu ignore-react-onclickoutside" role="listbox">
+      <div 
+        className="ignore-react-onclickoutside"
+        style={{
+          position:'inherit',
+          float:'inherit'
+        }}
+        role="listbox">
         <ul className="slds-lookup__list" role="presentation">
           <li className="slds-lookup__item" role="presentation">
             <a href="#" role="option">

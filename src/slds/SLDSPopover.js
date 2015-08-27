@@ -30,6 +30,7 @@ module.exports = React.createClass( {
   getDefaultProps () {
     return {
       targetAttachment: "bottom left",
+      className: "slds-dropdown"
     };
   },
 
@@ -57,11 +58,7 @@ module.exports = React.createClass( {
 
   popoverComp () {
     return (
-      <div className={this.props.className} 
-        onClick={this.handleClick} 
-        onMousedown={this.handleClick} 
-        onMouseup={this.handleClick}>
-        <div className="slds-dropdown" 
+        <div className={this.props.className}
               style={{
                 transform:'none',
                 marginTop:'0.25rem',
@@ -79,7 +76,6 @@ module.exports = React.createClass( {
             }
           </Spring>
         </div>
-      </div>
     );
 
   },
