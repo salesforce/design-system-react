@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import SLDSDateInput from '../slds/SLDSDateInput/index';
 import {ButtonIcon, Icon} from "./../slds/SLDSIcons";
-
+import {default as PrismCode} from "react-prism/lib/PrismCode";
 
 export default class HomePage extends Component {
 
@@ -39,6 +39,9 @@ export default class HomePage extends Component {
         <main className="stage-main slds-grid slds-wrap slds-grow slds-scrollable--y" role="main">
           <div className="region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
             <SLDSDateInput />
+            <PrismCode className='language-markup'>
+              {require("raw-loader!../code-snippets/SLDSDateInputPage.txt")}
+            </PrismCode>
           </div>
         </main>
     </section>
