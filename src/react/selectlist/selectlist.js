@@ -38,7 +38,7 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 
 	render () {
 		const item = this._getSelection();
-		const selectionName = (item && item.getText()) || this.state.strings.NONE_SELECTED;
+		const selectionName = item.getText() || this.state.strings.NONE_SELECTED;
 
 		const styles = {
 			width: this.state.width

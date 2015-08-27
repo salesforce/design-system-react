@@ -27,6 +27,8 @@ const Selectable = {
 		
 		if (item) {
 			item = item._item;
+		} else {
+			item = criteria;
 		}
 
 		return this._setSelection(item);
@@ -43,7 +45,14 @@ const Selectable = {
 	},
 
 	_getSelection () {
-		return this._collection.findWhere(this.getSelection());
+		const selection = this.getSelection();
+		let item = this._collection.findWhere(selection);
+		
+		if (!item) {
+			item = this._getItemAdapter(selection);
+		}
+		
+		return item;
 	},
 
 	clearSelection () {

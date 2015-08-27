@@ -40,7 +40,7 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 
 	render () {
 		const item = this._getSelection();
-		const selectionName = item && item.getText();
+		const selectionName = item.getText();
 
 		const styles = {
 			width: this.state.width

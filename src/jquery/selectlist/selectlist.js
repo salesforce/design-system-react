@@ -77,8 +77,8 @@ function _render () {
 	const selection = this._getSelection();
 	const width = this.getState('width');
 	const disabled = !!this.getProperty('disabled');
-	const selectionName = (selection && selection.getText()) || strings.NONE_SELECTED;
-	const selectionString = selection ? JSON.stringify(selection) : '';
+	const selectionName = selection.getText() || strings.NONE_SELECTED;
+	const selectionString = JSON.stringify(selection._item);
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
 
@@ -209,7 +209,7 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, {
 			return;
 		}
 
-		this.elements.hiddenField.val(JSON.stringify(item._item) || '');
+		this.elements.hiddenField.val(JSON.stringify(item._item));
 		this.elements.label.text(item.getText() || strings.NONE_SELECTED);
 	},
 	
