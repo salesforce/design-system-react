@@ -73,6 +73,10 @@ module.exports = React.createClass( {
     this.setState({isOpen:true})
   },
 
+  handleBlur() {
+    this.setState({isOpen:false})
+  },
+
   handleSelect(moment) {
     if(this.props.onSelect){
       this.props.onSelect(moment);
@@ -121,6 +125,7 @@ module.exports = React.createClass( {
               className="slds-button slds-button--neutral slds-picklist__label" 
               onClick={this.handleClick}
               onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
               aria-haspopup="true" 
               aria-expanded="false">{this.props.moment.format('YYYY')}
               <span style={{color:'black'}}></span>

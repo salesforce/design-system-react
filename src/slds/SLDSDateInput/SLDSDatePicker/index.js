@@ -35,8 +35,8 @@ module.exports = React.createClass( {
   },
 
   handleBGClick: function(event){
-    event.preventDefault();
-    event.stopPropagation();
+//    event.preventDefault();
+//    event.stopPropagation();
   },
 
   handleMonthChange: function(moment){
@@ -51,7 +51,7 @@ module.exports = React.createClass( {
 
   handleBGClick(event) {
     if(event.nativeEvent){
-      event.nativeEvent.stopImmediatePropagation();
+//      event.nativeEvent.stopImmediatePropagation();
       event.nativeEvent.preventDefault();
     }
   },
