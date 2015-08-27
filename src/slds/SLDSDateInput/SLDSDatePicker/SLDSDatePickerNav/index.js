@@ -36,8 +36,6 @@ module.exports = React.createClass( {
   },
 
   previousMonth: function(event){
-    event.preventDefault();
-    event.stopPropagation();
     if(this.props.selectedMoment && this.handleChangeMonth){
       this.props.selectedMoment.subtract(1, 'months');
       this.handleChangeMonth(this.props.selectedMoment)
@@ -45,8 +43,6 @@ module.exports = React.createClass( {
   },
 
   nextMonth: function(event){
-    event.preventDefault();
-    event.stopPropagation();
     if(this.props.selectedMoment && this.handleChangeMonth){
       this.props.selectedMoment.add(1, 'months');
       this.handleChangeMonth(this.props.selectedMoment)
@@ -66,7 +62,7 @@ module.exports = React.createClass( {
         <div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
           <div className="slds-align-middle" role="button" aria-labelledby="bn_prev-label" tabIndex="0">
             <button className="slds-button slds-button--icon-container" onClick={this.previousMonth}>
-              <ButtonIcon name="left"/>
+              <ButtonIcon name="left" />
               <span className="slds-assistive-text">Previous Month</span>
             </button>
           </div>

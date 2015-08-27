@@ -34,9 +34,9 @@ module.exports = React.createClass( {
     }
   },
 
-  handleClick: function(event){
-    event.preventDefault();
-    event.stopPropagation();
+  handleBGClick: function(event){
+//    event.preventDefault();
+//    event.stopPropagation();
   },
 
   handleMonthChange: function(moment){
@@ -49,11 +49,21 @@ module.exports = React.createClass( {
     }
   },
 
+  handleBGClick(event) {
+    if(event.nativeEvent){
+//      event.nativeEvent.stopImmediatePropagation();
+      event.nativeEvent.preventDefault();
+    }
+  },
+
   render() {
     return (
       <div className="ignore-react-onclickoutside">
-
-        <div className="slds-datepicker" aria-hidden="false" data-selection="single" onClick={this.handleClick}>
+        <div className="slds-datepicker" 
+          aria-hidden="false" 
+          data-selection="single" 
+          onMouseDown={this.handleBGClick}
+          onClick={this.handleBGClick}>
           <SLDSDatePickerNav 
             onChangeMonth={this.handleMonthChange} 
             selected={this.props.selected}

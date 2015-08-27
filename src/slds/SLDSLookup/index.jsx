@@ -50,6 +50,10 @@ module.exports = React.createClass( {
     this.setState({isOpen:true})
   },
 
+  handleBlur() {
+    this.setState({isOpen:false})
+  },
+
   handleFocus() {
     this.setState({isOpen:true})
   },
@@ -85,6 +89,8 @@ module.exports = React.createClass( {
                 role="combobox"
                 onChange={this.handleChange}
                 placeholder={this.props.placeholder}
+                onBlur={this.handleBlur}
+                onFocus={this.handleFocus}/>
                 onClick={this.handleClick} />
             </div>
           </div>

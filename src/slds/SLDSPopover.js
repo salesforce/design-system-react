@@ -49,8 +49,10 @@ module.exports = React.createClass( {
   },
 
   handleClick (event){
-    event.preventDefault();
-    event.stopPropagation();
+    if(event.nativeEvent){
+      event.nativeEvent.preventDefault();
+      event.nativeEvent.stopPropagation();
+    }
   },
 
   popoverComp () {
