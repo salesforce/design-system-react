@@ -54,12 +54,12 @@ class DropdownHeader extends React.Component {
     return classNames(this.props.className, cls)
   }
 
-  childProps() {
-    return { termChanged: this.props.termChanged, filterWith: this.props.filterWith, hasFilter: this.props.hasFilter };
+  childProps(i) {
+    return { termChanged: this.props.termChanged, filterWith: this.props.filterWith, hasFilter: this.props.hasFilter, key: i };
   }
 
   children() {
-    return React.Children.map(this.props.children, c => React.cloneElement(c, this.childProps()));
+    return React.Children.map(this.props.children, (c, i) => React.cloneElement(c, this.childProps(i)));
   }
 
   render() {
@@ -142,13 +142,13 @@ class DropdownList extends React.Component {
   selectedItem(item) {
     this.setState({currentSelection: item});
   }
-  childProps() {
-    return { searchTerm: this.props.searchTerm, filterWith: this.props.filterWith, hasFilter: this.props.hasFilter, selectedItem: this.selectedItem.bind(this), isSelectable: this.props.isSelectable, itemFocused: this.props.itemFocused, itemSelected: this.props.itemSelected };
+  childProps(i) {
+    return { searchTerm: this.props.searchTerm, filterWith: this.props.filterWith, hasFilter: this.props.hasFilter, selectedItem: this.selectedItem.bind(this), isSelectable: this.props.isSelectable, itemFocused: this.props.itemFocused, itemSelected: this.props.itemSelected, key: i };
   }
 
   children() {
     return React.Children.map(this.props.children, (c, i) => {
-      return React.cloneElement(c, _.extend({currentSelection: this.state.currentSelection, idx: i}, this.childProps()));
+      return React.cloneElement(c, _.extend({currentSelection: this.state.currentSelection, idx: i}, this.childProps(i)));
     });
   }
 
@@ -175,8 +175,8 @@ class Dropdown extends React.Component {
     this.hasFilter = hasChild(this.props.children, 'DropdownFilter');
   }
 
-  childProps() {
-    return { searchTerm: this.state.searchTerm, termChanged: this.termChanged.bind(this), filterWith: this.props.filterWith, hasFilter: this.hasFilter, itemFocused: this.props.itemFocused, itemSelected: this.props.itemSelected };
+  childProps(i) {
+    return { searchTerm: this.state.searchTerm, termChanged: this.termChanged.bind(this), filterWith: this.props.filterWith, hasFilter: this.hasFilter, itemFocused: this.props.itemFocused, itemSelected: this.props.itemSelected, key: i };
   }
 
   termChanged(event) {
@@ -193,7 +193,7 @@ class Dropdown extends React.Component {
   }
 
   children() {
-    return React.Children.map(this.props.children, c => React.cloneElement(c, this.childProps()));
+    return React.Children.map(this.props.children, (c, i) => React.cloneElement(c, this.childProps(i)));
   }
 
   render() {

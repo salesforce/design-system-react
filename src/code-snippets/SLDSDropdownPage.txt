@@ -1,0 +1,13 @@
+<SLDSPopover targetElement={this.refs.dropdown}>
+  <SLDSDropdown ref="dropdown">
+    <SLDSDropdown.Header>
+      <SLDSDropdown.Filter placeholder="Find in list..." />
+      <SLDSDropdown.Title>Lists</SLDSDropdown.Title>
+    </SLDSDropdown.Header>
+    <SLDSDropdown.List>
+      <SLDSDropdown.Item href="#">Opportunities Closing this Quarter</SLDSDropdown.Item>
+      <SLDSDropdown.Item href="#">My Opportunities</SLDSDropdown.Item>
+      <SLDSDropdown.Item href="#">United Partner Opportunities</SLDSDropdown.Item>
+    </SLDSDropdown.List>
+  </SLDSDropdown>
+</SLDSPopover>
