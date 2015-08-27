@@ -41,8 +41,12 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavi
 	},
 	
 	accessors: {
+		textProp () {
+			return 'text';
+		},
+		
 		getText (item) {
-			return item.get('text');
+			return item.get(item.textProp());
 		},
 
 		getType (item) {
@@ -50,7 +54,7 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavi
 		},
 
 		getDisabled (item) {
-			return !!item.get('disabled');
+			return item.get('disabled') === true;
 		},
 
 		// Reduce the number of fields here if a unique key is available

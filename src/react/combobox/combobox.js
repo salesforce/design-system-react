@@ -117,7 +117,11 @@ const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
 	},
 	
 	_handleChanged (e) {
-		this.setSelection(e.target.value);
+		const value = {};
+		
+		value[this.accessors.textProp()] = e.target.value;
+		
+		this.setSelection(value);
 	},
 	
 	_handleClicked (e) {

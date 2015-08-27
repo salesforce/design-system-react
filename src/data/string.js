@@ -5,12 +5,24 @@ import Base from './base';
 
 const Item = Base.Item.extend({
 	// Instance methods
-	get () {
-		return this._item;
+	get (key) {
+		let result;
+		
+		if (!Lib.isFunction(this.textProp) || this.textProp() === key) {
+			result = this._item;
+		}
+		
+		return result;
 	},
 
 	keys () {
-		return ['text'];
+		const keys = [];
+		
+		if (Lib.isFunction(this.textProp)) {
+			keys.push(this.textProp());
+		}
+		
+		return keys;
 	}
 });
 
