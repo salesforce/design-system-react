@@ -64,7 +64,8 @@ module.exports = React.createClass( {
                 transform:'none',
                 marginTop:'0.25rem',
                 marginBottom:'0.35rem',
-
+                float:'inherit',
+                position:'inherit'
               }}>
 
           <Spring 

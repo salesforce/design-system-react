@@ -9,17 +9,18 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 module.exports = {
   navItems:[
     {
-      title: "Home",
+      title: "Interactive Components",
       icon: "today",
       url: "http://www.salesforce.com/designsystem",
       to:'home'
     },
     {
-      title: "Record Workplace",
+      title: "Record Home Layout",
       icon: "opportunity",
       url: "/templates/record/workplace",
       to:'workspace'
     },
+/*
     {
       title: "Record Reference",
       icon: "account",
@@ -50,6 +51,6 @@ module.exports = {
       url: "/templates/detail/master",
       to:'home'
     }
-
+*/
   ]
 };

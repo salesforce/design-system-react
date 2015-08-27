@@ -1,5 +1,9 @@
 @import "./../salesforce-lightning-design-system-v0.8.0/scss/index.scss";
 
+html,body {
+  height: inherit;
+}
+
 .header {
   box-shadow: $shadow-header;
   z-index: 1;

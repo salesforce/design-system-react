@@ -9,165 +9,38 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { Component } from 'react';
 import SLDSDateInput from '../slds/SLDSDateInput/index';
+import {ButtonIcon, Icon} from "./../slds/SLDSIcons";
 
 
 export default class HomePage extends Component {
 
   render() {
     return (
-    <section className="stage slds-grid slds-grid--vertical">
-
-
-        <div className="sds-grid sds-grid--align-center">
-            <div className="sds-col--padded">
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <SLDSDateInput />
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <SLDSDateInput />
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
+      <section className="stage slds-grid slds-grid--vertical slds-nowrap"> 
+        <div className="region region--top slds-shrink-none">
+          <div className="slds-page-header">
+            <div className="slds-grid">
+              <div className="slds-col slds-has-flexi-truncate">
+                <div className="slds-media">
+                  <div className="slds-media__figure">
+                    <Icon name="opportunity" category="standard" size="large" position="left" />
+                  </div>
+                  <div className="slds-media__body">
+                    <p className="slds-text-heading--label">Interactive</p>
+                    <div className="slds-grid">
+                      <h1 className="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">Components</h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="sds-col--padded">
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <SLDSDateInput />
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <SLDSDateInput label='SUPER DATE PICKER'/>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-                <div>MORE STUFF IS HERE</div>
-
-            </div>
+          </div>
         </div>
-
+        <main className="stage-main slds-grid slds-wrap slds-grow slds-scrollable--y" role="main">
+          <div className="region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
+            <SLDSDateInput />
+          </div>
+        </main>
     </section>
     );
   }
