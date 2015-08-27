@@ -10,7 +10,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import SLDSDateInput from '../slds/SLDSDateInput/index';
 import SLDSLookup from '../slds/SLDSLookup/index';
-import SLDSDropdown from '../slds/SLDSDropdowns/index';
 import SLDSPopover from '../slds/SLDSPopover';
 import {ButtonIcon, Icon} from "./../slds/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
@@ -18,29 +17,7 @@ import {default as PrismCode} from "react-prism/lib/PrismCode";
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
-    this.state = {dropdownOpen: false};
-  }
-
-  toggleDropdown(currentVisibility) {
-    this.setState({dropdownOpen: !currentVisibility});
-  }
-
-  renderDropdown() {
-    return (
-      <SLDSPopover targetElement={this.refs.dropdown}>
-        <SLDSDropdown ref="dropdown">
-          <SLDSDropdown.Header>
-            <SLDSDropdown.Filter placeholder="Find in list..." />
-            <SLDSDropdown.Title>Lists</SLDSDropdown.Title>
-          </SLDSDropdown.Header>
-          <SLDSDropdown.List>
-            <SLDSDropdown.Item href="#">Opportunities Closing this Quarter</SLDSDropdown.Item>
-            <SLDSDropdown.Item href="#">My Opportunities</SLDSDropdown.Item>
-            <SLDSDropdown.Item href="#">United Partner Opportunities</SLDSDropdown.Item>
-          </SLDSDropdown.List>
-        </SLDSDropdown>
-      </SLDSPopover>
-    );
+    this.items = ["Paddy's Pub", "Tyrell Corp", "Paper St. Soap Company", "Nakatomi Investments", "Acme Landscaping", "Acme Construction"];
   }
 
   render() {
@@ -76,17 +53,8 @@ export default class HomePage extends Component {
               <SLDSDateInput />
             </div>
             <div className="slds-p-around--medium">
-              <SLDSLookup />
+              <SLDSLookup items={this.items} label="Contacts" />
             </div>
-          </div>
-          <div className="region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
-            <button onClick={this.toggleDropdown.bind(this, this.state.dropdownOpen)} className="slds-button slds-button--neutral">Click Me</button>
-            {this.state.dropdownOpen ? this.renderDropdown() : null}
-          </div>
-          <div className="region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
-            <PrismCode className='language-markup'>
-              {require("raw-loader!../code-snippets/SLDSDropdownPage.txt")}
-            </PrismCode>
           </div>
         </main>
     </section>

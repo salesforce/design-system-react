@@ -8,21 +8,92 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { Component } from 'react';
+import {Icon} from "../../SLDSIcons";
+
+class Item extends React.Component {
+  constructor(props) {
+    super(props);
+    this.id = this.props.id || `item-${Item.globalIdx++}-${this.props.idx}`;
+  }
+
+  boldSearchText(children) {
+    const term = this.props.searchTerm;
+    if(!children || !term) return children;
+    const regex = new RegExp('(' + term + ')', 'gi');
+    return React.Children.map(children, c => {
+      return (typeof c === 'string') ? <span dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
+    });
+  }
+
+  selectedItem(e) {
+    e.preventDefault();
+    return this.props.selectedItem(this.props.idx, this);
+  }
+
+  getClassName(cls) {
+    return classNames(this.props.className, cls);
+  }
+
+  render() {
+    let className = 'slds-lookup__item';
+    if(this.props.isSelected) className += ' slds-is-selected';
+    const tabIndex = this.props.idx === 0 ? 0 : -1;
+
+    return (
+      <li id={this.id} onClick={this.selectedItem.bind(this)} { ...this.props } className={className} role="presentation" tabIndex={tabIndex}>
+        <a href={ this.props.href } tabIndex="-1" aria-disabled={ this.props.disabled } role="option">
+          <Icon name="account" />
+          { this.boldSearchText(this.props.children) }
+        </a>
+      </li>
+    );
+  }
+}
+Item.globalIdx = 0;
 
 
 module.exports = React.createClass({
 
   displayName: "SLDSLookup",
 
+  getInitialState: function(){
+    return {currentSelectedIndex: null};
+  },
+
   getDefaultProps: function(){
     return {
     };
   },
 
+  selectedItem: function(idx, item) {
+    if(this.props.selectedItem) this.props.selectedItem(item);
+    this.setState({currentSelectedIndex: idx});
+  },
+
+  filter: function(item) {
+    return this.props.filterWith(this.props.searchTerm, item);
+  },
+
+  items: function() {
+    return this.props.items.filter(this.filter, this).map((c, i) => {
+      const isSelected = (i === this.state.currentSelectedIndex);
+      return <Item key={i} isSelected={isSelected} idx={i} searchTerm={this.props.searchTerm} selectedItem={this.selectedItem}>{c}</Item>
+    });
+  },
+
   render: function() {
-    return <div className="SLDSLookup ignore-react-onclickoutside">
-      !!!LOOKUP!!!
-    </div>;
+    return (
+      <div className="slds-lookup__menu ignore-react-onclickoutside" role="listbox">
+        <ul className="slds-lookup__list" role="presentation">
+          <li className="slds-lookup__item" role="presentation">
+            <a href="#" role="option">
+              <Icon name="search" />&quot;ac&quot; in Accounts
+            </a>
+          </li>
+          {this.items()}
+        </ul>
+      </div>
+    );
   },
 
 

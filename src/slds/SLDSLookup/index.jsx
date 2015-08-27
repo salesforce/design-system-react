@@ -10,16 +10,20 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import SLDSPopover from '../SLDSPopover';
 import Body from './Body/index';
-import Moment from 'moment';
 import {InputIcon} from "./../SLDSIcons";
+import _ from "lodash";
+
+const defaultFilter = (term, item) => {
+  if(!term) return true;
+  return item.match(new RegExp(_.escapeRegExp(term), 'ig'));
+};
 
 module.exports = React.createClass( {
 
   getDefaultProps(){
     return {
-      string:'',
-      selected: null,
-      placeholder: 'Pick a Contact',
+      placeholder: 'Select an Item',
+      filterWith: defaultFilter,
       onItemSelect: function(item){
         console.log('onItemSelect should be defined');
       }
@@ -28,21 +32,14 @@ module.exports = React.createClass( {
 
   getInitialState(){
     return {
-      isOpen:false,
-      selected:this.props.selected,
-      string:this.props.selected?this.props.selected.format(this.props.format):null
+      searchTerm: '',
+      isOpen:false
     };
   },
 
-  handleChange(moment) {
-    this.setState({
-      selected:moment,
-      isOpen:false,
-      string:moment.format(this.props.format)
-    })
-    if(this.props.onDateChange){
-      this.props.onDateChange(moment)
-    }
+  handleChange(event) {
+    const target = event.target || event.currentTarget;
+    this.setState({ searchTerm: target.value });
   },
 
   handleClose() {
@@ -60,55 +57,39 @@ module.exports = React.createClass( {
   popover() {
     if(this.state && this.state.isOpen){
       return <SLDSPopover targetElement={this.refs.date} onClose={this.handleClose}>
-        <Body 
-          onChange={this.handleChange}
-          selected={this.state.selected} 
-          month={this.state.selected?this.state.selected:Moment()} />
+        <Body
+          searchTerm={this.state.searchTerm}
+          filterWith={this.props.filterWith}
+          selectedItem={this.props.onItemSelect}
+          items={this.props.items}
+          onChange={this.handleChange} />
       </SLDSPopover>;
     }
     return <span />;
   },
 
-  handleInputChange() {
-    let string = this.refs.date.getDOMNode().value;
-    if(Moment().isValid(string)){
-      let selected = Moment(string,this.props.format);
-      this.setState({
-        selected:selected,
-        string:string
-      });
-      if(this.props.onDateChage){
-        this.props.onDateChange(selected)
-      }
-    }
-    else{
-      this.setState({
-        selected:null,
-        string:string
-      });
-    }
-  },
-
   render() {
     return (
-      <div className="slds-form-element">
-        <label className="slds-form-element__label" htmlFor="date">{this.props.label}</label>
-        <div className="slds-form-element__control">
-          <div className="slds-input-has-icon slds-input-has-icon--right">
-            <InputIcon name="event"/>
-            <input 
-              name="date"
-              ref="date" 
-              className="slds-input" 
-              type="text" 
-              placeholder={this.props.placeholder} 
-              value={this.state.selected?this.state.string:''}
-              onChange={this.handleInputChange}
-              onClick={this.handleClick}
-              onFocus={this.handleFocus}/>
+      <div className="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true">
+        <div className="slds-form-element">
+          <label className="slds-form-element__label" htmlFor="date">{this.props.label}</label>
+          <div className="slds-form-element__control">
+            <div className="slds-input-has-icon slds-input-has-icon--right">
+              <InputIcon name="event"/>
+              <input
+                className="slds-input"
+                type="text"
+                aria-label="lookup"
+                aria-haspopup="true"
+                aria-autocomplete="list"
+                role="combobox"
+                onChange={this.handleChange}
+                placeholder={this.props.placeholder}
+                onClick={this.handleClick} />
+            </div>
           </div>
+          {this.popover()}
         </div>
-        {this.popover()}
       </div>
     );
   }
