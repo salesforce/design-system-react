@@ -94,7 +94,8 @@ module.exports = React.createClass( {
       openOn: 'always',
       beforeClose:this.beforeClose,
       constrainToWindow:true,
-      constrainToScrollParent:false
+      constrainToScrollParent:false,
+      remove:true
     };
   },
 
