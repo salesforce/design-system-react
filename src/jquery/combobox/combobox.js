@@ -1,20 +1,21 @@
-// SELECTLIST CONTROL - JQUERY FACADE
+// COMBOBOX CONTROL - JQUERY FACADE
 
 // Core
 import * as Lib from '../../core/lib';
-import SelectlistCore, {CONTROL} from '../../core/selectlist';
+import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Framework specific
 import createPlugin from '../createPlugin';
 import Events from '../events';
 import State from '../state';
+import { SelectlistObject, _renderItem, _renderHeader, _renderDivider, legacyMethods } from '../selectlist/selectlist';
 
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
 const fs = require('fs');
 
-const Selectlist = function Selectlist (element, options) {
+const Combobox = function Combobox (element, options) {
 	this.options = Lib.extend({}, options);
 	this.elements = {
 		wrapper: $(element)
@@ -36,36 +37,6 @@ const Selectlist = function Selectlist (element, options) {
 	this._initialize(this.options);
 };
 
-export function _renderItem (item) {
-	const disabled = item.getDisabled();
-	let $a;
-	let $li;
-
-	$a = $('<a href="#" />');
-	$a.text(item.getText());
-
-	$li = $('<li />');
-	$li.data(item.get());
-	$li.toggleClass(this.cssClasses.DISABLED, disabled);
-	$li.prop('disabled', disabled);
-	$li.append($a);
-
-	return $li;
-}
-
-export function _renderHeader (item) {
-	const $li = $('<li class="' + this.cssClasses.HEADER + '"></li>');
-	$li.text(item.getText());
-
-	return $li;
-}
-
-export function _renderDivider () {
-	const $li = $('<li role="separator" class="' + this.cssClasses.DIVIDER + '"></li>');
-
-	return $li;
-}
-
 function _render () {
 	const strings = this.getState('strings');
 	
@@ -79,7 +50,7 @@ function _render () {
 	const disabled = !!this.getProperty('disabled');
 	const selectionName = selection.getText() || strings.NONE_SELECTED;
 	const selectionString = selection._item && JSON.stringify(selection._item);
-	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
+	const $html = $('<i />').append(fs.readFileSync(__dirname + '/combobox.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
 
 	elements.button.prop('disabled', disabled);
@@ -114,7 +85,7 @@ function _render () {
 	this.rendered = true;
 }
 
-export const SelectlistObject = {
+export const ComboboxObject = Lib.merge(SelectlistObject, {
 	_initElements (base, elements) {
 		const els = elements || {};
 
@@ -187,12 +158,6 @@ export const SelectlistObject = {
 		this._closeMenu = $.proxy(this._closeMenu, this);
 		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
 	},
-
-	destroy () {
-		if (!this.isBootstrap3) document.removeEventListener('click', this._closeMenu, false);
-		this.elements.wrapper.remove();
-		return this.elements.wrapper[0].outerHTML;
-	},
 	
 	_onExpandOrCollapse () {
 		const isOpen = this.getState('isOpen');
@@ -211,16 +176,6 @@ export const SelectlistObject = {
 
 		this.elements.hiddenField.text(item._item && JSON.stringify(item._item));
 		this.elements.label.text(item.getText() || strings.NONE_SELECTED);
-	},
-	
-	_closeMenu (e) {
-		if (e.originator !== this) {
-			this.setState({
-				isOpen: false
-			});
-			
-			this._onExpandOrCollapse();
-		}
 	},
 
 	_onEnabled () {
@@ -250,110 +205,11 @@ export const SelectlistObject = {
 		// TO-DO: Test this. And will this work to remove the style as well?
 		this.elements.button.width(width);
 		this.elements.dropdownMenu.width(width);
-	},
-
-	_handleClicked (e) {
-		const disabled = !!this.getProperty('disabled');
-		e.originalEvent.originator = this;
-		
-		if (!disabled) {
-			this.setState({
-				isOpen: !this.getState('isOpen')
-			});
-			
-			this._onExpandOrCollapse();
-		}
-	},
-
-	_handleMenuItemSelected (e) {
-		e.preventDefault();
-
-		const $a = $(e.currentTarget);
-		const $li = $a.parent('li');
-
-		if (!$li.hasClass(this.cssClasses.DISABLED)) {
-			this.setSelection($li.data());
-		}
-	},
-
-	_handleKeyDown (e) {
-		let key;
-		
-		if (/(38)/.test(e.which)) {
-			key = 'ArrowUp';
-		} else if (/(40)/.test(e.which)) {
-			key = 'ArrowDown';
-		}
-
-		if (key) {
-			e.preventDefault();
-			this._keyboardNav(key, this.elements.menuItems);
-			this._onExpandOrCollapse();
-		}
-	},
-
-	_handleKeyPressed (e) {
-		const key = String.fromCharCode(e.which);
-		
-		if (this.isBootstrap3) {
-			this.setState({
-				isOpen: this.elements.wrapper.hasClass(this.cssClasses.OPEN)
-			});
-		}
-
-		if (key && key.length === 1) {
-			e.preventDefault();
-			this._keyboardNav(key, this.elements.menuItems);
-			this._onExpandOrCollapse();
-		}
 	}
 };
 
-Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, SelectlistObject);
+Lib.merge(Combobox.prototype, ComboboxCore, Events, State, ComboboxObject);
 
-// LEGACY METHODS
+createPlugin(CONTROL, Combobox, legacyMethods);
 
-export const legacyMethods = {
-	selectedItem () {
-		let selection = this._getSelection();
-
-		if (selection) {
-			selection = Lib.extend({}, selection.get());
-
-			selection.selected = true;
-			delete selection._itemType;
-		}
-
-		return selection;
-	},
-
-	selectByValue (value) {
-		return this.setSelection({ value: value });
-	},
-
-	selectByText (text) {
-		return this.setSelection(item => {
-			const itemText = item && item.getText();
-
-			return item && Lib.isString(itemText) && Lib.isString(text) && itemText.toLowerCase() === text.toLowerCase();
-		});
-	},
-
-	selectBySelector (selector) {
-		const $item = $(selector);
-		return this.setSelection($item.data());
-	},
-
-	selectByIndex (index) {
-		let i = index;
-
-		if (!Lib.isNumber(i)) {
-			i = parseInt(index, 10);
-		}
-		return this.setSelectionByIndex(i);
-	}
-};
-
-createPlugin(CONTROL, Selectlist, legacyMethods);
-
-export default Selectlist;
+export default Combobox;
