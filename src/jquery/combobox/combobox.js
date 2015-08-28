@@ -38,28 +38,26 @@ const Combobox = function Combobox (element, options) {
 };
 
 function _render () {
-	const strings = this.getState('strings');
-	
-	// Prep for append
-	this.elements.wrapper.empty();
-	this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-	this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
-
 	const selection = this._getSelection();
 	const width = this.getState('width');
 	const disabled = !!this.getProperty('disabled');
-	const selectionName = selection.getText() || strings.NONE_SELECTED;
-	const selectionString = selection._item && JSON.stringify(selection._item);
+
+	// Get the template
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/combobox.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
+	
+	// Prep for append
+	elements.wrapper.empty();
+	elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
+	elements.wrapper.toggleClass(this.cssClasses.INPUT_APPEND, true);
+	elements.wrapper.toggleClass(this.cssClasses.INPUT_GROUP, true);
+	elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
 
 	elements.button.prop('disabled', disabled);
 	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
-	elements.button.width(width);
-	elements.label.text(selectionName);
-	elements.hiddenField.text(selectionString);
+	elements.button.prop('disabled', disabled);
+	elements.input.val(selection.getText());
 	elements.dropdownMenu.width(width);
-	elements.srOnly.text(strings.TOGGLE_DROPDOWN);
 	
 	this._onExpandOrCollapse();
 
@@ -80,7 +78,7 @@ function _render () {
 		elements.dropdownMenu.append($li);
 	});
 
-	this.elements.wrapper.append($html.children());
+	elements.wrapper.append($html.children());
 
 	this.rendered = true;
 }
@@ -90,10 +88,9 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		const els = elements || {};
 
 		els.button = base.find('.' + this.cssClasses.TOGGLE);
-		els.hiddenField = base.find('.' + this.cssClasses.HIDDEN);
-		els.label = base.find('.' + this.cssClasses.LABEL);
+		els.input = base.find('.' + this.cssClasses.INPUT);
+		els.inputGroup = base.find('.' + this.cssClasses.INPUT_GROUP_BUTTON);
 		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
-		els.srOnly = base.find('.' + this.cssClasses.SR_ONLY);
 
 		return els;
 	},
@@ -152,8 +149,8 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 
 		if (!this.isBootstrap3) this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.TOGGLE, $.proxy(this._handleClicked, this));
 		this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.MENU + ' a', $.proxy(this._handleMenuItemSelected, this));
-		if (!this.isBootstrap3) this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
-		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
+		if (!this.isBootstrap3) this.elements.inputGroup.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
+		this.elements.inputGroup.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
 		
 		this._closeMenu = $.proxy(this._closeMenu, this);
 		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
@@ -163,50 +160,31 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		const isOpen = this.getState('isOpen');
 		
 		this.elements.button.prop('aria-expanded', isOpen);
-		this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
+		this.elements.inputGroup.toggleClass(this.cssClasses.OPEN, isOpen);
 	},
 
 	_onSelected (item) {
-		const strings = this.getState('strings');
-		
-		if (!this.elements.hiddenField
-			|| !this.elements.label) {
-			return;
-		}
-
-		this.elements.hiddenField.text(item._item && JSON.stringify(item._item));
-		this.elements.label.text(item.getText() || strings.NONE_SELECTED);
+		this.elements.input.val(item.getText());
 	},
 
 	_onEnabled () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-		
-		if (this.elements.button) {
-			this.elements.button.prop('disabled', false);
-			this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
-		}
+		this.elements.input.prop('disabled', false);
+		this.elements.button.prop('disabled', false);
+		this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
 	},
 
 	_onDisabled () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-		
-		if (this.elements.button) {
-			this.elements.button.prop('disabled', true);
-			this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
-		}
+		this.elements.input.prop('disabled', true);
+		this.elements.button.prop('disabled', true);
+		this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
 	},
 
 	resetWidth (width) {
-		if (!this.elements.button
-			|| !this.elements.dropdownMenu) {
-			return;
-		}
-
-		// TO-DO: Test this. And will this work to remove the style as well?
-		this.elements.button.width(width);
-		this.elements.dropdownMenu.width(width);
+		if (this.elements.dropdownMenu) this.elements.dropdownMenu.width(width);
 	}
-};
+});
 
 Lib.merge(Combobox.prototype, ComboboxCore, Events, State, ComboboxObject);
 

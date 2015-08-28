@@ -11,7 +11,10 @@ const ComboboxCore = Lib.merge({}, SelectlistCore, {
 	cssClasses: {
 		CONTROL: CONTROL,
 		BUTTON: 'btn',
-		INPUT: 'input',
+		INPUT: 'form-control',
+		INPUT_APPEND: 'input-append',
+		INPUT_GROUP: 'input-group',
+		INPUT_GROUP_BUTTON: 'input-group-btn',
 		MENU: 'dropdown-menu',
 		TOGGLE: 'dropdown-toggle'
 	},

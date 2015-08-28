@@ -112,5 +112,7 @@ $(function () {
 	});
 
 	// events
-	// TO-DO: Add a listener here once we have a framework-agnostic event
+	$('#mySelectlist3').on('changed.fu.selectlist', function (event, data) {
+		Lib.log('changed', data);
+	});
 });

@@ -68,25 +68,26 @@ export function _renderDivider () {
 
 function _render () {
 	const strings = this.getState('strings');
-	
-	// Prep for append
-	this.elements.wrapper.empty();
-	this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-	this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
-
 	const selection = this._getSelection();
 	const width = this.getState('width');
 	const disabled = !!this.getProperty('disabled');
 	const selectionName = selection.getText() || strings.NONE_SELECTED;
-	const selectionString = selection._item && JSON.stringify(selection._item);
+
+	// Get the template
 	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
 	const elements = this._initElements($html, this.elements);
+
+	// Prep for append
+	elements.wrapper.empty();
+	elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
+	elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
+	elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
 
 	elements.button.prop('disabled', disabled);
 	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 	elements.button.width(width);
 	elements.label.text(selectionName);
-	elements.hiddenField.text(selectionString);
+	elements.hiddenField.val(selection.getText());
 	elements.dropdownMenu.width(width);
 	elements.srOnly.text(strings.TOGGLE_DROPDOWN);
 	
@@ -109,7 +110,7 @@ function _render () {
 		elements.dropdownMenu.append($li);
 	});
 
-	this.elements.wrapper.append($html.children());
+	elements.wrapper.append($html.children());
 
 	this.rendered = true;
 }
@@ -203,13 +204,8 @@ export const SelectlistObject = {
 
 	_onSelected (item) {
 		const strings = this.getState('strings');
-		
-		if (!this.elements.hiddenField
-			|| !this.elements.label) {
-			return;
-		}
 
-		this.elements.hiddenField.text(item._item && JSON.stringify(item._item));
+		this.elements.hiddenField.val(item.getText());
 		this.elements.label.text(item.getText() || strings.NONE_SELECTED);
 	},
 	
@@ -225,31 +221,19 @@ export const SelectlistObject = {
 
 	_onEnabled () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-		
-		if (this.elements.button) {
-			this.elements.button.prop('disabled', false);
-			this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
-		}
+		this.elements.button.prop('disabled', false);
+		this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
 	},
 
 	_onDisabled () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-		
-		if (this.elements.button) {
-			this.elements.button.prop('disabled', true);
-			this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
-		}
+		this.elements.button.prop('disabled', true);
+		this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
 	},
 
 	resetWidth (width) {
-		if (!this.elements.button
-			|| !this.elements.dropdownMenu) {
-			return;
-		}
-
-		// TO-DO: Test this. And will this work to remove the style as well?
-		this.elements.button.width(width);
-		this.elements.dropdownMenu.width(width);
+		if (this.elements.button) this.elements.button.width(width);
+		if (this.elements.dropdownMenu) this.elements.dropdownMenu.width(width);
 	},
 
 	_handleClicked (e) {

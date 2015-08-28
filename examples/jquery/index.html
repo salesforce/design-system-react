@@ -72,7 +72,7 @@
 											<li class="disabled" disabled="disabled" data-value="disabled"><a href="#">Disabled item</a>
 											</li>
 										</ul>
-										<input class="hidden hidden-field" name="mySelectlist" readonly="readonly" aria-hidden="true" type="text" />
+										<input class="hidden hidden-field" name="mySelectlist" readonly="readonly" aria-hidden="true" type="text" value="Three" />
 									</div>
 								</div>
 
@@ -126,6 +126,92 @@
 			</div>
 		</section>
 		<!-- End Selectlist -->
+		
+		<!-- Combobox -->
+		<section class="example-group fuelux">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<section id="combobox">
+							<section class="declarative example-group">
+								<h1>Combobox Declarative Example (backwards compatible)</h1>
+
+								<div class="example">
+									<div class="input-group input-append dropdown combobox" data-initialize="combobox" id="myCombobox1">
+										<input type="text" class="form-control" value="Three">
+										<div class="input-group-btn">
+											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+											<ul class="dropdown-menu dropdown-menu-right">
+												<li class="dropdown-header">One thing</li>
+												<li data-value="1"><a href="#">One</a>
+												</li>
+												<li role="separator" class="divider"></li>
+												<li class="dropdown-header">All the things</li>
+												<li data-value="2"><a href="#">Two</a>
+												</li>
+												<li data-selected="true" data-value="3"><a href="#">Three</a>
+												</li>
+												<li data-value="4"><a href="#">Buzz</a>
+												</li>
+												<li data-value="Item Five" data-foo="bar" data-fizz="buzz"><a href="#">Item Five</a>
+												</li>
+												<li class="disabled" disabled="disabled" data-value="disabled"><a href="#">Disabled item</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+								<div class="btn-panel action">
+									<button type="button" class="btn btn-default btnComboboxGetSelectedItem">log selected item/value</button>
+									<button type="button" class="btn btn-default btnComboboxSelectByValue">set by value (2)</button>
+									<button type="button" class="btn btn-default btnComboboxSelectByIndex">set by element index (zero-based) ('4')</button>
+									<button type="button" class="btn btn-default btnComboboxSelectByText">set by text ('One')</button>
+									<button type="button" class="btn btn-default btnComboboxSelectBySelector">set by CSS selector ('li[data-fizz=buzz]')</button>
+									<button type="button" class="btn btn-default btnComboboxEnableCombobox">enable</button>
+									<button type="button" class="btn btn-default btnComboboxDisableCombobox">disable</button>
+									<button type="button" class="btn btn-default btnComboboxDestroy">destroy and append</button> <!-- TO-DO: needs events wired back up -->
+								</div>
+							</section>
+
+							<section class="imperative example-group">
+								<h1>Combobox Imperative Example (mostly backwards compatible)</h1>
+
+								<div class="example">
+									<div id="myCombobox2"></div>
+								</div>
+
+								<div class="btn-panel action">
+									<button type="button" class="btn btn-default btnComboboxGetSelectedItem">log selected item/value</button>
+									<button type="button" class="btn btn-default btnComboboxSelectByIndex">set by element index (zero-based) ('1')</button>
+									<button type="button" class="btn btn-default btnComboboxSelectByText">set by text ('One')</button>
+									<button type="button" class="btn btn-default btnComboboxEnableCombobox">enable</button>
+									<button type="button" class="btn btn-default btnComboboxDisableCombobox">disable</button>
+									<button type="button" class="btn btn-default btnComboboxDestroy">destroy and append</button> <!-- TO-DO: needs events wired back up -->
+								</div>
+							</section>
+
+							<section class="new-api example-group">
+								<h1>Combobox New API Example</h1>
+
+								<div class="example">
+									<div id="myCombobox3"></div>
+								</div>
+
+								<div class="btn-panel action">
+									<button type="button" class="btn btn-default btnComboboxGetSelectedItem">log selected item/value</button>
+									<button type="button" class="btn btn-default btnComboboxSelectByIndex">set by element index (zero-based) (1)</button>
+									<button type="button" class="btn btn-default btnComboboxSelectByObject">set by object (collection[3])</button>
+									<button type="button" class="btn btn-default btnComboboxEnableCombobox">enable</button>
+									<button type="button" class="btn btn-default btnComboboxDisableCombobox">disable</button>
+								</div>
+							</section>
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Combobox -->
 
 		<!-- Loader -->
 		<section class="example-group fuelux">
