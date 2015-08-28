@@ -18,15 +18,14 @@ open http://localhost:3000
 * calendar
 
 ### Work in progress
-
-* dropdowns 90%
+* buttons 90%
 * grid 90%
 * lookups 60%
 * modals 90%
-* picklists 90%
+* picklists 80%
 * popovers 90%
 * tabs 90%
-* tooltips 90%
+* tooltips 80%
 
 ### Future Pipeline
 ...
