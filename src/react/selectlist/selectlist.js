@@ -16,7 +16,7 @@ import classNames from 'classnames';
 // Children
 import SelectlistItem from './selectlist-item';
 
-const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
+export const SelectlistObject = {
 	mixins: [State, Events, genericWillMount],
 	
 	propTypes: {
@@ -128,6 +128,8 @@ const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, {
 			this._keyboardNav(e.key, this.elements.menuItems);
 		}
 	}
-}));
+};
+
+const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, SelectlistObject));
 
 export default Selectlist;
