@@ -10,14 +10,23 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import SLDSDateInput from '../slds/SLDSDateInput/index';
 import SLDSLookup from '../slds/SLDSLookup/index';
-import SLDSPopover from '../slds/SLDSPopover';
+import SLDSTooltip from '../slds/SLDSTooltip';
+import SLDSOverlayTrigger from '../slds/SLDSOverlayTrigger';
+import SLDSModal from '../slds/SLDSModal';
+import SLDSTabs from '../slds/SLDSTabs';
+import SLDSButton from '../slds/SLDSButton';
 import {ButtonIcon, Icon} from "./../slds/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
 
 export default class HomePage extends Component {
   constructor(props) {
     super(props);
+    this.state = {}
     this.items = ["Paddy's Pub", "Tyrell Corp", "Paper St. Soap Company", "Nakatomi Investments", "Acme Landscaping", "Acme Construction"];
+  }
+
+  toggleModal() {
+    this.setState({showModal: !this.state.showModal});
   }
 
   render() {
@@ -51,6 +60,39 @@ export default class HomePage extends Component {
             </div>
             <div className="slds-p-around--medium">
               <SLDSDateInput />
+            </div>
+            <div className="slds-p-around--medium">
+              <SLDSTabs flavor="default">
+                <SLDSTabs.Item title="Item One">
+                  <h2>Item One Content</h2>
+                </SLDSTabs.Item>
+                <SLDSTabs.Item title="Item Two">
+                  <h2>Item Two Content</h2>
+                </SLDSTabs.Item>
+                <SLDSTabs.Item title="Item Three">
+                  <h2>Item Three Content</h2>
+                </SLDSTabs.Item>
+              </SLDSTabs>
+            </div>
+            <div className="slds-p-around--medium">
+              <SLDSOverlayTrigger trigger="click" placement="right middle" overlay={
+                <SLDSTooltip ref="tooltip">
+                  <h1>Tip the toolman taylor</h1>
+                </SLDSTooltip>
+              }>
+                <SLDSButton>Holy guacamole!</SLDSButton>
+              </SLDSOverlayTrigger>
+            </div>
+            <div className="slds-p-around--medium">
+              <SLDSButton onClick={this.toggleModal.bind(this)}>Show Modal</SLDSButton>
+              <SLDSModal isOpen={this.state.showModal} onRequestClose={this.toggleModal.bind(this)}>
+                <SLDSModal.Header>
+                  <h1>Modal time!</h1>
+                </SLDSModal.Header>
+                <SLDSModal.Body>
+                  <p>Some content</p>
+                </SLDSModal.Body>
+              </SLDSModal>
             </div>
             <div className="slds-p-around--medium">
               <SLDSLookup items={this.items} label="Contacts" />

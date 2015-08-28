@@ -29,6 +29,9 @@ export let ButtonIcon = React.createClass({
         if (this.props.size) {
             className = className + " slds-button__icon--" + this.props.size;
         }
+        if (this.props.inverse) {
+            className = className + " slds-button__icon--inverse";
+        }
         if (this.props.hint) {
             className = className + " slds-button__icon--hint";
         }
