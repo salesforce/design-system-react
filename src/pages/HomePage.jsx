@@ -14,9 +14,12 @@ import SLDSTooltip from '../slds/SLDSTooltip';
 import SLDSOverlayTrigger from '../slds/SLDSOverlayTrigger';
 import SLDSModal from '../slds/SLDSModal';
 import SLDSTabs from '../slds/SLDSTabs';
+import SLDSGrid from '../slds/SLDSGrid';
 import SLDSButton from '../slds/SLDSButton';
 import {ButtonIcon, Icon} from "./../slds/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
+
+const SLDSColumn = SLDSGrid.Column;
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -31,11 +34,11 @@ export default class HomePage extends Component {
 
   render() {
     return (
-      <section className="stage slds-grid slds-grid--vertical slds-nowrap"> 
+      <SLDSGrid flavor="vertical" className="stage slds-nowrap">
         <div className="region region--top slds-shrink-none">
           <div className="slds-page-header">
-            <div className="slds-grid">
-              <div className="slds-col slds-has-flexi-truncate">
+            <SLDSGrid>
+              <SLDSColumn className="slds-has-flexi-truncate">
                 <div className="slds-media">
                   <div className="slds-media__figure">
                     <Icon name="lead" category="standard" size="large" position="left" />
@@ -47,8 +50,8 @@ export default class HomePage extends Component {
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </SLDSColumn>
+            </SLDSGrid>
           </div>
         </div>
         <main className="stage-main slds-grid slds-wrap slds-grow slds-scrollable--y" role="main">
@@ -99,7 +102,7 @@ export default class HomePage extends Component {
             </div>
           </div>
         </main>
-    </section>
+    </SLDSGrid>
     );
   }
 }
