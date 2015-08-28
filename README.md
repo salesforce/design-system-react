@@ -11,26 +11,26 @@ npm start
 open http://localhost:3000
 ```
 
-### Components
+## Components
 
-## Completed
+### Completed
 
 * calendar
 
-## Work in progress
+### Work in progress
 ...
 
-## Future Pipeline
+### Future Pipeline
 ...
 
-### Layouts
+## Layouts
 
-## Completed
+### Completed
 
 * Record Home
 
-## Work in progress
+### Work in progress
 ...
 
-## Future Pipeline
+### Future Pipeline
 ...
