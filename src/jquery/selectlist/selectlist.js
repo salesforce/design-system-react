@@ -180,8 +180,8 @@ export const SelectlistObject = {
 			}
 		}
 
-		if (!this.isBootstrap3) this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.TOGGLE, $.proxy(this._handleClicked, this));
-		this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.MENU + ' a', $.proxy(this._handleMenuItemSelected, this));
+		if (!this.isBootstrap3) this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
+		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
 		if (!this.isBootstrap3) this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
 		

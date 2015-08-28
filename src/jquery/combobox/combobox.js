@@ -147,8 +147,9 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 			}
 		}
 
-		if (!this.isBootstrap3) this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.TOGGLE, $.proxy(this._handleClicked, this));
-		this.elements.wrapper.on('click.fu.selectlist', '.' + this.cssClasses.MENU + ' a', $.proxy(this._handleMenuItemSelected, this));
+		if (!this.isBootstrap3) this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
+		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
+		this.elements.input.on('change.fu.selectlist', $.proxy(this._handleChanged, this));
 		if (!this.isBootstrap3) this.elements.inputGroup.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.inputGroup.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
 		
@@ -183,6 +184,14 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 
 	resetWidth (width) {
 		if (this.elements.dropdownMenu) this.elements.dropdownMenu.width(width);
+	},
+	
+	_handleChanged () {
+		const value = {};
+		
+		value[this.accessors.textProp()] = this.elements.input.val();
+
+		this.setSelection(value);
 	}
 });
 
