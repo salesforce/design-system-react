@@ -62,7 +62,10 @@ module.exports = React.createClass( {
   selectedItem(item) {
     if(this.props.onItemSelect) this.props.onItemSelect(item);
     console.log('selected', item);
-    this.setState({currentSelectedItem: item});
+    this.setState({
+      currentSelectedItem: item,
+      isOpen: false
+    });
   },
 
   selectedItemContents() {
@@ -84,13 +87,15 @@ module.exports = React.createClass( {
   },
 
   popover() {
-      return <Body
+      return (
+        this.state.isOpen?
+          <SLDSPopover className="slds-dropdown" targetElement={this.refs.date} onClose={this.handleClose}><Body
           searchTerm={this.state.searchTerm}
           filterWith={this.props.filterWith}
           selectedItem={this.selectedItem}
           items={this.props.items}
           label={this.props.label}
-          onChange={this.handleChange} />
+          onChange={this.handleChange} /></SLDSPopover>:null);
   },
 
   render() {

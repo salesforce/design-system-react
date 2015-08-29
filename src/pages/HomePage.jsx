@@ -56,27 +56,69 @@ export default class HomePage extends Component {
         </div>
         <main className="stage-main slds-grid slds-wrap slds-grow slds-scrollable--y" role="main">
           <div className="region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
+
             <div className="slds-p-around--medium">
+
+              <h3 className="slds-text-heading--medium slds-truncate">
+                Datepickers
+              </h3>
+
               <PrismCode className='language-markup'>
                 {require("raw-loader!../code-snippets/SLDSDateInputPage.txt")}
               </PrismCode>
+
+              <div className="slds-p-vertical--large">
+                <SLDSDateInput />
+              </div>
+
             </div>
+
+
             <div className="slds-p-around--medium">
-              <SLDSDateInput />
+
+              <h3 className="slds-text-heading--medium slds-truncate">
+                Lookups
+              </h3>
+
+              <PrismCode className='language-markup'>
+                {require("raw-loader!../code-snippets/SLDSLookupPage.txt")}
+              </PrismCode>
+
+              <div className="slds-p-vertical--large">
+                <SLDSLookup items={this.items} label="Contacts" />
+              </div>
+
             </div>
+
             <div className="slds-p-around--medium">
-              <SLDSTabs flavor="default">
-                <SLDSTabs.Item title="Item One">
-                  <h2>Item One Content</h2>
-                </SLDSTabs.Item>
-                <SLDSTabs.Item title="Item Two">
-                  <h2>Item Two Content</h2>
-                </SLDSTabs.Item>
-                <SLDSTabs.Item title="Item Three">
-                  <h2>Item Three Content</h2>
-                </SLDSTabs.Item>
-              </SLDSTabs>
+
+              <h3 className="slds-text-heading--medium slds-truncate">
+                Tabs
+              </h3>
+
+              <PrismCode className='language-markup'>
+                {require("raw-loader!../code-snippets/SLDSTabsPage.txt")}
+              </PrismCode>
+
+              <div className="slds-p-vertical--large">
+
+
+                <SLDSTabs flavor="default">
+                  <SLDSTabs.Item title="Item One">
+                    <h2>Item One Content</h2>
+                  </SLDSTabs.Item>
+                  <SLDSTabs.Item title="Item Two">
+                    <h2>Item Two Content</h2>
+                  </SLDSTabs.Item>
+                  <SLDSTabs.Item title="Item Three">
+                    <h2>Item Three Content</h2>
+                  </SLDSTabs.Item>
+                </SLDSTabs>
+
+              </div>
             </div>
+
+
             <div className="slds-p-around--medium">
               <SLDSOverlayTrigger trigger="click" placement="right middle" overlay={
                 <SLDSTooltip ref="tooltip">
@@ -97,9 +139,7 @@ export default class HomePage extends Component {
                 </SLDSModal.Body>
               </SLDSModal>
             </div>
-            <div className="slds-p-around--medium">
-              <SLDSLookup items={this.items} label="Contacts" />
-            </div>
+
           </div>
         </main>
     </SLDSGrid>

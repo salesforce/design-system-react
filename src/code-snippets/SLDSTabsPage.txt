@@ -1,0 +1,12 @@
+
+<SLDSTabs flavor="default">
+  <SLDSTabs.Item title="Item One">
+    <h2>Item One Content</h2>
+  </SLDSTabs.Item>
+  <SLDSTabs.Item title="Item Two">
+    <h2>Item Two Content</h2>
+  </SLDSTabs.Item>
+  <SLDSTabs.Item title="Item Three">
+    <h2>Item Three Content</h2>
+  </SLDSTabs.Item>
+</SLDSTabs>
