@@ -85,6 +85,8 @@ module.exports = React.createClass( {
 
   dropOptions () {
     let target = this.props.targetElement?this.props.targetElement.getDOMNode():this.getDOMNode().parentNode;
+    console.log('TARGET ELEMENT: ',this.props.targetElement);
+    console.log('TARGET: ',target);
     return {
       target: target,
       content: this.popoverElement,

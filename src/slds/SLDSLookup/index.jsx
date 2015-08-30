@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import SLDSPopover from '../SLDSPopover';
 import Body from './Body/index';
-import {InputIcon} from "./../SLDSIcons";
+import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
 import _ from "lodash";
 
@@ -61,28 +61,46 @@ module.exports = React.createClass( {
 
   selectedItem(item) {
     if(this.props.onItemSelect) this.props.onItemSelect(item);
-    console.log('selected', item);
     this.setState({
       currentSelectedItem: item,
-      isOpen: false
+      searchTerm: null
     });
+
+    if(this.refs.clearSelectedItemButton && 
+        this.refs.clearSelectedItemButton.getDOMNode &&
+        this.refs.clearSelectedItemButton.getDOMNode() ){
+      console.log(this.refs.clearSelectedItemButton.getDOMNode());
+
+      this.refs.clearSelectedItemButton.getDOMNode().focus();
+    }
+
+
   },
 
   selectedItemContents() {
     return this.state.currentSelectedItem.props.children;
   },
 
+  handleDeleteSelected() {
+    this.setState({
+      currentSelectedItem: null,
+      isOpen: false
+    });
+    this.refs.date.getDOMNode().focus();
+  },
+
   selectedItemPill() {
-    return (
-      <span className="slds-pill slds-pill--bare">
-        <a href="#" className="slds-pill__label">
-          { this.selectedItemContents() }
-        </a>
-        <button className="slds-button slds-button--icon-bare">
-          <Icon className="slds-button__icon" name="close" />
-          <span className="slds-assistive-text">Remove</span>
-        </button>
-      </span>
+    return (<div style={{position:'absolute'}} ref="selectedItem">
+        <span className="slds-pill slds-pill--bare" >
+          <a href="#" className="slds-pill__label">
+            { this.selectedItemContents() }
+          </a>
+          <button className="slds-button slds-button--icon-bare" onClick={this.handleDeleteSelected} ref="clearSelectedItemButton">
+            <ButtonIcon name="close" />
+            <span className="slds-assistive-text">Remove</span>
+          </button>
+        </span>
+      </div>
     );
   },
 
@@ -98,6 +116,10 @@ module.exports = React.createClass( {
           onChange={this.handleChange} /></SLDSPopover>:null);
   },
 
+  getPlaceholder() {
+    return this.state.currentSelectedItem?'':this.props.placeholder;
+  },
+
   render() {
     return (
       <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">
@@ -105,18 +127,21 @@ module.exports = React.createClass( {
           <label className="slds-form-element__label">{this.props.label}</label>
           <div className="slds-form-element__control slds-lookup__control slds-input-has-icon slds-input-has-icon--right ">
             { this.state.currentSelectedItem ? this.selectedItemPill() : null }
-            <InputIcon name="event"/>
+            <InputIcon name="down"/>
             <input
+              ref="date"
               className="slds-input--bare"
               type="text"
               aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
               role="combobox"
+              placeholder={this.getPlaceholder()} 
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
-              onClick={this.handleClick} />
+              onClick={this.handleClick} 
+              value={this.state.searchTerm} />
           </div>
           {this.popover()}
         </div>
