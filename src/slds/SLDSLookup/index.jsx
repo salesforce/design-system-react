@@ -61,24 +61,15 @@ module.exports = React.createClass( {
 
   selectedItem(item) {
     if(this.props.onItemSelect) this.props.onItemSelect(item);
+
     this.setState({
       currentSelectedItem: item,
       searchTerm: null
     });
-
-    if(this.refs.clearSelectedItemButton && 
-        this.refs.clearSelectedItemButton.getDOMNode &&
-        this.refs.clearSelectedItemButton.getDOMNode() ){
-      console.log(this.refs.clearSelectedItemButton.getDOMNode());
-
-      this.refs.clearSelectedItemButton.getDOMNode().focus();
-    }
-
-
   },
 
   selectedItemContents() {
-    return this.state.currentSelectedItem.props.children;
+    return <span><Icon name="account" />{this.state.currentSelectedItem.props.children}</span>;
   },
 
   handleDeleteSelected() {
@@ -86,11 +77,25 @@ module.exports = React.createClass( {
       currentSelectedItem: null,
       isOpen: false
     });
-    this.refs.date.getDOMNode().focus();
+  },
+
+  componentDidUpdate( prevProps, prevState) {
+    if(prevState.currentSelectedItem && !this.state.currentSelectedItem){
+      if(this.refs.date){ 
+        this.refs.date.getDOMNode().focus();
+      }      
+    }
+    else if(!prevState.currentSelectedItem && this.state.currentSelectedItem){
+      if(this.refs.clearSelectedItemButton && 
+        this.refs.clearSelectedItemButton.getDOMNode &&
+        this.refs.clearSelectedItemButton.getDOMNode() ){
+          this.refs.clearSelectedItemButton.getDOMNode().focus();
+      }
+    }
   },
 
   selectedItemPill() {
-    return (<div style={{position:'absolute'}} ref="selectedItem">
+    return (
         <span className="slds-pill slds-pill--bare" >
           <a href="#" className="slds-pill__label">
             { this.selectedItemContents() }
@@ -100,7 +105,6 @@ module.exports = React.createClass( {
             <span className="slds-assistive-text">Remove</span>
           </button>
         </span>
-      </div>
     );
   },
 
@@ -121,22 +125,24 @@ module.exports = React.createClass( {
   },
 
   render() {
+    let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
     return (
       <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">
         <div className="slds-form-element">
-          <label className="slds-form-element__label">{this.props.label}</label>
-          <div className="slds-form-element__control slds-lookup__control slds-input-has-icon slds-input-has-icon--right ">
+          <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
+              <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
+
             { this.state.currentSelectedItem ? this.selectedItemPill() : null }
-            <InputIcon name="down"/>
+            <InputIcon name="search"/>
             <input
+              id="lookup"
               ref="date"
-              className="slds-input--bare"
+              className={className}
               type="text"
               aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
               role="combobox"
-              placeholder={this.getPlaceholder()} 
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
