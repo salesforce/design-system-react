@@ -1,6 +1,6 @@
 // TREE CONTROL
 
-import * as Lib from './lib';
+import * as Lib from '../lib/lib';
 import Base from './base';
 
 // Traits

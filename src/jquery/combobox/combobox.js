@@ -1,7 +1,7 @@
 // COMBOBOX CONTROL - JQUERY FACADE
 
 // Core
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Framework specific

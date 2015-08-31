@@ -1,7 +1,7 @@
 // MULTISELECTABLE
 // TO-DO: Combine this with Selectable
 
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 
 const Multiselectable = {
 	cssClasses: {

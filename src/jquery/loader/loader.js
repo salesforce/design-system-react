@@ -1,7 +1,7 @@
 // LOADER CONTROL - JQUERY FACADE
 
 // Core
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import LoaderCore, {CONTROL} from '../../core/loader';
 
 // Framework specific

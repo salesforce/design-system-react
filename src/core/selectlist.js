@@ -1,6 +1,6 @@
 // SELECTLIST CONTROL
 
-import * as Lib from './lib';
+import * as Lib from '../lib/lib';
 import Base from './base';
 import classNames from 'classnames';
 

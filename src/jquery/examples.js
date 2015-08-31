@@ -1,4 +1,4 @@
-import './createPlugin';
+import './helpers/createPlugin';
 
 import './selectlist/example';
 import './combobox/example';

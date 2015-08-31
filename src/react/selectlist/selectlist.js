@@ -1,7 +1,7 @@
 // SELECTLIST CONTROL - REACT FACADE
 
 // Core
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import SelectlistCore, {CONTROL} from '../../core/selectlist';
 
 // Framework specific

@@ -1,4 +1,4 @@
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import Combobox from './combobox';
 
 // TO-DO: This might not work with require, need to confirm that it does

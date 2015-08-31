@@ -1,4 +1,4 @@
-import * as Lib from './lib';
+import * as Lib from '../lib/lib';
 import '../data/vanilla';
 
 const Base = {

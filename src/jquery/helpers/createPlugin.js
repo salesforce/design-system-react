@@ -1,7 +1,7 @@
 // PLUGIN DEFINITION
 
 // Core
-import * as Lib from '../core/lib';
+import * as Lib from '../../lib/lib';
 
 // Framework specific
 // TO-DO: This might not work with require, need to confirm that it does

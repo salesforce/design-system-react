@@ -1,6 +1,6 @@
 // VANILLA JS DATA ADPATER
 
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 import Base from './base';
 
 const Item = Base.Item.extend({
