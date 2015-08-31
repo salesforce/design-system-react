@@ -37,7 +37,8 @@ export default function (element) {
 					},
 					{
 						collection: collection,
-						disabled: false
+						disabled: false,
+						resize: 'auto'
 					},
 					{
 						collection: collection,

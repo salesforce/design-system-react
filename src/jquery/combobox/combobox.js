@@ -36,52 +36,6 @@ let Combobox = function Combobox (element, options) {
 	this._initialize(this.options);
 };
 
-function _render () {
-	const selection = this._getSelection();
-	const width = this.getState('width');
-	const disabled = !!this.getProperty('disabled');
-
-	// Get the template
-	const $html = $('<i />').append(fs.readFileSync(__dirname + '/combobox.html', 'utf8'));
-	const elements = this._initElements($html, this.elements);
-	
-	// Prep for append
-	elements.wrapper.empty();
-	elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-	elements.wrapper.toggleClass(this.cssClasses.INPUT_APPEND, true);
-	elements.wrapper.toggleClass(this.cssClasses.INPUT_GROUP, true);
-	elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
-
-	elements.button.prop('disabled', disabled);
-	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
-	elements.button.prop('disabled', disabled);
-	elements.input.val(selection.getText());
-	elements.dropdownMenu.width(width);
-	
-	this._onExpandOrCollapse();
-
-	// Building the menu items
-	this._collection.forEach(item => {
-		let $li;
-		let func;
-		const funcMap = {
-			header: _renderHeader,
-			divider: _renderDivider,
-			item: _renderItem
-		};
-
-		func = funcMap[item.getType()] || _renderItem;
-
-		$li = func.call(this, item);
-
-		elements.dropdownMenu.append($li);
-	});
-
-	elements.wrapper.append($html.children());
-
-	this.rendered = true;
-}
-
 export const ComboboxObject = Lib.merge(SelectlistObject, {
 	_initElements (base, elements) {
 		const els = elements || {};
@@ -129,31 +83,58 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		_options.collection = collection;
 	},
 
-	_onInitialized () {
-		if (!this.rendered) {
-			_render.call(this);
-		}
-		
-		// Get the menu items for keyboard nav
-		this.elements.menuItems = [];
-		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-		
-		for (let i = 0; i < menuItems.length; i++) {
-			const menuItem = menuItems[i].getElementsByTagName('a');
-			
-			if (!menuItems[i].disabled && menuItem.length === 1) {
-				this.elements.menuItems.push(menuItem[0]);
-			}
-		}
-
+	_bindUIEvents () {
 		if (!this.isBootstrap3) this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
 		this.elements.input.on('change.fu.selectlist', $.proxy(this._handleChanged, this));
 		if (!this.isBootstrap3) this.elements.inputGroup.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.inputGroup.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
+	},
+	
+	_render () {
+		const selection = this._getSelection();
+		const width = this.getState('width');
+		const disabled = !!this.getProperty('disabled');
+	
+		// Get the template
+		const $html = $('<i />').append(fs.readFileSync(__dirname + '/combobox.html', 'utf8'));
+		const elements = this._initElements($html, this.elements);
 		
-		this._closeMenu = $.proxy(this._closeMenu, this);
-		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
+		// Prep for append
+		elements.wrapper.empty();
+		elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
+		elements.wrapper.toggleClass(this.cssClasses.INPUT_APPEND, true);
+		elements.wrapper.toggleClass(this.cssClasses.INPUT_GROUP, true);
+		elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
+	
+		elements.button.prop('disabled', disabled);
+		elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
+		elements.button.prop('disabled', disabled);
+		elements.input.val(selection.getText());
+		elements.dropdownMenu.width(width);
+		
+		this._onExpandOrCollapse();
+	
+		// Building the menu items
+		this._collection.forEach(item => {
+			let $li;
+			let func;
+			const funcMap = {
+				header: _renderHeader,
+				divider: _renderDivider,
+				item: _renderItem
+			};
+	
+			func = funcMap[item.getType()] || _renderItem;
+	
+			$li = func.call(this, item);
+	
+			elements.dropdownMenu.append($li);
+		});
+	
+		elements.wrapper.append($html.children());
+	
+		this.rendered = true;
 	},
 	
 	_onExpandOrCollapse () {

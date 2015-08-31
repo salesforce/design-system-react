@@ -65,55 +65,6 @@ export function _renderDivider () {
 	return $li;
 }
 
-function _render () {
-	const strings = this.getState('strings');
-	const selection = this._getSelection();
-	const width = this.getState('width');
-	const disabled = !!this.getProperty('disabled');
-	const selectionName = selection.getText() || strings.NONE_SELECTED;
-
-	// Get the template
-	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
-	const elements = this._initElements($html, this.elements);
-
-	// Prep for append
-	elements.wrapper.empty();
-	elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-	elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
-	elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
-
-	elements.button.prop('disabled', disabled);
-	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
-	elements.button.width(width);
-	elements.label.text(selectionName);
-	elements.hiddenField.val(selection.getText());
-	elements.dropdownMenu.width(width);
-	elements.srOnly.text(strings.TOGGLE_DROPDOWN);
-	
-	this._onExpandOrCollapse();
-
-	// Building the menu items
-	this._collection.forEach(item => {
-		let $li;
-		let func;
-		const funcMap = {
-			header: _renderHeader,
-			divider: _renderDivider,
-			item: _renderItem
-		};
-
-		func = funcMap[item.getType()] || _renderItem;
-
-		$li = func.call(this, item);
-
-		elements.dropdownMenu.append($li);
-	});
-
-	elements.wrapper.append($html.children());
-
-	this.rendered = true;
-}
-
 export const SelectlistObject = {
 	_initElements (base, elements) {
 		const els = elements || {};
@@ -164,7 +115,7 @@ export const SelectlistObject = {
 
 	_onInitialized () {
 		if (!this.rendered) {
-			_render.call(this);
+			this._render();
 		}
 		
 		// Get the menu items for keyboard nav
@@ -178,14 +129,67 @@ export const SelectlistObject = {
 				this.elements.menuItems.push(menuItem[0]);
 			}
 		}
-
+		
+		this._bindUIEvents();
+		
+		this._closeMenu = $.proxy(this._closeMenu, this);
+		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
+	},
+	
+	_bindUIEvents () {
 		if (!this.isBootstrap3) this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
 		if (!this.isBootstrap3) this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
+	},
+	
+	_render () {
+		const strings = this.getState('strings');
+		const selection = this._getSelection();
+		const width = this.getState('width');
+		const disabled = !!this.getProperty('disabled');
+		const selectionName = selection.getText() || strings.NONE_SELECTED;
+	
+		// Get the template
+		const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
+		const elements = this._initElements($html, this.elements);
+	
+		// Prep for append
+		elements.wrapper.empty();
+		elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
+		elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
+		elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
+	
+		elements.button.prop('disabled', disabled);
+		elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
+		elements.button.width(width);
+		elements.label.text(selectionName);
+		elements.hiddenField.val(selection.getText());
+		elements.dropdownMenu.width(width);
+		elements.srOnly.text(strings.TOGGLE_DROPDOWN);
 		
-		this._closeMenu = $.proxy(this._closeMenu, this);
-		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
+		this._onExpandOrCollapse();
+	
+		// Building the menu items
+		this._collection.forEach(item => {
+			let $li;
+			let func;
+			const funcMap = {
+				header: _renderHeader,
+				divider: _renderDivider,
+				item: _renderItem
+			};
+	
+			func = funcMap[item.getType()] || _renderItem;
+	
+			$li = func.call(this, item);
+	
+			elements.dropdownMenu.append($li);
+		});
+	
+		elements.wrapper.append($html.children());
+	
+		this.rendered = true;
 	},
 
 	destroy () {

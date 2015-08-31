@@ -11,6 +11,8 @@ import KeyboardNavigable from '../traits/keyboard-navigable';
 
 export const CONTROL = 'selectlist';
 
+const resizeCache = {};
+
 const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavigable, {
 	// CSS classes used within this control
 	cssClasses: {
@@ -32,12 +34,6 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavi
 	
 	_defaultState: {
 		isOpen: false
-	},
-
-	_initializer () {
-		if (this.getProperty('resize') === 'auto') {
-			this.resize();
-		}
 	},
 	
 /* Accessors: These may be supplied in the options hash to override default behavior
@@ -91,19 +87,21 @@ getKey (item)
 		
 		return !item.getType() && !item.getDisabled();
 	},
+	
+	_onInitialized () {
+		if (this.getProperty('resize') === 'auto') {
+			this.resize();
+		}
+	},
 
 	// Vanilla js implementation of this to be shared by the libraries
 	resize () {
-		const self = this;
 		const sizer = document.createElement('div');
 
-		let newWidth = 0;
-		let width = 0;
-		let parent = undefined;
-
 		sizer.className = 'selectlist-sizer';
-		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
+		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
 
+		let parent;
 		if (Lib.hasClass(document.querySelector('html'), this.cssClasses.NAMESPACE)) {
 			parent = document.querySelector('body');
 		} else {
@@ -116,29 +114,35 @@ getKey (item)
 			return;
 		}
 
-		// This works great except that we need to remember to check the key for 'None selected' as well once it's internationalized
-
-		// This list could be long, we might want to cycle through the collection and find the longest name and just select it,
-		// and use that width value. That would make less DOM touches. - @interactivellama
-
-		// @interactivellama: True, this is just how it was already implemented in current Fuel UX. However, "longest" doesn't always mean widest...
-
-		const label = sizer.querySelector('.' + self.cssClasses.LABEL);
-		const control = sizer.querySelector('.' + self.cssClasses.CONTROL);
-
+		const label = sizer.querySelector('.' + this.cssClasses.LABEL);
+		const control = sizer.querySelector('.' + this.cssClasses.CONTROL);
+		
+		const strings = this.getState('strings');
+		label.textContent = strings.NONE_SELECTED;
+		
+		let width = control.offsetWidth;
 		this._collection.forEach(item => {
 			const text = item.getText();
-			label.textContent = text;
-			newWidth = control.offsetWidth;
-			if (newWidth > width) {
-				width = newWidth;
+			let offsetWidth;
+			
+			if (resizeCache[text]) {
+				offsetWidth = resizeCache[text];
+			} else {
+				label.textContent = text;
+				offsetWidth = control.offsetWidth;
+			}
+			
+			if (offsetWidth > width) {
+				width = offsetWidth;
 			}
 		});
 
 		parent.removeChild(sizer);
 
-		this.setState({ width: width });
-		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+		if (width !== this.getState('width')) {
+			this.setState({ width });
+			if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+		}
 	}
 });
 
