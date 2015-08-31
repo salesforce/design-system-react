@@ -93,11 +93,7 @@ module.exports = function (grunt) {
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-browserify');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-eslint');
-	grunt.loadNpmTasks('grunt-mocha');
+	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
 	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:jqueryExamples', 'browserify:reactExamples']);
 	grunt.registerTask('serve', ['connect:server', 'default', 'watch']);
