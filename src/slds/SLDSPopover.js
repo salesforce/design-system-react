@@ -58,7 +58,7 @@ module.exports = React.createClass( {
 
   popoverComp () {
     return (
-        <div className={this.props.className}
+        <div className={'SLDSPopover '+this.props.className}
               style={{
                 transform:'none',
                 marginTop:'0.25rem',

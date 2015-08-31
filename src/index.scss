@@ -83,3 +83,7 @@ html,body {
 .drop.drop-out-of-bounds-top{
   display:none;
 }
+
+.drop-element-attached-bottom .SLDSPopover{
+  align-self: flex-end;
+}

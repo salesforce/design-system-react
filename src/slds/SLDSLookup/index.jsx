@@ -60,6 +60,7 @@ module.exports = React.createClass( {
   },
 
   selectedItem(item) {
+    console.log('SELECTED: ',item);
     if(this.props.onItemSelect) this.props.onItemSelect(item);
 
     this.setState({
@@ -111,7 +112,9 @@ module.exports = React.createClass( {
   popover() {
       return (
         this.state.isOpen?
-          <SLDSPopover className="slds-dropdown" targetElement={this.refs.date} onClose={this.handleClose}><Body
+          <SLDSPopover className="slds-dropdown" targetElement={this.refs.date} onClose={this.handleClose}>
+          <Body
+          ref='list'
           searchTerm={this.state.searchTerm}
           filterWith={this.props.filterWith}
           selectedItem={this.selectedItem}
@@ -122,6 +125,29 @@ module.exports = React.createClass( {
 
   getPlaceholder() {
     return this.state.currentSelectedItem?'':this.props.placeholder;
+  },
+
+  handleKeyDown(event) {
+    if(event.keyCode){
+      if(event.keyCode === 40){
+        console.log('down');
+      }
+      else if(event.keyCode === 38){
+        console.log('up');
+      }
+      else if(event.keyCode === 13){
+        console.log('enter');
+        let list = this.refs.list;
+        if(list && list.items){
+          let items = list.items();
+          if(items && items.length){
+            let item = items[0];
+            this.selectedItem(item);
+            console.log('FIRST ITEM: ',item);
+          }
+        }
+      }
+    }
   },
 
   render() {
@@ -147,6 +173,7 @@ module.exports = React.createClass( {
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
               onClick={this.handleClick} 
+              onKeyDown={this.handleKeyDown}
               value={this.state.searchTerm} />
           </div>
           {this.popover()}
