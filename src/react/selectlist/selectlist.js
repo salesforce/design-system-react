@@ -2,7 +2,7 @@
 
 // Core
 import * as Lib from '../../core/lib';
-import SelectlistCore from '../../core/selectlist';
+import SelectlistCore, {CONTROL} from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
@@ -130,6 +130,9 @@ export const SelectlistObject = {
 	}
 };
 
-const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, SelectlistObject));
+let Selectlist = Lib.merge({}, SelectlistCore, SelectlistObject);
+
+Selectlist = Lib.runHelpers('react', CONTROL, Selectlist);
+Selectlist = React.createClass(Selectlist);
 
 export default Selectlist;

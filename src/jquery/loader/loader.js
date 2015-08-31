@@ -5,12 +5,11 @@ import * as Lib from '../../core/lib';
 import LoaderCore, {CONTROL} from '../../core/loader';
 
 // Framework specific
-import createPlugin from '../createPlugin';
 import State from '../state';
 
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
-const Loader = function Loader (element, options) {
+let Loader = function Loader (element, options) {
 	this.options = Lib.extend({}, options);
 	this.elements = {
 		wrapper: $(element)
@@ -120,6 +119,8 @@ const legacyMethods = {
 	reset: methods._reset
 };
 
-createPlugin(CONTROL, Loader, legacyMethods);
+Loader = Lib.runHelpers('jquery', CONTROL, Loader, {
+	legacyMethods
+});
 
 export default Loader;

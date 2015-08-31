@@ -2,7 +2,7 @@
 
 // Core
 import * as Lib from '../../core/lib';
-import ComboboxCore from '../../core/combobox';
+import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Framework specific
 import React from 'react';
@@ -69,6 +69,9 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	}
 });
 
-const Combobox = React.createClass(Lib.merge({}, ComboboxCore, ComboboxObject));
+let Combobox = Lib.merge({}, ComboboxCore, ComboboxObject);
+
+Combobox = Lib.runHelpers('react', CONTROL, Combobox);
+Combobox = React.createClass(Combobox);
 
 export default Combobox;

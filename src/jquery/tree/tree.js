@@ -5,7 +5,6 @@ import * as Lib from '../../core/lib';
 import TreeCore, {CONTROL} from '../../core/tree';
 
 // Framework Specific
-import createPlugin from '../createPlugin';
 import Events from '../events';
 import State from '../state';
 
@@ -14,7 +13,7 @@ const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.globa
 // Template imports
 const fs = require('fs');
 
-const Tree = function Tree (element, options) {
+let Tree = function Tree (element, options) {
 	this.options = Lib.extend({
 		open: []
 	}, options);
@@ -253,6 +252,8 @@ const legacyMethods = {
 	}
 };
 
-createPlugin(CONTROL, Tree, legacyMethods);
+Tree = Lib.runHelpers('jquery', CONTROL, Tree, {
+	legacyMethods
+});
 
 export default Tree;

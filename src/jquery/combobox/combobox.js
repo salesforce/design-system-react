@@ -5,7 +5,6 @@ import * as Lib from '../../core/lib';
 import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Framework specific
-import createPlugin from '../createPlugin';
 import Events from '../events';
 import State from '../state';
 import { SelectlistObject, _renderItem, _renderHeader, _renderDivider, legacyMethods } from '../selectlist/selectlist';
@@ -15,7 +14,7 @@ const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.globa
 // Template imports
 const fs = require('fs');
 
-const Combobox = function Combobox (element, options) {
+let Combobox = function Combobox (element, options) {
 	this.options = Lib.extend({}, options);
 	this.elements = {
 		wrapper: $(element)
@@ -197,6 +196,9 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 
 Lib.merge(Combobox.prototype, ComboboxCore, Events, State, ComboboxObject);
 
-createPlugin(CONTROL, Combobox, legacyMethods);
+
+Combobox = Lib.runHelpers('jquery', CONTROL, Combobox, {
+	legacyMethods
+});
 
 export default Combobox;

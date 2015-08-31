@@ -7,10 +7,11 @@ import * as Lib from '../core/lib';
 // TO-DO: This might not work with require, need to confirm that it does
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
-const createPlugin = function (name, Constructor, legacyMethods) {
+const createPlugin = function (name, Constructor, helperOptions) {
 	const old = $.fn[name];
 	const namespaced = ['fu', name].join('.');
 	const initializeSelector = ['[data-initialize=', name, ']'].join('');
+	const legacyMethods = helperOptions && helperOptions.legacyMethods || {};
 	
 	Constructor.prototype.eventSuffix = namespaced;
 
@@ -66,6 +67,10 @@ const createPlugin = function (name, Constructor, legacyMethods) {
 			}
 		});
 	});
+	
+	return Constructor;
 };
+
+Lib.registerHelper('createPlugin', createPlugin, ['jquery']);
 
 export default createPlugin;

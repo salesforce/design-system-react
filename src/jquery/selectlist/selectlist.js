@@ -5,7 +5,6 @@ import * as Lib from '../../core/lib';
 import SelectlistCore, {CONTROL} from '../../core/selectlist';
 
 // Framework specific
-import createPlugin from '../createPlugin';
 import Events from '../events';
 import State from '../state';
 
@@ -14,7 +13,7 @@ const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.globa
 // Template imports
 const fs = require('fs');
 
-const Selectlist = function Selectlist (element, options) {
+let Selectlist = function Selectlist (element, options) {
 	this.options = Lib.extend({}, options);
 	this.elements = {
 		wrapper: $(element)
@@ -338,6 +337,8 @@ export const legacyMethods = {
 	}
 };
 
-createPlugin(CONTROL, Selectlist, legacyMethods);
+Selectlist = Lib.runHelpers('jquery', CONTROL, Selectlist, {
+	legacyMethods
+});
 
 export default Selectlist;
