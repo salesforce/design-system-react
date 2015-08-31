@@ -14,6 +14,7 @@ import SLDSTooltip from '../slds/SLDSTooltip';
 import SLDSOverlayTrigger from '../slds/SLDSOverlayTrigger';
 import SLDSModal from '../slds/SLDSModal';
 import SLDSTabs from '../slds/SLDSTabs';
+import SLDSPicklist from '../slds/SLDSPicklist';
 import SLDSGrid from '../slds/SLDSGrid';
 import SLDSButton from '../slds/SLDSButton';
 import {ButtonIcon, Icon} from "./../slds/SLDSIcons";
@@ -96,6 +97,9 @@ export default class HomePage extends Component {
                   <p>Some content</p>
                 </SLDSModal.Body>
               </SLDSModal>
+            </div>
+            <div className="slds-p-around--medium">
+              <SLDSPicklist items={this.items} label="Contacts" />
             </div>
             <div className="slds-p-around--medium">
               <SLDSLookup items={this.items} label="Contacts" />
