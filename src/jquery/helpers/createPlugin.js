@@ -1,4 +1,6 @@
-// PLUGIN DEFINITION
+// PLUGIN DEFINITION HELPER
+// Include this helper to create jQuery plugin versions of jQuery controls.
+// Without the helper, jQuery controls can still be instantiated directly via their constructors.
 
 // Core
 import * as Lib from '../../lib/lib';

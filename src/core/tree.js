@@ -24,12 +24,45 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 		autoOpenLimit: 1
 	},
 
+/* Accessors: These may be supplied in the options hash to override default behavior
+
+getText (item)
+	Return the text value to display as the branch or item name
+	item => object wrapped in an Item Adapter
+
+getChildren (item)
+	Return the children of the specified item
+	May return either an array / collection that is supported by Data Adapters, or a promise the resolves as such
+	item => object wrapped in an Item Adapter
+	
+getType (item)
+	Return the type of the current node - either 'folder' (for branches) or 'item'
+	item => object wrapped in an Item Adapter
+	
+getIconClass (item)
+	Return an (optional) class name that can be used to override the icon
+	item => object wrapped in an Item Adapter
+	
+getExpandable (item)
+	For branches, returns whether or not the branch is expandable (generally, whether it has children)
+	item => object wrapped in an Item Adapter
+	
+getKey (item)
+	Return either an object with key/value pairs to match or a match function
+	Use this to reduce the number of fields required for searching if a unique key is available
+	item => object wrapped in an Item Adapter
+	
+getId (item)
+	Return a unique value for each node
+	item => object wrapped in an Item Adapter
+	
+*/
+
 	accessors: {
 		getText (item) {
 			return item.get('text');
 		},
 
-		// May return either a promise or a value
 		getChildren (item) {
 			return item.get('children');
 		},
@@ -51,8 +84,6 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 			return item.get('_isExpandable') !== false;
 		},
 
-		// Reduce the number of fields here if a unique key is available
-		// Result can be either an object with key/value pairs to match or a function
 		getKey (item) {
 			return { id: item.get('id') };
 		},

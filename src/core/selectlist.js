@@ -40,6 +40,30 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavi
 		}
 	},
 	
+/* Accessors: These may be supplied in the options hash to override default behavior
+
+textProp ()
+	Return the name of the property that contains the text
+
+getText (item)
+	Return the text value to display in the list
+	item => object wrapped in an Item Adapter
+	
+getType (item)
+	Return the type of the current item - can be 'header', 'divider', or nothing
+	item => object wrapped in an Item Adapter
+	
+getDisabled (item)
+	Return true if the item is disabled
+	item => object wrapped in an Item Adapter
+	
+getKey (item)
+	Return either an object with key/value pairs to match or a match function
+	Use this to reduce the number of fields required for searching if a unique key is available
+	item => object wrapped in an Item Adapter
+	
+*/
+	
 	accessors: {
 		textProp () {
 			return 'text';
@@ -57,8 +81,6 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavi
 			return item.get('disabled') === true;
 		},
 
-		// Reduce the number of fields here if a unique key is available
-		// Result can be either an object with key/value pairs to match or a function
 		getKey (item) {
 			return item.get();
 		}
