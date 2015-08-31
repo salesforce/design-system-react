@@ -27,6 +27,10 @@ class Item extends React.Component {
 
   selectedItem(e) {
     e.preventDefault();
+    if(e.nativeEvent){
+      e.nativeEvent.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
+    }
     return this.props.selectedItem(this.props.idx, this);
   }
 
@@ -40,8 +44,8 @@ class Item extends React.Component {
     const tabIndex = this.props.idx === 0 ? 0 : -1;
 
     return (
-      <li id={this.id} onClick={this.selectedItem.bind(this)} { ...this.props } className={className} role="presentation" tabIndex={tabIndex}>
-        <a href={ this.props.href } tabIndex="-1" aria-disabled={ this.props.disabled } role="option">
+      <li key={this.id}  { ...this.props } className={className} role="presentation" tabIndex={tabIndex}>
+        <a href={ this.props.href } onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option">
           <Icon name="account" />
           { this.boldSearchText(this.props.children) }
         </a>

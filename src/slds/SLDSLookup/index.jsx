@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import SLDSPopover from '../SLDSPopover';
 import Body from './Body/index';
-import {InputIcon} from "./../SLDSIcons";
+import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
 import _ from "lodash";
 
@@ -61,48 +61,83 @@ module.exports = React.createClass( {
 
   selectedItem(item) {
     if(this.props.onItemSelect) this.props.onItemSelect(item);
-    console.log('selected', item);
-    this.setState({currentSelectedItem: item});
+
+    this.setState({
+      currentSelectedItem: item,
+      searchTerm: null
+    });
   },
 
   selectedItemContents() {
-    return this.state.currentSelectedItem.props.children;
+    return <span><Icon name="account" />{this.state.currentSelectedItem.props.children}</span>;
+  },
+
+  handleDeleteSelected() {
+    this.setState({
+      currentSelectedItem: null,
+      isOpen: false
+    });
+  },
+
+  componentDidUpdate( prevProps, prevState) {
+    if(prevState.currentSelectedItem && !this.state.currentSelectedItem){
+      if(this.refs.date){ 
+        this.refs.date.getDOMNode().focus();
+      }      
+    }
+    else if(!prevState.currentSelectedItem && this.state.currentSelectedItem){
+      if(this.refs.clearSelectedItemButton && 
+        this.refs.clearSelectedItemButton.getDOMNode &&
+        this.refs.clearSelectedItemButton.getDOMNode() ){
+          this.refs.clearSelectedItemButton.getDOMNode().focus();
+      }
+    }
   },
 
   selectedItemPill() {
     return (
-      <span className="slds-pill slds-pill--bare">
-        <a href="#" className="slds-pill__label">
-          { this.selectedItemContents() }
-        </a>
-        <button className="slds-button slds-button--icon-bare">
-          <Icon className="slds-button__icon" name="close" />
-          <span className="slds-assistive-text">Remove</span>
-        </button>
-      </span>
+        <span className="slds-pill slds-pill--bare" >
+          <a href="#" className="slds-pill__label">
+            { this.selectedItemContents() }
+          </a>
+          <button className="slds-button slds-button--icon-bare" onClick={this.handleDeleteSelected} ref="clearSelectedItemButton">
+            <ButtonIcon name="close" />
+            <span className="slds-assistive-text">Remove</span>
+          </button>
+        </span>
     );
   },
 
   popover() {
-      return <Body
+      return (
+        this.state.isOpen?
+          <SLDSPopover className="slds-dropdown" targetElement={this.refs.date} onClose={this.handleClose}><Body
           searchTerm={this.state.searchTerm}
           filterWith={this.props.filterWith}
           selectedItem={this.selectedItem}
           items={this.props.items}
           label={this.props.label}
-          onChange={this.handleChange} />
+          onChange={this.handleChange} /></SLDSPopover>:null);
+  },
+
+  getPlaceholder() {
+    return this.state.currentSelectedItem?'':this.props.placeholder;
   },
 
   render() {
+    let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
     return (
       <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">
         <div className="slds-form-element">
-          <label className="slds-form-element__label">{this.props.label}</label>
-          <div className="slds-form-element__control slds-lookup__control slds-input-has-icon slds-input-has-icon--right ">
+          <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
+              <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
+
             { this.state.currentSelectedItem ? this.selectedItemPill() : null }
-            <InputIcon name="event"/>
+            <InputIcon name="search"/>
             <input
-              className="slds-input--bare"
+              id="lookup"
+              ref="date"
+              className={className}
               type="text"
               aria-label="lookup"
               aria-haspopup="true"
@@ -111,7 +146,8 @@ module.exports = React.createClass( {
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
-              onClick={this.handleClick} />
+              onClick={this.handleClick} 
+              value={this.state.searchTerm} />
           </div>
           {this.popover()}
         </div>

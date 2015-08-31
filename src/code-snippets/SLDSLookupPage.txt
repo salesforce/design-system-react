@@ -1,0 +1,4 @@
+
+const items = ["Paddy's Pub", "Tyrell Corp", "Paper St. Soap Company"];
+
+<SLDSLookup items={items} label="Contacts" />
