@@ -14,6 +14,7 @@ class Item extends React.Component {
   constructor(props) {
     super(props);
     this.id = this.props.id || `item-${Item.globalIdx++}-${this.props.idx}`;
+
   }
 
   boldSearchText(children) {
@@ -44,7 +45,7 @@ class Item extends React.Component {
     const tabIndex = this.props.idx === 0 ? 0 : -1;
 
     return (
-      <li key={this.id}  { ...this.props } className={className} role="presentation" tabIndex={tabIndex}>
+      <li key={this.id}  { ...this.props } className={className} role="presentation" tabIndex={tabIndex} style={{whiteSpace: 'nowrap'}} >
         <a href={ this.props.href } onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option">
           <Icon name="account" />
           { this.boldSearchText(this.props.children) }
