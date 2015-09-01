@@ -116,18 +116,22 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_render () {
-		this.elements.wrapper.empty();
-		
 		const $el = this.template.clone().empty();
 
 		if (this._collection.length()) {
 			this._loopChildren(this._collection, $el, 1);
 		}
-		
-		if (this.elements.wrapper.is('ul.' + this.cssClasses.CONTROL)) {
+
+		// Prep for append
+		this.elements.wrapper.empty();
+
+		if (this.elements.wrapper.is('ul')) {
+			this.elements.wrapper.attr('class', $el.attr('class'));
+			this.elements.wrapper.attr('role', $el.attr('role'));
 			this.elements.wrapper.append($el.children());
 		} else {
 			this.elements.wrapper.append($el);
+			this.elements.wrapper = $el;
 		}
 	},
 

@@ -192,16 +192,16 @@ export const SelectlistObject = {
 	
 		// Prep for append
 		elements.wrapper.empty();
+		$el.toggleClass(this.cssClasses.DISABLED, disabled);
 		
-		if (this.elements.wrapper.is('div.' + this.cssClasses.CONTROL)) {
+		if (this.elements.wrapper.is('div')) {
+			this.elements.wrapper.attr('class', $el.attr('class'));
 			this.elements.wrapper.append($el.children());
 		} else {
 			this.elements.wrapper.append($el);
 			this.elements.wrapper = $el;
 		}
-		
-		elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
-	
+
 		this.rendered = true;
 	},
 
