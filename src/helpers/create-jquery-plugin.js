@@ -3,7 +3,7 @@
 // Without the helper, jQuery controls can still be instantiated directly via their constructors.
 
 // Core
-import * as Lib from '../../lib/lib';
+import * as Lib from '../lib/lib';
 
 // Framework specific
 // TO-DO: This might not work with require, need to confirm that it does
