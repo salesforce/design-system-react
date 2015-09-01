@@ -21,6 +21,9 @@ let Tree = function Tree (element, options) {
 	this.elements = {
 		wrapper: $(element)
 	};
+	
+	const $html = $('<i />').append(fs.readFileSync(__dirname + '/tree.html', 'utf8'));
+	this.template = $html.find('.' + this.cssClasses.CONTROL);
 
 	this._initializeState();
 	this._initialize(this.options);
@@ -28,9 +31,6 @@ let Tree = function Tree (element, options) {
 
 Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_onInitialized () {
-		const $html = $('<i />').append(fs.readFileSync(__dirname + '/tree.html', 'utf8'));
-		this.template = $html.find('.tree');
-		
 		const strings = this.getState('strings');
 		this.template.find('.tree-loader').text(strings.LOADING);
 		
@@ -124,7 +124,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 			this._loopChildren(this._collection, $el, 1);
 		}
 		
-		if (this.elements.wrapper.is('ul.tree')) {
+		if (this.elements.wrapper.is('ul.' + this.cssClasses.CONTROL)) {
 			this.elements.wrapper.append($el.children());
 		} else {
 			this.elements.wrapper.append($el);

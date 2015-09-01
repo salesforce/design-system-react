@@ -15,9 +15,13 @@ const fs = require('fs');
 
 let Selectlist = function Selectlist (element, options) {
 	this.options = Lib.extend({}, options);
+	
 	this.elements = {
 		wrapper: $(element)
 	};
+	
+	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
+	this.template = $html.find('.' + this.cssClasses.CONTROL);
 
 	if (this.options.collection) {
 		this.rendered = false;
@@ -37,30 +41,32 @@ let Selectlist = function Selectlist (element, options) {
 
 export function _renderItem (item) {
 	const disabled = item.getDisabled();
-	let $a;
-	let $li;
+	const $li = this.template.find('li').clone();
 
-	$a = $('<a href="#" />');
-	$a.text(item.getText());
-
-	$li = $('<li />');
 	$li.data(item.get());
 	$li.toggleClass(this.cssClasses.DISABLED, disabled);
 	$li.prop('disabled', disabled);
-	$li.append($a);
+
+	const $a = $li.find('a');
+	$a.text(item.getText());
 
 	return $li;
 }
 
 export function _renderHeader (item) {
-	const $li = $('<li class="' + this.cssClasses.HEADER + '"></li>');
+	const $li = this.template.find('li').clone().empty();
+
+	$li.toggleClass(this.cssClasses.HEADER, true);
 	$li.text(item.getText());
 
 	return $li;
 }
 
 export function _renderDivider () {
-	const $li = $('<li role="separator" class="' + this.cssClasses.DIVIDER + '"></li>');
+	const $li = this.template.find('li').clone().empty();
+
+	$li.toggleClass(this.cssClasses.DIVIDER, true);
+	$li.prop('role', 'separator');
 
 	return $li;
 }
@@ -146,29 +152,26 @@ export const SelectlistObject = {
 	_render () {
 		const strings = this.getState('strings');
 		const selection = this._getSelection();
-		const width = this.getState('width');
-		const disabled = !!this.getProperty('disabled');
-		const selectionName = selection.getText() || strings.NONE_SELECTED;
-	
+
 		// Get the template
-		const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
-		const elements = this._initElements($html, this.elements);
-	
-		// Prep for append
-		elements.wrapper.empty();
-		elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-		elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
-		elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
-	
+		const $el = this.template.clone();
+		const elements = this._initElements($el, this.elements);
+
+		// Configure the button
+		const disabled = !!this.getProperty('disabled');
 		elements.button.prop('disabled', disabled);
 		elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
-		elements.button.width(width);
+
+		// Add the localized string for screen readers
+		elements.srOnly.text(strings.TOGGLE_DROPDOWN);
+
+		// Show the current selection if there is one
+		const selectionName = selection.getText() || strings.NONE_SELECTED;
 		elements.label.text(selectionName);
 		elements.hiddenField.val(selection.getText());
-		elements.dropdownMenu.width(width);
-		elements.srOnly.text(strings.TOGGLE_DROPDOWN);
-		
-		this._onExpandOrCollapse();
+
+		// Empty the menu from the template
+		elements.dropdownMenu.empty();
 	
 		// Building the menu items
 		this._collection.forEach(item => {
@@ -187,7 +190,17 @@ export const SelectlistObject = {
 			elements.dropdownMenu.append($li);
 		});
 	
-		elements.wrapper.append($html.children());
+		// Prep for append
+		elements.wrapper.empty();
+		
+		if (this.elements.wrapper.is('div.' + this.cssClasses.CONTROL)) {
+			this.elements.wrapper.append($el.children());
+		} else {
+			this.elements.wrapper.append($el);
+			this.elements.wrapper = $el;
+		}
+		
+		elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
 	
 		this.rendered = true;
 	},
@@ -201,7 +214,7 @@ export const SelectlistObject = {
 	_onExpandOrCollapse () {
 		const isOpen = this.getState('isOpen');
 		
-		this.elements.button.prop('aria-expanded', isOpen);
+		this.elements.button.attr('aria-expanded', isOpen);
 		this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
 	},
 
