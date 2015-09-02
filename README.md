@@ -1,4 +1,4 @@
-SLDS-REACT
+desgin-system-react
 =====================
 
 Future home of SLDS-React components
