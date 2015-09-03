@@ -90,7 +90,7 @@ module.exports = function (grunt) {
 
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi']);
+	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'babel']);
 	grunt.registerTask('serve', ['webpack-dev-server:start']);
 	grunt.registerTask('test', ['eslint', 'compileTests', 'compileTestsApi', 'webpack', 'connect', 'mocha']);
 };
