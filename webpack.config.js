@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 
-var entries = [/*'webpack-dev-server/client?https://localhost:3001',*/ 'webpack/hot/dev-server'];
+var entries = ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server'];
 var path = require('path');
 var config = {
   entry: {
@@ -11,7 +11,7 @@ var config = {
   },
   devtool: 'eval',
   output: {
-    path: __dirname,
+    path: __dirname + '/build/',
     publicPath: '/build/',
     filename: '[name].bundle.js'
   },
