@@ -1,8 +1,8 @@
 // TREE CONTROL - REACT FACADE
 
 // Core
-import * as Lib from '../../core/lib';
-import TreeCore from '../../core/tree';
+import * as Lib from '../../lib/lib';
+import TreeCore, {CONTROL} from '../../core/tree';
 
 // Framework specific
 import React from 'react';
@@ -17,7 +17,7 @@ import classNames from 'classnames';
 import TreeBranch from './tree-branch';
 import TreeItem from './tree-item';
 
-const Tree = React.createClass(Lib.extend({}, TreeCore, {
+let Tree = Lib.extend({}, TreeCore, {
 	mixins: [State, Events, genericWillMount],
 	
 	propTypes: {
@@ -70,6 +70,9 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 	_handleExpandClick (item) {
 		this._toggleFolder(item);
 	}
-}));
+});
+
+Tree = Lib.runHelpers('react', CONTROL, Tree);
+Tree = React.createClass(Tree);
 
 export default Tree;

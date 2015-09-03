@@ -1,6 +1,6 @@
 // COMBOBOX CONTROL
 
-import * as Lib from './lib';
+import * as Lib from '../lib/lib';
 import SelectlistCore from './selectlist';
 import '../data/string';
 

@@ -1,8 +1,8 @@
 // COMBOBOX CONTROL - REACT FACADE
 
 // Core
-import * as Lib from '../../core/lib';
-import ComboboxCore from '../../core/combobox';
+import * as Lib from '../../lib/lib';
+import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Framework specific
 import React from 'react';
@@ -54,10 +54,6 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	componentDidMount () {
 		document.addEventListener('click', this._closeMenu, false);
 		this._findElements();
-		
-		if (this.getProperty('resize') === 'auto') {
-			this.resize();
-		}
 	},
 	
 	_handleChanged (e) {
@@ -69,6 +65,9 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	}
 });
 
-const Combobox = React.createClass(Lib.merge({}, ComboboxCore, ComboboxObject));
+let Combobox = Lib.merge({}, ComboboxCore, ComboboxObject);
+
+Combobox = Lib.runHelpers('react', CONTROL, Combobox);
+Combobox = React.createClass(Combobox);
 
 export default Combobox;

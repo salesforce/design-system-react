@@ -1,11 +1,10 @@
 // TREE CONTROL - JQUERY FACADE
 
 // Core
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import TreeCore, {CONTROL} from '../../core/tree';
 
 // Framework Specific
-import createPlugin from '../createPlugin';
 import Events from '../events';
 import State from '../state';
 
@@ -14,7 +13,7 @@ const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.globa
 // Template imports
 const template = require('text!./tree.html');
 
-const Tree = function Tree (element, options) {
+let Tree = function Tree (element, options) {
 	this.options = Lib.extend({
 		open: []
 	}, options);
@@ -23,15 +22,15 @@ const Tree = function Tree (element, options) {
 		wrapper: $(element)
 	};
 
+	const $html = $('<i />').append(template);
+	this.template = $html.find('.' + this.cssClasses.CONTROL);
+
 	this._initializeState();
 	this._initialize(this.options);
 };
 
 Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_onInitialized () {
-		const $html = $('<i />').append(template);
-		this.template = $html.find('.tree');
-
 		const strings = this.getState('strings');
 		this.template.find('.tree-loader').text(strings.LOADING);
 
@@ -117,18 +116,22 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_render () {
-		this.elements.wrapper.empty();
-
 		const $el = this.template.clone().empty();
 
 		if (this._collection.length()) {
 			this._loopChildren(this._collection, $el, 1);
 		}
 
-		if (this.elements.wrapper.is('ul.tree')) {
+		// Prep for append
+		this.elements.wrapper.empty();
+
+		if (this.elements.wrapper.is('ul')) {
+			this.elements.wrapper.attr('class', $el.attr('class'));
+			this.elements.wrapper.attr('role', $el.attr('role'));
 			this.elements.wrapper.append($el.children());
 		} else {
 			this.elements.wrapper.append($el);
+			this.elements.wrapper = $el;
 		}
 	},
 
@@ -164,7 +167,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_renderBranch (branch, level) {
-		const self = this;
 		const $branch = this.template.find('.tree-branch').clone();
 		const $branchContent = $branch.find('.tree-branch-children');
 		const $branchIcon = $branch.find('> .tree-branch-header .icon-folder');
@@ -210,12 +212,12 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 			$branchContent.append($loader);
 
-			branch._getChildren().then(function (children) {
-				self._loopChildren(children, $branchContent, _level);
+			branch._getChildren().then(resolvedChildren => {
+				this._loopChildren(resolvedChildren, $branchContent, _level);
+			}, error => {
+				Lib.log(error);
+				this._loopChildren(Lib.getDataAdapter(), $branchContent, _level);
 			});
-		} else {
-			// TO-DO: Possibly cache children
-			$branchContent.empty();
 		}
 
 		return $branch;
@@ -253,6 +255,8 @@ const legacyMethods = {
 	}
 };
 
-createPlugin(CONTROL, Tree, legacyMethods);
+Tree = Lib.runHelpers('jquery', CONTROL, Tree, {
+	legacyMethods
+});
 
 export default Tree;

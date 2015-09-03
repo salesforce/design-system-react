@@ -1,8 +1,8 @@
 // SELECTLIST CONTROL - REACT FACADE
 
 // Core
-import * as Lib from '../../core/lib';
-import SelectlistCore from '../../core/selectlist';
+import * as Lib from '../../lib/lib';
+import SelectlistCore, {CONTROL} from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
@@ -18,7 +18,7 @@ import SelectlistItem from './selectlist-item';
 
 export const SelectlistObject = {
 	mixins: [State, Events, genericWillMount],
-	
+
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -45,7 +45,7 @@ export const SelectlistObject = {
 		const styles = {
 			width: this.state.width
 		};
-		
+
 		const disabledClass = {};
 		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
 
@@ -65,35 +65,35 @@ export const SelectlistObject = {
 			</div>
 		);
 	},
-	
+
 	componentDidMount () {
 		document.addEventListener('click', this._closeMenu, false);
 		this._findElements();
 	},
-	
+
 	componentDidUpdate () {
 		this._findElements();
 	},
-	
+
 	componentWillUnmount () {
 		document.removeEventListener('click', this._closeMenu, false);
 	},
-	
+
 	_findElements () {
 		this.elements.dropdownMenu = Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.MENU]));
-		
+
 		this.elements.menuItems = [];
 		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-		
+
 		for (let i = 0; i < menuItems.length; i++) {
 			const menuItem = menuItems[i].getElementsByTagName('a');
-			
+
 			if (!menuItems[i].disabled && menuItem.length === 1) {
 				this.elements.menuItems.push(menuItem[0]);
 			}
 		}
 	},
-	
+
 	_closeMenu (e) {
 		if (e.originator !== this) {
 			this.setState({
@@ -101,7 +101,7 @@ export const SelectlistObject = {
 			});
 		}
 	},
-	
+
 	_onSelected () {
 		this.setState({
 			isOpen: false
@@ -111,10 +111,10 @@ export const SelectlistObject = {
 	_handleMenuItemSelected (selection) {
 		this.setSelection(selection);
 	},
-	
+
 	_handleClicked (e) {
 		e.nativeEvent.originator = this;
-		
+
 		if (!this.props.disabled) {
 			this.setState({
 				isOpen: !this.getState('isOpen')
@@ -130,6 +130,9 @@ export const SelectlistObject = {
 	}
 };
 
-const Selectlist = React.createClass(Lib.merge({}, SelectlistCore, SelectlistObject));
+let Selectlist = Lib.merge({}, SelectlistCore, SelectlistObject);
+
+Selectlist = Lib.runHelpers('react', CONTROL, Selectlist);
+Selectlist = React.createClass(Selectlist);
 
 export default Selectlist;

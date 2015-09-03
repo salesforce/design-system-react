@@ -1,11 +1,10 @@
 // SELECTLIST CONTROL - JQUERY FACADE
 
 // Core
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import SelectlistCore, {CONTROL} from '../../core/selectlist';
 
 // Framework specific
-import createPlugin from '../createPlugin';
 import Events from '../events';
 import State from '../state';
 
@@ -14,11 +13,15 @@ const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.globa
 // Template imports
 const template = require('text!./selectlist.html');
 
-const Selectlist = function Selectlist (element, options) {
+let Selectlist = function Selectlist (element, options) {
 	this.options = Lib.extend({}, options);
+
 	this.elements = {
 		wrapper: $(element)
 	};
+
+	const $html = $('<i />').append(template);
+	this.template = $html.find('.' + this.cssClasses.CONTROL);
 
 	if (this.options.collection) {
 		this.rendered = false;
@@ -38,81 +41,34 @@ const Selectlist = function Selectlist (element, options) {
 
 export function _renderItem (item) {
 	const disabled = item.getDisabled();
-	let $a;
-	let $li;
+	const $li = this.template.find('li').clone();
 
-	$a = $('<a href="#" />');
-	$a.text(item.getText());
-
-	$li = $('<li />');
 	$li.data(item.get());
 	$li.toggleClass(this.cssClasses.DISABLED, disabled);
 	$li.prop('disabled', disabled);
-	$li.append($a);
+
+	const $a = $li.find('a');
+	$a.text(item.getText());
 
 	return $li;
 }
 
 export function _renderHeader (item) {
-	const $li = $('<li class="' + this.cssClasses.HEADER + '"></li>');
+	const $li = this.template.find('li').clone().empty();
+
+	$li.toggleClass(this.cssClasses.HEADER, true);
 	$li.text(item.getText());
 
 	return $li;
 }
 
 export function _renderDivider () {
-	const $li = $('<li role="separator" class="' + this.cssClasses.DIVIDER + '"></li>');
+	const $li = this.template.find('li').clone().empty();
+
+	$li.toggleClass(this.cssClasses.DIVIDER, true);
+	$li.prop('role', 'separator');
 
 	return $li;
-}
-
-function _render () {
-	const strings = this.getState('strings');
-	const selection = this._getSelection();
-	const width = this.getState('width');
-	const disabled = !!this.getProperty('disabled');
-	const selectionName = selection.getText() || strings.NONE_SELECTED;
-
-	// Get the template
-	const $html = $('<i />').append(template);
-	const elements = this._initElements($html, this.elements);
-
-	// Prep for append
-	elements.wrapper.empty();
-	elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-	elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
-	elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
-
-	elements.button.prop('disabled', disabled);
-	elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
-	elements.button.width(width);
-	elements.label.text(selectionName);
-	elements.hiddenField.val(selection.getText());
-	elements.dropdownMenu.width(width);
-	elements.srOnly.text(strings.TOGGLE_DROPDOWN);
-
-	this._onExpandOrCollapse();
-
-	// Building the menu items
-	this._collection.forEach(item => {
-		let $li;
-		let func;
-		const funcMap = {
-			header: _renderHeader,
-			divider: _renderDivider,
-			item: _renderItem
-		};
-
-		func = funcMap[item.getType()] || _renderItem;
-
-		$li = func.call(this, item);
-
-		elements.dropdownMenu.append($li);
-	});
-
-	elements.wrapper.append($html.children());
-
-	this.rendered = true;
 }
 
 export const SelectlistObject = {
@@ -165,7 +121,7 @@ export const SelectlistObject = {
 
 	_onInitialized () {
 		if (!this.rendered) {
-			_render.call(this);
+			this._render();
 		}
 
 		// Get the menu items for keyboard nav
@@ -180,13 +136,73 @@ export const SelectlistObject = {
 			}
 		}
 
+		this._bindUIEvents();
+
+		this._closeMenu = $.proxy(this._closeMenu, this);
+		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
+	},
+
+	_bindUIEvents () {
 		if (!this.isBootstrap3) this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
 		if (!this.isBootstrap3) this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
+	},
 
-		this._closeMenu = $.proxy(this._closeMenu, this);
-		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
+	_render () {
+		const strings = this.getState('strings');
+		const selection = this._getSelection();
+
+		// Get the template
+		const $el = this.template.clone();
+		const elements = this._initElements($el, this.elements);
+
+		// Configure the button
+		const disabled = !!this.getProperty('disabled');
+		elements.button.prop('disabled', disabled);
+		elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
+
+		// Add the localized string for screen readers
+		elements.srOnly.text(strings.TOGGLE_DROPDOWN);
+
+		// Show the current selection if there is one
+		const selectionName = selection.getText() || strings.NONE_SELECTED;
+		elements.label.text(selectionName);
+		elements.hiddenField.val(selection.getText());
+
+		// Empty the menu from the template
+		elements.dropdownMenu.empty();
+
+		// Building the menu items
+		this._collection.forEach(item => {
+			let $li;
+			let func;
+			const funcMap = {
+				header: _renderHeader,
+				divider: _renderDivider,
+				item: _renderItem
+			};
+
+			func = funcMap[item.getType()] || _renderItem;
+
+			$li = func.call(this, item);
+
+			elements.dropdownMenu.append($li);
+		});
+
+		// Prep for append
+		elements.wrapper.empty();
+		$el.toggleClass(this.cssClasses.DISABLED, disabled);
+
+		if (this.elements.wrapper.is('div')) {
+			this.elements.wrapper.attr('class', $el.attr('class'));
+			this.elements.wrapper.append($el.children());
+		} else {
+			this.elements.wrapper.append($el);
+			this.elements.wrapper = $el;
+		}
+
+		this.rendered = true;
 	},
 
 	destroy () {
@@ -198,7 +214,7 @@ export const SelectlistObject = {
 	_onExpandOrCollapse () {
 		const isOpen = this.getState('isOpen');
 
-		this.elements.button.prop('aria-expanded', isOpen);
+		this.elements.button.attr('aria-expanded', isOpen);
 		this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
 	},
 
@@ -338,6 +354,8 @@ export const legacyMethods = {
 	}
 };
 
-createPlugin(CONTROL, Selectlist, legacyMethods);
+Selectlist = Lib.runHelpers('jquery', CONTROL, Selectlist, {
+	legacyMethods
+});
 
 export default Selectlist;

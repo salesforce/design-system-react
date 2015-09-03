@@ -82,9 +82,8 @@ module.exports = function (grunt) {
 			start: {
 				webpack: require('./webpack.config'),
 				publicPath: '/build/',
-				hot: true,
-				inline: true,
-				keepAlive: true
+				keepAlive: true,
+				hot: true
 			}
 		}
 	});

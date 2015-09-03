@@ -1,16 +1,18 @@
-// PLUGIN DEFINITION
+// PLUGIN DEFINITION HELPER
+// Include this helper to create jQuery plugin versions of jQuery controls.
+// Without the helper, jQuery controls can still be instantiated directly via their constructors.
 
 // Core
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 
 // Framework specific
-// TO-DO: This might not work with require, need to confirm that it does
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
-const createPlugin = function (name, Constructor, legacyMethods) {
+const createPlugin = function (name, Constructor, helperOptions) {
 	const old = $.fn[name];
 	const namespaced = ['fu', name].join('.');
 	const initializeSelector = ['[data-initialize=', name, ']'].join('');
+	const legacyMethods = helperOptions && helperOptions.legacyMethods || {};
 	
 	Constructor.prototype.eventSuffix = namespaced;
 
@@ -66,6 +68,10 @@ const createPlugin = function (name, Constructor, legacyMethods) {
 			}
 		});
 	});
+	
+	return Constructor;
 };
+
+Lib.registerHelper('createPlugin', createPlugin, ['jquery']);
 
 export default createPlugin;

@@ -1,6 +1,6 @@
 // BACKBONE DATA ADPATER
 
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 import Base from './base';
 
 // Framework specific

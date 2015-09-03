@@ -1,6 +1,6 @@
 // KEYBOARD NAVIGABLE
 
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 
 const KeyBuffer = function () {
 	const self = this;

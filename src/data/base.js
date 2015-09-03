@@ -1,4 +1,4 @@
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 
 // TO-DO: this function can probably be cleaned up a little, and maybe inherit some implementation from lodash
 function _extend (protoProps) {

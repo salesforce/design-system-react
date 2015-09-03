@@ -1,4 +1,4 @@
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import React from 'react';
 import Selectlist from './selectlist';
 
@@ -37,7 +37,8 @@ export default function (element) {
 					},
 					{
 						collection: collection,
-						disabled: false
+						disabled: false,
+						resize: 'auto'
 					},
 					{
 						collection: collection,

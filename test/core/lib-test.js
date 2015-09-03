@@ -1,4 +1,4 @@
-import * as Lib from '../../src/core/lib';
+import * as Lib from '../../src/lib/lib';
 const chai = require('chai');
 const assert = chai.assert;
 const expect = chai.expect;
@@ -6,7 +6,7 @@ const $ = require('jquery');
 
 describe('FuelUX Facade Lib Tests', function () {
 	it('can be required', function () {
-		const lib = require('../../src/core/lib');
+		const lib = require('../../src/lib/lib');
 		assert.equal(!!lib, true, 'Lib is requireable');
 	});
 

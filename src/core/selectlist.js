@@ -1,6 +1,6 @@
 // SELECTLIST CONTROL
 
-import * as Lib from './lib';
+import * as Lib from '../lib/lib';
 import Base from './base';
 import classNames from 'classnames';
 
@@ -10,6 +10,8 @@ import Selectable from '../traits/selectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
 export const CONTROL = 'selectlist';
+
+const resizeCache = {};
 
 const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavigable, {
 	// CSS classes used within this control
@@ -33,12 +35,30 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavi
 	_defaultState: {
 		isOpen: false
 	},
+	
+/* Accessors: These may be supplied in the options hash to override default behavior
 
-	_initializer () {
-		if (this.getProperty('resize') === 'auto') {
-			this.resize();
-		}
-	},
+textProp ()
+	Return the name of the property that contains the text
+
+getText (item)
+	Return the text value to display in the list
+	item => object wrapped in an Item Adapter
+	
+getType (item)
+	Return the type of the current item - can be 'header', 'divider', or nothing
+	item => object wrapped in an Item Adapter
+	
+getDisabled (item)
+	Return true if the item is disabled
+	item => object wrapped in an Item Adapter
+	
+getKey (item)
+	Return either an object with key/value pairs to match or a match function
+	Use this to reduce the number of fields required for searching if a unique key is available
+	item => object wrapped in an Item Adapter
+	
+*/
 	
 	accessors: {
 		textProp () {
@@ -57,8 +77,6 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavi
 			return item.get('disabled') === true;
 		},
 
-		// Reduce the number of fields here if a unique key is available
-		// Result can be either an object with key/value pairs to match or a function
 		getKey (item) {
 			return item.get();
 		}
@@ -69,19 +87,22 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavi
 		
 		return !item.getType() && !item.getDisabled();
 	},
+	
+	_onInitialized () {
+		if (this.getProperty('resize') === 'auto') {
+			this.resize();
+		}
+	},
 
 	// Vanilla js implementation of this to be shared by the libraries
+	// TO-DO: Look into creating a generic implementation as a trait
 	resize () {
-		const self = this;
 		const sizer = document.createElement('div');
 
-		let newWidth = 0;
-		let width = 0;
-		let parent = undefined;
-
 		sizer.className = 'selectlist-sizer';
-		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="selected-label"></span><span class="caret"></span></button></div>';
+		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
 
+		let parent;
 		if (Lib.hasClass(document.querySelector('html'), this.cssClasses.NAMESPACE)) {
 			parent = document.querySelector('body');
 		} else {
@@ -94,29 +115,35 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavi
 			return;
 		}
 
-		// This works great except that we need to remember to check the key for 'None selected' as well once it's internationalized
-
-		// This list could be long, we might want to cycle through the collection and find the longest name and just select it,
-		// and use that width value. That would make less DOM touches. - @interactivellama
-
-		// @interactivellama: True, this is just how it was already implemented in current Fuel UX. However, "longest" doesn't always mean widest...
-
-		const label = sizer.querySelector('.' + self.cssClasses.LABEL);
-		const control = sizer.querySelector('.' + self.cssClasses.CONTROL);
-
+		const label = sizer.querySelector('.' + this.cssClasses.LABEL);
+		const control = sizer.querySelector('.' + this.cssClasses.CONTROL);
+		
+		const strings = this.getState('strings');
+		label.textContent = strings.NONE_SELECTED;
+		
+		let width = control.offsetWidth;
 		this._collection.forEach(item => {
 			const text = item.getText();
-			label.textContent = text;
-			newWidth = control.offsetWidth;
-			if (newWidth > width) {
-				width = newWidth;
+			let offsetWidth;
+			
+			if (resizeCache[text]) {
+				offsetWidth = resizeCache[text];
+			} else {
+				label.textContent = text;
+				offsetWidth = control.offsetWidth;
+			}
+			
+			if (offsetWidth > width) {
+				width = offsetWidth;
 			}
 		});
 
 		parent.removeChild(sizer);
 
-		this.setState({ width: width });
-		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+		if (width !== this.getState('width')) {
+			this.setState({ width });
+			if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+		}
 	}
 });
 

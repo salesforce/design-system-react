@@ -3,7 +3,7 @@ export const version = '__VERSION__';
 export const global = (typeof self === 'object' && self.self === self && self) ||
 			(typeof global === 'object' && global.global === global && global);
 
-// Helpers
+// Functions
 import partial from 'lodash/function/partial';
 export { partial };
 
@@ -67,11 +67,12 @@ export { default as isBoolean } from 'lodash/lang/isBoolean';
 export { default as isObject } from 'lodash/lang/isObject';
 
 // Data
-export { default as extend } from 'lodash/object/extend';
+import extend from 'lodash/object/extend';
+export { extend };
 
 import merge from 'lodash/object/merge';
 const customMerge = partialRight(merge, function (a, b, key) {
-	if (key === '_initializer' && isFunction(a) && isFunction(b)) {
+	if (/(_onBeforeInitialize|_initializer|_onInitialized)/.test(key) && isFunction(a) && isFunction(b)) {
 		return function () {
 			b.apply(this, arguments);
 			a.apply(this, arguments);
@@ -83,7 +84,7 @@ export { customMerge as merge };
 const _adapters = [];
 
 export function registerAdapter (name, Adapter) {
-	if (!_adapters.name) {
+	if (!_adapters[name]) {
 		_adapters[name] = Adapter;
 		_adapters.unshift(Adapter);
 	}
@@ -118,8 +119,7 @@ export function getDataAdapter (data) {
 }
 
 // Strings
-import defaultStrings from './strings.js';
-let _strings = defaultStrings;
+let _strings;
 
 export function registerStrings (strings) {
 	_strings = strings;
@@ -127,4 +127,36 @@ export function registerStrings (strings) {
 
 export function getStrings () {
 	return Promise.resolve(_strings);
+}
+
+import defaultStrings from './strings';
+registerStrings(defaultStrings);
+
+// Helpers
+const _controlHelpers = {};
+
+export function registerHelper (name, helper, frameworks) {
+	if (isArray(frameworks)) {
+		frameworks.forEach(framework => {
+			if (!_controlHelpers[framework]) {
+				_controlHelpers[framework] = [];
+			}
+
+			if (!_controlHelpers[framework][name]) {
+				_controlHelpers[framework][name] = helper;
+				_controlHelpers[framework].unshift(helper);
+			}
+		});
+	}
+}
+
+export function runHelpers (framework, name, Control, options) {
+	const helpers = _controlHelpers[framework];
+	let _control = Control;
+
+	if (isArray(helpers)) {
+		helpers.forEach(helper => _control = helper(name, _control, options));
+	}
+
+	return _control;
 }

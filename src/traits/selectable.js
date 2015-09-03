@@ -1,6 +1,6 @@
 // SELECTABLE
 
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 
 const Selectable = {
 	cssClasses: {

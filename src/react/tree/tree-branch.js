@@ -1,7 +1,7 @@
 // TREE BRANCH - REACT FACADE
 
 // Core
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 
 // Framework specific
 import React from 'react';
@@ -43,11 +43,15 @@ const TreeBranch = React.createClass({
 			this._handleExpandClick(this.props.item);
 		}
 		
-		// TO-DO: We should probably handle the rejected state as well
 		this.props.item._getChildren().then(resolvedChildren => {
 			this.setState({
 				children: resolvedChildren,
 				loading: false
+			});
+		}, error => {
+			this.setState({
+				loading: false,
+				error
 			});
 		});
 	},

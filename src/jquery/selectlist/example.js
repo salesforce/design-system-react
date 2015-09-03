@@ -1,7 +1,6 @@
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import Selectlist from './selectlist';
 
-// TO-DO: This might not work with require, need to confirm that it does
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 const collection = [
@@ -13,7 +12,7 @@ const collection = [
 	{ id: 2, text: 'Three', value: '3'  },
 	{ id: 3, text: 'Buzz', value: '4'  },
 	{ id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
-	{ id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
+	{ id: 5, text: 'Disabled Item', disabled: true, value: 'disabled' }
 ];
 
 $(function () {
@@ -90,7 +89,6 @@ $(function () {
 
 	const selectlist3 = new Selectlist($('#mySelectlist3'), {
 		collection: collection,
-		resize: 'auto',
 		selection: { value: '4' }
 	});
 

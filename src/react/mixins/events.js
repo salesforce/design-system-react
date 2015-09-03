@@ -1,7 +1,7 @@
 // EVENTS - REACT FACADE
 
 // Core
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 
 const Events = {
 	trigger (eventName, ...args) {
