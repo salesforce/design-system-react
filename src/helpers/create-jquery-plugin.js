@@ -6,7 +6,6 @@
 import * as Lib from '../lib/lib';
 
 // Framework specific
-// TO-DO: This might not work with require, need to confirm that it does
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 const createPlugin = function (name, Constructor, helperOptions) {

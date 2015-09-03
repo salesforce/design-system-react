@@ -67,7 +67,8 @@ export { default as isBoolean } from 'lodash/lang/isBoolean';
 export { default as isObject } from 'lodash/lang/isObject';
 
 // Data
-export { default as extend } from 'lodash/object/extend';
+import extend from 'lodash/object/extend';
+export { extend };
 
 import merge from 'lodash/object/merge';
 const customMerge = partialRight(merge, function (a, b, key) {
@@ -118,8 +119,7 @@ export function getDataAdapter (data) {
 }
 
 // Strings
-import defaultStrings from './strings.json';
-let _strings = defaultStrings;
+let _strings;
 
 export function registerStrings (strings) {
 	_strings = strings;
@@ -128,6 +128,9 @@ export function registerStrings (strings) {
 export function getStrings () {
 	return Promise.resolve(_strings);
 }
+
+import defaultStrings from './strings.json';
+registerStrings(defaultStrings);
 
 // Helpers
 const _controlHelpers = {};

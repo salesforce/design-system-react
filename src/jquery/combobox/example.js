@@ -1,7 +1,6 @@
 import * as Lib from '../../lib/lib';
 import Combobox from './combobox';
 
-// TO-DO: This might not work with require, need to confirm that it does
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 const collection = [

@@ -167,7 +167,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 	
 	_renderBranch (branch, level) {
-		const self = this;
 		const $branch = this.template.find('.tree-branch').clone();
 		const $branchContent = $branch.find('.tree-branch-children');
 		const $branchIcon = $branch.find('> .tree-branch-header .icon-folder');
@@ -213,12 +212,12 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 			
 			$branchContent.append($loader);
 			
-			branch._getChildren().then(function (children) {
-				self._loopChildren(children, $branchContent, _level);
+			branch._getChildren().then(resolvedChildren => {
+				this._loopChildren(resolvedChildren, $branchContent, _level);
+			}, error => {
+				Lib.log(error);
+				this._loopChildren(Lib.getDataAdapter(), $branchContent, _level);
 			});
-		} else {
-			// TO-DO: Possibly cache children
-			$branchContent.empty();
 		}
 		
 		return $branch;

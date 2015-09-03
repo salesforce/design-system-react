@@ -95,6 +95,7 @@ getKey (item)
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
+	// TO-DO: Look into creating a generic implementation as a trait
 	resize () {
 		const sizer = document.createElement('div');
 
