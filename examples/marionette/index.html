@@ -5,13 +5,13 @@
 
 		<title>Marionette Selectlist</title>
 
-		<link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="/fuelux/dist/css/fuelux.min.css" rel="stylesheet">
+		<link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		<link href="/node_modules/fuelux/dist/css/fuelux.min.css" rel="stylesheet">
 
 		<!-- TO-DO: Combine these -->
-		<link href="/fuelux-mctheme.min.css" rel="stylesheet">
-		<link href="/docs.css" rel="stylesheet">
-		<link href="/styles.css" rel="stylesheet">
+		<link href="/examples/fuelux-mctheme.min.css" rel="stylesheet">
+		<link href="/examples/docs.css" rel="stylesheet">
+		<link href="/examples/styles.css" rel="stylesheet">
 	</head>
 	<body>
 
@@ -24,18 +24,18 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a href="/" class="navbar-brand">Fuel UX</a>
+					<a href="/examples/" class="navbar-brand">Fuel UX</a>
 				</div>
 				<nav class="collapse navbar-collapse fu-navbar-collapse" role="navigation">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="/react/">React</a>
+							<a href="/examples/react/">React</a>
 						</li>
 						<li class="active">
-							<a href="/marionette/">Marionette</a>
+							<a href="/examples/marionette/">Marionette</a>
 						</li>
 						<li>
-							<a href="/jquery/">jQuery</a>
+							<a href="/examples/jquery/">jQuery</a>
 						</li>
 					</ul>
 				</nav>
@@ -49,10 +49,10 @@
 						<section id="selectlist">
 							<section class="enabled example-group">
 								<h1>Selectlist example (enabled)</h1>
-								
+
 								<div class="example" id="mySelectlist1">
 								</div>
-								
+
 								<div class="btn-panel action">
 									<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item</button>
 									<button type="button" class="btn btn-default btnSelectlistSelectByValue">set by value (2)</button>
@@ -64,10 +64,10 @@
 							</section>
 							<section class="disabled example-group">
 								<h1>Selectlist example (disabled)</h1>
-								
+
 								<div class="example" id="mySelectlist2">
 								</div>
-								
+
 								<div class="btn-panel action">
 									<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item</button>
 									<button type="button" class="btn btn-default btnSelectlistSelectByObject">set by object (collection.at(3))</button>
@@ -87,6 +87,6 @@
 		<script src="/jquery/dist/jquery.min.js"></script>
 		<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
 
-		<script src="/marionette/examples.js"></script>
+		<script src="/build/marionette.bundle.js"></script>
 	</body>
 </html>

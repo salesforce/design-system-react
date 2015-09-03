@@ -13,7 +13,7 @@ import { SelectlistObject, _renderItem, _renderHeader, _renderDivider, legacyMet
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
-const fs = require('fs');
+const template = require('text!./combobox.html');
 
 const Combobox = function Combobox (element, options) {
 	this.options = Lib.extend({}, options);
@@ -25,14 +25,14 @@ const Combobox = function Combobox (element, options) {
 		this.rendered = false;
 	} else {
 		this.isBootstrap3 = Lib.isFunction($().emulateTransitionEnd);
-		
+
 		this._initElements(this.elements.wrapper, this.elements);
 
 		this._buildCollection(this.options);
 
 		this.rendered = true;
 	}
-	
+
 	this._initializeState();
 	this._initialize(this.options);
 };
@@ -43,9 +43,9 @@ function _render () {
 	const disabled = !!this.getProperty('disabled');
 
 	// Get the template
-	const $html = $('<i />').append(fs.readFileSync(__dirname + '/combobox.html', 'utf8'));
+	const $html = $('<i />').append(template);
 	const elements = this._initElements($html, this.elements);
-	
+
 	// Prep for append
 	elements.wrapper.empty();
 	elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
@@ -58,7 +58,7 @@ function _render () {
 	elements.button.prop('disabled', disabled);
 	elements.input.val(selection.getText());
 	elements.dropdownMenu.width(width);
-	
+
 	this._onExpandOrCollapse();
 
 	// Building the menu items
@@ -134,14 +134,14 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		if (!this.rendered) {
 			_render.call(this);
 		}
-		
+
 		// Get the menu items for keyboard nav
 		this.elements.menuItems = [];
 		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-		
+
 		for (let i = 0; i < menuItems.length; i++) {
 			const menuItem = menuItems[i].getElementsByTagName('a');
-			
+
 			if (!menuItems[i].disabled && menuItem.length === 1) {
 				this.elements.menuItems.push(menuItem[0]);
 			}
@@ -152,14 +152,14 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		this.elements.input.on('change.fu.selectlist', $.proxy(this._handleChanged, this));
 		if (!this.isBootstrap3) this.elements.inputGroup.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.inputGroup.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
-		
+
 		this._closeMenu = $.proxy(this._closeMenu, this);
 		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
 	},
-	
+
 	_onExpandOrCollapse () {
 		const isOpen = this.getState('isOpen');
-		
+
 		this.elements.button.prop('aria-expanded', isOpen);
 		this.elements.inputGroup.toggleClass(this.cssClasses.OPEN, isOpen);
 	},
@@ -185,10 +185,10 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	resetWidth (width) {
 		if (this.elements.dropdownMenu) this.elements.dropdownMenu.width(width);
 	},
-	
+
 	_handleChanged () {
 		const value = {};
-		
+
 		value[this.accessors.textProp()] = this.elements.input.val();
 
 		this.setSelection(value);

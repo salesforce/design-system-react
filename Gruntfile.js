@@ -10,6 +10,19 @@ module.exports = function (grunt) {
 	];
 
 	grunt.initConfig({
+		babel: {
+			options: {
+				modules: 'umd'
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'src/',
+					src: ['**/*.js'],
+					dest: 'dist/'
+				}]
+			}
+		},
 		port: defaultPort,
 		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
 		eslint: {

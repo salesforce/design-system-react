@@ -12,7 +12,7 @@ import State from '../state';
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
-const fs = require('fs');
+const template = require('text!./selectlist.html');
 
 const Selectlist = function Selectlist (element, options) {
 	this.options = Lib.extend({}, options);
@@ -24,14 +24,14 @@ const Selectlist = function Selectlist (element, options) {
 		this.rendered = false;
 	} else {
 		this.isBootstrap3 = Lib.isFunction($().emulateTransitionEnd);
-		
+
 		this._initElements(this.elements.wrapper, this.elements);
 
 		this._buildCollection(this.options);
 
 		this.rendered = true;
 	}
-	
+
 	this._initializeState();
 	this._initialize(this.options);
 };
@@ -74,7 +74,7 @@ function _render () {
 	const selectionName = selection.getText() || strings.NONE_SELECTED;
 
 	// Get the template
-	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
+	const $html = $('<i />').append(template);
 	const elements = this._initElements($html, this.elements);
 
 	// Prep for append
@@ -90,7 +90,7 @@ function _render () {
 	elements.hiddenField.val(selection.getText());
 	elements.dropdownMenu.width(width);
 	elements.srOnly.text(strings.TOGGLE_DROPDOWN);
-	
+
 	this._onExpandOrCollapse();
 
 	// Building the menu items
@@ -167,14 +167,14 @@ export const SelectlistObject = {
 		if (!this.rendered) {
 			_render.call(this);
 		}
-		
+
 		// Get the menu items for keyboard nav
 		this.elements.menuItems = [];
 		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-		
+
 		for (let i = 0; i < menuItems.length; i++) {
 			const menuItem = menuItems[i].getElementsByTagName('a');
-			
+
 			if (!menuItems[i].disabled && menuItem.length === 1) {
 				this.elements.menuItems.push(menuItem[0]);
 			}
@@ -184,7 +184,7 @@ export const SelectlistObject = {
 		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
 		if (!this.isBootstrap3) this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
-		
+
 		this._closeMenu = $.proxy(this._closeMenu, this);
 		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
 	},
@@ -194,10 +194,10 @@ export const SelectlistObject = {
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
 	},
-	
+
 	_onExpandOrCollapse () {
 		const isOpen = this.getState('isOpen');
-		
+
 		this.elements.button.prop('aria-expanded', isOpen);
 		this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
 	},
@@ -208,13 +208,13 @@ export const SelectlistObject = {
 		this.elements.hiddenField.val(item.getText());
 		this.elements.label.text(item.getText() || strings.NONE_SELECTED);
 	},
-	
+
 	_closeMenu (e) {
 		if (e.originator !== this) {
 			this.setState({
 				isOpen: false
 			});
-			
+
 			this._onExpandOrCollapse();
 		}
 	},
@@ -239,12 +239,12 @@ export const SelectlistObject = {
 	_handleClicked (e) {
 		const disabled = !!this.getProperty('disabled');
 		e.originalEvent.originator = this;
-		
+
 		if (!disabled) {
 			this.setState({
 				isOpen: !this.getState('isOpen')
 			});
-			
+
 			this._onExpandOrCollapse();
 		}
 	},
@@ -262,7 +262,7 @@ export const SelectlistObject = {
 
 	_handleKeyDown (e) {
 		let key;
-		
+
 		if (/(38)/.test(e.which)) {
 			key = 'ArrowUp';
 		} else if (/(40)/.test(e.which)) {
@@ -278,7 +278,7 @@ export const SelectlistObject = {
 
 	_handleKeyPressed (e) {
 		const key = String.fromCharCode(e.which);
-		
+
 		if (this.isBootstrap3) {
 			this.setState({
 				isOpen: this.elements.wrapper.hasClass(this.cssClasses.OPEN)

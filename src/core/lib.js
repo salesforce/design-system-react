@@ -34,7 +34,7 @@ function WrappedElement (element) {
 	this.hasClass = partial(hasClass, element);
 	this.outerWidth = partial(outerWidth, element);
 	this.width = partial(setWidth, element);
-	
+
 	return this;
 }
 
@@ -118,7 +118,7 @@ export function getDataAdapter (data) {
 }
 
 // Strings
-import defaultStrings from './strings.json';
+import defaultStrings from './strings.js';
 let _strings = defaultStrings;
 
 export function registerStrings (strings) {

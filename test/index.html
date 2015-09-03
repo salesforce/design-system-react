@@ -4,9 +4,9 @@
 		<title>Mocha</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="/mocha/mocha.css" />
-		<link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="/fuelux/dist/css/fuelux.min.css" />
+		<link rel="stylesheet" href="/node_modules/mocha/mocha.css" />
+		<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/node_modules/fuelux/dist/css/fuelux.min.css" />
 		<style>
 				#mocha-stats .progress {
 						height: 40px;
@@ -47,9 +47,9 @@
 	<body>
 		<div id="mocha"></div>
 		<div id="test-fixture"></div>
-		<script src="/mocha/mocha.js"></script>
+		<script src="/node_modules/mocha/mocha.js"></script>
 		<script>mocha.setup('bdd')</script>
-		<script src="tests-compiled.js"></script>
+		<script src="/build/tests.bundle.js"></script>
 		<script>
 			if (navigator.userAgent.indexOf('PhantomJS') < 0) {
 				var runner = mocha.run();
