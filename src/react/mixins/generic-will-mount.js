@@ -7,7 +7,7 @@ import React from 'react';
 const genericWillMount = {
 	componentWillMount () {
 		this.elements = {};
-		this._initialize(this.props);
+		if (Lib.isFunction(this._initialize)) this._initialize(this.props);
 	},
 	
 	componentDidMount () {
