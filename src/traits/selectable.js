@@ -10,15 +10,36 @@ const Selectable = {
 	_defaultProperties: {
 		selection: null
 	},
+	
+	_selectableProperty: 'selection',
 
-	_setSelection (newSelection) {
-		if (this.getSelection() !== newSelection && (!Lib.isFunction(this._canSelect) || this._canSelect(newSelection))) {
-			this.setProperties({ selection: newSelection });
-			if (Lib.isFunction(this._onSelected)) this._onSelected(this._getItemAdapter(newSelection));
-			
-			// Trigger the event using facade-native methods
-			this.trigger('changed', newSelection);
+	_setSelection (selection) {
+		let promise;
+		
+		if (this.getProperty(this._selectableProperty) === selection) {
+			promise = Promise.resolve(false);
+		} else if (!Lib.isFunction(this._canSelect)) {
+			promise = Promise.resolve(true);
+		} else {
+			promise = Promise.resolve(this._canSelect(selection));
 		}
+		
+		promise.then(canSelect => {
+			if (canSelect !== false) {
+				const props = {};
+				
+				props[this._selectableProperty] = selection;
+				
+				this.setProperties(props);
+				
+				if (Lib.isFunction(this._onSelected)) this._onSelected(this._getItemAdapter(selection));
+				
+				// Trigger the event using facade-native methods
+				this.trigger('changed', selection);
+			}
+		}, error => {
+			Lib.log(error);
+		});
 	},
 
 	// Pass any combination of key / value pairs
@@ -41,11 +62,11 @@ const Selectable = {
 	},
 
 	getSelection () {
-		return this.getProperty('selection');
+		return this.getProperty(this._selectableProperty);
 	},
 
 	_getSelection () {
-		const selection = this.getSelection();
+		const selection = this.getProperty(this._selectableProperty);
 		let item = this._collection.findWhere(selection);
 		
 		if (!item) {
@@ -59,5 +80,27 @@ const Selectable = {
 		this._setSelection();
 	}
 };
+
+export function customSelectable (property, overrides) {
+	const CustomSelectable = {};
+	const lowercase = property.toLowerCase();
+	const camelCase = lowercase.charAt(0).toUpperCase() + lowercase.slice(1);
+	
+	Object.keys(Selectable).forEach(function (key) {
+		let newKey = key;
+		
+		if (newKey.charAt(0) !== '_') {
+			newKey = newKey.replace('Selection', camelCase);
+		}
+		
+		CustomSelectable[newKey] = Selectable[key];
+	});
+	
+	CustomSelectable._selectableProperty = lowercase;
+	CustomSelectable._defaultProperties = {};
+	CustomSelectable._defaultProperties[lowercase] = null;
+	
+	return Lib.extend(CustomSelectable, overrides);
+}
 
 export default Selectable;
