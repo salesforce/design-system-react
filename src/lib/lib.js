@@ -34,7 +34,7 @@ function WrappedElement (element) {
 	this.hasClass = partial(hasClass, element);
 	this.outerWidth = partial(outerWidth, element);
 	this.width = partial(setWidth, element);
-	
+
 	return this;
 }
 
@@ -129,7 +129,7 @@ export function getStrings () {
 	return Promise.resolve(_strings);
 }
 
-import defaultStrings from './strings.json';
+import defaultStrings from './strings';
 registerStrings(defaultStrings);
 
 // Helpers
@@ -141,7 +141,7 @@ export function registerHelper (name, helper, frameworks) {
 			if (!_controlHelpers[framework]) {
 				_controlHelpers[framework] = [];
 			}
-			
+
 			if (!_controlHelpers[framework][name]) {
 				_controlHelpers[framework][name] = helper;
 				_controlHelpers[framework].unshift(helper);
@@ -153,10 +153,10 @@ export function registerHelper (name, helper, frameworks) {
 export function runHelpers (framework, name, Control, options) {
 	const helpers = _controlHelpers[framework];
 	let _control = Control;
-	
+
 	if (isArray(helpers)) {
 		helpers.forEach(helper => _control = helper(name, _control, options));
 	}
-	
+
 	return _control;
 }

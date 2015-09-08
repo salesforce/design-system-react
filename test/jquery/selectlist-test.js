@@ -1,8 +1,7 @@
-const fs = require('fs');
 const $ = require('jquery');
 window.$ = window.jQuery = $;
 
-let html = fs.readFileSync('test/compat/markup/selectlist-markup.html', 'utf8');
+let html = require('text!../compat/markup/selectlist-markup.html');
 const chai = require('chai');
 const assert = chai.assert;
 require('bootstrap');
