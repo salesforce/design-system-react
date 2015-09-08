@@ -11,30 +11,30 @@ import State from '../state';
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
-const fs = require('fs');
+const template = require('text!./selectlist.html');
 
 let Selectlist = function Selectlist (element, options) {
 	this.options = Lib.extend({}, options);
-	
+
 	this.elements = {
 		wrapper: $(element)
 	};
-	
-	const $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
+
+	const $html = $('<i />').append(template);
 	this.template = $html.find('.' + this.cssClasses.CONTROL);
 
 	if (this.options.collection) {
 		this.rendered = false;
 	} else {
 		this.isBootstrap3 = Lib.isFunction($().emulateTransitionEnd);
-		
+
 		this._initElements(this.elements.wrapper, this.elements);
 
 		this._buildCollection(this.options);
 
 		this.rendered = true;
 	}
-	
+
 	this._initializeState();
 	this._initialize(this.options);
 };
@@ -123,32 +123,32 @@ export const SelectlistObject = {
 		if (!this.rendered) {
 			this._render();
 		}
-		
+
 		// Get the menu items for keyboard nav
 		this.elements.menuItems = [];
 		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-		
+
 		for (let i = 0; i < menuItems.length; i++) {
 			const menuItem = menuItems[i].getElementsByTagName('a');
-			
+
 			if (!menuItems[i].disabled && menuItem.length === 1) {
 				this.elements.menuItems.push(menuItem[0]);
 			}
 		}
-		
+
 		this._bindUIEvents();
-		
+
 		this._closeMenu = $.proxy(this._closeMenu, this);
 		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
 	},
-	
+
 	_bindUIEvents () {
 		if (!this.isBootstrap3) this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
 		if (!this.isBootstrap3) this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
 	},
-	
+
 	_render () {
 		const strings = this.getState('strings');
 		const selection = this._getSelection();
@@ -172,7 +172,7 @@ export const SelectlistObject = {
 
 		// Empty the menu from the template
 		elements.dropdownMenu.empty();
-	
+
 		// Building the menu items
 		this._collection.forEach(item => {
 			let $li;
@@ -182,18 +182,18 @@ export const SelectlistObject = {
 				divider: _renderDivider,
 				item: _renderItem
 			};
-	
+
 			func = funcMap[item.getType()] || _renderItem;
-	
+
 			$li = func.call(this, item);
-	
+
 			elements.dropdownMenu.append($li);
 		});
-	
+
 		// Prep for append
 		elements.wrapper.empty();
 		$el.toggleClass(this.cssClasses.DISABLED, disabled);
-		
+
 		if (this.elements.wrapper.is('div')) {
 			this.elements.wrapper.attr('class', $el.attr('class'));
 			this.elements.wrapper.append($el.children());
@@ -210,10 +210,10 @@ export const SelectlistObject = {
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
 	},
-	
+
 	_onExpandOrCollapse () {
 		const isOpen = this.getState('isOpen');
-		
+
 		this.elements.button.attr('aria-expanded', isOpen);
 		this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
 	},
@@ -224,13 +224,13 @@ export const SelectlistObject = {
 		this.elements.hiddenField.val(item.getText());
 		this.elements.label.text(item.getText() || strings.NONE_SELECTED);
 	},
-	
+
 	_closeMenu (e) {
 		if (e.originator !== this) {
 			this.setState({
 				isOpen: false
 			});
-			
+
 			this._onExpandOrCollapse();
 		}
 	},
@@ -255,12 +255,12 @@ export const SelectlistObject = {
 	_handleClicked (e) {
 		const disabled = !!this.getProperty('disabled');
 		e.originalEvent.originator = this;
-		
+
 		if (!disabled) {
 			this.setState({
 				isOpen: !this.getState('isOpen')
 			});
-			
+
 			this._onExpandOrCollapse();
 		}
 	},
@@ -278,7 +278,7 @@ export const SelectlistObject = {
 
 	_handleKeyDown (e) {
 		let key;
-		
+
 		if (/(38)/.test(e.which)) {
 			key = 'ArrowUp';
 		} else if (/(40)/.test(e.which)) {
@@ -294,7 +294,7 @@ export const SelectlistObject = {
 
 	_handleKeyPressed (e) {
 		const key = String.fromCharCode(e.which);
-		
+
 		if (this.isBootstrap3) {
 			this.setState({
 				isOpen: this.elements.wrapper.hasClass(this.cssClasses.OPEN)

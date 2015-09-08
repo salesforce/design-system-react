@@ -1,8 +1,7 @@
-const fs = require('fs');
 const $ = require('jquery');
 window.$ = window.jQuery = $;
 
-const html = fs.readFileSync('test/compat/markup/loader-markup.html', 'utf8');
+const html = require('text!./markup/loader-markup.html');
 const chai = require('chai');
 const assert = chai.assert;
 require('bootstrap');

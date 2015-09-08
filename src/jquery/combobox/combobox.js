@@ -12,30 +12,30 @@ import { SelectlistObject, _renderItem, _renderHeader, _renderDivider, legacyMet
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
-const fs = require('fs');
+const template = require('text!./combobox.html');
 
 let Combobox = function Combobox (element, options) {
 	this.options = Lib.extend({}, options);
-	
+
 	this.elements = {
 		wrapper: $(element)
 	};
-	
-	const $html = $('<i />').append(fs.readFileSync(__dirname + '/combobox.html', 'utf8'));
+
+	const $html = $('<i />').append(template);
 	this.template = $html.find('.' + this.cssClasses.CONTROL);
 
 	if (this.options.collection) {
 		this.rendered = false;
 	} else {
 		this.isBootstrap3 = Lib.isFunction($().emulateTransitionEnd);
-		
+
 		this._initElements(this.elements.wrapper, this.elements);
 
 		this._buildCollection(this.options);
 
 		this.rendered = true;
 	}
-	
+
 	this._initializeState();
 	this._initialize(this.options);
 };
@@ -94,7 +94,7 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		if (!this.isBootstrap3) this.elements.inputGroup.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.inputGroup.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
 	},
-	
+
 	_render () {
 		const selection = this._getSelection();
 
@@ -122,18 +122,18 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 				divider: _renderDivider,
 				item: _renderItem
 			};
-	
+
 			func = funcMap[item.getType()] || _renderItem;
-	
+
 			$li = func.call(this, item);
-	
+
 			elements.dropdownMenu.append($li);
 		});
 
 		// Prep for append
 		elements.wrapper.empty();
 		$el.toggleClass(this.cssClasses.DISABLED, disabled);
-		
+
 		if (this.elements.wrapper.is('div')) {
 			this.elements.wrapper.attr('class', $el.attr('class'));
 			this.elements.wrapper.append($el.children());
@@ -144,10 +144,10 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 
 		this.rendered = true;
 	},
-	
+
 	_onExpandOrCollapse () {
 		const isOpen = this.getState('isOpen');
-		
+
 		this.elements.button.attr('aria-expanded', isOpen);
 		this.elements.inputGroup.toggleClass(this.cssClasses.OPEN, isOpen);
 	},
@@ -173,10 +173,10 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	resetWidth (width) {
 		if (this.elements.dropdownMenu) this.elements.dropdownMenu.width(width);
 	},
-	
+
 	_handleChanged () {
 		const value = {};
-		
+
 		value[this.accessors.textProp()] = this.elements.input.val();
 
 		this.setSelection(value);

@@ -1,7 +1,7 @@
 module.exports = function (grunt) {
 	grunt.loadTasks('tasks');
 
-	const defaultPort = 8000;
+	const defaultPort = 8080;
 
 	const excludePatternGeneratedTestFiles = [
 		'!test/tests.js',
@@ -10,6 +10,19 @@ module.exports = function (grunt) {
 	];
 
 	grunt.initConfig({
+		babel: {
+			options: {
+				modules: 'umd'
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'src/',
+					src: ['**/*.js'],
+					dest: 'dist/'
+				}]
+			}
+		},
 		port: defaultPort,
 		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
 		eslint: {
@@ -19,29 +32,6 @@ module.exports = function (grunt) {
 				'tasks/**/*.js',
 				'test/**/*.js'
 			].concat(excludePatternGeneratedTestFiles)
-		},
-		browserify: {
-			options: {
-				transform: [['babelify', {
-					'stage': 0
-				}], ['brfs'], ['browserify-versionify']],
-				watch: true
-			},
-			jqueryExamples: {
-				files: {
-					'examples/jquery/examples.js': 'src/jquery/examples.js'
-				}
-			},
-			reactExamples: {
-				files: {
-					'examples/react/examples.js': 'src/react/examples.js'
-				}
-			},
-			tests: {
-				files: {
-					'test/tests-compiled.js': 'test/tests.js'
-				}
-			}
 		},
 		mocha: {
 			main: {
@@ -58,17 +48,9 @@ module.exports = function (grunt) {
 				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
 				tasks: ['eslint']
 			},
-			jqueryExamples: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/marionette/**/*.*', '!src/react/**/*.*'],
-				tasks: ['browserify:jqueryExamples']
-			},
-			reactExamples: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/jquery/**/*.*', '!src/marionette/**/*.*'],
-				tasks: ['browserify:reactExamples']
-			},
 			tests: {
 				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
-				tasks: ['compileTests', 'compileTestsApi', 'browserify:tests']
+				tasks: ['compileTests', 'compileTestsApi']
 			}
 		},
 		connect: {
@@ -90,16 +72,25 @@ module.exports = function (grunt) {
 					}
 				}
 			}
+		},
+		webpack: {
+			options: require('./webpack.config'),
+			build: {
+			}
+		},
+		'webpack-dev-server': {
+			start: {
+				webpack: require('./webpack.config'),
+				publicPath: '/build/',
+				keepAlive: true,
+				hot: true
+			}
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-browserify');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-eslint');
-	grunt.loadNpmTasks('grunt-mocha');
+	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:jqueryExamples', 'browserify:reactExamples']);
-	grunt.registerTask('serve', ['connect:server', 'default', 'watch']);
-	grunt.registerTask('test', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:tests', 'connect:server', 'mocha']);
+	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'babel']);
+	grunt.registerTask('serve', ['webpack-dev-server:start']);
+	grunt.registerTask('test', ['eslint', 'compileTests', 'compileTestsApi', 'webpack', 'connect', 'mocha']);
 };
