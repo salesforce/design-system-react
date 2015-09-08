@@ -17,6 +17,7 @@ import SLDSPicklist from '../slds/SLDSPicklist';
 import SLDSTabs from '../slds/SLDSTabs';
 import SLDSGrid from '../slds/SLDSGrid';
 import SLDSButton from '../slds/SLDSButton';
+import SLDSPicklistBase from '../slds/SLDSPicklistBase';
 import {ButtonIcon, Icon} from "./../slds/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
 
@@ -57,6 +58,40 @@ export default class HomePage extends Component {
         </div>
         <main className="stage-main slds-grid slds-wrap slds-grow slds-scrollable--y" role="main">
           <div className="region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
+
+
+
+
+
+
+
+            <div className="slds-p-around--medium">
+
+              <h3 className="slds-text-heading--medium slds-truncate">
+                Picklist Base
+              </h3>
+
+              <PrismCode className='language-markup'>
+                {require("raw-loader!../code-snippets/SLDSPicklistBasePage.txt")}
+              </PrismCode>
+
+              <div className="slds-p-vertical--large">
+                <SLDSPicklistBase 
+                    options={[
+                      {label:'a0',value:'A0'},
+                      {label:'b0',value:'B0'},
+                      {label:'c0',value:'C0'},
+                      {label:'d0',value:'D0'},
+                    ]} 
+                    label="Contacts" 
+                    placeholder = "SELECT SUPER STUFF" />
+              </div>
+
+            </div>
+
+
+
+
 
             <div className="slds-p-around--medium">
 

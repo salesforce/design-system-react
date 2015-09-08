@@ -61,10 +61,10 @@ module.exports = React.createClass( {
         <div className={'SLDSPopover '+this.props.className}
               style={{
                 transform:'none',
-                marginTop:'0.25rem',
+                marginTop:'0.20rem',
                 marginBottom:'0.35rem',
                 float:'inherit',
-                position:'inherit'
+                position:'inherit',
               }}>
 
           <Spring 

@@ -1,0 +1,9 @@
+
+const options = [
+      {label:'a0',value:'A0'},
+      {label:'b0',value:'B0'},
+      {label:'c0',value:'C0'},
+      {label:'d0',value:'D0'},
+    ];
+
+<SLDSPicklistBase options={options} label="Contacts" placeholder="SELECT SUPER STUFF"/>
