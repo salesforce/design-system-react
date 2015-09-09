@@ -6,6 +6,8 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   devtool: 'eval',
   entry: [
+    'webpack-dev-server/client?http://localhost:3000',
+    'webpack/hot/only-dev-server',
     './src/index'
   ],
   output: {
@@ -14,6 +16,7 @@ module.exports = {
     publicPath: '/static/'
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new ExtractTextPlugin("bundle.css", {
         allChunks: true
@@ -28,7 +31,7 @@ module.exports = {
   module: {
     loaders: [{
         test: /\.jsx?$/,
-        loaders: ['babel'],
+        loaders: ['react-hot', 'babel'],
         include: path.join(__dirname, 'src')
       },
       {
