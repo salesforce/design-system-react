@@ -10,6 +10,15 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import {Icon} from "../SLDSIcons";
 
+const ENTER = 13;
+const ESCAPE = 27;
+const SPACE = 32;
+const LEFT = 37;
+const UP = 38;
+const RIGHT = 39;
+const DOWN = 40;
+const TAB = 9;
+
 module.exports = React.createClass({
 
   displayName: "SLDSPicklistBase-list-item",
@@ -72,6 +81,8 @@ module.exports = React.createClass({
   },
 
   handleKeyDown(event) {
+        console.log('EVENT! ',event.nativeEvent)
+
     if(event.keyCode){
       if(event.keyCode === 40){
         if(this.props.onMoveFocus){
@@ -83,7 +94,10 @@ module.exports = React.createClass({
           this.props.onMoveFocus(-1);
         }
       }
-      else if(event.keyCode === 13){
+      else if(event.keyCode === ENTER || 
+          event.keyCode === SPACE || 
+          event.keyCode === RIGHT || 
+          event.keyCode === LEFT ){
         if(this.props.onSelect){
           this.props.onSelect(this.props.index);
         }
@@ -93,6 +107,7 @@ module.exports = React.createClass({
         if(this.props.onCancel){
           this.props.onCancel();
         }
+
       }
       else if(event.keyCode == 27){
         if(this.props.onCancel){

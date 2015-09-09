@@ -14,9 +14,14 @@ import List from './list';
 import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
 
-
-
-
+const ENTER = 13;
+const ESCAPE = 27;
+const SPACE = 32;
+const LEFT = 37;
+const UP = 38;
+const RIGHT = 39;
+const DOWN = 40;
+const TAB = 9;
 
 module.exports = React.createClass( {
 
@@ -88,19 +93,17 @@ module.exports = React.createClass( {
 
   handleKeyDown(event) {
     if (event.keyCode){
-      if (event.keyCode === 40){
+      if (event.keyCode === ENTER || 
+          event.keyCode === SPACE || 
+          event.keyCode === DOWN || 
+          event.keyCode === RIGHT || 
+          event.keyCode === LEFT || 
+          event.keyCode === UP){
         this.setState({isOpen:true})
         this.setState({
-          highlightedIndex:this.state.highlightedIndex+1
+//          highlightedIndex:this.state.highlightedIndex+1
+          highlightedIndex:0
         });
-      }
-      else if (event.keyCode === 38){
-        this.setState({
-          highlightedIndex:this.state.highlightedIndex-1
-        });
-      }
-      else if (event.keyCode === 13){
-        console.log('enter');
       }
     }
   },
@@ -141,7 +144,7 @@ module.exports = React.createClass( {
             onSelect={this.handleSelect} 
             onUpdateHighlighted={this.handleUpdateHighlighted} 
             onListBlur={this.handleListBlur}
-            onCancel={this.handleCancel}
+            onCancel={this.handleCancel.bind(this)}
             theme={this.props.theme} />
         </SLDSPopover>:null
     );

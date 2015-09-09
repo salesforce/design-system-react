@@ -78,13 +78,13 @@ export default class HomePage extends Component {
               <div className="slds-p-vertical--large">
                 <SLDSPicklistBase 
                     options={[
-                      {label:'a0',value:'A0'},
-                      {label:'b0',value:'B0'},
-                      {label:'c0',value:'C0'},
-                      {label:'d0',value:'D0'},
+                      {label:'A Option',value:'A0'},
+                      {label:'B Option',value:'B0'},
+                      {label:'C Option',value:'C0'},
+                      {label:'D Option',value:'D0'},
                     ]} 
                     label="Contacts" 
-                    placeholder = "SELECT SUPER STUFF" />
+                    placeholder = "Select a contact" />
               </div>
 
             </div>
