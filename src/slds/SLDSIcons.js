@@ -72,7 +72,7 @@ export let Icon = React.createClass({
 export let InputIcon = React.createClass({
 
     render() {
-        let useTag = '<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#' + this.props.name + '" />';
+        let useTag = '<use xlink:href="assets/icons/utility-sprite/svg/symbols.svg#' + this.props.name + '" />';
         let className  = "slds-input__icon slds-icon-text-default";
         return <svg  aria-hidden="true" className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
     }
