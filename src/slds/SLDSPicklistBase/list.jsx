@@ -148,15 +148,16 @@ module.exports = React.createClass({
     return (
       <div 
         ref="scroll"
-        className="ignore-react-onclickoutside slds-wrap slds-grow slds-scrollable--y"
+        className="slds-wrap slds-grow slds-scrollable--y"
         style={{
 //          position:'inherit',
 //          float:'inherit',
-          maxHeight:300
+          maxHeight:260
         }}
         role="listbox"
         >
         <ul 
+          ref="scroll"
           className={"slds-dropdown__list slds-theme--"+this.props.theme}
           role="menu" 
           aria-labelledby="foo">

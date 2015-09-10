@@ -52,9 +52,11 @@ module.exports = React.createClass( {
 
     setTimeout(()=>{
       this.setFocus();
-    }.bind(this),0);
+    }.bind(this),100);
+
 
     this.setState({selectedIndex:index})
+//    this.setFocus();
   },
 
   handleClose() {
@@ -99,18 +101,18 @@ module.exports = React.createClass( {
           event.keyCode === RIGHT || 
           event.keyCode === LEFT || 
           event.keyCode === UP){
+        this.trapEvent(event);
         this.setState({
           isOpen:true,
           highlightedIndex:0
         });
-        this.trapEvent(event);
       }
     }
   },
 
   componentDidUpdate( prevProps, prevState) {
     if(this.state.selectedIndex !== prevState.selectedIndex){
-
+      this.handleClose();
     }
   },
 
@@ -119,7 +121,7 @@ module.exports = React.createClass( {
   },
 
   handleListBlur(){
-    this.setState({isOpen:false});
+//    this.setState({isOpen:false});
   },
 
   handleCancel () {

@@ -88,41 +88,41 @@ module.exports = React.createClass({
   handleKeyDown(event) {
 
     if(event.keyCode){
+      this.trapEvent(event);
       if(event.keyCode === DOWN){
         if(this.props.onMoveFocus){
           this.props.onMoveFocus(1);
         }
-        this.trapEvent(event);
       }
       else if(event.keyCode === UP){
+        this.trapEvent(event);
         if(this.props.onMoveFocus){
           this.props.onMoveFocus(-1);
         }
-        this.trapEvent(event);
       }
       else if(event.keyCode === ENTER || 
           event.keyCode === SPACE || 
           event.keyCode === RIGHT || 
           event.keyCode === LEFT ){
+        this.trapEvent(event);
         if(this.props.onSelect){
           this.props.onSelect(this.props.index);
         }
-        this.trapEvent(event);
       }
       else if(event.keyCode == ESCAPE){
+        this.trapEvent(event);
         if(this.props.onCancel){
           this.props.onCancel();
         }
-        this.trapEvent(event);
       }
       else if(event.keyCode == TAB){
       }
       else{
+        this.trapEvent(event);
         const ch = String.fromCharCode(event.keyCode);
         if(this.props.onSearch){
           this.props.onSearch(this.props.index,ch);
         }
-        this.trapEvent(event);
       }
     }
   },
