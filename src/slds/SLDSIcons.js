@@ -18,7 +18,7 @@ export let ButtonIcon = React.createClass({
     },
 
     render() {
-        let useTag = '<use xlink:href="/assets/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
+        let useTag = '<use xlink:href="assets/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
         let className  = "slds-button__icon";
         if (this.props.stateful) {
             className += "--stateful";
@@ -49,7 +49,7 @@ export let Icon = React.createClass({
     },
 
     render() {
-        let useTag = '<use xlink:href="/assets/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
+        let useTag = '<use xlink:href="assets/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
         let className  = "slds-icon";
         if (this.props.stateful) {
             className += "--stateful";
