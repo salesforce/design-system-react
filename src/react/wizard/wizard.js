@@ -34,8 +34,9 @@ let Wizard = Lib.extend({}, WizardCore, {
 						{this._steps(currentIndex)}
 					</ul>
 				</div>
-				<WizardActions strings={this.state.strings} isLast={isLast} onPrevClicked={this.previousStep} onNextClicked={this.nextStep} />
+				<WizardActions strings={this.state.strings} isLast={isLast} onPrevClicked={this.previousStep} onNextClicked={this.nextStep} onFinished={this._onFinished} onJumpToStep={this.setStepByIndex} />
 				<div className="step-content">
+					{this.props.children}
 				</div>
 			</div>
 		);

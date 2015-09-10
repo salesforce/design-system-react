@@ -83,6 +83,10 @@ getKey (item)
 		index--;
 		
 		this.setStepByIndex(index);
+	},
+	
+	_onFinished () {
+		this.trigger('finished');
 	}
 });
 
