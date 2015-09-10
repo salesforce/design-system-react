@@ -10,17 +10,24 @@ import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
+// Children
+import WizardStep from './wizard-step';
+
 let Wizard = Lib.extend({}, WizardCore, {
 	mixins: [State, Events, genericWillMount],
+
+	_steps () {
+		return this._collection.map((item, index) => {			
+			return <WizardStep key={index} item={item} index={index + 1} currentIndex={this.getIndex()} onClick={this._handleWizardStepClicked} />;
+		});
+	},
 
 	render () {
 		return (
 			<div className="wizard">
 				<div className="steps-container">
 					<ul className="steps">
-						<li data-step="1" data-name="campaign" className="active"><span className="badge">1</span>Campaign<span className="chevron"></span></li>
-						<li data-step="2"><span className="badge">2</span>Recipients<span className="chevron"></span></li>
-						<li data-step="3" data-name="template"><span className="badge">3</span>Template<span className="chevron"></span></li>
+						{this._steps()}
 					</ul>
 				</div>
 				<div className="actions">

@@ -44,7 +44,7 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 				<div className={classNames('input-group-btn', openClass)} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 					<button type="button" className={classNames(this.cssClasses.CONTROL, this.cssClasses.TOGGLE, 'btn btn-default', disabledClass)} disabled={this.props.disabled} aria-haspopup="true" aria-expanded={this.state.isOpen} onClick={this._handleClicked}><span className="caret"></span></button>
 					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles} ref={this.cssClasses.MENU}>
-						{this.menuItems()}
+						{this._menuItems()}
 					</ul>
 				</div>
 			</div>

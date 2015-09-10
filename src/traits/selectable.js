@@ -58,7 +58,9 @@ const Selectable = {
 	setSelectionByIndex (index) {
 		const item = this._collection.at(index);
 
-		this._setSelection(item);
+		if (item) {
+			this._setSelection(item);
+		}
 	},
 
 	getSelection () {

@@ -20,6 +20,36 @@ const WizardCore = Lib.merge({}, Base, Selectable, {
 		collection: []
 	},
 	
+/* Accessors: These may be supplied in the options hash to override default behavior
+
+textProp ()
+	Return the name of the property that contains the text
+
+getText (item)
+	Return the text value to display in the list
+	item => object wrapped in an Item Adapter
+	
+getKey (item)
+	Return either an object with key/value pairs to match or a match function
+	Use this to reduce the number of fields required for searching if a unique key is available
+	item => object wrapped in an Item Adapter
+	
+*/
+	
+	accessors: {
+		textProp () {
+			return 'text';
+		},
+		
+		getText (item) {
+			return item.get(item.textProp());
+		},
+
+		getKey (item) {
+			return item.get();
+		}
+	},
+	
 	_canSelect (step) {
 		let canMove;
 		
@@ -33,15 +63,23 @@ const WizardCore = Lib.merge({}, Base, Selectable, {
 		return canMove;
 	},
 	
+	getIndex () {
+		return this._collection.indexOf(this._getSelection()) + 1;
+	},
+	
+	setStepByIndex (index) {
+		Selectable.setStepByIndex.call(this, index - 1);
+	},
+	
 	nextStep () {
-		let index = this._collection.indexOf(this.getStep());
+		let index = this.getIndex();
 		index++;
 		
 		this.setStepByIndex(index);
 	},
 	
 	previousStep () {
-		let index = this._collection.indexOf(this.getStep());
+		let index = this.getIndex();
 		index--;
 		
 		this.setStepByIndex(index);

@@ -53,6 +53,18 @@ const Data = Base.Data.extend({
 		return result;
 	},
 	
+	indexOf (criteria) {
+		let index = -1;
+		
+		this._data.forEach(function (item, i) {
+			if (index < 0 && item === criteria._item) {
+				index = i;
+			}
+		});
+		
+		return index;
+	},
+	
 	length () {
 		return this._data.length;
 	},

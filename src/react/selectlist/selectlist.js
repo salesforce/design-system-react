@@ -30,10 +30,10 @@ export const SelectlistObject = {
 		]).isRequired
 	},
 
-	menuItems () {
+	_menuItems () {
 		return this._collection.map((item, index) => {
 			return (
-				<SelectlistItem key={index} item={item} text={item.getText()} type={item.getType()} disabled={item.getDisabled()} onSelected={this._handleMenuItemSelected} />
+				<SelectlistItem key={index} item={item} onSelected={this._handleMenuItemSelected} />
 			);
 		});
 	},
@@ -60,7 +60,7 @@ export const SelectlistObject = {
 					<span className={this.cssClasses.SR_ONLY}>{this.state.strings.TOGGLE_DROPDOWN}</span>
 				</button>
 				<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
-					{this.menuItems()}
+					{this._menuItems()}
 				</ul>
 			</div>
 		);
