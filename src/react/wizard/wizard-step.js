@@ -11,13 +11,13 @@ const WizardStep = React.createClass({
 	},
 
 	render () {
-		var stateClass = {
+		var state = {
 			active: this.props.index === this.props.currentIndex,
-			completed: this.props.index < this.props.currentIndex
+			complete: this.props.index < this.props.currentIndex
 		};
 		
 		return (
-			<li data-step={this.props.index} className={classNames(stateClass)} onClick={this.props.onClicked}>
+			<li data-step={this.props.index} className={classNames(state)} onClick={state.complete ? this.props.onClicked : undefined}>
 				<span className="badge">{this.props.index}</span>{this.props.item.getText()}<span className="chevron"></span>
 			</li>
 		);
