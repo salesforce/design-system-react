@@ -117,7 +117,7 @@ module.exports = React.createClass( {
   },
 
   handleListBlur(){
-//    this.setState({isOpen:false});
+    this.setState({isOpen:false});
   },
 
   handleCancel () {

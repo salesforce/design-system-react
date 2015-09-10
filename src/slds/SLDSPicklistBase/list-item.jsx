@@ -88,8 +88,8 @@ module.exports = React.createClass({
   handleKeyDown(event) {
 
     if(event.keyCode){
-      this.trapEvent(event);
       if(event.keyCode === DOWN){
+        this.trapEvent(event);
         if(this.props.onMoveFocus){
           this.props.onMoveFocus(1);
         }
