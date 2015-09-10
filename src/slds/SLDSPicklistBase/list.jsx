@@ -150,8 +150,8 @@ module.exports = React.createClass({
         ref="scroll"
         className="ignore-react-onclickoutside slds-wrap slds-grow slds-scrollable--y"
         style={{
-          position:'inherit',
-          float:'inherit',
+//          position:'inherit',
+//          float:'inherit',
           maxHeight:300
         }}
         role="listbox"

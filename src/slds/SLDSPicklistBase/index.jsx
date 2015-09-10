@@ -74,7 +74,7 @@ module.exports = React.createClass( {
           }
           this.setState({isOpen:false})
         }
-      }.bind(this),0);
+      }.bind(this));
     }
   },
 
@@ -99,11 +99,11 @@ module.exports = React.createClass( {
           event.keyCode === RIGHT || 
           event.keyCode === LEFT || 
           event.keyCode === UP){
-        this.setState({isOpen:true})
         this.setState({
-//          highlightedIndex:this.state.highlightedIndex+1
+          isOpen:true,
           highlightedIndex:0
         });
+        this.trapEvent(event);
       }
     }
   },
@@ -119,22 +119,34 @@ module.exports = React.createClass( {
   },
 
   handleListBlur(){
-//    this.setState({isOpen:false});
+    this.setState({isOpen:false});
   },
 
   handleCancel () {
     this.setFocus();
   },
 
+  trapEvent(event){
+    event.preventDefault();
+    event.stopPropagation();
+  },
+
   getPopover() {
-    return (
-      !this.props.disabled && this.state.isOpen?
+/*
         <SLDSPopover 
           ref="popover"
           className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu" 
           targetElement={this.refs.button} 
           style={{maxHeight:'20em'}}
           onClose={this.handleClose}>
+*/
+    return (
+      !this.props.disabled && this.state.isOpen?
+        <div 
+          ref="popover"
+          className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu" 
+          targetElement={this.refs.button} 
+          style={{maxHeight:'20em'}}>
           <List
             ref='list'
             options={this.props.options}
@@ -146,7 +158,7 @@ module.exports = React.createClass( {
             onListBlur={this.handleListBlur}
             onCancel={this.handleCancel.bind(this)}
             theme={this.props.theme} />
-        </SLDSPopover>:null
+        </div>:null
     );
   },
 
@@ -170,6 +182,7 @@ module.exports = React.createClass( {
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}
             onClick={this.handleClick}
+            tabIndex={this.state.isOpen?-1:0}
             onKeyDown={this.handleKeyDown} >
             <span className="slds-truncate">{this.getPlaceholder()}</span>
             <Icon name="down" category="utility" />

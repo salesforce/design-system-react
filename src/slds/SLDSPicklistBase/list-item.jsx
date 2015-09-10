@@ -66,11 +66,16 @@ module.exports = React.createClass({
     e.preventDefault();
   },
 
+  trapEvent(event){
+    event.preventDefault();
+    event.stopPropagation();
+  },
+
   componentDidMount(){
     if(this.props.isHighlighted){
       setTimeout(()=>{
           this.getDOMNode().focus();
-        }.bind(this),100);
+        }.bind(this),0);
     }
   },
 
@@ -81,18 +86,19 @@ module.exports = React.createClass({
   },
 
   handleKeyDown(event) {
-        console.log('EVENT! ',event.nativeEvent)
 
     if(event.keyCode){
-      if(event.keyCode === 40){
+      if(event.keyCode === DOWN){
         if(this.props.onMoveFocus){
           this.props.onMoveFocus(1);
         }
+        this.trapEvent(event);
       }
-      else if(event.keyCode === 38){
+      else if(event.keyCode === UP){
         if(this.props.onMoveFocus){
           this.props.onMoveFocus(-1);
         }
+        this.trapEvent(event);
       }
       else if(event.keyCode === ENTER || 
           event.keyCode === SPACE || 
@@ -101,24 +107,22 @@ module.exports = React.createClass({
         if(this.props.onSelect){
           this.props.onSelect(this.props.index);
         }
+        this.trapEvent(event);
       }
-      else if(event.keyCode === 9) {
-        event.preventDefault();
+      else if(event.keyCode == ESCAPE){
         if(this.props.onCancel){
           this.props.onCancel();
         }
-
+        this.trapEvent(event);
       }
-      else if(event.keyCode == 27){
-        if(this.props.onCancel){
-          this.props.onCancel();
-        }
+      else if(event.keyCode == TAB){
       }
       else{
         const ch = String.fromCharCode(event.keyCode);
         if(this.props.onSearch){
           this.props.onSearch(this.props.index,ch);
         }
+        this.trapEvent(event);
       }
     }
   },
@@ -144,7 +148,7 @@ module.exports = React.createClass({
         onMouseDown={this.handleMouseDown}
         aria-checked={this.props.isSelected}
         onKeyDown={this.handleKeyDown}
-        tabIndex={this.props.index===0?0:-1}
+        tabIndex={-1}
         onBlur={this.handleBlur}
         onClick={this.handleClick}
         onFocus={this.handleFocus} >
@@ -157,7 +161,7 @@ module.exports = React.createClass({
             onMouseDown={this.handleMouseDown}
             onKeyDown={this.handleKeyDown}
             onBlur={this.handleBlur}
-            tabIndex={this.props.index===0?0:-1}>
+            tabIndex={-1}>
               {this.props.isSelected?<Icon name="task2" size="small" position="left" category="standard" />:null}
               {this.props.label}
           </a>
