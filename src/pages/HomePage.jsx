@@ -82,7 +82,7 @@ export default class HomePage extends Component {
                       {label:'B Option',value:'B0'},
                       {label:'C Option',value:'C0'},
                       {label:'D Option',value:'D0'},
-
+/*
                       {label:'A1 Option',value:'A1'},
                       {label:'B1 Option',value:'B1'},
                       {label:'C1 Option',value:'C1'},
@@ -97,7 +97,7 @@ export default class HomePage extends Component {
                       {label:'B3 Option',value:'B3'},
                       {label:'C3 Option',value:'C3'},
                       {label:'D3 Option',value:'D3'},
-
+*/
                     ]} 
                     label="Contacts" 
                     placeholder = "Select a contact" />
