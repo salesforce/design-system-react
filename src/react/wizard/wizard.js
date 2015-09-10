@@ -17,8 +17,10 @@ let Wizard = Lib.extend({}, WizardCore, {
 	mixins: [State, Events, genericWillMount],
 
 	_steps () {
+		const currentIndex = this.getIndex();
+		
 		return this._collection.map((item, index) => {			
-			return <WizardStep key={index} item={item} index={index + 1} currentIndex={this.getIndex()} onClick={this._handleWizardStepClicked} />;
+			return <WizardStep key={index} item={item} index={index + 1} currentIndex={currentIndex} onClicked={this._setSelection.bind(this, item._item)} />;
 		});
 	},
 

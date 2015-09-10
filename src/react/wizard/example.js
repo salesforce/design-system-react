@@ -8,5 +8,23 @@ export default function (element) {
 		{ text: 'Template' }
 	];
 	
-	React.render(<Wizard collection={collection} step={collection[0]} />, element);
+	const WizardExample = React.createClass({
+		getInitialState () {
+			return {
+				step: collection[0]
+			};
+		},
+		
+		render () {
+			return <Wizard collection={collection} step={this.state.step} onChanged={this._handleStepChange} />;
+		},
+		
+		_handleStepChange (step) {
+			this.setState({
+				step
+			});
+		},
+	});
+	
+	React.render(<WizardExample />, element);
 }

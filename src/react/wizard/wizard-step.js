@@ -6,7 +6,8 @@ const WizardStep = React.createClass({
 	propTypes: {
 		item: React.PropTypes.object.isRequired,
 		index: React.PropTypes.number.isRequired,
-		currentIndex: React.PropTypes.number.isRequired
+		currentIndex: React.PropTypes.number.isRequired,
+		onClicked: React.PropTypes.func.isRequired
 	},
 
 	render () {
@@ -16,7 +17,7 @@ const WizardStep = React.createClass({
 		};
 		
 		return (
-			<li data-step={this.props.index} className={classNames(stateClass)}>
+			<li data-step={this.props.index} className={classNames(stateClass)} onClick={this.props.onClicked}>
 				<span className="badge">{this.props.index}</span>{this.props.item.getText()}<span className="chevron"></span>
 			</li>
 		);
