@@ -49,14 +49,10 @@ module.exports = React.createClass( {
   },
 
   handleSelect(index) {
-
     setTimeout(()=>{
       this.setFocus();
-    }.bind(this),100);
-
-
+    }.bind(this));
     this.setState({selectedIndex:index})
-//    this.setFocus();
   },
 
   handleClose() {
