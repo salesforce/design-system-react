@@ -44,7 +44,10 @@ module.exports = React.createClass( {
       label: 'Picklist',
       value: null,
       options: [],
-      onItemSelect: function(item){
+      onClick () {
+        console.log('onClick should be defined');
+      },
+      onItemSelect (item){
         console.log('onItemSelect should be defined');
       },
       onUpdateHighlighted (nextIndex) {
@@ -58,7 +61,9 @@ module.exports = React.createClass( {
       isOpen:false,
       isFocused:false,
       highlightedIndex:0,
-      selectedIndex:this.getIndexByValue(this.props.value)
+      selectedIndex:this.getIndexByValue(this.props.value),
+      lastBlurredIndex:-1,
+      lastBlurredTimeStamp:-1
     };
   },
 
@@ -85,8 +90,13 @@ module.exports = React.createClass( {
     this.setState({isOpen:false});
   },
 
-  handleClick() {
-    this.setState({isOpen:true})
+  handleClick(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.setState({isOpen:true});
+    if(this.props.onClick){
+      this.props.onClick();
+    }
   },
 
   handleBlur(e) {
@@ -139,14 +149,6 @@ module.exports = React.createClass( {
   },
 
   getPopover() {
-/*
-        <SLDSPopover 
-          ref="popover"
-          className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu" 
-          targetElement={this.refs.button} 
-          style={{maxHeight:'20em'}}
-          onClose={this.handleClose}>
-*/
     return (
       !this.props.disabled && this.state.isOpen?
         <div 
@@ -163,6 +165,7 @@ module.exports = React.createClass( {
             onSelect={this.handleSelect} 
             onUpdateHighlighted={this.handleUpdateHighlighted} 
             onListBlur={this.handleListBlur}
+            onListItemBlur={this.handleListItemBlur}
             onCancel={this.handleCancel}
             theme={this.props.theme} />
         </div>:null
@@ -172,6 +175,13 @@ module.exports = React.createClass( {
   getPlaceholder() {
     const option = this.props.options[this.state.selectedIndex];
     return (option && option.label)?option.label:this.props.placeholder;
+  },
+
+  handleListItemBlur (index, relatedTarget) {
+    this.setState({
+      lastBlurredIndex:index,
+      lastBlurredTimeStamp:Date.now()
+    });
   },
 
   render() {
@@ -205,6 +215,11 @@ module.exports = React.createClass( {
   },
 
   componentDidUpdate( prevProps, prevState) {
+    if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
+      if(this.state.lastBlurredIndex === this.state.highlightedIndex){
+        this.handleClose();
+      }
+    }
     if(this.state.selectedIndex !== prevState.selectedIndex){
       this.handleClose();
     }

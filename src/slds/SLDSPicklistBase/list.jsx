@@ -10,14 +10,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import {Icon} from "../SLDSIcons";
 import ListItem from "./list-item";
-import BroswerUtil from "../utils/browser";
 
 module.exports = React.createClass({
 
   displayName: "SLDSPicklistBase-list",
 
   getInitialState () {
-    return {lastBlurredIndex:-1};
+    return {};
   },
 
   getDefaultProps () {
@@ -37,6 +36,9 @@ module.exports = React.createClass({
       },
       onSelect:(index)=>{
         console.log("onSelect should be overwritten");
+      },
+      onListItemBlur:(listItemIndex)=>{
+        console.log("onListItemBlur should be overwritten");
       }
     };
   },
@@ -56,17 +58,9 @@ module.exports = React.createClass({
   },
 
   handleListItemBlur (index, relatedTarget) {
-
-    if(this.isMounted()){
-      if(!BroswerUtil.isFF){
-        if(!this.getDOMNode().contains(relatedTarget)){
-          if(this.props.onListBlur){
-            this.props.onListBlur();
-          }
-        }
-      }
+    if(this.props.onListItemBlur){
+      this.props.onListItemBlur(index);
     }
-
     this.setState({lastBlurredIndex:index});
   },
 
@@ -169,15 +163,7 @@ module.exports = React.createClass({
   },
 
   componentDidUpdate( prevProps, prevState) {
-    if(this.state.lastBlurredIndex !== prevState.lastBlurredIndex){
-      if(this.isMounted()){
-        if(!this.getDOMNode().contains(document.activeElement)){
-          if(this.props.onListBlur){
-            this.props.onListBlur();
-          }
-        }
-      }
-    }
+
   }
 
 });
