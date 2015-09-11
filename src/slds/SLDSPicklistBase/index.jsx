@@ -14,7 +14,9 @@ import List from './list';
 import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
 
+import KEYS from "../utils/keyboard";
 
+/*
 const ENTER = 13;
 const ESCAPE = 27;
 const SPACE = 32;
@@ -23,6 +25,7 @@ const UP = 38;
 const RIGHT = 39;
 const DOWN = 40;
 const TAB = 9;
+*/
 
 function isPrime(element, index, array) {
   var start = 2;
@@ -118,10 +121,10 @@ module.exports = React.createClass( {
 
   handleKeyDown(event) {
     if (event.keyCode){
-      if (event.keyCode === ENTER || 
-          event.keyCode === SPACE || 
-          event.keyCode === DOWN || 
-          event.keyCode === UP){
+      if (event.keyCode === KEYS.ENTER || 
+          event.keyCode === KEYS.SPACE || 
+          event.keyCode === KEYS.DOWN || 
+          event.keyCode === KEYS.UP){
         this.trapEvent(event);
         this.setState({
           isOpen:true,

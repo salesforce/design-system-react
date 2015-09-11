@@ -10,12 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import {Icon} from "../SLDSIcons";
 
-const ENTER = 13;
-const ESCAPE = 27;
-const SPACE = 32;
-const UP = 38;
-const DOWN = 40;
-const TAB = 9;
+import KEYS from "../utils/keyboard";
+
 
 module.exports = React.createClass({
 
@@ -84,32 +80,32 @@ module.exports = React.createClass({
   handleKeyDown(event) {
 
     if(event.keyCode){
-      if(event.keyCode === DOWN){
+      if(event.keyCode === KEYS.DOWN){
         this.trapEvent(event);
         if(this.props.onMoveFocus){
           this.props.onMoveFocus(1);
         }
       }
-      else if(event.keyCode === UP){
+      else if(event.keyCode === KEYS.UP){
         this.trapEvent(event);
         if(this.props.onMoveFocus){
           this.props.onMoveFocus(-1);
         }
       }
-      else if(event.keyCode === ENTER || 
-          event.keyCode === SPACE ){
+      else if(event.keyCode === KEYS.ENTER || 
+          event.keyCode === KEYS.SPACE ){
         this.trapEvent(event);
         if(this.props.onSelect){
           this.props.onSelect(this.props.index);
         }
       }
-      else if(event.keyCode == ESCAPE){
+      else if(event.keyCode == KEYS.ESCAPE){
         this.trapEvent(event);
         if(this.props.onCancel){
           this.props.onCancel();
         }
       }
-      else if(event.keyCode == TAB){
+      else if(event.keyCode == KEYS.TAB){
       }
       else{
         this.trapEvent(event);
