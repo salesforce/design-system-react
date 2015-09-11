@@ -9,8 +9,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { Component } from 'react';
 import SLDSPopover from '../../SLDSPopover';
+import SLDSPicklistBase from '../../SLDSPicklistBase';
+
 import Moment from 'moment';
 import {InputIcon} from "./../../SLDSIcons";
+
+const options = [
+      {label:'2015',value:'2015'},
+      {label:'2016',value:'2016'},
+      {label:'2017',value:'2017'},
+      {label:'2018',value:'2018'},
+    ];
 
 var ListItemComponent = React.createClass( {
 
@@ -103,7 +112,16 @@ module.exports = React.createClass( {
 
   popover() {
     if(this.state && this.state.isOpen){
+      const options = [
+            {label:'2015',value:'2015'},
+            {label:'2016',value:'2016'},
+            {label:'2017',value:'2017'},
+            {label:'2018',value:'2018'},
+          ];
       return (
+
+        <SLDSPicklistBase options={options} label="Year" placeholder="Year" value="2015"/>
+/*
         <SLDSPopover targetElement={this.refs.date}>
           <div className="ignore-react-onclickoutside">
           <ul className="slds-datepicker--time__list" tabIndex="0">
@@ -111,6 +129,7 @@ module.exports = React.createClass( {
           </ul>
           </div>
         </SLDSPopover>
+*/
       );
     }
     return <span />;
@@ -119,6 +138,7 @@ module.exports = React.createClass( {
   render() {
     return (
       <div className="slds-form-element">
+{/*
         <div className="slds-form-element__control">
           <div className="slds-input-has-icon slds-input-has-icon--right">
             <button id="year" 
@@ -133,7 +153,11 @@ module.exports = React.createClass( {
             <InputIcon name="down"/>
           </div>
         </div>
-        {this.popover()}
+
+*/}
+
+        <SLDSPicklistBase options={options} label="Year" placeholder="Year" value="2015"/>
+
       </div>
     );
   }

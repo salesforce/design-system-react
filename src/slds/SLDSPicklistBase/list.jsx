@@ -57,6 +57,8 @@ module.exports = React.createClass({
   handleListItemBlur (index) {
 //    console.log(document.activeElement);
 //    console.log(relatedTarget);
+    console.log('!!! LIST ITEM BLUR !!!');
+
     this.setState({lastBlurredIndex:index});
   },
 
@@ -168,7 +170,6 @@ module.exports = React.createClass({
         }
       }
     }
-
   }
 
 });

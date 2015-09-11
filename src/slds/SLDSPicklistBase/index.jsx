@@ -23,6 +23,16 @@ const RIGHT = 39;
 const DOWN = 40;
 const TAB = 9;
 
+function isPrime(element, index, array) {
+  var start = 2;
+  while (start <= Math.sqrt(element)) {
+    if (element % start++ < 1) {
+      return false;
+    }
+  }
+  return element > 1;
+}
+
 module.exports = React.createClass( {
 
   getDefaultProps(){
@@ -31,6 +41,7 @@ module.exports = React.createClass( {
       disabled: false,
       theme: 'default',
       label: 'Picklist',
+      value: null,
       options: [],
       onItemSelect: function(item){
         console.log('onItemSelect should be defined');
@@ -46,8 +57,24 @@ module.exports = React.createClass( {
       isOpen:false,
       isFocused:false,
       highlightedIndex:0,
-      selectedIndex:-1
+      selectedIndex:this.getIndexByValue(this.props.value)
     };
+  },
+
+  getIndexByValue(value){
+    let foundIndex = -1;
+    if(this.props.options && this.props.options.length){
+      this.props.options.some((element, index, array)=>{
+        console.log(element);
+        if(element && element.value === value){
+          foundIndex = index;
+          return true;
+        }
+        return false;
+      });
+    }
+    console.log('>>> foundIndex: '+foundIndex);
+    return foundIndex;
   },
 
   handleSelect(index) {
@@ -95,30 +122,12 @@ module.exports = React.createClass( {
     }
   },
 
-  componentDidUpdate( prevProps, prevState) {
-    if(this.state.selectedIndex !== prevState.selectedIndex){
-      this.handleClose();
-    }
-    else if(this.state.isFocused && !prevState.isFocused){
-      this.setState({isOpen:false});
-    }
-    else if(!this.state.isFocused && prevState.isFocused){
-      if(this.refs.list){
-        if(this.isMounted() && this.refs.list){
-          if(this.refs.list.getDOMNode().contains(document.activeElement)){
-            return;
-          }
-          this.setState({isOpen:false})
-        }
-      }
-    }
-  },
-
   handleUpdateHighlighted(nextIndex){
     this.setState({highlightedIndex:nextIndex});
   },
 
   handleListBlur(){
+    console.log('!!! LIST BLUR !!!');
     this.setState({isOpen:false});
   },
 
@@ -167,7 +176,6 @@ module.exports = React.createClass( {
     return (option && option.label)?option.label:this.props.placeholder;
   },
 
-
   render() {
     let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
     return (
@@ -196,5 +204,29 @@ module.exports = React.createClass( {
 
       </div>
     );
-  }
+  },
+
+  componentDidUpdate( prevProps, prevState) {
+    if(this.state.selectedIndex !== prevState.selectedIndex){
+      this.handleClose();
+    }
+    else if(this.state.isFocused && !prevState.isFocused){
+      this.setState({isOpen:false});
+    }
+    else if(!this.state.isFocused && prevState.isFocused){
+      if(this.refs.list){
+        if(this.isMounted() && this.refs.list){
+          if(this.refs.list.getDOMNode().contains(document.activeElement)){
+            return;
+          }
+          this.setState({isOpen:false})
+        }
+      }
+    }
+
+    if(this.props.value !== prevProps.value){
+      this.handleSelect(this.getIndexByValue(this.props.value));
+    }
+  },
+
 });

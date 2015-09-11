@@ -86,6 +86,7 @@ export default class HomePage extends Component {
                       {label:'C Option',value:'C0'},
                       {label:'D Option',value:'D0'},
                     ]} 
+                    value='C0'
                     label="Contacts" 
                     placeholder = "Select a contact" />
               </div>
