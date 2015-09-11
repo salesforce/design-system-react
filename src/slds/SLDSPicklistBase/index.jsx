@@ -30,6 +30,7 @@ module.exports = React.createClass( {
       placeholder: 'Select an Option',
       disabled: false,
       theme: 'default',
+      label: 'Picklist',
       options: [],
       onItemSelect: function(item){
         console.log('onItemSelect should be defined');
@@ -43,16 +44,15 @@ module.exports = React.createClass( {
   getInitialState(){
     return {
       isOpen:false,
+      isFocused:false,
       highlightedIndex:0,
       selectedIndex:-1
     };
   },
 
   handleSelect(index) {
-    setTimeout(()=>{
-      this.setFocus();
-    }.bind(this));
     this.setState({selectedIndex:index})
+    this.setFocus();
   },
 
   handleClose() {
@@ -64,20 +64,11 @@ module.exports = React.createClass( {
   },
 
   handleBlur(e) {
-    if(this.refs.list){
-      setTimeout(()=>{
-        if(this.isMounted() && this.refs.list){
-          if(this.refs.list.getDOMNode().contains(document.activeElement)){
-            return;
-          }
-          this.setState({isOpen:false})
-        }
-      }.bind(this));
-    }
+    this.setState({isFocused:false});
   },
 
   handleFocus() {
-    this.setState({isOpen:false});
+    this.setState({isFocused:true});
   },
 
   setFocus () {
@@ -94,8 +85,6 @@ module.exports = React.createClass( {
       if (event.keyCode === ENTER || 
           event.keyCode === SPACE || 
           event.keyCode === DOWN || 
-          event.keyCode === RIGHT || 
-          event.keyCode === LEFT || 
           event.keyCode === UP){
         this.trapEvent(event);
         this.setState({
@@ -109,6 +98,19 @@ module.exports = React.createClass( {
   componentDidUpdate( prevProps, prevState) {
     if(this.state.selectedIndex !== prevState.selectedIndex){
       this.handleClose();
+    }
+    else if(this.state.isFocused && !prevState.isFocused){
+      this.setState({isOpen:false});
+    }
+    else if(!this.state.isFocused && prevState.isFocused){
+      if(this.refs.list){
+        if(this.isMounted() && this.refs.list){
+          if(this.refs.list.getDOMNode().contains(document.activeElement)){
+            return;
+          }
+          this.setState({isOpen:false})
+        }
+      }
     }
   },
 
@@ -154,7 +156,7 @@ module.exports = React.createClass( {
             onSelect={this.handleSelect} 
             onUpdateHighlighted={this.handleUpdateHighlighted} 
             onListBlur={this.handleListBlur}
-            onCancel={this.handleCancel.bind(this)}
+            onCancel={this.handleCancel}
             theme={this.props.theme} />
         </div>:null
     );

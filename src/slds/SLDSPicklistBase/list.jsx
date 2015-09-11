@@ -22,6 +22,7 @@ module.exports = React.createClass({
   getDefaultProps () {
     return {
       options:[],
+      label:"Menu",
       selectedIndex:-1,
       highlightedIndex:0,
       onListBlur:()=>{
@@ -62,7 +63,7 @@ module.exports = React.createClass({
           }
         }
       }
-    }.bind(this),0);
+    }.bind(this));
   },
 
   handleMoveFocus (delta) {
@@ -91,11 +92,9 @@ module.exports = React.createClass({
   },
 
   handleItemFocus (itemIndex, itemHeight) {
-    setTimeout( ()=>{
-      if(this.refs.scroll){
-        this.refs.scroll.getDOMNode().scrollTop = itemIndex * itemHeight;
-      }
-    }.bind(this),0);
+    if(this.refs.scroll){
+      this.refs.scroll.getDOMNode().scrollTop = itemIndex * itemHeight;
+    }
   },
 
   handleSearch (index, ch) {
@@ -128,6 +127,7 @@ module.exports = React.createClass({
     return this.props.options.map((option, index) =>{
       return (
         <ListItem 
+          key={index}
           index={index} 
           label={option.label}
           value={option.value} 
@@ -159,7 +159,7 @@ module.exports = React.createClass({
           ref="scroll"
           className={"slds-dropdown__list slds-theme--"+this.props.theme}
           role="menu" 
-          aria-labelledby="foo">
+          aria-labelledby={this.props.label}>
           { this.getItems() }
         </ul>
       </div>

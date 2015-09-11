@@ -13,9 +13,7 @@ import {Icon} from "../SLDSIcons";
 const ENTER = 13;
 const ESCAPE = 27;
 const SPACE = 32;
-const LEFT = 37;
 const UP = 38;
-const RIGHT = 39;
 const DOWN = 40;
 const TAB = 9;
 
@@ -73,9 +71,7 @@ module.exports = React.createClass({
 
   componentDidMount(){
     if(this.props.isHighlighted){
-      setTimeout(()=>{
-          this.refs.link.getDOMNode().focus();
-        }.bind(this),0);
+      this.refs.link.getDOMNode().focus();
     }
   },
 
@@ -101,9 +97,7 @@ module.exports = React.createClass({
         }
       }
       else if(event.keyCode === ENTER || 
-          event.keyCode === SPACE || 
-          event.keyCode === RIGHT || 
-          event.keyCode === LEFT ){
+          event.keyCode === SPACE ){
         this.trapEvent(event);
         if(this.props.onSelect){
           this.props.onSelect(this.props.index);
@@ -143,15 +137,11 @@ module.exports = React.createClass({
   render () {
     return (
       <li 
-        id={"menu-0-"+this.props.index}
+
         className={"slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--"+this.props.theme}
         onMouseDown={this.handleMouseDown}
-        onKeyDown={this.handleKeyDown}
-        tabIndex={-1}
-        onBlur={this.handleBlur}
-        onClick={this.handleClick}
-        onFocus={this.handleFocus} >
-          <a 
+        tabIndex={-1}>
+          <a id={"menu-0-"+this.props.index}
             href="#"
             ref="link"
             className="slds-truncate" 
@@ -159,10 +149,10 @@ module.exports = React.createClass({
             onMouseDown={this.handleMouseDown}
             onKeyDown={this.handleKeyDown}
             onBlur={this.handleBlur}
+            onFocus={this.handleFocus}
             aria-checked={this.props.isSelected}
             role="menuitemradio"
-
-            tabIndex={-1}>::
+            tabIndex={-1}>
               {this.props.isSelected?<Icon name="task2" size="small" position="left" category="standard" />:null}
               {this.props.label}
           </a>
