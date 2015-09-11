@@ -47,9 +47,9 @@ export default class HomePage extends Component {
                     <Icon name="lead" category="standard" size="large" position="left" />
                   </div>
                   <div className="slds-media__body">
-                    <p className="slds-text-heading--label">Interactive</p>
+                    <p className="slds-text-heading--label">Lightning Design System</p>
                     <div className="slds-grid">
-                      <h1 className="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">Components</h1>
+                      <h1 className="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">React Components</h1>
                     </div>
                   </div>
                 </div>
@@ -64,46 +64,6 @@ export default class HomePage extends Component {
 
 
 
-            <div className="slds-p-around--medium">
-
-              <h3 className="slds-text-heading--medium slds-truncate">
-                Picklist Base
-              </h3>
-
-              <PrismCode className='language-markup'>
-                {require("raw-loader!../code-snippets/SLDSPicklistBasePage.txt")}
-              </PrismCode>
-
-              <div className="slds-p-vertical--large">
-                <SLDSPicklistBase 
-                    options={[
-                      {label:'A Option',value:'A0'},
-                      {label:'B Option',value:'B0'},
-                      {label:'C Option',value:'C0'},
-                      {label:'D Option',value:'D0'},
-
-                      {label:'A1 Option',value:'A1'},
-                      {label:'B1 Option',value:'B1'},
-                      {label:'C1 Option',value:'C1'},
-                      {label:'D1 Option',value:'D1'},
-
-                      {label:'A2 Option',value:'A2'},
-                      {label:'B2 Option',value:'B2'},
-                      {label:'C2 Option',value:'C2'},
-                      {label:'D2 Option',value:'D2'},
-
-                      {label:'A3 Option',value:'A3'},
-                      {label:'B3 Option',value:'B3'},
-                      {label:'C3 Option',value:'C3'},
-                      {label:'D3 Option',value:'D3'},
-
-                    ]} 
-                    label="Contacts" 
-                    placeholder = "Select a contact" />
-              </div>
-
-            </div>
-
 
 
 
@@ -125,22 +85,6 @@ export default class HomePage extends Component {
                       {label:'B Option',value:'B0'},
                       {label:'C Option',value:'C0'},
                       {label:'D Option',value:'D0'},
-/*
-                      {label:'A1 Option',value:'A1'},
-                      {label:'B1 Option',value:'B1'},
-                      {label:'C1 Option',value:'C1'},
-                      {label:'D1 Option',value:'D1'},
-
-                      {label:'A2 Option',value:'A2'},
-                      {label:'B2 Option',value:'B2'},
-                      {label:'C2 Option',value:'C2'},
-                      {label:'D2 Option',value:'D2'},
-
-                      {label:'A3 Option',value:'A3'},
-                      {label:'B3 Option',value:'B3'},
-                      {label:'C3 Option',value:'C3'},
-                      {label:'D3 Option',value:'D3'},
-*/
                     ]} 
                     label="Contacts" 
                     placeholder = "Select a contact" />
