@@ -5269,15 +5269,15 @@ html, body {
 
 .stage-left {
   width: 4rem;
-  -webkit-transition: width 0.2s ease-in-out 0.05s; }
+  transition: width 0.2s ease-in-out 0.05s; }
   @media (min-width: 64em) {
     .stage-left.open {
       width: 15rem;
-      -webkit-transition: width 0.1s ease-in-out; }
+      transition: width 0.1s ease-in-out; }
       .stage-left.open .stage-left__text {
         opacity: 1;
         width: auto;
-        -webkit-transition-delay: .2s; } }
+        transition-delay: .2s; } }
   .stage-left li + li {
     margin-top: 0.75rem; }
   .stage-left a:not(.button) {
@@ -5287,7 +5287,7 @@ html, body {
     border-radius: 0.25rem;
     background: transparent;
     padding: 0.25rem;
-    -webkit-transition: background 0.05s linear; }
+    transition: background 0.05s linear; }
     .stage-left a:not(.button):hover,
     .stage-left a:not(.button):focus {
       background: #061c3f; }
@@ -5296,7 +5296,7 @@ html, body {
   .stage-left .stage-left__text {
     opacity: 0;
     width: 0;
-    -webkit-transition: all 0.05s linear; }
+    transition: all 0.05s linear; }
 
 .stage-container {
   max-height: 100%;
