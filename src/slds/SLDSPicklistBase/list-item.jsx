@@ -123,7 +123,7 @@ module.exports = React.createClass({
 
   handleBlur(e) {
     if(this.props.onBlur){
-      this.props.onBlur(e.nativeEvent.relatedTarget);
+      this.props.onBlur(this.props.index);
     }
   },
 

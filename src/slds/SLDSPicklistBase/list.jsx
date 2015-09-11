@@ -16,7 +16,7 @@ module.exports = React.createClass({
   displayName: "SLDSPicklistBase-list",
 
   getInitialState () {
-    return {};
+    return {lastBlurredIndex:-1};
   },
 
   getDefaultProps () {
@@ -54,16 +54,10 @@ module.exports = React.createClass({
     }
   },
 
-  handleListItemBlur (relatedTarget) {
-    setTimeout(()=>{
-      if(this.isMounted()){
-        if(!this.getDOMNode().contains(document.activeElement)){
-          if(this.props.onListBlur){
-            this.props.onListBlur();
-          }
-        }
-      }
-    }.bind(this));
+  handleListItemBlur (index) {
+//    console.log(document.activeElement);
+//    console.log(relatedTarget);
+    this.setState({lastBlurredIndex:index});
   },
 
   handleMoveFocus (delta) {
@@ -150,8 +144,6 @@ module.exports = React.createClass({
         ref="scroll"
         className="slds-wrap slds-grow slds-scrollable--y"
         style={{
-//          position:'inherit',
-//          float:'inherit',
           maxHeight:260
         }}
         >
@@ -166,6 +158,17 @@ module.exports = React.createClass({
     );
   },
 
+  componentDidUpdate( prevProps, prevState) {
+    if(this.state.lastBlurredIndex !== prevState.lastBlurredIndex){
+      if(this.isMounted()){
+        if(!this.getDOMNode().contains(document.activeElement)){
+          if(this.props.onListBlur){
+            this.props.onListBlur();
+          }
+        }
+      }
+    }
 
+  }
 
 });
