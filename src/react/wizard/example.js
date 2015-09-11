@@ -28,7 +28,7 @@ export default function (element) {
 			this.setState({
 				step
 			});
-		},
+		}
 	});
 	
 	React.render(<WizardExample />, element);
