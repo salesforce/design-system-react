@@ -16,26 +16,8 @@ import {Icon} from "../SLDSIcons";
 
 import KEYS from "../utils/keyboard";
 
-/*
-const ENTER = 13;
-const ESCAPE = 27;
-const SPACE = 32;
-const LEFT = 37;
-const UP = 38;
-const RIGHT = 39;
-const DOWN = 40;
-const TAB = 9;
-*/
+import EventUtil from "../utils/EventUtil";
 
-function isPrime(element, index, array) {
-  var start = 2;
-  while (start <= Math.sqrt(element)) {
-    if (element % start++ < 1) {
-      return false;
-    }
-  }
-  return element > 1;
-}
 
 module.exports = React.createClass( {
 
@@ -125,7 +107,7 @@ module.exports = React.createClass( {
           event.keyCode === KEYS.SPACE || 
           event.keyCode === KEYS.DOWN || 
           event.keyCode === KEYS.UP){
-        this.trapEvent(event);
+        EventUtil.trapEvent(event);
         this.setState({
           isOpen:true,
           highlightedIndex:0
@@ -144,11 +126,6 @@ module.exports = React.createClass( {
 
   handleCancel () {
     this.setFocus();
-  },
-
-  trapEvent(event){
-    event.preventDefault();
-    event.stopPropagation();
   },
 
   getPopover() {

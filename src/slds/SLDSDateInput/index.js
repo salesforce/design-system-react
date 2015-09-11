@@ -13,6 +13,10 @@ import SLDSDatePicker from './SLDSDatePicker/index';
 import Moment from 'moment';
 import {InputIcon} from "./../SLDSIcons";
 
+import KEYS from "../utils/keyboard";
+import EventUtil from "../utils/EventUtil";
+
+
 module.exports = React.createClass( {
 
   getDefaultProps(){
@@ -55,7 +59,7 @@ module.exports = React.createClass( {
   },
 
   handleFocus() {
-    this.setState({isOpen:true})
+//    this.setState({isOpen:true})
   },
 
   handleBlur() {
@@ -94,6 +98,20 @@ module.exports = React.createClass( {
     }
   },
 
+  handleKeyDown(event) {
+    if (event.keyCode){
+      if (event.keyCode === KEYS.ENTER || 
+          event.keyCode === KEYS.SPACE || 
+          event.keyCode === KEYS.DOWN || 
+          event.keyCode === KEYS.UP){
+        EventUtil.trapEvent(event);
+        this.setState({
+          isOpen:true
+        });
+      }
+    }
+  },
+
   render() {
     return (
       <div className="slds-form-element">
@@ -108,6 +126,7 @@ module.exports = React.createClass( {
               type="text" 
               placeholder={this.props.placeholder} 
               value={this.state.selected?this.state.string:''}
+              onKeyDown={this.handleKeyDown}
               onChange={this.handleInputChange}
               onClick={this.handleClick}
               onBlur={this.handleBlur}
