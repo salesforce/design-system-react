@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import {Icon} from "../SLDSIcons";
 import ListItem from "./list-item";
+import BroswerUtil from "../utils/browser";
 
 module.exports = React.createClass({
 
@@ -54,10 +55,17 @@ module.exports = React.createClass({
     }
   },
 
-  handleListItemBlur (index) {
-//    console.log(document.activeElement);
-//    console.log(relatedTarget);
-    console.log('!!! LIST ITEM BLUR !!!');
+  handleListItemBlur (index, relatedTarget) {
+
+    if(this.isMounted()){
+      if(!BroswerUtil.isFF){
+        if(!this.getDOMNode().contains(relatedTarget)){
+          if(this.props.onListBlur){
+            this.props.onListBlur();
+          }
+        }
+      }
+    }
 
     this.setState({lastBlurredIndex:index});
   },

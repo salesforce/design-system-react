@@ -14,6 +14,7 @@ import List from './list';
 import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
 
+
 const ENTER = 13;
 const ESCAPE = 27;
 const SPACE = 32;
@@ -65,7 +66,6 @@ module.exports = React.createClass( {
     let foundIndex = -1;
     if(this.props.options && this.props.options.length){
       this.props.options.some((element, index, array)=>{
-        console.log(element);
         if(element && element.value === value){
           foundIndex = index;
           return true;
@@ -73,7 +73,6 @@ module.exports = React.createClass( {
         return false;
       });
     }
-    console.log('>>> foundIndex: '+foundIndex);
     return foundIndex;
   },
 
@@ -127,7 +126,6 @@ module.exports = React.createClass( {
   },
 
   handleListBlur(){
-    console.log('!!! LIST BLUR !!!');
     this.setState({isOpen:false});
   },
 
