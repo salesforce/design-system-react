@@ -154,7 +154,6 @@ module.exports = React.createClass({
 //          float:'inherit',
           maxHeight:260
         }}
-        role="listbox"
         >
         <ul 
           ref="scroll"

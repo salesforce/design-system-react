@@ -37,6 +37,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <SLDSGrid flavor="vertical" className="stage slds-nowrap">
+
         <div className="region region--top slds-shrink-none">
           <div className="slds-page-header">
             <SLDSGrid>
@@ -124,7 +125,6 @@ export default class HomePage extends Component {
               </div>
 
             </div>
-
 
             <div className="slds-p-around--medium">
 

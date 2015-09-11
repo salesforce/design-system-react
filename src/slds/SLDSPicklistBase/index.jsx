@@ -172,6 +172,7 @@ module.exports = React.createClass( {
 
       <div className={"slds-form-element  ignore-react-onclickoutside slds-theme--"+this.props.theme}>
         <div className={"slds-picklist slds-theme--"+this.props.theme}>
+        <form>
           <button 
             id={this.props.id}
             ref="button"
@@ -185,7 +186,10 @@ module.exports = React.createClass( {
             <span className="slds-truncate">{this.getPlaceholder()}</span>
             <Icon name="down" category="utility" />
           </button>
+
           {this.getPopover()}
+        </form>
+
         </div>
 
       </div>

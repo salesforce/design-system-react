@@ -12,15 +12,14 @@ html,body {
 }
 
 .stage-left {
-  width: 4rem; // Token Value
+  width: 4rem;
   transition: width .2s ease-in-out .05s;
 
   @include mq-large-min {
     &.open {
-      width: 15rem; // Token Value
+      width: 15rem;
       transition: width .1s ease-in-out;
 
-      // Show Text on Open
       .stage-left__text {
         opacity: 1;
         width: auto;
@@ -33,13 +32,11 @@ html,body {
     margin-top: $spacing-small;
   }
 
-  // This styles are for the trumping of theme-inverse-links
   a:not(.button) {
     display: block;
     text-decoration: none;
     white-space: nowrap;
 
-    // Demo specific to match lightning app
     border-radius: $border-radius-medium;
     background: transparent;
     padding: $spacing-xx-small;
@@ -55,7 +52,6 @@ html,body {
     }
   }
 
-  // Setup Nav Item text to disappear on stage left toggle
   .stage-left__text {
     opacity: 0;
     width: 0;
@@ -64,18 +60,15 @@ html,body {
 }
 
 .stage-container {
-  // Need to have these to allow stage-main to scroll
   max-height: 100%;
   overflow: hidden;
 }
 
-// App specific
 .slds-grid--frame {
   min-width: 767px;
   overflow-y: auto;
 }
 
-// JS specific
 .js-nav-toggle {
   cursor: pointer;
 }

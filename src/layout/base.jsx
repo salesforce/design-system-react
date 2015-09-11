@@ -26,21 +26,12 @@ module.exports = React.createClass( {
 
   render () {
     return (
-      <div className="slds-grid slds-grid--frame slds-grid--vertical">
+      <div >
 
-        <header className="header slds-size--1-of-1" role="banner">
-          <Header onNavToggle={this.handleNavToggle} isOpen={this.state.isOpen}/>
-        </header>
 
-        <div className="stage-container slds-grid slds-nowrap slds-size--1-of-1">
-
-          <nav className={"stage-left slds-size--2-of-12 slds-shrink-none slds-theme--alt-inverse slds-p-around--small "+(this.state.isOpen?"open":"")}>
-            <Nav isOpen={this.state.isOpen} />
-          </nav>
 
           {this.props.children}
 
-        </div>
       </div>
     );
   }

@@ -74,14 +74,14 @@ module.exports = React.createClass({
   componentDidMount(){
     if(this.props.isHighlighted){
       setTimeout(()=>{
-          this.getDOMNode().focus();
+          this.refs.link.getDOMNode().focus();
         }.bind(this),0);
     }
   },
 
   componentDidUpdate( prevProps, prevState) {
     if(!prevProps.isHighlighted && this.props.isHighlighted){
-      this.getDOMNode().focus();
+      this.refs.link.getDOMNode().focus();
     }
   },
 
@@ -146,7 +146,6 @@ module.exports = React.createClass({
         id={"menu-0-"+this.props.index}
         className={"slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--"+this.props.theme}
         onMouseDown={this.handleMouseDown}
-        aria-checked={this.props.isSelected}
         onKeyDown={this.handleKeyDown}
         tabIndex={-1}
         onBlur={this.handleBlur}
@@ -156,12 +155,14 @@ module.exports = React.createClass({
             href="#"
             ref="link"
             className="slds-truncate" 
-            role="menuitemradio"
             onClick={this.handleClick}
             onMouseDown={this.handleMouseDown}
             onKeyDown={this.handleKeyDown}
             onBlur={this.handleBlur}
-            tabIndex={-1}>
+            aria-checked={this.props.isSelected}
+            role="menuitemradio"
+
+            tabIndex={-1}>::
               {this.props.isSelected?<Icon name="task2" size="small" position="left" category="standard" />:null}
               {this.props.label}
           </a>
