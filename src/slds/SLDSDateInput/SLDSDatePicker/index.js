@@ -14,19 +14,19 @@ import SLDSDatePickerNav from './SLDSDatePickerNav/index';
 
 module.exports = React.createClass( {
 
-  getDefaultProps: function(){
+  getDefaultProps () {
     return {
       month:Moment()
     }
   },
 
-  getInitialState: function(){
+  getInitialState () {
     return {
       month:this.props.month
     }
   },
 
-  handleClickOutside: function(e) {
+  handleClickOutside (e) {
     e.preventDefault();
     e.stopPropagation();
     if(this.props.onClose){
@@ -34,11 +34,11 @@ module.exports = React.createClass( {
     }
   },
 
-  handleMonthChange: function(moment){
+  handleMonthChange (moment){
     this.setState({month:moment});
   },
 
-  handleSelectDate: function(moment){
+  handleSelectDate (moment){
     if(this.props.onChange){
       this.props.onChange(moment);
     }
@@ -46,7 +46,6 @@ module.exports = React.createClass( {
 
   handleBGClick(event) {
     if(event.nativeEvent){
-//      event.nativeEvent.stopImmediatePropagation();
       event.nativeEvent.preventDefault();
     }
   },

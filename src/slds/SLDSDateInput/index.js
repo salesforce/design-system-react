@@ -63,7 +63,7 @@ module.exports = React.createClass( {
   },
 
   handleBlur() {
-    this.setState({isOpen:false})
+//    this.setState({isOpen:false})
   },
 
   popover() {

@@ -62,6 +62,10 @@ module.exports = React.createClass( {
     }
   },
 
+  componentDidMount() {
+    
+  },
+
   componentWillReceiveProps(nextProps){
     this.setState({isOpen:false});
   },
@@ -156,7 +160,12 @@ module.exports = React.createClass( {
 
 */}
 
-        <SLDSPicklistBase options={options} label="Year" placeholder="Year" value="2015"/>
+        <SLDSPicklistBase 
+          options={options} 
+          label="Year" 
+          placeholder="Year" 
+          value="2015"
+          initialFocus={true}/>
 
       </div>
     );

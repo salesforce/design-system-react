@@ -29,6 +29,7 @@ module.exports = React.createClass( {
       label: 'Picklist',
       value: null,
       options: [],
+      initialFocus: false,
       onClick () {
         console.log('onClick should be defined');
       },
@@ -50,6 +51,14 @@ module.exports = React.createClass( {
       lastBlurredIndex:-1,
       lastBlurredTimeStamp:-1
     };
+  },
+
+  componentDidMount () {
+    if(this.props.initialFocus){
+      setTimeout(()=>{
+        this.setFocus();
+      }.bind(this),100);
+    }
   },
 
   getIndexByValue(value){
