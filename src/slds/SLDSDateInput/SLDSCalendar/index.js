@@ -6,54 +6,72 @@ Redistributions in binary form must reproduce the above copyright notice, this l
 Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+'use strict';
 
-import React, { Component } from 'react';
+import React from 'react';
 import Week from './SLDSCalendarWeek/index';
 import moment from 'moment';
 
 module.exports = React.createClass({
 
-  displayName: "SLDSCalendar",
+  displayName: 'SLDSCalendar',
 
-  getDefaultProps: function(){
+  getDefaultProps () {
     return {
       month:moment(),
-      selected:moment()
+      selected:moment(),
+      labels:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+      abbrLabels:['S','M','T','W','T','F','S'],
+
+      onSelectDate (date) {
+        console.log('onSelectDate should be defined ',date);
+      },
+
+      onCancel () {
+        console.log('onCancel should be defined');
+      }
+
     };
   },
 
-  handleSelectDate: function(day) {
+  handleSelectDate (day) {
     this.setState({selected:day});
     if(this.props.onSelectDate){
       this.props.onSelectDate(day);
     }
   },
 
+  handleCancel () {
+    if(this.props.onCancel){
+      this.props.onCancel();
+    }
+  },
+
   render: function() {
-    return <div className="SLDSCalendar">
-      <table className="datepicker__month" role="grid" aria-labelledby="month">
+    return (<div className='SLDSCalendar'>
+      <table className='datepicker__month' role='grid' aria-labelledby='month'>
         <thead>
-          <tr ref="weekdays">
-            <th ref="Sunday">
-              <abbr title="Sunday">S</abbr>
+          <tr ref='weekdays'>
+            <th ref='Sunday'>
+              <abbr title={this.props.labels[0]}>{this.props.abbrLabels[0]}</abbr>
             </th>
-            <th ref="Monday">
-              <abbr title="Monday">M</abbr>
+            <th ref='Monday'>
+              <abbr title={this.props.labels[1]}>{this.props.abbrLabels[1]}</abbr>
             </th>
-            <th ref="Tuesday">
-              <abbr title="Tuesday">T</abbr>
+            <th ref='Tuesday'>
+              <abbr title={this.props.labels[2]}>{this.props.abbrLabels[2]}</abbr>
             </th>
-            <th ref="Wednesday">
-              <abbr title="Wednesday">W</abbr>
+            <th ref='Wednesday'>
+              <abbr title={this.props.labels[3]}>{this.props.abbrLabels[3]}</abbr>
             </th>
-            <th ref="Thursday">
-              <abbr title="Thursday">T</abbr>
+            <th ref='Thursday'>
+              <abbr title={this.props.labels[4]}>{this.props.abbrLabels[4]}</abbr>
             </th>
-            <th ref="Friday">
-              <abbr title="Friday">F</abbr>
+            <th ref='Friday'>
+              <abbr title={this.props.labels[5]}>{this.props.abbrLabels[5]}</abbr>
             </th>
-            <th ref="Saturday">
-              <abbr title="Saturday">S</abbr>
+            <th ref='Saturday'>
+              <abbr title={this.props.labels[6]}>{this.props.abbrLabels[6]}</abbr>
             </th>
           </tr>
         </thead>
@@ -61,13 +79,13 @@ module.exports = React.createClass({
           {this.renderWeeks()}
         </tbody>
       </table>
-    </div>;
+    </div>);
   },
 
   renderWeeks: function() {
     var weeks = [],
       done = false,
-      date = this.props.month.clone().startOf("month").add("w" -1).day("Sunday"),
+      date = this.props.month.clone().startOf('month').add('w' -1).day('Sunday'),
       monthIndex = date.month(),
       count = 0;
 
@@ -77,14 +95,15 @@ module.exports = React.createClass({
           date={date.clone()} 
           month={this.props.month} 
           onSelectDate={this.handleSelectDate} 
-          selectedDate={this.props.selected} />);
-      date.add(1, "w");
+          selectedDate={this.props.selected} 
+          onCancel={this.handleCancel} />);
+      date.add(1, 'w');
       done = count++ > 2 && monthIndex !== date.month();
       monthIndex = date.month();
     }
     var extra = 0;
     while(weeks.length < 6){
-      weeks.push(<tr key={'extra_'+extra++} className="week"><td><span className="slds-day">&nbsp;</span></td></tr>);
+      weeks.push(<tr key={'extra_'+extra++} className='week'><td><span className='slds-day'>&nbsp;</span></td></tr>);
     }
 
     return weeks;

@@ -13,8 +13,7 @@ import SLDSDatePicker from './SLDSDatePicker/index';
 import Moment from 'moment';
 import {InputIcon} from "./../SLDSIcons";
 
-import KEYS from "../utils/keyboard";
-import EventUtil from "../utils/EventUtil";
+import {KEYS,EventUtil} from '../utils';
 
 
 module.exports = React.createClass( {
@@ -51,7 +50,8 @@ module.exports = React.createClass( {
   },
 
   handleClose() {
-    this.setState({isOpen:false})
+    this.setState({isOpen:false});
+    this.setFocus();
   },
 
   handleClick() {
@@ -66,12 +66,20 @@ module.exports = React.createClass( {
 //    this.setState({isOpen:false})
   },
 
+  setFocus () {
+    if(this.isMounted()){
+      console.log(this.refs);
+      React.findDOMNode(this.refs.date).focus();
+    }
+  },
+
   popover() {
     if(this.state && this.state.isOpen){
       return <SLDSPopover className="slds-dropdown" targetElement={this.refs.date} onClose={this.handleClose}>
         <SLDSDatePicker 
           onChange={this.handleChange}
-          selected={this.state.selected} 
+          selected={this.state.selected}
+          onClose={this.handleClose} 
           month={this.state.selected?this.state.selected:Moment()} />
       </SLDSPopover>;
     }
@@ -100,6 +108,7 @@ module.exports = React.createClass( {
 
   handleKeyDown(event) {
     if (event.keyCode){
+      console.log(' KEYYY !!!!!');
       if (event.keyCode === KEYS.ENTER || 
           event.keyCode === KEYS.SPACE || 
           event.keyCode === KEYS.DOWN || 

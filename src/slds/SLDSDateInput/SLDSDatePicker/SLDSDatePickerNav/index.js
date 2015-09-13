@@ -11,45 +11,54 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import SLDSSelectYear from '../../SLDSYearSelector/index';
 import {ButtonIcon} from "./../../../SLDSIcons";
+import {KEYS,EventUtil} from '../../../utils';
 
 module.exports = React.createClass( {
 
-  getDefaultProps: function(){
+  getDefaultProps (){
     return {
       selectedMoment:moment(),
       moment:moment(),
-      onChangeMonth:function(){
+      onChangeMonth (){
         console.log('onChangeMonth should be defined');
       }
     }
   },
 
-  handleClick: function(event){
+  handleClick (event){
     event.preventDefault();
     event.stopPropagation();
   },
 
-  handleChangeMonth: function(moment){
+  handleChangeMonth (moment){
     if(this.props.onChangeMonth){
       this.props.onChangeMonth(moment);
     }
   },
 
-  previousMonth: function(event){
+  previousMonth (event){
     if(this.props.selectedMoment && this.handleChangeMonth){
       this.props.selectedMoment.subtract(1, 'months');
       this.handleChangeMonth(this.props.selectedMoment)
     }
   },
 
-  nextMonth: function(event){
+  componentDidMount () {
+    if(this.props.autoFocus){
+      setTimeout( () => {
+        React.findDOMNode(this.refs.prevMonth).focus();
+      }.bind(this),200);
+    }
+  },
+
+  nextMonth (event){
     if(this.props.selectedMoment && this.handleChangeMonth){
       this.props.selectedMoment.add(1, 'months');
       this.handleChangeMonth(this.props.selectedMoment)
     }
   },
 
-  handleYearSelect(moment) {
+  handleYearSelect (moment) {
     if(this.props.onChangeMonth){
       this.props.onChangeMonth(moment);
     }
@@ -60,16 +69,25 @@ module.exports = React.createClass( {
 
       <div className="slds-datepicker__filter slds-grid">
         <div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
-          <div className="slds-align-middle" role="button" aria-labelledby="bn_prev-label" tabIndex="0">
-            <button className="slds-button slds-button--icon-container" onClick={this.previousMonth}>
+          <div className="slds-align-middle" role="button" aria-labelledby="bn_prev-label" tabIndex={-1}>
+            <button 
+              ref="prevMonth"
+              className="slds-button slds-button--icon-container" 
+              autoFocus={this.props.autoFocus}
+              role="button"
+              tabIndex={0}
+              onClick={this.previousMonth}>
               <ButtonIcon name="left" />
               <span className="slds-assistive-text">Previous Month</span>
             </button>
           </div>
 
-          <div id="month" className="slds-align-middle" role="heading" aria-live="assertive" aria-atomic="true">{this.props.moment.format("MMMM YYYY")}</div>
-          <div className="slds-align-middle" role="button" aria-labelledby="bn_next-label" tabIndex="0">
-            <button className="slds-button slds-button--icon-container" onClick={this.nextMonth}>
+          <div id="month" className="slds-align-middle" role="heading" aria-live="assertive" aria-atomic="true">{this.props.moment.format("MMMM")}</div>
+          <div className="slds-align-middle" role="button" aria-labelledby="bn_next-label" tabIndex={-1}>
+            <button 
+              ref="nextMonth"
+              className="slds-button slds-button--icon-container" 
+              onClick={this.nextMonth}>
               <ButtonIcon name="right"/>
               <span className="slds-assistive-text">Next Month</span>
             </button>

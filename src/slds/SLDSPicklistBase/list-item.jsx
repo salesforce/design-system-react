@@ -6,40 +6,43 @@ Redistributions in binary form must reproduce the above copyright notice, this l
 Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+'use strict';
 
-import React, { Component } from 'react';
-import {Icon} from "../SLDSIcons";
 
-import KEYS from "../utils/keyboard";
+import React from 'react';
+import {Icon} from '../SLDSIcons';
+
+import {KEYS,EventUtil} from '../utils';
 
 
 module.exports = React.createClass({
 
-  displayName: "SLDSPicklistBase-list-item",
+  displayName: 'SLDSPicklistBase-list-item',
 
   getDefaultProps () {
     return {
       index: 0,
-      label: "",
+      label: '',
       value: null,
       inverted: false,
       isSelected: false,
       isHighlighted: false,
 
       onSelect (index) {
-        console.log('onSelect should be defined');
+        console.log('onSelect should be defined ',index);
       },
+
       onClick (index) {
-        console.log('onClick should be defined');
+        console.log('onClick should be defined ',index);
       },
       onMoveFocus (delta){
-        console.log('onMoveFocus should be defined');
+        console.log('onMoveFocus should be defined ',delta);
       },
       onBlur (relatedTarget){
-        console.log('onBlur should be defined');
+        console.log('onBlur should be defined ',relatedTarget);
       },
       onFocus (index, height) {
-        console.log('onFocus should be defined');
+        console.log('onFocus should be defined ',index,height);
       }
     };
   },
@@ -60,11 +63,6 @@ module.exports = React.createClass({
     e.preventDefault();
   },
 
-  trapEvent(event){
-    event.preventDefault();
-    event.stopPropagation();
-  },
-
   componentDidMount(){
     if(this.props.isHighlighted){
       this.refs.link.getDOMNode().focus();
@@ -81,34 +79,34 @@ module.exports = React.createClass({
 
     if(event.keyCode){
       if(event.keyCode === KEYS.DOWN){
-        this.trapEvent(event);
+        EventUtil.trapEvent(event);
         if(this.props.onMoveFocus){
           this.props.onMoveFocus(1);
         }
       }
       else if(event.keyCode === KEYS.UP){
-        this.trapEvent(event);
+        EventUtil.trapEvent(event);
         if(this.props.onMoveFocus){
           this.props.onMoveFocus(-1);
         }
       }
       else if(event.keyCode === KEYS.ENTER || 
           event.keyCode === KEYS.SPACE ){
-        this.trapEvent(event);
+        EventUtil.trapEvent(event);
         if(this.props.onSelect){
           this.props.onSelect(this.props.index);
         }
       }
-      else if(event.keyCode == KEYS.ESCAPE){
-        this.trapEvent(event);
+      else if(event.keyCode === KEYS.ESCAPE){
+        EventUtil.trapEvent(event);
         if(this.props.onCancel){
           this.props.onCancel();
         }
       }
-      else if(event.keyCode == KEYS.TAB){
+      else if(event.keyCode === KEYS.TAB){
       }
       else{
-        this.trapEvent(event);
+        EventUtil.trapEvent(event);
         const ch = String.fromCharCode(event.keyCode);
         if(this.props.onSearch){
           this.props.onSearch(this.props.index,ch);
@@ -123,7 +121,7 @@ module.exports = React.createClass({
     }
   },
 
-  handleFocus (event) {
+  handleFocus () {
     const height = this.getDOMNode().offsetHeight;
     if(height && this.props.onFocus){
       this.props.onFocus(this.props.index,height);
@@ -137,19 +135,19 @@ module.exports = React.createClass({
         className={"slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--"+this.props.theme}
         onMouseDown={this.handleMouseDown}
         tabIndex={-1}>
-          <a id={"menu-0-"+this.props.index}
-            href="#"
-            ref="link"
-            className="slds-truncate" 
+          <a id={'menu-0-'+this.props.index}
+            href=''
+            ref='link'
+            className='slds-truncate' 
             onClick={this.handleClick}
             onMouseDown={this.handleMouseDown}
             onKeyDown={this.handleKeyDown}
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}
             aria-checked={this.props.isSelected}
-            role="menuitemradio"
+            role='menuitemradio'
             tabIndex={-1}>
-              {this.props.isSelected?<Icon name="task2" size="small" position="left" category="standard" />:null}
+              {this.props.isSelected?<Icon name='task2' size='small' position='left' category='standard' />:null}
               {this.props.label}
           </a>
       </li>

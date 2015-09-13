@@ -7,22 +7,46 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React, { Component } from 'react';
+'use strict';
+
+import React from 'react';
 import Calendar from '../SLDSCalendar/index';
 import Moment from 'moment';
 import SLDSDatePickerNav from './SLDSDatePickerNav/index';
+
+import {KEYS} from '../../utils';
+
 
 module.exports = React.createClass( {
 
   getDefaultProps () {
     return {
-      month:Moment()
-    }
+      month:Moment(),
+
+      onChange (date) {
+        console.log('onChange should be defined ',date);
+      },
+
+      onClose () {
+        console.log('onClose should be defined');
+      }
+
+    };
   },
 
   getInitialState () {
     return {
       month:this.props.month
+    };
+  },
+
+  handleKeyDown(event) {
+    if(event.keyCode){
+      if(event.keyCode === KEYS.ESCAPE){
+        if(this.props.onClose){
+          this.props.onClose();
+        }
+      }
     }
   },
 
@@ -44,6 +68,12 @@ module.exports = React.createClass( {
     }
   },
 
+  handleCancel () {
+    if(this.props.onClose){
+      this.props.onClose();
+    }
+  },
+
   handleBGClick(event) {
     if(event.nativeEvent){
       event.nativeEvent.preventDefault();
@@ -52,22 +82,25 @@ module.exports = React.createClass( {
 
   render() {
     return (
-      <div className="ignore-react-onclickoutside">
-        <div className="slds-datepicker" 
-          aria-hidden="false" 
-          data-selection="single" 
+      <div className='ignore-react-onclickoutside'>
+        <div className='slds-datepicker'
+          aria-hidden={false}
+          data-selection='single'
           onMouseDown={this.handleBGClick}
+          onKeyDown={this.handleKeyDown}
           onClick={this.handleBGClick}>
           <SLDSDatePickerNav 
             onChangeMonth={this.handleMonthChange} 
             selected={this.props.selected}
+            autoFocus={true}
             moment={this.state.month}/>
           <Calendar 
             selected={this.props.selected} 
             month={this.state.month} 
-            onSelectDate={this.handleSelectDate}/>
-          <span id="bn_prev-label" className="slds-assistive-text">Go to previous month</span>
-          <span id="bn_next-label" className="slds-assistive-text">Go to next month</span>
+            onSelectDate={this.handleSelectDate}
+            onCancel={this.handleCancel} />
+          <span id='bn_prev-label' className='slds-assistive-text'>Go to previous month</span>
+          <span id='bn_next-label' className='slds-assistive-text'>Go to next month</span>
         </div>
 
       </div>

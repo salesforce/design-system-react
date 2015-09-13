@@ -114,58 +114,17 @@ module.exports = React.createClass( {
     return listItems;
   },
 
-  popover() {
-    if(this.state && this.state.isOpen){
-      const options = [
-            {label:'2015',value:'2015'},
-            {label:'2016',value:'2016'},
-            {label:'2017',value:'2017'},
-            {label:'2018',value:'2018'},
-          ];
-      return (
-
-        <SLDSPicklistBase options={options} label="Year" placeholder="Year" value="2015"/>
-/*
-        <SLDSPopover targetElement={this.refs.date}>
-          <div className="ignore-react-onclickoutside">
-          <ul className="slds-datepicker--time__list" tabIndex="0">
-            { this.listItems() }
-          </ul>
-          </div>
-        </SLDSPopover>
-*/
-      );
-    }
-    return <span />;
-  },
 
   render() {
     return (
       <div className="slds-form-element">
-{/*
-        <div className="slds-form-element__control">
-          <div className="slds-input-has-icon slds-input-has-icon--right">
-            <button id="year" 
-              className="slds-button slds-button--neutral slds-picklist__label" 
-              onClick={this.handleClick}
-              onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
-              aria-haspopup="true" 
-              aria-expanded="false">{this.props.moment.format('YYYY')}
-              <span style={{color:'black'}}></span>
-            </button>
-            <InputIcon name="down"/>
-          </div>
-        </div>
-
-*/}
 
         <SLDSPicklistBase 
           options={options} 
           label="Year" 
           placeholder="Year" 
           value="2015"
-          initialFocus={true}/>
+          initialFocus={false}/>
 
       </div>
     );

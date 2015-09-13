@@ -14,9 +14,7 @@ import List from './list';
 import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
 
-import KEYS from "../utils/keyboard";
-
-import EventUtil from "../utils/EventUtil";
+import {KEYS,EventUtil} from '../utils';
 
 
 module.exports = React.createClass( {
@@ -55,9 +53,10 @@ module.exports = React.createClass( {
 
   componentDidMount () {
     if(this.props.initialFocus){
-      setTimeout(()=>{
+ //     setTimeout(()=>{
         this.setFocus();
-      }.bind(this),100);
+//        this.setState({isFocused:true});
+ //     }.bind(this),100);
     }
   },
 
@@ -103,7 +102,7 @@ module.exports = React.createClass( {
 
   setFocus () {
     if(this.isMounted()){
-      this.refs.button.getDOMNode().focus();
+      React.findDOMNode(this.refs.button).focus();
     }
   },
 
