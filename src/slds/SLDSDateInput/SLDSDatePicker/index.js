@@ -11,7 +11,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import Calendar from '../SLDSCalendar/index';
-import Moment from 'moment';
 import SLDSDatePickerNav from './SLDSDatePickerNav/index';
 
 import {KEYS} from '../../utils';
@@ -21,7 +20,7 @@ module.exports = React.createClass( {
 
   getDefaultProps () {
     return {
-      month:Moment(),
+      displayedDate:new Date(),
 
       onChange (date) {
         console.log('onChange should be defined ',date);
@@ -36,7 +35,7 @@ module.exports = React.createClass( {
 
   getInitialState () {
     return {
-      month:this.props.month
+      displayedDate:this.props.displayedDate
     };
   },
 
@@ -58,13 +57,13 @@ module.exports = React.createClass( {
     }
   },
 
-  handleMonthChange (moment){
-    this.setState({month:moment});
+  handleMonthChange (displayedDate){
+    this.setState({displayedDate:displayedDate});
   },
 
-  handleSelectDate (moment){
+  handleSelectDate (selectedDate){
     if(this.props.onChange){
-      this.props.onChange(moment);
+      this.props.onChange(selectedDate);
     }
   },
 
@@ -81,6 +80,7 @@ module.exports = React.createClass( {
   },
 
   render() {
+
     return (
       <div className='ignore-react-onclickoutside'>
         <div className='slds-datepicker'
@@ -93,10 +93,10 @@ module.exports = React.createClass( {
             onChangeMonth={this.handleMonthChange} 
             selected={this.props.selected}
             autoFocus={true}
-            moment={this.state.month}/>
+            displayedDate={this.state.displayedDate}/>
           <Calendar 
             selected={this.props.selected} 
-            month={this.state.month} 
+            displayedDate={this.state.displayedDate} 
             onSelectDate={this.handleSelectDate}
             onCancel={this.handleCancel} />
           <span id='bn_prev-label' className='slds-assistive-text'>Go to previous month</span>

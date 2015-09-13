@@ -7,11 +7,13 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React, { Component } from 'react';
+'use strict';
+
+import React from 'react';
 import SLDSPopover from '../../SLDSPopover';
 import SLDSPicklistBase from '../../SLDSPicklistBase';
 
-import Moment from 'moment';
+//import Moment from 'moment';
 import {InputIcon} from "./../../SLDSIcons";
 
 const options = [
@@ -21,47 +23,21 @@ const options = [
       {label:'2018',value:'2018'},
     ];
 
-var ListItemComponent = React.createClass( {
-
-  getDefaultProps: function(){
-    return {
-      moment: Moment(),
-      onSelect: function(moment){
-        console.log('onSelect should be defined');
-      }
-    }
-  },
-
-  handleClick() {
-    if(this.props.onSelect && this.props.value){
-      this.props.onSelect(this.props.moment.set('year', this.props.value));
-    }
-  },
-
-  render() {
-    return (
-      <li className={this.props.isSelected?'slds-is-selected':''} aria-selected={this.props.isSelected} onClick={this.handleClick}>
-        { this.props.value }
-      </li>
-    )
-  }
-});
-
 module.exports = React.createClass( {
 
   displayName: "SLDSYearSelector",
 
   getDefaultProps (){
     return {
-      moment:Moment(),
+      displayedDate:new Date(),
       relativeFrom:-3,
       relativeTo:15,
-      onChange (moment){
+      onChange (displayedDate){
         console.log('onChange should be defined');
       }
     }
   },
-
+/*
   componentDidMount() {
     
   },
@@ -114,6 +90,15 @@ module.exports = React.createClass( {
     return listItems;
   },
 
+*/
+
+  handleSelect(selectedValue){
+    if(selectedValue){
+      if(this.props.onChange){
+        this.props.onChange(new Date(this.props.displayedDate.setFullYear(parseInt(selectedValue))));
+      }
+    }
+  },
 
   render() {
     return (
@@ -124,6 +109,7 @@ module.exports = React.createClass( {
           label="Year" 
           placeholder="Year" 
           value="2015"
+          onSelect={this.handleSelect}
           initialFocus={false}/>
 
       </div>

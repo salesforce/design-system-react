@@ -7,11 +7,13 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React, { Component } from 'react';
+'use strict';
+
+import React from 'react';
 import SLDSPopover from '../SLDSPopover';
 import SLDSDatePicker from './SLDSDatePicker/index';
 import Moment from 'moment';
-import {InputIcon} from "./../SLDSIcons";
+import {InputIcon} from './../SLDSIcons';
 
 import {KEYS,EventUtil} from '../utils';
 
@@ -38,14 +40,15 @@ module.exports = React.createClass( {
     };
   },
 
-  handleChange(moment) {
+  handleChange(date) {
+    const moment = Moment(date);
     this.setState({
       selected:moment,
       isOpen:false,
       string:moment.format(this.props.format)
-    })
+    });
     if(this.props.onDateChange){
-      this.props.onDateChange(moment)
+      this.props.onDateChange(moment);
     }
   },
 
@@ -55,7 +58,7 @@ module.exports = React.createClass( {
   },
 
   handleClick() {
-    this.setState({isOpen:true})
+    this.setState({isOpen:true});
   },
 
   handleFocus() {
@@ -75,7 +78,7 @@ module.exports = React.createClass( {
 
   popover() {
     if(this.state && this.state.isOpen){
-      return <SLDSPopover className="slds-dropdown" targetElement={this.refs.date} onClose={this.handleClose}>
+      return <SLDSPopover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
         <SLDSDatePicker 
           onChange={this.handleChange}
           selected={this.state.selected}
@@ -108,7 +111,6 @@ module.exports = React.createClass( {
 
   handleKeyDown(event) {
     if (event.keyCode){
-      console.log(' KEYYY !!!!!');
       if (event.keyCode === KEYS.ENTER || 
           event.keyCode === KEYS.SPACE || 
           event.keyCode === KEYS.DOWN || 
@@ -123,16 +125,16 @@ module.exports = React.createClass( {
 
   render() {
     return (
-      <div className="slds-form-element">
-        <label className="slds-form-element__label" htmlFor="date">{this.props.label}</label>
-        <div className="slds-form-element__control">
-          <div className="slds-input-has-icon slds-input-has-icon--right">
-            <InputIcon name="event"/>
+      <div className='slds-form-element'>
+        <label className='slds-form-element__label' htmlFor='date'>{this.props.label}</label>
+        <div className='slds-form-element__control'>
+          <div className='slds-input-has-icon slds-input-has-icon--right'>
+            <InputIcon name='event'/>
             <input 
-              name="date"
-              ref="date" 
-              className="slds-input" 
-              type="text" 
+              name='date'
+              ref='date' 
+              className='slds-input' 
+              type='text'
               placeholder={this.props.placeholder} 
               value={this.state.selected?this.state.string:''}
               onKeyDown={this.handleKeyDown}

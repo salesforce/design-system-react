@@ -11,8 +11,58 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 'use strict';
 
-module.exports = {
-  isLastDayOfMonth(dt) {
-    return new Date(dt.getTime() + 86400000).getDate() === 1;
+const DateUtil = {
+
+  firstDayOfMonth(date) {
+    return new Date( date.getFullYear(), date.getMonth(), 0, 0, 0, 0);
+  },
+
+  isLastDayOfMonth(date) {
+    if(!date) {
+      return false;
+    }
+    return new Date(date.getTime() + 86400000).getDate() === 1;
+  },
+  isSameMonth(d1,d2) {
+    if(!d1 || !d2) {
+      return false;
+    }
+    return (d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth());
+  },
+  isSameDay(d1,d2) {
+    if(!d1 || !d2) {
+      return false;
+    }
+    return (d1.getFullYear() === d2.getFullYear() && d1.getMonth() === d2.getMonth() && d1.getDate() === d2.getDate());
+  },
+  isCurrentMonth(date) {
+    if(!date) {
+      return false;
+    }
+    return DateUtil.isSameMonth(date, new Date());
+  },
+  isToday(date) {
+    if(!date) {
+      return false;
+    }
+    return DateUtil.isSameDay(date, new Date());
+  },
+  addDays(date, deltaDays) {
+    return new Date(date.getTime() + parseInt(deltaDays) * 86400000);
+  },
+  addWeeks(date, deltaWeeks) {
+    return DateUtil.addDays(date, parseInt(deltaWeeks)*7);
+  },
+  addMonths(date, deltaMonths) {
+    return new Date(date.getFullYear(),(date.getMonth()+deltaMonths),date.getDate(),date.getHours(),date.getMinutes(),date.getSeconds(),date.getMilliseconds());
+  },
+  nearestWeekDay(date, weekDayIndex) {
+    let delta = weekDayIndex - date.getDay();
+    if(delta<0){
+      delta += 7; 
+    }
+    return DateUtil.addDays(date, delta);
   }
 };
+
+module.exports = DateUtil;

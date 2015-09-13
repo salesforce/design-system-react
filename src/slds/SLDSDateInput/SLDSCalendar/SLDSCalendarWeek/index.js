@@ -12,6 +12,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 import Day from '../SLDSCalendarDay/index';
+import {DateUtil} from '../../../utils';
+
 
 module.exports = React.createClass({
 
@@ -28,18 +30,17 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var days = [];
-    var date = this.props.date;
+    let days = [];
+    let date = this.props.date;
     for (var i = 0; i < 7; i++) {
       days.push(<Day 
           key={date.toString()}
-          date={date} 
+          date={date}
           month={this.props.month}
-          selected={this.props.selectedDate}
+          selected={(this.props.selectedDate)?this.props.selectedDate.toDate():null}
           onSelectDate={this.handleSelectDate}
           onCancel={this.handleCancel} />);
-      date = date.clone();
-      date.add(1, 'd');
+        date = DateUtil.addDays(date,1);
     }
 
     return <tr className='week' key={days[0].toString()}>

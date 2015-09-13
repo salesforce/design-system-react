@@ -72,7 +72,7 @@ module.exports = React.createClass({
         }
       }
       else if(event.keyCode === KEYS.TAB){
-        if(DateUtil.isLastDayOfMonth(this.props.date.toDate())){
+        if(DateUtil.isLastDayOfMonth(this.props.date)){
           EventUtil.trapEvent(event);
           if(this.props.onCancel){
             this.props.onCancel();
@@ -87,20 +87,20 @@ module.exports = React.createClass({
 
   render () {
 
-    const isCurrentMonth = this.props.date.month() === this.props.month.month();
-    const isToday = this.props.date.isSame(new Date(), 'day');
+    const isCurrentMonth = DateUtil.isCurrentMonth(this.props.date);
+    const isToday = DateUtil.isToday(this.props.date);
 
     return (
       <td role='gridcell'
         aria-disabled={!isCurrentMonth}
         aria-selected={isToday}
         tabIndex={isCurrentMonth?0:-1} 
-        className={(isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (this.props.date.isSame(this.props.selected) ? ' slds-is-selected' : '')} 
+        className={(isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (DateUtil.isSameDay(this.props.selected) ? ' slds-is-selected' : '')} 
         onClick={this.handleClick}
         onMouseDown={this.handleClick}
         onKeyDown={this.handleKeyDown} >
         <span className='slds-day'>
-          {this.props.date.date()}
+          {this.props.date.getDate()}
         </span>
       </td>
     );

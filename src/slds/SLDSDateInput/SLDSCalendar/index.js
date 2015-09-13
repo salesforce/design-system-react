@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import Week from './SLDSCalendarWeek/index';
-import moment from 'moment';
+import {DateUtil} from '../../utils';
 
 module.exports = React.createClass({
 
@@ -18,8 +18,8 @@ module.exports = React.createClass({
 
   getDefaultProps () {
     return {
-      month:moment(),
-      selected:moment(),
+      displayedDate:new Date(),
+      selected:new Date(),
       labels:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
       abbrLabels:['S','M','T','W','T','F','S'],
 
@@ -83,23 +83,29 @@ module.exports = React.createClass({
   },
 
   renderWeeks: function() {
-    var weeks = [],
-      done = false,
-      date = this.props.month.clone().startOf('month').add('w' -1).day('Sunday'),
-      monthIndex = date.month(),
-      count = 0;
+    const firstDayOfMonth = DateUtil.firstDayOfMonth(this.props.displayedDate);
+    const prevWeek = DateUtil.addWeeks(firstDayOfMonth,-1);
+    const nextSunday = DateUtil.nearestWeekDay(prevWeek,0);
+
+    let weeks = [];
+    let done = false;
+
+    let date = nextSunday;
+
+    let monthIndex = date.getMonth();
+    let count = 0;
 
     while (!done) {
       weeks.push(<Week 
           key={date.toString()} 
-          date={date.clone()} 
+          date={date} 
           month={this.props.month} 
           onSelectDate={this.handleSelectDate} 
           selectedDate={this.props.selected} 
           onCancel={this.handleCancel} />);
-      date.add(1, 'w');
-      done = count++ > 2 && monthIndex !== date.month();
-      monthIndex = date.month();
+      date = DateUtil.addWeeks(date,1);
+      done = count++ > 2 && monthIndex !== date.getMonth();
+      monthIndex = date.getMonth();
     }
     var extra = 0;
     while(weeks.length < 6){

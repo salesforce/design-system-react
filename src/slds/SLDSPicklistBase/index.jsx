@@ -31,7 +31,7 @@ module.exports = React.createClass( {
       onClick () {
         console.log('onClick should be defined');
       },
-      onItemSelect (item){
+      onSelect (item){
         console.log('onItemSelect should be defined');
       },
       onUpdateHighlighted (nextIndex) {
@@ -74,9 +74,16 @@ module.exports = React.createClass( {
     return foundIndex;
   },
 
+  getValueByIndex(index){
+    return this.props.options[index].value;
+  },
+
   handleSelect(index) {
     this.setState({selectedIndex:index})
     this.setFocus();
+    if(this.props.onSelect){
+      this.props.onSelect(this.getValueByIndex(index));
+    }
   },
 
   handleClose() {

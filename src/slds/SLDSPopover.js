@@ -7,13 +7,15 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+'use strict';
+
 import React from "react";
 import TetherDrop from "tether-drop";
 import { TransitionSpring, Spring } from 'react-motion';
 
 module.exports = React.createClass( {
 
-  displayName: "SLDSPopover",
+  displayName: 'SLDSPopover',
 
   mixins: [ require( "react-onclickoutside" ) ],
 
@@ -34,6 +36,12 @@ module.exports = React.createClass( {
     };
   },
 
+  getInitialState () {
+    return {
+      isOpen: false
+    }
+  },
+
   componentWillMount () {
 
     this.popoverElement = document.createElement( "span" );
@@ -46,8 +54,11 @@ module.exports = React.createClass( {
   },
 
   componentDidUpdate () {
+    console.log('!!! componentDidUpdate !!!');
     this.renderPopover();
   },
+
+
 
   handleClick (event){
     if(event.nativeEvent){
@@ -57,25 +68,28 @@ module.exports = React.createClass( {
   },
 
   popoverComp () {
+    if(!this.state.isOpen){
+      return <span></span>;
+    }
     return (
-        <div className={'SLDSPopover '+this.props.className}
-              style={{
-                transform:'none',
-                marginTop:'0.20rem',
-                marginBottom:'0.35rem',
-                float:'inherit',
-                position:'inherit',
-              }}>
+      <div className={'SLDSPopover '+this.props.className}
+            style={{
+              transform:'none',
+              marginTop:'0.20rem',
+              marginBottom:'0.35rem',
+              float:'inherit',
+              position:'inherit',
+            }}>
 
-          <Spring 
-            defaultValue={{ val:0 }}
-            endValue={{ val:1, config: [70, 10] }}>
-            {currentVal => {
-                return (<div style={{opacity:currentVal.val}}>{this.props.children}</div>);
-              }.bind(this)
-            }
-          </Spring>
-        </div>
+        <Spring 
+          defaultValue={{ val:0 }}
+          endValue={{ val:1, config: [70, 10] }}>
+          {currentVal => {
+              return (<div style={{opacity:currentVal.val}}>{this.props.children}</div>);
+            }.bind(this)
+          }
+        </Spring>
+      </div>
     );
 
   },
@@ -84,6 +98,7 @@ module.exports = React.createClass( {
   },
 
   dropOptions () {
+    console.log('!!! dropOptions !!!');
     let target = this.props.targetElement?this.props.targetElement.getDOMNode():this.getDOMNode().parentNode;
     console.log('TARGET ELEMENT: ',this.props.targetElement);
     console.log('TARGET: ',target);
@@ -99,6 +114,11 @@ module.exports = React.createClass( {
     };
   },
 
+  handleOpen () {
+    console.log('!!! OPEN !!!');
+    this.setState({isOpen:true});
+  },
+
   renderPopover () {
 
     React.render( this.popoverComp(), this.popoverElement );
@@ -111,12 +131,17 @@ module.exports = React.createClass( {
       this.popoverElement.parentNode.parentNode.style.zIndex = 10001;
     }
 
+    console.log('>>> this.drop: ',this.drop);
     if ( this.drop != null ) {
-      if(this.drop.setOptions){
-        this.drop.setOptions( this.dropOptions() );
+      if(this.drop && this.drop){
+        console.log('>>> this.drop.tether: ',this.drop.tether);
+        this.drop.position();
+//        this.drop.content = popoverElement;
+//        this.drop.tether.setOptions( this.dropOptions() );
       }
     } else if ( window && document ) {
       this.drop = new TetherDrop( this.dropOptions() );
+      this.drop.once('open', this.handleOpen)
     }
   },
 
