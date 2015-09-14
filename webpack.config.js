@@ -10,7 +10,7 @@ var config = {
     tests: entries.concat('./test/tests.js')
   },
   devServer: {
-    port: 8000
+    port: 8080
   },
   devtool: 'eval',
   output: {
