@@ -17,6 +17,13 @@ import {DateUtil} from '../../../utils';
 
 module.exports = React.createClass({
 
+  getDefaultProps () {
+    return {
+      displayedDate:new Date(),
+      selectedDate:new Date()
+    };
+  },
+
   handleSelectDate (day) {
     if(this.props.onSelectDate){
       this.props.onSelectDate(day);
@@ -30,6 +37,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    console.log('WEEK: ',this.props.selectedDate);
     let days = [];
     let date = this.props.date;
     for (var i = 0; i < 7; i++) {
@@ -37,8 +45,9 @@ module.exports = React.createClass({
           key={date.toString()}
           date={date}
           month={this.props.month}
-          selected={(this.props.selectedDate)?this.props.selectedDate.toDate():null}
+          selectedDate={this.props.selectedDate}
           onSelectDate={this.handleSelectDate}
+          displayedDate={this.props.displayedDate}
           onCancel={this.handleCancel} />);
         date = DateUtil.addDays(date,1);
     }

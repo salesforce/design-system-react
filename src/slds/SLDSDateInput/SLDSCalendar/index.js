@@ -19,7 +19,7 @@ module.exports = React.createClass({
   getDefaultProps () {
     return {
       displayedDate:new Date(),
-      selected:new Date(),
+      selectedDate:new Date(),
       labels:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
       abbrLabels:['S','M','T','W','T','F','S'],
 
@@ -48,6 +48,8 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    console.log('CAL: ',this.props.selectedDate);
+
     return (<div className='SLDSCalendar'>
       <table className='datepicker__month' role='grid' aria-labelledby='month'>
         <thead>
@@ -84,24 +86,33 @@ module.exports = React.createClass({
 
   renderWeeks: function() {
     const firstDayOfMonth = DateUtil.firstDayOfMonth(this.props.displayedDate);
-    const prevWeek = DateUtil.addWeeks(firstDayOfMonth,-1);
-    const nextSunday = DateUtil.nearestWeekDay(prevWeek,0);
+    console.log('firstDayOfMonth: ',firstDayOfMonth);
+
+    console.log('RENDER WEEK: ',this.props.selectedDate);
+
+    let date = firstDayOfMonth;
+    if(firstDayOfMonth.getDay()>0){
+      const prevWeek = DateUtil.addWeeks(firstDayOfMonth,-1);
+      const nextSunday = DateUtil.nearestWeekDay(prevWeek,0);
+      date = nextSunday;
+    }
 
     let weeks = [];
     let done = false;
 
-    let date = nextSunday;
 
     let monthIndex = date.getMonth();
     let count = 0;
-
+    console.log('===========');
+    console.log('date: ',date);
     while (!done) {
       weeks.push(<Week 
           key={date.toString()} 
           date={date} 
           month={this.props.month} 
           onSelectDate={this.handleSelectDate} 
-          selectedDate={this.props.selected} 
+          selectedDate={this.props.selectedDate} 
+          displayedDate={this.props.displayedDate} 
           onCancel={this.handleCancel} />);
       date = DateUtil.addWeeks(date,1);
       done = count++ > 2 && monthIndex !== date.getMonth();

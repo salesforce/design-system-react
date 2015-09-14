@@ -14,9 +14,12 @@ import {KEYS,EventUtil,DateUtil} from '../../../utils';
 
 module.exports = React.createClass({
 
-
   getDefaultProps () {
     return {
+
+      displayedDate:new Date(),
+
+      selectedDate:new Date(),
 
       onSelectDate (date) {
         console.log('onSelectDate should be defined ',date);
@@ -87,15 +90,16 @@ module.exports = React.createClass({
 
   render () {
 
-    const isCurrentMonth = DateUtil.isCurrentMonth(this.props.date);
+    const isCurrentMonth = DateUtil.isSameMonth(this.props.date,this.props.displayedDate);
     const isToday = DateUtil.isToday(this.props.date);
+    const isSelectedDay = DateUtil.isSameDay(this.props.date,this.props.selectedDate);
 
     return (
       <td role='gridcell'
         aria-disabled={!isCurrentMonth}
-        aria-selected={isToday}
+        aria-selected={isSelectedDay}
         tabIndex={isCurrentMonth?0:-1} 
-        className={(isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (DateUtil.isSameDay(this.props.selected) ? ' slds-is-selected' : '')} 
+        className={(isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (isSelectedDay? ' slds-is-selected' : '')} 
         onClick={this.handleClick}
         onMouseDown={this.handleClick}
         onKeyDown={this.handleKeyDown} >

@@ -12,7 +12,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import SLDSPopover from '../SLDSPopover';
 import SLDSDatePicker from './SLDSDatePicker/index';
-import Moment from 'moment';
 import {InputIcon} from './../SLDSIcons';
 
 import {KEYS,EventUtil} from '../utils';
@@ -23,11 +22,16 @@ module.exports = React.createClass( {
   getDefaultProps(){
     return {
       string:'',
-      selected: null,
+      value: new Date(),
       placeholder: 'Pick a Date',
-      format: 'MM/DD/YYYY',
-      onDateChange: function(moment){
-        console.log('onDateChage should be defined');
+      formatter (date) {
+        return (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();
+      },
+      parser (str) {
+        return new Date(str);
+      },
+      onDateChange (date) {
+        console.log('onDateChange should be defined');
       }
     }
   },
@@ -35,20 +39,19 @@ module.exports = React.createClass( {
   getInitialState(){
     return {
       isOpen:false,
-      selected:this.props.selected,
-      string:this.props.selected?this.props.selected.format(this.props.format):null
+      value:this.props.value,
+      string:this.props.selected?this.props.formatter(this.props.selectedDate):null
     };
   },
 
   handleChange(date) {
-    const moment = Moment(date);
     this.setState({
-      selected:moment,
+      value:date,
       isOpen:false,
-      string:moment.format(this.props.format)
+      string:this.props.formatter(date)
     });
     if(this.props.onDateChange){
-      this.props.onDateChange(moment);
+      this.props.onDateChange(date);
     }
   },
 
@@ -83,7 +86,7 @@ module.exports = React.createClass( {
           onChange={this.handleChange}
           selected={this.state.selected}
           onClose={this.handleClose} 
-          month={this.state.selected?this.state.selected:Moment()} />
+          selectedDate={this.state.value} />
       </SLDSPopover>;
     }
     return <span />;
@@ -91,19 +94,19 @@ module.exports = React.createClass( {
 
   handleInputChange() {
     let string = this.refs.date.getDOMNode().value;
-    if(Moment().isValid(string)){
-      let selected = Moment(string,this.props.format);
+    let date = this.props.parser(string);
+    if(date){
       this.setState({
-        selected:selected,
+        value:date,
         string:string
       });
       if(this.props.onDateChage){
-        this.props.onDateChange(selected)
+        this.props.onDateChange(value)
       }
     }
     else{
       this.setState({
-        selected:null,
+        value:null,
         string:string
       });
     }
@@ -136,7 +139,7 @@ module.exports = React.createClass( {
               className='slds-input' 
               type='text'
               placeholder={this.props.placeholder} 
-              value={this.state.selected?this.state.string:''}
+              value={this.state.value?this.state.string:''}
               onKeyDown={this.handleKeyDown}
               onChange={this.handleInputChange}
               onClick={this.handleClick}

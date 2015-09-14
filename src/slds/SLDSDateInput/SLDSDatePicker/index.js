@@ -20,10 +20,14 @@ module.exports = React.createClass( {
 
   getDefaultProps () {
     return {
-      displayedDate:new Date(),
+      selectedDate:new Date(),
 
       onChange (date) {
         console.log('onChange should be defined ',date);
+      },
+
+      onDisplayedDateChange (date) {
+        console.log('onDisplayedDateChange should be defined ',date);
       },
 
       onClose () {
@@ -34,8 +38,9 @@ module.exports = React.createClass( {
   },
 
   getInitialState () {
+    console.log('!!! this.props.selectedDate: ',this.props.selectedDate);
     return {
-      displayedDate:this.props.displayedDate
+      displayedDate:this.props.selectedDate
     };
   },
 
@@ -57,8 +62,11 @@ module.exports = React.createClass( {
     }
   },
 
-  handleMonthChange (displayedDate){
+  handleDisplayedDateChange (displayedDate){
     this.setState({displayedDate:displayedDate});
+    if(this.props.onDisplayedDateChange){
+      this.props.onDisplayedDateChange(displayedDate);
+    }
   },
 
   handleSelectDate (selectedDate){
@@ -90,12 +98,12 @@ module.exports = React.createClass( {
           onKeyDown={this.handleKeyDown}
           onClick={this.handleBGClick}>
           <SLDSDatePickerNav 
-            onChangeMonth={this.handleMonthChange} 
-            selected={this.props.selected}
+            onChange={this.handleDisplayedDateChange} 
+            selectedDate={this.props.selectedDate}
             autoFocus={true}
             displayedDate={this.state.displayedDate}/>
           <Calendar 
-            selected={this.props.selected} 
+            selectedDate={this.props.selectedDate} 
             displayedDate={this.state.displayedDate} 
             onSelectDate={this.handleSelectDate}
             onCancel={this.handleCancel} />

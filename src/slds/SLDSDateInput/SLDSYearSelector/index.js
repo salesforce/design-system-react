@@ -10,87 +10,33 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDSPopover from '../../SLDSPopover';
 import SLDSPicklistBase from '../../SLDSPicklistBase';
-
-//import Moment from 'moment';
-import {InputIcon} from "./../../SLDSIcons";
-
-const options = [
-      {label:'2015',value:'2015'},
-      {label:'2016',value:'2016'},
-      {label:'2017',value:'2017'},
-      {label:'2018',value:'2018'},
-    ];
 
 module.exports = React.createClass( {
 
-  displayName: "SLDSYearSelector",
+  displayName: 'SLDSYearSelector',
 
   getDefaultProps (){
     return {
       displayedDate:new Date(),
-      relativeFrom:-3,
-      relativeTo:15,
+      relativeFrom:0,
+      relativeTo:5,
       onChange (displayedDate){
-        console.log('onChange should be defined');
+        console.log('onChange should be defined: ',displayedDate);
       }
+    };
+  },
+
+  getOptions () {
+    const now = new Date();
+    const fromYear = now.getFullYear()+this.props.relativeFrom;
+    const toYear = now.getFullYear()+this.props.relativeTo;
+    let opts = [];
+    for (let year = fromYear; year < toYear; year++){
+      opts.push({label:year,value:year});
     }
+    return opts;
   },
-/*
-  componentDidMount() {
-    
-  },
-
-  componentWillReceiveProps(nextProps){
-    this.setState({isOpen:false});
-  },
-
-  handleSelectDate(day) {
-    this.setState({selectedDate:day})
-  },
-
-  handleClose() {
-    this.setState({isOpen:false})
-  },
-
-  handleClick() {
-    this.setState({isOpen:true})
-  },
-
-  handleFocus() {
-    this.setState({isOpen:true})
-  },
-
-  handleBlur() {
-    this.setState({isOpen:false})
-  },
-
-  handleSelect(moment) {
-    if(this.props.onSelect){
-      this.props.onSelect(moment);
-    }
-    this.setState({isOpen:false});
-  },
-
-  listItems() {
-    let listItems = [];
-    let currentYear = this.props.moment.year();
-    let from = Moment().add(this.props.relativeFrom,'y').year();
-    let to = Moment().add(this.props.relativeTo,'y').year();
-
-    for(let i=from;i<to;i++){
-      listItems.push(<ListItemComponent 
-          key={'year_'+i}
-          onSelect={this.handleSelect} 
-          isSelected={currentYear===i}
-          moment={this.props.moment}
-          value={i} />);
-    }
-    return listItems;
-  },
-
-*/
 
   handleSelect(selectedValue){
     if(selectedValue){
@@ -102,13 +48,13 @@ module.exports = React.createClass( {
 
   render() {
     return (
-      <div className="slds-form-element">
+      <div className='slds-form-element'>
 
         <SLDSPicklistBase 
-          options={options} 
-          label="Year" 
-          placeholder="Year" 
-          value="2015"
+          options={this.getOptions()} 
+          label='Year'
+          placeholder='Year'
+          value={this.props.displayedDate.getFullYear()}
           onSelect={this.handleSelect}
           initialFocus={false}/>
 

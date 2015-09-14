@@ -14,14 +14,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 const DateUtil = {
 
   firstDayOfMonth(date) {
-    return new Date( date.getFullYear(), date.getMonth(), 0, 0, 0, 0);
+    return new Date((new Date(date)).setDate(1));
   },
 
   isLastDayOfMonth(date) {
-    if(!date) {
-      return false;
-    }
-    return new Date(date.getTime() + 86400000).getDate() === 1;
+    return !DateUtil.isSameMonth(date, DateUtil.addDays(date, 1));
   },
   isSameMonth(d1,d2) {
     if(!d1 || !d2) {

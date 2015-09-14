@@ -31,15 +31,15 @@ module.exports = React.createClass( {
     event.stopPropagation();
   },
 
-  handleChangeMonth (displayedDate){
-    if(this.props.onChangeMonth){
-      this.props.onChangeMonth(displayedDate);
+  handleChange (displayedDate){
+    if(this.props.onChange){
+      this.props.onChange(displayedDate);
     }
   },
 
   previousMonth (){
-    if(this.props.displayedDate && this.handleChangeMonth){
-      this.handleChangeMonth(DateUtil.addMonths(this.props.displayedDate,-1));
+    if(this.props.displayedDate && this.handleChange){
+      this.handleChange(DateUtil.addMonths(this.props.displayedDate,-1));
     }
 
   },
@@ -48,15 +48,14 @@ module.exports = React.createClass( {
   },
 
   nextMonth (){
-    if(this.props.displayedDate && this.handleChangeMonth){
-      this.handleChangeMonth(DateUtil.addMonths(this.props.displayedDate,1));
+    if(this.props.displayedDate && this.handleChange){
+      this.handleChange(DateUtil.addMonths(this.props.displayedDate,1));
     }
   },
 
   handleYearSelect (displayedDate) {
-    console.log('>>> handleYearSelect !!!', displayedDate);
-    if(this.props.onChangeMonth){
-      this.props.onChangeMonth(displayedDate);
+    if(this.props.onChange){
+      this.props.onChange(displayedDate);
     }
   },
 
@@ -96,7 +95,6 @@ module.exports = React.createClass( {
         <div className='slds-picklist datepicker__filter--year slds-shrink-none'>
           <SLDSSelectYear 
             displayedDate={this.props.displayedDate} 
-            selected={this.props.selected} 
             onChange={this.handleYearSelect} />
         </div>
       </div>
