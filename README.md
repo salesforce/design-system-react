@@ -15,7 +15,21 @@ open http://localhost:3000
 
 ### Accessible [PickList Base](http://www.lightningdesignsystem.com/components/picklists#base&role=regular&status=all) Component
 
+```js
+const options = [
+      {label:'A Option',value:'A0'},
+      {label:'B Option',value:'B0'},
+      {label:'C Option',value:'C0'},
+      {label:'D Option',value:'D0'},
+    ];
+
+<SLDSPicklistBase options={options} label="Contacts" placeholder="Select a contact"/>
+
+```
+
 [![browser support](/readme-assets/SLDSPicklistBase.gif)](/readme-assets/SLDSPicklistBase.gif)
+
+
 
 ### Accessible [DatePicker Base](http://www.lightningdesignsystem.com/components/datepickers#base) Component
 
