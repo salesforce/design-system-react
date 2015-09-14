@@ -37,7 +37,6 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    console.log('WEEK: ',this.props.selectedDate);
     let days = [];
     let date = this.props.date;
     for (var i = 0; i < 7; i++) {

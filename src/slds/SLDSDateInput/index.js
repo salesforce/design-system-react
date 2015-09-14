@@ -40,7 +40,7 @@ module.exports = React.createClass( {
     return {
       isOpen:false,
       value:this.props.value,
-      string:this.props.selected?this.props.formatter(this.props.selectedDate):null
+      string:this.props.selectedDate?this.props.formatter(this.props.selectedDate):null
     };
   },
 
@@ -74,7 +74,6 @@ module.exports = React.createClass( {
 
   setFocus () {
     if(this.isMounted()){
-      console.log(this.refs);
       React.findDOMNode(this.refs.date).focus();
     }
   },
@@ -93,7 +92,7 @@ module.exports = React.createClass( {
   },
 
   handleInputChange() {
-    let string = this.refs.date.getDOMNode().value;
+    let string = React.findDOMNode(this.refs.date).value;
     let date = this.props.parser(string);
     if(date){
       this.setState({
@@ -106,8 +105,7 @@ module.exports = React.createClass( {
     }
     else{
       this.setState({
-        value:null,
-        string:string
+        isOpen:false
       });
     }
   },
@@ -119,6 +117,7 @@ module.exports = React.createClass( {
           event.keyCode === KEYS.DOWN || 
           event.keyCode === KEYS.UP){
         EventUtil.trapEvent(event);
+
         this.setState({
           isOpen:true
         });

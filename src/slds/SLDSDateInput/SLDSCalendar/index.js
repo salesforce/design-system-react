@@ -48,7 +48,6 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    console.log('CAL: ',this.props.selectedDate);
 
     return (<div className='SLDSCalendar'>
       <table className='datepicker__month' role='grid' aria-labelledby='month'>
@@ -86,9 +85,6 @@ module.exports = React.createClass({
 
   renderWeeks: function() {
     const firstDayOfMonth = DateUtil.firstDayOfMonth(this.props.displayedDate);
-    console.log('firstDayOfMonth: ',firstDayOfMonth);
-
-    console.log('RENDER WEEK: ',this.props.selectedDate);
 
     let date = firstDayOfMonth;
     if(firstDayOfMonth.getDay()>0){
@@ -103,8 +99,6 @@ module.exports = React.createClass({
 
     let monthIndex = date.getMonth();
     let count = 0;
-    console.log('===========');
-    console.log('date: ',date);
     while (!done) {
       weeks.push(<Week 
           key={date.toString()} 

@@ -12,6 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import Calendar from '../SLDSCalendar/index';
 import SLDSDatePickerNav from './SLDSDatePickerNav/index';
+import {EventUtil} from './../../utils';
 
 import {KEYS} from '../../utils';
 
@@ -21,6 +22,7 @@ module.exports = React.createClass( {
   getDefaultProps () {
     return {
       selectedDate:new Date(),
+      value:new Date(),
 
       onChange (date) {
         console.log('onChange should be defined ',date);
@@ -32,15 +34,16 @@ module.exports = React.createClass( {
 
       onClose () {
         console.log('onClose should be defined');
-      }
+      },
 
     };
   },
 
   getInitialState () {
-    console.log('!!! this.props.selectedDate: ',this.props.selectedDate);
     return {
-      displayedDate:this.props.selectedDate
+      displayedDate: this.props.selectedDate,
+      isFocused: false,
+      isClosing: false
     };
   },
 
@@ -51,6 +54,18 @@ module.exports = React.createClass( {
           this.props.onClose();
         }
       }
+      else if(event.keyCode === KEYS.SPACE){
+
+      }
+      else if(event.keyCode === KEYS.ENTER){
+
+      }
+      else if(event.keyCode === KEYS.TAB){
+
+      }
+      else{
+        EventUtil.trapEvent(event);
+      }    
     }
   },
 
@@ -87,6 +102,14 @@ module.exports = React.createClass( {
     }
   },
 
+  handleFocus () {
+    this.setState({isFocused:true});
+  },
+
+  handleBlur () {
+    this.setState({isFocused:false});
+  },
+
   render() {
 
     return (
@@ -96,6 +119,8 @@ module.exports = React.createClass( {
           data-selection='single'
           onMouseDown={this.handleBGClick}
           onKeyDown={this.handleKeyDown}
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
           onClick={this.handleBGClick}>
           <SLDSDatePickerNav 
             onChange={this.handleDisplayedDateChange} 
@@ -113,6 +138,32 @@ module.exports = React.createClass( {
 
       </div>
     );
+  },
+
+  componentDidUpdate (prevProps, prevState) {
+    if(!this.state.isFocused && prevState.isFocused){
+      this.setState({isClosing:true});
+
+      setTimeout ( () => {
+
+        if(this.isMounted()){
+          if(this.state.isClosing){
+            if(this.state.isFocused){
+              this.setState({isClosing:false});
+            }
+            else{
+              if(this.props.onClose){
+                this.props.onClose();
+              }
+            }
+          }
+        }
+
+
+      });
+
+    }
+
   }
 });
 

@@ -54,7 +54,6 @@ module.exports = React.createClass( {
   },
 
   componentDidUpdate () {
-    console.log('!!! componentDidUpdate !!!');
     this.renderPopover();
   },
 
@@ -98,10 +97,7 @@ module.exports = React.createClass( {
   },
 
   dropOptions () {
-    console.log('!!! dropOptions !!!');
     let target = this.props.targetElement?this.props.targetElement.getDOMNode():this.getDOMNode().parentNode;
-    console.log('TARGET ELEMENT: ',this.props.targetElement);
-    console.log('TARGET: ',target);
     return {
       target: target,
       content: this.popoverElement,
@@ -115,7 +111,6 @@ module.exports = React.createClass( {
   },
 
   handleOpen () {
-    console.log('!!! OPEN !!!');
     this.setState({isOpen:true});
   },
 
@@ -131,13 +126,9 @@ module.exports = React.createClass( {
       this.popoverElement.parentNode.parentNode.style.zIndex = 10001;
     }
 
-    console.log('>>> this.drop: ',this.drop);
     if ( this.drop != null ) {
       if(this.drop && this.drop){
-        console.log('>>> this.drop.tether: ',this.drop.tether);
         this.drop.position();
-//        this.drop.content = popoverElement;
-//        this.drop.tether.setOptions( this.dropOptions() );
       }
     } else if ( window && document ) {
       this.drop = new TetherDrop( this.dropOptions() );
