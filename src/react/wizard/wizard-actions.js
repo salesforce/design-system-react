@@ -1,6 +1,5 @@
 // Framework specific
 import React from 'react';
-import classNames from 'classnames';
 
 const WizardStep = React.createClass({
 	propTypes: {
@@ -11,7 +10,7 @@ const WizardStep = React.createClass({
 		onFinished: React.PropTypes.func.isRequired
 	},
 
-	render () {		
+	render () {
 		return (
 			<div className="actions">
 				<button type="button" className="btn btn-default btn-prev" onClick={this.props.onPrevClicked}><span className="glyphicon glyphicon-arrow-left"></span>{this.props.strings.PREV}</button>

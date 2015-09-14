@@ -140,6 +140,9 @@ export const SelectlistObject = {
 
 		this._closeMenu = $.proxy(this._closeMenu, this);
 		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
+		
+		// For tests, will consider publishing later
+		this.trigger('rendered', this.elements.wrapper);
 	},
 
 	_bindUIEvents () {
@@ -212,19 +215,18 @@ export const SelectlistObject = {
 	},
 
 	_onExpandOrCollapse () {
-		const isOpen = this.getState('isOpen');
-
-		this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
-		
 		if (this.rendered) {
+			const isOpen = this.getState('isOpen');
+
+			this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
 			this.elements.button.attr('aria-expanded', isOpen);
 		}
 	},
 
 	_onSelected (item) {
-		const strings = this.getState('strings');
-
 		if (this.rendered) {
+			const strings = this.getState('strings');
+
 			this.elements.hiddenField.val(item.getText());
 			this.elements.label.text(item.getText() || strings.NONE_SELECTED);
 		}
@@ -241,18 +243,16 @@ export const SelectlistObject = {
 	},
 
 	_onEnabled () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-		
 		if (this.rendered) {
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
 			this.elements.button.prop('disabled', false);
 			this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
 		}
 	},
 
 	_onDisabled () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-		
 		if (this.rendered) {
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
 			this.elements.button.prop('disabled', true);
 			this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
 		}

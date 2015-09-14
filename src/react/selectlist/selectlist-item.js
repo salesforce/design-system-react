@@ -19,7 +19,7 @@ const SelectlistItem = React.createClass({
 			html = <li className="divider"></li>;
 			break;
 		default:
-			let disabled = this.props.item.getDisabled();
+			const disabled = this.props.item.getDisabled();
 			
 			html = (
 				<li className={classNames({ disabled })} disabled={disabled}>
