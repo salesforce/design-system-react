@@ -17,6 +17,10 @@ open http://localhost:3000
 
 ```jsx
 
+import {SLDSPicklistBase} from 'design-system-react';
+
+...
+
 <SLDSPicklistBase 
   options={[
       {label:'A Option',value:'A0'},
