@@ -15,6 +15,10 @@ open http://localhost:3000
 
 ### Completed
 
+* [PickList Base](http://www.lightningdesignsystem.com/components/picklists#base&role=regular&status=all)
+
+[![browser support](/readme-assets/SLDSPicklistBase.gif)](/readme-assets/SLDSPicklistBase.gif)
+
 * calendar
 
 ### Work in progress
