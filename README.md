@@ -13,11 +13,13 @@ open http://localhost:3000
 
 ## Components
 
-* Accessible [PickList Base](http://www.lightningdesignsystem.com/components/picklists#base&role=regular&status=all) Component
+### Accessible [PickList Base](http://www.lightningdesignsystem.com/components/picklists#base&role=regular&status=all) Component
 
 [![browser support](/readme-assets/SLDSPicklistBase.gif)](/readme-assets/SLDSPicklistBase.gif)
 
-* calendar
+### Accessible [DatePicker Base](http://www.lightningdesignsystem.com/components/datepickers#base) Component
+
+[![browser support](/readme-assets/SLDSDatePickerBase.gif)](/readme-assets/SLDSDatePickerBase.gif)
 
 ### Work in progress
 * buttons 90%
