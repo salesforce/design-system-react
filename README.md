@@ -13,9 +13,7 @@ open http://localhost:3000
 
 ## Components
 
-### Completed
-
-* [PickList Base](http://www.lightningdesignsystem.com/components/picklists#base&role=regular&status=all)
+* Accessible [PickList Base](http://www.lightningdesignsystem.com/components/picklists#base&role=regular&status=all) Component
 
 [![browser support](/readme-assets/SLDSPicklistBase.gif)](/readme-assets/SLDSPicklistBase.gif)
 
