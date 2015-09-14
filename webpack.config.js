@@ -9,6 +9,9 @@ var config = {
     marionette: entries.concat('./src/jquery/examples.js'),
     tests: entries.concat('./test/tests.js')
   },
+  devServer: {
+    port: 8000
+  },
   devtool: 'eval',
   output: {
     path: __dirname + '/build/',
