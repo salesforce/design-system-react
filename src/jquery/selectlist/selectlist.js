@@ -214,15 +214,20 @@ export const SelectlistObject = {
 	_onExpandOrCollapse () {
 		const isOpen = this.getState('isOpen');
 
-		this.elements.button.attr('aria-expanded', isOpen);
 		this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
+		
+		if (this.rendered) {
+			this.elements.button.attr('aria-expanded', isOpen);
+		}
 	},
 
 	_onSelected (item) {
 		const strings = this.getState('strings');
 
-		this.elements.hiddenField.val(item.getText());
-		this.elements.label.text(item.getText() || strings.NONE_SELECTED);
+		if (this.rendered) {
+			this.elements.hiddenField.val(item.getText());
+			this.elements.label.text(item.getText() || strings.NONE_SELECTED);
+		}
 	},
 
 	_closeMenu (e) {
@@ -237,19 +242,27 @@ export const SelectlistObject = {
 
 	_onEnabled () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-		this.elements.button.prop('disabled', false);
-		this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
+		
+		if (this.rendered) {
+			this.elements.button.prop('disabled', false);
+			this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
+		}
 	},
 
 	_onDisabled () {
 		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-		this.elements.button.prop('disabled', true);
-		this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
+		
+		if (this.rendered) {
+			this.elements.button.prop('disabled', true);
+			this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
+		}
 	},
 
 	resetWidth (width) {
-		if (this.elements.button) this.elements.button.width(width);
-		if (this.elements.dropdownMenu) this.elements.dropdownMenu.width(width);
+		if (this.rendered) {
+			this.elements.button.width(width);
+			this.elements.dropdownMenu.width(width);
+		}
 	},
 
 	_handleClicked (e) {
