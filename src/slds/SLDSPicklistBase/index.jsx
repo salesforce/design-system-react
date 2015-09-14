@@ -31,7 +31,7 @@ module.exports = React.createClass( {
       onClick () {
         console.log('onClick should be defined');
       },
-      onSelect (item){
+      onSelect (value){
         console.log('onItemSelect should be defined');
       },
       onUpdateHighlighted (nextIndex) {

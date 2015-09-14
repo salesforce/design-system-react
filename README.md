@@ -15,15 +15,21 @@ open http://localhost:3000
 
 ### Accessible [PickList Base](http://www.lightningdesignsystem.com/components/picklists#base&role=regular&status=all) Component
 
-```js
-const options = [
+```jsx
+
+<SLDSPicklistBase 
+  options={[
       {label:'A Option',value:'A0'},
       {label:'B Option',value:'B0'},
       {label:'C Option',value:'C0'},
       {label:'D Option',value:'D0'},
-    ];
-
-<SLDSPicklistBase options={options} label="Contacts" placeholder="Select a contact"/>
+    ]}
+  value='A0' 
+  label='Contacts'
+  onSelect={(value)=>{
+    console.log('selected: ',value);
+  }}
+  placeholder='Select a contact'/>
 
 ```
 
