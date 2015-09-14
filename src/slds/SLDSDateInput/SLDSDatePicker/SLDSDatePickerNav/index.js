@@ -19,7 +19,7 @@ module.exports = React.createClass( {
   getDefaultProps (){
     return {
       displayedDate:new Date(),
-      monthLabels:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+      monthLabels:['January','February','March','April','May','June','July','August','September','October','November','December'],
       onChangeMonth (){
         console.log('onChangeMonth should be defined');
       }

@@ -74,6 +74,7 @@ module.exports = React.createClass( {
       <div className={'SLDSPopover '+this.props.className}
             style={{
               transform:'none',
+              WebkitTransform:'none',
               marginTop:'0.20rem',
               marginBottom:'0.35rem',
               float:'inherit',
