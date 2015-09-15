@@ -12,7 +12,7 @@ import { SelectlistObject, _renderItem, _renderHeader, _renderDivider, legacyMet
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
-const template = require('text!./combobox.html');
+import template from './combobox-template';
 
 let Combobox = function Combobox (element, options) {
 	this.options = Lib.extend({}, options);

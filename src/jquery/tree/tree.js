@@ -11,7 +11,7 @@ import State from '../state';
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
-const template = require('text!./tree.html');
+import template from './tree-template';
 
 let Tree = function Tree (element, options) {
 	this.options = Lib.extend({

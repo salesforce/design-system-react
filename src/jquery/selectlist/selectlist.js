@@ -11,7 +11,7 @@ import State from '../state';
 const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
-const template = require('text!./selectlist.html');
+import template from './selectlist-template';
 
 let Selectlist = function Selectlist (element, options) {
 	this.options = Lib.extend({}, options);
