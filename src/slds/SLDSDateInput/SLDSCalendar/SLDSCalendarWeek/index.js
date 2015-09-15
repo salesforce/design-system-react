@@ -20,7 +20,8 @@ module.exports = React.createClass({
   getDefaultProps () {
     return {
       displayedDate:new Date(),
-      selectedDate:new Date()
+      selectedDate:new Date(),
+      focused:false
     };
   },
 
@@ -43,7 +44,7 @@ module.exports = React.createClass({
       days.push(<Day 
           key={date.toString()}
           date={date}
-          month={this.props.month}
+          focused={this.props.focused && date.getDate()===1}
           selectedDate={this.props.selectedDate}
           onSelectDate={this.handleSelectDate}
           displayedDate={this.props.displayedDate}

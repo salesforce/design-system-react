@@ -34,6 +34,12 @@ module.exports = React.createClass({
     };
   },
 
+  getInitialState () {
+    return {
+      focusedRef: 0
+    };
+  },
+
   handleSelectDate (day) {
     this.setState({selected:day});
     if(this.props.onSelectDate){
@@ -48,7 +54,7 @@ module.exports = React.createClass({
   },
 
   render: function() {
-
+    console.log('Calendar FOCUSED: '+this.props.focused);
     return (<div className='SLDSCalendar'>
       <table className='datepicker__month' role='grid' aria-labelledby='month'>
         <thead>
@@ -96,11 +102,11 @@ module.exports = React.createClass({
     let weeks = [];
     let done = false;
 
-
     let monthIndex = date.getMonth();
     let count = 0;
     while (!done) {
       weeks.push(<Week 
+          focused={(!count && this.props.focused)}
           key={date.toString()} 
           date={date} 
           month={this.props.month} 

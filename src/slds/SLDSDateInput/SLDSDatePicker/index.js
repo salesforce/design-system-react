@@ -43,7 +43,8 @@ module.exports = React.createClass( {
     return {
       displayedDate: this.props.selectedDate,
       isFocused: false,
-      isClosing: false
+      isClosing: false,
+      focusedRef: 0
     };
   },
 
@@ -110,6 +111,14 @@ module.exports = React.createClass( {
     this.setState({isFocused:false});
   },
 
+  moveFocusToRef(ref){
+    this.setState({focusedRef:ref});
+  },
+
+  isFocused(ref){
+    return this.state.focusedRef === ref;
+  },
+
   render() {
 
     return (
@@ -123,11 +132,19 @@ module.exports = React.createClass( {
           onBlur={this.handleBlur}
           onClick={this.handleBGClick}>
           <SLDSDatePickerNav 
+            ref='pickerNav'
             onChange={this.handleDisplayedDateChange} 
             selectedDate={this.props.selectedDate}
             autoFocus={true}
-            displayedDate={this.state.displayedDate}/>
+            displayedDate={this.state.displayedDate}
+            onMoveFocusNext={()=>{
+              console.log('@@@');
+              this.moveFocusToRef('calendar');
+            }}
+            onCancel={this.handleCancel}/>
           <Calendar 
+            ref='calendar'
+            focused={this.isFocused('calendar')}
             selectedDate={this.props.selectedDate} 
             displayedDate={this.state.displayedDate} 
             onSelectDate={this.handleSelectDate}

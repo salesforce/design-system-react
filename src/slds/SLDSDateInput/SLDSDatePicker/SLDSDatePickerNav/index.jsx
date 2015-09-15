@@ -10,9 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDSSelectYear from '../../SLDSYearSelector/index';
-import {ButtonIcon} from './../../../SLDSIcons';
+import SLDSYearSelector from '../../SLDSYearSelector/index';
 import {DateUtil} from './../../../utils';
+import PrevMonthButton from './prev-month-button';
+import NextMonthButton from './next-month-button';
 
 module.exports = React.createClass( {
 
@@ -22,7 +23,16 @@ module.exports = React.createClass( {
       monthLabels:['January','February','March','April','May','June','July','August','September','October','November','December'],
       onChangeMonth (){
         console.log('onChangeMonth should be defined');
+      },
+      onCancel (){
+        console.log('onCancel should be defined');
       }
+    };
+  },
+
+  getInitialState () {
+    return {
+      focusedRef: 0
     };
   },
 
@@ -37,11 +47,16 @@ module.exports = React.createClass( {
     }
   },
 
+  handleCancel () {
+    if(this.props.onCancel){
+      this.props.onCancel();
+    }
+  },
+
   previousMonth (){
     if(this.props.displayedDate && this.handleChange){
       this.handleChange(DateUtil.addMonths(this.props.displayedDate,-1));
     }
-
   },
 
   componentDidMount () {
@@ -63,37 +78,61 @@ module.exports = React.createClass( {
     return this.props.monthLabels[new Date(this.props.displayedDate).getMonth()];
   },
 
+  moveFocusToRef(ref){
+    this.setState({focusedRef:ref});
+  },
+
+  isFocused(ref){
+    return this.state.focusedRef === ref;
+  },
+
+  handleMoveFocusNext(){
+    console.log('!! handleMoveFocusNext !!');
+    if(this.props.onMoveFocusNext){
+      this.props.onMoveFocusNext();
+    }
+  },
+
   render() {
     return (
 
       <div className='slds-datepicker__filter slds-grid'>
         <div className='slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4'>
           <div className='slds-align-middle' role='button' aria-labelledby='bn_prev-label' tabIndex={-1}>
-            <button 
-              ref='prevMonth'
-              className='slds-button slds-button--icon-container'
-              autoFocus={this.props.autoFocus}
-              role='button'
-              tabIndex={0}
-              onClick={this.previousMonth}>
-              <ButtonIcon name='left' />
-              <span className='slds-assistive-text'>Previous Month</span>
-            </button>
+            <PrevMonthButton 
+              ref={0}
+              focused={this.isFocused(0)} 
+              onClick={this.previousMonth}
+              onMoveFocusNext={()=>{
+                this.moveFocusToRef(1);
+              }}
+              onMoveFocusPrev={this.handleCancel} />
           </div>
 
           <div id='month' className='slds-align-middle' role='heading' aria-live='assertive' aria-atomic={true}>{this.getMonthLabel()}</div>
           <div className='slds-align-middle' role='button' aria-labelledby='bn_next-label' tabIndex={-1}>
-            <button 
-              ref='nextMonth'
-              className='slds-button slds-button--icon-container' 
-              onClick={this.nextMonth}>
-              <ButtonIcon name='right'/>
-              <span className='slds-assistive-text'>Next Month</span>
-            </button>
+            <NextMonthButton 
+              ref={1}
+              focused={this.isFocused(1)} 
+              onMoveFocusNext={()=>{
+                this.moveFocusToRef(2);
+              }}
+              onMoveFocusPrev={()=>{
+                this.moveFocusToRef(0);
+              }}
+              onClick={this.nextMonth} />
           </div>
         </div>
         <div className='slds-picklist datepicker__filter--year slds-shrink-none'>
-          <SLDSSelectYear 
+          <SLDSYearSelector 
+            ref={2}
+            focused={this.isFocused(2)} 
+            onMoveFocusNext={()=>{
+              this.handleMoveFocusNext();
+            }}
+            onMoveFocusPrev={()=>{
+              this.moveFocusToRef(1);
+            }}
             displayedDate={this.props.displayedDate} 
             onChange={this.handleYearSelect} />
         </div>

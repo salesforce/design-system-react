@@ -10,77 +10,85 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDSPicklistBase from '../../SLDSPicklistBase';
+import {ButtonIcon} from './../../../SLDSIcons';
+import {DateUtil, EventUtil, KEYS} from './../../../utils';
 
 module.exports = React.createClass( {
 
-  displayName: 'SLDSYearSelector',
-
   getDefaultProps (){
     return {
-      displayedDate:new Date(),
-      relativeFrom:0,
-      relativeTo:5,
-      focused:false,
-      onChange (displayedDate){
-        console.log('onChange should be defined: ',displayedDate);
+      focused: false,
+      label: 'Previous Month',
+      onClick (){
+        console.log('onClick should be defined');
       },
-      onMoveFocusPrev () {
-        console.log('onMoveFocusPrev should be defined');
+      onCancel (){
+        console.log('onCancel should be defined');
       },
-      onMoveFocusNext () {
+      onMoveFocusNext (){
         console.log('onMoveFocusNext should be defined');
+      },
+      onMoveFocusPrev (){
+        console.log('onMoveFocusPrev should be defined');
       }
     };
   },
 
-  getOptions () {
-    const now = new Date();
-    const fromYear = now.getFullYear()+this.props.relativeFrom;
-    const toYear = now.getFullYear()+this.props.relativeTo;
-    let opts = [];
-    for (let year = fromYear; year < toYear; year++){
-      opts.push({label:year,value:year});
+  handleClick (e) {
+    EventUtil.trap(e);
+    if(this.onClick){
+      this.onClick();
     }
-    return opts;
   },
 
-  handleSelect(selectedValue){
-    if(selectedValue){
-      if(this.props.onChange){
-        this.props.onChange(new Date(this.props.displayedDate.setFullYear(parseInt(selectedValue))));
+  handleKeyDown(event) {
+    if(event.keyCode){
+      if(event.keyCode === KEYS.UP || event.keyCode === KEYS.LEFT){
+        EventUtil.trapEvent(event);
+        if(this.props.onMoveFocusPrev){
+          this.props.onMoveFocusPrev();
+        }
+      }
+      else if(event.keyCode === KEYS.DOWN || event.keyCode === KEYS.RIGHT){
+        EventUtil.trapEvent(event);
+        if(this.props.onMoveFocusNext){
+          this.props.onMoveFocusNext();
+        }
+      }
+      else if(event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE){
+        EventUtil.trapEvent(event);
+        if(this.props.onClick){
+          this.props.onClick();
+        }
       }
     }
   },
 
-  handleMoveFocusPrev(){
-    if(this.props.onMoveFocusPrev){
-      this.props.onMoveFocusPrev();
-    }
+  setFocus() {
+    React.findDOMNode(this).focus();
   },
-
-  handleMoveFocusNext(){
-    if(this.props.onMoveFocusNext){
-      this.props.onMoveFocusNext();
-    }
-  },
-
 
   render() {
     return (
-      <div className='slds-form-element'>
-
-        <SLDSPicklistBase 
-          options={this.getOptions()} 
-          label='Year'
-          placeholder='Year'
-          focused={this.props.focused}
-          onMoveFocusPrev={this.handleMoveFocusPrev}
-          onMoveFocusNext={this.handleMoveFocusNext}
-          value={this.props.displayedDate.getFullYear()}
-          onSelect={this.handleSelect} />
-
-      </div>
+        <button 
+          ref='prevMonth'
+          className='slds-button slds-button--icon-container'
+          autoFocus={this.props.focused}
+          role='button'
+          tabIndex={0}
+          onKeyDown={this.handleKeyDown}
+          onClick={this.handleClick}>
+          <ButtonIcon name='left' />
+          <span className='slds-assistive-text'>{this.props.label}</span>
+        </button>
     );
+  },
+
+  componentDidUpdate (prevProps, prevState) {
+    if(this.props.focused && !prevProps.focused){
+      this.setFocus();
+    }
   }
+
 });
+

@@ -21,6 +21,8 @@ module.exports = React.createClass({
 
       selectedDate:new Date(),
 
+      focused: false,
+
       onSelectDate (date) {
         console.log('onSelectDate should be defined ',date);
       },
@@ -48,6 +50,20 @@ module.exports = React.createClass({
     };
   },
 
+  getInitialState () {
+    return {
+      focused: false
+    };
+  },
+
+  handleBlur () {
+    this.setState({focused:false});
+  },
+
+  handleFocus () {
+    this.setState({focused:true});
+  },
+
   handleClick (event) {
     if(this.props.onSelectDate){
       this.props.onSelectDate(this.props.date);
@@ -57,7 +73,6 @@ module.exports = React.createClass({
       event.nativeEvent.preventDefault();
     }
   },
-
 
   handleKeyDown(event) {
     if(event.keyCode){
@@ -82,6 +97,18 @@ module.exports = React.createClass({
           }
         }
       }
+      else if(event.keyCode === KEYS.RIGHT || event.keyCode === KEYS.DOWN){
+        EventUtil.trapEvent(event);
+        if(this.props.onHighlightNext){
+          this.props.onHighlightNext(this.props.date);
+        }
+      }
+      else if(event.keyCode === KEYS.LEFT || event.keyCode === KEYS.UP){
+        EventUtil.trapEvent(event);
+        if(this.props.onHighlightPrev){
+          this.props.onHighlightPrev(this.props.date);
+        }
+      }
       else{
         EventUtil.trapEvent(event);
       }
@@ -98,15 +125,24 @@ module.exports = React.createClass({
       <td role='gridcell'
         aria-disabled={!isCurrentMonth}
         aria-selected={isSelectedDay}
+        autoFocus={this.props.focused}
         tabIndex={isCurrentMonth?0:-1} 
         className={(isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (isSelectedDay? ' slds-is-selected' : '')} 
         onClick={this.handleClick}
         onMouseDown={this.handleClick}
-        onKeyDown={this.handleKeyDown} >
+        onKeyDown={this.handleKeyDown} 
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur} >
         <span className='slds-day'>
           {this.props.date.getDate()}
         </span>
       </td>
     );
+  },
+
+  componentDidUpdate (prevProps, prevState) {
+    if(this.props.focused && !prevState.focused){
+      React.findDOMNode(this).focus();
+    }
   }
 });
