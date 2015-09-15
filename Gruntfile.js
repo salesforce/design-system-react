@@ -63,13 +63,13 @@ module.exports = function (grunt) {
 						'.'
 					],
 					port: grunt.option('port') || process.env.PORT || defaultPort,
-					useAvailablePort: true, // increment port number, if unavailable
-					onCreateServer: function (server/* , connect, options */) {
+					useAvailablePort: true,
+					onCreateServer: function (server) {
 						server.on('listening', function () {
-							// Export the port for consumption by other grunt tasks. async setup of connect isn't considered complete until after all event handlers for 'listening' finish, so this will always run before the next grunt task.
 							grunt.config('port', server.address().port);
 						});
-					}
+					},
+					keepalive: true
 				}
 			}
 		},
@@ -91,6 +91,6 @@ module.exports = function (grunt) {
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
 	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'babel']);
-	grunt.registerTask('serve', ['webpack-dev-server:start']);
-	grunt.registerTask('test', ['eslint', 'compileTests', 'compileTestsApi', 'webpack', 'connect', 'mocha']);
+	grunt.registerTask('serve', ['eslint', 'webpack-dev-server:start']);
+	grunt.registerTask('test', ['default', 'webpack', 'connect', 'mocha']);
 };
