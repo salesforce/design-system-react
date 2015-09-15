@@ -64,7 +64,7 @@ const Selectable = {
 	},
 
 	getSelection () {
-		return this.getProperty(this._selectableProperty);
+		return this._getSelection()._item;
 	},
 
 	_getSelection () {
