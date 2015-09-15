@@ -47,7 +47,8 @@
   },
   "scripts": {
     "start": "grunt serve",
-    "test": "grunt test"
+    "test": "grunt test",
+    "postinstall": "grunt build"
   },
   "facades": [
     "jquery",

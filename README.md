@@ -9,8 +9,12 @@ Testing a core abstraction layer with many facades approach for FuelUX
 ### Running
 * Run `npm start` to start a static server on port 8080. You can navigate to `http://localhost:8080/examples/` to see a simple index page with links to examples in each facade
 
+### Testing
+* Run `npm test` to build the tests and see the results in the console. You can also run the tests in the browser by navigating to `http://localhost:8080/test/` after executing `npm start`
+* A detailed explanation of the testing design for this project is available in `docs/behavior-tests.md`
+
 ### Building
-* Run `grunt` for the default build. This will run eslint and create the dist files
+* Run `grunt build` for the default build. This will run eslint and create the dist files
 
 ### Contributing
 * Fork the repo!

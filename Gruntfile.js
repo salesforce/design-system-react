@@ -68,8 +68,7 @@ module.exports = function (grunt) {
 						server.on('listening', function () {
 							grunt.config('port', server.address().port);
 						});
-					},
-					keepalive: true
+					}
 				}
 			}
 		},
@@ -90,7 +89,8 @@ module.exports = function (grunt) {
 
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi', 'babel']);
-	grunt.registerTask('serve', ['eslint', 'webpack-dev-server:start']);
+	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi']);
+	grunt.registerTask('build', ['default', 'babel']);
+	grunt.registerTask('serve', ['default', 'webpack-dev-server:start']);
 	grunt.registerTask('test', ['default', 'webpack', 'connect', 'mocha']);
 };
