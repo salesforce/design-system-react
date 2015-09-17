@@ -1,15 +1,15 @@
-// DATEPICKER CONTROL
+// PICKER CONTROL
 
 import * as Lib from '../lib/lib';
 import Base from './base';
 
-export const CONTROL = 'datepicker';
+export const CONTROL = 'picker';
 
-const DatepickerCore = Lib.merge({}, Base, {
+const PickerCore = Lib.merge({}, Base, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL
 	}
 });
 
-export default DatepickerCore;
+export default PickerCore;
