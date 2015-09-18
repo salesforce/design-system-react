@@ -138,8 +138,8 @@ export const SelectlistObject = {
 
 		this._bindUIEvents();
 
-		this._closeMenu = $.proxy(this._closeMenu, this);
-		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
+		this._closeOnClick = $.proxy(this._closeOnClick, this);
+		if (!this.isBootstrap3) document.addEventListener('click', this._closeOnClick, false);
 		
 		// For tests, will consider publishing later
 		this.trigger('rendered', this.elements.wrapper);
@@ -209,7 +209,7 @@ export const SelectlistObject = {
 	},
 
 	destroy () {
-		if (!this.isBootstrap3) document.removeEventListener('click', this._closeMenu, false);
+		if (!this.isBootstrap3) document.removeEventListener('click', this._closeOnClick, false);
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
 	},
@@ -229,12 +229,6 @@ export const SelectlistObject = {
 
 			this.elements.hiddenField.val(item.getText());
 			this.elements.label.text(item.getText() || strings.NONE_SELECTED);
-		}
-	},
-
-	_closeMenu (e) {
-		if (e.originator !== this) {
-			this.close();
 		}
 	},
 

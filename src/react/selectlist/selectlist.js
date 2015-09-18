@@ -67,7 +67,7 @@ export const SelectlistObject = {
 	},
 
 	componentDidMount () {
-		document.addEventListener('click', this._closeMenu, false);
+		document.addEventListener('click', this._closeOnClick, false);
 		this._findElements();
 	},
 
@@ -76,7 +76,7 @@ export const SelectlistObject = {
 	},
 
 	componentWillUnmount () {
-		document.removeEventListener('click', this._closeMenu, false);
+		document.removeEventListener('click', this._closeOnClick, false);
 	},
 
 	_findElements () {
@@ -91,12 +91,6 @@ export const SelectlistObject = {
 			if (!menuItems[i].disabled && menuItem.length === 1) {
 				this.elements.menuItems.push(menuItem[0]);
 			}
-		}
-	},
-
-	_closeMenu (e) {
-		if (e.originator !== this) {
-			this.close();
 		}
 	},
 

@@ -37,6 +37,12 @@ const Disableable = {
 				this.open();
 			}
 		}
+	},
+	
+	_closeOnClick (e) {
+		if (!e || e.originator !== this) {
+			this.close();
+		}
 	}
 };
 
