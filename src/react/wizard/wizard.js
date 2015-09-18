@@ -30,7 +30,7 @@ let Wizard = Lib.extend({}, WizardCore, {
 	_steps (currentIndex) {
 		const Step = this.props.stepElement || WizardStep;
 		
-		return this._collection.map((item, index) => {			
+		return this._collection.map((item, index) => {
 			return <Step strings={this.state.strings} key={index} item={item} index={index + 1} currentIndex={currentIndex} onClicked={this._setSelection.bind(this, item._item)} />;
 		});
 	},

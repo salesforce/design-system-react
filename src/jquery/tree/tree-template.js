@@ -1,3 +1,4 @@
+export default String.raw`
 <ul class="tree" role="tree">
 	<li class="tree-branch" data-template="treebranch" role="treeitem" aria-expanded="false">
 		<div class="tree-branch-header">
@@ -18,3 +19,4 @@
 	</li>
 	<div class="tree-loader" role="alert"></div>
 </ul>
+`;

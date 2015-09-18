@@ -11,7 +11,7 @@ const WizardStep = React.createClass({
 	},
 
 	render () {
-		var state = {
+		const state = {
 			active: this.props.index === this.props.currentIndex,
 			complete: this.props.index < this.props.currentIndex
 		};

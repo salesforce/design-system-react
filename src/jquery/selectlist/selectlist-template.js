@@ -1,3 +1,4 @@
+export default String.raw`
 <div class="btn-group selectlist">
 	<button class="btn btn-default dropdown-toggle" type="button" aria-haspopup="true">
 		<span class="selected-label"></span>
@@ -9,3 +10,4 @@
 	</ul>
 	<input class="hidden hidden-field" readonly aria-hidden="true" type="text"></input>
 </div>
+`;

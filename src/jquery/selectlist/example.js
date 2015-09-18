@@ -110,6 +110,9 @@ $(function () {
 	});
 
 	// events
+	$('#mySelectlist3').on('rendered.fu.selectlist', function (event, data) {
+		Lib.log('rendered', data);
+	});
 	$('#mySelectlist3').on('changed.fu.selectlist', function (event, data) {
 		Lib.log('changed', data);
 	});
