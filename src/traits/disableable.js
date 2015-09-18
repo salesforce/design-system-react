@@ -13,14 +13,14 @@ const Disableable = {
 
 	enable () {
 		this.setProperties({ disabled: false });
-		if (Lib.isFunction(this._onEnabled)) this._onEnabled();
+		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled();
 
 		this.trigger('enabled');
 	},
 
 	disable () {
 		this.setProperties({ disabled: true });
-		if (Lib.isFunction(this._onDisabled)) this._onDisabled();
+		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled();
 
 		this.trigger('disabled');
 	}

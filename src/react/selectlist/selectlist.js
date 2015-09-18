@@ -96,16 +96,12 @@ export const SelectlistObject = {
 
 	_closeMenu (e) {
 		if (e.originator !== this) {
-			this.setState({
-				isOpen: false
-			});
+			this.close();
 		}
 	},
 
 	_onSelected () {
-		this.setState({
-			isOpen: false
-		});
+		this.close();
 	},
 
 	_handleMenuItemSelected (selection) {
@@ -113,13 +109,7 @@ export const SelectlistObject = {
 	},
 
 	_handleClicked (e) {
-		e.nativeEvent.originator = this;
-
-		if (!this.props.disabled) {
-			this.setState({
-				isOpen: !this.getState('isOpen')
-			});
-		}
+		this._openToggleEvent(e.nativeEvent);
 	},
 
 	_handleKeyPressed (e) {

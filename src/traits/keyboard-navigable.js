@@ -33,9 +33,10 @@ const KeyboardNavigable = {
 	_keyboardNav (input, menuItems) {
 		const isOpen = this.getState('isOpen');
 		
-		if (!isOpen) {
+		if (!isOpen && Lib.isFunction(this.open)) {
+			this.open();
+			
 			this.setState({
-				isOpen: true,
 				focusedIndex: this._defaultState.focusedIndex
 			});
 		} else {

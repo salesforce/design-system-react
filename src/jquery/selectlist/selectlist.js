@@ -234,27 +234,17 @@ export const SelectlistObject = {
 
 	_closeMenu (e) {
 		if (e.originator !== this) {
-			this.setState({
-				isOpen: false
-			});
-
-			this._onExpandOrCollapse();
+			this.close();
 		}
 	},
 
-	_onEnabled () {
+	_onEnabledOrDisabled () {
 		if (this.rendered) {
-			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-			this.elements.button.prop('disabled', false);
-			this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
-		}
-	},
-
-	_onDisabled () {
-		if (this.rendered) {
-			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-			this.elements.button.prop('disabled', true);
-			this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
+			const disabled = !!this.getProperty('disabled');
+			
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
+			this.elements.button.prop('disabled', disabled);
+			this.elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 		}
 	},
 
@@ -266,16 +256,7 @@ export const SelectlistObject = {
 	},
 
 	_handleClicked (e) {
-		const disabled = !!this.getProperty('disabled');
-		e.originalEvent.originator = this;
-
-		if (!disabled) {
-			this.setState({
-				isOpen: !this.getState('isOpen')
-			});
-
-			this._onExpandOrCollapse();
-		}
+		this._openToggleEvent(e.originalEvent);
 	},
 
 	_handleMenuItemSelected (e) {
@@ -301,7 +282,6 @@ export const SelectlistObject = {
 		if (key) {
 			e.preventDefault();
 			this._keyboardNav(key, this.elements.menuItems);
-			this._onExpandOrCollapse();
 		}
 	},
 
@@ -317,7 +297,6 @@ export const SelectlistObject = {
 		if (key && key.length === 1) {
 			e.preventDefault();
 			this._keyboardNav(key, this.elements.menuItems);
-			this._onExpandOrCollapse();
 		}
 	}
 };

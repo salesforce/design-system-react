@@ -146,32 +146,35 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	},
 
 	_onExpandOrCollapse () {
-		const isOpen = this.getState('isOpen');
-
-		this.elements.button.attr('aria-expanded', isOpen);
-		this.elements.inputGroup.toggleClass(this.cssClasses.OPEN, isOpen);
+		if (this.rendered) {
+			const isOpen = this.getState('isOpen');
+	
+			this.elements.button.attr('aria-expanded', isOpen);
+			this.elements.inputGroup.toggleClass(this.cssClasses.OPEN, isOpen);
+		}
 	},
 
 	_onSelected (item) {
-		this.elements.input.val(item.getText());
+		if (this.rendered) {
+			this.elements.input.val(item.getText());
+		}
 	},
 
-	_onEnabled () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-		this.elements.input.prop('disabled', false);
-		this.elements.button.prop('disabled', false);
-		this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
-	},
-
-	_onDisabled () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-		this.elements.input.prop('disabled', true);
-		this.elements.button.prop('disabled', true);
-		this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
+	_onEnabledOrDisabled () {
+		if (this.rendered) {
+			const disabled = !!this.getProperty('disabled');
+			
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
+			this.elements.input.prop('disabled', disabled);
+			this.elements.button.prop('disabled', disabled);
+			this.elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
+		}
 	},
 
 	resetWidth (width) {
-		if (this.elements.dropdownMenu) this.elements.dropdownMenu.width(width);
+		if (this.rendered) {
+			this.elements.dropdownMenu.width(width);
+		}
 	},
 
 	_handleChanged () {
