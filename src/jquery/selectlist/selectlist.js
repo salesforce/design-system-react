@@ -1,260 +1,374 @@
 // SELECTLIST CONTROL - JQUERY FACADE
 
 // Core
-import Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import SelectlistCore, {CONTROL} from '../../core/selectlist';
 
 // Framework specific
-import createPlugin from '../createPlugin';
-// TO-DO: This might not work with require, need to confirm that it does
-var $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+import Events from '../events';
+import State from '../state';
+
+const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
 // Template imports
-var fs = require('fs');
+import template from './selectlist-template';
 
-var Selectlist = function Selectlist (element, options) {
-	this.options = $.extend({}, options);
+let Selectlist = function Selectlist (element, options) {
+	this.options = Lib.extend({}, options);
+
 	this.elements = {
 		wrapper: $(element)
 	};
 
-	if (options.collection) {
+	const $html = $('<i />').append(template);
+	this.template = $html.find('.' + this.cssClasses.CONTROL);
+
+	if (this.options.collection) {
 		this.rendered = false;
 	} else {
-		this.__initElements(this.elements.wrapper, this.elements);
+		this.isBootstrap3 = Lib.isFunction($().emulateTransitionEnd);
 
-		this.__buildCollection(options);
+		this._initElements(this.elements.wrapper, this.elements);
+
+		this._buildCollection(this.options);
 
 		this.rendered = true;
 	}
 
-	this.__constructor(options);
+	this._initializeState();
+	this._initialize(this.options);
 };
 
-Lib.extend(Selectlist.prototype, SelectlistCore, {
-	__initElements (base, elements) {
-		elements = elements || {};
+export function _renderItem (item) {
+	const disabled = item.getDisabled();
+	const $li = this.template.find('li').clone();
 
-		elements.button = base.find('.' + this.cssClasses.TOGGLE);
-		elements.hiddenField = base.find('.' + this.cssClasses.HIDDEN);
-		elements.label = base.find('.' + this.cssClasses.LABEL);
-		elements.dropdownMenu = base.find('.' + this.cssClasses.MENU);
+	$li.data(item.get());
+	$li.toggleClass(this.cssClasses.DISABLED, disabled);
+	$li.prop('disabled', disabled);
 
-		return elements;
+	const $a = $li.find('a');
+	$a.text(item.getText());
+
+	return $li;
+}
+
+export function _renderHeader (item) {
+	const $li = this.template.find('li').clone().empty();
+
+	$li.toggleClass(this.cssClasses.HEADER, true);
+	$li.text(item.getText());
+
+	return $li;
+}
+
+export function _renderDivider () {
+	const $li = this.template.find('li').clone().empty();
+
+	$li.toggleClass(this.cssClasses.DIVIDER, true);
+	$li.prop('role', 'separator');
+
+	return $li;
+}
+
+export const SelectlistObject = {
+	_initElements (base, elements) {
+		const els = elements || {};
+
+		els.button = base.find('.' + this.cssClasses.TOGGLE);
+		els.hiddenField = base.find('.' + this.cssClasses.HIDDEN);
+		els.label = base.find('.' + this.cssClasses.LABEL);
+		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
+		els.srOnly = base.find('.' + this.cssClasses.SR_ONLY);
+
+		return els;
 	},
 
-	__buildCollection (options) {
-		options = options || {};
-		options.collection = [];
+	_buildCollection (options) {
+		const self = this;
+		const _options = options;
+		const collection = [];
 
-		this.elements.dropdownMenu.find('li').each(function () {
-			var $item = $(this);
-			var item = $item.data();
+		this.elements.dropdownMenu.find('li').each(function buildCollectionElements () {
+			const $item = $(this);
+			const item = $item.data();
 
-			if (!item.name) {
-				item.name = $item.text().trim();
+			if (!item.text) {
+				item.text = $item.text().trim();
 			}
 
 			if (item.selected) {
 				delete item.selected;
-				options.selection = item;
+				_options.selection = item;
 			}
 
 			if ($item.is('.disabled, :disabled')) {
 				item.disabled = true;
 			}
 
-			if ($item.hasClass('dropdown-header')) {
+			if ($item.hasClass(self.cssClasses.HEADER)) {
 				item._itemType = 'header';
-			} else if ($item.hasClass('divider')) {
+			} else if ($item.hasClass(self.cssClasses.DIVIDER)) {
 				item._itemType = 'divider';
-			} else {
-				item._itemType = 'item';
 			}
 
 			$item.data(item);
-			options.collection.push(item);
+			collection.push(item);
 		});
+
+		_options.collection = collection;
 	},
 
-	onInitialized () {
+	_onInitialized () {
 		if (!this.rendered) {
-			this.render();
+			this._render();
 		}
 
-		this.elements.wrapper.on('click.fu.selectlist', '.dropdown-menu a', $.proxy(this.handleClicked, this));
-		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this.handleKeyPress, this));
+		// Get the menu items for keyboard nav
+		this.elements.menuItems = [];
+		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
+
+		for (let i = 0; i < menuItems.length; i++) {
+			const menuItem = menuItems[i].getElementsByTagName('a');
+
+			if (!menuItems[i].disabled && menuItem.length === 1) {
+				this.elements.menuItems.push(menuItem[0]);
+			}
+		}
+
+		this._bindUIEvents();
+
+		this._closeMenu = $.proxy(this._closeMenu, this);
+		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
+		
+		// For tests, will consider publishing later
+		this.trigger('rendered', this.elements.wrapper);
 	},
 
-	render () {
-		// Prep for append
-		this.elements.wrapper.empty();
-		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-		this.elements.wrapper.toggleClass(this.cssClasses.BTN_GROUP, true);
+	_bindUIEvents () {
+		if (!this.isBootstrap3) this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
+		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
+		if (!this.isBootstrap3) this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
+		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
+	},
 
-		var selection = this.getSelection();
+	_render () {
+		const strings = this.getState('strings');
+		const selection = this._getSelection();
 
-		var width = this.__getState('width');
-		var disabled = !!this.__getState('disabled');
-		var selectionName = Lib.getProp(selection, 'name') || 'None selected'; // TO-DO: don't hardcode this here
-		var selectionString = selection ? JSON.stringify(selection) : '';
+		// Get the template
+		const $el = this.template.clone();
+		const elements = this._initElements($el, this.elements);
 
-		var $html = $('<i />').append(fs.readFileSync(__dirname + '/selectlist.html', 'utf8'));
-		var elements = this.__initElements($html, this.elements);
-
-		// Yay for hacked-together "templates"!
+		// Configure the button
+		const disabled = !!this.getProperty('disabled');
 		elements.button.prop('disabled', disabled);
-		elements.button.width(width);
-		elements.label.text(selectionName);
-		elements.hiddenField.val(selectionString);
-		elements.dropdownMenu.width(width);
+		elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 
-		var self = this;
+		// Add the localized string for screen readers
+		elements.srOnly.text(strings.TOGGLE_DROPDOWN);
+
+		// Show the current selection if there is one
+		const selectionName = selection.getText() || strings.NONE_SELECTED;
+		elements.label.text(selectionName);
+		elements.hiddenField.val(selection.getText());
+
+		// Empty the menu from the template
+		elements.dropdownMenu.empty();
+
 		// Building the menu items
-		this._collection.forEach(function (item) {
-			var $li;
-			switch (item._itemType) {
-			case 'header':
-				$li = self.renderHeader(item);
-				break;
-			case 'divider':
-				$li = self.renderDivider(item);
-				break;
-			case 'item':
-			default:
-				$li = self.renderItem(item);
-			}
+		this._collection.forEach(item => {
+			let $li;
+			let func;
+			const funcMap = {
+				header: _renderHeader,
+				divider: _renderDivider,
+				item: _renderItem
+			};
+
+			func = funcMap[item.getType()] || _renderItem;
+
+			$li = func.call(this, item);
+
 			elements.dropdownMenu.append($li);
 		});
 
-		this.elements.wrapper.append($html.children());
+		// Prep for append
+		elements.wrapper.empty();
+		$el.toggleClass(this.cssClasses.DISABLED, disabled);
+
+		if (this.elements.wrapper.is('div')) {
+			this.elements.wrapper.attr('class', $el.attr('class'));
+			this.elements.wrapper.append($el.children());
+		} else {
+			this.elements.wrapper.append($el);
+			this.elements.wrapper = $el;
+		}
 
 		this.rendered = true;
 	},
 
-	renderItem (data) {
-		var $a;
-		var disabled;
-		var $li;
-		
-		$a = $('<a href="#" />');
-		$a.text(Lib.getProp(data, 'name'));
-
-		disabled = !!Lib.getProp(data, 'disabled');
-		$li = $('<li />');
-		$li.data(data);
-		$li.toggleClass('disabled', disabled);
-		$li.prop('disabled', disabled);
-		$li.append($a);
-
-		return $li;
-	},
-
-	renderHeader (data) {
-		var $li = $('<li class="dropdown-header"></li>');
-		$li.data(data);
-		$li.text(Lib.getProp(data, 'name'));
-
-		return $li;
-	},
-
-	renderDivider (data) {
-		var $li = $('<li role="separator" class="divider"></li>');
-		$li.data(data);
-
-		return $li;
-	},
-
 	destroy () {
+		if (!this.isBootstrap3) document.removeEventListener('click', this._closeMenu, false);
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
 	},
 
-	onSelected (data) {
-		if (!this.elements.hiddenField
-			|| !this.elements.label) {
-			return;
+	_onExpandOrCollapse () {
+		if (this.rendered) {
+			const isOpen = this.getState('isOpen');
+
+			this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
+			this.elements.button.attr('aria-expanded', isOpen);
 		}
-
-		// TO-DO: clearly this isn't the best way to reset the text to "None selected"
-		this.elements.hiddenField.val(JSON.stringify(data) || '');
-		this.elements.label.text(Lib.getProp(data, 'name') || 'None selected');
-
-		this.elements.wrapper.trigger('changed.fu.selectlist', data);
 	},
 
-	onEnabled () {
-		if (!this.elements.button) {
-			return;
-		}
+	_onSelected (item) {
+		if (this.rendered) {
+			const strings = this.getState('strings');
 
-		this.elements.button.prop('disabled', false);
+			this.elements.hiddenField.val(item.getText());
+			this.elements.label.text(item.getText() || strings.NONE_SELECTED);
+		}
 	},
 
-	onDisabled () {
-		if (!this.elements.button) {
-			return;
-		}
+	_closeMenu (e) {
+		if (e.originator !== this) {
+			this.setState({
+				isOpen: false
+			});
 
-		this.elements.button.prop('disabled', true);
+			this._onExpandOrCollapse();
+		}
+	},
+
+	_onEnabled () {
+		if (this.rendered) {
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
+			this.elements.button.prop('disabled', false);
+			this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
+		}
+	},
+
+	_onDisabled () {
+		if (this.rendered) {
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
+			this.elements.button.prop('disabled', true);
+			this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
+		}
 	},
 
 	resetWidth (width) {
-		if (!this.elements.button
-			|| !this.elements.dropdownMenu) {
-			return;
+		if (this.rendered) {
+			this.elements.button.width(width);
+			this.elements.dropdownMenu.width(width);
 		}
-
-		// TO-DO: Test this. And will this work to remove the style as well?
-		this.elements.button.width(width);
-		this.elements.dropdownMenu.width(width);
 	},
 
-	handleClicked (e) {
-		var $li;
-		
+	_handleClicked (e) {
+		const disabled = !!this.getProperty('disabled');
+		e.originalEvent.originator = this;
+
+		if (!disabled) {
+			this.setState({
+				isOpen: !this.getState('isOpen')
+			});
+
+			this._onExpandOrCollapse();
+		}
+	},
+
+	_handleMenuItemSelected (e) {
 		e.preventDefault();
 
-		$li = $(e.currentTarget).parent('li');
+		const $a = $(e.currentTarget);
+		const $li = $a.parent('li');
 
-		this.setSelection($li.data());
+		if (!$li.hasClass(this.cssClasses.DISABLED)) {
+			this.setSelection($li.data());
+		}
 	},
 
-	handleKeyPress (e) {
-		var key = e.which;
-		
-		if (key) this.__jumpToLetter(key);
+	_handleKeyDown (e) {
+		let key;
+
+		if (/(38)/.test(e.which)) {
+			key = 'ArrowUp';
+		} else if (/(40)/.test(e.which)) {
+			key = 'ArrowDown';
+		}
+
+		if (key) {
+			e.preventDefault();
+			this._keyboardNav(key, this.elements.menuItems);
+			this._onExpandOrCollapse();
+		}
+	},
+
+	_handleKeyPressed (e) {
+		const key = String.fromCharCode(e.which);
+
+		if (this.isBootstrap3) {
+			this.setState({
+				isOpen: this.elements.wrapper.hasClass(this.cssClasses.OPEN)
+			});
+		}
+
+		if (key && key.length === 1) {
+			e.preventDefault();
+			this._keyboardNav(key, this.elements.menuItems);
+			this._onExpandOrCollapse();
+		}
 	}
-});
+};
+
+Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, SelectlistObject);
 
 // LEGACY METHODS
 
-var legacyMethods = {
+export const legacyMethods = {
 	selectedItem () {
-		return this.getSelection();
+		let selection = this._getSelection();
+
+		if (selection) {
+			selection = Lib.extend({}, selection.get());
+
+			selection.selected = true;
+			delete selection._itemType;
+		}
+
+		return selection;
 	},
 
 	selectByValue (value) {
 		return this.setSelection({ value: value });
 	},
 
-	selectByText (name) {
-		return this.setSelection({ name: name });
+	selectByText (text) {
+		return this.setSelection(item => {
+			const itemText = item && item.getText();
+
+			return item && Lib.isString(itemText) && Lib.isString(text) && itemText.toLowerCase() === text.toLowerCase();
+		});
 	},
 
 	selectBySelector (selector) {
-		var $item = $(selector);
+		const $item = $(selector);
 		return this.setSelection($item.data());
 	},
 
 	selectByIndex (index) {
-		if (!Lib.isNumber(index)) {
-			index = parseInt(index, 10);
+		let i = index;
+
+		if (!Lib.isNumber(i)) {
+			i = parseInt(index, 10);
 		}
-		return this.setSelectionByIndex(index);
+		return this.setSelectionByIndex(i);
 	}
 };
 
-createPlugin(CONTROL, Selectlist, legacyMethods);
+Selectlist = Lib.runHelpers('jquery', CONTROL, Selectlist, {
+	legacyMethods
+});
 
 export default Selectlist;

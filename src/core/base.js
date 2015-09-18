@@ -1,44 +1,79 @@
-import Lib from '../core/lib';
+import * as Lib from '../lib/lib';
+import '../data/vanilla';
 
-var Base = {
+const Base = {
 	// CSS classes used across every control
 	cssClasses: {
-		NAMESPACE: 'fuelux'
+		NAMESPACE: 'fuelux',
+		SR_ONLY: 'sr-only',
+		OPEN: 'open'
 	},
 	
-	__constructor (options) {
-		if (Lib.isFunction(this.onBeforeInitialize)) this.onBeforeInitialize(options);
-		
-		// If this control has any sort of internal state, set it up here
-		if (Lib.isFunction(this.__getInitialState)) this._state = this.__getInitialState();
-		
-		// If this controls does anything with options that are passed to it, do that now
-		if (Lib.isFunction(this.__initializeOptions)) this.__initializeOptions(options);
-		
-		if (Lib.isFunction(this.onInitialized)) this.onInitialized(options);
+	_defaultState: {
+		strings: {}
 	},
-	
-	__setState (values) {
-		Lib.extend(this._state, values);
-		
-		if (this.setState) {
-			this.__setState = this.setState;
-			this.__setState(this._state);
-		}
-	},
-	
-	__getState (key) {
-		if (this.getState) {
-			this.__getState = this.getState;
-			return this.__getState(key);
+
+	_initialize (options) {
+		if (Lib.isFunction(this._onBeforeInitialize)) this._onBeforeInitialize(options);
+
+		// Accessors cannot be updated after initialization
+		if (options && Lib.isObject(options.accessors)) {
+			Lib.extend(this.accessors, options.accessors);
+			delete options.accessors;
 		}
 		
-		if (!key) return this._state;
-		if (Lib.isObject(this._state)) return this._state[key];
+		this.setProperties(options);
 		
-		return null;
+		const collection = this.getProperty('collection');
+		if (collection) this._collection = this._getDataAdapter(collection);
+
+		// Run any initializers provided by the control and/or the traits
+		if (Lib.isFunction(this._initializer)) this._initializer();
+
+		this._getStrings(strings => {
+			this.setState({
+				strings
+			});
+			
+			if (Lib.isFunction(this._onInitialized)) this._onInitialized();
+		});
 	},
 	
+	_getItemAdapter (_item, _itemAdapter) {
+		const itemAdapter = _itemAdapter || Lib.getItemAdapter;
+		const item = itemAdapter(_item);
+		
+		if (this.accessors) {
+			Object.keys(this.accessors).forEach(method => {
+				item[method] = Lib.bind(this.accessors[method], this, item);
+			});
+		}
+		
+		return item;
+	},
+	
+	_getDataAdapter (_data) {
+		const data = Lib.getDataAdapter(_data);
+		
+		data.getItemAdapter = Lib.partialRight(Lib.bind(this._getItemAdapter, this), data.getItemAdapter);
+		
+		return data;
+	},
+	
+	_getStrings (callback) {
+		Lib.getStrings().then(_strings => {
+			let strings = this.getProperty('strings');
+			
+			if (strings) {
+				strings = Lib.extend({}, _strings, strings);
+			} else {
+				strings = _strings;
+			}
+			
+			return strings;
+		}).then(callback);
+	},
+
 	version: Lib.version
 };
 

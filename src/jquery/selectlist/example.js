@@ -1,19 +1,18 @@
-import Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import Selectlist from './selectlist';
 
-// TO-DO: This might not work with require, need to confirm that it does
-var $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
 
-var collection = [
-	{ _itemType: 'header', name: 'One thing' },
-	{ id: 0, name: 'One', value: '1' },
+const collection = [
+	{ _itemType: 'header', text: 'One thing' },
+	{ id: 0, text: 'One', value: '1' },
 	{ _itemType: 'divider' },
-	{ _itemType: 'header', name: 'All the things' },
-	{ id: 1, name: 'Two', value: '2' },
-	{ _itemType: 'item', id: 2, name: 'Three', value: '3'  },
-	{ id: 3, name: 'Buzz', value: '4'  },
-	{ id: 4, name: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
-	{ id: 5, name: 'A Disabled Item', disabled: true, value: 'disabled' }
+	{ _itemType: 'header', text: 'All the things' },
+	{ id: 1, text: 'Two', value: '2' },
+	{ id: 2, text: 'Three', value: '3'  },
+	{ id: 3, text: 'Buzz', value: '4'  },
+	{ id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
+	{ id: 5, text: 'Disabled Item', disabled: true, value: 'disabled' }
 ];
 
 $(function () {
@@ -40,8 +39,8 @@ $(function () {
 		$('#mySelectlist1').selectlist('disable');
 	});
 	$('.declarative .btnSelectlistDestroy').on('click', function () {
-		var $container = $('#mySelectlist1').parent();
-		var markup = $('#mySelectlist1').selectlist('destroy');
+		const $container = $('#mySelectlist1').parent();
+		const markup = $('#mySelectlist1').selectlist('destroy');
 		Lib.log(markup);
 		$container.append(markup);
 		$('#mySelectlist1').selectlist();
@@ -75,8 +74,8 @@ $(function () {
 		$('#mySelectlist2').selectlist('disable');
 	});
 	$('.imperative .btnSelectlistDestroy').on('click', function () {
-		var $container = $('#mySelectlist2').parent();
-		var markup = $('#mySelectlist2').selectlist('destroy');
+		const $container = $('#mySelectlist2').parent();
+		const markup = $('#mySelectlist2').selectlist('destroy');
 		Lib.log(markup);
 		$container.append(markup);
 		$('#mySelectlist2').selectlist();
@@ -88,9 +87,9 @@ $(function () {
 	});
 
 
-	var selectlist3 = new Selectlist($('#mySelectlist3'), {
+	const selectlist3 = new Selectlist($('#mySelectlist3'), {
 		collection: collection,
-		resize: 'auto'
+		selection: { value: '4' }
 	});
 
 	// sample method buttons
@@ -111,5 +110,10 @@ $(function () {
 	});
 
 	// events
-	// TO-DO: Add a listener here once we have a framework-agnostic event
+	$('#mySelectlist3').on('rendered.fu.selectlist', function (event, data) {
+		Lib.log('rendered', data);
+	});
+	$('#mySelectlist3').on('changed.fu.selectlist', function (event, data) {
+		Lib.log('changed', data);
+	});
 });

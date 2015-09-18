@@ -1,85 +1,108 @@
 // SELECTABLE
 
-import Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 
-var isNonDisabledItem = function isNonDisabledItem (item) {
-	return !Lib.getProp(item, 'disabled') && (!Lib.getProp(item, '_itemType') || Lib.getProp(item, '_itemType') === 'item');
-};
-
-var Selectable = {
+const Selectable = {
 	cssClasses: {
 		SELECTED: 'selected'
 	},
-
-	__initializeSelectable (options) {
-		if (options && Lib.isObject(options.selection)) {
-			this.setSelection(options.selection);
-		} else {
-			this.clearSelection();
-		}
+	
+	_defaultProperties: {
+		selection: null
 	},
+	
+	_selectableProperty: 'selection',
 
-	__setSelection (newSelection) {
-		if (this.__getState('selection') !== newSelection) {
-			if (Lib.isFunction(this.onBeforeSelection)) this.onBeforeSelection(this.__getState('selection'), newSelection);
-			this.__setState({ selection: newSelection });
-			if (Lib.isFunction(this.onSelected)) this.onSelected(newSelection);
+	_setSelection (selection) {
+		let promise;
+		
+		if (this.getProperty(this._selectableProperty) === selection) {
+			promise = Promise.resolve(false);
+		} else if (!Lib.isFunction(this._canSelect)) {
+			promise = Promise.resolve(true);
+		} else {
+			promise = Promise.resolve(this._canSelect(selection));
 		}
+		
+		promise.then(canSelect => {
+			if (canSelect !== false) {
+				const props = {};
+				
+				props[this._selectableProperty] = selection;
+				
+				this.setProperties(props);
+				
+				if (Lib.isFunction(this._onSelected)) this._onSelected(this._getItemAdapter(selection));
+				
+				// Trigger the event using facade-native methods
+				this.trigger('changed', selection);
+			}
+		}, error => {
+			Lib.log(error);
+		});
 	},
 
 	// Pass any combination of key / value pairs
 	setSelection (criteria) {
-		var item = Lib.findWhere(this._collection, criteria);
-
-		return this.__setSelection(item);
-	},
-
-	// Legacy Fuel UX functionality - select by position
-	setSelectionByIndex (index) {
-		var item;
+		let item = this._collection.findWhere(criteria);
 		
-		if (!this._collection) {
-			return;
-		}
-
-		if (Lib.isFunction(this._collection.at)) {
-			item = this._collection.at(index);
+		if (item) {
+			item = item._item;
 		} else {
-			item = this._collection[index];
+			item = criteria;
 		}
 
-		this.__setSelection(item);
+		return this._setSelection(item);
+	},
+	
+	setSelectionByIndex (index) {
+		const item = this._collection.at(index);
+
+		if (item) {
+			this._setSelection(item);
+		}
 	},
 
 	getSelection () {
-		return this.__getState('selection') || null;
+		return this._getSelection()._item;
+	},
+
+	_getSelection () {
+		const selection = this.getProperty(this._selectableProperty);
+		let item = this._collection.findWhere(selection);
+		
+		if (!item) {
+			item = this._getItemAdapter(selection);
+		}
+		
+		return item;
 	},
 
 	clearSelection () {
-		this.__setSelection();
-	},
-
-	// For keyboard nav
-	__jumpToLetter (input) {
-		var letter = input;
-		var selection;
-		
-		if (Lib.isNumber(letter)) {
-			letter = String.fromCharCode(letter);
-		}
-
-		if (letter.length !== 1) {
-			return;
-		}
-
-		if (letter === '\\') {
-			letter = '\\\\';
-		}
-
-		selection = Lib.findWhere(this._collection.filter(isNonDisabledItem), { name: new RegExp('^[' + letter + ']', 'i') }); // TODO: Cache the filter results
-
-		if (selection) this.__setSelection(selection);
+		this._setSelection();
 	}
 };
+
+export function customSelectable (property, overrides) {
+	const CustomSelectable = {};
+	const lowercase = property.toLowerCase();
+	const camelCase = lowercase.charAt(0).toUpperCase() + lowercase.slice(1);
+	
+	Object.keys(Selectable).forEach(function (key) {
+		let newKey = key;
+		
+		if (newKey.charAt(0) !== '_') {
+			newKey = newKey.replace('Selection', camelCase);
+		}
+		
+		CustomSelectable[newKey] = Selectable[key];
+	});
+	
+	CustomSelectable._selectableProperty = lowercase;
+	CustomSelectable._defaultProperties = {};
+	CustomSelectable._defaultProperties[lowercase] = null;
+	
+	return Lib.extend(CustomSelectable, overrides);
+}
 
 export default Selectable;

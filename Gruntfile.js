@@ -1,47 +1,56 @@
 module.exports = function (grunt) {
 	grunt.loadTasks('tasks');
 
+	const defaultPort = 8080;
+
+	const excludePatternGeneratedTestFiles = [
+		'!test/tests.js',
+		'!test/tests-api.js',
+		'!test/tests-compiled.js'
+	];
+
 	grunt.initConfig({
-		browserify: {
-			examples: {
-				options: {
-					transform: [['babelify', {
-						'stage': 0,
-						'modules': 'umd'
-					}], ['brfs'], ['browserify-versionify']]
-				},
-				files: {
-					'examples/jquery/examples.js': 'src/jquery/examples.js',
-					'examples/backbone/examples.js': 'src/backbone/examples.js',
-					'examples/react/examples.js': 'src/react/examples.js',
-					'test/tests-compiled.js': 'test/tests.js'
-				}
+		babel: {
+			options: {
+				modules: 'umd'
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'src/',
+					src: ['**/*.js'],
+					dest: 'dist/'
+				}]
 			}
 		},
+		port: defaultPort,
+		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
 		eslint: {
-			target: ['Gruntfile.js', 'src/**/*.js']
+			target: [
+				'Gruntfile.js',
+				'src/**/*.js',
+				'tasks/**/*.js',
+				'test/**/*.js'
+			].concat(excludePatternGeneratedTestFiles)
 		},
 		mocha: {
 			main: {
 				options: {
-					urls: ['http://localhost:8000/test/index.html'],
-					run: true
-				}
-			}
-		},
-		uglify: {
-			examples: {
-				files: {
-					'examples/jquery/examples.min.js': ['examples/jquery/examples.js'],
-					'examples/backbone/examples.min.js': ['examples/backbone/examples.js'],
-					'examples/react/examples.min.js': ['examples/react/examples.js']
+					urls: ['http://localhost:<%= port %>/test/index.html'],
+					run: true,
+					log: true,
+					reporter: 'Nyan'
 				}
 			}
 		},
 		watch: {
-			scripts: {
-				files: ['src/**/*.*', 'test/**/*.*'],
-				tasks: ['browserify']
+			eslint: {
+				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
+				tasks: ['eslint']
+			},
+			tests: {
+				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
+				tasks: ['compileTests', 'compileTestsApi']
 			}
 		},
 		connect: {
@@ -53,21 +62,35 @@ module.exports = function (grunt) {
 						'./node_modules',
 						'.'
 					],
-					port: process.env.PORT || 8000,
-					useAvailablePort: true // increment port number, if unavailable
+					port: grunt.option('port') || process.env.PORT || defaultPort,
+					useAvailablePort: true,
+					onCreateServer: function (server) {
+						server.on('listening', function () {
+							grunt.config('port', server.address().port);
+						});
+					}
 				}
+			}
+		},
+		webpack: {
+			options: require('./webpack.config'),
+			build: {
+			}
+		},
+		'webpack-dev-server': {
+			start: {
+				webpack: require('./webpack.config'),
+				publicPath: '/build/',
+				keepAlive: true,
+				hot: true
 			}
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-browserify');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-eslint');
-	grunt.loadNpmTasks('grunt-mocha');
+	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-	grunt.registerTask('default', ['eslint', 'browserify']);
-	grunt.registerTask('serve', ['connect:server', 'eslint', 'compileTests', 'browserify', 'watch:scripts']);
-	grunt.registerTask('test', ['browserify', 'compileTests', 'connect:server', 'mocha']);
+	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi']);
+	grunt.registerTask('build', ['default', 'babel']);
+	grunt.registerTask('serve', ['default', 'webpack-dev-server:start']);
+	grunt.registerTask('test', ['default', 'webpack', 'connect', 'mocha']);
 };

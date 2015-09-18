@@ -1,56 +1,31 @@
 // COMBOBOX CONTROL
 
-import Lib from './lib';
-import Base from './base';
+import * as Lib from '../lib/lib';
+import SelectlistCore from './selectlist';
+import '../data/string';
 
-// Traits
-import Disableable from '../traits/disableable';
-import Selectable from '../traits/selectable';
+export const CONTROL = 'combobox';
 
-export var CONTROL = 'combobox';
-
-var ComboboxCore = Lib.extend({}, Base, Disableable, Selectable, {
+const ComboboxCore = Lib.merge({}, SelectlistCore, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
 		BUTTON: 'btn',
-		INPUT: 'input',
-		MENU: 'dropdown-menu'
+		INPUT: 'form-control',
+		INPUT_APPEND: 'input-append',
+		INPUT_GROUP: 'input-group',
+		INPUT_GROUP_BUTTON: 'input-group-btn',
+		MENU: 'dropdown-menu',
+		TOGGLE: 'dropdown-toggle'
 	},
 
-	// Set the defaults
-	__getInitialState () {
-		return {
-			selection: null,
-			disabled: false
-		};
-	},
-
-	// TO-DO: Basically a bunch of if-else blocks. Can this be improved?
-	__initializeOptions (options) {
-		if (options && options.collection) {
-			this._collection = options.collection;
-		} else if (this.collection) {
-			this._collection = this.collection;
-		} else if (!this._collection) {
-			this._collection = [];
-		}
-
-		this.__initializeSelectable(options);
-
-		this.__initializeDisableable(options);
-
-		if (options && options.resize === 'auto') {
-			if (Lib.isFunction(this.resize)) this.resize();
-		}
-	},
-
-	// TO-DO: Did this need to set the width of the menu each time?
 	resize () {
-		var width = this.elements.wrapper.outerWidth();
-		
-		this.__setState({ width: width });
-		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+		if (this.elements.wrapper) {
+			const width = this.elements.wrapper.outerWidth();
+	
+			this.setState({ width });
+			if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+		}
 	}
 });
 

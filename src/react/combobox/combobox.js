@@ -1,100 +1,73 @@
 // COMBOBOX CONTROL - REACT FACADE
 
 // Core
-import Lib from '../../core/lib';
-import ComboboxCore from '../../core/combobox';
+import * as Lib from '../../lib/lib';
+import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Framework specific
 import React from 'react';
-import ReactHelpers from '../helpers';
+import { SelectlistObject } from '../selectlist/selectlist';
 
 // Third party
 import classNames from 'classnames';
 
-// Children
-import SelectlistItem from '../selectlist/selectlist-item';
-
-var Combobox = React.createClass(Lib.extend({}, ComboboxCore, ReactHelpers, {
+export const ComboboxObject = Lib.merge(SelectlistObject, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
-			React.PropTypes.number,
+			React.PropTypes.string,
 			React.PropTypes.object
 		]),
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
-		]).isRequired,
-		name: React.PropTypes.string
-	},
-	
-	getInitialState () {
-		return Lib.extend(this.__getInitialState(), {
-			wrapperClasses: {}
-		});
-	},
-
-	menuItems () {
-		return this.props.collection.map((menuItem) => {
-			return (
-				<SelectlistItem key={Lib.getProp(menuItem, 'id')} item={menuItem} onSelected={this.handleMenuItemSelected} />
-			);
-		});
+		]).isRequired
 	},
 
 	render () {
-		var selection = this.getSelection();
+		const item = this._getSelection();
+		const selectionName = item.getText();
 
-		var styles = {
+		const styles = {
 			width: this.state.width
 		};
+		
+		const disabledClass = {};
+		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
+
+		const openClass = {};
+		openClass[this.cssClasses.OPEN] = this.state.isOpen;
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', this.state.wrapperClasses)} onKeyPress={this.handleKeyPress}>
-				<input name={this.props.name} className="form-control" type="text" value={Lib.getProp(selection, 'name')} disabled={this.state.disabled} />
-				<div className="input-group-btn">
-					<button type="button" className="btn btn-default dropdown-toggle" data-toggle="dropdown" disabled={this.state.disabled}><span className="caret"></span></button>
-					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles}>
-						{this.menuItems()}
+			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', disabledClass)}>
+				<input name={this.props.name} className="form-control" type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} />
+				<div className={classNames('input-group-btn', openClass)} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+					<button type="button" className={classNames(this.cssClasses.CONTROL, this.cssClasses.TOGGLE, 'btn btn-default', disabledClass)} disabled={this.props.disabled} aria-haspopup="true" aria-expanded={this.state.isOpen} onClick={this._handleClicked}><span className="caret"></span></button>
+					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles} ref={this.cssClasses.MENU}>
+						{this._menuItems()}
 					</ul>
 				</div>
 			</div>
 		);
 	},
-
-	componentWillMount () {
-		var self = this;
-
-		this.elements = {
-			wrapper: {
-				toggleClass (cssClass, state) {
-					var wrapperClasses = self.state.wrapperClasses;
-					wrapperClasses[cssClass] = state;
-
-					self.setState({
-						wrapperClasses: wrapperClasses
-					});
-				},
-				outerWidth () {
-					return 0;
-				}
-			}
-		};
-
-		this.__constructor(this.props);
-
-		if (Lib.isFunction(this.props.onBeforeSelection)) this.onBeforeSelection = this.props.onBeforeSelection;
-		if (Lib.isFunction(this.props.onSelected)) this.onSelected = this.props.onSelected;
-	},
-
-	handleMenuItemSelected (selection) {
-		this.setSelection(selection);
+	
+	componentDidMount () {
+		document.addEventListener('click', this._closeMenu, false);
+		this._findElements();
 	},
 	
-	handleKeyPress (e) {
-		var key = e.key || e.keyIdentifier;
-		if (key) this.__jumpToLetter(key);
+	_handleChanged (e) {
+		const value = {};
+		
+		value[this.accessors.textProp()] = e.target.value;
+
+		this.setSelection(value);
 	}
-}));
+});
+
+let Combobox = Lib.merge({}, ComboboxCore, ComboboxObject);
+
+Combobox = Lib.runHelpers('react', CONTROL, Combobox);
+Combobox = React.createClass(Combobox);
 
 export default Combobox;

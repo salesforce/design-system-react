@@ -6,8 +6,10 @@ node_modules
 bower_components
 
 test/tests-compiled.js
+test/tests-api.js
 test/tests.js
-
+dist/
+build/
 # gh-pages
 _site/*
 
