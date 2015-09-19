@@ -1,7 +1,7 @@
 import * as Lib from '../../lib/lib';
 import Loader from './loader';
 
-const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+const $ = Lib.global.jQuery || Lib.global.$;
 
 const exampleOptions = [
 	{ frame: 5 },

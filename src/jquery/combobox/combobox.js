@@ -9,7 +9,7 @@ import Events from '../events';
 import State from '../state';
 import { SelectlistObject, _renderItem, _renderHeader, _renderDivider, legacyMethods } from '../selectlist/selectlist';
 
-const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+const $ = Lib.global.jQuery || Lib.global.$;
 
 // Template imports
 import template from './combobox-template';
@@ -171,7 +171,7 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		}
 	},
 
-	resetWidth (width) {
+	_resetWidth (width) {
 		if (this.rendered) {
 			this.elements.dropdownMenu.width(width);
 		}

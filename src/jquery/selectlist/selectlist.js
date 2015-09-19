@@ -8,7 +8,7 @@ import SelectlistCore, {CONTROL} from '../../core/selectlist';
 import Events from '../events';
 import State from '../state';
 
-const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+const $ = Lib.global.jQuery || Lib.global.$;
 
 // Template imports
 import template from './selectlist-template';
@@ -208,6 +208,7 @@ export const SelectlistObject = {
 		this.rendered = true;
 	},
 
+	// TO-DO: Maybe move this to the core?
 	destroy () {
 		if (!this.isBootstrap3) document.removeEventListener('click', this._closeOnClick, false);
 		this.elements.wrapper.remove();
@@ -242,7 +243,7 @@ export const SelectlistObject = {
 		}
 	},
 
-	resetWidth (width) {
+	_resetWidth (width) {
 		if (this.rendered) {
 			this.elements.button.width(width);
 			this.elements.dropdownMenu.width(width);

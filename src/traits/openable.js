@@ -2,7 +2,7 @@
 
 import * as Lib from '../lib/lib';
 
-const Disableable = {
+const Openable = {
 	cssClasses: {
 		OPEN: 'open'
 	},
@@ -46,4 +46,4 @@ const Disableable = {
 	}
 };
 
-export default Disableable;
+export default Openable;

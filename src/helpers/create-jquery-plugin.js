@@ -6,7 +6,7 @@
 import * as Lib from '../lib/lib';
 
 // Framework specific
-const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+const $ = Lib.global.jQuery || Lib.global.$;
 
 const createPlugin = function (name, Constructor, helperOptions) {
 	const old = $.fn[name];

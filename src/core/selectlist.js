@@ -139,7 +139,7 @@ getKey (item)
 
 		if (width !== this.getState('width')) {
 			this.setState({ width });
-			if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+			if (Lib.isFunction(this._resetWidth)) this._resetWidth(width);
 		}
 	}
 });
