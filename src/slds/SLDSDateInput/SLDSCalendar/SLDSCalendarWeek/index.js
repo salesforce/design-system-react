@@ -20,8 +20,7 @@ module.exports = React.createClass({
   getDefaultProps () {
     return {
       displayedDate:new Date(),
-      selectedDate:new Date(),
-      focused:false
+      selectedDate:new Date()
     };
   },
 
@@ -37,6 +36,18 @@ module.exports = React.createClass({
     }
   },
 
+  handlePrevDay (date) {
+    if(this.props.onPrevDay){
+      this.props.onPrevDay(date);
+    }
+  },
+
+  handleNextDay (date) {
+    if(this.props.onNextDay){
+      this.props.onNextDay(date);
+    }
+  },
+
   render: function() {
     let days = [];
     let date = this.props.date;
@@ -44,10 +55,14 @@ module.exports = React.createClass({
       days.push(<Day 
           key={date.toString()}
           date={date}
-          focused={this.props.focused && date.getDate()===1}
+          month={this.props.month}
           selectedDate={this.props.selectedDate}
           onSelectDate={this.handleSelectDate}
           displayedDate={this.props.displayedDate}
+          highlightedDate={this.props.highlightedDate}
+          focused={DateUtil.isSameDay(this.props.highlightedDate, date)}
+          onPrevDay={this.handlePrevDay}
+          onNextDay={this.handleNextDay}
           onCancel={this.handleCancel} />);
         date = DateUtil.addDays(date,1);
     }

@@ -36,7 +36,7 @@ module.exports = React.createClass({
 
   getInitialState () {
     return {
-      focusedRef: 0
+      highlightedDate: DateUtil.firstDayOfMonth(this.props.displayedDate)
     };
   },
 
@@ -53,8 +53,35 @@ module.exports = React.createClass({
     }
   },
 
-  render: function() {
-    console.log('Calendar FOCUSED: '+this.props.focused);
+  handleChangeDisplayedDate (date) {
+    if(this.props.onChange){
+      this.props.onChange(date);
+    }
+  },
+
+  handlePrevDay (date) {
+    const prevDate = DateUtil.addDays(date,-1);
+    if(!DateUtil.isSameMonth(prevDate,date)){
+      this.handleChangeDisplayedDate(prevDate);
+    }
+    else{
+      this.setState({highlightedDate:prevDate});
+    }
+  },
+
+  handleNextDay (date) {
+    const nextDate = DateUtil.addDays(date,1);
+    if(!DateUtil.isSameMonth(nextDate,date)){
+      this.handleChangeDisplayedDate(nextDate);
+    }
+    else{
+      this.setState({highlightedDate:nextDate});
+    }
+  },
+
+  render () {
+
+
     return (<div className='SLDSCalendar'>
       <table className='datepicker__month' role='grid' aria-labelledby='month'>
         <thead>
@@ -89,7 +116,7 @@ module.exports = React.createClass({
     </div>);
   },
 
-  renderWeeks: function() {
+  renderWeeks () {
     const firstDayOfMonth = DateUtil.firstDayOfMonth(this.props.displayedDate);
 
     let date = firstDayOfMonth;
@@ -102,17 +129,20 @@ module.exports = React.createClass({
     let weeks = [];
     let done = false;
 
+
     let monthIndex = date.getMonth();
     let count = 0;
     while (!done) {
       weeks.push(<Week 
-          focused={(!count && this.props.focused)}
           key={date.toString()} 
           date={date} 
           month={this.props.month} 
           onSelectDate={this.handleSelectDate} 
           selectedDate={this.props.selectedDate} 
           displayedDate={this.props.displayedDate} 
+          highlightedDate={this.state.highlightedDate}
+          onPrevDay={this.handlePrevDay}
+          onNextDay={this.handleNextDay}
           onCancel={this.handleCancel} />);
       date = DateUtil.addWeeks(date,1);
       done = count++ > 2 && monthIndex !== date.getMonth();
@@ -126,5 +156,10 @@ module.exports = React.createClass({
     return weeks;
   },
 
+  componentDidUpdate (prevProps) {
+    if( !DateUtil.isEqual(this.props.displayedDate,prevProps.displayedDate) ){
+      this.setState({highlightedDate:this.props.displayedDate});
+    }
+  }
 
 });

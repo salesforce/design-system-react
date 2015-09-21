@@ -21,15 +21,8 @@ module.exports = React.createClass( {
       displayedDate:new Date(),
       relativeFrom:0,
       relativeTo:5,
-      focused:false,
       onChange (displayedDate){
         console.log('onChange should be defined: ',displayedDate);
-      },
-      onMoveFocusPrev () {
-        console.log('onMoveFocusPrev should be defined');
-      },
-      onMoveFocusNext () {
-        console.log('onMoveFocusNext should be defined');
       }
     };
   },
@@ -53,19 +46,6 @@ module.exports = React.createClass( {
     }
   },
 
-  handleMoveFocusPrev(){
-    if(this.props.onMoveFocusPrev){
-      this.props.onMoveFocusPrev();
-    }
-  },
-
-  handleMoveFocusNext(){
-    if(this.props.onMoveFocusNext){
-      this.props.onMoveFocusNext();
-    }
-  },
-
-
   render() {
     return (
       <div className='slds-form-element'>
@@ -74,11 +54,9 @@ module.exports = React.createClass( {
           options={this.getOptions()} 
           label='Year'
           placeholder='Year'
-          focused={this.props.focused}
-          onMoveFocusPrev={this.handleMoveFocusPrev}
-          onMoveFocusNext={this.handleMoveFocusNext}
           value={this.props.displayedDate.getFullYear()}
-          onSelect={this.handleSelect} />
+          onSelect={this.handleSelect}
+          initialFocus={false}/>
 
       </div>
     );

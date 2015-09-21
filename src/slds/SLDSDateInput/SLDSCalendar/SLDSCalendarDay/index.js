@@ -21,8 +21,6 @@ module.exports = React.createClass({
 
       selectedDate:new Date(),
 
-      focused: false,
-
       onSelectDate (date) {
         console.log('onSelectDate should be defined ',date);
       },
@@ -50,20 +48,6 @@ module.exports = React.createClass({
     };
   },
 
-  getInitialState () {
-    return {
-      focused: false
-    };
-  },
-
-  handleBlur () {
-    this.setState({focused:false});
-  },
-
-  handleFocus () {
-    this.setState({focused:true});
-  },
-
   handleClick (event) {
     if(this.props.onSelectDate){
       this.props.onSelectDate(this.props.date);
@@ -71,6 +55,18 @@ module.exports = React.createClass({
     if(event.nativeEvent){
       event.nativeEvent.stopImmediatePropagation();
       event.nativeEvent.preventDefault();
+    }
+  },
+
+  handleToPrevDay(){
+    if(this.props.onPrevDay){
+      this.props.onPrevDay(this.props.date);
+    }
+  },
+
+  handleToNextDay(){
+    if(this.props.onNextDay){
+      this.props.onNextDay(this.props.date);
     }
   },
 
@@ -90,7 +86,7 @@ module.exports = React.createClass({
         }
       }
       else if(event.keyCode === KEYS.TAB){
-        if(DateUtil.isLastDayOfMonth(this.props.date)){
+        if(!event.shiftKey){
           EventUtil.trapEvent(event);
           if(this.props.onCancel){
             this.props.onCancel();
@@ -99,15 +95,11 @@ module.exports = React.createClass({
       }
       else if(event.keyCode === KEYS.RIGHT || event.keyCode === KEYS.DOWN){
         EventUtil.trapEvent(event);
-        if(this.props.onHighlightNext){
-          this.props.onHighlightNext(this.props.date);
-        }
+        this.handleToNextDay();
       }
       else if(event.keyCode === KEYS.LEFT || event.keyCode === KEYS.UP){
         EventUtil.trapEvent(event);
-        if(this.props.onHighlightPrev){
-          this.props.onHighlightPrev(this.props.date);
-        }
+        this.handleToPrevDay();
       }
       else{
         EventUtil.trapEvent(event);
@@ -115,24 +107,27 @@ module.exports = React.createClass({
     }
   },
 
+  setFocus () {
+    this.getDOMNode().focus();
+  },
+
   render () {
 
     const isCurrentMonth = DateUtil.isSameMonth(this.props.date,this.props.displayedDate);
     const isToday = DateUtil.isToday(this.props.date);
     const isSelectedDay = DateUtil.isSameDay(this.props.date,this.props.selectedDate);
+    const isFirstDayOfMonth = DateUtil.isFirstDayOfMonth(this.props.date);
 
     return (
       <td role='gridcell'
         aria-disabled={!isCurrentMonth}
         aria-selected={isSelectedDay}
         autoFocus={this.props.focused}
-        tabIndex={isCurrentMonth?0:-1} 
+        tabIndex={isCurrentMonth && isFirstDayOfMonth && this.props.focused?0:-1} 
         className={(isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (isSelectedDay? ' slds-is-selected' : '')} 
         onClick={this.handleClick}
         onMouseDown={this.handleClick}
-        onKeyDown={this.handleKeyDown} 
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur} >
+        onKeyDown={this.handleKeyDown} >
         <span className='slds-day'>
           {this.props.date.getDate()}
         </span>
@@ -141,8 +136,9 @@ module.exports = React.createClass({
   },
 
   componentDidUpdate (prevProps, prevState) {
-    if(this.props.focused && !prevState.focused){
-      React.findDOMNode(this).focus();
+    if(this.props.focused && !prevProps.focused){
+      this.setFocus();
     }
   }
+
 });

@@ -14,7 +14,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 const DateUtil = {
 
   firstDayOfMonth(date) {
-    return new Date((new Date(date)).setDate(1));
+    let d = (new Date(date));
+    d.setDate(1);
+    return d;
+  },
+
+  isFirstDayOfMonth(date) {
+    return date.getDate() === 1;
   },
 
   isLastDayOfMonth(date) {
@@ -44,14 +50,14 @@ const DateUtil = {
     }
     return DateUtil.isSameDay(date, new Date());
   },
+  isEqual(d1,d2){
+    return d1.getTime() === d2.getTime();
+  },
   addDays(date, deltaDays) {
     return new Date(date.getTime() + parseInt(deltaDays) * 86400000);
   },
   addWeeks(date, deltaWeeks) {
     return DateUtil.addDays(date, parseInt(deltaWeeks)*7);
-  },
-  addMonths(date, deltaMonths) {
-    return new Date(date.getFullYear(),(date.getMonth()+deltaMonths),date.getDate(),date.getHours(),date.getMinutes(),date.getSeconds(),date.getMilliseconds());
   },
   nearestWeekDay(date, weekDayIndex) {
     let delta = weekDayIndex - date.getDay();
@@ -59,6 +65,22 @@ const DateUtil = {
       delta += 7; 
     }
     return DateUtil.addDays(date, delta);
+  },
+  isLeapYear (year) { 
+    return (((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0)); 
+  },
+
+  getDaysInMonth (year, month) {
+    return [31, (DateUtil.isLeapYear(year) ? 29 : 28), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][month];
+  },
+
+  addMonths (date, value) {
+    let d = new Date(date);
+    let n = d.getDate();
+    d.setDate(1);
+    d.setMonth(d.getMonth() + value);
+    d.setDate(Math.min(n, DateUtil.getDaysInMonth(d.getFullYear(),d.getMonth())));
+    return d;
   }
 };
 

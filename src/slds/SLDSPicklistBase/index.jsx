@@ -27,7 +27,7 @@ module.exports = React.createClass( {
       label: 'Picklist',
       value: null,
       options: [],
-      focused: false,
+      initialFocus: false,
       onClick () {
         console.log('onClick should be defined');
       },
@@ -36,12 +36,6 @@ module.exports = React.createClass( {
       },
       onUpdateHighlighted (nextIndex) {
         console.log('onUpdateHighlighted should be defined');
-      },
-      onMoveFocusPrev () {
-        console.log('onMoveFocusPrev should be defined');
-      },
-      onMoveFocusNext () {
-        console.log('onMoveFocusNext should be defined');
       }
     }
   },
@@ -58,8 +52,11 @@ module.exports = React.createClass( {
   },
 
   componentDidMount () {
-    if(this.props.focused){
-      this.setFocus();
+    if(this.props.initialFocus){
+ //     setTimeout(()=>{
+        this.setFocus();
+//        this.setState({isFocused:true});
+ //     }.bind(this),100);
     }
   },
 
@@ -131,18 +128,6 @@ module.exports = React.createClass( {
           highlightedIndex:0
         });
       }
-      else if (event.keyCode === KEYS.LEFT){
-        EventUtil.trapEvent(event);
-        if(this.props.onMoveFocusPrev){
-          this.props.onMoveFocusPrev();
-        }
-      }
-      else if (event.keyCode === KEYS.RIGHT){
-        EventUtil.trapEvent(event);
-        if(this.props.onMoveFocusNext){
-          this.props.onMoveFocusNext();
-        }
-      }
     }
   },
 
@@ -209,7 +194,6 @@ module.exports = React.createClass( {
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}
             onClick={this.handleClick}
-            autoFocus={this.props.focused}
             tabIndex={this.state.isOpen?-1:0}
             onKeyDown={this.handleKeyDown} >
             <span className="slds-truncate">{this.getPlaceholder()}</span>
@@ -250,10 +234,6 @@ module.exports = React.createClass( {
 
     if(this.props.value !== prevProps.value){
       this.handleSelect(this.getIndexByValue(this.props.value));
-    }
-
-    if(this.props.focused && !prevProps.focused){
-      this.setFocus();
     }
   },
 
