@@ -7,7 +7,7 @@ import LoaderCore, {CONTROL} from '../../core/loader';
 // Framework specific
 import State from '../state';
 
-const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+const $ = Lib.global.jQuery || Lib.global.$;
 
 let Loader = function Loader (element, options) {
 	this.options = Lib.extend({}, options);

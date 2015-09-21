@@ -6,6 +6,7 @@ import classNames from 'classnames';
 
 // Traits
 import Disableable from '../traits/disableable';
+import Openable from '../traits/openable';
 import Selectable from '../traits/selectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
@@ -13,7 +14,7 @@ export const CONTROL = 'selectlist';
 
 const resizeCache = {};
 
-const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavigable, {
+const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -30,10 +31,6 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNavi
 	
 	_defaultProperties: {
 		collection: []
-	},
-	
-	_defaultState: {
-		isOpen: false
 	},
 	
 /* Accessors: These may be supplied in the options hash to override default behavior
@@ -142,7 +139,7 @@ getKey (item)
 
 		if (width !== this.getState('width')) {
 			this.setState({ width });
-			if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+			if (Lib.isFunction(this._resetWidth)) this._resetWidth(width);
 		}
 	}
 });

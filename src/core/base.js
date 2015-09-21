@@ -5,8 +5,7 @@ const Base = {
 	// CSS classes used across every control
 	cssClasses: {
 		NAMESPACE: 'fuelux',
-		SR_ONLY: 'sr-only',
-		OPEN: 'open'
+		SR_ONLY: 'sr-only'
 	},
 	
 	_defaultState: {

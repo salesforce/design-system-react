@@ -8,7 +8,7 @@ import SelectlistCore, {CONTROL} from '../../core/selectlist';
 import Events from '../events';
 import State from '../state';
 
-const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+const $ = Lib.global.jQuery || Lib.global.$;
 
 // Template imports
 import template from './selectlist-template';
@@ -138,8 +138,8 @@ export const SelectlistObject = {
 
 		this._bindUIEvents();
 
-		this._closeMenu = $.proxy(this._closeMenu, this);
-		if (!this.isBootstrap3) document.addEventListener('click', this._closeMenu, false);
+		this._closeOnClick = $.proxy(this._closeOnClick, this);
+		if (!this.isBootstrap3) document.addEventListener('click', this._closeOnClick, false);
 		
 		// For tests, will consider publishing later
 		this.trigger('rendered', this.elements.wrapper);
@@ -208,8 +208,9 @@ export const SelectlistObject = {
 		this.rendered = true;
 	},
 
+	// TO-DO: Maybe move this to the core?
 	destroy () {
-		if (!this.isBootstrap3) document.removeEventListener('click', this._closeMenu, false);
+		if (!this.isBootstrap3) document.removeEventListener('click', this._closeOnClick, false);
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
 	},
@@ -232,33 +233,17 @@ export const SelectlistObject = {
 		}
 	},
 
-	_closeMenu (e) {
-		if (e.originator !== this) {
-			this.setState({
-				isOpen: false
-			});
-
-			this._onExpandOrCollapse();
-		}
-	},
-
-	_onEnabled () {
+	_onEnabledOrDisabled () {
 		if (this.rendered) {
-			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-			this.elements.button.prop('disabled', false);
-			this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
+			const disabled = !!this.getProperty('disabled');
+			
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
+			this.elements.button.prop('disabled', disabled);
+			this.elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 		}
 	},
 
-	_onDisabled () {
-		if (this.rendered) {
-			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-			this.elements.button.prop('disabled', true);
-			this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
-		}
-	},
-
-	resetWidth (width) {
+	_resetWidth (width) {
 		if (this.rendered) {
 			this.elements.button.width(width);
 			this.elements.dropdownMenu.width(width);
@@ -266,16 +251,7 @@ export const SelectlistObject = {
 	},
 
 	_handleClicked (e) {
-		const disabled = !!this.getProperty('disabled');
-		e.originalEvent.originator = this;
-
-		if (!disabled) {
-			this.setState({
-				isOpen: !this.getState('isOpen')
-			});
-
-			this._onExpandOrCollapse();
-		}
+		this._openToggleEvent(e.originalEvent);
 	},
 
 	_handleMenuItemSelected (e) {
@@ -301,7 +277,6 @@ export const SelectlistObject = {
 		if (key) {
 			e.preventDefault();
 			this._keyboardNav(key, this.elements.menuItems);
-			this._onExpandOrCollapse();
 		}
 	},
 
@@ -317,7 +292,6 @@ export const SelectlistObject = {
 		if (key && key.length === 1) {
 			e.preventDefault();
 			this._keyboardNav(key, this.elements.menuItems);
-			this._onExpandOrCollapse();
 		}
 	}
 };

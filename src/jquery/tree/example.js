@@ -1,7 +1,7 @@
 import * as Lib from '../../lib/lib';
 import Tree from './tree';
 
-const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+const $ = Lib.global.jQuery || Lib.global.$;
 
 const collection = [
 	{
