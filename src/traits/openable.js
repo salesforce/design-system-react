@@ -4,7 +4,8 @@ import * as Lib from '../lib/lib';
 
 const Openable = {
 	cssClasses: {
-		OPEN: 'open'
+		OPEN: 'open',
+		SHOWING: 'showing'
 	},
 	
 	_defaultState: {
