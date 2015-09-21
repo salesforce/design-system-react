@@ -43,16 +43,6 @@ module.exports = function (grunt) {
 				}
 			}
 		},
-		watch: {
-			eslint: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
-				tasks: ['eslint']
-			},
-			tests: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
-				tasks: ['compileTests', 'compileTestsApi']
-			}
-		},
 		connect: {
 			server: {
 				options: {
@@ -89,8 +79,8 @@ module.exports = function (grunt) {
 
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
-	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi']);
-	grunt.registerTask('build', ['default', 'babel']);
+	grunt.registerTask('default', ['compileTests', 'compileTestsApi']);
+	grunt.registerTask('build', ['eslint', 'default', 'babel']);
 	grunt.registerTask('serve', ['default', 'webpack-dev-server:start']);
 	grunt.registerTask('test', ['default', 'webpack', 'connect', 'mocha']);
 };
