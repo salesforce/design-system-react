@@ -1,5 +1,5 @@
 {
-  "name": "slds-react",
+  "name": "design-system-react",
   "version": "0.1.0",
   "description": "Future home of SLDS-React components",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/salesforce-ux/slds-react"
+    "url": "https://github.com/salesforce-ux/design-system-react"
   },
   "keywords": [
     "react",
@@ -28,9 +28,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/salesforce-ux/slds-react/issues"
+    "url": "https://github.com/salesforce-ux/design-system-react/issues"
   },
-  "homepage": "https://github.com/salesforce-ux/slds-react",
+  "homepage": "https://github.com/salesforce-ux/design-system-react",
   "devDependencies": {
     "babel-core": "^5.4.7",
     "babel-eslint": "^3.1.9",
