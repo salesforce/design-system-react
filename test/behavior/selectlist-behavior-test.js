@@ -40,7 +40,7 @@ describe(controlName + ' component', function () {
 		'createComponentDeclarative',
 		'getComponentElement',
 		'destroyComponent',
-		'destroyComponentDeclarative',
+		'destroyComponentDeclarative'
 	], [
 		// other behaviors required for tests
 	], function (testingBehaviorHandlers) {
@@ -68,17 +68,20 @@ describe(controlName + ' component', function () {
 					container: container,
 					collection: []
 				}, rendered );
-				
+
 			});
 
 			it('should return an object representing the component', function () {
+				function rendered (component) {
+					expect(component).to.be.an('object');
+					testingBehaviorHandlers.destroyComponent(component);
+				}
+
 				const component = testingBehaviorHandlers.createComponent( {
 					container: container,
 					collection: []
-				} );
+				}, rendered );
 
-				expect(component).to.be.an('object');
-				testingBehaviorHandlers.destroyComponent(component);
 			});
 
 			it('destroy should remove ' + controlName + ' from container', function () {
@@ -90,12 +93,12 @@ describe(controlName + ' component', function () {
 
 				const component = testingBehaviorHandlers.createComponent( {
 					container: container,
-					collection: [],
-				}, rendered );
+					collection: []
+				}, 	rendered );
 
 			});
 		});
-
+		
 		describe('create and destroy component (declarative)', function () {
 			it('should create a ' + controlName + ' on the DOM within the container', function () {
 				const component = testingBehaviorHandlers.createComponentDeclarative({
@@ -152,7 +155,7 @@ describe(controlName + ' component', function () {
 		// 		componentElement = testingBehaviorHandlers.getComponentElement(component);
 
 		// 	});
-
+	
 		// 	afterEach(function () {
 		// 		testingBehaviorHandlers.destroyComponent(component);
 		// 		component = null;

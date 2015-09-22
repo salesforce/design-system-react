@@ -7,6 +7,7 @@
 import { CONTROL as controlName } from '../../src/core/selectlist';
 import SelectlistCore from '../../src/core/selectlist';
 import * as Lib from '../../src/lib/lib';
+const Core = SelectlistCore;
 
 // Run in legacy plugin mode
 import '../../src/helpers/create-jquery-plugin';
@@ -17,7 +18,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 export const behaviorHandlers = {
 	createComponentDeclarative: {
 		default: function (initData) {
-			let declarativeMarkup = `<div id="mySelectlist" class="btn-group selectlist" data-resize="auto">
+			const declarativeMarkup = `<div id="mySelectlist" class="btn-group selectlist" data-resize="auto">
 				<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 					<span class="selected-label">&nbsp;</span>
 					<span class="caret"></span>
@@ -38,18 +39,18 @@ export const behaviorHandlers = {
 
 			// initialize
 			$(initData.container).append(declarativeMarkup);
-			let $selectlist = $(initData.container).find('.selectlist').selectlist();
+			const $selectlist = $(initData.container).find('.' + Core.cssClasses.CONTROL).selectlist();
 			return $selectlist;
 		}
 	},
 
 	createComponent: {
 		default: function (initData, rendered) {
-			let imperativeMarkup = '<div id="my-selectlist"></div>';
+			const imperativeMarkup = '<div id="my-selectlist"></div>';
 			$(initData.container).append(imperativeMarkup);
-			const $selectlist = new Selectlist($('#my-'+ controlName), initData);
+			const $selectlist = new Selectlist( $('#my-' + controlName), initData );
 
-			$('#my-selectlist').on('rendered.fu.selectlist', function (event, data) {
+			$('#my-selectlist').on('rendered.fu.selectlist', function () {
 				rendered($selectlist);
 			});
 
@@ -59,7 +60,7 @@ export const behaviorHandlers = {
 
 	getComponentElement: {
 		default: function (createdComponent) {
-			return createdComponent.options.container.find('.selectlist')[0];
+			return createdComponent.options.container.find('.' + Core.cssClasses.CONTROL)[0];
 		}
 	},
 
