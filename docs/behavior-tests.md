@@ -18,7 +18,7 @@ If the API for accessing a component is different from framework to framework, t
 
 # Overview #
 
-We have structured the tests such that the behavior tests drive the API, and from there the code. Unit testing of individual API methods and underlying code is still required, but the primary focus is on the behavior tests that _then_ manipulate the components. They are structured like this:
+We have structured the tests such that the behavior tests drive the API, and from there the code. Unit testing has been abstracted to a higher level--the behavior tests execute functions that get implemented in facade specific ways that _then_ manipulate the components. You could call it a "testing API" for the components that guarantee parity across all the facades. They are structured like this:
 
 ```Text
                   --- Facade Tests (jQuery) ------- Facade Specific API ---
