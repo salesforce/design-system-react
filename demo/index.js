@@ -1,3 +1,5 @@
+'use strict';
+
 import React from 'react';
 import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;

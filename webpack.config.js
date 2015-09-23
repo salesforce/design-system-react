@@ -6,12 +6,12 @@ var ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   devtool: 'eval',
   entry: [
-    './src/index'
+    './demo/index'
   ],
   output: {
-    path: path.join(__dirname, 'static'),
+    path: path.join(__dirname, 'demo', 'static'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/demo/static/'
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
@@ -29,7 +29,7 @@ module.exports = {
     loaders: [{
         test: /\.jsx?$/,
         loaders: ['babel'],
-        include: path.join(__dirname, 'src')
+        include: [path.join(__dirname, 'demo'),path.join(__dirname, 'components')]
       },
       {
         test: /\.css$/,
