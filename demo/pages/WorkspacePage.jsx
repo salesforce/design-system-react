@@ -97,7 +97,7 @@ export default class WorkspacePage extends Component {
                   <dd>
                     <p>
                       <span className="slds-avatar slds-avatar--circle slds-avatar--x-small">
-                        <img src="/demo_assets/avatar2.jpg" alt="Gordon Figgis" /> 
+                        <img src="demo/demo_assets/avatar2.jpg" alt="Gordon Figgis" /> 
                       </span>
                       <a href>Gordon Figgis</a>
                     </p>
