@@ -4,7 +4,7 @@
   "description": "Future home of SLDS-React components",
   "scripts": {
     "start": "node server.js",
-    "lint": "eslint src",
+    "lint": "eslint components",
     "dist": "webpack",
     "compile": "babel -d lib/ components/",
     "prepublish": "npm run compile"
