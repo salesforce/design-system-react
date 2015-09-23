@@ -14,32 +14,26 @@ const Selectable = {
 	_selectableProperty: 'selection',
 
 	_setSelection (selection) {
-		let promise;
+		const select = Lib.bind(function select () {
+			const props = {};
+				
+			props[this._selectableProperty] = selection;
+			
+			this.setProperties(props);
+			
+			if (Lib.isFunction(this._onSelected)) this._onSelected(this._getItemAdapter(selection));
+			
+			// Trigger the event using facade-native methods
+			this.trigger('changed', selection);
+		}, this);
 		
-		if (this.getProperty(this._selectableProperty) === selection) {
-			promise = Promise.resolve(false);
-		} else if (!Lib.isFunction(this._canSelect)) {
-			promise = Promise.resolve(true);
-		} else {
-			promise = Promise.resolve(this._canSelect(selection));
-		}
-		
-		promise.then(canSelect => {
-			if (canSelect !== false) {
-				const props = {};
-				
-				props[this._selectableProperty] = selection;
-				
-				this.setProperties(props);
-				
-				if (Lib.isFunction(this._onSelected)) this._onSelected(this._getItemAdapter(selection));
-				
-				// Trigger the event using facade-native methods
-				this.trigger('changed', selection);
+		if (this.getProperty(this._selectableProperty) !== selection) {
+			if (!Lib.isFunction(this._canSelect)) {
+				select();
+			} else {
+				this._canSelect(selection, select);
 			}
-		}, error => {
-			Lib.log(error);
-		});
+		}
 	},
 
 	// Pass any combination of key / value pairs
