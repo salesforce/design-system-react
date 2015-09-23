@@ -50,17 +50,19 @@ getKey (item)
 		}
 	},
 	
-	_canSelect (step) {
-		let canMove;
-		
+	_canSelect (step, select) {
 		// TO-DO: Add more conditions for which moving to the step is prohibited
 		if (Lib.isFunction(this.canMoveToStep)) {
-			canMove = this.canMoveToStep(step);
+			Promise.resolve(this.canMoveToStep(step)).then(canSelect => {
+				if (canSelect !== false) {
+					select();
+				}
+			}, error => {
+				Lib.log(error);
+			});
 		} else {
-			canMove = true;
+			select();
 		}
-		
-		return canMove;
 	},
 	
 	getIndex () {

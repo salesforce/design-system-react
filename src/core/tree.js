@@ -93,8 +93,10 @@ getId (item)
 		}
 	},
 
-	_canSelect (item) {
-		return item.getType() === 'item' || !!this.getProperty('folderSelect');
+	_canSelect (item, select) {
+		if (item.getType() === 'item' || !!this.getProperty('folderSelect')) {
+			select();
+		}
 	},
 	
 	// TO-DO: This beginning code is basically the same as multi-select right now

@@ -79,10 +79,12 @@ getKey (item)
 		}
 	},
 	
-	_canSelect (newSelection) {
+	_canSelect (newSelection, select) {
 		const item = this._getItemAdapter(newSelection);
 		
-		return !item.getType() && !item.getDisabled();
+		if (!item.getType() && !item.getDisabled()) {
+			select();
+		}
 	},
 	
 	_onInitialized () {
