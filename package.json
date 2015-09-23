@@ -7,7 +7,8 @@
     "lint": "eslint components",
     "dist": "webpack",
     "compile": "babel -d lib/ components/",
-    "prepublish": "npm run compile"
+    "--prepublish": "npm run compile",
+    "postinstall": "npm run compile"
   },
   "repository": {
     "type": "git",
