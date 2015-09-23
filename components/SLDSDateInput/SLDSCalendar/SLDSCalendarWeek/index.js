@@ -48,6 +48,18 @@ module.exports = React.createClass({
     }
   },
 
+  handlePrevWeek (date) {
+    if(this.props.onPrevWeek){
+      this.props.onPrevWeek(date);
+    }
+  },
+
+  handleNextWeek (date) {
+    if(this.props.onNextWeek){
+      this.props.onNextWeek(date);
+    }
+  },
+
   render: function() {
     let days = [];
     let date = this.props.date;
@@ -63,6 +75,8 @@ module.exports = React.createClass({
           focused={DateUtil.isSameDay(this.props.highlightedDate, date)}
           onPrevDay={this.handlePrevDay}
           onNextDay={this.handleNextDay}
+          onPrevWeek={this.handlePrevWeek}
+          onNextWeek={this.handleNextWeek}
           onCancel={this.handleCancel} />);
         date = DateUtil.addDays(date,1);
     }

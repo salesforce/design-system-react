@@ -79,6 +79,26 @@ module.exports = React.createClass({
     }
   },
 
+  handlePrevWeek (date) {
+    const prevDate = DateUtil.addDays(date,-7);
+    if(!DateUtil.isSameMonth(prevDate,date)){
+      this.handleChangeDisplayedDate(prevDate);
+    }
+    else{
+      this.setState({highlightedDate:prevDate});
+    }
+  },
+
+  handleNextWeek (date) {
+    const nextDate = DateUtil.addDays(date,7);
+    if(!DateUtil.isSameMonth(nextDate,date)){
+      this.handleChangeDisplayedDate(nextDate);
+    }
+    else{
+      this.setState({highlightedDate:nextDate});
+    }
+  },
+
   render () {
 
 
@@ -143,6 +163,8 @@ module.exports = React.createClass({
           highlightedDate={this.state.highlightedDate}
           onPrevDay={this.handlePrevDay}
           onNextDay={this.handleNextDay}
+          onPrevWeek={this.handlePrevWeek}
+          onNextWeek={this.handleNextWeek}
           onCancel={this.handleCancel} />);
       date = DateUtil.addWeeks(date,1);
       done = count++ > 2 && monthIndex !== date.getMonth();

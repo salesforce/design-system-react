@@ -70,6 +70,22 @@ module.exports = React.createClass({
     }
   },
 
+  handleToPrevWeek(){
+    console.log('>>> handleToPrevWeek');
+    if(this.props.onPrevWeek){
+      console.log('>>> this.props.onPrevWeek');
+      this.props.onPrevWeek(this.props.date);
+    }
+  },
+
+  handleToNextWeek(){
+    console.log('>>> handleToNextWeek');
+    if(this.props.onNextWeek){
+      console.log('>>> this.props.onNextWeek');
+      this.props.onNextWeek(this.props.date);
+    }
+  },
+
   handleKeyDown(event) {
     if(event.keyCode){
       if(event.keyCode === KEYS.ENTER || 
@@ -93,13 +109,25 @@ module.exports = React.createClass({
           }
         }
       }
-      else if(event.keyCode === KEYS.RIGHT || event.keyCode === KEYS.DOWN){
+      else if(event.keyCode === KEYS.RIGHT){
         EventUtil.trapEvent(event);
         this.handleToNextDay();
       }
-      else if(event.keyCode === KEYS.LEFT || event.keyCode === KEYS.UP){
+      else if(event.keyCode === KEYS.LEFT){
         EventUtil.trapEvent(event);
         this.handleToPrevDay();
+      }
+      else if(event.keyCode === KEYS.RIGHT){
+        EventUtil.trapEvent(event);
+        this.handleToNextDay();
+      }
+      else if(event.keyCode === KEYS.UP){
+        EventUtil.trapEvent(event);
+        this.handleToPrevWeek();
+      }
+      else if(event.keyCode === KEYS.DOWN){
+        EventUtil.trapEvent(event);
+        this.handleToNextWeek();
       }
       else{
         EventUtil.trapEvent(event);
