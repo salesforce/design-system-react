@@ -47,6 +47,7 @@
   },
   "scripts": {
     "start": "grunt serve",
+    "serve": "webpack-dev-server",
     "test": "grunt test",
     "postinstall": "grunt build"
   },

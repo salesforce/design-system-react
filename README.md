@@ -3,11 +3,14 @@ Testing a core abstraction layer with many facades approach for FuelUX
 
 ### Setup
 * Clone the project
-* Have [Node.js](https://nodejs.org/) and [Grunt](http://gruntjs.com/) installed
+* Have [Node.js](https://nodejs.org/), [Grunt](http://gruntjs.com/), and [Webpack](https://webpack.github.io/) installed
 * Run `npm install` via terminal in the directory where the project has been cloned
 
 ### Running
 * Run `npm start` to start a static server on port 8080. You can navigate to `http://localhost:8080/examples/` to see a simple index page with links to examples in each facade
+
+### JavaScript Development
+* Run `npm run serve` to start a Webpack development server on port 8080. You can navigate to `http://localhost:8080/examples/` to see a simple index page with links to examples in each facade. This is will enable "hot module replacement" since ES6 modules are in used in the source.
 
 ### Testing
 * Run `npm test` to build the tests and see the results in the console. You can also run the tests in the browser by navigating to `http://localhost:8080/test/` after executing `npm start`
