@@ -7,7 +7,9 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React, { Component } from 'react';
+'use strict';
+
+import React from 'react';
 import SLDSPopover from '../SLDSPopover';
 import List from './list';
 
@@ -28,6 +30,7 @@ module.exports = React.createClass( {
       value: null,
       options: [],
       initialFocus: false,
+      modal: false,
       onClick () {
         console.log('onClick should be defined');
       },
@@ -143,15 +146,8 @@ module.exports = React.createClass( {
     this.setFocus();
   },
 
-  getPopover() {
-    return (
-      !this.props.disabled && this.state.isOpen?
-        <div 
-          ref="popover"
-          className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu" 
-          targetElement={this.refs.button} 
-          style={{maxHeight:'20em'}}>
-          <List
+  getPopoverContent() {
+    return <List
             ref='list'
             options={this.props.options}
             label={this.props.label}
@@ -162,8 +158,27 @@ module.exports = React.createClass( {
             onListBlur={this.handleListBlur}
             onListItemBlur={this.handleListItemBlur}
             onCancel={this.handleCancel}
-            theme={this.props.theme} />
+            theme={this.props.theme} />;
+  },
+
+  getSimplePopover() {
+    return (
+      !this.props.disabled && this.state.isOpen?
+        <div 
+          ref="popover"
+          className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu" 
+          targetElement={this.refs.button} 
+          style={{maxHeight:'20em'}}>
+          {this.getPopoverContent()}
         </div>:null
+    );
+  },
+
+  getModalPopover() {
+    return (
+      !this.props.disabled && this.state.isOpen?<SLDSPopover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
+          {this.getPopoverContent()}
+        </SLDSPopover>:null
     );
   },
 
@@ -200,7 +215,7 @@ module.exports = React.createClass( {
             <Icon name="down" category="utility" />
           </button>
 
-          {this.getPopover()}
+          {this.props.modal?this.getModalPopover():this.getSimplePopover()}
         </form>
 
         </div>
