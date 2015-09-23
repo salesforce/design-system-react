@@ -14,7 +14,7 @@ const Selectable = {
 	_selectableProperty: 'selection',
 
 	_setSelection (selection) {
-		const select = Lib.bind(function select () {
+		const _select = Lib.bind(function _select () {
 			const props = {};
 				
 			props[this._selectableProperty] = selection;
@@ -29,9 +29,9 @@ const Selectable = {
 		
 		if (this.getProperty(this._selectableProperty) !== selection) {
 			if (!Lib.isFunction(this._canSelect)) {
-				select();
+				_select();
 			} else {
-				this._canSelect(selection, select);
+				this._canSelect(selection, _select);
 			}
 		}
 	},
