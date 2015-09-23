@@ -6,7 +6,7 @@
     "start": "node server.js",
     "lint": "eslint src",
     "dist": "webpack",
-    "compile": "babel -d lib/ src/slds/",
+    "compile": "babel -d lib/ components/",
     "prepublish": "npm run compile"
   },
   "repository": {

@@ -8,17 +8,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { Component } from 'react';
-import SLDSDateInput from '../slds/SLDSDateInput/index';
-import SLDSLookup from '../slds/SLDSLookup/index';
-import SLDSTooltip from '../slds/SLDSTooltip';
-import SLDSOverlayTrigger from '../slds/SLDSOverlayTrigger';
-import SLDSModal from '../slds/SLDSModal';
-import SLDSPicklist from '../slds/SLDSPicklist';
-import SLDSTabs from '../slds/SLDSTabs';
-import SLDSGrid from '../slds/SLDSGrid';
-import SLDSButton from '../slds/SLDSButton';
-import SLDSPicklistBase from '../slds/SLDSPicklistBase';
-import {ButtonIcon, Icon} from "./../slds/SLDSIcons";
+import SLDSDateInput from '../../components/SLDSDateInput/index';
+import SLDSLookup from '../../components/SLDSLookup/index';
+import SLDSTooltip from '../../components/SLDSTooltip';
+import SLDSOverlayTrigger from '../../components/SLDSOverlayTrigger';
+import SLDSModal from '../../components/SLDSModal';
+import SLDSPicklist from '../../components/SLDSPicklist';
+import SLDSTabs from '../../components/SLDSTabs';
+import SLDSGrid from '../../components/SLDSGrid';
+import SLDSButton from '../../components/SLDSButton';
+import SLDSPicklistBase from '../../components/SLDSPicklistBase';
+import {ButtonIcon, Icon} from "./../../components/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
 
 const SLDSColumn = SLDSGrid.Column;
