@@ -1,7 +1,7 @@
 {
   "name": "design-system-react",
   "version": "0.0.1",
-  "description": "Future home of SLDS-React components",
+  "description": "Salesforce Lightning Design System React components",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint components",
@@ -15,20 +15,17 @@
   },
   "keywords": [
     "react",
-    "reactjs",
     "slds",
     "salesforce",
     "salesforce-ux",
     "lightning",
     "design system",
-    "hot",
-    "reload",
-    "hmr",
-    "live",
-    "edit",
-    "webpack"
+    "lightning design system",
+    "salesforce lightning design system",
+    "interactive components",
+    "interactive",
+    "components"
   ],
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/salesforce-ux/design-system-react/issues"
   },
