@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 import TetherDrop from "tether-drop";
-import { TransitionSpring, Spring } from 'react-motion';
+//import { TransitionSpring, Spring } from 'react-motion';
 
 module.exports = React.createClass( {
 
@@ -80,15 +80,24 @@ module.exports = React.createClass( {
               float:'inherit',
               position:'inherit',
             }}>
-
+{/*
         <Spring 
           defaultValue={{ val:0 }}
           endValue={{ val:1, config: [70, 10] }}>
           {currentVal => {
-              return (<div style={{opacity:currentVal.val}}>{this.props.children}</div>);
+              return (<div style={{opacity:currentVal.val}}>
+
+*/}
+{
+                this.props.children
+              }
+{/*
+              </div>);
             }.bind(this)
           }
         </Spring>
+
+*/}
       </div>
     );
 

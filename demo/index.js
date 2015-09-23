@@ -2,6 +2,11 @@ import React from 'react';
 import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;
 
+import { SLDSSettings } from '../components/';
+SLDSSettings.setAssetsPath('demo/assets/');
+
+console.log('SLDSSettings.getAssetsPath: '+SLDSSettings.getAssetsPath());
+
 import App from './App';
 import HomePage from './pages/HomePage';
 import WorkspacePage from './pages/WorkspacePage';

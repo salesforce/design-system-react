@@ -8,7 +8,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from "react";
-import {Icon} from "./../slds/SLDSIcons";
+
+import {ButtonIcon, Icon} from "./../../components/SLDSIcons";
+import SLDSGrid from '../../components/SLDSGrid';
+
+const SLDSColumn = SLDSGrid.Column;
 
 import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;

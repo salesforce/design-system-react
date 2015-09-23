@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import SLDSDateInput from './slds/SLDSDateInput/index';
 import BaseLayout from './layout/base';
 
 import Router from 'react-router';

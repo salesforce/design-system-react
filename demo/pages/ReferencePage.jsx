@@ -8,9 +8,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { Component } from 'react';
-import SLDSDateInput from '../slds/SLDSDateInput/index';
+import SLDSDateInput from '../../components/SLDSDateInput/index';
+import SLDSGrid from '../../components/SLDSGrid';
 
-
+const SLDSColumn = SLDSGrid.Column;
 export default class SecondPage extends Component {
 
   render() {

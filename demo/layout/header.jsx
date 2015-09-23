@@ -8,7 +8,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from "react";
-import {Icon} from "./../slds/SLDSIcons";
+
+import {ButtonIcon, Icon} from "./../../components/SLDSIcons";
 
 module.exports = React.createClass( {
 

@@ -8,9 +8,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { Component } from 'react';
-import SLDSDateInput from '../slds/SLDSDateInput/index';
-import {ButtonIcon, Icon} from "./../slds/SLDSIcons";
+import SLDSDateInput from '../../components/SLDSDateInput/index';
+import {ButtonIcon, Icon} from "./../../components/SLDSIcons";
+import {default as PrismCode} from "react-prism/lib/PrismCode";
+import SLDSGrid from '../../components/SLDSGrid';
 
+const SLDSColumn = SLDSGrid.Column;
 
 export default class WorkspacePage extends Component {
 
