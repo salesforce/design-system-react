@@ -36,8 +36,9 @@ module.exports = React.createClass( {
 
   getDefaultProps () {
     return {
-      targetAttachment: "bottom left",
-      className: "slds-dropdown"
+      targetAttachment: 'bottom left',
+      className: 'slds-dropdown',
+      closeOnTabKey: false 
     };
   },
 
@@ -73,8 +74,10 @@ module.exports = React.createClass( {
 
   handleKeyDown (event) {
     if(event.keyCode === KEYS.TAB){
-      EventUtil.trap(event);
-      this.handleClose();
+      if(this.props.closeOnTabKey){
+        EventUtil.trap(event);
+        this.handleClose();
+      }
     }
   },
 
