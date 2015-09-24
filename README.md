@@ -40,8 +40,6 @@ import {SLDSPicklistBase} from 'design-system-react';
 [![browser support](/readme-assets/SLDSPicklistBase.gif)](/readme-assets/SLDSPicklistBase.gif)
 
 
-
-
 ### Work in progress
 
 ### Accessible [DatePicker Base](http://www.lightningdesignsystem.com/components/datepickers#base) Component
@@ -54,14 +52,4 @@ import {SLDSPicklistBase} from 'design-system-react';
 * Modals
 * Buttons
 
-## Layouts
 
-### Completed
-
-* Record Home
-
-### Work in progress
-...
-
-### Future Pipeline
-...
