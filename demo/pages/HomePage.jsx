@@ -96,7 +96,7 @@ export default class HomePage extends Component {
                     ]} 
                     value='C0'
                     label="Contacts" 
-                    modal={true}
+                    modal={false}
                     placeholder = "Select a contact" />
               </div>
 
