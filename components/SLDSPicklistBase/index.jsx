@@ -165,7 +165,6 @@ module.exports = React.createClass( {
     return (
       !this.props.disabled && this.state.isOpen?
         <div 
-          ref="popover"
           className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu" 
           targetElement={this.refs.button} 
           style={{maxHeight:'20em'}}>
@@ -176,7 +175,11 @@ module.exports = React.createClass( {
 
   getModalPopover() {
     return (
-      !this.props.disabled && this.state.isOpen?<SLDSPopover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
+      !this.props.disabled && this.state.isOpen?
+        <SLDSPopover 
+          className='slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu' 
+          targetElement={this.refs.date} 
+          onClose={this.handleCancel}>
           {this.getPopoverContent()}
         </SLDSPopover>:null
     );

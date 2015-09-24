@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 'use strict';
 
-module.exports = {
+const EventUtil = {
 
   trapEvent(event){
     event.preventDefault();
@@ -20,6 +20,12 @@ module.exports = {
       event.nativeEvent.preventDefault();
       event.nativeEvent.stopPropagation();
     }
+  },
+
+  trap(event){
+    return EventUtil.trapEvent( event );
   }
 
 };
+
+module.exports = EventUtil;

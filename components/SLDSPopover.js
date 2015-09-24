@@ -9,17 +9,22 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 'use strict';
 
-import React from "react";
-import TetherDrop from "tether-drop";
+import React from 'react';
+import TetherDrop from 'tether-drop';
+import {EventUtil,KEYS} from './utils';
 //import { TransitionSpring, Spring } from 'react-motion';
 
 module.exports = React.createClass( {
 
   displayName: 'SLDSPopover',
 
-  mixins: [ require( "react-onclickoutside" ) ],
+  mixins: [ require( 'react-onclickoutside' ) ],
 
-  handleClickOutside (e) {
+  handleClickOutside () {
+    this.handleClose();
+  },
+
+  handleClose () {
     if(this.props.onClose){
       this.props.onClose();
     }
@@ -66,20 +71,29 @@ module.exports = React.createClass( {
     }
   },
 
+  handleKeyDown (event) {
+    if(event.keyCode === KEYS.TAB){
+      EventUtil.trap(event);
+      this.handleClose();
+    }
+  },
+
   popoverComp () {
     if(!this.state.isOpen){
       return <span></span>;
     }
     return (
       <div className={'SLDSPopover '+this.props.className}
-            style={{
-              transform:'none',
-              WebkitTransform:'none',
-              marginTop:'0.20rem',
-              marginBottom:'0.35rem',
-              float:'inherit',
-              position:'inherit',
-            }}>
+        style={{
+          transform:'none',
+          WebkitTransform:'none',
+          marginTop:'0.20rem',
+          marginBottom:'0.35rem',
+          float:'inherit',
+          position:'inherit',
+        }}
+        onKeyDown={this.handleKeyDown}
+      >
 {/*
         <Spring 
           defaultValue={{ val:0 }}
