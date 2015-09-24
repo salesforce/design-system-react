@@ -109,7 +109,7 @@ export default class HomePage extends Component {
             <div className="slds-p-around--medium">
 
               <h3 className="slds-text-heading--medium slds-truncate">
-                Datepickers
+                Datepickers (Work in progress)
               </h3>
 
               <PrismCode className='language-markup'>
@@ -125,7 +125,7 @@ export default class HomePage extends Component {
             <div className="slds-p-around--medium">
 
               <h3 className="slds-text-heading--medium slds-truncate">
-                Lookups
+                Lookups (Work in progress)
               </h3>
 
               <PrismCode className='language-markup'>
@@ -137,6 +137,8 @@ export default class HomePage extends Component {
               </div>
 
             </div>
+
+{/*
 
             <div className="slds-p-around--medium">
 
@@ -164,6 +166,7 @@ export default class HomePage extends Component {
                 </SLDSTabs>
               </div>
             </div>
+*/}
 
 
           </div>

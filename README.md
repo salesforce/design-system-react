@@ -41,22 +41,18 @@ import {SLDSPicklistBase} from 'design-system-react';
 
 
 
+
+### Work in progress
+
 ### Accessible [DatePicker Base](http://www.lightningdesignsystem.com/components/datepickers#base) Component
 
 [![browser support](/readme-assets/SLDSDatePickerBase.gif)](/readme-assets/SLDSDatePickerBase.gif)
 
-### Work in progress
-* buttons 90%
-* grid 90%
-* lookups 60%
-* modals 90%
-* picklists 80%
-* popovers 90%
-* tabs 90%
-* tooltips 80%
 
 ### Future Pipeline
-...
+* Lookups
+* Modals
+* Buttons
 
 ## Layouts
 
