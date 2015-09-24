@@ -31,6 +31,8 @@ module.exports = React.createClass( {
       options: [],
       initialFocus: false,
       modal: false,
+      className:'',
+      listClassName:'',
       onClick () {
         console.log('onClick should be defined');
       },
@@ -151,6 +153,7 @@ module.exports = React.createClass( {
             ref='list'
             options={this.props.options}
             label={this.props.label}
+            className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
             selectedIndex={this.state.selectedIndex}
             onSelect={this.handleSelect} 
@@ -207,7 +210,7 @@ module.exports = React.createClass( {
           <button 
             id={this.props.id}
             ref="button"
-            className="slds-button slds-button--neutral slds-picklist__label" 
+            className={'slds-button slds-button--neutral slds-picklist__label '+this.props.className }
             aria-haspopup="true"
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}

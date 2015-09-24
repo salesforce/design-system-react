@@ -81,7 +81,7 @@ export default class HomePage extends Component {
               <div className="slds-p-vertical--large">
                 <SLDSPicklistBase 
                     options={[
-                      {label:'A Option',value:'A0'},
+                      {label:'A Option Option Super Super Long',value:'A0'},
                       {label:'B Option',value:'B0'},
                       {label:'C Option',value:'C0'},
                       {label:'D Option',value:'D0'},
@@ -90,7 +90,7 @@ export default class HomePage extends Component {
                       {label:'B2 Option',value:'B1'},
                       {label:'C2 Option',value:'C1'},
                       {label:'D2 Option',value:'D1'},
-                      {label:'E2 Option',value:'E1'},
+                      {label:'E2 Option Super Super Long',value:'E1'},
 
 
                     ]} 

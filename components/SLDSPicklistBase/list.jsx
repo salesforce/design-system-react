@@ -22,9 +22,10 @@ module.exports = React.createClass({
   getDefaultProps () {
     return {
       options:[],
-      label:"Menu",
+      label:'Menu',
       selectedIndex:-1,
       highlightedIndex:0,
+      className:'',
       onListBlur:()=>{
         console.log("onListBlur should be overwritten");
       },
@@ -146,7 +147,7 @@ module.exports = React.createClass({
     return (
       <div 
         ref="scroll"
-        className="slds-wrap slds-grow slds-scrollable--y"
+        className={'slds-wrap slds-grow slds-scrollable--y '+this.props.className}
         style={{
           maxHeight:260
         }}
