@@ -34,6 +34,10 @@ export default class HomePage extends Component {
     this.setState({showModal: !this.state.showModal});
   }
 
+  handleButtonClick(){
+    console.log("SLDS Test Button Clicked");
+  }
+
   render() {
     return (
       <SLDSGrid flavor="vertical" className="stage slds-nowrap">
@@ -63,7 +67,20 @@ export default class HomePage extends Component {
 
 
 
+            <div className="slds-p-around--medium">
+              <h3 className="slds-text-heading--medium slds-truncate">
+                Button
+              </h3>
 
+              <PrismCode className='language-markup'>
+                {require("raw-loader!../code-snippets/SLDSButton.txt")}
+              </PrismCode>
+              <div className="slds-p-vertical--large">
+                <SLDSButton flavor="neutral" onClick={this.handleButtonClick}>
+                  Test Button
+                </SLDSButton>
+              </div>
+            </div>
 
 
 
@@ -79,7 +96,7 @@ export default class HomePage extends Component {
               </PrismCode>
 
               <div className="slds-p-vertical--large">
-                <SLDSPicklistBase 
+                <SLDSPicklistBase
                     options={[
                       {label:'A Option Option Super Super Long',value:'A0'},
                       {label:'B Option',value:'B0'},
@@ -93,9 +110,9 @@ export default class HomePage extends Component {
                       {label:'E2 Option Super Super Long',value:'E1'},
 
 
-                    ]} 
+                    ]}
                     value='C0'
-                    label="Contacts" 
+                    label="Contacts"
                     modal={true}
                     placeholder = "Select a contact" />
               </div>
