@@ -26,7 +26,7 @@ module.exports = React.createClass( {
       placeholder: 'Select an Item',
       filterWith: defaultFilter,
       onItemSelect: function(item){
-        console.log('onItemSelect should be defined');
+        //console.log('onItemSelect should be defined');
       }
     }
   },
@@ -60,7 +60,7 @@ module.exports = React.createClass( {
   },
 
   selectedItem(item) {
-    console.log('SELECTED: ',item);
+    //console.log('SELECTED: ',item);
     if(this.props.onItemSelect) this.props.onItemSelect(item);
 
     this.setState({
@@ -82,12 +82,12 @@ module.exports = React.createClass( {
 
   componentDidUpdate( prevProps, prevState) {
     if(prevState.currentSelectedItem && !this.state.currentSelectedItem){
-      if(this.refs.date){ 
+      if(this.refs.date){
         this.refs.date.getDOMNode().focus();
-      }      
+      }
     }
     else if(!prevState.currentSelectedItem && this.state.currentSelectedItem){
-      if(this.refs.clearSelectedItemButton && 
+      if(this.refs.clearSelectedItemButton &&
         this.refs.clearSelectedItemButton.getDOMNode &&
         this.refs.clearSelectedItemButton.getDOMNode() ){
           this.refs.clearSelectedItemButton.getDOMNode().focus();
@@ -112,7 +112,6 @@ module.exports = React.createClass( {
   popover() {
       return (
         this.state.isOpen?
-          <SLDSPopover className="slds-dropdown" targetElement={this.refs.date} onClose={this.handleClose}>
           <Body
           ref='list'
           searchTerm={this.state.searchTerm}
@@ -120,7 +119,7 @@ module.exports = React.createClass( {
           selectedItem={this.selectedItem}
           items={this.props.items}
           label={this.props.label}
-          onChange={this.handleChange} /></SLDSPopover>:null);
+          onChange={this.handleChange} />:null);
   },
 
   getPlaceholder() {
@@ -130,20 +129,20 @@ module.exports = React.createClass( {
   handleKeyDown(event) {
     if(event.keyCode){
       if(event.keyCode === 40){
-        console.log('down');
+        //console.log('down');
       }
       else if(event.keyCode === 38){
-        console.log('up');
+        //console.log('up');
       }
       else if(event.keyCode === 13){
-        console.log('enter');
+        //console.log('enter');
         let list = this.refs.list;
         if(list && list.items){
           let items = list.items();
           if(items && items.length){
             let item = items[0];
             this.selectedItem(item);
-            console.log('FIRST ITEM: ',item);
+            //console.log('FIRST ITEM: ',item);
           }
         }
       }
@@ -152,6 +151,8 @@ module.exports = React.createClass( {
 
   render() {
     let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
+    let activedescendant = this.state.currentSelectedItem ?  this.state.currentSelectedItem.id : "";
+
     return (
       <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">
         <div className="slds-form-element">
@@ -168,11 +169,13 @@ module.exports = React.createClass( {
               aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
+              aria-activedescendant={activedescendant}
+              aria-expanded={this.state.isOpen}
               role="combobox"
               onChange={this.handleChange}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
-              onClick={this.handleClick} 
+              onClick={this.handleClick}
               onKeyDown={this.handleKeyDown}
               value={this.state.searchTerm} />
           </div>

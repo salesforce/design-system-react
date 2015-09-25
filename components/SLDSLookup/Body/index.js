@@ -89,8 +89,8 @@ module.exports = React.createClass({
 
   render: function() {
     return (
-      <div 
-        className="ignore-react-onclickoutside"
+      <div
+        className="ignore-react-onclickoutside slds-lookup__menu"
         style={{
           position:'inherit',
           float:'inherit'
