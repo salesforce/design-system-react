@@ -11,7 +11,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import _ from 'lodash';
 import React from 'react';
-import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 const PT = React.PropTypes;
 import {Icon} from "./../SLDSIcons";

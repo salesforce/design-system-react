@@ -10,7 +10,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 const React = require('react');
-const ReactDOM = require('react-dom');
 const PT = React.PropTypes;
 const classNames = require('classnames');
 import {omit} from 'lodash';

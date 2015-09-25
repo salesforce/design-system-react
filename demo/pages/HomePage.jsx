@@ -12,7 +12,6 @@ import SLDSDateInput from '../../components/SLDSDateInput/index';
 import SLDSLookup from '../../components/SLDSLookup/index';
 import SLDSTooltip from '../../components/SLDSTooltip';
 import SLDSOverlayTrigger from '../../components/SLDSOverlayTrigger';
-import SLDSModal from '../../components/SLDSModal';
 import SLDSPicklist from '../../components/SLDSPicklist';
 import SLDSTabs from '../../components/SLDSTabs';
 import SLDSGrid from '../../components/SLDSGrid';
