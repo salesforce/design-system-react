@@ -1,0 +1,2 @@
+
+<SLDSButton flavor="neutral" onClick={this.handleButtonClick}>Test Button</SLDSButton>
