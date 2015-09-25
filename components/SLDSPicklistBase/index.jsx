@@ -34,7 +34,6 @@ module.exports = React.createClass( {
       className:'',
       listClassName:'',
       onClick () {
-        console.log('onClick should be defined');
       },
       onSelect (value){
         console.log('onItemSelect should be defined');
@@ -96,12 +95,20 @@ module.exports = React.createClass( {
   },
 
   handleClick(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.setState({isOpen:true});
-    if(this.props.onClick){
-      this.props.onClick();
+    EventUtil.trap(event);
+    if(!this.state.isOpen){
+      this.setState({isOpen:true});
+      if(this.props.onClick){
+        this.props.onClick();
+      }
     }
+    else{
+      this.handleClose();
+    }
+  },
+
+  handleMouseDown(event){
+    EventUtil.trapImmediate(event);
   },
 
   handleBlur(e) {
@@ -128,10 +135,12 @@ module.exports = React.createClass( {
           event.keyCode === KEYS.DOWN || 
           event.keyCode === KEYS.UP){
         EventUtil.trapEvent(event);
+
         this.setState({
           isOpen:true,
           highlightedIndex:0
         });
+
       }
     }
   },
@@ -205,7 +214,7 @@ module.exports = React.createClass( {
     let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
     return (
 
-      <div className={"slds-form-element  ignore-react-onclickoutside slds-theme--"+this.props.theme}>
+      <div className={"slds-form-element slds-theme--"+this.props.theme}>
         <div className={"slds-picklist slds-theme--"+this.props.theme}>
         <form>
           <button 
@@ -216,6 +225,7 @@ module.exports = React.createClass( {
             onBlur={this.handleBlur}
             onFocus={this.handleFocus}
             onClick={this.handleClick}
+            onMouseDown={this.handleMouseDown}
             tabIndex={this.state.isOpen?-1:0}
             onKeyDown={this.handleKeyDown} >
             <span className="slds-truncate">{this.getPlaceholder()}</span>
@@ -232,6 +242,7 @@ module.exports = React.createClass( {
   },
 
   componentDidUpdate( prevProps, prevState) {
+
     if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
       if(this.state.lastBlurredIndex === this.state.highlightedIndex){
         this.handleClose();
@@ -254,9 +265,11 @@ module.exports = React.createClass( {
       }
     }
 
+
     if(this.props.value !== prevProps.value){
       this.handleSelect(this.getIndexByValue(this.props.value));
     }
+
   },
 
 });

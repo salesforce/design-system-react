@@ -24,6 +24,13 @@ const EventUtil = {
 
   trap(event){
     return EventUtil.trapEvent( event );
+  },
+
+  trapImmediate(event){
+    if(event.nativeEvent){
+      event.nativeEvent.stopImmediatePropagation();
+    }
+    EventUtil.trap(event);
   }
 
 };
