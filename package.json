@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Salesforce Lightning Design System React components",
   "scripts": {
     "start": "node server.js",
