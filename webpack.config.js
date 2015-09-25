@@ -35,10 +35,12 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
+/*
       {
         test: /\.scss$/,
           loader: ExtractTextPlugin.extract('style-loader', 'css!sass')
       },
+*/
       {
         test: /\.(woff|woff2|svg)$/,
         loader: 'url-loader?limit=100000'

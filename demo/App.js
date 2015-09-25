@@ -5,14 +5,12 @@ import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;
 
 
-require('./index.scss')
+require('./index.css')
 
 export default class App extends Component {
   render() {
     return (
-    <BaseLayout>
         <RouteHandler/>
-    </BaseLayout>
     );
   }
 }

@@ -1,12 +1,8 @@
-@import "./prism.scss";
+@import "./prism.css";
 /*
 @import "./../salesforce-lightning-design-system-v0.8.0/scss/index.scss";
 */
 
-
-html,body {
-  height: inherit;
-}
 
 /*
 .header {
