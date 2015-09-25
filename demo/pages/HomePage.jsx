@@ -34,7 +34,7 @@ export default class HomePage extends Component {
   }
 
   handleButtonClick(){
-    console.log("SLDS Test Button Clicked");
+    alert("Test Button Clicked");
   }
 
   render() {
@@ -75,7 +75,7 @@ export default class HomePage extends Component {
                 {require("raw-loader!../code-snippets/SLDSButton.txt")}
               </PrismCode>
               <div className="slds-p-vertical--large">
-                <SLDSButton flavor="neutral" onClick={this.handleButtonClick}>
+                <SLDSButton flavor="brand" onClick={this.handleButtonClick}>
                   Test Button
                 </SLDSButton>
               </div>

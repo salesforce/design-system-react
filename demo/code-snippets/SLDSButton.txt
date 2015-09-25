@@ -1,2 +1,2 @@
 
-<SLDSButton flavor="neutral" onClick={this.handleButtonClick}>Test Button</SLDSButton>
+<SLDSButton flavor="brand" onClick={this.handleButtonClick}>Test Button</SLDSButton>
