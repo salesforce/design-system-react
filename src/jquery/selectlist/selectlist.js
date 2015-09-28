@@ -205,6 +205,12 @@ export const SelectlistObject = {
 			this.elements.wrapper = $el;
 		}
 
+		if ( this._collection._data.length === 0 ) {
+			this.disable();
+			$el.toggleClass(this.cssClasses.DISABLED, disabled);
+			this.setProperties({ disabled: true });
+		}
+
 		this.rendered = true;
 	},
 
@@ -299,20 +305,27 @@ export const SelectlistObject = {
 Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, SelectlistObject);
 
 // LEGACY METHODS
+//
+
+// aliased by getValue and selectedItem
+function selectedItem () {
+	let selection = this._getSelection();
+
+	if (selection) {
+		selection = Lib.extend({}, selection.get());
+
+		selection.selected = true;
+		delete selection._itemType;
+	}
+
+	return selection;
+}
+
+// TODO: add emptyLabelHTML that then overrides NONE_SELECTED
 
 export const legacyMethods = {
-	selectedItem () {
-		let selection = this._getSelection();
-
-		if (selection) {
-			selection = Lib.extend({}, selection.get());
-
-			selection.selected = true;
-			delete selection._itemType;
-		}
-
-		return selection;
-	},
+	getValue: selectedItem,
+	selectedItem: selectedItem,
 
 	selectByValue (value) {
 		return this.setSelection({ value: value });

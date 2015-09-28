@@ -24,6 +24,7 @@
     "grunt-babel": "^5.0.1",
     "grunt-cli": "^0.1.13",
     "grunt-contrib-connect": "^0.10.1",
+    "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^17.1.0",
     "grunt-mocha": "^0.4.13",
     "grunt-webpack": "^1.0.11",

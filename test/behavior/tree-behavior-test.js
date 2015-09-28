@@ -15,7 +15,7 @@ import { verifyFacadeProvidesBehaviorCallbacks, registerBehaviorTestCombinations
 import { tree as componentFacadeTestLib } from '../tests-api';
 
 import { CONTROL as controlName } from '../../src/core/tree';
-import TreeCore from '../../src/core/tree';
+// import TreeCore from '../../src/core/tree';
 
 const $ = require('jquery');
 const chai = require('chai');
