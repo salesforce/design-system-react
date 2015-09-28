@@ -11,20 +11,35 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSButton from '../../../components/SLDSButton';
-import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
-import {default as PrismCode} from "react-prism/lib/PrismCode";
+import {ButtonIcon, Icon} from './../../../components/SLDSIcons';
+import {default as PrismCode} from 'react-prism/lib/PrismCode';
+import {EventUtil} from '../../../components/utils';
+import SLDSDateInput from '../../../components/SLDSDateInput';
+
+const items = ['Paddy\'s Pub', 'Tyrell Corp', 'Paper St. Soap Company', 'Nakatomi Investments', 'Acme Landscaping', 'Acme Construction'];
+
 
 import Modal from 'react-modal';
 
 
+
 const customStyles = {
   content : {
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    position                : 'default',
+    top                     : 'default',
+    left                    : 'default',
+    right                   : 'default',
+    bottom                  : 'default',
+    border                  : 'default',
+    background              : 'default',
+    overflow                : 'default',
+    WebkitOverflowScrolling : 'default',
+    borderRadius            : 'default',
+    outline                 : 'default',
+    padding                 : 'default'
+  },
+  overlay : {
+    backgroundColor: 'default'
   }
 };
 
@@ -48,17 +63,22 @@ module.exports = React.createClass( {
     this.setState({modalIsOpen: false});
   },
 
+  handleSubmitModal () {
+    this.closeModal();
+  },
+
   handleButtonClick () {
     alert('Test Button Clicked');
   },
+
 
   render() {
     return (
 
 
-            <div className="slds-p-around--medium">
+            <div className='slds-p-around--medium'>
 
-              <h3 className="slds-text-heading--medium slds-truncate">
+              <h3 className='slds-text-heading--medium slds-truncate'>
                 Modal (Work in progress)
               </h3>
 {/*
@@ -67,27 +87,63 @@ module.exports = React.createClass( {
               </PrismCode>
 */}
 
-              <div className="slds-p-vertical--large">
-                <SLDSButton flavor="brand" onClick={this.openModal}>
+              <div className='slds-p-vertical--large'>
+                <SLDSButton flavor='brand' onClick={this.openModal}>
                   Open Modal
                 </SLDSButton>
 
                 <Modal
                   isOpen={this.state.modalIsOpen}
                   onRequestClose={this.closeModal}
-                  style={customStyles} >
+                  style={customStyles}
+                  overlayClassName='slds-modal-backdrop slds-modal-backdrop--open' >
 
-                  <h2>Hello</h2>
-                  <button onClick={this.closeModal.bind()}>close</button>
-                  <div>I am a modal</div>
-                  <form>
-                    <input />
-                    <button>tab navigation</button>
-                    <button>stays</button>
-                    <button>inside</button>
-                    <button>the modal</button>
-                  </form>
+                  <div className='slds-modal slds-fade-in-open' onClick={this.closeModal}>
+                    <div className='slds-modal__container' onClick={(e)=>{EventUtil.trap(e);}}>
+                      <div className='slds-modal__header'>
+                        <h2 className='slds-text-heading--medium'>Modal Header</h2>
+                        <SLDSButton className='slds-button slds-modal__close' onClick={this.closeModal}>
+
+                          <Icon name='close' category='utility' size='small'/>
+
+                          <span className='slds-assistive-text'>Close</span>
+                        </SLDSButton>
+                      </div>
+                      <div className='slds-modal__content'>
+
+                        <SLDSButton flavor='brand' onClick={this.handleButtonClick}>
+                          Test Button
+                        </SLDSButton>
+
+                        <div>
+                          <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore
+                            quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
+                          <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt
+                            nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+                        </div>
+
+                        <SLDSDateInput />
+
+                        <div>
+                          <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore
+                            quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
+                          <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt
+                            nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+                        </div>
+
+                      </div>
+
+
+                      <div className='slds-modal__footer'>
+                        <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>
+                        <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
+                      </div>
+
+                    </div>
+
+                  </div>
                 </Modal>
+
 
               </div>
             </div>

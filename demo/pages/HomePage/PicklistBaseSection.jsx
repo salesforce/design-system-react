@@ -61,7 +61,7 @@ module.exports = React.createClass( {
                     ]}
                     value='C0'
                     label="Contacts"
-                    modal={true}
+                    modal={false}
                     placeholder = "Select a contact" />
               </div>
 

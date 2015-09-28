@@ -11,6 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSGrid from '../../../components/SLDSGrid';
+import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 
 
 import ButtonSection from './ButtonSection';
