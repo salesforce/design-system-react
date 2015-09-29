@@ -7,7 +7,9 @@ export const CONTROL = 'loader';
 
 const LoaderCore = Lib.merge({}, Base, {
 	cssClasses: {
-		CONTROL: CONTROL
+		CONTROL: CONTROL,
+		ICON: 'fuelux-icon',
+		LOADER: 'fuelux-icon-loader'
 	},
 
 	// Set the defaults
@@ -15,7 +17,10 @@ const LoaderCore = Lib.merge({}, Base, {
 		begin: 1,
 		delay: 150,
 		end: 8,
-		frame: 1
+		frame: 1,
+		svg: false,
+		width: '64px',
+		height: '64px'
 	},
 
 	_initializer () {
