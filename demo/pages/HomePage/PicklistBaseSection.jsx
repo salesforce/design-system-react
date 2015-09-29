@@ -28,6 +28,17 @@ module.exports = React.createClass( {
     return {};
   },
 
+  handleOnUpdateHighlighted () {
+    console.log('onUpdateHighlighted should be defined');
+  },
+
+  handleOnSelect() {
+    console.log('onSelect should be defined');
+  },
+
+  handleOnClick() {
+    console.log('onClick should be defined');
+  },
 
   render() {
     return (
@@ -57,12 +68,14 @@ module.exports = React.createClass( {
                       {label:'D2 Option',value:'D1'},
                       {label:'E2 Option Super Super Long',value:'E1'},
 
-
                     ]}
                     value='C0'
                     label="Contacts"
                     modal={false}
-                    placeholder = "Select a contact" />
+                    placeholder = "Select a contact"
+                    onSelect={this.handleOnSelect}
+                    onClick={this.handleOnClick}
+                    onUpdateHighlighted={this.handleOnUpdateHighlighted} />
               </div>
 
             </div>
