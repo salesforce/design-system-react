@@ -5,19 +5,19 @@ export default function (element) {
 	const CheckboxExample = React.createClass({
 		getInitialState () {
 			return {
-				selected: false
+				checked: true
 			};
 		},
 		
 		render () {
 			return (
-				<Checkbox selected={this.state.selected} text="Custom checkbox unchecked on page load" onChanged={this._handleSelectionChange} />
+				<Checkbox checked={this.state.checked} disabled={false} highlight={false} text="Custom checkbox unchecked on page load" onChanged={this._handleChange} />
 			);
 		},
 		
-		_handleSelectionChange (selected) {
+		_handleChange (checked) {
 			this.setState({
-				selected
+				checked
 			});
 		}
 	});
