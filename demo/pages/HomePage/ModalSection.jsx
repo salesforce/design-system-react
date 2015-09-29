@@ -71,6 +71,9 @@ module.exports = React.createClass( {
     alert('Test Button Clicked');
   },
 
+  handleScroll (e) {
+//    EventUtil.trap(e);
+  },
 
   render() {
     return (
@@ -98,7 +101,8 @@ module.exports = React.createClass( {
                   style={customStyles}
                   overlayClassName='slds-modal-backdrop slds-modal-backdrop--open' >
 
-                  <div className='slds-modal slds-fade-in-open' onClick={this.closeModal}>
+                  <div className='slds-modal slds-fade-in-open' 
+                    onClick={this.closeModal}>
                     <div className='slds-modal__container' onClick={(e)=>{EventUtil.trap(e);}}>
                       <div className='slds-modal__header'>
                         <h2 className='slds-text-heading--medium'>Modal Header</h2>
@@ -150,5 +154,20 @@ module.exports = React.createClass( {
 
 
     );
+  },
+
+  componentDidUpdate (prevProps, prevState) {
+    if(this.state.modalIsOpen){
+      if(window && document && document.body){
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    else{
+      if(window && document && document.body){
+        document.body.style.overflow = 'inherit';
+      }
+    }
   }
+
+
 });
