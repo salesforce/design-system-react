@@ -13,10 +13,18 @@ const Openable = {
 	},
 
 	open () {
-		this.setState({ isOpen: true });
-		if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse();
-
-		this.trigger('opened');
+		const _open = Lib.bind(function _open () {
+			this.setState({ isOpen: true });
+			if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse();
+	
+			this.trigger('opened');
+		}, this);
+		
+		if (!Lib.isFunction(this._canOpen)) {
+			_open();
+		} else {
+			this._canOpen(_open);
+		}
 	},
 
 	close () {

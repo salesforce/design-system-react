@@ -1,7 +1,7 @@
 const $ = require('jquery');
 window.$ = window.jQuery = $;
 
-const html = require('text!./markup/loader-markup.html');
+const html = require('text!../jquery/markup/loader-markup.html');
 const chai = require('chai');
 const assert = chai.assert;
 require('bootstrap');

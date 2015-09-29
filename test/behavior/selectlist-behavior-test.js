@@ -6,7 +6,7 @@
  */
 
 // Library allowing DOM elements to be checked for
-import * as expectDom from '../lib/expect-dom';
+// Not used ESLint error -> import * as expectDom from '../lib/expect-dom';
 // Confirm that the API test libraries export ALL the behaviors and approaches
 import { verifyFacadeProvidesBehaviorCallbacks, registerBehaviorTestCombinations } from '../lib/behavior-test-runner';
 // import the needed component and all it's facade-specific functions
