@@ -30,7 +30,7 @@ var config = {
 			{
 				test: /\.js$/,
 				loader: 'eslint-loader',
-				exclude: /node_modules|test\/tests|test\/tests-api|test\/tests-compiled/
+				exclude: /node_modules|test\/tests|test\/tests-api|test\/tests-compiled|jquery-declarative/
 			}
 		]
 	},

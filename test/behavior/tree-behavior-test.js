@@ -1,6 +1,21 @@
+/*
+ * TREE TESTS
+ * Imports all the facades-specific implementations of the tests listed below and runs them
+ * Do not run facade (framework) specific tests directly. Use this file.
+ * It may be helpful to temporally remove a 'facade' from package.json, as you write tests.
+ * View at http://localhost:8080/test/
+ */
+
+// Library allowing DOM elements to be checked for
 import * as expectDom from '../lib/expect-dom';
+// Confirm that the API test libraries export ALL the behaviors and approaches
 import { verifyFacadeProvidesBehaviorCallbacks, registerBehaviorTestCombinations } from '../lib/behavior-test-runner';
+// import the needed component and all it's facade-specific functions
+// (ex.- jQuery-specific implementation of createComponent)
 import { tree as componentFacadeTestLib } from '../tests-api';
+
+import { CONTROL as controlName } from '../../src/core/tree';
+// import TreeCore from '../../src/core/tree';
 
 const $ = require('jquery');
 const chai = require('chai');
@@ -136,7 +151,7 @@ onOpenVisibleComplete( component , callback )
 
 */
 
-describe('Tree Component', function () {
+describe(controlName + ' Component', function () {
 	verifyFacadeProvidesBehaviorCallbacks(componentFacadeTestLib, [
 		'createComponent',
 		'getComponentElement',
