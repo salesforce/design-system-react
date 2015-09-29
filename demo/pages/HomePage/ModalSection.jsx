@@ -16,6 +16,9 @@ import {default as PrismCode} from 'react-prism/lib/PrismCode';
 import {EventUtil} from '../../../components/utils';
 import SLDSDateInput from '../../../components/SLDSDateInput';
 
+import SLDSModal from '../../../components/SLDSModal';
+
+
 const items = ['Paddy\'s Pub', 'Tyrell Corp', 'Paper St. Soap Company', 'Nakatomi Investments', 'Acme Landscaping', 'Acme Construction'];
 
 
@@ -95,25 +98,13 @@ module.exports = React.createClass( {
                   Open Modal
                 </SLDSButton>
 
-                <Modal
-                  isOpen={this.state.modalIsOpen}
-                  onRequestClose={this.closeModal}
-                  style={customStyles}
-                  overlayClassName='slds-modal-backdrop slds-modal-backdrop--open' >
-
-                  <div className='slds-modal slds-fade-in-open' 
-                    onClick={this.closeModal}>
-                    <div className='slds-modal__container' onClick={(e)=>{EventUtil.trap(e);}}>
-                      <div className='slds-modal__header'>
-                        <h2 className='slds-text-heading--medium'>Modal Header</h2>
-                        <SLDSButton className='slds-button slds-modal__close' onClick={this.closeModal}>
-
-                          <Icon name='close' category='utility' size='small'/>
-
-                          <span className='slds-assistive-text'>Close</span>
-                        </SLDSButton>
-                      </div>
-                      <div className='slds-modal__content'>
+                <SLDSModal 
+                  title={<span>Super Stuff</span>}
+                  footer={[
+                    <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>,
+                    <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
+                  ]}
+                  isOpen={this.state.modalIsOpen}>
 
                         <SLDSButton flavor='brand' onClick={this.handleButtonClick}>
                           Test Button
@@ -126,28 +117,21 @@ module.exports = React.createClass( {
                             nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
                         </div>
 
-                        <SLDSDateInput />
+                        <SLDSModal 
+                          title={<span>Super Stuff</span>}
+                          isOpen={true}>
 
-                        <div>
-                          <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore
-                            quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
-                          <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt
-                            nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
-                        </div>
+                          AAA
 
-                      </div>
+                                                  <SLDSModal 
+                          title={<span>Super Stuff</span>}
+                          isOpen={true}>BBB</SLDSModal>
 
+                          AAA
 
-                      <div className='slds-modal__footer'>
-                        <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>
-                        <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
-                      </div>
+                          </SLDSModal>
 
-                    </div>
-
-                  </div>
-                </Modal>
-
+                </SLDSModal>
 
               </div>
             </div>

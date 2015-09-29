@@ -10,10 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDSButton from './SLDSButton';
-import {Icon} from './SLDSIcons';
-import {EventUtil} from './utils';
-import SLDSDateInput from './SLDSDateInput';
+import SLDSButton from '../SLDSButton';
+import {Icon} from '../SLDSIcons';
+import {EventUtil} from '../utils';
+import SLDSDateInput from '../SLDSDateInput';
 
 
 import Modal from 'react-modal';
@@ -43,7 +43,10 @@ const customStyles = {
 module.exports = React.createClass( {
 
   getDefaultProps () {
-    return {isOpen:false};
+    return {
+      title:'',
+      isOpen:false
+    };
   },
 
   getInitialState () {
@@ -75,15 +78,23 @@ module.exports = React.createClass( {
           onClick={this.closeModal}>
           <div className='slds-modal__container' onClick={(e)=>{EventUtil.trap(e);}}>
             <div className='slds-modal__header'>
-              <h2 className='slds-text-heading--medium'>Modal Header</h2>
+              <h2 className='slds-text-heading--medium'>{this.props.title}</h2>
               <SLDSButton className='slds-button slds-modal__close' onClick={this.closeModal}>
                 <Icon name='close' category='utility' size='small'/>
                 <span className='slds-assistive-text'>Close</span>
               </SLDSButton>
+              {this.props.children}
+
             </div>
-            {this.props.children}
+
+            <div className='slds-modal__footer'>
+              {this.props.footer}
+            </div>
+
           </div>
+
         </div>
+
       </Modal>
     );
   },
