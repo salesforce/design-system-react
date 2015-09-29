@@ -44,7 +44,8 @@ describe(controlName + ' component', function () {
 		'getControlElement',
 		'destroyControl',
 		'disableControl',
-		'enableControl'
+		'enableControl',
+		'getSelection'
 	]);
 
 	registerBehaviorTestCombinations(componentFacadeTestLib, [
@@ -53,7 +54,8 @@ describe(controlName + ' component', function () {
 		'getControlElement',
 		'destroyControl',
 		'disableControl',
-		'enableControl'
+		'enableControl',
+		'getSelection'
 	], [
 		// other behaviors required for tests
 	], function (testingBehaviorHandlers) {
@@ -136,6 +138,36 @@ describe(controlName + ' component', function () {
 				}, controlContainer, rendered);
 			});
 		});
+
+		describe('should set the default selection', function () {
+			it(controlName + ' should set the default selection', function (done) {
+				const id = 1;
+				// search for object with this id
+				const defaultSelection = $.grep(defaultOptions.collection, function (e) { return e.id === id; } );
+
+				function rendered (renderedControlContainer, control) {
+					expect(testingBehaviorHandlers.getSelection(control)).to.equal(defaultSelection[0]);
+					done();
+				}
+
+				testingBehaviorHandlers.createControl( {
+					collection: defaultOptions.collection,
+					selection: { id: id }
+				}, controlContainer, rendered);
+			});
+		});
+
+// 	it('should set the default selection', function () {
+// 		const options = $.extend( defaultOptions, { selection: { id: 4 } } );
+// 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), options );
+// 		const expectedItem = { id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar' };
+
+// 		console.log(selectlist.getSelection());
+
+// 		assert.deepEqual( selectlist.getSelection(), expectedItem, 'default item selected' );
+
+// 		selectlist.elements.wrapper.empty();
+// 	});
 
 		// TODO expectDOM tests
 	});

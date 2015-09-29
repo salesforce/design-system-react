@@ -53,6 +53,12 @@ export const behaviorHandlers = {
 		default: function (createdControl) {
 			createdControl.enable();
 		}
+	},
+
+	getSelection: {
+		default: function (createdControl) {
+			return createdControl.getSelection();
+		}
 	}
 
 };
