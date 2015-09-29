@@ -166,7 +166,7 @@ module.exports = React.createClass( {
 
   render() {
     let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
-    let activedescendant = this.state.currentSelectedItem ?  this.state.currentSelectedItem.id : "";
+    let activedescendant = this.state.highlightedIndex ?  'item-' +  this.state.highlightedIndex : "";
 
     return (
       <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">

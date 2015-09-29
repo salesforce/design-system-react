@@ -60,7 +60,7 @@ class Item extends React.Component {
       role="presentation"
       tabIndex={tabIndex}
       style={liStyles}>
-        <a href={ this.props.href } onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option" style={aStyles}>
+        <a href={ this.props.href } id={"item-" + this.props.idx} onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option" style={aStyles}>
           <Icon name="account" />
           { this.boldSearchText(this.props.children) }
         </a>
