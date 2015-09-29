@@ -15,7 +15,7 @@ const { ok, equal, deepEqual } = assert;
 const test = it;
 const $testFixture = $('body #test-fixture');
 
-let html = require('text!./markup/' + controlName + '-markup.html');
+let html = require('text!../jquery/markup/' + controlName + '-markup.html');
 html = $('<div>' + html + '</div>');
 $testFixture.append(html);
 
