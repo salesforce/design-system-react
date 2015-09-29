@@ -10,6 +10,6 @@
 		"vars-on-top": 1,
 		"func-names" : 0,
 		"no-console": 0,
-        "react/jsx-boolean-value": 0
+		"react/jsx-boolean-value": 0
 	}
 }
