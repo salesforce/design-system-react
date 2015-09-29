@@ -41,10 +41,15 @@ export const CheckboxObject = {
 		labelClasses[this.cssClasses.HIGHLIGHT] = this.props.highlight;
 
 		return (
-			<label className={classNames(this.cssClasses.CONTROL, labelClasses)}>
-				<input className="sr-only" type="checkbox" disabled={this.props.disabled} checked={this.props.checked} value={this.props.value || this.props.text} />{this._renderText()}
+			<label className={classNames(this.cssClasses.CONTROL, labelClasses)} onClick={this.toggle}>
+				<input className="sr-only" type="checkbox" disabled={this.props.disabled} checked={this.props.checked} value={this.props.value || this.props.text} onClick={this._stopPropagation} />{this._renderText()}
 			</label>
 		);
+	},
+	
+	_stopPropagation (e) {
+		e.stopPropagation();
+		return false;
 	}
 };
 
