@@ -63,6 +63,21 @@ export default class HomePage extends Component {
         <main className="stage-main slds-grid slds-wrap slds-grow" role="main">
           <div className="region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
 
+            <div className="slds-p-around--medium">
+
+              <h3 className="slds-text-heading--medium slds-truncate">
+                Lookups (Work in progress)
+              </h3>
+
+              <PrismCode className='language-markup'>
+                {require("raw-loader!../code-snippets/SLDSLookupPage.txt")}
+              </PrismCode>
+
+              <div className="slds-p-vertical--large">
+                <SLDSLookup items={this.items} label="Contacts" />
+              </div>
+
+            </div>
 
 
 
@@ -138,21 +153,6 @@ export default class HomePage extends Component {
 
             </div>
 
-            <div className="slds-p-around--medium">
-
-              <h3 className="slds-text-heading--medium slds-truncate">
-                Lookups (Work in progress)
-              </h3>
-
-              <PrismCode className='language-markup'>
-                {require("raw-loader!../code-snippets/SLDSLookupPage.txt")}
-              </PrismCode>
-
-              <div className="slds-p-vertical--large">
-                <SLDSLookup items={this.items} label="Contacts" />
-              </div>
-
-            </div>
 
 {/*
 

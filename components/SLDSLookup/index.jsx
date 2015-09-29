@@ -13,6 +13,7 @@ import Body from './Body/index';
 import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
 import _ from "lodash";
+import {KEYS,EventUtil} from '../utils';
 
 const defaultFilter = (term, item) => {
   if(!term) return true;
@@ -34,7 +35,9 @@ module.exports = React.createClass( {
   getInitialState(){
     return {
       searchTerm: '',
-      isOpen:false
+      isOpen:false,
+      tabEvent:false,
+      highlightedIndex: 0
     };
   },
 
@@ -101,7 +104,7 @@ module.exports = React.createClass( {
           <a href="#" className="slds-pill__label">
             { this.selectedItemContents() }
           </a>
-          <button className="slds-button slds-button--icon-bare" onClick={this.handleDeleteSelected} ref="clearSelectedItemButton">
+          <button className="slds-button slds-button--icon-bare" onClick={this.handleDeleteSelected} ref="clearSelectedItemButton" onBlur={this.handleClose}>
             <ButtonIcon name="close" />
             <span className="slds-assistive-text">Remove</span>
           </button>
@@ -119,6 +122,8 @@ module.exports = React.createClass( {
           selectedItem={this.selectedItem}
           items={this.props.items}
           label={this.props.label}
+          tabEvent={this.state.tabEvent}
+          highlightedIndex={this.state.highlightedIndex}
           onChange={this.handleChange} />:null);
   },
 
@@ -128,12 +133,21 @@ module.exports = React.createClass( {
 
   handleKeyDown(event) {
     if(event.keyCode){
-      if(event.keyCode === 40){
-        //console.log('down');
+
+      //If user hits esc key, close menu
+      event.keyCode === KEYS.ESCAPE ? this.handleClose() : this.handleClick();
+
+      //If user hits tab key, move aria activedescendant to first menu item
+      if(event.keyCode === KEYS.TAB){
+        EventUtil.trapImmediate(event);
+        this.setState({tabEvent:true});
       }
-      else if(event.keyCode === 38){
-        //console.log('up');
+      //If user hits down key, advance aria activedescendant to next item
+      else if(event.keyCode === KEYS.DOWN){
+        this.setState({highlightedIndex: this.state.highlightedIndex + 1})
       }
+
+      /*
       else if(event.keyCode === 13){
         //console.log('enter');
         let list = this.refs.list;
@@ -146,6 +160,7 @@ module.exports = React.createClass( {
           }
         }
       }
+      */
     }
   },
 
@@ -173,8 +188,8 @@ module.exports = React.createClass( {
               aria-expanded={this.state.isOpen}
               role="combobox"
               onChange={this.handleChange}
-              onBlur={this.handleBlur}
               onFocus={this.handleFocus}
+              onBlur={this.handleBlur}
               onClick={this.handleClick}
               onKeyDown={this.handleKeyDown}
               value={this.state.searchTerm} />

@@ -9,12 +9,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { Component } from 'react';
 import {Icon} from "../../SLDSIcons";
+import {KEYS} from '../../utils';
 
 class Item extends React.Component {
   constructor(props) {
     super(props);
     this.id = this.props.id || `item-${Item.globalIdx++}-${this.props.idx}`;
-
   }
 
   boldSearchText(children) {
@@ -41,12 +41,26 @@ class Item extends React.Component {
 
   render() {
     let className = 'slds-lookup__item';
+    let liStyles = {whiteSpace: 'nowrap'};
+    let aStyles = null;
     if(this.props.isSelected) className += ' slds-is-selected';
+
+    if(this.props.isHighlighted) {
+      liStyles = { background: '#005fb2', whiteSpace: 'nowrap' };
+      aStyles = { color: 'white' };
+    }
+
     const tabIndex = this.props.idx === 0 ? 0 : -1;
 
     return (
-      <li key={this.id}  { ...this.props } className={className} role="presentation" tabIndex={tabIndex} style={{whiteSpace: 'nowrap'}} >
-        <a href={ this.props.href } onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option">
+      <li
+      key={this.id}
+      { ...this.props }
+      className={className}
+      role="presentation"
+      tabIndex={tabIndex}
+      style={liStyles}>
+        <a href={ this.props.href } onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option" style={aStyles}>
           <Icon name="account" />
           { this.boldSearchText(this.props.children) }
         </a>
@@ -59,10 +73,12 @@ Item.globalIdx = 0;
 
 module.exports = React.createClass({
 
-  displayName: "SLDSLookup",
+  displayName: "SLDSLookupList",
 
   getInitialState: function(){
-    return {currentSelectedIndex: null};
+    return {
+      currentSelectedIndex: null
+    };
   },
 
   getDefaultProps: function(){
@@ -71,7 +87,7 @@ module.exports = React.createClass({
   },
 
   selectedItem: function(idx, item) {
-    console.log(this.props.selectedItem);
+    //console.log(this.props.selectedItem);
     if(this.props.selectedItem) this.props.selectedItem(item);
     this.setState({currentSelectedIndex: idx});
   },
@@ -83,7 +99,9 @@ module.exports = React.createClass({
   items: function() {
     return this.props.items.filter(this.filter, this).map((c, i) => {
       const isSelected = (i === this.state.currentSelectedIndex);
-      return <Item key={i} isSelected={isSelected} idx={i} searchTerm={this.props.searchTerm} selectedItem={this.selectedItem}>{c}</Item>
+      const isHighlighted = (i === this.props.highlightedIndex && this.props.tabEvent);
+
+      return <Item key={i} isSelected={isSelected} isHighlighted={isHighlighted} idx={i} searchTerm={this.props.searchTerm} selectedItem={this.selectedItem}>{c}</Item>
     });
   },
 
@@ -96,7 +114,7 @@ module.exports = React.createClass({
           float:'inherit'
         }}
         role="listbox">
-        <ul className="slds-lookup__list" role="presentation">
+        <ul id="slds-lookup__menu-js" className="slds-lookup__list" role="presentation">
           {this.items()}
         </ul>
       </div>
