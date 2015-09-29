@@ -156,19 +156,5 @@ describe(controlName + ' component', function () {
 				}, controlContainer, rendered);
 			});
 		});
-
-// 	it('should set the default selection', function () {
-// 		const options = $.extend( defaultOptions, { selection: { id: 4 } } );
-// 		const selectlist = new Selectlist( $( html ).find( '#mainSelectlist' ), options );
-// 		const expectedItem = { id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar' };
-
-// 		console.log(selectlist.getSelection());
-
-// 		assert.deepEqual( selectlist.getSelection(), expectedItem, 'default item selected' );
-
-// 		selectlist.elements.wrapper.empty();
-// 	});
-
-		// TODO expectDOM tests
 	});
 });
