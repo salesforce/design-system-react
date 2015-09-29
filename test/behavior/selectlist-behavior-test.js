@@ -22,73 +22,121 @@ const $ = require('jquery');
 const chai = require('chai');
 const expect = chai.expect;
 
+const defaultOptions = {
+	collection: [
+		{ _itemType: 'header', text: 'One thing' },
+		{ id: 0, text: 'One', value: '1'  },
+		{ _itemType: 'divider' },
+		{ _itemType: 'header', text: 'All the things' },
+		{ id: 1, text: 'Two', value: '2'  },
+		{ id: 2, text: 'Three', value: '3' },
+		{ id: 3, text: 'Buzz', value: '4' },
+		{ id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar' },
+		{ id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
+	]
+};
 
 // For jQuery facade, "declarative" implies jQuery plugin usage
 
 describe(controlName + ' component', function () {
 	verifyFacadeProvidesBehaviorCallbacks(componentFacadeTestLib, [
-		'createComponent',
-		'getComponentElement',
-		'destroyComponent'
+		'createControl',
+		'getControlElement',
+		'destroyControl',
+		'disableControl',
+		'enableControl'
 	]);
 
 	registerBehaviorTestCombinations(componentFacadeTestLib, [
 		// behaviors being tested
-		'createComponent',
-		'getComponentElement',
-		'destroyComponent'
+		'createControl',
+		'getControlElement',
+		'destroyControl',
+		'disableControl',
+		'enableControl'
 	], [
 		// other behaviors required for tests
 	], function (testingBehaviorHandlers) {
-		let container = null;
+		let controlContainer = null;
 
 		beforeEach(function () {
-			container = $('<div />');
-			$('body').append(container); // Container must be on the body and visible for tests to work
+			controlContainer = $('<div id="container" />');
+			$('body').append(controlContainer); // Container must be on the body and visible for tests to work
 		});
 
 		afterEach(function () {
-			container.remove(); // Clean up container
-			container = null;
+			controlContainer.remove(); // Clean up container
+			controlContainer = null;
 		});
 
-		describe('create and destroy component', function () {
-			it('should create a ' + controlName + ' on the DOM within the container', function () {
-				function rendered (component) {
-					expect(component.options.container.find('.' + Core.cssClasses.CONTROL).length).to.equal(1);
-					testingBehaviorHandlers.destroyComponent(component);
+		describe('create and destroy control', function () {
+			it('should create a ' + controlName + ' on the DOM within the container', function (done) {
+				function rendered (renderedControlContainer) {
+					expect(renderedControlContainer.find('.' + Core.cssClasses.CONTROL).length).to.equal(1);
+					done();
 				}
 
-				testingBehaviorHandlers.createComponent( {
-					container: container,
+				testingBehaviorHandlers.createControl( {
 					collection: []
-				}, rendered );
+				}, controlContainer, rendered );
 			});
 
-			it('should return an object representing the component', function () {
-				function rendered (component) {
-					expect(component).to.be.an('object');
-					testingBehaviorHandlers.destroyComponent(component);
+			it('should return an object representing the component', function (done) {
+				function rendered (renderedControlContainer, control) {
+					expect(control).to.be.an('object');
+					done();
 				}
 
-				testingBehaviorHandlers.createComponent( {
-					container: container,
+				testingBehaviorHandlers.createControl( {
 					collection: []
-				}, rendered );
+				}, controlContainer, rendered );
 			});
 
-			it('destroy should remove ' + controlName + ' from container', function () {
-				function rendered (component) {
-					testingBehaviorHandlers.destroyComponent(component);
-					expect(component.options.container.find('.' + Core.cssClasses.CONTROL).length).to.equal(0);
+			it('destroy should remove ' + controlName + ' from container', function (done) {
+				function rendered (renderedControlContainer, control) {
+					testingBehaviorHandlers.destroyControl(control);
+					expect(renderedControlContainer.find('.' + Core.cssClasses.CONTROL).length).to.equal(0);
+					done();
 				}
 
-				testingBehaviorHandlers.createComponent( {
-					container: container,
+				testingBehaviorHandlers.createControl( {
 					collection: []
-				}, 	rendered );
+				}, controlContainer, rendered );
 			});
 		});
+
+		describe('disable and enable control', function () {
+			it(controlName + ' should disable, THEN enable', function (done) {
+				function rendered (renderedControlContainer, control) {
+					testingBehaviorHandlers.disableControl(control);
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					testingBehaviorHandlers.enableControl(control);
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(false);
+					done();
+				}
+
+				testingBehaviorHandlers.createControl( {
+					collection: []
+				}, controlContainer, rendered );
+			});
+
+			it(controlName + ' should initialize disabled, THEN enable, THEN disabled', function (done) {
+				function rendered (renderedControlContainer, control) {
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					testingBehaviorHandlers.enableControl(control);
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(false);
+					testingBehaviorHandlers.disableControl(control);
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					done();
+				}
+
+				testingBehaviorHandlers.createControl( {
+					collection: defaultOptions.collection,
+					disabled: true
+				}, controlContainer, rendered);
+			});
+		});
+
 		// TODO expectDOM tests
 	});
 });
