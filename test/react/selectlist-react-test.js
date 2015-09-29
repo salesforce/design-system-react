@@ -2,19 +2,19 @@
 
 export const behaviorHandlers = {
 	createComponent: {
-		default: function (initData) {
+		default: function () {
 			return true;
 		}
 	},
 
 	getComponentElement: {
-		default: function (component) {
+		default: function () {
 			return true;
 		}
 	},
 
 	destroyComponent: {
-		default: function (component) {
+		default: function () {
 			return true;
 		}
 	}

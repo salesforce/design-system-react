@@ -38,7 +38,8 @@ module.exports = function (grunt) {
 				'Gruntfile.js',
 				'src/**/*.js',
 				'tasks/**/*.js',
-				'test/**/*.js'
+				'test/**/*.js',
+				'!test/compat/*.js'
 			].concat(excludePatternGeneratedTestFiles)
 		},
 		mocha: {
