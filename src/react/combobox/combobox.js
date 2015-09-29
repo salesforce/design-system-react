@@ -51,11 +51,6 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		);
 	},
 	
-	componentDidMount () {
-		document.addEventListener('click', this._closeMenu, false);
-		this._findElements();
-	},
-	
 	_handleChanged (e) {
 		const value = {};
 		

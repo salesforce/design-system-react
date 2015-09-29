@@ -46,10 +46,10 @@ export function offset (element) {
 }
 
 export function outerHeight (element, includeMargin) {
-	let height = el.offsetHeight;
+	let height = element.offsetHeight;
 	
 	if (includeMargin) {
-		const style = getComputedStyle(el);
+		const style = getComputedStyle(element);
 		height += parseInt(style.marginTop, 10) + parseInt(style.marginBottom, 10);
 	}
 	
@@ -57,10 +57,10 @@ export function outerHeight (element, includeMargin) {
 }
 
 export function outerWidth (element, includeMargin) {
-	let width = el.offsetWidth;
+	let width = element.offsetWidth;
 	
 	if (includeMargin) {
-		const style = getComputedStyle(el);
+		const style = getComputedStyle(element);
 		width += parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10);
 	}
 	

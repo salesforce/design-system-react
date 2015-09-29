@@ -9,7 +9,7 @@ import Events from '../events';
 import State from '../state';
 import { SelectlistObject, _renderItem, _renderHeader, _renderDivider, legacyMethods } from '../selectlist/selectlist';
 
-const $ = Lib.global.jQuery || Lib.global.Zepto || Lib.global.ender || Lib.global.$;
+const $ = Lib.global.jQuery || Lib.global.$;
 
 // Template imports
 import template from './combobox-template';
@@ -146,32 +146,35 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	},
 
 	_onExpandOrCollapse () {
-		const isOpen = this.getState('isOpen');
-
-		this.elements.button.attr('aria-expanded', isOpen);
-		this.elements.inputGroup.toggleClass(this.cssClasses.OPEN, isOpen);
+		if (this.rendered) {
+			const isOpen = this.getState('isOpen');
+	
+			this.elements.button.attr('aria-expanded', isOpen);
+			this.elements.inputGroup.toggleClass(this.cssClasses.OPEN, isOpen);
+		}
 	},
 
 	_onSelected (item) {
-		this.elements.input.val(item.getText());
+		if (this.rendered) {
+			this.elements.input.val(item.getText());
+		}
 	},
 
-	_onEnabled () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, false);
-		this.elements.input.prop('disabled', false);
-		this.elements.button.prop('disabled', false);
-		this.elements.button.toggleClass(this.cssClasses.DISABLED, false);
+	_onEnabledOrDisabled () {
+		if (this.rendered) {
+			const disabled = !!this.getProperty('disabled');
+			
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
+			this.elements.input.prop('disabled', disabled);
+			this.elements.button.prop('disabled', disabled);
+			this.elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
+		}
 	},
 
-	_onDisabled () {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, true);
-		this.elements.input.prop('disabled', true);
-		this.elements.button.prop('disabled', true);
-		this.elements.button.toggleClass(this.cssClasses.DISABLED, true);
-	},
-
-	resetWidth (width) {
-		if (this.elements.dropdownMenu) this.elements.dropdownMenu.width(width);
+	_resetWidth (width) {
+		if (this.rendered) {
+			this.elements.dropdownMenu.width(width);
+		}
 	},
 
 	_handleChanged () {

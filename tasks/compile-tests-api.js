@@ -1,4 +1,7 @@
 /* eslint-disable no-var */
+
+// Creates tests-api.js file
+
 module.exports = function (grunt) {
 	grunt.registerTask('compileTestsApi', 'Compiles and saves the mapping of component to its tests API for use by behavior tests.', function () {
 		var pkg = require('../package.json');
@@ -8,7 +11,7 @@ module.exports = function (grunt) {
 			output += 'export const ' + componentName + ' = {\n';
 
 			pkg.facades.forEach(function (facadeName, facadeIndex) {
-				output += '\t' + facadeName + ': require(\'./' + facadeName + '/' + componentName + '-test\')';
+				output += '\t' + facadeName + ': require(\'./' + facadeName + '/' + componentName + '-' + facadeName + '-test\')';
 
 				if (facadeIndex !== pkg.facades.length - 1) {
 					output += ',';

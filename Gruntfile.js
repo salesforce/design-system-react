@@ -1,6 +1,9 @@
 module.exports = function (grunt) {
 	grunt.loadTasks('tasks');
 
+	// Look in ./tasks for additional task modules
+	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
 	const defaultPort = 8080;
 
 	const excludePatternGeneratedTestFiles = [
@@ -9,7 +12,14 @@ module.exports = function (grunt) {
 		'!test/tests-compiled.js'
 	];
 
+	const defaultWatchFiles = ['Gruntfile.js', 'tasks/**/*.*', 'src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'];
+
 	grunt.initConfig({
+		// VARIABLES
+		port: grunt.option('port') || process.env.PORT || defaultPort,
+		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
+
+		// TASK CONFIG
 		babel: {
 			options: {
 				modules: 'umd'
@@ -23,14 +33,13 @@ module.exports = function (grunt) {
 				}]
 			}
 		},
-		port: defaultPort,
-		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
 		eslint: {
 			target: [
 				'Gruntfile.js',
 				'src/**/*.js',
 				'tasks/**/*.js',
-				'test/**/*.js'
+				'test/**/*.js',
+				'!test/compat/*.js'
 			].concat(excludePatternGeneratedTestFiles)
 		},
 		mocha: {
@@ -45,12 +54,12 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			eslint: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
+				files: defaultWatchFiles.concat(excludePatternGeneratedTestFiles),
 				tasks: ['eslint']
 			},
 			tests: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
-				tasks: ['compileTests', 'compileTestsApi']
+				files: defaultWatchFiles.concat(excludePatternGeneratedTestFiles),
+				tasks: ['eslint', 'compileTests', 'compileTestsApi']
 			}
 		},
 		connect: {
@@ -62,7 +71,7 @@ module.exports = function (grunt) {
 						'./node_modules',
 						'.'
 					],
-					port: grunt.option('port') || process.env.PORT || defaultPort,
+					port: '<%= port %>',
 					useAvailablePort: true,
 					onCreateServer: function (server) {
 						server.on('listening', function () {
@@ -81,16 +90,17 @@ module.exports = function (grunt) {
 			start: {
 				webpack: require('./webpack.config'),
 				publicPath: '/build/',
+				port: '<%= port %>',
 				keepAlive: true,
 				hot: true
 			}
 		}
-	});
 
-	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+	});
 
 	grunt.registerTask('default', ['eslint', 'compileTests', 'compileTestsApi']);
 	grunt.registerTask('build', ['default', 'babel']);
-	grunt.registerTask('serve', ['default', 'webpack-dev-server:start']);
+	grunt.registerTask('serve', 'Runs webpack with hot module swapping', ['default', 'webpack-dev-server:start']);
+	grunt.registerTask('serve-watch', 'For concurrent watch task / webpack watch (use in new window)', ['default', 'watch:tests']);
 	grunt.registerTask('test', ['default', 'webpack', 'connect', 'mocha']);
 };
