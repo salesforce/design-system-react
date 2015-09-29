@@ -10,12 +10,16 @@ export const CONTROL = 'checkbox';
 
 const CheckboxCore = Lib.merge({}, Base, Disableable, {
 	cssClasses: {
-		CONTROL: CONTROL + '-custom'
+		CONTROL: CONTROL + '-custom',
+		CHECKED: 'checked',
+		INLINE: 'checkbox-inline',
+		ADDON: 'input-group-addon',
+		HIGHLIGHT: 'highlight'
 	},
 
 	// Set the defaults
 	_defaultProperties: {
-		selected: false,
+		checked: false,
 		inline: false,
 		addon: false,
 		highlight: false
