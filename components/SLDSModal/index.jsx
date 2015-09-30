@@ -13,12 +13,9 @@ import React from 'react';
 import SLDSButton from '../SLDSButton';
 import {Icon} from '../SLDSIcons';
 import {EventUtil} from '../utils';
-import SLDSDateInput from '../SLDSDateInput';
 
 
 import Modal from 'react-modal';
-
-
 
 const customStyles = {
   content : {
@@ -51,8 +48,18 @@ module.exports = React.createClass( {
 
   getInitialState () {
     return {
-      isOpen: this.props.isOpen
+      isOpen: this.props.isOpen,
+      revealed: false
     };
+  },
+
+  componentDidMount () {
+    if(!this.state.revealed){
+      setTimeout(()=>{
+        this.setState({revealed:true});
+      }.bind(this));
+    }
+    this.updateBodyScroll();
   },
 
   openModal () {
@@ -67,14 +74,19 @@ module.exports = React.createClass( {
     this.closeModal();
   },
 
-  render() {
-    return (
-      <Modal
-        isOpen={this.state.isOpen}
-        onRequestClose={this.closeModal}
-        style={customStyles}
-        overlayClassName='slds-modal-backdrop slds-modal-backdrop--open' >
-        <div className='slds-modal slds-fade-in-open' 
+  updateBodyScroll () {
+    if(window && document && document.body){
+      if(this.state.isOpen){
+        document.body.style.overflow = 'hidden';
+      }
+      else{
+        document.body.style.overflow = 'inherit';
+      }
+    }
+  },
+
+  getModal() {
+    return <div className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')} 
           onClick={this.closeModal}>
           <div className='slds-modal__container' onClick={(e)=>{EventUtil.trap(e);}}>
             <div className='slds-modal__header'>
@@ -83,17 +95,30 @@ module.exports = React.createClass( {
                 <Icon name='close' category='utility' size='small'/>
                 <span className='slds-assistive-text'>Close</span>
               </SLDSButton>
+            </div>
+
+            <div className='slds-modal__content'>
+
               {this.props.children}
 
             </div>
-
             <div className='slds-modal__footer'>
               {this.props.footer}
             </div>
 
           </div>
 
-        </div>
+        </div>;
+  },
+
+  render() {
+    return (
+      <Modal
+        isOpen={this.state.isOpen}
+        onRequestClose={this.closeModal}
+        style={customStyles}
+        overlayClassName={'slds-modal-backdrop'+ (this.state.revealed?' slds-modal-backdrop--open':'')} >
+        {this.getModal()}
       </Modal>
     );
   },
@@ -101,16 +126,10 @@ module.exports = React.createClass( {
   componentDidUpdate (prevProps, prevState) {
 
     if(this.state.isOpen !== prevState.isOpen){
-      if(window && document && document.body){
-        if(this.state.isOpen){
-          document.body.style.overflow = 'hidden';
-        }
-        else{
-          if(document.body.className && document.body.className.indexOf('ReactModal__Body--open')<0){
-            document.body.style.overflow = 'inherit';
-          }
-        }
-      }
+
+      this.updateBodyScroll();
+
+
       if(!this.state.isOpen){
         if(this.isMounted()){
           const el = this.getDOMNode().parentNode;

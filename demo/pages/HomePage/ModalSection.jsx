@@ -17,7 +17,7 @@ import {EventUtil} from '../../../components/utils';
 import SLDSDateInput from '../../../components/SLDSDateInput';
 
 import SLDSModal from '../../../components/SLDSModal';
-import {SLDSModalManager} from '../../../components';
+import {SLDSModalTrigger} from '../../../components';
 
 
 
@@ -58,7 +58,7 @@ module.exports = React.createClass( {
 
   openModal () {
     this.setState({modalIsOpen: true});
-    SLDSModalManager.trigger(this.getModal());
+    SLDSModalTrigger.open(this.getModalConfig());
   },
 
   closeModal () {
@@ -73,38 +73,37 @@ module.exports = React.createClass( {
     alert('Test Button Clicked');
   },
 
-  handleScroll (e) {
-//    EventUtil.trap(e);
-  },
-
   getModal () {
     return (<SLDSModal 
-                  title={<span>Super Stuff</span>}
-                  footer={[
-                    <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>,
-                    <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
-                  ]}
-                  isOpen={true}>
+              title={<span>Super Stuff</span>}
+              footer={[
+                <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>,
+                <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
+              ]}
+              isOpen={true}>
+                    <div>
+                      <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore
+                        quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
+                      <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt
+                        nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+                    </div>
+            </SLDSModal>);
+  },
 
-                        <SLDSButton flavor='brand' onClick={this.handleButtonClick}>
-                          Test Button
-                        </SLDSButton>
-
-                        <div>
-                          <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore
-                            quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
-                          <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt
-                            nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
-                        </div>
-{/*
-                        <SLDSModal 
-                          title={<span>Super Stuff</span>}
-                          isOpen={true}>
-                            AAA
-                            AAA
-                          </SLDSModal>
-*/}
-                </SLDSModal>);
+  getModalConfig () {
+    return ({
+      title:<span>Super Stuff</span>,
+      content:  <div>
+                  <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore
+                    quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
+                  <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt
+                    nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+                </div>,
+      footer:[
+        <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>,
+        <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
+      ]
+    });
   },
 
   render() {
@@ -127,7 +126,6 @@ module.exports = React.createClass( {
                   Open Modal
                 </SLDSButton>
 
-                {this.getModal()}
 
               </div>
             </div>
@@ -135,19 +133,6 @@ module.exports = React.createClass( {
 
     );
   },
-
-  componentDidUpdate (prevProps, prevState) {
-    if(this.state.modalIsOpen){
-      if(window && document && document.body){
-        document.body.style.overflow = 'hidden';
-      }
-    }
-    else{
-      if(window && document && document.body){
-        document.body.style.overflow = 'inherit';
-      }
-    }
-  }
 
 
 });

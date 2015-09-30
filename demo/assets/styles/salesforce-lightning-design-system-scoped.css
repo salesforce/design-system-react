@@ -1829,8 +1829,8 @@ body {
           text-decoration: none;
           cursor: pointer; }
   .slds .slds-modal {
-    opacity: 0;
-    visibility: hidden;
+    opacity: 0.0;
+    visibility: visible;
     -webkit-transition: -webkit-transform 0.1s linear, opacity 0.1s linear;
             transition: transform 0.1s linear, opacity 0.1s linear;
     position: fixed;
@@ -1901,8 +1901,8 @@ body {
   .slds .slds-modal-backdrop {
     -webkit-transition-duration: 0.4s;
             transition-duration: 0.4s;
-    opacity: 0;
-    visibility: hidden;
+    opacity: 0.0;
+    visibility: visible;
     position: fixed;
     top: 0;
     right: 0;

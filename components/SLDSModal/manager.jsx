@@ -10,16 +10,138 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
+import SLDSButton from '../SLDSButton';
+import {Icon} from '../SLDSIcons';
 import {EventUtil} from '../utils';
-import SLDSModal from '../index';
 
-const SLDSModalManager = {
-  trigger: (comp) => {
-    const el = document.createElement('span');
-    el.setAttribute('data-slds-modal', true);
-    document.body.appendChild(el);
-    React.render(comp, el);
+
+import Modal from 'react-modal';
+
+const customStyles = {
+  content : {
+    position                : 'default',
+    top                     : 'default',
+    left                    : 'default',
+    right                   : 'default',
+    bottom                  : 'default',
+    border                  : 'default',
+    background              : 'default',
+    overflow                : 'default',
+    WebkitOverflowScrolling : 'default',
+    borderRadius            : 'default',
+    outline                 : 'default',
+    padding                 : 'default'
+  },
+  overlay : {
+    backgroundColor: 'default'
   }
 };
 
-module.exports = SLDSModalManager;
+module.exports = React.createClass( {
+
+  getDefaultProps () {
+    return {
+      title:'',
+      isOpen:false
+    };
+  },
+
+  getInitialState () {
+    return {
+      isOpen: this.props.isOpen,
+      revealed: false
+    };
+  },
+
+  componentDidMount () {
+    if(!this.state.revealed){
+      setTimeout(()=>{
+        this.setState({revealed:true});
+      }.bind(this));
+    }
+    this.updateBodyScroll();
+  },
+
+  openModal () {
+    this.setState({isOpen: true});
+  },
+
+  closeModal () {
+    this.setState({isOpen: false});
+  },
+
+  handleSubmitModal () {
+    this.closeModal();
+  },
+
+  updateBodyScroll () {
+    if(window && document && document.body){
+      if(this.state.isOpen){
+        document.body.style.overflow = 'hidden';
+      }
+      else{
+        document.body.style.overflow = 'inherit';
+      }
+    }
+  },
+
+  getModal() {
+    return <div className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')} 
+          onClick={this.closeModal}>
+          <div className='slds-modal__container' onClick={(e)=>{EventUtil.trap(e);}}>
+            <div className='slds-modal__header'>
+              <h2 className='slds-text-heading--medium'>{this.props.title}</h2>
+              <SLDSButton className='slds-button slds-modal__close' onClick={this.closeModal}>
+                <Icon name='close' category='utility' size='small'/>
+                <span className='slds-assistive-text'>Close</span>
+              </SLDSButton>
+            </div>
+
+            <div className='slds-modal__content'>
+
+              {this.props.children}
+
+            </div>
+            <div className='slds-modal__footer'>
+              {this.props.footer}
+            </div>
+
+          </div>
+
+        </div>;
+  },
+
+  render() {
+    return (
+      <Modal
+        isOpen={this.state.isOpen}
+        onRequestClose={this.closeModal}
+        style={customStyles}
+        overlayClassName={'slds-modal-backdrop'+ (this.state.revealed?' slds-modal-backdrop--open':'')} >
+        {this.getModal()}
+      </Modal>
+    );
+  },
+
+  componentDidUpdate (prevProps, prevState) {
+
+    if(this.state.isOpen !== prevState.isOpen){
+
+      this.updateBodyScroll();
+
+      if(!this.state.isOpen){
+        if(this.isMounted()){
+          const el = this.getDOMNode().parentNode;
+          if(el && el.getAttribute('data-slds-modal')){
+            React.unmountComponentAtNode(el);
+            document.body.removeChild(el);
+          }
+        }
+      }
+    }
+
+
+  }
+
+
+});
