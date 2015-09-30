@@ -43,6 +43,8 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		}
 
 		this._render();
+
+		this.trigger('initialized');
 	},
 
 	selectItem (item) {

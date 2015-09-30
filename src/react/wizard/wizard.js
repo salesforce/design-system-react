@@ -14,7 +14,7 @@ import genericWillMount from '../mixins/generic-will-mount';
 import WizardStep from './wizard-step';
 import WizardActions from './wizard-actions';
 
-let Wizard = Lib.extend({}, WizardCore, {
+let Wizard = Lib.merge({}, WizardCore, {
 	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
@@ -29,7 +29,7 @@ let Wizard = Lib.extend({}, WizardCore, {
 
 	_steps (currentIndex) {
 		const Step = this.props.stepElement || WizardStep;
-		
+
 		return this._collection.map((item, index) => {
 			return <Step strings={this.state.strings} key={index} item={item} index={index + 1} currentIndex={currentIndex} onClicked={this._setSelection.bind(this, item._item)} />;
 		});
@@ -38,9 +38,9 @@ let Wizard = Lib.extend({}, WizardCore, {
 	render () {
 		const currentIndex = this.getIndex();
 		const isLast = currentIndex === this._collection.length();
-		
+
 		const Actions = this.props.actionsElement || WizardActions;
-		
+
 		return (
 			<div className="wizard">
 				<div className="steps-container">
