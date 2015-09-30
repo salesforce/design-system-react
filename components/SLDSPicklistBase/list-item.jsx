@@ -90,7 +90,7 @@ module.exports = React.createClass({
           this.props.onMoveFocus(-1);
         }
       }
-      else if(event.keyCode === KEYS.ENTER || 
+      else if(event.keyCode === KEYS.ENTER ||
           event.keyCode === KEYS.SPACE ){
         EventUtil.trapEvent(event);
         if(this.props.onSelect){
@@ -116,7 +116,9 @@ module.exports = React.createClass({
   },
 
   handleBlur(e) {
-    if(this.props.onBlur){
+    if (this.props.onBlur &&
+        this.refs.link.getDOMNode() !== e.target) {
+
       this.props.onBlur(this.props.index, e.relatedTarget);
     }
   },
@@ -130,7 +132,7 @@ module.exports = React.createClass({
 
   render () {
     return (
-      <li 
+      <li
 
         className={"slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--"+this.props.theme}
         onMouseDown={this.handleMouseDown}
@@ -138,7 +140,7 @@ module.exports = React.createClass({
           <a id={'menu-0-'+this.props.index}
             href=''
             ref='link'
-            className='slds-truncate' 
+            className='slds-truncate'
             onClick={this.handleClick}
             onMouseDown={this.handleMouseDown}
             onKeyDown={this.handleKeyDown}
