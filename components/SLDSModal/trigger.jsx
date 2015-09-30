@@ -18,7 +18,6 @@ const SLDSModalTrigger = {
     const el = document.createElement('span');
     el.setAttribute('data-slds-modal', true);
     document.body.appendChild(el);
-    console.log('cfg.returnFocusTo: ',cfg.returnFocusTo);
     const comp = <SLDSModal 
               title={cfg.title}
               footer={cfg.footer}

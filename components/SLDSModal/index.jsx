@@ -134,7 +134,6 @@ module.exports = React.createClass( {
 
 
       if(!this.state.isOpen){
-        console.log('this.props.returnFocusTo: ',this.props.returnFocusTo)
         if(this.props.returnFocusTo && this.props.returnFocusTo.focus){
           this.props.returnFocusTo.focus();
         }
