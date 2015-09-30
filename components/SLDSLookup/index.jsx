@@ -63,13 +63,13 @@ module.exports = React.createClass( {
   },
 
   selectedItem(item) {
-    //console.log('SELECTED: ',item);
     if(this.props.onItemSelect) this.props.onItemSelect(item);
 
     this.setState({
       currentSelectedItem: item,
       searchTerm: null
     });
+    //console.log("item from onClick ", item);
   },
 
   selectedItemContents() {
@@ -144,7 +144,19 @@ module.exports = React.createClass( {
       }
       //If user hits down key, advance aria activedescendant to next item
       else if(event.keyCode === KEYS.DOWN){
-        this.setState({highlightedIndex: this.state.highlightedIndex + 1})
+        this.setState({highlightedIndex: this.state.highlightedIndex <= this.props.items.length ? this.state.highlightedIndex + 1 : 0})
+      }
+      //If user hits up key, advance aria activedescendant to previous item
+      else if(event.keyCode === KEYS.UP){
+        this.setState({highlightedIndex: this.state.highlightedIndex > 0 ? this.state.highlightedIndex - 1 : this.props.items.length})
+      }
+
+      else if(event.keyCode === KEYS.ENTER){
+        //let list = this.refs.list;
+        //let items = list.items();
+        //let item = items[this.state.highlightedIndex];
+        //console.log("item from Key Enter ", item);
+        //this.selectedItem(item);
       }
 
       /*
