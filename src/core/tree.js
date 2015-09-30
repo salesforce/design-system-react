@@ -101,9 +101,17 @@ getId (item)
 	getOpenFolders () {
 		return this.getProperty('open');
 	},
+
+	getClosedFolders () {
+		return this.getProperty('open');
+	},
 	
 	_getOpenFolders () {
 		return this._getDataAdapter(this.getOpenFolders()).clone();
+	},
+
+	_getClosedFolders () {
+		return this._getDataAdapter(this.getClosedFolders()).clone();
 	},
 	
 	_isFolderOpen (folder, open) {
@@ -132,7 +140,7 @@ getId (item)
 			
 			this.setProperties({ open: open._data });
 			if (!silent && Lib.isFunction(this._onFolderToggled)) this._onFolderToggled(folder, !isOpen);
-			
+
 			this.trigger(eventName, folder._item, open._data);
 		}
 	},

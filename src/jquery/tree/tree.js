@@ -38,7 +38,29 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 		this.elements.wrapper.on('click.fu.tree', '.tree-item', $.proxy(this._handleItemClicked, this));
 
+		if ( this.options.dataSource ) {
+			this.accessors.getChildren = $.proxy(this.getChildren, this);
+		}
+
 		this._render();
+	},
+
+	selectItem (item) {
+		this._selectItem( this._getItemAdapter(item.jquery ? item.data('item') : item) );
+	},
+
+	getChildren (item) {
+		const self = this;
+
+		return new Promise( (resolve) => {
+			self.options.dataSource( item._item, (response) => {
+				response.data.forEach( (dataItem, index) => {
+					response.data[index] = self._addNewAttributes(dataItem);
+				});
+
+				resolve(response.data);
+			});
+		});
 	},
 
 	_configureBranchSelect () {
@@ -69,6 +91,21 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		this._toggleFolder(branch);
 	},
 
+	_addNewAttributes (item) {
+		const itemData = Lib.extend({}, item);
+
+		itemData.text = itemData.name ? itemData.name : item.text;
+		itemData._itemType = itemData.type ? itemData.type : item._itemType;
+
+		if ( itemData.dataAttributes ) {
+			itemData.id = itemData.dataAttributes.id ? itemData.dataAttributes.id : itemData.id;
+			itemData._iconClass = itemData.dataAttributes['data-icon'] ? itemData.dataAttributes['data-icon'] : itemData._iconClass;
+			itemData._isExpandable = itemData.dataAttributes.hasChildren ? itemData.dataAttributes.hasChildren : itemData._isExpandable;
+		}
+
+		return itemData;
+	},
+
 	_onFolderToggled (branch) {
 		const self = this;
 		const id = branch.getId();
@@ -81,6 +118,11 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 				$branch.replaceWith(self._renderBranch(branch));
 			}
 		});
+	},
+
+	_onFoldersClosed () {
+		this.setProperties({ autoOpen: false });
+		this._render();
 	},
 
 	_handleItemClicked ($event) {
@@ -116,10 +158,22 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_render () {
+		const self = this;
 		const $el = this.template.clone().empty();
 
 		if (this._collection.length()) {
 			this._loopChildren(this._collection, $el, 1);
+		} else if (this.options.dataSource) {
+			this.options.dataSource({}, (response) => {
+				const items = self._getDataAdapter(response.data);
+
+				items._data.forEach( (item, index) => {
+					items._data[index] = self._addNewAttributes(item);
+				});
+
+				self._collection = items;
+				self._loopChildren(self._collection, $el, 1);
+			});
 		}
 
 		// Prep for append
@@ -243,6 +297,51 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 // LEGACY METHODS
 
 const legacyMethods = {
+
+	destroy () {
+		this.elements.wrapper.remove();
+
+		return template;
+	},
+
+	selectedItems () {
+		const selection = this._getSelectedItems();
+
+		return selection.get();
+	},
+
+	selectFolder ($folder) {
+		this.selectItem($folder);
+	},
+
+	openFolder ($folder) {
+		if (!$folder.hasClass('tree-open')) {
+			this.toggleFolder($folder);
+		}
+	},
+
+	closeFolder ($folder) {
+		if ($folder.hasClass('tree-open')) {
+			this.toggleFolder($folder);
+		}
+	},
+
+	toggleFolder ($folder) {
+		this._toggleFolder(this._getItemAdapter($folder.data('item')));
+	},
+
+	closeAll () {
+		this.closeAllFolders();
+	},
+
+	discloseAll () {
+		this.setProperties({
+			autoOpen: true,
+			autoOpenLimit: 100
+		});
+		this._render();
+	},
+
 	discloseVisible () {
 		const self = this;
 
@@ -252,6 +351,14 @@ const legacyMethods = {
 
 			self.toggleFolder(_branch);
 		});
+	},
+
+	refresh () {
+		this._render();
+	},
+
+	render () {
+		this._render();
 	}
 };
 

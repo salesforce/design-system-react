@@ -12,7 +12,8 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 		babel: {
 			options: {
-				modules: 'umd'
+				modules: 'umd',
+				experimental: true
 			},
 			dist: {
 				files: [{
