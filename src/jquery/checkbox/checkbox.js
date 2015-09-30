@@ -20,8 +20,7 @@ let Checkbox = function Checkbox (element, options) {
 		wrapper: $(element)
 	};
 
-	this.inputSelector = 'input[type="checkbox"]';
-	this.rendered = (this.elements.wrapper.find(this.inputSelector).length > 0);
+	this.rendered = (this.elements.wrapper.find('input[type="checkbox"]').length > 0);
 	this.template = $(template);
 
 	this._initializeState();
@@ -35,17 +34,32 @@ const CheckboxObject = {
 	},
 
 	_handleInputChange (e) {
-		this.toggle($(e.target).prop(this.cssClasses.CHECKED));
+		this.toggle($(e.target).prop('checked'));
 	},
 
 	_initElements ($base, elements) {
+		const dot = '.';
 		const els = elements || {};
 
-		els.block = ($base.is('div.' + this.cssClasses.BLOCK)) ? $base : $base.find('.' + this.cssClasses.BLOCK);
-		els.control = $base.find('.' + this.cssClasses.CONTROL);
-		els.input = $base.find(this.inputSelector);
+		els.block = ($base.is(dot + this.cssClasses.BLOCK)) ? $base : $base.find(dot + this.cssClasses.BLOCK);
+		els.control = ($base.is(dot + this.cssClasses.CONTROL)) ? $base : $base.find(dot + this.cssClasses.CONTROL);
+		els.input = $base.find('input[type="checkbox"]');
+		els.label = $base.find(dot + this.cssClasses.LABEL);
 
 		return els;
+	},
+
+	_onEnabledOrDisabled () {
+		const disabled = this.getProperty('disabled');
+		const disabledAttr = 'disabled';
+
+		if (disabled) {
+			this.elements.control.addClass(this.cssClasses.DISABLED);
+			this.elements.input.attr(disabledAttr, disabledAttr);
+		} else {
+			this.elements.control.removeClass(this.cssClasses.DISABLED);
+			this.elements.input.removeAttr(disabledAttr);
+		}
 	},
 
 	_onInitialized () {
@@ -53,30 +67,52 @@ const CheckboxObject = {
 			this._render();
 		} else {
 			this._initElements(this.elements.wrapper, this.elements);
-		}
 
-		this._onToggled();
+			// syncing state to provided markup
+			this.setProperties({
+				addon: this.elements.control.hasClass(this.cssClasses.ADDON),
+				checked: this.elements.input.prop('checked'),
+				disabled: this.elements.input.prop('disabled'),
+				highlight: this.elements.control.hasClass('highlight'),
+				inline: this.elements.control.hasClass(this.cssClasses.INLINE),
+				text: this.elements.label.html(),
+				toggleSelector: this.elements.input.attr('data-toggle')
+			});
+
+			// ensuring there were no markup mistakes based on state
+			this._onEnabledOrDisabled();
+			this._onToggled();
+		}
 
 		this._bindUIEvents();
 	},
 
 	_onToggled () {
+		const blank = '';
 		const checked = this.getProperty('checked');
+		const hidden = 'hidden';
+		const toggleSelector = this.getProperty('toggleSelector');
 
 		if (checked) {
 			this.elements.control.addClass(this.cssClasses.CHECKED);
+			if (toggleSelector !== blank) {
+				$(toggleSelector).removeClass(hidden);
+			}
 		} else {
 			this.elements.control.removeClass(this.cssClasses.CHECKED);
+			if (toggleSelector !== blank) {
+				$(toggleSelector).addClass(hidden);
+			}
 		}
 	},
 
 	_render () {
 		let $el = this.template.clone();
+		const addon = this.getProperty('addon');
 		const elements = this._initElements($el, this.elements);
 
-		if (this.getProperty('inline')) {
-			$el = elements.control;
-			elements.control.addClass(this.cssClasses.INLINE);
+		if (addon) {
+			elements.control.addClass(this.cssClasses.ADDON);
 		}
 
 		if (this.getProperty('highlight')) {
@@ -84,7 +120,15 @@ const CheckboxObject = {
 			elements.control.addClass(this.cssClasses.HIGHLIGHT);
 		}
 
-		// TODO: how would addon be done???
+		if (this.getProperty('inline') || addon) {
+			$el = elements.control;
+			elements.control.addClass(this.cssClasses.INLINE);
+		}
+
+		elements.label.append(this.getProperty('text'));
+
+		this._onEnabledOrDisabled();
+		this._onToggled();
 
 		elements.wrapper.empty();
 		elements.wrapper.append($el);
@@ -102,8 +146,7 @@ const CheckboxObject = {
 Lib.merge(Checkbox.prototype, CheckboxCore, Events, State, CheckboxObject);
 
 // Legacy methods
-const legacyMethods = {
-};
+const legacyMethods = {};
 
 // Framework setup
 Checkbox = Lib.runHelpers('jquery', CONTROL, Checkbox, {
