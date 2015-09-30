@@ -12,6 +12,7 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 	cssClasses: {
 		CONTROL: CONTROL + '-custom',
 		CHECKED: 'checked',
+		BLOCK: CONTROL,
 		INLINE: 'checkbox-inline',
 		ADDON: 'input-group-addon',
 		HIGHLIGHT: 'highlight'
@@ -23,6 +24,7 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 		inline: false,
 		addon: false,
 		highlight: false
+		// TODO: is a "label" property needed here for the content?
 	},
 	
 	isChecked () {
