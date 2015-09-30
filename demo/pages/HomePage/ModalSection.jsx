@@ -17,12 +17,10 @@ import {EventUtil} from '../../../components/utils';
 import SLDSDateInput from '../../../components/SLDSDateInput';
 
 import SLDSModal from '../../../components/SLDSModal';
+import {SLDSModalManager} from '../../../components';
 
 
-const items = ['Paddy\'s Pub', 'Tyrell Corp', 'Paper St. Soap Company', 'Nakatomi Investments', 'Acme Landscaping', 'Acme Construction'];
 
-
-import Modal from 'react-modal';
 
 
 
@@ -60,6 +58,7 @@ module.exports = React.createClass( {
 
   openModal () {
     this.setState({modalIsOpen: true});
+    SLDSModalManager.trigger(this.getModal());
   },
 
   closeModal () {
@@ -76,6 +75,36 @@ module.exports = React.createClass( {
 
   handleScroll (e) {
 //    EventUtil.trap(e);
+  },
+
+  getModal () {
+    return (<SLDSModal 
+                  title={<span>Super Stuff</span>}
+                  footer={[
+                    <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>,
+                    <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
+                  ]}
+                  isOpen={true}>
+
+                        <SLDSButton flavor='brand' onClick={this.handleButtonClick}>
+                          Test Button
+                        </SLDSButton>
+
+                        <div>
+                          <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore
+                            quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
+                          <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt
+                            nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
+                        </div>
+{/*
+                        <SLDSModal 
+                          title={<span>Super Stuff</span>}
+                          isOpen={true}>
+                            AAA
+                            AAA
+                          </SLDSModal>
+*/}
+                </SLDSModal>);
   },
 
   render() {
@@ -98,40 +127,7 @@ module.exports = React.createClass( {
                   Open Modal
                 </SLDSButton>
 
-                <SLDSModal 
-                  title={<span>Super Stuff</span>}
-                  footer={[
-                    <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>,
-                    <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
-                  ]}
-                  isOpen={this.state.modalIsOpen}>
-
-                        <SLDSButton flavor='brand' onClick={this.handleButtonClick}>
-                          Test Button
-                        </SLDSButton>
-
-                        <div>
-                          <p>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi. Mollit officia cillum Lorem ullamco minim nostrud elit officia tempor esse quis. Cillum sunt ad dolore
-                            quis aute consequat ipsum magna exercitation reprehenderit magna. Tempor cupidatat consequat elit dolor adipisicing.</p>
-                          <p>Dolor eiusmod sunt ex incididunt cillum quis nostrud velit duis sit officia. Lorem aliqua enim laboris do dolor eiusmod officia. Mollit incididunt nisi consectetur esse laborum eiusmod pariatur proident. Eiusmod et adipisicing culpa deserunt
-                            nostrud ad veniam nulla aute est. Labore esse esse cupidatat amet velit id elit consequat minim ullamco mollit enim excepteur ea.</p>
-                        </div>
-
-                        <SLDSModal 
-                          title={<span>Super Stuff</span>}
-                          isOpen={true}>
-
-                          AAA
-
-                                                  <SLDSModal 
-                          title={<span>Super Stuff</span>}
-                          isOpen={true}>BBB</SLDSModal>
-
-                          AAA
-
-                          </SLDSModal>
-
-                </SLDSModal>
+                {this.getModal()}
 
               </div>
             </div>

@@ -94,7 +94,6 @@ module.exports = React.createClass( {
           </div>
 
         </div>
-
       </Modal>
     );
   },
@@ -103,13 +102,26 @@ module.exports = React.createClass( {
 
     if(this.state.isOpen !== prevState.isOpen){
       if(window && document && document.body){
-        document.body.style.overflow = this.state.isOpen?'hidden':'inherit';
+        if(this.state.isOpen){
+          document.body.style.overflow = 'hidden';
+        }
+        else{
+          if(document.body.className && document.body.className.indexOf('ReactModal__Body--open')<0){
+            document.body.style.overflow = 'inherit';
+          }
+        }
+      }
+      if(!this.state.isOpen){
+        if(this.isMounted()){
+          const el = this.getDOMNode().parentNode;
+          if(el && el.getAttribute('data-slds-modal')){
+            React.unmountComponentAtNode(el);
+            document.body.removeChild(el);
+          }
+        }
       }
     }
 
-    if(this.props.isOpen !== prevProps.isOpen){
-      this.setState({isOpen:this.props.isOpen});
-    }
 
   }
 
