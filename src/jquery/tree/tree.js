@@ -30,8 +30,6 @@ let Tree = function Tree (element, options) {
 };
 
 Lib.extend(Tree.prototype, TreeCore, Events, State, {
-	eventSuffix: 'fu.tree',
-
 	_onInitialized () {
 		const strings = this.getState('strings');
 		this.template.find('.tree-loader').text(strings.LOADING);
