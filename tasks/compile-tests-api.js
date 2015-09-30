@@ -22,8 +22,8 @@ module.exports = function (grunt) {
 			output += '};\n';
 		});
 		
-		output = "// GENERATED FILE: Mapping of component to its tests API for use by behavior tests.\n\n" + output
-			
+		output = '// GENERATED FILE: Mapping of component to its tests API for use by behavior tests.\n\n' + output;
+		
 		grunt.file.write('test/tests-api.js', output);
 		grunt.log.ok('Wrote test/tests-api.js');
 	});
