@@ -1,27 +1,48 @@
-// TODO: Fill in this file with API-specific tests here
+/*
+ * JQUERY FACADE API FOR SELECTLIST TESTS
+ * Facade (or framework specific) implementation of tests defined in behaviors folder
+ */
+
+// Core file for helpful things like CSS class names
+import { CONTROL as controlName } from '../../src/core/tree';
+import * as Lib from '../../src/lib/lib';
+
+// import TreeCore from '../../src/core/tree';
+// const Core = TreeCore;
+
+// Run in legacy plugin mode
+import Tree from '../../src/jquery/tree/tree';
+
+const $ = Lib.global.jQuery || Lib.global.$;
 
 export const behaviorHandlers = {
 	createComponent: {
-		default: function (initData) {
-			// TODO: Really call control, these are just to test that the behaviors are working
-			const $ = require('jquery');
+		default (initData, rendered) {
 			// Copied from original FuelUX3 example page
-			const tree = $('<ul class="tree" role="tree"><li class="tree-branch hide" data-template="treebranch" role="treeitem" aria-expanded="false"><div class="tree-branch-header"><button type="button" class="tree-branch-name"><span class="glyphicon icon-caret glyphicon-play"></span><span class="glyphicon icon-folder glyphicon-folder-close"></span><span class="tree-label"></span></button></div><ul class="tree-branch-children" role="group"></ul><div class="tree-loader hidden" role="alert">Loading...</div></li><li class="tree-item hide" data-template="treeitem" role="treeitem"><button type="button" class="tree-item-name"><span class="glyphicon icon-item fueluxicon-bullet"></span><span class="tree-label"></span></button></li><li class="tree-item" data-template="treeitem" role="treeitem"><button type="button" class="tree-item-name"><span class="glyphicon icon-item fueluxicon-bullet"></span><span class="tree-label">Item 1</span></button></li><li class="tree-branch tree-open" data-template="treebranch" role="treeitem" aria-expanded="true"><div class="tree-branch-header"><button type="button" class="tree-branch-name"><span class="glyphicon icon-caret glyphicon-play"></span><span class="glyphicon icon-folder glyphicon-folder-open"></span><span class="tree-label">Folder 1</span></button></div><ul class="tree-branch-children" role="group"><li class="tree-item" data-template="treeitem" role="treeitem"><button type="button" class="tree-item-name"><span class="glyphicon icon-item fueluxicon-bullet custom-item-icon-class"></span><span class="tree-label">Item 2</span></button></li><li class="tree-branch tree-open" data-template="treebranch" role="treeitem" aria-expanded="true" id="folder1"><div class="tree-branch-header"><button type="button" class="tree-branch-name"><span class="glyphicon icon-caret glyphicon-play"></span><span class="glyphicon icon-folder glyphicon-folder-open custom-folder-icon-class"></span><span class="tree-label" id="folder1-label">Folder 2</span></button></div><ul class="tree-branch-children" role="group"></ul><div class="tree-loader hidden" role="alert">Loading...</div></li></ul><div class="tree-loader hidden" role="alert">Loading...</div></li></ul>');
-			$(initData.container).append(tree);
-			return tree;
+			const treeMarkup = '<div id="my-' + controlName + '"></div>';
+			const treeSelector = '#my-' + controlName;
+			$(initData.container).append(treeMarkup);
+			$(treeSelector).on('initialized.fu.tree', function () {
+				console.log('initialized!');
+				console.log(arguments);
+				rendered();
+			});
+
+			const $tree = new Tree( $(treeSelector), initData );
+			return $tree;
 		}
 	},
 
 	getComponentElement: {
-		default: function (component) {
-			return component[0];
+		default (component) {
+			return component.elements.wrapper;
 		}
 	},
 
 	destroyComponent: {
-		default: function (component) {
-			// TODO: Call control, these are just to test that the behaviors are working
-			component.remove();
+		default (component) {
+			// component.destroy(); // <- This SHOULD BE implemented but isn't yet
+			this.getComponentElement(component).remove();
 		}
 	},
 

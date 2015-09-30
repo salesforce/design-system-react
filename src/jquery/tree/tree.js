@@ -30,6 +30,8 @@ let Tree = function Tree (element, options) {
 };
 
 Lib.extend(Tree.prototype, TreeCore, Events, State, {
+	eventSuffix: 'fu.tree',
+
 	_onInitialized () {
 		const strings = this.getState('strings');
 		this.template.find('.tree-loader').text(strings.LOADING);
@@ -39,6 +41,8 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		this.elements.wrapper.on('click.fu.tree', '.tree-item', $.proxy(this._handleItemClicked, this));
 
 		this._render();
+
+		this.trigger('initialized');
 	},
 
 	_configureBranchSelect () {
