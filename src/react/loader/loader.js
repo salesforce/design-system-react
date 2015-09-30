@@ -7,7 +7,6 @@ import LoaderCore, {CONTROL} from '../../core/loader';
 // Framework specific
 import React from 'react';
 import State from '../mixins/state';
-import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
 // Third party
@@ -30,11 +29,7 @@ let Loader = Lib.merge({}, LoaderCore, {
 		return (
 			<div className={classNames(this.cssClasses.ICON, this.cssClasses.LOADER)} style={styles}></div>
 		);
-	},
-
-	componentDidMount () {},
-
-	componentWillUnmount () {}
+	}
 });
 
 Loader = Lib.runHelpers('react', CONTROL, Loader);
