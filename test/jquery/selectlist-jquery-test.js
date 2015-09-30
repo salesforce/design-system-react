@@ -59,6 +59,14 @@ export const behaviorHandlers = {
 		default: function (createdControl) {
 			return createdControl.getSelection();
 		}
+	},
+
+	createEventListener: {
+		default: function (eventName, callback)  {
+			$('#my-' + controlName).on(eventName + '.fu.selectlist', function () {
+				callback();
+			});
+		}
 	}
 
 };

@@ -22,13 +22,16 @@ const $ = require('jquery');
 const chai = require('chai');
 const expect = chai.expect;
 
+const defaultSelection = { id: 1, text: 'Two', value: '2'  };
+const itemToClick = { id: 0, text: 'One', value: '1'  };
+
 const defaultOptions = {
 	collection: [
 		{ _itemType: 'header', text: 'One thing' },
-		{ id: 0, text: 'One', value: '1'  },
+		itemToClick,
 		{ _itemType: 'divider' },
 		{ _itemType: 'header', text: 'All the things' },
-		{ id: 1, text: 'Two', value: '2'  },
+		defaultSelection,
 		{ id: 2, text: 'Three', value: '3' },
 		{ id: 3, text: 'Buzz', value: '4' },
 		{ id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar' },
@@ -45,7 +48,8 @@ describe(controlName + ' component', function () {
 		'destroyControl',
 		'disableControl',
 		'enableControl',
-		'getSelection'
+		'getSelection',
+		'createEventListener'
 	]);
 
 	registerBehaviorTestCombinations(componentFacadeTestLib, [
@@ -55,7 +59,8 @@ describe(controlName + ' component', function () {
 		'destroyControl',
 		'disableControl',
 		'enableControl',
-		'getSelection'
+		'getSelection',
+		'createEventListener'
 	], [
 		// other behaviors required for tests
 	], function (testingBehaviorHandlers) {
@@ -110,10 +115,20 @@ describe(controlName + ' component', function () {
 		describe('disable and enable control', function () {
 			it(controlName + ' should disable, THEN enable', function (done) {
 				function rendered (renderedControlContainer, control) {
+					// DISABLE
 					testingBehaviorHandlers.disableControl(control);
+					// has disabled appearance
 					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					// control's button as disabled attribute
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).querySelector('button').disabled).to.equal(true);
+
+					// ENABLE
 					testingBehaviorHandlers.enableControl(control);
+					// has enabled appearance
 					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(false);
+					// control's button as disabled attribute
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).querySelector('button').disabled).to.equal(false);
+
 					done();
 				}
 
@@ -124,11 +139,21 @@ describe(controlName + ' component', function () {
 
 			it(controlName + ' should initialize disabled, THEN enable, THEN disabled', function (done) {
 				function rendered (renderedControlContainer, control) {
+					// has disabled appearance
 					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					// control's button as disabled attribute
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).querySelector('button').disabled).to.equal(true);
+
+					// ENABLE
 					testingBehaviorHandlers.enableControl(control);
+					// has enabled appearance
 					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(false);
+					// control's button as disabled attribute
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).querySelector('button').disabled).to.equal(false);
+
 					testingBehaviorHandlers.disableControl(control);
 					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+
 					done();
 				}
 
@@ -141,18 +166,44 @@ describe(controlName + ' component', function () {
 
 		describe('should set the default selection', function () {
 			it(controlName + ' should set the default selection', function (done) {
-				const id = 1;
-				// search for object with this id
-				const defaultSelection = $.grep(defaultOptions.collection, function (e) { return e.id === id; } );
-
 				function rendered (renderedControlContainer, control) {
-					expect(testingBehaviorHandlers.getSelection(control)).to.equal(defaultSelection[0]);
+					expect(testingBehaviorHandlers.getSelection(control)).to.equal(defaultSelection);
+
 					done();
 				}
 
+				$('#my-' + controlName).on('rendered.fu.selectlist', function () {
+					rendered(controlContainer, control);
+				});
+
 				testingBehaviorHandlers.createControl( {
 					collection: defaultOptions.collection,
-					selection: { id: id }
+					selection: { id: defaultSelection.id }
+				}, controlContainer, rendered);
+			});
+		});
+
+		describe('should fire events', function () {
+			this.timeout(3000);
+			it(controlName + ' should fire event: changed', function (done) {
+				let eventFired = false;
+
+				function changed () {
+					eventFired = true;
+					expect(eventFired).to.equal(true);
+					done();
+				}
+
+				function rendered (renderedControlContainer, control) {
+					// simulate UI interaction
+					testingBehaviorHandlers.createEventListener('changed', changed);
+
+					renderedControlContainer[0].querySelector('a').click();
+					expect(testingBehaviorHandlers.getSelection(control)).to.equal(itemToClick);
+				}
+
+				testingBehaviorHandlers.createControl( {
+					collection: defaultOptions.collection
 				}, controlContainer, rendered);
 			});
 		});
