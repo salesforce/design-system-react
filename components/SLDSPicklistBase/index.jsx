@@ -261,12 +261,7 @@ module.exports = React.createClass( {
           this.setState({isOpen:false})
         }
       }
-      /* resolve a double click issue with the modal */
-    } else if (this.props.modal && this.state.isFocused && prevState.isFocused) {
-          if (!this.state.isOpen) {
-              this.setState({isOpen : true});
-          }
-      }
+    }
 
 
     if(this.props.value !== prevProps.value){
