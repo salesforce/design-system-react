@@ -13,7 +13,7 @@ import genericWillMount from '../mixins/generic-will-mount';
 import classNames from 'classnames';
 
 let Loader = Lib.merge({}, LoaderCore, {
-	mixins: [State, Events, genericWillMount],
+	mixins: [State, genericWillMount],
 
 	propTypes: {
 		width: React.PropTypes.string,
