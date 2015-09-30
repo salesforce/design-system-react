@@ -17,6 +17,12 @@ class Item extends React.Component {
     this.id = this.props.id || `item-${Item.globalIdx++}-${this.props.idx}`;
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.isActive && nextProps.keyEvent === 'enter'){
+      return this.props.setActiveDescendant(this);
+    }
+  }
+
   boldSearchText(children) {
     const term = this.props.searchTerm;
     if(!children || !term) return children;
@@ -44,12 +50,8 @@ class Item extends React.Component {
     let liStyles = {whiteSpace: 'nowrap'};
     let aStyles = null;
     if(this.props.isSelected) className += ' slds-is-selected';
-
-    if(this.props.isHighlighted) {
-      liStyles = { background: '#005fb2', whiteSpace: 'nowrap' };
-      aStyles = { color: 'white' };
-    }
-
+    if(this.props.isActive && this.props.keyEvent !== null) liStyles = { backgroundColor: 'red'};
+    //console.log('is active form item ', this.props.isActive);
     const tabIndex = this.props.idx === 0 ? 0 : -1;
 
     return (
@@ -60,6 +62,8 @@ class Item extends React.Component {
       role="presentation"
       tabIndex={tabIndex}
       style={liStyles}>
+
+
         <a href={ this.props.href } id={"item-" + this.props.idx} onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option" style={aStyles}>
           <Icon name="account" />
           { this.boldSearchText(this.props.children) }
@@ -69,6 +73,5 @@ class Item extends React.Component {
   }
 }
 Item.globalIdx = 0;
-
 
 module.exports = Item;

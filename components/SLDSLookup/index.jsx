@@ -36,8 +36,8 @@ module.exports = React.createClass( {
     return {
       searchTerm: '',
       isOpen:false,
-      tabEvent:false,
-      highlightedIndex: 0
+      keyEvent:null,
+      activeDescendant: ''
     };
   },
 
@@ -60,6 +60,11 @@ module.exports = React.createClass( {
 
   handleFocus() {
     this.setState({isOpen:true})
+  },
+
+  setActiveDescendant(item){
+    console.log('setActive called', item);
+    //this.setState({activeDescendant: item});
   },
 
   selectedItem(item) {
@@ -122,8 +127,8 @@ module.exports = React.createClass( {
           selectedItem={this.selectedItem}
           items={this.props.items}
           label={this.props.label}
-          tabEvent={this.state.tabEvent}
-          highlightedIndex={this.state.highlightedIndex}
+          keyEvent={this.state.keyEvent}
+          setActiveDescendant={this.setActiveDescendant}
           onChange={this.handleChange} />:null);
   },
 
@@ -140,18 +145,22 @@ module.exports = React.createClass( {
       //If user hits tab key, move aria activedescendant to first menu item
       if(event.keyCode === KEYS.TAB){
         EventUtil.trapImmediate(event);
-        this.setState({tabEvent:true});
+        this.setState({keyEvent:'tab'});
       }
       //If user hits down key, advance aria activedescendant to next item
       else if(event.keyCode === KEYS.DOWN){
-        this.setState({highlightedIndex: this.state.highlightedIndex <= this.props.items.length ? this.state.highlightedIndex + 1 : 0})
+        EventUtil.trapImmediate(event);
+        this.setState({keyEvent:'down'});
       }
       //If user hits up key, advance aria activedescendant to previous item
       else if(event.keyCode === KEYS.UP){
-        this.setState({highlightedIndex: this.state.highlightedIndex > 0 ? this.state.highlightedIndex - 1 : this.props.items.length})
+        EventUtil.trapImmediate(event);
+        this.setState({keyEvent:'up'});
       }
 
       else if(event.keyCode === KEYS.ENTER){
+        EventUtil.trapImmediate(event);
+        this.setState({keyEvent:'enter'});
         //let list = this.refs.list;
         //let items = list.items();
         //let item = items[this.state.highlightedIndex];
@@ -178,7 +187,7 @@ module.exports = React.createClass( {
 
   render() {
     let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
-    let activedescendant = this.state.highlightedIndex ?  'item-' +  this.state.highlightedIndex : "";
+    let activeDescendant = this.state.activeDescendant;
 
     return (
       <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">
@@ -196,12 +205,11 @@ module.exports = React.createClass( {
               aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
-              aria-activedescendant={activedescendant}
+              aria-activedescendant={activeDescendant}
               aria-expanded={this.state.isOpen}
               role="combobox"
               onChange={this.handleChange}
               onFocus={this.handleFocus}
-              onBlur={this.handleBlur}
               onClick={this.handleClick}
               onKeyDown={this.handleKeyDown}
               value={this.state.searchTerm} />

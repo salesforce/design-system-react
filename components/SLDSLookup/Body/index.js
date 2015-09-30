@@ -18,13 +18,29 @@ module.exports = React.createClass({
 
   getInitialState: function(){
     return {
-      currentSelectedIndex: null
+      currentSelectedIndex: null,
+      currentActiveIndex: 0,
     };
   },
 
   getDefaultProps: function(){
     return {
     };
+  },
+
+  componentWillReceiveProps(nextProps){
+    let length = this.props.items.length;
+
+    if(nextProps.keyEvent === 'down'){
+      this.setState({
+        currentActiveIndex: this.state.currentActiveIndex <= length ? this.state.currentActiveIndex + 1 : 0
+      });
+    }
+    else if(nextProps.keyEvent === 'up'){
+      this.setState({
+        currentActiveIndex: this.state.currentActiveIndex >= 0 ? this.state.currentActiveIndex - 1 : length
+      });
+    }
   },
 
   selectedItem: function(idx, item) {
@@ -39,9 +55,9 @@ module.exports = React.createClass({
   items: function() {
     return this.props.items.filter(this.filter, this).map((c, i) => {
       const isSelected = (i === this.state.currentSelectedIndex);
-      const isHighlighted = (i === this.props.highlightedIndex && this.props.tabEvent);
+      let isActive = (i === this.state.currentActiveIndex);
 
-      return <Item key={i} isSelected={isSelected} isHighlighted={isHighlighted} idx={i} searchTerm={this.props.searchTerm} selectedItem={this.selectedItem}>{c}</Item>
+      return <Item key={i} keyEvent={this.props.keyEvent} setActiveDescendant={this.props.setActiveDescendant} isSelected={isSelected} isActive={isActive} idx={i} searchTerm={this.props.searchTerm} selectedItem={this.selectedItem}>{c}</Item>
     });
   },
 
