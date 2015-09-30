@@ -63,8 +63,8 @@ module.exports = React.createClass( {
   },
 
   setActiveDescendant(item){
-    console.log('setActive called', item);
-    //this.setState({activeDescendant: item});
+    console.log(item.id);
+    //this.setState({ activeDescendant: item.id });
   },
 
   selectedItem(item) {
@@ -161,41 +161,19 @@ module.exports = React.createClass( {
       else if(event.keyCode === KEYS.ENTER){
         EventUtil.trapImmediate(event);
         this.setState({keyEvent:'enter'});
-        //let list = this.refs.list;
-        //let items = list.items();
-        //let item = items[this.state.highlightedIndex];
-        //console.log("item from Key Enter ", item);
-        //this.selectedItem(item);
       }
-
-      /*
-      else if(event.keyCode === 13){
-        //console.log('enter');
-        let list = this.refs.list;
-        if(list && list.items){
-          let items = list.items();
-          if(items && items.length){
-            let item = items[0];
-            this.selectedItem(item);
-            //console.log('FIRST ITEM: ',item);
-          }
-        }
-      }
-      */
     }
   },
 
   render() {
     let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
-    let activeDescendant = this.state.activeDescendant;
 
     return (
       <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">
         <div className="slds-form-element">
           <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
               <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
-
-            { this.state.currentSelectedItem ? this.selectedItemPill() : null }
+                { this.state.currentSelectedItem ? this.selectedItemPill() : null }
             <InputIcon name="search"/>
             <input
               id="lookup"
@@ -205,7 +183,7 @@ module.exports = React.createClass( {
               aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
-              aria-activedescendant={activeDescendant}
+              aria-activedescendant={this.state.activeDescendant}
               aria-expanded={this.state.isOpen}
               role="combobox"
               onChange={this.handleChange}

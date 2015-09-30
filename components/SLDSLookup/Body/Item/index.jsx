@@ -14,12 +14,12 @@ import {KEYS} from '../../../utils';
 class Item extends React.Component {
   constructor(props) {
     super(props);
-    this.id = this.props.id || `item-${Item.globalIdx++}-${this.props.idx}`;
+    this.id = this.props.id || `item-${this.props.idx}`;
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.isActive && nextProps.keyEvent === 'enter'){
-      return this.props.setActiveDescendant(this);
+    if((nextProps.isActive) && (nextProps.keyEvent === 'down' || nextProps.keyEvent === 'up')){
+      this.props.setActiveDescendant(this);
     }
   }
 
@@ -64,7 +64,7 @@ class Item extends React.Component {
       style={liStyles}>
 
 
-        <a href={ this.props.href } id={"item-" + this.props.idx} onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option" style={aStyles}>
+        <a href={ this.props.href } onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option" style={aStyles}>
           <Icon name="account" />
           { this.boldSearchText(this.props.children) }
         </a>
