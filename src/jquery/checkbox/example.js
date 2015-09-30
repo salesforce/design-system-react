@@ -20,7 +20,7 @@ $(function () {
 		text: 'Custom checkbox checked disabled on initialization'
 	});
 	$('#myCheckbox4').checkbox({
-		hover: true,
+		highlight: true,
 		inline: true,
 		text: 'Custom inline checkbox checked on initialization'
 	});
@@ -41,7 +41,7 @@ $(function () {
 		text: 'Custom checkbox checked disabled on initialization'
 	});
 	const checkboxNA3 = new Checkbox($('#myCheckbox8'), {
-		hover: true,
+		highlight: true,
 		inline: true,
 		text: 'Custom inline checkbox checked on initialization'
 	});
