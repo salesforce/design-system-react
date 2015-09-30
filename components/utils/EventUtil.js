@@ -16,12 +16,8 @@ const EventUtil = {
   trapEvent(event){
     event.preventDefault();
     event.stopPropagation();
-    
-    if(event.nativeEvent && event.nativeEvent.preventDefault){
+    if(event.nativeEvent){
       event.nativeEvent.preventDefault();
-    }
-
-    if (event.nativeEvent && event.nativeEvent.stopPropagation){
       event.nativeEvent.stopPropagation();
     }
   },
@@ -31,7 +27,7 @@ const EventUtil = {
   },
 
   trapImmediate(event){
-    if(event.nativeEvent && event.nativeEvent.stopImmediatePropagation){
+    if(event.nativeEvent){
       event.nativeEvent.stopImmediatePropagation();
     }
     EventUtil.trap(event);
