@@ -17,9 +17,9 @@ import classNames from 'classnames';
 import TreeBranch from './tree-branch';
 import TreeItem from './tree-item';
 
-let Tree = Lib.extend({}, TreeCore, {
+let Tree = Lib.merge({}, TreeCore, {
 	mixins: [State, Events, genericWillMount],
-	
+
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		folderSelect: React.PropTypes.bool,
@@ -36,11 +36,11 @@ let Tree = Lib.extend({}, TreeCore, {
 
 	render () {
 		const children = [];
-		
+
 		this._collection.forEach(model => {
 			const id = model.getId();
 			const selectable = this.getProperty('folderSelect');
-			
+
 			if (model.getType() === 'folder') {
 				children.push(<TreeBranch key={id} item={model} selectable={selectable} strings={this.state.strings} autoOpenLevel={1} autoOpenLimit={this.props.autoOpen ? this.props.autoOpenLimit : 0} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _isFolderOpen={this._isFolderOpen} _isItemSelected={this._isItemSelected} />);
 			} else {

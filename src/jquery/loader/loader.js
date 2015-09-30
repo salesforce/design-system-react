@@ -48,9 +48,20 @@ const methods = Lib.merge(Loader.prototype, LoaderCore, State, {
 
 	render () {
 		this.elements.wrapper.empty();
-		this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true);
-		this.elements.wrapper.attr('data-frame', this.getState('frame') + '');
-		this._play();
+
+		if (this.options.svg === true) {
+			this.elements.wrapper
+				.toggleClass(this.cssClasses.ICON, true)
+				.toggleClass(this.cssClasses.LOADER, true)
+				.css({
+					width: this._props.width,
+					height: this._props.height
+				});
+		} else {
+			this.elements.wrapper.toggleClass(this.cssClasses.CONTROL, true)
+				.attr('data-frame', this.getState('frame') + '');
+			this._play();
+		}
 	},
 
 	_play () {
