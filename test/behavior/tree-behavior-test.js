@@ -187,6 +187,35 @@ describe(controlName + ' Component', function () {
 		// other behaviors required for tests
 	], function (testingBehaviorHandlers) {
 		let container = null;
+		const initDataTemplate = {
+			container: container,
+			children: [
+				{
+					text: 'Item 1',
+					type: 'item'
+				},
+				{
+					text: 'Folder 1',
+					type: 'folder',
+					initiallyOpen: true,
+					expandable: true,
+					children: [
+						{
+							text: 'Item 2',
+							type: 'item',
+							iconClass: 'custom-item-icon-class'
+						},
+						{
+							text: 'Folder 2',
+							type: 'folder',
+							iconClass: 'custom-folder-icon-class',
+							expandable: true,
+							children: []
+						}
+					]
+				}
+			]
+		};
 
 		beforeEach(function () {
 			container = $('<div />');
@@ -199,146 +228,39 @@ describe(controlName + ' Component', function () {
 		});
 
 		describe('create and destroy component', function () {
-			it('should create a single tree element on the DOM within the container', function () {
+			it('should create a single tree element on the DOM within the container', function (done) {
 				const component = testingBehaviorHandlers.createComponent( {
 					container: container,
 					children: []
+				}, function () {
+					console.log(arguments);
+					expect(container.find('.tree').length).to.equal(1);
+					testingBehaviorHandlers.destroyComponent(component);
+					done();
 				} );
-
-				expect(container.find('.tree').length).to.equal(1);
-
-				testingBehaviorHandlers.destroyComponent(component);
 			});
 
-			it('should return an object representing the component', function () {
+			it('should return an object representing the component', function (done) {
 				const component = testingBehaviorHandlers.createComponent( {
 					container: container,
 					children: []
+				}, function () {
+					expect(component).to.be.an('object');
+					testingBehaviorHandlers.destroyComponent(component);
+					done();
 				} );
-
-				expect(component).to.be.an('object');
-
-				testingBehaviorHandlers.destroyComponent(component);
 			});
 
-			it('destroy should remove tree from container', function () {
+			it('destroy should remove tree from container', function (done) {
 				const component = testingBehaviorHandlers.createComponent( {
 					container: container,
 					children: []
+				}, function () {
+					testingBehaviorHandlers.destroyComponent(component);
+					expect(container.find('.tree').length).to.equal(0);
+					done();
 				} );
-
-				testingBehaviorHandlers.destroyComponent(component);
-
-				expect(container.find('.tree').length).to.equal(0);
 			});
-		});
-
-		describe('DOM expectations', function () {
-			let component = null;
-			let treeEl = null;
-
-			const initDataTemplate = {
-				container: container,
-				children: [
-					{
-						text: 'Item 1',
-						type: 'item'
-					},
-					{
-						text: 'Folder 1',
-						type: 'folder',
-						initiallyOpen: true,
-						expandable: true,
-						children: [
-							{
-								text: 'Item 2',
-								type: 'item',
-								iconClass: 'custom-item-icon-class'
-							},
-							{
-								text: 'Folder 2',
-								type: 'folder',
-								iconClass: 'custom-folder-icon-class',
-								expandable: true,
-								children: []
-							}
-						]
-					}
-				]
-			};
-
-			beforeEach(function () {
-				const initData = JSON.parse( JSON.stringify( initDataTemplate ) );
-				initData.container = container;
-
-				component = testingBehaviorHandlers.createComponent( initData );
-
-				treeEl = testingBehaviorHandlers.getComponentElement(component);
-			});
-
-			afterEach(function () {
-				testingBehaviorHandlers.destroyComponent(component);
-				component = null;
-				treeEl = null;
-			});
-
-			function getComponentElement () {
-				return treeEl;
-			}
-
-			expectDom.matches(getComponentElement, 'ul');
-			expectDom.matches(getComponentElement, '.tree');
-			expectDom.matches(getComponentElement, '[role=tree]');
-			expectDom.found(getComponentElement,   '> li:visible', 2);
-			expectDom.found(getComponentElement,   '> li:visible:eq(0).tree-item');
-			expectDom.found(getComponentElement,   '> li:visible:eq(0)[role=treeitem]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(0) > button');
-			expectDom.found(getComponentElement,   '> li:visible:eq(0) > button:eq(0).tree-item-name');
-			expectDom.found(getComponentElement,   '> li:visible:eq(0) > button:eq(0)[type=button]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(0) > button:eq(0) > .icon-item');
-			expectDom.found(getComponentElement,   '> li:visible:eq(0) > button:eq(0) > .tree-label');
-			expectDom.text(getComponentElement,    '> li:visible:eq(0) > button:eq(0) > .tree-label', initDataTemplate.children[0].text);
-			expectDom.found(getComponentElement,   '> li:visible:eq(1).tree-branch');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1)[role=treeitem]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1).tree-open');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1)[aria-expanded=true]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0).tree-branch-name');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0)[type=button]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .icon-caret');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .icon-folder');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .tree-label');
-			expectDom.text(getComponentElement,    '> li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .tree-label', initDataTemplate.children[1].text);
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0).tree-branch-children');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0)[role=group]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible', 2);
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0).tree-item');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0)[role=treeitem]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0).tree-item-name');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0)[type=button]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0) > .icon-item');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0) > .icon-item:eq(0).custom-item-icon-class');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0) > .tree-label');
-			expectDom.text(getComponentElement,    '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(0) > button:eq(0) > .tree-label', initDataTemplate.children[1].children[0].text);
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1).tree-branch');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1)[role=treeitem]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1).tree-open');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1)[aria-expanded=true]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0).tree-branch-name');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0)[type=button]');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .icon-caret');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .icon-folder');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .icon-folder:eq(0).custom-folder-icon-class');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .tree-label');
-			expectDom.text(getComponentElement,    '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) > button:eq(0) > .tree-label', initDataTemplate.children[1].children[1].text);
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) + ul');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0).tree-branch-children');
-			expectDom.found(getComponentElement,   '> li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0) > li:visible:eq(1) > .tree-branch-header:eq(0) + ul:eq(0)[role=group]');
 		});
 	});
 });
