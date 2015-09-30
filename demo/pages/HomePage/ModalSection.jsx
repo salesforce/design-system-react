@@ -56,6 +56,10 @@ module.exports = React.createClass( {
     };
   },
 
+  handleOpenModalClick (event) {
+    SLDSModalTrigger.open(this.getModalConfig(event.target));
+  },
+
   openModal () {
     this.setState({modalIsOpen: true});
     SLDSModalTrigger.open(this.getModalConfig());
@@ -67,10 +71,6 @@ module.exports = React.createClass( {
 
   handleSubmitModal () {
     this.closeModal();
-  },
-
-  handleButtonClick () {
-    alert('Test Button Clicked');
   },
 
   getModal () {
@@ -90,7 +90,7 @@ module.exports = React.createClass( {
             </SLDSModal>);
   },
 
-  getModalConfig () {
+  getModalConfig (returnFocusToElement) {
     return ({
       title:<span>Super Stuff</span>,
       content:  <div>
@@ -102,7 +102,8 @@ module.exports = React.createClass( {
       footer:[
         <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>,
         <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
-      ]
+      ],
+      returnFocusTo: returnFocusToElement
     });
   },
 
@@ -122,7 +123,7 @@ module.exports = React.createClass( {
 */}
 
               <div className='slds-p-vertical--large'>
-                <SLDSButton flavor='brand' onClick={this.openModal}>
+                <SLDSButton flavor='brand' onClick={this.handleOpenModalClick}>
                   Open Modal
                 </SLDSButton>
 

@@ -42,7 +42,10 @@ module.exports = React.createClass( {
   getDefaultProps () {
     return {
       title:'',
-      isOpen:false
+      isOpen:false,
+      content:[],
+      footer:[],
+      returnFocusTo:null
     };
   },
 
@@ -57,7 +60,7 @@ module.exports = React.createClass( {
     if(!this.state.revealed){
       setTimeout(()=>{
         this.setState({revealed:true});
-      }.bind(this));
+      });
     }
     this.updateBodyScroll();
   },
@@ -131,6 +134,10 @@ module.exports = React.createClass( {
 
 
       if(!this.state.isOpen){
+        console.log('this.props.returnFocusTo: ',this.props.returnFocusTo)
+        if(this.props.returnFocusTo && this.props.returnFocusTo.focus){
+          this.props.returnFocusTo.focus();
+        }
         if(this.isMounted()){
           const el = this.getDOMNode().parentNode;
           if(el && el.getAttribute('data-slds-modal')){
