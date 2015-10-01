@@ -69,23 +69,6 @@ const collection = [
 
 const options = {
 	collection: collection,
-	dataSource: function (dataSourceOptions, callback) {
-		setTimeout( function () {
-			callback({ data: [
-				{
-					text: 'Waterfall',
-					_itemType: 'item',
-					id: Math.floor( Math.random() * 10000 )
-				},
-				{
-					text: 'Bscending and Descending',
-					_itemType: 'folder',
-					_isExpandable: true,
-					id: Math.floor( Math.random() * 10000 )
-				}
-			]});
-		}, 1000);
-	},
 	folderSelect: true,
 	multiSelect: true
 };
