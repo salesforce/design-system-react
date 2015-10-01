@@ -33,8 +33,8 @@ const CheckboxObject = {
 		this.elements.input.on('change.fu.checkbox', $.proxy(this._handleInputChange, this));
 	},
 
-	_handleInputChange (e) {
-		this.toggle($(e.target).prop('checked'));
+	_handleInputChange () {
+		this.toggle();
 	},
 
 	_initElements ($base, elements) {
