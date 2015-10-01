@@ -12,8 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
-import {SLDSModal, SLDSButton, SLDSPicklistBase} from '../../../components';
+import {SLDSButton, SLDSPicklistBase} from '../../../components';
 
+import SLDSModal from '../../../components/SLDSModal';
 
 module.exports = React.createClass( {
 
