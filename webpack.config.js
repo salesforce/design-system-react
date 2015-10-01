@@ -12,7 +12,7 @@ var config = {
 	devServer: {
 		port: 8080
 	},
-	devtool: 'eval',
+	devtool: 'eval-source-map',
 	output: {
 		path: __dirname + '/build/',
 		publicPath: '/build/',

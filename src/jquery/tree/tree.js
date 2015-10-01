@@ -39,6 +39,8 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		this.elements.wrapper.on('click.fu.tree', '.tree-item', $.proxy(this._handleItemClicked, this));
 
 		this._render();
+
+		this.trigger('initialized');
 	},
 
 	_configureBranchSelect () {
