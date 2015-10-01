@@ -6,7 +6,6 @@ import CheckboxCore from './checkbox';
 export const CONTROL = 'radio';
 
 const RadioCore = Lib.merge({}, CheckboxCore, {
-	/*
 	cssClasses: {
 		CONTROL: CONTROL + '-custom',
 		CHECKED: 'checked',
@@ -16,7 +15,6 @@ const RadioCore = Lib.merge({}, CheckboxCore, {
 		ADDON: 'input-group-addon',
 		HIGHLIGHT: 'highlight'
 	}
-	*/
 });
 
 export default RadioCore;

@@ -28,7 +28,7 @@ let Checkbox = function Checkbox (element, options) {
 };
 
 // Prototype extension object
-const CheckboxObject = {
+export const CheckboxObject = {
 	_defaultProperties: {
 		toggleSelector: ''
 	},
@@ -76,7 +76,8 @@ const CheckboxObject = {
 				highlight: this.elements.control.hasClass('highlight'),
 				inline: this.elements.control.hasClass(this.cssClasses.INLINE),
 				text: this.elements.label.html(),
-				toggleSelector: this.elements.input.attr('data-toggle')
+				toggleSelector: this.elements.input.attr('data-toggle'),
+				value: this.elements.input.attr('value')
 			});
 
 			// ensuring there were no markup mistakes based on state
@@ -111,6 +112,7 @@ const CheckboxObject = {
 		const addon = this.getProperty('addon');
 		const inline = this.getProperty('inline');
 		const elements = this._initElements($el, this.elements);
+		const value = 'value';
 
 		if (addon) {
 			elements.control.addClass(this.cssClasses.ADDON);
@@ -125,12 +127,13 @@ const CheckboxObject = {
 			elements.control.addClass(this.cssClasses.INLINE);
 		}
 
+		elements.input.attr(value, this.getProperty(value));
 		elements.label.append(this.getProperty('text'));
 
 		this._onEnabledOrDisabled();
 		this._onToggled();
 
-		if (elements.wrapper.is('.' + this.cssClasses.BLOCK) || inline || addon) {
+		if (addon || inline || elements.wrapper.is('.' + this.cssClasses.BLOCK)) {
 			$el = elements.control;
 		}
 		elements.wrapper.empty();
@@ -148,13 +151,8 @@ const CheckboxObject = {
 // Merging into prototype
 Lib.merge(Checkbox.prototype, CheckboxCore, Events, State, CheckboxObject);
 
-// Legacy methods
-const legacyMethods = {};
-
 // Framework setup
-Checkbox = Lib.runHelpers('jquery', CONTROL, Checkbox, {
-	legacyMethods
-});
+Checkbox = Lib.runHelpers('jquery', CONTROL, Checkbox);
 
 // Exporting
 export default Checkbox;
