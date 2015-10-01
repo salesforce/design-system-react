@@ -26,7 +26,7 @@ class SLDSLookup extends React.Component {
       searchTerm: '',
       isOpen:false,
       selectedItem: null,
-      activeIndex:0,
+      activeIndex:null,
     };
   }
 
@@ -40,7 +40,7 @@ class SLDSLookup extends React.Component {
 
   decreaseIndex(){
     this.setState({
-      activeIndex: this.state.activeIndex >= 0 ? this.state.activeIndex - 1 : this.props.items.length
+      activeIndex: this.state.activeIndex > 0 ? this.state.activeIndex - 1 : this.props.items.length
     })
   }
 
@@ -74,6 +74,7 @@ class SLDSLookup extends React.Component {
 
       //If user hits tab key, move aria activedescendant to first menu item
       if(event.keyCode === KEYS.TAB){
+        this.setState({activeIndex: 0});
         EventUtil.trapImmediate(event);
       }
       //If user hits down key, advance aria activedescendant to next item
@@ -124,7 +125,7 @@ class SLDSLookup extends React.Component {
               aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
-              aria-activedescendant={"item-" + this.state.activeIndex}
+              aria-activedescendant={this.state.activeIndex !== null ? "item-" + this.state.activeIndex : ""}
               aria-expanded={this.state.isOpen}
               role="combobox"
               onChange={this.handleChange.bind(this)}
