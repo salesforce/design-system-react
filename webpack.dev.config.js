@@ -34,6 +34,11 @@ module.exports = {
         include: [path.join(__dirname, 'demo'),path.join(__dirname, 'components')]
       },
       {
+          test: /\.(js|jsx)?$/,
+          loaders: ['react-hot', 'babel'],
+          include: [path.join(__dirname, 'tests')]
+      },
+      {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
