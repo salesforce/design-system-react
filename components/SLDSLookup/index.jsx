@@ -25,9 +25,23 @@ class SLDSLookup extends React.Component {
     this.state = {
       searchTerm: '',
       isOpen:false,
-      currentSelectedItem: null,
-      activeDescendant: '',
+      selectedItem: null,
+      activeIndex:0,
     };
+  }
+
+  //=================================================
+  // Set Active Descendant (currently focused/hovered item in list)
+  increaseIndex(){
+    this.setState({
+      activeIndex: this.state.activeIndex <= this.props.items.length ? this.state.activeIndex + 1 : 0
+    })
+  }
+
+  decreaseIndex(){
+    this.setState({
+      activeIndex: this.state.activeIndex >= 0 ? this.state.activeIndex - 1 : this.props.items.length
+    })
   }
 
   //=================================================
@@ -55,6 +69,27 @@ class SLDSLookup extends React.Component {
 
   handleKeyDown(event) {
     if(event.keyCode){
+      //If user hits esc key, close menu
+      event.keyCode === KEYS.ESCAPE ? this.handleClose() : this.handleClick();
+
+      //If user hits tab key, move aria activedescendant to first menu item
+      if(event.keyCode === KEYS.TAB){
+        EventUtil.trapImmediate(event);
+      }
+      //If user hits down key, advance aria activedescendant to next item
+      else if(event.keyCode === KEYS.DOWN){
+        EventUtil.trapImmediate(event);
+        this.increaseIndex();
+      }
+      //If user hits up key, advance aria activedescendant to previous item
+      else if(event.keyCode === KEYS.UP){
+        EventUtil.trapImmediate(event);
+        this.decreaseIndex();
+      }
+
+      else if(event.keyCode === KEYS.ENTER){
+        EventUtil.trapImmediate(event);
+      }
     }
   }
 
@@ -67,7 +102,7 @@ class SLDSLookup extends React.Component {
         filterWith={this.props.filterWith}
         label={this.props.label}
         items={this.props.items}
-      />;
+        activeIndex={this.state.activeIndex}/>;
     }else{
       return null;
     }
@@ -89,7 +124,7 @@ class SLDSLookup extends React.Component {
               aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
-              aria-activedescendant={this.state.activeDescendant}
+              aria-activedescendant={"item-" + this.state.activeIndex}
               aria-expanded={this.state.isOpen}
               role="combobox"
               onChange={this.handleChange.bind(this)}
@@ -106,6 +141,11 @@ class SLDSLookup extends React.Component {
   }
 }
 
-SLDSLookup.defaultProps = {filterWith: defaultFilter};
+SLDSLookup.defaultProps = {
+  filterWith: defaultFilter,
+  onItemSelect: function(item){
+    //console.log('onItemSelect should be defined');
+  }
+};
 module.exports = SLDSLookup;
 

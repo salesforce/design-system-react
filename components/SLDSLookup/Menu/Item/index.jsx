@@ -27,15 +27,19 @@ class Item extends React.Component {
 
   render(){
     let className = 'slds-lookup__item';
-    const tabIndex = this.props.idx === 0 ? 0 : -1;
+
+    //TODO: make isActive styles into a class??
+    let styles = {};
+    if(this.props.isActive) styles = {backgroundColor: 'red'};
 
     return (
       <li
         className={className}
-        role="presentaion"
-        tabIndex={tabIndex}>
+        style={styles}
+        role="presentaion">
         <a
           href={this.props.href}
+          id={this.props.id}
           tabIndex="-1"
           aria-disabled={this.props.disabled}
           role="option">
