@@ -68,7 +68,10 @@ class SLDSLookup extends React.Component {
   //=================================================
   // Basic Event Listeners on Input
   handleClose() {
-    this.setState({isOpen:false})
+    this.setState({
+      isOpen:false,
+      activeIndex:null
+    })
   }
 
   handleClick() {
@@ -76,7 +79,7 @@ class SLDSLookup extends React.Component {
   }
 
   handleBlur() {
-    this.setState({isOpen:false})
+    this.handleClose();
   }
 
   handleFocus() {
@@ -94,7 +97,7 @@ class SLDSLookup extends React.Component {
       event.keyCode === KEYS.ESCAPE ? this.handleClose() : this.handleClick();
 
       //If user hits tab key, move aria activedescendant to first menu item
-      if(event.keyCode === KEYS.TAB){
+      if(event.keyCode === KEYS.TAB && this.state.activeIndex === null){
         this.setState({activeIndex: 0});
         EventUtil.trapImmediate(event);
       }
@@ -109,8 +112,10 @@ class SLDSLookup extends React.Component {
         this.decreaseIndex();
       }
 
-      else if(event.keyCode === KEYS.ENTER){
+      //If user hits enter/space key, select current activedescendant item
+      else if(event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE){
         EventUtil.trapImmediate(event);
+        this.selectItem(this.state.activeIndex);
       }
     }
   }
@@ -158,7 +163,7 @@ class SLDSLookup extends React.Component {
           <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
 
           <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
-            { this.state.selectedIndex ? this.renderSelectedItem() : null }
+            { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             <InputIcon name="search"/>
             <input
               id="lookup"

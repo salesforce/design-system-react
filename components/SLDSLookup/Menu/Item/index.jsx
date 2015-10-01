@@ -39,7 +39,8 @@ class Item extends React.Component {
 
     //TODO: make isActive styles into a class??
     let styles = {};
-    if(this.props.isActive) styles = {backgroundColor: 'red'};
+    if(this.props.isActive) className += ' slds-theme--shade';
+
 
     return (
       //IMPORTANT: id is used to set lookup's input's aria-activedescendant
