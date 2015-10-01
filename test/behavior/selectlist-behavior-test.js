@@ -22,73 +22,190 @@ const $ = require('jquery');
 const chai = require('chai');
 const expect = chai.expect;
 
+const defaultSelection = { id: 1, text: 'Two', value: '2'  };
+const itemToClick = { id: 0, text: 'One', value: '1'  };
+
+const defaultOptions = {
+	collection: [
+		{ _itemType: 'header', text: 'One thing' },
+		itemToClick,
+		{ _itemType: 'divider' },
+		{ _itemType: 'header', text: 'All the things' },
+		defaultSelection,
+		{ id: 2, text: 'Three', value: '3' },
+		{ id: 3, text: 'Buzz', value: '4' },
+		{ id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar' },
+		{ id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
+	]
+};
 
 // For jQuery facade, "declarative" implies jQuery plugin usage
 
 describe(controlName + ' component', function () {
 	verifyFacadeProvidesBehaviorCallbacks(componentFacadeTestLib, [
-		'createComponent',
-		'getComponentElement',
-		'destroyComponent'
+		'createControl',
+		'getControlElement',
+		'destroyControl',
+		'disableControl',
+		'enableControl',
+		'getSelection',
+		'createEventListener'
 	]);
 
 	registerBehaviorTestCombinations(componentFacadeTestLib, [
 		// behaviors being tested
-		'createComponent',
-		'getComponentElement',
-		'destroyComponent'
+		'createControl',
+		'getControlElement',
+		'destroyControl',
+		'disableControl',
+		'enableControl',
+		'getSelection',
+		'createEventListener'
 	], [
 		// other behaviors required for tests
 	], function (testingBehaviorHandlers) {
-		let container = null;
+		let controlContainer = null;
 
 		beforeEach(function () {
-			container = $('<div />');
-			$('body').append(container); // Container must be on the body and visible for tests to work
+			controlContainer = $('<div id="container" />');
+			$('body').append(controlContainer); // Container must be on the body and visible for tests to work
 		});
 
 		afterEach(function () {
-			container.remove(); // Clean up container
-			container = null;
+			controlContainer.remove(); // Clean up container
+			controlContainer = null;
 		});
 
-		describe('create and destroy component', function () {
-			it('should create a ' + controlName + ' on the DOM within the container', function () {
-				function rendered (component) {
-					expect(component.options.container.find('.' + Core.cssClasses.CONTROL).length).to.equal(1);
-					testingBehaviorHandlers.destroyComponent(component);
+		describe('create and destroy control', function () {
+			it('should create a ' + controlName + ' on the DOM within the container', function (done) {
+				function rendered (renderedControlContainer) {
+					expect(renderedControlContainer.find('.' + Core.cssClasses.CONTROL).length).to.equal(1);
+					done();
 				}
 
-				testingBehaviorHandlers.createComponent( {
-					container: container,
+				testingBehaviorHandlers.createControl( {
 					collection: []
-				}, rendered );
+				}, controlContainer, rendered );
 			});
 
-			it('should return an object representing the component', function () {
-				function rendered (component) {
-					expect(component).to.be.an('object');
-					testingBehaviorHandlers.destroyComponent(component);
+			it('should return an object representing the component', function (done) {
+				function rendered (renderedControlContainer, control) {
+					expect(control).to.be.an('object');
+					done();
 				}
 
-				testingBehaviorHandlers.createComponent( {
-					container: container,
+				testingBehaviorHandlers.createControl( {
 					collection: []
-				}, rendered );
+				}, controlContainer, rendered );
 			});
 
-			it('destroy should remove ' + controlName + ' from container', function () {
-				function rendered (component) {
-					testingBehaviorHandlers.destroyComponent(component);
-					expect(component.options.container.find('.' + Core.cssClasses.CONTROL).length).to.equal(0);
+			it('destroy should remove ' + controlName + ' from container', function (done) {
+				function rendered (renderedControlContainer, control) {
+					testingBehaviorHandlers.destroyControl(control);
+					expect(renderedControlContainer.find('.' + Core.cssClasses.CONTROL).length).to.equal(0);
+					done();
 				}
 
-				testingBehaviorHandlers.createComponent( {
-					container: container,
+				testingBehaviorHandlers.createControl( {
 					collection: []
-				}, 	rendered );
+				}, controlContainer, rendered );
 			});
 		});
-		// TODO expectDOM tests
+
+		describe('disable and enable control', function () {
+			it(controlName + ' should disable, THEN enable', function (done) {
+				function rendered (renderedControlContainer, control) {
+					// DISABLE
+					testingBehaviorHandlers.disableControl(control);
+					// has disabled appearance
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					// control's button as disabled attribute
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).querySelector('button').disabled).to.equal(true);
+
+					// ENABLE
+					testingBehaviorHandlers.enableControl(control);
+					// has enabled appearance
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(false);
+					// control's button as disabled attribute
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).querySelector('button').disabled).to.equal(false);
+
+					done();
+				}
+
+				testingBehaviorHandlers.createControl( {
+					collection: []
+				}, controlContainer, rendered );
+			});
+
+			it(controlName + ' should initialize disabled, THEN enable, THEN disabled', function (done) {
+				function rendered (renderedControlContainer, control) {
+					// has disabled appearance
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					// control's button as disabled attribute
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).querySelector('button').disabled).to.equal(true);
+
+					// ENABLE
+					testingBehaviorHandlers.enableControl(control);
+					// has enabled appearance
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(false);
+					// control's button as disabled attribute
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).querySelector('button').disabled).to.equal(false);
+
+					testingBehaviorHandlers.disableControl(control);
+					expect(testingBehaviorHandlers.getControlElement(renderedControlContainer, control).classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+
+					done();
+				}
+
+				testingBehaviorHandlers.createControl( {
+					collection: defaultOptions.collection,
+					disabled: true
+				}, controlContainer, rendered);
+			});
+		});
+
+		describe('should set the default selection', function () {
+			it(controlName + ' should set the default selection', function (done) {
+				function rendered (renderedControlContainer, control) {
+					expect(testingBehaviorHandlers.getSelection(control)).to.equal(defaultSelection);
+
+					done();
+				}
+
+				$('#my-' + controlName).on('rendered.fu.selectlist', function () {
+					rendered(controlContainer, control);
+				});
+
+				testingBehaviorHandlers.createControl( {
+					collection: defaultOptions.collection,
+					selection: { id: defaultSelection.id }
+				}, controlContainer, rendered);
+			});
+		});
+
+		describe('should fire events', function () {
+			this.timeout(3000);
+			it(controlName + ' should fire event: changed', function (done) {
+				let eventFired = false;
+
+				function changed () {
+					eventFired = true;
+					expect(eventFired).to.equal(true);
+					done();
+				}
+
+				function rendered (renderedControlContainer, control) {
+					// simulate UI interaction
+					testingBehaviorHandlers.createEventListener('changed', changed);
+
+					renderedControlContainer[0].querySelector('a').click();
+					expect(testingBehaviorHandlers.getSelection(control)).to.equal(itemToClick);
+				}
+
+				testingBehaviorHandlers.createControl( {
+					collection: defaultOptions.collection
+				}, controlContainer, rendered);
+			});
+		});
 	});
 });
