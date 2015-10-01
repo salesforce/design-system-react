@@ -45,7 +45,6 @@ const legacyAccessors = {
 	},
 
 	getKey (item) {
-		console.log({ id: item._item.dataAttributes ? item._item.dataAttributes.id : undefined });
 		return { id: item._item.dataAttributes ? item._item.dataAttributes.id : undefined };
 	},
 
