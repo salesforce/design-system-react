@@ -29,12 +29,12 @@ let Checkbox = function Checkbox (element, options) {
 
 // Prototype extension object
 const CheckboxObject = {
-	_bindUIEvents () {
-		this.elements.input.on('change.fu.checkbox', $.proxy(this._handleInputChange, this));
+	_defaultProperties: {
+		toggleSelector: ''
 	},
 
-	_handleInputChange () {
-		this.toggle();
+	_bindUIEvents () {
+		this.elements.input.on('change.fu.checkbox', $.proxy(function () { this.toggle(); }, this));
 	},
 
 	_initElements ($base, elements) {
@@ -109,6 +109,7 @@ const CheckboxObject = {
 	_render () {
 		let $el = this.template.clone();
 		const addon = this.getProperty('addon');
+		const inline = this.getProperty('inline');
 		const elements = this._initElements($el, this.elements);
 
 		if (addon) {
@@ -120,8 +121,7 @@ const CheckboxObject = {
 			elements.control.addClass(this.cssClasses.HIGHLIGHT);
 		}
 
-		if (this.getProperty('inline') || addon) {
-			$el = elements.control;
+		if (inline || addon) {
 			elements.control.addClass(this.cssClasses.INLINE);
 		}
 
@@ -130,6 +130,9 @@ const CheckboxObject = {
 		this._onEnabledOrDisabled();
 		this._onToggled();
 
+		if (elements.wrapper.is('.' + this.cssClasses.BLOCK) || inline || addon) {
+			$el = elements.control;
+		}
 		elements.wrapper.empty();
 		elements.wrapper.append($el);
 

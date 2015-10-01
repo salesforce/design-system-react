@@ -25,8 +25,7 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 		inline: false,
 		addon: false,
 		highlight: false,
-		text: '',			// TODO: should this be "label" ?
-		toggleSelector: ''
+		text: ''			// TODO: should this be "label" ?
 	},
 	
 	isChecked () {

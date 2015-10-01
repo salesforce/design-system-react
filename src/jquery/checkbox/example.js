@@ -7,8 +7,6 @@ $(function () {
 	// "declarative" control (the others use data-initialize)
 	$('#myCheckbox1').checkbox();
 
-	// TODO - NOTE DIFFERENCE IN STYLE DUE TO MARGIN COLLAPSING WHEN NOT WRAPPED :\  MIGHT APPEND DIFFERENTLY BASED ON INITIAL CONTAINER?
-
 	// "imperative" controls
 	$('#myCheckbox2').checkbox({
 		text: 'Custom checkbox unchecked on initialization',
