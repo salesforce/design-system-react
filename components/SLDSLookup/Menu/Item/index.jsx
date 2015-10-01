@@ -21,7 +21,7 @@ class Item extends React.Component {
     if(!children || !term) return children;
     const regex = new RegExp('(' + term + ')', 'gi');
     return React.Children.map(children, c => {
-      return (typeof c.label === 'string') ? <span dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
+      return (typeof c === 'string') ? <span dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
     });
   }
 

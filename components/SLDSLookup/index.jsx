@@ -16,7 +16,7 @@ import {KEYS,EventUtil} from '../utils';
 
 const defaultFilter = (term, item) => {
   if(!term) return true;
-  return item.match(new RegExp(_.escapeRegExp(term), 'ig'));
+  return item.label.match(new RegExp(_.escapeRegExp(term), 'ig'));
 };
 
 class SLDSLookup extends React.Component {
@@ -102,18 +102,18 @@ class SLDSLookup extends React.Component {
         EventUtil.trapImmediate(event);
       }
       //If user hits down key, advance aria activedescendant to next item
-      else if(event.keyCode === KEYS.DOWN){
+      else if(event.keyCode === KEYS.DOWN && this.state.activeIndex !== null){
         EventUtil.trapImmediate(event);
         this.increaseIndex();
       }
       //If user hits up key, advance aria activedescendant to previous item
-      else if(event.keyCode === KEYS.UP){
+      else if(event.keyCode === KEYS.UP && this.state.activeIndex !== null){
         EventUtil.trapImmediate(event);
         this.decreaseIndex();
       }
 
       //If user hits enter/space key, select current activedescendant item
-      else if(event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE){
+      else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.activeIndex !== null){
         EventUtil.trapImmediate(event);
         this.selectItem(this.state.activeIndex);
       }
