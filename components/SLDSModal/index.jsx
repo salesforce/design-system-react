@@ -57,6 +57,8 @@ module.exports = React.createClass( {
   },
 
   componentDidMount () {
+    console.log('!!! window.activeElement !!! ',document.activeElement);
+    this.setState({returnFocusTo:document.activeElement})
     if(!this.state.revealed){
       setTimeout(()=>{
         this.setState({revealed:true});
@@ -65,9 +67,14 @@ module.exports = React.createClass( {
     this.updateBodyScroll();
   },
 
-
   closeModal () {
     this.setState({isClosing: true});
+    if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
+      this.state.returnFocusTo.focus();
+    }
+    if(this.props.onRequestClose){
+      this.props.onRequestClose();
+    }
   },
 
   handleSubmitModal () {
@@ -131,9 +138,8 @@ module.exports = React.createClass( {
 
 
       if(this.state.isClosing){
-        if(this.props.returnFocusTo && this.props.returnFocusTo.focus){
-          this.props.returnFocusTo.focus();
-        }
+        console.log('CLOSING: ');
+
         if(this.isMounted()){
           const el = this.getDOMNode().parentNode;
           if(el && el.getAttribute('data-slds-modal')){

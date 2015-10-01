@@ -62,7 +62,7 @@ module.exports = React.createClass( {
 
   openModal () {
     this.setState({modalIsOpen: true});
-    SLDSModalTrigger.open(this.getModalConfig());
+//    SLDSModalTrigger.open(this.getModalConfig());
   },
 
   closeModal () {
@@ -71,10 +71,6 @@ module.exports = React.createClass( {
 
   handleSubmitModal () {
     this.closeModal();
-  },
-
-  handleModalCancel () {
-    console.log('!!! handleModalCancel !!!');
   },
 
   getModalContent () {
@@ -127,20 +123,18 @@ module.exports = React.createClass( {
                       </div>;
   },
 
-  getModalConfig (returnFocusToElement) {
-    return ({
-      title:<span>Super Stuff</span>,
-      content:  <div>
-                    {this.getModalContent()}
 
-
-                </div>,
-      footer:[
-        <button className='slds-button slds-button--neutral' onClick={this.handleModalCancel}>Cancel</button>,
-        <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
-      ],
-      returnFocusTo: returnFocusToElement
-    });
+  renderModal () {
+    return <SLDSModal 
+                  isOpen={this.state.modalIsOpen}
+                  title={<span>Super Stuff</span>}
+                  footer={[
+                    <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>,
+                    <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
+                  ]}
+                  onRequestClose={this.closeModal}>
+                  {this.getModalContent()}
+                </SLDSModal>;
   },
 
   render() {
@@ -159,11 +153,10 @@ module.exports = React.createClass( {
 */}
 
               <div className='slds-p-vertical--large'>
-                <SLDSButton flavor='brand' onClick={this.handleOpenModalClick}>
+                <SLDSButton flavor='brand' onClick={this.openModal}>
                   Open Modal
                 </SLDSButton>
-
-
+                {this.renderModal()}
               </div>
             </div>
 

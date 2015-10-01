@@ -17,6 +17,7 @@ import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 import ButtonSection from './ButtonSection';
 import PicklistBaseSection from './PicklistBaseSection';
 import ModalSection from './ModalSection';
+import ModalSection2 from './ModalSection2';
 import DatePickerSingleSelectSection from './DatePickerSingleSelectSection';
 import LookupBaseSection from './LookupBaseSection';
 
@@ -63,6 +64,8 @@ module.exports = React.createClass( {
             <ButtonSection />
 
             <PicklistBaseSection />
+
+            <ModalSection2 />
 
             <ModalSection />
 
