@@ -1,6 +1,7 @@
 import '../helpers/create-jquery-plugin';
 
-import './selectlist/example';
+import './checkbox/example';
 import './combobox/example';
 import './loader/example';
+import './selectlist/example';
 import './tree/example';
