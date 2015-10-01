@@ -10,39 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDSButton from '../../../components/SLDSButton';
-import {ButtonIcon, Icon} from './../../../components/SLDSIcons';
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
-import {EventUtil} from '../../../components/utils';
-import SLDSDateInput from '../../../components/SLDSDateInput';
 
-import SLDSModal from '../../../components/SLDSModal';
-import {SLDSModalTrigger, SLDSPicklistBase} from '../../../components';
+import {SLDSModal, SLDSButton, SLDSPicklistBase} from '../../../components';
 
-
-
-
-
-
-const customStyles = {
-  content : {
-    position                : 'default',
-    top                     : 'default',
-    left                    : 'default',
-    right                   : 'default',
-    bottom                  : 'default',
-    border                  : 'default',
-    background              : 'default',
-    overflow                : 'default',
-    WebkitOverflowScrolling : 'default',
-    borderRadius            : 'default',
-    outline                 : 'default',
-    padding                 : 'default'
-  },
-  overlay : {
-    backgroundColor: 'default'
-  }
-};
 
 module.exports = React.createClass( {
 
@@ -56,13 +27,8 @@ module.exports = React.createClass( {
     };
   },
 
-  handleOpenModalClick (event) {
-    SLDSModalTrigger.open(this.getModalConfig());
-  },
-
   openModal () {
     this.setState({modalIsOpen: true});
-    SLDSModalTrigger.open(this.getModalConfig());
   },
 
   closeModal () {
@@ -72,7 +38,6 @@ module.exports = React.createClass( {
   handleSubmitModal () {
     this.closeModal();
   },
-
 
   getModalContent () {
     return  <div>
@@ -124,21 +89,6 @@ module.exports = React.createClass( {
                       </div>;
   },
 
-  getModalConfig () {
-    return ({
-      title:<span>Super Stuff</span>,
-      content:  <div>
-                    {this.getModalContent()}
-
-
-                </div>,
-      footer:[
-        <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>,
-        <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
-      ]
-    });
-  },
-
   render() {
     return (
 
@@ -155,11 +105,19 @@ module.exports = React.createClass( {
 */}
 
               <div className='slds-p-vertical--large'>
-                <SLDSButton flavor='brand' onClick={this.handleOpenModalClick}>
+                <SLDSButton flavor='brand' onClick={this.openModal}>
                   Open Modal
                 </SLDSButton>
-
-
+                <SLDSModal 
+                  isOpen={this.state.modalIsOpen}
+                  title={<span>Super Stuff</span>}
+                  footer={[
+                    <button className='slds-button slds-button--neutral' onClick={this.closeModal}>Cancel</button>,
+                    <button className='slds-button slds-button--neutral slds-button--brand' onClick={this.handleSubmitModal}>Save</button>
+                  ]}
+                  onRequestClose={this.closeModal}>
+                  {this.getModalContent()}
+                </SLDSModal>
               </div>
             </div>
 
