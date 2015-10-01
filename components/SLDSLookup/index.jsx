@@ -30,6 +30,8 @@ class SLDSLookup extends React.Component {
     };
   }
 
+  //=================================================
+  // Basic Event Listeners on Input
   handleClose() {
     this.setState({isOpen:false})
   }
@@ -56,9 +58,16 @@ class SLDSLookup extends React.Component {
     }
   }
 
+  //=================================================
+  // Rendering Things
   renderMenu(){
     if(this.state.isOpen){
-      return <Menu />;
+      return <Menu
+        searchTerm={this.state.searchTerm}
+        filterWith={this.props.filterWith}
+        label={this.props.label}
+        items={this.props.items}
+      />;
     }else{
       return null;
     }
@@ -85,7 +94,6 @@ class SLDSLookup extends React.Component {
               role="combobox"
               onChange={this.handleChange.bind(this)}
               onFocus={this.handleFocus.bind(this)}
-              onBlur={this.handleBlur.bind(this)}
               onClick={this.handleClick.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)}
               value={this.state.searchTerm} />
@@ -97,4 +105,7 @@ class SLDSLookup extends React.Component {
     );
   }
 }
+
+SLDSLookup.defaultProps = {filterWith: defaultFilter};
 module.exports = SLDSLookup;
+

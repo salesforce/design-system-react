@@ -14,6 +14,13 @@ import {KEYS} from '../../../utils';
 class Item extends React.Component {
   constructor(props) {
     super(props);
+    this.id = this.props.id || `item-${this.props.idx}`;
+  }
+
+  componentWillReceiveProps(nextProps){
+    if((nextProps.isActive) && (nextProps.keyEvent === 'down' || nextProps.keyEvent === 'up')){
+      this.props.setActiveDescendant(this);
+    }
   }
 
   boldSearchText(children) {
@@ -25,27 +32,46 @@ class Item extends React.Component {
     });
   }
 
-  render(){
+  selectedItem(e) {
+    e.preventDefault();
+    if(e.nativeEvent){
+      e.nativeEvent.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
+    }
+    return this.props.selectedItem(this.props.idx, this);
+  }
+
+  getClassName(cls) {
+    return classNames(this.props.className, cls);
+  }
+
+  render() {
     let className = 'slds-lookup__item';
+    let liStyles = {whiteSpace: 'nowrap'};
+    let aStyles = null;
+    if(this.props.isSelected) className += ' slds-is-selected';
+    if(this.props.isActive && this.props.keyEvent !== null) liStyles = { backgroundColor: 'red'};
+    //console.log('is active form item ', this.props.isActive);
     const tabIndex = this.props.idx === 0 ? 0 : -1;
 
     return (
       <li
-        className={className}
-        role="presentaion"
-        tabIndex={tabIndex}>
-        <a
-          href={this.props.href}
-          tabIndex="-1"
-          aria-disabled={this.props.disabled}
-          role="option">
+      key={this.id}
+      { ...this.props }
+      className={className}
+      role="presentation"
+      tabIndex={tabIndex}
+      style={liStyles}>
+
+
+        <a href={ this.props.href } onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option" style={aStyles}>
           <Icon name="account" />
           { this.boldSearchText(this.props.children) }
         </a>
       </li>
-    )
+    );
   }
-
 }
+Item.globalIdx = 0;
 
 module.exports = Item;
