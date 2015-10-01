@@ -10,6 +10,8 @@ import Openable from '../traits/openable';
 import Selectable from '../traits/selectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
+require('../../less/selectlist.less');
+
 export const CONTROL = 'selectlist';
 
 const resizeCache = {};

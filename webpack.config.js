@@ -23,8 +23,16 @@ var config = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loaders: ['react-hot', 'babel-loader']
-			}
+				loaders: ['react-hot', 'babel-loader',]
+			},
+			{
+				test: /\.css$/,
+				loader: "style-loader!css-loader"
+			},
+			{
+				test: /\.less$/,
+				loader: "style!css!less"
+			},
 		],
 		preLoaders: [
 			{
