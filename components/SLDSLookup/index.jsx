@@ -178,7 +178,7 @@ module.exports = React.createClass( {
             <input
               id="lookup"
               ref="date"
-              className={className}
+              className={'slds-input'}
               type="text"
               aria-label="lookup"
               aria-haspopup="true"
