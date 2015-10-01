@@ -3,7 +3,7 @@ design-system-react
 
 Future home of SLDS-React components
 
-### Usage
+## Usage
 
 ```
 npm install
@@ -45,6 +45,14 @@ import {SLDSPicklistBase} from 'design-system-react';
 ### Accessible [DatePicker Base](http://www.lightningdesignsystem.com/components/datepickers#base) Component
 
 [![browser support](/readme-assets/SLDSDatePickerBase.gif)](/readme-assets/SLDSDatePickerBase.gif)
+
+
+
+## Tests
+
+```
+npm test
+```
 
 
 ### Future Pipeline

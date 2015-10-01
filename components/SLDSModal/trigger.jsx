@@ -21,7 +21,6 @@ const SLDSModalTrigger = {
     const comp = <SLDSModal 
               title={cfg.title}
               footer={cfg.footer}
-              returnFocusTo={cfg.returnFocusTo}
               isOpen={true}>
               {cfg.content}
             </SLDSModal>
