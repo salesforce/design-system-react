@@ -44,7 +44,7 @@ export const behaviorHandlers = {
 
 	getComponentElement: {
 		default (component) {
-			return component.elements.wrapper;
+			return component.elements.wrapper[0];
 		}
 
 		// plugin (jDomEl) {
@@ -61,6 +61,18 @@ export const behaviorHandlers = {
 		// plugin (jDomEl) {
 		// 	jDomEl.tree('destroy');
 		// }
+	},
+
+	disableComponent: {
+		default (component) {
+			component.disable();
+		}
+	},
+
+	enableComponent: {
+		default (component) {
+			component.enable();
+		}
 	},
 
 	getSelectedItems: {
