@@ -62,6 +62,8 @@ module.exports = React.createClass( {
       }
       else if(event.keyCode === KEYS.TAB){
       }
+      else if(event.keyCode === KEYS.ESCAPE){
+      }
       else{
         EventUtil.trapEvent(event);
       }    

@@ -1,5 +1,5 @@
 /***
- * Lightning Design System v0.8.0
+ * Lightning Design System 0.9.1
  */
 
 /*
@@ -225,29 +225,31 @@ th {
 
 *::-webkit-input-placeholder {
   color: #54698d;
-  font-weight: 400; }
+  font-weight: 400;
+  font-size: 0.875rem; }
 
 *:-moz-placeholder {
   color: #54698d;
-  font-weight: 400; }
+  font-weight: 400;
+  font-size: 0.875rem; }
 
 *::-moz-placeholder {
   color: #54698d;
-  font-weight: 400; }
+  font-weight: 400;
+  font-size: 0.875rem; }
 
 *:-ms-input-placeholder {
   color: #54698d;
-  font-weight: 400; }
+  font-weight: 400;
+  font-size: 0.875rem; }
 
 html {
-  height: 100%;
   font: 100%/1.5 "Salesforce Sans", Arial, sans-serif;
   background: white;
   color: #16325c;
   -webkit-tap-highlight-color: transparent; }
 
 body {
-  height: 100%;
   font-size: 0.875rem;
   background: transparent; }
 
@@ -853,16 +855,20 @@ a.slds-button--inverse:focus {
   font-weight: 400; }
   .slds-input--small::-webkit-input-placeholder {
     color: #54698d;
-    font-weight: 400; }
+    font-weight: 400;
+    font-size: 0.875rem; }
   .slds-input--small:-moz-placeholder {
     color: #54698d;
-    font-weight: 400; }
+    font-weight: 400;
+    font-size: 0.875rem; }
   .slds-input--small::-moz-placeholder {
     color: #54698d;
-    font-weight: 400; }
+    font-weight: 400;
+    font-size: 0.875rem; }
   .slds-input--small:-ms-input-placeholder {
     color: #54698d;
-    font-weight: 400; }
+    font-weight: 400;
+    font-size: 0.875rem; }
 
 .slds-input--big {
   padding: 0.5rem;
@@ -2146,6 +2152,8 @@ a.slds-button--inverse:focus {
     border: none; }
     .slds-pill--bare:hover {
       background-color: transparent; }
+  .slds-pill + .slds-pill {
+    margin-left: 0.25rem; }
 
 .slds-pill__label {
   max-width: 13.5rem;
@@ -2154,6 +2162,15 @@ a.slds-button--inverse:focus {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis; }
+
+.slds-pill-container {
+  padding: 1px 0.25rem;
+  border-bottom: 1px solid #d8dde6;
+  min-height: calc(2.125rem + 2px); }
+
+.slds-form-element__control .slds-pill-container {
+  border: 1px solid #d8dde6;
+  border-radius: 0.25rem; }
 .slds-pill .slds-avatar {
   margin-right: 0.5rem; }
 .slds-spinner--small {
@@ -2395,36 +2412,8 @@ a.slds-button--inverse:focus {
     text-align: center; }
 .slds-lookup {
   position: relative; }
-  .slds-lookup__control {
-    -webkit-flex-wrap: wrap;
-        -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-    -webkit-box-align: start;
-    -webkit-align-items: flex-start;
-        -ms-flex-align: start;
-            align-items: flex-start;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    background-color: white;
-    color: #16325c;
-    border: 1px solid #d8dde6;
-      border-radius: 0.25rem; }
-    .slds-lookup__control .slds-input--bare {
-      -webkit-box-flex: 1;
-      -webkit-flex: 1;
-          -ms-flex: 1;
-              flex: 1;
-      -webkit-align-self: center;
-          -ms-flex-item-align: center;
-              align-self: center;
-      margin-left: 0.5rem;
-      line-height: 2.125rem; }
-    .slds-lookup__control .slds-pill {
-      margin: 0.25rem; }
   .slds-lookup__list {
-    max-height: 15rem;
+    max-height: 12.5rem;
     overflow-y: auto; }
   .slds-lookup__menu {
     background: white;
@@ -2433,42 +2422,32 @@ a.slds-button--inverse:focus {
     z-index: 7000;
     position: absolute;
     width: 100%;
-    margin-top: 0.25rem; }
+    margin-top: 0.25rem;
+    padding: 0.25rem 0; }
   .slds-lookup__item > a,
-  .slds-lookup__item > span {
+  .slds-lookup__item > span,
+  .slds-lookup__item > button {
     display: block;
     padding: 0.5rem;
-    color: #16325c; }
+    color: #16325c;
+    text-align: left;
+    width: 100%;
+    line-height: 1.5;
+    border-radius: 0; }
     .slds-lookup__item > a:hover,
     .slds-lookup__item > a:focus,
     .slds-lookup__item > span:hover,
-    .slds-lookup__item > span:focus {
-      background: #005fb2;
-      color: white;
+    .slds-lookup__item > span:focus,
+    .slds-lookup__item > button:hover,
+    .slds-lookup__item > button:focus {
+      outline: 0;
+      background-color: #f4f6f9;
+      color: #16325c;
       text-decoration: none; }
-      .slds-lookup__item > a:hover .slds-icon,
-      .slds-lookup__item > a:hover .slds-button__icon,
-      .slds-lookup__item > a:focus .slds-icon,
-      .slds-lookup__item > a:focus .slds-button__icon,
-      .slds-lookup__item > span:hover .slds-icon,
-      .slds-lookup__item > span:hover .slds-button__icon,
-      .slds-lookup__item > span:focus .slds-icon,
-      .slds-lookup__item > span:focus .slds-button__icon {
-        fill: white; }
     .slds-lookup__item > a .slds-icon,
-    .slds-lookup__item > span .slds-icon {
+    .slds-lookup__item > span .slds-icon,
+    .slds-lookup__item > button .slds-icon {
       margin-right: 0.5rem; }
-  .slds-lookup__item:first-child > a,
-  .slds-lookup__item:first-child > span {
-    border-radius: 0.25rem 0.25rem 0 0; }
-  .slds-lookup__item:last-child > a,
-  .slds-lookup__item:last-child > span {
-    border-radius: 0 0 0.25rem 0.25rem; }
-  .slds-lookup__item:only-of-type > a,
-  .slds-lookup__item:only-of-type > span {
-    border-radius: 0.25rem; }
-  .slds-lookup.slds-has-selection .slds-input__icon {
-    display: none; }
 .slds-lookup[data-select="single"] .slds-pill {
   display: block;
   width: 100%; }
@@ -2478,13 +2457,91 @@ a.slds-button--inverse:focus {
     top: 50%;
     margin-top: -0.5rem; }
 
-.slds-lookup[data-select="single"].slds-has-selection .slds-input {
+.slds-lookup[data-select="single"].slds-has-selection .slds-input,
+.slds-lookup[data-select="single"].slds-has-selection .slds-input__icon {
   display: none; }
+.slds-lookup[data-scope="multi"] .slds-form-element__label {
+  -webkit-align-self: center;
+      -ms-flex-item-align: center;
+          align-self: center;
+  margin-left: 0.5rem;
+  margin-right: 0;
+  margin-bottom: 0;
+  font-size: 0.875rem;
+  max-width: 12rem;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+      -ms-flex-pack: end;
+          justify-content: flex-end; }
+
+.slds-lookup[data-scope="multi"] .slds-lookup__menu {
+  max-width: calc(100% - 6rem);
+  right: 0;
+  top: calc(2.125rem + 2px); }
+
 .slds-lookup[data-scope="multi"] .slds-lookup__list {
   max-height: 17.5rem; }
 
-.slds-lookup[data-scope="multi"] .slds-lookup__item:first-child {
-  box-shadow: #d8dde6 0 1px 0; }
+.slds-lookup[data-scope="multi"] .slds-dropdown-trigger {
+  margin-left: 0.5rem; }
+
+.slds-lookup[data-scope="multi"] .slds-input {
+  padding-left: 12rem; }
+
+.slds-lookup[data-scope="multi"] .slds-form-element__control {
+  background-color: white;
+  color: #16325c;
+  border: 1px solid #d8dde6;
+    border-radius: 0.25rem;
+  width: 100%;
+  -webkit-transition: border 0.1s linear, background-color 0.1s linear;
+          transition: border 0.1s linear, background-color 0.1s linear;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+  .slds-lookup[data-scope="multi"] .slds-form-element__control:focus,
+  .slds-lookup[data-scope="multi"] .slds-form-element__control:active {
+    outline: 0;
+    border-color: #1589ee;
+    background-color: white;
+    box-shadow: 0 0 3px #0070D2; }
+  .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled] {
+    background-color: #e0e5ee;
+    border-color: #a8b7c7;
+    cursor: not-allowed;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none; }
+    .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled]:focus,
+    .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled]:active {
+      box-shadow: none; }
+  .slds-has-error .slds-lookup[data-scope="multi"] .slds-form-element__control {
+    background-color: white;
+    border-color: #c23934;
+    box-shadow: #c23934 0 0 0 1px inset;
+    background-clip: padding-box; }
+    .slds-has-error .slds-lookup[data-scope="multi"] .slds-form-element__control:focus,
+    .slds-has-error .slds-lookup[data-scope="multi"] .slds-form-element__control:active {
+      box-shadow: #c23934 0 0 0 1px inset, 0 0 3px #0070D2; }
+  .slds-lookup[data-scope="multi"] .slds-form-element__control .slds-input--bare {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+    -webkit-align-self: center;
+        -ms-flex-item-align: center;
+            align-self: center;
+    margin-left: 0.5rem;
+    line-height: 2.125rem; }
 .slds-modal .slds-lookup tr:first-child > th {
   border-top: 2px solid #d8dde6; }
 
@@ -3680,12 +3737,15 @@ a.slds-button--inverse:focus {
   .slds-table tr > th:last-child,
   .slds-table tr > td:last-child {
     padding-right: 1.5rem; }
-  .slds-table thead th {
+  .slds-table th {
     font-weight: 400; }
-  .slds-table:not(.slds-no-row-hover) tr:hover > td {
+  .slds-table:not(.slds-no-row-hover) tbody tr:hover > td,
+  .slds-table:not(.slds-no-row-hover) tbody tr:hover > th {
     background-color: #f4f6f9; }
-  .slds-table tr.slds-is-selected > td,
-  .slds-table:not(.slds-no-row-hover) .slds-is-selected:hover > td {
+  .slds-table tbody tr.slds-is-selected > td,
+  .slds-table tbody tr.slds-is-selected > th,
+  .slds-table:not(.slds-no-row-hover) tr.slds-is-selected:hover > td,
+  .slds-table:not(.slds-no-row-hover) tr.slds-is-selected:hover > th {
     background-color: #f0f8fc; }
   .slds-table td.slds-is-selected,
   .slds-table td.slds-is-selected:hover {
@@ -3706,12 +3766,15 @@ a.slds-button--inverse:focus {
   .slds-table--bordered td,
   .slds-table--bordered th {
     border-top: 1px solid #d8dde6; }
-  .slds-table--bordered:not(.slds-no-row-hover) tr:hover > td {
+  .slds-table--bordered:not(.slds-no-row-hover) tbody tr:hover > td,
+  .slds-table--bordered:not(.slds-no-row-hover) tbody tr:hover > th {
     box-shadow: #d8dde6 0 -1px 0 inset; }
-  .slds-table--bordered:not(.slds-no-row-hover) .slds-is-selected:hover > td {
+  .slds-table--bordered:not(.slds-no-row-hover) .slds-is-selected:hover > td,
+  .slds-table--bordered:not(.slds-no-row-hover) .slds-is-selected:hover > th {
     border-color: #0070d2;
     box-shadow: #0070d2 0 -2px 0 inset; }
-    .slds-table--bordered:not(.slds-no-row-hover) .slds-is-selected:hover > td.slds-is-selected {
+    .slds-table--bordered:not(.slds-no-row-hover) .slds-is-selected:hover > td.slds-is-selected,
+    .slds-table--bordered:not(.slds-no-row-hover) .slds-is-selected:hover > th.slds-is-selected {
       box-shadow: #0070d2 0 -1px 0 2px inset; }
 
 .slds-table--striped tr:nth-of-type(even) > td {
@@ -3740,6 +3803,8 @@ a.slds-button--inverse:focus {
       position: absolute;
       top: 0;
       left: -9999em; }
+    .slds-max-medium-table--stacked th {
+      border-top: none; }
     .slds-max-medium-table--stacked tr {
       display: block;
       border-top: 2px solid #d8dde6; }
@@ -3748,7 +3813,6 @@ a.slds-button--inverse:focus {
       padding: 0.75rem;
       width: 100%;
       clear: both;
-      padding: 0.75rem;
       white-space: normal;
       overflow: hidden;
       text-align: left; }
@@ -3758,13 +3822,14 @@ a.slds-button--inverse:focus {
         content: attr(data-label);
         color: #54698d;
         text-transform: uppercase;
-        font-family: "SalesforceSans-Regular", Arial, sans-serif;
+        font-family: "Salesforce Sans", Arial, sans-serif;
         font-size: 0.75rem;
         font-weight: 300; }
     .slds-max-medium-table--stacked tr > td:first-child,
     .slds-max-medium-table--stacked tr > td:last-child {
       padding: 0.75rem; }
-    .slds-max-medium-table--stacked:not(.slds-no-row-hover) tr:hover td {
+    .slds-max-medium-table--stacked:not(.slds-no-row-hover) tbody tr:hover td,
+    .slds-max-medium-table--stacked:not(.slds-no-row-hover) tbody tr:hover th {
       background-color: inherit;
       box-shadow: none; }
     .slds-max-medium-table--stacked .slds-is-interactive .slds-button {
@@ -3773,7 +3838,8 @@ a.slds-button--inverse:focus {
       width: auto; } }
 
 @media (max-width: 47.9375em) {
-  .slds-max-medium-table--stacked td:before {
+  .slds-max-medium-table--stacked td:before,
+  .slds-max-medium-table--stacked th:before {
     padding-bottom: 0.25rem; } }
 @media (max-width: 47.9375em) {
   .slds-max-medium-table--stacked-horizontal {
@@ -3784,6 +3850,8 @@ a.slds-button--inverse:focus {
       position: absolute;
       top: 0;
       left: -9999em; }
+    .slds-max-medium-table--stacked-horizontal th {
+      border-top: none; }
     .slds-max-medium-table--stacked-horizontal tr {
       display: block;
       border-top: 2px solid #d8dde6; }
@@ -3792,7 +3860,6 @@ a.slds-button--inverse:focus {
       padding: 0.75rem;
       width: 100%;
       clear: both;
-      padding: 0.75rem;
       white-space: normal;
       overflow: hidden;
       text-align: left; }
@@ -3802,13 +3869,14 @@ a.slds-button--inverse:focus {
         content: attr(data-label);
         color: #54698d;
         text-transform: uppercase;
-        font-family: "SalesforceSans-Regular", Arial, sans-serif;
+        font-family: "Salesforce Sans", Arial, sans-serif;
         font-size: 0.75rem;
         font-weight: 300; }
     .slds-max-medium-table--stacked-horizontal tr > td:first-child,
     .slds-max-medium-table--stacked-horizontal tr > td:last-child {
       padding: 0.75rem; }
-    .slds-max-medium-table--stacked-horizontal:not(.slds-no-row-hover) tr:hover td {
+    .slds-max-medium-table--stacked-horizontal:not(.slds-no-row-hover) tbody tr:hover td,
+    .slds-max-medium-table--stacked-horizontal:not(.slds-no-row-hover) tbody tr:hover th {
       background-color: inherit;
       box-shadow: none; }
     .slds-max-medium-table--stacked-horizontal .slds-is-interactive .slds-button {
@@ -5036,7 +5104,8 @@ a.slds-button--inverse:focus {
       -ms-transform: rotate(-90deg);
           transform: rotate(-90deg); }
 .slds-type-focus {
-  border-bottom: 1px solid transparent; }
+  border-bottom: 1px solid transparent;
+  cursor: pointer; }
   .slds-type-focus:hover {
     border-bottom: 1px solid #005fb2; }
   .slds-type-focus:focus {
@@ -5191,19 +5260,13 @@ a.slds-button--inverse:focus {
         display: inline-block; }
       .slds-large-show--inline {
         display: inline; } }
-/* ==========================================================================
-   Print styles.
-   Inlined to avoid the additional HTTP request:
-   http://www.phpied.com/delay-loading-your-print-css/
-   ========================================================================== */
+
 @media print {
   *,
   *:before,
   *:after {
     background: transparent !important;
     color: #000 !important;
-    /* Black prints faster:
-                                   http://www.sanbeiji.com/archives/953 */
     box-shadow: none !important;
     text-shadow: none !important; }
   a,
@@ -5220,10 +5283,6 @@ a.slds-button--inverse:focus {
   blockquote {
     border: 1px solid #999;
     page-break-inside: avoid; }
-  /*
-     * Printing Tables:
-     * http://css-discuss.incutio.com/wiki/Printing_Tables
-     */
   thead {
     display: table-header-group; }
   tr,
