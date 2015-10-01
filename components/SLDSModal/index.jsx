@@ -51,7 +51,7 @@ module.exports = React.createClass( {
 
   getInitialState () {
     return {
-      isOpen: this.props.isOpen,
+      isClosing: false,
       revealed: false
     };
   },
@@ -65,12 +65,9 @@ module.exports = React.createClass( {
     this.updateBodyScroll();
   },
 
-  openModal () {
-    this.setState({isOpen: true});
-  },
 
   closeModal () {
-    this.setState({isOpen: false});
+    this.setState({isClosing: true});
   },
 
   handleSubmitModal () {
@@ -79,7 +76,7 @@ module.exports = React.createClass( {
 
   updateBodyScroll () {
     if(window && document && document.body){
-      if(this.state.isOpen){
+      if(!this.state.isClosing){
         document.body.style.overflow = 'hidden';
       }
       else{
@@ -117,7 +114,7 @@ module.exports = React.createClass( {
   render() {
     return (
       <Modal
-        isOpen={this.state.isOpen}
+        isOpen={this.props.isOpen}
         onRequestClose={this.closeModal}
         style={customStyles}
         overlayClassName={'slds-modal-backdrop'+ (this.state.revealed?' slds-modal-backdrop--open':'')} >
@@ -128,12 +125,12 @@ module.exports = React.createClass( {
 
   componentDidUpdate (prevProps, prevState) {
 
-    if(this.state.isOpen !== prevState.isOpen){
+    if(this.state.isClosing !== prevState.isClosing){
 
       this.updateBodyScroll();
 
 
-      if(!this.state.isOpen){
+      if(this.state.isClosing){
         if(this.props.returnFocusTo && this.props.returnFocusTo.focus){
           this.props.returnFocusTo.focus();
         }
