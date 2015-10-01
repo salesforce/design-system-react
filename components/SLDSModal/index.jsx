@@ -95,7 +95,10 @@ module.exports = React.createClass( {
   getModal() {
     return <div className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')} 
           onClick={this.closeModal}>
-          <div className='slds-modal__container' onClick={(e)=>{EventUtil.trap(e);}}>
+          <div 
+            role='dialog'
+            className='slds-modal__container' 
+            onClick={(e)=>{EventUtil.trap(e);}}>
             <div className='slds-modal__header'>
               <h2 className='slds-text-heading--medium'>{this.props.title}</h2>
               <SLDSButton className='slds-button slds-modal__close' onClick={this.closeModal}>
