@@ -23,3 +23,14 @@ Testing a core abstraction layer with many facades approach for FuelUX
 * Feel free to shoot questions to mc-uxdev@salesforce.com or dbrainer-banker@salesforce.com
 * **If this is your first contribution you'll be much happier if you communicate early and often**
 * Try to keep your PRs small and manageable
+
+### Requirements / Goals
+* Modern, performant UX framework
+* Easy path forward from current FuelUX and state of apps (migrating to FuelUX)
+* Multiple facades can be run together in the same project (e.g. jquery + react)
+* Easy to consume
+* Lightweight / few dependencies
+* Maintainable
+* Easy future upgrades
+* Defined way to contribute
+* As far as possible promote good behavior
