@@ -19,14 +19,8 @@ const legacyAccessors = {
 	},
 
 	getChildren (item) {
-		const self = this;
-
-		return new Promise( (resolve) => {
-			self.options.dataSource( item._item, (response) => {
-				response.data.forEach( (dataItem, index) => {
-					response.data[index] = self._addNewAttributes(dataItem);
-				});
-
+		return new Promise((resolve) => {
+			this.getProperty('dataSource')(item._item, (response) => {
 				resolve(response.data);
 			});
 		});
@@ -37,19 +31,25 @@ const legacyAccessors = {
 	},
 
 	getIconClass (item) {
-		return item._item.dataAttributes ? item._item.dataAttributes['data-icon'] : undefined;
+		const dataAttributes = item.get('dataAttributes');
+		
+		return dataAttributes && dataAttributes['data-icon'];
 	},
 
 	getExpandable (item) {
-		return item._item.dataAttributes ? item._item.dataAttributes.hasChildren : undefined;
+		const dataAttributes = item.get('dataAttributes');
+		
+		return dataAttributes && dataAttributes.hasChildren;
 	},
 
 	getKey (item) {
-		return { id: item._item.dataAttributes ? item._item.dataAttributes.id : undefined };
+		return item.get();
 	},
 
 	getId (item) {
-		return item._item.dataAttributes ? item._item.dataAttributes.id : undefined;
+		const dataAttributes = item.get('dataAttributes');
+		
+		return dataAttributes.id;
 	}
 };
 
@@ -64,13 +64,16 @@ let Tree = function Tree (element, options) {
 
 	const $html = $('<i />').append(template);
 	this.template = $html.find('.' + this.cssClasses.CONTROL);
+	
+	if (this.options.dataSource) {
+		this.options.accessors = legacyAccessors;
+	}
 
 	this._initializeState();
 	this._initialize(this.options);
 };
 
 Lib.extend(Tree.prototype, TreeCore, Events, State, {
-
 	_onInitialized () {
 		const strings = this.getState('strings');
 		this.template.find('.tree-loader').text(strings.LOADING);
@@ -78,10 +81,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		this._configureBranchSelect();
 
 		this.elements.wrapper.on('click.fu.tree', '.tree-item', $.proxy(this._handleItemClicked, this));
-
-		if ( this.options.dataSource ) {
-			this.accessors = Lib.extend({}, this.accessors, legacyAccessors);
-		}
 
 		this._render();
 
@@ -118,21 +117,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const branch = this._getItemAdapter($el.data('item'));
 
 		this._toggleFolder(branch);
-	},
-
-	_addNewAttributes (item) {
-		const itemData = Lib.extend({}, item);
-
-		itemData.text = itemData.name ? itemData.name : item.text;
-		itemData._itemType = itemData.type ? itemData.type : item._itemType;
-
-		if ( itemData.dataAttributes ) {
-			itemData.id = itemData.dataAttributes.id ? itemData.dataAttributes.id : itemData.id;
-			itemData._iconClass = itemData.dataAttributes['data-icon'] ? itemData.dataAttributes['data-icon'] : itemData._iconClass;
-			itemData._isExpandable = itemData.dataAttributes.hasChildren ? itemData.dataAttributes.hasChildren : itemData._isExpandable;
-		}
-
-		return itemData;
 	},
 
 	_onFolderToggled (branch) {
