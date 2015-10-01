@@ -64,7 +64,7 @@ let Tree = function Tree (element, options) {
 
 	const $html = $('<i />').append(template);
 	this.template = $html.find('.' + this.cssClasses.CONTROL);
-	
+
 	if (this.options.dataSource) {
 		this.options.accessors = legacyAccessors;
 	}
@@ -173,11 +173,12 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_render () {
 		const self = this;
 		const $el = this.template.clone().empty();
+		const dataSource = this.getProperty('dataSource');
 
 		if (this._collection.length()) {
 			this._loopChildren(this._collection, $el, 1);
-		} else if (this.options.dataSource) {
-			this.options.dataSource({}, (response) => {
+		} else if (dataSource) {
+			dataSource({}, (response) => {
 				self._collection = self._getDataAdapter(response.data);
 				self._loopChildren(self._collection, $el, 1);
 			});
