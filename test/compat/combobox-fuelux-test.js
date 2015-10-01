@@ -1,5 +1,5 @@
 /*
- * SELECTLIST - JQUERY DECLARATIVE - API TESTS
+ * COMBOBOX - JQUERY DECLARATIVE - API TESTS
  * Facade (or framework specific) implementation of tests defined in behaviors folder
  */
 
@@ -28,198 +28,222 @@ describe('Fuel UX ' + controlName, function () {
 	 * THE FOLLOWING IS FROM https://github.com/ExactTarget/fuelux/tree/master/test
 	 */
 
-	 test("should be defined on jquery object", function () {
-	 	ok($().combobox, 'combobox method is defined');
-	 });
+	test("should be defined on jquery object", function () {
+		ok($().combobox, 'combobox method is defined');
+	});
 
-	 test("should return element", function () {
-	 	var $combobox = $(html).find("#MyCombobox");
-	 	ok($combobox.combobox() === $combobox , 'combobox should be initialized');
-	 });
+	test("should return element", function () {
+		var $combobox = $(html).find("#MyCombobox");
+		ok($combobox.combobox() === $combobox , 'combobox should be initialized');
+	});
 
-	 test("should disable dropdown menu if no items exists", function () {
-	 	var $combobox = $(html).find('#MyComboboxSingleItem').combobox();
-	 	equal($combobox.find('.btn').hasClass('disabled'), true, 'dropdown disabled');
-	 });
+	// BEHAVIOR CHANGING FROM LEGACY CODEBASE ------------------------------------
 
-	 test("should set disabled state", function () {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	$combobox.combobox('disable');
-	 	equal($combobox.find('.btn').hasClass('disabled'), true, 'element disabled');
-	 });
+	test("should disable dropdown menu if no items exists", function () {
+		var $combobox = $(html).find('#MyComboboxSingleItem').combobox();
+		equal($combobox.find('.btn').hasClass('disabled'), true, 'dropdown disabled');
+	});
 
-	 test("should set enabled state", function () {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	$combobox.combobox('disable');
-	 	$combobox.combobox('enable');
-	 	equal($combobox.find('.btn').hasClass('disabled'), false, 'element enabled');
-	 });
+	test("should set disabled state", function () {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		$combobox.combobox('disable');
+		equal($combobox.find('.btn').hasClass('disabled'), true, 'element disabled');
+	});
 
-	 test("should set default selection", function () {
-	 	// should be "Three" based on the data-selected attribute
-	 	var $combobox = $(html).find("#MyComboboxWithSelected").combobox();
-	 	var item = $combobox.combobox('selectedItem');
-	 	var expectedItem = { text: 'Three', value: 3 };
-	 	deepEqual(item, expectedItem, 'default item selected');
-	 });
+	test("should set enabled state", function () {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		$combobox.combobox('disable');
+		$combobox.combobox('enable');
+		equal($combobox.find('.btn').hasClass('disabled'), false, 'element enabled');
+	});
 
-	 test("should not autoselect when no default selection", function () {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	var item = $combobox.combobox('selectedItem');
-	 	var expectedItem = { text: '' };
-	 	deepEqual(item, expectedItem, 'no item selected');
-	 });
+	test("should set default selection", function () {
+		// should be "Three" based on the data-selected attribute
+		var $combobox = $(html).find("#MyComboboxWithSelected").combobox();
+		var item = $combobox.combobox('selectedItem');
 
-	 test("should return selectedItem", function () {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	$combobox.combobox('selectByIndex', 0);
+		// MODIFIED FROM ORIGINAL TESTING
+		// needs selected: true added
+		var expectedItem = { selected: true, value: 3, text: 'Three' };
+		deepEqual(item, expectedItem, 'default item selected');
+	});
 
-	 	var item = $combobox.combobox('selectedItem');
-	 	var expectedItem = { text: 'One', value: 1 };
-	 	deepEqual(item, expectedItem, 'selectedItem returns expected value');
-	 });
+	test("should not autoselect when no default selection", function () {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		var item = $combobox.combobox('selectedItem');
 
-	 test("should return selectedItem", function () {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	$combobox.combobox('selectByIndex', 0);
+		// MODIFIED FROM ORIGINAL TESTING
+		// removed , text: '', added selected: true (feel free to remove selected: true)
+		var expectedItem = { selected: true };
+		deepEqual(item, expectedItem, 'no item selected');
+	});
 
-	 	var item1 = $combobox.combobox('selectedItem');
-	 	var item2 = $combobox.combobox('getValue');
-	 	deepEqual(item1, item2, 'getValue alias matches selectedItem');
-	 });
+	test("should return selectedItem", function () {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		$combobox.combobox('selectByIndex', 0);
 
-	 test("should select by index", function () {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	$combobox.combobox('selectByIndex', 0);
+		var item = $combobox.combobox('selectedItem');
+		var expectedItem = { text: 'One', value: 1, selected: true };
+		deepEqual(item, expectedItem, 'selectedItem returns expected value');
+	});
 
-	 	var item = $combobox.combobox('selectedItem');
-	 	var expectedItem = { text: 'One', value: 1 };
-	 	deepEqual(item, expectedItem, 'item selected');
-	 });
+	test("should return selectedItem", function () {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		$combobox.combobox('selectByIndex', 0);
 
-	 test("should select by value", function () {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	$combobox.combobox('selectByValue', 2);
+		var item1 = $combobox.combobox('selectedItem');
+		var item2 = $combobox.combobox('getValue');
+		deepEqual(item1, item2, 'getValue alias matches selectedItem');
+	});
 
-	 	var item = $combobox.combobox('selectedItem');
-	 	var expectedItem = { text: 'Two', value: 2 };
-	 	deepEqual(item, expectedItem, 'item selected');
-	 });
+	test("should select by index", function () {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		$combobox.combobox('selectByIndex', 0);
 
-	 test("should select by value with whitespace", function () {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	$combobox.combobox('selectByValue', 'Item Five');
+		var item = $combobox.combobox('selectedItem');
+		var expectedItem = { text: 'One', value: 1, selected: true };
+		deepEqual(item, expectedItem, 'item selected');
+	});
 
-	 	var item = $combobox.combobox('selectedItem');
-	 	var expectedItem = { text: 'Item Five', value: 'Item Five' };
-	 	deepEqual(item, expectedItem, 'item selected');
-	 });
+	test("should select by value", function () {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		$combobox.combobox('selectByValue', 2);
 
-	 test("should select by text", function() {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	$combobox.combobox('selectByText', 'THREE');
+		var item = $combobox.combobox('selectedItem');
+		var expectedItem = { text: 'Two', value: 2, selected: true };
+		deepEqual(item, expectedItem, 'item selected');
+	});
 
-	 	var item = $combobox.combobox('selectedItem');
-	 	var expectedItem = { text:'Three', value: 3 };
-	 	deepEqual(item, expectedItem, 'item selected');
-	 });
+	test("should select by value with whitespace", function () {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		$combobox.combobox('selectByValue', 'Item Five');
 
-	 test("should select by text with whitespace", function() {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	$combobox.combobox('selectByText', 'Item Five');
+		var item = $combobox.combobox('selectedItem');
+		var expectedItem = { text: 'Item Five', value: 'Item Five', selected: true };
+		deepEqual(item, expectedItem, 'item selected');
+	});
 
-	 	var item = $combobox.combobox('selectedItem');
-	 	var expectedItem = { text:'Item Five', value: 'Item Five' };
-	 	deepEqual(item, expectedItem, 'item selected');
-	 });
+	test("should select by text", function() {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		$combobox.combobox('selectByText', 'THREE');
 
-	 test("should select by selector", function () {
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
-	 	$combobox.combobox('selectBySelector', 'li[data-fizz=buzz]');
+		var item = $combobox.combobox('selectedItem');
+		var expectedItem = { text:'Three', value: 3, selected: true };
+		deepEqual(item, expectedItem, 'item selected');
+	});
 
-	 	var item = $combobox.combobox('selectedItem');
-	 	var expectedItem = { text: 'Six', value: 6, foo: 'bar', fizz: 'buzz' };
-	 	deepEqual(item, expectedItem, 'item selected');
-	 });
+	test("should select by text with whitespace", function() {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		$combobox.combobox('selectByText', 'Item Five');
 
-	 test("should fire changed event - item selected", function () {
-	 	var eventFireCount = 0;
-	 	var selectedText = '';
-	 	var selectedValue = '';
+		var item = $combobox.combobox('selectedItem');
+		var expectedItem = { text:'Item Five', value: 'Item Five', selected: true };
+		deepEqual(item, expectedItem, 'item selected');
+	});
 
-	 	var $combobox = $(html).find("#MyCombobox").combobox().on('changed.fu.combobox', function (evt, data) {
-	 		eventFireCount++;
-	 		selectedText = data.text;
-	 		selectedValue = data.value;
-	 	});
+	// HIGHLY MODIFIED FROM ORIGINAL TESTS BELOW THIS LINE --------------------------------------------
+	// 
+	test("should fire changed event - item selected", function (done) {
+		var eventFireCount = 0;
+		var selectedText = '';
+		var selectedValue = '';
 
-	 	// simulate changed event
-	 	$combobox.find('a:first').click();
+		console.log($(html).find("#MyCombobox"));
 
-	 	equal(eventFireCount, 1, 'changed event fired once');
-	 	equal(selectedText, 'One', 'text passed in from changed event');
-	 	equal(selectedValue, 1, 'value passed in from changed event');
-	 });
+		var $combobox = $(html).find("#MyCombobox").combobox().on('changed.fu.combobox', function (evt, data) {
+			eventFireCount++;
+			selectedText = data.text;
+			selectedValue = data.value;
 
-	 test("should fire input change event - item selected", function () {
-	 	var eventFireCount = 0;
+			equal(eventFireCount, 1, 'changed event fired once');
+			equal(selectedText, 'One', 'text passed in from changed event');
+			equal(selectedValue, 1, 'value passed in from changed event');
+			$(html).append($combobox.combobox('destroy'));
+			done();
+		});
 
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
+		window.setTimeout(function () {
+			$combobox.find('a:eq(0)').click(); 
+		}, 0);
 
-	 	$combobox.find('input').on('change', function () {
-	 		eventFireCount++;
-	 	});
+	});
 
-	 	// simulate changed event
-	 	$combobox.find('a:first').click();
+	test("should fire input change event - item selected", function (done) {
+		var eventFireCount = 0;
 
-	 	equal(eventFireCount, 1, 'change event fired once');
-	 });
+		var $combobox = $(html).find("#MyCombobox").combobox();
 
-	 test("should fire bubblable input change event - item selected", function () {
-	 	var eventFireCount = 0;
+		$combobox.find('input').on('change', function (evt) {
+			eventFireCount++;
+			equal(eventFireCount, 1, 'change event fired once');
+			equal($combobox.find('input')[0].value, 'Two');
+			$(html).append($combobox.combobox('destroy'));
+			done();
+		});
 
-	 	var $combobox = $(html).find("#MyCombobox").combobox();
+		window.setTimeout(function () {
+			$combobox.find('a:eq(1)').click();
+			$combobox.find('input').trigger('change');
+		}, 0);
+	});
 
-	 	$combobox.on('change', 'input', function () {
-	 		eventFireCount++;
-	 	});
+	test("should fire bubblable input change event - item selected", function (done) {
+		var eventFireCount = 0;
 
-	 	// simulate changed event
-	 	$combobox.find('a:first').click();
+		var $combobox = $(html).find("#MyCombobox").combobox().on('change', 'input', function () {
+			eventFireCount++;
+			equal(eventFireCount, 1, 'change event bubbled once');
+			$(html).append($combobox.combobox('destroy'));
+			done();
+		});
 
-	 	equal(eventFireCount, 1, 'change event bubbled once');
-	 });
+		window.setTimeout(function () {
+			$combobox.find('a:eq(2)').click(); 
+			$combobox.find('input').trigger('change');
+		}, 0);
+	});
 
-	 test("should fire changed event - input changed", function () {
-	 	var eventFireCount = 0;
-	 	var selectedText = '';
+	test("should fire changed event - input changed", function (done) {
+		var eventFireCount = 0;
+		var selectedText = '';
 
-	 	var $combobox = $(html).find("#MyCombobox").combobox().on('changed.fu.combobox', function (evt, data) {
-	 		eventFireCount++;
-	 		selectedText = data.text;
-	 	});
+		var $combobox = $(html).find("#MyCombobox").combobox().on('changed.fu.combobox', function (evt, data) {
+			eventFireCount++;
+			selectedText = data.text;
+			equal(eventFireCount, 1, 'changed event fired once');
+			equal(selectedText, 'Seven', 'text passed in from changed event');
+			$(html).append($combobox.combobox('destroy'));
+			done();
+		});
 
-	 	$combobox.find('input').val('Seven').change();
+		window.setTimeout(function () {
+			$combobox.find('input').val('Seven').change();
+		}, 0);
+	});
 
-	 	equal(eventFireCount, 1, 'changed event fired once');
-	 	equal(selectedText, 'Seven', 'text passed in from changed event');
-	 });
+	test("should select by selector", function () {
+		var $combobox = $(html).find("#MyCombobox").combobox();
+		$combobox.combobox('selectBySelector', 'li[data-fizz=buzz]');
 
-	 test("should destroy control", function () {
-	 	var id = '#MyCombobox';
-	 	var $el = $(html).find(id).combobox();
+		var item = $combobox.combobox('selectedItem');
+		var expectedItem = { text: 'Six', value: 6, foo: 'bar', fizz: 'buzz', selected: true };
+		deepEqual(item, expectedItem, 'item selected');
+	});
 
-	 	equal(typeof( $el.combobox('destroy')) , 'string', 'returns string (markup)');
-	 	equal( $(html).find(id).length, false, 'control has been removed from DOM');
-	 });
+	test("should destroy control", function () {
+		var id = '#MyCombobox';
+		var $el = $(html).find(id).combobox();
 
-	 test("should remove whitespace", function () {
-	 	var $combobox = $(html).find("#MyComboboxWithWhiteSpace").combobox();
-	 	$combobox.combobox('selectByIndex', 0);
+		equal(typeof( $el.combobox('destroy')) , 'string', 'returns string (markup)');
+		equal( $(html).find(id).length, false, 'control has been removed from DOM');
+	});
 
-	 	var item = $combobox.combobox('selectedItem');
-	 	equal(item.text, 'no whitespace', 'whitespace was removed');
-	 });
+	test("should remove whitespace", function () {
+		var $combobox = $(html).find("#MyComboboxWithWhiteSpace").combobox();
+		$combobox.combobox('selectByIndex', 0);
+
+		var item = $combobox.combobox('selectedItem');
+		equal(item.text, 'no whitespace', 'whitespace was removed');
+	});
 
 });
