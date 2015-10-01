@@ -16,29 +16,56 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 export const behaviorHandlers = {
 
-	createComponent: {
-		default: function (initData, rendered) {
-			const imperativeMarkup = '<div id="my-selectlist"></div>';
-			$(initData.container).append(imperativeMarkup);
-			const $selectlist = new Selectlist( $('#my-' + controlName), initData );
+	createControl: {
+		default: function (initData, controlContainer, rendered) {
+			const imperativeMarkup = '<div id="' + 'my-' + controlName + '"></div>';
+			$(controlContainer).append(imperativeMarkup);
 
-			$('#my-selectlist').on('rendered.fu.selectlist', function () {
-				rendered($selectlist);
+			const $control = new Selectlist( $('#my-' + controlName), initData );
+
+			$('#my-' + controlName).on('rendered.fu.selectlist', function () {
+				rendered(controlContainer, $control);
 			});
 
-			return $selectlist;
+			return $control;
 		}
 	},
 
-	getComponentElement: {
-		default: function (createdComponent) {
-			return createdComponent.options.container.find('.' + Core.cssClasses.CONTROL)[0];
+	getControlElement: {
+		default: function (controlContainer) {
+			return $(controlContainer).find('.' + Core.cssClasses.CONTROL)[0];
 		}
 	},
 
-	destroyComponent: {
-		default: function (createdComponent) {
-			createdComponent.destroy();
+	destroyControl: {
+		default: function (createdControl) {
+			createdControl.destroy();
+		}
+	},
+
+	disableControl: {
+		default: function (createdControl) {
+			createdControl.disable();
+		}
+	},
+
+	enableControl: {
+		default: function (createdControl) {
+			createdControl.enable();
+		}
+	},
+
+	getSelection: {
+		default: function (createdControl) {
+			return createdControl.getSelection();
+		}
+	},
+
+	createEventListener: {
+		default: function (eventName, callback)  {
+			$('#my-' + controlName).on(eventName + '.fu.selectlist', function () {
+				callback();
+			});
 		}
 	}
 
