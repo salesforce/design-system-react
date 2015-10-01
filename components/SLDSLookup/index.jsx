@@ -23,7 +23,10 @@ class SLDSLookup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen:true
+      searchTerm: '',
+      isOpen:false,
+      currentSelectedItem: null,
+      activeDescendant: '',
     };
   }
 
@@ -40,7 +43,17 @@ class SLDSLookup extends React.Component {
   }
 
   handleFocus() {
-    this.setState({isOpen:true})
+    this.setState({ isOpen:true });
+  }
+
+  handleChange(event) {
+    const target = event.target || event.currentTarget;
+    this.setState({ searchTerm: target.value });
+  }
+
+  handleKeyDown(event) {
+    if(event.keyCode){
+    }
   }
 
   renderMenu(){
@@ -53,9 +66,33 @@ class SLDSLookup extends React.Component {
 
   render(){
     return (
-      <div>
-        hi
-        {this.renderMenu()}
+      <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">
+        <section className="slds-form-element">
+          <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
+
+          <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
+            { this.state.currentSelectedItem ? this.state.currentSelectedItem : null }
+            <InputIcon name="search"/>
+            <input
+              id="lookup"
+              className={'slds-input'}
+              type="text"
+              aria-label="lookup"
+              aria-haspopup="true"
+              aria-autocomplete="list"
+              aria-activedescendant={this.state.activeDescendant}
+              aria-expanded={this.state.isOpen}
+              role="combobox"
+              onChange={this.handleChange.bind(this)}
+              onFocus={this.handleFocus.bind(this)}
+              onBlur={this.handleBlur.bind(this)}
+              onClick={this.handleClick.bind(this)}
+              onKeyDown={this.handleKeyDown.bind(this)}
+              value={this.state.searchTerm} />
+          </div>
+
+          {this.renderMenu()}
+        </section>
       </div>
     );
   }
