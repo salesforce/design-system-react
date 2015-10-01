@@ -8,56 +8,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { Component } from 'react';
-import Menu from './Menu';
-import {InputIcon, ButtonIcon} from "./../SLDSIcons";
-import {Icon} from "../SLDSIcons";
-import _ from "lodash";
-import {KEYS,EventUtil} from '../utils';
+import {Icon} from "../../SLDSIcons";
+import {KEYS} from '../../utils';
+import Item from './Item';
 
-const defaultFilter = (term, item) => {
-  if(!term) return true;
-  return item.match(new RegExp(_.escapeRegExp(term), 'ig'));
-};
-
-class SLDSLookup extends React.Component {
-  constructor(props) {
+class Menu extends React.Component {
+  constructor(props){
     super(props);
-    this.state = {
-      isOpen:true
-    };
+    this.state = {};
   }
-
-  handleClose() {
-    this.setState({isOpen:false})
-  }
-
-  handleClick() {
-    this.setState({isOpen:true})
-  }
-
-  handleBlur() {
-    this.setState({isOpen:false})
-  }
-
-  handleFocus() {
-    this.setState({isOpen:true})
-  }
-
-  renderMenu(){
-    if(this.state.isOpen){
-      return <Menu />;
-    }else{
-      return null;
-    }
-  }
-
   render(){
     return (
-      <div>
-        hi
-        {this.renderMenu()}
-      </div>
-    );
+      <div className="">Menu</div>
+    )
   }
 }
-module.exports = SLDSLookup;
+module.exports = Menu;
