@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { Component } from 'react';
 import {Icon} from "../../../SLDSIcons";
-import {KEYS} from '../../../utils';
+import {KEYS,EventUtil} from '../../../utils';
 
 class Item extends React.Component {
   constructor(props) {
@@ -25,6 +25,15 @@ class Item extends React.Component {
     });
   }
 
+  handleClick(e){
+    e.preventDefault();
+    if(e.nativeEvent){
+      e.nativeEvent.preventDefault();
+      e.nativeEvent.stopImmediatePropagation();
+    }
+    return this.props.onSelect(this.props.index);
+  }
+
   render(){
     let className = 'slds-lookup__item';
 
@@ -33,6 +42,7 @@ class Item extends React.Component {
     if(this.props.isActive) styles = {backgroundColor: 'red'};
 
     return (
+      //IMPORTANT: id is used to set lookup's input's aria-activedescendant
       <li
         className={className}
         style={styles}
@@ -42,7 +52,8 @@ class Item extends React.Component {
           id={this.props.id}
           tabIndex="-1"
           aria-disabled={this.props.disabled}
-          role="option">
+          role="option"
+          onClick={this.handleClick.bind(this)}>
           <Icon name="account" />
           { this.boldSearchText(this.props.children) }
         </a>
