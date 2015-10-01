@@ -13,6 +13,47 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // Template imports
 import template from './tree-template';
 
+const legacyAccessors = {
+	getText (item) {
+		return item.get('name');
+	},
+
+	getChildren (item) {
+		const self = this;
+
+		return new Promise( (resolve) => {
+			self.options.dataSource( item._item, (response) => {
+				response.data.forEach( (dataItem, index) => {
+					response.data[index] = self._addNewAttributes(dataItem);
+				});
+
+				resolve(response.data);
+			});
+		});
+	},
+
+	getType (item) {
+		return item.get('type');
+	},
+
+	getIconClass (item) {
+		return item._item.dataAttributes ? item._item.dataAttributes['data-icon'] : undefined;
+	},
+
+	getExpandable (item) {
+		return item._item.dataAttributes ? item._item.dataAttributes.hasChildren : undefined;
+	},
+
+	getKey (item) {
+		console.log({ id: item._item.dataAttributes ? item._item.dataAttributes.id : undefined });
+		return { id: item._item.dataAttributes ? item._item.dataAttributes.id : undefined };
+	},
+
+	getId (item) {
+		return item._item.dataAttributes ? item._item.dataAttributes.id : undefined;
+	}
+};
+
 let Tree = function Tree (element, options) {
 	this.options = Lib.extend({
 		open: []
@@ -30,6 +71,7 @@ let Tree = function Tree (element, options) {
 };
 
 Lib.extend(Tree.prototype, TreeCore, Events, State, {
+
 	_onInitialized () {
 		const strings = this.getState('strings');
 		this.template.find('.tree-loader').text(strings.LOADING);
@@ -39,7 +81,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		this.elements.wrapper.on('click.fu.tree', '.tree-item', $.proxy(this._handleItemClicked, this));
 
 		if ( this.options.dataSource ) {
-			this.accessors.getChildren = $.proxy(this.getChildren, this);
+			this.accessors = Lib.extend({}, this.accessors, legacyAccessors);
 		}
 
 		this._render();
@@ -49,20 +91,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 	selectItem (item) {
 		this._selectItem( this._getItemAdapter(item.jquery ? item.data('item') : item) );
-	},
-
-	getChildren (item) {
-		const self = this;
-
-		return new Promise( (resolve) => {
-			self.options.dataSource( item._item, (response) => {
-				response.data.forEach( (dataItem, index) => {
-					response.data[index] = self._addNewAttributes(dataItem);
-				});
-
-				resolve(response.data);
-			});
-		});
 	},
 
 	_configureBranchSelect () {
@@ -167,13 +195,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 			this._loopChildren(this._collection, $el, 1);
 		} else if (this.options.dataSource) {
 			this.options.dataSource({}, (response) => {
-				const items = self._getDataAdapter(response.data);
-
-				items._data.forEach( (item, index) => {
-					items._data[index] = self._addNewAttributes(item);
-				});
-
-				self._collection = items;
+				self._collection = self._getDataAdapter(response.data);
 				self._loopChildren(self._collection, $el, 1);
 			});
 		}
