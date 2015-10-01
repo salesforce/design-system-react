@@ -21,7 +21,7 @@ class Item extends React.Component {
     if(!children || !term) return children;
     const regex = new RegExp('(' + term + ')', 'gi');
     return React.Children.map(children, c => {
-      return (typeof c === 'string') ? <span dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
+      return (typeof c.label === 'string') ? <span dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
     });
   }
 
@@ -53,7 +53,8 @@ class Item extends React.Component {
           tabIndex="-1"
           aria-disabled={this.props.disabled}
           role="option"
-          onClick={this.handleClick.bind(this)}>
+          onClick={this.handleClick.bind(this)}
+          onMouseDown={this.handleClick.bind(this)}>
           <Icon name="account" />
           { this.boldSearchText(this.props.children) }
         </a>

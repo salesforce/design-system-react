@@ -45,20 +45,25 @@ class SLDSLookup extends React.Component {
   }
 
   getActiveDescendant(){
-    console.log("aria-activedescendant is ", 'item-' +  this.state.activeIndex);
     return this.state.activeIndex !== null ? 'item-' + this.state.activeIndex: "";
   }
 
   //=================================================
   // Select menu item (onClick or on key enter/space)
   selectItem(index){
+    //console.log('selectItem fired');
     this.setState({
       selectedIndex: index,
       searchTerm: null
     });
-    console.log("Selected Item is ", this.props.items[index]);
   }
 
+  handleDeleteSelected() {
+    this.setState({
+      selectedIndex: null,
+      isOpen: false
+    });
+  }
 
   //=================================================
   // Basic Event Listeners on Input
@@ -126,18 +131,38 @@ class SLDSLookup extends React.Component {
     }
   }
 
-  render(){
+  renderSelectedItem(){
     return (
-      <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">
+      <div className="slds-pill">
+        <a href="#" className="slds-pill__label">
+          <span>
+            <Icon name="account" />
+            {this.props.items[this.state.selectedIndex].label}
+          </span>
+        </a>
+        <button className="slds-button slds-button--icon-bare" onClick={this.handleDeleteSelected.bind(this)} ref="clearSelectedItemButton">
+          <ButtonIcon name="close" />
+          <span className="slds-assistive-text">Remove</span>
+        </button>
+      </div>
+    );
+  }
+
+  render(){
+    let inputClasses = this.state.selectedIndex === null ? 'slds-input':'slds-input slds-hide';
+    let compClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside":"slds-lookup ignore-react-onclickoutside slds-has-selection";
+
+    return (
+      <div className={compClasses} data-select="single" data-scope="single" data-typeahead="true">
         <section className="slds-form-element">
           <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
 
           <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
-            { this.state.currentSelectedItem ? this.state.currentSelectedItem : null }
+            { this.state.selectedIndex ? this.renderSelectedItem() : null }
             <InputIcon name="search"/>
             <input
               id="lookup"
-              className={'slds-input'}
+              className={inputClasses}
               type="text"
               aria-label="lookup"
               aria-haspopup="true"
@@ -147,6 +172,7 @@ class SLDSLookup extends React.Component {
               role="combobox"
               onChange={this.handleChange.bind(this)}
               onFocus={this.handleFocus.bind(this)}
+              onBlur={this.handleBlur.bind(this)}
               onClick={this.handleClick.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)}
               value={this.state.searchTerm} />
