@@ -13,9 +13,16 @@ import * as Lib from '../../src/lib/lib';
 // Run in legacy plugin mode
 import Tree from '../../src/react/tree/tree';
 
+// REMOVE
+void(controlName);
+void(Lib);
+void(Tree);
+
 export const behaviorHandlers = {
 	createComponent: {
 		default (initData, rendered) {
+			// REMOVE
+			void(rendered);
 		}
 
 	},
