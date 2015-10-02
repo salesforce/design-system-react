@@ -26,7 +26,7 @@ class Menu extends React.Component {
     return this.props.items.filter(this.filter, this).map((c, i) => {
       //isActive means it is aria-activedescendant
       const isActive = this.props.activeIndex === i ? true : false;
-      return <Item key={c.id} id={c.id} index={i} isActive={isActive} onSelect={this.props.onSelect} searchTerm={this.props.searchTerm}>{c}</Item>
+      return <Item key={c.id} id={c.id} setActiveDescendant={this.props.setActiveDescendant} isActive={isActive} onSelect={this.props.onSelect} searchTerm={this.props.searchTerm}>{c}</Item>
     });
   }
 

@@ -16,6 +16,12 @@ class Item extends React.Component {
     super(props);
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.isActive !== this.props.isActive){
+      this.props.setActiveDescendant(nextProps.id);
+    }
+  }
+
   boldSearchText(children) {
     const term = this.props.searchTerm;
     if(!children || !term) return children;
@@ -38,9 +44,9 @@ class Item extends React.Component {
     let className = 'slds-lookup__item';
 
     //TODO: make isActive styles into a class??
+    let id = this.props.id;
     let styles = {};
     if(this.props.isActive) className += ' slds-theme--shade';
-
 
     return (
       //IMPORTANT: id is used to set lookup's input's aria-activedescendant
@@ -50,7 +56,7 @@ class Item extends React.Component {
         role="presentaion">
         <a
           href={this.props.href}
-          id={this.props.id}
+          id={id}
           tabIndex="-1"
           aria-disabled={this.props.disabled}
           role="option"
