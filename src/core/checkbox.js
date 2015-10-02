@@ -19,7 +19,6 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 		HIGHLIGHT: 'highlight'
 	},
 
-	// Set the defaults
 	_defaultProperties: {
 		checked: false,
 		inline: false,

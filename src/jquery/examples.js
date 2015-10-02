@@ -1,6 +1,6 @@
 import '../helpers/create-jquery-plugin';
 
-import './checkbox/example';
+// import './checkbox/example';
 import './combobox/example';
 import './loader/example';
 import './radio/example';

@@ -14,6 +14,10 @@ const RadioCore = Lib.merge({}, CheckboxCore, {
 		LABEL: CONTROL + '-label',
 		ADDON: 'input-group-addon',
 		HIGHLIGHT: 'highlight'
+	},
+
+	_defaultProperties: {
+		name: ''	// TODO: should this be "group" ?
 	}
 });
 
