@@ -85,7 +85,7 @@ module.exports = React.createClass( {
 
   updateBodyScroll () {
     if(window && document && document.body){
-      if(!this.state.isClosing){
+      if(this.props.isOpen){
         document.body.style.overflow = 'hidden';
       }
       else{
@@ -137,9 +137,13 @@ module.exports = React.createClass( {
 
   componentDidUpdate (prevProps, prevState) {
 
+
+    if(this.props.isOpen !== prevProps.isOpen){
+      this.updateBodyScroll();
+    }
+
     if(this.state.isClosing !== prevState.isClosing){
 
-      this.updateBodyScroll();
 
 
       if(this.state.isClosing){
