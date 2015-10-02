@@ -13,7 +13,7 @@ import { verifyFacadeProvidesBehaviorCallbacks, registerBehaviorTestCombinations
 import { tree as componentFacadeTestLib } from '../tests-api';
 
 import { CONTROL as controlName } from '../../src/core/tree';
-// import TreeCore from '../../src/core/tree';
+import Core from '../../src/core/tree';
 
 const $ = require('jquery');
 const chai = require('chai');
@@ -90,6 +90,8 @@ describe(controlName + ' Component', function () {
 		'createComponent',
 		'getComponentElement',
 		'destroyComponent',
+		'disableComponent',
+		'enableComponent',
 		'getSelectedItems',
 		'selectItem',
 		'deselectItem',
@@ -118,6 +120,8 @@ describe(controlName + ' Component', function () {
 		'createComponent',
 		'getComponentElement',
 		'destroyComponent',
+		'disableComponent',
+		'enableComponent',
 		'getSelectedItems',
 		'selectItem',
 		'deselectItem',
@@ -232,6 +236,58 @@ describe(controlName + ' Component', function () {
 					expect(container.find('.tree').length).to.equal(0);
 					done();
 				} );
+			});
+		});
+
+		describe('disable and enable control', function () {
+			it(controlName + ' should disable, THEN enable', function (done) {
+				const component = testingBehaviorHandlers.createComponent( {
+					container: container,
+					collection: []
+				}, function () {
+					// DISABLE
+					testingBehaviorHandlers.disableComponent(component);
+					const el = testingBehaviorHandlers.getComponentElement(component);
+					// has disabled appearance
+					expect(el.classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					// control's button as disabled attribute
+					expect(el.querySelector('button').disabled).to.equal(true);
+
+					// ENABLE
+					testingBehaviorHandlers.enableComponent(component);
+					// has enabled appearance
+					expect(el.classList.contains(Core.cssClasses.DISABLED)).to.equal(false);
+					// control's button as disabled attribute
+					expect(el.querySelector('button').disabled).to.equal(false);
+
+					done();
+				});
+			});
+
+			it(controlName + ' should initialize disabled, THEN enable, THEN disabled', function (done) {
+				const component = testingBehaviorHandlers.createComponent( {
+					container: container,
+					collection: initDataTemplate.collection,
+					disabled: true
+				}, function () {
+					const el = testingBehaviorHandlers.getComponentElement(component);
+					// has disabled appearance
+					expect(el.classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					// control's button as disabled attribute
+					expect(el.querySelector('button').disabled).to.equal(true);
+
+					// ENABLE
+					testingBehaviorHandlers.enableControl(component);
+					// has enabled appearance
+					expect(el.classList.contains(Core.cssClasses.DISABLED)).to.equal(false);
+					// control's button as disabled attribute
+					expect(el.querySelector('button').disabled).to.equal(false);
+
+					testingBehaviorHandlers.disableControl(component);
+					expect(el.classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+
+					done();
+				});
 			});
 		});
 

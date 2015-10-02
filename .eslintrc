@@ -1,5 +1,6 @@
 {
 	"extends": "airbnb",
+	"parser": "babel-eslint",
 	"rules": {
 		"indent": [2, "tab"],
 		"space-before-function-paren": [2, "always"],

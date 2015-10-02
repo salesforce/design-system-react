@@ -320,7 +320,7 @@ describe('Fuel UX ' + controlName, function () {
 		equal($targetBranch.hasClass('tree-open'), false, 'toggleFolder on open folder closes folder');
 	});
 
-	asyncTest("should disclose visible folders", function () {
+	test("should disclose visible folders", function (done) {
 		var $tree = $('body').find('#MyTree');
 
 		$tree.tree({
@@ -332,13 +332,13 @@ describe('Fuel UX ' + controlName, function () {
 
 		$tree.one('disclosedVisible.fu.tree', function () {
 			equal($tree.find(".tree-branch.tree-open:not('.hidden')").length, toBeOpened, toBeOpened + ' folders open');
-			start();
+			done();
 		});
 
 		$tree.tree('discloseVisible');
 	});
 
-	asyncTest("should disclose all folders up to limit, and then close them, then open them all", function () {
+	test("should disclose all folders up to limit, and then close them, then open them all", function (done) {
 		var $tree = $('body').find('#MyTree2');
 
 		$tree.tree({
@@ -357,7 +357,7 @@ describe('Fuel UX ' + controlName, function () {
 
 				$tree.one('disclosedAll.fu.tree', function exceededDisclosuresLimit() {
 					equal($tree.find(".tree-branch.tree-open:not('.hidden')").length, 200, '200 folders open');
-					start();
+					done();
 				});
 
 				$tree.tree('discloseAll');
