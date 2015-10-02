@@ -8,13 +8,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { Component } from 'react';
-import {Icon} from "../../SLDSIcons";
+import {Icon} from "../../../SLDSIcons";
+import {KEYS,EventUtil} from '../../../utils';
 
 class Item extends React.Component {
   constructor(props) {
     super(props);
-    this.id = this.props.id || `item-${Item.globalIdx++}-${this.props.idx}`;
-
   }
 
   boldSearchText(children) {
@@ -26,83 +25,44 @@ class Item extends React.Component {
     });
   }
 
-  selectedItem(e) {
+  handleClick(e){
     e.preventDefault();
     if(e.nativeEvent){
       e.nativeEvent.preventDefault();
       e.nativeEvent.stopImmediatePropagation();
     }
-    return this.props.selectedItem(this.props.idx, this);
+    return this.props.onSelect(this.props.index);
   }
 
-  getClassName(cls) {
-    return classNames(this.props.className, cls);
-  }
-
-  render() {
+  render(){
     let className = 'slds-lookup__item';
-    if(this.props.isSelected) className += ' slds-is-selected';
-    const tabIndex = this.props.idx === 0 ? 0 : -1;
+
+    //TODO: make isActive styles into a class??
+    let styles = {};
+    if(this.props.isActive) className += ' slds-theme--shade';
+
 
     return (
-      <li key={this.id}  { ...this.props } className={className} role="presentation" tabIndex={tabIndex} style={{whiteSpace: 'nowrap'}} >
-        <a href={ this.props.href } onClick={this.selectedItem.bind(this)} onMouseDown={this.selectedItem.bind(this)} tabIndex="-1" aria-disabled={ this.props.disabled } role="option">
+      //IMPORTANT: id is used to set lookup's input's aria-activedescendant
+      <li
+        className={className}
+        style={styles}
+        role="presentaion">
+        <a
+          href={this.props.href}
+          id={this.props.id}
+          tabIndex="-1"
+          aria-disabled={this.props.disabled}
+          role="option"
+          onClick={this.handleClick.bind(this)}
+          onMouseDown={this.handleClick.bind(this)}>
           <Icon name="account" />
           { this.boldSearchText(this.props.children) }
         </a>
       </li>
-    );
+    )
   }
+
 }
-Item.globalIdx = 0;
 
-
-module.exports = React.createClass({
-
-  displayName: "SLDSLookup",
-
-  getInitialState: function(){
-    return {currentSelectedIndex: null};
-  },
-
-  getDefaultProps: function(){
-    return {
-    };
-  },
-
-  selectedItem: function(idx, item) {
-    console.log(this.props.selectedItem);
-    if(this.props.selectedItem) this.props.selectedItem(item);
-    this.setState({currentSelectedIndex: idx});
-  },
-
-  filter: function(item) {
-    return this.props.filterWith(this.props.searchTerm, item);
-  },
-
-  items: function() {
-    return this.props.items.filter(this.filter, this).map((c, i) => {
-      const isSelected = (i === this.state.currentSelectedIndex);
-      return <Item key={i} isSelected={isSelected} idx={i} searchTerm={this.props.searchTerm} selectedItem={this.selectedItem}>{c}</Item>
-    });
-  },
-
-  render: function() {
-    return (
-      <div 
-        className="ignore-react-onclickoutside"
-        style={{
-          position:'inherit',
-          float:'inherit'
-        }}
-        role="listbox">
-        <ul className="slds-lookup__list" role="presentation">
-          {this.items()}
-        </ul>
-      </div>
-    );
-  },
-
-
-
-});
+module.exports = Item;

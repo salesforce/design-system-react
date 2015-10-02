@@ -8,177 +8,193 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React, { Component } from 'react';
-import SLDSPopover from '../SLDSPopover';
-import Body from './Body/index';
+import Menu from './Menu';
 import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
 import _ from "lodash";
+import {KEYS,EventUtil} from '../utils';
 
 const defaultFilter = (term, item) => {
   if(!term) return true;
-  return item.match(new RegExp(_.escapeRegExp(term), 'ig'));
+  return item.label.match(new RegExp(_.escapeRegExp(term), 'ig'));
 };
 
-module.exports = React.createClass( {
-
-  getDefaultProps(){
-    return {
-      placeholder: 'Select an Item',
-      filterWith: defaultFilter,
-      onItemSelect: function(item){
-        console.log('onItemSelect should be defined');
-      }
-    }
-  },
-
-  getInitialState(){
-    return {
+class SLDSLookup extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       searchTerm: '',
-      isOpen:false
+      isOpen:false,
+      selectedIndex: null,
+      activeIndex:null,
     };
-  },
+  }
+
+  //=================================================
+  // Set Active Descendant (on key down/up, set currently focused/hovered item in list)
+  increaseIndex(){
+    this.setState({
+      activeIndex: this.state.activeIndex <= this.props.items.length ? this.state.activeIndex + 1 : 0
+    })
+  }
+
+  decreaseIndex(){
+    this.setState({
+      activeIndex: this.state.activeIndex > 0 ? this.state.activeIndex - 1 : this.props.items.length
+    })
+  }
+
+  getActiveDescendant(){
+    return this.state.activeIndex !== null ? 'item-' + this.state.activeIndex: "";
+  }
+
+  //=================================================
+  // Select menu item (onClick or on key enter/space)
+  selectItem(index){
+    //console.log('selectItem fired');
+    this.setState({
+      selectedIndex: index,
+      searchTerm: null
+    });
+  }
+
+  handleDeleteSelected() {
+    this.setState({
+      selectedIndex: null,
+      isOpen: false
+    });
+  }
+
+  //=================================================
+  // Basic Event Listeners on Input
+  handleClose() {
+    this.setState({
+      isOpen:false,
+      activeIndex:null
+    })
+  }
+
+  handleClick() {
+    this.setState({isOpen:true})
+  }
+
+  handleBlur() {
+    this.handleClose();
+  }
+
+  handleFocus() {
+    this.setState({ isOpen:true });
+  }
 
   handleChange(event) {
     const target = event.target || event.currentTarget;
     this.setState({ searchTerm: target.value });
-  },
-
-  handleClose() {
-    this.setState({isOpen:false})
-  },
-
-  handleClick() {
-    this.setState({isOpen:true})
-  },
-
-  handleBlur() {
-    this.setState({isOpen:false})
-  },
-
-  handleFocus() {
-    this.setState({isOpen:true})
-  },
-
-  selectedItem(item) {
-    console.log('SELECTED: ',item);
-    if(this.props.onItemSelect) this.props.onItemSelect(item);
-
-    this.setState({
-      currentSelectedItem: item,
-      searchTerm: null
-    });
-  },
-
-  selectedItemContents() {
-    return <span><Icon name="account" />{this.state.currentSelectedItem.props.children}</span>;
-  },
-
-  handleDeleteSelected() {
-    this.setState({
-      currentSelectedItem: null,
-      isOpen: false
-    });
-  },
-
-  componentDidUpdate( prevProps, prevState) {
-    if(prevState.currentSelectedItem && !this.state.currentSelectedItem){
-      if(this.refs.date){ 
-        this.refs.date.getDOMNode().focus();
-      }      
-    }
-    else if(!prevState.currentSelectedItem && this.state.currentSelectedItem){
-      if(this.refs.clearSelectedItemButton && 
-        this.refs.clearSelectedItemButton.getDOMNode &&
-        this.refs.clearSelectedItemButton.getDOMNode() ){
-          this.refs.clearSelectedItemButton.getDOMNode().focus();
-      }
-    }
-  },
-
-  selectedItemPill() {
-    return (
-        <span className="slds-pill slds-pill--bare" >
-          <a href="#" className="slds-pill__label">
-            { this.selectedItemContents() }
-          </a>
-          <button className="slds-button slds-button--icon-bare" onClick={this.handleDeleteSelected} ref="clearSelectedItemButton">
-            <ButtonIcon name="close" />
-            <span className="slds-assistive-text">Remove</span>
-          </button>
-        </span>
-    );
-  },
-
-  popover() {
-      return (
-        this.state.isOpen?
-          <SLDSPopover className="slds-dropdown" targetElement={this.refs.date} onClose={this.handleClose}>
-          <Body
-          ref='list'
-          searchTerm={this.state.searchTerm}
-          filterWith={this.props.filterWith}
-          selectedItem={this.selectedItem}
-          items={this.props.items}
-          label={this.props.label}
-          onChange={this.handleChange} /></SLDSPopover>:null);
-  },
-
-  getPlaceholder() {
-    return this.state.currentSelectedItem?'':this.props.placeholder;
-  },
+  }
 
   handleKeyDown(event) {
     if(event.keyCode){
-      if(event.keyCode === 40){
-        console.log('down');
+      //If user hits esc key, close menu
+      event.keyCode === KEYS.ESCAPE ? this.handleClose() : this.handleClick();
+
+      //If user hits tab key, move aria activedescendant to first menu item
+      if(event.keyCode === KEYS.TAB && this.state.activeIndex === null){
+        this.setState({activeIndex: 0});
+        EventUtil.trapImmediate(event);
       }
-      else if(event.keyCode === 38){
-        console.log('up');
+      //If user hits down key, advance aria activedescendant to next item
+      else if(event.keyCode === KEYS.DOWN && this.state.activeIndex !== null){
+        EventUtil.trapImmediate(event);
+        this.increaseIndex();
       }
-      else if(event.keyCode === 13){
-        console.log('enter');
-        let list = this.refs.list;
-        if(list && list.items){
-          let items = list.items();
-          if(items && items.length){
-            let item = items[0];
-            this.selectedItem(item);
-            console.log('FIRST ITEM: ',item);
-          }
-        }
+      //If user hits up key, advance aria activedescendant to previous item
+      else if(event.keyCode === KEYS.UP && this.state.activeIndex !== null){
+        EventUtil.trapImmediate(event);
+        this.decreaseIndex();
+      }
+
+      //If user hits enter/space key, select current activedescendant item
+      else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.activeIndex !== null){
+        EventUtil.trapImmediate(event);
+        this.selectItem(this.state.activeIndex);
       }
     }
-  },
+  }
 
-  render() {
-    let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
+  //=================================================
+  // Rendering Things
+  renderMenu(){
+    if(this.state.isOpen){
+      return <Menu
+        searchTerm={this.state.searchTerm}
+        filterWith={this.props.filterWith}
+        onSelect={this.selectItem.bind(this)}
+        label={this.props.label}
+        items={this.props.items}
+        activeIndex={this.state.activeIndex}/>;
+    }else{
+      return null;
+    }
+  }
+
+  renderSelectedItem(){
     return (
-      <div className="slds-lookup ignore-react-onclickoutside" data-select="multi" data-scope="single" data-typeahead="true">
-        <div className="slds-form-element">
-          <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
-              <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
+      <div className="slds-pill">
+        <a href="#" className="slds-pill__label">
+          <span>
+            <Icon name="account" />
+            {this.props.items[this.state.selectedIndex].label}
+          </span>
+        </a>
+        <button className="slds-button slds-button--icon-bare" onClick={this.handleDeleteSelected.bind(this)} ref="clearSelectedItemButton">
+          <ButtonIcon name="close" />
+          <span className="slds-assistive-text">Remove</span>
+        </button>
+      </div>
+    );
+  }
 
-            { this.state.currentSelectedItem ? this.selectedItemPill() : null }
+  render(){
+    let inputClasses = this.state.selectedIndex === null ? 'slds-input':'slds-input slds-hide';
+    let compClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside":"slds-lookup ignore-react-onclickoutside slds-has-selection";
+
+    return (
+      <div className={compClasses} data-select="single" data-scope="single" data-typeahead="true">
+        <section className="slds-form-element">
+          <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
+
+          <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
+            { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             <InputIcon name="search"/>
             <input
               id="lookup"
-              ref="date"
-              className={className}
+              className={inputClasses}
               type="text"
               aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
+              aria-activedescendant={this.getActiveDescendant()}
+              aria-expanded={this.state.isOpen}
               role="combobox"
-              onChange={this.handleChange}
-              onBlur={this.handleBlur}
-              onFocus={this.handleFocus}
-              onClick={this.handleClick} 
-              onKeyDown={this.handleKeyDown}
+              onChange={this.handleChange.bind(this)}
+              onFocus={this.handleFocus.bind(this)}
+              onBlur={this.handleBlur.bind(this)}
+              onClick={this.handleClick.bind(this)}
+              onKeyDown={this.handleKeyDown.bind(this)}
               value={this.state.searchTerm} />
           </div>
-          {this.popover()}
-        </div>
+
+          {this.renderMenu()}
+        </section>
       </div>
     );
   }
-});
+}
+
+SLDSLookup.defaultProps = {
+  filterWith: defaultFilter,
+  onItemSelect: function(item){
+    //console.log('onItemSelect should be defined');
+  }
+};
+module.exports = SLDSLookup;
+
