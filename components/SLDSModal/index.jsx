@@ -13,6 +13,7 @@ import React from 'react';
 import SLDSButton from '../SLDSButton';
 import {Icon} from '../SLDSIcons';
 import {EventUtil} from '../utils';
+import SLDSSettings from '../SLDSSettings';
 
 
 import Modal from 'react-modal';
@@ -57,6 +58,7 @@ module.exports = React.createClass( {
   },
 
   componentDidMount () {
+    Modal.setAppElement(SLDSSettings.getAppElement());
     console.log('!!! window.activeElement !!! ',document.activeElement);
     this.setState({returnFocusTo:document.activeElement})
     if(!this.state.revealed){

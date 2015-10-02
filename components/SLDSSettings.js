@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 let assetsPath = 'assets/';
-
+let appRoot;
 module.exports = {
   setAssetsPath: (path)=>{
     if(path){
@@ -21,5 +21,13 @@ module.exports = {
   },
   getAssetsPath: ()=>{
     return String(assetsPath);
+  },
+  setAppElement: (el)=>{
+    if(el){
+      appRoot = el;
+    }
+  },
+  getAppElement: ()=>{
+    return appRoot;
   }
 };
