@@ -11,15 +11,36 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 'use strict';
 
-import DateUtil from './DateUtil';
-import EventUtil from './EventUtil';
-import CSSUtil from './CSSUtil';
-
-import KEYS from './KEYS';
+const addCSSRule = (sheet, selector, rules, index) => {
+    console.log('selector: ',selector);
+    console.log('rules: ',rules);
+    if('insertRule' in sheet) {
+        console.log('insertRule: ');
+        sheet.insertRule(selector + '{ ' + rules + ' }', index);
+    }
+    else if('addRule' in sheet) {
+        console.log('addRule: ');
+        sheet.addRule(selector, rules.join(';'), index);
+    }
+};
 
 module.exports = {
-  DateUtil:DateUtil,
-  EventUtil:EventUtil,
-  CSSUtil:CSSUtil,
-  KEYS:KEYS
+    load: (cssClasses)=>{
+        const sheet = (function() {
+            const style = document.createElement("style");
+            style.appendChild(document.createTextNode(""));
+            document.head.appendChild(style);
+            return style.sheet;
+        })();
+        cssClasses.forEach((cssClass)=>{
+            const selector = cssClass.selector;
+            const rules = cssClass.rules;
+            addCSSRule(sheet,selector,rules.join(';'), 0);
+
+//            rules.forEach((rule)=>{
+//                addCSSRule(sheet,selector,rule, 0);
+//            });
+        });
+    }
 };
+
