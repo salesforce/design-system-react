@@ -23,7 +23,7 @@ let Checkbox = function Checkbox (element, options) {
 	this.inputSelector = 'input[type="checkbox"]';
 	this.namespace = 'fu.checkbox';
 	this.rendered = (this.elements.wrapper.find(this.inputSelector).length > 0);
-	this.template = $(template);
+	this.template = $('<i />').append(template);
 
 	this._initializeState();
 	this._initialize(this.options);
@@ -44,15 +44,16 @@ export const CheckboxObject = {
 	},
 
 	_initElements ($base, elements) {
-		const dot = '.';
-		const els = elements || {};
+		const block = '.' + this.cssClasses.BLOCK;
+		const control = '.' + this.cssClasses.CONTROL;
+		const wrapper = elements.wrapper;
 
-		els.block = ($base.is(dot + this.cssClasses.BLOCK)) ? $base : $base.find(dot + this.cssClasses.BLOCK);
-		els.control = ($base.is(dot + this.cssClasses.CONTROL)) ? $base : $base.find(dot + this.cssClasses.CONTROL);
-		els.input = $base.find(this.inputSelector);
-		els.label = $base.find(dot + this.cssClasses.LABEL);
+		elements.block = (wrapper.is(block)) ? wrapper : $base.find(block);
+		elements.control = (wrapper.is(control)) ? wrapper : $base.find(control);
+		elements.input = $base.find(this.inputSelector);
+		elements.label = $base.find('.' + this.cssClasses.LABEL);
 
-		return els;
+		return elements;
 	},
 
 	_onEnabledOrDisabled () {
@@ -106,16 +107,22 @@ export const CheckboxObject = {
 
 	_render () {
 		let $el = this.template.clone();
+		const block = '.' + this.cssClasses.BLOCK;
+		const control = '.' + this.cssClasses.CONTROL;
 		const elements = this._initElements($el, this.elements);
+		const itag = '<i />';
 
 		this._renderDressings(elements);
 
-		if (this.getProperty('addon') || this.getProperty('inline') || elements.wrapper.is('.' + this.cssClasses.BLOCK)) {
-			$el = elements.control;
+		if (this.getProperty('addon') || this.getProperty('inline') || elements.wrapper.is(block)) {
+			$el = $(itag).append($el.find(control));
+		}
+		if (elements.wrapper.is(control)) {
+			$el = $(itag).append($el.find(control).children());
 		}
 
 		elements.wrapper.empty();
-		elements.wrapper.append($el);
+		elements.wrapper.append($el.children());
 
 		this.rendered = true;
 	},
