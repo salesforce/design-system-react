@@ -22,10 +22,14 @@ export const behaviorHandlers = {
 			// Copied from original FuelUX3 example page
 			const treeMarkup = '<div id="my-' + controlName + '"></div>';
 			const treeSelector = '#my-' + controlName;
-			$(initData.container).append(treeMarkup);
-			$(treeSelector).on('initialized.fu.tree', rendered);
+			let $tree;
 
-			const $tree = new Tree( $(treeSelector), initData );
+			$(initData.container).append(treeMarkup);
+			$(treeSelector).on('initialized.fu.tree', function () {
+				rendered($tree);
+			});
+			$tree = new Tree( $(treeSelector), initData );
+
 			return $tree;
 		}
 

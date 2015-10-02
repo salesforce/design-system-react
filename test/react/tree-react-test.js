@@ -10,26 +10,54 @@ import * as Lib from '../../src/lib/lib';
 // import TreeCore from '../../src/core/tree';
 // const Core = TreeCore;
 
-// Run in legacy plugin mode
+import React from 'react';
 import Tree from '../../src/react/tree/tree';
 
 // REMOVE
 void(controlName);
 void(Lib);
-void(Tree);
+
+// Global objects to control the state
 
 export const behaviorHandlers = {
 	createComponent: {
 		default (initData, rendered) {
-			// REMOVE
-			void(rendered);
-		}
+			const el = initData.container[0]; // container is jQuery, so get the DOM element out of it
+			const TestTree = React.createClass({
+				getInitialState () {
+					return { disabled: false,
+							 selection: [],
+							 open: [] };
+				},
 
+				render () {
+					return (<Tree
+								multiSelect={true}
+								collection={initData.collection}
+								selection={this.state.selection}
+								open={this.state.open}
+								onChanged={this.handleChanged}
+								onOpened={this.handleToggle}
+								onClosed={this.handleToggle} />);
+				},
+
+				handleChanged (item, selection) {
+					this.setState({ selection });
+				},
+				
+				handleToggle (item, open) {
+					this.setState({ open });
+				}
+			});
+			const theTree = React.render(<TestTree/>, el);
+			rendered(theTree);  // Rendering is finished by this point
+			return theTree;
+		}
 	},
 
 	getComponentElement: {
 		default (component) {
-			return component.elements.wrapper;
+			return React.findDOMNode(component);
 		}
 	},
 
@@ -39,45 +67,57 @@ export const behaviorHandlers = {
 		}
 	},
 
+	disableComponent: {
+		default (component) {
+			component.state.disabled = true;
+		}
+	},
+
+	enableComponent: {
+		default (component) {
+			component.state.disabled = false;
+		}
+	},
+
 	getSelectedItems: {
 		default (component) {
-			return component.getSelectedItems();
+			return component.state.selection;
 		}
 	},
 
 	selectItem: {
 		default (component, item) {
-			return component.selectItem(item);
+			component.state.selection.push(item);
 		}
 	},
 
 	deselectItem: {
 		default (component, item) {
-			return component.deselectItem(item);
+			component.state.selection.pop(item);
 		}
 	},
 
 	deselectAll: {
 		default (component) {
-			return component.deselectAll();
+			component.state.selection = [];
 		}
 	},
 
 	toggleFolder: {
 		default (component, folder) {
-			return component.toggleFolder(folder);
+			component.state.open.push(folder);
 		}
 	},
 
 	closeAllFolders: {
 		default (component) {
-			return component.closeAllFolders();
+			component.state.open = [];
 		}
 	},
 
 	getOpenFolders: {
 		default (component) {
-			return component.getOpenFolders();
+			return component.state.open;
 		}
 	}
 };
