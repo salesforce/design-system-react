@@ -1,16 +1,30 @@
-.label-hover() {
-	&:hover {
-		color: @gray-light;
-	}
+@import "fuelux-core.less";
+
+// mixins
+@mixin checkbox-radio-hover() {
+	box-shadow: inset 0px 0px 2px 1px rgba(91, 157, 217, @include 7), 0px 0px 5px 0px rgba(91, 157, 217, .7);
 }
 
-.radio, .checkbox {
+@mixin checkbox-radio-focus() {
+	box-shadow: inset 0px 0px 2px 1px rgb(91, 157, 217), 0px 0px 5px 0px rgb(91, 157, 217);
+}
+
+
+.fuelux .radio, .fuelux .checkbox {
+
 	&-inline {
 		padding-left: 0;
+
 		&.highlight {
 			left: -8px;
 		}
+
+		// for checkboxes without text labels and alignment in .input-group-addon container
+		label {
+			margin-bottom: 0;
+		}
 	}
+
 	// This handy trick allows us to make rules for .radio, .checkbox, .radio-inline, and, .checkbox-inline all at once.
 	&, &-inline {
 
@@ -18,31 +32,32 @@
 		// Sometimes the label itself is the wrapping container, and has .checkbox or .radio on it.
 		// The use of the amperstand "parent selector" here allows us to cover many scenarios at once, with terse, but elegant, code.
 		label&, .input-label&, & label, & .input-label {
-			.label-hover;
+			&:hover:before {
+				@include checkbox-radio-hover();
+			}
 		}
 		
 		label, .input-label, label& {
 			cursor: pointer;
 			font-weight: normal;
-			.label-hover;
 		}
 
 		&.highlight {
 
-				input:not(.sr-only) {
+				input[type="checkbox"]:not(.sr-only), input[type="radio"]:not(.sr-only) {
 				& ~ label {
 					padding: 4px;
-					border-radius: @base-border-radius;
+					border-radius: $base-border-radius;
 				}
 				&:checked ~ label {
-					background-color: #e9e9e9;
+					background-color: $gray90;
 					opacity: 1;
 					z-index: 0;
 				}
 			}
 		}
 
-		input:not(.sr-only) {
+		input[type="checkbox"]:not(.sr-only), input[type="radio"]:not(.sr-only) {
 
 			position: absolute;
 			width: 1px;
@@ -63,8 +78,8 @@
 					text-transform: none;
 					line-height: 1;
 					speak: none;
-					border: 1px solid #adadad;
-					color: #fff;
+					border: 1px solid $gray67;
+					color: $true-white;
 					font-size: 9px;
 					width: 14px;
 					height: 14px;
@@ -73,6 +88,7 @@
 					margin-bottom: -2px;
 					cursor: pointer;
 					display: inline-block;
+					text-align: left;
 					z-index: 2;
 					content: "";
 				}
@@ -83,25 +99,23 @@
 
 			/* for keyboard tabbing */
 			&:active ~ label, &:focus ~ label {
-				color: @text-color;
-				color: rgb(91, 157, 217);
+				color: $text-color;
+				color: $checkbox-primary-color;
 				cursor: pointer;
 				
 				&:before {
-					outline-color: rgb(91, 157, 217);
-					outline-offset: -2px;
-					outline-style: auto;
-					outline-width: 5px;
+					@include checkbox-radio-focus();
+					outline: none;
 				}
 
 				&, &:hover {
-					color: @text-color;
+					color: $text-color;
 					cursor: pointer;
 				}
 			}
 			&:active:hover ~ label, &:focus:hover ~ label, &:focus:hover ~ label, &:checked:hover ~ label {
 				&, &:hover {
-					color: @text-color;
+					color: $text-color;
 					cursor: pointer;
 				}
 			}
@@ -109,29 +123,23 @@
 
 
 
-			&[disabled="disabled"] {
+			&[disabled="disabled"], &[disabled], &:disabled {
 				& ~ label, & ~ label:before {
-					color: @text-color;
-					opacity: 0.5 !important;
+					color: $text-color;
+					opacity: @include 65;
 					cursor: not-allowed !important;
+					outline: none;
+					box-shadow: none;
 				}
 			}
 
 			&:checked ~ label {
 				&:before {
-					background: #39b3d7;
-					border-color: #39b3d7;
+					background: $checkbox-primary-color;
+					border-color: $checkbox-primary-color;
 				}
 			}
 
-		}
-
-		&, &:hover {
-			input {
-				&:checked {
-
-				}
-			}
 		}
 
 		&.highlight {
@@ -144,7 +152,7 @@
 
 
 	&.highlight {
-		input:not(.sr-only) {
+		input[type="checkbox"]:not(.sr-only), input[type="radio"]:not(.sr-only) {
 			& ~ label {
 				left: -8px;
 				position: relative;
@@ -164,5 +172,35 @@
 		}
 	}
 
+}
+
+
+
+// Allows multiline labels next to checkboxes and radio 
+// Should be wrapped in `<form class="form-horizontal"><div class="form-group">`
+.fuelux {
+
+	.checkbox.multiline, .radio.multiline {
+		float: left; 
+		margin-left: 15px;
+	}
 
 }
+
+
+.fuelux {
+
+	.checkbox.multiline ~ .control-label, .radio.multiline ~ .control-label {
+		float: left; 
+		width: 80%; 
+		margin-left: 10px; 
+		text-align: left;
+
+		& > label {
+			font-weight: normal;
+			cursor: pointer;
+		}
+	}
+
+}
+
