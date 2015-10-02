@@ -41,10 +41,12 @@ module.exports = React.createClass( {
   },
 
   getModalContent () {
-    return  
-    <div>
+    return  <div>
       <p>With the Lightning Design System you can build custom applications with a look and feel that is consistent with Salesforce core features — without reverse engineering our styles! Simply download our platform-agnostic CSS framework and get started today.</p>
 
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
 {/*
     <SLDSPicklistBase
                     options={[
@@ -67,7 +69,6 @@ module.exports = React.createClass( {
                     onSelect={(value)=>{console.log('selected: ',value);}} />
 
 */}
-                      <p>The Design System is an open source project on GitHub, meaning you can directly impact its evolution by filing issues and submitting pull requests.. This is as much your tool as it is ours, and we look forward to collaborating with developers and partners on making it even better.</p>
 
                       </div>;
   },
