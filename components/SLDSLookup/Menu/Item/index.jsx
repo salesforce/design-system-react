@@ -31,7 +31,7 @@ class Item extends React.Component {
       e.nativeEvent.preventDefault();
       e.nativeEvent.stopImmediatePropagation();
     }
-    return this.props.onSelect(this.props.index);
+    return this.props.onSelect(this.props.id);
   }
 
   render(){
@@ -57,7 +57,7 @@ class Item extends React.Component {
           onClick={this.handleClick.bind(this)}
           onMouseDown={this.handleClick.bind(this)}>
           <Icon name="account" />
-          { this.boldSearchText(this.props.children) }
+          { this.boldSearchText(this.props.children.label) }
         </a>
       </li>
     )

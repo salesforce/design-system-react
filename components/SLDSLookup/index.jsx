@@ -22,6 +22,10 @@ const defaultFilter = (term, item) => {
 class SLDSLookup extends React.Component {
   constructor(props) {
     super(props);
+    this.props.items.map((item, index) => {
+      return item.id = 'item-' + index;
+    })
+
     this.state = {
       searchTerm: '',
       isOpen:false,
@@ -50,8 +54,9 @@ class SLDSLookup extends React.Component {
 
   //=================================================
   // Select menu item (onClick or on key enter/space)
-  selectItem(index){
+  selectItem(itemId){
     //console.log('selectItem fired');
+    let index = itemId.replace('item-', '');
     this.setState({
       selectedIndex: index,
       searchTerm: null
@@ -177,7 +182,7 @@ class SLDSLookup extends React.Component {
               role="combobox"
               onChange={this.handleChange.bind(this)}
               onFocus={this.handleFocus.bind(this)}
-              onBlur={this.handleBlur.bind(this)}
+              //onBlur={this.handleBlur.bind(this)}
               onClick={this.handleClick.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)}
               value={this.state.searchTerm} />
