@@ -17,7 +17,7 @@ const Base = {
 
 		// Accessors cannot be updated after initialization
 		if (options && Lib.isObject(options.accessors)) {
-			Lib.extend(this.accessors, options.accessors);
+			this.accessors = Lib.extend({}, this.accessors, options.accessors);
 			delete options.accessors;
 		}
 		
