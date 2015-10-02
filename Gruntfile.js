@@ -68,6 +68,7 @@ module.exports = function (grunt) {
 					hostname: '*',
 					base: [
 						'./examples',
+						'./fonts',
 						'./node_modules',
 						'.'
 					],

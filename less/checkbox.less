@@ -1,605 +1,136 @@
-.clearfix {
-  *zoom: 1;
-}
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  line-height: 0;
-}
-.clearfix:after {
-  clear: both;
-}
-.fuelux .serif {
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
-.fuelux .monospace {
-  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-}
-.fuelux .text-sm {
-  font-size: 11.9px;
-}
-.fuelux .text-lg {
-  font-size: 17.5px;
-}
-.fuelux .padding-xs {
-  padding: 5px;
-}
-.fuelux .padding-xs-horizontal {
-  padding: 0 5px;
-}
-.fuelux .padding-xs-vertical {
-  padding: 5px 0;
-}
-.fuelux .padding-xs-top {
-  padding-top: 5px;
-}
-.fuelux .padding-xs-bottom {
-  padding-bottom: 5px;
-}
-.fuelux .padding-xs-left {
-  padding-left: 5px;
-}
-.fuelux .padding-xs-right {
-  padding-right: 5px;
-}
-.fuelux .padding-sm {
-  padding: 10px;
-}
-.fuelux .padding-sm-horizontal {
-  padding: 0 10px;
-}
-.fuelux .padding-sm-vertical {
-  padding: 10px 0;
-}
-.fuelux .padding-sm-top {
-  padding-top: 10px;
-}
-.fuelux .padding-sm-bottom {
-  padding-bottom: 10px;
-}
-.fuelux .padding-sm-left {
-  padding-left: 10px;
-}
-.fuelux .padding-sm-right {
-  padding-right: 10px;
-}
-.fuelux .padding-md {
-  padding: 15px;
-}
-.fuelux .padding-md-horizontal {
-  padding: 0 15px;
-}
-.fuelux .padding-md-vertical {
-  padding: 15px 0;
-}
-.fuelux .padding-md-top {
-  padding-top: 15px;
-}
-.fuelux .padding-md-bottom {
-  padding-bottom: 15px;
-}
-.fuelux .padding-md-left {
-  padding-left: 15px;
-}
-.fuelux .padding-md-right {
-  padding-right: 15px;
-}
-.fuelux .padding-lg {
-  padding: 20px;
-}
-.fuelux .padding-lg-horizontal {
-  padding: 0 20px;
-}
-.fuelux .padding-lg-vertical {
-  padding: 20px 0;
-}
-.fuelux .padding-lg-top {
-  padding-top: 20px;
-}
-.fuelux .padding-lg-bottom {
-  padding-bottom: 20px;
-}
-.fuelux .padding-lg-left {
-  padding-left: 20px;
-}
-.fuelux .padding-lg-right {
-  padding-right: 20px;
-}
-.fuelux .margin-xs {
-  margin: 5px;
-}
-.fuelux .margin-xs-horizontal {
-  margin: 0 5px;
-}
-.fuelux .margin-xs-vertical {
-  margin: 5px 0;
-}
-.fuelux .margin-xs-top {
-  margin-top: 5px;
-}
-.fuelux .margin-xs-bottom {
-  margin-bottom: 5px;
-}
-.fuelux .margin-xs-left {
-  margin-left: 5px;
-}
-.fuelux .margin-xs-right {
-  margin-right: 5px;
-}
-.fuelux .margin-sm {
-  margin: 10px;
-}
-.fuelux .margin-sm-horizontal {
-  margin: 0 10px;
-}
-.fuelux .margin-sm-vertical {
-  margin: 10px 0;
-}
-.fuelux .margin-sm-top {
-  margin-top: 10px;
-}
-.fuelux .margin-sm-bottom {
-  margin-bottom: 10px;
-}
-.fuelux .margin-sm-left {
-  margin-left: 10px;
-}
-.fuelux .margin-sm-right {
-  margin-right: 10px;
-}
-.fuelux .margin-md {
-  margin: 15px;
-}
-.fuelux .margin-md-horizontal {
-  margin: 0 15px;
-}
-.fuelux .margin-md-vertical {
-  margin: 15px 0;
-}
-.fuelux .margin-md-top {
-  margin-top: 15px;
-}
-.fuelux .margin-md-bottom {
-  margin-bottom: 15px;
-}
-.fuelux .margin-md-left {
-  margin-left: 15px;
-}
-.fuelux .margin-md-right {
-  margin-right: 15px;
-}
-.fuelux .margin-lg {
-  margin: 20px;
-}
-.fuelux .margin-lg-horizontal {
-  margin: 0 20px;
-}
-.fuelux .margin-lg-vertical {
-  margin: 20px 0;
-}
-.fuelux .margin-lg-top {
-  margin-top: 20px;
-}
-.fuelux .margin-lg-bottom {
-  margin-bottom: 20px;
-}
-.fuelux .margin-lg-left {
-  margin-left: 20px;
-}
-.fuelux .margin-lg-right {
-  margin-right: 20px;
-}
-.fuelux .data-label {
-  text-transform: uppercase;
-  font-size: 10px;
-  margin-bottom: 2px;
-  text-shadow: 0 1px #FFF;
-  color: #666666;
-}
-.fuelux .data-value {
-  font-size: 14px;
-}
-.fuelux .section-heading {
-  font-size: 16px;
-  color: #333333;
-  margin: 0 0 10px;
-  padding: 0;
-  text-shadow: 0 1px #FFF;
-}
-.fuelux .radio-inline,
-.fuelux .checkbox-inline {
-  padding-left: 0;
-}
-.fuelux .radio-inline.highlight,
-.fuelux .checkbox-inline.highlight {
-  left: -8px;
-}
-.fuelux .radio-inline label,
-.fuelux .checkbox-inline label {
-  margin-bottom: 0;
-}
-label.fuelux .radio:hover:before,
-label.fuelux .checkbox:hover:before,
-label.fuelux .radio-inline:hover:before,
-label.fuelux .checkbox-inline:hover:before,
-.input-label.fuelux .radio:hover:before,
-.input-label.fuelux .checkbox:hover:before,
-.input-label.fuelux .radio-inline:hover:before,
-.input-label.fuelux .checkbox-inline:hover:before,
-.fuelux .radio label:hover:before,
-.fuelux .checkbox label:hover:before,
-.fuelux .radio-inline label:hover:before,
-.fuelux .checkbox-inline label:hover:before,
-.fuelux .radio .input-label:hover:before,
-.fuelux .checkbox .input-label:hover:before,
-.fuelux .radio-inline .input-label:hover:before,
-.fuelux .checkbox-inline .input-label:hover:before {
-  box-shadow: inset 0px 0px 2px 1px rgba(91, 157, 217, 0.7), 0px 0px 5px 0px rgba(91, 157, 217, 0.7);
-}
-.fuelux .radio label,
-.fuelux .checkbox label,
-.fuelux .radio-inline label,
-.fuelux .checkbox-inline label,
-.fuelux .radio .input-label,
-.fuelux .checkbox .input-label,
-.fuelux .radio-inline .input-label,
-.fuelux .checkbox-inline .input-label,
-label.fuelux .radio,
-label.fuelux .checkbox,
-label.fuelux .radio-inline,
-label.fuelux .checkbox-inline {
-  cursor: pointer;
-  font-weight: normal;
-}
-.fuelux .radio.highlight input[type="checkbox"]:not(.sr-only) ~ label,
-.fuelux .checkbox.highlight input[type="checkbox"]:not(.sr-only) ~ label,
-.fuelux .radio-inline.highlight input[type="checkbox"]:not(.sr-only) ~ label,
-.fuelux .checkbox-inline.highlight input[type="checkbox"]:not(.sr-only) ~ label,
-.fuelux .radio.highlight input[type="radio"]:not(.sr-only) ~ label,
-.fuelux .checkbox.highlight input[type="radio"]:not(.sr-only) ~ label,
-.fuelux .radio-inline.highlight input[type="radio"]:not(.sr-only) ~ label,
-.fuelux .checkbox-inline.highlight input[type="radio"]:not(.sr-only) ~ label {
-  padding: 4px;
-  border-radius: 4px;
-}
-.fuelux .radio.highlight input[type="checkbox"]:not(.sr-only):checked ~ label,
-.fuelux .checkbox.highlight input[type="checkbox"]:not(.sr-only):checked ~ label,
-.fuelux .radio-inline.highlight input[type="checkbox"]:not(.sr-only):checked ~ label,
-.fuelux .checkbox-inline.highlight input[type="checkbox"]:not(.sr-only):checked ~ label,
-.fuelux .radio.highlight input[type="radio"]:not(.sr-only):checked ~ label,
-.fuelux .checkbox.highlight input[type="radio"]:not(.sr-only):checked ~ label,
-.fuelux .radio-inline.highlight input[type="radio"]:not(.sr-only):checked ~ label,
-.fuelux .checkbox-inline.highlight input[type="radio"]:not(.sr-only):checked ~ label {
-  background-color: #e6e6e6;
-  opacity: 1;
-  z-index: 0;
-}
-.fuelux .radio input[type="checkbox"]:not(.sr-only),
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only),
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only),
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only),
-.fuelux .radio input[type="radio"]:not(.sr-only),
-.fuelux .checkbox input[type="radio"]:not(.sr-only),
-.fuelux .radio-inline input[type="radio"]:not(.sr-only),
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only) {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  border: 0;
-  /* for keyboard tabbing */
-}
-.fuelux .radio input[type="checkbox"]:not(.sr-only) ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only) ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only) ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only) ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only) ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only) ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only) ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only) ~ label {
-  padding-left: 0;
-}
-.fuelux .radio input[type="checkbox"]:not(.sr-only) ~ label:before,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only) ~ label:before,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only) ~ label:before,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only) ~ label:before,
-.fuelux .radio input[type="radio"]:not(.sr-only) ~ label:before,
-.fuelux .checkbox input[type="radio"]:not(.sr-only) ~ label:before,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only) ~ label:before,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only) ~ label:before {
-  font-family: "Glyphicons Halflings";
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  speak: none;
-  border: 1px solid #aaaaaa;
-  color: #FFF;
-  font-size: 9px;
-  width: 14px;
-  height: 14px;
-  padding: 0;
-  margin-top: 0;
-  margin-bottom: -2px;
-  cursor: pointer;
-  display: inline-block;
-  text-align: left;
-  z-index: 2;
-  content: "";
-}
-.fuelux .radio input[type="checkbox"]:not(.sr-only):active ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):active ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):active ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):active ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only):active ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):active ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):active ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):active ~ label,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):focus ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):focus ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):focus ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):focus ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only):focus ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):focus ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):focus ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):focus ~ label {
-  color: #333333;
-  color: #39b3d7;
-  cursor: pointer;
-}
-.fuelux .radio input[type="checkbox"]:not(.sr-only):active ~ label:before,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):active ~ label:before,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):active ~ label:before,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):active ~ label:before,
-.fuelux .radio input[type="radio"]:not(.sr-only):active ~ label:before,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):active ~ label:before,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):active ~ label:before,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):active ~ label:before,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):focus ~ label:before,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):focus ~ label:before,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):focus ~ label:before,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):focus ~ label:before,
-.fuelux .radio input[type="radio"]:not(.sr-only):focus ~ label:before,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):focus ~ label:before,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):focus ~ label:before,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):focus ~ label:before {
-  box-shadow: inset 0px 0px 2px 1px #5b9dd9, 0px 0px 5px 0px #5b9dd9;
-  outline: none;
-}
-.fuelux .radio input[type="checkbox"]:not(.sr-only):active ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):active ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):active ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):active ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only):active ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):active ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):active ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):active ~ label,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):focus ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):focus ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):focus ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):focus ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only):focus ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):focus ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):focus ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):focus ~ label,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):active ~ label:hover,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):active ~ label:hover,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):active ~ label:hover,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):active ~ label:hover,
-.fuelux .radio input[type="radio"]:not(.sr-only):active ~ label:hover,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):active ~ label:hover,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):active ~ label:hover,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):active ~ label:hover,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):focus ~ label:hover,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):focus ~ label:hover,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):focus ~ label:hover,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):focus ~ label:hover,
-.fuelux .radio input[type="radio"]:not(.sr-only):focus ~ label:hover,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):focus ~ label:hover,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):focus ~ label:hover,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):focus ~ label:hover {
-  color: #333333;
-  cursor: pointer;
-}
-.fuelux .radio input[type="checkbox"]:not(.sr-only):active:hover ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):active:hover ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):active:hover ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):active:hover ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only):active:hover ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):active:hover ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):active:hover ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):active:hover ~ label,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):focus:hover ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):focus:hover ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):focus:hover ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):focus:hover ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only):focus:hover ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):focus:hover ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):focus:hover ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):focus:hover ~ label,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):focus:hover ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):focus:hover ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):focus:hover ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):focus:hover ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only):focus:hover ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):focus:hover ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):focus:hover ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):focus:hover ~ label,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):checked:hover ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):checked:hover ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):checked:hover ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):checked:hover ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only):checked:hover ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):checked:hover ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):checked:hover ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):checked:hover ~ label,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):active:hover ~ label:hover,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):active:hover ~ label:hover,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):active:hover ~ label:hover,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):active:hover ~ label:hover,
-.fuelux .radio input[type="radio"]:not(.sr-only):active:hover ~ label:hover,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):active:hover ~ label:hover,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):active:hover ~ label:hover,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):active:hover ~ label:hover,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .radio input[type="radio"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .radio input[type="radio"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):focus:hover ~ label:hover,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):checked:hover ~ label:hover,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):checked:hover ~ label:hover,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):checked:hover ~ label:hover,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):checked:hover ~ label:hover,
-.fuelux .radio input[type="radio"]:not(.sr-only):checked:hover ~ label:hover,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):checked:hover ~ label:hover,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):checked:hover ~ label:hover,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):checked:hover ~ label:hover {
-  color: #333333;
-  cursor: pointer;
-}
-.fuelux .radio input[type="checkbox"]:not(.sr-only)[disabled="disabled"] ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only)[disabled="disabled"] ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only)[disabled="disabled"] ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only)[disabled="disabled"] ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only)[disabled="disabled"] ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only)[disabled="disabled"] ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only)[disabled="disabled"] ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only)[disabled="disabled"] ~ label,
-.fuelux .radio input[type="checkbox"]:not(.sr-only)[disabled] ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only)[disabled] ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only)[disabled] ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only)[disabled] ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only)[disabled] ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only)[disabled] ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only)[disabled] ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only)[disabled] ~ label,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):disabled ~ label,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):disabled ~ label,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):disabled ~ label,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):disabled ~ label,
-.fuelux .radio input[type="radio"]:not(.sr-only):disabled ~ label,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):disabled ~ label,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):disabled ~ label,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):disabled ~ label,
-.fuelux .radio input[type="checkbox"]:not(.sr-only)[disabled="disabled"] ~ label:before,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only)[disabled="disabled"] ~ label:before,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only)[disabled="disabled"] ~ label:before,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only)[disabled="disabled"] ~ label:before,
-.fuelux .radio input[type="radio"]:not(.sr-only)[disabled="disabled"] ~ label:before,
-.fuelux .checkbox input[type="radio"]:not(.sr-only)[disabled="disabled"] ~ label:before,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only)[disabled="disabled"] ~ label:before,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only)[disabled="disabled"] ~ label:before,
-.fuelux .radio input[type="checkbox"]:not(.sr-only)[disabled] ~ label:before,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only)[disabled] ~ label:before,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only)[disabled] ~ label:before,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only)[disabled] ~ label:before,
-.fuelux .radio input[type="radio"]:not(.sr-only)[disabled] ~ label:before,
-.fuelux .checkbox input[type="radio"]:not(.sr-only)[disabled] ~ label:before,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only)[disabled] ~ label:before,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only)[disabled] ~ label:before,
-.fuelux .radio input[type="checkbox"]:not(.sr-only):disabled ~ label:before,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):disabled ~ label:before,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):disabled ~ label:before,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):disabled ~ label:before,
-.fuelux .radio input[type="radio"]:not(.sr-only):disabled ~ label:before,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):disabled ~ label:before,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):disabled ~ label:before,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):disabled ~ label:before {
-  color: #333333;
-  opacity: .65;
-  cursor: not-allowed !important;
-  outline: none;
-  box-shadow: none;
-}
-.fuelux .radio input[type="checkbox"]:not(.sr-only):checked ~ label:before,
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):checked ~ label:before,
-.fuelux .radio-inline input[type="checkbox"]:not(.sr-only):checked ~ label:before,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):checked ~ label:before,
-.fuelux .radio input[type="radio"]:not(.sr-only):checked ~ label:before,
-.fuelux .checkbox input[type="radio"]:not(.sr-only):checked ~ label:before,
-.fuelux .radio-inline input[type="radio"]:not(.sr-only):checked ~ label:before,
-.fuelux .checkbox-inline input[type="radio"]:not(.sr-only):checked ~ label:before {
-  background: #39b3d7;
-  border-color: #39b3d7;
-}
-.fuelux .radio.highlight:before,
-.fuelux .checkbox.highlight:before,
-.fuelux .radio-inline.highlight:before,
-.fuelux .checkbox-inline.highlight:before {
-  left: 4px;
-  top: 7px;
-}
-.fuelux .radio.highlight input[type="checkbox"]:not(.sr-only) ~ label,
-.fuelux .checkbox.highlight input[type="checkbox"]:not(.sr-only) ~ label,
-.fuelux .radio.highlight input[type="radio"]:not(.sr-only) ~ label,
-.fuelux .checkbox.highlight input[type="radio"]:not(.sr-only) ~ label {
-  left: -8px;
-  position: relative;
-}
-.fuelux .radio-inline,
-.fuelux .checkbox-inline {
-  padding-left: 0;
-}
-.fuelux .radio-inline:before,
-.fuelux .checkbox-inline:before {
-  left: 0;
-  top: 3px;
-}
-.fuelux .checkbox.multiline,
-.fuelux .radio.multiline {
-  float: left;
-  margin-left: 15px;
-}
-.fuelux .checkbox.multiline ~ .control-label,
-.fuelux .radio.multiline ~ .control-label {
-  float: left;
-  width: 80%;
-  margin-left: 10px;
-  text-align: left;
-}
-.fuelux .checkbox.multiline ~ .control-label > label,
-.fuelux .radio.multiline ~ .control-label > label {
-  font-weight: normal;
-  cursor: pointer;
-}
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only) ~ label:before,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only) ~ label:before {
-  border-radius: 4px;
-  z-index: 1;
-}
-.fuelux .checkbox input[type="checkbox"]:not(.sr-only):checked ~ label:before,
-.fuelux .checkbox-inline input[type="checkbox"]:not(.sr-only):checked ~ label:before {
-  color: white;
-  content: "\e013";
-  line-height: 1em;
-  padding-left: 1px;
-  font-size: 8px;
-  padding-top: 2px;
-}
-.fuelux .checkbox.hightlight + .checkbox-inline.highlight,
-.fuelux .checkbox-inline.hightlight + .checkbox-inline.highlight {
-  margin-left: -14px;
-}
-.fuelux .checkbox.hightlight + .checkbox-inline.highlight.checkbox-custom,
-.fuelux .checkbox-inline.hightlight + .checkbox-inline.highlight.checkbox-custom {
-  margin-left: 0px;
-}
-.fuelux .checkbox.highlight input[type="checkbox"]:not(.sr-only) ~ label {
-  left: -4px;
+@import "fuelux-core.less";
+.fuelux {
+
+  .checkbox {
+
+    &.highlight {
+
+      // padding: 4px;
+
+      & + .checkbox.highlight {
+        margin-top: -5px;
+      }
+
+      & label.checkbox-custom {
+        padding: 4px 4px 4px 24px;
+        //margin-left: -8px;
+      }
+
+      &.checked label.checkbox-custom, label.checked.checkbox-custom {
+        background: @gray90;
+        border-radius: @base-border-radius;
+      }
+    }
+
+    /* for keyboard tabbing */
+    input[type="checkbox"]:focus + .checkbox-label,
+    input[type="checkbox"]:hover + .checkbox-label,
+    .checkbox-label:hover
+     {
+      color: @gray60;
+    }
+
+    input[type="checkbox"]:disabled:focus + .checkbox-label,
+    input[type="checkbox"]:disabled:hover + .checkbox-label,
+    &.disabled label:hover
+     {
+      color: inherit;
+    }
+
+  }
+
+  .form-horizontal .checkbox-inline {
+    padding-top: 0;
+  }
+
+  .input-group-addon.checkbox-custom.checkbox-inline:before {
+    left: 11px;
+    top: 9px;
+  }
+
+  .checkbox-custom {
+    position: relative;
+
+    &:before {
+      #fuelux > .icon-base-styles("Glyphicons Halflings");
+      border: 1px solid @gray67;
+      border-radius: @base-border-radius;
+      color: @true-white;
+      content: " ";
+      font-size: 9px;
+      height: 14px;
+      left: 0px;
+      padding: 1px 0 0 1px;
+      position: absolute;
+      top: 3px;
+      width: 14px;
+    }
+
+    /* for keyboard tabbing */
+    &:active:before, &:focus:before {
+      color: @focus-color;
+      cursor: pointer;
+      box-shadow: inset 0px 0px 2px 1px @focus-color, 0px 0px 5px 0px @focus-color;
+    }
+
+    &.highlight {
+      &:before {
+        left: 4px;
+        top: 6px;
+      }
+    }
+
+    &.checked {
+      &:before {
+        background: @checkbox-primary-color;
+        border-color: @checkbox-primary-color;
+        content: "\e013";
+      }
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      opacity: .65;
+
+      &:before
+      {
+        cursor: not-allowed;
+        opacity: .65;
+      }
+    }
+
+    &.checkbox-inline {
+      &:before {
+        left: 0;
+        top: 3px;
+      }
+
+      &.highlight {
+        padding: 4px 4px 4px 24px;
+        left: -4px;
+
+        &:before {
+          left: 4px;
+          top: 7px;
+        }
+
+        &.checked {
+          background: @gray90;
+          border-radius: @base-border-radius;
+        }
+      }
+    }
+
+
+    /* for keyboard tabbing */
+    input[type="checkbox"]:focus + .checkbox-label {
+      color: @gray60;
+    }
+
+  }
+
+  label.checkbox-custom.checkbox-inline {
+    padding-left: 20px;
+  }
+
 }
