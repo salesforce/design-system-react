@@ -22,7 +22,8 @@ module.exports = function (grunt) {
 		// TASK CONFIG
 		babel: {
 			options: {
-				modules: 'umd'
+				modules: 'umd',
+				experimental: true
 			},
 			dist: {
 				files: [{

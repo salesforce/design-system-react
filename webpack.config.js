@@ -23,7 +23,7 @@ var config = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loaders: ['react-hot', 'babel-loader',]
+				loaders: ['react-hot', 'babel-loader?optional=runtime']
 			},
 			{
 				test: /\.css$/,

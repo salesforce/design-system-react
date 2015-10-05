@@ -13,7 +13,7 @@ import { verifyFacadeProvidesBehaviorCallbacks, registerBehaviorTestCombinations
 import { tree as componentFacadeTestLib } from '../tests-api';
 
 import { CONTROL as controlName } from '../../src/core/tree';
-// import TreeCore from '../../src/core/tree';
+import Core from '../../src/core/tree';
 
 const $ = require('jquery');
 const chai = require('chai');
@@ -90,6 +90,8 @@ describe(controlName + ' Component', function () {
 		'createComponent',
 		'getComponentElement',
 		'destroyComponent',
+		'disableComponent',
+		'enableComponent',
 		'getSelectedItems',
 		'selectItem',
 		'deselectItem',
@@ -118,6 +120,8 @@ describe(controlName + ' Component', function () {
 		'createComponent',
 		'getComponentElement',
 		'destroyComponent',
+		'disableComponent',
+		'enableComponent',
 		'getSelectedItems',
 		'selectItem',
 		'deselectItem',
@@ -202,10 +206,10 @@ describe(controlName + ' Component', function () {
 		*/
 		describe('create and destroy component', function () {
 			it('should create a single tree element on the DOM within the container', function (done) {
-				const component = testingBehaviorHandlers.createComponent( {
+				testingBehaviorHandlers.createComponent( {
 					container: container,
 					collection: []
-				}, function () {
+				}, function (component) {
 					expect(container.find('.tree').length).to.equal(1);
 					testingBehaviorHandlers.destroyComponent(component);
 					done();
@@ -213,10 +217,10 @@ describe(controlName + ' Component', function () {
 			});
 
 			it('should return an object representing the component', function (done) {
-				const component = testingBehaviorHandlers.createComponent( {
+				testingBehaviorHandlers.createComponent( {
 					container: container,
 					collection: []
-				}, function () {
+				}, function (component) {
 					expect(component).to.be.an('object');
 					testingBehaviorHandlers.destroyComponent(component);
 					done();
@@ -224,14 +228,67 @@ describe(controlName + ' Component', function () {
 			});
 
 			it('destroy should remove tree from container', function (done) {
-				const component = testingBehaviorHandlers.createComponent( {
+				testingBehaviorHandlers.createComponent( {
 					container: container,
 					collection: []
-				}, function () {
+				}, function (component) {
 					testingBehaviorHandlers.destroyComponent(component);
 					expect(container.find('.tree').length).to.equal(0);
 					done();
 				} );
+			});
+		});
+
+		// Tree disable isn't actually implemented yet despite being mixed in
+		xdescribe('disable and enable control', function () {
+			it(controlName + ' should disable, THEN enable', function (done) {
+				testingBehaviorHandlers.createComponent( {
+					container: container,
+					collection: []
+				}, function (component) {
+					// DISABLE
+					testingBehaviorHandlers.disableComponent(component);
+					const el = testingBehaviorHandlers.getComponentElement(component);
+					// has disabled appearance
+					expect(el.classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					// control's button as disabled attribute
+					expect(el.querySelector('button').disabled).to.equal(true);
+
+					// ENABLE
+					testingBehaviorHandlers.enableComponent(component);
+					// has enabled appearance
+					expect(el.classList.contains(Core.cssClasses.DISABLED)).to.equal(false);
+					// control's button as disabled attribute
+					expect(el.querySelector('button').disabled).to.equal(false);
+
+					done();
+				});
+			});
+
+			it(controlName + ' should initialize disabled, THEN enable, THEN disabled', function (done) {
+				testingBehaviorHandlers.createComponent( {
+					container: container,
+					collection: initDataTemplate.collection,
+					disabled: true
+				}, function (component) {
+					const el = testingBehaviorHandlers.getComponentElement(component);
+					// has disabled appearance
+					expect(el.classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+					// control's button as disabled attribute
+					expect(el.querySelector('button').disabled).to.equal(true);
+
+					// ENABLE
+					testingBehaviorHandlers.enableControl(component);
+					// has enabled appearance
+					expect(el.classList.contains(Core.cssClasses.DISABLED)).to.equal(false);
+					// control's button as disabled attribute
+					expect(el.querySelector('button').disabled).to.equal(false);
+
+					testingBehaviorHandlers.disableControl(component);
+					expect(el.classList.contains(Core.cssClasses.DISABLED)).to.equal(true);
+
+					done();
+				});
 			});
 		});
 
@@ -267,7 +324,8 @@ describe(controlName + ' Component', function () {
 			let itemsComponent;
 
 			beforeEach(done => {
-				itemsComponent = testingBehaviorHandlers.createComponent(initDataTemplate, function () {
+				testingBehaviorHandlers.createComponent(initDataTemplate, function (component) {
+					itemsComponent = component;
 					done();
 				});
 			});
@@ -333,7 +391,8 @@ describe(controlName + ' Component', function () {
 			let foldersComponent;
 
 			beforeEach(done => {
-				foldersComponent = testingBehaviorHandlers.createComponent(initDataTemplate, function () {
+				testingBehaviorHandlers.createComponent(initDataTemplate, function (component) {
+					foldersComponent = component;
 					done();
 				});
 			});
