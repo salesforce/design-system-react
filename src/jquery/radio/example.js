@@ -91,16 +91,16 @@ $(function () {
 	});
 
 	// events
-	const $radioExamples = $('.checkbox-examples .checkbox, .checkbox-examples .checkbox-custom');
+	const $radioExamples = $('.radio-examples .radio, .radio-examples .radio-custom');
 
-	$radioExamples.on('changed.fu.checkbox', function (event, data) {
-		Lib.log('changed.fu.checkbox: ', event, data);
+	$radioExamples.on('changed.fu.radio', function (event, data) {
+		Lib.log('changed.fu.radio: ', event, data);
 	});
-	$radioExamples.on('checked.fu.checkbox', function (event) {
-		Lib.log('checked.fu.checkbox: ', event);
+	$radioExamples.on('checked.fu.radio', function (event) {
+		Lib.log('checked.fu.radio: ', event);
 	});
-	$radioExamples.on('unchecked.fu.checkbox', function (event) {
-		Lib.log('unchecked.fu.checkbox: ', event);
+	$radioExamples.on('unchecked.fu.radio', function (event) {
+		Lib.log('unchecked.fu.radio: ', event);
 	});
 
 	void radioNA1;
