@@ -32,25 +32,30 @@ class SLDSLookup extends React.Component {
       activeItem:null,
       selectedIndex: null,
       activeIndex:null,
+      listLength:this.props.items.length
     };
   }
 
   //=================================================
   // Set Active Descendant (on key down/up, set currently focused/hovered item in list)
   increaseIndex(){
-    this.setState({
-      activeIndex: this.state.activeIndex <= this.props.items.length ? this.state.activeIndex + 1 : 0
-    })
+    let items = this.state.listLength - 1;
+    this.setState({ activeIndex: this.state.activeIndex < items ? this.state.activeIndex + 1 : 0 })
   }
 
   decreaseIndex(){
-    this.setState({
-      activeIndex: this.state.activeIndex > 0 ? this.state.activeIndex - 1 : this.props.items.length
-    })
+    let items = this.state.listLength - 1;
+    this.setState({ activeIndex: this.state.activeIndex > 0 ? this.state.activeIndex - 1 : items })
   }
 
   setActiveDescendant(id){
     this.setState({activeItem:id});
+  }
+
+  getListLength(qty){
+    if(qty !== this.state.listLength){
+      this.setState({listLength:qty});
+    }
   }
 
   //=================================================
@@ -137,6 +142,8 @@ class SLDSLookup extends React.Component {
         label={this.props.label}
         items={this.props.items}
         setActiveDescendant={this.setActiveDescendant.bind(this)}
+        getListLength={this.getListLength.bind(this)}
+        listLength={this.state.listLength}
         activeIndex={this.state.activeIndex}/>;
     }else{
       return null;
@@ -163,6 +170,7 @@ class SLDSLookup extends React.Component {
   render(){
     let inputClasses = this.state.selectedIndex === null ? 'slds-input':'slds-input slds-hide';
     let compClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside":"slds-lookup ignore-react-onclickoutside slds-has-selection";
+    console.log('activeIndex ', this.state.activeIndex);
 
     return (
       <div className={compClasses} data-select="single" data-scope="single" data-typeahead="true">

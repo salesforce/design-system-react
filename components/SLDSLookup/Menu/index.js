@@ -18,6 +18,11 @@ class Menu extends React.Component {
     this.state = {};
   }
 
+  componentDidUpdate(){
+    let list = React.findDOMNode(this.refs.list).children.length;
+    this.props.getListLength(list);
+  }
+
   filter(item){
     return this.props.filterWith(this.props.searchTerm, item);
   }
