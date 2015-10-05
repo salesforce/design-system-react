@@ -22,10 +22,14 @@ export const behaviorHandlers = {
 			// Copied from original FuelUX3 example page
 			const treeMarkup = '<div id="my-' + controlName + '"></div>';
 			const treeSelector = '#my-' + controlName;
-			$(initData.container).append(treeMarkup);
-			$(treeSelector).on('initialized.fu.tree', rendered);
+			let $tree;
 
-			const $tree = new Tree( $(treeSelector), initData );
+			$(initData.container).append(treeMarkup);
+			$(treeSelector).on('initialized.fu.tree', function () {
+				rendered($tree);
+			});
+			$tree = new Tree( $(treeSelector), initData );
+
 			return $tree;
 		}
 
@@ -44,7 +48,7 @@ export const behaviorHandlers = {
 
 	getComponentElement: {
 		default (component) {
-			return component.elements.wrapper;
+			return component.elements.wrapper[0];
 		}
 
 		// plugin (jDomEl) {
@@ -61,6 +65,18 @@ export const behaviorHandlers = {
 		// plugin (jDomEl) {
 		// 	jDomEl.tree('destroy');
 		// }
+	},
+
+	disableComponent: {
+		default (component) {
+			component.disable();
+		}
+	},
+
+	enableComponent: {
+		default (component) {
+			component.enable();
+		}
 	},
 
 	getSelectedItems: {

@@ -309,13 +309,15 @@ Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, SelectlistObject)
 
 // aliased by getValue and selectedItem
 function selectedItem () {
-	let selection = this._getSelection();
+	let selection = this._getSelection().get();
 
-	if (selection) {
-		selection = Lib.extend({}, selection.get());
+	if (Lib.isObject(selection)) {
+		selection = Lib.extend({}, selection);
 
 		selection.selected = true;
 		delete selection._itemType;
+	} else {
+		selection = null;
 	}
 
 	return selection;
