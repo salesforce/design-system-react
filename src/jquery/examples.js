@@ -5,3 +5,4 @@ import './combobox/example';
 import './loader/example';
 import './selectlist/example';
 import './tree/example';
+import './pillbox/example';
