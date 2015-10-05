@@ -135,34 +135,67 @@ describe(controlName + ' Component', function () {
 		let container = null;
 		const initDataTemplate = {
 			container: container,
-			accessors: {
-				getType (item) {
-					return item.get('type'); // To match the data in collection below
-				}
-			},
 			collection: [
 				{
-					text: 'Item 1',		type: 'item',	id: 1
+					text: 'Waterfall',
+					_itemType: 'item',
+					id: 1
 				},
 				{
-					text: 'Folder 1',	type: 'folder',	id: 2,
-					initiallyOpen: true,
-					expandable: true,
-					collection: [
+					text: 'Bscending and Descending',
+					_itemType: 'folder',
+					_isExpandable: true,
+					id: 2,
+					children: [
 						{
-							text: 'Item 2',		type: 'item',	id: 3,
-							iconClass: 'custom-item-icon-class'
+							text: 'Waterfall',
+							_itemType: 'item',
+							id: 3
 						},
 						{
-							text: 'Folder 2',	type: 'folder',	id: 4,
-							iconClass: 'custom-folder-icon-class',
-							expandable: true,
-							collection: []
+							text: 'Ascending and Descending',
+							_itemType: 'folder',
+							_isExpandable: true,
+							id: 4,
+							children: [
+								{
+									text: 'Waterfall',
+									_itemType: 'item',
+									id: 5
+								},
+								{
+									text: 'Sky and Water I (with custom icon)',
+									_itemType: 'item',
+									_iconClass: 'glyphicon-file',
+									id: 6
+								},
+								{
+									text: 'Empty folder',
+									_itemType: 'folder',
+									_isExpandable: false,
+									id: 9
+								}
+							]
+						},
+						{
+							text: 'Sky and Water I (with custom icon)',
+							_itemType: 'item',
+							_iconClass: 'glyphicon-file',
+							id: 7
+						},
+						{
+							text: 'Empty folder',
+							_itemType: 'folder',
+							_isExpandable: false,
+							id: 10
 						}
 					]
 				},
 				{
-					text: 'Last Item',	type: 'item',	id: 5
+					text: 'Sky and Water I (with custom icon)',
+					_itemType: 'item',
+					_iconClass: 'glyphicon-file',
+					id: 8
 				}
 			]
 		};
