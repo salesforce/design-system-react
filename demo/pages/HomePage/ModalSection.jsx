@@ -59,7 +59,7 @@ module.exports = React.createClass( {
                     ]}
                     value='C0'
                     label="Contacts"
-                    modal={false}
+                    modal={true}
                     placeholder = "Select a contact"
                     onSelect={(value)=>{console.log('selected: ',value);}} />
       <p>With the Lightning Design System you can build custom applications with a look and feel that is consistent with Salesforce core features — without reverse engineering our styles! Simply download our platform-agnostic CSS framework and get started today.</p>
