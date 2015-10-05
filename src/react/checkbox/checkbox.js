@@ -28,13 +28,8 @@ export const CheckboxObject = {
 		addon: React.PropTypes.bool,
 		highlight: React.PropTypes.bool
 	},
-	
-	_renderText () {
-		if (this.props.text && !this.props.addon) {
-			return <span className={this.cssClasses.LABEL}>{this.props.text}</span>;
-		}
-	},
 
+	// TODO: if all we are rendering is the label for react checkbox / radio we will need to make styles account for block controls
 	render () {
 		const labelClasses = {};
 		labelClasses[this.cssClasses.DISABLED] = this.props.disabled;
@@ -44,10 +39,25 @@ export const CheckboxObject = {
 		labelClasses[this.cssClasses.HIGHLIGHT] = this.props.highlight;
 
 		return (
-			<label className={classNames(this.cssClasses.CONTROL, labelClasses)} onClick={this.toggle}>
-				<input className="sr-only" type="checkbox" disabled={this.props.disabled} checked={this.isChecked()} value={this.props.value || ''} onClick={this._stopPropagation} />{this._renderText()}
+			<label className={classNames(this.cssClasses.CONTROL, labelClasses)} onClick={this._onClick}>
+				{this._renderInput()}
+				{this._renderText()}
 			</label>
 		);
+	},
+
+	_onClick () {
+		this.toggle();
+	},
+
+	_renderInput () {
+		return <input className="sr-only" type="checkbox" disabled={this.props.disabled} checked={this.isChecked()} value={this.props.value || ''} onClick={this._stopPropagation} />;
+	},
+
+	_renderText () {
+		if (this.props.text && !this.props.addon) {
+			return <span className={this.cssClasses.LABEL}>{this.props.text}</span>;
+		}
 	},
 	
 	_stopPropagation (e) {

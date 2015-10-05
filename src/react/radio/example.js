@@ -5,19 +5,24 @@ export default function (element) {
 	const RadioExample = React.createClass({
 		getInitialState () {
 			return {
-				checked: true
+				matchesValue: 'value4'
 			};
 		},
 
 		render () {
-			return (
-				<Radio checked={this.state.checked} disabled={false} highlight={false} text="Custom radio checked on initialization" onChanged={this._handleChange} />
-			);
+			const name = 'radioGroup1';
+			const radios = [
+				<Radio checkedValue={this.state.matchesValue} disabled={false} highlight={false} inline={true} key="1" name={name} text="Custom radio unchecked on initialization" onCheckedValueChanged={this._handleChange} value="value1" />,
+				<Radio checkedValue={this.state.matchesValue} disabled={false} highlight={true} inline={true} key="2" name={name} text="Custom radio highlight unchecked on initialization" onCheckedValueChanged={this._handleChange} value="value2" />,
+				<Radio checkedValue={this.state.matchesValue} disabled={false} highlight={false} inline={true} key="3" name={name} text="Custom radio unchecked on initialization" onCheckedValueChanged={this._handleChange} value="value3" />,
+				<Radio checkedValue={this.state.matchesValue} disabled={true} highlight={false} inline={true} key="4" name={name} text="Custom radio disabled checked on initialization" onCheckedValueChanged={this._handleChange} value="value4" />
+			];
+			return (<div>{radios}</div>);
 		},
 
-		_handleChange (checked) {
+		_handleChange (checkedValue) {
 			this.setState({
-				checked
+				matchesValue: checkedValue
 			});
 		}
 	});
