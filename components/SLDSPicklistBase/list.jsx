@@ -71,7 +71,7 @@ module.exports = React.createClass({
       newHighlightedIndex = this.props.options.length - 1;
     }
     else if(newHighlightedIndex >= this.props.options.length){
-      newHighlightedIndex = 0; 
+      newHighlightedIndex = 0;
     }
     if(this.props.onUpdateHighlighted){
       this.props.onUpdateHighlighted(newHighlightedIndex);
@@ -125,17 +125,17 @@ module.exports = React.createClass({
   getItems () {
     return this.props.options.map((option, index) =>{
       return (
-        <ListItem 
+        <ListItem
           key={index}
-          index={index} 
+          index={index}
           label={option.label}
-          value={option.value} 
+          value={option.value}
           isHighlighted={(index===this.props.highlightedIndex)}
-          isSelected={(index===this.props.selectedIndex)} 
-          onUpdateHighlighted={this.handleUpdateHighlighted} 
+          isSelected={(index===this.props.selectedIndex)}
+          onUpdateHighlighted={this.handleUpdateHighlighted}
           onMoveFocus={this.handleMoveFocus}
           onBlur={this.handleListItemBlur}
-          onFocus={this.handleItemFocus} 
+          onFocus={this.handleItemFocus}
           onSelect={this.handleSelect}
           onSearch={this.handleSearch}
           onCancel={this.handleCancel}/>
@@ -145,17 +145,17 @@ module.exports = React.createClass({
 
   render () {
     return (
-      <div 
+      <div
         ref="scroll"
         className={'slds-wrap slds-grow slds-scrollable--y '+this.props.className}
         style={{
           maxHeight:260
         }}
         >
-        <ul 
+        <ul
           ref="scroll"
           className={"slds-dropdown__list slds-theme--"+this.props.theme}
-          role="menu" 
+          role="menu"
           aria-labelledby={this.props.label}>
           { this.getItems() }
         </ul>
