@@ -22,9 +22,14 @@ const defaultFilter = (term, item) => {
 class SLDSLookup extends React.Component {
   constructor(props) {
     super(props);
+    this.props.items.map((item, index) => {
+      return item.id = 'item-' + index;
+    })
+
     this.state = {
       searchTerm: '',
       isOpen:false,
+      activeItem:null,
       selectedIndex: null,
       activeIndex:null,
     };
@@ -44,14 +49,15 @@ class SLDSLookup extends React.Component {
     })
   }
 
-  getActiveDescendant(){
-    return this.state.activeIndex !== null ? 'item-' + this.state.activeIndex: "";
+  setActiveDescendant(id){
+    this.setState({activeItem:id});
   }
 
   //=================================================
   // Select menu item (onClick or on key enter/space)
-  selectItem(index){
+  selectItem(itemId){
     //console.log('selectItem fired');
+    let index = itemId.replace('item-', '');
     this.setState({
       selectedIndex: index,
       searchTerm: null
@@ -115,7 +121,7 @@ class SLDSLookup extends React.Component {
       //If user hits enter/space key, select current activedescendant item
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.activeIndex !== null){
         EventUtil.trapImmediate(event);
-        this.selectItem(this.state.activeIndex);
+        this.selectItem(this.state.activeItem);
       }
     }
   }
@@ -130,6 +136,7 @@ class SLDSLookup extends React.Component {
         onSelect={this.selectItem.bind(this)}
         label={this.props.label}
         items={this.props.items}
+        setActiveDescendant={this.setActiveDescendant.bind(this)}
         activeIndex={this.state.activeIndex}/>;
     }else{
       return null;
@@ -172,7 +179,7 @@ class SLDSLookup extends React.Component {
               aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
-              aria-activedescendant={this.getActiveDescendant()}
+              aria-activedescendant={this.state.activeItem ? this.state.activeItem:""}
               aria-expanded={this.state.isOpen}
               role="combobox"
               onChange={this.handleChange.bind(this)}
