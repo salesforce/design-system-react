@@ -18,6 +18,11 @@ class Menu extends React.Component {
     this.state = {};
   }
 
+  componentDidUpdate(){
+    let list = React.findDOMNode(this.refs.list).children.length;
+    this.props.getListLength(list);
+  }
+
   filter(item){
     return this.props.filterWith(this.props.searchTerm, item);
   }
@@ -25,8 +30,8 @@ class Menu extends React.Component {
   renderItems(){
     return this.props.items.filter(this.filter, this).map((c, i) => {
       //isActive means it is aria-activedescendant
-      const isActive = this.props.activeIndex === i ? true : false;
-      return <Item key={c.id} id={c.id} setActiveDescendant={this.props.setActiveDescendant} isActive={isActive} onSelect={this.props.onSelect} searchTerm={this.props.searchTerm}>{c}</Item>
+      const isActive = this.props.focusIndex === i ? true : false;
+      return <Item key={c.id} id={c.id} setFocus={this.props.setFocus} isActive={isActive} onSelect={this.props.onSelect} searchTerm={this.props.searchTerm}>{c}</Item>
     });
   }
 
@@ -42,4 +47,20 @@ class Menu extends React.Component {
     )
   }
 }
+
+Menu.propTypes = {
+  searchTerm: React.PropTypes.string,
+  filterWith: React.PropTypes.func,
+  onSelect: React.PropTypes.func,
+  label: React.PropTypes.string,
+  items: React.PropTypes.array,
+  setFocus: React.PropTypes.func,
+  getListLength: React.PropTypes.func,
+  listLength: React.PropTypes.number,
+  focusIndex: React.PropTypes.number,
+};
+
+Menu.defaultProps = {
+};
+
 module.exports = Menu;

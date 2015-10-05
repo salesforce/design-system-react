@@ -59,7 +59,7 @@ module.exports = React.createClass( {
 
   componentDidMount () {
     Modal.setAppElement(SLDSSettings.getAppElement());
-    console.log('!!! window.activeElement !!! ',document.activeElement);
+    //console.log('!!! window.activeElement !!! ',document.activeElement);
     this.setState({returnFocusTo:document.activeElement})
     if(!this.state.revealed){
       setTimeout(()=>{
@@ -101,14 +101,14 @@ module.exports = React.createClass( {
   },
 
   getModal() {
-    return <div 
-            className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')} 
+    return <div
+            className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')}
             style={{pointerEvents:'inherit'}}
             onClick={this.closeModal}
           >
-          <div 
+          <div
             role='dialog'
-            className='slds-modal__container' 
+            className='slds-modal__container'
             onClick={this.handleModalClick}
             >
             <div className='slds-modal__header'>
@@ -157,7 +157,7 @@ module.exports = React.createClass( {
 
 
       if(this.state.isClosing){
-        console.log('CLOSING: ');
+        //console.log('CLOSING: ');
 
         if(this.isMounted()){
           const el = this.getDOMNode().parentNode;
