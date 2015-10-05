@@ -7,7 +7,7 @@ const { Route, DefaultRoute, RouteHandler, Link } = Router;
 import { SLDSSettings } from '../components/';
 SLDSSettings.setAssetsPath('demo/assets/');
 
-console.log('SLDSSettings.getAssetsPath: '+SLDSSettings.getAssetsPath());
+//console.log('SLDSSettings.getAssetsPath: '+SLDSSettings.getAssetsPath());
 
 import App from './App';
 import HomePage from './pages/HomePage';

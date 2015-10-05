@@ -17,8 +17,8 @@ class Item extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.isActive !== this.props.isActive){
-      this.props.setActiveDescendant(nextProps.id);
+    if(nextProps.isActive !== this.props.isActive && (nextProps.isActive === true)){
+      this.props.setFocus(this.props.id);
     }
   }
 
@@ -42,17 +42,13 @@ class Item extends React.Component {
 
   render(){
     let className = 'slds-lookup__item';
-
-    //TODO: make isActive styles into a class??
     let id = this.props.id;
-    let styles = {};
     if(this.props.isActive) className += ' slds-theme--shade';
 
     return (
-      //IMPORTANT: id is used to set lookup's input's aria-activedescendant
+      //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
       <li
         className={className}
-        style={styles}
         role="presentaion">
         <a
           href={this.props.href}
@@ -68,7 +64,17 @@ class Item extends React.Component {
       </li>
     )
   }
-
 }
+
+Item.propTypes = {
+  id: React.PropTypes.string,
+  setFocus: React.PropTypes.func,
+  isActive: React.PropTypes.bool,
+  onSelect: React.PropTypes.func,
+  searchTerm: React.PropTypes.string,
+};
+
+Item.defaultProps = {
+};
 
 module.exports = Item;
