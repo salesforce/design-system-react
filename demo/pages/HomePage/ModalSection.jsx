@@ -42,12 +42,7 @@ module.exports = React.createClass( {
 
   getModalContent () {
     return  <div>
-      <p>With the Lightning Design System you can build custom applications with a look and feel that is consistent with Salesforce core features — without reverse engineering our styles! Simply download our platform-agnostic CSS framework and get started today.</p>
 
-      <p>
-Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
-      </p>
-{/*
     <SLDSPicklistBase
                     options={[
                       {label:'A Option Option Super Super Long',value:'A0'},
@@ -64,11 +59,16 @@ Utilize our detailed guidelines to confidently design excellent apps that fit ri
                     ]}
                     value='C0'
                     label="Contacts"
-                    modal={true}
+                    modal={false}
                     placeholder = "Select a contact"
                     onSelect={(value)=>{console.log('selected: ',value);}} />
+      <p>With the Lightning Design System you can build custom applications with a look and feel that is consistent with Salesforce core features — without reverse engineering our styles! Simply download our platform-agnostic CSS framework and get started today.</p>
+        <a href='http://www.google.com'>CLICK!</a>
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
 
-*/}
+
 
                       </div>;
   },

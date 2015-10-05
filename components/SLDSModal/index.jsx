@@ -94,13 +94,23 @@ module.exports = React.createClass( {
     }
   },
 
+  handleModalClick(event) {
+    if(event && event.stopPropagation){
+      event.stopPropagation();
+    }
+  },
+
   getModal() {
-    return <div className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')} 
-          onClick={this.closeModal}>
+    return <div 
+            className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')} 
+            style={{pointerEvents:'inherit'}}
+            onClick={this.closeModal}
+          >
           <div 
             role='dialog'
             className='slds-modal__container' 
-            onClick={(e)=>{EventUtil.trap(e);}}>
+            onClick={this.handleModalClick}
+            >
             <div className='slds-modal__header'>
               <h2 className='slds-text-heading--medium'>{this.props.title}</h2>
               <SLDSButton className='slds-button slds-modal__close' onClick={this.closeModal}>
