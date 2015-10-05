@@ -11,7 +11,7 @@ export default function (element) {
 		
 		render () {
 			return (
-				<Checkbox checked={this.state.checked} disabled={false} highlight={false} text="Custom checkbox unchecked on page load" onChanged={this._handleChange} />
+				<Checkbox checked={this.state.checked} disabled={false} highlight={false} text="Custom checkbox checked on initialization" onChanged={this._handleChange} />
 			);
 		},
 		

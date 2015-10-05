@@ -1,8 +1,8 @@
-// CHECKBOX CONTROL - REACT FACADE
+// RADIO CONTROL - REACT FACADE
 
 // Core
 import * as Lib from '../../lib/lib';
-import CheckboxCore, {CONTROL} from '../../core/checkbox';
+import RadioCore, {CONTROL} from '../../core/radio';
 
 // Framework specific
 import React from 'react';
@@ -13,7 +13,7 @@ import genericWillMount from '../mixins/generic-will-mount';
 // Third party
 import classNames from 'classnames';
 
-export const CheckboxObject = {
+export const RadioObject = {
 	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
@@ -25,7 +25,7 @@ export const CheckboxObject = {
 		addon: React.PropTypes.bool,
 		highlight: React.PropTypes.bool
 	},
-	
+
 	_renderText () {
 		if (this.props.text && !this.props.addon) {
 			return <span className={this.cssClasses.LABEL}>{this.props.text}</span>;
@@ -42,20 +42,20 @@ export const CheckboxObject = {
 
 		return (
 			<label className={classNames(this.cssClasses.CONTROL, labelClasses)} onClick={this.toggle}>
-				<input className="sr-only" type="checkbox" disabled={this.props.disabled} checked={this.props.checked} value={this.props.value || this.props.text} onClick={this._stopPropagation} />{this._renderText()}
+				<input className="sr-only" type="radio" disabled={this.props.disabled} checked={this.props.checked} value={this.props.value || this.props.text} onClick={this._stopPropagation} />{this._renderText()}
 			</label>
 		);
 	},
-	
+
 	_stopPropagation (e) {
 		e.stopPropagation();
 		return false;
 	}
 };
 
-let Checkbox = Lib.merge({}, CheckboxCore, CheckboxObject);
+let Radio = Lib.merge({}, RadioCore, RadioObject);
 
-Checkbox = Lib.runHelpers('react', CONTROL, Checkbox);
-Checkbox = React.createClass(Checkbox);
+Radio = Lib.runHelpers('react', CONTROL, Radio);
+Radio = React.createClass(Radio);
 
-export default Checkbox;
+export default Radio;
