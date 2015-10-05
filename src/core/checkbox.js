@@ -55,7 +55,7 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 		}
 		
 		this.trigger('changed', checked);
-		this.trigger('changedCheckedValue', checkedValue);
+		this.trigger('checkedValueChanged', checkedValue);
 	},
 	
 	check () {
