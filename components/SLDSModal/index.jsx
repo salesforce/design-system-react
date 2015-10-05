@@ -13,6 +13,7 @@ import React from 'react';
 import SLDSButton from '../SLDSButton';
 import {Icon} from '../SLDSIcons';
 import {EventUtil} from '../utils';
+import SLDSSettings from '../SLDSSettings';
 
 
 import Modal from 'react-modal';
@@ -57,6 +58,7 @@ module.exports = React.createClass( {
   },
 
   componentDidMount () {
+    Modal.setAppElement(SLDSSettings.getAppElement());
     //console.log('!!! window.activeElement !!! ',document.activeElement);
     this.setState({returnFocusTo:document.activeElement})
     if(!this.state.revealed){
@@ -83,7 +85,7 @@ module.exports = React.createClass( {
 
   updateBodyScroll () {
     if(window && document && document.body){
-      if(!this.state.isClosing){
+      if(this.props.isOpen){
         document.body.style.overflow = 'hidden';
       }
       else{
@@ -92,13 +94,23 @@ module.exports = React.createClass( {
     }
   },
 
+  handleModalClick(event) {
+    if(event && event.stopPropagation){
+      event.stopPropagation();
+    }
+  },
+
   getModal() {
-    return <div className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')}
-          onClick={this.closeModal}>
+    return <div
+            className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')}
+            style={{pointerEvents:'inherit'}}
+            onClick={this.closeModal}
+          >
           <div
             role='dialog'
             className='slds-modal__container'
-            onClick={(e)=>{EventUtil.trap(e);}}>
+            onClick={this.handleModalClick}
+            >
             <div className='slds-modal__header'>
               <h2 className='slds-text-heading--medium'>{this.props.title}</h2>
               <SLDSButton className='slds-button slds-modal__close' onClick={this.closeModal}>
@@ -135,9 +147,13 @@ module.exports = React.createClass( {
 
   componentDidUpdate (prevProps, prevState) {
 
+
+    if(this.props.isOpen !== prevProps.isOpen){
+      this.updateBodyScroll();
+    }
+
     if(this.state.isClosing !== prevState.isClosing){
 
-      this.updateBodyScroll();
 
 
       if(this.state.isClosing){

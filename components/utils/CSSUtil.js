@@ -11,23 +11,36 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 'use strict';
 
-let assetsPath = 'assets/';
-let appRoot;
-module.exports = {
-  setAssetsPath: (path)=>{
-    if(path){
-      assetsPath = path;
+const addCSSRule = (sheet, selector, rules, index) => {
+    console.log('selector: ',selector);
+    console.log('rules: ',rules);
+    if('insertRule' in sheet) {
+        console.log('insertRule: ');
+        sheet.insertRule(selector + '{ ' + rules + ' }', index);
     }
-  },
-  getAssetsPath: ()=>{
-    return String(assetsPath);
-  },
-  setAppElement: (el)=>{
-    if(el){
-      appRoot = el;
+    else if('addRule' in sheet) {
+        console.log('addRule: ');
+        sheet.addRule(selector, rules.join(';'), index);
     }
-  },
-  getAppElement: ()=>{
-    return appRoot;
-  }
 };
+
+module.exports = {
+    load: (cssClasses)=>{
+        const sheet = (function() {
+            const style = document.createElement("style");
+            style.appendChild(document.createTextNode(""));
+            document.head.appendChild(style);
+            return style.sheet;
+        })();
+        cssClasses.forEach((cssClass)=>{
+            const selector = cssClass.selector;
+            const rules = cssClass.rules;
+            addCSSRule(sheet,selector,rules.join(';'), 0);
+
+//            rules.forEach((rule)=>{
+//                addCSSRule(sheet,selector,rule, 0);
+//            });
+        });
+    }
+};
+

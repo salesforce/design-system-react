@@ -13,10 +13,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import DateUtil from './DateUtil';
 import EventUtil from './EventUtil';
+import CSSUtil from './CSSUtil';
+
 import KEYS from './KEYS';
 
 module.exports = {
   DateUtil:DateUtil,
   EventUtil:EventUtil,
+  CSSUtil:CSSUtil,
   KEYS:KEYS
 };
