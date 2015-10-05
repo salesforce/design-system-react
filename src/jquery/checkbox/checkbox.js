@@ -70,6 +70,10 @@ export const CheckboxObject = {
 	},
 
 	_onInitialized () {
+		if (this.options.checked && !this.getProperty('checkedValue')) {
+			this.setProperties({ checkedValue: this.getProperty('value') || '' });
+		}
+
 		if (!this.rendered) {
 			this._render();
 		} else {
@@ -88,7 +92,7 @@ export const CheckboxObject = {
 
 	_onToggled () {
 		const blank = '';
-		const checked = this.getProperty('checked');
+		const checked = this.getProperty('checkedValue') !== null;
 		const hidden = 'hidden';
 		const toggleSelector = this.getProperty('toggleSelector');
 
@@ -152,15 +156,17 @@ export const CheckboxObject = {
 	},
 
 	_syncProperties () {
+		const value = this.elements.input.attr('value') || this.getProperty('value');
+
 		this.setProperties({
 			addon: this.elements.control.hasClass(this.cssClasses.ADDON),
-			checked: this.elements.input.prop('checked'),
-			disabled: this.elements.input.prop('disabled'),
+			checkedValue: (this.elements.input.prop('checked')) ? value : this.getProperty('checkedValue'),
+			disabled: this.elements.input.prop('disabled') || this.getProperty('disabled'),
 			highlight: this.elements.control.hasClass('highlight'),
 			inline: this.elements.control.hasClass(this.cssClasses.INLINE),
 			text: this.elements.label.html(),
-			toggleSelector: this.elements.input.attr('data-toggle'),
-			value: this.elements.input.attr('value')
+			toggleSelector: this.elements.input.attr('data-toggle') || this.getProperty('toggleSelector'),
+			value: value
 		});
 	},
 

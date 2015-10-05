@@ -40,6 +40,10 @@ let Radio = function Radio (element, options) {
 
 // Prototype extension object
 const RadioObject = Lib.merge({}, CheckboxObject, {
+	_defaultProperties: {
+		name: ''
+	},
+
 	_getGroup () {
 		const name = this.getProperty('name');
 
@@ -59,7 +63,7 @@ const RadioObject = Lib.merge({}, CheckboxObject, {
 	// TODO: with this approach, if they were to change the name after instantiation it would behave inconsistently,
 	// though that's a very uncommon use-case so I doubt it's a concern...
 	_onToggled () {
-		if (this.getProperty('checked')) {
+		if (this.getProperty('checkedValue') !== null) {
 			const group = this._getGroup();
 			for (let index = 0, length = group.length; index < length; index++) {
 				if (group[index] && group[index] !== this) {
@@ -77,7 +81,7 @@ const RadioObject = Lib.merge({}, CheckboxObject, {
 
 	_syncProperties () {
 		this.setProperties({
-			name: this.elements.input.attr('name')
+			name: this.elements.input.attr('name') || this.getProperty('name')
 		});
 		CheckboxObject._syncProperties.call(this);
 	},
