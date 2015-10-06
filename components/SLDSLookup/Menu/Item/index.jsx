@@ -18,6 +18,7 @@ class Item extends React.Component {
 
   componentWillReceiveProps(nextProps){
     if(nextProps.isActive !== this.props.isActive && (nextProps.isActive === true)){
+      this.scrollFocus();
       this.props.setFocus(this.props.id);
     }
   }
@@ -38,6 +39,13 @@ class Item extends React.Component {
       e.nativeEvent.stopImmediatePropagation();
     }
     return this.props.onSelect(this.props.id);
+  }
+
+  scrollFocus(){
+    const height = React.findDOMNode(this).offsetHeight;
+    if(height && this.props.handleItemFocus){
+      this.props.handleItemFocus(this.props.index,height);
+    }
   }
 
   render(){
@@ -69,6 +77,7 @@ class Item extends React.Component {
 Item.propTypes = {
   id: React.PropTypes.string,
   setFocus: React.PropTypes.func,
+  scrollFocus: React.PropTypes.func,
   isActive: React.PropTypes.bool,
   onSelect: React.PropTypes.func,
   searchTerm: React.PropTypes.string,
