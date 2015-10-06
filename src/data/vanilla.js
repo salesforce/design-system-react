@@ -69,23 +69,47 @@ const Data = Base.Data.extend({
 		return this._data.length;
 	},
 	
-	add (item) {
-		this._data.push(item._item);
+	add (addition, addIndex) {
+		if (Lib.isArray(addition)) {
+			addition.forEach( (item, itemIndex) => {
+				if (addIndex) {
+					this._data.splice(addIndex + itemIndex, 0, item);
+				} else {
+					this._data.push(item._item);
+				}
+			});
+		} else {
+			if (addIndex) {
+				this._data.splice(addIndex, 0, addition._item);
+			} else {
+				this._data.push(addition._item);
+			}
+		}
 		
 		return this;
 	},
 	
-	remove (itemToRemove) {
-		let indexToRemove;
-		
-		this.forEach(function (item, index) {
-			if (indexToRemove === undefined && item._item === itemToRemove._item) {
-				indexToRemove = index;
+	remove (removal) {
+		const _remove = Lib.bind(function _remove (itemToRemove) {
+			let indexToRemove;
+
+			this.forEach(function (item, index) {
+				if (indexToRemove === undefined && item._item === itemToRemove._item) {
+					indexToRemove = index;
+				}
+			});
+
+			if (indexToRemove !== undefined) {
+				this._data.splice(indexToRemove, 1);
 			}
-		});
-		
-		if (indexToRemove !== undefined) {
-			this._data.splice(indexToRemove, 1);
+		}, this);
+
+		if (Lib.isArray(removal)) {
+			removal.forEach( (item) => {
+				_remove(item);
+			});
+		} else {
+			_remove(removal);
 		}
 		
 		return this;

@@ -8,15 +8,40 @@ $(function () {
 		selection: [
 			{
 				text: 'test1',
-				id: 1
+				value: 'test1'
 			},
 			{
 				text: 'test2',
-				id: 2
+				value: 'test1'
 			}
 		]
 	});
 	
 	void(pillbox);
+
+	$('#pillbox2').pillbox({
+		selection: [
+			{
+				text: 'test1',
+				value: 'test1'
+			},
+			{
+				text: 'test2',
+				value: 'test1'
+			}
+		],
+		onAdd: function (item, callback) {
+			setTimeout( function () {
+				console.log(item);
+				callback(item);
+			}, 0);
+		},
+		onRemove: function (item, callback) {
+			setTimeout( function () {
+				console.log(item);
+				callback(item);
+			}, 0);
+		}
+	});
 });
 

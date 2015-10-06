@@ -29,8 +29,16 @@ let Pillbox = function Pillbox (element, options) {
 
 Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 	_onInitialized () {
-		this.elements.wrapper.on('keyup.fu.tree', '.pillbox-add-item', $.proxy(this._inputKeyUp, this));
+		this.elements.wrapper.on('keyup.fu.tree', '.pillbox-add-item', $.proxy(this._keyUp, this));
 		this.elements.wrapper.on('click.fu.tree', '.pill-group > .pill', $.proxy(this._itemClicked, this));
+
+		if (this.options.onAdd) {
+			this._canSelect = this._onAdd;
+		}
+
+		if (this.options.onRemove) {
+			this._canDeselect = this._onRemove;
+		}
 
 		this._render();
 
@@ -42,6 +50,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 
 		this.elements.group = $el.find('.pill-group');
 		this.elements.input = $el.find('.pillbox-add-item');
+		this.elements.inputWrap = $el.find('.pillbox-input-wrap');
 		this.elements.pillTemplate = this.elements.group.find('.pill').remove();
 
 		this._renderSelection();
@@ -51,20 +60,58 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 		this.elements.wrapper.append($el);
 	},
 
-	_inputKeyUp (e) {
-		if (e.keyCode === 13) {
+	_keyUp (e) {
+		let inputValue;
+
+		if (this._isAcceptKeyCode(e.keyCode)) {
+			inputValue = this.elements.input.val();
+
+			// If commas are an accepted keycode clean inputValue of commas
+			if (e.keyCode === 188 && this._isAcceptKeyCode(188)) {
+				inputValue = inputValue.replace(/[ ]*\,[ ]*/, '');
+			}
+
 			this.selectItem({
-				text: this.elements.input.val()
+				text: inputValue,
+				value: inputValue
 			});
 			
 			this._clearInput();
 		}
 	},
 
+	_onAdd (newSelection, select) {
+		this.options.onAdd([newSelection._item], (itemsToSelect) => {
+			if (itemsToSelect) {
+				select();
+			}
+		});
+	},
+
+	_onRemove (newDeselection, deselect) {
+		this.options.onRemove([newDeselection._item], (itemsToDeselect) => {
+			if (itemsToDeselect) {
+				deselect();
+			}
+		});
+	},
+
+	_onEnabledOrDisabled (props) {
+		if (props.disabled) {
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED);
+			this.elements.inputWrap.hide();
+		} else {
+			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED);
+			this.elements.inputWrap.show();
+		}
+	},
+
 	_itemClicked (e) {
 		const item = $(e.currentTarget).data('item');
 
-		this.deselectItem(item);
+		if (!this.getProperty('disabled')) {
+			this.deselectItem(item);
+		}
 	},
 
 	_clearInput () {
@@ -103,6 +150,81 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 	}
 });
 
-Pillbox = Lib.runHelpers('jquery', CONTROL, Pillbox, {});
+const legacyMethods = {
+	addItems (index, items) {
+		const baseZeroIndex = (index - 1);
+
+		this.selectItems(items, baseZeroIndex);
+
+		return this.elements.wrapper;
+	},
+
+	removeItems (index, count) {
+		const selection = this._getSelectedItems().get();
+		const baseZeroIndex = (index - 1);
+
+		this.deselectItems(selection.slice(baseZeroIndex, baseZeroIndex + count));
+
+		return this.elements.wrapper;
+	},
+
+	destroy () {
+		this.elements.wrapper.remove();
+
+		return template;
+	},
+
+	items () {
+		const selection = this._getSelectedItems();
+
+		return selection.get();
+	},
+
+	itemCount () {
+		const selection = this._getSelectedItems();
+
+		return selection.get().length;
+	},
+
+	readonly () {
+		this.disable();
+	},
+
+	removeBySelector ($item) {
+		const item = $item.data('item');
+
+		this.deselectItem(item);
+
+		return this.elements.wrapper;
+	},
+
+	removeByText (text) {
+		const selection = this._getSelectedItems().get();
+
+		selection.forEach( (item) => {
+			if (item.text === text) {
+				this.deselectItem(item);
+			}
+		});
+
+		return this.elements.wrapper;
+	},
+
+	removeByValue (value) {
+		const selection = this._getSelectedItems().get();
+
+		selection.forEach( (item) => {
+			if (item.value === value) {
+				this.deselectItem(item);
+			}
+		});
+
+		return this.elements.wrapper;
+	}
+};
+
+Pillbox = Lib.runHelpers('jquery', CONTROL, Pillbox, {
+	legacyMethods
+});
 
 export default Pillbox;

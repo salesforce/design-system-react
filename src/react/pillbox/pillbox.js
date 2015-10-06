@@ -44,9 +44,19 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 	},
 
 	_handleKeyUp (e) {
-		if (e.keyCode === 13) {
+		let inputValue;
+
+		if (this._isAcceptKeyCode(e.keyCode)) {
+			inputValue = e.target.value;
+
+			// If commas are an accepted keycode clean inputValue of commas
+			if (e.keyCode === 188 && this._isAcceptKeyCode(188)) {
+				inputValue = inputValue.replace(/[ ]*\,[ ]*/, '');
+			}
+
 			this.selectItem({
-				text: e.target.value
+				text: inputValue,
+				value: inputValue
 			});
 
 			e.target.value = '';
