@@ -27,11 +27,25 @@ class Menu extends React.Component {
     return this.props.filterWith(this.props.searchTerm, item);
   }
 
+  handleItemFocus (itemIndex, itemHeight) {
+    if(this.refs.list){
+      React.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
+    }
+  }
+
   renderItems(){
     return this.props.items.filter(this.filter, this).map((c, i) => {
       //isActive means it is aria-activedescendant
       const isActive = this.props.focusIndex === i ? true : false;
-      return <Item key={c.id} id={c.id} setFocus={this.props.setFocus} isActive={isActive} onSelect={this.props.onSelect} searchTerm={this.props.searchTerm}>{c}</Item>
+      return <Item
+      key={c.id}
+      id={c.id}
+      index={i}
+      setFocus={this.props.setFocus}
+      isActive={isActive}
+      handleItemFocus={this.handleItemFocus.bind(this)}
+      onSelect={this.props.onSelect}
+      searchTerm={this.props.searchTerm}>{c}</Item>
     });
   }
 
@@ -39,8 +53,11 @@ class Menu extends React.Component {
     return (
       <div
       className="ignore-react-onclickoutside slds-lookup__menu"
-      role="listbox">
-      <ul className="slds-lookup__list" role="presentation" ref="list">
+      role="listbox"
+      ref="scroll">
+      <ul className="slds-lookup__list"
+      role="presentation"
+      ref="list">
       {this.renderItems()}
       </ul>
       </div>
