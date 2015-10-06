@@ -92,7 +92,7 @@ export const CheckboxObject = {
 
 	_onToggled () {
 		const blank = '';
-		const checked = this.getProperty('checkedValue') !== null;
+		const checked = this.isChecked();
 		const hidden = 'hidden';
 		const toggleSelector = this.getProperty('toggleSelector');
 

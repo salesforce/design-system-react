@@ -63,7 +63,7 @@ const RadioObject = Lib.merge({}, CheckboxObject, {
 	// TODO: with this approach, if they were to change the name after instantiation it would behave inconsistently,
 	// though that's a very uncommon use-case so I doubt it's a concern...
 	_onToggled () {
-		if (this.getProperty('checkedValue') !== null) {
+		if (this.isChecked()) {
 			const group = this._getGroup();
 			for (let index = 0, length = group.length; index < length; index++) {
 				if (group[index] && group[index] !== this) {
