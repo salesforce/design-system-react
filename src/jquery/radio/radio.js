@@ -33,11 +33,6 @@ let Radio = function Radio (element, options) {
 	this._initialize(this.options);
 };
 
-// TODO: consider cases of `CheckboxObject._someFunction.call(this);` and whether it's a solid pattern vs:
-// 1) overriding the whole function, redundant code and all (yuck) or
-// 2) providing hooks within the facade layer to allow additional functionality to be leveraged in the extending control
-//		like the cores do (not a terrible idea... ex: `if (this._evenMoreStuff) this._evenMoreStuff();`)
-
 // Prototype extension object
 const RadioObject = Lib.merge({}, CheckboxObject, {
 	_defaultProperties: {
@@ -60,8 +55,6 @@ const RadioObject = Lib.merge({}, CheckboxObject, {
 		this.check();
 	},
 
-	// TODO: with this approach, if they were to change the name after instantiation it would behave inconsistently,
-	// though that's a very uncommon use-case so I doubt it's a concern...
 	_onToggled () {
 		if (this.isChecked()) {
 			const group = this._getGroup();

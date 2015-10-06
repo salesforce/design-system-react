@@ -29,7 +29,6 @@ export const CheckboxObject = {
 		highlight: React.PropTypes.bool
 	},
 
-	// TODO: if all we are rendering is the label for react checkbox / radio we will need to make styles account for block controls
 	render () {
 		const labelClasses = {};
 		labelClasses[this.cssClasses.DISABLED] = this.props.disabled;
