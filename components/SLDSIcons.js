@@ -18,7 +18,7 @@ export const ButtonIcon = React.createClass({
     getDefaultProps() {
 
         return {
-            category: 'utility',
+            category: 'utility', // Utility Icon Reference: https://www.lightningdesignsystem.com/resources/icons#utility
         };
     },
 
@@ -42,7 +42,7 @@ export const ButtonIcon = React.createClass({
         if (this.props.hint) {
             className = className + ' slds-button__icon--hint';
         }
-        return <svg  aria-hidden='true' className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
+        return <svg aria-hidden='true' className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
     }
 
 });
@@ -51,7 +51,7 @@ export const Icon = React.createClass({
 
     getDefaultProps() {
         return {
-            category: 'standard',
+            category: 'utility',
         };
     },
 

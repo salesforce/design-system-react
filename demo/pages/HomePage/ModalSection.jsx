@@ -89,10 +89,11 @@ Utilize our detailed guidelines to confidently design excellent apps that fit ri
 */}
 
               <div className='slds-p-vertical--large'>
-                <SLDSButton flavor='brand' onClick={this.openModal}>
-                  Open Modal
-                </SLDSButton>
-                <SLDSModal 
+                <SLDSButton
+                  label='Open Modal'
+                  variant='brand'
+                  onClick={this.openModal} />
+                <SLDSModal
                   isOpen={this.state.modalIsOpen}
                   title={<span>Lightning Design System: Style with Ease</span>}
                   footer={[

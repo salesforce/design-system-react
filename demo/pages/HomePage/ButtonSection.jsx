@@ -37,7 +37,6 @@ module.exports = React.createClass( {
   render() {
     return (
 
-
             <div className='slds-p-around--medium'>
               <h3 className='slds-text-heading--medium slds-truncate'>
                 Button
@@ -47,9 +46,13 @@ module.exports = React.createClass( {
                 {require('raw-loader!../../code-snippets/SLDSButton.txt')}
               </PrismCode>
               <div className='slds-p-vertical--large'>
-                <SLDSButton flavor='brand' onClick={this.handleButtonClick}>
-                  Test Button
-                </SLDSButton>
+                <SLDSButton
+                  label='Test Button'
+                  variant='neutral'
+                  iconName='download'
+                  iconSize='small'
+                  iconPosition='left'
+                  onClick={this.handleButtonClick} />
               </div>
             </div>
 
