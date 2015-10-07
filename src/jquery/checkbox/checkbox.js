@@ -21,8 +21,7 @@ let Checkbox = function Checkbox (element, options) {
 	};
 
 	this.inputSelector = 'input[type="checkbox"]';
-	this.namespace = 'fu.checkbox';
-	this.rendered = (this.elements.wrapper.find(this.inputSelector).length > 0);
+	this.rendered = false;
 	this.template = $('<i />').append(template);
 
 	this._initializeState();
@@ -36,7 +35,7 @@ export const CheckboxObject = {
 	},
 
 	_bindUIEvents () {
-		this.elements.input.on('change.' + this.namespace, $.proxy(this._handleInputChange, this));
+		this.elements.input.on('change', $.proxy(this._handleInputChange, this));
 	},
 
 	_handleInputChange () {
@@ -56,6 +55,19 @@ export const CheckboxObject = {
 		return elements;
 	},
 
+	_onBeforeInitialize () {
+		if (this.options.checked && !this.options.checkedValue) {
+			this.options.checkedValue = this.options.value || this._defaultProperties.value;
+			delete this.options.checked;
+		}
+
+		if (this.elements.wrapper.find(this.inputSelector).length > 0) {
+			this._initElements(this.elements.wrapper, this.elements);
+			this._syncOptions(); // syncing options to provided markup
+			this.rendered = true;
+		}
+	},
+
 	_onEnabledOrDisabled () {
 		const disabled = this.getProperty('disabled');
 		const disabledAttr = 'disabled';
@@ -70,19 +82,10 @@ export const CheckboxObject = {
 	},
 
 	_onInitialized () {
-		if (this.options.checked && !this.getProperty('checkedValue')) {
-			this.setProperties({ checkedValue: this.getProperty('value') || '' });
-		}
-
 		if (!this.rendered) {
 			this._render();
 		} else {
-			this._initElements(this.elements.wrapper, this.elements);
-
-			// syncing properties to provided markup
-			this._syncProperties();
-
-			// ensuring there were no markup mistakes based on state
+			// ensuring there were no markup mistakes in regards to state
 			this._onEnabledOrDisabled();
 			this._onToggled();
 		}
@@ -155,19 +158,22 @@ export const CheckboxObject = {
 		this._onToggled();
 	},
 
-	_syncProperties () {
-		const value = this.elements.input.attr('value') || this.getProperty('value');
+	_syncOptions () {
+		const opts = {};
+		const toggleSelector = this.elements.input.attr('data-toggle');
+		const value = this.elements.input.attr('value') || this.options.value || this._defaultProperties.value;
 
-		this.setProperties({
-			addon: this.elements.control.hasClass(this.cssClasses.ADDON),
-			checkedValue: (this.elements.input.prop('checked')) ? value : this.getProperty('checkedValue'),
-			disabled: this.elements.input.prop('disabled') || this.getProperty('disabled'),
-			highlight: this.elements.control.hasClass('highlight'),
-			inline: this.elements.control.hasClass(this.cssClasses.INLINE),
-			text: this.elements.label.html(),
-			toggleSelector: this.elements.input.attr('data-toggle') || this.getProperty('toggleSelector'),
-			value: value
-		});
+		if (this.elements.control.hasClass(this.cssClasses.ADDON)) opts.addon = true;
+		if (this.elements.input.prop('checked')) opts.checkedValue = value;
+		if (this.elements.input.prop('disabled')) opts.disabled = true;
+		if (this.elements.control.hasClass('highlight')) opts.highlight = true;
+		if (this.elements.control.hasClass(this.cssClasses.INLINE)) opts.inline = true;
+		if (toggleSelector) opts.toggleSelector = toggleSelector;
+
+		opts.text = this.elements.label.html();
+		opts.value = value;
+
+		Lib.extend(this.options, opts);
 	},
 
 	destroy () {

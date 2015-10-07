@@ -25,8 +25,7 @@ let Radio = function Radio (element, options) {
 
 	this.addedToGroup = false;
 	this.inputSelector = 'input[type="radio"]';
-	this.namespace = 'fu.radio';
-	this.rendered = (this.elements.wrapper.find(this.inputSelector).length > 0);
+	this.rendered = false;
 	this.template = $('<i />').append(template);
 
 	this._initializeState();
@@ -72,11 +71,10 @@ const RadioObject = Lib.merge({}, CheckboxObject, {
 		CheckboxObject._renderDressings.call(this, elements);
 	},
 
-	_syncProperties () {
-		this.setProperties({
-			name: this.elements.input.attr('name') || this.getProperty('name')
-		});
-		CheckboxObject._syncProperties.call(this);
+	_syncOptions () {
+		const name = this.elements.input.attr('name');
+		if (name) this.options.name = name;
+		CheckboxObject._syncOptions.call(this);
 	},
 
 	destroy () {
