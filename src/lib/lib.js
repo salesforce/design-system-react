@@ -36,6 +36,18 @@ export function hasClass (element, className) {
 	return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;
 }
 
+export function addClass (element, className) {
+	if (element && typeof className === 'string' && !hasClass(element, className)) {
+		element.className += ' ' + className;
+	}
+}
+
+export function removeClass (element, className) {
+	if (element && typeof className === 'string') {
+		element.className = element.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+	}
+}
+
 export function offset (element) {
 	const rect = element.getBoundingClientRect();
 	
@@ -86,6 +98,8 @@ function WrappedElement (element) {
 	this[0] = element;
 	this.element = element;
 	this.hasClass = partial(hasClass, element);
+	this.addClass = partial(addClass, element);
+	this.removeClass = partial(removeClass, element);
 	this.offset = partial(offset, element);
 	this.outerHeight = partial(outerHeight, element);
 	this.outerWidth = partial(outerWidth, element);
