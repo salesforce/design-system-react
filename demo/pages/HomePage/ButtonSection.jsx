@@ -47,7 +47,7 @@ module.exports = React.createClass( {
               </PrismCode>
               <div className='slds-p-vertical--large'>
                 <SLDSButton
-                  label='Test Button'
+                  label='Test'
                   variant='neutral'
                   iconName='download'
                   iconSize='small'
