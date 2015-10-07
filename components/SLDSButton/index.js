@@ -67,6 +67,7 @@ class Button extends React.Component {
         <button className={this.getClassName()} {...props} onClick={click}>
           <Icon
           name={this.props.iconName}
+          category='utility'
           size={this.props.iconSize}
           className={'slds-icon'} />
           <span className="slds-assistive-text">{this.props.label}</span>

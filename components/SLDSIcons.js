@@ -51,7 +51,7 @@ export const Icon = React.createClass({
 
     getDefaultProps() {
         return {
-            category: 'utility',
+            category: 'standard',
         };
     },
 
