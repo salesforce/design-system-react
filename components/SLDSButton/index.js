@@ -79,11 +79,11 @@ class Button extends React.Component {
       return (
         <button className={this.getClassName()} {...props} onClick={click}>
 
-        <span>{this.props.iconPosition === 'right' ? this.props.label : null}</span>
+        {this.props.iconPosition === 'right' ? this.props.label : null}
 
         {this.renderIcon()}
 
-        <span>{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.props.label : null}</span>
+        {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.props.label : null}
 
         </button>
       );
