@@ -69,22 +69,16 @@ const Data = Base.Data.extend({
 		return this._data.length;
 	},
 	
-	add (addition, addIndex) {
-		if (Lib.isArray(addition)) {
-			addition.forEach( (item, itemIndex) => {
-				if (addIndex) {
-					this._data.splice(addIndex + itemIndex, 0, item);
-				} else {
-					this._data.push(item._item);
-				}
-			});
-		} else {
-			if (addIndex) {
-				this._data.splice(addIndex, 0, addition._item);
+	add (addition, options) {
+		const itemAddition = Lib.isArray(addition) ? addition : [addition];
+
+		itemAddition.forEach( (item, itemIndex) => {
+			if (options.at) {
+				this._data.splice(options.at + itemIndex, 0, item);
 			} else {
-				this._data.push(addition._item);
+				this._data.push(item._item);
 			}
-		}
+		});
 		
 		return this;
 	},

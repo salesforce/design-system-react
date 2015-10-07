@@ -54,6 +54,7 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 				inputValue = inputValue.replace(/[ ]*\,[ ]*/, '');
 			}
 
+			// TODO: This will need to be updated when typeahead feature is added
 			this.selectItem({
 				text: inputValue,
 				value: inputValue

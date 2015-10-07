@@ -32,14 +32,6 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 		this.elements.wrapper.on('keyup.fu.tree', '.pillbox-add-item', $.proxy(this._keyUp, this));
 		this.elements.wrapper.on('click.fu.tree', '.pill-group > .pill', $.proxy(this._itemClicked, this));
 
-		if (this.options.onAdd) {
-			this._canSelect = this._onAdd;
-		}
-
-		if (this.options.onRemove) {
-			this._canDeselect = this._onRemove;
-		}
-
 		this._render();
 
 		this.trigger('initialized');
@@ -71,6 +63,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 				inputValue = inputValue.replace(/[ ]*\,[ ]*/, '');
 			}
 
+			// TODO: This will need to be updated when typeahead feature is added
 			this.selectItem({
 				text: inputValue,
 				value: inputValue
@@ -80,18 +73,26 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 		}
 	},
 
-	_onAdd (newSelection, select) {
-		this.options.onAdd([newSelection._item], (itemsToSelect) => {
-			if (itemsToSelect) {
-				select();
+	_onAdd (newSelection) {
+		return new Promise((resolve) => {
+			if (this.options.onAdd) {
+				this.options.onAdd([newSelection._item], (itemsToSelect) => {
+					resolve(itemsToSelect);
+				});
+			} else {
+				resolve();
 			}
 		});
 	},
 
-	_onRemove (newDeselection, deselect) {
-		this.options.onRemove([newDeselection._item], (itemsToDeselect) => {
-			if (itemsToDeselect) {
-				deselect();
+	_onRemove (newDeselection) {
+		return new Promise((resolve) => {
+			if (this.options.onRemove) {
+				this.options.onRemove([newDeselection._item], (itemsToDeselect) => {
+					resolve(itemsToDeselect);
+				});
+			} else {
+				resolve();
 			}
 		});
 	},

@@ -45,7 +45,7 @@ const Multiselectable = {
 		const _select = Lib.bind(function _select () {
 			if (this.getProperty('multiSelect')) {
 				if (selectIndex) {
-					selection.add(item, selectIndex);
+					selection.add(item, { at: selectIndex });
 				} else {
 					selection.add(item);
 				}
