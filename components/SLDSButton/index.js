@@ -39,7 +39,6 @@ class Button extends React.Component {
 
   getClassName() {
     let isStateful = this.props.stateful && this.state.active ? true : false;
-
     return classNames(this.props.className, 'slds-button', {
       [`slds-button--${this.props.variant}`]: this.props.variant,
       ['slds-is-selected']: isStateful,
@@ -61,8 +60,8 @@ class Button extends React.Component {
   render() {
     const props = omit('className', this.props);
     const click = createChainedFunction(this.props.onClick, this.onClick.bind(this));
-    const labelClasses = this.props.variant === 'icon' ? 'slds-assistive-text' : '';
 
+    //If the button is only an icon render this:
     if(this.props.variant === 'icon'){
       return (
         <button className={this.getClassName()} {...props} onClick={click}>
@@ -72,15 +71,19 @@ class Button extends React.Component {
           className={'slds-icon'} />
           <span className="slds-assistive-text">{this.props.label}</span>
         </button>
-      )
-    }else{
+      );
+    }
+    //Else we assume the button has a visible label (with or without an icon):
+    else{
       return (
         <button className={this.getClassName()} {...props} onClick={click}>
-        {this.props.iconPosition === 'right' ? this.props.label : null}
+
+        <span aria-live="assertive">{this.props.iconPosition === 'right' ? this.props.label : null}</span>
 
         {this.renderIcon()}
 
-        {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.props.label : null}
+        <span aria-live="assertive">{(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.props.label : null}</span>
+
         </button>
       );
     }
@@ -91,7 +94,7 @@ Button.propTypes = {
   label: React.PropTypes.string.isRequired,
   variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'icon']),
   iconName: React.PropTypes.string,
-  iconSize: React.PropTypes.string,
+  iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
   iconPosition: React.PropTypes.oneOf(['left', 'right']),
 }
 

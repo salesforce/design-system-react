@@ -1,11 +1,9 @@
 
 
-<SLDSButton
-  label='Test Button'
-  variant='neutral'
-  iconName='download'
-  iconSize='small'
-  iconPosition='left'
-  onClick={this.handleButtonClick} />
+<SLDSButton label='Test Button' variant='neutral' iconName='download' iconSize='small' iconPosition='left' onClick={this.handleButtonClick} />
 
 * Only label is required
+* variant must be neutral, brand, or icon
+* iconSize must be small, medium, or large
+* iconPosition must be left or right
+

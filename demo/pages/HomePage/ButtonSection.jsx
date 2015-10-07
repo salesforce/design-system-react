@@ -51,7 +51,7 @@ module.exports = React.createClass( {
                   variant='neutral'
                   iconName='download'
                   iconSize='small'
-                  iconPosition='left'
+                  iconPosition='right'
                   onClick={this.handleButtonClick} />
               </div>
             </div>
