@@ -3,7 +3,7 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
-require('../../less/datepicker.less');
+// require('../../less/datepicker.less');
 
 export const CONTROL = 'datepicker';
 

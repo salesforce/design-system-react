@@ -20,33 +20,52 @@ let Checkbox = function Checkbox (element, options) {
 		wrapper: $(element)
 	};
 
-	this.rendered = (this.elements.wrapper.find('input[type="checkbox"]').length > 0);
-	this.template = $(template);
+	this.inputSelector = 'input[type="checkbox"]';
+	this.rendered = false;
+	this.template = $('<i />').append(template);
 
 	this._initializeState();
 	this._initialize(this.options);
 };
 
 // Prototype extension object
-const CheckboxObject = {
+export const CheckboxObject = {
 	_defaultProperties: {
 		toggleSelector: ''
 	},
 
 	_bindUIEvents () {
-		this.elements.input.on('change.fu.checkbox', $.proxy(function () { this.toggle(); }, this));
+		this.elements.input.on('change', $.proxy(this._handleInputChange, this));
+	},
+
+	_handleInputChange () {
+		this.toggle();
 	},
 
 	_initElements ($base, elements) {
-		const dot = '.';
-		const els = elements || {};
+		const block = '.' + this.cssClasses.BLOCK;
+		const control = '.' + this.cssClasses.CONTROL;
+		const wrapper = elements.wrapper;
 
-		els.block = ($base.is(dot + this.cssClasses.BLOCK)) ? $base : $base.find(dot + this.cssClasses.BLOCK);
-		els.control = ($base.is(dot + this.cssClasses.CONTROL)) ? $base : $base.find(dot + this.cssClasses.CONTROL);
-		els.input = $base.find('input[type="checkbox"]');
-		els.label = $base.find(dot + this.cssClasses.LABEL);
+		elements.block = (wrapper.is(block)) ? wrapper : $base.find(block);
+		elements.control = (wrapper.is(control)) ? wrapper : $base.find(control);
+		elements.input = $base.find(this.inputSelector);
+		elements.label = $base.find('.' + this.cssClasses.LABEL);
 
-		return els;
+		return elements;
+	},
+
+	_onBeforeInitialize () {
+		if (this.options.checked && !this.options.checkedValue) {
+			this.options.checkedValue = this.options.value || this._defaultProperties.value;
+			delete this.options.checked;
+		}
+
+		if (this.elements.wrapper.find(this.inputSelector).length > 0) {
+			this._initElements(this.elements.wrapper, this.elements);
+			this._syncOptions(); // syncing options to provided markup
+			this.rendered = true;
+		}
 	},
 
 	_onEnabledOrDisabled () {
@@ -66,20 +85,7 @@ const CheckboxObject = {
 		if (!this.rendered) {
 			this._render();
 		} else {
-			this._initElements(this.elements.wrapper, this.elements);
-
-			// syncing state to provided markup
-			this.setProperties({
-				addon: this.elements.control.hasClass(this.cssClasses.ADDON),
-				checked: this.elements.input.prop('checked'),
-				disabled: this.elements.input.prop('disabled'),
-				highlight: this.elements.control.hasClass('highlight'),
-				inline: this.elements.control.hasClass(this.cssClasses.INLINE),
-				text: this.elements.label.html(),
-				toggleSelector: this.elements.input.attr('data-toggle')
-			});
-
-			// ensuring there were no markup mistakes based on state
+			// ensuring there were no markup mistakes in regards to state
 			this._onEnabledOrDisabled();
 			this._onToggled();
 		}
@@ -89,7 +95,7 @@ const CheckboxObject = {
 
 	_onToggled () {
 		const blank = '';
-		const checked = this.getProperty('checked');
+		const checked = this.isChecked();
 		const hidden = 'hidden';
 		const toggleSelector = this.getProperty('toggleSelector');
 
@@ -108,9 +114,29 @@ const CheckboxObject = {
 
 	_render () {
 		let $el = this.template.clone();
-		const addon = this.getProperty('addon');
-		const inline = this.getProperty('inline');
+		const block = '.' + this.cssClasses.BLOCK;
+		const control = '.' + this.cssClasses.CONTROL;
 		const elements = this._initElements($el, this.elements);
+		const itag = '<i />';
+
+		this._renderDressings(elements);
+
+		if (this.getProperty('addon') || this.getProperty('inline') || elements.wrapper.is(block)) {
+			$el = $(itag).append($el.find(control));
+		}
+		if (elements.wrapper.is(control)) {
+			$el = $(itag).append($el.find(control).children());
+		}
+
+		elements.wrapper.empty();
+		elements.wrapper.append($el.children());
+
+		this.rendered = true;
+	},
+
+	_renderDressings (elements) {
+		const addon = this.getProperty('addon');
+		const value = 'value';
 
 		if (addon) {
 			elements.control.addClass(this.cssClasses.ADDON);
@@ -121,22 +147,33 @@ const CheckboxObject = {
 			elements.control.addClass(this.cssClasses.HIGHLIGHT);
 		}
 
-		if (inline || addon) {
+		if (this.getProperty('inline') || addon) {
 			elements.control.addClass(this.cssClasses.INLINE);
 		}
 
+		elements.input.attr(value, this.getProperty(value));
 		elements.label.append(this.getProperty('text'));
 
 		this._onEnabledOrDisabled();
 		this._onToggled();
+	},
 
-		if (elements.wrapper.is('.' + this.cssClasses.BLOCK) || inline || addon) {
-			$el = elements.control;
-		}
-		elements.wrapper.empty();
-		elements.wrapper.append($el);
+	_syncOptions () {
+		const opts = {};
+		const toggleSelector = this.elements.input.attr('data-toggle');
+		const value = this.elements.input.attr('value') || this.options.value || this._defaultProperties.value;
 
-		this.rendered = true;
+		if (this.elements.control.hasClass(this.cssClasses.ADDON)) opts.addon = true;
+		if (this.elements.input.prop('checked')) opts.checkedValue = value;
+		if (this.elements.input.prop('disabled')) opts.disabled = true;
+		if (this.elements.control.hasClass('highlight')) opts.highlight = true;
+		if (this.elements.control.hasClass(this.cssClasses.INLINE)) opts.inline = true;
+		if (toggleSelector) opts.toggleSelector = toggleSelector;
+
+		opts.text = this.elements.label.html();
+		opts.value = value;
+
+		Lib.extend(this.options, opts);
 	},
 
 	destroy () {
@@ -148,13 +185,8 @@ const CheckboxObject = {
 // Merging into prototype
 Lib.merge(Checkbox.prototype, CheckboxCore, Events, State, CheckboxObject);
 
-// Legacy methods
-const legacyMethods = {};
-
 // Framework setup
-Checkbox = Lib.runHelpers('jquery', CONTROL, Checkbox, {
-	legacyMethods
-});
+Checkbox = Lib.runHelpers('jquery', CONTROL, Checkbox);
 
 // Exporting
 export default Checkbox;

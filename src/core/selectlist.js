@@ -15,7 +15,7 @@ const nodeModulesDir = path.join('../..', __dirname, 'node_modules');
 
 console.log('[nodeModulesDir]:', nodeModulesDir);
 
-require('../../node_modules/@salesforce-ux/design-system/scss/index.scss');
+// require('../../less/selectlist.less');
 require('../../node_modules/@salesforce-ux/design-system/scss/components/picklists/flavors/base/index.scss');
 // import PicklistsStyles from '@salesforce-ux/design-system/scss/components/picklists/flavors/base/index';
 // require('@salesforce-ux/scss/components/buttons/flavors/base/index');
