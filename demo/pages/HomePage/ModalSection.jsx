@@ -97,8 +97,8 @@ Utilize our detailed guidelines to confidently design excellent apps that fit ri
                   isOpen={this.state.modalIsOpen}
                   title={<span>Lightning Design System: Style with Ease</span>}
                   footer={[
-                    <SLDSButton label='Cancel' variant='neutral' onClick={this.closeModal} />,
-                    <SLDSButton label='Save' variant='brand' onClick={this.handleSubmitModal} />
+                    <SLDSButton key='cancelBtn' label='Cancel' variant='neutral' onClick={this.closeModal} />,
+                    <SLDSButton key='saveBtn' label='Save' variant='brand' onClick={this.handleSubmitModal} />
                   ]}
                   onRequestClose={this.closeModal}>
                   {this.getModalContent()}
