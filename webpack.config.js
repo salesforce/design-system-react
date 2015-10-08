@@ -2,6 +2,8 @@ var webpack = require('webpack');
 
 var entries = ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server'];
 var path = require('path');
+var node_modules_dir = path.join(__dirname, 'node_modules');
+
 var config = {
 	entry: {
 		react: entries.concat('./src/react/examples.js'),

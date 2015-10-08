@@ -10,7 +10,16 @@ import Openable from '../traits/openable';
 import Selectable from '../traits/selectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
-require('../../less/selectlist.less');
+const path = require('path');
+const nodeModulesDir = path.join('../..', __dirname, 'node_modules');
+
+console.log('[nodeModulesDir]:', nodeModulesDir);
+
+require('../../node_modules/@salesforce-ux/design-system/scss/index.scss');
+require('../../node_modules/@salesforce-ux/design-system/scss/components/picklists/flavors/base/index.scss');
+// import PicklistsStyles from '@salesforce-ux/design-system/scss/components/picklists/flavors/base/index';
+// require('@salesforce-ux/scss/components/buttons/flavors/base/index');
+// require('@salesforce-ux/design-system/scss/components/picklists/flavors/base/index');
 
 export const CONTROL = 'selectlist';
 
