@@ -9,6 +9,8 @@ describe('SLDSButton: ',  function(){
     alert('Button Clicked');
   };
 
+  //TODO: create function to generate button component and pass to each it block
+
   beforeEach(function() {
     sandbox = sinon.sandbox.create();
     reactCmp = TestUtils.renderIntoDocument(<SLDSButton label='Test' variant='brand' icon='download' onClick={handleClick} />);
@@ -19,6 +21,19 @@ describe('SLDSButton: ',  function(){
     sandbox.restore();
   });
 
+  describe('variants', function() {
+  });
+
+  describe('behavior', function() {
+    it('button onClick invokes method from props', function() {
+      let onClick = sinon.spy();
+      let reactCmp = TestUtils.renderIntoDocument(<SLDSButton label='Test' onClick={onClick} />);
+      let button = React.findDOMNode(reactCmp);
+      TestUtils.Simulate.click(button);
+      expect(onClick.calledOnce).to.be.true;
+    });
+  });
+
   it('button renders', function() {
     expect(button).to.not.equal(null);
   });
@@ -26,16 +41,6 @@ describe('SLDSButton: ',  function(){
   it('button renders label from props', function() {
     let label = button.innerText;
     expect(label).to.equal('Test');
-  });
-
-  it('button onClick invokes method from props', function() {
-    let _savedAlert = window.alert;
-    try {
-      let spy = sinon.spy(window, 'alert');
-      TestUtils.Simulate.click(button);
-      sinon.assert.called(spy);
-    }
-    finally { window.alert = _savedAlert; }
   });
 
 });

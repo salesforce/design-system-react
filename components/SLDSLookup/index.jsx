@@ -36,6 +36,10 @@ class SLDSLookup extends React.Component {
     };
   }
 
+  componentDidUpdate(){
+    React.findDOMNode(this.refs.lookup).focus();
+  }
+
   //=================================================
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
@@ -72,7 +76,6 @@ class SLDSLookup extends React.Component {
   handleDeleteSelected() {
     this.setState({
       selectedIndex: null,
-      isOpen: false
     });
   }
 
@@ -181,6 +184,7 @@ class SLDSLookup extends React.Component {
             <InputIcon name="search"/>
             <input
               id="lookup"
+              ref="lookup"
               className={inputClasses}
               type="text"
               aria-label="lookup"
