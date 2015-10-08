@@ -40,7 +40,7 @@
 		</header>
 
 		<!-- Begin Checkbox -->
-		<section class="example-group fuelux">
+		<section class="checkbox-examples example-group fuelux">
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12">
@@ -49,22 +49,22 @@
 							<div class="example">
 								<div class="checkbox" id="myCheckbox1">
 									<label class="checkbox-custom">
-										<input class="sr-only" data-toggle=".toggleSelector1" type="checkbox" value="">
+										<input class="sr-only" data-toggle=".checkboxToggleSelector1" type="checkbox" value="value1">
 										<span class="checkbox-label">Custom checkbox unchecked on initialization</span>
 									</label>
 								</div>
 								<div class="checkbox">
 									<label class="checkbox-custom checked disabled" data-initialize="checkbox">
-										<input checked disabled class="sr-only" type="checkbox" value="">
+										<input checked disabled class="sr-only" type="checkbox" value="value2">
 										<span class="checkbox-label">Custom checkbox checked disabled on page load</span>
 									</label>
 								</div>
 								<label class="checkbox-custom checkbox-inline checked highlight" data-initialize="checkbox">
-									<input checked class="sr-only" type="checkbox" value="">
+									<input checked class="sr-only" type="checkbox" value="value3">
 									<span class="checkbox-label">Custom inline checkbox checked on page load</span>
 								</label>
 								<label class="checkbox-custom checkbox-inline disabled" data-initialize="checkbox">
-									<input disabled class="sr-only" type="checkbox" value="">
+									<input disabled class="sr-only" type="checkbox" value="value4">
 									<span class="checkbox-label">Custom inline checkbox unchecked disabled on page load</span>
 								</label>
 
@@ -76,7 +76,7 @@
 									<!--<input type="text" class="form-control">-->
 								<!--</div>-->
 
-								<div class="toggleSelector1 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">toggleSelector item 1</div>
+								<div class="checkboxToggleSelector1 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">checkboxToggleSelector item 1</div>
 							</div>
 						</section>
 
@@ -85,10 +85,10 @@
 							<div class="example">
 								<div class="checkbox" id="myCheckbox2"></div>
 								<div id="myCheckbox3"></div>
-								<div id="myCheckbox4" style="display: inline;"></div>
+								<label class="checkbox-custom checkbox-inline" id="myCheckbox4"></label>
 								<div id="myCheckbox5" style="display: inline;"></div>
 
-								<div class="toggleSelector2 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">toggleSelector item 2</div>
+								<div class="checkboxToggleSelector2 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">checkboxToggleSelector item 2</div>
 							</div>
 						</section>
 
@@ -97,10 +97,10 @@
 							<div class="example">
 								<div class="checkbox" id="myCheckbox6"></div>
 								<div id="myCheckbox7"></div>
-								<div id="myCheckbox8" style="display: inline;"></div>
+								<label class="checkbox-custom checkbox-inline" id="myCheckbox8"></label>
 								<div id="myCheckbox9" style="display: inline;"></div>
 
-								<div class="toggleSelector3 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">toggleSelector item 3</div>
+								<div class="checkboxToggleSelector3 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">checkboxToggleSelector item 3</div>
 							</div>
 						</section>
 					</div>
@@ -108,6 +108,83 @@
 			</div>
 		</section>
 		<!-- End Checkbox -->
+
+		<!-- Begin Radio -->
+		<section class="radio-examples example-group fuelux">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<section class="declarative">
+							<h1>Radio Declarative Example (backwards compatible)</h1>
+							<div class="example">
+								<div class="radio" id="myRadio1">
+									<label class="radio-custom">
+										<input class="sr-only" data-toggle=".radioToggleSelector1" name="radioGroup1" type="radio" value="value1">
+										<span class="radio-label">Custom radio unchecked on initialization</span>
+									</label>
+								</div>
+								<div class="radio" id="myRadio2">
+									<label class="radio-custom">
+										<input class="sr-only" name="radioGroup1" type="radio" value="value2">
+										<span class="radio-label">Custom radio unchecked on initialization</span>
+									</label>
+								</div>
+								<div class="radio">
+									<label class="radio-custom checked disabled" data-initialize="radio">
+										<input checked class="sr-only" disabled name="radioGroup1" type="radio" value="value3">
+										<span class="radio-label">Custom radio checked disabled on page load</span>
+									</label>
+								</div>
+								<!-- TODO: why is inline highlighting messed up? also why does the radio button shift on hover? -->
+								<label class="radio-custom radio-inline hightlight" data-initialize="radio">
+									<input class="sr-only" name="radioGroup2" type="radio" value="value4">
+									<span class="radio-label">Custom radio unchecked on page load</span>
+								</label>
+								<label class="radio-custom radio-inline" data-initialize="radio">
+									<input class="sr-only" name="radioGroup2" type="radio" value="value5">
+									<span class="radio-label">Custom radio unchecked on page load</span>
+								</label>
+								<label class="radio-custom radio-inline checked disabled" data-initialize="radio">
+									<input checked class="sr-only" disabled name="radioGroup2" type="radio" value="value6">
+									<span class="radio-label">Custom radio checked disabled on page load</span>
+								</label>
+
+								<div class="radioToggleSelector1 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">radioToggleSelector item 1</div>
+							</div>
+						</section>
+
+						<section class="imperative">
+							<h1>Radio Imperative Example (mostly backwards compatible)</h1>
+							<div class="example">
+								<div id="myRadio3"></div>
+								<div class="radio" id="myRadio4"></div>
+								<div id="myRadio5"></div>
+								<div id="myRadio6" style="display: inline;"></div>
+								<label class="radio-custom radio-inline" id="myRadio7"></label>
+								<div id="myRadio8" style="display: inline;"></div>
+
+								<div class="radioToggleSelector2 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">radioToggleSelector item 2</div>
+							</div>
+						</section>
+
+						<section class="new-api">
+							<h1>Radio New API Example</h1>
+							<div class="example">
+								<div id="myRadio9"></div>
+								<div class="radio" id="myRadio10"></div>
+								<div id="myRadio11"></div>
+								<div id="myRadio12" style="display: inline;"></div>
+								<label class="radio-custom radio-inline" id="myRadio13"></label>
+								<div id="myRadio14" style="display: inline;"></div>
+
+								<div class="radioToggleSelector3 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">radioToggleSelector item 3</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Radio -->
 
 		<!-- Selectlist -->
 		<section class="example-group fuelux">

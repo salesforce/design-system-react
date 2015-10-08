@@ -18,38 +18,50 @@ export const CheckboxObject = {
 
 	propTypes: {
 		disabled: React.PropTypes.bool,
-		checked: React.PropTypes.bool,
+		checkedValue: React.PropTypes.oneOfType([
+			React.PropTypes.string,
+			React.PropTypes.oneOf([ null ])
+		]),
 		text: React.PropTypes.string,
 		value: React.PropTypes.string,
 		inline: React.PropTypes.bool,
 		addon: React.PropTypes.bool,
 		highlight: React.PropTypes.bool
 	},
-	
-	_renderText () {
-		if (this.props.text && !this.props.addon) {
-			return <span className="checkbox-label">{this.props.text}</span>;
-		}
-	},
 
 	render () {
 		const labelClasses = {};
 		labelClasses[this.cssClasses.DISABLED] = this.props.disabled;
-		labelClasses[this.cssClasses.CHECKED] = this.props.checked;
+		labelClasses[this.cssClasses.CHECKED] = this.isChecked();
 		labelClasses[this.cssClasses.INLINE] = this.props.inline || this.props.addon;
 		labelClasses[this.cssClasses.ADDON] = this.props.addon;
 		labelClasses[this.cssClasses.HIGHLIGHT] = this.props.highlight;
 
 		return (
-			<label className={classNames(this.cssClasses.CONTROL, labelClasses)} onClick={this.toggle}>
-				<input className="sr-only" type="checkbox" disabled={this.props.disabled} checked={this.props.checked} value={this.props.value || this.props.text} onClick={this._stopPropagation} />{this._renderText()}
+			<label className={classNames(this.cssClasses.CONTROL, labelClasses)} onClick={this._onClick}>
+				{this._renderInput()}
+				{this._renderText()}
 			</label>
 		);
+	},
+
+	_onClick () {
+		this.toggle();
+	},
+
+	_renderInput () {
+		return <input className="sr-only" type="checkbox" disabled={this.props.disabled} checked={this.isChecked()} value={this.props.value || ''} onClick={this._stopPropagation} />;
+	},
+
+	_renderText () {
+		if (this.props.text && !this.props.addon) {
+			return <span className={this.cssClasses.LABEL}>{this.props.text}</span>;
+		}
 	},
 	
 	_stopPropagation (e) {
 		e.stopPropagation();
-		return false;
+		// return false;	//TODO: it was yelling about this, saying it would be deprecated... should we remove?
 	}
 };
 

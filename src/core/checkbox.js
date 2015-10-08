@@ -19,17 +19,17 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 		HIGHLIGHT: 'highlight'
 	},
 
-	// Set the defaults
 	_defaultProperties: {
-		checked: false,
+		checkedValue: null,
 		inline: false,
 		addon: false,
 		highlight: false,
-		text: ''			// TODO: should this be "label" ?
+		text: '',			// TODO: should this be "label" ?
+		value: ''
 	},
-	
+
 	isChecked () {
-		return !!this.getProperty('checked');
+		return this.getProperty('checkedValue') === this.getProperty('value');
 	},
 	
 	toggle (_checked) {
@@ -42,8 +42,10 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 		} else {
 			return;
 		}
-		
-		this.setProperties({ checked });
+
+		const checkedValue = checked ? this.getProperty('value') : null;
+		this.setProperties({ checkedValue });
+
 		if (Lib.isFunction(this._onToggled)) this._onToggled();
 
 		if (checked) {
@@ -53,6 +55,7 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 		}
 		
 		this.trigger('changed', checked);
+		this.trigger('checkedValueChanged', checkedValue);
 	},
 	
 	check () {

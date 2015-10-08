@@ -4,6 +4,7 @@ import tree from './tree/example';
 import wizard from './wizard/example';
 import loader from './loader/example';
 import checkbox from './checkbox/example';
+import radio from './radio/example';
 import search from './search/example';
 import pillbox from './pillbox/example';
 
@@ -13,5 +14,6 @@ tree(document.getElementById('tree'));
 wizard(document.getElementById('wizard'));
 loader(document.getElementById('loader'));
 checkbox(document.getElementById('checkbox'));
+radio(document.getElementById('radio'));
 search(document.getElementById('search'));
 pillbox(document.getElementById('pillbox'));
