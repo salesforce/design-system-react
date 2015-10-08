@@ -52,17 +52,17 @@ export default function (element) {
 			const selectlists = this.state.models.map((model, index) => {
 				return (
 					<section className="example-group" key={index}>
-						<h1>Selectlist example (selectlist{index + 1})</h1>
+						<h1 className="slds-text-heading--large">Selectlist example (selectlist{index + 1})</h1>
 
 						<div className="example">
 							<Selectlist {...model} onChanged={this._handleModelChange.bind(this, index)}/>
 						</div>
 
 						<div className="btn-panel action">
-							<button className="btn btn-default" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
-							<button className="btn btn-default" onClick={this.setSelection.bind(this, index)}>set by object</button>
-							<button className="btn btn-default" onClick={this.enable.bind(this, index)}>enable</button>
-							<button className="btn btn-default" onClick={this.disable.bind(this, index)}>disable</button>
+							<button className="slds-button--neutral" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
+							<button className="slds-button--neutral" onClick={this.setSelection.bind(this, index)}>set by object</button>
+							<button className="slds-button--neutral" onClick={this.enable.bind(this, index)}>enable</button>
+							<button className="slds-button--neutral" onClick={this.disable.bind(this, index)}>disable</button>
 						</div>
 					</section>
 				);

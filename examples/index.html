@@ -4,66 +4,73 @@
 <head>
 	<meta charset=utf-8/>
 	<title>Fuel UX Facades</title>
-	<!-- <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"> -->
-	<!-- <link href="/node_modules/fuelux/dist/css/fuelux.min.css" rel="stylesheet"> -->
-
-	<!-- TO-DO: Combine these -->
-	<!-- <link href="/examples/fuelux-mctheme.min.css" rel="stylesheet"> -->
-	<!-- <link href="/examples/docs.css" rel="stylesheet"> -->
-	<!-- <link href="/examples/styles.css" rel="stylesheet"> -->
 	<link href="/examples/assets/styles/slds.css" rel="stylesheet">
+	<style>
+		.site-masthead {
+			height: 11.25rem;
+			padding: 1rem 2rem;
+			background-color: #16325c;
+			color: #fff;
+		}
+		.masthead-icon {
+			width: 60px;
+			height: 67px;
+		}
+		.masthead-heading {
+			color: #A8B8D0;
+		}
+		.masthead-subheading {
+			font-size: 3rem;
+		}
+		.site-text-introduction {
+			margin-bottom: 1rem;
+			font-size: 1.125rem;
+			font-weight: 300;
+			padding: 30px;
+		}
+		.facade-logo {
+			width:50%;
+		}
+	</style>
 </head>
 
 <body>
-	<header class="navbar navbar-fixed-top fu-docs-nav" role="banner">
-		<div class="container">
-			<div class="navbar-header">
-				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".fu-navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a href="/examples/index.html" class="navbar-brand">Fuel UX</a>
-			</div>
-			<nav class="collapse navbar-collapse fu-navbar-collapse" role="navigation">
-				<ul class="nav navbar-nav">
-					<li>
-						<a href="/examples/react/">React</a>
-					</li>
-					<li>
-						<a href="/examples/jquery/">jQuery</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</header>
-	<section class="example-group fuelux">
-
-		<div class="container">
-			<div class="jumbotron">
-			<p>
-				Testing a core abstraction layer with many facades approach for FuelUX.
-			</p>
-			</div>
-
-				<div class="row">
-					<div class="col-sm-4" id="example-link--react">
-						<a href="react/">
-							<img src="assets/react-logo.png">
-							<span class="sr-only sr-only-focusable">React Component</span>
-						</a>
-					</div>
-					<div class="col-sm-4" id="example-link--jquery">
-						<a href="jquery/">
-							<img src="assets/jquery-logo.png">
-							<span class="sr-only sr-only-focusable">jQuery Component</span>
-						</a>
-					</div>
+	<header class="site-masthead slds-grid">
+		<div class="site-masthead-title slds-col slds-has-flexi-truncate slds-align-middle">
+			<div class="slds-media slds-media--center slds-media--responsive">
+				<span class="slds-media__figure"><img class="masthead-icon" src="https://www.lightningdesignsystem.com/assets/images/header-components.svg" alt=""></span>
+				<div class="slds-media__body">
+					<div class="masthead-heading">Fuel UX</div>
+					<div class="masthead-subheading">Facades</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</header>
+
+	<p class="site-text-introduction">
+		Lightning Design System components have been implemented natively across the following facades:
+	</p>
+
+	<div class="slds-grid slds-grid--align-center">
+		<div class="slds-size--1-of-2 slds-col--padded">
+			<div class="slds-grid">
+				<div class="slds-text-align--center slds-align-middle">
+					<a href="jquery/">
+						<img src="assets/jquery-logo.png" class="facade-logo">
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="slds-size--1-of-2 slds-col--padded">
+			<div class="slds-grid">
+				<div class="slds-text-align--center slds-align-middle">
+					<a href="react/">
+						<img src="assets/react-logo.png" class="facade-logo">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
