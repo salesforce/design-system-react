@@ -58,7 +58,6 @@ module.exports = React.createClass( {
   },
 
   componentDidMount () {
-    Modal.setAppElement(SLDSSettings.getAppElement());
     //console.log('!!! window.activeElement !!! ',document.activeElement);
     this.setState({returnFocusTo:document.activeElement})
     if(!this.state.revealed){
