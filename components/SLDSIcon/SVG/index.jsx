@@ -18,20 +18,29 @@ module.exports = React.createClass({
 
   getDefaultProps () {
     return {
-      name:'announcenent',
-      fill:'#fff'
+      name:'announcenent'
     };
   },
 
-  getIcon (name) {
-    return SLDS_ICONS_UTIL[name.toLowerCase()];
+  getPaths (data) {
+    console.log('DATA: ',data);
+    if(data instanceof Array){
+      return data.map((item)=>{
+        return <path {...item} />;
+      });
+    }
+    return <path {...data} />;
+  },
+
+  getSVG (name) {
+    const data = SLDS_ICONS_UTIL[name.toLowerCase()];
+    console.log('DATA: ',data);
+    return <svg className={this.props.className} {...this.props} viewBox={SLDS_ICONS_UTIL.viewBox}>{this.getPaths(data)}</svg>;
   },
 
   render () {
       return (
-        <svg {...this.props} viewBox='0 0 24 24'>
-          { this.getIcon(this.props.name) }
-        </svg>
+        this.getSVG(this.props.name)
       );
   }
 });
