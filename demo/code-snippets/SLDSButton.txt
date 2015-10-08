@@ -1,13 +1,18 @@
 
 <SLDSButton
-  label='Test Button'
+  label='Neutral'
   variant='neutral'
+  disabled={false}
   iconName='download'
   iconSize='small'
-  iconPosition='left'
+  iconPosition='right'
   onClick={this.handleButtonClick} />
 
 * Only label is required
-* variant must be neutral, brand, or icon
-* iconSize must be small, medium, or large
-* iconPosition must be left or right
+
+Below are component prop defaults and available options:
+* variant='base' ('neutral', 'brand', 'icon')
+* disabled='false'
+* iconSize='medium' ('x-small', 'medium', 'small', 'large')
+* iconPosition='left'('left', 'right', 'large')
+
