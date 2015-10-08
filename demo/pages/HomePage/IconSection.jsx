@@ -13,7 +13,7 @@ import React from 'react';
 import SLDSButton from '../../../components/SLDSButton';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
-import SLDSIcon from '../../../components/SLDSIcon';
+import SLDSUtilityIcon from '../../../components/SLDSUtilityIcon';
 
 
 
@@ -42,11 +42,10 @@ module.exports = React.createClass( {
               <h3 className='slds-text-heading--medium slds-truncate'>
                 Utility Icon
               </h3>
-{/*
-
-*/}
               <div className='slds-p-vertical--large'>
-                <SLDSIcon name='adduser'/>
+                <div className='slds-input-has-icon slds-input-has-icon--right'>
+                  <SLDSUtilityIcon name='adduser' className='slds-input__icon slds-icon-text-default'/>
+                </div>
               </div>
             </div>
 

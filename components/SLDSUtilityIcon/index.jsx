@@ -17,11 +17,7 @@ import SVG from './SVG';
 
 module.exports = React.createClass( {
 
-  onClick() {
-    this.setState({ active: !this.state.active });
-  },
-
   render () { 
-    return <SVG name='adduser' className='slds-input__icon slds-icon-text-default' width={100} height={100} />;
+    return <SVG {...this.props} />;
   }
 });
