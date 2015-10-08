@@ -9,7 +9,7 @@ import Multiselectable from '../traits/multiselectable';
 
 export const CONTROL = 'tree';
 
-require('../../less/tree.less');
+// require('../../less/tree.less');
 
 const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	// CSS classes used within this control

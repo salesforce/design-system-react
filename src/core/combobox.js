@@ -4,7 +4,7 @@ import * as Lib from '../lib/lib';
 import SelectlistCore from './selectlist';
 import '../data/string';
 
-require('../../less/combobox.less');
+// require('../../less/combobox.less');
 
 export const CONTROL = 'combobox';
 

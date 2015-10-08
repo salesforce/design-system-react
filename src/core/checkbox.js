@@ -6,7 +6,7 @@ import Base from './base';
 // Traits
 import Disableable from '../traits/disableable';
 
-require('../../less/checkbox.less');
+// require('../../less/checkbox.less');
 
 export const CONTROL = 'checkbox';
 
