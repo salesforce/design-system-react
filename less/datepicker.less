@@ -1,0 +1,391 @@
+@import "fuelux-core.less";
+.fuelux {
+
+	.datepicker {
+
+		&-calendar {
+			padding: 16px 16px 0;
+			min-height: 262px;
+
+			button {
+				border: 0;
+				padding: 0;
+				background-color: transparent;
+			}
+
+			&-days {
+				height: 182px;
+				margin: 10px 0 12px;
+				width: 100%;
+
+				thead {
+					border-bottom: 1px solid @gray80;
+				}
+
+				/* for spacing */
+				tbody:before {
+					color: transparent;
+					content: "\200C";
+					display: block;
+					line-height: 3px;
+					visibility: hidden;
+				}
+
+				td, th {
+					font-size: 14px;
+					height: 32px;
+					text-align: center;
+					vertical-align: middle;
+					width: 14.29%;
+				}
+
+				td {
+					b, button {
+						color: @gray20;
+						display: inline-block;
+						font-weight: normal;
+						height: 30px;
+						text-decoration: none;
+						width: 30px;
+					}
+
+					b {
+						line-height: 30px;
+					}
+
+					span {
+						display: block;
+
+						border-radius: @base-border-radius;
+
+						&:hover {
+							background: @selectable-hover;
+							text-decoration: none;
+						}
+					}
+
+					&.current-day {
+						span {
+							border: 1px solid @gray20;
+						}
+					}
+
+					&.last-month, &.next-month {
+						background: darken(@selected, 10%);
+						&.first {
+							border-top-left-radius: @base-border-radius;
+							border-bottom-left-radius: @base-border-radius;
+							padding-left: 1px;
+						}
+						&.last {
+							border-top-right-radius: @base-border-radius;
+							border-bottom-right-radius: @base-border-radius;
+							padding-right: 1px;
+						}
+					}
+
+					&.past {
+						b, button {
+							color: lighten(@gray20, 40%);
+						}
+					}
+
+					&.restricted {
+						b, button {
+							cursor: no-drop;
+							position: relative;
+
+							&:before {
+								border-top: 1px solid darken(@btn-danger-background, 10%);
+								bottom: 0;
+								content: " ";
+								display: block;
+								left: 5px;
+								position: absolute;
+								right: 5px;
+								top: 50%;
+							}
+
+							&:hover {
+								background: none;
+							}
+						}
+					}
+
+					&.selected {
+						span {
+							background: @selected;
+
+							&:hover {
+								background: @selected-hover;
+							}
+						}
+
+						b, button {
+							color: @gray53;
+						}
+
+						&.current-day {
+							box-shadow: 0 0 0 1px @true-white offset;
+							b, button {
+								color: @gray13;
+							}
+
+							span {
+								&:hover {
+									b, button {
+										border-color: @datepicker-hover;
+									}
+								}
+							}
+						}
+					}
+				}
+
+				th {
+					font-weight: bold;
+					height: 22px;
+					vertical-align: top;
+				}
+			}
+
+			&-header {
+				.clearfix;
+
+				button {
+					border: 0;
+					padding: 0;
+					background-color: transparent;
+				}
+
+				.title {
+					margin: 0 auto;
+					text-align: center;
+					display: block;
+					width: 174px;
+					color: @gray13;
+					font-size: 20px;
+					line-height: 30px;
+					text-decoration: underline;
+					vertical-align: middle;
+
+						&:hover {
+							color: @datepicker-hover;
+							text-decoration: underline;
+						}
+
+						&.disabled {
+							cursor: default;
+							pointer-events: none;
+							text-decoration: none;
+						}
+
+						.month {
+							display: inline;
+							margin: 0;
+							padding: 0;
+
+							span {
+								display: none;
+
+								&.current {
+									display: inline;
+								}
+							}
+						}
+					}
+
+				.next, .prev {
+					background: @gray40;
+					background-clip: padding-box;
+					border-radius: 30px;
+					cursor: pointer;
+					float: left;
+					height: 30px;
+					text-align: center;
+					width: 30px;
+
+					span.glyphicon {
+						color: @true-white;
+						font-size: 16px;
+						line-height: 30px;
+					}
+
+					&:hover {
+						background: @datepicker-hover;
+					}
+				}
+
+				.next {
+					float: right;
+
+					span.glyphicon {
+						line-height: 28px;
+					}
+				}
+			}
+
+			&-footer {
+				background: @gray90;
+				background-clip: padding-box;
+				border-radius: 0 0 4px 4px;
+				border-top: 1px solid @gray80;
+				height: 30px;
+				margin: 0 -16px;
+				padding: 4px 14px;
+
+				.datepicker-today {
+					color: @gray20;
+					font-size: 14px;
+					text-decoration: underline;
+
+					&:hover {
+						color: @datepicker-hover-alt;
+						text-decoration: underline;
+					}
+
+					&.disabled {
+						color: @gray53;
+						cursor: default;
+						pointer-events: none;
+
+						&:hover {
+							color: @gray53;
+						}
+					}
+				}
+			}
+		}
+
+		&-calendar-wrapper {
+			border: 1px solid @gray46;
+			min-height: 20px;
+			padding: 0;
+			width: 300px;
+		}
+
+		&-wheels {
+			display: none;
+
+			ul button {
+				border: 0;
+				padding: 0;
+				background-color: transparent;
+			}
+
+			&-footer {
+				background: @gray90;
+				border-radius: 0 0 4px 4px;
+				border-top: 1px solid @gray80;
+				clear: both;
+
+				.datepicker-wheels-back {
+					display: block;
+					color: @gray13;
+					float: left;
+					line-height: 22px;
+					border: 0;
+					background-color: transparent;
+
+					&:hover {
+						color: @datepicker-hover-alt;
+					}
+				}
+
+				.datepicker-wheels-select {
+					float: right;
+					background-color: transparent;
+					color: @focus-color;
+
+					&:hover {
+						color: @datepicker-hover-alt;
+					}
+				}
+			}
+
+			&-month, &-year {
+				float: left;
+				width: 50%;
+
+				ul {
+					height: 217px;
+					list-style-type: none;
+					margin: 0;
+					overflow: auto;
+					padding: 0;
+					text-align: center;
+
+					li {
+						margin: 4px 0;
+
+						button {
+							display: block;
+							width: 100%;
+							text-align: center;
+							color: @gray27;
+							display: block;
+							font-size: 16px;
+							line-height: 24px;
+							text-decoration: none;
+
+							&:hover {
+								background: @info-background;
+								text-decoration: none;
+							}
+						}
+
+						&.selected {
+							button {
+								background: @datepicker-hover-alt;
+								color: @true-white;
+
+								&:hover {
+									background: @datepicker-hover;
+								}
+							}
+						}
+					}
+				}
+
+				.header {
+					background: @gray90;
+					background-clip: padding-box;
+					border-bottom: 1px solid @gray80;
+					border-radius: 4px 0 0 0;
+					color: @gray13;
+					font-size: 20px;
+					font-weight: bold;
+					line-height: 30px;
+					margin-top: 0;
+					margin-bottom: 0;
+					text-align: center;
+				}
+
+				&.full {
+					border-left: 0;
+					width: 100%;
+
+					.header {
+						border-radius: 4px 4px 0 0;
+					}
+				}
+			}
+
+			&-year {
+				border-left: 1px solid @gray80;
+				float: right;
+
+				.header {
+					border-radius: 0 4px 0 0;
+				}
+			}
+		}
+
+		input {
+			&::-ms-clear {
+				display:none;
+			}
+		}
+	}
+
+}

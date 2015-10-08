@@ -3,6 +3,9 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
+// require('../../less/icons.less');
+// require('../../less/loader.less');
+
 export const CONTROL = 'loader';
 
 const LoaderCore = Lib.merge({}, Base, {

@@ -6,6 +6,9 @@ import Base from './base';
 // Traits
 import Openable from '../traits/openable';
 
+// require('../../less/picker.less');
+
+
 export const CONTROL = 'picker';
 
 const PickerCore = Lib.merge({}, Base, Openable, {
