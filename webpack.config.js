@@ -30,6 +30,9 @@ var config = {
 				loader: "style-loader!css-loader"
 			},
 			{
+				test: /\.scss$/,
+				loader: 'style!css!sass'
+			}, {
 				test: /\.less$/,
 				loader: "style!css!less"
 			}, {
