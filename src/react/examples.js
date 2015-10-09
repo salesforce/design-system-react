@@ -1,3 +1,4 @@
+import badge from './badge/example';
 import selectlist from './selectlist/example';
 import combobox from './combobox/example';
 import tree from './tree/example';
@@ -7,6 +8,8 @@ import checkbox from './checkbox/example';
 import radio from './radio/example';
 import search from './search/example';
 import pillbox from './pillbox/example';
+
+badge();
 
 selectlist(document.getElementById('selectlist'));
 combobox(document.getElementById('combobox'));

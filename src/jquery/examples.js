@@ -1,5 +1,6 @@
 import '../helpers/create-jquery-plugin';
 
+import './badge/example';
 import './checkbox/example';
 import './combobox/example';
 import './loader/example';
