@@ -87,7 +87,7 @@ const TreeBranch = React.createClass({
 				<ul className="slds-tree__group slds-nested" role="group">
 					{isOpen ? children : undefined}
 				</ul>
-				<div className="slds-tree__loader" role="alert"></div>
+				<div className={classNames('slds-tree__loader', {'slds-hide': !this.state.loading || !isOpen})} role="alert">Loading</div>
 			</li>
 		);
 	},
