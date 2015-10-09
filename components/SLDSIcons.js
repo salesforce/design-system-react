@@ -11,6 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 import SLDSSettings from './SLDSSettings';
+import SLDSUtilityIcon from './SLDSUtilityIcon';
 
 
 export const ButtonIcon = React.createClass({
@@ -72,6 +73,9 @@ export const Icon = React.createClass({
             className += ' slds-icon--' + this.props.position;
         }
         className = className + ' slds-icon-' + this.props.category + '-' + (this.props.theme || this.props.name);
+        if(this.props.category === 'utility'){
+            return <span className='slds-icon__container'><SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} style={this.props.style}  /></span>;
+        }
         return <span className='slds-icon__container'><svg aria-hidden='true' className={className} style={this.props.style} dangerouslySetInnerHTML={{__html: useTag }} /></span>;
     }
 
@@ -82,7 +86,7 @@ export const InputIcon = React.createClass({
     render() {
         const useTag = '<use xlink:href="'+SLDSSettings.getAssetsPath()+'icons/utility-sprite/svg/symbols.svg#' + this.props.name + '" />';
         const className  = 'slds-input__icon slds-icon-text-default';
-        return <svg  aria-hidden='true' className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
+        return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;
     }
 
 });
