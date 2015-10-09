@@ -9,7 +9,8 @@
     "compile": "babel -d lib/ components/",
     "prepublish": "npm run compile",
     "test": "scripts/test --single-run",
-    "postinstall": "node scripts/postinstall"
+    "postinstall": "node scripts/postinstall",
+    "icons": "node scripts/utility-icons"
   },
   "repository": {
     "type": "git",

@@ -71,7 +71,7 @@ module.exports = React.createClass( {
                     ]}
                     value='C0'
                     label="Contacts"
-                    modal={false}
+                    modal={true}
                     placeholder = "Select a contact"
                     onSelect={this.handleOnSelect}
                     onClick={this.handleOnClick}
