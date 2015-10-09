@@ -49,7 +49,7 @@ module.exports = function (grunt) {
 					urls: ['http://localhost:<%= port %>/test/index.html'],
 					run: true,
 					log: true,
-					reporter: 'Nyan'
+					reporter: 'Dot'
 				}
 			}
 		},
