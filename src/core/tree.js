@@ -142,7 +142,8 @@ getId (item)
 				open.add(folder);
 				eventName = 'opened';
 			}
-			
+
+			console.log(open._data);
 			this.setProperties({ open: open._data });
 			if (!silent && Lib.isFunction(this._onFolderToggled)) this._onFolderToggled(folder, !isOpen);
 

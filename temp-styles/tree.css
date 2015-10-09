@@ -1,0 +1,29 @@
+.slds-tree .slds-tree__branch {
+	padding-left: 16px;
+}
+
+.slds-tree .slds-tree__item {
+	padding-left: 5px;
+}
+
+.slds-tree .slds-nested .slds-tree__branch > .slds-tree__item {
+	padding-left: 5px;
+}
+
+.slds-tree .slds-tree__item--selected {
+	background-color: #d8dde6;
+}
+
+.slds-tree .slds-tree__branch.slds-tree__item--selected {
+	background-color: transparent;
+}
+
+.slds-tree .slds-tree__branch.slds-tree__item--selected > .slds-tree__branch--header {
+	background-color: #d8dde6;
+}
+
+.slds-tree .slds-tree__branch.slds-tree__branch--open > .slds-tree__branch--header .slds-button__icon {
+	-ms-transform: rotate(90deg);
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}

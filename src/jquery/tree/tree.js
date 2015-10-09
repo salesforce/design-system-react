@@ -76,11 +76,11 @@ let Tree = function Tree (element, options) {
 Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_onInitialized () {
 		const strings = this.getState('strings');
-		this.template.find('.tree-loader').text(strings.LOADING);
+		this.template.find('.slds-tree__loader').text(strings.LOADING);
 
 		this._configureBranchSelect();
 
-		this.elements.wrapper.on('click.fu.tree', '.tree-item', $.proxy(this._handleItemClicked, this));
+		this.elements.wrapper.on('click.fu.slds-tree', 'li.slds-tree__item', $.proxy(this._handleItemClicked, this));
 
 		this._render();
 
@@ -95,25 +95,25 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const branchSelect = this.getProperty('folderSelect');
 
 		// This class is copied from the example code but I'm not sure it does anything
-		this.template.toggleClass('tree-folder-select', branchSelect);
+		this.template.toggleClass('slds-tree__branch--selected', branchSelect);
 
 		// When folder selection is allowed...
 		if (branchSelect) {
 			// Show the button instead of the span
-			this.template.find('span.icon-caret').remove();
+			// this.template.find('span.icon-caret').remove();
 
 			// Branch name clicks act like item clicks
-			this.elements.wrapper.on('click.fu.tree', 'button.icon-caret', $.proxy(this._handleBranchClicked, this));
-			this.elements.wrapper.on('click.fu.tree', '.tree-branch-name', $.proxy(this._handleItemClicked, this));
+			this.elements.wrapper.on('click.fu.slds-tree', 'button.slds-button', $.proxy(this._handleBranchClicked, this));
+			this.elements.wrapper.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleItemClicked, this));
 		} else {
-			this.template.find('button.icon-caret').remove();
+			// this.template.find('button.icon-caret').remove();
 
-			this.elements.wrapper.on('click.fu.tree', '.tree-branch-name', $.proxy(this._handleBranchClicked, this));
+			this.elements.wrapper.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleBranchClicked, this));
 		}
 	},
 
 	_handleBranchClicked ($event) {
-		const $el = $($event.currentTarget).closest('.tree-item, .tree-branch');
+		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
 		const branch = this._getItemAdapter($el.data('item'));
 
 		this._toggleFolder(branch);
@@ -122,7 +122,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_onFolderToggled (branch) {
 		const self = this;
 		const id = branch.getId();
-		const $branches = this.elements.wrapper.find('.tree-branch');
+		const $branches = this.elements.wrapper.find('.slds-tree__branch');
 
 		$branches.each(function () {
 			const $branch = $(this);
@@ -139,7 +139,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_handleItemClicked ($event) {
-		const $el = $($event.currentTarget).closest('.tree-item, .tree-branch');
+		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
 		const item = this._getItemAdapter($el.data('item'));
 		const selected = this._isItemSelected(item);
 
@@ -160,7 +160,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 	_onSelectionUpdated (selection) {
 		const self = this;
-		const $items = this.elements.wrapper.find('.tree-branch, .tree-item');
+		const $items = this.elements.wrapper.find('.slds-tree__branch, li.slds-tree__item');
 
 		$items.each(function () {
 			const $item = $(this);
@@ -216,9 +216,9 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_renderItem (item) {
-		const $item = this.template.find('.tree-item').clone();
+		const $item = this.template.find('li.slds-tree__item').clone();
 
-		$item.find('.tree-label').text(item.getText());
+		// $item.find('.tree-label').text(item.getText());
 		$item.data({
 			item: item._item
 		});
@@ -229,12 +229,12 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_renderBranch (branch, level) {
-		const $branch = this.template.find('.tree-branch').clone();
-		const $branchContent = $branch.find('.tree-branch-children');
-		const $branchIcon = $branch.find('> .tree-branch-header .icon-folder');
-		const $label = $branch.find('.tree-label');
+		const $branch = this.template.find('.slds-tree__branch').clone();
+		const $branchContent = $branch.find('.slds-tree__group');
+		// const $branchIcon = $branch.find('> .slds-tree__branch > .slds-tree__branch--header .icon-folder');
+		// const $label = $branch.find('.tree-label');
 
-		$label.text(branch.getText());
+		// $label.text(branch.getText());
 		$branch.data({
 			item: branch._item,
 			id: branch.getId()
@@ -260,17 +260,17 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 			_level = level + 1;
 		}
 
-		$branch.toggleClass('tree-open', isOpen);
+		$branch.toggleClass('slds-tree__branch--open', isOpen);
 		$branch.attr('aria-expanded', isOpen);
 
-		$branchContent.toggleClass('hidden', !isOpen);
+		// $branchContent.toggleClass('is-expanded', !isOpen);
 
-		$branchIcon
-			.toggleClass('glyphicon-folder-open', isOpen)
-			.toggleClass('glyphicon-folder-close', !isOpen);
+		// $branchIcon
+		//	.toggleClass('glyphicon-folder-open', isOpen)
+		//	.toggleClass('glyphicon-folder-close', !isOpen);
 
 		if (isOpen) {
-			const $loader = this.template.find('.tree-loader').clone();
+			const $loader = this.template.find('.slds-tree__loader').clone();
 
 			$branchContent.append($loader);
 
@@ -294,11 +294,11 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 	_renderSelection ($item, item, selection) {
 		const selected = this._isItemSelected(item, selection);
-		const $icon = $item.find('.icon-item');
+		// const $icon = $item.find('.icon-item');
 
-		$item.toggleClass('tree-selected', selected);
-		$icon.toggleClass('glyphicon-ok', selected);
-		$icon.toggleClass('fueluxicon-bullet', !selected);
+		$item.toggleClass('slds-tree__item--selected', selected);
+		// $icon.toggleClass('glyphicon-ok', selected);
+		// $icon.toggleClass('fueluxicon-bullet', !selected);
 	}
 });
 
@@ -323,13 +323,13 @@ const legacyMethods = {
 	},
 
 	openFolder ($folder) {
-		if (!$folder.hasClass('tree-open')) {
+		if (!$folder.hasClass('slds-tree__branch--open')) {
 			this.toggleFolder($folder);
 		}
 	},
 
 	closeFolder ($folder) {
-		if ($folder.hasClass('tree-open')) {
+		if ($folder.hasClass('slds-tree__branch--open')) {
 			this.toggleFolder($folder);
 		}
 	},
@@ -353,7 +353,7 @@ const legacyMethods = {
 	discloseVisible () {
 		const self = this;
 
-		this.elements.wrapper.find('.tree-branch:not(.tree-open)').each(function () {
+		this.elements.wrapper.find('.slds-tree__branch:not(.slds-is-open)').each(function () {
 			const $branch = $(this);
 			const _branch = $branch.data('item');
 
