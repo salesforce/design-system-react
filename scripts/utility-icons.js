@@ -24,8 +24,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AN
 
 var sprite = JSON.parse(parser.toJson(text));
 
-console.log(sprite.svg.symbol);
-
 var icons = [];
 var viewbox;
 sprite.svg.symbol.forEach(function(symbol){
