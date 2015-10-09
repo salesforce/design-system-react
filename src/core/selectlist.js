@@ -12,11 +12,11 @@ import KeyboardNavigable from '../traits/keyboard-navigable';
 
 // const path = require('path');
 
-require('../../node_modules/\@salesforce-ux/design-system/scss/index.scss');
+// require('../../node_modules/\@salesforce-ux/design-system/scss/index.scss');
 // import 'sldsScss';
 // require('../../node_modules/@salesforce-ux/design-system/scss/index.scss');
-// import PicklistsStyles from '@salesforce-ux/design-system/scss/components/picklists/flavors/base/index';
-// require('@salesforce-ux/scss/components/buttons/flavors/base/index');
+require('../../node_modules/@salesforce-ux/design-system/scss/components/picklists/flavors/base/index.scss');
+require('../../node_modules/@salesforce-ux/design-system/scss/components/buttons/flavors/base/index.scss');
 // require('@salesforce-ux/design-system/scss/components/picklists/flavors/base/index');
 
 export const CONTROL = 'selectlist';

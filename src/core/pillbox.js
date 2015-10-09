@@ -17,17 +17,59 @@ const PickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 
 	_defaultProperties: {
 		multiSelect: true,
-		selection: []
+		selection: [],
+		acceptKeyCodes: [13, 188]
 	},
 
 	accessors: {
 		getText (item) {
 			return item.get('text');
+		},
+
+		getValue (item) {
+			return item.get('value');
 		}
 	},
 
-	_canSelect () {
-		return true;
+	_canSelect (item, select) {
+		if (Lib.isFunction(this._onAdd)) {
+			Promise.resolve(this._onAdd(item)).then(canSelect => {
+				if (canSelect !== false) {
+					select();
+				}
+			}, error => {
+				Lib.log(error);
+			});
+		} else {
+			select();
+		}
+	},
+
+	_canDeselect (item, deselect) {
+		if (Lib.isFunction(this._onRemove)) {
+			Promise.resolve(this._onRemove(item)).then(canDeselect => {
+				if (canDeselect !== false) {
+					deselect();
+				}
+			}, error => {
+				Lib.log(error);
+			});
+		} else {
+			deselect();
+		}
+	},
+
+	_isAcceptKeyCode (keyCode) {
+		const acceptKeys = this.getProperty('acceptKeyCodes');
+		let isAccepted;
+
+		acceptKeys.forEach( (key) => {
+			if (key === keyCode) {
+				isAccepted = true;
+			}
+		});
+
+		return isAccepted;
 	}
 });
 
