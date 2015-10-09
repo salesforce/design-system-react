@@ -18,7 +18,7 @@ const BadgeCore = Lib.merge({}, Base, {
 		theme: ''
 	},
 
-	getClassNameByTheme: function(theme) {
+	_getClassNameByTheme: function(theme) {
 		let classNames = [];
 
 		// add base class

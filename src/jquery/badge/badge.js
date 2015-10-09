@@ -29,7 +29,7 @@ export const BadgeObject = {
 	},
 
 	_render () {
-		let className = BadgeCore.getClassNameByTheme(this.getProperty('theme'));
+		const className = BadgeCore._getClassNameByTheme(this.getProperty('theme'));
 
 		// set the class
 		this.elements.wrapper.addClass(className);
