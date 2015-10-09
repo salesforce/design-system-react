@@ -6,8 +6,6 @@ const $ = Lib.global.jQuery || Lib.global.$;
 $(function () {
 	// badge
 	const badge1 = new Badge($('#badge'), {
-		text: 'label',
-		theme: 'base'
 	});
 
 	// badge (default)
