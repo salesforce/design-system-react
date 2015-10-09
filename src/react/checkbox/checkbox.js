@@ -20,48 +20,35 @@ export const CheckboxObject = {
 		disabled: React.PropTypes.bool,
 		checkedValue: React.PropTypes.oneOfType([
 			React.PropTypes.string,
-			React.PropTypes.oneOf([ null ])
+			React.PropTypes.oneOf([null])
 		]),
-		text: React.PropTypes.string,
+		labelText: React.PropTypes.string,
 		value: React.PropTypes.string,
-		inline: React.PropTypes.bool,
-		addon: React.PropTypes.bool,
-		highlight: React.PropTypes.bool
+		name: React.PropTypes.string
 	},
 
 	render () {
-		const labelClasses = {};
-		labelClasses[this.cssClasses.DISABLED] = this.props.disabled;
-		labelClasses[this.cssClasses.CHECKED] = this.isChecked();
-		labelClasses[this.cssClasses.INLINE] = this.props.inline || this.props.addon;
-		labelClasses[this.cssClasses.ADDON] = this.props.addon;
-		labelClasses[this.cssClasses.HIGHLIGHT] = this.props.highlight;
-
+		console.log('here', this.cssClasses.CONTROL);
 		return (
-			<label className={classNames(this.cssClasses.CONTROL, labelClasses)} onClick={this._onClick}>
+			<label className={classNames(this.cssClasses.CONTROL)}>
 				{this._renderInput()}
-				{this._renderText()}
+				<span className={classNames(this.cssClasses.CONTROL_FAUX)}></span>
+				{this._renderLabelText()}
 			</label>
 		);
 	},
 
-	_onClick () {
-		this.toggle();
-	},
-
 	_renderInput () {
-		return <input className="sr-only" type="checkbox" disabled={this.props.disabled} checked={this.isChecked()} value={this.props.value || ''} onClick={this._stopPropagation} />;
+		return (<input name={this.props.name}
+						type="checkbox"
+						disabled={this.props.disabled}
+						checked={this.isChecked()}
+						value={this.props.value || ''}
+						onChange={this.toggle}/>);
 	},
 
-	_renderText () {
-		if (this.props.text && !this.props.addon) {
-			return <span className={this.cssClasses.LABEL}>{this.props.text}</span>;
-		}
-	},
-	
-	_stopPropagation (e) {
-		e.stopPropagation();
-		// return false;	//TODO: it was yelling about this, saying it would be deprecated... should we remove?
+	_renderLabelText () {
+		return <span className={classNames(this.cssClasses.LABEL)}>{this.props.labelText}</span>;
 	}
 };
 
