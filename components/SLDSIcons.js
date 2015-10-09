@@ -43,6 +43,9 @@ export const ButtonIcon = React.createClass({
         if (this.props.hint) {
             className = className + ' slds-button__icon--hint';
         }
+        if(this.props.category === 'utility'){
+            return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;
+        }
         return <svg aria-hidden='true' className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
     }
 
