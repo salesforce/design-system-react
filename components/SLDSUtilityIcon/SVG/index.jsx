@@ -23,7 +23,6 @@ module.exports = React.createClass({
   },
 
   getPaths (data) {
-    console.log('DATA: ',data);
     if(data instanceof Array){
       return data.map((item)=>{
         return <path {...item} />;
@@ -34,8 +33,7 @@ module.exports = React.createClass({
 
   getSVG (name) {
     const data = SLDS_ICONS_UTIL[name.toLowerCase()];
-    console.log('DATA: ',data);
-    return <svg className={this.props.className} {...this.props} viewBox={SLDS_ICONS_UTIL.viewBox}>{this.getPaths(data)}</svg>;
+    return <svg {...this.props} viewBox={SLDS_ICONS_UTIL.viewBox}>{this.getPaths(data)}</svg>;
   },
 
   render () {

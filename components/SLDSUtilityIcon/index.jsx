@@ -13,7 +13,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SVG from './SVG';
-//import classNames from 'classnames';
 
 module.exports = React.createClass( {
 
