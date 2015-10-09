@@ -14,7 +14,7 @@ const BadgeCore = Lib.merge({}, Base, {
 	},
 
 	_defaultProperties: {
-		text: '',
+		text: 'label',
 		theme: ''
 	}
 });

@@ -12,7 +12,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 // Constructor
 let Badge = function Badge (element, options) {
-	this.options = Lib.extend({}, options);
+	this.options = Lib.extend(BadgeCore._defaultProperties, options);
 
 	this.elements = {
 		wrapper: $(element)
