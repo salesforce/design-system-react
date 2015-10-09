@@ -16,6 +16,25 @@ const BadgeCore = Lib.merge({}, Base, {
 	_defaultProperties: {
 		text: 'label',
 		theme: ''
+	},
+
+	getClassNameByTheme: function(theme) {
+		let classNames = [];
+
+		// add base class
+		classNames.push(this.cssClasses.BASE);
+
+		// add class for specific theme
+		switch(theme.toUpperCase()) {
+			case 'DEFAULT':
+			case 'SHADE':
+			case 'INVERSE':
+			default:
+				classNames.push(this.cssClasses['THEME_' + theme.toUpperCase()]);
+				break;
+		};
+
+		return classNames.join(' ');
 	}
 });
 

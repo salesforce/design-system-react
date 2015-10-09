@@ -1,32 +1,9 @@
 import React from 'react';
 import Badge from './badge';
 
-export default function (element) {
-
-	// badge
-	const badge1 = React.createElement(Badge, {
-
-	});
-	ReactDOM.render(badge1, document.getElementById('badge'));
-
-	// badge (default)
-	const badge2 = React.createElement(Badge, {
-		text: 'label',
-		theme: 'default'
-	});
-	ReactDOM.render(badge2, document.getElementById('badge-default'));
-
-	// badge (shade)
-	const badge3 = React.createElement(Badge, {
-		text: 'label',
-		theme: 'shade'
-	});
-	ReactDOM.render(badge3, document.getElementById('badge-shade'));
-
-	// badge (inverse)
-	const badge4 = React.createElement(Badge, {
-		text: 'label',
-		theme: 'inverse'
-	});
-	ReactDOM.render(badge4, document.getElementById('badge-inverse'));
+export default function () {
+	React.render(<Badge text="label1" />, document.getElementById('badge'));
+	React.render(<Badge text="label2" theme="default" />, document.getElementById('badge-default'));
+	React.render(<Badge text="label3" theme="shade" />, document.getElementById('badge-shade'));
+	React.render(<Badge text="label4" theme="inverse" />, document.getElementById('badge-inverse'));
 }

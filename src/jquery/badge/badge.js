@@ -29,20 +29,10 @@ export const BadgeObject = {
 	},
 
 	_render () {
-		var theme = this.getProperty('theme').toUpperCase();
-		var className = '';
-
-		switch(theme) {
-			case 'DEFAULT':
-			case 'SHADE':
-			case 'INVERSE':
-			default:
-				className = BadgeCore.cssClasses['THEME_' + theme];
-				break;
-		};
+		let className = BadgeCore.getClassNameByTheme(this.getProperty('theme'));
 
 		// set the class
-		this.elements.wrapper.addClass(BadgeCore.cssClasses.BASE).addClass(className);
+		this.elements.wrapper.addClass(className);
 
 		// set the text
 		this.elements.wrapper.text(this.getProperty('text'));

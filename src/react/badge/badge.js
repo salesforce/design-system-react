@@ -19,8 +19,10 @@ export const BadgeObject = {
 	},
 
 	render () {
+		let classNames = BadgeCore.getClassNameByTheme(this.getProperty('theme'));
+
 		return (
-			<span className="slds-badge">Label</span>
+			<span className={classNames}>{this.props.text}</span>
 		);
 	}
 };

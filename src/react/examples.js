@@ -9,6 +9,8 @@ import radio from './radio/example';
 import search from './search/example';
 import pillbox from './pillbox/example';
 
+badge();
+
 selectlist(document.getElementById('selectlist'));
 combobox(document.getElementById('combobox'));
 tree(document.getElementById('tree'));
