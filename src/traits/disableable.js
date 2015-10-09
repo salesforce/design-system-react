@@ -12,15 +12,19 @@ const Disableable = {
 	},
 
 	enable () {
-		this.setProperties({ disabled: false });
-		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled();
+		const property = { disabled: false };
+
+		this.setProperties(property);
+		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
 
 		this.trigger('enabled');
 	},
 
 	disable () {
-		this.setProperties({ disabled: true });
-		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled();
+		const property = { disabled: true };
+
+		this.setProperties(property);
+		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
 
 		this.trigger('disabled');
 	}
