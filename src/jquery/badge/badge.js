@@ -22,14 +22,14 @@ let Badge = function Badge (element, options) {
 	this._initialize(this.options);
 };
 
-Lib.extend(Badge.prototype, BadgeCore, Events, State, {
+export const BadgeObject = {
 	_onInitialized () {
 		this._render();
 		this.trigger('initialized');
 	},
 
 	_render () {
-		var theme = this.options.theme.toUpperCase();
+		var theme = this.getProperty('theme').toUpperCase();
 		var className = '';
 
 		switch(theme) {
@@ -45,12 +45,11 @@ Lib.extend(Badge.prototype, BadgeCore, Events, State, {
 		this.elements.wrapper.addClass(BadgeCore.cssClasses.BASE).addClass(className);
 
 		// set the text
-		this.elements.wrapper.text(this.options.text);
+		this.elements.wrapper.text(this.getProperty('text'));
 	}
-});
+};
 
-Badge = Lib.runHelpers('jquery', CONTROL, Badge, {
-
-});
+Lib.merge(Badge.prototype, BadgeCore, Events, State, BadgeObject);
+Badge = Lib.runHelpers('jquery', CONTROL, Badge);
 
 export default Badge;
