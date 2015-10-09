@@ -73,7 +73,7 @@ const Data = Base.Data.extend({
 		const itemAddition = Lib.isArray(addition) ? addition : [addition];
 
 		itemAddition.forEach( (item, itemIndex) => {
-			if (options.at) {
+			if (options && options.at) {
 				this._data.splice(options.at + itemIndex, 0, item);
 			} else {
 				this._data.push(item._item);
