@@ -27,8 +27,6 @@ var sprite = JSON.parse(parser.toJson(text));
 var icons = [];
 var viewbox;
 sprite.svg.symbol.forEach(function(symbol){
-  var id = symbol.id;
-  var paths = symbol.path;
   content.push(symbol.id+':'+JSON.stringify(symbol.path)+',');
   viewBox = symbol.viewBox;
 });
