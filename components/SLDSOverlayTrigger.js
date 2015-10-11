@@ -12,7 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 const React = require('react');
 const PT = React.PropTypes;
 const classNames = require('classnames');
-import {extend, omit} from 'lodash';
+import omit from 'lodash.omit';
+import extend from 'lodash.assign';
+
 import createChainedFunction from './utils/create-chained-function';
 import SLDSPopover from './SLDSPopover';
 

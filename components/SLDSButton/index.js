@@ -13,7 +13,7 @@ import React from 'react';
 const classNames = require('classnames');
 import createChainedFunction from '../utils/create-chained-function';
 import {ButtonIcon, Icon} from '../SLDSIcons.js';
-import {omit} from 'lodash';
+import omit from 'lodash.omit';
 
 class Button extends React.Component {
 

@@ -1,0 +1,8 @@
+rm -rf dist/
+mkdir -p dist/
+BUILD="webpack --devtool source-map --config webpack.build.config.js"
+BABEL="babel -d lib/ components/"
+
+eval $BABEL
+eval $BUILD
+eval "MINIFY=1 $BUILD"
