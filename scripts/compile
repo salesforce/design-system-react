@@ -1,7 +1,10 @@
 rm -rf dist/
 mkdir -p dist/
-BUILD="webpack --devtool source-map --config webpack.build.config.js"
+rm -rf lib/
+mkdir -p lib/
+
 BABEL="babel -d lib/ components/"
+BUILD="webpack --devtool source-map --config webpack.build.config.js"
 
 eval $BABEL
 eval $BUILD
