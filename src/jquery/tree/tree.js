@@ -99,15 +99,10 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 		// When folder selection is allowed...
 		if (branchSelect) {
-			// Show the button instead of the span
-			// this.template.find('span.icon-caret').remove();
-
 			// Branch name clicks act like item clicks
 			this.elements.wrapper.on('click.fu.slds-tree', 'button.slds-button', $.proxy(this._handleBranchClicked, this));
 			this.elements.wrapper.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleItemClicked, this));
 		} else {
-			// this.template.find('button.icon-caret').remove();
-
 			this.elements.wrapper.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleBranchClicked, this));
 		}
 	},
@@ -231,10 +226,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_renderBranch (branch, level) {
 		const $branch = this.template.find('.slds-tree__branch').clone();
 		const $branchContent = $branch.find('.slds-tree__group');
-		// const $branchIcon = $branch.find('> .slds-tree__branch > .slds-tree__branch--header .icon-folder');
-		// const $label = $branch.find('.tree-label');
 
-		// $label.text(branch.getText());
 		$branch.data({
 			item: branch._item,
 			id: branch.getId()
@@ -263,12 +255,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		$branch.toggleClass('slds-tree__branch--open', isOpen);
 		$branch.attr('aria-expanded', isOpen);
 
-		// $branchContent.toggleClass('is-expanded', !isOpen);
-
-		// $branchIcon
-		//	.toggleClass('glyphicon-folder-open', isOpen)
-		//	.toggleClass('glyphicon-folder-close', !isOpen);
-
 		if (isOpen) {
 			const $loader = this.template.find('.slds-tree__loader').clone();
 
@@ -294,11 +280,8 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 	_renderSelection ($item, item, selection) {
 		const selected = this._isItemSelected(item, selection);
-		// const $icon = $item.find('.icon-item');
 
 		$item.toggleClass('slds-tree__item--selected', selected);
-		// $icon.toggleClass('glyphicon-ok', selected);
-		// $icon.toggleClass('fueluxicon-bullet', !selected);
 	}
 });
 
