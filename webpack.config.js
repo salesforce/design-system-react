@@ -11,6 +11,25 @@ var config = {
 		marionette: entries.concat('./src/jquery/examples.js'),
 		tests: entries.concat('./test/tests.js')
 	},
+	resolve: {
+		// root: [
+		// 	node_modules,
+		// 	path.join(__dirname, 'scss')
+		// ],
+		modulesDirectories: [
+			'scss',
+			'node_modules',
+			'web_modules',
+			'other',
+		],
+		extensions: [
+			'',
+			'.webpack.js',
+			'.web.js',
+			'.js',
+			'.scss',
+		]
+	},
 	devServer: {
 		port: 8080
 	},

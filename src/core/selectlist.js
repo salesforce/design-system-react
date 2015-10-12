@@ -10,13 +10,18 @@ import Openable from '../traits/openable';
 import Selectable from '../traits/selectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
-// const path = require('path');
+const path = require('path');
 
 // require('../../node_modules/\@salesforce-ux/design-system/scss/index.scss');
 // import 'sldsScss';
 // require('../../node_modules/@salesforce-ux/design-system/scss/index.scss');
-require('../../node_modules/@salesforce-ux/design-system/scss/components/picklists/flavors/base/index.scss');
-require('../../node_modules/@salesforce-ux/design-system/scss/components/buttons/flavors/base/index.scss');
+
+console.log('path', path);
+
+require('../../scss/components/picklists/flavors/base/index.scss');
+
+// require('/scss/components/picklists/flavors/base/index.scss');
+// require('../../node_modules/@salesforce-ux/design-system/scss/components/buttons/flavors/base/index.scss');
 // require('@salesforce-ux/design-system/scss/components/picklists/flavors/base/index');
 
 export const CONTROL = 'selectlist';
