@@ -6,23 +6,24 @@ const $ = Lib.global.jQuery || Lib.global.$;
 $(function () {
 	// badge
 	const badge1 = new Badge($('#badge'), {
+		'text': 'label1'
 	});
 
 	// badge (default)
 	const badge2 = new Badge($('#badge-default'), {
-		text: 'label',
+		text: 'label2',
 		theme: 'default'
 	});
 
 	// badge (shade)
 	const badge3 = new Badge($('#badge-shade'), {
-		text: 'label',
+		text: 'label3',
 		theme: 'shade'
 	});
 
 	// badge (inverse)
 	const badge4 = new Badge($('#badge-inverse'), {
-		text: 'label',
+		text: 'label4',
 		theme: 'inverse'
 	});
 
