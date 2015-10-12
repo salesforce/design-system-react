@@ -28,7 +28,6 @@ export const CheckboxObject = {
 	},
 
 	render () {
-		console.log('here', this.cssClasses.CONTROL);
 		return (
 			<label className={classNames(this.cssClasses.CONTROL)}>
 				{this._renderInput()}

@@ -3,7 +3,7 @@
 import * as Lib from '../lib/lib';
 import CheckboxCore from './checkbox';
 
-const CONTROL = 'radio';
+export const CONTROL = 'radio';
 
 const RadioCore = Lib.merge({}, CheckboxCore, {
 	cssClasses: {
