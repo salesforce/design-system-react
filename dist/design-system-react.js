@@ -7963,6 +7963,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 	
+	var _classnames = __webpack_require__(60);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	var _reactModal = __webpack_require__(15);
 	
 	var _reactModal2 = _interopRequireDefault(_reactModal);
@@ -7990,13 +7994,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = _react2['default'].createClass({
 	  displayName: 'exports',
 	
+	  propTypes: {
+	    size: _react2['default'].PropTypes.oneOf(['medium', 'large'])
+	  },
+	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
 	      title: '',
 	      isOpen: false,
 	      content: [],
 	      footer: [],
-	      returnFocusTo: null
+	      returnFocusTo: null,
+	      size: 'medium',
+	      directional: false
 	    };
 	  },
 	
@@ -8051,8 +8061,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  getModal: function getModal() {
+	    var modalClass = {
+	      'slds-modal': true,
+	      'slds-fade-in-open': this.state.revealed,
+	      'slds-modal--large': this.props.size === 'large'
+	    };
+	
+	    var footerClass = {
+	      'slds-modal__footer': true,
+	      'slds-modal__footer--directional': this.props.directional
+	    };
+	
 	    return _react2['default'].createElement('div', {
-	      className: 'slds-modal' + (this.state.revealed ? ' slds-fade-in-open' : ''),
+	      className: (0, _classnames2['default'])(modalClass),
 	      style: { pointerEvents: 'inherit' },
 	      onClick: this.closeModal
 	    }, _react2['default'].createElement('div', {
@@ -8065,15 +8086,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	      iconName: 'close',
 	      iconSize: 'small',
 	      className: 'slds-modal__close',
-	      onClick: this.closeModal })), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), _react2['default'].createElement('div', { className: 'slds-modal__footer' }, this.props.footer)));
+	      onClick: this.closeModal })), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), _react2['default'].createElement('div', { className: (0, _classnames2['default'])(footerClass) }, this.props.footer)));
 	  },
 	
 	  render: function render() {
+	    var overlayClasses = {
+	      'slds-modal-backdrop': true,
+	      'slds-modal-backdrop--open': this.state.revealed
+	    };
+	
 	    return _react2['default'].createElement(_reactModal2['default'], {
 	      isOpen: this.props.isOpen,
 	      onRequestClose: this.closeModal,
 	      style: customStyles,
-	      overlayClassName: 'slds-modal-backdrop' + (this.state.revealed ? ' slds-modal-backdrop--open' : '') }, this.getModal());
+	      overlayClassName: (0, _classnames2['default'])(overlayClasses) }, this.getModal());
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
