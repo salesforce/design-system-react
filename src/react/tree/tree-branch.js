@@ -70,28 +70,24 @@ const TreeBranch = React.createClass({
 				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick.bind(this, model)} _isItemSelected={this.props._isItemSelected} />);
 			}
 		});
-		
-		const caretClasses = 'glyphicon icon-caret glyphicon-play';
-		const expandButton = (
-			<button className={caretClasses} onClick={this._handleExpandClick.bind(this, this.props.item)}>
-				<span className="sr-only">{isOpen ? 'Open' : 'Close'}</span>
-			</button>
-		);
 
 		return (
-			<li className={classNames('tree-branch', {'tree-open': isOpen, 'tree-selected': isSelected})} dataTemplate="treebranch" role="treeitem" aria-expanded={isOpen ? 'false' : 'true'} data-has-children={this.props.item.getExpandable() ? undefined : false}>
-				<div className="tree-branch-header">
-					{this.props.selectable ? expandButton : undefined}
-					<button type="button" className="tree-branch-name" onClick={this._handleItemClick.bind(this, this.props.item)}>
-						{!this.props.selectable ? <span className={caretClasses}></span> : undefined}
-						<span className={classNames('glyphicon icon-folder', 'glyphicon-folder-' + (isOpen ? 'open' : 'close'))}></span>
-						<span className="tree-label">{this.props.item.getText()}</span>
+			<li className={classNames('slds-tree__branch', {'slds-tree__branch--open': isOpen, 'slds-tree__item--selected': isSelected})} role="treeitem" aria-expanded={isOpen ? 'false' : 'true'}>
+				<div className="slds-tree__branch--header slds-tree__item">
+					<button className="slds-button slds-button--icon-bare slds-m-right--x-small" onClick={this._handleExpandClick.bind(this, this.props.item)}>
+						<svg
+							aria-hidden="true"
+							className="slds-button__icon slds-button__icon--small"
+							dangerouslySetInnerHTML={{__html: '<use xlink:href="/examples/symbols.svg#chevronright"></use>'}} >
+						</svg>
+						<span className="slds-assistive-text">Toggle</span>
 					</button>
+					<div className="slds-tree__branch--name" role="presentation">Tree Branch</div>
 				</div>
-				<ul className={classNames('tree-branch-children', {hidden: !isOpen})} role="group">
+				<ul className="slds-tree__group slds-nested" role="group">
 					{isOpen ? children : undefined}
 				</ul>
-				<div className={classNames('tree-loader', {hidden: !this.state.loading || !isOpen})} role="alert">this.props.strings.LOADING</div>
+				<div className={classNames('slds-tree__loader', {'slds-hide': !this.state.loading || !isOpen})} role="alert">Loading</div>
 			</li>
 		);
 	},

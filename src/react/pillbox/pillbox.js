@@ -24,11 +24,11 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 		const items = this._generatePills();
 
 		return (
-			<div className="pillbox">
-				<ul className="clearfix pill-group">
+			<div className="pillbox slds-pillbox">
+				<ul className="slds-pill-group">
 					{items}
-					<li className="pillbox-input-wrap btn-group">
-						<input type="text" onKeyUp={this._handleKeyUp} className="form-control pillbox-add-item" placeholder="add item"/>
+					<li className="slds-pill-input-wrap">
+						<input type="text" onKeyUp={this._handleKeyUp} className="slds-pill-add-item" placeholder="add item"/>
 					</li>
 				</ul>
 			</div>

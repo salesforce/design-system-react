@@ -31,11 +31,9 @@ export const BadgeObject = {
 	_render () {
 		const className = BadgeCore._getClassNameByTheme(this.getProperty('theme'));
 
-		// set the class
-		this.elements.wrapper.addClass(className);
-
-		// set the text
-		this.elements.wrapper.text(this.getProperty('text'));
+		$('<span>').addClass(className)
+			.text(this.getProperty('text'))
+			.appendTo(this.elements.wrapper);
 	}
 };
 
