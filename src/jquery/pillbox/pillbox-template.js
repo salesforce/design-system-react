@@ -1,14 +1,17 @@
 export default String.raw`
-<div class="pillbox">
-  <ul class="clearfix pill-group">
-    <li class="btn btn-default pill">
-      <span class="pill-name">Item Title</span>
-      <span class="glyphicon glyphicon-close">
-        <span class="sr-only">Remove</span>
-      </span>
+<div class="pillbox slds-pillbox">
+  <ul class="slds-pill-group">
+    <li class="slds-pill">
+      <span href="#" class="slds-pill__label">Item Title</span>
+      <button class="slds-button slds-button--icon-bare">
+        <svg aria-hidden="true" class="slds-button__icon">
+          <use xlink:href="/examples/symbols.svg#close"></use>
+        </svg>
+        <span class="slds-assistive-text">Remove</span>
+      </button>
     </li>
-    <li class="pillbox-input-wrap btn-group">
-      <input type="text" class="form-control pillbox-add-item" placeholder="add item">
+    <li class="slds-pill-input-wrap">
+      <input type="text" class="slds-pill-add-item" placeholder="add item">
     </li>
   </ul>
 </div>

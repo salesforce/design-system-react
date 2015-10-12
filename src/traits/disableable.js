@@ -6,7 +6,7 @@ const Disableable = {
 	cssClasses: {
 		DISABLED: 'disabled'
 	},
-	
+
 	_defaultProperties: {
 		disabled: false
 	},
@@ -18,6 +18,7 @@ const Disableable = {
 		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
 
 		this.trigger('enabled');
+		this.trigger('disabledValueChanged', property);
 	},
 
 	disable () {
@@ -27,6 +28,7 @@ const Disableable = {
 		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
 
 		this.trigger('disabled');
+		this.trigger('disabledValueChanged', property);
 	}
 };
 

@@ -4,120 +4,138 @@
 		<meta charset=utf-8/>
 		<title>jQuery</title>
 		<link href="/examples/assets/styles/slds.css" rel="stylesheet">
-		<style>
-			h2 {
-				margin-top:25px;
-			}
-			h3 {
-				margin-top:5px;
-			}
-		</style>
+		<link href="/temp-styles/temp-styles.css" rel="stylesheet">
+		<link href="/examples/example-styles.css" rel="stylesheet">
 	</head>
 	<body>
-	<div class="slds-container slds-p-around--medium">
-		<!-- checkbox -->
-		<section>
-			<h2 class="slds-text-heading--large">
-				<span>Checkbox</span>
-				<span class="slds-badge">In Progress</span>
-			</h2>
-			<label class="slds-checkbox">
-				<input name="checkbox" type="checkbox" />
-				<span class="slds-checkbox--faux"></span>
-				<span class="slds-form-element__label">Unchecked</span>
-			</label>
-			<label class="slds-checkbox">
-				<input name="checkbox" type="checkbox" checked />
-				<span class="slds-checkbox--faux"></span>
-				<span class="slds-form-element__label">Checked</span>
-			</label>
-			<div class="slds-p-around--medium">
-				<div class="slds-button-group" role="group">
-					<button type="button" class="slds-button slds-button--neutral">check</button>
-					<button type="button" class="slds-button slds-button--neutral">uncheck</button>
-					<button type="button" class="slds-button slds-button--neutral">enable</button>
-					<button type="button" class="slds-button slds-button--neutral">disable</button>
-				</div>
-			</div>
-		</section>
+		<div class="slds-container slds-p-around--medium">
+			<!-- badge -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Badge</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<span id="badge"></span>
+				<span id="badge-default"></span>
+				<span id="badge-shade"></span>
+				<span id="badge-inverse"></span>
+			</section>
 
-		<!-- dropdown -->
-		<section>
-			<h2 class="slds-text-heading--large">
-				<span>Dropdown</span>
-				<span class="slds-badge">In Progress</span>
-			</h2>
-			<div class="slds-dropdown-trigger">
-				<button class="slds-button slds-button--icon-more" aria-haspopup="true">
-					<svg aria-hidden="true" class="slds-button__icon">
-						<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
-					</svg>
-					<span class="slds-assistive-text">Settings</span>
-					<svg aria-hidden="true" class="slds-button__icon slds-button__icon--x-small">
-						<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-					</svg>
-				</button>
-				<div class="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu">
-					<div class="slds-dropdown__header">
-						<span class="slds-text-heading--label">Display As</span>
+			<!-- notification -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Notification</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<div id="notification"></div>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral" id="notification-hide">hide</button>
+						<button type="button" class="slds-button slds-button--neutral" id="notification-show">show</button>
 					</div>
-					<ul class="slds-dropdown__list" role="menu">
-						<li id="menu-10-0" class="slds-dropdown__item slds-is-selected slds-has-icon--left slds-is-selected" href="#" aria-selected="true">
-							<a href="#" class="slds-truncate" role="menuitemradio">
-								<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--left">
-									<use xlink:href="/examples/assets/icons/standard-sprite/svg/symbols.svg#task2"></use>
-								</svg>Table
-								<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--right">
-									<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
-								</svg>
-							</a>
-						</li>
-						<li id="menu-11-1" href="#" class="slds-dropdown__item slds-has-icon--left"><a href="#" class="slds-truncate" role="menuitemradio">Cards<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--right"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#kanban"></use></svg></a></li>
-						<li id="menu-12-2"
-							href="#" class="slds-dropdown__item slds-has-icon--left"><a href="#" class="slds-truncate" role="menuitemradio">Compact List<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--right"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#side_list"></use></svg></a></li>
-					</ul>
 				</div>
-			</div>
-			<div class="slds-p-around--medium">
-				<div class="slds-button-group" role="group">
-					<button type="button" class="slds-button slds-button--neutral">log selected item</button>
-					<button type="button" class="slds-button slds-button--neutral">set selected item</button>
-					<button type="button" class="slds-button slds-button--neutral">enable</button>
-					<button type="button" class="slds-button slds-button--neutral">disable</button>
-				</div>
-			</div>
-		</section>
+			</section>
 
-		<!-- pillbox -->
-		<section>
-			<h2 class="slds-text-heading--large">
-				<span>Pill</span>
-				<span class="slds-badge">In Progress</span>
-			</h2>
-				<span class="slds-pill"><a href="#" class="slds-pill__label">Pill Label</a>
-					<button class="slds-button slds-button--icon-bare">
+			<!-- checkbox -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Checkbox</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<label class="slds-checkbox">
+					<input name="checkbox" type="checkbox" />
+					<span class="slds-checkbox--faux"></span>
+					<span class="slds-form-element__label">Unchecked</span>
+				</label>
+				<label class="slds-checkbox">
+					<input name="checkbox" type="checkbox" checked />
+					<span class="slds-checkbox--faux"></span>
+					<span class="slds-form-element__label">Checked</span>
+				</label>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral">check</button>
+						<button type="button" class="slds-button slds-button--neutral">uncheck</button>
+						<button type="button" class="slds-button slds-button--neutral">enable</button>
+						<button type="button" class="slds-button slds-button--neutral">disable</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- dropdown -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Dropdown</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<div class="slds-dropdown-trigger">
+					<button class="slds-button slds-button--icon-more" aria-haspopup="true">
 						<svg aria-hidden="true" class="slds-button__icon">
-							<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+							<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 						</svg>
-						<span class="slds-assistive-text">Remove</span>
+						<span class="slds-assistive-text">Settings</span>
+						<svg aria-hidden="true" class="slds-button__icon slds-button__icon--x-small">
+							<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+						</svg>
 					</button>
-				</span>
-		</section>
+					<div class="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu">
+						<div class="slds-dropdown__header">
+							<span class="slds-text-heading--label">Display As</span>
+						</div>
+						<ul class="slds-dropdown__list" role="menu">
+							<li id="menu-10-0" class="slds-dropdown__item slds-is-selected slds-has-icon--left slds-is-selected" href="#" aria-selected="true">
+								<a href="#" class="slds-truncate" role="menuitemradio">
+									<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--left">
+										<use xlink:href="/examples/assets/icons/standard-sprite/svg/symbols.svg#task2"></use>
+									</svg>Table
+									<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--right">
+										<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
+									</svg>
+								</a>
+							</li>
+							<li id="menu-11-1" href="#" class="slds-dropdown__item slds-has-icon--left"><a href="#" class="slds-truncate" role="menuitemradio">Cards<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--right"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#kanban"></use></svg></a></li>
+							<li id="menu-12-2"
+								href="#" class="slds-dropdown__item slds-has-icon--left"><a href="#" class="slds-truncate" role="menuitemradio">Compact List<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--right"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#side_list"></use></svg></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral">log selected item</button>
+						<button type="button" class="slds-button slds-button--neutral">set selected item</button>
+						<button type="button" class="slds-button slds-button--neutral">enable</button>
+						<button type="button" class="slds-button slds-button--neutral">disable</button>
+					</div>
+				</div>
+			</section>
 
-		<!-- loader -->
-		<section>
-			<h2 class="slds-text-heading--large">
-				<span>Loader</span>
-				<span class="slds-badge">In Progress</span>
-			</h2>
-			<div class="slds-spinner--medium">
-				<img src="/examples/assets/images/spinners/slds_spinner.gif" alt="Loading..." />
-			</div>
-		</section>
-	</div>
+			<!-- pillbox -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Pill</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+					<span class="slds-pill"><a href="#" class="slds-pill__label">Pill Label</a>
+						<button class="slds-button slds-button--icon-bare">
+							<svg aria-hidden="true" class="slds-button__icon">
+								<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+							</svg>
+							<span class="slds-assistive-text">Remove</span>
+						</button>
+					</span>
+			</section>
 
-
-	=================
+			<!-- loader -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Loader</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<div class="slds-spinner--medium">
+					<img src="/examples/assets/images/spinners/slds_spinner.gif" alt="Loading..." />
+				</div>
+			</section>
+		</div>
 
 		<!-- Begin Checkbox -->
 		<section class="example-group fuelux">
@@ -453,7 +471,7 @@
 							<div id="pillbox1"></div>
 						</section>
 						<section>
-							<h1>Legacy Pillbox Example</h1>
+							<h1 class="slds-text-heading--large">Legacy Pillbox Example</h1>
 
 							<div id="pillbox2"></div>
 						</section>
@@ -463,10 +481,7 @@
 		</section>
 		<!-- End Pillbox -->
 
-		<!-- Because these controls are meant to play nice with old FuelUX we're still including Bootstrap js on the page for now -->
 		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
-		<script src="/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-
 		<script src="/build/jquery.bundle.js"></script>
 	</body>
 </html>
