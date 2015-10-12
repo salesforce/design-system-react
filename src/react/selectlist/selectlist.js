@@ -59,9 +59,11 @@ export const SelectlistObject = {
 					<span className={this.cssClasses.CARET}></span>
 					<span className={this.cssClasses.SR_ONLY}>{this.state.strings.TOGGLE_DROPDOWN}</span>
 				</button>
-				<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
-					{this._menuItems()}
-				</ul>
+				<div className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu">
+					<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
+						{this._menuItems()}
+					</ul>
+				</div>
 			</div>
 		);
 	},

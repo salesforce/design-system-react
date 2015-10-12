@@ -58,10 +58,10 @@ export default function (element) {
 						</div>
 
 						<div className="btn-panel action">
-							<button className="slds-button--neutral" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
-							<button className="slds-button--neutral" onClick={this.setSelection.bind(this, index)}>set by object</button>
-							<button className="slds-button--neutral" onClick={this.enable.bind(this, index)}>enable</button>
-							<button className="slds-button--neutral" onClick={this.disable.bind(this, index)}>disable</button>
+							<button className="slds-button slds-button--neutral" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
+							<button className="slds-button slds-button--neutral" onClick={this.setSelection.bind(this, index)}>set by object</button>
+							<button className="slds-button slds-button--neutral" onClick={this.enable.bind(this, index)}>enable</button>
+							<button className="slds-button slds-button--neutral" onClick={this.disable.bind(this, index)}>disable</button>
 						</div>
 					</section>
 				);

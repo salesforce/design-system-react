@@ -18,29 +18,36 @@ const path = require('path');
 
 console.log('path', path);
 
+require('../../scss/components/button-groups/flavors/base/index.scss');
+
+require('../../scss/components/buttons/flavors/base/index.scss');
+require('../../scss/components/buttons/flavors/neutral/index.scss');
+require('../../scss/components/buttons/flavors/brand/index.scss');
+
+require('../../scss/components/dropdowns/flavors/base/index.scss');
 require('../../scss/components/picklists/flavors/base/index.scss');
 
 // require('/scss/components/picklists/flavors/base/index.scss');
 // require('../../node_modules/@salesforce-ux/design-system/scss/components/buttons/flavors/base/index.scss');
 // require('@salesforce-ux/design-system/scss/components/picklists/flavors/base/index');
 
-export const CONTROL = 'selectlist';
+export const CONTROL = 'picklist';
 
 const resizeCache = {};
 
 const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL,
-		BTN_DEFAULT: 'btn btn-default',
-		BTN_GROUP: 'btn-group',
+		CONTROL: 'slds-' + CONTROL,
+		BTN_DEFAULT: 'slds-button slds-button--neutral',
+		BTN_GROUP: 'slds-button-group',
 		CARET: 'caret',
 		DIVIDER: 'divider',
 		HEADER: 'dropdown-header',
 		HIDDEN: 'hidden-field',
 		LABEL: 'selected-label',
-		MENU: 'dropdown-menu',
-		TOGGLE: 'dropdown-toggle'
+		MENU: 'slds-dropdown__list',
+		TOGGLE: 'slds-button slds-button--neutral slds-picklist__label'
 	},
 	
 	_defaultProperties: {
@@ -113,7 +120,7 @@ getKey (item)
 		const sizer = document.createElement('div');
 
 		sizer.className = 'selectlist-sizer';
-		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
+		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="slds-button slds-button--neutral dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
 
 		let parent;
 		if (Lib.hasClass(document.querySelector('html'), this.cssClasses.NAMESPACE)) {

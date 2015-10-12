@@ -58,11 +58,11 @@ export default function (element) {
 							<Selectlist {...model} onChanged={this._handleModelChange.bind(this, index)}/>
 						</div>
 
-						<div className="btn-panel action">
-							<button className="slds-button--neutral" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
-							<button className="slds-button--neutral" onClick={this.setSelection.bind(this, index)}>set by object</button>
-							<button className="slds-button--neutral" onClick={this.enable.bind(this, index)}>enable</button>
-							<button className="slds-button--neutral" onClick={this.disable.bind(this, index)}>disable</button>
+						<div className="slds-button-group">
+							<button className="slds-button slds-button--neutral" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
+							<button className="slds-button slds-button--neutral" onClick={this.setSelection.bind(this, index)}>set by object</button>
+							<button className="slds-button slds-button--neutral" onClick={this.enable.bind(this, index)}>enable</button>
+							<button className="slds-button slds-button--neutral" onClick={this.disable.bind(this, index)}>disable</button>
 						</div>
 					</section>
 				);
@@ -71,7 +71,7 @@ export default function (element) {
 			return (
 				<div>
 					{selectlists}
-					<button className="action btn btn-primary" onClick={this.toggleSelectlistsEnabled}>Toggle Enabled / Disabled</button>
+					<button className="slds-button slds-button--brand" onClick={this.toggleSelectlistsEnabled}>Toggle Enabled / Disabled</button>
 				</div>
 			);
 		},
