@@ -14,6 +14,7 @@ import SLDSButton from '../SLDSButton';
 import {Icon} from '../SLDSIcons';
 import {EventUtil} from '../utils';
 import SLDSSettings from '../SLDSSettings';
+import cx from 'classnames';
 
 
 import Modal from 'react-modal';
@@ -40,13 +41,19 @@ const customStyles = {
 
 module.exports = React.createClass( {
 
+  propTypes: {
+    size: React.PropTypes.oneOf(['medium', 'large'])
+  },
+
   getDefaultProps () {
     return {
       title:'',
       isOpen:false,
       content:[],
       footer:[],
-      returnFocusTo:null
+      returnFocusTo:null,
+      size:'medium',
+      directional: false
     };
   },
 
@@ -100,8 +107,19 @@ module.exports = React.createClass( {
   },
 
   getModal() {
+    const modalClass = {
+      'slds-modal': true,
+      'slds-fade-in-open':this.state.revealed,
+      'slds-modal--large':this.props.size === 'large'
+    };
+
+    const footerClass = {
+      'slds-modal__footer': true,
+      'slds-modal__footer--directional': this.props.directional
+    };
+
     return <div
-            className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')}
+            className={cx(modalClass)}
             style={{pointerEvents:'inherit'}}
             onClick={this.closeModal}
           >
@@ -126,7 +144,7 @@ module.exports = React.createClass( {
               {this.props.children}
 
             </div>
-            <div className='slds-modal__footer'>
+            <div className={cx(footerClass)}>
               {this.props.footer}
             </div>
 
@@ -136,12 +154,17 @@ module.exports = React.createClass( {
   },
 
   render() {
+    const overlayClasses = {
+      'slds-modal-backdrop': true,
+      'slds-modal-backdrop--open':this.state.revealed
+    };
+
     return (
       <Modal
         isOpen={this.props.isOpen}
         onRequestClose={this.closeModal}
         style={customStyles}
-        overlayClassName={'slds-modal-backdrop'+ (this.state.revealed?' slds-modal-backdrop--open':'')} >
+        overlayClassName={cx(overlayClasses)} >
         {this.getModal()}
       </Modal>
     );
