@@ -2,8 +2,8 @@
 	"extends": "airbnb",
 	"parser": "babel-eslint",
 	"rules": {
-		"indent": [2, "tab"],
-		"space-before-function-paren": [2, "always"],
+	  "indent": [2, "tab", {"SwitchCase": 1}],
+	  "space-before-function-paren": [2, "always"],
 		"comma-dangle": [2, "never"],
 		"no-trailing-spaces": [2, { "skipBlankLines": true }],
 		"react/prop-types": 1,
