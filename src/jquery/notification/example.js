@@ -6,7 +6,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 $(function () {
 	// notification
 	const notification1 = new Notification($('#notification'), {
-		text: 'oops, something definitely went wrong'
+		text: 'Base System Alert'
 	});
 
 	// methods

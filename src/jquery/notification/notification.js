@@ -33,13 +33,13 @@ export const NotificationObject = {
 
 	_render () {
 		// load template
-		const $html = $(template);
+		const $component = $(template);
 
 		// replace notification text
-		$html.find('.notify-text').text(this.getProperty('text'));
+		$component.find('.notify-text').text(this.getProperty('text'));
 
 		// render
-		this.elements.wrapper.html($html[0]);
+		this.elements.wrapper.html($component[0]);
 
 		// hookup events
 		this.elements.wrapper.find('.slds-notify__close').on('click', $.proxy(this.hide, this));
