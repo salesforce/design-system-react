@@ -49,7 +49,7 @@ let Tree = Lib.merge({}, TreeCore, {
 		});
 
 		return (
-			<ul className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP)} role="tree">
+			<ul className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, 'slds-tree')} role="tree" aria-labelledby="treeheading">
 				{children}
 			</ul>
 		);
