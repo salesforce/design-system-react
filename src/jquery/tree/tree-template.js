@@ -1,6 +1,6 @@
 export default String.raw`
 <ul class="tree slds-tree" role="tree" aria-labelledby="treeheading">
-	<div class="slds-tree__branch" role="treeitem" aria-expanded="true">
+	<li class="slds-tree__branch" role="treeitem" aria-expanded="true">
 		<div class="slds-tree__branch--header slds-tree__item">
 			<button class="slds-button slds-button--icon-bare slds-m-right--x-small">
 				<svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
