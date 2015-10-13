@@ -3,7 +3,7 @@ export default String.raw`
   <span class="slds-assistive-text">Info</span>
   <button class="slds-button slds-notify__close">
     <svg aria-hidden="true" class="slds-button__icon slds-button__icon--inverse">
-      <use xlink:href="/examples/assets/icons/action-sprite/svg/symbols.svg#close"></use>
+      <use xlink:href="/assets/icons/action-sprite/svg/symbols.svg#close"></use>
     </svg>
     <span class="slds-assistive-text">Close</span>
   </button>

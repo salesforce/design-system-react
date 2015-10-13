@@ -26,23 +26,23 @@ require('../../scss/components/dropdowns/flavors/menu-with-search/index.scss');
 require('../../scss/components/dropdowns/flavors/positioning/index.scss');
 require('../../scss/components/dropdowns/flavors/search-overflow/index.scss');
 
-export const CONTROL = 'picklist';
+export const CONTROL = 'selectlist';
 
 const resizeCache = {};
 
 const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: 'slds-' + CONTROL,
-		BTN_DEFAULT: 'slds-button slds-button--neutral',
-		BTN_GROUP: 'slds-button-group',
+		CONTROL: CONTROL,
+		BTN_DEFAULT: 'btn btn-default',
+		BTN_GROUP: 'btn-group',
 		CARET: 'caret',
 		DIVIDER: 'divider',
 		HEADER: 'dropdown-header',
 		HIDDEN: 'hidden-field',
 		LABEL: 'selected-label',
-		MENU: 'slds-dropdown__list',
-		TOGGLE: 'slds-button slds-button--neutral slds-picklist__label'
+		MENU: 'dropdown-menu',
+		TOGGLE: 'dropdown-toggle'
 	},
 	
 	_defaultProperties: {
@@ -115,7 +115,7 @@ getKey (item)
 		const sizer = document.createElement('div');
 
 		sizer.className = 'selectlist-sizer';
-		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="slds-button slds-button--neutral dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
+		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
 
 		let parent;
 		if (Lib.hasClass(document.querySelector('html'), this.cssClasses.NAMESPACE)) {
