@@ -4,7 +4,7 @@
  */
 
 // Core file for helpful things like CSS class names
-import { CONTROL as controlName } from '../../src/core/selectlist';
+// import { CONTROL as controlName } from '../../src/core/selectlist';
 import * as Lib from '../../src/lib/lib';
 
 import React from 'react';
