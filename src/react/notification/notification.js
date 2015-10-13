@@ -17,8 +17,14 @@ export const NotificationObject = {
 		text: React.PropTypes.string
 	},
 
+	getInitialState () {
+		return {
+			hidden: false
+		};
+	},
+
 	render () {
-		const classNames = NotificationCore._getClassNameByTheme(this.getProperty('theme'));
+		const classNames = NotificationCore._getClassNameByTheme(this.getProperty('theme'), this.state.hidden);
 
 		return (
 			<div className={classNames} role="alert">
@@ -30,8 +36,15 @@ export const NotificationObject = {
 				<h2 className="notify-text">{this.props.text}</h2>
 			</div>
 		);
-	}
+	},
 
+	show () {
+		this.setState({ hidden: false });
+	},
+
+	hide () {
+		this.setState({ hidden: true });
+	}
 };
 
 let Notification = Lib.merge({}, NotificationCore, NotificationObject);

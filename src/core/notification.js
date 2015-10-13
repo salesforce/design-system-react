@@ -19,7 +19,7 @@ const NotificationCore = Lib.merge({}, Base, {
 		theme: 'alert'
 	},
 
-	_getClassNameByTheme: function (theme) {
+	_getClassNameByTheme: function (theme, isHidden) {
 		const classNames = [];
 
 		// add base class
@@ -34,6 +34,11 @@ const NotificationCore = Lib.merge({}, Base, {
 			default:
 				classNames.push(this.cssClasses['THEME_' + theme.toUpperCase()]);
 				break;
+		}
+
+		// add class for state
+		if (isHidden === true) {
+			classNames.push('slds-hidden');
 		}
 
 		return classNames.join(' ');
