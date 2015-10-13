@@ -6,7 +6,7 @@ import Base from './base';
 // Traits
 import Disableable from '../traits/disableable';
 
-const CONTROL = 'checkbox';
+export const CONTROL = 'checkbox';
 
 const CheckboxCore = Lib.merge({}, Base, Disableable, {
 	cssClasses: {
