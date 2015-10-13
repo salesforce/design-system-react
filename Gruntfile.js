@@ -68,6 +68,7 @@ module.exports = function (grunt) {
 				options: {
 					hostname: '*',
 					base: [
+						'public',
 						'./examples',
 						'./fonts',
 						'./node_modules',
@@ -92,6 +93,7 @@ module.exports = function (grunt) {
 			start: {
 				webpack: require('./webpack.config'),
 				publicPath: '/build/',
+				contentBase: './public',
 				port: '<%= port %>',
 				keepAlive: true,
 				hot: true,

@@ -10,34 +10,34 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 @font-face {
   font-family: "Salesforce Sans";
-  src: url("/examples/assets/fonts/webfonts/SalesforceSans-Light.woff2") format("woff2"), url("/examples/assets/fonts/webfonts/SalesforceSans-Light.woff") format("woff");
+  src: url("/assets/fonts/webfonts/SalesforceSans-Light.woff2") format("woff2"), url("/assets/fonts/webfonts/SalesforceSans-Light.woff") format("woff");
   font-weight: 300; }
 
 @font-face {
   font-family: "Salesforce Sans";
-  src: url("/examples/assets/fonts/webfonts/SalesforceSans-LightItalic.woff2") format("woff2"), url("/examples/assets/fonts/webfonts/SalesforceSans-LightItalic.woff") format("woff");
+  src: url("/assets/fonts/webfonts/SalesforceSans-LightItalic.woff2") format("woff2"), url("/assets/fonts/webfonts/SalesforceSans-LightItalic.woff") format("woff");
   font-style: italic;
   font-weight: 300; }
 
 @font-face {
   font-family: "Salesforce Sans";
-  src: url("/examples/assets/fonts/webfonts/SalesforceSans-Regular.woff2") format("woff2"), url("/examples/assets/fonts/webfonts/SalesforceSans-Regular.woff") format("woff");
+  src: url("/assets/fonts/webfonts/SalesforceSans-Regular.woff2") format("woff2"), url("/assets/fonts/webfonts/SalesforceSans-Regular.woff") format("woff");
   font-weight: 400; }
 
 @font-face {
   font-family: "Salesforce Sans";
-  src: url("/examples/assets/fonts/webfonts/SalesforceSans-Italic.woff2") format("woff2"), url("/examples/assets/fonts/webfonts/SalesforceSans-Italic.woff") format("woff");
+  src: url("/assets/fonts/webfonts/SalesforceSans-Italic.woff2") format("woff2"), url("/assets/fonts/webfonts/SalesforceSans-Italic.woff") format("woff");
   font-style: italic;
   font-weight: 400; }
 
 @font-face {
   font-family: "Salesforce Sans";
-  src: url("/examples/assets/fonts/webfonts/SalesforceSans-Bold.woff2") format("woff2"), url("/examples/assets/fonts/webfonts/SalesforceSans-Bold.woff") format("woff");
+  src: url("/assets/fonts/webfonts/SalesforceSans-Bold.woff2") format("woff2"), url("/assets/fonts/webfonts/SalesforceSans-Bold.woff") format("woff");
   font-weight: 700; }
 
 @font-face {
   font-family: "Salesforce Sans";
-  src: url("/examples/assets/fonts/webfonts/SalesforceSans-BoldItalic.woff2") format("woff2"), url("/examples/assets/fonts/webfonts/SalesforceSans-BoldItalic.woff") format("woff");
+  src: url("/assets/fonts/webfonts/SalesforceSans-BoldItalic.woff2") format("woff2"), url("/assets/fonts/webfonts/SalesforceSans-BoldItalic.woff") format("woff");
   font-style: italic;
   font-weight: 700; }
 
