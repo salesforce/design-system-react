@@ -33,16 +33,19 @@ export const ButtonIcon = React.createClass({
           this.props.position ? className += ' slds-button__icon--' + this.props.position : className += ' slds-button__icon--left';
         }
         if (this.props.size) {
-             className += ' slds-button__icon--' + this.props.size;
+          className += ' slds-button__icon--' + this.props.size;
         }
         if (this.props.inverse) {
-             className += ' slds-button__icon--inverse';
+          className += ' slds-button__icon--inverse';
         }
         if (this.props.stateful) {
           className += ' slds-button__icon--stateful';
         }
         if (this.props.hint) {
-             className += ' slds-button__icon--hint';
+          className += ' slds-button__icon--hint';
+        }
+        if (this.props.destructive) {
+          className += ' slds-button__icon--destructive';
         }
         if(this.props.category === 'utility'){
             return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;

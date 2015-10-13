@@ -1,9 +1,10 @@
 
 Below are component prop defaults and available options:
 * label='' *required
-* variant='base' ['neutral', 'brand', 'icon']
+* variant='base' ['neutral', 'brand', 'destructive', 'icon']
 * disabled={false}
 * inverse={false}
+* stateful={false}
 * iconName='' //see https://www.lightningdesignsystem.com/resources/icons#utility
 * iconSize='medium' ['x-small', 'medium', 'small', 'large']
 * iconPosition='left' ['left', 'right', 'large']

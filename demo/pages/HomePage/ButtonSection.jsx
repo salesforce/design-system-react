@@ -62,6 +62,14 @@ module.exports = React.createClass( {
                   onClick={this.handleNeutralClick} />
 
                 <SLDSButton
+                  label='Neutral Icon'
+                  variant='neutral'
+                  iconName='download'
+                  iconSize='small'
+                  iconPosition='right'
+                  onClick={this.handleNeutralClick} />
+
+                <SLDSButton
                   label='Disabled'
                   variant='neutral'
                   disabled={true}
@@ -70,10 +78,6 @@ module.exports = React.createClass( {
                 <SLDSButton
                   label='Brand'
                   variant='brand'
-                  iconName='download'
-                  iconSize='small'
-                  iconPosition='right'
-                  inverse={true}
                   onClick={this.handleBrandClick} />
 
                 <SLDSButton

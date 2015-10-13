@@ -39,10 +39,12 @@ class Button extends React.Component {
   }
 
   getClassName() {
-    let isStateful = this.props.stateful && this.state.active ? true : false;
+    let isSelected = this.props.stateful && this.state.active ? true : false;
+    let notSelected = this.props.stateful && !this.state.active ? true : false;
     return classNames(this.props.className, 'slds-button', {
       [`slds-button--${this.props.variant}`]: this.props.variant,
-      ['slds-is-selected']: isStateful,
+      ['slds-not-selected']: notSelected,
+      ['slds-is-selected']: isSelected,
     });
   }
 
@@ -50,11 +52,13 @@ class Button extends React.Component {
     if(this.props.iconName){
       return (
         <ButtonIcon
+          variant={this.props.variant}
+          disabled={this.props.disabled}
+          inverse={this.props.inverse}
+          stateful={this.props.stateful}
           name={this.props.iconName}
           size={this.props.iconSize}
-          inverse={this.props.inverse}
           position={this.props.iconPosition}
-          variant={this.props.variant}
           />
       );
     }
@@ -79,8 +83,10 @@ class Button extends React.Component {
 
 Button.propTypes = {
   label: React.PropTypes.string.isRequired,
-  variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'icon']),
+  variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
   disabled: React.PropTypes.bool,
+  inverse: React.PropTypes.bool,
+  stateful: React.PropTypes.bool,
   iconName: React.PropTypes.string,
   iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
   iconPosition: React.PropTypes.oneOf(['left', 'right']),
