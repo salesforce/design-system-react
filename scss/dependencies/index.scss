@@ -1,1 +1,18 @@
-@import "~@salesforce-ux/design-system/scss/dependencies/index.scss";
+@import
+
+  "functions",
+
+  "layout",
+  "typography",
+  "interactions",
+  "motion",
+  "theme",
+
+  // Components
+  "popover",
+  "tables",
+  "tabs",
+
+
+  "root",
+  "core";
