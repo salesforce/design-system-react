@@ -10,11 +10,16 @@ const PillboxItem = React.createClass({
 
 	render () {
 		return (
-			<li className="btn btn-default pill" onClick={this._onClick}>
-				<span className="pill-name">{this.props.item.getText()}</span>
-				<span className="glyphicon glyphicon-close">
-					<span className="sr-only">Remove</span>
-				</span>
+			<li className="slds-pill" onClick={this._onClick}>
+				<span href="#" className="slds-pill__label">{this.props.item.getText()}</span>
+				<button className="slds-button slds-button--icon-bare">
+					<svg
+						aria-hidden="true"
+						className="slds-button__icon"
+						dangerouslySetInnerHTML={{__html: '<use xlink:href="/examples/symbols.svg#close"></use>'}} >
+					</svg>
+					<span className="slds-assistive-text">Remove</span>
+				</button>
 			</li>
 		);
 	},

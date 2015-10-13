@@ -29,12 +29,12 @@ const BadgeCore = Lib.merge({}, Base, {
 
 		// add class for specific theme
 		switch (theme.toUpperCase()) {
-		case 'DEFAULT':
-		case 'SHADE':
-		case 'INVERSE':
-		default:
-			classNames.push(this.cssClasses['THEME_' + theme.toUpperCase()]);
-			break;
+			case 'DEFAULT':
+			case 'SHADE':
+			case 'INVERSE':
+			default:
+				classNames.push(this.cssClasses['THEME_' + theme.toUpperCase()]);
+				break;
 		}
 
 		return classNames.join(' ');

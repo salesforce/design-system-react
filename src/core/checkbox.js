@@ -6,37 +6,28 @@ import Base from './base';
 // Traits
 import Disableable from '../traits/disableable';
 
-// require('../../less/checkbox.less');
-
 export const CONTROL = 'checkbox';
 
 const CheckboxCore = Lib.merge({}, Base, Disableable, {
 	cssClasses: {
-		CONTROL: CONTROL + '-custom',
-		CHECKED: 'checked',
-		BLOCK: CONTROL,
-		INLINE: CONTROL + '-inline',
-		LABEL: CONTROL + '-label',
-		ADDON: 'input-group-addon',
-		HIGHLIGHT: 'highlight'
+		CONTROL: Base.cssClasses.NAMESPACE + CONTROL,
+		CONTROL_FAUX: Base.cssClasses.NAMESPACE + CONTROL + '--faux'
 	},
 
 	_defaultProperties: {
 		checkedValue: null,
-		inline: false,
-		addon: false,
-		highlight: false,
-		text: '',			// TODO: should this be "label" ?
-		value: ''
+		labelText: '',
+		value: '',
+		name: ''
 	},
 
 	isChecked () {
 		return this.getProperty('checkedValue') === this.getProperty('value');
 	},
-	
+
 	toggle (_checked) {
 		let checked;
-		
+
 		if (!Lib.isBoolean(_checked)) {
 			checked = !this.isChecked();
 		} else if (_checked !== this.isChecked()) {
@@ -55,15 +46,15 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 		} else {
 			this.trigger('unchecked');
 		}
-		
+
 		this.trigger('changed', checked);
 		this.trigger('checkedValueChanged', checkedValue);
 	},
-	
+
 	check () {
 		this.toggle(true);
 	},
-	
+
 	uncheck () {
 		this.toggle(false);
 	}

@@ -3,43 +3,12 @@
 	<head>
 		<meta charset=utf-8/>
 		<title>React</title>
-		<!-- <link href="/examples/assets/styles/slds.css" rel="stylesheet"> -->
-		<style>
-			h2 {
-				margin-top:25px;
-			}
-			h3 {
-				margin-top:5px;
-			}
-		</style>
+		<link href="/examples/assets/styles/slds.css" rel="stylesheet">
+		<link href="/temp-styles/temp-styles.css" rel="stylesheet">
+		<link href="/examples/example-styles.css" rel="stylesheet">
 	</head>
 	<body>
 	<div class="slds-container slds-p-around--medium">
-		<!-- badge -->
-		<section>
-			<h2 class="slds-text-heading--large">
-				<span>SLDS Picklist</span>
-			</h2>
-			<div class="slds-form-element">
-			    <div aria-expanded="true" class="slds-picklist">
-			        <button class="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true">
-			            <span class="slds-truncate">Select an Option</span>
-			            <svg aria-hidden="true" class="slds-icon">
-			                <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-			            </svg>
-			        </button>
-			        <div class="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu">
-			            <ul class="slds-dropdown__list" role="menu">
-			                <li id="menu-90-0" href="#" class="slds-dropdown__item slds-has-icon--left"><a href="#" class="slds-truncate" role="menuitemradio">Option One</a></li>
-			                <li id="menu-91-1" href="#" class="slds-dropdown__item slds-has-icon--left"><a href="#" class="slds-truncate" role="menuitemradio">Option Two</a></li>
-			                <li id="menu-92-2" href="#" class="slds-dropdown__item slds-has-icon--left"><a href="#" class="slds-truncate" role="menuitemradio">Option Three</a></li>
-			                <li id="menu-93-3" href="#" class="slds-dropdown__item slds-has-icon--left"><a href="#" class="slds-truncate" role="menuitemradio">Option Four</a></li>
-			            </ul>
-			        </div>
-			    </div>
-			</div>
-		</section>
-
 		<!-- badge -->
 		<section>
 			<h2 class="slds-text-heading--large">
@@ -58,31 +27,20 @@
 				<span>Checkbox</span>
 				<span class="slds-badge">In Progress</span>
 			</h2>
-			<label class="slds-checkbox">
-				<input name="checkbox" type="checkbox" />
-				<span class="slds-checkbox--faux"></span>
-				<span class="slds-form-element__label">Unchecked</span>
-			</label>
-			<label class="slds-checkbox">
-				<input name="checkbox" type="checkbox" checked />
-				<span class="slds-checkbox--faux"></span>
-				<span class="slds-form-element__label">Checked</span>
-			</label>
-			<div class="slds-p-around--medium">
-				<div class="slds-button-group" role="group">
-					<button type="button" class="slds-button slds-button--neutral">check</button>
-					<button type="button" class="slds-button slds-button--neutral">uncheck</button>
-					<button type="button" class="slds-button slds-button--neutral">enable</button>
-					<button type="button" class="slds-button slds-button--neutral">disable</button>
-				</div>
-			</div>
+			<section id="slds-checkbox"></section>
+		</section>
+
+		<!-- radio -->
+		<section>
+			<h2 class="slds-text-heading--large">
+				<span>Radio</span>
+				<span class="slds-badge">In Progress</span>
+			</h2>
+			<section id="slds-radio"></section>
 		</section>
 
 		<!-- dropdown -->
 		<section>
-
-
-
 			<h2 class="slds-text-heading--large">
 				<span>Dropdown</span>
 				<span class="slds-badge">In Progress</span>
@@ -96,11 +54,11 @@
 					<svg aria-hidden="true" class="slds-button__icon slds-button__icon--x-small">
 						<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
 					</svg>
-					</button>
+				</button>
 				<div class="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu">
 					<div class="slds-dropdown__header">
 						<span class="slds-text-heading--label">Display As</span>
-				</div>
+					</div>
 					<ul class="slds-dropdown__list" role="menu">
 						<li id="menu-10-0" class="slds-dropdown__item slds-is-selected slds-has-icon--left slds-is-selected" href="#" aria-selected="true">
 							<a href="#" class="slds-truncate" role="menuitemradio">
@@ -154,10 +112,7 @@
 				<img src="/examples/assets/images/spinners/slds_spinner.gif" alt="Loading..." />
 			</div>
 		</section>
-			</div>
-
-
-	=================
+	</div>
 
 
 		<section class="example-group fuelux">
@@ -203,7 +158,7 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<section class="example-group fuelux">
 			<div class="container">
 				<div class="row">
@@ -236,7 +191,7 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<section class="example-group fuelux">
 			<div class="container">
 				<div class="row">
