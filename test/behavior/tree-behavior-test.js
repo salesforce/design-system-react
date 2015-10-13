@@ -376,7 +376,7 @@ describe(controlName + ' Component', function () {
 				xit('should look like nothing is selected');
 			});
 
-			describe('with the first item selected', function () {
+			xdescribe('with the first item selected', function () {
 				let selectedItem;
 				beforeEach(function () {
 					selectedItem = initDataTemplate.collection[0];
@@ -443,7 +443,7 @@ describe(controlName + ' Component', function () {
 				xit('should look like nothing is open');
 			});
 
-			describe('with the first folder selected', function () {
+			xdescribe('with the first folder selected', function () {
 				let selectedFolder;
 
 				beforeEach(function () {
