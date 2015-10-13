@@ -28,20 +28,21 @@ export const ButtonIcon = React.createClass({
 
         const useTag = '<use xlink:href="'+SLDSSettings.getAssetsPath()+'/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
         let className  = 'slds-button__icon';
-        if (this.props.stateful) {
-            className += '--stateful';
-        }
-        if (this.props.position) {
-            className = className + ' slds-button__icon--' + this.props.position;
+        if (this.props.variant !== 'icon') {
+          //If no position prop given, default to left
+          this.props.position ? className += ' slds-button__icon--' + this.props.position : className += ' slds-button__icon--left';
         }
         if (this.props.size) {
-            className = className + ' slds-button__icon--' + this.props.size;
+             className += ' slds-button__icon--' + this.props.size;
         }
         if (this.props.inverse) {
-            className = className + ' slds-button__icon--inverse';
+             className += ' slds-button__icon--inverse';
+        }
+        if (this.props.stateful) {
+          className += ' slds-button__icon--stateful';
         }
         if (this.props.hint) {
-            className = className + ' slds-button__icon--hint';
+             className += ' slds-button__icon--hint';
         }
         if(this.props.category === 'utility'){
             return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;

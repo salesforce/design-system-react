@@ -19,6 +19,7 @@ class Button extends React.Component {
 
   constructor(props) {
     super(props);
+    this.displayName = 'SLDSButton';
     this.state = { active: false };
   };
 
@@ -51,7 +52,10 @@ class Button extends React.Component {
         <ButtonIcon
           name={this.props.iconName}
           size={this.props.iconSize}
-          position={this.props.iconPosition || 'left'} />
+          inverse={this.props.inverse}
+          position={this.props.iconPosition}
+          variant={this.props.variant}
+          />
       );
     }
   }
@@ -60,31 +64,16 @@ class Button extends React.Component {
   render() {
     const props = omit('className', this.props);
     const click = createChainedFunction(this.props.onClick, this.onClick.bind(this));
+    const labelClasses = this.props.variant === 'icon' ? 'slds-assistive-text': '';
     if (this.props.disabled) { props['disabled'] = 'disabled' };
 
-    //If the button is only an icon render this:
-    if(this.props.variant === 'icon'){
-      return (
-        <button className={this.getClassName()} {...props} onClick={click}>
-          <Icon
-          name={this.props.iconName}
-          category='utility'
-          size={this.props.iconSize}
-          />
-          <span className="slds-assistive-text">{this.props.label}</span>
-        </button>
-      );
-    }
-    //Else we assume the button has a visible label (with or without an icon):
-    else{
-      return (
-        <button className={this.getClassName()} {...props} onClick={click}>
-          {this.props.iconPosition === 'right' ? this.props.label : null}
-          {this.renderIcon()}
-          {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.props.label : null}
-        </button>
-      );
-    }
+    return (
+      <button className={this.getClassName()} {...props} onClick={click}>
+        {this.props.iconPosition === 'right' ? <span className={labelClasses}>{this.props.label}</span>: null}
+        {this.renderIcon()}
+        {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? <span className={labelClasses}>{this.props.label}</span>: null}
+      </button>
+    );
   }
 }
 

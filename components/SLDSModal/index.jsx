@@ -134,7 +134,8 @@ module.exports = React.createClass( {
                 label='Close'
                 variant='icon'
                 iconName='close'
-                iconSize='small'
+                iconSize='large'
+                inverse={true}
                 className='slds-modal__close'
                 onClick={this.closeModal} />
             </div>
