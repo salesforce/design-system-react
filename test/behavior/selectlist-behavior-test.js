@@ -167,7 +167,7 @@ describe(controlName + ' component', function () {
 		describe('should set the default selection', function () {
 			it(controlName + ' should set the default selection', function (done) {
 				function rendered (renderedControlContainer, control) {
-					expect(testingBehaviorHandlers.getSelection(control)).to.equal(defaultSelection);
+					expect(testingBehaviorHandlers.getSelection(control).id).to.equal(defaultSelection.id);
 
 					done();
 				}
