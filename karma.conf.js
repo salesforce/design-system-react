@@ -78,7 +78,7 @@ module.exports = function(config) {
       require('karma-sourcemap-loader'),
       require('karma-phantomjs-launcher'),
       require('karma-chrome-launcher'),
-      require('karma-spec-reporter'),
+      require('karma-spec-reporter')
     ]
   })
 }

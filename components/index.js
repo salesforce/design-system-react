@@ -12,13 +12,15 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import SLDSPicklistBase from './SLDSPicklistBase';
 import SLDSSettings from './SLDSSettings';
 import SLDSButton from './SLDSButton';
-//import SLDSModal from './SLDSModal';
-//import SLDSModalTrigger from './SLDSModal/trigger';
+import SLDSModal from './SLDSModal';
+import SLDSModalTrigger from './SLDSModal/trigger';
+import SLDSToast from './SLDSToast';
 
 module.exports = {
   SLDSPicklistBase: SLDSPicklistBase,
   SLDSSettings: SLDSSettings,
   SLDSButton: SLDSButton,
-//  SLDSModal: SLDSModal,
-//  SLDSModalTrigger: SLDSModalTrigger
+  SLDSModal: SLDSModal,
+  SLDSModalTrigger: SLDSModalTrigger,
+  SLDSToast: SLDSToast
 };

@@ -214,7 +214,6 @@ module.exports = React.createClass( {
 
       <div className={"slds-form-element slds-theme--"+this.props.theme}>
         <div className={"slds-picklist slds-theme--"+this.props.theme}>
-        <form>
           <button
             id={this.props.id}
             ref="button"
@@ -231,7 +230,6 @@ module.exports = React.createClass( {
           </button>
 
           {this.props.modal?this.getModalPopover():this.getSimplePopover()}
-        </form>
 
         </div>
 

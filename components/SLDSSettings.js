@@ -10,6 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 'use strict';
+import Modal from 'react-modal';
+
 
 let assetsPath = 'assets/';
 let appRoot;
@@ -25,6 +27,7 @@ module.exports = {
   setAppElement: (el)=>{
     if(el){
       appRoot = el;
+      Modal.setAppElement(el);
     }
   },
   getAppElement: ()=>{

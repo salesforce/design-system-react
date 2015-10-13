@@ -4,43 +4,71 @@ import {SLDSButton} from '../../components';
 
 describe('SLDSButton: ',  function(){
 
-  let sandbox, reactCmp, button;
-  let handleClick = function() {
-    alert('Button Clicked');
+  let generateButton = function(buttonInstance) {
+    let reactCmp = TestUtils.renderIntoDocument(buttonInstance);
+    return React.findDOMNode(reactCmp);
   };
 
-  //TODO: create function to generate button component and pass to each it block
-
-  beforeEach(function() {
-    sandbox = sinon.sandbox.create();
-    reactCmp = TestUtils.renderIntoDocument(<SLDSButton label='Test' variant='brand' icon='download' onClick={handleClick} />);
-    button = React.findDOMNode(reactCmp);
-  });
-
-  afterEach(function() {
-    sandbox.restore();
-  });
-
-  describe('variants', function() {
-  });
-
-  describe('behavior', function() {
-    it('button onClick invokes method from props', function() {
-      let onClick = sinon.spy();
-      let reactCmp = TestUtils.renderIntoDocument(<SLDSButton label='Test' onClick={onClick} />);
-      let button = React.findDOMNode(reactCmp);
-      TestUtils.Simulate.click(button);
-      expect(onClick.calledOnce).to.be.true;
+  describe('component renders', function() {
+    it('button renders', function() {
+      let button = generateButton(<SLDSButton label='Test' />);
+      expect(button).to.not.equal(undefined);
     });
   });
 
-  it('button renders', function() {
-    expect(button).to.not.equal(null);
+  describe('component basic props render', function() {
+    it('renders label', function() {
+      let button = generateButton(<SLDSButton label='Test' />);
+      let label = button.innerText;
+      expect(label).to.equal('Test');
+    });
+
+    it('renders hidden label with icon only button', function() {
+      let button = generateButton(<SLDSButton label='Settings' variant='icon' iconName='settings' />);
+      let label = button.innerText;
+      expect(label).to.equal('Settings');
+    });
+
+    it('renders variant', function() {
+      let button = TestUtils.renderIntoDocument(<SLDSButton label='Test' variant='brand' />);
+      let brand = TestUtils.findRenderedDOMComponentWithClass(button, 'slds-button--brand');
+      expect(brand).to.not.equal(undefined);
+    });
   });
 
-  it('button renders label from props', function() {
-    let label = button.innerText;
-    expect(label).to.equal('Test');
+  describe('component icon props render', function() {
+    it('renders icon svg', function() {
+      let button = generateButton(<SLDSButton label='Test' iconName='download' />);
+      let svg = button.getElementsByClassName("slds-button__icon")[0];
+      expect(svg).to.not.equal(undefined);
+    });
+
+    it('renders icon size', function() {
+      let button = generateButton(<SLDSButton label='Test' iconName='download' iconSize='small' />);
+      let size = button.getElementsByClassName("slds-button__icon--small")[0];
+      expect(size).to.not.equal(undefined);
+    });
+
+    it('without prop specified, renders icon position on left side', function() {
+      let button = generateButton(<SLDSButton label='Test' iconName='download' />);
+      let position = button.getElementsByClassName("slds-button__icon--left")[0];
+      expect(position).to.not.equal(undefined);
+    });
+
+    it('renders icon position', function() {
+      let button = generateButton(<SLDSButton label='Test' iconName='download' iconPosition='right' />);
+      let position = button.getElementsByClassName("slds-button__icon--right")[0];
+      expect(position).to.not.equal(undefined);
+    });
+  });
+
+  describe('component behavior works', function() {
+    it('button onClick invokes method from props', function() {
+      let onClick = sinon.spy();
+      let button = generateButton(<SLDSButton label='Test' onClick={onClick} />);
+      TestUtils.Simulate.click(button);
+      expect(onClick.calledOnce).to.be.true;
+    });
   });
 
 });

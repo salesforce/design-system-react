@@ -13,7 +13,7 @@ import React from 'react';
 const classNames = require('classnames');
 import createChainedFunction from '../utils/create-chained-function';
 import {ButtonIcon, Icon} from '../SLDSIcons.js';
-import {omit} from 'lodash';
+import omit from 'lodash.omit';
 
 class Button extends React.Component {
 
@@ -60,6 +60,7 @@ class Button extends React.Component {
   render() {
     const props = omit('className', this.props);
     const click = createChainedFunction(this.props.onClick, this.onClick.bind(this));
+    if (this.props.disabled) { props['disabled'] = 'disabled' };
 
     //If the button is only an icon render this:
     if(this.props.variant === 'icon'){
@@ -69,7 +70,7 @@ class Button extends React.Component {
           name={this.props.iconName}
           category='utility'
           size={this.props.iconSize}
-          className={'slds-icon'} />
+          />
           <span className="slds-assistive-text">{this.props.label}</span>
         </button>
       );
@@ -78,13 +79,9 @@ class Button extends React.Component {
     else{
       return (
         <button className={this.getClassName()} {...props} onClick={click}>
-
-        {this.props.iconPosition === 'right' ? this.props.label : null}
-
-        {this.renderIcon()}
-
-        {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.props.label : null}
-
+          {this.props.iconPosition === 'right' ? this.props.label : null}
+          {this.renderIcon()}
+          {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? this.props.label : null}
         </button>
       );
     }
@@ -94,6 +91,7 @@ class Button extends React.Component {
 Button.propTypes = {
   label: React.PropTypes.string.isRequired,
   variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'icon']),
+  disabled: React.PropTypes.bool,
   iconName: React.PropTypes.string,
   iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
   iconPosition: React.PropTypes.oneOf(['left', 'right']),

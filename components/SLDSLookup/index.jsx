@@ -11,12 +11,12 @@ import React, { Component } from 'react';
 import Menu from './Menu';
 import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
-import _ from "lodash";
 import {KEYS,EventUtil} from '../utils';
+import escapeRegExp from 'lodash.escaperegexp';
 
 const defaultFilter = (term, item) => {
   if(!term) return true;
-  return item.label.match(new RegExp(_.escapeRegExp(term), 'ig'));
+  return item.label.match(new RegExp(escapeRegExp(term), 'ig'));
 };
 
 class SLDSLookup extends React.Component {

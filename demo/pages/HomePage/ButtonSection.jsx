@@ -28,10 +28,12 @@ module.exports = React.createClass( {
     return {};
   },
 
+  handleNeutralClick () {
+    alert('Neutral Button Clicked');
+  },
 
-
-  handleButtonClick () {
-    alert('Test Button Clicked');
+  handleDisabledClick () {
+    alert('Disabled Button Clicked');
   },
 
   render() {
@@ -47,12 +49,20 @@ module.exports = React.createClass( {
               </PrismCode>
               <div className='slds-p-vertical--large'>
                 <SLDSButton
-                  label='Test'
+                  label='Neutral'
                   variant='neutral'
+                  disabled={false}
                   iconName='download'
                   iconSize='small'
                   iconPosition='right'
+                  onClick={this.handleNeutralClick} />
+
+                <SLDSButton
+                  label='Disabled'
+                  variant='neutral'
+                  disabled={true}
                   onClick={this.handleButtonClick} />
+
               </div>
             </div>
 

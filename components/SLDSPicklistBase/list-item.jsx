@@ -147,7 +147,7 @@ module.exports = React.createClass({
             aria-checked={this.props.isSelected}
             role='menuitemradio'
             tabIndex={-1}>
-              {this.props.isSelected?<Icon name='task2' size='small' position='left' category='standard' />:null}
+              {this.props.isSelected?<Icon name='check'  position='left' category='utility' />:null}
               {this.props.label}
           </a>
       </li>
