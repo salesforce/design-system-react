@@ -1,4 +1,5 @@
 import badge from './badge/example';
+import notification from './notification/example';
 import selectlist from './selectlist/example';
 import combobox from './combobox/example';
 import tree from './tree/example';
@@ -10,6 +11,7 @@ import search from './search/example';
 import pillbox from './pillbox/example';
 
 badge();
+notification();
 
 selectlist(document.getElementById('selectlist'));
 combobox(document.getElementById('combobox'));
