@@ -58,7 +58,7 @@
     "fuelux": "^3.11.3",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
-    "react": "^0.13.3",
+    "react": "^0.14.0",
     "text-loader": "0.0.1",
     "underscore": "^1.8.3"
   },
