@@ -46,12 +46,12 @@ class SLDSLookup extends React.Component {
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
   increaseIndex(){
-    let items = this.state.listLength - 1;
-    this.setState({ focusIndex: this.state.focusIndex < items ? this.state.focusIndex + 1 : 0 })
+    let items = this.state.listLength;
+    this.setState({ focusIndex: this.state.focusIndex <= items ? this.state.focusIndex + 1 : 0 })
   }
 
   decreaseIndex(){
-    let items = this.state.listLength - 1;
+    let items = this.state.listLength;
     this.setState({ focusIndex: this.state.focusIndex > 0 ? this.state.focusIndex - 1 : items })
   }
 
@@ -85,7 +85,8 @@ class SLDSLookup extends React.Component {
   handleClose() {
     this.setState({
       isOpen:false,
-      focusIndex:null
+      focusIndex:null,
+      currentFocus:null,
     })
   }
 
@@ -111,25 +112,22 @@ class SLDSLookup extends React.Component {
       //If user hits esc key, close menu
       event.keyCode === KEYS.ESCAPE ? this.handleClose() : this.handleClick();
 
-      //If user hits tab key, move aria activedescendant to first menu item
-      if(event.keyCode === KEYS.TAB && this.state.focusIndex === null){
-        this.setState({focusIndex: 0});
-        EventUtil.trapImmediate(event);
-      }
       //If user hits down key, advance aria activedescendant to next item
-      else if(event.keyCode === KEYS.DOWN && this.state.focusIndex !== null){
+      if(event.keyCode === KEYS.DOWN){
         EventUtil.trapImmediate(event);
-        this.increaseIndex();
+        this.state.focusIndex === null ? this.setState({focusIndex: 0}) : this.increaseIndex();
       }
       //If user hits up key, advance aria activedescendant to previous item
-      else if(event.keyCode === KEYS.UP && this.state.focusIndex !== null){
+      else if(event.keyCode === KEYS.UP){
         EventUtil.trapImmediate(event);
-        this.decreaseIndex();
+        this.state.focusIndex === null ? this.setState({focusIndex: this.state.listLength}) : this.decreaseIndex();
       }
       //If user hits enter/space key, select current activedescendant item
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.focusIndex !== null){
         EventUtil.trapImmediate(event);
-        this.selectItem(this.state.currentFocus);
+        //If the focus is on the first or last item in the menu (search details or add item buttons), then close.
+        //If not, then select menu item
+        (this.state.focusIndex === 0 || this.state.focusIndex === (this.state.listLength + 1)) ? this.handleClose() : this.selectItem(this.state.currentFocus);
       }
     }
   }
@@ -227,7 +225,7 @@ SLDSLookup.defaultProps = {
   onItemSelect: function(item){
     //console.log('onItemSelect should be defined');
   },
-  addItem: function(item){
+  addItem: function(event){
     //console.log('onItemSelect should be defined');
   },
 };

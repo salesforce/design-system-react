@@ -37,7 +37,7 @@ class Menu extends React.Component {
   renderItems(){
     return this.props.items.filter(this.filter, this).map((c, i) => {
       //isActive means it is aria-activedescendant
-      const isActive = this.props.focusIndex === i ? true : false;
+      const isActive = this.props.focusIndex === i + 1 ? true : false;
       return <Item
       key={c.id}
       id={c.id}
@@ -51,8 +51,10 @@ class Menu extends React.Component {
   }
 
   renderSearchDetails(){
+    let className = 'slds-button';
+    if(this.props.focusIndex === 0) className += ' slds-theme--shade';
     return(
-      <button className="slds-button">
+      <button id="searchDetails" className={className}>
       <Icon name="search" category="utility" size="x-small" className="slds-icon-text-default" />
       {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type}
       </button>
@@ -60,8 +62,10 @@ class Menu extends React.Component {
   }
 
   renderAddItem(){
+    let className = 'slds-button';
+    if(this.props.focusIndex === this.props.listLength + 1) className += ' slds-theme--shade';
     return(
-      <button className="slds-button" onClick={this.props.addItem} onMouseDown={this.props.addItem}>
+      <button id="addItem" className={className} onClick={this.props.addItem} onMouseDown={this.props.addItem}>
       <Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />
       New {this.props.type}
       </button>
