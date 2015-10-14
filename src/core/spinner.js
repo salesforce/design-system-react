@@ -6,9 +6,9 @@ import Base from './base';
 // require('../../less/spinner.less');
 
 export const CONTROL = 'spinner';
+const assetsDir = '/examples/assets/images/spinners/';
 
 const SpinnerCore = Lib.merge({}, Base, {
-	assets: '/examples/assets/images/spinners/',
 
 	cssClasses: {
 		small: Base.cssClasses.NAMESPACE + CONTROL + '--small',
@@ -17,9 +17,9 @@ const SpinnerCore = Lib.merge({}, Base, {
 	},
 
 	fileNames: {
-		base: 'slds_' + CONTROL + '.gif',
-		brand: 'slds_' + CONTROL + '_brand.gif',
-		inverse: 'slds_' + CONTROL + '_inverse.gif'
+		base: assetsDir + 'slds_' + CONTROL + '.gif',
+		brand: assetsDir + 'slds_' + CONTROL + '_brand.gif',
+		inverse: assetsDir + 'slds_' + CONTROL + '_inverse.gif'
 	},
 
 	// Set the defaults

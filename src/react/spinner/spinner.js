@@ -20,7 +20,7 @@ let Spinner = Lib.merge({}, SpinnerCore, {
 	render () {
 		return (
 			<div className={this.cssClasses[this.props.size]}>
-				<img src={this.assets + this.fileNames[this.props.theme]} alt="Loading..." />
+				<img src={this.fileNames[this.props.theme]} alt="Loading..." />
 			</div>
 		);
 	}
