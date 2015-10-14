@@ -24,3 +24,7 @@ body > .example-group .col-sm-12 > section h1 {
 body > .slds-container {
 	margin: 0 150px;
 }
+
+#pillbox1,#pillbox2 {
+	height: 40px;
+}
