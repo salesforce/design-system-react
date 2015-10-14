@@ -32,8 +32,13 @@ export const NotificationObject = {
 	},
 
 	_render () {
+		const classNames = NotificationCore._getClassNameByTheme(this.getProperty('theme'));
+
 		// load template
 		const $component = $(template);
+
+		// update theme
+		$component.addClass(classNames);
 
 		// replace notification text
 		$component.find('.notify-text').text(this.getProperty('text'));
