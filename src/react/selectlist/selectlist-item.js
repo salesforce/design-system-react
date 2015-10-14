@@ -1,8 +1,14 @@
 // Framework specific
 import React from 'react';
-import classNames from 'classnames';
 
 const SelectlistItem = React.createClass({
+
+	cssClasses: {
+		HEADER: 'slds-dropdown__header',
+		HEADERTEXT: 'slds-text-heading--label',
+		DIVIDER: 'slds-has-divider'
+	},
+
 	propTypes: {
 		item: React.PropTypes.object.isRequired,
 		onSelected: React.PropTypes.func.isRequired
@@ -13,17 +19,17 @@ const SelectlistItem = React.createClass({
 
 		switch (this.props.item.getType()) {
 			case 'header':
-				html = <li className="dropdown-header">{this.props.item.getText()}</li>;
+				html = <li className={this.cssClasses.HEADER}><span className={this.cssClasses.HEADERTEXT}>{this.props.item.getText()}</span></li>;
 				break;
 			case 'divider':
-				html = <li className="divider"></li>;
+				html = <li className={this.cssClasses.DIVIDER}></li>;
 				break;
 			default:
 				const disabled = this.props.item.getDisabled();
-
+			
 				html = (
-					<li className={classNames({ disabled })} disabled={disabled}>
-						<a href="#" onClick={this.handleClicked}>{this.props.item.getText()}</a>
+					<li className="slds-dropdown__item slds-has-icon--left" disabled={disabled}>
+					<a href="#" className="slds-truncate" onClick={this.handleClicked}>{this.props.item.getText()}</a>
 					</li>
 				);
 		}

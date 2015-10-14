@@ -39,30 +39,28 @@ export const SelectlistObject = {
 	},
 
 	render () {
+		const icon = '<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'; // react doesn't currently support xlink:href in a svg tag
 		const item = this._getSelection();
 		const selectionName = item.getText() || this.state.strings.NONE_SELECTED;
-
 		const styles = {
 			width: this.state.width
 		};
 
-		const disabledClass = {};
-		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
-
-		const openClass = {};
-		openClass[this.cssClasses.OPEN] = this.state.isOpen;
-
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP, disabledClass, openClass)} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-				<button className={classNames(this.cssClasses.BTN_DEFAULT, this.cssClasses.TOGGLE, disabledClass)} type="button" disabled={this.props.disabled} style={styles} aria-haspopup="true" aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
-					<span className={this.cssClasses.LABEL}>{selectionName}</span>
-					<span className={this.cssClasses.CARET}></span>
-					<span className={this.cssClasses.SR_ONLY}>{this.state.strings.TOGGLE_DROPDOWN}</span>
-				</button>
-				<ul className={this.cssClasses.MENU} role="menu" style={styles} ref={this.cssClasses.MENU}>
-					{this._menuItems()}
-				</ul>
+		<div className="slds-form-element">
+		  <div aria-expanded="true" className="slds-picklist" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" style={styles} disabled={this.props.disabled} aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
+			  <span className="slds-truncate">{selectionName}</span>
+			  <svg aria-hidden="true" className="slds-icon" dangerouslySetInnerHTML={{__html: icon}} />
+			</button>
+			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--small', 'lds-dropdown--menu', {'slds-hide': !this.state.isOpen})}>
+			  <ul className="slds-dropdown__list" role="menu" style={styles} ref={this.cssClasses.MENU}>
+				{this._menuItems()}
+			  </ul>
 			</div>
+			<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
+		  </div>
+		</div>
 		);
 	},
 

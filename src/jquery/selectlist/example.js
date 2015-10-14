@@ -46,15 +46,15 @@ $(function () {
 		$('#mySelectlist1').selectlist();
 	});
 
-	// events
-	$('#mySelectlist1').on('changed.fu.selectlist', function (event, data) {
+	$('#mySelectlist1')
+	.selectlist()
+	.on('changed.fu.selectlist', function (event, data) {
 		Lib.log('changed', data);
 	});
 
 
 	$('#mySelectlist2').selectlist({
-		collection: collection,
-		resize: 'auto'
+		collection: collection
 	});
 
 	// sample method buttons
