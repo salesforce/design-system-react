@@ -18,10 +18,7 @@ export const CheckboxObject = {
 
 	propTypes: {
 		disabled: React.PropTypes.bool,
-		checkedValue: React.PropTypes.oneOfType([
-			React.PropTypes.string,
-			React.PropTypes.oneOf([null])
-		]),
+		checked: React.PropTypes.bool,
 		labelText: React.PropTypes.string,
 		value: React.PropTypes.string,
 		name: React.PropTypes.string
@@ -41,7 +38,7 @@ export const CheckboxObject = {
 		return (<input name={this.props.name}
 						type="checkbox"
 						disabled={this.props.disabled}
-						checked={this.isChecked()}
+						checked={this.props.checked}
 						value={this.props.value || ''}
 						onChange={this.toggle}/>);
 	},
