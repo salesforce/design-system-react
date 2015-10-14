@@ -34,9 +34,7 @@ describe('SLDSButton: ',  function(){
       let brand = TestUtils.findRenderedDOMComponentWithClass(button, 'slds-button--brand');
       expect(brand).to.not.equal(undefined);
     });
-
-  })
-
+  });
 
   describe('component icon props render', function() {
     it('renders icon svg', function() {

@@ -9,8 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { Component } from 'react';
 import Menu from './Menu';
-import {InputIcon, ButtonIcon} from "./../SLDSIcons";
-import {Icon} from "../SLDSIcons";
+import {Icon, InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {KEYS,EventUtil} from '../utils';
 import escapeRegExp from 'lodash.escaperegexp';
 
@@ -34,6 +33,12 @@ class SLDSLookup extends React.Component {
       selectedIndex: null,
       listLength:this.props.items.length
     };
+  }
+
+  componentDidUpdate(prevProps, prevState){
+    if(prevState.selectedIndex && !this.state.selectIndex){
+      if(this.refs.lookup) React.findDOMNode(this.refs.lookup).focus();
+    }
   }
 
   //=================================================
@@ -72,7 +77,7 @@ class SLDSLookup extends React.Component {
   handleDeleteSelected() {
     this.setState({
       selectedIndex: null,
-      isOpen: false
+      isOpen: true,
     });
   }
 
@@ -144,7 +149,10 @@ class SLDSLookup extends React.Component {
         setFocus={this.setFocus.bind(this)}
         getListLength={this.getListLength.bind(this)}
         listLength={this.state.listLength}
-        focusIndex={this.state.focusIndex}/>;
+        focusIndex={this.state.focusIndex}
+        addItem={this.props.addItem}
+        type={this.props.type}
+        />;
     }else{
       return null;
     }
@@ -181,6 +189,7 @@ class SLDSLookup extends React.Component {
             <InputIcon name="search"/>
             <input
               id="lookup"
+              ref="lookup"
               className={inputClasses}
               type="text"
               aria-label="lookup"

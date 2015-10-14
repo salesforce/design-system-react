@@ -36,6 +36,10 @@ module.exports = React.createClass( {
     return {};
   },
 
+  addItem(){
+    alert('Add item clicked');
+  },
+
 
   render() {
     return (
@@ -53,7 +57,7 @@ module.exports = React.createClass( {
               </PrismCode>
 
               <div className="slds-p-vertical--large">
-                <SLDSLookup items={items} label="Contacts" />
+                <SLDSLookup items={items} label="Accounts" type="account" addItem={this.addItem} />
               </div>
 
             </div>

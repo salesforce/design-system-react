@@ -8,9 +8,8 @@
    */
 
 import React, { Component } from 'react';
-import {Icon} from "../../SLDSIcons";
-import {KEYS} from '../../utils';
 import Item from './Item';
+import {Icon} from "../../SLDSIcons";
 
 class Menu extends React.Component {
   constructor(props){
@@ -18,7 +17,7 @@ class Menu extends React.Component {
     this.state = {};
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevProps, prevState){
     let list = React.findDOMNode(this.refs.list).children.length;
     this.props.getListLength(list);
   }
@@ -49,6 +48,26 @@ class Menu extends React.Component {
     });
   }
 
+  renderEmptyState(){
+    let className = 'slds-lookup__item';
+    return (
+      <li
+        className={className}
+        role="presentaion">
+        <a
+          href='#'
+          id='add-item'
+          tabIndex="-1"
+          role="option"
+          onClick={this.props.addItem}
+          onMouseDown={this.props.addItem}>
+        <Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />
+        New {this.props.type}
+        </a>
+      </li>
+    );
+  }
+
   render(){
     return (
       <div
@@ -59,6 +78,7 @@ class Menu extends React.Component {
       role="presentation"
       ref="list">
       {this.renderItems()}
+      {this.renderEmptyState()}
       </ul>
       </div>
     )

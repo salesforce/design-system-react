@@ -59,6 +59,7 @@ module.exports = React.createClass( {
         </div>
         <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
           <div className='region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large'>
+            <LookupBaseSection />
 
             <ButtonSection />
 
@@ -66,7 +67,6 @@ module.exports = React.createClass( {
 
             <ModalSection />
 
-            <LookupBaseSection />
 
             <DatePickerSingleSelectSection />
 
