@@ -5,6 +5,7 @@ const Base = {
 	// CSS classes used across every control
 	cssClasses: {
 		NAMESPACE: 'slds-',
+		ASSISTIVE_TEXT: 'slds-assistive-text',
 		LABEL: 'slds-form-element__label'
 	},
 
