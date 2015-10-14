@@ -22,12 +22,10 @@ export const ButtonObject = {
 		size: React.PropTypes.string,
 		stateful: React.PropTypes.bool,
 		theme: React.PropTypes.string,
-		selected: React.PropTypes.bool,
-		onClick2: React.PropTypes.func.isRequired
+		selected: React.PropTypes.bool
 	},
 
 	render () {
-		console.log(this.props.onClick2);
 		// falsy values will not output object key (ex. {selected: false} -> '')
 		const selectedClasses = {};
 		selectedClasses[this.cssClasses['not-selected']] = this.props.stateful;
@@ -45,7 +43,6 @@ export const ButtonObject = {
 
 		return (
 			<button type={this.props.type}
-				onClick={this.props.onClick2}
 				className={className}
 				disabled={this.props.disabled}
 				aria-live={this.props.stateful ? 'assertive' : null}>{this.props.children}{assistiveText}</button>

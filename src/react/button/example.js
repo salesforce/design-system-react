@@ -60,30 +60,30 @@ export default function () {
 	// TODO: icon component with props
 	React.render(<Button theme="neutral" stateful>
 		<span className="slds-text-not-selected">
-		  <svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
-		    <use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
-		  </svg>Follow</span>
+			<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
+				<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+			</svg>Follow</span>
 		<span className="slds-text-selected">
-		  <svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
-		    <use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-		  </svg>Following</span>
+			<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
+				<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+			</svg>Following</span>
 		<span className="slds-text-selected-focus">
-		  <svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
-		    <use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-		  </svg>Unfollow</span>
+			<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
+				<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+			</svg>Unfollow</span>
 		</Button>, document.getElementById('slds-button' + '-stateful'));
 	React.render(<Button theme="neutral" stateful selected>
 		<span className="slds-text-not-selected">
-		  <svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
-		    <use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
-		  </svg>Follow</span>
+			<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
+				<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
+			</svg>Follow</span>
 		<span className="slds-text-selected">
-		  <svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
-		    <use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-		  </svg>Following</span>
+			<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
+				<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
+			</svg>Following</span>
 		<span className="slds-text-selected-focus">
-		  <svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
-		    <use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-		  </svg>Unfollow</span>
+			<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
+				<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+			</svg>Unfollow</span>
 		</Button>, document.getElementById('slds-button' + '-stateful-selected'));
 }

@@ -22,9 +22,6 @@ const ButtonCore = Lib.merge({}, Base, {
 	},
 
 	_defaultProperties: {
-		icon: 'bare',
-		size: null,
-		theme: null,
 		type: CONTROL
 	}
 });
