@@ -7,15 +7,41 @@ export const CONTROL = 'notification';
 
 const NotificationCore = Lib.merge({}, Base, {
 	cssClasses: {
-		BASE: 'slds-badge',
-		THEME_DEFAULT: 'slds-theme--default',
-		THEME_SHADE: 'slds-theme--shade',
-		THEME_INVERSE: 'slds-theme--inverse'
+		BASE: 'slds-notify slds-notify--alert slds-theme--alert-texture',
+		THEME_ALERT: '',
+		THEME_SUCCESS: 'slds-theme--success',
+		THEME_ERROR: 'slds-theme--error',
+		THEME_OFFLINE: 'slds-theme--offline'
 	},
 
 	_defaultProperties: {
 		text: 'label',
-		theme: ''
+		theme: 'alert'
+	},
+
+	_getClassNameByTheme: function (theme, isHidden) {
+		const classNames = [];
+
+		// add base class
+		classNames.push(this.cssClasses.BASE);
+
+		// add class for specific theme
+		switch (theme.toUpperCase()) {
+			case 'ALERT':
+			case 'SUCCESS':
+			case 'ERROR':
+			case 'OFFLINE':
+			default:
+				classNames.push(this.cssClasses['THEME_' + theme.toUpperCase()]);
+				break;
+		}
+
+		// add class for state
+		if (isHidden === true) {
+			classNames.push('slds-hidden');
+		}
+
+		return classNames.join(' ');
 	}
 });
 
