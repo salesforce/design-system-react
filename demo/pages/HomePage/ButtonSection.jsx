@@ -32,8 +32,16 @@ module.exports = React.createClass( {
     alert('Neutral Button Clicked');
   },
 
+  handleBrandClick () {
+    alert('Brand Button Clicked');
+  },
+
   handleDisabledClick () {
     alert('Disabled Button Clicked');
+  },
+
+  handleIconClick(){
+    alert('Icon Button Clicked');
   },
 
   render() {
@@ -51,7 +59,11 @@ module.exports = React.createClass( {
                 <SLDSButton
                   label='Neutral'
                   variant='neutral'
-                  disabled={false}
+                  onClick={this.handleNeutralClick} />
+
+                <SLDSButton
+                  label='Neutral Icon'
+                  variant='neutral'
                   iconName='download'
                   iconSize='small'
                   iconPosition='right'
@@ -61,8 +73,19 @@ module.exports = React.createClass( {
                   label='Disabled'
                   variant='neutral'
                   disabled={true}
-                  onClick={this.handleButtonClick} />
+                  onClick={this.handleDisabledClick} />
 
+                <SLDSButton
+                  label='Brand'
+                  variant='brand'
+                  onClick={this.handleBrandClick} />
+
+                <SLDSButton
+                  label='Settings'
+                  variant='icon'
+                  iconName='settings'
+                  iconSize='large'
+                  onClick={this.handleIconClick} />
               </div>
             </div>
 

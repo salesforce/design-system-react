@@ -189,12 +189,12 @@ module.exports = React.createClass( {
       headingClasses.push('slds-text-heading--small');
     } else {
       headingClasses.push('slds-text-heading--medium')
-
       closeButton =(<SLDSButton
           label='Close'
           variant='icon'
           iconName='close'
-          iconSize='small'
+          iconSize='large'
+          inverse={true}
           className='slds-modal__close'
           onClick={this.closeModal} />);
     }
