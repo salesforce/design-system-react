@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Checkbox from './checkbox';
 
 // https://www.lightningdesignsystem.com/components/forms#checkbox
@@ -63,5 +64,5 @@ export default function (element) {
 		}
 	});
 
-	React.render(<CheckboxExample />, element);
+	ReactDOM.render(<CheckboxExample />, element);
 }
