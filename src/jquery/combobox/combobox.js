@@ -22,13 +22,11 @@ let Combobox = function Combobox (element, options) {
 	};
 
 	const $html = $('<i />').append(template);
-	this.template = $html.find('.' + this.cssClasses.CONTROL);
+	this.template = $html.find('.slds-form-element');
 
 	if (this.options.collection) {
 		this.rendered = false;
 	} else {
-		this.isBootstrap3 = Lib.isFunction($().emulateTransitionEnd);
-
 		this._initElements(this.elements.wrapper, this.elements);
 
 		this._buildCollection(this.options);
@@ -46,52 +44,18 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 
 		els.button = base.find('.' + this.cssClasses.TOGGLE);
 		els.input = base.find('.' + this.cssClasses.INPUT);
-		els.inputGroup = base.find('.' + this.cssClasses.INPUT_GROUP_BUTTON);
+		els.inputGroup = base.find('.slds-form-element');
+		els.dropdown = base.find('.' + this.cssClasses.DROPDOWN);
 		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
 
 		return els;
 	},
 
-	_buildCollection (options) {
-		const self = this;
-		const _options = options;
-		const collection = [];
-
-		this.elements.dropdownMenu.find('li').each(function buildCollectionElements () {
-			const $item = $(this);
-			const item = $item.data();
-
-			if (!item.text) {
-				item.text = $item.text().trim();
-			}
-
-			if (item.selected) {
-				delete item.selected;
-				_options.selection = item;
-			}
-
-			if ($item.is('.disabled, :disabled')) {
-				item.disabled = true;
-			}
-
-			if ($item.hasClass(self.cssClasses.HEADER)) {
-				item._itemType = 'header';
-			} else if ($item.hasClass(self.cssClasses.DIVIDER)) {
-				item._itemType = 'divider';
-			}
-
-			$item.data(item);
-			collection.push(item);
-		});
-
-		_options.collection = collection;
-	},
-
 	_bindUIEvents () {
-		if (!this.isBootstrap3) this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
+		this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
-		this.elements.input.on('change.fu.selectlist', $.proxy(this._handleChanged, this));
-		if (!this.isBootstrap3) this.elements.inputGroup.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
+		this.elements.input.on('change.fu.selectlist', $.proxy(this._handleChanged, this)).on('click', function (e) {e.stopPropagation();});
+		this.elements.inputGroup.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.inputGroup.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
 	},
 
@@ -105,7 +69,6 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		// Configure the button
 		const disabled = !!this.getProperty('disabled');
 		elements.button.prop('disabled', disabled);
-		elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 
 		// Show the current selection if there is one
 		elements.input.val(selection.getText());
@@ -132,7 +95,6 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 
 		// Prep for append
 		elements.wrapper.empty();
-		$el.toggleClass(this.cssClasses.DISABLED, disabled);
 
 		if (this.elements.wrapper.is('div')) {
 			this.elements.wrapper.attr('class', $el.attr('class'));
@@ -145,15 +107,6 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		this.rendered = true;
 	},
 
-	_onExpandOrCollapse () {
-		if (this.rendered) {
-			const isOpen = this.getState('isOpen');
-	
-			this.elements.button.attr('aria-expanded', isOpen);
-			this.elements.inputGroup.toggleClass(this.cssClasses.OPEN, isOpen);
-		}
-	},
-
 	_onSelected (item) {
 		if (this.rendered) {
 			this.elements.input.val(item.getText());
@@ -164,10 +117,8 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 		if (this.rendered) {
 			const disabled = !!this.getProperty('disabled');
 			
-			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
 			this.elements.input.prop('disabled', disabled);
 			this.elements.button.prop('disabled', disabled);
-			this.elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 		}
 	},
 

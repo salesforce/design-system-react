@@ -47,7 +47,9 @@ $(function () {
 	});
 
 	// events
-	$('#myCombobox1').on('changed.fu.combobox', function (event, data) {
+	$('#myCombobox1')
+	.combobox()
+	.on('changed.fu.combobox', function (event, data) {
 		Lib.log('changed', data);
 	});
 
