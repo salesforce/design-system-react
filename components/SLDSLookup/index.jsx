@@ -1,15 +1,16 @@
 /*
-Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+   Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+   Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+   Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+   */
 
 import React, { Component } from 'react';
 import Menu from './Menu';
-import {Icon, InputIcon, ButtonIcon} from "./../SLDSIcons";
+import {Icon, InputIcon} from "./../SLDSIcons";
+import SLDSButton from '../SLDSButton';
 import {KEYS,EventUtil} from '../utils';
 import escapeRegExp from 'lodash.escaperegexp';
 
@@ -59,9 +60,7 @@ class SLDSLookup extends React.Component {
   }
 
   getListLength(qty){
-    if(qty !== this.state.listLength){
-      this.setState({listLength:qty});
-    }
+    if(qty !== this.state.listLength) this.setState({listLength:qty});
   }
 
   //=================================================
@@ -82,7 +81,7 @@ class SLDSLookup extends React.Component {
   }
 
   //=================================================
-  // Basic Event Listeners on Input
+  // Event Listeners on Input
   handleClose() {
     this.setState({
       isOpen:false,
@@ -127,7 +126,6 @@ class SLDSLookup extends React.Component {
         EventUtil.trapImmediate(event);
         this.decreaseIndex();
       }
-
       //If user hits enter/space key, select current activedescendant item
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.focusIndex !== null){
         EventUtil.trapImmediate(event);
@@ -152,9 +150,7 @@ class SLDSLookup extends React.Component {
         focusIndex={this.state.focusIndex}
         addItem={this.props.addItem}
         type={this.props.type}
-        />;
-    }else{
-      return null;
+      />;
     }
   }
 
@@ -162,15 +158,17 @@ class SLDSLookup extends React.Component {
     return (
       <div className="slds-pill">
         <a href="#" className="slds-pill__label">
-          <span>
-            <Icon name="account" />
-            {this.props.items[this.state.selectedIndex].label}
-          </span>
+          <Icon name={this.props.type} />
+          {this.props.items[this.state.selectedIndex].label}
         </a>
-        <button className="slds-button slds-button--icon-bare" onClick={this.handleDeleteSelected.bind(this)} ref="clearSelectedItemButton">
-          <ButtonIcon name="close" />
-          <span className="slds-assistive-text">Remove</span>
-        </button>
+        <SLDSButton
+          label='Remove'
+          variant='icon'
+          iconName='close'
+          iconSize='medium'
+          onClick={this.handleDeleteSelected.bind(this)}
+          ref="clearSelectedItemButton"
+        />
       </div>
     );
   }
@@ -203,7 +201,8 @@ class SLDSLookup extends React.Component {
               onBlur={this.handleBlur.bind(this)}
               onClick={this.handleClick.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)}
-              value={this.state.searchTerm} />
+              value={this.state.searchTerm}
+            />
           </div>
 
           {this.renderMenu()}
@@ -217,13 +216,20 @@ class SLDSLookup extends React.Component {
 SLDSLookup.propTypes = {
   items: React.PropTypes.array,
   label: React.PropTypes.string,
+  type: React.PropTypes.string,
+  addItem: React.PropTypes.func,
+  filterWith: React.PropTypes.func,
+  onItemSelect: React.PropTypes.func,
 };
 
 SLDSLookup.defaultProps = {
   filterWith: defaultFilter,
   onItemSelect: function(item){
-  //console.log('onItemSelect should be defined');
-  }
+    //console.log('onItemSelect should be defined');
+  },
+  addItem: function(item){
+    //console.log('onItemSelect should be defined');
+  },
 };
 
 module.exports = SLDSLookup;

@@ -17,6 +17,7 @@ class Menu extends React.Component {
     this.state = {};
   }
 
+  //Set filtered list length in parent to determine active indexes for aria-activedescendent
   componentDidUpdate(prevProps, prevState){
     let list = React.findDOMNode(this.refs.list).children.length;
     this.props.getListLength(list);
@@ -26,6 +27,7 @@ class Menu extends React.Component {
     return this.props.filterWith(this.props.searchTerm, item);
   }
 
+  //Scroll menu up/down when using mouse keys
   handleItemFocus (itemIndex, itemHeight) {
     if(this.refs.list){
       React.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
@@ -51,8 +53,8 @@ class Menu extends React.Component {
   renderSearchDetails(){
     return(
       <button className="slds-button">
-        <Icon name="search" category="utility" size="x-small" className="slds-icon-text-default" />
-        {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type}
+      <Icon name="search" category="utility" size="x-small" className="slds-icon-text-default" />
+      {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type}
       </button>
     );
   }
@@ -60,8 +62,8 @@ class Menu extends React.Component {
   renderAddItem(){
     return(
       <button className="slds-button" onClick={this.props.addItem} onMouseDown={this.props.addItem}>
-        <Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />
-        New {this.props.type}
+      <Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />
+      New {this.props.type}
       </button>
     );
   }
@@ -90,14 +92,16 @@ class Menu extends React.Component {
 
 Menu.propTypes = {
   searchTerm: React.PropTypes.string,
-  filterWith: React.PropTypes.func,
-  onSelect: React.PropTypes.func,
   label: React.PropTypes.string,
-  items: React.PropTypes.array,
-  setFocus: React.PropTypes.func,
-  getListLength: React.PropTypes.func,
+  type: React.PropTypes.string,
   listLength: React.PropTypes.number,
   focusIndex: React.PropTypes.number,
+  items: React.PropTypes.array,
+  onSelect: React.PropTypes.func,
+  addItem: React.PropTypes.func,
+  filterWith: React.PropTypes.func,
+  setFocus: React.PropTypes.func,
+  getListLength: React.PropTypes.func,
 };
 
 Menu.defaultProps = {

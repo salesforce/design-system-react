@@ -41,6 +41,7 @@ class Item extends React.Component {
     return this.props.onSelect(this.props.id);
   }
 
+  //Scroll menu item based on up/down mouse keys (assumes all items are the same height)
   scrollFocus(){
     const height = React.findDOMNode(this).offsetHeight;
     if(height && this.props.handleItemFocus){
@@ -62,7 +63,7 @@ class Item extends React.Component {
           href={this.props.href}
           id={id}
           tabIndex="-1"
-          aria-disabled={this.props.disabled}
+          aria-disabled={this.props.isDisabled}
           role="option"
           onClick={this.handleClick.bind(this)}
           onMouseDown={this.handleClick.bind(this)}>
@@ -76,11 +77,14 @@ class Item extends React.Component {
 
 Item.propTypes = {
   id: React.PropTypes.string,
+  href: React.PropTypes.string,
+  searchTerm: React.PropTypes.string,
+  isActive: React.PropTypes.bool,
+  isDisabled: React.PropTypes.bool,
   setFocus: React.PropTypes.func,
   scrollFocus: React.PropTypes.func,
-  isActive: React.PropTypes.bool,
   onSelect: React.PropTypes.func,
-  searchTerm: React.PropTypes.string,
+handleItemFocus: React.PropTypes.func,
 };
 
 Item.defaultProps = {
