@@ -28,19 +28,6 @@ export default function (element) {
 						collection: collection,
 						disabled: false,
 						selection: collection[1]
-					},
-					{
-						collection: collection,
-						disabled: false,
-						selection: collection[6]
-					},
-					{
-						collection: collection,
-						disabled: false
-					},
-					{
-						collection: collection,
-						disabled: true
 					}
 				]
 			};
@@ -49,9 +36,7 @@ export default function (element) {
 		render () {
 			const selectlists = this.state.models.map((model, index) => {
 				return (
-					<section key={index}>
-						<h2 className="slds-text-heading--large">Selectlist example (selectlist{index + 1})</h2>
-
+					<div>
 						<Selectlist {...model} onChanged={this._handleModelChange.bind(this, index)}/>
 
 						<div className="slds-p-around--medium">
@@ -62,7 +47,7 @@ export default function (element) {
 								<button className="slds-button slds-button--neutral" onClick={this.disable.bind(this, index)}>disable</button>
 							</div>
 						</div>
-					</section>
+					</div>
 				);
 			});
 
