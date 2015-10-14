@@ -6,13 +6,13 @@ const $ = Lib.global.jQuery || Lib.global.$;
 $(function () {
 	// new api controls
 	const checkbox = new Checkbox($('#myCheckbox'), {
-		text: 'Init via JS',
+		text: 'Checked',
 		value: 'value9',
 		checked: true
 	});
 
 	const checkbox2 = new Checkbox($('#myCheckbox2'), {
-		text: 'Init via JS 2',
+		text: 'Unchecked',
 		value: 'value10',
 		checked: false
 	});

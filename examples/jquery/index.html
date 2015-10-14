@@ -21,22 +21,22 @@
 				<span id="badge-inverse"></span>
 			</section>
 
-			<!-- notification -->
+			<!-- button -->
 			<section>
 				<h2 class="slds-text-heading--large">
-					<span>Notification</span>
+					<span>Button</span>
 					<span class="slds-badge">In Progress</span>
 				</h2>
-				<div id="notification"></div>
-				<div id="notification-success" class="slds-m-top--x-small"></div>
-				<div id="notification-error" class="slds-m-top--x-small"></div>
-				<div id="notification-offline" class="slds-m-top--x-small"></div>
-				<div class="slds-p-around--medium">
-					<div class="slds-button-group" role="group">
-						<button type="button" class="slds-button slds-button--neutral" id="notification-hide">hide</button>
-						<button type="button" class="slds-button slds-button--neutral" id="notification-show">show</button>
-					</div>
-				</div>
+				<div id="buttons"></div>
+			</section>
+
+			<!-- button group -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Button Group</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<div id="button-groups"></div>
 			</section>
 
 			<!-- checkbox -->
@@ -57,69 +57,75 @@
 				</div>
 			</section>
 
+			<!-- combobox -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Combobox</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<div id="combobox"></div>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-getSelectedItem">log selected item/value</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-selectByIndex">set by element index (zero-based) (1)</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-selectByObject">set by object (collection[3])</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-enable">enable</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-disable">disable</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- datatable -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Data Table</span>
+					<span class="slds-badge">Not Started</span>
+				</h2>
+				<div id="datatable"></div>
+			</section>
+
+			<!-- datepicker -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Date Picker</span>
+					<span class="slds-badge">Not Started</span>
+				</h2>
+				<div id="datepicker"></div>
+			</section>
+
 			<!-- dropdown -->
 			<section>
 				<h2 class="slds-text-heading--large">
 					<span>Dropdown</span>
-					<span class="slds-badge">In Progress</span>
+					<span class="slds-badge">Not Started</span>
 				</h2>
-				<div class="slds-dropdown-trigger">
-					<button class="slds-button slds-button--icon-more" aria-haspopup="true">
-						<svg aria-hidden="true" class="slds-button__icon">
-							<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
-						</svg>
-						<span class="slds-assistive-text">Settings</span>
-						<svg aria-hidden="true" class="slds-button__icon slds-button__icon--x-small">
-							<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-						</svg>
-					</button>
-					<div class="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu">
-						<div class="slds-dropdown__header">
-							<span class="slds-text-heading--label">Display As</span>
-						</div>
-						<ul class="slds-dropdown__list" role="menu">
-							<li id="menu-10-0" class="slds-dropdown__item slds-is-selected slds-has-icon--left slds-is-selected" href="#" aria-selected="true">
-								<a href="#" class="slds-truncate" role="menuitemradio">
-									<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--left">
-										<use xlink:href="/examples/assets/icons/standard-sprite/svg/symbols.svg#task2"></use>
-									</svg>Table
-									<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--right">
-										<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
-									</svg>
-								</a>
-							</li>
-							<li id="menu-11-1" href="#" class="slds-dropdown__item slds-has-icon--left"><a href="#" class="slds-truncate" role="menuitemradio">Cards<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--right"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#kanban"></use></svg></a></li>
-							<li id="menu-12-2"
-								href="#" class="slds-dropdown__item slds-has-icon--left"><a href="#" class="slds-truncate" role="menuitemradio">Compact List<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--right"><use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#side_list"></use></svg></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="slds-p-around--medium">
+				<div id="dropdown"></div>
+				<!--<div class="slds-p-around--medium">
 					<div class="slds-button-group" role="group">
 						<button type="button" class="slds-button slds-button--neutral">log selected item</button>
 						<button type="button" class="slds-button slds-button--neutral">set selected item</button>
 						<button type="button" class="slds-button slds-button--neutral">enable</button>
 						<button type="button" class="slds-button slds-button--neutral">disable</button>
 					</div>
+				</div>-->
+			</section>
+
+			<!-- notification -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Notification</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<div id="notification"></div>
+				<div id="notification-success" class="slds-m-top--x-small"></div>
+				<div id="notification-error" class="slds-m-top--x-small"></div>
+				<div id="notification-offline" class="slds-m-top--x-small"></div>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral" id="notification-hide">hide</button>
+						<button type="button" class="slds-button slds-button--neutral" id="notification-show">show</button>
+					</div>
 				</div>
-			</section>
-
-			<!-- pillbox -->
-			<section>
-				<h2 class="slds-text-heading--large">
-					<span>Pill</span>
-					<span class="slds-badge">In Progress</span>
-				</h2>
-				<div id="pillbox1"></div>
-			</section>
-
-			<!-- spinner -->
-			<section>
-				<h2 class="slds-text-heading--large">
-					<span>Spinner</span>
-					<span class="slds-badge">In Progress</span>
-				</h2>
-				<div id="spinner"></div>
 			</section>
 
 			<!-- picklist -->
@@ -140,6 +146,51 @@
 				</div>
 			</section>
 
+			<!-- pillbox -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Pill</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<div id="pillbox1"></div>
+			</section>
+
+			<!-- popover -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Popover</span>
+					<span class="slds-badge">Not Started</span>
+				</h2>
+				<div id="popover"></div>
+			</section>
+
+			<!-- radio -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Radio</span>
+					<span class="slds-badge">Not Started</span>
+				</h2>
+				<section id="slds-radio"></section>
+			</section>
+
+			<!-- spinner -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Spinner</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<div id="spinner"></div>
+			</section>
+
+			<!-- tooltip -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Tooltip</span>
+					<span class="slds-badge">Not Started</span>
+				</h2>
+				<div id="tooltip"></div>
+			</section>
+
 			<!-- tree -->
 			<section>
 				<h2 class="slds-text-heading--large">
@@ -149,86 +200,7 @@
 				<ul id="tree"></ul>
 			</section>
 
-			<!-- combobox -->
-			<section>
-				<h2 class="slds-text-heading--large">
-					<span>Combobox</span>
-					<span class="slds-badge">In Progress</span>
-				</h2>
-				<div id="combobox"></div>
-				<div class="slds-p-around--medium">
-					<div class="slds-button-group" role="group">
-						<button type="button" class="slds-button slds-button--neutral" id="combobox-getSelectedItem">log selected item/value</button>
-						<button type="button" class="slds-button slds-button--neutral" id="combobox-selectByIndex">set by element index (zero-based) (1)</button>
-						<button type="button" class="slds-button slds-button--neutral" id="combobox-selectByObject">set by object (collection[3])</button>
-						<button type="button" class="slds-button slds-button--neutral" id="combobox-enable">enable</button>
-						<button type="button" class="slds-button slds-button--neutral" id="combobox-disable">disable</button>
-					</div>
-				</div>
-			</section>
-
 		</div>
-
-		<!-- Begin Checkbox -->
-		<section class="example-group fuelux">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<section class="declarative">
-							<h1 class="slds-text-heading--large">Checkbox Declarative Example (backwards compatible)</h1>
-							<div class="example">
-								<div class="checkbox" id="myCheckbox1">
-									<label class="checkbox-custom">
-										<input class="sr-only" data-toggle=".toggleSelector1" type="checkbox" value="">
-										<span class="checkbox-label">Custom checkbox unchecked on initialization</span>
-									</label>
-								</div>
-								<div class="checkbox">
-									<label class="checkbox-custom checked disabled" data-initialize="checkbox">
-										<input checked disabled class="sr-only" type="checkbox" value="">
-										<span class="checkbox-label">Custom checkbox checked disabled on page load</span>
-									</label>
-								</div>
-								<label class="checkbox-custom checkbox-inline checked highlight" data-initialize="checkbox">
-									<input checked class="sr-only" type="checkbox" value="">
-									<span class="checkbox-label">Custom inline checkbox checked on page load</span>
-								</label>
-								<label class="checkbox-custom checkbox-inline disabled" data-initialize="checkbox">
-									<input disabled class="sr-only" type="checkbox" value="">
-									<span class="checkbox-label">Custom inline checkbox unchecked disabled on page load</span>
-								</label>
-								<div class="toggleSelector1 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">toggleSelector item 1</div>
-							</div>
-						</section>
-
-						<section class="imperative">
-							<h1 class="slds-text-heading--large">Checkbox Imperative Example (mostly backwards compatible)</h1>
-							<div class="example">
-								<div class="checkbox" id="myCheckbox2"></div>
-								<div id="myCheckbox3"></div>
-								<div id="myCheckbox4" style="display: inline;"></div>
-								<div id="myCheckbox5" style="display: inline;"></div>
-
-								<div class="toggleSelector2 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">toggleSelector item 2</div>
-							</div>
-						</section>
-
-						<section class="new-api">
-							<h1 class="slds-text-heading--large">Checkbox New API Example</h1>
-							<div class="example">
-								<div class="checkbox" id="myCheckbox6"></div>
-								<div id="myCheckbox7"></div>
-								<div id="myCheckbox8" style="display: inline;"></div>
-								<div id="myCheckbox9" style="display: inline;"></div>
-
-								<div class="toggleSelector3 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">toggleSelector item 3</div>
-							</div>
-						</section>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Checkbox -->
 
 		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="/build/jquery.bundle.js"></script>
