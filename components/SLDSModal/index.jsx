@@ -164,14 +164,16 @@ module.exports = React.createClass( {
   },
 
   footerComponent() {
+    let footer;
+
     const footerClass = {
       'slds-modal__footer': true,
       'slds-modal__footer--directional': this.props.directional
     };
 
-    let footer;
+    const hasFooter = this.props.footer && this.props.footer.length > 0;
 
-    if (!this.isPrompt()) {
+    if (!this.isPrompt() && hasFooter ) {
       footer = (<div className={cx(footerClass)}>{this.props.footer}</div>);
     }
 
