@@ -6,6 +6,7 @@ import SelectlistCore, {CONTROL} from '../../core/selectlist';
 
 // Framework specific
 import React from 'react';
+import ReactDOM from 'react-dom';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
@@ -78,7 +79,7 @@ export const SelectlistObject = {
 	},
 
 	_findElements () {
-		this.elements.dropdownMenu = Lib.wrapElement(React.findDOMNode(this.refs[this.cssClasses.MENU]));
+		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(this.refs[this.cssClasses.MENU]));
 
 		this.elements.menuItems = [];
 		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');

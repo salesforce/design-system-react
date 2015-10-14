@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Radio from './radio';
 
 // https://www.lightningdesignsystem.com/components/forms#radio
@@ -116,5 +117,5 @@ export default function (element) {
 		}
 	});
 
-	React.render(<RadioExample />, element);
+	ReactDOM.render(<RadioExample />, element);
 }
