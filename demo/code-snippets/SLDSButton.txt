@@ -1,18 +1,13 @@
 
-<SLDSButton
-  label='Neutral'
-  variant='neutral'
-  disabled={false}
-  iconName='download'
-  iconSize='small'
-  iconPosition='right'
-  onClick={this.handleButtonClick} />
-
-* Only label is required
-
 Below are component prop defaults and available options:
-* variant='base' ('neutral', 'brand', 'icon')
-* disabled='false'
-* iconSize='medium' ('x-small', 'medium', 'small', 'large')
-* iconPosition='left'('left', 'right', 'large')
+* label='' *required
+* variant='base' ['neutral', 'brand', 'destructive', 'icon']
+* disabled={false}
+* inverse={false}
+* stateful={false}
+* iconName='' //see https://www.lightningdesignsystem.com/resources/icons#utility
+* iconSize='medium' ['x-small', 'medium', 'small', 'large']
+* iconPosition='left' ['left', 'right', 'large']
+
+<SLDSButton label='Neutral' variant='neutral' onClick={this.handleNeutralClick} />
 
