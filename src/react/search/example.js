@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Search from './search';
 
 export default function (element) {
@@ -48,5 +49,5 @@ export default function (element) {
 		}
 	});
 
-	React.render(<SearchExample />, element);
+	ReactDOM.render(<SearchExample />, element);
 }

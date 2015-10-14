@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Radio from './radio';
 
 // https://www.lightningdesignsystem.com/components/forms#radio
@@ -6,41 +7,44 @@ import Radio from './radio';
 export default function (element) {
 	const RadioExample = React.createClass({
 		getInitialState () {
-			return {
-				matchesValue: 'value4',
-				disabled: [false, false, true]
-			};
+			const radioboxen = new Map();
+
+			radioboxen.set('radio0', {disabled: false, checked: true});
+			radioboxen.set('radio1', {disabled: false, checked: false});
+			radioboxen.set('radio2', {disabled: false, checked: false});
+
+			return { radioboxen };
 		},
 
 		render () {
 			const name = 'radioGroup1';
 			const radios = [
 				<Radio ref="radio0"
-						checkedValue={this.state.matchesValue}
-						disabled={this.state.disabled[0]}
+						checked={this.state.radioboxen.get('radio0').checked}
+						disabled={this.state.radioboxen.get('radio0').disabled}
 						key="1"
 						name={name}
 						labelText="Custom radio unchecked on initialization"
-						onCheckedValueChanged={this._handleChange}
-						onDisabledValueChanged={this._handleDisable0}
+						onCheckedValueChanged={this._handleChange.bind(this, 'radio0')}
+						onDisabledValueChanged={this._handleDisable.bind(this, 'radio0')}
 						value="value1" />,
 				<Radio ref="radio1"
-						checkedValue={this.state.matchesValue}
-						disabled={this.state.disabled[1]}
+						checked={this.state.radioboxen.get('radio1').checked}
+						disabled={this.state.radioboxen.get('radio1').disabled}
 						key="2"
 						name={name}
 						labelText="Custom radio unchecked on initialization"
-						onCheckedValueChanged={this._handleChange}
-						onDisabledValueChanged={this._handleDisable1}
+						onCheckedValueChanged={this._handleChange.bind(this, 'radio1')}
+						onDisabledValueChanged={this._handleDisable.bind(this, 'radio1')}
 						value="value3" />,
 				<Radio ref="radio2"
-						checkedValue={this.state.matchesValue}
-						disabled={this.state.disabled[2]}
+						checked={this.state.radioboxen.get('radio2').checked}
+						disabled={this.state.radioboxen.get('radio2').disabled}
 						key="3"
 						name={name}
 						labelText="Custom radio disabled checked on initialization"
-						onCheckedValueChanged={this._handleChange}
-						onDisabledValueChanged={this._handleDisable2}
+						onCheckedValueChanged={this._handleChange.bind(this, 'radio2')}
+						onDisabledValueChanged={this._handleDisable.bind(this, 'radio2')}
 						value="value4" />
 
 			];
@@ -91,30 +95,24 @@ export default function (element) {
 			}
 		},
 
-		_handleChange (checkedValue) {
-			this.setState({
-				matchesValue: checkedValue
+		_handleChange (radioName, checkedValue) {
+			const radioboxen = this.state.radioboxen;
+			radioboxen.forEach(function (values, key, map) {
+				values.checked = false;
+				map.set(key, values);
 			});
+			const radio = radioboxen.get(radioName);
+			radio.checked = checkedValue;
+			radioboxen.set(radioName, radio);
+			this.setState(radioboxen);
 		},
 
-		_handleDisable0 (disabledValue) {
-			const disabled = this.state.disabled;
-			disabled[0] = disabledValue.disabled;
-			this.setState(disabled);
-		},
-
-		_handleDisable1 (disabledValue) {
-			const disabled = this.state.disabled;
-			disabled[1] = disabledValue.disabled;
-			this.setState(disabled);
-		},
-
-		_handleDisable2 (disabledValue) {
-			const disabled = this.state.disabled;
-			disabled[2] = disabledValue.disabled;
-			this.setState(disabled);
+		_handleDisable (radioName, disabledValue) {
+			const radio = this.state.radioboxen.get(radioName);
+			radio.disabled = disabledValue.disabled;
+			this.setState(radio);
 		}
 	});
 
-	React.render(<RadioExample />, element);
+	ReactDOM.render(<RadioExample />, element);
 }

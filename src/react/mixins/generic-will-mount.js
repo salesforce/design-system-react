@@ -2,7 +2,7 @@
 import * as Lib from '../../lib/lib';
 
 // Framework specific
-import React from 'react';
+import ReactDOM from 'react-dom';
 
 const genericWillMount = {
 	componentWillMount () {
@@ -11,7 +11,7 @@ const genericWillMount = {
 	},
 	
 	componentDidMount () {
-		this.elements.wrapper = Lib.wrapElement(React.findDOMNode(this));
+		this.elements.wrapper = Lib.wrapElement(ReactDOM.findDOMNode(this));
 	},
 
 	// These are handled slightly differently than your average props, so they need to be kept in sync here
