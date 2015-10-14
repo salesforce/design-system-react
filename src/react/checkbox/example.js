@@ -12,7 +12,7 @@ export default function (element) {
 			checkboxen.set('checkbox', {disabled: false, checked: true});
 			checkboxen.set('checkbox2', {disabled: false, checked: false});
 
-			return { checkboxen };
+			return {checkboxen};
 		},
 
 		render () {
@@ -20,26 +20,32 @@ export default function (element) {
 				<fieldset className="slds-form-element">
 					<div className="slds-form-element__control">
 						<Checkbox ref="checkbox"
-									labelText="Custom checkbox checked on initialization"
-									disabled={this.state.checkboxen.get('checkbox').disabled}
-									checked={this.state.checkboxen.get('checkbox').checked}
-									onCheckedValueChanged={this._handleChange.bind(this, 'checkbox')}
-									onDisabledValueChanged={this._handleDisable.bind(this, 'checkbox')}
-									value="checkbox" />
+											labelText="Checked"
+											disabled={this.state.checkboxen.get('checkbox').disabled}
+											checked={this.state.checkboxen.get('checkbox').checked}
+											onCheckedValueChanged={this._handleChange.bind(this, 'checkbox')}
+											onDisabledValueChanged={this._handleDisable.bind(this, 'checkbox')}
+											value="checkbox"/>
+					</div>
+					<div className="slds-form-element__control">
 						<Checkbox ref="checkbox2"
-									labelText="Custom checkbox not checked on initialization"
-									disabled={this.state.checkboxen.get('checkbox2').disabled}
-									checked={this.state.checkboxen.get('checkbox2').checked}
-									onCheckedValueChanged={this._handleChange.bind(this, 'checkbox2')}
-									onDisabledValueChanged={this._handleDisable.bind(this, 'checkbox2')}
-									value="checkbox2" />
+											labelText="Unchecked"
+											disabled={this.state.checkboxen.get('checkbox2').disabled}
+											checked={this.state.checkboxen.get('checkbox2').checked}
+											onCheckedValueChanged={this._handleChange.bind(this, 'checkbox2')}
+											onDisabledValueChanged={this._handleDisable.bind(this, 'checkbox2')}
+											value="checkbox2"/>
 					</div>
 					<div className="slds-p-around--medium">
 						<div className="slds-button-group" role="group">
-							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>check</button>
-							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>uncheck</button>
-							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>disable</button>
-							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>enable</button>
+							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>check
+							</button>
+							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>uncheck
+							</button>
+							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>disable
+							</button>
+							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>enable
+							</button>
 						</div>
 					</div>
 				</fieldset>
