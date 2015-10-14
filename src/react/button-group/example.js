@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../button/button';
 
 export default function () {
-	const ButtonGroup = React.createClass({
+	const ButtonGroupExample = React.createClass({
 		getInitialState () {
 			return {
 				selected: false
@@ -43,5 +43,5 @@ export default function () {
 		}
 	});
 
-	React.render(<ButtonGroup/>, document.getElementById('slds-button-group'));
+	React.render(<ButtonGroupExample/>, document.getElementById('slds-button-group'));
 }
