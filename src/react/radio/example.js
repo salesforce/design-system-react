@@ -24,7 +24,7 @@ export default function (element) {
 						disabled={this.state.radioboxen.get('radio0').disabled}
 						key="1"
 						name={name}
-						labelText="Custom radio unchecked on initialization"
+						labelText="Checked"
 						onCheckedValueChanged={this._handleChange.bind(this, 'radio0')}
 						onDisabledValueChanged={this._handleDisable.bind(this, 'radio0')}
 						value="value1" />,
@@ -33,7 +33,7 @@ export default function (element) {
 						disabled={this.state.radioboxen.get('radio1').disabled}
 						key="2"
 						name={name}
-						labelText="Custom radio unchecked on initialization"
+						labelText="Unchecked"
 						onCheckedValueChanged={this._handleChange.bind(this, 'radio1')}
 						onDisabledValueChanged={this._handleDisable.bind(this, 'radio1')}
 						value="value3" />,
@@ -42,7 +42,7 @@ export default function (element) {
 						disabled={this.state.radioboxen.get('radio2').disabled}
 						key="3"
 						name={name}
-						labelText="Custom radio disabled checked on initialization"
+						labelText="Unchecked Disabled"
 						onCheckedValueChanged={this._handleChange.bind(this, 'radio2')}
 						onDisabledValueChanged={this._handleDisable.bind(this, 'radio2')}
 						value="value4" />
