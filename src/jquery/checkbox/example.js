@@ -11,6 +11,12 @@ $(function () {
 		checked: true
 	});
 
+	const checkbox2 = new Checkbox($('#myCheckbox2'), {
+		text: 'Init via JS 2',
+		value: 'value10',
+		checked: false
+	});
+
 	$('#check-checkbox').on('click', function () {
 		checkbox.toggle(true);
 	});
@@ -26,4 +32,6 @@ $(function () {
 	$('#enable-checkbox').on('click', function () {
 		checkbox.enable();
 	});
+
+	void checkbox2;
 });
