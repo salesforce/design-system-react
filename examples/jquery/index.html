@@ -118,26 +118,63 @@
 					<span>Pill</span>
 					<span class="slds-badge">In Progress</span>
 				</h2>
-					<span class="slds-pill"><a href="#" class="slds-pill__label">Pill Label</a>
-						<button class="slds-button slds-button--icon-bare">
-							<svg aria-hidden="true" class="slds-button__icon">
-								<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
-							</svg>
-							<span class="slds-assistive-text">Remove</span>
-						</button>
-					</span>
+				<div id="pillbox1"></div>
 			</section>
 
-			<!-- loader -->
+			<!-- spinner -->
 			<section>
 				<h2 class="slds-text-heading--large">
-					<span>Loader</span>
+					<span>Spinner</span>
 					<span class="slds-badge">In Progress</span>
 				</h2>
-				<div class="slds-spinner--medium">
-					<img src="/examples/assets/images/spinners/slds_spinner.gif" alt="Loading..." />
+				<div id="spinner"></div>
+			</section>
+
+			<!-- picklist -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Picklist</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<div id="picklist"></div>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral" id="picklist-getSelectedItem">log selected item/value</button>
+						<button type="button" class="slds-button slds-button--neutral" id="picklist-selectByIndex">set by element index (zero-based) (1)</button>
+						<button type="button" class="slds-button slds-button--neutral" id="picklist-selectByObject">set by object (collection[3])</button>
+						<button type="button" class="slds-button slds-button--neutral" id="picklist-enable">enable</button>
+						<button type="button" class="slds-button slds-button--neutral" id="picklist-disable">disable</button>
+					</div>
 				</div>
 			</section>
+
+			<!-- tree -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Tree</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<ul id="tree"></ul>
+			</section>
+
+			<!-- combobox -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Combobox</span>
+					<span class="slds-badge">In Progress</span>
+				</h2>
+				<div id="combobox"></div>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-getSelectedItem">log selected item/value</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-selectByIndex">set by element index (zero-based) (1)</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-selectByObject">set by object (collection[3])</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-enable">enable</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-disable">disable</button>
+					</div>
+				</div>
+			</section>
+
 		</div>
 
 		<!-- Begin Checkbox -->
@@ -168,15 +205,6 @@
 									<input disabled class="sr-only" type="checkbox" value="">
 									<span class="checkbox-label">Custom inline checkbox unchecked disabled on page load</span>
 								</label>
-
-								<!-- TODO: why does this addon feature look ugly? -->
-								<!--<div class="input-group">-->
-									<!--<label class="input-group-addon checkbox-custom checkbox-inline" data-initialize="checkbox">-->
-										<!--<input class="sr-only" type="checkbox" value="">-->
-									<!--</label>-->
-									<!--<input type="text" class="form-control">-->
-								<!--</div>-->
-
 								<div class="toggleSelector1 hidden" style="background: #999; border-radius: 4px; color: #fff; padding: 5px;">toggleSelector item 1</div>
 							</div>
 						</section>
@@ -209,280 +237,6 @@
 			</div>
 		</section>
 		<!-- End Checkbox -->
-
-		<!-- Selectlist -->
-		<section class="example-group fuelux">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<section id="selectlist">
-							<section class="declarative example-group">
-								<h1 class="slds-text-heading--large">Selectlist Declarative Example (backwards compatible)</h1>
-
-								<div class="example">
-									<div class="btn-group selectlist" id="mySelectlist1" data-initialize="selectlist" data-resize="auto">
-										<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
-											<span class="selected-label">Three</span>
-											<span class="caret"></span>
-											<span class="sr-only">Toggle Dropdown</span>
-										</button>
-										<ul class="dropdown-menu" role="menu">
-											<li class="dropdown-header">One thing</li>
-											<li data-value="1"><a href="#">One</a>
-											</li>
-											<li role="separator" class="divider"></li>
-											<li class="dropdown-header">All the things</li>
-											<li data-value="2"><a href="#">Two</a>
-											</li>
-											<li data-selected="true" data-value="3"><a href="#">Three</a>
-											</li>
-											<li data-value="4"><a href="#">Buzz</a>
-											</li>
-											<li data-value="Item Five" data-foo="bar" data-fizz="buzz"><a href="#">Item Five</a>
-											</li>
-											<li class="disabled" disabled="disabled" data-value="disabled"><a href="#">Disabled item</a>
-											</li>
-										</ul>
-										<input class="hidden hidden-field" name="mySelectlist" readonly="readonly" aria-hidden="true" type="text" value="Three" />
-									</div>
-								</div>
-
-								<div class="btn-panel action">
-									<button type="button" class="slds-button--neutral btnSelectlistGetSelectedItem">log selected item/value</button>
-									<button type="button" class="slds-button--neutral btnSelectlistSelectByValue">set by value (2)</button>
-									<button type="button" class="slds-button--neutral btnSelectlistSelectByIndex">set by element index (zero-based) ('4')</button>
-									<button type="button" class="slds-button--neutral btnSelectlistSelectByText">set by text ('One')</button>
-									<button type="button" class="slds-button--neutral btnSelectlistSelectBySelector">set by CSS selector ('li[data-fizz=buzz]')</button>
-									<button type="button" class="slds-button--neutral btnSelectlistEnableSelectlist">enable</button>
-									<button type="button" class="slds-button--neutral btnSelectlistDisableSelectlist">disable</button>
-									<button type="button" class="slds-button--neutral btnSelectlistDestroy">destroy and append</button> <!-- TO-DO: needs events wired back up -->
-								</div>
-							</section>
-
-							<section class="imperative example-group">
-								<h1 class="slds-text-heading--large">Selectlist Imperative Example (mostly backwards compatible)</h1>
-
-								<div class="example">
-									<div id="mySelectlist2"></div>
-								</div>
-
-								<div class="btn-panel action">
-									<button type="button" class="slds-button--neutral btnSelectlistGetSelectedItem">log selected item/value</button>
-									<button type="button" class="slds-button--neutral btnSelectlistSelectByIndex">set by element index (zero-based) ('1')</button>
-									<button type="button" class="slds-button--neutral btnSelectlistSelectByText">set by text ('One')</button>
-									<button type="button" class="slds-button--neutral btnSelectlistEnableSelectlist">enable</button>
-									<button type="button" class="slds-button--neutral btnSelectlistDisableSelectlist">disable</button>
-									<button type="button" class="slds-button--neutral btnSelectlistDestroy">destroy and append</button> <!-- TO-DO: needs events wired back up -->
-								</div>
-							</section>
-
-							<section class="new-api example-group">
-								<h1 class="slds-text-heading--large">Selectlist New API Example</h1>
-
-								<div class="example">
-									<div id="mySelectlist3"></div>
-								</div>
-
-								<div class="btn-panel action">
-									<button type="button" class="slds-button--neutral btnSelectlistGetSelectedItem">log selected item/value</button>
-									<button type="button" class="slds-button--neutral btnSelectlistSelectByIndex">set by element index (zero-based) (1)</button>
-									<button type="button" class="slds-button--neutral btnSelectlistSelectByObject">set by object (collection[3])</button>
-									<button type="button" class="slds-button--neutral btnSelectlistEnableSelectlist">enable</button>
-									<button type="button" class="slds-button--neutral btnSelectlistDisableSelectlist">disable</button>
-								</div>
-							</section>
-						</section>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Selectlist -->
-
-		<!-- Combobox -->
-		<section class="example-group fuelux">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<section id="combobox">
-							<section class="declarative example-group">
-								<h1 class="slds-text-heading--large">Combobox Declarative Example (backwards compatible)</h1>
-
-								<div class="example" style="width: 200px">
-									<div class="input-group input-append dropdown combobox" data-initialize="combobox" id="myCombobox1">
-										<input type="text" class="form-control" value="Three">
-										<div class="input-group-btn">
-											<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
-											<ul class="dropdown-menu dropdown-menu-right">
-												<li class="dropdown-header">One thing</li>
-												<li data-value="1"><a href="#">One</a>
-												</li>
-												<li role="separator" class="divider"></li>
-												<li class="dropdown-header">All the things</li>
-												<li data-value="2"><a href="#">Two</a>
-												</li>
-												<li data-selected="true" data-value="3"><a href="#">Three</a>
-												</li>
-												<li data-value="4"><a href="#">Buzz</a>
-												</li>
-												<li data-value="Item Five" data-foo="bar" data-fizz="buzz"><a href="#">Item Five</a>
-												</li>
-												<li class="disabled" disabled="disabled" data-value="disabled"><a href="#">Disabled item</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-
-								<div class="btn-panel action">
-									<button type="button" class="slds-button--neutral btnComboboxGetSelectedItem">log selected item/value</button>
-									<button type="button" class="slds-button--neutral btnComboboxSelectByValue">set by value (2)</button>
-									<button type="button" class="slds-button--neutral btnComboboxSelectByIndex">set by element index (zero-based) ('4')</button>
-									<button type="button" class="slds-button--neutral btnComboboxSelectByText">set by text ('One')</button>
-									<button type="button" class="slds-button--neutral btnComboboxSelectBySelector">set by CSS selector ('li[data-fizz=buzz]')</button>
-									<button type="button" class="slds-button--neutral btnComboboxEnableCombobox">enable</button>
-									<button type="button" class="slds-button--neutral btnComboboxDisableCombobox">disable</button>
-									<button type="button" class="slds-button--neutral btnComboboxDestroy">destroy and append</button> <!-- TO-DO: needs events wired back up -->
-								</div>
-							</section>
-
-							<section class="imperative example-group">
-								<h1 class="slds-text-heading--large">Combobox Imperative Example (mostly backwards compatible)</h1>
-
-								<div class="example" style="width: 200px">
-									<div id="myCombobox2"></div>
-								</div>
-
-								<div class="btn-panel action">
-									<button type="button" class="slds-button--neutral btnComboboxGetSelectedItem">log selected item/value</button>
-									<button type="button" class="slds-button--neutral btnComboboxSelectByIndex">set by element index (zero-based) ('1')</button>
-									<button type="button" class="slds-button--neutral btnComboboxSelectByText">set by text ('One')</button>
-									<button type="button" class="slds-button--neutral btnComboboxEnableCombobox">enable</button>
-									<button type="button" class="slds-button--neutral btnComboboxDisableCombobox">disable</button>
-									<button type="button" class="slds-button--neutral btnComboboxDestroy">destroy and append</button> <!-- TO-DO: needs events wired back up -->
-								</div>
-							</section>
-
-							<section class="new-api example-group">
-								<h1 class="slds-text-heading--large">Combobox New API Example</h1>
-
-								<div class="example" style="width: 200px">
-									<div id="myCombobox3"></div>
-								</div>
-
-								<div class="btn-panel action">
-									<button type="button" class="slds-button--neutral btnComboboxGetSelectedItem">log selected item/value</button>
-									<button type="button" class="slds-button--neutral btnComboboxSelectByIndex">set by element index (zero-based) (1)</button>
-									<button type="button" class="slds-button--neutral btnComboboxSelectByObject">set by object (collection[3])</button>
-									<button type="button" class="slds-button--neutral btnComboboxEnableCombobox">enable</button>
-									<button type="button" class="slds-button--neutral btnComboboxDisableCombobox">disable</button>
-								</div>
-							</section>
-						</section>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Combobox -->
-
-		<!-- Loader -->
-		<section class="example-group fuelux">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-
-						<section class="declarative">
-							<h1 class="slds-text-heading--large">Loader Declarative Example (backwards compatible)</h1>
-
-							<div class="example">
-								<div class="loader-data-attrs" data-initialize="loader" data-frame="1" data-delay="500" data-begin="3" data-end="6"></div>
-								<div class="loader-data-attrs" data-initialize="loader" data-svg="true"></div><span>(SVG)</span>
-							</div>
-
-						</section>
-
-						<section class="imperative">
-							<h1 class="slds-text-heading--large">Loader Imperative Example (mostly backwards compatible)</h1>
-
-							<div class="example">
-								<div class="loader1"></div>
-								<div class="loader2"></div>
-								<div class="loader3"></div>
-								<div class="loader4"></div>
-								<div class="svg"></div><span>(SVG)</span>
-							</div>
-
-						</section>
-
-						<section class="new-api">
-							<h1 class="slds-text-heading--large">Loader New API Example</h1>
-
-							<div class="example">
-								<div class="loader1"></div>
-								<div class="loader2"></div>
-								<div class="loader3"></div>
-								<div class="loader4"></div>
-								<div class="svg"></div><span>(SVG)</span>
-							</div>
-
-						</section>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Loader -->
-
-		<!-- Begin Tree -->
-		<section class="example-group fuelux">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<section class="imperative">
-							<h1 class="slds-text-heading--large">Tree Imperative Example (mostly backwards compatible )</h1>
-
-							<div class="example">
-								<div id="tree1"></div>
-							</div>
-						</section>
-						<section class="new-api">
-							<h1 class="slds-text-heading--large">Tree New API Example</h1>
-
-							<div class="example">
-								<ul id="tree2"></ul>
-							</div>
-						</section>
-						<section class="imperative">
-							<h1 class="slds-text-heading--large">Legacy Tree Example</h1>
-
-							<div class="example">
-								<div id="tree3"></div>
-							</div>
-						</section>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Tree -->
-
-		<!-- Begin Pillbox -->
-		<section class="example-group fuelux">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-12">
-						<section>
-							<h1 class="slds-text-heading--large">Pillbox Example</h1>
-
-							<div id="pillbox1"></div>
-						</section>
-						<section>
-							<h1 class="slds-text-heading--large">Legacy Pillbox Example</h1>
-
-							<div id="pillbox2"></div>
-						</section>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Pillbox -->
 
 		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
 		<script src="/build/jquery.bundle.js"></script>

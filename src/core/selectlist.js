@@ -20,15 +20,13 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Ke
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
-		BTN_DEFAULT: 'btn btn-default',
-		BTN_GROUP: 'btn-group',
-		CARET: 'caret',
-		DIVIDER: 'divider',
-		HEADER: 'dropdown-header',
-		HIDDEN: 'hidden-field',
-		LABEL: 'selected-label',
-		MENU: 'dropdown-menu',
-		TOGGLE: 'dropdown-toggle'
+		LABEL: 'slds-truncate',
+		DROPDOWN: 'slds-dropdown',
+		MENU: 'slds-dropdown__list',
+		TOGGLE: 'slds-button',
+		HEADER: 'slds-dropdown__header',
+		HEADERTEXT: 'slds-text-heading--label',
+		DIVIDER: 'slds-has-divider'
 	},
 
 	_defaultProperties: {
@@ -90,9 +88,9 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Ke
 	},
 
 	_onInitialized () {
-		if (this.getProperty('resize') === 'auto') {
+		/* if (this.getProperty('resize') === 'auto') {
 			this.resize();
-		}
+		}*/
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
@@ -101,7 +99,7 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Ke
 		const sizer = document.createElement('div');
 
 		sizer.className = 'selectlist-sizer';
-		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
+		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
 
 		let parent;
 		if (Lib.hasClass(document.querySelector('html'), this.cssClasses.NAMESPACE)) {

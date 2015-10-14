@@ -74,49 +74,6 @@ const options = {
 };
 
 $(function () {
-	$('.imperative #tree1').tree({ collection: collection, autoOpen: true });
-
-	const tree = new Tree($('.new-api #tree2'), options);
+	const tree = new Tree($('#tree'), options);
 	void(tree);
-
-	$('.imperative #tree3').tree({
-		folderSelect: true,
-		multiSelect: true,
-		dataSource: function (dataSourceOptions, callback) {
-			setTimeout( function () {
-				callback({ data: [
-					{
-						name: 'item 1',
-						type: 'item',
-						dataAttributes: {
-							id: Math.floor( Math.random() * 100000 )
-						}
-					},
-					{
-						name: 'item 2',
-						type: 'item',
-						dataAttributes: {
-							id: Math.floor( Math.random() * 100000 )
-						}
-					},
-					{
-						name: 'Legacy Folder 1',
-						type: 'folder',
-						dataAttributes: {
-							hasChildren: true,
-							id: Math.floor( Math.random() * 100000 )
-						}
-					},
-					{
-						name: 'Legacy Folder 2',
-						type: 'folder',
-						dataAttributes: {
-							hasChildren: true,
-							id: Math.floor( Math.random() * 100000 )
-						}
-					}
-				]});
-			}, 1000);
-		}
-	});
 });
