@@ -5,10 +5,25 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	// new api controls
-	const checkboxNA1 = new Checkbox($('#myCheckbox'), {
-		text: 'Custom checkbox unchecked on initialization',
-		value: 'value9'
+	const checkbox = new Checkbox($('#myCheckbox'), {
+		text: 'Init via JS',
+		value: 'value9',
+		checked: true
 	});
 
-	void checkboxNA1;
+	$('#check-checkbox').on('click', function () {
+		checkbox.toggle(true);
+	});
+
+	$('#uncheck-checkbox').on('click', function () {
+		checkbox.toggle(false);
+	});
+
+	$('#disable-checkbox').on('click', function () {
+		checkbox.disable();
+	});
+
+	$('#enable-checkbox').on('click', function () {
+		checkbox.enable();
+	});
 });

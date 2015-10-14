@@ -3,6 +3,6 @@ export default String.raw`
 	<label class="slds-checkbox">
 		<input name="checkbox" type="checkbox" />
 		<span class="slds-checkbox--faux"></span>
-		<span class="slds-form-element__label">Checkbox Label</span>
+		<span class="slds-form-element__label"></span>
 	</label>
 `;
