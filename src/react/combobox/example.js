@@ -50,18 +50,18 @@ export default function (element) {
 		render () {
 			const comboboxen = this.state.models.map((model, index) => {
 				return (
-					<section className="example-group" key={index}>
-						<h1 className="slds-text-heading--large">Combobox example (combobox{index + 1})</h1>
+					<section key={index}>
+						<h2 className="slds-text-heading--large">Combobox example (combobox{index + 1})</h2>
 
-						<div className="example" style={{ width: 200 }}>
-							<Combobox {...model} onChanged={this._handleModelChange.bind(this, index)}/>
-						</div>
+						<Combobox {...model} onChanged={this._handleModelChange.bind(this, index)}/>
 
-						<div className="btn-panel action">
-							<button className="slds-button--neutral" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
-							<button className="slds-button--neutral" onClick={this.setSelection.bind(this, index)}>set by object</button>
-							<button className="slds-button--neutral" onClick={this.enable.bind(this, index)}>enable</button>
-							<button className="slds-button--neutral" onClick={this.disable.bind(this, index)}>disable</button>
+						<div className="slds-p-around--medium">
+							<div className="slds-button-group" role="group">
+								<button className="slds-button slds-button--neutral" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
+								<button className="slds-button slds-button--neutral" onClick={this.setSelection.bind(this, index)}>set by object</button>
+								<button className="slds-button slds-button--neutral" onClick={this.enable.bind(this, index)}>enable</button>
+								<button className="slds-button slds-button--neutral" onClick={this.disable.bind(this, index)}>disable</button>
+							</div>
 						</div>
 					</section>
 				);
