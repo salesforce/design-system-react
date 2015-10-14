@@ -14,10 +14,10 @@ import {Icon} from "../../SLDSIcons";
 class Menu extends React.Component {
   constructor(props){
     super(props);
-    this.state = {isEmpty: false};
+    this.state = {};
   }
 
-  componentDidUpdate(){
+  componentDidUpdate(prevProps, prevState){
     let list = React.findDOMNode(this.refs.list).children.length;
     this.props.getListLength(list);
   }
