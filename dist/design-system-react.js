@@ -91,12 +91,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSModalTrigger2 = _interopRequireDefault(_SLDSModalTrigger);
 	
+	var _SLDSToast = __webpack_require__(63);
+	
+	var _SLDSToast2 = _interopRequireDefault(_SLDSToast);
+	
 	module.exports = {
 	  SLDSPicklistBase: _SLDSPicklistBase2['default'],
 	  SLDSSettings: _SLDSSettings2['default'],
 	  SLDSButton: _SLDSButton2['default'],
 	  SLDSModal: _SLDSModal2['default'],
-	  SLDSModalTrigger: _SLDSModalTrigger2['default']
+	  SLDSModalTrigger: _SLDSModalTrigger2['default'],
+	  SLDSToast: _SLDSToast2['default']
 	};
 
 /***/ },
@@ -3416,20 +3421,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	        var useTag = '<use xlink:href="' + _SLDSSettings2['default'].getAssetsPath() + '/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
 	        var className = 'slds-button__icon';
-	        if (this.props.stateful) {
-	            className += '--stateful';
-	        }
-	        if (this.props.position) {
-	            className = className + ' slds-button__icon--' + this.props.position;
+	        if (this.props.variant !== 'icon') {
+	            //If no position prop given, default to left
+	            this.props.position ? className += ' slds-button__icon--' + this.props.position : className += ' slds-button__icon--left';
 	        }
 	        if (this.props.size) {
-	            className = className + ' slds-button__icon--' + this.props.size;
+	            className += ' slds-button__icon--' + this.props.size;
 	        }
 	        if (this.props.inverse) {
-	            className = className + ' slds-button__icon--inverse';
+	            className += ' slds-button__icon--inverse';
+	        }
+	        if (this.props.stateful) {
+	            className += ' slds-button__icon--stateful';
 	        }
 	        if (this.props.hint) {
-	            className = className + ' slds-button__icon--hint';
+	            className += ' slds-button__icon--hint';
+	        }
+	        if (this.props.destructive) {
+	            className += ' slds-button__icon--destructive';
 	        }
 	        if (this.props.category === 'utility') {
 	            return _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, 'aria-hidden': 'true', className: className });
@@ -5975,6 +5984,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, Button);
 	
 	    _get(Object.getPrototypeOf(Button.prototype), 'constructor', this).call(this, props);
+	    this.displayName = 'SLDSButton';
 	    this.state = { active: false };
 	  }
 	
@@ -6000,17 +6010,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function getClassName() {
 	      var _classNames;
 	
-	      var isStateful = this.props.stateful && this.state.active ? true : false;
-	      return classNames(this.props.className, 'slds-button', (_classNames = {}, _defineProperty(_classNames, 'slds-button--' + this.props.variant, this.props.variant), _defineProperty(_classNames, 'slds-is-selected', isStateful), _classNames));
+	      var isSelected = this.props.stateful && this.state.active ? true : false;
+	      var notSelected = this.props.stateful && !this.state.active ? true : false;
+	      return classNames(this.props.className, 'slds-button', (_classNames = {}, _defineProperty(_classNames, 'slds-button--' + this.props.variant, this.props.variant), _defineProperty(_classNames, 'slds-not-selected', notSelected), _defineProperty(_classNames, 'slds-is-selected', isSelected), _classNames));
 	    }
 	  }, {
 	    key: 'renderIcon',
 	    value: function renderIcon() {
 	      if (this.props.iconName) {
 	        return _react2['default'].createElement(_SLDSIconsJs.ButtonIcon, {
+	          variant: this.props.variant,
+	          disabled: this.props.disabled,
+	          inverse: this.props.inverse,
+	          stateful: this.props.stateful,
 	          name: this.props.iconName,
 	          size: this.props.iconSize,
-	          position: this.props.iconPosition || 'left' });
+	          position: this.props.iconPosition
+	        });
 	      }
 	    }
 	  }, {
@@ -6018,22 +6034,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var props = (0, _lodashOmit2['default'])('className', this.props);
 	      var click = (0, _utilsCreateChainedFunction2['default'])(this.props.onClick, this.onClick.bind(this));
+	      var labelClasses = this.props.variant === 'icon' ? 'slds-assistive-text' : '';
 	      if (this.props.disabled) {
 	        props['disabled'] = 'disabled';
 	      };
 	
-	      //If the button is only an icon render this:
-	      if (this.props.variant === 'icon') {
-	        return _react2['default'].createElement('button', _extends({ className: this.getClassName() }, props, { onClick: click }), _react2['default'].createElement(_SLDSIconsJs.Icon, {
-	          name: this.props.iconName,
-	          category: 'utility',
-	          size: this.props.iconSize
-	        }), _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.label));
-	      }
-	      //Else we assume the button has a visible label (with or without an icon):
-	      else {
-	          return _react2['default'].createElement('button', _extends({ className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === 'right' ? this.props.label : null, this.renderIcon(), this.props.iconPosition === 'left' || !this.props.iconPosition ? this.props.label : null);
-	        }
+	      return _react2['default'].createElement('button', _extends({ className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === 'right' ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.renderIcon(), this.props.iconPosition === 'left' || !this.props.iconPosition ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null);
 	    }
 	  }]);
 	
@@ -6042,8 +6048,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	Button.propTypes = {
 	  label: _react2['default'].PropTypes.string.isRequired,
-	  variant: _react2['default'].PropTypes.oneOf(['base', 'neutral', 'brand', 'icon']),
+	  variant: _react2['default'].PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
 	  disabled: _react2['default'].PropTypes.bool,
+	  inverse: _react2['default'].PropTypes.bool,
+	  stateful: _react2['default'].PropTypes.bool,
 	  iconName: _react2['default'].PropTypes.string,
 	  iconSize: _react2['default'].PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
 	  iconPosition: _react2['default'].PropTypes.oneOf(['left', 'right'])
@@ -7995,7 +8003,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  displayName: 'exports',
 	
 	  propTypes: {
-	    size: _react2['default'].PropTypes.oneOf(['medium', 'large'])
+	    size: _react2['default'].PropTypes.oneOf(['medium', 'large']),
+	    prompt: _react2['default'].PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info'])
 	  },
 	
 	  getDefaultProps: function getDefaultProps() {
@@ -8006,6 +8015,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      footer: [],
 	      returnFocusTo: null,
 	      size: 'medium',
+	      prompt: '', //if prompt !== '', it renders modal as prompt
 	      directional: false
 	    };
 	  },
@@ -8060,6 +8070,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	
+	  isPrompt: function isPrompt() {
+	    return this.props.prompt !== '';
+	  },
+	
 	  getModal: function getModal() {
 	    var modalClass = {
 	      'slds-modal': true,
@@ -8067,26 +8081,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      'slds-modal--large': this.props.size === 'large'
 	    };
 	
-	    var footerClass = {
-	      'slds-modal__footer': true,
-	      'slds-modal__footer--directional': this.props.directional
-	    };
-	
 	    return _react2['default'].createElement('div', {
 	      className: (0, _classnames2['default'])(modalClass),
 	      style: { pointerEvents: 'inherit' },
-	      onClick: this.closeModal
+	      onClick: this.isPrompt() ? undefined : this.closeModal
 	    }, _react2['default'].createElement('div', {
 	      role: 'dialog',
 	      className: 'slds-modal__container',
 	      onClick: this.handleModalClick
-	    }, _react2['default'].createElement('div', { className: 'slds-modal__header' }, _react2['default'].createElement('h2', { className: 'slds-text-heading--medium' }, this.props.title), _react2['default'].createElement(_SLDSButton2['default'], {
-	      label: 'Close',
-	      variant: 'icon',
-	      iconName: 'close',
-	      iconSize: 'small',
-	      className: 'slds-modal__close',
-	      onClick: this.closeModal })), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), _react2['default'].createElement('div', { className: (0, _classnames2['default'])(footerClass) }, this.props.footer)));
+	    }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children, this.isPrompt() ? this.props.footer : null), this.footerComponent()));
 	  },
 	
 	  render: function render() {
@@ -8100,6 +8103,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onRequestClose: this.closeModal,
 	      style: customStyles,
 	      overlayClassName: (0, _classnames2['default'])(overlayClasses) }, this.getModal());
+	  },
+	
+	  footerComponent: function footerComponent() {
+	    var footer = undefined;
+	
+	    var footerClass = {
+	      'slds-modal__footer': true,
+	      'slds-modal__footer--directional': this.props.directional
+	    };
+	
+	    var hasFooter = this.props.footer && this.props.footer.length > 0;
+	
+	    if (!this.isPrompt() && hasFooter) {
+	      footer = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(footerClass) }, this.props.footer);
+	    }
+	
+	    return footer;
+	  },
+	
+	  headerComponent: function headerComponent() {
+	    var headingClasses = [],
+	        headerClasses = ['slds-modal__header'];
+	    var closeButton = undefined;
+	
+	    if (this.isPrompt()) {
+	      headerClasses.push('slds-theme--' + this.props.prompt);
+	      headingClasses.push('slds-text-heading--small');
+	    } else {
+	      headingClasses.push('slds-text-heading--medium');
+	      closeButton = _react2['default'].createElement(_SLDSButton2['default'], {
+	        label: 'Close',
+	        variant: 'icon',
+	        iconName: 'close',
+	        iconSize: 'large',
+	        inverse: true,
+	        className: 'slds-modal__close',
+	        onClick: this.closeModal });
+	    }
+	
+	    return _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClasses) }, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(headingClasses) }, this.props.title), closeButton);
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
@@ -8169,6 +8212,39 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	module.exports = SLDSModalTrigger;
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	'use strict';
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	module.exports = _react2['default'].createClass({
+	  displayName: 'exports',
+	
+	  render: function render() {
+	    return _react2['default'].createElement('div', null, 'TOAST!!!');
+	  }
+	});
 
 /***/ }
 /******/ ])
