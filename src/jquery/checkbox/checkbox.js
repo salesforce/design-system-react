@@ -31,7 +31,8 @@ let Checkbox = function Checkbox (element, options) {
 // Prototype extension object
 export const CheckboxObject = {
 	_defaultProperties: {
-		toggleSelector: ''
+		checked: false,
+		disabled: false
 	},
 
 	_bindUIEvents () {
@@ -43,12 +44,9 @@ export const CheckboxObject = {
 	},
 
 	_initElements ($base, elements) {
-		const block = '.' + this.cssClasses.BLOCK;
 		const control = '.' + this.cssClasses.CONTROL;
-		const wrapper = elements.wrapper;
 
-		elements.block = (wrapper.is(block)) ? wrapper : $base.find(block);
-		elements.control = (wrapper.is(control)) ? wrapper : $base.find(control);
+		elements.control = $base.find(control);
 		elements.input = $base.find(this.inputSelector);
 		elements.label = $base.find('.' + this.cssClasses.LABEL);
 
@@ -56,11 +54,6 @@ export const CheckboxObject = {
 	},
 
 	_onBeforeInitialize () {
-		if (this.options.checked && !this.options.checkedValue) {
-			this.options.checkedValue = this.options.value || this._defaultProperties.value;
-			delete this.options.checked;
-		}
-
 		if (this.elements.wrapper.find(this.inputSelector).length > 0) {
 			this._initElements(this.elements.wrapper, this.elements);
 			this._syncOptions(); // syncing options to provided markup
@@ -73,10 +66,8 @@ export const CheckboxObject = {
 		const disabledAttr = 'disabled';
 
 		if (disabled) {
-			this.elements.control.addClass(this.cssClasses.DISABLED);
 			this.elements.input.attr(disabledAttr, disabledAttr);
 		} else {
-			this.elements.control.removeClass(this.cssClasses.DISABLED);
 			this.elements.input.removeAttr(disabledAttr);
 		}
 	},
@@ -94,39 +85,18 @@ export const CheckboxObject = {
 	},
 
 	_onToggled () {
-		const blank = '';
-		const checked = this.isChecked();
-		const hidden = 'hidden';
-		const toggleSelector = this.getProperty('toggleSelector');
-
-		if (checked) {
-			this.elements.control.addClass(this.cssClasses.CHECKED);
-			if (toggleSelector !== blank) {
-				$(toggleSelector).removeClass(hidden);
-			}
-		} else {
-			this.elements.control.removeClass(this.cssClasses.CHECKED);
-			if (toggleSelector !== blank) {
-				$(toggleSelector).addClass(hidden);
-			}
-		}
+		this.elements.input.prop('checked', this.isChecked());
 	},
 
 	_render () {
 		let $el = this.template.clone();
-		const block = '.' + this.cssClasses.BLOCK;
 		const control = '.' + this.cssClasses.CONTROL;
 		const elements = this._initElements($el, this.elements);
 		const itag = '<i />';
 
 		this._renderDressings(elements);
 
-		if (this.getProperty('addon') || this.getProperty('inline') || elements.wrapper.is(block)) {
-			$el = $(itag).append($el.find(control));
-		}
-		if (elements.wrapper.is(control)) {
-			$el = $(itag).append($el.find(control).children());
-		}
+		$el = $(itag).append($el.find(control));
 
 		elements.wrapper.empty();
 		elements.wrapper.append($el.children());
@@ -135,40 +105,19 @@ export const CheckboxObject = {
 	},
 
 	_renderDressings (elements) {
-		const addon = this.getProperty('addon');
-		const value = 'value';
-
-		if (addon) {
-			elements.control.addClass(this.cssClasses.ADDON);
-		}
-
-		if (this.getProperty('highlight')) {
-			elements.block.addClass(this.cssClasses.HIGHLIGHT);
-			elements.control.addClass(this.cssClasses.HIGHLIGHT);
-		}
-
-		if (this.getProperty('inline') || addon) {
-			elements.control.addClass(this.cssClasses.INLINE);
-		}
-
-		elements.input.attr(value, this.getProperty(value));
+		elements.input.attr('value', this.getProperty('value'));
+		elements.input.attr('checked', this.getProperty('checked'));
+		elements.input.attr('disabled', this.getProperty('disabled'));
 		elements.label.append(this.getProperty('text'));
 
 		this._onEnabledOrDisabled();
-		this._onToggled();
 	},
 
 	_syncOptions () {
 		const opts = {};
-		const toggleSelector = this.elements.input.attr('data-toggle');
 		const value = this.elements.input.attr('value') || this.options.value || this._defaultProperties.value;
 
-		if (this.elements.control.hasClass(this.cssClasses.ADDON)) opts.addon = true;
-		if (this.elements.input.prop('checked')) opts.checkedValue = value;
 		if (this.elements.input.prop('disabled')) opts.disabled = true;
-		if (this.elements.control.hasClass('highlight')) opts.highlight = true;
-		if (this.elements.control.hasClass(this.cssClasses.INLINE)) opts.inline = true;
-		if (toggleSelector) opts.toggleSelector = toggleSelector;
 
 		opts.text = this.elements.label.html();
 		opts.value = value;
