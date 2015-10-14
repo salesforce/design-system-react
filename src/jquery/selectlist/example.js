@@ -16,104 +16,33 @@ const collection = [
 ];
 
 $(function () {
-	// sample method buttons
-	$('.declarative .btnSelectlistGetSelectedItem').on('click', function () {
-		Lib.log($('#mySelectlist1').selectlist('selectedItem'));
-	});
-	$('.declarative .btnSelectlistSelectByValue').on('click', function () {
-		$('#mySelectlist1').selectlist('selectByValue', 2);
-	});
-	$('.declarative .btnSelectlistSelectBySelector').on('click', function () {
-		$('#mySelectlist1').selectlist('selectBySelector', 'li[data-fizz=buzz]');
-	});
-	$('.declarative .btnSelectlistSelectByIndex').on('click', function () {
-		$('#mySelectlist1').selectlist('selectByIndex', '4');
-	});
-	$('.declarative .btnSelectlistSelectByText').on('click', function () {
-		$('#mySelectlist1').selectlist('selectByText', 'One');
-	});
-	$('.declarative .btnSelectlistEnableSelectlist').on('click', function () {
-		$('#mySelectlist1').selectlist('enable');
-	});
-	$('.declarative .btnSelectlistDisableSelectlist').on('click', function () {
-		$('#mySelectlist1').selectlist('disable');
-	});
-	$('.declarative .btnSelectlistDestroy').on('click', function () {
-		const $container = $('#mySelectlist1').parent();
-		const markup = $('#mySelectlist1').selectlist('destroy');
-		Lib.log(markup);
-		$container.append(markup);
-		$('#mySelectlist1').selectlist();
-	});
-
-	$('#mySelectlist1')
-	.selectlist()
-	.on('changed.fu.selectlist', function (event, data) {
-		Lib.log('changed', data);
-	});
-
-
-	$('#mySelectlist2').selectlist({
-		collection: collection
-	});
-
-	// sample method buttons
-	$('.imperative .btnSelectlistGetSelectedItem').on('click', function () {
-		Lib.log($('#mySelectlist2').selectlist('selectedItem'));
-	});
-	$('.imperative .btnSelectlistSelectByIndex').on('click', function () {
-		$('#mySelectlist2').selectlist('selectByIndex', '1');
-	});
-	$('.imperative .btnSelectlistSelectByText').on('click', function () {
-		$('#mySelectlist2').selectlist('selectByText', 'One');
-	});
-	$('.imperative .btnSelectlistEnableSelectlist').on('click', function () {
-		$('#mySelectlist2').selectlist('enable');
-	});
-	$('.imperative .btnSelectlistDisableSelectlist').on('click', function () {
-		$('#mySelectlist2').selectlist('disable');
-	});
-	$('.imperative .btnSelectlistDestroy').on('click', function () {
-		const $container = $('#mySelectlist2').parent();
-		const markup = $('#mySelectlist2').selectlist('destroy');
-		Lib.log(markup);
-		$container.append(markup);
-		$('#mySelectlist2').selectlist();
-	});
-
-	// events
-	$('#mySelectlist2').on('changed.fu.selectlist', function (event, data) {
-		Lib.log('changed', data);
-	});
-
-
-	const selectlist3 = new Selectlist($('#mySelectlist3'), {
+	const picklist = new Selectlist($('#picklist'), {
 		collection: collection,
 		selection: { value: '4' }
 	});
 
 	// sample method buttons
-	$('.new-api .btnSelectlistGetSelectedItem').on('click', function () {
-		Lib.log(selectlist3.getSelection());
+	$('#picklist-getSelectedItem').on('click', function () {
+		Lib.log(picklist.getSelection());
 	});
-	$('.new-api .btnSelectlistSelectByIndex').on('click', function () {
-		selectlist3.setSelectionByIndex(1);
+	$('#picklist-selectByIndex').on('click', function () {
+		picklist.setSelectionByIndex(1);
 	});
-	$('.new-api .btnSelectlistSelectByObject').on('click', function () {
-		selectlist3.setSelection(collection[3]);
+	$('#picklist-selectByObject').on('click', function () {
+		picklist.setSelection(collection[3]);
 	});
-	$('.new-api .btnSelectlistEnableSelectlist').on('click', function () {
-		selectlist3.enable();
+	$('#picklist-enable').on('click', function () {
+		picklist.enable();
 	});
-	$('.new-api .btnSelectlistDisableSelectlist').on('click', function () {
-		selectlist3.disable();
+	$('#picklist-disable').on('click', function () {
+		picklist.disable();
 	});
 
 	// events
-	$('#mySelectlist3').on('rendered.fu.selectlist', function (event, data) {
+	$('#picklist').on('rendered.fu.selectlist', function (event, data) {
 		Lib.log('rendered', data);
 	});
-	$('#mySelectlist3').on('changed.fu.selectlist', function (event, data) {
+	$('#picklist').on('changed.fu.selectlist', function (event, data) {
 		Lib.log('changed', data);
 	});
 });
