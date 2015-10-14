@@ -26,26 +26,28 @@ export const ButtonObject = {
 		onClick: React.PropTypes.func
 	},
 
-	render () {
+	getClassNames () {
 		// falsy values will not output object key (ex. {selected: false} -> '')
 		const selectedClasses = {};
-		selectedClasses[this.cssClasses['not-selected']] = this.props.stateful;
+		selectedClasses[this.cssClasses.NOT_SELECTED] = this.props.stateful;
 		if (this.props.selected) {
-			selectedClasses[this.cssClasses['not-selected']] = null;
-			selectedClasses[this.cssClasses.selected] = this.props.selected;
+			selectedClasses[this.cssClasses.NOT_SELECTED] = null;
+			selectedClasses[this.cssClasses.SELECTED] = this.props.selected;
 		}
-		const className = classNames(this.cssClasses.base,
+		return classNames(this.cssClasses.BASE,
 			this.cssClasses[this.props.size],
 			this.cssClasses[this.props.theme],
 			this.cssClasses[this.props.iconStyle],
 			selectedClasses);
+	},
 
+	render () {
 		const assistiveText = this.props.assistiveText ? <span className={this.cssClasses.ASSISTIVE_TEXT}>{this.props.assistiveText}</span> : '';
 
 		return (
 			<button type={this.props.type}
 				onClick={this.props.onClick}
-				className={className}
+				className={this.getClassNames()}
 				disabled={this.props.disabled}
 				aria-live={this.props.stateful ? 'assertive' : null}>{this.props.children}{assistiveText}</button>
 		);
