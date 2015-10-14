@@ -1,5 +1,5 @@
 export default String.raw`
-<div class="slds-notify slds-notify--alert slds-theme--inverse-text slds-theme--alert-texture" role="alert">
+<div class="slds-notify" role="alert">
   <span class="slds-assistive-text">Info</span>
   <button class="slds-button slds-notify__close">
     <svg aria-hidden="true" class="slds-button__icon slds-button__icon--inverse">
