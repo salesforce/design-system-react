@@ -28,40 +28,40 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Ke
 		HEADERTEXT: 'slds-text-heading--label',
 		DIVIDER: 'slds-has-divider'
 	},
-	
+
 	_defaultProperties: {
 		collection: []
 	},
-	
-/* Accessors: These may be supplied in the options hash to override default behavior
 
-textProp ()
-	Return the name of the property that contains the text
+	/* Accessors: These may be supplied in the options hash to override default behavior
 
-getText (item)
-	Return the text value to display in the list
-	item => object wrapped in an Item Adapter
-	
-getType (item)
-	Return the type of the current item - can be 'header', 'divider', or nothing
-	item => object wrapped in an Item Adapter
-	
-getDisabled (item)
-	Return true if the item is disabled
-	item => object wrapped in an Item Adapter
-	
-getKey (item)
-	Return either an object with key/value pairs to match or a match function
-	Use this to reduce the number of fields required for searching if a unique key is available
-	item => object wrapped in an Item Adapter
-	
-*/
-	
+	 textProp ()
+	 Return the name of the property that contains the text
+
+	 getText (item)
+	 Return the text value to display in the list
+	 item => object wrapped in an Item Adapter
+
+	 getType (item)
+	 Return the type of the current item - can be 'header', 'divider', or nothing
+	 item => object wrapped in an Item Adapter
+
+	 getDisabled (item)
+	 Return true if the item is disabled
+	 item => object wrapped in an Item Adapter
+
+	 getKey (item)
+	 Return either an object with key/value pairs to match or a match function
+	 Use this to reduce the number of fields required for searching if a unique key is available
+	 item => object wrapped in an Item Adapter
+
+	 */
+
 	accessors: {
 		textProp () {
 			return 'text';
 		},
-		
+
 		getText (item) {
 			return item.get(item.textProp());
 		},
@@ -78,15 +78,15 @@ getKey (item)
 			return item.get();
 		}
 	},
-	
+
 	_canSelect (newSelection, select) {
 		const item = this._getItemAdapter(newSelection);
-		
+
 		if (!item.getType() && !item.getDisabled()) {
 			select();
 		}
 	},
-	
+
 	_onInitialized () {
 		/* if (this.getProperty('resize') === 'auto') {
 			this.resize();
@@ -116,22 +116,22 @@ getKey (item)
 
 		const label = sizer.querySelector('.' + this.cssClasses.LABEL);
 		const control = sizer.querySelector('.' + this.cssClasses.CONTROL);
-		
+
 		const strings = this.getState('strings');
 		label.textContent = strings.NONE_SELECTED;
-		
+
 		let width = control.offsetWidth;
 		this._collection.forEach(item => {
 			const text = item.getText();
 			let offsetWidth;
-			
+
 			if (resizeCache[text]) {
 				offsetWidth = resizeCache[text];
 			} else {
 				label.textContent = text;
 				offsetWidth = control.offsetWidth;
 			}
-			
+
 			if (offsetWidth > width) {
 				width = offsetWidth;
 			}
@@ -140,7 +140,7 @@ getKey (item)
 		parent.removeChild(sizer);
 
 		if (width !== this.getState('width')) {
-			this.setState({ width });
+			this.setState({width});
 			if (Lib.isFunction(this._resetWidth)) this._resetWidth(width);
 		}
 	}

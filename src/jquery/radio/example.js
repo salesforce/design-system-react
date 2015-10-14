@@ -4,11 +4,11 @@ import Radio from './radio';
 const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
-	// "declarative" controls (the others use data-initialize)
+// "declarative" controls (the others use data-initialize)
 	$('#myRadio1').radio();
 	$('#myRadio2').radio();
 
-	// "imperative" controls
+// "imperative" controls
 	$('#myRadio3').radio({
 		name: 'radioGroup3',
 		text: 'Custom radio unchecked on initialization',
@@ -49,7 +49,7 @@ $(function () {
 		value: 'value12'
 	});
 
-	// new api controls
+// new api controls
 	const radioNA1 = new Radio($('#myRadio9'), {
 		name: 'radioGroup5',
 		text: 'Custom radio unchecked on initialization',
@@ -90,7 +90,7 @@ $(function () {
 		value: 'value12'
 	});
 
-	// events
+// events
 	const $radioExamples = $('.radio-examples .radio, .radio-examples .radio-custom');
 
 	$radioExamples.on('changed.fu.radio', function (event, data) {

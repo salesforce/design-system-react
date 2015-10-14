@@ -1,21 +1,80 @@
-// TODO: Fill in this file with API-specific tests here
+/*
+ * REACT FACADE API FOR SELECTLIST TESTS
+ * Facade (or framework specific) implementation of tests defined in behaviors folder
+ */
+
+// Core file for helpful things like CSS class names
+// import { CONTROL as controlName } from '../../src/core/selectlist';
+import * as Lib from '../../src/lib/lib';
+
+import React from 'react';
+import SelectList from '../../src/react/selectlist/selectlist';
+
+void(React);
 
 export const behaviorHandlers = {
-	createComponent: {
-		default: function () {
-			return true;
+	createControl: {
+		default: function (initData, el, rendered) {
+			const TestSelectList = React.createClass({
+				getInitialState () {
+					return Lib.merge({
+						disabled: false,
+						selection: [],
+						onChanged: this.handleChanged
+					}, initData);
+				},
+
+				render () {
+					return (<SelectList {...this.state} />);
+				},
+
+				handleChanged (item, selection) {
+					this.setState({selection});
+				}
+			});
+			const theList = React.render(<TestSelectList/>, el[0]);
+			rendered(el, theList);
+			return theList;
 		}
 	},
 
-	getComponentElement: {
-		default: function () {
-			return true;
+	getControlElement: {
+		default: function (container, control) {
+			return React.findDOMNode(control);
 		}
 	},
 
-	destroyComponent: {
-		default: function () {
-			return true;
+	destroyControl: {
+		default: function (control) {
+			return this.getControlElement(null, control).remove();
+		}
+	},
+
+	disableControl: {
+		default: function (control) {
+			control.setState({
+				disabled: true
+			});
+		}
+	},
+
+	enableControl: {
+		default: function (control) {
+			control.setState({
+				disabled: false
+			});
+		}
+	},
+
+	getSelection: {
+		default: function (control) {
+			return control.state.selection;
+		}
+	},
+
+	createEventListener: {
+		default: function (eventName, callback)  {
+			callback();
 		}
 	}
 

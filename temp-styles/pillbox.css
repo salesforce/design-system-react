@@ -1,0 +1,16 @@
+.slds-pillbox .slds-pill-add-item {
+	border: none;
+}
+
+.slds-pillbox .slds-pill {
+	float: left;
+}
+
+.slds-pillbox .slds-pill-input-wrap {
+	float: left;
+}
+
+.slds-pillbox .slds-pill-add-item {
+	margin: 3px 10px;
+	outline: none;
+}

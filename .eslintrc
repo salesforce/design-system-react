@@ -2,7 +2,7 @@
 	"extends": "airbnb",
 	"parser": "babel-eslint",
 	"rules": {
-		"indent": [2, "tab"],
+	  	"indent": [2, "tab", {"SwitchCase": 1}],
 		"space-before-function-paren": [2, "always"],
 		"comma-dangle": [2, "never"],
 		"no-trailing-spaces": [2, { "skipBlankLines": true }],

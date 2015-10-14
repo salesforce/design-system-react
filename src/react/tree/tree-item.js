@@ -17,11 +17,8 @@ const TreeItem = React.createClass({
 		const isSelected = this.props._isItemSelected(this.props.item);
 		
 		return (
-			<li className={classNames('tree-item', {'tree-selected': isSelected})} data-template="treeitem" role="treeitem">
-				<button type="button" onClick={this._handleItemClick.bind(this, this.props.item)} className="tree-item-name">
-					<span className={classNames('glyphicon icon-item', this.props.item.getIconClass() || 'fueluxicon-bullet')}></span>
-					<span className="tree-label">{this.props.item.getText()}</span>
-				</button>
+			<li className={classNames('slds-tree__item', {'slds-tree__item--selected': isSelected})} onClick={this._handleItemClick.bind(this, this.props.item)} data-template="treeitem" role="treeitem">
+				<div role="presentation" className="slds-truncate">{this.props.item.getText()}</div>
 			</li>
 		);
 	},

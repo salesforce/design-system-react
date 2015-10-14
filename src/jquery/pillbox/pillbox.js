@@ -29,8 +29,8 @@ let Pillbox = function Pillbox (element, options) {
 
 Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 	_onInitialized () {
-		this.elements.wrapper.on('keyup.fu.tree', '.pillbox-add-item', $.proxy(this._keyUp, this));
-		this.elements.wrapper.on('click.fu.tree', '.pill-group > .pill', $.proxy(this._itemClicked, this));
+		this.elements.wrapper.on('keyup.fu.tree', '.slds-pill-add-item', $.proxy(this._keyUp, this));
+		this.elements.wrapper.on('click.fu.tree', '.slds-pill-group > .slds-pill', $.proxy(this._itemClicked, this));
 
 		this._render();
 
@@ -40,10 +40,10 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 	_render () {
 		const $el = this.template.clone();
 
-		this.elements.group = $el.find('.pill-group');
-		this.elements.input = $el.find('.pillbox-add-item');
-		this.elements.inputWrap = $el.find('.pillbox-input-wrap');
-		this.elements.pillTemplate = this.elements.group.find('.pill').remove();
+		this.elements.group = $el.find('.slds-pill-group');
+		this.elements.input = $el.find('.slds-pill-add-item');
+		this.elements.inputWrap = $el.find('.slds-pill-input-wrap');
+		this.elements.pillTemplate = this.elements.group.find('.slds-pill').remove();
 
 		this._renderSelection();
 
@@ -130,7 +130,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 	_renderPill (pill) {
 		const $pill = this.elements.pillTemplate.clone();
 
-		$pill.find('.pill-name').text(pill.getText());
+		$pill.find('.slds-pill__label').text(pill.getText());
 		$pill.data({
 			item: pill.get()
 		});
@@ -146,7 +146,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 			elements.push(self._renderPill(pill));
 		});
 
-		this.elements.group.find('.pill').remove();
+		this.elements.group.find('.slds-pill').remove();
 		this.elements.group.prepend(elements);
 	}
 });
