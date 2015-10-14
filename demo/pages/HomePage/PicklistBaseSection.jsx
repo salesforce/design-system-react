@@ -57,7 +57,7 @@ module.exports = React.createClass( {
               <div className="slds-p-vertical--large">
                 <SLDSPicklistBase
                     options={[
-                      {label:'A Option Option Super Super Long',value:'A0'},
+                      {label:'A Option Option Super Super Long',value:'A0', title: 'Greg'},
                       {label:'B Option',value:'B0'},
                       {label:'C Option',value:'C0'},
                       {label:'D Option',value:'D0'},
