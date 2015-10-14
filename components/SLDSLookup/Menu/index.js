@@ -48,23 +48,21 @@ class Menu extends React.Component {
     });
   }
 
-  renderEmptyState(){
-    let className = 'slds-lookup__item';
-    return (
-      <li
-        className={className}
-        role="presentaion">
-        <a
-          href='#'
-          id='add-item'
-          tabIndex="-1"
-          role="option"
-          onClick={this.props.addItem}
-          onMouseDown={this.props.addItem}>
+  renderSearchDetails(){
+    return(
+      <button className="slds-button">
+        <Icon name="search" category="utility" size="x-small" className="slds-icon-text-default" />
+        {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type}
+      </button>
+    );
+  }
+
+  renderAddItem(){
+    return(
+      <button className="slds-button" onClick={this.props.addItem} onMouseDown={this.props.addItem}>
         <Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />
         New {this.props.type}
-        </a>
-      </li>
+      </button>
     );
   }
 
@@ -74,12 +72,17 @@ class Menu extends React.Component {
       className="ignore-react-onclickoutside slds-lookup__menu"
       role="listbox"
       ref="scroll">
-      <ul className="slds-lookup__list"
-      role="presentation"
-      ref="list">
-      {this.renderItems()}
-      {this.renderEmptyState()}
-      </ul>
+        <div className="slds-lookup__item">
+          {this.renderSearchDetails()}
+        </div>
+        <ul className="slds-lookup__list"
+        role="presentation"
+        ref="list">
+          {this.renderItems()}
+        </ul>
+        <div className="slds-lookup__item">
+          {this.renderAddItem()}
+        </div>
       </div>
     )
   }
