@@ -5,6 +5,9 @@ import Base from './base';
 
 export const CONTROL = 'badge';
 
+require('../../scss/components/badges/flavors/base/index.scss');
+
+
 const BadgeCore = Lib.merge({}, Base, {
 	cssClasses: {
 		BASE: 'slds-badge',
