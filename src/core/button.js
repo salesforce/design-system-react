@@ -20,6 +20,10 @@ const ButtonCore = Lib.merge({}, Base, {
 		'icon-border-filled': Base.cssClasses.NAMESPACE + CONTROL + '--icon-border-filled',
 		'icon-small': Base.cssClasses.NAMESPACE + CONTROL + '--icon-small'
 	}
+	
+	// FIXME: Add default properties here so that we have a default theme, size and style (if they are required for rendering)
+	
+	// TODO: We usually manage state and throw our own events here, so this will probably need to be expanded for jQuery support
 });
 
 export default ButtonCore;

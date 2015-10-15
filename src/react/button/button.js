@@ -1,5 +1,4 @@
 // BUTTON CONTROL - REACT FACADE
-// All props, no state
 
 // Core
 import * as Lib from '../../lib/lib';
@@ -10,6 +9,8 @@ import React from 'react';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
+
+// Third party
 import classNames from 'classnames';
 
 export const ButtonObject = {
@@ -26,14 +27,15 @@ export const ButtonObject = {
 		onClick: React.PropTypes.func
 	},
 
-	getClassNames () {
-		// falsy values will not output object key (ex. {selected: false} -> '')
+	_getClassNames () {
 		const selectedClasses = {};
-		selectedClasses[this.cssClasses.NOT_SELECTED] = this.props.stateful;
-		if (this.props.selected) {
-			selectedClasses[this.cssClasses.NOT_SELECTED] = null;
+		
+		if (this.props.stateful) {
+			selectedClasses[this.cssClasses.NOT_SELECTED] = !this.props.selected;
 			selectedClasses[this.cssClasses.SELECTED] = this.props.selected;
 		}
+		
+		// TODO: Evaluate method of adding classes for size, theme and iconStyle
 		return classNames(this.cssClasses.BASE,
 			this.cssClasses[this.props.size],
 			this.cssClasses[this.props.theme],
@@ -41,15 +43,21 @@ export const ButtonObject = {
 			selectedClasses);
 	},
 
-	render () {
-		const assistiveText = this.props.assistiveText ? <span className={this.cssClasses.ASSISTIVE_TEXT}>{this.props.assistiveText}</span> : '';
+	_getAssistiveText () {
+		if (this.props.assistiveText) {
+			return <span className={this.cssClasses.ASSISTIVE_TEXT}>{this.props.assistiveText}</span>;
+		}
+	},
 
+	render () {
+		// FIXME: Using this.props.children here only works in the simplest of scenarios
+		// TODO: Does the onClick received by the user need a specific payload or is the event alone enough?
 		return (
 			<button type={this.props.type}
 				onClick={this.props.onClick}
-				className={this.getClassNames()}
+				className={this._getClassNames()}
 				disabled={this.props.disabled}
-				aria-live={this.props.stateful ? 'assertive' : null}>{this.props.children}{assistiveText}</button>
+				aria-live={this.props.stateful ? 'assertive' : null}>{this.props.children}{this._getAssistiveText()}</button>
 		);
 	}
 };
