@@ -26,6 +26,7 @@ module.exports = React.createClass({
       selectedIndex:-1,
       highlightedIndex:0,
       className:'',
+      itemRenderer:null,
       onListBlur:()=>{
         console.log("onListBlur should be overwritten");
       },
@@ -123,10 +124,11 @@ module.exports = React.createClass({
   },
 
   getItems () {
+
     return this.props.options.map((option, index) =>{
       return (
         <ListItem
-          key={index}
+          key={'ListItem_'+index}
           index={index}
           label={option.label}
           value={option.value}
@@ -138,6 +140,7 @@ module.exports = React.createClass({
           onFocus={this.handleItemFocus}
           onSelect={this.handleSelect}
           onSearch={this.handleSearch}
+          labelRenderer={this.props.itemRenderer}
           onCancel={this.handleCancel}/>
       );
     });

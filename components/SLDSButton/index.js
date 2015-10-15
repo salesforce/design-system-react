@@ -35,6 +35,7 @@ class Button extends React.Component {
   }
 
   onClick(e) {
+    console.log('YES!!!');
     this.setState({ active: !this.state.active });
   }
 

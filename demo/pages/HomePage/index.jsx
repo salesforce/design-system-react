@@ -16,6 +16,8 @@ import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 
 import ButtonSection from './ButtonSection';
 import PicklistBaseSection from './PicklistBaseSection';
+import PicklistBaseCustomSection from './PicklistBaseCustomSection';
+
 import ModalSection from './ModalSection';
 import DatePickerSingleSelectSection from './DatePickerSingleSelectSection';
 import LookupBaseSection from './LookupBaseSection';
@@ -59,6 +61,7 @@ module.exports = React.createClass( {
         </div>
         <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
           <div className='region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large'>
+
             <LookupBaseSection />
 
             <ButtonSection />
@@ -67,43 +70,11 @@ module.exports = React.createClass( {
 
             <ModalSection />
 
-
             <DatePickerSingleSelectSection />
 
             <IconSection />
 
-{/*
-
-            <div className="slds-p-around--medium">
-
-              <h3 className="slds-text-heading--medium slds-truncate">
-                Tabs
-              </h3>
-
-              <PrismCode className='language-markup'>
-                {require("raw-loader!../code-snippets/SLDSTabsPage.txt")}
-              </PrismCode>
-
-              <div className="slds-p-vertical--large">
-
-
-                <SLDSTabs flavor="default">
-                  <SLDSTabs.Item title="Item One">
-                    <h2>Item One Content</h2>
-                  </SLDSTabs.Item>
-                  <SLDSTabs.Item title="Item Two">
-                    <h2>Item Two Content</h2>
-                  </SLDSTabs.Item>
-                  <SLDSTabs.Item title="Item Three">
-                    <h2>Item Three Content</h2>
-                  </SLDSTabs.Item>
-                </SLDSTabs>
-              </div>
-            </div>
-*/}
-
-
-
+            <PicklistBaseCustomSection />
 
           </div>
         </main>

@@ -75,28 +75,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSPicklistBase2 = _interopRequireDefault(_SLDSPicklistBase);
 	
+	var _SLDSPicklistBaseListItem = __webpack_require__(39);
+	
+	var _SLDSPicklistBaseListItem2 = _interopRequireDefault(_SLDSPicklistBaseListItem);
+	
 	var _SLDSSettings = __webpack_require__(14);
 	
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 	
-	var _SLDSButton = __webpack_require__(40);
+	var _SLDSButton = __webpack_require__(41);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSModal = __webpack_require__(61);
+	var _SLDSModal = __webpack_require__(62);
 	
 	var _SLDSModal2 = _interopRequireDefault(_SLDSModal);
 	
-	var _SLDSModalTrigger = __webpack_require__(62);
+	var _SLDSModalTrigger = __webpack_require__(63);
 	
 	var _SLDSModalTrigger2 = _interopRequireDefault(_SLDSModalTrigger);
 	
-	var _SLDSToast = __webpack_require__(63);
+	var _SLDSToast = __webpack_require__(64);
 	
 	var _SLDSToast2 = _interopRequireDefault(_SLDSToast);
 	
 	module.exports = {
 	  SLDSPicklistBase: _SLDSPicklistBase2['default'],
+	  SLDSPicklistBaseListItem: _SLDSPicklistBaseListItem2['default'],
 	  SLDSSettings: _SLDSSettings2['default'],
 	  SLDSButton: _SLDSButton2['default'],
 	  SLDSModal: _SLDSModal2['default'],
@@ -135,6 +140,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _list2 = _interopRequireDefault(_list);
 	
+	var _listItem = __webpack_require__(39);
+	
+	var _listItem2 = _interopRequireDefault(_listItem);
+	
+	var _listItemLabel = __webpack_require__(40);
+	
+	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
+	
 	var _SLDSIcons = __webpack_require__(13);
 	
 	var _SLDSIcons2 = __webpack_require__(13);
@@ -161,7 +174,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      initialFocus: false,
 	      modal: false,
 	      className: '',
-	      listClassName: ''
+	      listClassName: '',
+	      listItemRenderer: _listItemLabel2['default']
 	    };
 	  },
 	
@@ -181,8 +195,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      //     setTimeout(()=>{
 	      this.setFocus();
 	      //        this.setState({isFocused:true});
-	      //     }.bind(this),100);
+	      //     }.bind(this),100); =>
 	    }
+	    console.log('this.props.listItemRenderer: ', this.props.listItemRenderer);
 	  },
 	
 	  getIndexByValue: function getIndexByValue(value) {
@@ -285,6 +300,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onListBlur: this.handleListBlur,
 	      onListItemBlur: this.handleListItemBlur,
 	      onCancel: this.handleCancel,
+	      itemRenderer: this.props.listItemRenderer,
 	      theme: this.props.theme });
 	  },
 	
@@ -358,6 +374,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	});
+	
+	module.exports.ListItem = _listItem2['default'];
+	module.exports.ListItemLabel = _listItemLabel2['default'];
 
 /***/ },
 /* 2 */
@@ -3239,6 +3258,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      selectedIndex: -1,
 	      highlightedIndex: 0,
 	      className: '',
+	      itemRenderer: null,
 	      onListBlur: function onListBlur() {
 	        console.log("onListBlur should be overwritten");
 	      },
@@ -3339,7 +3359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    return this.props.options.map(function (option, index) {
 	      return _react2["default"].createElement(_listItem2["default"], {
-	        key: index,
+	        key: 'ListItem_' + index,
 	        index: index,
 	        label: option.label,
 	        value: option.value,
@@ -3351,6 +3371,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onFocus: _this.handleItemFocus,
 	        onSelect: _this.handleSelect,
 	        onSearch: _this.handleSearch,
+	        labelRenderer: _this.props.itemRenderer,
 	        onCancel: _this.handleCancel });
 	    });
 	  },
@@ -5753,6 +5774,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(6);
 	
+	var _listItemLabel = __webpack_require__(40);
+	
+	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
+	
 	module.exports = _react2['default'].createClass({
 	
 	  displayName: 'SLDSPicklistBase-list-item',
@@ -5765,6 +5790,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      inverted: false,
 	      isSelected: false,
 	      isHighlighted: false,
+	      labelRenderer: _listItemLabel2['default'],
 	
 	      onSelect: function onSelect(index) {
 	        console.log('onSelect should be defined ', index);
@@ -5783,6 +5809,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        console.log('onFocus should be defined ', index, height);
 	      }
 	    };
+	  },
+	
+	  componentDidMount: function componentDidMount() {
+	    console.log('!!! this.props.labelRenderer: ', this.props.labelRenderer);
 	  },
 	
 	  handleClick: function handleClick(e) {
@@ -5859,9 +5889,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	
+	  getLabel: function getLabel() {
+	    var LabelComp = this.props.labelRenderer;
+	    return _react2['default'].createElement(LabelComp, {
+	      index: this.props.index,
+	      label: this.props.label,
+	      value: this.props.value,
+	      inverted: this.props.inverted,
+	      isSelected: this.props.isSelected,
+	      isHighlighted: this.props.isHighlighted
+	    });
+	  },
+	
 	  render: function render() {
 	    return _react2['default'].createElement('li', {
-	
 	      className: "slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--" + this.props.theme,
 	      onMouseDown: this.handleMouseDown,
 	      tabIndex: -1 }, _react2['default'].createElement('a', { id: 'menu-0-' + this.props.index,
@@ -5875,13 +5916,60 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onFocus: this.handleFocus,
 	      'aria-checked': this.props.isSelected,
 	      role: 'menuitemradio',
-	      tabIndex: -1 }, this.props.isSelected ? _react2['default'].createElement(_SLDSIcons.Icon, { name: 'check', position: 'left', category: 'utility' }) : null, this.props.label));
+	      tabIndex: -1 }, this.getLabel()));
 	  }
 	
 	});
 
 /***/ },
 /* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	'use strict';
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SLDSIcons = __webpack_require__(13);
+	
+	var _utils = __webpack_require__(6);
+	
+	module.exports = _react2['default'].createClass({
+	
+	  displayName: 'SLDSPicklistBase-list-item-label',
+	
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      index: 0,
+	      label: '',
+	      value: null,
+	      inverted: false,
+	      isSelected: false,
+	      isHighlighted: false
+	    };
+	  },
+	
+	  render: function render() {
+	    return _react2['default'].createElement('section', null, this.props.isSelected ? _react2['default'].createElement(_SLDSIcons.Icon, { name: 'check', position: 'left', category: 'utility' }) : null, this.props.label);
+	  }
+	
+	});
+
+/***/ },
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -5965,17 +6053,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _utilsCreateChainedFunction = __webpack_require__(41);
+	var _utilsCreateChainedFunction = __webpack_require__(42);
 	
 	var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
 	
 	var _SLDSIconsJs = __webpack_require__(13);
 	
-	var _lodashOmit = __webpack_require__(42);
+	var _lodashOmit = __webpack_require__(43);
 	
 	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
-	var classNames = __webpack_require__(60);
+	var classNames = __webpack_require__(61);
 	
 	var Button = (function (_React$Component) {
 	  _inherits(Button, _React$Component);
@@ -6003,6 +6091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'onClick',
 	    value: function onClick(e) {
+	      console.log('YES!!!');
 	      this.setState({ active: !this.state.active });
 	    }
 	  }, {
@@ -6060,7 +6149,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Button;
 
 /***/ },
-/* 41 */
+/* 42 */
 /***/ function(module, exports) {
 
 	/*
@@ -6113,7 +6202,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 42 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6124,14 +6213,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var arrayMap = __webpack_require__(43),
-	    baseDifference = __webpack_require__(44),
-	    baseFlatten = __webpack_require__(49),
-	    bindCallback = __webpack_require__(52),
-	    pickByArray = __webpack_require__(53),
-	    pickByCallback = __webpack_require__(54),
-	    keysIn = __webpack_require__(56),
-	    restParam = __webpack_require__(59);
+	var arrayMap = __webpack_require__(44),
+	    baseDifference = __webpack_require__(45),
+	    baseFlatten = __webpack_require__(50),
+	    bindCallback = __webpack_require__(53),
+	    pickByArray = __webpack_require__(54),
+	    pickByCallback = __webpack_require__(55),
+	    keysIn = __webpack_require__(57),
+	    restParam = __webpack_require__(60);
 	
 	/**
 	 * The opposite of `_.pick`; this method creates an object composed of the
@@ -6179,7 +6268,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 43 */
+/* 44 */
 /***/ function(module, exports) {
 
 	/**
@@ -6215,7 +6304,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 44 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6226,9 +6315,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseIndexOf = __webpack_require__(45),
-	    cacheIndexOf = __webpack_require__(46),
-	    createCache = __webpack_require__(47);
+	var baseIndexOf = __webpack_require__(46),
+	    cacheIndexOf = __webpack_require__(47),
+	    createCache = __webpack_require__(48);
 	
 	/** Used as the size to enable large array optimizations. */
 	var LARGE_ARRAY_SIZE = 200;
@@ -6284,7 +6373,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 45 */
+/* 46 */
 /***/ function(module, exports) {
 
 	/**
@@ -6347,7 +6436,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 46 */
+/* 47 */
 /***/ function(module, exports) {
 
 	/**
@@ -6406,7 +6495,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 47 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -6417,7 +6506,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(48);
+	var getNative = __webpack_require__(49);
 	
 	/** Native method references. */
 	var Set = getNative(global, 'Set');
@@ -6504,7 +6593,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 48 */
+/* 49 */
 /***/ function(module, exports) {
 
 	/**
@@ -6647,7 +6736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 49 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6658,8 +6747,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(50),
-	    isArray = __webpack_require__(51);
+	var isArguments = __webpack_require__(51),
+	    isArray = __webpack_require__(52);
 	
 	/**
 	 * Checks if `value` is object-like.
@@ -6784,7 +6873,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 50 */
+/* 51 */
 /***/ function(module, exports) {
 
 	/**
@@ -6896,7 +6985,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 51 */
+/* 52 */
 /***/ function(module, exports) {
 
 	/**
@@ -7082,7 +7171,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 52 */
+/* 53 */
 /***/ function(module, exports) {
 
 	/**
@@ -7153,7 +7242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 53 */
+/* 54 */
 /***/ function(module, exports) {
 
 	/**
@@ -7232,7 +7321,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 54 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7243,8 +7332,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(55),
-	    keysIn = __webpack_require__(56);
+	var baseFor = __webpack_require__(56),
+	    keysIn = __webpack_require__(57);
 	
 	/**
 	 * The base implementation of `_.forIn` without support for callback
@@ -7282,7 +7371,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 55 */
+/* 56 */
 /***/ function(module, exports) {
 
 	/**
@@ -7374,7 +7463,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 56 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7385,8 +7474,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(57),
-	    isArray = __webpack_require__(58);
+	var isArguments = __webpack_require__(58),
+	    isArray = __webpack_require__(59);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -7512,7 +7601,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 57 */
+/* 58 */
 /***/ function(module, exports) {
 
 	/**
@@ -7624,7 +7713,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 58 */
+/* 59 */
 /***/ function(module, exports) {
 
 	/**
@@ -7810,7 +7899,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 59 */
+/* 60 */
 /***/ function(module, exports) {
 
 	/**
@@ -7883,7 +7972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 60 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -7937,7 +8026,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -7959,7 +8048,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSButton = __webpack_require__(40);
+	var _SLDSButton = __webpack_require__(41);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
@@ -7971,7 +8060,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 	
-	var _classnames = __webpack_require__(60);
+	var _classnames = __webpack_require__(61);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -8170,7 +8259,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -8194,7 +8283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(6);
 	
-	var _index = __webpack_require__(61);
+	var _index = __webpack_require__(62);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -8214,7 +8303,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSModalTrigger;
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

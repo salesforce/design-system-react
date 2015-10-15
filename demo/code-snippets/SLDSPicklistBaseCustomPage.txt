@@ -1,0 +1,26 @@
+
+const CustomItemLabelRenderer = React.createClass( {
+  render() {
+    return <section>
+      {
+        this.props.isSelected?<Icon name='like'  position='left' category='utility' />:null
+      }
+      {
+        this.props.label
+      }
+    </section>;
+  }
+});
+
+const options = [
+      {label:'A Option',value:'A0'},
+      {label:'B Option',value:'B0'},
+      {label:'C Option',value:'C0'},
+      {label:'D Option',value:'D0'},
+    ];
+
+<SLDSPicklistBase 
+  options={options} 
+  listItemRenderer={CustomItemLabelRenderer}
+  label="Contacts" 
+  placeholder="Select a contact"/>
