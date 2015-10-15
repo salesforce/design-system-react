@@ -50,10 +50,6 @@ module.exports = React.createClass({
     };
   },
 
-  componentDidMount () {
-    console.log('!!! this.props.labelRenderer: ',this.props.labelRenderer);
-  },
-
   handleClick (e) {
     e.preventDefault();
     e.stopPropagation();
