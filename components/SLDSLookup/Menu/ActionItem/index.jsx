@@ -7,57 +7,35 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-'use strict';
+import React, { Component } from 'react';
+import {Icon} from "../../../SLDSIcons";
 
-import React from 'react';
-import SLDSLookup from '../../../components/SLDSLookup';
-
-import {default as PrismCode} from 'react-prism/lib/PrismCode';
-
-
-const items = [
-  {label:'Paddy\'s Pub'},
-  {label:'Tyrell Corp'},
-  {label:'Paper St. Soap Company'},
-  {label:'Nakatomi Investments'},
-  {label:'Acme Landscaping'},
-  {label:'Acme Construction'}
-];
-
-
-
-module.exports = React.createClass( {
-
-  getDefaultProps () {
-    return {};
-  },
-
-  getInitialState () {
-    return {};
-  },
-
-  render() {
-    return (
-
-
-
-            <div className="slds-p-around--medium">
-
-              <h3 className="slds-text-heading--medium slds-truncate">
-                Lookups (Work in progress)
-              </h3>
-
-              <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSLookupPage.txt")}
-              </PrismCode>
-
-              <div className="slds-p-vertical--large">
-                <SLDSLookup items={items} label="Accounts" type="account" />
-              </div>
-
-            </div>
-
-
-    );
+class ActionItem extends React.Component {
+  constructor(props) {
+    super(props);
   }
-});
+
+  componentWillReceiveProps(nextProps){
+    if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
+  }
+
+  render(){
+    let className = 'slds-button';
+    if(this.props.isActive) className += ' slds-theme--shade'
+
+    return (
+      <button id={this.props.id} tabIndex="-1" className={className} onClick={this.props.onSelect} onMouseDown={this.props.onSelect}>
+      <Icon name={this.props.icon} category="utility" size="x-small" className="slds-icon-text-default" />
+      {this.props.children}
+      </button>
+    )
+  }
+}
+
+ActionItem.propTypes = {
+};
+
+ActionItem.defaultProps = {
+};
+
+module.exports = ActionItem;

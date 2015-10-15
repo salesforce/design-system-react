@@ -17,7 +17,7 @@ class Item extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.isActive !== this.props.isActive && (nextProps.isActive === true)){
+    if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true){
       this.scrollFocus();
       this.props.setFocus(this.props.id);
     }
@@ -33,19 +33,14 @@ class Item extends React.Component {
   }
 
   handleClick(e){
-    e.preventDefault();
-    if(e.nativeEvent){
-      e.nativeEvent.preventDefault();
-      e.nativeEvent.stopImmediatePropagation();
-    }
+    EventUtil.trapImmediate(e);
     return this.props.onSelect(this.props.id);
   }
 
+  //Scroll menu item based on up/down mouse keys (assumes all items are the same height)
   scrollFocus(){
     const height = React.findDOMNode(this).offsetHeight;
-    if(height && this.props.handleItemFocus){
-      this.props.handleItemFocus(this.props.index,height);
-    }
+    if(height && this.props.handleItemFocus) this.props.handleItemFocus(this.props.index,height);
   }
 
   render(){
@@ -55,18 +50,16 @@ class Item extends React.Component {
 
     return (
       //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
-      <li
-        className={className}
-        role="presentaion">
+      <li className={className} role="presentaion">
         <a
           href={this.props.href}
           id={id}
           tabIndex="-1"
-          aria-disabled={this.props.disabled}
+          aria-disabled={this.props.isDisabled}
           role="option"
           onClick={this.handleClick.bind(this)}
           onMouseDown={this.handleClick.bind(this)}>
-          <Icon name="account" />
+          <Icon name={this.props.type} />
           { this.boldSearchText(this.props.children.label) }
         </a>
       </li>
@@ -75,12 +68,17 @@ class Item extends React.Component {
 }
 
 Item.propTypes = {
+  key: React.PropTypes.string,
   id: React.PropTypes.string,
-  setFocus: React.PropTypes.func,
-  scrollFocus: React.PropTypes.func,
-  isActive: React.PropTypes.bool,
-  onSelect: React.PropTypes.func,
+  href: React.PropTypes.string,
+  type: React.PropTypes.string,
   searchTerm: React.PropTypes.string,
+  index: React.PropTypes.number,
+  isActive: React.PropTypes.bool,
+  isDisabled: React.PropTypes.bool,
+  setFocus: React.PropTypes.func,
+  handleItemFocus: React.PropTypes.func,
+  onSelect: React.PropTypes.func,
 };
 
 Item.defaultProps = {

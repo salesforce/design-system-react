@@ -1,15 +1,16 @@
 /*
-Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+   Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+   Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+   Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+   */
 
 import React, { Component } from 'react';
 import Menu from './Menu';
-import {Icon, InputIcon, ButtonIcon} from "./../SLDSIcons";
+import {Icon, InputIcon} from "./../SLDSIcons";
+import SLDSButton from '../SLDSButton';
 import {KEYS,EventUtil} from '../utils';
 import escapeRegExp from 'lodash.escaperegexp';
 
@@ -39,18 +40,22 @@ class SLDSLookup extends React.Component {
     if(prevState.selectedIndex && !this.state.selectIndex){
       if(this.refs.lookup) React.findDOMNode(this.refs.lookup).focus();
     }
+    else if(!prevState.selectedIndex && this.state.selectedIndex){
+      if(this.refs.clearSelectedItemButton) React.findDOMNode(this.refs.clearSelectedItemButton).focus();
+    }
   }
 
   //=================================================
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
+  // Adding/subtracting 1 from focusIndex to account for fixed action items (searchDetails and addNewItem buttons)
   increaseIndex(){
-    let items = this.state.listLength - 1;
-    this.setState({ focusIndex: this.state.focusIndex < items ? this.state.focusIndex + 1 : 0 })
+    let items = this.state.listLength;
+    this.setState({ focusIndex: this.state.focusIndex <= items ? this.state.focusIndex + 1 : 0 })
   }
 
   decreaseIndex(){
-    let items = this.state.listLength - 1;
+    let items = this.state.listLength;
     this.setState({ focusIndex: this.state.focusIndex > 0 ? this.state.focusIndex - 1 : items })
   }
 
@@ -59,9 +64,7 @@ class SLDSLookup extends React.Component {
   }
 
   getListLength(qty){
-    if(qty !== this.state.listLength){
-      this.setState({listLength:qty});
-    }
+    if(qty !== this.state.listLength) this.setState({listLength:qty});
   }
 
   //=================================================
@@ -72,6 +75,7 @@ class SLDSLookup extends React.Component {
       selectedIndex: index,
       searchTerm: null
     });
+    if(this.props.onItemSelect) this.props.onItemSelect();
   }
 
   handleDeleteSelected() {
@@ -81,17 +85,22 @@ class SLDSLookup extends React.Component {
     });
   }
 
+  addItem(){
+    if(this.props.onAddItem) this.props.onAddItem();
+  }
+
   //=================================================
-  // Basic Event Listeners on Input
+  // Event Listeners on Input
   handleClose() {
     this.setState({
       isOpen:false,
-      focusIndex:null
-    })
+      focusIndex:null,
+      currentFocus:null,
+    });
   }
 
   handleClick() {
-    this.setState({isOpen:true})
+    this.setState({isOpen:true});
   }
 
   handleBlur() {
@@ -99,12 +108,12 @@ class SLDSLookup extends React.Component {
   }
 
   handleFocus() {
-    this.setState({ isOpen:true });
+    this.setState({isOpen:true});
   }
 
   handleChange(event) {
     const target = event.target || event.currentTarget;
-    this.setState({ searchTerm: target.value });
+    this.setState({searchTerm: target.value});
   }
 
   handleKeyDown(event) {
@@ -112,26 +121,22 @@ class SLDSLookup extends React.Component {
       //If user hits esc key, close menu
       event.keyCode === KEYS.ESCAPE ? this.handleClose() : this.handleClick();
 
-      //If user hits tab key, move aria activedescendant to first menu item
-      if(event.keyCode === KEYS.TAB && this.state.focusIndex === null){
-        this.setState({focusIndex: 0});
-        EventUtil.trapImmediate(event);
-      }
       //If user hits down key, advance aria activedescendant to next item
-      else if(event.keyCode === KEYS.DOWN && this.state.focusIndex !== null){
+      if(event.keyCode === KEYS.DOWN){
         EventUtil.trapImmediate(event);
-        this.increaseIndex();
+        this.state.focusIndex === null ? this.setState({focusIndex: 0}) : this.increaseIndex();
       }
       //If user hits up key, advance aria activedescendant to previous item
-      else if(event.keyCode === KEYS.UP && this.state.focusIndex !== null){
+      else if(event.keyCode === KEYS.UP){
         EventUtil.trapImmediate(event);
-        this.decreaseIndex();
+        this.state.focusIndex === null ? this.setState({focusIndex: this.state.listLength + 1}) : this.decreaseIndex();
       }
-
       //If user hits enter/space key, select current activedescendant item
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.focusIndex !== null){
         EventUtil.trapImmediate(event);
-        this.selectItem(this.state.currentFocus);
+        //If the focus is on the first or last item in the menu (search details or add item buttons), then close.
+        //If not, then select menu item
+        (this.state.focusIndex === 0 || this.state.focusIndex === (this.state.listLength + 1)) ? this.handleClose() : this.selectItem(this.state.currentFocus);
       }
     }
   }
@@ -142,35 +147,36 @@ class SLDSLookup extends React.Component {
     if(this.state.isOpen){
       return <Menu
         searchTerm={this.state.searchTerm}
-        filterWith={this.props.filterWith}
-        onSelect={this.selectItem.bind(this)}
         label={this.props.label}
-        items={this.props.items}
-        setFocus={this.setFocus.bind(this)}
-        getListLength={this.getListLength.bind(this)}
-        listLength={this.state.listLength}
-        focusIndex={this.state.focusIndex}
-        addItem={this.props.addItem}
         type={this.props.type}
-        />;
-    }else{
-      return null;
+        focusIndex={this.state.focusIndex}
+        listLength={this.state.listLength}
+        items={this.props.items}
+        filterWith={this.props.filterWith}
+        getListLength={this.getListLength.bind(this)}
+        setFocus={this.setFocus.bind(this)}
+        onSelect={this.selectItem.bind(this)}
+        addItem={this.addItem}
+      />;
     }
   }
 
   renderSelectedItem(){
+    let selectedItem = this.props.items[this.state.selectedIndex].label;
     return (
       <div className="slds-pill">
         <a href="#" className="slds-pill__label">
-          <span>
-            <Icon name="account" />
-            {this.props.items[this.state.selectedIndex].label}
-          </span>
+          <Icon name={this.props.type} />
+          {selectedItem}
         </a>
-        <button className="slds-button slds-button--icon-bare" onClick={this.handleDeleteSelected.bind(this)} ref="clearSelectedItemButton">
-          <ButtonIcon name="close" />
-          <span className="slds-assistive-text">Remove</span>
-        </button>
+        <SLDSButton
+          label={'Remove ' + selectedItem}
+          variant='icon'
+          iconName='close'
+          iconSize='medium'
+          onClick={this.handleDeleteSelected.bind(this)}
+          ref="clearSelectedItemButton"
+        />
       </div>
     );
   }
@@ -203,7 +209,8 @@ class SLDSLookup extends React.Component {
               onBlur={this.handleBlur.bind(this)}
               onClick={this.handleClick.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)}
-              value={this.state.searchTerm} />
+              value={this.state.searchTerm}
+            />
           </div>
 
           {this.renderMenu()}
@@ -217,13 +224,20 @@ class SLDSLookup extends React.Component {
 SLDSLookup.propTypes = {
   items: React.PropTypes.array,
   label: React.PropTypes.string,
+  type: React.PropTypes.string,
+  filterWith: React.PropTypes.func,
+  onItemSelect: React.PropTypes.func,
+  onAddItem: React.PropTypes.func,
 };
 
 SLDSLookup.defaultProps = {
   filterWith: defaultFilter,
   onItemSelect: function(item){
-  //console.log('onItemSelect should be defined');
-  }
+    //console.log('onItemSelect should be defined');
+  },
+  onAddItem: function(event){
+    //console.log('onItemSelect should be defined');
+  },
 };
 
 module.exports = SLDSLookup;
