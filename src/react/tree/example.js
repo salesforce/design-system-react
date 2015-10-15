@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Tree from './tree';
 
 const collection = [
@@ -87,5 +88,5 @@ export default function (element) {
 		}
 	});
 
-	React.render(<TreeExample/>, element);
+	ReactDOM.render(<TreeExample/>, element);
 }

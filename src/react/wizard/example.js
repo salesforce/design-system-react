@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Wizard from './wizard';
 
 export default function (element) {
@@ -30,6 +31,6 @@ export default function (element) {
 			});
 		}
 	});
-	
-	React.render(<WizardExample />, element);
+
+	ReactDOM.render(<WizardExample />, element);
 }

@@ -30,7 +30,7 @@ let Pillbox = function Pillbox (element, options) {
 Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 	_onInitialized () {
 		this.elements.wrapper.on('keyup.fu.tree', '.slds-pill-add-item', $.proxy(this._keyUp, this));
-		this.elements.wrapper.on('click.fu.tree', '.slds-pill-group > .slds-pill', $.proxy(this._itemClicked, this));
+		this.elements.wrapper.on('click.fu.tree', '.slds-pill > .slds-button', $.proxy(this._itemClicked, this));
 
 		this._render();
 
@@ -108,7 +108,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 	},
 
 	_itemClicked (e) {
-		const item = $(e.currentTarget).data('item');
+		const item = $(e.currentTarget).parent().data('item');
 
 		if (!this.getProperty('disabled')) {
 			this.deselectItem(item);

@@ -26,23 +26,21 @@ require('../../scss/components/dropdowns/flavors/menu-with-search/index.scss');
 require('../../scss/components/dropdowns/flavors/positioning/index.scss');
 require('../../scss/components/dropdowns/flavors/search-overflow/index.scss');
 
-export const CONTROL = 'picklist';
+export const CONTROL = 'selectlist';
 
 const resizeCache = {};
 
 const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: 'slds-' + CONTROL,
-		BTN_DEFAULT: 'slds-button slds-button--neutral',
-		BTN_GROUP: 'slds-button-group',
-		CARET: 'caret',
-		DIVIDER: 'divider',
-		HEADER: 'dropdown-header',
-		HIDDEN: 'hidden-field',
-		LABEL: 'selected-label',
+		CONTROL: CONTROL,
+		LABEL: 'slds-truncate',
+		DROPDOWN: 'slds-dropdown',
 		MENU: 'slds-dropdown__list',
-		TOGGLE: 'slds-button slds-button--neutral slds-picklist__label'
+		TOGGLE: 'slds-button',
+		HEADER: 'slds-dropdown__header',
+		HEADERTEXT: 'slds-text-heading--label',
+		DIVIDER: 'slds-has-divider'
 	},
 
 	_defaultProperties: {
@@ -104,9 +102,9 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Ke
 	},
 
 	_onInitialized () {
-		if (this.getProperty('resize') === 'auto') {
+		/* if (this.getProperty('resize') === 'auto') {
 			this.resize();
-		}
+		}*/
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
@@ -115,7 +113,7 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Ke
 		const sizer = document.createElement('div');
 
 		sizer.className = 'selectlist-sizer';
-		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP) + '"><button class="slds-button slds-button--neutral dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
+		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
 
 		let parent;
 		if (Lib.hasClass(document.querySelector('html'), this.cssClasses.NAMESPACE)) {

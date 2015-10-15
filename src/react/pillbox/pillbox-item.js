@@ -10,9 +10,9 @@ const PillboxItem = React.createClass({
 
 	render () {
 		return (
-			<li className="slds-pill" onClick={this._onClick}>
+			<li className="slds-pill">
 				<span href="#" className="slds-pill__label">{this.props.item.getText()}</span>
-				<button className="slds-button slds-button--icon-bare">
+				<button className="slds-button slds-button--icon-bare" onClick={this._onClick}>
 					<svg
 						aria-hidden="true"
 						className="slds-button__icon"

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Loader from './loader';
+import Spinner from './spinner';
 
 export default function (element) {
-	ReactDOM.render(<Loader />, element);
+	ReactDOM.render(<Spinner size="medium" theme="base" />, element);
 }
