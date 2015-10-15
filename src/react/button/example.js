@@ -2,6 +2,7 @@ import React from 'react';
 import Button from './button';
 
 // FIXME: We don't want to ask people to include SVGs or specially classed / formatted elements in order to make the buttons work
+// TODO: There should be a sample React "app" here (it can be really small) that makes these controls work for the examples
 export default function () {
 	React.render(<Button >Button</Button>, document.getElementById('slds-button'));
 	React.render(<Button theme="neutral">Neutral</Button>, document.getElementById('slds-button--neutral'));
