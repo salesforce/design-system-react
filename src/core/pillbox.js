@@ -15,7 +15,7 @@ require('../../scss/components/pills/flavors/portrait/index.scss');
 
 export const CONTROL = 'pillbox';
 
-const PickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
+const PillboxCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL
@@ -79,4 +79,4 @@ const PickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	}
 });
 
-export default PickerCore;
+export default PillboxCore;

@@ -64,6 +64,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 			}
 
 			// TODO: This will need to be updated when typeahead feature is added
+			// TODO: This won't really work with data accessors other than vanilla js
 			this.selectItem({
 				text: inputValue,
 				value: inputValue
@@ -73,10 +74,13 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 		}
 	},
 
+	// TODO: Do we still need this part for SLDS? I don't want to lose the code but I also don't want things to be over-complicated
 	_onAdd (newSelection) {
 		return new Promise((resolve) => {
-			if (this.options.onAdd) {
-				this.options.onAdd([newSelection._item], (itemsToSelect) => {
+			const onAdd = this.getProperty('onAdd');
+			
+			if (Lib.isFunction(onAdd)) {
+				onAdd([newSelection._item], (itemsToSelect) => {
 					resolve(itemsToSelect);
 				});
 			} else {
@@ -87,8 +91,10 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 
 	_onRemove (newDeselection) {
 		return new Promise((resolve) => {
-			if (this.options.onRemove) {
-				this.options.onRemove([newDeselection._item], (itemsToDeselect) => {
+			const onRemove = this.getProperty('onRemove');
+			
+			if (onRemove) {
+				onRemove([newDeselection._item], (itemsToDeselect) => {
 					resolve(itemsToDeselect);
 				});
 			} else {
@@ -98,13 +104,8 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 	},
 
 	_onEnabledOrDisabled (props) {
-		if (props.disabled) {
-			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED);
-			this.elements.inputWrap.hide();
-		} else {
-			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED);
-			this.elements.inputWrap.show();
-		}
+		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, props.disabled);
+		this.elements.inputWrap.toggle(!props.disabled);
 	},
 
 	_itemClicked (e) {
