@@ -7,6 +7,12 @@ import Base from './base';
 import Disableable from '../traits/disableable';
 import Multiselectable from '../traits/multiselectable';
 
+require('../../scss/components/buttons/flavors/base/index.scss');
+require('../../scss/components/buttons/flavors/icon/index.scss');
+require('../../scss/components/pills/flavors/base/index.scss');
+require('../../scss/components/pills/flavors/portrait/index.scss');
+
+
 export const CONTROL = 'pillbox';
 
 const PickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {

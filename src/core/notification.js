@@ -3,6 +3,10 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
+require('../../scss/components/notifications/flavors/base/index.scss');
+require('../../scss/components/notifications/flavors/alert/index.scss');
+require('../../scss/components/notifications/flavors/toast/index.scss');
+
 export const CONTROL = 'notification';
 
 const NotificationCore = Lib.merge({}, Base, {

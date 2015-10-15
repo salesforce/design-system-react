@@ -1,0 +1,20 @@
+/*
+	# IMPORTANT: We aren't using the pathing directly from @salesforce-ux/design-system
+
+	Instead we have copied what is in it here and modified it because their paths are root-relative to a directory that doesn't exist in this project.
+
+	@todo: solve this, somehow: 
+		a) either by waiting for the design-system project to have file-relative paths (see: https://org62.my.salesforce.com/_ui/core/chatter/groups/GroupProfilePage?g=0F930000000PXT7&fId=0D53000002Gpy0i)
+		b) some sort of build thing that automates the process, so that it's not (as) dependant upon a human making sure it's up to date
+		c) make a route that invisibly rewrites the requests for /assets to the proper place.
+*/
+// @import "~@salesforce-ux/design-system/scss/dependencies/pathing.scss";
+
+// Icon Path
+$static-icon-path: "/examples/assets/icons" !default;
+
+// Image Path
+$static-image-path: "/examples/assets/images" !default;
+
+// Font Path
+$static-font-path: "/examples/assets/fonts/webfonts" !default;
