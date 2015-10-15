@@ -3,10 +3,12 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
-// require('../../less/spinner.less');
+require('../../scss/components/spinners/flavors/base/index.scss');
+require('../../scss/components/spinners/flavors/large/index.scss');
+require('../../scss/components/spinners/flavors/medium/index.scss');
 
 export const CONTROL = 'spinner';
-const assetsDir = '/examples/assets/images/spinners/';
+const assetsDir = '/assets/images/spinners/';
 
 const SpinnerCore = Lib.merge({}, Base, {
 
