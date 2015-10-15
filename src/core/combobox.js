@@ -2,13 +2,11 @@
 
 import * as Lib from '../lib/lib';
 import SelectlistCore from './selectlist';
-import '../data/string';
 
-
+// TODO: This doesn't actually exist, should we name some variant of picklist or something equivalent?
 require('../../scss/components/forms/flavors/input/index.scss');
 
-
-export const CONTROL = 'combobox';
+export const CONTROL = 'slds-combobox';
 
 const ComboboxCore = Lib.merge({}, SelectlistCore, {
 	// CSS classes used within this control
