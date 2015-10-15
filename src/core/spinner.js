@@ -8,7 +8,7 @@ require('../../scss/components/spinners/flavors/large/index.scss');
 require('../../scss/components/spinners/flavors/medium/index.scss');
 
 export const CONTROL = 'spinner';
-const assetsDir = '/assets/images/spinners/';
+const assetsDir = '/assets/design-system/images/spinners/';
 
 const SpinnerCore = Lib.merge({}, Base, {
 
