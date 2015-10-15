@@ -18,10 +18,12 @@ const ButtonCore = Lib.merge({}, Base, {
 		'icon-container': Base.cssClasses.NAMESPACE + CONTROL + '--icon-container',
 		'icon-border': Base.cssClasses.NAMESPACE + CONTROL + '--icon-border',
 		'icon-border-filled': Base.cssClasses.NAMESPACE + CONTROL + '--icon-border-filled',
-		'icon-small': Base.cssClasses.NAMESPACE + CONTROL + '--icon-small'
+		'icon-small': Base.cssClasses.NAMESPACE + CONTROL + '--icon-small',
+
+		// TODO: add button property or check for button parent, inverse, size, etc.
+		'BUTTON_LEFT': 'slds-button__icon--left',
+		'BUTTON_RIGHT': 'slds-button__icon--right'
 	}
-	
-	// FIXME: Add default properties here so that we have a default theme, size and style (if they are required for rendering)
 	
 	// TODO: We usually manage state and throw our own events here, so this will probably need to be expanded for jQuery support
 });

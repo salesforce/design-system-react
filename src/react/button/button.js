@@ -8,6 +8,7 @@ import ButtonCore, {CONTROL} from '../../core/button';
 import React from 'react';
 import State from '../mixins/state';
 import Events from '../mixins/events';
+import Svg from '../svg/svg';
 import genericWillMount from '../mixins/generic-will-mount';
 
 // Third party
@@ -24,6 +25,7 @@ export const ButtonObject = {
 		stateful: React.PropTypes.bool,
 		theme: React.PropTypes.string,
 		selected: React.PropTypes.bool,
+		text: React.PropTypes.string,
 		onClick: React.PropTypes.func
 	},
 
@@ -44,9 +46,27 @@ export const ButtonObject = {
 			selectedClasses);
 	},
 
+	_getIconClassNames () {
+		let position = null;
+		position = this.props.iconPosition ? 'BUTTON_' + this.props.iconPosition.toUpperCase() : 'BUTTON_LEFT';
+		return classNames('slds-button__icon', this.cssClasses[position]);
+	},
+
 	_renderAssistiveText () {
 		if (this.props.assistiveText) {
 			return <span className={this.cssClasses.ASSISTIVE_TEXT}>{this.props.assistiveText}</span>;
+		}
+	},
+
+	_iconLeft () {
+		if (this.props.icon && this.props.iconPosition !== 'right') {
+			return (<Svg className={this._getIconClassNames()} icon={this.props.icon} />);
+		}
+	},
+
+	_iconRight () {
+		if (this.props.icon && this.props.iconPosition === 'right' ) {
+			return (<Svg className={this._getIconClassNames()} icon={this.props.icon} />);
 		}
 	},
 
@@ -58,7 +78,7 @@ export const ButtonObject = {
 				onClick={this.props.onClick}
 				className={this._getClassNames()}
 				disabled={this.props.disabled}
-				aria-live={this.props.stateful ? 'assertive' : null}>{this.props.children}{this._renderAssistiveText()}</button>
+aria-live={this.props.stateful ? 'assertive' : null}>{this._iconLeft()}{this.props.text}{this.props.children}{this._renderAssistiveText()}{this._iconRight()}</button>
 		);
 	}
 };
