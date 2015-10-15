@@ -18,9 +18,11 @@ let Spinner = Lib.merge({}, SpinnerCore, {
 	},
 
 	render () {
+		const strings = this.getState('strings');
+		
 		return (
 			<div className={this.cssClasses[this.props.size]}>
-				<img src={this.fileNames[this.props.theme]} alt="Loading..." />
+				<img src={this.fileNames[this.props.theme]} alt={strings.LOADING} />
 			</div>
 		);
 	}
