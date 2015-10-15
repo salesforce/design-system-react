@@ -188,17 +188,17 @@ class SLDSLookup extends React.Component {
     return (
       <div className={componentClasses} data-select="single" data-scope="single" data-typeahead="true">
         <section className="slds-form-element">
-          <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
+
+          <label className="slds-form-element__label" htmlFor={this.props.type + "Lookup"}>{this.props.label}</label>
 
           <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             <InputIcon name="search"/>
             <input
-              id="lookup"
+              id={this.props.type + "Lookup"}
               ref="lookup"
               className={inputClasses}
               type="text"
-              aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
               aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:""}
