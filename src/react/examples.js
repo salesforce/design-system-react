@@ -1,10 +1,12 @@
 // imports
 import badge from './badge/example';
-import selectlist from './selectlist/example';
-import combobox from './combobox/example';
-import tree from './tree/example';
+import button from './button/example';
+import buttonGroup from './button-group/example';
+// import selectlist from './selectlist/example';
+// import combobox from './combobox/example';
+// import tree from './tree/example';
 // import wizard from './wizard/example';
-import spinner from './spinner/example';
+// import spinner from './spinner/example';
 import notification from './notification/example';
 import checkbox from './checkbox/example';
 import radio from './radio/example';
@@ -13,6 +15,8 @@ import pillbox from './pillbox/example';
 
 // base components
 badge();
+button();
+buttonGroup();
 notification();
 
 selectlist(document.getElementById('selectlist'));
