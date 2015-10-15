@@ -48,6 +48,7 @@ class SLDSLookup extends React.Component {
   //=================================================
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
+  // Adding/subtracting 1 from focusIndex to account for fixed action items (searchDetails and addNewItem buttons)
   increaseIndex(){
     let items = this.state.listLength;
     this.setState({ focusIndex: this.state.focusIndex <= items ? this.state.focusIndex + 1 : 0 })
@@ -74,6 +75,7 @@ class SLDSLookup extends React.Component {
       selectedIndex: index,
       searchTerm: null
     });
+    if(this.props.onItemSelect) this.props.onItemSelect();
   }
 
   handleDeleteSelected() {
@@ -83,6 +85,10 @@ class SLDSLookup extends React.Component {
     });
   }
 
+  addItem(){
+    if(this.props.onAddItem) this.props.onAddItem();
+  }
+
   //=================================================
   // Event Listeners on Input
   handleClose() {
@@ -90,11 +96,11 @@ class SLDSLookup extends React.Component {
       isOpen:false,
       focusIndex:null,
       currentFocus:null,
-    })
+    });
   }
 
   handleClick() {
-    this.setState({isOpen:true})
+    this.setState({isOpen:true});
   }
 
   handleBlur() {
@@ -102,12 +108,12 @@ class SLDSLookup extends React.Component {
   }
 
   handleFocus() {
-    this.setState({ isOpen:true });
+    this.setState({isOpen:true});
   }
 
   handleChange(event) {
     const target = event.target || event.currentTarget;
-    this.setState({ searchTerm: target.value });
+    this.setState({searchTerm: target.value});
   }
 
   handleKeyDown(event) {
@@ -123,7 +129,7 @@ class SLDSLookup extends React.Component {
       //If user hits up key, advance aria activedescendant to previous item
       else if(event.keyCode === KEYS.UP){
         EventUtil.trapImmediate(event);
-        this.state.focusIndex === null ? this.setState({focusIndex: this.state.listLength}) : this.decreaseIndex();
+        this.state.focusIndex === null ? this.setState({focusIndex: this.state.listLength + 1}) : this.decreaseIndex();
       }
       //If user hits enter/space key, select current activedescendant item
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.focusIndex !== null){
@@ -141,29 +147,30 @@ class SLDSLookup extends React.Component {
     if(this.state.isOpen){
       return <Menu
         searchTerm={this.state.searchTerm}
-        filterWith={this.props.filterWith}
-        onSelect={this.selectItem.bind(this)}
         label={this.props.label}
-        items={this.props.items}
-        setFocus={this.setFocus.bind(this)}
-        getListLength={this.getListLength.bind(this)}
-        listLength={this.state.listLength}
-        focusIndex={this.state.focusIndex}
-        addItem={this.props.addItem}
         type={this.props.type}
+        focusIndex={this.state.focusIndex}
+        listLength={this.state.listLength}
+        items={this.props.items}
+        filterWith={this.props.filterWith}
+        getListLength={this.getListLength.bind(this)}
+        setFocus={this.setFocus.bind(this)}
+        onSelect={this.selectItem.bind(this)}
+        addItem={this.addItem}
       />;
     }
   }
 
   renderSelectedItem(){
+    let selectedItem = this.props.items[this.state.selectedIndex].label;
     return (
       <div className="slds-pill">
         <a href="#" className="slds-pill__label">
           <Icon name={this.props.type} />
-          {this.props.items[this.state.selectedIndex].label}
+          {selectedItem}
         </a>
         <SLDSButton
-          label='Remove'
+          label={'Remove ' + selectedItem}
           variant='icon'
           iconName='close'
           iconSize='medium'
@@ -218,9 +225,9 @@ SLDSLookup.propTypes = {
   items: React.PropTypes.array,
   label: React.PropTypes.string,
   type: React.PropTypes.string,
-  addItem: React.PropTypes.func,
   filterWith: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
+  onAddItem: React.PropTypes.func,
 };
 
 SLDSLookup.defaultProps = {
@@ -228,7 +235,7 @@ SLDSLookup.defaultProps = {
   onItemSelect: function(item){
     //console.log('onItemSelect should be defined');
   },
-  addItem: function(event){
+  onAddItem: function(event){
     //console.log('onItemSelect should be defined');
   },
 };

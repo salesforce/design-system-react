@@ -9,6 +9,7 @@
 
 import React, { Component } from 'react';
 import Item from './Item';
+import ActionItem from './ActionItem';
 import {Icon} from "../../SLDSIcons";
 
 class Menu extends React.Component {
@@ -41,54 +42,55 @@ class Menu extends React.Component {
       return <Item
       key={c.id}
       id={c.id}
-      index={i}
       type={this.props.type}
-      setFocus={this.props.setFocus}
+      searchTerm={this.props.searchTerm}
+      index={i}
       isActive={isActive}
+      setFocus={this.props.setFocus}
       handleItemFocus={this.handleItemFocus.bind(this)}
       onSelect={this.props.onSelect}
-      searchTerm={this.props.searchTerm}>{c}</Item>
+      >
+      {c}
+      </Item>
     });
   }
 
-  renderSearchDetails(){
-    let className = 'slds-button';
-    if(this.props.focusIndex === 0) className += ' slds-theme--shade';
-    return(
-      <button id="searchDetails" tabIndex="-1" className={className}>
-      <Icon name="search" category="utility" size="x-small" className="slds-icon-text-default" />
-      {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type + 's'}
-      </button>
-    );
-  }
-
-  renderAddItem(){
-    let className = 'slds-button';
-    if(this.props.focusIndex === this.props.listLength + 1) className += ' slds-theme--shade';
-    return(
-      <button id="addItem" tabIndex="-1" className={className} onClick={this.props.addItem} onMouseDown={this.props.addItem}>
-      <Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />
-      New {this.props.type}
-      </button>
-    );
-  }
-
   render(){
+    let isNewItemBtnActive = false;
+    let isSearchDetailsActive = false;
+    this.props.focusIndex === this.props.listLength + 1 ? isNewItemBtnActive = true : isNewItemBtnActive = false;
+    this.props.focusIndex === 0 ? isSearchDetailsActive = true: isSearchDetailsActive = false;
+
     return (
-      <div
-      className="ignore-react-onclickoutside slds-lookup__menu"
-      role="listbox"
-      ref="scroll">
+      <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
         <div className="slds-lookup__item">
-          {this.renderSearchDetails()}
+          <ActionItem
+            id='searchDetails'
+            icon='search'
+            type={this.props.type}
+            isActive={isSearchDetailsActive}
+            setFocus={this.props.setFocus}
+            onSelect={this.props.addItem}
+            >
+            {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type + 's'}
+          </ActionItem>
         </div>
-        <ul className="slds-lookup__list"
-        role="presentation"
-        ref="list">
+
+        <ul className="slds-lookup__list" role="presentation" ref="list">
           {this.renderItems()}
         </ul>
+
         <div className="slds-lookup__item">
-          {this.renderAddItem()}
+          <ActionItem
+            id='addNewItem'
+            icon='add'
+            type={this.props.type}
+            isActive={isNewItemBtnActive}
+            setFocus={this.props.setFocus}
+            onSelect={this.props.addItem}
+            >
+            New {this.props.type}
+          </ActionItem>
         </div>
       </div>
     )
@@ -99,14 +101,14 @@ Menu.propTypes = {
   searchTerm: React.PropTypes.string,
   label: React.PropTypes.string,
   type: React.PropTypes.string,
-  listLength: React.PropTypes.number,
   focusIndex: React.PropTypes.number,
+  listLength: React.PropTypes.number,
   items: React.PropTypes.array,
+  filterWith: React.PropTypes.func,
+  getListLength: React.PropTypes.func,
+  setFocus: React.PropTypes.func,
   onSelect: React.PropTypes.func,
   addItem: React.PropTypes.func,
-  filterWith: React.PropTypes.func,
-  setFocus: React.PropTypes.func,
-  getListLength: React.PropTypes.func,
 };
 
 Menu.defaultProps = {
