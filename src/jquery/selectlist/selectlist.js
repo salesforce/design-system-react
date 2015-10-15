@@ -21,17 +21,13 @@ let Selectlist = function Selectlist (element, options) {
 	};
 
 	const $html = $('<i />').append(template);
-	this.template = $html.find('.' + this.cssClasses.CONTROL);
+	this.template = $html.find('.slds-form-element');
 
 	if (this.options.collection) {
 		this.rendered = false;
 	} else {
-		this.isBootstrap3 = Lib.isFunction($().emulateTransitionEnd);
-
 		this._initElements(this.elements.wrapper, this.elements);
-
 		this._buildCollection(this.options);
-
 		this.rendered = true;
 	}
 
@@ -44,7 +40,6 @@ export function _renderItem (item) {
 	const $li = this.template.find('li').clone();
 
 	$li.data(item.get());
-	$li.toggleClass(this.cssClasses.DISABLED, disabled);
 	$li.prop('disabled', disabled);
 
 	const $a = $li.find('a');
@@ -54,21 +49,11 @@ export function _renderItem (item) {
 }
 
 export function _renderHeader (item) {
-	const $li = this.template.find('li').clone().empty();
-
-	$li.toggleClass(this.cssClasses.HEADER, true);
-	$li.text(item.getText());
-
-	return $li;
+	return $('<li class="' + this.cssClasses.HEADER + '"><span class="' + this.cssClasses.HEADERTEXT + '">' + item.getText() + '</span></li>');
 }
 
 export function _renderDivider () {
-	const $li = this.template.find('li').clone().empty();
-
-	$li.toggleClass(this.cssClasses.DIVIDER, true);
-	$li.prop('role', 'separator');
-
-	return $li;
+	return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
 }
 
 export const SelectlistObject = {
@@ -76,10 +61,10 @@ export const SelectlistObject = {
 		const els = elements || {};
 
 		els.button = base.find('.' + this.cssClasses.TOGGLE);
-		els.hiddenField = base.find('.' + this.cssClasses.HIDDEN);
-		els.label = base.find('.' + this.cssClasses.LABEL);
+		els.hiddenField = base.find('input.slds-hide');
+		els.label = els.button.find('.' + this.cssClasses.LABEL);
+		els.dropdown = base.find('.' + this.cssClasses.DROPDOWN);
 		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
-		els.srOnly = base.find('.' + this.cssClasses.SR_ONLY);
 
 		return els;
 	},
@@ -139,16 +124,16 @@ export const SelectlistObject = {
 		this._bindUIEvents();
 
 		this._closeOnClick = $.proxy(this._closeOnClick, this);
-		if (!this.isBootstrap3) document.addEventListener('click', this._closeOnClick, false);
+		document.addEventListener('click', this._closeOnClick, false);
 		
 		// For tests, will consider publishing later
 		this.trigger('rendered', this.elements.wrapper);
 	},
 
 	_bindUIEvents () {
-		if (!this.isBootstrap3) this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
+		this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
-		if (!this.isBootstrap3) this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
+		this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
 		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
 	},
 
@@ -163,10 +148,6 @@ export const SelectlistObject = {
 		// Configure the button
 		const disabled = !!this.getProperty('disabled');
 		elements.button.prop('disabled', disabled);
-		elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
-
-		// Add the localized string for screen readers
-		elements.srOnly.text(strings.TOGGLE_DROPDOWN);
 
 		// Show the current selection if there is one
 		const selectionName = selection.getText() || strings.NONE_SELECTED;
@@ -195,7 +176,6 @@ export const SelectlistObject = {
 
 		// Prep for append
 		elements.wrapper.empty();
-		$el.toggleClass(this.cssClasses.DISABLED, disabled);
 
 		if (this.elements.wrapper.is('div')) {
 			this.elements.wrapper.attr('class', $el.attr('class'));
@@ -207,7 +187,6 @@ export const SelectlistObject = {
 
 		if ( this._collection._data.length === 0 ) {
 			this.disable();
-			$el.toggleClass(this.cssClasses.DISABLED, disabled);
 			this.setProperties({ disabled: true });
 		}
 
@@ -216,7 +195,7 @@ export const SelectlistObject = {
 
 	// TO-DO: Maybe move this to the core?
 	destroy () {
-		if (!this.isBootstrap3) document.removeEventListener('click', this._closeOnClick, false);
+		document.removeEventListener('click', this._closeOnClick, false);
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
 	},
@@ -225,7 +204,15 @@ export const SelectlistObject = {
 		if (this.rendered) {
 			const isOpen = this.getState('isOpen');
 
-			this.elements.wrapper.toggleClass(this.cssClasses.OPEN, isOpen);
+			// The state is toggled in the openable trait before any ui code (like below this comment) is executed.
+			// The state is actually backwards to the current state of the ui.
+
+			if (!isOpen) {
+				this.elements.dropdown.addClass('slds-hide');
+			} else {
+				this.elements.dropdown.removeClass('slds-hide');
+			}
+
 			this.elements.button.attr('aria-expanded', isOpen);
 		}
 	},
@@ -243,9 +230,7 @@ export const SelectlistObject = {
 		if (this.rendered) {
 			const disabled = !!this.getProperty('disabled');
 			
-			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, disabled);
 			this.elements.button.prop('disabled', disabled);
-			this.elements.button.toggleClass(this.cssClasses.DISABLED, disabled);
 		}
 	},
 
@@ -266,7 +251,7 @@ export const SelectlistObject = {
 		const $a = $(e.currentTarget);
 		const $li = $a.parent('li');
 
-		if (!$li.hasClass(this.cssClasses.DISABLED)) {
+		if (!$li.is('.disabled, :disabled')) {
 			this.setSelection($li.data());
 		}
 	},
@@ -288,12 +273,6 @@ export const SelectlistObject = {
 
 	_handleKeyPressed (e) {
 		const key = String.fromCharCode(e.which);
-
-		if (this.isBootstrap3) {
-			this.setState({
-				isOpen: this.elements.wrapper.hasClass(this.cssClasses.OPEN)
-			});
-		}
 
 		if (key && key.length === 1) {
 			e.preventDefault();

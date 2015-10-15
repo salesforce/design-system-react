@@ -12,13 +12,13 @@ const ComboboxCore = Lib.merge({}, SelectlistCore, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
-		BUTTON: 'btn',
-		INPUT: 'form-control',
-		INPUT_APPEND: 'input-append',
-		INPUT_GROUP: 'input-group',
-		INPUT_GROUP_BUTTON: 'input-group-btn',
-		MENU: 'dropdown-menu',
-		TOGGLE: 'dropdown-toggle'
+		INPUT: 'slds-input',
+		DROPDOWN: 'slds-dropdown',
+		MENU: 'slds-dropdown__list',
+		TOGGLE: 'slds-button',
+		HEADER: 'slds-dropdown__header',
+		HEADERTEXT: 'slds-text-heading--label',
+		DIVIDER: 'slds-has-divider'
 	},
 
 	resize () {
