@@ -54,9 +54,9 @@ class Menu extends React.Component {
     let className = 'slds-button';
     if(this.props.focusIndex === 0) className += ' slds-theme--shade';
     return(
-      <button id="searchDetails" className={className}>
+      <button id="searchDetails" tabIndex="-1" className={className}>
       <Icon name="search" category="utility" size="x-small" className="slds-icon-text-default" />
-      {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type}
+      {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type + 's'}
       </button>
     );
   }
@@ -65,7 +65,7 @@ class Menu extends React.Component {
     let className = 'slds-button';
     if(this.props.focusIndex === this.props.listLength + 1) className += ' slds-theme--shade';
     return(
-      <button id="addItem" className={className} onClick={this.props.addItem} onMouseDown={this.props.addItem}>
+      <button id="addItem" tabIndex="-1" className={className} onClick={this.props.addItem} onMouseDown={this.props.addItem}>
       <Icon name="add" category="utility" size="x-small" className="slds-icon-text-default" />
       New {this.props.type}
       </button>
