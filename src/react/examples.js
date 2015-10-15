@@ -16,7 +16,6 @@ import radio from './radio/example';
 
 // base components
 // selectlist(document.getElementById('selectlist'));
-// 
 // tree(document.getElementById('tree'));
 // wizard(document.getElementById('wizard'));
 // spinner(document.getElementById('spinner'));
