@@ -10,6 +10,7 @@ import Openable from '../traits/openable';
 import Selectable from '../traits/selectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
+// Styles
 require('../../scss/components/button-groups/flavors/base/index.scss');
 require('../../scss/components/buttons/flavors/base/index.scss');
 require('../../scss/components/buttons/flavors/neutral/index.scss');

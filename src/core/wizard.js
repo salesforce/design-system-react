@@ -7,6 +7,7 @@ import Base from './base';
 import { customSelectable } from '../traits/selectable';
 const Selectable = customSelectable('step');
 
+// Styles
 // require('../../less/wizard.less');
 
 export const CONTROL = 'wizard';

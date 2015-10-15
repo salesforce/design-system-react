@@ -6,10 +6,10 @@ import Base from './base';
 // Third party
 import classNames from 'classnames';
 
-export const CONTROL = 'slds-badge';
-
+// Styles
 require('../../scss/components/badges/flavors/base/index.scss');
 
+export const CONTROL = 'slds-badge';
 
 const BadgeCore = Lib.merge({}, Base, {
 	cssClasses: {
