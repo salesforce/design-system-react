@@ -11,7 +11,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSButton from '../SLDSButton';
-import {Icon} from '../SLDSIcons';
 import {EventUtil} from '../utils';
 import SLDSSettings from '../SLDSSettings';
 import cx from 'classnames';
