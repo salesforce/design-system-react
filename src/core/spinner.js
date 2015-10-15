@@ -3,9 +3,10 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
-// require('../../less/spinner.less');
-
+// FIXME: This needs the namespace too, but that will mess up the filenames below
 export const CONTROL = 'spinner';
+
+// TODO: We need to come up with a way to manage assets across the whole project, this hard-coding solution can only be temporary
 const assetsDir = '/examples/assets/images/spinners/';
 
 const SpinnerCore = Lib.merge({}, Base, {
@@ -26,13 +27,6 @@ const SpinnerCore = Lib.merge({}, Base, {
 	_defaultProperties: {
 		size: 'medium',
 		theme: 'base'
-	},
-
-	_initializer () {
-		this.setState({
-			size: this.getProperty('size'),
-			theme: this.getProperty('theme')
-		});
 	}
 });
 
