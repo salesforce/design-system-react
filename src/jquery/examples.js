@@ -10,3 +10,4 @@ import './selectlist/example';
 import './tree/example';
 import './pillbox/example';
 import './search/example';
+import './popover/example';

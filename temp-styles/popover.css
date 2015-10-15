@@ -1,0 +1,11 @@
+.slds-popover {
+
+}
+
+.slds-popover.slds-popover-target {
+	position: absolute;
+}
+
+.slds-popover.slds-popover-absolute {
+	position: absolute;
+}

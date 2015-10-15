@@ -10,6 +10,7 @@ import checkbox from './checkbox/example';
 import radio from './radio/example';
 // import search from './search/example';
 import pillbox from './pillbox/example';
+import popover from './popover/example';
 
 // base components
 badge();
@@ -24,3 +25,5 @@ checkbox(document.getElementById('slds-checkbox'));
 radio(document.getElementById('slds-radio'));
 // search(document.getElementById('search'));
 pillbox(document.getElementById('pillbox'));
+popover(document.getElementById('popover'));
+
