@@ -19,7 +19,7 @@ export const RadioObject = Lib.merge(CheckboxObject, {
 						disabled={this.props.disabled}
 						checked={this.isChecked()}
 						value={this.props.value || ''}
-						onChange={this.toggle}/>);
+						onChange={this.check}/>);
 	}
 });
 

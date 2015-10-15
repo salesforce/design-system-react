@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Pillbox from './pillbox';
 
 export default function (element) {
@@ -28,5 +29,5 @@ export default function (element) {
 		}
 	});
 
-	React.render(<PillboxExample/>, element);
+	ReactDOM.render(<PillboxExample/>, element);
 }

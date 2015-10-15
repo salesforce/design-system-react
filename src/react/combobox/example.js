@@ -1,5 +1,6 @@
 import * as Lib from '../../lib/lib';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Combobox from './combobox';
 
 export default function (element) {
@@ -94,5 +95,5 @@ export default function (element) {
 		}
 	});
 
-	React.render(<ComboboxExample />, element);
+	ReactDOM.render(<ComboboxExample />, element);
 }

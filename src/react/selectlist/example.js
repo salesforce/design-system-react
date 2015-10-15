@@ -1,5 +1,6 @@
 import * as Lib from '../../lib/lib';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Selectlist from './selectlist';
 
 export default function (element) {
@@ -96,5 +97,5 @@ export default function (element) {
 		}
 	});
 
-	React.render(<SelectlistExample />, element);
+	ReactDOM.render(<SelectlistExample />, element);
 }

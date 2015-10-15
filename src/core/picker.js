@@ -38,7 +38,7 @@ const PickerCore = Lib.merge({}, Base, Openable, {
 	},
 	
 	_getCenteredPosition () {
-		// TO-DO: Implement this to support modals
+		// TODO: Implement this to support modals
 	},
 	
 	_setPosition (position, popupCss) {

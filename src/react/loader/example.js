@@ -1,6 +1,7 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Loader from './loader';
 
 export default function (element) {
-	React.render(<Loader />, element);
+	ReactDOM.render(<Loader />, element);
 }
