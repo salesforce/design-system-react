@@ -23,7 +23,7 @@ const NotificationCore = Lib.merge({}, Base, Hideable, {
 	},
 	
 	themes: {
-		sucess: 'slds-theme--success',
+		success: 'slds-theme--success',
 		error: 'slds-theme--error',
 		offline: 'slds-theme--offline'
 	},
