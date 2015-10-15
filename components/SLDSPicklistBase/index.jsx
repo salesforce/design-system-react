@@ -12,6 +12,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, {PropTypes} from 'react';
 import SLDSPopover from '../SLDSPopover';
 import List from './list';
+import ListItem from './list-item';
+import ListItemLabel from './list-item-label';
 
 import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
@@ -38,7 +40,8 @@ module.exports = React.createClass( {
       initialFocus: false,
       modal: false,
       className:'',
-      listClassName:''
+      listClassName:'',
+      listItemRenderer:ListItemLabel
     }
   },
 
@@ -55,11 +58,10 @@ module.exports = React.createClass( {
 
   componentDidMount () {
     if(this.props.initialFocus){
- //     setTimeout(()=>{
-        this.setFocus();
-//        this.setState({isFocused:true});
- //     }.bind(this),100);
+      this.setFocus();
     }
+    console.log('this.props.listItemRenderer: ',this.props.listItemRenderer);
+
   },
 
   getIndexByValue(value){
@@ -168,6 +170,7 @@ module.exports = React.createClass( {
             onListBlur={this.handleListBlur}
             onListItemBlur={this.handleListItemBlur}
             onCancel={this.handleCancel}
+            itemRenderer={this.props.listItemRenderer}
             theme={this.props.theme} />;
   },
 
@@ -269,3 +272,6 @@ module.exports = React.createClass( {
   },
 
 });
+
+module.exports.ListItem = ListItem;
+module.exports.ListItemLabel = ListItemLabel;
