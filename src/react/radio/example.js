@@ -4,7 +4,7 @@ import Radio from './radio';
 
 // https://www.lightningdesignsystem.com/components/forms#radio
 
-export default function (element) {
+export default function () {
 	const RadioExample = React.createClass({
 		getInitialState () {
 			const radioboxen = new Map();
@@ -46,7 +46,6 @@ export default function (element) {
 						onCheckedValueChanged={this._handleChange.bind(this, 'radio2')}
 						onDisabledValueChanged={this._handleDisable.bind(this, 'radio2')}
 						value="value4" />
-
 			];
 			return (<fieldset className="slds-form-element">
 						<div className="slds-form-element__control">
@@ -114,5 +113,5 @@ export default function (element) {
 		}
 	});
 
-	ReactDOM.render(<RadioExample />, element);
+	ReactDOM.render(<RadioExample />, document.getElementById('slds-radio'));
 }

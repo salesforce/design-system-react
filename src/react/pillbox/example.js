@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Pillbox from './pillbox';
 
-export default function (element) {
+export default function () {
 	const PillboxExample = React.createClass({
 		getInitialState () {
 			return {
@@ -29,5 +29,5 @@ export default function (element) {
 		}
 	});
 
-	ReactDOM.render(<PillboxExample/>, element);
+	ReactDOM.render(<PillboxExample/>, document.getElementById('pillbox'));
 }

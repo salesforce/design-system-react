@@ -1,66 +1,67 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Button from './button';
 
 // FIXME: We don't want to ask people to include SVGs or specially classed / formatted elements in order to make the buttons work
 // TODO: There should be a sample React "app" here (it can be really small) that makes these controls work for the examples
 export default function () {
-	React.render(<Button >Button</Button>, document.getElementById('slds-button'));
-	React.render(<Button theme="neutral">Neutral</Button>, document.getElementById('slds-button--neutral'));
-	React.render(<Button theme="neutral" size="small">Small</Button>, document.getElementById('slds-button--small'));
-	React.render(<Button theme="brand">Brand</Button>, document.getElementById('slds-button--brand'));
-	React.render(<Button theme="inverse">Inverse</Button>, document.getElementById('slds-button--inverse'));
+	ReactDOM.render(<Button >Button</Button>, document.getElementById('slds-button'));
+	ReactDOM.render(<Button theme="neutral">Neutral</Button>, document.getElementById('slds-button--neutral'));
+	ReactDOM.render(<Button theme="neutral" size="small">Small</Button>, document.getElementById('slds-button--small'));
+	ReactDOM.render(<Button theme="brand">Brand</Button>, document.getElementById('slds-button--brand'));
+	ReactDOM.render(<Button theme="inverse">Inverse</Button>, document.getElementById('slds-button--inverse'));
 
-	React.render(<Button iconStyle="icon-bare"><svg aria-hidden="true" className="slds-button__icon">
+	ReactDOM.render(<Button iconStyle="icon-bare"><svg aria-hidden="true" className="slds-button__icon">
 						<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 					</svg>
 		</Button>, document.getElementById('slds-button--icon-bare'));
-	React.render(<Button iconStyle="icon-bare" disabled><svg aria-hidden="true" className="slds-button__icon">
+	ReactDOM.render(<Button iconStyle="icon-bare" disabled><svg aria-hidden="true" className="slds-button__icon">
 						<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 					</svg>
 		</Button>, document.getElementById('slds-button--icon-bare' + '-disabled'));
 
 
-	React.render(<Button assistiveText="Icon-container" iconStyle="icon-container"><svg aria-hidden="true" className="slds-button__icon">
+	ReactDOM.render(<Button assistiveText="Icon-container" iconStyle="icon-container"><svg aria-hidden="true" className="slds-button__icon">
 						<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 					</svg>
 		</Button>, document.getElementById('slds-button--icon-container'));
-	React.render(<Button assistiveText="Icon-container" iconStyle="icon-container" disabled><svg aria-hidden="true" className="slds-button__icon">
+	ReactDOM.render(<Button assistiveText="Icon-container" iconStyle="icon-container" disabled><svg aria-hidden="true" className="slds-button__icon">
 						<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 					</svg>
 		</Button>, document.getElementById('slds-button--icon-container' + '-disabled'));
 
 
-	React.render(<Button assistiveText="Icon-border" iconStyle="icon-border"><svg aria-hidden="true" className="slds-button__icon">
+	ReactDOM.render(<Button assistiveText="Icon-border" iconStyle="icon-border"><svg aria-hidden="true" className="slds-button__icon">
 						<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 					</svg>
 		</Button>, document.getElementById('slds-button--icon-border'));
-	React.render(<Button assistiveText="Icon-border" iconStyle="icon-border" disabled><svg aria-hidden="true" className="slds-button__icon">
+	ReactDOM.render(<Button assistiveText="Icon-border" iconStyle="icon-border" disabled><svg aria-hidden="true" className="slds-button__icon">
 						<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 					</svg>
 		</Button>, document.getElementById('slds-button--icon-border' + '-disabled'));
 
 
-	React.render(<Button assistiveText="Border-filled" iconStyle="icon-border-filled"><svg aria-hidden="true" className="slds-button__icon">
+	ReactDOM.render(<Button assistiveText="Border-filled" iconStyle="icon-border-filled"><svg aria-hidden="true" className="slds-button__icon">
 						<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 					</svg>
 		</Button>, document.getElementById('slds-button--icon-border-filled'));
-	React.render(<Button assistiveText="Border-filled" iconStyle="icon-border-filled" disabled><svg aria-hidden="true" className="slds-button__icon">
+	ReactDOM.render(<Button assistiveText="Border-filled" iconStyle="icon-border-filled" disabled><svg aria-hidden="true" className="slds-button__icon">
 						<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 					</svg>
 		</Button>, document.getElementById('slds-button--icon-border-filled' + '-disabled'));
 
 
-	React.render(<Button assistiveText="Icon-small" iconStyle="icon-small"><svg aria-hidden="true" className="slds-button__icon">
+	ReactDOM.render(<Button assistiveText="Icon-small" iconStyle="icon-small"><svg aria-hidden="true" className="slds-button__icon">
 						<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 					</svg>
 		</Button>, document.getElementById('slds-button--icon-small'));
-	React.render(<Button assistiveText="Icon-small" iconStyle="icon-small" disabled><svg aria-hidden="true" className="slds-button__icon">
+	ReactDOM.render(<Button assistiveText="Icon-small" iconStyle="icon-small" disabled><svg aria-hidden="true" className="slds-button__icon">
 						<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#table"></use>
 					</svg>
 		</Button>, document.getElementById('slds-button--icon-small' + '-disabled'));
 
 	// TODO: icon component with props
-	React.render(<Button theme="neutral" stateful>
+	ReactDOM.render(<Button theme="neutral" stateful>
 		<span className="slds-text-not-selected">
 			<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
 				<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
@@ -74,7 +75,7 @@ export default function () {
 				<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
 			</svg>Unfollow</span>
 		</Button>, document.getElementById('slds-button' + '-stateful'));
-	React.render(<Button theme="neutral" stateful selected>
+	ReactDOM.render(<Button theme="neutral" stateful selected>
 		<span className="slds-text-not-selected">
 			<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
 				<use xlinkHref="/examples/assets/icons/utility-sprite/svg/symbols.svg#add"></use>
