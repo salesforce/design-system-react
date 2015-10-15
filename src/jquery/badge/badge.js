@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import BadgeCore, {CONTROL} from '../../core/badge';
 
 // Framework specific
+import Events from '../events';
 import State from '../state';
 
 const $ = Lib.global.jQuery || Lib.global.$;
@@ -37,7 +38,7 @@ export const BadgeObject = {
 	}
 };
 
-Lib.merge(Badge.prototype, BadgeCore, State, BadgeObject);
+Lib.merge(Badge.prototype, BadgeCore, Events, State, BadgeObject);
 Badge = Lib.runHelpers('jquery', CONTROL, Badge);
 
 export default Badge;

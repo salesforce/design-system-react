@@ -7,10 +7,11 @@ import BadgeCore, {CONTROL} from '../../core/badge';
 // Framework specific
 import React from 'react';
 import State from '../mixins/state';
+import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
 export const BadgeObject = {
-	mixins: [State, genericWillMount],
+	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
 		children: React.PropTypes.string.isRequired,
