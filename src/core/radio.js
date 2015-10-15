@@ -13,7 +13,7 @@ export const CONTROL = 'radio';
 const RadioCore = Lib.merge({}, CheckboxCore, {
 	cssClasses: {
 		CONTROL: CheckboxCore.cssClasses.NAMESPACE + CONTROL,
-		CONTROL_FAUX: CheckboxCore.cssClasses.NAMESPACE + CONTROL + '--faux'
+		FAUX: CheckboxCore.cssClasses.NAMESPACE + CONTROL + '--faux'
 	}
 });
 
