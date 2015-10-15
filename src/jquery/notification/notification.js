@@ -31,8 +31,9 @@ export const NotificationObject = {
 		this.trigger('initialized');
 	},
 
+	// TODO: Internationalize
 	_render () {
-		const classNames = NotificationCore._getClassNameByTheme(this.getProperty('theme'));
+		const classNames = this._getClassNames();
 
 		// load template
 		const $component = $(template);
@@ -41,6 +42,7 @@ export const NotificationObject = {
 		$component.addClass(classNames);
 
 		// replace notification text
+		// TODO: Should this also use the contents of the original? It's different in jQuery becasue in React 'Children' is actually just another prop
 		$component.find('.notify-text').text(this.getProperty('text'));
 
 		// render
@@ -49,15 +51,14 @@ export const NotificationObject = {
 		// hookup events
 		this.elements.wrapper.find('.slds-notify__close').on('click', $.proxy(this.hide, this));
 	},
-
-	show: function () {
-		this.elements.wrapper.find('.slds-notify').removeClass('slds-hide');
+	
+	_onShow: function () {
+		this.elements.wrapper.find('.slds-notify').removeClass(this.cssClasses.HIDDEN);
 	},
 
-	hide: function () {
-		this.elements.wrapper.find('.slds-notify').addClass('slds-hide');
+	_onHide: function () {
+		this.elements.wrapper.find('.slds-notify').addClass(this.cssClasses.HIDDEN);
 	}
-
 };
 
 Lib.merge(Notification.prototype, NotificationCore, Events, State, NotificationObject);
