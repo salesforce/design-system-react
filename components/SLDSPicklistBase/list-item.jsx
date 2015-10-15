@@ -29,6 +29,7 @@ module.exports = React.createClass({
       isSelected: false,
       isHighlighted: false,
       labelRenderer: ListItemLabelRenderer, 
+      data: {},
 
       onSelect (index) {
         console.log('onSelect should be defined ',index);
@@ -47,10 +48,6 @@ module.exports = React.createClass({
         console.log('onFocus should be defined ',index,height);
       }
     };
-  },
-
-  componentDidMount () {
-    console.log('!!! this.props.labelRenderer: ',this.props.labelRenderer);
   },
 
   handleClick (e) {
@@ -143,6 +140,7 @@ module.exports = React.createClass({
       inverted={this.props.inverted}
       isSelected={this.props.isSelected}
       isHighlighted={this.props.isHighlighted}
+      data={this.props.data}
     />;
   },
 

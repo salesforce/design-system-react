@@ -194,7 +194,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.initialFocus) {
 	      this.setFocus();
 	    }
-	    console.log('this.props.listItemRenderer: ', this.props.listItemRenderer);
 	  },
 	
 	  getIndexByValue: function getIndexByValue(value) {
@@ -3360,6 +3359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        index: index,
 	        label: option.label,
 	        value: option.value,
+	        data: option,
 	        isHighlighted: index === _this.props.highlightedIndex,
 	        isSelected: index === _this.props.selectedIndex,
 	        onUpdateHighlighted: _this.handleUpdateHighlighted,
@@ -5788,6 +5788,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      isSelected: false,
 	      isHighlighted: false,
 	      labelRenderer: _listItemLabel2['default'],
+	      data: {},
 	
 	      onSelect: function onSelect(index) {
 	        console.log('onSelect should be defined ', index);
@@ -5806,10 +5807,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        console.log('onFocus should be defined ', index, height);
 	      }
 	    };
-	  },
-	
-	  componentDidMount: function componentDidMount() {
-	    console.log('!!! this.props.labelRenderer: ', this.props.labelRenderer);
 	  },
 	
 	  handleClick: function handleClick(e) {
@@ -5894,7 +5891,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      value: this.props.value,
 	      inverted: this.props.inverted,
 	      isSelected: this.props.isSelected,
-	      isHighlighted: this.props.isHighlighted
+	      isHighlighted: this.props.isHighlighted,
+	      data: this.props.data
 	    });
 	  },
 	
@@ -5955,7 +5953,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      value: null,
 	      inverted: false,
 	      isSelected: false,
-	      isHighlighted: false
+	      isHighlighted: false,
+	      data: {}
 	    };
 	  },
 	
@@ -8047,8 +8046,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _SLDSButton = __webpack_require__(41);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
-	
-	var _SLDSIcons = __webpack_require__(13);
 	
 	var _utils = __webpack_require__(6);
 	
