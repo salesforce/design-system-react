@@ -16,29 +16,27 @@ let Popover = Lib.merge({}, PopoverCore, {
 	mixins: [State, Events],
 
 	render () {
-		const elementClass = classNames('slds-popover slds-popover-target ' + this._getNubbinClass(), {
-			'slds-hide': !this.props.isOpen
-		});
-		let header;
-
-		if (this.props.header) {
-			header = (
-				<div className="slds-popover__header">
-					<p className="slds-text-heading--small">{this.props.header}</p>
-				</div>
-			);
-		}
-
 		return (
-			<div className={elementClass} role="dialog" ref="popover">
+			<div className={this._getClassNames()} role="dialog" ref="popover">
 				<div className="slds-popover__content">
-					{header}
+					{this._renderHeader()}
 					<div className="slds-popover__body">{this.props.content}</div>
 				</div>
 			</div>
 		);
 	},
+	
+	_renderHeader () {
+		if (this.props.header) {
+			return (
+				<div className="slds-popover__header">
+					<p className="slds-text-heading--small">{this.props.header}</p>
+				</div>
+			);
+		}
+	},
 
+	// TODO: If you have this logic set a state with the position and use that in the render function to set the style you won't have to run this on every componentDidUpdate
 	componentDidUpdate () {
 		const popoverEl = this.refs.popover;
 		const position = this._getElementRelativePosition(popoverEl, this.props.target);

@@ -4,21 +4,30 @@ import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
+import Hideable from '../traits/hideable';
 
-export const CONTROL = 'popover';
+export const CONTROL = 'slds-popover';
 
-const PopoverCore = Lib.merge({}, Base, Disableable, {
-
+const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 	cssClasses: {
-		CONTROL: CONTROL
+		CONTROL: CONTROL,
+		TARGET: 'slds-popover-target'
 	},
 
 	_defaultProperties: {
 		isOpen: false,
-		placement: 'auto'// 'auto','top','right','left','bottom'
+		position: 'auto' // 'auto','top','right','left','bottom'
+	},
+	
+	positions: {
+		left: 'slds-nubbin--right',
+		top: 'slds-nubbin--bottom',
+		bottom: 'slds-nubbin--top',
+		right: 'slds-nubbin--left'
 	},
 
 	// Used for positioning of popovers placed within the body absolutely positioned
+	// TODO: There's some stuff for this in Lib you can use, and also take a look at the Picker code
 	_getElementPagePosition (el) {
 		const rect = el.getBoundingClientRect();
 		const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
@@ -38,7 +47,7 @@ const PopoverCore = Lib.merge({}, Base, Disableable, {
 		targetSize.width = target.offsetWidth;
 		targetSize.height = target.offsetHeight;
 
-		switch ( this.getProperty('placement') ) {
+		switch ( this.getProperty('position') ) {
 			case 'left':
 				position.left = -(popSize.width + 15);
 				position.top = -((popSize.height / 2) - (targetSize.height / 2));
@@ -60,30 +69,13 @@ const PopoverCore = Lib.merge({}, Base, Disableable, {
 
 		return position;
 	},
-
-	_getNubbinClass () {
-		const popPos = this.getProperty('position');
-		let nubSuffix;
-
-		switch (popPos) {
-			case 'left':
-				nubSuffix = 'right';
-				break;
-			case 'top':
-				nubSuffix = 'bottom';
-				break;
-			case 'bottom':
-				nubSuffix = 'top';
-				break;
-			case 'right':
-			default:
-				nubSuffix = 'left';
-				break;
-		}
-
-		return 'slds-nubbin--' + nubSuffix;
+	
+	_getClassNames: function () {
+		const hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
+		const positionClass = this.position[this.getProperty('position')] || this.positions.right;
+		
+		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass);
 	}
-
 });
 
 export default PopoverCore;
