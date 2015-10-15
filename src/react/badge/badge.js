@@ -14,15 +14,13 @@ export const BadgeObject = {
 	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
-		text: React.PropTypes.string,
+		children: React.PropTypes.string.isRequired,
 		theme: React.PropTypes.string
 	},
 
 	render () {
-		const classNames = BadgeCore._getClassNameByTheme(this.getProperty('theme'));
-
 		return (
-			<span className={classNames}>{this.props.text}</span>
+			<span className={this._getClassNames()}>{this.props.children}</span>
 		);
 	}
 };

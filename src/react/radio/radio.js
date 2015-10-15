@@ -9,10 +9,6 @@ import React from 'react';
 import { CheckboxObject } from '../checkbox/checkbox';
 
 export const RadioObject = Lib.merge(CheckboxObject, {
-	_onClick () {
-		this.check();
-	},
-
 	_renderInput () {
 		return (<input name={this.props.name}
 						type="radio"

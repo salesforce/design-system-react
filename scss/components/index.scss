@@ -1,0 +1,152 @@
+@import "~index";
+@import "~@salesforce-ux/design-system/scss/design-tokens.scss";
+
+@import
+
+  // Activity Timeline
+  "~@salesforce-ux/design-system/scss/components/activity-timeline/flavors/base/index",
+
+  // Anchor
+  "~@salesforce-ux/design-system/scss/components/page-headers/flavors/record-home/index",
+
+  // Breadcrumbs
+  "~@salesforce-ux/design-system/scss/components/breadcrumbs/flavors/base/index",
+
+  // Button Groups
+  "~@salesforce-ux/design-system/scss/components/button-groups/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/button-groups/flavors/inverse/index",
+  "~@salesforce-ux/design-system/scss/components/button-groups/flavors/icon-group/index",
+
+  // Button
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/neutral/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/neutral-icon/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/brand/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/inverse/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/stateful/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/stateful-inverse/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/icon/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/hint/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/icon-more/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/icon-stateful/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/icon-inverse/index",
+
+  // Card
+  "~@salesforce-ux/design-system/scss/components/cards/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/cards/flavors/empty/index",
+
+  // Forms
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/form-element/index",
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/input/index",
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/textarea/index",
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/radio/index",
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/checkbox/index",
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/select/index",
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/horizontal-form/index",
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/stacked-form/index",
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/inline-form/index",
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/compound-form/index",
+  "~@salesforce-ux/design-system/scss/components/forms/flavors/read-only-state/index",
+
+  // Grid
+  "~@salesforce-ux/design-system/scss/components/grid-system/flavors/automatic-sizing/index",
+  "~@salesforce-ux/design-system/scss/components/grid-system/flavors/containers/index",
+  "~@salesforce-ux/design-system/scss/components/grid-system/flavors/manual-sizing/index",
+  "~@salesforce-ux/design-system/scss/components/grid-system/flavors/horizontal-alignment-center/index",
+  "~@salesforce-ux/design-system/scss/components/grid-system/flavors/horizontal-alignment-space/index",
+  "~@salesforce-ux/design-system/scss/components/grid-system/flavors/horizontal-alignment-spread/index",
+  "~@salesforce-ux/design-system/scss/components/grid-system/flavors/vertical-alignment/index",
+  "~@salesforce-ux/design-system/scss/components/grid-system/flavors/order/index",
+  "~@salesforce-ux/design-system/scss/components/grid-system/flavors/overflow/index",
+
+  // Tooltip
+  "~@salesforce-ux/design-system/scss/components/tooltips/flavors/base/index",
+
+  // Popovers
+  "~@salesforce-ux/design-system/scss/components/popovers/flavors/base/index",
+
+   // Picklists
+  "~@salesforce-ux/design-system/scss/components/picklists/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/picklists/flavors/multi-select/index",
+
+  // Menus
+  "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/menu/index",
+  //"dropdowns/flavors/menu-with-search/index",
+  "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/menu-with-icons/index",
+  "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/action-overflow/index",
+  "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/search-overflow/index",
+  "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/positioning/index",
+
+  // Datepicker
+  "~@salesforce-ux/design-system/scss/components/datepickers/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/datepickers/flavors/single-select/index",
+  "~@salesforce-ux/design-system/scss/components/datepickers/flavors/multi-select/index",
+  "~@salesforce-ux/design-system/scss/components/datepickers/flavors/time/index",
+
+ // Modal
+  "~@salesforce-ux/design-system/scss/components/modals/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/modals/flavors/large/index",
+  "~@salesforce-ux/design-system/scss/components/modals/flavors/directional/index",
+  "~@salesforce-ux/design-system/scss/components/modals/flavors/taglines/index",
+
+  // Pills
+  "~@salesforce-ux/design-system/scss/components/pills/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/pills/flavors/portrait/index",
+
+  // Spinners
+  "~@salesforce-ux/design-system/scss/components/spinners/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/spinners/flavors/medium/index",
+  "~@salesforce-ux/design-system/scss/components/spinners/flavors/large/index",
+
+  // Title
+  "~@salesforce-ux/design-system/scss/components/tiles/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/tiles/flavors/with-icon/index",
+  "~@salesforce-ux/design-system/scss/components/tiles/flavors/with-actions/index",
+  "~@salesforce-ux/design-system/scss/components/tiles/flavors/with-badge/index",
+  "~@salesforce-ux/design-system/scss/components/tiles/flavors/board/index",
+  "~@salesforce-ux/design-system/scss/components/tiles/flavors/generic/index",
+  "~@salesforce-ux/design-system/scss/components/tiles/flavors/author/index",
+
+  // Tree
+  "~@salesforce-ux/design-system/scss/components/trees/flavors/base/index",
+
+  // Tabs
+  "~@salesforce-ux/design-system/scss/components/tabs/flavors/default/index",
+  "~@salesforce-ux/design-system/scss/components/tabs/flavors/scoped/index",
+
+  // Notifications -- Toasts & Alerts
+  "~@salesforce-ux/design-system/scss/components/notifications/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/notifications/flavors/alert/index",
+  "~@salesforce-ux/design-system/scss/components/notifications/flavors/toast/index",
+
+  // Lookup
+  "~@salesforce-ux/design-system/scss/components/lookups/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/lookups/flavors/single-select/index",
+  "~@salesforce-ux/design-system/scss/components/lookups/flavors/multi-select/index",
+  "~@salesforce-ux/design-system/scss/components/lookups/flavors/single-scope/index",
+  "~@salesforce-ux/design-system/scss/components/lookups/flavors/multi-scope/index",
+  "~@salesforce-ux/design-system/scss/components/lookups/flavors/advanced-modal/index",
+
+  // Objects
+  "~@salesforce-ux/design-system/scss/components/media-objects/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/media-objects/flavors/center/index",
+  "~@salesforce-ux/design-system/scss/components/media-objects/flavors/reverse/index",
+  "~@salesforce-ux/design-system/scss/components/media-objects/flavors/double/index",
+  "~@salesforce-ux/design-system/scss/components/media-objects/flavors/responsive/index",
+
+  // Images
+  "~@salesforce-ux/design-system/scss/components/images/flavors/avatars/index",
+
+  // Badges
+  "~@salesforce-ux/design-system/scss/components/badges/flavors/base/index",
+
+  // Icons
+  "~@salesforce-ux/design-system/scss/components/icons/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/icons/flavors/colors/index",
+  "~@salesforce-ux/design-system/scss/components/icons/flavors/sizes/index",
+
+  // Tables
+  "~@salesforce-ux/design-system/scss/components/data-tables/flavors/base/index",
+  "~@salesforce-ux/design-system/scss/components/data-tables/flavors/responsive-stacked/index",
+  "~@salesforce-ux/design-system/scss/components/data-tables/flavors/responsive-stacked-horizontal/index";

@@ -6,6 +6,11 @@ import Base from './base';
 // Traits
 import Disableable from '../traits/disableable';
 
+// Styles
+require('../../scss/components/grid-system/flavors/containers/index.scss');
+require('../../scss/components/forms/flavors/form-element/index.scss');
+require('../../scss/components/forms/flavors/checkbox/index.scss');
+
 export const CONTROL = 'checkbox';
 
 const CheckboxCore = Lib.merge({}, Base, Disableable, {

@@ -131,6 +131,7 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	_handleChanged () {
 		const value = {};
 
+		// TODO: Not SLDS related, I've realized this model won't work perfectly with all data accessor types - might want to consider this
 		value[this.accessors.textProp()] = this.elements.input.val();
 
 		this.setSelection(value);

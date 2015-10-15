@@ -27,6 +27,7 @@ export const ButtonObject = {
 		onClick: React.PropTypes.func
 	},
 
+	// TODO: We've been moving this into the core in other controls
 	_getClassNames () {
 		const selectedClasses = {};
 		
@@ -43,7 +44,7 @@ export const ButtonObject = {
 			selectedClasses);
 	},
 
-	_getAssistiveText () {
+	_renderAssistiveText () {
 		if (this.props.assistiveText) {
 			return <span className={this.cssClasses.ASSISTIVE_TEXT}>{this.props.assistiveText}</span>;
 		}
@@ -57,7 +58,7 @@ export const ButtonObject = {
 				onClick={this.props.onClick}
 				className={this._getClassNames()}
 				disabled={this.props.disabled}
-				aria-live={this.props.stateful ? 'assertive' : null}>{this.props.children}{this._getAssistiveText()}</button>
+				aria-live={this.props.stateful ? 'assertive' : null}>{this.props.children}{this._renderAssistiveText()}</button>
 		);
 	}
 };
