@@ -5809,10 +5809,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	  },
 	
-	  componentDidMount: function componentDidMount() {
-	    console.log('!!! this.props.labelRenderer: ', this.props.labelRenderer);
-	  },
-	
 	  handleClick: function handleClick(e) {
 	    e.preventDefault();
 	    e.stopPropagation();

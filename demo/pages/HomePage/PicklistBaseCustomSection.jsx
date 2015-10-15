@@ -41,7 +41,7 @@ const CustomListItemLabel = React.createClass( {
         this.props.isSelected?<Icon name='like'  position='left' category='utility' />:null
       }
       {
-        this.props.data.title
+        this.props.data.strongLabel
       }
     </section>;
   }
@@ -87,16 +87,16 @@ module.exports = React.createClass( {
               <div className="slds-p-vertical--large">
                 <SLDSPicklistBase
                     options={[
-                      {label:'A Option Option Super Super Long',value:'A0',title:'SUPER TITLE B0'},
-                      {label:'B Option',value:'B0',title:'SUPER TITLE B0'},
-                      {label:'C Option',value:'C0',title:'SUPER TITLE C0'},
-                      {label:'D Option',value:'D0',title:'SUPER TITLE D0'},
-                      {label:'E Option',value:'E0',title:'SUPER TITLE E0'},
-                      {label:'A1 Option',value:'A1',title:'SUPER TITLE A1'},
-                      {label:'B2 Option',value:'B1',title:'SUPER TITLE B1'},
-                      {label:'C2 Option',value:'C1',title:'SUPER TITLE C1'},
-                      {label:'D2 Option',value:'D1',title:'SUPER TITLE D1'},
-                      {label:'E2 Option Super Super Long',value:'E1',title:'SUPER TITLE E1'},
+                      {label:'A Option Option Super Super Long',value:'A0',strongLabel:'SUPER TITLE B0'},
+                      {label:'B Option',value:'B0',strongLabel:'SUPER TITLE B0'},
+                      {label:'C Option',value:'C0',strongLabel:'SUPER TITLE C0'},
+                      {label:'D Option',value:'D0',strongLabel:'SUPER TITLE D0'},
+                      {label:'E Option',value:'E0',strongLabel:'SUPER TITLE E0'},
+                      {label:'A1 Option',value:'A1',strongLabel:'SUPER TITLE A1'},
+                      {label:'B2 Option',value:'B1',strongLabel:'SUPER TITLE B1'},
+                      {label:'C2 Option',value:'C1',strongLabel:'SUPER TITLE C1'},
+                      {label:'D2 Option',value:'D1',strongLabel:'SUPER TITLE D1'},
+                      {label:'E2 Option Super Super Long',value:'E1',strongLabel:'SUPER TITLE E1'},
 
                     ]}
                     value='C0'
