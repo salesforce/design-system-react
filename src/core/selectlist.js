@@ -108,7 +108,7 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Ke
 	},
 
 	// Vanilla js implementation of this to be shared by the libraries
-	// TO-DO: Look into creating a generic implementation as a trait
+	// TODO: Look into creating a generic implementation as a trait
 	resize () {
 		const sizer = document.createElement('div');
 

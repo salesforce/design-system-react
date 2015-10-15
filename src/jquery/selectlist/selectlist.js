@@ -193,7 +193,7 @@ export const SelectlistObject = {
 		this.rendered = true;
 	},
 
-	// TO-DO: Maybe move this to the core?
+	// TODO: Maybe move this to the core?
 	destroy () {
 		document.removeEventListener('click', this._closeOnClick, false);
 		this.elements.wrapper.remove();
