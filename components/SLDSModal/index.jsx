@@ -11,9 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSButton from '../SLDSButton';
-import {Icon} from '../SLDSIcons';
 import {EventUtil} from '../utils';
 import SLDSSettings from '../SLDSSettings';
+import cx from 'classnames';
 
 
 import Modal from 'react-modal';
@@ -40,13 +40,21 @@ const customStyles = {
 
 module.exports = React.createClass( {
 
+  propTypes: {
+    size: React.PropTypes.oneOf(['medium', 'large']),
+    prompt: React.PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info'])
+  },
+
   getDefaultProps () {
     return {
       title:'',
       isOpen:false,
       content:[],
       footer:[],
-      returnFocusTo:null
+      returnFocusTo:null,
+      size:'medium',
+      prompt:'', //if prompt !== '', it renders modal as prompt
+      directional: false
     };
   },
 
@@ -99,36 +107,38 @@ module.exports = React.createClass( {
     }
   },
 
+  isPrompt(){
+    return this.props.prompt !== '';
+  },
+
   getModal() {
+    const modalClass = {
+      'slds-modal': true,
+      'slds-fade-in-open':this.state.revealed,
+      'slds-modal--large':this.props.size === 'large'
+    };
+
     return <div
-            className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')}
+            className={cx(modalClass)}
             style={{pointerEvents:'inherit'}}
-            onClick={this.closeModal}
+            onClick={this.isPrompt() ? undefined : this.closeModal}
           >
           <div
             role='dialog'
             className='slds-modal__container'
             onClick={this.handleModalClick}
             >
-            <div className='slds-modal__header'>
-              <h2 className='slds-text-heading--medium'>{this.props.title}</h2>
-              <SLDSButton
-                label='Close'
-                variant='icon'
-                iconName='close'
-                iconSize='small'
-                className='slds-modal__close'
-                onClick={this.closeModal} />
-            </div>
+
+            {this.headerComponent()}
 
             <div className='slds-modal__content'>
 
               {this.props.children}
 
+              {this.isPrompt() ? this.props.footer : null}
             </div>
-            <div className='slds-modal__footer'>
-              {this.props.footer}
-            </div>
+
+            {this.footerComponent()}
 
           </div>
 
@@ -136,15 +146,63 @@ module.exports = React.createClass( {
   },
 
   render() {
+    const overlayClasses = {
+      'slds-modal-backdrop': true,
+      'slds-modal-backdrop--open':this.state.revealed
+    };
+
     return (
       <Modal
         isOpen={this.props.isOpen}
         onRequestClose={this.closeModal}
         style={customStyles}
-        overlayClassName={'slds-modal-backdrop'+ (this.state.revealed?' slds-modal-backdrop--open':'')} >
+        overlayClassName={cx(overlayClasses)} >
         {this.getModal()}
       </Modal>
     );
+  },
+
+  footerComponent() {
+    let footer;
+
+    const footerClass = {
+      'slds-modal__footer': true,
+      'slds-modal__footer--directional': this.props.directional
+    };
+
+    const hasFooter = this.props.footer && this.props.footer.length > 0;
+
+    if (!this.isPrompt() && hasFooter ) {
+      footer = (<div className={cx(footerClass)}>{this.props.footer}</div>);
+    }
+
+    return footer;
+  },
+
+  headerComponent() {
+    let headingClasses = [], headerClasses = ['slds-modal__header'];
+    let closeButton;
+
+    if (this.isPrompt()) {
+      headerClasses.push(`slds-theme--${this.props.prompt}`);
+      headingClasses.push('slds-text-heading--small');
+    } else {
+      headingClasses.push('slds-text-heading--medium')
+      closeButton =(<SLDSButton
+          label='Close'
+          variant='icon'
+          iconName='close'
+          iconSize='large'
+          inverse={true}
+          className='slds-modal__close'
+          onClick={this.closeModal} />);
+    }
+
+    return (
+      <div className={cx(headerClasses)}>
+        <h2 className={cx(headingClasses)}>{this.props.title}</h2>
+        {closeButton}
+     </div>);
   },
 
   componentDidUpdate (prevProps, prevState) {

@@ -14,6 +14,7 @@ import {Icon} from '../SLDSIcons';
 
 import {KEYS,EventUtil} from '../utils';
 
+import ListItemLabelRenderer from './list-item-label';
 
 module.exports = React.createClass({
 
@@ -27,6 +28,7 @@ module.exports = React.createClass({
       inverted: false,
       isSelected: false,
       isHighlighted: false,
+      labelRenderer: ListItemLabelRenderer, 
 
       onSelect (index) {
         console.log('onSelect should be defined ',index);
@@ -45,6 +47,10 @@ module.exports = React.createClass({
         console.log('onFocus should be defined ',index,height);
       }
     };
+  },
+
+  componentDidMount () {
+    console.log('!!! this.props.labelRenderer: ',this.props.labelRenderer);
   },
 
   handleClick (e) {
@@ -128,10 +134,21 @@ module.exports = React.createClass({
     }
   },
 
+  getLabel () {
+    const LabelComp = this.props.labelRenderer;
+    return <LabelComp 
+      index={this.props.index}
+      label={this.props.label}
+      value={this.props.value}
+      inverted={this.props.inverted}
+      isSelected={this.props.isSelected}
+      isHighlighted={this.props.isHighlighted}
+    />;
+  },
+
   render () {
     return (
       <li 
-
         className={"slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--"+this.props.theme}
         onMouseDown={this.handleMouseDown}
         tabIndex={-1}>
@@ -147,8 +164,7 @@ module.exports = React.createClass({
             aria-checked={this.props.isSelected}
             role='menuitemradio'
             tabIndex={-1}>
-              {this.props.isSelected?<Icon name='task2' size='small' position='left' category='standard' />:null}
-              {this.props.label}
+              {this.getLabel()}
           </a>
       </li>
     );

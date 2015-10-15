@@ -1,4 +1,12 @@
 
-const items = ["Paddy's Pub", "Tyrell Corp", "Paper St. Soap Company"];
+const items = [
+  {label:'Paddy\'s Pub'},
+  {label:'Tyrell Corp'},
+  {label:'Paper St. Soap Company'},
+  {label:'Nakatomi Investments'},
+  {label:'Acme Landscaping'},
+  {label:'Acme Construction'}
+];
 
-<SLDSLookup items={items} label="Contacts" />
+<SLDSLookup items={items} label="Accounts" type="account" />
+

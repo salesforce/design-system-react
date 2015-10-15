@@ -36,7 +36,6 @@ module.exports = React.createClass( {
     return {};
   },
 
-
   render() {
     return (
 
@@ -53,7 +52,7 @@ module.exports = React.createClass( {
               </PrismCode>
 
               <div className="slds-p-vertical--large">
-                <SLDSLookup items={items} label="Contacts" />
+                <SLDSLookup items={items} label="Accounts" type="account" />
               </div>
 
             </div>

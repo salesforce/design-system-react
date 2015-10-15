@@ -42,6 +42,41 @@ module.exports = React.createClass( {
 
   getModalContent () {
     return  <div>
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
 
     <SLDSPicklistBase
                     options={[
@@ -67,6 +102,21 @@ module.exports = React.createClass( {
       <p>
 Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
       </p>
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
+
+      <p>
+Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
+      </p>
+
 
 
 
@@ -97,8 +147,8 @@ Utilize our detailed guidelines to confidently design excellent apps that fit ri
                   isOpen={this.state.modalIsOpen}
                   title={<span>Lightning Design System: Style with Ease</span>}
                   footer={[
-                    <SLDSButton label='Cancel' variant='neutral' onClick={this.closeModal} />,
-                    <SLDSButton label='Save' variant='brand' onClick={this.handleSubmitModal} />
+                    <SLDSButton key='cancelBtn' label='Cancel' variant='neutral' onClick={this.closeModal} />,
+                    <SLDSButton key='saveBtn' label='Save' variant='brand' onClick={this.handleSubmitModal} />
                   ]}
                   onRequestClose={this.closeModal}>
                   {this.getModalContent()}

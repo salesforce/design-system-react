@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 const React = require('react');
-import {omit} from 'lodash';
+import omit from 'lodash.omit';
 const classNames = require('classnames');
 
 class GridColumn extends React.Component {

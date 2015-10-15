@@ -8,9 +8,9 @@
    */
 
 import React, { Component } from 'react';
-import {Icon} from "../../SLDSIcons";
-import {KEYS} from '../../utils';
 import Item from './Item';
+import ActionItem from './ActionItem';
+import {Icon} from "../../SLDSIcons";
 
 class Menu extends React.Component {
   constructor(props){
@@ -18,7 +18,8 @@ class Menu extends React.Component {
     this.state = {};
   }
 
-  componentDidUpdate(){
+  //Set filtered list length in parent to determine active indexes for aria-activedescendent
+  componentDidUpdate(prevProps, prevState){
     let list = React.findDOMNode(this.refs.list).children.length;
     this.props.getListLength(list);
   }
@@ -27,6 +28,7 @@ class Menu extends React.Component {
     return this.props.filterWith(this.props.searchTerm, item);
   }
 
+  //Scroll menu up/down when using mouse keys
   handleItemFocus (itemIndex, itemHeight) {
     if(this.refs.list){
       React.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
@@ -36,30 +38,60 @@ class Menu extends React.Component {
   renderItems(){
     return this.props.items.filter(this.filter, this).map((c, i) => {
       //isActive means it is aria-activedescendant
-      const isActive = this.props.focusIndex === i ? true : false;
+      const isActive = this.props.focusIndex === i + 1 ? true : false;
       return <Item
       key={c.id}
       id={c.id}
+      type={this.props.type}
+      searchTerm={this.props.searchTerm}
       index={i}
-      setFocus={this.props.setFocus}
       isActive={isActive}
+      setFocus={this.props.setFocus}
       handleItemFocus={this.handleItemFocus.bind(this)}
       onSelect={this.props.onSelect}
-      searchTerm={this.props.searchTerm}>{c}</Item>
+      >
+      {c}
+      </Item>
     });
   }
 
   render(){
+    let isNewItemBtnActive = false;
+    let isSearchDetailsActive = false;
+    this.props.focusIndex === this.props.listLength + 1 ? isNewItemBtnActive = true : isNewItemBtnActive = false;
+    this.props.focusIndex === 0 ? isSearchDetailsActive = true: isSearchDetailsActive = false;
+
     return (
-      <div
-      className="ignore-react-onclickoutside slds-lookup__menu"
-      role="listbox"
-      ref="scroll">
-      <ul className="slds-lookup__list"
-      role="presentation"
-      ref="list">
-      {this.renderItems()}
-      </ul>
+      <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
+        <div className="slds-lookup__item">
+          <ActionItem
+            id='searchDetails'
+            icon='search'
+            type={this.props.type}
+            isActive={isSearchDetailsActive}
+            setFocus={this.props.setFocus}
+            onSelect={this.props.addItem}
+            >
+            {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type + 's'}
+          </ActionItem>
+        </div>
+
+        <ul className="slds-lookup__list" role="presentation" ref="list">
+          {this.renderItems()}
+        </ul>
+
+        <div className="slds-lookup__item">
+          <ActionItem
+            id='addNewItem'
+            icon='add'
+            type={this.props.type}
+            isActive={isNewItemBtnActive}
+            setFocus={this.props.setFocus}
+            onSelect={this.props.addItem}
+            >
+            New {this.props.type}
+          </ActionItem>
+        </div>
       </div>
     )
   }
@@ -67,14 +99,16 @@ class Menu extends React.Component {
 
 Menu.propTypes = {
   searchTerm: React.PropTypes.string,
-  filterWith: React.PropTypes.func,
-  onSelect: React.PropTypes.func,
   label: React.PropTypes.string,
-  items: React.PropTypes.array,
-  setFocus: React.PropTypes.func,
-  getListLength: React.PropTypes.func,
-  listLength: React.PropTypes.number,
+  type: React.PropTypes.string,
   focusIndex: React.PropTypes.number,
+  listLength: React.PropTypes.number,
+  items: React.PropTypes.array,
+  filterWith: React.PropTypes.func,
+  getListLength: React.PropTypes.func,
+  setFocus: React.PropTypes.func,
+  onSelect: React.PropTypes.func,
+  addItem: React.PropTypes.func,
 };
 
 Menu.defaultProps = {
