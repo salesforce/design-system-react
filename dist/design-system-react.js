@@ -192,10 +192,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  componentDidMount: function componentDidMount() {
 	    if (this.props.initialFocus) {
-	      //     setTimeout(()=>{
 	      this.setFocus();
-	      //        this.setState({isFocused:true});
-	      //     }.bind(this),100); =>
 	    }
 	    console.log('this.props.listItemRenderer: ', this.props.listItemRenderer);
 	  },
@@ -6091,7 +6088,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'onClick',
 	    value: function onClick(e) {
-	      console.log('YES!!!');
 	      this.setState({ active: !this.state.active });
 	    }
 	  }, {

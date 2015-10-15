@@ -58,10 +58,7 @@ module.exports = React.createClass( {
 
   componentDidMount () {
     if(this.props.initialFocus){
- //     setTimeout(()=>{
-        this.setFocus();
-//        this.setState({isFocused:true});
- //     }.bind(this),100); =>
+      this.setFocus();
     }
     console.log('this.props.listItemRenderer: ',this.props.listItemRenderer);
 
