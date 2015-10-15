@@ -6,8 +6,8 @@ import Base from './base';
 // Traits
 import Openable from '../traits/openable';
 
+// Styles
 // require('../../less/picker.less');
-
 
 export const CONTROL = 'picker';
 
@@ -38,7 +38,7 @@ const PickerCore = Lib.merge({}, Base, Openable, {
 	},
 	
 	_getCenteredPosition () {
-		// TO-DO: Implement this to support modals
+		// TODO: Implement this to support modals
 	},
 	
 	_setPosition (position, popupCss) {

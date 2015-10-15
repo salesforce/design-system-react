@@ -29,7 +29,7 @@ module.exports = function (grunt) {
 				files: [{
 					expand: true,
 					cwd: 'src/',
-					src: ['**/*.js'],
+					src: ['**/*.js', '!**/example.js', '!**/examples.js'],
 					dest: 'dist/'
 				}]
 			}
@@ -94,7 +94,8 @@ module.exports = function (grunt) {
 				publicPath: '/build/',
 				port: '<%= port %>',
 				keepAlive: true,
-				hot: true
+				hot: true,
+				quiet: false
 			}
 		}
 

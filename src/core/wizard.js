@@ -7,6 +7,7 @@ import Base from './base';
 import { customSelectable } from '../traits/selectable';
 const Selectable = customSelectable('step');
 
+// Styles
 // require('../../less/wizard.less');
 
 export const CONTROL = 'wizard';
@@ -53,7 +54,7 @@ getKey (item)
 	},
 	
 	_canSelect (step, select) {
-		// TO-DO: Add more conditions for which moving to the step is prohibited
+		// TODO: Add more conditions for which moving to the step is prohibited
 		if (Lib.isFunction(this.canMoveToStep)) {
 			Promise.resolve(this.canMoveToStep(step)).then(canSelect => {
 				if (canSelect !== false) {

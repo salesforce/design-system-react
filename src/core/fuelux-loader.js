@@ -3,16 +3,18 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
-// require('../../less/icons.less');
-// require('../../less/loader.less');
+// Styles
+require('../../scss/components/spinners/flavors/base/index.scss');
+require('../../scss/components/spinners/flavors/large/index.scss');
+require('../../scss/components/spinners/flavors/medium/index.scss');
 
 export const CONTROL = 'loader';
 
 const LoaderCore = Lib.merge({}, Base, {
 	cssClasses: {
 		CONTROL: CONTROL,
-		ICON: 'fuelux-icon',
-		LOADER: 'fuelux-icon-loader'
+		ICON: 'slds-spinner',
+		LOADER: 'slds-spinner--small'
 	},
 
 	// Set the defaults

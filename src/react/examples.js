@@ -1,29 +1,34 @@
 // imports
-import badge from './badge/example';
-import selectlist from './selectlist/example';
-import combobox from './combobox/example';
-import tree from './tree/example';
+// import selectlist from './selectlist/example';
+// import tree from './tree/example';
 // import wizard from './wizard/example';
-import spinner from './spinner/example';
-import notification from './notification/example';
-import checkbox from './checkbox/example';
-import radio from './radio/example';
 // import search from './search/example';
+
+import badge from './badge/example';
+import button from './button/example';
+import buttonGroup from './button-group/example';
+import checkbox from './checkbox/example';
+import combobox from './combobox/example';
+import notification from './notification/example';
 import pillbox from './pillbox/example';
+import radio from './radio/example';
+import spinner from './spinner/example';
 import popover from './popover/example';
 
 // base components
-badge();
-notification();
-
-selectlist(document.getElementById('selectlist'));
-combobox(document.getElementById('combobox'));
-tree(document.getElementById('tree'));
+// selectlist(document.getElementById('selectlist'));
+// tree(document.getElementById('tree'));
 // wizard(document.getElementById('wizard'));
-spinner(document.getElementById('spinner'));
-checkbox(document.getElementById('slds-checkbox'));
-radio(document.getElementById('slds-radio'));
 // search(document.getElementById('search'));
+
+badge();
+button();
+buttonGroup();
+checkbox(document.getElementById('slds-checkbox'));
+combobox(document.getElementById('combobox'));
+notification();
 pillbox(document.getElementById('pillbox'));
+radio(document.getElementById('slds-radio'));
+spinner(document.getElementById('spinner'));
 popover(document.getElementById('popover'));
 

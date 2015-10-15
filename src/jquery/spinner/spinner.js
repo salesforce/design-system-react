@@ -22,18 +22,20 @@ let Spinner = function Spinner (element, options) {
 // Prototype extension object
 const SpinnerObject = {
 	_onInitialized () {
-		this.render();
+		this._render();
 	},
 
-	render () {
+	_render () {
+		const strings = this.getState('strings');
+		
 		this.elements.wrapper.empty();
 
 		$('<div />', {
-			class: this.cssClasses[this.options.size]
+			class: this.cssClasses[this.getProperty('size')]
 		}).append(
 			$('<img />', {
-				src: this.fileNames[this.options.theme],
-				alt: 'Loading...'
+				src: this.fileNames[this.getProperty('theme')],
+				alt: strings.LOADING
 			})
 		).appendTo(this.elements.wrapper);
 	},
