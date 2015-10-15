@@ -132,6 +132,7 @@ module.exports = React.createClass({
           index={index}
           label={option.label}
           value={option.value}
+          data={option}
           isHighlighted={(index===this.props.highlightedIndex)}
           isSelected={(index===this.props.selectedIndex)}
           onUpdateHighlighted={this.handleUpdateHighlighted}

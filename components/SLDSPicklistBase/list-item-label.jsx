@@ -26,7 +26,8 @@ module.exports = React.createClass({
       value: null,
       inverted: false,
       isSelected: false,
-      isHighlighted: false
+      isHighlighted: false,
+      data:{}
     };
   },
 
