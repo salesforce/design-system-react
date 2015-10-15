@@ -1,5 +1,5 @@
 // MULTISELECTABLE
-// TO-DO: Combine this with Selectable
+// TODO: Combine this with Selectable
 
 import * as Lib from '../lib/lib';
 

@@ -42,7 +42,7 @@ const NotificationCore = Lib.merge({}, Base, {
 
 		// add class for state
 		if (isHidden === true) {
-			classNames.push('slds-hidden');
+			classNames.push('slds-hide');
 		}
 
 		return classNames.join(' ');

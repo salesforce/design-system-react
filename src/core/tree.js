@@ -102,7 +102,7 @@ getId (item)
 		}
 	},
 	
-	// TO-DO: This beginning code is basically the same as multi-select right now
+	// TODO: This beginning code is basically the same as multi-select right now
 	getOpenFolders () {
 		return this.getProperty('open');
 	},

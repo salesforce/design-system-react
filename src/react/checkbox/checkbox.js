@@ -28,7 +28,7 @@ export const CheckboxObject = {
 		return (
 			<label className={classNames(this.cssClasses.CONTROL)}>
 				{this._renderInput()}
-				<span className={classNames(this.cssClasses.CONTROL_FAUX)}></span>
+				<span className={classNames(this.cssClasses.FAUX)}></span>
 				{this._renderLabelText()}
 			</label>
 		);
@@ -44,7 +44,9 @@ export const CheckboxObject = {
 	},
 
 	_renderLabelText () {
-		return <span className={classNames(this.cssClasses.LABEL)}>{this.props.labelText}</span>;
+		if (this.props.labelText) {
+			return <span className={classNames(this.cssClasses.LABEL)}>{this.props.labelText}</span>;
+		}
 	}
 };
 
