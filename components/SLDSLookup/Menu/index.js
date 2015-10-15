@@ -42,6 +42,7 @@ class Menu extends React.Component {
       key={c.id}
       id={c.id}
       index={i}
+      type={this.props.type}
       setFocus={this.props.setFocus}
       isActive={isActive}
       handleItemFocus={this.handleItemFocus.bind(this)}

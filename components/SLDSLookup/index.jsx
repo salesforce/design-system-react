@@ -40,6 +40,9 @@ class SLDSLookup extends React.Component {
     if(prevState.selectedIndex && !this.state.selectIndex){
       if(this.refs.lookup) React.findDOMNode(this.refs.lookup).focus();
     }
+    else if(!prevState.selectedIndex && this.state.selectedIndex){
+      if(this.refs.clearSelectedItemButton) React.findDOMNode(this.refs.clearSelectedItemButton).focus();
+    }
   }
 
   //=================================================
