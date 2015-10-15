@@ -6,6 +6,9 @@ import Base from './base';
 import Disableable from '../traits/disableable';
 import Hideable from '../traits/hideable';
 
+// Third party
+import classNames from 'classnames';
+
 export const CONTROL = 'slds-popover';
 
 const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
@@ -23,7 +26,8 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 		left: 'slds-nubbin--right',
 		top: 'slds-nubbin--bottom',
 		bottom: 'slds-nubbin--top',
-		right: 'slds-nubbin--left'
+		right: 'slds-nubbin--left',
+		auto: 'slds-nubbin--left'
 	},
 
 	// Used for positioning of popovers placed within the body absolutely positioned
@@ -71,8 +75,7 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 	},
 	
 	_getClassNames: function () {
-		const hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
-		const positionClass = this.position[this.getProperty('position')] || this.positions.right;
+		const positionClass = this.positions[this.getProperty('position')] || this.positions.right;
 		
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass);
 	}

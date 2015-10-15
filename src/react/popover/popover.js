@@ -17,7 +17,7 @@ let Popover = Lib.merge({}, PopoverCore, {
 
 	render () {
 		return (
-			<div className={this._getClassNames()} role="dialog" ref="popover">
+			<div className={classNames(this._getClassNames(), {'slds-hidden': !this.props.isOpen})} role="dialog" ref="popover">
 				<div className="slds-popover__content">
 					{this._renderHeader()}
 					<div className="slds-popover__body">{this.props.content}</div>

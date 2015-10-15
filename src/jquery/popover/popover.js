@@ -53,7 +53,7 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 			this.elements.popover.removeClass('slds-hidden');
 		}
 
-		this.elements.popover.addClass(this._getNubbinClass());
+		this.elements.popover.addClass(this._getClassNames());
 		this.elements.wrapper.append(this.elements.popover);
 	},
 
