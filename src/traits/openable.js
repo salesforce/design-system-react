@@ -1,4 +1,4 @@
-// DISABLEABLE
+// OPENABLE
 
 import * as Lib from '../lib/lib';
 

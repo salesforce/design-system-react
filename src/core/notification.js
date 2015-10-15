@@ -3,50 +3,40 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
+// Third party
+import classNames from 'classnames';
+
+// Traits
+import Hideable from '../traits/hideable';
+
 // Styles
 require('../../scss/components/notifications/flavors/base/index.scss');
 require('../../scss/components/notifications/flavors/alert/index.scss');
 require('../../scss/components/notifications/flavors/toast/index.scss');
 
-export const CONTROL = 'notification';
+export const CONTROL = 'slds-notify';
 
-const NotificationCore = Lib.merge({}, Base, {
+const NotificationCore = Lib.merge({}, Base, Hideable, {
 	cssClasses: {
-		BASE: 'slds-notify slds-notify--alert slds-theme--alert-texture',
-		THEME_ALERT: '',
-		THEME_SUCCESS: 'slds-theme--success',
-		THEME_ERROR: 'slds-theme--error',
-		THEME_OFFLINE: 'slds-theme--offline'
+		CONTROL: CONTROL,
+		ALERT: 'slds-notify--alert slds-theme--alert-texture'
+	},
+	
+	themes: {
+		sucess: 'slds-theme--success',
+		error: 'slds-theme--error',
+		offline: 'slds-theme--offline'
 	},
 
 	_defaultProperties: {
 		text: 'label',
-		theme: 'alert'
+		theme: null
 	},
-
-	_getClassNameByTheme: function (theme, isHidden) {
-		const classNames = [];
-
-		// add base class
-		classNames.push(this.cssClasses.BASE);
-
-		// add class for specific theme
-		switch (theme.toUpperCase()) {
-			case 'ALERT':
-			case 'SUCCESS':
-			case 'ERROR':
-			case 'OFFLINE':
-			default:
-				classNames.push(this.cssClasses['THEME_' + theme.toUpperCase()]);
-				break;
-		}
-
-		// add class for state
-		if (isHidden === true) {
-			classNames.push('slds-hide');
-		}
-
-		return classNames.join(' ');
+	
+	_getClassNames: function () {
+		const hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
+		
+		return classNames(this.cssClasses.CONTROL, this.cssClasses.ALERT, this.themes[this.getProperty('theme')], hiddenClass);
 	}
 });
 

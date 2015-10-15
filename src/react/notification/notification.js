@@ -10,21 +10,17 @@ import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
+// TODO: Internationalize
 export const NotificationObject = {
 	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
-		text: React.PropTypes.string
-	},
-
-	getInitialState () {
-		return {
-			hidden: false
-		};
+		children: React.PropTypes.string.isRequired,
+		theme: React.PropTypes.string
 	},
 
 	render () {
-		const classNames = NotificationCore._getClassNameByTheme(this.getProperty('theme'), this.state.hidden);
+		const classNames = this._getClassNames();
 
 		return (
 			<div className={classNames} role="alert">
@@ -35,17 +31,9 @@ export const NotificationObject = {
 					</svg>
 					<span className="slds-assistive-text">Close</span>
 				</button>
-				<h2 className="notify-text">{this.props.text}</h2>
+				<h2 className="notify-text">{this.props.children}</h2>
 			</div>
 		);
-	},
-
-	show () {
-		this.setState({ hidden: false });
-	},
-
-	hide () {
-		this.setState({ hidden: true });
 	}
 };
 
