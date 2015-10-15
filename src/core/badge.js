@@ -6,11 +6,11 @@ import Base from './base';
 // Third party
 import classNames from 'classnames';
 
-export const CONTROL = 'badge';
+export const CONTROL = 'slds-badge';
 
 const BadgeCore = Lib.merge({}, Base, {
 	cssClasses: {
-		CONTROL: 'slds-badge'
+		CONTROL: CONTROL
 	},
 	
 	themes: {
