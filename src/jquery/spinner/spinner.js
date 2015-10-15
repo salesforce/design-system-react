@@ -27,6 +27,7 @@ const SpinnerObject = {
 
 	render () {
 		this.elements.wrapper.empty();
+		console.log('this.options.theme', this.options.theme);
 
 		$('<div />', {
 			class: this.cssClasses[this.options.size]

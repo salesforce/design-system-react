@@ -25,7 +25,7 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	},
 
 	render () {
-		const icon = '<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'; // react doesn't currently support xlink:href in a svg tag
+		const icon = '<use xlink:href="/assets/design-system/icons/utility-sprite/svg/symbols.svg#down"></use>'; // react doesn't currently support xlink:href in a svg tag
 		const item = this._getSelection();
 		const selectionName = item.getText();
 		const styles = {

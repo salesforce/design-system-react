@@ -11,6 +11,7 @@ require('../../scss/components/buttons/flavors/base/index.scss');
 require('../../scss/components/buttons/flavors/icon/index.scss');
 require('../../scss/components/pills/flavors/base/index.scss');
 require('../../scss/components/pills/flavors/portrait/index.scss');
+require('../../scss/components/forms/flavors/input/index.scss');
 
 
 export const CONTROL = 'pillbox';

@@ -28,7 +28,7 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 				<ul className="slds-pill-group">
 					{items}
 					<li className="slds-pill-input-wrap">
-						<input type="text" onKeyUp={this._handleKeyUp} className="slds-pill-add-item" placeholder="add item"/>
+						<input type="text" onKeyUp={this._handleKeyUp} className="slds-input slds-input--x-small | slds-pill-add-item" placeholder="add item"/>
 					</li>
 				</ul>
 			</div>

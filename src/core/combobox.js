@@ -4,7 +4,9 @@ import * as Lib from '../lib/lib';
 import SelectlistCore from './selectlist';
 import '../data/string';
 
-// require('../../less/combobox.less');
+
+require('../../scss/components/forms/flavors/input/index.scss');
+
 
 export const CONTROL = 'combobox';
 
