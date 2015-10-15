@@ -5,7 +5,6 @@ import * as Lib from '../../lib/lib';
 import BadgeCore, {CONTROL} from '../../core/badge';
 
 // Framework specific
-import Events from '../events';
 import State from '../state';
 
 const $ = Lib.global.jQuery || Lib.global.$;
@@ -29,15 +28,16 @@ export const BadgeObject = {
 	},
 
 	_render () {
-		const className = BadgeCore._getClassNameByTheme(this.getProperty('theme'));
+		const className = this._getClassNames();
 
+		// TODO: Should this also use the contents of the original? It's different in jQuery becasue in React 'Children' is actually just another prop
 		$('<span>').addClass(className)
 			.text(this.getProperty('text'))
 			.appendTo(this.elements.wrapper);
 	}
 };
 
-Lib.merge(Badge.prototype, BadgeCore, Events, State, BadgeObject);
+Lib.merge(Badge.prototype, BadgeCore, State, BadgeObject);
 Badge = Lib.runHelpers('jquery', CONTROL, Badge);
 
 export default Badge;

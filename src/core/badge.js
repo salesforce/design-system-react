@@ -10,7 +10,7 @@ export const CONTROL = 'badge';
 
 const BadgeCore = Lib.merge({}, Base, {
 	cssClasses: {
-		BASE: 'slds-badge'
+		CONTROL: 'slds-badge'
 	},
 	
 	themes: {
@@ -25,7 +25,7 @@ const BadgeCore = Lib.merge({}, Base, {
 	},
 
 	_getClassNames: function () {
-		return classNames(this.cssClasses.BASE, this.themes[this.getProperty('theme')]);
+		return classNames(this.cssClasses.CONTROL, this.themes[this.getProperty('theme')]);
 	}
 });
 
