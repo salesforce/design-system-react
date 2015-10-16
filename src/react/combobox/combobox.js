@@ -6,12 +6,12 @@ import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Framework specific
 import React from 'react';
-import { SelectlistObject } from '../selectlist/selectlist';
+import { PicklistObject } from '../picklist/picklist';
 
 // Third party
 import classNames from 'classnames';
 
-export const ComboboxObject = Lib.merge(SelectlistObject, {
+export const ComboboxObject = Lib.merge(PicklistObject, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
@@ -25,7 +25,7 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	},
 
 	render () {
-		const icon = '<use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#down"></use>'; // react doesn't currently support xlink:href in a svg tag
+		const icon = '<use xlink:href="/assets/design-system/icons/utility-sprite/svg/symbols.svg#down"></use>'; // react doesn't currently support xlink:href in a svg tag
 		const item = this._getSelection();
 		const selectionName = item.getText();
 		const styles = {

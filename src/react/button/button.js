@@ -8,10 +8,8 @@ import ButtonCore, {CONTROL} from '../../core/button';
 import React from 'react';
 import State from '../mixins/state';
 import Events from '../mixins/events';
+import Svg from '../svg/svg';
 import genericWillMount from '../mixins/generic-will-mount';
-
-// Third party
-import classNames from 'classnames';
 
 export const ButtonObject = {
 	mixins: [State, Events, genericWillMount],
@@ -24,29 +22,19 @@ export const ButtonObject = {
 		stateful: React.PropTypes.bool,
 		theme: React.PropTypes.string,
 		selected: React.PropTypes.bool,
+		text: React.PropTypes.string,
 		onClick: React.PropTypes.func
-	},
-
-	// TODO: We've been moving this into the core in other controls
-	_getClassNames () {
-		const selectedClasses = {};
-		
-		if (this.props.stateful) {
-			selectedClasses[this.cssClasses.NOT_SELECTED] = !this.props.selected;
-			selectedClasses[this.cssClasses.SELECTED] = this.props.selected;
-		}
-		
-		// TODO: Evaluate method of adding classes for size, theme and iconStyle
-		return classNames(this.cssClasses.BASE,
-			this.cssClasses[this.props.size],
-			this.cssClasses[this.props.theme],
-			this.cssClasses[this.props.iconStyle],
-			selectedClasses);
 	},
 
 	_renderAssistiveText () {
 		if (this.props.assistiveText) {
 			return <span className={this.cssClasses.ASSISTIVE_TEXT}>{this.props.assistiveText}</span>;
+		}
+	},
+
+	_renderIcon (position) {
+		if (this.props.icon && this.props.iconPosition === position) {
+			return (<Svg className={this._getIconClassNames()} icon={this.props.icon} />);
 		}
 	},
 
@@ -58,7 +46,7 @@ export const ButtonObject = {
 				onClick={this.props.onClick}
 				className={this._getClassNames()}
 				disabled={this.props.disabled}
-				aria-live={this.props.stateful ? 'assertive' : null}>{this.props.children}{this._renderAssistiveText()}</button>
+aria-live={this.props.stateful ? 'assertive' : null}>{this._renderIcon('left')}{this.props.text}{this.props.children}{this._renderAssistiveText()}{this._renderIcon('right')}</button>
 		);
 	}
 };

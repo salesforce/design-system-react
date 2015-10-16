@@ -6,7 +6,7 @@ export default String.raw`
         <input type="text" class="slds-input" style="border:none;border-right:1px solid #d8dde6;border-radius:.25rem 0 0 .25rem" />
       </div>
       <svg aria-hidden="true" class="slds-icon" style="right:.7rem">
-        <use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        <use xlink:href="/assets/design-system/icons/utility-sprite/svg/symbols.svg#down"></use>
       </svg>
     </button>
     <div class="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu slds-hide">

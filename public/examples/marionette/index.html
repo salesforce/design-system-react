@@ -1,0 +1,88 @@
+<!doctype html public "library">
+<html lang="en">
+	<head>
+		<meta charset=utf-8/>
+
+		<title>Marionette Selectlist</title>
+
+		<link href="/assets/design-system/styles/slds.css" rel="stylesheet">
+		<link href="/assets/facades/styles/temp-styles/temp-styles.css" rel="stylesheet">
+		<link href="/assets/facades/styles/example-styles.css" rel="stylesheet">
+	</head>
+	<body>
+
+		<header class="navbar navbar-fixed-top fu-docs-nav" role="banner">
+			<div class="container">
+				<div class="navbar-header">
+					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".fu-navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a href="/examples/" class="navbar-brand">Fuel UX</a>
+				</div>
+				<nav class="collapse navbar-collapse fu-navbar-collapse" role="navigation">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="/examples/react/">React</a>
+						</li>
+						<li class="active">
+							<a href="/examples/marionette/">Marionette</a>
+						</li>
+						<li>
+							<a href="/examples/jquery/">jQuery</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<section class="example-group fuelux">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<section id="selectlist">
+							<section class="enabled example-group">
+								<h1>Selectlist example (enabled)</h1>
+
+								<div class="example" id="mySelectlist1">
+								</div>
+
+								<div class="btn-panel action">
+									<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item</button>
+									<button type="button" class="btn btn-default btnSelectlistSelectByValue">set by value (2)</button>
+									<button type="button" class="btn btn-default btnSelectlistEnableSelectlistViaMethod">enable via method</button>
+									<button type="button" class="btn btn-default btnSelectlistDisableSelectlistViaMethod">disable via method</button>
+									<button type="button" class="btn btn-default btnSelectlistEnableSelectlistViaModel">enable via model</button>
+									<button type="button" class="btn btn-default btnSelectlistDisableSelectlistViaModel">disable via model</button>
+								</div>
+							</section>
+							<section class="disabled example-group">
+								<h1>Selectlist example (disabled)</h1>
+
+								<div class="example" id="mySelectlist2">
+								</div>
+
+								<div class="btn-panel action">
+									<button type="button" class="btn btn-default btnSelectlistGetSelectedItem">log selected item</button>
+									<button type="button" class="btn btn-default btnSelectlistSelectByObject">set by object (collection.at(3))</button>
+									<button type="button" class="btn btn-default btnSelectlistEnableSelectlistViaMethod">enable via method</button>
+									<button type="button" class="btn btn-default btnSelectlistDisableSelectlistViaMethod">disable via method</button>
+									<button type="button" class="btn btn-default btnSelectlistEnableSelectlistViaModel">enable via model</button>
+									<button type="button" class="btn btn-default btnSelectlistDisableSelectlistViaModel">disable via model</button>
+								</div>
+							</section>
+						</section>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Because these controls are meant to play nice with old FuelUX we're still including Bootstrap js on the page for now -->
+		<script src="/jquery/dist/jquery.min.js"></script>
+		<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+		<script src="/build/marionette.bundle.js"></script>
+	</body>
+</html>
