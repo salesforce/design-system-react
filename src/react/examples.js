@@ -7,7 +7,7 @@ import checkbox from './checkbox/example';
 	// import datepicker from './datepicker/example';
 	// import dropdown from './dropdown/example';
 import notification from './notification/example';
-import picklist from './selectlist/example'; // to be renamed picklist
+import picklist from './picklist/example';
 import pillbox from './pillbox/example';
 	// import popover from './popover/example';
 import radio from './radio/example';

@@ -2,7 +2,7 @@ const $ = require('jquery');
 const chai = require('chai');
 const expect = chai.expect;
 
-const sampleData = require('../../sample-data/selectlist');
+const sampleData = require('../../sample-data/picklist');
 const defaultArray = sampleData.defaultArray;
 
 module.exports = {

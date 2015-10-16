@@ -72,7 +72,7 @@
   "components": [
     "combobox",
     "loader",
-    "selectlist",
+    "picklist",
     "tree"
   ]
 }

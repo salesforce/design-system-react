@@ -1,8 +1,8 @@
-// SELECTLIST CONTROL - REACT FACADE
+// PICKLIST CONTROL - REACT FACADE
 
 // Core
 import * as Lib from '../../lib/lib';
-import SelectlistCore, {CONTROL} from '../../core/selectlist';
+import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Framework specific
 import React from 'react';
@@ -15,9 +15,9 @@ import genericWillMount from '../mixins/generic-will-mount';
 import classNames from 'classnames';
 
 // Children
-import SelectlistItem from './selectlist-item';
+import PicklistItem from './picklist-item';
 
-export const SelectlistObject = {
+export const PicklistObject = {
 	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
@@ -34,7 +34,7 @@ export const SelectlistObject = {
 	_menuItems () {
 		return this._collection.map((item, index) => {
 			return (
-				<SelectlistItem key={index} item={item} onSelected={this._handleMenuItemSelected} />
+				<PicklistItem key={index} item={item} onSelected={this._handleMenuItemSelected} />
 			);
 		});
 	},
@@ -113,9 +113,9 @@ export const SelectlistObject = {
 	}
 };
 
-let Selectlist = Lib.merge({}, SelectlistCore, SelectlistObject);
+let Picklist = Lib.merge({}, PicklistCore, PicklistObject);
 
-Selectlist = Lib.runHelpers('react', CONTROL, Selectlist);
-Selectlist = React.createClass(Selectlist);
+Picklist = Lib.runHelpers('react', CONTROL, Picklist);
+Picklist = React.createClass(Picklist);
 
-export default Selectlist;
+export default Picklist;
