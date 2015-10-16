@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from '../button/button';
+import Svg from '../svg/svg';
 
 // FIXME: We don't want to ask people to include SVGs or specially classed / formatted elements in order to make the buttons work
 export default function () {
@@ -20,21 +21,14 @@ export default function () {
 
 					<Button theme="neutral" stateful selected={this.state.selected} onClick={this.handleClick}>
 						<span className="slds-text-not-selected">
-							<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
-								<use xlinkHref="/assets/design-system/icons/utility-sprite/svg/symbols.svg#add"></use>
-							</svg>Follow</span>
+							<Svg className="slds-button__icon--stateful slds-button__icon--left" icon="utility.add"/>Follow</span>
 						<span className="slds-text-selected">
-							<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
-								<use xlinkHref="/assets/design-system/icons/utility-sprite/svg/symbols.svg#check"></use>
-							</svg>Following</span>
+								<Svg className="slds-button__icon--stateful slds-button__icon--left" icon="utility.check"/>Following</span>
 						<span className="slds-text-selected-focus">
-							<svg aria-hidden="true" className="slds-button__icon--stateful slds-button__icon--left">
-								<use xlinkHref="/assets/design-system/icons/utility-sprite/svg/symbols.svg#close"></use>
-							</svg>Unfollow</span>
+							<Svg className="slds-button__icon--stateful slds-button__icon--left" icon="utility.close"/>Unfollow</span>
 					</Button>
-					<Button iconStyle="icon-border-filled" assistiveText="More Actions"><svg aria-hidden="true" className="slds-button__icon">
-							<use xlinkHref="/assets/design-system/icons/utility-sprite/svg/symbols.svg#down"></use>
-						</svg>
+					<Button iconStyle="icon-border-filled" assistiveText="More Actions">
+						<Svg className="slds-button__icon--stateful" icon="utility.down"/>
 					</Button>
 				</div>
 			);
