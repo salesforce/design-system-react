@@ -36,6 +36,14 @@ module.exports = React.createClass( {
     return {};
   },
 
+  newItem(){
+    alert('New Item Clicked');
+  },
+
+  searchRecords(){
+    alert('Search Records Clicked');
+  },
+
   render() {
     return (
 
@@ -52,7 +60,7 @@ module.exports = React.createClass( {
               </PrismCode>
 
               <div className="slds-p-vertical--large">
-                <SLDSLookup items={items} label="Accounts" type="account" />
+                <SLDSLookup items={items} label="Accounts" type="account" onNewItem={this.newItem} onSearchRecords={this.searchRecords} />
               </div>
 
             </div>
