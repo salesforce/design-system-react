@@ -49,7 +49,7 @@ class SLDSLookup extends React.Component {
   //=================================================
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
-  // Adding/subtracting 1 from focusIndex to account for fixed action items (searchDetails and addNewItem buttons)
+  // Adding/subtracting 1 from focusIndex to account for fixed action items (searchRecords and addNewItem buttons)
   increaseIndex(){
     let items = this.state.listLength;
     this.setState({ focusIndex: this.state.focusIndex <= items ? this.state.focusIndex + 1 : 0 })
@@ -86,8 +86,14 @@ class SLDSLookup extends React.Component {
     });
   }
 
-  addItem(){
-    if(this.props.onAddItem) this.props.onAddItem();
+  newItem(){
+    this.handleClose();
+    if(this.props.onNewItem) this.props.onNewItem();
+  }
+
+  searchRecords(){
+    this.handleClose();
+    if(this.props.onSearchRecords) this.props.onSearchRecords();
   }
 
   //=================================================
@@ -135,9 +141,18 @@ class SLDSLookup extends React.Component {
       //If user hits enter/space key, select current activedescendant item
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.focusIndex !== null){
         EventUtil.trapImmediate(event);
-        //If the focus is on the first or last item in the menu (search details or add item buttons), then close.
+        //If the focus is on the first fixed Action Item in Menu
+        if(this.state.focusIndex === 0){
+          this.searchRecords();
+        }
+        //If the focus is on the last fixed Action Item in Menu
+        else if(this.state.focusIndex === (this.state.listLength + 1)){
+          this.newItem();
+        }
         //If not, then select menu item
-        (this.state.focusIndex === 0 || this.state.focusIndex === (this.state.listLength + 1)) ? this.handleClose() : this.selectItem(this.state.currentFocus);
+        else{
+          this.selectItem(this.state.currentFocus);
+        }
       }
     }
   }
@@ -166,7 +181,8 @@ class SLDSLookup extends React.Component {
         getListLength={this.getListLength.bind(this)}
         setFocus={this.setFocus.bind(this)}
         onSelect={this.selectItem.bind(this)}
-        addItem={this.addItem}
+        onSearchRecords={this.searchRecords.bind(this)}
+        onNewItem={this.newItem.bind(this)}
       />;
     }
   }
@@ -174,7 +190,7 @@ class SLDSLookup extends React.Component {
   renderSelectedItem(){
     let selectedItem = this.props.items[this.state.selectedIndex].label;
     return (
-      <a href="#" className="slds-pill" ref={'pill-' + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
+      <span tabIndex="0" className="slds-pill" ref={'pill-' + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         <span className="slds-pill__label">
           <Icon name={this.props.type} />
           {selectedItem}
@@ -184,11 +200,10 @@ class SLDSLookup extends React.Component {
           variant='icon'
           iconName='close'
           iconSize='medium'
-          disabled={true}
           onClick={this.handleDeleteSelected.bind(this)}
           ref="clearSelectedItemButton"
         />
-      </a>
+      </span>
     );
   }
 
@@ -240,17 +255,15 @@ SLDSLookup.propTypes = {
   type: React.PropTypes.string,
   filterWith: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
-  onAddItem: React.PropTypes.func,
+  onNewItem: React.PropTypes.func,
+  onSearchRecords: React.PropTypes.func,
 };
 
 SLDSLookup.defaultProps = {
   filterWith: defaultFilter,
   onItemSelect: function(item){
     //console.log('onItemSelect should be defined');
-  },
-  onAddItem: function(event){
-    //console.log('onItemSelect should be defined');
-  },
+  }
 };
 
 module.exports = SLDSLookup;

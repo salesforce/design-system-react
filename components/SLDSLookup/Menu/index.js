@@ -57,20 +57,20 @@ class Menu extends React.Component {
 
   render(){
     let isNewItemBtnActive = false;
-    let isSearchDetailsActive = false;
+    let isSearchRecordsActive = false;
     this.props.focusIndex === this.props.listLength + 1 ? isNewItemBtnActive = true : isNewItemBtnActive = false;
-    this.props.focusIndex === 0 ? isSearchDetailsActive = true: isSearchDetailsActive = false;
+    this.props.focusIndex === 0 ? isSearchRecordsActive = true: isSearchRecordsActive = false;
 
     return (
       <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
         <div className="slds-lookup__item">
           <ActionItem
-            id='searchDetails'
+            id='searchRecords'
             icon='search'
             type={this.props.type}
-            isActive={isSearchDetailsActive}
+            isActive={isSearchRecordsActive}
             setFocus={this.props.setFocus}
-            onSelect={this.props.addItem}
+            onSelect={this.props.onSearchRecords}
             >
             {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type + 's'}
           </ActionItem>
@@ -87,7 +87,7 @@ class Menu extends React.Component {
             type={this.props.type}
             isActive={isNewItemBtnActive}
             setFocus={this.props.setFocus}
-            onSelect={this.props.addItem}
+            onSelect={this.props.onNewItem}
             >
             New {this.props.type}
           </ActionItem>
