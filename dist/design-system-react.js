@@ -564,7 +564,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether-drop 1.3.0 */
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether-drop 1.2.2 */
 	
 	(function(root, factory) {
 	  if (true) {
@@ -590,7 +590,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
 	
 	var _Tether$Utils = Tether.Utils;
 	var extend = _Tether$Utils.extend;
@@ -661,7 +661,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// copy of drop which won't interact with other copies on the page (beyond calling the document events).
 	
 	function createContext() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments[0] === undefined ? {} : arguments[0];
 	
 	  var drop = function drop() {
 	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
@@ -720,8 +720,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	
 	  var DropInstance = (function (_Evented) {
-	    _inherits(DropInstance, _Evented);
-	
 	    function DropInstance(opts) {
 	      _classCallCheck(this, DropInstance);
 	
@@ -731,22 +729,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      if (typeof this.target === 'undefined') {
 	        throw new Error('Drop Error: You must provide a target.');
-	      }
-	
-	      var dataPrefix = 'data-' + drop.classPrefix;
-	
-	      var contentAttr = this.target.getAttribute(dataPrefix);
-	      if (contentAttr) {
-	        this.options.content = contentAttr;
-	      }
-	
-	      var attrsOverride = ['position', 'openOn'];
-	      for (var i = 0; i < attrsOverride.length; ++i) {
-	
-	        var override = this.target.getAttribute(dataPrefix + '-' + attrsOverride[i]);
-	        if (override) {
-	          this.options[attrsOverride[i]] = override;
-	        }
 	      }
 	
 	      if (this.options.classes && this.options.addTargetClasses !== false) {
@@ -762,6 +744,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.setupEvents();
 	      this.setupTether();
 	    }
+	
+	    _inherits(DropInstance, _Evented);
 	
 	    _createClass(DropInstance, [{
 	      key: '_on',
@@ -797,7 +781,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (typeof contentElementOrHTML === 'string') {
 	              _this.content.innerHTML = contentElementOrHTML;
 	            } else if (typeof contentElementOrHTML === 'object') {
-	              _this.content.innerHTML = "";
+	              _this.content.innerHTML = '';
 	              _this.content.appendChild(contentElementOrHTML);
 	            } else {
 	              throw new Error('Drop Error: Content function should return a string or HTMLElement.');
@@ -915,41 +899,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        }
 	
-	        var onUs = false;
-	        var outTimeout = null;
-	
-	        var focusInHandler = function focusInHandler(event) {
-	          onUs = true;
-	          _this2.open(event);
-	        };
-	
-	        var focusOutHandler = function focusOutHandler(event) {
-	          onUs = false;
-	
-	          if (typeof outTimeout !== 'undefined') {
-	            clearTimeout(outTimeout);
-	          }
-	
-	          outTimeout = setTimeout(function () {
-	            if (!onUs) {
-	              _this2.close(event);
-	            }
-	            outTimeout = null;
-	          }, 50);
-	        };
-	
 	        if (events.indexOf('hover') >= 0) {
-	          this._on(this.target, 'mouseover', focusInHandler);
-	          this._on(this.drop, 'mouseover', focusInHandler);
-	          this._on(this.target, 'mouseout', focusOutHandler);
-	          this._on(this.drop, 'mouseout', focusOutHandler);
-	        }
+	          (function () {
+	            var onUs = false;
 	
-	        if (events.indexOf('focus') >= 0) {
-	          this._on(this.target, 'focus', focusInHandler);
-	          this._on(this.drop, 'focus', focusInHandler);
-	          this._on(this.target, 'blur', focusOutHandler);
-	          this._on(this.drop, 'blur', focusOutHandler);
+	            var over = function over(event) {
+	              onUs = true;
+	              _this2.open(event);
+	            };
+	
+	            var outTimeout = null;
+	            var out = function out(event) {
+	              onUs = false;
+	
+	              if (typeof outTimeout !== 'undefined') {
+	                clearTimeout(outTimeout);
+	              }
+	
+	              outTimeout = setTimeout(function () {
+	                if (!onUs) {
+	                  _this2.close(event);
+	                }
+	                outTimeout = null;
+	              }, 50);
+	            };
+	
+	            _this2._on(_this2.target, 'mouseover', over);
+	            _this2._on(_this2.drop, 'mouseover', over);
+	            _this2._on(_this2.target, 'mouseout', out);
+	            _this2._on(_this2.drop, 'mouseout', out);
+	          })();
 	        }
 	      }
 	    }, {
@@ -3074,7 +3053,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  UP: 38,
 	  RIGHT: 39,
 	  DOWN: 40,
-	  TAB: 9
+	  TAB: 9,
+	  DELETE: 46,
+	  BACKSPACE: 8
 	};
 
 /***/ },
@@ -3136,16 +3117,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  return {
 	    componentDidMount: function() {
-	      if(typeof this.handleClickOutside !== "function")
+	      if(!this.handleClickOutside)
 	        throw new Error("Component lacks a handleClickOutside(event) function for processing outside click events.");
 	
 	      var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
 	        return function(evt) {
-	          if (evt.stopImmediatePropagation) {
-	            evt.stopImmediatePropagation();
-	          } else {
-	            evt.stopPropagation();
-	          }
 	          var source = evt.target;
 	          var found = false;
 	          // If source=local then this event came from "somewhere"
@@ -3200,7 +3176,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Can be called to explicitly disable event listening
 	     * for clicks and touches outside of this element.
 	     */
-	    disableOnClickOutside: function() {
+	    disableOnClickOutside: function(fn) {
 	      var fn = this.__outsideClickHandler;
 	      document.removeEventListener("mousedown", fn);
 	      document.removeEventListener("touchstart", fn);
@@ -7981,14 +7957,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
-	/* global define */
 	
 	(function () {
 		'use strict';
 	
-		var hasOwn = {}.hasOwnProperty;
-	
 		function classNames () {
+	
 			var classes = '';
 	
 			for (var i = 0; i < arguments.length; i++) {
@@ -7997,13 +7971,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 				var argType = typeof arg;
 	
-				if (argType === 'string' || argType === 'number') {
+				if ('string' === argType || 'number' === argType) {
 					classes += ' ' + arg;
+	
 				} else if (Array.isArray(arg)) {
 					classes += ' ' + classNames.apply(null, arg);
-				} else if (argType === 'object') {
+	
+				} else if ('object' === argType) {
 					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
+						if (arg.hasOwnProperty(key) && arg[key]) {
 							classes += ' ' + key;
 						}
 					}
@@ -8015,14 +7991,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		if (typeof module !== 'undefined' && module.exports) {
 			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
+		} else if (true){
+			// AMD. Register as an anonymous module.
 			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
 			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			window.classNames = classNames;
 		}
+	
 	}());
 
 
