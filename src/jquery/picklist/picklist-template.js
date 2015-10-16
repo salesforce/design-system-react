@@ -4,7 +4,7 @@ export default String.raw`
     <button class="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true">
       <span class="slds-truncate">Select an Option</span>
       <svg aria-hidden="true" class="slds-icon">
-        <use xlink:href="/examples/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+        <use xlink:href="/assets/design-system/icons/utility-sprite/svg/symbols.svg#down"></use>
       </svg>
     </button>
     <div class="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu slds-hide">

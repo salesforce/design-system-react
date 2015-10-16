@@ -11,7 +11,7 @@ export default String.raw`
       </button>
     </li>
     <li class="slds-pill-input-wrap">
-      <input type="text" class="slds-pill-add-item" placeholder="add item">
+      <input type="text" class="slds-input slds-input--x-small | slds-pill-add-item" placeholder="add item">
     </li>
   </ul>
 </div>

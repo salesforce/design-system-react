@@ -197,6 +197,21 @@ export function getStrings () {
 import defaultStrings from './strings';
 registerStrings(defaultStrings);
 
+// Icons
+const _icons = {};
+
+export function registerIconPaths (icons) {
+	customMerge(_icons, icons);
+}
+
+export function getIconPaths () {
+	return _icons;
+}
+
+// TODO: Generate JS icon module, currently one manually created file. Advise against multiple JS files due to need to register/modify if they change
+import defaultIcons from './iconPaths';
+registerIconPaths(defaultIcons);
+
 // Helpers
 const _controlHelpers = {};
 

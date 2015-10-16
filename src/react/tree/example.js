@@ -66,7 +66,7 @@ const collection = [
 	}
 ];
 
-export default function (element) {
+export default function () {
 	const TreeExample = React.createClass({
 		getInitialState () {
 			return {
@@ -88,5 +88,5 @@ export default function (element) {
 		}
 	});
 
-	ReactDOM.render(<TreeExample/>, element);
+	ReactDOM.render(<TreeExample/>, document.getElementById('tree'));
 }

@@ -12,7 +12,7 @@ import pillbox from './pillbox/example';
 	// import popover from './popover/example';
 import radio from './radio/example';
 import spinner from './spinner/example';
-	// import tree from './tree/example';
+import tree from './tree/example';
 
 badge();
 button();
@@ -28,4 +28,4 @@ pillbox();
 	// popover();
 radio();
 spinner();
-	// tree();
+tree();
