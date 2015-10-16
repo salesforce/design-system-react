@@ -13,11 +13,17 @@ export const SvgObject = {
 	},
 	
 	_getSVGPath () {
-		// TODO: Clean this up
-		const iconSet = this.props.icon.split('.')[0];
-		const icon = this.props.icon.split('.')[1];
+		// TODO: Evaluate best way to do this and clean this up more
+		const iconPaths = Lib.getIconPaths();
+		const icon = Lib.isString(this.props.icon) && this.props.icon.split('.');
 		
-		return Lib.getIconPaths()[iconSet][icon];
+		if (icon.length === 2) {
+			const iconPath = iconPaths[icon[0]];
+			
+			if (iconPath) {
+				return [iconPath, icon[1]].join('#');
+			}
+		}
 	},
 	
 	render () {
