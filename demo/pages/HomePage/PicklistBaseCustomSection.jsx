@@ -10,12 +10,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDSPicklistBase from '../../../components/SLDSPicklistBase';
-import {Icon} from '../../../components/SLDSIcons';
+import {SLDSPicklistBase, SLDSIcons} from '../../../components';
 
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
-
+const Icon = SLDSIcons.Icon;
 
 const CustomListItemLabel = React.createClass( {
   getDefaultProps () {
