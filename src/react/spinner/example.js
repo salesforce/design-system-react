@@ -45,5 +45,5 @@ export default function () {
 				</div>
 			</div>
 		</div>
-	, element);
+	, document.getElementById('spinner'));
 }
