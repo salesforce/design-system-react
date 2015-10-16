@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import Badge from './badge';
 
 export default function () {
-	ReactDOM.render(<Badge text="label1" />, document.getElementById('badge'));
-	ReactDOM.render(<Badge text="label2" theme="default" />, document.getElementById('badge-default'));
-	ReactDOM.render(<Badge text="label3" theme="shade" />, document.getElementById('badge-shade'));
-	ReactDOM.render(<Badge text="label4" theme="inverse" />, document.getElementById('badge-inverse'));
+	ReactDOM.render(<Badge>badge</Badge>, document.getElementById('badge'));
+	ReactDOM.render(<Badge theme="default">default</Badge>, document.getElementById('badge-default'));
+	ReactDOM.render(<Badge theme="shade">shade</Badge>, document.getElementById('badge-shade'));
+	ReactDOM.render(<Badge theme="inverse">inverse</Badge>, document.getElementById('badge-inverse'));
 }

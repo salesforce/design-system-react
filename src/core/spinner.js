@@ -3,10 +3,13 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
+// FIXME: This needs the namespace too, but that will mess up the filenames below
+
 require('../../scss/components/spinners/flavors/base/index.scss');
 require('../../scss/components/spinners/flavors/large/index.scss');
 require('../../scss/components/spinners/flavors/medium/index.scss');
 
+// TODO: We need to come up with a way to manage assets across the whole project, this hard-coding solution can only be temporary
 export const CONTROL = 'spinner';
 const assetsDir = '/assets/design-system/images/spinners/';
 
@@ -28,13 +31,6 @@ const SpinnerCore = Lib.merge({}, Base, {
 	_defaultProperties: {
 		size: 'medium',
 		theme: 'base'
-	},
-
-	_initializer () {
-		this.setState({
-			size: this.getProperty('size'),
-			theme: this.getProperty('theme')
-		});
 	}
 });
 

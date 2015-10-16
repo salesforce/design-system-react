@@ -29,8 +29,9 @@ export const BadgeObject = {
 	},
 
 	_render () {
-		const className = BadgeCore._getClassNameByTheme(this.getProperty('theme'));
+		const className = this._getClassNames();
 
+		// TODO: Should this also use the contents of the original? It's different in jQuery becasue in React 'Children' is actually just another prop
 		$('<span>').addClass(className)
 			.text(this.getProperty('text'))
 			.appendTo(this.elements.wrapper);

@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Selectlist from './selectlist';
 
-export default function (element) {
+export default function () {
 	const collection = [
 		{ _itemType: 'header', text: 'One thing' },
 		{ id: 0, text: 'One', value: '1' },
@@ -37,8 +37,8 @@ export default function (element) {
 		render () {
 			const selectlists = this.state.models.map((model, index) => {
 				return (
-					<div>
-						<Selectlist {...model} onChanged={this._handleModelChange.bind(this, index)}/>
+					<div key={index}>
+						<Selectlist {...model} onChanged={this._handleModelChange.bind(this, index)} />
 
 						<div className="slds-p-around--medium">
 							<div className="slds-button-group" role="group">
@@ -97,5 +97,5 @@ export default function (element) {
 		}
 	});
 
-	ReactDOM.render(<SelectlistExample />, element);
+	ReactDOM.render(<SelectlistExample />, document.getElementById('picklist'));
 }

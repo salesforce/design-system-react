@@ -7,16 +7,16 @@ import Base from './base';
 import Disableable from '../traits/disableable';
 import Multiselectable from '../traits/multiselectable';
 
+// Styles
 require('../../scss/components/buttons/flavors/base/index.scss');
 require('../../scss/components/buttons/flavors/icon/index.scss');
 require('../../scss/components/pills/flavors/base/index.scss');
 require('../../scss/components/pills/flavors/portrait/index.scss');
 require('../../scss/components/forms/flavors/input/index.scss');
 
-
 export const CONTROL = 'pillbox';
 
-const PickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
+const PillboxCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL
@@ -80,4 +80,4 @@ const PickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	}
 });
 
-export default PickerCore;
+export default PillboxCore;

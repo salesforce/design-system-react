@@ -6,8 +6,8 @@ import Base from './base';
 // Traits
 import Openable from '../traits/openable';
 
+// Styles
 // require('../../less/picker.less');
-
 
 export const CONTROL = 'picker';
 

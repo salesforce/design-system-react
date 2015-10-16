@@ -6,14 +6,14 @@ require('../../../scss/components/grid-system/flavors/automatic-sizing/index.scs
 require('../../../scss/components/grid-system/flavors/horizontal-alignment-spread/index.scss');
 require('../../../scss/components/grid-system/flavors/vertical-alignment/index.scss');
 
-export default function (element) {
+export default function () {
 	ReactDOM.render(
 		<div>
 			<div className="slds-grid slds-grid--align-spread">
 				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
 					<Spinner size="small" theme="base" />
 				</div>
-				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
+				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle "> 
 					<Spinner size="medium" theme="base" />
 				</div>
 				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">

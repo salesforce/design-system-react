@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Button from '../button/button';
 
 // FIXME: We don't want to ask people to include SVGs or specially classed / formatted elements in order to make the buttons work
@@ -44,5 +45,5 @@ export default function () {
 		}
 	});
 
-	React.render(<ButtonGroupExample/>, document.getElementById('slds-button-group'));
+	ReactDOM.render(<ButtonGroupExample/>, document.getElementById('slds-button-group'));
 }

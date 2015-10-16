@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Combobox from './combobox';
 
-export default function (element) {
+export default function () {
 	const collection = [
 		{_itemType: 'header', text: 'One thing'},
 		{id: 0, text: 'One', value: '1'},
@@ -38,7 +38,7 @@ export default function (element) {
 		render () {
 			const comboboxen = this.state.models.map((model, index) => {
 				return (
-					<div>
+					<div key={index}>
 						<Combobox {...model} onChanged={this._handleModelChange.bind(this, index)}/>
 
 						<div className="slds-p-around--medium">
@@ -95,5 +95,5 @@ export default function (element) {
 		}
 	});
 
-	ReactDOM.render(<ComboboxExample />, element);
+	ReactDOM.render(<ComboboxExample />, document.getElementById('combobox'));
 }
