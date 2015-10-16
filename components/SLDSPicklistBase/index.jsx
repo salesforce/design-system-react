@@ -60,8 +60,6 @@ module.exports = React.createClass( {
     if(this.props.initialFocus){
       this.setFocus();
     }
-    console.log('this.props.listItemRenderer: ',this.props.listItemRenderer);
-
   },
 
   getIndexByValue(value){

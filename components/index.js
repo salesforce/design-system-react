@@ -15,7 +15,7 @@ import SLDSSettings from './SLDSSettings';
 import SLDSButton from './SLDSButton';
 import SLDSModal from './SLDSModal';
 import SLDSModalTrigger from './SLDSModal/trigger';
-import SLDSToast from './SLDSToast';
+import SLDSIcons from './SLDSIcons';
 
 module.exports = {
   SLDSPicklistBase: SLDSPicklistBase,
@@ -24,5 +24,5 @@ module.exports = {
   SLDSButton: SLDSButton,
   SLDSModal: SLDSModal,
   SLDSModalTrigger: SLDSModalTrigger,
-  SLDSToast: SLDSToast
+  SLDSIcons: SLDSIcons
 };

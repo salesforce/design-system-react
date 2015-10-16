@@ -41,7 +41,8 @@ class SLDSLookup extends React.Component {
       if(this.refs.lookup) React.findDOMNode(this.refs.lookup).focus();
     }
     else if(!prevState.selectedIndex && this.state.selectedIndex){
-      if(this.refs.clearSelectedItemButton) React.findDOMNode(this.refs.clearSelectedItemButton).focus();
+      let selectedItem = 'pill-' + this.state.selectedIndex;
+      if(this.refs[selectedItem]) React.findDOMNode(this.refs[selectedItem]).focus();
     }
   }
 
@@ -141,6 +142,15 @@ class SLDSLookup extends React.Component {
     }
   }
 
+  handlePillKeyDown(event){
+    if(event.keyCode){
+      if(event.keyCode === KEYS.DELETE || event.keyCode === KEYS.BACKSPACE){
+        EventUtil.trapImmediate(event);
+        this.handleDeleteSelected();
+      }
+    }
+  }
+
   //=================================================
   // Rendering Things
   renderMenu(){
@@ -164,41 +174,44 @@ class SLDSLookup extends React.Component {
   renderSelectedItem(){
     let selectedItem = this.props.items[this.state.selectedIndex].label;
     return (
-      <div className="slds-pill">
-        <a href="#" className="slds-pill__label">
+      <a href="#" className="slds-pill" ref={'pill-' + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
+        <span className="slds-pill__label">
           <Icon name={this.props.type} />
           {selectedItem}
-        </a>
+        </span>
         <SLDSButton
-          label={'Remove ' + selectedItem}
+          label='Press delete to remove'
           variant='icon'
           iconName='close'
           iconSize='medium'
+          disabled={true}
           onClick={this.handleDeleteSelected.bind(this)}
           ref="clearSelectedItemButton"
         />
-      </div>
+      </a>
     );
   }
 
   render(){
     let inputClasses = this.state.selectedIndex === null ? 'slds-input':'slds-input slds-hide';
     let componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside":"slds-lookup ignore-react-onclickoutside slds-has-selection";
+    let inputContainerClasses =  this.state.selectedIndex === null ? '':' slds-input';
+    let inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: '5px'};
 
     return (
-      <div className={componentClasses} data-select="single" data-scope="single" data-typeahead="true">
+      <div className={componentClasses} data-select="multi" data-scope="single" data-typeahead="true">
         <section className="slds-form-element">
-          <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
 
-          <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
+          <label className="slds-form-element__label" htmlFor={this.props.type + "Lookup"}>{this.props.label}</label>
+
+          <div className={"slds-lookup__control slds-input-has-icon slds-input-has-icon--right" + inputContainerClasses} style={inputContainerStyle}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             <InputIcon name="search"/>
             <input
-              id="lookup"
+              id={this.props.type + "Lookup"}
               ref="lookup"
               className={inputClasses}
               type="text"
-              aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
               aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:""}
