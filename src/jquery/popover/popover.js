@@ -29,7 +29,8 @@ let Popover = function Popover (element, options) {
 
 Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 	_onInitialized () {
-		this.elements.wrapper.on('click.fu.popover', $.proxy(this._togglePopover, this));
+		this._setElementOptions();
+		this._setTrigger();
 
 		this._render();
 
@@ -37,7 +38,6 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 	},
 
 	_render () {
-		this.elements.popover = this.template.clone();
 		const header = this.elements.popover.find('.slds-popover__header > p');
 		const body = this.elements.popover.find('.slds-popover__body');
 
@@ -54,11 +54,36 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 		}
 
 		this.elements.popover.addClass(this._getClassNames());
-		this.elements.wrapper.append(this.elements.popover);
+		this.elements.container.append(this.elements.popover);
+	},
+
+	_setElementOptions () {
+		const target = this.getProperty('target');
+		const container = this.getProperty('container');
+		const align = this.getProperty('align');
+
+		this.elements.popover = this.template.clone();
+		this.elements.target = target ? target : this.elements.wrapper;
+		this.elements.container = container ? container : this.elements.wrapper;
+		this.elements.align = align ? align : this.elements.target;
+	},
+
+	_setTrigger () {
+		const trigger = this.getProperty('trigger');
+
+		if (trigger === 'click') {
+			this.elements.target.on( 'click.fu.popover', $.proxy(this._togglePopover, this));
+		} else if (trigger === 'hover') {
+			this.elements.target.on( 'mouseover.fu.popover', $.proxy(this._togglePopover, this));
+			this.elements.target.on( 'mouseout.fu.popover', $.proxy(this._togglePopover, this));
+		} else if (trigger === 'focus') {
+			this.elements.target.on( 'focus.fu.popover', $.proxy(this._togglePopover, this));
+			this.elements.target.on( 'focusout.fu.popover', $.proxy(this._togglePopover, this));
+		}
 	},
 
 	_togglePopover () {
-		const position = this._getElementRelativePosition(this.elements.popover[0], this.elements.wrapper[0]);
+		const position = this._getElementAllignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
 
 		if (this.elements.popover.hasClass('slds-hidden')) {
 			this.elements.popover.removeClass('slds-hidden');
@@ -67,14 +92,37 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 				top: position.top,
 				left: position.left
 			});
+
+			this.elements.wrapper.trigger('shown.fu.popover');
 		} else {
 			this.elements.popover.addClass('slds-hidden');
+			this.elements.wrapper.trigger('hidden.fu.popover');
 		}
 	}
 });
 
 const legacyMethods = {
+	show () {
+		if (this.elements.popover.hasClass('slds-hidden')) {
+			this._togglePopover();
+		}
+	},
 
+	hide () {
+		if (!this.elements.popover.hasClass('slds-hidden')) {
+			this._togglePopover();
+		}
+	},
+
+	toggle () {
+		this._togglePopover();
+	},
+
+	destroy () {
+		this.elements.popover.remove();
+
+		return template;
+	}
 };
 
 Popover = Lib.runHelpers('jquery', CONTROL, Popover, {

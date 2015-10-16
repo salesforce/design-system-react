@@ -57,6 +57,16 @@ export function offset (element) {
 	};
 }
 
+export function offsetFromParent (element, parent) {
+	const elementOffset = offset(element);
+	const parentOffset = offset(parent);
+
+	return {
+		top: elementOffset.top - parentOffset.top,
+		left: elementOffset.left - parentOffset.left
+	};
+}
+
 export function outerHeight (element, includeMargin) {
 	let height = element.offsetHeight;
 	
@@ -79,14 +89,24 @@ export function outerWidth (element, includeMargin) {
 	return width;
 }
 
-export function isOffscreen (element) {
+export function isOffscreen (element, details) {
 	const windowHeight = window.innerHeight || document.documentElement.clientHeight || 0;
 	const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
 	const elmentOffset = offset(element);
 	const top = elmentOffset.top;
 	const bottom = elmentOffset.top + outerHeight(element, true);
+	let results = false;
 
-	return bottom > windowHeight + scrollTop || top < scrollTop;
+	if (details) {
+		results = bottom > windowHeight + scrollTop ? 'bottom' : false;
+		if (!results) {
+			results = top < scrollTop ? 'top' : false;
+		}
+	} else {
+		results = bottom > windowHeight + scrollTop || top < scrollTop;
+	}
+
+	return results;
 }
 
 export function setWidth (element, width) {

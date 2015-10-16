@@ -36,13 +36,26 @@ let Popover = Lib.merge({}, PopoverCore, {
 		}
 	},
 
-	// TODO: If you have this logic set a state with the position and use that in the render function to set the style you won't have to run this on every componentDidUpdate
-	componentDidUpdate () {
-		const popoverEl = this.refs.popover;
-		const position = this._getElementRelativePosition(popoverEl, this.props.target);
+	componentDidMount () {
+		this.elements = {};
 
-		popoverEl.style.top = position.top + 'px';
-		popoverEl.style.left = position.left + 'px';
+		this.elements.popover = this.refs.popover;
+		this.elements.target = this.props.target ? this.props.target : this.refs.popover.parentNode;
+		this.elements.container = this.props.container ? this.props.container : this.refs.popover.parentNode;
+		this.elements.align = this.props.align ? this.props.align : this.elements.target;
+	},
+
+	componentDidUpdate () {
+		let popoverEl;
+		let position;
+
+		if (this.props.isOpen) {// Run this each time the modal opens to account for page changes and scrolling
+			popoverEl = this.elements.popover;
+			position = this._getElementAllignment(popoverEl, this.elements.container, this.elements.align);
+
+			popoverEl.style.top = position.top + 'px';
+			popoverEl.style.left = position.left + 'px';
+		}
 	}
 
 });

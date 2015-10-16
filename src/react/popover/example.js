@@ -14,9 +14,9 @@ export default function (element) {
 
 		render () {
 			return (
-				<button type="button" className="slds-button slds-button--neutral" ref="trigger" onClick={this._handleClick}>
+				<button type="button" className="slds-button slds-button--neutral" ref="target" onClick={this._handleClick}>
 					trigger popover
-					<Popover placement="right" header={this.state.header} content={this.state.content} isOpen={this.state.isOpen} target={this.refs.trigger}/>
+					<Popover placement="right" header={this.state.header} content={this.state.content} isOpen={this.state.isOpen} target={this.refs.target}/>
 				</button>
 			);
 		},

@@ -19,55 +19,59 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 
 	_defaultProperties: {
 		isOpen: false,
-		position: 'auto' // 'auto','top','right','left','bottom'
+		position: 'right', // 'top','right','left','bottom'
+		autoFlip: true,
+		trigger: 'click', // click, hover, focus, manual
+		target: null, // The element who's events will trigger the popover
+		container: null, // The element the popover will be contained within
+		align: null // The element the popover will be aligned with
 	},
 	
 	positions: {
 		left: 'slds-nubbin--right',
 		top: 'slds-nubbin--bottom',
 		bottom: 'slds-nubbin--top',
-		right: 'slds-nubbin--left',
-		auto: 'slds-nubbin--left'
+		right: 'slds-nubbin--left'
 	},
 
-	// Used for positioning of popovers placed within the body absolutely positioned
-	// TODO: There's some stuff for this in Lib you can use, and also take a look at the Picker code
-	_getElementPagePosition (el) {
-		const rect = el.getBoundingClientRect();
-		const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-		const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-		return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
-	},
-
-	// Used for positioning of popovers placed within their target
-	_getElementRelativePosition (popEl, target) {
+	_getElementAllignment (el, container, align) {
+		const offset = Lib.offsetFromParent(align, container);
 		const popSize = {};
-		const targetSize = {};
+		const alignSize = {};
 		const position = {};
+		let popPosition = this.adjustedPosition || this.getProperty('position');
+		let isOffscreen;
 
-		popSize.width = popEl.offsetWidth;
-		popSize.height = popEl.offsetHeight;
-		targetSize.width = target.offsetWidth;
-		targetSize.height = target.offsetHeight;
+		popSize.width = Lib.outerWidth(el);
+		popSize.height = Lib.outerHeight(el);
+		alignSize.width = Lib.outerWidth(align);
+		alignSize.height = Lib.outerHeight(align);
 
-		switch ( this.getProperty('position') ) {
+		if (this.getProperty('autoFlip')) {// This means autoFlip will not work on scroll only when popover is triggered
+			isOffscreen = Lib.isOffscreen(el, true);
+
+			if (isOffscreen) {
+				popPosition = isOffscreen === 'top' ? 'bottom' : 'top';
+			}
+		}
+
+		switch ( popPosition ) {
 			case 'left':
-				position.left = -(popSize.width + 15);
-				position.top = -((popSize.height / 2) - (targetSize.height / 2));
+				position.left = offset.left - (popSize.width + 15);
+				position.top = offset.top - ((popSize.height / 2) - (alignSize.height / 2));
 				break;
 			case 'top':
-				position.left = -((popSize.width / 2) - (targetSize.width / 2));
-				position.top = -(popSize.height + 15);
+				position.left = offset.left - ((popSize.width / 2) - (alignSize.width / 2));
+				position.top = offset.top - (popSize.height + 15);
 				break;
 			case 'bottom':
-				position.left = -((popSize.width / 2) - (targetSize.width / 2));
-				position.top = targetSize.height + 15;
+				position.left = offset.left - ((popSize.width / 2) - (alignSize.width / 2));
+				position.top = offset.top + alignSize.height + 15;
 				break;
 			case 'right':
 			default:
-				position.left = targetSize.width + 15;
-				position.top = -((popSize.height / 2) - (targetSize.height / 2));
+				position.left = offset.left + alignSize.width + 15;
+				position.top = offset.top - ((popSize.height / 2) - (alignSize.height / 2));
 				break;
 		}
 
@@ -75,7 +79,7 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 	},
 	
 	_getClassNames: function () {
-		const positionClass = this.positions[this.getProperty('position')] || this.positions.right;
+		const positionClass = this.positions[this.adjustedPosition || this.getProperty('position')] || this.positions.right;
 		
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass);
 	}
