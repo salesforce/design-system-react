@@ -1,3 +1,4 @@
+// TODO: Having a base path hardcoded here is obviously just a temp solution
 const iconBasePath = '/examples/assets/icons/';
 
 const icons = {
