@@ -51,7 +51,6 @@ module.exports = {
         test: /\.(coffee\.md|litcoffee)$/, 
         loader: "coffee-loader?literate"
       },
-
       { 
         test: /\.cjsx$/, loader: "coffee-jsx-loader"
       },
