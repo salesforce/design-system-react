@@ -9,6 +9,10 @@ import Hideable from '../traits/hideable';
 // Third party
 import classNames from 'classnames';
 
+// Styles
+// TODO: Are there some styles missing here?
+require('../../scss/components/popovers/flavors/base/index.scss');
+
 export const CONTROL = 'slds-popover';
 
 const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
