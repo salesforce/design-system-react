@@ -1,4 +1,4 @@
-// SELECTLIST CONTROL
+// PICKLIST CONTROL
 
 import * as Lib from '../lib/lib';
 import Base from './base';
@@ -27,11 +27,11 @@ require('../../scss/components/dropdowns/flavors/menu-with-search/index.scss');
 require('../../scss/components/dropdowns/flavors/positioning/index.scss');
 require('../../scss/components/dropdowns/flavors/search-overflow/index.scss');
 
-export const CONTROL = 'selectlist';
+export const CONTROL = 'picklist';
 
 const resizeCache = {};
 
-const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
+const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -161,4 +161,4 @@ const SelectlistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Ke
 	}
 });
 
-export default SelectlistCore;
+export default PicklistCore;

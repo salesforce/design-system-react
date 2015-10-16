@@ -1,5 +1,5 @@
 import * as Lib from '../../lib/lib';
-import Selectlist from './selectlist';
+import Picklist from './picklist';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -16,7 +16,7 @@ const collection = [
 ];
 
 $(function () {
-	const picklist = new Selectlist($('#picklist'), {
+	const picklist = new Picklist($('#picklist'), {
 		collection: collection,
 		selection: { value: '4' }
 	});
@@ -39,10 +39,10 @@ $(function () {
 	});
 
 	// events
-	$('#picklist').on('rendered.fu.selectlist', function (event, data) {
+	$('#picklist').on('rendered', function (event, data) {
 		Lib.log('rendered', data);
 	});
-	$('#picklist').on('changed.fu.selectlist', function (event, data) {
+	$('#picklist').on('changed', function (event, data) {
 		Lib.log('changed', data);
 	});
 });

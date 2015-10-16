@@ -1,21 +1,21 @@
 /*
- * REACT FACADE API FOR SELECTLIST TESTS
+ * REACT FACADE API FOR PICKLIST TESTS
  * Facade (or framework specific) implementation of tests defined in behaviors folder
  */
 
 // Core file for helpful things like CSS class names
-// import { CONTROL as controlName } from '../../src/core/selectlist';
+// import { CONTROL as controlName } from '../../src/core/picklist';
 import * as Lib from '../../src/lib/lib';
 
 import React from 'react';
-import SelectList from '../../src/react/selectlist/selectlist';
+import PickList from '../../src/react/picklist/picklist';
 
 void(React);
 
 export const behaviorHandlers = {
 	createControl: {
 		default: function (initData, el, rendered) {
-			const TestSelectList = React.createClass({
+			const TestPickList = React.createClass({
 				getInitialState () {
 					return Lib.merge({
 						disabled: false,
@@ -25,14 +25,14 @@ export const behaviorHandlers = {
 				},
 
 				render () {
-					return (<SelectList {...this.state} />);
+					return (<PickList {...this.state} />);
 				},
 
 				handleChanged (item, selection) {
 					this.setState({selection});
 				}
 			});
-			const theList = React.render(<TestSelectList/>, el[0]);
+			const theList = React.render(<TestPickList/>, el[0]);
 			rendered(el, theList);
 			return theList;
 		}

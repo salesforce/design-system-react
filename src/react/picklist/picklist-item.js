@@ -1,7 +1,7 @@
 // Framework specific
 import React from 'react';
 
-const SelectlistItem = React.createClass({
+const PicklistItem = React.createClass({
 
 	cssClasses: {
 		HEADER: 'slds-dropdown__header',
@@ -43,4 +43,4 @@ const SelectlistItem = React.createClass({
 	}
 });
 
-export default SelectlistItem;
+export default PicklistItem;

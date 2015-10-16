@@ -11,12 +11,12 @@
 import { verifyFacadeProvidesBehaviorCallbacks, registerBehaviorTestCombinations } from '../lib/behavior-test-runner';
 // import the needed component and all it's facade-specific functions
 // (ex.- jQuery-specific implementation of createComponent)
-import { selectlist as componentFacadeTestLib } from '../tests-api';
+import { picklist as componentFacadeTestLib } from '../tests-api';
 
 // Core file for helpful things like CSS class names
-import { CONTROL as controlName } from '../../src/core/selectlist';
-import SelectlistCore from '../../src/core/selectlist';
-const Core = SelectlistCore;
+import { CONTROL as controlName } from '../../src/core/picklist';
+import PicklistCore from '../../src/core/picklist';
+const Core = PicklistCore;
 
 const $ = require('jquery');
 const chai = require('chai');
@@ -172,7 +172,7 @@ describe(controlName + ' component', function () {
 					done();
 				}
 
-				$('#my-' + controlName).on('rendered.fu.selectlist', function () {
+				$('#my-' + controlName).on('rendered', function () {
 					rendered(controlContainer, control);
 				});
 

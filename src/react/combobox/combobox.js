@@ -6,12 +6,12 @@ import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Framework specific
 import React from 'react';
-import { SelectlistObject } from '../selectlist/selectlist';
+import { PicklistObject } from '../picklist/picklist';
 
 // Third party
 import classNames from 'classnames';
 
-export const ComboboxObject = Lib.merge(SelectlistObject, {
+export const ComboboxObject = Lib.merge(PicklistObject, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([

@@ -9,7 +9,7 @@ import './combobox/example';
 // import './datepicker/example';
 // import './dropdown/example';
 import './notification/example';
-import './selectlist/example'; // to be renamed picklist
+import './picklist/example';
 import './pillbox/example';
 // import './popover/example';
 import './radio/example';

@@ -1,8 +1,8 @@
-// SELECTLIST CONTROL - JQUERY FACADE
+// PICKLIST CONTROL - JQUERY FACADE
 
 // Core
 import * as Lib from '../../lib/lib';
-import SelectlistCore, {CONTROL} from '../../core/selectlist';
+import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Framework specific
 import Events from '../events';
@@ -11,9 +11,9 @@ import State from '../state';
 const $ = Lib.global.jQuery || Lib.global.$;
 
 // Template imports
-import template from './selectlist-template';
+import template from './picklist-template';
 
-let Selectlist = function Selectlist (element, options) {
+let Picklist = function Picklist (element, options) {
 	this.options = Lib.extend({}, options);
 
 	this.elements = {
@@ -56,7 +56,7 @@ export function _renderDivider () {
 	return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
 }
 
-export const SelectlistObject = {
+export const PicklistObject = {
 	_initElements (base, elements) {
 		const els = elements || {};
 
@@ -131,10 +131,10 @@ export const SelectlistObject = {
 	},
 
 	_bindUIEvents () {
-		this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
-		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
-		this.elements.wrapper.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
-		this.elements.wrapper.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
+		this.elements.button.on('click', $.proxy(this._handleClicked, this));
+		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
+		this.elements.wrapper.on('keydown', $.proxy(this._handleKeyDown, this));
+		this.elements.wrapper.on('keypress', $.proxy(this._handleKeyPressed, this));
 	},
 
 	_render () {
@@ -281,7 +281,7 @@ export const SelectlistObject = {
 	}
 };
 
-Lib.merge(Selectlist.prototype, SelectlistCore, Events, State, SelectlistObject);
+Lib.merge(Picklist.prototype, PicklistCore, Events, State, PicklistObject);
 
 // LEGACY METHODS
 //
@@ -335,8 +335,8 @@ export const legacyMethods = {
 	}
 };
 
-Selectlist = Lib.runHelpers('jquery', CONTROL, Selectlist, {
+Picklist = Lib.runHelpers('jquery', CONTROL, Picklist, {
 	legacyMethods
 });
 
-export default Selectlist;
+export default Picklist;

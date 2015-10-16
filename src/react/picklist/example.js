@@ -1,7 +1,7 @@
 import * as Lib from '../../lib/lib';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Selectlist from './selectlist';
+import Picklist from './picklist';
 
 export default function () {
 	const collection = [
@@ -17,7 +17,7 @@ export default function () {
 		{ id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
 	];
 
-	const SelectlistExample = React.createClass({
+	const PicklistExample = React.createClass({
 		propTypes: {
 			models: React.PropTypes.arrayOf(React.PropTypes.object)
 		},
@@ -35,10 +35,10 @@ export default function () {
 		},
 
 		render () {
-			const selectlists = this.state.models.map((model, index) => {
+			const picklists = this.state.models.map((model, index) => {
 				return (
 					<div key={index}>
-						<Selectlist {...model} onChanged={this._handleModelChange.bind(this, index)} />
+						<Picklist {...model} onChanged={this._handleModelChange.bind(this, index)} />
 
 						<div className="slds-p-around--medium">
 							<div className="slds-button-group" role="group">
@@ -54,7 +54,7 @@ export default function () {
 
 			return (
 				<div>
-					{selectlists}
+					{picklists}
 				</div>
 			);
 		},
@@ -97,5 +97,5 @@ export default function () {
 		}
 	});
 
-	ReactDOM.render(<SelectlistExample />, document.getElementById('picklist'));
+	ReactDOM.render(<PicklistExample />, document.getElementById('picklist'));
 }

@@ -7,7 +7,7 @@ import ComboboxCore, {CONTROL} from '../../core/combobox';
 // Framework specific
 import Events from '../events';
 import State from '../state';
-import { SelectlistObject, _renderItem, _renderHeader, _renderDivider, legacyMethods } from '../selectlist/selectlist';
+import { PicklistObject, _renderItem, _renderHeader, _renderDivider, legacyMethods } from '../picklist/picklist';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -38,7 +38,7 @@ let Combobox = function Combobox (element, options) {
 	this._initialize(this.options);
 };
 
-export const ComboboxObject = Lib.merge(SelectlistObject, {
+export const ComboboxObject = Lib.merge(PicklistObject, {
 	_initElements (base, elements) {
 		const els = elements || {};
 
@@ -52,11 +52,11 @@ export const ComboboxObject = Lib.merge(SelectlistObject, {
 	},
 
 	_bindUIEvents () {
-		this.elements.button.on('click.fu.selectlist', $.proxy(this._handleClicked, this));
-		this.elements.dropdownMenu.on('click.fu.selectlist', 'a', $.proxy(this._handleMenuItemSelected, this));
-		this.elements.input.on('change.fu.selectlist', $.proxy(this._handleChanged, this)).on('click', function (e) {e.stopPropagation();});
-		this.elements.inputGroup.on('keydown.fu.selectlist', $.proxy(this._handleKeyDown, this));
-		this.elements.inputGroup.on('keypress.fu.selectlist', $.proxy(this._handleKeyPressed, this));
+		this.elements.button.on('click', $.proxy(this._handleClicked, this));
+		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
+		this.elements.input.on('change', $.proxy(this._handleChanged, this)).on('click', function (e) {e.stopPropagation();});
+		this.elements.inputGroup.on('keydown', $.proxy(this._handleKeyDown, this));
+		this.elements.inputGroup.on('keypress', $.proxy(this._handleKeyPressed, this));
 	},
 
 	_render () {

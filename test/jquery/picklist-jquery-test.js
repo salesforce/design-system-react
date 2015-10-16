@@ -1,16 +1,16 @@
 /*
- * JQUERY FACADE API FOR SELECTLIST TESTS
+ * JQUERY FACADE API FOR PICKLIST TESTS
  * Facade (or framework specific) implementation of tests defined in behaviors folder
  */
 
 // Core file for helpful things like CSS class names
-import { CONTROL as controlName } from '../../src/core/selectlist';
-import SelectlistCore from '../../src/core/selectlist';
+import { CONTROL as controlName } from '../../src/core/picklist';
+import PicklistCore from '../../src/core/picklist';
 import * as Lib from '../../src/lib/lib';
-const Core = SelectlistCore;
+const Core = PicklistCore;
 
 // Run in legacy plugin mode
-import Selectlist from '../../src/jquery/selectlist/selectlist';
+import Picklist from '../../src/jquery/picklist/picklist';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -21,9 +21,9 @@ export const behaviorHandlers = {
 			const imperativeMarkup = '<div id="' + 'my-' + controlName + '"></div>';
 			$(controlContainer).append(imperativeMarkup);
 
-			const $control = new Selectlist( $('#my-' + controlName), initData );
+			const $control = new Picklist( $('#my-' + controlName), initData );
 
-			$('#my-' + controlName).on('rendered.fu.selectlist', function () {
+			$('#my-' + controlName).on('rendered', function () {
 				rendered(controlContainer, $control);
 			});
 
@@ -63,7 +63,7 @@ export const behaviorHandlers = {
 
 	createEventListener: {
 		default: function (eventName, callback)  {
-			$('#my-' + controlName).on(eventName + '.fu.selectlist', function () {
+			$('#my-' + controlName).on(eventName, function () {
 				callback();
 			});
 		}
