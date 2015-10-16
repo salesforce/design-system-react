@@ -8,8 +8,13 @@ import React from 'react';
 
 export const SvgObject = {
 	propTypes: {
-		icon: React.PropTypes.string.isRequired,
-		className: React.PropTypes.string
+		icon: React.PropTypes.string.isRequired
+	},
+	
+	getDefaultProps () {
+		return {
+			'aria-hidden': true
+		};
 	},
 	
 	_getSVGPath () {
@@ -27,7 +32,9 @@ export const SvgObject = {
 	},
 	
 	render () {
-		return <svg aria-hidden="true" className={this.props.className}><use xlinkHref={this._getSVGPath()}></use></svg>;
+		const { icon, ...other } = this.props;
+		
+		return <svg {...other}><use xlinkHref={this._getSVGPath()}></use></svg>;
 	}
 };
 
