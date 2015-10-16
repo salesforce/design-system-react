@@ -11,20 +11,17 @@ export const SvgObject = {
 		icon: React.PropTypes.string.isRequired,
 		className: React.PropTypes.string
 	},
-	getDefaultProps () {
-		return {
-			position: null
-		};
-	},
+	
 	_getSVGPath () {
+		// TODO: Clean this up
 		const iconSet = this.props.icon.split('.')[0];
 		const icon = this.props.icon.split('.')[1];
+		
 		return Lib.getIconPaths()[iconSet][icon];
 	},
+	
 	render () {
-		return (
-		<svg aria-hidden="true" className={this.props.className}><use xlinkHref={this._getSVGPath()}></use></svg>
-		);
+		return <svg aria-hidden="true" className={this.props.className}><use xlinkHref={this._getSVGPath()}></use></svg>;
 	}
 };
 
