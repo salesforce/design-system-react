@@ -97,3 +97,9 @@ export const InputIcon = React.createClass({
     }
 
 });
+
+module.exports = {
+    InputIcon:InputIcon,
+    Icon:Icon,
+    ButtonIcon:ButtonIcon
+};

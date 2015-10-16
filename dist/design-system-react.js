@@ -3512,7 +3512,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	
 	});
+	
 	exports.InputIcon = InputIcon;
+	module.exports = {
+	    InputIcon: InputIcon,
+	    Icon: Icon,
+	    ButtonIcon: ButtonIcon
+	};
 
 /***/ },
 /* 14 */
