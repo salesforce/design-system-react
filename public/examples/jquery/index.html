@@ -1,0 +1,247 @@
+<!doctype html public "library">
+<html lang="en">
+	<head>
+		<meta charset=utf-8/>
+		<title>jQuery</title>
+		<!-- <link href="/assets/design-system/styles/slds.css" rel="stylesheet"> -->
+		<link href="/assets/facades/styles/temp-styles/temp-styles.css" rel="stylesheet">
+		<link href="/assets/facades/styles/example-styles.css" rel="stylesheet">
+	</head>
+	<body>
+		<div class="slds-grid">
+			<div class="slds-col slds-size--1-of-12"></div>
+				<div class="slds-container--medium slds-container--center">
+			</div>
+			<div class="slds-col">
+				<div class="slds-container--medium slds-container--center">
+			<!-- badge -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Badge</span>
+							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+				</h2>
+						<span id="badge-inverse"></span>
+				<span id="badge"></span>
+						<span id="badge-shade"></span>
+				<span id="badge-default"></span>
+			</section>
+
+			<!-- button -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Button</span>
+							<span class="slds-badge">alpha: in progress</span>
+				</h2>
+				<div id="buttons"></div>
+			</section>
+
+			<!-- button group -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Button Group</span>
+							<span class="slds-badge">alpha: in progress</span>
+				</h2>
+				<div id="button-groups"></div>
+			</section>
+
+			<!-- checkbox -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Checkbox</span>
+							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+				</h2>
+				<div class="slds-form-element" id="myCheckbox"></div>
+				<div class="slds-form-element" id="myCheckbox2"></div>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral" id="check-checkbox">check</button>
+						<button type="button" class="slds-button slds-button--neutral" id="uncheck-checkbox">uncheck</button>
+						<button type="button" class="slds-button slds-button--neutral" id="enable-checkbox">enable</button>
+						<button type="button" class="slds-button slds-button--neutral" id="disable-checkbox">disable</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- combobox -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Combobox</span>
+							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+				</h2>
+				<div id="combobox"></div>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-getSelectedItem">log selected item/value</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-selectByIndex">set by element index (zero-based) (1)</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-selectByObject">set by object (collection[3])</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-enable">enable</button>
+						<button type="button" class="slds-button slds-button--neutral" id="combobox-disable">disable</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- datatable -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Data Table</span>
+							<span class="slds-badge slds-theme--inverse">alpha: not started</span>
+				</h2>
+				<div id="datatable"></div>
+			</section>
+
+			<!-- datepicker -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Date Picker</span>
+							<span class="slds-badge slds-theme--inverse">alpha: not started</span>
+				</h2>
+				<div id="datepicker"></div>
+			</section>
+
+			<!-- dropdown -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Dropdown</span>
+							<span class="slds-badge slds-theme--inverse">alpha: not started</span>
+				</h2>
+				<div id="dropdown"></div>
+			</section>
+
+			<!-- notification -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Notification</span>
+							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+				</h2>
+				<div id="notification"></div>
+				<div id="notification-success" class="slds-m-top--x-small"></div>
+				<div id="notification-error" class="slds-m-top--x-small"></div>
+				<div id="notification-offline" class="slds-m-top--x-small"></div>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral" id="notification-hide">hide</button>
+						<button type="button" class="slds-button slds-button--neutral" id="notification-show">show</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- picklist -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Picklist</span>
+							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+				</h2>
+				<div id="picklist"></div>
+				<div class="slds-p-around--medium">
+					<div class="slds-button-group" role="group">
+						<button type="button" class="slds-button slds-button--neutral" id="picklist-getSelectedItem">log selected item/value</button>
+						<button type="button" class="slds-button slds-button--neutral" id="picklist-selectByIndex">set by element index (zero-based) (1)</button>
+						<button type="button" class="slds-button slds-button--neutral" id="picklist-selectByObject">set by object (collection[3])</button>
+						<button type="button" class="slds-button slds-button--neutral" id="picklist-enable">enable</button>
+						<button type="button" class="slds-button slds-button--neutral" id="picklist-disable">disable</button>
+					</div>
+				</div>
+			</section>
+
+			<!-- pillbox -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Pill</span>
+							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+				</h2>
+				<div id="pillbox1"></div>
+			</section>
+
+			<!-- popover -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Popover</span>
+							<span class="slds-badge slds-theme--inverse">alpha: not started</span>
+				</h2>
+				<div id="popover"></div>
+			</section>
+
+			<!-- radio -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Radio</span>
+							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+				</h2>
+				<section id="slds-radio"></section>
+			</section>
+
+			<!-- spinner -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Spinner</span>
+							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+				</h2>
+
+				<div>
+					<div class="slds-grid slds-grid--align-spread">
+						<div class="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
+							<div id="spinner1"></div>
+						</div>
+						<div class="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
+							<div id="spinner2"></div>
+						</div>
+						<div class="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
+							<div id="spinner3"></div>
+						</div>
+					</div>
+					
+					<div class="slds-grid slds-grid--align-spread">
+						<div class="slds-box slds-theme--shade | slds-col--padded | slds-align-middle ">
+							<div id="spinner4"></div>
+						</div>
+						<div class="slds-box slds-theme--shade | slds-col--padded | slds-align-middle ">
+							<div id="spinner5"></div>
+						</div>
+						<div class="slds-box slds-theme--shade | slds-col--padded | slds-align-middle ">
+							<div id="spinner6"></div>
+						</div>
+					</div>
+
+					<div class="slds-grid slds-grid--align-spread">
+						<div class="slds-box slds-theme--inverse | slds-col--padded | slds-align-middle ">
+							<div id="spinner7"></div>
+						</div>
+						<div class="slds-box slds-theme--inverse | slds-col--padded | slds-align-middle ">
+							<div id="spinner8"></div>
+						</div>
+						<div class="slds-box slds-theme--inverse | slds-col--padded | slds-align-middle ">
+							<div id="spinner9"></div>
+						</div>
+					</div>
+				</div>
+
+			</section>
+
+			<!-- tooltip -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Tooltip</span>
+							<span class="slds-badge slds-theme--inverse">alpha: not started</span>
+				</h2>
+				<div id="tooltip"></div>
+			</section>
+
+			<!-- tree -->
+			<section>
+				<h2 class="slds-text-heading--large">
+					<span>Tree</span>
+							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+				</h2>
+				<ul id="tree"></ul>
+			</section>
+				</div>
+			</div>
+			<div class="slds-col slds-size--1-of-12"></div>
+				<div class="slds-container--medium slds-container--center">
+			</div>
+		</div>
+
+		<script src="/assets/facades/scripts/jquery.min.js"></script>
+		<script src="/build/jquery.bundle.js"></script>
+	</body>
+</html>

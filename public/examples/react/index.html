@@ -2,10 +2,10 @@
 <html lang="en">
 	<head>
 		<meta charset=utf-8/>
-		<title>jQuery</title>
-		<link href="/examples/assets/styles/slds.css" rel="stylesheet">
-		<link href="/temp-styles/temp-styles.css" rel="stylesheet">
-		<link href="/examples/example-styles.css" rel="stylesheet">
+		<title>React</title>
+		<!-- <link href="/assets/design-system/styles/slds.css" rel="stylesheet"> -->
+		<link href="/assets/facades/styles/temp-styles/temp-styles.css" rel="stylesheet">
+		<link href="/assets/facades/styles/example-styles.css" rel="stylesheet">
 	</head>
 	<body>
 		<div class="slds-grid">
@@ -15,7 +15,7 @@
 			<div class="slds-col">
 				<div class="slds-container--medium slds-container--center">
 					<!-- badge -->
-					<section>
+					<section class="slds-col slds-size--9-of-12">
 						<h2 class="slds-text-heading--large">
 							<span>Badge</span>
 							<span class="slds-badge slds-theme--shade">alpha: in review</span>
@@ -27,61 +27,60 @@
 					</section>
 
 					<!-- button -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Button</span>
 							<span class="slds-badge">alpha: in progress</span>
 						</h2>
-						<div id="buttons"></div>
+						<span id="slds-button"></span>
+						<span id="slds-button--neutral"></span>
+						<span id="slds-button--small"></span>
+						<span id="slds-button--brand"></span>
+						<span id="slds-button--inverse"></span>
+						<span id="slds-button--icon-bare"></span>
+						<span id="slds-button--icon-bare-disabled"></span>
+						<span id="slds-button--icon-container"></span>
+						<span id="slds-button--icon-container-disabled"></span>
+						<span id="slds-button--icon-border"></span>
+						<span id="slds-button--icon-border-disabled"></span>
+						<span id="slds-button--icon-border-filled"></span>
+						<span id="slds-button--icon-border-filled-disabled"></span>
+						<span id="slds-button--icon-small"></span>
+						<span id="slds-button--icon-small-disabled"></span>
+						<span id="slds-button-stateful"></span>
+						<span id="slds-button-stateful-selected"></span>
 					</section>
 
 					<!-- button group -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Button Group</span>
 							<span class="slds-badge">alpha: in progress</span>
+
 						</h2>
-						<div id="button-groups"></div>
+						<span id="slds-button-group"></span>
 					</section>
 
 					<!-- checkbox -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Checkbox</span>
 							<span class="slds-badge slds-theme--shade">alpha: in review</span>
 						</h2>
-						<div class="slds-form-element" id="myCheckbox"></div>
-						<div class="slds-form-element" id="myCheckbox2"></div>
-						<div class="slds-p-around--medium">
-							<div class="slds-button-group" role="group">
-								<button type="button" class="slds-button slds-button--neutral" id="check-checkbox">check</button>
-								<button type="button" class="slds-button slds-button--neutral" id="uncheck-checkbox">uncheck</button>
-								<button type="button" class="slds-button slds-button--neutral" id="enable-checkbox">enable</button>
-								<button type="button" class="slds-button slds-button--neutral" id="disable-checkbox">disable</button>
-							</div>
-						</div>
+						<section id="slds-checkbox"></section>
 					</section>
 
 					<!-- combobox -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Combobox</span>
-							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+							<span class="slds-badge">alpha: in progress</span>
 						</h2>
 						<div id="combobox"></div>
-						<div class="slds-p-around--medium">
-							<div class="slds-button-group" role="group">
-								<button type="button" class="slds-button slds-button--neutral" id="combobox-getSelectedItem">log selected item/value</button>
-								<button type="button" class="slds-button slds-button--neutral" id="combobox-selectByIndex">set by element index (zero-based) (1)</button>
-								<button type="button" class="slds-button slds-button--neutral" id="combobox-selectByObject">set by object (collection[3])</button>
-								<button type="button" class="slds-button slds-button--neutral" id="combobox-enable">enable</button>
-								<button type="button" class="slds-button slds-button--neutral" id="combobox-disable">disable</button>
-							</div>
-						</div>
 					</section>
 
 					<!-- datatable -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Data Table</span>
 							<span class="slds-badge slds-theme--inverse">alpha: not started</span>
@@ -90,7 +89,7 @@
 					</section>
 
 					<!-- datepicker -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Date Picker</span>
 							<span class="slds-badge slds-theme--inverse">alpha: not started</span>
@@ -99,16 +98,24 @@
 					</section>
 
 					<!-- dropdown -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Dropdown</span>
 							<span class="slds-badge slds-theme--inverse">alpha: not started</span>
 						</h2>
 						<div id="dropdown"></div>
+						<!--<div class="slds-p-around--medium">
+							<div class="slds-button-group" role="group">
+								<button type="button" class="slds-button slds-button--neutral">log selected item</button>
+								<button type="button" class="slds-button slds-button--neutral">set selected item</button>
+								<button type="button" class="slds-button slds-button--neutral">enable</button>
+								<button type="button" class="slds-button slds-button--neutral">disable</button>
+							</div>
+						</div>-->
 					</section>
 
 					<!-- notification -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Notification</span>
 							<span class="slds-badge slds-theme--shade">alpha: in review</span>
@@ -126,34 +133,25 @@
 					</section>
 
 					<!-- picklist -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Picklist</span>
 							<span class="slds-badge slds-theme--shade">alpha: in review</span>
 						</h2>
 						<div id="picklist"></div>
-						<div class="slds-p-around--medium">
-							<div class="slds-button-group" role="group">
-								<button type="button" class="slds-button slds-button--neutral" id="picklist-getSelectedItem">log selected item/value</button>
-								<button type="button" class="slds-button slds-button--neutral" id="picklist-selectByIndex">set by element index (zero-based) (1)</button>
-								<button type="button" class="slds-button slds-button--neutral" id="picklist-selectByObject">set by object (collection[3])</button>
-								<button type="button" class="slds-button slds-button--neutral" id="picklist-enable">enable</button>
-								<button type="button" class="slds-button slds-button--neutral" id="picklist-disable">disable</button>
-							</div>
-						</div>
 					</section>
 
 					<!-- pillbox -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
-							<span>Pill</span>
+							<span>Pillbox</span>
 							<span class="slds-badge slds-theme--shade">alpha: in review</span>
 						</h2>
-						<div id="pillbox1"></div>
+						<div id="pillbox"></div>
 					</section>
 
 					<!-- popover -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Popover</span>
 							<span class="slds-badge slds-theme--inverse">alpha: not started</span>
@@ -162,7 +160,7 @@
 					</section>
 
 					<!-- radio -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Radio</span>
 							<span class="slds-badge slds-theme--shade">alpha: in review</span>
@@ -171,7 +169,7 @@
 					</section>
 
 					<!-- spinner -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Spinner</span>
 							<span class="slds-badge slds-theme--shade">alpha: in review</span>
@@ -180,7 +178,7 @@
 					</section>
 
 					<!-- tooltip -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Tooltip</span>
 							<span class="slds-badge slds-theme--inverse">alpha: not started</span>
@@ -189,12 +187,12 @@
 					</section>
 
 					<!-- tree -->
-					<section>
+					<section class="slds-col slds-size--1-of-1">
 						<h2 class="slds-text-heading--large">
 							<span>Tree</span>
-							<span class="slds-badge slds-theme--shade">alpha: in review</span>
+							<span class="slds-badge">alpha: in progress</span>
 						</h2>
-						<ul id="tree"></ul>
+						<div id="tree"></div>
 					</section>
 				</div>
 			</div>
@@ -202,8 +200,6 @@
 				<div class="slds-container--medium slds-container--center">
 			</div>
 		</div>
-
-		<script src="/node_modules/jquery/dist/jquery.min.js"></script>
-		<script src="/build/jquery.bundle.js"></script>
+		<script src="/build/react.bundle.js"></script>
 	</body>
 </html>
