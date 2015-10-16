@@ -29,5 +29,12 @@ export default function () {
 		}
 	});
 
-	ReactDOM.render(<PillboxExample/>, document.getElementById('pillbox'));
+	ReactDOM.render(
+		<div>
+			<div className="slds-col example">
+				<PillboxExample/>
+			</div>
+			<div className="slds-col demo-controls"></div>
+		</div>
+	, document.getElementById('pillbox-react-control'));
 }

@@ -17,38 +17,38 @@ export default function () {
 
 		render () {
 			return (
-				<fieldset className="slds-form-element">
-					<div className="slds-form-element__control">
-						<Checkbox ref="checkbox"
-											labelText="Checked"
-											disabled={this.state.checkboxen.get('checkbox').disabled}
-											checked={this.state.checkboxen.get('checkbox').checked}
-											onCheckedValueChanged={this._handleChange.bind(this, 'checkbox')}
-											onDisabledValueChanged={this._handleDisable.bind(this, 'checkbox')}
-											value="checkbox"/>
+				<div>
+					<div className="slds-col example">
+						<fieldset className="slds-form-element">
+							<div className="slds-form-element__control">
+								<Checkbox ref="checkbox"
+									labelText="Checked"
+									disabled={this.state.checkboxen.get('checkbox').disabled}
+									checked={this.state.checkboxen.get('checkbox').checked}
+									onCheckedValueChanged={this._handleChange.bind(this, 'checkbox')}
+									onDisabledValueChanged={this._handleDisable.bind(this, 'checkbox')}
+									value="checkbox"/>
+							</div>
+							<div className="slds-form-element__control">
+								<Checkbox ref="checkbox2"
+									labelText="Unchecked"
+									disabled={this.state.checkboxen.get('checkbox2').disabled}
+									checked={this.state.checkboxen.get('checkbox2').checked}
+									onCheckedValueChanged={this._handleChange.bind(this, 'checkbox2')}
+									onDisabledValueChanged={this._handleDisable.bind(this, 'checkbox2')}
+									value="checkbox2"/>
+							</div>
+						</fieldset>
 					</div>
-					<div className="slds-form-element__control">
-						<Checkbox ref="checkbox2"
-											labelText="Unchecked"
-											disabled={this.state.checkboxen.get('checkbox2').disabled}
-											checked={this.state.checkboxen.get('checkbox2').checked}
-											onCheckedValueChanged={this._handleChange.bind(this, 'checkbox2')}
-											onDisabledValueChanged={this._handleDisable.bind(this, 'checkbox2')}
-											value="checkbox2"/>
-					</div>
-					<div className="slds-p-around--medium">
+					<div className="slds-col demo-controls">
 						<div className="slds-button-group" role="group">
-							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>check
-							</button>
-							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>uncheck
-							</button>
-							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>disable
-							</button>
-							<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>enable
-							</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>check</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>uncheck</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>disable</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>enable</button>
 						</div>
 					</div>
-				</fieldset>
+				</div>
 			);
 		},
 
@@ -70,5 +70,5 @@ export default function () {
 		}
 	});
 
-	ReactDOM.render(<CheckboxExample />, document.getElementById('slds-checkbox'));
+	ReactDOM.render(<CheckboxExample />, document.getElementById('checkbox-react-control'));
 }

@@ -20,48 +20,55 @@ export default function () {
 			const name = 'radioGroup1';
 			const radios = [
 				<Radio ref="radio0"
-						checked={this.state.radioboxen.get('radio0').checked}
-						disabled={this.state.radioboxen.get('radio0').disabled}
-						key="1"
-						name={name}
-						labelText="Checked"
-						onCheckedValueChanged={this._handleChange.bind(this, 'radio0')}
-						onDisabledValueChanged={this._handleDisable.bind(this, 'radio0')}
-						value="value1" />,
+					checked={this.state.radioboxen.get('radio0').checked}
+					disabled={this.state.radioboxen.get('radio0').disabled}
+					key="1"
+					name={name}
+					labelText="Checked"
+					onCheckedValueChanged={this._handleChange.bind(this, 'radio0')}
+					onDisabledValueChanged={this._handleDisable.bind(this, 'radio0')}
+					value="value1" />,
 				<Radio ref="radio1"
-						checked={this.state.radioboxen.get('radio1').checked}
-						disabled={this.state.radioboxen.get('radio1').disabled}
-						key="2"
-						name={name}
-						labelText="Unchecked"
-						onCheckedValueChanged={this._handleChange.bind(this, 'radio1')}
-						onDisabledValueChanged={this._handleDisable.bind(this, 'radio1')}
-						value="value3" />,
+					checked={this.state.radioboxen.get('radio1').checked}
+					disabled={this.state.radioboxen.get('radio1').disabled}
+					key="2"
+					name={name}
+					labelText="Unchecked"
+					onCheckedValueChanged={this._handleChange.bind(this, 'radio1')}
+					onDisabledValueChanged={this._handleDisable.bind(this, 'radio1')}
+					value="value3" />,
 				<Radio ref="radio2"
-						checked={this.state.radioboxen.get('radio2').checked}
-						disabled={this.state.radioboxen.get('radio2').disabled}
-						key="3"
-						name={name}
-						labelText="Unchecked Disabled"
-						onCheckedValueChanged={this._handleChange.bind(this, 'radio2')}
-						onDisabledValueChanged={this._handleDisable.bind(this, 'radio2')}
-						value="value4" />
+					checked={this.state.radioboxen.get('radio2').checked}
+					disabled={this.state.radioboxen.get('radio2').disabled}
+					key="3"
+					name={name}
+					labelText="Unchecked Disabled"
+					onCheckedValueChanged={this._handleChange.bind(this, 'radio2')}
+					onDisabledValueChanged={this._handleDisable.bind(this, 'radio2')}
+					value="value4" />
 			];
-			return (<fieldset className="slds-form-element">
-						<div className="slds-form-element__control">
-							{radios}
-						</div>
-						<div className="slds-p-around--medium">
-							<div className="slds-button-group" role="group">
-								<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>check first</button>
-								<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>check second</button>
-								<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>disable first</button>
-								<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>enable first</button>
-								<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>disable all</button>
-								<button type="button" className="slds-button slds-button--neutral" onClick={this._handleClick}>enable all</button>
+
+			return (
+				<div>
+					<div className="slds-col example">
+						<fieldset className="slds-form-element">
+							<div className="slds-form-element__control">
+								{radios}
 							</div>
+						</fieldset>
+					</div>
+					<div className="slds-col demo-controls">
+						<div className="slds-button-group" role="group">
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>check first</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>check second</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>disable first</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>enable first</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>disable all</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>enable all</button>
 						</div>
-					</fieldset>);
+					</div>
+				</div>
+			);
 		},
 
 		_handleClick (e) {
@@ -113,5 +120,5 @@ export default function () {
 		}
 	});
 
-	ReactDOM.render(<RadioExample />, document.getElementById('slds-radio'));
+	ReactDOM.render(<RadioExample />, document.getElementById('radio-react-control'));
 }

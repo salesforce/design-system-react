@@ -36,11 +36,11 @@ export const CheckboxObject = {
 
 	_renderInput () {
 		return (<input name={this.props.name}
-						type="checkbox"
-						disabled={this.props.disabled}
-						checked={this.props.checked}
-						value={this.props.value || ''}
-						onChange={this.toggle}/>);
+					type="checkbox"
+					disabled={this.props.disabled}
+					checked={this.props.checked}
+					value={this.props.value || ''}
+					onChange={this.toggle}/>);
 	},
 
 	_renderLabelText () {

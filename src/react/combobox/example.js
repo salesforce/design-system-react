@@ -39,20 +39,18 @@ export default function () {
 			const comboboxen = this.state.models.map((model, index) => {
 				return (
 					<div key={index}>
-						<Combobox {...model} onChanged={this._handleModelChange.bind(this, index)}/>
-
-						<div className="slds-p-around--medium">
+						<div className="slds-col example">
+							<div>
+								<Combobox {...model} onChanged={this._handleModelChange.bind(this, index)}/>
+							</div>
+						</div>
+						<div className="slds-col demo-controls">
 							<div className="slds-button-group" role="group">
-								<button className="slds-button slds-button--neutral" onClick={this.logSelectedItem.bind(this, index)}>
-									log selected item
-								</button>
-								<button className="slds-button slds-button--neutral" onClick={this.setSelection.bind(this, index)}>set
-									by object
-								</button>
-								<button className="slds-button slds-button--neutral" onClick={this.enable.bind(this, index)}>enable
-								</button>
-								<button className="slds-button slds-button--neutral" onClick={this.disable.bind(this, index)}>disable
-								</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>check</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.setSelection.bind(this, index)}>set by object</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.enable.bind(this, index)}>enable</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.disable.bind(this, index)}>disable</button>
 							</div>
 						</div>
 					</div>
@@ -95,5 +93,5 @@ export default function () {
 		}
 	});
 
-	ReactDOM.render(<ComboboxExample />, document.getElementById('combobox'));
+	ReactDOM.render(<ComboboxExample />, document.getElementById('combobox-react-control'));
 }

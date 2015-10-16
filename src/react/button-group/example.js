@@ -39,5 +39,12 @@ export default function () {
 		}
 	});
 
-	ReactDOM.render(<ButtonGroupExample/>, document.getElementById('slds-button-group'));
+	ReactDOM.render(
+		<div>
+			<div className="slds-col example">
+				<ButtonGroupExample/>
+			</div>
+			<div className="slds-col demo-controls"></div>
+		</div>
+	, document.getElementById('buttongroup-react-control'));
 }
