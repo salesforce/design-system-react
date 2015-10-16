@@ -13,7 +13,7 @@ export default function () {
 				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
 					<Spinner size="small" theme="base" />
 				</div>
-				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle "> 
+				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
 					<Spinner size="medium" theme="base" />
 				</div>
 				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
