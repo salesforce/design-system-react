@@ -5,6 +5,8 @@
 	<meta charset=utf-8/>
 	<title>Fuel UX Facades</title>
 	<link href="/examples/assets/styles/slds.css" rel="stylesheet">
+	<link href="/temp-styles/temp-styles.css" rel="stylesheet">
+	<link href="/examples/example-styles.css" rel="stylesheet">
 	<style>
 		.site-masthead {
 			height: 11.25rem;
@@ -31,6 +33,51 @@
 		.facade-logo {
 			width:50%;
 		}
+
+		#component-list {
+			margin-bottom: 30px;
+		}
+
+		.component-wrapper {
+			margin-top: 30px;
+		}
+
+		.component-wrapper .header {
+			border-bottom: 2px solid #b8c3ce;
+		}
+
+		.component .body {
+			border: 1px solid #e0e5ee;
+		}
+
+		.component .body .example-type {
+			border-left: 1px solid #e0e5ee;
+		}
+
+		.component .body .example-type:first-child{
+			border-left: none;
+		}
+
+		.component .body .example-wrapper {
+			padding: 5px;
+		}
+
+		.component .body .example-wrapper .example {
+			padding: 10px 10px 30px 10px;
+		}
+
+		.component .body .example-wrapper .type {
+			margin-top: -5px;
+		}
+
+		a.slds-button.slds-button--neutral.slds-button--xsmall {
+			margin: 2px 0px;
+			font-size: 0.7rem;
+			padding-left: 0.8rem;
+			padding-right: 0.8rem;
+			line-height: 1.575rem;
+			min-height: 1.6rem;
+		}
 	</style>
 </head>
 
@@ -41,36 +88,72 @@
 				<span class="slds-media__figure"><img class="masthead-icon" src="/examples/assets/images/header-components.svg" alt=""></span>
 				<div class="slds-media__body">
 					<div class="masthead-heading">Fuel UX</div>
-					<div class="masthead-subheading">Facades</div>
+					<div class="masthead-subheading">Facades Examples</div>
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<p class="site-text-introduction">
-		Lightning Design System components have been implemented natively across the following facades:
-	</p>
+	<section class="slds-grid">
+		<div class="slds-col slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12"></div>
+		<div class="slds-col slds-size--10-of-12 slds-medium-size--10-of-12 slds-large-size--10-of-12">
+			<div id="component-list" class="slds-grid slds-grid--vertical">
 
-	<div class="slds-grid slds-grid--align-center">
-		<div class="slds-size--1-of-2 slds-col--padded">
-			<div class="slds-grid">
-				<div class="slds-text-align--center slds-align-middle">
-					<a href="jquery/">
-						<img src="assets/jquery-logo.png" class="facade-logo">
-					</a>
-				</div>
+			<!-- badge -->
+
+			<!-- button -->
+
+
+			<!-- button group -->
+
+
+			<!-- checkbox -->
+
+
+			<!-- combobox -->
+
+
+			<!-- datatable -->
+
+
+			<!-- datepicker -->
+
+
+			<!-- dropdown -->
+
+
+			<!-- notification -->
+
+
+			<!-- picklist -->
+
+
+			<!-- pillbox -->
+
+
+			<!-- popover -->
+
+
+			<!-- radio -->
+
+
+			<!-- spinner -->
+
+
+			<!-- tooltip -->
+
+
+			<!-- tree -->
+
+
+
 			</div>
 		</div>
-		<div class="slds-size--1-of-2 slds-col--padded">
-			<div class="slds-grid">
-				<div class="slds-text-align--center slds-align-middle">
-					<a href="react/">
-						<img src="assets/react-logo.png" class="facade-logo">
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+		<div class="slds-col slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12"></div>
+	</section>
+
+	<!-- // <script src="/build/react.bundle.js"></script> -->
+	<!-- // <script src="/build/jquery.bundle.js"></script> -->
 </body>
 
 </html>
