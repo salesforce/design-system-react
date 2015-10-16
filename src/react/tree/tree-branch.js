@@ -82,7 +82,7 @@ const TreeBranch = React.createClass({
 						</svg>
 						<span className="slds-assistive-text">Toggle</span>
 					</button>
-					<div className="slds-tree__branch--name" role="presentation">Tree Branch</div>
+					<div className="slds-tree__branch--name" role="presentation" onClick={this._handleItemClick.bind(this, this.props.item)}>{this.props.item.getText()}</div>
 				</div>
 				<ul className="slds-tree__group slds-nested" role="group">
 					{isOpen ? children : undefined}
