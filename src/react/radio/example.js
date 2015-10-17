@@ -9,9 +9,9 @@ export default function () {
 		getInitialState () {
 			const radioboxen = new Map();
 
-			radioboxen.set('radio0', {disabled: false, checked: true});
-			radioboxen.set('radio1', {disabled: false, checked: false});
+			radioboxen.set('radio1', {disabled: false, checked: true});
 			radioboxen.set('radio2', {disabled: false, checked: false});
+			radioboxen.set('radio3', {disabled: true, checked: false});
 
 			return { radioboxen };
 		},
@@ -19,32 +19,32 @@ export default function () {
 		render () {
 			const name = 'radioGroup1';
 			const radios = [
-				<Radio ref="radio0"
-					checked={this.state.radioboxen.get('radio0').checked}
-					disabled={this.state.radioboxen.get('radio0').disabled}
-					key="1"
-					name={name}
-					labelText="Checked"
-					onCheckedValueChanged={this._handleChange.bind(this, 'radio0')}
-					onDisabledValueChanged={this._handleDisable.bind(this, 'radio0')}
-					value="value1" />,
 				<Radio ref="radio1"
 					checked={this.state.radioboxen.get('radio1').checked}
 					disabled={this.state.radioboxen.get('radio1').disabled}
-					key="2"
+					key="1"
 					name={name}
-					labelText="Unchecked"
+					labelText="Checked"
 					onCheckedValueChanged={this._handleChange.bind(this, 'radio1')}
 					onDisabledValueChanged={this._handleDisable.bind(this, 'radio1')}
-					value="value3" />,
+					value="value1" />,
 				<Radio ref="radio2"
 					checked={this.state.radioboxen.get('radio2').checked}
 					disabled={this.state.radioboxen.get('radio2').disabled}
+					key="2"
+					name={name}
+					labelText="Unchecked"
+					onCheckedValueChanged={this._handleChange.bind(this, 'radio2')}
+					onDisabledValueChanged={this._handleDisable.bind(this, 'radio2')}
+					value="value3" />,
+				<Radio ref="radio3"
+					checked={this.state.radioboxen.get('radio3').checked}
+					disabled={this.state.radioboxen.get('radio3').disabled}
 					key="3"
 					name={name}
 					labelText="Unchecked Disabled"
-					onCheckedValueChanged={this._handleChange.bind(this, 'radio2')}
-					onDisabledValueChanged={this._handleDisable.bind(this, 'radio2')}
+					onCheckedValueChanged={this._handleChange.bind(this, 'radio3')}
+					onDisabledValueChanged={this._handleDisable.bind(this, 'radio3')}
 					value="value4" />
 			];
 
@@ -59,12 +59,12 @@ export default function () {
 					</div>
 					<div className="slds-col demo-controls">
 						<div className="slds-button-group" role="group">
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>check first</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>check second</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>disable first</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>enable first</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>disable all</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>enable all</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Check first</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Check second</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Disable first</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Enable first</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Disable all</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Enable all</button>
 						</div>
 					</div>
 				</div>
@@ -75,26 +75,26 @@ export default function () {
 			// translate text of button into method call
 			switch (e.target.firstChild.data) {
 				case 'check first':
-					this.refs.radio0.check();
-					break;
-				case 'check second':
 					this.refs.radio1.check();
 					break;
+				case 'check second':
+					this.refs.radio2.check();
+					break;
 				case 'disable first':
-					this.refs.radio0.disable();
+					this.refs.radio1.disable();
 					break;
 				case 'enable first':
-					this.refs.radio0.enable();
+					this.refs.radio1.enable();
 					break;
 				case 'disable all':
-					this.refs.radio0.disable();
 					this.refs.radio1.disable();
+					this.refs.radio2.disable();
 					this.refs.radio2.disable();
 					break;
 				case 'enable all':
-					this.refs.radio0.enable();
 					this.refs.radio1.enable();
 					this.refs.radio2.enable();
+					this.refs.radio3.enable();
 					break;
 				default:
 					break;

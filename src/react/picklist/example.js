@@ -43,10 +43,11 @@ export default function () {
 						</div>
 						<div className="slds-col demo-controls">
 							<div className="slds-button-group" role="group">
-								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.logSelectedItem.bind(this, index)}>log selected item</button>
-								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.setSelection.bind(this, index)}>set by object</button>
-								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.enable.bind(this, index)}>enable</button>
-								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.disable.bind(this, index)}>disable</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.logSelectedItem.bind(this, index)}>Log selected item</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" disabled>Set by index</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.setSelection.bind(this, index)}>Set by object</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.enable.bind(this, index)}>Enable</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.disable.bind(this, index)}>Disable</button>
 							</div>
 						</div>
 					</div>

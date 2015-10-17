@@ -11,7 +11,12 @@ export default function () {
 				<Notification theme="error">Your browser is currently not supported. Your Salesforce may be degraded.</Notification>
 				<Notification theme="offline">You are in offline mode.</Notification>
 			</div>
-			<div className="slds-col demo-controls"></div>
+			<div className="slds-col demo-controls">
+				<div className="slds-button-group" role="group">
+					<button type="button" id="notification-react-hide" className="slds-button slds-button--neutral slds-button--xsmall" disabled>Hide</button>
+					<button type="button" id="notification-react-show" className="slds-button slds-button--neutral slds-button--xsmall" disabled>Show</button>
+				</div>
+			</div>
 		</div>
 	, document.getElementById('notification-react-control'));
 }
