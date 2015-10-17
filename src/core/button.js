@@ -49,10 +49,16 @@ const ButtonCore = Lib.merge({}, Base, {
 		'icon-border-filled': CONTROL + '--icon-border-filled',
 		'icon-small': CONTROL + '--icon-small'
 	},
-	
-	iconPositions: {
+
+	buttonStatefulViewStyles: {
+		selected: 'slds-text-selected',
+		selectedHover: 'slds-text-selected-focus'
+	},
+
+	childIconStyles: {
 		'left': CONTROL + '__icon--left',
-		'right': CONTROL + '__icon--right'
+		'right': CONTROL + '__icon--right',
+		'stateful': CONTROL + '__icon--stateful'
 	},
 	
 	_defaultProperties: {
@@ -78,7 +84,14 @@ const ButtonCore = Lib.merge({}, Base, {
 	},
 	
 	_getIconClassNames () {
-		return classNames('slds-button__icon', !!this.props.text && this.iconPositions[this.props.iconPosition]);
+		let iconBaseClass = 'slds-button__icon';
+
+		if (this.props.stateful) {
+			iconBaseClass = this.childIconStyles.stateful;
+		}
+
+		return classNames(iconBaseClass,
+			!!this.props.text && this.childIconStyles[this.props.iconPosition]);
 	}
 	
 	// TODO: We usually manage state and throw our own events here, so this will probably need to be expanded for jQuery support

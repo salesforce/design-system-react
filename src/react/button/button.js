@@ -36,22 +36,23 @@ export const ButtonObject = {
 		if (this.props.icon && this.props.iconPosition === position) {
 			return (<Svg className={this._getIconClassNames()} icon={this.props.icon} />);
 		}
-	},
+	}
+};
 
+const renderObject = {
 	render () {
 		// FIXME: Using this.props.children here only works in the simplest of scenarios
 		// TODO: Does the onClick received by the user need a specific payload or is the event alone enough?
 		return (
-			<button type={this.props.type}
+			<button type="button"
 				onClick={this.props.onClick}
 				className={this._getClassNames()}
-				disabled={this.props.disabled}
-aria-live={this.props.stateful ? 'assertive' : null}>{this._renderIcon('left')}{this.props.text}{this.props.children}{this._renderAssistiveText()}{this._renderIcon('right')}</button>
+				disabled={this.props.disabled}>{this._renderIcon('left')}{this.props.text}{this.props.children}{this._renderAssistiveText()}{this._renderIcon('right')}</button>
 		);
 	}
 };
 
-let Button = Lib.merge({}, ButtonCore, ButtonObject);
+let Button = Lib.merge({}, ButtonCore, ButtonObject, renderObject);
 
 Button = Lib.runHelpers('react', CONTROL, Button);
 Button = React.createClass(Button);
