@@ -15,7 +15,7 @@ export const BadgeObject = {
 
 	propTypes: {
 		children: React.PropTypes.string.isRequired,
-		theme: React.PropTypes.string
+		theme: React.PropTypes.oneOf(Object.keys(BadgeCore.themes))
 	},
 
 	render () {

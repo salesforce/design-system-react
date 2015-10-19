@@ -13,15 +13,15 @@ let Spinner = Lib.merge({}, SpinnerCore, {
 	mixins: [State, genericWillMount],
 
 	propTypes: {
-		size: React.PropTypes.string,
-		theme: React.PropTypes.string
+		size: React.PropTypes.oneOf(Object.keys(SpinnerCore.sizes)),
+		theme: React.PropTypes.oneOf(Object.keys(SpinnerCore.fileNames))
 	},
 
 	render () {
 		const strings = this.getState('strings');
 		
 		return (
-			<div className={this.cssClasses[this.props.size]}>
+			<div className={this.sizes[this.props.size]}>
 				<img src={this.fileNames[this.props.theme]} alt={strings.LOADING} />
 			</div>
 		);
