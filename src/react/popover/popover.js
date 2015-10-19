@@ -39,14 +39,19 @@ let Popover = Lib.merge({}, PopoverCore, {
 	componentDidMount () {
 		this.elements = {};
 
+		this.setElements();
+	},
+
+	setElements () {
 		this.elements.popover = this.refs.popover;
+		this.elements.container = this.props.container;
+		this.elements.align = this.props.align;
 	},
 
 	componentDidUpdate () {
 		// Run this each time the modal opens to account for page changes and scrolling
 		if (this.props.isOpen && (this.elements.container !== this.props.container || this.elements.align !== this.props.align)) {
-			this.elements.container = this.props.container;
-			this.elements.align = this.props.align;
+			this.setElements();
 			
 			const popoverEl = this.elements.popover;
 			this._updateElementAllignment(popoverEl, this.elements.container || this.refs.popover.parentNode, this.elements.align);

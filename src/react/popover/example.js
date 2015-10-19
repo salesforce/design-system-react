@@ -13,7 +13,7 @@ export default function () {
 
 		render () {
 			return (
-				<div>
+				<div className="react-popover-example-wrap">
 					<button id="popover-react-toggle" className="slds-button slds-button--neutral slds-button--xsmall" ref="target" onClick={this._handleClick}>Toggle</button>
 					<Popover placement="right" header={this.state.header} content={this.state.content} isOpen={this.state.isOpen} align={this.state.align}>
 						<span>This is test content for the popover</span>
