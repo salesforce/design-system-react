@@ -16,31 +16,31 @@ const collection = [
 ];
 
 $(function () {
-	const combobox = new Combobox($('#combobox'), {
+	const combobox1 = new Combobox($('#combobox-jquery-control .combobox1'), {
 		collection: collection,
 		resize: 'auto',
-		selection: { value: '4' }
+		selection: { value: '1' }
 	});
 
 	// sample method buttons
-	$('#combobox-getSelectedItem').on('click', function () {
-		Lib.log(combobox.getSelection());
+	$('#combobox-jquery-log').on('click', function () {
+		Lib.log(combobox1.getSelection());
 	});
-	$('#combobox-selectByIndex').on('click', function () {
-		combobox.setSelectionByIndex(1);
+	$('#combobox-jquery-setByIndex').on('click', function () {
+		combobox1.setSelectionByIndex(1);
 	});
-	$('#combobox-selectByObject').on('click', function () {
-		combobox.setSelection(collection[3]);
+	$('#combobox-jquery-setByObject').on('click', function () {
+		combobox1.setSelection(collection[5]);
 	});
-	$('#combobox-enable').on('click', function () {
-		combobox.enable();
+	$('#combobox-jquery-enable').on('click', function () {
+		combobox1.enable();
 	});
-	$('#combobox-disable').on('click', function () {
-		combobox.disable();
+	$('#combobox-jquery-disable').on('click', function () {
+		combobox1.disable();
 	});
 
 	// events
-	$('#combobox').on('changed.fu.combobox', function (event, data) {
+	$('#combobox-jquery-control .combobox1').on('changed.fu.combobox', function (event, data) {
 		Lib.log('changed', data);
 	});
 });
