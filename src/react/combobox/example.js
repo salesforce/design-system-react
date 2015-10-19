@@ -50,7 +50,7 @@ export default function () {
 								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" disabled>Set by index</button>
 								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.setSelection.bind(this, index)}>Set by object</button>
 								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.enable.bind(this, index)}>Enable</button>
-								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.disable.bind(this, index)}>Dsable</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this.disable.bind(this, index)}>Disable</button>
 							</div>
 						</div>
 					</div>
