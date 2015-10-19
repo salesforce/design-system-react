@@ -5,9 +5,10 @@ Below are component prop defaults and available options:
 * disabled={false}
 * inverse={false}
 * stateful={false}
-* iconName='' //see https://www.lightningdesignsystem.com/resources/icons#utility
+* iconName='' see https://www.lightningdesignsystem.com/resources/icons#utility
 * iconSize='medium' ['x-small', 'medium', 'small', 'large']
 * iconPosition='left' ['left', 'right', 'large']
+* className = '' these classes will go directly on the button. For icon variants, include classes here (ie. slds-button--icon-container)
 
 <SLDSButton label='Neutral' variant='neutral' onClick={this.handleNeutralClick} />
 

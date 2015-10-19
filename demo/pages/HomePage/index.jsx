@@ -15,13 +15,14 @@ import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 
 
 import ButtonSection from './ButtonSection';
+import ButtonGroupSection from './ButtonGroupSection';
+import LookupBaseSection from './LookupBaseSection';
 import PicklistBaseSection from './PicklistBaseSection';
 import PicklistBaseCustomSection from './PicklistBaseCustomSection';
 
 
 import ModalSection from './ModalSection';
 import DatePickerSingleSelectSection from './DatePickerSingleSelectSection';
-import LookupBaseSection from './LookupBaseSection';
 import IconSection from './IconSection';
 
 const SLDSColumn = SLDSGrid.Column;
@@ -64,6 +65,8 @@ module.exports = React.createClass( {
           <div className='region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large'>
 
             <ButtonSection />
+
+            <ButtonGroupSection />
 
             <LookupBaseSection />
 

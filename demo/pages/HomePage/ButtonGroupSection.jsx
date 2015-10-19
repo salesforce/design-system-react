@@ -10,13 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
+import SLDSButtonGroup from '../../../components/SLDSButtonGroup';
 import SLDSButton from '../../../components/SLDSButton';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
-
-
-
-
 
 module.exports = React.createClass( {
 
@@ -28,67 +25,24 @@ module.exports = React.createClass( {
     return {};
   },
 
-  handleNeutralClick () {
-    alert('Neutral Button Clicked');
-  },
-
-  handleBrandClick () {
-    alert('Brand Button Clicked');
-  },
-
-  handleDisabledClick () {
-    alert('Disabled Button Clicked');
-  },
-
-  handleIconClick(){
-    alert('Icon Button Clicked');
-  },
-
   render() {
     return (
 
             <div className='slds-p-around--medium'>
               <h3 className='slds-text-heading--medium slds-truncate'>
-                Button
+                Button Group
               </h3>
 
               <PrismCode className='language-markup'>
-                {require('raw-loader!../../code-snippets/SLDSButton.txt')}
+                {require('raw-loader!../../code-snippets/SLDSButtonGroup.txt')}
               </PrismCode>
-
-
               <div className='slds-p-vertical--large'>
-
-                <SLDSButton
-                  label='Neutral'
-                  variant='neutral'
-                  onClick={this.handleNeutralClick} />
-
-                <SLDSButton
-                  label='Neutral Icon'
-                  variant='neutral'
-                  iconName='download'
-                  iconSize='small'
-                  iconPosition='right'
-                  onClick={this.handleNeutralClick} />
-
-                <SLDSButton
-                  label='Disabled'
-                  variant='neutral'
-                  disabled={true}
-                  onClick={this.handleDisabledClick} />
-
-                <SLDSButton
-                  label='Brand'
-                  variant='brand'
-                  onClick={this.handleBrandClick} />
-
-                <SLDSButton
-                  label='Settings'
-                  variant='icon'
-                  iconName='settings'
-                  iconSize='large'
-                  onClick={this.handleIconClick} />
+                <SLDSButtonGroup>
+                  <SLDSButton label='Refresh' variant='neutral' />
+                  <SLDSButton label='Edit' variant='neutral' />
+                  <SLDSButton label='Save' variant='neutral' />
+                  <SLDSButton label='More Options' variant='icon' iconName='down' className='slds-button--icon-border-filled' />
+                </SLDSButtonGroup>
               </div>
             </div>
 
