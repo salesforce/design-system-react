@@ -3,6 +3,7 @@ Default Props             Prop Values
 * label=''                Required Prop
 * variant='base'          ['base', 'neutral', 'brand', 'destructive', 'icon'] Use icon if you want an icon only button
 * disabled={false}
+* tabindex=''
 * inverse={false}
 * stateful={false}
 * iconName=''             see https://www.lightningdesignsystem.com/resources/icons#utility for names
