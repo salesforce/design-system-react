@@ -87,7 +87,7 @@ class Button extends React.Component {
     if (this.props.disabled) { props['disabled'] = 'disabled' };
 
     return (
-      <button className={this.getClassName()} {...props} onClick={click}>
+      <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
         {this.props.iconPosition === 'right' ? <span className={labelClasses}>{this.props.label}</span>: null}
         {this.renderIcon()}
         {this.renderIconMore()}
@@ -100,6 +100,7 @@ class Button extends React.Component {
 Button.propTypes = {
   label: React.PropTypes.string.isRequired,
   variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
+  tabindex: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   inverse: React.PropTypes.bool,
   stateful: React.PropTypes.bool,
