@@ -130,7 +130,7 @@ Utilize our detailed guidelines to confidently design excellent apps that fit ri
             <div className='slds-p-around--medium'>
 
               <h3 className='slds-text-heading--medium slds-truncate'>
-                Modal (Work in progress)
+                Modal
               </h3>
 {/*
               <PrismCode className='language-markup'>

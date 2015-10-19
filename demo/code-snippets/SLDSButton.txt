@@ -6,6 +6,7 @@ Default Props             Prop Values
 * tabindex=''
 * inverse={false}
 * stateful={false}
+* responsive={false}
 * iconName=''             see https://www.lightningdesignsystem.com/resources/icons#utility for names
 * iconVariant='bare'      ['bare', 'container', 'border', 'border-filled', 'small', 'more']
 * iconSize='medium'       ['x-small', 'medium', 'small', 'large']
