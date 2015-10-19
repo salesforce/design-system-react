@@ -1,4 +1,4 @@
-// PILLBOX CONTROL - JQUERY FACADE
+// POPOVER CONTROL - JQUERY FACADE
 
 // Core
 import * as Lib from '../../lib/lib';

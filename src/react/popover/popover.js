@@ -1,4 +1,4 @@
-// RADIO CONTROL - REACT FACADE
+// POPOVER CONTROL - REACT FACADE
 
 // Core
 import * as Lib from '../../lib/lib';

@@ -1,4 +1,4 @@
-// PILLBOX CONTROL
+// POPOVER CONTROL
 import * as Lib from '../lib/lib';
 import Base from './base';
 

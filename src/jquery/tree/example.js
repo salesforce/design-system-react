@@ -69,11 +69,11 @@ const collection = [
 
 const options = {
 	collection: collection,
-	folderSelect: true,
+	folderSelect: false,
 	multiSelect: true
 };
 
 $(function () {
-	const tree = new Tree($('#tree'), options);
+	const tree = new Tree($('#tree-jquery-control .tree1'), options);
 	void(tree);
 });
