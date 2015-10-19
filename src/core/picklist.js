@@ -1,4 +1,4 @@
-// PICKLIST CONTROL
+// PICKLIST CORE
 
 import * as Lib from '../lib/lib';
 import Base from './base';

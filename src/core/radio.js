@@ -1,4 +1,4 @@
-// RADIO CONTROL
+// RADIO CORE
 
 import * as Lib from '../lib/lib';
 import CheckboxCore from './checkbox';

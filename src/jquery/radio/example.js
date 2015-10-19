@@ -6,7 +6,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	const radios = new Radios($('#radio-jquery-control'), {
-		labelText: 'Opts',
+		labelText: 'Radio Group Label',
 		name: 'rads',
 		radios: [
 			{

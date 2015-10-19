@@ -1,3 +1,5 @@
+// PICKLIST ITEM - REACT FACADE
+
 // Framework specific
 import React from 'react';
 
@@ -26,7 +28,7 @@ const PicklistItem = React.createClass({
 				break;
 			default:
 				const disabled = this.props.item.getDisabled();
-			
+
 				html = (
 					<li className="slds-dropdown__item slds-has-icon--left" disabled={disabled}>
 					<a href="#" className="slds-truncate" onClick={this.handleClicked}>{this.props.item.getText()}</a>
