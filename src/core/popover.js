@@ -38,12 +38,14 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 		right: 'slds-nubbin--left'
 	},
 
+	currentPropPosition: null,
+
 	_getElementAllignment (el, container, align) {
 		const offset = Lib.offsetFromParent(align, container);
 		const popSize = {};
 		const alignSize = {};
 		const position = {};
-		let popPosition = this.adjustedPosition || this.getProperty('position');
+		let popPosition = this.getProperty('position');
 		let isOffscreen;
 
 		popSize.width = Lib.outerWidth(el);
@@ -57,6 +59,8 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 			if (isOffscreen) {
 				popPosition = isOffscreen === 'top' ? 'bottom' : 'top';
 			}
+
+			this.autoAdjustedPosition = isOffscreen ? popPosition : null;
 		}
 
 		switch ( popPosition ) {
@@ -82,8 +86,8 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 		return position;
 	},
 	
-	_getClassNames: function () {
-		const positionClass = this.positions[this.adjustedPosition || this.getProperty('position')] || this.positions.right;
+	_getClassNames () {
+		const positionClass = this.positions[this.autoAdjustedPosition || this.getProperty('position')] || this.positions.right;
 		
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass);
 	}

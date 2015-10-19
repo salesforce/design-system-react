@@ -92,10 +92,17 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 				top: position.top,
 				left: position.left
 			});
+			this.elements.popover.attr('class', this._getClassNames());
 
 			this.elements.wrapper.trigger('shown.fu.popover');
 		} else {
 			this.elements.popover.addClass('slds-hidden');
+
+			this.elements.popover.css({// Resetting popover to unadjusted position if possible
+				top: position.top,
+				left: position.left
+			});
+
 			this.elements.wrapper.trigger('hidden.fu.popover');
 		}
 	}
