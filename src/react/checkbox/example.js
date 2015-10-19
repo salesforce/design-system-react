@@ -20,6 +20,7 @@ export default function () {
 				<div>
 					<div className="slds-col example">
 						<fieldset className="slds-form-element">
+							<legend className="slds-form-element__label slds-form-element__label--top"></legend>
 							<div className="slds-form-element__control">
 								<Checkbox ref="checkbox"
 									labelText="Checked"
