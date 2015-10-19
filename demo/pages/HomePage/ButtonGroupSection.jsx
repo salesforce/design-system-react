@@ -37,12 +37,20 @@ module.exports = React.createClass( {
                 {require('raw-loader!../../code-snippets/SLDSButtonGroup.txt')}
               </PrismCode>
 
-              <div className='slds-p-vertical--large'>
+              <div className='slds-p-vertical--small'>
                 <SLDSButtonGroup>
                   <SLDSButton label='Refresh' variant='neutral' />
                   <SLDSButton label='Edit' variant='neutral' />
                   <SLDSButton label='Save' variant='neutral' />
                   <SLDSButton label='More Options' variant='icon' iconName='down' iconVariant='border-filled' />
+                </SLDSButtonGroup>
+              </div>
+
+              <div className='slds-p-vertical--small'>
+                <SLDSButtonGroup>
+                  <SLDSButton label='Chart' variant='icon' iconName='chart' iconVariant='border'/>
+                  <SLDSButton label='Filter' variant='icon' iconName='filter' iconVariant='border'/>
+                  <SLDSButton label='Sort' variant='icon' iconName='sort' iconVariant='more'/>
                 </SLDSButtonGroup>
               </div>
             </div>

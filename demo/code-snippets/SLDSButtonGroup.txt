@@ -6,3 +6,10 @@
   <SLDSButton label='Save' variant='neutral' />
   <SLDSButton label='More Options' variant='icon' iconName='down' iconVariant='border-filled' />
 </SLDSButtonGroup>
+
+<SLDSButtonGroup>
+  <SLDSButton label='Chart' variant='icon' iconName='chart' iconVariant='border'/>
+  <SLDSButton label='Filter' variant='icon' iconName='filter' iconVariant='border'/>
+  <SLDSButton label='Sort' variant='icon' iconName='sort' iconVariant='more'/>
+</SLDSButtonGroup>
+

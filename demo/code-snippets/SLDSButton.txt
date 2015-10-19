@@ -6,7 +6,7 @@ Default Props             Prop Values
 * inverse={false}
 * stateful={false}
 * iconName=''             see https://www.lightningdesignsystem.com/resources/icons#utility for names
-* iconVariant='bare'      ['bare', 'container', 'border', 'border-filled', 'small']
+* iconVariant='bare'      ['bare', 'container', 'border', 'border-filled', 'small', 'more']
 * iconSize='medium'       ['x-small', 'medium', 'small', 'large']
 * iconPosition='left'     ['left', 'right', 'large']
 * className = ''          custom classes on the button tag

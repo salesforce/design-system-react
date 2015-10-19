@@ -65,6 +65,20 @@ class Button extends React.Component {
     }
   }
 
+  renderIconMore(){
+    if(this.props.iconVariant === 'more'){
+      return(
+        <ButtonIcon
+          variant={this.props.variant}
+          disabled={this.props.disabled}
+          inverse={this.props.inverse}
+          name='down'
+          size='x-small'
+          />
+      );
+    }
+  }
+
 
   render() {
     const props = omit('className', this.props);
@@ -76,6 +90,7 @@ class Button extends React.Component {
       <button className={this.getClassName()} {...props} onClick={click}>
         {this.props.iconPosition === 'right' ? <span className={labelClasses}>{this.props.label}</span>: null}
         {this.renderIcon()}
+        {this.renderIconMore()}
         {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? <span className={labelClasses}>{this.props.label}</span>: null}
       </button>
     );
@@ -89,7 +104,7 @@ Button.propTypes = {
   inverse: React.PropTypes.bool,
   stateful: React.PropTypes.bool,
   iconName: React.PropTypes.string,
-  iconVariant: React.PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small']),
+  iconVariant: React.PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
   iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
   iconPosition: React.PropTypes.oneOf(['left', 'right']),
 }
