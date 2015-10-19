@@ -13,63 +13,68 @@
 				background-color: #16325c;
 				color: #fff;
 			}
+			
 			.masthead-icon {
 				width: 60px;
 				height: 67px;
 			}
+			
 			.masthead-heading {
 				color: #A8B8D0;
 			}
+			
 			.masthead-subheading {
 				font-size: 3rem;
 			}
+			
 			.site-text-introduction {
 				margin-bottom: 1rem;
 				font-size: 1.125rem;
 				font-weight: 300;
 				padding: 30px;
 			}
+			
 			.facade-logo {
-				width:50%;
+				width: 50%;
 			}
-
+			
 			#component-list {
 				margin-bottom: 30px;
 			}
-
+			
 			.component-wrapper {
 				margin-top: 40px;
 			}
-
+			
 			.component-wrapper .header {
 				border-bottom: 2px solid #b8c3ce;
 			}
-
+			
 			.component .body {
 				border: 1px solid #e0e5ee;
 			}
-
+			
 			.component .body .example-type {
 				border-left: 1px solid #e0e5ee;
 			}
-
-			.component .body .example-type:first-child{
+			
+			.component .body .example-type:first-child {
 				border-left: none;
 			}
-
+			
 			.component .body .example-wrapper {
 				padding: 5px;
 			}
-
+			
 			.component .body .example-wrapper .example {
 				padding: 10px;
 			}
-
+			
 			.component .body .example-wrapper .type {
 				margin-top: -5px;
 			}
-
-			.slds-button.slds-button--neutral.slds-button--xsmall {
+			
+			.slds-button.slds-button--neutral.slds-button--x-small {
 				margin: 2px 0px;
 				font-size: 0.7rem;
 				padding-left: 0.8rem;
@@ -77,29 +82,29 @@
 				line-height: 1.575rem;
 				min-height: 1.6rem;
 			}
-
+			
 			.slds-spinner--small {
-			    position: relative;
-			    top: 18px;
+				position: relative;
+				top: 18px;
 			}
-
+			
 			.slds-spinner--medium {
-			    position: relative;
-			    top: 5px;
+				position: relative;
+				top: 5px;
 			}
-
+			
 			.slds-button-group {
-			    margin-top: 10px;
+				margin-top: 10px;
 			}
-
+			
 			.example .row {
-			    padding-bottom: 5px;
+				padding-bottom: 5px;
 			}
 		</style>
 	</head>
 	<body>
-		<header class="site-masthead slds-grid">
-			<div class="site-masthead-title slds-col slds-has-flexi-truncate slds-align-middle">
+		<header class="slds-grid | site-masthead">
+			<div class="slds-col | slds-has-flexi-truncate | slds-align-middle | site-masthead-title">
 				<div class="slds-media slds-media--center slds-media--responsive">
 					<span class="slds-media__figure"><img class="masthead-icon" src="/assets/design-system/images/header-components.svg" alt=""></span>
 					<div class="slds-media__body">
@@ -109,135 +114,130 @@
 				</div>
 			</div>
 		</header>
-
 		<section class="slds-grid">
-			<div class="slds-col slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12"></div>
-			<div class="slds-col slds-size--10-of-12 slds-medium-size--10-of-12 slds-large-size--10-of-12">
+			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12">
+				
+			</div>
+
+			<div class="slds-col | slds-size--10-of-12 slds-medium-size--10-of-12 slds-large-size--10-of-12">
 				<div id="component-list" class="slds-grid slds-grid--vertical">
 
-				<!-- badge -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Badge</span>
-								<span class="slds-badge slds-theme--shade">alpha: done</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="badge-react-control"></div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="badge-jquery-control" class="slds-col example">
-												<span class="badge1"></span>
-												<span class="badge2"></span>
-												<span class="badge3"></span>
-												<span class="badge4"></div>
+					<!-- badge -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Badge</span>
+									<span class="slds-badge | slds-theme--shade">Alpha: done</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
 											</div>
-											<div class="slds-col demo-controls"></div>
+											<div id="badge-react-control"></div>
+										</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="badge-jquery-control" class="slds-col | example">
+													<span class="badge1"></span>
+													<span class="badge2"></span>
+													<span class="badge3"></span>
+													<span class="badge4"></span>
+												</div>
+												<div class="slds-col | demo-controls"></div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
 					</div>
-				</div>
 
-				<!-- button -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Button, Button Group, &amp; Stateful Button</span>
-								<span class="slds-badge">alpha: in progress</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="button-react-control"></div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="button-jquery-control" class="slds-col example">
-												<div class=""></div>
+					<!-- button -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Button, Button Group, &amp; Stateful Button</span>
+									<span class="slds-badge | slds-theme--warning slds-theme--inverse-text">Alpha: in progress</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
 											</div>
-											<div class="slds-col demo-controls"></div>
+											<div id="button-react-control"></div>
+										</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="button-jquery-control" class="slds-col | example">
+													<div class=""></div>
+												</div>
+												<div class="slds-col | demo-controls"></div>
+											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
 					</div>
-				</div>
 
-				<!-- checkbox -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Checkbox</span>
-								<span class="slds-badge slds-theme--shade">alpha: done</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
+					<!-- checkbox -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical component">
+							<div class="slds-col header">
+								<h2 class="slds-text-heading--large">
+									<span>Checkbox</span>
+									<span class="slds-badge slds-theme--shade">alpha: done</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
+											</div>
+											<div id="checkbox-react-control"></div>
 										</div>
-										<div id="checkbox-react-control"></div>
 									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-										<div>
-											<div id="checkbox-jquery-control" class="slds-col example">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="checkbox-jquery-control" class="slds-col | example">
 												<fieldset class="slds-form-element">
 													<legend class="slds-form-element__label slds-form-element__label--top"></legend>
 													<div class="slds-form-element__control" id="checkbox1"></div>
 													<div class="slds-form-element__control" id="checkbox2"></div>
 												</fieldset>
-											</div>
-											<div class="slds-col demo-controls">
-												<div class="slds-button-group" role="group">
-													<button type="button" id="checkbox-jquery-check" class="slds-button slds-button--neutral slds-button--xsmall">Check</button>
-													<button type="button" id="checkbox-jquery-uncheck" class="slds-button slds-button--neutral slds-button--xsmall">Uncheck</button>
-													<button type="button" id="checkbox-jquery-disable" class="slds-button slds-button--neutral slds-button--xsmall">Disable</button>
-													<button type="button" id="checkbox-jquery-enable" class="slds-button slds-button--neutral slds-button--xsmall">Enable</button>
+												</div>
+												<div class="slds-col | demo-controls">
+													<div class="slds-button-group" role="group">
+														<button type="button" id="checkbox-jquery-check" class="slds-button slds-button--neutral slds-button--x-small">Check</button>
+														<button type="button" id="checkbox-jquery-uncheck" class="slds-button slds-button--neutral slds-button--x-small">Uncheck</button>
+														<button type="button" id="checkbox-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
+														<button type="button" id="checkbox-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -245,47 +245,44 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
-				</div>
 
-				<!-- combobox -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Combobox</span>
-								<span class="slds-badge slds-theme--shade">alpha: done</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="combobox-react-control"></div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="combobox-jquery-control" class="slds-col example">
-												<div class="combobox1"></div>
+					<!-- combobox -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Combobox</span>
+									<span class="slds-badge | slds-theme--shade">Alpha: done</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
 											</div>
-											<div class="slds-col demo-controls">
-												<div class="slds-button-group" role="group">
-													<button type="button" id="combobox-jquery-log" class="slds-button slds-button--neutral slds-button--xsmall">Log selected item</button>
-													<button type="button" id="combobox-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--xsmall">Set by index</button>
-													<button type="button" id="combobox-jquery-setByObject" class="slds-button slds-button--neutral slds-button--xsmall">Set by object</button>
-													<button type="button" id="combobox-jquery-enable" class="slds-button slds-button--neutral slds-button--xsmall">Enable</button>
-													<button type="button" id="combobox-jquery-disable" class="slds-button slds-button--neutral slds-button--xsmall">Disable</button>
+											<div id="combobox-react-control"></div>
+										</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="combobox-jquery-control" class="slds-col | example">
+													<div class="combobox1"></div>
+												</div>
+												<div class="slds-col | demo-controls">
+													<div class="slds-button-group" role="group">
+														<button type="button" id="combobox-jquery-log" class="slds-button slds-button--neutral slds-button--x-small">Log selected item</button>
+														<button type="button" id="combobox-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--x-small">Set by index</button>
+														<button type="button" id="combobox-jquery-setByObject" class="slds-button slds-button--neutral slds-button--x-small">Set by object</button>
+														<button type="button" id="combobox-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
+														<button type="button" id="combobox-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
+													</div>
 												</div>
 											</div>
 										</div>
@@ -293,278 +290,36 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
-				</div>
 
-				<!-- data-table -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Data Table</span>
-								<span class="slds-badge slds-theme--inverse">alpha: not started</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
+					<!-- data-table -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Data Table</span>
+									<span class="slds-badge | slds-theme--error slds-theme--inverse-text">Alpha: not started</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
+											</div>
+											<div id="data-table-react-control"></div>
 										</div>
-										<div id="data-table-react-control"></div>
 									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="data-table-jquery-control" class="slds-col example">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div id="data-table-jquery-control" class="slds-col | example">
 												<div class=""></div>
 											</div>
-											<div class="slds-col demo-controls">
-												<div class="slds-button-group" role="group">
-													<!-- <button id="data-table-jquery-hide"class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-													<button id="data-table-jquery-show"class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-													<button id="data-table-jquery-chooseById"class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-													<button id="data-table-jquery-chooseByName"class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button> -->
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<!-- datepicker -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Datepicker</span>
-								<span class="slds-badge slds-theme--inverse">alpha: not started</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="datepicker-react-control"></div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="datepicker-jquery-control" class="slds-col example">
-												<div class=""></div>
-											</div>
-											<div class="slds-col demo-controls">
-												<div class="slds-button-group" role="group">
-													<!-- <button id="datepicker-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-													<button id="datepicker-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-													<button id="datepicker-jquery-chooseById" class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-													<button id="datepicker-jquery-chooseByName" class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button> -->
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<!-- dropdown -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Dropdown</span>
-								<span class="slds-badge slds-theme--inverse">alpha: not started</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="dropdown-react-control"></div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="dropdown-jquery-control" class="slds-col example">
-												<div class=""></div>
-											</div>
-											<div class="slds-col demo-controls">
-												<div class="slds-button-group" role="group">
-													<!-- <button id="dropdown-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-													<button id="dropdown-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-													<button id="dropdown-jquery-chooseById" class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-													<button id="dropdown-jquery-chooseByName" class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button> -->
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<!-- notification -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Notification</span>
-								<span class="slds-badge slds-theme--shade">alpha: done</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="notification-react-control"></div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="notification-jquery-control" class="slds-col example">
-												<div class="notification1"></div>
-												<div class="notification2"></div>
-												<div class="notification3"></div>
-												<div class="notification4"></div>
-											</div>
-											<div class="slds-col demo-controls">
-												<div class="slds-button-group" role="group">
-													<button type="button" id="notification-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-													<button type="button" id="notification-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<!-- picklist -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Picklist</span>
-								<span class="slds-badge slds-theme--shade">alpha: done</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="picklist-react-control"></div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="picklist-jquery-control" class="slds-col example">
-												<div class="picklist1"></div>
-											</div>
-											<div class="slds-col demo-controls">
-												<div class="slds-button-group" role="group">
-													<button id="picklist-jquery-log" class="slds-button slds-button--neutral slds-button--xsmall">Log selected item</button>
-													<button id="picklist-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--xsmall">Set by index</button>
-													<button id="picklist-jquery-setByObject" class="slds-button slds-button--neutral slds-button--xsmall">Set by object</button>
-													<button id="picklist-jquery-enable" class="slds-button slds-button--neutral slds-button--xsmall">Enable</button>
-													<button id="picklist-jquery-disable" class="slds-button slds-button--neutral slds-button--xsmall">Disable</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<!-- pillbox -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Pillbox</span>
-								<span class="slds-badge slds-theme--shade">alpha: done</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="pillbox-react-control"></div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="pillbox-jquery-control" class="slds-col example">
-												<div class="pillbox1"></div>
-											</div>
-											<div class="slds-col demo-controls">
+											<div class="slds-col | demo-controls">
 												<div class="slds-button-group" role="group"></div>
 											</div>
 										</div>
@@ -572,160 +327,244 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
-				</div>
 
-				<!-- popover -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Popover</span>
-								<span class="slds-badge">alpha: in progress</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="popover-react-control" class="slds-col example">
-										</div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-										<div id="popover-jquery-control" class="slds-col example">
-											<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--xsmall">Toggle</button>
-										</div>
-									</div>
-								</div>
+					<!-- datepicker -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Datepicker</span>
+									<span class="slds-badge | slds-theme--error slds-theme--inverse-text">Alpha: not started</span>
+								</h2>
 							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<!-- radio -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Radio</span>
-								<span class="slds-badge">alpha: in progress</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
+											</div>
+											<div id="datepicker-react-control"></div>
 										</div>
-										<div id="radio-react-control"></div>
 									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-										<div id="radio-jquery-control" class="slds-col example"></div>
-										<div class="slds-col demo-controls">
-											<div class="slds-button-group" role="group">
-												<button id="radio-jquery-checkFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Check first</button>
-												<button id="radio-jquery-checkSecond" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Check second</button>
-												<button id="radio-jquery-disableFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Disable first</button>
-												<button id="radio-jquery-enableFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Enable first</button>
-												<button id="radio-jquery-disableAll" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Disable all</button>
-												<button id="radio-jquery-enableAll" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Enable all</button>
-												<button id="radio-jquery-logChecked" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Log Checked</button>
-												<button id="radio-jquery-logValue" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Log Value</button>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="datepicker-jquery-control" class="slds-col | example">
+													<div class=""></div>
+												</div>
+												<div class="slds-col | demo-controls">
+													<div class="slds-button-group" role="group"></div>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-
 					</div>
-				</div>
 
-				<!-- spinner -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Spinner</span>
-								<span class="slds-badge slds-theme--shade">alpha: done</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
+					<!-- dropdown -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Dropdown</span>
+									<span class="slds-badge | slds-theme--error slds-theme--inverse-text">Alpha: not started</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
+											</div>
+											<div id="dropdown-react-control"></div>
 										</div>
-										<div id="spinner-react-control"></div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="dropdown-jquery-control" class="slds-col | example">
+													<div class=""></div>
+												</div>
+												<div class="slds-col | demo-controls">
+													<div class="slds-button-group" role="group"></div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- notification -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Notification</span>
+									<span class="slds-badge | slds-theme--shade">Alpha: done</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
+											</div>
+											<div id="notification-react-control"></div>
 										</div>
-										<div>
-											<div id="spinner-jquery-control" class="slds-col example">
-												<div class="slds-grid slds-grid--vertical">
-													<div class="slds-col slds-theme--default">
-														<div class="slds-float--left spinner">
-															<div class="spinner1"></div>
-														</div>
-														<div class="slds-float--left spinner">
-															<div class="spinner2"></div>
-														</div>
-														<div class="slds-float--left spinner">
-															<div class="spinner3"></div>
-														</div>
-													</div>
-													<div class="slds-col slds-theme--shade">
-														<div class="slds-float--left spinner">
-															<div class="spinner4"></div>
-														</div>
-														<div class="slds-float--left spinner">
-															<div class="spinner5"></div>
-														</div>
-														<div class="slds-float--left spinner">
-															<div class="spinner6"></div>
-														</div>
-													</div>
-													<div class="slds-col slds-theme--inverse">
-														<div class="slds-float--left spinner">
-															<div class="spinner7"></div>
-														</div>
-														<div class="slds-float--left spinner">
-															<div class="spinner8"></div>
-														</div>
-														<div class="slds-float--left spinner">
-															<div class="spinner9"></div>
-														</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="notification-jquery-control" class="slds-col | example">
+													<div class="notification1"></div>
+													<div class="notification2"></div>
+													<div class="notification3"></div>
+													<div class="notification4"></div>
+												</div>
+												<div class="slds-col | demo-controls">
+													<div class="slds-button-group" role="group">
+														<button type="button" id="notification-jquery-hide" class="slds-button slds-button--neutral slds-button--x-small">Hide</button>
+														<button type="button" id="notification-jquery-show" class="slds-button slds-button--neutral slds-button--x-small">Show</button>
 													</div>
 												</div>
 											</div>
-											<div class="slds-col demo-controls">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- picklist -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Picklist</span>
+									<span class="slds-badge | slds-theme--shade">Alpha: done</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
+											</div>
+											<div id="picklist-react-control"></div>
+										</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="picklist-jquery-control" class="slds-col | example">
+													<div class="picklist1"></div>
+												</div>
+												<div class="slds-col | demo-controls">
+													<div class="slds-button-group" role="group">
+														<button id="picklist-jquery-log" class="slds-button slds-button--neutral slds-button--x-small">Log selected item</button>
+														<button id="picklist-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--x-small">Set by index</button>
+														<button id="picklist-jquery-setByObject" class="slds-button slds-button--neutral slds-button--x-small">Set by object</button>
+														<button id="picklist-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
+														<button id="picklist-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- pillbox -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Pillbox</span>
+									<span class="slds-badge | slds-theme--shade">Alpha: done</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
+											</div>
+											<div id="pillbox-react-control"></div>
+										</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="pillbox-jquery-control" class="slds-col | example">
+													<div class="pillbox1"></div>
+												</div>
+												<div class="slds-col | demo-controls">
+													<div class="slds-button-group" role="group"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- popover -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Popover</span>
+									<span class="slds-badge | slds-theme--error slds-theme--inverse-text">Alpha: not started</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
+											</div>
+											<div id="popover-react-control" class="slds-col example">
+											</div>
+										</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div id="popover-jquery-control" class="slds-col | example">
+												<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--x-small">Toggle</button>
+											</div>
+											<div class="slds-col | demo-controls">
 												<div class="slds-button-group" role="group"></div>
 											</div>
 										</div>
@@ -733,46 +572,43 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
-				</div>
 
-				<!-- tooltip -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Tooltip</span>
-								<span class="slds-badge slds-theme--inverse">alpha: not started</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="tooltip-react-control"></div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="tooltip-jquery-control" class="slds-col example">
-												<div class="tooltip1"></div>
+					<!-- radio -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Radio</span>
+									<span class="slds-badge | slds-theme--warning slds-theme--inverse-text">Alpha: in progress</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
 											</div>
-											<div class="slds-col demo-controls">
+											<div id="radio-react-control"></div>
+										</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div id="radio-jquery-control" class="slds-col | example"></div>
+											<div class="slds-col | demo-controls">
 												<div class="slds-button-group" role="group">
-													<!-- <button id="tooltip-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-													<button id="tooltip-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-													<button id="tooltip-jquery-chooseById" class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-													<button id="tooltip-jquery-chooseByName" class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button> -->
+													<button id="radio-jquery-checkFirst" type="button" class="slds-button slds-button--neutral slds-button--x-small">Check first</button>
+													<button id="radio-jquery-checkSecond" type="button" class="slds-button slds-button--neutral slds-button--x-small">Check second</button>
+													<button id="radio-jquery-disableFirst" type="button" class="slds-button slds-button--neutral slds-button--x-small">Disable first</button>
+													<button id="radio-jquery-enableFirst" type="button" class="slds-button slds-button--neutral slds-button--x-small">Enable first</button>
+													<button id="radio-jquery-disableAll" type="button" class="slds-button slds-button--neutral slds-button--x-small">Disable all</button>
+													<button id="radio-jquery-enableAll" type="button" class="slds-button slds-button--neutral slds-button--x-small">Enable all</button>
+													<button id="radio-jquery-logChecked" type="button" class="slds-button slds-button--neutral slds-button--x-small">Log Checked</button>
+													<button id="radio-jquery-logValue" type="button" class="slds-button slds-button--neutral slds-button--x-small">Log Value</button>
 												</div>
 											</div>
 										</div>
@@ -780,46 +616,72 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
-				</div>
 
-				<!-- tree -->
-				<div class="slds-col component-wrapper">
-					<div class="slds-grid slds-grid--vertical component">
-
-						<div class="slds-col header">
-							<h2 class="slds-text-heading--large">
-								<span>Tree</span>
-								<span class="slds-badge">alpha: in progress</span>
-							</h2>
-						</div>
-
-						<div class="slds-col body">
-							<div class="slds-grid">
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">React</span>
-										</div>
-										<div id="tree-react-control"></div>
-									</div>
-								</div>
-								<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
-									<div class="slds-grid slds-grid--vertical example-wrapper">
-										<div class="slds-col type">
-											<span class="slds-text-heading--label">jQuery</span>
-										</div>
-											<div>
-											<div id="tree-jquery-control" class="slds-col example">
-												<div class="tree1"></div>
+					<!-- spinner -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Spinner</span>
+									<span class="slds-badge | slds-theme--shade">Alpha: done</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
 											</div>
-											<div class="slds-col demo-controls">
-												<div class="slds-button-group" role="group">
-													<!-- <button id="tree-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-													<button id="tree-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-													<button id="tree-jquery-chooseById" class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-													<button id="tree-jquery-chooseByName" class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button> -->
+											<div id="spinner-react-control"></div>
+										</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="spinner-jquery-control" class="slds-col | example">
+													<div class="slds-grid slds-grid--vertical">
+														<div class="slds-col slds-theme--default">
+															<div class="slds-float--left spinner">
+																<div class="spinner1"></div>
+															</div>
+															<div class="slds-float--left spinner">
+																<div class="spinner2"></div>
+															</div>
+															<div class="slds-float--left spinner">
+																<div class="spinner3"></div>
+															</div>
+														</div>
+														<div class="slds-col slds-theme--shade">
+															<div class="slds-float--left spinner">
+																<div class="spinner4"></div>
+															</div>
+															<div class="slds-float--left spinner">
+																<div class="spinner5"></div>
+															</div>
+															<div class="slds-float--left spinner">
+																<div class="spinner6"></div>
+															</div>
+														</div>
+														<div class="slds-col slds-theme--inverse">
+															<div class="slds-float--left spinner">
+																<div class="spinner7"></div>
+															</div>
+															<div class="slds-float--left spinner">
+																<div class="spinner8"></div>
+															</div>
+															<div class="slds-float--left spinner">
+																<div class="spinner9"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="slds-col | demo-controls">
+													<div class="slds-button-group" role="group"></div>
 												</div>
 											</div>
 										</div>
@@ -827,17 +689,95 @@
 								</div>
 							</div>
 						</div>
-
 					</div>
-				</div>
+
+					<!-- tooltip -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Tooltip</span>
+									<span class="slds-badge | slds-theme--error slds-theme--inverse-text">Alpha: not started</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
+											</div>
+											<div id="tooltip-react-control"></div>
+										</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="tooltip-jquery-control" class="slds-col | example">
+													<div class="tooltip1"></div>
+												</div>
+												<div class="slds-col | demo-controls">
+													<div class="slds-button-group" role="group"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- tree -->
+					<div class="slds-col | component-wrapper">
+						<div class="slds-grid slds-grid--vertical | component">
+							<div class="slds-col | header">
+								<h2 class="slds-text-heading--large">
+									<span>Tree</span>
+									<span class="slds-badge | slds-theme--warning slds-theme--inverse-text">Alpha: in progress</span>
+								</h2>
+							</div>
+							<div class="slds-col | body">
+								<div class="slds-grid">
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">React</span>
+											</div>
+											<div id="tree-react-control"></div>
+										</div>
+									</div>
+									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+										<div class="slds-grid slds-grid--vertical | example-wrapper">
+											<div class="slds-col | type">
+												<span class="slds-text-heading--label">jQuery</span>
+											</div>
+											<div>
+												<div id="tree-jquery-control" class="slds-col | example">
+													<div class="tree1"></div>
+												</div>
+												<div class="slds-col | demo-controls">
+													<div class="slds-button-group" role="group"></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 
 				</div>
 			</div>
-			<div class="slds-col slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12"></div>
+			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12">
+				
+			</div>
 		</section>
-
 		<script src="/assets/facades/scripts/jquery.min.js"></script>
 		<script src="/build/jquery.bundle.js"></script>
 		<script src="/build/react.bundle.js"></script>
 	</body>
+
 </html>

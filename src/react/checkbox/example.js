@@ -43,10 +43,10 @@ export default function () {
 					</div>
 					<div className="slds-col demo-controls">
 						<div className="slds-button-group" role="group">
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Check</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Uncheck</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Disable</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Enable</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Check</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Uncheck</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Disable</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Enable</button>
 						</div>
 					</div>
 				</div>
