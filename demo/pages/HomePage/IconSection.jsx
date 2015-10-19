@@ -43,7 +43,7 @@ module.exports = React.createClass( {
                 Utility Icon
               </h3>
               <div className='slds-p-vertical--large'>
-                <div className='slds-input-has-icon slds-input-has-icon--right'>
+                <div className='slds-input-has-icon slds-input-has-icon--left'>
                   <SLDSUtilityIcon name='adduser' className='slds-input__icon slds-icon-text-default'/>
                 </div>
               </div>

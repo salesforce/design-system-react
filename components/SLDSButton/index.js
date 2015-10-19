@@ -44,6 +44,7 @@ class Button extends React.Component {
     return classNames(this.props.className, 'slds-button', {
       [`slds-button--${this.props.variant}`]: this.props.variant,
       [`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
+      ['slds-max-small-button--stretch']: this.props.responsive,
       ['slds-not-selected']: notSelected,
       ['slds-is-selected']: isSelected,
     });
@@ -57,6 +58,7 @@ class Button extends React.Component {
           disabled={this.props.disabled}
           inverse={this.props.inverse}
           stateful={this.props.stateful}
+          hint={this.props.hint}
           name={this.props.iconName}
           size={this.props.iconSize}
           position={this.props.iconPosition}
@@ -103,7 +105,9 @@ Button.propTypes = {
   tabindex: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   inverse: React.PropTypes.bool,
+  hint: React.PropTypes.bool,
   stateful: React.PropTypes.bool,
+  responsive: React.PropTypes.bool,
   iconName: React.PropTypes.string,
   iconVariant: React.PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
   iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
