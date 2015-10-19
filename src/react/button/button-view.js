@@ -1,28 +1,64 @@
 // BUTTON VIEW - REACT FACADE
 
 // Core
-import * as Lib from '../../lib/lib';
-import ButtonCore from '../../core/button';
-import {ButtonObject} from './button';
-import {ButtonStatefulObject} from './button-stateful';
+import {CONTROL} from '../../core/button';
 
 // Framework specific
 import React from 'react';
-import State from '../mixins/state';
-import Events from '../mixins/events';
-import genericWillMount from '../mixins/generic-will-mount';
+import Svg from '../svg/svg';
 
-export const ButtonViewObject = {
-	mixins: [State, Events, genericWillMount],
+// Third party
+import classNames from 'classnames';
 
+// TODO: Make this a real Facades control with Base and a Core
+export const ButtonView = React.createClass({
 	propTypes: {
-		text: React.PropTypes.string
+		assistiveText: React.PropTypes.string,
+		icon: React.PropTypes.string,
+		text: React.PropTypes.string,
+		view: React.PropTypes.string
+	},
+	
+	cssClasses: {
+		ICON: CONTROL + '__icon',
+		STATEFUL_ICON: CONTROL + '__icon--stateful',
+		ASSISTIVE_TEXT: 'slds-assistive-text'
+	},
+	
+	buttonStatefulViewStyles: {
+		notSelected: 'slds-text-not-selected',
+		selected: 'slds-text-selected',
+		selectedHover: 'slds-text-selected-focus'
+	},
+	
+	childIconStyles: {
+		'left': CONTROL + '__icon--left',
+		'right': CONTROL + '__icon--right'
+	},
+	
+	_getIconClassNames () {
+		let iconBaseClass;
+
+		if (this.props.view) {
+			iconBaseClass = this.cssClasses.STATEFUL_ICON;
+		} else {
+			iconBaseClass = this.cssClasses.ICON;
+		}
+
+		return classNames(iconBaseClass,
+			!!this.props.text && this.childIconStyles[this.props.iconPosition]);
+	},
+	
+	_renderAssistiveText () {
+		if (this.props.assistiveText) {
+			return <span className={this.cssClasses.ASSISTIVE_TEXT}>{this.props.assistiveText}</span>;
+		}
 	},
 
-	getDefaultProps () {
-		return {
-			stateful: true
-		};
+	_renderIcon (position) {
+		if (this.props.icon && this.props.iconPosition === position) {
+			return (<Svg className={this._getIconClassNames()} icon={this.props.icon} />);
+		}
 	},
 
 	render () {
@@ -30,11 +66,6 @@ export const ButtonViewObject = {
 			<span className={this.buttonStatefulViewStyles[this.props.view]}>{this._renderIcon('left')}{this.props.text}{this._renderIcon('right')}{this._renderAssistiveText()}</span>
 		);
 	}
-};
-
-let ButtonView = Lib.merge({}, ButtonCore, ButtonObject, ButtonStatefulObject, ButtonViewObject);
-
-ButtonView = Lib.runHelpers('react', 'ButtonView', ButtonView);
-ButtonView = React.createClass(ButtonView);
+});
 
 export default ButtonView;

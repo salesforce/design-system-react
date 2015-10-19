@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from './button';
 import ButtonView from './button-view';
-import ButtonStateful from './button-stateful';
 
 export default function () {
 	const ButtonStatefulExample = React.createClass({
@@ -27,7 +26,7 @@ export default function () {
 						<Button text="Small" theme="neutral" size="small" />
 						<Button text="Small" theme="brand" size="small" />
 						<Button text="Small" theme="inverse" size="small" />
-						<Button size="small">Small</Button>
+						<Button size="small"></Button>
 					</div>
 
 					<div className="slds-col row">
@@ -66,10 +65,10 @@ export default function () {
 				
 				<div className="slds-col row">
 					<div className="slds-button-stateful" role="group">
-						<ButtonStateful theme="neutral" icon="utility.add" text="Follow" selected={this.state.selected} onClick={this.handleClick}>
+						<Button theme="neutral" icon="utility.add" text="Follow" selected={this.state.selected} onClick={this.handleClick}>
 							<ButtonView text="Following" view="selected" icon="utility.check"/>
 							<ButtonView text="Unfollow" view="selectedHover" icon="utility.close"/>
-						</ButtonStateful>
+						</Button>
 					</div>
 				</div>
 
