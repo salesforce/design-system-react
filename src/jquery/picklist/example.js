@@ -29,7 +29,7 @@ $(function () {
 		picklist.setSelectionByIndex(1);
 	});
 	$('#picklist-selectByObject').on('click', function () {
-		picklist.setSelection(collection[3]);
+		picklist.setSelection(collection[4]);
 	});
 	$('#picklist-enable').on('click', function () {
 		picklist.enable();
