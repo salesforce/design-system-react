@@ -76,7 +76,7 @@ class Menu extends React.Component {
           </ActionItem>
         </div>
 
-        <ul className="slds-lookup__list" role="presentation" ref="list">
+        <ul id="list" className="slds-lookup__list" role="presentation" ref="list">
           {this.renderItems()}
         </ul>
 

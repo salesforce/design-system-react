@@ -44,19 +44,51 @@ describe('SLDSLookup: ',  function(){
   });
 
   describe('accessibility aria attributes pass', function() {
+    it('aria-haspopup is true', function() {
+      let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" />);
+      let ariaHaspopup = lookup.getElementsByTagName("input")[0].getAttribute("aria-haspopup");
+      expect(ariaHaspopup).to.equal('true');
+    });
     it('aria-expanded is false initally', function() {
       let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" />);
       let ariaExpanded = lookup.getElementsByTagName("input")[0].getAttribute("aria-expanded");
       expect(ariaExpanded).to.equal('false');
     });
 
-    it('aria-expanded is true when lookup menu opens', function() {
+    it('aria-expanded is true when clicking on input field', function() {
       let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" />);
       let input = lookup.getElementsByTagName("input")[0];
+      TestUtils.Simulate.click(input);
       let ariaExpanded = lookup.getElementsByTagName("input")[0].getAttribute("aria-expanded");
-      TestUtils.Simulate.focus(input);
       expect(ariaExpanded).to.equal('true');
     });
+  });
+
+
+  describe('selecting item works', function() {
+
+    it('focuses correct item', function() {
+      let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" />);
+      let input = lookup.getElementsByTagName("input")[0];
+      TestUtils.Simulate.click(input);
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      let ariaActiveDescendant = lookup.getElementsByTagName("input")[0].getAttribute("aria-activedescendant");
+      expect(ariaActiveDescendant).to.equal('item-0');
+    });
+
+    it('selects correct item', function() {
+    });
+
+    it('closes lookup menu', function() {
+    });
+
+    it('aria-expanded is false after selecting item', function() {
+    });
+
+    it('focuses on selected item', function() {
+    });
+
   });
 
 });
