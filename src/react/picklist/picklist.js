@@ -32,9 +32,12 @@ export const PicklistObject = {
 	},
 
 	_menuItems () {
+		const selected = this._getSelection();
+		const text = selected.getText() || '';
+
 		return this._collection.map((item, index) => {
 			return (
-				<PicklistItem key={index} item={item} onSelected={this._handleMenuItemSelected} />
+				<PicklistItem key={index} selected={item.getText() === text} item={item} onSelected={this._handleMenuItemSelected} />
 			);
 		});
 	},
