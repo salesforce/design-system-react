@@ -74,7 +74,7 @@
 				margin-top: -5px;
 			}
 			
-			.slds-button.slds-button--neutral.slds-button--xsmall {
+			.slds-button.slds-button--neutral.slds-button--x-small {
 				margin: 2px 0px;
 				font-size: 0.7rem;
 				padding-left: 0.8rem;
@@ -225,15 +225,18 @@
 											</div>
 											<div>
 												<div id="checkbox-jquery-control" class="slds-col | example">
-													<div class="checkbox1"></div>
-													<div class="checkbox2"></div>
+												<fieldset class="slds-form-element">
+													<legend class="slds-form-element__label slds-form-element__label--top"></legend>
+													<div class="slds-form-element__control" id="checkbox1"></div>
+													<div class="slds-form-element__control" id="checkbox2"></div>
+												</fieldset>
 												</div>
 												<div class="slds-col | demo-controls">
 													<div class="slds-button-group" role="group">
-														<button type="button" id="checkbox-jquery-check" class="slds-button slds-button--neutral slds-button--xsmall">Check</button>
-														<button type="button" id="checkbox-jquery-uncheck" class="slds-button slds-button--neutral slds-button--xsmall">Uncheck</button>
-														<button type="button" id="checkbox-jquery-disable" class="slds-button slds-button--neutral slds-button--xsmall">Disable</button>
-														<button type="button" id="checkbox-jquery-enable" class="slds-button slds-button--neutral slds-button--xsmall">Enable</button>
+														<button type="button" id="checkbox-jquery-check" class="slds-button slds-button--neutral slds-button--x-small">Check</button>
+														<button type="button" id="checkbox-jquery-uncheck" class="slds-button slds-button--neutral slds-button--x-small">Uncheck</button>
+														<button type="button" id="checkbox-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
+														<button type="button" id="checkbox-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
 													</div>
 												</div>
 											</div>
@@ -274,11 +277,11 @@
 												</div>
 												<div class="slds-col | demo-controls">
 													<div class="slds-button-group" role="group">
-														<button type="button" id="combobox-jquery-log" class="slds-button slds-button--neutral slds-button--xsmall">Log selected item</button>
-														<button type="button" id="combobox-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--xsmall">Set by index</button>
-														<button type="button" id="combobox-jquery-setByObject" class="slds-button slds-button--neutral slds-button--xsmall">Set by object</button>
-														<button type="button" id="combobox-jquery-enable" class="slds-button slds-button--neutral slds-button--xsmall">Enable</button>
-														<button type="button" id="combobox-jquery-disable" class="slds-button slds-button--neutral slds-button--xsmall">Disable</button>
+														<button type="button" id="combobox-jquery-log" class="slds-button slds-button--neutral slds-button--x-small">Log selected item</button>
+														<button type="button" id="combobox-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--x-small">Set by index</button>
+														<button type="button" id="combobox-jquery-setByObject" class="slds-button slds-button--neutral slds-button--x-small">Set by object</button>
+														<button type="button" id="combobox-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
+														<button type="button" id="combobox-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
 													</div>
 												</div>
 											</div>
@@ -437,8 +440,8 @@
 												</div>
 												<div class="slds-col | demo-controls">
 													<div class="slds-button-group" role="group">
-														<button type="button" id="notification-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-														<button type="button" id="notification-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
+														<button type="button" id="notification-jquery-hide" class="slds-button slds-button--neutral slds-button--x-small">Hide</button>
+														<button type="button" id="notification-jquery-show" class="slds-button slds-button--neutral slds-button--x-small">Show</button>
 													</div>
 												</div>
 											</div>
@@ -479,11 +482,11 @@
 												</div>
 												<div class="slds-col | demo-controls">
 													<div class="slds-button-group" role="group">
-														<button id="picklist-jquery-log" class="slds-button slds-button--neutral slds-button--xsmall">Log selected item</button>
-														<button id="picklist-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--xsmall">Set by index</button>
-														<button id="picklist-jquery-setByObject" class="slds-button slds-button--neutral slds-button--xsmall">Set by object</button>
-														<button id="picklist-jquery-enable" class="slds-button slds-button--neutral slds-button--xsmall">Enable</button>
-														<button id="picklist-jquery-disable" class="slds-button slds-button--neutral slds-button--xsmall">Disable</button>
+														<button id="picklist-jquery-log" class="slds-button slds-button--neutral slds-button--x-small">Log selected item</button>
+														<button id="picklist-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--x-small">Set by index</button>
+														<button id="picklist-jquery-setByObject" class="slds-button slds-button--neutral slds-button--x-small">Set by object</button>
+														<button id="picklist-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
+														<button id="picklist-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
 													</div>
 												</div>
 											</div>
@@ -559,7 +562,7 @@
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
 											<div id="popover-jquery-control" class="slds-col | example">
-												<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--xsmall">Toggle</button>
+												<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--x-small">Toggle</button>
 											</div>
 											<div class="slds-col | demo-controls">
 												<div class="slds-button-group" role="group"></div>
@@ -598,14 +601,14 @@
 											<div id="radio-jquery-control" class="slds-col | example"></div>
 											<div class="slds-col | demo-controls">
 												<div class="slds-button-group" role="group">
-													<button id="radio-jquery-checkFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Check first</button>
-													<button id="radio-jquery-checkSecond" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Check second</button>
-													<button id="radio-jquery-disableFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Disable first</button>
-													<button id="radio-jquery-enableFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Enable first</button>
-													<button id="radio-jquery-disableAll" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Disable all</button>
-													<button id="radio-jquery-enableAll" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Enable all</button>
-													<button id="radio-jquery-logChecked" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Log Checked</button>
-													<button id="radio-jquery-logValue" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Log Value</button>
+													<button id="radio-jquery-checkFirst" type="button" class="slds-button slds-button--neutral slds-button--x-small">Check first</button>
+													<button id="radio-jquery-checkSecond" type="button" class="slds-button slds-button--neutral slds-button--x-small">Check second</button>
+													<button id="radio-jquery-disableFirst" type="button" class="slds-button slds-button--neutral slds-button--x-small">Disable first</button>
+													<button id="radio-jquery-enableFirst" type="button" class="slds-button slds-button--neutral slds-button--x-small">Enable first</button>
+													<button id="radio-jquery-disableAll" type="button" class="slds-button slds-button--neutral slds-button--x-small">Disable all</button>
+													<button id="radio-jquery-enableAll" type="button" class="slds-button slds-button--neutral slds-button--x-small">Enable all</button>
+													<button id="radio-jquery-logChecked" type="button" class="slds-button slds-button--neutral slds-button--x-small">Log Checked</button>
+													<button id="radio-jquery-logValue" type="button" class="slds-button slds-button--neutral slds-button--x-small">Log Value</button>
 												</div>
 											</div>
 										</div>
