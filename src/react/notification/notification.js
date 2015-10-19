@@ -27,7 +27,7 @@ export const NotificationObject = {
 				<span className="slds-assistive-text">Info</span>
 				<button className="slds-button slds-notify__close" onClick={this.hide}>
 					<svg aria-hidden="true" className="slds-button__icon slds-button__icon--inverse">
-						<use xlinkHref="/examples/assets/icons/action-sprite/svg/symbols.svg#close"></use>
+						<use xlinkHref="/assets/design-system/icons/action-sprite/svg/symbols.svg#close"></use>
 					</svg>
 					<span className="slds-assistive-text">Close</span>
 				</button>

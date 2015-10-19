@@ -4,7 +4,7 @@ import Checkbox from './checkbox';
 
 // https://www.lightningdesignsystem.com/components/forms#checkbox
 
-export default function (element) {
+export default function () {
 	const CheckboxExample = React.createClass({
 		getInitialState () {
 			const checkboxen = new Map();
@@ -70,5 +70,5 @@ export default function (element) {
 		}
 	});
 
-	ReactDOM.render(<CheckboxExample />, element);
+	ReactDOM.render(<CheckboxExample />, document.getElementById('slds-checkbox'));
 }

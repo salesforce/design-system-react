@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Popover from './popover';
 
-export default function (element) {
+export default function () {
 	const PopoverExample = React.createClass({
 		getInitialState () {
 			return {
@@ -28,5 +28,5 @@ export default function (element) {
 		}
 	});
 
-	ReactDOM.render(<PopoverExample />, element);
+	ReactDOM.render(<PopoverExample />, document.getElementById('popover'));
 }

@@ -1,34 +1,31 @@
-// imports
-// import selectlist from './selectlist/example';
-// import tree from './tree/example';
-// import wizard from './wizard/example';
-// import search from './search/example';
-
 import badge from './badge/example';
 import button from './button/example';
 import buttonGroup from './button-group/example';
-import checkbox from './checkbox/example';
 import combobox from './combobox/example';
+import checkbox from './checkbox/example';
+	// import datatable from './datatable/example';
+	// import datepicker from './datepicker/example';
+	// import dropdown from './dropdown/example';
 import notification from './notification/example';
+import picklist from './picklist/example';
 import pillbox from './pillbox/example';
+import popover from './popover/example';
 import radio from './radio/example';
 import spinner from './spinner/example';
-import popover from './popover/example';
-
-// base components
-// selectlist(document.getElementById('selectlist'));
-// tree(document.getElementById('tree'));
-// wizard(document.getElementById('wizard'));
-// search(document.getElementById('search'));
+import tree from './tree/example';
 
 badge();
 button();
 buttonGroup();
-checkbox(document.getElementById('slds-checkbox'));
-combobox(document.getElementById('combobox'));
+combobox();
+checkbox();
+	// datatable();
+	// datepicker();
+	// dropdown();
 notification();
-pillbox(document.getElementById('pillbox'));
-radio(document.getElementById('slds-radio'));
-spinner(document.getElementById('spinner'));
-popover(document.getElementById('popover'));
-
+picklist();
+pillbox();
+popover();
+radio();
+spinner();
+tree();

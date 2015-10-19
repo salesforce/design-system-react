@@ -76,7 +76,7 @@ getId (item)
 		},
 
 		getType (item) {
-			// FIXME Set a reasonable default or throw an error for "item-ish" items that don't gave a type defined
+			// FIXME: Set a reasonable default or throw an error for "item-ish" items that don't have a type defined
 			return item.get('_itemType');
 		},
 
