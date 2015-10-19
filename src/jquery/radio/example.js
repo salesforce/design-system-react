@@ -1,44 +1,70 @@
 import * as Lib from '../../lib/lib';
-import Radio from './radio';
+import Radios from './radios';
+
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
-	const radio1 = new Radio($('#radio-jquery-control .radio1'), {
-		name: 'radioGroup1',
-		text: 'Checked',
-		toggleSelector: '.radioToggleSelector3',
-		value: 'value7'
-	});
-	const radio2 = new Radio($('#radio-jquery-control .radio2'), {
-		name: 'radioGroup1',
-		text: 'Unchecked',
-		value: 'value8'
-	});
-	const radio3 = new Radio($('#radio-jquery-control .radio3'), {
-		checked: true,
-		disabled: true,
-		name: 'radioGroup1',
-		text: 'Unchecked disabled',
-		value: 'value9'
-	});
-
-// events
-	const $radioExamples = $('#radio-jquery-control .radio1, #radio-jquery-control .radio2, #radio-jquery-control .radio3');
-
-	$radioExamples.on('changed.fu.radio', function (event, data) {
-		Lib.log('changed.fu.radio: ', event, data);
+	const radios = new Radios($('#radio-jquery-control'), {
+		labelText: 'Opts',
+		name: 'rads',
+		radios: [
+			{
+				text: 'Checked',
+				value: 'value9',
+				checked: true
+			},
+			{
+				text: 'Unchecked',
+				value: 'value10',
+				checked: false
+			},
+			{
+				text: 'Unchecked Disabled',
+				value: 'value11',
+				checked: false,
+				disabled: true
+			}
+		]
 	});
 
-	$radioExamples.on('checked.fu.radio', function (event) {
-		Lib.log('checked.fu.radio: ', event);
+	$('#radio-jquery-checkFirst').on('click', function () {
+		console.log('toggle 1 to true');
+		radios.toggle(0, true);
 	});
 
-	$radioExamples.on('unchecked.fu.radio', function (event) {
-		Lib.log('unchecked.fu.radio: ', event);
+	$('#radio-jquery-checkSecond').on('click', function () {
+		console.log('toggle 2 to true');
+		radios.toggle(1, true);
 	});
 
-	void(radio1);
-	void(radio2);
-	void(radio3);
+	$('#radio-jquery-disableFirst').on('click', function () {
+		console.log('disable first');
+		radios.radio(0).disable();
+	});
+
+	$('#radio-jquery-enableFirst').on('click', function () {
+		console.log('enable first');
+		radios.radio(0).enable();
+	});
+
+	$('#radio-jquery-disableAll').on('click', function () {
+		console.log('disable all');
+		radios.disable();
+	});
+
+	$('#radio-jquery-enableAll').on('click', function () {
+		console.log('enable all');
+		radios.enable();
+	});
+
+	$('#radio-jquery-logChecked').on('click', function () {
+		const checked = radios.getChecked();
+		console.log('get checked', checked);
+	});
+
+	$('#radio-jquery-logValue').on('click', function () {
+		const checkedValue = radios.getValue();
+		console.log('get value', checkedValue);
+	});
 });

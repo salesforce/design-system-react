@@ -52,6 +52,7 @@ export default function () {
 				<div>
 					<div className="slds-col example">
 						<fieldset className="slds-form-element">
+							<legend className="slds-form-element__label slds-form-element__label--top">Opts</legend>
 							<div className="slds-form-element__control">
 								{radios}
 							</div>
@@ -59,12 +60,14 @@ export default function () {
 					</div>
 					<div className="slds-col demo-controls">
 						<div className="slds-button-group" role="group">
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Check first</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Check second</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Disable first</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Enable first</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Disable all</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--xsmall" onClick={this._handleClick}>Enable all</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Check first</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Check second</button>
+						</div>
+						<div className="slds-button-group" role="group">
+							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Disable first</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Enable first</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Disable all</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Enable all</button>
 						</div>
 					</div>
 				</div>
@@ -73,7 +76,7 @@ export default function () {
 
 		_handleClick (e) {
 			// translate text of button into method call
-			switch (e.target.firstChild.data) {
+			switch (e.target.firstChild.data.toLowerCase()) {
 				case 'check first':
 					this.refs.radio1.check();
 					break;

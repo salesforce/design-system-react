@@ -83,26 +83,17 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 	},
 
 	_togglePopover () {
-		const position = this._getElementAllignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
+		const position = this._getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
+		const isHidden = this.elements.popover.hasClass('slds-hidden');
+		
+		this.elements.popover.toggleClass('slds-hidden', !isHidden);
+		this.elements.popover.css(position);
 
-		if (this.elements.popover.hasClass('slds-hidden')) {
-			this.elements.popover.removeClass('slds-hidden');
-
-			this.elements.popover.css({
-				top: position.top,
-				left: position.left
-			});
+		if (isHidden) {
 			this.elements.popover.attr('class', this._getClassNames());
 
 			this.elements.wrapper.trigger('shown.fu.popover');
 		} else {
-			this.elements.popover.addClass('slds-hidden');
-
-			this.elements.popover.css({// Resetting popover to unadjusted position if possible
-				top: position.top,
-				left: position.left
-			});
-
 			this.elements.wrapper.trigger('hidden.fu.popover');
 		}
 	}

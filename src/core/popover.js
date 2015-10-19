@@ -40,7 +40,7 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 
 	autoAdjustedPosition: null,
 
-	_getElementAllignment (el, container, align) {
+	_getElementAlignment (el, container, align) {
 		const offset = Lib.offsetFromParent(align, container);
 		const popSize = {};
 		const alignSize = {};

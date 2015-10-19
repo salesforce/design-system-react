@@ -5,13 +5,13 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	// new api controls
-	const checkbox1 = new Checkbox($('#checkbox-jquery-control .checkbox1'), {
+	const checkbox1 = new Checkbox($('#checkbox1'), {
 		text: 'Checked',
 		value: 'value9',
 		checked: true
 	});
 
-	const checkbox2 = new Checkbox($('#checkbox-jquery-control .checkbox2'), {
+	const checkbox2 = new Checkbox($('#checkbox2'), {
 		text: 'Unchecked',
 		value: 'value10',
 		checked: false
