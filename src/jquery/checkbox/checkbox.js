@@ -47,7 +47,7 @@ export const CheckboxObject = {
 		const control = '.' + this.cssClasses.CONTROL;
 
 		elements.control = $base.find(control);
-		elements.input = $base.find(this.inputSelector);
+		elements.input = $($base.find(this.inputSelector)[0]);
 		elements.label = $base.find('.' + this.cssClasses.LABEL);
 
 		return elements;
