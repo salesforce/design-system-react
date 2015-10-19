@@ -1,6 +1,7 @@
 // BUTTON VIEW - REACT FACADE
 
 // Core
+import * as Lib from '../../lib/lib';
 import {CONTROL} from '../../core/button';
 
 // Framework specific
@@ -11,15 +12,7 @@ import Svg from '../svg/svg';
 import classNames from 'classnames';
 
 // TODO: Make this a real Facades control with Base and a Core
-export const ButtonView = React.createClass({
-	propTypes: {
-		assistiveText: React.PropTypes.string,
-		icon: React.PropTypes.string,
-		text: React.PropTypes.string,
-		view: React.PropTypes.string,
-		iconPosition: React.PropTypes.string
-	},
-	
+const ButtonViewCore = {
 	cssClasses: {
 		ICON: CONTROL + '__icon',
 		STATEFUL_ICON: CONTROL + '__icon--stateful',
@@ -32,9 +25,19 @@ export const ButtonView = React.createClass({
 		selectedHover: 'slds-text-selected-focus'
 	},
 	
-	childIconStyles: {
+	iconPositions: {
 		'left': CONTROL + '__icon--left',
 		'right': CONTROL + '__icon--right'
+	}
+};
+
+export const ButtonView = React.createClass(Lib.merge(ButtonViewCore, {
+	propTypes: {
+		assistiveText: React.PropTypes.string,
+		icon: React.PropTypes.string,
+		text: React.PropTypes.string,
+		view: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonStatefulViewStyles)),
+		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions))
 	},
 	
 	_getIconClassNames () {
@@ -47,7 +50,7 @@ export const ButtonView = React.createClass({
 		}
 
 		return classNames(iconBaseClass,
-			!!this.props.text && this.childIconStyles[this.props.iconPosition]);
+			!!this.props.text && this.iconPositions[this.props.iconPosition]);
 	},
 	
 	_renderAssistiveText () {
@@ -67,6 +70,6 @@ export const ButtonView = React.createClass({
 			<span className={this.buttonStatefulViewStyles[this.props.view]}>{this._renderIcon('left')}{this.props.text}{this._renderIcon('right')}{this._renderAssistiveText()}</span>
 		);
 	}
-});
+}));
 
 export default ButtonView;
