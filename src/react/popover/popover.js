@@ -17,10 +17,10 @@ let Popover = Lib.merge({}, PopoverCore, {
 
 	render () {
 		return (
-			<div className={classNames(this._getClassNames(), {'slds-hidden': !this.props.isOpen})} role="dialog" ref="popover">
+			<div className={classNames(this._getClassNames(), {'slds-hidden': !this.props.isOpen})} role="dialog" ref="popover" style={this.state.position}>
 				<div className="slds-popover__content">
 					{this._renderHeader()}
-					<div className="slds-popover__body">{this.props.content}</div>
+					<div className="slds-popover__body">{this.props.children}</div>
 				</div>
 			</div>
 		);
@@ -40,21 +40,16 @@ let Popover = Lib.merge({}, PopoverCore, {
 		this.elements = {};
 
 		this.elements.popover = this.refs.popover;
-		this.elements.target = this.props.target ? this.props.target : this.refs.popover.parentNode;
-		this.elements.container = this.props.container ? this.props.container : this.refs.popover.parentNode;
-		this.elements.align = this.props.align ? this.props.align : this.elements.target;
 	},
 
 	componentDidUpdate () {
-		let popoverEl;
-		let position;
-
-		if (this.props.isOpen) {// Run this each time the modal opens to account for page changes and scrolling
-			popoverEl = this.elements.popover;
-			position = this._getElementAllignment(popoverEl, this.elements.container, this.elements.align);
-
-			popoverEl.style.top = position.top + 'px';
-			popoverEl.style.left = position.left + 'px';
+		// Run this each time the modal opens to account for page changes and scrolling
+		if (this.props.isOpen && (this.elements.container !== this.props.container || this.elements.align !== this.props.align)) {
+			this.elements.container = this.props.container;
+			this.elements.align = this.props.align;
+			
+			const popoverEl = this.elements.popover;
+			this._updateElementAllignment(popoverEl, this.elements.container || this.refs.popover.parentNode, this.elements.align);
 		}
 	}
 

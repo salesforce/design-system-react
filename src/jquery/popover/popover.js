@@ -83,7 +83,7 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 	},
 
 	_togglePopover () {
-		const position = this._getElementAllignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
+		const position = this._updateElementAllignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
 
 		if (this.elements.popover.hasClass('slds-hidden')) {
 			this.elements.popover.removeClass('slds-hidden');

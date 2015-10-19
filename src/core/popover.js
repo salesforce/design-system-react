@@ -38,7 +38,7 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 		right: 'slds-nubbin--left'
 	},
 
-	_getElementAllignment (el, container, align) {
+	_updateElementAllignment (el, container, align) {
 		const offset = Lib.offsetFromParent(align, container);
 		const popSize = {};
 		const alignSize = {};
@@ -78,6 +78,10 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 				position.top = offset.top - ((popSize.height / 2) - (alignSize.height / 2));
 				break;
 		}
+		
+		this.setState({
+			position
+		});
 
 		return position;
 	},
