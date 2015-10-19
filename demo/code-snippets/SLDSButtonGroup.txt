@@ -4,5 +4,5 @@
   <SLDSButton label='Refresh' variant='neutral' />
   <SLDSButton label='Edit' variant='neutral' />
   <SLDSButton label='Save' variant='neutral' />
-  <SLDSButton label='More Options' variant='icon' iconName='down' className='slds-button--icon-border-filled' />
+  <SLDSButton label='More Options' variant='icon' iconName='down' iconVariant='border-filled' />
 </SLDSButtonGroup>

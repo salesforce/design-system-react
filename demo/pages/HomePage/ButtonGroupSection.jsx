@@ -36,12 +36,13 @@ module.exports = React.createClass( {
               <PrismCode className='language-markup'>
                 {require('raw-loader!../../code-snippets/SLDSButtonGroup.txt')}
               </PrismCode>
+
               <div className='slds-p-vertical--large'>
                 <SLDSButtonGroup>
                   <SLDSButton label='Refresh' variant='neutral' />
                   <SLDSButton label='Edit' variant='neutral' />
                   <SLDSButton label='Save' variant='neutral' />
-                  <SLDSButton label='More Options' variant='icon' iconName='down' className='slds-button--icon-border-filled' />
+                  <SLDSButton label='More Options' variant='icon' iconName='down' iconVariant='border-filled' />
                 </SLDSButtonGroup>
               </div>
             </div>

@@ -58,37 +58,46 @@ module.exports = React.createClass( {
 
 
               <div className='slds-p-vertical--large'>
-
-                <SLDSButton
+                <div>
+                1. <SLDSButton
                   label='Neutral'
                   variant='neutral'
                   onClick={this.handleNeutralClick} />
+                </div>
 
-                <SLDSButton
+                <div>
+                2. <SLDSButton
                   label='Neutral Icon'
                   variant='neutral'
                   iconName='download'
                   iconSize='small'
                   iconPosition='right'
                   onClick={this.handleNeutralClick} />
+                </div>
 
-                <SLDSButton
+                <div>
+                3. <SLDSButton
                   label='Disabled'
                   variant='neutral'
                   disabled={true}
                   onClick={this.handleDisabledClick} />
+                </div>
 
-                <SLDSButton
+                <div>
+                4. <SLDSButton
                   label='Brand'
                   variant='brand'
                   onClick={this.handleBrandClick} />
+                </div>
 
-                <SLDSButton
+                <div>
+                5. <SLDSButton
                   label='Settings'
                   variant='icon'
                   iconName='settings'
                   iconSize='large'
                   onClick={this.handleIconClick} />
+                </div>
               </div>
             </div>
 
