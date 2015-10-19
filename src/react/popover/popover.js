@@ -16,8 +16,16 @@ let Popover = Lib.merge({}, PopoverCore, {
 	mixins: [State, Events],
 
 	render () {
+		let position;
+
+		if (this.refs.popover) {
+			this._setElements();
+		}
+
+		position = this._popoverPosition();
+
 		return (
-			<div className={classNames(this._getClassNames(), {'slds-hidden': !this.props.isOpen})} role="dialog" ref="popover" style={this.state.position}>
+			<div className={classNames(this._getClassNames(), {'slds-hidden': !this.props.isOpen})} role="dialog" ref="popover" style={position}>
 				<div className="slds-popover__content">
 					{this._renderHeader()}
 					<div className="slds-popover__body">{this.props.children}</div>
@@ -36,26 +44,29 @@ let Popover = Lib.merge({}, PopoverCore, {
 		}
 	},
 
-	componentDidMount () {
+	componentWillMount () {
 		this.elements = {};
-
-		this.setElements();
 	},
 
-	setElements () {
+	_setElements () {
 		this.elements.popover = this.refs.popover;
 		this.elements.container = this.props.container;
 		this.elements.align = this.props.align;
 	},
 
-	componentDidUpdate () {
-		// Run this each time the modal opens to account for page changes and scrolling
-		if (this.props.isOpen && (this.elements.container !== this.props.container || this.elements.align !== this.props.align)) {
-			this.setElements();
-			
-			const popoverEl = this.elements.popover;
-			this._updateElementAllignment(popoverEl, this.elements.container || this.refs.popover.parentNode, this.elements.align);
+	_popoverPosition () {
+		let position;
+
+		if (this.elements && this.elements.popover) {
+			position = this._getElementAlignment(this.elements.popover, this.elements.container || this.refs.popover.parentNode, this.elements.align);
+		} else {
+			position = {
+				left: 0,
+				top: 0
+			};
 		}
+
+		return position;
 	}
 
 });
