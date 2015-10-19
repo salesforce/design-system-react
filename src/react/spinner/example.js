@@ -9,41 +9,44 @@ require('../../../scss/components/grid-system/flavors/vertical-alignment/index.s
 export default function () {
 	ReactDOM.render(
 		<div>
-			<div className="slds-grid slds-grid--align-spread">
-				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
-					<Spinner size="small" theme="base" />
-				</div>
-				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
-					<Spinner size="medium" theme="base" />
-				</div>
-				<div className="slds-box slds-theme--default | slds-col--padded | slds-align-middle ">
-					<Spinner size="large" theme="base" />
+			<div className="slds-col example">
+				<div className="slds-grid slds-grid--vertical">
+					<div className="slds-col slds-theme--default">
+						<div className="slds-float--left spinner">
+							<Spinner size="large" theme="base" />
+						</div>
+						<div className="slds-float--left spinner">
+							<Spinner size="medium" theme="base" />
+						</div>
+						<div className="slds-float--left spinner">
+							<Spinner size="small" theme="base" />
+						</div>
+					</div>
+					<div className="slds-col slds-theme--shade">
+						<div className="slds-float--left spinner">
+							<Spinner size="large" theme="brand" />
+						</div>
+						<div className="slds-float--left spinner">
+							<Spinner size="medium" theme="brand" />
+						</div>
+						<div className="slds-float--left spinner">
+							<Spinner size="small" theme="brand" />
+						</div>
+					</div>
+					<div className="slds-col slds-theme--inverse">
+						<div className="slds-float--left spinner">
+							<Spinner size="large" theme="inverse" />
+						</div>
+						<div className="slds-float--left spinner">
+							<Spinner size="medium" theme="inverse" />
+						</div>
+						<div className="slds-float--left spinner">
+							<Spinner size="small" theme="inverse" />
+						</div>
+					</div>
 				</div>
 			</div>
-			
-			<div className="slds-grid slds-grid--align-spread">
-				<div className="slds-box slds-theme--shade | slds-col--padded | slds-align-middle ">
-					<Spinner size="small" theme="brand" />
-				</div>
-				<div className="slds-box slds-theme--shade | slds-col--padded | slds-align-middle ">
-					<Spinner size="medium" theme="brand" />
-				</div>
-				<div className="slds-box slds-theme--shade | slds-col--padded | slds-align-middle ">
-					<Spinner size="large" theme="brand" />
-				</div>
-			</div>
-
-			<div className="slds-grid slds-grid--align-spread">
-				<div className="slds-box slds-theme--inverse | slds-col--padded | slds-align-middle ">
-					<Spinner size="small" theme="inverse" />
-				</div>
-				<div className="slds-box slds-theme--inverse | slds-col--padded | slds-align-middle ">
-					<Spinner size="medium" theme="inverse" />
-				</div>
-				<div className="slds-box slds-theme--inverse | slds-col--padded | slds-align-middle ">
-					<Spinner size="large" theme="inverse" />
-				</div>
-			</div>
+			<div className="slds-col demo-controls"></div>
 		</div>
-	, document.getElementById('spinner'));
+	, document.getElementById('spinner-react-control'));
 }

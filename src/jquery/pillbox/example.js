@@ -16,10 +16,10 @@ $(function () {
 			}
 		]
 	});
-	
+
 	void(pillbox);
 
-	$('#pillbox2').pillbox({
+	$('#pillbox-jquery-control .pillbox1').pillbox({
 		selection: [
 			{
 				text: 'test1',
@@ -30,12 +30,14 @@ $(function () {
 				value: 'test1'
 			}
 		],
+
 		onAdd: function (item, callback) {
 			setTimeout( function () {
 				console.log(item);
 				callback(item);
 			}, 0);
 		},
+
 		onRemove: function (item, callback) {
 			setTimeout( function () {
 				console.log(item);

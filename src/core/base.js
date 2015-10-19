@@ -6,7 +6,8 @@ const Base = {
 	cssClasses: {
 		NAMESPACE: 'slds-',
 		ASSISTIVE_TEXT: 'slds-assistive-text',
-		LABEL: 'slds-form-element__label'
+		LABEL: 'slds-form-element__label',
+		CONTROL: 'slds-form-element__control'
 	},
 
 	_defaultState: {

@@ -5,32 +5,32 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	// new api controls
-	const checkbox = new Checkbox($('#myCheckbox'), {
+	const checkbox1 = new Checkbox($('#checkbox1'), {
 		text: 'Checked',
 		value: 'value9',
 		checked: true
 	});
 
-	const checkbox2 = new Checkbox($('#myCheckbox2'), {
+	const checkbox2 = new Checkbox($('#checkbox2'), {
 		text: 'Unchecked',
 		value: 'value10',
 		checked: false
 	});
 
-	$('#check-checkbox').on('click', function () {
-		checkbox.toggle(true);
+	$('#checkbox-jquery-check').on('click', function () {
+		checkbox1.toggle(true);
 	});
 
-	$('#uncheck-checkbox').on('click', function () {
-		checkbox.toggle(false);
+	$('#checkbox-jquery-uncheck').on('click', function () {
+		checkbox1.toggle(false);
 	});
 
-	$('#disable-checkbox').on('click', function () {
-		checkbox.disable();
+	$('#checkbox-jquery-disable').on('click', function () {
+		checkbox1.disable();
 	});
 
-	$('#enable-checkbox').on('click', function () {
-		checkbox.enable();
+	$('#checkbox-jquery-enable').on('click', function () {
+		checkbox1.enable();
 	});
 
 	void checkbox2;
