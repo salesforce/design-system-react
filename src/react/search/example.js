@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Search from './search';
 
-export default function (element) {
+export default function () {
 	const SearchExample = React.createClass({
 		getInitialState () {
 			return {
@@ -49,5 +49,12 @@ export default function (element) {
 		}
 	});
 
-	ReactDOM.render(<SearchExample />, element);
+	ReactDOM.render(
+		<div>
+			<div className="slds-col example">
+				<SearchExample />
+			</div>
+			<div className="slds-col demo-controls"></div>
+		</div>
+	, document.getElementById('search-react-control'));
 }

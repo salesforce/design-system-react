@@ -4,25 +4,21 @@ import Badge from './badge';
 const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
-	// badge
-	const badge1 = new Badge($('#badge'), {
+	const badge1 = new Badge($('#badge-jquery-control .badge1'), {
 		'text': 'badge'
 	});
 
-	// badge (default)
-	const badge2 = new Badge($('#badge-default'), {
+	const badge2 = new Badge($('#badge-jquery-control .badge2'), {
 		text: 'default',
 		theme: 'default'
 	});
 
-	// badge (shade)
-	const badge3 = new Badge($('#badge-shade'), {
+	const badge3 = new Badge($('#badge-jquery-control .badge3'), {
 		text: 'shade',
 		theme: 'shade'
 	});
 
-	// badge (inverse)
-	const badge4 = new Badge($('#badge-inverse'), {
+	const badge4 = new Badge($('#badge-jquery-control .badge4'), {
 		text: 'inverse',
 		theme: 'inverse'
 	});

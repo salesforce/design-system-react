@@ -16,33 +16,33 @@ const collection = [
 ];
 
 $(function () {
-	const picklist = new Picklist($('#picklist'), {
+	const picklist = new Picklist($('#picklist-jquery-control .picklist1'), {
 		collection: collection,
-		selection: { value: '4' }
+		selection: { value: '1' }
 	});
 
 	// sample method buttons
-	$('#picklist-getSelectedItem').on('click', function () {
+	$('#picklist-jquery-log').on('click', function () {
 		Lib.log(picklist.getSelection());
 	});
-	$('#picklist-selectByIndex').on('click', function () {
+	$('#picklist-jquery-setByIndex').on('click', function () {
 		picklist.setSelectionByIndex(1);
 	});
-	$('#picklist-selectByObject').on('click', function () {
-		picklist.setSelection(collection[3]);
+	$('#picklist-jquery-setByObject').on('click', function () {
+		picklist.setSelection(collection[5]);
 	});
-	$('#picklist-enable').on('click', function () {
+	$('#picklist-jquery-enable').on('click', function () {
 		picklist.enable();
 	});
-	$('#picklist-disable').on('click', function () {
+	$('#picklist-jquery-disable').on('click', function () {
 		picklist.disable();
 	});
 
 	// events
-	$('#picklist').on('rendered', function (event, data) {
+	$('#picklist-jquery-control .picklist1').on('rendered', function (event, data) {
 		Lib.log('rendered', data);
 	});
-	$('#picklist').on('changed', function (event, data) {
+	$('#picklist-jquery-control .picklist1').on('changed', function (event, data) {
 		Lib.log('changed', data);
 	});
 });

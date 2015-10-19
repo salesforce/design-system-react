@@ -74,19 +74,27 @@ export default function () {
 				open: []
 			};
 		},
-		
+
 		render () {
 			return <Tree folderSelect={false} multiSelect={true} autoOpen={false} collection={collection} selection={this.state.selection} open={this.state.open} onChanged={this.handleChanged} onOpened={this.handleToggle} onClosed={this.handleToggle} />;
 		},
-		
+
 		handleChanged (item, selection) {
 			this.setState({ selection });
 		},
-		
+
 		handleToggle (item, open) {
 			this.setState({ open });
 		}
 	});
 
-	ReactDOM.render(<TreeExample/>, document.getElementById('tree'));
+	ReactDOM.render(
+		<div>
+			<div className="slds-col example">
+				<TreeExample/>
+			</div>
+			<div className="slds-col demo-controls"></div>
+		</div>
+
+	, document.getElementById('tree-react-control'));
 }

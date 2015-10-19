@@ -1,3 +1,5 @@
+require('../../public/assets/design-system/styles/slds.css');
+
 import badge from './badge/example';
 import button from './button/example';
 import combobox from './combobox/example';
@@ -7,6 +9,7 @@ import checkbox from './checkbox/example';
 	// import dropdown from './dropdown/example';
 import notification from './notification/example';
 import picklist from './picklist/example';
+	// import picker from './picker/example';
 import pillbox from './pillbox/example';
 	// import popover from './popover/example';
 import radio from './radio/example';
@@ -22,6 +25,7 @@ checkbox();
 	// dropdown();
 notification();
 picklist();
+	// picker();
 pillbox();
 	// popover();
 radio();
