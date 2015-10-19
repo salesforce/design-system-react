@@ -4,6 +4,8 @@ import * as Lib from '../lib/lib';
 import Base from './base';
 
 // Third party
+import classNames from 'classnames';
+
 require('../../scss/components/button-groups/flavors/base/index.scss');
 require('../../scss/components/button-groups/flavors/icon-group/index.scss');
 require('../../scss/components/button-groups/flavors/inverse/index.scss');
@@ -19,8 +21,6 @@ require('../../scss/components/buttons/flavors/neutral/index.scss');
 require('../../scss/components/buttons/flavors/neutral-icon/index.scss');
 require('../../scss/components/buttons/flavors/stateful/index.scss');
 require('../../scss/components/buttons/flavors/stateful-inverse/index.scss');
-
-import classNames from 'classnames';
 
 export const CONTROL = 'slds-button';
 
@@ -50,11 +50,6 @@ const ButtonCore = Lib.merge({}, Base, {
 		'icon-small': CONTROL + '--icon-small'
 	},
 	
-	iconPositions: {
-		'left': CONTROL + '__icon--left',
-		'right': CONTROL + '__icon--right'
-	},
-	
 	_defaultProperties: {
 		theme: null,
 		size: null,
@@ -62,10 +57,10 @@ const ButtonCore = Lib.merge({}, Base, {
 		iconPosition: 'left'
 	},
 	
-	_getClassNames () {
+	_getClassNames (isStateful) {
 		const selectedClasses = {};
 		
-		if (this.props.stateful) {
+		if (isStateful) {
 			selectedClasses[this.cssClasses.NOT_SELECTED] = !this.props.selected;
 			selectedClasses[this.cssClasses.SELECTED] = this.props.selected;
 		}
@@ -75,10 +70,6 @@ const ButtonCore = Lib.merge({}, Base, {
 			this.themes[this.props.theme],
 			this.iconStyles[this.props.iconStyle],
 			selectedClasses);
-	},
-	
-	_getIconClassNames () {
-		return classNames('slds-button__icon', !!this.props.text && this.iconPositions[this.props.iconPosition]);
 	}
 	
 	// TODO: We usually manage state and throw our own events here, so this will probably need to be expanded for jQuery support

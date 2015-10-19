@@ -14,8 +14,6 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // Template imports
 import template from './radio-template';
 
-const radioGroups = {};	// declared at this scope to keep a unified list of linked radios
-
 // Constructor
 let Radio = function Radio (element, options) {
 	this.options = Lib.extend({}, options);
@@ -23,7 +21,6 @@ let Radio = function Radio (element, options) {
 		wrapper: $(element)
 	};
 
-	this.addedToGroup = false;
 	this.inputSelector = 'input[type="radio"]';
 	this.rendered = false;
 	this.template = $('<i />').append(template);
@@ -38,32 +35,16 @@ const RadioObject = Lib.merge({}, CheckboxObject, {
 		name: ''
 	},
 
-	_getGroup () {
-		const name = this.getProperty('name');
-
-		if (!this.addedToGroup) {
-			if (!radioGroups[name]) radioGroups[name] = [];
-			radioGroups[name].push(this);
-			this.addedToGroup = true;
-		}
-
-		return radioGroups[name] || [];
-	},
-
 	_handleInputChange () {
 		this.check();
 	},
 
+	_bindUIEvents () {
+		this.elements.input.on('change', $.proxy(this._handleInputChange, this));
+	},
+
 	_onToggled () {
-		if (this.isChecked()) {
-			const group = this._getGroup();
-			for (let index = 0, length = group.length; index < length; index++) {
-				if (group[index] && group[index] !== this) {
-					group[index].uncheck();
-				}
-			}
-		}
-		CheckboxObject._onToggled.call(this);
+		this.elements.input.prop('checked', this.isChecked());
 	},
 
 	_renderDressings (elements) {

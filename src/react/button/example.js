@@ -1,23 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Button from './button';
-import Svg from '../svg/svg';
-
-// FIXME: We don't want to ask people to include SVGs or specially classed / formatted elements in order to make the buttons work
-
-// TODO: icon component with props
-	// <ButtonState icon={Icons.utility.add} text="Follow" assistive_text="Follow" />
-	// <Button icon={Icons.utility.add} text="Follow" assistive_text="Follow" hoverState={myHoverButtonState} selectedState={mySelectedState} />
-	//
-
-	// <Button icon={Button.icons.utility.add} text="Follow">
-	// 	<ButtonView view={Button.view.selected} icon={Button.icons.utility.check} text="Following" />
-	// 	<ButtonView view={Button.view.selectedHover} icon={Button.icons.utility.close} text="Unfollow" />
-	// </Button>
-	//
+import ButtonView from './button-view';
 
 export default function () {
-	ReactDOM.render(
+	const ButtonStatefulExample = React.createClass({
+		getInitialState () {
+			return {
+				selected: false
+			};
+		},
+
+		render () {
+			return (
 		<div>
 			<div className="slds-col example">
 				<div className="slds-grid slds-grid--vertical">
@@ -25,13 +20,12 @@ export default function () {
 						<Button text="Neutral" theme="neutral" />
 						<Button text="Brand" theme="brand" />
 						<Button text="Inverse" theme="inverse" />
-						<Button>Bare Button</Button>
+						<Button text="Bare Button"/>
 					<div className="slds-col row">
 					</div>
 						<Button text="Small" theme="neutral" size="small" />
 						<Button text="Small" theme="brand" size="small" />
 						<Button text="Small" theme="inverse" size="small" />
-						<Button size="small">Small</Button>
 					</div>
 
 					<div className="slds-col row">
@@ -61,19 +55,32 @@ export default function () {
 				</div>
 
 				<div className="slds-col row">
-					<Button theme="neutral" stateful>
-						<span className="slds-text-not-selected"><Svg className="slds-button__icon--stateful slds-button__icon--left" icon="utility.add"/>Follow</span>
-						<span className="slds-text-selected"><Svg className="slds-button__icon--stateful slds-button__icon--left" icon="utility.check"/>Following</span>
-						<span className="slds-text-selected-focus"><Svg className="slds-button__icon--stateful slds-button__icon--left" icon="utility.close"/>Unfollow</span>
-					</Button>
-					<Button theme="neutral" stateful selected>
-						<span className="slds-text-not-selected"><Svg className="slds-button__icon--stateful slds-button__icon--left" icon="utility.add"/>Follow</span>
-						<span className="slds-text-selected"><Svg className="slds-button__icon--stateful slds-button__icon--left" icon="utility.check"/>Following</span>
-						<span className="slds-text-selected-focus"><Svg className="slds-button__icon--stateful slds-button__icon--left" icon="utility.close"/>Unfollow</span>
-					</Button>
+					<div className="slds-button-group" role="group">
+						<Button text="Refresh" theme="neutral"/>
+						<Button text="Edit" theme="neutral"/>
+						<Button text="Save" theme="neutral"/>
+					</div>
 				</div>
+				
+				<div className="slds-col row">
+					<div className="slds-button-stateful" role="group">
+						<Button theme="neutral" icon="utility.add" text="Follow" selected={this.state.selected} onClick={this.handleClick}>
+							<ButtonView text="Following" view="selected" icon="utility.check"/>
+							<ButtonView text="Unfollow" view="selectedHover" icon="utility.close"/>
+						</Button>
+					</div>
+				</div>
+
 			</div>
 			<div className="slds-col demo-controls"></div>
 		</div>
-	, document.getElementById('button-react-control'));
+			);
+		},
+
+		handleClick () {
+			this.setState({selected: !this.state.selected});
+		}
+	});
+
+	ReactDOM.render(<ButtonStatefulExample/>, document.getElementById('button-react-control'));
 }
