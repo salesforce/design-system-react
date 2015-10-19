@@ -38,7 +38,7 @@ const PopoverCore = Lib.merge({}, Base, Disableable, Hideable, {
 		right: 'slds-nubbin--left'
 	},
 
-	currentPropPosition: null,
+	autoAdjustedPosition: null,
 
 	_getElementAlignment (el, container, align) {
 		const offset = Lib.offsetFromParent(align, container);
