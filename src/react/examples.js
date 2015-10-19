@@ -1,4 +1,4 @@
-require('../../public/assets/design-system/styles/slds.css');
+// require('../../public/assets/design-system/styles/slds.css');
 
 import badge from './badge/example';
 import button from './button/example';

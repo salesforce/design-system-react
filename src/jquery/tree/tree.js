@@ -95,7 +95,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const branchSelect = this.getProperty('folderSelect');
 
 		// This class is copied from the example code but I'm not sure it does anything
-		this.template.toggleClass('slds-tree__branch--selected', branchSelect);
+		this.template.toggleClass('slds-is-selected', branchSelect);
 
 		// When folder selection is allowed...
 		if (branchSelect) {
@@ -252,7 +252,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 			_level = level + 1;
 		}
 
-		$branch.toggleClass('slds-tree__branch--open', isOpen);
+		$branch.toggleClass('slds-is-open', isOpen);
 		$branch.attr('aria-expanded', isOpen);
 
 		if (isOpen) {
@@ -281,7 +281,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_renderSelection ($item, item, selection) {
 		const selected = this._isItemSelected(item, selection);
 
-		$item.toggleClass('slds-tree__item--selected', selected);
+		$item.toggleClass('slds-is-selected', selected);
 	}
 });
 
@@ -306,13 +306,13 @@ const legacyMethods = {
 	},
 
 	openFolder ($folder) {
-		if (!$folder.hasClass('slds-tree__branch--open')) {
+		if (!$folder.hasClass('slds-is-open')) {
 			this.toggleFolder($folder);
 		}
 	},
 
 	closeFolder ($folder) {
-		if ($folder.hasClass('slds-tree__branch--open')) {
+		if ($folder.hasClass('slds-is-open')) {
 			this.toggleFolder($folder);
 		}
 	},

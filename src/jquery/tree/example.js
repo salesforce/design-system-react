@@ -10,7 +10,7 @@ const collection = [
 		id: 1
 	},
 	{
-		text: 'Bscending and Descending',
+		text: 'Ascending and Descending',
 		_itemType: 'folder',
 		_isExpandable: true,
 		id: 2,
