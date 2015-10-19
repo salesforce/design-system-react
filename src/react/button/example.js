@@ -26,7 +26,6 @@ export default function () {
 						<Button text="Small" theme="neutral" size="small" />
 						<Button text="Small" theme="brand" size="small" />
 						<Button text="Small" theme="inverse" size="small" />
-						<Button size="small"></Button>
 					</div>
 
 					<div className="slds-col row">

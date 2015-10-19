@@ -16,7 +16,8 @@ export const ButtonView = React.createClass({
 		assistiveText: React.PropTypes.string,
 		icon: React.PropTypes.string,
 		text: React.PropTypes.string,
-		view: React.PropTypes.string
+		view: React.PropTypes.string,
+		iconPosition: React.PropTypes.string
 	},
 	
 	cssClasses: {

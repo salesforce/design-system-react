@@ -33,7 +33,6 @@ export const ButtonObject = {
 
 			React.Children.forEach(prop, child => {
 				if (!error && child.type !== ButtonView) {
-					
 					error = new Error(
 						'`' + componentName + '` ' +
 						'should only contain children of the type `ButtonView`.'
