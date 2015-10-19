@@ -11,7 +11,7 @@ import './combobox/example';
 import './notification/example';
 import './picklist/example';
 import './pillbox/example';
-	// import './popover/example';
+import './popover/example';
 import './radio/example';
 import './spinner/example';
 	// import './tooltip/example';
