@@ -23,8 +23,8 @@ export const ButtonObject = {
 		iconStyle: React.PropTypes.string,
 		iconPosition: React.PropTypes.string,
 		disabled: React.PropTypes.bool,
-		size: React.PropTypes.string,
-		theme: React.PropTypes.string,
+		size: React.PropTypes.oneOf(Object.keys(ButtonCore.sizes)),
+		theme: React.PropTypes.oneOf(Object.keys(ButtonCore.themes)),
 		selected: React.PropTypes.bool,
 		onClick: React.PropTypes.func,
 		children: function (props, propName, componentName) {
@@ -47,13 +47,13 @@ export const ButtonObject = {
 	},
 	
 	_renderViews () {
-		const views = React.Children.map(this.props.children, child => {
-			return React.cloneElement(child, { iconPosition: this.props.iconPosition });
+		const views = React.Children.map(this.props.children, (child, index) => {
+			return React.cloneElement(child, { iconPosition: this.props.iconPosition, key: index });
 		}) || [];
 		
 		const defaultView = views.length > 0 ? 'notSelected' : null;
 		
-		views.push(<ButtonView assistiveText={this.props.assistiveText} icon={this.props.icon} text={this.props.text} view={defaultView} iconPosition={this.props.iconPosition} />);
+		views.push(<ButtonView assistiveText={this.props.assistiveText} icon={this.props.icon} text={this.props.text} view={defaultView} iconPosition={this.props.iconPosition} key="default" />);
 		
 		return views;
 	},

@@ -102,7 +102,6 @@
 			}
 		</style>
 	</head>
-
 	<body>
 		<header class="slds-grid | site-masthead">
 			<div class="slds-col | slds-has-flexi-truncate | slds-align-middle | site-masthead-title">
@@ -116,9 +115,13 @@
 			</div>
 		</header>
 		<section class="slds-grid">
-			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12"></div>
+			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12">
+				
+			</div>
+
 			<div class="slds-col | slds-size--10-of-12 slds-medium-size--10-of-12 slds-large-size--10-of-12">
 				<div id="component-list" class="slds-grid slds-grid--vertical">
+
 					<!-- badge -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -156,17 +159,15 @@
 									</div>
 								</div>
 							</div>
-
 						</div>
 					</div>
 
 					<!-- button -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
-
 							<div class="slds-col | header">
 								<h2 class="slds-text-heading--large">
-									<span>Button &amp; Button Group</span>
+									<span>Button, Button Group, &amp; Stateful Button</span>
 									<span class="slds-badge | slds-theme--warning slds-theme--inverse-text">Alpha: in progress</span>
 								</h2>
 							</div>
@@ -198,51 +199,13 @@
 						</div>
 					</div>
 
-
-					<!-- buttongroup -->
-					<div class="slds-col | component-wrapper">
-						<div class="slds-grid slds-grid--vertical | component">
-							<div class="slds-col | header">
-								<h2 class="slds-text-heading--large">
-									<span>Button Group</span>
-									<span class="slds-badge | slds-theme--warning slds-theme--inverse-text">Alpha: in progress</span>
-								</h2>
-							</div>
-							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
-										<div class="slds-grid slds-grid--vertical | example-wrapper">
-											<div class="slds-col | type">
-												<span class="slds-text-heading--label">React</span>
-											</div>
-											<div id="buttongroup-react-control"></div>
-										</div>
-									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
-										<div class="slds-grid slds-grid--vertical | example-wrapper">
-											<div class="slds-col | type">
-												<span class="slds-text-heading--label">jQuery</span>
-											</div>
-											<div>
-												<div id="buttongroup-jquery-control" class="slds-col | example">
-													<div class=""></div>
-												</div>
-												<div class="slds-col | demo-controls"></div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
 					<!-- checkbox -->
 					<div class="slds-col | component-wrapper">
-						<div class="slds-grid slds-grid--vertical | component">
-							<div class="slds-col | header">
+						<div class="slds-grid slds-grid--vertical component">
+							<div class="slds-col header">
 								<h2 class="slds-text-heading--large">
 									<span>Checkbox</span>
-									<span class="slds-badge | slds-theme--shade">Alpha: done</span>
+									<span class="slds-badge slds-theme--shade">alpha: done</span>
 								</h2>
 							</div>
 							<div class="slds-col | body">
@@ -269,7 +232,7 @@
 													<div class="slds-button-group" role="group">
 														<button type="button" id="checkbox-jquery-check" class="slds-button slds-button--neutral slds-button--xsmall">Check</button>
 														<button type="button" id="checkbox-jquery-uncheck" class="slds-button slds-button--neutral slds-button--xsmall">Uncheck</button>
-													<button type="button" id="checkbox-jquery-disable" class="slds-button slds-button--neutral slds-button--xsmall">Disable</button>
+														<button type="button" id="checkbox-jquery-disable" class="slds-button slds-button--neutral slds-button--xsmall">Disable</button>
 														<button type="button" id="checkbox-jquery-enable" class="slds-button slds-button--neutral slds-button--xsmall">Enable</button>
 													</div>
 												</div>
@@ -280,6 +243,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- combobox -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -324,6 +288,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- data-table -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -348,20 +313,11 @@
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
-											<div>
-												<div id="data-table-jquery-control" class="slds-col | example">
-													<div class=""></div>
-												</div>
-												<div class="slds-col | demo-controls">
-													<div class="slds-button-group" role="group">
-														<!--
-														<button id="data-table-jquery-hide"class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-														<button id="data-table-jquery-show"class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-														<button id="data-table-jquery-chooseById"class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-														<button id="data-table-jquery-chooseByName"class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button>
-														 -->
-													</div>
-												</div>
+											<div id="data-table-jquery-control" class="slds-col | example">
+												<div class=""></div>
+											</div>
+											<div class="slds-col | demo-controls">
+												<div class="slds-button-group" role="group"></div>
 											</div>
 										</div>
 									</div>
@@ -369,6 +325,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- datepicker -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -398,14 +355,7 @@
 													<div class=""></div>
 												</div>
 												<div class="slds-col | demo-controls">
-													<div class="slds-button-group" role="group">
-														<!-- 
-														<button id="datepicker-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-														<button id="datepicker-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-														<button id="datepicker-jquery-chooseById" class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-														<button id="datepicker-jquery-chooseByName" class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button>
-														 -->
-													</div>
+													<div class="slds-button-group" role="group"></div>
 												</div>
 											</div>
 										</div>
@@ -414,6 +364,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- dropdown -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -443,14 +394,7 @@
 													<div class=""></div>
 												</div>
 												<div class="slds-col | demo-controls">
-													<div class="slds-button-group" role="group">
-														<!-- 
-														<button id="dropdown-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-														<button id="dropdown-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-														<button id="dropdown-jquery-chooseById" class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-														<button id="dropdown-jquery-chooseByName" class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button>
-														 -->
-													</div>
+													<div class="slds-button-group" role="group"></div>
 												</div>
 											</div>
 										</div>
@@ -459,6 +403,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- notification -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -503,6 +448,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- picklist -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -547,6 +493,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- pillbox -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -585,6 +532,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- popover -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -601,7 +549,8 @@
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
 											</div>
-											<div id="popover-react-control"></div>
+											<div id="popover-react-control" class="slds-col example">
+											</div>
 										</div>
 									</div>
 									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
@@ -609,20 +558,11 @@
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
-											<div>
-												<div id="popover-jquery-control" class="slds-col | example">
-													<div class=""></div>
-												</div>
-												<div class="slds-col | demo-controls">
-													<div class="slds-button-group" role="group">
-														<!-- 
-														<button id="popover-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-														<button id="popover-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-														<button id="popover-jquery-chooseById" class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-														<button id="popover-jquery-chooseByName" class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button>
-														 -->
-													</div>
-												</div>
+											<div id="popover-jquery-control" class="slds-col | example">
+												<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--xsmall">Toggle</button>
+											</div>
+											<div class="slds-col | demo-controls">
+												<div class="slds-button-group" role="group"></div>
 											</div>
 										</div>
 									</div>
@@ -630,6 +570,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- radio -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -654,18 +595,17 @@
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
-										<div id="radio-jquery-control" class="slds-col | example"></div>
-												<div class="slds-col | demo-controls">
-													<div class="slds-button-group" role="group">
-														<button id="radio-jquery-checkFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Check first</button>
-														<button id="radio-jquery-checkSecond" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Check second</button>
-														<button id="radio-jquery-disableFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Disable first</button>
-														<button id="radio-jquery-enableFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Enable first</button>
-														<button id="radio-jquery-disableAll" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Disable all</button>
-														<button id="radio-jquery-enableAll" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Enable all</button>
-												<button id="radio-jquery-logChecked" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Log Checked</button>
-												<button id="radio-jquery-logValue" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Log Value</button>
-													</div>
+											<div id="radio-jquery-control" class="slds-col | example"></div>
+											<div class="slds-col | demo-controls">
+												<div class="slds-button-group" role="group">
+													<button id="radio-jquery-checkFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Check first</button>
+													<button id="radio-jquery-checkSecond" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Check second</button>
+													<button id="radio-jquery-disableFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Disable first</button>
+													<button id="radio-jquery-enableFirst" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Enable first</button>
+													<button id="radio-jquery-disableAll" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Disable all</button>
+													<button id="radio-jquery-enableAll" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Enable all</button>
+													<button id="radio-jquery-logChecked" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Log Checked</button>
+													<button id="radio-jquery-logValue" type="button" class="slds-button slds-button--neutral slds-button--xsmall">Log Value</button>
 												</div>
 											</div>
 										</div>
@@ -674,6 +614,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- spinner -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -746,6 +687,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- tooltip -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -775,14 +717,7 @@
 													<div class="tooltip1"></div>
 												</div>
 												<div class="slds-col | demo-controls">
-													<div class="slds-button-group" role="group">
-														<!-- 
-														<button id="tooltip-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-														<button id="tooltip-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-														<button id="tooltip-jquery-chooseById" class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-														<button id="tooltip-jquery-chooseByName" class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button>
-														 -->
-													</div>
+													<div class="slds-button-group" role="group"></div>
 												</div>
 											</div>
 										</div>
@@ -791,6 +726,7 @@
 							</div>
 						</div>
 					</div>
+
 					<!-- tree -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -820,14 +756,7 @@
 													<div class="tree1"></div>
 												</div>
 												<div class="slds-col | demo-controls">
-													<div class="slds-button-group" role="group">
-														<!-- 
-														<button id="tree-jquery-hide" class="slds-button slds-button--neutral slds-button--xsmall">Hide</button>
-														<button id="tree-jquery-show" class="slds-button slds-button--neutral slds-button--xsmall">Show</button>
-														<button id="tree-jquery-chooseById" class="slds-button slds-button--neutral slds-button--xsmall">Choose by ID</button>
-														<button id="tree-jquery-chooseByName" class="slds-button slds-button--neutral slds-button--xsmall">Choose by Name</button>
-														 -->
-													</div>
+													<div class="slds-button-group" role="group"></div>
 												</div>
 											</div>
 										</div>
@@ -836,9 +765,12 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
-			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12"></div>
+			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12">
+				
+			</div>
 		</section>
 		<script src="/assets/facades/scripts/jquery.min.js"></script>
 		<script src="/build/jquery.bundle.js"></script>

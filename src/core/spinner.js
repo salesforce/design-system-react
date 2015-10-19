@@ -15,7 +15,7 @@ const assetsDir = '/assets/design-system/images/spinners/';
 
 const SpinnerCore = Lib.merge({}, Base, {
 
-	cssClasses: {
+	sizes: {
 		small: Base.cssClasses.NAMESPACE + CONTROL + '--small',
 		medium: Base.cssClasses.NAMESPACE + CONTROL + '--medium',
 		large: Base.cssClasses.NAMESPACE + CONTROL + '--large'

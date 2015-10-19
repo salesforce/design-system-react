@@ -73,7 +73,7 @@ export default function () {
 
 		_handleClick (e) {
 			// translate text of button into method call
-			switch (e.target.firstChild.data) {
+			switch (e.target.firstChild.data.toLowerCase()) {
 				case 'check first':
 					this.refs.radio1.check();
 					break;

@@ -29,10 +29,9 @@ const SpinnerObject = {
 		const strings = this.getState('strings');
 		
 		this.elements.wrapper.empty();
-		console.log('this.options.theme', this.options.theme);
 
 		$('<div />', {
-			class: this.cssClasses[this.getProperty('size')]
+			class: this.sizes[this.getProperty('size')]
 		}).append(
 			$('<img />', {
 				src: this.fileNames[this.getProperty('theme')],
