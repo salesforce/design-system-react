@@ -54,6 +54,7 @@ class Item extends React.Component {
         <a
           href={this.props.href}
           id={id}
+          ref={id}
           tabIndex="-1"
           aria-disabled={this.props.isDisabled}
           role="option"

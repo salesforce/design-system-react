@@ -13,6 +13,7 @@ import SLDSPicklistBase from './SLDSPicklistBase';
 import SLDSPicklistBaseListItem from './SLDSPicklistBase/list-item';
 import SLDSSettings from './SLDSSettings';
 import SLDSButton from './SLDSButton';
+import SLDSLookup from './SLDSLookup';
 import SLDSModal from './SLDSModal';
 import SLDSModalTrigger from './SLDSModal/trigger';
 import SLDSIcons from './SLDSIcons';
@@ -22,6 +23,7 @@ module.exports = {
   SLDSPicklistBaseListItem: SLDSPicklistBaseListItem,
   SLDSSettings: SLDSSettings,
   SLDSButton: SLDSButton,
+  SLDSLookup: SLDSLookup,
   SLDSModal: SLDSModal,
   SLDSModalTrigger: SLDSModalTrigger,
   SLDSIcons: SLDSIcons
