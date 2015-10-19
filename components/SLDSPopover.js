@@ -90,10 +90,10 @@ module.exports = React.createClass( {
         style={{
           transform:'none',
           WebkitTransform:'none',
-          marginTop:'0.20rem',
-          marginBottom:'0.35rem',
-          float:'inherit',
-          position:'inherit',
+          'marginTop':'0.20rem',
+          'marginBottom':'0.35rem',
+          'float':'inherit',
+          'position':'inherit'
         }}
         onKeyDown={this.handleKeyDown}
       >
