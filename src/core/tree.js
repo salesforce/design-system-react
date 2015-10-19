@@ -15,7 +15,8 @@ export const CONTROL = 'tree';
 const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL
+		CONTROL: CONTROL,
+		NAMESPACE: 'slds'
 	},
 
 	// Set the defaults

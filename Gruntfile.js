@@ -74,6 +74,7 @@ module.exports = function (grunt) {
 						'./node_modules',
 						'.'
 					],
+					open: true,
 					port: '<%= port %>',
 					useAvailablePort: true,
 					onCreateServer: function (server) {
