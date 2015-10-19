@@ -52,6 +52,7 @@ export default function () {
 				<div>
 					<div className="slds-col example">
 						<fieldset className="slds-form-element">
+							<legend className="slds-form-element__label slds-form-element__label--top">Opts</legend>
 							<div className="slds-form-element__control">
 								{radios}
 							</div>
