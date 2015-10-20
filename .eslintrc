@@ -14,8 +14,6 @@
 		"react/jsx-boolean-value": 0,
 		"react/sort-comp": 0,
 		"id-length": [2, {"min": 2, "properties": "never", "exceptions": ["$", "_", "e", "i", "a", "b"]}],
-		"no-undef": 0,
-		"no-multi-spaces": 0,
-		"no-unused-expressions": 0
+		"no-undef": 1
 	}
 }

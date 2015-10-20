@@ -192,7 +192,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		}
 	},
 
-	_loopChildren (children, $el, level)  {
+	_loopChildren (children, $el, level) {
 		const self = this;
 		const elements = [];
 
