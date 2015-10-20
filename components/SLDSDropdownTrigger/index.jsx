@@ -110,6 +110,7 @@ module.exports = React.createClass( {
       if(!this.state.isOpen){
         this.setState({
           isOpen:true,
+          isHover:true
         });
       }
     }
