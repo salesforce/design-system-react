@@ -111,7 +111,7 @@ module.exports = React.createClass( {
                   onClick={this.handleIconClick} />
                 </div>
 
-                <div className='slds-p-vertical--small' className="slds-hint-parent" style={hintBtnParent}>
+                <div className='slds-p-vertical--small slds-hint-parent' style={hintBtnParent}>
                 7. <SLDSButton
                   label='Edit'
                   variant='icon'
