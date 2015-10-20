@@ -6,7 +6,7 @@ export default function () {
 	const PopoverExample = React.createClass({
 		getInitialState () {
 			return {
-				header: 'Test Header',
+				header: 'Popover Heading',
 				isOpen: false
 			};
 		},
@@ -16,7 +16,7 @@ export default function () {
 				<div className="react-popover-example-wrap">
 					<button id="popover-react-toggle" className="slds-button slds-button--neutral slds-button--x-small" ref="target" onClick={this._handleClick}>Toggle</button>
 					<Popover placement="right" header={this.state.header} isOpen={this.state.isOpen} align={this.state.align}>
-						<span>This is test content for the popover</span>
+						<span>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</span>
 					</Popover>
 				</div>
 			);
