@@ -7,9 +7,7 @@ var node_modules_dir = path.join(__dirname, 'node_modules');
 var config = {
 	entry: {
 		react: entries.concat('./src/react/examples.js'),
-		jquery: entries.concat('./src/jquery/examples.js'),
-		marionette: entries.concat('./src/jquery/examples.js'),
-		tests: entries.concat('./test/tests.js')
+		jquery: entries.concat('./src/jquery/examples.js')
 	},
 	resolve: {
 		// root: [
