@@ -37,3 +37,7 @@ body > .slds-container {
 .react-popover-example-wrap {
 	position: relative;
 }
+
+.react-tooltip-example-wrap {
+	position: relative;
+}

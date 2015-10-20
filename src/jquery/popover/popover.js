@@ -53,7 +53,7 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 			this.elements.popover.removeClass('slds-hidden');
 		}
 
-		this.elements.popover.addClass(this._getClassNames());
+		this.elements.popover.addClass(this.getClassNames());
 		this.elements.container.append(this.elements.popover);
 	},
 
@@ -83,14 +83,14 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 	},
 
 	_togglePopover () {
-		const position = this._getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
+		const position = this.getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
 		const isHidden = this.elements.popover.hasClass('slds-hidden');
 		
 		this.elements.popover.toggleClass('slds-hidden', !isHidden);
 		this.elements.popover.css(position);
 
 		if (isHidden) {
-			this.elements.popover.attr('class', this._getClassNames());
+			this.elements.popover.attr('class', this.getClassNames());
 
 			this.elements.wrapper.trigger('shown.fu.popover');
 		} else {
