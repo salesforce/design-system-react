@@ -15,6 +15,8 @@ import List from './list';
 import ListItem from './list-item';
 import ListItemLabel from './list-item-label';
 
+import SLDSButton from '../SLDSButton';
+
 import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
 
@@ -34,7 +36,7 @@ module.exports = React.createClass( {
       placeholder: 'Select an Option',
       disabled: false,
       theme: 'default',
-      label: 'Picklist',
+      label: 'Dropdown',
       value: null,
       options: [],
       initialFocus: false,
@@ -42,7 +44,8 @@ module.exports = React.createClass( {
       className:'',
       listClassName:'',
       openOn:'hover',
-      listItemRenderer:ListItemLabel
+      listItemRenderer:ListItemLabel,
+      hoverCloseDelay:300
     }
   },
 
@@ -98,7 +101,6 @@ module.exports = React.createClass( {
   },
 
   handleMouseEnter(event) {
-    console.log('IN');
     if(this.props.openOn === 'hover'){
       this.setState({
         isOpen:true,
@@ -108,7 +110,6 @@ module.exports = React.createClass( {
   },
 
   handleMouseLeave(event) {
-    console.log('OUT');
     if(this.props.openOn === 'hover'){
       this.setState({isClosing:true});
     }
@@ -141,8 +142,12 @@ module.exports = React.createClass( {
 
   setFocus () {
     if(this.isMounted()){
-      React.findDOMNode(this.refs.button).focus();
+      React.findDOMNode(this.getButtonNode()).focus();
     }
+  },
+
+  getButtonNode () {
+    return React.findDOMNode(this).childNodes[0];
   },
 
   moveHighlight(delta) {
@@ -201,7 +206,6 @@ module.exports = React.createClass( {
       !this.props.disabled && this.state.isOpen?
         <div
           className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
-          targetElement={this.refs.button}
           style={{maxHeight:'20em'}}>
           {this.getPopoverContent()}
         </div>:null
@@ -237,30 +241,20 @@ module.exports = React.createClass( {
     let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
     return (
 
-      <div className={"slds-form-element slds-theme--"+this.props.theme}>
-        <div className={"slds-picklist slds-theme--"+this.props.theme}>
-          <button
-            id={this.props.id}
-            ref="button"
-            className={'slds-button slds-button--neutral slds-picklist__label '+this.props.className }
-            aria-haspopup="true"
-            onBlur={this.handleBlur}
-            onFocus={this.handleFocus}
-            onClick={this.handleClick}
-            onMouseDown={this.handleMouseDown}
-            onMouseEnter={(this.props.openOn === 'hover')?this.handleMouseEnter:null}
-            onMouseLeave={(this.props.openOn === 'hover')?this.handleMouseLeave:null}
-            tabIndex={this.state.isOpen?-1:0}
-            onKeyDown={this.handleKeyDown} >
-            <span className="slds-truncate">{this.getPlaceholder()}</span>
-            <Icon name="down" category="utility" />
-          </button>
-
+      <div 
+        className='slds-dropdown-trigger'
+        onBlur={this.handleBlur}
+        onFocus={this.handleFocus}
+        onClick={this.handleClick}
+        onMouseDown={this.handleMouseDown}
+        onMouseEnter={(this.props.openOn === 'hover')?this.handleMouseEnter:null}
+        onMouseLeave={(this.props.openOn === 'hover')?this.handleMouseLeave:null}
+        tabIndex={this.state.isOpen?-1:0}
+        onKeyDown={this.handleKeyDown}
+      >
+          {this.props.children}        
           {this.props.modal?this.getModalPopover():this.getSimplePopover()}
-
         </div>
-
-      </div>
     );
   },
 
@@ -297,7 +291,7 @@ module.exports = React.createClass( {
         if(this.state.isClosing){
           this.setState({isOpen:false});
         }
-      },1000);
+      },this.props.hoverCloseDelay);
     }
 
     if(this.props.value !== prevProps.value){

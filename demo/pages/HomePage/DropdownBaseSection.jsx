@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDSDropdownBase from '../../../components/SLDSDropdownBase';
+import {SLDSDropdownTrigger,SLDSButton} from '../../../components';
 
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
@@ -53,7 +53,7 @@ module.exports = React.createClass( {
               </PrismCode>
 
               <div className="slds-p-vertical--large">
-                <SLDSDropdownBase
+                <SLDSDropdownTrigger
                     options={[
                       {label:'A Option Option Super Super Long',value:'A0'},
                       {label:'B Option',value:'B0'},
@@ -73,7 +73,16 @@ module.exports = React.createClass( {
                     placeholder = "Select a contact"
                     onSelect={this.handleOnSelect}
                     onClick={this.handleOnClick}
-                    onUpdateHighlighted={this.handleOnUpdateHighlighted} />
+                    onUpdateHighlighted={this.handleOnUpdateHighlighted}
+                    >
+                      <SLDSButton 
+                        ref="button"
+                        label='More Options' 
+                        variant='icon' 
+                        iconName='down' 
+                        iconVariant='border-filled'
+                        />
+                    </SLDSDropdownTrigger>
               </div>
 
             </div>

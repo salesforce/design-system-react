@@ -10,8 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import SLDSPicklistBase from './SLDSPicklistBase';
-import SLDSMenuButton from './SLDSMenuButton';
-import SLDSDropdownBase from './SLDSDropdownBase';
+import SLDSDropdownTrigger from './SLDSDropdownTrigger';
 
 import SLDSPicklistBaseListItem from './SLDSPicklistBase/list-item';
 import SLDSSettings from './SLDSSettings';
@@ -24,8 +23,7 @@ import SLDSIcons from './SLDSIcons';
 
 module.exports = {
   SLDSPicklistBase: SLDSPicklistBase,
-  SLDSMenuButton: SLDSMenuButton,
-  SLDSDropdownBase: SLDSDropdownBase,
+  SLDSDropdownTrigger: SLDSDropdownTrigger,
   SLDSPicklistBaseListItem: SLDSPicklistBaseListItem,
   SLDSSettings: SLDSSettings,
   SLDSButton: SLDSButton,
