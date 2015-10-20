@@ -15,4 +15,5 @@ import './popover/example';
 import './radio/example';
 import './spinner/example';
 	// import './tooltip/example';
+import './tooltip/example';
 import './tree/example';
