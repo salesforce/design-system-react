@@ -18,7 +18,7 @@ const TreeItem = React.createClass({
 		
 		return (
 			<li className={classNames('slds-tree__item', {'slds-is-selected': isSelected})} onClick={this._handleItemClick.bind(this, this.props.item)} data-template="treeitem" role="treeitem">
-				<div role="presentation" className="slds-tree__item-label slds-truncate">{this.props.item.getText()}</div>
+				<div role="presentation" className="slds-tree__item-label | slds-truncate">{this.props.item.getText()}</div>
 			</li>
 		);
 	},

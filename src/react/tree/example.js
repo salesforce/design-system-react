@@ -31,7 +31,7 @@ const collection = [
 						id: 5
 					},
 					{
-						text: 'Pears (with custom icon)',
+						text: 'Pears',
 						_itemType: 'item',
 						_iconClass: 'glyphicon-file',
 						id: 6
@@ -76,7 +76,7 @@ const collection = [
 								id: 17
 							},
 							{
-								text: 'Pinklady (with custom icon)',
+								text: 'Pinklady',
 								_itemType: 'item',
 								_iconClass: 'glyphicon-file',
 								id: 18
@@ -110,7 +110,7 @@ const collection = [
 		]
 	},
 	{
-		text: 'Sky and Water I (with custom icon)',
+		text: 'Sky and Water I',
 		_itemType: 'item',
 		_iconClass: 'glyphicon-file',
 		id: 8

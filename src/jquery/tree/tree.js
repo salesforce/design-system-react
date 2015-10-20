@@ -170,6 +170,8 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const $el = this.template.clone().empty();
 		const dataSource = this.getProperty('dataSource');
 
+		console.log('this._collection', this._collection);
+
 		if (this._collection.length()) {
 			this._loopChildren(this._collection, $el, 1);
 		} else if (dataSource) {
@@ -197,6 +199,8 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const elements = [];
 
 		children.forEach(function buildBranch (item) {
+			console.log('[_loopChildren] forEach: item', item);
+
 			const isBranch = item.getType() === 'folder';
 
 			if (!isBranch) {
@@ -211,9 +215,10 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_renderItem (item) {
+		console.log('[_renderItem] item', item);
 		const $item = this.template.find('li.slds-tree__item').clone();
 
-		// $item.find('.tree-label').text(item.getText());
+		$item.find('.slds-tree__item-label').text(item.getText());
 		$item.data({
 			item: item._item
 		});
@@ -226,6 +231,11 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_renderBranch (branch, level) {
 		const $branch = this.template.find('.slds-tree__branch').clone();
 		const $branchContent = $branch.find('.slds-tree__group');
+
+		console.log('[_renderBranch] branch._item', branch._item);
+
+		$branch.find('.slds-tree__branch--name').text(branch.getText());
+
 
 		$branch.data({
 			item: branch._item,
