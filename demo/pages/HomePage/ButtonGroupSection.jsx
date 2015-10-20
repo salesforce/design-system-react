@@ -11,6 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSButtonGroup from '../../../components/SLDSButtonGroup';
+import SLDSDropdownTrigger from '../../../components/SLDSDropdownTrigger';
 import SLDSButton from '../../../components/SLDSButton';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
@@ -42,7 +43,31 @@ module.exports = React.createClass( {
                   <SLDSButton label='Refresh' variant='neutral' />
                   <SLDSButton label='Edit' variant='neutral' />
                   <SLDSButton label='Save' variant='neutral' />
-                  <SLDSButton label='More Options' variant='icon' iconName='down' iconVariant='border-filled' />
+
+                <SLDSDropdownTrigger
+                    options={[
+                      {label:'A Option Option Super Super Long',value:'A0'},
+                      {label:'B Option',value:'B0'},
+                      {label:'C Option',value:'C0'},
+                      {label:'D Option',value:'D0'},
+                      {label:'E Option',value:'E0'},
+                      {label:'A1 Option',value:'A1'},
+                      {label:'B2 Option',value:'B1'},
+                      {label:'C2 Option',value:'C1'},
+                      {label:'D2 Option',value:'D1'},
+                      {label:'E2 Option Super Super Long',value:'E1'},
+
+                    ]}
+                    value='C0'
+                    label="Contacts"
+                    modal={true}
+                    placeholder = "Select a contact"
+                    onSelect={this.handleOnSelect}
+                    onClick={this.handleOnClick}
+                    onUpdateHighlighted={this.handleOnUpdateHighlighted}
+                    />
+
+
                 </SLDSButtonGroup>
               </div>
 

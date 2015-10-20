@@ -142,6 +142,7 @@ module.exports = React.createClass({
           onSelect={this.handleSelect}
           onSearch={this.handleSearch}
           labelRenderer={this.props.itemRenderer}
+          isHover={this.props.isHover}
           onCancel={this.handleCancel}/>
       );
     });

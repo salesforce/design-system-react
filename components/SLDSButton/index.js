@@ -89,11 +89,12 @@ class Button extends React.Component {
     if (this.props.disabled) { props['disabled'] = 'disabled' };
 
     return (
-      <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
+      <button tabIndex={this.props.tabindex} className={this.getClassName()} {...this.props} onClick={click}>
         {this.props.iconPosition === 'right' ? <span className={labelClasses}>{this.props.label}</span>: null}
         {this.renderIcon()}
         {this.renderIconMore()}
         {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? <span className={labelClasses}>{this.props.label}</span>: null}
+        {this.props.children}
       </button>
     );
   }

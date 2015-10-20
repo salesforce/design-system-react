@@ -74,15 +74,7 @@ module.exports = React.createClass( {
                     onSelect={this.handleOnSelect}
                     onClick={this.handleOnClick}
                     onUpdateHighlighted={this.handleOnUpdateHighlighted}
-                    >
-                      <SLDSButton 
-                        ref="button"
-                        label='More Options' 
-                        variant='icon' 
-                        iconName='down' 
-                        iconVariant='border-filled'
-                        />
-                    </SLDSDropdownTrigger>
+                    />
               </div>
 
             </div>

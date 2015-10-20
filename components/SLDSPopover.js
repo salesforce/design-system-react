@@ -176,7 +176,7 @@ module.exports = React.createClass( {
   },
 
   render () {
-    return <span></span>;
+    return <noscript></noscript>;
   }
 
 } );

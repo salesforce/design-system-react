@@ -57,7 +57,8 @@ module.exports = React.createClass( {
       highlightedIndex:0,
       selectedIndex:this.getIndexByValue(this.props.value),
       lastBlurredIndex:-1,
-      lastBlurredTimeStamp:-1
+      lastBlurredTimeStamp:-1,
+      isHover: false
     };
   },
 
@@ -97,15 +98,20 @@ module.exports = React.createClass( {
   },
 
   handleClose() {
-    this.setState({isOpen:false});
+    this.setState({
+      isOpen:false,
+      isHover:false
+    });
   },
 
   handleMouseEnter(event) {
     if(this.props.openOn === 'hover'){
-      this.setState({
-        isOpen:true,
-        isClosing:false
-      });
+      this.state.isClosing = false;
+      if(!this.state.isOpen){
+        this.setState({
+          isOpen:true,
+        });
+      }
     }
   },
 
@@ -137,7 +143,10 @@ module.exports = React.createClass( {
   },
 
   handleFocus() {
-    this.setState({isFocused:true});
+    this.setState({
+      isFocused:true,
+      isHover:false
+    });
   },
 
   setFocus () {
@@ -147,7 +156,7 @@ module.exports = React.createClass( {
   },
 
   getButtonNode () {
-    return React.findDOMNode(this).childNodes[0];
+    return React.findDOMNode(this.refs.button);
   },
 
   moveHighlight(delta) {
@@ -179,7 +188,9 @@ module.exports = React.createClass( {
   },
 
   handleCancel () {
-    this.setFocus();
+    if(!this.state.isHover){
+      this.setFocus();
+    }
   },
 
   getPopoverContent() {
@@ -198,6 +209,7 @@ module.exports = React.createClass( {
             onMouseLeave={(this.props.openOn === 'hover')?this.handleMouseLeave:null}
             onCancel={this.handleCancel}
             itemRenderer={this.props.listItemRenderer}
+            isHover={this.state.isHover}
             theme={this.props.theme} />;
   },
 
@@ -241,8 +253,12 @@ module.exports = React.createClass( {
     let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
     return (
 
-      <div 
-        className='slds-dropdown-trigger'
+      <SLDSButton 
+        ref="button"
+        label='More Options' 
+        variant='icon' 
+        iconName='down' 
+        iconVariant='border-filled'
         onBlur={this.handleBlur}
         onFocus={this.handleFocus}
         onClick={this.handleClick}
@@ -251,10 +267,10 @@ module.exports = React.createClass( {
         onMouseLeave={(this.props.openOn === 'hover')?this.handleMouseLeave:null}
         tabIndex={this.state.isOpen?-1:0}
         onKeyDown={this.handleKeyDown}
-      >
-          {this.props.children}        
-          {this.props.modal?this.getModalPopover():this.getSimplePopover()}
-        </div>
+        >
+        {this.props.modal?this.getModalPopover():this.getSimplePopover()}
+      </SLDSButton>
+
     );
   },
 

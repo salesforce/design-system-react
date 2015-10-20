@@ -68,12 +68,18 @@ module.exports = React.createClass({
 
   componentDidMount(){
     if(this.props.isHighlighted){
-      this.refs.link.getDOMNode().focus();
+      this.setFocus();
     }
   },
 
   componentDidUpdate( prevProps, prevState) {
     if(!prevProps.isHighlighted && this.props.isHighlighted){
+      this.setFocus();
+    }
+  },
+
+  setFocus () {
+    if(!this.props.isHover){
       this.refs.link.getDOMNode().focus();
     }
   },
