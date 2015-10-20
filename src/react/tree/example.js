@@ -4,7 +4,7 @@ import Tree from './tree';
 
 const collection = [
 	{
-		text: 'Waterfall',
+		text: 'Grains',
 		_itemType: 'item',
 		id: 1
 	},
@@ -110,7 +110,7 @@ const collection = [
 		]
 	},
 	{
-		text: 'Sky and Water I',
+		text: 'Nuts',
 		_itemType: 'item',
 		_iconClass: 'glyphicon-file',
 		id: 8
