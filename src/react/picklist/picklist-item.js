@@ -2,6 +2,7 @@
 
 // Framework specific
 import React from 'react';
+import Svg from '../svg/svg';
 
 // Third party
 import classNames from 'classnames';
@@ -19,15 +20,15 @@ const PicklistItem = React.createClass({
 		onSelected: React.PropTypes.func.isRequired,
 		selected: React.PropTypes.bool
 	},
+	
+	_renderCheckmark () {
+		if (this.props.selected) {
+			return <Svg className="slds-icon slds-icon--small slds-icon--left" icon="standard.task2" />;
+		}
+	},
 
 	render () {
 		let html;
-		let checkmark = '';
-		const icon = '<use xlink:href="/assets/design-system/icons/standard-sprite/svg/symbols.svg#task2"></use>'; // react doesn't currently support xlink:href in a svg tags
-
-		if (this.props.selected) {
-			checkmark = <svg aria-hidden="true" className="slds-icon slds-icon--small slds-icon--left" dangerouslySetInnerHTML={{__html: icon}} />;
-		}
 
 		switch (this.props.item.getType()) {
 			case 'header':
@@ -42,7 +43,7 @@ const PicklistItem = React.createClass({
 				html = (
 					<li className={classNames('slds-dropdown__item', 'slds-has-icon--left', {'slds-is-selected': this.props.selected})} disabled={disabled}>
 					<a href="#" className="slds-truncate" onClick={this.handleClicked}>
-						{checkmark}
+						{this._renderCheckmark()}
 						{this.props.item.getText()}
 					</a>
 					</li>

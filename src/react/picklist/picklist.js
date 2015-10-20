@@ -10,6 +10,7 @@ import ReactDOM from 'react-dom';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
+import Svg from '../svg/svg';
 
 // Third party
 import classNames from 'classnames';
@@ -32,18 +33,16 @@ export const PicklistObject = {
 	},
 
 	_menuItems () {
-		const selected = this._getSelection();
-		const text = selected.getText() || '';
+		const selected = this.getSelection();
 
 		return this._collection.map((item, index) => {
 			return (
-				<PicklistItem key={index} selected={item.getText() === text} item={item} onSelected={this._handleMenuItemSelected} />
+				<PicklistItem key={index} selected={item._item === selected} item={item} onSelected={this._handleMenuItemSelected} />
 			);
 		});
 	},
 
 	render () {
-		const icon = '<use xlink:href="/assets/design-system/icons/utility-sprite/svg/symbols.svg#down"></use>'; // react doesn't currently support xlink:href in a svg tag
 		const item = this._getSelection();
 		const selectionName = item.getText() || this.state.strings.NONE_SELECTED;
 		const styles = {
@@ -55,7 +54,7 @@ export const PicklistObject = {
 		  <div aria-expanded="true" className="slds-picklist" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 			<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" style={styles} disabled={this.props.disabled} aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
 			  <span className="slds-truncate">{selectionName}</span>
-			  <svg aria-hidden="true" className="slds-icon" dangerouslySetInnerHTML={{__html: icon}} />
+			  <Svg className="slds-icon" icon="utility.down" />
 			</button>
 			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--small', 'lds-dropdown--menu', {'slds-hide': !this.state.isOpen})}>
 			  <ul className="slds-dropdown__list" role="menu" style={styles} ref={this.cssClasses.MENU}>
