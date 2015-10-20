@@ -1,10 +1,9 @@
-// RADIO CONTROL
+// RADIO CORE
 
 import * as Lib from '../lib/lib';
 import CheckboxCore from './checkbox';
 
 // Styles
-require('../../scss/components/grid-system/flavors/containers/index.scss');
 require('../../scss/components/forms/flavors/form-element/index.scss');
 require('../../scss/components/forms/flavors/radio/index.scss');
 

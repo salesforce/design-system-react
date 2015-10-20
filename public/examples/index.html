@@ -3,7 +3,7 @@
 	<head>
 		<meta charset=utf-8/>
 		<title>Fuel UX Facades Examples</title>
-		<link href="/assets/design-system/styles/slds.css" rel="stylesheet">
+		<!-- <link href="/assets/design-system/styles/slds.css" rel="stylesheet"> -->
 		<link href="/assets/facades/styles/temp-styles/temp-styles.css" rel="stylesheet">
 		<link href="/assets/facades/styles/example-styles.css" rel="stylesheet">
 		<style>
@@ -13,67 +13,67 @@
 				background-color: #16325c;
 				color: #fff;
 			}
-			
+
 			.masthead-icon {
 				width: 60px;
 				height: 67px;
 			}
-			
+
 			.masthead-heading {
 				color: #A8B8D0;
 			}
-			
+
 			.masthead-subheading {
 				font-size: 3rem;
 			}
-			
+
 			.site-text-introduction {
 				margin-bottom: 1rem;
 				font-size: 1.125rem;
 				font-weight: 300;
 				padding: 30px;
 			}
-			
+
 			.facade-logo {
 				width: 50%;
 			}
-			
+
 			#component-list {
 				margin-bottom: 30px;
 			}
-			
+
 			.component-wrapper {
 				margin-top: 40px;
 			}
-			
+
 			.component-wrapper .header {
 				border-bottom: 2px solid #b8c3ce;
 			}
-			
+
 			.component .body {
 				border: 1px solid #e0e5ee;
 			}
-			
+
 			.component .body .example-type {
 				border-left: 1px solid #e0e5ee;
 			}
-			
+
 			.component .body .example-type:first-child {
 				border-left: none;
 			}
-			
+
 			.component .body .example-wrapper {
 				padding: 5px;
 			}
-			
+
 			.component .body .example-wrapper .example {
 				padding: 10px;
 			}
-			
+
 			.component .body .example-wrapper .type {
 				margin-top: -5px;
 			}
-			
+
 			.slds-button.slds-button--neutral.slds-button--x-small {
 				margin: 2px 0px;
 				font-size: 0.7rem;
@@ -82,21 +82,21 @@
 				line-height: 1.575rem;
 				min-height: 1.6rem;
 			}
-			
+
 			.slds-spinner--small {
 				position: relative;
 				top: 18px;
 			}
-			
+
 			.slds-spinner--medium {
 				position: relative;
 				top: 5px;
 			}
-			
+
 			.slds-button-group {
 				margin-top: 10px;
 			}
-			
+
 			.example .row {
 				padding-bottom: 5px;
 			}
@@ -116,7 +116,7 @@
 		</header>
 		<section class="slds-grid">
 			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12">
-				
+
 			</div>
 
 			<div class="slds-col | slds-size--10-of-12 slds-medium-size--10-of-12 slds-large-size--10-of-12">
@@ -163,39 +163,88 @@
 					</div>
 
 					<!-- button -->
-					<div class="slds-col | component-wrapper">
-						<div class="slds-grid slds-grid--vertical | component">
-							<div class="slds-col | header">
+					<div class="slds-col component-wrapper">
+						<div class="slds-grid slds-grid--vertical component">
+
+							<div class="slds-col header">
 								<h2 class="slds-text-heading--large">
 									<span>Button, Button Group, &amp; Stateful Button</span>
-									<span class="slds-badge | slds-theme--warning slds-theme--inverse-text">alpha: in progress</span>
+									<span class="slds-badge slds-theme--warning slds-theme--inverse-text">alpha: in progress</span>
 								</h2>
 							</div>
-							<div class="slds-col | body">
+
+							<div class="slds-col body">
 								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
-										<div class="slds-grid slds-grid--vertical | example-wrapper">
-											<div class="slds-col | type">
+									<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
+										<div class="slds-grid slds-grid--vertical example-wrapper">
+											<div class="slds-col type">
 												<span class="slds-text-heading--label">React</span>
 											</div>
 											<div id="button-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
-										<div class="slds-grid slds-grid--vertical | example-wrapper">
-											<div class="slds-col | type">
+									<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
+										<div class="slds-grid slds-grid--vertical example-wrapper">
+											<div class="slds-col type">
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
-											<div>
-												<div id="button-jquery-control" class="slds-col | example">
-													<div class=""></div>
-												</div>
-												<div class="slds-col | demo-controls"></div>
+												<div>
+												<div id="button-jquery-control" class="slds-col example">
+
+													<div class="slds-grid slds-grid--vertical">
+														<div class="slds-col row">
+															<span class="button-neutral"></span>
+															<span class="button-brand" ></span>
+															<span class="button-inverse"></span>
+															<span class="button-bare"></span>
+														</div>
+														<div class="slds-col row">
+															<span class="button-neutral-small"></span>
+															<span class="button-brand-small"></span>
+															<span class="button-inverse-small"></span>
+														</div>
+														<div class="slds-col row">
+															<span class="button-icon-left"></span>
+															<span class="button-icon-right"></span>
+															<span class="button-bare-icon-right"></span>
+														</div>
+														<div class="slds-col row">
+															<span class="button-icon-left-small"></span>
+															<span class="button-icon-right-small"></span>
+															<span class="button-bare-icon-right-small"></span>
+														</div>
+
+														<div class="slds-col row">
+															<span class="button-icon-container"></span>
+															<span class="button-icon-container-disabled"></span>
+
+															<span class="button-icon-border"></span>
+															<span class="button-icon-border-disabled"></span>
+
+															<span class="button-icon-border-filled"></span>
+															<span class="button-icon-border-filled-disabled"></span>
+
+															<span class="button-icon-small"></span>
+															<span class="button-icon-small-disabled"></span>
+														</div>
+													</div>
+
+													<div className="slds-col row">
+														<div class="slds-button-group" role="group">
+															<span class="refresh"></span>
+															<span class="edit"></span>
+															<span class="save"></span>
+														</div>
+													</div>
+
+													</div>
+												<div class="slds-col demo-controls"></div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
+
 						</div>
 					</div>
 
@@ -298,7 +347,7 @@
 							<div class="slds-col | header">
 								<h2 class="slds-text-heading--large">
 									<span>Data Table</span>
-									<span class="slds-badge | slds-theme--error slds-theme--inverse-text">alpha: not started</span>
+									<span class="slds-badge | slds-theme--warning slds-theme--inverse-text">alpha: in progress</span>
 								</h2>
 							</div>
 							<div class="slds-col | body">
@@ -733,7 +782,7 @@
 							</div>
 						</div>
 					</div>
-
+					
 					<!-- tree -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
@@ -776,7 +825,7 @@
 				</div>
 			</div>
 			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12">
-				
+
 			</div>
 		</section>
 		<script src="/assets/facades/scripts/jquery.min.js"></script>

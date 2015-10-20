@@ -92,6 +92,8 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 
 			elements.dropdownMenu.append($li);
 		});
+		
+		this._addCheckmark(elements);
 
 		// Prep for append
 		elements.wrapper.empty();
@@ -110,6 +112,8 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 	_onSelected (item) {
 		if (this.rendered) {
 			this.elements.input.val(item.getText());
+			
+			this._addCheckmark(this.elements);
 		}
 	},
 

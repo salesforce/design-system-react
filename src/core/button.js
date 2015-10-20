@@ -61,14 +61,14 @@ const ButtonCore = Lib.merge({}, Base, {
 		const selectedClasses = {};
 		
 		if (isStateful) {
-			selectedClasses[this.cssClasses.NOT_SELECTED] = !this.props.selected;
-			selectedClasses[this.cssClasses.SELECTED] = this.props.selected;
+			selectedClasses[this.cssClasses.NOT_SELECTED] = !this.getProperty('selected');
+			selectedClasses[this.cssClasses.SELECTED] = this.getProperty('selected');
 		}
 
 		return classNames(this.cssClasses.CONTROL,
-			this.sizes[this.props.size],
-			this.themes[this.props.theme],
-			this.iconStyles[this.props.iconStyle],
+			this.sizes[this.getProperty('size')],
+			this.themes[this.getProperty('theme')],
+			this.iconStyles[this.getProperty('iconStyle')],
 			selectedClasses);
 	}
 	

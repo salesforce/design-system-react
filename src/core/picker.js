@@ -1,4 +1,4 @@
-// PICKER CONTROL
+// PICKER CORE
 
 import * as Lib from '../lib/lib';
 import Base from './base';
@@ -16,42 +16,42 @@ const PickerCore = Lib.merge({}, Base, Openable, {
 	cssClasses: {
 		CONTROL: CONTROL
 	},
-	
+
 	_defaultState: {
 		popupCss: {
 			visibility: 'hidden'
 		}
 	},
-	
+
 	_getPositionAbove (element) {
 		const position = element.offset();
-		
+
 		position.top = position.top - this.elements.popup.outerHeight(true);
 		return position;
 	},
 
 	_getPositionBelow (element) {
 		const position = element.offset();
-		
+
 		position.top = position.top + element.outerHeight(true);
 		return position;
 	},
-	
+
 	_getCenteredPosition () {
 		// TODO: Implement this to support modals
 	},
-	
+
 	_setPosition (position, popupCss) {
 		popupCss.top = position.top + 'px';
 		popupCss.left = position.left + 'px';
-		
+
 		this.setState({ popupCss });
 		if (Lib.isFunction(this._onPopupCssUpdated)) this._onPopupCssUpdated();
 	},
-	
+
 	_positionAt (element) {
 		const popupCss = getState('popupCss');
-		
+
 		popupCss.visibility = 'hidden';
 		this.setState({ popupCss });
 
@@ -60,7 +60,7 @@ const PickerCore = Lib.merge({}, Base, Openable, {
 
 		if (this.elements.popup.isOffscreen()) {
 			this._setPosition(this._getPositionAbove(element), popupCss);
-			
+
 			if (this.elements.popup.isOffscreen()) {
 				this._setPosition(positionBelow, popupCss);
 			}
