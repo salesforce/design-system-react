@@ -54,6 +54,7 @@ export const DataTableObject = {
 				<DataTableItem
 					key={index}
 					item={item}
+					headers={this.props.columns}
 					onSelected={this._selectItem}
 					selected={isSelected}
 					bordered={true}
@@ -85,7 +86,6 @@ export const DataTableObject = {
 };
 
 let DataTable = Lib.merge({}, DataTableCore, DataTableObject);
-
 DataTable = Lib.runHelpers('react', CONTROL, DataTable);
 DataTable = React.createClass(DataTable);
 
