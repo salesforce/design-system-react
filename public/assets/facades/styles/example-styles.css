@@ -29,11 +29,6 @@ body > .slds-container {
 	height: 40px;
 }
 
-.slds-popover {
-	width: 200px;
-	height: 150px;
-}
-
 .react-popover-example-wrap {
 	position: relative;
 }
