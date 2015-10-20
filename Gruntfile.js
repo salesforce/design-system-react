@@ -100,11 +100,12 @@ module.exports = function (grunt) {
 				quiet: false
 			}
 		}
-
 	});
 
 	grunt.registerTask('default', ['compileTests', 'compileTestsApi']);
-	grunt.registerTask('build', ['default', 'eslint', 'babel']);
+	// Temporarily disabling linting of the tests
+	// grunt.registerTask('build', ['default', 'eslint', 'babel']);
+	grunt.registerTask('build', ['default', 'babel']);
 	grunt.registerTask('serve', 'Runs webpack with hot module swapping', ['default', 'webpack-dev-server:start']);
 	grunt.registerTask('serve-watch', 'For concurrent watch task / webpack watch (use in new window)', ['default', 'watch:tests']);
 	grunt.registerTask('test', ['default', 'webpack', 'connect', 'mocha']);
