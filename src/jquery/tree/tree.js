@@ -170,8 +170,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const $el = this.template.clone().empty();
 		const dataSource = this.getProperty('dataSource');
 
-		console.log('this._collection', this._collection);
-
 		if (this._collection.length()) {
 			this._loopChildren(this._collection, $el, 1);
 		} else if (dataSource) {
