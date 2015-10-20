@@ -5,116 +5,46 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 const collection = [
 	{
-		text: 'Waterfall',
-		_itemType: 'item',
-		id: 1
-	},
-	{
-		text: 'Fruits',
+		text: 'Tree Branch',
 		_itemType: 'folder',
 		_isExpandable: true,
-		id: 2,
+		id: 1,
 		children: [
 			{
-				text: 'Watermelon',
-				_itemType: 'item',
-				id: 3
-			},
-			{
-				text: 'Tree Fruits',
+				text: 'Tree Branch',
 				_itemType: 'folder',
 				_isExpandable: true,
-				id: 4,
+				id: 2,
 				children: [
 					{
-						text: 'Peaches',
+						text: 'Tree Item',
 						_itemType: 'item',
-						id: 5
+						id: 3
 					},
 					{
-						text: 'Pears',
+						text: 'Tree Item',
 						_itemType: 'item',
 						_iconClass: 'glyphicon-file',
-						id: 6
+						id: 4
 					},
 					{
-						text: 'Citrus',
-						_itemType: 'folder',
-						_isExpandable: true,
-						id: 11,
-						children: [
-							{
-								text: 'Orange',
-								_itemType: 'item',
-								id: 12
-							},
-							{
-								text: 'Grapefruit',
-								_itemType: 'item',
-								id: 13
-							},
-							{
-								text: 'Lemon',
-								_itemType: 'item',
-								id: 14
-							},
-							{
-								text: 'Lime',
-								_itemType: 'item',
-								id: 15
-							}
-						]
-					},
-					{
-						text: 'Apples',
-						_itemType: 'folder',
-						_isExpandable: true,
-						id: 16,
-						children: [
-							{
-								text: 'Granny Smith',
-								_itemType: 'item',
-								id: 17
-							},
-							{
-								text: 'Pinklady',
-								_itemType: 'item',
-								_iconClass: 'glyphicon-file',
-								id: 18
-							},
-							{
-								text: 'Rotten',
-								_itemType: 'item',
-								id: 19
-							},
-							{
-								text: 'Jonathan',
-								_itemType: 'item',
-								id: 20
-							}
-						]
+						text: 'Tree Item',
+						_itemType: 'item',
+						id: 5
 					}
-
 				]
 			},
 			{
-				text: 'Cherries',
+				text: 'Tree Item',
 				_itemType: 'item',
-				id: 7
+				id: 6
 			},
 			{
-				text: 'Empty folder',
-				_itemType: 'folder',
-				_isExpandable: false,
-				id: 10
+				text: 'Tree Item',
+				_itemType: 'item',
+				id: 7
 			}
 		]
-	},
-	{
-		text: 'Sky and Water I',
-		_itemType: 'item',
-		_iconClass: 'glyphicon-file',
-		id: 8
 	}
 ];
 
