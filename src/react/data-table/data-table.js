@@ -49,13 +49,14 @@ export const DataTableObject = {
 	_tableItems () {
 		return this._collection.map((item, index) => {
 			const isSelected = this._isItemSelected(item);
-			
+
 			return (
 				<DataTableItem
 					key={index}
 					item={item}
 					onSelected={this._selectItem}
 					selected={isSelected}
+					bordered={true}
 					hintParent={true}
 				/>
 			);

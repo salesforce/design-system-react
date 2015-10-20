@@ -5,7 +5,7 @@ import './button/example';
 	// import './buttongroup/example';
 import './checkbox/example';
 import './combobox/example';
-	// import './datatable/example';
+import './data-table/example';
 	// import './datepicker/example';
 	// import './dropdown/example';
 import './notification/example';
