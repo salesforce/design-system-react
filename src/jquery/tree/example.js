@@ -10,45 +10,96 @@ const collection = [
 		id: 1
 	},
 	{
-		text: 'Bscending and Descending',
+		text: 'Fruits',
 		_itemType: 'folder',
 		_isExpandable: true,
 		id: 2,
 		children: [
 			{
-				text: 'Waterfall',
+				text: 'Watermelon',
 				_itemType: 'item',
 				id: 3
 			},
 			{
-				text: 'Ascending and Descending',
+				text: 'Tree Fruits',
 				_itemType: 'folder',
 				_isExpandable: true,
 				id: 4,
 				children: [
 					{
-						text: 'Waterfall',
+						text: 'Peaches',
 						_itemType: 'item',
 						id: 5
 					},
 					{
-						text: 'Sky and Water I (with custom icon)',
+						text: 'Pears',
 						_itemType: 'item',
 						_iconClass: 'glyphicon-file',
 						id: 6
 					},
 					{
-						text: 'Empty folder',
+						text: 'Citrus',
 						_itemType: 'folder',
-						_isExpandable: false,
-						id: 9
+						_isExpandable: true,
+						id: 11,
+						children: [
+							{
+								text: 'Orange',
+								_itemType: 'item',
+								id: 12
+							},
+							{
+								text: 'Grapefruit',
+								_itemType: 'item',
+								id: 13
+							},
+							{
+								text: 'Lemon',
+								_itemType: 'item',
+								id: 14
+							},
+							{
+								text: 'Lime',
+								_itemType: 'item',
+								id: 15
+							}
+						]
+					},
+					{
+						text: 'Apples',
+						_itemType: 'folder',
+						_isExpandable: true,
+						id: 16,
+						children: [
+							{
+								text: 'Granny Smith',
+								_itemType: 'item',
+								id: 17
+							},
+							{
+								text: 'Pinklady',
+								_itemType: 'item',
+								_iconClass: 'glyphicon-file',
+								id: 18
+							},
+							{
+								text: 'Rotten',
+								_itemType: 'item',
+								id: 19
+							},
+							{
+								text: 'Jonathan',
+								_itemType: 'item',
+								id: 20
+							}
+						]
 					}
+
 				]
 			},
 			{
-				text: 'Sky and Water I (with custom icon)',
+				text: 'Cherries',
 				_itemType: 'item',
-				_iconClass: 'glyphicon-file',
 				id: 7
 			},
 			{
@@ -60,7 +111,7 @@ const collection = [
 		]
 	},
 	{
-		text: 'Sky and Water I (with custom icon)',
+		text: 'Sky and Water I',
 		_itemType: 'item',
 		_iconClass: 'glyphicon-file',
 		id: 8

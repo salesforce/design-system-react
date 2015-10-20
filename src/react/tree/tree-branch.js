@@ -73,9 +73,9 @@ const TreeBranch = React.createClass({
 		});
 
 		return (
-			<li className={classNames('slds-tree__branch', {'slds-tree__branch--open': isOpen, 'slds-tree__item--selected': isSelected})} role="treeitem" aria-expanded={isOpen ? 'false' : 'true'}>
+			<li className={classNames('slds-tree__branch', {'slds-is-open': isOpen, 'slds-is-selected': isSelected})} role="treeitem" aria-expanded={isOpen ? 'false' : 'true'}>
 				<div className="slds-tree__branch--header slds-tree__item">
-					<button className="slds-button slds-button--icon-bare slds-m-right--x-small" onClick={this._handleExpandClick.bind(this, this.props.item)}>
+					<button className="slds-button slds-button--icon-bare | slds-m-right--x-small" onClick={this._handleExpandClick.bind(this, this.props.item)}>
 						<Svg className="slds-button__icon slds-button__icon--small" icon="utility.chevronright" />
 						<span className="slds-assistive-text">Toggle</span>
 					</button>
