@@ -197,7 +197,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const elements = [];
 
 		children.forEach(function buildBranch (item) {
-			console.log('[_loopChildren] forEach: item', item);
 
 			const isBranch = item.getType() === 'folder';
 
@@ -213,7 +212,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_renderItem (item) {
-		console.log('[_renderItem] item', item);
 		const $item = this.template.find('li.slds-tree__item').clone();
 
 		$item.find('.slds-tree__item-label').text(item.getText());
@@ -230,10 +228,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const $branch = this.template.find('.slds-tree__branch').clone();
 		const $branchContent = $branch.find('.slds-tree__group');
 
-		console.log('[_renderBranch] branch._item', branch._item);
-
 		$branch.find('.slds-tree__branch--name').text(branch.getText());
-
 
 		$branch.data({
 			item: branch._item,
