@@ -42,6 +42,10 @@ export function _renderItem (item) {
 	$li.data(item.get());
 	$li.prop('disabled', disabled);
 
+	if (disabled) {
+		this._addCheckmark($li);
+	}
+
 	const $a = $li.find('a');
 	$a.text(item.getText());
 
@@ -84,6 +88,7 @@ export const PicklistObject = {
 
 			if (item.selected) {
 				delete item.selected;
+				this._addCheckmark($item);
 				_options.selection = item;
 			}
 
@@ -166,10 +171,14 @@ export const PicklistObject = {
 				divider: _renderDivider,
 				item: _renderItem
 			};
-
+			
 			func = funcMap[item.getType()] || _renderItem;
 
 			$li = func.call(this, item);
+
+			if (selectionName === item.getText()) {
+				this._addCheckmark($li);
+			}
 
 			elements.dropdownMenu.append($li);
 		});
@@ -223,6 +232,8 @@ export const PicklistObject = {
 
 			this.elements.hiddenField.val(item.getText());
 			this.elements.label.text(item.getText() || strings.NONE_SELECTED);
+
+			this._addCheckmark();
 		}
 	},
 
@@ -250,8 +261,8 @@ export const PicklistObject = {
 
 		const $a = $(e.currentTarget);
 		const $li = $a.parent('li');
-
-		if (!$li.is('.disabled, :disabled')) {
+		
+		if (!$li.prop('disabled')) {
 			this.setSelection($li.data());
 		}
 	},
@@ -277,6 +288,35 @@ export const PicklistObject = {
 		if (key && key.length === 1) {
 			e.preventDefault();
 			this._keyboardNav(key, this.elements.menuItems);
+		}
+	},
+
+	_addCheckmark ($l) {
+		let $li = $l;
+
+		if (!$li) {
+			const selection = this._getSelection();
+
+			if (selection && Lib.isFunction(selection.getText)) {
+				const text = selection.getText();
+
+				this.elements.dropdownMenu.find('li').each(function () {
+					if ($(this).find('a').text() === text) {
+						$li = $(this);
+						return false;
+					}
+				});
+			}
+		}
+
+		if ($li) {
+			$li.parent()
+				.find('.slds-is-selected').removeClass('.slds-is-selected')
+				.find('svg').remove()
+			;
+
+			$li.addClass('slds-is-selected');
+			$li.find('a').prepend('<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--left"><use xlink:href="/assets/design-system/icons/standard-sprite/svg/symbols.svg#task2"></use></svg>');
 		}
 	}
 };
