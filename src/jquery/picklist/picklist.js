@@ -47,6 +47,10 @@ export function _renderItem (item) {
 	const $a = $li.find('a');
 	$a.text(item.getText());
 
+	if (disabled) {
+		$a.attr('aria-disabled', true);
+	}
+
 	return $li;
 }
 
