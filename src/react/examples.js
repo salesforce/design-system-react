@@ -1,4 +1,4 @@
-require('../../public/assets/design-system/styles/slds.css');
+// require('../../public/assets/design-system/styles/slds.css');
 
 import badge from './badge/example';
 import button from './button/example';
@@ -14,6 +14,7 @@ import pillbox from './pillbox/example';
 import popover from './popover/example';
 import radio from './radio/example';
 import spinner from './spinner/example';
+import tooltip from './tooltip/example';
 import tree from './tree/example';
 
 badge();
@@ -31,3 +32,4 @@ popover();
 radio();
 spinner();
 tree();
+tooltip();

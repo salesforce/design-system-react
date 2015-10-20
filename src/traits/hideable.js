@@ -4,7 +4,8 @@ import * as Lib from '../lib/lib';
 
 const Hideable = {
 	cssClasses: {
-		HIDDEN: 'slds-hide'
+		HIDE: 'slds-hide',
+		HIDDEN: 'slds-hidden'
 	},
 	
 	_defaultState: {

@@ -39,19 +39,19 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 
 		return (
 		<div className="slds-combobox slds-form-element">
-		  <div aria-expanded="true" className="slds-picklist">
+			<div aria-expanded="true" className="slds-picklist">
 			<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" style={{paddingLeft: 0}} disabled={this.props.disabled} aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
-			  <div className="slds-form-element__control">
+				<div className="slds-form-element__control">
 				<input name={this.props.name} type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} className="slds-input" style={inputStyle} />
-			  </div>
-			  <svg aria-hidden="true" className="slds-icon" style={{right: '.7rem'}} dangerouslySetInnerHTML={{__html: icon}} />
+				</div>
+				<svg aria-hidden="true" className="slds-icon" style={{right: '.7rem'}} dangerouslySetInnerHTML={{__html: icon}} />
 			</button>
 			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--small', 'lds-dropdown--menu', {'slds-hide': !this.state.isOpen})}>
-			  <ul className="slds-dropdown__list" role="menu" style={styles} ref={this.cssClasses.MENU}>
+				<ul className="slds-dropdown__list" role="menu" style={styles} ref={this.cssClasses.MENU}>
 				{this._menuItems()}
-			  </ul>
+				</ul>
 			</div>
-		  </div>
+			</div>
 		</div>
 		);
 	},

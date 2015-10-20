@@ -14,8 +14,6 @@ const createPlugin = function (name, Constructor, helperOptions) {
 	const initializeSelector = ['[data-initialize=', name, ']'].join('');
 	const legacyMethods = helperOptions && helperOptions.legacyMethods || {};
 	
-	Constructor.prototype.eventSuffix = namespaced;
-
 	$.fn[name] = function (option) {
 		const args = Array.prototype.slice.call(arguments, 1);
 		let methodReturn;

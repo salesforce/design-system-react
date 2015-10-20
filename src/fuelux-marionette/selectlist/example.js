@@ -8,7 +8,7 @@ const $mySelectlist1 = $('#mySelectlist1');
 const $mySelectlist2 = $('#mySelectlist2');
 
 const sampleData = require('../../../sample-data/selectlist');
-const collection = new Backbone.Collection(sampleData.defaultArray);
+const collection = new Backbone.Collection(samplesampleData.defaultArray);
 
 const mySelectlist1 = new Selectlist({
 	collection: collection,

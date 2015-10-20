@@ -42,7 +42,7 @@ const PicklistItem = React.createClass({
 
 				html = (
 					<li className={classNames('slds-dropdown__item', 'slds-has-icon--left', {'slds-is-selected': this.props.selected})} disabled={disabled}>
-					<a href="#" className="slds-truncate" onClick={this.handleClicked}>
+					<a href="#" className="slds-truncate" onClick={this.handleClicked} aria-disabled={disabled}>
 						{this._renderCheckmark()}
 						{this.props.item.getText()}
 					</a>
