@@ -197,7 +197,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 		const elements = [];
 
 		children.forEach(function buildBranch (item) {
-
 			const isBranch = item.getType() === 'folder';
 
 			if (!isBranch) {
