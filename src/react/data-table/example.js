@@ -1,7 +1,7 @@
 // import * as Lib from '../../lib/lib';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DataTable from './datatable';
+import DataTable from './data-table';
 
 export default function () {
 	const collection = [

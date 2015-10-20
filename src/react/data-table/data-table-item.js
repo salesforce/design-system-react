@@ -13,27 +13,26 @@ const DataTableItem = React.createClass({
 	},
 
 	render () {
-		return (
-			// <tr className={this._getClassNames({ 		// TODO: feature.selectio
+		return (											// TODO: Make this entire piece dynamic...
+			// <tr className={this._getClassNames({ 		// TODO: feature.selection
 			// 	selected: this.props.selected,
 			// 	hintParent: this.props.hintParent
 			// })}>
 			<tr className=".slds-hint-parent">
 				<td data-label="description">
-					<span className="slds-truncate"><a href="#">{this.props.item.get('name')}</a></span>
+					<span className="slds-truncate">{this.props.item.get('name')}</span>
 				</td>
 				<td data-label="contact-count">
 					<span className="slds-truncate">{this.props.item.get('count')}</span>
 				</td>
 				<td data-label="last-modified">
-					<span className="slds-truncate">{this.props.item.get('lastModified')}</span><br/>
-					<span className="slds-truncate slds-text-body--small">{this.props.item.get('modifiedBy')}</span>
+					<span className="slds-truncate">{this.props.item.get('lastModified')}</span>
 				</td>
 			</tr>
 		);
 	},
 
-	handleClicked (e) {		// TODO: feature.selectio
+	handleClicked (e) {		// TODO: feature.selection
 		e.preventDefault();
 		// this.props.onSelected(this.props.item);
 	}

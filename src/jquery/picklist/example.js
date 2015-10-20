@@ -28,9 +28,6 @@ $(function () {
 	});
 
 	// events
-	$('#picklist-jquery-control .picklist1').on('rendered', function (event, data) {
-		Lib.log('rendered', data);
-	});
 	$('#picklist-jquery-control .picklist1').on('changed', function (event, data) {
 		Lib.log('changed', data);
 	});
