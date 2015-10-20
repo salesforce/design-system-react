@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 
 		var output = '';
 		pkg.components.forEach(function (componentName) {
-			output += 'export const ' + componentName + ' = {\n';
+			output += 'export const ' + componentName.replace('-', '') + ' = {\n';
 
 			pkg.facades.forEach(function (facadeName, facadeIndex) {
 				output += '\t' + facadeName + ': require(\'./' + facadeName + '/' + componentName + '-' + facadeName + '-test\')';
