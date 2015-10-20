@@ -40,7 +40,7 @@ $(function () {
 	});
 
 	// events
-	$('#combobox-jquery-control .combobox1').on('changed.fu.combobox', function (event, data) {
+	$('#combobox-jquery-control .combobox1').on('changed', function (event, data) {
 		Lib.log('changed', data);
 	});
 });

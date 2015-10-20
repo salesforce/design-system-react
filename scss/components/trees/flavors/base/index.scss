@@ -36,5 +36,13 @@
     padding-left: (($spacing-medium * 4) + ($spacing-x-small * 3));
   }
 
+  .#{$css-prefix}is-open .#{$css-prefix}button__icon {
+    transform: none;
+  }
+  
+
+  .#{$css-prefix}is-open > .#{$css-prefix}tree__item > .#{$css-prefix}button > .#{$css-prefix}button__icon {
+    transform: rotate(90deg);
+  }
 
 }
