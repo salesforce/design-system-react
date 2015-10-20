@@ -1,9 +1,20 @@
 .slds-pillbox .slds-pill-add-item {
-	border-color: transparent;
+	border: none;
 	color:  rgb(84, 105, 141); /* $color-text-placeholder */
+	margin-left: 0.25rem;
+	margin-top: -4px;
 }
+
 .slds-pillbox .slds-pill-add-item:active {
-	border-color: rgb(244, 246, 249); /* $color-border-selection-active */
+	border: none;
+	box-shadow: none;
+	outline: none;
+}
+
+.slds-pillbox .slds-pill-add-item:focus {
+	border: none;
+	box-shadow: none;
+	outline: none;
 }
 
 .slds-pillbox .slds-pill {
@@ -12,10 +23,4 @@
 
 .slds-pillbox .slds-pill-input-wrap {
 	float: left;
-}
-
-.slds-pillbox .slds-pill-add-item {
-	/*margin: 3px 10px;*/
-	/*outline: none;*/
-	margin-left: 0.25rem;
 }

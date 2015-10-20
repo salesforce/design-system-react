@@ -8,23 +8,22 @@ import Disableable from '../traits/disableable';
 import Hideable from '../traits/hideable';
 
 // Styles
-require('../../scss/components/popovers/flavors/base/index.scss');
+require('../../scss/components/tooltips/flavors/base/index.scss');
 
-export const CONTROL = 'slds-popover';
+export const CONTROL = 'slds-tooltip';
 
-const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
+const TooltipCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 	cssClasses: {
-		CONTROL: CONTROL,
-		TARGET: 'slds-popover-target'
+		CONTROL: CONTROL
 	},
 
 	_defaultProperties: {
 		isOpen: false,
-		trigger: 'click', // click, hover, focus, manual
+		trigger: 'hover', // click, hover, focus, manual
 		target: null, // The element who's events will trigger the popover
 		container: null, // The element the popover will be contained within
 		align: null // The element the popover will be aligned with
 	}
 });
 
-export default PopoverCore;
+export default TooltipCore;

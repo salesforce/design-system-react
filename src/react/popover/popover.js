@@ -25,7 +25,7 @@ let Popover = Lib.merge({}, PopoverCore, {
 		position = this._popoverPosition();
 
 		return (
-			<div className={classNames(this._getClassNames(), {'slds-hidden': !this.props.isOpen})} role="dialog" ref="popover" style={position}>
+			<div className={classNames(this.getClassNames(), {'slds-hidden': !this.props.isOpen})} role="dialog" ref="popover" style={position}>
 				<div className="slds-popover__content">
 					{this._renderHeader()}
 					<div className="slds-popover__body">{this.props.children}</div>
@@ -33,7 +33,7 @@ let Popover = Lib.merge({}, PopoverCore, {
 			</div>
 		);
 	},
-	
+
 	_renderHeader () {
 		if (this.props.header) {
 			return (
@@ -58,7 +58,7 @@ let Popover = Lib.merge({}, PopoverCore, {
 		let position;
 
 		if (this.elements && this.elements.popover) {
-			position = this._getElementAlignment(this.elements.popover, this.elements.container || this.refs.popover.parentNode, this.elements.align);
+			position = this.getElementAlignment(this.elements.popover, this.elements.container || this.refs.popover.parentNode, this.elements.align);
 		} else {
 			position = {
 				left: 0,
