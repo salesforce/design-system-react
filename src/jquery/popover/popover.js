@@ -27,7 +27,7 @@ let Popover = function Popover (element, options) {
 	this._initialize(this.options);
 };
 
-Lib.merge(Popover.prototype, PopoverCore, Events, State, {
+export const PopoverMethods = {
 	_onInitialized () {
 		this._setElementOptions();
 		this._setTrigger();
@@ -36,6 +36,50 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 
 		this.trigger('initialized');
 	},
+
+	_setElementOptions () {
+		const target = this.getProperty('target');
+		const container = this.getProperty('container');
+		const align = this.getProperty('align');
+
+		this.elements.popover = this.template.clone();
+		this.elements.target = target ? target : this.elements.wrapper;
+		this.elements.container = container ? container : this.elements.wrapper;
+		this.elements.align = align ? align : this.elements.target;
+	},
+
+	_setTrigger () {
+		const trigger = this.getProperty('trigger');
+
+		if (trigger === 'click') {
+			this.elements.target.on( 'click', $.proxy(this._togglePopover, this));
+		} else if (trigger === 'hover') {
+			this.elements.target.on( 'mouseover', $.proxy(this._togglePopover, this));
+			this.elements.target.on( 'mouseout', $.proxy(this._togglePopover, this));
+		} else if (trigger === 'focus') {
+			this.elements.target.on( 'focus', $.proxy(this._togglePopover, this));
+			this.elements.target.on( 'focusout', $.proxy(this._togglePopover, this));
+		}
+	},
+
+	_togglePopover () {
+		const position = this.getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
+		const isHidden = this.elements.popover.hasClass('slds-hidden');
+
+		this.elements.popover.toggleClass('slds-hidden', !isHidden);
+		this.elements.popover.css(position);
+
+		if (isHidden) {
+			this.elements.popover.attr('class', this.getClassNames());
+
+			this.elements.wrapper.trigger('shown');
+		} else {
+			this.elements.wrapper.trigger('hidden');
+		}
+	}
+};
+
+Lib.merge(Popover.prototype, PopoverCore, Events, State, PopoverMethods, {
 
 	_render () {
 		const header = this.elements.popover.find('.slds-popover__header > p');
@@ -55,48 +99,8 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 
 		this.elements.popover.addClass(this.getClassNames());
 		this.elements.container.append(this.elements.popover);
-	},
-
-	_setElementOptions () {
-		const target = this.getProperty('target');
-		const container = this.getProperty('container');
-		const align = this.getProperty('align');
-
-		this.elements.popover = this.template.clone();
-		this.elements.target = target ? target : this.elements.wrapper;
-		this.elements.container = container ? container : this.elements.wrapper;
-		this.elements.align = align ? align : this.elements.target;
-	},
-
-	_setTrigger () {
-		const trigger = this.getProperty('trigger');
-
-		if (trigger === 'click') {
-			this.elements.target.on( 'click.fu.popover', $.proxy(this._togglePopover, this));
-		} else if (trigger === 'hover') {
-			this.elements.target.on( 'mouseover.fu.popover', $.proxy(this._togglePopover, this));
-			this.elements.target.on( 'mouseout.fu.popover', $.proxy(this._togglePopover, this));
-		} else if (trigger === 'focus') {
-			this.elements.target.on( 'focus.fu.popover', $.proxy(this._togglePopover, this));
-			this.elements.target.on( 'focusout.fu.popover', $.proxy(this._togglePopover, this));
-		}
-	},
-
-	_togglePopover () {
-		const position = this.getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
-		const isHidden = this.elements.popover.hasClass('slds-hidden');
-		
-		this.elements.popover.toggleClass('slds-hidden', !isHidden);
-		this.elements.popover.css(position);
-
-		if (isHidden) {
-			this.elements.popover.attr('class', this.getClassNames());
-
-			this.elements.wrapper.trigger('shown.fu.popover');
-		} else {
-			this.elements.wrapper.trigger('hidden.fu.popover');
-		}
 	}
+
 });
 
 const legacyMethods = {

@@ -12,7 +12,36 @@ import Events from '../mixins/events';
 // Third party
 import classNames from 'classnames';
 
-let Popover = Lib.merge({}, PopoverCore, {
+export const PopoverMethods = {
+
+	componentWillMount () {
+		this.elements = {};
+	},
+
+	_setElements () {
+		this.elements.popover = this.refs.popover;
+		this.elements.container = this.props.container;
+		this.elements.align = this.props.align;
+	},
+
+	_popoverPosition () {
+		let position;
+
+		if (this.elements && this.elements.popover) {
+			position = this.getElementAlignment(this.elements.popover, this.elements.container || this.refs.popover.parentNode, this.elements.align);
+		} else {
+			position = {
+				left: 0,
+				top: 0
+			};
+		}
+
+		return position;
+	}
+
+};
+
+let Popover = Lib.merge({}, PopoverCore, PopoverMethods, {
 	mixins: [State, Events],
 
 	render () {
@@ -42,31 +71,6 @@ let Popover = Lib.merge({}, PopoverCore, {
 				</div>
 			);
 		}
-	},
-
-	componentWillMount () {
-		this.elements = {};
-	},
-
-	_setElements () {
-		this.elements.popover = this.refs.popover;
-		this.elements.container = this.props.container;
-		this.elements.align = this.props.align;
-	},
-
-	_popoverPosition () {
-		let position;
-
-		if (this.elements && this.elements.popover) {
-			position = this.getElementAlignment(this.elements.popover, this.elements.container || this.refs.popover.parentNode, this.elements.align);
-		} else {
-			position = {
-				left: 0,
-				top: 0
-			};
-		}
-
-		return position;
 	}
 
 });
