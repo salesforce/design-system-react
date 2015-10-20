@@ -15,7 +15,7 @@ export default function () {
 				<div className="react-tooltip-example-wrap">
 					<button id="tooltip-react-toggle" className="slds-button slds-button--neutral slds-button--x-small" ref="target" onClick={this._handleClick}>Toggle</button>
 					<Tooltip placement="right" isOpen={this.state.isOpen} align={this.state.align}>
-						<span>Test content for tooltip</span>
+						<span>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</span>
 					</Tooltip>
 				</div>
 			);
