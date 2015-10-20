@@ -7,7 +7,7 @@ import classNames from 'classnames';
 
 const Positionable = {
 	_defaultProperties: {
-		position: 'right', // 'top','right','left','bottom'
+		position: 'right',
 		autoFlip: true
 	},
 
@@ -18,32 +18,26 @@ const Positionable = {
 		right: 'slds-nubbin--left'
 	},
 
-	autoAdjustedPosition: null,
-
-	getElementAlignment (el, container, align) {
+	getElementAlignment (el, container, align, newPosition) {
 		const offset = Lib.offsetFromParent(align, container);
-		const popSize = {};
-		const alignSize = {};
+		
+		const popSize = {
+			width: Lib.outerWidth(el),
+			height: Lib.outerHeight(el)
+		};
+		
+		const alignSize = {
+			width: Lib.outerWidth(align),
+			height: Lib.outerHeight(align)
+		};
+		
+		const currentPosition = newPosition || this.getProperty('position');
+		this.setState({
+			currentPosition
+		});
+
 		const position = {};
-		let popPosition = this.getProperty('position');
-		let isOffscreen;
-
-		popSize.width = Lib.outerWidth(el);
-		popSize.height = Lib.outerHeight(el);
-		alignSize.width = Lib.outerWidth(align);
-		alignSize.height = Lib.outerHeight(align);
-
-		if (this.getProperty('autoFlip')) {// This means autoFlip will not work on scroll only when popover is triggered
-			isOffscreen = Lib.isOffscreen(el, true);
-
-			if (isOffscreen) {
-				popPosition = isOffscreen === 'top' ? 'bottom' : 'top';
-			}
-
-			this.autoAdjustedPosition = isOffscreen ? popPosition : null;
-		}
-
-		switch ( popPosition ) {
+		switch (currentPosition) {
 			case 'left':
 				position.left = offset.left - (popSize.width + 15);
 				position.top = offset.top - ((popSize.height / 2) - (alignSize.height / 2));
@@ -67,7 +61,7 @@ const Positionable = {
 	},
 
 	getClassNames () {
-		const positionClass = this.positions[this.autoAdjustedPosition || this.getProperty('position')] || this.positions.right;
+		const positionClass = this.positions[this.getState('currentPosition')];
 
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass);
 	}
