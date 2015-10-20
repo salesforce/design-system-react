@@ -52,6 +52,7 @@ const RadiosObject = Lib.merge({}, {
 	},
 
 	_onInitialized () {
+		// TODO: this may have only been applicable for Fuel UX. Is the else even reachable?
 		if (!this.rendered) {
 			this._render();
 		} else {
@@ -89,6 +90,8 @@ const RadiosObject = Lib.merge({}, {
 		this.rendered = true;
 	},
 
+	// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
+	// there is no guidance as to what should be done here and/or why
 	_renderDressings (elements) {
 		elements.label.append(this.getProperty('labelText'));
 
