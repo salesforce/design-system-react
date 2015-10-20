@@ -2,7 +2,8 @@
 const iconBasePath = '/assets/design-system/icons/';
 
 const icons = {
-	'utility': iconBasePath + 'utility-sprite/svg/symbols.svg'
+	'utility': iconBasePath + 'utility-sprite/svg/symbols.svg',
+	'standard': iconBasePath + 'standard-sprite/svg/symbols.svg'
 };
 
 export default icons;

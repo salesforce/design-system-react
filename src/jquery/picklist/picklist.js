@@ -39,7 +39,9 @@ export function _renderItem (item) {
 	const disabled = item.getDisabled();
 	const $li = this.template.find('li').clone();
 
-	$li.data(item.get());
+	$li.data({
+		item: item._item
+	});
 	$li.prop('disabled', disabled);
 
 	const $a = $li.find('a');
@@ -97,7 +99,9 @@ export const PicklistObject = {
 				item._itemType = 'divider';
 			}
 
-			$item.data(item);
+			$item.data({
+				item
+			});
 			collection.push(item);
 		});
 
@@ -166,13 +170,15 @@ export const PicklistObject = {
 				divider: _renderDivider,
 				item: _renderItem
 			};
-
+			
 			func = funcMap[item.getType()] || _renderItem;
 
 			$li = func.call(this, item);
 
 			elements.dropdownMenu.append($li);
 		});
+		
+		this._addCheckmark(elements);
 
 		// Prep for append
 		elements.wrapper.empty();
@@ -223,6 +229,8 @@ export const PicklistObject = {
 
 			this.elements.hiddenField.val(item.getText());
 			this.elements.label.text(item.getText() || strings.NONE_SELECTED);
+
+			this._addCheckmark(this.elements);
 		}
 	},
 
@@ -250,9 +258,9 @@ export const PicklistObject = {
 
 		const $a = $(e.currentTarget);
 		const $li = $a.parent('li');
-
-		if (!$li.is('.disabled, :disabled')) {
-			this.setSelection($li.data());
+		
+		if (!$li.prop('disabled')) {
+			this.setSelection($li.data('item'));
 		}
 	},
 
@@ -277,6 +285,28 @@ export const PicklistObject = {
 		if (key && key.length === 1) {
 			e.preventDefault();
 			this._keyboardNav(key, this.elements.menuItems);
+		}
+	},
+
+	_addCheckmark (elements) {
+		const selection = this.getSelection();
+		let $li;
+
+		if (selection) {
+			elements.dropdownMenu.find('li').each(function () {
+				if ($(this).data('item') === selection) {
+					$li = $(this);
+				}
+			});
+		}
+		
+		if ($li) {
+			$li.parent()
+				.find('.slds-is-selected').removeClass('.slds-is-selected')
+				.find('svg').remove();
+	
+			$li.addClass('slds-is-selected');
+			$li.find('a').prepend('<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--left"><use xlink:href="/assets/design-system/icons/standard-sprite/svg/symbols.svg#task2"></use></svg>');
 		}
 	}
 };
@@ -322,7 +352,7 @@ export const legacyMethods = {
 
 	selectBySelector (selector) {
 		const $item = $(selector);
-		return this.setSelection($item.data());
+		return this.setSelection($item.data('item'));
 	},
 
 	selectByIndex (index) {

@@ -2,6 +2,10 @@
 
 // Framework specific
 import React from 'react';
+import Svg from '../svg/svg';
+
+// Third party
+import classNames from 'classnames';
 
 const PicklistItem = React.createClass({
 
@@ -13,7 +17,14 @@ const PicklistItem = React.createClass({
 
 	propTypes: {
 		item: React.PropTypes.object.isRequired,
-		onSelected: React.PropTypes.func.isRequired
+		onSelected: React.PropTypes.func.isRequired,
+		selected: React.PropTypes.bool
+	},
+	
+	_renderCheckmark () {
+		if (this.props.selected) {
+			return <Svg className="slds-icon slds-icon--small slds-icon--left" icon="standard.task2" />;
+		}
 	},
 
 	render () {
@@ -30,8 +41,11 @@ const PicklistItem = React.createClass({
 				const disabled = this.props.item.getDisabled();
 
 				html = (
-					<li className="slds-dropdown__item slds-has-icon--left" disabled={disabled}>
-					<a href="#" className="slds-truncate" onClick={this.handleClicked}>{this.props.item.getText()}</a>
+					<li className={classNames('slds-dropdown__item', 'slds-has-icon--left', {'slds-is-selected': this.props.selected})} disabled={disabled}>
+					<a href="#" className="slds-truncate" onClick={this.handleClicked}>
+						{this._renderCheckmark()}
+						{this.props.item.getText()}
+					</a>
 					</li>
 				);
 		}
