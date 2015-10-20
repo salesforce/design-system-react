@@ -1,7 +1,10 @@
 module.exports = function (grunt) {
 	grunt.loadTasks('tasks');
 
-	const defaultPort = 8000;
+	// Look in ./tasks for additional task modules
+	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
+
+	const defaultPort = 8080;
 
 	const excludePatternGeneratedTestFiles = [
 		'!test/tests.js',
@@ -9,39 +12,36 @@ module.exports = function (grunt) {
 		'!test/tests-compiled.js'
 	];
 
+	const defaultWatchFiles = ['Gruntfile.js', 'tasks/**/*.*', 'src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'];
+
 	grunt.initConfig({
-		port: defaultPort,
+		// VARIABLES
+		port: grunt.option('port') || process.env.PORT || defaultPort,
 		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
+
+		// TASK CONFIG
+		babel: {
+			options: {
+				modules: 'umd',
+				experimental: true
+			},
+			dist: {
+				files: [{
+					expand: true,
+					cwd: 'src/',
+					src: ['**/*.js', '!**/example.js', '!**/examples.js'],
+					dest: 'dist/'
+				}]
+			}
+		},
 		eslint: {
 			target: [
 				'Gruntfile.js',
 				'src/**/*.js',
 				'tasks/**/*.js',
-				'test/**/*.js'
+				'test/**/*.js',
+				'!test/compat/*.js'
 			].concat(excludePatternGeneratedTestFiles)
-		},
-		browserify: {
-			options: {
-				transform: [['babelify', {
-					'stage': 0
-				}], ['brfs'], ['browserify-versionify']],
-				watch: true
-			},
-			jqueryExamples: {
-				files: {
-					'examples/jquery/examples.js': 'src/jquery/examples.js'
-				}
-			},
-			reactExamples: {
-				files: {
-					'examples/react/examples.js': 'src/react/examples.js'
-				}
-			},
-			tests: {
-				files: {
-					'test/tests-compiled.js': 'test/tests.js'
-				}
-			}
 		},
 		mocha: {
 			main: {
@@ -49,22 +49,18 @@ module.exports = function (grunt) {
 					urls: ['http://localhost:<%= port %>/test/index.html'],
 					run: true,
 					log: true,
-					reporter: 'Nyan'
+					reporter: 'Dot'
 				}
 			}
 		},
 		watch: {
 			eslint: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'].concat(excludePatternGeneratedTestFiles),
+				files: defaultWatchFiles.concat(excludePatternGeneratedTestFiles),
 				tasks: ['eslint']
 			},
-			jqueryExamples: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/marionette/**/*.*', '!src/react/**/*.*'],
-				tasks: ['browserify:jqueryExamples']
-			},
-			reactExamples: {
-				files: ['src/**/*.*', 'sample-data/**/*.*', '!src/jquery/**/*.*', '!src/marionette/**/*.*'],
-				tasks: ['browserify:reactExamples']
+			tests: {
+				files: defaultWatchFiles.concat(excludePatternGeneratedTestFiles),
+				tasks: ['eslint', 'compileTests', 'compileTestsApi']
 			}
 		},
 		connect: {
@@ -72,30 +68,45 @@ module.exports = function (grunt) {
 				options: {
 					hostname: '*',
 					base: [
+						'public',
 						'./examples',
+						'./fonts',
 						'./node_modules',
 						'.'
 					],
-					port: grunt.option('port') || process.env.PORT || defaultPort,
-					useAvailablePort: true, // increment port number, if unavailable
-					onCreateServer: function (server/* , connect, options */) {
+					port: '<%= port %>',
+					useAvailablePort: true,
+					onCreateServer: function (server) {
 						server.on('listening', function () {
-							// Export the port for consumption by other grunt tasks. async setup of connect isn't considered complete until after all event handlers for 'listening' finish, so this will always run before the next grunt task.
 							grunt.config('port', server.address().port);
 						});
 					}
 				}
 			}
+		},
+		webpack: {
+			options: require('./webpack.config'),
+			build: {
+			}
+		},
+		'webpack-dev-server': {
+			start: {
+				webpack: require('./webpack.config'),
+				publicPath: '/build/',
+				contentBase: './public',
+				port: '<%= port %>',
+				keepAlive: true,
+				hot: true,
+				quiet: false
+			}
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-browserify');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-eslint');
-	grunt.loadNpmTasks('grunt-mocha');
-
-	grunt.registerTask('default', ['eslint', 'browserify:jqueryExamples', 'browserify:reactExamples']);
-	grunt.registerTask('serve', ['connect:server', 'default', 'watch']);
-	grunt.registerTask('test', ['eslint', 'compileTests', 'compileTestsApi', 'browserify:tests', 'connect:server', 'mocha']);
+	grunt.registerTask('default', ['compileTests', 'compileTestsApi']);
+	// Temporarily disabling linting of the tests
+	// grunt.registerTask('build', ['default', 'eslint', 'babel']);
+	grunt.registerTask('build', ['default', 'babel']);
+	grunt.registerTask('serve', 'Runs webpack with hot module swapping', ['default', 'webpack-dev-server:start']);
+	grunt.registerTask('serve-watch', 'For concurrent watch task / webpack watch (use in new window)', ['default', 'watch:tests']);
+	grunt.registerTask('test', ['default', 'webpack', 'connect', 'mocha']);
 };

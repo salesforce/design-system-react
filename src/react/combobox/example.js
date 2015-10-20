@@ -1,119 +1,85 @@
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Combobox from './combobox';
+import sampleData from '../../../sample-data/picklist';
 
-export default function (element) {
-	const collection = [
-		{ id: 0, text: 'One', value: '1' },
-		{ id: 1, text: 'Two', value: '2' },
-		{ id: 2, text: 'Three', value: '3' },
-		{ id: 3, text: 'Buzz', value: '4' },
-		{ id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar' },
-		{ id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
-	];
-
-	// TO-DO: Rewrite this to a sample that is more real-life
-	// For example, this could be a collection of people and their food preference rather than a perfect set of models
-	const models = {
-		combobox1: {
-			collection: collection,
-			disabled: false,
-			selection: collection[0],
-			resize: 'auto'
-		},
-		combobox2: {
-			collection: collection,
-			disabled: false,
-			selection: { text: 'Buzz' }
-		},
-		combobox3: {
-			collection: collection,
-			disabled: false
-		},
-		combobox4: {
-			collection: collection,
-			disabled: true
-		}
-	};
-
+export default function () {
 	const ComboboxExample = React.createClass({
 		propTypes: {
 			models: React.PropTypes.arrayOf(React.PropTypes.object)
 		},
 
-		getSelectionHandler (model) {
-			return function selectionHandler (selection) {
-				model.selection = selection;
+		getInitialState () {
+			return {
+				models: [
+					{
+						collection: sampleData.defaultArray,
+						disabled: false,
+						selection: sampleData.defaultArray[1],
+						resize: 'auto'
+					}
+				]
 			};
 		},
 
 		render () {
-			const comboboxen = [];
-
-			// TO-DO: This isn't the most "React-y" example
-			Object.keys(this.props.models).forEach(key => {
-				const self = this;
-				const model = this.props.models[key];
-
-				model.onChanged = this.getSelectionHandler(model);
-				model.ref = key;
-
-				comboboxen.push(
-					<section className="example-group" key={key}>
-						<h1>Combobox example ({key})</h1>
-
-						<div className="example">{React.createElement(Combobox, model)}</div>
-
-						<div className="btn-panel action">
-							<button className="btn btn-default" onClick={self.logSelectedItem.bind(this, key)}>log selected item</button>
-							<button className="btn btn-default" onClick={self.setSelection.bind(this, key)}>set by value ('2')</button>
-							<button className="btn btn-default" onClick={self.enable.bind(this, key)}>enable</button>
-							<button className="btn btn-default" onClick={self.disable.bind(this, key)}>disable</button>
+			const comboboxen = this.state.models.map((model, index) => {
+				return (
+					<div key={index}>
+						<div className="slds-col example">
+							<div>
+								<Combobox {...model} onChanged={this._handleModelChange.bind(this, index)}/>
+							</div>
 						</div>
-					</section>
+						<div className="slds-col demo-controls">
+							<div className="slds-button-group" role="group">
+								<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.logSelectedItem.bind(this, index)}>Log selected item</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--x-small" disabled>Set by index</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.setSelection.bind(this, index)}>Set by object</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.enable.bind(this, index)}>Enable</button>
+								<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.disable.bind(this, index)}>Disable</button>
+							</div>
+						</div>
+					</div>
 				);
 			});
 
 			return (
 				<div>
 					{comboboxen}
-					<button className="action btn btn-primary" onClick={this.changeCollection}>Toggle Enabled / Disabled</button>
 				</div>
 			);
 		},
 
-		changeCollection () {
-			const props = this.props;
-
-			Object.keys(props.models).forEach(key => {
-				props.models[key].disabled = !props.models[key].disabled;
-			});
-
-			this.setProps({
-				models: props.models
-			});
+		_handleModelChange (index, selection) {
+			const models = this.state.models;
+			models[index].selection = selection;
+			this.setState({models});
 		},
 
-		logSelectedItem (key) {
-			// Okay, probably wouldn't do this in React but just demonstrating
-			Lib.log(this.refs[key].getSelection());
+		logSelectedItem (index) {
+			Lib.log(this.state.models[index].selection);
 		},
 
-		setSelection (key) {
-			models[key].selection = { value: '2' };
-			this.forceUpdate();
+		setSelection (index) {
+			const models = this.state.models;
+			models[index].selection = sampleData.defaultArray[5];
+			this.setState({models});
 		},
 
-		enable (key) {
-			models[key].disabled = false;
-			this.forceUpdate();
+		enable (index) {
+			const models = this.state.models;
+			models[index].disabled = false;
+			this.setState({models});
 		},
 
-		disable (key) {
-			models[key].disabled = true;
-			this.forceUpdate();
+		disable (index) {
+			const models = this.state.models;
+			models[index].disabled = true;
+			this.setState({models});
 		}
 	});
 
-	React.render(<ComboboxExample key={'ComboboxExample'} models={models}/>, element);
+	ReactDOM.render(<ComboboxExample />, document.getElementById('combobox-react-control'));
 }

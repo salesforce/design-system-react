@@ -7,10 +7,14 @@ Testing a core abstraction layer with many facades approach for FuelUX
 * Run `npm install` via terminal in the directory where the project has been cloned
 
 ### Running
-* Run `npm start` to start a static server on port 8000. You can navigate to `http://localhost:8000/` to see a simple index page with links to examples in each facade
+* Run `npm start` to start a static server on port 8080. You can navigate to `http://localhost:8080/examples/` to see a simple index page with links to examples in each facade. This is will enable "hot module replacement" since ES6 modules are in used in the source
+
+### Testing (currently disabled)
+* Run `npm test` to build the tests and see the results in the console. You can also run the tests in the browser by navigating to `http://localhost:8080/test/` after executing `npm start`
+* A detailed explanation of the testing design for this project is available in `docs/behavior-tests.md`
 
 ### Building
-* Run `grunt` for the default build. This will create the example file(s). Note that the serve task also has a watch task so this step is optional
+* Run `grunt build` for the default build. This will run eslint and create the dist files
 
 ### Contributing
 * Fork the repo!
@@ -19,3 +23,14 @@ Testing a core abstraction layer with many facades approach for FuelUX
 * Feel free to shoot questions to mc-uxdev@salesforce.com or dbrainer-banker@salesforce.com
 * **If this is your first contribution you'll be much happier if you communicate early and often**
 * Try to keep your PRs small and manageable
+
+### Requirements / Goals
+* Modern, performant UX framework
+* Easy path forward from current FuelUX and state of apps (migrating to FuelUX)
+* Multiple facades can be run together in the same project (e.g. jquery + react)
+* Easy to consume
+* Lightweight / few dependencies
+* Maintainable
+* Easy future upgrades
+* Defined way to contribute
+* As far as possible promote good behavior

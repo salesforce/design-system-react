@@ -1,10 +1,11 @@
 // TREE BRANCH - REACT FACADE
 
 // Core
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 
 // Framework specific
 import React from 'react';
+import Svg from '../svg/svg';
 
 // Third party
 import classNames from 'classnames';
@@ -43,11 +44,15 @@ const TreeBranch = React.createClass({
 			this._handleExpandClick(this.props.item);
 		}
 		
-		// TO-DO: We should probably handle the rejected state as well
 		this.props.item._getChildren().then(resolvedChildren => {
 			this.setState({
 				children: resolvedChildren,
 				loading: false
+			});
+		}, error => {
+			this.setState({
+				loading: false,
+				error
 			});
 		});
 	},
@@ -68,17 +73,18 @@ const TreeBranch = React.createClass({
 		});
 
 		return (
-			<li className={classNames('slds-tree__branch', {'slds-is-open': isOpen, 'x-slds-is-open': !isOpen, 'slds-is-selected': isSelected})} dataTemplate="treebranch" role="treeitem" aria-expanded={isOpen ? 'false' : 'true'} data-has-children={this.props.item.getExpandable() ? undefined : false}>
-				<div className="slds-tree__item">
-					<button className="slds-button slds-button--icon-bare slds-m-right--x-small" onClick={this._handleExpandClick.bind(this, this.props.item)}>
-						<svg aria-hidden="true" className="slds-button__icon slds-button__icon--small" dangerouslySetInnerHTML={{__html: '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>'}}></svg>
+			<li className={classNames('slds-tree__branch', {'slds-is-open': isOpen, 'slds-is-selected': isSelected})} role="treeitem" aria-expanded={isOpen ? 'false' : 'true'}>
+				<div className="slds-tree__branch--header slds-tree__item">
+					<button className="slds-button slds-button--icon-bare | slds-m-right--x-small" onClick={this._handleExpandClick.bind(this, this.props.item)}>
+						<Svg className="slds-button__icon slds-button__icon--small" icon="utility.chevronright" />
 						<span className="slds-assistive-text">Toggle</span>
 					</button>
-					<a tabIndex="-1" role="presentation" onClick={this._handleItemClick.bind(this, this.props.item)}>{this.props.item.getText()}</a>
+					<div className="slds-tree__branch--name" role="presentation" onClick={this._handleItemClick.bind(this, this.props.item)}>{this.props.item.getText()}</div>
 				</div>
-				<ul className={classNames('slds-tree__group slds-nested', {'is-expanded': isOpen})} role="group">
+				<ul className="slds-tree__group slds-nested" role="group">
 					{isOpen ? children : undefined}
 				</ul>
+				<div className={classNames('slds-tree__loader', {'slds-hide': !this.state.loading || !isOpen})} role="alert">Loading</div>
 			</li>
 		);
 	},

@@ -1,6 +1,6 @@
 // VANILLA JS DATA ADPATER
 
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 import Base from './base';
 
 const Item = Base.Item.extend({
@@ -53,27 +53,57 @@ const Data = Base.Data.extend({
 		return result;
 	},
 	
+	indexOf (criteria) {
+		let index = -1;
+		
+		this._data.forEach(function (item, i) {
+			if (index < 0 && item === criteria._item) {
+				index = i;
+			}
+		});
+		
+		return index;
+	},
+	
 	length () {
 		return this._data.length;
 	},
 	
-	add (item) {
-		this._data.push(item._item);
+	add (addition, options) {
+		const itemAddition = Lib.isArray(addition) ? addition : [addition];
+
+		itemAddition.forEach( (item, itemIndex) => {
+			if (options && options.at) {
+				this._data.splice(options.at + itemIndex, 0, item);
+			} else {
+				this._data.push(item._item);
+			}
+		});
 		
 		return this;
 	},
 	
-	remove (itemToRemove) {
-		let indexToRemove;
-		
-		this.forEach(function (item, index) {
-			if (indexToRemove === undefined && item._item === itemToRemove._item) {
-				indexToRemove = index;
+	remove (removal) {
+		const _remove = Lib.bind(function _remove (itemToRemove) {
+			let indexToRemove;
+
+			this.forEach(function (item, index) {
+				if (indexToRemove === undefined && item._item === itemToRemove._item) {
+					indexToRemove = index;
+				}
+			});
+
+			if (indexToRemove !== undefined) {
+				this._data.splice(indexToRemove, 1);
 			}
-		});
-		
-		if (indexToRemove !== undefined) {
-			this._data.splice(indexToRemove, 1);
+		}, this);
+
+		if (Lib.isArray(removal)) {
+			removal.forEach( (item) => {
+				_remove(item);
+			});
+		} else {
+			_remove(removal);
 		}
 		
 		return this;

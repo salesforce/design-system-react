@@ -1,28 +1,34 @@
 // DISABLEABLE
 
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 
 const Disableable = {
 	cssClasses: {
 		DISABLED: 'slds-disabled'
 	},
-	
+
 	_defaultProperties: {
 		disabled: false
 	},
 
 	enable () {
-		this.setProperties({ disabled: false });
-		if (Lib.isFunction(this._onEnabled)) this._onEnabled();
+		const property = { disabled: false };
+
+		this.setProperties(property);
+		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
 
 		this.trigger('enabled');
+		this.trigger('disabledValueChanged', property);
 	},
 
 	disable () {
-		this.setProperties({ disabled: true });
-		if (Lib.isFunction(this._onDisabled)) this._onDisabled();
+		const property = { disabled: true };
+
+		this.setProperties(property);
+		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
 
 		this.trigger('disabled');
+		this.trigger('disabledValueChanged', property);
 	}
 };
 

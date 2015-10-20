@@ -1,36 +1,33 @@
-// COMBOBOX CONTROL
+// COMBOBOX CORE
 
-import * as Lib from './lib';
-import Base from './base';
+import * as Lib from '../lib/lib';
+import PicklistCore from './picklist';
 
-// Traits
-import Disableable from '../traits/disableable';
-import Selectable from '../traits/selectable';
+// TODO: This doesn't actually exist, should we name some variant of picklist or something equivalent?
+require('../../scss/components/forms/flavors/input/index.scss');
 
-export const CONTROL = 'combobox';
+export const CONTROL = 'slds-combobox';
 
-const ComboboxCore = Lib.merge({}, Base, Disableable, Selectable, {
+const ComboboxCore = Lib.merge({}, PicklistCore, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
-		TOGGLE: 'dropdown-toggle',
-		BUTTON: 'btn',
-		INPUT: 'input',
-		MENU: 'dropdown-menu'
+		INPUT: 'slds-input',
+		DROPDOWN: 'slds-dropdown',
+		MENU: 'slds-dropdown__list',
+		TOGGLE: 'slds-button',
+		HEADER: 'slds-dropdown__header',
+		HEADERTEXT: 'slds-text-heading--label',
+		DIVIDER: 'slds-has-divider'
 	},
 
-	_initializer () {
-		if (this.getProperty('resize') === 'auto') {
-			if (Lib.isFunction(this.resize)) this.resize();
-		}
-	},
-
-	// TO-DO: Did this need to set the width of the menu each time?
 	resize () {
-		const width = this.elements.wrapper.outerWidth();
+		if (this.elements.wrapper) {
+			const width = this.elements.wrapper.outerWidth();
 
-		this.setState({ width: width });
-		if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+			this.setState({ width });
+			if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+		}
 	}
 });
 

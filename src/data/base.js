@@ -1,6 +1,6 @@
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 
-// TO-DO: this function can probably be cleaned up a little, and maybe inherit some implementation from lodash
+// TODO: this function can probably be cleaned up a little, and maybe inherit some implementation from lodash
 function _extend (protoProps) {
 	const parent = this;
 	const child = function () {
@@ -84,17 +84,20 @@ Lib.extend(Data.prototype, {
 	findWhere (criteria) {
 		let _isMatch;
 
-		if (Lib.isObject(criteria) && !Lib.isFunction(criteria)) {
+		if (!Lib.isFunction(criteria)) {
 			const _criteria = Lib.getItemAdapter(criteria);
 
 			_isMatch = function (item) {
-				let match = true;
+				const keys = _criteria.keys();
+				let match = keys && keys.length > 0;
 
-				_criteria.keys().forEach(function (key) {
-					if (_criteria.get(key) !== item.get(key)) {
-						match = false;
-					}
-				});
+				if (match) {
+					keys.forEach(function (key) {
+						if (!match || _criteria.get(key) !== item.get(key)) {
+							match = false;
+						}
+					});
+				}
 
 				return match;
 			};
@@ -114,7 +117,7 @@ Lib.extend(Data.prototype, {
 	}
 });
 
-['at', 'length', 'add', 'remove', 'reset', 'forEach', 'filter', 'map', 'every'].forEach(function (method) {
+['at', 'indexOf', 'length', 'add', 'remove', 'reset', 'forEach', 'filter', 'map', 'every'].forEach(function (method) {
 	Data.prototype[method] = Lib.noop;
 });
 

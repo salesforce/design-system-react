@@ -1,7 +1,8 @@
 {
 	"extends": "airbnb",
+	"parser": "babel-eslint",
 	"rules": {
-		"indent": [2, "tab"],
+	  	"indent": [2, "tab", {"SwitchCase": 1}],
 		"space-before-function-paren": [2, "always"],
 		"comma-dangle": [2, "never"],
 		"no-trailing-spaces": [2, { "skipBlankLines": true }],
@@ -9,6 +10,10 @@
 		"no-param-reassign": 1,
 		"vars-on-top": 1,
 		"func-names" : 0,
-		"no-console": 0
+		"no-console": 0,
+		"react/jsx-boolean-value": 0,
+		"react/sort-comp": 0,
+		"id-length": [2, {"min": 2, "properties": "never", "exceptions": ["$", "_", "e", "i", "a", "b"]}],
+		"no-undef": 1
 	}
 }

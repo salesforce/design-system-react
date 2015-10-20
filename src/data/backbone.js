@@ -1,6 +1,6 @@
 // BACKBONE DATA ADPATER
 
-import * as Lib from '../core/lib';
+import * as Lib from '../lib/lib';
 import Base from './base';
 
 // Framework specific
@@ -45,10 +45,6 @@ const Data = Base.Data.extend({
 
 		return result;
 	},
-	
-	length () {
-		return this._data.length;
-	},
 
 	at (index) {
 		let result;
@@ -58,6 +54,14 @@ const Data = Base.Data.extend({
 		}
 
 		return result;
+	},
+	
+	indexOf (criteria) {
+		return this._data.indexOf(criteria._item);
+	},
+	
+	length () {
+		return this._data.length;
 	},
 	
 	add (item) {

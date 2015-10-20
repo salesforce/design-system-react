@@ -1,85 +1,73 @@
 // COMBOBOX CONTROL - REACT FACADE
 
 // Core
-import * as Lib from '../../core/lib';
-import ComboboxCore from '../../core/combobox';
+import * as Lib from '../../lib/lib';
+import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Framework specific
 import React from 'react';
-import Events from '../mixins/events';
-import State from '../mixins/state';
+import { PicklistObject } from '../picklist/picklist';
 
 // Third party
 import classNames from 'classnames';
 
-// Children
-import SelectlistItem from '../selectlist/selectlist-item';
-
-const Combobox = React.createClass(Lib.merge({}, ComboboxCore, {
-	mixins: [State, Events],
+export const ComboboxObject = Lib.merge(PicklistObject, {
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		selection: React.PropTypes.oneOfType([
-			React.PropTypes.number,
+			React.PropTypes.string,
 			React.PropTypes.object
 		]),
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
-		]).isRequired,
-		text: React.PropTypes.string
-	},
-
-	menuItems () {
-		return this.props.collection.map((menuItem, index) => {
-			return (
-				<SelectlistItem key={index} item={menuItem} onSelected={this.handleMenuItemSelected} />
-			);
-		});
+		]).isRequired
 	},
 
 	render () {
+		const icon = '<use xlink:href="/assets/design-system/icons/utility-sprite/svg/symbols.svg#down"></use>'; // react doesn't currently support xlink:href in a svg tag
 		const item = this._getSelection();
-		const selectionName = item && item.getText();
-
+		const selectionName = item.getText();
 		const styles = {
 			width: this.state.width
 		};
-		
-		const disabledClass = {};
-		disabledClass[this.cssClasses.DISABLED] = this.props.disabled;
+		const inputStyle = {
+			border: 'none',
+			borderRight: '1px solid #d8dde6',
+			borderRadius: '.25rem 0 0 .25rem'
+		};
 
 		return (
-			<div className={classNames(this.cssClasses.CONTROL, 'input-group input-append dropdown', disabledClass)} onKeyPress={this.handleKeyPress}>
-				<input name={this.props.name} className="form-control" type="text" value={selectionName} disabled={this.props.disabled} />
-				<div className="input-group-btn">
-					<button type="button" className={classNames(this.cssClasses.CONTROL, this.cssClasses.TOGGLE, 'btn btn-default', disabledClass)} data-toggle="dropdown" disabled={this.props.disabled}><span className="caret"></span></button>
-					<ul className="dropdown-menu dropdown-menu-right" role="menu" style={styles}>
-						{this.menuItems()}
-					</ul>
+		<div className="slds-combobox slds-form-element">
+			<div aria-expanded="true" className="slds-picklist">
+			<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" style={{paddingLeft: 0}} disabled={this.props.disabled} aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
+				<div className="slds-form-element__control">
+				<input name={this.props.name} type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} className="slds-input" style={inputStyle} />
 				</div>
+				<svg aria-hidden="true" className="slds-icon" style={{right: '.7rem'}} dangerouslySetInnerHTML={{__html: icon}} />
+			</button>
+			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--small', 'lds-dropdown--menu', {'slds-hide': !this.state.isOpen})}>
+				<ul className="slds-dropdown__list" role="menu" style={styles} ref={this.cssClasses.MENU}>
+				{this._menuItems()}
+				</ul>
 			</div>
+			</div>
+		</div>
 		);
 	},
-
-	componentWillMount () {
-		this._initialize(this.props);
-	},
 	
-	componentDidMount () {
-		const elements = this.elements = {};
+	_handleChanged (e) {
+		const value = {};
 		
-		elements.wrapper = Lib.wrapElement(React.findDOMNode(this));
-	},
+		value[this.accessors.textProp()] = e.target.value;
 
-	handleMenuItemSelected (selection) {
-		this.setSelection(selection);
-	},
-
-	handleKeyPress (e) {
-		const key = e.key || e.keyIdentifier;
-		if (key) this._jumpToLetter(key);
+		this.setSelection(value);
 	}
-}));
+});
+
+let Combobox = Lib.merge({}, ComboboxCore, ComboboxObject);
+
+Combobox = Lib.runHelpers('react', CONTROL, Combobox);
+Combobox = React.createClass(Combobox);
 
 export default Combobox;

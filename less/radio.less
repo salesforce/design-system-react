@@ -1,0 +1,153 @@
+@import "fuelux-core.less";
+.radioTabbing() {
+
+	/* for keyboard tabbing */
+	input[type="radio"]:focus + .radio-label,
+	input[type="radio"]:hover + .radio-label,
+	.radio-label:hover {
+		color: @gray60;
+	}
+}
+
+.fuelux {
+	.radio {
+		&.highlight {
+			padding: 4px;
+			margin: 0 0 5px 0;
+
+			& + .radio.highlight {
+				margin-top: -9px;
+			}
+			& label.radio-custom {
+				left: -8px;
+				padding: 4px 4px 4px 24px;
+				border-radius: @base-border-radius;
+				&:before {
+					left: 5px;
+					top: 7px;
+				}
+				&:after {
+					left: 9px;
+					top: 11px;
+				}
+			}
+			&.checked label.radio-custom,
+			& label.radio-custom.checked {
+				background: @gray90;
+				border-radius: @base-border-radius;
+			}
+		}
+
+		/* for keyboard tabbing */
+		input[type="radio"]:focus + .radio-label,
+		input[type="radio"]:hover + .radio-label,
+		.radio-label:hover {
+			color: @gray60;
+		}
+	}
+	.form-horizontal .radio-inline {
+		padding-top: 0;
+	}
+	.input-group-addon.radio-custom.radio-inline {
+		&:before {
+			left: 11px;
+			top: 9px;
+		}
+		&:after {
+			left: 15px;
+			top: 13px;
+		}
+	}
+	.radio-custom {
+		position: relative;
+
+		.highlight {
+			padding: 4px;
+			margin: 0 0 5px 0;
+
+			&.checked {
+				background: @gray90;
+				border-radius: @base-border-radius;
+			}
+		}
+		&:after {
+			background: transparent;
+			border-radius: 6px;
+			content: " ";
+			height: 6px;
+			left: 4px;
+			position: absolute;
+			top: 7px;
+			width: 6px;
+		}
+		&:before {
+			border: 1px solid @gray67;
+			border-radius: 14px;
+			content: " ";
+			height: 14px;
+			left: 0px;
+			position: absolute;
+			top: 3px;
+			width: 14px;
+		}
+		&.checked {
+			&:after {
+				background: @true-white;
+			}
+			&:before {
+				background: @checkbox-primary-color;
+				border-color: @checkbox-primary-color;
+			}
+		}
+		&.disabled {
+			cursor: not-allowed;
+			opacity: .65;
+
+			&:after {
+				cursor: not-allowed;
+			}
+			&:before {
+				cursor: not-allowed;
+				opacity: .65;
+			}
+		}
+		&.radio-inline {
+			&:after {
+				left: 4px;
+				top: 7px;
+			}
+			&:before {
+				left: 0;
+				top: 3px;
+			}
+			&.highlight {
+				left: -3px;
+
+				padding: 4px 4px 4px 24px;
+
+				&:after {
+					left: 8px;
+					top: 11px;
+				}
+				&:before {
+					left: 4px;
+					top: 7px;
+				}
+				&.checked {
+					background: @gray90;
+					border-radius: @base-border-radius;
+				}
+			}
+		}
+
+		/* for keyboard tabbing */
+		input[type="radio"]:focus + .radio-label {
+			color: @gray60;
+		}
+	}
+
+	label.radio-custom.radio-inline {
+		padding-left: 20px;
+	}
+
+}

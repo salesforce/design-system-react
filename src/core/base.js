@@ -1,14 +1,13 @@
-import * as Lib from './lib';
+import * as Lib from '../lib/lib';
 import '../data/vanilla';
 
 const Base = {
 	// CSS classes used across every control
 	cssClasses: {
-		NAMESPACE: 'slds',
-		SR_ONLY: 'slds-assistive-text',
-		TRUNCATE: 'slds-truncate',
-		ICON: 'slds-icon',
-		HIDDEN: 'slds-hide'
+		NAMESPACE: 'slds-',
+		ASSISTIVE_TEXT: 'slds-assistive-text',
+		LABEL: 'slds-form-element__label',
+		CONTROL: 'slds-form-element__control'
 	},
 
 	_defaultState: {
@@ -20,12 +19,12 @@ const Base = {
 
 		// Accessors cannot be updated after initialization
 		if (options && Lib.isObject(options.accessors)) {
-			Lib.extend(this.accessors, options.accessors);
+			this.accessors = Lib.extend({}, this.accessors, options.accessors);
 			delete options.accessors;
 		}
-		
+
 		this.setProperties(options);
-		
+
 		const collection = this.getProperty('collection');
 		if (collection) this._collection = this._getDataAdapter(collection);
 
@@ -36,42 +35,42 @@ const Base = {
 			this.setState({
 				strings
 			});
-			
+
 			if (Lib.isFunction(this._onInitialized)) this._onInitialized();
 		});
 	},
-	
+
 	_getItemAdapter (_item, _itemAdapter) {
 		const itemAdapter = _itemAdapter || Lib.getItemAdapter;
 		const item = itemAdapter(_item);
-		
+
 		if (this.accessors) {
 			Object.keys(this.accessors).forEach(method => {
 				item[method] = Lib.bind(this.accessors[method], this, item);
 			});
 		}
-		
+
 		return item;
 	},
-	
+
 	_getDataAdapter (_data) {
 		const data = Lib.getDataAdapter(_data);
-		
+
 		data.getItemAdapter = Lib.partialRight(Lib.bind(this._getItemAdapter, this), data.getItemAdapter);
-		
+
 		return data;
 	},
-	
+
 	_getStrings (callback) {
 		Lib.getStrings().then(_strings => {
 			let strings = this.getProperty('strings');
-			
+
 			if (strings) {
 				strings = Lib.extend({}, _strings, strings);
 			} else {
 				strings = _strings;
 			}
-			
+
 			return strings;
 		}).then(callback);
 	},

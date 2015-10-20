@@ -2,7 +2,7 @@ const chai = require('chai');
 const assert = chai.assert;
 const expect = chai.expect;
 
-import * as Lib from '../../src/core/lib';
+import * as Lib from '../../src/lib/lib';
 
 describe('FuelUX Facade basic selectable trait tests', function () {
 	const selectable = Lib.extend({}, require('../../src/core/base'), require('../../src/traits/selectable'), require('../../src/jquery/state'));

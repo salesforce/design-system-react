@@ -1,13 +1,16 @@
-// TREE CONTROL
+// TREE CORE
 
-import * as Lib from './lib';
+import * as Lib from '../lib/lib';
 import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
 import Multiselectable from '../traits/multiselectable';
 
-export const CONTROL = 'slds-tree';
+// Styles
+require('../../scss/components/trees/flavors/base/index.scss');
+
+export const CONTROL = 'tree';
 
 const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	// CSS classes used within this control
@@ -24,12 +27,45 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 		autoOpenLimit: 1
 	},
 
+/* Accessors: These may be supplied in the options hash to override default behavior
+
+getText (item)
+	Return the text value to display as the branch or item name
+	item => object wrapped in an Item Adapter
+
+getChildren (item)
+	Return the children of the specified item
+	May return either an array / collection that is supported by Data Adapters, or a promise the resolves as such
+	item => object wrapped in an Item Adapter
+
+getType (item)
+	Return the type of the current node - either 'folder' (for branches) or 'item'
+	item => object wrapped in an Item Adapter
+
+getIconClass (item)
+	Return an (optional) class name that can be used to override the icon
+	item => object wrapped in an Item Adapter
+
+getExpandable (item)
+	For branches, returns whether or not the branch is expandable (generally, whether it has children)
+	item => object wrapped in an Item Adapter
+
+getKey (item)
+	Return either an object with key/value pairs to match or a match function
+	Use this to reduce the number of fields required for searching if a unique key is available
+	item => object wrapped in an Item Adapter
+
+getId (item)
+	Return a unique value for each node
+	item => object wrapped in an Item Adapter
+
+*/
+
 	accessors: {
 		getText (item) {
 			return item.get('text');
 		},
 
-		// May return either a promise or a value
 		getChildren (item) {
 			return item.get('children');
 		},
@@ -40,6 +76,7 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 		},
 
 		getType (item) {
+			// FIXME: Set a reasonable default or throw an error for "item-ish" items that don't have a type defined
 			return item.get('_itemType');
 		},
 
@@ -51,46 +88,54 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 			return item.get('_isExpandable') !== false;
 		},
 
-		// Reduce the number of fields here if a unique key is available
-		// Result can be either an object with key/value pairs to match or a function
 		getKey (item) {
 			return { id: item.get('id') };
 		},
-		
+
 		getId (item) {
 			return item.get('id');
 		}
 	},
 
-	_canSelect (item) {
-		return item.getType() === 'item' || this.getProperty('folderSelect');
+	_canSelect (newSelection, select) {
+		if (newSelection.getType() === 'item' || !!this.getProperty('folderSelect')) {
+			select();
+		}
 	},
-	
-	// TO-DO: This beginning code is basically the same as multi-select right now
+
+	// TODO: This beginning code is basically the same as multi-select right now
 	getOpenFolders () {
 		return this.getProperty('open');
 	},
-	
+
+	getClosedFolders () {
+		return this.getProperty('open');
+	},
+
 	_getOpenFolders () {
 		return this._getDataAdapter(this.getOpenFolders()).clone();
 	},
-	
+
+	_getClosedFolders () {
+		return this._getDataAdapter(this.getClosedFolders()).clone();
+	},
+
 	_isFolderOpen (folder, open) {
 		const _open = open || this._getDataAdapter(this.getOpenFolders());
 		return !!_open.findWhere(folder.getKey());
 	},
-	
+
 	_canOpen (folder) {
 		return folder.getExpandable();
 	},
-	
+
 	_toggleFolder (folder, options) {
 		if (this._canOpen(folder)) {
 			const open = this._getOpenFolders();
 			const isOpen = this._isFolderOpen(folder, open);
 			const silent = options && options.silent;
 			let eventName;
-			
+
 			if (isOpen) {
 				open.remove(folder);
 				eventName = 'closed';
@@ -98,21 +143,21 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 				open.add(folder);
 				eventName = 'opened';
 			}
-			
+
 			this.setProperties({ open: open._data });
 			if (!silent && Lib.isFunction(this._onFolderToggled)) this._onFolderToggled(folder, !isOpen);
-			
+
 			this.trigger(eventName, folder._item, open._data);
 		}
 	},
-	
+
 	toggleFolder (_folder) {
 		this._toggleFolder(this._getItemAdapter(_folder));
 	},
 
 	closeAllFolders () {
 		const open = this._getOpenFolders();
-		
+
 		open.reset(null);
 
 		this.setProperties({ open: open._data });

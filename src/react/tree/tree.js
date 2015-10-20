@@ -1,8 +1,8 @@
 // TREE CONTROL - REACT FACADE
 
 // Core
-import * as Lib from '../../core/lib';
-import TreeCore from '../../core/tree';
+import * as Lib from '../../lib/lib';
+import TreeCore, {CONTROL} from '../../core/tree';
 
 // Framework specific
 import React from 'react';
@@ -17,9 +17,9 @@ import classNames from 'classnames';
 import TreeBranch from './tree-branch';
 import TreeItem from './tree-item';
 
-const Tree = React.createClass(Lib.extend({}, TreeCore, {
+let Tree = Lib.merge({}, TreeCore, {
 	mixins: [State, Events, genericWillMount],
-	
+
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		folderSelect: React.PropTypes.bool,
@@ -36,11 +36,11 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 
 	render () {
 		const children = [];
-		
+
 		this._collection.forEach(model => {
 			const id = model.getId();
 			const selectable = this.getProperty('folderSelect');
-			
+
 			if (model.getType() === 'folder') {
 				children.push(<TreeBranch key={id} item={model} selectable={selectable} strings={this.state.strings} autoOpenLevel={1} autoOpenLimit={this.props.autoOpen ? this.props.autoOpenLimit : 0} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _isFolderOpen={this._isFolderOpen} _isItemSelected={this._isItemSelected} />);
 			} else {
@@ -49,9 +49,11 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 		});
 
 		return (
-			<ul className={classNames(this.cssClasses.CONTROL)} role="tree">
-				{children}
-			</ul>
+			<div className={classNames((this.cssClasses.NAMESPACE + this.cssClasses.CONTROL + '-container'))}>
+				<ul className={classNames((this.cssClasses.NAMESPACE + this.cssClasses.CONTROL), this.cssClasses.BTN_GROUP)} role="tree" aria-labelledby="treeheading">
+					{children}
+				</ul>
+			</div>
 		);
 	},
 
@@ -70,6 +72,9 @@ const Tree = React.createClass(Lib.extend({}, TreeCore, {
 	_handleExpandClick (item) {
 		this._toggleFolder(item);
 	}
-}));
+});
+
+Tree = Lib.runHelpers('react', CONTROL, Tree);
+Tree = React.createClass(Tree);
 
 export default Tree;

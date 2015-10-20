@@ -1,0 +1,42 @@
+@import "~index";
+@import "~@salesforce-ux/design-system/scss/design-tokens.scss";
+@import "~@salesforce-ux/design-system/scss/components/forms/flavors/input/index.scss";
+
+
+$line-height-button-x-small: 1.50rem !default;
+$line-height-button-xx-small: 1.25rem !default;
+$line-height-button-xxx-small: 1.00rem !default;
+
+
+
+
+.#{$css-prefix}input--x-small {
+  @include placeholder($weight: $font-weight-regular);
+  line-height: $line-height-button-x-small;
+  min-height: calc(#{$line-height-button-x-small} + 2px); /* For IE */
+  padding: {
+    left: $spacing-x-small;
+    right: $spacing-x-small;
+  }
+}
+
+
+.#{$css-prefix}input--xx-small {
+  @include placeholder($weight: $font-weight-regular);
+  line-height: $line-height-button-xx-small;
+  min-height: calc(#{$line-height-button-xx-small} + 2px); /* For IE */
+  padding: {
+    left: $spacing-xx-small;
+    right: $spacing-xx-small;
+  }
+}
+
+.#{$css-prefix}input--xxx-small {
+  @include placeholder($weight: $font-weight-regular);
+  line-height: $line-height-button-xxx-small;
+  min-height: calc(#{$line-height-button-xxx-small} + 2px); /* For IE */
+  padding: {
+    left: $spacing-xxx-small;
+    right: $spacing-xxx-small;
+  }
+}

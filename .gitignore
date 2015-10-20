@@ -8,7 +8,8 @@ bower_components
 test/tests-compiled.js
 test/tests-api.js
 test/tests.js
-
+dist/
+build/
 # gh-pages
 _site/*
 
@@ -19,3 +20,4 @@ _site/*
 node_modules.tar.gz
 
 npm-debug.log
+.esformatter

@@ -1,0 +1,206 @@
+@import "fuelux-core.less";
+
+// mixins
+.checkbox-radio-hover() {
+	box-shadow: inset 0px 0px 2px 1px rgba(91, 157, 217, .7), 0px 0px 5px 0px rgba(91, 157, 217, .7);
+}
+
+.checkbox-radio-focus() {
+	box-shadow: inset 0px 0px 2px 1px rgb(91, 157, 217), 0px 0px 5px 0px rgb(91, 157, 217);
+}
+
+
+.fuelux .radio, .fuelux .checkbox {
+
+	&-inline {
+		padding-left: 0;
+
+		&.highlight {
+			left: -8px;
+		}
+
+		// for checkboxes without text labels and alignment in .input-group-addon container
+		label {
+			margin-bottom: 0;
+		}
+	}
+
+	// This handy trick allows us to make rules for .radio, .checkbox, .radio-inline, and, .checkbox-inline all at once.
+	&, &-inline {
+
+		// Sometimes the wrapping containter is a div with .checkbox or .radio, and has a label within it.
+		// Sometimes the label itself is the wrapping container, and has .checkbox or .radio on it.
+		// The use of the amperstand "parent selector" here allows us to cover many scenarios at once, with terse, but elegant, code.
+		label&, .input-label&, & label, & .input-label {
+			&:hover:before {
+				.checkbox-radio-hover();
+			}
+		}
+		
+		label, .input-label, label& {
+			cursor: pointer;
+			font-weight: normal;
+		}
+
+		&.highlight {
+
+				input[type="checkbox"]:not(.sr-only), input[type="radio"]:not(.sr-only) {
+				& ~ label {
+					padding: 4px;
+					border-radius: @base-border-radius;
+				}
+				&:checked ~ label {
+					background-color: @gray90;
+					opacity: 1;
+					z-index: 0;
+				}
+			}
+		}
+
+		input[type="checkbox"]:not(.sr-only), input[type="radio"]:not(.sr-only) {
+
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			margin: -1px;
+			padding: 0;
+			overflow: hidden;
+			clip: rect(0,0,0,0);
+			border: 0;
+
+			& ~ label {
+				padding-left: 0;
+				&:before {
+					font-family:"Glyphicons Halflings";
+					font-style: normal;
+					font-weight: normal;
+					font-variant: normal;
+					text-transform: none;
+					line-height: 1;
+					speak: none;
+					border: 1px solid @gray67;
+					color: @true-white;
+					font-size: 9px;
+					width: 14px;
+					height: 14px;
+					padding: 0;
+					margin-top: 0;
+					margin-bottom: -2px;
+					cursor: pointer;
+					display: inline-block;
+					text-align: left;
+					z-index: 2;
+					content: "";
+				}
+
+			}
+
+
+
+			/* for keyboard tabbing */
+			&:active ~ label, &:focus ~ label {
+				color: @text-color;
+				color: @checkbox-primary-color;
+				cursor: pointer;
+				
+				&:before {
+					.checkbox-radio-focus();
+					outline: none;
+				}
+
+				&, &:hover {
+					color: @text-color;
+					cursor: pointer;
+				}
+			}
+			&:active:hover ~ label, &:focus:hover ~ label, &:focus:hover ~ label, &:checked:hover ~ label {
+				&, &:hover {
+					color: @text-color;
+					cursor: pointer;
+				}
+			}
+
+
+
+
+			&[disabled="disabled"], &[disabled], &:disabled {
+				& ~ label, & ~ label:before {
+					color: @text-color;
+					opacity: .65;
+					cursor: not-allowed !important;
+					outline: none;
+					box-shadow: none;
+				}
+			}
+
+			&:checked ~ label {
+				&:before {
+					background: @checkbox-primary-color;
+					border-color: @checkbox-primary-color;
+				}
+			}
+
+		}
+
+		&.highlight {
+			&:before {
+				left: 4px;
+				top: 7px;
+			}
+		}
+	}
+
+
+	&.highlight {
+		input[type="checkbox"]:not(.sr-only), input[type="radio"]:not(.sr-only) {
+			& ~ label {
+				left: -8px;
+				position: relative;
+			}
+		}
+	}
+
+
+	&-inline {
+		padding-left: 0;
+		&.highlight {
+			// left: -8px;
+		}
+		&:before {
+			left: 0;
+			top: 3px;
+		}
+	}
+
+}
+
+
+
+// Allows multiline labels next to checkboxes and radio 
+// Should be wrapped in `<form class="form-horizontal"><div class="form-group">`
+.fuelux {
+
+	.checkbox.multiline, .radio.multiline {
+		float: left; 
+		margin-left: 15px;
+	}
+
+}
+
+
+.fuelux {
+
+	.checkbox.multiline ~ .control-label, .radio.multiline ~ .control-label {
+		float: left; 
+		width: 80%; 
+		margin-left: 10px; 
+		text-align: left;
+
+		& > label {
+			font-weight: normal;
+			cursor: pointer;
+		}
+	}
+
+}
+

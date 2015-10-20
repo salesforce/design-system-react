@@ -1,17 +1,17 @@
 // Core
-import * as Lib from '../../core/lib';
+import * as Lib from '../../lib/lib';
 
 // Framework specific
-import React from 'react';
+import ReactDOM from 'react-dom';
 
 const genericWillMount = {
 	componentWillMount () {
 		this.elements = {};
-		this._initialize(this.props);
+		if (Lib.isFunction(this._initialize)) this._initialize(this.props);
 	},
 	
 	componentDidMount () {
-		this.elements.wrapper = Lib.wrapElement(React.findDOMNode(this));
+		this.elements.wrapper = Lib.wrapElement(ReactDOM.findDOMNode(this));
 	},
 
 	// These are handled slightly differently than your average props, so they need to be kept in sync here
