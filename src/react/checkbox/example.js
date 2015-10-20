@@ -55,7 +55,7 @@ export default function () {
 
 		_handleClick (e) {
 			// translate text of button into method call
-			this.refs.checkbox[e.target.firstChild.data]();
+			this.refs.checkbox[e.target.firstChild.data.toLowerCase()]();
 		},
 
 		_handleChange (checkboxName, checkedValue) {
