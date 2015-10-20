@@ -3,6 +3,9 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
+// Traits
+import Disableable from '../traits/disableable';
+
 // Third party
 import classNames from 'classnames';
 
@@ -24,7 +27,7 @@ require('../../scss/components/buttons/flavors/stateful-inverse/index.scss');
 
 export const CONTROL = 'slds-button';
 
-const ButtonCore = Lib.merge({}, Base, {
+const ButtonCore = Lib.merge({}, Base, Disableable, {
 	cssClasses: {
 		'CONTROL': CONTROL,
 		'NOT_SELECTED': Base.cssClasses.NAMESPACE + 'not-selected',
@@ -51,10 +54,12 @@ const ButtonCore = Lib.merge({}, Base, {
 	},
 	
 	_defaultProperties: {
-		theme: null,
-		size: null,
 		iconStyle: null,
-		iconPosition: 'left'
+		iconPosition: 'left',
+		selected: false,
+		size: null,
+		theme: null,
+		views: []
 	},
 	
 	_getClassNames (isStateful) {
