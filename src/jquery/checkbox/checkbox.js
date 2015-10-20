@@ -39,6 +39,7 @@ export const CheckboxObject = {
 		this.elements.input.on('change', $.proxy(this._handleInputChange, this));
 	},
 
+	// TODO: why not just call toggle from the change event above?
 	_handleInputChange () {
 		this.toggle();
 	},
@@ -73,6 +74,7 @@ export const CheckboxObject = {
 	},
 
 	_onInitialized () {
+		// TODO: this may have only been applicable for Fuel UX. Is the else even reachable?
 		if (!this.rendered) {
 			this._render();
 		} else {
@@ -104,6 +106,8 @@ export const CheckboxObject = {
 		this.rendered = true;
 	},
 
+	// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
+	// there is no guidance as to what should be done here and/or why
 	_renderDressings (elements) {
 		elements.input.attr('value', this.getProperty('value'));
 		elements.input.attr('checked', this.getProperty('checked'));
@@ -113,6 +117,7 @@ export const CheckboxObject = {
 		this._onEnabledOrDisabled();
 	},
 
+	// TODO: Is this necessary anymore? May never even be reachable now.
 	_syncOptions () {
 		const opts = {};
 		const value = this.elements.input.attr('value') || this.options.value || this._defaultProperties.value;

@@ -29,6 +29,9 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 		return this.getProperty('checked');
 	},
 
+
+	// TODO: consider moving the `check` and `uncheck` logic into their respective methods and calling them from here instead of the other way around (as it is now).
+	// This will keep logic in-context and make code more readable (even if we may have some duplicate code)
 	toggle (_checked) {
 		let checked;
 		const origValue = this.getProperty('checked');
@@ -44,6 +47,10 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, {
 		} else {
 			return;
 		}
+
+		// TODO: it could be useful to also have an _onBeforeToggled fire off here
+		// Radios could utilize this to set all checked to false, and then onToggled
+		// could just set the one we want to be true to true.
 
 		this.setProperties({ checked });
 

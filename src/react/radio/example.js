@@ -4,6 +4,7 @@ import Radio from './radio';
 
 // https://www.lightningdesignsystem.com/components/forms#radio
 
+// TODO: consider creation of a Radios React component based off of this example code (as we did with jQuery)
 export default function () {
 	const RadioExample = React.createClass({
 		getInitialState () {
