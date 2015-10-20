@@ -1,5 +1,4 @@
 
-
 <SLDSButtonGroup>
   <SLDSButton label='Refresh' variant='neutral' />
   <SLDSButton label='Edit' variant='neutral' />
