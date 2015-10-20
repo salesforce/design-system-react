@@ -43,6 +43,8 @@ class Button extends React.Component {
     let notSelected = this.props.stateful && !this.state.active ? true : false;
     return classNames(this.props.className, 'slds-button', {
       [`slds-button--${this.props.variant}`]: this.props.variant,
+      [`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
+      ['slds-max-small-button--stretch']: this.props.responsive,
       ['slds-not-selected']: notSelected,
       ['slds-is-selected']: isSelected,
     });
@@ -56,9 +58,24 @@ class Button extends React.Component {
           disabled={this.props.disabled}
           inverse={this.props.inverse}
           stateful={this.props.stateful}
+          hint={this.props.hint}
           name={this.props.iconName}
           size={this.props.iconSize}
           position={this.props.iconPosition}
+          />
+      );
+    }
+  }
+
+  renderIconMore(){
+    if(this.props.iconVariant === 'more'){
+      return(
+        <ButtonIcon
+          variant={this.props.variant}
+          disabled={this.props.disabled}
+          inverse={this.props.inverse}
+          name='down'
+          size='x-small'
           />
       );
     }
@@ -72,10 +89,12 @@ class Button extends React.Component {
     if (this.props.disabled) { props['disabled'] = 'disabled' };
 
     return (
-      <button className={this.getClassName()} {...props} onClick={click}>
+      <button tabIndex={this.props.tabindex} className={this.getClassName()} {...this.props} onClick={click}>
         {this.props.iconPosition === 'right' ? <span className={labelClasses}>{this.props.label}</span>: null}
         {this.renderIcon()}
+        {this.renderIconMore()}
         {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? <span className={labelClasses}>{this.props.label}</span>: null}
+        {this.props.children}
       </button>
     );
   }
@@ -84,10 +103,14 @@ class Button extends React.Component {
 Button.propTypes = {
   label: React.PropTypes.string.isRequired,
   variant: React.PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
+  tabindex: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   inverse: React.PropTypes.bool,
+  hint: React.PropTypes.bool,
   stateful: React.PropTypes.bool,
+  responsive: React.PropTypes.bool,
   iconName: React.PropTypes.string,
+  iconVariant: React.PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
   iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
   iconPosition: React.PropTypes.oneOf(['left', 'right']),
 }

@@ -197,6 +197,7 @@ class SLDSLookup extends React.Component {
         </span>
         <SLDSButton
           label='Press delete to remove'
+          tabindex="-1"
           variant='icon'
           iconName='close'
           iconSize='medium'

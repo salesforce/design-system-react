@@ -10,19 +10,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDSLookup from '../../../components/SLDSLookup';
+import {SLDSDropdownTrigger,SLDSButton} from '../../../components';
 
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
-
-
-const items = [
-  {label:'Paddy\'s Pub'},
-  {label:'Tyrell Corp'},
-  {label:'Paper St. Soap Company'},
-  {label:'Nakatomi Investments'},
-  {label:'Acme Landscaping'},
-  {label:'Acme Construction'}
-];
 
 
 
@@ -36,31 +26,55 @@ module.exports = React.createClass( {
     return {};
   },
 
-  newItem(){
-    alert('New Item Clicked');
+  handleOnUpdateHighlighted () {
+    console.log('onUpdateHighlighted should be defined');
   },
 
-  searchRecords(){
-    alert('Search Records Clicked');
+  handleOnSelect() {
+    console.log('onSelect should be defined');
+  },
+
+  handleOnClick() {
+    console.log('onClick should be defined');
   },
 
   render() {
     return (
 
 
-
             <div className="slds-p-around--medium">
 
               <h3 className="slds-text-heading--medium slds-truncate">
-                Lookups
+                Dropdown Base
               </h3>
 
               <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSLookupPage.txt")}
+                {require("raw-loader!../../code-snippets/SLDSPicklistBasePage.txt")}
               </PrismCode>
 
               <div className="slds-p-vertical--large">
-                <SLDSLookup items={items} label="Accounts" type="account" onNewItem={this.newItem} onSearchRecords={this.searchRecords} />
+                <SLDSDropdownTrigger
+                    options={[
+                      {label:'A Option Option Super Super Long',value:'A0'},
+                      {label:'B Option',value:'B0'},
+                      {label:'C Option',value:'C0'},
+                      {label:'D Option',value:'D0'},
+                      {label:'E Option',value:'E0'},
+                      {label:'A1 Option',value:'A1'},
+                      {label:'B2 Option',value:'B1'},
+                      {label:'C2 Option',value:'C1'},
+                      {label:'D2 Option',value:'D1'},
+                      {label:'E2 Option Super Super Long',value:'E1'},
+
+                    ]}
+                    value='C0'
+                    label="Contacts"
+                    modal={true}
+                    placeholder = "Select a contact"
+                    onSelect={this.handleOnSelect}
+                    onClick={this.handleOnClick}
+                    onUpdateHighlighted={this.handleOnUpdateHighlighted}
+                    />
               </div>
 
             </div>
