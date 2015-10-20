@@ -1,4 +1,4 @@
-// SEARCH CONTROL
+// SEARCH CORE
 
 import * as Lib from '../lib/lib';
 import Base from './base';
@@ -36,7 +36,7 @@ const SearchCore = Lib.merge({}, Base, Disableable, {
 	_addEventListener: function (target, name, handler) {
 		this._events.push({target: target, name: name, handler: handler});
 	},
-	
+
 	_addEventListeners: function () {
 		this._addEventListener(this.elements.button, 'click', this._click.bind(this));
 		this._addEventListener(this.elements.input, 'keydown', this._keydown.bind(this));
