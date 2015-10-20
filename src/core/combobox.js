@@ -1,4 +1,4 @@
-// COMBOBOX CONTROL
+// COMBOBOX CORE
 
 import * as Lib from '../lib/lib';
 import PicklistCore from './picklist';
@@ -24,7 +24,7 @@ const ComboboxCore = Lib.merge({}, PicklistCore, {
 	resize () {
 		if (this.elements.wrapper) {
 			const width = this.elements.wrapper.outerWidth();
-	
+
 			this.setState({ width });
 			if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
 		}

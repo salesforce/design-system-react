@@ -1,4 +1,4 @@
-// CHECKBOX CONTROL
+// CHECKBOX CORE
 
 import * as Lib from '../lib/lib';
 import Base from './base';

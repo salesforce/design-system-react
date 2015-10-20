@@ -1,4 +1,4 @@
-// SPINNER CONTROL
+// SPINNER CORE
 
 import * as Lib from '../lib/lib';
 import Base from './base';

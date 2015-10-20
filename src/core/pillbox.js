@@ -1,4 +1,4 @@
-// PILLBOX CONTROL
+// PILLBOX CORE
 
 import * as Lib from '../lib/lib';
 import Base from './base';
