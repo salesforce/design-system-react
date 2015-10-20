@@ -22,8 +22,11 @@ export const DataTableObject = {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		columns: React.PropTypes.array.isRequired,
-		selection: React.PropTypes.string,
+		columns: React.PropTypes.oneOfType([
+			React.PropTypes.array,
+			React.PropTypes.object
+		]).isRequired,
+		selection: React.PropTypes.any,
 		bordered: React.PropTypes.bool,
 		striped: React.PropTypes.bool,
 		stacked: React.PropTypes.bool,
@@ -44,13 +47,14 @@ export const DataTableObject = {
 	},
 
 	_tableItems () {
-		return this.props.collection.map((item, index) => {
-			const isSelected = (item.id === this.props.selection) ? true : false;
+		return this._collection.map((item, index) => {
+			const isSelected = this._isItemSelected(item);
+			
 			return (
 				<DataTableItem
 					key={index}
 					item={item}
-					onSelected={this._handleTableItemSelected}
+					onSelected={this._selectItem}
 					selected={isSelected}
 					hintParent={true}
 				/>
@@ -76,15 +80,7 @@ export const DataTableObject = {
 				</tbody>
 			</table>
 		);
-	},
-
-	_onSelected () {}, // TODO: feature.selection
-
-	_handleTableItemSelected (selection) { // TODO: feature.selectio
-		void(selection);
-		// this.setSelection(selection);
 	}
-
 };
 
 let DataTable = Lib.merge({}, DataTableCore, DataTableObject);

@@ -20,14 +20,14 @@ const DataTableItem = React.createClass({
 			// })}>
 			<tr className=".slds-hint-parent">
 				<td data-label="description">
-					<span className="slds-truncate"><a href="#">{this.props.item.name}</a></span>
+					<span className="slds-truncate"><a href="#">{this.props.item.get('name')}</a></span>
 				</td>
 				<td data-label="contact-count">
-					<span className="slds-truncate">{this.props.item.count}</span>
+					<span className="slds-truncate">{this.props.item.get('count')}</span>
 				</td>
 				<td data-label="last-modified">
-					<span className="slds-truncate">{this.props.item.lastModified}</span><br/>
-					<span className="slds-truncate slds-text-body--small">{this.props.item.modifiedBy}</span>
+					<span className="slds-truncate">{this.props.item.get('lastModified')}</span><br/>
+					<span className="slds-truncate slds-text-body--small">{this.props.item.get('modifiedBy')}</span>
 				</td>
 			</tr>
 		);

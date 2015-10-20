@@ -4,7 +4,7 @@ import * as Lib from '../lib/lib';
 
 const Selectable = {
 	cssClasses: {
-		SELECTED: 'selected'
+		SELECTED: 'slds-is-selected'
 	},
 	
 	_defaultProperties: {

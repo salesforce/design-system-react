@@ -5,7 +5,7 @@ import Base from './base';
 import classNames from 'classnames';
 
 // Traits
-import Selectable from '../traits/selectable';
+import Multiselectable from '../traits/multiselectable';
 
 // Styles
 require('../../scss/components/data-tables/flavors/base/index.scss');
@@ -14,11 +14,10 @@ require('../../scss/components/data-tables/flavors/responsive-stacked-horizontal
 
 export const CONTROL = 'table';
 
-const DataTableCore = Lib.merge({}, Base, Selectable, {
+const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 	cssClasses: {
 		CONTROL: Base.cssClasses.NAMESPACE + CONTROL,
 		NOHOVER: Base.cssClasses.NAMESPACE + 'no-row-hover',
-		SELECTED: Base.cssClasses.NAMESPACE + 'is-selected',
 		SORTABLE: Base.cssClasses.NAMESPACE + 'is-sortable',
 		HINTPARENT: Base.cssClasses.NAMESPACE + 'hint-parent',
 		CELLSHRINK: Base.cssClasses.NAMESPACE + 'cell-shrink',
@@ -83,29 +82,23 @@ const DataTableCore = Lib.merge({}, Base, Selectable, {
 
 		getKey (item) {
 			return item.get();
+		},
+
+		getId (item) {
+			return item.get('id');
 		}
 	},
 
-	_canSelect (newSelection, select) { // TODO: feature.selection
-		void(newSelection, select);
-		// const item = this._getItemAdapter(newSelection);
-
-		// if (!item.getType() && !item.getDisabled()) {
-		// 	select();
-		// }
-	},
-
-	_onInitialized () {},
-
 	_getClassNames: function (classFlags) {
-		const classList = [this.cssClasses.CONTROL]; // This line complains about using `let`. It's being manipulated at another block level, so I don't know how it's running, but it appears to be okay. Advise on how to pass eslint and use `let`
+		const classList = [this.cssClasses.CONTROL];
+		
 		for (const flagName in classFlags) {
 			if (classFlags[flagName] === true) {
 				classList.push(this.cssClasses[flagName.toUpperCase()]);
 			}
 		}
 
-		return classNames(...classList);
+		return classNames(classList);
 	}
 });
 
