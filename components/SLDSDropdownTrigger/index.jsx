@@ -255,7 +255,8 @@ module.exports = React.createClass( {
     return (
 
       <SLDSButton 
-        ref="button"
+        ref='button'
+        aria-haspopup='true'
         label='More Options' 
         variant='icon' 
         iconName='down' 

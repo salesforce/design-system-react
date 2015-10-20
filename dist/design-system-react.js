@@ -558,7 +558,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  render: function render() {
-	    return _react2['default'].createElement('span', null);
+	    return _react2['default'].createElement('noscript', null);
 	  }
 	
 	});
@@ -6071,7 +6071,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      highlightedIndex: 0,
 	      selectedIndex: this.getIndexByValue(this.props.value),
 	      lastBlurredIndex: -1,
-	      lastBlurredTimeStamp: -1
+	      lastBlurredTimeStamp: -1,
+	      isHover: false
 	    };
 	  },
 	
@@ -6109,15 +6110,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  handleClose: function handleClose() {
-	    this.setState({ isOpen: false });
+	    this.setState({
+	      isOpen: false,
+	      isHover: false
+	    });
 	  },
 	
 	  handleMouseEnter: function handleMouseEnter(event) {
 	    if (this.props.openOn === 'hover') {
-	      this.setState({
-	        isOpen: true,
-	        isClosing: false
-	      });
+	      this.state.isClosing = false;
+	      if (!this.state.isOpen) {
+	        this.setState({
+	          isOpen: true,
+	          isHover: true
+	        });
+	      }
 	    }
 	  },
 	
@@ -6148,7 +6155,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  handleFocus: function handleFocus() {
-	    this.setState({ isFocused: true });
+	    this.setState({
+	      isFocused: true,
+	      isHover: false
+	    });
 	  },
 	
 	  setFocus: function setFocus() {
@@ -6158,7 +6168,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  getButtonNode: function getButtonNode() {
-	    return _react2['default'].findDOMNode(this).childNodes[0];
+	    return _react2['default'].findDOMNode(this.refs.button);
 	  },
 	
 	  moveHighlight: function moveHighlight(delta) {},
@@ -6185,7 +6195,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  handleCancel: function handleCancel() {
-	    this.setFocus();
+	    if (!this.state.isHover) {
+	      this.setFocus();
+	    }
 	  },
 	
 	  getPopoverContent: function getPopoverContent() {
@@ -6204,6 +6216,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave : null,
 	      onCancel: this.handleCancel,
 	      itemRenderer: this.props.listItemRenderer,
+	      isHover: this.state.isHover,
 	      theme: this.props.theme });
 	  },
 	
@@ -6235,8 +6248,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  render: function render() {
 	    var className = this.state.currentSelectedItem ? 'slds-input--bare slds-hide' : 'slds-input--bare';
-	    return _react2['default'].createElement('div', {
-	      className: 'slds-dropdown-trigger',
+	    return _react2['default'].createElement(_SLDSButton2['default'], {
+	      ref: 'button',
+	      'aria-haspopup': 'true',
+	      label: 'More Options',
+	      variant: 'icon',
+	      iconName: 'down',
+	      iconVariant: 'border-filled',
 	      onBlur: this.handleBlur,
 	      onFocus: this.handleFocus,
 	      onClick: this.handleClick,
@@ -6245,7 +6263,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave : null,
 	      tabIndex: this.state.isOpen ? -1 : 0,
 	      onKeyDown: this.handleKeyDown
-	    }, this.props.children, this.props.modal ? this.getModalPopover() : this.getSimplePopover());
+	    }, this.props.modal ? this.getModalPopover() : this.getSimplePopover());
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
@@ -6451,6 +6469,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onSelect: _this.handleSelect,
 	        onSearch: _this.handleSearch,
 	        labelRenderer: _this.props.itemRenderer,
+	        isHover: _this.props.isHover,
 	        onCancel: _this.handleCancel });
 	    });
 	  },
@@ -6557,12 +6576,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  componentDidMount: function componentDidMount() {
 	    if (this.props.isHighlighted) {
-	      this.refs.link.getDOMNode().focus();
+	      this.setFocus();
 	    }
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
 	    if (!prevProps.isHighlighted && this.props.isHighlighted) {
+	      this.setFocus();
+	    }
+	  },
+	
+	  setFocus: function setFocus() {
+	    if (!this.props.isHover) {
 	      this.refs.link.getDOMNode().focus();
 	    }
 	  },
@@ -6869,7 +6894,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        props['disabled'] = 'disabled';
 	      };
 	
-	      return _react2['default'].createElement('button', _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === 'right' ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.renderIcon(), this.renderIconMore(), this.props.iconPosition === 'left' || !this.props.iconPosition ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null);
+	      return _react2['default'].createElement('button', _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, this.props, { onClick: click }), this.props.iconPosition === 'right' ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.renderIcon(), this.renderIconMore(), this.props.iconPosition === 'left' || !this.props.iconPosition ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.props.children);
 	    }
 	  }]);
 	
