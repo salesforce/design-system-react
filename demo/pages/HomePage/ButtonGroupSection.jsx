@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
+
 import SLDSButtonGroup from '../../../components/SLDSButtonGroup';
 import SLDSDropdownTrigger from '../../../components/SLDSDropdownTrigger';
 import SLDSButton from '../../../components/SLDSButton';
@@ -27,6 +28,7 @@ module.exports = React.createClass( {
   },
 
   render() {
+
     return (
 
             <div className='slds-p-around--medium'>
@@ -45,6 +47,10 @@ module.exports = React.createClass( {
                   <SLDSButton label='Save' variant='neutral' />
 
                 <SLDSDropdownTrigger
+                    label='More Options' 
+                    variant='icon' 
+                    iconName='down' 
+                    iconVariant='border-filled'
                     options={[
                       {label:'A Option Option Super Super Long',value:'A0'},
                       {label:'B Option',value:'B0'},
@@ -58,8 +64,6 @@ module.exports = React.createClass( {
                       {label:'E2 Option Super Super Long',value:'E1'},
 
                     ]}
-                    value='C0'
-                    label="Contacts"
                     modal={true}
                     placeholder = "Select a contact"
                     onSelect={this.handleOnSelect}
@@ -82,5 +86,6 @@ module.exports = React.createClass( {
 
 
     );
+
   }
 });

@@ -14,6 +14,7 @@ import SLDSPopover from '../SLDSPopover';
 import List from './list';
 import ListItem from './list-item';
 import ListItemLabel from './list-item-label';
+import chain from '../utils/create-chained-function';
 
 import SLDSButton from '../SLDSButton';
 
@@ -21,6 +22,7 @@ import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
 
 import {KEYS,EventUtil} from '../utils';
+import omit from 'lodash.omit';
 
 
 module.exports = React.createClass( {
@@ -33,6 +35,8 @@ module.exports = React.createClass( {
 
   getDefaultProps(){
     return {
+      label:'Button',
+      variant:'neutral',
       placeholder: 'Select an Option',
       disabled: false,
       theme: 'default',
@@ -198,7 +202,6 @@ module.exports = React.createClass( {
     return <List
             ref='list'
             options={this.props.options}
-            label={this.props.label}
             className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
             selectedIndex={this.state.selectedIndex}
@@ -252,23 +255,44 @@ module.exports = React.createClass( {
 
   render() {
     let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
+
+    const props = omit(this.props, [
+        'aria-haspopup',
+        'label',
+        'className',
+        'style',
+        'variant',
+        'iconName',
+        'iconVariant',
+        'onBlur',
+        'onFocus',
+        'onClick',
+        'onMouseDown',
+        'onMouseEnter',
+        'onMouseLeave',
+        'tabIndex',
+        'onKeyDown'
+      ]);
     return (
 
       <SLDSButton 
         ref='button'
         aria-haspopup='true'
-        label='More Options' 
-        variant='icon' 
-        iconName='down' 
-        iconVariant='border-filled'
-        onBlur={this.handleBlur}
-        onFocus={this.handleFocus}
-        onClick={this.handleClick}
-        onMouseDown={this.handleMouseDown}
-        onMouseEnter={(this.props.openOn === 'hover')?this.handleMouseEnter:null}
-        onMouseLeave={(this.props.openOn === 'hover')?this.handleMouseLeave:null}
+        label={this.props.label}
+        className={this.props.className}
+        style={this.props.style}
+        variant={this.props.variant}
+        iconName={this.props.iconName}
+        iconVariant={this.props.iconVariant}
+        onBlur={ chain(this.props.onBlur, this.handleBlur) }
+        onFocus={ chain(this.props.onFocus, this.handleFocus) }
+        onClick={ chain(this.props.onClick, this.handleClick) }
+        onMouseDown={ chain(this.props.onMouseDown, this.handleMouseDown) }
+        onMouseEnter={ chain(this.props.onMouseEnter, (this.props.openOn === 'hover')?this.handleMouseEnter:null) }
+        onMouseLeave={ chain(this.props.onMouseLeave, (this.props.openOn === 'hover')?this.handleMouseLeave:null ) }
         tabIndex={this.state.isOpen?-1:0}
-        onKeyDown={this.handleKeyDown}
+        onKeyDown={ chain(this.props.onKeyDown, this.handleKeyDown) }
+        {...props}
         >
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
       </SLDSButton>

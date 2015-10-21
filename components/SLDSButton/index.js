@@ -83,13 +83,13 @@ class Button extends React.Component {
 
 
   render() {
-    const props = omit('className', this.props);
+    const props = omit(this.props,'className');
     const click = createChainedFunction(this.props.onClick, this.onClick.bind(this));
     const labelClasses = this.props.variant === 'icon' ? 'slds-assistive-text': '';
     if (this.props.disabled) { props['disabled'] = 'disabled' };
 
     return (
-      <button tabIndex={this.props.tabindex} className={this.getClassName()} {...this.props} onClick={click}>
+      <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
         {this.props.iconPosition === 'right' ? <span className={labelClasses}>{this.props.label}</span>: null}
         {this.renderIcon()}
         {this.renderIconMore()}

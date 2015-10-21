@@ -210,9 +210,7 @@ module.exports = React.createClass( {
   },
 
   render() {
-    let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
     return (
-
       <div className={"slds-form-element slds-theme--"+this.props.theme}>
         <div className={"slds-picklist slds-theme--"+this.props.theme}>
           <button
