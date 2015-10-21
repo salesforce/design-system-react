@@ -1,6 +1,7 @@
 @import "~index";
 @import "~@salesforce-ux/design-system/scss/design-tokens.scss";
 
+
 @import
 
   // Activity Timeline
@@ -22,6 +23,7 @@
   "~@salesforce-ux/design-system/scss/components/buttons/flavors/neutral/index",
   "~@salesforce-ux/design-system/scss/components/buttons/flavors/neutral-icon/index",
   "~@salesforce-ux/design-system/scss/components/buttons/flavors/brand/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/destructive/index",
   "~@salesforce-ux/design-system/scss/components/buttons/flavors/inverse/index",
   "~@salesforce-ux/design-system/scss/components/buttons/flavors/stateful/index",
   "~@salesforce-ux/design-system/scss/components/buttons/flavors/stateful-inverse/index",
@@ -30,6 +32,7 @@
   "~@salesforce-ux/design-system/scss/components/buttons/flavors/icon-more/index",
   "~@salesforce-ux/design-system/scss/components/buttons/flavors/icon-stateful/index",
   "~@salesforce-ux/design-system/scss/components/buttons/flavors/icon-inverse/index",
+  "~@salesforce-ux/design-system/scss/components/buttons/flavors/responsive/index",
 
   // Card
   "~@salesforce-ux/design-system/scss/components/cards/flavors/base/index",
@@ -72,7 +75,7 @@
   // Menus
   "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/base/index",
   "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/menu/index",
-  //"dropdowns/flavors/menu-with-search/index",
+  //"~@salesforce-ux/design-system/scss/components/dropdowns/flavors/menu-with-search/index",
   "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/menu-with-icons/index",
   "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/action-overflow/index",
   "~@salesforce-ux/design-system/scss/components/dropdowns/flavors/search-overflow/index",
@@ -83,6 +86,18 @@
   "~@salesforce-ux/design-system/scss/components/datepickers/flavors/single-select/index",
   "~@salesforce-ux/design-system/scss/components/datepickers/flavors/multi-select/index",
   "~@salesforce-ux/design-system/scss/components/datepickers/flavors/time/index",
+
+  // Publishers
+  "~@salesforce-ux/design-system/scss/components/publishers/flavors/discussion-feed/index",
+  "~@salesforce-ux/design-system/scss/components/publishers/flavors/comment/index",
+
+  // Discussion Feed
+  "~@salesforce-ux/design-system/scss/components/feeds/flavors/discussion-feed/index",
+  "~@salesforce-ux/design-system/scss/components/feeds/flavors/comment-base/index",
+  "~@salesforce-ux/design-system/scss/components/feeds/flavors/comment-minimal/index",
+  "~@salesforce-ux/design-system/scss/components/feeds/flavors/comment-with-replies/index",
+  "~@salesforce-ux/design-system/scss/components/feeds/flavors/comment-with-overflow/index",
+  "~@salesforce-ux/design-system/scss/components/feeds/flavors/comment-with-attachments/index",
 
  // Modal
   "~@salesforce-ux/design-system/scss/components/modals/flavors/base/index",
@@ -119,6 +134,7 @@
   "~@salesforce-ux/design-system/scss/components/notifications/flavors/base/index",
   "~@salesforce-ux/design-system/scss/components/notifications/flavors/alert/index",
   "~@salesforce-ux/design-system/scss/components/notifications/flavors/toast/index",
+  "~@salesforce-ux/design-system/scss/components/notifications/flavors/modal/index",
 
   // Lookup
   "~@salesforce-ux/design-system/scss/components/lookups/flavors/base/index",
