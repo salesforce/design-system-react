@@ -105,6 +105,9 @@ const items = [
 
 ```
 
+[![browser support](/readme-assets/SLDSLookups.gif)](/readme-assets/SLDSLookups.gif)
+
+
 ### [PickLists](http://www.lightningdesignsystem.com/components/picklists#base&role=regular&status=all)
 #### *Base only. Other variants coming soon.
 
