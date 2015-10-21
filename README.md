@@ -155,6 +155,9 @@ import {SLDSModal} from 'design-system-react';
 
 ```
 
+[![browser support](/readme-assets/SLDSModals.gif)](/readme-assets/SLDSModals.gif)
+
+
 ### [Utility Icons](https://www.lightningdesignsystem.com/resources/icons#utility)
 
 ```jsx
