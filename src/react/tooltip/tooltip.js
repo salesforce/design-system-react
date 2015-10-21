@@ -19,7 +19,6 @@ let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
 	mixins: [State, Events],
 
 	render () {
-
 		if (this.refs.popover) {
 			this._setElements();
 		}

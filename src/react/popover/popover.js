@@ -45,7 +45,6 @@ let Popover = Lib.merge({}, PopoverCore, PopoverMethods, {
 	mixins: [State, Events],
 
 	render () {
-
 		if (this.refs.popover) {
 			this._setElements();
 		}
