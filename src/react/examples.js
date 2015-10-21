@@ -4,7 +4,7 @@ import badge from './badge/example';
 import button from './button/example';
 import combobox from './combobox/example';
 import checkbox from './checkbox/example';
-import datatable from './datatable/example';
+import datatable from './data-table/example';
 	// import datepicker from './datepicker/example';
 	// import dropdown from './dropdown/example';
 import notification from './notification/example';

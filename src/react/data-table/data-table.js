@@ -2,7 +2,7 @@
 
 // Core
 import * as Lib from '../../lib/lib';
-import DataTableCore, {CONTROL} from '../../core/datatable';
+import DataTableCore, {CONTROL} from '../../core/data-table';
 
 // Framework specific
 import React from 'react';
@@ -11,7 +11,7 @@ import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
 // Children
-import DataTableItem from './datatable-item';
+import DataTableItem from './data-table-item';
 
 export const DataTableObject = {
 	mixins: [State, Events, genericWillMount],
@@ -49,13 +49,14 @@ export const DataTableObject = {
 	_tableItems () {
 		return this._collection.map((item, index) => {
 			const isSelected = this._isItemSelected(item);
-			
+
 			return (
 				<DataTableItem
 					key={index}
 					item={item}
 					onSelected={this._selectItem}
 					selected={isSelected}
+					bordered={true}
 					hintParent={true}
 				/>
 			);
