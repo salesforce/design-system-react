@@ -29,13 +29,13 @@ $(function () {
 	});
 
 	$('#radio-jquery-checkFirst').on('click', function () {
-		console.log('toggle 1 to true');
-		radios.toggle(0, true);
+		console.log('check first');
+		radios.check(0);
 	});
 
 	$('#radio-jquery-checkSecond').on('click', function () {
-		console.log('toggle 2 to true');
-		radios.toggle(1, true);
+		console.log('check second');
+		radios.check(1);
 	});
 
 	$('#radio-jquery-disableFirst').on('click', function () {

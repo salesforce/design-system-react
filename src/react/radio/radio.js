@@ -13,7 +13,7 @@ export const RadioObject = Lib.merge(CheckboxObject, {
 		return (<input name={this.props.name}
 						type="radio"
 						disabled={this.props.disabled}
-						checked={this.isChecked()}
+						checked={this.checked()}
 						value={this.props.value || ''}
 						onChange={this.check}/>);
 	}
