@@ -44,7 +44,7 @@ module.exports = React.createClass( {
       value: null,
       options: [],
       initialFocus: false,
-      modal: false,
+      modal: true,
       className:'',
       listClassName:'',
       openOn:'hover',

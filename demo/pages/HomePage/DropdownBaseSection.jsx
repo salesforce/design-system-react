@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import {SLDSDropdownTrigger,SLDSButton} from '../../../components';
+import {SLDSDropdownBase,SLDSButton} from '../../../components';
 
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
@@ -53,7 +53,7 @@ module.exports = React.createClass( {
               </PrismCode>
 
               <div className="slds-p-vertical--large">
-                <SLDSDropdownTrigger
+                <SLDSDropdownBase
                     options={[
                       {label:'A Option Option Super Super Long',value:'A0'},
                       {label:'B Option',value:'B0'},

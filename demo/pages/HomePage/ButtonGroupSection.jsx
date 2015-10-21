@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 import SLDSButtonGroup from '../../../components/SLDSButtonGroup';
-import SLDSDropdownTrigger from '../../../components/SLDSDropdownTrigger';
+import SLDSDropdownBase from '../../../components/SLDSDropdownBase';
 import SLDSButton from '../../../components/SLDSButton';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
@@ -46,7 +46,7 @@ module.exports = React.createClass( {
                   <SLDSButton label='Edit' variant='neutral' />
                   <SLDSButton label='Save' variant='neutral' />
 
-                <SLDSDropdownTrigger
+                <SLDSDropdownBase
                     label='More Options' 
                     variant='icon' 
                     iconName='down' 
@@ -64,8 +64,6 @@ module.exports = React.createClass( {
                       {label:'E2 Option Super Super Long',value:'E1'},
 
                     ]}
-                    modal={true}
-                    placeholder = "Select a contact"
                     onSelect={this.handleOnSelect}
                     onClick={this.handleOnClick}
                     onUpdateHighlighted={this.handleOnUpdateHighlighted}
