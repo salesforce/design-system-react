@@ -26,8 +26,9 @@ export default function () {
 					key="1"
 					name={name}
 					labelText="Checked"
-					onCheckedValueChanged={this._handleChange.bind(this, 'radio1')}
-					onDisabledValueChanged={this._handleDisable.bind(this, 'radio1')}
+					onChanged={this._handleChange.bind(this, 'radio1')}
+					onDisabled={this._handleDisable.bind(this, 'radio1', true)}
+					onEnabled={this._handleDisable.bind(this, 'radio1', false)}
 					value="value1" />,
 				<Radio ref="radio2"
 					checked={this.state.radioboxen.get('radio2').checked}
@@ -35,8 +36,9 @@ export default function () {
 					key="2"
 					name={name}
 					labelText="Unchecked"
-					onCheckedValueChanged={this._handleChange.bind(this, 'radio2')}
-					onDisabledValueChanged={this._handleDisable.bind(this, 'radio2')}
+					onChanged={this._handleChange.bind(this, 'radio2')}
+					onDisabled={this._handleDisable.bind(this, 'radio2', true)}
+					onEnabled={this._handleDisable.bind(this, 'radio2', false)}
 					value="value3" />,
 				<Radio ref="radio3"
 					checked={this.state.radioboxen.get('radio3').checked}
@@ -44,8 +46,9 @@ export default function () {
 					key="3"
 					name={name}
 					labelText="Unchecked Disabled"
-					onCheckedValueChanged={this._handleChange.bind(this, 'radio3')}
-					onDisabledValueChanged={this._handleDisable.bind(this, 'radio3')}
+					onChanged={this._handleChange.bind(this, 'radio3')}
+					onDisabled={this._handleDisable.bind(this, 'radio3', true)}
+					onEnabled={this._handleDisable.bind(this, 'radio3', false)}
 					value="value4" />
 			];
 
@@ -93,7 +96,7 @@ export default function () {
 				case 'disable all':
 					this.refs.radio1.disable();
 					this.refs.radio2.disable();
-					this.refs.radio2.disable();
+					this.refs.radio3.disable();
 					break;
 				case 'enable all':
 					this.refs.radio1.enable();
@@ -117,9 +120,9 @@ export default function () {
 			this.setState(radioboxen);
 		},
 
-		_handleDisable (radioName, disabledValue) {
+		_handleDisable (radioName, disabled) {
 			const radio = this.state.radioboxen.get(radioName);
-			radio.disabled = disabledValue.disabled;
+			radio.disabled = disabled;
 			this.setState(radio);
 		}
 	});

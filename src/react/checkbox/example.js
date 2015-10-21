@@ -26,8 +26,9 @@ export default function () {
 									labelText="Checked"
 									disabled={this.state.checkboxen.get('checkbox').disabled}
 									checked={this.state.checkboxen.get('checkbox').checked}
-									onCheckedValueChanged={this._handleChange.bind(this, 'checkbox')}
-									onDisabledValueChanged={this._handleDisable.bind(this, 'checkbox')}
+									onChanged={this._handleChange.bind(this, 'checkbox')}
+									onDisabled={this._handleDisable.bind(this, 'checkbox', true)}
+									onEnabled={this._handleDisable.bind(this, 'checkbox', false)}
 									value="checkbox"/>
 							</div>
 							<div className="slds-form-element__control">
@@ -35,8 +36,9 @@ export default function () {
 									labelText="Unchecked"
 									disabled={this.state.checkboxen.get('checkbox2').disabled}
 									checked={this.state.checkboxen.get('checkbox2').checked}
-									onCheckedValueChanged={this._handleChange.bind(this, 'checkbox2')}
-									onDisabledValueChanged={this._handleDisable.bind(this, 'checkbox2')}
+									onChanged={this._handleChange.bind(this, 'checkbox2')}
+									onDisabled={this._handleDisable.bind(this, 'checkbox2', true)}
+									onEnabled={this._handleDisable.bind(this, 'checkbox2', false)}
 									value="checkbox2"/>
 							</div>
 						</fieldset>
@@ -54,6 +56,7 @@ export default function () {
 		},
 
 		_handleClick (e) {
+			console.log(e.target.firstChild.data.toLowerCase());
 			// translate text of button into method call
 			this.refs.checkbox[e.target.firstChild.data.toLowerCase()]();
 		},
@@ -66,7 +69,7 @@ export default function () {
 
 		_handleDisable (checkboxName, disabledValue) {
 			const checkbox = this.state.checkboxen.get(checkboxName);
-			checkbox.disabled = disabledValue.disabled;
+			checkbox.disabled = disabledValue;
 			this.setState(checkbox);
 		}
 	});
