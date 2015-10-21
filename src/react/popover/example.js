@@ -13,9 +13,9 @@ export default function () {
 
 		render () {
 			return (
-				<div className="react-popover-example-wrap">
+				<div className="react-popover-example-wrap" ref="container">
 					<button id="popover-react-toggle" className="slds-button slds-button--neutral slds-button--x-small" ref="target" onClick={this._handleClick}>Toggle</button>
-					<Popover placement="right" header={this.state.header} isOpen={this.state.isOpen} align={this.state.align}>
+					<Popover placement="right" header={this.state.header} align={this.refs.target} container={this.refs.container} isOpen={this.state.isOpen}>
 						<span>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</span>
 					</Popover>
 				</div>
@@ -24,8 +24,7 @@ export default function () {
 
 		_handleClick () {
 			this.setState({
-				isOpen: !this.state.isOpen,
-				align: this.refs.target
+				isOpen: !this.state.isOpen
 			});
 		}
 	});

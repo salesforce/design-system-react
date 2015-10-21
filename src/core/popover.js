@@ -7,8 +7,11 @@ import Positionable from '../traits/positionable';
 import Disableable from '../traits/disableable';
 import Hideable from '../traits/hideable';
 
+// Third party
+import classNames from 'classnames';
+
 // Styles
-require('../../scss/components/popovers/flavors/base/index.scss');
+// require('../../scss/components/popovers/flavors/base/index.scss');
 
 export const CONTROL = 'slds-popover';
 
@@ -27,6 +30,13 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 	
 	_defaultState: {
 		isHidden: true
+	},
+	
+	_getClassNames () {
+		const positionClass = this.positions[this.currentPosition];
+		const hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
+
+		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass, hiddenClass);
 	},
 	
 	toggle () {
