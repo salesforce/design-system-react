@@ -8,7 +8,7 @@ import Disableable from '../traits/disableable';
 import Hideable from '../traits/hideable';
 
 // Styles
-require('../../scss/components/tooltips/flavors/base/index.scss');
+// require('../../scss/components/tooltips/flavors/base/index.scss');
 
 export const CONTROL = 'slds-tooltip';
 

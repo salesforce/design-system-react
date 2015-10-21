@@ -7,8 +7,8 @@ import Base from './base';
 import Disableable from '../traits/disableable';
 
 // Styles
-require('../../scss/components/forms/flavors/form-element/index.scss');
-require('../../scss/components/forms/flavors/checkbox/index.scss');
+// require('../../scss/components/forms/flavors/form-element/index.scss');
+// require('../../scss/components/forms/flavors/checkbox/index.scss');
 
 export const CONTROL = 'checkbox';
 

@@ -10,9 +10,9 @@ import classNames from 'classnames';
 import Hideable from '../traits/hideable';
 
 // Styles
-require('../../scss/components/notifications/flavors/base/index.scss');
-require('../../scss/components/notifications/flavors/alert/index.scss');
-require('../../scss/components/notifications/flavors/toast/index.scss');
+// require('../../scss/components/notifications/flavors/base/index.scss');
+// require('../../scss/components/notifications/flavors/alert/index.scss');
+// require('../../scss/components/notifications/flavors/toast/index.scss');
 
 export const CONTROL = 'slds-notify';
 

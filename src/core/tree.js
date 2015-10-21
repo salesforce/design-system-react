@@ -8,7 +8,7 @@ import Disableable from '../traits/disableable';
 import Multiselectable from '../traits/multiselectable';
 
 // Styles
-require('../../scss/components/trees/flavors/base/index.scss');
+// require('../../scss/components/trees/flavors/base/index.scss');
 
 export const CONTROL = 'tree';
 
