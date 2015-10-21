@@ -75,9 +75,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSPicklistBase2 = _interopRequireDefault(_SLDSPicklistBase);
 	
-	var _SLDSDropdownTrigger = __webpack_require__(41);
+	var _SLDSDropdownBase = __webpack_require__(41);
 	
-	var _SLDSDropdownTrigger2 = _interopRequireDefault(_SLDSDropdownTrigger);
+	var _SLDSDropdownBase2 = _interopRequireDefault(_SLDSDropdownBase);
 	
 	var _SLDSPicklistBaseListItem = __webpack_require__(39);
 	
@@ -87,7 +87,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 	
-	var _SLDSButton = __webpack_require__(45);
+	var _SLDSButton = __webpack_require__(46);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
@@ -113,7 +113,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	module.exports = {
 	  SLDSPicklistBase: _SLDSPicklistBase2['default'],
-	  SLDSDropdownTrigger: _SLDSDropdownTrigger2['default'],
+	  SLDSDropdownBase: _SLDSDropdownBase2['default'],
 	  SLDSPicklistBaseListItem: _SLDSPicklistBaseListItem2['default'],
 	  SLDSSettings: _SLDSSettings2['default'],
 	  SLDSButton: _SLDSButton2['default'],
@@ -343,7 +343,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  render: function render() {
-	    var className = this.state.currentSelectedItem ? 'slds-input--bare slds-hide' : 'slds-input--bare';
 	    return _react2['default'].createElement('div', { className: "slds-form-element slds-theme--" + this.props.theme }, _react2['default'].createElement('div', { className: "slds-picklist slds-theme--" + this.props.theme }, _react2['default'].createElement('button', {
 	      id: this.props.id,
 	      ref: 'button',
@@ -6002,6 +6001,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
+	var _extends = Object.assign || function (target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i];for (var key in source) {
+	      if (Object.prototype.hasOwnProperty.call(source, key)) {
+	        target[key] = source[key];
+	      }
+	    }
+	  }return target;
+	};
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { 'default': obj };
 	}
@@ -6026,7 +6035,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
 	
-	var _SLDSButton = __webpack_require__(45);
+	var _utilsCreateChainedFunction = __webpack_require__(45);
+	
+	var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
+	
+	var _SLDSButton = __webpack_require__(46);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
@@ -6035,6 +6048,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _SLDSIcons2 = __webpack_require__(13);
 	
 	var _utils = __webpack_require__(6);
+	
+	var _lodashOmit = __webpack_require__(47);
+	
+	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
 	module.exports = _react2['default'].createClass({
 	  displayName: 'exports',
@@ -6047,6 +6064,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
+	      label: 'Button',
+	      variant: 'neutral',
 	      placeholder: 'Select an Option',
 	      disabled: false,
 	      theme: 'default',
@@ -6054,7 +6073,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      value: null,
 	      options: [],
 	      initialFocus: false,
-	      modal: false,
+	      modal: true,
 	      className: '',
 	      listClassName: '',
 	      openOn: 'hover',
@@ -6204,7 +6223,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _react2['default'].createElement(_list2['default'], {
 	      ref: 'list',
 	      options: this.props.options,
-	      label: this.props.label,
 	      className: this.props.listClassName,
 	      highlightedIndex: this.state.highlightedIndex,
 	      selectedIndex: this.state.selectedIndex,
@@ -6248,22 +6266,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  render: function render() {
 	    var className = this.state.currentSelectedItem ? 'slds-input--bare slds-hide' : 'slds-input--bare';
-	    return _react2['default'].createElement(_SLDSButton2['default'], {
+	
+	    var props = (0, _lodashOmit2['default'])(this.props, ['aria-haspopup', 'label', 'className', 'style', 'variant', 'iconName', 'iconVariant', 'onBlur', 'onFocus', 'onClick', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'tabIndex', 'onKeyDown']);
+	    return _react2['default'].createElement(_SLDSButton2['default'], _extends({
 	      ref: 'button',
 	      'aria-haspopup': 'true',
-	      label: 'More Options',
-	      variant: 'icon',
-	      iconName: 'down',
-	      iconVariant: 'border-filled',
-	      onBlur: this.handleBlur,
-	      onFocus: this.handleFocus,
-	      onClick: this.handleClick,
-	      onMouseDown: this.handleMouseDown,
-	      onMouseEnter: this.props.openOn === 'hover' ? this.handleMouseEnter : null,
-	      onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave : null,
+	      label: this.props.label,
+	      className: this.props.className,
+	      style: this.props.style,
+	      variant: this.props.variant,
+	      iconName: this.props.iconName,
+	      iconVariant: this.props.iconVariant,
+	      onBlur: (0, _utilsCreateChainedFunction2['default'])(this.props.onBlur, this.handleBlur),
+	      onFocus: (0, _utilsCreateChainedFunction2['default'])(this.props.onFocus, this.handleFocus),
+	      onClick: (0, _utilsCreateChainedFunction2['default'])(this.props.onClick, this.handleClick),
+	      onMouseDown: (0, _utilsCreateChainedFunction2['default'])(this.props.onMouseDown, this.handleMouseDown),
+	      onMouseEnter: (0, _utilsCreateChainedFunction2['default'])(this.props.onMouseEnter, this.props.openOn === 'hover' ? this.handleMouseEnter : null),
+	      onMouseLeave: (0, _utilsCreateChainedFunction2['default'])(this.props.onMouseLeave, this.props.openOn === 'hover' ? this.handleMouseLeave : null),
 	      tabIndex: this.state.isOpen ? -1 : 0,
-	      onKeyDown: this.handleKeyDown
-	    }, this.props.modal ? this.getModalPopover() : this.getSimplePopover());
+	      onKeyDown: (0, _utilsCreateChainedFunction2['default'])(this.props.onKeyDown, this.handleKeyDown)
+	    }, props), this.props.modal ? this.getModalPopover() : this.getSimplePopover());
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
@@ -6723,6 +6745,59 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 45 */
+/***/ function(module, exports) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	/**
+	 * Safe chained function
+	 *
+	 * Will only create a new function if needed,
+	 * otherwise will pass back existing functions or null.
+	 *
+	 * @param {function} one
+	 * @param {function} two
+	 * @returns {function|null}
+	 */
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	function createChainedFunction(one, two) {
+	  var hasOne = typeof one === 'function';
+	  var hasTwo = typeof two === 'function';
+	
+	  if (!hasOne && !hasTwo) {
+	    return null;
+	  }
+	  if (!hasOne) {
+	    return two;
+	  }
+	  if (!hasTwo) {
+	    return one;
+	  }
+	
+	  return function chainedFunction() {
+	    one.apply(this, arguments);
+	    two.apply(this, arguments);
+	  };
+	}
+	
+	exports['default'] = createChainedFunction;
+	module.exports = exports['default'];
+
+/***/ },
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -6806,7 +6881,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _utilsCreateChainedFunction = __webpack_require__(46);
+	var _utilsCreateChainedFunction = __webpack_require__(45);
 	
 	var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
 	
@@ -6887,14 +6962,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var props = (0, _lodashOmit2['default'])('className', this.props);
+	      var props = (0, _lodashOmit2['default'])(this.props, 'className');
 	      var click = (0, _utilsCreateChainedFunction2['default'])(this.props.onClick, this.onClick.bind(this));
 	      var labelClasses = this.props.variant === 'icon' ? 'slds-assistive-text' : '';
 	      if (this.props.disabled) {
 	        props['disabled'] = 'disabled';
 	      };
 	
-	      return _react2['default'].createElement('button', _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, this.props, { onClick: click }), this.props.iconPosition === 'right' ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.renderIcon(), this.renderIconMore(), this.props.iconPosition === 'left' || !this.props.iconPosition ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.props.children);
+	      return _react2['default'].createElement('button', _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === 'right' ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.renderIcon(), this.renderIconMore(), this.props.iconPosition === 'left' || !this.props.iconPosition ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.props.children);
 	    }
 	  }]);
 	
@@ -6917,59 +6992,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	module.exports = Button;
-
-/***/ },
-/* 46 */
-/***/ function(module, exports) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	
-	/**
-	 * Safe chained function
-	 *
-	 * Will only create a new function if needed,
-	 * otherwise will pass back existing functions or null.
-	 *
-	 * @param {function} one
-	 * @param {function} two
-	 * @returns {function|null}
-	 */
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	function createChainedFunction(one, two) {
-	  var hasOne = typeof one === 'function';
-	  var hasTwo = typeof two === 'function';
-	
-	  if (!hasOne && !hasTwo) {
-	    return null;
-	  }
-	  if (!hasOne) {
-	    return two;
-	  }
-	  if (!hasTwo) {
-	    return one;
-	  }
-	
-	  return function chainedFunction() {
-	    one.apply(this, arguments);
-	    two.apply(this, arguments);
-	  };
-	}
-	
-	exports['default'] = createChainedFunction;
-	module.exports = exports['default'];
 
 /***/ },
 /* 47 */
@@ -8960,7 +8982,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSIcons = __webpack_require__(13);
 	
-	var _SLDSButton = __webpack_require__(45);
+	var _SLDSButton = __webpack_require__(46);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
@@ -9794,7 +9816,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSButton = __webpack_require__(45);
+	var _SLDSButton = __webpack_require__(46);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
