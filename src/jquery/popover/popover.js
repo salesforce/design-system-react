@@ -90,17 +90,16 @@ export const PopoverMethods = {
 };
 
 Lib.merge(Popover.prototype, PopoverCore, Events, State, PopoverMethods, {
-
 	_render () {
 		const header = this.elements.popover.find('.slds-popover__header > p');
 		const body = this.elements.popover.find('.slds-popover__body');
 
 		if (this.getProperty('header')) {
-			header.append( this.getProperty('header') );
+			header.append(this.getProperty('header'));
 		}
 
 		if (this.getProperty('content')) {
-			body.append( this.getProperty('content') );
+			body.append(this.getProperty('content'));
 		}
 
 		this.elements.popover.toggleClass(this.cssClasses.HIDDEN, true);
@@ -108,7 +107,6 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, PopoverMethods, {
 
 		this._updatePopoverPosition();
 	}
-
 });
 
 Popover = Lib.runHelpers('jquery', CONTROL, Popover, {});

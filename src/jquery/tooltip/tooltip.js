@@ -1,4 +1,4 @@
-// POPOVER CONTROL - JQUERY FACADE
+// TOOLTIP CONTROL - JQUERY FACADE
 
 // Core
 import * as Lib from '../../lib/lib';
@@ -31,7 +31,6 @@ let Tooltip = function Tooltip (element, options) {
 };
 
 Lib.merge(Tooltip.prototype, PopoverMethods, TooltipCore, Events, State, {
-
 	_render () {
 		const body = this.elements.popover.find('.slds-tooltip__body');
 
@@ -39,42 +38,13 @@ Lib.merge(Tooltip.prototype, PopoverMethods, TooltipCore, Events, State, {
 			body.append( this.getProperty('content') );
 		}
 
-		if (this.getProperty('isOpen')) {
-			this.elements.popover.removeClass('slds-hidden');
-		}
-
 		this.elements.popover.addClass(this.getClassNames());
 		this.elements.container.append(this.elements.popover);
+		
+		this._updatePopoverPosition();
 	}
-
 });
 
-const legacyMethods = {
-	show () {
-		if (this.elements.popover.hasClass('slds-hidden')) {
-			this._togglePopover();
-		}
-	},
-
-	hide () {
-		if (!this.elements.popover.hasClass('slds-hidden')) {
-			this._togglePopover();
-		}
-	},
-
-	toggle () {
-		this._togglePopover();
-	},
-
-	destroy () {
-		this.elements.popover.remove();
-
-		return template;
-	}
-};
-
-Tooltip = Lib.runHelpers('jquery', CONTROL, Tooltip, {
-	legacyMethods
-});
+Tooltip = Lib.runHelpers('jquery', CONTROL, Tooltip, {});
 
 export default Tooltip;
