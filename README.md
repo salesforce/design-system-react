@@ -21,11 +21,11 @@ npm test
 
 ### Table of Contents
 * [Buttons](#buttons)
-* [Button Groups](#button groups)
+* [Button Groups](#button-groups)
 * [Lookups](#lookups)
 * [Modals](#modals)
 * [Picklists](#picklists)
-* [Utility Icons](#utility icons)
+* [Utility Icons](#utility-icons)
 
 
 ### [Buttons](https://www.lightningdesignsystem.com/components/buttons)
