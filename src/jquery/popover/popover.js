@@ -27,7 +27,7 @@ let Popover = function Popover (element, options) {
 	this._initialize(this.options);
 };
 
-Lib.merge(Popover.prototype, PopoverCore, Events, State, {
+export const PopoverMethods = {
 	_onInitialized () {
 		this._setElementOptions();
 		this._setTrigger();
@@ -35,24 +35,6 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 		this._render();
 
 		this.trigger('initialized');
-	},
-
-	_render () {
-		const header = this.elements.popover.find('.slds-popover__header > p');
-		const body = this.elements.popover.find('.slds-popover__body');
-
-		if (this.getProperty('header')) {
-			header.append( this.getProperty('header') );
-		}
-
-		if (this.getProperty('content')) {
-			body.append( this.getProperty('content') );
-		}
-		
-		this.elements.popover.toggleClass(this.cssClasses.HIDDEN, true);
-		this.elements.container.append(this.elements.popover);
-		
-		this._updatePopoverPosition();
 	},
 
 	_setElementOptions () {
@@ -70,13 +52,13 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 		const trigger = this.getProperty('trigger');
 
 		if (trigger === 'click') {
-			this.elements.target.on( 'click.fu.popover', $.proxy(this.toggle, this));
+			this.elements.target.on( 'click', $.proxy(this.toggle, this));
 		} else if (trigger === 'hover') {
-			this.elements.target.on( 'mouseover.fu.popover', $.proxy(this.show, this));
-			this.elements.target.on( 'mouseout.fu.popover', $.proxy(this.hide, this));
+			this.elements.target.on( 'mouseover', $.proxy(this.show, this));
+			this.elements.target.on( 'mouseout', $.proxy(this.hide, this));
 		} else if (trigger === 'focus') {
-			this.elements.target.on( 'focus.fu.popover', $.proxy(this.show, this));
-			this.elements.target.on( 'focusout.fu.popover', $.proxy(this.hide, this));
+			this.elements.target.on( 'focus', $.proxy(this.show, this));
+			this.elements.target.on( 'focusout', $.proxy(this.hide, this));
 		}
 	},
 	
@@ -105,6 +87,28 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, {
 	_onHide () {
 		this._updatePopoverPosition();
 	}
+};
+
+Lib.merge(Popover.prototype, PopoverCore, Events, State, PopoverMethods, {
+
+	_render () {
+		const header = this.elements.popover.find('.slds-popover__header > p');
+		const body = this.elements.popover.find('.slds-popover__body');
+
+		if (this.getProperty('header')) {
+			header.append( this.getProperty('header') );
+		}
+
+		if (this.getProperty('content')) {
+			body.append( this.getProperty('content') );
+		}
+
+		this.elements.popover.toggleClass(this.cssClasses.HIDDEN, true);
+		this.elements.container.append(this.elements.popover);
+
+		this._updatePopoverPosition();
+	}
+
 });
 
 Popover = Lib.runHelpers('jquery', CONTROL, Popover, {});
