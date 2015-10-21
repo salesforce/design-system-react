@@ -19,6 +19,15 @@ npm test
 
 ## Components
 
+### Table of Contents
+* [Buttons](#buttons)
+* [Button Groups](#button groups)
+* [Lookups](#lookups)
+* [Modals](#modals)
+* [Picklists](#picklists)
+* [Utility Icons](#utility icons)
+
+
 ### [Buttons](https://www.lightningdesignsystem.com/components/buttons)
 
 ```jsx
@@ -108,29 +117,6 @@ const items = [
 [![browser support](/readme-assets/SLDSLookups.gif)](/readme-assets/SLDSLookups.gif)
 
 
-### [PickLists](http://www.lightningdesignsystem.com/components/picklists#base&role=regular&status=all)
-#### *Base only. Other variants coming soon.
-
-```jsx
-
-import {SLDSPicklistBase} from 'design-system-react';
-
-...
-
-const options = [
-      {label:'A Option',value:'A0'},
-      {label:'B Option',value:'B0'},
-      {label:'C Option',value:'C0'},
-      {label:'D Option',value:'D0'},
-    ];
-
-<SLDSPicklistBase options={options} label="Contacts" placeholder="Select a contact"/>
-
-```
-
-[![browser support](/readme-assets/SLDSPicklistBase.gif)](/readme-assets/SLDSPicklistBase.gif)
-
-
 ### [Modals](https://www.lightningdesignsystem.com/components/modals)
 
 ```jsx
@@ -156,6 +142,29 @@ import {SLDSModal} from 'design-system-react';
 ```
 
 [![browser support](/readme-assets/SLDSModals.gif)](/readme-assets/SLDSModals.gif)
+
+
+### [PickLists](http://www.lightningdesignsystem.com/components/picklists#base&role=regular&status=all)
+#### *Base only. Other variants coming soon.
+
+```jsx
+
+import {SLDSPicklistBase} from 'design-system-react';
+
+...
+
+const options = [
+      {label:'A Option',value:'A0'},
+      {label:'B Option',value:'B0'},
+      {label:'C Option',value:'C0'},
+      {label:'D Option',value:'D0'},
+    ];
+
+<SLDSPicklistBase options={options} label="Contacts" placeholder="Select a contact"/>
+
+```
+
+[![browser support](/readme-assets/SLDSPicklistBase.gif)](/readme-assets/SLDSPicklistBase.gif)
 
 
 ### [Utility Icons](https://www.lightningdesignsystem.com/resources/icons#utility)
