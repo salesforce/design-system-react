@@ -63,6 +63,7 @@ const Positionable = {
 			
 			popover.style.top = style.top + 'px';
 			popover.style.left = style.left + 'px';
+			// TODO: If we're going to call this here we need to check if it exists first. But maybe we shouldn't?
 			popover.className = this._getClassNames();
 		}
 	},
