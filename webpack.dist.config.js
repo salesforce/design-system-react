@@ -6,7 +6,7 @@ var node_modules_dir = path.join(__dirname, 'node_modules');
 
 var config = {
 	entry: {
-		// react: ['./src/react/examples.js'],
+		react: ['./src/react/dist.js'],
 		jquery: ['./src/jquery/dist.js']
 	},
 	resolve: {
