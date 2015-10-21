@@ -30,7 +30,7 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 	},
 	
 	toggle () {
-		if (this.getState(isHidden)) {
+		if (this.getState('isHidden')) {
 			this.show();
 		} else {
 			this.hide();

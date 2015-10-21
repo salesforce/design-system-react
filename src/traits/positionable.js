@@ -20,6 +20,7 @@ const Positionable = {
 
 	getElementAlignment (el, container, align, newPosition) {
 		const offset = Lib.offsetFromParent(align, container);
+		const position = {};
 		
 		const popSize = {
 			width: Lib.outerWidth(el),
@@ -32,11 +33,7 @@ const Positionable = {
 		};
 		
 		const currentPosition = newPosition || this.getProperty('position');
-		this.setState({
-			currentPosition
-		});
 
-		const position = {};
 		switch (currentPosition) {
 			case 'left':
 				position.left = offset.left - (popSize.width + 15);
@@ -57,11 +54,13 @@ const Positionable = {
 				break;
 		}
 
+		this.currentPosition = currentPosition;
+
 		return position;
 	},
 
 	getClassNames () {
-		const positionClass = this.positions[this.getState('currentPosition')];
+		const positionClass = this.positions[this.currentPosition];
 
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass);
 	}

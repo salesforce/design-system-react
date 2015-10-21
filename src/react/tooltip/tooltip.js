@@ -19,16 +19,13 @@ let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
 	mixins: [State, Events],
 
 	render () {
-		let position;
 
 		if (this.refs.popover) {
 			this._setElements();
 		}
 
-		position = this._popoverPosition();
-
 		return (
-			<div className={classNames(this.getClassNames(), {'slds-hidden': !this.props.isOpen})} role="tooltip" ref="popover" style={position}>
+			<div className={classNames(this.getClassNames(), {'slds-hidden': this.props.isHidden})} role="tooltip" ref="popover">
 				<div className="slds-tooltip__content">
 					<div className="slds-tooltip__body">{this.props.children}</div>
 				</div>

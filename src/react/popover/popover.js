@@ -24,19 +24,19 @@ export const PopoverMethods = {
 		this.elements.align = this.props.align;
 	},
 
-	_popoverPosition () {
-		let position;
+	componentDidUpdate () {
+		let position = this.getElementAlignment(this.elements.popover, this.elements.container, this.elements.align);
+		const isOffscreen = Lib.isOffscreen(this.elements.popover, true);
 
-		if (this.elements && this.elements.popover) {
-			position = this.getElementAlignment(this.elements.popover, this.elements.container || this.refs.popover.parentNode, this.elements.align);
-		} else {
-			position = {
-				left: 0,
-				top: 0
-			};
+		if (isOffscreen === 'top') {
+			position = this.getElementAlignment(this.elements.popover, this.elements.container, this.elements.align, 'bottom');
+		} else if (isOffscreen === 'bottom') {
+			position = this.getElementAlignment(this.elements.popover, this.elements.container, this.elements.align, 'top');
 		}
 
-		return position;
+		this.elements.popover.style.top = position.top + 'px';
+		this.elements.popover.style.left = position.left + 'px';
+		this.elements.popover.className = classNames(this.getClassNames(), {'slds-hidden': this.props.isHidden});
 	}
 
 };
@@ -45,16 +45,13 @@ let Popover = Lib.merge({}, PopoverCore, PopoverMethods, {
 	mixins: [State, Events],
 
 	render () {
-		let position;
 
 		if (this.refs.popover) {
 			this._setElements();
 		}
 
-		position = this._popoverPosition();
-
 		return (
-			<div className={classNames(this.getClassNames(), {'slds-hidden': !this.props.isOpen})} role="dialog" ref="popover" style={position}>
+			<div className={classNames(this.getClassNames(), {'slds-hidden': this.props.isHidden})} role="dialog" ref="popover">
 				<div className="slds-popover__content">
 					{this._renderHeader()}
 					<div className="slds-popover__body">{this.props.children}</div>
