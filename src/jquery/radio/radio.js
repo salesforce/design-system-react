@@ -35,6 +35,7 @@ const RadioObject = Lib.merge({}, CheckboxObject, {
 		name: ''
 	},
 
+	// TODO: why not just call check from the change event below?
 	_handleInputChange () {
 		this.check();
 	},
@@ -47,11 +48,14 @@ const RadioObject = Lib.merge({}, CheckboxObject, {
 		this.elements.input.prop('checked', this.isChecked());
 	},
 
+	// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
+	// there is no guidance as to what should be done here and/or why
 	_renderDressings (elements) {
 		elements.input.attr('name', this.getProperty('name'));
 		CheckboxObject._renderDressings.call(this, elements);
 	},
 
+	// TODO: Is this necessary anymore? May never even be reachable now.
 	_syncOptions () {
 		const name = this.elements.input.attr('name');
 		if (name) this.options.name = name;

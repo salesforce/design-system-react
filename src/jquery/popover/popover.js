@@ -43,39 +43,49 @@ export const PopoverMethods = {
 		const align = this.getProperty('align');
 
 		this.elements.popover = this.template.clone();
-		this.elements.target = target ? target : this.elements.wrapper;
-		this.elements.container = container ? container : this.elements.wrapper;
-		this.elements.align = align ? align : this.elements.target;
+		this.elements.target = target || this.elements.wrapper;
+		this.elements.container = container || this.elements.wrapper;
+		this.elements.align = align || this.elements.target;
 	},
 
 	_setTrigger () {
 		const trigger = this.getProperty('trigger');
 
 		if (trigger === 'click') {
-			this.elements.target.on( 'click', $.proxy(this._togglePopover, this));
+			this.elements.target.on( 'click', $.proxy(this.toggle, this));
 		} else if (trigger === 'hover') {
-			this.elements.target.on( 'mouseover', $.proxy(this._togglePopover, this));
-			this.elements.target.on( 'mouseout', $.proxy(this._togglePopover, this));
+			this.elements.target.on( 'mouseover', $.proxy(this.show, this));
+			this.elements.target.on( 'mouseout', $.proxy(this.hide, this));
 		} else if (trigger === 'focus') {
-			this.elements.target.on( 'focus', $.proxy(this._togglePopover, this));
-			this.elements.target.on( 'focusout', $.proxy(this._togglePopover, this));
+			this.elements.target.on( 'focus', $.proxy(this.show, this));
+			this.elements.target.on( 'focusout', $.proxy(this.hide, this));
 		}
 	},
-
-	_togglePopover () {
-		const position = this.getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
-		const isHidden = this.elements.popover.hasClass('slds-hidden');
-
-		this.elements.popover.toggleClass('slds-hidden', !isHidden);
+	
+	_updatePopoverPosition () {
+		let position = this.getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
 		this.elements.popover.css(position);
-
-		if (isHidden) {
-			this.elements.popover.attr('class', this.getClassNames());
-
-			this.elements.wrapper.trigger('shown');
-		} else {
-			this.elements.wrapper.trigger('hidden');
+		
+		const isOffscreen = Lib.isOffscreen(this.elements.popover[0], true);
+		if (isOffscreen === 'top') {
+			position = this.getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0], 'bottom');
+			this.elements.popover.css(position);
+		} else if (isOffscreen === 'bottom') {
+			position = this.getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0], 'top');
+			this.elements.popover.css(position);
 		}
+		
+		this.elements.popover.attr('class', this.getClassNames());
+		
+		this.elements.popover.toggleClass(this.cssClasses.HIDDEN, this.getState('isHidden'));
+	},
+	
+	_onShow () {
+		this._updatePopoverPosition();
+	},
+	
+	_onHide () {
+		this._updatePopoverPosition();
 	}
 };
 
@@ -93,42 +103,14 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, PopoverMethods, {
 			body.append( this.getProperty('content') );
 		}
 
-		if (this.getProperty('isOpen')) {
-			this.elements.popover.removeClass('slds-hidden');
-		}
-
-		this.elements.popover.addClass(this.getClassNames());
+		this.elements.popover.toggleClass(this.cssClasses.HIDDEN, true);
 		this.elements.container.append(this.elements.popover);
+
+		this._updatePopoverPosition();
 	}
 
 });
 
-const legacyMethods = {
-	show () {
-		if (this.elements.popover.hasClass('slds-hidden')) {
-			this._togglePopover();
-		}
-	},
-
-	hide () {
-		if (!this.elements.popover.hasClass('slds-hidden')) {
-			this._togglePopover();
-		}
-	},
-
-	toggle () {
-		this._togglePopover();
-	},
-
-	destroy () {
-		this.elements.popover.remove();
-
-		return template;
-	}
-};
-
-Popover = Lib.runHelpers('jquery', CONTROL, Popover, {
-	legacyMethods
-});
+Popover = Lib.runHelpers('jquery', CONTROL, Popover, {});
 
 export default Popover;

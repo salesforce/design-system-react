@@ -2,7 +2,7 @@
 
 // Core
 import * as Lib from '../../lib/lib';
-import DataTableCore, {CONTROL} from '../../core/data-table';
+import DataTableCore, {CONTROL} from '../../core/datatable';
 
 // Framework specific
 import React from 'react';
@@ -11,7 +11,7 @@ import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
 // Children
-import DataTableItem from './data-table-item';
+import DataTableItem from './datatable-item';
 
 export const DataTableObject = {
 	mixins: [State, Events, genericWillMount],

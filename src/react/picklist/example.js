@@ -2,21 +2,9 @@ import * as Lib from '../../lib/lib';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Picklist from './picklist';
+import sampleData from '../../../sample-data/picklist';
 
 export default function () {
-	const collection = [
-		{ _itemType: 'header', text: 'One thing' },
-		{ id: 0, text: 'One', value: '1' },
-		{ _itemType: 'divider' },
-		{ _itemType: 'header', text: 'All the things' },
-		{ id: 1, text: 'Two', value: '2' },
-		{ id: 6, text: 'Taste', value: '2' },
-		{ id: 2, text: 'Three', value: '3'  },
-		{ id: 3, text: 'Buzz', value: '4'  },
-		{ id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'  },
-		{ id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
-	];
-
 	const PicklistExample = React.createClass({
 		propTypes: {
 			models: React.PropTypes.arrayOf(React.PropTypes.object)
@@ -26,9 +14,9 @@ export default function () {
 			return {
 				models: [
 					{
-						collection: collection,
+						collection: sampleData.defaultArray,
 						disabled: false,
-						selection: collection[1]
+						selection: sampleData.defaultArray[1]
 					}
 				]
 			};
@@ -82,7 +70,7 @@ export default function () {
 
 		setSelection (index) {
 			const models = this.state.models;
-			models[index].selection = collection[5];
+			models[index].selection = sampleData.defaultArray[5];
 			this.setState({models});
 		},
 

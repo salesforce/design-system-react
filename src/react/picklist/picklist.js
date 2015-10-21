@@ -51,18 +51,18 @@ export const PicklistObject = {
 
 		return (
 		<div className="slds-form-element">
-		  <div aria-expanded="true" className="slds-picklist" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div aria-expanded="true" className="slds-picklist" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 			<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" style={styles} disabled={this.props.disabled} aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
-			  <span className="slds-truncate">{selectionName}</span>
-			  <Svg className="slds-icon" icon="utility.down" />
+				<span className="slds-truncate">{selectionName}</span>
+				<Svg className="slds-icon" icon="utility.down" />
 			</button>
 			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--small', 'lds-dropdown--menu', {'slds-hide': !this.state.isOpen})}>
-			  <ul className="slds-dropdown__list" role="menu" style={styles} ref={this.cssClasses.MENU}>
+				<ul className="slds-dropdown__list" role="menu" style={styles} ref={this.cssClasses.MENU}>
 				{this._menuItems()}
-			  </ul>
+				</ul>
 			</div>
 			<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
-		  </div>
+			</div>
 		</div>
 		);
 	},

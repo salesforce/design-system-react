@@ -19,11 +19,22 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 	},
 
 	_defaultProperties: {
-		isOpen: false,
 		trigger: 'click', // click, hover, focus, manual
 		target: null, // The element who's events will trigger the popover
 		container: null, // The element the popover will be contained within
 		align: null // The element the popover will be aligned with
+	},
+	
+	_defaultState: {
+		isHidden: true
+	},
+	
+	toggle () {
+		if (this.getState(isHidden)) {
+			this.show();
+		} else {
+			this.hide();
+		}
 	}
 });
 
