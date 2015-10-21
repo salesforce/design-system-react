@@ -54,6 +54,9 @@ Default Props            Prop Values
 
 ```
 
+[![browser support](/readme-assets/SLDSButtons.png)](/readme-assets/SLDSButtons.png)
+
+
 ### [Button Groups](https://www.lightningdesignsystem.com/components/button-groups)
 
 ```jsx
@@ -76,6 +79,9 @@ import {SLDSButtonGroup} from 'design-system-react';
 </SLDSButtonGroup>
 
 ```
+
+[![browser support](/readme-assets/SLDSButtonGroups.png)](/readme-assets/SLDSButtonGroups.png)
+
 
 ### [Lookups](https://www.lightningdesignsystem.com/components/lookups)
 #### *Base, single select only. Other variants coming soon.
@@ -158,14 +164,14 @@ import {SLDSUtilityIcon} from 'design-system-react';
 
 ```
 
+[![browser support](/readme-assets/SLDSUtilityIcons.png)](/readme-assets/SLDSUtilityIcons.png)
 
-### Work in progress
+
+## Work in progress
 
 ### [DatePickers (base)](http://www.lightningdesignsystem.com/components/datepickers#base)
 
 [![browser support](/readme-assets/SLDSDatePickerBase.gif)](/readme-assets/SLDSDatePickerBase.gif)
-
-
 
 
 ### Future Pipeline
