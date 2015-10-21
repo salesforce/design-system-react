@@ -8,8 +8,8 @@ import Disableable from '../traits/disableable';
 import Checkable from '../traits/checkable';
 
 // Styles
-require('../../scss/components/forms/flavors/form-element/index.scss');
-require('../../scss/components/forms/flavors/checkbox/index.scss');
+// require('../../scss/components/forms/flavors/form-element/index.scss');
+// require('../../scss/components/forms/flavors/checkbox/index.scss');
 
 export const CONTROL = 'checkbox';
 

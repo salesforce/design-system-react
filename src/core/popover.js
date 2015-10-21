@@ -11,7 +11,7 @@ import Hideable from '../traits/hideable';
 import classNames from 'classnames';
 
 // Styles
-require('../../scss/components/popovers/flavors/base/index.scss');
+// require('../../scss/components/popovers/flavors/base/index.scss');
 
 export const CONTROL = 'slds-popover';
 
