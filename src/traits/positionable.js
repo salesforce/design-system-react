@@ -1,9 +1,6 @@
-// SELECTABLE
+// POSITIONABLE
 
 import * as Lib from '../lib/lib';
-
-// Third party
-import classNames from 'classnames';
 
 const Positionable = {
 	_defaultProperties: {
@@ -18,22 +15,23 @@ const Positionable = {
 		right: 'slds-nubbin--left'
 	},
 
-	getElementAlignment (el, container, align, newPosition) {
-		const offset = Lib.offsetFromParent(align, container);
+	_getElementAlignment (el, container, align, newPosition) {
+		const offset = Lib.offsetFromParent(align[0], container[0]);
 		const position = {};
 		
 		const popSize = {
-			width: Lib.outerWidth(el),
-			height: Lib.outerHeight(el)
+			width: el.outerWidth(),
+			height: el.outerHeight()
 		};
 		
 		const alignSize = {
-			width: Lib.outerWidth(align),
-			height: Lib.outerHeight(align)
+			width: align.outerWidth(),
+			height: align.outerHeight()
 		};
 		
 		const currentPosition = newPosition || this.getProperty('position');
 
+		// TODO: Get ride of the hardcoded 15
 		switch (currentPosition) {
 			case 'left':
 				position.left = offset.left - (popSize.width + 15);
@@ -58,11 +56,26 @@ const Positionable = {
 
 		return position;
 	},
-
-	getClassNames () {
-		const positionClass = this.positions[this.currentPosition];
-
-		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass);
+	
+	_setPositionStyles (style) {
+		if (style) {
+			const popover = this.elements.popover[0];
+			
+			popover.style.top = style.top + 'px';
+			popover.style.left = style.left + 'px';
+			popover.className = this._getClassNames();
+		}
+	},
+	
+	_updatePosition () {
+		this._setPositionStyles(this._getElementAlignment(this.elements.popover, this.elements.container, this.elements.align));
+		
+		const isOffscreen = this.elements.popover.isOffscreen(true);
+		if (isOffscreen === 'top') {
+			this._setPositionStyles(this._getElementAlignment(this.elements.popover, this.elements.container, this.elements.align, 'bottom'));
+		} else if (isOffscreen === 'bottom') {
+			this._setPositionStyles(this._getElementAlignment(this.elements.popover, this.elements.container, this.elements.align, 'top'));
+		}
 	}
 };
 

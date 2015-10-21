@@ -11,12 +11,10 @@ import { PopoverMethods } from '../popover/popover';
 import React from 'react';
 import State from '../mixins/state';
 import Events from '../mixins/events';
-
-// Third party
-import classNames from 'classnames';
+import genericWillMount from '../mixins/generic-will-mount';
 
 let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
-	mixins: [State, Events],
+	mixins: [State, Events, genericWillMount],
 
 	render () {
 		if (this.refs.popover) {
@@ -24,7 +22,7 @@ let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
 		}
 
 		return (
-			<div className={classNames(this.getClassNames(), {'slds-hidden': this.props.isHidden})} role="tooltip" ref="popover">
+			<div className={this._getClassNames()} role="tooltip" ref="popover">
 				<div className="slds-tooltip__content">
 					<div className="slds-tooltip__body">{this.props.children}</div>
 				</div>

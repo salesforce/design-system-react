@@ -30,18 +30,17 @@ let Tooltip = function Tooltip (element, options) {
 	this._initialize(this.options);
 };
 
-Lib.merge(Tooltip.prototype, PopoverMethods, TooltipCore, Events, State, {
+Lib.merge(Tooltip.prototype, TooltipCore, PopoverMethods, Events, State, {
 	_render () {
 		const body = this.elements.popover.find('.slds-tooltip__body');
 
 		if (this.getProperty('content')) {
-			body.append( this.getProperty('content') );
+			body.append(this.getProperty('content'));
 		}
 
-		this.elements.popover.addClass(this.getClassNames());
 		this.elements.container.append(this.elements.popover);
 		
-		this._updatePopoverPosition();
+		this._updatePosition();
 	}
 });
 

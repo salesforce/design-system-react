@@ -42,10 +42,10 @@ export const PopoverMethods = {
 		const container = this.getProperty('container');
 		const align = this.getProperty('align');
 
-		this.elements.popover = this.template.clone();
-		this.elements.target = target || this.elements.wrapper;
-		this.elements.container = container || this.elements.wrapper;
-		this.elements.align = align || this.elements.target;
+		this.elements.popover = Lib.wrapElement(this.template.clone());
+		this.elements.target = Lib.wrapElement(target || this.elements.wrapper);
+		this.elements.container = Lib.wrapElement(container || this.elements.wrapper);
+		this.elements.align = Lib.wrapElement(align || this.elements.target);
 	},
 
 	_setTrigger () {
@@ -62,30 +62,12 @@ export const PopoverMethods = {
 		}
 	},
 	
-	_updatePopoverPosition () {
-		let position = this.getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0]);
-		this.elements.popover.css(position);
-		
-		const isOffscreen = Lib.isOffscreen(this.elements.popover[0], true);
-		if (isOffscreen === 'top') {
-			position = this.getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0], 'bottom');
-			this.elements.popover.css(position);
-		} else if (isOffscreen === 'bottom') {
-			position = this.getElementAlignment(this.elements.popover[0], this.elements.container[0], this.elements.align[0], 'top');
-			this.elements.popover.css(position);
-		}
-		
-		this.elements.popover.attr('class', this.getClassNames());
-		
-		this.elements.popover.toggleClass(this.cssClasses.HIDDEN, this.getState('isHidden'));
-	},
-	
 	_onShow () {
-		this._updatePopoverPosition();
+		this._updatePosition();
 	},
 	
 	_onHide () {
-		this._updatePopoverPosition();
+		this._updatePosition();
 	}
 };
 
@@ -102,10 +84,9 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, PopoverMethods, {
 			body.append(this.getProperty('content'));
 		}
 
-		this.elements.popover.toggleClass(this.cssClasses.HIDDEN, true);
 		this.elements.container.append(this.elements.popover);
 
-		this._updatePopoverPosition();
+		this._updatePosition();
 	}
 });
 

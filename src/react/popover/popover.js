@@ -8,41 +8,34 @@ import PopoverCore, {CONTROL} from '../../core/popover';
 import React from 'react';
 import State from '../mixins/state';
 import Events from '../mixins/events';
-
-// Third party
-import classNames from 'classnames';
+import genericWillMount from '../mixins/generic-will-mount';
 
 export const PopoverMethods = {
-
-	componentWillMount () {
-		this.elements = {};
-	},
-
 	_setElements () {
-		this.elements.popover = this.refs.popover;
-		this.elements.container = this.props.container;
-		this.elements.align = this.props.align;
+		this.elements.popover = Lib.wrapElement(this.refs.popover);
+		this.elements.container = Lib.wrapElement(this.props.container || this.elements.wrapper);
+		this.elements.align = Lib.wrapElement(this.props.align || this.elements.container);
+	},
+	
+	componentWillMount: function () {
+		this.setState({
+			isHidden: !this.props.isOpen
+		});
+	},
+	
+	componentWillReceiveProps: function (nextProps) {
+		this.setState({
+			isHidden: !nextProps.isOpen
+		});
 	},
 
 	componentDidUpdate () {
-		let position = this.getElementAlignment(this.elements.popover, this.elements.container, this.elements.align);
-		const isOffscreen = Lib.isOffscreen(this.elements.popover, true);
-
-		if (isOffscreen === 'top') {
-			position = this.getElementAlignment(this.elements.popover, this.elements.container, this.elements.align, 'bottom');
-		} else if (isOffscreen === 'bottom') {
-			position = this.getElementAlignment(this.elements.popover, this.elements.container, this.elements.align, 'top');
-		}
-
-		this.elements.popover.style.top = position.top + 'px';
-		this.elements.popover.style.left = position.left + 'px';
-		this.elements.popover.className = classNames(this.getClassNames(), {'slds-hidden': this.props.isHidden});
+		this._updatePosition();
 	}
-
 };
 
 let Popover = Lib.merge({}, PopoverCore, PopoverMethods, {
-	mixins: [State, Events],
+	mixins: [State, Events, genericWillMount],
 
 	render () {
 		if (this.refs.popover) {
@@ -50,7 +43,7 @@ let Popover = Lib.merge({}, PopoverCore, PopoverMethods, {
 		}
 
 		return (
-			<div className={classNames(this.getClassNames(), {'slds-hidden': this.props.isHidden})} role="dialog" ref="popover">
+			<div className={this._getClassNames()} role="dialog" ref="popover">
 				<div className="slds-popover__content">
 					{this._renderHeader()}
 					<div className="slds-popover__body">{this.props.children}</div>
