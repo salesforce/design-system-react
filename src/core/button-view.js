@@ -27,7 +27,15 @@ const ButtonViewCore = Lib.merge({}, Base, {
 		'right': PARENT_CONTROL + '__icon--right'
 	},
 
-	_getIconClassNames () {
+	moreIcon: 'utility.down',
+
+	iconSizes: {
+		'x-small': 'slds-button__icon--x-small'
+	},
+
+	_getIconClassNames (additionalClasses) {
+		// getIconClassNames is a part of button/button-view because icons within buttons
+		// have a completely different set of class than icons on their own
 		let iconBaseClass;
 
 		if ( this.getProperty('view') ) {
@@ -37,7 +45,7 @@ const ButtonViewCore = Lib.merge({}, Base, {
 		}
 
 		return classNames(iconBaseClass,
-			!!this.getProperty('text') && this.iconPositions[this.getProperty('iconPosition')]);
+			!!this.getProperty('text') && this.iconPositions[this.getProperty('iconPosition')], additionalClasses);
 	}
 });
 

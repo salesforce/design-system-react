@@ -27,16 +27,28 @@ export const ButtonViewObject = {
 		}
 	},
 
-	render () {
-		let $span = $('<span>').text( this.getProperty('text') )
-			.addClass(this.buttonStatefulViewStyles[this.options.view])
-			.append( this._renderAssistiveText() );
-		if (this.getProperty('iconPosition') === 'right') {
-			$span = $span.append( this._renderIcon() );
-		}	else {
-			$span = $span.prepend( this._renderIcon() );
+	_renderIcon (position) {
+		let $icon = undefined;
+
+		if (this.getProperty('icon') && this.getProperty('iconPosition') === position) {
+			$icon = $('<svg ' + 'class="' + this._getIconClassNames() + '"><use xlink:href="' + Lib.getSVGPath(this.getProperty('icon')) + '"></use></svg>')
+				.attr('aria-hidden', 'true');
 		}
 
+		if (position === 'right' && this.getProperty('iconStyle') === 'icon-more') {
+			$icon = $('<svg ' + 'class="' + this._getIconClassNames(this.iconSizes['x-small']) + '"><use xlink:href="' + Lib.getSVGPath(this.moreIcon) + '"></use></svg>')
+				.attr('aria-hidden', 'true');
+		}
+
+		return $icon || '';
+	},
+
+	render () {
+		const $span = $('<span>').text( this.getProperty('text') )
+			.addClass(this.buttonStatefulViewStyles[this.options.view])
+			.append( this._renderAssistiveText() );
+		$span.append( this._renderIcon('right'));
+		$span.prepend( this._renderIcon('left'));
 		return $span;
 	}
 };

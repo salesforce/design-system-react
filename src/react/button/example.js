@@ -21,8 +21,8 @@ export default function () {
 						<Button text="Brand" theme="brand" />
 						<Button text="Inverse" theme="inverse" />
 						<Button text="Bare Button"/>
-					<div className="slds-col row">
 					</div>
+					<div className="slds-col row">
 						<Button text="Small" theme="neutral" size="small" />
 						<Button text="Small" theme="brand" size="small" />
 						<Button text="Small" theme="inverse" size="small" />
@@ -32,13 +32,16 @@ export default function () {
 						<Button text="Neutral" theme="neutral" icon="utility.table" iconPosition="left" />
 						<Button text="Neutral" theme="neutral" icon="utility.table" iconPosition="right" />
 						<Button text="Bare & disabled" icon="utility.table" iconPosition="right" iconStyle="icon-bare" disabled />
-					<div className="slds-col row">
 					</div>
+					<div className="slds-col row">
 						<Button text="Small" theme="neutral" icon="utility.table" iconPosition="left" size="small" />
 						<Button text="Small" theme="neutral" icon="utility.table" iconPosition="right" size="small" />
 						<Button text="Small & disabled" icon="utility.table" iconPosition="right" iconStyle="icon-bare" size="small" disabled />
 					</div>
-
+					<div className="slds-col row">
+						<Button icon="utility.table" assistiveText="Icon More" iconStyle="icon-more" />
+						<Button icon="utility.table" assistiveText="Icon More Disabled" iconStyle="icon-more" disabled />
+					</div>
 					<div className="slds-col row">
 						<Button icon="utility.table" assistiveText="Icon-container" iconStyle="icon-container"/>
 						<Button icon="utility.table" assistiveText="Icon-container" iconStyle="icon-container" disabled/>
@@ -54,14 +57,6 @@ export default function () {
 					</div>
 				</div>
 
-				<div className="slds-col row">
-					<div className="slds-button-group" role="group">
-						<Button text="Refresh" theme="neutral"/>
-						<Button text="Edit" theme="neutral"/>
-						<Button text="Save" theme="neutral"/>
-					</div>
-				</div>
-				
 				<div className="slds-col row">
 					<div className="slds-button-stateful" role="group">
 						<Button theme="neutral" icon="utility.add" text="Follow" selected={this.state.selected} onClick={this.handleClick}>

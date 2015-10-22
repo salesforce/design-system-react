@@ -45,14 +45,16 @@ const ButtonCore = Lib.merge({}, Base, Disableable, {
 		'small': CONTROL + '--small'
 	},
 	
-	iconStyles: {
+	// applied to the button, not the icon/SVG
+	iconButtonStyles: {
 		'icon-bare': CONTROL + '--icon-bare',
 		'icon-container': CONTROL + '--icon-container',
 		'icon-border': CONTROL + '--icon-border',
 		'icon-border-filled': CONTROL + '--icon-border-filled',
-		'icon-small': CONTROL + '--icon-small'
+		'icon-small': CONTROL + '--icon-small',
+		'icon-more': CONTROL + '--icon-more'
 	},
-	
+
 	_defaultProperties: {
 		iconStyle: null,
 		iconPosition: 'left',
@@ -73,7 +75,7 @@ const ButtonCore = Lib.merge({}, Base, Disableable, {
 		return classNames(this.cssClasses.CONTROL,
 			this.sizes[this.getProperty('size')],
 			this.themes[this.getProperty('theme')],
-			this.iconStyles[this.getProperty('iconStyle')],
+			this.iconButtonStyles[this.getProperty('iconStyle')],
 			selectedClasses);
 	}
 	

@@ -28,6 +28,9 @@ export const ButtonViewObject = {
 		if (this.props.icon && this.props.iconPosition === position) {
 			return (<Svg className={this._getIconClassNames()} icon={this.props.icon} />);
 		}
+		if (position === 'right' && this.props.iconStyle === 'icon-more') {
+			return (<Svg className={this._getIconClassNames(this.iconSizes['x-small'])} icon={this.moreIcon} />);
+		}
 	},
 
 	render () {

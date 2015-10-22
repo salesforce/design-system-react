@@ -68,6 +68,18 @@ $(function () {
 		disabled: true
 	});
 
+	const button23 = new Button($('#button-jquery-control .button-icon-more'), {
+		icon: 'utility.table',
+		assistiveText: 'Icon More',
+		iconStyle: 'icon-more'
+	});
+
+	const button24 = new Button($('#button-jquery-control .button-icon-more-disabled'), {
+		icon: 'utility.table',
+		assistiveText: 'Icon More',
+		iconStyle: 'icon-more',
+		disabled: true
+	});
 
 	const button11 = new Button($('#button-jquery-control .button-icon-container'), {
 		icon: 'utility.table',
@@ -199,6 +211,8 @@ $(function () {
 	void(button20);
 	void(button21);
 	void(button22);
+	void(button23);
+	void(button24);
 
 	$('#button-stateful-jquery-select').on('click', function () {
 		button22.toggle(true);
