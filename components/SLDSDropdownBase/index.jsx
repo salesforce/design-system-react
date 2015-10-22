@@ -274,7 +274,7 @@ module.exports = React.createClass( {
       ]);
     return (
 
-      <SLDSButton 
+      <SLDSButton
         ref='button'
         aria-haspopup='true'
         label={this.props.label}
