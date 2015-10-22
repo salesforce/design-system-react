@@ -2,6 +2,7 @@
 
 import badge from './badge/example';
 import button from './button/example';
+import buttonGroup from './button-group/example';
 import combobox from './combobox/example';
 import checkbox from './checkbox/example';
 import datatable from './data-table/example';
@@ -19,6 +20,7 @@ import tree from './tree/example';
 
 badge();
 button();
+buttonGroup();
 combobox();
 checkbox();
 datatable();
