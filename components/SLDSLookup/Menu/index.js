@@ -50,7 +50,7 @@ class Menu extends React.Component {
       setFocus={this.props.setFocus}
       handleItemFocus={this.handleItemFocus.bind(this)}
       onSelect={this.props.onSelect}
-      data={c}
+      data={c.data}
       >
       {c}
       </Item>

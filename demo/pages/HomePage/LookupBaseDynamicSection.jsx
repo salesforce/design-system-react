@@ -50,7 +50,7 @@ module.exports = React.createClass( {
   },
 
   handleItemSelect(item){
-    console.log(item);
+    console.dir(item);
   },
 
   render() {

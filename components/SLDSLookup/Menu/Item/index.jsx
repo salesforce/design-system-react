@@ -34,7 +34,7 @@ class Item extends React.Component {
 
   handleClick(e){
     EventUtil.trapImmediate(e);
-    return this.props.onSelect(this.props.id);
+    return this.props.onSelect(this.props.id, this.props.data);
   }
 
   //Scroll menu item based on up/down mouse keys (assumes all items are the same height)

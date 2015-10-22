@@ -49,7 +49,7 @@ module.exports = React.createClass( {
   },
 
   selectItem(item){
-    console.log(item + ' Selected');
+    console.log(item , ' Selected');
   },
 
   render() {
