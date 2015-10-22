@@ -7,7 +7,6 @@ import * as Lib from '../../lib/lib';
 import ButtonViewCore, {CONTROL} from '../../core/button-view';
 
 // Framework specific
-import Svg from '../svg';
 import State from '../state';
 
 const $ = Lib.global.jQuery || Lib.global.$;
@@ -53,7 +52,7 @@ export const ButtonViewObject = {
 	}
 };
 
-Lib.merge(ButtonView.prototype, State, Svg, ButtonViewCore, ButtonViewObject);
+Lib.merge(ButtonView.prototype, State, ButtonViewCore, ButtonViewObject);
 ButtonView = Lib.runHelpers('jquery', CONTROL, ButtonView);
 
 export default ButtonView;

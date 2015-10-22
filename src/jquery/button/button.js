@@ -6,7 +6,6 @@ import ButtonCore, {CONTROL} from '../../core/button';
 
 // Framework specific
 import Events from '../events';
-import Svg from '../svg';
 import State from '../state';
 import ButtonView from './button-view';
 
@@ -153,7 +152,7 @@ export const ButtonObject = {
 
 };
 
-Lib.merge(Button.prototype, ButtonCore, Events, State, Svg, ButtonObject);
+Lib.merge(Button.prototype, ButtonCore, Events, State, ButtonObject);
 Button = Lib.runHelpers('jquery', CONTROL, Button);
 
 export default Button;
