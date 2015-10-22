@@ -318,7 +318,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  getSimplePopover: function getSimplePopover() {
 	    return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement('div', {
 	      className: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
-	      targetElement: this.refs.button,
 	      style: { maxHeight: '20em' } }, this.getPopoverContent()) : null;
 	  },
 	
@@ -6247,7 +6246,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  getModalPopover: function getModalPopover() {
 	    return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement(_SLDSPopover2['default'], {
 	      className: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
-	      targetElement: this.refs.date,
+	      targetElement: this.refs.button,
 	      closeOnTabKey: true,
 	      onClose: this.handleCancel }, this.getPopoverContent()) : null;
 	  },
@@ -8980,6 +8979,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _Menu2 = _interopRequireDefault(_Menu);
 	
+	var _SLDSPopover = __webpack_require__(3);
+	
+	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
+	
 	var _SLDSIcons = __webpack_require__(13);
 	
 	var _SLDSButton = __webpack_require__(46);
@@ -9103,6 +9106,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  }, {
+	    key: 'handleCancel',
+	    value: function handleCancel() {
+	      this.setState({
+	        isOpen: false,
+	        focusIndex: null,
+	        currentFocus: null
+	      });
+	    }
+	  }, {
 	    key: 'handleClick',
 	    value: function handleClick() {
 	      this.setState({ isOpen: true });
@@ -9172,9 +9184,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //=================================================
 	    // Rendering Things
 	  }, {
-	    key: 'renderMenu',
-	    value: function renderMenu() {
+	    key: 'renderMenuContent',
+	    value: function renderMenuContent() {
 	      if (this.state.isOpen) {
+	
 	        return _react2['default'].createElement(_Menu2['default'], {
 	          searchTerm: this.state.searchTerm,
 	          label: this.props.label,
@@ -9189,6 +9202,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onSearchRecords: this.searchRecords.bind(this),
 	          onNewItem: this.newItem.bind(this)
 	        });
+	      }
+	    }
+	  }, {
+	    key: 'renderSimpleMenu',
+	    value: function renderSimpleMenu() {
+	      if (this.state.isOpen) {
+	
+	        return _react2['default'].createElement('div', { className: 'ignore-react-onclickoutside slds-lookup__menu', role: 'listbox', ref: 'scroll' }, this.renderMenuContent());
+	      }
+	    }
+	  }, {
+	    key: 'renderModalMenu',
+	    value: function renderModalMenu() {
+	      if (this.state.isOpen) {
+	        return _react2['default'].createElement(_SLDSPopover2['default'], {
+	          className: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
+	          targetElement: this.refs.lookup,
+	          closeOnTabKey: true,
+	          onClose: this.handleCancel.bind(this) }, this.renderMenuContent());
 	      }
 	    }
 	  }, {
@@ -9229,7 +9261,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onClick: this.handleClick.bind(this),
 	        onKeyDown: this.handleKeyDown.bind(this),
 	        value: this.state.searchTerm
-	      })), this.renderMenu()));
+	      })), this.props.modal ? this.renderModalMenu() : this.renderSimpleMenu()));
 	    }
 	  }]);
 	
@@ -9243,11 +9275,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  filterWith: _react2['default'].PropTypes.func,
 	  onItemSelect: _react2['default'].PropTypes.func,
 	  onNewItem: _react2['default'].PropTypes.func,
-	  onSearchRecords: _react2['default'].PropTypes.func
+	  onSearchRecords: _react2['default'].PropTypes.func,
+	  modal: _react2['default'].PropTypes.boolean,
+	  disabled: _react2['default'].PropTypes.boolean
 	};
 	
 	SLDSLookup.defaultProps = {
 	  filterWith: defaultFilter,
+	  modal: false,
+	  disabled: false,
 	  onItemSelect: function onItemSelect(item) {
 	    //console.log('onItemSelect should be defined');
 	  }
@@ -9391,7 +9427,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.props.focusIndex === this.props.listLength + 1 ? isNewItemBtnActive = true : isNewItemBtnActive = false;
 	      this.props.focusIndex === 0 ? isSearchRecordsActive = true : isSearchRecordsActive = false;
 	
-	      return _react2['default'].createElement('div', { className: 'ignore-react-onclickoutside slds-lookup__menu', role: 'listbox', ref: 'scroll' }, _react2['default'].createElement('div', { className: 'slds-lookup__item' }, _react2['default'].createElement(_ActionItem2['default'], {
+	      return _react2['default'].createElement('section', null, _react2['default'].createElement('div', { className: 'slds-lookup__item' }, _react2['default'].createElement(_ActionItem2['default'], {
 	        id: 'searchRecords',
 	        icon: 'search',
 	        type: this.props.type,
