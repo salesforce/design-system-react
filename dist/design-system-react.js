@@ -508,7 +508,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  beforeClose: function beforeClose() {},
 	
 	  dropOptions: function dropOptions() {
-	    var target = this.props.targetElement ? this.props.targetElement.getDOMNode() : this.getDOMNode().parentNode;
+	    var target = this.props.targetElement ? _react2['default'].findDOMNode(this.props.targetElement) : _react2['default'].findDOMNode(this).parentNode;
 	    return {
 	      target: target,
 	      content: this.popoverElement,
@@ -561,7 +561,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	});
 	/*
-	       <Spring 
+	       <Spring
 	         defaultValue={{ val:0 }}
 	         endValue={{ val:1, config: [70, 10] }}>
 	         {currentVal => {
@@ -9008,7 +9008,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _get(Object.getPrototypeOf(SLDSLookup.prototype), 'constructor', this).call(this, props);
 	
 	    //Dynamically assign ids to list items to reference for focusing and selecting items
-	    this.modifyItems();
 	
 	    this.state = {
 	      searchTerm: '',
@@ -9016,11 +9015,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      currentFocus: null,
 	      focusIndex: null,
 	      selectedIndex: null,
-	      listLength: this.props.items.length
+	      listLength: this.props.items.length,
+	      items: []
 	    };
 	  }
 	
 	  _createClass(SLDSLookup, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.modifyItems();
+	    }
+	  }, {
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate(prevProps, prevState) {
 	      if (prevState.selectedIndex && !this.state.selectIndex) {
@@ -9062,13 +9067,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Select menu item (onClick or on key enter/space)
 	  }, {
 	    key: 'selectItem',
-	    value: function selectItem(itemId) {
+	    value: function selectItem(itemId, data) {
 	      var index = itemId.replace('item-', '');
 	      this.setState({
 	        selectedIndex: index,
 	        searchTerm: null
 	      });
-	      if (this.props.onItemSelect) this.props.onItemSelect(itemId);
+	      if (this.props.onItemSelect) this.props.onItemSelect(data);
 	    }
 	  }, {
 	    key: 'handleDeleteSelected',
@@ -9191,7 +9196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          type: this.props.type,
 	          focusIndex: this.state.focusIndex,
 	          listLength: this.state.listLength,
-	          items: this.props.items,
+	          items: this.state.items,
 	          filterWith: this.props.filterWith,
 	          getListLength: this.getListLength.bind(this),
 	          setFocus: this.setFocus.bind(this),
@@ -9237,9 +9242,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'modifyItems',
 	    value: function modifyItems() {
-	      this.props.items.map(function (item, index) {
-	        return item.id = 'item-' + index;
+	      var items = this.props.items.map(function (item, index) {
+	        return {
+	          id: 'item-' + index,
+	          label: item.label,
+	          data: item
+	        };
 	      });
+	
+	      this.setState({ items: items });
 	    }
 	  }, {
 	    key: 'componentWillReceiveProps',
@@ -9424,7 +9435,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          setFocus: _this.props.setFocus,
 	          handleItemFocus: _this.handleItemFocus.bind(_this),
 	          onSelect: _this.props.onSelect,
-	          data: c
+	          data: c.data
 	        }, c);
 	      });
 	    }
@@ -9575,7 +9586,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'handleClick',
 	    value: function handleClick(e) {
 	      _utils.EventUtil.trapImmediate(e);
-	      return this.props.onSelect(this.props.id);
+	      return this.props.onSelect(this.props.id, this.props.data);
 	    }
 	
 	    //Scroll menu item based on up/down mouse keys (assumes all items are the same height)

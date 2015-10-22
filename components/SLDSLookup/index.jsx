@@ -25,7 +25,6 @@ class SLDSLookup extends React.Component {
     super(props);
 
     //Dynamically assign ids to list items to reference for focusing and selecting items
-    this.modifyItems();
 
     this.state = {
       searchTerm: '',
@@ -33,8 +32,15 @@ class SLDSLookup extends React.Component {
       currentFocus:null,
       focusIndex:null,
       selectedIndex: null,
-      listLength:this.props.items.length
+      listLength:this.props.items.length,
+      items:[]
     };
+
+
+  }
+
+  componentDidMount(){
+    this.modifyItems();
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -71,13 +77,13 @@ class SLDSLookup extends React.Component {
 
   //=================================================
   // Select menu item (onClick or on key enter/space)
-  selectItem(itemId){
-    let index = itemId.replace('item-', '');
+  selectItem(itemId,data){
+    const index = itemId.replace('item-', '');
     this.setState({
       selectedIndex: index,
       searchTerm: null
     });
-    if(this.props.onItemSelect) this.props.onItemSelect(itemId);
+    if(this.props.onItemSelect) this.props.onItemSelect(data);
   }
 
   handleDeleteSelected() {
@@ -186,7 +192,7 @@ class SLDSLookup extends React.Component {
         type={this.props.type}
         focusIndex={this.state.focusIndex}
         listLength={this.state.listLength}
-        items={this.props.items}
+        items={this.state.items}
         filterWith={this.props.filterWith}
         getListLength={this.getListLength.bind(this)}
         setFocus={this.setFocus.bind(this)}
@@ -242,7 +248,15 @@ class SLDSLookup extends React.Component {
   }
 
   modifyItems () {
-    this.props.items.map((item, index) => { return item.id = 'item-' + index; })
+    const items = this.props.items.map((item, index) => { 
+      return {
+        id : 'item-' + index,
+        label: item.label,
+        data : item
+      }
+    });
+
+    this.setState({items:items});
   }
 
   componentWillReceiveProps (newProps) {
