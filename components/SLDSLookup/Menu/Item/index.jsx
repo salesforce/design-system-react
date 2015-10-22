@@ -34,7 +34,6 @@ class Item extends React.Component {
 
   handleClick(e){
     EventUtil.trapImmediate(e);
-    console.log('>>> this.props.id: ',this.props.id);
     return this.props.onSelect(this.props.id);
   }
 

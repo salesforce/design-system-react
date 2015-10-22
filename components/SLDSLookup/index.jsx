@@ -25,7 +25,6 @@ class SLDSLookup extends React.Component {
     super(props);
 
     //Dynamically assign ids to list items to reference for focusing and selecting items
-//    this.props.items.map((item, index) => { return item.id = 'item-' + index; })
     this.modifyItems();
 
     this.state = {
@@ -78,7 +77,7 @@ class SLDSLookup extends React.Component {
       selectedIndex: index,
       searchTerm: null
     });
-    if(this.props.onItemSelect) this.props.onItemSelect();
+    if(this.props.onItemSelect) this.props.onItemSelect(itemId);
   }
 
   handleDeleteSelected() {
@@ -131,6 +130,7 @@ class SLDSLookup extends React.Component {
   handleChange(event) {
     const target = event.target || event.currentTarget;
     this.setState({searchTerm: target.value});
+    if(this.props.onChange) this.props.onChange(target.value);
   }
 
   handleKeyDown(event) {
@@ -228,7 +228,7 @@ class SLDSLookup extends React.Component {
         </span>
         <SLDSButton
           label='Press delete to remove'
-          tabindex="-1"
+          tabIndex="-1"
           variant='icon'
           iconName='close'
           iconSize='medium'
@@ -295,6 +295,7 @@ SLDSLookup.propTypes = {
   type: React.PropTypes.string,
   filterWith: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
+  onChange: React.PropTypes.func,
   onNewItem: React.PropTypes.func,
   onSearchRecords: React.PropTypes.func,
   modal: React.PropTypes["bool"],
@@ -304,10 +305,7 @@ SLDSLookup.propTypes = {
 SLDSLookup.defaultProps = {
   filterWith: defaultFilter,
   modal: false,
-  disabled: false,
-  onItemSelect: function(item){
-    //console.log('onItemSelect should be defined');
-  }
+  disabled: false
 };
 
 module.exports = SLDSLookup;
