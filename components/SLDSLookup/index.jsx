@@ -289,8 +289,8 @@ SLDSLookup.propTypes = {
   onItemSelect: React.PropTypes.func,
   onNewItem: React.PropTypes.func,
   onSearchRecords: React.PropTypes.func,
-  modal: React.PropTypes.boolean,
-  disabled: React.PropTypes.boolean,
+  modal: React.PropTypes["boolean"],
+  disabled: React.PropTypes["boolean"],
 };
 
 SLDSLookup.defaultProps = {
