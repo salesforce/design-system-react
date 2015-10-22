@@ -20,7 +20,8 @@ export { isFunction };
 
 export { default as isNumber } from 'lodash/lang/isNumber';
 
-export { default as isString } from 'lodash/lang/isString';
+import isString from 'lodash/lang/isString';
+export { isString };
 
 export { default as isRegExp } from 'lodash/lang/isRegExp';
 
@@ -226,6 +227,20 @@ export function registerIconPaths (icons) {
 
 export function getIconPaths () {
 	return _icons;
+}
+
+export function getSVGPath (iconProperty) {
+	// TODO: Evaluate best way to do this and clean this up more
+	const iconPaths = getIconPaths();
+	const icon = isString(iconProperty) && iconProperty.split('.');
+	
+	if (icon.length === 2) {
+		const iconPath = iconPaths[icon[0]];
+		
+		if (iconPath) {
+			return [iconPath, icon[1]].join('#');
+		}
+	}
 }
 
 // TODO: Generate JS icon module, currently one manually created file. Advise against multiple JS files due to need to register/modify if they change
