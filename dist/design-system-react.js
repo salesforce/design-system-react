@@ -6063,7 +6063,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      label: 'Button',
 	      variant: 'neutral',
 	      placeholder: 'Select an Option',
 	      disabled: false,
@@ -9276,8 +9275,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onItemSelect: _react2['default'].PropTypes.func,
 	  onNewItem: _react2['default'].PropTypes.func,
 	  onSearchRecords: _react2['default'].PropTypes.func,
-	  modal: _react2['default'].PropTypes.boolean,
-	  disabled: _react2['default'].PropTypes.boolean
+	  modal: _react2['default'].PropTypes["bool"],
+	  disabled: _react2['default'].PropTypes["bool"]
 	};
 	
 	SLDSLookup.defaultProps = {
