@@ -39,9 +39,10 @@ class Menu extends React.Component {
     return this.props.items.filter(this.filter, this).map((c, i) => {
       //isActive means it is aria-activedescendant
       const isActive = this.props.focusIndex === i + 1 ? true : false;
+      const id = 'item-'+i;
       return <Item
-      key={c.id}
-      id={c.id}
+      key={id}
+      id={id}
       type={this.props.type}
       searchTerm={this.props.searchTerm}
       index={i}
@@ -49,6 +50,7 @@ class Menu extends React.Component {
       setFocus={this.props.setFocus}
       handleItemFocus={this.handleItemFocus.bind(this)}
       onSelect={this.props.onSelect}
+      data={c}
       >
       {c}
       </Item>

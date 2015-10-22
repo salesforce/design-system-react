@@ -34,6 +34,7 @@ class Item extends React.Component {
 
   handleClick(e){
     EventUtil.trapImmediate(e);
+    console.log('>>> this.props.id: ',this.props.id);
     return this.props.onSelect(this.props.id);
   }
 
@@ -80,6 +81,7 @@ Item.propTypes = {
   setFocus: React.PropTypes.func,
   handleItemFocus: React.PropTypes.func,
   onSelect: React.PropTypes.func,
+  data: React.PropTypes.object
 };
 
 Item.defaultProps = {

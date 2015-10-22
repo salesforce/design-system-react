@@ -25,7 +25,7 @@ class SLDSLookup extends React.Component {
     super(props);
 
     //Dynamically assign ids to list items to reference for focusing and selecting items
-    this.props.items.map((item, index) => { return item.id = 'item-' + index; })
+//    this.props.items.map((item, index) => { return item.id = 'item-' + index; })
 
     this.state = {
       searchTerm: '',
@@ -179,7 +179,6 @@ class SLDSLookup extends React.Component {
   // Rendering Things
   renderMenuContent(){
     if(this.state.isOpen){
-
       return <Menu
         searchTerm={this.state.searchTerm}
         label={this.props.label}
