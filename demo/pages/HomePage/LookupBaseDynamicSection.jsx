@@ -49,8 +49,8 @@ module.exports = React.createClass( {
     console.log('New search term: ', newValue);
   },
 
-  selectItem(item){
-    console.log(item + ' Selected');
+  handleItemSelect(item){
+    console.log(item);
   },
 
   render() {
@@ -66,6 +66,7 @@ module.exports = React.createClass( {
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
                   onNewItem={this.newItem}
+                  onItemSelect={this.handleItemSelect}
                   onSearchRecords={this.searchRecords}
                 />
               </div>

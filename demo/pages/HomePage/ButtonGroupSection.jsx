@@ -27,6 +27,10 @@ module.exports = React.createClass( {
     return {};
   },
 
+  handleOnSelect(){
+    console.log('onSelect triggered');
+  },
+
   render() {
 
     return (
@@ -47,9 +51,9 @@ module.exports = React.createClass( {
                   <SLDSButton label='Save' variant='neutral' />
 
                 <SLDSDropdownBase
-                    label='More Options' 
-                    variant='icon' 
-                    iconName='down' 
+                    label='More Options'
+                    variant='icon'
+                    iconName='down'
                     iconVariant='border-filled'
                     options={[
                       {label:'A Option Option Super Super Long',value:'A0'},

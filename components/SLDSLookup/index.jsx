@@ -25,8 +25,7 @@ class SLDSLookup extends React.Component {
     super(props);
 
     //Dynamically assign ids to list items to reference for focusing and selecting items
-    //this.props.items.map((item, index) => { return item.id = 'item-' + index; })
-
+    this.modifyItems();
 
     this.state = {
       searchTerm: '',
@@ -238,6 +237,14 @@ class SLDSLookup extends React.Component {
         />
       </span>
     );
+  }
+
+  modifyItems () {
+    this.props.items.map((item, index) => { return item.id = 'item-' + index; })
+  }
+
+  componentWillReceiveProps (newProps) {
+    this.modifyItems();
   }
 
   render(){
