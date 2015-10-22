@@ -20,20 +20,21 @@ module.exports = function (grunt) {
 		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
 
 		// TASK CONFIG
-		babel: {
-			options: {
-				modules: 'umd',
-				experimental: true
-			},
-			dist: {
-				files: [{
-					expand: true,
-					cwd: 'src/',
-					src: ['**/*.js', '!**/example.js', '!**/examples.js'],
-					dest: 'dist/'
-				}]
-			}
-		},
+		// This task isn't currently used
+		// babel: {
+		// 	options: {
+		// 		modules: 'umd',
+		// 		experimental: true
+		// 	},
+		// 	dist: {
+		// 		files: [{
+		// 			expand: true,
+		// 			cwd: 'src/',
+		// 			src: ['**/*.js', '!**/example.js', '!**/examples.js'],
+		// 			dest: 'dist/'
+		// 		}]
+		// 	}
+		// },
 		eslint: {
 			target: [
 				'Gruntfile.js',

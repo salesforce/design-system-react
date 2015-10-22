@@ -31,9 +31,9 @@ var config = {
 	devtool: 'source-map',
 	output: {
 		libraryTarget: 'amd',
-		path: __dirname + '/build/',
-		publicPath: '/build/',
-		filename: '[name].dist.js'
+		path: __dirname + '/dist/',
+		publicPath: '/dist/',
+		filename: '[name].js'
 	},
 	module: {
 		loaders: [
