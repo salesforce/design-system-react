@@ -14,18 +14,6 @@ import SLDSLookup from '../../../components/SLDSLookup';
 
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
-
-const items = [
-  {label:'Paddy\'s Pub'},
-  {label:'Tyrell Corp'},
-  {label:'Paper St. Soap Company'},
-  {label:'Nakatomi Investments'},
-  {label:'Acme Landscaping'},
-  {label:'Acme Construction'}
-];
-
-
-
 module.exports = React.createClass( {
 
   getDefaultProps () {
