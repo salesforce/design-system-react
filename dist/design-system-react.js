@@ -9008,9 +9008,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _get(Object.getPrototypeOf(SLDSLookup.prototype), 'constructor', this).call(this, props);
 	
 	    //Dynamically assign ids to list items to reference for focusing and selecting items
-	    this.props.items.map(function (item, index) {
-	      return item.id = 'item-' + index;
-	    });
+	    //    this.props.items.map((item, index) => { return item.id = 'item-' + index; })
 	
 	    this.state = {
 	      searchTerm: '',
@@ -9186,7 +9184,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'renderMenuContent',
 	    value: function renderMenuContent() {
 	      if (this.state.isOpen) {
-	
 	        return _react2['default'].createElement(_Menu2['default'], {
 	          searchTerm: this.state.searchTerm,
 	          label: this.props.label,
@@ -9405,16 +9402,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return this.props.items.filter(this.filter, this).map(function (c, i) {
 	        //isActive means it is aria-activedescendant
 	        var isActive = _this.props.focusIndex === i + 1 ? true : false;
+	        var id = 'item-' + i;
 	        return _react2['default'].createElement(_Item2['default'], {
-	          key: c.id,
-	          id: c.id,
+	          key: id,
+	          id: id,
 	          type: _this.props.type,
 	          searchTerm: _this.props.searchTerm,
 	          index: i,
 	          isActive: isActive,
 	          setFocus: _this.props.setFocus,
 	          handleItemFocus: _this.handleItemFocus.bind(_this),
-	          onSelect: _this.props.onSelect
+	          onSelect: _this.props.onSelect,
+	          data: c
 	        }, c);
 	      });
 	    }
@@ -9565,6 +9564,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'handleClick',
 	    value: function handleClick(e) {
 	      _utils.EventUtil.trapImmediate(e);
+	      console.log('>>> this.props.id: ', this.props.id);
 	      return this.props.onSelect(this.props.id);
 	    }
 	
@@ -9611,7 +9611,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  isDisabled: _react2['default'].PropTypes.bool,
 	  setFocus: _react2['default'].PropTypes.func,
 	  handleItemFocus: _react2['default'].PropTypes.func,
-	  onSelect: _react2['default'].PropTypes.func
+	  onSelect: _react2['default'].PropTypes.func,
+	  data: _react2['default'].PropTypes.object
 	};
 	
 	Item.defaultProps = {};
