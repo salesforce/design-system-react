@@ -1,5 +1,5 @@
-# fuelux-facades [![Build Status](http://teamcity/app/rest/builds/buildType:StackatoCloudApplications_FuelFacades/statusIcon)](http://teamcity/viewType.html?buildTypeId=StackatoCloudApplications_FuelFacades)
-Testing a core abstraction layer with many facades approach for FuelUX
+# design-system-facades [![Build Status](http://teamcity/app/rest/builds/buildType:StackatoCloudApplications_FuelFacades/statusIcon)](http://teamcity/viewType.html?buildTypeId=StackatoCloudApplications_FuelFacades)
+Facades that consume Lightning Design System and extend with JavaScript in native libraries like jQuery, React, Backbone, and Angular.
 
 ### Setup
 * Clone the project
