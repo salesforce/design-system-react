@@ -8,5 +8,13 @@ const items = [
   {label:'Acme Construction'}
 ];
 
-<SLDSLookup items={items} label="Accounts" type="account" onNewItem={this.newItem} onSearchRecords={this.searchRecords} />
+<SLDSLookup
+  items={items}
+  label="Accounts"
+  type="account"
+  onChange={this.onChange}
+  onItemSelect={this.onItemSelect}
+  onNewItem={this.newItem}
+  onSearchRecords={this.searchRecords} />
+
 

@@ -45,16 +45,26 @@ module.exports = React.createClass( {
     alert('Search Records Clicked');
   },
 
+  onChange(newValue){
+    console.log('New search term: ', newValue);
+  },
+
+  selectItem(item){
+    console.log(item + ' Selected');
+  },
+
   render() {
     return (
 
             <div className="slds-p-around--medium">
             Dynamic list
               <div className="slds-p-vertical--large">
-                <SLDSLookup 
+                <SLDSLookup
                   items={this.state.items}
                   label="Accounts"
                   type="account"
+                  onChange={this.onChange}
+                  onItemSelect={this.selectItem}
                   onNewItem={this.newItem}
                   onSearchRecords={this.searchRecords}
                 />
