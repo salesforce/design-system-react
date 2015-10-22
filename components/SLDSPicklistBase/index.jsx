@@ -177,7 +177,6 @@ module.exports = React.createClass( {
       !this.props.disabled && this.state.isOpen?
         <div
           className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
-          targetElement={this.refs.button}
           style={{maxHeight:'20em'}}>
           {this.getPopoverContent()}
         </div>:null

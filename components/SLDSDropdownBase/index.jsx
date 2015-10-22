@@ -233,7 +233,7 @@ module.exports = React.createClass( {
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
           className='slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu'
-          targetElement={this.refs.date}
+          targetElement={this.refs.button}
           closeOnTabKey={true}
           onClose={this.handleCancel}>
           {this.getPopoverContent()}

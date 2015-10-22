@@ -9,6 +9,7 @@
 
 import React, { Component } from 'react';
 import Menu from './Menu';
+import SLDSPopover from '../SLDSPopover';
 import {Icon, InputIcon} from "./../SLDSIcons";
 import SLDSButton from '../SLDSButton';
 import {KEYS,EventUtil} from '../utils';
@@ -106,6 +107,14 @@ class SLDSLookup extends React.Component {
     });
   }
 
+  handleCancel(){
+    this.setState({
+      isOpen:false,
+      focusIndex:null,
+      currentFocus:null,
+    });
+  };
+
   handleClick() {
     this.setState({isOpen:true});
   }
@@ -168,8 +177,9 @@ class SLDSLookup extends React.Component {
 
   //=================================================
   // Rendering Things
-  renderMenu(){
+  renderMenuContent(){
     if(this.state.isOpen){
+
       return <Menu
         searchTerm={this.state.searchTerm}
         label={this.props.label}
@@ -186,6 +196,27 @@ class SLDSLookup extends React.Component {
       />;
     }
   }
+
+  renderSimpleMenu(){
+    if(this.state.isOpen){
+
+      return <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
+        { this.renderMenuContent() }
+      </div>;
+    }
+  }
+
+  renderModalMenu () {
+    if(this.state.isOpen){
+      return <SLDSPopover
+          className='slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu'
+          targetElement={this.refs.lookup}
+          closeOnTabKey={true}
+          onClose={this.handleCancel.bind(this)}>
+          {this.renderMenuContent()}
+        </SLDSPopover>;
+      }
+  };
 
   renderSelectedItem(){
     let selectedItem = this.props.items[this.state.selectedIndex].label;
@@ -242,7 +273,7 @@ class SLDSLookup extends React.Component {
             />
           </div>
 
-          {this.renderMenu()}
+          {this.props.modal?this.renderModalMenu():this.renderSimpleMenu()}
         </section>
       </div>
     );
@@ -258,10 +289,14 @@ SLDSLookup.propTypes = {
   onItemSelect: React.PropTypes.func,
   onNewItem: React.PropTypes.func,
   onSearchRecords: React.PropTypes.func,
+  modal: React.PropTypes.boolean,
+  disabled: React.PropTypes.boolean,
 };
 
 SLDSLookup.defaultProps = {
   filterWith: defaultFilter,
+  modal: false,
+  disabled: false,
   onItemSelect: function(item){
     //console.log('onItemSelect should be defined');
   }

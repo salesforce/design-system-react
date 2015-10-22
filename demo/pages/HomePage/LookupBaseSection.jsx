@@ -60,7 +60,13 @@ module.exports = React.createClass( {
               </PrismCode>
 
               <div className="slds-p-vertical--large">
-                <SLDSLookup items={items} label="Accounts" type="account" onNewItem={this.newItem} onSearchRecords={this.searchRecords} />
+                <SLDSLookup 
+                  items={items}
+                  label="Accounts"
+                  type="account"
+                  onNewItem={this.newItem}
+                  onSearchRecords={this.searchRecords}
+                />
               </div>
 
             </div>

@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
-import {SLDSButton, SLDSPicklistBase} from '../../../components';
+import {SLDSButton, SLDSPicklistBase, SLDSLookup} from '../../../components';
 
 import SLDSModal from '../../../components/SLDSModal';
 
@@ -46,9 +46,24 @@ module.exports = React.createClass( {
 Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
       </p>
 
+
       <p>
 Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
       </p>
+
+        <SLDSLookup 
+          items={[
+            {label:'Paddy\'s Pub'},
+            {label:'Tyrell Corp'},
+            {label:'Paper St. Soap Company'},
+            {label:'Nakatomi Investments'},
+            {label:'Acme Landscaping'},
+            {label:'Acme Construction'}
+          ]}
+          label="Accounts"
+          type="account"
+          modal={true}
+          />
 
       <p>
 Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
@@ -106,6 +121,8 @@ Utilize our detailed guidelines to confidently design excellent apps that fit ri
       <p>
 Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
       </p>
+
+
 
 
       <p>

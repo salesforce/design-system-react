@@ -62,7 +62,7 @@ class Menu extends React.Component {
     this.props.focusIndex === 0 ? isSearchRecordsActive = true: isSearchRecordsActive = false;
 
     return (
-      <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
+      <section>
         <div className="slds-lookup__item">
           <ActionItem
             id='searchRecords'
@@ -92,7 +92,7 @@ class Menu extends React.Component {
             New {this.props.type}
           </ActionItem>
         </div>
-      </div>
+      </section>
     )
   }
 }
