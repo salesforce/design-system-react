@@ -35,7 +35,6 @@ module.exports = React.createClass( {
 
   getDefaultProps(){
     return {
-      label:'Button',
       variant:'neutral',
       placeholder: 'Select an Option',
       disabled: false,
