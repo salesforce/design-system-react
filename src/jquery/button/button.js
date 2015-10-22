@@ -40,7 +40,7 @@ export const ButtonObject = {
 		this._render();
 		this._initElements(this.elements.wrapper, this.elements);
 		this._bindUIEvents();
-		this.trigger('initialized');
+		this.trigger('initialized', this.elements.button);
 	},
 
 	_initElements ($base, elements) {
@@ -79,7 +79,7 @@ export const ButtonObject = {
 		const isStateful = this.options.views.length > 0;
 		const className = this._getClassNames(isStateful);
 
-		$('<button>').addClass(className)
+		this.elements.button = $('<button>').addClass(className)
 			.append( this._renderViews() )
 			.prop( 'disabled', this.getProperty('disabled') )
 			.appendTo(this.elements.wrapper);
