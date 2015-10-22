@@ -17,6 +17,10 @@ import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 import ButtonSection from './ButtonSection';
 import ButtonGroupSection from './ButtonGroupSection';
 import LookupBaseSection from './LookupBaseSection';
+
+import LookupBaseDynamicSection from './LookupBaseDynamicSection';
+
+
 import PicklistBaseSection from './PicklistBaseSection';
 import PicklistBaseCustomSection from './PicklistBaseCustomSection';
 
@@ -70,6 +74,8 @@ module.exports = React.createClass( {
             <ButtonGroupSection />
 
             <LookupBaseSection />
+
+            <LookupBaseDynamicSection />
 
             <PicklistBaseSection />
 
