@@ -93,14 +93,14 @@ class SLDSLookup extends React.Component {
     });
   }
 
-  newItem(){
+  footerClick(){
     this.handleClose();
-    if(this.props.onNewItem) this.props.onNewItem();
+    if(this.props.onFooterClick) this.props.onFooterClick();
   }
 
-  searchRecords(){
+  headerClick(){
     this.handleClose();
-    if(this.props.onSearchRecords) this.props.onSearchRecords();
+    if(this.props.onHeaderClick) this.props.onHeaderClick();
   }
 
   //=================================================
@@ -159,11 +159,11 @@ class SLDSLookup extends React.Component {
         EventUtil.trapImmediate(event);
         //If the focus is on the first fixed Action Item in Menu
         if(this.state.focusIndex === 0){
-          this.searchRecords();
+          this.headerClick();
         }
         //If the focus is on the last fixed Action Item in Menu
         else if(this.state.focusIndex === (this.state.listLength + 1)){
-          this.newItem();
+          this.footerClick();
         }
         //If not, then select menu item
         else{
@@ -197,8 +197,10 @@ class SLDSLookup extends React.Component {
         getListLength={this.getListLength.bind(this)}
         setFocus={this.setFocus.bind(this)}
         onSelect={this.selectItem.bind(this)}
-        onSearchRecords={this.searchRecords.bind(this)}
-        onNewItem={this.newItem.bind(this)}
+        header={this.props.header}
+        headerClick={this.headerClick.bind(this)}
+        footer={this.props.footer}
+        footerClick={this.footerClick.bind(this)}
       />;
     }
   }
@@ -310,16 +312,16 @@ SLDSLookup.propTypes = {
   filterWith: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
   onChange: React.PropTypes.func,
-  onNewItem: React.PropTypes.func,
-  onSearchRecords: React.PropTypes.func,
-  modal: React.PropTypes["bool"],
-  disabled: React.PropTypes["bool"],
+  onFooterClick: React.PropTypes.func,
+  onHeaderClick: React.PropTypes.func,
+  modal: React.PropTypes.bool,
+  disabled: React.PropTypes.bool,
 };
 
 SLDSLookup.defaultProps = {
   filterWith: defaultFilter,
   modal: false,
-  disabled: false
+  disabled: false,
 };
 
 module.exports = SLDSLookup;

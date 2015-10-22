@@ -19,14 +19,20 @@ class ActionItem extends React.Component {
     if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
   }
 
+  renderIcon(){
+    if(this.props.icon){
+      return <Icon name={this.props.icon} category="utility" size="x-small" className="slds-icon-text-default" />
+    }
+  }
+
   render(){
     let className = 'slds-button';
     if(this.props.isActive) className += ' slds-theme--shade'
 
     return (
       <button id={this.props.id} tabIndex="-1" className={className} onClick={this.props.onSelect} onMouseDown={this.props.onSelect}>
-      <Icon name={this.props.icon} category="utility" size="x-small" className="slds-icon-text-default" />
-      {this.props.children}
+        {this.renderIcon()}
+        {this.props.children}
       </button>
     )
   }

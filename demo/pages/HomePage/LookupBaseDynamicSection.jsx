@@ -65,9 +65,7 @@ module.exports = React.createClass( {
                   type="account"
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
-                  onNewItem={this.newItem}
                   onItemSelect={this.handleItemSelect}
-                  onSearchRecords={this.searchRecords}
                 />
               </div>
 
