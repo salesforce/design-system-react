@@ -45,6 +45,10 @@ module.exports = React.createClass( {
     alert('Search Records Clicked');
   },
 
+  handleItemSelect(item){
+    console.log(item);
+  },
+
   render() {
     return (
 
@@ -56,6 +60,7 @@ module.exports = React.createClass( {
                   label="Accounts"
                   type="account"
                   onNewItem={this.newItem}
+                  onItemSelect={this.handleItemSelect}
                   onSearchRecords={this.searchRecords}
                 />
               </div>
