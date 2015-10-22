@@ -9008,7 +9008,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _get(Object.getPrototypeOf(SLDSLookup.prototype), 'constructor', this).call(this, props);
 	
 	    //Dynamically assign ids to list items to reference for focusing and selecting items
-	    //    this.props.items.map((item, index) => { return item.id = 'item-' + index; })
+	    this.modifyItems();
 	
 	    this.state = {
 	      searchTerm: '',
@@ -9068,7 +9068,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        selectedIndex: index,
 	        searchTerm: null
 	      });
-	      if (this.props.onItemSelect) this.props.onItemSelect();
+	      if (this.props.onItemSelect) this.props.onItemSelect(itemId);
 	    }
 	  }, {
 	    key: 'handleDeleteSelected',
@@ -9131,6 +9131,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function handleChange(event) {
 	      var target = event.target || event.currentTarget;
 	      this.setState({ searchTerm: target.value });
+	      if (this.props.onChange) this.props.onChange(target.value);
 	    }
 	  }, {
 	    key: 'handleKeyDown',
@@ -9225,13 +9226,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var selectedItem = this.props.items[this.state.selectedIndex].label;
 	      return _react2['default'].createElement('span', { tabIndex: '0', className: 'slds-pill', ref: 'pill-' + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2['default'].createElement('span', { className: 'slds-pill__label' }, _react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.type }), selectedItem), _react2['default'].createElement(_SLDSButton2['default'], {
 	        label: 'Press delete to remove',
-	        tabindex: '-1',
+	        tabIndex: '-1',
 	        variant: 'icon',
 	        iconName: 'close',
 	        iconSize: 'medium',
 	        onClick: this.handleDeleteSelected.bind(this),
 	        ref: 'clearSelectedItemButton'
 	      }));
+	    }
+	  }, {
+	    key: 'modifyItems',
+	    value: function modifyItems() {
+	      this.props.items.map(function (item, index) {
+	        return item.id = 'item-' + index;
+	      });
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(newProps) {
+	      this.modifyItems();
 	    }
 	  }, {
 	    key: 'render',
@@ -9270,6 +9283,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  type: _react2['default'].PropTypes.string,
 	  filterWith: _react2['default'].PropTypes.func,
 	  onItemSelect: _react2['default'].PropTypes.func,
+	  onChange: _react2['default'].PropTypes.func,
 	  onNewItem: _react2['default'].PropTypes.func,
 	  onSearchRecords: _react2['default'].PropTypes.func,
 	  modal: _react2['default'].PropTypes["bool"],
@@ -9279,10 +9293,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	SLDSLookup.defaultProps = {
 	  filterWith: defaultFilter,
 	  modal: false,
-	  disabled: false,
-	  onItemSelect: function onItemSelect(item) {
-	    //console.log('onItemSelect should be defined');
-	  }
+	  disabled: false
 	};
 	
 	module.exports = SLDSLookup;
@@ -9402,7 +9413,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return this.props.items.filter(this.filter, this).map(function (c, i) {
 	        //isActive means it is aria-activedescendant
 	        var isActive = _this.props.focusIndex === i + 1 ? true : false;
-	        var id = 'item-' + i;
+	        var id = c.id;
 	        return _react2['default'].createElement(_Item2['default'], {
 	          key: id,
 	          id: id,
@@ -9564,7 +9575,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'handleClick',
 	    value: function handleClick(e) {
 	      _utils.EventUtil.trapImmediate(e);
-	      console.log('>>> this.props.id: ', this.props.id);
 	      return this.props.onSelect(this.props.id);
 	    }
 	
