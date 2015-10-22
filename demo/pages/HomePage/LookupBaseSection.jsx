@@ -40,8 +40,8 @@ module.exports = React.createClass( {
     alert('New Item Clicked');
   },
 
-  searchRecords(){
-    alert('Search Records Clicked');
+  customHeaderClick(){
+    alert('custom header clicked');
   },
 
   onChange(newValue){
@@ -50,6 +50,12 @@ module.exports = React.createClass( {
 
   selectItem(item){
     console.log(item + ' Selected');
+  },
+
+  getHeader(){
+    return(
+      <div>MY CUSTOM HEADER</div>
+    )
   },
 
   render() {
@@ -72,10 +78,12 @@ module.exports = React.createClass( {
                   items={items}
                   label="Accounts"
                   type="account"
+                  header={this.getHeader()}
+                  onHeaderClick={this.customHeaderClick}
+                  footer={true}
+                  onFooterClick={this.newItem}
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
-                  onNewItem={this.newItem}
-                  onSearchRecords={this.searchRecords}
                 />
               </div>
 
