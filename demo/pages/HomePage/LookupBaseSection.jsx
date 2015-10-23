@@ -32,11 +32,12 @@ module.exports = React.createClass( {
   },
 
   getInitialState () {
-    return {};
+    return {searchVal:null};
   },
 
   onChange(newValue){
     console.log('New search term: ', newValue);
+    this.setState({searchVal: newValue});
   },
 
   selectItem(item){
@@ -54,7 +55,7 @@ module.exports = React.createClass( {
   getHeader(){
     return (
     <div className="slds-lookup__item" onClick={this.headerClick} onMouseDown={this.headerClick}>
-      <ActionItem item='search' type='account' />
+      <ActionItem item='search' type='account' searchTerm={this.state.searchVal} />
     </div>
     )
   },
