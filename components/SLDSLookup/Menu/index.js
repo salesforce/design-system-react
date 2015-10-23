@@ -9,7 +9,6 @@
 
 import React, { Component } from 'react';
 import Item from './Item';
-import ActionItem from './ActionItem';
 import {Icon} from "../../SLDSIcons";
 
 class Menu extends React.Component {
@@ -35,63 +34,48 @@ class Menu extends React.Component {
     }
   }
 
-  getHeader(){
-    if(this.props.header !== false && this.props.header !== undefined){
-
-      let content = (this.props.searchTerm ? '"' + this.props.searchTerm + '"' : "") + ' in ' + this.props.type + 's';
-      if(this.props.header !== true) content = this.props.header;
-
+  renderHeader(){
+    if(this.props.header){
       let headerActive = false;
-      this.props.focusIndex === 0 ? headerActive = true: headerActive = false;
+      let isActiveClass = null;
+      if(this.props.focusIndex === 0){
+        headerActive = true;
+        isActiveClass = 'slds-theme--shade';
+      }else{
+        headerActive = false;
+        isActiveClass = '';
+      }
 
-      return (
-        <div className="slds-lookup__item">
-        <ActionItem
-        id='searchRecords'
-        icon={this.props.header === true ? 'search' : false}
-        type={this.props.type}
-        isActive={headerActive}
-        setFocus={this.props.setFocus}
-        onSelect={this.props.headerClick}
-        >
-        {content}
-        </ActionItem>
-        </div>
-      )
+      return <div className={isActiveClass}>{this.props.header}</div>;
     }
   }
 
-  getFooter(){
-    if(this.props.footer != false && this.props.footer !== undefined){
-
-      let content = 'New ' + this.props.type;
-      if(this.props.footer !== true) content = this.props.footer;
-
+  renderFooter(){
+    if(this.props.footer){
       let footerActive = false;
-      this.props.focusIndex === this.props.listLength+1 ? footerActive = true: footerActive = false;
+      let isActiveClass = null;
+      if(this.props.focusIndex === this.props.listLength+1){
+        footerActive = true;
+        isActiveClass = 'slds-theme--shade';
+      }else{
+        footerActive = false;
+        isActiveClass = '';
+      }
 
-      return (
-        <div className="slds-lookup__item">
-        <ActionItem
-        id='addNewItem'
-        icon={this.props.footer === true ? 'add' : false}
-        type={this.props.type}
-        isActive={footerActive}
-        setFocus={this.props.setFocus}
-        onSelect={this.props.footerClick}
-        >
-        {content}
-        </ActionItem>
-        </div>
-      )
+      return <div className={isActiveClass}>{this.props.footer}</div>;
     }
   }
 
   renderItems(){
     return this.props.items.filter(this.filter, this).map((c, i) => {
       //isActive means it is aria-activedescendant
-      const isActive = this.props.focusIndex === i + 1 ? true : false;
       const id = c.id;
+      let isActive = false;
+      if(this.props.header){
+        isActive = this.props.focusIndex === i + 1? true : false;
+      }else{
+        isActive = this.props.focusIndex === i  ? true : false;
+      }
       return <Item
       key={id}
       id={id}
@@ -110,20 +94,15 @@ class Menu extends React.Component {
   }
 
   render(){
-    let isNewItemBtnActive = false;
-    let isSearchRecordsActive = false;
-    this.props.focusIndex === this.props.listLength + 1 ? isNewItemBtnActive = true : isNewItemBtnActive = false;
-    this.props.focusIndex === 0 ? isSearchRecordsActive = true: isSearchRecordsActive = false;
-
     return (
-      <section>
-        {this.getHeader()}
+      <section id="menuContainer">
+        {this.renderHeader()}
 
         <ul id="list" className="slds-lookup__list" role="presentation" ref="list">
           {this.renderItems()}
         </ul>
 
-        {this.getFooter()}
+        {this.renderFooter()}
       </section>
     )
   }
