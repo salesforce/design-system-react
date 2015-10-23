@@ -9081,12 +9081,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Select menu item (onClick or on key enter/space)
 	  }, {
 	    key: 'selectItem',
-	    value: function selectItem(itemId, data) {
+	    value: function selectItem(itemId) {
 	      var index = itemId.replace('item-', '');
 	      this.setState({
 	        selectedIndex: index,
 	        searchTerm: null
 	      });
+	      var data = this.state.items[index].data;
 	      if (this.props.onItemSelect) this.props.onItemSelect(data);
 	    }
 	  }, {
@@ -9599,8 +9600,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'handleClick',
 	    value: function handleClick(e) {
-	      _utils.EventUtil.trapImmediate(e);
 	      return this.props.onSelect(this.props.id, this.props.data);
+	    }
+	  }, {
+	    key: 'handleMouseDown',
+	    value: function handleMouseDown(e) {
+	      _utils.EventUtil.trapImmediate(e);
 	    }
 	
 	    //Scroll menu item based on up/down mouse keys (assumes all items are the same height)
@@ -9627,7 +9632,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          'aria-disabled': this.props.isDisabled,
 	          role: 'option',
 	          onClick: this.handleClick.bind(this),
-	          onMouseDown: this.handleClick.bind(this) }, _react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.type }), this.boldSearchText(this.props.children.label)))
+	          onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.type }), this.boldSearchText(this.props.children.label)))
 	      );
 	    }
 	  }]);
