@@ -3,6 +3,9 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
+// Traits
+import Disableable from '../traits/disableable';
+
 // Third party
 import classNames from 'classnames';
 
@@ -24,7 +27,7 @@ import classNames from 'classnames';
 
 export const CONTROL = 'slds-button';
 
-const ButtonCore = Lib.merge({}, Base, {
+const ButtonCore = Lib.merge({}, Base, Disableable, {
 	cssClasses: {
 		'CONTROL': CONTROL,
 		'NOT_SELECTED': Base.cssClasses.NAMESPACE + 'not-selected',
@@ -42,19 +45,23 @@ const ButtonCore = Lib.merge({}, Base, {
 		'small': CONTROL + '--small'
 	},
 	
-	iconStyles: {
+	// applied to the button, not the icon/SVG
+	iconButtonStyles: {
 		'icon-bare': CONTROL + '--icon-bare',
 		'icon-container': CONTROL + '--icon-container',
 		'icon-border': CONTROL + '--icon-border',
 		'icon-border-filled': CONTROL + '--icon-border-filled',
-		'icon-small': CONTROL + '--icon-small'
+		'icon-small': CONTROL + '--icon-small',
+		'icon-more': CONTROL + '--icon-more'
 	},
-	
+
 	_defaultProperties: {
-		theme: null,
-		size: null,
 		iconStyle: null,
-		iconPosition: 'left'
+		iconPosition: 'left',
+		selected: false,
+		size: null,
+		theme: null,
+		views: []
 	},
 	
 	_getClassNames (isStateful) {
@@ -68,7 +75,7 @@ const ButtonCore = Lib.merge({}, Base, {
 		return classNames(this.cssClasses.CONTROL,
 			this.sizes[this.getProperty('size')],
 			this.themes[this.getProperty('theme')],
-			this.iconStyles[this.getProperty('iconStyle')],
+			this.iconButtonStyles[this.getProperty('iconStyle')],
 			selectedClasses);
 	}
 	

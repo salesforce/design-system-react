@@ -213,7 +213,10 @@
 															<span class="button-icon-right-small"></span>
 															<span class="button-bare-icon-right-small"></span>
 														</div>
-
+														<div class="slds-col row">
+															<span class="button-icon-more"></span>
+															<span class="button-icon-more-disabled"></span>
+														</div>
 														<div class="slds-col row">
 															<span class="button-icon-container"></span>
 															<span class="button-icon-container-disabled"></span>
@@ -229,16 +232,19 @@
 														</div>
 													</div>
 
-													<div className="slds-col row">
-														<div class="slds-button-group" role="group">
-															<span class="refresh"></span>
-															<span class="edit"></span>
-															<span class="save"></span>
-														</div>
+													<div class="slds-col row">
+															<span class="button-stateful"></span>
 													</div>
 
 													</div>
-												<div class="slds-col demo-controls"></div>
+												<div class="slds-col demo-controls">
+													<div class="slds-button-group" role="group">
+														<button type="button" id="button-stateful-jquery-select" class="slds-button slds-button--neutral slds-button--x-small">Select</button>
+														<button type="button" id="button-stateful-jquery-deselect" class="slds-button slds-button--neutral slds-button--x-small">Deselect</button>
+														<button type="button" id="button-stateful-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
+														<button type="button" id="button-stateful-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
+													</div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -264,7 +270,8 @@
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
 											</div>
-											<div id="button-group-react-control"></div>
+											<div id="button-group-react-control">
+											</div>
 										</div>
 									</div>
 									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
