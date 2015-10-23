@@ -93,16 +93,6 @@ class SLDSLookup extends React.Component {
     });
   }
 
-  footerClick(){
-    this.handleClose();
-    if(this.props.onFooterClick) this.props.onFooterClick();
-  }
-
-  headerClick(){
-    this.handleClose();
-    if(this.props.onHeaderClick) this.props.onHeaderClick();
-  }
-
   //=================================================
   // Event Listeners on Input
   handleClose() {
@@ -157,13 +147,13 @@ class SLDSLookup extends React.Component {
       //If user hits enter/space key, select current activedescendant item
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.focusIndex !== null){
         EventUtil.trapImmediate(event);
-        //If the focus is on the first fixed Action Item in Menu
-        if(this.state.focusIndex === 0){
-          this.headerClick();
+        //If the focus is on the first fixed Action Item in Menu, click it
+        if(this.props.header && this.state.focusIndex === 0){
+          document.getElementById('menuContainer').firstChild.children[0].click();
         }
-        //If the focus is on the last fixed Action Item in Menu
-        else if(this.state.focusIndex === (this.state.listLength + 1)){
-          this.footerClick();
+        //If the focus is on the last fixed Action Item in Menu, click it
+        else if(this.props.footer && this.state.focusIndex === (this.state.listLength + 1)){
+          document.getElementById('menuContainer').lastChild.children[0].click();
         }
         //If not, then select menu item
         else{
@@ -198,16 +188,13 @@ class SLDSLookup extends React.Component {
         setFocus={this.setFocus.bind(this)}
         onSelect={this.selectItem.bind(this)}
         header={this.props.header}
-        headerClick={this.headerClick.bind(this)}
         footer={this.props.footer}
-        footerClick={this.footerClick.bind(this)}
       />;
     }
   }
 
   renderSimpleMenu(){
     if(this.state.isOpen){
-
       return <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
         { this.renderMenuContent() }
       </div>;
@@ -248,7 +235,7 @@ class SLDSLookup extends React.Component {
   }
 
   modifyItems () {
-    const items = this.props.items.map((item, index) => { 
+    const items = this.props.items.map((item, index) => {
       return {
         id : 'item-' + index,
         label: item.label,
@@ -312,8 +299,6 @@ SLDSLookup.propTypes = {
   filterWith: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
   onChange: React.PropTypes.func,
-  onFooterClick: React.PropTypes.func,
-  onHeaderClick: React.PropTypes.func,
   modal: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
 };
