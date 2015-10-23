@@ -1,3 +1,10 @@
+Default Props             Prop Values
+* header={false}          [true, false, custom DOM node]
+* footer={false}          [true, false, custom DOM node]
+
+true renders default header or footer
+false does not render header or footer
+pass in custom DOM node to render in header or footer
 
 const items = [
   {label:'Paddy\'s Pub'},
@@ -8,5 +15,15 @@ const items = [
   {label:'Acme Construction'}
 ];
 
-<SLDSLookup items={items} label="Accounts" type="account" />
+<SLDSLookup
+  items={items}
+  label="Accounts"
+  type="account"
+  header={this.getHeader()}
+  footer={true}
+  onChange={this.onChange}
+  onItemSelect={this.onItemSelect}
+  onHeaderClick={this.searchRecords}
+  onFooterClick={this.newItem} />
+
 

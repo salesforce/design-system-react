@@ -38,7 +38,7 @@ module.exports = React.createClass( {
     return {
       targetAttachment: 'bottom left',
       className: 'slds-dropdown',
-      closeOnTabKey: false 
+      closeOnTabKey: false
     };
   },
 
@@ -90,15 +90,15 @@ module.exports = React.createClass( {
         style={{
           transform:'none',
           WebkitTransform:'none',
-          marginTop:'0.20rem',
-          marginBottom:'0.35rem',
-          float:'inherit',
-          position:'inherit',
+          'marginTop':'0.20rem',
+          'marginBottom':'0.35rem',
+          'float':'inherit',
+          'position':'inherit'
         }}
         onKeyDown={this.handleKeyDown}
       >
 {/*
-        <Spring 
+        <Spring
           defaultValue={{ val:0 }}
           endValue={{ val:1, config: [70, 10] }}>
           {currentVal => {
@@ -124,7 +124,7 @@ module.exports = React.createClass( {
   },
 
   dropOptions () {
-    let target = this.props.targetElement?this.props.targetElement.getDOMNode():this.getDOMNode().parentNode;
+    let target = this.props.targetElement?React.findDOMNode(this.props.targetElement):React.findDOMNode(this).parentNode;
     return {
       target: target,
       content: this.popoverElement,
@@ -145,8 +145,8 @@ module.exports = React.createClass( {
 
     React.render( this.popoverComp(), this.popoverElement );
 
-    if(this.popoverElement && 
-        this.popoverElement.parentNode && 
+    if(this.popoverElement &&
+        this.popoverElement.parentNode &&
         this.popoverElement.parentNode.parentNode &&
         this.popoverElement.parentNode.parentNode.className &&
         this.popoverElement.parentNode.parentNode.className.indexOf('drop ') > -1 ){
@@ -176,7 +176,7 @@ module.exports = React.createClass( {
   },
 
   render () {
-    return <span></span>;
+    return <noscript></noscript>;
   }
 
 } );

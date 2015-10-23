@@ -14,8 +14,10 @@ import {SLDSPicklistBase, SLDSIcons} from '../../../components';
 
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
-const Icon = SLDSIcons.Icon;
+import CustomListItemLabel from './CustomListItemLabel.cjsx';
 
+const Icon = SLDSIcons.Icon;
+/*
 const CustomListItemLabel = React.createClass( {
   getDefaultProps () {
     return {
@@ -45,7 +47,7 @@ const CustomListItemLabel = React.createClass( {
     </section>;
   }
 });
-
+*/
 
 module.exports = React.createClass( {
 

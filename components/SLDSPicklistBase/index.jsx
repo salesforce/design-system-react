@@ -177,7 +177,6 @@ module.exports = React.createClass( {
       !this.props.disabled && this.state.isOpen?
         <div
           className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
-          targetElement={this.refs.button}
           style={{maxHeight:'20em'}}>
           {this.getPopoverContent()}
         </div>:null
@@ -210,9 +209,7 @@ module.exports = React.createClass( {
   },
 
   render() {
-    let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
     return (
-
       <div className={"slds-form-element slds-theme--"+this.props.theme}>
         <div className={"slds-picklist slds-theme--"+this.props.theme}>
           <button

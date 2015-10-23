@@ -45,6 +45,8 @@ module.exports = React.createClass( {
   },
 
   render() {
+    let hintBtnParent = {backgroundColor: '#7fdbff', padding: '10px'};
+    let inverseBtnParent = {backgroundColor: '#0074d9', padding: '10px'};
     return (
 
             <div className='slds-p-around--medium'>
@@ -55,37 +57,70 @@ module.exports = React.createClass( {
               <PrismCode className='language-markup'>
                 {require('raw-loader!../../code-snippets/SLDSButton.txt')}
               </PrismCode>
+
+
               <div className='slds-p-vertical--large'>
-                <SLDSButton
+                <div className='slds-p-vertical--small'>
+                1. <SLDSButton
                   label='Neutral'
                   variant='neutral'
                   onClick={this.handleNeutralClick} />
+                </div>
 
-                <SLDSButton
+                <div className='slds-p-vertical--small'>
+                2. <SLDSButton
                   label='Neutral Icon'
                   variant='neutral'
                   iconName='download'
                   iconSize='small'
                   iconPosition='right'
                   onClick={this.handleNeutralClick} />
+                </div>
 
-                <SLDSButton
+                <div className='slds-p-vertical--small'>
+                3. <SLDSButton
                   label='Disabled'
                   variant='neutral'
                   disabled={true}
                   onClick={this.handleDisabledClick} />
+                </div>
 
-                <SLDSButton
+                <div className='slds-p-vertical--small'>
+                4. <SLDSButton
                   label='Brand'
                   variant='brand'
                   onClick={this.handleBrandClick} />
+                </div>
 
-                <SLDSButton
+                <div className='slds-p-vertical--small'>
+                5. <SLDSButton
                   label='Settings'
                   variant='icon'
                   iconName='settings'
                   iconSize='large'
                   onClick={this.handleIconClick} />
+                </div>
+
+                <div className='slds-p-vertical--small' style={inverseBtnParent}>
+                6. <SLDSButton
+                  label='User'
+                  variant='icon'
+                  inverse={true}
+                  iconName='user'
+                  iconSize='large'
+                  onClick={this.handleIconClick} />
+                </div>
+
+                <div className='slds-p-vertical--small slds-hint-parent' style={hintBtnParent}>
+                7. <SLDSButton
+                  label='Edit'
+                  variant='icon'
+                  hint={true}
+                  iconName='edit'
+                  iconSize='large'
+                  onClick={this.handleIconClick} />
+                </div>
+
               </div>
             </div>
 

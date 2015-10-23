@@ -34,7 +34,7 @@ class Item extends React.Component {
 
   handleClick(e){
     EventUtil.trapImmediate(e);
-    return this.props.onSelect(this.props.id);
+    return this.props.onSelect(this.props.id, this.props.data);
   }
 
   //Scroll menu item based on up/down mouse keys (assumes all items are the same height)
@@ -54,6 +54,7 @@ class Item extends React.Component {
         <a
           href={this.props.href}
           id={id}
+          ref={id}
           tabIndex="-1"
           aria-disabled={this.props.isDisabled}
           role="option"
@@ -79,6 +80,7 @@ Item.propTypes = {
   setFocus: React.PropTypes.func,
   handleItemFocus: React.PropTypes.func,
   onSelect: React.PropTypes.func,
+  data: React.PropTypes.object
 };
 
 Item.defaultProps = {

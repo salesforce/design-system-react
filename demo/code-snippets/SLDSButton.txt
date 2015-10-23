@@ -1,13 +1,22 @@
 
-Below are component prop defaults and available options:
-* label='' *required
-* variant='base' ['neutral', 'brand', 'destructive', 'icon']
+Default Props             Prop Values
+* label=''                Required Prop
+* variant='base'          ['base', 'neutral', 'brand', 'destructive', 'icon'] Use icon if you want an icon only button
 * disabled={false}
+* tabindex=''
 * inverse={false}
 * stateful={false}
-* iconName='' //see https://www.lightningdesignsystem.com/resources/icons#utility
-* iconSize='medium' ['x-small', 'medium', 'small', 'large']
-* iconPosition='left' ['left', 'right', 'large']
+* responsive={false}
+* iconName=''             see https://www.lightningdesignsystem.com/resources/icons#utility for names
+* iconVariant='bare'      ['bare', 'container', 'border', 'border-filled', 'small', 'more']
+* iconSize='medium'       ['x-small', 'medium', 'small', 'large']
+* iconPosition='left'     ['left', 'right', 'large']
+* className = ''          custom classes on the button tag
 
-<SLDSButton label='Neutral' variant='neutral' onClick={this.handleNeutralClick} />
-
+1. <SLDSButton label='Neutral' variant='neutral' onClick={this.handleNeutralClick} />
+2. <SLDSButton label='Neutral Icon' variant='neutral' iconName='download' iconSize='small' iconPosition='right' onClick={this.handleNeutralClick} />
+3. <SLDSButton label='Disabled' variant='neutral' disabled={true} onClick={this.handleDisabledClick} />
+4. <SLDSButton label='Brand' variant='brand' onClick={this.handleBrandClick} />
+5. <SLDSButton label='Settings' variant='icon' iconName='settings' iconSize='large' onClick={this.handleIconClick} />
+6. <SLDSButton label='User' variant='icon' inverse={true} iconName='user' iconSize='large' onClick={this.handleIconClick} />
+7. <SLDSButton label='Edit' variant='icon' hint={true} iconName='edit' iconSize='large' onClick={this.handleIconClick} />

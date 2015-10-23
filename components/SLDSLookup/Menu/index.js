@@ -35,13 +35,66 @@ class Menu extends React.Component {
     }
   }
 
+  getHeader(){
+    if(this.props.header !== false && this.props.header !== undefined){
+
+      let content = (this.props.searchTerm ? '"' + this.props.searchTerm + '"' : "") + ' in ' + this.props.type + 's';
+      if(this.props.header !== true) content = this.props.header;
+
+      let headerActive = false;
+      this.props.focusIndex === 0 ? headerActive = true: headerActive = false;
+
+      return (
+        <div className="slds-lookup__item">
+        <ActionItem
+        id='searchRecords'
+        icon={this.props.header === true ? 'search' : false}
+        type={this.props.type}
+        isActive={headerActive}
+        setFocus={this.props.setFocus}
+        onSelect={this.props.headerClick}
+        >
+        {content}
+        </ActionItem>
+        </div>
+      )
+    }
+  }
+
+  getFooter(){
+    if(this.props.footer != false && this.props.footer !== undefined){
+
+      let content = 'New ' + this.props.type;
+      if(this.props.footer !== true) content = this.props.footer;
+
+      let footerActive = false;
+      this.props.focusIndex === this.props.listLength+1 ? footerActive = true: footerActive = false;
+
+      return (
+        <div className="slds-lookup__item">
+        <ActionItem
+        id='addNewItem'
+        icon={this.props.footer === true ? 'add' : false}
+        type={this.props.type}
+        isActive={footerActive}
+        setFocus={this.props.setFocus}
+        onSelect={this.props.footerClick}
+        >
+        {content}
+        </ActionItem>
+        </div>
+      )
+    }
+  }
+
   renderItems(){
     return this.props.items.filter(this.filter, this).map((c, i) => {
       //isActive means it is aria-activedescendant
       const isActive = this.props.focusIndex === i + 1 ? true : false;
+      const id = c.id;
       return <Item
-      key={c.id}
-      id={c.id}
+      key={id}
+      id={id}
       type={this.props.type}
       searchTerm={this.props.searchTerm}
       index={i}
@@ -49,6 +102,7 @@ class Menu extends React.Component {
       setFocus={this.props.setFocus}
       handleItemFocus={this.handleItemFocus.bind(this)}
       onSelect={this.props.onSelect}
+      data={c.data}
       >
       {c}
       </Item>
@@ -57,42 +111,20 @@ class Menu extends React.Component {
 
   render(){
     let isNewItemBtnActive = false;
-    let isSearchDetailsActive = false;
+    let isSearchRecordsActive = false;
     this.props.focusIndex === this.props.listLength + 1 ? isNewItemBtnActive = true : isNewItemBtnActive = false;
-    this.props.focusIndex === 0 ? isSearchDetailsActive = true: isSearchDetailsActive = false;
+    this.props.focusIndex === 0 ? isSearchRecordsActive = true: isSearchRecordsActive = false;
 
     return (
-      <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
-        <div className="slds-lookup__item">
-          <ActionItem
-            id='searchDetails'
-            icon='search'
-            type={this.props.type}
-            isActive={isSearchDetailsActive}
-            setFocus={this.props.setFocus}
-            onSelect={this.props.addItem}
-            >
-            {this.props.searchTerm ? '"' + this.props.searchTerm + '"' : ""} in {this.props.type + 's'}
-          </ActionItem>
-        </div>
+      <section>
+        {this.getHeader()}
 
-        <ul className="slds-lookup__list" role="presentation" ref="list">
+        <ul id="list" className="slds-lookup__list" role="presentation" ref="list">
           {this.renderItems()}
         </ul>
 
-        <div className="slds-lookup__item">
-          <ActionItem
-            id='addNewItem'
-            icon='add'
-            type={this.props.type}
-            isActive={isNewItemBtnActive}
-            setFocus={this.props.setFocus}
-            onSelect={this.props.addItem}
-            >
-            New {this.props.type}
-          </ActionItem>
-        </div>
-      </div>
+        {this.getFooter()}
+      </section>
     )
   }
 }
@@ -107,8 +139,6 @@ Menu.propTypes = {
   filterWith: React.PropTypes.func,
   getListLength: React.PropTypes.func,
   setFocus: React.PropTypes.func,
-  onSelect: React.PropTypes.func,
-  addItem: React.PropTypes.func,
 };
 
 Menu.defaultProps = {

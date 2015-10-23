@@ -9,6 +9,7 @@
 
 import React, { Component } from 'react';
 import Menu from './Menu';
+import SLDSPopover from '../SLDSPopover';
 import {Icon, InputIcon} from "./../SLDSIcons";
 import SLDSButton from '../SLDSButton';
 import {KEYS,EventUtil} from '../utils';
@@ -24,7 +25,6 @@ class SLDSLookup extends React.Component {
     super(props);
 
     //Dynamically assign ids to list items to reference for focusing and selecting items
-    this.props.items.map((item, index) => { return item.id = 'item-' + index; })
 
     this.state = {
       searchTerm: '',
@@ -32,8 +32,15 @@ class SLDSLookup extends React.Component {
       currentFocus:null,
       focusIndex:null,
       selectedIndex: null,
-      listLength:this.props.items.length
+      listLength:this.props.items.length,
+      items:[]
     };
+
+
+  }
+
+  componentDidMount(){
+    this.modifyItems();
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -41,14 +48,15 @@ class SLDSLookup extends React.Component {
       if(this.refs.lookup) React.findDOMNode(this.refs.lookup).focus();
     }
     else if(!prevState.selectedIndex && this.state.selectedIndex){
-      if(this.refs.clearSelectedItemButton) React.findDOMNode(this.refs.clearSelectedItemButton).focus();
+      let selectedItem = 'pill-' + this.state.selectedIndex;
+      if(this.refs[selectedItem]) React.findDOMNode(this.refs[selectedItem]).focus();
     }
   }
 
   //=================================================
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
-  // Adding/subtracting 1 from focusIndex to account for fixed action items (searchDetails and addNewItem buttons)
+  // Adding/subtracting 1 from focusIndex to account for fixed action items (searchRecords and addNewItem buttons)
   increaseIndex(){
     let items = this.state.listLength;
     this.setState({ focusIndex: this.state.focusIndex <= items ? this.state.focusIndex + 1 : 0 })
@@ -69,13 +77,13 @@ class SLDSLookup extends React.Component {
 
   //=================================================
   // Select menu item (onClick or on key enter/space)
-  selectItem(itemId){
-    let index = itemId.replace('item-', '');
+  selectItem(itemId,data){
+    const index = itemId.replace('item-', '');
     this.setState({
       selectedIndex: index,
       searchTerm: null
     });
-    if(this.props.onItemSelect) this.props.onItemSelect();
+    if(this.props.onItemSelect) this.props.onItemSelect(data);
   }
 
   handleDeleteSelected() {
@@ -85,8 +93,14 @@ class SLDSLookup extends React.Component {
     });
   }
 
-  addItem(){
-    if(this.props.onAddItem) this.props.onAddItem();
+  footerClick(){
+    this.handleClose();
+    if(this.props.onFooterClick) this.props.onFooterClick();
+  }
+
+  headerClick(){
+    this.handleClose();
+    if(this.props.onHeaderClick) this.props.onHeaderClick();
   }
 
   //=================================================
@@ -98,6 +112,14 @@ class SLDSLookup extends React.Component {
       currentFocus:null,
     });
   }
+
+  handleCancel(){
+    this.setState({
+      isOpen:false,
+      focusIndex:null,
+      currentFocus:null,
+    });
+  };
 
   handleClick() {
     this.setState({isOpen:true});
@@ -114,6 +136,7 @@ class SLDSLookup extends React.Component {
   handleChange(event) {
     const target = event.target || event.currentTarget;
     this.setState({searchTerm: target.value});
+    if(this.props.onChange) this.props.onChange(target.value);
   }
 
   handleKeyDown(event) {
@@ -134,16 +157,34 @@ class SLDSLookup extends React.Component {
       //If user hits enter/space key, select current activedescendant item
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.focusIndex !== null){
         EventUtil.trapImmediate(event);
-        //If the focus is on the first or last item in the menu (search details or add item buttons), then close.
+        //If the focus is on the first fixed Action Item in Menu
+        if(this.state.focusIndex === 0){
+          this.headerClick();
+        }
+        //If the focus is on the last fixed Action Item in Menu
+        else if(this.state.focusIndex === (this.state.listLength + 1)){
+          this.footerClick();
+        }
         //If not, then select menu item
-        (this.state.focusIndex === 0 || this.state.focusIndex === (this.state.listLength + 1)) ? this.handleClose() : this.selectItem(this.state.currentFocus);
+        else{
+          this.selectItem(this.state.currentFocus);
+        }
+      }
+    }
+  }
+
+  handlePillKeyDown(event){
+    if(event.keyCode){
+      if(event.keyCode === KEYS.DELETE || event.keyCode === KEYS.BACKSPACE){
+        EventUtil.trapImmediate(event);
+        this.handleDeleteSelected();
       }
     }
   }
 
   //=================================================
   // Rendering Things
-  renderMenu(){
+  renderMenuContent(){
     if(this.state.isOpen){
       return <Menu
         searchTerm={this.state.searchTerm}
@@ -151,54 +192,97 @@ class SLDSLookup extends React.Component {
         type={this.props.type}
         focusIndex={this.state.focusIndex}
         listLength={this.state.listLength}
-        items={this.props.items}
+        items={this.state.items}
         filterWith={this.props.filterWith}
         getListLength={this.getListLength.bind(this)}
         setFocus={this.setFocus.bind(this)}
         onSelect={this.selectItem.bind(this)}
-        addItem={this.addItem}
+        header={this.props.header}
+        headerClick={this.headerClick.bind(this)}
+        footer={this.props.footer}
+        footerClick={this.footerClick.bind(this)}
       />;
     }
   }
 
+  renderSimpleMenu(){
+    if(this.state.isOpen){
+
+      return <div className="ignore-react-onclickoutside slds-lookup__menu" role="listbox" ref="scroll">
+        { this.renderMenuContent() }
+      </div>;
+    }
+  }
+
+  renderModalMenu () {
+    if(this.state.isOpen){
+      return <SLDSPopover
+          className='slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu'
+          targetElement={this.refs.lookup}
+          closeOnTabKey={true}
+          onClose={this.handleCancel.bind(this)}>
+          {this.renderMenuContent()}
+        </SLDSPopover>;
+      }
+  };
+
   renderSelectedItem(){
     let selectedItem = this.props.items[this.state.selectedIndex].label;
     return (
-      <div className="slds-pill">
-        <a href="#" className="slds-pill__label">
+      <span tabIndex="0" className="slds-pill" ref={'pill-' + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
+        <span className="slds-pill__label">
           <Icon name={this.props.type} />
           {selectedItem}
-        </a>
+        </span>
         <SLDSButton
-          label={'Remove ' + selectedItem}
+          label='Press delete to remove'
+          tabIndex="-1"
           variant='icon'
           iconName='close'
           iconSize='medium'
           onClick={this.handleDeleteSelected.bind(this)}
           ref="clearSelectedItemButton"
         />
-      </div>
+      </span>
     );
+  }
+
+  modifyItems () {
+    const items = this.props.items.map((item, index) => { 
+      return {
+        id : 'item-' + index,
+        label: item.label,
+        data : item
+      }
+    });
+
+    this.setState({items:items});
+  }
+
+  componentWillReceiveProps (newProps) {
+    this.modifyItems();
   }
 
   render(){
     let inputClasses = this.state.selectedIndex === null ? 'slds-input':'slds-input slds-hide';
     let componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside":"slds-lookup ignore-react-onclickoutside slds-has-selection";
+    let inputContainerClasses =  this.state.selectedIndex === null ? '':' slds-input';
+    let inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: '5px'};
 
     return (
-      <div className={componentClasses} data-select="single" data-scope="single" data-typeahead="true">
+      <div className={componentClasses} data-select="multi" data-scope="single" data-typeahead="true">
         <section className="slds-form-element">
-          <label className="slds-form-element__label" forHTML="lookup">{this.props.label}</label>
 
-          <div className="slds-lookup__control slds-input-has-icon slds-input-has-icon--right">
+          <label className="slds-form-element__label" htmlFor={this.props.type + "Lookup"}>{this.props.label}</label>
+
+          <div className={"slds-lookup__control slds-input-has-icon slds-input-has-icon--right" + inputContainerClasses} style={inputContainerStyle}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             <InputIcon name="search"/>
             <input
-              id="lookup"
+              id={this.props.type + "Lookup"}
               ref="lookup"
               className={inputClasses}
               type="text"
-              aria-label="lookup"
               aria-haspopup="true"
               aria-autocomplete="list"
               aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:""}
@@ -213,7 +297,7 @@ class SLDSLookup extends React.Component {
             />
           </div>
 
-          {this.renderMenu()}
+          {this.props.modal?this.renderModalMenu():this.renderSimpleMenu()}
         </section>
       </div>
     );
@@ -227,17 +311,17 @@ SLDSLookup.propTypes = {
   type: React.PropTypes.string,
   filterWith: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
-  onAddItem: React.PropTypes.func,
+  onChange: React.PropTypes.func,
+  onFooterClick: React.PropTypes.func,
+  onHeaderClick: React.PropTypes.func,
+  modal: React.PropTypes.bool,
+  disabled: React.PropTypes.bool,
 };
 
 SLDSLookup.defaultProps = {
   filterWith: defaultFilter,
-  onItemSelect: function(item){
-    //console.log('onItemSelect should be defined');
-  },
-  onAddItem: function(event){
-    //console.log('onItemSelect should be defined');
-  },
+  modal: false,
+  disabled: false,
 };
 
 module.exports = SLDSLookup;

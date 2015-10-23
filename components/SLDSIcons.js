@@ -23,10 +23,9 @@ export const ButtonIcon = React.createClass({
         };
     },
 
-
     render() {
-
         const useTag = '<use xlink:href="'+SLDSSettings.getAssetsPath()+'/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
+
         let className  = 'slds-button__icon';
         if (this.props.variant !== 'icon') {
           //If no position prop given, default to left

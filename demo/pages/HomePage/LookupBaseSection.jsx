@@ -36,6 +36,28 @@ module.exports = React.createClass( {
     return {};
   },
 
+  newItem(){
+    alert('New Item Clicked');
+  },
+
+  customHeaderClick(){
+    alert('custom header clicked');
+  },
+
+  onChange(newValue){
+    console.log('New search term: ', newValue);
+  },
+
+  selectItem(item){
+    console.log(item , ' Selected');
+  },
+
+  getHeader(){
+    return(
+      <div>MY CUSTOM HEADER</div>
+    )
+  },
+
   render() {
     return (
 
@@ -44,7 +66,7 @@ module.exports = React.createClass( {
             <div className="slds-p-around--medium">
 
               <h3 className="slds-text-heading--medium slds-truncate">
-                Lookups (Work in progress)
+                Lookups
               </h3>
 
               <PrismCode className='language-markup'>
@@ -52,7 +74,17 @@ module.exports = React.createClass( {
               </PrismCode>
 
               <div className="slds-p-vertical--large">
-                <SLDSLookup items={items} label="Accounts" type="account" />
+                <SLDSLookup
+                  items={items}
+                  label="Accounts"
+                  type="account"
+                  header={this.getHeader()}
+                  onHeaderClick={this.customHeaderClick}
+                  footer={true}
+                  onFooterClick={this.newItem}
+                  onChange={this.onChange}
+                  onItemSelect={this.selectItem}
+                />
               </div>
 
             </div>
