@@ -78,12 +78,13 @@ class SLDSLookup extends React.Component {
 
   //=================================================
   // Select menu item (onClick or on key enter/space)
-  selectItem(itemId,data){
+  selectItem(itemId){
     const index = itemId.replace('item-', '');
     this.setState({
       selectedIndex: index,
       searchTerm: null
     });
+    const data = this.state.items[index].data;
     if(this.props.onItemSelect) this.props.onItemSelect(data);
   }
 
