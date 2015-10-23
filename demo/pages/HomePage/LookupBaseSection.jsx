@@ -54,7 +54,7 @@ module.exports = React.createClass( {
   getHeader(){
     return (
     <div className="slds-lookup__item" onClick={this.headerClick} onMouseDown={this.headerClick}>
-      <ActionItem item='search' type='account' searchTerm={searchTerm} />
+      <ActionItem item='search' type='account' />
     </div>
     )
   },
