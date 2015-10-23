@@ -3014,9 +3014,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  trapImmediate: function trapImmediate(event) {
+	
+	    if (event.stopImmediatePropagation) {
+	      event.stopImmediatePropagation();
+	    }
+	
 	    if (event.nativeEvent && event.nativeEvent.stopImmediatePropagation) {
 	      event.nativeEvent.stopImmediatePropagation();
 	    }
+	
 	    EventUtil.trap(event);
 	  }
 	
@@ -3254,6 +3260,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _listItem2 = _interopRequireDefault(_listItem);
 	
+	var _utils = __webpack_require__(6);
+	
 	module.exports = _react2["default"].createClass({
 	
 	  displayName: "SLDSPicklistBase-list",
@@ -3388,13 +3396,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  },
 	
+	  handleMouseDown: function handleMouseDown(event) {
+	    _utils.EventUtil.trapImmediate(event);
+	  },
+	
 	  render: function render() {
 	    return _react2["default"].createElement("div", {
 	      ref: "scroll",
 	      className: 'slds-wrap slds-grow slds-scrollable--y ' + this.props.className,
 	      style: {
 	        maxHeight: 260
-	      }
+	      },
+	      onMouseDown: this.handleMouseDown
 	    }, _react2["default"].createElement("ul", {
 	      ref: "scroll",
 	      className: "slds-dropdown__list slds-theme--" + this.props.theme,
@@ -9084,16 +9097,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  }, {
-	    key: 'newItem',
-	    value: function newItem() {
+	    key: 'footerClick',
+	    value: function footerClick() {
 	      this.handleClose();
-	      if (this.props.onNewItem) this.props.onNewItem();
+	      if (this.props.onFooterClick) this.props.onFooterClick();
 	    }
 	  }, {
-	    key: 'searchRecords',
-	    value: function searchRecords() {
+	    key: 'headerClick',
+	    value: function headerClick() {
 	      this.handleClose();
-	      if (this.props.onSearchRecords) this.props.onSearchRecords();
+	      if (this.props.onHeaderClick) this.props.onHeaderClick();
 	    }
 	
 	    //=================================================
@@ -9160,11 +9173,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	              _utils.EventUtil.trapImmediate(event);
 	              //If the focus is on the first fixed Action Item in Menu
 	              if (this.state.focusIndex === 0) {
-	                this.searchRecords();
+	                this.headerClick();
 	              }
 	              //If the focus is on the last fixed Action Item in Menu
 	              else if (this.state.focusIndex === this.state.listLength + 1) {
-	                  this.newItem();
+	                  this.footerClick();
 	                }
 	                //If not, then select menu item
 	                else {
@@ -9201,8 +9214,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	          getListLength: this.getListLength.bind(this),
 	          setFocus: this.setFocus.bind(this),
 	          onSelect: this.selectItem.bind(this),
-	          onSearchRecords: this.searchRecords.bind(this),
-	          onNewItem: this.newItem.bind(this)
+	          header: this.props.header,
+	          headerClick: this.headerClick.bind(this),
+	          footer: this.props.footer,
+	          footerClick: this.footerClick.bind(this)
 	        });
 	      }
 	    }
@@ -9295,10 +9310,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  filterWith: _react2['default'].PropTypes.func,
 	  onItemSelect: _react2['default'].PropTypes.func,
 	  onChange: _react2['default'].PropTypes.func,
-	  onNewItem: _react2['default'].PropTypes.func,
-	  onSearchRecords: _react2['default'].PropTypes.func,
-	  modal: _react2['default'].PropTypes["bool"],
-	  disabled: _react2['default'].PropTypes["bool"]
+	  onFooterClick: _react2['default'].PropTypes.func,
+	  onHeaderClick: _react2['default'].PropTypes.func,
+	  modal: _react2['default'].PropTypes.bool,
+	  disabled: _react2['default'].PropTypes.bool
 	};
 	
 	SLDSLookup.defaultProps = {
@@ -9417,6 +9432,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
+	    key: 'getHeader',
+	    value: function getHeader() {
+	      if (this.props.header !== false && this.props.header !== undefined) {
+	
+	        var content = (this.props.searchTerm ? '"' + this.props.searchTerm + '"' : "") + ' in ' + this.props.type + 's';
+	        if (this.props.header !== true) content = this.props.header;
+	
+	        var headerActive = false;
+	        this.props.focusIndex === 0 ? headerActive = true : headerActive = false;
+	
+	        return _react2['default'].createElement('div', { className: 'slds-lookup__item' }, _react2['default'].createElement(_ActionItem2['default'], {
+	          id: 'searchRecords',
+	          icon: this.props.header === true ? 'search' : false,
+	          type: this.props.type,
+	          isActive: headerActive,
+	          setFocus: this.props.setFocus,
+	          onSelect: this.props.headerClick
+	        }, content));
+	      }
+	    }
+	  }, {
+	    key: 'getFooter',
+	    value: function getFooter() {
+	      if (this.props.footer != false && this.props.footer !== undefined) {
+	
+	        var content = 'New ' + this.props.type;
+	        if (this.props.footer !== true) content = this.props.footer;
+	
+	        var footerActive = false;
+	        this.props.focusIndex === this.props.listLength + 1 ? footerActive = true : footerActive = false;
+	
+	        return _react2['default'].createElement('div', { className: 'slds-lookup__item' }, _react2['default'].createElement(_ActionItem2['default'], {
+	          id: 'addNewItem',
+	          icon: this.props.footer === true ? 'add' : false,
+	          type: this.props.type,
+	          isActive: footerActive,
+	          setFocus: this.props.setFocus,
+	          onSelect: this.props.footerClick
+	        }, content));
+	      }
+	    }
+	  }, {
 	    key: 'renderItems',
 	    value: function renderItems() {
 	      var _this = this;
@@ -9447,21 +9504,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.props.focusIndex === this.props.listLength + 1 ? isNewItemBtnActive = true : isNewItemBtnActive = false;
 	      this.props.focusIndex === 0 ? isSearchRecordsActive = true : isSearchRecordsActive = false;
 	
-	      return _react2['default'].createElement('section', null, _react2['default'].createElement('div', { className: 'slds-lookup__item' }, _react2['default'].createElement(_ActionItem2['default'], {
-	        id: 'searchRecords',
-	        icon: 'search',
-	        type: this.props.type,
-	        isActive: isSearchRecordsActive,
-	        setFocus: this.props.setFocus,
-	        onSelect: this.props.onSearchRecords
-	      }, this.props.searchTerm ? '"' + this.props.searchTerm + '"' : "", ' in ', this.props.type + 's')), _react2['default'].createElement('ul', { id: 'list', className: 'slds-lookup__list', role: 'presentation', ref: 'list' }, this.renderItems()), _react2['default'].createElement('div', { className: 'slds-lookup__item' }, _react2['default'].createElement(_ActionItem2['default'], {
-	        id: 'addNewItem',
-	        icon: 'add',
-	        type: this.props.type,
-	        isActive: isNewItemBtnActive,
-	        setFocus: this.props.setFocus,
-	        onSelect: this.props.onNewItem
-	      }, 'New ', this.props.type)));
+	      return _react2['default'].createElement('section', null, this.getHeader(), _react2['default'].createElement('ul', { id: 'list', className: 'slds-lookup__list', role: 'presentation', ref: 'list' }, this.renderItems()), this.getFooter());
 	    }
 	  }]);
 	
@@ -9477,9 +9520,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  items: _react2['default'].PropTypes.array,
 	  filterWith: _react2['default'].PropTypes.func,
 	  getListLength: _react2['default'].PropTypes.func,
-	  setFocus: _react2['default'].PropTypes.func,
-	  onSelect: _react2['default'].PropTypes.func,
-	  addItem: _react2['default'].PropTypes.func
+	  setFocus: _react2['default'].PropTypes.func
 	};
 	
 	Menu.defaultProps = {};
@@ -9653,12 +9694,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	*/
 	
-	'use strict';
+	"use strict";
 	
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
 	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
 	    }
 	  }return function (Constructor, protoProps, staticProps) {
 	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
@@ -9675,7 +9716,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } else {
 	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
-	    } else if ('value' in desc) {
+	    } else if ("value" in desc) {
 	      return desc.value;
 	    } else {
 	      var getter = desc.get;if (getter === undefined) {
@@ -9686,18 +9727,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
+	  return obj && obj.__esModule ? obj : { "default": obj };
 	}
 	
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError('Cannot call a class as a function');
+	    throw new TypeError("Cannot call a class as a function");
 	  }
 	}
 	
 	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== 'function' && superClass !== null) {
-	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
 	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
@@ -9713,26 +9754,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function ActionItem(props) {
 	    _classCallCheck(this, ActionItem);
 	
-	    _get(Object.getPrototypeOf(ActionItem.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(ActionItem.prototype), "constructor", this).call(this, props);
 	  }
 	
 	  _createClass(ActionItem, [{
-	    key: 'componentWillReceiveProps',
+	    key: "componentWillReceiveProps",
 	    value: function componentWillReceiveProps(nextProps) {
 	      if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
 	    }
 	  }, {
-	    key: 'render',
+	    key: "renderIcon",
+	    value: function renderIcon() {
+	      if (this.props.icon) {
+	        return _react2["default"].createElement(_SLDSIcons.Icon, { name: this.props.icon, category: "utility", size: "x-small", className: "slds-icon-text-default" });
+	      }
+	    }
+	  }, {
+	    key: "render",
 	    value: function render() {
 	      var className = 'slds-button';
 	      if (this.props.isActive) className += ' slds-theme--shade';
 	
-	      return _react2['default'].createElement('button', { id: this.props.id, tabIndex: '-1', className: className, onClick: this.props.onSelect, onMouseDown: this.props.onSelect }, _react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.icon, category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.children);
+	      return _react2["default"].createElement("button", { id: this.props.id, tabIndex: "-1", className: className, onClick: this.props.onSelect, onMouseDown: this.props.onSelect }, this.renderIcon(), this.props.children);
 	    }
 	  }]);
 	
 	  return ActionItem;
-	})(_react2['default'].Component);
+	})(_react2["default"].Component);
 	
 	ActionItem.propTypes = {};
 	
