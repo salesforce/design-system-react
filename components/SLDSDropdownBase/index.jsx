@@ -67,6 +67,8 @@ module.exports = React.createClass( {
   },
 
   componentDidMount () {
+    const id = React.findDOMNode(this.refs.button).getAttribute("data-reactid");
+    this.setState({triggerId:id});
     if(this.props.initialFocus){
       this.setFocus();
     }
@@ -115,11 +117,6 @@ module.exports = React.createClass( {
       this.handleSelect(this.getIndexByValue(this.props.value));
     }
 
-  },
-
-  componentDidMount(){
-    let id = React.findDOMNode(this.refs.button).getAttribute('data-reactid');
-    this.setState({triggerId:id});
   },
 
   getIndexByValue(value){
