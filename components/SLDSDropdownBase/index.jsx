@@ -30,7 +30,7 @@ module.exports = React.createClass( {
   propTypes : {
         onClick: PropTypes.func,
         onSelect: PropTypes.func.isRequired,
-        onUpdateHighlighted: PropTypes.func
+        onUpdateHighlighted: PropTypes.func,
     },
 
   getDefaultProps(){
@@ -54,6 +54,7 @@ module.exports = React.createClass( {
 
   getInitialState(){
     return {
+      triggerId:null,
       isOpen:false,
       isFocused:false,
       isClosing:false,
@@ -72,6 +73,53 @@ module.exports = React.createClass( {
     if(this.props.openOn === 'hover'){
 
     }
+  },
+
+  componentDidUpdate( prevProps, prevState) {
+
+    if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
+      if(this.state.lastBlurredIndex === this.state.highlightedIndex){
+        this.handleClose();
+      }
+    }
+
+    if(this.state.isOpen && !prevState.isOpen){
+      this.state.isClosing = false;
+    }
+
+    if(this.state.selectedIndex !== prevState.selectedIndex){
+      this.handleClose();
+    }
+    else if(this.state.isFocused && !prevState.isFocused){
+      this.setState({isOpen:false});
+    }
+    else if(!this.state.isFocused && prevState.isFocused){
+      if(this.refs.list){
+        if(this.isMounted() && this.refs.list){
+          if(this.refs.list.getDOMNode().contains(document.activeElement)){
+            return;
+          }
+          this.setState({isOpen:false})
+        }
+      }
+    }
+    else if(this.state.isClosing && !prevState.isClosing){
+      setTimeout(()=>{
+        if(this.state.isClosing){
+          this.setState({isOpen:false});
+        }
+      },this.props.hoverCloseDelay);
+    }
+
+    if(this.props.value !== prevProps.value){
+      this.handleSelect(this.getIndexByValue(this.props.value));
+    }
+
+  },
+
+  componentDidMount(){
+    let id = React.findDOMNode(this.refs.button).getAttribute('data-reactid');
+    this.setState({triggerId:id});
   },
 
   getIndexByValue(value){
@@ -163,9 +211,6 @@ module.exports = React.createClass( {
     return React.findDOMNode(this.refs.button);
   },
 
-  moveHighlight(delta) {
-  },
-
   handleKeyDown(event) {
     if (event.keyCode){
       if (event.keyCode === KEYS.ENTER ||
@@ -199,6 +244,7 @@ module.exports = React.createClass( {
 
   getPopoverContent() {
     return <List
+            triggerId={this.state.triggerId}
             ref='list'
             options={this.props.options}
             className={this.props.listClassName}
@@ -274,8 +320,10 @@ module.exports = React.createClass( {
       ]);
     return (
 
+
       <SLDSButton
         ref='button'
+        id={this.state.triggerId}
         aria-haspopup='true'
         label={this.props.label}
         className={this.props.className}
@@ -297,49 +345,7 @@ module.exports = React.createClass( {
       </SLDSButton>
 
     );
-  },
-
-  componentDidUpdate( prevProps, prevState) {
-
-    if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
-      if(this.state.lastBlurredIndex === this.state.highlightedIndex){
-        this.handleClose();
-      }
-    }
-
-    if(this.state.isOpen && !prevState.isOpen){
-      this.state.isClosing = false;
-    }
-
-    if(this.state.selectedIndex !== prevState.selectedIndex){
-      this.handleClose();
-    }
-    else if(this.state.isFocused && !prevState.isFocused){
-      this.setState({isOpen:false});
-    }
-    else if(!this.state.isFocused && prevState.isFocused){
-      if(this.refs.list){
-        if(this.isMounted() && this.refs.list){
-          if(this.refs.list.getDOMNode().contains(document.activeElement)){
-            return;
-          }
-          this.setState({isOpen:false})
-        }
-      }
-    }
-    else if(this.state.isClosing && !prevState.isClosing){
-      setTimeout(()=>{
-        if(this.state.isClosing){
-          this.setState({isOpen:false});
-        }
-      },this.props.hoverCloseDelay);
-    }
-
-    if(this.props.value !== prevProps.value){
-      this.handleSelect(this.getIndexByValue(this.props.value));
-    }
-
-  },
+  }
 
 });
 
