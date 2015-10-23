@@ -44,8 +44,9 @@ class SLDSLookup extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState){
+    let lookup = this.props.type + 'Lookup';
     if(prevState.selectedIndex && !this.state.selectIndex){
-      if(this.refs.lookup) React.findDOMNode(this.refs.lookup).focus();
+      if(this.refs[lookup]) React.findDOMNode(this.refs[lookup]).focus();
     }
     else if(!prevState.selectedIndex && this.state.selectedIndex){
       let selectedItem = 'pill-' + this.state.selectedIndex;
@@ -202,10 +203,11 @@ class SLDSLookup extends React.Component {
   }
 
   renderModalMenu () {
+    let targetElem = this.props.type + 'Lookup';
     if(this.state.isOpen){
       return <SLDSPopover
           className='slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu'
-          targetElement={this.refs.lookup}
+          targetElement={this.refs[targetElem]}
           closeOnTabKey={true}
           onClose={this.handleCancel.bind(this)}>
           {this.renderMenuContent()}
@@ -267,7 +269,7 @@ class SLDSLookup extends React.Component {
             <InputIcon name="search"/>
             <input
               id={this.props.type + "Lookup"}
-              ref="lookup"
+              ref={this.props.type + "Lookup"}
               className={inputClasses}
               type="text"
               aria-haspopup="true"
