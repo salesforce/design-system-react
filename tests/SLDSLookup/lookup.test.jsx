@@ -1,6 +1,7 @@
 const React = require('react/addons');
 const TestUtils = React.addons.TestUtils;
 import {SLDSLookup} from '../../components';
+import ActionItem from '../../components/SLDSLookup/Menu/ActionItem';
 
 describe('SLDSLookup: ',  function(){
 
@@ -67,8 +68,18 @@ describe('SLDSLookup: ',  function(){
 
   describe('selecting item works', function() {
 
-    it('focuses correct item', function() {
+    it('no fixed header: focuses correct item', function() {
       let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" />);
+      let input = lookup.getElementsByTagName("input")[0];
+      TestUtils.Simulate.click(input);
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      let ariaActiveDescendant = lookup.getElementsByTagName("input")[0].getAttribute("aria-activedescendant");
+      expect(ariaActiveDescendant).to.equal('item-1');
+    });
+
+    it('with fixed header: focuses correct item', function() {
+      let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" header={<div>header</div>}/>);
       let input = lookup.getElementsByTagName("input")[0];
       TestUtils.Simulate.click(input);
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
