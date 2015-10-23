@@ -30,9 +30,15 @@ const EventUtil = {
   },
 
   trapImmediate(event){
+
+    if(event.stopImmediatePropagation){
+      event.stopImmediatePropagation();
+    }
+
     if(event.nativeEvent && event.nativeEvent.stopImmediatePropagation){
       event.nativeEvent.stopImmediatePropagation();
     }
+
     EventUtil.trap(event);
   }
 
