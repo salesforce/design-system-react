@@ -43,25 +43,25 @@ module.exports = React.createClass( {
     console.log(item , ' Selected');
   },
 
-  searchRecords(){
-    alert('Search Records Clicked');
+  headerClick(){
+    console.log('=====> Lookup Header Clicked');
   },
 
-  newItem(){
-    alert('New Item Clicked');
+  footerClick(){
+    console.log('=====> Lookup Footer Clicked');
   },
 
   getHeader(){
     return (
-    <div className="slds-lookup__item" onClick={this.searchRecords} onMouseDown={this.searchRecords}>
-      <ActionItem item='search' type='account' />
+    <div className="slds-lookup__item" onClick={this.headerClick} onMouseDown={this.headerClick}>
+      <ActionItem item='search' type='account' searchTerm={searchTerm} />
     </div>
     )
   },
 
   getFooter(){
     return (
-    <div className="slds-lookup__item" onClick={this.newItem} onMouseDown={this.newItem}>
+    <div className="slds-lookup__item" onClick={this.footerClick} onMouseDown={this.footerClick}>
       <ActionItem item='newItem' type='account' />
     </div>
     )
@@ -85,7 +85,7 @@ module.exports = React.createClass( {
               <div className="slds-p-vertical--large">
                 <SLDSLookup
                   items={items}
-                  label="Accounts"
+                  label="Account"
                   type="account"
                   header={this.getHeader()}
                   footer={this.getFooter()}

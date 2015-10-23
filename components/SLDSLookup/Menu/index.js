@@ -118,6 +118,8 @@ Menu.propTypes = {
   filterWith: React.PropTypes.func,
   getListLength: React.PropTypes.func,
   setFocus: React.PropTypes.func,
+  header: React.PropTypes.element,
+  footer: React.PropTypes.element,
 };
 
 Menu.defaultProps = {
