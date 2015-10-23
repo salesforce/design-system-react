@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import {Icon} from "../SLDSIcons";
 import ListItem from "./list-item";
+import {EventUtil} from '../utils'
 
 module.exports = React.createClass({
 
@@ -147,6 +148,10 @@ module.exports = React.createClass({
     });
   },
 
+  handleMouseDown (event) {
+    EventUtil.trapImmediate(event);
+  },
+
   render () {
     return (
       <div
@@ -155,6 +160,7 @@ module.exports = React.createClass({
         style={{
           maxHeight:260
         }}
+        onMouseDown={this.handleMouseDown}
         >
         <ul
           ref="scroll"
