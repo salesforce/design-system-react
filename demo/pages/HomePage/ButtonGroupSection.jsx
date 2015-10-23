@@ -51,7 +51,6 @@ module.exports = React.createClass( {
                   <SLDSButton label='Save' variant='neutral' />
 
                 <SLDSDropdownBase
-                    id='dropdownGroupBtn01'
                     label='More Options'
                     variant='icon'
                     iconName='down'

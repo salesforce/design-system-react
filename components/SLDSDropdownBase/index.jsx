@@ -29,7 +29,6 @@ module.exports = React.createClass( {
 
   propTypes : {
         onClick: PropTypes.func,
-        id: PropTypes.string.isRequired,
         onSelect: PropTypes.func.isRequired,
         onUpdateHighlighted: PropTypes.func,
     },
@@ -55,6 +54,7 @@ module.exports = React.createClass( {
 
   getInitialState(){
     return {
+      triggerId:null,
       isOpen:false,
       isFocused:false,
       isClosing:false,
@@ -117,6 +117,10 @@ module.exports = React.createClass( {
 
   },
 
+  componentDidMount(){
+    let id = React.findDOMNode(this.refs.button).getAttribute('data-reactid');
+    this.setState({triggerId:id});
+  },
 
   getIndexByValue(value){
     let foundIndex = -1;
@@ -240,7 +244,7 @@ module.exports = React.createClass( {
 
   getPopoverContent() {
     return <List
-            id={this.props.id}
+            triggerId={this.state.triggerId}
             ref='list'
             options={this.props.options}
             className={this.props.listClassName}
@@ -316,9 +320,10 @@ module.exports = React.createClass( {
       ]);
     return (
 
+
       <SLDSButton
         ref='button'
-        id={this.props.id}
+        id={this.state.triggerId}
         aria-haspopup='true'
         label={this.props.label}
         className={this.props.className}
