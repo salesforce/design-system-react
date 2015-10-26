@@ -7,6 +7,7 @@ import PicklistCore, {CONTROL} from '../../core/picklist';
 // Framework specific
 import Events from '../events';
 import State from '../state';
+import SvgObject from '../svg';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -51,6 +52,13 @@ export function _renderItem (item) {
 		$a.attr('aria-disabled', true);
 	}
 
+	const icon = item.getIcon();
+
+	if (Lib.isString(icon) && icon.length > 0) {
+		const $icon = this._renderIcon(icon, 'slds-icon slds-icon--small slds-icon--right');
+		$a.append($icon);
+	}
+
 	return $li;
 }
 
@@ -62,7 +70,7 @@ export function _renderDivider () {
 	return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
 }
 
-export const PicklistObject = {
+export const PicklistObject = Lib.merge(SvgObject, {
 	_initElements (base, elements) {
 		const els = elements || {};
 
@@ -306,14 +314,14 @@ export const PicklistObject = {
 		
 		if ($li) {
 			$li.parent()
-				.find('.slds-is-selected').removeClass('.slds-is-selected')
-				.find('svg').remove();
+				.find('.slds-is-selected').removeClass('slds-is-selected')
+				.find('svg.slds-icon--left').remove();
 	
 			$li.addClass('slds-is-selected');
 			$li.find('a').prepend('<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--left"><use xlink:href="/assets/design-system/icons/standard-sprite/svg/symbols.svg#task2"></use></svg>');
 		}
 	}
-};
+});
 
 Lib.merge(Picklist.prototype, PicklistCore, Events, State, PicklistObject);
 

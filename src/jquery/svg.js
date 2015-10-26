@@ -11,10 +11,10 @@ import classNames from 'classnames';
 
 export const SvgObject = {
 
-	_getSVGPath () {
+	_getSVGPath (iconString) {
 		// TODO: Evaluate best way to do this and clean this up more
 		const iconPaths = Lib.getIconPaths();
-		const icon = Lib.isString( this.getProperty('icon') ) && this.getProperty('icon').split('.');
+		const icon = Lib.isString(iconString) && iconString.split('.');
 		
 		if (icon.length === 2) {
 			const iconPath = iconPaths[icon[0]];
@@ -25,8 +25,13 @@ export const SvgObject = {
 		}
 	},
 
-	_getIconClassNames () {
+	_getIconClassNames (classes) {
 		let iconBaseClass;
+		let extras = [];
+
+		if (Lib.isString(classes)) {
+			extras = classes.split(' ');
+		}
 
 		if ( this.getProperty('view') ) {
 			iconBaseClass = this.cssClasses.STATEFUL_ICON;
@@ -34,15 +39,16 @@ export const SvgObject = {
 			iconBaseClass = this.cssClasses.ICON;
 		}
 
-		return classNames(iconBaseClass,
+		return classNames(iconBaseClass, extras,
 			!!this.getProperty('text') && this.childIconStyles[ this.getProperty('iconPosition') ]);
 	},
 
-	_renderIcon () {
+	_renderIcon (iconString, extraClasses) {
 		let $icon = undefined;
+		const icon = iconString || this.getProperty('icon');
 
-		if (this.getProperty('icon')) {
-			$icon = $('<svg ' + 'class="' + this._getIconClassNames() + '"><use xlink:href="' + this._getSVGPath() + '"></use></svg>')
+		if (icon) {
+			$icon = $('<svg ' + 'class="' + this._getIconClassNames(extraClasses) + '"><use xlink:href="' + this._getSVGPath(icon) + '"></use></svg>')
 				.attr('aria-hidden', 'true');
 		}
 

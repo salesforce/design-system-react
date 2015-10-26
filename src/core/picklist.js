@@ -91,6 +91,10 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 
 		getKey (item) {
 			return item.get();
+		},
+
+		getIcon (item) {
+			return item.get('icon');
 		}
 	},
 
