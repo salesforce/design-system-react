@@ -35,17 +35,8 @@ const RadioObject = Lib.merge({}, CheckboxObject, {
 		name: ''
 	},
 
-	// TODO: why not just call check from the change event below?
-	_handleInputChange () {
-		this.check();
-	},
-
 	_bindUIEvents () {
-		this.elements.input.on('change', $.proxy(this._handleInputChange, this));
-	},
-
-	_onToggled () {
-		this.elements.input.prop('checked', this.isChecked());
+		this.elements.input.on('change', $.proxy(this.check, this));
 	},
 
 	// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents

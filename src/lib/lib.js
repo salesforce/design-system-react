@@ -139,7 +139,7 @@ export function wrapElement (element) {
 	
 	// Special function to check if the element is offScreen (not a jQuery method clone)
 	if (!isFunction(wrapped.isOffscreen)) {
-		wrapped.isOffscreen = partial(isOffscreen, element);
+		wrapped.isOffscreen = partial(isOffscreen, wrapped[0]);
 	}
 	
 	return wrapped;

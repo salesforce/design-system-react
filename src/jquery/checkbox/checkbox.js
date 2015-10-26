@@ -36,12 +36,7 @@ export const CheckboxObject = {
 	},
 
 	_bindUIEvents () {
-		this.elements.input.on('change', $.proxy(this._handleInputChange, this));
-	},
-
-	// TODO: why not just call toggle from the change event above?
-	_handleInputChange () {
-		this.toggle();
+		this.elements.input.on('change', $.proxy(this.toggle, this));
 	},
 
 	_initElements ($base, elements) {
@@ -86,8 +81,8 @@ export const CheckboxObject = {
 		this._bindUIEvents();
 	},
 
-	_onToggled () {
-		this.elements.input.prop('checked', this.isChecked());
+	_onToggled (checked) {
+		this.elements.input.prop('checked', checked);
 	},
 
 	_render () {

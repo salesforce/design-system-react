@@ -11,21 +11,21 @@ import Selectable from '../traits/selectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
 // Styles
-require('../../scss/components/button-groups/flavors/base/index.scss');
-require('../../scss/components/buttons/flavors/base/index.scss');
-require('../../scss/components/buttons/flavors/neutral/index.scss');
-require('../../scss/components/buttons/flavors/brand/index.scss');
-require('../../scss/components/picklists/flavors/base/index.scss');
-require('../../scss/components/picklists/flavors/multi-select/index.scss');
-require('../../scss/components/picklists/flavors/quickfind/index.scss');
-require('../../scss/components/dropdowns/flavors/base/index.scss');
-require('../../scss/components/dropdowns/flavors/action-overflow/index.scss');
-require('../../scss/components/dropdowns/flavors/base/index.scss');
-require('../../scss/components/dropdowns/flavors/menu/index.scss');
-require('../../scss/components/dropdowns/flavors/menu-with-icons/index.scss');
-require('../../scss/components/dropdowns/flavors/menu-with-search/index.scss');
-require('../../scss/components/dropdowns/flavors/positioning/index.scss');
-require('../../scss/components/dropdowns/flavors/search-overflow/index.scss');
+// require('../../scss/components/button-groups/flavors/base/index.scss');
+// require('../../scss/components/buttons/flavors/base/index.scss');
+// require('../../scss/components/buttons/flavors/neutral/index.scss');
+// require('../../scss/components/buttons/flavors/brand/index.scss');
+// require('../../scss/components/picklists/flavors/base/index.scss');
+// require('../../scss/components/picklists/flavors/multi-select/index.scss');
+// require('../../scss/components/picklists/flavors/quickfind/index.scss');
+// require('../../scss/components/dropdowns/flavors/base/index.scss');
+// require('../../scss/components/dropdowns/flavors/action-overflow/index.scss');
+// require('../../scss/components/dropdowns/flavors/base/index.scss');
+// require('../../scss/components/dropdowns/flavors/menu/index.scss');
+// require('../../scss/components/dropdowns/flavors/menu-with-icons/index.scss');
+// require('../../scss/components/dropdowns/flavors/menu-with-search/index.scss');
+// require('../../scss/components/dropdowns/flavors/positioning/index.scss');
+// require('../../scss/components/dropdowns/flavors/search-overflow/index.scss');
 
 export const CONTROL = 'picklist';
 

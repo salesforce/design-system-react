@@ -9,21 +9,21 @@ import Disableable from '../traits/disableable';
 // Third party
 import classNames from 'classnames';
 
-require('../../scss/components/button-groups/flavors/base/index.scss');
-require('../../scss/components/button-groups/flavors/icon-group/index.scss');
-require('../../scss/components/button-groups/flavors/inverse/index.scss');
-require('../../scss/components/buttons/flavors/base/index.scss');
-require('../../scss/components/buttons/flavors/brand/index.scss');
-require('../../scss/components/buttons/flavors/hint/index.scss');
-require('../../scss/components/buttons/flavors/icon/index.scss');
-require('../../scss/components/buttons/flavors/icon-inverse/index.scss');
-require('../../scss/components/buttons/flavors/icon-more/index.scss');
-require('../../scss/components/buttons/flavors/icon-stateful/index.scss');
-require('../../scss/components/buttons/flavors/inverse/index.scss');
-require('../../scss/components/buttons/flavors/neutral/index.scss');
-require('../../scss/components/buttons/flavors/neutral-icon/index.scss');
-require('../../scss/components/buttons/flavors/stateful/index.scss');
-require('../../scss/components/buttons/flavors/stateful-inverse/index.scss');
+// require('../../scss/components/button-groups/flavors/base/index.scss');
+// require('../../scss/components/button-groups/flavors/icon-group/index.scss');
+// require('../../scss/components/button-groups/flavors/inverse/index.scss');
+// require('../../scss/components/buttons/flavors/base/index.scss');
+// require('../../scss/components/buttons/flavors/brand/index.scss');
+// require('../../scss/components/buttons/flavors/hint/index.scss');
+// require('../../scss/components/buttons/flavors/icon/index.scss');
+// require('../../scss/components/buttons/flavors/icon-inverse/index.scss');
+// require('../../scss/components/buttons/flavors/icon-more/index.scss');
+// require('../../scss/components/buttons/flavors/icon-stateful/index.scss');
+// require('../../scss/components/buttons/flavors/inverse/index.scss');
+// require('../../scss/components/buttons/flavors/neutral/index.scss');
+// require('../../scss/components/buttons/flavors/neutral-icon/index.scss');
+// require('../../scss/components/buttons/flavors/stateful/index.scss');
+// require('../../scss/components/buttons/flavors/stateful-inverse/index.scss');
 
 export const CONTROL = 'slds-button';
 

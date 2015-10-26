@@ -20,20 +20,21 @@ module.exports = function (grunt) {
 		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
 
 		// TASK CONFIG
-		babel: {
-			options: {
-				modules: 'umd',
-				experimental: true
-			},
-			dist: {
-				files: [{
-					expand: true,
-					cwd: 'src/',
-					src: ['**/*.js', '!**/example.js', '!**/examples.js'],
-					dest: 'dist/'
-				}]
-			}
-		},
+		// This task isn't currently used
+		// babel: {
+		// 	options: {
+		// 		modules: 'umd',
+		// 		experimental: true
+		// 	},
+		// 	dist: {
+		// 		files: [{
+		// 			expand: true,
+		// 			cwd: 'src/',
+		// 			src: ['**/*.js', '!**/example.js', '!**/examples.js'],
+		// 			dest: 'dist/'
+		// 		}]
+		// 	}
+		// },
 		eslint: {
 			target: [
 				'Gruntfile.js',
@@ -84,10 +85,9 @@ module.exports = function (grunt) {
 				}
 			}
 		},
-		webpack: {
-			options: require('./webpack.config'),
-			build: {
-			}
+		'webpack': {
+			options: require('./webpack.dist.config'),
+			build: {}
 		},
 		'webpack-dev-server': {
 			start: {
@@ -105,7 +105,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('default', ['compileTests', 'compileTestsApi']);
 	// Temporarily disabling linting of the tests
 	// grunt.registerTask('build', ['default', 'eslint', 'babel']);
-	grunt.registerTask('build', ['default', 'babel']);
+	grunt.registerTask('build', ['webpack']);
 	grunt.registerTask('serve', 'Runs webpack with hot module swapping', ['default', 'webpack-dev-server:start']);
 	grunt.registerTask('serve-watch', 'For concurrent watch task / webpack watch (use in new window)', ['default', 'watch:tests']);
 	grunt.registerTask('test', ['default', 'webpack', 'connect', 'mocha']);

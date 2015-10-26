@@ -8,9 +8,9 @@ import classNames from 'classnames';
 import Multiselectable from '../traits/multiselectable';
 
 // Styles
-require('../../scss/components/data-tables/flavors/base/index.scss');
-require('../../scss/components/data-tables/flavors/responsive-stacked/index.scss');
-require('../../scss/components/data-tables/flavors/responsive-stacked-horizontal/index.scss');
+// require('../../scss/components/data-tables/flavors/base/index.scss');
+// require('../../scss/components/data-tables/flavors/responsive-stacked/index.scss');
+// require('../../scss/components/data-tables/flavors/responsive-stacked-horizontal/index.scss');
 
 export const CONTROL = 'table';
 

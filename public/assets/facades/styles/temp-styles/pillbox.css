@@ -2,7 +2,7 @@
 	border: none;
 	color:  rgb(84, 105, 141); /* $color-text-placeholder */
 	margin-left: 0.25rem;
-	margin-top: -4px;
+	margin-top: 0;
 }
 
 .slds-pillbox .slds-pill-add-item:active {

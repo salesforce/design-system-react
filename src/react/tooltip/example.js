@@ -12,9 +12,9 @@ export default function () {
 
 		render () {
 			return (
-				<div className="react-tooltip-example-wrap">
+				<div className="react-tooltip-example-wrap" ref="container">
 					<button id="tooltip-react-toggle" className="slds-button slds-button--neutral slds-button--x-small" ref="target" onClick={this._handleClick}>Toggle</button>
-					<Tooltip placement="right" isOpen={this.state.isOpen} align={this.state.align}>
+					<Tooltip placement="right" isOpen={this.state.isOpen} align={this.refs.target} container={this.refs.container}>
 						<span>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</span>
 					</Tooltip>
 				</div>
@@ -23,8 +23,7 @@ export default function () {
 
 		_handleClick () {
 			this.setState({
-				isOpen: !this.state.isOpen,
-				align: this.refs.target
+				isOpen: !this.state.isOpen
 			});
 		}
 	});

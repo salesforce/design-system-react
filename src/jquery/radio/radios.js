@@ -48,20 +48,24 @@ const RadiosObject = Lib.merge({}, {
 	},
 
 	_handleInputChange (e) {
-		this.syncRadios(e.target.value, true);
+		let targetI = null;
+
+		this.radios.map( function (radio, i) {
+			if (radio.options.value === e.target.value) {
+				targetI = i;
+			}
+		});
+
+		this.check(targetI);
 	},
 
 	_onInitialized () {
-		// TODO: this may have only been applicable for Fuel UX. Is the else even reachable?
-		if (!this.rendered) {
-			this._render();
-		} else {
-			// ensuring there were no markup mistakes in regards to state
-			this._onEnabledOrDisabled();
-			this._onToggled();
-		}
-
+		this._render();
 		this._bindUIEvents();
+		// only run if all need disabled. Otherwise it will incorrectly enable explicitly disabled radios on init.
+		if (this.getProperty('disabled')) {
+			this._onEnabledOrDisabled();
+		}
 	},
 
 	_initElements ($base, elements) {
@@ -79,7 +83,7 @@ const RadiosObject = Lib.merge({}, {
 		const elements = this._initElements($el, this.elements);
 		const itag = '<i />';
 
-		this._renderDressings(elements);
+		elements.label.append(this.getProperty('labelText'));
 
 		$el.find('.' + this.cssClasses.CONTROL).append(elements.radios);
 		$el = $(itag).append($el);
@@ -88,17 +92,6 @@ const RadiosObject = Lib.merge({}, {
 		elements.wrapper.append($el.children());
 
 		this.rendered = true;
-	},
-
-	// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
-	// there is no guidance as to what should be done here and/or why
-	_renderDressings (elements) {
-		elements.label.append(this.getProperty('labelText'));
-
-		// only run this on init if all need disabled. Otherwise it will incorrectly enable explicitly disabled radios on init.
-		if (this.getProperty('disabled')) {
-			this._onEnabledOrDisabled();
-		}
 	},
 
 	_onEnabledOrDisabled () {
@@ -117,10 +110,12 @@ const RadiosObject = Lib.merge({}, {
 		}
 	},
 
-	toggle (i, checked) {
-		if (this.radios[i].getProperty('disabled')) {return;}
-
-		this.syncRadios(this.radios[i].options.value, checked);
+	toggle (i) {
+		if (this.radios[i].checked()) {
+			this.uncheck(i);
+		} else {
+			this.check(i);
+		}
 	},
 
 	// returns the Radio object at the specified index.
@@ -136,16 +131,30 @@ const RadiosObject = Lib.merge({}, {
 	},
 
 	check (i) {
-		this.toggle(i, true);
+		const target = this.radios[i];
+
+		if (target.getProperty('disabled')) {return;}
+
+		// Must set all checked to false first before you set desired checked to true. If you don't, if there is already one set to true further on
+		// in the map, it will ignore you trying to set your target to true.
+		this.radios.map( function (radio) {
+			if (radio.options.value !== target.options.value) {
+				radio.uncheck();
+			}
+		});
+
+		target.check();
 	},
 
 	uncheck (i) {
-		this.toggle(i, false);
+		if (this.radios[i].getProperty('disabled')) {return;}
+
+		this.radios[i].uncheck();
 	},
 
 	getChecked () {
 		for (const radio of this.radios) {
-			if (radio.isChecked()) {
+			if (radio.checked()) {
 				return radio;
 			}
 		}
@@ -153,36 +162,10 @@ const RadiosObject = Lib.merge({}, {
 
 	getValue () {
 		for (const radio of this.radios) {
-			if (radio.isChecked()) {
+			if (radio.checked()) {
 				return radio.options.value;
 			}
 		}
-	},
-
-	/*
-	 * ensures that the proper radio is checked
-	 *
-	 * targetValue - String representing the `value` attribute of the target Radio. We use `targetValue` instead of `i` because when a DOM interaction with
-	 *					a Radio occurs, the Radio itself fires this off. Individual Radio components should not know or keep track of their `i` within the
-	 *					Radios' map, so we do the finding here based on the Radio's value (which it should and does know)
-	 * checkedValue - Boolean to set target Radio's `checked` attribute to.
-	 */
-	syncRadios (targetValue, checkedValue) {
-		// Must set all checked to false first before you set desired checked to true. If you don't, if there is already one set to true further on
-		// in the map, it will ignore you trying to set your target to true. You only need to do this if you are setting one to `true`.
-		if (checkedValue) {
-			this.radios.map( function (radio) {
-				if (radio.elements.input.val() !== targetValue) {
-					radio.toggle(false);
-				}
-			});
-		}
-
-		this.radios.map( function (radio) {
-			if (radio.elements.input.val() === targetValue) {
-				radio.toggle(checkedValue);
-			}
-		});
 	},
 
 	destroy () {

@@ -8,24 +8,42 @@ import PopoverCore, {CONTROL} from '../../core/popover';
 import React from 'react';
 import State from '../mixins/state';
 import Events from '../mixins/events';
+import genericWillMount from '../mixins/generic-will-mount';
 
-// Third party
-import classNames from 'classnames';
+export const PopoverMethods = {
+	_setElements () {
+		this.elements.popover = Lib.wrapElement(this.refs.popover);
+		this.elements.container = Lib.wrapElement(this.props.container || this.elements.wrapper);
+		this.elements.align = Lib.wrapElement(this.props.align || this.elements.container);
+	},
+	
+	componentWillMount: function () {
+		this.setState({
+			isHidden: !this.props.isOpen
+		});
+	},
+	
+	componentWillReceiveProps: function (nextProps) {
+		this.setState({
+			isHidden: !nextProps.isOpen
+		});
+	},
 
-let Popover = Lib.merge({}, PopoverCore, {
-	mixins: [State, Events],
+	componentDidUpdate () {
+		this._updatePosition();
+	}
+};
+
+let Popover = Lib.merge({}, PopoverCore, PopoverMethods, {
+	mixins: [State, Events, genericWillMount],
 
 	render () {
-		let position;
-
 		if (this.refs.popover) {
 			this._setElements();
 		}
 
-		position = this._popoverPosition();
-
 		return (
-			<div className={classNames(this.getClassNames(), {'slds-hidden': !this.props.isOpen})} role="dialog" ref="popover" style={position}>
+			<div className={this._getClassNames()} role="dialog" ref="popover">
 				<div className="slds-popover__content">
 					{this._renderHeader()}
 					<div className="slds-popover__body">{this.props.children}</div>
@@ -42,31 +60,6 @@ let Popover = Lib.merge({}, PopoverCore, {
 				</div>
 			);
 		}
-	},
-
-	componentWillMount () {
-		this.elements = {};
-	},
-
-	_setElements () {
-		this.elements.popover = this.refs.popover;
-		this.elements.container = this.props.container;
-		this.elements.align = this.props.align;
-	},
-
-	_popoverPosition () {
-		let position;
-
-		if (this.elements && this.elements.popover) {
-			position = this.getElementAlignment(this.elements.popover, this.elements.container || this.refs.popover.parentNode, this.elements.align);
-		} else {
-			position = {
-				left: 0,
-				top: 0
-			};
-		}
-
-		return position;
 	}
 
 });

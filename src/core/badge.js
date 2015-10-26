@@ -7,7 +7,7 @@ import Base from './base';
 import classNames from 'classnames';
 
 // Styles
-require('../../scss/components/badges/flavors/base/index.scss');
+// require('../../scss/components/badges/flavors/base/index.scss');
 
 export const CONTROL = 'slds-badge';
 

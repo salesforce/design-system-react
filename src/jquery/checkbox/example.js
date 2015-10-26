@@ -18,11 +18,11 @@ $(function () {
 	});
 
 	$('#checkbox-jquery-check').on('click', function () {
-		checkbox1.toggle(true);
+		checkbox1.check();
 	});
 
 	$('#checkbox-jquery-uncheck').on('click', function () {
-		checkbox1.toggle(false);
+		checkbox1.uncheck();
 	});
 
 	$('#checkbox-jquery-disable').on('click', function () {

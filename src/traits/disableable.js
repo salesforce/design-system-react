@@ -4,7 +4,7 @@ import * as Lib from '../lib/lib';
 
 const Disableable = {
 	cssClasses: {
-		DISABLED: 'disabled'
+		DISABLED: 'slds-disabled'
 	},
 
 	_defaultProperties: {
@@ -18,7 +18,6 @@ const Disableable = {
 		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
 
 		this.trigger('enabled');
-		this.trigger('disabledValueChanged', property);
 	},
 
 	disable () {
@@ -28,7 +27,6 @@ const Disableable = {
 		if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
 
 		this.trigger('disabled');
-		this.trigger('disabledValueChanged', property);
 	}
 };
 
