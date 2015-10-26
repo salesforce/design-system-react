@@ -53,7 +53,7 @@ export const ButtonObject = {
 		
 		const defaultView = views.length > 0 ? 'notSelected' : null;
 		
-		views.push(<ButtonView assistiveText={this.props.assistiveText} icon={this.props.icon} text={this.props.text} view={defaultView} iconPosition={this.props.iconPosition} key="default" />);
+		views.push(<ButtonView assistiveText={this.props.assistiveText} icon={this.props.icon} iconStyle={this.props.iconStyle} text={this.props.text} view={defaultView} iconPosition={this.props.iconPosition} key="default" />);
 		
 		return views;
 	},
@@ -65,7 +65,7 @@ export const ButtonObject = {
 		return (
 			<button type="button"
 				onClick={this.props.onClick}
-				className={this._getClassNames(hasChildren)}
+				className={this._getClassNames(hasChildren || this.props.selectable)}
 				disabled={this.props.disabled}>{this._renderViews()}</button>
 		);
 	}

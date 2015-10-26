@@ -6,8 +6,8 @@ import ButtonCore, {CONTROL} from '../../core/button';
 
 // Framework specific
 import Events from '../events';
-import Svg from '../svg';
 import State from '../state';
+import ButtonView from './button-view';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -15,6 +15,16 @@ const $ = Lib.global.jQuery || Lib.global.$;
 let Button = function Button (element, options) {
 	this.options = {};
 	Lib.merge(this.options, this._defaultProperties, options);
+
+	// if button has views, button is stateful
+	if (this.options.views.length > 0) {
+		const buttonOptions = Lib.merge({}, this.options);
+		buttonOptions.views = undefined;	// really should be delete, but performance
+
+		this.options.views.map((child, index, array) => {
+			array[index] = Lib.merge({}, buttonOptions, child );
+		});
+	}
 
 	this.elements = {
 		wrapper: $(element)
@@ -25,59 +35,80 @@ let Button = function Button (element, options) {
 };
 
 export const ButtonObject = {
-	// not quite sure why these got removed from core, since I'm using them here also.
-	cssClasses: {
-		ICON: CONTROL + '__icon',
-		STATEFUL_ICON: CONTROL + '__icon--stateful',
-		ASSISTIVE_TEXT: 'slds-assistive-text'
-	},
-	
-	buttonStatefulViewStyles: {
-		notSelected: 'slds-text-not-selected',
-		selected: 'slds-text-selected',
-		selectedHover: 'slds-text-selected-focus'
-	},
-	
-	childIconStyles: {
-		'left': CONTROL + '__icon--left',
-		'right': CONTROL + '__icon--right'
-	},
-
 	_onInitialized () {
 		this._render();
-		this.trigger('initialized');
+		this._initElements(this.elements.wrapper, this.elements);
+		this._bindUIEvents();
+		this.trigger('initialized', this.elements.button);
 	},
 
-	_renderAssistiveText () {
-		if ( this.getProperty('assistiveText') ) {
-			return $('<span>').addClass(this.cssClasses.ASSISTIVE_TEXT).text(this.getProperty('assistiveText'));
-		}
+	_initElements ($base, elements) {
+		const control = '.' + this.cssClasses.CONTROL;
+		elements.control = $base.find(control);
+		return elements;
+	},
+
+	_bindUIEvents () {
+		this.elements.wrapper.on('click', $.proxy(this._handleClick, this));
 	},
 
 	_renderViews () {
-		// currently NOT stateful
-		// there is an extra span in here, but there is also in the React facade at this time
-		let $span = $('<span>').text(this.getProperty('text'));
-		if (this.getProperty('iconPosition') === 'right') {
-			$span = $span.append( this._renderIcon() );
-		}	else {
-			$span = $span.prepend( this._renderIcon() );
+		const views = [];
+
+		if (this.options.views.length > 0) {
+			this.options.view = 'notSelected';
 		}
-		return $span;
+
+		let $buttonview = new ButtonView(this.options);
+
+		views.push( $buttonview.render() );
+
+		// other views
+		if (this.options.views.length > 0 ) {
+			this.options.views.forEach( (viewOptions) => {
+				$buttonview = new ButtonView(viewOptions);
+				views.push($buttonview.render());
+			});
+		}
+
+		return views;
 	},
 
 	_render () {
-		const className = this._getClassNames();
+		const isStateful = this.options.views.length > 0;
+		const className = this._getClassNames(isStateful);
 
-		$('<button>').addClass(className)
+		this.elements.button = $('<button>').addClass(className)
 			.append( this._renderViews() )
 			.prop( 'disabled', this.getProperty('disabled') )
-			.append( this._renderAssistiveText() )
 			.appendTo(this.elements.wrapper);
+	},
+
+	_handleClick () {
+		this.toggle();
+	},
+
+	_onToggled () {
+		const isStateful = this.options.views.length > 0;
+		this.elements.control[0].className = this._getClassNames(isStateful);
+	},
+
+	_onEnabledOrDisabled () {
+		if ( this.getProperty('disabled') ) {
+			this.elements.control.attr('disabled', 'disabled');
+		} else {
+			this.elements.control.removeAttr('disabled');
+		}
+	},
+
+
+	destroy () {
+		this.elements.wrapper.remove();
+		return this.elements.wrapper[0].outerHTML;
 	}
 };
 
-Lib.merge(Button.prototype, ButtonCore, Events, State, Svg, ButtonObject);
+Lib.merge(Button.prototype, ButtonCore, Events, State, ButtonObject);
 Button = Lib.runHelpers('jquery', CONTROL, Button);
 
 export default Button;

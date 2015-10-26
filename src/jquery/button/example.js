@@ -68,6 +68,18 @@ $(function () {
 		disabled: true
 	});
 
+	const button23 = new Button($('#button-jquery-control .button-icon-more'), {
+		icon: 'utility.table',
+		assistiveText: 'Icon More',
+		iconStyle: 'icon-more'
+	});
+
+	const button24 = new Button($('#button-jquery-control .button-icon-more-disabled'), {
+		icon: 'utility.table',
+		assistiveText: 'Icon More',
+		iconStyle: 'icon-more',
+		disabled: true
+	});
 
 	const button11 = new Button($('#button-jquery-control .button-icon-container'), {
 		icon: 'utility.table',
@@ -158,6 +170,24 @@ $(function () {
 			theme: 'neutral'
 		}));
 
+	const button22 = new Button($('#button-jquery-control .button-stateful'), {
+		text: 'Follow',
+		icon: 'utility.add',
+		theme: 'neutral',
+		views: [
+			{
+				text: 'Following',
+				view: 'selected',
+				icon: 'utility.check'
+			},
+			{
+				text: 'Unfollow',
+				view: 'selectedHover',
+				icon: 'utility.close'
+			}
+		]
+	});
+
 	void(button1);
 	void(button2);
 	void(button3);
@@ -180,4 +210,23 @@ $(function () {
 	void(button19);
 	void(button20);
 	void(button21);
+	void(button22);
+	void(button23);
+	void(button24);
+
+	$('#button-stateful-jquery-select').on('click', function () {
+		button22.toggle(true);
+	});
+
+	$('#button-stateful-jquery-deselect').on('click', function () {
+		button22.toggle(false);
+	});
+
+	$('#button-stateful-jquery-disable').on('click', function () {
+		button22.disable();
+	});
+
+	$('#button-stateful-jquery-enable').on('click', function () {
+		button22.enable();
+	});
 });
