@@ -88,55 +88,6 @@ export const ButtonObject = {
 		this.toggle();
 	},
 
-	// TODO: Might want to get isSelected, toggle, select, deselect from checkbox control
-	isSelected () {
-		return this.getProperty('selected');
-	},
-
-	toggle (_selected) {
-		let selected;
-		const origValue = this.getProperty('selected');
-
-		if (this.getProperty('disabled')) {
-			return;
-		}
-
-		if (!Lib.isBoolean(_selected)) {
-			selected = !this.isSelected();
-		} else if (_selected !== this.isSelected()) {
-			selected = _selected;
-		} else {
-			return;
-		}
-
-		this.setProperties({ selected });
-
-		if (Lib.isFunction(this._onToggled)) this._onToggled();
-
-		if (selected) {
-			this.trigger('selected');
-		} else {
-			this.trigger('unselected');
-		}
-
-		if (origValue !== selected) {
-			this.trigger('selected', selected);
-		}
-	},
-
-	select () {
-		this.toggle(true);
-	},
-
-	deselect () {
-		this.toggle(false);
-	},
-
-	destroy () {
-		this.elements.wrapper.remove();
-		return this.elements.wrapper[0].outerHTML;
-	},
-
 	_onToggled () {
 		const isStateful = this.options.views.length > 0;
 		this.elements.control[0].className = this._getClassNames(isStateful);
@@ -148,8 +99,13 @@ export const ButtonObject = {
 		} else {
 			this.elements.control.removeAttr('disabled');
 		}
-	}
+	},
 
+
+	destroy () {
+		this.elements.wrapper.remove();
+		return this.elements.wrapper[0].outerHTML;
+	}
 };
 
 Lib.merge(Button.prototype, ButtonCore, Events, State, ButtonObject);

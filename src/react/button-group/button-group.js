@@ -10,35 +10,37 @@ import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
 // Children
-import Button from '../button/button';
+// TODO: Add check back in when dropdown control is merged in
+// import Button from '../button/button';
+// import Dropdown from '../dropdown/dropdown';
 
 export const ButtonGroupObject = {
 	mixins: [State, Events, genericWillMount],
 
-	propTypes: {
-		children: function (props, propName, componentName) {
-			const prop = props[propName];
-			let error;
+	// TODO: Add check back in when dropdown control is merged in
+	// propTypes: {
+	// 	children: function (props, propName, componentName) {
+	// 		const prop = props[propName];
+	// 		let error;
 
-			React.Children.forEach(prop, child => {
-				if (!error && child.type !== Button) {
-					error = new Error(
-						'`' + componentName + '` ' +
-						'should only contain children of the type `Button`.'
-					);
-				}
-			});
+	// 		React.Children.forEach(prop, child => {
+	// 			if (!error && ( child.type !== Button || child.type !== Dropdown ) ) {
+	// 				error = new Error(
+	// 					'`' + componentName + '` ' +
+	// 					'should only contain children of the type `Button` or `Dropdown`.'
+	// 				);
+	// 			}
+	// 		});
 			
-			if (error) {
-				return error;
-			}
-		}
-	},
+	// 		if (error) {
+	// 			return error;
+	// 		}
+	// 	}
+	// },
 	
 	render () {
 		return (
-			<div type="button"
-				className="slds-button-group" role="group" // {this.props.className}
+			<div className="slds-button-group" role="group"
 				>{this.props.children}</div>
 		);
 	}
