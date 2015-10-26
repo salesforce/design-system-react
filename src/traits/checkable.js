@@ -1,4 +1,5 @@
-// DISABLEABLE
+// CHECKABLE
+// Similar to selectable-boolean trait
 
 import * as Lib from '../lib/lib';
 
