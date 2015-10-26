@@ -12,7 +12,6 @@ const DropdownCore = Lib.merge({}, PicklistCore, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
-		ICON: 'slds-button__icon',
 		ICON_DOWN_SIZE: 'slds-button__icon--x-small',
 		BUTTON: 'slds-button',
 		DROPDOWN: 'slds-dropdown',
