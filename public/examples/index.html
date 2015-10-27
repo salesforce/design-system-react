@@ -2,41 +2,13 @@
 <html lang="en">
 	<head>
 		<meta charset=utf-8/>
-		<title>Fuel UX Facades Examples</title>
+		<title>Design System Facades</title>
 		<link href="/assets/design-system/styles/slds.css" rel="stylesheet">
 		<link href="/assets/facades/styles/temp-styles/temp-styles.css" rel="stylesheet">
 		<link href="/assets/facades/styles/example-styles.css" rel="stylesheet">
+		<link href="/assets/facades/images/favicon-16x16.png" sizes="16x16" rel="icon" type="image/png">
 		<style>
-			.site-masthead {
-				height: 11.25rem;
-				padding: 1rem 2rem;
-				background-color: #16325c;
-				color: #fff;
-			}
 
-			.masthead-icon {
-				width: 60px;
-				height: 67px;
-			}
-
-			.masthead-heading {
-				color: #A8B8D0;
-			}
-
-			.masthead-subheading {
-				font-size: 3rem;
-			}
-
-			.site-text-introduction {
-				margin-bottom: 1rem;
-				font-size: 1.125rem;
-				font-weight: 300;
-				padding: 30px;
-			}
-
-			.facade-logo {
-				width: 50%;
-			}
 
 			#component-list {
 				margin-bottom: 30px;
@@ -103,13 +75,22 @@
 		</style>
 	</head>
 	<body>
-		<header class="slds-grid | site-masthead">
-			<div class="slds-col | slds-has-flexi-truncate | slds-align-middle | site-masthead-title">
-				<div class="slds-media slds-media--center slds-media--responsive">
-					<span class="slds-media__figure"><img class="masthead-icon" src="/assets/design-system/images/header-components.svg" alt=""></span>
-					<div class="slds-media__body">
-						<div class="masthead-heading">Fuel UX</div>
-						<div class="masthead-subheading">Facades Examples</div>
+		<header class="slds-page-header">
+			<div class="slds-grid">
+				<div class="slds-has-flexi-truncate slds-col">
+					<div class="slds-media">
+						<div class="slds-media__figure">
+							<span class="slds-icon__container">
+								<svg aria-hidden="true" class="slds-icon slds-icon--large slds-icon--left slds-icon-custom-16">
+									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/design-system/icons/custom-sprite/svg/symbols.svg#custom16"></use>
+								</svg>
+							</span>
+						</div>
+						<div class="slds-media__body">
+							<p class="slds-text-heading--label">Lightning Design System</p>
+							<div class="slds-grid"><h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Component Facades">Component Facades</h1>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
