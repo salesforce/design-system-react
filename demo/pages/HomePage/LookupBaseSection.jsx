@@ -45,28 +45,13 @@ module.exports = React.createClass( {
     console.log(item , ' Selected');
   },
 
-  headerClick(){
-    console.log('=====> Lookup Header Clicked');
-  },
-
-  footerClick(){
-    console.log('=====> Lookup Footer Clicked');
-  },
 
   getHeader(){
-    return (
-    <div className="slds-lookup__item" onClick={this.headerClick} onMouseDown={this.headerClick}>
-      <DefaultHeader searchTerm={this.state.searchVal} type='account' />
-    </div>
-    )
+    return <DefaultHeader searchTerm={this.state.searchVal} type='account' />;
   },
 
   getFooter(){
-    return (
-    <div className="slds-lookup__item" onClick={this.footerClick} onMouseDown={this.footerClick}>
-      <DefaultFooter type='account' />
-    </div>
-    )
+    return <DefaultFooter type='account' />;
   },
 
   render() {

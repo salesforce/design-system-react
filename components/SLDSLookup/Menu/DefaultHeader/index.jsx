@@ -19,15 +19,21 @@ class DefaultHeader extends React.Component {
     if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
   }
 
+  headerClick(){
+    console.log('=====> Lookup Header Clicked');
+  }
+
   render(){
     let className = 'slds-button';
     if(this.props.isActive) className += ' slds-theme--shade'
 
       return (
-        <button id='searchRecords' tabIndex="-1" className={className}>
-          <Icon name='search' category="utility" size="x-small" className="slds-icon-text-default" />
-          {this.props.searchTerm ? '"' + this.props.searchTerm + '"' + ' in ' + this.props.type + 's': ' in ' + this.props.type + 's'}
-        </button>
+        <div className="slds-lookup__item" onClick={this.headerClick}>
+          <button id='searchRecords' tabIndex="-1" className={className}>
+            <Icon name='search' category="utility" size="x-small" className="slds-icon-text-default" />
+            {this.props.searchTerm ? '"' + this.props.searchTerm + '"' + ' in ' + this.props.type + 's': ' in ' + this.props.type + 's'}
+          </button>
+        </div>
       )
   }
 }

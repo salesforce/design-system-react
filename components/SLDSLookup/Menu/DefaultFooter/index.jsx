@@ -19,15 +19,21 @@ class DefaultFooter extends React.Component {
     if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
   }
 
+  footerClick(){
+    console.log('=====> Lookup Footer Clicked');
+  }
+
   render(){
     let className = 'slds-button';
     if(this.props.isActive) className += ' slds-theme--shade'
 
       return (
-        <button id='newItem' tabIndex="-1" className={className}>
-          <Icon name='add' category="utility" size="x-small" className="slds-icon-text-default" />
-          {'New ' + this.props.type}
-        </button>
+        <div className="slds-lookup__item" onClick={this.footerClick}>
+          <button id='newItem' tabIndex="-1" className={className}>
+            <Icon name='add' category="utility" size="x-small" className="slds-icon-text-default" />
+            {'New ' + this.props.type}
+          </button>
+        </div>
       )
   }
 }
