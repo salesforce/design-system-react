@@ -12,8 +12,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import SLDSLookup from '../../../components/SLDSLookup';
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
-import DefaultHeader from '../../../components/SLDSLookup/Menu/DefaultHeader';
-import DefaultFooter from '../../../components/SLDSLookup/Menu/DefaultFooter';
+//import DefaultHeader from '../../../components/SLDSLookup/Menu/DefaultHeader';
+//import DefaultFooter from '../../../components/SLDSLookup/Menu/DefaultFooter';
 
 const items = [
   {label:'Paddy\'s Pub'},
@@ -47,11 +47,11 @@ module.exports = React.createClass( {
 
 
   getHeader(){
-    return <DefaultHeader searchTerm={this.state.searchVal} type='account' />;
+    return <SLDSLookup.DefaultHeader searchTerm={this.state.searchVal} type='account' />;
   },
 
   getFooter(){
-    return <DefaultFooter type='account' />;
+    return <SLDSLookup.DefaultFooter type='account' />;
   },
 
   render() {

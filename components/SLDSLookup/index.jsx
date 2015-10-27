@@ -15,6 +15,10 @@ import SLDSButton from '../SLDSButton';
 import {KEYS,EventUtil} from '../utils';
 import escapeRegExp from 'lodash.escaperegexp';
 
+import DefaultFooter from './Menu/DefaultFooter';
+import DefaultHeader from './Menu/DefaultHeader';
+
+
 const defaultFilter = (term, item) => {
   if(!term) return true;
   return item.label.match(new RegExp(escapeRegExp(term), 'ig'));
@@ -316,3 +320,6 @@ SLDSLookup.defaultProps = {
 
 module.exports = SLDSLookup;
 
+module.exports.DefaultHeader = DefaultHeader;
+
+module.exports.DefaultFooter = DefaultFooter;
