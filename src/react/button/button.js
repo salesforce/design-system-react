@@ -3,12 +3,14 @@
 // Core
 import * as Lib from '../../lib/lib';
 import ButtonCore, {CONTROL} from '../../core/button';
+import ButtonViewCore from '../../core/button-view';
 
 // Framework specific
 import React from 'react';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
+import isIcon from '../mixins/custom-prop-types/icon.js';
 
 // Children
 import ButtonView from './button-view';
@@ -18,10 +20,10 @@ export const ButtonObject = {
 
 	propTypes: {
 		assistiveText: React.PropTypes.string,
-		icon: React.PropTypes.string,
+		icon: isIcon,
 		text: React.PropTypes.string,
-		iconStyle: React.PropTypes.string,
-		iconPosition: React.PropTypes.string,
+		iconStyle: React.PropTypes.oneOf(Object.keys(ButtonCore.iconButtonStyles)),
+		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions)),
 		disabled: React.PropTypes.bool,
 		size: React.PropTypes.oneOf(Object.keys(ButtonCore.sizes)),
 		theme: React.PropTypes.oneOf(Object.keys(ButtonCore.themes)),

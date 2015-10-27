@@ -3,7 +3,6 @@
 
 // Core
 import * as Lib from '../../lib/lib';
-// import ButtonCore, {CONTROL} from '../../core/button';
 import ButtonViewCore, {CONTROL} from '../../core/button-view';
 
 // Framework specific
