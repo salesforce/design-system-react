@@ -31,7 +31,7 @@ class DefaultHeader extends React.Component {
         <div className="slds-lookup__item" onClick={this.headerClick}>
           <button id='searchRecords' tabIndex="-1" className={className}>
             <Icon name='search' category="utility" size="x-small" className="slds-icon-text-default" />
-            {this.props.searchTerm ? '"' + this.props.searchTerm + '"' + ' in ' + this.props.type + 's': ' in ' + this.props.type + 's'}
+            {this.props.searchLabel}
           </button>
         </div>
       )

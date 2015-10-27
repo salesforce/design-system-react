@@ -31,7 +31,7 @@ class DefaultFooter extends React.Component {
         <div className="slds-lookup__item" onClick={this.footerClick}>
           <button id='newItem' tabIndex="-1" className={className}>
             <Icon name='add' category="utility" size="x-small" className="slds-icon-text-default" />
-            {'New ' + this.props.type}
+            {this.props.newItemLabel}
           </button>
         </div>
       )

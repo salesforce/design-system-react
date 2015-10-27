@@ -47,11 +47,12 @@ module.exports = React.createClass( {
 
 
   getHeader(){
-    return <SLDSLookup.DefaultHeader searchTerm={this.state.searchVal} type='account' />;
+    let searchLabel = (this.state.searchVal ? '"' + this.state.searchVal + '"':"") + ' in Accounts';
+    return <SLDSLookup.DefaultHeader searchLabel={searchLabel} type='account' />;
   },
 
   getFooter(){
-    return <SLDSLookup.DefaultFooter type='account' />;
+    return <SLDSLookup.DefaultFooter type='account' newItemLabel='New Account'/>;
   },
 
   render() {
