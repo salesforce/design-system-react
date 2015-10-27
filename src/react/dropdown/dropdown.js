@@ -29,14 +29,13 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 	},
 
 	_getIcon () {
-		const empty = 'standard.empty';
-		let icon = this.props.icon || empty;
+		let icon;
 
 		if (this.props.swapIcon && this.props.selection) {
-			icon = this.props.selection.icon || empty;
+			icon = this.props.selection.icon;
 		}
 
-		return icon;
+		return icon || this.props.icon;
 	},
 
 	_getStyle () {
