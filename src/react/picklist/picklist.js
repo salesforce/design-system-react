@@ -13,7 +13,6 @@ import Svg from '../svg/svg';
 
 // Children
 import PicklistItems from './picklist-items';
-import PicklistItem from './picklist-item';
 
 export const PicklistObject = {
 	mixins: [State, Events, genericWillMount],
@@ -27,16 +26,6 @@ export const PicklistObject = {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired
-	},
-
-	_menuItems () {
-		const selected = this.getSelection();
-
-		return this._collection.map((item, index) => {
-			return (
-				<PicklistItem key={index} selected={item._item === selected} item={item} onSelected={this._handleMenuItemSelected} />
-			);
-		});
 	},
 
 	render () {
