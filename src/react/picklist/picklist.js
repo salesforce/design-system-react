@@ -6,16 +6,13 @@ import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Framework specific
 import React from 'react';
-import ReactDOM from 'react-dom';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 import Svg from '../svg/svg';
 
-// Third party
-import classNames from 'classnames';
-
 // Children
+import PicklistItems from './picklist-items';
 import PicklistItem from './picklist-item';
 
 export const PicklistObject = {
@@ -56,11 +53,7 @@ export const PicklistObject = {
 				<span className="slds-truncate">{selectionName}</span>
 				<Svg className="slds-icon" icon="utility.down" />
 			</button>
-			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--small', 'lds-dropdown--menu', {'slds-hide': !this.state.isOpen})}>
-				<ul className="slds-dropdown__list" role="menu" style={styles} ref={this.cssClasses.MENU}>
-				{this._menuItems()}
-				</ul>
-			</div>
+			<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
 			<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
 			</div>
 		</div>
@@ -69,30 +62,10 @@ export const PicklistObject = {
 
 	componentDidMount () {
 		document.addEventListener('click', this._closeOnClick, false);
-		this._findElements();
-	},
-
-	componentDidUpdate () {
-		this._findElements();
 	},
 
 	componentWillUnmount () {
 		document.removeEventListener('click', this._closeOnClick, false);
-	},
-
-	_findElements () {
-		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(this.refs[this.cssClasses.MENU]));
-
-		this.elements.menuItems = [];
-		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-
-		for (let i = 0; i < menuItems.length; i++) {
-			const menuItem = menuItems[i].getElementsByTagName('a');
-
-			if (!menuItems[i].disabled && menuItem.length === 1) {
-				this.elements.menuItems.push(menuItem[0]);
-			}
-		}
 	},
 
 	_onSelected () {
