@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React, { Component } from 'react';
 import {Icon} from "../../../SLDSIcons";
-import {KEYS,EventUtil} from '../../../utils';
+import {EventUtil} from '../../../utils';
 
 class Item extends React.Component {
   constructor(props) {
@@ -33,8 +33,11 @@ class Item extends React.Component {
   }
 
   handleClick(e){
-    EventUtil.trapImmediate(e);
     return this.props.onSelect(this.props.id, this.props.data);
+  }
+
+  handleMouseDown(e){
+    EventUtil.trapImmediate(e);
   }
 
   //Scroll menu item based on up/down mouse keys (assumes all items are the same height)
@@ -59,7 +62,7 @@ class Item extends React.Component {
           aria-disabled={this.props.isDisabled}
           role="option"
           onClick={this.handleClick.bind(this)}
-          onMouseDown={this.handleClick.bind(this)}>
+          onMouseDown={this.handleMouseDown.bind(this)}>
           <Icon name={this.props.type} />
           { this.boldSearchText(this.props.children.label) }
         </a>

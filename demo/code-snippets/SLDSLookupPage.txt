@@ -1,11 +1,3 @@
-Default Props             Prop Values
-* header={false}          [true, false, custom DOM node]
-* footer={false}          [true, false, custom DOM node]
-
-true renders default header or footer
-false does not render header or footer
-pass in custom DOM node to render in header or footer
-
 const items = [
   {label:'Paddy\'s Pub'},
   {label:'Tyrell Corp'},
@@ -20,10 +12,8 @@ const items = [
   label="Accounts"
   type="account"
   header={this.getHeader()}
-  footer={true}
+  footer={this.getFooter()}
   onChange={this.onChange}
-  onItemSelect={this.onItemSelect}
-  onHeaderClick={this.searchRecords}
-  onFooterClick={this.newItem} />
+  onItemSelect={this.onItemSelect} />
 
 

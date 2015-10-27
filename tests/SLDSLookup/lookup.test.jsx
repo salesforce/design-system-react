@@ -67,8 +67,18 @@ describe('SLDSLookup: ',  function(){
 
   describe('selecting item works', function() {
 
-    it('focuses correct item', function() {
+    it('no fixed header: focuses correct item', function() {
       let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" />);
+      let input = lookup.getElementsByTagName("input")[0];
+      TestUtils.Simulate.click(input);
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      let ariaActiveDescendant = lookup.getElementsByTagName("input")[0].getAttribute("aria-activedescendant");
+      expect(ariaActiveDescendant).to.equal('item-1');
+    });
+
+    it('with fixed header: focuses correct item', function() {
+      let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" header={<div>header</div>}/>);
       let input = lookup.getElementsByTagName("input")[0];
       TestUtils.Simulate.click(input);
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
@@ -78,17 +88,44 @@ describe('SLDSLookup: ',  function(){
     });
 
     it('selects correct item', function() {
+      let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" />);
+      let input = lookup.getElementsByTagName("input")[0];
+      TestUtils.Simulate.click(input);
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
+      let selected = lookup.getElementsByTagName("span")[0].getElementsByTagName('span')[0].innerText;
+      expect(selected).to.equal('Paper St. Soap Company');
     });
 
-    it('closes lookup menu', function() {
+    it('closes lookup menu on esc', function() {
+      let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" />);
+      let input = lookup.getElementsByTagName("input")[0];
+      TestUtils.Simulate.click(input);
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Esc", keyCode: 27, which: 27});
+      let ariaExpanded = input.getAttribute("aria-expanded");
+      expect(ariaExpanded).to.equal('false');
     });
 
     it('aria-expanded is false after selecting item', function() {
+      let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" />);
+      let input = lookup.getElementsByTagName("input")[0];
+      TestUtils.Simulate.click(input);
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
+      expect(input.className).to.have.string('slds-hide');
     });
 
-    it('focuses on selected item', function() {
+    it('aria-expanded is false after selecting item', function() {
+      let lookup = generateLookup(<SLDSLookup items={items} label="Leads" type="lead" />);
+      let input = lookup.getElementsByTagName("input")[0];
+      TestUtils.Simulate.click(input);
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      let focusedItem = lookup.getElementsByTagName("ul")[0].getElementsByTagName('li')[0];
+      expect(focusedItem.className).to.have.string('slds-theme--shade');
     });
-
   });
 
 });

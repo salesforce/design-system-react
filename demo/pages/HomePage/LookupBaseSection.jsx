@@ -11,9 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSLookup from '../../../components/SLDSLookup';
-
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
-
+//import DefaultHeader from '../../../components/SLDSLookup/Menu/DefaultHeader';
+//import DefaultFooter from '../../../components/SLDSLookup/Menu/DefaultFooter';
 
 const items = [
   {label:'Paddy\'s Pub'},
@@ -33,29 +33,25 @@ module.exports = React.createClass( {
   },
 
   getInitialState () {
-    return {};
-  },
-
-  newItem(){
-    alert('New Item Clicked');
-  },
-
-  customHeaderClick(){
-    alert('custom header clicked');
+    return {searchVal:null};
   },
 
   onChange(newValue){
     console.log('New search term: ', newValue);
+    this.setState({searchVal: newValue});
   },
 
   selectItem(item){
     console.log(item , ' Selected');
   },
 
+
   getHeader(){
-    return(
-      <div>MY CUSTOM HEADER</div>
-    )
+    return <SLDSLookup.DefaultHeader searchTerm={this.state.searchVal} type='account' />;
+  },
+
+  getFooter(){
+    return <SLDSLookup.DefaultFooter type='account' />;
   },
 
   render() {
@@ -76,12 +72,10 @@ module.exports = React.createClass( {
               <div className="slds-p-vertical--large">
                 <SLDSLookup
                   items={items}
-                  label="Accounts"
+                  label="Account"
                   type="account"
                   header={this.getHeader()}
-                  onHeaderClick={this.customHeaderClick}
-                  footer={true}
-                  onFooterClick={this.newItem}
+                  footer={this.getFooter()}
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
                 />
