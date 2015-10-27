@@ -40,7 +40,7 @@ class SLDSLookup extends React.Component {
   }
 
   componentDidMount(){
-    this.modifyItems();
+    this.modifyItems(this.props.items);
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -237,8 +237,8 @@ class SLDSLookup extends React.Component {
     );
   }
 
-  modifyItems () {
-    const items = this.props.items.map((item, index) => {
+  modifyItems (itemsToModify) {
+    const items = itemsToModify.map((item, index) => {
       return {
         id : 'item-' + index,
         label: item.label,
@@ -250,7 +250,9 @@ class SLDSLookup extends React.Component {
   }
 
   componentWillReceiveProps (newProps) {
-    this.modifyItems();
+    if(newProps.items){
+      this.modifyItems(newProps.items);
+    }
   }
 
   render(){
