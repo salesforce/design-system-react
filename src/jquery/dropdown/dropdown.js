@@ -61,8 +61,17 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 		const elements = this._initElements($el, this.elements);
 		
 		// Configure the button
+		let icon;
+		
+		if (this.getProperty('swapIcon')) {
+			const selection = this._getSelection();
+			icon = !!selection && selection.getIcon();
+		}
+		
+		icon = icon || this.getProperty('icon');
+		
 		this.button = new Button(elements.trigger, {
-			icon: this.getProperty('icon'),
+			icon,
 			iconStyle: 'icon-more'
 		});
 		
@@ -121,7 +130,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 	},
 
 	_swapIcon (iconString) {
-		const icon = iconString || this.getProperty('icon') || '';
+		const icon = iconString || this.getProperty('icon');
 
 		if (Lib.isString(icon) && icon.length > 0 && this.getProperty('swapIcon')) {
 			// TODO: Implement this, which will require an update to Button
