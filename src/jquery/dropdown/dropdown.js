@@ -9,6 +9,9 @@ import Events from '../events';
 import State from '../state';
 import { PicklistObject, _renderItem, _renderHeader, _renderDivider, legacyMethods } from '../picklist/picklist';
 
+// Children
+import Button from '../button/button';
+
 const $ = Lib.global.jQuery || Lib.global.$;
 
 // Template imports
@@ -21,8 +24,7 @@ let Dropdown = function Dropdown (element, options) {
 		wrapper: $(element)
 	};
 
-	const $html = $('<i />').append(template);
-	this.template = $html.find('.slds-dropdown-trigger');
+	this.template = $('<i />').append(template);
 
 	if (this.options.collection) {
 		this.rendered = false;
@@ -42,7 +44,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 	_initElements (base, elements) {
 		const els = elements || {};
 
-		els.button = base.find('.' + this.cssClasses.BUTTON);
+		els.trigger = base.find('.' + this.cssClasses.TRIGGER);
 		els.dropdown = base.find('.' + this.cssClasses.DROPDOWN);
 		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
 
@@ -54,37 +56,20 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 	},
 
 	_render () {
-		const selection = this._getSelection();
-
 		// Get the template
 		const $el = this.template.clone();
 		const elements = this._initElements($el, this.elements);
-
+		
 		// Configure the button
-		const disabled = !!this.getProperty('disabled');
-		elements.button.prop('disabled', disabled);
-
-		if (disabled) {
-			this.elements.dropdown.addClass('slds-hide');
-		} else {
-			this.elements.dropdown.removeClass('slds-hide');
-		}
-
-		// render icon
-		let icon = this.getProperty('icon');
-
-		if (selection) {
-			icon = selection.getIcon() || icon;
-		}
-
-		elements.button.prepend(this._renderIcon(icon));
-
-		// down arrow
-		if (this.getProperty('renderArrow')) {
-			const arrow = this._renderIcon('utility.down', this.cssClasses.ICON_DOWN_SIZE);
-
-			elements.button.append(arrow);
-		}
+		this.button = new Button(elements.trigger, {
+			icon: this.getProperty('icon'),
+			iconStyle: 'icon-more'
+		});
+		
+		// Put the menu in the trigger div when ready
+		elements.trigger.on('initialized', function () {
+			elements.trigger.append(elements.dropdown);
+		});
 
 		// Empty the menu from the template
 		elements.dropdownMenu.empty();
@@ -110,14 +95,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 
 		// Prep for append
 		elements.wrapper.empty();
-
-		if (this.elements.wrapper.is('div')) {
-			this.elements.wrapper.attr('class', $el.attr('class'));
-			this.elements.wrapper.append($el.children());
-		} else {
-			this.elements.wrapper.append($el);
-			this.elements.wrapper = $el;
-		}
+		this.elements.wrapper.append($el.children());
 
 		if ( this._collection._data.length === 0 ) {
 			this.disable();
@@ -138,7 +116,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 		if (this.rendered) {
 			const isOpen = this.getState('isOpen');
 			
-			this.elements.button.attr('aria-expanded', isOpen);
+			this.elements.trigger.attr('aria-expanded', isOpen);
 		}
 	},
 
@@ -146,7 +124,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 		const icon = iconString || this.getProperty('icon') || '';
 
 		if (Lib.isString(icon) && icon.length > 0 && this.getProperty('swapIcon')) {
-			this.elements.button.find('svg').eq(0).replaceWith(this._renderIcon(icon));
+			// TODO: Implement this, which will require an update to Button
 		}
 	}
 });
