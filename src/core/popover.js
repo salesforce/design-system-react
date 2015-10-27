@@ -21,8 +21,15 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 		TARGET: 'slds-popover-target'
 	},
 
+	triggers: {
+		click: 'click',
+		hover: ['mouseover', 'mouseout'],
+		focus: ['focus', 'focusout'],
+		manual: ''
+	},
+
 	_defaultProperties: {
-		trigger: 'click', // click, hover, focus, manual
+		trigger: 'click',
 		target: null, // The element who's events will trigger the popover
 		container: null, // The element the popover will be contained within
 		align: null // The element the popover will be aligned with
