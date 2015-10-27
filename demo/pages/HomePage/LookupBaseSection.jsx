@@ -12,7 +12,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import SLDSLookup from '../../../components/SLDSLookup';
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
-import ActionItem from '../../../components/SLDSLookup/Menu/ActionItem';
+import DefaultHeader from '../../../components/SLDSLookup/Menu/DefaultHeader';
+import DefaultFooter from '../../../components/SLDSLookup/Menu/DefaultFooter';
 
 const items = [
   {label:'Paddy\'s Pub'},
@@ -55,7 +56,7 @@ module.exports = React.createClass( {
   getHeader(){
     return (
     <div className="slds-lookup__item" onClick={this.headerClick} onMouseDown={this.headerClick}>
-      <ActionItem item='search' type='account' searchTerm={this.state.searchVal} />
+      <DefaultHeader searchTerm={this.state.searchVal} type='account' />
     </div>
     )
   },
@@ -63,7 +64,7 @@ module.exports = React.createClass( {
   getFooter(){
     return (
     <div className="slds-lookup__item" onClick={this.footerClick} onMouseDown={this.footerClick}>
-      <ActionItem item='newItem' type='account' />
+      <DefaultFooter type='account' />
     </div>
     )
   },
