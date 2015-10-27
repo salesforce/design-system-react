@@ -41,7 +41,8 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 		TOGGLE: 'slds-button',
 		HEADER: 'slds-dropdown__header',
 		HEADERTEXT: 'slds-text-heading--label',
-		DIVIDER: 'slds-has-divider'
+		DIVIDER: 'slds-has-divider',
+		ICON: 'slds-icon'
 	},
 
 	_defaultProperties: {
@@ -91,6 +92,10 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 
 		getKey (item) {
 			return item.get();
+		},
+
+		getIcon (item) {
+			return item.get('icon');
 		}
 	},
 
