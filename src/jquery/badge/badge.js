@@ -13,22 +13,9 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 // Constructor
 let Badge = function Badge () {
-	let wrapper;
-	let options;
+	const options = this._getOptions(arguments);
 	
-	if (arguments.length === 1) {
-		options = arguments[0];
-	} else if (arguments.length > 1) {
-		wrapper = $(arguments[0]);
-		options = arguments[1];
-	}
-	
-	this.options = Lib.extend({}, this._defaultProperties, options, {
-		wrapper
-	});
-
-	this._initializeState();
-	this._initialize(this.options);
+	this._initialize(options);
 };
 
 export const BadgeObject = {
@@ -46,7 +33,7 @@ export const BadgeObject = {
 	}
 };
 
-Lib.merge(Badge.prototype, BadgeCore, State, Events, DOM, BadgeObject);
+Lib.merge(Badge.prototype, BadgeCore, Events, DOM, State, BadgeObject);
 Badge = Lib.runHelpers('jquery', CONTROL, Badge);
 
 export default Badge;

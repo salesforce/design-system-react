@@ -13,22 +13,9 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 // Constructor
 let ButtonView = function ButtonView () {
-	let wrapper;
-	let options;
+	const options = this._getOptions(arguments);
 	
-	if (arguments.length === 1) {
-		options = arguments[0];
-	} else if (arguments.length > 1) {
-		wrapper = $(arguments[0]);
-		options = arguments[1];
-	}
-	
-	this.options = Lib.extend({}, this._defaultProperties, options, {
-		wrapper
-	});
-
-	this._initializeState();
-	this._initialize(this.options);
+	this._initialize(options);
 };
 
 export const ButtonViewObject = {
@@ -59,7 +46,7 @@ export const ButtonViewObject = {
 		
 		this.element
 			.text( this.getProperty('text') )
-			.addClass(this.buttonStatefulViewStyles[this.options.view])
+			.addClass(this.buttonStatefulViewStyles[this.getProperty('view')])
 			.append(this._renderAssistiveText());
 		
 		this.element
@@ -83,7 +70,7 @@ export const ButtonViewObject = {
 	}
 };
 
-Lib.merge(ButtonView.prototype, ButtonViewCore, State, DOM, ButtonViewObject);
+Lib.merge(ButtonView.prototype, ButtonViewCore, DOM, State, ButtonViewObject);
 ButtonView = Lib.runHelpers('jquery', CONTROL, ButtonView);
 
 export default ButtonView;

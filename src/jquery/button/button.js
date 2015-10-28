@@ -16,29 +16,16 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 // Constructor
 let Button = function Button () {
-	let wrapper;
-	let options;
+	const options = this._getOptions(arguments);
 	
-	if (arguments.length === 1) {
-		options = arguments[0];
-	} else if (arguments.length > 1) {
-		wrapper = $(arguments[0]);
-		options = arguments[1];
-	}
-	
-	this.options = Lib.extend({}, this._defaultProperties, options, {
-		wrapper
-	});
-
 	// If button has views, button is stateful
-	if (this.options.views.length > 0) {
-		this.options.views = this.options.views.map((child) => {
-			return Lib.extend({}, this.options, child);
+	if (options.views.length > 0) {
+		options.views = options.views.map((child) => {
+			return Lib.extend({}, options, child);
 		});
 	}
-
-	this._initializeState();
-	this._initialize(this.options);
+	
+	this._initialize(options);
 };
 
 export const ButtonObject = {
@@ -47,20 +34,23 @@ export const ButtonObject = {
 	},
 
 	_renderViews () {
+		const viewOptions = this.getProperty('views');
 		const views = [];
 
-		if (this.options.views.length > 0) {
-			this.options.view = 'notSelected';
+		if (viewOptions.length > 0) {
+			this.setProperties({
+				view: 'notSelected'
+			});
 		}
 
-		let $buttonview = new ButtonView(this.options);
+		let $buttonview = new ButtonView(this._props);
 
 		views.push($buttonview.render());
 
-		// other views
-		if (this.options.views.length > 0 ) {
-			this.options.views.forEach((viewOptions) => {
-				$buttonview = new ButtonView(viewOptions);
+		// Other views
+		if (viewOptions.length > 0 ) {
+			viewOptions.forEach((options) => {
+				$buttonview = new ButtonView(options);
 				views.push($buttonview.render());
 			});
 		}
@@ -69,7 +59,7 @@ export const ButtonObject = {
 	},
 
 	_render () {
-		const isStateful = this.options.views.length > 0;
+		const isStateful = this.getProperty('views').length > 0;
 		const className = this._getClassNames(isStateful);
 		
 		this.element = this.$el = this.elements.control = $('<button>');
@@ -91,7 +81,7 @@ export const ButtonObject = {
 	},
 
 	_onToggled () {
-		const isStateful = this.options.views.length > 0;
+		const isStateful = this.getProperty('views').length > 0;
 		this.elements.control[0].className = this._getClassNames(isStateful);
 	},
 
@@ -104,7 +94,7 @@ export const ButtonObject = {
 	}
 };
 
-Lib.merge(Button.prototype, ButtonCore, State, Events, DOM, ButtonObject);
+Lib.merge(Button.prototype, ButtonCore, Events, DOM, State, ButtonObject);
 Button = Lib.runHelpers('jquery', CONTROL, Button);
 
 export default Button;

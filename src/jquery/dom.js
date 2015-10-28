@@ -9,6 +9,7 @@ const DOM = {
 		
 		if (options.wrapper) {
 			this.appendTo(options.wrapper);
+			delete options.wrapper;
 		}
 	},
 	
