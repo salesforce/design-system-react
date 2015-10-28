@@ -47,7 +47,7 @@ module.exports = React.createClass( {
 
 
   getHeader(){
-    return <SLDSLookup.DefaultHeader searchTerm={this.state.searchVal} type='account' />;
+    return SLDSLookup.DefaultHeader;
   },
 
   getFooter(){
