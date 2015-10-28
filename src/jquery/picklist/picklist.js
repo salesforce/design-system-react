@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Framework specific
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
 import Svg from '../svg';
@@ -14,63 +15,24 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // Template imports
 import template from './picklist-template';
 
-let Picklist = function Picklist (element, options) {
-	this.options = Lib.extend({}, options);
-
-	this.elements = {
-		wrapper: $(element)
-	};
-
+let Picklist = function Picklist () {
+	const options = this._getOptions(arguments);
+	
 	const $html = $('<i />').append(template);
 	this.template = $html.find('.slds-form-element');
-
-	if (this.options.collection) {
-		this.rendered = false;
-	} else {
-		this._initElements(this.elements.wrapper, this.elements);
-		this._buildCollection(this.options);
-		this.rendered = true;
-	}
-
-	this._initializeState();
-	this._initialize(this.options);
+	this._closeOnClick = $.proxy(this._closeOnClick, this);
+	
+	this._initialize(options);
 };
 
-export function _renderItem (item) {
-	const disabled = item.getDisabled();
-	const $li = this.template.find('li').clone();
-
-	$li.data({
-		item: item._item
-	});
-	$li.prop('disabled', disabled);
-
-	const $a = $li.find('a');
-	$a.text(item.getText());
-
-	if (disabled) {
-		$a.attr('aria-disabled', true);
-	}
-
-	const icon = item.getIcon();
-
-	if (Lib.isString(icon) && icon.length > 0) {
-		const $icon = this._renderIcon(icon, 'slds-icon--small slds-icon--right');
-		$a.append($icon);
-	}
-
-	return $li;
-}
-
-export function _renderHeader (item) {
-	return $('<li class="' + this.cssClasses.HEADER + '"><span class="' + this.cssClasses.HEADERTEXT + '">' + item.getText() + '</span></li>');
-}
-
-export function _renderDivider () {
-	return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
-}
-
-export const PicklistObject = Lib.merge(Svg, {
+export const PicklistObject = {
+	_bindUIEvents () {
+		this.elements.button.on('click', $.proxy(this._handleClicked, this));
+		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
+		this.elements.wrapper.on('keydown', $.proxy(this._handleKeyDown, this));
+		this.elements.wrapper.on('keypress', $.proxy(this._handleKeyPressed, this));
+	},
+	
 	_initElements (base, elements) {
 		const els = elements || {};
 
@@ -82,75 +44,39 @@ export const PicklistObject = Lib.merge(Svg, {
 
 		return els;
 	},
-
-	_buildCollection (options) {
-		const self = this;
-		const _options = options;
-		const collection = [];
-
-		this.elements.dropdownMenu.find('li').each(function buildCollectionElements () {
-			const $item = $(this);
-			const item = $item.data();
-
-			if (!item.text) {
-				item.text = $item.text().trim();
-			}
-
-			if (item.selected) {
-				delete item.selected;
-				_options.selection = item;
-			}
-
-			if ($item.is('.disabled, :disabled')) {
-				item.disabled = true;
-			}
-
-			if ($item.hasClass(self.cssClasses.HEADER)) {
-				item._itemType = 'header';
-			} else if ($item.hasClass(self.cssClasses.DIVIDER)) {
-				item._itemType = 'divider';
-			}
-
-			$item.data({
-				item
-			});
-			collection.push(item);
+	
+	_renderItem (item) {
+		const disabled = item.getDisabled();
+		const $li = this.template.find('li').clone();
+	
+		$li.data({
+			item: item._item
 		});
-
-		_options.collection = collection;
-	},
-
-	_onInitialized () {
-		if (!this.rendered) {
-			this._render();
+		$li.prop('disabled', disabled);
+	
+		const $a = $li.find('a');
+		$a.text(item.getText());
+	
+		if (disabled) {
+			$a.attr('aria-disabled', true);
 		}
-
-		// Get the menu items for keyboard nav
-		this.elements.menuItems = [];
-		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-
-		for (let i = 0; i < menuItems.length; i++) {
-			const menuItem = menuItems[i].getElementsByTagName('a');
-
-			if (!menuItems[i].disabled && menuItem.length === 1) {
-				this.elements.menuItems.push(menuItem[0]);
-			}
+	
+		const icon = item.getIcon();
+	
+		if (Lib.isString(icon) && icon.length > 0) {
+			const $icon = this._renderIcon(icon, 'slds-icon--small slds-icon--right');
+			$a.append($icon);
 		}
-
-		this._bindUIEvents();
-
-		this._closeOnClick = $.proxy(this._closeOnClick, this);
-		document.addEventListener('click', this._closeOnClick, false);
-		
-		// For tests, will consider publishing later
-		this.trigger('rendered', this.elements.wrapper);
+	
+		return $li;
 	},
 	
-	_bindUIEvents () {
-		this.elements.button.on('click', $.proxy(this._handleClicked, this));
-		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
-		this.elements.wrapper.on('keydown', $.proxy(this._handleKeyDown, this));
-		this.elements.wrapper.on('keypress', $.proxy(this._handleKeyPressed, this));
+	_renderHeader (item) {
+		return $('<li class="' + this.cssClasses.HEADER + '"><span class="' + this.cssClasses.HEADERTEXT + '">' + item.getText() + '</span></li>');
+	},
+	
+	_renderDivider () {
+		return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
 	},
 
 	_render () {
@@ -158,7 +84,7 @@ export const PicklistObject = Lib.merge(Svg, {
 		const selection = this._getSelection();
 
 		// Get the template
-		const $el = this.template.clone();
+		const $el = this.element = this.$el = this.elements.control = this.template.clone();
 		const elements = this._initElements($el, this.elements);
 
 		// Configure the button
@@ -178,12 +104,12 @@ export const PicklistObject = Lib.merge(Svg, {
 			let $li;
 			let func;
 			const funcMap = {
-				header: _renderHeader,
-				divider: _renderDivider,
-				item: _renderItem
+				header: this._renderHeader,
+				divider: this._renderDivider,
+				item: this._renderItem
 			};
 			
-			func = funcMap[item.getType()] || _renderItem;
+			func = funcMap[item.getType()] || this._renderItem;
 
 			$li = func.call(this, item);
 
@@ -192,30 +118,30 @@ export const PicklistObject = Lib.merge(Svg, {
 		
 		this._addCheckmark(elements);
 
-		// Prep for append
-		elements.wrapper.empty();
-
-		if (this.elements.wrapper.is('div')) {
-			this.elements.wrapper.attr('class', $el.attr('class'));
-			this.elements.wrapper.append($el.children());
-		} else {
-			this.elements.wrapper.append($el);
-			this.elements.wrapper = $el;
-		}
-
 		if ( this._collection._data.length === 0 ) {
 			this.disable();
 			this.setProperties({ disabled: true });
 		}
 
 		this.rendered = true;
+		
+		return this.element;
 	},
+	
+	_onRendered () {
+		// Get the menu items for keyboard nav
+		this.elements.menuItems = [];
+		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
 
-	// TODO: Maybe move this to the core?
-	destroy () {
-		document.removeEventListener('click', this._closeOnClick, false);
-		this.elements.wrapper.remove();
-		return this.elements.wrapper[0].outerHTML;
+		for (let i = 0; i < menuItems.length; i++) {
+			const menuItem = menuItems[i].getElementsByTagName('a');
+
+			if (!menuItems[i].disabled && menuItem.length === 1) {
+				this.elements.menuItems.push(menuItem[0]);
+			}
+		}
+
+		this._bindUIEvents();
 	},
 
 	_onSelected (item) {
@@ -314,9 +240,9 @@ export const PicklistObject = Lib.merge(Svg, {
 			$li.find('a').prepend(this._renderIcon('standard.task2', 'slds-icon--small slds-icon--left'));
 		}
 	}
-});
+};
 
-Lib.merge(Picklist.prototype, PicklistCore, Events, State, PicklistObject);
+Lib.merge(Picklist.prototype, PicklistCore, Events, DOM, State, Svg, PicklistObject);
 
 // LEGACY METHODS
 //

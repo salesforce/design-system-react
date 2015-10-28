@@ -68,16 +68,11 @@ export const PicklistObject = {
 	},
 
 	componentDidMount () {
-		document.addEventListener('click', this._closeOnClick, false);
 		this._findElements();
 	},
 
 	componentDidUpdate () {
 		this._findElements();
-	},
-
-	componentWillUnmount () {
-		document.removeEventListener('click', this._closeOnClick, false);
 	},
 
 	_findElements () {

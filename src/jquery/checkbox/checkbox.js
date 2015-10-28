@@ -30,12 +30,12 @@ export const CheckboxObject = {
 		this.elements.input.on('change', $.proxy(this.toggle, this));
 	},
 
-	_initElements ($base, elements) {
+	_initElements (base, elements) {
 		const control = '.' + this.cssClasses.CONTROL;
 
-		elements.control = $base.find(control);
-		elements.input = $($base.find(this.inputSelector)[0]);
-		elements.label = $base.find('.' + this.cssClasses.LABEL);
+		elements.control = base.find(control);
+		elements.input = $(base.find(this.inputSelector)[0]);
+		elements.label = base.find('.' + this.cssClasses.LABEL);
 
 		return elements;
 	},
@@ -59,6 +59,8 @@ export const CheckboxObject = {
 		this._renderDressings(elements);
 
 		this.rendered = true;
+		
+		return this.element;
 	},
 	
 	_onRendered () {
