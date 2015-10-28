@@ -17,6 +17,7 @@ import radio from './radio/example';
 import spinner from './spinner/example';
 import tooltip from './tooltip/example';
 import tree from './tree/example';
+import datatable from './data-table/example';
 
 badge();
 button();
@@ -34,3 +35,4 @@ radio();
 spinner();
 tree();
 tooltip();
+datatable();
