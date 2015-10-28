@@ -2,7 +2,6 @@
 
 import * as Lib from '../lib/lib';
 import Base from './base';
-import classNames from 'classnames';
 
 // Traits
 import Disableable from '../traits/disableable';
@@ -28,8 +27,6 @@ import KeyboardNavigable from '../traits/keyboard-navigable';
 // require('../../scss/components/dropdowns/flavors/search-overflow/index.scss');
 
 export const CONTROL = 'picklist';
-
-const resizeCache = {};
 
 const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
 	// CSS classes used within this control
@@ -104,64 +101,6 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 
 		if (!item.getType() && !item.getDisabled()) {
 			select();
-		}
-	},
-
-	_onInitialized () {
-		/* if (this.getProperty('resize') === 'auto') {
-			this.resize();
-		}*/
-	},
-
-	// Vanilla js implementation of this to be shared by the libraries
-	// TODO: Look into creating a generic implementation as a trait
-	resize () {
-		const sizer = document.createElement('div');
-
-		sizer.className = 'selectlist-sizer';
-		sizer.innerHTML = '<div class="' + classNames(this.cssClasses.CONTROL) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
-
-		let parent;
-		if (Lib.hasClass(document.querySelector('html'), this.cssClasses.NAMESPACE)) {
-			parent = document.querySelector('body');
-		} else {
-			parent = document.querySelector('.' + this.cssClasses.NAMESPACE);
-		}
-
-		if (parent) {
-			parent.appendChild(sizer);
-		} else {
-			return;
-		}
-
-		const label = sizer.querySelector('.' + this.cssClasses.LABEL);
-		const control = sizer.querySelector('.' + this.cssClasses.CONTROL);
-
-		const strings = this.getState('strings');
-		label.textContent = strings.NONE_SELECTED;
-
-		let width = control.offsetWidth;
-		this._collection.forEach(item => {
-			const text = item.getText();
-			let offsetWidth;
-
-			if (resizeCache[text]) {
-				offsetWidth = resizeCache[text];
-			} else {
-				label.textContent = text;
-				offsetWidth = control.offsetWidth;
-			}
-
-			if (offsetWidth > width) {
-				width = offsetWidth;
-			}
-		});
-
-		parent.removeChild(sizer);
-
-		if (width !== this.getState('width')) {
-			this.setState({width});
-			if (Lib.isFunction(this._resetWidth)) this._resetWidth(width);
 		}
 	}
 });
