@@ -5,9 +5,11 @@ import * as Lib from '../../lib/lib';
 import DropdownCore, {CONTROL} from '../../core/dropdown';
 
 // Framework specific
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
-import { PicklistObject, _renderItem, _renderHeader, _renderDivider, legacyMethods } from '../picklist/picklist';
+import Svg from '../svg';
+import { PicklistObject, legacyMethods } from '../picklist/picklist';
 
 // Children
 import Button from '../button/button';
@@ -17,30 +19,20 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // Template imports
 import template from './dropdown-template';
 
-let Dropdown = function Dropdown (element, options) {
-	this.options = Lib.extend({}, options);
-
-	this.elements = {
-		wrapper: $(element)
-	};
-
+let Dropdown = function Dropdown () {
+	const options = this._getOptions(arguments);
+	
 	this.template = $('<i />').append(template);
-
-	if (this.options.collection) {
-		this.rendered = false;
-	} else {
-		this._initElements(this.elements.wrapper, this.elements);
-
-		this._buildCollection(this.options);
-
-		this.rendered = true;
-	}
-
-	this._initializeState();
-	this._initialize(this.options);
+	this._closeOnClick = $.proxy(this._closeOnClick, this);
+	
+	this._initialize(options);
 };
 
-export const DropdownObject = Lib.merge(PicklistObject, {
+export const DropdownObject = {
+	_bindUIEvents () {
+		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
+	},
+	
 	_initElements (base, elements) {
 		const els = elements || {};
 
@@ -51,14 +43,11 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 		return els;
 	},
 
-	_bindUIEvents () {
-		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
-	},
-
 	_render () {
 		// Get the template
 		const $el = this.template.clone();
 		const elements = this._initElements($el, this.elements);
+		this.element = this.$el = this.elements.control = this.elements.trigger;
 		
 		// Configure the button
 		let icon;
@@ -70,48 +59,27 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 		
 		icon = icon || this.getProperty('icon');
 		
-		this.button = new Button(elements.trigger, {
+		this.button = new Button({
 			icon,
 			iconStyle: 'icon-more'
 		});
+
+		// Render the menu
+		this._renderMenu(elements);
 		
-		// Put the menu in the trigger div when ready
-		elements.trigger.on('initialized', function () {
-			elements.trigger.append(elements.dropdown);
-		});
-
-		// Empty the menu from the template
-		elements.dropdownMenu.empty();
-
-		// Building the menu items
-		this._collection.forEach(item => {
-			let $li;
-			let func;
-			const funcMap = {
-				header: _renderHeader,
-				divider: _renderDivider,
-				item: _renderItem
-			};
-			
-			func = funcMap[item.getType()] || _renderItem;
-
-			$li = func.call(this, item);
-
-			elements.dropdownMenu.append($li);
-		});
-		
-		this._addCheckmark(elements);
+		// Put everything in it's place
+		this.button.prependTo(this.element);
+		this.element.append(elements.dropdown);
 
 		// Prep for append
 		elements.wrapper.empty();
 		this.elements.wrapper.append($el.children());
 
-		if ( this._collection._data.length === 0 ) {
+		if (this._collection._data.length === 0) {
 			this.disable();
-			this.setProperties({ disabled: true });
 		}
 
-		this.rendered = true;
+		return this.element;
 	},
 
 	_onSelected (item) {
@@ -136,9 +104,9 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 			// TODO: Implement this, which will require an update to Button
 		}
 	}
-});
+};
 
-Lib.merge(Dropdown.prototype, DropdownCore, Events, State, DropdownObject);
+Lib.merge(Dropdown.prototype, DropdownCore, Events, DOM, State, Svg, PicklistObject, DropdownObject);
 
 Dropdown = Lib.runHelpers('jquery', CONTROL, Dropdown, {
 	legacyMethods
