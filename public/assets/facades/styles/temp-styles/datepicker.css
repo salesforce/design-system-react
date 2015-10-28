@@ -1,0 +1,13 @@
+.slds-datepicker .slds-datepicker__filter--month h2 {
+	width: 120px;
+	text-align: center;
+}
+
+.slds-datepicker .slds-picklist .slds-button {
+	width: 100px;
+}
+
+.slds-datepicker .slds-picklist .slds-dropdown {
+	min-width: 100px;
+	width: 100px;
+}

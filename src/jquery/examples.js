@@ -6,7 +6,7 @@ import './button/example';
 import './checkbox/example';
 import './combobox/example';
 import './data-table/example';
-	// import './datepicker/example';
+import './datepicker/example';
 	// import './dropdown/example';
 import './notification/example';
 import './picklist/example';

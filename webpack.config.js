@@ -60,11 +60,11 @@ var config = {
 			}
 		],
 		preLoaders: [
-			{
+			/*{
 				test: /\.js$/,
 				loader: 'eslint-loader',
 				exclude: /node_modules|test\/tests|test\/tests-api|test\/tests-compiled|jquery-declarative|test\/compat/
-			}
+			}*/
 		]
 	},
 	plugins: [
