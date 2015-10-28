@@ -8,8 +8,8 @@ import ComboboxCore, {CONTROL} from '../../core/combobox';
 import React from 'react';
 import { PicklistObject } from '../picklist/picklist';
 
-// Third party
-import classNames from 'classnames';
+// Children
+import PicklistItems from '../picklist/picklist-items';
 
 export const ComboboxObject = Lib.merge(PicklistObject, {
 	propTypes: {
@@ -28,9 +28,6 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 		const icon = '<use xlink:href="/assets/design-system/icons/utility-sprite/svg/symbols.svg#down"></use>'; // react doesn't currently support xlink:href in a svg tag
 		const item = this._getSelection();
 		const selectionName = item.getText();
-		const styles = {
-			width: this.state.width
-		};
 		const inputStyle = {
 			border: 'none',
 			borderRight: '1px solid #d8dde6',
@@ -46,11 +43,7 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 				</div>
 				<svg aria-hidden="true" className="slds-icon" style={{right: '.7rem'}} dangerouslySetInnerHTML={{__html: icon}} />
 			</button>
-			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--small', 'lds-dropdown--menu', {'slds-hide': !this.state.isOpen})}>
-				<ul className="slds-dropdown__list" role="menu" style={styles} ref={this.cssClasses.MENU}>
-				{this._menuItems()}
-				</ul>
-			</div>
+			<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
 			</div>
 		</div>
 		);
