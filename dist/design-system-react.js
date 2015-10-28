@@ -99,11 +99,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSLookup2 = _interopRequireDefault(_SLDSLookup);
 	
-	var _SLDSModal = __webpack_require__(72);
+	var _SLDSModal = __webpack_require__(74);
 	
 	var _SLDSModal2 = _interopRequireDefault(_SLDSModal);
 	
-	var _SLDSModalTrigger = __webpack_require__(73);
+	var _SLDSModalTrigger = __webpack_require__(75);
 	
 	var _SLDSModalTrigger2 = _interopRequireDefault(_SLDSModalTrigger);
 	
@@ -226,7 +226,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  getValueByIndex: function getValueByIndex(index) {
-	    return this.props.options[index].value;
+	    var option = this.props.options[index];
+	    if (option) {
+	      return this.props.options[index].value;
+	    }
 	  },
 	
 	  handleSelect: function handleSelect(index) {
@@ -6095,6 +6098,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getInitialState: function getInitialState() {
 	    return {
+	      triggerId: null,
 	      isOpen: false,
 	      isFocused: false,
 	      isClosing: false,
@@ -6107,10 +6111,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  componentDidMount: function componentDidMount() {
+	    var id = _react2['default'].findDOMNode(this.refs.button).getAttribute("data-reactid");
+	    this.setState({ triggerId: id });
 	    if (this.props.initialFocus) {
 	      this.setFocus();
 	    }
 	    if (this.props.openOn === 'hover') {}
+	  },
+	
+	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+	    var _this = this;
+	
+	    if (this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp) {
+	      if (this.state.lastBlurredIndex === this.state.highlightedIndex) {
+	        this.handleClose();
+	      }
+	    }
+	
+	    if (this.state.isOpen && !prevState.isOpen) {
+	      this.state.isClosing = false;
+	    }
+	
+	    if (this.state.selectedIndex !== prevState.selectedIndex) {
+	      this.handleClose();
+	    } else if (this.state.isFocused && !prevState.isFocused) {
+	      this.setState({ isOpen: false });
+	    } else if (!this.state.isFocused && prevState.isFocused) {
+	      if (this.refs.list) {
+	        if (this.isMounted() && this.refs.list) {
+	          if (this.refs.list.getDOMNode().contains(document.activeElement)) {
+	            return;
+	          }
+	          this.setState({ isOpen: false });
+	        }
+	      }
+	    } else if (this.state.isClosing && !prevState.isClosing) {
+	      setTimeout(function () {
+	        if (_this.state.isClosing) {
+	          _this.setState({ isOpen: false });
+	        }
+	      }, this.props.hoverCloseDelay);
+	    }
+	
+	    if (this.props.value !== prevProps.value) {
+	      this.handleSelect(this.getIndexByValue(this.props.value));
+	    }
 	  },
 	
 	  getIndexByValue: function getIndexByValue(value) {
@@ -6201,8 +6246,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return _react2['default'].findDOMNode(this.refs.button);
 	  },
 	
-	  moveHighlight: function moveHighlight(delta) {},
-	
 	  handleKeyDown: function handleKeyDown(event) {
 	    if (event.keyCode) {
 	      if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE || event.keyCode === _utils.KEYS.DOWN || event.keyCode === _utils.KEYS.UP) {
@@ -6232,6 +6275,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getPopoverContent: function getPopoverContent() {
 	    return _react2['default'].createElement(_list2['default'], {
+	      triggerId: this.state.triggerId,
 	      ref: 'list',
 	      options: this.props.options,
 	      className: this.props.listClassName,
@@ -6281,6 +6325,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var props = (0, _lodashOmit2['default'])(this.props, ['aria-haspopup', 'label', 'className', 'style', 'variant', 'iconName', 'iconVariant', 'onBlur', 'onFocus', 'onClick', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'tabIndex', 'onKeyDown']);
 	    return _react2['default'].createElement(_SLDSButton2['default'], _extends({
 	      ref: 'button',
+	      id: this.state.triggerId,
 	      'aria-haspopup': 'true',
 	      label: this.props.label,
 	      className: this.props.className,
@@ -6297,45 +6342,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      tabIndex: this.state.isOpen ? -1 : 0,
 	      onKeyDown: (0, _utilsCreateChainedFunction2['default'])(this.props.onKeyDown, this.handleKeyDown)
 	    }, props), this.props.modal ? this.getModalPopover() : this.getSimplePopover());
-	  },
-	
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	    var _this = this;
-	
-	    if (this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp) {
-	      if (this.state.lastBlurredIndex === this.state.highlightedIndex) {
-	        this.handleClose();
-	      }
-	    }
-	
-	    if (this.state.isOpen && !prevState.isOpen) {
-	      this.state.isClosing = false;
-	    }
-	
-	    if (this.state.selectedIndex !== prevState.selectedIndex) {
-	      this.handleClose();
-	    } else if (this.state.isFocused && !prevState.isFocused) {
-	      this.setState({ isOpen: false });
-	    } else if (!this.state.isFocused && prevState.isFocused) {
-	      if (this.refs.list) {
-	        if (this.isMounted() && this.refs.list) {
-	          if (this.refs.list.getDOMNode().contains(document.activeElement)) {
-	            return;
-	          }
-	          this.setState({ isOpen: false });
-	        }
-	      }
-	    } else if (this.state.isClosing && !prevState.isClosing) {
-	      setTimeout(function () {
-	        if (_this.state.isClosing) {
-	          _this.setState({ isOpen: false });
-	        }
-	      }, this.props.hoverCloseDelay);
-	    }
-	
-	    if (this.props.value !== prevProps.value) {
-	      this.handleSelect(this.getIndexByValue(this.props.value));
-	    }
 	  }
 	
 	});
@@ -6520,7 +6526,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      ref: "scroll",
 	      className: "slds-dropdown__list slds-theme--" + this.props.theme,
 	      role: "menu",
-	      "aria-labelledby": this.props.label }, this.getItems()));
+	      "aria-labelledby": this.props.triggerId }, this.getItems()));
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {}
@@ -8937,6 +8943,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
+	var _extends = Object.assign || function (target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i];for (var key in source) {
+	      if (Object.prototype.hasOwnProperty.call(source, key)) {
+	        target[key] = source[key];
+	      }
+	    }
+	  }return target;
+	};
+	
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
 	    for (var i = 0; i < props.length; i++) {
@@ -9007,6 +9023,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _lodashEscaperegexp2 = _interopRequireDefault(_lodashEscaperegexp);
 	
+	var _MenuDefaultFooter = __webpack_require__(72);
+	
+	var _MenuDefaultFooter2 = _interopRequireDefault(_MenuDefaultFooter);
+	
+	var _MenuDefaultHeader = __webpack_require__(73);
+	
+	var _MenuDefaultHeader2 = _interopRequireDefault(_MenuDefaultHeader);
+	
 	var defaultFilter = function defaultFilter(term, item) {
 	  if (!term) return true;
 	  return item.label.match(new RegExp((0, _lodashEscaperegexp2['default'])(term), 'ig'));
@@ -9036,7 +9060,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(SLDSLookup, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      this.modifyItems();
+	      this.modifyItems(this.props.items);
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
@@ -9162,12 +9186,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	          else if ((event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE) && this.state.focusIndex !== null) {
 	              _utils.EventUtil.trapImmediate(event);
 	              //If the focus is on the first fixed Action Item in Menu, click it
-	              if (this.props.header && this.state.focusIndex === 0) {
-	                document.getElementById('menuContainer').firstChild.children[0].click();
+	              if (this.refs.header && this.state.focusIndex === 0) {
+	                //          document.getElementById('menuContainer').firstChild.children[0].click();
+	                _react2['default'].findDOMNode(this.refs.header).click();
 	              }
 	              //If the focus is on the last fixed Action Item in Menu, click it
-	              else if (this.props.footer && this.state.focusIndex === this.state.listLength + 1) {
-	                  document.getElementById('menuContainer').lastChild.children[0].click();
+	              else if (this.refs.footer && this.state.focusIndex === this.state.listLength + 1) {
+	                  _react2['default'].findDOMNode(this.refs.footer).click();
+	                  //          document.getElementById('menuContainer').lastChild.children[0].click();
 	                }
 	                //If not, then select menu item
 	                else {
@@ -9185,6 +9211,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	          this.handleDeleteSelected();
 	        }
 	      }
+	    }
+	  }, {
+	    key: 'getHeader',
+	    value: function getHeader() {
+	      if (this.props.headerRenderer) {
+	        var headerActive = false;
+	        var isActiveClass = null;
+	        if (this.state.focusIndex === 0) {
+	          headerActive = true;
+	          isActiveClass = 'slds-theme--shade';
+	        } else {
+	          headerActive = false;
+	          isActiveClass = '';
+	        }
+	        var Header = this.props.headerRenderer;
+	        return _react2['default'].createElement('div', { className: isActiveClass }, _react2['default'].createElement(Header, _extends({ ref: 'header' }, this.props, {
+	          searchTerm: this.state.searchTerm,
+	          focusIndex: this.state.focusIndex,
+	          listLength: this.state.listLength,
+	          onClose: this.handleClose.bind(this)
+	        })));
+	      }
+	    }
+	  }, {
+	    key: 'getFooter',
+	    value: function getFooter() {
+	      var Footer = this.props.footerRenderer;
+	      return _react2['default'].createElement(Footer, _extends({ ref: 'footer' }, this.props, {
+	        focusIndex: this.state.focusIndex,
+	        listLength: this.state.listLength,
+	        onClose: this.handleClose.bind(this)
+	      }));
 	    }
 	
 	    //=================================================
@@ -9204,8 +9262,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          getListLength: this.getListLength.bind(this),
 	          setFocus: this.setFocus.bind(this),
 	          onSelect: this.selectItem.bind(this),
-	          header: this.props.header,
-	          footer: this.props.footer
+	          header: this.getHeader(),
+	          footer: this.getFooter()
 	        });
 	      }
 	    }
@@ -9244,8 +9302,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }, {
 	    key: 'modifyItems',
-	    value: function modifyItems() {
-	      var items = this.props.items.map(function (item, index) {
+	    value: function modifyItems(itemsToModify) {
+	      var items = itemsToModify.map(function (item, index) {
 	        return {
 	          id: 'item-' + index,
 	          label: item.label,
@@ -9258,7 +9316,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'componentWillReceiveProps',
 	    value: function componentWillReceiveProps(newProps) {
-	      this.modifyItems();
+	      if (newProps.items) {
+	        this.modifyItems(newProps.items);
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -9309,6 +9369,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	module.exports = SLDSLookup;
+	
+	module.exports.DefaultHeader = _MenuDefaultHeader2['default'];
+	
+	module.exports.DefaultFooter = _MenuDefaultFooter2['default'];
 
 /***/ },
 /* 68 */
@@ -9416,19 +9480,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'renderHeader',
 	    value: function renderHeader() {
-	      if (this.props.header) {
-	        var headerActive = false;
-	        var isActiveClass = null;
-	        if (this.props.focusIndex === 0) {
-	          headerActive = true;
-	          isActiveClass = 'slds-theme--shade';
-	        } else {
-	          headerActive = false;
-	          isActiveClass = '';
-	        }
-	
-	        return _react2['default'].createElement('div', { className: isActiveClass }, this.props.header);
-	      }
+	      return this.props.header;
 	    }
 	  }, {
 	    key: 'renderFooter',
@@ -9774,6 +9826,233 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
+	   Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	   Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	   Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	   */
+	
+	'use strict';
+	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SLDSIcons = __webpack_require__(13);
+	
+	var _utils = __webpack_require__(6);
+	
+	var DefaultFooter = (function (_React$Component) {
+	  _inherits(DefaultFooter, _React$Component);
+	
+	  function DefaultFooter(props) {
+	    _classCallCheck(this, DefaultFooter);
+	
+	    _get(Object.getPrototypeOf(DefaultFooter.prototype), 'constructor', this).call(this, props);
+	  }
+	
+	  _createClass(DefaultFooter, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
+	    }
+	  }, {
+	    key: 'handleClick',
+	    value: function handleClick() {
+	      console.log('=====> Lookup Footer Clicked');
+	    }
+	  }, {
+	    key: 'handleMouseDown',
+	    value: function handleMouseDown(event) {
+	      _utils.EventUtil.trapImmediate(event);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var className = 'slds-button';
+	      if (this.props.isActive) className += ' slds-theme--shade';
+	
+	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onClick: this.handleClick.bind(this), onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement('button', { id: 'newItem', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'add', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), 'New ' + this.props.type));
+	    }
+	  }]);
+	
+	  return DefaultFooter;
+	})(_react2['default'].Component);
+	
+	DefaultFooter.propTypes = {};
+	
+	DefaultFooter.defaultProps = {};
+	
+	module.exports = DefaultFooter;
+
+/***/ },
+/* 73 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	   Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	   Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	   Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	   */
+	
+	'use strict';
+	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SLDSIcons = __webpack_require__(13);
+	
+	var _utils = __webpack_require__(6);
+	
+	var DefaultHeader = (function (_React$Component) {
+	  _inherits(DefaultHeader, _React$Component);
+	
+	  function DefaultHeader(props) {
+	    _classCallCheck(this, DefaultHeader);
+	
+	    _get(Object.getPrototypeOf(DefaultHeader.prototype), 'constructor', this).call(this, props);
+	  }
+	
+	  _createClass(DefaultHeader, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
+	    }
+	  }, {
+	    key: 'handleClick',
+	    value: function handleClick() {
+	      console.log('=====> Lookup Header Clicked');
+	      if (this.props.onClose) {
+	        this.props.onClose();
+	      }
+	    }
+	  }, {
+	    key: 'handleMouseDown',
+	    value: function handleMouseDown(event) {
+	      _utils.EventUtil.trapImmediate(event);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var className = 'slds-button';
+	      if (this.props.isActive) className += ' slds-theme--shade aaa';
+	
+	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onMouseDown: this.handleMouseDown, onClick: this.handleClick.bind(this) }, _react2['default'].createElement('button', { id: 'searchRecords', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'search', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.searchTerm ? '"' + this.props.searchTerm + '"' + ' in ' + this.props.type + 's' : ' in ' + this.props.type + 's'));
+	    }
+	  }]);
+	
+	  return DefaultHeader;
+	})(_react2['default'].Component);
+	
+	DefaultHeader.propTypes = {};
+	
+	DefaultHeader.defaultProps = {};
+	
+	module.exports = DefaultHeader;
+
+/***/ },
+/* 74 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
 	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
 	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
@@ -10001,7 +10280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 73 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10025,7 +10304,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(6);
 	
-	var _index = __webpack_require__(72);
+	var _index = __webpack_require__(74);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
