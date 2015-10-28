@@ -154,11 +154,9 @@ class SLDSLookup extends React.Component {
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.focusIndex !== null){
         EventUtil.trapImmediate(event);
         //If the focus is on the first fixed Action Item in Menu, click it
-        if(this.props.header && this.state.focusIndex === 0){
+        if(this.refs.header && this.state.focusIndex === 0){
 //          document.getElementById('menuContainer').firstChild.children[0].click();
-          if(this.refs.header){
-            React.findDOMNode(this.refs.header).click();
-          }
+          React.findDOMNode(this.refs.header).click();
         }
         //If the focus is on the last fixed Action Item in Menu, click it
         else if(this.props.footer && this.state.focusIndex === (this.state.listLength + 1)){
@@ -182,7 +180,7 @@ class SLDSLookup extends React.Component {
   }
 
   getHeader(){
-    if(this.props.header){
+    if(this.props.headerRenderer){
       let headerActive = false;
       let isActiveClass = null;
       if(this.state.focusIndex === 0){
@@ -192,7 +190,7 @@ class SLDSLookup extends React.Component {
         headerActive = false;
         isActiveClass = '';
       }
-      const Header = this.props.header;
+      const Header = this.props.headerRenderer;
       return <div className={isActiveClass}>
         <Header ref='header' {... this.props} 
           searchTerm={this.state.searchTerm}
@@ -220,7 +218,6 @@ class SLDSLookup extends React.Component {
         setFocus={this.setFocus.bind(this)}
         onSelect={this.selectItem.bind(this)}
         header={this.getHeader()}
-        headerProps={this.props.headerProps}
         footer={this.props.footer}
       />;
     }
