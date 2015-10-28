@@ -70,7 +70,7 @@ module.exports = React.createClass( {
                   label="Account"
                   type="account"
                   headerRenderer={SLDSLookup.DefaultHeader}
-                  footer={this.getFooter()}
+                  footerRenderer={SLDSLookup.DefaultFooter}
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
                 />

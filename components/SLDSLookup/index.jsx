@@ -159,8 +159,9 @@ class SLDSLookup extends React.Component {
           React.findDOMNode(this.refs.header).click();
         }
         //If the focus is on the last fixed Action Item in Menu, click it
-        else if(this.props.footer && this.state.focusIndex === (this.state.listLength + 1)){
-          document.getElementById('menuContainer').lastChild.children[0].click();
+        else if(this.refs.footer && this.state.focusIndex === (this.state.listLength + 1)){
+          React.findDOMNode(this.refs.footer).click();
+//          document.getElementById('menuContainer').lastChild.children[0].click();
         }
         //If not, then select menu item
         else{
@@ -202,6 +203,15 @@ class SLDSLookup extends React.Component {
     }
   }
 
+  getFooter () {
+    const Footer = this.props.footerRenderer;
+    return <Footer  ref='footer' {... this.props}
+      focusIndex={this.state.focusIndex}
+      listLength={this.state.listLength}
+      onClose={this.handleClose.bind(this)}
+    />;
+  }
+
   //=================================================
   // Rendering Things
   renderMenuContent(){
@@ -218,7 +228,7 @@ class SLDSLookup extends React.Component {
         setFocus={this.setFocus.bind(this)}
         onSelect={this.selectItem.bind(this)}
         header={this.getHeader()}
-        footer={this.props.footer}
+        footer={this.getFooter()}
       />;
     }
   }
