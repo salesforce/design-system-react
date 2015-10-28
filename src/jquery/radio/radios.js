@@ -8,6 +8,7 @@ import Base from '../../core/base';
 import Disableable from '../../traits/disableable';
 
 // Framework specific
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
 import Radio from './radio';
@@ -21,57 +22,31 @@ import template from './radios-template';
 const CONTROL = 'radios';
 
 // Constructor
-let Radios = function Radios (element, options) {
-	this.options = Lib.extend({}, options);
-	this.elements = {
-		wrapper: $(element)
-	};
-	this.radios = this.options.radios.map((radio) => {
-		radio.name = this.options.name;
-		return new Radio($('<i />'), radio);
+let Radios = function Radios () {
+	const options = this._getOptions(arguments);
+	
+	this.radios = options.radios.map((radio) => {
+		radio.name = options.name;
+		return new Radio(radio);
 	});
-
-	this.rendered = false;
+	
 	this.template = $(template);
-
-	this._initializeState();
-	this._initialize(this.options);
+	
+	this._initialize(options);
 };
 
 // Prototype extension object
 const RadiosObject = Lib.merge({}, {
 	_bindUIEvents () {
-		const self = this;
-		this.elements.radios.map( function (radio) {
-			radio.on('change', $.proxy(self._handleInputChange, self));
+		this.elements.radios.forEach((radio) => {
+			radio.on('change', $.proxy(this._handleInputChange, this));
 		});
-	},
-
-	_handleInputChange (e) {
-		let targetI = null;
-
-		this.radios.map( function (radio, i) {
-			if (radio.options.value === e.target.value) {
-				targetI = i;
-			}
-		});
-
-		this.check(targetI);
-	},
-
-	_onInitialized () {
-		this._render();
-		this._bindUIEvents();
-		// only run if all need disabled. Otherwise it will incorrectly enable explicitly disabled radios on init.
-		if (this.getProperty('disabled')) {
-			this._onEnabledOrDisabled();
-		}
 	},
 
 	_initElements ($base, elements) {
-		elements.radios = this.radios.map( function (radio) {
-			return radio.elements.control;
-		} );
+		elements.radios = this.radios.map(function (radio) {
+			return radio.element;
+		});
 
 		elements.label = $base.find('.' + this.cssClasses.LABEL);
 
@@ -79,31 +54,48 @@ const RadiosObject = Lib.merge({}, {
 	},
 
 	_render () {
-		let $el = this.template.clone();
+		// Get the template
+		const $el = this.element = this.$el = this.elements.control = this.template.clone();
+		
 		const elements = this._initElements($el, this.elements);
-		const itag = '<i />';
 
 		elements.label.append(this.getProperty('labelText'));
 
 		$el.find('.' + this.cssClasses.CONTROL).append(elements.radios);
-		$el = $(itag).append($el);
-
-		elements.wrapper.empty();
-		elements.wrapper.append($el.children());
 
 		this.rendered = true;
+	},
+	
+	_onRendered () {
+		this._bindUIEvents();
+		// Only run if all need disabled. Otherwise it will incorrectly enable explicitly disabled radios on init.
+		if (this.getProperty('disabled')) {
+			this._onEnabledOrDisabled();
+		}
+	},
+	
+	_handleInputChange (e) {
+		let targetI = null;
+
+		this.radios.forEach((radio, i) => {
+			if (radio.getProperty('value') === e.target.value) {
+				targetI = i;
+			}
+		});
+
+		this.check(targetI);
 	},
 
 	_onEnabledOrDisabled () {
 		const disabled = this.getProperty('disabled');
 
 		if (disabled) {
-			this.elements.wrapper.attr('disabled', 'disabled');
+			this.element.attr('disabled', 'disabled');
 			this.radios.map( function (radio) {
 				radio.disable();
 			});
 		} else {
-			this.elements.wrapper.removeAttr('disabled');
+			this.element.removeAttr('disabled');
 			this.radios.map( function (radio) {
 				radio.enable();
 			});
@@ -137,8 +129,8 @@ const RadiosObject = Lib.merge({}, {
 
 		// Must set all checked to false first before you set desired checked to true. If you don't, if there is already one set to true further on
 		// in the map, it will ignore you trying to set your target to true.
-		this.radios.map( function (radio) {
-			if (radio.options.value !== target.options.value) {
+		this.radios.forEach(function (radio) {
+			if (radio.getProperty('value') !== target.getProperty('value')) {
 				radio.uncheck();
 			}
 		});
@@ -163,19 +155,14 @@ const RadiosObject = Lib.merge({}, {
 	getValue () {
 		for (const radio of this.radios) {
 			if (radio.checked()) {
-				return radio.options.value;
+				return radio.getProperty('value');
 			}
 		}
-	},
-
-	destroy () {
-		this.elements.wrapper.remove();
-		return this.elements.wrapper[0].outerHTML;
 	}
 });
 
 // Merging into prototype
-Lib.merge(Radios.prototype, Base, Disableable, Events, State, RadiosObject);
+Lib.merge(Radios.prototype, Base, Disableable, Events, DOM, State, RadiosObject);
 
 // Framework setup
 Radios = Lib.runHelpers('jquery', CONTROL, Radios);
