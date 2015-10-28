@@ -10,7 +10,7 @@ const DOM = {
 		this.elements = {};
 		
 		if (options.wrapper) {
-			this.appendTo($(options.wrapper));
+			this.appendTo(options.wrapper);
 			delete options.wrapper;
 		}
 	},

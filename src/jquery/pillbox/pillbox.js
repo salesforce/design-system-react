@@ -39,6 +39,8 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		this.elements.pillTemplate = this.elements.group.find('.slds-pill').remove();
 
 		this._renderSelection();
+		
+		return this.element;
 	},
 	
 	_onRendered () {
