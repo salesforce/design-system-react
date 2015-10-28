@@ -71,10 +71,6 @@ export const DropdownObject = {
 		this.button.prependTo(this.element);
 		this.element.append(elements.dropdown);
 
-		// Prep for append
-		elements.wrapper.empty();
-		this.elements.wrapper.append($el.children());
-
 		if (this._collection._data.length === 0) {
 			this.disable();
 		}

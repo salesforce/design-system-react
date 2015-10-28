@@ -29,8 +29,8 @@ export const PicklistObject = {
 	_bindUIEvents () {
 		this.elements.button.on('click', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
-		this.elements.wrapper.on('keydown', $.proxy(this._handleKeyDown, this));
-		this.elements.wrapper.on('keypress', $.proxy(this._handleKeyPressed, this));
+		this.element.on('keydown', $.proxy(this._handleKeyDown, this));
+		this.element.on('keypress', $.proxy(this._handleKeyPressed, this));
 	},
 	
 	_initElements (base, elements) {
