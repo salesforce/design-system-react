@@ -39,6 +39,12 @@ const Base = {
 			if (Lib.isFunction(this._onInitialized)) this._onInitialized();
 		});
 	},
+	
+	_onInitialized () {
+		const onInitialized = this.getProperty('onInitialized');
+		
+		if (Lib.isFunction(onInitialized)) onInitialized.call(this);
+	},
 
 	_getItemAdapter (_item, _itemAdapter) {
 		const itemAdapter = _itemAdapter || Lib.getItemAdapter;

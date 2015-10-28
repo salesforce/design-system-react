@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import BadgeCore, {CONTROL} from '../../core/badge';
 
 // Framework specific
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
 
@@ -22,44 +23,30 @@ let Badge = function Badge () {
 		options = arguments[1];
 	}
 	
-	this.options = Lib.extend(BadgeCore._defaultProperties, options);
-	this.elements = { wrapper };
+	this.options = Lib.extend({}, this._defaultProperties, options, {
+		wrapper
+	});
 
 	this._initializeState();
 	this._initialize(this.options);
 };
 
 export const BadgeObject = {
-	_onInitialized () {
-		this._render();
-		this.trigger('initialized', this);
-	},
-
 	_render () {
 		const className = this._getClassNames();
 
 		this.element = this.$el = this.elements.control = $('<span>');
 		
 		// TODO: Should this also use the contents of the original? It's different in jQuery becasue in React 'Children' is actually just another prop
-		this.element.addClass(className).text(this.getProperty('text'));
+		this.element
+			.addClass(className)
+			.text(this.getProperty('text'));
 		
-		if (this.elements.wrapper) {
-			this.element.appendTo(this.elements.wrapper);
-		}
-		
-		this.rendered = true;
-	},
-	
-	appendTo (wrapper) {
-		this.elements.wrapper = $(wrapper);
-		
-		if (this.rendered) {
-			this.element.appendTo(this.elements.wrapper);
-		}
+		return this.element;
 	}
 };
 
-Lib.merge(Badge.prototype, BadgeCore, Events, State, BadgeObject);
+Lib.merge(Badge.prototype, BadgeCore, State, Events, DOM, BadgeObject);
 Badge = Lib.runHelpers('jquery', CONTROL, Badge);
 
 export default Badge;

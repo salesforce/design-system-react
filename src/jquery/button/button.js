@@ -5,51 +5,45 @@ import * as Lib from '../../lib/lib';
 import ButtonCore, {CONTROL} from '../../core/button';
 
 // Framework specific
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
+
+// Children
 import ButtonView from './button-view';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
 // Constructor
-let Button = function Button (element, options) {
-	this.options = {};
-	Lib.merge(this.options, this._defaultProperties, options);
+let Button = function Button () {
+	let wrapper;
+	let options;
+	
+	if (arguments.length === 1) {
+		options = arguments[0];
+	} else if (arguments.length > 1) {
+		wrapper = $(arguments[0]);
+		options = arguments[1];
+	}
+	
+	this.options = Lib.extend({}, this._defaultProperties, options, {
+		wrapper
+	});
 
-	// if button has views, button is stateful
+	// If button has views, button is stateful
 	if (this.options.views.length > 0) {
-		const buttonOptions = Lib.merge({}, this.options);
-		buttonOptions.views = undefined;	// really should be delete, but performance
-
-		this.options.views.map((child, index, array) => {
-			array[index] = Lib.merge({}, buttonOptions, child );
+		this.options.views = this.options.views.map((child) => {
+			return Lib.extend({}, this.options, child);
 		});
 	}
-
-	this.elements = {
-		wrapper: $(element)
-	};
 
 	this._initializeState();
 	this._initialize(this.options);
 };
 
 export const ButtonObject = {
-	_onInitialized () {
-		this._render();
-		this._initElements(this.elements.wrapper, this.elements);
-		this._bindUIEvents();
-		this.trigger('initialized', this.elements.button);
-	},
-
-	_initElements ($base, elements) {
-		const control = '.' + this.cssClasses.CONTROL;
-		elements.control = $base.find(control);
-		return elements;
-	},
-
 	_bindUIEvents () {
-		this.elements.wrapper.on('click', $.proxy(this._handleClick, this));
+		this.element.on('click', $.proxy(this._handleClick, this));
 	},
 
 	_renderViews () {
@@ -61,11 +55,11 @@ export const ButtonObject = {
 
 		let $buttonview = new ButtonView(this.options);
 
-		views.push( $buttonview.render() );
+		views.push($buttonview.render());
 
 		// other views
 		if (this.options.views.length > 0 ) {
-			this.options.views.forEach( (viewOptions) => {
+			this.options.views.forEach((viewOptions) => {
 				$buttonview = new ButtonView(viewOptions);
 				views.push($buttonview.render());
 			});
@@ -77,11 +71,19 @@ export const ButtonObject = {
 	_render () {
 		const isStateful = this.options.views.length > 0;
 		const className = this._getClassNames(isStateful);
+		
+		this.element = this.$el = this.elements.control = $('<button>');
 
-		this.elements.button = $('<button>').addClass(className)
-			.append( this._renderViews() )
-			.prop( 'disabled', this.getProperty('disabled') )
-			.appendTo(this.elements.wrapper);
+		this.element
+			.addClass(className)
+			.append(this._renderViews())
+			.prop('disabled', this.getProperty('disabled'));
+		
+		return this.element;
+	},
+	
+	_onRendered () {
+		this._bindUIEvents();
 	},
 
 	_handleClick () {
@@ -99,16 +101,10 @@ export const ButtonObject = {
 		} else {
 			this.elements.control.removeAttr('disabled');
 		}
-	},
-
-
-	destroy () {
-		this.elements.wrapper.remove();
-		return this.elements.wrapper[0].outerHTML;
 	}
 };
 
-Lib.merge(Button.prototype, ButtonCore, Events, State, ButtonObject);
+Lib.merge(Button.prototype, ButtonCore, State, Events, DOM, ButtonObject);
 Button = Lib.runHelpers('jquery', CONTROL, Button);
 
 export default Button;
