@@ -65,7 +65,13 @@ class Menu extends React.Component {
       return <div className={isActiveClass}>{this.props.footer}</div>;
     }
   }
-
+  renderMessages(){
+    if (this.props.messages.length){
+      return <li className="slds-lookup__item" role="presentaion">
+        {this.props.messages.join("; ")}
+      </li>
+    }
+  }
   renderItems(){
     return this.props.items.filter(this.filter, this).map((c, i) => {
       //isActive means it is aria-activedescendant
@@ -97,11 +103,10 @@ class Menu extends React.Component {
     return (
       <section id="menuContainer">
         {this.renderHeader()}
-
         <ul id="list" className="slds-lookup__list" role="presentation" ref="list">
+          {this.renderMessages()}
           {this.renderItems()}
         </ul>
-
         {this.renderFooter()}
       </section>
     )
@@ -115,6 +120,7 @@ Menu.propTypes = {
   focusIndex: React.PropTypes.number,
   listLength: React.PropTypes.number,
   items: React.PropTypes.array,
+  messages: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func,
   getListLength: React.PropTypes.func,
   setFocus: React.PropTypes.func,
