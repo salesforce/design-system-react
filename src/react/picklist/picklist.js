@@ -6,6 +6,7 @@ import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Framework specific
 import React from 'react';
+import ReactDOM from 'react-dom';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
@@ -42,19 +43,26 @@ export const PicklistObject = {
 				<span className="slds-truncate">{selectionName}</span>
 				<Svg className="slds-icon" icon="utility.down" />
 			</button>
-			<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
+			<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._findElements} />
 			<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
 			</div>
 		</div>
 		);
 	},
 
-	componentDidMount () {
-		document.addEventListener('click', this._closeOnClick, false);
-	},
+	_findElements (menu) {
+		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
 
-	componentWillUnmount () {
-		document.removeEventListener('click', this._closeOnClick, false);
+		this.elements.menuItems = [];
+		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
+
+		for (let i = 0; i < menuItems.length; i++) {
+			const menuItem = menuItems[i].getElementsByTagName('a');
+
+			if (!menuItems[i].disabled && menuItem.length === 1) {
+				this.elements.menuItems.push(menuItem[0]);
+			}
+		}
 	},
 
 	_onSelected () {

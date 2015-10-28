@@ -2,7 +2,6 @@
 
 import * as Lib from '../lib/lib';
 import Base from './base';
-import classNames from 'classnames';
 
 // Traits
 import Disableable from '../traits/disableable';
@@ -28,8 +27,6 @@ import KeyboardNavigable from '../traits/keyboard-navigable';
 // require('../../scss/components/dropdowns/flavors/search-overflow/index.scss');
 
 export const CONTROL = 'picklist';
-
-const resizeCache = {};
 
 const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
 	// CSS classes used within this control
