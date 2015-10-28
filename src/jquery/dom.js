@@ -3,12 +3,14 @@
 // Core
 import * as Lib from '../lib/lib';
 
+const $ = Lib.global.jQuery || Lib.global.$;
+
 const DOM = {
 	_onBeforeInitialize (options) {
 		this.elements = {};
 		
 		if (options.wrapper) {
-			this.appendTo(options.wrapper);
+			this.appendTo($(options.wrapper));
 			delete options.wrapper;
 		}
 	},
@@ -45,6 +47,8 @@ const DOM = {
 			this._addToDOM = Lib.bind(this.prependTo, this, wrapper);
 		}
 	}
+	
+	// Possibly add a destroy method
 };
 
 export default DOM;

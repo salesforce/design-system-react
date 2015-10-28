@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import CheckboxCore, {CONTROL} from '../../core/checkbox';
 
 // Framework specific
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
 
@@ -14,27 +15,17 @@ const $ = Lib.global.jQuery || Lib.global.$;
 import template from './checkbox-template';
 
 // Constructor
-let Checkbox = function Checkbox (element, options) {
-	this.options = Lib.extend({}, options);
-	this.elements = {
-		wrapper: $(element)
-	};
-
+let Checkbox = function Checkbox () {
+	const options = this._getOptions(arguments);
+	
 	this.inputSelector = 'input[type="checkbox"]';
-	this.rendered = false;
 	this.template = $('<i />').append(template);
-
-	this._initializeState();
-	this._initialize(this.options);
+	
+	this._initialize(options);
 };
 
 // Prototype extension object
 export const CheckboxObject = {
-	_defaultProperties: {
-		checked: false,
-		disabled: false
-	},
-
 	_bindUIEvents () {
 		this.elements.input.on('change', $.proxy(this.toggle, this));
 	},
@@ -48,15 +39,32 @@ export const CheckboxObject = {
 
 		return elements;
 	},
+	
+	// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
+	// there is no guidance as to what should be done here and/or why
+	_renderDressings (elements) {
+		elements.input.attr('value', this.getProperty('value'));
+		elements.input.attr('checked', this.getProperty('checked'));
+		elements.label.append(this.getProperty('text'));
 
-	_onBeforeInitialize () {
-		if (this.elements.wrapper.find(this.inputSelector).length > 0) {
-			this._initElements(this.elements.wrapper, this.elements);
-			this._syncOptions(); // syncing options to provided markup
-			this.rendered = true;
-		}
+		this._onEnabledOrDisabled();
 	},
 
+	_render () {
+		const $el = this.template.clone();
+		
+		const elements = this._initElements($el, this.elements);
+		this.element = this.$el = elements.control;
+		
+		this._renderDressings(elements);
+
+		this.rendered = true;
+	},
+	
+	_onRendered () {
+		this._bindUIEvents();
+	},
+	
 	_onEnabledOrDisabled () {
 		const disabled = this.getProperty('disabled');
 		const disabledAttr = 'disabled';
@@ -68,71 +76,13 @@ export const CheckboxObject = {
 		}
 	},
 
-	_onInitialized () {
-		// TODO: this may have only been applicable for Fuel UX. Is the else even reachable?
-		if (!this.rendered) {
-			this._render();
-		} else {
-			// ensuring there were no markup mistakes in regards to state
-			this._onEnabledOrDisabled();
-			this._onToggled();
-		}
-
-		this._bindUIEvents();
-	},
-
 	_onToggled (checked) {
 		this.elements.input.prop('checked', checked);
-	},
-
-	_render () {
-		let $el = this.template.clone();
-		const control = '.' + this.cssClasses.CONTROL;
-		const elements = this._initElements($el, this.elements);
-		const itag = '<i />';
-
-		this._renderDressings(elements);
-
-		$el = $(itag).append($el.find(control));
-
-		elements.wrapper.empty();
-		elements.wrapper.append($el.children());
-
-		this.rendered = true;
-	},
-
-	// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
-	// there is no guidance as to what should be done here and/or why
-	_renderDressings (elements) {
-		elements.input.attr('value', this.getProperty('value'));
-		elements.input.attr('checked', this.getProperty('checked'));
-		elements.input.attr('disabled', this.getProperty('disabled'));
-		elements.label.append(this.getProperty('text'));
-
-		this._onEnabledOrDisabled();
-	},
-
-	// TODO: Is this necessary anymore? May never even be reachable now.
-	_syncOptions () {
-		const opts = {};
-		const value = this.elements.input.attr('value') || this.options.value || this._defaultProperties.value;
-
-		if (this.elements.input.prop('disabled')) opts.disabled = true;
-
-		opts.text = this.elements.label.html();
-		opts.value = value;
-
-		Lib.extend(this.options, opts);
-	},
-
-	destroy () {
-		this.elements.wrapper.remove();
-		return this.elements.wrapper[0].outerHTML;
 	}
 };
 
 // Merging into prototype
-Lib.merge(Checkbox.prototype, CheckboxCore, Events, State, CheckboxObject);
+Lib.merge(Checkbox.prototype, CheckboxCore, Events, DOM, State, CheckboxObject);
 
 // Framework setup
 Checkbox = Lib.runHelpers('jquery', CONTROL, Checkbox);
