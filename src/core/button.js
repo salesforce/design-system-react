@@ -5,10 +5,12 @@ import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
+import SelectableBoolean from '../traits/selectable-boolean';
 
 // Third party
 import classNames from 'classnames';
 
+// Styles
 // require('../../scss/components/button-groups/flavors/base/index.scss');
 // require('../../scss/components/button-groups/flavors/icon-group/index.scss');
 // require('../../scss/components/button-groups/flavors/inverse/index.scss');
@@ -27,12 +29,11 @@ import classNames from 'classnames';
 
 export const CONTROL = 'slds-button';
 
-const ButtonCore = Lib.merge({}, Base, Disableable, {
+const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
+	// TODO: add button property or check for button parent, inverse, size, etc.
 	cssClasses: {
 		'CONTROL': CONTROL,
-		'NOT_SELECTED': Base.cssClasses.NAMESPACE + 'not-selected',
-		'SELECTED': Base.cssClasses.NAMESPACE + 'is-selected'
-		// TODO: add button property or check for button parent, inverse, size, etc.
+		'NOT_SELECTED': Base.cssClasses.NAMESPACE + 'not-selected'
 	},
 	
 	themes: {
@@ -63,7 +64,20 @@ const ButtonCore = Lib.merge({}, Base, Disableable, {
 		theme: null,
 		views: []
 	},
-	
+
+	_canSelect () {
+		if (this.getProperty('disabled')) {
+			// Component is disabled, do not allow a toggle to occur.
+			return false;
+		}
+
+		return true;
+	},
+
+	toggle () {
+		this._toggleSelected();
+	},
+
 	_getClassNames (isStateful) {
 		const selectedClasses = {};
 		

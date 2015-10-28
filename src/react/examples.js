@@ -3,6 +3,7 @@ require('../../public/assets/design-system/styles/slds.css');
 
 import badge from './badge/example';
 import button from './button/example';
+import buttonGroup from './button-group/example';
 import combobox from './combobox/example';
 import checkbox from './checkbox/example';
 import datepicker from './datepicker/example';
@@ -19,6 +20,7 @@ import tree from './tree/example';
 
 badge();
 button();
+buttonGroup();
 combobox();
 checkbox();
 datepicker();

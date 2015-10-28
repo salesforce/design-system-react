@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 
-var entries = ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server'];
+var port = process.env.WEBPACK_PORT || 8080;
+var entries = ['webpack-dev-server/client?http://localhost:' + port, 'webpack/hot/dev-server'];
 var path = require('path');
 var node_modules_dir = path.join(__dirname, 'node_modules');
 
@@ -18,18 +19,18 @@ var config = {
 			'scss',
 			'node_modules',
 			'web_modules',
-			'other',
+			'other'
 		],
 		extensions: [
 			'',
 			'.webpack.js',
 			'.web.js',
 			'.js',
-			'.scss',
+			'.scss'
 		]
 	},
 	devServer: {
-		port: 8080
+		port: port
 	},
 	devtool: 'eval-source-map',
 	output: {
@@ -46,14 +47,14 @@ var config = {
 			},
 			{
 				test: /\.css$/,
-				loader: "style-loader!css-loader"
+				loader: 'style-loader!css-loader'
 			},
 			{
 				test: /\.scss$/,
 				loader: 'style!css!sass'
 			}, {
 				test: /\.less$/,
-				loader: "style!css!less"
+				loader: 'style!css!less'
 			}, {
 				test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
 				loader: 'url-loader?limit=30000&name=/examples/[name]-[hash].[ext]'

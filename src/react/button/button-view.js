@@ -8,11 +8,12 @@ import ButtonViewCore, {CONTROL} from '../../core/button-view';
 import React from 'react';
 import Svg from '../svg/svg';
 import State from '../mixins/state';
+import isIcon from '../mixins/custom-prop-types/icon.js';
 
 export const ButtonViewObject = {
 	propTypes: {
 		assistiveText: React.PropTypes.string,
-		icon: React.PropTypes.string,
+		icon: isIcon,
 		text: React.PropTypes.string,
 		view: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonStatefulViewStyles)),
 		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions))

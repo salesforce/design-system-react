@@ -3,14 +3,25 @@
 // Core
 import * as Lib from '../../lib/lib';
 import PopoverCore, {CONTROL} from '../../core/popover';
+import Positionable from '../../traits/positionable';
 
 // Framework specific
 import React from 'react';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
+import mountable from '../mixins/custom-prop-types/mountable';
 
 export const PopoverMethods = {
+	propTypes: {
+		align: mountable,
+		autoFlip: React.PropTypes.bool,
+		container: mountable,
+		header: React.PropTypes.string,
+		position: React.PropTypes.oneOf(Object.keys(Positionable.positions)),
+		trigger: React.PropTypes.oneOf(Object.keys(PopoverCore.triggers))
+	},
+
 	_setElements () {
 		this.elements.popover = Lib.wrapElement(this.refs.popover);
 		this.elements.container = Lib.wrapElement(this.props.container || this.elements.wrapper);

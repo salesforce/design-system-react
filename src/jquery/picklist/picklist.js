@@ -7,6 +7,7 @@ import PicklistCore, {CONTROL} from '../../core/picklist';
 // Framework specific
 import Events from '../events';
 import State from '../state';
+import Svg from '../svg';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -51,6 +52,13 @@ export function _renderItem (item) {
 		$a.attr('aria-disabled', true);
 	}
 
+	const icon = item.getIcon();
+
+	if (Lib.isString(icon) && icon.length > 0) {
+		const $icon = this._renderIcon(icon, 'slds-icon--small slds-icon--right');
+		$a.append($icon);
+	}
+
 	return $li;
 }
 
@@ -62,7 +70,7 @@ export function _renderDivider () {
 	return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
 }
 
-export const PicklistObject = {
+export const PicklistObject = Lib.merge(Svg, {
 	_initElements (base, elements) {
 		const els = elements || {};
 
@@ -137,7 +145,7 @@ export const PicklistObject = {
 		// For tests, will consider publishing later
 		this.trigger('rendered', this.elements.wrapper);
 	},
-
+	
 	_bindUIEvents () {
 		this.elements.button.on('click', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
@@ -210,23 +218,6 @@ export const PicklistObject = {
 		return this.elements.wrapper[0].outerHTML;
 	},
 
-	_onExpandOrCollapse () {
-		if (this.rendered) {
-			const isOpen = this.getState('isOpen');
-
-			// The state is toggled in the openable trait before any ui code (like below this comment) is executed.
-			// The state is actually backwards to the current state of the ui.
-
-			if (!isOpen) {
-				this.elements.dropdown.addClass('slds-hide');
-			} else {
-				this.elements.dropdown.removeClass('slds-hide');
-			}
-
-			this.elements.button.attr('aria-expanded', isOpen);
-		}
-	},
-
 	_onSelected (item) {
 		if (this.rendered) {
 			const strings = this.getState('strings');
@@ -237,11 +228,21 @@ export const PicklistObject = {
 			this._addCheckmark(this.elements);
 		}
 	},
+	
+	_onExpandOrCollapse () {
+		if (this.rendered) {
+			const isOpen = this.getState('isOpen');
+			
+			this.elements.dropdown.toggleClass('slds-hide', !isOpen);
+			this.elements.button.attr('aria-expanded', isOpen);
+		}
+	},
 
 	_onEnabledOrDisabled () {
 		if (this.rendered) {
 			const disabled = !!this.getProperty('disabled');
 			
+			this.elements.dropdown.toggleClass('slds-hide', disabled);
 			this.elements.button.prop('disabled', disabled);
 		}
 	},
@@ -306,14 +307,14 @@ export const PicklistObject = {
 		
 		if ($li) {
 			$li.parent()
-				.find('.slds-is-selected').removeClass('.slds-is-selected')
-				.find('svg').remove();
+				.find('.slds-is-selected').removeClass('slds-is-selected')
+				.find('svg.slds-icon--left').remove();
 	
 			$li.addClass('slds-is-selected');
-			$li.find('a').prepend('<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--left"><use xlink:href="/assets/design-system/icons/standard-sprite/svg/symbols.svg#task2"></use></svg>');
+			$li.find('a').prepend(this._renderIcon('standard.task2', 'slds-icon--small slds-icon--left'));
 		}
 	}
-};
+});
 
 Lib.merge(Picklist.prototype, PicklistCore, Events, State, PicklistObject);
 

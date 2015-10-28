@@ -5,10 +5,12 @@ import * as Lib from '../../lib/lib';
 
 // Framework specific
 import React from 'react';
+import isIcon from '../mixins/custom-prop-types/icon.js';
+
 
 export const SvgObject = {
 	propTypes: {
-		icon: React.PropTypes.string.isRequired
+		icon: isIcon
 	},
 	
 	render () {
