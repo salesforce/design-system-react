@@ -18,10 +18,12 @@ $(function () {
 		theme: 'shade'
 	});
 
-	const badge4 = new Badge($('#badge-jquery-control .badge4'), {
+	// Example of instantiating without an element and subsequently appending
+	const badge4 = new Badge({
 		text: 'inverse',
 		theme: 'inverse'
 	});
+	badge4.appendTo($('#badge-jquery-control .badge4'));
 
 	void(badge1);
 	void(badge2);
