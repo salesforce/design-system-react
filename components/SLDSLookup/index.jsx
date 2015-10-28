@@ -204,12 +204,14 @@ class SLDSLookup extends React.Component {
   }
 
   getFooter () {
-    const Footer = this.props.footerRenderer;
-    return <Footer  ref='footer' {... this.props}
-      focusIndex={this.state.focusIndex}
-      listLength={this.state.listLength}
-      onClose={this.handleClose.bind(this)}
-    />;
+    if(this.props.footerRenderer){
+      const Footer = this.props.footerRenderer;
+      return <Footer ref='footer' {... this.props}
+        focusIndex={this.state.focusIndex}
+        listLength={this.state.listLength}
+        onClose={this.handleClose.bind(this)}
+      />;
+    }
   }
 
   //=================================================

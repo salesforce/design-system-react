@@ -9237,12 +9237,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'getFooter',
 	    value: function getFooter() {
-	      var Footer = this.props.footerRenderer;
-	      return _react2['default'].createElement(Footer, _extends({ ref: 'footer' }, this.props, {
-	        focusIndex: this.state.focusIndex,
-	        listLength: this.state.listLength,
-	        onClose: this.handleClose.bind(this)
-	      }));
+	      if (this.props.footerRenderer) {
+	        var Footer = this.props.footerRenderer;
+	        return _react2['default'].createElement(Footer, _extends({ ref: 'footer' }, this.props, {
+	          focusIndex: this.state.focusIndex,
+	          listLength: this.state.listLength,
+	          onClose: this.handleClose.bind(this)
+	        }));
+	      }
 	    }
 	
 	    //=================================================
