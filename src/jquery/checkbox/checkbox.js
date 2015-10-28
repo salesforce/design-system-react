@@ -57,8 +57,6 @@ export const CheckboxObject = {
 		this.element = this.$el = elements.control;
 		
 		this._renderDressings(elements);
-
-		this.rendered = true;
 		
 		return this.element;
 	},

@@ -78,24 +78,8 @@ export const PicklistObject = {
 	_renderDivider () {
 		return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
 	},
-
-	_render () {
-		const strings = this.getState('strings');
-		const selection = this._getSelection();
-
-		// Get the template
-		const $el = this.element = this.$el = this.elements.control = this.template.clone();
-		const elements = this._initElements($el, this.elements);
-
-		// Configure the button
-		const disabled = !!this.getProperty('disabled');
-		elements.button.prop('disabled', disabled);
-
-		// Show the current selection if there is one
-		const selectionName = selection.getText() || strings.NONE_SELECTED;
-		elements.label.text(selectionName);
-		elements.hiddenField.val(selection.getText());
-
+	
+	_renderMenu (elements) {
 		// Empty the menu from the template
 		elements.dropdownMenu.empty();
 
@@ -117,13 +101,30 @@ export const PicklistObject = {
 		});
 		
 		this._addCheckmark(elements);
+	},
 
-		if ( this._collection._data.length === 0 ) {
+	_render () {
+		const strings = this.getState('strings');
+		const selection = this._getSelection();
+
+		// Get the template
+		const $el = this.element = this.$el = this.elements.control = this.template.clone();
+		const elements = this._initElements($el, this.elements);
+
+		// Configure the button
+		const disabled = !!this.getProperty('disabled');
+		elements.button.prop('disabled', disabled);
+
+		// Show the current selection if there is one
+		const selectionName = selection.getText() || strings.NONE_SELECTED;
+		elements.label.text(selectionName);
+		elements.hiddenField.val(selection.getText());
+
+		this._renderMenu(elements);
+
+		if (this._collection._data.length === 0) {
 			this.disable();
-			this.setProperties({ disabled: true });
 		}
-
-		this.rendered = true;
 		
 		return this.element;
 	},
