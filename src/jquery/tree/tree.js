@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import TreeCore, {CONTROL} from '../../core/tree';
 
 // Framework Specific
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
 
@@ -53,57 +54,41 @@ const legacyAccessors = {
 	}
 };
 
-let Tree = function Tree (element, options) {
-	this.options = Lib.extend({
+let Tree = function Tree () {
+	const options = Lib.extend({
 		open: []
-	}, options);
-
-	this.elements = {
-		wrapper: $(element)
-	};
-
+	}, this._getOptions(arguments));
+	
 	const $html = $('<i />').append(template);
 	this.template = $html.find('.' + this.cssClasses.CONTROL);
-
-	if (this.options.dataSource) {
-		this.options.accessors = legacyAccessors;
+	
+	if (options.dataSource) {
+		options.accessors = legacyAccessors;
 	}
-
-	this._initializeState();
-	this._initialize(this.options);
+	
+	this._initialize(options);
 };
 
-Lib.extend(Tree.prototype, TreeCore, Events, State, {
+Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_onInitialized () {
 		const strings = this.getState('strings');
 		this.template.find('.slds-tree__loader').text(strings.LOADING);
-
-		this._configureBranchSelect();
-
-		this.elements.wrapper.on('click.fu.slds-tree', 'li.slds-tree__item', $.proxy(this._handleItemClicked, this));
-
-		this._render();
-
-		this.trigger('initialized');
 	},
 
 	selectItem (item) {
-		this._selectItem( this._getItemAdapter(item.jquery ? item.data('item') : item) );
+		this._selectItem(this._getItemAdapter(item.jquery ? item.data('item') : item));
 	},
 
 	_configureBranchSelect () {
 		const branchSelect = this.getProperty('folderSelect');
 
-		// This class is copied from the example code but I'm not sure it does anything
-		this.template.toggleClass('slds-is-selected', branchSelect);
-
 		// When folder selection is allowed...
 		if (branchSelect) {
 			// Branch name clicks act like item clicks
-			this.elements.wrapper.on('click.fu.slds-tree', 'button.slds-button', $.proxy(this._handleBranchClicked, this));
-			this.elements.wrapper.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleItemClicked, this));
+			this.element.on('click.fu.slds-tree', 'button.slds-button', $.proxy(this._handleBranchClicked, this));
+			this.element.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleItemClicked, this));
 		} else {
-			this.elements.wrapper.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleBranchClicked, this));
+			this.element.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleBranchClicked, this));
 		}
 	},
 
@@ -117,7 +102,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	_onFolderToggled (branch) {
 		const self = this;
 		const id = branch.getId();
-		const $branches = this.elements.wrapper.find('.slds-tree__branch');
+		const $branches = this.element.find('.slds-tree__branch');
 
 		$branches.each(function () {
 			const $branch = $(this);
@@ -155,7 +140,7 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 
 	_onSelectionUpdated (selection) {
 		const self = this;
-		const $items = this.elements.wrapper.find('.slds-tree__branch, li.slds-tree__item');
+		const $items = this.element.find('.slds-tree__branch, li.slds-tree__item');
 
 		$items.each(function () {
 			const $item = $(this);
@@ -166,30 +151,25 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 	},
 
 	_render () {
-		const self = this;
-		const $el = this.template.clone().empty();
+		const $el = this.element = this.$el = this.elements.control = this.template.clone();
 		const dataSource = this.getProperty('dataSource');
 
 		if (this._collection.length()) {
 			this._loopChildren(this._collection, $el, 1);
 		} else if (dataSource) {
 			dataSource({}, (response) => {
-				self._collection = self._getDataAdapter(response.data);
-				self._loopChildren(self._collection, $el, 1);
+				this._collection = this._getDataAdapter(response.data);
+				this._loopChildren(this._collection, $el, 1);
 			});
 		}
+		
+		return this.element;
+	},
+	
+	_onRendered () {
+		this._configureBranchSelect();
 
-		// Prep for append
-		this.elements.wrapper.empty();
-
-		if (this.elements.wrapper.is('ul')) {
-			this.elements.wrapper.attr('class', $el.attr('class'));
-			this.elements.wrapper.attr('role', $el.attr('role'));
-			this.elements.wrapper.append($el.children());
-		} else {
-			this.elements.wrapper.append($el);
-			this.elements.wrapper = $el;
-		}
+		this.element.on('click.fu.slds-tree', 'li.slds-tree__item', $.proxy(this._handleItemClicked, this));
 	},
 
 	_loopChildren (children, $el, level) {
@@ -290,13 +270,6 @@ Lib.extend(Tree.prototype, TreeCore, Events, State, {
 // LEGACY METHODS
 
 const legacyMethods = {
-
-	destroy () {
-		this.elements.wrapper.remove();
-
-		return template;
-	},
-
 	selectedItems () {
 		const selection = this._getSelectedItems();
 
@@ -338,7 +311,7 @@ const legacyMethods = {
 	discloseVisible () {
 		const self = this;
 
-		this.elements.wrapper.find('.slds-tree__branch:not(.slds-is-open)').each(function () {
+		this.element.find('.slds-tree__branch:not(.slds-is-open)').each(function () {
 			const $branch = $(this);
 			const _branch = $branch.data('item');
 
