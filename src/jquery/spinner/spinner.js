@@ -32,6 +32,8 @@ const SpinnerObject = {
 				alt: strings.LOADING
 			})
 		);
+		
+		return this.element;
 	}
 };
 

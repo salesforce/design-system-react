@@ -63,7 +63,7 @@ const RadiosObject = Lib.merge({}, {
 
 		$el.find('.' + this.cssClasses.CONTROL).append(elements.radios);
 
-		this.rendered = true;
+		return this.element;
 	},
 	
 	_onRendered () {
