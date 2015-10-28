@@ -3,6 +3,7 @@
 // Framework specific
 import React from 'react';
 import Svg from '../svg/svg';
+import * as Lib from '../../lib/lib';
 
 // Third party
 import classNames from 'classnames';
@@ -27,6 +28,14 @@ const PicklistItem = React.createClass({
 		}
 	},
 
+	_renderIcon () {
+		const icon = this.props.item.getIcon();
+
+		if (Lib.isString(icon)) {
+			return <Svg className="slds-icon slds-icon--small slds-icon--right" icon={icon} />;
+		}
+	},
+
 	render () {
 		let html;
 
@@ -45,6 +54,7 @@ const PicklistItem = React.createClass({
 					<a href="#" className="slds-truncate" onClick={this.handleClicked} aria-disabled={disabled}>
 						{this._renderCheckmark()}
 						{this.props.item.getText()}
+						{this._renderIcon()}
 					</a>
 					</li>
 				);
