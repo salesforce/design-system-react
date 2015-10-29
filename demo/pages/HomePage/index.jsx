@@ -10,16 +10,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
+import Router from 'react-router';
+const { Route, DefaultRoute, RouteHandler, Link } = Router;
+
 import SLDSGrid from '../../../components/SLDSGrid';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 
-
 import ButtonSection from './ButtonSection';
 import ButtonGroupSection from './ButtonGroupSection';
+
 import LookupBaseSection from './LookupBaseSection';
-
 import LookupBaseDynamicSection from './LookupBaseDynamicSection';
-
 
 import PicklistBaseSection from './PicklistBaseSection';
 import PicklistBaseCustomSection from './PicklistBaseCustomSection';
@@ -41,7 +42,6 @@ module.exports = React.createClass( {
   getInitialState () {
     return {};
   },
-
 
   render() {
     return (
@@ -66,10 +66,11 @@ module.exports = React.createClass( {
             </SLDSGrid>
           </div>
         </div>
+
         <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
           <div className='region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large'>
 
-            <ButtonSection />
+            <ButtonSection/>
 
             <ButtonGroupSection />
 
