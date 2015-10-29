@@ -19,7 +19,10 @@ class Menu extends React.Component {
 
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
   componentDidUpdate(prevProps, prevState){
-    let list = React.findDOMNode(this.refs.list).children.length;
+    // make an array of the children of the list
+    // but only count the actual items (ignore errors/messages)
+    let list = [].slice.call(React.findDOMNode(this.refs.list).children)
+      .filter((child) => child.className === "slds-lookup__item").length;
     this.props.getListLength(list);
   }
 
@@ -53,15 +56,14 @@ class Menu extends React.Component {
       return <div className={isActiveClass}>{this.props.footer}</div>;
     }
   }
-  renderMessages(){
-    return this.props.messages.map((message) => {
-      return <li className="slds-lookup__message" aria-live="polite">{message}</li>;
-    });
-  }
 
   renderErrors(){
     return this.props.errors.map((error) => {
-      return <li className="slds-lookup__error" aria-live="polite">{error}</li>;
+      return (
+        <li className="slds-lookup__error" aria-live="polite">
+          <span>{error}</span>
+        </li>
+      );
     });
   }
 
@@ -94,16 +96,16 @@ class Menu extends React.Component {
   }
 
   renderContent() {
-    if (this.props.errors.length)
-      return this.renderErrors
+    if (this.props.errors.length > 0)
+      return this.renderErrors()
     else if (this.props.items.length === 0)
-      return <li className="slds-lookup__message" aria-live="polite">{this.props.emptyMessage}</li>;
-    
-    elements = this.renderItems()
-    if (this.props.messages.length){
-      return elements.concat(this.renderMessages());
-    }
-    return elements;
+      return (
+        <li className="slds-lookup__message" aria-live="polite">
+          <span>{this.props.emptyMessage}</span>
+        </li>
+      );
+
+    return this.renderItems();
 
   }
 
@@ -116,7 +118,7 @@ class Menu extends React.Component {
         </ul>
         {this.renderFooter()}
       </section>
-    )
+    );
   }
 }
 
@@ -128,7 +130,6 @@ Menu.propTypes = {
   listLength: React.PropTypes.number,
   items: React.PropTypes.array,
   emptyMessage: React.PropTypes.string,
-  messages: React.PropTypes.arrayOf(React.PropTypes.string),
   errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func,
   getListLength: React.PropTypes.func,
@@ -137,6 +138,7 @@ Menu.propTypes = {
 };
 
 Menu.defaultProps = {
+  emptyMessage: "No matches found."
 };
 
 module.exports = Menu;
