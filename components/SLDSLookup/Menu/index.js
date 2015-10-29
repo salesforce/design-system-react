@@ -53,6 +53,17 @@ class Menu extends React.Component {
       return <div className={isActiveClass}>{this.props.footer}</div>;
     }
   }
+  renderMessages(){
+    return this.props.messages.map((message) => {
+      return <li className="slds-lookup__message" aria-live="polite">{message}</li>;
+    });
+  }
+
+  renderErrors(){
+    return this.props.errors.map((error) => {
+      return <li className="slds-lookup__error" aria-live="polite">{error}</li>;
+    });
+  }
 
   renderItems(){
     return this.props.items.filter(this.filter, this).map((c, i) => {
@@ -81,15 +92,27 @@ class Menu extends React.Component {
     });
   }
 
+  renderContent() {
+    if (this.props.errors.length)
+      return this.renderErrors
+    else if (this.props.items.length === 0)
+      return <li className="slds-lookup__message" aria-live="polite">{this.props.emptyMessage}</li>;
+    
+    elements = this.renderItems()
+    if (this.props.messages.length){
+      return elements.concat(this.renderMessages());
+    }
+    return elements;
+
+  }
+
   render(){
     return (
       <section id="menuContainer">
         {this.renderHeader()}
-
         <ul id="list" className="slds-lookup__list" role="presentation" ref="list">
-          {this.renderItems()}
+          {this.renderContent()}
         </ul>
-
         {this.renderFooter()}
       </section>
     )
@@ -103,6 +126,9 @@ Menu.propTypes = {
   focusIndex: React.PropTypes.number,
   listLength: React.PropTypes.number,
   items: React.PropTypes.array,
+  emptyMessage: React.PropTypes.string,
+  messages: React.PropTypes.arrayOf(React.PropTypes.string),
+  errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func,
   getListLength: React.PropTypes.func,
   setFocus: React.PropTypes.func,
