@@ -18,31 +18,31 @@ import template from './picklist-template';
 let Picklist = function Picklist () {
 	const options = this._getOptions(arguments);
 	
-	const $html = $('<i />').append(template);
-	this.template = $html.find('.slds-form-element');
+	this.template = $(template);
 	this._closeOnClick = $.proxy(this._closeOnClick, this);
 	
 	this._initialize(options);
 };
 
 export const PicklistObject = {
+	_initializer () {
+		this.element = this.$el = this.elements.control = this.template.clone();
+		this._initElements();
+	},
+	
+	_initElements () {
+		this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
+		this.elements.hiddenField = this.element.find('input.slds-hide');
+		this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
+		this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
+		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
+	},
+	
 	_bindUIEvents () {
 		this.elements.button.on('click', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
 		this.element.on('keydown', $.proxy(this._handleKeyDown, this));
 		this.element.on('keypress', $.proxy(this._handleKeyPressed, this));
-	},
-	
-	_initElements (base, elements) {
-		const els = elements || {};
-
-		els.button = base.find('.' + this.cssClasses.TOGGLE);
-		els.hiddenField = base.find('input.slds-hide');
-		els.label = els.button.find('.' + this.cssClasses.LABEL);
-		els.dropdown = base.find('.' + this.cssClasses.DROPDOWN);
-		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
-
-		return els;
 	},
 	
 	_renderItem (item) {
@@ -106,10 +106,7 @@ export const PicklistObject = {
 	_render () {
 		const strings = this.getState('strings');
 		const selection = this._getSelection();
-
-		// Get the template
-		const $el = this.element = this.$el = this.elements.control = this.template.clone();
-		const elements = this._initElements($el, this.elements);
+		const elements = this.elements;
 
 		// Configure the button
 		const disabled = !!this.getProperty('disabled');

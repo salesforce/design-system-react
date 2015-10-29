@@ -24,6 +24,10 @@ let DataTable = function DataTable () {
 };
 
 export const DataTableObject = {
+	_initializer () {
+		this.element = this.$el = this.elements.control = this.template.clone();
+	},
+	
 	_bindUIEvents () {
 		// this.elements.button.on('click', $.proxy(this._handleClicked, this));
 		// this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
@@ -53,7 +57,7 @@ export const DataTableObject = {
 
 	_render () {
 		// Get the template
-		const $el = this.element = this.$el = this.elements.control = this.template.clone();
+		const $el = this.element;
 		$el.addClass(this._getClassNames(this.getProperty('styles')));
 		
 		const $theadRow = $el.find('thead tr.slds-text-heading--label');

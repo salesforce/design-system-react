@@ -36,12 +36,12 @@ let Button = function Button () {
 };
 
 export const ButtonObject = {
-	_bindUIEvents () {
-		this.element.on('click', $.proxy(this._handleClick, this));
-	},
-	
 	_initializer () {
 		this.element = this.$el = this.elements.control = $('<button>');
+	},
+
+	_bindUIEvents () {
+		this.element.on('click', $.proxy(this._handleClick, this));
 	},
 
 	_renderViews () {

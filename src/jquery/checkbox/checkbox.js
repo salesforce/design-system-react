@@ -26,15 +26,15 @@ let Checkbox = function Checkbox () {
 
 // Prototype extension object
 export const CheckboxObject = {
-	_bindUIEvents () {
-		this.elements.input.on('change', $.proxy(this.toggle, this));
-	},
-	
 	_initializer () {
 		const control = '.' + this.cssClasses.CONTROL;
 		this.element = this.$el = this.elements.control = this.template.clone().find(control);
 		this.elements.input = this.element.find(this.inputSelector);
 		this.elements.label = this.element.find('.' + this.cssClasses.LABEL);
+	},
+
+	_bindUIEvents () {
+		this.elements.input.on('change', $.proxy(this.toggle, this));
 	},
 
 	_render () {
