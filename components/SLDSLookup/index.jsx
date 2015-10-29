@@ -37,10 +37,10 @@ class SLDSLookup extends React.Component {
       focusIndex:null,
       selectedIndex: null,
       listLength:this.props.items.length,
-      items:[]
+      items:[],
+      errors:[],
+      messages:[],
     };
-
-
   }
 
   componentDidMount(){
@@ -97,6 +97,7 @@ class SLDSLookup extends React.Component {
       selectedIndex: null,
       isOpen: true,
     });
+    if(this.props.onItemUnselect) this.props.onItemUnselect();
   }
 
   //=================================================
@@ -225,12 +226,16 @@ class SLDSLookup extends React.Component {
         focusIndex={this.state.focusIndex}
         listLength={this.state.listLength}
         items={this.state.items}
+        emptyMessage={this.props.emptyMessage}
+        messages={this.state.messages}
+        errors={this.state.errors}
         filterWith={this.props.filterWith}
         getListLength={this.getListLength.bind(this)}
         setFocus={this.setFocus.bind(this)}
         onSelect={this.selectItem.bind(this)}
         header={this.getHeader()}
         footer={this.getFooter()}
+        boldRegex={this.props.boldRegex}
       />;
     }
   }
@@ -254,7 +259,7 @@ class SLDSLookup extends React.Component {
           {this.renderMenuContent()}
         </SLDSPopover>;
       }
-  };
+  }
 
   renderSelectedItem(){
     let selectedItem = this.props.items[this.state.selectedIndex].label;
@@ -293,6 +298,12 @@ class SLDSLookup extends React.Component {
     if(newProps.items){
       this.modifyItems(newProps.items);
     }
+    if (newProps.message){
+      this.setState({message: newProps.message});
+    }
+    if (newProps.error){
+      this.setState({errors: newProps.error});
+    }
   }
 
   render(){
@@ -328,7 +339,6 @@ class SLDSLookup extends React.Component {
               value={this.state.searchTerm}
             />
           </div>
-
           {this.props.modal?this.renderModalMenu():this.renderSimpleMenu()}
         </section>
       </div>
@@ -339,13 +349,19 @@ class SLDSLookup extends React.Component {
 
 SLDSLookup.propTypes = {
   items: React.PropTypes.array,
+  errors: React.PropTypes.arrayOf(React.PropTypes.string),
+  emptyMessage: React.PropTypes.string,
+  messages: React.PropTypes.arrayOf(React.PropTypes.string),
+  errors: React.PropTypes.arrayOf(React.PropTypes.string),
   label: React.PropTypes.string,
   type: React.PropTypes.string,
   filterWith: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
+  onItemUnselect: React.PropTypes.func,
   onChange: React.PropTypes.func,
   modal: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
+  boldRegex: React.PropTypes.instanceOf(RegExp),
 };
 
 SLDSLookup.defaultProps = {
