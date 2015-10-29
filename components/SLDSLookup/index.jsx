@@ -39,8 +39,6 @@ class SLDSLookup extends React.Component {
       listLength:this.props.items.length,
       items:[]
     };
-
-
   }
 
   componentDidMount(){
@@ -97,6 +95,7 @@ class SLDSLookup extends React.Component {
       selectedIndex: null,
       isOpen: true,
     });
+    if(this.props.onItemUnselect) this.props.onItemUnselect();
   }
 
   //=================================================
@@ -231,6 +230,7 @@ class SLDSLookup extends React.Component {
         onSelect={this.selectItem.bind(this)}
         header={this.getHeader()}
         footer={this.getFooter()}
+        boldRegex={this.props.boldRegex}
       />;
     }
   }
@@ -254,7 +254,7 @@ class SLDSLookup extends React.Component {
           {this.renderMenuContent()}
         </SLDSPopover>;
       }
-  };
+  }
 
   renderSelectedItem(){
     let selectedItem = this.props.items[this.state.selectedIndex].label;
@@ -343,9 +343,11 @@ SLDSLookup.propTypes = {
   type: React.PropTypes.string,
   filterWith: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
+  onItemUnselect: React.PropTypes.func,
   onChange: React.PropTypes.func,
   modal: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
+  boldRegex: React.PropTypes.instanceOf(RegExp),
 };
 
 SLDSLookup.defaultProps = {

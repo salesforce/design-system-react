@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import {Icon} from "../../../SLDSIcons";
 import {EventUtil} from '../../../utils';
+import escapeRegExp from 'lodash.escaperegexp';
 
 class Item extends React.Component {
   constructor(props) {
@@ -17,16 +18,19 @@ class Item extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true){
+    if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
       this.scrollFocus();
       this.props.setFocus(this.props.id);
     }
   }
 
   boldSearchText(children) {
-    const term = this.props.searchTerm;
-    if(!children || !term) return children;
-    const regex = new RegExp('(' + term + ')', 'gi');
+    regex = this.props.boldRegex
+    if (!regex) {
+      const term = this.props.searchTerm;
+      if(!children || !term) return children;
+      const regex = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
+    }
     return React.Children.map(children, c => {
       return (typeof c === 'string') ? <span dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
     });
@@ -83,7 +87,8 @@ Item.propTypes = {
   setFocus: React.PropTypes.func,
   handleItemFocus: React.PropTypes.func,
   onSelect: React.PropTypes.func,
-  data: React.PropTypes.object
+  data: React.PropTypes.object,
+  boldRegex: react.PropTypes.instanceOf(RegExp)
 };
 
 Item.defaultProps = {

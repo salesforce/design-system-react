@@ -60,21 +60,22 @@ class Menu extends React.Component {
       const id = c.id;
       let isActive = false;
       if(this.props.header){
-        isActive = this.props.focusIndex === i + 1? true : false;
+        isActive = this.props.focusIndex === i + 1 ? true : false;
       }else{
         isActive = this.props.focusIndex === i  ? true : false;
       }
       return <Item
-      key={id}
-      id={id}
-      type={this.props.type}
-      searchTerm={this.props.searchTerm}
-      index={i}
-      isActive={isActive}
-      setFocus={this.props.setFocus}
-      handleItemFocus={this.handleItemFocus.bind(this)}
-      onSelect={this.props.onSelect}
-      data={c.data}
+        key={id}
+        id={id}
+        type={this.props.type}
+        searchTerm={this.props.searchTerm}
+        index={i}
+        isActive={isActive}
+        setFocus={this.props.setFocus}
+        handleItemFocus={this.handleItemFocus.bind(this)}
+        onSelect={this.props.onSelect}
+        data={c.data}
+        boldRegex={this.props.boldRegex}
       >
       {c}
       </Item>
@@ -106,6 +107,7 @@ Menu.propTypes = {
   filterWith: React.PropTypes.func,
   getListLength: React.PropTypes.func,
   setFocus: React.PropTypes.func,
+  boldRegex: React.PropTypes.instanceOf(RegExp),
 };
 
 Menu.defaultProps = {
