@@ -22,7 +22,15 @@ export const ButtonObject = {
 		assistiveText: React.PropTypes.string,
 		icon: isIcon,
 		text: React.PropTypes.string,
-		iconStyle: React.PropTypes.oneOf(Object.keys(ButtonCore.iconButtonStyles)),
+		iconStyle: function (props, propName) {
+			if (props[propName]) {
+				props[propName].split(' ').forEach(function (style) {
+					if (!ButtonCore.iconButtonStyles[style]) {
+						return new Error('Invalid prop `' + propName + '` - should only contain values of type ButtonCore.iconButtonStyles');
+					}
+				});
+			}
+		},
 		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions)),
 		disabled: React.PropTypes.bool,
 		size: React.PropTypes.oneOf(Object.keys(ButtonCore.sizes)),
