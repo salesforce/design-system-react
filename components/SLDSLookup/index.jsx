@@ -37,8 +37,7 @@ class SLDSLookup extends React.Component {
       focusIndex:null,
       selectedIndex: null,
       listLength:this.props.items.length,
-      items:[],
-      errors:[],
+      items:[]
     };
   }
 
@@ -236,7 +235,8 @@ class SLDSLookup extends React.Component {
         listLength={this.state.listLength}
         items={this.state.items}
         emptyMessage={this.props.emptyMessage}
-        errors={this.state.errors}
+        messages={this.props.messages}
+        errors={this.props.errors}
         filterWith={this.props.filterWith}
         getListLength={this.getListLength.bind(this)}
         setFocus={this.setFocus.bind(this)}
@@ -306,12 +306,6 @@ class SLDSLookup extends React.Component {
     if(newProps.items){
       this.modifyItems(newProps.items);
     }
-    if (newProps.message){
-      this.setState({message: newProps.message});
-    }
-    if (newProps.error){
-      this.setState({errors: newProps.error});
-    }
   }
 
   render(){
@@ -358,6 +352,7 @@ class SLDSLookup extends React.Component {
 SLDSLookup.propTypes = {
   items: React.PropTypes.array,
   emptyMessage: React.PropTypes.string,
+  messages: React.PropTypes.arrayOf(React.PropTypes.string),
   errors: React.PropTypes.arrayOf(React.PropTypes.string),
   label: React.PropTypes.string,
   type: React.PropTypes.string,
