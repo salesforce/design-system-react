@@ -61,56 +61,59 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var _badgeBadge2 = _interopRequireDefault(_badgeBadge);
 	
-	var _buttonButton = __webpack_require__(147);
+	var _buttonButton = __webpack_require__(148);
 	
 	var _buttonButton2 = _interopRequireDefault(_buttonButton);
 	
 	// 	// import './buttongroup/example';
 	
-	var _checkboxCheckbox = __webpack_require__(150);
+	var _checkboxCheckbox = __webpack_require__(154);
 	
 	var _checkboxCheckbox2 = _interopRequireDefault(_checkboxCheckbox);
 	
-	var _comboboxCombobox = __webpack_require__(164);
+	var _comboboxCombobox = __webpack_require__(167);
 	
 	var _comboboxCombobox2 = _interopRequireDefault(_comboboxCombobox);
 	
-	var _dataTableDataTable = __webpack_require__(173);
+	var _dataTableDataTable = __webpack_require__(177);
 	
 	var _dataTableDataTable2 = _interopRequireDefault(_dataTableDataTable);
 	
 	// 	// import './datepicker/example';
-	// 	// import './dropdown/example';
 	
-	var _notificationNotification = __webpack_require__(177);
+	var _dropdownDropdown = __webpack_require__(181);
+	
+	var _dropdownDropdown2 = _interopRequireDefault(_dropdownDropdown);
+	
+	var _notificationNotification = __webpack_require__(184);
 	
 	var _notificationNotification2 = _interopRequireDefault(_notificationNotification);
 	
-	var _picklistPicklist = __webpack_require__(170);
+	var _picklistPicklist = __webpack_require__(174);
 	
 	var _picklistPicklist2 = _interopRequireDefault(_picklistPicklist);
 	
-	var _pillboxPillbox = __webpack_require__(181);
+	var _pillboxPillbox = __webpack_require__(188);
 	
 	var _pillboxPillbox2 = _interopRequireDefault(_pillboxPillbox);
 	
-	var _popoverPopover = __webpack_require__(184);
+	var _popoverPopover = __webpack_require__(191);
 	
 	var _popoverPopover2 = _interopRequireDefault(_popoverPopover);
 	
-	var _radioRadio = __webpack_require__(188);
+	var _radioRadio = __webpack_require__(195);
 	
 	var _radioRadio2 = _interopRequireDefault(_radioRadio);
 	
-	var _spinnerSpinner = __webpack_require__(191);
+	var _spinnerSpinner = __webpack_require__(198);
 	
 	var _spinnerSpinner2 = _interopRequireDefault(_spinnerSpinner);
 	
-	var _tooltipTooltip = __webpack_require__(193);
+	var _tooltipTooltip = __webpack_require__(200);
 	
 	var _tooltipTooltip2 = _interopRequireDefault(_tooltipTooltip);
 	
-	var _treeTree = __webpack_require__(196);
+	var _treeTree = __webpack_require__(203);
 	
 	var _treeTree2 = _interopRequireDefault(_treeTree);
 	
@@ -120,6 +123,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		Checkbox: _checkboxCheckbox2['default'],
 		Combobox: _comboboxCombobox2['default'],
 		DataTable: _dataTableDataTable2['default'],
+		Dropdown: _dropdownDropdown2['default'],
 		Notification: _notificationNotification2['default'],
 		Picklist: _picklistPicklist2['default'],
 		Pillbox: _pillboxPillbox2['default'],
@@ -293,6 +297,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports.getStrings = getStrings;
 	exports.registerIconPaths = registerIconPaths;
 	exports.getIconPaths = getIconPaths;
+	exports.getSVGPath = getSVGPath;
 	exports.registerHelper = registerHelper;
 	exports.runHelpers = runHelpers;
 	
@@ -312,27 +317,31 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var _lodashLangIsFunction2 = _interopRequireDefault(_lodashLangIsFunction);
 	
+	var _lodashLangIsString = __webpack_require__(101);
+	
+	var _lodashLangIsString2 = _interopRequireDefault(_lodashLangIsString);
+	
 	var _lodashLangIsArray = __webpack_require__(89);
 	
 	var _lodashLangIsArray2 = _interopRequireDefault(_lodashLangIsArray);
 	
 	// Data
 	
-	var _lodashObjectExtend = __webpack_require__(101);
+	var _lodashObjectExtend = __webpack_require__(102);
 	
 	var _lodashObjectExtend2 = _interopRequireDefault(_lodashObjectExtend);
 	
-	var _lodashObjectMerge = __webpack_require__(116);
+	var _lodashObjectMerge = __webpack_require__(117);
 	
 	var _lodashObjectMerge2 = _interopRequireDefault(_lodashObjectMerge);
 	
-	var _strings2 = __webpack_require__(127);
+	var _strings2 = __webpack_require__(128);
 	
 	var _strings3 = _interopRequireDefault(_strings2);
 	
 	// TODO: Generate JS icon module, currently one manually created file. Advise against multiple JS files due to need to register/modify if they change
 	
-	var _iconPaths = __webpack_require__(128);
+	var _iconPaths = __webpack_require__(129);
 	
 	var _iconPaths2 = _interopRequireDefault(_iconPaths);
 	
@@ -347,18 +356,15 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	exports.noop = _interopRequire(_lodashUtilityNoop);
 	
-	var _lodashFunctionBind = __webpack_require__(129);
+	var _lodashFunctionBind = __webpack_require__(130);
 	
 	exports.bind = _interopRequire(_lodashFunctionBind);
 	exports.isFunction = _lodashLangIsFunction2['default'];
 	
-	var _lodashLangIsNumber = __webpack_require__(130);
+	var _lodashLangIsNumber = __webpack_require__(131);
 	
 	exports.isNumber = _interopRequire(_lodashLangIsNumber);
-	
-	var _lodashLangIsString = __webpack_require__(131);
-	
-	exports.isString = _interopRequire(_lodashLangIsString);
+	exports.isString = _lodashLangIsString2['default'];
 	
 	var _lodashLangIsRegExp = __webpack_require__(132);
 	
@@ -566,6 +572,20 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	function getIconPaths() {
 		return _icons;
+	}
+	
+	function getSVGPath(iconProperty) {
+		// TODO: Evaluate best way to do this and clean this up more
+		var iconPaths = getIconPaths();
+		var icon = (0, _lodashLangIsString2['default'])(iconProperty) && iconProperty.split('.');
+	
+		if (icon.length === 2) {
+			var iconPath = iconPaths[icon[0]];
+	
+			if (iconPath) {
+				return [iconPath, icon[1]].join('#');
+			}
+		}
 	}
 	
 	registerIconPaths(_iconPaths2['default']);
@@ -3366,16 +3386,57 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(102);
+	var isObjectLike = __webpack_require__(72);
+	
+	/** `Object#toString` result references. */
+	var stringTag = '[object String]';
+	
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+	
+	/**
+	 * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+	
+	/**
+	 * Checks if `value` is classified as a `String` primitive or object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isString('abc');
+	 * // => true
+	 *
+	 * _.isString(1);
+	 * // => false
+	 */
+	function isString(value) {
+	  return typeof value == 'string' || (isObjectLike(value) && objToString.call(value) == stringTag);
+	}
+	
+	module.exports = isString;
 
 
 /***/ },
 /* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var assignWith = __webpack_require__(103),
-	    baseAssign = __webpack_require__(111),
-	    createAssigner = __webpack_require__(113);
+	module.exports = __webpack_require__(103);
+
+
+/***/ },
+/* 103 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var assignWith = __webpack_require__(104),
+	    baseAssign = __webpack_require__(112),
+	    createAssigner = __webpack_require__(114);
 	
 	/**
 	 * Assigns own enumerable properties of source object(s) to the destination
@@ -3419,10 +3480,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 103 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var keys = __webpack_require__(104);
+	var keys = __webpack_require__(105);
 	
 	/**
 	 * A specialized version of `_.assign` for customizing assigned values without
@@ -3457,13 +3518,13 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 104 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var getNative = __webpack_require__(68),
-	    isArrayLike = __webpack_require__(105),
+	    isArrayLike = __webpack_require__(106),
 	    isObject = __webpack_require__(71),
-	    shimKeys = __webpack_require__(108);
+	    shimKeys = __webpack_require__(109);
 	
 	/* Native method references for those with the same name as other `lodash` methods. */
 	var nativeKeys = getNative(Object, 'keys');
@@ -3508,10 +3569,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 105 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var getLength = __webpack_require__(106),
+	var getLength = __webpack_require__(107),
 	    isLength = __webpack_require__(90);
 	
 	/**
@@ -3529,10 +3590,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 106 */
+/* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseProperty = __webpack_require__(107);
+	var baseProperty = __webpack_require__(108);
 	
 	/**
 	 * Gets the "length" property value of `object`.
@@ -3550,7 +3611,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 107 */
+/* 108 */
 /***/ function(module, exports) {
 
 	/**
@@ -3570,14 +3631,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 108 */
+/* 109 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArguments = __webpack_require__(109),
+	var isArguments = __webpack_require__(110),
 	    isArray = __webpack_require__(89),
 	    isIndex = __webpack_require__(93),
 	    isLength = __webpack_require__(90),
-	    keysIn = __webpack_require__(110);
+	    keysIn = __webpack_require__(111);
 	
 	/** Used for native method references. */
 	var objectProto = Object.prototype;
@@ -3617,10 +3678,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 109 */
+/* 110 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArrayLike = __webpack_require__(105),
+	var isArrayLike = __webpack_require__(106),
 	    isObjectLike = __webpack_require__(72);
 	
 	/** Used for native method references. */
@@ -3657,10 +3718,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 110 */
+/* 111 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArguments = __webpack_require__(109),
+	var isArguments = __webpack_require__(110),
 	    isArray = __webpack_require__(89),
 	    isIndex = __webpack_require__(93),
 	    isLength = __webpack_require__(90),
@@ -3727,11 +3788,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 111 */
+/* 112 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseCopy = __webpack_require__(112),
-	    keys = __webpack_require__(104);
+	var baseCopy = __webpack_require__(113),
+	    keys = __webpack_require__(105);
 	
 	/**
 	 * The base implementation of `_.assign` without support for argument juggling,
@@ -3752,7 +3813,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 112 */
+/* 113 */
 /***/ function(module, exports) {
 
 	/**
@@ -3781,11 +3842,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 113 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var bindCallback = __webpack_require__(114),
-	    isIterateeCall = __webpack_require__(115),
+	var bindCallback = __webpack_require__(115),
+	    isIterateeCall = __webpack_require__(116),
 	    restParam = __webpack_require__(99);
 	
 	/**
@@ -3828,7 +3889,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var identity = __webpack_require__(66);
@@ -3873,10 +3934,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var isArrayLike = __webpack_require__(105),
+	var isArrayLike = __webpack_require__(106),
 	    isIndex = __webpack_require__(93),
 	    isObject = __webpack_require__(71);
 	
@@ -3907,11 +3968,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 116 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseMerge = __webpack_require__(117),
-	    createAssigner = __webpack_require__(113);
+	var baseMerge = __webpack_require__(118),
+	    createAssigner = __webpack_require__(114);
 	
 	/**
 	 * Recursively merges own enumerable properties of the source object(s), that
@@ -3967,17 +4028,17 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 117 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var arrayEach = __webpack_require__(118),
-	    baseMergeDeep = __webpack_require__(119),
+	var arrayEach = __webpack_require__(119),
+	    baseMergeDeep = __webpack_require__(120),
 	    isArray = __webpack_require__(89),
-	    isArrayLike = __webpack_require__(105),
+	    isArrayLike = __webpack_require__(106),
 	    isObject = __webpack_require__(71),
 	    isObjectLike = __webpack_require__(72),
-	    isTypedArray = __webpack_require__(125),
-	    keys = __webpack_require__(104);
+	    isTypedArray = __webpack_require__(126),
+	    keys = __webpack_require__(105);
 	
 	/**
 	 * The base implementation of `_.merge` without support for argument juggling,
@@ -4029,7 +4090,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports) {
 
 	/**
@@ -4057,16 +4118,16 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var arrayCopy = __webpack_require__(77),
-	    isArguments = __webpack_require__(109),
+	    isArguments = __webpack_require__(110),
 	    isArray = __webpack_require__(89),
-	    isArrayLike = __webpack_require__(105),
-	    isPlainObject = __webpack_require__(120),
-	    isTypedArray = __webpack_require__(125),
-	    toPlainObject = __webpack_require__(126);
+	    isArrayLike = __webpack_require__(106),
+	    isPlainObject = __webpack_require__(121),
+	    isTypedArray = __webpack_require__(126),
+	    toPlainObject = __webpack_require__(127);
 	
 	/**
 	 * A specialized version of `baseMerge` for arrays and objects which performs
@@ -4130,11 +4191,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseForIn = __webpack_require__(121),
-	    isArguments = __webpack_require__(109),
+	var baseForIn = __webpack_require__(122),
+	    isArguments = __webpack_require__(110),
 	    isObjectLike = __webpack_require__(72);
 	
 	/** `Object#toString` result references. */
@@ -4207,11 +4268,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseFor = __webpack_require__(122),
-	    keysIn = __webpack_require__(110);
+	var baseFor = __webpack_require__(123),
+	    keysIn = __webpack_require__(111);
 	
 	/**
 	 * The base implementation of `_.forIn` without support for callback
@@ -4230,10 +4291,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 122 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var createBaseFor = __webpack_require__(123);
+	var createBaseFor = __webpack_require__(124);
 	
 	/**
 	 * The base implementation of `baseForIn` and `baseForOwn` which iterates
@@ -4253,10 +4314,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var toObject = __webpack_require__(124);
+	var toObject = __webpack_require__(125);
 	
 	/**
 	 * Creates a base function for `_.forIn` or `_.forInRight`.
@@ -4286,7 +4347,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isObject = __webpack_require__(71);
@@ -4306,7 +4367,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 125 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isLength = __webpack_require__(90),
@@ -4386,11 +4447,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var baseCopy = __webpack_require__(112),
-	    keysIn = __webpack_require__(110);
+	var baseCopy = __webpack_require__(113),
+	    keysIn = __webpack_require__(111);
 	
 	/**
 	 * Converts `value` to a plain object flattening inherited enumerable
@@ -4423,7 +4484,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 127 */
+/* 128 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -4444,7 +4505,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 128 */
+/* 129 */
 /***/ function(module, exports) {
 
 	// TODO: Having a base path hardcoded here is obviously just a temp solution
@@ -4464,7 +4525,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var createWrapper = __webpack_require__(64),
@@ -4526,7 +4587,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 130 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isObjectLike = __webpack_require__(72);
@@ -4570,47 +4631,6 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	module.exports = isNumber;
-
-
-/***/ },
-/* 131 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var isObjectLike = __webpack_require__(72);
-	
-	/** `Object#toString` result references. */
-	var stringTag = '[object String]';
-	
-	/** Used for native method references. */
-	var objectProto = Object.prototype;
-	
-	/**
-	 * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
-	 * of values.
-	 */
-	var objToString = objectProto.toString;
-	
-	/**
-	 * Checks if `value` is classified as a `String` primitive or object.
-	 *
-	 * @static
-	 * @memberOf _
-	 * @category Lang
-	 * @param {*} value The value to check.
-	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
-	 * @example
-	 *
-	 * _.isString('abc');
-	 * // => true
-	 *
-	 * _.isString(1);
-	 * // => false
-	 */
-	function isString(value) {
-	  return typeof value == 'string' || (isObjectLike(value) && objToString.call(value) == stringTag);
-	}
-	
-	module.exports = isString;
 
 
 /***/ },
@@ -4722,44 +4742,44 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	// Framework specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	var $ = Lib.global.jQuery || Lib.global.$;
 	
 	// Constructor
-	var Badge = function Badge(element, options) {
-		this.options = Lib.extend(_coreBadge2['default']._defaultProperties, options);
+	var Badge = function Badge() {
+		var options = this._getOptions(arguments);
 	
-		this.elements = {
-			wrapper: $(element)
-		};
-	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
 	var BadgeObject = {
-		_onInitialized: function _onInitialized() {
-			this._render();
-			this.trigger('initialized');
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = $('<span>');
 		},
 	
 		_render: function _render() {
 			var className = this._getClassNames();
 	
 			// TODO: Should this also use the contents of the original? It's different in jQuery becasue in React 'Children' is actually just another prop
-			$('<span>').addClass(className).text(this.getProperty('text')).appendTo(this.elements.wrapper);
+			this.element.addClass(className).text(this.getProperty('text'));
+	
+			return this.element;
 		}
 	};
 	
 	exports.BadgeObject = BadgeObject;
-	Lib.merge(Badge.prototype, _coreBadge2['default'], _events2['default'], _state2['default'], BadgeObject);
+	Lib.merge(Badge.prototype, _coreBadge2['default'], _events2['default'], _dom2['default'], _state2['default'], BadgeObject);
 	Badge = Lib.runHelpers('jquery', _coreBadge.CONTROL, Badge);
 	
 	exports['default'] = Badge;
@@ -4882,6 +4902,12 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 				if (Lib.isFunction(_this._onInitialized)) _this._onInitialized();
 			});
+		},
+	
+		_onInitialized: function _onInitialized() {
+			var onInitialized = this.getProperty('onInitialized');
+	
+			if (Lib.isFunction(onInitialized)) onInitialized.call(this, this);
 		},
 	
 		_getItemAdapter: function _getItemAdapter(_item, _itemAdapter) {
@@ -5377,6 +5403,88 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// DOM - JQUERY FACADE
+	
+	// Core
+	'use strict';
+	
+	var _interopRequireWildcard = __webpack_require__(4)['default'];
+	
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+	
+	var _libLib = __webpack_require__(5);
+	
+	var Lib = _interopRequireWildcard(_libLib);
+	
+	var $ = Lib.global.jQuery || Lib.global.$;
+	
+	var DOM = {
+		_onBeforeInitialize: function _onBeforeInitialize(options) {
+			this.elements = {};
+	
+			if (options.wrapper) {
+				this.appendTo(options.wrapper);
+				delete options.wrapper;
+			}
+		},
+	
+		_onInitialized: function _onInitialized() {
+			if (Lib.isFunction(this._onBeforeRender)) this._onBeforeRender();
+	
+			if (!this.rendered) {
+				if (Lib.isFunction(this._render)) this._render();
+				this.rendered = true;
+			}
+	
+			if (Lib.isFunction(this._addToDOM)) this._addToDOM();
+	
+			if (Lib.isFunction(this._onRendered)) this._onRendered();
+		},
+	
+		appendTo: function appendTo(wrapper) {
+			this.elements.wrapper = $(wrapper);
+	
+			if (this.rendered) {
+				this.element.appendTo(this.elements.wrapper);
+			} else {
+				this._addToDOM = Lib.bind(this.appendTo, this, wrapper);
+			}
+	
+			return this;
+		},
+	
+		prependTo: function prependTo(wrapper) {
+			this.elements.wrapper = $(wrapper);
+	
+			if (this.rendered) {
+				this.element.prependTo(this.elements.wrapper);
+			} else {
+				this._addToDOM = Lib.bind(this.prependTo, this, wrapper);
+			}
+	
+			return this;
+		},
+	
+		on: function on() {
+			if (this.element) {
+				this.element.on.apply(this.element, arguments);
+			}
+	
+			return this;
+		}
+	
+		// Possibly add a destroy method
+	};
+	
+	exports['default'] = DOM;
+	module.exports = exports['default'];
+
+/***/ },
+/* 146 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// EVENTS - JQUERY FACADE
 	
 	// Core
@@ -5394,19 +5502,21 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Events = {
 		trigger: function trigger(eventName) {
-			var _elements$wrapper;
+			if (this.rendered) {
+				var _element;
 	
-			var name = eventName;
+				var _name = eventName;
 	
-			if (Lib.isString(this.eventSuffix)) {
-				name = [name, this.eventSuffix].join('.');
+				if (Lib.isString(this.eventSuffix)) {
+					_name = [_name, this.eventSuffix].join('.');
+				}
+	
+				for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+					args[_key - 1] = arguments[_key];
+				}
+	
+				(_element = this.element).trigger.apply(_element, [_name].concat(args));
 			}
-	
-			for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-				args[_key - 1] = arguments[_key];
-			}
-	
-			(_elements$wrapper = this.elements.wrapper).trigger.apply(_elements$wrapper, [name].concat(args));
 		}
 	};
 	
@@ -5414,7 +5524,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 146 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// STATE - JQUERY FACADE
@@ -5433,9 +5543,29 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	var Lib = _interopRequireWildcard(_libLib);
 	
 	var State = {
+		_onBeforeInitialize: function _onBeforeInitialize() {
+			this._initializeState();
+		},
+	
 		_initializeState: function _initializeState() {
 			this._props = Lib.extend({}, this._defaultProperties);
 			this._state = Lib.extend({}, this._defaultState);
+		},
+	
+		// TODO: Determine whether this is the best place for this function to live
+		_getOptions: function _getOptions(args) {
+			var wrapper = undefined;
+			var options = undefined;
+	
+			if (args.length === 1) {
+				// TODO: Possibly determine what type of argument this is?
+				options = args[0];
+			} else if (args.length > 1) {
+				wrapper = args[0];
+				options = args[1];
+			}
+	
+			return Lib.extend({ wrapper: wrapper }, this._defaultProperties, options);
 		},
 	
 		setProperties: function setProperties(values) {
@@ -5459,7 +5589,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 147 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// BUTTON CONTROL - JQUERY FACADE
@@ -5479,96 +5609,130 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreButton = __webpack_require__(148);
+	var _coreButton = __webpack_require__(149);
 	
 	var _coreButton2 = _interopRequireDefault(_coreButton);
 	
 	// Framework specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _svg = __webpack_require__(149);
-	
-	var _svg2 = _interopRequireDefault(_svg);
-	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
+	
+	// Children
+	
+	var _buttonView = __webpack_require__(152);
+	
+	var _buttonView2 = _interopRequireDefault(_buttonView);
 	
 	var $ = Lib.global.jQuery || Lib.global.$;
 	
 	// Constructor
-	var Button = function Button(element, options) {
-		this.options = {};
-		Lib.merge(this.options, this._defaultProperties, options);
+	var Button = function Button() {
+		var _this = this;
 	
-		this.elements = {
-			wrapper: $(element)
+		var options = this._getOptions(arguments);
+	
+		this.childOptions = {
+			icon: options.icon,
+			iconPosition: options.iconPosition,
+			iconStyle: options.iconStyle,
+			text: options.text
 		};
 	
-		this._initializeState();
-		this._initialize(this.options);
+		// If button has views, button is stateful
+		if (options.views.length > 0) {
+			options.views = options.views.map(function (child) {
+				return Lib.extend({}, _this.childOptions, child);
+			});
+		}
+	
+		this._initialize(options);
 	};
 	
 	var ButtonObject = {
-		// not quite sure why these got removed from core, since I'm using them here also.
-		cssClasses: {
-			ICON: _coreButton.CONTROL + '__icon',
-			STATEFUL_ICON: _coreButton.CONTROL + '__icon--stateful',
-			ASSISTIVE_TEXT: 'slds-assistive-text'
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = $('<button>');
 		},
 	
-		buttonStatefulViewStyles: {
-			notSelected: 'slds-text-not-selected',
-			selected: 'slds-text-selected',
-			selectedHover: 'slds-text-selected-focus'
-		},
-	
-		childIconStyles: {
-			'left': _coreButton.CONTROL + '__icon--left',
-			'right': _coreButton.CONTROL + '__icon--right'
-		},
-	
-		_onInitialized: function _onInitialized() {
-			this._render();
-			this.trigger('initialized');
-		},
-	
-		_renderAssistiveText: function _renderAssistiveText() {
-			if (this.getProperty('assistiveText')) {
-				return $('<span>').addClass(this.cssClasses.ASSISTIVE_TEXT).text(this.getProperty('assistiveText'));
-			}
+		_bindUIEvents: function _bindUIEvents() {
+			this.element.on('click', $.proxy(this._handleClick, this));
 		},
 	
 		_renderViews: function _renderViews() {
-			// currently NOT stateful
-			// there is an extra span in here, but there is also in the React facade at this time
-			var $span = $('<span>').text(this.getProperty('text'));
-			if (this.getProperty('iconPosition') === 'right') {
-				$span = $span.append(this._renderIcon());
-			} else {
-				$span = $span.prepend(this._renderIcon());
+			var viewOptions = this.getProperty('views');
+			var views = [];
+	
+			var childOptions = Lib.extend({
+				assistiveText: this.getProperty('assistiveText')
+			}, this.childOptions);
+	
+			if (viewOptions.length > 0) {
+				childOptions.view = 'notSelected';
 			}
-			return $span;
+	
+			var $buttonview = new _buttonView2['default'](childOptions);
+	
+			views.push($buttonview.element);
+	
+			// Other views
+			if (viewOptions.length > 0) {
+				viewOptions.forEach(function (options) {
+					$buttonview = new _buttonView2['default'](options);
+					views.push($buttonview.element);
+				});
+			}
+	
+			return views;
 		},
 	
 		_render: function _render() {
-			var className = this._getClassNames();
+			var isStateful = this.getProperty('views').length > 0;
+			var className = this._getClassNames(isStateful);
 	
-			$('<button>').addClass(className).append(this._renderViews()).prop('disabled', this.getProperty('disabled')).append(this._renderAssistiveText()).appendTo(this.elements.wrapper);
+			this.element.addClass(className).append(this._renderViews()).prop('disabled', this.getProperty('disabled'));
+	
+			return this.element;
+		},
+	
+		_onRendered: function _onRendered() {
+			this._bindUIEvents();
+		},
+	
+		_handleClick: function _handleClick() {
+			this.toggle();
+		},
+	
+		_onToggled: function _onToggled() {
+			var isStateful = this.getProperty('views').length > 0;
+			this.elements.control[0].className = this._getClassNames(isStateful);
+		},
+	
+		_onEnabledOrDisabled: function _onEnabledOrDisabled() {
+			if (this.getProperty('disabled')) {
+				this.elements.control.attr('disabled', 'disabled');
+			} else {
+				this.elements.control.removeAttr('disabled');
+			}
 		}
 	};
 	
 	exports.ButtonObject = ButtonObject;
-	Lib.merge(Button.prototype, _coreButton2['default'], _events2['default'], _state2['default'], _svg2['default'], ButtonObject);
+	Lib.merge(Button.prototype, _coreButton2['default'], _events2['default'], _dom2['default'], _state2['default'], ButtonObject);
 	Button = Lib.runHelpers('jquery', _coreButton.CONTROL, Button);
 	
 	exports['default'] = Button;
 
 /***/ },
-/* 148 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// BUTTON CORE
@@ -5591,12 +5755,23 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var _base2 = _interopRequireDefault(_base);
 	
+	// Traits
+	
+	var _traitsDisableable = __webpack_require__(150);
+	
+	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
+	
+	var _traitsSelectableBoolean = __webpack_require__(151);
+	
+	var _traitsSelectableBoolean2 = _interopRequireDefault(_traitsSelectableBoolean);
+	
 	// Third party
 	
 	var _classnames = __webpack_require__(144);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
+	// Styles
 	// require('../../scss/components/button-groups/flavors/base/index.scss');
 	// require('../../scss/components/button-groups/flavors/icon-group/index.scss');
 	// require('../../scss/components/button-groups/flavors/inverse/index.scss');
@@ -5616,12 +5791,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	var CONTROL = 'slds-button';
 	
 	exports.CONTROL = CONTROL;
-	var ButtonCore = Lib.merge({}, _base2['default'], {
+	var ButtonCore = Lib.merge({}, _base2['default'], _traitsSelectableBoolean2['default'], _traitsDisableable2['default'], {
+		// TODO: add button property or check for button parent, inverse, size, etc.
 		cssClasses: {
 			'CONTROL': CONTROL,
-			'NOT_SELECTED': _base2['default'].cssClasses.NAMESPACE + 'not-selected',
-			'SELECTED': _base2['default'].cssClasses.NAMESPACE + 'is-selected'
-			// TODO: add button property or check for button parent, inverse, size, etc.
+			'NOT_SELECTED': _base2['default'].cssClasses.NAMESPACE + 'not-selected'
 		},
 	
 		themes: {
@@ -5634,19 +5808,36 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			'small': CONTROL + '--small'
 		},
 	
-		iconStyles: {
+		// applied to the button, not the icon/SVG
+		iconButtonStyles: {
 			'icon-bare': CONTROL + '--icon-bare',
 			'icon-container': CONTROL + '--icon-container',
 			'icon-border': CONTROL + '--icon-border',
 			'icon-border-filled': CONTROL + '--icon-border-filled',
-			'icon-small': CONTROL + '--icon-small'
+			'icon-small': CONTROL + '--icon-small',
+			'icon-more': CONTROL + '--icon-more'
 		},
 	
 		_defaultProperties: {
-			theme: null,
-			size: null,
 			iconStyle: null,
-			iconPosition: 'left'
+			iconPosition: 'left',
+			selected: false,
+			size: null,
+			theme: null,
+			views: []
+		},
+	
+		_canSelect: function _canSelect() {
+			if (this.getProperty('disabled')) {
+				// Component is disabled, do not allow a toggle to occur.
+				return false;
+			}
+	
+			return true;
+		},
+	
+		toggle: function toggle() {
+			this._toggleSelected();
 		},
 	
 		_getClassNames: function _getClassNames(isStateful) {
@@ -5657,7 +5848,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				selectedClasses[this.cssClasses.SELECTED] = this.getProperty('selected');
 			}
 	
-			return (0, _classnames2['default'])(this.cssClasses.CONTROL, this.sizes[this.getProperty('size')], this.themes[this.getProperty('theme')], this.iconStyles[this.getProperty('iconStyle')], selectedClasses);
+			return (0, _classnames2['default'])(this.cssClasses.CONTROL, this.sizes[this.getProperty('size')], this.themes[this.getProperty('theme')], this.iconButtonStyles[this.getProperty('iconStyle')], selectedClasses);
 		}
 	
 		// TODO: We usually manage state and throw our own events here, so this will probably need to be expanded for jQuery support
@@ -5666,10 +5857,142 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = ButtonCore;
 
 /***/ },
-/* 149 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// SVG HELPER METHODS - JQUERY FACADE
+	// DISABLEABLE
+	
+	'use strict';
+	
+	var _interopRequireWildcard = __webpack_require__(4)['default'];
+	
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+	
+	var _libLib = __webpack_require__(5);
+	
+	var Lib = _interopRequireWildcard(_libLib);
+	
+	var Disableable = {
+		cssClasses: {
+			DISABLED: 'slds-disabled'
+		},
+	
+		_defaultProperties: {
+			disabled: false
+		},
+	
+		enable: function enable() {
+			var property = { disabled: false };
+	
+			this.setProperties(property);
+			if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
+	
+			this.trigger('enabled');
+		},
+	
+		disable: function disable() {
+			var property = { disabled: true };
+	
+			this.setProperties(property);
+			if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
+	
+			this.trigger('disabled');
+		}
+	};
+	
+	exports['default'] = Disableable;
+	module.exports = exports['default'];
+
+/***/ },
+/* 151 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// SELECTABLE BOOLEAN
+	// For select/deselect selection such as buttons, not for controls with "items"
+	// Similar to checkable trait
+	
+	'use strict';
+	
+	var _interopRequireWildcard = __webpack_require__(4)['default'];
+	
+	var _interopRequireDefault = __webpack_require__(2)['default'];
+	
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+	
+	var _libLib = __webpack_require__(5);
+	
+	var Lib = _interopRequireWildcard(_libLib);
+	
+	var _coreBase = __webpack_require__(136);
+	
+	var _coreBase2 = _interopRequireDefault(_coreBase);
+	
+	var SelectableBoolean = {
+		cssClasses: {
+			SELECTED: _coreBase2['default'].cssClasses.NAMESPACE + 'is-selected'
+		},
+	
+		_defaultProperties: {
+			selected: null
+		},
+	
+		isSelected: function isSelected() {
+			return !!this.getProperty('selected');
+		},
+	
+		_setSelected: function _setSelected(selected) {
+			if (Lib.isFunction(this._canSelect) && !this._canSelect(selected)) {
+				return false;
+			}
+	
+			if (selected === this.isSelected()) {
+				return false;
+			}
+	
+			this.setProperties({ selected: selected });
+	
+			if (Lib.isFunction(this._onToggled)) this._onToggled(selected);
+	
+			this.trigger('changed', selected);
+	
+			return true;
+		},
+	
+		_toggleSelected: function _toggleSelected() {
+			if (this.isSelected()) {
+				this.deselect();
+			} else {
+				this.select();
+			}
+		},
+	
+		select: function select() {
+			if (this._setSelected(true)) {
+				this.trigger('selected');
+			}
+		},
+	
+		deselect: function deselect() {
+			if (this._setSelected(false)) {
+				this.trigger('deselected');
+			}
+		}
+	
+	};
+	
+	exports['default'] = SelectableBoolean;
+	module.exports = exports['default'];
+
+/***/ },
+/* 152 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// BUTTONVIEW OBJECT - JQUERY FACADE
+	// Not meant to be directly bound to DOM
 	
 	// Core
 	'use strict';
@@ -5686,7 +6009,94 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
+	var _coreButtonView = __webpack_require__(153);
+	
+	var _coreButtonView2 = _interopRequireDefault(_coreButtonView);
+	
 	// Framework specific
+	
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _state = __webpack_require__(147);
+	
+	var _state2 = _interopRequireDefault(_state);
+	
+	var $ = Lib.global.jQuery || Lib.global.$;
+	
+	// Constructor
+	var ButtonView = function ButtonView() {
+		var options = this._getOptions(arguments);
+	
+		this._initialize(options);
+	};
+	
+	var ButtonViewObject = {
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = $('<span>');
+		},
+	
+		_renderAssistiveText: function _renderAssistiveText() {
+			if (this.getProperty('assistiveText')) {
+				return $('<span>').addClass(this.cssClasses.ASSISTIVE_TEXT).text(this.getProperty('assistiveText'));
+			}
+		},
+	
+		_renderIcon: function _renderIcon(position) {
+			var $icon = undefined;
+	
+			if (this.getProperty('icon') && this.getProperty('iconPosition') === position) {
+				$icon = $('<svg ' + 'class="' + this._getIconClassNames() + '"><use xlink:href="' + Lib.getSVGPath(this.getProperty('icon')) + '"></use></svg>').attr('aria-hidden', 'true');
+			}
+	
+			if (position === 'right' && this.getProperty('iconStyle') === 'icon-more') {
+				$icon = $('<svg ' + 'class="' + this._getIconClassNames(this.iconSizes['x-small']) + '"><use xlink:href="' + Lib.getSVGPath(this.moreIcon) + '"></use></svg>').attr('aria-hidden', 'true');
+			}
+	
+			return $icon;
+		},
+	
+		_render: function _render() {
+			this.element.text(this.getProperty('text')).addClass(this.buttonStatefulViewStyles[this.getProperty('view')]).append(this._renderAssistiveText());
+	
+			this.element.append(this._renderIcon('right')).prepend(this._renderIcon('left'));
+	
+			return this.element;
+		}
+	};
+	
+	exports.ButtonViewObject = ButtonViewObject;
+	Lib.merge(ButtonView.prototype, _coreButtonView2['default'], _dom2['default'], _state2['default'], ButtonViewObject);
+	ButtonView = Lib.runHelpers('jquery', _coreButtonView.CONTROL, ButtonView);
+	
+	exports['default'] = ButtonView;
+
+/***/ },
+/* 153 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// BUTTON VIEW CORE
+	
+	'use strict';
+	
+	var _interopRequireWildcard = __webpack_require__(4)['default'];
+	
+	var _interopRequireDefault = __webpack_require__(2)['default'];
+	
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+	
+	var _libLib = __webpack_require__(5);
+	
+	var Lib = _interopRequireWildcard(_libLib);
+	
+	var _base = __webpack_require__(136);
+	
+	var _base2 = _interopRequireDefault(_base);
+	
+	var _button = __webpack_require__(149);
 	
 	// Third party
 	
@@ -5694,23 +6104,36 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var $ = Lib.global.jQuery || Lib.global.$;var SvgObject = {
+	var CONTROL = 'slds-buttonview';
 	
-		_getSVGPath: function _getSVGPath() {
-			// TODO: Evaluate best way to do this and clean this up more
-			var iconPaths = Lib.getIconPaths();
-			var icon = Lib.isString(this.getProperty('icon')) && this.getProperty('icon').split('.');
-	
-			if (icon.length === 2) {
-				var iconPath = iconPaths[icon[0]];
-	
-				if (iconPath) {
-					return [iconPath, icon[1]].join('#');
-				}
-			}
+	exports.CONTROL = CONTROL;
+	var ButtonViewCore = Lib.merge({}, _base2['default'], {
+		cssClasses: {
+			ICON: _button.CONTROL + '__icon',
+			STATEFUL_ICON: _button.CONTROL + '__icon--stateful',
+			ASSISTIVE_TEXT: 'slds-assistive-text'
 		},
 	
-		_getIconClassNames: function _getIconClassNames() {
+		buttonStatefulViewStyles: {
+			notSelected: 'slds-text-not-selected',
+			selected: 'slds-text-selected',
+			selectedHover: 'slds-text-selected-focus'
+		},
+	
+		iconPositions: {
+			'left': _button.CONTROL + '__icon--left',
+			'right': _button.CONTROL + '__icon--right'
+		},
+	
+		moreIcon: 'utility.down',
+	
+		iconSizes: {
+			'x-small': 'slds-button__icon--x-small'
+		},
+	
+		_getIconClassNames: function _getIconClassNames(additionalClasses) {
+			// getIconClassNames is a part of button/button-view because icons within buttons
+			// have a completely different set of class than icons on their own
 			var iconBaseClass = undefined;
 	
 			if (this.getProperty('view')) {
@@ -5719,25 +6142,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				iconBaseClass = this.cssClasses.ICON;
 			}
 	
-			return (0, _classnames2['default'])(iconBaseClass, !!this.getProperty('text') && this.childIconStyles[this.getProperty('iconPosition')]);
-		},
-	
-		_renderIcon: function _renderIcon() {
-			var $icon = undefined;
-	
-			if (this.getProperty('icon')) {
-				$icon = $('<svg ' + 'class="' + this._getIconClassNames() + '"><use xlink:href="' + this._getSVGPath() + '"></use></svg>').attr('aria-hidden', 'true');
-			}
-	
-			return $icon || '';
+			return (0, _classnames2['default'])(iconBaseClass, !!this.getProperty('text') && this.iconPositions[this.getProperty('iconPosition')], additionalClasses);
 		}
-	};
+	});
 	
-	exports.SvgObject = SvgObject;
-	exports['default'] = SvgObject;
+	exports['default'] = ButtonViewCore;
 
 /***/ },
-/* 150 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CHECKBOX CONTROL - JQUERY FACADE
@@ -5757,69 +6169,65 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreCheckbox = __webpack_require__(151);
+	var _coreCheckbox = __webpack_require__(155);
 	
 	var _coreCheckbox2 = _interopRequireDefault(_coreCheckbox);
 	
 	// Framework specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _checkboxTemplate = __webpack_require__(154);
+	var _checkboxTemplate = __webpack_require__(157);
 	
 	var _checkboxTemplate2 = _interopRequireDefault(_checkboxTemplate);
 	
 	// Constructor
 	
-	var $ = Lib.global.jQuery || Lib.global.$;var Checkbox = function Checkbox(element, options) {
-		this.options = Lib.extend({}, options);
-		this.elements = {
-			wrapper: $(element)
-		};
+	var $ = Lib.global.jQuery || Lib.global.$;var Checkbox = function Checkbox() {
+		var options = this._getOptions(arguments);
 	
 		this.inputSelector = 'input[type="checkbox"]';
-		this.rendered = false;
-		this.template = $('<i />').append(_checkboxTemplate2['default']);
+		this.template = $(_checkboxTemplate2['default']);
 	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
 	// Prototype extension object
 	var CheckboxObject = {
-		_defaultProperties: {
-			checked: false,
-			disabled: false
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = this.template.clone();
+			this.elements.input = this.element.find(this.inputSelector);
+			this.elements.label = this.element.find('.' + this.cssClasses.LABEL);
 		},
 	
 		_bindUIEvents: function _bindUIEvents() {
 			this.elements.input.on('change', $.proxy(this.toggle, this));
 		},
 	
-		_initElements: function _initElements($base, elements) {
-			var control = '.' + this.cssClasses.CONTROL;
+		_render: function _render() {
+			this.elements.input.attr('value', this.getProperty('value'));
+			this.elements.input.attr('checked', this.getProperty('checked'));
+			this.elements.label.append(this.getProperty('text'));
 	
-			elements.control = $base.find(control);
-			elements.input = $($base.find(this.inputSelector)[0]);
-			elements.label = $base.find('.' + this.cssClasses.LABEL);
+			this._onEnabledOrDisabled();
 	
-			return elements;
+			return this.element;
 		},
 	
-		_onBeforeInitialize: function _onBeforeInitialize() {
-			if (this.elements.wrapper.find(this.inputSelector).length > 0) {
-				this._initElements(this.elements.wrapper, this.elements);
-				this._syncOptions(); // syncing options to provided markup
-				this.rendered = true;
-			}
+		_onRendered: function _onRendered() {
+			this._bindUIEvents();
 		},
 	
 		_onEnabledOrDisabled: function _onEnabledOrDisabled() {
@@ -5833,72 +6241,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			}
 		},
 	
-		_onInitialized: function _onInitialized() {
-			// TODO: this may have only been applicable for Fuel UX. Is the else even reachable?
-			if (!this.rendered) {
-				this._render();
-			} else {
-				// ensuring there were no markup mistakes in regards to state
-				this._onEnabledOrDisabled();
-				this._onToggled();
-			}
-	
-			this._bindUIEvents();
-		},
-	
 		_onToggled: function _onToggled(checked) {
 			this.elements.input.prop('checked', checked);
-		},
-	
-		_render: function _render() {
-			var $el = this.template.clone();
-			var control = '.' + this.cssClasses.CONTROL;
-			var elements = this._initElements($el, this.elements);
-			var itag = '<i />';
-	
-			this._renderDressings(elements);
-	
-			$el = $(itag).append($el.find(control));
-	
-			elements.wrapper.empty();
-			elements.wrapper.append($el.children());
-	
-			this.rendered = true;
-		},
-	
-		// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
-		// there is no guidance as to what should be done here and/or why
-		_renderDressings: function _renderDressings(elements) {
-			elements.input.attr('value', this.getProperty('value'));
-			elements.input.attr('checked', this.getProperty('checked'));
-			elements.input.attr('disabled', this.getProperty('disabled'));
-			elements.label.append(this.getProperty('text'));
-	
-			this._onEnabledOrDisabled();
-		},
-	
-		// TODO: Is this necessary anymore? May never even be reachable now.
-		_syncOptions: function _syncOptions() {
-			var opts = {};
-			var value = this.elements.input.attr('value') || this.options.value || this._defaultProperties.value;
-	
-			if (this.elements.input.prop('disabled')) opts.disabled = true;
-	
-			opts.text = this.elements.label.html();
-			opts.value = value;
-	
-			Lib.extend(this.options, opts);
-		},
-	
-		destroy: function destroy() {
-			this.elements.wrapper.remove();
-			return this.elements.wrapper[0].outerHTML;
 		}
 	};
 	
 	exports.CheckboxObject = CheckboxObject;
 	// Merging into prototype
-	Lib.merge(Checkbox.prototype, _coreCheckbox2['default'], _events2['default'], _state2['default'], CheckboxObject);
+	Lib.merge(Checkbox.prototype, _coreCheckbox2['default'], _events2['default'], _dom2['default'], _state2['default'], CheckboxObject);
 	
 	// Framework setup
 	Checkbox = Lib.runHelpers('jquery', _coreCheckbox.CONTROL, Checkbox);
@@ -5907,7 +6257,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Checkbox;
 
 /***/ },
-/* 151 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CHECKBOX CORE
@@ -5932,11 +6282,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	// Traits
 	
-	var _traitsDisableable = __webpack_require__(152);
+	var _traitsDisableable = __webpack_require__(150);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsCheckable = __webpack_require__(153);
+	var _traitsCheckable = __webpack_require__(156);
 	
 	var _traitsCheckable2 = _interopRequireDefault(_traitsCheckable);
 	
@@ -5976,59 +6326,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = CheckboxCore;
 
 /***/ },
-/* 152 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// DISABLEABLE
-	
-	'use strict';
-	
-	var _interopRequireWildcard = __webpack_require__(4)['default'];
-	
-	Object.defineProperty(exports, '__esModule', {
-		value: true
-	});
-	
-	var _libLib = __webpack_require__(5);
-	
-	var Lib = _interopRequireWildcard(_libLib);
-	
-	var Disableable = {
-		cssClasses: {
-			DISABLED: 'disabled'
-		},
-	
-		_defaultProperties: {
-			disabled: false
-		},
-	
-		enable: function enable() {
-			var property = { disabled: false };
-	
-			this.setProperties(property);
-			if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
-	
-			this.trigger('enabled');
-		},
-	
-		disable: function disable() {
-			var property = { disabled: true };
-	
-			this.setProperties(property);
-			if (Lib.isFunction(this._onEnabledOrDisabled)) this._onEnabledOrDisabled(property);
-	
-			this.trigger('disabled');
-		}
-	};
-	
-	exports['default'] = Disableable;
-	module.exports = exports['default'];
-
-/***/ },
-/* 153 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// DISABLEABLE
+	// CHECKABLE
+	// Similar to selectable-boolean trait
 	
 	'use strict';
 	
@@ -6094,34 +6396,34 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 154 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TODO: figure out how to use base.LABEL and base.NAMESPACE throughout template
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(155)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
 
-	var _String$raw = __webpack_require__(161)["default"];
+	var _String$raw = __webpack_require__(164)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 
-	var _templateObject = _taggedTemplateLiteral(["\n\t<label class=\"slds-checkbox\"><input name=\"checkbox\" type=\"checkbox\" /><span class=\"slds-checkbox--faux\"></span><span class=\"slds-form-element__label\"></span>\n\t</label>\n"], ["\n\t<label class=\"slds-checkbox\"><input name=\"checkbox\" type=\"checkbox\" /><span class=\"slds-checkbox--faux\"></span><span class=\"slds-form-element__label\"></span>\n\t</label>\n"]);
+	var _templateObject = _taggedTemplateLiteral(["\n<label class=\"slds-checkbox\"><input name=\"checkbox\" type=\"checkbox\" /><span class=\"slds-checkbox--faux\"></span><span class=\"slds-form-element__label\"></span>\n</label>\n"], ["\n<label class=\"slds-checkbox\"><input name=\"checkbox\" type=\"checkbox\" /><span class=\"slds-checkbox--faux\"></span><span class=\"slds-form-element__label\"></span>\n</label>\n"]);
 
 	exports["default"] = _String$raw(_templateObject);
 	module.exports = exports["default"];
 
 /***/ },
-/* 155 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _Object$freeze = __webpack_require__(156)["default"];
+	var _Object$freeze = __webpack_require__(159)["default"];
 	
-	var _Object$defineProperties = __webpack_require__(159)["default"];
+	var _Object$defineProperties = __webpack_require__(162)["default"];
 	
 	exports["default"] = function (strings, raw) {
 	  return _Object$freeze(_Object$defineProperties(strings, {
@@ -6134,20 +6436,20 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports.__esModule = true;
 
 /***/ },
-/* 156 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(157), __esModule: true };
+	module.exports = { "default": __webpack_require__(160), __esModule: true };
 
 /***/ },
-/* 157 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(158);
+	__webpack_require__(161);
 	module.exports = __webpack_require__(17).Object.freeze;
 
 /***/ },
-/* 158 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 19.1.2.5 Object.freeze(O)
@@ -6160,13 +6462,13 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 159 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(160), __esModule: true };
+	module.exports = { "default": __webpack_require__(163), __esModule: true };
 
 /***/ },
-/* 160 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $ = __webpack_require__(20);
@@ -6175,20 +6477,20 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 161 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(162), __esModule: true };
+	module.exports = { "default": __webpack_require__(165), __esModule: true };
 
 /***/ },
-/* 162 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(163);
+	__webpack_require__(166);
 	module.exports = __webpack_require__(17).String.raw;
 
 /***/ },
-/* 163 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $def      = __webpack_require__(15)
@@ -6212,7 +6514,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 164 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// COMBOBOX CONTROL - JQUERY FACADE
@@ -6232,65 +6534,58 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreCombobox = __webpack_require__(165);
+	var _coreCombobox = __webpack_require__(168);
 	
 	var _coreCombobox2 = _interopRequireDefault(_coreCombobox);
 	
 	// Framework specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
-	var _picklistPicklist = __webpack_require__(170);
+	var _svg = __webpack_require__(173);
+	
+	var _svg2 = _interopRequireDefault(_svg);
+	
+	var _picklistPicklist = __webpack_require__(174);
 	
 	// Template imports
 	
-	var _comboboxTemplate = __webpack_require__(172);
+	var _comboboxTemplate = __webpack_require__(176);
 	
 	var _comboboxTemplate2 = _interopRequireDefault(_comboboxTemplate);
 	
 	var $ = Lib.global.jQuery || Lib.global.$;
 	
-	var Combobox = function Combobox(element, options) {
-		this.options = Lib.extend({}, options);
+	var Combobox = function Combobox() {
+		var options = this._getOptions(arguments);
 	
-		this.elements = {
-			wrapper: $(element)
-		};
+		this.template = $(_comboboxTemplate2['default']);
+		this._closeOnClick = $.proxy(this._closeOnClick, this);
 	
-		var $html = $('<i />').append(_comboboxTemplate2['default']);
-		this.template = $html.find('.slds-form-element');
-	
-		if (this.options.collection) {
-			this.rendered = false;
-		} else {
-			this._initElements(this.elements.wrapper, this.elements);
-	
-			this._buildCollection(this.options);
-	
-			this.rendered = true;
-		}
-	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
-	var ComboboxObject = Lib.merge(_picklistPicklist.PicklistObject, {
-		_initElements: function _initElements(base, elements) {
-			var els = elements || {};
+	var ComboboxObject = {
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = this.template.clone();
+			this._initElements();
+		},
 	
-			els.button = base.find('.' + this.cssClasses.TOGGLE);
-			els.input = base.find('.' + this.cssClasses.INPUT);
-			els.inputGroup = base.find('.slds-form-element');
-			els.dropdown = base.find('.' + this.cssClasses.DROPDOWN);
-			els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
-	
-			return els;
+		_initElements: function _initElements() {
+			this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
+			this.elements.input = this.element.find('.' + this.cssClasses.INPUT);
+			this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
+			this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
 		},
 	
 		_bindUIEvents: function _bindUIEvents() {
@@ -6299,60 +6594,24 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			this.elements.input.on('change', $.proxy(this._handleChanged, this)).on('click', function (e) {
 				e.stopPropagation();
 			});
-			this.elements.inputGroup.on('keydown', $.proxy(this._handleKeyDown, this));
-			this.elements.inputGroup.on('keypress', $.proxy(this._handleKeyPressed, this));
+			// TODO: Find the right element for these keypress triggers
+			this.elements.dropdown.on('keydown', $.proxy(this._handleKeyDown, this));
+			this.elements.dropdown.on('keypress', $.proxy(this._handleKeyPressed, this));
 		},
 	
 		_render: function _render() {
-			var _this = this;
-	
 			var selection = this._getSelection();
-	
-			// Get the template
-			var $el = this.template.clone();
-			var elements = this._initElements($el, this.elements);
 	
 			// Configure the button
 			var disabled = !!this.getProperty('disabled');
-			elements.button.prop('disabled', disabled);
+			this.elements.button.prop('disabled', disabled);
 	
 			// Show the current selection if there is one
-			elements.input.val(selection.getText());
+			this.elements.input.val(selection.getText());
 	
-			// Empty the menu from the template
-			elements.dropdownMenu.empty();
+			this._renderMenu(this.elements);
 	
-			// Building the menu items
-			this._collection.forEach(function (item) {
-				var $li = undefined;
-				var func = undefined;
-				var funcMap = {
-					header: _picklistPicklist._renderHeader,
-					divider: _picklistPicklist._renderDivider,
-					item: _picklistPicklist._renderItem
-				};
-	
-				func = funcMap[item.getType()] || _picklistPicklist._renderItem;
-	
-				$li = func.call(_this, item);
-	
-				elements.dropdownMenu.append($li);
-			});
-	
-			this._addCheckmark(elements);
-	
-			// Prep for append
-			elements.wrapper.empty();
-	
-			if (this.elements.wrapper.is('div')) {
-				this.elements.wrapper.attr('class', $el.attr('class'));
-				this.elements.wrapper.append($el.children());
-			} else {
-				this.elements.wrapper.append($el);
-				this.elements.wrapper = $el;
-			}
-	
-			this.rendered = true;
+			return this.element;
 		},
 	
 		_onSelected: function _onSelected(item) {
@@ -6386,10 +6645,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 			this.setSelection(value);
 		}
-	});
+	};
 	
 	exports.ComboboxObject = ComboboxObject;
-	Lib.merge(Combobox.prototype, _coreCombobox2['default'], _events2['default'], _state2['default'], ComboboxObject);
+	Lib.merge(Combobox.prototype, _coreCombobox2['default'], _events2['default'], _dom2['default'], _state2['default'], _svg2['default'], _picklistPicklist.PicklistObject, ComboboxObject);
 	
 	Combobox = Lib.runHelpers('jquery', _coreCombobox.CONTROL, Combobox, {
 		legacyMethods: _picklistPicklist.legacyMethods
@@ -6398,7 +6657,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Combobox;
 
 /***/ },
-/* 165 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// COMBOBOX CORE
@@ -6417,7 +6676,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _picklist = __webpack_require__(166);
+	var _picklist = __webpack_require__(169);
 	
 	var _picklist2 = _interopRequireDefault(_picklist);
 	
@@ -6453,7 +6712,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = ComboboxCore;
 
 /***/ },
-/* 166 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// PICKLIST CORE
@@ -6476,25 +6735,21 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var _base2 = _interopRequireDefault(_base);
 	
-	var _classnames = __webpack_require__(144);
-	
-	var _classnames2 = _interopRequireDefault(_classnames);
-	
 	// Traits
 	
-	var _traitsDisableable = __webpack_require__(152);
+	var _traitsDisableable = __webpack_require__(150);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsOpenable = __webpack_require__(167);
+	var _traitsOpenable = __webpack_require__(170);
 	
 	var _traitsOpenable2 = _interopRequireDefault(_traitsOpenable);
 	
-	var _traitsSelectable = __webpack_require__(168);
+	var _traitsSelectable = __webpack_require__(171);
 	
 	var _traitsSelectable2 = _interopRequireDefault(_traitsSelectable);
 	
-	var _traitsKeyboardNavigable = __webpack_require__(169);
+	var _traitsKeyboardNavigable = __webpack_require__(172);
 	
 	var _traitsKeyboardNavigable2 = _interopRequireDefault(_traitsKeyboardNavigable);
 	
@@ -6518,8 +6773,6 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	var CONTROL = 'picklist';
 	
 	exports.CONTROL = CONTROL;
-	var resizeCache = {};
-	
 	var PicklistCore = Lib.merge({}, _base2['default'], _traitsDisableable2['default'], _traitsOpenable2['default'], _traitsSelectable2['default'], _traitsKeyboardNavigable2['default'], {
 		// CSS classes used within this control
 		cssClasses: {
@@ -6530,7 +6783,8 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			TOGGLE: 'slds-button',
 			HEADER: 'slds-dropdown__header',
 			HEADERTEXT: 'slds-text-heading--label',
-			DIVIDER: 'slds-has-divider'
+			DIVIDER: 'slds-has-divider',
+			ICON: 'slds-icon'
 		},
 	
 		_defaultProperties: {
@@ -6574,6 +6828,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 			getKey: function getKey(item) {
 				return item.get();
+			},
+	
+			getIcon: function getIcon(item) {
+				return item.get('icon');
 			}
 		},
 	
@@ -6583,71 +6841,13 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			if (!item.getType() && !item.getDisabled()) {
 				select();
 			}
-		},
-	
-		_onInitialized: function _onInitialized() {
-			/* if (this.getProperty('resize') === 'auto') {
-	  	this.resize();
-	  }*/
-		},
-	
-		// Vanilla js implementation of this to be shared by the libraries
-		// TODO: Look into creating a generic implementation as a trait
-		resize: function resize() {
-			var sizer = document.createElement('div');
-	
-			sizer.className = 'selectlist-sizer';
-			sizer.innerHTML = '<div class="' + (0, _classnames2['default'])(this.cssClasses.CONTROL) + '"><button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button"><span class="' + this.cssClasses.LABEL + '"></span><span class="caret"></span></button></div>';
-	
-			var parent = undefined;
-			if (Lib.hasClass(document.querySelector('html'), this.cssClasses.NAMESPACE)) {
-				parent = document.querySelector('body');
-			} else {
-				parent = document.querySelector('.' + this.cssClasses.NAMESPACE);
-			}
-	
-			if (parent) {
-				parent.appendChild(sizer);
-			} else {
-				return;
-			}
-	
-			var label = sizer.querySelector('.' + this.cssClasses.LABEL);
-			var control = sizer.querySelector('.' + this.cssClasses.CONTROL);
-	
-			var strings = this.getState('strings');
-			label.textContent = strings.NONE_SELECTED;
-	
-			var width = control.offsetWidth;
-			this._collection.forEach(function (item) {
-				var text = item.getText();
-				var offsetWidth = undefined;
-	
-				if (resizeCache[text]) {
-					offsetWidth = resizeCache[text];
-				} else {
-					label.textContent = text;
-					offsetWidth = control.offsetWidth;
-				}
-	
-				if (offsetWidth > width) {
-					width = offsetWidth;
-				}
-			});
-	
-			parent.removeChild(sizer);
-	
-			if (width !== this.getState('width')) {
-				this.setState({ width: width });
-				if (Lib.isFunction(this._resetWidth)) this._resetWidth(width);
-			}
 		}
 	});
 	
 	exports['default'] = PicklistCore;
 
 /***/ },
-/* 167 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// OPENABLE
@@ -6679,6 +6879,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				this.setState({ isOpen: true });
 				if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse();
 	
+				document.addEventListener('click', this._closeOnClick, false);
 				this.trigger('opened');
 			}, this);
 	
@@ -6693,6 +6894,8 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			this.setState({ isOpen: false });
 			if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse();
 	
+			// TODO: Once we have a destroy event we might want to remove this there as well
+			document.removeEventListener('click', this._closeOnClick, false);
 			this.trigger('closed');
 		},
 	
@@ -6721,7 +6924,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 168 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// SELECTABLE
@@ -6841,7 +7044,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Selectable;
 
 /***/ },
-/* 169 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// KEYBOARD NAVIGABLE
@@ -6947,7 +7150,79 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 170 */
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// SVG HELPER METHODS - JQUERY FACADE
+	
+	// Core
+	'use strict';
+	
+	var _interopRequireWildcard = __webpack_require__(4)['default'];
+	
+	var _interopRequireDefault = __webpack_require__(2)['default'];
+	
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+	
+	var _libLib = __webpack_require__(5);
+	
+	var Lib = _interopRequireWildcard(_libLib);
+	
+	// Framework specific
+	
+	// Third party
+	
+	var _classnames = __webpack_require__(144);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var $ = Lib.global.jQuery || Lib.global.$;var SvgObject = {
+	
+		_getSVGPath: function _getSVGPath(iconString) {
+			// TODO: Evaluate best way to do this and clean this up more
+			var iconPaths = Lib.getIconPaths();
+			var icon = Lib.isString(iconString) && iconString.split('.');
+	
+			if (icon.length === 2) {
+				var iconPath = iconPaths[icon[0]];
+	
+				if (iconPath) {
+					return [iconPath, icon[1]].join('#');
+				}
+			}
+		},
+	
+		_getIconClassNames: function _getIconClassNames(extraClasses) {
+			var iconBaseClass = undefined;
+	
+			if (this.getProperty('view')) {
+				iconBaseClass = this.cssClasses.STATEFUL_ICON;
+			} else {
+				iconBaseClass = this.cssClasses.ICON;
+			}
+	
+			return (0, _classnames2['default'])(iconBaseClass, extraClasses, !!this.getProperty('text') && this.childIconStyles[this.getProperty('iconPosition')]);
+		},
+	
+		_renderIcon: function _renderIcon(iconString, extraClasses) {
+			var $icon = undefined;
+			var icon = iconString || this.getProperty('icon');
+	
+			if (icon) {
+				$icon = $('<svg class="' + this._getIconClassNames(extraClasses) + '"><use xlink:href="' + this._getSVGPath(icon) + '"></use></svg>').attr('aria-hidden', 'true');
+			}
+	
+			return $icon || '';
+		}
+	};
+	
+	exports.SvgObject = SvgObject;
+	exports['default'] = SvgObject;
+
+/***/ },
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// PICKLIST CONTROL - JQUERY FACADE
@@ -6962,140 +7237,155 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, '__esModule', {
 		value: true
 	});
-	exports._renderItem = _renderItem;
-	exports._renderHeader = _renderHeader;
-	exports._renderDivider = _renderDivider;
 	
 	var _libLib = __webpack_require__(5);
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _corePicklist = __webpack_require__(166);
+	var _corePicklist = __webpack_require__(169);
 	
 	var _corePicklist2 = _interopRequireDefault(_corePicklist);
 	
 	// Framework specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
+	var _svg = __webpack_require__(173);
+	
+	var _svg2 = _interopRequireDefault(_svg);
+	
 	// Template imports
 	
-	var _picklistTemplate = __webpack_require__(171);
+	var _picklistTemplate = __webpack_require__(175);
 	
 	var _picklistTemplate2 = _interopRequireDefault(_picklistTemplate);
 	
 	var $ = Lib.global.jQuery || Lib.global.$;
 	
-	var Picklist = function Picklist(element, options) {
-		this.options = Lib.extend({}, options);
+	var Picklist = function Picklist() {
+		var options = this._getOptions(arguments);
 	
-		this.elements = {
-			wrapper: $(element)
-		};
+		this.template = $(_picklistTemplate2['default']);
+		this._closeOnClick = $.proxy(this._closeOnClick, this);
 	
-		var $html = $('<i />').append(_picklistTemplate2['default']);
-		this.template = $html.find('.slds-form-element');
-	
-		if (this.options.collection) {
-			this.rendered = false;
-		} else {
-			this._initElements(this.elements.wrapper, this.elements);
-			this._buildCollection(this.options);
-			this.rendered = true;
-		}
-	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
-	function _renderItem(item) {
-		var disabled = item.getDisabled();
-		var $li = this.template.find('li').clone();
-	
-		$li.data({
-			item: item._item
-		});
-		$li.prop('disabled', disabled);
-	
-		var $a = $li.find('a');
-		$a.text(item.getText());
-	
-		if (disabled) {
-			$a.attr('aria-disabled', true);
-		}
-	
-		return $li;
-	}
-	
-	function _renderHeader(item) {
-		return $('<li class="' + this.cssClasses.HEADER + '"><span class="' + this.cssClasses.HEADERTEXT + '">' + item.getText() + '</span></li>');
-	}
-	
-	function _renderDivider() {
-		return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
-	}
-	
 	var PicklistObject = {
-		_initElements: function _initElements(base, elements) {
-			var els = elements || {};
-	
-			els.button = base.find('.' + this.cssClasses.TOGGLE);
-			els.hiddenField = base.find('input.slds-hide');
-			els.label = els.button.find('.' + this.cssClasses.LABEL);
-			els.dropdown = base.find('.' + this.cssClasses.DROPDOWN);
-			els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
-	
-			return els;
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = this.template.clone();
+			this._initElements();
 		},
 	
-		_buildCollection: function _buildCollection(options) {
-			var self = this;
-			var _options = options;
-			var collection = [];
+		_initElements: function _initElements() {
+			this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
+			this.elements.hiddenField = this.element.find('input.slds-hide');
+			this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
+			this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
+			this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
+		},
 	
-			this.elements.dropdownMenu.find('li').each(function buildCollectionElements() {
-				var $item = $(this);
-				var item = $item.data();
+		_bindUIEvents: function _bindUIEvents() {
+			this.elements.button.on('click', $.proxy(this._handleClicked, this));
+			this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
+			this.element.on('keydown', $.proxy(this._handleKeyDown, this));
+			this.element.on('keypress', $.proxy(this._handleKeyPressed, this));
+		},
 	
-				if (!item.text) {
-					item.text = $item.text().trim();
-				}
+		_renderItem: function _renderItem(item) {
+			var disabled = item.getDisabled();
+			var $li = this.template.find('li').clone();
 	
-				if (item.selected) {
-					delete item.selected;
-					_options.selection = item;
-				}
-	
-				if ($item.is('.disabled, :disabled')) {
-					item.disabled = true;
-				}
-	
-				if ($item.hasClass(self.cssClasses.HEADER)) {
-					item._itemType = 'header';
-				} else if ($item.hasClass(self.cssClasses.DIVIDER)) {
-					item._itemType = 'divider';
-				}
-	
-				$item.data({
-					item: item
-				});
-				collection.push(item);
+			$li.data({
+				item: item._item
 			});
+			$li.prop('disabled', disabled);
 	
-			_options.collection = collection;
-		},
+			var $a = $li.find('a');
+			$a.text(item.getText());
 	
-		_onInitialized: function _onInitialized() {
-			if (!this.rendered) {
-				this._render();
+			if (disabled) {
+				$a.attr('aria-disabled', true);
 			}
 	
+			var icon = item.getIcon();
+	
+			if (Lib.isString(icon) && icon.length > 0) {
+				var $icon = this._renderIcon(icon, 'slds-icon--small slds-icon--right');
+				$a.append($icon);
+			}
+	
+			return $li;
+		},
+	
+		_renderHeader: function _renderHeader(item) {
+			return $('<li class="' + this.cssClasses.HEADER + '"><span class="' + this.cssClasses.HEADERTEXT + '">' + item.getText() + '</span></li>');
+		},
+	
+		_renderDivider: function _renderDivider() {
+			return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
+		},
+	
+		_renderMenu: function _renderMenu(elements) {
+			var _this = this;
+	
+			// Empty the menu from the template
+			elements.dropdownMenu.empty();
+	
+			// Building the menu items
+			this._collection.forEach(function (item) {
+				var $li = undefined;
+				var func = undefined;
+				var funcMap = {
+					header: _this._renderHeader,
+					divider: _this._renderDivider,
+					item: _this._renderItem
+				};
+	
+				func = funcMap[item.getType()] || _this._renderItem;
+	
+				$li = func.call(_this, item);
+	
+				elements.dropdownMenu.append($li);
+			});
+	
+			this._addCheckmark(elements);
+		},
+	
+		_render: function _render() {
+			var strings = this.getState('strings');
+			var selection = this._getSelection();
+			var elements = this.elements;
+	
+			// Configure the button
+			var disabled = !!this.getProperty('disabled');
+			elements.button.prop('disabled', disabled);
+	
+			// Show the current selection if there is one
+			var selectionName = selection.getText() || strings.NONE_SELECTED;
+			elements.label.text(selectionName);
+			elements.hiddenField.val(selection.getText());
+	
+			this._renderMenu(elements);
+	
+			if (this._collection._data.length === 0) {
+				this.disable();
+			}
+	
+			return this.element;
+		},
+	
+		_onRendered: function _onRendered() {
 			// Get the menu items for keyboard nav
 			this.elements.menuItems = [];
 			var menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
@@ -7109,103 +7399,6 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			}
 	
 			this._bindUIEvents();
-	
-			this._closeOnClick = $.proxy(this._closeOnClick, this);
-			document.addEventListener('click', this._closeOnClick, false);
-	
-			// For tests, will consider publishing later
-			this.trigger('rendered', this.elements.wrapper);
-		},
-	
-		_bindUIEvents: function _bindUIEvents() {
-			this.elements.button.on('click', $.proxy(this._handleClicked, this));
-			this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
-			this.elements.wrapper.on('keydown', $.proxy(this._handleKeyDown, this));
-			this.elements.wrapper.on('keypress', $.proxy(this._handleKeyPressed, this));
-		},
-	
-		_render: function _render() {
-			var _this = this;
-	
-			var strings = this.getState('strings');
-			var selection = this._getSelection();
-	
-			// Get the template
-			var $el = this.template.clone();
-			var elements = this._initElements($el, this.elements);
-	
-			// Configure the button
-			var disabled = !!this.getProperty('disabled');
-			elements.button.prop('disabled', disabled);
-	
-			// Show the current selection if there is one
-			var selectionName = selection.getText() || strings.NONE_SELECTED;
-			elements.label.text(selectionName);
-			elements.hiddenField.val(selection.getText());
-	
-			// Empty the menu from the template
-			elements.dropdownMenu.empty();
-	
-			// Building the menu items
-			this._collection.forEach(function (item) {
-				var $li = undefined;
-				var func = undefined;
-				var funcMap = {
-					header: _renderHeader,
-					divider: _renderDivider,
-					item: _renderItem
-				};
-	
-				func = funcMap[item.getType()] || _renderItem;
-	
-				$li = func.call(_this, item);
-	
-				elements.dropdownMenu.append($li);
-			});
-	
-			this._addCheckmark(elements);
-	
-			// Prep for append
-			elements.wrapper.empty();
-	
-			if (this.elements.wrapper.is('div')) {
-				this.elements.wrapper.attr('class', $el.attr('class'));
-				this.elements.wrapper.append($el.children());
-			} else {
-				this.elements.wrapper.append($el);
-				this.elements.wrapper = $el;
-			}
-	
-			if (this._collection._data.length === 0) {
-				this.disable();
-				this.setProperties({ disabled: true });
-			}
-	
-			this.rendered = true;
-		},
-	
-		// TODO: Maybe move this to the core?
-		destroy: function destroy() {
-			document.removeEventListener('click', this._closeOnClick, false);
-			this.elements.wrapper.remove();
-			return this.elements.wrapper[0].outerHTML;
-		},
-	
-		_onExpandOrCollapse: function _onExpandOrCollapse() {
-			if (this.rendered) {
-				var isOpen = this.getState('isOpen');
-	
-				// The state is toggled in the openable trait before any ui code (like below this comment) is executed.
-				// The state is actually backwards to the current state of the ui.
-	
-				if (!isOpen) {
-					this.elements.dropdown.addClass('slds-hide');
-				} else {
-					this.elements.dropdown.removeClass('slds-hide');
-				}
-	
-				this.elements.button.attr('aria-expanded', isOpen);
-			}
 		},
 	
 		_onSelected: function _onSelected(item) {
@@ -7219,10 +7412,20 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			}
 		},
 	
+		_onExpandOrCollapse: function _onExpandOrCollapse() {
+			if (this.rendered) {
+				var isOpen = this.getState('isOpen');
+	
+				this.elements.dropdown.toggleClass('slds-hide', !isOpen);
+				this.elements.button.attr('aria-expanded', isOpen);
+			}
+		},
+	
 		_onEnabledOrDisabled: function _onEnabledOrDisabled() {
 			if (this.rendered) {
 				var disabled = !!this.getProperty('disabled');
 	
+				this.elements.dropdown.toggleClass('slds-hide', disabled);
 				this.elements.button.prop('disabled', disabled);
 			}
 		},
@@ -7286,16 +7489,16 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			}
 	
 			if ($li) {
-				$li.parent().find('.slds-is-selected').removeClass('.slds-is-selected').find('svg').remove();
+				$li.parent().find('.slds-is-selected').removeClass('slds-is-selected').find('svg.slds-icon--left').remove();
 	
 				$li.addClass('slds-is-selected');
-				$li.find('a').prepend('<svg aria-hidden="true" class="slds-icon slds-icon--small slds-icon--left"><use xlink:href="/assets/design-system/icons/standard-sprite/svg/symbols.svg#task2"></use></svg>');
+				$li.find('a').prepend(this._renderIcon('standard.task2', 'slds-icon--small slds-icon--left'));
 			}
 		}
 	};
 	
 	exports.PicklistObject = PicklistObject;
-	Lib.merge(Picklist.prototype, _corePicklist2['default'], _events2['default'], _state2['default'], PicklistObject);
+	Lib.merge(Picklist.prototype, _corePicklist2['default'], _events2['default'], _dom2['default'], _state2['default'], _svg2['default'], PicklistObject);
 	
 	// LEGACY METHODS
 	//
@@ -7357,14 +7560,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Picklist;
 
 /***/ },
-/* 171 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(155)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
 
-	var _String$raw = __webpack_require__(161)["default"];
+	var _String$raw = __webpack_require__(164)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -7376,14 +7579,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 172 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(155)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
 
-	var _String$raw = __webpack_require__(161)["default"];
+	var _String$raw = __webpack_require__(164)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -7395,7 +7598,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 173 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// PICKLIST CONTROL - JQUERY FACADE
@@ -7410,114 +7613,49 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, '__esModule', {
 		value: true
 	});
-	exports._renderHeader = _renderHeader;
-	exports._renderItem = _renderItem;
 	
 	var _libLib = __webpack_require__(5);
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreDataTable = __webpack_require__(174);
+	var _coreDataTable = __webpack_require__(178);
 	
 	var _coreDataTable2 = _interopRequireDefault(_coreDataTable);
 	
 	// Framework specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _dataTableTemplate = __webpack_require__(176);
+	var _dataTableTemplate = __webpack_require__(180);
 	
 	var _dataTableTemplate2 = _interopRequireDefault(_dataTableTemplate);
 	
 	var $ = Lib.global.jQuery || Lib.global.$;
 	
-	var DataTable = function DataTable(element, options) {
-		this.options = Lib.extend({}, options);
+	var DataTable = function DataTable() {
+		var options = this._getOptions(arguments);
 	
-		this.elements = {
-			wrapper: $(element)
-		};
-	
-		var $html = $('<div/>').append(_dataTableTemplate2['default']);
+		var $html = $('<i />').append(_dataTableTemplate2['default']);
 		this.template = $html.find('table');
-		this.template.addClass(this._getClassNames(this.options.styles));
-		// apply modular class options to table
 	
-		if (this.options.collection) {
-			// API method
-			this.rendered = false;
-		} else {
-			// declarative
-			// this._initElements(this.elements.wrapper, this.elements);
-			// this._buildCollection(this.options);
-			this.rendered = true;
-		}
-	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
-	function _renderHeader(item, classes) {
-		var $th = $('<th/>', {
-			'class': 'col ' + classes
-		}).append($('<span/>', {
-			'class': 'slds-truncate',
-			// text: item.getText()
-			text: item.displayName
-		}));
-	
-		// if (item.sortable === true) { 				// works but does not show up
-		// 	const $button = $('<button/>', {
-		// 		class: 'slds-button slds-button--icon-bare slds-button--icon-border-small'
-		// 	});
-	
-		// 	const $svg = $('<svg/>', {
-		// 		'aria-hidden': true,
-		// 		class: 'slds-button__icon slds-button__icon--small'
-		// 	}).append($('<use/>', {
-		// 		xlink: 'href="/assets/icons/utility-sprite/svg/symbols.svg#arrowdown"'
-		// 	}));
-	
-		// 	$button.append($svg);
-		// 	$button.append($('<span/>', {
-		// 		class: 'slds-assistive-text',
-		// 		text: 'Sort'
-		// 	}));
-	
-		// 	$th.append($button);
-		// }
-	
-		return $th;
-	}
-	
-	function _renderItem(propertyName, item) {
-		return $('<td/>', {
-			'data-label': propertyName
-		}).append($('<span/>', {
-			'class': 'slds-truncate',
-			// text: item.getText()
-			text: item.get(propertyName)
-		}));
-	}
-	
 	var DataTableObject = {
-		_onInitialized: function _onInitialized() {
-			if (!this.rendered) {
-				this._render();
-			}
-	
-			this._bindUIEvents();
-	
-			// For tests, will consider publishing later
-			this.trigger('rendered', this.elements.wrapper);
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = this.template.clone();
 		},
 	
 		_bindUIEvents: function _bindUIEvents() {
@@ -7527,57 +7665,73 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			// this.elements.wrapper.on('keypress', $.proxy(this._handleKeyPressed, this));
 		},
 	
+		_renderItem: function _renderItem(propertyName, item) {
+			return $('<td/>', {
+				'data-label': propertyName
+			}).append($('<span/>', {
+				'class': 'slds-truncate',
+				text: item.get(propertyName)
+			}));
+		},
+	
+		_renderHeader: function _renderHeader(item, classes) {
+			var $th = $('<th/>', {
+				'class': 'col ' + classes
+			}).append($('<span/>', {
+				'class': 'slds-truncate',
+				text: item.displayName
+			}));
+	
+			return $th;
+		},
+	
 		_render: function _render() {
 			var _this = this;
 	
-			var strings = this.getState('strings');
-			var $el = this.template.clone();
+			// Get the template
+			var $el = this.element;
+			$el.addClass(this._getClassNames(this.getProperty('styles')));
+	
 			var $theadRow = $el.find('thead tr.slds-text-heading--label');
 			var $tbody = $el.find('tbody');
-			// const elements = this._initElements($el, this.elements);
 	
-			this.options.columns.forEach(function (item) {
+			this.getProperty('columns').forEach(function (item) {
 				var styles = {
 					sortable: item.sortable,
 					hintParent: item.hintParent
 				};
 				var classes = _this._getClassNames(styles);
-				$theadRow.append(_renderHeader(item, classes));
+				$theadRow.append(_this._renderHeader(item, classes));
 			});
 	
-			// for each item in the collection
+			// For each item in the collection
 			this._collection.forEach(function (item) {
 				var $row = $('<tr/>', { 'class': 'slds-hint-parent' });
 	
-				// for each column marked for render, create a cell for that value on this data node
-				_this.options.columns.forEach(function (column) {
-					$row.append(_renderItem(column.propertyName, item));
+				// For each column marked for render, create a cell for that value on this data node
+				_this.getProperty('columns').forEach(function (column) {
+					$row.append(_this._renderItem(column.propertyName, item));
 				});
 	
 				$tbody.append($row);
 			});
 	
-			// eslint hacks
-			void strings;
-	
-			this.elements.wrapper.append($el);
-			this.rendered = true;
+			return this.element;
 		},
 	
-		destroy: function destroy() {
-			this.elements.wrapper.remove();
-			return this.elements.wrapper[0].outerHTML;
+		_onRendered: function _onRendered() {
+			this._bindUIEvents();
 		}
 	};
 	
 	exports.DataTableObject = DataTableObject;
-	Lib.merge(DataTable.prototype, _coreDataTable2['default'], _events2['default'], _state2['default'], DataTableObject);
+	Lib.merge(DataTable.prototype, _coreDataTable2['default'], _events2['default'], _dom2['default'], _state2['default'], DataTableObject);
 	DataTable = Lib.runHelpers('jquery', _coreDataTable.CONTROL, DataTable);
 	
 	exports['default'] = DataTable;
 
 /***/ },
-/* 174 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// DATA-TABLE CORE
@@ -7606,7 +7760,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	// Traits
 	
-	var _traitsMultiselectable = __webpack_require__(175);
+	var _traitsMultiselectable = __webpack_require__(179);
 	
 	var _traitsMultiselectable2 = _interopRequireDefault(_traitsMultiselectable);
 	
@@ -7703,7 +7857,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = DataTableCore;
 
 /***/ },
-/* 175 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// MULTISELECTABLE
@@ -7858,14 +8012,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 176 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(155)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
 
-	var _String$raw = __webpack_require__(161)["default"];
+	var _String$raw = __webpack_require__(164)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -7909,7 +8063,231 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 177 */
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// DROPDOWN CONTROL - JQUERY FACADE
+	
+	// Core
+	'use strict';
+	
+	var _interopRequireWildcard = __webpack_require__(4)['default'];
+	
+	var _interopRequireDefault = __webpack_require__(2)['default'];
+	
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+	
+	var _libLib = __webpack_require__(5);
+	
+	var Lib = _interopRequireWildcard(_libLib);
+	
+	var _coreDropdown = __webpack_require__(182);
+	
+	var _coreDropdown2 = _interopRequireDefault(_coreDropdown);
+	
+	// Framework specific
+	
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
+	
+	var _events2 = _interopRequireDefault(_events);
+	
+	var _state = __webpack_require__(147);
+	
+	var _state2 = _interopRequireDefault(_state);
+	
+	var _svg = __webpack_require__(173);
+	
+	var _svg2 = _interopRequireDefault(_svg);
+	
+	var _picklistPicklist = __webpack_require__(174);
+	
+	// Children
+	
+	var _buttonButton = __webpack_require__(148);
+	
+	var _buttonButton2 = _interopRequireDefault(_buttonButton);
+	
+	// Template imports
+	
+	var _dropdownTemplate = __webpack_require__(183);
+	
+	var _dropdownTemplate2 = _interopRequireDefault(_dropdownTemplate);
+	
+	var $ = Lib.global.jQuery || Lib.global.$;
+	
+	var Dropdown = function Dropdown() {
+		var options = this._getOptions(arguments);
+	
+		this.template = $(_dropdownTemplate2['default']);
+		this._closeOnClick = $.proxy(this._closeOnClick, this);
+	
+		this._initialize(options);
+	};
+	
+	var DropdownObject = {
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = this.template.clone();
+			this._initElements();
+		},
+	
+		_initElements: function _initElements() {
+			this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
+			this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
+		},
+	
+		_bindUIEvents: function _bindUIEvents() {
+			this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
+		},
+	
+		_render: function _render() {
+			// Configure the button
+			var icon = undefined;
+	
+			if (this.getProperty('swapIcon')) {
+				var selection = this._getSelection();
+				icon = !!selection && selection.getIcon();
+			}
+	
+			icon = icon || this.getProperty('icon');
+	
+			this.button = new _buttonButton2['default']({
+				icon: icon,
+				iconStyle: 'icon-more'
+			});
+	
+			this.button.prependTo(this.element);
+	
+			// Render the menu
+			this._renderMenu(this.elements);
+	
+			if (this._collection._data.length === 0) {
+				this.disable();
+			}
+	
+			return this.element;
+		},
+	
+		_onSelected: function _onSelected(item) {
+			if (this.rendered) {
+				this._addCheckmark(this.elements);
+				this._swapIcon(item.getIcon());
+			}
+		},
+	
+		_onExpandOrCollapse: function _onExpandOrCollapse() {
+			if (this.rendered) {
+				var isOpen = this.getState('isOpen');
+	
+				this.elements.trigger.attr('aria-expanded', isOpen);
+			}
+		},
+	
+		_swapIcon: function _swapIcon(iconString) {
+			var icon = iconString || this.getProperty('icon');
+	
+			if (Lib.isString(icon) && icon.length > 0 && this.getProperty('swapIcon')) {
+				// TODO: Implement this, which will require an update to Button
+			}
+		}
+	};
+	
+	exports.DropdownObject = DropdownObject;
+	Lib.merge(Dropdown.prototype, _coreDropdown2['default'], _events2['default'], _dom2['default'], _state2['default'], _svg2['default'], _picklistPicklist.PicklistObject, DropdownObject);
+	
+	Dropdown = Lib.runHelpers('jquery', _coreDropdown.CONTROL, Dropdown, {
+		legacyMethods: _picklistPicklist.legacyMethods
+	});
+	
+	exports['default'] = Dropdown;
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// DROPDOWN CORE
+	
+	'use strict';
+	
+	var _interopRequireWildcard = __webpack_require__(4)['default'];
+	
+	var _interopRequireDefault = __webpack_require__(2)['default'];
+	
+	Object.defineProperty(exports, '__esModule', {
+		value: true
+	});
+	
+	var _libLib = __webpack_require__(5);
+	
+	var Lib = _interopRequireWildcard(_libLib);
+	
+	var _picklist = __webpack_require__(169);
+	
+	var _picklist2 = _interopRequireDefault(_picklist);
+	
+	// TODO: This doesn't actually exist, should we name some variant of picklist or something equivalent?
+	// require('../../scss/components/forms/flavors/input/index.scss');
+	
+	var CONTROL = 'slds-dropdown';
+	
+	exports.CONTROL = CONTROL;
+	var DropdownCore = Lib.merge({}, _picklist2['default'], {
+		// CSS classes used within this control
+		cssClasses: {
+			CONTROL: CONTROL,
+			ICON_DOWN_SIZE: 'slds-button__icon--x-small',
+			TRIGGER: 'slds-dropdown-trigger',
+			DROPDOWN: 'slds-dropdown',
+			MENU: 'slds-dropdown__list',
+			HEADER: 'slds-dropdown__header',
+			HEADERTEXT: 'slds-text-heading--label',
+			DIVIDER: 'slds-has-divider'
+		},
+	
+		_defaultProperties: {
+			icon: 'standard.empty',
+			swapIcon: true,
+			renderArrow: true
+		},
+	
+		resize: function resize() {
+			if (this.elements.wrapper) {
+				var width = this.elements.wrapper.outerWidth();
+	
+				this.setState({ width: width });
+				if (Lib.isFunction(this.resetWidth)) this.resetWidth(width);
+			}
+		}
+	});
+	
+	exports['default'] = DropdownCore;
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+
+	var _String$raw = __webpack_require__(164)["default"];
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _templateObject = _taggedTemplateLiteral(["\n<div class=\"slds-dropdown-trigger\">\n\t<div class=\"slds-dropdown slds-dropdown--left slds-dropdown--menu\">\n\t\t<ul class=\"slds-dropdown__list\" role=\"menu\">\n\t\t\t<li href=\"#\" class=\"slds-dropdown__item slds-has-icon--left\"><a href=\"#\" class=\"slds-truncate\" role=\"menuitemradio\"></a></li>\n\t\t</ul>\n\t</div>\n</div>\n"], ["\n<div class=\"slds-dropdown-trigger\">\n\t<div class=\"slds-dropdown slds-dropdown--left slds-dropdown--menu\">\n\t\t<ul class=\"slds-dropdown__list\" role=\"menu\">\n\t\t\t<li href=\"#\" class=\"slds-dropdown__item slds-has-icon--left\"><a href=\"#\" class=\"slds-truncate\" role=\"menuitemradio\"></a></li>\n\t\t</ul>\n\t</div>\n</div>\n"]);
+
+	exports["default"] = _String$raw(_templateObject);
+	module.exports = exports["default"];
+
+/***/ },
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// NOTIFICATION CONTROL - JQUERY FACADE
@@ -7929,83 +8307,81 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreNotification = __webpack_require__(178);
+	var _coreNotification = __webpack_require__(185);
 	
 	var _coreNotification2 = _interopRequireDefault(_coreNotification);
 	
 	// Framework specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _template = __webpack_require__(180);
+	var _template = __webpack_require__(187);
 	
 	var _template2 = _interopRequireDefault(_template);
 	
 	// Constructor
 	
-	var $ = Lib.global.jQuery || Lib.global.$;var Notification = function Notification(element, options) {
-		this.options = Lib.extend(_coreNotification2['default']._defaultProperties, options);
+	var $ = Lib.global.jQuery || Lib.global.$;var Notification = function Notification() {
+		var options = this._getOptions(arguments);
 	
-		this.elements = {
-			wrapper: $(element)
-		};
+		this.template = $(_template2['default']);
 	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
 	var NotificationObject = {
-		_onInitialized: function _onInitialized() {
-			this._render();
-			this.trigger('initialized');
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = this.template.clone();
 		},
 	
 		// TODO: Internationalize
+		// TODO: The patterns here are a little different than the rest of our controls
 		_render: function _render() {
 			var classNames = this._getClassNames();
 	
-			// load template
-			var $component = $(_template2['default']);
+			// Load template
+			var $el = this.element;
 	
-			// update theme
-			$component.addClass(classNames);
+			// Update theme
+			$el.addClass(classNames);
 	
-			// replace notification text
+			// Replace notification text
 			// TODO: Should this also use the contents of the original? It's different in jQuery becasue in React 'Children' is actually just another prop
-			$component.find('.notify-text').text(this.getProperty('text'));
+			$el.find('.notify-text').text(this.getProperty('text'));
 	
-			// render
-			this.elements.wrapper.html($component[0]);
-	
-			// hookup events
-			this.elements.wrapper.find('.slds-notify__close').on('click', $.proxy(this.hide, this));
+			// Events
+			$el.find('.slds-notify__close').on('click', $.proxy(this.hide, this));
 		},
 	
 		_onShow: function _onShow() {
-			this.elements.wrapper.find('.slds-notify').removeClass(this.cssClasses.HIDDEN);
+			this.element.removeClass(this.cssClasses.HIDDEN);
 		},
 	
 		_onHide: function _onHide() {
-			this.elements.wrapper.find('.slds-notify').addClass(this.cssClasses.HIDDEN);
+			this.element.addClass(this.cssClasses.HIDDEN);
 		}
 	};
 	
 	exports.NotificationObject = NotificationObject;
-	Lib.merge(Notification.prototype, _coreNotification2['default'], _events2['default'], _state2['default'], NotificationObject);
+	Lib.merge(Notification.prototype, _coreNotification2['default'], _events2['default'], _dom2['default'], _state2['default'], NotificationObject);
 	Notification = Lib.runHelpers('jquery', _coreNotification.CONTROL, Notification);
 	
 	exports['default'] = Notification;
 
 /***/ },
-/* 178 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// NOTIFICATION CORE
@@ -8036,7 +8412,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	// Traits
 	
-	var _traitsHideable = __webpack_require__(179);
+	var _traitsHideable = __webpack_require__(186);
 	
 	var _traitsHideable2 = _interopRequireDefault(_traitsHideable);
 	
@@ -8075,7 +8451,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = NotificationCore;
 
 /***/ },
-/* 179 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// HIDEABLE
@@ -8121,14 +8497,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 180 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(155)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
 
-	var _String$raw = __webpack_require__(161)["default"];
+	var _String$raw = __webpack_require__(164)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -8140,7 +8516,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 181 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// PILLBOX CONTROL - JQUERY FACADE
@@ -8162,65 +8538,62 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _corePillbox = __webpack_require__(182);
+	var _corePillbox = __webpack_require__(189);
 	
 	var _corePillbox2 = _interopRequireDefault(_corePillbox);
 	
 	// Framework Specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _pillboxTemplate = __webpack_require__(183);
+	var _pillboxTemplate = __webpack_require__(190);
 	
 	var _pillboxTemplate2 = _interopRequireDefault(_pillboxTemplate);
 	
 	var $ = Lib.global.jQuery || Lib.global.$;
 	
-	var Pillbox = function Pillbox(element, options) {
-		this.options = Lib.extend({}, options);
+	var Pillbox = function Pillbox() {
+		var options = this._getOptions(arguments);
 	
-		this.elements = {
-			wrapper: $(element)
-		};
+		this.template = $(_pillboxTemplate2['default']);
 	
-		var $html = $('<i />').append(_pillboxTemplate2['default']);
-		this.template = $html.find('.' + this.cssClasses.CONTROL);
-	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
-	Lib.merge(Pillbox.prototype, _corePillbox2['default'], _events2['default'], _state2['default'], {
-		_onInitialized: function _onInitialized() {
-			this.elements.wrapper.on('keyup.fu.tree', '.slds-pill-add-item', $.proxy(this._keyUp, this));
-			this.elements.wrapper.on('click.fu.tree', '.slds-pill > .slds-button', $.proxy(this._itemClicked, this));
+	Lib.merge(Pillbox.prototype, _corePillbox2['default'], _events2['default'], _dom2['default'], _state2['default'], {
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = this.template.clone();
+			this.elements.group = this.element.find('.slds-pill-group');
+			this.elements.input = this.element.find('.slds-pill-add-item');
+			this.elements.inputWrap = this.element.find('.slds-pill-input-wrap');
+			this.elements.pillTemplate = this.elements.group.find('.slds-pill').remove();
+		},
 	
-			this._render();
-	
-			this.trigger('initialized');
+		_bindUIEvents: function _bindUIEvents() {
+			this.element.on('keyup.fu.tree', '.slds-pill-add-item', $.proxy(this._keyUp, this));
+			this.element.on('click.fu.tree', '.slds-pill > .slds-button', $.proxy(this._itemClicked, this));
 		},
 	
 		_render: function _render() {
-			var $el = this.template.clone();
-	
-			this.elements.group = $el.find('.slds-pill-group');
-			this.elements.input = $el.find('.slds-pill-add-item');
-			this.elements.inputWrap = $el.find('.slds-pill-input-wrap');
-			this.elements.pillTemplate = this.elements.group.find('.slds-pill').remove();
-	
 			this._renderSelection();
 	
-			// Prep for append
-			this.elements.wrapper.empty();
-			this.elements.wrapper.append($el);
+			return this.element;
+		},
+	
+		_onRendered: function _onRendered() {
+			this._bindUIEvents();
 		},
 	
 		_keyUp: function _keyUp(e) {
@@ -8279,7 +8652,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		},
 	
 		_onEnabledOrDisabled: function _onEnabledOrDisabled(props) {
-			this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, props.disabled);
+			this.element.toggleClass(this.cssClasses.DISABLED, props.disabled);
 			this.elements.inputWrap.toggle(!props.disabled);
 		},
 	
@@ -8345,12 +8718,6 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			return this.elements.wrapper;
 		},
 	
-		destroy: function destroy() {
-			this.elements.wrapper.remove();
-	
-			return _pillboxTemplate2['default'];
-		},
-	
 		items: function items() {
 			var selection = this._getSelectedItems();
 	
@@ -8412,7 +8779,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 182 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// PILLBOX CORE
@@ -8439,11 +8806,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	// Traits
 	
-	var _traitsDisableable = __webpack_require__(152);
+	var _traitsDisableable = __webpack_require__(150);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsMultiselectable = __webpack_require__(175);
+	var _traitsMultiselectable = __webpack_require__(179);
 	
 	var _traitsMultiselectable2 = _interopRequireDefault(_traitsMultiselectable);
 	
@@ -8524,14 +8891,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = PillboxCore;
 
 /***/ },
-/* 183 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(155)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
 
-	var _String$raw = __webpack_require__(161)["default"];
+	var _String$raw = __webpack_require__(164)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -8543,7 +8910,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 184 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// POPOVER CONTROL - JQUERY FACADE
@@ -8563,50 +8930,54 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _corePopover = __webpack_require__(185);
+	var _corePopover = __webpack_require__(192);
 	
 	var _corePopover2 = _interopRequireDefault(_corePopover);
 	
 	// Framework Specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _popoverTemplate = __webpack_require__(187);
+	var _popoverTemplate = __webpack_require__(194);
 	
 	var _popoverTemplate2 = _interopRequireDefault(_popoverTemplate);
 	
 	var $ = Lib.global.jQuery || Lib.global.$;
 	
-	var Popover = function Popover(element, options) {
-		this.options = Lib.extend({}, options);
+	var Popover = function Popover() {
+		var options = this._getOptions(arguments);
 	
-		this.elements = {
-			wrapper: $(element)
-		};
+		this.template = $(_popoverTemplate2['default']);
 	
-		var $html = $('<i />').append(_popoverTemplate2['default']);
-		this.template = $html.find('.' + this.cssClasses.CONTROL);
-	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
 	var PopoverMethods = {
-		_onInitialized: function _onInitialized() {
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = this.template.clone();
+			this.elements.popover = Lib.wrapElement(this.element);
+		},
+	
+		_onRendered: function _onRendered() {
 			this._setElementOptions();
 			this._setTrigger();
 	
-			this._render();
+			// TODO: This is probably not the best way to do this or the best place for it to be
+			this.appendTo(this.elements.container);
 	
-			this.trigger('initialized');
+			this._updatePosition();
 		},
 	
 		_setElementOptions: function _setElementOptions() {
@@ -8614,7 +8985,6 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			var container = this.getProperty('container');
 			var align = this.getProperty('align');
 	
-			this.elements.popover = Lib.wrapElement(this.template.clone());
 			this.elements.target = Lib.wrapElement(target || this.elements.wrapper);
 			this.elements.container = Lib.wrapElement(container || this.elements.wrapper);
 			this.elements.align = Lib.wrapElement(align || this.elements.target);
@@ -8644,10 +9014,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	exports.PopoverMethods = PopoverMethods;
-	Lib.merge(Popover.prototype, _corePopover2['default'], _events2['default'], _state2['default'], PopoverMethods, {
+	Lib.merge(Popover.prototype, _corePopover2['default'], _events2['default'], _dom2['default'], _state2['default'], PopoverMethods, {
 		_render: function _render() {
-			var header = this.elements.popover.find('.slds-popover__header > p');
-			var body = this.elements.popover.find('.slds-popover__body');
+			var header = this.element.find('.slds-popover__header > p');
+			var body = this.element.find('.slds-popover__body');
 	
 			if (this.getProperty('header')) {
 				header.append(this.getProperty('header'));
@@ -8657,9 +9027,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				body.append(this.getProperty('content'));
 			}
 	
-			this.elements.container.append(this.elements.popover);
-	
-			this._updatePosition();
+			return this.element;
 		}
 	});
 	
@@ -8668,7 +9036,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Popover;
 
 /***/ },
-/* 185 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// POPOVER CONTROL
@@ -8692,15 +9060,15 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	// Traits
 	
-	var _traitsPositionable = __webpack_require__(186);
+	var _traitsPositionable = __webpack_require__(193);
 	
 	var _traitsPositionable2 = _interopRequireDefault(_traitsPositionable);
 	
-	var _traitsDisableable = __webpack_require__(152);
+	var _traitsDisableable = __webpack_require__(150);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsHideable = __webpack_require__(179);
+	var _traitsHideable = __webpack_require__(186);
 	
 	var _traitsHideable2 = _interopRequireDefault(_traitsHideable);
 	
@@ -8722,8 +9090,15 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			TARGET: 'slds-popover-target'
 		},
 	
+		triggers: {
+			click: 'click',
+			hover: ['mouseover', 'mouseout'],
+			focus: ['focus', 'focusout'],
+			manual: ''
+		},
+	
 		_defaultProperties: {
-			trigger: 'click', // click, hover, focus, manual
+			trigger: 'click',
 			target: null, // The element who's events will trigger the popover
 			container: null, // The element the popover will be contained within
 			align: null // The element the popover will be aligned with
@@ -8752,7 +9127,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = PopoverCore;
 
 /***/ },
-/* 186 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// POSITIONABLE
@@ -8851,14 +9226,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 187 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(155)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
 
-	var _String$raw = __webpack_require__(161)["default"];
+	var _String$raw = __webpack_require__(164)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -8870,7 +9245,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 188 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// RADIO CONTROL - JQUERY FACADE
@@ -8890,68 +9265,56 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreRadio = __webpack_require__(189);
+	var _coreRadio = __webpack_require__(196);
 	
 	var _coreRadio2 = _interopRequireDefault(_coreRadio);
 	
 	// Framework specific
 	
-	var _checkboxCheckbox = __webpack_require__(150);
+	var _dom = __webpack_require__(145);
 	
-	var _events = __webpack_require__(145);
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
+	var _checkboxCheckbox = __webpack_require__(154);
+	
 	// Template imports
 	
-	var _radioTemplate = __webpack_require__(190);
+	var _radioTemplate = __webpack_require__(197);
 	
 	var _radioTemplate2 = _interopRequireDefault(_radioTemplate);
 	
 	// Constructor
 	
-	var $ = Lib.global.jQuery || Lib.global.$;var Radio = function Radio(element, options) {
-		this.options = Lib.extend({}, options);
-		this.elements = {
-			wrapper: $(element)
-		};
+	var $ = Lib.global.jQuery || Lib.global.$;var Radio = function Radio() {
+		var options = this._getOptions(arguments);
 	
 		this.inputSelector = 'input[type="radio"]';
-		this.rendered = false;
-		this.template = $('<i />').append(_radioTemplate2['default']);
+		this.template = $(_radioTemplate2['default']);
 	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
 	// Prototype extension object
-	var RadioObject = Lib.merge({}, _checkboxCheckbox.CheckboxObject, {
-		_defaultProperties: {
-			name: ''
-		},
-	
+	var RadioObject = {
 		_bindUIEvents: function _bindUIEvents() {
 			this.elements.input.on('change', $.proxy(this.check, this));
 		},
 	
-		// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
-		// there is no guidance as to what should be done here and/or why
-		_renderDressings: function _renderDressings(elements) {
-			elements.input.attr('name', this.getProperty('name'));
-			_checkboxCheckbox.CheckboxObject._renderDressings.call(this, elements);
+		_render: function _render() {
+			this.elements.input.attr('name', this.getProperty('name'));
+	
+			return _checkboxCheckbox.CheckboxObject._render.call(this);
 		},
 	
-		// TODO: Is this necessary anymore? May never even be reachable now.
-		_syncOptions: function _syncOptions() {
-			var name = this.elements.input.attr('name');
-			if (name) this.options.name = name;
-			_checkboxCheckbox.CheckboxObject._syncOptions.call(this);
-		},
-	
+		// TODO: Update this when we add a universal destroy method
 		destroy: function destroy() {
 			var self = this;
 			var group = this._getGroup();
@@ -8963,10 +9326,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			this.elements.wrapper.remove();
 			return this.elements.wrapper[0].outerHTML;
 		}
-	});
+	};
 	
 	// Merging into prototype
-	Lib.merge(Radio.prototype, _coreRadio2['default'], _events2['default'], _state2['default'], RadioObject);
+	Lib.merge(Radio.prototype, _coreRadio2['default'], _events2['default'], _dom2['default'], _state2['default'], _checkboxCheckbox.CheckboxObject, RadioObject);
 	
 	// Framework setup
 	Radio = Lib.runHelpers('jquery', _coreRadio.CONTROL, Radio);
@@ -8976,7 +9339,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 189 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// RADIO CORE
@@ -8995,7 +9358,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _checkbox = __webpack_require__(151);
+	var _checkbox = __webpack_require__(155);
 	
 	var _checkbox2 = _interopRequireDefault(_checkbox);
 	
@@ -9016,14 +9379,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = RadioCore;
 
 /***/ },
-/* 190 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(155)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
 
-	var _String$raw = __webpack_require__(161)["default"];
+	var _String$raw = __webpack_require__(164)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -9035,7 +9398,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 191 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// LOADER CONTROL - JQUERY FACADE
@@ -9055,55 +9418,50 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreSpinner = __webpack_require__(192);
+	var _coreSpinner = __webpack_require__(199);
 	
 	var _coreSpinner2 = _interopRequireDefault(_coreSpinner);
 	
 	// Framework specific
 	
-	var _state = __webpack_require__(146);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	var $ = Lib.global.jQuery || Lib.global.$;
 	
-	var Spinner = function Spinner(element, options) {
-		this.options = Lib.extend(_coreSpinner2['default']._defaultProperties, options);
-		this.elements = {
-			wrapper: $(element)
-		};
+	var Spinner = function Spinner() {
+		var options = this._getOptions(arguments);
 	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
 	// Prototype extension object
 	var SpinnerObject = {
-		_onInitialized: function _onInitialized() {
-			this._render();
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = $('<div />', {
+				'class': this.sizes[this.getProperty('size')]
+			});
 		},
 	
 		_render: function _render() {
 			var strings = this.getState('strings');
 	
-			this.elements.wrapper.empty();
-	
-			$('<div />', {
-				'class': this.sizes[this.getProperty('size')]
-			}).append($('<img />', {
+			this.element.append($('<img />', {
 				src: this.fileNames[this.getProperty('theme')],
 				alt: strings.LOADING
-			})).appendTo(this.elements.wrapper);
-		},
+			}));
 	
-		destroy: function destroy() {
-			this.elements.wrapper.remove();
-			return this.elements.wrapper[0].outerHTML;
+			return this.element;
 		}
 	};
 	
 	// Merging into prototype
-	Lib.merge(Spinner.prototype, _coreSpinner2['default'], _state2['default'], SpinnerObject);
+	Lib.merge(Spinner.prototype, _coreSpinner2['default'], _dom2['default'], _state2['default'], SpinnerObject);
 	
 	// Framework setup
 	Spinner = Lib.runHelpers('jquery', _coreSpinner.CONTROL, Spinner);
@@ -9113,7 +9471,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 192 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// SPINNER CORE
@@ -9150,9 +9508,9 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	var SpinnerCore = Lib.merge({}, _base2['default'], {
 	
 		sizes: {
-			small: _base2['default'].cssClasses.NAMESPACE + CONTROL + '--small',
-			medium: _base2['default'].cssClasses.NAMESPACE + CONTROL + '--medium',
-			large: _base2['default'].cssClasses.NAMESPACE + CONTROL + '--large'
+			'small': _base2['default'].cssClasses.NAMESPACE + CONTROL + '--small',
+			'medium': _base2['default'].cssClasses.NAMESPACE + CONTROL + '--medium',
+			'large': _base2['default'].cssClasses.NAMESPACE + CONTROL + '--large'
 		},
 	
 		fileNames: {
@@ -9171,7 +9529,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = SpinnerCore;
 
 /***/ },
-/* 193 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TOOLTIP CONTROL - JQUERY FACADE
@@ -9191,47 +9549,45 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreTooltip = __webpack_require__(194);
+	var _coreTooltip = __webpack_require__(201);
 	
 	var _coreTooltip2 = _interopRequireDefault(_coreTooltip);
 	
 	// Inherited functionality from popover
 	
-	var _popoverPopover = __webpack_require__(184);
+	var _popoverPopover = __webpack_require__(191);
 	
 	// Framework Specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _tooltipTemplate = __webpack_require__(195);
+	var _tooltipTemplate = __webpack_require__(202);
 	
 	var _tooltipTemplate2 = _interopRequireDefault(_tooltipTemplate);
 	
 	var $ = Lib.global.jQuery || Lib.global.$;
 	
-	var Tooltip = function Tooltip(element, options) {
-		this.options = Lib.extend({}, options);
+	var Tooltip = function Tooltip() {
+		var options = this._getOptions(arguments);
 	
-		this.elements = {
-			wrapper: $(element)
-		};
+		this.template = $(_tooltipTemplate2['default']);
 	
-		var $html = $('<i />').append(_tooltipTemplate2['default']);
-		this.template = $html.find('.' + this.cssClasses.CONTROL);
-	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
-	Lib.merge(Tooltip.prototype, _coreTooltip2['default'], _popoverPopover.PopoverMethods, _events2['default'], _state2['default'], {
+	Lib.merge(Tooltip.prototype, _coreTooltip2['default'], _events2['default'], _dom2['default'], _state2['default'], _popoverPopover.PopoverMethods, {
 		_render: function _render() {
 			var body = this.elements.popover.find('.slds-tooltip__body');
 	
@@ -9239,9 +9595,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				body.append(this.getProperty('content'));
 			}
 	
-			this.elements.container.append(this.elements.popover);
-	
-			this._updatePosition();
+			return this.element;
 		}
 	});
 	
@@ -9251,7 +9605,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 194 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TOOLTIP CONTROL
@@ -9269,7 +9623,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _popover = __webpack_require__(185);
+	var _popover = __webpack_require__(192);
 	
 	var _popover2 = _interopRequireDefault(_popover);
 	
@@ -9288,14 +9642,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = TooltipCore;
 
 /***/ },
-/* 195 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(155)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
 
-	var _String$raw = __webpack_require__(161)["default"];
+	var _String$raw = __webpack_require__(164)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -9307,7 +9661,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 196 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TREE CONTROL - JQUERY FACADE
@@ -9329,23 +9683,27 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreTree = __webpack_require__(197);
+	var _coreTree = __webpack_require__(204);
 	
 	var _coreTree2 = _interopRequireDefault(_coreTree);
 	
 	// Framework Specific
 	
-	var _events = __webpack_require__(145);
+	var _dom = __webpack_require__(145);
+	
+	var _dom2 = _interopRequireDefault(_dom);
+	
+	var _events = __webpack_require__(146);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(146);
+	var _state = __webpack_require__(147);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _treeTemplate = __webpack_require__(198);
+	var _treeTemplate = __webpack_require__(205);
 	
 	var _treeTemplate2 = _interopRequireDefault(_treeTemplate);
 	
@@ -9393,38 +9751,28 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		}
 	};
 	
-	var Tree = function Tree(element, options) {
-		this.options = Lib.extend({
+	var Tree = function Tree() {
+		var options = Lib.extend({
 			open: []
-		}, options);
+		}, this._getOptions(arguments));
 	
-		this.elements = {
-			wrapper: $(element)
-		};
+		this.template = $(_treeTemplate2['default']);
 	
-		var $html = $('<i />').append(_treeTemplate2['default']);
-		this.template = $html.find('.' + this.cssClasses.CONTROL);
-	
-		if (this.options.dataSource) {
-			this.options.accessors = legacyAccessors;
+		if (options.dataSource) {
+			options.accessors = legacyAccessors;
 		}
 	
-		this._initializeState();
-		this._initialize(this.options);
+		this._initialize(options);
 	};
 	
-	Lib.extend(Tree.prototype, _coreTree2['default'], _events2['default'], _state2['default'], {
+	Lib.merge(Tree.prototype, _coreTree2['default'], _events2['default'], _dom2['default'], _state2['default'], {
+		_initializer: function _initializer() {
+			this.element = this.$el = this.elements.control = this.template.clone();
+		},
+	
 		_onInitialized: function _onInitialized() {
 			var strings = this.getState('strings');
 			this.template.find('.slds-tree__loader').text(strings.LOADING);
-	
-			this._configureBranchSelect();
-	
-			this.elements.wrapper.on('click.fu.slds-tree', 'li.slds-tree__item', $.proxy(this._handleItemClicked, this));
-	
-			this._render();
-	
-			this.trigger('initialized');
 		},
 	
 		selectItem: function selectItem(item) {
@@ -9434,120 +9782,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		_configureBranchSelect: function _configureBranchSelect() {
 			var branchSelect = this.getProperty('folderSelect');
 	
-			// This class is copied from the example code but I'm not sure it does anything
-			this.template.toggleClass('slds-is-selected', branchSelect);
-	
 			// When folder selection is allowed...
 			if (branchSelect) {
 				// Branch name clicks act like item clicks
-				this.elements.wrapper.on('click.fu.slds-tree', 'button.slds-button', $.proxy(this._handleBranchClicked, this));
-				this.elements.wrapper.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleItemClicked, this));
+				this.element.on('click.fu.slds-tree', 'button.slds-button', $.proxy(this._handleBranchClicked, this));
+				this.element.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleItemClicked, this));
 			} else {
-				this.elements.wrapper.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleBranchClicked, this));
+				this.element.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleBranchClicked, this));
 			}
-		},
-	
-		_handleBranchClicked: function _handleBranchClicked($event) {
-			var $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
-			var branch = this._getItemAdapter($el.data('item'));
-	
-			this._toggleFolder(branch);
-		},
-	
-		_onFolderToggled: function _onFolderToggled(branch) {
-			var self = this;
-			var id = branch.getId();
-			var $branches = this.elements.wrapper.find('.slds-tree__branch');
-	
-			$branches.each(function () {
-				var $branch = $(this);
-	
-				if ($branch.data('id') === id) {
-					$branch.replaceWith(self._renderBranch(branch));
-				}
-			});
-		},
-	
-		_onFoldersClosed: function _onFoldersClosed() {
-			this.setProperties({ autoOpen: false });
-			this._render();
-		},
-	
-		_handleItemClicked: function _handleItemClicked($event) {
-			var $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
-			var item = this._getItemAdapter($el.data('item'));
-			var selected = this._isItemSelected(item);
-	
-			if (selected) {
-				this._deselectItem(item);
-			} else {
-				this._selectItem(item);
-			}
-		},
-	
-		_onSelected: function _onSelected(selection) {
-			this._onSelectionUpdated(selection);
-		},
-	
-		_onDeselected: function _onDeselected(selection) {
-			this._onSelectionUpdated(selection);
-		},
-	
-		_onSelectionUpdated: function _onSelectionUpdated(selection) {
-			var self = this;
-			var $items = this.elements.wrapper.find('.slds-tree__branch, li.slds-tree__item');
-	
-			$items.each(function () {
-				var $item = $(this);
-				var item = self._getItemAdapter($item.data('item'));
-	
-				self._renderSelection($item, item, selection);
-			});
-		},
-	
-		_render: function _render() {
-			var self = this;
-			var $el = this.template.clone().empty();
-			var dataSource = this.getProperty('dataSource');
-	
-			if (this._collection.length()) {
-				this._loopChildren(this._collection, $el, 1);
-			} else if (dataSource) {
-				dataSource({}, function (response) {
-					self._collection = self._getDataAdapter(response.data);
-					self._loopChildren(self._collection, $el, 1);
-				});
-			}
-	
-			// Prep for append
-			this.elements.wrapper.empty();
-	
-			if (this.elements.wrapper.is('ul')) {
-				this.elements.wrapper.attr('class', $el.attr('class'));
-				this.elements.wrapper.attr('role', $el.attr('role'));
-				this.elements.wrapper.append($el.children());
-			} else {
-				this.elements.wrapper.append($el);
-				this.elements.wrapper = $el;
-			}
-		},
-	
-		_loopChildren: function _loopChildren(children, $el, level) {
-			var self = this;
-			var elements = [];
-	
-			children.forEach(function buildBranch(item) {
-				var isBranch = item.getType() === 'folder';
-	
-				if (!isBranch) {
-					elements.push(self._renderItem(item));
-				} else {
-					elements.push(self._renderBranch(item, level));
-				}
-			});
-	
-			$el.empty();
-			$el.append(elements);
 		},
 	
 		_renderItem: function _renderItem(item) {
@@ -9615,30 +9857,122 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			return $branch;
 		},
 	
+		_renderSelection: function _renderSelection($item, item, selection) {
+			var selected = this._isItemSelected(item, selection);
+	
+			$item.toggleClass('slds-is-selected', selected);
+		},
+	
+		_render: function _render() {
+			var _this3 = this;
+	
+			var dataSource = this.getProperty('dataSource');
+	
+			if (this._collection.length()) {
+				this._loopChildren(this._collection, this.element, 1);
+			} else if (dataSource) {
+				dataSource({}, function (response) {
+					_this3._collection = _this3._getDataAdapter(response.data);
+					_this3._loopChildren(_this3._collection, _this3.element, 1);
+				});
+			}
+	
+			return this.element;
+		},
+	
+		_onRendered: function _onRendered() {
+			this._configureBranchSelect();
+	
+			this.element.on('click.fu.slds-tree', 'li.slds-tree__item', $.proxy(this._handleItemClicked, this));
+		},
+	
+		_loopChildren: function _loopChildren(children, $el, level) {
+			var self = this;
+			var elements = [];
+	
+			children.forEach(function buildBranch(item) {
+				var isBranch = item.getType() === 'folder';
+	
+				if (!isBranch) {
+					elements.push(self._renderItem(item));
+				} else {
+					elements.push(self._renderBranch(item, level));
+				}
+			});
+	
+			$el.empty();
+			$el.append(elements);
+		},
+	
+		_handleBranchClicked: function _handleBranchClicked($event) {
+			var $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
+			var branch = this._getItemAdapter($el.data('item'));
+	
+			this._toggleFolder(branch);
+		},
+	
+		_onFolderToggled: function _onFolderToggled(branch) {
+			var self = this;
+			var id = branch.getId();
+			var $branches = this.element.find('.slds-tree__branch');
+	
+			$branches.each(function () {
+				var $branch = $(this);
+	
+				if ($branch.data('id') === id) {
+					$branch.replaceWith(self._renderBranch(branch));
+				}
+			});
+		},
+	
+		_onFoldersClosed: function _onFoldersClosed() {
+			this.setProperties({ autoOpen: false });
+			this._render();
+		},
+	
+		_handleItemClicked: function _handleItemClicked($event) {
+			var $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
+			var item = this._getItemAdapter($el.data('item'));
+			var selected = this._isItemSelected(item);
+	
+			if (selected) {
+				this._deselectItem(item);
+			} else {
+				this._selectItem(item);
+			}
+		},
+	
+		_onSelected: function _onSelected(selection) {
+			this._onSelectionUpdated(selection);
+		},
+	
+		_onDeselected: function _onDeselected(selection) {
+			this._onSelectionUpdated(selection);
+		},
+	
+		_onSelectionUpdated: function _onSelectionUpdated(selection) {
+			var self = this;
+			var $items = this.element.find('.slds-tree__branch, li.slds-tree__item');
+	
+			$items.each(function () {
+				var $item = $(this);
+				var item = self._getItemAdapter($item.data('item'));
+	
+				self._renderSelection($item, item, selection);
+			});
+		},
+	
 		_shouldAutoOpen: function _shouldAutoOpen(level) {
 			var autoOpen = this.getProperty('autoOpen');
 			var autoOpenLimit = this.getProperty('autoOpenLimit');
 	
 			return autoOpen && Lib.isNumber(level) && Lib.isNumber(autoOpenLimit) && level <= autoOpenLimit;
-		},
-	
-		_renderSelection: function _renderSelection($item, item, selection) {
-			var selected = this._isItemSelected(item, selection);
-	
-			$item.toggleClass('slds-is-selected', selected);
 		}
 	});
 	
 	// LEGACY METHODS
 	
 	var legacyMethods = {
-	
-		destroy: function destroy() {
-			this.elements.wrapper.remove();
-	
-			return _treeTemplate2['default'];
-		},
-	
 		selectedItems: function selectedItems() {
 			var selection = this._getSelectedItems();
 	
@@ -9680,7 +10014,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		discloseVisible: function discloseVisible() {
 			var self = this;
 	
-			this.elements.wrapper.find('.slds-tree__branch:not(.slds-is-open)').each(function () {
+			this.element.find('.slds-tree__branch:not(.slds-is-open)').each(function () {
 				var $branch = $(this);
 				var _branch = $branch.data('item');
 	
@@ -9705,7 +10039,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 197 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TREE CORE
@@ -9732,11 +10066,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	// Traits
 	
-	var _traitsDisableable = __webpack_require__(152);
+	var _traitsDisableable = __webpack_require__(150);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsMultiselectable = __webpack_require__(175);
+	var _traitsMultiselectable = __webpack_require__(179);
 	
 	var _traitsMultiselectable2 = _interopRequireDefault(_traitsMultiselectable);
 	
@@ -9904,14 +10238,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = TreeCore;
 
 /***/ },
-/* 198 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(155)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
 
-	var _String$raw = __webpack_require__(161)["default"];
+	var _String$raw = __webpack_require__(164)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
