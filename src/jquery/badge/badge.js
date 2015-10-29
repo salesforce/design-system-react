@@ -19,10 +19,12 @@ let Badge = function Badge () {
 };
 
 export const BadgeObject = {
+	_initializer () {
+		this.element = this.$el = this.elements.control = $('<span>');
+	},
+	
 	_render () {
 		const className = this._getClassNames();
-
-		this.element = this.$el = this.elements.control = $('<span>');
 		
 		// TODO: Should this also use the contents of the original? It's different in jQuery becasue in React 'Children' is actually just another prop
 		this.element

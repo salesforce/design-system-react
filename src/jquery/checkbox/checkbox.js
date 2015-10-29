@@ -29,34 +29,20 @@ export const CheckboxObject = {
 	_bindUIEvents () {
 		this.elements.input.on('change', $.proxy(this.toggle, this));
 	},
-
-	_initElements (base, elements) {
-		const control = '.' + this.cssClasses.CONTROL;
-
-		elements.control = base.find(control);
-		elements.input = $(base.find(this.inputSelector)[0]);
-		elements.label = base.find('.' + this.cssClasses.LABEL);
-
-		return elements;
-	},
 	
-	// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
-	// there is no guidance as to what should be done here and/or why
-	_renderDressings (elements) {
-		elements.input.attr('value', this.getProperty('value'));
-		elements.input.attr('checked', this.getProperty('checked'));
-		elements.label.append(this.getProperty('text'));
-
-		this._onEnabledOrDisabled();
+	_initializer () {
+		const control = '.' + this.cssClasses.CONTROL;
+		this.element = this.$el = this.elements.control = this.template.clone().find(control);
+		this.elements.input = this.element.find(this.inputSelector);
+		this.elements.label = this.element.find('.' + this.cssClasses.LABEL);
 	},
 
 	_render () {
-		const $el = this.template.clone();
-		
-		const elements = this._initElements($el, this.elements);
-		this.element = this.$el = elements.control;
-		
-		this._renderDressings(elements);
+		this.elements.input.attr('value', this.getProperty('value'));
+		this.elements.input.attr('checked', this.getProperty('checked'));
+		this.elements.label.append(this.getProperty('text'));
+
+		this._onEnabledOrDisabled();
 		
 		return this.element;
 	},

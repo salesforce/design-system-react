@@ -36,6 +36,8 @@ const DOM = {
 		} else {
 			this._addToDOM = Lib.bind(this.appendTo, this, wrapper);
 		}
+		
+		return this;
 	},
 	
 	prependTo (wrapper) {
@@ -46,6 +48,16 @@ const DOM = {
 		} else {
 			this._addToDOM = Lib.bind(this.prependTo, this, wrapper);
 		}
+		
+		return this;
+	},
+	
+	on () {
+		if (this.element) {
+			this.element.on.apply(this.element, arguments);
+		}
+		
+		return this;
 	}
 	
 	// Possibly add a destroy method
