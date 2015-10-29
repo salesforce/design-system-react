@@ -193,6 +193,7 @@ class SLDSLookup extends React.Component {
         items={this.state.items}
         emptyMessage={this.props.emptyMessage}
         messages={this.state.messages}
+        errors={this.state.errors}
         filterWith={this.props.filterWith}
         getListLength={this.getListLength.bind(this)}
         setFocus={this.setFocus.bind(this)}
@@ -224,11 +225,6 @@ class SLDSLookup extends React.Component {
       }
   };
 
-  renderErrors(){
-    if (this.state.errors.length){
-      return <div className="slds-lookup__error">{this.state.errors.join("; ")}</div>;
-    }
-  }
   renderSelectedItem(){
     let selectedItem = this.props.items[this.state.selectedIndex].label;
     return (
@@ -270,7 +266,7 @@ class SLDSLookup extends React.Component {
       this.setState({message: newProps.message});
     }
     if (newProps.error){
-      this.setState({error: newProps.error});
+      this.setState({errors: newProps.error});
     }
   }
 
@@ -307,7 +303,6 @@ class SLDSLookup extends React.Component {
               value={this.state.searchTerm}
             />
           </div>
-          {this.renderErrors()}
           {this.props.modal?this.renderModalMenu():this.renderSimpleMenu()}
         </section>
       </div>
@@ -319,8 +314,9 @@ class SLDSLookup extends React.Component {
 SLDSLookup.propTypes = {
   items: React.PropTypes.array,
   errors: React.PropTypes.arrayOf(React.PropTypes.string),
-  emptyMessage: React.PropTypes.string
+  emptyMessage: React.PropTypes.string,
   messages: React.PropTypes.arrayOf(React.PropTypes.string),
+  errors: React.PropTypes.arrayOf(React.PropTypes.string),
   label: React.PropTypes.string,
   type: React.PropTypes.string,
   filterWith: React.PropTypes.func,
