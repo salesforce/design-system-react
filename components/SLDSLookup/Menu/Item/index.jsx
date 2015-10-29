@@ -37,7 +37,6 @@ class Item extends React.Component {
   }
 
   handleClick(e){
-    console.log("clicked", this.props.children.label)
     return this.props.onSelect(this.props.id, this.props.data);
   }
 
