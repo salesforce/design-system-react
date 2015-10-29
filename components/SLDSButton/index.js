@@ -50,8 +50,8 @@ class Button extends React.Component {
     });
   }
 
-  renderIcon(){
-    if(this.props.iconName){
+  renderIcon(name){
+    if(this.props.iconName || this.props.notSelectedIcon || this.props.selectedIcon || this.props.selectedFocusIcon){
       return (
         <ButtonIcon
           variant={this.props.variant}
@@ -59,7 +59,7 @@ class Button extends React.Component {
           inverse={this.props.inverse}
           stateful={this.props.stateful}
           hint={this.props.hint}
-          name={this.props.iconName}
+          name={name}
           size={this.props.iconSize}
           position={this.props.iconPosition}
           />
@@ -88,15 +88,34 @@ class Button extends React.Component {
     const labelClasses = this.props.variant === 'icon' ? 'slds-assistive-text': '';
     if (this.props.disabled) { props['disabled'] = 'disabled' };
 
-    return (
-      <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
-        {this.props.iconPosition === 'right' ? <span className={labelClasses}>{this.props.label}</span>: null}
-        {this.renderIcon()}
-        {this.renderIconMore()}
-        {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? <span className={labelClasses}>{this.props.label}</span>: null}
-        {this.props.children}
-      </button>
-    );
+    if(this.props.stateful){
+      return (
+        <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
+          <span className="slds-text-not-selected">
+            {this.renderIcon(this.props.notSelectedIcon)}
+            {this.props.notSelectedLabel}
+          </span>
+          <span className="slds-text-selected">
+            {this.renderIcon(this.props.selectedIcon)}
+            {this.props.selectedLabel}
+          </span>
+          <span className="slds-text-selected-focus">
+            {this.renderIcon(this.props.selectedFocusIcon)}
+            {this.props.selectedFocusLabel}
+          </span>
+        </button>
+      )
+    }else{
+      return (
+        <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
+          {this.props.iconPosition === 'right' ? <span className={labelClasses}>{this.props.label}</span>: null}
+          {this.renderIcon(this.props.iconName)}
+          {this.renderIconMore()}
+          {(this.props.iconPosition === 'left' || !this.props.iconPosition) ? <span className={labelClasses}>{this.props.label}</span>: null}
+          {this.props.children}
+        </button>
+      );
+    }
   }
 }
 
@@ -113,6 +132,7 @@ Button.propTypes = {
   iconVariant: React.PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
   iconSize: React.PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
   iconPosition: React.PropTypes.oneOf(['left', 'right']),
+  onClick: React.PropTypes.func,
 }
 
 module.exports = Button;

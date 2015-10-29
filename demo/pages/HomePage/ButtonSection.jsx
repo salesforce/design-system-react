@@ -44,6 +44,11 @@ module.exports = React.createClass( {
     alert('Icon Button Clicked');
   },
 
+  handleStatefulClick(e){
+    console.log('the click event is ', e);
+  },
+
+
   render() {
     let hintBtnParent = {backgroundColor: '#7fdbff', padding: '10px'};
     let inverseBtnParent = {backgroundColor: '#0074d9', padding: '10px'};
@@ -119,6 +124,20 @@ module.exports = React.createClass( {
                   iconName='edit'
                   iconSize='large'
                   onClick={this.handleIconClick} />
+                </div>
+
+                <div className='slds-p-vertical--small'>
+                8. <SLDSButton
+                  label='Follow'
+                  variant='neutral'
+                  stateful={true}
+                  notSelectedIcon='add'
+                  notSelectedLabel='Follow'
+                  selectedIcon='check'
+                  selectedLabel='Following'
+                  selectedFocusIcon='close'
+                  selectedFocusLabel='Unfollow'
+                  onClick={this.handleStatefulClick} />
                 </div>
 
               </div>
