@@ -1,5 +1,5 @@
 // WARNING: Keep this here as it is required for examples.html to work with webpack-dev-server
-require('../../public/assets/design-system/styles/slds.css');
+//require('../../public/assets/design-system/styles/slds.css');
 
 import badge from './badge/example';
 import button from './button/example';
