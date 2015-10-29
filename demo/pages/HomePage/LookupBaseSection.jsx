@@ -45,11 +45,6 @@ module.exports = React.createClass( {
     console.log(item , ' Selected');
   },
 
-
-  getHeader(){
-    return <SLDSLookup.DefaultHeader searchTerm={this.state.searchVal} type='account' />;
-  },
-
   getFooter(){
     return <SLDSLookup.DefaultFooter type='account' />;
   },
@@ -74,8 +69,8 @@ module.exports = React.createClass( {
                   items={items}
                   label="Account"
                   type="account"
-                  header={this.getHeader()}
-                  footer={this.getFooter()}
+                  headerRenderer={SLDSLookup.DefaultHeader}
+                  footerRenderer={SLDSLookup.DefaultFooter}
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
                 />

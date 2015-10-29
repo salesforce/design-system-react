@@ -35,19 +35,7 @@ class Menu extends React.Component {
   }
 
   renderHeader(){
-    if(this.props.header){
-      let headerActive = false;
-      let isActiveClass = null;
-      if(this.props.focusIndex === 0){
-        headerActive = true;
-        isActiveClass = 'slds-theme--shade';
-      }else{
-        headerActive = false;
-        isActiveClass = '';
-      }
-
-      return <div className={isActiveClass}>{this.props.header}</div>;
-    }
+    return this.props.header;
   }
 
   renderFooter(){

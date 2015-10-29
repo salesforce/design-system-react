@@ -154,12 +154,14 @@ class SLDSLookup extends React.Component {
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.focusIndex !== null){
         EventUtil.trapImmediate(event);
         //If the focus is on the first fixed Action Item in Menu, click it
-        if(this.props.header && this.state.focusIndex === 0){
-          document.getElementById('menuContainer').firstChild.children[0].click();
+        if(this.refs.header && this.state.focusIndex === 0){
+//          document.getElementById('menuContainer').firstChild.children[0].click();
+          React.findDOMNode(this.refs.header).click();
         }
         //If the focus is on the last fixed Action Item in Menu, click it
-        else if(this.props.footer && this.state.focusIndex === (this.state.listLength + 1)){
-          document.getElementById('menuContainer').lastChild.children[0].click();
+        else if(this.refs.footer && this.state.focusIndex === (this.state.listLength + 1)){
+          React.findDOMNode(this.refs.footer).click();
+//          document.getElementById('menuContainer').lastChild.children[0].click();
         }
         //If not, then select menu item
         else{
@@ -178,6 +180,40 @@ class SLDSLookup extends React.Component {
     }
   }
 
+  getHeader(){
+    if(this.props.headerRenderer){
+      let headerActive = false;
+      let isActiveClass = null;
+      if(this.state.focusIndex === 0){
+        headerActive = true;
+        isActiveClass = 'slds-theme--shade';
+      }else{
+        headerActive = false;
+        isActiveClass = '';
+      }
+      const Header = this.props.headerRenderer;
+      return <div className={isActiveClass}>
+        <Header ref='header' {... this.props} 
+          searchTerm={this.state.searchTerm}
+          focusIndex={this.state.focusIndex}
+          listLength={this.state.listLength}
+          onClose={this.handleClose.bind(this)}
+        />
+      </div>;
+    }
+  }
+
+  getFooter () {
+    if(this.props.footerRenderer){
+      const Footer = this.props.footerRenderer;
+      return <Footer ref='footer' {... this.props}
+        focusIndex={this.state.focusIndex}
+        listLength={this.state.listLength}
+        onClose={this.handleClose.bind(this)}
+      />;
+    }
+  }
+
   //=================================================
   // Rendering Things
   renderMenuContent(){
@@ -193,8 +229,8 @@ class SLDSLookup extends React.Component {
         getListLength={this.getListLength.bind(this)}
         setFocus={this.setFocus.bind(this)}
         onSelect={this.selectItem.bind(this)}
-        header={this.props.header}
-        footer={this.props.footer}
+        header={this.getHeader()}
+        footer={this.getFooter()}
       />;
     }
   }
