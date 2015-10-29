@@ -25,11 +25,11 @@ class Item extends React.Component {
   }
 
   boldSearchText(children) {
-    regex = this.props.boldRegex
+    let regex = this.props.boldRegex
     if (!regex) {
       const term = this.props.searchTerm;
       if(!children || !term) return children;
-      const regex = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
+      regex = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
     }
     return React.Children.map(children, c => {
       return (typeof c === 'string') ? <span dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
@@ -88,7 +88,7 @@ Item.propTypes = {
   handleItemFocus: React.PropTypes.func,
   onSelect: React.PropTypes.func,
   data: React.PropTypes.object,
-  boldRegex: react.PropTypes.instanceOf(RegExp)
+  boldRegex: React.PropTypes.instanceOf(RegExp)
 };
 
 Item.defaultProps = {
