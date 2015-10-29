@@ -19,7 +19,7 @@ let Checkbox = function Checkbox () {
 	const options = this._getOptions(arguments);
 	
 	this.inputSelector = 'input[type="checkbox"]';
-	this.template = $('<i />').append(template);
+	this.template = $(template);
 	
 	this._initialize(options);
 };
@@ -27,8 +27,7 @@ let Checkbox = function Checkbox () {
 // Prototype extension object
 export const CheckboxObject = {
 	_initializer () {
-		const control = '.' + this.cssClasses.CONTROL;
-		this.element = this.$el = this.elements.control = this.template.clone().find(control);
+		this.element = this.$el = this.elements.control = this.template.clone();
 		this.elements.input = this.element.find(this.inputSelector);
 		this.elements.label = this.element.find('.' + this.cssClasses.LABEL);
 	},

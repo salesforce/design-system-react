@@ -17,13 +17,17 @@ import template from './popover-template';
 let Popover = function Popover () {
 	const options = this._getOptions(arguments);
 	
-	const $html = $('<i />').append(template);
-	this.template = $html.find('.' + this.cssClasses.CONTROL);
+	this.template = $(template);
 	
 	this._initialize(options);
 };
 
 export const PopoverMethods = {
+	_initializer () {
+		this.element = this.$el = this.elements.control = this.template.clone();
+		this.elements.popover = Lib.wrapElement(this.element);
+	},
+	
 	_onRendered () {
 		this._setElementOptions();
 		this._setTrigger();
@@ -69,9 +73,6 @@ export const PopoverMethods = {
 
 Lib.merge(Popover.prototype, PopoverCore, Events, DOM, State, PopoverMethods, {
 	_render () {
-		this.element = this.$el = this.elements.control = this.template.clone();
-		this.elements.popover = Lib.wrapElement(this.element);
-		
 		const header = this.element.find('.slds-popover__header > p');
 		const body = this.element.find('.slds-popover__body');
 

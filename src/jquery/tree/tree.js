@@ -59,8 +59,7 @@ let Tree = function Tree () {
 		open: []
 	}, this._getOptions(arguments));
 	
-	const $html = $('<i />').append(template);
-	this.template = $html.find('.' + this.cssClasses.CONTROL);
+	this.template = $(template);
 	
 	if (options.dataSource) {
 		options.accessors = legacyAccessors;
@@ -70,6 +69,10 @@ let Tree = function Tree () {
 };
 
 Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
+	_initializer () {
+		this.element = this.$el = this.elements.control = this.template.clone();
+	},
+	
 	_onInitialized () {
 		const strings = this.getState('strings');
 		this.template.find('.slds-tree__loader').text(strings.LOADING);
@@ -91,105 +94,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 			this.element.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleBranchClicked, this));
 		}
 	},
-
-	_handleBranchClicked ($event) {
-		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
-		const branch = this._getItemAdapter($el.data('item'));
-
-		this._toggleFolder(branch);
-	},
-
-	_onFolderToggled (branch) {
-		const self = this;
-		const id = branch.getId();
-		const $branches = this.element.find('.slds-tree__branch');
-
-		$branches.each(function () {
-			const $branch = $(this);
-
-			if ($branch.data('id') === id) {
-				$branch.replaceWith(self._renderBranch(branch));
-			}
-		});
-	},
-
-	_onFoldersClosed () {
-		this.setProperties({ autoOpen: false });
-		this._render();
-	},
-
-	_handleItemClicked ($event) {
-		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
-		const item = this._getItemAdapter($el.data('item'));
-		const selected = this._isItemSelected(item);
-
-		if (selected) {
-			this._deselectItem(item);
-		} else {
-			this._selectItem(item);
-		}
-	},
-
-	_onSelected (selection) {
-		this._onSelectionUpdated(selection);
-	},
-
-	_onDeselected (selection) {
-		this._onSelectionUpdated(selection);
-	},
-
-	_onSelectionUpdated (selection) {
-		const self = this;
-		const $items = this.element.find('.slds-tree__branch, li.slds-tree__item');
-
-		$items.each(function () {
-			const $item = $(this);
-			const item = self._getItemAdapter($item.data('item'));
-
-			self._renderSelection($item, item, selection);
-		});
-	},
-
-	_render () {
-		const $el = this.element = this.$el = this.elements.control = this.template.clone();
-		const dataSource = this.getProperty('dataSource');
-
-		if (this._collection.length()) {
-			this._loopChildren(this._collection, $el, 1);
-		} else if (dataSource) {
-			dataSource({}, (response) => {
-				this._collection = this._getDataAdapter(response.data);
-				this._loopChildren(this._collection, $el, 1);
-			});
-		}
-		
-		return this.element;
-	},
 	
-	_onRendered () {
-		this._configureBranchSelect();
-
-		this.element.on('click.fu.slds-tree', 'li.slds-tree__item', $.proxy(this._handleItemClicked, this));
-	},
-
-	_loopChildren (children, $el, level) {
-		const self = this;
-		const elements = [];
-
-		children.forEach(function buildBranch (item) {
-			const isBranch = item.getType() === 'folder';
-
-			if (!isBranch) {
-				elements.push(self._renderItem(item));
-			} else {
-				elements.push(self._renderBranch(item, level));
-			}
-		});
-
-		$el.empty();
-		$el.append(elements);
-	},
-
 	_renderItem (item) {
 		const $item = this.template.find('li.slds-tree__item').clone();
 
@@ -252,18 +157,115 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 
 		return $branch;
 	},
+	
+	_renderSelection ($item, item, selection) {
+		const selected = this._isItemSelected(item, selection);
+
+		$item.toggleClass('slds-is-selected', selected);
+	},
+
+	_render () {
+		const dataSource = this.getProperty('dataSource');
+
+		if (this._collection.length()) {
+			this._loopChildren(this._collection, this.element, 1);
+		} else if (dataSource) {
+			dataSource({}, (response) => {
+				this._collection = this._getDataAdapter(response.data);
+				this._loopChildren(this._collection, this.element, 1);
+			});
+		}
+		
+		return this.element;
+	},
+	
+	_onRendered () {
+		this._configureBranchSelect();
+
+		this.element.on('click.fu.slds-tree', 'li.slds-tree__item', $.proxy(this._handleItemClicked, this));
+	},
+
+	_loopChildren (children, $el, level) {
+		const self = this;
+		const elements = [];
+
+		children.forEach(function buildBranch (item) {
+			const isBranch = item.getType() === 'folder';
+
+			if (!isBranch) {
+				elements.push(self._renderItem(item));
+			} else {
+				elements.push(self._renderBranch(item, level));
+			}
+		});
+
+		$el.empty();
+		$el.append(elements);
+	},
+	
+	_handleBranchClicked ($event) {
+		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
+		const branch = this._getItemAdapter($el.data('item'));
+
+		this._toggleFolder(branch);
+	},
+
+	_onFolderToggled (branch) {
+		const self = this;
+		const id = branch.getId();
+		const $branches = this.element.find('.slds-tree__branch');
+
+		$branches.each(function () {
+			const $branch = $(this);
+
+			if ($branch.data('id') === id) {
+				$branch.replaceWith(self._renderBranch(branch));
+			}
+		});
+	},
+
+	_onFoldersClosed () {
+		this.setProperties({ autoOpen: false });
+		this._render();
+	},
+
+	_handleItemClicked ($event) {
+		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
+		const item = this._getItemAdapter($el.data('item'));
+		const selected = this._isItemSelected(item);
+
+		if (selected) {
+			this._deselectItem(item);
+		} else {
+			this._selectItem(item);
+		}
+	},
+
+	_onSelected (selection) {
+		this._onSelectionUpdated(selection);
+	},
+
+	_onDeselected (selection) {
+		this._onSelectionUpdated(selection);
+	},
+
+	_onSelectionUpdated (selection) {
+		const self = this;
+		const $items = this.element.find('.slds-tree__branch, li.slds-tree__item');
+
+		$items.each(function () {
+			const $item = $(this);
+			const item = self._getItemAdapter($item.data('item'));
+
+			self._renderSelection($item, item, selection);
+		});
+	},
 
 	_shouldAutoOpen (level) {
 		const autoOpen = this.getProperty('autoOpen');
 		const autoOpenLimit = this.getProperty('autoOpenLimit');
 
 		return autoOpen && Lib.isNumber(level) && Lib.isNumber(autoOpenLimit) && level <= autoOpenLimit;
-	},
-
-	_renderSelection ($item, item, selection) {
-		const selected = this._isItemSelected(item, selection);
-
-		$item.toggleClass('slds-is-selected', selected);
 	}
 });
 

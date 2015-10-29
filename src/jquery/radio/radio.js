@@ -20,7 +20,7 @@ let Radio = function Radio () {
 	const options = this._getOptions(arguments);
 	
 	this.inputSelector = 'input[type="radio"]';
-	this.template = $('<i />').append(template);
+	this.template = $(template);
 	
 	this._initialize(options);
 };
