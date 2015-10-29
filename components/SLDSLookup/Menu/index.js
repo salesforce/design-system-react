@@ -115,7 +115,7 @@ class Menu extends React.Component {
         </li>
       );
 
-    elements = this.renderItems();
+    let elements = this.renderItems();
     if (this.props.messages.length > 0) {
       elements.concat(this.renderMessages());
     }
@@ -151,7 +151,9 @@ Menu.propTypes = {
 };
 
 Menu.defaultProps = {
-  emptyMessage: "No matches found."
+  emptyMessage: "No matches found.",
+  messages: [],
+  errors: [],
 };
 
 module.exports = Menu;
