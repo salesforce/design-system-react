@@ -4,10 +4,22 @@ import Datepicker from './datepicker';
 
 export default function () {
 	const DatepickerExample = React.createClass({
+		getInitialState () {
+			return {
+				dateSelected: null
+			};
+		},
+
 		render () {
 			return (
-				<Datepicker />
+				<Datepicker selectedDate={this.state.dateSelected} onSelectDate={this.handleDateSelected}/>
 			);
+		},
+
+		handleDateSelected (date) {
+			this.setState({
+				dateSelected: date
+			});
 		}
 	});
 

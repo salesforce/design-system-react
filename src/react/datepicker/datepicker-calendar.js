@@ -3,6 +3,8 @@
 // Framework specific
 import React from 'react';
 
+import DateWeek from './datepicker-week';
+
 // Third party
 import classNames from 'classnames';
 
@@ -40,7 +42,7 @@ const Calendar = React.createClass({
 					</thead>
 					<tbody>
 						{ this.props.calendarData.map(function (week, i) {
-							return self.generateWeekMarkup(week, i);
+							return <DateWeek key={i} week={week} onSelectDay={self._handleDateClicked}/>
 						}) }
 					</tbody>
 				</table>

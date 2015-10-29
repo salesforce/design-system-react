@@ -165,13 +165,14 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, {
 	_selectDate (ev) {
 		const dayData = $(ev.currentTarget).data();
 
-		this.selectItem({ date: dayData.date });
+		this._selectItem(this._getItemAdapter({ date: dayData.date }));
 	},
 
 	_onSelected () {
 		this.elements.input.val(this._formatDate());
 		this._renderDateRange();
 	}
+
 });
 
 // LEGACY METHODS

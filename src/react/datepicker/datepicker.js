@@ -14,10 +14,10 @@ import genericWillMount from '../mixins/generic-will-mount';
 import classNames from 'classnames';
 
 // Children
-import DateMonth from './date-month';
-import DateYear from './date-year';
-import Calendar from './date-calendar';
-import DateInput from './date-input';
+import DateMonth from './datepicker-month';
+import DateYear from './datepicker-year';
+import Calendar from './datepicker-calendar';
+import DateInput from './datepicker-input';
 
 export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	mixins: [State, Events, genericWillMount],
@@ -34,7 +34,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 	render () {
 		const calendarData = this._getCalendarData();
-		const selectedDates = this.getSelectedItems();
+		const selectedDates = this._getSelectedItems();
 		const selDate = selectedDates[0] ? selectedDates[0].date : null;// TODO enable date range selection
 		const selDateFormatted = selDate ? this._formatDate(selDate) : '';
 
@@ -58,10 +58,9 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		});
 	},
 
-	_selectDate (data) {
-		const selectedDate = this._getItemAdapter({ date: data.date });
-
-		this._selectItem(selectedDate);
+	_selectDate (date) {
+		this._selectItem(this._getItemAdapter({ date: date.date }));
+		this.props.onSelectDate(date.date);
 	},
 
 	_setViewingDate (date) {
