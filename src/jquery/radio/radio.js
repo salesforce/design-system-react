@@ -20,7 +20,7 @@ let Radio = function Radio () {
 	const options = this._getOptions(arguments);
 	
 	this.inputSelector = 'input[type="radio"]';
-	this.template = $('<i />').append(template);
+	this.template = $(template);
 	
 	this._initialize(options);
 };
@@ -30,12 +30,11 @@ const RadioObject = {
 	_bindUIEvents () {
 		this.elements.input.on('change', $.proxy(this.check, this));
 	},
-
-	// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
-	// there is no guidance as to what should be done here and/or why
-	_renderDressings (elements) {
-		elements.input.attr('name', this.getProperty('name'));
-		CheckboxObject._renderDressings.call(this, elements);
+	
+	_render () {
+		this.elements.input.attr('name', this.getProperty('name'));
+		
+		return CheckboxObject._render.call(this);
 	},
 
 	// TODO: Update this when we add a universal destroy method

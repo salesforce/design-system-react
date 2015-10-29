@@ -20,17 +20,13 @@ import template from './tooltip-template';
 let Tooltip = function Tooltip () {
 	const options = this._getOptions(arguments);
 	
-	const $html = $('<i />').append(template);
-	this.template = $html.find('.' + this.cssClasses.CONTROL);
+	this.template = $(template);
 	
 	this._initialize(options);
 };
 
 Lib.merge(Tooltip.prototype, TooltipCore, Events, DOM, State, PopoverMethods, {
 	_render () {
-		this.element = this.$el = this.elements.control = this.template.clone();
-		this.elements.popover = Lib.wrapElement(this.element);
-		
 		const body = this.elements.popover.find('.slds-tooltip__body');
 
 		if (this.getProperty('content')) {

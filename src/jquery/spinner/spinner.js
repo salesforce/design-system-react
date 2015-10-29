@@ -18,12 +18,14 @@ let Spinner = function Spinner () {
 
 // Prototype extension object
 const SpinnerObject = {
-	_render () {
-		const strings = this.getState('strings');
-
+	_initializer () {
 		this.element = this.$el = this.elements.control = $('<div />', {
 			class: this.sizes[this.getProperty('size')]
 		});
+	},
+	
+	_render () {
+		const strings = this.getState('strings');
 		
 		this.element
 			.append(

@@ -36,32 +36,24 @@ let Radios = function Radios () {
 };
 
 // Prototype extension object
-const RadiosObject = Lib.merge({}, {
+const RadiosObject = {
+	_initializer () {
+		this.element = this.$el = this.elements.control = this.template.clone();
+		this.elements.label = this.element.find('.' + this.cssClasses.LABEL);
+		this.elements.radios = this.radios.map(function (radio) {
+			return radio.element;
+		});
+	},
+
 	_bindUIEvents () {
 		this.elements.radios.forEach((radio) => {
 			radio.on('change', $.proxy(this._handleInputChange, this));
 		});
 	},
 
-	_initElements ($base, elements) {
-		elements.radios = this.radios.map(function (radio) {
-			return radio.element;
-		});
-
-		elements.label = $base.find('.' + this.cssClasses.LABEL);
-
-		return elements;
-	},
-
 	_render () {
-		// Get the template
-		const $el = this.element = this.$el = this.elements.control = this.template.clone();
-		
-		const elements = this._initElements($el, this.elements);
-
-		elements.label.append(this.getProperty('labelText'));
-
-		$el.find('.' + this.cssClasses.CONTROL).append(elements.radios);
+		this.elements.label.append(this.getProperty('labelText'));
+		this.element.find('.' + this.cssClasses.CONTROL).append(this.elements.radios);
 
 		return this.element;
 	},
@@ -159,7 +151,7 @@ const RadiosObject = Lib.merge({}, {
 			}
 		}
 	}
-});
+};
 
 // Merging into prototype
 Lib.merge(Radios.prototype, Base, Disableable, Events, DOM, State, RadiosObject);

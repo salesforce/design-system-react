@@ -19,6 +19,10 @@ let ButtonView = function ButtonView () {
 };
 
 export const ButtonViewObject = {
+	_initializer () {
+		this.element = this.$el = this.elements.control = $('<span>');
+	},
+
 	_renderAssistiveText () {
 		if (this.getProperty('assistiveText')) {
 			return $('<span>').addClass(this.cssClasses.ASSISTIVE_TEXT).text(this.getProperty('assistiveText'));
@@ -42,10 +46,8 @@ export const ButtonViewObject = {
 	},
 
 	_render () {
-		this.element = this.$el = this.elements.control = $('<span>');
-		
 		this.element
-			.text( this.getProperty('text') )
+			.text(this.getProperty('text'))
 			.addClass(this.buttonStatefulViewStyles[this.getProperty('view')])
 			.append(this._renderAssistiveText());
 		
@@ -54,19 +56,6 @@ export const ButtonViewObject = {
 			.prepend(this._renderIcon('left'));
 		
 		return this.element;
-	},
-	
-	render () {
-		let element;
-		
-		if (this.rendered) {
-			element = this.element;
-		} else {
-			element = this._render();
-			this.rendered = true;
-		}
-		
-		return element;
 	}
 };
 

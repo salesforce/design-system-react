@@ -22,33 +22,28 @@ import template from './dropdown-template';
 let Dropdown = function Dropdown () {
 	const options = this._getOptions(arguments);
 	
-	this.template = $('<i />').append(template);
+	this.template = $(template);
 	this._closeOnClick = $.proxy(this._closeOnClick, this);
 	
 	this._initialize(options);
 };
 
 export const DropdownObject = {
+	_initializer () {
+		this.element = this.$el = this.elements.control = this.template.clone();
+		this._initElements();
+	},
+	
+	_initElements () {
+		this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
+		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
+	},
+	
 	_bindUIEvents () {
 		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
 	},
-	
-	_initElements (base, elements) {
-		const els = elements || {};
-
-		els.trigger = base.find('.' + this.cssClasses.TRIGGER);
-		els.dropdown = base.find('.' + this.cssClasses.DROPDOWN);
-		els.dropdownMenu = base.find('.' + this.cssClasses.MENU);
-
-		return els;
-	},
 
 	_render () {
-		// Get the template
-		const $el = this.template.clone();
-		const elements = this._initElements($el, this.elements);
-		this.element = this.$el = this.elements.control = this.elements.trigger;
-		
 		// Configure the button
 		let icon;
 		
@@ -63,13 +58,11 @@ export const DropdownObject = {
 			icon,
 			iconStyle: 'icon-more'
 		});
+		
+		this.button.prependTo(this.element);
 
 		// Render the menu
-		this._renderMenu(elements);
-		
-		// Put everything in it's place
-		this.button.prependTo(this.element);
-		this.element.append(elements.dropdown);
+		this._renderMenu(this.elements);
 
 		if (this._collection._data.length === 0) {
 			this.disable();

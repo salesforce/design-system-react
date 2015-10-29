@@ -24,13 +24,17 @@ let Notification = function Notification () {
 };
 
 export const NotificationObject = {
+	_initializer () {
+		this.element = this.$el = this.elements.control = this.template.clone();
+	},
+	
 	// TODO: Internationalize
 	// TODO: The patterns here are a little different than the rest of our controls
 	_render () {
 		const classNames = this._getClassNames();
 
 		// Load template
-		const $el = this.element = this.$el = this.elements.control = this.template.clone();
+		const $el = this.element;
 
 		// Update theme
 		$el.addClass(classNames);

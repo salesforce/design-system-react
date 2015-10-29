@@ -18,10 +18,17 @@ const $ = Lib.global.jQuery || Lib.global.$;
 let Button = function Button () {
 	const options = this._getOptions(arguments);
 	
+	this.childOptions = {
+		icon: options.icon,
+		iconPosition: options.iconPosition,
+		iconStyle: options.iconStyle,
+		text: options.text
+	};
+	
 	// If button has views, button is stateful
 	if (options.views.length > 0) {
 		options.views = options.views.map((child) => {
-			return Lib.extend({}, options, child);
+			return Lib.extend({}, this.childOptions, child);
 		});
 	}
 	
@@ -29,6 +36,10 @@ let Button = function Button () {
 };
 
 export const ButtonObject = {
+	_initializer () {
+		this.element = this.$el = this.elements.control = $('<button>');
+	},
+
 	_bindUIEvents () {
 		this.element.on('click', $.proxy(this._handleClick, this));
 	},
@@ -37,21 +48,23 @@ export const ButtonObject = {
 		const viewOptions = this.getProperty('views');
 		const views = [];
 
+		const childOptions = Lib.extend({
+			assistiveText: this.getProperty('assistiveText')
+		}, this.childOptions);
+		
 		if (viewOptions.length > 0) {
-			this.setProperties({
-				view: 'notSelected'
-			});
+			childOptions.view = 'notSelected';
 		}
 
-		let $buttonview = new ButtonView(this._props);
+		let $buttonview = new ButtonView(childOptions);
 
-		views.push($buttonview.render());
+		views.push($buttonview.element);
 
 		// Other views
 		if (viewOptions.length > 0 ) {
 			viewOptions.forEach((options) => {
 				$buttonview = new ButtonView(options);
-				views.push($buttonview.render());
+				views.push($buttonview.element);
 			});
 		}
 
@@ -61,8 +74,6 @@ export const ButtonObject = {
 	_render () {
 		const isStateful = this.getProperty('views').length > 0;
 		const className = this._getClassNames(isStateful);
-		
-		this.element = this.$el = this.elements.control = $('<button>');
 
 		this.element
 			.addClass(className)
