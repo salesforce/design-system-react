@@ -31,8 +31,8 @@ class Menu extends React.Component {
   }
 
   //Scroll menu up/down when using mouse keys
-  handleItemFocus (itemIndex, itemHeight) {
-    if(this.refs.list){
+  handleItemFocus(itemIndex, itemHeight){
+    if (this.refs.list) {
       React.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
     }
   }
@@ -42,10 +42,10 @@ class Menu extends React.Component {
   }
 
   renderFooter(){
-    if(this.props.footer){
+    if (this.props.footer) {
       let footerActive = false;
       let isActiveClass = null;
-      if(this.props.focusIndex === this.props.listLength+1){
+      if (this.props.focusIndex === this.props.listLength+1) {
         footerActive = true;
         isActiveClass = 'slds-theme--shade';
       }else{
@@ -72,7 +72,7 @@ class Menu extends React.Component {
       //isActive means it is aria-activedescendant
       const id = c.id;
       let isActive = false;
-      if(this.props.header){
+      if (this.props.header) {
         isActive = this.props.focusIndex === i + 1 ? true : false;
       }else{
         isActive = this.props.focusIndex === i  ? true : false;
@@ -95,7 +95,17 @@ class Menu extends React.Component {
     });
   }
 
-  renderContent() {
+  renderMessages(){
+    return this.props.messages.map((message) => {
+      return (
+        <li className="slds-lookup__message" aria-live="polite">
+          <span>{message}</span>
+        </li>
+      );
+    });
+  }
+
+  renderContent(){
     if (this.props.errors.length > 0)
       return this.renderErrors()
     else if (this.props.items.length === 0)
@@ -105,8 +115,11 @@ class Menu extends React.Component {
         </li>
       );
 
-    return this.renderItems();
-
+    let elements = this.renderItems();
+    if (this.props.messages.length > 0) {
+      elements.concat(this.renderMessages());
+    }
+    return elements;
   }
 
   render(){
@@ -138,7 +151,9 @@ Menu.propTypes = {
 };
 
 Menu.defaultProps = {
-  emptyMessage: "No matches found."
+  emptyMessage: "No matches found.",
+  messages: [],
+  errors: [],
 };
 
 module.exports = Menu;
