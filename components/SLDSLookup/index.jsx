@@ -93,13 +93,19 @@ class SLDSLookup extends React.Component {
   selectItem(itemId){
     if (itemId) {
         const index = itemId.replace('item-', '');
-        this.setState({
-          selectedIndex: index,
-          searchTerm: null
-        });
-        const data = this.state.items[index].data;
-        if(this.props.onItemSelect) this.props.onItemSelect(data);
+        this.selectItemByIndex(index);
       }
+  }
+
+  selectItemByIndex(index){
+    if (index >= 0 && index < this.state.items.length) {
+	    this.setState({
+	      selectedIndex: index,
+	      searchTerm: null
+	    });
+	    const data = this.state.items[index].data;
+	    if(this.props.onItemSelect) this.props.onItemSelect(data);
+	  }
   }
 
   handleDeleteSelected() {
