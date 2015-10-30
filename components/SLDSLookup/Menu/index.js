@@ -22,7 +22,7 @@ class Menu extends React.Component {
     // make an array of the children of the list
     // but only count the actual items (ignore errors/messages)
     let list = [].slice.call(React.findDOMNode(this.refs.list).children)
-      .filter((child) => child.className === "slds-lookup__item").length;
+      .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
     this.props.getListLength(list);
   }
 
