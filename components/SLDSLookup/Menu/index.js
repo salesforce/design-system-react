@@ -81,6 +81,7 @@ class Menu extends React.Component {
         key={id}
         id={id}
         type={this.props.type}
+        iconCategory={this.props.iconCategory}
         searchTerm={this.props.searchTerm}
         index={i}
         isActive={isActive}
@@ -139,6 +140,7 @@ Menu.propTypes = {
   searchTerm: React.PropTypes.string,
   label: React.PropTypes.string,
   type: React.PropTypes.string,
+  iconCategory: React.PropTypes.string,
   focusIndex: React.PropTypes.number,
   listLength: React.PropTypes.number,
   items: React.PropTypes.array,
