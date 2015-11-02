@@ -6,7 +6,7 @@ import Combobox from './combobox/combobox';
 import Checkbox from './checkbox/checkbox';
 import Datatable from './data-table/data-table';
 	// import datepicker from './datepicker/example';
-	// import dropdown from './dropdown/example';
+import Dropdown from './dropdown/dropdown';
 import Notification from './notification/notification';
 import Picklist from './picklist/picklist';
 	// import picker from './picker/example';
@@ -23,6 +23,7 @@ module.exports = {
 	Checkbox,
 	Combobox,
 	Datatable,
+	Dropdown,
 	Notification,
 	Picklist,
 	Pillbox,
