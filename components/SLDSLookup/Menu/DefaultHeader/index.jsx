@@ -9,6 +9,7 @@
 
 import React, { Component } from 'react';
 import {Icon} from "../../../SLDSIcons";
+import { EventUtil } from '../../../utils';
 
 class DefaultHeader extends React.Component {
   constructor(props) {
@@ -19,22 +20,29 @@ class DefaultHeader extends React.Component {
     if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
   }
 
-  headerClick(){
+  handleClick(){
     console.log('=====> Lookup Header Clicked');
+    if(this.props.onClose){
+      this.props.onClose();
+    }
+  }
+
+  handleMouseDown(event) {
+    EventUtil.trapImmediate(event);
   }
 
   render(){
     let className = 'slds-button';
-    if(this.props.isActive) className += ' slds-theme--shade'
+    if(this.props.isActive) className += ' slds-theme--shade aaa'
 
-      return (
-        <div className="slds-lookup__item" onClick={this.headerClick}>
-          <button id='searchRecords' tabIndex="-1" className={className}>
-            <Icon name='search' category="utility" size="x-small" className="slds-icon-text-default" />
-            {this.props.searchLabel}
-          </button>
-        </div>
-      )
+    return (
+      <div className="slds-lookup__item" onMouseDown={this.handleMouseDown} onClick={this.handleClick.bind(this)}>
+        <button id='searchRecords' tabIndex="-1" className={className}>
+          <Icon name='search' category="utility" size="x-small" className="slds-icon-text-default" />
+          {this.props.searchLabel}
+        </button>
+      </div>
+    )
   }
 }
 

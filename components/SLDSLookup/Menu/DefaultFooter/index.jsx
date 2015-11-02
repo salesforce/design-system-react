@@ -9,6 +9,8 @@
 
 import React, { Component } from 'react';
 import {Icon} from "../../../SLDSIcons";
+import { EventUtil } from '../../../utils';
+
 
 class DefaultFooter extends React.Component {
   constructor(props) {
@@ -19,8 +21,12 @@ class DefaultFooter extends React.Component {
     if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
   }
 
-  footerClick(){
+  handleClick(){
     console.log('=====> Lookup Footer Clicked');
+  }
+
+  handleMouseDown(event) {
+    EventUtil.trapImmediate(event);
   }
 
   render(){
@@ -28,7 +34,7 @@ class DefaultFooter extends React.Component {
     if(this.props.isActive) className += ' slds-theme--shade'
 
       return (
-        <div className="slds-lookup__item" onClick={this.footerClick}>
+        <div className="slds-lookup__item" onClick={this.handleClick.bind(this)} onMouseDown={this.handleMouseDown.bind(this)}>
           <button id='newItem' tabIndex="-1" className={className}>
             <Icon name='add' category="utility" size="x-small" className="slds-icon-text-default" />
             {this.props.newItemLabel}

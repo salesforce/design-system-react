@@ -77,7 +77,10 @@ module.exports = React.createClass( {
   },
 
   getValueByIndex(index){
-    return this.props.options[index].value;
+    const option = this.props.options[index];
+    if(option){
+      return this.props.options[index].value;
+    }
   },
 
   handleSelect(index) {
