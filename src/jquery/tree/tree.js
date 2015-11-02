@@ -71,8 +71,6 @@ let Tree = function Tree () {
 Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone().find('.tree');
-
-		console.log('this.element', this.element);
 	},
 	
 	_onInitialized () {
