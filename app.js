@@ -1,17 +1,18 @@
-var finalhandler = require('finalhandler');
-var http = require('http');
+var connect = require('connect');
+var compression = require('compression');
 var serveStatic = require('serve-static');
-var port = process.env.PORT || 3000;
-
-// Serve up public folder
-var serve = serveStatic('public', {'index': ['index.html', 'index.htm']});
 
 // Create server
-var server = http.createServer(function(req, res){
-	var done = finalhandler(req, res);
-	serve(req, res, done);
-})
+var app = connect();
+
+// Compress all requests 
+app.use(compression());
+
+// Serve up public folder
+app.use(serveStatic(__dirname + '/public/examples', {'index': ['index.html', 'index.htm']}));
+app.use(serveStatic(__dirname + '/public', {'index': false}));
 
 // Listen
-console.log('Listening on port %s', port);
-server.listen(port);
+var server = app.listen(process.env.PORT || 3000, function() {
+  console.log('Connect server listening on port ' + server.address().port);
+});
