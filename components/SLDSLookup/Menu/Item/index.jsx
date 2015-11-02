@@ -67,7 +67,7 @@ class Item extends React.Component {
           role="option"
           onClick={this.handleClick.bind(this)}
           onMouseDown={this.handleMouseDown.bind(this)}>
-          <Icon name={this.props.type} />
+          <Icon name={this.props.type} category={this.props.iconCategory}/>
           { this.boldSearchText(this.props.children.label) }
         </a>
       </li>
@@ -80,6 +80,7 @@ Item.propTypes = {
   id: React.PropTypes.string,
   href: React.PropTypes.string,
   type: React.PropTypes.string,
+  iconCategory: React.PropTypes.string,
   searchTerm: React.PropTypes.string,
   index: React.PropTypes.number,
   isActive: React.PropTypes.bool,
