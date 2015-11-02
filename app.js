@@ -12,6 +12,9 @@ app.use(compression());
 app.use(serveStatic(__dirname + '/public/examples', {'index': ['index.html', 'index.htm']}));
 app.use(serveStatic(__dirname + '/public', {'index': false}));
 
+// Serve up the built files
+app.use('/build', serveStatic(__dirname + '/build', {'index': false}));
+
 // Listen
 var server = app.listen(process.env.PORT || 3000, function() {
   console.log('Connect server listening on port ' + server.address().port);

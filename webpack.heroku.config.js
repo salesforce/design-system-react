@@ -4,17 +4,17 @@ var node_modules_dir = path.join(__dirname, 'node_modules');
 
 var config = {
 	entry: {
-		react: ['./src/react/examples.js'],
-		jquery: ['./src/jquery/examples.js']
+		react: ['./src/react/examples'],
+		jquery: ['./src/jquery/examples']
 	},
 	resolve: {
-		// root: [
-		// 	node_modules
-		// ],
 		modulesDirectories: [
-			'node_modules'
+			'node_modules',
+			'web_modules',
+			'other'
 		],
 		extensions: [
+			'',
 			'.webpack.js',
 			'.web.js',
 			'.js'
