@@ -320,12 +320,16 @@ class SLDSLookup extends React.Component {
     let componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside":"slds-lookup ignore-react-onclickoutside slds-has-selection";
     let inputContainerClasses =  this.state.selectedIndex === null ? '':' slds-input';
     let inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: '5px'};
+    let inputLabel;
+    if (this.props.label) {
+    	inputLabel = <label className="slds-form-element__label" htmlFor={this.props.type + "Lookup"}>{this.props.label}</label>
+    }
 
     return (
       <div className={componentClasses} data-select="multi" data-scope="single" data-typeahead="true">
         <section className="slds-form-element">
 
-          <label className="slds-form-element__label" htmlFor={this.props.type + "Lookup"}>{this.props.label}</label>
+          {inputLabel}
 
           <div className={"slds-lookup__control slds-input-has-icon slds-input-has-icon--right" + inputContainerClasses} style={inputContainerStyle}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
