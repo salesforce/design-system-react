@@ -1,4 +1,5 @@
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var port = process.env.WEBPACK_PORT || 8080;
 var entries = ['webpack-dev-server/client?http://localhost:' + port, 'webpack/hot/dev-server'];
@@ -47,11 +48,13 @@ var config = {
 			},
 			{
 				test: /\.css$/,
-				loader: 'style-loader!css-loader'
+				loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+				// loader: 'style-loader!css-loader'
 			},
 			{
 				test: /\.scss$/,
-				loader: 'style!css!sass'
+				loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!sass-loader")
+				// loader: 'style!css!sass'
 			}, {
 				test: /\.less$/,
 				loader: 'style!css!less'
@@ -69,6 +72,9 @@ var config = {
 		]
 	},
 	plugins: [
+		new ExtractTextPlugin("style.css", {
+			allChunks: true
+		}),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.DefinePlugin({
 			'process.env': {NODE_ENV: JSON.stringify('development')}
