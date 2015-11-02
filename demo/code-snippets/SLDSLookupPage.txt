@@ -9,11 +9,11 @@ const items = [
 
 <SLDSLookup
   items={items}
-  label="Accounts"
+  label="Account"
   type="account"
-  header={this.getHeader()}
-  footer={this.getFooter()}
+  headerRenderer={SLDSLookup.DefaultHeader}
+  footerRenderer={SLDSLookup.DefaultFooter}
   onChange={this.onChange}
-  onItemSelect={this.onItemSelect} />
-
+  onItemSelect={this.selectItem}
+/>
 
