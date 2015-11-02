@@ -1,15 +1,14 @@
-/***
- * Lightning Design System 0.9.2
- */
-
 /*
 Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 @font-face {
   font-family: "Salesforce Sans";
   src: url("../fonts/webfonts/SalesforceSans-Light.woff2") format("woff2"), url("../fonts/webfonts/SalesforceSans-Light.woff") format("woff");
@@ -204,10 +203,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     font-size: 14px;
     background: transparent; }
   .slds ::-moz-selection {
-    background: #ffffb0;
+    background: #faffbd;
     text-shadow: none; }
   .slds ::selection {
-    background: #ffffb0;
+    background: #faffbd;
     text-shadow: none; }
   .slds h1,
   .slds h2,
@@ -243,12 +242,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds ul {
     list-style: none; }
   .slds a {
+    color: #0070d2;
     text-decoration: none;
     -webkit-transition: color 0.1s linear;
             transition: color 0.1s linear; }
-    .slds a:link,
-    .slds a:visited {
-      color: #0070d2; }
     .slds a:hover,
     .slds a:focus {
       text-decoration: underline;
@@ -264,7 +261,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds dfn {
     font-weight: 700; }
   .slds mark {
-    background-color: #ffffb0; }
+    background-color: #faffbd; }
   .slds abbr[title] {
     cursor: help; }
   .slds input[type=search] {
@@ -310,6 +307,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds h5,
   .slds h6 {
     display: inherit; }
+  .slds li {
+    margin-left: 0; }
   .slds .slds-media--timeline {
     border-left: 2px solid transparent;
     padding-bottom: 32px; }
@@ -354,6 +353,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       content: '\003E';
       position: absolute;
       left: -4px; }
+    .slds .slds-breadcrumb .slds-list__item > a {
+      display: block;
+      padding: 0 8px; }
+      .slds .slds-breadcrumb .slds-list__item > a:hover {
+        text-decoration: none; }
     .slds .slds-breadcrumb .slds-list__item:first-child > a {
       padding-left: 0; }
     .slds .slds-breadcrumb .slds-list__item:first-child:before {
@@ -373,15 +377,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         border-left: 1px solid #d8dde6; }
       .slds .slds-button-group .slds-button:first-child:not(.slds-button--last .slds-button) {
         border-left: 1px solid #d8dde6; }
-      .slds .slds-button-group .slds-button:last-child[disabled] {
-        display: none; }
       .slds .slds-button-group .slds-button:last-child {
         border-radius: 0 4px 4px 0; }
       .slds .slds-button-group .slds-button:focus {
         z-index: 1; }
       .slds .slds-button-group .slds-button:only-child {
         border-radius: 4px; }
-    .slds .slds-button-group + .slds .slds-button-group {
+    .slds .slds-button-group .slds-toggle-visibility:last-child[disabled] {
+      display: none; }
+    .slds .slds-button-group + .slds-button-group,
+    .slds .slds-button-group + .slds-button {
       margin-left: 4px; }
     .slds .slds-button-group .slds-button--last { }
       .slds .slds-button-group .slds-button--last .slds-button {
@@ -389,17 +394,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         border-left: 0; }
     .slds .slds-button-group .slds-button.slds-button--last {
       border-radius: 0 4px 4px 0; }
-  .slds .slds-button--icon-inverse:hover,
-  .slds .slds-button--icon-inverse:focus {
-    border: 1px solid #d8dde6; }
-    .slds .slds-button--icon-inverse:hover:hover,
-    .slds .slds-button--icon-inverse:hover:focus,
-    .slds .slds-button--icon-inverse:focus:hover,
-    .slds .slds-button--icon-inverse:focus:focus {
-      background-color: #f4f6f9; }
-    .slds .slds-button--icon-inverse:hover:active,
-    .slds .slds-button--icon-inverse:focus:active {
-      background-color: #eef1f6; }
   .slds .slds-button-group .slds-button:first-child.slds-button--inverse[disabled] {
     border-left-color: rgba(255, 255, 255, 0.15); }
   .slds .slds-button-group .slds-button--inverse:first-child[disabled] + .slds-button--inverse {
@@ -436,9 +430,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     .slds .slds-button:active,
     .slds .slds-button:visited {
       text-decoration: none; }
-    .slds .slds-button:link,
-    .slds .slds-button:visited {
-      color: #0070d2; }
     .slds .slds-button:hover,
     .slds .slds-button:focus {
       color: #005fb2; }
@@ -449,15 +440,21 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       color: #00396b; }
     .slds .slds-button[disabled] {
       color: #d8dde6; }
-    .slds .slds-button + .slds .slds-button,
-    .slds .slds-button + .slds-button-group,
-    .slds-button-group + .slds .slds-button {
+    .slds .slds-button:hover .slds-button__icon,
+    .slds .slds-button:focus .slds-button__icon,
+    .slds .slds-button:active .slds-button__icon,
+    .slds .slds-button[disabled] .slds-button__icon {
+      fill: currentColor; }
+    .slds .slds-button + .slds-button,
+    .slds .slds-button + .slds-button-group {
       margin-left: 4px; }
   .slds .slds-button-space-left {
     margin-left: 4px; }
-  .slds a.slds-button:focus {
-    outline: 0;
-    box-shadow: 0 0 3px #0070D2; }
+  .slds a.slds-button {
+    text-align: center; }
+    .slds a.slds-button:focus {
+      outline: 0;
+      box-shadow: 0 0 3px #0070D2; }
   .slds .slds-button--small {
     line-height: 30px;
     min-height: 32px; }
@@ -511,6 +508,29 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       background: #e0e5ee;
       border-color: transparent;
       color: white; }
+  .slds .slds-button--destructive {
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #c23934;
+    border: 1px solid #c23934;
+    color: white; }
+    .slds .slds-button--destructive:link,
+    .slds .slds-button--destructive:visited,
+    .slds .slds-button--destructive:active {
+      color: white; }
+    .slds .slds-button--destructive:hover,
+    .slds .slds-button--destructive:focus {
+      background-color: #A61A14;
+      color: white; }
+    .slds .slds-button--destructive:active {
+      background-color: #870500;
+      border-color: #870500; }
+    .slds .slds-button--destructive[disabled] {
+      background: #e0e5ee;
+      border-color: transparent;
+      color: white; }
   .slds .slds-button--inverse {
     padding-left: 16px;
     padding-right: 16px;
@@ -544,8 +564,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds .slds-button--neutral.slds-is-selected {
     border-color: transparent;
     background-color: transparent; }
-    .slds .slds-button--neutral.slds-is-selected:hover,
-    .slds .slds-button--neutral.slds-is-selected:focus {
+    .slds .slds-button--neutral.slds-is-selected:hover:not([disabled]),
+    .slds .slds-button--neutral.slds-is-selected:focus:not([disabled]) {
       border: 1px solid #d8dde6;
       background-color: #f4f6f9; }
     .slds .slds-button--neutral.slds-is-selected:active {
@@ -556,12 +576,15 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     fill: currentColor; }
   .slds .slds-text-not-selected,
   .slds .slds-text-selected,
-  .slds .slds-text-selected-focus {
+  .slds .slds-text-selected-focus,
+  .slds .slds-is-selected[disabled]:hover .slds-text-selected,
+  .slds .slds-is-selected[disabled]:focus .slds-text-selected {
     display: block; }
   .slds .slds-not-selected .slds-text-selected,
   .slds .slds-not-selected .slds-text-selected-focus,
   .slds .slds-is-selected .slds-text-not-selected,
   .slds .slds-is-selected:not(:hover):not(:focus) .slds-text-selected-focus,
+  .slds .slds-is-selected[disabled]:hover .slds-text-selected-focus,
   .slds .slds-is-selected:hover .slds-text-selected,
   .slds .slds-is-selected:focus .slds-text-selected {
     display: none; }
@@ -570,8 +593,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds .slds-button--icon-container,
   .slds .slds-button--icon-border,
   .slds .slds-button--icon-border-filled,
-  .slds .slds-button--icon-bare {
+  .slds .slds-button--icon-bare,
+  .slds .slds-button--icon-more {
     vertical-align: middle;
+    color: #54698d; }
+  .slds .slds-button--icon-bare {
     line-height: 1; }
   .slds .slds-button--icon-border[disabled]:hover,
   .slds .slds-button--icon-border[disabled]:focus {
@@ -592,24 +618,15 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds .slds-button--icon-border-filled {
     width: 36px;
     height: 36px; }
-    .slds .slds-button--icon-container:hover .slds-button__icon,
-    .slds .slds-button--icon-container:focus .slds-button__icon,
-    .slds .slds-button--icon-border:hover .slds-button__icon,
-    .slds .slds-button--icon-border:focus .slds-button__icon,
-    .slds .slds-button--icon-border-filled:hover .slds-button__icon,
-    .slds .slds-button--icon-border-filled:focus .slds-button__icon {
-      fill: #0070d2; }
-    .slds .slds-button--icon-container:active .slds-button__icon,
-    .slds .slds-button--icon-border:active .slds-button__icon,
-    .slds .slds-button--icon-border-filled:active .slds-button__icon {
-      fill: #00396b; }
-    .slds .slds-button--icon-container[disabled] .slds-button__icon,
-    .slds .slds-button--icon-border[disabled] .slds-button__icon,
-    .slds .slds-button--icon-border-filled[disabled] .slds-button__icon {
-      fill: #d8dde6; }
   .slds .slds-button--icon-small {
     width: 32px;
-    height: 32px; }
+    height: 32px;
+    line-height: 30px; }
+  .slds .slds-button--icon-x-small {
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+    line-height: 1; }
   .slds .slds-button--icon-border-filled {
     background-color: white; }
     .slds .slds-button--icon-border-filled[disabled] {
@@ -618,7 +635,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds .slds-button__icon {
     width: 16px;
     height: 16px;
-    fill: #54698d; }
+    fill: currentColor; }
     .slds .slds-button__icon--large {
       width: 24px;
       height: 24px; }
@@ -634,10 +651,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     height: 24px; }
   .slds .slds-button__icon--hint {
     fill: #9faab5; }
-  .slds .slds-button--icon-border-small {
-    width: 20px;
-    height: 20px;
-    border-radius: 2px; }
   .slds .slds-hint-parent:hover .slds-button__icon--hint,
   .slds .slds-hint-parent:focus .slds-button__icon--hint {
     fill: #54698d; }
@@ -684,15 +697,19 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     .slds .slds-button--icon-border.slds-is-selected:hover .slds-button__icon,
     .slds .slds-button--icon-border.slds-is-selected:focus .slds-button__icon {
       fill: white; }
-  .slds .slds-button__icon--inverse {
-    fill: white; }
-    .slds .slds-button__icon--inverse:hover,
-    .slds .slds-button__icon--inverse:focus {
-      fill: rgba(255, 255, 255, 0.75); }
-    .slds .slds-button__icon--inverse:active {
-      fill: rgba(255, 255, 255, 0.5); }
-  .slds .slds-button[disabled] .slds-button__icon--inverse {
-    fill: rgba(255, 255, 255, 0.15); }
+  .slds .slds-button--icon-inverse {
+    color: white; }
+    .slds .slds-button--icon-inverse:hover,
+    .slds .slds-button--icon-inverse:focus {
+      color: rgba(255, 255, 255, 0.75); }
+    .slds .slds-button--icon-inverse:active {
+      color: rgba(255, 255, 255, 0.5); }
+    .slds .slds-button--icon-inverse[disabled] {
+      color: rgba(255, 255, 255, 0.15); }
+  @media (max-width: 29.9375em) {
+    .slds .slds-max-small-button--stretch {
+      display: block;
+      width: 100%; } }
   .slds .slds-card {
     padding: 0;
     border-radius: 4px;
@@ -723,19 +740,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     line-height: 1.5;
     margin-right: 12px;
     margin-bottom: 4px; }
-    .slds-is-required > .slds .slds-form-element__label:before {
-      content: '*';
-      color: #c23934;
-      position: absolute;
-      left: -8px; }
     .slds .slds-form-element__label:empty {
       margin: 0; }
   .slds .slds-form-element__help {
     font-size: 12px;
     margin-top: 8px;
     display: block; }
-    .slds-has-error .slds .slds-form-element__help {
-      color: #c23934; }
   .slds .slds-input {
     background-color: white;
     color: #16325c;
@@ -754,7 +764,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       border-color: #1589ee;
       background-color: white;
       box-shadow: 0 0 3px #0070D2; }
-    .slds .slds-input[disabled] {
+    .slds .slds-input[disabled],
+    .slds .slds-input.slds-is-disabled {
       background-color: #e0e5ee;
       border-color: #a8b7c7;
       cursor: not-allowed;
@@ -763,16 +774,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
           -ms-user-select: none;
               user-select: none; }
       .slds .slds-input[disabled]:focus,
-      .slds .slds-input[disabled]:active {
+      .slds .slds-input[disabled]:active,
+      .slds .slds-input.slds-is-disabled:focus,
+      .slds .slds-input.slds-is-disabled:active {
         box-shadow: none; }
-    .slds-has-error .slds .slds-input {
-      background-color: white;
-      border-color: #c23934;
-      box-shadow: #c23934 0 0 0 1px inset;
-      background-clip: padding-box; }
-      .slds-has-error .slds .slds-input:focus,
-      .slds-has-error .slds .slds-input:active {
-        box-shadow: #c23934 0 0 0 1px inset, 0 0 3px #0070D2; }
   .slds .slds-input--small {
     line-height: 30px;
     min-height: calc(30px + 2px);
@@ -794,15 +799,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       color: #54698d;
       font-weight: 400;
       font-size: 14px; }
-  .slds .slds-input--big {
-    padding: 8px;
-    min-height: calc(34px + 12px + 2px); }
   .slds .slds-input--bare {
     background-color: transparent;
     border: none;
-    color: #16325c;
-    font-weight: 300;
-    font-size: 18px; }
+    color: #16325c; }
     .slds .slds-input--bare:focus,
     .slds .slds-input--bare:active {
       outline: 0; }
@@ -841,7 +841,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       border-color: #1589ee;
       background-color: white;
       box-shadow: 0 0 3px #0070D2; }
-    .slds .slds-textarea[disabled] {
+    .slds .slds-textarea[disabled],
+    .slds .slds-textarea.slds-is-disabled {
       background-color: #e0e5ee;
       border-color: #a8b7c7;
       cursor: not-allowed;
@@ -850,16 +851,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
           -ms-user-select: none;
               user-select: none; }
       .slds .slds-textarea[disabled]:focus,
-      .slds .slds-textarea[disabled]:active {
+      .slds .slds-textarea[disabled]:active,
+      .slds .slds-textarea.slds-is-disabled:focus,
+      .slds .slds-textarea.slds-is-disabled:active {
         box-shadow: none; }
-    .slds-has-error .slds .slds-textarea {
-      background-color: white;
-      border-color: #c23934;
-      box-shadow: #c23934 0 0 0 1px inset;
-      background-clip: padding-box; }
-      .slds-has-error .slds .slds-textarea:focus,
-      .slds-has-error .slds .slds-textarea:active {
-        box-shadow: #c23934 0 0 0 1px inset, 0 0 3px #0070D2; }
   .slds .slds-radio {
     display: inline-block; }
     .slds .slds-radio .slds-radio--faux {
@@ -886,10 +881,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       overflow: hidden;
       padding: 0;
       position: absolute; }
-      .slds-form-element .slds .slds-radio [type="radio"] ~ .slds-radio--faux {
-        margin-right: 8px; }
+      .slds .slds-radio [type="radio"]:checked > .slds-radio--faux,
       .slds .slds-radio [type="radio"]:checked ~ .slds-radio--faux {
         background: white; }
+        .slds .slds-radio [type="radio"]:checked > .slds-radio--faux:after,
         .slds .slds-radio [type="radio"]:checked ~ .slds-radio--faux:after {
           width: 8px;
           height: 8px;
@@ -901,6 +896,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                   transform: translate3d(-50%, -50%, 0);
           border-radius: 50%;
           background: #1589ee; }
+      .slds .slds-radio [type="radio"]:focus > .slds-radio--faux,
       .slds .slds-radio [type="radio"]:focus ~ .slds-radio--faux {
         border-color: #1589ee;
         box-shadow: 0 0 3px #0070D2; }
@@ -913,20 +909,27 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         .slds .slds-radio [type="radio"][disabled] ~ .slds-radio--faux {
           background-color: #e0e5ee;
           border-color: #a8b7c7; }
-      .slds-has-error .slds .slds-radio [type="radio"] ~ .slds-radio--faux {
-        border-color: #c23934;
-        border-width: 2px; }
-      .slds-has-error .slds .slds-radio [type="radio"]:checked ~ .slds-radio--faux {
-        background: white; }
-      .slds-has-error .slds .slds-radio [type="radio"]:checked ~ .slds-radio--faux:after {
-        background: #d4504c; }
-      .slds-is-required > .slds .slds-radio [type="radio"] ~ .slds-radio--faux:after {
-        content: '*';
-        color: #c23934;
-        position: absolute;
-        left: -8px; }
+  .slds .slds-has-error .slds-radio [type="radio"] > .slds-radio--faux,
+  .slds .slds-has-error .slds-radio [type="radio"] ~ .slds-radio--faux {
+    border-color: #c23934;
+    border-width: 2px; }
+  .slds .slds-has-error .slds-radio [type="radio"]:checked > .slds-radio--faux,
+  .slds .slds-has-error .slds-radio [type="radio"]:checked ~ .slds-radio--faux {
+    background: white; }
+  .slds .slds-has-error .slds-radio [type="radio"]:checked > .slds-radio--faux:after,
+  .slds .slds-has-error .slds-radio [type="radio"]:checked ~ .slds-radio--faux:after {
+    background: #d4504c; }
+  .slds .slds-is-required > .slds-radio [type="radio"] > .slds-form-element__label:before,
+  .slds .slds-is-required > .slds-radio [type="radio"] ~ .slds-form-element__label:before {
+    content: '*';
+    color: #c23934;
+    position: absolute;
+    left: -8px; }
   .slds .slds-form-element__control .slds-radio {
     display: block; }
+  .slds .slds-form-element .slds-radio [type="radio"] > .slds-radio--faux,
+  .slds .slds-form-element .slds-radio [type="radio"] ~ .slds-radio--faux {
+    margin-right: 8px; }
   .slds .slds-checkbox {
     display: inline-block; }
     .slds .slds-checkbox .slds-checkbox--faux {
@@ -953,8 +956,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       overflow: hidden;
       padding: 0;
       position: absolute; }
-      .slds-form-element .slds .slds-checkbox [type="checkbox"] ~ .slds-checkbox--faux {
-        margin-right: 8px; }
+      .slds .slds-checkbox [type="checkbox"]:checked > .slds-checkbox--faux:after,
       .slds .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox--faux:after {
         display: block;
         content: '';
@@ -967,31 +969,42 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                 transform: translate3d(-50%, -50%, 0) rotate(-45deg);
         border-bottom: 2px solid #1589ee;
         border-left: 2px solid #1589ee; }
+      .slds .slds-checkbox [type="checkbox"]:focus > .slds-checkbox--faux,
       .slds .slds-checkbox [type="checkbox"]:focus ~ .slds-checkbox--faux {
         content: '';
         border-color: #1589ee;
         box-shadow: 0 0 3px #0070D2; }
+      .slds .slds-checkbox [type="checkbox"]:focus:checked > .slds-checkbox--faux,
       .slds .slds-checkbox [type="checkbox"]:focus:checked ~ .slds-checkbox--faux {
         border-color: #1589ee;
         background-color: white; }
+      .slds .slds-checkbox [type="checkbox"][disabled] > .slds-checkbox--faux,
       .slds .slds-checkbox [type="checkbox"][disabled] ~ .slds-checkbox--faux {
         background-color: #e0e5ee;
         border-color: #a8b7c7; }
+      .slds .slds-checkbox [type="checkbox"][disabled] > .slds-checkbox--faux:after,
       .slds .slds-checkbox [type="checkbox"][disabled] ~ .slds-checkbox--faux:after {
         border-color: white; }
-      .slds-has-error .slds .slds-checkbox [type="checkbox"] ~ .slds-checkbox--faux {
-        border-color: #c23934;
-        border-width: 2px; }
-      .slds-has-error .slds .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox--faux {
-        border-color: #c23934;
-        background-color: white; }
-      .slds-has-error .slds .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox--faux:after {
-        border-color: #d4504c; }
-      .slds-is-required > .slds .slds-checkbox [type="checkbox"] ~ .slds-checkbox--faux:after {
-        content: '*';
-        color: #c23934;
-        position: absolute;
-        left: -8px; }
+  .slds .slds-has-error .slds-checkbox [type="checkbox"] > .slds-checkbox--faux,
+  .slds .slds-has-error .slds-checkbox [type="checkbox"] ~ .slds-checkbox--faux {
+    border-color: #c23934;
+    border-width: 2px; }
+  .slds .slds-has-error .slds-checkbox [type="checkbox"]:checked > .slds-checkbox--faux,
+  .slds .slds-has-error .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox--faux {
+    border-color: #c23934;
+    background-color: white; }
+  .slds .slds-has-error .slds-checkbox [type="checkbox"]:checked > .slds-checkbox--faux:after,
+  .slds .slds-has-error .slds-checkbox [type="checkbox"]:checked ~ .slds-checkbox--faux:after {
+    border-color: #d4504c; }
+  .slds .slds-is-required > .slds-checkbox [type="checkbox"] > .slds-form-element__label:before,
+  .slds .slds-is-required > .slds-checkbox [type="checkbox"] ~ .slds-form-element__label:before {
+    content: '*';
+    color: #c23934;
+    position: absolute;
+    left: -8px; }
+  .slds .slds-form-element .slds-checkbox [type="checkbox"] > .slds-checkbox--faux,
+  .slds .slds-form-element .slds-checkbox [type="checkbox"] ~ .slds-checkbox--faux {
+    margin-right: 8px; }
   .slds .slds-select {
     background-color: white;
     color: #16325c;
@@ -1007,7 +1020,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       border-color: #1589ee;
       background-color: white;
       box-shadow: 0 0 3px #0070D2; }
-    .slds .slds-select[disabled] {
+    .slds .slds-select[disabled],
+    .slds .slds-select.slds-is-disabled {
       background-color: #e0e5ee;
       border-color: #a8b7c7;
       cursor: not-allowed;
@@ -1016,21 +1030,44 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
           -ms-user-select: none;
               user-select: none; }
       .slds .slds-select[disabled]:focus,
-      .slds .slds-select[disabled]:active {
+      .slds .slds-select[disabled]:active,
+      .slds .slds-select.slds-is-disabled:focus,
+      .slds .slds-select.slds-is-disabled:active {
         box-shadow: none; }
-    .slds-has-error .slds .slds-select {
-      background-color: white;
-      border-color: #c23934;
-      box-shadow: #c23934 0 0 0 1px inset;
-      background-clip: padding-box; }
-      .slds-has-error .slds .slds-select:focus,
-      .slds-has-error .slds .slds-select:active {
-        box-shadow: #c23934 0 0 0 1px inset, 0 0 3px #0070D2; }
     .slds .slds-select[size] {
       min-height: 34px;
       height: inherit; }
       .slds .slds-select[size] option {
         padding: 8px; }
+  .slds .slds-picklist--draggable .slds-button {
+    margin: 4px; }
+    .slds .slds-picklist--draggable .slds-button:first-of-type {
+      margin-top: 24px; }
+  .slds .slds-picklist__options {
+    border: 1px solid #d8dde6;
+      border-radius: 4px;
+    padding: 4px 0;
+    width: 240px;
+    height: 240px;
+    background-color: white; }
+    .slds .slds-picklist__options--multi {
+      overflow: auto; }
+  .slds .slds-picklist__item {
+    position: relative;
+    line-height: 1.5; }
+    .slds .slds-picklist__item > a,
+    .slds .slds-picklist__item > span {
+      display: block;
+      padding: 8px 12px; }
+      .slds .slds-picklist__item > a:hover,
+      .slds .slds-picklist__item > span:hover {
+        background-color: #f4f6f9;
+        cursor: pointer; }
+      .slds .slds-picklist__item > a:active,
+      .slds .slds-picklist__item > span:active {
+        background-color: #eef1f6; }
+    .slds .slds-picklist__item[aria-selected="true"] {
+      background-color: #eef1f6; }
   @media (min-width: 48em) {
     .slds .slds-form--horizontal {
       text-align: right; } }
@@ -1066,6 +1103,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     display: block; }
     .slds .slds-form--stacked .slds-form-element + .slds-form-element {
       margin-top: 8px; }
+    .slds .slds-form--stacked .slds-form-element .slds-checkbox,
+    .slds .slds-form--stacked .slds-form-element .slds-radio {
+      display: block; }
   @media (max-width: 29.9375em) {
     .slds .slds-form--inline .slds-form-element {
       margin-bottom: 12px; } }
@@ -1102,6 +1142,37 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     display: inline-block;
     line-height: 34px;
     min-height: calc(34px + 2px); }
+  .slds .slds-is-required > .slds-form-element__label:before {
+    content: '*';
+    color: #c23934;
+    position: absolute;
+    left: -8px; }
+  .slds .slds-has-error .slds-input {
+    background-color: white;
+    border-color: #c23934;
+    box-shadow: #c23934 0 0 0 1px inset;
+    background-clip: padding-box; }
+    .slds .slds-has-error .slds-input:focus,
+    .slds .slds-has-error .slds-input:active {
+      box-shadow: #c23934 0 0 0 1px inset, 0 0 3px #0070D2; }
+  .slds .slds-has-error .slds-textarea {
+    background-color: white;
+    border-color: #c23934;
+    box-shadow: #c23934 0 0 0 1px inset;
+    background-clip: padding-box; }
+    .slds .slds-has-error .slds-textarea:focus,
+    .slds .slds-has-error .slds-textarea:active {
+      box-shadow: #c23934 0 0 0 1px inset, 0 0 3px #0070D2; }
+  .slds .slds-has-error .slds-select {
+    background-color: white;
+    border-color: #c23934;
+    box-shadow: #c23934 0 0 0 1px inset;
+    background-clip: padding-box; }
+    .slds .slds-has-error .slds-select:focus,
+    .slds .slds-has-error .slds-select:active {
+      box-shadow: #c23934 0 0 0 1px inset, 0 0 3px #0070D2; }
+  .slds .slds-has-error .slds-form-element__help {
+    color: #c23934; }
   .slds .slds-grid {
     display: -webkit-box;
     display: -webkit-flex;
@@ -1338,60 +1409,31 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     position: relative;
     border-radius: 4px;
     max-width: 320px;
+    min-height: 32px;
     z-index: 6000;
     background-color: #061c3f; }
-  .slds .slds-nubbin--top .slds-tooltip__content:before {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-    content: "";
-    background-color: #061c3f;
-    left: 50%;
-    top: -8px;
-    margin-left: -8px; }
-  .slds .slds-nubbin--bottom .slds-tooltip__content:before {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-    content: "";
-    background-color: #061c3f;
-    left: 50%;
-    bottom: -8px;
-    margin-left: -8px; }
-  .slds .slds-nubbin--left .slds-tooltip__content:before {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-    content: "";
-    background-color: #061c3f;
-    top: 50%;
-    left: -8px;
-    margin-top: -8px; }
-  .slds .slds-nubbin--right .slds-tooltip__content:before {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-            transform: rotate(45deg);
-    content: "";
-    background-color: #061c3f;
-    top: 50%;
-    right: -8px;
-    margin-top: -8px; }
-  .slds .slds-tooltip__body {
-    padding: 8px 12px;
-    font-size: 12px;
-    color: white; }
+    .slds .slds-tooltip__body {
+      padding: 8px 12px;
+      font-size: 12px;
+      color: white; }
+  .slds .slds-popover {
+    position: relative;
+    border-radius: 4px;
+    max-width: 320px;
+    min-height: 32px;
+    z-index: 6000;
+    background-color: white;
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.16);
+    border: 1px solid #d8dde6; }
+    .slds .slds-popover__body {
+      position: relative;
+      padding: 8px 12px; }
+  .slds .slds-popover--tooltip {
+    background: #061c3f;
+    border: none; }
+    .slds .slds-popover--tooltip .slds-popover__body {
+      font-size: 12px;
+      color: white; }
   .slds .slds-rise-from-ground {
     visibility: visible;
     opacity: 1;
@@ -1430,14 +1472,25 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         -ms-transform: translateX(-5%);
             transform: translateX(-5%);
     will-change: transform; }
-  .slds .slds-popover {
-    position: relative;
-    border-radius: 4px;
-    max-width: 320px;
-    z-index: 6000;
-    background-color: white;
-    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.16); }
-  .slds .slds-nubbin--top .slds-popover__content:before {
+  .slds .slds-popover--panel .slds-popover__header {
+    background: #f4f6f9;
+    padding: 16px;
+    border-radius: 4px 4px 0 0; }
+  .slds .slds-popover--panel .slds-popover__body {
+    padding: 0; }
+  .slds .slds-popover--panel .slds-popover__body-list {
+    padding: 16px;
+    border-top: 1px solid #d8dde6; }
+  .slds .slds-popover--panel.slds-nubbin--left-top:before,
+  .slds .slds-popover--panel.slds-nubbin--left-top:after,
+  .slds .slds-popover--panel.slds-nubbin--right-top:before,
+  .slds .slds-popover--panel.slds-nubbin--right-top:after,
+  .slds .slds-popover--panel.slds-nubbin--top-left:before,
+  .slds .slds-popover--panel.slds-nubbin--top-left:after,
+  .slds .slds-popover--panel.slds-nubbin--top-right:before,
+  .slds .slds-popover--panel.slds-nubbin--top-right:after {
+    background: #f4f6f9; }
+  .slds .slds-nubbin--top:before {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -1445,11 +1498,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
     content: "";
-    background-color: white;
+    background-color: inherit;
     left: 50%;
     top: -8px;
     margin-left: -8px; }
-  .slds .slds-nubbin--top .slds-popover__content:after {
+  .slds .slds-nubbin--top:after {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -1457,14 +1510,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
     content: "";
-    background-color: white;
+    background-color: inherit;
     left: 50%;
     top: -8px;
     margin-left: -8px; }
-  .slds .slds-nubbin--top .slds-popover__content:after {
+  .slds .slds-nubbin--top:after {
     box-shadow: -1px -1px 0 0px rgba(0, 0, 0, 0.16);
     z-index: -1; }
-  .slds .slds-nubbin--bottom .slds-popover__content:before {
+  .slds .slds-nubbin--top-left:before {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -1472,11 +1525,75 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
     content: "";
-    background-color: white;
+    background-color: inherit;
+    left: 50%;
+    top: -8px;
+    margin-left: -8px; }
+  .slds .slds-nubbin--top-left:after {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    left: 50%;
+    top: -8px;
+    margin-left: -8px; }
+  .slds .slds-nubbin--top-left:after {
+    box-shadow: -1px -1px 0 0px rgba(0, 0, 0, 0.16);
+    z-index: -1; }
+  .slds .slds-nubbin--top-left:before,
+  .slds .slds-nubbin--top-left:after {
+    left: 32px;
+    top: -8px; }
+  .slds .slds-nubbin--top-right:before {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    left: 50%;
+    top: -8px;
+    margin-left: -8px; }
+  .slds .slds-nubbin--top-right:after {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    left: 50%;
+    top: -8px;
+    margin-left: -8px; }
+  .slds .slds-nubbin--top-right:after {
+    box-shadow: -1px -1px 0 0px rgba(0, 0, 0, 0.16);
+    z-index: -1; }
+  .slds .slds-nubbin--top-right:before,
+  .slds .slds-nubbin--top-right:after {
+    left: auto;
+    right: 32px;
+    top: -8px;
+    margin-right: -8px; }
+  .slds .slds-nubbin--bottom:before {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
     left: 50%;
     bottom: -8px;
     margin-left: -8px; }
-  .slds .slds-nubbin--bottom .slds-popover__content:after {
+  .slds .slds-nubbin--bottom:after {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -1484,14 +1601,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
     content: "";
-    background-color: white;
+    background-color: inherit;
     left: 50%;
     bottom: -8px;
     margin-left: -8px; }
-  .slds .slds-nubbin--bottom .slds-popover__content:after {
-    box-shadow: 1px 1px 0 0px rgba(0, 0, 0, 0.16);
+  .slds .slds-nubbin--bottom:after {
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.16);
     z-index: -1; }
-  .slds .slds-nubbin--left .slds-popover__content:before {
+  .slds .slds-nubbin--bottom-left:before {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -1499,11 +1616,77 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
     content: "";
-    background-color: white;
+    background-color: inherit;
+    left: 50%;
+    bottom: -8px;
+    margin-left: -8px; }
+  .slds .slds-nubbin--bottom-left:after {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    left: 50%;
+    bottom: -8px;
+    margin-left: -8px; }
+  .slds .slds-nubbin--bottom-left:after {
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.16);
+    z-index: -1; }
+  .slds .slds-nubbin--bottom-left:before,
+  .slds .slds-nubbin--bottom-left:after {
+    left: 32px;
+    top: 100%;
+    margin-top: -8px; }
+  .slds .slds-nubbin--bottom-right:before {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    left: 50%;
+    bottom: -8px;
+    margin-left: -8px; }
+  .slds .slds-nubbin--bottom-right:after {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    left: 50%;
+    bottom: -8px;
+    margin-left: -8px; }
+  .slds .slds-nubbin--bottom-right:after {
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.16);
+    z-index: -1; }
+  .slds .slds-nubbin--bottom-right:before,
+  .slds .slds-nubbin--bottom-right:after {
+    left: auto;
+    right: 32px;
+    top: 100%;
+    margin-top: -8px;
+    margin-right: -8px; }
+  .slds .slds-nubbin--left:before {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
     top: 50%;
     left: -8px;
     margin-top: -8px; }
-  .slds .slds-nubbin--left .slds-popover__content:after {
+  .slds .slds-nubbin--left:after {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -1511,14 +1694,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
     content: "";
-    background-color: white;
+    background-color: inherit;
     top: 50%;
     left: -8px;
     margin-top: -8px; }
-  .slds .slds-nubbin--left .slds-popover__content:after {
-    box-shadow: -1px 1px 0 0px rgba(0, 0, 0, 0.16);
+  .slds .slds-nubbin--left:after {
+    box-shadow: -1px 1px 2px 0px rgba(0, 0, 0, 0.16);
     z-index: -1; }
-  .slds .slds-nubbin--right .slds-popover__content:before {
+  .slds .slds-nubbin--left-top:before {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -1526,11 +1709,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
     content: "";
-    background-color: white;
+    background-color: inherit;
     top: 50%;
-    right: -8px;
+    left: -8px;
     margin-top: -8px; }
-  .slds .slds-nubbin--right .slds-popover__content:after {
+  .slds .slds-nubbin--left-top:after {
     width: 16px;
     height: 16px;
     position: absolute;
@@ -1538,88 +1721,155 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         -ms-transform: rotate(45deg);
             transform: rotate(45deg);
     content: "";
-    background-color: white;
+    background-color: inherit;
+    top: 50%;
+    left: -8px;
+    margin-top: -8px; }
+  .slds .slds-nubbin--left-top:after {
+    box-shadow: -1px 1px 2px 0px rgba(0, 0, 0, 0.16);
+    z-index: -1; }
+  .slds .slds-nubbin--left-top:before,
+  .slds .slds-nubbin--left-top:after {
+    top: 32px; }
+  .slds .slds-nubbin--left-bottom:before {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    top: 50%;
+    left: -8px;
+    margin-top: -8px; }
+  .slds .slds-nubbin--left-bottom:after {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    top: 50%;
+    left: -8px;
+    margin-top: -8px; }
+  .slds .slds-nubbin--left-bottom:before {
+    margin-bottom: -1px; }
+  .slds .slds-nubbin--left-bottom:after {
+    box-shadow: -1px 2px 3px 0px rgba(0, 0, 0, 0.16);
+    z-index: -1; }
+  .slds .slds-nubbin--left-bottom:before,
+  .slds .slds-nubbin--left-bottom:after {
+    top: auto;
+    bottom: 32px; }
+  .slds .slds-nubbin--right:before {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
     top: 50%;
     right: -8px;
     margin-top: -8px; }
-  .slds .slds-nubbin--right .slds-popover__content:after {
-    box-shadow: 1px -1px 0 0px rgba(0, 0, 0, 0.16);
+  .slds .slds-nubbin--right:after {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    top: 50%;
+    right: -8px;
+    margin-top: -8px; }
+  .slds .slds-nubbin--right:after {
+    box-shadow: 1px -1px 2px 0px rgba(0, 0, 0, 0.16);
     z-index: -1; }
-  .slds .slds-popover {
-    border: 1px solid #d8dde6; }
-    .slds .slds-popover__header {
-      padding: 16px 16px 4px; }
-    .slds .slds-popover__body {
-      padding: 12px 16px; }
-  .slds .slds-picklist {
-    position: relative; }
-  .slds .slds-picklist__label {
-    padding-right: 32px;
-    min-width: 240px;
-    max-width: 320px;
-    color: #16325c;
-    text-align: left; }
-    .slds .slds-picklist__label .slds-icon {
-      width: 12px;
-      height: 12px;
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      margin-top: -6px;
-      fill: #54698d; }
-    .slds .slds-picklist__label[aria-disabled="true"] {
-      border-color: #a8b7c7;
-      background-color: #e0e5ee;
-      cursor: not-allowed;
-      -webkit-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none; }
-    .slds .slds-picklist__label .slds-truncate {
-      display: block; }
-  .slds .slds-picklist--draggable .slds-button {
-    margin: 4px; }
-    .slds .slds-picklist--draggable .slds-button:first-of-type {
-      margin-top: 24px; }
-  .slds .slds-picklist__options {
-    border: 1px solid #d8dde6;
-      border-radius: 4px;
-    padding: 4px 0;
-    width: 240px;
-    height: 240px;
-    background-color: white; }
-  .slds .slds-picklist__item {
-    position: relative;
-    line-height: 1.5; }
-    .slds .slds-picklist__item > a,
-    .slds .slds-picklist__item > span {
-      display: block;
-      padding: 8px 12px; }
-      .slds .slds-picklist__item > a:hover,
-      .slds .slds-picklist__item > span:hover {
-        background-color: #f4f6f9;
-        cursor: pointer; }
-      .slds .slds-picklist__item > a:active,
-      .slds .slds-picklist__item > span:active {
-        background-color: #eef1f6; }
-    .slds .slds-picklist__item[aria-selected="true"] {
-      background-color: #eef1f6; }
+  .slds .slds-nubbin--right-top:before {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    top: 50%;
+    right: -8px;
+    margin-top: -8px; }
+  .slds .slds-nubbin--right-top:after {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    top: 50%;
+    right: -8px;
+    margin-top: -8px; }
+  .slds .slds-nubbin--right-top:after {
+    box-shadow: 1px -1px 2px 0px rgba(0, 0, 0, 0.16);
+    z-index: -1; }
+  .slds .slds-nubbin--right-top:before,
+  .slds .slds-nubbin--right-top:after {
+    top: 32px; }
+  .slds .slds-nubbin--right-bottom:before {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    top: 50%;
+    right: -8px;
+    margin-top: -8px; }
+  .slds .slds-nubbin--right-bottom:after {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+    content: "";
+    background-color: inherit;
+    top: 50%;
+    right: -8px;
+    margin-top: -8px; }
+  .slds .slds-nubbin--right-bottom:before {
+    margin-bottom: -1px; }
+  .slds .slds-nubbin--right-bottom:after {
+    box-shadow: 2px -1px 3px 0px rgba(0, 0, 0, 0.16);
+    z-index: -1; }
+  .slds .slds-nubbin--right-bottom:before,
+  .slds .slds-nubbin--right-bottom:after {
+    top: auto;
+    bottom: 32px; }
   .slds .slds-dropdown {
-    margin-top: 2px;
-    padding: 4px 0;
-    z-index: 7000;
-    float: left;
     position: absolute;
+    z-index: 7000;
+    left: 50%;
+    float: left;
     min-width: 96px;
     max-width: 320px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
+    margin-top: 2px;
     border: 1px solid #d8dde6;
     border-radius: 4px;
+    padding: 4px 0;
+    background: white;
     box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.16);
-    background: white; }
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%); }
     .slds .slds-dropdown--left {
       left: 0;
       -webkit-transform: translateX(0);
@@ -1631,6 +1881,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       -webkit-transform: translateX(0);
           -ms-transform: translateX(0);
               transform: translateX(0); }
+    .slds .slds-dropdown--bottom {
+      bottom: 100%; }
     .slds .slds-dropdown--small {
       min-width: 240px; }
     .slds .slds-dropdown--medium {
@@ -1639,8 +1891,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       min-width: 400px;
       max-width: 512px; }
     .slds .slds-dropdown mark {
-      background-color: transparent;
-      font-weight: 700; }
+      font-weight: 700;
+      background-color: transparent; }
+    .slds .slds-dropdown[class*="slds-nubbin--top"] {
+      margin-top: 8px; }
+    .slds .slds-dropdown[class*="slds-nubbin--bottom"] {
+      margin-bottom: 8px; }
     .slds .slds-dropdown--nubbin-top {
       margin-top: 8px; }
       .slds .slds-dropdown--nubbin-top:before {
@@ -1690,45 +1946,40 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       padding: 8px 12px; }
     .slds .slds-dropdown__item {
       line-height: 1.5; }
-      .slds .slds-dropdown__item > a,
-      .slds .slds-dropdown__item > span {
-        display: block;
+      .slds .slds-dropdown__item > a {
+        position: relative;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
         padding: 8px 12px;
         color: #16325c;
-        position: relative;
         white-space: nowrap;
         cursor: pointer; }
         .slds .slds-dropdown__item > a:hover,
-        .slds .slds-dropdown__item > a:focus,
-        .slds .slds-dropdown__item > span:hover,
-        .slds .slds-dropdown__item > span:focus {
+        .slds .slds-dropdown__item > a:focus {
           outline: 0;
           text-decoration: none;
           background-color: #f4f6f9; }
-        .slds .slds-dropdown__item > a:active,
-        .slds .slds-dropdown__item > span:active {
+        .slds .slds-dropdown__item > a:active {
           text-decoration: none;
           background-color: #eef1f6; }
-        .slds .slds-dropdown__item > a[aria-disabled="true"],
-        .slds .slds-dropdown__item > span[aria-disabled="true"] {
+        .slds .slds-dropdown__item > a[aria-disabled="true"] {
           color: #d8dde6;
           cursor: default; }
-          .slds .slds-dropdown__item > a[aria-disabled="true"]:hover,
-          .slds .slds-dropdown__item > span[aria-disabled="true"]:hover {
+          .slds .slds-dropdown__item > a[aria-disabled="true"]:hover {
             background-color: transparent; }
-      .slds .slds-dropdown__item.slds-is-selected .slds-icon {
-        fill: #0070d2; }
-      .slds .slds-dropdown__item .slds-icon {
-        width: 16px;
-        height: 16px;
-        position: absolute;
-        top: 50%;
-        margin-top: -8px;
-        fill: #54698d; }
-        .slds .slds-dropdown__item .slds-icon--left {
-          left: 12px; }
-        .slds .slds-dropdown__item .slds-icon--right {
-          right: 12px; }
+      .slds .slds-dropdown__item .slds-icon--selected {
+        opacity: 0;
+        -webkit-transition: opacity 0.05s ease;
+                transition: opacity 0.05s ease; }
+      .slds .slds-dropdown__item.slds-is-selected .slds-icon--selected {
+        fill: #0070d2;
+        opacity: 1; }
     .slds .slds-dropdown .slds-has-icon {
       position: relative; }
       .slds .slds-dropdown .slds-has-icon--left > a,
@@ -1741,6 +1992,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       .slds .slds-dropdown .slds-has-icon--left-right > span {
         padding-left: 32px;
         padding-right: 32px; }
+      .slds .slds-dropdown .slds-has-icon .slds-icon {
+        width: 16px;
+        height: 16px;
+        position: absolute;
+        top: 50%;
+        margin-top: -8px;
+        fill: #54698d; }
+        .slds .slds-dropdown .slds-has-icon .slds-icon--left {
+          left: 12px; }
+        .slds .slds-dropdown .slds-has-icon .slds-icon--right {
+          right: 12px; }
   .slds .slds-dropdown-trigger {
     position: relative;
     display: inline-block; }
@@ -1758,6 +2020,50 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         opacity: 1;
         -webkit-transition: opacity 0.1s linear, visibility 0.1s linear;
                 transition: opacity 0.1s linear, visibility 0.1s linear; }
+    .slds .slds-dropdown-trigger--click .slds-dropdown {
+      display: none; }
+    .slds .slds-dropdown-trigger--click.slds-is-open {
+      display: block;
+      visibility: visible;
+      opacity: 1; }
+    .slds .slds-dropdown-trigger > [class*="slds-button--icon"] ~ .slds-dropdown--left[class*="slds-nubbin"] {
+      left: -16px; }
+    .slds .slds-dropdown-trigger > [class*="slds-button--icon"] ~ .slds-dropdown--right[class*="slds-nubbin"] {
+      right: -16px; }
+  .slds .slds-picklist {
+    position: relative; }
+    .slds .slds-picklist .slds-dropdown {
+      width: 240px;
+      max-height: calc((((14px * 1.5) + 16px) * 5) + 8px + 2px);
+      overflow-y: auto; }
+    .slds .slds-picklist--fluid .slds-picklist__label,
+    .slds .slds-picklist--fluid .slds-dropdown {
+      width: auto;
+      min-width: 0;
+      max-width: 240px; }
+  .slds .slds-picklist__label {
+    padding-right: 32px;
+    width: 240px;
+    color: #16325c;
+    text-align: left; }
+    .slds .slds-picklist__label .slds-icon {
+      width: 12px;
+      height: 12px;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      margin-top: -6px;
+      fill: #54698d; }
+    .slds .slds-picklist__label[aria-disabled="true"] {
+      border-color: #a8b7c7;
+      background-color: #e0e5ee;
+      cursor: not-allowed;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none; }
+    .slds .slds-picklist__label .slds-truncate {
+      display: block; }
   .slds .slds-dropdown--actions a {
     color: #0070d2; }
   .slds .slds-datepicker {
@@ -1773,7 +2079,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       color: #54698d; }
     .slds .slds-datepicker td {
       padding: 4px;
-      text-align: center; }
+      text-align: center;
+      font-size: 12px; }
       .slds .slds-datepicker td > .slds-day {
         width: 32px;
         height: 32px;
@@ -1832,10 +2139,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       padding: 4px; }
     .slds .slds-datepicker__filter--month {
       padding: 0 4px 0 0; }
-    .slds .slds-datepicker .slds-picklist__label {
-      min-width: 0;
-      font-size: 12px;
-      font-weight: 400; }
   .slds .slds-disabled-text {
     color: #d8dde6; }
   .slds .slds-datepicker--time {
@@ -1853,6 +2156,128 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         background: #f4f6f9;
         text-decoration: none;
         cursor: pointer; }
+  .slds .slds-publisher.slds-is-active .slds-publisher__toggle-visibility {
+    display: inherit; }
+  .slds .slds-publisher.slds-is-active .slds-publisher__input {
+    line-height: 1.5;
+    height: auto;
+    max-height: 160px;
+    resize: vertical;
+    padding-top: 12px;
+    padding-bottom: 12px; }
+  .slds .slds-publisher__input {
+    line-height: 34px;
+    padding: 0 16px;
+    resize: none;
+    min-height: calc(34px + 2px);
+    max-height: calc(34px + 2px);
+    width: 100%;
+    -webkit-transition: min-height 0.4s ease, max-height 0.4s ease;
+            transition: min-height 0.4s ease, max-height 0.4s ease; }
+  .slds .slds-publisher__actions > .slds-button {
+    margin-left: 12px; }
+  .slds .slds-publisher .slds-publisher__toggle-visibility {
+    display: none; }
+  .slds .slds-publisher--discussion {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .slds .slds-publisher--discussion.slds-is-active {
+      display: block; }
+  .slds .slds-publisher--comment {
+    background-color: white;
+    color: #16325c;
+    border: 1px solid #d8dde6;
+      border-radius: 4px;
+    width: 100%;
+    position: relative;
+    min-height: calc(34px + 2px);
+    max-height: calc(34px + 2px);
+    -webkit-transition: min-height 0.4s ease, max-height 0.4s ease;
+            transition: min-height 0.4s ease, max-height 0.4s ease; }
+    .slds .slds-publisher--comment.slds-is-active {
+      min-height: 96px;
+      max-height: 240px; }
+      .slds .slds-publisher--comment.slds-is-active .slds-publisher__actions {
+        opacity: 1; }
+    .slds .slds-publisher--comment.slds-has-focus {
+      outline: 0;
+      border-color: #1589ee;
+      background-color: white;
+      box-shadow: 0 0 3px #0070D2; }
+    .slds .slds-publisher--comment .slds-publisher__actions {
+      opacity: 0;
+      padding: 0 12px 12px; }
+    .slds .slds-publisher--comment .slds-attachments {
+      padding: 8px 12px; }
+  .slds .slds-feed {
+    position: relative; }
+    .slds .slds-feed__list {
+      margin: 0;
+      padding: 0; }
+    .slds .slds-feed__item {
+      padding: 16px 0; }
+      .slds .slds-feed__item + .slds-feed__item {
+        border-top: 1px solid #d8dde6; }
+  .slds .slds-comment__content {
+    padding-top: 8px;
+    padding-bottom: 8px; }
+  .slds .slds-comment .slds-text-body--small a {
+    color: inherit; }
+  .slds .slds-comment__content {
+    padding-top: 8px;
+    padding-bottom: 8px; }
+  .slds .slds-tags {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
+    .slds .slds-tags__list {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex; }
+    .slds .slds-tags__item {
+      margin-left: 4px; }
+      .slds .slds-tags__item:after {
+        content: ', '; }
+      .slds .slds-tags__item:last-child:after {
+        content: none; }
+  .slds .slds-comment__replies {
+    padding-top: 16px;
+    margin-left: 60px; }
+    .slds .slds-comment__replies > :last-child,
+    .slds .slds-comment__replies > :last-child .slds-comment {
+      padding-bottom: 0; }
+      .slds .slds-comment__replies > :last-child:before,
+      .slds .slds-comment__replies > :last-child .slds-comment:before {
+        content: none; }
+    .slds .slds-comment__replies .slds-comment {
+      position: relative;
+      margin-bottom: 0;
+      padding-bottom: 16px; }
+      .slds .slds-comment__replies .slds-comment:before {
+        content: '';
+        background: #d8dde6;
+        height: 100%;
+        width: 1px;
+        position: absolute;
+        left: 18px;
+        top: 0;
+        bottom: 0;
+        margin-left: -0.5px;
+        z-index: -1; }
+    .slds .slds-comment__replies .slds-avatar {
+      border: 2px solid white; }
+  .slds .slds-comment__overflow {
+    margin-bottom: 16px; }
+  .slds .slds-attachments {
+    padding: 8px 0; }
+    .slds .slds-attachments:empty {
+      padding: 0; }
+    .slds .slds-attachments__item + .slds .slds-attachments__item {
+      margin-top: 16px; }
   .slds .slds-modal {
     opacity: 0;
     visibility: hidden;
@@ -1884,13 +2309,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       -webkit-justify-content: center;
           -ms-flex-pack: center;
               justify-content: center;
-      margin: 0 auto;
-      padding: 48px 0;
-      border-radius: 4px;
       width: 50%;
       max-width: 640px;
       min-width: 320px;
-      height: 100%; }
+      height: 100%;
+      margin: 0 auto;
+      padding: 48px 0;
+      border-radius: 4px; }
     .slds .slds-modal__header,
     .slds .slds-modal__content {
       background: white; }
@@ -1916,7 +2341,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       border-bottom-left-radius: 4px;
       padding: 12px 16px;
       background-color: #f4f6f9;
-      text-align: right; }
+      text-align: right;
+      box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.16); }
     .slds .slds-modal__close {
       position: absolute;
       top: -48px;
@@ -1983,13 +2409,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
             transform: translate(0, 16px); }
   .slds .slds-modal--large .slds-modal__container {
     width: 90%;
-    max-width: 960px;
+    max-width: none;
     min-width: 640px; }
   .slds .slds-modal__footer--directional .slds-button:first-child {
     float: left; }
-  .slds .slds-modal__header p {
-    margin-top: 12px;
-    color: #54698d; }
   .slds .slds-pill {
     background-color: white;
     display: inline-block;
@@ -2254,6 +2677,20 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     .slds .slds-notify--alert {
       padding: 8px;
       text-align: center; }
+  .slds .slds-modal--prompt .slds-modal__header {
+    border-bottom: none; }
+  .slds .slds-modal--prompt .slds-modal__content {
+    padding-left: 32px;
+    padding-right: 32px; }
+  .slds .slds-modal--prompt .slds-modal__footer {
+    border-top: none;
+    text-align: center; }
+  .slds .slds-modal--prompt .slds-modal__close {
+    display: none; }
+  .slds .slds-modal__header .slds-notify-container {
+    position: absolute; }
+  .slds .slds-modal__header .slds-notify--toast {
+    display: block; }
   .slds .slds-lookup {
     position: relative; }
     .slds .slds-lookup__list {
@@ -2351,7 +2788,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       border-color: #1589ee;
       background-color: white;
       box-shadow: 0 0 3px #0070D2; }
-    .slds .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled] {
+    .slds .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled],
+    .slds .slds-lookup[data-scope="multi"] .slds-form-element__control.slds-is-disabled {
       background-color: #e0e5ee;
       border-color: #a8b7c7;
       cursor: not-allowed;
@@ -2360,16 +2798,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
           -ms-user-select: none;
               user-select: none; }
       .slds .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled]:focus,
-      .slds .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled]:active {
+      .slds .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled]:active,
+      .slds .slds-lookup[data-scope="multi"] .slds-form-element__control.slds-is-disabled:focus,
+      .slds .slds-lookup[data-scope="multi"] .slds-form-element__control.slds-is-disabled:active {
         box-shadow: none; }
-    .slds-has-error .slds .slds-lookup[data-scope="multi"] .slds-form-element__control {
-      background-color: white;
-      border-color: #c23934;
-      box-shadow: #c23934 0 0 0 1px inset;
-      background-clip: padding-box; }
-      .slds-has-error .slds .slds-lookup[data-scope="multi"] .slds-form-element__control:focus,
-      .slds-has-error .slds .slds-lookup[data-scope="multi"] .slds-form-element__control:active {
-        box-shadow: #c23934 0 0 0 1px inset, 0 0 3px #0070D2; }
     .slds .slds-lookup[data-scope="multi"] .slds-form-element__control .slds-input--bare {
       -webkit-box-flex: 1;
       -webkit-flex: 1;
@@ -2405,7 +2837,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
               flex: 1;
       min-width: 0; }
     .slds .slds-media__body,
-    .slds .slds-media__body :last-child {
+    .slds .slds-media__body > :last-child {
       margin-bottom: 0; }
   .slds .slds-media--small .slds-media__figure {
     margin-right: 4px; }
@@ -3087,6 +3519,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     background-color: #f2cf5b; }
   .slds .slds-icon-standard-case-change-status {
     background-color: #f2cf5b; }
+  .slds .slds-icon-standard-client {
+    background-color: #00d2be; }
   .slds .slds-icon-standard-contract {
     background-color: #6ec06e; }
   .slds .slds-icon-standard-dashboard {
@@ -3117,8 +3551,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     background-color: #56aadf; }
   .slds .slds-icon-standard-groups {
     background-color: #779ef2; }
+  .slds .slds-icon-standard-household {
+    background-color: #00afa0; }
   .slds .slds-icon-standard-insights {
     background-color: #ec94ed; }
+  .slds .slds-icon-standard-investment-account {
+    background-color: #4bc076; }
   .slds .slds-icon-standard-performance {
     background-color: #f8b156; }
   .slds .slds-icon-standard-link {
@@ -3270,8 +3708,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       color: #0070d2; }
       .slds .slds-is-sortable:hover .slds-button {
         visibility: visible; }
-      .slds .slds-is-sortable:hover .slds-button__icon {
-        fill: #0070d2; }
   @media (max-width: 47.9375em) {
     .slds .slds-max-medium-table--stacked {
       border: 0; }
@@ -4107,26 +4543,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: column;
-        -ms-flex-direction: column;
-            flex-direction: column; }
-    .slds .slds-list--horizontal > .slds-list__item > a {
-      padding: 0 8px;
-      display: block; }
-      .slds .slds-list--horizontal > .slds-list__item > a:hover,
-      .slds .slds-list--horizontal > .slds-list__item > a:focus {
-        text-decoration: none; }
-    @media (min-width: 48em) {
-      .slds .slds-list--horizontal {
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-        -webkit-flex-direction: row;
-            -ms-flex-direction: row;
-                flex-direction: row; } }
+    display: flex; }
     .slds .slds-list--horizontal > .slds-list__item {
+      -webkit-align-self: center;
+          -ms-flex-item-align: center;
+              align-self: center;
       display: inline-block;
       vertical-align: middle; }
   .slds .slds-list--horizontal-large > .slds-list__item > a {
@@ -4140,6 +4561,18 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     margin-top: 8px;
     padding-top: 8px;
     border-top: 1px solid #d8dde6; }
+    .slds .slds-has-divider--top {
+      border-top: 1px solid #d8dde6; }
+      .slds .slds-has-divider--top-space {
+        margin-top: 8px;
+        padding-top: 8px;
+        border-top: 1px solid #d8dde6; }
+    .slds .slds-has-divider--bottom {
+      border-bottom: 1px solid #d8dde6; }
+      .slds .slds-has-divider--bottom-space {
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #d8dde6; }
   .slds .slds-list--vertical.slds-has-dividers > .slds-list__item {
     padding: 8px;
     border-bottom: 1px solid #d8dde6; }
@@ -4167,24 +4600,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       margin-left: 8px;
       margin-right: 8px;
       border-radius: 50%;
-      background-color: #16325c; }
+      background-color: #54698d; }
     .slds .slds-list--horizontal.slds-has-dividers > .slds-list__item:last-child {
       margin-right: 0;
       padding-right: 0; }
       .slds .slds-list--horizontal.slds-has-dividers > .slds-list__item:last-child:after {
         content: none; }
-    @media (max-width: 47.9375em) {
-      .slds .slds-list--horizontal.slds-has-dividers > .slds-list__item:before {
-        width: 4px;
-        height: 4px;
-        content: '';
-        display: inline-block;
-        vertical-align: middle;
-        border-radius: 50%;
-        background-color: #16325c;
-        margin-right: 12px; }
-      .slds .slds-list--horizontal.slds-has-dividers > .slds-list__item:after {
-        content: none; } }
   .slds .slds-list--vertical.slds-has-cards .slds-list__item {
     padding: 8px;
     border-radius: 4px;
@@ -4280,6 +4701,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds .slds-theme--warning {
     background-color: #ffb75d;
     color: #16325c; }
+    .slds .slds-theme--warning .slds-button__icon {
+      fill: #54698d; }
   .slds .slds-theme--error {
     color: white;
     background-color: #c23934; }
