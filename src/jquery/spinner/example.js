@@ -1,9 +1,9 @@
 import * as Lib from '../../lib/lib';
 import Spinner from './spinner';
 
-require('../../../scss/components/grid-system/flavors/automatic-sizing/index.scss');
-require('../../../scss/components/grid-system/flavors/horizontal-alignment-spread/index.scss');
-require('../../../scss/components/grid-system/flavors/vertical-alignment/index.scss');
+// require('../../../scss/components/grid-system/flavors/automatic-sizing/index.scss');
+// require('../../../scss/components/grid-system/flavors/horizontal-alignment-spread/index.scss');
+// require('../../../scss/components/grid-system/flavors/vertical-alignment/index.scss');
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

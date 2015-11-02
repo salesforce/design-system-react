@@ -89,6 +89,10 @@ module.exports = function (grunt) {
 			options: require('./webpack.dist.config'),
 			build: {}
 		},
+		'webpack-heroku': {
+			options: require('./webpack.heroku.config'),
+			build: {}
+		},
 		'webpack-dev-server': {
 			start: {
 				webpack: require('./webpack.config'),

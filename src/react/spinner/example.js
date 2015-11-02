@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Spinner from './spinner';
 
-require('../../../scss/components/grid-system/flavors/automatic-sizing/index.scss');
-require('../../../scss/components/grid-system/flavors/horizontal-alignment-spread/index.scss');
-require('../../../scss/components/grid-system/flavors/vertical-alignment/index.scss');
+// require('../../../scss/components/grid-system/flavors/automatic-sizing/index.scss');
+// require('../../../scss/components/grid-system/flavors/horizontal-alignment-spread/index.scss');
+// require('../../../scss/components/grid-system/flavors/vertical-alignment/index.scss');
 
 export default function () {
 	ReactDOM.render(
