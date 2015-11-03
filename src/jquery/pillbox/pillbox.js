@@ -152,7 +152,7 @@ const legacyMethods = {
 
 		this.selectItems(items, baseZeroIndex);
 
-		return this.elements.wrapper;
+		return this.elements.control;
 	},
 
 	removeItems (index, count) {
@@ -161,7 +161,7 @@ const legacyMethods = {
 
 		this.deselectItems(selection.slice(baseZeroIndex, baseZeroIndex + count));
 
-		return this.elements.wrapper;
+		return this.elements.control;
 	},
 
 	items () {
@@ -185,7 +185,7 @@ const legacyMethods = {
 
 		this.deselectItem(item);
 
-		return this.elements.wrapper;
+		return this.elements.control;
 	},
 
 	removeByText (text) {
@@ -197,7 +197,7 @@ const legacyMethods = {
 			}
 		});
 
-		return this.elements.wrapper;
+		return this.elements.control;
 	},
 
 	removeByValue (value) {
@@ -209,7 +209,7 @@ const legacyMethods = {
 			}
 		});
 
-		return this.elements.wrapper;
+		return this.elements.control;
 	}
 };
 

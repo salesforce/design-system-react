@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
 // Framework Specific
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
 
@@ -16,60 +17,62 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // Template imports
 import template from './datepicker-template';
 
-let Datepicker = function Datepicker (element, options) {
-	this.options = Lib.extend({
-		open: []
-	}, options);
+let Datepicker = function Datepicker () {
+	const options = this._getOptions(arguments);
 
-	this.elements = {
-		wrapper: $(element)
-	};
-
-	const $html = $('<i />').append(template);
-	this.template = $html.find('.' + this.cssClasses.WRAPPER);
-
+	this.template = $(template);
 	this.$weekTemplate = $('<tr></tr>');
 	this.$dayTemplate = $('<td role="gridcell" aria-disabled="true"><span class="slds-day"></span></td>');
 
-	this._initializeState();
-	this._initialize(this.options);
+	this._initialize(options);
 };
 
-Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, {
-	_onInitialized () {
-		this._render();
+Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 
-		this.elements.wrapper.on('click.slds-datepicker-form', '.slds-input', $.proxy(this._toggleDatepicker, this));
+	_onBeforeInitialize (options) {
+		this.elements = {};
 
-		this.elements.wrapper.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', $.proxy(this._backMonth, this));
-		this.elements.wrapper.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', $.proxy(this._forwardMonth, this));
+		if (options.wrapper) {
+			this.appendTo(options.wrapper);
+			delete options.wrapper;
+		}
 
-		this.elements.wrapper.on('click.slds-datepicker-form', '.slds-day', $.proxy(this._selectDate, this));
+		this._initializeState();
+	},
 
-		this.trigger('initialized');
+	_initializer () {
+		this.element = this.$el = this.elements.control = this.template.clone();
+
+		this.elements.formElement = this.$el.find('.slds-form-element');
+		this.elements.input = this.$el.find('.slds-input');
+		this.elements.datepicker = this.$el.find('.slds-datepicker');
+		this.elements.calendar = this.$el.find('.datepicker__month');
+		this.elements.calendarDays = this.elements.calendar.find('tbody');
+		this.elements.monthName = this.$el.find('.slds-datepicker__filter--month h2');
+		this.elements.year = this.$el.find('.slds-datepicker__filter .slds-picklist');
+
+		this.elements.popover = Lib.wrapElement(this.elements.datepicker);
+		this.elements.container = Lib.wrapElement(this.$el);
+		this.elements.align = Lib.wrapElement(this.elements.formElement);
+	},
+
+	_bindUIEvents () {
+		this.element.on('click.slds-datepicker-form', '.slds-input', $.proxy(this._toggleDatepicker, this));
+
+		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', $.proxy(this._backMonth, this));
+		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', $.proxy(this._forwardMonth, this));
+
+		this.element.on('click.slds-datepicker-form', '.slds-day', $.proxy(this._selectDate, this));
 	},
 
 	_render () {
-		const $el = this.template.clone();
-
-		this.elements.form = $el;
-		this.elements.formElement = $el.find('.slds-form-element');
-		this.elements.input = $el.find('.slds-input');
-		this.elements.datepicker = $el.find('.slds-datepicker');
-		this.elements.calendar = $el.find('.datepicker__month');
-		this.elements.calendarDays = this.elements.calendar.find('tbody');
-		this.elements.monthName = $el.find('.slds-datepicker__filter--month h2');
-		this.elements.year = $el.find('.slds-datepicker__filter .slds-picklist');
-
-		this.elements.popover = Lib.wrapElement(this.elements.datepicker);
-		this.elements.container = Lib.wrapElement(this.elements.form);
-		this.elements.align = Lib.wrapElement(this.elements.formElement);
-
-		// Prep for append
-		this.elements.wrapper.empty();
-		this.elements.wrapper.append($el);
-
 		this._renderDateRange();
+
+		return this.element;
+	},
+
+	_onRendered () {
+		this._bindUIEvents();
 	},
 
 	_toggleDatepicker () {

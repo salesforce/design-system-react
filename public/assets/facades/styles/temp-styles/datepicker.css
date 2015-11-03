@@ -2,9 +2,14 @@
 	position: relative;
 }
 
+.slds-datepicker {
+	margin-top: 0;
+}
+
 .slds-datepicker .slds-datepicker__filter--month h2 {
 	width: 120px;
 	text-align: center;
+	margin-top: 2px;
 }
 
 .slds-datepicker .slds-picklist .slds-button {
