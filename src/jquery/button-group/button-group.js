@@ -27,12 +27,6 @@ let ButtonGroup = function ButtonGroup () {
 		theme: options.theme
 	};
 	
-	if (options.buttons.length > 0) {
-		options.buttons = options.buttons.map((child) => {
-			return Lib.extend({}, this.childOptions, child);
-		});
-	}
-	
 	this._initialize(options);
 };
 
@@ -45,25 +39,25 @@ export const ButtonGroupObject = {
 
 	// TODO: Support dropdowns also
 	_renderButtons () {
-		const buttonsOptions = this.getProperty('buttons');
-		const buttonElements = [];
-		let $button;
-
-		if (this.getProperty('children').length > 0 ) {
-			this.getProperty('children').forEach((child) => {
-				buttonElements.push(child.element);
-			});
+		const buttonOptions = this.getProperty('buttons');
+		let children;
+		
+		children = [].concat(this.getProperty('children'));
+		
+		if (Lib.isArray(buttonOptions)) {
+			children = children.concat(buttonOptions.map((child) => {
+				return new Button(Lib.extend({}, this.childOptions, child));
+			}));
 		}
-
-		if (buttonsOptions.length > 0 ) {
-			buttonsOptions.forEach((options) => {
-				$button = new Button(options);
-				this.getProperty('children').push($button);
-				buttonElements.push($button.element);
-			});
-		}
-
-		return buttonElements;
+		
+		this.setProperties({
+			children,
+			buttons: null
+		});
+		
+		return children.map((button) => {
+			return button.element;
+		});
 	},
 
 	_render () {
