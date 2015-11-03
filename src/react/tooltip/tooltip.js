@@ -12,8 +12,16 @@ import React from 'react';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
+import mountable from '../mixins/custom-prop-types/mountable';
 
 let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
+	propTypes: {
+		align: mountable,
+		container: mountable,
+		isOpen: React.PropTypes.bool,
+		placement: React.PropTypes.string
+	},
+
 	mixins: [State, Events, genericWillMount],
 
 	render () {
