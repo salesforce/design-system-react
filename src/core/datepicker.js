@@ -6,10 +6,11 @@ import Base from './base';
 // Traits
 import Disableable from '../traits/disableable';
 import Multiselectable from '../traits/multiselectable';
+import Positionable from '../traits/positionable';
 
 export const CONTROL = 'datepicker';
 
-const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
+const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, Positionable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -18,7 +19,10 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 
 	_defaultProperties: {
 		multiSelect: false,
-		dateRange: [new Date('1991'),new Date('2030')]
+		dateRange: [new Date('1991'),new Date('2030')],
+		targetDistance: 0,// Used by positionable
+		targetLateralAlign: 'left',
+		position: 'bottom'
 	},
 
 	_defaultState: {

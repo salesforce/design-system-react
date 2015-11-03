@@ -5,7 +5,9 @@ import * as Lib from '../lib/lib';
 const Positionable = {
 	_defaultProperties: {
 		position: 'right',
-		autoFlip: true
+		autoFlip: true,
+		targetDistance: 15,
+		targetLateralAlign: 'center'// center, left
 	},
 
 	positions: {
@@ -17,7 +19,10 @@ const Positionable = {
 
 	_getElementAlignment (el, container, align, newPosition) {
 		const offset = Lib.offsetFromParent(align[0], container[0]);
+		const targetDistance = this.getProperty('targetDistance');
+		const targetLateralAlign = this.getProperty('targetLateralAlign');
 		const position = {};
+		let alignLatPos = 0;
 		
 		const popSize = {
 			width: el.outerWidth(),
@@ -31,23 +36,28 @@ const Positionable = {
 		
 		const currentPosition = newPosition || this.getProperty('position');
 
-		// TODO: Get ride of the hardcoded 15
+		if (targetLateralAlign === 'center') {
+			alignLatPos = (popSize.width / 2) - (alignSize.width / 2);
+		} else if (targetLateralAlign === 'left') {
+			alignLatPos = 0;
+		}
+
 		switch (currentPosition) {
 			case 'left':
-				position.left = offset.left - (popSize.width + 15);
+				position.left = offset.left - (popSize.width + targetDistance);
 				position.top = offset.top - ((popSize.height / 2) - (alignSize.height / 2));
 				break;
 			case 'top':
-				position.left = offset.left - ((popSize.width / 2) - (alignSize.width / 2));
-				position.top = offset.top - (popSize.height + 15);
+				position.left = offset.left - alignLatPos;
+				position.top = offset.top - (popSize.height + targetDistance);
 				break;
 			case 'bottom':
-				position.left = offset.left - ((popSize.width / 2) - (alignSize.width / 2));
-				position.top = offset.top + alignSize.height + 15;
+				position.left = offset.left - alignLatPos;
+				position.top = offset.top + alignSize.height + targetDistance;
 				break;
 			case 'right':
 			default:
-				position.left = offset.left + alignSize.width + 15;
+				position.left = offset.left + alignSize.width + targetDistance;
 				position.top = offset.top - ((popSize.height / 2) - (alignSize.height / 2));
 				break;
 		}
@@ -64,7 +74,7 @@ const Positionable = {
 			popover.style.top = style.top + 'px';
 			popover.style.left = style.left + 'px';
 			// TODO: If we're going to call this here we need to check if it exists first. But maybe we shouldn't?
-			popover.className = this._getClassNames();
+			if (this._getClassNames) popover.className = this._getClassNames();
 		}
 	},
 	

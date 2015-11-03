@@ -52,12 +52,18 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, {
 	_render () {
 		const $el = this.template.clone();
 
+		this.elements.form = $el;
+		this.elements.formElement = $el.find('.slds-form-element');
 		this.elements.input = $el.find('.slds-input');
 		this.elements.datepicker = $el.find('.slds-datepicker');
 		this.elements.calendar = $el.find('.datepicker__month');
 		this.elements.calendarDays = this.elements.calendar.find('tbody');
 		this.elements.monthName = $el.find('.slds-datepicker__filter--month h2');
 		this.elements.year = $el.find('.slds-datepicker__filter .slds-picklist');
+
+		this.elements.popover = Lib.wrapElement(this.elements.datepicker);
+		this.elements.container = Lib.wrapElement(this.elements.form);
+		this.elements.align = Lib.wrapElement(this.elements.formElement);
 
 		// Prep for append
 		this.elements.wrapper.empty();
@@ -69,6 +75,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, {
 	_toggleDatepicker () {
 		if( this.elements.datepicker.hasClass('slds-hidden') ){
 			this.elements.datepicker.removeClass('slds-hidden');
+			this._updatePosition();
 		} else {
 			this.elements.datepicker.addClass('slds-hidden');
 		}

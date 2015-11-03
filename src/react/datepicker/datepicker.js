@@ -38,10 +38,14 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		const selectedDates = this.getProperty('selection');
 		const selDateFormatted = selectedDates.length ? this._formatDate(selectedDates[0]) : '';
 
+		if (this.refs.popover) {
+			this._setElements();
+		}
+
 		return (
-			<div className="slds-form--stacked slds-float--left">
+			<div className="slds-form--stacked slds-float--left slds-datepicker-form" ref="container">
 				<DateInput triggerCalendar={this._triggerCalendar} selectedDate={selDateFormatted}/>
-				<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !this.state.isOpen})} data-selection="single">
+				<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !this.state.isOpen})} ref="popover" data-selection="single">
 					<div className="slds-datepicker__filter slds-grid">
 						<DateMonth monthName={this._getMonthName()} setViewingDate={this._setViewingDate} dateViewing={this.state.dateViewing}/>
 						<DateYear getYearRange={this._getYearRangeData} setViewingDate={this._setViewingDate} dateViewing={this.state.dateViewing}/>
@@ -50,6 +54,16 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 				</div>
 			</div>
 		);
+	},
+
+	_setElements () {
+		this.elements.popover = Lib.wrapElement(this.refs.popover);
+		this.elements.container = Lib.wrapElement(this.refs.container);
+		this.elements.align = Lib.wrapElement(this.refs.container);
+	},
+
+	componentDidUpdate () {
+		this._updatePosition();
 	},
 
 	_triggerCalendar () {

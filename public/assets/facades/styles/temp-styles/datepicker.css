@@ -1,3 +1,7 @@
+.slds-datepicker-form {
+	position: relative;
+}
+
 .slds-datepicker .slds-datepicker__filter--month h2 {
 	width: 120px;
 	text-align: center;
