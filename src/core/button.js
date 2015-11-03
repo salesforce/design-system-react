@@ -62,7 +62,8 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		selected: false,
 		size: null,
 		theme: null,
-		views: []
+		views: [],
+		children: []
 	},
 
 	_canSelect () {

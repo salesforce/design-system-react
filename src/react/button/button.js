@@ -28,6 +28,7 @@ export const ButtonObject = {
 		size: React.PropTypes.oneOf(Object.keys(ButtonCore.sizes)),
 		theme: React.PropTypes.oneOf(Object.keys(ButtonCore.themes)),
 		selected: React.PropTypes.bool,
+		selectable: React.PropTypes.bool,
 		onClick: React.PropTypes.func,
 		children: function (props, propName, componentName) {
 			const prop = props[propName];
