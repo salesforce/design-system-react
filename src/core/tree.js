@@ -10,12 +10,13 @@ import Multiselectable from '../traits/multiselectable';
 // Styles
 // require('../../scss/components/trees/flavors/base/index.scss');
 
-export const CONTROL = 'tree';
+export const CONTROL = 'slds-tree';
 
 const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL
+		CONTROL: CONTROL,
+		CONTAINER: 'slds-tree-container'
 	},
 
 	// Set the defaults

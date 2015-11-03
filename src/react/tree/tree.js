@@ -49,8 +49,8 @@ let Tree = Lib.merge({}, TreeCore, {
 		});
 
 		return (
-			<div className={classNames((this.cssClasses.NAMESPACE + this.cssClasses.CONTROL + '-container'))}>
-				<ul className={classNames((this.cssClasses.NAMESPACE + this.cssClasses.CONTROL), this.cssClasses.BTN_GROUP)} role="tree" aria-labelledby="treeheading">
+			<div className={this.cssClasses.CONTAINER} role="application">
+				<ul className={classNames(this.cssClasses.CONTROL, this.cssClasses.BTN_GROUP)} role="tree">
 					{children}
 				</ul>
 			</div>

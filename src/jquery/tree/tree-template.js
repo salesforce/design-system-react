@@ -1,6 +1,6 @@
 export default String.raw`
 <div class="slds-tree-container" role="application">
-	<ul class="tree slds-tree" role="tree" aria-labelledby="treeheading">
+	<ul class="slds-tree" role="tree">
 		<li class="slds-tree__branch" role="treeitem" aria-expanded="true">
 			<div class="slds-tree__branch--header slds-tree__item">
 				<button class="slds-button slds-button--icon-bare slds-m-right--x-small">

@@ -71,6 +71,7 @@ let Tree = function Tree () {
 Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
+		this.elements.list = this.element.find('.' + this.cssClasses.CONTROL);
 	},
 	
 	_onInitialized () {
@@ -168,11 +169,11 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		const dataSource = this.getProperty('dataSource');
 
 		if (this._collection.length()) {
-			this._loopChildren(this._collection, this.element, 1);
+			this._loopChildren(this._collection, this.elements.list, 1);
 		} else if (dataSource) {
 			dataSource({}, (response) => {
 				this._collection = this._getDataAdapter(response.data);
-				this._loopChildren(this._collection, this.element, 1);
+				this._loopChildren(this._collection, this.elements.list, 1);
 			});
 		}
 		
