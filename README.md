@@ -43,23 +43,31 @@ import {SLDSButton} from 'design-system-react';
 5. <SLDSButton label='Settings' variant='icon' iconName='settings' iconSize='large' onClick={this.handleIconClick} />
 6. <SLDSButton label='User' variant='icon' inverse={true} iconName='user' iconSize='large' onClick={this.handleIconClick} />
 7. <SLDSButton label='Edit' variant='icon' hint={true} iconName='edit' iconSize='large' onClick={this.handleIconClick} />
+8. <SLDSButton label='Follow' variant='neutral' stateful={true} notSelectedIcon='add' notSelectedLabel='Follow' selectedIcon='check' selectedLabel='Following' selectedFocusIcon='close' selectedFocusLabel='Unfollow' onClick={this.handleStatefulClick} />
 
-Required Prop
-* Only label is required
-
-Default Props            Prop Values
-* label=''                Required Prop
+Default Props             Prop Values
+* label=undefined         * Required Prop
 * variant='base'          ['base', 'neutral', 'brand', 'destructive', 'icon'] Use icon if you want an icon only button
-* disabled={false}
-* tabindex=''
-* inverse={false}
-* stateful={false}
-* responsive={false}
-* iconName=''             see https://www.lightningdesignsystem.com/resources/icons#utility for names
-* iconVariant='bare'      ['bare', 'container', 'border', 'border-filled', 'small', 'more']
-* iconSize='medium'       ['x-small', 'medium', 'small', 'large']
-* iconPosition='left'     ['left', 'right', 'large']
-* className = ''          custom classes on the button tag
+* disabled=false
+* tabindex=undefined
+* inverse=false
+* stateful=false
+* responsive=false
+* iconName=undefined      see https://www.lightningdesignsystem.com/resources/icons#utility for names
+* className=undefined     custom classes on the button tag
+
+** If iconName exists
+  * iconVariant='bare'    ['bare', 'container', 'border', 'border-filled', 'small', 'more']
+  * iconSize='medium'     ['x-small', 'medium', 'small', 'large']
+  * iconPosition='left'   ['left', 'right', 'large'] If variant = icon, default icon position is centered.
+
+** If stateful=true
+  * notSelectedIcon=undefined
+  * notSelectedLabel=undefined
+  * selectedIcon=undefined
+  * selectedLabel=undefined
+  * selectedFocusIcon=undefined
+  * selectedFocusLabel=undefined
 
 ```
 
@@ -110,7 +118,15 @@ const items = [
   {label:'Acme Construction'}
 ];
 
-<SLDSLookup items={items} label="Accounts" type="account" onNewItem={this.newItem} onSearchRecords={this.searchRecords} />
+<SLDSLookup
+  items={items}
+  label="Account"
+  type="account"
+  headerRenderer={SLDSLookup.DefaultHeader}
+  footerRenderer={SLDSLookup.DefaultFooter}
+  onChange={this.onChange}
+  onItemSelect={this.selectItem}
+  />
 
 ```
 
@@ -189,7 +205,4 @@ import {SLDSUtilityIcon} from 'design-system-react';
 [![browser support](/readme-assets/SLDSDatePickerBase.gif)](/readme-assets/SLDSDatePickerBase.gif)
 
 
-### Future Pipeline
-* Button - stateful variant
-* Lookup - multi-select, multi-scope variants
 
