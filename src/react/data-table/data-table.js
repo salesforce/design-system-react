@@ -17,30 +17,30 @@ export const DataTableObject = {
 	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
-		sortable: React.PropTypes.bool,
-		collection: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object
-		]).isRequired,
-		columns: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object
-		]).isRequired,
-		selection: React.PropTypes.any,
 		bordered: React.PropTypes.bool,
-		striped: React.PropTypes.bool,
+		collection: React.PropTypes.array.isRequired,
+		columns: React.PropTypes.arrayOf(React.PropTypes.shape({
+			propertyName: React.PropTypes.string,
+			displayName: React.PropTypes.string,
+			sortable: React.PropTypes.bool,
+			hintParent: React.PropTypes.bool
+		})).isRequired,
+		// TODO: Needs to be more specific, once selection feature is fleshed out.
+		selection: React.PropTypes.any,
+		sortable: React.PropTypes.bool,
 		stacked: React.PropTypes.bool,
-		stackedHorizontal: React.PropTypes.bool
+		stackedHorizontal: React.PropTypes.bool,
+		striped: React.PropTypes.bool
 	},
 
 	_tableHeaders () {
-		return this.props.columns.map((item, index) => {
+		return this.props.columns.map((column, index) => {
 			return (
 				<th scope="col" key={index} className={this._getClassNames({
-					sortable: item.sortable,
-					hintParent: item.hintParent
+					sortable: column.sortable,
+					hintParent: column.hintParent
 				})}>
-					<span className="slds-truncate" data-prop={item.propertyName}>{item.displayName}</span>
+					<span className="slds-truncate" data-prop={column.propertyName}>{column.displayName}</span>
 				</th>
 			);
 		});
@@ -53,12 +53,12 @@ export const DataTableObject = {
 			return (
 				<DataTableItem
 					key={index}
-					item={item}
+					hintParent={true}
+					bordered={true}
 					headers={this.props.columns}
+					item={item}
 					onSelected={this._selectItem}
 					selected={isSelected}
-					bordered={true}
-					hintParent={true}
 				/>
 			);
 		});
@@ -68,9 +68,9 @@ export const DataTableObject = {
 		return (
 			<table className={this._getClassNames({
 				bordered: this.props.bordered,
-				striped: this.props.striped,
 				stacked: this.props.stacked,
-				stackedHorizontal: this.props.stackedHorizontal
+				stackedHorizontal: this.props.stackedHorizontal,
+				striped: this.props.striped
 			})}>
 				<thead>
 				<tr className="slds-text-heading--label">
