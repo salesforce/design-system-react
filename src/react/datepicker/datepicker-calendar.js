@@ -5,10 +5,12 @@ import React from 'react';
 
 import DateWeek from './datepicker-week';
 
-// Third party
-import classNames from 'classnames';
-
 const Calendar = React.createClass({
+
+	propTypes: {
+		calendarData: React.PropTypes.array,
+		selectDate: React.PropTypes.func
+	},
 
 	render () {
 		const self = this;
@@ -42,7 +44,7 @@ const Calendar = React.createClass({
 					</thead>
 					<tbody>
 						{ this.props.calendarData.map(function (week, i) {
-							return <DateWeek key={i} week={week} onSelectDay={self._handleDateClicked} multiSelect={self.props.multiSelect}/>
+							return <DateWeek key={i} week={week} onSelectDay={self._handleDateClicked} multiSelect={self.props.multiSelect}/>;
 						}) }
 					</tbody>
 				</table>

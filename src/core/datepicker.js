@@ -19,8 +19,8 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, Positio
 
 	_defaultProperties: {
 		multiSelect: false,
-		dateRange: [new Date('1991'),new Date('2030')],
-		targetDistance: 0,// Used by positionable
+		dateRange: [new Date('1991'), new Date('2030')],
+		targetDistance: 0, // Used by positionable
 		targetLateralAlign: 'left',
 		position: 'bottom'
 	},
@@ -118,7 +118,6 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, Positio
 					if (selectedDate.length === 1 && dateCurrentLoop === selectedDate[0].getTime()) {
 						MonthData[wk][dy].selected = true;
 					} else if (selectedDate.length === 2 && dateCurrentLoop >= selectedDate[0].getTime() && dateCurrentLoop <= selectedDate[1].getTime() ) {
-
 						MonthData[wk][dy].selected = true;
 					}
 				}

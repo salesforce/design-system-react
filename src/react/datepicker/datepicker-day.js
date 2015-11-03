@@ -8,6 +8,12 @@ import classNames from 'classnames';
 
 const DateInput = React.createClass({
 
+	propTypes: {
+		day: React.PropTypes.date,
+		multiSelect: React.PropTypes.bool,
+		onSelectDay: React.PropTypes.func
+	},
+
 	render () {
 		const self = this;
 		const day = this.props.day;

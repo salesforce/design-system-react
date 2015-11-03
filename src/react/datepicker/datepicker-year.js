@@ -8,6 +8,12 @@ import Picklist from '../picklist/picklist';
 
 const DateMonth = React.createClass({
 
+	propTypes: {
+		getYearRange: React.PropTypes.func,
+		setViewingDate: React.PropTypes.func,
+		dateViewing: React.PropTypes.date
+	},
+
 	render () {
 		const picklistRange = this.props.getYearRange();
 

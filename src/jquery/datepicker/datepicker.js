@@ -73,7 +73,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, {
 	},
 
 	_toggleDatepicker () {
-		if( this.elements.datepicker.hasClass('slds-hidden') ){
+		if (this.elements.datepicker.hasClass('slds-hidden')) {
 			this.elements.datepicker.removeClass('slds-hidden');
 			this._updatePosition();
 		} else {
@@ -118,7 +118,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, {
 					}
 				}
 
-				if( specialClasses ) {
+				if (specialClasses) {
 					$dayMarkup.addClass(specialClasses);
 				}
 
@@ -149,7 +149,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, {
 				selection: yearRange.selected
 			});
 
-			this.elements.year.on('changed', $.proxy(this._updateYear,this));
+			this.elements.year.on('changed', $.proxy(this._updateYear, this));
 		}
 	},
 

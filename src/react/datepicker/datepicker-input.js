@@ -5,6 +5,11 @@ import React from 'react';
 
 const DateInput = React.createClass({
 
+	propTypes: {
+		triggerCalendar: React.PropTypes.func,
+		selectedDate: React.PropTypes.any
+	},
+
 	render () {
 		return (
 			<div className="slds-form-element">

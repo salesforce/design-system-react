@@ -7,13 +7,17 @@ import DateDay from './datepicker-day';
 
 const DateInput = React.createClass({
 
+	propTypes: {
+		week: React.PropTypes.array
+	},
+
 	render () {
-		var self = this;
+		const self = this;
 
 		return (
 			<tr>
 				{ this.props.week.map(function (day, i) {
-					return <DateDay key={i} onSelectDay={self.props.onSelectDay} day={day} multiSelect={self.props.multiSelect}/>
+					return <DateDay key={i} onSelectDay={self.props.onSelectDay} day={day} multiSelect={self.props.multiSelect}/>;
 				}) }
 			</tr>
 		);

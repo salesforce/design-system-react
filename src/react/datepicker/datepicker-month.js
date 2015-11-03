@@ -4,6 +4,13 @@
 import React from 'react';
 
 const DateMonth = React.createClass({
+
+	propTypes: {
+		monthName: React.PropTypes.func,
+		setViewingDate: React.PropTypes.func,
+		dateViewing: React.PropTypes.date
+	},
+
 	render () {
 		return (
 			<div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
