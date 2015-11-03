@@ -17,9 +17,6 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 // Constructor
 let ButtonGroup = function ButtonGroup () {
-	// needs button defaults (iconPosition, children) to fallback on
-	this._defaultProperties = Lib.merge({}, ButtonCore._defaultProperties);
-
 	const options = this._getOptions(arguments);
 
 	this.childOptions = {
@@ -40,6 +37,8 @@ let ButtonGroup = function ButtonGroup () {
 };
 
 export const ButtonGroupObject = {
+	_defaultProperties: ButtonCore._defaultProperties,
+	
 	_initializer () {
 		this.element = this.$el = this.elements.control = $('<div>');
 	},
