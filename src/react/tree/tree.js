@@ -21,17 +21,21 @@ let Tree = Lib.merge({}, TreeCore, {
 	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
+		autoOpen: React.PropTypes.bool,
+		autoOpenLimit: React.PropTypes.number,
+		// TODO: Type of collection unknown until parsed by Data Adapter
+		collection: React.PropTypes.oneOfType([
+			React.PropTypes.array,
+			React.PropTypes.object
+		]).isRequired,
 		disabled: React.PropTypes.bool,
 		folderSelect: React.PropTypes.bool,
 		multiSelect: React.PropTypes.bool,
-		autoOpen: React.PropTypes.bool,
-		autoOpenLimit: React.PropTypes.number,
-		collection: React.PropTypes.any.isRequired,
-		selection: React.PropTypes.any,
-		open: React.PropTypes.any,
 		onChanged: React.PropTypes.func,
+		onClosed: React.PropTypes.func,
 		onOpened: React.PropTypes.func,
-		onClosed: React.PropTypes.func
+		open: React.PropTypes.any,
+		selection: React.PropTypes.any
 	},
 
 	render () {

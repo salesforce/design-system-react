@@ -10,14 +10,20 @@ import State from '../mixins/state';
 import Events from '../mixins/events';
 
 export const SearchObject = {
+	propTypes: {
+		disabled: React.PropTypes.bool,
+		onDisabled: React.PropTypes.func,
+		onEnabled: React.PropTypes.func
+	},
+
 	mixins: [State, Events],
 
 	render () {
 		return (
 			<div className="search input-group" role="search">
-				<input type="search" disabled={this.props.disabled}  className="form-control" placeholder="Search" />
+				<input type="search" disabled={this.props.disabled} className="form-control" placeholder="Search" />
 				<span className="input-group-btn">
-					<button className="btn btn-default" disabled={this.props.disabled}  type="button">
+					<button className="btn btn-default" disabled={this.props.disabled} type="button">
 						<span className="glyphicon glyphicon-search"></span>
 						<span className="sr-only">Search</span>
 					</button>

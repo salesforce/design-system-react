@@ -1,9 +1,10 @@
 // PICKLIST ITEM - REACT FACADE
 
+import * as Lib from '../../lib/lib';
+
 // Framework specific
 import React from 'react';
 import Svg from '../svg/svg';
-import * as Lib from '../../lib/lib';
 
 // Third party
 import classNames from 'classnames';
@@ -17,7 +18,15 @@ const PicklistItem = React.createClass({
 	},
 
 	propTypes: {
-		item: React.PropTypes.object.isRequired,
+		// TODO: explore if item PropTypes can be done better
+		item: React.PropTypes.shape({
+			getType: React.PropTypes.func.isRequired,
+			getDisabled: React.PropTypes.func.isRequired,
+			// getId: React.PropTypes.func.isRequired,
+			getText: React.PropTypes.func.isRequired,
+			// getValue: React.PropTypes.func.isRequired,
+			getIcon: React.PropTypes.func.isRequired
+		}).isRequired,
 		onSelected: React.PropTypes.func.isRequired,
 		selected: React.PropTypes.bool
 	},

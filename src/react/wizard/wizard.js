@@ -18,7 +18,12 @@ let Wizard = Lib.merge({}, WizardCore, {
 	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
-		step: React.PropTypes.object,
+		// TODO: Modify when wizard data adapter gets set up
+		step: React.PropTypes.shape({
+			// getText: React.PropTypes.func.isRequired,
+			// getContent: React.PropTypes.func.isRequired
+		}),
+		// TODO: Type of collection unknown until parsed by Data Adapter
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object

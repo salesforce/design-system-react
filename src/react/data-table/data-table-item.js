@@ -5,12 +5,18 @@ import React from 'react';
 
 const DataTableItem = React.createClass({
 
+	// TODO: Break TD cell out into it's own child component, so that the shape of the headers object can be tested
 	propTypes: {
+		bordered: React.PropTypes.bool,
 		item: React.PropTypes.object.isRequired,
-		headers: React.PropTypes.array.isRequired,
+		headers: React.PropTypes.arrayOf(React.PropTypes.shape({
+			propertyName: React.PropTypes.string,
+			displayName: React.PropTypes.string,
+			sortable: React.PropTypes.bool,
+			hintParent: React.PropTypes.bool
+		})).isRequired,
 		onSelected: React.PropTypes.func.isRequired,
-		selected: React.PropTypes.bool.isRequired,
-		hintParent: React.PropTypes.bool
+		selected: React.PropTypes.bool.isRequired
 	},
 
 	render () {

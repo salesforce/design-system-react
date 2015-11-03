@@ -13,15 +13,16 @@ import PicklistItems from '../picklist/picklist-items';
 
 export const ComboboxObject = Lib.merge(PicklistObject, {
 	propTypes: {
-		disabled: React.PropTypes.bool,
-		selection: React.PropTypes.oneOfType([
-			React.PropTypes.string,
-			React.PropTypes.object
-		]),
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
-		]).isRequired
+		]).isRequired,
+		disabled: React.PropTypes.bool,
+		onChanged: React.PropTypes.func,
+		selection: React.PropTypes.oneOfType([
+			React.PropTypes.string,
+			React.PropTypes.object
+		])
 	},
 
 	render () {

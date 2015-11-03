@@ -9,6 +9,17 @@ import React from 'react';
 import { CheckboxObject } from '../checkbox/checkbox';
 
 export const RadioObject = Lib.merge(CheckboxObject, {
+	propTypes: {
+		checked: React.PropTypes.bool,
+		disabled: React.PropTypes.bool,
+		labelText: React.PropTypes.string,
+		name: React.PropTypes.string.isRequired,
+		onChanged: React.PropTypes.func,
+		onDisabled: React.PropTypes.func,
+		onEnabled: React.PropTypes.func,
+		value: React.PropTypes.string
+	},
+
 	_renderInput () {
 		return (<input name={this.props.name}
 						type="radio"
