@@ -7,6 +7,7 @@ import DropdownCore, {CONTROL} from '../../core/dropdown';
 // Framework specific
 import React from 'react';
 import { PicklistObject } from '../picklist/picklist';
+import isIcon from '../mixins/custom-prop-types/icon.js';
 
 // Children
 import PicklistItems from '../picklist/picklist-items';
@@ -14,18 +15,19 @@ import Button from '../button/button';
 
 export const DropdownObject = Lib.merge(PicklistObject, {
 	propTypes: {
-		disabled: React.PropTypes.bool,
-		selection: React.PropTypes.oneOfType([
-			React.PropTypes.string,
-			React.PropTypes.object
-		]),
+		// TODO: Type of collection unknown until parsed by Data Adapter
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		icon: React.PropTypes.string,
-		swapIcon: React.PropTypes.bool,
-		renderArrow: React.PropTypes.bool
+		disabled: React.PropTypes.bool,
+		icon: isIcon,
+		renderArrow: React.PropTypes.bool,
+		selection: React.PropTypes.oneOfType([
+			React.PropTypes.string,
+			React.PropTypes.object
+		]),
+		swapIcon: React.PropTypes.bool
 	},
 
 	_getIcon () {
