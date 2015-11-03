@@ -1,4 +1,6 @@
 var webpack = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 var path = require('path');
 var node_modules_dir = path.join(__dirname, 'node_modules');
 
@@ -9,6 +11,7 @@ var config = {
 	},
 	resolve: {
 		modulesDirectories: [
+			'scss',
 			'node_modules',
 			'web_modules',
 			'other'
@@ -17,7 +20,8 @@ var config = {
 			'',
 			'.webpack.js',
 			'.web.js',
-			'.js'
+			'.js',
+			'.scss'
 		]
 	},
 	devtool: 'cheap-source-map',
@@ -32,10 +36,22 @@ var config = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loaders: ['babel-loader?optional=runtime']
+			},
+			{
+				test: /\.css$/,
+				loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+			},
+			{
+				test: /\.scss$/,
+				loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!sass-loader")
 			}
 		]
 	},
-	plugins: []
+	plugins: [
+		new ExtractTextPlugin("style.css", {
+			allChunks: true
+		})
+	]
 };
 
 module.exports = config;
