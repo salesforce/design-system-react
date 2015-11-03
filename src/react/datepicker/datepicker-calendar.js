@@ -42,30 +42,10 @@ const Calendar = React.createClass({
 					</thead>
 					<tbody>
 						{ this.props.calendarData.map(function (week, i) {
-							return <DateWeek key={i} week={week} onSelectDay={self._handleDateClicked}/>
+							return <DateWeek key={i} week={week} onSelectDay={self._handleDateClicked} multiSelect={self.props.multiSelect}/>
 						}) }
 					</tbody>
 				</table>
-		);
-	},
-
-	generateWeekMarkup (week, key) {
-		const self = this;
-
-		return (
-			<tr key={key}>
-				{ week.map(function (day, i) {
-					return self.generateDayMarkup(day, i);
-				}) }
-			</tr>
-		);
-	},
-
-	generateDayMarkup (day, key) {
-		return (
-			<td key={key} onClick={this._handleDateClicked.bind(this, day)} className={classNames({'slds-is-today': day.today, 'slds-disabled-text': day.outside, 'slds-is-selected': day.selected})} role="gridcell" aria-disabled="true">
-				<span className="slds-day">{day.day}</span>
-			</td>
 		);
 	},
 

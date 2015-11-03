@@ -13,7 +13,7 @@ const DateInput = React.createClass({
 		return (
 			<tr>
 				{ this.props.week.map(function (day, i) {
-					return <DateDay key={i} onSelectDay={self.props.onSelectDay} day={day}/>
+					return <DateDay key={i} onSelectDay={self.props.onSelectDay} day={day} multiSelect={self.props.multiSelect}/>
 				}) }
 			</tr>
 		);

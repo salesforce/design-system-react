@@ -83,6 +83,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, {
 	_renderCalender () {
 		const self = this;
 		const calenderData = this._getCalendarData();
+		const isRangeSelect = this.getProperty('multiSelect');
 
 		self.elements.calendarDays.empty();
 
@@ -103,7 +104,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, {
 				}
 
 				if (day.selected) {
-					specialClasses += 'slds-is-selected';
+					specialClasses += 'slds-is-selected ';
+
+					if ( isRangeSelect ) {
+						specialClasses += 'slds-is-selected-multi';
+					}
 				}
 
 				if( specialClasses ) {
@@ -163,9 +168,28 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, {
 	},
 
 	_selectDate (ev) {
+		const isRangeSelect = this.getProperty('multiSelect');
 		const dayData = $(ev.currentTarget).data();
+		let insertIndex = 1;
+		let selectedDates;
 
-		this._selectItem(this._getItemAdapter({ date: dayData.date }));
+		if (!dayData.outside) {
+			if (isRangeSelect) {
+				selectedDates = this.getSelectedItems();
+
+				if (selectedDates.length > 1) {
+					this.deselectAll();
+				}
+
+				if (selectedDates.length === 1 && selectedDates[0].date.getTime() > dayData.date.getTime()) {
+					insertIndex = 0;
+				}
+
+				this._selectItem(this._getItemAdapter({ date: dayData.date }), insertIndex);
+			} else {
+				this._selectItem(this._getItemAdapter({ date: dayData.date }));
+			}
+		}
 	},
 
 	_onSelected () {

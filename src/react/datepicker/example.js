@@ -6,20 +6,22 @@ export default function () {
 	const DatepickerExample = React.createClass({
 		getInitialState () {
 			return {
-				dateSelected: null
+				selection: []
 			};
 		},
 
 		render () {
 			return (
-				<Datepicker selectedDate={this.state.dateSelected} onSelectDate={this.handleDateSelected}/>
+				<Datepicker selection={this.state.selection} onChanged={this.handleDateSelected} multiSelect={true}/>
 			);
 		},
 
-		handleDateSelected (date) {
-			this.setState({
-				dateSelected: date
-			});
+		handleDateSelected (item, selection) {
+			if (selection.length > 2) {
+				this.setState({ selection: [item] });
+			} else {
+				this.setState({ selection: selection });
+			}
 		}
 	});
 

@@ -17,7 +17,8 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	},
 
 	_defaultProperties: {
-
+		multiSelect: false,
+		dateRange: [new Date('1991'),new Date('2030')]
 	},
 
 	_defaultState: {
@@ -39,8 +40,8 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	_getCalendarData: function (baseDate) {
 		const date = this.getState('dateViewing') || baseDate;
 		const selectedDates = this.getSelectedItems();
-		const selectedDate = selectedDates[0] ? selectedDates[0].date : null;// TODO: multi day select
-
+		const isRangeSelect = this.getProperty('multiSelect');
+		const dateConstraints = this.getProperty('dateRange');
 		const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay(); // Index of first day base 0 sunday
 		const lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(); // Date of the last day
 		const lastMonthDate = new Date(date.getFullYear(), date.getMonth(), 0).getDate(); // Last date for previous month
@@ -51,10 +52,21 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 		const nowMonth = now.getMonth(); // Today Month
 		const nowYear = now.getFullYear(); // Today Year
 		const MonthData = [];
+		const selectedDate = [];
 		let curDate;
 		let rows;
+		let dateCurrentLoop;
 		let wk;
 		let dy;
+
+		if ( isRangeSelect && selectedDates.length > 1 ) {
+			selectedDate.push(selectedDates[0].date);
+			selectedDate.push(selectedDates[1].date);
+		} else {
+			if (selectedDates[0]) {
+				selectedDate.push(selectedDates[0].date);
+			}
+		}
 
 		if (firstDay !== 0) {
 			curDate = lastMonthDate - firstDay + 1;
@@ -74,10 +86,6 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 					date: new Date((month + 1) + '-' + curDate + '-' + year)
 				});
 
-				if (selectedDate && MonthData[wk][dy].date.getTime() === selectedDate.getTime()) {
-					MonthData[wk][dy].selected = true;
-				}
-
 				if (wk === 0) {
 					if (curDate === lastMonthDate) {
 						curDate = 0;
@@ -93,6 +101,21 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 					} else if (curDate < 7) {
 						MonthData[wk][dy].month = month + 1;
 						MonthData[wk][dy].outside = true;
+					}
+				}
+
+				if ( MonthData[wk][dy].date.getTime() < dateConstraints[0].getTime() || MonthData[wk][dy].date.getTime() > dateConstraints[1].getTime() ) {
+					MonthData[wk][dy].outside = true;
+				}
+
+				if ( selectedDate.length && !MonthData[wk][dy].outside ) {
+					dateCurrentLoop = MonthData[wk][dy].date.getTime();
+
+					if (selectedDate.length === 1 && dateCurrentLoop === selectedDate[0].getTime()) {
+						MonthData[wk][dy].selected = true;
+					} else if (selectedDate.length === 2 && dateCurrentLoop >= selectedDate[0].getTime() && dateCurrentLoop <= selectedDate[1].getTime() ) {
+
+						MonthData[wk][dy].selected = true;
 					}
 				}
 
@@ -119,13 +142,13 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	},
 
 	_getYearRangeData: function () {
-		const dateRange = [1990, 2025];
+		const dateRange = this.getProperty('dateRange');
 		const viewingYear = this._getYear();
 		const allDates = [];
 		let selDate;
 		let curDate;
 
-		for (curDate = dateRange[0]; curDate <= dateRange[1]; curDate++) {
+		for (curDate = dateRange[0].getFullYear(); curDate <= dateRange[1].getFullYear(); curDate++) {
 			allDates.push({text: curDate, value: curDate });
 
 			if (viewingYear === curDate) {
@@ -140,12 +163,16 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	},
 
 	_formatDate: function () {
-		const selectedDates = this._getSelectedItems();
-		const selectedDate = selectedDates[0] ? selectedDates[0].date : null;// TODO: multi day select
+		const selectedDates = this.getSelectedItems();
 		let formattedDate;
 
-		if (selectedDate) {// TODO: custom date formatting
-			formattedDate = (selectedDate.getMonth() + 1) + '/' + selectedDate.getDate() + '/' + selectedDate.getFullYear();
+		if (selectedDates.length) {
+			if (selectedDates.length > 1) {
+				formattedDate = (selectedDates[0].date.getMonth() + 1) + '/' + selectedDates[0].date.getDate() + '/' + selectedDates[0].date.getFullYear();
+				formattedDate += ' - ' + (selectedDates[1].date.getMonth() + 1) + '/' + selectedDates[1].date.getDate() + '/' + selectedDates[1].date.getFullYear();
+			} else {
+				formattedDate = (selectedDates[0].date.getMonth() + 1) + '/' + selectedDates[0].date.getDate() + '/' + selectedDates[0].date.getFullYear();
+			}
 		}
 
 		return formattedDate;

@@ -23,7 +23,8 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
-		dateRange: React.PropTypes.array
+		dateRange: React.PropTypes.array,
+		selection: React.PropTypes.any
 	},
 
 	getInitialState () {
@@ -34,9 +35,8 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 	render () {
 		const calendarData = this._getCalendarData();
-		const selectedDates = this._getSelectedItems();
-		const selDate = selectedDates[0] ? selectedDates[0].date : null;// TODO enable date range selection
-		const selDateFormatted = selDate ? this._formatDate(selDate) : '';
+		const selectedDates = this.getProperty('selection');
+		const selDateFormatted = selectedDates.length ? this._formatDate(selectedDates[0]) : '';
 
 		return (
 			<div className="slds-form--stacked slds-float--left">
@@ -46,7 +46,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 						<DateMonth monthName={this._getMonthName()} setViewingDate={this._setViewingDate} dateViewing={this.state.dateViewing}/>
 						<DateYear getYearRange={this._getYearRangeData} setViewingDate={this._setViewingDate} dateViewing={this.state.dateViewing}/>
 					</div>
-					<Calendar calendarData={calendarData} selectDate={this._selectDate} />
+					<Calendar calendarData={calendarData} selectDate={this._selectDate} multiSelect={this.props.multiSelect}/>
 				</div>
 			</div>
 		);
@@ -59,8 +59,20 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	},
 
 	_selectDate (date) {
-		this._selectItem(this._getItemAdapter({ date: date.date }));
-		this.props.onSelectDate(date.date);
+		const isRangeSelect = this.getProperty('multiSelect');
+		const selectedItems = this.getProperty('selection');
+		let insertIndex = 1;
+
+		if (isRangeSelect) {
+
+			if (selectedItems.length === 1 && selectedItems[0].date.getTime() > date.date.getTime()) {
+				insertIndex = 0;
+			}
+
+			this._selectItem(this._getItemAdapter({ date: date.date }), insertIndex);
+		} else {
+			this._selectItem(this._getItemAdapter({ date: date.date }));
+		}
 	},
 
 	_setViewingDate (date) {
