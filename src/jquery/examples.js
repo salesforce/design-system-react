@@ -2,7 +2,7 @@ import '../helpers/create-jquery-plugin';
 
 import './badge/example';
 import './button/example';
-	// import './buttongroup/example';
+import './button-group/example';
 import './checkbox/example';
 import './combobox/example';
 import './data-table/example';
