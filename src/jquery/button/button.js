@@ -17,7 +17,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // Constructor
 let Button = function Button () {
 	const options = this._getOptions(arguments);
-	
+
 	this.childOptions = {
 		icon: options.icon,
 		iconPosition: options.iconPosition,
@@ -46,7 +46,7 @@ export const ButtonObject = {
 
 	_renderViews () {
 		const viewOptions = this.getProperty('views');
-		const views = [];
+		const viewElements = [];
 
 		const childOptions = Lib.extend({
 			assistiveText: this.getProperty('assistiveText')
@@ -58,17 +58,18 @@ export const ButtonObject = {
 
 		let $buttonview = new ButtonView(childOptions);
 
-		views.push($buttonview.element);
+		viewElements.push($buttonview.element);
 
 		// Other views
 		if (viewOptions.length > 0 ) {
 			viewOptions.forEach((options) => {
 				$buttonview = new ButtonView(options);
-				views.push($buttonview.element);
+				this.getProperty('children').push($buttonview);
+				viewElements.push($buttonview.element);
 			});
 		}
 
-		return views;
+		return viewElements;
 	},
 
 	_render () {
@@ -93,7 +94,7 @@ export const ButtonObject = {
 
 	_onToggled () {
 		const isStateful = this.getProperty('views').length > 0;
-		this.elements.control[0].className = this._getClassNames(isStateful);
+		this.elements.control[0].className = this._getClassNames(isStateful || this.getProperty('selectable'));
 	},
 
 	_onEnabledOrDisabled () {
