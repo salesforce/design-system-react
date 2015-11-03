@@ -37,7 +37,6 @@ let ButtonGroup = function ButtonGroup () {
 	}
 	
 	this._initialize(options);
-	console.log(	this.getProperty('children'));
 };
 
 export const ButtonGroupObject = {
@@ -49,7 +48,7 @@ export const ButtonGroupObject = {
 	_renderButtons () {
 		const buttonsOptions = this.getProperty('buttons');
 		const buttonElements = [];
-		let $button = undefined;
+		let $button;
 
 		if (this.getProperty('children').length > 0 ) {
 			this.getProperty('children').forEach((child) => {
