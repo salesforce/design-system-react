@@ -10,7 +10,7 @@
     "prepublish": "npm run compile",
     "test": "scripts/test --single-run",
     "postinstall": "node scripts/postinstall",
-    "icons": "node scripts/utility-icons"
+    "icons": "node scripts/inline-icons"
   },
   "repository": {
     "type": "git",
