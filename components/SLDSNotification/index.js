@@ -12,8 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 const classNames = require('classnames');
 import SLDSButton from '../SLDSButton';
+import {Icon} from '../SLDSIcons';
 
-class Notification extends React.Component {
+class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
     this.state = {};
@@ -35,22 +36,26 @@ class Notification extends React.Component {
             label='Close'
             variant='icon'
             iconName='close'
+            iconSize='large'
             inverse={true}
-            className='slds-button slds-button--icon-inverse slds-notify__close'
+            className='slds-button slds-notify__close'
             onClick={this.props.onDismiss}
           />
-          <span className="slds-assistive-text">Info</span>
-          <div className="notify__content">
-            <h2 className="slds-text-heading--small">
-            {this.props.content}
-            </h2>
-          </div>
+
+          <span className="slds-assistive-text">{this.props.theme}</span>
+
+          <section className="notify__content slds-grid">
+            <Icon category='utility' name={this.props.icon} size='small' className='slds-m-right--x-small slds-col slds-no-flex' />
+            <h2 className="slds-col slds-align-middle slds-text-heading--small"> {this.props.content} </h2>
+          </section>
+
         </div>
       </div>
+
     );
   }
 }
-Notification.propTypes = {
+SLDSNotification.propTypes = {
 };
-module.exports = Notification;
+module.exports = SLDSNotification;
 

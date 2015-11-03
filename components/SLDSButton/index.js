@@ -47,6 +47,7 @@ class Button extends React.Component {
       ['slds-max-small-button--stretch']: this.props.responsive,
       ['slds-not-selected']: notSelected,
       ['slds-is-selected']: isSelected,
+      ['slds-button--icon-inverse']: this.props.inverse,
     });
   }
 

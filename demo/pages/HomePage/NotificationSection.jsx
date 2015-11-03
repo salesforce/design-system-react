@@ -11,6 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSNotification from '../../../components/SLDSNotification';
+import {SLDSButton, SLDSModal} from '../../../components';
 import {default as PrismCode} from "react-prism/lib/PrismCode";
 
 module.exports = React.createClass( {
@@ -20,11 +21,60 @@ module.exports = React.createClass( {
   },
 
   getInitialState () {
-    return {};
+    return {
+      modalIsOpen: false
+    };
+  },
+
+  getModalContent(){
+    return (
+      <div>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+      </div>
+    )
+  },
+
+  openModal () {
+    this.setState({modalIsOpen: true});
+  },
+
+  closeModal () {
+    this.setState({modalIsOpen: false});
+  },
+
+  handleSubmitModal () {
+    this.closeModal();
   },
 
   render() {
-    let message = ['Your new contact, ', <a href="#">Sara Smith</a>, ', has been created.'];
+    let message = ['New contact added ', <a href="#" key="0123">Sara Smith</a>];
+    let errorMessage = 'Error';
     return (
 
             <div className='slds-p-around--medium'>
@@ -32,9 +82,12 @@ module.exports = React.createClass( {
                 Notification
               </h3>
               <div className='slds-p-vertical--large'>
-                <div className='slds-input-has-icon slds-input-has-icon--left'>
-                  <SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={message} animated={true} />
+                1. Toasts
+                <div className="demo-only">
+                  <SLDSNotification variant='toast' theme='success' icon='notification' texture={true} content={message} animated={true} />
                 </div>
+
+                2. Modal Toasts
               </div>
             </div>
 
