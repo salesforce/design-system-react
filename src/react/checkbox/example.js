@@ -23,9 +23,9 @@ export default function () {
 							<legend className="slds-form-element__label slds-form-element__label--top"></legend>
 							<div className="slds-form-element__control">
 								<Checkbox ref="checkbox"
-									labelText="Checked"
-									disabled={this.state.checkboxen.get('checkbox').disabled}
 									checked={this.state.checkboxen.get('checkbox').checked}
+									disabled={this.state.checkboxen.get('checkbox').disabled}
+									labelText="Checked"
 									onChanged={this._handleChange.bind(this, 'checkbox')}
 									onDisabled={this._handleDisable.bind(this, 'checkbox', true)}
 									onEnabled={this._handleDisable.bind(this, 'checkbox', false)}
@@ -33,9 +33,9 @@ export default function () {
 							</div>
 							<div className="slds-form-element__control">
 								<Checkbox ref="checkbox2"
-									labelText="Unchecked"
-									disabled={this.state.checkboxen.get('checkbox2').disabled}
 									checked={this.state.checkboxen.get('checkbox2').checked}
+									disabled={this.state.checkboxen.get('checkbox2').disabled}
+									labelText="Unchecked"
 									onChanged={this._handleChange.bind(this, 'checkbox2')}
 									onDisabled={this._handleDisable.bind(this, 'checkbox2', true)}
 									onEnabled={this._handleDisable.bind(this, 'checkbox2', false)}

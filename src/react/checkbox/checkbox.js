@@ -17,11 +17,14 @@ export const CheckboxObject = {
 	mixins: [State, Events, genericWillMount],
 
 	propTypes: {
-		disabled: React.PropTypes.bool,
 		checked: React.PropTypes.bool,
+		disabled: React.PropTypes.bool,
 		labelText: React.PropTypes.string,
-		value: React.PropTypes.string,
-		name: React.PropTypes.string
+		name: React.PropTypes.string.isRequired,
+		onChanged: React.PropTypes.func,
+		onDisabled: React.PropTypes.func,
+		onEnabled: React.PropTypes.func,
+		value: React.PropTypes.string
 	},
 
 	render () {
