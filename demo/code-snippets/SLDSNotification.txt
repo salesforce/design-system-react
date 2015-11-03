@@ -1,0 +1,15 @@
+
+<SLDSNotification variant='toast' theme='success' icon='notification' texture={true} content={message} animated={true} />
+
+<SLDSModal
+  isOpen={this.state.modalIsOpen}
+  toast={<SLDSNotification variant='toast' theme='error' icon='warning' texture={true} content={errorMessage} />}
+  title={<span>Lightning Design System: Style with Ease</span>}
+  footer={[
+    <SLDSButton key='cancelBtn' label='Cancel' variant='neutral' onClick={this.closeModal} />,
+    <SLDSButton key='saveBtn' label='Save' variant='brand' onClick={this.handleSubmitModal} />
+   ]}
+   onRequestClose={this.closeModal}
+   >
+    {this.getModalContent()}
+</SLDSModal>

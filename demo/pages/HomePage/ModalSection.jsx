@@ -51,7 +51,7 @@ Utilize our detailed guidelines to confidently design excellent apps that fit ri
 Utilize our detailed guidelines to confidently design excellent apps that fit right into the Salesforce ecosystem. With the Design System, you get access to all of the Salesforce core visual and interaction design patterns so that you can follow established best practices and build apps that have a consistent look and feel with the Salesforce user experience.
       </p>
 
-        <SLDSLookup 
+        <SLDSLookup
           items={[
             {label:'Paddy\'s Pub'},
             {label:'Tyrell Corp'},
@@ -149,11 +149,9 @@ Utilize our detailed guidelines to confidently design excellent apps that fit ri
               <h3 className='slds-text-heading--medium slds-truncate'>
                 Modal
               </h3>
-{/*
               <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSLookupPage.txt")}
+                {require("raw-loader!../../code-snippets/SLDSModal.txt")}
               </PrismCode>
-*/}
 
               <div className='slds-p-vertical--large'>
                 <SLDSButton

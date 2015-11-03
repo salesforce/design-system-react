@@ -75,21 +75,50 @@ module.exports = React.createClass( {
   render() {
     let message = ['New contact added ', <a href="#" key="0123">Sara Smith</a>];
     let errorMessage = 'Error';
+    let toastStyle = { display: 'inline-block'};
     return (
 
-            <div className='slds-p-around--medium'>
-              <h3 className='slds-text-heading--medium slds-truncate'>
-                Notification
-              </h3>
-              <div className='slds-p-vertical--large'>
-                1. Toasts
-                <div className="demo-only">
-                  <SLDSNotification variant='toast' theme='success' icon='notification' texture={true} content={message} animated={true} />
-                </div>
-
-                2. Modal Toasts
-              </div>
+      <div className='slds-p-around--medium'>
+        <h3 className='slds-text-heading--medium slds-truncate'>
+          Notification
+        </h3>
+        <h4>
+          * All notifications are fixed and centered at the top of the screen.
+        </h4>
+        <PrismCode className='language-markup'>
+          {require('raw-loader!../../code-snippets/SLDSNotification.txt')}
+        </PrismCode>
+        <div className='slds-p-vertical--medium'>
+          <div className="slds-p-vertical--small">
+            1. Toasts
+            <br />
+            <div className="demo-only" style={toastStyle}>
+              {this.state.modalIsOpen ? null: <SLDSNotification variant='toast' theme='success' icon='notification' texture={true} content={message} animated={true} />}
             </div>
+          </div>
+
+          <div className="slds-p-vertical--small">
+            2. Modal Toasts
+            <br />
+            <SLDSButton
+              label='Open Modal Toast'
+              variant='brand'
+              onClick={this.openModal} />
+            <SLDSModal
+              isOpen={this.state.modalIsOpen}
+              toast={<SLDSNotification variant='toast' theme='error' icon='warning' texture={true} content={errorMessage} />}
+              title={<span>Lightning Design System: Style with Ease</span>}
+              footer={[
+                <SLDSButton key='cancelBtn' label='Cancel' variant='neutral' onClick={this.closeModal} />,
+                  <SLDSButton key='saveBtn' label='Save' variant='brand' onClick={this.handleSubmitModal} />
+                  ]}
+                  onRequestClose={this.closeModal}>
+                  {this.getModalContent()}
+                </SLDSModal>
+              </div>
+
+            </div>
+          </div>
 
 
     );
