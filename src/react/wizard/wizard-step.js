@@ -4,10 +4,14 @@ import classNames from 'classnames';
 
 const WizardStep = React.createClass({
 	propTypes: {
-		item: React.PropTypes.object.isRequired,
-		index: React.PropTypes.number.isRequired,
 		currentIndex: React.PropTypes.number.isRequired,
+		index: React.PropTypes.number.isRequired,
+		item: React.PropTypes.shape({
+			getText: React.PropTypes.func.isRequired
+		}),
 		onClicked: React.PropTypes.func.isRequired
+		// TODO: Strings is a prop being passed in but not used
+		// strings: React.PropTypes.object
 	},
 
 	render () {
