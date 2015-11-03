@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import PopoverCore, {CONTROL} from '../../core/popover';
 
 // Framework Specific
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
 
@@ -13,28 +14,28 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // Template imports
 import template from './popover-template';
 
-let Popover = function Popover (element, options) {
-	this.options = Lib.extend({}, options);
-
-	this.elements = {
-		wrapper: $(element)
-	};
-
-	const $html = $('<i />').append(template);
-	this.template = $html.find('.' + this.cssClasses.CONTROL);
-
-	this._initializeState();
-	this._initialize(this.options);
+let Popover = function Popover () {
+	const options = this._getOptions(arguments);
+	
+	this.template = $(template);
+	
+	this._initialize(options);
 };
 
 export const PopoverMethods = {
-	_onInitialized () {
+	_initializer () {
+		this.element = this.$el = this.elements.control = this.template.clone();
+		this.elements.popover = Lib.wrapElement(this.element);
+	},
+	
+	_onRendered () {
 		this._setElementOptions();
 		this._setTrigger();
-
-		this._render();
-
-		this.trigger('initialized');
+		
+		// TODO: This is probably not the best way to do this or the best place for it to be
+		this.appendTo(this.elements.container);
+		
+		this._updatePosition();
 	},
 
 	_setElementOptions () {
@@ -42,7 +43,6 @@ export const PopoverMethods = {
 		const container = this.getProperty('container');
 		const align = this.getProperty('align');
 
-		this.elements.popover = Lib.wrapElement(this.template.clone());
 		this.elements.target = Lib.wrapElement(target || this.elements.wrapper);
 		this.elements.container = Lib.wrapElement(container || this.elements.wrapper);
 		this.elements.align = Lib.wrapElement(align || this.elements.target);
@@ -71,10 +71,10 @@ export const PopoverMethods = {
 	}
 };
 
-Lib.merge(Popover.prototype, PopoverCore, Events, State, PopoverMethods, {
+Lib.merge(Popover.prototype, PopoverCore, Events, DOM, State, PopoverMethods, {
 	_render () {
-		const header = this.elements.popover.find('.slds-popover__header > p');
-		const body = this.elements.popover.find('.slds-popover__body');
+		const header = this.element.find('.slds-popover__header > p');
+		const body = this.element.find('.slds-popover__body');
 
 		if (this.getProperty('header')) {
 			header.append(this.getProperty('header'));
@@ -83,10 +83,8 @@ Lib.merge(Popover.prototype, PopoverCore, Events, State, PopoverMethods, {
 		if (this.getProperty('content')) {
 			body.append(this.getProperty('content'));
 		}
-
-		this.elements.container.append(this.elements.popover);
-
-		this._updatePosition();
+		
+		return this.element;
 	}
 });
 

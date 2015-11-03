@@ -5,49 +5,42 @@ import * as Lib from '../../lib/lib';
 import SpinnerCore, {CONTROL} from '../../core/spinner';
 
 // Framework specific
+import DOM from '../dom';
 import State from '../state';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-let Spinner = function Spinner (element, options) {
-	this.options = Lib.extend(SpinnerCore._defaultProperties, options);
-	this.elements = {
-		wrapper: $(element)
-	};
-
-	this._initializeState();
-	this._initialize(this.options);
+let Spinner = function Spinner () {
+	const options = this._getOptions(arguments);
+	
+	this._initialize(options);
 };
 
 // Prototype extension object
 const SpinnerObject = {
-	_onInitialized () {
-		this._render();
+	_initializer () {
+		this.element = this.$el = this.elements.control = $('<div />', {
+			class: this.sizes[this.getProperty('size')]
+		});
 	},
-
+	
 	_render () {
 		const strings = this.getState('strings');
 		
-		this.elements.wrapper.empty();
-
-		$('<div />', {
-			class: this.sizes[this.getProperty('size')]
-		}).append(
+		this.element
+			.append(
 			$('<img />', {
 				src: this.fileNames[this.getProperty('theme')],
 				alt: strings.LOADING
 			})
-		).appendTo(this.elements.wrapper);
-	},
-
-	destroy () {
-		this.elements.wrapper.remove();
-		return this.elements.wrapper[0].outerHTML;
+		);
+		
+		return this.element;
 	}
 };
 
 // Merging into prototype
-Lib.merge(Spinner.prototype, SpinnerCore, State, SpinnerObject);
+Lib.merge(Spinner.prototype, SpinnerCore, DOM, State, SpinnerObject);
 
 // Framework setup
 Spinner = Lib.runHelpers('jquery', CONTROL, Spinner);

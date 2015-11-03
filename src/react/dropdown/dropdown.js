@@ -4,12 +4,12 @@
 import * as Lib from '../../lib/lib';
 import DropdownCore, {CONTROL} from '../../core/dropdown';
 
-// Third party
-import classNames from 'classnames';
-
 // Framework specific
 import React from 'react';
 import { PicklistObject } from '../picklist/picklist';
+
+// Children
+import PicklistItems from '../picklist/picklist-items';
 import Button from '../button/button';
 
 export const DropdownObject = Lib.merge(PicklistObject, {
@@ -46,11 +46,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 		return (
 		<div className="slds-dropdown-trigger">
 			<Button icon={this._getIcon()} iconStyle={this._getStyle()} disabled={this.props.disabled} />
-			<div className={classNames('slds-dropdown', ' slds-dropdown--left', ' slds-dropdown--menu', {'slds-hide': this.props.disabled})}>
-				<ul className="slds-dropdown__list" role="menu" ref={this.cssClasses.MENU}>
-				{this._menuItems()}
-				</ul>
-			</div>
+			<PicklistItems collection={this._collection} selection={this.getSelection()} show={!this.props.disabled} onSelected={this._handleMenuItemSelected} />
 		</div>
 		);
 	}

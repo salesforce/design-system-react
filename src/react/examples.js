@@ -1,5 +1,5 @@
 // WARNING: Keep this here as it is required for examples.html to work with webpack-dev-server
-require('../../public/assets/design-system/styles/slds.css');
+// require('../../public/assets/design-system/styles/slds.css');
 
 import badge from './badge/example';
 import button from './button/example';
@@ -17,6 +17,7 @@ import radio from './radio/example';
 import spinner from './spinner/example';
 import tooltip from './tooltip/example';
 import tree from './tree/example';
+import datatable from './data-table/example';
 
 badge();
 button();
@@ -34,3 +35,4 @@ radio();
 spinner();
 tree();
 tooltip();
+datatable();

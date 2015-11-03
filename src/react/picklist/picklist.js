@@ -12,11 +12,8 @@ import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 import Svg from '../svg/svg';
 
-// Third party
-import classNames from 'classnames';
-
 // Children
-import PicklistItem from './picklist-item';
+import PicklistItems from './picklist-items';
 
 export const PicklistObject = {
 	mixins: [State, Events, genericWillMount],
@@ -30,16 +27,6 @@ export const PicklistObject = {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired
-	},
-
-	_menuItems () {
-		const selected = this.getSelection();
-
-		return this._collection.map((item, index) => {
-			return (
-				<PicklistItem key={index} selected={item._item === selected} item={item} onSelected={this._handleMenuItemSelected} />
-			);
-		});
 	},
 
 	render () {
@@ -56,32 +43,15 @@ export const PicklistObject = {
 				<span className="slds-truncate">{selectionName}</span>
 				<Svg className="slds-icon" icon="utility.down" />
 			</button>
-			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--small', 'lds-dropdown--menu', {'slds-hide': !this.state.isOpen})}>
-				<ul className="slds-dropdown__list" role="menu" style={styles} ref={this.cssClasses.MENU}>
-				{this._menuItems()}
-				</ul>
-			</div>
+			<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._findElements} />
 			<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
 			</div>
 		</div>
 		);
 	},
 
-	componentDidMount () {
-		document.addEventListener('click', this._closeOnClick, false);
-		this._findElements();
-	},
-
-	componentDidUpdate () {
-		this._findElements();
-	},
-
-	componentWillUnmount () {
-		document.removeEventListener('click', this._closeOnClick, false);
-	},
-
-	_findElements () {
-		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(this.refs[this.cssClasses.MENU]));
+	_findElements (menu) {
+		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
 
 		this.elements.menuItems = [];
 		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');

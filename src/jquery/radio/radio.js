@@ -5,9 +5,10 @@ import * as Lib from '../../lib/lib';
 import RadioCore, {CONTROL} from '../../core/radio';
 
 // Framework specific
-import { CheckboxObject } from '../checkbox/checkbox';
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
+import { CheckboxObject } from '../checkbox/checkbox';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -15,44 +16,28 @@ const $ = Lib.global.jQuery || Lib.global.$;
 import template from './radio-template';
 
 // Constructor
-let Radio = function Radio (element, options) {
-	this.options = Lib.extend({}, options);
-	this.elements = {
-		wrapper: $(element)
-	};
-
+let Radio = function Radio () {
+	const options = this._getOptions(arguments);
+	
 	this.inputSelector = 'input[type="radio"]';
-	this.rendered = false;
-	this.template = $('<i />').append(template);
-
-	this._initializeState();
-	this._initialize(this.options);
+	this.template = $(template);
+	
+	this._initialize(options);
 };
 
 // Prototype extension object
-const RadioObject = Lib.merge({}, CheckboxObject, {
-	_defaultProperties: {
-		name: ''
-	},
-
+const RadioObject = {
 	_bindUIEvents () {
 		this.elements.input.on('change', $.proxy(this.check, this));
 	},
-
-	// TODO: rename this. What are dressings? Maybe something like _buildDOMComponents
-	// there is no guidance as to what should be done here and/or why
-	_renderDressings (elements) {
-		elements.input.attr('name', this.getProperty('name'));
-		CheckboxObject._renderDressings.call(this, elements);
+	
+	_render () {
+		this.elements.input.attr('name', this.getProperty('name'));
+		
+		return CheckboxObject._render.call(this);
 	},
 
-	// TODO: Is this necessary anymore? May never even be reachable now.
-	_syncOptions () {
-		const name = this.elements.input.attr('name');
-		if (name) this.options.name = name;
-		CheckboxObject._syncOptions.call(this);
-	},
-
+	// TODO: Update this when we add a universal destroy method
 	destroy () {
 		const self = this;
 		const group = this._getGroup();
@@ -64,10 +49,10 @@ const RadioObject = Lib.merge({}, CheckboxObject, {
 		this.elements.wrapper.remove();
 		return this.elements.wrapper[0].outerHTML;
 	}
-});
+};
 
 // Merging into prototype
-Lib.merge(Radio.prototype, RadioCore, Events, State, RadioObject);
+Lib.merge(Radio.prototype, RadioCore, Events, DOM, State, CheckboxObject, RadioObject);
 
 // Framework setup
 Radio = Lib.runHelpers('jquery', CONTROL, Radio);

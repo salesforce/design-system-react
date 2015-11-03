@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import PillboxCore, {CONTROL} from '../../core/pillbox';
 
 // Framework Specific
+import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
 
@@ -13,43 +14,36 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // Template imports
 import template from './pillbox-template';
 
-let Pillbox = function Pillbox (element, options) {
-	this.options = Lib.extend({}, options);
-
-	this.elements = {
-		wrapper: $(element)
-	};
-
-	const $html = $('<i />').append(template);
-	this.template = $html.find('.' + this.cssClasses.CONTROL);
-
-	this._initializeState();
-	this._initialize(this.options);
+let Pillbox = function Pillbox () {
+	const options = this._getOptions(arguments);
+	
+	this.template = $(template);
+	
+	this._initialize(options);
 };
 
-Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
-	_onInitialized () {
-		this.elements.wrapper.on('keyup.fu.tree', '.slds-pill-add-item', $.proxy(this._keyUp, this));
-		this.elements.wrapper.on('click.fu.tree', '.slds-pill > .slds-button', $.proxy(this._itemClicked, this));
-
-		this._render();
-
-		this.trigger('initialized');
+Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
+	_initializer () {
+		this.element = this.$el = this.elements.control = this.template.clone();
+		this.elements.group = this.element.find('.slds-pill-group');
+		this.elements.input = this.element.find('.slds-pill-add-item');
+		this.elements.inputWrap = this.element.find('.slds-pill-input-wrap');
+		this.elements.pillTemplate = this.elements.group.find('.slds-pill').remove();
+	},
+	
+	_bindUIEvents () {
+		this.element.on('keyup.fu.tree', '.slds-pill-add-item', $.proxy(this._keyUp, this));
+		this.element.on('click.fu.tree', '.slds-pill > .slds-button', $.proxy(this._itemClicked, this));
 	},
 
 	_render () {
-		const $el = this.template.clone();
-
-		this.elements.group = $el.find('.slds-pill-group');
-		this.elements.input = $el.find('.slds-pill-add-item');
-		this.elements.inputWrap = $el.find('.slds-pill-input-wrap');
-		this.elements.pillTemplate = this.elements.group.find('.slds-pill').remove();
-
 		this._renderSelection();
-
-		// Prep for append
-		this.elements.wrapper.empty();
-		this.elements.wrapper.append($el);
+		
+		return this.element;
+	},
+	
+	_onRendered () {
+		this._bindUIEvents();
 	},
 
 	_keyUp (e) {
@@ -104,7 +98,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, State, {
 	},
 
 	_onEnabledOrDisabled (props) {
-		this.elements.wrapper.toggleClass(this.cssClasses.DISABLED, props.disabled);
+		this.element.toggleClass(this.cssClasses.DISABLED, props.disabled);
 		this.elements.inputWrap.toggle(!props.disabled);
 	},
 
@@ -168,12 +162,6 @@ const legacyMethods = {
 		this.deselectItems(selection.slice(baseZeroIndex, baseZeroIndex + count));
 
 		return this.elements.wrapper;
-	},
-
-	destroy () {
-		this.elements.wrapper.remove();
-
-		return template;
 	},
 
 	items () {
