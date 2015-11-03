@@ -11,15 +11,16 @@ import PicklistItem from './picklist-item';
 
 const PicklistItems = React.createClass({
 	propTypes: {
-		show: React.PropTypes.bool.isRequired,
+		// TODO: Type of collection unknown until parsed by Data Adapter
+		collection: React.PropTypes.oneOfType([
+			React.PropTypes.array,
+			React.PropTypes.object
+		]).isRequired,
 		onSelected: React.PropTypes.func.isRequired,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.object
 		]),
-		collection: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object
-		]).isRequired
+		show: React.PropTypes.bool.isRequired
 	},
 
 	cssClasses: {

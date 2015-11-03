@@ -6,10 +6,6 @@ import sampleData from '../../../sample-data/picklist';
 
 export default function () {
 	const PicklistExample = React.createClass({
-		propTypes: {
-			models: React.PropTypes.arrayOf(React.PropTypes.object)
-		},
-
 		getInitialState () {
 			return {
 				models: [
