@@ -55,10 +55,12 @@ var config = {
 				test: /\.scss$/,
 				loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!sass-loader")
 				// loader: 'style!css!sass'
-			}, {
+			},
+			{
 				test: /\.less$/,
 				loader: 'style!css!less'
-			}, {
+			},
+			{
 				test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
 				loader: 'url-loader?limit=30000&name=/examples/[name]-[hash].[ext]'
 			}
