@@ -60,42 +60,46 @@ const Data = Base.Data.extend({
 		return result;
 	},
 
+	// We'll defer to Backbone's native methods on our internal Backbone collection (`_data`) for most methods.
 	at (index) {
 		let result;
 
+		// Our implementation of `at` does a small sanity check, but is otherwise just Backbone's `at`.
 		if (this._data && Lib.isNumber(index)) {
 			result = this._data.at(index);
 		}
 
 		return result;
 	},
-	
+
 	indexOf (criteria) {
 		return this._data.indexOf(criteria._item);
 	},
-	
+
 	length () {
 		return this._data.length;
 	},
-	
+
 	add (item) {
 		this._data.add(item._item);
 		
 		return this;
 	},
-	
+
 	remove (item) {
 		this._data.remove(item._item);
 		
 		return this;
 	},
-	
+
+	/* TODO: This should probably use item._item like the other methods, shouldn't it? */
 	reset (item) {
 		this._data.reset(item);
 		
 		return this;
 	},
-	
+
+	// Calling `clone` keeps the same data adapter, but makes a copy of the internal collection so that modifications to it don't alter the original one passed in by reference.
 	clone () {
 		this._data = this._data.clone();
 		
@@ -103,9 +107,10 @@ const Data = Base.Data.extend({
 	}
 });
 
+// For methods that apply to the collection and call a callback or iterator on some set of items we want the items passed to those callbacks to be wrapper in the appropriate item adapter. The helper function `_addDefaultImplementations` in the base data adapter makes it easy to register methods like this when they already exist on the internal collection.
 Data._addDefaultImplementations(Data, ['forEach', 'filter', 'map', 'every']);
 
-// Static methods
+// Like item adapters, data adapters also provide the *static method* `isTypeOf` which is used by `Lib` to determine if a given collection should use the adapter or not.
 Data.isTypeOf = function isTypeOf (data) {
 	return (data instanceof Backbone.Collection);
 };
