@@ -15,7 +15,6 @@ import React from 'react';
 import SVG from './SVG';
 
 module.exports = React.createClass( {
-
   render () { 
     return <SVG {...this.props} />;
   }

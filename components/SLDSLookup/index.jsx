@@ -47,10 +47,10 @@ class SLDSLookup extends React.Component {
 
   componentDidUpdate(prevProps, prevState){
     let lookup = this.props.type + 'Lookup';
-    if(prevState.selectedIndex && !this.state.selectIndex){
+    if(!isNaN(parseInt(prevState.selectedIndex)) && isNaN(parseInt(this.state.selectedIndex))){
       if(this.refs[lookup]) React.findDOMNode(this.refs[lookup]).focus();
     }
-    else if(!prevState.selectedIndex && this.state.selectedIndex){
+    else if(isNaN(parseInt(prevState.selectedIndex)) && !isNaN(parseInt(this.state.selectedIndex))){
       let selectedItem = 'pill-' + this.state.selectedIndex;
       if(this.refs[selectedItem]) React.findDOMNode(this.refs[selectedItem]).focus();
     }
