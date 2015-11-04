@@ -68,6 +68,7 @@ module.exports = React.createClass( {
                       {label:'E2 Option Super Super Long',value:'E1'},
 
                     ]}
+                    horizontalAlign='right'
                     onSelect={this.handleOnSelect}
                     onClick={this.handleOnClick}
                     onUpdateHighlighted={this.handleOnUpdateHighlighted}
