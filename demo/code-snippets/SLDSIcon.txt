@@ -1,0 +1,2 @@
+
+<SLDSUtilityIcon name='adduser' className='slds-input__icon slds-icon-text-default'/>

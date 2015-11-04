@@ -200,6 +200,7 @@ module.exports = React.createClass( {
 
     return (
       <div className={cx(headerClasses)}>
+        {this.props.toast}
         <h2 className={cx(headingClasses)}>{this.props.title}</h2>
         {closeButton}
      </div>);

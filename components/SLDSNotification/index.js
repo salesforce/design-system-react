@@ -33,7 +33,7 @@ class SLDSNotification extends React.Component {
       <div className="slds-notify-container">
         <div className={this.getClassName()} role="alert">
           <SLDSButton
-            label='Close'
+            label='Dismiss Notification'
             variant='icon'
             iconName='close'
             iconSize='large'

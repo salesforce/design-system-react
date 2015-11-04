@@ -1,0 +1,16 @@
+
+<SLDSButton
+  label='Open Modal'
+  variant='brand'
+  onClick={this.openModal}
+  />
+<SLDSModal
+  isOpen={this.state.modalIsOpen}
+  title={<span>Lightning Design System: Style with Ease</span>}
+  footer={[
+    <SLDSButton key='cancelBtn' label='Cancel' variant='neutral' onClick={this.closeModal} />,
+    <SLDSButton key='saveBtn' label='Save' variant='brand' onClick={this.handleSubmitModal} />
+   ]}
+   onRequestClose={this.closeModal}>
+    {this.getModalContent()}
+</SLDSModal>
