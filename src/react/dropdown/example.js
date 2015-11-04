@@ -2,7 +2,7 @@ import * as Lib from '../../lib/lib';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Dropdown from './dropdown';
-import sampleData from '../../../sample-data/picklist';
+import sampleData from '../../../sample-data/dropdown';
 
 export default function () {
 	const DropdownExample = React.createClass({
