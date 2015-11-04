@@ -1,6 +1,6 @@
 import * as Lib from '../../lib/lib';
 import Dropdown from './dropdown';
-import sampleData from '../../../sample-data/picklist';
+import sampleData from '../../../sample-data/dropdown';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

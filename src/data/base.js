@@ -1,35 +1,52 @@
+// Base Item & Data Adapter
+// ------------------------
+
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
 
-// TODO: this function can probably be cleaned up a little, and maybe inherit some implementation from lodash
+// "Children" of the base adapter will use this extend method as a form of prototypical inheritance. This differs from the mix in system used by the controls themselves, and is more similar to Backbone's `extend`.
+/* TODO: this function can probably be cleaned up a little, and maybe inherit some implementation from lodash */
 function _extend (protoProps) {
 	const parent = this;
+
+	// Create a new function to apply the props to. This will be the child (or "subclass").
 	const child = function () {
+		// The constructor of this child should call the constructor of the base control (which is the parent).
 		return parent.apply(this, arguments);
 	};
+
+	// Pass on static properties of the parent if there are any.
+	Lib.extend(child, parent);
+
+	// Set the prototype chain to inherit from the parent, without calling the parent's constructor function.
 	const Surrogate = function () {
 		this.constructor = child;
 	};
 
-	Lib.extend(child, parent);
-
 	Surrogate.prototype = parent.prototype;
 	child.prototype = new Surrogate;
 
+	// Add in the new instance properties.
 	if (protoProps) {
 		Lib.extend(child.prototype, protoProps);
 	}
 
+	// Set a convenience property in case the parent’s prototype is needed later.
 	child.__super__ = parent.prototype;
 
 	return child;
 }
 
+// This method is used internally by `findWhere` to search for matches in the collection.
 function _findMatch (data, isMatch) {
 	let found;
 
+	// `isMatch` should be a function that returns true or false based on whether the item matches the current criteria.
 	if (Lib.isFunction(isMatch)) {
 		data.forEach(function (item) {
+			// Only return the first match.
 			if (!found) {
+				// Note that `item` here will be wrapped in an item adapter.
 				if (isMatch(item)) {
 					found = item;
 				}
@@ -40,11 +57,14 @@ function _findMatch (data, isMatch) {
 	return found;
 }
 
+// Lots of methods that operate on collections follow the same callback/iterator pattern and we need a way to easily wire up existing ones so that they can make use of item adapters. This is aliased on the base data adapter as `_addDefaultImplementations`.
 function _addMethods (instance, methods) {
+	// For each method passed in we want to add a method on the instance (that is, the data adapter).
 	methods.forEach(function (method) {
 		instance.prototype[method] = function (callback, ...funcArgs) {
 			const self = this;
 			
+			// The first argument to the method will be the callback or iterator, which we'll wrap so that we can call `getItemAdapter` before calling it.
 			const _callback = function (item, ...callbackArgs) {
 				const _item = self.getItemAdapter(item);
 				return callback(_item, ...callbackArgs);
