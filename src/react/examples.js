@@ -8,7 +8,7 @@ import combobox from './combobox/example';
 import checkbox from './checkbox/example';
 import datepicker from './datepicker/example';
 import dropdown from './dropdown/example';
-import lookup from './lookup/lookup';
+import lookup from './lookup/example';
 import notification from './notification/example';
 import picklist from './picklist/example';
 	// import picker from './picker/example';
