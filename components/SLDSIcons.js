@@ -46,10 +46,15 @@ export const ButtonIcon = React.createClass({
         if (this.props.destructive) {
           className += ' slds-button__icon--destructive';
         }
+/*
         if(this.props.category === 'utility'){
             return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;
         }
         return <svg aria-hidden='true' className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
+*/
+        return <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} />;
+
+
     }
 
 });
@@ -79,20 +84,26 @@ export const Icon = React.createClass({
             className += ' slds-icon--' + this.props.position;
         }
         className = className + ' slds-icon-' + this.props.category + '-' + (this.props.theme || this.props.name);
-        if(this.props.category === 'utility'){
-            return <span className='slds-icon__container'><SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} style={this.props.style}  /></span>;
-        }
-        return <span className='slds-icon__container'><svg aria-hidden='true' className={className} style={this.props.style} dangerouslySetInnerHTML={{__html: useTag }} /></span>;
+//        if(this.props.category === 'utility'){
+            return <span className='slds-icon__container'><SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} style={this.props.style}  /></span>;
+//        }
+//        return <span className='slds-icon__container'><svg aria-hidden='true' className={className} style={this.props.style} dangerouslySetInnerHTML={{__html: useTag }} /></span>;
     }
 
 });
 
 export const InputIcon = React.createClass({
 
+    getDefaultProps() {
+        return {
+            category: 'utility',
+        };
+    },
+
     render() {
         const useTag = '<use xlink:href="'+SLDSSettings.getAssetsPath()+'icons/utility-sprite/svg/symbols.svg#' + this.props.name + '" />';
         const className  = 'slds-input__icon slds-icon-text-default';
-        return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;
+        return <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} />;
     }
 
 });
