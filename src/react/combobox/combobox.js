@@ -10,6 +10,8 @@ import { PicklistObject } from '../picklist/picklist';
 
 // Children
 import PicklistItems from '../picklist/picklist-items';
+import Button from '../button/button';
+import Svg from '../svg/svg';
 
 export const ComboboxObject = Lib.merge(PicklistObject, {
 	propTypes: {
@@ -26,25 +28,19 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 	},
 
 	render () {
-		const icon = '<use xlink:href="/assets/design-system/icons/utility-sprite/svg/symbols.svg#down"></use>'; // react doesn't currently support xlink:href in a svg tag
 		const item = this._getSelection();
 		const selectionName = item.getText();
-		const inputStyle = {
-			border: 'none',
-			borderRight: '1px solid #d8dde6',
-			borderRadius: '.25rem 0 0 .25rem'
-		};
 
 		return (
 		<div className="slds-combobox slds-form-element">
 			<div aria-expanded="true" className="slds-picklist">
-			<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" style={{paddingLeft: 0}} disabled={this.props.disabled} aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
-				<div className="slds-form-element__control">
-				<input name={this.props.name} type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} className="slds-input" style={inputStyle} />
-				</div>
-				<svg aria-hidden="true" className="slds-icon" style={{right: '.7rem'}} dangerouslySetInnerHTML={{__html: icon}} />
-			</button>
-			<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
+				<Button size="small" iconStyle="icon-more picklist-label" theme="neutral" disabled={this.props.disabled} onClick={this._handleClicked}>
+					<div className="slds-form-element__control">
+						<input name={this.props.name} type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} className="slds-input" />
+					</div>
+					<Svg icon="utility.down" className="slds-icon" />
+				</Button>
+				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
 			</div>
 		</div>
 		);
