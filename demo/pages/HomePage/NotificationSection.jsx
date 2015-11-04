@@ -74,7 +74,7 @@ module.exports = React.createClass( {
 
   render() {
     let message = ['New contact added ', <a href="#" key="0123">Sara Smith</a>];
-    let errorMessage = 'Error';
+    let errorMessage = 'There was a problem updating the record.';
     let toastStyle = { display: 'inline-block'};
     return (
 
