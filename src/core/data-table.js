@@ -31,37 +31,18 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 
 	_defaultProperties: {
 		sortable: false,
-		collection: [],
-		selection: null,
 		bordered: false,
 		striped: false,
 		stacked: false,
-		stackedHorizontal: false
+		stackedHorizontal: false,
+		selectRows: true,
+		multiSelect: true,
+
+		collection: [],
+		columns: [],
+		sortDirection: 'desc',
+		sortColumn: null
 	},
-
-	/* Accessors: These may be supplied in the options hash to override default behavior
-
-	 textProp ()
-	 Return the name of the property that contains the text
-
-	 getText (item)
-	 Return the text value to display in the list
-	 item => object wrapped in an Item Adapter
-
-	 getType (item)
-	 Return the type of the current item - can be 'header', 'divider', or nothing
-	 item => object wrapped in an Item Adapter
-
-	 getDisabled (item)
-	 Return true if the item is disabled
-	 item => object wrapped in an Item Adapter
-
-	 getKey (item)
-	 Return either an object with key/value pairs to match or a match function
-	 Use this to reduce the number of fields required for searching if a unique key is available
-	 item => object wrapped in an Item Adapter
-
-	 */
 
 	accessors: { // TODO: use these
 		textProp () {
@@ -81,11 +62,63 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 		},
 
 		getKey (item) {
-			return item.get();
+			return item.get('propertyName');
 		},
 
 		getId (item) {
 			return item.get('id');
+		}
+	},
+
+	_generatePropertyPayload () {
+		return {
+			columns: this.getProperty('columns'),
+			sortDirection: this.getProperty('sortDirection'),
+			sortColumn: this.getProperty('sortColumn')
+		};
+	},
+
+	_sortColumn (sortProp) {
+		const columns = this.getProperty('columns');
+		let dir = sortProp.sortDirection || 'asc';
+
+		dir = dir === 'asc' ? 'desc' : 'asc';
+
+		if (columns.length) {
+			columns.forEach( function (column) {
+				if (column.propertyName === sortProp.propertyName) {
+					column.sortDirection = dir;
+				} else {
+					delete column.sortDirection;
+				}
+			});
+		}
+
+		if (Lib.isFunction(this._onSort)) {
+			this.setProperties({
+				sortDirection: dir,
+				sortColumn: sortProp,
+				columns: columns
+			});
+
+			this._onSort();
+		}
+
+		this.trigger('sort', {
+			sortColumn: sortProp,
+			sortDirection: dir,
+			columns: columns
+		});
+	},
+
+	_selectDataItem (selRow) {
+		const item = this._getItemAdapter(selRow);
+		const selected = this._isItemSelected(item);
+
+		if (selected) {
+			this._deselectItem(item);
+		} else {
+			this._selectItem(item);
 		}
 	},
 
