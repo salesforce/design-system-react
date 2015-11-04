@@ -19,7 +19,8 @@ const LookupItem = React.createClass({
 		const icon = this.props.item.getIcon();
 
 		if (Lib.isString(icon)) {
-			return <Svg className="slds-icon slds-icon--small" icon={icon} />;
+			// TODO: Seems strange that this classname is specific to account
+			return <Svg className="slds-icon slds-icon-standard-account slds-icon--small" icon={icon} />;
 		}
 	},
 

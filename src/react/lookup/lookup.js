@@ -9,6 +9,9 @@ import * as Lib from '../../lib/lib';
 // Use the [shared core](../../core/combobox), which contains logic that is the same in every facade.
 import LookupCore, {CONTROL} from '../../core/lookup';
 
+// Third party
+import classNames from 'classnames';
+
 // Framework specific
 import React from 'react';
 import { PicklistObject } from '../picklist/picklist';
@@ -52,12 +55,12 @@ export const LookupObject = Lib.merge(PicklistObject, {
 		<div className="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true">
 			<div className="slds-form-element">
 				<label className="slds-form-element__label" htmlFor={this.state.inputId}>Accounts</label>
-				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={this._handleClicked}>
 					<Svg icon="utility.search" className="slds-input__icon" />
-					<input id={this.state.inputId} className="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-activedescendant="" onChange={this._handleChanged} value={text} />
+					<input id={this.state.inputId} className="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant="" onChange={this._handleChanged} value={text} />
 				</div>
 			</div>
-			<div className="slds-lookup__menu" role="listbox" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<div className="slds-lookup__item">
 					<button className="slds-button">
 						<Svg icon="utility.search" className="slds-icon slds-icon-text-default slds-icon--small" />
