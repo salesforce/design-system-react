@@ -48,6 +48,7 @@ module.exports = React.createClass( {
       listClassName:'',
       openOn:'hover',
       listItemRenderer:ListItemLabel,
+      horizontalAlign:'left',
       hoverCloseDelay:300
     }
   },
@@ -271,10 +272,12 @@ module.exports = React.createClass( {
   },
 
   getModalPopover() {
+    const className = 'slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--'+this.props.horizontalAlign;
     return (
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
-          className='slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu'
+          className={className}
+          horizontalAlign={this.props.horizontalAlign}
           targetElement={this.refs.button}
           closeOnTabKey={true}
           onClose={this.handleCancel}>

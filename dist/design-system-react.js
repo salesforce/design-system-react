@@ -449,12 +449,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  propTypes: {
-	    targetAttachment: _react2['default'].PropTypes.string
+	    //    targetAttachment: React.PropTypes.string,
 	  },
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      targetAttachment: 'bottom left',
+	      verticalAlign: 'bottom',
+	      horizontalAlign: 'left',
+	      //      targetAttachment: 'bottom left',
 	      className: 'slds-dropdown',
 	      closeOnTabKey: false
 	    };
@@ -517,10 +519,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  dropOptions: function dropOptions() {
 	    var target = this.props.targetElement ? _react2['default'].findDOMNode(this.props.targetElement) : _react2['default'].findDOMNode(this).parentNode;
+	    var position = this.props.verticalAlign + ' ' + this.props.horizontalAlign;
 	    return {
 	      target: target,
 	      content: this.popoverElement,
-	      position: this.props.targetAttachment,
+	      position: position,
 	      openOn: 'always',
 	      beforeClose: this.beforeClose,
 	      constrainToWindow: true,
@@ -568,18 +571,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	});
-	/*
-	       <Spring
-	         defaultValue={{ val:0 }}
-	         endValue={{ val:1, config: [70, 10] }}>
-	         {currentVal => {
-	             return (<div style={{opacity:currentVal.val}}>
-	*/ /*
-	                </div>);
-	              }.bind(this)
-	            }
-	          </Spring>
-	   */
 
 /***/ },
 /* 4 */
@@ -3472,7 +3463,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    // Utility Icon Reference: https://www.lightningdesignsystem.com/resources/icons#utility
 	    render: function render() {
-	        var useTag = '<use xlink:href="' + _SLDSSettings2['default'].getAssetsPath() + '/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
 	
 	        var className = 'slds-button__icon';
 	        if (this.props.variant !== 'icon') {
@@ -3517,7 +3507,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    render: function render() {
 	
-	        var useTag = '<use xlink:href="' + _SLDSSettings2['default'].getAssetsPath() + '/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
+	        var name = this.props.name.replace(/_/g, '-');
+	        var iconClassName = 'slds-icon-' + this.props.category + '-' + (this.props.theme || name);
+	        var styles = this.props.category === 'action' ? { padding: '.5rem' } : null;
+	
 	        var className = 'slds-icon';
 	        if (this.props.stateful) {
 	            className += '--stateful';
@@ -3531,11 +3524,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.props.position) {
 	            className += ' slds-icon--' + this.props.position;
 	        }
-	        className = className + ' slds-icon-' + this.props.category + '-' + (this.props.theme || this.props.name);
-	        //        if(this.props.category === 'utility'){
-	        return _react2['default'].createElement('span', { className: 'slds-icon__container' }, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className, style: this.props.style }));
-	        //        }
-	        //        return <span className='slds-icon__container'><svg aria-hidden='true' className={className} style={this.props.style} dangerouslySetInnerHTML={{__html: useTag }} /></span>;
+	        className = className + ' ' + iconClassName;
+	        return _react2['default'].createElement('span', { className: 'slds-icon__container ', style: styles }, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className, style: this.props.style }));
 	    }
 	
 	});
@@ -3551,7 +3541,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	
 	    render: function render() {
-	        var useTag = '<use xlink:href="' + _SLDSSettings2['default'].getAssetsPath() + 'icons/utility-sprite/svg/symbols.svg#' + this.props.name + '" />';
 	        var className = 'slds-input__icon slds-icon-text-default';
 	        return _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className });
 	    }
@@ -6646,6 +6635,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      listClassName: '',
 	      openOn: 'hover',
 	      listItemRenderer: _listItemLabel2['default'],
+	      horizontalAlign: 'left',
 	      hoverCloseDelay: 300
 	    };
 	  },
@@ -6854,8 +6844,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  getModalPopover: function getModalPopover() {
+	    var className = 'slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--' + this.props.horizontalAlign;
 	    return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement(_SLDSPopover2['default'], {
-	      className: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
+	      className: className,
+	      horizontalAlign: this.props.horizontalAlign,
 	      targetElement: this.refs.button,
 	      closeOnTabKey: true,
 	      onClose: this.handleCancel }, this.getPopoverContent()) : null;

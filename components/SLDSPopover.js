@@ -31,12 +31,14 @@ module.exports = React.createClass( {
   },
 
   propTypes: {
-    targetAttachment: React.PropTypes.string,
+//    targetAttachment: React.PropTypes.string,
   },
 
   getDefaultProps () {
     return {
-      targetAttachment: 'bottom left',
+      verticalAlign: 'bottom',
+      horizontalAlign: 'left',
+//      targetAttachment: 'bottom left',
       className: 'slds-dropdown',
       closeOnTabKey: false
     };
@@ -97,24 +99,9 @@ module.exports = React.createClass( {
         }}
         onKeyDown={this.handleKeyDown}
       >
-{/*
-        <Spring
-          defaultValue={{ val:0 }}
-          endValue={{ val:1, config: [70, 10] }}>
-          {currentVal => {
-              return (<div style={{opacity:currentVal.val}}>
-
-*/}
 {
                 this.props.children
               }
-{/*
-              </div>);
-            }.bind(this)
-          }
-        </Spring>
-
-*/}
       </div>
     );
 
@@ -124,11 +111,12 @@ module.exports = React.createClass( {
   },
 
   dropOptions () {
-    let target = this.props.targetElement?React.findDOMNode(this.props.targetElement):React.findDOMNode(this).parentNode;
+    const target = this.props.targetElement?React.findDOMNode(this.props.targetElement):React.findDOMNode(this).parentNode;
+    const position = this.props.verticalAlign+' '+this.props.horizontalAlign;
     return {
       target: target,
       content: this.popoverElement,
-      position: this.props.targetAttachment,
+      position: position,
       openOn: 'always',
       beforeClose:this.beforeClose,
       constrainToWindow:true,
