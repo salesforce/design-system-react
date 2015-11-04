@@ -3,10 +3,10 @@
 
 // Inherited at the `core` level by all other controls.
 
-// Bring in the shared library functions.
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
 
-// Always include the "vanilla" data adapter, which allows controls to work with plain javascript arrays and objects. More about data adapters may be found in the data directory.
+// Always include the ["vanilla" data adapter](../data/vanilla), which allows controls to work with plain javascript arrays and objects. More about data adapters may be found in the data directory.
 import '../data/vanilla';
 
 // Declare the object which will be exported. This object is what will be mixed in to every other control.
@@ -19,7 +19,7 @@ const Base = {
 		CONTROL: 'slds-form-element__control'
 	},
 
-	// Define a default state with a strings object that is used by internationalization logic. The merge function used to mix Base into the other controls will allow this to be extended with additional defaults.
+	// Define a default state with a strings object that is used by internationalization logic. The merge function used to mix `Base` into the other controls will allow this to be extended with additional defaults.
 	_defaultState: {
 		strings: {}
 	},
@@ -64,10 +64,13 @@ const Base = {
 		if (Lib.isFunction(onInitialized)) onInitialized.call(this, this);
 	},
 
+	// Item adapters are a key piece of functionality that allow Facades to work seamlessly with many different data sources. For example, an "item" might be a plain javascript object with key/value pairs or it might be a Backbone.js model.
 	_getItemAdapter (_item, _itemAdapter) {
+		// If a specific item adapter was passed in (typically this would be the one used provided by the data adapter we are using) then we want to use that one. Otherwise we'll fall back on a `Lib` function that walks all of the registered item adapters and chooses the first one that matches.
 		const itemAdapter = _itemAdapter || Lib.getItemAdapter;
 		const item = itemAdapter(_item);
 
+		// When this function is used to wrap an item in an item adapter it has the added benefit of including the accessors for you. Accessors typically provide methods like `getText` or `getChildren` that provide flexibility in the structure of the data provided, while the adapter itself provides flexibility in the type of data. 
 		if (this.accessors) {
 			Object.keys(this.accessors).forEach(method => {
 				item[method] = Lib.bind(this.accessors[method], this, item);
@@ -77,14 +80,17 @@ const Base = {
 		return item;
 	},
 
+	// Like item adapters, data adpaters help Facades work with many different types of data. Data adapters work with the collections of data, like plain javascript arrays of objects or Backbone.js collections of models.
 	_getDataAdapter (_data) {
 		const data = Lib.getDataAdapter(_data);
 
+		// This `Base` version of `getDataAdapter` largely delegates to the one in `Lib` with one key difference: this one uses the version of `getItemAdapter` defined above to ensure that the accessors are properly bound to each item.
 		data.getItemAdapter = Lib.partialRight(Lib.bind(this._getItemAdapter, this), data.getItemAdapter);
 
 		return data;
 	},
 
+	// Facades comes with support for internationalization of strings out of the box. Strings may be provided globally to `Lib` as either a js object or as a promise which resolves as such (see more details in that file), and overrides for a specific instance of a control may be passed in as properties.
 	_getStrings (callback) {
 		Lib.getStrings().then(_strings => {
 			let strings = this.getProperty('strings');
@@ -99,6 +105,7 @@ const Base = {
 		}).then(callback);
 	},
 
+	// Every control inherits the current version of the library.
 	version: Lib.version
 };
 
