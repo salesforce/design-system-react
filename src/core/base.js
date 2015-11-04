@@ -57,7 +57,7 @@ const Base = {
 	},
 
 	// `onInitialized` is part of the public API. If it has been provided, run it after initialization is complete.
-	// TODO: Determine how to delineate and document API methods and options so that they can be easily collected and displayed together.
+	/* TODO: Determine how to delineate and document API methods and options so that they can be easily collected and displayed together. */
 	_onInitialized () {
 		const onInitialized = this.getProperty('onInitialized');
 		
@@ -70,7 +70,7 @@ const Base = {
 		const itemAdapter = _itemAdapter || Lib.getItemAdapter;
 		const item = itemAdapter(_item);
 
-		// When this function is used to wrap an item in an item adapter it has the added benefit of including the accessors for you. Accessors typically provide methods like `getText` or `getChildren` that provide flexibility in the structure of the data provided, while the adapter itself provides flexibility in the type of data. 
+		// When this function is used to wrap an item in an item adapter it has the added benefit of including the accessors for you. Accessors typically provide methods like `getText` or `getChildren` that provide flexibility in the structure of the data provided, while the adapter itself provides flexibility in the type of data.
 		if (this.accessors) {
 			Object.keys(this.accessors).forEach(method => {
 				item[method] = Lib.bind(this.accessors[method], this, item);
