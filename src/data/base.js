@@ -1,24 +1,37 @@
+// Base Item & Data Adapter
+// ------------------------
+
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
 
-// TODO: this function can probably be cleaned up a little, and maybe inherit some implementation from lodash
+// "Children" of the base adapter will use this extend method as a form of prototypical inheritance. This differs from the mix in system used by the controls themselves, and is more similar to Backbone's `extend`.
+/* TODO: this function can probably be cleaned up a little, and maybe inherit some implementation from lodash */
 function _extend (protoProps) {
 	const parent = this;
+
+	// Create a new function to apply the props to. This will be the "subclass."
 	const child = function () {
+		// The constructor of this subclass should call the constructor of the base control (which is the parent).
 		return parent.apply(this, arguments);
 	};
+
+	// Pass on static properties of the parent if there are any.
+	Lib.extend(child, parent);
+
+	// Set the prototype chain to inherit from the parent, without calling the parent's constructor function.
 	const Surrogate = function () {
 		this.constructor = child;
 	};
 
-	Lib.extend(child, parent);
-
 	Surrogate.prototype = parent.prototype;
 	child.prototype = new Surrogate;
 
+	// Add in the new instance properties.
 	if (protoProps) {
 		Lib.extend(child.prototype, protoProps);
 	}
 
+	// Set a convenience property in case the parent’s prototype is needed later.
 	child.__super__ = parent.prototype;
 
 	return child;
