@@ -14,8 +14,7 @@ import React from 'react';
 import { PicklistObject } from '../picklist/picklist';
 
 // Children
-import PicklistItems from '../picklist/picklist-items';
-import Button from '../button/button';
+import LookupItem from './lookup-item';
 import Svg from '../svg/svg';
 
 export const LookupObject = Lib.merge(PicklistObject, {
@@ -24,7 +23,6 @@ export const LookupObject = Lib.merge(PicklistObject, {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		disabled: React.PropTypes.bool,
 		onChanged: React.PropTypes.func,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.string,
@@ -37,33 +35,43 @@ export const LookupObject = Lib.merge(PicklistObject, {
 			inputId: Lib.uniqueId(CONTROL + '-input-')
 		});
 	},
+	
+	_renderMenuItems () {
+		return this._collection.map((item, index) => {
+			return (
+				<LookupItem key={index} item={item} onSelected={this._handleMenuItemSelected} />
+			);
+		});
+	},
 
 	render () {
-		const item = this._getSelection();
-		const selectionName = item.getText();
+		const selection = this._getSelection();
+		const text = selection.getText();
 
 		return (
-		<div class="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true">
-			<div class="slds-form-element">
-				<label class="slds-form-element__label" for={this.state.inputId}>Accounts</label>
-				<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
-					<Svg icon="utility.search" className="slds-icon" />
-					<input id={this.state.inputId} class="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-activedescendant="" onChange={this._handleChanged} />
+		<div className="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true">
+			<div className="slds-form-element">
+				<label className="slds-form-element__label" htmlFor={this.state.inputId}>Accounts</label>
+				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
+					<Svg icon="utility.search" className="slds-input__icon" />
+					<input id={this.state.inputId} className="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded="true" aria-activedescendant="" onChange={this._handleChanged} value={text} />
 				</div>
 			</div>
-			<div class="slds-lookup__menu" role="listbox">
-				<div class="slds-lookup__item">
-					<Button>
+			<div className="slds-lookup__menu" role="listbox" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+				<div className="slds-lookup__item">
+					<button className="slds-button">
 						<Svg icon="utility.search" className="slds-icon slds-icon-text-default slds-icon--small" />
-						&quot;{selectionName}&quot; in Accounts
-					</Button>
+						&quot;{text}&quot; in Accounts
+					</button>
 				</div>
-				<PicklistItems collection={this._collection} selection={item} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
-				<div class="slds-lookup__item">
-					<Button>
+				<ul className="slds-lookup__list" role="presentation" ref={this._findElements}>
+					{this._renderMenuItems()}
+				</ul>
+				<div className="slds-lookup__item">
+					<button className="slds-button">
 						<Svg icon="utility.add" className="slds-icon slds-icon-text-default slds-icon--small" />
 						Add Account
-					</Button>
+					</button>
 				</div>
 			</div>
 		</div>
