@@ -52,7 +52,6 @@ class Menu extends React.Component {
         footerActive = false;
         isActiveClass = '';
       }
-
       return <div className={isActiveClass}>{this.props.footer}</div>;
     }
   }

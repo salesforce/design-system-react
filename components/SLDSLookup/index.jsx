@@ -320,7 +320,7 @@ class SLDSLookup extends React.Component {
     let selectedItem = this.props.items[this.state.selectedIndex].label;
     return <span tabIndex="0" className="slds-pill" ref={'pill-' + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         <span className="slds-pill__label">
-          <Icon name={this.props.type} />
+          <Icon category={this.props.iconCategory} name={this.props.iconName} className={this.props.iconClasses} />
           {selectedItem}
         </span>
         <SLDSButton
