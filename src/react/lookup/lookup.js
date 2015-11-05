@@ -3,6 +3,8 @@
 
 // Implements the Lookup [design pattern](https://www.lightningdesignsystem.com/components/lookups) in React. This is similar to both the Picklist and the Pills, but currently there is no inheritance from either control.
 
+/* TODO: Add a full API description of the control here. */
+
 // Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../../lib/lib';
 
@@ -29,6 +31,7 @@ import LookupPill from './lookup-pill';
 // The [Svg helper](../svg/svg) for React provides a simple wrapper around the markup required for SVGs, and uses `Lib.getSVGPath` to convert strings in the format `sprite file`.`icon name` into full paths.
 import Svg from '../svg/svg';
 
+/* TODO: Finish documenting the control's methods. */
 let Lookup = Lib.merge({}, LookupCore, {
 	mixins: [State, Events, genericWillMount],
 	
