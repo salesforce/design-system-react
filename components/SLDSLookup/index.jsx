@@ -18,6 +18,8 @@ import escapeRegExp from 'lodash.escaperegexp';
 import DefaultFooter from './Menu/DefaultFooter';
 import DefaultHeader from './Menu/DefaultHeader';
 
+import cx from 'classnames';
+
 
 const defaultFilter = (term, item) => {
   if(!term) return true;
@@ -329,14 +331,19 @@ class SLDSLookup extends React.Component {
   }
 
   render() {
-    let inputClasses = this.state.selectedIndex === null ? 'slds-input':'slds-input slds-hide';
-    let componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside":"slds-lookup ignore-react-onclickoutside slds-has-selection";
-    let inputContainerClasses =  this.state.selectedIndex === null ? '':' slds-input';
-    let inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: '5px'};
-    let inputLabel;
-    if(this.props.label){
-    	inputLabel = <label className="slds-form-element__label" htmlFor={this.props.type + "Lookup"}>{this.props.label}</label>
-    }
+    const inputClasses = this.state.selectedIndex === null ? 'slds-input':'slds-input slds-hide';
+    const componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside":"slds-lookup ignore-react-onclickoutside slds-has-selection";
+
+    const inputContainerClasses = {
+      'slds-lookup__control': true,
+      'slds-input-has-icon':true,
+      'slds-input-has-icon--right': true,
+      'slds-input': this.state.selectedIndex !== null,
+      'slds-has-error':this.props.hasError
+    };
+
+    const inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: '5px'};
+    const inputLabel = this.props.label?<label className='slds-form-element__label' htmlFor={this.props.type + "Lookup"}>{this.props.label}</label>:null;
 
     return (
       <div className={componentClasses} data-select="multi" data-scope="single" data-typeahead="true">
@@ -344,7 +351,7 @@ class SLDSLookup extends React.Component {
 
           {inputLabel}
 
-          <div className={"slds-lookup__control slds-input-has-icon slds-input-has-icon--right" + inputContainerClasses} style={inputContainerStyle}>
+          <div className={cx(inputContainerClasses)} style={inputContainerStyle}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             <InputIcon name="search"/>
             <input
@@ -387,6 +394,7 @@ SLDSLookup.propTypes = {
   onChange: React.PropTypes.func,
   modal: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
+  hasError: React.PropTypes.bool,
   boldRegex: React.PropTypes.instanceOf(RegExp),
 };
 

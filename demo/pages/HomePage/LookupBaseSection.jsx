@@ -75,6 +75,7 @@ module.exports = React.createClass( {
                   footerRenderer={SLDSLookup.DefaultFooter}
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
+                  hasError={false}
                 />
               </div>
 

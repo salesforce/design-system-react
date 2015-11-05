@@ -6662,7 +6662,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.initialFocus) {
 	      this.setFocus();
 	    }
-	    if (this.props.openOn === 'hover') {}
+	    if (this.props.openOn === 'hover') {
+	      //TODO:Add functionality here
+	    }
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
@@ -6683,13 +6685,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else if (this.state.isFocused && !prevState.isFocused) {
 	      this.setState({ isOpen: false });
 	    } else if (!this.state.isFocused && prevState.isFocused) {
-	      if (this.refs.list) {
-	        if (this.isMounted() && this.refs.list) {
-	          if (this.refs.list.getDOMNode().contains(document.activeElement)) {
-	            return;
-	          }
-	          this.setState({ isOpen: false });
-	        }
+	      if (this.refs.list && this.isMounted()) {
+	        if (this.refs.list.getDOMNode().contains(document.activeElement)) return;
+	        this.setState({ isOpen: false });
 	      }
 	    } else if (this.state.isClosing && !prevState.isClosing) {
 	      setTimeout(function () {
@@ -6871,6 +6869,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var className = this.state.currentSelectedItem ? 'slds-input--bare slds-hide' : 'slds-input--bare';
 	
 	    var props = (0, _lodashOmit2['default'])(this.props, ['aria-haspopup', 'label', 'className', 'style', 'variant', 'iconName', 'iconVariant', 'onBlur', 'onFocus', 'onClick', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'tabIndex', 'onKeyDown']);
+	
 	    return _react2['default'].createElement(_SLDSButton2['default'], _extends({
 	      ref: 'button',
 	      id: this.state.triggerId,
@@ -9584,6 +9583,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _MenuDefaultHeader2 = _interopRequireDefault(_MenuDefaultHeader);
 	
+	var _classnames = __webpack_require__(69);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
 	var defaultFilter = function defaultFilter(term, item) {
 	  if (!term) return true;
 	  return item.label.match(new RegExp((0, _lodashEscaperegexp2['default'])(term), 'ig'));
@@ -9611,20 +9614,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  _createClass(SLDSLookup, [{
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      var lookup = this.props.type + 'Lookup';
+	      if (!isNaN(parseInt(prevState.selectedIndex)) && isNaN(parseInt(this.state.selectedIndex))) {
+	        if (this.refs[lookup]) {
+	          _react2['default'].findDOMNode(this.refs[lookup]).focus();
+	        }
+	      } else if (isNaN(parseInt(prevState.selectedIndex)) && !isNaN(parseInt(this.state.selectedIndex))) {
+	        var selectedItem = 'pill-' + this.state.selectedIndex;
+	        if (this.refs[selectedItem]) {
+	          _react2['default'].findDOMNode(this.refs[selectedItem]).focus();
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(newProps) {
+	      if (newProps.items) {
+	        this.modifyItems(newProps.items);
+	      }
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.modifyItems(this.props.items);
 	    }
 	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate(prevProps, prevState) {
-	      var lookup = this.props.type + 'Lookup';
-	      if (!isNaN(parseInt(prevState.selectedIndex)) && isNaN(parseInt(this.state.selectedIndex))) {
-	        if (this.refs[lookup]) _react2['default'].findDOMNode(this.refs[lookup]).focus();
-	      } else if (isNaN(parseInt(prevState.selectedIndex)) && !isNaN(parseInt(this.state.selectedIndex))) {
-	        var selectedItem = 'pill-' + this.state.selectedIndex;
-	        if (this.refs[selectedItem]) _react2['default'].findDOMNode(this.refs[selectedItem]).focus();
-	      }
+	    key: 'modifyItems',
+	    value: function modifyItems(itemsToModify) {
+	      var items = itemsToModify.map(function (item, index) {
+	        return {
+	          id: 'item-' + index,
+	          label: item.label,
+	          data: item
+	        };
+	      });
+	
+	      this.setState({ items: items });
 	    }
 	
 	    //=================================================
@@ -9651,14 +9678,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'getListLength',
 	    value: function getListLength(qty) {
-	      if (qty !== this.state.listLength) this.setState({ listLength: qty });
+	      if (qty !== this.state.listLength) {
+	        this.setState({ listLength: qty });
+	      }
 	    }
 	  }, {
 	    key: 'getNumFocusableItems',
 	    value: function getNumFocusableItems() {
 	      var offset = 0;
-	      if (this.refs.footer) offset += 1;
-	      if (this.refs.header) offset += 1;
+	      if (this.refs.footer) {
+	        offset += 1;
+	      }
+	      if (this.refs.header) {
+	        offset += 1;
+	      }
 	      return this.state.listLength + offset;
 	    }
 	
@@ -9681,7 +9714,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	          searchTerm: null
 	        });
 	        var data = this.state.items[index].data;
-	        if (this.props.onItemSelect) this.props.onItemSelect(data);
+	        if (this.props.onItemSelect) {
+	          this.props.onItemSelect(data);
+	        }
 	      }
 	    }
 	  }, {
@@ -9691,7 +9726,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        selectedIndex: null,
 	        isOpen: true
 	      });
-	      if (this.props.onItemUnselect) this.props.onItemUnselect();
+	      if (this.props.onItemUnselect) {
+	        this.props.onItemUnselect();
+	      }
 	    }
 	
 	    //=================================================
@@ -9734,7 +9771,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function handleChange(event) {
 	      var target = event.target || event.currentTarget;
 	      this.setState({ searchTerm: target.value });
-	      if (this.props.onChange) this.props.onChange(target.value);
+	      if (this.props.onChange) {
+	        this.props.onChange(target.value);
+	      }
 	    }
 	  }, {
 	    key: 'handleKeyDown',
@@ -9879,38 +9918,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }));
 	    }
 	  }, {
-	    key: 'modifyItems',
-	    value: function modifyItems(itemsToModify) {
-	      var items = itemsToModify.map(function (item, index) {
-	        return {
-	          id: 'item-' + index,
-	          label: item.label,
-	          data: item
-	        };
-	      });
-	
-	      this.setState({ items: items });
-	    }
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(newProps) {
-	      if (newProps.items) {
-	        this.modifyItems(newProps.items);
-	      }
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var inputClasses = this.state.selectedIndex === null ? 'slds-input' : 'slds-input slds-hide';
 	      var componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside" : "slds-lookup ignore-react-onclickoutside slds-has-selection";
-	      var inputContainerClasses = this.state.selectedIndex === null ? '' : ' slds-input';
-	      var inputContainerStyle = this.state.selectedIndex === null ? {} : { padding: '5px' };
-	      var inputLabel = undefined;
-	      if (this.props.label) {
-	        inputLabel = _react2['default'].createElement('label', { className: 'slds-form-element__label', htmlFor: this.props.type + "Lookup" }, this.props.label);
-	      }
 	
-	      return _react2['default'].createElement('div', { className: componentClasses, 'data-select': 'multi', 'data-scope': 'single', 'data-typeahead': 'true' }, _react2['default'].createElement('section', { className: 'slds-form-element' }, inputLabel, _react2['default'].createElement('div', { className: "slds-lookup__control slds-input-has-icon slds-input-has-icon--right" + inputContainerClasses, style: inputContainerStyle }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null, _react2['default'].createElement(_SLDSIcons.InputIcon, { name: 'search' }), _react2['default'].createElement('input', {
+	      var inputContainerClasses = {
+	        'slds-lookup__control': true,
+	        'slds-input-has-icon': true,
+	        'slds-input-has-icon--right': true,
+	        'slds-input': this.state.selectedIndex !== null,
+	        'slds-has-error': this.props.hasError
+	      };
+	
+	      var inputContainerStyle = this.state.selectedIndex === null ? {} : { padding: '5px' };
+	      var inputLabel = this.props.label ? _react2['default'].createElement('label', { className: 'slds-form-element__label', htmlFor: this.props.type + "Lookup" }, this.props.label) : null;
+	
+	      return _react2['default'].createElement('div', { className: componentClasses, 'data-select': 'multi', 'data-scope': 'single', 'data-typeahead': 'true' }, _react2['default'].createElement('section', { className: 'slds-form-element' }, inputLabel, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(inputContainerClasses), style: inputContainerStyle }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null, _react2['default'].createElement(_SLDSIcons.InputIcon, { name: 'search' }), _react2['default'].createElement('input', {
 	        id: this.props.type + "Lookup",
 	        ref: this.props.type + "Lookup",
 	        className: inputClasses,
@@ -9948,6 +9972,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onChange: _react2['default'].PropTypes.func,
 	  modal: _react2['default'].PropTypes.bool,
 	  disabled: _react2['default'].PropTypes.bool,
+	  hasError: _react2['default'].PropTypes.bool,
 	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp)
 	};
 	
@@ -9958,9 +9983,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	module.exports = SLDSLookup;
-	
 	module.exports.DefaultHeader = _MenuDefaultHeader2['default'];
-	
 	module.exports.DefaultFooter = _MenuDefaultFooter2['default'];
 
 /***/ },
