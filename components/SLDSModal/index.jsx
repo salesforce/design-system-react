@@ -48,11 +48,11 @@ module.exports = React.createClass( {
   getDefaultProps () {
     return {
       title:'',
+      tagline:'',
       isOpen:false,
       content:[],
       footer:[],
       returnFocusTo:null,
-      size:'medium',
       prompt:'', //if prompt !== '', it renders modal as prompt
       directional: false
     };
@@ -179,6 +179,12 @@ module.exports = React.createClass( {
     return footer;
   },
 
+  renderTagline() {
+    if(this.props.tagline){
+      return <p className="slds-m-top--x-small">{this.props.tagline}</p>;
+    }
+  },
+
   headerComponent() {
     let headingClasses = [], headerClasses = ['slds-modal__header'];
     let closeButton;
@@ -202,6 +208,7 @@ module.exports = React.createClass( {
       <div className={cx(headerClasses)}>
         {this.props.toast}
         <h2 className={cx(headingClasses)}>{this.props.title}</h2>
+        {this.renderTagline()}
         {closeButton}
      </div>);
   },
