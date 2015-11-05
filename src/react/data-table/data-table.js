@@ -47,9 +47,24 @@ export const DataTableObject = {
 			});
 		}
 
-		//TODO: this should probably be a seperate view
+		// TODO: this should probably be a seperate view
 		return columns.map((column, index) => {
-			let select = isRowSelect && index === 0 ? self._getSelectCheckbox() : false;
+			const select = isRowSelect && index === 0 ? self._getSelectCheckbox() : false;
+			let sort;
+			let dir;
+
+			if (column.sortDirection) {
+				dir = column.sortDirection === 'desc' ? '/examples/symbols.svg#arrowdown' : '/examples/symbols.svg#arrowup';
+				sort = (
+					<button className="slds-button slds-button--icon-bare">
+						<svg aria-hidden="true"
+							className="slds-button__icon slds-button__icon--small"
+							dangerouslySetInnerHTML={{__html: '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="' + dir + '"></use>'}}>
+						</svg>
+						<span className="slds-assistive-text">Sort</span>
+					</button>
+				);
+			}
 
 			return (
 				<th scope="col" key={index} className={this._getClassNames({
@@ -58,9 +73,14 @@ export const DataTableObject = {
 				})}>
 					{select}
 					<span className="slds-truncate" data-prop={column.propertyName}>{column.displayName}</span>
+					{sort}
 				</th>
 			);
 		});
+	},
+
+	_handleSort (col) {
+		this._sortColumn(col);
 	},
 
 	_getSelectCheckbox () {
@@ -95,7 +115,6 @@ export const DataTableObject = {
 	},
 
 	render () {
-
 		return (
 			<table className={this._getClassNames({
 				bordered: this.props.bordered,

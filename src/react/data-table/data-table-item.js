@@ -21,7 +21,7 @@ const DataTableItem = React.createClass({
 	},
 
 	render () {
-		var self = this;
+		const self = this;
 
 		return (
 			<tr className=".slds-hint-parent" onClick={this._handleItemClick}>
@@ -47,14 +47,14 @@ const DataTableItem = React.createClass({
 	_renderContent (header, index) {
 		let content;
 
-		if( index === 0 && this.props.selectRows ){
+		if (index === 0 && this.props.selectRows) {
 			content = (
 				<label className="slds-checkbox">
 					<input type="checkbox" checked={this.props.selected}></input>
 					<span className="slds-checkbox--faux" onClick={this._handleCheckClick}></span>
 					<span className="slds-form-element__label slds-assistive-text" >select</span>
 				</label>
-			)
+			);
 		} else {
 			content = <span className="slds-truncate">{this.props.item.get(header.propertyName)}</span>;
 		}
