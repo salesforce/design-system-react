@@ -68,25 +68,51 @@ let Lookup = Lib.merge({}, LookupCore, {
 			<label className="slds-form-element__label" htmlFor={this.state.inputId}>Accounts</label>
 			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
 				<Svg icon="utility.search" className="slds-input__icon" />
-				{hasSelection && this._renderPills(selectedItems)}
+				{hasSelection && this._renderPillContainer(selectedItems)}
 				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
 			</div>
 		</div>
 		);
 	},
 	
-	_renderPills (selectedItems) {
+	_renderPillContainer (selectedItems) {
 		return (
 		<div className="slds-pill-container slds-show">
 			<span className="slds-pill slds-pill--bare">
-				{selectedItems.map((item, index) => {
-					return React.cloneElement(this.props.pillElement, { item, key: index });
-				})}
+				{this._renderPills(selectedItems)}
 				<button className="slds-button slds-button--icon-bare" onClick={this._handleDeselect}>
 					<Svg icon="utility.close" className="slds-button__icon" />
 					<span className="slds-assistive-text">Remove</span>
 				</button>
 			</span>
+		</div>
+		);
+	},
+	
+	_renderPills (selectedItems) {
+		return selectedItems.map((item, index) => {
+			return React.cloneElement(this.props.pillElement, { item, key: index });
+		});
+	},
+	
+	_renderMenu (hasSelection) {
+		return (
+		<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
+			<div className="slds-lookup__item">
+				<button className="slds-button">
+					<Svg icon="utility.search" className="slds-icon slds-icon-text-default slds-icon--small" />
+					&quot;{this.state.searchString}&quot; in Accounts
+				</button>
+			</div>
+			<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
+				{this._renderMenuItems()}
+			</ul>
+			<div className="slds-lookup__item">
+				<button className="slds-button">
+					<Svg icon="utility.add" className="slds-icon slds-icon-text-default slds-icon--small" />
+					Add Account
+				</button>
+			</div>
 		</div>
 		);
 	},
@@ -106,23 +132,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		return (
 		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 			{this._renderInput(hasSelection, selectedItems)}
-			<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
-				<div className="slds-lookup__item">
-					<button className="slds-button">
-						<Svg icon="utility.search" className="slds-icon slds-icon-text-default slds-icon--small" />
-						&quot;{this.state.searchString}&quot; in Accounts
-					</button>
-				</div>
-				<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
-					{this._renderMenuItems()}
-				</ul>
-				<div className="slds-lookup__item">
-					<button className="slds-button">
-						<Svg icon="utility.add" className="slds-icon slds-icon-text-default slds-icon--small" />
-						Add Account
-					</button>
-				</div>
-			</div>
+			{this._renderMenu(hasSelection)}
 		</div>
 		);
 	},
