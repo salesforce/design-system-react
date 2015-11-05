@@ -20,7 +20,8 @@ import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
 // Children
-import LookupItem from './lookup-item';
+import LookupMenuItem from './lookup-menu-item';
+import LookupPill from './lookup-pill';
 import Svg from '../svg/svg';
 
 let Lookup = Lib.merge({}, LookupCore, {
@@ -35,7 +36,14 @@ let Lookup = Lib.merge({}, LookupCore, {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]),
-		onChanged: React.PropTypes.func
+		onChanged: React.PropTypes.func,
+		menuItemElement: React.PropTypes.element,
+		pillElement: React.PropTypes.element
+	},
+	
+	_defaultProperties: {
+		menuItemElement: <LookupMenuItem />,
+		pillElement: <LookupPill />
 	},
 	
 	getMenuItemId (index) {
@@ -72,12 +80,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		<div className="slds-pill-container slds-show">
 			<span className="slds-pill slds-pill--bare">
 				{selectedItems.map((item, index) => {
-					return (
-					<a key={index} href="#" className="slds-pill__label">
-						<Svg icon="standard.account" className="slds-icon slds-icon-standard-account slds-icon--small" />
-						{item.getText()}
-					</a>
-					);
+					return React.cloneElement(this.props.pillElement, { item, key: index });
 				})}
 				<button className="slds-button slds-button--icon-bare" onClick={this._handleDeselect}>
 					<Svg icon="utility.close" className="slds-button__icon" />
@@ -92,9 +95,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		return this._collection.map((item, index) => {
 			const id = this.getMenuItemId(index);
 			
-			return (
-				<LookupItem id={id} key={id} item={item} onSelected={this._handleMenuItemSelected} />
-			);
+			return React.cloneElement(this.props.menuItemElement, { item, id, onSelected: this._handleMenuItemSelected, key: index });
 		});
 	},
 
