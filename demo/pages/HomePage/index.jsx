@@ -16,6 +16,7 @@ const { Route, DefaultRoute, RouteHandler, Link } = Router;
 import SLDSGrid from '../../../components/SLDSGrid';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 
+import ButtonSectionREADME from './ButtonSectionREADME';
 import ButtonSection from './ButtonSection';
 import ButtonGroupSection from './ButtonGroupSection';
 
