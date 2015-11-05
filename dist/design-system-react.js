@@ -9828,6 +9828,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          label: this.props.label,
 	          type: this.props.type,
 	          iconCategory: this.props.iconCategory,
+	          iconName: this.props.iconName ? this.props.iconName : this.props.type,
 	          focusIndex: this.state.focusIndex,
 	          listLength: this.state.listLength,
 	          items: this.state.items,
@@ -9940,6 +9941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  label: _react2['default'].PropTypes.string,
 	  type: _react2['default'].PropTypes.string,
 	  iconCategory: _react2['default'].PropTypes.string,
+	  iconName: _react2['default'].PropTypes.string,
 	  filterWith: _react2['default'].PropTypes.func,
 	  onItemSelect: _react2['default'].PropTypes.func,
 	  onItemUnselect: _react2['default'].PropTypes.func,
@@ -10116,6 +10118,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          id: id,
 	          type: _this.props.type,
 	          iconCategory: _this.props.iconCategory,
+	          iconName: _this.props.iconName,
 	          searchTerm: _this.props.searchTerm,
 	          index: i,
 	          isActive: isActive,
@@ -10317,7 +10320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          'aria-disabled': this.props.isDisabled,
 	          role: 'option',
 	          onClick: this.handleClick.bind(this),
-	          onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.type, category: this.props.iconCategory }), this.boldSearchText(this.props.children.label)))
+	          onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.iconName, category: this.props.iconCategory }), this.boldSearchText(this.props.children.label)))
 	      );
 	    }
 	  }]);

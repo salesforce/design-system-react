@@ -238,6 +238,7 @@ class SLDSLookup extends React.Component {
         label={this.props.label}
         type={this.props.type}
         iconCategory={this.props.iconCategory}
+        iconName={this.props.iconName?this.props.iconName:this.props.type}
         focusIndex={this.state.focusIndex}
         listLength={this.state.listLength}
         items={this.state.items}
@@ -368,6 +369,7 @@ SLDSLookup.propTypes = {
   label: React.PropTypes.string,
   type: React.PropTypes.string,
   iconCategory: React.PropTypes.string,
+  iconName: React.PropTypes.string,
   filterWith: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
   onItemUnselect: React.PropTypes.func,

@@ -67,7 +67,7 @@ class Item extends React.Component {
           role="option"
           onClick={this.handleClick.bind(this)}
           onMouseDown={this.handleMouseDown.bind(this)}>
-          <Icon name={this.props.type} category={this.props.iconCategory}/>
+          <Icon name={this.props.iconName} category={this.props.iconCategory}/>
           { this.boldSearchText(this.props.children.label) }
         </a>
       </li>
