@@ -137,8 +137,12 @@ class SLDSLookup extends React.Component {
     this.setState({isOpen:true});
   }
 
-  handleBlur() {
+  handleBlur(event) {
     this.handleClose();
+    if(this.props.onBlur){
+      const target = event.target || event.currentTarget;
+      this.props.onBlur(target.value);
+    }
   }
 
   handleFocus() {
@@ -372,6 +376,7 @@ SLDSLookup.propTypes = {
   onItemSelect: React.PropTypes.func,
   onItemUnselect: React.PropTypes.func,
   onChange: React.PropTypes.func,
+  onBlur: React.PropTypes.func,
   modal: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   boldRegex: React.PropTypes.instanceOf(RegExp),
