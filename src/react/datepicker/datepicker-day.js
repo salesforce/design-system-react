@@ -6,10 +6,10 @@ import React from 'react';
 // Third party
 import classNames from 'classnames';
 
-const DateInput = React.createClass({
+const DateDay = React.createClass({
 
 	propTypes: {
-		day: React.PropTypes.date,
+		day: React.PropTypes.object,
 		multiSelect: React.PropTypes.bool,
 		onSelectDay: React.PropTypes.func
 	},
@@ -30,4 +30,4 @@ const DateInput = React.createClass({
 	}
 });
 
-export default DateInput;
+export default DateDay;
