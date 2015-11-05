@@ -22,7 +22,10 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 
 	_defaultProperties: {
 		collection: [],
-		multiSelect: false
+		multiSelect: false,
+		menuFooterElement: true,
+		menuHeaderElement: false, // Defaulting to hidden for the single scope version
+		searchIcon: 'utility.search'
 	},
 	
 	_defaultState: {
@@ -38,17 +41,13 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	 Return the text value to display in the list
 	 item => object wrapped in an Item Adapter
 
-	 getType (item)
-	 Return the type of the current item - can be 'header', 'divider', or nothing
-	 item => object wrapped in an Item Adapter
-
-	 getDisabled (item)
-	 Return true if the item is disabled
-	 item => object wrapped in an Item Adapter
-
 	 getKey (item)
 	 Return either an object with key/value pairs to match or a match function
 	 Use this to reduce the number of fields required for searching if a unique key is available
+	 item => object wrapped in an Item Adapter
+
+	 getIcon (item)
+	 Return a string that points to the appropriate icon
 	 item => object wrapped in an Item Adapter
 
 	 */

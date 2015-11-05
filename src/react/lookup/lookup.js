@@ -34,13 +34,20 @@ let Lookup = Lib.merge({}, LookupCore, {
 			React.PropTypes.object
 		]).isRequired,
 		label: React.PropTypes.string.isRequired,
-		menuFooterElement: React.PropTypes.element,
-		menuHeaderElement: React.PropTypes.element,
+		menuFooterElement: React.PropTypes.oneOfType([
+			React.PropTypes.element,
+			React.PropTypes.bool
+		]),
+		menuHeaderElement: React.PropTypes.oneOfType([
+			React.PropTypes.element,
+			React.PropTypes.bool
+		]),
 		menuItemElement: React.PropTypes.element,
 		onAddClick: React.PropTypes.func,
 		onChanged: React.PropTypes.func,
 		onFilter: React.PropTypes.func,
 		pillElement: React.PropTypes.element,
+		searchIcon: React.PropTypes.string,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
@@ -68,7 +75,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		<div className="slds-form-element">
 			<label className="slds-form-element__label" htmlFor={this.state.inputId}>{this.props.label}</label>
 			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
-				<Svg icon="utility.search" className="slds-input__icon" />
+				<Svg icon={this.props.searchIcon} className="slds-input__icon" />
 				{hasSelection && this._renderPillContainer(selectedItems)}
 				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
 			</div>
@@ -120,10 +127,10 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_renderMenuButton (props, menuButtonElement) {
 		let element;
 		
-		if (menuButtonElement) {
-			element = React.cloneElement(menuButtonElement, props);
-		} else {
+		if (menuButtonElement === true) {
 			element = <LookupButton {...props} />;
+		} else if (menuButtonElement) {
+			element = React.cloneElement(menuButtonElement, props);
 		}
 		
 		return element;
@@ -131,7 +138,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenuHeader () {
 		const props = {
-			icon: 'utility.search',
+			icon: this.props.searchIcon,
 			label: '"' + this.state.searchString + '" in ' + this.props.label
 		};
 		
