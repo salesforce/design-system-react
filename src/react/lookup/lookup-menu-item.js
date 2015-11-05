@@ -1,4 +1,4 @@
-// LOOKUP ITEM - REACT FACADE
+// LOOKUP MENU ITEM - REACT FACADE
 
 import * as Lib from '../../lib/lib';
 
@@ -6,7 +6,7 @@ import * as Lib from '../../lib/lib';
 import React from 'react';
 import Svg from '../svg/svg';
 
-const LookupItem = React.createClass({
+const LookupMenuItem = React.createClass({
 	propTypes: {
 		item: React.PropTypes.shape({
 			getText: React.PropTypes.func.isRequired,
@@ -42,4 +42,4 @@ const LookupItem = React.createClass({
 	}
 });
 
-export default LookupItem;
+export default LookupMenuItem;

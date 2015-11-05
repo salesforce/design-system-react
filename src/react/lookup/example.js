@@ -18,7 +18,7 @@ export default function () {
 		render () {
 			return (
 				<div className="slds-col example">
-					<Lookup label="Accounts" collection={this.state.collection} selection={this.state.selection} onChanged={this._handleModelChange} onFilter={this._filterCollection} />
+					<Lookup label="Accounts" collection={this.state.collection} selection={this.state.selection} onChanged={this._handleModelChange} onFilter={this._filterCollection} onAddClick={this._handleAdd} />
 				</div>
 			);
 		},
@@ -41,6 +41,10 @@ export default function () {
 			this.setState({
 				collection
 			});
+		},
+		
+		_handleAdd () {
+			console.log('Add an item!');
 		}
 	});
 

@@ -20,6 +20,7 @@ import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
 // Children
+import LookupButton from './lookup-button';
 import LookupMenuItem from './lookup-menu-item';
 import LookupPill from './lookup-pill';
 import Svg from '../svg/svg';
@@ -33,8 +34,12 @@ let Lookup = Lib.merge({}, LookupCore, {
 			React.PropTypes.object
 		]).isRequired,
 		label: React.PropTypes.string.isRequired,
+		menuFooterElement: React.PropTypes.element,
+		menuHeaderElement: React.PropTypes.element,
 		menuItemElement: React.PropTypes.element,
+		onAddClick: React.PropTypes.func,
 		onChanged: React.PropTypes.func,
+		onFilter: React.PropTypes.func,
 		pillElement: React.PropTypes.element,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
@@ -103,23 +108,44 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_renderMenu () {
 		return (
 		<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
-			<div className="slds-lookup__item">
-				<button className="slds-button">
-					<Svg icon="utility.search" className="slds-icon slds-icon-text-default slds-icon--small" />
-					&quot;{this.state.searchString}&quot; in {this.props.label}
-				</button>
-			</div>
+			{this._renderMenuHeader()}
 			<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
 				{this._renderMenuItems()}
 			</ul>
-			<div className="slds-lookup__item">
-				<button className="slds-button">
-					<Svg icon="utility.add" className="slds-icon slds-icon-text-default slds-icon--small" />
-					Add Account
-				</button>
-			</div>
+			{this._renderMenuFooter()}
 		</div>
 		);
+	},
+	
+	_renderMenuButton (props, menuButtonElement) {
+		let element;
+		
+		if (menuButtonElement) {
+			element = React.cloneElement(menuButtonElement, props);
+		} else {
+			element = <LookupButton {...props} />;
+		}
+		
+		return element;
+	},
+	
+	_renderMenuHeader () {
+		const props = {
+			icon: 'utility.search',
+			label: '"' + this.state.searchString + '" in ' + this.props.label
+		};
+		
+		return this._renderMenuButton(props, this.props.menuHeaderElement);
+	},
+	
+	_renderMenuFooter () {
+		const props = {
+			icon: 'utility.add',
+			label: 'Add',
+			onClick: this.props.onAddClick
+		};
+		
+		return this._renderMenuButton(props, this.props.menuFooterElement);
 	},
 	
 	_renderMenuItems () {

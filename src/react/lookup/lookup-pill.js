@@ -1,4 +1,4 @@
-// LOOKUP ITEM - REACT FACADE
+// LOOKUP PILL - REACT FACADE
 
 import * as Lib from '../../lib/lib';
 
@@ -6,7 +6,7 @@ import * as Lib from '../../lib/lib';
 import React from 'react';
 import Svg from '../svg/svg';
 
-const LookupItem = React.createClass({
+const LookupPill = React.createClass({
 	propTypes: {
 		item: React.PropTypes.shape({
 			getText: React.PropTypes.func.isRequired,
@@ -25,12 +25,16 @@ const LookupItem = React.createClass({
 
 	render () {
 		return (
-		<a href="#" className="slds-pill__label">
+		<a href="#" className="slds-pill__label" onClick={this.handleClicked}>
 			{this._renderIcon()}
 			{this.props.item.getText()}
 		</a>
 		);
+	},
+
+	handleClicked (e) {
+		e.preventDefault();
 	}
 });
 
-export default LookupItem;
+export default LookupPill;
