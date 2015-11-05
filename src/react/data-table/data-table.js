@@ -70,7 +70,7 @@ export const DataTableObject = {
 				<th scope="col" key={index} className={this._getClassNames({
 					sortable: column.sortable,
 					hintParent: column.hintParent
-				})}>
+				})} onClick={this._handleSort.bind(this, column)}>
 					{select}
 					<span className="slds-truncate" data-prop={column.propertyName}>{column.displayName}</span>
 					{sort}
