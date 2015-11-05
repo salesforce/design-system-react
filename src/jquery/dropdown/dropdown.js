@@ -35,8 +35,8 @@ export const DropdownObject = {
 	},
 	
 	_initElements () {
-		this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
-		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
+		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
+		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
 	},
 	
 	_bindUIEvents () {

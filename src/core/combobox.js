@@ -13,12 +13,7 @@ const ComboboxCore = Lib.merge({}, PicklistCore, {
 	cssClasses: {
 		CONTROL: CONTROL,
 		INPUT: 'slds-input',
-		DROPDOWN: 'slds-dropdown',
-		MENU: 'slds-dropdown__list',
-		TOGGLE: 'slds-button',
-		HEADER: 'slds-dropdown__header',
-		HEADERTEXT: 'slds-text-heading--label',
-		DIVIDER: 'slds-has-divider'
+		TOGGLE: 'slds-button'
 	},
 
 	resize () {

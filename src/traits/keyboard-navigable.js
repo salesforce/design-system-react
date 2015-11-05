@@ -32,16 +32,15 @@ const KeyboardNavigable = {
 
 	_keyboardNav (input, menuItems) {
 		const isOpen = this.getState('isOpen');
+		let index;
+		let selection;
 		
-		if (!isOpen && Lib.isFunction(this.open)) {
+		if (/(Escape)/.test(input)) {
+			if (isOpen && Lib.isFunction(this.close)) this.close();
+		} else if (!isOpen && Lib.isFunction(this.open)) {
 			this.open();
-			
-			this.setState({
-				focusedIndex: this._defaultState.focusedIndex
-			});
 		} else {
-			let index = this.getState('focusedIndex');
-			let selection;
+			index = this.getState('focusedIndex');
 			
 			if (input.length === 1) {
 				// Combine subsequent keypresses
@@ -72,13 +71,19 @@ const KeyboardNavigable = {
 					selection = menuItems[index];
 				}
 			}
-			
-			this.setState({
-				focusedIndex: index
-			});
-	
-			if (selection) selection.focus();
 		}
+		
+		if (selection) {
+			selection.focus();
+		} else {
+			index = this._defaultState.focusedIndex;
+		}
+		
+		this.setState({
+			focusedIndex: index
+		});
+		
+		return !!selection;
 	}
 };
 

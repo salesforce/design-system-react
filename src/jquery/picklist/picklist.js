@@ -34,8 +34,8 @@ export const PicklistObject = {
 		this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
 		this.elements.hiddenField = this.element.find('input.slds-hide');
 		this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
-		this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
-		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
+		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
+		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
 	},
 	
 	_bindUIEvents () {

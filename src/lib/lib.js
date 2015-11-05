@@ -145,7 +145,9 @@ export function wrapElement (element) {
 	return wrapped;
 }
 
-// Browser
+// Utility
+export { default as uniqueId } from 'lodash/utility/uniqueId';
+
 export function log () {
 	if (global.console && global.console.log) {
 		console.log(...arguments);

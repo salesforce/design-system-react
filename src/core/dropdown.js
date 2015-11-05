@@ -13,12 +13,7 @@ const DropdownCore = Lib.merge({}, PicklistCore, {
 	cssClasses: {
 		CONTROL: CONTROL,
 		ICON_DOWN_SIZE: 'slds-button__icon--x-small',
-		TRIGGER: 'slds-dropdown-trigger',
-		DROPDOWN: 'slds-dropdown',
-		MENU: 'slds-dropdown__list',
-		HEADER: 'slds-dropdown__header',
-		HEADERTEXT: 'slds-text-heading--label',
-		DIVIDER: 'slds-has-divider'
+		TRIGGER: 'slds-dropdown-trigger'
 	},
 
 	_defaultProperties: {

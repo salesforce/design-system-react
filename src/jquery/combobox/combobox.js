@@ -34,8 +34,8 @@ export const ComboboxObject = {
 	_initElements () {
 		this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
 		this.elements.input = this.element.find('.' + this.cssClasses.INPUT);
-		this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
-		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
+		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
+		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
 	},
 	
 	_bindUIEvents () {

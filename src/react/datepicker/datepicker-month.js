@@ -6,9 +6,9 @@ import React from 'react';
 const DateMonth = React.createClass({
 
 	propTypes: {
-		monthName: React.PropTypes.func,
+		monthName: React.PropTypes.string,
 		setViewingDate: React.PropTypes.func,
-		dateViewing: React.PropTypes.date
+		dateViewing: React.PropTypes.instanceOf(Date)
 	},
 
 	render () {
