@@ -5,13 +5,13 @@ import * as Lib from '../../lib/lib';
 
 // Framework specific
 import React from 'react';
-import Svg from '../svg/svg';
 
 // Third party
 import classNames from 'classnames';
 
 // Children
 import TreeItem from './tree-item';
+import Button from '../button/button';
 
 let InnerTreeBranch;
 
@@ -84,10 +84,13 @@ const TreeBranch = React.createClass({
 		return (
 			<li className={classNames('slds-tree__branch', {'slds-is-open': isOpen, 'slds-is-selected': isSelected})} role="treeitem" aria-expanded={isOpen ? 'false' : 'true'}>
 				<div className="slds-tree__branch--header slds-tree__item">
-					<button className="slds-button slds-button--icon-bare | slds-m-right--x-small" onClick={this._handleExpandClick.bind(this, this.props.item)}>
-						<Svg className="slds-button__icon slds-button__icon--small" icon="utility.chevronright" />
-						<span className="slds-assistive-text">Toggle</span>
-					</button>
+					<Button
+						className="slds-m-right--x-small"
+						icon="utility.chevronright"
+						iconSize="small"
+						assistiveText="Toggle"
+						iconStyle="icon-bare"
+						onClick={this._handleExpandClick.bind(this, this.props.item)} />
 					<div className="slds-tree__branch--name" role="presentation" onClick={this._handleItemClick.bind(this, this.props.item)}>{this.props.item.getText()}</div>
 				</div>
 				<ul className="slds-tree__group slds-nested" role="group">

@@ -14,9 +14,10 @@ export const ButtonViewObject = {
 	propTypes: {
 		assistiveText: React.PropTypes.string,
 		icon: isIcon,
+		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions)),
+		iconSize: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonIconSizes)),
 		text: React.PropTypes.string,
-		view: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonStatefulViewStyles)),
-		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions))
+		view: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonStatefulViewStyles))
 	},
 	
 	_renderAssistiveText () {
@@ -26,11 +27,19 @@ export const ButtonViewObject = {
 	},
 
 	_renderIcon (position) {
-		if (this.props.icon && this.props.iconPosition === position) {
-			return (<Svg className={this._getIconClassNames()} icon={this.props.icon} />);
+		let buttonIconSize = '';
+
+		if (this.props.iconSize) {
+			buttonIconSize = this.buttonIconSizes[this.props.iconSize];
 		}
+
+		if (this.props.icon && this.props.iconPosition === position) {
+			return (<Svg className={this._getIconClassNames(buttonIconSize)} icon={this.props.icon} />);
+		}
+
 		if (position === 'right' && this.props.iconStyle === 'icon-more') {
-			return (<Svg className={this._getIconClassNames(this.iconSizes['x-small'])} icon={this.moreIcon} />);
+			buttonIconSize = this.buttonIconSizes['x-small'];
+			return (<Svg className={this._getIconClassNames(buttonIconSize)} icon={this.moreIcon} />);
 		}
 	},
 

@@ -2,6 +2,7 @@
 
 // Framework specific
 import React from 'react';
+import Svg from '../svg/svg';
 
 const DateInput = React.createClass({
 
@@ -15,11 +16,7 @@ const DateInput = React.createClass({
 			<div className="slds-form-element">
 				<div className="slds-form-element__control">
 					<div className="slds-input-has-icon slds-input-has-icon--right">
-						<svg
-							aria-hidden="true"
-							className="slds-input__icon slds-icon-text-default"
-							dangerouslySetInnerHTML={{__html: '<use xlink:href="/examples/symbols.svg#event"></use>'}} >
-						</svg>
+						<Svg className="slds-input__icon slds-icon-text-default" icon="utility.event" />
 						<input className="slds-input" type="text" placeholder="Pick a Date" label="Date Picker Label" onClick={this.props.triggerCalendar} value={this.props.selectedDate}/>
 					</div>
 				</div>
