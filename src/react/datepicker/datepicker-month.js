@@ -2,6 +2,7 @@
 
 // Framework specific
 import React from 'react';
+import Button from '../button/button';
 
 const DateMonth = React.createClass({
 
@@ -15,25 +16,11 @@ const DateMonth = React.createClass({
 		return (
 			<div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
 				<div className="slds-align-middle">
-					<button className="slds-button slds-button--icon-container" onClick={this.backMonth}>
-						<svg
-							aria-hidden="true"
-							className="slds-button__icon slds-button__icon--small"
-							dangerouslySetInnerHTML={{__html: '<use xlink:href="/examples/symbols.svg#left"></use>'}} >
-						</svg>
-						<span className="slds-assistive-text">Previous Month</span>
-					</button>
+					<Button icon="utility.left" assistiveText="Previous Month" iconStyle="icon-container" onClick={this.backMonth}/>
 				</div>
 				<h2 id="month" className="slds-align-middle" aria-live="assertive" aria-atomic="true">{this.props.monthName}</h2>
 				<div className="slds-align-middle">
-					<button className="slds-button slds-button--icon-container" onClick={this.forwardMonth}>
-						<svg
-							aria-hidden="true"
-							className="slds-button__icon slds-button__icon--small"
-							dangerouslySetInnerHTML={{__html: '<use xlink:href="/examples/symbols.svg#right"></use>'}} >
-						</svg>
-						<span className="slds-assistive-text">Next Month</span>
-					</button>
+					<Button icon="utility.right" assistiveText="Next Month" iconStyle="icon-container" onClick={this.forwardMonth}/>
 				</div>
 			</div>
 		);
