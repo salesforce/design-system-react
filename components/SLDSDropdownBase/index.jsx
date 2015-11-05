@@ -27,11 +27,11 @@ import omit from 'lodash.omit';
 
 module.exports = React.createClass( {
 
-  propTypes : {
-        onClick: PropTypes.func,
-        onSelect: PropTypes.func.isRequired,
-        onUpdateHighlighted: PropTypes.func,
-    },
+  propTypes: {
+    onClick: PropTypes.func,
+    onSelect: PropTypes.func.isRequired,
+    onUpdateHighlighted: PropTypes.func,
+  },
 
   getDefaultProps(){
     return {
@@ -67,18 +67,18 @@ module.exports = React.createClass( {
     };
   },
 
-  componentDidMount () {
+  componentDidMount(){
     const id = React.findDOMNode(this.refs.button).getAttribute("data-reactid");
     this.setState({triggerId:id});
     if(this.props.initialFocus){
       this.setFocus();
     }
     if(this.props.openOn === 'hover'){
-
+      //TODO:Add functionality here
     }
   },
 
-  componentDidUpdate( prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState){
 
     if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
       if(this.state.lastBlurredIndex === this.state.highlightedIndex){
@@ -97,13 +97,9 @@ module.exports = React.createClass( {
       this.setState({isOpen:false});
     }
     else if(!this.state.isFocused && prevState.isFocused){
-      if(this.refs.list){
-        if(this.isMounted() && this.refs.list){
-          if(this.refs.list.getDOMNode().contains(document.activeElement)){
-            return;
-          }
-          this.setState({isOpen:false})
-        }
+      if(this.refs.list && this.isMounted()){
+        if(this.refs.list.getDOMNode().contains(document.activeElement)) return;
+        this.setState({isOpen:false})
       }
     }
     else if(this.state.isClosing && !prevState.isClosing){
@@ -138,7 +134,7 @@ module.exports = React.createClass( {
     return this.props.options[index].value;
   },
 
-  handleSelect(index) {
+  handleSelect(index){
     this.setState({selectedIndex:index})
     this.setFocus();
     if(this.props.onSelect){
@@ -146,14 +142,14 @@ module.exports = React.createClass( {
     }
   },
 
-  handleClose() {
+  handleClose(){
     this.setState({
       isOpen:false,
       isHover:false
     });
   },
 
-  handleMouseEnter(event) {
+  handleMouseEnter(event){
     if(this.props.openOn === 'hover'){
       this.state.isClosing = false;
       if(!this.state.isOpen){
@@ -165,13 +161,13 @@ module.exports = React.createClass( {
     }
   },
 
-  handleMouseLeave(event) {
+  handleMouseLeave(event){
     if(this.props.openOn === 'hover'){
       this.setState({isClosing:true});
     }
   },
 
-  handleClick(event) {
+  handleClick(event){
     EventUtil.trap(event);
     if(!this.state.isOpen){
       this.setState({isOpen:true});
@@ -188,30 +184,30 @@ module.exports = React.createClass( {
     EventUtil.trapImmediate(event);
   },
 
-  handleBlur(e) {
+  handleBlur(e){
     this.setState({isFocused:false});
   },
 
-  handleFocus() {
+  handleFocus(){
     this.setState({
       isFocused:true,
       isHover:false
     });
   },
 
-  setFocus () {
+  setFocus(){
     if(this.isMounted()){
       React.findDOMNode(this.getButtonNode()).focus();
     }
   },
 
-  getButtonNode () {
+  getButtonNode(){
     return React.findDOMNode(this.refs.button);
   },
 
-  handleKeyDown(event) {
-    if (event.keyCode){
-      if (event.keyCode === KEYS.ENTER ||
+  handleKeyDown(event){
+    if(event.keyCode){
+      if(event.keyCode === KEYS.ENTER ||
           event.keyCode === KEYS.SPACE ||
           event.keyCode === KEYS.DOWN ||
           event.keyCode === KEYS.UP){
@@ -234,13 +230,13 @@ module.exports = React.createClass( {
     this.setState({isOpen:false});
   },
 
-  handleCancel () {
+  handleCancel(){
     if(!this.state.isHover){
       this.setFocus();
     }
   },
 
-  getPopoverContent() {
+  getPopoverContent(){
     return <List
             triggerId={this.state.triggerId}
             ref='list'
@@ -260,8 +256,8 @@ module.exports = React.createClass( {
             theme={this.props.theme} />;
   },
 
-  getSimplePopover() {
-    return (
+  getSimplePopover(){
+    return(
       !this.props.disabled && this.state.isOpen?
         <div
           className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
@@ -271,9 +267,9 @@ module.exports = React.createClass( {
     );
   },
 
-  getModalPopover() {
+  getModalPopover(){
     const className = 'slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--'+this.props.horizontalAlign;
-    return (
+    return(
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
           className={className}
@@ -286,19 +282,19 @@ module.exports = React.createClass( {
     );
   },
 
-  getPlaceholder() {
+  getPlaceholder(){
     const option = this.props.options[this.state.selectedIndex];
     return (option && option.label)?option.label:this.props.placeholder;
   },
 
-  handleListItemBlur (index, relatedTarget) {
+  handleListItemBlur(index, relatedTarget){
     this.setState({
       lastBlurredIndex:index,
       lastBlurredTimeStamp:Date.now()
     });
   },
 
-  render() {
+  render(){
     let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
 
     const props = omit(this.props, [
@@ -318,10 +314,8 @@ module.exports = React.createClass( {
         'tabIndex',
         'onKeyDown'
       ]);
-    return (
 
-
-      <SLDSButton
+    return <SLDSButton
         ref='button'
         id={this.state.triggerId}
         aria-haspopup='true'
@@ -342,12 +336,11 @@ module.exports = React.createClass( {
         {...props}
         >
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
-      </SLDSButton>
-
-    );
+      </SLDSButton>;
   }
 
 });
 
 module.exports.ListItem = ListItem;
 module.exports.ListItemLabel = ListItemLabel;
+
