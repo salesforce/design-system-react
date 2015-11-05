@@ -49,7 +49,7 @@ module.exports = React.createClass( {
               </h3>
 
               <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSPicklistBasePage.txt")}
+                {require("raw-loader!../../code-snippets/SLDSDropdownPage.txt")}
               </PrismCode>
 
               <div className="slds-p-vertical--large">
@@ -70,7 +70,7 @@ module.exports = React.createClass( {
                     value='C0'
                     label="Contacts"
                     modal={true}
-                    placeholder = "Select a contact"
+                    placeholder="Select a contact"
                     onSelect={this.handleOnSelect}
                     onClick={this.handleOnClick}
                     onUpdateHighlighted={this.handleOnUpdateHighlighted}

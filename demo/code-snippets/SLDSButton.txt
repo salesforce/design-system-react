@@ -1,7 +1,7 @@
 
 Default Props             Prop Values
-* label=undefined         Required Prop
 * variant='base'          ['base', 'neutral', 'brand', 'destructive', 'icon'] Use icon if you want an icon only button
+* label=undefined         Required Prop. If variant is icon, the label will be invisible but still readable by assistive technology.
 * disabled=false
 * tabindex=undefined
 * inverse=false
