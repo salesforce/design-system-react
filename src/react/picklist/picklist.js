@@ -11,6 +11,7 @@ import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 import Svg from '../svg/svg';
+import Button from '../button/button';
 
 // Children
 import PicklistItems from './picklist-items';
@@ -38,16 +39,22 @@ export const PicklistObject = {
 		};
 
 		return (
-		<div className="slds-form-element">
-			<div aria-expanded="true" className="slds-picklist" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-			<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" style={styles} disabled={this.props.disabled} aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
-				<span className="slds-truncate">{selectionName}</span>
-				<Svg className="slds-icon" icon="utility.down" />
-			</button>
-			<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._findElements} />
-			<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
+			<div className="slds-form-element">
+				<div aria-haspopup="true" aria-expanded={this.state.isOpen} className="slds-picklist" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+					<Button
+						className="slds-picklist__label"
+						disabled={this.props.disabled}
+						onClick={this._handleClicked}
+						style={styles}
+						theme="neutral">
+						<span className="slds-truncate">{selectionName}</span>
+						<Svg className="slds-icon" icon="utility.down" />
+					</Button>
+
+					<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._findElements} />
+					<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
+				</div>
 			</div>
-		</div>
 		);
 	},
 
