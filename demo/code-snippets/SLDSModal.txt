@@ -1,0 +1,25 @@
+
+Default Props             Prop Values
+* size='medium'           ['medium', 'large']
+* directional=false       [true, false] If true, aligns buttons left and right in Footer
+* tagline=''              Optional tagline underneath Header title
+
+<SLDSButton
+  label='Open Modal'
+  variant='brand'
+  onClick={this.openModal}
+  />
+
+<SLDSModal
+  directional={true}
+  isOpen={this.state.modalIsOpen}
+  title={<span>Lightning Design System: Style with Ease</span>}
+  tagline={<span>The new design system framework from <a href="">Salesforce UX.</a></span>}
+  footer={[
+    <SLDSButton key='backBtn' label='Back' variant='neutral' onClick={this.closeModal} />,
+    <SLDSButton key='nextBtn' label='Next' variant='brand' onClick={this.handleSubmitModal} />
+  ]}
+  onRequestClose={this.closeModal}
+  >
+  {this.getModalContent()}
+</SLDSModal>

@@ -42,9 +42,12 @@ module.exports = React.createClass( {
               <h3 className='slds-text-heading--medium slds-truncate'>
                 Utility Icon
               </h3>
+              <PrismCode className='language-markup'>
+                {require('raw-loader!../../code-snippets/SLDSIcon.txt')}
+              </PrismCode>
               <div className='slds-p-vertical--large'>
                 <div className='slds-input-has-icon slds-input-has-icon--left'>
-                  <SLDSUtilityIcon name='adduser' className='slds-input__icon slds-icon-text-default'/>
+                  <Icon name='open_folder' category='utility' className='slds-input__icon slds-icon-text-default'/>
                 </div>
               </div>
             </div>

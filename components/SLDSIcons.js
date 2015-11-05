@@ -24,7 +24,6 @@ export const ButtonIcon = React.createClass({
     },
 
     render() {
-        const useTag = '<use xlink:href="'+SLDSSettings.getAssetsPath()+'/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
 
         let className  = 'slds-button__icon';
         if (this.props.variant !== 'icon') {
@@ -46,10 +45,15 @@ export const ButtonIcon = React.createClass({
         if (this.props.destructive) {
           className += ' slds-button__icon--destructive';
         }
+/*
         if(this.props.category === 'utility'){
             return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;
         }
         return <svg aria-hidden='true' className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
+*/
+        return <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} />;
+
+
     }
 
 });
@@ -64,7 +68,10 @@ export const Icon = React.createClass({
 
     render() {
 
-        const useTag = '<use xlink:href="'+SLDSSettings.getAssetsPath()+'/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
+        const name = this.props.name.replace(/_/g,'-');
+        const iconClassName = 'slds-icon-' + this.props.category + '-' + (this.props.theme || name);
+        const styles = this.props.category === 'action'?{padding:'.5rem'}:null;
+
         let className  = 'slds-icon';
         if (this.props.stateful) {
             className += '--stateful';
@@ -78,21 +85,23 @@ export const Icon = React.createClass({
         if (this.props.position) {
             className += ' slds-icon--' + this.props.position;
         }
-        className = className + ' slds-icon-' + this.props.category + '-' + (this.props.theme || this.props.name);
-        if(this.props.category === 'utility'){
-            return <span className='slds-icon__container'><SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} style={this.props.style}  /></span>;
-        }
-        return <span className='slds-icon__container'><svg aria-hidden='true' className={className} style={this.props.style} dangerouslySetInnerHTML={{__html: useTag }} /></span>;
+        className = className + ' ' + iconClassName;
+        return <span className={'slds-icon__container '} style={styles}><SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} style={this.props.style}  /></span>;
     }
 
 });
 
 export const InputIcon = React.createClass({
 
+    getDefaultProps() {
+        return {
+            category: 'utility',
+        };
+    },
+
     render() {
-        const useTag = '<use xlink:href="'+SLDSSettings.getAssetsPath()+'icons/utility-sprite/svg/symbols.svg#' + this.props.name + '" />';
         const className  = 'slds-input__icon slds-icon-text-default';
-        return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;
+        return <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} />;
     }
 
 });

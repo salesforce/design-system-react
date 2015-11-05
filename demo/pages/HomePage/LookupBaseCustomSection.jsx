@@ -10,9 +10,20 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import {SLDSDropdownBase,SLDSButton} from '../../../components';
-
+import SLDSLookup from '../../../components/SLDSLookup';
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
+//import DefaultHeader from '../../../components/SLDSLookup/Menu/DefaultHeader';
+//import DefaultFooter from '../../../components/SLDSLookup/Menu/DefaultFooter';
+import CustomLookupListItemLabel from './CustomLookupListItemLabel.cjsx';
+
+const items = [
+  {label:'Paddy\'s Pub'},
+  {label:'Tyrell Corp'},
+  {label:'Paper St. Soap Company'},
+  {label:'Nakatomi Investments'},
+  {label:'Acme Landscaping'},
+  {label:'Acme Construction'}
+];
 
 
 
@@ -23,58 +34,51 @@ module.exports = React.createClass( {
   },
 
   getInitialState () {
-    return {};
+    return {searchVal:null};
   },
 
-  handleOnUpdateHighlighted () {
-    console.log('onUpdateHighlighted should be defined');
+  onChange(newValue){
+    console.log('New search term: ', newValue);
+    this.setState({searchVal: newValue});
   },
 
-  handleOnSelect() {
-    console.log('onSelect should be defined');
+  selectItem(item){
+    console.log(item , ' Selected');
   },
 
-  handleOnClick() {
-    console.log('onClick should be defined');
+  getFooter(){
+    return <SLDSLookup.DefaultFooter type='account' />;
   },
 
   render() {
     return (
 
 
+
             <div className="slds-p-around--medium">
 
               <h3 className="slds-text-heading--medium slds-truncate">
-                Dropdown Base
+                Lookup with Custom Item Label Renderer
               </h3>
 
               <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSDropdownPage.txt")}
+                {require("raw-loader!../../code-snippets/SLDSLookupCustomPage.txt")}
               </PrismCode>
 
               <div className="slds-p-vertical--large">
-                <SLDSDropdownBase
-                    options={[
-                      {label:'A Option Option Super Super Long',value:'A0'},
-                      {label:'B Option',value:'B0'},
-                      {label:'C Option',value:'C0'},
-                      {label:'D Option',value:'D0'},
-                      {label:'E Option',value:'E0'},
-                      {label:'A1 Option',value:'A1'},
-                      {label:'B2 Option',value:'B1'},
-                      {label:'C2 Option',value:'C1'},
-                      {label:'D2 Option',value:'D1'},
-                      {label:'E2 Option Super Super Long',value:'E1'},
-
-                    ]}
-                    value='C0'
-                    label="Contacts"
-                    modal={true}
-                    placeholder="Select a contact"
-                    onSelect={this.handleOnSelect}
-                    onClick={this.handleOnClick}
-                    onUpdateHighlighted={this.handleOnUpdateHighlighted}
-                    />
+                <SLDSLookup
+                  items={items}
+                  label="Account"
+                  type="account"
+                  iconCategory='utility'
+                  iconName='open_folder'
+                  headerRenderer={SLDSLookup.DefaultHeader}
+                  footerRenderer={SLDSLookup.DefaultFooter}
+                  onChange={this.onChange}
+                  onItemSelect={this.selectItem}
+                  hasError={true}
+                  listItemLabelRenderer={CustomLookupListItemLabel}
+                />
               </div>
 
             </div>

@@ -19,7 +19,12 @@ import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 import ButtonSection from './ButtonSection';
 import ButtonGroupSection from './ButtonGroupSection';
 
+import NotificationSection from './NotificationSection';
+
 import LookupBaseSection from './LookupBaseSection';
+
+import LookupBaseCustomSection from './LookupBaseCustomSection';
+
 import LookupBaseDynamicSection from './LookupBaseDynamicSection';
 
 import PicklistBaseSection from './PicklistBaseSection';
@@ -70,27 +75,33 @@ module.exports = React.createClass( {
         <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
           <div className='region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large'>
 
+            <h1 className="slds-text-heading--large">Current Components</h1>
+
             <ButtonSection/>
 
             <ButtonGroupSection />
+
+            <DropdownBaseSection />
+
+            <IconSection />
 
             <LookupBaseSection />
 
             <LookupBaseDynamicSection />
 
-            <PicklistBaseSection />
+            <LookupBaseCustomSection />
 
             <ModalSection />
 
-            <DatePickerSingleSelectSection />
+            <NotificationSection/>
 
-            <IconSection />
+            <PicklistBaseSection />
 
             <PicklistBaseCustomSection />
 
-            <DropdownBaseSection />
+            <h1 className="slds-text-heading--large">Work in Progress</h1>
 
-
+            <DatePickerSingleSelectSection />
           </div>
         </main>
     </SLDSGrid>

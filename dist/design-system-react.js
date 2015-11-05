@@ -75,11 +75,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSPicklistBase2 = _interopRequireDefault(_SLDSPicklistBase);
 	
-	var _SLDSDropdownBase = __webpack_require__(41);
+	var _SLDSDropdownBase = __webpack_require__(45);
 	
 	var _SLDSDropdownBase2 = _interopRequireDefault(_SLDSDropdownBase);
 	
-	var _SLDSPicklistBaseListItem = __webpack_require__(39);
+	var _SLDSPicklistBaseListItem = __webpack_require__(43);
 	
 	var _SLDSPicklistBaseListItem2 = _interopRequireDefault(_SLDSPicklistBaseListItem);
 	
@@ -87,29 +87,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 	
-	var _SLDSButton = __webpack_require__(46);
+	var _SLDSButton = __webpack_require__(50);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSButtonGroup = __webpack_require__(66);
+	var _SLDSButtonGroup = __webpack_require__(70);
 	
 	var _SLDSButtonGroup2 = _interopRequireDefault(_SLDSButtonGroup);
 	
-	var _SLDSLookup = __webpack_require__(67);
+	var _SLDSLookup = __webpack_require__(71);
 	
 	var _SLDSLookup2 = _interopRequireDefault(_SLDSLookup);
 	
-	var _SLDSModal = __webpack_require__(74);
+	var _SLDSModal = __webpack_require__(78);
 	
 	var _SLDSModal2 = _interopRequireDefault(_SLDSModal);
 	
-	var _SLDSModalTrigger = __webpack_require__(75);
+	var _SLDSModalTrigger = __webpack_require__(79);
 	
 	var _SLDSModalTrigger2 = _interopRequireDefault(_SLDSModalTrigger);
 	
 	var _SLDSIcons = __webpack_require__(13);
 	
 	var _SLDSIcons2 = _interopRequireDefault(_SLDSIcons);
+	
+	var _SLDSNotification = __webpack_require__(80);
+	
+	var _SLDSNotification2 = _interopRequireDefault(_SLDSNotification);
 	
 	module.exports = {
 	  SLDSPicklistBase: _SLDSPicklistBase2['default'],
@@ -121,7 +125,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  SLDSLookup: _SLDSLookup2['default'],
 	  SLDSModal: _SLDSModal2['default'],
 	  SLDSModalTrigger: _SLDSModalTrigger2['default'],
-	  SLDSIcons: _SLDSIcons2['default']
+	  SLDSIcons: _SLDSIcons2['default'],
+	  SLDSNotification: _SLDSNotification2['default']
 	};
 
 /***/ },
@@ -155,11 +160,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _list2 = _interopRequireDefault(_list);
 	
-	var _listItem = __webpack_require__(39);
+	var _listItem = __webpack_require__(43);
 	
 	var _listItem2 = _interopRequireDefault(_listItem);
 	
-	var _listItemLabel = __webpack_require__(40);
+	var _listItemLabel = __webpack_require__(44);
 	
 	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
 	
@@ -444,12 +449,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  propTypes: {
-	    targetAttachment: _react2['default'].PropTypes.string
+	    //    targetAttachment: React.PropTypes.string,
 	  },
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      targetAttachment: 'bottom left',
+	      verticalAlign: 'bottom',
+	      horizontalAlign: 'left',
+	      //      targetAttachment: 'bottom left',
 	      className: 'slds-dropdown',
 	      closeOnTabKey: false
 	    };
@@ -512,10 +519,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  dropOptions: function dropOptions() {
 	    var target = this.props.targetElement ? _react2['default'].findDOMNode(this.props.targetElement) : _react2['default'].findDOMNode(this).parentNode;
+	    var position = this.props.verticalAlign + ' ' + this.props.horizontalAlign;
 	    return {
 	      target: target,
 	      content: this.popoverElement,
-	      position: this.props.targetAttachment,
+	      position: position,
 	      openOn: 'always',
 	      beforeClose: this.beforeClose,
 	      constrainToWindow: true,
@@ -563,18 +571,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	});
-	/*
-	       <Spring
-	         defaultValue={{ val:0 }}
-	         endValue={{ val:1, config: [70, 10] }}>
-	         {currentVal => {
-	             return (<div style={{opacity:currentVal.val}}>
-	*/ /*
-	                </div>);
-	              }.bind(this)
-	            }
-	          </Spring>
-	   */
 
 /***/ },
 /* 4 */
@@ -3259,7 +3255,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSIcons = __webpack_require__(13);
 	
-	var _listItem = __webpack_require__(39);
+	var _listItem = __webpack_require__(43);
 	
 	var _listItem2 = _interopRequireDefault(_listItem);
 	
@@ -3467,7 +3463,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    // Utility Icon Reference: https://www.lightningdesignsystem.com/resources/icons#utility
 	    render: function render() {
-	        var useTag = '<use xlink:href="' + _SLDSSettings2['default'].getAssetsPath() + '/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
 	
 	        var className = 'slds-button__icon';
 	        if (this.props.variant !== 'icon') {
@@ -3489,10 +3484,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.props.destructive) {
 	            className += ' slds-button__icon--destructive';
 	        }
-	        if (this.props.category === 'utility') {
-	            return _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, 'aria-hidden': 'true', className: className });
-	        }
-	        return _react2['default'].createElement('svg', { 'aria-hidden': 'true', className: className, dangerouslySetInnerHTML: { __html: useTag } });
+	        /*
+	                if(this.props.category === 'utility'){
+	                    return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;
+	                }
+	                return <svg aria-hidden='true' className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
+	        */
+	        return _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className });
 	    }
 	
 	});
@@ -3509,7 +3507,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    render: function render() {
 	
-	        var useTag = '<use xlink:href="' + _SLDSSettings2['default'].getAssetsPath() + '/icons/' + this.props.category + '-sprite/svg/symbols.svg#' + this.props.name + '" />';
+	        var name = this.props.name.replace(/_/g, '-');
+	        var iconClassName = 'slds-icon-' + this.props.category + '-' + (this.props.theme || name);
+	        var styles = this.props.category === 'action' ? { padding: '.5rem' } : null;
+	
 	        var className = 'slds-icon';
 	        if (this.props.stateful) {
 	            className += '--stateful';
@@ -3523,11 +3524,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.props.position) {
 	            className += ' slds-icon--' + this.props.position;
 	        }
-	        className = className + ' slds-icon-' + this.props.category + '-' + (this.props.theme || this.props.name);
-	        if (this.props.category === 'utility') {
-	            return _react2['default'].createElement('span', { className: 'slds-icon__container' }, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, 'aria-hidden': 'true', className: className, style: this.props.style }));
-	        }
-	        return _react2['default'].createElement('span', { className: 'slds-icon__container' }, _react2['default'].createElement('svg', { 'aria-hidden': 'true', className: className, style: this.props.style, dangerouslySetInnerHTML: { __html: useTag } }));
+	        className = className + ' ' + iconClassName;
+	        return _react2['default'].createElement('span', { className: 'slds-icon__container ', style: styles }, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className, style: this.props.style }));
 	    }
 	
 	});
@@ -3536,10 +3534,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var InputIcon = _react2['default'].createClass({
 	    displayName: 'InputIcon',
 	
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            category: 'utility'
+	        };
+	    },
+	
 	    render: function render() {
-	        var useTag = '<use xlink:href="' + _SLDSSettings2['default'].getAssetsPath() + 'icons/utility-sprite/svg/symbols.svg#' + this.props.name + '" />';
 	        var className = 'slds-input__icon slds-icon-text-default';
-	        return _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, 'aria-hidden': 'true', className: className });
+	        return _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className });
 	    }
 	
 	});
@@ -5560,35 +5563,127 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _sldsIconsUtil = __webpack_require__(38);
+	var _sldsIconsUtility = __webpack_require__(38);
 	
-	var _sldsIconsUtil2 = _interopRequireDefault(_sldsIconsUtil);
+	var _sldsIconsUtility2 = _interopRequireDefault(_sldsIconsUtility);
+	
+	var _sldsIconsAction = __webpack_require__(39);
+	
+	var _sldsIconsAction2 = _interopRequireDefault(_sldsIconsAction);
+	
+	var _sldsIconsCustom = __webpack_require__(40);
+	
+	var _sldsIconsCustom2 = _interopRequireDefault(_sldsIconsCustom);
+	
+	var _sldsIconsDoctype = __webpack_require__(41);
+	
+	var _sldsIconsDoctype2 = _interopRequireDefault(_sldsIconsDoctype);
+	
+	var _sldsIconsStandard = __webpack_require__(42);
+	
+	var _sldsIconsStandard2 = _interopRequireDefault(_sldsIconsStandard);
 	
 	module.exports = _react2['default'].createClass({
 	  displayName: 'exports',
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      name: 'announcenent'
+	      name: 'announcenent',
+	      category: 'utility'
 	    };
 	  },
 	
-	  getPaths: function getPaths(data) {
-	    if (data instanceof Array) {
-	      return data.map(function (item) {
+	  getPaths: function getPaths(paths) {
+	    if (paths instanceof Array) {
+	      return paths.map(function (item) {
 	        return _react2['default'].createElement('path', item);
 	      });
 	    }
-	    return _react2['default'].createElement('path', data);
+	    return _react2['default'].createElement('path', paths);
 	  },
 	
-	  getSVG: function getSVG(name) {
-	    var data = _sldsIconsUtil2['default'][name.toLowerCase()];
-	    return _react2['default'].createElement('svg', _extends({}, this.props, { viewBox: _sldsIconsUtil2['default'].viewBox }), this.getPaths(data));
+	  getCircles: function getCircles(circles) {
+	    if (circles instanceof Array) {
+	      return circles.map(function (item) {
+	        return _react2['default'].createElement('circle', item);
+	      });
+	    }
+	    return _react2['default'].createElement('circle', circles);
+	  },
+	
+	  getEllipses: function getEllipses(ellipses) {
+	    if (ellipses instanceof Array) {
+	      return ellipses.map(function (item) {
+	        return _react2['default'].createElement('ellipse', item);
+	      });
+	    }
+	    return _react2['default'].createElement('ellipse', ellipses);
+	  },
+	
+	  getGroups: function getGroups(groups) {
+	    var _this = this;
+	
+	    if (groups instanceof Array) {
+	      return groups.map(function (item) {
+	        return _react2['default'].createElement('g', null, _this.getShapes(item));
+	      });
+	    }
+	    return _react2['default'].createElement('g', null, this.getShapes(groups));
+	  },
+	
+	  getShapes: function getShapes(data) {
+	    var shapes = [];
+	    if (data) {
+	      if (data.g) {
+	        shapes.push(this.getGroups(data.g));
+	      }
+	      if (data.ellipse) {
+	        shapes.push(this.getEllipses(data.ellipse));
+	      }
+	      if (data.circle) {
+	        shapes.push(this.getCircles(data.circle));
+	      }
+	      if (data.path) {
+	        shapes.push(this.getPaths(data.path));
+	      }
+	    }
+	    return shapes;
+	  },
+	
+	  getSVG: function getSVG(name, category) {
+	    var data;
+	    var viewBox;
+	    switch (category) {
+	      case 'utility':
+	        data = _sldsIconsUtility2['default'][name.toLowerCase()];
+	        viewBox = _sldsIconsUtility2['default'].viewBox;
+	        break;
+	      case 'action':
+	        data = _sldsIconsAction2['default'][name.toLowerCase()];
+	        viewBox = _sldsIconsAction2['default'].viewBox;
+	        break;
+	      case 'custom':
+	        data = _sldsIconsCustom2['default'][name.toLowerCase()];
+	        viewBox = _sldsIconsCustom2['default'].viewBox;
+	        break;
+	      case 'doctype':
+	        data = _sldsIconsDoctype2['default'][name.toLowerCase()];
+	        viewBox = _sldsIconsDoctype2['default'].viewBox;
+	        break;
+	      case 'standard':
+	        data = _sldsIconsStandard2['default'][name.toLowerCase()];
+	        viewBox = _sldsIconsStandard2['default'].viewBox;
+	        break;
+	      default:
+	        data = _sldsIconsUtility2['default'][name.toLowerCase()];
+	        viewBox = _sldsIconsUtility2['default'].viewBox;
+	        break;
+	    }
+	    return _react2['default'].createElement('svg', _extends({}, this.props, { viewBox: viewBox }), this.getShapes(data));
 	  },
 	
 	  render: function render() {
-	    return this.getSVG(this.props.name);
+	    return this.getSVG(this.props.name, this.props.category);
 	  }
 	});
 
@@ -5596,194 +5691,644 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 38 */
 /***/ function(module, exports) {
 
-	/*Copyright (c) 2015, salesforce.com, inc. All rights reserved.Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.*/
+	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
 	"use strict";
 	
 	module.exports = {
-	  add: { "d": "M13.8 13.4h7.7c.3 0 .7-.3.7-.7v-1.4c0-.4-.4-.7-.7-.7h-7.7c-.2 0-.4-.2-.4-.4V2.5c0-.3-.3-.7-.7-.7h-1.4c-.4 0-.7.4-.7.7v7.7c0 .2-.2.4-.4.4H2.5c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h7.7c.2 0 .4.2.4.4v7.7c0 .3.3.7.7.7h1.4c.4 0 .7-.4.7-.7v-7.7c0-.2.2-.4.4-.4z" },
-	  adduser: { "d": "M10.1 17.1c0-1.3.4-2.7 1.1-3.8.8-1.4 1.6-1.9 2.3-3 1.2-1.7 1.4-4.1.7-6-.8-1.9-2.5-3-4.6-2.9S6 2.7 5.3 4.6c-.7 2-.4 4.5 1.3 6.1.6.7 1.3 1.7.9 2.6-.3 1-1.4 1.4-2.2 1.7-1.8.8-4 1.9-4.3 4.1-.4 1.7.8 3.5 2.7 3.5h7.8c.4 0 .6-.4.4-.7-1.1-1.4-1.8-3.1-1.8-4.8zm7.4-5.6c-3.1 0-5.5 2.5-5.5 5.6s2.4 5.5 5.5 5.5 5.5-2.5 5.5-5.5-2.5-5.6-5.5-5.6zm2.8 6c0 .3-.2.5-.5.5h-1.3v1.4c0 .3-.3.4-.5.4h-1c-.2 0-.4-.1-.4-.4V18h-1.4c-.3 0-.4-.2-.4-.5v-.9c0-.3.1-.4.4-.4h1.4v-1.4c0-.3.2-.5.4-.5h1c.2 0 .5.2.5.5v1.4h1.3c.3 0 .5.1.5.4v.9z" },
-	  announcement: { "d": "M10.5 21l-.6-.5c-.7-.5-.7-1.4-.7-1.9v-1.3c0-.4-.3-.7-.7-.7H5.8c-.4 0-.7.3-.7.7v3.6c0 1.2.7 2.2 1.9 2.2h2.2c1.4 0 1.5-.9 1.5-.9s.2-.9-.2-1.2zM20.8 8.3V2c0-1.1-1.4-1.4-2.2-.7l-4.1 3.9c-.6.5-1.4.8-2.3.8h-7C2.8 6 .9 8.1.9 10.5v.1c0 2.4 1.9 4.2 4.3 4.2h7c.9 0 1.7.3 2.4.9l4 4c.8.7 2.2.4 2.2-.7v-6.3c1.4 0 2.2-.9 2.2-2.2 0-1.2-.8-2.2-2.2-2.2z" },
-	  apps: { "d": "M6 1.8H3.2c-.8 0-1.4.6-1.4 1.4V6c0 .8.6 1.4 1.4 1.4H6c.8 0 1.4-.6 1.4-1.4V3.2c0-.8-.6-1.4-1.4-1.4zm0 14.8H3.2c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4H6c.8 0 1.4-.6 1.4-1.4V18c0-.8-.6-1.4-1.4-1.4zm0-7.4H3.2c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4H6c.8 0 1.4-.6 1.4-1.4v-2.8c0-.8-.6-1.4-1.4-1.4zm7.4-7.4h-2.8c-.8 0-1.4.6-1.4 1.4V6c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V3.2c0-.8-.6-1.4-1.4-1.4zm0 14.8h-2.8c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V18c0-.8-.6-1.4-1.4-1.4zm0-7.4h-2.8c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4v-2.8c0-.8-.6-1.4-1.4-1.4zm7.4-7.4H18c-.8 0-1.4.6-1.4 1.4V6c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V3.2c0-.8-.6-1.4-1.4-1.4zm0 14.8H18c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V18c0-.8-.6-1.4-1.4-1.4zm0-7.4H18c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4v-2.8c0-.8-.6-1.4-1.4-1.4z" },
-	  arrowdown: { "d": "M4.4 14.3c-.3.4-.3.9 0 1.3l7 6.7c.3.4.9.4 1.2 0l7-6.7c.4-.4.4-.9 0-1.3l-1.3-1.2c-.3-.4-.9-.4-1.3 0l-2.1 2.1c-.4.4-1.1.1-1.1-.4V2.3c0-.5-.4-.9-.9-.9h-1.8c-.5 0-.9.5-.9.9v12.5c0 .5-.7.8-1.1.4L7 13.1c-.4-.4-1-.4-1.3 0l-1.3 1.2z" },
-	  arrowup: { "d": "M19.1 9.7c.4-.4.4-.9 0-1.3l-6.9-6.7c-.4-.4-.9-.4-1.3 0L4 8.4c-.4.4-.4.9 0 1.3l1.3 1.2c.3.4.9.4 1.3 0l2.1-2.1c.4-.4 1-.1 1 .4v12.5c0 .5.5.9 1 .9h1.8c.5 0 .9-.5.9-.9V9.2c0-.5.7-.8 1-.4l2.2 2.1c.4.4.9.4 1.3 0l1.2-1.2z" },
-	  attach: { "d": "M8.1 16.9c.3.3.7.3 1 0l4.6-4.6c.3-.3.9-.3 1.3 0 .4.4.4 1 0 1.4l-5.7 5.6c-1.2 1.2-3.3 1.2-4.5 0l-.1-.1c-1.2-1.2-1.2-3.3 0-4.5l10-10c1.3-1.3 3.3-1.3 4.6 0 1.3 1.3 1.3 3.3 0 4.6-.2.3-.3.6-.1.9.3.5.5 1 .6 1.6.1.3.6.4.8.2l.7-.7c2.4-2.4 2.4-6.2 0-8.6h-.1C18.9.4 15 .4 12.7 2.7l-10 10c-2.4 2.3-2.4 6.2 0 8.5l.1.1c2.3 2.4 6.1 2.4 8.5 0l5.7-5.7c1.5-1.4 1.4-3.8-.1-5.3-1.5-1.4-3.9-1.3-5.3.1L7.1 15c-.3.2-.3.7 0 1l1 .9z" },
-	  back: { "d": "M22.4 10.6H7.1c-.4 0-.6-.5-.3-.8l4.4-4.4c.3-.3.3-.7 0-1l-1-1c-.3-.3-.7-.3-1 0l-8 8.1c-.3.3-.3.7 0 1l8 8.1c.3.3.7.3 1 0l1-1c.2-.3.2-.7 0-1l-4.5-4.4c-.2-.3-.1-.8.4-.8h15.3c.4 0 .7-.3.7-.7v-1.3c0-.4-.3-.8-.7-.8z" },
-	  ban: { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zM3.7 12c0-4.6 3.7-8.3 8.3-8.3 1.8 0 3.5.5 4.8 1.5L5.2 16.8c-1-1.3-1.5-3-1.5-4.8zm8.3 8.3c-1.8 0-3.5-.5-4.8-1.5L18.8 7.2c1 1.3 1.5 3 1.5 4.8 0 4.6-3.7 8.3-8.3 8.3z" },
-	  bold: { "d": "M18.9 8.8c0-2.8-2.2-5.1-4.8-5.1H6.5c-.5 0-1 .4-1 .9v15.2c0 .6.5 1 1 1h7.6c2.6 0 4.8-2.3 4.8-5.1 0-1.3-.5-2.5-1.3-3.5.8-.9 1.3-2.1 1.3-3.4zm-4.8 8.7H8.8v-3.7h5.3c.9 0 1.6.9 1.6 1.9s-.7 1.8-1.6 1.8zm0-6.9H8.8V6.9h5.3c.9 0 1.6.9 1.6 1.9s-.7 1.8-1.6 1.8z" },
-	  bookmark: { "d": "M17.2 22.9l-4.6-4.6c-.2-.3-.6-.3-.9 0l-4.9 4.6c-.3.3-.8.1-.8-.3V2.8C6 1.8 6.8.9 7.8.9h8.4c1 0 1.8.9 1.8 1.9v19.8c0 .4-.5.6-.8.3z" },
-	  brush: { "d": "M22.8 1.2c-1.6-1.6-10.3 3.4-15.7 12-.2.4-.1.9.3 1.1 1.2.6 2.2 1.6 2.7 2.8.2.5.7.6 1.1.3C19.5 12 24.4 2.9 22.8 1.2zm-17.3 15c-.7 0-1.3.4-1.8.9h-.1c-.2 0-.4.3-.6.7-.7 1.2-.9 2.7-2 4.3-.2.3-.1.7.2.8 1.6.5 4.4 0 5.8-1v.1c.4-.1.3-.3.4-.3.5-.9 1-1.4 1-2.3-.1-1.7-1.3-3.2-2.9-3.2z" },
-	  bucket: { "d": "M22.6 5.1c0-2.9-4.5-4.2-8.8-4.2S5.1 2.2 5.1 5.1v.2C1.1 6.5.5 9 .5 10.4c0 1.4.7 2.8 1.9 3.9 1 .8 2.3 1.3 3.6 1.4h.4c3-.1 5.9-1.1 6.8-2.7-.5-.4-.7-.9-.7-1.5 0-1 .8-1.8 1.8-1.8s1.9.8 1.9 1.8c0 .8-.5 1.5-1.2 1.7-.9 2.6-4.6 4.3-9 4.3v2.8c0 1.5 3.5 2.8 7.8 2.8s7.9-1.3 7.9-2.8V7.1c.6-.6.9-1.2.9-2zm-8.8-1.4c3.1 0 5 .7 5.8 1.2.1.1.1.3 0 .4-.8.5-2.7 1.2-5.8 1.2s-4.9-.7-5.7-1.2c-.1-.1-.1-.3 0-.4.8-.5 2.7-1.2 5.7-1.2zM3.6 12.8c-.8-.6-1.3-1.5-1.3-2.4 0-2 1.9-3 3.6-3.4l.1.1v6.7c-.9 0-1.8-.4-2.4-1z" },
-	  builder: { "d": "M5.3 7.8H1.6c-.4 0-.7.4-.7.7v11.8c0 1 .9 1.9 1.9 1.9h2.5c.4 0 .7-.4.7-.7v-13c0-.3-.3-.7-.7-.7zm17.1 0H8.5c-.3 0-.7.4-.7.7v13c0 .3.4.7.7.7h12.7c1 0 1.9-.9 1.9-1.9V8.5c0-.3-.3-.7-.7-.7zm-1.2-6H2.8c-1 0-1.9.9-1.9 1.9v1.6c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V3.7c0-1-.9-1.9-1.9-1.9z" },
-	  call: { "d": "M22.4 17.5l-2.8-2.3c-.7-.5-1.6-.5-2.2 0L15 16.9c-.3.3-.7.2-1-.1l-3.6-3.2L7.2 10c-.3-.3-.3-.6-.1-1l1.7-2.4c.5-.6.5-1.5 0-2.2L6.5 1.6C5.8.8 4.6.7 3.8 1.5L1.4 3.9c-.4.3-.6.9-.6 1.4.3 4.7 2.4 9.1 5.5 12.3s7.6 5.2 12.3 5.5c.6 0 1.1-.2 1.4-.6l2.4-2.4c.9-.7.9-2 0-2.6z" },
-	  capslock: { "d": "M20.1 9.7l-7.5-8.5c-.3-.4-.9-.4-1.2 0L3.9 9.7c-.3.4-.1.9.4.9h3.5v5.8c0 .4.4.7.7.7h7c.3 0 .7-.3.7-.7v-5.8h3.5c.5 0 .7-.5.4-.9zm-4.6 10.1h-7c-.3 0-.7.4-.7.7v1.9c0 .4.4.7.7.7h7c.3 0 .7-.3.7-.7v-1.9c0-.3-.4-.7-.7-.7z" },
-	  cases: { "d": "M4.2 1.6c0-.4-.4-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v14.3c0 .4.3.7.7.7h1.9c.3 0 .7-.3.7-.7V1.6zm18.9 0c0-.4-.3-.7-.7-.7h-1.9c-.3 0-.7.3-.7.7v14.3c0 .4.4.7.7.7h1.9c.4 0 .7-.3.7-.7V1.6zM17.3.9h-1.4c-.3 0-.7.4-.7.8v5.7c0 .2.1.3.3.4.8.4 1.5.9 2.1 1.5.1.2.4.1.4-.1V1.7c0-.4-.3-.8-.7-.8zM11.1 7h1.8s.5-.2.5-.4V1.7c0-.4-.3-.8-.7-.8h-1.4c-.4 0-.7.4-.7.8v4.9c0 .2.2.5.5.4zM6.4 9.3c.6-.6 1.4-1.1 2.1-1.5.2-.1.3-.2.3-.4V1.7c0-.4-.4-.8-.7-.8H6.7c-.4 0-.7.4-.7.8v7.5c0 .2.2.3.4.1zm5.6-.5c-3.3 0-6 2.7-6 6 0 1 .3 2 .7 2.9L3.5 21c-.3.2-.3.6 0 .9l.9 1c.3.3.7.3 1 0l3.2-3.2c1 .7 2.2 1.1 3.4 1.1 3.3 0 6-2.7 6-6s-2.7-6-6-6zm0 9.2c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2 3.2 1.4 3.2 3.2S13.8 18 12 18z" },
-	  center_align_text: { "d": "M22.2 3c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3zm-2.8 5.5c0-.3-.3-.7-.7-.7H5.3c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h13.4c.4 0 .7-.3.7-.7V8.5zm-.9 11.1c0-.4-.4-.7-.7-.7H6.2c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h11.6c.3 0 .7-.3.7-.7v-1.4zm3.7-5.5c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4z" },
-	  chart: { "d": "M21 10.8L11.5 16c-.6.3-1.3-.1-1.3-.8V3.9c0-.5-.5-.9-.9-.7-4.6 1.3-8 5.8-7.4 10.9.5 4.6 4.2 8.4 8.9 8.9 6.2.7 11.4-4.1 11.4-10.1 0-.5-.1-1.1-.2-1.6s-.6-.7-1-.5zm-8.2 2.1l9.1-4.8c.5-.3.7-1 .3-1.5-2-2.9-5.3-5-9-5.6-.6-.1-1.2.4-1.2 1v10.5c0 .4.4.6.8.4z" },
-	  chat: { "d": "M12 1.8C5.9 1.8 1 6.4 1 12c0 1.7.5 3.4 1.3 4.8.1.3.2.6.1.8l-1.4 4c-.2.3.2.6.6.6l3.9-1.6c.3-.1.5 0 .8.1 1.7.9 3.7 1.5 5.8 1.5 6 0 11-4.5 11-10.2C23 6.4 18.1 1.8 12 1.8zm-5.5 12c-1.1 0-1.9-.8-1.9-1.8s.8-1.8 1.9-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zm5.5 0c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zm5.5 0c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.9.8 1.9 1.8-.8 1.8-1.9 1.8z" },
-	  check: { "d": "M8.8 19.6L1.2 12c-.3-.3-.3-.8 0-1.1l1-1c.3-.3.8-.3 1 0L9 15.7c.1.2.5.2.6 0L20.9 4.4c.2-.3.7-.3 1 0l1 1c.3.3.3.7 0 1L9.8 19.6c-.2.3-.7.3-1 0z" },
-	  checkin: { "d": "M12 .9C7.2.9 3.2 4.8 3.2 9.7c0 6.1 6.3 11.7 8.2 13.2.4.3.8.3 1.2 0 1.9-1.5 8.2-7.1 8.2-13.2 0-4.9-4-8.8-8.8-8.8zm0 12.5c-2 0-3.7-1.7-3.7-3.7S10 6 12 6s3.7 1.7 3.7 3.7-1.7 3.7-3.7 3.7z" },
-	  chevrondown: { "d": "M22 8.2l-9.5 9.6c-.3.2-.7.2-1 0L2 8.2c-.2-.3-.2-.7 0-1l1-1c.3-.3.8-.3 1.1 0l7.4 7.5c.3.3.7.3 1 0l7.4-7.5c.3-.2.8-.2 1.1 0l1 1c.2.3.2.7 0 1z" },
-	  chevronleft: { "d": "M15.8 22l-9.6-9.4c-.3-.3-.3-.8 0-1.1l9.6-9.4c.3-.3.7-.3 1 0l1 1c.3.3.3.7 0 1l-7.6 7.4c-.3.3-.3.8 0 1.1l7.5 7.4c.3.3.3.7 0 1l-1 1c-.2.2-.6.2-.9 0z" },
-	  chevronright: { "d": "M8.3 2l9.5 9.5c.3.3.3.7 0 1L8.3 22c-.3.2-.8.2-1.1 0l-1-1c-.2-.3-.2-.8 0-1.1l7.6-7.4c.2-.3.2-.7 0-1L6.3 4.1C6 3.8 6 3.3 6.3 3l1-1c.3-.2.7-.2 1 0z" },
-	  chevronup: { "d": "M2 15.8l9.5-9.6c.3-.2.7-.2 1 0l9.5 9.6c.2.3.2.7 0 1l-1 1c-.3.3-.8.3-1.1 0l-7.4-7.6c-.3-.2-.7-.2-1 0l-7.4 7.6c-.3.2-.8.2-1.1 0l-1-1c-.2-.3-.2-.7 0-1z" },
-	  clear: { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm2.3 11.5l3.6 3.6c.1.2.1.4 0 .6l-1.3 1.3c-.2.2-.5.2-.7 0l-3.6-3.6c-.2-.2-.4-.2-.6 0l-3.6 3.6c-.2.2-.5.2-.7 0l-1.3-1.3c-.1-.2-.1-.4 0-.6l3.6-3.6c.2-.2.2-.5 0-.7L6.1 8.1c-.2-.2-.2-.5 0-.7l1.3-1.3c.2-.1.4-.1.6 0l3.7 3.7c.2.2.4.2.6 0l3.6-3.6c.2-.2.5-.2.7 0l1.3 1.3c.1.2.1.4 0 .6l-3.6 3.6c-.2.2-.2.5 0 .7z" },
-	  clock: { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 19.4c-4.6 0-8.3-3.7-8.3-8.3S7.4 3.7 12 3.7s8.3 3.7 8.3 8.3-3.7 8.3-8.3 8.3zm1.6-8.2c-.2-.1-.2-.3-.2-.5V7.2c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v5.5c0 .2.1.4.2.5l3.4 3.5c.3.2.7.2 1 0l1-1c.2-.3.2-.7 0-1l-2.6-2.6z" },
-	  close: { "d": "M14.3 11.7l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.2-.7-.2-1 0l-6 6.1c-.2.2-.5.2-.7 0l-6-6.1c-.3-.3-.7-.3-1 0l-1 1c-.2.2-.2.7 0 .9l6.1 6.1c.2.2.2.4 0 .6l-6.1 6.1c-.3.3-.3.7 0 1l1 1c.2.2.7.2.9 0l6.1-6.1c.2-.2.4-.2.6 0l6.1 6.1c.2.2.7.2.9 0l1-1c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z" },
-	  comments: { "d": "M22.1 14.3c-.1-.2-.1-.4 0-.5.6-1.1 1-2.3 1-3.6 0-4.1-3.5-7.4-7.9-7.4-2 0-3.8.8-5.2 2 4.7.5 8.5 4.4 8.5 9.1 0 1.1-.3 2.3-.7 3.3.5-.2 1-.4 1.5-.7.2-.1.4-.1.5 0l2.9 1.1c.2.1.5-.2.4-.4l-1-2.9zM8.8 6.5C4.4 6.5.9 9.8.9 13.9c0 1.3.4 2.5 1 3.5.1.2.1.4 0 .6l-1 2.8c-.1.3.2.5.4.4l2.9-1.1c.1 0 .3 0 .5.1 1.2.7 2.6 1 4.1 1 4.3 0 7.8-3.3 7.8-7.4 0-4-3.5-7.3-7.8-7.3z" },
-	  company: { "d": "M9.7 1.8H3.2c-.8 0-1.4.6-1.4 1.4v18.5c0 .2.3.5.5.5h1.9c.2 0 .4-.2.4-.5v-2.8c0-.3.2-.4.5-.4h2.7c.3 0 .5.1.5.4v2.8c0 .3.2.5.5.5h1.4c.5 0 .9-.5.9-1v-18c0-.8-.6-1.4-1.4-1.4zM5.5 16.4c0 .1-.1.2-.2.2H3.9c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H3.9c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H3.9c-.1 0-.2-.1-.2-.2V4.8c0-.1.1-.2.2-.2h1.4c.1 0 .2.1.2.2v2.4zm3.7 9.2c0 .1-.1.2-.2.2H7.6c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3H9c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H7.6c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3H9c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H7.6c-.1 0-.2-.1-.2-.2V4.8c0-.1.1-.2.2-.2H9c.1 0 .2.1.2.2v2.4zm11.6-.7h-6.5c-.8 0-1.4.6-1.4 1.3v13.9c0 .2.3.5.5.5h1.8c.3 0 .5-.2.5-.5v-2.8c0-.3.2-.4.5-.4h2.7c.3 0 .5.1.5.4v2.8c0 .3.2.5.4.5h1.4c.5 0 1-.5 1-1V7.8c0-.7-.6-1.3-1.4-1.3zm-4.2 9.9c0 .1-.1.2-.2.2H15c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H15c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm3.7 4.6c0 .1-.1.2-.2.2h-1.4c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2h-1.4c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3z" },
-	  connected_apps: { "d": "M11 14.4l-1.8 8.1c-.1.5.5.8.8.4l9.7-12c.3-.3.1-.7-.3-.7h-5.2c-.4 0-.6-.5-.4-.7L18.4 2c.2-.5-.1-1.1-.6-1.1H9.6c-.5 0-.9.3-1.1.8L4.7 12.9c-.2.5.1.9.6.9h5.3c.2 0 .5.3.4.6z" },
-	  contract: { "d": "M13.7 11.1h7.1c.4 0 .6-.5.2-.9l-2.3-2.3 4.2-4.2c.2-.2.2-.7 0-.9l-1.7-1.7c-.2-.2-.6-.2-.9.1l-4.1 4.1L13.8 3c-.4-.3-.9-.2-.9.3v7.1c0 .3.4.7.8.7zm-3.4 1.8H3.2c-.4 0-.6.5-.2.9l2.3 2.3-4.2 4.2c-.2.2-.2.7 0 .9l1.7 1.7c.2.2.6.2.9 0l4.2-4.2 2.3 2.3c.4.4.9.2.9-.2v-7.1c0-.3-.4-.8-.8-.8zm2.6.8v7.1c0 .4.5.6.9.2l2.3-2.3 4.2 4.2c.2.2.7.2.9 0l1.7-1.7c.2-.2.2-.6-.1-.9l-4.1-4.1 2.3-2.4c.3-.4.2-.9-.3-.9h-7.1c-.3 0-.7.4-.7.8zm-1.8-3.4V3.2c0-.4-.5-.6-.9-.2L7.9 5.3 3.7 1.1c-.2-.2-.7-.2-.9 0L1.1 2.8c-.2.2-.2.6 0 .9l4.2 4.2L3 10.2c-.4.4-.2.9.2.9h7.1c.3 0 .8-.4.8-.8z" },
-	  contract_alt: { "d": "M13.7 11h7.1c.4 0 .6-.5.2-.8l-2.3-2.4 4.2-4.2c.2-.2.2-.6 0-.8l-1.7-1.7c-.2-.2-.6-.2-.9 0l-4.1 4.2L13.8 3c-.4-.4-.9-.2-.9.2v7.1c0 .4.4.7.8.7zm-3.4 1.9H3.2c-.4 0-.6.5-.2.9l2.3 2.3-4.2 4.2c-.2.2-.2.7 0 .9l1.7 1.7c.2.2.6.2.9 0l4.2-4.2 2.3 2.3c.4.4.9.2.9-.2v-7.1c0-.3-.4-.8-.8-.8z" },
-	  copy: { "d": "M20.3.9h-12c-1 0-1.8.9-1.8 1.9v.9h11c1.1 0 1.9.8 1.9 1.8v13h.9c1 0 1.9-.9 1.9-1.9V2.8c0-1-.9-1.9-1.9-1.9zm-2.8 6.5c0-1-.8-1.9-1.8-1.9h-12c-1 0-1.9.9-1.9 1.9v13.8c0 1 .9 1.9 1.9 1.9h12c1 0 1.8-.9 1.8-1.9V7.4zm-8.3 3.2c0 .3-.2.5-.4.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h3.7c.2 0 .4.2.4.5v.9zm3.7 7.4c0 .3-.2.5-.4.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h7.4c.2 0 .4.2.4.5v.9zm1.9-3.7c0 .3-.2.5-.5.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h9.2c.3 0 .5.2.5.5v.9z" },
-	  crossfilter: { "d": "M16.2 4.2c-.8 0-1.6 0-2.3.3.9.7 1.6 1.5 2.2 2.4h.1c2.8 0 5 2.3 5 5.1s-2.2 5.1-5 5.1c-.7 0-1.4-.2-2-.4.3-.5.7-1.1.9-1.7.1-.2.2-.4.2-.6.3-.7.4-1.6.4-2.4 0-4.3-3.5-7.8-7.9-7.8S0 7.7 0 12s3.5 7.8 7.8 7.8c.8 0 1.6 0 2.3-.3-.9-.7-1.6-1.5-2.2-2.4h-.1c-2.8 0-5-2.3-5-5.1s2.2-5.1 5-5.1c.7 0 1.4.2 2.1.4-1 1.3-1.6 2.9-1.6 4.7 0 4.3 3.5 7.8 7.9 7.8S24 16.3 24 12s-3.5-7.8-7.8-7.8z" },
-	  custom_apps: { "d": "M22.8 5.6c-.1-.2-.4-.3-.6-.1l-3.8 3.7c-.3.3-.7.3-1 0l-2.6-2.6c-.3-.3-.3-.7 0-1l3.8-3.8c.1-.1 0-.5-.2-.6-.6-.2-1.3-.3-2-.3-3.9 0-7 3.4-6.6 7.4.1.7.3 1.2.5 1.8l-8.6 8.5c-1.1 1.1-1.1 2.7 0 3.7.5.5 1.2.8 1.8.8s1.3-.3 1.9-.8l8.5-8.6c.6.2 1.2.4 1.8.5 4 .4 7.4-2.7 7.4-6.6 0-.7-.1-1.4-.3-2z" },
-	  cut: { "d": "M18.8 14.5c-.8-.2-1.5-.1-2.2.1L6.4 1.1C6.3.9 6 .9 5.8 1l-.4.3c-.8.6-.9 1.7-.3 2.6l4.9 6.4c.2.3.2.6 0 .9l-2.7 3.4c-.6-.2-1.4-.2-2.1-.1-1.7.4-3.1 1.7-3.3 3.5-.4 2.7 2 5 4.8 4.6 1.7-.3 3-1.6 3.4-3.2.2-1.2 0-2.2-.5-3l1.9-2.6c.3-.4.8-.4 1.1 0l1.9 2.6c-.5.9-.7 1.9-.5 3 .3 1.6 1.7 2.9 3.4 3.2 2.8.4 5.2-1.9 4.8-4.6-.4-1.8-1.8-3.2-3.4-3.5zM6 19.9c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.3.6 1.3 1.4-.6 1.4-1.3 1.4zm12 0c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.3.6 1.3 1.4c0 .8-.6 1.4-1.3 1.4zM14.4 8.7c.2.3.6.3.8 0l3.7-4.8c.5-.7.4-1.6-.1-2.3h.1-.1c-.1-.1-.7-.6-.7-.6-.1-.1-.5-.1-.6.1l-4.1 5.4c-.2.2-.2.6 0 .8l1 1.4z" },
-	  dash: { "d": "M23.1 12.7c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7v-1.4c0-.4.3-.7.7-.7h20.8c.4 0 .7.3.7.7v1.4z" },
-	  dayview: { "d": "M20.3 3.2H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9zm1.2 6h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zm-8.1 10.2v.1c0 .3-.5.8-.9.8s-1-.5-1-.9v-4.6l-.7.7c-.1.1-.2.2-.4.2-.4 0-.7-.3-.7-.7 0-.2.1-.4.2-.5l1.8-1.8c.2-.2.4-.3.7-.3.5 0 1 .4 1 .9v6.1z" },
-	  "delete": { "d": "M21 4.6h-5.8V2.8c0-1-.8-1.9-1.8-1.9h-2.8c-1 0-1.8.9-1.8 1.9v1.8H3c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h18c.4 0 .7-.3.7-.7V5.3c0-.4-.3-.7-.7-.7zM10.6 3.2c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.4h-2.8V3.2zm8.6 6H4.8c-.3 0-.6.4-.6.7v10.9c0 1.3 1 2.3 2.3 2.3h11c1.3 0 2.3-1 2.3-2.3V9.9c0-.3-.3-.7-.6-.7zm-8.6 10.2c0 .3-.2.4-.4.4h-1c-.2 0-.4-.1-.4-.4v-6.5c0-.3.2-.4.4-.4h1c.2 0 .4.1.4.4v6.5zm4.6 0c0 .3-.2.4-.4.4h-1c-.2 0-.4-.1-.4-.4v-6.5c0-.3.2-.4.4-.4h1c.2 0 .4.1.4.4v6.5z" },
-	  deprecate: { "d": "M22.2 3.2H1.8c-.5 0-.9.4-.9 1v12c0 .5.4.9.9.9h7.5c.5 2.6 2.7 4.6 5.5 4.6s5-2 5.4-4.6h2c.5 0 .9-.4.9-.9v-12c0-.6-.4-1-.9-1zm-4 15.1l-1.3 1.3-2.1-2.2-2.2 2.2-1.2-1.3 2.1-2.1-2.1-2.2 1.2-1.3 2.2 2.2 2.1-2.2 1.3 1.3-2.1 2.2 2.1 2.1zm3-3.1h-1c-.4-2.6-2.7-4.6-5.4-4.6s-5.1 2-5.5 4.6H2.8V5.1h18.4v10.1z" },
-	  desktop: { "d": "M23.1 2.8c0-1-.9-1.9-1.9-1.9H2.8C1.8.9.9 1.8.9 2.8v12c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8v-12zm-2.8 10.4c0 .3-.3.6-.7.6H4.4c-.4 0-.7-.3-.7-.6V4.4c0-.4.3-.7.7-.7h15.2c.4 0 .7.3.7.7v8.8zm-5.1 7.1h-1.4c-.2 0-.4-.2-.4-.5v-.9c0-.3-.2-.4-.5-.4h-1.8c-.3 0-.5.1-.5.4v.9c0 .3-.2.5-.4.5H8.8c-1 0-1.9.8-1.9 1.9v.2c0 .4.3.7.7.7h8.8c.4 0 .7-.3.7-.7v-.2c0-1.1-.9-1.9-1.9-1.9z" },
-	  down: { "d": "M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z" },
-	  download: { "d": "M22.4 14.3H21c-.4 0-.7.3-.7.7v4.6c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V15c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6.2c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V15c0-.4-.3-.7-.7-.7zm-10.9 3.1c.3.2.7.2 1 0l6.2-6.3c.3-.3.3-.7 0-.9l-.9-1c-.3-.3-.7-.3-1 0l-2.6 2.6c-.3.2-.8.1-.8-.4V1.6c0-.4-.4-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v9.8c0 .4-.5.6-.8.3L7.2 9.1c-.2-.2-.6-.2-.9 0l-1 1.1c-.3.2-.3.6 0 .9l6.2 6.3z" },
-	  edit: { "d": "M4.4 15.4l4.1 4.1c.2.2.5.2.6 0L19.4 9.2c.2-.2.2-.4 0-.6l-4.1-4.1c-.2-.2-.4-.2-.6 0L4.4 14.8c-.2.2-.2.5 0 .6zM16.7 2.6c-.2.2-.2.5 0 .7l4 4c.2.2.5.2.7 0l1.1-1.1c.8-.7.8-1.8 0-2.6l-2.1-2.1c-.8-.8-1.9-.8-2.7 0l-1 1.1zM1 22.2c-.1.5.3.9.8.8l5-1.2c.2 0 .3-.1.4-.2l.1-.1c.1-.1.1-.4-.1-.6l-4.1-4.1c-.2-.2-.5-.2-.6-.1l-.1.1c-.1.1-.2.3-.2.4l-1.2 5z" },
-	  email: { "d": "M11.5 13.9c.3.3.7.3 1 0l10.4-9.7c.2-.4.1-1-.6-1l-20.6.1c-.6 0-1.1.5-.6.9l10.4 9.7zM23.1 8c0-.5-.6-.8-.9-.4L14 15.1c-.6.5-1.3.8-2 .8s-1.4-.3-2-.8L1.9 7.6c-.4-.4-.9-.1-.9.4C.9 7.8.9 18.5.9 18.5c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V8z" },
-	  end_call: { "d": "M22.4 2.6l-1-1c-.3-.3-.8-.2-1.1.2L9.5 12.6 7.2 10c-.3-.3-.3-.6-.1-1l1.7-2.4c.5-.6.5-1.5 0-2.2L6.5 1.6C5.8.8 4.6.7 3.8 1.5L1.4 3.9c-.4.3-.6.9-.6 1.4.3 4.2 2 8.3 4.6 11.3l-3.6 3.7c-.4.3-.4.8-.2 1.1l1 1c.3.3.8.2 1.1-.2L22.2 3.7c.4-.3.5-.8.2-1.1zm0 14.9l-2.8-2.3c-.7-.5-1.6-.5-2.2 0L15 16.9c-.3.3-.7.2-1-.1l-1.1-1-3.9 4c2.8 1.8 6.1 3.1 9.6 3.3.6 0 1.1-.2 1.4-.6l2.4-2.4c.9-.7.9-2 0-2.6z" },
-	  erect_window: { "d": "M23.1 3c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7V1.6c0-.4.3-.7.7-.7h20.8c.4 0 .7.3.7.7V3z" },
-	  error: { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 19.4c-4.6 0-8.3-3.7-8.3-8.3S7.4 3.7 12 3.7s8.3 3.7 8.3 8.3-3.7 8.3-8.3 8.3zm4.8-9.7H7.2c-.4 0-.6.3-.7.6v1.6c.1.4.3.6.7.6h9.6c.4 0 .6-.3.7-.6v-1.6c-.1-.3-.3-.6-.7-.6z" },
-	  event: { "d": "M21.5 9.2h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zM8.8 19.4c0 .3-.2.4-.5.4H6.5c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4H6.5c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm2.3-11.6H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9z" },
-	  expand: { "d": "M22.5.9h-7.1c-.5 0-.6.4-.3.8L17.4 4l-4.2 4.1c-.2.3-.2.6 0 .9l1.8 1.7c.2.2.6.2.8 0L20 6.5l2.3 2.3c.4.3.8.2.8-.3V1.4c0-.2-.3-.5-.6-.5zM1.6 23.1h7.1c.5 0 .6-.5.3-.9l-2.3-2.3 4.1-4.2c.3-.2.3-.7 0-.9l-1.7-1.7c-.2-.2-.6-.2-.8 0l-4.2 4.2L1.8 15c-.4-.4-.9-.2-.9.2v7.1c0 .4.4.8.7.8zm21.5-.6v-7.1c0-.5-.4-.6-.8-.3L20 17.4l-4.1-4.2c-.3-.2-.6-.2-.9 0L13.3 15c-.2.2-.2.6 0 .8l4.2 4.2-2.3 2.3c-.3.4-.2.8.3.8h7.1c.2 0 .5-.3.5-.6zM.9 1.6v7.1c0 .5.5.6.9.3l2.3-2.3 4.2 4.1c.2.3.7.3.9 0l1.7-1.7c.2-.2.2-.6 0-.8L6.7 4.1 9 1.8c.4-.4.2-.9-.2-.9H1.7c-.4 0-.8.4-.8.7z" },
-	  expand_alt: { "d": "M22.5.9h-7.1c-.5 0-.6.4-.3.8L17.4 4l-4.2 4.1c-.2.3-.2.6 0 .9l1.8 1.7c.2.2.6.2.8 0L20 6.5l2.3 2.3c.4.3.8.2.8-.3V1.4c0-.2-.3-.5-.6-.5zM1.6 23.1h7.1c.5 0 .6-.5.3-.9l-2.3-2.3 4.1-4.2c.3-.2.3-.7 0-.9l-1.7-1.7c-.2-.2-.6-.2-.8 0l-4.2 4.2L1.8 15c-.4-.4-.9-.2-.9.2v7.1c0 .4.4.8.7.8z" },
-	  favorite: { "d": "M12.6 1.9l2.2 6.5c.1.2.3.4.6.4h6.9c.7 0 1 .9.5 1.3l-5.7 4.2c-.2.1-.3.5-.2.7l2.2 6.7c.2.6-.5 1.2-1.1.8l-5.5-4.1c-.3-.2-.6-.2-.9 0L6 22.5c-.6.4-1.3-.2-1.1-.8L7.1 15c.1-.2 0-.6-.3-.7l-5.6-4.2c-.6-.4-.2-1.3.4-1.3h6.9c.4 0 .6-.1.7-.4l2.2-6.6c.1-.6 1.1-.6 1.2.1z" },
-	  filter: { "d": "M11.3 14.7c-.3-.3-.7-.3-1 0l-1.7 1.6c-.2.3-.8.1-.8-.3V9.9c0-.3-.3-.7-.6-.7H5.8c-.4 0-.7.4-.7.7V16c0 .4-.5.6-.8.3l-1.7-1.6c-.2-.3-.7-.3-.9 0l-1.1 1c-.2.3-.2.7 0 1L6 22c.2.2.6.2.9 0l5.4-5.4c.3-.3.3-.7 0-1l-1-.9zM23.5 4.4c0-.4-.3-.7-.7-.7h-17c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h17c.4 0 .7-.4.7-.7V4.4zm0 5.5c0-.3-.3-.7-.7-.7H10.4c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h12.4c.4 0 .7-.3.7-.7V9.9zm0 5.6c0-.4-.3-.7-.7-.7H15c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7v-1.3z" },
-	  filterList: { "d": "M22.3 1.8H1.8c-.7 0-1 .8-.6 1.3l9 10.5c.2.3.4.8.4 1.2v6.7c0 .3.3.7.7.7h1.4c.4 0 .6-.4.6-.7v-6.7c0-.4.2-.9.5-1.2l9.1-10.5c.4-.5.1-1.3-.6-1.3z" },
-	  forward: { "d": "M1.6 13.4h15.3c.4 0 .6.5.3.8l-4.4 4.4c-.3.3-.3.7 0 1l1 1c.3.3.7.3 1 0l8-8.1c.3-.3.3-.7 0-1l-8-8.1c-.3-.3-.7-.3-1 0l-1 1c-.2.3-.2.7 0 1l4.5 4.4c.2.3.1.8-.4.8H1.6c-.4 0-.7.3-.7.7v1.3c0 .4.3.8.7.8z" },
-	  frozen: { "d": "M22.4 10.6h-3.3l2-2c.2-.2.2-.6 0-.8l-.8-.7c-.2-.3-.5-.3-.7 0L16 10.6h-2.6V8l3.5-3.6c.3-.2.3-.5 0-.7l-.7-.8c-.3-.2-.6-.2-.8 0l-2 2V1.6c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v3.3l-2-2c-.2-.2-.6-.2-.8 0l-.7.8c-.3.2-.3.5 0 .7L10.6 8v2.6H8L4.4 7.1c-.2-.3-.5-.3-.7 0l-.8.7c-.2.3-.2.6 0 .8l2 2H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h3.3l-2 2c-.2.2-.2.6 0 .8l.7.7c.3.2.6.2.8 0l3.5-3.6h2.7v2.6l-3.5 3.6c-.3.2-.3.5 0 .7l.7.8c.2.2.6.2.8 0l2-2.1v3.3c0 .4.3.8.7.8h1.3c.4 0 .8-.4.8-.8v-3.3l2 2.1c.2.2.6.2.8 0l.7-.8c.2-.2.2-.5 0-.7L13.4 16v-2.6H16l3.6 3.5c.2.3.5.3.7 0l.7-.7c.3-.2.3-.6 0-.7l-1.9-2.1h3.3c.4 0 .7-.3.7-.7v-1.4c0-.4-.3-.7-.7-.7z" },
-	  groups: { "d": "M7.3 12.9c-.6-.9-.9-2.1-.9-3.3 0-2.1.8-3.9 2.2-4.9-.4-.9-1.4-1.5-2.6-1.5-2 0-3.1 1.7-3.1 3.6 0 1 .3 1.9 1 2.5.3.3.7.8.7 1.3s-.2.9-1.4 1.4c-1.6.7-3.2 1.8-3.2 3.3 0 1 .7 1.8 1.7 1.8h1.5c.2 0 .4-.2.6-.4.7-1.3 2.1-2.2 3.3-2.8.4-.1.5-.7.2-1zm13.5-.9c-1.1-.5-1.3-.9-1.3-1.4s.3-1 .7-1.3c.7-.7 1-1.5 1-2.5 0-1.9-1.1-3.6-3.2-3.6-1.2 0-2.1.6-2.6 1.5 1.4 1 2.2 2.8 2.2 4.9 0 1.2-.3 2.4-.9 3.3-.3.4-.1.9.2 1 1.2.6 2.6 1.5 3.3 2.8.2.2.4.4.6.4h1.5c1 0 1.7-.8 1.7-1.8 0-1.5-1.5-2.6-3.2-3.3zm-5.7 3.4c-1.3-.6-1.5-1.1-1.5-1.6 0-.6.4-1.1.8-1.4.7-.7 1.2-1.7 1.2-2.8 0-2.1-1.3-3.9-3.6-3.9S8.5 7.5 8.5 9.6c0 1.1.5 2.1 1.2 2.8.4.4.8.9.8 1.4 0 .6-.2 1-1.5 1.6-1.8.8-3.6 1.6-3.6 3.3 0 1.1.8 2 1.8 2h9.6c1.1 0 1.9-.9 1.9-2 0-1.6-1.8-2.5-3.6-3.3z" },
-	  help: { "d": "M13.1 17.5h-2.3c-.4 0-.6-.2-.6-.6v-.7c0-1.9 1.2-3.7 3-4.3.6-.2 1.1-.5 1.5-1 2.3-2.8.2-6.1-2.6-6.2-1 0-1.9.3-2.7 1-.6.6-1 1.3-1 2.1-.1.2-.4.5-.7.5H5.4c-.5 0-.8-.4-.7-.8.1-1.7.9-3.3 2.2-4.5C8.4 1.6 10.2.8 12.3.9c3.8.1 6.9 3.3 7.1 7.1.1 3.2-1.9 6.1-4.9 7.2-.4.2-.7.5-.7 1v.6c0 .5-.3.7-.7.7zm.7 4.9c0 .4-.3.7-.6.7h-2.4c-.3 0-.6-.3-.6-.7v-2.3c0-.4.3-.7.6-.7h2.4c.3 0 .6.3.6.7v2.3z" },
-	  home: { "d": "M22.6 12.5h-2.3v10.1c0 .3-.2.5-.5.5h-4.6c-.2 0-.4-.2-.4-.5v-7.8H9.2v7.8c0 .3-.2.5-.4.5H4.2c-.3 0-.5-.2-.5-.5V12.5H1.4c-.2 0-.4-.1-.4-.3-.1-.2-.1-.4.1-.5L11.7 1.1c.2-.2.5-.2.6 0l10.6 10.6c.2.1.2.3.1.5s-.2.3-.4.3z" },
-	  identity: { "d": "M21.2 3.7h-5.1s.1.3.1.5c0 1.8-1.5 3.2-3.3 3.2h-2.7C8.4 7.4 6.9 6 6.9 4.2c0-.2 0-.5.1-.5H2.8c-1 0-1.9.8-1.9 1.8v13.9c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V5.5c0-1-.9-1.8-1.9-1.8zM10 17.5H4.8c-.6 0-1.1-.5-1.1-1.1 0-.9 1-1.4 2-1.9.7-.2.8-.5.8-.8 0-.3-.2-.6-.5-.8-.4-.4-.6-.9-.6-1.5 0-1.2.7-2.2 1.9-2.2s2 1 2 2.2c0 .6-.3 1.1-.7 1.5-.2.2-.4.5-.4.8 0 .2.1.5.8.8 1 .5 2 1 2 1.9.1.6-.4 1.1-1 1.1zm10.3-1.8c0 .3-.2.5-.5.5h-6.4c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h6.4c.3 0 .5.2.5.5v.9zm.9-3.7c0 .3-.2.5-.4.5h-7.4c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h7.4c.2 0 .4.2.4.5v.9zm-11-6.5h2.7c.8 0 1.4-.6 1.4-1.3s-.6-1.4-1.4-1.4h-2.7c-.8 0-1.4.6-1.4 1.4s.6 1.3 1.4 1.3z" },
-	  image: { "d": "M23.1 4.6c0-1-.9-1.8-1.9-1.8H2.8c-1 0-1.9.8-1.9 1.8v14.8c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V4.6zm-4.8 12.9H4.9c-.6 0-.9-.6-.6-1l4.1-7.1c.1-.3.6-.3.7 0l2.5 4.2c.2.3.6.3.8.1l2-2.9c.1-.3.6-.3.7 0l3.7 5.8c.3.4 0 .9-.5.9zm-1.2-8.3c-1 0-1.9-.8-1.9-1.8s.9-1.9 1.9-1.9 1.8.9 1.8 1.9-.8 1.8-1.8 1.8z" },
-	  inbox: { "d": "M23.1 3.7c0-1-.9-1.9-1.9-1.9H2.8c-1 0-1.9.9-1.9 1.9v16.6c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V3.7zM8.8 16.2c0 .2-.2.4-.5.4H4.2c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.5.5-.5h4.1c.3 0 .5.2.5.5v1.9zm0-4.7c0 .3-.2.5-.5.5H4.2c-.3 0-.5-.2-.5-.5V9.7c0-.3.2-.5.5-.5h4.1c.3 0 .5.2.5.5v1.8zm0-4.6c0 .3-.2.5-.5.5H4.2c-.3 0-.5-.2-.5-.5V5.1c0-.3.2-.5.5-.5h4.1c.3 0 .5.2.5.5v1.8zm11.5 12c0 .3-.2.5-.5.5h-8.7c-.3 0-.5-.2-.5-.5V5.1c0-.3.2-.5.5-.5h8.7c.3 0 .5.2.5.5v13.8z" },
-	  info: { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 5.6c.8 0 1.4.6 1.4 1.4s-.6 1.4-1.4 1.4-1.4-.6-1.4-1.4.6-1.4 1.4-1.4zm2.3 9.7c0 .2-.2.4-.5.4h-3.6c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5.2 0 .4-.2.4-.4v-1.9c0-.2-.2-.5-.4-.5-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5h2.7c.3 0 .5.2.5.5v3.7c0 .2.2.4.4.4.3 0 .5.2.5.5v.9z" },
-	  insert_tag_field: { "d": "M7.5 5.6l-1-.8c-.4-.3-.7-.2-1 0L.1 11.6c-.1.2-.1.6 0 .9l5.4 6.7c.3.2.7.3 1 0l1.1-.8c.3-.3.3-.7.1-1L3.3 12l4.4-5.4c.2-.3.1-.7-.2-1zm16.4 6l-5.4-6.7c-.3-.3-.7-.4-1-.1l-1.1.9c-.3.2-.3.7-.1.9l4.4 5.4-4.4 5.4c-.2.3-.1.8.1 1l1.1.9c.3.2.7.2 1-.1l5.4-6.7c.1-.4.1-.7 0-.9zM14.6 5l-1.4-.3c-.4-.1-.8.1-.9.5L8.9 18.3c-.1.3.1.7.5.8l1.4.3c.4.1.8-.1.9-.5l3.4-13.1c.1-.4-.1-.7-.5-.8z" },
-	  insert_template: { "d": "M22.4 17.5h-2.1v-2c0-.4-.3-.7-.7-.7h-1.4c-.3 0-.7.3-.7.7v2h-2c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h2v2.1c0 .4.4.7.7.7h1.4c.4 0 .7-.3.7-.7v-2.1h2.1c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7zm-6.7-3.9c0-.4.3-.7.7-.7h1.1V2.8c0-1-.8-1.9-1.8-1.9H2.8C1.8.9.9 1.8.9 2.8v12.9c0 1 .9 1.8 1.9 1.8h10.1v-1.1c0-.4.3-.7.7-.7h2.1v-2.1zM7.4 5.1c0 .3-.2.4-.5.4H4.2c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5h2.7c.3 0 .5.2.5.5v.9zm5.5 7.4c0 .2-.2.4-.4.4H4.2c-.3 0-.5-.2-.5-.4v-1c0-.2.2-.4.5-.4h8.3c.2 0 .4.2.4.4v1zm1.9-3.7c0 .2-.2.4-.5.4H4.2c-.3 0-.5-.2-.5-.4v-1c0-.2.2-.4.5-.4h10.1c.3 0 .5.2.5.4v1z" },
-	  italic: { "d": "M17.5 5.7v-.6c0-.5-.4-.9-.9-.9h-6.4c-.6 0-1 .4-1 .9V6c0 .5.4.9 1 .9.7 0 1.3.8 1.2 1.5l-1.7 8.1c-.1.6-.7 1-1.2 1H7.4c-.5 0-.9.5-.9 1v.9c0 .5.4.9.9.9h6.4c.6 0 1-.4 1-.9v-.9c0-.5-.4-1-1-1-.7 0-1.3-.7-1.2-1.4l1.7-8.2c.1-.6.7-1 1.2-1h.8c.7 0 1.2-.5 1.2-1.2z" },
-	  justify_text: { "d": "M22.2 3c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3zm0 5.5c0-.3-.4-.7-.7-.7h-19c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V8.5zm0 11.1c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7v-1.4zm0-5.5c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4z" },
-	  kanban: { "d": "M14.8 8.1c0-.4-.4-.7-.7-.7H9.9c-.3 0-.7.3-.7.7v12.4c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V8.1zm-8.3 0c0-.4-.4-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v14.3c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V8.1zm16.6 0c0-.4-.3-.7-.7-.7h-4.2c-.3 0-.7.3-.7.7v10.6c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V8.1zm0-6.5c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V1.6z" },
-	  knowledge_base: { "d": "M4.4 16.2h6c.4 0 .7-.4.7-.7V4.6c0-.8-.9-1.4-1.5-1.4H4.4c-.4 0-.7.4-.7.7v11.6c0 .3.3.7.7.7zM22.7 5.4c-.3-.1-.5.1-.5.4v11.5c0 .4-.4.7-.7.7h-19c-.3 0-.7-.3-.7-.7V5.9c0-.4-.3-.6-.6-.5-.7.4-1.2 1.1-1.2 2V18c0 1 .8 1.8 1.8 1.8h7.7c.3 0 .7.4.7.7s.3.7.6.7h2.4c.3 0 .6-.3.6-.7s.4-.7.7-.7h7.7c1 0 1.8-.8 1.8-1.8V7.4c0-1-.3-1.8-1.3-2zm-9.1 10.8h6c.4 0 .7-.4.7-.7V3.9c0-.3-.3-.7-.7-.7h-5.2c-.7 0-1.5.6-1.5 1.4v10.9c0 .3.3.7.7.7z" },
-	  layout: { "d": "M22.2 23.1H1.8c-.5 0-.9-.4-.9-.9V1.8c0-.5.4-.9.9-.9h20.4c.5 0 .9.4.9.9v20.4c0 .5-.4.9-.9.9zM2.8 21.2h18.4V2.8H2.8v18.4zM18 9.2H6c-.3 0-.5-.2-.5-.4V6c0-.3.2-.5.5-.5h12c.3 0 .5.2.5.5v2.8c0 .2-.2.4-.5.4zm-9.2 9.3H6c-.3 0-.5-.2-.5-.5v-5.5c0-.3.2-.5.5-.5h2.8c.2 0 .4.2.4.5V18c0 .3-.2.5-.4.5zm9.2 0h-5.5c-.3 0-.5-.2-.5-.5v-5.5c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5V18c0 .3-.2.5-.5.5z" },
-	  left: { "d": "M17.5 3.8v16.4c0 .4-.6.8-1 .4l-9.8-8c-.3-.3-.3-.9 0-1.2l9.8-8c.4-.4 1-.1 1 .4z" },
-	  left_align_text: { "d": "M22.2 3c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3zm-3.7 5.5c0-.3-.4-.7-.7-.7H2.5c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7V8.5zm0 11.1c0-.4-.4-.7-.7-.7H2.5c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7v-1.4zm3.7-5.5c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4z" },
-	  like: { "d": "M4.8 9.7H2.5c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h1.2c1 0 1.8-.8 1.8-1.9v-9.4c0-.4-.3-.7-.7-.7zm15.5.5h-2.8c-1 0-1.8-.9-1.8-1.9V3.7c0-1-.8-1.9-1.9-1.9h-1.1c-.4 0-.7.4-.7.7v2.8c0 2.5-1.7 4.9-3.9 4.9-.4 0-.7.3-.7.6v9.3c0 .3.3.7.6.7 3.2.1 4.2 1.4 7.5 1.4 3.5 0 6.7-.4 6.7-4.4V12c0-1-.9-1.8-1.9-1.8z" },
-	  link: { "d": "M12.6 19.2l-1-.1s-.7-.1-1-.3c-.2 0-.4 0-.5.2l-.3.2c-1.3 1.3-3.5 1.5-4.9.3-1.5-1.4-1.6-3.8-.1-5.2l3.5-3.5c.4-.5 1-.7 1.5-.9.8-.2 1.6-.2 2.2.1.5.2.9.4 1.2.8.2.2.4.4.5.6.2.3.6.4.8.1l1.3-1.3c.2-.2.2-.5.1-.7-.2-.3-.4-.5-.7-.7-.3-.4-.7-.7-1.1-.9-.6-.4-1.4-.7-2.1-.8-1.5-.3-3-.1-4.3.6-.5.3-1.1.7-1.5 1.1l-3.3 3.3C.4 14.6.2 18.6 2.6 21c2.4 2.7 6.6 2.8 9.1.2l1.2-1.1c.3-.3.1-.8-.3-.9zM21 2.7C18.5.3 14.5.5 12.1 3l-1 1c-.3.3-.1.8.3.9.6 0 1.3.2 1.9.4.2 0 .5 0 .6-.2l.2-.2c1.4-1.3 3.5-1.5 4.9-.3 1.6 1.4 1.6 3.8.2 5.2l-3.5 3.5c-.5.5-1 .7-1.6.9-.7.2-1.5.2-2.2-.1-.4-.2-.8-.4-1.2-.8-.2-.2-.3-.4-.5-.6-.1-.3-.6-.4-.8-.1l-1.3 1.3c-.2.2-.2.5 0 .7.2.3.4.5.6.7.3.3.8.7 1.1.9.7.4 1.4.7 2.2.8 1.4.3 3 .1 4.2-.6.6-.3 1.1-.7 1.5-1.1l3.5-3.5c2.6-2.5 2.5-6.7-.2-9.1z" },
-	  list: { "d": "M3.7 4.8c0-.3-.3-.6-.7-.6H1.6c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7V4.8zm19.4 0c0-.3-.3-.6-.7-.6H6.2c-.3 0-.7.3-.7.6v1.4c0 .4.4.7.7.7h16.2c.4 0 .7-.3.7-.7V4.8zM3.7 11.3c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7v-1.4zm17.5 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h14.3c.4 0 .7-.3.7-.7v-1.4zM3.7 17.8c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6H3c.4 0 .7-.3.7-.6v-1.4zm19.4 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h16.2c.4 0 .7-.3.7-.6v-1.4z" },
-	  location: { "d": "M22.5 4.4l-6.6-3.3c-.3-.2-.7-.2-1 0L8.8 4.2 2.6 1.1c-.4-.2-.8-.2-1.2 0-.3.2-.5.6-.5.9v16.6c0 .5.3.8.6 1l6.7 3.3c.3.2.7.2.9 0l6.2-3.1 6.2 3.1c.1.1.3.2.5.2s.4-.1.6-.2c.3-.2.5-.6.5-.9V5.4c0-.5-.2-.8-.6-1zm-1.7 2.1v8.8c0 .5-.5.9-1 .7-1.7-.7-.3-3.5-1.5-5.1-1.2-1.4-2.7 0-4.1-2.2-1.3-2.2.5-3.8 2.1-4.6.3-.1.5-.1.7 0l3.4 1.7c.3.2.4.4.4.7zm-9.3 12.8c-.3.2-.6.1-.8-.1-.5-.4-.9-1-.9-1.7 0-1.1-1.8-.7-1.8-2.9 0-1.8-2.1-2.3-3.9-2.1-.5.1-.8-.3-.8-.7V5c0-.5.5-.9 1-.6l4 2h.1l.1.1c1.7 1 1.3 1.8.6 3-.7 1.3-1.1 0-2.2-.4s-2.2.4-1.8 1.1 1.5 0 2.2.7.7 1.9 2.9 1.1 2.6-.3 3.4.4c.7.8 1.1 2.2 0 3.3-.7.7-1 2.1-1.2 3-.1.2-.2.4-.4.5l-.5.1z" },
-	  lock: { "d": "M5.1 8.8h1.8c.3 0 .5-.2.5-.4v-.1c0-2.6 2.2-4.8 4.9-4.6 2.5.2 4.3 2.3 4.3 4.8v-.1c0 .2.2.4.5.4h1.8c.3 0 .5-.2.5-.4v-.1c0-4.2-3.5-7.6-7.8-7.4-3.9.2-6.9 3.5-7 7.5.1.2.2.4.5.4zm-.5-.4v.1-.1zm16.6 4.1c0-1.1-.8-1.9-1.8-1.9H4.6c-1 0-1.8.8-1.8 1.9v8.7c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9v-8.7zm-7.1 7.2c.1.3-.1.6-.4.6h-3.4c-.3 0-.5-.3-.5-.6l.9-2.8c-.7-.4-1.1-1.3-1-2.2.2-.9.9-1.5 1.8-1.7 1.5-.3 2.8.8 2.8 2.1 0 .8-.4 1.5-1 1.8l.8 2.8z" },
-	  logout: { "d": "M9.7 22.4V21c0-.4-.3-.7-.7-.7H4.4c-.4 0-.7-.3-.7-.7V4.4c0-.4.3-.7.7-.7H9c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7H2.8C1.8.9.9 1.8.9 2.8v18.4c0 1 .9 1.9 1.9 1.9H9c.4 0 .7-.3.7-.7zm13.2-9.9c.3-.3.3-.7 0-1l-6.2-6.2c-.3-.3-.7-.3-1 0l-1 .9c-.3.3-.3.7 0 1l2.6 2.6c.3.3.1.8-.3.8H7.2c-.4 0-.7.2-.7.6v1.4c0 .4.3.7.7.7h9.7c.5 0 .6.5.4.8l-2.6 2.6c-.3.3-.3.7 0 1l.9.9c.3.3.7.3 1 0l6.3-6.1z" },
-	  magicwand: { "d": "M13 9.7c-.2-.2-.4-.2-.6 0l-11.1 11c-.5.6-.5 1.4 0 2 .6.5 1.4.5 2 0l11-11.1c.2-.2.2-.4 0-.6L13 9.7zm3.2 0l1.5-1.5c.3-.3.3-.7 0-1l-.9-.9c-.3-.3-.7-.3-1 0l-1.5 1.5c-.2.1-.2.4 0 .6l1.3 1.3c.2.2.5.2.6 0zM4.8 5.4c1.8.5 3.1 1.8 3.7 3.6.1.3.5.3.5 0 .6-1.7 1.9-3.1 3.7-3.6.3-.1.3-.5 0-.6C11 4.2 9.6 2.9 9 1.1c0-.3-.4-.3-.5 0-.6 1.8-1.9 3.1-3.7 3.7-.2.1-.2.5 0 .6zm18.1 8.7c-1.6-.5-2.8-1.7-3.3-3.3-.1-.2-.4-.2-.5 0-.5 1.6-1.7 2.8-3.3 3.3-.2.1-.2.4 0 .5 1.6.5 2.8 1.7 3.3 3.3.1.2.4.2.5 0 .5-1.6 1.7-2.8 3.3-3.3.2-.1.2-.5 0-.5zM17.7 3.9c1.2.3 2.1 1.2 2.4 2.4.1.2.3.2.4 0 .4-1.2 1.2-2.1 2.4-2.4.2-.1.2-.3 0-.4-1.2-.4-2-1.2-2.4-2.4-.1-.2-.3-.2-.4 0-.3 1.2-1.2 2-2.4 2.4-.2.1-.2.3 0 .4z" },
-	  matrix: { "d": "M22.2 1.6c0-.4-.4-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h14.3c.3 0 .7-.3.7-.7V1.6zM4.6 7.2c0-.4-.3-.7-.7-.7H2.5c-.3 0-.7.3-.7.7v6c0 .3.4.6.7.6h1.4c.4 0 .7-.3.7-.6v-6zm0 9.2c0-.4-.3-.7-.7-.7H2.5c-.3 0-.7.3-.7.7v6c0 .4.4.7.7.7h1.4c.4 0 .7-.3.7-.7v-6zm8.8-9.2c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h5.5c.4 0 .7-.3.7-.7V7.2zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h5.6c.3 0 .7-.3.7-.7V7.2zm-8.8 4.6c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6h5.5c.4 0 .7-.3.7-.6v-1.4zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h5.6c.3 0 .7-.3.7-.6v-1.4zm-8.8 4.6c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h5.5c.4 0 .7-.4.7-.7v-1.4zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h5.6c.3 0 .7-.4.7-.7v-1.4zM13.4 21c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h5.5c.4 0 .7-.3.7-.7V21zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h5.6c.3 0 .7-.3.7-.7V21z" },
-	  minimize_window: { "d": "M23.1 22.4c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7V21c0-.4.3-.7.7-.7h20.8c.4 0 .7.3.7.7v1.4z" },
-	  monthlyview: { "d": "M20.3 3.2H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9zm1.2 6h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zM9.7 20.3c-1.1 0-2.3-.4-2.7-1 0-.1-.1-.2-.1-.3 0-.4.4-.8.8-.8.1 0 .2.1.4.1.5.3 1.1.5 1.6.5.9 0 1.4-.4 1.4-1s-.4-.9-1.5-.9c-.6.1-1-.1-1-.7 0-.4.3-.7.7-.7 1 .1 1.7-.2 1.7-.8 0-.6-.6-.9-1.4-.9-.5 0-1 .1-1.5.4-.1.1-.2.1-.3.1-.4 0-.7-.3-.7-.7 0-.2.1-.4.2-.5.6-.5 1.4-.8 2.5-.8 1.7 0 2.8.8 2.8 2.1 0 .9-.8 1.5-1.6 1.7.8.1 1.7.7 1.7 1.8 0 1.5-1.2 2.4-3 2.4zm7.4-.9c0 .4-.3.9-.7.9-.4 0-.7-.4-.7-.9v-4.7l-1 .9c-.1.1-.3.1-.5.1-.4 0-.7-.2-.7-.7 0-.1.1-.3.2-.4l1.8-1.8c.1-.2.4-.3.7-.3.5 0 .9.5.9 1v5.9z" },
-	  move: { "d": "M22.9 11.7l-3.8-4.2c-.3-.3-.6 0-.6.4v2.7h-4.7c-.2 0-.4-.2-.4-.4V5.5h2.7c.5 0 .7-.4.4-.6l-4.1-3.8c-.2-.2-.5-.2-.7 0L7.6 4.9c-.3.3-.1.6.4.6h2.6v4.7c0 .2-.2.4-.4.4H5.5V7.9c0-.5-.4-.7-.6-.4l-3.8 4.1c-.2.2-.2.5 0 .7l3.8 4.1c.3.3.6.1.6-.4v-2.6h4.7c.2 0 .4.2.4.4v4.7H7.9c-.5 0-.7.4-.4.6l4.1 3.8c.2.2.5.2.7 0l4.1-3.8c.3-.3.1-.6-.4-.6h-2.6v-4.7c0-.2.2-.4.4-.4h4.7v2.7c0 .5.4.7.6.4l3.8-4.1c.2-.3.2-.5 0-.7z" },
-	  muted: { "d": "M22.4 2.6l-1-1c-.3-.3-.8-.2-1.1.2l-4.6 4.6V4.6c0-2.1-1.6-3.7-3.7-3.7S8.3 2.5 8.3 4.6v6.7c0 .7.2 1.3.6 1.9l-1.7 1.6c-.7-1-1.2-2.2-1.2-3.5V9.4c0-.6-.5-1.1-1.2-1.1s-1.1.5-1.1 1.1v1.9c0 1.9.7 3.7 1.9 5.1l-3.8 3.9c-.4.3-.4.8-.2 1.1l1 1c.3.3.8.2 1.1-.2L22.2 3.7c.4-.3.5-.8.2-1.1zM18 10.7v.6c0 3.2-2.7 5.9-6 5.9h-.4l-1.8 1.9c.4.1.8.1 1.3.2v1.5H9c-.6 0-1.2.5-1.2 1.1s.6 1.2 1.2 1.2h6c.7 0 1.2-.5 1.2-1.2s-.6-1.1-1.2-1.1h-2.1v-1.5c4.2-.6 7.4-4 7.4-8V9.4c0-.3-.1-.5-.3-.7l-2 2z" },
-	  "new": { "d": "M19.8 4.2C15.5-.1 8.5-.1 4.2 4.2c-4.3 4.3-4.3 11.3 0 15.6 4.3 4.4 11.3 4.4 15.6 0 4.3-4.3 4.3-11.3 0-15.6zm-.4 8.7c0 .3-.2.5-.5.5h-5.1c-.2 0-.4.2-.4.4v5.1c0 .3-.2.5-.5.5h-1.8c-.3 0-.5-.2-.5-.5v-5.1c0-.2-.2-.4-.4-.4H5.1c-.3 0-.5-.2-.5-.5v-1.8c0-.3.2-.5.5-.5h5.1c.2 0 .4-.2.4-.4V5.1c0-.3.2-.5.5-.5h1.8c.3 0 .5.2.5.5v5.1c0 .2.2.4.4.4h5.1c.3 0 .5.2.5.5v1.8z" },
-	  new_window: { "d": "M22.5.9h-8.8c-.4 0-.8.3-.8.6v1.4c0 .4.3.8.8.8h3.6c.4 0 .7.5.3.7l-7.8 7.9c-.3.3-.3.7 0 .9l1 1c.2.3.6.3.9 0l7.9-7.8c.2-.3.7-.1.7.3v3.6c0 .4.4.8.7.8h1.4c.4 0 .7-.4.7-.8V1.6c0-.4-.3-.7-.6-.7zm-5.7 10.9l-1.6 1.6c-.3.3-.4.6-.4 1v5.2c0 .4-.4.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V9.9c0-.3.3-.7.7-.7h5.3c.4 0 .7-.1 1-.4l1.5-1.6c.3-.2.1-.7-.3-.7H2.8c-1 0-1.9.8-1.9 1.8v12.9c0 1 .9 1.9 1.9 1.9h12.9c1 0 1.8-.9 1.8-1.9v-9.1c0-.4-.5-.6-.7-.3z" },
-	  news: { "d": "M23.3 2.8H4.4c-.4 0-.7.3-.7.7v14c0 .6-.5 1.1-1.1 1-.4-.1-.8-.5-.8-1V7.4c0-.3-.1-.5-.4-.5H.7c-.4 0-.7.3-.7.7v11.8c0 1 .8 1.8 1.8 1.8h20.4c1 0 1.8-.8 1.8-1.8V3.5c0-.4-.3-.7-.7-.7zM12.9 16.2c0 .2-.2.4-.4.4H6.9c-.3 0-.4-.2-.4-.4v-1c0-.2.1-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm0-3.7c0 .2-.2.4-.4.4H6.9c-.3 0-.4-.2-.4-.4v-1c0-.2.1-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm8.3 3.7c0 .2-.2.4-.4.4h-5.6c-.2 0-.4-.2-.4-.4v-1c0-.2.2-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm0-3.7c0 .2-.2.4-.4.4h-5.6c-.2 0-.4-.2-.4-.4v-1c0-.2.2-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm0-3.7c0 .2-.2.4-.4.4H6.9c-.3 0-.4-.2-.4-.4V6c0-.3.1-.5.4-.5h13.9c.2 0 .4.2.4.5v2.8z" },
-	  notebook: { "d": "M20.3.9H6.5c-1.1 0-1.9.9-1.9 1.9v1.4H3.2c-.8 0-1.4.6-1.4 1.3s.6 1.4 1.4 1.4h1.4v3.7H3.2c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4h1.4v3.7H3.2c-.8 0-1.4.6-1.4 1.4s.6 1.3 1.4 1.3h1.4v1.4c0 1 .8 1.9 1.9 1.9h13.8c1 0 1.9-.9 1.9-1.9V2.8c0-1-.9-1.9-1.9-1.9zm-3.2 15.7c0 .3-.2.5-.5.5h-6.4c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h6.4c.3 0 .5.2.5.5v.9zm.9-3.7c0 .3-.2.5-.5.5H9.2c-.2 0-.4-.2-.4-.5V12c0-.3.2-.5.4-.5h8.3c.3 0 .5.2.5.5v.9zm.9-4.6c0 .3-.2.5-.4.5H8.3c-.3 0-.5-.2-.5-.5V5.5c0-.2.2-.4.5-.4h10.2c.2 0 .4.2.4.4v2.8z" },
-	  notification: { "d": "M21.2 15.2H21c-.9 0-1.6-.7-1.6-1.6V8.3c0-4.2-3.5-7.6-7.8-7.4-3.9.2-7 3.6-7 7.6v5.2c0 .8-.7 1.5-1.6 1.5h-.2c-1 0-1.9.9-1.9 1.9v.7c0 .3.3.7.7.7h20.8c.4 0 .7-.4.7-.7v-.7c0-1-.9-1.9-1.9-1.9zm-6.9 5.1H9.7c-.2 0-.5.3-.4.6.2 1.3 1.4 2.2 2.7 2.2s2.5-1 2.7-2.2c.1-.3-.2-.6-.4-.6z" },
-	  office365: undefined,
-	  offline: { "d": "M16 16.7c.2-.3.2-.6 0-.9l-.8-.8c-.2-.2-.6-.2-.8 0l-2.1 2c-.1.2-.4.2-.5 0l-2.1-2c-.2-.2-.6-.2-.8 0l-.8.8c-.3.3-.3.6 0 .9l2 2c.1.1.1.4 0 .5l-2 2.1c-.3.2-.3.6 0 .8l.8.8c.2.3.6.3.8 0l2.1-2c.1-.1.4-.1.5 0l2.1 2c.2.3.6.3.8 0l.8-.8c.2-.2.2-.6 0-.8l-2-2.1c-.2-.1-.2-.4 0-.5l2-2zm6-11.3C19.5 2.5 15.9 1 12 1S4.6 2.5 2.1 5.4c-.2.1-.2.5 0 .6l1.4 1.2c.2.2.5.1.7 0C6.2 5 9 3.7 12 3.7s5.9 1.3 7.9 3.5c.2.1.5.1.7 0L22 6c.2-.2.2-.5 0-.6zm-10 2c-1.9 0-3.7.9-5 2.3-.2.2-.2.5 0 .7l1.5 1.1c.2.2.5.2.6 0 .8-.8 1.8-1.3 2.9-1.3s2.2.5 3 1.2c.1.2.4.2.6.1l1.4-1.1c.3-.2.3-.5.1-.7C15.8 8.3 14 7.4 12 7.4z" },
-	  open: { "d": "M3.7 16.2v-.3.5-.2zM21.2.9H2.8C1.8.9.9 1.8.9 2.8v16.6c0 1 .9 1.8 1.9 1.8h5.5c.3 0 .5-.2.5-.4v-1.9c0-.3-.2-.4-.5-.4H4.4c-.4 0-.7-.4-.7-.7V6.2c0-.3.3-.7.7-.7h15.2c.4 0 .7.4.7.7v11.6c0 .3-.3.7-.7.7h-3.9c-.3 0-.5.1-.5.4v1.9c0 .2.2.4.5.4h5.5c1 0 1.9-.8 1.9-1.8V2.8c0-1-.9-1.9-1.9-1.9zM17.3 16l1-1c.3-.3.3-.7 0-1l-5.8-5.8c-.3-.3-.7-.3-1 0L5.7 14c-.3.3-.3.7 0 1l1 .9c.3.3.7.3 1 0l2.1-2.1c.3-.3.8-.1.8.3v8.3c0 .4.3.7.7.7h1.3c.4 0 .8-.3.8-.7v-8.3c0-.4.4-.6.8-.3l2.1 2.2c.3.2.7.2 1 0z" },
-	  open_folder: { "d": "M21.2 6.5H10.8c-.7 0-1.3-.4-1.7-1L7.5 2.8c-.3-.6-.9-1-1.6-1H2.8c-1 0-1.9.9-1.9 1.9v16.6c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9v-12c0-1-.9-1.8-1.9-1.8zm0-3.7H10.1c-.2 0-.3.2-.2.3l.8 1.2c.1.2.2.3.4.3h10.1c.5 0 1 .1 1.5.3.1.1.4-.1.4-.3 0-1-.9-1.8-1.9-1.8z" },
-	  opened_folder: { "d": "M20.3 6.9c0-1-.8-1.8-1.8-1.8h-6.8c-.9 0-1.6-.9-1.6-.9L8.9 2.8s-.5-1-1.6-1H5.5c-1 0-1.8.9-1.8 1.9v4.1h16.6v-.9zm1.3 2.8H2.4c-1 0-1.7.9-1.4 1.7l2.6 9.7c.2.6.7 1.1 1.4 1.1h14.1c.6 0 1.2-.5 1.3-1.1l2.7-9.7c.2-.8-.5-1.7-1.5-1.7z" },
-	  "package": { "d": "M20.5 11.1h-3.7l-1.5 1.8h5v2.8H3.7v-2.8h4.9l-1.5-1.8H3.5c-.9 0-1.7.7-1.7 1.6v9c0 .8.6 1.4 1.4 1.4h17.6c.8 0 1.4-.6 1.4-1.4v-9c0-.9-.8-1.6-1.7-1.6zm-9.9-9.5v5.8H7.4c-.4 0-.7.4-.4.6l4.6 5.7c.2.1.5.1.7 0L16.9 8c.3-.2 0-.6-.4-.6h-3.1V1.6c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7z" },
-	  package_org: { "d": "M20.5 10.6h-5.8l-1.8 1.9h7.4v2.7H3.7v-2.7h3.7l-1.8-1.9H3.5c-.9 0-1.7.8-1.7 1.7v8.9c0 .8.6 1.4 1.4 1.4h17.6c.8 0 1.4-.6 1.4-1.4v-8.9c0-.9-.8-1.7-1.7-1.7zm-11 1.3c.4.4.9.4 1.3 0l8.8-8.8c.2-.1.2-.4 0-.6l-1.3-1.3c-.2-.2-.5-.2-.7 0l-7.4 7.5-3.1-3.1c-.2-.2-.5-.2-.7 0L5.1 6.9c-.2.2-.2.4 0 .6l4.4 4.4z" },
-	  package_org_beta: { "d": "M20.5 10.6h-2.7c-.2.7-.5 1.3-1 1.9h3.5v2.7H3.7v-2.7h2.8v-1.9h-3c-.9 0-1.7.8-1.7 1.7v8.9c0 .8.6 1.4 1.4 1.4h17.6c.8 0 1.4-.6 1.4-1.4v-8.9c0-.9-.8-1.7-1.7-1.7zm-4.3-6c0-1.8-1.6-3.2-3.4-3.2H9c-.4 0-.7.3-.7.7v9.7c0 .3.3.7.7.7h3.9c1.8 0 3.3-1.5 3.2-3.3 0-.9-.4-1.7-1-2.2.7-.7 1.1-1.5 1.1-2.4zm-6-1.4h2.7c.8 0 1.4.6 1.4 1.4 0 .8-.6 1.4-1.4 1.4h-2.7V3.2zm4.1 6c0 .8-.6 1.4-1.4 1.4h-2.7V7.8h2.7c.8 0 1.4.6 1.4 1.4z" },
-	  page: { "d": "M20.5 8.8h-5.2c-1.2 0-1.9-.8-1.9-2V1.7c0-.5-.3-.8-.8-.8H5c-1.2 0-2.2 1-2.2 2.2v17.8c0 1.2 1 2.2 2.2 2.2h14c1.2 0 2.2-1 2.2-2.2V9.5c0-.4-.3-.7-.7-.7zm.6-2.8l-4.9-4.9c-.1-.1-.3-.2-.4-.2-.3 0-.6.3-.6.5v4c0 .8.8 1.5 1.6 1.5h3.9c.3 0 .5-.3.5-.5s0-.4-.1-.4z" },
-	  palette: { "d": "M22.8 8C21.8 3.6 17.2.9 12.1.9 5.9.9.9 5.9.9 12s5 11.1 11.2 11.1c8.6 0 7.9-4.4 5.2-6.1-1.7-1-2.5-3.3-.9-5 3-3.1 7.8 1.8 6.4-4zM6 15.7c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm.5-8.8c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm5 13.4c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm4.2-12c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3S18 4.7 18 6s-1 2.3-2.3 2.3z" },
-	  paste: { "d": "M8.1 5.5h7.8c.4 0 .7-.3.7-.7v-2c0-1-.8-1.9-1.8-1.9H9.2c-1 0-1.8.9-1.8 1.9v2c0 .4.3.7.7.7zm12.2-2.7h-1.1c-.4 0-.7.3-.7.7v2c0 1.1-.9 1.9-1.9 1.9H7.4c-1 0-1.9-.8-1.9-1.9v-2c0-.4-.3-.7-.7-.7H3.7c-1 0-1.9.8-1.9 1.8v16.6c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V4.6c0-1-.9-1.8-1.9-1.8zm-2.8 16.1c0 .3-.1.5-.4.5H6.9c-.3 0-.4-.2-.4-.5V18c0-.3.1-.5.4-.5h10.2c.3 0 .4.2.4.5v.9zm0-3.7c0 .3-.1.5-.4.5H6.9c-.3 0-.4-.2-.4-.5v-.9c0-.3.1-.5.4-.5h10.2c.3 0 .4.2.4.5v.9zm0-3.7c0 .3-.1.5-.4.5H6.9c-.3 0-.4-.2-.4-.5v-.9c0-.3.1-.4.4-.4h10.2c.3 0 .4.1.4.4v.9z" },
-	  people: { "d": "M19.4 10.3c-1.3-.5-1.5-1-1.5-1.5s.4-1 .8-1.4c.8-.7 1.2-1.6 1.2-2.7 0-2-1.3-3.8-3.7-3.8-2.1 0-3.4 1.5-3.6 3.3 0 .2.1.3.2.4 1.8 1.1 2.8 3.1 2.8 5.4 0 1.8-.6 3.3-1.9 4.4-.1.1-.1.3 0 .4.3.2 1.1.6 1.5.8.2 0 .3.1.4.1h5.6c1 0 1.9-.9 1.9-1.9v-.2c0-1.6-1.8-2.5-3.7-3.3zm-6.2 6.4c-1.6-.6-1.8-1.2-1.8-1.8 0-.6.5-1.2 1-1.7.9-.7 1.4-1.8 1.4-3.1 0-2.4-1.6-4.5-4.4-4.5-2.8 0-4.5 2.1-4.5 4.5 0 1.3.5 2.4 1.5 3.1.5.5.9 1.1.9 1.7 0 .6-.2 1.2-1.8 1.8-2.3.9-4.6 2-4.6 3.9v.6c0 1 .9 1.9 1.9 1.9h12.8c1.1 0 1.9-.9 1.9-1.9v-.6c0-1.9-2-3-4.3-3.9z" },
-	  phone_landscape: { "d": "M24 6c0-1-.8-1.8-1.8-1.8H1.8C.8 4.2 0 5 0 6v12c0 1 .8 1.8 1.8 1.8h20.4c1 0 1.8-.8 1.8-1.8V6zM2.3 13.4c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zm18 3c0 .4-.3.7-.7.7H5.3c-.4 0-.7-.3-.7-.7V7.6c0-.4.3-.7.7-.7h14.3c.4 0 .7.3.7.7v8.8z" },
-	  phone_portrait: { "d": "M19.8 1.8C19.8.8 19 0 18 0H6C5 0 4.2.8 4.2 1.8v20.4c0 1 .8 1.8 1.8 1.8h12c1 0 1.8-.8 1.8-1.8V1.8zM12 23.1c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zm5.1-4.4c0 .4-.3.7-.7.7H7.6c-.4 0-.7-.3-.7-.7V4.4c0-.4.3-.7.7-.7h8.8c.4 0 .7.3.7.7v14.3z" },
-	  photo: { "d": "M12 9.2c-2 0-3.7 1.7-3.7 3.7s1.7 3.7 3.7 3.7 3.7-1.6 3.7-3.7S14 9.2 12 9.2zm9.2-2.7h-2.4c-.6 0-1.2-.4-1.5-.9L16.2 4c-.3-.8-1.1-1.2-1.9-1.2H9.7c-.8 0-1.6.4-1.9 1.2L6.7 5.6c-.3.5-.9.9-1.6.9H2.8c-1 0-1.9.8-1.9 1.8v11.1c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V8.3c0-1-.9-1.8-1.9-1.8zm-9.2 12c-3 0-5.5-2.5-5.5-5.6S9 7.4 12 7.4s5.5 2.5 5.5 5.5-2.5 5.6-5.5 5.6z" },
-	  power: { "d": "M15.9 3.6c-.3-.2-.7 0-.7.4v1.7c0 .3.2.7.5.8 2.4 1.4 4 4.2 3.6 7.3-.3 3.3-3.1 6.1-6.5 6.5-4.4.5-8.2-3-8.2-7.4 0-2.7 1.5-5.1 3.7-6.4.3-.1.5-.5.5-.8V4c0-.4-.4-.6-.7-.4-3.9 1.6-6.6 5.6-6.2 10.2.4 4.8 4.2 8.7 8.9 9.2 6.1.7 11.4-4.1 11.4-10.1 0-4.2-2.6-7.8-6.3-9.3zm-2.5-2c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v7.9c0 .3.3.7.7.7h1.4c.4 0 .7-.4.7-.7V1.6z" },
-	  preview: { "d": "M23.9 11.6C21.7 7.2 17.2 4.2 12 4.2S2.3 7.2.1 11.6c-.1.3-.1.6 0 .8 2.2 4.4 6.7 7.4 11.9 7.4s9.7-3 11.9-7.4c.1-.3.1-.5 0-.8zM12 17.1c-2.8 0-5.1-2.3-5.1-5.1S9.2 6.9 12 6.9s5.1 2.3 5.1 5.1-2.3 5.1-5.1 5.1zm0-8.3c-1.8 0-3.2 1.4-3.2 3.2s1.4 3.2 3.2 3.2 3.2-1.4 3.2-3.2-1.4-3.2-3.2-3.2z" },
-	  priority: { "d": "M4.2 1.6c0-.4-.4-.7-.7-.7H2.1c-.4 0-.7.3-.7.7v20.8c0 .4.3.7.7.7h1.4c.3 0 .7-.3.7-.7V1.6zm17.7 2c-7.4 3.8-6.5-4.1-15.4-1-.3.1-.5.4-.5.6V14c0 .3.3.5.6.4 8.9-3 7.9 5.2 15.6.8.3-.1.4-.3.4-.6V3.9c0-.3-.4-.5-.7-.3z" },
-	  process: { "d": "M7.5 10.7l3.9-4.9c.3-.4.8-.4 1.1 0l3.9 5c.2.1.4.3.6.3h4.4c.4 0 .8-.3.8-.7V3.7c0-1-.9-1.9-1.9-1.9H3.7c-1 0-1.9.9-1.9 1.9v6.7c0 .4.4.7.7.7h4.4c.3 0 .4-.2.6-.4zm9 2.6l-3.9 4.9c-.3.4-.9.4-1.2 0l-3.9-5c-.2-.1-.3-.3-.6-.3H2.5c-.3 0-.7.3-.7.7v6.7c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9v-6.7c0-.4-.4-.7-.7-.7H17c-.2 0-.4.2-.5.4z" },
-	  push: { "d": "M20.3.9H9.2c-1 0-1.8.9-1.8 1.9 0 .3.2.7.4.8.2.1 1.9 1.9 1.9 1.9.2.1.4 0 .4-.2 0-.4.3-.7.7-.7h7.8c.4 0 .8.3.8.7v12.5c0 .3-.4.6-.8.6h-7.8c-.4 0-.6-.3-.6-.6v-.1c0-.2-.3-.3-.4-.1 0 0-1.8 1.7-2 1.8-.2.2-.4.5-.4.9v.9c0 1 .8 1.8 1.8 1.8h11.1c1 0 1.9-.8 1.9-1.8V2.8c0-1-.9-1.9-1.9-1.9zm-5.5 21.3c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zM12.7 11L7 5.3c-.3-.3-.7-.3-1 0l-1 .9c-.2.3-.2.7 0 1l2.2 2.1c.2.3 0 .8-.4.8H.7c-.4.1-.7.4-.7.7v1.4c0 .4.3.7.7.7h6.1c.4 0 .6.5.3.8L5 15.8c-.3.3-.3.7 0 1l1 1c.2.2.6.2.9 0l5.8-5.8c.3-.2.3-.7 0-1z" },
-	  puzzle: { "d": "M20.8 17.7c-.1 1.3-.3 2.6-.5 3.9 0 .4-.5.8-.8.8-2.5.3-5 .5-7.5.5-2.4 0-4.9-.1-7.3-.5-.4 0-.8-.4-.9-.8-.3-2-.5-4.1-.5-6.2s.2-4.1.5-6.2c.1-.3.5-.7.9-.8 1.5-.2 3-.3 4.4-.4 0 0 1.2 0 1.1-1.2 0-1-1.8-1.7-1.8-3.4C8.4 2 9.8.9 12 .9c2.3 0 3.6 1.1 3.6 2.5 0 1.8-1.7 2.4-1.8 3.4C13.8 7.9 15 8 15 8c1.5.1 3 .2 4.5.4.3 0 .8.4.8.8.2 1.5.4 2.8.5 4.2 0 .4-.4.9-.8.9h-.4c-.4 0-1-.4-1.3-.7 0 0-1-1-2.1-1-1.7-.1-3 1.4-3 3s1.3 3.1 3 3.1c1-.1 2-1.1 2-1.1.4-.2 1-.5 1.4-.5h.4c.5 0 .8.3.8.6z" },
-	  question: { "d": "M13.1 17.5h-2.3c-.4 0-.6-.2-.6-.6v-.7c0-1.9 1.2-3.7 3-4.3.6-.2 1.1-.5 1.5-1 2.3-2.8.2-6.1-2.6-6.2-1 0-1.9.3-2.7 1-.6.6-1 1.3-1 2.1-.1.2-.4.5-.7.5H5.4c-.5 0-.8-.4-.7-.8.1-1.7.9-3.3 2.2-4.5C8.4 1.6 10.2.8 12.3.9c3.8.1 6.9 3.3 7.1 7.1.1 3.2-1.9 6.1-4.9 7.2-.4.2-.7.5-.7 1v.6c0 .5-.3.7-.7.7zm.7 4.9c0 .4-.3.7-.6.7h-2.4c-.3 0-.6-.3-.6-.7v-2.3c0-.4.3-.7.6-.7h2.4c.3 0 .6.3.6.7v2.3z" },
-	  questions_and_answers: { "d": "M23.1 12.9c0-1.8-1.2-3.3-2.8-3.9C20.2 4.5 16.5.9 12 .9S3.8 4.5 3.7 9C2.1 9.6.9 11.1.9 12.9c0 2 1.4 3.6 3.1 4 1 3.6 4.2 6.2 8 6.2s7-2.6 8-6.2c1.7-.4 3.1-2 3.1-4zm-4.6-4.1l-.1-.1.2.1h-.1zM12 21.2c-3.6 0-6.5-3-6.5-6.6 0-.9.2-2.3.6-3.2 0-.1.1-.2.2-.4 1.4-.5 2.6-1.5 3.3-2.7 1.7 2 4.2 3.4 7 3.4H18c.1.6.3 1.3.4 2.1-.3 1.1-2.1 2.2-4.6 2.4-.1-.3-.4-.5-.7-.5h-2.3c-.4 0-.6.4-.6.7v1.4c0 .4.2.7.6.7h2.3c.3 0 .6-.2.7-.5 1.6 0 3.1-.5 4.2-1.2-.8 2.6-3.2 4.4-6 4.4z" },
-	  record: { "d": "M12 3.7c4.6 0 8.3 3.7 8.3 8.3s-3.7 8.3-8.3 8.3-8.3-3.7-8.3-8.3S7.4 3.7 12 3.7z" },
-	  redo: { "d": "M21.6 1.4h-1.4c-.4 0-.8.3-.8.7v3.2c0 .4-.2.6-.5.3-.2-.2-.3-.3-.5-.4-2.3-2.3-5.5-3.3-8.8-2.7-1.2.3-2.3.7-3.3 1.4C3.5 5.7 1.9 8.7 1.8 12c0 2.4 1 4.9 2.7 6.7 1.7 1.8 3.9 2.9 6.3 3 .4.1.7-.2.7-.7v-1.3c0-.4-.2-.7-.6-.7-2.2-.2-4.2-1.4-5.4-3.4-.3-.6-.6-1.2-.7-1.8-.7-3 .5-6 3.2-7.7.5-.3 1.1-.6 1.7-.7 2.5-.6 5 .1 6.7 1.8.2.2.4.4.5.6.2.4-.1.5-.6.5h-3.2c-.4 0-.7.4-.7.8v1.4c0 .4.3.6.7.6h8.4c.3 0 .6-.2.6-.5V2.1c.1-.4-.2-.7-.5-.7z" },
-	  refresh: { "d": "M21.5 1.8h-1.4c-.4 0-.7.4-.7.7v3.3c0 .4-.2.6-.6.3-.1-.2-.2-.3-.4-.5-2.3-2.3-5.6-3.2-8.9-2.6-1.1.2-2.3.7-3.2 1.3-2.8 1.9-4.5 4.9-4.5 8.1 0 2.5.9 5 2.7 6.8 1.8 1.9 4.3 3 7 3 2.3 0 4.6-.8 6.3-2.3.3-.3.3-.7.1-1l-1-1c-.2-.2-.7-.3-.9 0-1.7 1.3-4 1.9-6.2 1.3-.6-.1-1.2-.4-1.8-.7-2.6-1.6-3.8-4.7-3.1-7.7.1-.6.4-1.2.7-1.8 1.3-2.2 3.6-3.5 6-3.5 1.8 0 3.6.8 4.9 2.1.2.2.4.4.5.6.2.4-.2.6-.6.6h-3.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.6.7.6h8.4c.3 0 .6-.2.6-.6V2.5c0-.3-.4-.7-.7-.7z" },
-	  relate: { "d": "M16.6 9.2c0-1-.8-1.8-1.8-1.8h-12c-1 0-1.9.8-1.9 1.8v12c0 1 .9 1.9 1.9 1.9h12c1 0 1.8-.9 1.8-1.9v-12zm-3.7 6.5c0 .2-.2.5-.4.5H9.7v2.7c0 .3-.2.5-.5.5h-.9c-.2 0-.5-.2-.5-.5v-2.7H5.1c-.3 0-.5-.3-.5-.5v-.9c0-.3.2-.5.5-.5h2.7v-2.8c0-.2.3-.4.5-.4h.9c.3 0 .5.2.5.4v2.8h2.8c.2 0 .4.2.4.5v.9zm6.9 3.7h-1.3v-2.8h1.3c.3 0 .5-.2.5-.4v-12c0-.3-.2-.5-.5-.5h-12c-.2 0-.4.2-.4.5v1.3H4.6V4.2C4.6 2.4 6 .9 7.8.9h12c1.8 0 3.3 1.5 3.3 3.3v12c0 1.8-1.5 3.2-3.3 3.2z" },
-	  remove_formatting: { "d": "M20.8 18.9l2.1-2.1c.2-.2.2-.5 0-.7l-1.3-1.3c-.1-.2-.4-.2-.6 0L18.9 17l-2-2c-.1-.2-.4-.2-.6 0L15 16.3c-.2.2-.2.5 0 .6l2 2-2 2c-.1.1-.1.4 0 .6l1.3 1.3c.2.2.5.2.7 0l1.9-1.9 2.1 2c.2.2.5.2.6 0l1.3-1.3c.2-.1.2-.4 0-.6l-2.1-2.1zM2.2 3.7h5L5.3 14.4c-.1.5.2.8.7.8h2.3c.3 0 .7-.2.7-.5l1.9-11H16c.3 0 .7-.2.7-.6l.2-1.4c.1-.4-.2-.8-.7-.8H2.4c-.3 0-.6.3-.6.6l-.3 1.4c-.1.4.3.8.7.8zm10.7 14.1c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6h10.6c.4 0 .7-.3.7-.6v-1.4z" },
-	  remove_link: { "d": "M11.1 16.9c-.3 0-.6-.1-.9-.1-.2-.1-.6-.2-.8-.3-.2 0-.4 0-.5.1l-.2.2c-1.1 1.2-3 1.3-4.3.2-1.3-1.2-1.4-3.2-.1-4.5l3-3c.5-.5.9-.7 1.4-.8.7-.2 1.4-.2 2 .1.3.2.7.4 1 .7.1.1.3.3.4.6.1.2.5.3.7.1L14 9c.2-.2.2-.4 0-.6-.2-.2-.3-.4-.5-.6-.3-.3-.7-.6-1-.8-.6-.4-1.2-.6-1.9-.8-1.2-.2-2.6 0-3.8.6-.4.3-.8.6-1.2 1l-3 2.9c-2.1 2.1-2.3 5.6-.2 7.8 2.2 2.3 5.8 2.4 8 .1l1-1c.3-.2.1-.7-.3-.7zm7.6-6.5c2.2-2.2 2.2-5.9-.1-8-2.3-2.1-5.7-1.9-7.8.2l-1 .9c-.2.3-.1.7.3.8.6 0 1.2.1 1.7.3.2.1.4 0 .5-.1l.2-.2c1.1-1.1 3-1.3 4.3-.2 1.3 1.2 1.4 3.3.1 4.5l-3.1 3.1c-.4.4-.8.6-1.3.8-.7.1-1.4.1-2-.2-.3-.1-.7-.3-1-.7-.1-.1-.3-.3-.4-.5-.1-.3-.5-.3-.7-.1l-1.1 1.1c-.2.2-.2.5-.1.6.2.3.4.5.6.7.3.3.6.5 1 .8.6.3 1.2.6 1.9.7 1.2.2 2.5.1 3.7-.6.5-.2.9-.5 1.3-.9l3-3zm2.1 8.5l2.1-2.1c.2-.2.2-.5 0-.6l-1.3-1.3c-.1-.2-.4-.2-.6 0L18.9 17l-2-2c-.1-.1-.4-.1-.6 0L15 16.3c-.2.2-.2.5 0 .7l2 2-2 1.9c-.1.2-.1.5 0 .7l1.3 1.2c.2.2.5.2.7 0l1.9-1.9L21 23c.2.2.5.2.6 0l1.3-1.3c.2-.2.2-.5 0-.7l-2.1-2.1z" },
-	  replace: { "d": "M9.2 17.3c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h6.9c.4 0 .7-.3.7-.7v-5.1zm-5.5-7.1H1.5c-.5 0-.7.4-.4.6l3.7 3.8c.1.2.4.2.6 0l3.7-3.8c.3-.3 0-.6-.4-.6H6.5c0-2.4 2.3-4.7 4.6-4.7V2.8c-4.2 0-7.4 3.2-7.4 7.4zm15.6-.8c-.2-.2-.5-.2-.7 0L15 13.2c-.3.3-.1.6.4.6h2.2c0 2.8-1.9 4.7-4.7 4.7v2.7c4.2 0 7.5-3.2 7.5-7.4h2.2c.5 0 .7-.4.4-.6l-3.7-3.8zm3.8-7.8c0-.4-.3-.7-.7-.7h-6.9c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h6.9c.4 0 .7-.3.7-.7V1.6z" },
-	  reply: { "d": "M8.9 8.4s-.5-.6-.3-.8L11.2 5c.3-.3.3-.7 0-1l-1-1c-.2-.3-.6-.3-.9 0L3 9.2c-.2.3-.2.7 0 1l6.3 6.2c.3.3.7.3.9 0l1-.9c.3-.3.3-.7 0-1l-2.5-2.6c-.3-.3-.1-.7.2-.8 5.1.2 9.3 4.3 9.6 9.5 0 .4.3.7.7.7h1.4c.4 0 .6-.3.6-.8-.3-6.7-5.4-11.9-12.3-12.1z" },
-	  reset_password: { "d": "M19.4 10.6H4.6c-1 0-1.8.8-1.8 1.9v8.7c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9v-8.7c0-1.1-.8-1.9-1.8-1.9zm-5.1 9.9c-.7.5-1.5.7-2.3.7-.3 0-.6 0-.8-.1-1.1-.2-2.1-.8-2.7-1.7l1.6-1c.3.5.8.8 1.4.9.6.2 1.2 0 1.8-.3 1.1-.7 1.3-2.2.6-3.2-.3-.5-.8-.9-1.4-1-.6-.1-1.2 0-1.8.4l-.3.3 1.6 1.6H7.8v-4.2L9 14.1c.2-.2.5-.3.6-.5 1-.6 2.1-.8 3.2-.6 1.1.2 2 .8 2.6 1.7 1.3 2 .8 4.5-1.1 5.8zM4.6 8.4v.1-.1zm.5.4h1.8c.3 0 .5-.2.5-.4v-.1c0-2.6 2.2-4.8 4.9-4.6 2.5.2 4.3 2.3 4.3 4.8v-.1c0 .2.2.4.5.4h1.8c.3 0 .5-.2.5-.4v-.1c0-4.2-3.5-7.6-7.8-7.4-3.9.2-6.9 3.5-7 7.5.1.2.2.4.5.4z" },
-	  retweet: { "d": "M23.8 13.3l-1-1c-.2-.3-.6-.3-.9 0l-1.3 1.3c-.3.3-.8.1-.8-.4V5.5c0-1-.8-1.8-1.8-1.8h-6.7c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h5.1c.4 0 .7.3.7.7v6c0 .5-.5.6-.9.4L15 12.4c-.2-.3-.7-.3-.9 0l-1 1c-.3.3-.3.7 0 1l4.9 4.8c.2.3.6.3.9 0l4.9-4.9c.2-.3.2-.7 0-1zm-11.1 4.2H7.6c-.4 0-.7-.3-.7-.7v-6c0-.5.5-.6.9-.4L9 11.6c.2.3.7.3.9 0l1-.9c.3-.3.3-.7 0-1L6.1 4.8c-.3-.3-.7-.3-1 0L.2 9.7c-.3.3-.3.7 0 1l1 .9c.2.3.6.3.9 0l1.3-1.2c.2-.3.8-.1.8.3v7.8c0 1 .8 1.8 1.8 1.8h6.7c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7z" },
-	  richtextbulletedlist: { "d": "M3.7 6.2c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7V4.8c0-.3.3-.6.7-.6H3c.4 0 .7.3.7.6v1.4zm19.4-1.4c0-.3-.3-.6-.7-.6H6.2c-.3 0-.7.3-.7.6v1.4c0 .4.4.7.7.7h16.2c.4 0 .7-.3.7-.7V4.8zM3.7 11.3c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7v-1.4zm17.5 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h14.3c.4 0 .7-.3.7-.7v-1.4zM3.7 17.8c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6H3c.4 0 .7-.3.7-.6v-1.4zm19.4 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h16.2c.4 0 .7-.3.7-.6v-1.4z" },
-	  richtextindent: { "d": "M24 5.3c0-.4-.3-.7-.7-.7h-7.8c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7V5.3zm-1.8 11.1c0-.4-.4-.7-.7-.7h-6c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h6c.3 0 .7-.4.7-.7v-1.4zm1.8-5.6c0-.3-.3-.6-.7-.6h-7.8c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7v-1.4zM12.9 2.5c0-.3-.3-.7-.7-.7h-1.4c-.3 0-.6.4-.6.7v19c0 .3.3.7.6.7h1.4c.4 0 .7-.4.7-.7v-19zM4.3 7.1c-.2-.3-.6-.1-.6.4v2.7h-3c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7h3v2.7c0 .5.4.7.6.5l3.9-4.2c.1-.2.1-.5 0-.6L4.3 7.1z" },
-	  richtextnumberedlist: { "d": "M23.1 3v1.4c0 .4-.3.7-.7.7H9.9c-.3 0-.7-.3-.7-.7V3c0-.4.4-.7.7-.7h12.5c.4 0 .7.3.7.7zM9.9 9.7h8.3c.4 0 .7-.3.7-.7V7.6c0-.4-.3-.7-.7-.7H9.9c-.3 0-.7.3-.7.7V9c0 .4.4.7.7.7zm12.5 4.1H9.9c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7zm-4.2 4.7H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h8.3c.4 0 .7-.3.7-.7v-1.3c0-.4-.3-.7-.7-.7zM1.6 3.7h1.2v5.8c0 .3.3.7.7.7h.4c.4 0 .7-.4.7-.7V2.8c0-.5-.4-1-.9-1H1.6c-.4 0-.7.4-.7.7V3c0 .4.3.7.7.7zm3.9 9.2H1.6c-.4 0-.7.3-.7.7v.5c0 .3.3.7.7.7h3v1.8H1.8c-.5 0-.9.4-.9.9v3.7c0 .5.4 1 .9 1h4c.3 0 .7-.4.7-.7V21c0-.4-.4-.7-.7-.7h-3v-1.8h2.7c.5 0 1-.5 1-1v-3.7c0-.5-.5-.9-1-.9z" },
-	  richtextoutdent: { "d": "M7.6 10.2h-3V7.4c0-.4-.4-.7-.6-.4L.1 11.2c-.1.2-.1.4 0 .6L4 16c.2.2.6 0 .6-.4v-2.7h3c.3 0 .7-.3.7-.7v-1.4c0-.3-.4-.6-.7-.6zM24 5.3c0-.4-.3-.7-.7-.7h-7.8c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7V5.3zm-1.8 11.1c0-.4-.4-.7-.7-.7h-6c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h6c.3 0 .7-.4.7-.7v-1.4zm1.8-5.6c0-.3-.3-.6-.7-.6h-7.8c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7v-1.4zM12.9 2.5c0-.3-.3-.7-.7-.7h-1.4c-.3 0-.6.4-.6.7v19c0 .3.3.7.6.7h1.4c.4 0 .7-.4.7-.7v-19z" },
-	  right: { "d": "M6.5 20.2V3.8c0-.4.6-.8 1-.4l9.8 8c.3.3.3.9 0 1.2l-9.8 8c-.4.4-1 .1-1-.4z" },
-	  right_align_text: { "d": "M21.5 2.3h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3c0-.4-.4-.7-.7-.7zm0 5.5H6.2c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7V8.5c0-.3-.4-.7-.7-.7zm0 11.1H6.2c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7v-1.4c0-.4-.4-.7-.7-.7zm0-5.5h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7z" },
-	  rotate: { "d": "M22.4.9H21c-.4 0-.7.3-.7.7v3.2c0 .5-.5.7-.7.4-2.2-2.4-5.3-3.6-8.7-3.3-1.2.1-2.3.5-3.4 1-.5.3-1.1.6-1.5 1-.4.2-.4.7-.1 1l.9 1c.3.2.6.3.9.1.6-.4 1.2-.7 1.8-1 .3-.1.6-.2.9-.2 2.9-.6 5.7.6 7.3 2.4.5.7.1 1.1-.3 1.1h-3.3c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h8.4c.3 0 .6-.3.6-.6V1.6c0-.4-.3-.7-.7-.7zm-4.2 16.4c-.3-.3-.7-.3-1 0-.7.7-1.6 1.3-2.7 1.7-.2.1-.6.2-.9.2-2.9.6-5.7-.6-7.2-2.4-.6-.7-.2-1.1.3-1.1h3.2c.4 0 .7-.3.7-.7v-1.4c0-.4-.3-.7-.7-.7H1.5c-.3 0-.6.3-.6.6v8.9c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7v-3.2c0-.5.5-.7.7-.4 2.2 2.4 5.3 3.6 8.7 3.3 1.2-.1 2.3-.5 3.4-1 1-.5 1.9-1.2 2.6-1.9.3-.3.3-.7 0-1l-.9-.9z" },
-	  rows: { "d": "M21.5 6.5h-19c-.3 0-.7-.4-.7-.7V4.4c0-.4.4-.7.7-.7h19c.3 0 .7.3.7.7v1.4c0 .3-.4.7-.7.7zm0 6.8h-19c-.3 0-.7-.3-.7-.7v-1.3c0-.4.4-.7.7-.7h19c.3 0 .7.3.7.7v1.4c0 .3-.4.6-.7.6zm0 7h-19c-.3 0-.7-.3-.7-.7v-1.4c0-.3.4-.7.7-.7h19c.3 0 .7.4.7.7v1.4c0 .4-.4.7-.7.7z" },
-	  salesforce1: { "d": "M10 5.5c.8-.8 1.9-1.3 3.1-1.3 1.5 0 2.9.9 3.7 2.2.6-.3 1.3-.5 2-.5 2.9 0 5.2 2.3 5.2 5.2s-2.3 5.1-5.2 5.1h-1c-.6 1.1-1.9 1.9-3.3 1.9-.6 0-1.2-.1-1.7-.4-.6 1.5-2.1 2.6-3.9 2.6-1.9 0-3.5-1.1-4.1-2.8-.3 0-.6.1-.8.1-2.2 0-4-1.8-4-4 0-1.5.7-2.8 1.9-3.5-.2-.5-.3-1.2-.3-1.8 0-2.6 2-4.7 4.6-4.7 1.6.1 3 .8 3.8 1.9" },
-	  search: { "d": "M22.9 20.9l-6.2-6.1c1.3-1.8 1.9-4 1.6-6.4-.6-3.9-3.8-7.1-7.8-7.4C5 .4.4 5 1 10.5c.3 4 3.5 7.3 7.4 7.8 2.4.3 4.6-.3 6.4-1.5l6.1 6.1c.3.3.7.3 1 0l.9-1c.3-.3.3-.7.1-1zM3.7 9.6c0-3.2 2.7-5.9 5.9-5.9s6 2.7 6 5.9-2.7 6-6 6-5.9-2.6-5.9-6z" },
-	  settings: { "d": "M12 8.8c-1.8 0-3.2 1.4-3.2 3.2s1.4 3.3 3.2 3.3 3.3-1.5 3.3-3.3-1.5-3.2-3.3-3.2zm9.7 6.2L20 13.5c.1-.5.2-1 .2-1.5s-.1-1.1-.2-1.6L21.7 9c.6-.5.8-1.3.4-2l-.7-1.3c-.3-.4-.8-.7-1.4-.7-.2 0-.3 0-.5.1l-2.1.8c-.8-.8-1.8-1.3-2.7-1.6l-.4-2.2c-.1-.7-.8-1.1-1.5-1.1h-1.5c-.7 0-1.4.4-1.5 1.1l-.4 2.1c-1 .4-1.9.9-2.8 1.6L4.5 5c-.2 0-.3-.1-.5-.1-.5 0-1 .3-1.3.8L1.9 7c-.3.6-.2 1.4.4 1.9L4 10.3c-.1.5-.1 1.1-.1 1.6 0 .6 0 1.1.1 1.6l-1.7 1.4c-.5.5-.7 1.3-.4 1.9l.8 1.3c.3.5.8.8 1.3.8.2 0 .4-.1.5-.1l2.1-.8c.9.7 1.8 1.2 2.8 1.6l.3 2.2c.2.7.8 1.2 1.6 1.2h1.4c.8 0 1.4-.5 1.6-1.3l.3-2.2c1.1-.3 2.1-.9 2.9-1.7l2 .8c.2 0 .3.1.5.1.6 0 1.1-.3 1.4-.7l.7-1.2c.4-.6.2-1.4-.4-1.8zM12 17.1c-2.8 0-5-2.2-5-5.1s2.2-5 5-5 5.1 2.2 5.1 5-2.2 5.1-5.1 5.1z" },
-	  setup: { "d": "M21.6 15l-1.7-1.5c.1-.5.1-1 .1-1.5s0-1.1-.1-1.6L21.6 9c.6-.5.7-1.3.4-2l-.8-1.3c-.2-.5-.8-.8-1.3-.8-.2 0-.4.1-.5.1l-2.1.8c-.8-.7-1.7-1.2-2.7-1.6l-.3-2.1c-.2-.8-.8-1.2-1.6-1.2h-1.4c-.8 0-1.4.4-1.6 1.2l-.3 2.1c-1 .3-1.9.9-2.8 1.6l-2-.8c-.2-.1-.3-.1-.5-.1-.5 0-1.1.3-1.3.7L2 6.9c-.3.7-.2 1.5.4 2l1.7 1.4c-.1.5-.1 1.1-.1 1.6s0 1 .1 1.5l-1.7 1.5c-.6.4-.7 1.3-.4 1.9l.8 1.4c.2.4.8.7 1.3.7.2 0 .4 0 .5-.1l2.1-.8c.8.8 1.7 1.3 2.7 1.6l.3 2.2c.2.8.8 1.3 1.6 1.3h1.4c.8 0 1.4-.6 1.6-1.3l.3-2.2c1.1-.4 2-1 2.8-1.7l2 .7c.2.1.4.1.5.1.6 0 1.1-.2 1.4-.7l.7-1.2c.3-.6.2-1.4-.4-1.8zM12 17.1c-2.7 0-5-2.2-5-5.1s2.2-5 5-5 5.1 2.2 5.1 5-2.3 5.1-5.1 5.1zm1.4-8.8h-2.1c-.4 0-.6.2-.7.5l-1.3 3.3c-.1.2.1.5.3.5h2.2l-.8 2.8c-.1.2.3.4.4.2l3.3-3.8c.3-.3.1-.6-.3-.6h-1.6l1.5-2.3c.1-.2-.1-.5-.4-.5h-.5z" },
-	  setup_assistant_guide: { "d": "M5.3 11.5c0-.2-.2-.3-.4-.2l-2 1.7c-.1.1-.1.2-.1.4v7.3c0 .5.6.7 1 .4l3.4-2.6c.1-.1.1-.2 0-.4-.8-1.2-1.6-3.3-1.9-6.6zm4.5 6.9c.1 0 .2.1.3.1h3.8c.1 0 .2-.1.3-.1.5-.4 2.7-2.2 2.7-8.5 0-2.9-.8-5-1.8-6.3C13.7 1.5 12 .9 12 .9s-1.8.6-3.2 2.7C7.8 5 7.1 7 7.1 9.9c0 6.3 2.1 8.1 2.7 8.5zM12 6c1.5 0 2.7 1.2 2.7 2.8s-1.2 2.7-2.7 2.7-2.8-1.2-2.8-2.7S10.4 6 12 6zm9.1 7l-2-1.7c-.2-.1-.4 0-.4.2-.3 3.3-1.1 5.4-1.9 6.7v.3l3.4 2.6c.4.4 1 .1 1-.3v-7.4c0-.2 0-.3-.1-.4zm-6.2 7.5c-.1-.1-.3-.2-.4-.2H9.4c-.1 0-.3.1-.4.2-.1.3-.4.8-.6 1.5-.1.5.3 1.1.9 1.1h5.3c.6 0 1-.6.9-1.1-.2-.7-.5-1.2-.6-1.5z" },
-	  share: { "d": "M22.4 13.8H21c-.4 0-.7.4-.7.7v5.1c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V9.9c0-.3.3-.7.7-.7h1.8c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7H2.8c-1 0-1.9.8-1.9 1.8v12.9c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9v-6.7c0-.3-.3-.7-.7-.7zm-6.7-7.3c-4.6 0-8.8 4.1-9.2 8.9 0 .4.3.8.7.8h1.4c.4 0 .6-.3.7-.6.3-3.5 3.3-6.4 6.9-6.4h.7c.4 0 .6.5.3.8l-2.5 2.6c-.3.3-.3.7 0 1l.9.9c.3.3.7.3 1 0l6.3-6.2c.3-.3.3-.7 0-1l-6.2-6.2c-.3-.3-.7-.3-1 0l-1 1c-.3.3-.3.7 0 .9l2.6 2.6c.2.3.1.8-.4.8l-1.2.1z" },
-	  shield: { "d": "M2.2 6.5h19.6c.4 0 .8-.5.7-1-.5-1.5-1.1-2.9-2-4.1-.3-.4-.8-.4-1.1-.1-.8.8-2.1 1.3-3.4 1.3-1.4 0-2.6-.6-3.5-1.5-.3-.3-.8-.3-1.1 0-.9.9-2.1 1.5-3.5 1.5-1.3 0-2.5-.5-3.4-1.3-.3-.3-.9-.2-1.1.1-.9 1.2-1.6 2.6-2 4.1 0 .5.4 1 .8 1zm20.9 2.9c0-.4-.3-.6-.8-.6H1.7c-.5 0-.8.2-.8.6v.2c0 6.9 4.8 12.6 11.1 13.5 6.3-.9 11.1-6.6 11.1-13.5v-.2z" },
-	  side_list: { "d": "M22.4 1.8H9.9c-.3 0-.7.4-.7.7v19c0 .3.4.7.7.7h12.5c.4 0 .7-.4.7-.7v-19c0-.3-.3-.7-.7-.7zm-15.7 0H1.6c-.4 0-.7.4-.7.7v2.3c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7V2.5c0-.3-.3-.7-.7-.7zm0 5.6H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7V8.1c0-.4-.3-.7-.7-.7zm0 5.5H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7v-2.3c0-.4-.3-.7-.7-.7zm0 5.6H1.6c-.4 0-.7.3-.7.7v2.3c0 .3.3.7.7.7h5.1c.4 0 .7-.4.7-.7v-2.3c0-.4-.3-.7-.7-.7z" },
-	  signpost: { "d": "M22.8 4.2l-1.9-1.5c-.3-.2-.5-.3-.9-.3h-6.5v-.7c0-.5-.3-.8-.8-.8h-1.4c-.5 0-.8.3-.8.8v.7H3.1c-.4 0-.7.3-.7.7v3c0 .4.3.7.7.7H20c.4 0 .7-.1.9-.2l1.9-1.5c.4-.3.4-.7 0-.9zm-1.9 6.3h-7.4V9.4c0-.2-.2-.4-.4-.4h-2.2c-.2 0-.4.2-.4.4v1.1H4c-.4 0-.7.1-.9.3l-1.9 1.4c-.4.3-.4.7 0 1l1.9 1.4c.3.2.5.3.9.3h16.9c.4 0 .7-.3.7-.7v-3c0-.4-.3-.7-.7-.7zM13.5 20v-2.5c0-.2-.2-.3-.4-.3h-2.2c-.2 0-.4.1-.4.3V20c-1.5.4-2.3 1.3-2.5 2.4-.1.3.2.7.5.7h7c.4 0 .7-.3.6-.7-.3-1.1-1.1-2-2.6-2.4z" },
-	  sms: { "d": "M12 1.8C5.9 1.8 1 6.4 1 12c0 1.7.5 3.4 1.3 4.8.1.3.2.6.1.8l-1.4 4c-.2.3.2.6.6.6l3.9-1.6c.3-.1.5 0 .8.1 1.7.9 3.7 1.5 5.8 1.5 6 0 11-4.6 11-10.2C23 6.4 18.1 1.8 12 1.8zM7.6 13.7c-.2.2-.3.4-.5.6s-.4.2-.7.3c-.2.1-.5.1-.8.1-.3 0-.7 0-1-.2-.3-.1-.6-.3-.9-.6l-.1-.1s0-.1.1-.2l.8-.7c.1-.1.2-.1.2 0s.1.1.1.1c.1.2.2.2.4.3.2.2.4.2.7.1.1 0 .1 0 .2-.1l.2-.1V13c0-.2 0-.2-.1-.3-.1-.1-.2-.1-.4-.2s-.4-.1-.6-.2l-.6-.3c-.3-.1-.4-.3-.5-.5-.2-.2-.3-.5-.3-.8 0-.4.1-.6.2-.9.2-.2.3-.4.5-.5.2-.2.4-.3.7-.3.6-.2 1.1-.2 1.7 0 .3.1.5.3.7.4l.1.1c.1 0 .1.1 0 .2l-.7.7c-.1.1-.3.1-.4 0l-.1-.1c-.3-.1-.6-.2-.9-.1h-.2l-.1.2v.2c0 .1 0 .2.1.2 0 .1.2.1.4.2s.3.2.6.2l.6.3c.2.1.4.3.5.5.2.2.3.5.3.9 0 .3-.1.5-.2.8zm7.6.6c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-2.7c0-.3-.3-.3-.4-.1l-.8 2.1c0 .2-.2.2-.4.2h-.3c-.2 0-.4-.1-.5-.2l-.8-2.1c-.1-.2-.4-.2-.4.1v2.7c0 .3-.3.5-.6.5h-.4c-.3 0-.4-.2-.4-.5V9.2c0-.2.2-.4.4-.4h1.2c.2 0 .4.1.4.2l.9 2.4c.1.2.4.2.4 0l1-2.4c0-.1.2-.2.4-.2h1.2c.3 0 .5.2.5.4v5.1zm4.9-.6c-.2.2-.3.5-.5.6-.2.1-.4.3-.7.4s-.5.1-.8.1c-.4 0-.7-.1-1-.2-.3-.2-.7-.3-.9-.6l-.1-.1c0-.1 0-.1.1-.2l.7-.7c.1-.1.2-.1.3-.1s.1.2.1.2l.3.3c.3.1.5.1.8.1.1-.1.2-.1.2-.1l.1-.2.1-.1c0-.2-.1-.3-.1-.3-.1-.1-.2-.2-.4-.2s-.4-.2-.6-.2c-.3-.1-.5-.2-.7-.3-.2-.1-.4-.3-.5-.5-.2-.2-.3-.5-.3-.9 0-.3.1-.6.2-.8.2-.3.3-.4.5-.6.2-.1.5-.3.7-.3.6-.1 1.1-.1 1.7 0 .3.1.5.3.7.5l.1.1c.1 0 .1.2 0 .3l-.7.7c-.1.1-.2.1-.3 0l-.2-.2c-.3-.1-.6-.2-.9-.1 0 0-.1 0-.1.1l-.2.1v.2c0 .1 0 .2.1.2.1.1.2.2.4.3.2 0 .4.1.6.2.2 0 .4.1.6.2.3.2.4.4.6.5.1.3.2.5.2.9.1.2 0 .5-.1.7z" },
-	  snippet: { "d": "M6.7 2.8H1.6c-.4 0-.7.3-.7.7v6c0 .3.3.7.7.7h5.1c.4 0 .7-.4.7-.7v-6c0-.4-.3-.7-.7-.7zm15.7 0H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7V3.5c0-.4-.3-.7-.7-.7zM9.9 10.2h7.9c.3 0 .7-.4.7-.7V8.1c0-.4-.4-.7-.7-.7H9.9c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7zm-3.2 3.6H1.6c-.4 0-.7.4-.7.7v6c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7v-6c0-.3-.3-.7-.7-.7zm15.7 0H9.9c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7zm-4.6 4.7H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h7.9c.3 0 .7-.3.7-.7v-1.3c0-.4-.4-.7-.7-.7z" },
-	  socialshare: { "d": "M18.9 14.8c-1.2 0-2.3.5-3 1.3l-6.8-3.4c.1-.2.1-.5.1-.7 0-.3-.1-.6-.1-.8l6.8-3.4c.7.9 1.8 1.4 3 1.4 2.3 0 4.2-1.9 4.2-4.2S21.2.9 18.9.9 14.8 2.7 14.8 5v.3l-7 3.5c-.8-.6-1.7-1-2.8-1C2.7 7.8.9 9.7.9 12s1.8 4.2 4.1 4.2c1.1 0 2-.4 2.8-1.1l6.9 3.5v.3c0 2.3 1.9 4.2 4.2 4.2s4.1-1.9 4.1-4.2-1.8-4.1-4.1-4.1z" },
-	  sort: { "d": "M12.7 7.4c.3-.3.3-.7 0-1L7.4 1.1c-.2-.3-.7-.3-.9 0L1.2 6.4c-.3.3-.3.7 0 1l.9 1c.3.2.7.2 1 0l1.7-1.7c.2-.3.7-.1.7.3v9.8c0 .4.4.7.7.7h1.4c.4 0 .7-.4.7-.7V7c0-.4.5-.6.8-.3l1.7 1.7c.2.2.6.2.9 0l1-1zm10.1 9.2l-.9-.9c-.3-.3-.7-.3-1 0l-1.7 1.7c-.2.2-.7 0-.7-.4V7.2c0-.4-.4-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v9.7c0 .5-.5.6-.8.4l-1.7-1.7c-.2-.3-.6-.3-.9 0l-1 1c-.3.3-.3.7 0 1l5.3 5.3c.3.3.7.3 1 0l5.3-5.3c.2-.3.2-.8-.1-1z" },
-	  spinner: { "d": "M7.4 12.7v-1.4c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7zm.9 2.1c-.3-.3-.7-.3-1 0l-3.6 3.6c-.3.2-.3.7 0 .9l1 1c.2.3.7.3.9 0l3.6-3.6c.3-.3.3-.7 0-1l-.9-.9zm7.4-5.6c.3.3.7.3 1 0l3.6-3.6c.3-.2.3-.7 0-.9l-1-1c-.2-.3-.7-.3-.9 0l-3.6 3.5c-.3.3-.3.7 0 1l.9 1zM5.6 3.7c-.2-.3-.7-.3-.9 0l-1 1c-.3.2-.3.7 0 .9l3.6 3.6c.3.3.7.3 1 0l.9-.9c.3-.3.3-.7 0-1L5.6 3.7zm11.2 11.1c-.3-.3-.7-.3-1 0l-1 .9c-.3.3-.3.7 0 1l3.6 3.6c.2.3.7.3.9 0l1-1c.3-.2.3-.7 0-.9l-3.5-3.6zm-4.1 1.8h-1.4c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h1.4c.4 0 .7-.3.7-.7v-5.1c0-.4-.3-.7-.7-.7zm9.7-6h-5.1c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7v-1.4c0-.4-.3-.7-.7-.7zM12.7.9h-1.4c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h1.4c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7z" },
-	  standard_objects: { "d": "M21.3 18l-8.7 4.9c-.4.3-1 .3-1.5 0L2.5 18c-.4-.2-.4-.7 0-.9l2-1.1c.2-.1.3-.1.5 0l5.2 3c.6.2 1.1.4 1.7.4s1.2-.2 1.7-.4l5.2-3c.2-.1.4-.1.5 0l2 1.1c.4.2.4.7 0 .9zm0-5.6l-8.7 5c-.4.2-1 .2-1.5 0l-8.6-5c-.4-.2-.4-.6 0-.8l2-1.2c.2-.1.3-.1.5 0l5.2 3c.6.3 1.1.4 1.7.4s1.2-.1 1.7-.4l5.2-3c.2-.1.4-.1.5 0l2 1.2c.4.2.4.6 0 .8zm-10.1-.6L2.5 6.9c-.3-.2-.3-.7 0-.9l8.7-4.9c.5-.3 1.1-.3 1.5 0L21.4 6c.4.2.4.7 0 .9l-8.7 4.9c-.4.2-1 .2-1.5 0z" },
-	  stop: { "d": "M3.7 3.7h16.6v16.6H3.7V3.7z" },
-	  strikethrough: { "d": "M5.6 8.4c-.1-.5-.2-1.1-.2-1.6 0-.6.2-1.3.5-2 .2-.6.7-1.3 1.3-1.8.5-.6 1.3-1.1 2.2-1.5.9-.3 2-.6 3.2-.6 1.2 0 2.3.2 3.4.5.8.3 1.6.7 2.3 1.4.3.2.3.7-.1 1L17 4.9c-.3.3-.7.3-1 0-.3-.3-.7-.6-1.1-.8-.6-.3-1.4-.5-2.3-.5-.7 0-1.4.1-1.9.3s-1 .5-1.3.9-.6.6-.7 1-.2.8-.2 1c0 .5.1 1 .2 1.3.2.3-.1.7-.4.7H6c-.2 0-.4-.3-.4-.4zm12.8 6.8h-2.3c-.3 0-.5.4-.4.6.1.3.2.7.2 1 0 .6-.2 1.1-.4 1.6-.3.4-.6.8-1 1.1-.4.3-.9.5-1.4.6-.5.2-1 .3-1.5.3-.8 0-1.7-.2-2.5-.6-.6-.3-1.1-.6-1.5-1.2-.3-.2-.7-.3-1 0l-1.3 1.1c-.3.2-.3.7 0 .9.6.8 1.4 1.3 2.4 1.7 1.2.5 2.5.7 3.9.7 1 0 2-.2 2.8-.5.9-.3 1.7-.7 2.4-1.3.6-.5 1.2-1.2 1.6-2 .3-.9.6-1.8.6-2.8 0-.3 0-.6-.1-.9-.1-.1-.3-.3-.5-.3zM23 11c-.1-.2-.3-.4-.6-.4H1.6c-.3 0-.5.2-.6.4-.1.1-.1.2-.1.3v1.3c0 .4.3.8.7.8h20.8c.4 0 .7-.4.7-.8v-1.3c0-.1 0-.2-.1-.3z" },
-	  success: { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm6.2 8.3l-7.1 7.2c-.3.3-.7.3-1 0l-3.9-3.9c-.2-.3-.2-.8 0-1.1l1-1c.3-.2.8-.2 1.1 0l2 2.1c.2.2.5.2.7 0l5.2-5.3c.2-.3.7-.3 1 0l1 1c.3.2.3.7 0 1z" },
-	  summary: { "d": "M22.4.9H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7zm0 5.6H6.2c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h16.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zm0 9.2H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h16.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm0 4.6h-18c-.4 0-.7-.3-.7-.7v-3.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V21c0-.4-.3-.7-.7-.7zm0-9.2h-18c-.4 0-.7-.3-.7-.7V7.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .3.3.6.7.6h20.8c.4 0 .7-.3.7-.6v-1.4c0-.4-.3-.7-.7-.7z" },
-	  summarydetail: { "d": "M22.4.9H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7zM9.5 6.5H6.2c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h3.3c.3 0 .7-.3.7-.7V7.2c0-.4-.4-.7-.7-.7zm6.4 0h-3.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h3.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zm6.5 0h-3.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h3.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zM9.5 15.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h3.3c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7zm6.4 0h-3.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h3.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm6.5 0h-3.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h3.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm0 4.6h-18c-.4 0-.7-.3-.7-.7v-3.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V21c0-.4-.3-.7-.7-.7zm0-9.2h-18c-.4 0-.7-.3-.7-.7V7.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .3.3.6.7.6h20.8c.4 0 .7-.3.7-.6v-1.4c0-.4-.3-.7-.7-.7z" },
-	  "switch": { "d": "M22 8.2l-9.5 9.6c-.3.2-.7.2-1 0L2 8.2c-.2-.3-.2-.7 0-1l1-1c.3-.3.8-.3 1.1 0l7.4 7.5c.3.3.7.3 1 0l7.4-7.5c.3-.3.8-.3 1.1 0l1 1c.2.3.2.7 0 1z" },
-	  table: { "d": "M21.5.9h-19c-.3 0-.7.3-.7.7v2.3c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V1.6c0-.4-.4-.7-.7-.7zM6.7 6.5H2.5c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V7.2c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V7.2c0-.4-.4-.7-.7-.7zM6.7 11.1H2.5c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h4.2c.4 0 .7-.3.7-.6v-1.4c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h4.2c.3 0 .7-.3.7-.6v-1.4c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6h4.2c.3 0 .7-.3.7-.6v-1.4c0-.4-.4-.7-.7-.7zM6.7 15.7H2.5c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h4.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h4.2c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h4.2c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7zM6.7 20.3H2.5c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V21c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V21c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V21c0-.4-.4-.7-.7-.7z" },
-	  tablet_landscape: { "d": "M23.1 4.6c0-1-.9-1.8-1.9-1.8H2.8c-1 0-1.9.8-1.9 1.8v14.8c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V4.6zM3.2 13.4c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.7 1.4-1.4 1.4zm17.1 4.4c0 .3-.3.7-.7.7H6.2c-.3 0-.7-.4-.7-.7V6.2c0-.3.4-.7.7-.7h13.4c.4 0 .7.4.7.7v11.6z" },
-	  tablet_portrait: { "d": "M21.2 2.8c0-1-.8-1.9-1.8-1.9H4.6c-1 0-1.8.9-1.8 1.9v18.4c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9V2.8zM12 22.2c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.3.6 1.3 1.4-.6 1.4-1.3 1.4zm6.5-4.4c0 .3-.4.7-.7.7H6.2c-.3 0-.7-.4-.7-.7V4.4c0-.4.4-.7.7-.7h11.6c.3 0 .7.3.7.7v13.4z" },
-	  text_background_color: { "d": "M12 7.4l1.9 4.6H9.8l1.8-4.6h.4zm10.2-3.7v16.6c0 1-.9 1.9-1.9 1.9H3.7c-1 0-1.9-.9-1.9-1.9V3.7c0-1 .9-1.9 1.9-1.9h16.6c1 0 1.9.9 1.9 1.9zm-2.6 15.1L14.1 5.1c-.2-.3-.4-.5-.7-.5h-3.3c-.3 0-.5.2-.6.5L4.4 18.8c-.1.3.1.6.4.6h1.9c.3 0 .5-.2.6-.5l1.5-4.1H15l1.6 4.1c.1.3.4.5.7.5h1.9c.3 0 .5-.3.4-.6z" },
-	  text_color: { "d": "M4.8 16.6h1.9c.3 0 .5-.2.6-.5L8.8 12H15l1.6 4.1c.1.3.4.5.7.5h1.9c.3 0 .5-.3.4-.6L14 2.3c-.1-.3-.3-.5-.6-.5h-3.2c-.3 0-.6.2-.7.5L4.4 16c-.1.3.1.6.4.6zm6.8-12h.4l2 4.6H9.8l1.8-4.6zm10.8 14.8H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h20.8c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7z" },
-	  threedots: { "d": "M3.7 9.2c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8S.9 13.5.9 12s1.3-2.8 2.8-2.8zm8.3 0c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8 1.3-2.8 2.8-2.8zm8.3 0c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8 1.3-2.8 2.8-2.8z" },
-	  tile_card_list: { "d": "M6.7 1.8H2.5c-.3 0-.7.4-.7.7v7.9c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V2.5c0-.3-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.4-.7.7v7.9c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V2.5c0-.3-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.4-.7.7v7.9c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V2.5c0-.3-.4-.7-.7-.7zM6.7 12.9H2.5c-.3 0-.7.3-.7.7v7.9c0 .3.4.7.7.7h4.2c.4 0 .7-.4.7-.7v-7.9c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v7.9c0 .3.4.7.7.7h4.2c.3 0 .7-.4.7-.7v-7.9c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v7.9c0 .3.3.7.7.7h4.2c.3 0 .7-.4.7-.7v-7.9c0-.4-.4-.7-.7-.7z" },
-	  topic: { "d": "M8 16.3c0-.1-.2-.3-.3-.3l-1-.3c-.2-.1-.4 0-.5.2l-1.8 3c-.4.9-.2 1.1.7.7l3-1.8c.2-.1.3-.3.3-.5l-.4-1zm8-8.6c0 .1.2.3.3.3l1 .3c.2.1.4 0 .5-.2L19.6 5c.4-.8.2-1.1-.7-.6l-3 1.7c-.2.1-.3.4-.3.5l.4 1.1zm-9.8.4c.1.2.3.3.5.3l1-.3c.1-.1.3-.2.3-.3l.3-1.1c.1-.1 0-.4-.2-.5l-3-1.8c-.9-.4-1.1-.2-.7.7l1.8 3zm11.6 7.8c-.1-.2-.3-.3-.5-.3l-1 .3c-.1.1-.3.2-.3.3l-.3 1.1c-.1.2 0 .4.2.5l3.1 1.8c.8.4 1.1.2.6-.7l-1.8-3zm4.7-4.3l-7.6-2c-.3 0-.5-.3-.5-.5l-2-7.6c-.3-.8-.6-.8-.8 0l-2 7.6c-.1.3-.3.5-.6.5l-7.5 2c-.8.3-.8.6 0 .8l7.6 2c.3.1.5.3.5.6l2 7.5c.3.8.6.8.8 0l2-7.5c.1-.3.3-.5.6-.6l7.5-2c.8-.2.8-.6 0-.8zM12 13.8c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8z" },
-	  trail: { "d": "M12.8.9c1.6 0 2.8 1.2 2.8 2.7s-1.3 2.8-2.8 2.8-2.7-1.2-2.7-2.8S11.3.9 12.8.9zm7 7.5c-.5-.1-1 .3-1.1.8l-.2 2.7c-.1 0-.2.1-.3.1h-2.5l-1.8-3.1c-.1-.3-.4-.5-.7-.5L10.5 8c-.4-.1-.9.2-1.1.6l-2 5.2c-.2.5 0 .9.4 1.1l5 3.4.4 3.9c0 .5.5.9 1 .9.6 0 1.1-.5 1-1l-.4-4.8c0-.2-.2-.5-.4-.6l-2.7-3.1 1-2.5 1.2 2.1c.2.3.5.6.9.6h3.5l-1 8.3c-.1.5.3.9.8 1 .1 0 .1-.1.1-.1.5 0 1-.3 1-.8l1.6-12.9c0-.4-.4-.9-1-.9zM5.6 12.8l1.7-4.4c.1-.3.3-.6.5-.8l-.3-.1c-1.5-.2-2.8.7-3.3 2.1L3.3 12c-.2.5.1 1.1.6 1.2l.4.1c.6.2 1.1-.1 1.3-.5zm.7 3.4l-2.1 6.2c-.1.4.1.6.5.6h1.1c.4 0 .8-.2 1-.6l2-4.5-2.3-1.4c0-.1-.1-.2-.2-.3z" },
-	  undelete: { "d": "M19.2 9.2H4.8c-.3 0-.6.4-.6.7v10.9c0 1.3 1 2.3 2.3 2.3h11c1.3 0 2.3-1 2.3-2.3V9.9c0-.3-.3-.7-.6-.7zm-7.2 12v-1.8c1.5 0 2.8-1.3 2.8-2.8s-1.3-2.8-2.8-2.8c-.7 0-1.4.4-1.9.9l1.1 1.1c.1.1 0 .4-.2.4H7.6c-.1 0-.2-.1-.2-.2v-3.4c0-.2.2-.3.4-.2l1 1c.8-.8 2-1.4 3.2-1.4 2.6 0 4.7 2.1 4.7 4.7s-2.2 4.5-4.7 4.5zm9-16.6h-5.8V2.8c0-1-.8-1.9-1.8-1.9h-2.8c-1 0-1.8.9-1.8 1.9v1.8H3c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h18c.4 0 .7-.3.7-.7V5.3c0-.4-.3-.7-.7-.7zm-7.6 0h-2.8V3.2c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.4z" },
-	  undeprecate: { "d": "M22.2 3.2H1.8c-.5 0-.9.4-.9 1v12c0 .5.4.9.9.9h7.5c.5 2.6 2.7 4.6 5.5 4.6s5-2 5.4-4.6h2c.5 0 .9-.4.9-.9v-12c0-.6-.4-1-.9-1zm-8.1 15.9l-2.7-2.8 1.2-1.3 1.5 1.5 3.3-3.3 1.2 1.3-4.5 4.6zm7.1-3.9h-1c-.4-2.6-2.7-4.6-5.4-4.6s-5.1 2-5.5 4.6H2.8V5.1h18.4v10.1z" },
-	  underline: { "d": "M20.5 19.4h-17c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h17c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm-8.8-1.9c-3.5-.1-6.2-3.1-6.2-6.6V4.6c0-.5.5-.9 1-.9h.9c.5 0 .9.4.9.9v6.3c0 2 1.5 3.7 3.5 3.9 2.1.1 3.9-1.6 3.9-3.7V4.6c0-.5.4-.9.9-.9h.9c.5 0 1 .4 1 .9v6.5c0 3.7-3.1 6.6-6.8 6.4z" },
-	  undo: { "d": "M2.5 1.8h1.4c.4 0 .7.4.7.7v3.3c0 .4.2.6.6.3.1-.2.2-.3.4-.5 2.3-2.3 5.6-3.2 8.9-2.6 1.1.2 2.3.7 3.2 1.3 2.8 1.9 4.5 4.9 4.5 8.1 0 2.5-.9 5-2.7 6.8-1.6 1.8-3.9 2.8-6.2 3-.5 0-.8-.4-.8-.8V20c0-.3.2-.6.6-.7 2.2-.1 4.2-1.3 5.4-3.3.3-.6.6-1.2.7-1.8.7-3-.5-6.1-3.2-7.7-.5-.3-1.1-.6-1.7-.7-2.5-.6-5 .1-6.7 1.8-.2.2-.4.4-.5.6-.2.4.1.6.6.6h3.2c.4 0 .6.3.6.7v1.4c0 .4-.2.6-.6.6H2.4c-.3 0-.6-.2-.6-.6V2.5c0-.3.4-.7.7-.7z" },
-	  unlock: { "d": "M4.6 8.4v.1-.1zm14.8 2.2h-12V8.4c0-2.4 1.8-4.6 4.3-4.7 2.2-.1 4.1 1.3 4.7 3.3.1.2.3.4.5.4h1.9c.3 0 .5-.3.4-.6-.7-3.5-3.8-6.1-7.6-5.9-3.9.2-6.9 3.6-7 7.5v2.2c-1 0-1.8.8-1.8 1.9v8.7c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9v-8.7c0-1.1-.8-1.9-1.8-1.9zm-5.3 9.1c.1.3-.1.6-.4.6h-3.4c-.3 0-.6-.3-.5-.6l.9-2.8c-.7-.4-1.1-1.3-1-2.2.2-.9.9-1.5 1.8-1.7 1.5-.3 2.8.8 2.8 2.1 0 .8-.4 1.5-1 1.8l.8 2.8z" },
-	  unmuted: { "d": "M19.2 8.3c-.7 0-1.2.5-1.2 1.1v1.9c0 3.2-2.7 5.9-6 5.9s-6.1-2.7-6.1-5.9V9.4c0-.6-.5-1.1-1.1-1.1s-1.1.5-1.1 1.1v1.9c0 4.1 3.1 7.4 7.1 8v1.6H9c-.7 0-1.2.4-1.2 1.1s.5 1.1 1.2 1.1h6c.6 0 1.2-.5 1.2-1.1s-.6-1.1-1.2-1.1h-1.9v-1.6c4.1-.6 7.2-3.9 7.2-8V9.4c0-.6-.5-1.1-1.1-1.1zM12 15c2 0 3.7-1.7 3.7-3.7V4.6c0-2.1-1.6-3.7-3.7-3.7S8.3 2.5 8.3 4.6v6.7c0 2 1.7 3.7 3.7 3.7z" },
-	  up: { "d": "M20.2 17.5H3.8c-.4 0-.8-.6-.4-1l8-9.8c.3-.3.9-.3 1.2 0l8 9.8c.4.4.1 1-.4 1z" },
-	  upload: { "d": "M22.4 14.3H21c-.4 0-.7.4-.7.7v4.6c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V15c0-.3-.3-.7-.7-.7H1.6c-.4 0-.7.4-.7.7v6.2c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V15c0-.3-.3-.7-.7-.7zM12.5 1.1c-.3-.3-.7-.3-1 0L5.3 7.3c-.3.3-.3.7 0 1l.9 1c.3.3.7.3 1 0l2.6-2.6c.3-.3.8-.1.8.3v9.8c0 .4.3.7.7.7h1.3c.4 0 .8-.4.8-.7V7.1c0-.5.4-.6.8-.4l2.6 2.6c.2.3.6.3.9 0l1-.9c.3-.3.3-.7 0-1l-6.2-6.3z" },
-	  user: { "d": "M23.1 19.8v1.1c0 1.2-1 2.2-2.2 2.2H3.1c-1.2 0-2.2-1-2.2-2.2v-1.1c0-2.6 3.2-4.3 6.1-5.6l.3-.1c.2-.1.5-.1.7 0 1.2.8 2.5 1.2 4 1.2s2.8-.4 3.9-1.2c.3-.1.5-.1.7 0l.3.1c3 1.3 6.2 2.9 6.2 5.6zM12 .9c3 0 5.5 2.7 5.5 6.1S15 13.1 12 13.1 6.5 10.4 6.5 7 9 .9 12 .9z" },
-	  volume_high: { "d": "M11.4 1.2L5.5 8.3H2.8c-1 0-1.9.8-1.9 1.9v3.6c0 1.1.9 1.9 1.9 1.9h2.7l5.9 7.1c.6.6 1.5.2 1.5-.6V1.8c0-.8-1-1.2-1.5-.6zM19.7 4c-.2-.2-.5-.2-.7 0l-.6.7c-.2.1-.2.5 0 .6 1.7 1.7 2.8 4.1 2.8 6.7 0 2.6-1.1 5-2.8 6.7-.2.2-.2.5 0 .6l.6.7c.2.2.5.2.7 0 2-2 3.4-4.9 3.4-8 0-3.1-1.3-6-3.4-8zm-2.9 3c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7 1 .9 1.6 2.2 1.6 3.7s-.7 2.8-1.7 3.7c-.2.2-.2.5 0 .7l.7.6c.1.2.4.2.6 0 1.3-1.2 2.2-3 2.2-5s-.8-3.8-2.1-5z" },
-	  volume_low: { "d": "M11.4 1.2L5.5 8.3H2.8c-1 0-1.9.8-1.9 1.9v3.6c0 1.1.9 1.9 1.9 1.9h2.7l5.9 7.1c.6.6 1.5.2 1.5-.6V1.8c0-.8-1-1.2-1.5-.6zM16.8 7c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7 1 .9 1.6 2.2 1.6 3.7s-.7 2.8-1.7 3.7c-.2.2-.2.5 0 .7l.7.6c.1.2.4.2.6 0 1.3-1.2 2.2-3 2.2-5s-.8-3.8-2.1-5z" },
-	  volume_off: { "d": "M11.4 1.2L5.5 8.3H2.8c-1 0-1.9.8-1.9 1.9v3.6c0 1.1.9 1.9 1.9 1.9h2.7l5.9 7.1c.6.6 1.5.2 1.5-.6V1.8c0-.8-1-1.2-1.5-.6zM20.7 12l2.2-2.3c.2-.1.2-.4 0-.6l-.6-.7c-.2-.1-.5-.1-.7 0l-2.2 2.3-2.3-2.3c-.2-.1-.4-.1-.6 0l-.7.7c-.2.2-.2.5 0 .6l2.3 2.3-2.3 2.3c-.2.1-.2.4 0 .6l.7.7c.2.1.4.1.6 0l2.3-2.3 2.2 2.3c.2.1.5.1.7 0l.6-.7c.2-.2.2-.5 0-.6L20.7 12z" },
-	  warning: { "d": "M23.7 19.6L13.2 2.5c-.6-.9-1.8-.9-2.4 0L.3 19.6c-.7 1.1 0 2.6 1.1 2.6h21.2c1.1 0 1.8-1.5 1.1-2.6zM12 18.5c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zm1.4-4.2c0 .3-.2.5-.5.5h-1.8c-.3 0-.5-.2-.5-.5v-6c0-.3.2-.5.5-.5h1.8c.3 0 .5.2.5.5v6z" },
-	  weeklyview: { "d": "M20.3 3.2H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9zm1.2 6h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zm-6.4 4.4l-2.9 6.2c-.1.3-.4.5-.8.5-.5 0-.9-.4-.9-.8 0-.1.1-.3.1-.4l2.5-5.3H9.6c-.5 0-.8-.2-.8-.6 0-.4.3-.7.8-.7h4.8c.4 0 .8.3.8.8 0 .1 0 .2-.1.3z" },
-	  world: { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 2.3zm.9.1h-.1.1zM12 20.8c-4.8 0-8.8-4-8.8-8.8 0-.5.1-1 .2-1.4.6.1 1.3.3 1.7.7.8.8 1.6 1.8 2.5 2 0 0-.1 0-.2.2-.1.1-.2.4-.2.9 0 2.1 2 .8 2 3s2.5 3 2.5 1.3 1.6-2.6 1.6-3.9-1.3-1.3-2-1.8c-.9-.4-1.3-1.1-2.9-.9-.8-.7-1.2-1.4-.9-2.1.4-.8 2.1-1 2.1-2.2S8.5 6.4 7.7 6.4c-.4 0-1.2-.3-1.8-.6.7-.8 1.7-1.4 2.7-1.9.8.3 2 .9 3.1.9 1.2 0 1.9-.9 1.7-1.5 2.1.3 3.9 1.4 5.2 2.9-.6.4-1.6.9-3.2.9-2.1 0-2.1 2.1-.9 2.5 1.3.5 2.6-.8 3 0 .5.9-3 .9-2.1 3 .9 2.1 1.7 0 2.6 2.1.9 2.1 2.6-.3 1.3-2-.6-.7-.4-3 .9-3h.4c.2.7.3 1.5.3 2.3-.1 4.8-4.1 8.8-8.9 8.8z" },
-	  zoomin: { "d": "M14.3 8.8h-2.8V6c0-.3-.1-.5-.4-.5H9.2c-.2 0-.4.2-.4.5v2.8H6c-.3 0-.5.2-.5.4v1.9c0 .3.2.4.5.4h2.8v2.8c0 .3.2.5.4.5h1.9c.3 0 .4-.2.4-.5v-2.8h2.8c.3 0 .5-.1.5-.4V9.2c0-.2-.2-.4-.5-.4zm8.6 12.1l-5.3-5.3c1.1-1.5 1.8-3.4 1.8-5.4 0-5.1-4.2-9.3-9.2-9.3S.9 5.1.9 10.2s4.2 9.2 9.3 9.2c2 0 3.9-.7 5.4-1.8l5.3 5.3c.3.3.7.3 1 0l.9-1c.3-.3.3-.7.1-1zm-12.7-4.3c-3.6 0-6.5-2.9-6.5-6.4s2.9-6.5 6.5-6.5 6.4 2.9 6.4 6.5-2.9 6.4-6.4 6.4z" },
-	  zoomout: [{ "d": "M8.8 11.5h5.5c.3 0 .5-.1.5-.4V9.2c0-.2-.2-.4-.5-.4H8.8m0 0H6c-.3 0-.5.2-.5.4v1.9c0 .3.2.4.5.4h2.8" }, { "d": "M22.9 20.9l-5.3-5.3c1.1-1.5 1.8-3.4 1.8-5.4 0-5.1-4.2-9.3-9.2-9.3S.9 5.1.9 10.2s4.2 9.2 9.3 9.2c2 0 3.9-.7 5.4-1.8l5.3 5.3c.3.3.7.3 1 0l.9-1c.3-.3.3-.7.1-1zm-12.7-4.3c-3.6 0-6.5-2.9-6.5-6.4s2.9-6.5 6.5-6.5 6.4 2.9 6.4 6.5-2.9 6.4-6.4 6.4z" }]
+	  add: { "path": { "d": "M13.8 13.4h7.7c.3 0 .7-.3.7-.7v-1.4c0-.4-.4-.7-.7-.7h-7.7c-.2 0-.4-.2-.4-.4V2.5c0-.3-.3-.7-.7-.7h-1.4c-.4 0-.7.4-.7.7v7.7c0 .2-.2.4-.4.4H2.5c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h7.7c.2 0 .4.2.4.4v7.7c0 .3.3.7.7.7h1.4c.4 0 .7-.4.7-.7v-7.7c0-.2.2-.4.4-.4z" } },
+	  adduser: { "path": { "d": "M10.1 17.1c0-1.3.4-2.7 1.1-3.8.8-1.4 1.6-1.9 2.3-3 1.2-1.7 1.4-4.1.7-6-.8-1.9-2.5-3-4.6-2.9S6 2.7 5.3 4.6c-.7 2-.4 4.5 1.3 6.1.6.7 1.3 1.7.9 2.6-.3 1-1.4 1.4-2.2 1.7-1.8.8-4 1.9-4.3 4.1-.4 1.7.8 3.5 2.7 3.5h7.8c.4 0 .6-.4.4-.7-1.1-1.4-1.8-3.1-1.8-4.8zm7.4-5.6c-3.1 0-5.5 2.5-5.5 5.6s2.4 5.5 5.5 5.5 5.5-2.5 5.5-5.5-2.5-5.6-5.5-5.6zm2.8 6c0 .3-.2.5-.5.5h-1.3v1.4c0 .3-.3.4-.5.4h-1c-.2 0-.4-.1-.4-.4V18h-1.4c-.3 0-.4-.2-.4-.5v-.9c0-.3.1-.4.4-.4h1.4v-1.4c0-.3.2-.5.4-.5h1c.2 0 .5.2.5.5v1.4h1.3c.3 0 .5.1.5.4v.9z" } },
+	  announcement: { "path": { "d": "M10.5 21l-.6-.5c-.7-.5-.7-1.4-.7-1.9v-1.3c0-.4-.3-.7-.7-.7H5.8c-.4 0-.7.3-.7.7v3.6c0 1.2.7 2.2 1.9 2.2h2.2c1.4 0 1.5-.9 1.5-.9s.2-.9-.2-1.2zM20.8 8.3V2c0-1.1-1.4-1.4-2.2-.7l-4.1 3.9c-.6.5-1.4.8-2.3.8h-7C2.8 6 .9 8.1.9 10.5v.1c0 2.4 1.9 4.2 4.3 4.2h7c.9 0 1.7.3 2.4.9l4 4c.8.7 2.2.4 2.2-.7v-6.3c1.4 0 2.2-.9 2.2-2.2 0-1.2-.8-2.2-2.2-2.2z" } },
+	  answer: { "path": { "d": "M12 1.8C5.9 1.8.9 6.4.9 12c0 1.8.5 3.5 1.4 5 .1.2.1.4.1.6l-1 3.2c-.2.6.4 1.1 1 .9l3.2-1.1c.2-.1.4-.1.6.1 1.7.9 3.7 1.5 5.8 1.5 6.2 0 11.1-4.5 11.1-10.2C23 6.4 18.1 1.8 12 1.8zm5.3 7.9l-5.6 5.6c-.3.2-.5.3-.8.3-.3 0-.6-.1-.8-.3l-2.7-2.7c-.2-.2-.2-.6 0-.7l.8-.8c.2-.2.5-.2.8 0l1.9 2 4.8-4.8c.3-.3.6-.3.8 0l.8.7c.2.2.2.6 0 .7z" } },
+	  apps: { "path": { "d": "M6 1.8H3.2c-.8 0-1.4.6-1.4 1.4V6c0 .8.6 1.4 1.4 1.4H6c.8 0 1.4-.6 1.4-1.4V3.2c0-.8-.6-1.4-1.4-1.4zm0 14.8H3.2c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4H6c.8 0 1.4-.6 1.4-1.4V18c0-.8-.6-1.4-1.4-1.4zm0-7.4H3.2c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4H6c.8 0 1.4-.6 1.4-1.4v-2.8c0-.8-.6-1.4-1.4-1.4zm7.4-7.4h-2.8c-.8 0-1.4.6-1.4 1.4V6c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V3.2c0-.8-.6-1.4-1.4-1.4zm0 14.8h-2.8c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V18c0-.8-.6-1.4-1.4-1.4zm0-7.4h-2.8c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4v-2.8c0-.8-.6-1.4-1.4-1.4zm7.4-7.4H18c-.8 0-1.4.6-1.4 1.4V6c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V3.2c0-.8-.6-1.4-1.4-1.4zm0 14.8H18c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4V18c0-.8-.6-1.4-1.4-1.4zm0-7.4H18c-.8 0-1.4.6-1.4 1.4v2.8c0 .8.6 1.4 1.4 1.4h2.8c.8 0 1.4-.6 1.4-1.4v-2.8c0-.8-.6-1.4-1.4-1.4z" } },
+	  arrowdown: { "path": { "d": "M4.4 14.3c-.3.4-.3.9 0 1.3l7 6.7c.3.4.9.4 1.2 0l7-6.7c.4-.4.4-.9 0-1.3l-1.3-1.2c-.3-.4-.9-.4-1.3 0l-2.1 2.1c-.4.4-1.1.1-1.1-.4V2.3c0-.5-.4-.9-.9-.9h-1.8c-.5 0-.9.5-.9.9v12.5c0 .5-.7.8-1.1.4L7 13.1c-.4-.4-1-.4-1.3 0l-1.3 1.2z" } },
+	  arrowup: { "path": { "d": "M19.1 9.7c.4-.4.4-.9 0-1.3l-6.9-6.7c-.4-.4-.9-.4-1.3 0L4 8.4c-.4.4-.4.9 0 1.3l1.3 1.2c.3.4.9.4 1.3 0l2.1-2.1c.4-.4 1-.1 1 .4v12.5c0 .5.5.9 1 .9h1.8c.5 0 .9-.5.9-.9V9.2c0-.5.7-.8 1-.4l2.2 2.1c.4.4.9.4 1.3 0l1.2-1.2z" } },
+	  attach: { "path": { "d": "M8.1 16.9c.3.3.7.3 1 0l4.6-4.6c.3-.3.9-.3 1.3 0 .4.4.4 1 0 1.4l-5.7 5.6c-1.2 1.2-3.3 1.2-4.5 0l-.1-.1c-1.2-1.2-1.2-3.3 0-4.5l10-10c1.3-1.3 3.3-1.3 4.6 0 1.3 1.3 1.3 3.3 0 4.6-.2.3-.3.6-.1.9.3.5.5 1 .6 1.6.1.3.6.4.8.2l.7-.7c2.4-2.4 2.4-6.2 0-8.6h-.1C18.9.4 15 .4 12.7 2.7l-10 10c-2.4 2.3-2.4 6.2 0 8.5l.1.1c2.3 2.4 6.1 2.4 8.5 0l5.7-5.7c1.5-1.4 1.4-3.8-.1-5.3-1.5-1.4-3.9-1.3-5.3.1L7.1 15c-.3.2-.3.7 0 1l1 .9z" } },
+	  back: { "path": { "d": "M22.4 10.6H7.1c-.4 0-.6-.5-.3-.8l4.4-4.4c.3-.3.3-.7 0-1l-1-1c-.3-.3-.7-.3-1 0l-8 8.1c-.3.3-.3.7 0 1l8 8.1c.3.3.7.3 1 0l1-1c.2-.3.2-.7 0-1l-4.5-4.4c-.2-.3-.1-.8.4-.8h15.3c.4 0 .7-.3.7-.7v-1.3c0-.4-.3-.8-.7-.8z" } },
+	  ban: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zM3.7 12c0-4.6 3.7-8.3 8.3-8.3 1.8 0 3.5.5 4.8 1.5L5.2 16.8c-1-1.3-1.5-3-1.5-4.8zm8.3 8.3c-1.8 0-3.5-.5-4.8-1.5L18.8 7.2c1 1.3 1.5 3 1.5 4.8 0 4.6-3.7 8.3-8.3 8.3z" } },
+	  bold: { "path": { "d": "M18.9 8.8c0-2.8-2.2-5.1-4.8-5.1H6.5c-.5 0-1 .4-1 .9v15.2c0 .6.5 1 1 1h7.6c2.6 0 4.8-2.3 4.8-5.1 0-1.3-.5-2.5-1.3-3.5.8-.9 1.3-2.1 1.3-3.4zm-4.8 8.7H8.8v-3.7h5.3c.9 0 1.6.9 1.6 1.9s-.7 1.8-1.6 1.8zm0-6.9H8.8V6.9h5.3c.9 0 1.6.9 1.6 1.9s-.7 1.8-1.6 1.8z" } },
+	  bookmark: { "path": { "d": "M17.2 22.9l-4.6-4.6c-.2-.3-.6-.3-.9 0l-4.9 4.6c-.3.3-.8.1-.8-.3V2.8C6 1.8 6.8.9 7.8.9h8.4c1 0 1.8.9 1.8 1.9v19.8c0 .4-.5.6-.8.3z" } },
+	  brush: { "path": { "d": "M22.8 1.2c-1.6-1.6-10.3 3.4-15.7 12-.2.4-.1.9.3 1.1 1.2.6 2.2 1.6 2.7 2.8.2.5.7.6 1.1.3C19.5 12 24.4 2.9 22.8 1.2zm-17.3 15c-.7 0-1.3.4-1.8.9h-.1c-.2 0-.4.3-.6.7-.7 1.2-.9 2.7-2 4.3-.2.3-.1.7.2.8 1.6.5 4.4 0 5.8-1v.1c.4-.1.3-.3.4-.3.5-.9 1-1.4 1-2.3-.1-1.7-1.3-3.2-2.9-3.2z" } },
+	  bucket: { "path": { "d": "M22.6 5.1c0-2.9-4.5-4.2-8.8-4.2S5.1 2.2 5.1 5.1v.2C1.1 6.5.5 9 .5 10.4c0 1.4.7 2.8 1.9 3.9 1 .8 2.3 1.3 3.6 1.4h.4c3-.1 5.9-1.1 6.8-2.7-.5-.4-.7-.9-.7-1.5 0-1 .8-1.8 1.8-1.8s1.9.8 1.9 1.8c0 .8-.5 1.5-1.2 1.7-.9 2.6-4.6 4.3-9 4.3v2.8c0 1.5 3.5 2.8 7.8 2.8s7.9-1.3 7.9-2.8V7.1c.6-.6.9-1.2.9-2zm-8.8-1.4c3.1 0 5 .7 5.8 1.2.1.1.1.3 0 .4-.8.5-2.7 1.2-5.8 1.2s-4.9-.7-5.7-1.2c-.1-.1-.1-.3 0-.4.8-.5 2.7-1.2 5.7-1.2zM3.6 12.8c-.8-.6-1.3-1.5-1.3-2.4 0-2 1.9-3 3.6-3.4l.1.1v6.7c-.9 0-1.8-.4-2.4-1z" } },
+	  builder: { "path": { "d": "M5.3 7.8H1.6c-.4 0-.7.4-.7.7v11.8c0 1 .9 1.9 1.9 1.9h2.5c.4 0 .7-.4.7-.7v-13c0-.3-.3-.7-.7-.7zm17.1 0H8.5c-.3 0-.7.4-.7.7v13c0 .3.4.7.7.7h12.7c1 0 1.9-.9 1.9-1.9V8.5c0-.3-.3-.7-.7-.7zm-1.2-6H2.8c-1 0-1.9.9-1.9 1.9v1.6c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V3.7c0-1-.9-1.9-1.9-1.9z" } },
+	  call: { "path": { "d": "M22.4 17.5l-2.8-2.3c-.7-.5-1.6-.5-2.2 0L15 16.9c-.3.3-.7.2-1-.1l-3.6-3.2L7.2 10c-.3-.3-.3-.6-.1-1l1.7-2.4c.5-.6.5-1.5 0-2.2L6.5 1.6C5.8.8 4.6.7 3.8 1.5L1.4 3.9c-.4.3-.6.9-.6 1.4.3 4.7 2.4 9.1 5.5 12.3s7.6 5.2 12.3 5.5c.6 0 1.1-.2 1.4-.6l2.4-2.4c.9-.7.9-2 0-2.6z" } },
+	  capslock: { "path": { "d": "M20.1 9.7l-7.5-8.5c-.3-.4-.9-.4-1.2 0L3.9 9.7c-.3.4-.1.9.4.9h3.5v5.8c0 .4.4.7.7.7h7c.3 0 .7-.3.7-.7v-5.8h3.5c.5 0 .7-.5.4-.9zm-4.6 10.1h-7c-.3 0-.7.4-.7.7v1.9c0 .4.4.7.7.7h7c.3 0 .7-.3.7-.7v-1.9c0-.3-.4-.7-.7-.7z" } },
+	  cases: { "path": { "d": "M4.2 1.6c0-.4-.4-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v14.3c0 .4.3.7.7.7h1.9c.3 0 .7-.3.7-.7V1.6zm18.9 0c0-.4-.3-.7-.7-.7h-1.9c-.3 0-.7.3-.7.7v14.3c0 .4.4.7.7.7h1.9c.4 0 .7-.3.7-.7V1.6zM17.3.9h-1.4c-.3 0-.7.4-.7.8v5.7c0 .2.1.3.3.4.8.4 1.5.9 2.1 1.5.1.2.4.1.4-.1V1.7c0-.4-.3-.8-.7-.8zM11.1 7h1.8s.5-.2.5-.4V1.7c0-.4-.3-.8-.7-.8h-1.4c-.4 0-.7.4-.7.8v4.9c0 .2.2.5.5.4zM6.4 9.3c.6-.6 1.4-1.1 2.1-1.5.2-.1.3-.2.3-.4V1.7c0-.4-.4-.8-.7-.8H6.7c-.4 0-.7.4-.7.8v7.5c0 .2.2.3.4.1zm5.6-.5c-3.3 0-6 2.7-6 6 0 1 .3 2 .7 2.9L3.5 21c-.3.2-.3.6 0 .9l.9 1c.3.3.7.3 1 0l3.2-3.2c1 .7 2.2 1.1 3.4 1.1 3.3 0 6-2.7 6-6s-2.7-6-6-6zm0 9.2c-1.8 0-3.2-1.4-3.2-3.2s1.4-3.2 3.2-3.2 3.2 1.4 3.2 3.2S13.8 18 12 18z" } },
+	  center_align_text: { "path": { "d": "M22.2 3c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3zm-2.8 5.5c0-.3-.3-.7-.7-.7H5.3c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h13.4c.4 0 .7-.3.7-.7V8.5zm-.9 11.1c0-.4-.4-.7-.7-.7H6.2c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h11.6c.3 0 .7-.3.7-.7v-1.4zm3.7-5.5c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4z" } },
+	  chart: { "path": { "d": "M21 10.8L11.5 16c-.6.3-1.3-.1-1.3-.8V3.9c0-.5-.5-.9-.9-.7-4.6 1.3-8 5.8-7.4 10.9.5 4.6 4.2 8.4 8.9 8.9 6.2.7 11.4-4.1 11.4-10.1 0-.5-.1-1.1-.2-1.6s-.6-.7-1-.5zm-8.2 2.1l9.1-4.8c.5-.3.7-1 .3-1.5-2-2.9-5.3-5-9-5.6-.6-.1-1.2.4-1.2 1v10.5c0 .4.4.6.8.4z" } },
+	  chat: { "path": { "d": "M12 1.8C5.9 1.8 1 6.4 1 12c0 1.7.5 3.4 1.3 4.8.1.3.2.6.1.8l-1.4 4c-.2.3.2.6.6.6l3.9-1.6c.3-.1.5 0 .8.1 1.7.9 3.7 1.5 5.8 1.5 6 0 11-4.5 11-10.2C23 6.4 18.1 1.8 12 1.8zm-5.5 12c-1.1 0-1.9-.8-1.9-1.8s.8-1.8 1.9-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zm5.5 0c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zm5.5 0c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.9.8 1.9 1.8-.8 1.8-1.9 1.8z" } },
+	  check: { "path": { "d": "M8.8 19.6L1.2 12c-.3-.3-.3-.8 0-1.1l1-1c.3-.3.8-.3 1 0L9 15.7c.1.2.5.2.6 0L20.9 4.4c.2-.3.7-.3 1 0l1 1c.3.3.3.7 0 1L9.8 19.6c-.2.3-.7.3-1 0z" } },
+	  checkin: { "path": { "d": "M12 .9C7.2.9 3.2 4.8 3.2 9.7c0 6.1 6.3 11.7 8.2 13.2.4.3.8.3 1.2 0 1.9-1.5 8.2-7.1 8.2-13.2 0-4.9-4-8.8-8.8-8.8zm0 12.5c-2 0-3.7-1.7-3.7-3.7S10 6 12 6s3.7 1.7 3.7 3.7-1.7 3.7-3.7 3.7z" } },
+	  chevrondown: { "path": { "d": "M22 8.2l-9.5 9.6c-.3.2-.7.2-1 0L2 8.2c-.2-.3-.2-.7 0-1l1-1c.3-.3.8-.3 1.1 0l7.4 7.5c.3.3.7.3 1 0l7.4-7.5c.3-.2.8-.2 1.1 0l1 1c.2.3.2.7 0 1z" } },
+	  chevronleft: { "path": { "d": "M15.8 22l-9.6-9.4c-.3-.3-.3-.8 0-1.1l9.6-9.4c.3-.3.7-.3 1 0l1 1c.3.3.3.7 0 1l-7.6 7.4c-.3.3-.3.8 0 1.1l7.5 7.4c.3.3.3.7 0 1l-1 1c-.2.2-.6.2-.9 0z" } },
+	  chevronright: { "path": { "d": "M8.3 2l9.5 9.5c.3.3.3.7 0 1L8.3 22c-.3.2-.8.2-1.1 0l-1-1c-.2-.3-.2-.8 0-1.1l7.6-7.4c.2-.3.2-.7 0-1L6.3 4.1C6 3.8 6 3.3 6.3 3l1-1c.3-.2.7-.2 1 0z" } },
+	  chevronup: { "path": { "d": "M2 15.8l9.5-9.6c.3-.2.7-.2 1 0l9.5 9.6c.2.3.2.7 0 1l-1 1c-.3.3-.8.3-1.1 0l-7.4-7.6c-.3-.2-.7-.2-1 0l-7.4 7.6c-.3.2-.8.2-1.1 0l-1-1c-.2-.3-.2-.7 0-1z" } },
+	  clear: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm2.3 11.5l3.6 3.6c.1.2.1.4 0 .6l-1.3 1.3c-.2.2-.5.2-.7 0l-3.6-3.6c-.2-.2-.4-.2-.6 0l-3.6 3.6c-.2.2-.5.2-.7 0l-1.3-1.3c-.1-.2-.1-.4 0-.6l3.6-3.6c.2-.2.2-.5 0-.7L6.1 8.1c-.2-.2-.2-.5 0-.7l1.3-1.3c.2-.1.4-.1.6 0l3.7 3.7c.2.2.4.2.6 0l3.6-3.6c.2-.2.5-.2.7 0l1.3 1.3c.1.2.1.4 0 .6l-3.6 3.6c-.2.2-.2.5 0 .7z" } },
+	  clock: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 19.4c-4.6 0-8.3-3.7-8.3-8.3S7.4 3.7 12 3.7s8.3 3.7 8.3 8.3-3.7 8.3-8.3 8.3zm1.6-8.2c-.2-.1-.2-.3-.2-.5V7.2c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v5.5c0 .2.1.4.2.5l3.4 3.5c.3.2.7.2 1 0l1-1c.2-.3.2-.7 0-1l-2.6-2.6z" } },
+	  close: { "path": { "d": "M14.3 11.7l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.2-.7-.2-1 0l-6 6.1c-.2.2-.5.2-.7 0l-6-6.1c-.3-.3-.7-.3-1 0l-1 1c-.2.2-.2.7 0 .9l6.1 6.1c.2.2.2.4 0 .6l-6.1 6.1c-.3.3-.3.7 0 1l1 1c.2.2.7.2.9 0l6.1-6.1c.2-.2.4-.2.6 0l6.1 6.1c.2.2.7.2.9 0l1-1c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z" } },
+	  comments: { "path": { "d": "M22.1 14.3c-.1-.2-.1-.4 0-.5.6-1.1 1-2.3 1-3.6 0-4.1-3.5-7.4-7.9-7.4-2 0-3.8.8-5.2 2 4.7.5 8.5 4.4 8.5 9.1 0 1.1-.3 2.3-.7 3.3.5-.2 1-.4 1.5-.7.2-.1.4-.1.5 0l2.9 1.1c.2.1.5-.2.4-.4l-1-2.9zM8.8 6.5C4.4 6.5.9 9.8.9 13.9c0 1.3.4 2.5 1 3.5.1.2.1.4 0 .6l-1 2.8c-.1.3.2.5.4.4l2.9-1.1c.1 0 .3 0 .5.1 1.2.7 2.6 1 4.1 1 4.3 0 7.8-3.3 7.8-7.4 0-4-3.5-7.3-7.8-7.3z" } },
+	  company: { "path": { "d": "M9.7 1.8H3.2c-.8 0-1.4.6-1.4 1.4v18.5c0 .2.3.5.5.5h1.9c.2 0 .4-.2.4-.5v-2.8c0-.3.2-.4.5-.4h2.7c.3 0 .5.1.5.4v2.8c0 .3.2.5.5.5h1.4c.5 0 .9-.5.9-1v-18c0-.8-.6-1.4-1.4-1.4zM5.5 16.4c0 .1-.1.2-.2.2H3.9c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H3.9c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H3.9c-.1 0-.2-.1-.2-.2V4.8c0-.1.1-.2.2-.2h1.4c.1 0 .2.1.2.2v2.4zm3.7 9.2c0 .1-.1.2-.2.2H7.6c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3H9c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H7.6c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3H9c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H7.6c-.1 0-.2-.1-.2-.2V4.8c0-.1.1-.2.2-.2H9c.1 0 .2.1.2.2v2.4zm11.6-.7h-6.5c-.8 0-1.4.6-1.4 1.3v13.9c0 .2.3.5.5.5h1.8c.3 0 .5-.2.5-.5v-2.8c0-.3.2-.4.5-.4h2.7c.3 0 .5.1.5.4v2.8c0 .3.2.5.4.5h1.4c.5 0 1-.5 1-1V7.8c0-.7-.6-1.3-1.4-1.3zm-4.2 9.9c0 .1-.1.2-.2.2H15c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2H15c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm3.7 4.6c0 .1-.1.2-.2.2h-1.4c-.1 0-.2-.1-.2-.2v-2.3c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3zm0-4.6c0 .1-.1.2-.2.2h-1.4c-.1 0-.2-.1-.2-.2V9.5c0-.2.1-.3.2-.3h1.4c.1 0 .2.1.2.3v2.3z" } },
+	  connected_apps: { "path": { "d": "M11 14.4l-1.8 8.1c-.1.5.5.8.8.4l9.7-12c.3-.3.1-.7-.3-.7h-5.2c-.4 0-.6-.5-.4-.7L18.4 2c.2-.5-.1-1.1-.6-1.1H9.6c-.5 0-.9.3-1.1.8L4.7 12.9c-.2.5.1.9.6.9h5.3c.2 0 .5.3.4.6z" } },
+	  contract: { "path": { "d": "M13.7 11.1h7.1c.4 0 .6-.5.2-.9l-2.3-2.3 4.2-4.2c.2-.2.2-.7 0-.9l-1.7-1.7c-.2-.2-.6-.2-.9.1l-4.1 4.1L13.8 3c-.4-.3-.9-.2-.9.3v7.1c0 .3.4.7.8.7zm-3.4 1.8H3.2c-.4 0-.6.5-.2.9l2.3 2.3-4.2 4.2c-.2.2-.2.7 0 .9l1.7 1.7c.2.2.6.2.9 0l4.2-4.2 2.3 2.3c.4.4.9.2.9-.2v-7.1c0-.3-.4-.8-.8-.8zm2.6.8v7.1c0 .4.5.6.9.2l2.3-2.3 4.2 4.2c.2.2.7.2.9 0l1.7-1.7c.2-.2.2-.6-.1-.9l-4.1-4.1 2.3-2.4c.3-.4.2-.9-.3-.9h-7.1c-.3 0-.7.4-.7.8zm-1.8-3.4V3.2c0-.4-.5-.6-.9-.2L7.9 5.3 3.7 1.1c-.2-.2-.7-.2-.9 0L1.1 2.8c-.2.2-.2.6 0 .9l4.2 4.2L3 10.2c-.4.4-.2.9.2.9h7.1c.3 0 .8-.4.8-.8z" } },
+	  contract_alt: { "path": { "d": "M13.7 11h7.1c.4 0 .6-.5.2-.8l-2.3-2.4 4.2-4.2c.2-.2.2-.6 0-.8l-1.7-1.7c-.2-.2-.6-.2-.9 0l-4.1 4.2L13.8 3c-.4-.4-.9-.2-.9.2v7.1c0 .4.4.7.8.7zm-3.4 1.9H3.2c-.4 0-.6.5-.2.9l2.3 2.3-4.2 4.2c-.2.2-.2.7 0 .9l1.7 1.7c.2.2.6.2.9 0l4.2-4.2 2.3 2.3c.4.4.9.2.9-.2v-7.1c0-.3-.4-.8-.8-.8z" } },
+	  copy: { "path": { "d": "M20.3.9h-12c-1 0-1.8.9-1.8 1.9v.9h11c1.1 0 1.9.8 1.9 1.8v13h.9c1 0 1.9-.9 1.9-1.9V2.8c0-1-.9-1.9-1.9-1.9zm-2.8 6.5c0-1-.8-1.9-1.8-1.9h-12c-1 0-1.9.9-1.9 1.9v13.8c0 1 .9 1.9 1.9 1.9h12c1 0 1.8-.9 1.8-1.9V7.4zm-8.3 3.2c0 .3-.2.5-.4.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h3.7c.2 0 .4.2.4.5v.9zm3.7 7.4c0 .3-.2.5-.4.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h7.4c.2 0 .4.2.4.5v.9zm1.9-3.7c0 .3-.2.5-.5.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h9.2c.3 0 .5.2.5.5v.9z" } },
+	  crossfilter: { "path": { "d": "M16.2 4.2c-.8 0-1.6 0-2.3.3.9.7 1.6 1.5 2.2 2.4h.1c2.8 0 5 2.3 5 5.1s-2.2 5.1-5 5.1c-.7 0-1.4-.2-2-.4.3-.5.7-1.1.9-1.7.1-.2.2-.4.2-.6.3-.7.4-1.6.4-2.4 0-4.3-3.5-7.8-7.9-7.8S0 7.7 0 12s3.5 7.8 7.8 7.8c.8 0 1.6 0 2.3-.3-.9-.7-1.6-1.5-2.2-2.4h-.1c-2.8 0-5-2.3-5-5.1s2.2-5.1 5-5.1c.7 0 1.4.2 2.1.4-1 1.3-1.6 2.9-1.6 4.7 0 4.3 3.5 7.8 7.9 7.8S24 16.3 24 12s-3.5-7.8-7.8-7.8z" } },
+	  custom_apps: { "path": { "d": "M22.8 5.6c-.1-.2-.4-.3-.6-.1l-3.8 3.7c-.3.3-.7.3-1 0l-2.6-2.6c-.3-.3-.3-.7 0-1l3.8-3.8c.1-.1 0-.5-.2-.6-.6-.2-1.3-.3-2-.3-3.9 0-7 3.4-6.6 7.4.1.7.3 1.2.5 1.8l-8.6 8.5c-1.1 1.1-1.1 2.7 0 3.7.5.5 1.2.8 1.8.8s1.3-.3 1.9-.8l8.5-8.6c.6.2 1.2.4 1.8.5 4 .4 7.4-2.7 7.4-6.6 0-.7-.1-1.4-.3-2z" } },
+	  cut: { "path": { "d": "M18.8 14.5c-.8-.2-1.5-.1-2.2.1L6.4 1.1C6.3.9 6 .9 5.8 1l-.4.3c-.8.6-.9 1.7-.3 2.6l4.9 6.4c.2.3.2.6 0 .9l-2.7 3.4c-.6-.2-1.4-.2-2.1-.1-1.7.4-3.1 1.7-3.3 3.5-.4 2.7 2 5 4.8 4.6 1.7-.3 3-1.6 3.4-3.2.2-1.2 0-2.2-.5-3l1.9-2.6c.3-.4.8-.4 1.1 0l1.9 2.6c-.5.9-.7 1.9-.5 3 .3 1.6 1.7 2.9 3.4 3.2 2.8.4 5.2-1.9 4.8-4.6-.4-1.8-1.8-3.2-3.4-3.5zM6 19.9c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.3.6 1.3 1.4-.6 1.4-1.3 1.4zm12 0c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.3.6 1.3 1.4c0 .8-.6 1.4-1.3 1.4zM14.4 8.7c.2.3.6.3.8 0l3.7-4.8c.5-.7.4-1.6-.1-2.3h.1-.1c-.1-.1-.7-.6-.7-.6-.1-.1-.5-.1-.6.1l-4.1 5.4c-.2.2-.2.6 0 .8l1 1.4z" } },
+	  dash: { "path": { "d": "M23.1 12.7c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7v-1.4c0-.4.3-.7.7-.7h20.8c.4 0 .7.3.7.7v1.4z" } },
+	  dayview: { "path": { "d": "M20.3 3.2H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9zm1.2 6h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zm-8.1 10.2v.1c0 .3-.5.8-.9.8s-1-.5-1-.9v-4.6l-.7.7c-.1.1-.2.2-.4.2-.4 0-.7-.3-.7-.7 0-.2.1-.4.2-.5l1.8-1.8c.2-.2.4-.3.7-.3.5 0 1 .4 1 .9v6.1z" } },
+	  "delete": { "path": { "d": "M21 4.6h-5.8V2.8c0-1-.8-1.9-1.8-1.9h-2.8c-1 0-1.8.9-1.8 1.9v1.8H3c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h18c.4 0 .7-.3.7-.7V5.3c0-.4-.3-.7-.7-.7zM10.6 3.2c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.4h-2.8V3.2zm8.6 6H4.8c-.3 0-.6.4-.6.7v10.9c0 1.3 1 2.3 2.3 2.3h11c1.3 0 2.3-1 2.3-2.3V9.9c0-.3-.3-.7-.6-.7zm-8.6 10.2c0 .3-.2.4-.4.4h-1c-.2 0-.4-.1-.4-.4v-6.5c0-.3.2-.4.4-.4h1c.2 0 .4.1.4.4v6.5zm4.6 0c0 .3-.2.4-.4.4h-1c-.2 0-.4-.1-.4-.4v-6.5c0-.3.2-.4.4-.4h1c.2 0 .4.1.4.4v6.5z" } },
+	  deprecate: { "path": { "d": "M22.2 3.2H1.8c-.5 0-.9.4-.9 1v12c0 .5.4.9.9.9h7.5c.5 2.6 2.7 4.6 5.5 4.6s5-2 5.4-4.6h2c.5 0 .9-.4.9-.9v-12c0-.6-.4-1-.9-1zm-4 15.1l-1.3 1.3-2.1-2.2-2.2 2.2-1.2-1.3 2.1-2.1-2.1-2.2 1.2-1.3 2.2 2.2 2.1-2.2 1.3 1.3-2.1 2.2 2.1 2.1zm3-3.1h-1c-.4-2.6-2.7-4.6-5.4-4.6s-5.1 2-5.5 4.6H2.8V5.1h18.4v10.1z" } },
+	  desktop: { "path": { "d": "M23.1 2.8c0-1-.9-1.9-1.9-1.9H2.8C1.8.9.9 1.8.9 2.8v12c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8v-12zm-2.8 10.4c0 .3-.3.6-.7.6H4.4c-.4 0-.7-.3-.7-.6V4.4c0-.4.3-.7.7-.7h15.2c.4 0 .7.3.7.7v8.8zm-5.1 7.1h-1.4c-.2 0-.4-.2-.4-.5v-.9c0-.3-.2-.4-.5-.4h-1.8c-.3 0-.5.1-.5.4v.9c0 .3-.2.5-.4.5H8.8c-1 0-1.9.8-1.9 1.9v.2c0 .4.3.7.7.7h8.8c.4 0 .7-.3.7-.7v-.2c0-1.1-.9-1.9-1.9-1.9z" } },
+	  down: { "path": { "d": "M3.8 6.5h16.4c.4 0 .8.6.4 1l-8 9.8c-.3.3-.9.3-1.2 0l-8-9.8c-.4-.4-.1-1 .4-1z" } },
+	  download: { "path": { "d": "M22.4 14.3H21c-.4 0-.7.3-.7.7v4.6c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V15c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6.2c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V15c0-.4-.3-.7-.7-.7zm-10.9 3.1c.3.2.7.2 1 0l6.2-6.3c.3-.3.3-.7 0-.9l-.9-1c-.3-.3-.7-.3-1 0l-2.6 2.6c-.3.2-.8.1-.8-.4V1.6c0-.4-.4-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v9.8c0 .4-.5.6-.8.3L7.2 9.1c-.2-.2-.6-.2-.9 0l-1 1.1c-.3.2-.3.6 0 .9l6.2 6.3z" } },
+	  edit: { "path": { "d": "M4.4 15.4l4.1 4.1c.2.2.5.2.6 0L19.4 9.2c.2-.2.2-.4 0-.6l-4.1-4.1c-.2-.2-.4-.2-.6 0L4.4 14.8c-.2.2-.2.5 0 .6zM16.7 2.6c-.2.2-.2.5 0 .7l4 4c.2.2.5.2.7 0l1.1-1.1c.8-.7.8-1.8 0-2.6l-2.1-2.1c-.8-.8-1.9-.8-2.7 0l-1 1.1zM1 22.2c-.1.5.3.9.8.8l5-1.2c.2 0 .3-.1.4-.2l.1-.1c.1-.1.1-.4-.1-.6l-4.1-4.1c-.2-.2-.5-.2-.6-.1l-.1.1c-.1.1-.2.3-.2.4l-1.2 5z" } },
+	  email: { "path": { "d": "M11.5 13.9c.3.3.7.3 1 0l10.4-9.7c.2-.4.1-1-.6-1l-20.6.1c-.6 0-1.1.5-.6.9l10.4 9.7zM23.1 8c0-.5-.6-.8-.9-.4L14 15.1c-.6.5-1.3.8-2 .8s-1.4-.3-2-.8L1.9 7.6c-.4-.4-.9-.1-.9.4C.9 7.8.9 18.5.9 18.5c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V8z" } },
+	  end_call: { "path": { "d": "M22.4 2.6l-1-1c-.3-.3-.8-.2-1.1.2L9.5 12.6 7.2 10c-.3-.3-.3-.6-.1-1l1.7-2.4c.5-.6.5-1.5 0-2.2L6.5 1.6C5.8.8 4.6.7 3.8 1.5L1.4 3.9c-.4.3-.6.9-.6 1.4.3 4.2 2 8.3 4.6 11.3l-3.6 3.7c-.4.3-.4.8-.2 1.1l1 1c.3.3.8.2 1.1-.2L22.2 3.7c.4-.3.5-.8.2-1.1zm0 14.9l-2.8-2.3c-.7-.5-1.6-.5-2.2 0L15 16.9c-.3.3-.7.2-1-.1l-1.1-1-3.9 4c2.8 1.8 6.1 3.1 9.6 3.3.6 0 1.1-.2 1.4-.6l2.4-2.4c.9-.7.9-2 0-2.6z" } },
+	  erect_window: { "path": { "d": "M23.1 3c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7V1.6c0-.4.3-.7.7-.7h20.8c.4 0 .7.3.7.7V3z" } },
+	  error: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm5.5 11.9c-.1.3-.3.6-.7.6H7.2c-.4 0-.6-.2-.7-.6v-1.6c.1-.3.3-.6.7-.6h9.6c.4 0 .6.3.7.6v1.6z" } },
+	  event: { "path": { "d": "M21.5 9.2h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zM8.8 19.4c0 .3-.2.4-.5.4H6.5c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4H6.5c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm2.3-11.6H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9z" } },
+	  expand: { "path": { "d": "M22.5.9h-7.1c-.5 0-.6.4-.3.8L17.4 4l-4.2 4.1c-.2.3-.2.6 0 .9l1.8 1.7c.2.2.6.2.8 0L20 6.5l2.3 2.3c.4.3.8.2.8-.3V1.4c0-.2-.3-.5-.6-.5zM1.6 23.1h7.1c.5 0 .6-.5.3-.9l-2.3-2.3 4.1-4.2c.3-.2.3-.7 0-.9l-1.7-1.7c-.2-.2-.6-.2-.8 0l-4.2 4.2L1.8 15c-.4-.4-.9-.2-.9.2v7.1c0 .4.4.8.7.8zm21.5-.6v-7.1c0-.5-.4-.6-.8-.3L20 17.4l-4.1-4.2c-.3-.2-.6-.2-.9 0L13.3 15c-.2.2-.2.6 0 .8l4.2 4.2-2.3 2.3c-.3.4-.2.8.3.8h7.1c.2 0 .5-.3.5-.6zM.9 1.6v7.1c0 .5.5.6.9.3l2.3-2.3 4.2 4.1c.2.3.7.3.9 0l1.7-1.7c.2-.2.2-.6 0-.8L6.7 4.1 9 1.8c.4-.4.2-.9-.2-.9H1.7c-.4 0-.8.4-.8.7z" } },
+	  expand_alt: { "path": { "d": "M22.5.9h-7.1c-.5 0-.6.4-.3.8L17.4 4l-4.2 4.1c-.2.3-.2.6 0 .9l1.8 1.7c.2.2.6.2.8 0L20 6.5l2.3 2.3c.4.3.8.2.8-.3V1.4c0-.2-.3-.5-.6-.5zM1.6 23.1h7.1c.5 0 .6-.5.3-.9l-2.3-2.3 4.1-4.2c.3-.2.3-.7 0-.9l-1.7-1.7c-.2-.2-.6-.2-.8 0l-4.2 4.2L1.8 15c-.4-.4-.9-.2-.9.2v7.1c0 .4.4.8.7.8z" } },
+	  favorite: { "path": { "d": "M12.6 1.9l2.2 6.5c.1.2.3.4.6.4h6.9c.7 0 1 .9.5 1.3l-5.7 4.2c-.2.1-.3.5-.2.7l2.2 6.7c.2.6-.5 1.2-1.1.8l-5.5-4.1c-.3-.2-.6-.2-.9 0L6 22.5c-.6.4-1.3-.2-1.1-.8L7.1 15c.1-.2 0-.6-.3-.7l-5.6-4.2c-.6-.4-.2-1.3.4-1.3h6.9c.4 0 .6-.1.7-.4l2.2-6.6c.1-.6 1.1-.6 1.2.1z" } },
+	  filter: { "path": { "d": "M11.3 14.7c-.3-.3-.7-.3-1 0l-1.7 1.6c-.2.3-.8.1-.8-.3V9.9c0-.3-.3-.7-.6-.7H5.8c-.4 0-.7.4-.7.7V16c0 .4-.5.6-.8.3l-1.7-1.6c-.2-.3-.7-.3-.9 0l-1.1 1c-.2.3-.2.7 0 1L6 22c.2.2.6.2.9 0l5.4-5.4c.3-.3.3-.7 0-1l-1-.9zM23.5 4.4c0-.4-.3-.7-.7-.7h-17c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h17c.4 0 .7-.4.7-.7V4.4zm0 5.5c0-.3-.3-.7-.7-.7H10.4c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h12.4c.4 0 .7-.3.7-.7V9.9zm0 5.6c0-.4-.3-.7-.7-.7H15c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7v-1.3z" } },
+	  filterList: { "path": { "d": "M22.3 1.8H1.8c-.7 0-1 .8-.6 1.3l9 10.5c.2.3.4.8.4 1.2v6.7c0 .3.3.7.7.7h1.4c.4 0 .6-.4.6-.7v-6.7c0-.4.2-.9.5-1.2l9.1-10.5c.4-.5.1-1.3-.6-1.3z" } },
+	  forward: { "path": { "d": "M1.6 13.4h15.3c.4 0 .6.5.3.8l-4.4 4.4c-.3.3-.3.7 0 1l1 1c.3.3.7.3 1 0l8-8.1c.3-.3.3-.7 0-1l-8-8.1c-.3-.3-.7-.3-1 0l-1 1c-.2.3-.2.7 0 1l4.5 4.4c.2.3.1.8-.4.8H1.6c-.4 0-.7.3-.7.7v1.3c0 .4.3.8.7.8z" } },
+	  frozen: { "path": { "d": "M22.4 10.6h-3.3l2-2c.2-.2.2-.6 0-.8l-.8-.7c-.2-.3-.5-.3-.7 0L16 10.6h-2.6V8l3.5-3.6c.3-.2.3-.5 0-.7l-.7-.8c-.3-.2-.6-.2-.8 0l-2 2V1.6c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v3.3l-2-2c-.2-.2-.6-.2-.8 0l-.7.8c-.3.2-.3.5 0 .7L10.6 8v2.6H8L4.4 7.1c-.2-.3-.5-.3-.7 0l-.8.7c-.2.3-.2.6 0 .8l2 2H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h3.3l-2 2c-.2.2-.2.6 0 .8l.7.7c.3.2.6.2.8 0l3.5-3.6h2.7v2.6l-3.5 3.6c-.3.2-.3.5 0 .7l.7.8c.2.2.6.2.8 0l2-2.1v3.3c0 .4.3.8.7.8h1.3c.4 0 .8-.4.8-.8v-3.3l2 2.1c.2.2.6.2.8 0l.7-.8c.2-.2.2-.5 0-.7L13.4 16v-2.6H16l3.6 3.5c.2.3.5.3.7 0l.7-.7c.3-.2.3-.6 0-.7l-1.9-2.1h3.3c.4 0 .7-.3.7-.7v-1.4c0-.4-.3-.7-.7-.7z" } },
+	  groups: { "path": { "d": "M7.3 12.9c-.6-.9-.9-2.1-.9-3.3 0-2.1.8-3.9 2.2-4.9-.4-.9-1.4-1.5-2.6-1.5-2 0-3.1 1.7-3.1 3.6 0 1 .3 1.9 1 2.5.3.3.7.8.7 1.3s-.2.9-1.4 1.4c-1.6.7-3.2 1.8-3.2 3.3 0 1 .7 1.8 1.7 1.8h1.5c.2 0 .4-.2.6-.4.7-1.3 2.1-2.2 3.3-2.8.4-.1.5-.7.2-1zm13.5-.9c-1.1-.5-1.3-.9-1.3-1.4s.3-1 .7-1.3c.7-.7 1-1.5 1-2.5 0-1.9-1.1-3.6-3.2-3.6-1.2 0-2.1.6-2.6 1.5 1.4 1 2.2 2.8 2.2 4.9 0 1.2-.3 2.4-.9 3.3-.3.4-.1.9.2 1 1.2.6 2.6 1.5 3.3 2.8.2.2.4.4.6.4h1.5c1 0 1.7-.8 1.7-1.8 0-1.5-1.5-2.6-3.2-3.3zm-5.7 3.4c-1.3-.6-1.5-1.1-1.5-1.6 0-.6.4-1.1.8-1.4.7-.7 1.2-1.7 1.2-2.8 0-2.1-1.3-3.9-3.6-3.9S8.5 7.5 8.5 9.6c0 1.1.5 2.1 1.2 2.8.4.4.8.9.8 1.4 0 .6-.2 1-1.5 1.6-1.8.8-3.6 1.6-3.6 3.3 0 1.1.8 2 1.8 2h9.6c1.1 0 1.9-.9 1.9-2 0-1.6-1.8-2.5-3.6-3.3z" } },
+	  help: { "path": { "d": "M13.1 17.5h-2.3c-.4 0-.6-.2-.6-.6v-.7c0-1.9 1.2-3.7 3-4.3.6-.2 1.1-.5 1.5-1 2.3-2.8.2-6.1-2.6-6.2-1 0-1.9.3-2.7 1-.6.6-1 1.3-1 2.1-.1.2-.4.5-.7.5H5.4c-.5 0-.8-.4-.7-.8.1-1.7.9-3.3 2.2-4.5C8.4 1.6 10.2.8 12.3.9c3.8.1 6.9 3.3 7.1 7.1.1 3.2-1.9 6.1-4.9 7.2-.4.2-.7.5-.7 1v.6c0 .5-.3.7-.7.7zm.7 4.9c0 .4-.3.7-.6.7h-2.4c-.3 0-.6-.3-.6-.7v-2.3c0-.4.3-.7.6-.7h2.4c.3 0 .6.3.6.7v2.3z" } },
+	  home: { "path": { "d": "M22.6 12.5h-2.3v10.1c0 .3-.2.5-.5.5h-4.6c-.2 0-.4-.2-.4-.5v-7.8H9.2v7.8c0 .3-.2.5-.4.5H4.2c-.3 0-.5-.2-.5-.5V12.5H1.4c-.2 0-.4-.1-.4-.3-.1-.2-.1-.4.1-.5L11.7 1.1c.2-.2.5-.2.6 0l10.6 10.6c.2.1.2.3.1.5s-.2.3-.4.3z" } },
+	  identity: { "path": { "d": "M21.2 3.7h-5.1s.1.3.1.5c0 1.8-1.5 3.2-3.3 3.2h-2.7C8.4 7.4 6.9 6 6.9 4.2c0-.2 0-.5.1-.5H2.8c-1 0-1.9.8-1.9 1.8v13.9c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V5.5c0-1-.9-1.8-1.9-1.8zM10 17.5H4.8c-.6 0-1.1-.5-1.1-1.1 0-.9 1-1.4 2-1.9.7-.2.8-.5.8-.8 0-.3-.2-.6-.5-.8-.4-.4-.6-.9-.6-1.5 0-1.2.7-2.2 1.9-2.2s2 1 2 2.2c0 .6-.3 1.1-.7 1.5-.2.2-.4.5-.4.8 0 .2.1.5.8.8 1 .5 2 1 2 1.9.1.6-.4 1.1-1 1.1zm10.3-1.8c0 .3-.2.5-.5.5h-6.4c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h6.4c.3 0 .5.2.5.5v.9zm.9-3.7c0 .3-.2.5-.4.5h-7.4c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h7.4c.2 0 .4.2.4.5v.9zm-11-6.5h2.7c.8 0 1.4-.6 1.4-1.3s-.6-1.4-1.4-1.4h-2.7c-.8 0-1.4.6-1.4 1.4s.6 1.3 1.4 1.3z" } },
+	  image: { "path": { "d": "M23.1 4.6c0-1-.9-1.8-1.9-1.8H2.8c-1 0-1.9.8-1.9 1.8v14.8c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V4.6zm-4.8 12.9H4.9c-.6 0-.9-.6-.6-1l4.1-7.1c.1-.3.6-.3.7 0l2.5 4.2c.2.3.6.3.8.1l2-2.9c.1-.3.6-.3.7 0l3.7 5.8c.3.4 0 .9-.5.9zm-1.2-8.3c-1 0-1.9-.8-1.9-1.8s.9-1.9 1.9-1.9 1.8.9 1.8 1.9-.8 1.8-1.8 1.8z" } },
+	  inbox: { "path": { "d": "M23.1 3.7c0-1-.9-1.9-1.9-1.9H2.8c-1 0-1.9.9-1.9 1.9v16.6c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V3.7zM8.8 16.2c0 .2-.2.4-.5.4H4.2c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.5.5-.5h4.1c.3 0 .5.2.5.5v1.9zm0-4.7c0 .3-.2.5-.5.5H4.2c-.3 0-.5-.2-.5-.5V9.7c0-.3.2-.5.5-.5h4.1c.3 0 .5.2.5.5v1.8zm0-4.6c0 .3-.2.5-.5.5H4.2c-.3 0-.5-.2-.5-.5V5.1c0-.3.2-.5.5-.5h4.1c.3 0 .5.2.5.5v1.8zm11.5 12c0 .3-.2.5-.5.5h-8.7c-.3 0-.5-.2-.5-.5V5.1c0-.3.2-.5.5-.5h8.7c.3 0 .5.2.5.5v13.8z" } },
+	  info: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 5.6c.8 0 1.4.6 1.4 1.4s-.6 1.4-1.4 1.4-1.4-.6-1.4-1.4.6-1.4 1.4-1.4zm2.3 9.7c0 .2-.2.4-.5.4h-3.6c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5.2 0 .4-.2.4-.4v-1.9c0-.2-.2-.5-.4-.5-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5h2.7c.3 0 .5.2.5.5v3.7c0 .2.2.4.4.4.3 0 .5.2.5.5v.9z" } },
+	  insert_tag_field: { "path": { "d": "M7.5 5.6l-1-.8c-.4-.3-.7-.2-1 0L.1 11.6c-.1.2-.1.6 0 .9l5.4 6.7c.3.2.7.3 1 0l1.1-.8c.3-.3.3-.7.1-1L3.3 12l4.4-5.4c.2-.3.1-.7-.2-1zm16.4 6l-5.4-6.7c-.3-.3-.7-.4-1-.1l-1.1.9c-.3.2-.3.7-.1.9l4.4 5.4-4.4 5.4c-.2.3-.1.8.1 1l1.1.9c.3.2.7.2 1-.1l5.4-6.7c.1-.4.1-.7 0-.9zM14.6 5l-1.4-.3c-.4-.1-.8.1-.9.5L8.9 18.3c-.1.3.1.7.5.8l1.4.3c.4.1.8-.1.9-.5l3.4-13.1c.1-.4-.1-.7-.5-.8z" } },
+	  insert_template: { "path": { "d": "M22.4 17.5h-2.1v-2c0-.4-.3-.7-.7-.7h-1.4c-.3 0-.7.3-.7.7v2h-2c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h2v2.1c0 .4.4.7.7.7h1.4c.4 0 .7-.3.7-.7v-2.1h2.1c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7zm-6.7-3.9c0-.4.3-.7.7-.7h1.1V2.8c0-1-.8-1.9-1.8-1.9H2.8C1.8.9.9 1.8.9 2.8v12.9c0 1 .9 1.8 1.9 1.8h10.1v-1.1c0-.4.3-.7.7-.7h2.1v-2.1zM7.4 5.1c0 .3-.2.4-.5.4H4.2c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5h2.7c.3 0 .5.2.5.5v.9zm5.5 7.4c0 .2-.2.4-.4.4H4.2c-.3 0-.5-.2-.5-.4v-1c0-.2.2-.4.5-.4h8.3c.2 0 .4.2.4.4v1zm1.9-3.7c0 .2-.2.4-.5.4H4.2c-.3 0-.5-.2-.5-.4v-1c0-.2.2-.4.5-.4h10.1c.3 0 .5.2.5.4v1z" } },
+	  italic: { "path": { "d": "M17.5 5.7v-.6c0-.5-.4-.9-.9-.9h-6.4c-.6 0-1 .4-1 .9V6c0 .5.4.9 1 .9.7 0 1.3.8 1.2 1.5l-1.7 8.1c-.1.6-.7 1-1.2 1H7.4c-.5 0-.9.5-.9 1v.9c0 .5.4.9.9.9h6.4c.6 0 1-.4 1-.9v-.9c0-.5-.4-1-1-1-.7 0-1.3-.7-1.2-1.4l1.7-8.2c.1-.6.7-1 1.2-1h.8c.7 0 1.2-.5 1.2-1.2z" } },
+	  justify_text: { "path": { "d": "M22.2 3c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3zm0 5.5c0-.3-.4-.7-.7-.7h-19c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V8.5zm0 11.1c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7v-1.4zm0-5.5c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4z" } },
+	  kanban: { "path": { "d": "M14.8 8.1c0-.4-.4-.7-.7-.7H9.9c-.3 0-.7.3-.7.7v12.4c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V8.1zm-8.3 0c0-.4-.4-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v14.3c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V8.1zm16.6 0c0-.4-.3-.7-.7-.7h-4.2c-.3 0-.7.3-.7.7v10.6c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V8.1zm0-6.5c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V1.6z" } },
+	  knowledge_base: { "path": { "d": "M4.4 16.2h6c.4 0 .7-.4.7-.7V4.6c0-.8-.9-1.4-1.5-1.4H4.4c-.4 0-.7.4-.7.7v11.6c0 .3.3.7.7.7zM22.7 5.4c-.3-.1-.5.1-.5.4v11.5c0 .4-.4.7-.7.7h-19c-.3 0-.7-.3-.7-.7V5.9c0-.4-.3-.6-.6-.5-.7.4-1.2 1.1-1.2 2V18c0 1 .8 1.8 1.8 1.8h7.7c.3 0 .7.4.7.7s.3.7.6.7h2.4c.3 0 .6-.3.6-.7s.4-.7.7-.7h7.7c1 0 1.8-.8 1.8-1.8V7.4c0-1-.3-1.8-1.3-2zm-9.1 10.8h6c.4 0 .7-.4.7-.7V3.9c0-.3-.3-.7-.7-.7h-5.2c-.7 0-1.5.6-1.5 1.4v10.9c0 .3.3.7.7.7z" } },
+	  layers: { "path": { "d": "M16.6 9.2c0-1-.8-1.8-1.8-1.8h-12c-1 0-1.9.8-1.9 1.8v12c0 1 .9 1.9 1.9 1.9h12c1 0 1.8-.9 1.8-1.9v-12zM19.8.9h-12C6 .9 4.6 2.4 4.6 4.2v1.3h12c1 0 1.9.9 1.9 1.9v12h1.3c1.8 0 3.3-1.4 3.3-3.2v-12c0-1.8-1.5-3.3-3.3-3.3z" } },
+	  layout: { "path": { "d": "M22.2 23.1H1.8c-.5 0-.9-.4-.9-.9V1.8c0-.5.4-.9.9-.9h20.4c.5 0 .9.4.9.9v20.4c0 .5-.4.9-.9.9zM2.8 21.2h18.4V2.8H2.8v18.4zM18 9.2H6c-.3 0-.5-.2-.5-.4V6c0-.3.2-.5.5-.5h12c.3 0 .5.2.5.5v2.8c0 .2-.2.4-.5.4zm-9.2 9.3H6c-.3 0-.5-.2-.5-.5v-5.5c0-.3.2-.5.5-.5h2.8c.2 0 .4.2.4.5V18c0 .3-.2.5-.4.5zm9.2 0h-5.5c-.3 0-.5-.2-.5-.5v-5.5c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5V18c0 .3-.2.5-.5.5z" } },
+	  left: { "path": { "d": "M17.5 3.8v16.4c0 .4-.6.8-1 .4l-9.8-8c-.3-.3-.3-.9 0-1.2l9.8-8c.4-.4 1-.1 1 .4z" } },
+	  left_align_text: { "path": { "d": "M22.2 3c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3zm-3.7 5.5c0-.3-.4-.7-.7-.7H2.5c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7V8.5zm0 11.1c0-.4-.4-.7-.7-.7H2.5c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7v-1.4zm3.7-5.5c0-.4-.4-.7-.7-.7h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4z" } },
+	  like: { "path": { "d": "M4.8 9.7H2.5c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h1.2c1 0 1.8-.8 1.8-1.9v-9.4c0-.4-.3-.7-.7-.7zm15.5.5h-2.8c-1 0-1.8-.9-1.8-1.9V3.7c0-1-.8-1.9-1.9-1.9h-1.1c-.4 0-.7.4-.7.7v2.8c0 2.5-1.7 4.9-3.9 4.9-.4 0-.7.3-.7.6v9.3c0 .3.3.7.6.7 3.2.1 4.2 1.4 7.5 1.4 3.5 0 6.7-.4 6.7-4.4V12c0-1-.9-1.8-1.9-1.8z" } },
+	  link: { "path": { "d": "M12.6 19.2l-1-.1s-.7-.1-1-.3c-.2 0-.4 0-.5.2l-.3.2c-1.3 1.3-3.5 1.5-4.9.3-1.5-1.4-1.6-3.8-.1-5.2l3.5-3.5c.4-.5 1-.7 1.5-.9.8-.2 1.6-.2 2.2.1.5.2.9.4 1.2.8.2.2.4.4.5.6.2.3.6.4.8.1l1.3-1.3c.2-.2.2-.5.1-.7-.2-.3-.4-.5-.7-.7-.3-.4-.7-.7-1.1-.9-.6-.4-1.4-.7-2.1-.8-1.5-.3-3-.1-4.3.6-.5.3-1.1.7-1.5 1.1l-3.3 3.3C.4 14.6.2 18.6 2.6 21c2.4 2.7 6.6 2.8 9.1.2l1.2-1.1c.3-.3.1-.8-.3-.9zM21 2.7C18.5.3 14.5.5 12.1 3l-1 1c-.3.3-.1.8.3.9.6 0 1.3.2 1.9.4.2 0 .5 0 .6-.2l.2-.2c1.4-1.3 3.5-1.5 4.9-.3 1.6 1.4 1.6 3.8.2 5.2l-3.5 3.5c-.5.5-1 .7-1.6.9-.7.2-1.5.2-2.2-.1-.4-.2-.8-.4-1.2-.8-.2-.2-.3-.4-.5-.6-.1-.3-.6-.4-.8-.1l-1.3 1.3c-.2.2-.2.5 0 .7.2.3.4.5.6.7.3.3.8.7 1.1.9.7.4 1.4.7 2.2.8 1.4.3 3 .1 4.2-.6.6-.3 1.1-.7 1.5-1.1l3.5-3.5c2.6-2.5 2.5-6.7-.2-9.1z" } },
+	  list: { "path": { "d": "M3.7 4.8c0-.3-.3-.6-.7-.6H1.6c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7V4.8zm19.4 0c0-.3-.3-.6-.7-.6H6.2c-.3 0-.7.3-.7.6v1.4c0 .4.4.7.7.7h16.2c.4 0 .7-.3.7-.7V4.8zM3.7 11.3c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7v-1.4zm17.5 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h14.3c.4 0 .7-.3.7-.7v-1.4zM3.7 17.8c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6H3c.4 0 .7-.3.7-.6v-1.4zm19.4 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h16.2c.4 0 .7-.3.7-.6v-1.4z" } },
+	  location: { "path": { "d": "M22.5 4.4l-6.6-3.3c-.3-.2-.7-.2-1 0L8.8 4.2 2.6 1.1c-.4-.2-.8-.2-1.2 0-.3.2-.5.6-.5.9v16.6c0 .5.3.8.6 1l6.7 3.3c.3.2.7.2.9 0l6.2-3.1 6.2 3.1c.1.1.3.2.5.2s.4-.1.6-.2c.3-.2.5-.6.5-.9V5.4c0-.5-.2-.8-.6-1zm-1.7 2.1v8.8c0 .5-.5.9-1 .7-1.7-.7-.3-3.5-1.5-5.1-1.2-1.4-2.7 0-4.1-2.2-1.3-2.2.5-3.8 2.1-4.6.3-.1.5-.1.7 0l3.4 1.7c.3.2.4.4.4.7zm-9.3 12.8c-.3.2-.6.1-.8-.1-.5-.4-.9-1-.9-1.7 0-1.1-1.8-.7-1.8-2.9 0-1.8-2.1-2.3-3.9-2.1-.5.1-.8-.3-.8-.7V5c0-.5.5-.9 1-.6l4 2h.1l.1.1c1.7 1 1.3 1.8.6 3-.7 1.3-1.1 0-2.2-.4s-2.2.4-1.8 1.1 1.5 0 2.2.7.7 1.9 2.9 1.1 2.6-.3 3.4.4c.7.8 1.1 2.2 0 3.3-.7.7-1 2.1-1.2 3-.1.2-.2.4-.4.5l-.5.1z" } },
+	  lock: { "path": { "d": "M5.1 8.8h1.8c.3 0 .5-.2.5-.4v-.1c0-2.6 2.2-4.8 4.9-4.6 2.5.2 4.3 2.3 4.3 4.8v-.1c0 .2.2.4.5.4h1.8c.3 0 .5-.2.5-.4v-.1c0-4.2-3.5-7.6-7.8-7.4-3.9.2-6.9 3.5-7 7.5.1.2.2.4.5.4zm-.5-.4v.1-.1zm16.6 4.1c0-1.1-.8-1.9-1.8-1.9H4.6c-1 0-1.8.8-1.8 1.9v8.7c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9v-8.7zm-7.1 7.2c.1.3-.1.6-.4.6h-3.4c-.3 0-.5-.3-.5-.6l.9-2.8c-.7-.4-1.1-1.3-1-2.2.2-.9.9-1.5 1.8-1.7 1.5-.3 2.8.8 2.8 2.1 0 .8-.4 1.5-1 1.8l.8 2.8z" } },
+	  logout: { "path": { "d": "M9.7 22.4V21c0-.4-.3-.7-.7-.7H4.4c-.4 0-.7-.3-.7-.7V4.4c0-.4.3-.7.7-.7H9c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7H2.8C1.8.9.9 1.8.9 2.8v18.4c0 1 .9 1.9 1.9 1.9H9c.4 0 .7-.3.7-.7zm13.2-9.9c.3-.3.3-.7 0-1l-6.2-6.2c-.3-.3-.7-.3-1 0l-1 .9c-.3.3-.3.7 0 1l2.6 2.6c.3.3.1.8-.3.8H7.2c-.4 0-.7.2-.7.6v1.4c0 .4.3.7.7.7h9.7c.5 0 .6.5.4.8l-2.6 2.6c-.3.3-.3.7 0 1l.9.9c.3.3.7.3 1 0l6.3-6.1z" } },
+	  magicwand: { "path": { "d": "M13 9.7c-.2-.2-.4-.2-.6 0l-11.1 11c-.5.6-.5 1.4 0 2 .6.5 1.4.5 2 0l11-11.1c.2-.2.2-.4 0-.6L13 9.7zm3.2 0l1.5-1.5c.3-.3.3-.7 0-1l-.9-.9c-.3-.3-.7-.3-1 0l-1.5 1.5c-.2.1-.2.4 0 .6l1.3 1.3c.2.2.5.2.6 0zM4.8 5.4c1.8.5 3.1 1.8 3.7 3.6.1.3.5.3.5 0 .6-1.7 1.9-3.1 3.7-3.6.3-.1.3-.5 0-.6C11 4.2 9.6 2.9 9 1.1c0-.3-.4-.3-.5 0-.6 1.8-1.9 3.1-3.7 3.7-.2.1-.2.5 0 .6zm18.1 8.7c-1.6-.5-2.8-1.7-3.3-3.3-.1-.2-.4-.2-.5 0-.5 1.6-1.7 2.8-3.3 3.3-.2.1-.2.4 0 .5 1.6.5 2.8 1.7 3.3 3.3.1.2.4.2.5 0 .5-1.6 1.7-2.8 3.3-3.3.2-.1.2-.5 0-.5zM17.7 3.9c1.2.3 2.1 1.2 2.4 2.4.1.2.3.2.4 0 .4-1.2 1.2-2.1 2.4-2.4.2-.1.2-.3 0-.4-1.2-.4-2-1.2-2.4-2.4-.1-.2-.3-.2-.4 0-.3 1.2-1.2 2-2.4 2.4-.2.1-.2.3 0 .4z" } },
+	  matrix: { "path": { "d": "M22.2 1.6c0-.4-.4-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h14.3c.3 0 .7-.3.7-.7V1.6zM4.6 7.2c0-.4-.3-.7-.7-.7H2.5c-.3 0-.7.3-.7.7v6c0 .3.4.6.7.6h1.4c.4 0 .7-.3.7-.6v-6zm0 9.2c0-.4-.3-.7-.7-.7H2.5c-.3 0-.7.3-.7.7v6c0 .4.4.7.7.7h1.4c.4 0 .7-.3.7-.7v-6zm8.8-9.2c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h5.5c.4 0 .7-.3.7-.7V7.2zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h5.6c.3 0 .7-.3.7-.7V7.2zm-8.8 4.6c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6h5.5c.4 0 .7-.3.7-.6v-1.4zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h5.6c.3 0 .7-.3.7-.6v-1.4zm-8.8 4.6c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h5.5c.4 0 .7-.4.7-.7v-1.4zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h5.6c.3 0 .7-.4.7-.7v-1.4zM13.4 21c0-.4-.3-.7-.7-.7H7.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h5.5c.4 0 .7-.3.7-.7V21zm8.8 0c0-.4-.4-.7-.7-.7h-5.6c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h5.6c.3 0 .7-.3.7-.7V21z" } },
+	  minimize_window: { "path": { "d": "M23.1 22.4c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7V21c0-.4.3-.7.7-.7h20.8c.4 0 .7.3.7.7v1.4z" } },
+	  monthlyview: { "path": { "d": "M20.3 3.2H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9zm1.2 6h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zM9.7 20.3c-1.1 0-2.3-.4-2.7-1 0-.1-.1-.2-.1-.3 0-.4.4-.8.8-.8.1 0 .2.1.4.1.5.3 1.1.5 1.6.5.9 0 1.4-.4 1.4-1s-.4-.9-1.5-.9c-.6.1-1-.1-1-.7 0-.4.3-.7.7-.7 1 .1 1.7-.2 1.7-.8 0-.6-.6-.9-1.4-.9-.5 0-1 .1-1.5.4-.1.1-.2.1-.3.1-.4 0-.7-.3-.7-.7 0-.2.1-.4.2-.5.6-.5 1.4-.8 2.5-.8 1.7 0 2.8.8 2.8 2.1 0 .9-.8 1.5-1.6 1.7.8.1 1.7.7 1.7 1.8 0 1.5-1.2 2.4-3 2.4zm7.4-.9c0 .4-.3.9-.7.9-.4 0-.7-.4-.7-.9v-4.7l-1 .9c-.1.1-.3.1-.5.1-.4 0-.7-.2-.7-.7 0-.1.1-.3.2-.4l1.8-1.8c.1-.2.4-.3.7-.3.5 0 .9.5.9 1v5.9z" } },
+	  move: { "path": { "d": "M22.9 11.7l-3.8-4.2c-.3-.3-.6 0-.6.4v2.7h-4.7c-.2 0-.4-.2-.4-.4V5.5h2.7c.5 0 .7-.4.4-.6l-4.1-3.8c-.2-.2-.5-.2-.7 0L7.6 4.9c-.3.3-.1.6.4.6h2.6v4.7c0 .2-.2.4-.4.4H5.5V7.9c0-.5-.4-.7-.6-.4l-3.8 4.1c-.2.2-.2.5 0 .7l3.8 4.1c.3.3.6.1.6-.4v-2.6h4.7c.2 0 .4.2.4.4v4.7H7.9c-.5 0-.7.4-.4.6l4.1 3.8c.2.2.5.2.7 0l4.1-3.8c.3-.3.1-.6-.4-.6h-2.6v-4.7c0-.2.2-.4.4-.4h4.7v2.7c0 .5.4.7.6.4l3.8-4.1c.2-.3.2-.5 0-.7z" } },
+	  muted: { "path": { "d": "M22.4 2.6l-1-1c-.3-.3-.8-.2-1.1.2l-4.6 4.6V4.6c0-2.1-1.6-3.7-3.7-3.7S8.3 2.5 8.3 4.6v6.7c0 .7.2 1.3.6 1.9l-1.7 1.6c-.7-1-1.2-2.2-1.2-3.5V9.4c0-.6-.5-1.1-1.2-1.1s-1.1.5-1.1 1.1v1.9c0 1.9.7 3.7 1.9 5.1l-3.8 3.9c-.4.3-.4.8-.2 1.1l1 1c.3.3.8.2 1.1-.2L22.2 3.7c.4-.3.5-.8.2-1.1zM18 10.7v.6c0 3.2-2.7 5.9-6 5.9h-.4l-1.8 1.9c.4.1.8.1 1.3.2v1.5H9c-.6 0-1.2.5-1.2 1.1s.6 1.2 1.2 1.2h6c.7 0 1.2-.5 1.2-1.2s-.6-1.1-1.2-1.1h-2.1v-1.5c4.2-.6 7.4-4 7.4-8V9.4c0-.3-.1-.5-.3-.7l-2 2z" } },
+	  "new": { "path": { "d": "M19.8 4.2C15.5-.1 8.5-.1 4.2 4.2c-4.3 4.3-4.3 11.3 0 15.6 4.3 4.4 11.3 4.4 15.6 0 4.3-4.3 4.3-11.3 0-15.6zm-.4 8.7c0 .3-.2.5-.5.5h-5.1c-.2 0-.4.2-.4.4v5.1c0 .3-.2.5-.5.5h-1.8c-.3 0-.5-.2-.5-.5v-5.1c0-.2-.2-.4-.4-.4H5.1c-.3 0-.5-.2-.5-.5v-1.8c0-.3.2-.5.5-.5h5.1c.2 0 .4-.2.4-.4V5.1c0-.3.2-.5.5-.5h1.8c.3 0 .5.2.5.5v5.1c0 .2.2.4.4.4h5.1c.3 0 .5.2.5.5v1.8z" } },
+	  new_window: { "path": { "d": "M22.5.9h-8.8c-.4 0-.8.3-.8.6v1.4c0 .4.3.8.8.8h3.6c.4 0 .7.5.3.7l-7.8 7.9c-.3.3-.3.7 0 .9l1 1c.2.3.6.3.9 0l7.9-7.8c.2-.3.7-.1.7.3v3.6c0 .4.4.8.7.8h1.4c.4 0 .7-.4.7-.8V1.6c0-.4-.3-.7-.6-.7zm-5.7 10.9l-1.6 1.6c-.3.3-.4.6-.4 1v5.2c0 .4-.4.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V9.9c0-.3.3-.7.7-.7h5.3c.4 0 .7-.1 1-.4l1.5-1.6c.3-.2.1-.7-.3-.7H2.8c-1 0-1.9.8-1.9 1.8v12.9c0 1 .9 1.9 1.9 1.9h12.9c1 0 1.8-.9 1.8-1.9v-9.1c0-.4-.5-.6-.7-.3z" } },
+	  news: { "path": { "d": "M23.3 2.8H4.4c-.4 0-.7.3-.7.7v14c0 .6-.5 1.1-1.1 1-.4-.1-.8-.5-.8-1V7.4c0-.3-.1-.5-.4-.5H.7c-.4 0-.7.3-.7.7v11.8c0 1 .8 1.8 1.8 1.8h20.4c1 0 1.8-.8 1.8-1.8V3.5c0-.4-.3-.7-.7-.7zM12.9 16.2c0 .2-.2.4-.4.4H6.9c-.3 0-.4-.2-.4-.4v-1c0-.2.1-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm0-3.7c0 .2-.2.4-.4.4H6.9c-.3 0-.4-.2-.4-.4v-1c0-.2.1-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm8.3 3.7c0 .2-.2.4-.4.4h-5.6c-.2 0-.4-.2-.4-.4v-1c0-.2.2-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm0-3.7c0 .2-.2.4-.4.4h-5.6c-.2 0-.4-.2-.4-.4v-1c0-.2.2-.4.4-.4h5.6c.2 0 .4.2.4.4v1zm0-3.7c0 .2-.2.4-.4.4H6.9c-.3 0-.4-.2-.4-.4V6c0-.3.1-.5.4-.5h13.9c.2 0 .4.2.4.5v2.8z" } },
+	  notebook: { "path": { "d": "M20.3.9H6.5c-1.1 0-1.9.9-1.9 1.9v1.4H3.2c-.8 0-1.4.6-1.4 1.3s.6 1.4 1.4 1.4h1.4v3.7H3.2c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4h1.4v3.7H3.2c-.8 0-1.4.6-1.4 1.4s.6 1.3 1.4 1.3h1.4v1.4c0 1 .8 1.9 1.9 1.9h13.8c1 0 1.9-.9 1.9-1.9V2.8c0-1-.9-1.9-1.9-1.9zm-3.2 15.7c0 .3-.2.5-.5.5h-6.4c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h6.4c.3 0 .5.2.5.5v.9zm.9-3.7c0 .3-.2.5-.5.5H9.2c-.2 0-.4-.2-.4-.5V12c0-.3.2-.5.4-.5h8.3c.3 0 .5.2.5.5v.9zm.9-4.6c0 .3-.2.5-.4.5H8.3c-.3 0-.5-.2-.5-.5V5.5c0-.2.2-.4.5-.4h10.2c.2 0 .4.2.4.4v2.8z" } },
+	  notification: { "path": { "d": "M21.2 15.2H21c-.9 0-1.6-.7-1.6-1.6V8.3c0-4.2-3.5-7.6-7.8-7.4-3.9.2-7 3.6-7 7.6v5.2c0 .8-.7 1.5-1.6 1.5h-.2c-1 0-1.9.9-1.9 1.9v.7c0 .3.3.7.7.7h20.8c.4 0 .7-.4.7-.7v-.7c0-1-.9-1.9-1.9-1.9zm-6.9 5.1H9.7c-.2 0-.5.3-.4.6.2 1.3 1.4 2.2 2.7 2.2s2.5-1 2.7-2.2c.1-.3-.2-.6-.4-.6z" } },
+	  office365: { "g": { "path": { "d": "M14.2 22.8c.3.1.6.1.9 0l5.5-1.8c.4-.1.6-.4.6-.8V3.6c0-.3-.2-.6-.4-.7L15.2 1c-.3-.1-.7-.1-.9 0L3.2 5.3c-.2.1-.4.3-.4.6v12.5c0 .3.2.6.4.7l11 3.7zm.6-3c0 .2-.3.5-.5.4L5.1 19c-.3-.1-.4-.3-.4-.5v-.2c0-.2.1-.3.3-.4l1.7-.8c.2-.1.3-.3.3-.4V6.8c0-.2.2-.4.4-.4l6.9-1.6c.3 0 .6.1.6.5v14.5z" } } },
+	  offline: { "path": { "d": "M16 16.7c.2-.3.2-.6 0-.9l-.8-.8c-.2-.2-.6-.2-.8 0l-2.1 2c-.1.2-.4.2-.5 0l-2.1-2c-.2-.2-.6-.2-.8 0l-.8.8c-.3.3-.3.6 0 .9l2 2c.1.1.1.4 0 .5l-2 2.1c-.3.2-.3.6 0 .8l.8.8c.2.3.6.3.8 0l2.1-2c.1-.1.4-.1.5 0l2.1 2c.2.3.6.3.8 0l.8-.8c.2-.2.2-.6 0-.8l-2-2.1c-.2-.1-.2-.4 0-.5l2-2zm6-11.3C19.5 2.5 15.9 1 12 1S4.6 2.5 2.1 5.4c-.2.1-.2.5 0 .6l1.4 1.2c.2.2.5.1.7 0C6.2 5 9 3.7 12 3.7s5.9 1.3 7.9 3.5c.2.1.5.1.7 0L22 6c.2-.2.2-.5 0-.6zm-10 2c-1.9 0-3.7.9-5 2.3-.2.2-.2.5 0 .7l1.5 1.1c.2.2.5.2.6 0 .8-.8 1.8-1.3 2.9-1.3s2.2.5 3 1.2c.1.2.4.2.6.1l1.4-1.1c.3-.2.3-.5.1-.7C15.8 8.3 14 7.4 12 7.4z" } },
+	  open: { "path": { "d": "M3.7 16.2v-.3.5-.2zM21.2.9H2.8C1.8.9.9 1.8.9 2.8v16.6c0 1 .9 1.8 1.9 1.8h5.5c.3 0 .5-.2.5-.4v-1.9c0-.3-.2-.4-.5-.4H4.4c-.4 0-.7-.4-.7-.7V6.2c0-.3.3-.7.7-.7h15.2c.4 0 .7.4.7.7v11.6c0 .3-.3.7-.7.7h-3.9c-.3 0-.5.1-.5.4v1.9c0 .2.2.4.5.4h5.5c1 0 1.9-.8 1.9-1.8V2.8c0-1-.9-1.9-1.9-1.9zM17.3 16l1-1c.3-.3.3-.7 0-1l-5.8-5.8c-.3-.3-.7-.3-1 0L5.7 14c-.3.3-.3.7 0 1l1 .9c.3.3.7.3 1 0l2.1-2.1c.3-.3.8-.1.8.3v8.3c0 .4.3.7.7.7h1.3c.4 0 .8-.3.8-.7v-8.3c0-.4.4-.6.8-.3l2.1 2.2c.3.2.7.2 1 0z" } },
+	  open_folder: { "path": { "d": "M21.2 6.5H10.8c-.7 0-1.3-.4-1.7-1L7.5 2.8c-.3-.6-.9-1-1.6-1H2.8c-1 0-1.9.9-1.9 1.9v16.6c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9v-12c0-1-.9-1.8-1.9-1.8zm0-3.7H10.1c-.2 0-.3.2-.2.3l.8 1.2c.1.2.2.3.4.3h10.1c.5 0 1 .1 1.5.3.1.1.4-.1.4-.3 0-1-.9-1.8-1.9-1.8z" } },
+	  opened_folder: { "path": { "d": "M20.3 6.9c0-1-.8-1.8-1.8-1.8h-6.8c-.9 0-1.6-.9-1.6-.9L8.9 2.8s-.5-1-1.6-1H5.5c-1 0-1.8.9-1.8 1.9v4.1h16.6v-.9zm1.3 2.8H2.4c-1 0-1.7.9-1.4 1.7l2.6 9.7c.2.6.7 1.1 1.4 1.1h14.1c.6 0 1.2-.5 1.3-1.1l2.7-9.7c.2-.8-.5-1.7-1.5-1.7z" } },
+	  overflow: { "path": { "d": "M17.2 4.6H7.3c-1 0-1.7.8-1.7 1.7v.3c0 .1.1.2.3.2h9c1 0 1.7.8 1.7 1.7v10.2c0 .2.2.3.3.3h.3c.9 0 1.7-.8 1.7-1.7v-11c0-.9-.8-1.7-1.7-1.7zM20.9.9H11c-1 0-1.7.8-1.7 1.7v.3c0 .1.1.3.3.3h9c1 0 1.7.8 1.7 1.7v10.2c0 .1.1.3.3.3h.3c.9 0 1.7-.8 1.7-1.7V2.6c0-.9-.8-1.7-1.7-1.7zM15 10.1c0-1-.7-1.7-1.7-1.7H3.1c-1 0-1.7.7-1.7 1.7v11.3c0 .9.8 1.7 1.7 1.7h10.2c1 0 1.7-.8 1.7-1.7V10.1z" } },
+	  "package": { "path": { "d": "M20.5 11.1h-3.7l-1.5 1.8h5v2.8H3.7v-2.8h4.9l-1.5-1.8H3.5c-.9 0-1.7.7-1.7 1.6v9c0 .8.6 1.4 1.4 1.4h17.6c.8 0 1.4-.6 1.4-1.4v-9c0-.9-.8-1.6-1.7-1.6zm-9.9-9.5v5.8H7.4c-.4 0-.7.4-.4.6l4.6 5.7c.2.1.5.1.7 0L16.9 8c.3-.2 0-.6-.4-.6h-3.1V1.6c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7z" } },
+	  package_org: { "path": { "d": "M20.5 10.6h-5.8l-1.8 1.9h7.4v2.7H3.7v-2.7h3.7l-1.8-1.9H3.5c-.9 0-1.7.8-1.7 1.7v8.9c0 .8.6 1.4 1.4 1.4h17.6c.8 0 1.4-.6 1.4-1.4v-8.9c0-.9-.8-1.7-1.7-1.7zm-11 1.3c.4.4.9.4 1.3 0l8.8-8.8c.2-.1.2-.4 0-.6l-1.3-1.3c-.2-.2-.5-.2-.7 0l-7.4 7.5-3.1-3.1c-.2-.2-.5-.2-.7 0L5.1 6.9c-.2.2-.2.4 0 .6l4.4 4.4z" } },
+	  package_org_beta: { "path": { "d": "M20.5 10.6h-2.7c-.2.7-.5 1.3-1 1.9h3.5v2.7H3.7v-2.7h2.8v-1.9h-3c-.9 0-1.7.8-1.7 1.7v8.9c0 .8.6 1.4 1.4 1.4h17.6c.8 0 1.4-.6 1.4-1.4v-8.9c0-.9-.8-1.7-1.7-1.7zm-4.3-6c0-1.8-1.6-3.2-3.4-3.2H9c-.4 0-.7.3-.7.7v9.7c0 .3.3.7.7.7h3.9c1.8 0 3.3-1.5 3.2-3.3 0-.9-.4-1.7-1-2.2.7-.7 1.1-1.5 1.1-2.4zm-6-1.4h2.7c.8 0 1.4.6 1.4 1.4 0 .8-.6 1.4-1.4 1.4h-2.7V3.2zm4.1 6c0 .8-.6 1.4-1.4 1.4h-2.7V7.8h2.7c.8 0 1.4.6 1.4 1.4z" } },
+	  page: { "path": { "d": "M20.5 8.8h-5.2c-1.2 0-1.9-.8-1.9-2V1.7c0-.5-.3-.8-.8-.8H5c-1.2 0-2.2 1-2.2 2.2v17.8c0 1.2 1 2.2 2.2 2.2h14c1.2 0 2.2-1 2.2-2.2V9.5c0-.4-.3-.7-.7-.7zm.6-2.8l-4.9-4.9c-.1-.1-.3-.2-.4-.2-.3 0-.6.3-.6.5v4c0 .8.8 1.5 1.6 1.5h3.9c.3 0 .5-.3.5-.5s0-.4-.1-.4z" } },
+	  palette: { "path": { "d": "M22.8 8C21.8 3.6 17.2.9 12.1.9 5.9.9.9 5.9.9 12s5 11.1 11.2 11.1c8.6 0 7.9-4.4 5.2-6.1-1.7-1-2.5-3.3-.9-5 3-3.1 7.8 1.8 6.4-4zM6 15.7c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm.5-8.8c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm5 13.4c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm4.2-12c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3S18 4.7 18 6s-1 2.3-2.3 2.3z" } },
+	  paste: { "path": { "d": "M8.1 5.5h7.8c.4 0 .7-.3.7-.7v-2c0-1-.8-1.9-1.8-1.9H9.2c-1 0-1.8.9-1.8 1.9v2c0 .4.3.7.7.7zm12.2-2.7h-1.1c-.4 0-.7.3-.7.7v2c0 1.1-.9 1.9-1.9 1.9H7.4c-1 0-1.9-.8-1.9-1.9v-2c0-.4-.3-.7-.7-.7H3.7c-1 0-1.9.8-1.9 1.8v16.6c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V4.6c0-1-.9-1.8-1.9-1.8zm-2.8 16.1c0 .3-.1.5-.4.5H6.9c-.3 0-.4-.2-.4-.5V18c0-.3.1-.5.4-.5h10.2c.3 0 .4.2.4.5v.9zm0-3.7c0 .3-.1.5-.4.5H6.9c-.3 0-.4-.2-.4-.5v-.9c0-.3.1-.5.4-.5h10.2c.3 0 .4.2.4.5v.9zm0-3.7c0 .3-.1.5-.4.5H6.9c-.3 0-.4-.2-.4-.5v-.9c0-.3.1-.4.4-.4h10.2c.3 0 .4.1.4.4v.9z" } },
+	  people: { "path": { "d": "M19.4 10.3c-1.3-.5-1.5-1-1.5-1.5s.4-1 .8-1.4c.8-.7 1.2-1.6 1.2-2.7 0-2-1.3-3.8-3.7-3.8-2.1 0-3.4 1.5-3.6 3.3 0 .2.1.3.2.4 1.8 1.1 2.8 3.1 2.8 5.4 0 1.8-.6 3.3-1.9 4.4-.1.1-.1.3 0 .4.3.2 1.1.6 1.5.8.2 0 .3.1.4.1h5.6c1 0 1.9-.9 1.9-1.9v-.2c0-1.6-1.8-2.5-3.7-3.3zm-6.2 6.4c-1.6-.6-1.8-1.2-1.8-1.8 0-.6.5-1.2 1-1.7.9-.7 1.4-1.8 1.4-3.1 0-2.4-1.6-4.5-4.4-4.5-2.8 0-4.5 2.1-4.5 4.5 0 1.3.5 2.4 1.5 3.1.5.5.9 1.1.9 1.7 0 .6-.2 1.2-1.8 1.8-2.3.9-4.6 2-4.6 3.9v.6c0 1 .9 1.9 1.9 1.9h12.8c1.1 0 1.9-.9 1.9-1.9v-.6c0-1.9-2-3-4.3-3.9z" } },
+	  phone_landscape: { "path": { "d": "M24 6c0-1-.8-1.8-1.8-1.8H1.8C.8 4.2 0 5 0 6v12c0 1 .8 1.8 1.8 1.8h20.4c1 0 1.8-.8 1.8-1.8V6zM2.3 13.4c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zm18 3c0 .4-.3.7-.7.7H5.3c-.4 0-.7-.3-.7-.7V7.6c0-.4.3-.7.7-.7h14.3c.4 0 .7.3.7.7v8.8z" } },
+	  phone_portrait: { "path": { "d": "M19.8 1.8C19.8.8 19 0 18 0H6C5 0 4.2.8 4.2 1.8v20.4c0 1 .8 1.8 1.8 1.8h12c1 0 1.8-.8 1.8-1.8V1.8zM12 23.1c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zm5.1-4.4c0 .4-.3.7-.7.7H7.6c-.4 0-.7-.3-.7-.7V4.4c0-.4.3-.7.7-.7h8.8c.4 0 .7.3.7.7v14.3z" } },
+	  photo: { "path": { "d": "M12 9.2c-2 0-3.7 1.7-3.7 3.7s1.7 3.7 3.7 3.7 3.7-1.6 3.7-3.7S14 9.2 12 9.2zm9.2-2.7h-2.4c-.6 0-1.2-.4-1.5-.9L16.2 4c-.3-.8-1.1-1.2-1.9-1.2H9.7c-.8 0-1.6.4-1.9 1.2L6.7 5.6c-.3.5-.9.9-1.6.9H2.8c-1 0-1.9.8-1.9 1.8v11.1c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V8.3c0-1-.9-1.8-1.9-1.8zm-9.2 12c-3 0-5.5-2.5-5.5-5.6S9 7.4 12 7.4s5.5 2.5 5.5 5.5-2.5 5.6-5.5 5.6z" } },
+	  power: { "path": { "d": "M15.9 3.6c-.3-.2-.7 0-.7.4v1.7c0 .3.2.7.5.8 2.4 1.4 4 4.2 3.6 7.3-.3 3.3-3.1 6.1-6.5 6.5-4.4.5-8.2-3-8.2-7.4 0-2.7 1.5-5.1 3.7-6.4.3-.1.5-.5.5-.8V4c0-.4-.4-.6-.7-.4-3.9 1.6-6.6 5.6-6.2 10.2.4 4.8 4.2 8.7 8.9 9.2 6.1.7 11.4-4.1 11.4-10.1 0-4.2-2.6-7.8-6.3-9.3zm-2.5-2c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v7.9c0 .3.3.7.7.7h1.4c.4 0 .7-.4.7-.7V1.6z" } },
+	  preview: { "path": { "d": "M23.9 11.6C21.7 7.2 17.2 4.2 12 4.2S2.3 7.2.1 11.6c-.1.3-.1.6 0 .8 2.2 4.4 6.7 7.4 11.9 7.4s9.7-3 11.9-7.4c.1-.3.1-.5 0-.8zM12 17.1c-2.8 0-5.1-2.3-5.1-5.1S9.2 6.9 12 6.9s5.1 2.3 5.1 5.1-2.3 5.1-5.1 5.1zm0-8.3c-1.8 0-3.2 1.4-3.2 3.2s1.4 3.2 3.2 3.2 3.2-1.4 3.2-3.2-1.4-3.2-3.2-3.2z" } },
+	  priority: { "path": { "d": "M4.2 1.6c0-.4-.4-.7-.7-.7H2.1c-.4 0-.7.3-.7.7v20.8c0 .4.3.7.7.7h1.4c.3 0 .7-.3.7-.7V1.6zm17.7 2c-7.4 3.8-6.5-4.1-15.4-1-.3.1-.5.4-.5.6V14c0 .3.3.5.6.4 8.9-3 7.9 5.2 15.6.8.3-.1.4-.3.4-.6V3.9c0-.3-.4-.5-.7-.3z" } },
+	  process: { "path": { "d": "M7.5 10.7l3.9-4.9c.3-.4.8-.4 1.1 0l3.9 5c.2.1.4.3.6.3h4.4c.4 0 .8-.3.8-.7V3.7c0-1-.9-1.9-1.9-1.9H3.7c-1 0-1.9.9-1.9 1.9v6.7c0 .4.4.7.7.7h4.4c.3 0 .4-.2.6-.4zm9 2.6l-3.9 4.9c-.3.4-.9.4-1.2 0l-3.9-5c-.2-.1-.3-.3-.6-.3H2.5c-.3 0-.7.3-.7.7v6.7c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9v-6.7c0-.4-.4-.7-.7-.7H17c-.2 0-.4.2-.5.4z" } },
+	  push: { "path": { "d": "M20.3.9H9.2c-1 0-1.8.9-1.8 1.9 0 .3.2.7.4.8.2.1 1.9 1.9 1.9 1.9.2.1.4 0 .4-.2 0-.4.3-.7.7-.7h7.8c.4 0 .8.3.8.7v12.5c0 .3-.4.6-.8.6h-7.8c-.4 0-.6-.3-.6-.6v-.1c0-.2-.3-.3-.4-.1 0 0-1.8 1.7-2 1.8-.2.2-.4.5-.4.9v.9c0 1 .8 1.8 1.8 1.8h11.1c1 0 1.9-.8 1.9-1.8V2.8c0-1-.9-1.9-1.9-1.9zm-5.5 21.3c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zM12.7 11L7 5.3c-.3-.3-.7-.3-1 0l-1 .9c-.2.3-.2.7 0 1l2.2 2.1c.2.3 0 .8-.4.8H.7c-.4.1-.7.4-.7.7v1.4c0 .4.3.7.7.7h6.1c.4 0 .6.5.3.8L5 15.8c-.3.3-.3.7 0 1l1 1c.2.2.6.2.9 0l5.8-5.8c.3-.2.3-.7 0-1z" } },
+	  puzzle: { "path": { "d": "M20.8 17.7c-.1 1.3-.3 2.6-.5 3.9 0 .4-.5.8-.8.8-2.5.3-5 .5-7.5.5-2.4 0-4.9-.1-7.3-.5-.4 0-.8-.4-.9-.8-.3-2-.5-4.1-.5-6.2s.2-4.1.5-6.2c.1-.3.5-.7.9-.8 1.5-.2 3-.3 4.4-.4 0 0 1.2 0 1.1-1.2 0-1-1.8-1.7-1.8-3.4C8.4 2 9.8.9 12 .9c2.3 0 3.6 1.1 3.6 2.5 0 1.8-1.7 2.4-1.8 3.4C13.8 7.9 15 8 15 8c1.5.1 3 .2 4.5.4.3 0 .8.4.8.8.2 1.5.4 2.8.5 4.2 0 .4-.4.9-.8.9h-.4c-.4 0-1-.4-1.3-.7 0 0-1-1-2.1-1-1.7-.1-3 1.4-3 3s1.3 3.1 3 3.1c1-.1 2-1.1 2-1.1.4-.2 1-.5 1.4-.5h.4c.5 0 .8.3.8.6z" } },
+	  question: { "path": { "d": "M13.1 17.5h-2.3c-.4 0-.6-.2-.6-.6v-.7c0-1.9 1.2-3.7 3-4.3.6-.2 1.1-.5 1.5-1 2.3-2.8.2-6.1-2.6-6.2-1 0-1.9.3-2.7 1-.6.6-1 1.3-1 2.1-.1.2-.4.5-.7.5H5.4c-.5 0-.8-.4-.7-.8.1-1.7.9-3.3 2.2-4.5C8.4 1.6 10.2.8 12.3.9c3.8.1 6.9 3.3 7.1 7.1.1 3.2-1.9 6.1-4.9 7.2-.4.2-.7.5-.7 1v.6c0 .5-.3.7-.7.7zm.7 4.9c0 .4-.3.7-.6.7h-2.4c-.3 0-.6-.3-.6-.7v-2.3c0-.4.3-.7.6-.7h2.4c.3 0 .6.3.6.7v2.3z" } },
+	  questions_and_answers: { "path": { "d": "M23.1 12.9c0-1.8-1.2-3.3-2.8-3.9C20.2 4.5 16.5.9 12 .9S3.8 4.5 3.7 9C2.1 9.6.9 11.1.9 12.9c0 2 1.4 3.6 3.1 4 1 3.6 4.2 6.2 8 6.2s7-2.6 8-6.2c1.7-.4 3.1-2 3.1-4zm-4.6-4.1l-.1-.1.2.1h-.1zM12 21.2c-3.6 0-6.5-3-6.5-6.6 0-.9.2-2.3.6-3.2 0-.1.1-.2.2-.4 1.4-.5 2.6-1.5 3.3-2.7 1.7 2 4.2 3.4 7 3.4H18c.1.6.3 1.3.4 2.1-.3 1.1-2.1 2.2-4.6 2.4-.1-.3-.4-.5-.7-.5h-2.3c-.4 0-.6.4-.6.7v1.4c0 .4.2.7.6.7h2.3c.3 0 .6-.2.7-.5 1.6 0 3.1-.5 4.2-1.2-.8 2.6-3.2 4.4-6 4.4z" } },
+	  record: { "path": { "d": "M12 3.7c4.6 0 8.3 3.7 8.3 8.3s-3.7 8.3-8.3 8.3-8.3-3.7-8.3-8.3S7.4 3.7 12 3.7z" } },
+	  redo: { "path": { "d": "M21.6 1.4h-1.4c-.4 0-.8.3-.8.7v3.2c0 .4-.2.6-.5.3-.2-.2-.3-.3-.5-.4-2.3-2.3-5.5-3.3-8.8-2.7-1.2.3-2.3.7-3.3 1.4C3.5 5.7 1.9 8.7 1.8 12c0 2.4 1 4.9 2.7 6.7 1.7 1.8 3.9 2.9 6.3 3 .4.1.7-.2.7-.7v-1.3c0-.4-.2-.7-.6-.7-2.2-.2-4.2-1.4-5.4-3.4-.3-.6-.6-1.2-.7-1.8-.7-3 .5-6 3.2-7.7.5-.3 1.1-.6 1.7-.7 2.5-.6 5 .1 6.7 1.8.2.2.4.4.5.6.2.4-.1.5-.6.5h-3.2c-.4 0-.7.4-.7.8v1.4c0 .4.3.6.7.6h8.4c.3 0 .6-.2.6-.5V2.1c.1-.4-.2-.7-.5-.7z" } },
+	  refresh: { "path": { "d": "M21.5 1.8h-1.4c-.4 0-.7.4-.7.7v3.3c0 .4-.2.6-.6.3-.1-.2-.2-.3-.4-.5-2.3-2.3-5.6-3.2-8.9-2.6-1.1.2-2.3.7-3.2 1.3-2.8 1.9-4.5 4.9-4.5 8.1 0 2.5.9 5 2.7 6.8 1.8 1.9 4.3 3 7 3 2.3 0 4.6-.8 6.3-2.3.3-.3.3-.7.1-1l-1-1c-.2-.2-.7-.3-.9 0-1.7 1.3-4 1.9-6.2 1.3-.6-.1-1.2-.4-1.8-.7-2.6-1.6-3.8-4.7-3.1-7.7.1-.6.4-1.2.7-1.8 1.3-2.2 3.6-3.5 6-3.5 1.8 0 3.6.8 4.9 2.1.2.2.4.4.5.6.2.4-.2.6-.6.6h-3.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.6.7.6h8.4c.3 0 .6-.2.6-.6V2.5c0-.3-.4-.7-.7-.7z" } },
+	  relate: { "path": { "d": "M16.6 9.2c0-1-.8-1.8-1.8-1.8h-12c-1 0-1.9.8-1.9 1.8v12c0 1 .9 1.9 1.9 1.9h12c1 0 1.8-.9 1.8-1.9v-12zm-3.7 6.5c0 .2-.2.5-.4.5H9.7v2.7c0 .3-.2.5-.5.5h-.9c-.2 0-.5-.2-.5-.5v-2.7H5.1c-.3 0-.5-.3-.5-.5v-.9c0-.3.2-.5.5-.5h2.7v-2.8c0-.2.3-.4.5-.4h.9c.3 0 .5.2.5.4v2.8h2.8c.2 0 .4.2.4.5v.9zm6.9 3.7h-1.3v-2.8h1.3c.3 0 .5-.2.5-.4v-12c0-.3-.2-.5-.5-.5h-12c-.2 0-.4.2-.4.5v1.3H4.6V4.2C4.6 2.4 6 .9 7.8.9h12c1.8 0 3.3 1.5 3.3 3.3v12c0 1.8-1.5 3.2-3.3 3.2z" } },
+	  remove_formatting: { "path": { "d": "M20.8 18.9l2.1-2.1c.2-.2.2-.5 0-.7l-1.3-1.3c-.1-.2-.4-.2-.6 0L18.9 17l-2-2c-.1-.2-.4-.2-.6 0L15 16.3c-.2.2-.2.5 0 .6l2 2-2 2c-.1.1-.1.4 0 .6l1.3 1.3c.2.2.5.2.7 0l1.9-1.9 2.1 2c.2.2.5.2.6 0l1.3-1.3c.2-.1.2-.4 0-.6l-2.1-2.1zM2.2 3.7h5L5.3 14.4c-.1.5.2.8.7.8h2.3c.3 0 .7-.2.7-.5l1.9-11H16c.3 0 .7-.2.7-.6l.2-1.4c.1-.4-.2-.8-.7-.8H2.4c-.3 0-.6.3-.6.6l-.3 1.4c-.1.4.3.8.7.8zm10.7 14.1c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6h10.6c.4 0 .7-.3.7-.6v-1.4z" } },
+	  remove_link: { "path": { "d": "M11.1 16.9c-.3 0-.6-.1-.9-.1-.2-.1-.6-.2-.8-.3-.2 0-.4 0-.5.1l-.2.2c-1.1 1.2-3 1.3-4.3.2-1.3-1.2-1.4-3.2-.1-4.5l3-3c.5-.5.9-.7 1.4-.8.7-.2 1.4-.2 2 .1.3.2.7.4 1 .7.1.1.3.3.4.6.1.2.5.3.7.1L14 9c.2-.2.2-.4 0-.6-.2-.2-.3-.4-.5-.6-.3-.3-.7-.6-1-.8-.6-.4-1.2-.6-1.9-.8-1.2-.2-2.6 0-3.8.6-.4.3-.8.6-1.2 1l-3 2.9c-2.1 2.1-2.3 5.6-.2 7.8 2.2 2.3 5.8 2.4 8 .1l1-1c.3-.2.1-.7-.3-.7zm7.6-6.5c2.2-2.2 2.2-5.9-.1-8-2.3-2.1-5.7-1.9-7.8.2l-1 .9c-.2.3-.1.7.3.8.6 0 1.2.1 1.7.3.2.1.4 0 .5-.1l.2-.2c1.1-1.1 3-1.3 4.3-.2 1.3 1.2 1.4 3.3.1 4.5l-3.1 3.1c-.4.4-.8.6-1.3.8-.7.1-1.4.1-2-.2-.3-.1-.7-.3-1-.7-.1-.1-.3-.3-.4-.5-.1-.3-.5-.3-.7-.1l-1.1 1.1c-.2.2-.2.5-.1.6.2.3.4.5.6.7.3.3.6.5 1 .8.6.3 1.2.6 1.9.7 1.2.2 2.5.1 3.7-.6.5-.2.9-.5 1.3-.9l3-3zm2.1 8.5l2.1-2.1c.2-.2.2-.5 0-.6l-1.3-1.3c-.1-.2-.4-.2-.6 0L18.9 17l-2-2c-.1-.1-.4-.1-.6 0L15 16.3c-.2.2-.2.5 0 .7l2 2-2 1.9c-.1.2-.1.5 0 .7l1.3 1.2c.2.2.5.2.7 0l1.9-1.9L21 23c.2.2.5.2.6 0l1.3-1.3c.2-.2.2-.5 0-.7l-2.1-2.1z" } },
+	  replace: { "path": { "d": "M9.2 17.3c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h6.9c.4 0 .7-.3.7-.7v-5.1zm-5.5-7.1H1.5c-.5 0-.7.4-.4.6l3.7 3.8c.1.2.4.2.6 0l3.7-3.8c.3-.3 0-.6-.4-.6H6.5c0-2.4 2.3-4.7 4.6-4.7V2.8c-4.2 0-7.4 3.2-7.4 7.4zm15.6-.8c-.2-.2-.5-.2-.7 0L15 13.2c-.3.3-.1.6.4.6h2.2c0 2.8-1.9 4.7-4.7 4.7v2.7c4.2 0 7.5-3.2 7.5-7.4h2.2c.5 0 .7-.4.4-.6l-3.7-3.8zm3.8-7.8c0-.4-.3-.7-.7-.7h-6.9c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h6.9c.4 0 .7-.3.7-.7V1.6z" } },
+	  reply: { "path": { "d": "M8.9 8.4s-.5-.6-.3-.8L11.2 5c.3-.3.3-.7 0-1l-1-1c-.2-.3-.6-.3-.9 0L3 9.2c-.2.3-.2.7 0 1l6.3 6.2c.3.3.7.3.9 0l1-.9c.3-.3.3-.7 0-1l-2.5-2.6c-.3-.3-.1-.7.2-.8 5.1.2 9.3 4.3 9.6 9.5 0 .4.3.7.7.7h1.4c.4 0 .6-.3.6-.8-.3-6.7-5.4-11.9-12.3-12.1z" } },
+	  reset_password: { "path": { "d": "M19.4 10.6H4.6c-1 0-1.8.8-1.8 1.9v8.7c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9v-8.7c0-1.1-.8-1.9-1.8-1.9zm-5.1 9.9c-.7.5-1.5.7-2.3.7-.3 0-.6 0-.8-.1-1.1-.2-2.1-.8-2.7-1.7l1.6-1c.3.5.8.8 1.4.9.6.2 1.2 0 1.8-.3 1.1-.7 1.3-2.2.6-3.2-.3-.5-.8-.9-1.4-1-.6-.1-1.2 0-1.8.4l-.3.3 1.6 1.6H7.8v-4.2L9 14.1c.2-.2.5-.3.6-.5 1-.6 2.1-.8 3.2-.6 1.1.2 2 .8 2.6 1.7 1.3 2 .8 4.5-1.1 5.8zM4.6 8.4v.1-.1zm.5.4h1.8c.3 0 .5-.2.5-.4v-.1c0-2.6 2.2-4.8 4.9-4.6 2.5.2 4.3 2.3 4.3 4.8v-.1c0 .2.2.4.5.4h1.8c.3 0 .5-.2.5-.4v-.1c0-4.2-3.5-7.6-7.8-7.4-3.9.2-6.9 3.5-7 7.5.1.2.2.4.5.4z" } },
+	  retweet: { "path": { "d": "M23.8 13.3l-1-1c-.2-.3-.6-.3-.9 0l-1.3 1.3c-.3.3-.8.1-.8-.4V5.5c0-1-.8-1.8-1.8-1.8h-6.7c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h5.1c.4 0 .7.3.7.7v6c0 .5-.5.6-.9.4L15 12.4c-.2-.3-.7-.3-.9 0l-1 1c-.3.3-.3.7 0 1l4.9 4.8c.2.3.6.3.9 0l4.9-4.9c.2-.3.2-.7 0-1zm-11.1 4.2H7.6c-.4 0-.7-.3-.7-.7v-6c0-.5.5-.6.9-.4L9 11.6c.2.3.7.3.9 0l1-.9c.3-.3.3-.7 0-1L6.1 4.8c-.3-.3-.7-.3-1 0L.2 9.7c-.3.3-.3.7 0 1l1 .9c.2.3.6.3.9 0l1.3-1.2c.2-.3.8-.1.8.3v7.8c0 1 .8 1.8 1.8 1.8h6.7c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7z" } },
+	  richtextbulletedlist: { "path": { "d": "M3.7 6.2c0 .4-.3.7-.7.7H1.6c-.4 0-.7-.3-.7-.7V4.8c0-.3.3-.6.7-.6H3c.4 0 .7.3.7.6v1.4zm19.4-1.4c0-.3-.3-.6-.7-.6H6.2c-.3 0-.7.3-.7.6v1.4c0 .4.4.7.7.7h16.2c.4 0 .7-.3.7-.7V4.8zM3.7 11.3c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7v-1.4zm17.5 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h14.3c.4 0 .7-.3.7-.7v-1.4zM3.7 17.8c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6H3c.4 0 .7-.3.7-.6v-1.4zm19.4 0c0-.4-.3-.7-.7-.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h16.2c.4 0 .7-.3.7-.6v-1.4z" } },
+	  richtextindent: { "path": { "d": "M24 5.3c0-.4-.3-.7-.7-.7h-7.8c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7V5.3zm-1.8 11.1c0-.4-.4-.7-.7-.7h-6c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h6c.3 0 .7-.4.7-.7v-1.4zm1.8-5.6c0-.3-.3-.6-.7-.6h-7.8c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7v-1.4zM12.9 2.5c0-.3-.3-.7-.7-.7h-1.4c-.3 0-.6.4-.6.7v19c0 .3.3.7.6.7h1.4c.4 0 .7-.4.7-.7v-19zM4.3 7.1c-.2-.3-.6-.1-.6.4v2.7h-3c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7h3v2.7c0 .5.4.7.6.5l3.9-4.2c.1-.2.1-.5 0-.6L4.3 7.1z" } },
+	  richtextnumberedlist: { "path": { "d": "M23.1 3v1.4c0 .4-.3.7-.7.7H9.9c-.3 0-.7-.3-.7-.7V3c0-.4.4-.7.7-.7h12.5c.4 0 .7.3.7.7zM9.9 9.7h8.3c.4 0 .7-.3.7-.7V7.6c0-.4-.3-.7-.7-.7H9.9c-.3 0-.7.3-.7.7V9c0 .4.4.7.7.7zm12.5 4.1H9.9c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7zm-4.2 4.7H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h8.3c.4 0 .7-.3.7-.7v-1.3c0-.4-.3-.7-.7-.7zM1.6 3.7h1.2v5.8c0 .3.3.7.7.7h.4c.4 0 .7-.4.7-.7V2.8c0-.5-.4-1-.9-1H1.6c-.4 0-.7.4-.7.7V3c0 .4.3.7.7.7zm3.9 9.2H1.6c-.4 0-.7.3-.7.7v.5c0 .3.3.7.7.7h3v1.8H1.8c-.5 0-.9.4-.9.9v3.7c0 .5.4 1 .9 1h4c.3 0 .7-.4.7-.7V21c0-.4-.4-.7-.7-.7h-3v-1.8h2.7c.5 0 1-.5 1-1v-3.7c0-.5-.5-.9-1-.9z" } },
+	  richtextoutdent: { "path": { "d": "M7.6 10.2h-3V7.4c0-.4-.4-.7-.6-.4L.1 11.2c-.1.2-.1.4 0 .6L4 16c.2.2.6 0 .6-.4v-2.7h3c.3 0 .7-.3.7-.7v-1.4c0-.3-.4-.6-.7-.6zM24 5.3c0-.4-.3-.7-.7-.7h-7.8c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7V5.3zm-1.8 11.1c0-.4-.4-.7-.7-.7h-6c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h6c.3 0 .7-.4.7-.7v-1.4zm1.8-5.6c0-.3-.3-.6-.7-.6h-7.8c-.4 0-.7.3-.7.6v1.4c0 .4.3.7.7.7h7.8c.4 0 .7-.3.7-.7v-1.4zM12.9 2.5c0-.3-.3-.7-.7-.7h-1.4c-.3 0-.6.4-.6.7v19c0 .3.3.7.6.7h1.4c.4 0 .7-.4.7-.7v-19z" } },
+	  right: { "path": { "d": "M6.5 20.2V3.8c0-.4.6-.8 1-.4l9.8 8c.3.3.3.9 0 1.2l-9.8 8c-.4.4-1 .1-1-.4z" } },
+	  right_align_text: { "path": { "d": "M21.5 2.3h-19c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V3c0-.4-.4-.7-.7-.7zm0 5.5H6.2c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7V8.5c0-.3-.4-.7-.7-.7zm0 11.1H6.2c-.3 0-.7.3-.7.7V21c0 .4.4.7.7.7h15.3c.3 0 .7-.3.7-.7v-1.4c0-.4-.4-.7-.7-.7zm0-5.5h-19c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h19c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7z" } },
+	  rotate: { "path": { "d": "M22.4.9H21c-.4 0-.7.3-.7.7v3.2c0 .5-.5.7-.7.4-2.2-2.4-5.3-3.6-8.7-3.3-1.2.1-2.3.5-3.4 1-.5.3-1.1.6-1.5 1-.4.2-.4.7-.1 1l.9 1c.3.2.6.3.9.1.6-.4 1.2-.7 1.8-1 .3-.1.6-.2.9-.2 2.9-.6 5.7.6 7.3 2.4.5.7.1 1.1-.3 1.1h-3.3c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h8.4c.3 0 .6-.3.6-.6V1.6c0-.4-.3-.7-.7-.7zm-4.2 16.4c-.3-.3-.7-.3-1 0-.7.7-1.6 1.3-2.7 1.7-.2.1-.6.2-.9.2-2.9.6-5.7-.6-7.2-2.4-.6-.7-.2-1.1.3-1.1h3.2c.4 0 .7-.3.7-.7v-1.4c0-.4-.3-.7-.7-.7H1.5c-.3 0-.6.3-.6.6v8.9c0 .4.3.7.7.7H3c.4 0 .7-.3.7-.7v-3.2c0-.5.5-.7.7-.4 2.2 2.4 5.3 3.6 8.7 3.3 1.2-.1 2.3-.5 3.4-1 1-.5 1.9-1.2 2.6-1.9.3-.3.3-.7 0-1l-.9-.9z" } },
+	  rows: { "path": { "d": "M21.5 6.5h-19c-.3 0-.7-.4-.7-.7V4.4c0-.4.4-.7.7-.7h19c.3 0 .7.3.7.7v1.4c0 .3-.4.7-.7.7zm0 6.8h-19c-.3 0-.7-.3-.7-.7v-1.3c0-.4.4-.7.7-.7h19c.3 0 .7.3.7.7v1.4c0 .3-.4.6-.7.6zm0 7h-19c-.3 0-.7-.3-.7-.7v-1.4c0-.3.4-.7.7-.7h19c.3 0 .7.4.7.7v1.4c0 .4-.4.7-.7.7z" } },
+	  salesforce1: { "path": { "d": "M10 5.5c.8-.8 1.9-1.3 3.1-1.3 1.5 0 2.9.9 3.7 2.2.6-.3 1.3-.5 2-.5 2.9 0 5.2 2.3 5.2 5.2s-2.3 5.1-5.2 5.1h-1c-.6 1.1-1.9 1.9-3.3 1.9-.6 0-1.2-.1-1.7-.4-.6 1.5-2.1 2.6-3.9 2.6-1.9 0-3.5-1.1-4.1-2.8-.3 0-.6.1-.8.1-2.2 0-4-1.8-4-4 0-1.5.7-2.8 1.9-3.5-.2-.5-.3-1.2-.3-1.8 0-2.6 2-4.7 4.6-4.7 1.6.1 3 .8 3.8 1.9" } },
+	  search: { "path": { "d": "M22.9 20.9l-6.2-6.1c1.3-1.8 1.9-4 1.6-6.4-.6-3.9-3.8-7.1-7.8-7.4C5 .4.4 5 1 10.5c.3 4 3.5 7.3 7.4 7.8 2.4.3 4.6-.3 6.4-1.5l6.1 6.1c.3.3.7.3 1 0l.9-1c.3-.3.3-.7.1-1zM3.7 9.6c0-3.2 2.7-5.9 5.9-5.9s6 2.7 6 5.9-2.7 6-6 6-5.9-2.6-5.9-6z" } },
+	  settings: { "path": { "d": "M12 8.8c-1.8 0-3.2 1.4-3.2 3.2s1.4 3.3 3.2 3.3 3.3-1.5 3.3-3.3-1.5-3.2-3.3-3.2zm9.7 6.2L20 13.5c.1-.5.2-1 .2-1.5s-.1-1.1-.2-1.6L21.7 9c.6-.5.8-1.3.4-2l-.7-1.3c-.3-.4-.8-.7-1.4-.7-.2 0-.3 0-.5.1l-2.1.8c-.8-.8-1.8-1.3-2.7-1.6l-.4-2.2c-.1-.7-.8-1.1-1.5-1.1h-1.5c-.7 0-1.4.4-1.5 1.1l-.4 2.1c-1 .4-1.9.9-2.8 1.6L4.5 5c-.2 0-.3-.1-.5-.1-.5 0-1 .3-1.3.8L1.9 7c-.3.6-.2 1.4.4 1.9L4 10.3c-.1.5-.1 1.1-.1 1.6 0 .6 0 1.1.1 1.6l-1.7 1.4c-.5.5-.7 1.3-.4 1.9l.8 1.3c.3.5.8.8 1.3.8.2 0 .4-.1.5-.1l2.1-.8c.9.7 1.8 1.2 2.8 1.6l.3 2.2c.2.7.8 1.2 1.6 1.2h1.4c.8 0 1.4-.5 1.6-1.3l.3-2.2c1.1-.3 2.1-.9 2.9-1.7l2 .8c.2 0 .3.1.5.1.6 0 1.1-.3 1.4-.7l.7-1.2c.4-.6.2-1.4-.4-1.8zM12 17.1c-2.8 0-5-2.2-5-5.1s2.2-5 5-5 5.1 2.2 5.1 5-2.2 5.1-5.1 5.1z" } },
+	  setup: { "path": { "d": "M21.6 15l-1.7-1.5c.1-.5.1-1 .1-1.5s0-1.1-.1-1.6L21.6 9c.6-.5.7-1.3.4-2l-.8-1.3c-.2-.5-.8-.8-1.3-.8-.2 0-.4.1-.5.1l-2.1.8c-.8-.7-1.7-1.2-2.7-1.6l-.3-2.1c-.2-.8-.8-1.2-1.6-1.2h-1.4c-.8 0-1.4.4-1.6 1.2l-.3 2.1c-1 .3-1.9.9-2.8 1.6l-2-.8c-.2-.1-.3-.1-.5-.1-.5 0-1.1.3-1.3.7L2 6.9c-.3.7-.2 1.5.4 2l1.7 1.4c-.1.5-.1 1.1-.1 1.6s0 1 .1 1.5l-1.7 1.5c-.6.4-.7 1.3-.4 1.9l.8 1.4c.2.4.8.7 1.3.7.2 0 .4 0 .5-.1l2.1-.8c.8.8 1.7 1.3 2.7 1.6l.3 2.2c.2.8.8 1.3 1.6 1.3h1.4c.8 0 1.4-.6 1.6-1.3l.3-2.2c1.1-.4 2-1 2.8-1.7l2 .7c.2.1.4.1.5.1.6 0 1.1-.2 1.4-.7l.7-1.2c.3-.6.2-1.4-.4-1.8zM12 17.1c-2.7 0-5-2.2-5-5.1s2.2-5 5-5 5.1 2.2 5.1 5-2.3 5.1-5.1 5.1zm1.4-8.8h-2.1c-.4 0-.6.2-.7.5l-1.3 3.3c-.1.2.1.5.3.5h2.2l-.8 2.8c-.1.2.3.4.4.2l3.3-3.8c.3-.3.1-.6-.3-.6h-1.6l1.5-2.3c.1-.2-.1-.5-.4-.5h-.5z" } },
+	  setup_assistant_guide: { "path": { "d": "M5.3 11.5c0-.2-.2-.3-.4-.2l-2 1.7c-.1.1-.1.2-.1.4v7.3c0 .5.6.7 1 .4l3.4-2.6c.1-.1.1-.2 0-.4-.8-1.2-1.6-3.3-1.9-6.6zm4.5 6.9c.1 0 .2.1.3.1h3.8c.1 0 .2-.1.3-.1.5-.4 2.7-2.2 2.7-8.5 0-2.9-.8-5-1.8-6.3C13.7 1.5 12 .9 12 .9s-1.8.6-3.2 2.7C7.8 5 7.1 7 7.1 9.9c0 6.3 2.1 8.1 2.7 8.5zM12 6c1.5 0 2.7 1.2 2.7 2.8s-1.2 2.7-2.7 2.7-2.8-1.2-2.8-2.7S10.4 6 12 6zm9.1 7l-2-1.7c-.2-.1-.4 0-.4.2-.3 3.3-1.1 5.4-1.9 6.7v.3l3.4 2.6c.4.4 1 .1 1-.3v-7.4c0-.2 0-.3-.1-.4zm-6.2 7.5c-.1-.1-.3-.2-.4-.2H9.4c-.1 0-.3.1-.4.2-.1.3-.4.8-.6 1.5-.1.5.3 1.1.9 1.1h5.3c.6 0 1-.6.9-1.1-.2-.7-.5-1.2-.6-1.5z" } },
+	  share: { "path": { "d": "M22.4 13.8H21c-.4 0-.7.4-.7.7v5.1c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V9.9c0-.3.3-.7.7-.7h1.8c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7H2.8c-1 0-1.9.8-1.9 1.8v12.9c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9v-6.7c0-.3-.3-.7-.7-.7zm-6.7-7.3c-4.6 0-8.8 4.1-9.2 8.9 0 .4.3.8.7.8h1.4c.4 0 .6-.3.7-.6.3-3.5 3.3-6.4 6.9-6.4h.7c.4 0 .6.5.3.8l-2.5 2.6c-.3.3-.3.7 0 1l.9.9c.3.3.7.3 1 0l6.3-6.2c.3-.3.3-.7 0-1l-6.2-6.2c-.3-.3-.7-.3-1 0l-1 1c-.3.3-.3.7 0 .9l2.6 2.6c.2.3.1.8-.4.8l-1.2.1z" } },
+	  share_post: { "path": { "d": "M12 1.8C5.9 1.8.9 6.4.9 12c0 1.8.5 3.5 1.4 5 .1.2.1.4.1.6l-1 3.2c-.2.6.4 1.1 1 .9l3.2-1.1c.2-.1.4-.1.6.1 1.7.9 3.7 1.5 5.8 1.5 6.2 0 11.1-4.5 11.1-10.2C23 6.4 18 1.8 12 1.8z" } },
+	  shield: { "path": { "d": "M2.2 6.5h19.6c.4 0 .8-.5.7-1-.5-1.5-1.1-2.9-2-4.1-.3-.4-.8-.4-1.1-.1-.8.8-2.1 1.3-3.4 1.3-1.4 0-2.6-.6-3.5-1.5-.3-.3-.8-.3-1.1 0-.9.9-2.1 1.5-3.5 1.5-1.3 0-2.5-.5-3.4-1.3-.3-.3-.9-.2-1.1.1-.9 1.2-1.6 2.6-2 4.1 0 .5.4 1 .8 1zm20.9 2.9c0-.4-.3-.6-.8-.6H1.7c-.5 0-.8.2-.8.6v.2c0 6.9 4.8 12.6 11.1 13.5 6.3-.9 11.1-6.6 11.1-13.5v-.2z" } },
+	  side_list: { "path": { "d": "M22.4 1.8H9.9c-.3 0-.7.4-.7.7v19c0 .3.4.7.7.7h12.5c.4 0 .7-.4.7-.7v-19c0-.3-.3-.7-.7-.7zm-15.7 0H1.6c-.4 0-.7.4-.7.7v2.3c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7V2.5c0-.3-.3-.7-.7-.7zm0 5.6H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7V8.1c0-.4-.3-.7-.7-.7zm0 5.5H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7v-2.3c0-.4-.3-.7-.7-.7zm0 5.6H1.6c-.4 0-.7.3-.7.7v2.3c0 .3.3.7.7.7h5.1c.4 0 .7-.4.7-.7v-2.3c0-.4-.3-.7-.7-.7z" } },
+	  signpost: { "path": { "d": "M22.8 4.2l-1.9-1.5c-.3-.2-.5-.3-.9-.3h-6.5v-.7c0-.5-.3-.8-.8-.8h-1.4c-.5 0-.8.3-.8.8v.7H3.1c-.4 0-.7.3-.7.7v3c0 .4.3.7.7.7H20c.4 0 .7-.1.9-.2l1.9-1.5c.4-.3.4-.7 0-.9zm-1.9 6.3h-7.4V9.4c0-.2-.2-.4-.4-.4h-2.2c-.2 0-.4.2-.4.4v1.1H4c-.4 0-.7.1-.9.3l-1.9 1.4c-.4.3-.4.7 0 1l1.9 1.4c.3.2.5.3.9.3h16.9c.4 0 .7-.3.7-.7v-3c0-.4-.3-.7-.7-.7zM13.5 20v-2.5c0-.2-.2-.3-.4-.3h-2.2c-.2 0-.4.1-.4.3V20c-1.5.4-2.3 1.3-2.5 2.4-.1.3.2.7.5.7h7c.4 0 .7-.3.6-.7-.3-1.1-1.1-2-2.6-2.4z" } },
+	  sms: { "path": { "d": "M12 1.8C5.9 1.8 1 6.4 1 12c0 1.7.5 3.4 1.3 4.8.1.3.2.6.1.8l-1.4 4c-.2.3.2.6.6.6l3.9-1.6c.3-.1.5 0 .8.1 1.7.9 3.7 1.5 5.8 1.5 6 0 11-4.6 11-10.2C23 6.4 18.1 1.8 12 1.8zM7.6 13.7c-.2.2-.3.4-.5.6s-.4.2-.7.3c-.2.1-.5.1-.8.1-.3 0-.7 0-1-.2-.3-.1-.6-.3-.9-.6l-.1-.1s0-.1.1-.2l.8-.7c.1-.1.2-.1.2 0s.1.1.1.1c.1.2.2.2.4.3.2.2.4.2.7.1.1 0 .1 0 .2-.1l.2-.1V13c0-.2 0-.2-.1-.3-.1-.1-.2-.1-.4-.2s-.4-.1-.6-.2l-.6-.3c-.3-.1-.4-.3-.5-.5-.2-.2-.3-.5-.3-.8 0-.4.1-.6.2-.9.2-.2.3-.4.5-.5.2-.2.4-.3.7-.3.6-.2 1.1-.2 1.7 0 .3.1.5.3.7.4l.1.1c.1 0 .1.1 0 .2l-.7.7c-.1.1-.3.1-.4 0l-.1-.1c-.3-.1-.6-.2-.9-.1h-.2l-.1.2v.2c0 .1 0 .2.1.2 0 .1.2.1.4.2s.3.2.6.2l.6.3c.2.1.4.3.5.5.2.2.3.5.3.9 0 .3-.1.5-.2.8zm7.6.6c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-2.7c0-.3-.3-.3-.4-.1l-.8 2.1c0 .2-.2.2-.4.2h-.3c-.2 0-.4-.1-.5-.2l-.8-2.1c-.1-.2-.4-.2-.4.1v2.7c0 .3-.3.5-.6.5h-.4c-.3 0-.4-.2-.4-.5V9.2c0-.2.2-.4.4-.4h1.2c.2 0 .4.1.4.2l.9 2.4c.1.2.4.2.4 0l1-2.4c0-.1.2-.2.4-.2h1.2c.3 0 .5.2.5.4v5.1zm4.9-.6c-.2.2-.3.5-.5.6-.2.1-.4.3-.7.4s-.5.1-.8.1c-.4 0-.7-.1-1-.2-.3-.2-.7-.3-.9-.6l-.1-.1c0-.1 0-.1.1-.2l.7-.7c.1-.1.2-.1.3-.1s.1.2.1.2l.3.3c.3.1.5.1.8.1.1-.1.2-.1.2-.1l.1-.2.1-.1c0-.2-.1-.3-.1-.3-.1-.1-.2-.2-.4-.2s-.4-.2-.6-.2c-.3-.1-.5-.2-.7-.3-.2-.1-.4-.3-.5-.5-.2-.2-.3-.5-.3-.9 0-.3.1-.6.2-.8.2-.3.3-.4.5-.6.2-.1.5-.3.7-.3.6-.1 1.1-.1 1.7 0 .3.1.5.3.7.5l.1.1c.1 0 .1.2 0 .3l-.7.7c-.1.1-.2.1-.3 0l-.2-.2c-.3-.1-.6-.2-.9-.1 0 0-.1 0-.1.1l-.2.1v.2c0 .1 0 .2.1.2.1.1.2.2.4.3.2 0 .4.1.6.2.2 0 .4.1.6.2.3.2.4.4.6.5.1.3.2.5.2.9.1.2 0 .5-.1.7z" } },
+	  snippet: { "path": { "d": "M6.7 2.8H1.6c-.4 0-.7.3-.7.7v6c0 .3.3.7.7.7h5.1c.4 0 .7-.4.7-.7v-6c0-.4-.3-.7-.7-.7zm15.7 0H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7V3.5c0-.4-.3-.7-.7-.7zM9.9 10.2h7.9c.3 0 .7-.4.7-.7V8.1c0-.4-.4-.7-.7-.7H9.9c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7zm-3.2 3.6H1.6c-.4 0-.7.4-.7.7v6c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7v-6c0-.3-.3-.7-.7-.7zm15.7 0H9.9c-.3 0-.7.4-.7.7v1.4c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7zm-4.6 4.7H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h7.9c.3 0 .7-.3.7-.7v-1.3c0-.4-.4-.7-.7-.7z" } },
+	  socialshare: { "path": { "d": "M18.9 14.8c-1.2 0-2.3.5-3 1.3l-6.8-3.4c.1-.2.1-.5.1-.7 0-.3-.1-.6-.1-.8l6.8-3.4c.7.9 1.8 1.4 3 1.4 2.3 0 4.2-1.9 4.2-4.2S21.2.9 18.9.9 14.8 2.7 14.8 5v.3l-7 3.5c-.8-.6-1.7-1-2.8-1C2.7 7.8.9 9.7.9 12s1.8 4.2 4.1 4.2c1.1 0 2-.4 2.8-1.1l6.9 3.5v.3c0 2.3 1.9 4.2 4.2 4.2s4.1-1.9 4.1-4.2-1.8-4.1-4.1-4.1z" } },
+	  sort: { "path": { "d": "M12.7 7.4c.3-.3.3-.7 0-1L7.4 1.1c-.2-.3-.7-.3-.9 0L1.2 6.4c-.3.3-.3.7 0 1l.9 1c.3.2.7.2 1 0l1.7-1.7c.2-.3.7-.1.7.3v9.8c0 .4.4.7.7.7h1.4c.4 0 .7-.4.7-.7V7c0-.4.5-.6.8-.3l1.7 1.7c.2.2.6.2.9 0l1-1zm10.1 9.2l-.9-.9c-.3-.3-.7-.3-1 0l-1.7 1.7c-.2.2-.7 0-.7-.4V7.2c0-.4-.4-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v9.7c0 .5-.5.6-.8.4l-1.7-1.7c-.2-.3-.6-.3-.9 0l-1 1c-.3.3-.3.7 0 1l5.3 5.3c.3.3.7.3 1 0l5.3-5.3c.2-.3.2-.8-.1-1z" } },
+	  spinner: { "path": { "d": "M7.4 12.7v-1.4c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7zm.9 2.1c-.3-.3-.7-.3-1 0l-3.6 3.6c-.3.2-.3.7 0 .9l1 1c.2.3.7.3.9 0l3.6-3.6c.3-.3.3-.7 0-1l-.9-.9zm7.4-5.6c.3.3.7.3 1 0l3.6-3.6c.3-.2.3-.7 0-.9l-1-1c-.2-.3-.7-.3-.9 0l-3.6 3.5c-.3.3-.3.7 0 1l.9 1zM5.6 3.7c-.2-.3-.7-.3-.9 0l-1 1c-.3.2-.3.7 0 .9l3.6 3.6c.3.3.7.3 1 0l.9-.9c.3-.3.3-.7 0-1L5.6 3.7zm11.2 11.1c-.3-.3-.7-.3-1 0l-1 .9c-.3.3-.3.7 0 1l3.6 3.6c.2.3.7.3.9 0l1-1c.3-.2.3-.7 0-.9l-3.5-3.6zm-4.1 1.8h-1.4c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h1.4c.4 0 .7-.3.7-.7v-5.1c0-.4-.3-.7-.7-.7zm9.7-6h-5.1c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h5.1c.4 0 .7-.3.7-.7v-1.4c0-.4-.3-.7-.7-.7zM12.7.9h-1.4c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h1.4c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7z" } },
+	  standard_objects: { "path": { "d": "M21.3 18l-8.7 4.9c-.4.3-1 .3-1.5 0L2.5 18c-.4-.2-.4-.7 0-.9l2-1.1c.2-.1.3-.1.5 0l5.2 3c.6.2 1.1.4 1.7.4s1.2-.2 1.7-.4l5.2-3c.2-.1.4-.1.5 0l2 1.1c.4.2.4.7 0 .9zm0-5.6l-8.7 5c-.4.2-1 .2-1.5 0l-8.6-5c-.4-.2-.4-.6 0-.8l2-1.2c.2-.1.3-.1.5 0l5.2 3c.6.3 1.1.4 1.7.4s1.2-.1 1.7-.4l5.2-3c.2-.1.4-.1.5 0l2 1.2c.4.2.4.6 0 .8zm-10.1-.6L2.5 6.9c-.3-.2-.3-.7 0-.9l8.7-4.9c.5-.3 1.1-.3 1.5 0L21.4 6c.4.2.4.7 0 .9l-8.7 4.9c-.4.2-1 .2-1.5 0z" } },
+	  stop: { "path": { "d": "M3.7 3.7h16.6v16.6H3.7V3.7z" } },
+	  strikethrough: { "path": { "d": "M5.6 8.4c-.1-.5-.2-1.1-.2-1.6 0-.6.2-1.3.5-2 .2-.6.7-1.3 1.3-1.8.5-.6 1.3-1.1 2.2-1.5.9-.3 2-.6 3.2-.6 1.2 0 2.3.2 3.4.5.8.3 1.6.7 2.3 1.4.3.2.3.7-.1 1L17 4.9c-.3.3-.7.3-1 0-.3-.3-.7-.6-1.1-.8-.6-.3-1.4-.5-2.3-.5-.7 0-1.4.1-1.9.3s-1 .5-1.3.9-.6.6-.7 1-.2.8-.2 1c0 .5.1 1 .2 1.3.2.3-.1.7-.4.7H6c-.2 0-.4-.3-.4-.4zm12.8 6.8h-2.3c-.3 0-.5.4-.4.6.1.3.2.7.2 1 0 .6-.2 1.1-.4 1.6-.3.4-.6.8-1 1.1-.4.3-.9.5-1.4.6-.5.2-1 .3-1.5.3-.8 0-1.7-.2-2.5-.6-.6-.3-1.1-.6-1.5-1.2-.3-.2-.7-.3-1 0l-1.3 1.1c-.3.2-.3.7 0 .9.6.8 1.4 1.3 2.4 1.7 1.2.5 2.5.7 3.9.7 1 0 2-.2 2.8-.5.9-.3 1.7-.7 2.4-1.3.6-.5 1.2-1.2 1.6-2 .3-.9.6-1.8.6-2.8 0-.3 0-.6-.1-.9-.1-.1-.3-.3-.5-.3zM23 11c-.1-.2-.3-.4-.6-.4H1.6c-.3 0-.5.2-.6.4-.1.1-.1.2-.1.3v1.3c0 .4.3.8.7.8h20.8c.4 0 .7-.4.7-.8v-1.3c0-.1 0-.2-.1-.3z" } },
+	  success: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm6.2 8.3l-7.1 7.2c-.3.3-.7.3-1 0l-3.9-3.9c-.2-.3-.2-.8 0-1.1l1-1c.3-.2.8-.2 1.1 0l2 2.1c.2.2.5.2.7 0l5.2-5.3c.2-.3.7-.3 1 0l1 1c.3.2.3.7 0 1z" } },
+	  summary: { "path": { "d": "M22.4.9H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7zm0 5.6H6.2c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h16.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zm0 9.2H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h16.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm0 4.6h-18c-.4 0-.7-.3-.7-.7v-3.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V21c0-.4-.3-.7-.7-.7zm0-9.2h-18c-.4 0-.7-.3-.7-.7V7.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .3.3.6.7.6h20.8c.4 0 .7-.3.7-.6v-1.4c0-.4-.3-.7-.7-.7z" } },
+	  summarydetail: { "path": { "d": "M22.4.9H1.6c-.4 0-.7.3-.7.7v2.3c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V1.6c0-.4-.3-.7-.7-.7zM9.5 6.5H6.2c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h3.3c.3 0 .7-.3.7-.7V7.2c0-.4-.4-.7-.7-.7zm6.4 0h-3.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h3.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zm6.5 0h-3.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h3.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zM9.5 15.7H6.2c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h3.3c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7zm6.4 0h-3.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h3.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm6.5 0h-3.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h3.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm0 4.6h-18c-.4 0-.7-.3-.7-.7v-3.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .4.3.7.7.7h20.8c.4 0 .7-.3.7-.7V21c0-.4-.3-.7-.7-.7zm0-9.2h-18c-.4 0-.7-.3-.7-.7V7.2c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6c0 .3.3.6.7.6h20.8c.4 0 .7-.3.7-.6v-1.4c0-.4-.3-.7-.7-.7z" } },
+	  "switch": { "path": { "d": "M22 8.2l-9.5 9.6c-.3.2-.7.2-1 0L2 8.2c-.2-.3-.2-.7 0-1l1-1c.3-.3.8-.3 1.1 0l7.4 7.5c.3.3.7.3 1 0l7.4-7.5c.3-.3.8-.3 1.1 0l1 1c.2.3.2.7 0 1z" } },
+	  table: { "path": { "d": "M21.5.9h-19c-.3 0-.7.3-.7.7v2.3c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V1.6c0-.4-.4-.7-.7-.7zM6.7 6.5H2.5c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V7.2c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V7.2c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.3c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V7.2c0-.4-.4-.7-.7-.7zM6.7 11.1H2.5c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h4.2c.4 0 .7-.3.7-.6v-1.4c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.4c0 .3.4.6.7.6h4.2c.3 0 .7-.3.7-.6v-1.4c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.6.7.6h4.2c.3 0 .7-.3.7-.6v-1.4c0-.4-.4-.7-.7-.7zM6.7 15.7H2.5c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h4.2c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.4c0 .3.4.7.7.7h4.2c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h4.2c.3 0 .7-.4.7-.7v-1.4c0-.4-.4-.7-.7-.7zM6.7 20.3H2.5c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V21c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V21c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V21c0-.4-.4-.7-.7-.7z" } },
+	  tablet_landscape: { "path": { "d": "M23.1 4.6c0-1-.9-1.8-1.9-1.8H2.8c-1 0-1.9.8-1.9 1.8v14.8c0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V4.6zM3.2 13.4c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.7 1.4-1.4 1.4zm17.1 4.4c0 .3-.3.7-.7.7H6.2c-.3 0-.7-.4-.7-.7V6.2c0-.3.4-.7.7-.7h13.4c.4 0 .7.4.7.7v11.6z" } },
+	  tablet_portrait: { "path": { "d": "M21.2 2.8c0-1-.8-1.9-1.8-1.9H4.6c-1 0-1.8.9-1.8 1.9v18.4c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9V2.8zM12 22.2c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.3.6 1.3 1.4-.6 1.4-1.3 1.4zm6.5-4.4c0 .3-.4.7-.7.7H6.2c-.3 0-.7-.4-.7-.7V4.4c0-.4.4-.7.7-.7h11.6c.3 0 .7.3.7.7v13.4z" } },
+	  text_background_color: { "path": { "d": "M12 7.4l1.9 4.6H9.8l1.8-4.6h.4zm10.2-3.7v16.6c0 1-.9 1.9-1.9 1.9H3.7c-1 0-1.9-.9-1.9-1.9V3.7c0-1 .9-1.9 1.9-1.9h16.6c1 0 1.9.9 1.9 1.9zm-2.6 15.1L14.1 5.1c-.2-.3-.4-.5-.7-.5h-3.3c-.3 0-.5.2-.6.5L4.4 18.8c-.1.3.1.6.4.6h1.9c.3 0 .5-.2.6-.5l1.5-4.1H15l1.6 4.1c.1.3.4.5.7.5h1.9c.3 0 .5-.3.4-.6z" } },
+	  text_color: { "path": { "d": "M4.8 16.6h1.9c.3 0 .5-.2.6-.5L8.8 12H15l1.6 4.1c.1.3.4.5.7.5h1.9c.3 0 .5-.3.4-.6L14 2.3c-.1-.3-.3-.5-.6-.5h-3.2c-.3 0-.6.2-.7.5L4.4 16c-.1.3.1.6.4.6zm6.8-12h.4l2 4.6H9.8l1.8-4.6zm10.8 14.8H1.6c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h20.8c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7z" } },
+	  threedots: { "path": { "d": "M3.7 9.2c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8S.9 13.5.9 12s1.3-2.8 2.8-2.8zm8.3 0c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8 1.3-2.8 2.8-2.8zm8.3 0c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8 1.3-2.8 2.8-2.8z" } },
+	  tile_card_list: { "path": { "d": "M6.7 1.8H2.5c-.3 0-.7.4-.7.7v7.9c0 .4.4.7.7.7h4.2c.4 0 .7-.3.7-.7V2.5c0-.3-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.4-.7.7v7.9c0 .4.4.7.7.7h4.2c.3 0 .7-.3.7-.7V2.5c0-.3-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.4-.7.7v7.9c0 .4.3.7.7.7h4.2c.3 0 .7-.3.7-.7V2.5c0-.3-.4-.7-.7-.7zM6.7 12.9H2.5c-.3 0-.7.3-.7.7v7.9c0 .3.4.7.7.7h4.2c.4 0 .7-.4.7-.7v-7.9c0-.4-.3-.7-.7-.7zm7.4 0H9.9c-.3 0-.7.3-.7.7v7.9c0 .3.4.7.7.7h4.2c.3 0 .7-.4.7-.7v-7.9c0-.4-.4-.7-.7-.7zm7.4 0h-4.2c-.4 0-.7.3-.7.7v7.9c0 .3.3.7.7.7h4.2c.3 0 .7-.4.7-.7v-7.9c0-.4-.4-.7-.7-.7z" } },
+	  topic: { "path": { "d": "M8 16.3c0-.1-.2-.3-.3-.3l-1-.3c-.2-.1-.4 0-.5.2l-1.8 3c-.4.9-.2 1.1.7.7l3-1.8c.2-.1.3-.3.3-.5l-.4-1zm8-8.6c0 .1.2.3.3.3l1 .3c.2.1.4 0 .5-.2L19.6 5c.4-.8.2-1.1-.7-.6l-3 1.7c-.2.1-.3.4-.3.5l.4 1.1zm-9.8.4c.1.2.3.3.5.3l1-.3c.1-.1.3-.2.3-.3l.3-1.1c.1-.1 0-.4-.2-.5l-3-1.8c-.9-.4-1.1-.2-.7.7l1.8 3zm11.6 7.8c-.1-.2-.3-.3-.5-.3l-1 .3c-.1.1-.3.2-.3.3l-.3 1.1c-.1.2 0 .4.2.5l3.1 1.8c.8.4 1.1.2.6-.7l-1.8-3zm4.7-4.3l-7.6-2c-.3 0-.5-.3-.5-.5l-2-7.6c-.3-.8-.6-.8-.8 0l-2 7.6c-.1.3-.3.5-.6.5l-7.5 2c-.8.3-.8.6 0 .8l7.6 2c.3.1.5.3.5.6l2 7.5c.3.8.6.8.8 0l2-7.5c.1-.3.3-.5.6-.6l7.5-2c.8-.2.8-.6 0-.8zM12 13.8c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8z" } },
+	  trail: { "path": { "d": "M12.8.9c1.6 0 2.8 1.2 2.8 2.7s-1.3 2.8-2.8 2.8-2.7-1.2-2.7-2.8S11.3.9 12.8.9zm7 7.5c-.5-.1-1 .3-1.1.8l-.2 2.7c-.1 0-.2.1-.3.1h-2.5l-1.8-3.1c-.1-.3-.4-.5-.7-.5L10.5 8c-.4-.1-.9.2-1.1.6l-2 5.2c-.2.5 0 .9.4 1.1l5 3.4.4 3.9c0 .5.5.9 1 .9.6 0 1.1-.5 1-1l-.4-4.8c0-.2-.2-.5-.4-.6l-2.7-3.1 1-2.5 1.2 2.1c.2.3.5.6.9.6h3.5l-1 8.3c-.1.5.3.9.8 1 .1 0 .1-.1.1-.1.5 0 1-.3 1-.8l1.6-12.9c0-.4-.4-.9-1-.9zM5.6 12.8l1.7-4.4c.1-.3.3-.6.5-.8l-.3-.1c-1.5-.2-2.8.7-3.3 2.1L3.3 12c-.2.5.1 1.1.6 1.2l.4.1c.6.2 1.1-.1 1.3-.5zm.7 3.4l-2.1 6.2c-.1.4.1.6.5.6h1.1c.4 0 .8-.2 1-.6l2-4.5-2.3-1.4c0-.1-.1-.2-.2-.3z" } },
+	  undelete: { "path": { "d": "M19.2 9.2H4.8c-.3 0-.6.4-.6.7v10.9c0 1.3 1 2.3 2.3 2.3h11c1.3 0 2.3-1 2.3-2.3V9.9c0-.3-.3-.7-.6-.7zm-7.2 12v-1.8c1.5 0 2.8-1.3 2.8-2.8s-1.3-2.8-2.8-2.8c-.7 0-1.4.4-1.9.9l1.1 1.1c.1.1 0 .4-.2.4H7.6c-.1 0-.2-.1-.2-.2v-3.4c0-.2.2-.3.4-.2l1 1c.8-.8 2-1.4 3.2-1.4 2.6 0 4.7 2.1 4.7 4.7s-2.2 4.5-4.7 4.5zm9-16.6h-5.8V2.8c0-1-.8-1.9-1.8-1.9h-2.8c-1 0-1.8.9-1.8 1.9v1.8H3c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h18c.4 0 .7-.3.7-.7V5.3c0-.4-.3-.7-.7-.7zm-7.6 0h-2.8V3.2c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.4z" } },
+	  undeprecate: { "path": { "d": "M22.2 3.2H1.8c-.5 0-.9.4-.9 1v12c0 .5.4.9.9.9h7.5c.5 2.6 2.7 4.6 5.5 4.6s5-2 5.4-4.6h2c.5 0 .9-.4.9-.9v-12c0-.6-.4-1-.9-1zm-8.1 15.9l-2.7-2.8 1.2-1.3 1.5 1.5 3.3-3.3 1.2 1.3-4.5 4.6zm7.1-3.9h-1c-.4-2.6-2.7-4.6-5.4-4.6s-5.1 2-5.5 4.6H2.8V5.1h18.4v10.1z" } },
+	  underline: { "path": { "d": "M20.5 19.4h-17c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h17c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7zm-8.8-1.9c-3.5-.1-6.2-3.1-6.2-6.6V4.6c0-.5.5-.9 1-.9h.9c.5 0 .9.4.9.9v6.3c0 2 1.5 3.7 3.5 3.9 2.1.1 3.9-1.6 3.9-3.7V4.6c0-.5.4-.9.9-.9h.9c.5 0 1 .4 1 .9v6.5c0 3.7-3.1 6.6-6.8 6.4z" } },
+	  undo: { "path": { "d": "M2.5 1.8h1.4c.4 0 .7.4.7.7v3.3c0 .4.2.6.6.3.1-.2.2-.3.4-.5 2.3-2.3 5.6-3.2 8.9-2.6 1.1.2 2.3.7 3.2 1.3 2.8 1.9 4.5 4.9 4.5 8.1 0 2.5-.9 5-2.7 6.8-1.6 1.8-3.9 2.8-6.2 3-.5 0-.8-.4-.8-.8V20c0-.3.2-.6.6-.7 2.2-.1 4.2-1.3 5.4-3.3.3-.6.6-1.2.7-1.8.7-3-.5-6.1-3.2-7.7-.5-.3-1.1-.6-1.7-.7-2.5-.6-5 .1-6.7 1.8-.2.2-.4.4-.5.6-.2.4.1.6.6.6h3.2c.4 0 .6.3.6.7v1.4c0 .4-.2.6-.6.6H2.4c-.3 0-.6-.2-.6-.6V2.5c0-.3.4-.7.7-.7z" } },
+	  unlock: { "path": { "d": "M4.6 8.4v.1-.1zm14.8 2.2h-12V8.4c0-2.4 1.8-4.6 4.3-4.7 2.2-.1 4.1 1.3 4.7 3.3.1.2.3.4.5.4h1.9c.3 0 .5-.3.4-.6-.7-3.5-3.8-6.1-7.6-5.9-3.9.2-6.9 3.6-7 7.5v2.2c-1 0-1.8.8-1.8 1.9v8.7c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9v-8.7c0-1.1-.8-1.9-1.8-1.9zm-5.3 9.1c.1.3-.1.6-.4.6h-3.4c-.3 0-.6-.3-.5-.6l.9-2.8c-.7-.4-1.1-1.3-1-2.2.2-.9.9-1.5 1.8-1.7 1.5-.3 2.8.8 2.8 2.1 0 .8-.4 1.5-1 1.8l.8 2.8z" } },
+	  unmuted: { "path": { "d": "M19.2 8.3c-.7 0-1.2.5-1.2 1.1v1.9c0 3.2-2.7 5.9-6 5.9s-6.1-2.7-6.1-5.9V9.4c0-.6-.5-1.1-1.1-1.1s-1.1.5-1.1 1.1v1.9c0 4.1 3.1 7.4 7.1 8v1.6H9c-.7 0-1.2.4-1.2 1.1s.5 1.1 1.2 1.1h6c.6 0 1.2-.5 1.2-1.1s-.6-1.1-1.2-1.1h-1.9v-1.6c4.1-.6 7.2-3.9 7.2-8V9.4c0-.6-.5-1.1-1.1-1.1zM12 15c2 0 3.7-1.7 3.7-3.7V4.6c0-2.1-1.6-3.7-3.7-3.7S8.3 2.5 8.3 4.6v6.7c0 2 1.7 3.7 3.7 3.7z" } },
+	  up: { "path": { "d": "M20.2 17.5H3.8c-.4 0-.8-.6-.4-1l8-9.8c.3-.3.9-.3 1.2 0l8 9.8c.4.4.1 1-.4 1z" } },
+	  upload: { "path": { "d": "M22.4 14.3H21c-.4 0-.7.4-.7.7v4.6c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V15c0-.3-.3-.7-.7-.7H1.6c-.4 0-.7.4-.7.7v6.2c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V15c0-.3-.3-.7-.7-.7zM12.5 1.1c-.3-.3-.7-.3-1 0L5.3 7.3c-.3.3-.3.7 0 1l.9 1c.3.3.7.3 1 0l2.6-2.6c.3-.3.8-.1.8.3v9.8c0 .4.3.7.7.7h1.3c.4 0 .8-.4.8-.7V7.1c0-.5.4-.6.8-.4l2.6 2.6c.2.3.6.3.9 0l1-.9c.3-.3.3-.7 0-1l-6.2-6.3z" } },
+	  user: { "path": { "d": "M23.1 19.8v1.1c0 1.2-1 2.2-2.2 2.2H3.1c-1.2 0-2.2-1-2.2-2.2v-1.1c0-2.6 3.2-4.3 6.1-5.6l.3-.1c.2-.1.5-.1.7 0 1.2.8 2.5 1.2 4 1.2s2.8-.4 3.9-1.2c.3-.1.5-.1.7 0l.3.1c3 1.3 6.2 2.9 6.2 5.6zM12 .9c3 0 5.5 2.7 5.5 6.1S15 13.1 12 13.1 6.5 10.4 6.5 7 9 .9 12 .9z" } },
+	  volume_high: { "path": { "d": "M11.4 1.2L5.5 8.3H2.8c-1 0-1.9.8-1.9 1.9v3.6c0 1.1.9 1.9 1.9 1.9h2.7l5.9 7.1c.6.6 1.5.2 1.5-.6V1.8c0-.8-1-1.2-1.5-.6zM19.7 4c-.2-.2-.5-.2-.7 0l-.6.7c-.2.1-.2.5 0 .6 1.7 1.7 2.8 4.1 2.8 6.7 0 2.6-1.1 5-2.8 6.7-.2.2-.2.5 0 .6l.6.7c.2.2.5.2.7 0 2-2 3.4-4.9 3.4-8 0-3.1-1.3-6-3.4-8zm-2.9 3c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7 1 .9 1.6 2.2 1.6 3.7s-.7 2.8-1.7 3.7c-.2.2-.2.5 0 .7l.7.6c.1.2.4.2.6 0 1.3-1.2 2.2-3 2.2-5s-.8-3.8-2.1-5z" } },
+	  volume_low: { "path": { "d": "M11.4 1.2L5.5 8.3H2.8c-1 0-1.9.8-1.9 1.9v3.6c0 1.1.9 1.9 1.9 1.9h2.7l5.9 7.1c.6.6 1.5.2 1.5-.6V1.8c0-.8-1-1.2-1.5-.6zM16.8 7c-.2-.2-.5-.2-.7 0l-.6.6c-.2.2-.2.5 0 .7 1 .9 1.6 2.2 1.6 3.7s-.7 2.8-1.7 3.7c-.2.2-.2.5 0 .7l.7.6c.1.2.4.2.6 0 1.3-1.2 2.2-3 2.2-5s-.8-3.8-2.1-5z" } },
+	  volume_off: { "path": { "d": "M11.4 1.2L5.5 8.3H2.8c-1 0-1.9.8-1.9 1.9v3.6c0 1.1.9 1.9 1.9 1.9h2.7l5.9 7.1c.6.6 1.5.2 1.5-.6V1.8c0-.8-1-1.2-1.5-.6zM20.7 12l2.2-2.3c.2-.1.2-.4 0-.6l-.6-.7c-.2-.1-.5-.1-.7 0l-2.2 2.3-2.3-2.3c-.2-.1-.4-.1-.6 0l-.7.7c-.2.2-.2.5 0 .6l2.3 2.3-2.3 2.3c-.2.1-.2.4 0 .6l.7.7c.2.1.4.1.6 0l2.3-2.3 2.2 2.3c.2.1.5.1.7 0l.6-.7c.2-.2.2-.5 0-.6L20.7 12z" } },
+	  warning: { "path": { "d": "M23.7 19.6L13.2 2.5c-.6-.9-1.8-.9-2.4 0L.3 19.6c-.7 1.1 0 2.6 1.1 2.6h21.2c1.1 0 1.8-1.5 1.1-2.6zM12 18.5c-.8 0-1.4-.6-1.4-1.4s.6-1.4 1.4-1.4 1.4.6 1.4 1.4-.6 1.4-1.4 1.4zm1.4-4.2c0 .3-.2.5-.5.5h-1.8c-.3 0-.5-.2-.5-.5v-6c0-.3.2-.5.5-.5h1.8c.3 0 .5.2.5.5v6z" } },
+	  weeklyview: { "path": { "d": "M20.3 3.2H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9zm1.2 6h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zm-6.4 4.4l-2.9 6.2c-.1.3-.4.5-.8.5-.5 0-.9-.4-.9-.8 0-.1.1-.3.1-.4l2.5-5.3H9.6c-.5 0-.8-.2-.8-.6 0-.4.3-.7.8-.7h4.8c.4 0 .8.3.8.8 0 .1 0 .2-.1.3z" } },
+	  world: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 2.3zm.9.1h-.1.1zM12 20.8c-4.8 0-8.8-4-8.8-8.8 0-.5.1-1 .2-1.4.6.1 1.3.3 1.7.7.8.8 1.6 1.8 2.5 2 0 0-.1 0-.2.2-.1.1-.2.4-.2.9 0 2.1 2 .8 2 3s2.5 3 2.5 1.3 1.6-2.6 1.6-3.9-1.3-1.3-2-1.8c-.9-.4-1.3-1.1-2.9-.9-.8-.7-1.2-1.4-.9-2.1.4-.8 2.1-1 2.1-2.2S8.5 6.4 7.7 6.4c-.4 0-1.2-.3-1.8-.6.7-.8 1.7-1.4 2.7-1.9.8.3 2 .9 3.1.9 1.2 0 1.9-.9 1.7-1.5 2.1.3 3.9 1.4 5.2 2.9-.6.4-1.6.9-3.2.9-2.1 0-2.1 2.1-.9 2.5 1.3.5 2.6-.8 3 0 .5.9-3 .9-2.1 3 .9 2.1 1.7 0 2.6 2.1.9 2.1 2.6-.3 1.3-2-.6-.7-.4-3 .9-3h.4c.2.7.3 1.5.3 2.3-.1 4.8-4.1 8.8-8.9 8.8z" } },
+	  zoomin: { "path": { "d": "M14.3 8.8h-2.8V6c0-.3-.1-.5-.4-.5H9.2c-.2 0-.4.2-.4.5v2.8H6c-.3 0-.5.2-.5.4v1.9c0 .3.2.4.5.4h2.8v2.8c0 .3.2.5.4.5h1.9c.3 0 .4-.2.4-.5v-2.8h2.8c.3 0 .5-.1.5-.4V9.2c0-.2-.2-.4-.5-.4zm8.6 12.1l-5.3-5.3c1.1-1.5 1.8-3.4 1.8-5.4 0-5.1-4.2-9.3-9.2-9.3S.9 5.1.9 10.2s4.2 9.2 9.3 9.2c2 0 3.9-.7 5.4-1.8l5.3 5.3c.3.3.7.3 1 0l.9-1c.3-.3.3-.7.1-1zm-12.7-4.3c-3.6 0-6.5-2.9-6.5-6.4s2.9-6.5 6.5-6.5 6.4 2.9 6.4 6.5-2.9 6.4-6.4 6.4z" } },
+	  zoomout: { "path": [{ "d": "M8.8 11.5h5.5c.3 0 .5-.1.5-.4V9.2c0-.2-.2-.4-.5-.4H8.8m0 0H6c-.3 0-.5.2-.5.4v1.9c0 .3.2.4.5.4h2.8" }, { "d": "M22.9 20.9l-5.3-5.3c1.1-1.5 1.8-3.4 1.8-5.4 0-5.1-4.2-9.3-9.2-9.3S.9 5.1.9 10.2s4.2 9.2 9.3 9.2c2 0 3.9-.7 5.4-1.8l5.3 5.3c.3.3.7.3 1 0l.9-1c.3-.3.3-.7.1-1zm-12.7-4.3c-3.6 0-6.5-2.9-6.5-6.4s2.9-6.5 6.5-6.5 6.4 2.9 6.4 6.5-2.9 6.4-6.4 6.4z" }] }
 	};
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
 /* 39 */
+/***/ function(module, exports) {
+
+	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
+	"use strict";
+	
+	module.exports = {
+	  add_contact: { "path": { "d": "M21.2 4.2H2.8C1.5 4.2.5 5.2.5 6.5v11c0 1.3 1 2.3 2.3 2.3h18.4c1.3 0 2.3-1 2.3-2.3v-11c0-1.3-1-2.3-2.3-2.3zm-9.8 13H4.8c-.7 0-1.3-.8-1.3-1.6.1-1.2 1.3-1.8 2.5-2.4.9-.4 1-.7 1-1.1 0-.4-.2-.7-.5-1-.5-.5-.8-1.2-.8-1.9 0-1.5.9-2.7 2.4-2.7s2.4 1.3 2.4 2.7c0 .8-.3 1.5-.8 1.9-.3.3-.6.6-.6 1s.1.7 1.1 1.1c1.2.5 2.4 1.2 2.4 2.4.2.8-.4 1.6-1.2 1.6zm9-2.7c0 .4-.3.8-.7.8h-3.5c-.4 0-.8-.3-.8-.8v-1.2c0-.4.4-.7.8-.7h3.5c.4 0 .7.3.7.7v1.2zm0-4.2c0 .4-.3.8-.7.8h-5.8c-.4 0-.7-.3-.7-.8V9.1c0-.4.3-.7.7-.7h5.8c.4 0 .8.3.8.7v1.2z" } },
+	  announcement: { "path": { "d": "M10.5 21l-.6-.5c-.7-.5-.7-1.4-.7-1.9v-1.3c0-.4-.3-.7-.7-.7H5.8c-.4 0-.7.3-.7.7v3.6c0 1.2.7 2.2 1.9 2.2h2.2c1.4 0 1.5-.9 1.5-.9s.2-.9-.2-1.2zM20.8 8.3V2c0-1.1-1.4-1.4-2.2-.7l-4.1 3.9c-.6.5-1.4.8-2.3.8h-7C2.8 6 .9 8.1.9 10.5v.1c0 2.4 1.9 4.2 4.3 4.2h7c.9 0 1.7.3 2.4.9l4 4c.8.7 2.2.4 2.2-.7v-6.3c1.4 0 2.2-.9 2.2-2.2 0-1.2-.8-2.2-2.2-2.2z" } },
+	  apex: { "path": { "d": "M22.4 18.5H9.9c-.3 0-.7.3-.7.7v1.3c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7v-1.3c0-.4-.3-.7-.7-.7zm-10.7-8.4L2.8 2.9c-.3-.2-.7-.2-1 .1l-.7 1.2c-.3.3-.2.7.1.9l6.4 5.1c.2.2.2.6 0 .7L1.2 16c-.3.2-.4.7-.1 1l.7 1.2c.3.3.7.4 1 .1l8.9-7.1c.4-.3.4-.9 0-1.1z" } },
+	  approval: { "path": { "d": "M8.8 20.1l-7.6-7.6c-.3-.3-.3-.8 0-1.1l1-1c.2-.2.7-.2 1 0l5.7 5.8c.2.2.5.2.7 0L20.8 4.9c.3-.3.8-.3 1 0l1 1c.3.3.3.7 0 1l-13 13.2c-.3.3-.8.3-1 0z" } },
+	  back: { "path": { "d": "M22.4 10.2H7.1c-.5 0-.6-.6-.4-.8l4.5-4.5c.2-.2.2-.7 0-.9l-1-1c-.3-.3-.7-.3-1 0l-8.1 8c-.3.3-.3.7 0 1l8.1 8.1c.3.3.7.3 1 0l.9-1c.3-.3.3-.7 0-1l-4.4-4.4c-.3-.3-.1-.8.3-.8h15.3c.4 0 .7-.3.7-.7v-1.4c.1-.3-.2-.6-.6-.6z" } },
+	  call: { "path": { "d": "M22.4 17.4l-2.8-2.2c-.7-.5-1.6-.6-2.2-.1L15 16.9c-.3.2-.7.2-1-.1l-3.6-3.2L7.2 10c-.3-.3-.3-.7-.1-1l1.7-2.4c.5-.6.5-1.6 0-2.2L6.5 1.6c-.7-.9-1.9-1-2.7-.2L1.5 3.8c-.4.4-.6 1-.6 1.5.3 4.7 2.4 9.1 5.5 12.3 3.2 3.1 7.6 5.2 12.3 5.5.5 0 1.1-.2 1.4-.6l2.4-2.4c.8-.7.8-2-.1-2.7z" } },
+	  canvas: { "path": { "d": "M20.8 17.7c-.1 1.3-.3 2.6-.5 3.9 0 .4-.5.8-.8.8-2.5.3-5 .5-7.5.5-2.4 0-4.9-.1-7.3-.5-.4 0-.8-.4-.9-.8-.3-2-.5-4.1-.5-6.2s.2-4.1.5-6.2c.1-.3.5-.7.9-.8 1.5-.2 3-.3 4.4-.4 0 0 1.2 0 1.1-1.2 0-1-1.8-1.7-1.8-3.4C8.4 2 9.8.9 12 .9c2.3 0 3.6 1.1 3.6 2.5 0 1.8-1.7 2.4-1.8 3.4C13.8 7.9 15 8 15 8c1.5.1 3 .2 4.5.4.3 0 .8.4.8.8.2 1.5.4 2.8.5 4.2 0 .4-.4.9-.8.9h-.4c-.4 0-1-.4-1.3-.7 0 0-1-1-2.1-1-1.7-.1-3 1.4-3 3s1.3 3.1 3 3.1c1-.1 2-1.1 2-1.1.4-.2 1-.5 1.4-.5h.4c.5 0 .8.3.8.6z" } },
+	  change_owner: { "path": { "d": "M12.6 17.4c-1.4-.6-1.6-1.1-1.6-1.7 0-.5.4-1 .8-1.4.8-.7 1.2-1.8 1.2-3 0-2.2-1.3-3.9-3.8-3.9s-3.8 1.7-3.8 3.9c0 1.2.3 2.3 1.2 3 .4.4.8.9.8 1.4 0 .6-.2 1.1-1.6 1.7-2.1.8-4 1.7-4 3.5 0 1.2 1 2.2 2.1 2.2h10.6c1.2 0 2.1-1 2.1-2.2 0-1.7-2-2.7-4-3.5zm7.9-8.6c0-3.4-2.8-6.3-6.2-6.3V.9l-3.1 2.6c-.2.1-.1.3 0 .5l3.1 2.5V4.8c2.2 0 3.9 1.8 3.9 4h-1.6l2.6 3.1c.1.1.3.1.5 0l2.5-3.1h-1.7z" } },
+	  change_record_type: { "path": { "d": "M9.2 17.3c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h6.9c.4 0 .7-.3.7-.7v-5.1zm-5.5-7.1H1.5c-.5 0-.7.4-.4.6l3.7 3.8c.1.2.4.2.6 0l3.7-3.8c.3-.3 0-.6-.4-.6H6.5c0-2.4 2.3-4.7 4.6-4.7V2.8c-4.2 0-7.4 3.2-7.4 7.4zm15.6-.8c-.2-.2-.5-.2-.7 0L15 13.2c-.3.3-.1.6.4.6h2.2c0 2.8-1.9 4.7-4.7 4.7v2.7c4.2 0 7.5-3.2 7.5-7.4h2.2c.5 0 .7-.4.4-.6l-3.7-3.8zm3.8-7.8c0-.4-.3-.7-.7-.7h-6.9c-.4 0-.7.3-.7.7v5.1c0 .4.3.7.7.7h6.9c.4 0 .7-.3.7-.7V1.6z" } },
+	  check: { "path": { "d": "M8.8 19.6L1.2 12c-.3-.3-.3-.8 0-1.1l1-1c.3-.3.8-.3 1 0L9 15.7c.1.2.5.2.6 0L20.9 4.4c.2-.3.7-.3 1 0l1 1c.3.3.3.7 0 1L9.8 19.6c-.2.3-.7.3-1 0z" } },
+	  clone: { "path": { "d": "M21.2.9H8.3c-1 0-1.8.9-1.8 1.9v1.1c0 .4.3.7.7.7h8.5c2 0 3.7 1.7 3.7 3.7v8.5c0 .4.3.7.7.7h1.1c1 0 1.9-.8 1.9-1.8V2.8c0-1-.9-1.9-1.9-1.9zm-5.5 5.6H2.8c-1 0-1.9.8-1.9 1.8v12.9c0 1 .9 1.9 1.9 1.9h12.9c1 0 1.8-.9 1.8-1.9V8.3c0-1-.8-1.8-1.8-1.8zm-1.9 12.4c0 .3-.1.5-.4.5H5.1c-.3 0-.5-.2-.5-.5V18c0-.3.2-.5.5-.5h8.3c.3 0 .4.2.4.5v.9zm0-3.7c0 .3-.1.5-.4.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h8.3c.3 0 .4.2.4.5v.9zm0-3.7c0 .3-.1.5-.4.5H5.1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.4.5-.4h8.3c.3 0 .4.1.4.4v.9z" } },
+	  close: { "path": { "d": "M14.6 11.9l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.3-.7-.3-1 0L12.6 10c-.1.2-.4.2-.6 0L6 3.9c-.3-.3-.7-.3-1 0l-1 .9c-.3.3-.3.7 0 1l6.1 6.1c.1.1.1.4 0 .6L4 18.6c-.3.3-.3.7 0 1l.9.9c.3.3.7.3 1 0l6.1-6c.2-.2.5-.2.6 0l6.1 6c.3.3.7.3 1 0l.9-.9c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z" } },
+	  defer: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 19.4c-4.6 0-8.3-3.7-8.3-8.3S7.4 3.7 12 3.7s8.3 3.7 8.3 8.3-3.7 8.3-8.3 8.3zm1.6-8.2c-.2-.1-.2-.3-.2-.5V7.2c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v5.5c0 .2.1.4.2.5l3.4 3.5c.3.2.7.2 1 0l1-1c.2-.3.2-.7 0-1l-2.6-2.6z" } },
+	  "delete": { "path": { "d": "M21 4.6h-5.8V2.8c0-1-.8-1.9-1.8-1.9h-2.8c-1 0-1.8.9-1.8 1.9v1.8H3c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h18c.4 0 .7-.3.7-.7V5.3c0-.4-.3-.7-.7-.7zM10.6 3.2c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.4h-2.8V3.2zm8.6 6H4.8c-.3 0-.6.4-.6.7v10.9c0 1.3 1 2.3 2.3 2.3h11c1.3 0 2.3-1 2.3-2.3V9.9c0-.3-.3-.7-.6-.7zm-8.6 10.2c0 .3-.2.4-.4.4h-1c-.2 0-.4-.1-.4-.4v-6.5c0-.3.2-.4.4-.4h1c.2 0 .4.1.4.4v6.5zm4.6 0c0 .3-.2.4-.4.4h-1c-.2 0-.4-.1-.4-.4v-6.5c0-.3.2-.4.4-.4h1c.2 0 .4.1.4.4v6.5z" } },
+	  description: { "path": { "d": "M20.3 1.8H3.7c-1 0-1.9.9-1.9 1.9v16.6c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V3.7c0-1-.9-1.9-1.9-1.9zM5.5 6.5c0-.3.2-.5.5-.5h4.6c.3 0 .5.2.5.5v4.6c0 .3-.2.4-.5.4H6c-.3 0-.5-.1-.5-.4V6.5zm11.1 12c0 .2-.2.4-.4.4H6c-.3 0-.5-.2-.5-.4v-1c0-.2.2-.4.5-.4h10.2c.2 0 .4.2.4.4v1zm1.9-3.7c0 .2-.2.4-.5.4H6c-.3 0-.5-.2-.5-.4v-1c0-.2.2-.4.5-.4h12c.3 0 .5.2.5.4v1zm0-3.7c0 .3-.2.4-.5.4h-4.6c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5v.9zm0-3.7c0 .3-.2.4-.5.4h-4.6c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5H18c.3 0 .5.2.5.5v.9z" } },
+	  dial_in: { "g": { "circle": [{ "cx": "4.615", "cy": "4.615", "r": "2.769" }, { "cx": "4.615", "cy": "12", "r": "2.769" }, { "cx": "12", "cy": "4.615", "r": "2.769" }, { "cx": "19.385", "cy": "4.615", "r": "2.769" }, { "cx": "12", "cy": "12", "r": "2.769" }, { "cx": "19.385", "cy": "12", "r": "2.769" }, { "cx": "4.615", "cy": "19.385", "r": "2.769" }, { "cx": "12", "cy": "19.385", "r": "2.769" }, { "cx": "19.385", "cy": "19.385", "r": "2.769" }] } },
+	  download: { "path": { "d": "M22.4 14.3H21c-.4 0-.7.3-.7.7v4.6c0 .4-.3.7-.7.7H4.4c-.4 0-.7-.3-.7-.7V15c0-.4-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7v6.2c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V15c0-.4-.3-.7-.7-.7zm-10.9 3.1c.3.2.7.2 1 0l6.2-6.3c.3-.3.3-.7 0-.9l-.9-1c-.3-.3-.7-.3-1 0l-2.6 2.6c-.3.2-.8.1-.8-.4V1.6c0-.4-.4-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v9.8c0 .4-.5.6-.8.3L7.2 9.1c-.2-.2-.6-.2-.9 0l-1 1.1c-.3.2-.3.6 0 .9l6.2 6.3z" } },
+	  edit: { "path": { "d": "M22.5 3.4l-1.9-1.9c-.8-.8-1.9-.8-2.6 0L16.5 3c-.2.2-.2.5 0 .6l3.9 4c.2.2.5.2.6 0L22.6 6c.7-.7.7-1.8-.1-2.6zm-7.3 1.5c-.2-.1-.5-.1-.7 0L2.5 17 1 22.2c-.2.5.3 1 .8.9l5.3-1.5H7l12.1-12c.1-.2.1-.5 0-.7l-3.9-4z" } },
+	  edit_groups: { "path": { "d": "M18.2 14.5c-.1-.1-.3-.1-.4 0l-5.4 5.4-.8 2.7c-.1.3.2.5.5.5l2.7-.8 5.4-5.4c.1-.1.1-.3 0-.4l-2-2zm4.6-1.6l-1-1c-.4-.4-1-.4-1.4 0 0 0-.6.6-.9 1-.1.1-.1.3 0 .3l2 2c.1.1.2.1.3 0 .4-.3 1-.9 1-.9.4-.4.4-1 0-1.4zM12 6.3c0 1-.3 2-.8 2.8-.2.3-.1.7.2.9 1 .5 2.2 1.2 2.8 2.3.1.2.3.2.5.2H16c.8 0 1.4-.5 1.4-1.4 0-1.3-1.3-2.1-2.7-2.7-1-.4-1.1-.8-1.1-1.2 0-.4.2-.8.6-1.1.5-.5.8-1.3.8-2.1 0-1.7-1-3.1-2.7-3.1-1 0-1.8.5-2.2 1.3C11.3 3 12 4.5 12 6.3zm.7 7.7c-.1-1.5-1.5-2.1-3.1-2.8-1.1-.5-1.2-.9-1.2-1.4s.2-.9.6-1.2c.6-.6 1-1.4 1-2.4 0-1.8-1.1-3.4-3-3.4h-.2c-2 0-3 1.6-3 3.4 0 1 .3 1.8 1 2.4.3.3.6.8.6 1.2 0 .5-.2.9-1.2 1.4-1.6.7-3.1 1.4-3.1 2.8.1 1 .7 1.7 1.7 1.7h8.3c.9 0 1.6-.7 1.6-1.7z" } },
+	  edit_relationship: { "path": { "d": "M19.8 19.4h-1.3v-2.8h1.3c.3 0 .5-.2.5-.4v-12c0-.3-.2-.5-.5-.5h-12c-.2 0-.4.2-.4.5v1.3H4.6V4.2C4.6 2.4 6 .9 7.8.9h12c1.8 0 3.3 1.5 3.3 3.3v12c0 1.8-1.5 3.2-3.3 3.2zm-5-12h-12c-1 0-1.9.8-1.9 1.8v12c0 1 .9 1.9 1.9 1.9h12c1 0 1.8-.9 1.8-1.9v-12c0-1-.8-1.8-1.8-1.8zm-8 11.8c-.1 0-.1 0-.2.1l-2.1.5c-.2 0-.3-.1-.3-.3l.5-2.1s.1-.1.1-.2c.1-.1.2-.1.3 0l1.7 1.7c.1.1.1.3 0 .3zm5.1-5.1l-4.3 4.3c-.1.1-.2.1-.3 0l-1.7-1.7c-.1-.1-.1-.2 0-.3l4.3-4.3c.1-.1.2-.1.3 0l1.7 1.7v.3zm1.3-1.3l-.5.4c-.1.1-.2.1-.3 0l-1.7-1.7c-.1-.1-.1-.1 0-.2l.5-.5c.3-.3.8-.3 1.1 0l.9.9c.3.3.3.8 0 1.1z" } },
+	  email: { "path": { "d": "M11.5 13.9c.3.3.7.3 1 0l10.4-9.7c.2-.4.2-1-.6-1l-20.6.1c-.6 0-1.1.5-.6.9l10.4 9.7zM23.1 8c0-.5-.6-.8-.9-.4L14 15.1c-.6.5-1.3.8-2 .8s-1.4-.3-2-.8L1.9 7.6c-.4-.4-.9-.1-.9.4-.1 2.1-.1 7.7-.1 10.5 0 1 .9 1.8 1.9 1.8h18.4c1 0 1.9-.8 1.9-1.8V8z" } },
+	  fallback: { "path": { "d": "M12.9 1.6l-1.4 6.8c0 .2.2.4.5.4h7.2c.5 0 .8.6.6 1l-7.9 12.9c-.3.7-1.3.4-1.3-.3l1.4-8c0-.2-.2-.1-.5-.1H3.9c-.5 0-.9-.8-.6-1.2l8.3-11.8c.4-.6 1.3-.4 1.3.3z" } },
+	  filter: { "path": { "d": "M22.2 1.8H1.8c-.7 0-1.1.8-.6 1.3l9 10.5c.2.3.4.8.4 1.2v6.7c0 .3.3.7.7.7h1.4c.4 0 .7-.4.7-.7v-6.7c0-.4.1-.9.4-1.2l9-10.5c.5-.5.1-1.3-.6-1.3z" } },
+	  flow: { "path": { "d": "M23 4.9c-.9-1.9-3.4-5.4-7.9-3.3-2.8 1.3-4.4 2-4.4 2L6.6 5.4c-1.1.5-3.6-.3-5-.8-.4-.1-.8.3-.6.7.9 1.9 3.4 5.4 7.9 3.3 2.8-1.3 8.5-3.7 8.5-3.7 1.1-.6 3.6.2 5 .7.4.1.8-.3.6-.7zm-9.7 5.9c-.5.3-2.5 1.2-2.5 1.2l-2.1.9c-1 .5-3.2-.2-4.5-.7-.3-.2-.6.3-.5.6.9 1.9 3 5.2 7 3.2 2.5-1.3 4.6-2.1 4.6-2.1 1-.6 3.2.2 4.5.7.3.1.6-.3.5-.7-.9-1.8-3-5.1-7-3.1zM11.8 19c-.4.2-1.1.6-1.1.6-.8.5-2.4-.1-3.4-.6-.2-.1-.5.3-.3.7.6 1.6 2.2 4.6 5.2 2.8l1.1-.7c.8-.4 2.4.2 3.4.6.2.2.5-.2.3-.6-.6-1.7-2.1-4.5-5.2-2.8z" } },
+	  follow: { "path": { "d": "M23.3 17.5h-2.1v-2c0-.4-.3-.7-.7-.7h-1.3c-.4 0-.7.3-.7.7v2h-2.1c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h2.1v2.1c0 .4.3.7.7.7h1.3c.4 0 .7-.3.7-.7v-2.1h2.1c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7zm-7.6-1.8h.5c.2 0 .4-.2.4-.5v-.4c0-1 .8-1.9 1.9-1.9h2c.4 0 .7-.3.7-.7V2.8c0-1-.8-1.9-1.8-1.9H2.8C1.8.9.9 1.8.9 2.8v16.6c0 1 .9 1.8 1.9 1.8h10.4c.4 0 .7-.3.6-.7v-3c0-1 .9-1.8 1.9-1.8zM12 5.1c0-.3.2-.5.5-.5h4.6c.3 0 .4.2.4.5V6c0 .3-.1.5-.4.5h-4.6c-.3 0-.5-.2-.5-.5v-.9zm0 3.7c0-.3.2-.5.5-.5h4.6c.3 0 .4.2.4.5v.9c0 .3-.1.5-.4.5h-4.6c-.3 0-.5-.2-.5-.5v-.9zM4.6 5.1c0-.3.2-.5.5-.5h4.6c.3 0 .5.2.5.5v4.6c0 .3-.2.5-.5.5H5.1c-.3 0-.5-.2-.5-.5V5.1zm7.4 12c0 .3-.2.4-.5.4H5.1c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5h6.4c.3 0 .5.2.5.5v.9zm-6.9-3.3c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5h9.2c.3 0 .5.2.5.5v.9c0 .3-.2.4-.5.4H5.1z" } },
+	  following: { "path": { "d": "M22.8 15.5l-1-1c-.2-.3-.7-.3-1 0l-4.3 4.4c-.2.2-.5.2-.7 0l-2-2.1c-.3-.2-.8-.2-1.1 0l-1 1.1c-.3.2-.3.7 0 1l3.9 3.9c.3.3.7.3 1 0l6.2-6.3c.3-.2.3-.7 0-1zm-11.4.1c.5-.5 1-.7 1.7-.8.7-.1 1.5.2 2 .7l1.1 1.1 3.3-3.4c.3-.4.8-.6 1.3-.7.2-.1.4-.3.4-.5V2.8c0-1-.8-1.9-1.9-1.9H2.8C1.8.9.9 1.8.9 2.8v16.6c0 1 .9 1.8 1.9 1.8h7.5c.5 0 .6-.5.4-.8l-.3-.2c-.9-1-.9-2.6 0-3.6l1-1zM12 5.1c0-.3.2-.5.5-.5h4.6c.3 0 .4.2.4.5V6c0 .3-.1.5-.4.5h-4.6c-.3 0-.5-.2-.5-.5v-.9zm0 3.7c0-.3.2-.5.5-.5h4.6c.3 0 .4.2.4.5v.9c0 .3-.1.5-.4.5h-4.6c-.3 0-.5-.2-.5-.5v-.9zM4.6 5.1c0-.3.2-.5.5-.5h4.6c.3 0 .5.2.5.5v4.6c0 .3-.2.5-.5.5H5.1c-.3 0-.5-.2-.5-.5V5.1zm3.7 12c0 .3-.2.4-.4.4H5.1c-.3 0-.4-.1-.4-.4v-.9c0-.3.1-.5.4-.5h2.8c.2 0 .4.2.4.5v.9zm-3.2-3.3c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5h9.2c.3 0 .5.2.5.5v.9c0 .3-.2.4-.5.4H5.1z" } },
+	  freeze_user: { "path": { "d": "M22.4 10.6h-3.3l2-2c.2-.2.2-.6 0-.8l-.8-.7c-.2-.3-.5-.3-.7 0L16 10.6h-2.6V8l3.5-3.6c.3-.2.3-.5 0-.7l-.7-.8c-.3-.2-.6-.2-.8 0l-2 2V1.6c0-.4-.3-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v3.3l-2-2c-.2-.2-.6-.2-.8 0l-.7.8c-.3.2-.3.5 0 .7L10.6 8v2.6H8L4.4 7.1c-.2-.3-.5-.3-.7 0l-.8.7c-.2.3-.2.6 0 .8l2 2H1.6c-.4 0-.7.3-.7.7v1.4c0 .4.3.7.7.7h3.3l-2 2c-.2.2-.2.6 0 .8l.7.7c.3.2.6.2.8 0l3.5-3.6h2.7v2.6l-3.5 3.6c-.3.2-.3.5 0 .7l.7.8c.2.2.6.2.8 0l2-2.1v3.3c0 .4.3.8.7.8h1.3c.4 0 .8-.4.8-.8v-3.3l2 2.1c.2.2.6.2.8 0l.7-.8c.2-.2.2-.5 0-.7L13.4 16v-2.6H16l3.6 3.5c.2.3.5.3.7 0l.7-.7c.3-.2.3-.6 0-.7l-1.9-2.1h3.3c.4 0 .7-.3.7-.7v-1.4c0-.4-.3-.7-.7-.7z" } },
+	  goal: { "path": { "d": "M2.3.9C1.5.9.9 1.5.9 2.3v19.4c0 .7.6 1.4 1.4 1.4.7 0 1.4-.6 1.4-1.4V2.3c0-.8-.6-1.4-1.4-1.4zM22.5 3c-6 3.1-10.7-2.3-16.4-.2-.3.1-.6.4-.6.7v10.3c0 .6.6.9 1.1.8 5.4-1.6 10.2 3.5 16.1.3.2-.2.4-.4.4-.7V3.3c0-.3-.3-.4-.6-.3zm-1.3 10.5l-.2.1c-.5.2-1.2.2-2.4.2h-.1v-2.3c-.7 0-2-.1-2.8-.3v2.5c-.8-.2-1.5-.3-2.1-.5-.3 0-.5-.1-.7-.1v-2.6c-.8-.2-2-.4-2.7-.6v2.6c-.6-.1-.7-.1-1.3-.1h-.8l-.7.1V9.8c.4-.1 1-.1 1.6-.1.6 0 .6 0 1.2.1V7.1c-.6-.1-2.4-.1-2.8 0V4.2h.4c.5 0 1.8 0 2.4.2v2.7c.6.1 1.7.3 2.5.6h.2V5c.9.3 1.8.5 2.8.7v2.6c.8.1 2 .2 2.8.2V6h.1c.7 0 1.2-.2 2.1-.3l.6-.2v2.8c-.9.2-1.7.3-2.6.3h-.2v2.9h.1c.9 0 1.8-.3 2.7-.7v2.7zm-8.3-5.8v2.8c.2 0 .4.1.6.2.7.1 1.4.4 2.2.5V8.4c-1-.2-1.9-.5-2.8-.7z" } },
+	  google_news: { "path": { "d": "M23.2 2.4l-1.6 1.7c-.2.2-.5.2-.7 0L18.8 2c-.2-.2-.5-.2-.7 0l-1.6 1.6c-.2.2-.5.2-.7 0L14.2 2c-.2-.2-.5-.2-.7 0l-1.6 1.6c-.2.2-.5.2-.7 0L9.6 2c-.2-.2-.5-.2-.7 0L7.2 3.6c-.1.2-.4.2-.6 0L4.9 2c-.1-.2-.4-.2-.6 0L2.6 3.6c-.2.2-.4.2-.6 0L.8 2.4c-.3-.2-.8 0-.8.4v17.5c0 1 .8 1.9 1.8 1.9h20.4c1 0 1.8-.9 1.8-1.9V2.8c0-.4-.5-.6-.8-.4zM9.7 18.9c0 .3-.2.5-.5.5H3.7c-.3 0-.5-.2-.5-.5v-8.3c0-.3.2-.4.5-.4h5.5c.3 0 .5.1.5.4v8.3zm11.1 0c0 .3-.2.5-.5.5H12c-.3 0-.5-.2-.5-.5V18c0-.3.2-.5.5-.5h8.3c.3 0 .5.2.5.5v.9zm0-3.2h-9.3v-1.9h9.3v1.9zm0-4.2c0 .3-.2.5-.5.5H12c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.4.5-.4h8.3c.3 0 .5.1.5.4v.9zm0-3.7c0 .3-.2.5-.5.5H3.7c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.4.5-.4h16.6c.3 0 .5.1.5.4v.9z" } },
+	  join_group: { "path": { "d": "M16.6 11c0-1.3-1.3-2-2.6-2.6-.9-.5-1.1-.8-1.1-1.2 0-.5.3-.8.5-1.2.6-.5.9-1.2.9-2.1 0-1.6-.9-3-2.6-3-1 0-1.7.5-2.2 1.3 1.2.8 1.9 2.4 1.9 4.1 0 1-.3 2-.8 2.8-.2.3-.1.7.2.9 1 .5 2.1 1.2 2.7 2.3.1.2.3.2.5.2h1.3c.8 0 1.3-.6 1.3-1.5zm-7.5.1c-1.1-.4-1.2-.9-1.2-1.3s.3-.9.6-1.3c.6-.6 1-1.4 1-2.4 0-1.8-1.1-3.3-2.9-3.3h-.2c-1.8 0-2.9 1.5-2.9 3.3 0 1 .3 1.8.9 2.4.4.4.7.8.7 1.3 0 .4-.2.9-1.2 1.3-1.5.7-3 1.4-3 2.8 0 1.1.7 1.8 1.6 1.8h8c.9 0 1.6-.7 1.6-1.7-.1-1.5-1.5-2.2-3-2.9zm13.3 4.6h-2.1v-2.1c0-.4-.3-.7-.7-.7h-1.4c-.3 0-.7.3-.7.7v2.1h-2c-.4 0-.7.3-.7.7v1.4c0 .3.3.7.7.7h2v2c0 .4.4.7.7.7h1.4c.4 0 .7-.3.7-.7v-2h2.1c.4 0 .7-.4.7-.7v-1.4c0-.4-.3-.7-.7-.7z" } },
+	  lead_convert: { "path": { "d": "M12.7 13.1c-.2.2-.2.7 0 .9l1 1c.3.3.7.3 1 0l6.2-6.2c.3-.3.3-.7 0-1l-6.2-6.2c-.3-.3-.7-.3-.9 0l-1 .9c-.3.3-.3.7 0 1l2.6 2.6c.8.8-.4.8-.4.8h-3.7c-4.4 0-8.2 3.6-8.1 8 .1 4.3 3.6 7.7 7.9 7.7h1.6c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7h-1.5c-2.6 0-4.9-1.9-5.2-4.5-.3-3.1 2.1-5.6 5.1-5.6H15c.4.1.5.5.3.8l-2.6 2.6z" } },
+	  leave_group: { "path": { "d": "M14 10.2c-.9-.4-1.1-.8-1.1-1.2 0-.4.3-.8.5-1.1.6-.5.9-1.3.9-2.1 0-1.6-.9-3-2.6-3-1 0-1.7.5-2.2 1.2 1.2.9 1.9 2.4 1.9 4.2 0 1-.3 2-.8 2.8-.2.3-.1.7.2.9 1 .5 2.1 1.1 2.7 2.2.1.2.3.3.5.3h1.3c.8 0 1.3-.6 1.3-1.5 0-1.3-1.3-2.1-2.6-2.7zM9.1 13c-1.1-.5-1.2-.9-1.2-1.4s.3-.9.6-1.2c.6-.6 1-1.4 1-2.4 0-1.8-1.1-3.4-2.9-3.4h-.2C4.5 4.6 3.5 6.2 3.5 8c0 1 .3 1.8.9 2.4.4.3.6.8.6 1.2 0 .5-.1.9-1.2 1.4-1.5.7-2.9 1.4-3 2.8.1 1 .8 1.7 1.7 1.7h8c.9 0 1.6-.7 1.6-1.7-.1-1.4-1.5-2.1-3-2.8zM14.8 19.6v-1.4c0-.3.3-.7.7-.7h6.9c.4 0 .7.4.7.7v1.4c0 .4-.3.7-.7.7h-6.9c-.4 0-.7-.3-.7-.7z" } },
+	  log_a_call: { "path": { "d": "M19.8.9H5.9C4.6.9 3.6 2 3.6 3.1v.8h-.7c-.9 0-1.5.6-1.5 1.5S2 6.8 2.9 6.8h.7v3.7h-.7c-.9 0-1.5.7-1.5 1.5s.6 1.5 1.5 1.5h.7v3.7h-.7c-.9 0-1.5.6-1.5 1.4 0 .9.6 1.5 1.5 1.5h.7v.8c0 1.1 1 2.2 2.3 2.2h13.9c1.2 0 2.4-1.1 2.4-2.3V3c0-1.2-1.2-2.1-2.4-2.1zm-1.3 14.9l-1.1 1c-.2.2-.5.4-.8.3-2.4-.1-4.7-1.2-6.4-2.8s-2.7-4-2.8-6.4c0-.3.1-.7.3-.8l1-1.1c.5-.4 1.3-.4 1.7.1l1 1.2c.3.5.3 1 0 1.4l-.8 1.2c-.1.2-.1.4.1.5l1.7 1.9 1.9 1.7c.1.1.3.1.4 0l1.2-.8c.4-.3 1-.3 1.4 0l1.2 1c.4.3.5 1.1 0 1.6z" } },
+	  log_event: { "path": { "d": "M17.9 18.6l-2.3.7c-.1 0-.4.1-.6.1-.6 0-1.2-.3-1.7-.8-.4-.6-.5-1.3-.3-1.9l.7-2.7 3.5-3.4c.1-.2 0-.4-.2-.4H2.5c-.3 0-.7.3-.7.6v8.6c0 1 .9 1.8 1.9 1.8h12.9c1 0 1.9-.8 1.9-1.8V19c0-.3-.4-.5-.6-.4zM2.5 8.3h15.3c.3 0 .7-.3.7-.7V6.5c0-1.1-.9-1.9-1.9-1.9h-1.4v-.4c0-.8-.6-1.4-1.4-1.4-.7 0-1.3.6-1.3 1.4v.4H7.8v-.4c0-.8-.6-1.4-1.3-1.4-.8 0-1.4.6-1.4 1.4v.4H3.7c-1 0-1.9.8-1.9 1.9v1.1c0 .4.4.7.7.7zm17.6 2.4c-.1-.1-.3-.1-.3 0L15.4 15l-.6 2.2c-.1.2.1.4.3.3l2.2-.6 4.3-4.3c.1-.1.1-.3 0-.4l-1.5-1.5zm3.7-1.4l-.9-.8c-.2-.3-.7-.3-1.1 0 0 0-.5.5-.7.8-.1.1-.1.2 0 .3l1.6 1.6c.1.1.2.1.3 0l.8-.8c.3-.2.3-.8 0-1.1z" } },
+	  manage_perm_sets: { "path": { "d": "M20.8.9H3.2C1.9.9.9 1.9.9 3.2v17.6c0 1.2 1 2.3 2.3 2.3h17.6c1.2 0 2.3-1 2.3-2.3V3.2c0-1.3-1-2.3-2.3-2.3zM20 20.8H4c-.4 0-.8-.4-.8-.8V4c0-.4.4-.8.8-.8h16c.4 0 .8.4.8.8v16c0 .4-.4.8-.8.8zM10.1 5.5H6.3c-.4 0-.8.3-.8.8v3.8c0 .4.3.8.8.8h3.8c.4 0 .8-.3.8-.8V6.3c-.1-.4-.4-.8-.8-.8zm7.6 0h-3.8c-.4 0-.8.3-.8.8v3.8c0 .4.3.8.8.8h3.8c.4 0 .8-.3.8-.8V6.3c0-.4-.4-.8-.8-.8zm-7.6 7.7H6.3c-.4 0-.8.3-.8.7v3.9c0 .4.3.8.8.8h3.8c.4 0 .8-.4.8-.8v-3.9c-.1-.4-.4-.7-.8-.7zm7.6 0h-3.8c-.4 0-.8.3-.8.7v3.9c0 .4.3.8.8.8h3.8c.4 0 .8-.4.8-.8v-3.9c0-.4-.4-.7-.8-.7z" } },
+	  map: { "path": { "d": "M22.5 4.4l-6.6-3.3c-.3-.2-.7-.2-1 0L8.8 4.2 2.6 1.1c-.4-.2-.8-.2-1.2 0-.3.2-.5.6-.5.9v16.6c0 .5.3.8.6 1l6.7 3.3c.3.2.7.2.9 0l6.2-3.1 6.2 3.1c.1.1.3.2.5.2s.4-.1.6-.2c.3-.2.5-.6.5-.9V5.4c0-.5-.2-.8-.6-1zm-1.7 2.1v8.8c0 .5-.5.9-1 .7-1.7-.7-.3-3.5-1.5-5.1-1.2-1.4-2.7 0-4.1-2.2-1.3-2.2.5-3.8 2.1-4.6.3-.1.5-.1.7 0l3.4 1.7c.3.2.4.4.4.7zm-9.3 12.8c-.3.2-.6.1-.8-.1-.5-.4-.9-1-.9-1.7 0-1.1-1.8-.7-1.8-2.9 0-1.8-2.1-2.3-3.9-2.1-.5.1-.8-.3-.8-.7V5c0-.5.5-.9 1-.6l4 2h.1l.1.1c1.7 1 1.3 1.8.6 3-.7 1.3-1.1 0-2.2-.4s-2.2.4-1.8 1.1 1.5 0 2.2.7.7 1.9 2.9 1.1 2.6-.3 3.4.4c.7.8 1.1 2.2 0 3.3-.7.7-1 2.1-1.2 3-.1.2-.2.4-.4.5l-.5.1z" } },
+	  more: { "path": { "d": "M3.7 9.2c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8S.9 13.5.9 12s1.3-2.8 2.8-2.8zm8.3 0c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8 1.3-2.8 2.8-2.8zm8.3 0c1.5 0 2.8 1.3 2.8 2.8s-1.3 2.8-2.8 2.8-2.8-1.3-2.8-2.8 1.3-2.8 2.8-2.8z" } },
+	  "new": { "path": { "d": "M13.8 13.4h7.7c.3 0 .7-.3.7-.7v-1.4c0-.4-.4-.7-.7-.7h-7.7c-.2 0-.4-.2-.4-.4V2.5c0-.3-.3-.7-.7-.7h-1.4c-.4 0-.7.4-.7.7v7.7c0 .2-.2.4-.4.4H2.5c-.3 0-.7.3-.7.7v1.4c0 .4.4.7.7.7h7.7c.2 0 .4.2.4.4v7.7c0 .3.3.7.7.7h1.4c.4 0 .7-.4.7-.7v-7.7c0-.2.2-.4.4-.4z" } },
+	  new_account: { "path": { "d": "M19 .5H5c-1.2 0-2.2 1-2.2 2.2v.1c0 .4.3.8.8.8h16.9c.4 0 .7-.4.7-.8v-.1c0-1.2-1-2.2-2.2-2.2zm-.1 5.4H5.1c-.4 0-.8.3-.8.7v16.2c0 .4.4.8.8.8h4.2c.4 0 .8-.4.8-.8v-3.1c0-.4.3-.8.7-.8h2.3c.4 0 .8.4.8.8v3.1c0 .4.3.8.7.8h4.3c.4 0 .8-.4.8-.8V6.6c0-.4-.4-.7-.8-.7zm-8.1 10.3c0 .5-.3.8-.7.8H8.5c-.4 0-.7-.3-.7-.8v-1.5c0-.4.3-.8.7-.8h1.6c.4 0 .7.4.7.8v1.5zm0-5.4c0 .5-.3.8-.7.8H8.5c-.4 0-.7-.3-.7-.8V9.3c0-.4.3-.8.7-.8h1.6c.4 0 .7.4.7.8v1.5zm5.4 5.4c0 .5-.3.8-.7.8h-1.6c-.4 0-.7-.3-.7-.8v-1.5c0-.4.3-.8.7-.8h1.6c.4 0 .7.4.7.8v1.5zm0-5.4c0 .5-.3.8-.7.8h-1.6c-.4 0-.7-.3-.7-.8V9.3c0-.4.3-.8.7-.8h1.6c.4 0 .7.4.7.8v1.5z" } },
+	  new_campaign: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 19.4c-4.6 0-8.3-3.7-8.3-8.3S7.4 3.7 12 3.7s8.3 3.7 8.3 8.3-3.7 8.3-8.3 8.3zm0-14.8c-3.6 0-6.5 2.9-6.5 6.5s2.9 6.5 6.5 6.5 6.5-2.9 6.5-6.5-2.9-6.5-6.5-6.5zm0 10.2c-2 0-3.7-1.7-3.7-3.7S10 8.3 12 8.3s3.7 1.7 3.7 3.7-1.7 3.7-3.7 3.7zm0-5.5c-1 0-1.8.8-1.8 1.8s.8 1.8 1.8 1.8 1.8-.8 1.8-1.8-.8-1.8-1.8-1.8z" } },
+	  new_case: { "path": { "d": "M6.9 6h1.9c.2 0 .4-.2.4-.5v-.9h5.6v.9c0 .3.2.5.4.5h1.9c.3 0 .4-.2.4-.5V4.4c0-1.4-1.1-2.6-2.5-2.6H9C7.6 1.8 6.5 3 6.5 4.3v1.2c0 .3.1.5.4.5zm14.3 1.8H2.8c-1 0-1.9.9-1.9 1.9v10.6c0 1 .9 1.9 1.9 1.9h18.4c1 0 1.9-.9 1.9-1.9V9.7c0-1-.9-1.9-1.9-1.9z" } },
+	  new_child_case: { "path": { "d": "M6.9 5.1h1.9c.2 0 .4-.2.4-.5v-.9h4.6v.9c0 .3.2.5.5.5h1.9c.2 0 .4-.2.4-.5V3.5c0-1.4-1.1-2.6-2.5-2.6H9C7.6.9 6.5 2 6.5 3.4v1.2c0 .3.1.5.4.5zm7.9 10.6h.9v-.9c0-1 .8-1.9 1.8-1.9h2.8c.6 0 1.1.3 1.4.7.2.2.5.1.5-.1V8.8c0-1-.9-1.9-1.9-1.9H2.8c-1 0-1.9.9-1.9 1.9v10.6c0 1 .9 1.8 1.9 1.8h10c.2 0 .3-.1.3-.3-.1-.2-.2-.4-.2-.6v-2.8c0-1 .9-1.8 1.9-1.8zm7.6 1.8h-2.1v-2c0-.4-.3-.7-.7-.7h-1.4c-.3 0-.7.3-.7.7v2h-2c-.4 0-.7.4-.7.7v1.4c0 .4.3.7.7.7h2v2.1c0 .4.4.7.7.7h1.4c.4 0 .7-.3.7-.7v-2.1h2.1c.4 0 .7-.3.7-.7v-1.4c0-.3-.3-.7-.7-.7z" } },
+	  new_contact: { "path": { "d": "M21.2 4.2H2.8C1.5 4.2.5 5.2.5 6.5v11c0 1.3 1 2.3 2.3 2.3h18.4c1.3 0 2.3-1 2.3-2.3v-11c0-1.3-1-2.3-2.3-2.3zm-9.8 13H4.8c-.7 0-1.3-.8-1.3-1.6.1-1.2 1.3-1.8 2.5-2.4.9-.4 1-.7 1-1.1 0-.4-.2-.7-.5-1-.5-.5-.8-1.2-.8-1.9 0-1.5.9-2.7 2.4-2.7s2.4 1.3 2.4 2.7c0 .8-.3 1.5-.8 1.9-.3.3-.6.6-.6 1s.1.7 1.1 1.1c1.2.5 2.4 1.2 2.4 2.4.2.8-.4 1.6-1.2 1.6zm9-2.7c0 .4-.3.8-.7.8h-3.5c-.4 0-.8-.3-.8-.8v-1.2c0-.4.4-.7.8-.7h3.5c.4 0 .7.3.7.7v1.2zm0-4.2c0 .4-.3.8-.7.8h-5.8c-.4 0-.7-.3-.7-.8V9.1c0-.4.3-.7.7-.7h5.8c.4 0 .8.3.8.7v1.2z" } },
+	  new_custom1: { "path": { "d": "M13.6 21c-.9.9-2.3.9-3.2 0-2.7-2.8-7.8-8.2-7.8-8.2-2.3-2.4-2.3-6.3 0-8.7C3.7 3 5.2 2.3 6.8 2.3s3 .6 4.1 1.8l.5.6c.3.3.9.3 1.2 0l.4-.5c1.2-1.2 2.6-1.9 4.2-1.9 1.5 0 3 .6 4.1 1.8 2.3 2.4 2.3 6.3 0 8.7 0 0-5 5.4-7.7 8.2z" } },
+	  new_custom10: { "path": { "d": "M19.4 22.3c-3.5 1.4-9.1 1-12.1-2.2C0 12.3 6.4.9 15.2.9c1.5 0 2.8.3 4.2.9.5.2.6.9.1 1.2-2.8 2-4.7 5.3-4.7 9s1.9 7 4.7 9c.5.3.4 1.1-.1 1.3z" } },
+	  new_custom100: { "path": { "d": "M16.4 19.2H7.6c-.3 0-.4.2-.4.5.4 1.4 2.4 2.5 4.8 2.5s4.3-1.1 4.7-2.5c.1-.3-.1-.5-.3-.5zm4.5-17.4H3.1C1.9 1.8.9 2.9.9 4.1v10.5c0 1.3 1 2.3 2.2 2.3h17.8c1.2 0 2.2-1 2.2-2.3V4.1c0-1.2-1-2.3-2.2-2.3zm0 12.1c0 .4-.4.7-.8.7H3.9c-.4 0-.8-.3-.8-.7V4.8c0-.4.4-.7.8-.7h16.2c.4 0 .8.3.8.7v9.1z" } },
+	  new_custom11: { "path": { "d": "M12.8 1.4l3 6.3 6.5 1c.8.1 1.1 1 .5 1.5L18 15.1l1.2 6.9c0 .8-.7 1.4-1.3 1L12 19.8 6.1 23c-.6.4-1.4-.2-1.3-1L6 15.1l-4.8-4.9c-.5-.5-.2-1.4.5-1.5l6.5-1 3-6.3c.3-.7 1.3-.7 1.6 0z" } },
+	  new_custom12: { "circle": { "cx": "12", "cy": "12", "r": "11.077" } },
+	  new_custom13: { "path": { "d": "M20.9 1.8H3.1C1.9 1.8.9 2.8.9 4v2.2c0 .4.3.7.8.7h20.6c.5 0 .8-.3.8-.7V4c0-1.2-1-2.2-2.2-2.2zm0 7.3H3.1c-.4 0-.7.3-.7.7V20c0 1.2 1 2.2 2.2 2.2h14.8c1.2 0 2.2-1 2.2-2.2V9.8c0-.4-.3-.7-.7-.7zm-4.8 3.3c0 .6-.5 1.1-1.1 1.1H9c-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1h6c.6 0 1.1.4 1.1 1.1z" } },
+	  new_custom14: { "path": { "d": "M22.3 5.4h-2.2c-.4 0-.9-.2-1.3-.6L17 3.3c-.3-.3-.8-.5-1.3-.5h-4.3c-.6 0-1.1.2-1.5.6L7.6 5.3c-.2.1-.2.5-.1.7l.7.6c.5.4 1.1.5 1.6.1l2-1.2c.3-.2.7-.1.8.1l6.4 6.3c.2.1.3.3.3.6v1.6c0 .5.3.9.7.9h2.2c.5 0 .8-.3.8-.7V6.1c.1-.4-.2-.7-.7-.7zm-6.2 6.7l-4-3.9-1.1.7c-.6.3-1.2.5-1.8.5-.8 0-1.6-.3-2.2-.9L5.5 7.4c-.3-.3-.5-.6-.6-1-.1-.4-.3-.6-.7-.6H1.7c-.5 0-.8.2-.8.6v6.8c0 .5.3.7.8.7h1.4c.1 0 .3-.4.5-.6.5-.7 1.3-1.1 2.2-1.3.9 0 1.8.3 2.5.9l4.6 4.3c.4.3.7.8.9 1.3 0 .2.4.3.6.1l1.7-1.8c.9-.8 1.6-3 .7-3.9l-.7-.8zm-9.3 2.8c-.5-.5-1.2-.4-1.6.1-.4.5-.3 1.3.2 1.7l4.6 4.2c.2.2.5.3.8.3.3-.1.6-.2.7-.5.5-.5.4-1.3-.1-1.7l-4.6-4.1z" } },
+	  new_custom15: { "path": { "d": "M19.4 10.6c-1.3-.6-1.5-1-1.5-1.6 0-.6.4-1 .8-1.4.8-.7 1.2-1.7 1.2-2.8 0-2.1-1.3-3.9-3.6-3.9-2 0-3.2 1.4-3.6 3.1 0 .1.1.2.2.3 1.6 1.2 2.7 3.2 2.7 5.6 0 1.7-.6 3.2-1.6 4.4-.2.1-.1.4.1.6.7.2 1.4.6 2.1 1 .3.1.5.2.8.2h4.2c1 0 1.9-.8 1.9-1.8V14c0-1.7-1.8-2.6-3.7-3.4zm-6.6 6.1c-1.6-.7-1.8-1.2-1.8-1.9s.5-1.2 1-1.7c.9-.8 1.4-1.9 1.4-3.2 0-2.5-1.6-4.5-4.3-4.5S4.8 7.5 4.8 9.9c0 1.3.5 2.4 1.4 3.2.5.5 1 1.1 1 1.7 0 .7-.3 1.2-1.8 1.9-2.3.9-4.4 1.9-4.4 3.9v.4c-.1 1.1.9 2.1 2.2 2.1H15c1.2 0 2.2-1 2.2-2.1v-.4c0-2-2.2-3-4.4-3.9z" } },
+	  new_custom16: { "path": { "d": "M20 19.4h-.4v-8.1c0-.5-.3-.8-.7-.8h-.8c-.4 0-.7.3-.7.8v8.1h-2.2v-8.1c0-.5-.3-.8-.7-.8h-.7c-.5 0-.8.3-.8.8v8.1h-2.2v-8.1c0-.5-.3-.8-.7-.8h-.7c-.4 0-.8.3-.8.8v8.1H6.5v-8.1c0-.5-.4-.8-.8-.8H5c-.4 0-.8.3-.8.8v8.1H4c-1.2 0-2.2 1-2.2 2.2v.7c0 .5.4.8.8.8h18.9c.4 0 .7-.3.7-.8v-.7c0-1.2-1-2.2-2.2-2.2zm1.8-13.2l-9-5c-.2-.2-.5-.3-.8-.3-.3 0-.6.1-.8.3l-9 5c-.2.2-.4.4-.4.7v.7c0 .4.4.7.8.7h18.9c.4 0 .7-.3.7-.7v-.7c0-.3-.2-.5-.4-.7zm-9.8.6c-1 0-1.8-.8-1.8-1.8S11 3.1 12 3.1s1.8.9 1.8 1.9S13 6.8 12 6.8z" } },
+	  new_custom17: { "path": { "d": "M9.5 4.2c.1.3.3.4.6.4h3.7c.3 0 .6-.1.7-.4L16 1.5c.1-.3-.1-.5-.4-.5H8.4c-.3 0-.5.2-.3.5l1.4 2.7zm4.7 2.6H9.8c-3.6 0-6.6 3-6.6 6.7v7.4c0 1.2 1 2.2 2.2 2.2h13.2c1.2 0 2.2-1 2.2-2.2v-7.4c0-3.7-3-6.7-6.6-6.7zm-1.1 12.4v1.3c0 .2-.2.4-.5.4h-1.4c-.3 0-.3-.2-.3-.4v-1.2c-1.1-.2-2-.7-2.3-.9-.2-.3-.3-.5-.1-.9l.5-.7c0-.2.3-.3.5-.3.1 0 .3.1.4.1.8.5 1.4.7 1.9.7s.9-.3.9-.6c0-.2-.1-.6-1.5-1.1-1.3-.4-2.8-1.2-2.8-2.9 0-1 .6-2.1 2.5-2.5V9.1c0-.2.1-.4.3-.4h1.4c.3 0 .5.2.5.4v1.1c.7.1 1.5.5 1.8.7.1.1.2.3.3.5 0 .1-.1.3-.2.4l-.5.7c-.1.1-.4.3-.6.3-.1 0-.2-.1-.3-.1-.8-.4-1.4-.7-1.8-.7-.6 0-.9.3-.9.5 0 .3.2.6 1.4 1 1.5.5 3.3 1.4 3.3 3.1-.1 1.3-1.1 2.3-2.5 2.6z" } },
+	  new_custom18: { "path": { "d": "M14.5 7.1h3.8c.3 0 .5-.3.5-.5s-.1-.3-.2-.4l-4.7-4.7c-.1-.1-.2-.1-.3-.1-.3 0-.5.2-.5.5v3.7c0 .8.6 1.5 1.4 1.5zm8.3 4.8l-.4-.5c-.2-.2-.7-.2-1 0l-5.5 5.5v1.3c0 .1 0 .2.1.2h1.4l5.4-5.5c.4-.3.4-.8 0-1zm-4.4 8.6h-3.3c-.7 0-1.3-.6-1.3-1.3v-2.5c0-.4.1-.8.4-1l4.4-4.4c.1-.1.2-.3.2-.5v-.9c0-.4-.3-.7-.7-.7h-5c-1.2 0-2.2-1-2.2-2.1v-5c0-.4-.3-.7-.7-.7H3C1.9 1.4.9 2.4.9 3.5v17c0 1.1 1 2.1 2.1 2.1h13.6c1 0 2-.7 2.1-1.7.1-.2-.1-.4-.3-.4zM3.8 7.8c0-.4.3-.7.7-.7h2.8c.5 0 .7.3.7.7v.6c0 .4-.3.7-.7.7H4.5c-.4 0-.7-.3-.7-.7v-.6zm7.1 9.1c0 .4-.3.7-.7.7H4.5c-.4 0-.7-.3-.7-.7v-.7c0-.3.3-.6.7-.6h5.7c.4 0 .7.3.7.6v.7zm1.5-4.2c0 .4-.4.7-.7.7H4.5c-.4 0-.7-.3-.7-.7V12c0-.4.3-.7.7-.7h7.1c.4 0 .7.3.7.7v.7z" } },
+	  new_custom19: { "path": { "d": "M22.8 5.6c-.1-.2-.4-.3-.6-.1l-3.8 3.7c-.3.3-.7.3-1 0l-2.6-2.6c-.3-.3-.3-.7 0-1l3.8-3.8c.1-.1 0-.5-.2-.6-.6-.2-1.3-.3-2-.3-3.9 0-7 3.4-6.6 7.4.1.7.3 1.2.5 1.8l-8.6 8.5c-1.1 1.1-1.1 2.7 0 3.7.5.5 1.2.8 1.8.8s1.3-.3 1.9-.8l8.5-8.6c.6.2 1.2.4 1.8.5 4 .4 7.4-2.7 7.4-6.6 0-.7-.1-1.4-.3-2z" } },
+	  new_custom2: { "g": { "path": { "d": "M15.4 1.6C14.3.9 10.2.2 8.7 2.7c-.7 1.2.2 3.4.9 4.8.1.3.5.5.9.3.4-.1 1-.2 1.6-.2.4 0 .7 0 1.1.1.3.1.6-.1.8-.4.3-.4.7-1 1.5-1.6 1.7-1.5 1-3.3-.1-4.1zm-2 14.6c-.4.1-.9.2-1.4.2-.5 0-.9-.1-1.3-.2-.3 0-.7.1-.8.4-.3.5-.7 1.1-1.5 1.7-1.8 1.5-1.1 3.3 0 4.1s5.2 1.4 6.7-1.1c.7-1.2-.1-3.3-.8-4.7-.2-.4-.5-.5-.9-.4zm7.9-7.6c-1.2-.7-3.4.2-4.8.9-.3.1-.5.5-.3.9.1.4.2 1 .2 1.6 0 .4 0 .7-.1 1.1-.1.3.1.7.4.8.4.3 1 .7 1.6 1.5 1.5 1.8 3.3 1.1 4 0s1.5-5.2-1-6.8zM7.8 13.4c-.1-.5-.2-.9-.2-1.4 0-.5.1-.9.2-1.3 0-.4-.1-.7-.4-.9-.5-.2-1.1-.7-1.7-1.4-1.5-1.8-3.3-1.1-4.1 0S.2 13.5 2.7 15c1.2.7 3.3 0 4.7-.7.4-.2.5-.6.4-.9z" }, "circle": { "cx": "12", "cy": "12", "r": "2.215" } } },
+	  new_custom20: { "path": { "d": "M7.6 11.2c0-.3-.4-.5-.6-.3l-5.2 3.9c-.6.4-.9 1.1-.9 1.8v1.5c0 .3.3.5.5.4l5.7-2.2c.2-.1.4-.3.4-.7.1 0 .1-4.4.1-4.4zm8.1 10.3l-1.5-1.1V3.7c0-1-1-2.1-1.7-2.6-.3-.3-.7-.3-1 0-.6.5-1.7 1.6-1.7 2.6v16.8l-1.7 1.1c-.3.2-.5.6-.5.9v.3c0 .1.1.3.3.3h8.2c.1 0 .4-.2.4-.3-.1-.6-.3-1-.8-1.3zm6.5-6.7l-5.2-4c-.2-.1-.6 0-.6.3v4.5c0 .3.2.6.5.7l5.7 2.2c.3.1.5-.1.5-.3v-1.5c0-.8-.3-1.5-.9-1.9z" } },
+	  new_custom21: { "path": { "d": "M14.8 19.8c-.1-.3-.4-.4-.6-.4H9.9c-.3 0-.6.1-.7.4l-1 2.7c-.1.3.1.5.3.5h7c.2 0 .4-.2.3-.5l-1-2.7zM20.9.9H3.1C1.9.9.9 1.9.9 3.1V15c0 1.2 1 2.2 2.2 2.2h17.8c1.2 0 2.2-1 2.2-2.2V3.1c0-1.2-1-2.2-2.2-2.2zM12 16.4c-.6 0-1.1-.4-1.1-1.1s.5-1.1 1.1-1.1 1.1.5 1.1 1.1-.5 1.1-1.1 1.1zm8.9-3.7c0 .5-.4.8-.8.8H3.9c-.4 0-.8-.3-.8-.8V3.9c0-.4.4-.8.8-.8h16.2c.4 0 .8.4.8.8v8.8z" } },
+	  new_custom22: { "path": { "d": "M22.2 17.1l-2.3-1.8c-.8-.7-1.9-.7-2.7-.1L15 16.8c-.2.2-.6.1-.9-.1l-3.6-3.3-3.3-3.6c-.3-.2-.3-.6-.1-.9l1.6-2.2c.6-.8.5-1.9-.1-2.7L6.7 1.7C6 .7 4.5.6 3.6 1.5l-2 2.1c-.5.4-.7 1-.7 1.6.3 4.7 2.4 9.2 5.6 12.3s7.5 5.3 12.2 5.6c.7 0 1.2-.3 1.7-.7l2-2c1-.9.9-2.4-.2-3.3z" } },
+	  new_custom23: { "path": { "d": "M11.5 14.1c.3.3.7.3 1.1 0L23 4.6c.2-.4.1-.9-.6-.9H1.7c-.5 0-1 .5-.6 1l10.4 9.4zm11.6-5.4c0-.5-.6-.8-.9-.4L14 15.7c-.5.5-1.2.8-2 .8-.7 0-1.4-.3-1.9-.8L1.9 8.3c-.4-.3-.9-.1-.9.4v9.4c0 1.2 1 2.2 2.2 2.2h17.7c1.2 0 2.2-1 2.2-2.2V8.7z" } },
+	  new_custom24: { "path": { "d": "M18.6.9H5.4c-1.2 0-2.2 1-2.2 2.2 0 .5.4.8.8.8h16c.4 0 .8-.3.8-.8 0-1.2-1-2.2-2.2-2.2zm0 5.2H5.4c-.4 0-.7.3-.7.7v15.5c0 .5.3.8.7.8h4.1c.4 0 .7-.3.7-.8v-2.9c0-.4.4-.8.8-.8h2.1c.4 0 .8.4.8.8v2.9c0 .5.3.8.7.8h4c.5 0 .8-.3.8-.8V6.8c-.1-.4-.4-.7-.8-.7zm-7.7 10c0 .4-.3.7-.7.7H8.7c-.4 0-.8-.3-.8-.7v-1.5c0-.4.4-.8.8-.8h1.5c.4 0 .7.4.7.8v1.5zm0-5.2c0 .4-.3.7-.7.7H8.7c-.4 0-.8-.3-.8-.7V9.4c0-.4.4-.7.8-.7h1.5c.4 0 .7.3.7.7v1.5zm5.1 5.2c0 .4-.3.7-.7.7h-1.5c-.4 0-.7-.3-.7-.7v-1.5c0-.4.3-.8.7-.8h1.5c.4 0 .8.4.8.8v1.5zm0-5.2c0 .4-.3.7-.7.7h-1.5c-.4 0-.7-.3-.7-.7V9.4c0-.4.3-.7.7-.7h1.5c.4 0 .8.3.8.7v1.5z" } },
+	  new_custom25: { "path": { "d": "M23 3.6c-.3-1.4-1.4-2.5-2.8-2.7-1-.1-2 .2-2.7.8-.2.1-.1.4.1.6 1.7.9 3.2 2.2 4.3 3.7.1.3.4.3.6 0 .5-.6.7-1.5.5-2.4zM6.3 2.3c.3-.1.3-.5.1-.6-.7-.6-1.6-.9-2.6-.8-1.4.2-2.6 1.3-2.8 2.7-.2.9 0 1.8.4 2.4.2.2.5.2.7 0 1.1-1.5 2.5-2.8 4.2-3.7zm5.7.8c-5.5 0-10 4.5-10 10 0 2.2.8 4.3 2 5.9l-1.6 1.5c-.6.6-.6 1.6 0 2.2.3.2.7.4 1.1.4s.7-.1 1-.4L6 21.1c1.7 1.2 3.8 2 6 2s4.3-.8 5.9-2l1.5 1.6c.4.2.7.4 1.1.4s.7-.1 1-.4c.6-.6.6-1.6 0-2.2L20 19c1.2-1.6 1.9-3.7 1.9-5.9.1-5.5-4.4-10-9.9-10zm-7 10c0-3.9 3.1-7 7-7s7 3.1 7 7-3.1 7-7 7-7-3.1-7-7zm8.1-.5V9.8c0-.7-.5-1.1-1.1-1.1s-1.1.4-1.1 1.1v3.3c0 .3.1.6.3.8l2.6 2.6c.2.2.5.3.8.3s.5-.1.8-.3c.4-.5.4-1.2 0-1.6l-2.3-2.3z" } },
+	  new_custom26: { "path": { "d": "M3.1.9C1.9.9.9 1.9.9 3.1c0 .7.3 1.3.8 1.7v16.8c0 .8.6 1.5 1.4 1.5.9 0 1.5-.7 1.5-1.5V4.8c.5-.4.8-1 .8-1.7C5.4 1.9 4.3.9 3.1.9zm19.4 4c-5.8 3-9.7-2.2-15.2-.2-.3.1-.5.4-.5.7v9.5c0 .5.5.8 1 .7 5.3-1.6 9.2 3.4 14.9.2.2-.1.4-.3.4-.6V5.3c0-.4-.3-.5-.6-.4z" } },
+	  new_custom27: { "path": { "d": "M3 16.4h18c.4 0 .7-.3.7-.7V4.8c0-1.1-.9-2-2.1-2H4.4c-1.2 0-2.1.9-2.1 2v10.9c0 .5.3.7.7.7zM4.4 5.5c0-.4.3-.7.7-.7h13.8c.4 0 .7.3.7.7v8.2c0 .4-.3.7-.7.7H5.1c-.4 0-.7-.3-.7-.7V5.5zm18 13h-7.6c-.4 0-.7.3-.7.7s-.3.7-.7.7h-2.8c-.4 0-.7-.3-.7-.7s-.3-.7-.7-.7H1.6c-.4 0-.7.3-.7.7 0 1.1.9 2 2.1 2h18c1.2 0 2.1-.9 2.1-2 0-.4-.3-.7-.7-.7z" } },
+	  new_custom28: { "path": { "d": "M17.2.9H6.8c-1.2 0-2.2 1-2.2 2.2v17.8c0 1.2 1 2.2 2.2 2.2h10.4c1.2 0 2.2-1 2.2-2.2V3.1c0-1.2-1-2.2-2.2-2.2zM12 22.3c-.6 0-1.1-.4-1.1-1.1s.5-1.1 1.1-1.1 1.1.5 1.1 1.1-.5 1.1-1.1 1.1zm5.2-3.7c0 .5-.4.8-.8.8H7.6c-.4 0-.8-.3-.8-.8v-14c0-.4.4-.7.8-.7h8.8c.4 0 .8.3.8.7v14z" } },
+	  new_custom29: { "path": { "d": "M20.9 3.9h-.7c-.4 0-.8.3-.8.8v14.7s0 .1.1.1l.9 1.3c.1.1.2.1.3 0l.9-1.3c.1 0 .1 0 .1-.1V4.7c0-.5-.3-.8-.8-.8zM15 .9H4.5c-1.2 0-2.2 1-2.2 2.2v17.8c0 1.2 1 2.2 2.2 2.2H15c1.2 0 2.2-1 2.2-2.2V3.1c0-1.2-1-2.2-2.2-2.2zM9.8 22.3c-.7 0-1.1-.4-1.1-1.1s.4-1.1 1.1-1.1 1.1.5 1.1 1.1-.5 1.1-1.1 1.1zm5.2-3.7c0 .5-.3.8-.7.8h-9c-.4 0-.7-.3-.7-.8v-14c0-.4.3-.7.7-.7h9c.4 0 .7.3.7.7v14z" } },
+	  new_custom3: { "path": { "d": "M12 7.6c-2.4 0-4.4 2-4.4 4.4s2 4.4 4.4 4.4 4.4-2 4.4-4.4-2-4.4-4.4-4.4zM23.1 12c0-1.3-3.1-1.9-3.6-3.1-.5-1.2 1.2-3.8.3-4.7s-3.5.8-4.7.3C13.9 4 13.3.9 12 .9S10.1 4 8.9 4.5c-1.2.5-3.8-1.2-4.7-.3s.8 3.5.3 4.7C4 10.1.9 10.7.9 12s3.1 1.9 3.6 3.1c.5 1.2-1.2 3.8-.3 4.7.8.9 3.5-.8 4.7-.3 1.1.5 1.8 3.6 3.1 3.6s1.9-3.1 3-3.6c1.2-.4 3.9 1.2 4.8.3.8-.8-.9-3.5-.4-4.7.6-1.2 3.7-1.8 3.7-3.1zM12 18.6c-3.6 0-6.6-3-6.6-6.6s3-6.6 6.6-6.6 6.6 3 6.6 6.6-3 6.6-6.6 6.6z" } },
+	  new_custom30: { "path": { "d": "M19.9 4.1C17.9 2 15.2.9 12.4.9c-.7 0-1.1.5-1.1 1.1s.4 1.1 1.1 1.1c2.2 0 4.4.9 6 2.5 1.6 1.6 2.5 3.8 2.5 6.1 0 .6.5 1.1 1.1 1.1s1.1-.5 1.1-1.1c0-2.9-1.1-5.6-3.2-7.6zm-7.5 1.3c-.7 0-1.1.4-1.1 1.1s.4 1.1 1.1 1.1c1 0 2.1.4 2.9 1.2.8.8 1.2 1.7 1.2 2.9 0 .6.4 1.1 1.1 1.1s1.1-.5 1.1-1.1c0-1.7-.7-3.3-1.9-4.5C15.6 6 14 5.4 12.4 5.4zM10.8 16l.9-2.6c.7.3 1.4.1 2-.4.7-.8.7-1.9 0-2.7-.8-.7-1.9-.7-2.7 0-.5.6-.6 1.4-.3 2.1l-2.4 1.1-4.4-4.4c-.3-.2-.8-.2-1 .1-2.8 3.3-2.6 8.3.5 11.4 3.1 3.1 8.1 3.3 11.4.5.3-.2.3-.7.1-1L10.8 16z" } },
+	  new_custom31: { "path": { "d": "M21.4 9.6L19.6 4c-.3-1-1.3-1.7-2.4-1.7H6.8C5.7 2.3 4.7 3 4.3 4L2.6 9.6c-1 .2-1.7 1-1.7 2v4.3c0 .9.7 1.7 1.5 2.1v3c0 .4.3.7.7.7h3c.4 0 .7-.3.7-.7v-2.9h10.4V21c0 .4.3.7.7.7h3c.4 0 .7-.3.7-.7v-3c.8-.3 1.5-1.1 1.5-2v-4.3c0-1.1-.7-1.9-1.7-2.1zm-16.8 6c-1 0-1.8-.8-1.8-1.8S3.6 12 4.6 12s1.9.8 1.9 1.8-.9 1.8-1.9 1.8zm8.1-6.1H5.4c-.2 0-.4-.2-.3-.5l1.4-4.2c0-.2.1-.3.3-.3h10.3c.2 0 .3.1.3.3l1.4 4.3c.1.2-.1.5-.3.5h-5.8zm6.3 6.1c-1 0-1.8-.8-1.8-1.8S18 12 19 12s1.9.8 1.9 1.8-.9 1.8-1.9 1.8z" } },
+	  new_custom32: { "path": { "d": "M22.5 6.6l-8.6 4.9c-.2.1-.4.1-.6.1-.4 0-.8-.2-1-.6-.3-.5 0-1.2.5-1.5l2.9-1.6V5.1c0-.3-.3-.5-.6-.3l-10.5 6c-.2 0-.4.1-.5.1-.4 0-.8-.2-1-.6-.3-.5-.1-1.2.4-1.5l1.8-1V1.7c.1-.5-.3-.8-.7-.8H1.7c-.5 0-.8.3-.8.8v19.2c0 1.2 1 2.2 2.2 2.2h6.3c.4 0 .8-.3.8-.8v-2.5c0-.5.3-.8.7-.8h2.2c.4 0 .7.3.7.8v2.5c0 .5.4.8.8.8h6.3c1.2 0 2.2-1 2.2-2.2v-14c0-.3-.3-.5-.6-.3zm-16 10.2c0 .4-.4.7-.8.7H5c-.4 0-.8-.3-.8-.7v-2.2c0-.4.4-.8.8-.8h.7c.4 0 .8.4.8.8v2.2zm4.4 0c0 .4-.3.7-.7.7h-.8c-.4 0-.7-.3-.7-.7v-2.2c0-.4.3-.8.7-.8h.8c.4 0 .7.4.7.8v2.2zm4.4 0c0 .4-.3.7-.7.7h-.8c-.4 0-.7-.3-.7-.7v-2.2c0-.4.3-.8.7-.8h.8c.4 0 .7.4.7.8v2.2zm4.5 0c0 .4-.4.7-.8.7h-.7c-.4 0-.8-.3-.8-.7v-2.2c0-.4.4-.8.8-.8h.7c.4 0 .8.4.8.8v2.2z" } },
+	  new_custom33: { "path": { "d": "M17.2 8.9h-10c-.4 0-.7.3-.7.7v2.7c0 .4.3.7.7.7h10c.4 0 .7-.3.7-.7V9.6c0-.4-.3-.7-.7-.7zM12.4 12c-.6 0-1-.5-1-1 0-.6.4-1 1-1s1 .4 1 1c0 .5-.5 1-1 1zm10-7.8H1.6c-.4 0-.7.3-.7.6v.7c0 .8.6 1.4 1.4 1.4v12.3c0 .3.3.6.7.6h.7c.4 0 .7-.3.7-.6V6.9H20v12.3c0 .3.3.6.7.6h.7c.3 0 .7-.3.7-.6V6.9h-.4c.7 0 1.4-.6 1.4-1.4v-.7c0-.3-.3-.6-.7-.6z" } },
+	  new_custom34: { "path": { "d": "M9 4.6h6c.4 0 .7-.4.6-.8C15.2 2.2 13.8.9 12 .9S8.8 2.2 8.4 3.8c-.1.4.2.8.6.8zm13 9.6c.6 0 1.1-.5 1.1-1.2-.1-.5-.6-1-1.2-1h-3.3v-1.8c2.2-.9 3.7-3.2 3.7-5.9 0-.6-.3-1-.9-1.2-.7-.1-1.3.5-1.3 1.1 0 1.6-.7 3-1.8 3.6-.4-.6-1.1-1-1.9-1H7.6c-.8 0-1.5.4-1.9 1-1.1-.6-1.8-1.9-1.8-3.5 0-.6-.5-1.2-1-1.2-.7-.1-1.2.5-1.2 1.1 0 2.7 1.5 5.1 3.7 5.9V12H2.1c-.6 0-1.1.4-1.2 1 0 .6.5 1.2 1.1 1.2h3.4V16c-2.2.8-3.7 3.2-3.7 5.9 0 .5.3 1 .9 1.1.7.1 1.3-.4 1.3-1.1 0-1.5.7-2.9 1.7-3.6.7 2.1 2.3 3.7 4.3 4.4.5.1 1-.3 1-.7v-8.8c0-.6.5-1.2 1-1.2.7 0 1.2.5 1.2 1.1V22c0 .5.5.8 1 .7 2-.6 3.6-2.3 4.3-4.3 1 .6 1.7 2 1.7 3.5 0 .6.5 1.1 1 1.2.7 0 1.2-.5 1.2-1.1 0-2.8-1.5-5.1-3.7-5.9v-1.9H22z" } },
+	  new_custom35: { "path": { "d": "M19.2 8.3c-.7 0-1.2.5-1.2 1.1v1.9c0 3.2-2.7 5.9-6 5.9s-6.1-2.7-6.1-5.9V9.4c0-.6-.5-1.1-1.1-1.1s-1.1.5-1.1 1.1v1.9c0 4.1 3.1 7.4 7.1 8v1.6H9c-.7 0-1.2.4-1.2 1.1s.5 1.1 1.2 1.1h6c.6 0 1.2-.5 1.2-1.1s-.6-1.1-1.2-1.1h-1.9v-1.6c4.1-.6 7.2-3.9 7.2-8V9.4c0-.6-.5-1.1-1.1-1.1zM12 15c2.1 0 3.8-1.7 3.8-3.7V4.6c0-2.1-1.7-3.7-3.8-3.7-2.1 0-3.8 1.6-3.8 3.7v6.7c0 2 1.7 3.7 3.8 3.7z" } },
+	  new_custom36: { "path": { "d": "M7.9 20.1H6.5c-.3 0-.5.2-.6.4l-.5.9c-.3.5-.2 1.2.2 1.5.2.1.4.2.6.2.4 0 .8-.2 1-.6l1-1.8c.2-.3 0-.6-.3-.6zm10.3.4c-.2-.2-.4-.4-.6-.4h-1.5c-.3 0-.5.3-.3.6l1 1.8c.3.4.6.6 1 .6.2 0 .4-.1.6-.2.4-.3.6-1 .2-1.5l-.4-.9zM18.1.9H5.9c-1.2 0-2.2 1-2.2 2.2v12.6c0 1.2 1 2.2 2.2 2.2h12.2c1.2 0 2.2-1 2.2-2.2V3.1c0-1.2-1-2.2-2.2-2.2zM6.9 16.4c-.6 0-1-.4-1-1.1s.4-1.1 1-1.1 1.1.5 1.1 1.1-.4 1.1-1.1 1.1zm10.2 0c-.6 0-1.1-.4-1.1-1.1s.5-1.1 1.1-1.1 1 .5 1 1.1-.4 1.1-1 1.1zm1-4.4c0 .4-.3.7-.7.7H6.6c-.4 0-.7-.3-.7-.7V4.6c0-.4.3-.7.7-.7h10.8c.5 0 .8.3.8.7V12z" } },
+	  new_custom37: { "path": { "d": "M22.4 14.1h-4.5V10c.9.8 2.1 1.3 3.5 1.3.6 0 1-.5 1-1s-.5-1-1-1c-1.9 0-3.5-1.7-3.5-3.8V4.4c.4 0 .7-.3.7-.7V3c0-.4-.3-.7-.7-.7h-2.1c-.3 0-.7.3-.7.7v.7c0 .4.4.7.7.7v1c0 2.1-1.7 3.8-3.8 3.8S8.3 7.5 8.3 5.4v-1c.3 0 .7-.3.7-.7V3c0-.4-.4-.7-.7-.7H6.2c-.4 0-.7.3-.7.7v.7c0 .4.3.7.7.7v1c0 2.1-1.6 3.8-3.5 3.8-.6 0-1 .4-1 1s.5 1 1 1c1.3 0 2.6-.5 3.5-1.3V14H1.6c-.4.1-.7.4-.7.8v1.6c0 .4.3.8.7.8H3V21c0 .3.3.7.7.7h2.1c.3 0 .7-.4.7-.7v-1.4c0-1.2.9-2.1 2-2.1h7c1.1 0 2 .9 2 2.1V21c0 .3.4.7.7.7h2.1c.4 0 .7-.4.7-.7v-3.8h1.4c.4 0 .7-.4.7-.8v-1.6c0-.4-.3-.7-.7-.7zM8.2 9.9c1 .9 2.4 1.4 3.8 1.4s2.8-.5 3.8-1.4v4.2H8.2V9.9z" } },
+	  new_custom38: { "path": { "d": "M12 10.2c-1.6 0-3 1.3-3 2.9s1.4 3 3 3 3-1.4 3-3-1.4-2.9-3-2.9zm8.9-3.7h-3c-.3 0-.6-.2-.7-.5l-1-2c-.3-.8-1.1-1.2-1.9-1.2H9.7c-.8 0-1.6.4-1.9 1.2l-1 2c-.1.3-.4.5-.7.5h-3C1.9 6.5.9 7.5.9 8.7V19c0 1.2 1 2.2 2.2 2.2h17.8c1.2 0 2.2-1 2.2-2.2V8.7c0-1.2-1-2.2-2.2-2.2zM12 18.4c-2.9 0-5.2-2.3-5.2-5.2S9.1 8 12 8s5.2 2.3 5.2 5.2-2.3 5.2-5.2 5.2z" } },
+	  new_custom39: { "path": { "d": "M17 4.1c-.1-.3-.4-.5-.7-.4L1.4 8.5c-.3.1-.5.5-.4.9l.6 2.3c.1.3.4.6.8.5l3.8-.5c.1.4.3.9.5 1.2l-3.2 8.7c-.2.6.1 1.2.7 1.4 0 0 .2.1.3.1.5 0 .9-.3 1-.8l3.1-8.2c.3.1.4.1.7.1s.5-.1.8-.1l3 8.2c.1.5.6.8 1 .8.1 0 .3-.1.4-.1.6-.2.9-.8.6-1.4l-3.2-8.8c.4-.6.7-1.3.7-2l5.2-.8c.3 0 .5-.4.4-.7L17 4.1zm6 5.2l-2-7.5c-.1-.6-.8-1-1.4-.9-.6.2-1 .8-.8 1.4l2 7.5c.2.6.8 1 1.4.9.6-.2 1-.8.8-1.4z" } },
+	  new_custom4: { "path": { "d": "M3 5.6l7.8-4.4c.7-.4 1.7-.4 2.4 0L21 5.6c.7.4 1.2 1.2 1.2 2v8.8c0 .8-.5 1.6-1.2 2l-7.8 4.4c-.7.4-1.6.4-2.4 0L3 18.4c-.6-.4-1.2-1.2-1.2-2V7.6c0-.8.6-1.6 1.2-2z" } },
+	  new_custom40: { "path": { "d": "M20.9 3.7H3.1C1.9 3.7.9 4.7.9 5.9v12.2c0 1.2 1 2.2 2.2 2.2h17.8c1.2 0 2.2-1 2.2-2.2V5.9c0-1.2-1-2.2-2.2-2.2zm0 2.2V8H3.1V5.9h17.8zM3.1 18.1v-6.5h17.8v6.5H3.1zm6.4-4.7c-.5 0-1 .3-1.2.7-.1.1-.2.1-.2 0-.3-.4-.7-.7-1.2-.7-.9 0-1.5.7-1.5 1.5 0 .7.6 1.4 1.5 1.4.5 0 .9-.2 1.2-.7h.2c.2.5.7.7 1.2.7.8 0 1.4-.6 1.4-1.4v-.1c0-.7-.7-1.4-1.4-1.4zm8.4.4h-4.4c-.4 0-.8.3-.8.7v.7c0 .4.4.8.8.8h4.4c.4 0 .7-.4.7-.8v-.7c0-.4-.3-.7-.7-.7z" } },
+	  new_custom41: { "path": { "d": "M21 5.1H3c-1.2 0-2.1.9-2.1 2v9.8c0 1.1.9 2 2.1 2h18c1.2 0 2.1-.9 2.1-2V7.1c0-1.1-.9-2-2.1-2zM5.4 16.9c0-1.3-1-2.4-2.4-2.4v-5c1.4 0 2.4-1.1 2.4-2.4h13.2c0 1.3 1.1 2.4 2.4 2.4v5c-1.3 0-2.4 1.1-2.4 2.4H5.4z" }, "ellipse": { "cx": "12", "cy": "11.815", "rx": "3.462", "ry": "3.369" } },
+	  new_custom42: { "path": { "d": "M20.9 1.8H3.1C1.9 1.8.9 2.8.9 4v2.2c0 .4.3.7.8.7h20.6c.5 0 .8-.3.8-.7V4c0-1.2-1-2.2-2.2-2.2zm0 7.3H3.1c-.4 0-.7.3-.7.7V20c0 1.2 1 2.2 2.2 2.2h14.8c1.2 0 2.2-1 2.2-2.2V9.8c0-.4-.3-.7-.7-.7zm-4.8 3.3c0 .6-.5 1.1-1.1 1.1H9c-.6 0-1.1-.5-1.1-1.1 0-.6.5-1.1 1.1-1.1h6c.6 0 1.1.4 1.1 1.1z" } },
+	  new_custom43: { "path": { "d": "M23 9.8v-.7V9h-.1v-.1h-.1l-4-5.7c-.2-.2-.4-.4-.8-.4H6c-.4 0-.7.2-.9.4l-4 5.6c0 .1-.1.1-.1.1V9H.9V9.8c.1 0 .1.1.1.1v.1h.1l10.1 10.9v.1h.1s.1 0 .1.1v.1h.1v.1h.8v-.1h.1v-.1h.1V21h.1v-.1h.1L22.8 10v-.1h.1l.1-.1zM12 8.4h-1.6L12 5.7l1.6 2.7H12zm0 2h2l-2 6.5-2-6.5h2zm1.8-5.6h2.5l-.9 2.6-1.6-2.6zM8.7 7.4l-.9-2.6h2.5L8.7 7.4zm-.8 3l1.8 6-5.5-6h3.7zm8.2 0h3.7l-5.5 6 1.8-6zm4-2h-3l1-2.8 2 2.8zM5.9 5.6l1 2.8h-3l2-2.8z" } },
+	  new_custom44: { "path": { "d": "M18.8 4.2C16.9 1.8 15.3.9 12 .9c-1.5 0-3.3.6-4 .8 0-.5-.3-.8-.8-.8H5.8c-.4 0-.8.3-.8.8v2.9c0 .4.4.8.8.8h1.4c.4 0 .7-.4.7-.8h.9c.6 0 1 .5 1 1.1 0 .7.5 1.1 1.1 1.1v5.9c-.7 0-1.4.7-1.4 1.5v6.7c0 1.2 1 2.2 2.2 2.2h.7c1.2 0 2.2-1 2.2-2.2v-6.7c0-.8-.7-1.5-1.4-1.5V6.8c.6 0 1.1-.8 1.1-1.4 0-.6.4-1.1.9-1.1 1.5-.1 2.3.5 2.7.9.2.2.6.2.7 0 .4-.2.5-.7.2-1z" } },
+	  new_custom45: { "path": { "d": "M6.1 9.6h11.8v4.8H6.1zm17-.6V7.2c0-1.2-.9-2.1-2.1-2.1H3C1.8 5.1.9 6 .9 7.2V9c0 .2.2.5.4.6.8.5 1.4 1.4 1.4 2.4s-.6 1.9-1.4 2.4c-.2.1-.4.3-.4.6v1.8c0 1.2.9 2.1 2.1 2.1h18c1.2 0 2.1-.9 2.1-2.1V15c0-.2-.2-.5-.4-.6-.8-.5-1.4-1.4-1.4-2.4s.6-1.9 1.4-2.4c.2-.1.4-.3.4-.6zm-3.8 7.5H4.7c-.4 0-.7-.3-.7-.7V8.2c0-.4.3-.7.7-.7h14.5c.4 0 .7.3.7.7v7.6c0 .4-.2.7-.6.7z" } },
+	  new_custom46: { "path": { "d": "M16.1 7.2H7.9c-.4 0-.7.3-.7.7v8.2c0 .4.3.7.7.7h8.2c.4 0 .7-.3.7-.7V7.9c0-.4-.3-.7-.7-.7zm6.4-3.6c.3-.1.6-.4.6-.7V1.7c0-.5-.3-.8-.8-.8h-1.2c-.3 0-.6.3-.7.6-.2.7-.9 1.3-1.7 1.3s-1.5-.6-1.8-1.3c-.1-.3-.4-.6-.7-.6h-1.8c-.3 0-.6.3-.6.6-.2.7-1 1.3-1.8 1.3s-1.5-.6-1.8-1.3c-.1-.3-.3-.6-.7-.6H7.8c-.3 0-.6.3-.6.6-.3.7-1 1.3-1.8 1.3-.9 0-1.6-.6-1.8-1.3-.1-.3-.4-.6-.7-.6H1.7c-.5 0-.8.3-.8.8v1.2c0 .3.3.6.6.7.7.2 1.3.9 1.3 1.8s-.6 1.5-1.3 1.7c-.3.1-.6.4-.6.7v1.8c0 .3.3.6.6.6.7.2 1.3 1 1.3 1.8s-.6 1.5-1.3 1.8c-.3.1-.6.3-.6.7v1.7c0 .3.3.6.6.6.7.3 1.3 1 1.3 1.8 0 .9-.6 1.6-1.3 1.8-.3.1-.6.4-.6.7v1.2c0 .5.3.8.8.8h1.2c.3 0 .6-.3.7-.6.2-.7.9-1.3 1.7-1.3.8 0 1.5.6 1.8 1.3.1.3.3.6.7.6h1.7c.3 0 .6-.3.7-.6.2-.7.9-1.3 1.7-1.3s1.5.6 1.8 1.3c.1.3.3.6.7.6h1.8c.3 0 .6-.3.6-.6.3-.7 1-1.3 1.8-1.3s1.5.6 1.8 1.3c0 .3.3.6.6.6h1.2c.5 0 .8-.3.8-.8v-1.2c0-.3-.2-.6-.6-.7-.7-.2-1.3-.9-1.3-1.7s.6-1.5 1.3-1.8c.4-.1.6-.3.6-.7v-1.7c0-.3-.2-.6-.6-.7-.7-.2-1.3-.9-1.3-1.7 0-.8.6-1.5 1.3-1.8.4-.1.6-.3.6-.7V7.8c0-.3-.2-.6-.6-.6-.7-.3-1.3-1-1.3-1.8s.7-1.6 1.4-1.8zM19 16.8c0 1.2-1 2.2-2.2 2.2H7.2C6 19 5 18 5 16.8V7.2C5 6 6 5 7.2 5h9.6C18 5 19 6 19 7.2v9.6z" } },
+	  new_custom47: { "path": { "d": "M16.9 20.1H4.1c-1.2 0-2.3 1-2.3 2.2v.1c0 .4.4.7.7.7h15.9c.4 0 .7-.3.7-.7v-.1c.1-1.2-1-2.2-2.2-2.2zm5-11.7l-6-5.4 1-1.4c.1-.3 0-.5-.2-.6-1.9-.4-3 .9-3 .9C2.1 1.9 4 14.4 4.6 17.3c.1.3.3.6.7.6h10.2c.3 0 .5-.4.3-.6-2-2.5-3.1-5.3-3.8-7-.1-.3.2-.7.5-.5 2.7 1.4 3.9-.1 5.7 1 1 .6 2.1.5 2.8-.3l1-1c.2-.3.2-.7-.1-1.1zm-7.6-1.2c-.7 0-1.1-.5-1.1-1.1S13.7 5 14.3 5s1.1.4 1.1 1.1-.5 1.1-1.1 1.1z" } },
+	  new_custom48: { "path": { "d": "M22.3 2.4h-3.7v-.7c0-.5-.3-.8-.7-.8H6.1c-.4 0-.7.3-.7.8v.7H1.7c-.5 0-.8.3-.8.7v4.8c0 1.9 1.5 3.4 3.3 3.4H6c1 2.3 3.2 4 6 4 2.8.1 5.1-1.6 6.1-4h1.7c1.8 0 3.3-1.5 3.3-3.4V3.1c0-.4-.3-.7-.8-.7zM4.2 9c-.6 0-1.1-.4-1.1-1.1V4.6h2.3V9H4.2zm16.7-1.1c0 .7-.5 1.1-1.1 1.1h-1.2V4.6h2.3v3.3zm-5.2 13h-.4c-1.2 0-2.2-1.1-2.2-2.3v-.7c0-.2-.1-.4-.4-.4h-1.4c-.3 0-.4.2-.4.4v.7c0 1.2-1 2.3-2.2 2.3h-.4c-.4 0-.7.3-.7.7v.7c0 .5.3.8.7.8h7.4c.4 0 .7-.3.7-.8v-.7c0-.4-.3-.7-.7-.7z" } },
+	  new_custom49: { "path": { "d": "M12 8.7c-1.8 0-3.3 1.5-3.3 3.3s1.5 3.3 3.3 3.3 3.3-1.5 3.3-3.3-1.5-3.3-3.3-3.3zm0 5.1c-1 0-1.8-.8-1.8-1.8s.8-1.8 1.8-1.8 1.8.8 1.8 1.8-.8 1.8-1.8 1.8zM12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 19.5c0 .5-.4.8-.8.8-4.5-.4-8-3.9-8.4-8.4 0-.4.3-.8.8-.8h.7c.4 0 .7.3.7.6.4 3.4 3 6 6.4 6.4.3 0 .6.3.6.7v.7zm0-2.9c-3 0-5.5-2.5-5.5-5.5S9 6.5 12 6.5 17.5 9 17.5 12 15 17.5 12 17.5zm8.4-5.5h-.7c-.4 0-.7-.3-.7-.6-.4-3.4-3-6-6.4-6.4-.3 0-.6-.3-.6-.7v-.7c0-.5.4-.8.8-.8 4.5.4 8.1 4 8.4 8.4 0 .4-.3.8-.8.8z" } },
+	  new_custom5: { "path": { "d": "M22.7 2.7c-3.8-1.5-8.2-1.8-12.1-.5-3.4 1.1-6.9 3.6-7.4 7.4-.1.8-.1 1.7.1 2.4l.3 1.2.3.6c-.1.2-.3.5-.4.6-1.1 1.7-1.8 3.6-2.3 5.5-.2.8-.6 2 .2 2.5.4.3.9.3 1.2.1.4-.3.5-.7.6-1.2.3-1.9 1-3.9 2.1-5.5.5-.8 1-1.6 1.7-2.4.5-.6 1.4-1.7 2.3-1.4.9.4.9 1.4.3 2s-1.2 1.1-1.2 2c0 .7.3 1.4.8 1.8.8.6 2.2.7 3.1.6 2-.1 3.6-.7 5.1-1.8 2.1-1.5 2.9-4 3.3-6.3.3-1.5.5-2.9 1-4.3.2-.6.5-1.2.8-1.7.2-.2.5-.5.5-.8.2-.4-.1-.7-.3-.8z" } },
+	  new_custom50: { "path": { "d": "M21.9 14.4c-.8.5-1.8.7-2.8.7-1.2 0-2.3-.3-3.3-.9-.1-.1-.3-.1-.4 0-1 .6-2.1.9-3.3.9s-2.4-.3-3.3-.9c-.1-.1-.3-.1-.4 0-1 .6-2.1.9-3.3.9-1 0-2-.2-2.8-.7-.3-.1-.6.1-.6.4v4.5c0 .9.5 1.7 1.3 2.1 1.9.8 3.9 1.4 6 1.7.5.1.8-.3.8-.8v-2.8c0-1.2 1-2.2 2.2-2.2 1.2 0 2.2 1 2.2 2.2v2.8c0 .5.4.8.8.8 2.1-.3 4.1-.9 6-1.7.8-.4 1.3-1.2 1.3-2.1v-4.5c.1-.3-.1-.5-.4-.4zM5 12.8c1.4 0 2.5-.5 3.3-1.4.1-.2.4-.2.5 0 .8.8 2 1.4 3.2 1.4 1.4 0 2.5-.5 3.3-1.4.1-.2.4-.2.5 0 .8.8 2 1.4 3.3 1.4 2 0 3.8-1.4 4-3.2 0-.3-.1-.6-.3-.7l-9.4-7.5c-.8-.7-2-.7-2.7 0L1.2 8.9c-.2.1-.3.4-.3.7.3 1.8 2.1 3.2 4.1 3.2z" } },
+	  new_custom51: { "path": { "d": "M8.5 3c1 .6 1.8 2.1 2.2 3.3.1.3.3.4.6.4.2.1.4.1.7.1.4 0 .7 0 1.1-.1.9-.3 1.7-.7 2.4-1.4 1.1-1.2 1.5-2.8 1.1-4.1-1.3-.5-2.9-.1-4 1.1-.4.3-.6.7-.8 1.1-.6-1-1.3-1.8-2.1-2.3-.6-.3-1.3-.1-1.6.4-.3.5 0 1.2.4 1.5zm11.2 5.4c-3.7-2.1-4.5.7-7.7.7s-4-2.8-7.7-.7c-3.6 2.1-2.5 8.9-1.1 11.4 1.3 2.3 3.6 4.6 8.5 2.4.2-.1.4-.1.6 0 4.8 2.2 7.2-.1 8.5-2.4 1.4-2.5 2.5-9.3-1.1-11.4z" } },
+	  new_custom52: { "path": { "d": "M23 6.5c.1-1.2 0-2.3-.2-3.5-.1-1-.8-1.7-1.8-1.8-1.2-.2-2.3-.3-3.5-.2-.3 0-.5.4-.3.6l5.2 5.2c.3.2.6 0 .6-.3zm-8.7-4.7c-.2-.2-.5-.3-.7-.2C10.8 2.4 8.2 3.8 6 6c-2.1 2.2-3.6 4.8-4.4 7.4-.1.3 0 .6.2.8l8 8c.2.2.5.3.8.2 2.6-.8 5.2-2.3 7.4-4.4 2.1-2.2 3.6-4.8 4.4-7.6.1-.3 0-.5-.2-.7l-7.9-7.9zm-3.1 14.4c-.4.5-1.1.5-1.6 0l-2-2c-.5-.5-.5-1.2 0-1.6.4-.5 1.1-.5 1.5 0l2.1 2.1c.5.4.5 1.1 0 1.5zm2.6-2.5c-.5.4-1.2.4-1.6 0l-2-2.1c-.5-.5-.5-1.2 0-1.6.4-.4 1.1-.4 1.5 0l2.1 2.1c.5.5.5 1.1 0 1.6zm2.6-2.6c-.5.4-1.2.4-1.6 0L12.7 9c-.4-.5-.4-1.2 0-1.6.5-.4 1.2-.4 1.6 0l2.1 2.1c.4.5.4 1.2 0 1.6zM1 17.3c-.1 1.2-.1 2.5.2 3.7.1 1 .8 1.8 1.8 1.9 1.2.2 2.5.3 3.8.2.3-.1.4-.4.3-.7L1.6 17c-.2-.2-.6-.1-.6.3z" } },
+	  new_custom53: { "path": { "d": "M21 14.6h-.3c-.8 0-1.5-.7-1.5-1.5V8.2c0-4.3-3.7-7.7-8-7.2-3.7.4-6.4 3.7-6.4 7.5v4.4c0 .9-.8 1.7-1.7 1.7H3c-.6 0-1.2.5-1.2 1.2v.9c0 .6.6 1.2 1.2 1.2h18c.6 0 1.2-.6 1.2-1.2v-.9c0-.7-.6-1.2-1.2-1.2zm-6.6 5.5H9.6c-.3 0-.6.3-.5.5.3 1.4 1.5 2.5 2.9 2.5s2.7-1 3-2.5c0-.2-.3-.5-.6-.5z" } },
+	  new_custom54: { "path": { "d": "M3.6 12.4C6 12 8.1 11 10.4 10c.7-.4 2.1-1 2.8-1.3.2-.1.3-.3.2-.6-.2-1-1-1.9-2.1-1.9h-.8V4.8c0-.4-.3-.7-.7-.7V2.6c0-.4-.3-.8-.8-.8H7.6c-.4 0-.8.4-.8.8v1.5c-.3 0-.7.3-.7.7v1.4h-.7c-1.2 0-2.3 1.1-2.3 2.3V12c0 .3.3.5.5.4zm16.5 7.3s2.7-4.1 3-10c0-.4-.3-.7-.8-.7-8.8.3-12.9 5.6-20.7 5.9-.4 0-.7.4-.7.7v2.8c0 1.2.9 2.1 2.1 2.2 3.9.3 12.2.8 16.9 1.6.5.1 1-.4.9-.8-.1-.6-.3-1.3-.7-1.7zm-.3-6.6c-.7 0-1.2-.5-1.2-1.1s.5-1.1 1.2-1.1 1.1.5 1.1 1.1-.5 1.1-1.1 1.1z" } },
+	  new_custom55: { "path": { "d": "M5.8 15.4h4.5c.4 0 .7-.4.7-.7V4.6c0-.8-.7-1.4-1.4-1.4H5.9c-.5 0-.8.4-.8.8v10.7c0 .3.3.7.7.7zM21 5.3v10.8c0 .7-.6 1.3-1.4 1.3H4.4c-.8 0-1.4-.6-1.4-1.3V5.3c-1.2 0-2.1.9-2.1 2v10.1c0 1.1.9 2 2.1 2h6.6c.3 0 .6.4.6.7s.4.7.7.7H13c.4 0 .7-.3.7-.7s.3-.7.7-.7H21c1.1 0 2-.9 2-2V7.3c.1-1.1-.8-2-2-2zm-7.2 10.1h4.3c.5 0 .8-.4.8-.8V3.9c0-.3-.3-.7-.7-.7h-3.8c-.6 0-1.3.6-1.3 1.4v10.1c-.1.3.2.7.7.7z" } },
+	  new_custom56: { "path": { "d": "M16.7 4.8c-2.3 2.3-5.1-.6-7.7 2l-7.4 7.4c-.9.8-.9 2.2 0 3.1l2.6 2.5 2.5 2.6c.9.9 2.3.9 3.1 0l7.5-7.4c2.5-2.6-.3-5.4 2-7.7l.6-.6c.2-.1.2-.4 0-.5l-2-2c-.2-.2-.4-.2-.5 0l-.7.6zm-1.8 9.4l-2.6 2.6c-.3.3-.7.3-1 0l-2.1-2.1-2-2.1c-.3-.2-.3-.7 0-1L9.7 9c.3-.2.8-.2 1.1 0l2 2.1 2.1 2.1c.3.3.3.7 0 1zm7.9-11.5l-.7-.8-.8-.8c-.3-.3-.8-.3-1 0l-1 1c-.1.1-.1.3 0 .5l2 2c.2.2.4.2.5 0l1-.9c.4-.2.4-.7 0-1z" } },
+	  new_custom57: { "path": { "d": "M13.1 13.4v9.3c0 .3.3.5.6.3 1.8-1 7.3-4.2 7.3-4.2.6-.4 1.1-1.2 1.1-2V8.4c0-.3-.3-.4-.5-.3l-8.1 4.6c-.2.2-.4.4-.4.7zm-.7-2.6l8.1-4.7c.3-.1.3-.5 0-.6-1.8-1-7.3-4.3-7.3-4.3-.7-.4-1.7-.4-2.4 0 0 0-5.5 3.2-7.3 4.3-.3.1-.3.5 0 .6l8.1 4.7c.3.1.5.1.8 0zm-1.9 1.9L2.4 8.1c-.2-.2-.6 0-.6.3v8.4c0 .8.5 1.6 1.2 2 0 0 5.5 3.2 7.3 4.2.3.2.5 0 .5-.3v-9.3c.1-.3-.1-.5-.3-.7z" } },
+	  new_custom58: { "path": { "d": "M18.2 10.5c-.6 0-1.1-.5-1.1-1.2.1-.6.6-1 1.2-1h3.2c.1 0 .3-.1.3-.2.3-.5.5-1 .7-1.5.1-.3-.1-.5-.3-.5h-2.4c-.6 0-1.1-.5-1.2-1 0-.7.5-1.2 1.2-1.2h2.9c.2 0 .4-.2.4-.4V2.4c0-.4-.3-.7-.8-.7h-3.9c-1.1 0-2 .8-2 1.9v.1c0 2.1-1.4 3.9-3.3 4.4v-3c.8-.5 1.3-1.3 1.1-2.3-.1-1-1-1.7-1.9-1.8-1.4-.2-2.5.8-2.5 2.2 0 .8.4 1.5 1.1 1.9v3.1C9 7.7 7.6 5.9 7.6 3.8v-.1c0-1.1-.9-2-2-2H1.7c-.5 0-.8.3-.8.7v1.2c0 .2.2.3.4.3h2.9c.6 0 1.1.5 1.2 1 0 .7-.5 1.2-1.2 1.2H1.8c-.2 0-.4.3-.3.5.2.5.4 1.1.7 1.6.1.1.2.2.3.2h3.2c.6 0 1.2.4 1.2 1 .1.6-.4 1.2-1.1 1.2h-.9c-.3 0-.5.4-.2.6 1.6 1.4 3.6 2.3 6.3 2.3v8.4c0 .6.4 1.1 1 1.2.6 0 1.2-.5 1.2-1.1v-8.5c2.7 0 4.7-1 6.3-2.3.3-.2.1-.6-.3-.6h-1z" } },
+	  new_custom59: { "path": { "d": "M18.3 5c.4 0 .6-.3.6-.7 0-.2-.1-.5-.4-.6-.5-.3-1.2-1.5-1.5-2.3-.1-.3-.3-.5-.6-.5H7.5c-.3 0-.6.2-.6.5-.3.7-1 2-1.5 2.3-.2.1-.3.4-.3.6 0 .4.3.7.6.7h12.6zM5.1 20.8c0 1.3.9 2.3 2.1 2.3h9.5c1.2 0 2.2-1 2.2-2.2v-.1c0-.4-.3-.7-.7-.7H5.7c-.3 0-.6.3-.6.7zm13.8-3.6V7.9c0-.4-.3-.7-.7-.7H5.8c-.4 0-.7.3-.7.7v9.3c0 .4.3.7.7.7h12.4c.4 0 .7-.3.7-.7z" } },
+	  new_custom6: { "path": { "d": "M12 21.7H2.4c-1.2 0-1.8-1.3-1.2-2.3L10.7 3c.6-.9 1.9-.9 2.5 0l9.6 16.5c.6 1-.1 2.2-1.2 2.2H12z" } },
+	  new_custom60: { "path": { "d": "M23.1 10.2C22.2 5 17.6.9 12 .9S1.8 5 .9 10.2c0 .4.3.6.6.4.6-.4 1.3-.7 2.1-.7 1 0 1.9.4 2.5 1.2.1.2.5.2.6 0 .6-.8 1.5-1.2 2.5-1.2s1.9.4 2.5 1.2c.1.2.4.2.6 0 .6-.8 1.5-1.2 2.5-1.2s1.9.4 2.5 1.2c.1.2.4.2.6 0 .6-.8 1.4-1.2 2.5-1.2.7 0 1.5.3 2 .7.4.2.7 0 .7-.4zm-6.7 8.4c-.6 0-1.1.5-1.1 1.2s-.4 1.1-1.1 1.1-1.1-.5-1.1-1.1v-5.2c0-.7-.5-1.1-1.1-1.1s-1.1.4-1.1 1.1v5.2c0 1.8 1.5 3.3 3.3 3.3s3.3-1.5 3.3-3.3c0-.7-.4-1.2-1.1-1.2z" } },
+	  new_custom61: { "path": { "d": "M20.5.9H19c-.4 0-.7.3-.7.8v1.4c0 .5-.3.8-.8.8h-.7c-.4 0-.7-.3-.7-.8V1.7c0-.5-.3-.8-.8-.8h-1.5c-.4 0-.7.3-.7.8v1.4c0 .5-.3.8-.7.8h-.8c-.4 0-.7-.3-.7-.8V1.7c0-.5-.3-.8-.7-.8H8.7c-.4 0-.8.3-.8.8v1.4c0 .5-.3.8-.7.8h-.7c-.5 0-.8-.3-.8-.8V1.7c0-.5-.3-.8-.7-.8H3.5c-.4 0-.7.3-.7.8v3.7c0 1.2 1 2.2 2.2 2.2h14c1.2 0 2.2-1 2.2-2.2V1.7c0-.5-.3-.8-.7-.8zm-1.7 9.5c0-.4-.3-.7-.7-.7H5.9c-.4 0-.7.3-.7.7L3.5 22.2c-.1.5.3.8.7.8H9c.4 0 .8-.3.8-.7v-3.6c0-1.2.9-2.3 2.1-2.3 1.3 0 2.3 1 2.3 2.2v3.7c0 .5.4.8.8.8h4.8c.4 0 .8-.4.7-.9l-1.7-11.8z" } },
+	  new_custom62: { "path": { "d": "M22 19H2c-.6 0-1.1.5-1.1 1.1 0 .6.5 1.1 1.1 1.1h20c.6 0 1.1-.4 1.1-1.1S22.6 19 22 19zM2.4 16.8H15v-1.5c0-.4.3-.7.7-.7h3.7c.4 0 .7.3.7.7v1.5h1.5c.4 0 .7-.3.7-.7V3.5c0-.4-.3-.7-.7-.7H2.4c-.4 0-.7.3-.7.7v12.6c0 .4.3.7.7.7zm3.3-9.6c0-.4.3-.7.8-.7h10.7c.4 0 .7.3.7.7v.7c0 .5-.3.8-.7.8H6.5c-.5 0-.8-.3-.8-.8v-.7zm0 4.4c0-.4.3-.7.8-.7h7c.4 0 .7.3.7.7v.8c0 .4-.3.7-.7.7h-7c-.5 0-.8-.3-.8-.7v-.8z" } },
+	  new_custom63: { "path": { "d": "M9 15.7h6c.4 0 .7-.3.7-.7V9c0-.4-.3-.7-.7-.7H9c-.4 0-.7.3-.7.7v6c0 .4.3.7.7.7zm13-2.6c.6 0 1.1-.5 1.1-1.1s-.5-1.1-1.1-1.1h-1.9V8.7H22c.6 0 1.1-.5 1.1-1.1s-.5-1.1-1.1-1.1h-1.9v-.4c0-1.2-1-2.2-2.2-2.2h-.4V2c0-.6-.4-1.1-1.1-1.1s-1.1.5-1.1 1.1v1.9h-2.2V2c0-.6-.5-1.1-1.1-1.1s-1.1.5-1.1 1.1v1.9H8.7V2c0-.6-.5-1.1-1.1-1.1S6.5 1.4 6.5 2v1.9h-.4c-1.2 0-2.2 1-2.2 2.2v.4H2c-.6 0-1.1.4-1.1 1.1S1.4 8.7 2 8.7h1.9v2.2H2c-.6 0-1.1.5-1.1 1.1s.5 1.1 1.1 1.1h1.9v2.2H2c-.6 0-1.1.5-1.1 1.1s.5 1.1 1.1 1.1h1.9v.4c0 1.2 1 2.2 2.2 2.2h.4V22c0 .6.4 1.1 1.1 1.1s1.1-.5 1.1-1.1v-1.9h2.2V22c0 .6.5 1.1 1.1 1.1s1.1-.5 1.1-1.1v-1.9h2.2V22c0 .6.5 1.1 1.1 1.1s1.1-.5 1.1-1.1v-1.9h.4c1.2 0 2.2-1 2.2-2.2v-.4H22c.6 0 1.1-.4 1.1-1.1s-.5-1.1-1.1-1.1h-1.9v-2.2H22zm-4.1 3.7c0 .6-.5 1.1-1.1 1.1H7.2c-.6 0-1.1-.5-1.1-1.1V7.2c0-.6.5-1.1 1.1-1.1h9.6c.6 0 1.1.5 1.1 1.1v9.6z" } },
+	  new_custom64: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm0 19.2c-4.5 0-8.1-3.6-8.1-8.1S7.5 3.9 12 3.9s8.1 3.6 8.1 8.1-3.6 8.1-8.1 8.1zm4.3-12.9l-6.1 2.3c-.4.1-.6.3-.7.7l-2.3 6.1c0 .3.2.6.5.5l6.1-2.3c.4-.1.6-.3.7-.7l2.3-6.1c.1-.3-.2-.6-.5-.5zM12 13.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5 1.5.7 1.5 1.5-.7 1.5-1.5 1.5z" } },
+	  new_custom65: { "path": { "d": "M19.6 17.9h-18c-.4 0-.7.3-.7.7 0 1.2 1 2.2 2.2 2.2h15c1.2 0 2.2-1 2.2-2.2v-.1c0-.3-.4-.6-.7-.6zm-.8-14.7H1.7c-.4 0-.7.4-.7.8-.1.9-.1 2.7.1 3.8.4 3.4 2.2 6.2 4.7 7.8H14c1.4-.9 2.6-2.3 3.4-3.8.4.1.9.2 1.4.2 2.3 0 4.3-2 4.3-4.4s-1.9-4.4-4.3-4.4zm0 6.6c-.2 0-.3-.1-.5-.1.3-1.2.5-2.4.5-3.7v-.6c1.2 0 2.2.9 2.2 2.2s-1 2.2-2.2 2.2z" } },
+	  new_custom66: { "path": { "d": "M22.4 14l-5.3-5.4c-.9-.8-2.2-.8-3.1 0L8.6 14c-.8.8-.8 2.2 0 3l5.4 5.4c.8.9 2.2.9 3 0l5.4-5.4c.9-.8.9-2.2 0-3zm-10.1 2.4c-.5.5-1.4.5-1.8 0-.5-.5-.5-1.3 0-1.8s1.3-.5 1.8 0 .4 1.3 0 1.8zm4.1 4.2c-.5.5-1.3.5-1.8 0s-.5-1.3 0-1.8 1.4-.5 1.8 0c.5.5.5 1.3 0 1.8zm0-8.3c-.5.5-1.3.5-1.8 0s-.5-1.4 0-1.8c.5-.5 1.4-.5 1.8 0 .5.4.5 1.3 0 1.8zm4.2 4.1c-.5.5-1.4.5-1.8 0-.5-.5-.5-1.3 0-1.8s1.3-.5 1.8 0 .5 1.3 0 1.8zM13.1 5.9V3.1c0-1.2-1-2.2-2.2-2.2H3.1C1.9.9.9 1.9.9 3.1v7.8c0 1.2 1 2.2 2.2 2.2h2.8c.2 0 .5-.1.6-.3.1-.1.3-.2.4-.4l5.5-5.5c.1-.1.2-.3.4-.4.2-.1.3-.4.3-.6zm-9 5.4c-.7 0-1.3-.6-1.3-1.3s.6-1.3 1.3-1.3 1.3.6 1.3 1.3-.6 1.3-1.3 1.3zm2.9-3c-.7 0-1.3-.6-1.3-1.3S6.3 5.7 7 5.7s1.3.6 1.3 1.3S7.7 8.3 7 8.3zm3-2.9c-.7 0-1.3-.6-1.3-1.3s.6-1.3 1.3-1.3c.7 0 1.3.6 1.3 1.3s-.6 1.3-1.3 1.3z" } },
+	  new_custom67: { "path": { "d": "M13.5 13.1l-.5-.8c-.2-.3-.4-.4-.8-.4-.1 0-.2 0-.3.1l-1.3.4c-.5-.4-1.1-.7-1.7-1l-.3-1.3c-.1-.5-.4-.7-.9-.7h-.9c-.5 0-.8.3-.9.8l-.3 1.2c-.6.3-1.1.6-1.7 1.1L2.6 12c-.1 0-.2-.1-.3-.1-.3 0-.6.2-.8.5l-.5.8c-.2.4-.1.8.2 1.2l1.2.8c-.1.4-.1.7-.1 1 0 .3 0 .6.1 1l-1.1.9c-.4.3-.5.8-.2 1.2l.4.8c.2.3.5.4.9.4 0 0 .2 0 .3-.1L4 20c.5.4 1 .8 1.7 1l.2 1.3c.1.5.5.8.9.8h1c.4 0 .8-.3.9-.8l.2-1.3c.7-.3 1.3-.6 1.8-1.1l1.2.5c.1 0 .2.1.3.1.4 0 .7-.2.9-.5l.4-.7c.3-.4.2-.9-.2-1.2l-1.1-.9c.1-.3.1-.6.1-1 0-.3 0-.6-.1-1l1.1-.8c.3-.4.4-.9.2-1.3zm-6.3 5.6c-1.3 0-2.5-1.1-2.5-2.5s1.1-2.5 2.5-2.5 2.6 1.1 2.6 2.5-1.2 2.5-2.6 2.5zM22.8 7.9l-.8-.7c0-.3.1-.5.1-.8 0-.3-.1-.5-.1-.8l.8-.7c.3-.2.4-.6.2-.9l-.4-.7c-.1-.2-.4-.3-.6-.3h-.3l-1.1.4c-.4-.4-.8-.6-1.4-.8l-.1-1.1c-.1-.3-.4-.6-.8-.6h-.7c-.4 0-.7.3-.8.6l-.1 1.1c-.5.2-1 .4-1.4.8L14.2 3c-.1-.1-.2-.1-.3-.1-.2 0-.5.1-.6.4l-.4.6c-.2.3-.1.7.2.9l.8.7c0 .3-.1.5-.1.8 0 .3.1.6.1.8l-.8.7c-.3.2-.4.6-.2 1l.4.6c.1.2.4.4.6.4.1 0 .2 0 .3-.1l1.1-.4c.4.4.9.7 1.4.8l.1 1.1c.1.3.4.6.8.6h.7c.4 0 .7-.3.8-.6l.1-1.1c.6-.2 1.1-.5 1.5-.9l1 .4c.1.1.2.1.3.1.2 0 .5-.1.6-.4l.4-.6c.2-.2.1-.5-.2-.8zm-4.8.6c-1.2 0-2.1-.9-2.1-2s.9-2.1 2.1-2.1 2 1 2 2.1-.9 2-2 2z" } },
+	  new_custom68: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm8.8 10h-2.9c-.1-2.6-.7-4.9-1.6-6.7 2.4 1.4 4.1 3.8 4.5 6.7zm-9.9-7.3v7.3H8.4c.1-3.5 1.2-6.2 2.5-7.3zm0 9.5v7.3c-1.3-1.1-2.4-3.8-2.5-7.3h2.5zm2.2 7.3v-7.3h2.5c-.1 3.5-1.2 6.2-2.5 7.3zm0-9.5V3.6c1.3 1.1 2.4 3.8 2.5 7.3h-2.5zM7.7 4.2C6.8 6 6.3 8.3 6.1 10.9H3.2C3.6 8 5.3 5.6 7.7 4.2zm-4.5 8.9h2.9c.1 2.6.7 4.9 1.6 6.7-2.4-1.4-4.1-3.8-4.5-6.7zm13.1 6.7c.9-1.8 1.4-4.1 1.6-6.7h2.9c-.4 2.9-2.1 5.3-4.5 6.7z" } },
+	  new_custom69: { "path": { "d": "M13 10.2c-2.2-1.6-4.3-.8-5.7.5-.5.5-1.3.8-2.2 1-1 .3-2.1.7-2.8 1.5-2.2 2-1.7 4.5 1.1 7.3l.1.1c1.7 1.7 3.2 2.5 4.7 2.5 1 0 1.9-.4 2.8-1.2.8-.8 1.2-1.8 1.5-2.8.3-.9.6-1.7 1.1-2.2.8-.8 1.3-1.8 1.4-2.7.1-.7-.1-1.7-.9-2.8 0 0-.4-.6-1.1-1.2zm-4.6 8.9c-.2.2-.5.3-.7.3-.3 0-.5-.1-.7-.3l-2.1-2c-.4-.4-.4-1 0-1.5.4-.4 1-.4 1.4 0l2.1 2.1c.4.4.4 1 0 1.4zm1.8-3c-1.1 0-1.9-.8-1.9-1.8s.8-1.9 1.9-1.9 1.8.8 1.8 1.9-.8 1.8-1.8 1.8zM22.8 2.9l-1.7-1.7c-.2-.3-.8-.3-1.1 0L18.1 3c-.3.3-.3.9 0 1.2l.1.1-3.8 3.8c-.1.2-.1.4 0 .6.3.3.8.7 1.1 1 .1.1.3.1.5 0l3.8-3.8V6c.3.3.9.3 1.2 0l1.9-1.9c.3-.4.3-.9-.1-1.2z" } },
+	  new_custom7: { "path": { "d": "M3.3 23.1C2 23.1.9 22 .9 20.7V3.3C.9 2 2 .9 3.3.9h17.4c1.3 0 2.4 1.1 2.4 2.4v17.4c0 1.3-1.1 2.3-2.4 2.3H3.3z" } },
+	  new_custom70: { "path": { "d": "M11.3 17.1L7 12.9c-.9-.9-2.3-.9-3.2 0l-2.6 2.6c-.3.3-.3.8 0 1l.5.6.5.5 4.3 4.2.2.3.9.7c.2.3.8.3 1 0l2.7-2.6c.8-.8.8-2.2 0-3.1zm-7-1.6l.6-.5c.3-.3.7-.3 1 0l3.2 3.1c.3.3.3.8 0 1.1l-.5.5c-.3.2-.8.2-1 0l-3.3-3.2c-.3-.3-.3-.7 0-1zM9 11.7l3.4 3.3c.1.1.2.1.3.1h1.6c.1 0 .3-.1.3-.3v-1.4c0-.2.2-.3.4-.3l1.3-.1c.2 0 .4-.1.4-.3v-1.4c0-.2.1-.3.3-.3l1.4-.1c.2 0 .3-.1.3-.3l.1-1.4c0-.2.1-.3.3-.3h1.4c.2 0 .3-.2.3-.4l.1-1.3c0-.2.1-.3.2-.4l1.6-.2c.2 0 .4-.3.2-.6l-3.1-4.8c-.3-.3-.8-.4-1.2 0l-9.7 9.6c-.2.2-.2.6.1.9z" } },
+	  new_custom71: { "path": { "d": "M19.8 5c-2.1-2.1-5-3.2-8.1-3.2C5.8 2 .9 7 .9 12.9v3.4c0 1.2 1 2.2 2.2 2.2h1.5v1.8c0 .9.7 1.7 1.7 1.9 1.1 0 2-.8 2-1.8v-6.5c0-.9-.7-1.8-1.7-1.9-1.1-.1-2 .7-2 1.8v2.5h-.7c-.4 0-.8-.3-.8-.7v-2.7C3.1 8.1 7 4.2 11.7 4c2.5-.1 4.7.8 6.4 2.5 1.8 1.6 2.7 3.8 2.7 6.2v2.9c0 .4-.3.7-.7.7h-.7v-2.4c0-.9-.7-1.8-1.7-1.9-1.1-.1-2 .7-2 1.8v6.5c0 .9.7 1.7 1.7 1.9 1.1 0 2-.8 2-1.8v-1.8h1.5c1.2 0 2.2-1 2.2-2.2v-3.5c0-2.9-1.1-5.7-3.3-7.9z" } },
+	  new_custom72: { "g": { "path": { "d": "M22 .9H2C1.4.9.9 1.4.9 2S1.4 3.1 2 3.1h8.9v2.3c-4 .6-7 3.9-7 8V16c0 2.6 2.1 4.9 4.9 4.9h6.5c2.7 0 4.9-2.2 4.9-4.9v-2.6c0-4.1-3.1-7.5-7-8V3.1H22c.7 0 1.1-.4 1.1-1.1S22.6.9 22 .9zm-4.8 12.5c0 1-.9 1.9-2 1.9H8.8c-1.1 0-1.9-.8-2-1.9.1-2.8 2.3-5.1 5.1-5.1h.1c2.9 0 5.1 2.3 5.2 5.1z" }, "circle": [{ "cx": "3.138", "cy": "21.6", "r": "1.477" }, { "cx": "20.862", "cy": "21.6", "r": "1.477" }] } },
+	  new_custom73: { "path": { "d": "M2.2 6.5h19.6c.4 0 .8-.5.7-1-.5-1.5-1.1-2.9-2-4.1-.3-.4-.8-.4-1.1-.1-.8.8-2.1 1.3-3.4 1.3-1.4 0-2.6-.6-3.5-1.5-.3-.3-.8-.3-1.1 0-.9.9-2.1 1.5-3.5 1.5-1.3 0-2.5-.5-3.4-1.3-.3-.3-.8-.2-1 .1-.9 1.2-1.6 2.7-2 4.2-.1.4.3.9.7.9zm20.9 2.9c0-.4-.3-.7-.8-.7H1.7c-.5 0-.8.3-.8.7v.2c0 6.9 4.8 12.6 11.1 13.5 6.3-.9 11.1-6.6 11.1-13.5v-.2z" } },
+	  new_custom74: { "path": { "d": "M13.9 20.5h-3.8c-.4 0-.7.3-.7.7v1.1c0 .5.3.8.7.8h3.8c.4 0 .7-.3.7-.8v-1.1c0-.4-.3-.7-.7-.7zM12 .9C7.4.9 3.7 4.4 3.7 8.7c0 2.7 1.6 5.2 3.9 6.5.9.5 1.5 1.4 1.7 2.4.1.4.4.6.8.6H14c.4 0 .7-.2.7-.6.2-1 .8-1.9 1.7-2.4 2.3-1.4 3.9-3.8 3.9-6.5 0-4.3-3.7-7.8-8.3-7.8zM9.4 4.4c-.7 1.4-1.1 3-1.2 4.4 0 1.4.3 2.6.8 3.9.1.4-.2.7-.6.5C5 11.4 5.2 5.1 9 3.8c.3 0 .6.3.4.6zm2.9 8.8c-.1.3-.5.3-.7 0-.6-1.4-.7-3.1-.8-4.7.1-1.6.2-3.2.8-4.7.1-.3.6-.3.7 0 .6 1.4.8 3.1.8 4.7s-.2 3.2-.8 4.7zm3.1 0c-.3.2-.6-.1-.5-.4.5-1.4.7-2.8.8-4.2-.1-1.2-.5-2.8-1.2-4.2-.1-.2.1-.6.5-.5 3.7 1.2 3.9 7.6.4 9.3z" } },
+	  new_custom75: { "path": { "d": "M12 .9c-.6 0-1.1.5-1.1 1.1v20c0 .6.5 1.1 1.1 1.1 6.1 0 11.1-5 11.1-11.1S18.1.9 12 .9zm8.8 10h-2.9c-.1-2.6-.7-4.9-1.6-6.7 2.4 1.4 4.1 3.8 4.5 6.7zm-7.7 9.5v-7.3h2.5c-.1 3.5-1.2 6.2-2.5 7.3zm0-9.5V3.6c1.3 1.1 2.4 3.8 2.5 7.3h-2.5zm3.2 8.9c.9-1.8 1.4-4.1 1.6-6.7h2.9c-.4 2.9-2.1 5.3-4.5 6.7zM5.9 8.3c.3.2.7.1 1-.1L9 5.9c.2-.3.2-.8-.1-1.1l-2-2c-.3-.3-.7-.3-.9-.1l-.5.3C2.8 5 .9 8.3.9 12s1.9 7 4.6 9l.5.3c.2.2.6.1.9-.1l2-2c.3-.3.3-.8.1-1.1l-2.1-2.3c-.3-.2-.7-.3-1-.1l-.8.6c-.8-1.2-1.2-2.7-1.2-4.3s.4-3 1.2-4.3l.8.6z" } },
+	  new_custom76: { "path": { "d": "M12 14c-.1-.2-.5-.5-.8-.4h-.3c-4.2 0-7.5-3.4-7.5-7.5V6c0-.4-.5-.6-.7-.3-.3.4-.5.9-.6 1.3-.7 2.1.2 4.4 2 5.7.8.6 1.7.9 2.5 1l.3.7c.1.1.1.2.2.2l1.1.5c.2.1.3.3.2.5l-.4 1c-.1.2.1.4.2.5l.6.3c.2 0 .3.2.2.4L8.7 19c-.1.2 0 .3.2.4l.8.4c.2.1.3.3.2.5l-.3 1.1c0 .2 0 .4.2.5l2.6 1.1c.2.1.4 0 .5-.2l1.1-2.4c.1-.2.1-.4 0-.6L12 14zm9.9-.3l-6-6.2c.3-.9.3-2-.1-3-.7-2-2.5-3.4-4.7-3.6C7.9.8 5.3 3.5 5.6 6.7c.3 2.3 1.9 4.1 4.1 4.5 1 .2 2 .1 2.8-.2l.5.6c.1.1.2.1.3.1h1.3c.2 0 .4.1.4.3v1.2c0 .2.2.3.4.3h.8c.2 0 .3.2.3.4l.2 1.2c.1.2.2.3.4.3h.9c.2 0 .4.1.4.3l.2 1.2c0 .2.1.3.3.3h2.8c.3 0 .4-.1.4-.4v-2.7c.1-.2 0-.3-.2-.4zM10.1 7.2c-1.1 0-1.9-.8-1.9-1.8s.8-1.9 1.9-1.9 1.9.8 1.9 1.9-.8 1.8-1.9 1.8z" } },
+	  new_custom77: { "path": { "d": "M5.3 9h1.4c.3 0 .4-.1.4-.3v-.6c0-2.8 2.1-5 4.7-5s4.7 2.2 4.7 5v.6c0 .2.2.3.4.3h1.4c.3 0 .4-.1.4-.3v-.6c0-4-3-7.2-6.9-7.2S4.9 4.1 4.9 8.1v.6c0 .2.2.3.4.3zm13.8 2.3H4.9c-1.2 0-2.1 1-2.1 2.2v7.4c0 1.2.9 2.2 2.1 2.2h14.2c1.2 0 2.1-1 2.1-2.2v-7.4c0-1.2-.9-2.2-2.1-2.2zm-5.3 5.9c-.4.5-.6 1.1-.4 1.7l.2 1.1c.1.4-.2.9-.6.9h-2.3c-.5 0-.8-.5-.7-.9l.2-1.1c.2-.6 0-1.2-.3-1.7-.3-.4-.5-1-.4-1.6.2-.9.9-1.6 1.8-1.8 1.5-.3 2.8.8 2.8 2.2 0 .4-.2.8-.3 1.2z" } },
+	  new_custom78: { "path": { "d": "M22.4 4.4l-6.6-3.3c-.3-.2-.7-.2-1 0l-6.1 3-6.2-3c-.3-.2-.7-.2-1.1 0-.3.2-.5.6-.5.9v16.6c0 .5.3.9.7 1.1L8.2 23c.3.1.7.1 1 0l6.2-3.1 6.2 3.1c.1.1.3.1.4.1.2 0 .4-.1.6-.2.3-.2.5-.6.5-.9V5.4c0-.5-.3-.8-.7-1zm-1.5 2.1v8.8c0 .5-.5.9-1.1.7-1.7-.7-.3-3.5-1.5-5.1-1.2-1.4-2.7 0-4.1-2.2-1.4-2.2.5-3.8 2.1-4.6.3-.1.5-.1.7 0l3.4 1.8c.3.1.5.3.5.6zm-9.5 12.8c-.2.2-.6.1-.8-.1-.4-.4-.8-1-.8-1.7 0-1.1-1.9-.7-1.9-2.9 0-1.8-2.1-2.3-3.9-2.1-.5 0-.9-.3-.9-.8V5c0-.5.6-.9 1.1-.6l4 2h.1l.1.1c1.7 1 1.3 1.8.6 3-.7 1.3-1.1 0-2.2-.4s-2.2.4-1.8 1.1 1.5 0 2.2.7c.7.8.7 1.9 3 1.1 2.2-.7 2.5-.3 3.3.4.7.8 1.1 2.2 0 3.3-.7.7-.9 2-1.2 3-.1.2-.2.4-.4.5l-.5.1z" } },
+	  new_custom79: { "path": { "d": "M8.2 8.9c-1.3 0-2.4 1.1-2.4 2.4s1.1 2.4 2.4 2.4 2.4-1.1 2.4-2.4-1-2.4-2.4-2.4zm13.9 7.5h-6.6v-2.7h.7c.3 0 .6-.3.6-.7v-2c0-.4-.3-.7-.6-.7h-.8c-.6-3.4-3.5-6.1-7.1-6.1C4.2 4.1.9 7.4.9 11.4c.1 4 3.4 7.1 7.5 7.1H21v.7c0 .3.3.6.7.6h.7c.4 0 .7-.3.7-.6v-1.8c0-.5-.5-1-1-1zm-13.9-.7c-2.5 0-4.5-1.9-4.5-4.4s2-4.4 4.5-4.4 4.5 2 4.5 4.4-2 4.4-4.5 4.4z" } },
+	  new_custom8: { "path": { "d": "M10.9 1.4L2.2 11c-.5.5-.5 1.4 0 2l8.7 9.6c.6.7 1.6.7 2.2 0l8.7-9.6c.5-.5.5-1.4 0-2l-8.7-9.6c-.6-.6-1.6-.6-2.2 0z" } },
+	  new_custom80: { "path": { "d": "M4.5 15.6c-2 0-3.6 1.5-3.6 3.5s1.6 3.5 3.6 3.5S8 21 8 19.1s-1.5-3.5-3.5-3.5zm0 4.9c-.8 0-1.5-.7-1.5-1.4 0-.8.7-1.5 1.5-1.5s1.4.7 1.4 1.5c0 .7-.6 1.4-1.4 1.4zm15-4.9c-2 0-3.5 1.5-3.5 3.5s1.5 3.5 3.5 3.5 3.6-1.6 3.6-3.5-1.6-3.5-3.6-3.5zm0 4.9c-.8 0-1.4-.7-1.4-1.4 0-.8.6-1.5 1.4-1.5s1.5.7 1.5 1.5c0 .7-.7 1.4-1.5 1.4zm-.2-7.1c.8 0 1.5.1 2.3.4.3.1.7 0 .9-.4 1.8-3.4-1.1-5-3-5.9-.5-.3-1 .1-1 .6v2.1c0 .4-.3.8-.7.7-2.7-.4-5-3.1-7.9-3.1s-3.2 2.8-3.2 2.8c-2 0-4-.2-4.9-.4-.5 0-.9.3-.9.7 0 0 0 2.5 3.6 2.5 2.9 0 5.3 2.2 5.7 5.1 0 .7 0 1.5-.3 2.2-.1.2.1.5.4.5h3.3c.3 0 .5-.2.4-.5-.2-.7-.2-1.4-.2-2.1.3-2.8 2.6-5.1 5.5-5.2zM.9 10.9zm9.4-5.5c.1.3.3.6.5.6l3.8 1.3c.4.1.7 0 .9-.3l.3-.6c.2-.3 0-.5-.2-.6-1.2-.1-3.5-.5-2.8-1.7.6-1.1 1.8-.8 2.7-.5.3.2.6-.2.5-.5-.6-1.1-1.8-1.8-3.1-1.7-1.7.2-2.9 1.8-2.7 3.5l.1.5z" } },
+	  new_custom81: { "path": { "d": "M21.9.9c-.3 0-1.4.1-1.8.1-5.7.2-12.2 1.7-12.5 1.8-.5.1-.8.6-.8 1v12.1c-.3-.2-.9-.3-1.4-.3-2.5 0-4.5 1.7-4.5 3.7s2 3.7 4.5 3.7 4.4-1.6 4.4-3.7v-7.5c0-.3.2-.6.5-.7 1.8-.4 4.4-.9 9-1.2.5 0 .8.3.8.8v3.8c-.3-.1-.9-.2-1.5-.2-2.4 0-4.4 1.6-4.4 3.7s2 3.6 4.4 3.6 4.5-1.6 4.5-3.6V2c0-.6-.5-1.1-1.2-1.1zm-2.5 5.9c-4.5.3-6.8.7-8.7 1.1-.5.1-.9-.2-.9-.7V6c0-.3.2-.6.6-.7 1.9-.5 4.2-.9 8.9-1.2.5 0 .8.3.8.7V6c0 .5-.3.8-.7.8z" } },
+	  new_custom82: { "path": { "d": "M22.4 9.9h-7.3c-.4 0-.7.3-.7.7v.3c0 .6-.5 1.1-1.1 1.1-.5 0-1-.5-1-1.1v-.3c0-.4-.3-.7-.7-.7H9.8h.1c-2.1.1-3.9 1.3-4.8 3-.4-.2-.8-.2-1.1-.2-1.8 0-3.2 1.4-3.2 3.1s1.5 3.1 3.3 3.1c.3 0 .7 0 1.1-.2.9 1.7 2.7 2.9 4.8 3 3.3.2 6.2-2.5 6.2-5.9 0-.2 0-.4-.1-.6 0-.3.2-.7.6-.8l5.8-1.2c.3-.1.6-.4.6-.7v-1.9c0-.4-.3-.7-.7-.7zM4 16.8c-.6 0-1-.4-1-1s.4-1 1-1c.2 0 .3.1.4.1-.1.4-.1.9-.1 1.3 0 .2.1.4.1.6H4zm9.4-9.3c.6 0 1-.5 1-1V3.3c0-.5-.5-1-1-1-.6 0-1.1.5-1.1 1v3.2c0 .6.5 1 1.1 1zm-5 .3c.2.3.5.4.8.4.2 0 .5-.1.7-.3.4-.3.5-1 .1-1.4L7.9 4.1c-.4-.5-1.1-.5-1.5-.1-.4.4-.5 1-.1 1.4l2.1 2.4zm9.1.4c.3 0 .6-.2.8-.4l2.1-2.4c.4-.4.3-1.1-.1-1.4-.5-.4-1.1-.3-1.5.1l-2 2.4c-.4.5-.4 1.1 0 1.4.2.2.5.3.7.3z" } },
+	  new_custom83: { "path": { "d": "M21.1 8c.1.2.4.2.5 0l.5-.5c1.3-1.2 1.3-3.2.1-4.4l-1.6-1.6c-1.3-1-3-.5-4 .5l-.5.5c-.1.1-.1.4 0 .5l5 5zm-6.7-3.5c-.1-.1-.3-.1-.5 0L3.8 14.6c-.6.6-1 1.2-1.2 2l-1.6 5c-.1.3-.1.6.1.9.2.4.6.6.9.6.1 0 .3 0 .4-.1 0 0 3.4-1 5-1.5.8-.3 1.4-.7 2-1.2l10.1-10.1c.1-.2.1-.4 0-.6l-5.1-5.1zM6.7 19.3c-.7.3-1.9.7-3 1l1-3c.1-.5.3-.8.6-1.1l2.5 2.5c-.3.3-.7.5-1.1.6z" } },
+	  new_custom84: { "path": { "d": "M21 17.2H3c-.6 0-1.2.4-1.2 1.1s.5 1.1 1.2 1.1h1.4l.6 3.1c.1.3.4.6.7.6h11.9c.3 0 .6-.3.7-.6l.6-3.1H21c.6 0 1.2-.5 1.2-1.1s-.5-1.1-1.2-1.1zM5.8 15h5.1v-2.1c-.4-.3-.7-.8-.7-1.3 0-.8.6-1.4 1.4-1.4.8 0 1.4.6 1.4 1.4 0 .6-.3 1-.7 1.3V15h5.1c.4 0 .7-.4.7-.8v-1.1c0-2.3-2.1-3-3.8-3.7-1.1-.5-1.3-1-1.3-1.4s.3-.9.7-1.3c.7-.6 1.1-1.4 1.1-2.4 0-1.8-1.2-3.4-3.2-3.4S8.4 2.4 8.4 4.3c0 1 .4 1.8 1.1 2.4.3.4.7.8.7 1.3 0 .4-.2.9-1.3 1.4-1.7.7-3.8 1.5-3.8 3.7v1.1c0 .4.3.8.7.8z" } },
+	  new_custom85: { "path": { "d": "M22.3 2.4H3.9v-.7c0-.5-.3-.8-.8-.8H1.7c-.5 0-.8.3-.8.8v20.6c0 .5.3.8.8.8h1.4c.5 0 .8-.3.8-.8V5.4h18.4c.5 0 .8-.4.8-.8V3.1c0-.4-.3-.7-.8-.7zm-1.4 5.2H8.3c-1.2 0-2.2 1-2.2 2.2v8.1c0 1.2 1 2.2 2.2 2.2h12.6c1.2 0 2.2-1 2.2-2.2V9.8c0-1.2-1-2.2-2.2-2.2zm-2.1 6.2h-.9v3.7c0 .3-.1.4-.4.4h-1.4c-.3 0-.4-.1-.4-.4v-2.2c0-.2-.1-.3-.4-.3h-1.5c-.2 0-.3.1-.3.3v2.2c0 .3-.2.4-.4.4h-1.5c-.2 0-.3-.1-.3-.4v-3.7h-1c-.1 0-.2-.2-.1-.3l4.2-4c.1-.1.3-.1.5 0l4.1 4c.1.1 0 .3-.2.3z" } },
+	  new_custom86: { "path": { "d": "M7.6 4.6H9c.3 0 .4-.1.4-.4V3.1h5.2v1.1c0 .3.1.4.4.4h1.4c.3 0 .4-.1.4-.4V3.1c0-1.2-1-2.2-2.2-2.2H9.4c-1.2 0-2.2 1-2.2 2.2v1.1c0 .3.1.4.4.4zm13.3 2.2H3.1C1.9 6.8.9 7.8.9 9v11.9c0 1.2 1 2.2 2.2 2.2h17.8c1.2 0 2.2-1 2.2-2.2V9c0-1.2-1-2.2-2.2-2.2zM12 20.1c-2.9 0-5.2-2.3-5.2-5.1S9.1 9.8 12 9.8s5.2 2.3 5.2 5.2-2.3 5.1-5.2 5.1zm2.2-6.3h-1.1v-1.1c0-.4-.3-.7-.7-.7h-.8c-.4 0-.7.3-.7.7v1.1H9.8c-.4 0-.8.4-.8.8v.7c0 .4.4.8.8.8h1.1v1.1c0 .4.3.7.7.7h.8c.4 0 .7-.3.7-.7v-1.1h1.1c.4 0 .8-.4.8-.8v-.7c0-.4-.4-.8-.8-.8z" } },
+	  new_custom87: { "path": { "d": "M21 .9H3c-.7 0-1.2.5-1.2 1.1v17.8c0 .6.5 1.1 1.2 1.1h.3V22c0 .6.5 1.1 1.1 1.1h.8c.6 0 1.1-.5 1.1-1.1v-1.1h11.6V22c0 .6.4 1.1 1.1 1.1h.7c.6 0 1.1-.5 1.1-1.1v-1.1h.4c.6 0 1.1-.5 1.1-1.1V2c-.1-.6-.6-1.1-1.3-1.1zM5.1 18.6c-.6 0-1.1-.4-1.1-1.1V4.2c0-.6.5-1.1 1.1-1.1h13.8c.6 0 1.1.5 1.1 1.1v13.3c0 .7-.4 1.1-1.1 1.1H5.1zm12-13.2H6.9c-.4 0-.7.3-.7.7v9.6c0 .4.3.7.7.7h10.2c.4 0 .7-.3.7-.7V6.1c0-.4-.3-.7-.7-.7zM15.4 12h-3c-.4.7-1.3 1.5-2.3 1.5-1.4 0-2.4-1.2-2.4-2.6s1.1-2.6 2.4-2.6c1 0 1.9.7 2.3 1.5h2.9c.6 0 1 .5 1 1.1 0 .5-.4 1.1-.9 1.1z" } },
+	  new_custom88: { "path": { "d": "M22.4 19.4H1.6c-.4 0-.7.3-.7.6v.1c0 1.6 2.1 3 3.7 3h14.8c1.6 0 3.7-1.4 3.7-3V20c0-.3-.3-.6-.7-.6zM2 17.2h6.7c.4 0 .7-.4.7-.9V3.6c0-.1-.3-.2-.3 0l-7.4 13c-.1.2.1.6.3.6zm10.4 0h9.2c.5 0 .8-.4.7-.9C22 13.7 21.6 5.4 12.1 1c-.2-.1-.5 0-.5.3v15c0 .5.4.9.8.9z" } },
+	  new_custom89: { "path": { "d": "M14.9 9.6c-.1-.2-.5-.2-.5 0-.5.7-.9 1.6-.9 2.8v4c0 .6-.5 1.1-1.1 1.1-.6 0-1.1-.4-1.1-1.1V3.8C11.3 1 8.8.6 7 1.2c-.5.2-1 .5-1.3.9-.2.3-.4.4-.8.6-.7.1-1.8-.5-2.4-.9-.3-.1-.8 0-1 .2l-.4.7c-.3.3-.2.8.1 1C1.9 4.2 3 4.9 3.9 5c1.3.3 2.5-.2 3.4-1 .3-.2.7-.6 1-.2.7 1.1-2.2 6-2.2 13v.6c0 3 3 5.6 6 5.7 3.2.2 5.8-2.4 5.8-5.5 0-1.6.6-2.6 1.2-3.2.1-.2.1-.4 0-.6l-4.2-4.2zm7.1 3.5c-.3 0-.6-.1-.8-.4l-5.9-5.8c-.5-.5-.5-1.2 0-1.6.4-.5 1.1-.5 1.5 0l6 5.9c.4.5.4 1.2 0 1.6-.3.2-.6.3-.8.3z" } },
+	  new_custom9: { "path": { "d": "M22.8 8C21.8 3.6 17.2.9 12.1.9 5.9.9.9 5.9.9 12s5 11.1 11.2 11.1c8.6 0 7.9-4.4 5.2-6.1-1.7-1-2.5-3.3-.9-5 3-3.1 7.8 1.8 6.4-4zM6 15.7c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm.5-8.8c0-1.3 1-2.3 2.3-2.3s2.3 1 2.3 2.3-1 2.3-2.3 2.3-2.3-1-2.3-2.3zm5 13.4c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3 2.3 1 2.3 2.3-1 2.3-2.3 2.3zm4.2-12c-1.3 0-2.3-1-2.3-2.3s1-2.3 2.3-2.3S18 4.7 18 6s-1 2.3-2.3 2.3z" } },
+	  new_custom90: { "path": { "d": "M22.1 3.2l-9 1.3v12.7c0 .2-.1.3-.4.3h-1.4c-.3 0-.4-.1-.4-.3V4.8L2.2 6.1h-.1c-.6 0-1-.4-1.1-.9-.1-.6.3-1.2.8-1.3l6.9-1C9.4 1.8 10.6 1 12 1c1 0 1.9.4 2.5 1l7.3-1c.6-.1 1.2.3 1.2.9.1.6-.2 1.1-.9 1.3zM8.8 16.8c.3-.4.3-.8.2-1.2l-3-7c-.1-.4-.6-.6-1-.6s-.8.2-1 .6l-3 7c-.1.4-.1.7.1 1.1.1.1 1.5 2.3 3.8 2.3 1.4 0 2.7-.8 3.9-2.2zM5 11.9l1.6 3.8H3.4L5 11.9zm15-5.5c-.2-.4-.6-.6-1-.6s-.8.2-1 .6l-3 7c-.1.4 0 .7.1 1 .1.1 1.6 2.4 3.9 2.4 1.4 0 2.6-.8 3.8-2.3.3-.3.4-.7.2-1.1l-3-7zm-1 3.3l1.6 3.8h-3.2L19 9.7zm-7 10.1c-2.1 0-4.2.7-5.6 1.9-.2.2-.3.4-.3.6 0 .5.3.8.7.8h10.4c.4 0 .7-.3.7-.8 0-.2-.1-.4-.3-.6-1.4-1.2-3.5-1.9-5.6-1.9z" } },
+	  new_custom91: { "path": { "d": "M22.3 5.6c-1.1-.3-2.1-1.1-2.7-2.1-.5-.8-.5-2.6-1.7-2.6H6.1C4.9.9 4.9 2.7 4.4 3.5 3.6 4.7 2.7 5 1.5 5.7c-1.2.7-.1 3.6.2 4.7C2.8 14.5 5 18.3 8.4 21c1 .8 2 1.4 3.1 2 1 .5 2.7-.9 3.4-1.5 1.9-1.4 3.5-3.1 4.8-5.1 1-1.7 1.9-3.5 2.5-5.4l.6-2.4c.1-.6.4-1.7.2-2.3-.1-.3-.4-.6-.7-.7-1.7-.5.5.1 0 0zm-1.6 2.6c-1 4.9-3.7 9.5-8.1 12.2l-.6.4-.6-.4C6.1 17.2 4.1 12 3.3 8.1l-.1-.7.7-.4C5 6.3 6.1 5 6.7 3.7l.3-.6h10l.2.5c.6 1.3 1.7 2.7 3.1 3.5l.5.2v.1l-.1.8zm-9.1-2.8c-.8 0-2.9 0-3.3.3-.7.7-1.1 1.6-1.8 2.2-.8.6-.5 1.3-.2 2.2.5 1.6 1.2 3.1 2.2 4.4.5.7 1 1.4 1.7 2 .1.2 1.8 1.9 1.8.8V6.1c0-.4 0-.7-.4-.7z" } },
+	  new_custom92: { "path": { "d": "M20.8 14.4l-8.4-3.9c-.3-.1-.5-.1-.7 0l-8.5 3.9c-.4.2-.6.7-.3 1.2.9 1.2 1.4 2.8 1.7 3.6.1.2.3.4.6.5 2.9.7 5.3 2.4 6.3 3.1.3.3.7.3 1 0 1-.7 3.4-2.4 6.3-3.1.3-.1.5-.3.6-.5.3-.8.8-2.4 1.7-3.6.3-.4.1-1-.3-1.2zm-11 2c-.7 0-1.1-.6-1.1-1.4 0-.9.4-1.5 1.1-1.5s1.1.6 1.1 1.5c0 .8-.5 1.4-1.1 1.4zm4.4 0c-.6 0-1.1-.6-1.1-1.4 0-.9.5-1.5 1.1-1.5s1.1.6 1.1 1.5c0 .8-.4 1.4-1.1 1.4zm-8-5.8l4.6-2.1c.5-.3 1.1-.3 1.7-.2.3 0 .5.1.8.2l4.5 2.1c.2.1.5-.1.5-.3V8.6c0-.2-.1-.3-.3-.5-.2-.3-.8-.9-1.9-.9V5.1c0-.3-.2-.5-.4-.7-.4-.2-1.1-.5-2.2-.7v-2c0-.5-.3-.8-.8-.8h-1.4c-.5 0-.8.3-.8.8v1.9c-1.1.2-1.8.6-2.2.8-.2.1-.4.4-.4.6v2.2c-1.1 0-1.7.6-1.9.8-.2.2-.3.4-.3.5v1.7c0 .3.3.5.5.4z" } },
+	  new_custom93: { "g": { "path": { "d": "M9.3 12h11c.3 0 .7-.2.7-.6l2-6.8c.2-.5-.2-1-.7-1h-17l-.3-1c-.2-.4-.6-.8-1.1-.8H2.1c-.6 0-1.1.5-1.2 1.1C.9 3.5 1.4 4 2 4h1.1l3.5 11.6c.1.4.6.7 1.1.7h13c.6 0 1.1-.4 1.2-1 0-.6-.5-1.1-1.1-1.1H9.3c-.5 0-.9-.4-1-.8-.3-.7.3-1.4 1-1.4z" }, "ellipse": [{ "cx": "9.508", "cy": "20.354", "rx": "1.846", "ry": "1.8" }, { "cx": "18.508", "cy": "20.354", "rx": "1.846", "ry": "1.8" }] } },
+	  new_custom94: { "path": { "d": "M14.2 7.6V2c0-.6-.4-1.1-1.1-1.1h-1.5c-.6 0-1.1.5-1.1 1.1s.5 1.1 1.1 1.1h.4v4.5C12 10 10 12 7.6 12s-4.5-2-4.5-4.4V3.1h.4c.7 0 1.1-.4 1.1-1.1S4.2.9 3.5.9H2C1.4.9.9 1.4.9 2v5.6c0 3.6 3 6.6 6.7 6.6s6.6-3 6.6-6.6zm8.9 4.4c0-1.8-1.5-3.3-3.3-3.3s-3.4 1.5-3.4 3.3c0 1.4 1 2.7 2.2 3.1v.9c0 2.6-2.2 4.9-4.8 4.9h-.1c-2.3 0-4.3-1.7-4.8-3.9-.1-.3-.4-.6-.8-.6h-.7c-.5 0-.8.5-.8.9.6 3.3 3.6 5.8 7 5.8h.1c3.9 0 7.1-3.3 7.1-7.1v-.9c1.4-.4 2.3-1.7 2.3-3.1zm-3.3 1.1c-.7 0-1.2-.5-1.2-1.1s.5-1.1 1.2-1.1 1.1.5 1.1 1.1-.5 1.1-1.1 1.1z" } },
+	  new_custom95: { "path": { "d": "M13.1 4.7V3.1h.4c.6 0 1.1-.4 1.1-1.1 0-.6-.5-1.1-1.1-1.1h-3c-.6 0-1.1.5-1.1 1.1 0 .6.5 1.1 1.1 1.1h.4v1.6c-4.6.6-8.1 4.4-8.1 9.1 0 5.1 4.1 9.3 9.2 9.3s9.2-4.2 9.2-9.3c0-4.7-3.5-8.5-8.1-9.1zM12 20.9c-3.9 0-7-3.2-7-7.1s3.1-7 7-7 7 3.2 7 7-3.1 7.1-7 7.1zm2.4-10.8l-1.7 1.7c-.2-.1-.4-.2-.7-.2-1.2 0-2.2 1-2.2 2.2s1 2.3 2.2 2.3 2.2-1.1 2.2-2.3c0-.2 0-.5-.1-.7l1.7-1.7c.4-.4.4-1 0-1.3-.4-.4-1-.4-1.4 0z" } },
+	  new_custom96: { "path": { "d": "M22.8 4.2l-1.9-1.5c-.3-.2-.5-.3-.9-.3h-6.5v-.7c0-.5-.3-.8-.8-.8h-1.4c-.5 0-.8.3-.8.8v.7H3.1c-.4 0-.7.3-.7.7v3c0 .4.3.7.7.7H20c.4 0 .7-.1.9-.2l1.9-1.5c.4-.3.4-.7 0-.9zm-1.9 6.3h-7.4V9.4c0-.2-.2-.4-.4-.4h-2.2c-.2 0-.4.2-.4.4v1.1H4c-.4 0-.7.1-.9.3l-1.9 1.4c-.4.3-.4.7 0 1l1.9 1.4c.3.2.5.3.9.3h16.9c.4 0 .7-.3.7-.7v-3c0-.4-.3-.7-.7-.7zM13.5 20v-2.5c0-.2-.2-.3-.4-.3h-2.2c-.2 0-.4.1-.4.3V20c-1.5.4-2.3 1.3-2.5 2.4-.1.3.2.7.5.7h7c.4 0 .7-.3.6-.7-.3-1.1-1.1-2-2.6-2.4z" } },
+	  new_custom97: { "path": { "d": "M15.8 13.5V4.8c0-2.2-1.7-3.9-3.8-3.9-2.2 0-3.8 1.7-3.8 3.9v8.7c-1.1 1.1-1.7 2.5-1.7 4 0 3.1 2.5 5.6 5.5 5.6s5.5-2.5 5.5-5.6c0-1.5-.6-2.9-1.7-4zm-.9 4H9.1c-.3 0-.6-.3-.5-.6.1-.8.6-1.6 1.2-2.1.3-.2.4-.5.4-.8V4.8C10.2 3.7 11 3 12 3s1.7.8 1.7 1.8v.3h-1c-.6 0-1 .4-1 1s.4 1 1 1h1v1.4h-1c-.6 0-1 .5-1 1s.4 1 1 1h1v1.4h-1c-.6 0-1 .5-1 1s.4 1 1 1h1c.1.4.2.6.4.8.7.5 1.1 1.3 1.3 2.1.1.4-.2.7-.5.7z" } },
+	  new_custom98: { "g": { "path": [{ "d": "M22.9 10.2l-2.7-2.7c-.2-.2-.4-.3-.5-.3h-2.8c-.4 0-.7.4-.7.7v5.6c0 .3.2.4.5.3.5-.2 1-.3 1.6-.3 1.5 0 2.9.9 3.6 2.2.1.2.4.2.5.1.4-.4.7-.9.7-1.6v-3.5c0-.2-.1-.4-.2-.5z" }, { "d": "M13.4 4.2H1.6c-.4 0-.7.3-.7.6v9.5c0 .6.3 1.2.7 1.5.2.2.4.1.5-.1.7-1.3 2.1-2.1 3.7-2.1 1.7 0 3.2 1 3.8 2.6 0 .1.2.2.3.2H12c1.2 0 2.1-.9 2.1-2.1V4.8c0-.3-.3-.6-.7-.6z" }], "ellipse": [{ "cx": "18.231", "cy": "17.769", "rx": "2.077", "ry": "2.077" }, { "cx": "5.769", "cy": "17.769", "rx": "2.077", "ry": "2.077" }] } },
+	  new_custom99: { "path": { "d": "M20.9 7.7h-6.2c-.2-.5-.5-.8-.8-1.1l2.3-3c.4-.5.3-1.2-.2-1.5-.4-.4-1.2-.3-1.6.2l-2.5 3.2h-1.2L8.1 2.3c-.4-.5-1.1-.6-1.6-.2s-.5 1-.1 1.5l2.3 3c-.3.3-.6.6-.8 1.1H3.1C1.9 7.7.9 8.6.9 9.8V20c0 1.2 1 2.2 2.2 2.2h17.8c1.2 0 2.2-1 2.2-2.2V9.8c0-1.2-1-2.1-2.2-2.1zm-3 11.5c0 .5-.3.8-.7.8H3.9c-.4 0-.8-.3-.8-.8v-8.6c0-.4.4-.8.8-.8h13.3c.4 0 .7.4.7.8v8.6zm2.6-3.6c-.7 0-1.1-.4-1.1-1.1s.4-1.1 1.1-1.1 1.1.5 1.1 1.1-.5 1.1-1.1 1.1zm0-3.6c-.7 0-1.1-.5-1.1-1.1 0-.6.4-1.1 1.1-1.1s1.1.5 1.1 1.1c0 .6-.5 1.1-1.1 1.1z" } },
+	  new_event: { "path": { "d": "M21.5 9.2h-19c-.3 0-.7.4-.7.7v11.3c0 1 .9 1.9 1.9 1.9h16.6c1 0 1.9-.9 1.9-1.9V9.9c0-.3-.4-.7-.7-.7zM8.8 19.4c0 .3-.2.4-.5.4H6.5c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4H6.5c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm4.6 4.6c0 .3-.2.4-.5.4h-1.8c-.3 0-.5-.1-.5-.4v-1.9c0-.2.2-.4.5-.4h1.8c.3 0 .5.2.5.4v1.9zm0-4.6c0 .2-.2.4-.5.4h-1.8c-.3 0-.5-.2-.5-.4v-1.9c0-.3.2-.4.5-.4h1.8c.3 0 .5.1.5.4v1.9zm2.3-11.6H18v-.9c0-.7-.6-1.4-1.4-1.4-.7 0-1.4.6-1.4 1.4v.9H8.8v-.9c0-.7-.6-1.4-1.4-1.4C6.6.9 6 1.5 6 2.3v.9H3.7c-1 0-1.9.9-1.9 1.9v1.1c0 .4.4.7.7.7h19c.3 0 .7-.3.7-.7V5.1c0-1-.9-1.9-1.9-1.9z" } },
+	  new_group: { "path": { "d": "M7.3 12.9c-.7-.9-1-2.1-1-3.3 0-2.1.9-3.9 2.3-4.9-.5-.9-1.4-1.5-2.6-1.5-2 0-3.2 1.7-3.2 3.6 0 1 .3 1.9 1 2.5.4.3.7.8.7 1.3 0 .4-.2.9-1.3 1.4-1.7.7-3.2 1.8-3.2 3.3 0 1 .6 1.8 1.6 1.8h1.5c.3 0 .5-.2.6-.4.8-1.3 2.2-2.2 3.3-2.8.4-.1.5-.7.3-1zm13.5-.9c-1.2-.5-1.4-.9-1.4-1.4s.4-1 .7-1.3c.7-.7 1-1.5 1-2.5 0-1.9-1.1-3.6-3.1-3.6-1.2 0-2.2.6-2.7 1.5 1.4 1 2.3 2.8 2.3 4.9 0 1.2-.3 2.4-1 3.3-.2.4-.1.9.3 1 1.1.6 2.5 1.5 3.3 2.8.1.2.3.4.6.4h1.5c1 0 1.6-.8 1.6-1.8.1-1.5-1.5-2.6-3.1-3.3zM15 15.4c-1.2-.6-1.4-1.1-1.4-1.6 0-.6.3-1.1.8-1.4.7-.7 1.1-1.7 1.1-2.8 0-2.1-1.2-3.9-3.5-3.9S8.5 7.5 8.5 9.6c0 1.1.4 2.1 1.1 2.8.5.4.8.9.8 1.4 0 .6-.2 1-1.4 1.6-1.9.8-3.6 1.6-3.7 3.3 0 1.1.8 2 1.9 2h9.6c1.1 0 1.9-.9 1.9-2-.1-1.7-1.8-2.5-3.7-3.3z" } },
+	  new_lead: { "circle": { "cx": "12", "cy": "4.246", "r": "3.323" }, "path": { "d": "M22.3 9.8H1.7c-.8 0-1.1.9-.5 1.3l5.4 3.5c.3.2.5.5.3.8l-2 6.8c-.2.7.8 1.2 1.3.6l5.3-5.5c.3-.3.8-.3 1.1 0l5.3 5.5c.5.6 1.4.1 1.3-.6l-2.1-6.8c-.1-.3 0-.7.3-.9l5.4-3.4c.6-.4.3-1.3-.5-1.3z" } },
+	  new_note: { "path": { "d": "M19.1 18.3l-.4.4c-.5.5-1.1.7-1.7.7h-1.2c-1.1 0-2.3-.8-2.3-2.4v-1.1c0-.9.4-1.5.6-1.8l5-5.1c.1-.1.3-.5.3-.6V4.5c0-1.2-1-2.2-2.2-2.2H5.4c-1.2 0-2.3 1.1-2.3 2.2h-.7C1.6 4.5.9 5.2.9 6s.7 1.5 1.5 1.5h.7v3h-.7c-.8 0-1.5.7-1.5 1.5s.7 1.5 1.5 1.5h.7v3h-.7c-.8 0-1.5.7-1.5 1.5s.7 1.4 1.5 1.4h.7c0 1.5 1.1 2.2 2.3 2.2h11.8c1.2 0 2.2-1 2.2-2.2v-.9c0-.3-.1-.3-.3-.2zM15.3 7.9c0 .4-.3.7-.7.7H7.2c-.4 0-.7-.3-.7-.7v-.7c0-.5.3-.8.7-.8h7.4c.4 0 .7.3.7.8v.7zM12 16.8c0 .5-.3.8-.7.8H7.2c-.4 0-.7-.3-.7-.8v-.7c0-.4.3-.7.7-.7h4.1c.4 0 .7.3.7.7v.7zm1.1-4.4c0 .4-.3.7-.7.7H7.2c-.4 0-.7-.3-.7-.7v-.8c0-.4.3-.7.7-.7h5.2c.4 0 .7.3.7.7v.8zm9.7-2.1l-.4-.4c-.3-.3-.8-.3-1 0l-5.7 5.8V17c0 .1 0 .2.1.2h1.3l5.7-5.8c.4-.3.4-.7 0-1.1z" } },
+	  new_notebook: { "path": { "d": "M20.3.9H6.5c-1.1 0-1.9.9-1.9 1.9v1.4H3.2c-.8 0-1.4.6-1.4 1.3s.6 1.4 1.4 1.4h1.4v3.7H3.2c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4h1.4v3.7H3.2c-.8 0-1.4.6-1.4 1.4s.6 1.3 1.4 1.3h1.4v1.4c0 1 .8 1.9 1.9 1.9h13.8c1 0 1.9-.9 1.9-1.9V2.8c0-1-.9-1.9-1.9-1.9zm-3.2 15.7c0 .3-.2.5-.5.5h-6.4c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h6.4c.3 0 .5.2.5.5v.9zm.9-3.7c0 .3-.2.5-.5.5H9.2c-.2 0-.4-.2-.4-.5V12c0-.3.2-.5.4-.5h8.3c.3 0 .5.2.5.5v.9zm.9-4.6c0 .3-.2.5-.4.5H8.3c-.3 0-.5-.2-.5-.5V5.5c0-.2.2-.4.5-.4h10.2c.2 0 .4.2.4.4v2.8z" } },
+	  new_opportunity: { "path": { "d": "M19.3 18.9H4.7c-.4 0-.6.3-.6.7 0 1.2.9 2.1 2 2.1h11.8c1.2 0 2.1-.9 2.1-2.1-.1-.4-.3-.7-.7-.7zM21 4.7c-1.2 0-2.1.9-2.1 2.1 0 .6.3 1.2.8 1.6-.6 1.3-2 2.2-3.5 2.2-1.9-.1-3.4-1.6-3.5-3.4 0-.4 0-.6.1-.9.8-.3 1.3-1 1.3-2 0-1.1-.9-2-2.1-2s-2.1.9-2.1 2.1c0 .9.6 1.6 1.3 1.9.1.3.1.6.1.9-.1 1.8-1.6 3.3-3.4 3.4-1.6.1-3-.9-3.6-2.2.5-.4.8-1 .8-1.6 0-1.1-.9-2-2.1-2s-2.1.9-2.1 2S1.8 8.9 3 8.9l1 7.4c0 .3.3.5.6.5h14.8c.3 0 .6-.2.6-.5l1-7.4c1.2 0 2.1-.9 2.1-2.1s-.9-2.1-2.1-2.1z" } },
+	  new_task: { "path": { "d": "M11.1 3.2l-.8-.8c-.2-.2-.6-.2-.8 0L4.6 7.3l-2-1.9c-.2-.3-.5-.3-.8 0l-.7.7c-.3.3-.3.6 0 .8l2.7 2.7c.2.3.5.4.8.4.2 0 .5-.1.8-.4L11.1 4c.2-.2.2-.5 0-.8zm11.2 5.3h-9.6c-.4 0-.7-.3-.7-.7V6.3c0-.4.3-.8.7-.8h9.6c.5 0 .8.4.8.8v1.5c0 .4-.3.7-.8.7zm0 6.6H10.5c-.4 0-.8-.3-.8-.7v-1.5c0-.4.4-.8.8-.8h11.8c.5 0 .8.4.8.8v1.5c0 .4-.3.7-.8.7zM6 15.1H4.5c-.4 0-.7-.3-.7-.7v-1.5c0-.4.3-.8.7-.8H6c.4 0 .7.4.7.8v1.5c.1.4-.3.7-.7.7zm0 6.6H4.5c-.4 0-.7-.3-.7-.7v-1.5c0-.4.3-.8.7-.8H6c.4 0 .7.4.7.8V21c.1.4-.3.7-.7.7zm16.3 0H10.5c-.4 0-.8-.3-.8-.7v-1.5c0-.4.4-.8.8-.8h11.8c.5 0 .8.4.8.8V21c0 .4-.3.7-.8.7z" } },
+	  password_unlock: { "path": { "d": "M4.6 8.4v.1-.1zm14.8 2.2h-12V8.4c0-2.4 1.8-4.6 4.3-4.7 2.2-.1 4.1 1.3 4.7 3.3.1.2.3.4.5.4h1.9c.3 0 .5-.3.4-.6-.7-3.5-3.8-6.1-7.6-5.9-3.9.2-6.9 3.6-7 7.5v2.2c-1 0-1.8.8-1.8 1.9v8.7c0 1 .8 1.9 1.8 1.9h14.8c1 0 1.8-.9 1.8-1.9v-8.7c0-1.1-.8-1.9-1.8-1.9zm-5.3 9.1c.1.3-.1.6-.4.6h-3.4c-.3 0-.6-.3-.5-.6l.9-2.8c-.7-.4-1.1-1.3-1-2.2.2-.9.9-1.5 1.8-1.7 1.5-.3 2.8.8 2.8 2.1 0 .8-.4 1.5-1 1.8l.8 2.8z" } },
+	  preview: { "path": { "d": "M23.9 11.6C21.7 7.2 17.2 4.2 12 4.2S2.3 7.2.1 11.6c-.1.3-.1.6 0 .8 2.2 4.4 6.7 7.4 11.9 7.4s9.7-3 11.9-7.4c.1-.3.1-.5 0-.8zM12 17.1c-2.8 0-5.1-2.3-5.1-5.1S9.2 6.9 12 6.9s5.1 2.3 5.1 5.1-2.3 5.1-5.1 5.1zm0-8.3c-1.8 0-3.2 1.4-3.2 3.2s1.4 3.2 3.2 3.2 3.2-1.4 3.2-3.2-1.4-3.2-3.2-3.2z" } },
+	  priority: { "path": { "d": "M4.2 1.6c0-.4-.4-.7-.7-.7H2.1c-.4 0-.7.3-.7.7v20.8c0 .4.3.7.7.7h1.4c.3 0 .7-.3.7-.7V1.6zm17.7 2c-7.4 3.8-6.5-4.1-15.4-1-.3.1-.5.4-.5.6V14c0 .3.3.5.6.4 8.9-3 7.9 5.2 15.6.8.3-.1.4-.3.4-.6V3.9c0-.3-.4-.5-.7-.3z" } },
+	  question_post_action: { "path": { "d": "M13.1 17.5h-2.3c-.4 0-.6-.2-.6-.6v-.7c0-1.9 1.2-3.7 3-4.3.6-.2 1.1-.5 1.5-1 2.3-2.8.2-6.1-2.6-6.2-1 0-1.9.3-2.7 1-.6.6-1 1.3-1 2.1-.1.2-.4.5-.7.5H5.4c-.5 0-.8-.4-.7-.8.1-1.7.9-3.3 2.2-4.5C8.4 1.6 10.2.8 12.3.9c3.8.1 6.9 3.3 7.1 7.1.1 3.2-1.9 6.1-4.9 7.2-.4.2-.7.5-.7 1v.6c0 .5-.3.7-.7.7zm.7 4.9c0 .4-.3.7-.6.7h-2.4c-.3 0-.6-.3-.6-.7v-2.3c0-.4.3-.7.6-.7h2.4c.3 0 .6.3.6.7v2.3z" } },
+	  quote: { "path": { "d": "M16.2 10.6H7.8c-.2 0-.4.2-.4.5v1.4c0 .2.2.4.4.4h8.4c.2 0 .4-.2.4-.4v-1.4c0-.3-.2-.5-.4-.5zm-1 4.2H8.8c-.3 0-.5.2-.5.4v1.4c0 .3.2.5.5.5h6.4c.3 0 .5-.2.5-.5v-1.4c0-.2-.2-.4-.5-.4zm5.9-9.1l-4.4-4.3c-.4-.3-.8-.5-1.3-.5H8.6c-.5 0-.9.2-1.3.5L2.9 5.7c-.4.3-.6.8-.6 1.3v14.2c0 1 .8 1.9 1.9 1.9h15.6c1.1 0 1.9-.9 1.9-1.9V7c0-.5-.2-1-.6-1.3zM12 2.3c1 0 1.8.8 1.8 1.9S13 6 12 6s-1.8-.8-1.8-1.8.8-1.9 1.8-1.9zm6.9 17.3c0 .4-.3.7-.7.7H5.8c-.4 0-.7-.3-.7-.7V8.1c0-.4.3-.7.7-.7h12.4c.4 0 .7.3.7.7v11.5z" } },
+	  record: { "path": { "d": "M8 5.4h8c.4 0 .8-.4.8-.8V3.1c0-1.2-1-2.2-2.2-2.2H9.5c-1.2 0-2.2 1-2.2 2.2v1.5c0 .4.3.8.7.8zm12-2.6h-.8c-.2 0-.3.1-.3.3v1.5c0 1.6-1.3 3-2.9 3H8c-1.6 0-2.9-1.4-2.9-3V3.1c0-.2-.1-.3-.3-.3H4c-1.2 0-2.2 1-2.2 2.2v15.9c0 1.2 1 2.2 2.2 2.2h16c1.2 0 2.2-1 2.2-2.2V5c0-1.2-1-2.2-2.2-2.2zM8 18.6c0 .5-.3.8-.7.8h-.7c-.5 0-.8-.3-.8-.8v-.7c0-.4.3-.7.8-.7h.7c.4 0 .7.3.7.7v.7zM8 15c0 .4-.3.7-.7.7h-.7c-.5 0-.8-.3-.8-.7v-.8c0-.4.3-.7.8-.7h.7c.4 0 .7.3.7.7v.8zm0-3.7c0 .4-.3.7-.7.7h-.7c-.5 0-.8-.3-.8-.7v-.8c0-.4.3-.7.8-.7h.7c.4 0 .7.3.7.7v.8zm10.2 7.3c0 .5-.3.8-.8.8h-7.2c-.4 0-.7-.3-.7-.8v-.7c0-.4.3-.7.7-.7h7.2c.5 0 .8.3.8.7v.7zm0-3.6c0 .4-.3.7-.8.7h-7.2c-.4 0-.7-.3-.7-.7v-.8c0-.4.3-.7.7-.7h7.2c.5 0 .8.3.8.7v.8zm0-3.7c0 .4-.3.7-.8.7h-7.2c-.4 0-.7-.3-.7-.7v-.8c0-.4.3-.7.7-.7h7.2c.5 0 .8.3.8.7v.8z" } },
+	  refresh: { "path": { "d": "M21.5 1.8h-1.4c-.4 0-.7.4-.7.7v3.3c0 .4-.2.6-.6.3-.1-.2-.2-.3-.4-.5-2.3-2.3-5.6-3.2-8.9-2.6-1.1.2-2.3.7-3.2 1.3-2.8 1.9-4.5 4.9-4.5 8.1 0 2.5.9 5 2.7 6.8 1.8 1.9 4.3 3 7 3 2.3 0 4.6-.8 6.3-2.3.3-.3.3-.7.1-1l-1-1c-.2-.2-.7-.3-.9 0-1.7 1.3-4 1.9-6.2 1.3-.6-.1-1.2-.4-1.8-.7-2.6-1.6-3.8-4.7-3.1-7.7.1-.6.4-1.2.7-1.8 1.3-2.2 3.6-3.5 6-3.5 1.8 0 3.6.8 4.9 2.1.2.2.4.4.5.6.2.4-.2.6-.6.6h-3.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.6.7.6h8.4c.3 0 .6-.2.6-.6V2.5c0-.3-.4-.7-.7-.7z" } },
+	  reject: { "path": { "d": "M14.6 11.9l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.3-.7-.3-1 0L12.6 10c-.1.2-.4.2-.6 0L6 3.9c-.3-.3-.7-.3-1 0l-1 .9c-.3.3-.3.7 0 1l6.1 6.1c.1.1.1.4 0 .6L4 18.6c-.3.3-.3.7 0 1l.9.9c.3.3.7.3 1 0l6.1-6c.2-.2.5-.2.6 0l6.1 6c.3.3.7.3 1 0l.9-.9c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z" } },
+	  remove: { "path": { "d": "M14.6 11.9l6-6c.3-.3.3-.7 0-1l-.9-1c-.3-.3-.7-.3-1 0L12.6 10c-.1.2-.4.2-.6 0L6 3.9c-.3-.3-.7-.3-1 0l-1 .9c-.3.3-.3.7 0 1l6.1 6.1c.1.1.1.4 0 .6L4 18.6c-.3.3-.3.7 0 1l.9.9c.3.3.7.3 1 0l6.1-6c.2-.2.5-.2.6 0l6.1 6c.3.3.7.3 1 0l.9-.9c.3-.3.3-.7 0-1l-6-6c-.2-.2-.2-.5 0-.7z" } },
+	  reset_password: { "path": { "d": "M21.5 1.8h-1.4c-.4 0-.7.4-.7.7v3.3c0 .4-.2.6-.6.3-.1-.2-.2-.3-.4-.5-2.3-2.3-5.6-3.2-8.9-2.6-1.1.2-2.3.7-3.2 1.3-2.8 1.9-4.5 4.9-4.5 8.1 0 2.5.9 5 2.7 6.8 1.8 1.9 4.3 3 7 3 2.3 0 4.6-.8 6.3-2.3.3-.3.3-.7.1-1l-1-1c-.2-.2-.7-.3-.9 0-1.7 1.3-4 1.9-6.2 1.3-.6-.1-1.2-.4-1.8-.7-2.6-1.6-3.8-4.7-3.1-7.7.1-.6.4-1.2.7-1.8 1.3-2.2 3.6-3.5 6-3.5 1.8 0 3.6.8 4.9 2.1.2.2.4.4.5.6.2.4-.2.6-.6.6h-3.2c-.4 0-.7.3-.7.7v1.4c0 .4.3.6.7.6h8.4c.3 0 .6-.2.6-.6V2.5c0-.3-.4-.7-.7-.7z" } },
+	  share_file: { "path": { "d": "M18.9 7.4h3.6c.2 0 .3-.2.2-.4l-3.8-3.9c-.2-.1-.4 0-.4.2v3.6c0 .3.1.5.4.5zm3.7 1.8h-5.1c-.5 0-.9-.4-.9-.9V3.2c0-.2-.2-.4-.4-.4H9.9c-.3 0-.7.3-.7.7v1.8c0 .2.1.4.2.5L12 8.4c.4.4.6.9.7 1.4.1.8-.1 1.5-.6 2l-.7.7c-.3.2-.5.3-.8.5.3.1.7.2 1.1.2 1.2.1 2.1 1.2 2.1 2.4v1c0 .7-.3 1.3-.7 1.7-.5.5-1.2.7-1.8.6-.5 0-1-.1-1.5-.2-.3-.1-.6.1-.6.5v1.4c0 .4.4.7.7.7h12.5c.4 0 .7-.3.7-.7V9.7c0-.3-.2-.5-.5-.5zM12 16.6v-1c0-.3-.2-.5-.5-.6-2.5-.2-4.6-2.3-4.6-4.9v-.6c0-.3.4-.5.6-.2l1.8 1.8c.2.2.5.2.7 0l.7-.7c.2-.2.2-.5 0-.7L6.2 5.3c-.2-.2-.5-.2-.7 0L1.1 9.7c-.2.2-.2.5 0 .7l.7.7c.1.2.5.3.6.1l2-1.9c.2-.2.6 0 .6.3v.8c0 3.4 2.9 6.4 6.4 6.7.4 0 .6-.3.6-.5z" } },
+	  share_link: { "path": { "d": "M12.6 19.2l-1-.1s-.7-.1-1-.3c-.2 0-.4 0-.5.2l-.3.2c-1.3 1.3-3.5 1.5-4.9.3-1.5-1.4-1.6-3.8-.1-5.2l3.5-3.5c.4-.5 1-.7 1.5-.9.8-.2 1.6-.2 2.2.1.5.2.9.4 1.2.8.2.2.4.4.5.6.2.3.6.4.8.1l1.3-1.3c.2-.2.2-.5.1-.7-.2-.3-.4-.5-.7-.7-.3-.4-.7-.7-1.1-.9-.6-.4-1.4-.7-2.1-.8-1.5-.3-3-.1-4.3.6-.5.3-1.1.7-1.5 1.1l-3.3 3.3C.4 14.6.2 18.6 2.6 21c2.4 2.7 6.6 2.8 9.1.2l1.2-1.1c.3-.3.1-.8-.3-.9zM21 2.7C18.5.3 14.5.5 12.1 3l-1 1c-.3.3-.1.8.3.9.6 0 1.3.2 1.9.4.2 0 .5 0 .6-.2l.2-.2c1.4-1.3 3.5-1.5 4.9-.3 1.6 1.4 1.6 3.8.2 5.2l-3.5 3.5c-.5.5-1 .7-1.6.9-.7.2-1.5.2-2.2-.1-.4-.2-.8-.4-1.2-.8-.2-.2-.3-.4-.5-.6-.1-.3-.6-.4-.8-.1l-1.3 1.3c-.2.2-.2.5 0 .7.2.3.4.5.6.7.3.3.8.7 1.1.9.7.4 1.4.7 2.2.8 1.4.3 3 .1 4.2-.6.6-.3 1.1-.7 1.5-1.1l3.5-3.5c2.6-2.5 2.5-6.7-.2-9.1z" } },
+	  share_poll: { "path": { "d": "M21.6.9H2.4C1.6.9.9 1.6.9 2.4v3c0 .8.7 1.4 1.5 1.4h19.2c.8 0 1.5-.6 1.5-1.4v-3c0-.8-.7-1.5-1.5-1.5zm-9.2 4.5v-3h9.2v3h-9.2zM21.6 9H2.4c-.8 0-1.5.7-1.5 1.5v3c0 .8.7 1.5 1.5 1.5h19.2c.8 0 1.5-.7 1.5-1.5v-3c0-.8-.7-1.5-1.5-1.5zM9 13.5v-3h12.6v3H9zm12.6 3.7H2.4c-.8 0-1.5.6-1.5 1.4v3c0 .8.7 1.5 1.5 1.5h19.2c.8 0 1.5-.7 1.5-1.5v-3c0-.8-.7-1.4-1.5-1.4zm-5.9 4.4v-3h5.9v3h-5.9z" } },
+	  share_post: { "path": { "d": "M12 1.8C5.9 1.8.9 6.4.9 12c0 1.8.5 3.5 1.4 5 .1.2.1.4.1.6l-1 3.2c-.2.6.4 1.1 1 .9l3.2-1.1c.2-.1.4-.1.6.1 1.7.9 3.7 1.5 5.8 1.5 6.2 0 11.1-4.5 11.1-10.2C23 6.4 18 1.8 12 1.8z" } },
+	  share_thanks: { "path": { "d": "M20.9 6.5h-3.3c1-1.5.9-3.4-.2-4.6-.7-.6-1.5-1-2.4-1-1 0-1.9.5-2.6 1.2-.2.2-.3.3-.4.5-.1-.2-.2-.3-.4-.5C10.9 1.3 10 .9 9 .9c-.9 0-1.7.4-2.3 1C5.5 3.1 5.5 5 6.4 6.5H3.2C1.9 6.5.9 7.5.9 8.7v1.5c0 .4.3.7.8.7h20.6c.5 0 .8-.3.8-.7V8.7c0-1.2-1-2.2-2.2-2.2zm-10 0c-.8 0-1.9-.3-2.5-1-.6-.6-.6-1.6-.1-2 .2-.3.5-.3.7-.3.4 0 .7.2 1 .4.7.7.9 1.9.9 2.7v.2zm4.7-1c-.6.6-1.8 1-2.5 1v-.3c0-.7.3-1.9.9-2.6.3-.3.6-.5 1-.5.2 0 .5.1.7.3.5.6.5 1.5-.1 2.1zm5.3 7.6h-7.8v10h6.4c1.2 0 2.1-1 2.1-2.1v-7.2c0-.4-.3-.7-.7-.7zm-18.5.7v7.1c0 1.2 1 2.2 2.2 2.2h6.3v-10H3.1c-.4 0-.7.3-.7.7z" } },
+	  sort: { "path": { "d": "M12.7 7.4c.3-.3.3-.7 0-1L7.4 1.1c-.2-.3-.7-.3-.9 0L1.2 6.4c-.3.3-.3.7 0 1l.9 1c.3.2.7.2 1 0l1.7-1.7c.2-.3.7-.1.7.3v9.8c0 .4.4.7.7.7h1.4c.4 0 .7-.4.7-.7V7c0-.4.5-.6.8-.3l1.7 1.7c.2.2.6.2.9 0l1-1zm10.1 9.2l-.9-.9c-.3-.3-.7-.3-1 0l-1.7 1.7c-.2.2-.7 0-.7-.4V7.2c0-.4-.4-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v9.7c0 .5-.5.6-.8.4l-1.7-1.7c-.2-.3-.6-.3-.9 0l-1 1c-.3.3-.3.7 0 1l5.3 5.3c.3.3.7.3 1 0l5.3-5.3c.2-.3.2-.8-.1-1z" } },
+	  submit_for_approval: { "path": { "d": "M20.9 13.5h-4.1c-1.2 0-2.2-1-2.2-2.2.2-3.3 1.7-3.5 1.8-5.6.2-2.2-1.2-4.2-3.4-4.7-2.8-.6-5.4 1.6-5.4 4.4 0 2.4 1.6 2.4 1.8 5.9 0 1.2-1 2.2-2.2 2.2H3.1c-1.2 0-2.2.9-2.2 2.2v1.5c0 .4.3.7.8.7h20.6c.5 0 .8-.3.8-.7v-1.5c0-1.3-1-2.2-2.2-2.2zm0 6.6H3.1c-.4 0-.7.3-.7.7v.1c0 1.2 1 2.2 2.2 2.2h14.8c1.2 0 2.2-1 2.2-2.2v-.1c0-.4-.3-.7-.7-.7z" } },
+	  update: { "path": { "d": "M12 .9C5.9.9.9 5.9.9 12s5 11.1 11.1 11.1 11.1-5 11.1-11.1S18.1.9 12 .9zm4.2 7.2c0 .3-.4.7-.7.7h-4.4c-.3 0-.5.2-.5.4v1c0 .2.2.4.5.4h1.8c1.8 0 3.3 1.4 3.3 3.2v1c0 1.8-1.5 3.2-3.3 3.2h.5v.9c0 .5-.4.9-.9.9s-1-.4-1-.9V18h-3c-.3 0-.7-.3-.7-.7v-1.4c0-.3.4-.7.7-.7h4.4c.3 0 .5-.2.5-.4v-1c0-.2-.2-.4-.5-.4h-1.8c-1.8 0-3.3-1.4-3.3-3.2v-1C7.8 7.4 9.3 6 11.1 6h.4v-.9c0-.5.5-.9 1-.9s.9.4.9.9V6h2.1c.3 0 .7.3.7.7v1.4z" } },
+	  update_status: { "path": { "d": "M13.8 14.1l.7.8c.2.1.5.1.6 0l2.2-2.2c.1-.2.2-.4.2-.7V3.7c0-.8-.6-1.4-1.3-1.4H2.3c-.8 0-1.4.6-1.4 1.4v10.1c0 .8.6 1.4 1.4 1.4h6.3c.3 0 .5-.1.7-.2l.8-.8c.3-.4.8-.7 1.3-.8.8-.2 1.7.1 2.4.7zM4.6 6.5c0-.3.2-.5.5-.5h8.3c.3 0 .4.2.4.5v.9c0 .3-.1.4-.4.4H5.1c-.3 0-.5-.1-.5-.4v-.9zm.5 5c-.3 0-.5-.1-.5-.4v-.9c0-.3.2-.5.5-.5h6.4c.3 0 .5.2.5.5v.9c0 .3-.2.4-.5.4H5.1zm17.7 1.3l-1-1c-.2-.3-.7-.3-1 0l-5.7 5.7c-.1.2-.5.2-.7 0l-2-2.1c-.3-.3-.7-.3-1 0l-1 1c-.3.3-.3.8 0 1l3.9 4c.3.3.7.3 1 0l7.5-7.6c.4-.3.4-.7 0-1z" } },
+	  user_activation: { "path": { "d": "M12.7 7.4c.3-.3.3-.7 0-1L7.4 1.1c-.2-.3-.7-.3-.9 0L1.2 6.4c-.3.3-.3.7 0 1l.9 1c.3.2.7.2 1 0l1.7-1.7c.2-.3.7-.1.7.3v9.8c0 .4.4.7.7.7h1.4c.4 0 .7-.4.7-.7V7c0-.4.5-.6.8-.3l1.7 1.7c.2.2.6.2.9 0l1-1zm10.1 9.2l-.9-.9c-.3-.3-.7-.3-1 0l-1.7 1.7c-.2.2-.7 0-.7-.4V7.2c0-.4-.4-.7-.7-.7h-1.4c-.4 0-.7.3-.7.7v9.7c0 .5-.5.6-.8.4l-1.7-1.7c-.2-.3-.6-.3-.9 0l-1 1c-.3.3-.3.7 0 1l5.3 5.3c.3.3.7.3 1 0l5.3-5.3c.2-.3.2-.8-.1-1zM7.4 21.2h-.9c-.5 0-1-.4-1-.9v-.9c0-.5.5-.9 1-.9h.9c.5 0 .9.4.9.9v.9c0 .5-.4.9-.9.9zM17.5 5.5h-.9c-.5 0-.9-.4-.9-.9v-.9c0-.5.4-.9.9-.9h.9c.5 0 1 .4 1 .9v.9c0 .5-.5.9-1 .9z" } },
+	  web_link: { "path": { "d": "M12.5.9C6.3.9 1.4 5.9 1.4 12s4.9 11.1 11.1 11.1 11-5 11-11.1S18.6.9 12.5.9zm1.3 15.9c-.6.6-.9 2-1.2 2.9 0 .2-.1.4-.3.5l-.5.2c-.3.1-.6.1-.8-.1-.5-.5-.8-1.1-.8-1.7 0-1.2-1.9-.8-1.9-3 0-1.8-2.3-2.9-4-2.1-.1.1-.2.2-.4.2-.3.1-.5-.1-.6-.4 0-.4-.1-.8-.1-1.3 0-2.2.8-4.2 2.1-5.8 0-.1.1-.1.1-.1 1.1-1.3 2.5-2.3 4.2-2.8.4-.2.8.3.6.7-.2.2-.3.5-.3.8 0 .9-.9 1.5-1.3 1.4-.4-.2-1.4.5-.5 1l.5.2h.1l.2.1c1.6 1 1.3 1.8.6 3-.8 1.3-1.1 0-2.2-.4s-2.2.4-1.9 1.1c.4.8 1.5 0 2.3.8.7.7.7 1.8 2.9 1.1 2.2-.8 2.6-.4 3.3.3.7.8 1.1 2.2-.1 3.4zm5.9-.1c-.9-1.1 0-3.4-1.1-4.7-1.1-1.5-2.6 0-4-2.3-1.4-2.1.4-3.9 2.1-4.5.5-.2 1-.3 1.5-.3.1 0 .2.1.3.2 1.9 1.6 3.2 4.1 3.2 6.9 0 1.7-.5 3.2-1.2 4.6-.2.2-.6.3-.8.1z" } }
+	};
+	module.exports.viewBox = '0 0 24 24';
+
+/***/ },
+/* 40 */
+/***/ function(module, exports) {
+
+	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
+	"use strict";
+	
+	module.exports = {
+	  custom1: { "path": { "d": "M13 17.8c-.5.6-1.5.6-2.1 0-1.7-1.9-5-5.4-5-5.4-1.5-1.6-1.5-4.1 0-5.7.7-.8 1.7-1.2 2.7-1.2 1 0 2 .4 2.7 1.2l.3.4c.2.2.6.2.8 0l.2-.4h.1c.7-.8 1.7-1.2 2.7-1.2 1 0 2 .4 2.7 1.2 1.5 1.5 1.5 4.1 0 5.7 0 0-3.3 3.5-5.1 5.4z" } },
+	  custom10: { "path": { "d": "M16.8 18.7c-2.3.9-5.9.7-7.8-1.4-4.7-5.1-.6-12.5 5.1-12.5.9 0 1.8.2 2.7.5.3.2.3.7 0 .9-1.8 1.3-3 3.4-3 5.8s1.2 4.6 3 5.9c.3.2.3.7 0 .8z" } },
+	  custom100: { "path": { "d": "M14.9 17.3H9.1c-.1 0-.2.1-.2.3.2.9 1.5 1.6 3.1 1.6 1.5 0 2.8-.7 3-1.6.1-.2 0-.3-.1-.3zm2.9-11.1H6.2c-.8 0-1.4.7-1.4 1.5v6.7c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4V7.7c0-.8-.6-1.5-1.4-1.5zm0 7.7c0 .3-.3.5-.5.5H6.7c-.2 0-.5-.2-.5-.5V8.2c0-.3.3-.5.5-.5h10.6c.2 0 .5.2.5.5v5.7z" } },
+	  custom11: { "path": { "d": "M12.5 5.1l1.9 4.1 4.3.6c.5.1.7.7.3 1.1L15.9 14l.8 4.5c0 .5-.5.9-.9.6L12 17l-3.8 2.1c-.4.3-1-.1-.9-.6l.8-4.5L5 10.9c-.4-.4-.2-1 .3-1.1l4.3-.6 1.9-4.1c.2-.4.8-.4 1 0z" } },
+	  custom12: { "circle": { "cx": "12", "cy": "12", "r": "7.2" } },
+	  custom13: { "path": { "d": "M17.8 5.3H6.2c-.8 0-1.4.6-1.4 1.4v1.5c0 .2.2.4.5.4h13.4c.3 0 .5-.2.5-.4V6.7c0-.8-.6-1.4-1.4-1.4zm0 4.8H6.2c-.2 0-.4.2-.4.5v6.7c0 .8.6 1.4 1.4 1.4h9.6c.8 0 1.4-.6 1.4-1.4v-6.7c0-.3-.2-.5-.4-.5zm-3.2 2.1c0 .4-.3.8-.7.8h-3.8c-.4 0-.7-.4-.7-.8 0-.3.3-.7.7-.7h3.8c.4 0 .7.3.7.7z" } },
+	  custom14: { "path": { "d": "M18.7 7.9h-1.4c-.3 0-.6-.1-.9-.3l-1.1-1c-.3-.2-.6-.4-.9-.4h-2.8c-.4 0-.7.2-1 .4L9.1 7.9c-.1.1-.1.3 0 .4l.5.4c.3.3.7.3 1 .1l1.3-.8c.2-.1.4-.1.6.1l4.1 4c.1.1.2.2.2.4v1.1c0 .2.2.6.5.6h1.4c.3 0 .5-.3.5-.5V8.4c0-.3-.2-.5-.5-.5zm-4.1 4.3L12 9.7l-.7.5c-.3.2-.7.3-1.1.3-.6 0-1.1-.2-1.5-.5l-.9-.8c-.2-.2-.4-.4-.4-.6 0-.3-.2-.4-.5-.4H5.3c-.3 0-.5.1-.5.4V13c0 .2.2.4.5.4h.9c.1 0 .2-.2.3-.3.4-.5.9-.8 1.5-.9.5 0 1.1.2 1.6.6l3 2.7c.2.3.4.5.5.9.1.1.3.2.4.1l1.1-1.2c.6-.5 1-1.9.5-2.5l-.5-.6zm-6 1.8c-.3-.3-.8-.2-1 .1-.3.3-.2.8.1 1.1l3 2.7c.1.2.3.2.5.2s.4-.1.5-.3c.3-.3.2-.8-.1-1.1l-3-2.7z" } },
+	  custom15: { "path": { "d": "M16.8 11.1c-.8-.4-1-.7-1-1 0-.4.3-.7.6-1 .5-.4.7-1.1.7-1.8 0-1.3-.8-2.5-2.3-2.5-1.3 0-2.1.9-2.3 2 0 .1 0 .2.1.2 1.1.8 1.7 2.1 1.7 3.6 0 1.1-.3 2.1-1 2.8-.1.2-.1.4.1.4.4.2.9.4 1.4.7.1.1.3.1.4.1H18c.7 0 1.2-.5 1.2-1.1v-.2c0-1.1-1.2-1.7-2.4-2.2zM12.5 15c-1-.4-1.1-.8-1.1-1.2 0-.4.2-.8.6-1.1.6-.5.9-1.2.9-2.1 0-1.6-1-2.9-2.8-2.9S7.3 9 7.3 10.6c0 .9.3 1.6.9 2.1.4.3.7.7.7 1.1 0 .4-.2.8-1.2 1.2-1.5.6-2.9 1.3-2.9 2.6v.2c0 .8.7 1.4 1.5 1.4h7.6c.8 0 1.5-.6 1.5-1.4v-.2c0-1.3-1.4-2-2.9-2.6z" } },
+	  custom16: { "path": { "d": "M17.3 16.8H17v-5.3c0-.2-.2-.5-.4-.5h-.5c-.3 0-.5.3-.5.5v5.3h-1.4v-5.3c0-.2-.3-.5-.5-.5h-.5c-.3 0-.5.3-.5.5v5.3h-1.4v-5.3c0-.2-.2-.5-.5-.5h-.5c-.2 0-.5.3-.5.5v5.3H8.4v-5.3c0-.2-.2-.5-.5-.5h-.5c-.2 0-.4.3-.4.5v5.3h-.3c-.8 0-1.4.6-1.4 1.4v.5c0 .3.2.5.5.5h12.4c.3 0 .5-.2.5-.5v-.5c0-.8-.6-1.4-1.4-1.4zm1.2-8.5L12.6 5c-.2-.1-.4-.2-.6-.2-.2 0-.4.1-.6.2L5.5 8.3c-.1.1-.2.2-.2.4v.4c0 .3.2.5.5.5h12.4c.3 0 .5-.2.5-.5v-.4c0-.2-.1-.3-.2-.4zm-6.5.3c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.6 1.2 1.2-.5 1.2-1.2 1.2z" } },
+	  custom17: { "path": { "d": "M10.3 6.9c.1.2.3.3.5.3h2.4c.2 0 .4-.1.4-.3l1-1.7c.1-.2-.1-.4-.2-.4H9.6c-.1 0-.3.2-.2.4l.9 1.7zm3.1 1.7h-2.8c-2.4 0-4.4 2-4.4 4.4v4.8c0 .8.7 1.4 1.5 1.4h8.6c.8 0 1.5-.6 1.5-1.4V13c0-2.4-2-4.4-4.4-4.4zm-.7 8.1v.8c0 .2-.1.3-.3.3h-.9c-.2 0-.2-.1-.2-.3v-.8c-.7-.1-1.3-.4-1.5-.6-.2-.1-.2-.3-.1-.5l.3-.5c.1-.1.2-.2.4-.2.1 0 .1 0 .2.1.5.3.9.4 1.3.4.3 0 .6-.2.6-.4 0-.1-.1-.3-1.1-.6-.8-.3-1.8-.8-1.8-1.9 0-.7.5-1.5 1.7-1.7v-.7c0-.2 0-.3.1-.3h1c.2 0 .3.1.3.3v.7c.5.1 1 .4 1.2.5.1 0 .1.1.1.3s0 .2-.1.3l-.3.4c-.1.1-.3.2-.4.2H13c-.5-.3-.9-.4-1.2-.4-.4 0-.6.2-.6.3 0 .2.1.3.9.6 1.1.4 2.2.9 2.2 2 0 .8-.6 1.5-1.6 1.7z" } },
+	  custom18: { "path": { "d": "M14.4 8.6h2.5c.2 0 .4-.1.4-.3 0-.1 0-.2-.1-.2L14 4.9c-.1-.1-.1-.1-.2-.1-.2 0-.4.1-.4.3v2.6c0 .5.5.9 1 .9zm5.6 3.3l-.3-.3c-.2-.2-.5-.2-.6 0l-3.7 3.7c-.1.1 0 .1 0 .1v.9h.9l3.7-3.7c.2-.2.2-.5 0-.7zm-3 5.9h-2.2c-.5 0-.9-.4-.9-1v-1.6c0-.3.1-.5.3-.7l2.9-3c.1-.1.2-.2.2-.3v-.6c0-.3-.2-.5-.5-.5h-3.4c-.8 0-1.4-.7-1.4-1.5V5.3c0-.3-.2-.5-.5-.5H6.7c-.8 0-1.4.6-1.4 1.4v11.6c0 .8.6 1.4 1.4 1.4h9.1c.7 0 1.3-.5 1.5-1.2 0-.1-.1-.2-.3-.2zM7.2 9.1c0-.2.2-.5.5-.5h1.9c.3 0 .5.3.5.5v.5c0 .3-.2.5-.5.5H7.7c-.3 0-.5-.2-.5-.5v-.5zm4.8 6.3c0 .2-.2.4-.5.4H7.7c-.3 0-.5-.2-.5-.4v-.5c0-.3.2-.5.5-.5h3.8c.3 0 .5.2.5.5v.5zm1-2.9c0 .2-.3.5-.5.5H7.7c-.3 0-.5-.3-.5-.5V12c0-.3.2-.5.5-.5h4.8c.2 0 .5.2.5.5v.5z" } },
+	  custom19: { "path": { "d": "M19 7.9c0-.2-.3-.2-.4-.1l-2.4 2.4c-.2.2-.5.2-.7 0l-1.7-1.7c-.2-.2-.2-.5 0-.7l2.4-2.4c.2-.1.1-.4 0-.4-.5-.1-.9-.2-1.3-.2-2.6 0-4.6 2.2-4.3 4.8 0 .4.1.8.3 1.1l-5.6 5.6c-.7.7-.7 1.8 0 2.4.3.4.7.5 1.2.5s.8-.1 1.2-.5l5.6-5.6c.3.2.7.3 1.1.3 2.6.3 4.8-1.7 4.8-4.3 0-.4-.1-.8-.2-1.2z" } },
+	  custom2: { "g": { "path": { "d": "M14.2 5.3c-.8-.5-3.4-1-4.4.7-.4.8.1 2.2.6 3.1.1.2.3.3.6.2.3-.1.6-.2 1-.2.2 0 .5 0 .7.1.2.1.5 0 .5-.2.2-.3.5-.7 1-1.1 1.2-.9.7-2.1 0-2.6zm-1.3 9.4c-.3.1-.6.2-.9.2-.3 0-.6-.1-.8-.1-.3-.1-.5 0-.6.2-.2.3-.4.7-.9 1.1-1.2.9-.7 2.2 0 2.6s3.3 1 4.3-.7c.4-.7-.1-2.1-.5-3-.1-.2-.4-.3-.6-.3zM18 9.8c-.8-.4-2.2.1-3.1.6-.2.1-.3.3-.2.6.1.3.2.6.2 1 0 .2 0 .5-.1.7-.1.2 0 .5.2.5.3.2.7.5 1.1 1 .9 1.2 2.1.7 2.6 0s1-3.4-.7-4.4zm-8.7 3.1c-.1-.3-.2-.6-.2-.9 0-.3.1-.6.1-.8.1-.3 0-.5-.2-.6-.3-.2-.7-.4-1.1-.9-.9-1.2-2.2-.7-2.6 0S4.3 13 6 14c.7.4 2.1-.1 3-.5.2-.1.3-.4.3-.6z" }, "circle": { "cx": "12", "cy": "12", "r": "1.44" } } },
+	  custom20: { "path": { "d": "M9.1 11.4c0-.1-.2-.3-.4-.1l-3.3 2.5c-.4.3-.6.7-.6 1.2v1c0 .2.2.3.3.2l3.7-1.4c.2-.1.3-.2.3-.4v-3zm5.3 6.8l-1-.7V6.6c0-.6-.7-1.3-1.1-1.7-.2-.1-.4-.1-.6 0-.4.4-1.2 1.1-1.2 1.7v10.9l-1.1.7c-.2.2-.3.4-.3.6v.2c0 .1.1.2.2.2h5.3c.1 0 .3-.1.3-.2 0-.4-.2-.6-.5-.8zm4.2-4.4l-3.3-2.5c-.2-.2-.4 0-.4.1v3c0 .2.1.4.3.4l3.7 1.4c.2.1.3 0 .3-.2v-1c0-.5-.2-.9-.6-1.2z" } },
+	  custom21: { "path": { "d": "M13.8 17.1c0-.2-.2-.3-.4-.3h-2.8c-.2 0-.4.1-.4.3l-.7 1.7c0 .2.1.4.2.4h4.6c.1 0 .2-.2.2-.4l-.7-1.7zm4-12.3H6.2c-.8 0-1.4.6-1.4 1.4v7.7c0 .8.6 1.5 1.4 1.5h11.6c.8 0 1.4-.7 1.4-1.5V6.2c0-.8-.6-1.4-1.4-1.4zM12 14.9c-.4 0-.7-.3-.7-.7s.3-.8.7-.8.7.4.7.8-.3.7-.7.7zm5.8-2.4c0 .2-.3.5-.5.5H6.7c-.2 0-.5-.3-.5-.5V6.7c0-.2.3-.5.5-.5h10.6c.2 0 .5.3.5.5v5.8z" } },
+	  custom22: { "path": { "d": "M18.6 15.3l-1.4-1.2c-.5-.4-1.3-.4-1.8 0l-1.4 1c-.2.2-.5.1-.6 0L11 13l-2.1-2.4c-.2-.2-.2-.4 0-.6l1-1.4c.4-.6.3-1.3-.1-1.8L8.6 5.3c-.5-.6-1.5-.7-2.1-.1L5.2 6.5c-.3.3-.4.7-.4 1.1.1 3 1.5 5.9 3.6 8s4.9 3.4 8 3.6c.4 0 .8-.2 1-.5l1.3-1.3c.7-.5.6-1.5-.1-2.1z" } },
+	  custom23: { "path": { "d": "M11.7 13.4c.2.2.4.2.6 0l6.8-6.2c.1-.3.1-.7-.4-.7l-13.4.1c-.4 0-.6.3-.4.6l6.8 6.2zm7.5-3.6c0-.3-.4-.4-.6-.2l-5.3 4.9c-.3.3-.8.5-1.3.5s-.9-.2-1.3-.5L5.4 9.6c-.2-.2-.6-.1-.6.2v6.3c0 .8.7 1.4 1.5 1.4h11.5c.8 0 1.4-.6 1.4-1.4V9.8z" } },
+	  custom24: { "path": { "d": "M16.3 4.8H7.7c-.8 0-1.5.6-1.5 1.4 0 .3.3.5.5.5h10.6c.2 0 .5-.2.5-.5 0-.8-.7-1.4-1.5-1.4zm0 3.4H7.7c-.3 0-.5.2-.5.4v10.1c0 .3.2.5.5.5h2.6c.3 0 .5-.2.5-.5v-1.9c0-.3.2-.5.5-.5h1.4c.3 0 .5.2.5.5v1.9c0 .3.2.5.5.5h2.6c.3 0 .5-.2.5-.5V8.6c0-.2-.2-.4-.5-.4zm-5 6.4c0 .3-.2.5-.5.5h-1c-.2 0-.4-.2-.4-.5v-.9c0-.3.2-.5.4-.5h1c.3 0 .5.2.5.5v.9zm0-3.3c0 .2-.2.5-.5.5h-1c-.2 0-.4-.3-.4-.5v-1c0-.2.2-.5.4-.5h1c.3 0 .5.3.5.5v1zm3.3 3.3c0 .3-.2.5-.4.5h-1c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h1c.2 0 .4.2.4.5v.9zm0-3.3c0 .2-.2.5-.4.5h-1c-.3 0-.5-.3-.5-.5v-1c0-.2.2-.5.5-.5h1c.2 0 .4.3.4.5v1z" } },
+	  custom25: { "path": { "d": "M19.2 6.6c-.2-.9-1-1.7-1.9-1.8-.6-.1-1.2.1-1.7.5-.1.1-.1.3.1.4 1.1.6 2 1.4 2.7 2.4.1.2.3.2.4 0 .4-.4.5-1 .4-1.5zM8.3 5.7c.1-.1.2-.3.1-.4-.5-.4-1.1-.6-1.8-.5-.9.1-1.6.9-1.8 1.8-.1.5 0 1.1.3 1.5.1.2.3.2.4 0 .8-1 1.7-1.8 2.8-2.4zm3.7.5c-3.6 0-6.5 2.9-6.5 6.5 0 1.5.5 2.8 1.3 3.9l-1 .9c-.4.4-.4 1 0 1.4.2.2.4.3.7.3s.5-.1.7-.3l.9-1c1.1.8 2.5 1.3 3.9 1.3s2.8-.5 3.8-1.3l1 1c.2.2.5.3.7.3s.5-.1.7-.3c.4-.4.4-1 0-1.4l-1-.9c.8-1.1 1.3-2.4 1.3-3.9 0-3.6-2.9-6.5-6.5-6.5zm-4.6 6.5c0-2.5 2.1-4.5 4.6-4.5s4.6 2 4.6 4.5-2.1 4.6-4.6 4.6-4.6-2.1-4.6-4.6zm5.3-.3v-1.8c0-.4-.3-.8-.7-.8s-.7.4-.7.8v2.1c0 .2.1.4.2.5l1.7 1.7c.1.1.3.2.5.2s.3-.1.5-.2c.3-.3.3-.7 0-1l-1.5-1.5z" } },
+	  custom26: { "path": { "d": "M6.2 4.8c-.8 0-1.4.6-1.4 1.4 0 .5.2.9.5 1.1v10.9c0 .6.4 1 .9 1s1-.4 1-1V7.3c.3-.2.5-.6.5-1.1 0-.8-.7-1.4-1.5-1.4zm12.6 2.6c-3.7 2-6.3-1.4-9.8-.1-.2 0-.4.2-.4.4v6.2c0 .3.4.6.7.5 3.4-1.1 5.9 2.2 9.7.1.1-.1.2-.2.2-.4V7.6c0-.2-.2-.3-.4-.2z" } },
+	  custom27: { "path": { "d": "M5.8 15.1h12.4c.3 0 .5-.2.5-.5V7c0-.8-.6-1.5-1.4-1.5H6.7c-.8 0-1.4.7-1.4 1.5v7.6c0 .3.2.5.5.5zm.9-7.7c0-.2.2-.4.5-.4h9.6c.3 0 .5.2.5.4v5.8c0 .3-.2.5-.5.5H7.2c-.3 0-.5-.2-.5-.5V7.4zm12.5 9.2h-5.3c-.2 0-.5.2-.5.4s-.2.5-.4.5h-2c-.2 0-.4-.2-.4-.5s-.3-.4-.5-.4H4.8c-.3 0-.5.2-.5.4 0 .8.7 1.5 1.5 1.5h12.4c.8 0 1.5-.7 1.5-1.5 0-.2-.2-.4-.5-.4z" } },
+	  custom28: { "path": { "d": "M15.4 4.8H8.6c-.8 0-1.4.6-1.4 1.4v11.6c0 .8.6 1.4 1.4 1.4h6.8c.8 0 1.4-.6 1.4-1.4V6.2c0-.8-.6-1.4-1.4-1.4zM12 18.7c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7zm3.4-2.4c0 .3-.3.5-.5.5H9.1c-.2 0-.5-.2-.5-.5V7.2c0-.3.3-.5.5-.5h5.8c.2 0 .5.2.5.5v9.1z" } },
+	  custom29: { "path": { "d": "M17.7 6.7h-.4c-.3 0-.5.3-.5.5v9.7l.6.8c.1.1.1.1.2 0l.6-.8V7.2c0-.2-.2-.5-.5-.5zm-3.8-1.9H7.2c-.8 0-1.4.6-1.4 1.4v11.6c0 .8.6 1.4 1.4 1.4h6.7c.8 0 1.5-.6 1.5-1.4V6.2c0-.8-.7-1.4-1.5-1.4zm-3.3 13.9c-.4 0-.8-.3-.8-.7s.4-.7.8-.7.7.3.7.7-.3.7-.7.7zm3.3-2.4c0 .3-.2.5-.5.5H7.7c-.3 0-.5-.2-.5-.5V7.2c0-.3.2-.5.5-.5h5.7c.3 0 .5.2.5.5v9.1z" } },
+	  custom3: { "path": { "d": "M12 9.1c-1.6 0-2.9 1.3-2.9 2.9s1.3 2.9 2.9 2.9 2.9-1.3 2.9-2.9-1.3-2.9-2.9-2.9zm7.2 2.9c0-.8-2-1.3-2.3-2-.3-.8.8-2.5.2-3.1-.6-.6-2.3.5-3.1.2-.7-.3-1.2-2.3-2-2.3s-1.3 2-2 2.3c-.8.3-2.5-.8-3.1-.2-.6.6.5 2.3.2 3.1-.3.7-2.3 1.2-2.3 2s2 1.3 2.3 2c.3.8-.8 2.5-.2 3.1.6.6 2.3-.5 3.1-.2.7.3 1.2 2.3 2 2.3s1.3-2 2-2.3c.8-.3 2.5.8 3.1.2.6-.6-.5-2.3-.2-3.1.3-.7 2.3-1.2 2.3-2zM12 16.3c-2.4 0-4.3-1.9-4.3-4.3S9.6 7.7 12 7.7s4.3 1.9 4.3 4.3-1.9 4.3-4.3 4.3z" } },
+	  custom30: { "path": { "d": "M17.2 6.8c-1.4-1.3-3.1-2-5-2-.4 0-.7.3-.7.7s.3.7.7.7c1.5 0 2.9.6 4 1.6 1 1.1 1.6 2.5 1.6 4 0 .4.3.7.7.7s.7-.3.7-.7c0-1.9-.7-3.6-2-5zm-5 .9c-.4 0-.7.3-.7.7s.3.7.7.7c.7 0 1.4.3 1.9.8s.8 1.1.8 1.9c0 .4.3.7.7.7s.7-.3.7-.7c0-1.1-.4-2.2-1.2-2.9s-1.8-1.2-2.9-1.2zm-1 6.9l.6-1.7c.5.2.9.1 1.3-.3.5-.5.5-1.2 0-1.7s-1.2-.5-1.7 0c-.4.4-.4.9-.2 1.4l-1.6.7-2.8-2.8c-.2-.2-.5-.2-.7 0-1.8 2.1-1.7 5.4.4 7.4 2 2 5.2 2.1 7.3.3.3-.1.3-.5.1-.7l-2.7-2.6z" } },
+	  custom31: { "path": { "d": "M18.1 10.4l-1.2-3.7c-.2-.7-.8-1.2-1.5-1.2H8.6c-.7 0-1.3.5-1.6 1.2l-1.1 3.7c-.6.1-1.1.7-1.1 1.4v2.8c0 .7.4 1.2 1 1.4v2c0 .3.2.5.4.5h2c.2 0 .4-.2.4-.5v-1.9h6.8V18c0 .3.2.5.4.5h2c.2 0 .4-.2.4-.5v-2c.6-.2 1-.7 1-1.4v-2.8c0-.7-.5-1.3-1.1-1.4zm-10.9 4c-.7 0-1.2-.5-1.2-1.2S6.5 12 7.2 12s1.2.5 1.2 1.2-.5 1.2-1.2 1.2zm5.3-4.1H7.7c-.1 0-.3-.1-.2-.3l.9-2.9c0-.1.1-.1.2-.1h6.7c.1 0 .2 0 .3.1l.9 2.9c0 .2-.1.3-.3.3h-3.7zm4.1 4.1c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.6 1.2-1.2 1.2z" } },
+	  custom32: { "path": { "d": "M18.8 8.5l-5.6 3.2c-.1 0-.2.1-.3.1-.3 0-.6-.2-.7-.4-.2-.4 0-.8.4-1l1.8-1.1V7.5c0-.2-.2-.3-.3-.2l-6.9 3.9c-.1.1-.2.1-.3.1-.3 0-.5-.1-.7-.4-.2-.3 0-.8.3-1l1.2-.6v-4c0-.3-.2-.5-.5-.5H5.3c-.3 0-.5.2-.5.5v12.5c0 .8.6 1.4 1.4 1.4h4.1c.3 0 .5-.2.5-.5V17c0-.2.2-.4.5-.4h1.4c.3 0 .5.2.5.4v1.7c0 .3.2.5.5.5h4.1c.8 0 1.4-.6 1.4-1.4V8.7c0-.2-.2-.3-.4-.2zM8.4 15.1c0 .3-.2.5-.5.5h-.5c-.2 0-.4-.2-.4-.5v-1.4c0-.3.2-.5.4-.5h.5c.3 0 .5.2.5.5v1.4zm2.9 0c0 .3-.2.5-.5.5h-.5c-.2 0-.5-.2-.5-.5v-1.4c0-.3.3-.5.5-.5h.5c.3 0 .5.2.5.5v1.4zm2.9 0c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-1.4c0-.3.2-.5.5-.5h.5c.2 0 .5.2.5.5v1.4zm2.8 0c0 .3-.2.5-.4.5h-.5c-.3 0-.5-.2-.5-.5v-1.4c0-.3.2-.5.5-.5h.5c.2 0 .4.2.4.5v1.4z" } },
+	  custom33: { "path": { "d": "M15.6 10.1h-7c-.2 0-.4.2-.4.5v1.9c0 .2.2.5.4.5h7c.3 0 .5-.3.5-.5v-1.9c0-.3-.2-.5-.5-.5zm-3.4 2.1c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.8.3.8.7-.4.7-.8.7zm7-5.5H4.8c-.3 0-.5.2-.5.5v.5c0 .5.5.9 1 .9v8.7c0 .2.2.5.5.5h.4c.3 0 .5-.3.5-.5V8.6h10.8v8.7c0 .2.2.5.5.5h.5c.2 0 .5-.3.5-.5V8.6h-.3c.5 0 1-.4 1-.9v-.5c0-.3-.2-.5-.5-.5z" } },
+	  custom34: { "path": { "d": "M10.1 7.2h3.8c.3 0 .5-.3.5-.5-.3-1.1-1.2-1.9-2.4-1.9s-2.1.8-2.4 1.9c0 .2.2.5.5.5zm8.4 6.2c.4 0 .7-.3.7-.7 0-.4-.4-.7-.8-.7h-2.1v-1.2c1.4-.6 2.4-2 2.4-3.8 0-.4-.2-.7-.6-.8-.4 0-.8.3-.8.8 0 1-.5 1.9-1.2 2.3-.3-.4-.7-.7-1.2-.7H9.1c-.5 0-.9.3-1.2.7C7.2 8.9 6.7 8 6.7 7c0-.4-.3-.7-.7-.8-.4 0-.7.4-.7.8 0 1.7 1 3.2 2.4 3.8V12H5.6c-.4 0-.8.3-.8.7 0 .4.3.7.7.7h2.2v1.2c-1.4.6-2.4 2.1-2.4 3.9 0 .3.2.6.6.7.4.1.8-.3.8-.7 0-1 .5-1.9 1.2-2.3.4 1.3 1.4 2.4 2.8 2.8.3.1.6-.2.6-.5v-5.7c0-.4.3-.8.7-.8.4 0 .7.3.7.7v5.8c0 .4.3.6.6.5 1.4-.4 2.4-1.5 2.8-2.8.7.4 1.2 1.2 1.2 2.2 0 .4.3.8.7.8.4 0 .7-.3.7-.7 0-1.8-1-3.3-2.4-3.9v-1.2h2.2z" } },
+	  custom35: { "path": { "d": "M16.6 9.6c-.4 0-.8.3-.8.7v1.2c0 2.1-1.7 3.9-3.8 3.9s-3.8-1.8-3.8-3.9v-1.2c0-.4-.4-.7-.8-.7s-.7.3-.7.7v1.2c0 2.7 2 4.9 4.6 5.3v1h-1.2c-.4 0-.7.3-.7.7s.3.7.7.7h3.8c.4 0 .7-.3.7-.7s-.3-.7-.7-.7h-1.2v-1c2.6-.4 4.6-2.6 4.6-5.3v-1.2c0-.4-.3-.7-.7-.7zM12 13.9c1.3 0 2.4-1.1 2.4-2.4V7.2c0-1.3-1.1-2.4-2.4-2.4-1.3 0-2.4 1.1-2.4 2.4v4.3c0 1.3 1.1 2.4 2.4 2.4z" } },
+	  custom36: { "path": { "d": "M9.3 17.3h-1c-.2 0-.3.1-.4.2l-.3.6c-.2.3-.2.8.2 1 .1.1.2.1.4.1s.4-.1.6-.4l.7-1.2c.1-.1 0-.3-.2-.3zm6.8.2c-.1-.1-.2-.2-.4-.2h-1c-.2 0-.3.2-.2.3l.7 1.2c.2.3.4.4.6.4.2 0 .3 0 .4-.1.4-.2.4-.7.2-1l-.3-.6zm0-12.7H7.9c-.8 0-1.4.6-1.4 1.4v8.2c0 .8.6 1.4 1.4 1.4h8.2c.8 0 1.4-.6 1.4-1.4V6.2c0-.8-.6-1.4-1.4-1.4zM8.6 14.9c-.4 0-.7-.3-.7-.7s.3-.8.7-.8.8.4.8.8-.4.7-.8.7zm6.8 0c-.4 0-.8-.3-.8-.7s.4-.8.8-.8.7.4.7.8-.3.7-.7.7zm.7-2.9c0 .3-.2.5-.5.5H8.4c-.3 0-.5-.2-.5-.5V7.2c0-.3.2-.5.5-.5h7.2c.3 0 .5.2.5.5V12z" } },
+	  custom37: { "path": { "d": "M19.2 13.4h-3.1v-2.8c.6.6 1.5.9 2.4.9.4 0 .7-.3.7-.7s-.3-.7-.7-.7c-1.3 0-2.4-1.2-2.4-2.7v-.7c.2 0 .5-.2.5-.5v-.4c0-.3-.3-.5-.5-.5h-1.5c-.2 0-.4.2-.4.5v.4c0 .3.2.5.4.5v.7c0 1.5-1.1 2.7-2.6 2.7S9.4 8.9 9.4 7.4v-.7c.2 0 .4-.2.4-.5v-.4c0-.3-.2-.5-.4-.5H7.9c-.2 0-.5.2-.5.5v.4c0 .3.3.5.5.5v.7c0 1.5-1.1 2.7-2.4 2.7-.4 0-.7.3-.7.7s.3.7.7.7c.9 0 1.8-.3 2.4-.9v2.8H4.8c-.3 0-.5.3-.5.5v1.2c0 .2.2.5.5.5h1v2.6c0 .3.2.5.4.5h1.5c.2 0 .5-.2.5-.5v-1c0-.8.6-1.4 1.4-1.4h4.8c.8 0 1.4.6 1.4 1.4v1c0 .3.3.5.5.5h1.5c.2 0 .4-.2.4-.5v-2.6h1c.3 0 .5-.3.5-.5v-1.2c0-.2-.2-.5-.5-.5zm-9.8-2.9c.7.6 1.6 1 2.6 1s1.9-.3 2.6-1v2.9H9.4v-2.9z" } },
+	  custom38: { "path": { "d": "M12 10.8c-1.1 0-1.9.9-1.9 1.9s.8 1.9 1.9 1.9 1.9-.8 1.9-1.9-.8-1.9-1.9-1.9zm5.8-2.4h-2c-.2 0-.3-.1-.4-.3l-.6-1.3c-.3-.5-.8-.8-1.3-.8h-3c-.5 0-1 .3-1.3.8l-.6 1.3c-.1.2-.2.3-.4.3h-2c-.8 0-1.4.6-1.4 1.4v6.8c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4V9.8c0-.8-.6-1.4-1.4-1.4zM12 16.1c-1.8 0-3.4-1.5-3.4-3.3s1.6-3.4 3.4-3.4 3.4 1.5 3.4 3.4-1.6 3.3-3.4 3.3z" } },
+	  custom39: { "path": { "d": "M15.3 6.9c-.1-.2-.3-.3-.5-.3L5.1 9.7c-.2.1-.3.4-.3.6l.4 1.5c.1.2.3.4.6.3l2.4-.3c.1.3.2.5.4.8l-2.1 5.6c-.2.4 0 .8.4 1h.3c.2 0 .5-.2.6-.5l2-5.4c.2.1.3.1.5.1s.3 0 .5-.1l1.9 5.4c.1.3.4.5.7.5h.3c.3-.2.5-.6.4-1L12 12.5c.3-.3.4-.8.4-1.3l3.4-.5c.2 0 .4-.2.3-.4l-.8-3.4zm3.9 3.3l-1.3-4.8c-.1-.4-.5-.7-.9-.6-.4.1-.7.5-.6.9l1.4 4.9c.1.4.5.6.8.5.4-.1.7-.5.6-.9z" } },
+	  custom4: { "path": { "d": "M6.3 7.8l5-2.8c.4-.3 1-.3 1.5 0l4.9 2.8c.5.3.8.8.8 1.3v5.8c0 .5-.3 1-.8 1.3L12.8 19c-.5.3-1.1.3-1.5 0l-5-2.8c-.5-.3-.8-.8-.8-1.3V9.1c0-.5.3-1 .8-1.3z" } },
+	  custom40: { "path": { "d": "M17.8 6.7H6.2c-.8 0-1.4.7-1.4 1.5v8.1c0 .8.6 1.5 1.4 1.5h11.6c.8 0 1.4-.7 1.4-1.5V8.2c0-.8-.6-1.5-1.4-1.5zm0 1.5v1.4H6.2V8.2h11.6zM6.2 16.3V12h11.6v4.3H6.2zm4.1-3.1c-.3 0-.6.2-.7.4-.1.1-.1.1-.2 0-.1-.2-.4-.4-.8-.4-.5 0-.9.4-.9 1s.4.9.9.9c.4 0 .7-.1.8-.4.1-.1.1-.1.2 0 .1.3.4.4.7.4h.1c.5 0 .9-.4.9-.9v-.1c0-.5-.4-.9-1-.9zm5.5.2H13c-.3 0-.5.3-.5.5v.5c0 .3.2.5.5.5h2.8c.3 0 .5-.2.5-.5v-.5c0-.2-.2-.5-.5-.5z" } },
+	  custom41: { "g": { "path": { "d": "M18.2 7H5.8c-.8 0-1.5.6-1.5 1.4v7c0 .8.7 1.4 1.5 1.4h12.4c.8 0 1.5-.6 1.5-1.4v-7c0-.8-.7-1.4-1.5-1.4zM7.4 15.4c0-1-.7-1.7-1.6-1.7v-3.6c.9 0 1.6-.8 1.6-1.7h9.2c0 .9.7 1.7 1.6 1.7v3.6c-.9 0-1.6.7-1.6 1.7H7.4z" }, "circle": { "cx": "12", "cy": "11.76", "r": "2.4" } } },
+	  custom42: { "path": { "d": "M17.8 5.3H6.2c-.8 0-1.4.6-1.4 1.4v1.5c0 .2.2.4.5.4h13.4c.3 0 .5-.2.5-.4V6.7c0-.8-.6-1.4-1.4-1.4zm0 4.8H6.2c-.2 0-.4.2-.4.5v6.7c0 .8.6 1.4 1.4 1.4h9.6c.8 0 1.4-.6 1.4-1.4v-6.7c0-.3-.2-.5-.4-.5zm-3.2 2.1c0 .4-.3.8-.7.8h-3.8c-.4 0-.7-.4-.7-.8 0-.3.3-.7.7-.7h3.8c.4 0 .7.3.7.7z" } },
+	  custom43: { "path": { "d": "M19.6 10.4c0-.1.1-.1.1-.2v-.3l-.1-.1v-.1s-.1 0-.1-.1l-2.8-4c-.2-.2-.4-.3-.6-.3H7.4c-.2 0-.4.1-.6.3L4 9.7h-.1v.1c0 .1-.1.1-.1.1v.3c0 .1.1.1.1.2v.1H4v.1l7.2 7.9.1.1h.1v.1h.6v-.1h.1v-.1h.1l7.2-7.9v-.1l.2-.1zm-7.8-1h-1.2l1.2-2 1.1 2h-1.1zm0 1.4h1.4l-1.4 4.7-1.5-4.7h1.5zM13 6.7h1.8l-.7 1.9L13 6.7zM9.4 8.6l-.7-1.9h1.8L9.4 8.6zm-.6 2.2l1.4 4.3-4-4.3h2.6zm5.9 0h2.6l-3.9 4.3 1.3-4.3zm2.9-1.4h-2.2l.7-2.1 1.5 2.1zM7.4 7.3l.7 2.1H6l1.4-2.1z" } },
+	  custom44: { "path": { "d": "M16.7 6.9c-1.2-1.5-2.3-2.1-4.5-2.1-.9 0-2.1.4-2.6.5 0-.3-.2-.5-.5-.5h-.9c-.3 0-.5.2-.5.5v1.9c0 .3.2.5.5.5h.9c.3 0 .5-.2.5-.5h.5c.4 0 .7.3.7.7 0 .4.3.7.7.7v3.9c-.5 0-.9.4-.9.9v4.4c0 .8.6 1.4 1.4 1.4h.5c.8 0 1.4-.6 1.4-1.4v-4.4c0-.5-.4-.9-.9-.9V8.6c.4 0 .7-.5.7-.9s.3-.7.6-.7c1 0 1.5.3 1.8.6.1.1.4.1.5 0 .2-.2.3-.4.1-.7z" } },
+	  custom45: { "path": { "d": "M7.9 10.3h8.2v3.4H7.9zm11.8-.4V8.6c0-.8-.7-1.4-1.5-1.4H5.8c-.8 0-1.5.6-1.5 1.4v1.3c0 .2.1.3.3.4.5.4.9 1 .9 1.7s-.4 1.3-.9 1.6c-.2.1-.3.3-.3.4v1.4c0 .8.7 1.4 1.5 1.4h12.4c.8 0 1.5-.6 1.5-1.4v-1.3c0-.2-.1-.3-.3-.4-.5-.4-.9-1-.9-1.7s.4-1.3.9-1.6c.2-.2.3-.3.3-.5zM17 15.1H7c-.3 0-.5-.2-.5-.5V9.4c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v5.2c0 .3-.2.5-.5.5z" } },
+	  custom46: { "path": { "d": "M14.6 8.9H9.4c-.3 0-.5.2-.5.5v5.2c0 .3.2.5.5.5h5.2c.3 0 .5-.2.5-.5V9.4c0-.3-.2-.5-.5-.5zm4.2-2.4c.3 0 .4-.2.4-.4v-.8c0-.3-.2-.5-.5-.5h-.8c-.2 0-.4.1-.4.4-.2.4-.6.8-1.2.8s-1-.4-1.1-.8c-.1-.3-.3-.4-.5-.4h-1.1c-.2 0-.4.1-.4.4-.2.4-.6.8-1.2.8s-1-.4-1.2-.8c0-.3-.2-.4-.4-.4H9.3c-.2 0-.4.1-.5.4-.1.4-.6.8-1.1.8-.5 0-1-.4-1.2-.8 0-.3-.2-.4-.4-.4h-.8c-.3 0-.5.2-.5.5v.8c0 .2.1.4.4.4.4.2.8.6.8 1.2s-.4 1-.8 1.1c-.3.1-.4.3-.4.5v1.1c0 .2.1.4.4.4.4.2.8.6.8 1.2s-.4 1-.8 1.2c-.3 0-.4.2-.4.4v1.1c0 .2.1.4.4.5.4.1.8.6.8 1.1s-.4 1-.8 1.2c-.3 0-.4.2-.4.4v.8c0 .3.2.5.5.5h.8c.2 0 .4-.1.4-.4.2-.4.6-.8 1.2-.8.5 0 1 .4 1.1.8.1.3.3.4.5.4h1.1c.2 0 .4-.1.4-.4.2-.4.6-.8 1.2-.8s1 .4 1.2.8c0 .3.2.4.4.4h1.1c.2 0 .4-.1.5-.4.1-.4.6-.8 1.1-.8s1 .4 1.2.8c0 .3.2.4.4.4h.8c.3 0 .5-.2.5-.5v-.8c0-.2-.1-.4-.4-.4-.4-.2-.8-.6-.8-1.2s.4-1 .8-1.1c.3-.1.4-.3.4-.5v-1.1c0-.2-.1-.4-.4-.4-.4-.2-.8-.6-.8-1.2s.4-1 .8-1.2c.3 0 .4-.2.4-.4V9.3c0-.2-.1-.4-.4-.5-.4-.1-.8-.6-.8-1.1s.4-1 .8-1.2zm-2.2 8.6c0 .8-.7 1.5-1.5 1.5H8.9c-.8 0-1.5-.7-1.5-1.5V8.9c0-.8.7-1.5 1.5-1.5h6.2c.8 0 1.5.7 1.5 1.5v6.2z" } },
+	  custom47: { "path": { "d": "M15.4 17.3H7.2c-.8 0-1.4.6-1.4 1.4 0 .3.2.5.4.5h10.1c.3 0 .5-.2.5-.5 0-.8-.6-1.4-1.4-1.4zm3.2-7.6l-3.8-3.6.6-.9c.1-.1 0-.3-.2-.4-1.1-.2-1.9.6-1.9.6-7.3 0-6.1 8.2-5.8 10.1.1.2.3.3.5.3h6.5c.2 0 .3-.2.2-.3-1.3-1.7-2-3.5-2.5-4.6 0-.2.2-.4.4-.3 1.7.9 2.4-.1 3.6.7.6.3 1.3.2 1.8-.3l.6-.6c.2-.2.2-.5 0-.7zm-4.9-.8c-.4 0-.7-.3-.7-.7s.3-.8.7-.8.7.4.7.8-.3.7-.7.7z" } },
+	  custom48: { "path": { "d": "M18.7 5.8h-2.4v-.5c0-.3-.2-.5-.5-.5H8.2c-.3 0-.5.2-.5.5v.5H5.3c-.3 0-.5.2-.5.4v3.2c0 1.2 1 2.1 2.2 2.1h1.1c.6 1.6 2.1 2.6 3.9 2.7 1.8 0 3.3-1.1 4-2.7h1c1.2 0 2.2-.9 2.2-2.1V6.2c0-.2-.2-.4-.5-.4zM7 10.1c-.4 0-.8-.3-.8-.7V7.2h1.5v2.9H7zm10.8-.7c0 .4-.4.7-.8.7h-.7V7.2h1.5v2.2zm-3.4 8.4h-.2c-.8 0-1.5-.7-1.5-1.5v-.5c0-.1-.1-.2-.2-.2h-1c-.1 0-.2.1-.2.2v.5c0 .8-.7 1.5-1.5 1.5h-.2c-.3 0-.5.2-.5.4v.5c0 .3.2.5.5.5h4.8c.3 0 .5-.2.5-.5v-.5c0-.2-.2-.4-.5-.4z" } },
+	  custom49: { "path": { "d": "M12 9.8c-1.2 0-2.2 1-2.2 2.2s1 2.2 2.2 2.2 2.2-1 2.2-2.2-1-2.2-2.2-2.2zm0 3.4c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2zm0-8.4C8 4.8 4.8 8 4.8 12S8 19.2 12 19.2s7.2-3.2 7.2-7.2S16 4.8 12 4.8zm0 12.7c0 .3-.2.5-.5.5-2.9-.3-5.2-2.6-5.5-5.5 0-.3.2-.5.5-.5H7c.2 0 .4.2.5.4.2 2.2 1.9 3.9 4.1 4.1.2.1.4.3.4.5v.5zm0-1.9c-2 0-3.6-1.6-3.6-3.6S10 8.4 12 8.4s3.6 1.6 3.6 3.6-1.6 3.6-3.6 3.6zm5.5-3.6H17c-.2 0-.4-.2-.5-.4-.2-2.2-1.9-3.9-4.1-4.1-.2-.1-.4-.3-.4-.5v-.5c0-.3.2-.5.5-.5 2.9.3 5.2 2.6 5.5 5.5 0 .3-.2.5-.5.5z" } },
+	  custom5: { "path": { "d": "M18.9 6.1c-2.4-.9-5.3-1.1-7.8-.3-2.2.7-4.5 2.4-4.8 4.9-.1.5-.1 1.1 0 1.6.1.2.2.5.3.8 0 .1.1.2.1.3l-.2.5C5.8 15 5.3 16.2 5 17.4c-.1.6-.4 1.3.1 1.7.3.1.6.1.8 0 .3-.1.3-.4.4-.7.2-1.3.6-2.6 1.3-3.7.3-.5.7-1 1.1-1.5.4-.4.9-1.1 1.5-.9.6.2.6.9.2 1.3s-.8.7-.8 1.3c0 .4.2.8.6 1.1.5.4 1.4.5 2 .5 1.3-.1 2.3-.5 3.3-1.2 1.4-1 1.9-2.6 2.2-4.2.1-.9.3-1.9.6-2.8.1-.4.3-.8.5-1.1.1-.2.3-.4.4-.6 0-.2-.1-.4-.3-.5z" } },
+	  custom50: { "path": { "d": "M18.4 13.5c-.6.3-1.2.4-1.8.4-.8 0-1.6-.2-2.2-.6h-.2c-.7.4-1.4.6-2.2.6s-1.5-.2-2.2-.6h-.2c-.6.4-1.4.6-2.2.6-.6 0-1.2-.1-1.8-.4-.1-.1-.3.1-.3.2v2.9c0 .6.3 1.1.8 1.4 1.2.5 2.5.9 3.9 1.1.3 0 .6-.2.6-.5v-1.8c0-.8.6-1.4 1.4-1.4.8 0 1.4.6 1.4 1.4v1.8c0 .3.3.5.6.5 1.3-.2 2.6-.6 3.8-1.1.6-.3.9-.8.9-1.4v-2.9c0-.1-.2-.3-.3-.2zm-11-1c.9 0 1.6-.4 2.1-1 .1-.1.3-.1.4 0 .5.6 1.2 1 2.1 1 .8 0 1.6-.4 2.1-1 .1-.1.2-.1.3 0 .5.6 1.3 1 2.1 1 1.4 0 2.5-1 2.6-2.1.1-.2 0-.4-.2-.5l-6-4.8c-.6-.4-1.3-.4-1.8 0L5 9.9c-.2.1-.2.3-.2.5.2 1.2 1.3 2.1 2.6 2.1z" } },
+	  custom51: { "path": { "d": "M9.7 6.1c.6.5 1.2 1.4 1.5 2.2 0 .1.2.3.3.3h.5c.3 0 .5 0 .7-.1.6-.2 1.1-.4 1.6-.9.7-.7 1-1.8.7-2.7-.9-.2-1.9 0-2.7.7-.2.3-.3.5-.5.8-.4-.6-.8-1.2-1.4-1.5-.3-.2-.8-.1-1 .3-.1.3 0 .7.3.9zm7.4 3.5c-2.5-1.3-3 .5-5.1.5s-2.6-1.8-5.1-.5c-2.4 1.4-1.7 5.8-.7 7.5.8 1.5 2.4 3 5.6 1.5h.4c3.2 1.5 4.8 0 5.6-1.5 1-1.7 1.7-6.1-.7-7.5z" } },
+	  custom52: { "path": { "d": "M19.2 8.4c0-.7 0-1.5-.1-2.3-.1-.6-.6-1.1-1.2-1.2-.8-.1-1.6-.1-2.3-.1-.2 0-.3.3-.2.4l3.4 3.4c.1.1.4 0 .4-.2zm-5.7-3c-.1-.2-.3-.2-.4-.2-1.8.5-3.6 1.5-5 2.9s-2.3 3.1-2.8 4.8c-.1.2 0 .4.1.5l5.2 5.2c.1.2.3.2.5.2 1.7-.6 3.4-1.5 4.8-2.9s2.4-3.1 2.9-4.9c0-.2 0-.4-.1-.5l-5.2-5.1zm-2 9.4c-.3.3-.7.3-1 0l-1.4-1.4c-.2-.2-.2-.7 0-1 .3-.3.8-.3 1.1 0l1.3 1.4c.3.2.3.7 0 1zm1.7-1.7c-.3.3-.8.3-1 0l-1.4-1.3c-.3-.3-.3-.8 0-1 .3-.3.8-.3 1 0l1.4 1.3c.3.3.3.7 0 1zm1.7-1.7c-.3.3-.8.3-1.1 0l-1.3-1.3c-.3-.3-.3-.8 0-1.1.3-.2.7-.2 1 0l1.4 1.4c.2.3.2.7 0 1zm-10.1 4c0 .8 0 1.7.1 2.5.1.6.6 1.1 1.2 1.2.9.1 1.7.1 2.5.1.2 0 .3-.3.2-.4l-3.6-3.5c-.1-.2-.4-.1-.4.1z" } },
+	  custom53: { "path": { "d": "M17.9 13.7h-.1c-.6 0-1-.5-1-1V9.5c0-2.8-2.5-5-5.4-4.7-2.4.3-4.2 2.4-4.2 4.9v2.9c0 .6-.5 1.1-1.1 1.1-.5 0-.8.3-.8.8v.5c0 .5.3.8.8.8h11.8c.5 0 .8-.3.8-.8v-.5c0-.5-.3-.8-.8-.8zm-4.3 3.6h-3.2c-.2 0-.3.1-.3.3.2.9 1 1.6 1.9 1.6s1.8-.6 1.9-1.6c0-.2-.1-.3-.3-.3z" } },
+	  custom54: { "path": { "d": "M6.5 11.8c1.6-.3 3-.9 4.4-1.6.5-.2 1.4-.7 1.8-.9.2 0 .3-.2.2-.3-.1-.7-.7-1.3-1.4-1.3H11v-.9c0-.3-.2-.5-.4-.5v-1c0-.3-.3-.5-.5-.5h-1c-.2 0-.5.2-.5.5v1c-.2 0-.4.2-.4.5v.9h-.5c-.8 0-1.5.7-1.5 1.5v2.3c0 .2.2.3.3.3zm10.8 4.8s1.7-2.7 1.9-6.6c0-.3-.2-.5-.5-.5-5.7.2-8.4 3.7-13.4 3.9-.3 0-.5.3-.5.5v1.8c0 .8.6 1.4 1.3 1.5 2.6.2 8 .5 11.1 1 .3.1.6-.2.5-.5-.1-.4-.2-.8-.4-1.1zm-.3-4.4c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.8.3.8.7-.4.7-.8.7z" } },
+	  custom55: { "path": { "d": "M7.7 14.6h3.1c.3 0 .5-.2.5-.4V7c0-.6-.5-1-1-1H7.8c-.4 0-.6.2-.6.6v7.6c0 .2.2.4.5.4zm10.5-7.2v7.7c0 .5-.4 1-.9 1H6.7c-.5 0-.9-.5-.9-1V7.4c-.8 0-1.5.7-1.5 1.5v7.2c0 .8.7 1.4 1.5 1.4h4.5c.3 0 .5.2.5.5s.2.5.5.5h1.4c.3 0 .5-.2.5-.5s.2-.5.5-.5h4.5c.8 0 1.5-.6 1.5-1.4V8.9c0-.8-.7-1.5-1.5-1.5zm-5 7.2h3c.4 0 .6-.2.6-.5V6.5c0-.3-.2-.5-.5-.5h-2.6c-.5 0-1 .4-1 1v7.2c0 .2.2.4.5.4z" } },
+	  custom56: { "path": { "d": "M15 7.3c-1.5 1.5-3.3-.4-5 1.3l-4.8 4.8c-.5.6-.5 1.5 0 2l1.7 1.7 1.7 1.7c.5.5 1.4.5 2 0l4.8-4.9c1.7-1.6-.2-3.5 1.4-5l.3-.4c.1-.1.1-.2 0-.3l-1.3-1.3c-.1-.1-.2-.1-.3 0l-.5.4zm-1.1 6.1l-1.7 1.7c-.2.2-.5.2-.7 0l-1.3-1.3-1.3-1.4c-.2-.2-.2-.4 0-.6l1.6-1.7c.2-.2.5-.2.7 0l1.4 1.3 1.3 1.4c.2.2.2.4 0 .6zm5.2-7.5l-.5-.5-.6-.5c-.1-.2-.4-.2-.6 0l-.6.6c-.1.1-.1.3 0 .4l1.3 1.3c.1.1.2.1.3 0l.6-.6c.2-.2.2-.5.1-.7z" } },
+	  custom57: { "path": { "d": "M12.7 12.6v5.9c0 .2.2.3.4.2 1.1-.7 4.6-2.6 4.6-2.6.5-.3.8-.8.8-1.3V9.5c0-.2-.2-.3-.4-.2L13 12.2c-.2.1-.3.3-.3.4zm-.5-1.6l5.2-2.9c.2-.1.2-.3 0-.4C16.3 7 12.7 5 12.7 5c-.4-.2-1-.2-1.4 0 0 0-3.6 2-4.7 2.7-.2.1-.2.3 0 .4l5.2 2.9c.1.1.3.1.4 0zM11 12.2L5.9 9.3c-.2-.1-.4 0-.4.2v5.3c0 .5.3 1 .8 1.2 0 0 3.5 2 4.6 2.7.2.1.4-.1.4-.2v-5.9c0-.1-.1-.3-.3-.4z" } },
+	  custom58: { "path": { "d": "M16.1 11c-.4 0-.8-.3-.7-.7 0-.4.3-.7.7-.7h2.1c.1 0 .2 0 .2-.1.2-.4.3-.7.5-1 0-.2-.1-.3-.3-.3h-1.5c-.4 0-.7-.3-.8-.7 0-.4.4-.8.8-.8H19c.1 0 .2-.1.2-.2v-.7c0-.3-.2-.5-.5-.5h-2.5c-.7 0-1.3.6-1.3 1.3 0 1.3-.9 2.5-2.2 2.9v-2c.5-.3.8-.9.7-1.5-.1-.6-.6-1.1-1.2-1.2-.9-.1-1.6.6-1.6 1.4 0 .6.3 1 .7 1.3v2C10 9.2 9.1 8 9.1 6.6c0-.7-.5-1.3-1.3-1.3H5.3c-.3 0-.5.2-.5.5v.7c0 .1.1.2.2.2h1.9c.4 0 .8.3.8.7 0 .4-.3.8-.7.8H5.4c-.2 0-.3.2-.2.3.1.3.2.7.4 1 .1.1.2.1.3.1h2c.4 0 .8.3.8.7 0 .4-.3.8-.7.8h-.6c-.2 0-.3.3-.2.4 1.1.9 2.4 1.5 4.1 1.5v5.5c0 .3.3.7.7.7.4 0 .8-.3.8-.7V13c1.7 0 3-.7 4-1.5.2-.2.1-.5-.1-.5h-.6z" } },
+	  custom59: { "path": { "d": "M16.4 7.4c.2 0 .4-.2.4-.4 0-.1-.1-.3-.3-.4-.3-.2-.8-1-.9-1.5-.1-.2-.3-.3-.5-.3H9.3c-.2 0-.4.1-.4.3-.2.5-.7 1.3-1 1.5-.1.1-.2.2-.2.4 0 .3.2.4.4.4h8.3zM7.7 17.7c0 .9.6 1.5 1.4 1.5h6.3c.8 0 1.4-.6 1.4-1.4v-.1c0-.2-.2-.4-.5-.4H8.1c-.2 0-.4.2-.4.4zm9.1-2.3v-6c0-.3-.2-.5-.5-.5H8.2c-.3 0-.5.2-.5.5v6c0 .2.2.4.5.4h8.1c.3 0 .5-.2.5-.4z" } },
+	  custom6: { "path": { "d": "M12 18.2H5.8c-.8 0-1.2-.8-.9-1.4l6.3-10.6c.3-.6 1.3-.6 1.6 0l6.3 10.6c.4.6-.1 1.4-.8 1.4H12z" } },
+	  custom60: { "path": { "d": "M19.2 10.9c-.6-3.5-3.6-6.1-7.2-6.1s-6.6 2.6-7.2 6.1c0 .2.2.4.4.2.3-.3.8-.5 1.3-.5.7 0 1.3.3 1.7.8.1.1.2.1.3 0 .4-.5 1-.8 1.7-.8s1.2.3 1.6.8c.1.1.3.1.4 0 .4-.5 1-.8 1.6-.8s1.3.3 1.7.8c.1.1.2.1.3 0 .4-.5 1-.8 1.7-.8.5 0 1 .2 1.3.5.2.2.4 0 .4-.2zm-4.3 5.4c-.4 0-.7.3-.7.7s-.4.8-.8.8-.7-.4-.7-.8v-3.3c0-.4-.3-.7-.7-.7s-.7.3-.7.7V17c0 1.2.9 2.2 2.1 2.2s2.2-1 2.2-2.2c0-.4-.3-.7-.7-.7z" } },
+	  custom61: { "path": { "d": "M17.5 4.8h-.9c-.3 0-.5.2-.5.5v.9c0 .3-.2.5-.5.5h-.5c-.2 0-.5-.2-.5-.5v-.9c0-.3-.2-.5-.4-.5h-1c-.3 0-.5.2-.5.5v.9c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-.9c0-.3-.2-.5-.5-.5h-1c-.2 0-.4.2-.4.5v.9c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-.9c0-.3-.2-.5-.5-.5h-.9c-.3 0-.5.2-.5.5v2.4c0 .8.6 1.4 1.4 1.4h9.2c.8 0 1.4-.6 1.4-1.4V5.3c0-.3-.2-.5-.5-.5zM16.4 11c0-.3-.2-.4-.4-.4H8c-.2 0-.4.1-.4.4l-1.1 7.6c-.1.3.2.6.5.6h3.1c.2 0 .5-.2.5-.5v-2.3c0-.8.6-1.5 1.4-1.5.8 0 1.4.6 1.4 1.4v2.4c0 .3.3.5.5.5H17c.3 0 .6-.2.5-.5L16.4 11z" } },
+	  custom62: { "path": { "d": "M18.5 16.8h-13c-.4 0-.7.3-.7.7 0 .4.3.7.7.7h13c.4 0 .7-.3.7-.7s-.3-.7-.7-.7zM5.8 15.4h8.1v-1c0-.3.2-.5.5-.5h2.4c.3 0 .5.2.5.5v1h.9c.3 0 .5-.3.5-.5V6.7c0-.2-.2-.5-.5-.5H5.8c-.3 0-.5.3-.5.5v8.2c0 .2.2.5.5.5zm2.1-6.3c0-.2.2-.5.5-.5h7c.2 0 .4.3.4.5v.5c0 .3-.2.5-.4.5h-7c-.3 0-.5-.2-.5-.5v-.5zm0 2.9c0-.3.2-.5.5-.5H13c.2 0 .4.2.4.5v.5c0 .2-.2.5-.4.5H8.4c-.3 0-.5-.3-.5-.5V12z" } },
+	  custom63: { "path": { "d": "M10.1 14.4h3.8c.3 0 .5-.2.5-.5v-3.8c0-.3-.2-.5-.5-.5h-3.8c-.3 0-.5.2-.5.5v3.8c0 .3.2.5.5.5zm8.4-1.7c.4 0 .7-.3.7-.7s-.3-.7-.7-.7h-1.2V9.8h1.2c.4 0 .7-.3.7-.7s-.3-.7-.7-.7h-1.2v-.2c0-.8-.7-1.5-1.5-1.5h-.2V5.5c0-.4-.3-.7-.7-.7s-.7.3-.7.7v1.2h-1.5V5.5c0-.4-.3-.7-.7-.7s-.7.3-.7.7v1.2H9.8V5.5c0-.4-.3-.7-.7-.7s-.7.3-.7.7v1.2h-.2c-.8 0-1.5.7-1.5 1.5v.2H5.5c-.4 0-.7.3-.7.7s.3.7.7.7h1.2v1.5H5.5c-.4 0-.7.3-.7.7s.3.7.7.7h1.2v1.5H5.5c-.4 0-.7.3-.7.7s.3.7.7.7h1.2v.2c0 .8.7 1.5 1.5 1.5h.2v1.2c0 .4.3.7.7.7s.7-.3.7-.7v-1.2h1.5v1.2c0 .4.3.7.7.7s.7-.3.7-.7v-1.2h1.5v1.2c0 .4.3.7.7.7s.7-.3.7-.7v-1.2h.2c.8 0 1.5-.7 1.5-1.5v-.2h1.2c.4 0 .7-.3.7-.7s-.3-.7-.7-.7h-1.2v-1.5h1.2zm-2.7 2.4c0 .4-.3.7-.7.7H8.9c-.4 0-.7-.3-.7-.7V8.9c0-.4.3-.7.7-.7h6.2c.4 0 .7.3.7.7v6.2z" } },
+	  custom64: { "path": { "d": "M12 4.8C8 4.8 4.8 8 4.8 12S8 19.2 12 19.2s7.2-3.2 7.2-7.2S16 4.8 12 4.8zm0 12.5c-2.9 0-5.3-2.4-5.3-5.3S9.1 6.7 12 6.7s5.3 2.4 5.3 5.3-2.4 5.3-5.3 5.3zm2.8-8.4l-4 1.4c-.2.1-.4.3-.5.5l-1.4 4c-.1.2.1.4.3.3l4-1.4c.2-.1.4-.3.5-.5l1.4-4c.1-.2-.1-.4-.3-.3zM12 13c-.5 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1z" } },
+	  custom65: { "path": { "d": "M17.3 16.1h-12c-.3 0-.5.2-.5.4v.1c0 .8.6 1.4 1.4 1.4h10.1c.8 0 1.5-.6 1.5-1.4v-.1c0-.2-.3-.4-.5-.4zm-.5-9.6H5.3c-.2 0-.4.2-.5.5 0 .6 0 1.8.1 2.5.3 2.2 1.5 4.1 3.1 5.1.1 0 .2.1.3.1h5c.1 0 .2-.1.2-.1 1-.6 1.8-1.4 2.3-2.5.3.1.6.1 1 .1 1.6 0 2.9-1.3 2.9-2.8s-1.3-2.9-2.9-2.9zm0 4.3h-.4c.3-.8.4-1.6.4-2.5v-.4c.8 0 1.4.7 1.4 1.5s-.6 1.4-1.4 1.4z" } },
+	  custom66: { "path": { "d": "M18.8 13.3l-3.5-3.5c-.6-.6-1.5-.6-2 0l-3.5 3.5c-.6.5-.6 1.4 0 2l3.5 3.5c.5.5 1.4.5 2 0l3.5-3.5c.5-.6.5-1.5 0-2zm-6.6 1.6c-.4.3-.9.3-1.2 0-.3-.4-.3-.9 0-1.2.3-.3.9-.3 1.2 0 .3.3.3.8 0 1.2zm2.7 2.7c-.4.3-.9.3-1.2 0-.3-.3-.3-.9 0-1.2.3-.3.9-.3 1.2 0 .3.3.3.9 0 1.2zm0-5.4c-.4.3-.9.3-1.2 0-.3-.4-.3-.9 0-1.2.3-.3.9-.3 1.2 0 .3.3.3.8 0 1.2zm2.7 2.7c-.3.3-.9.3-1.2 0-.3-.4-.3-.9 0-1.2.4-.3.9-.3 1.2 0 .3.3.3.8 0 1.2zM12.7 8V6.2c0-.8-.6-1.4-1.4-1.4H6.2c-.8 0-1.4.6-1.4 1.4v5.1c0 .8.6 1.4 1.4 1.4H8c.2 0 .3-.1.4-.1l.3-.3 3.5-3.6.3-.3c.1-.1.2-.2.2-.4zm-5.9 3.5c-.4 0-.8-.4-.8-.8s.4-.9.8-.9.9.4.9.9-.4.8-.9.8zm2-1.9c-.5 0-.9-.4-.9-.8s.4-.9.9-.9.8.4.8.9-.4.8-.8.8zm1.9-1.9c-.5 0-.9-.4-.9-.9s.4-.8.9-.8.8.4.8.8-.4.9-.8.9z" } },
+	  custom67: { "path": { "d": "M13 12.7l-.3-.5c-.1-.2-.3-.3-.6-.3 0 0-.1.1-.2.1l-.8.3c-.3-.3-.7-.5-1.1-.6l-.2-.9c0-.3-.3-.5-.6-.5h-.6c-.2 0-.5.2-.6.5l-.1.9c-.4.1-.8.3-1.1.6L6 12h-.3c-.2 0-.4.1-.5.3l-.3.5c-.1.2-.1.5.2.7l.7.6c-.1.2-.1.4-.1.6s0 .5.1.7l-.7.6c-.3.2-.3.5-.2.7l.3.5c.1.2.3.3.5.3H6l.8-.3c.3.3.7.5 1.1.6l.1.9c.1.3.4.5.6.5h.6c.3 0 .6-.2.6-.5l.2-.9c.4-.1.8-.4 1.1-.7l.8.3c.1.1.2.1.2.1.3 0 .5-.1.6-.3l.3-.5c.1-.2.1-.6-.2-.8l-.7-.5c.1-.3.1-.5.1-.7 0-.2 0-.4-.1-.6l.7-.6c.2-.2.3-.5.2-.8zm-4.1 3.7c-.9 0-1.6-.7-1.6-1.6s.7-1.7 1.6-1.7c.9 0 1.7.7 1.7 1.7s-.8 1.6-1.7 1.6zm10.1-7l-.5-.5v-.5-.5l.5-.5c.2-.1.2-.4.1-.6l-.2-.4c-.1-.1-.3-.2-.4-.2h-.2l-.7.3c-.3-.3-.6-.5-.9-.5l-.1-.8c-.1-.2-.3-.4-.5-.4h-.5c-.2 0-.4.2-.5.4l-.1.7c-.3.1-.6.3-.9.6l-.7-.4h-.1c-.2 0-.4.1-.5.3l-.2.4c-.1.2-.1.4.1.6l.6.4c-.1.2-.1.4-.1.6 0 .1 0 .3.1.5l-.6.4c-.2.2-.2.4-.1.6l.2.4c.1.2.3.3.5.3h.1l.7-.3c.3.2.6.4.9.5l.1.7c.1.2.3.4.5.4h.5c.2 0 .5-.2.5-.4l.1-.7c.3-.1.7-.3.9-.6l.7.3h.2c.1 0 .3-.1.4-.2l.2-.4c.1-.1.1-.4-.1-.5zm-3.1.3c-.8 0-1.4-.6-1.4-1.3s.6-1.3 1.4-1.3 1.3.6 1.3 1.3-.6 1.3-1.3 1.3z" } },
+	  custom68: { "path": { "d": "M12 4.8C8 4.8 4.8 8 4.8 12S8 19.2 12 19.2s7.2-3.2 7.2-7.2S16 4.8 12 4.8zm5.7 6.5h-1.9c-.1-1.7-.4-3.2-1-4.3 1.6.8 2.7 2.4 2.9 4.3zm-6.4-4.7v4.7H9.6c.1-2.3.9-4.1 1.7-4.7zm0 6.1v4.7c-.8-.6-1.6-2.4-1.7-4.7h1.7zm1.4 4.7v-4.7h1.7c-.1 2.3-.9 4.1-1.7 4.7zm0-6.1V6.6c.8.6 1.6 2.4 1.7 4.7h-1.7zM9.2 7c-.6 1.1-.9 2.6-1 4.3H6.3C6.5 9.4 7.6 7.8 9.2 7zm-2.9 5.7h1.9c.1 1.7.4 3.2 1 4.3-1.6-.8-2.7-2.4-2.9-4.3zm8.5 4.3c.6-1.1.9-2.6 1-4.3h1.9c-.2 1.9-1.3 3.5-2.9 4.3z" } },
+	  custom69: { "path": { "d": "M12.6 10.8c-1.3-1-2.7-.5-3.6.4-.4.3-.9.5-1.5.6-.7.2-1.4.5-1.9 1-1.3 1.3-1 2.9.8 4.7h.1v.1c1.1 1 2.1 1.6 3 1.6.7 0 1.3-.3 1.9-.8.5-.5.7-1.2.9-1.9.2-.5.4-1.1.7-1.4.6-.5.9-1.1.9-1.8.1-.4 0-1.1-.5-1.7 0 0-.3-.4-.8-.8zm-3 5.8c-.1.1-.2.2-.4.2s-.4-.1-.5-.2l-1.3-1.3c-.3-.3-.3-.7 0-.9s.7-.3.9 0l1.3 1.3c.3.2.3.6 0 .9zm1.2-2c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.6 1.2 1.2-.5 1.2-1.2 1.2zM19.1 6L18 4.9c-.2-.1-.6-.1-.8 0L16 6.2c-.2.2-.2.5 0 .7V7l-2.4 2.4c-.1.1-.1.3 0 .4.2.2.5.4.7.6.1.1.2.1.3 0L17 8h.1c.2.2.5.2.7 0l1.3-1.2c.1-.2.1-.5 0-.8z" } },
+	  custom7: { "path": { "d": "M6.7 18.7c-.8 0-1.4-.6-1.4-1.4V6.7c0-.8.6-1.4 1.4-1.4h10.6c.8 0 1.4.6 1.4 1.4v10.6c0 .8-.6 1.4-1.4 1.4H6.7z" } },
+	  custom70: { "path": { "d": "M11.5 15.3l-2.8-2.7c-.5-.6-1.5-.6-2 0l-1.8 1.7c-.1.2-.1.5 0 .7l.4.3.3.3 2.8 2.8.2.2.5.5c.2.1.5.1.7 0l1.7-1.7c.6-.6.6-1.5 0-2.1zm-4.5-1l.4-.3c.2-.2.4-.2.6 0l2.1 2c.2.2.2.5 0 .7l-.3.3c-.2.2-.5.2-.7 0L7 15c-.2-.2-.2-.5 0-.7zm3-2.5l2.2 2.2c.1 0 .1.1.2.1l1-.1c.2 0 .3-.1.3-.2v-.9c0-.1.1-.2.2-.2h.9c.1 0 .2-.1.2-.2v-.9c0-.1.1-.2.3-.2h.9c.1 0 .2-.1.2-.3v-.9c0-.1.1-.2.2-.2h.9c.2 0 .3-.1.3-.2v-.9c0-.1.1-.2.2-.2l1-.2c.1 0 .2-.2.1-.3L17 5c-.2-.2-.5-.2-.7 0L10 11.2c-.2.2-.2.4 0 .6z" } },
+	  custom71: { "path": { "d": "M17.1 7.4c-1.4-1.4-3.3-2.2-5.3-2.1-3.9.1-7 3.4-7 7.3v2.3c0 .8.6 1.4 1.4 1.4h1v1.2c0 .6.5 1.1 1.1 1.2.7.1 1.3-.5 1.3-1.2v-4.3c0-.6-.5-1.1-1.1-1.2-.7-.1-1.3.5-1.3 1.2v1.7h-.5c-.2 0-.5-.2-.5-.5v-1.8c0-3.1 2.6-5.8 5.6-5.9 1.6 0 3.1.5 4.2 1.7 1.1 1.1 1.8 2.5 1.8 4.1v1.9c0 .3-.3.5-.5.5h-.5v-1.7c0-.6-.5-1.1-1.1-1.2-.7-.1-1.3.5-1.3 1.2v4.3c0 .6.5 1.1 1.1 1.2.7.1 1.3-.5 1.3-1.2v-1.2h1c.8 0 1.4-.6 1.4-1.4v-2.3c0-1.9-.7-3.8-2.1-5.2z" } },
+	  custom72: { "g": { "path": { "d": "M18.5 4.8h-13c-.4 0-.7.3-.7.7s.3.7.7.7h5.8v1.5c-2.6.4-4.6 2.6-4.6 5.2v1.7c0 1.7 1.4 3.2 3.2 3.2h4.2c1.8 0 3.2-1.5 3.2-3.2v-1.7c0-2.7-2-4.9-4.6-5.2V6.2h5.8c.4 0 .7-.3.7-.7s-.3-.7-.7-.7zm-3.1 8.1c0 .7-.6 1.3-1.3 1.3H9.9c-.7 0-1.2-.6-1.3-1.3.1-1.8 1.5-3.3 3.4-3.3s3.3 1.5 3.4 3.3z" }, "circle": [{ "cx": "6.24", "cy": "18.24", "r": ".96" }, { "cx": "17.76", "cy": "18.24", "r": ".96" }] } },
+	  custom73: { "path": { "d": "M5.6 8.4h12.8c.3 0 .5-.3.4-.6-.3-1-.7-1.9-1.3-2.7-.1-.2-.5-.3-.7-.1-.6.6-1.3.9-2.2.9-.9 0-1.7-.4-2.3-1-.2-.1-.5-.1-.6 0-.6.6-1.5 1-2.3 1-.9 0-1.6-.3-2.2-.9-.3-.2-.6-.1-.7.1-.6.8-1.1 1.7-1.3 2.7-.1.3.1.6.4.6zm13.6 1.9c0-.2-.2-.5-.5-.5H5.3c-.3 0-.5.3-.5.5v.1c0 4.5 3.1 8.2 7.2 8.8 4.1-.6 7.2-4.3 7.2-8.8v-.1z" } },
+	  custom74: { "path": { "d": "M13.4 17.5H11c-.2 0-.4.2-.4.5v.7c0 .3.2.5.4.5h2.4c.3 0 .5-.2.5-.5V18c0-.3-.2-.5-.5-.5zM12.2 4.8C9.3 4.8 7 7.1 7 9.8c0 1.8.9 3.4 2.5 4.3.5.3.9.9 1 1.6.1.2.3.4.5.4h2.5c.3 0 .4-.2.5-.4.1-.7.5-1.3 1.1-1.6 1.4-.9 2.4-2.5 2.4-4.3 0-2.7-2.3-5-5.3-5zm-1.6 2.3c-.5.9-.7 1.9-.8 2.8 0 .9.2 1.8.5 2.6.1.2-.1.4-.3.3-2.2-1.1-2.1-5.3.3-6.1.2-.1.4.2.3.4zm1.9 5.7c-.1.2-.4.2-.5 0-.4-1-.5-2.1-.5-3.1s.1-2.1.5-3c.1-.2.4-.2.5 0 .3.9.4 2 .5 3-.1 1-.2 2.1-.5 3.1zm1.9 0c-.2.1-.4-.1-.3-.3.3-.9.4-1.8.5-2.7-.1-.8-.3-1.9-.8-2.7-.1-.2.1-.5.3-.4 2.4.8 2.5 5 .3 6.1z" } },
+	  custom75: { "path": { "d": "M12 4.8c-.4 0-.7.3-.7.7v13c0 .4.3.7.7.7 4 0 7.2-3.2 7.2-7.2S16 4.8 12 4.8zm5.7 6.5h-1.9c-.1-1.7-.4-3.2-1-4.3 1.6.8 2.7 2.4 2.9 4.3zm-5 6.1v-4.7h1.7c-.1 2.3-.9 4.1-1.7 4.7zm0-6.1V6.6c.8.6 1.6 2.4 1.7 4.7h-1.7zm2.1 5.7c.6-1.1.9-2.6 1-4.3h1.9c-.2 1.9-1.3 3.5-2.9 4.3zM8 9.6c.2.1.5.1.7-.1L10 8c.2-.2.2-.5 0-.6L8.7 6c-.2-.1-.4-.1-.6 0-.1 0-.2.1-.3.1-1.8 1.3-3 3.5-3 5.9 0 2.4 1.2 4.6 3 5.9.1 0 .2.1.3.1.2.1.4.1.6 0l1.3-1.4c.2-.1.2-.4 0-.6l-1.3-1.5c-.2-.2-.5-.2-.7-.1l-.5.4C7 14 6.7 13 6.7 12s.3-2 .8-2.8l.5.4z" } },
+	  custom76: { "path": { "d": "M12.7 13.3c-.1-.2-.3-.4-.5-.3H12c-2.6 0-4.8-2.2-4.8-4.8V8c0-.2-.3-.3-.4-.1-.2.2-.3.5-.4.8-.4 1.4.1 2.9 1.3 3.7.5.4 1 .6 1.6.7l.2.4c0 .1.1.1.1.2l.7.3c.1 0 .2.2.1.3l-.2.7c0 .1 0 .2.1.3l.4.1c.1.1.2.2.1.3l-.2.8c0 .1 0 .2.1.3l.6.2c.1.1.1.2.1.3l-.2.8c0 .1 0 .2.2.3l1.6.7c.1.1.2 0 .3-.1l.7-1.6c.1-.1.1-.3 0-.4l-1.3-3.7zm6.4-.3l-3.9-4c.2-.6.2-1.2 0-1.9-.5-1.3-1.7-2.2-3-2.3-2.1-.1-3.8 1.7-3.6 3.8.2 1.4 1.3 2.6 2.7 2.9.6.1 1.2 0 1.8-.1l.3.3c.1.1.1.1.2.1h.8c.1 0 .2.1.2.2l.1.8c0 .1.1.2.3.2h.4c.1 0 .2.1.2.2l.1.8c0 .1.1.2.3.2h.6c.1 0 .2.1.2.2l.1.8c0 .1.1.2.3.2H19c.1 0 .2-.1.2-.3v-1.7c0-.2 0-.3-.1-.4zm-7.6-4.1c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2c0 .6-.5 1.2-1.2 1.2z" } },
+	  custom77: { "path": { "d": "M7.7 10.1h.9c.2 0 .3-.1.3-.3v-.3c0-1.8 1.3-3.3 3.1-3.3s3.1 1.5 3.1 3.3v.3c0 .2.1.3.3.3h.9c.2 0 .3-.1.3-.3v-.3c0-2.6-2-4.7-4.6-4.7S7.4 6.9 7.4 9.5v.3c0 .2.1.3.3.3zm9.1 1.4H7.4c-.8 0-1.4.7-1.4 1.5v4.8c0 .8.6 1.4 1.4 1.4h9.4c.8 0 1.4-.6 1.4-1.4V13c0-.8-.6-1.5-1.4-1.5zm-3.5 3.9c-.2.3-.4.7-.3 1.1l.2.7c0 .3-.1.6-.4.6h-1.6c-.3 0-.4-.3-.4-.6l.2-.7c.1-.4-.1-.8-.3-1.1-.2-.3-.3-.7-.2-1.1.1-.6.6-1 1.2-1.1 1-.2 1.8.5 1.8 1.4 0 .3-.1.5-.2.8z" } },
+	  custom78: { "path": { "d": "M18.8 7l-4.3-2.1c-.2-.1-.5-.1-.7 0l-4 2-4-2c-.2-.1-.4-.1-.7 0-.2.1-.3.4-.3.6v10.8c0 .3.1.5.4.7l4.3 2.1c.2.1.5.1.7 0l4-2 4 2c.1.1.2.1.3.1.1 0 .2 0 .4-.1s.3-.4.3-.6V7.7c0-.3-.1-.5-.4-.7zm-1 1.4v5.7c0 .3-.4.6-.7.5-1.1-.5-.2-2.3-1-3.3s-1.7 0-2.7-1.5c-.8-1.4.4-2.4 1.4-2.9.2-.1.3-.1.4 0L17.5 8c.2.1.3.2.3.4zm-6.2 8.4c-.1.1-.3 0-.5-.1-.3-.3-.5-.7-.5-1.1 0-.7-1.2-.5-1.2-1.9 0-1.2-1.5-1.5-2.6-1.4-.3 0-.6-.2-.6-.5V7.5c0-.4.4-.6.7-.5l2.6 1.3c.1 0 .1.1.1.1h.1c1.1.6.9 1.2.4 1.9-.5.9-.7 0-1.4-.2s-1.5.2-1.2.7.9 0 1.4.5.5 1.2 1.9.7 1.7-.2 2.2.2.7 1.5 0 2.2c-.4.4-.6 1.3-.8 1.9-.1.1-.1.3-.2.3l-.4.2z" } },
+	  custom79: { "path": { "d": "M9.4 9.8c-1 0-1.7.8-1.7 1.7s.7 1.7 1.7 1.7 1.6-.7 1.6-1.7-.7-1.7-1.6-1.7zm9.6 5.3h-4.6v-1.9h.5c.2 0 .5-.2.5-.5v-1.4c0-.3-.3-.5-.5-.5h-.6c-.4-2.4-2.4-4.3-4.9-4.3-2.8-.1-5.1 2.3-5.1 5.1.1 2.8 2.4 5 5.2 5h8.7v.4c0 .3.3.5.5.5h.5c.3 0 .5-.2.5-.5v-1.2c0-.4-.3-.7-.7-.7zm-9.6-.5c-1.8 0-3.2-1.4-3.2-3.1s1.4-3.1 3.2-3.1 3.1 1.4 3.1 3.1-1.4 3.1-3.1 3.1z" } },
+	  custom8: { "path": { "d": "M11.3 5.1l-5.8 6.3c-.3.3-.3.9 0 1.2l5.8 6.3c.4.4 1 .4 1.4 0l5.8-6.3c.3-.3.3-.9 0-1.2l-5.8-6.3c-.4-.4-1-.4-1.4 0z" } },
+	  custom80: { "path": { "d": "M7 14.4c-1.4 0-2.4 1.1-2.4 2.4s1 2.4 2.4 2.4 2.4-1.1 2.4-2.4-1.1-2.4-2.4-2.4zm0 3.4c-.6 0-1-.5-1-1s.4-1 1-1 .9.5.9 1-.4 1-.9 1zm10-3.4c-1.3 0-2.4 1.1-2.4 2.4s1.1 2.4 2.4 2.4 2.4-1.1 2.4-2.4-1-2.4-2.4-2.4zm0 3.4c-.5 0-.9-.5-.9-1s.4-1 .9-1 1 .5 1 1-.4 1-1 1zm-.1-4.8c.5-.1 1 0 1.5.2.2.1.5 0 .6-.2 1.3-2.4-.7-3.4-2-4.1-.3-.1-.7.1-.7.5v1.4c0 .2-.2.5-.5.5-1.7-.3-3.3-2.2-5.2-2.2S8.4 11 8.4 11c-1.3 0-2.7-.1-3.3-.2-.3-.1-.5.2-.5.5 0 0 0 1.7 2.4 1.7 1.9 0 3.6 1.4 3.8 3.4 0 .5 0 1-.2 1.5 0 .1.1.3.3.3h2.2c.2 0 .3-.2.3-.3-.2-.5-.2-1-.2-1.5.2-1.8 1.8-3.4 3.7-3.4zM4.6 11.3zm6.3-3.7c0 .2.1.3.3.4l2.6.8c.2.1.4 0 .6-.2l.2-.4c.1-.2-.1-.4-.2-.4-.8-.1-2.3-.4-1.9-1.2.4-.7 1.3-.5 1.8-.3.2.1.5-.1.4-.3-.4-.8-1.2-1.3-2.1-1.2-1.2.1-1.9 1.2-1.8 2.4l.1.4z" } },
+	  custom81: { "path": { "d": "M18.5 4.8h-1.2c-3.7.2-8 1.1-8.2 1.2-.3.1-.5.4-.5.7v7.8c-.2-.1-.6-.1-.9-.1-1.6 0-2.9 1-2.9 2.4s1.3 2.4 2.9 2.4 2.9-1.1 2.9-2.4v-4.9c0-.3.1-.5.3-.5 1.2-.3 2.8-.6 5.9-.8.3 0 .5.2.5.5v2.5c-.3-.1-.6-.2-1-.2-1.6 0-2.9 1.1-2.9 2.4s1.3 2.4 2.9 2.4 2.9-1.1 2.9-2.4V5.5c0-.4-.3-.7-.7-.7zm-1.7 3.8c-2.9.2-4.4.4-5.7.7-.3.1-.5-.1-.5-.4v-.8c0-.2.1-.4.3-.5 1.3-.3 2.8-.6 5.9-.8.3 0 .5.2.5.5v.8c0 .3-.2.5-.5.5z" } },
+	  custom82: { "path": { "d": "M19.2 10.6h-5c-.3 0-.5.2-.5.4v.3c0 .4-.3.7-.7.7-.4 0-.8-.3-.8-.7V11c0-.2-.2-.4-.4-.4h-1.2c-1.4 0-2.7.8-3.3 2-.3-.1-.5-.1-.8-.1-1.2 0-2.2.9-2.2 2.1s1 2.2 2.2 2.2c.3 0 .5 0 .8-.1.6 1.1 1.9 1.9 3.3 2 2.3.1 4.3-1.7 4.3-4.1v-.4c-.1-.2.1-.5.3-.5l4.1-.9c.2-.1.4-.2.4-.5V11c0-.2-.2-.4-.5-.4zM6.5 15.4c-.4 0-.7-.4-.7-.8s.3-.7.7-.7c.1 0 .2 0 .3.1-.1.3-.1.6-.1.9 0 .1 0 .3.1.4-.1 0-.2.1-.3.1zM13 8.9c.4 0 .7-.3.7-.7V6c0-.4-.3-.7-.7-.7s-.8.3-.8.7v2.2c0 .4.4.7.8.7zm-3.5.2c.2.2.4.3.6.3.1 0 .3-.1.5-.2.3-.3.3-.7 0-1L9.2 6.5c-.3-.3-.7-.3-1-.1-.3.3-.4.8-.1 1l1.4 1.7zm6.3.3c.2 0 .4-.1.6-.3l1.4-1.7c.3-.3.2-.7 0-1-.4-.2-.8-.2-1 .1l-1.5 1.7c-.3.3-.2.8.1 1 .1.1.3.2.4.2z" } },
+	  custom83: { "path": { "d": "M17.9 9.4c.1.1.2.1.3 0l.4-.3c.8-.8.8-2.1 0-2.9l-1-1c-.8-.7-2-.4-2.6.3l-.4.3c-.1.1-.1.2 0 .3l3.3 3.3zm-4.3-2.2c-.1-.1-.3-.1-.4 0l-6.6 6.5c-.3.4-.6.8-.7 1.3l-1.1 3.2c0 .2 0 .5.1.6.1.3.4.4.6.4h.2s2.2-.7 3.3-1.1c.5-.1.9-.4 1.3-.7l6.6-6.6c.1-.1.1-.2 0-.3l-3.3-3.3zm-5 9.6c-.5.1-1.3.4-2 .6l.6-2c.1-.2.3-.4.5-.6l1.6 1.6c-.2.2-.5.3-.7.4z" } },
+	  custom84: { "path": { "d": "M18 15.4H6c-.4 0-.7.3-.7.7s.3.7.7.7h1l.4 2c0 .3.2.4.4.4h7.9c.2 0 .4-.1.5-.4l.4-2H18c.4 0 .7-.3.7-.7s-.3-.7-.7-.7zM7.9 13.9h3.4v-1.3c-.3-.2-.5-.5-.5-.8 0-.6.4-1 1-1s.9.4.9 1c0 .3-.2.6-.5.8v1.3h3.4c.3 0 .5-.2.5-.5v-.7c0-1.4-1.4-1.9-2.5-2.4-.8-.3-.9-.6-.9-.9 0-.3.2-.6.5-.8.4-.4.7-.9.7-1.6 0-1.2-.8-2.2-2.1-2.2-1.4 0-2.2 1-2.2 2.2 0 .7.3 1.2.7 1.6.3.2.5.5.5.8 0 .3-.1.6-.9.9-1.1.5-2.5 1-2.5 2.4v.7c0 .3.3.5.5.5z" } },
+	  custom85: { "path": { "d": "M18.7 5.8h-12v-.5c0-.3-.2-.5-.5-.5h-.9c-.3 0-.5.2-.5.5v13.4c0 .3.2.5.5.5h.9c.3 0 .5-.2.5-.5v-11h12c.3 0 .5-.2.5-.5v-1c0-.2-.2-.4-.5-.4zm-.9 3.3H9.6c-.8 0-1.4.7-1.4 1.5v5.2c0 .8.6 1.5 1.4 1.5h8.2c.8 0 1.4-.7 1.4-1.5v-5.2c0-.8-.6-1.5-1.4-1.5zm-1.4 4.1h-.6v2.4c0 .1-.1.2-.2.2h-1c-.1 0-.2-.1-.2-.2v-1.4c0-.2-.1-.3-.2-.3h-1c-.1 0-.2.1-.2.3v1.4c0 .1-.1.2-.3.2h-.9c-.2 0-.3-.1-.3-.2v-2.4h-.6c-.1 0-.1-.1-.1-.2l2.7-2.6c.1-.1.3-.1.3 0l2.7 2.6c.1.1.1.2-.1.2z" } },
+	  custom86: { "path": { "d": "M9.1 7.2h1c.1 0 .2-.1.2-.2v-.8h3.4V7c0 .1.1.2.2.2h1c.1 0 .2-.1.2-.2v-.8c0-.8-.6-1.4-1.4-1.4h-3.4c-.8 0-1.4.6-1.4 1.4V7c0 .1.1.2.2.2zm8.7 1.4H6.2c-.8 0-1.4.7-1.4 1.5v7.7c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4v-7.7c0-.8-.6-1.5-1.4-1.5zM12 17.3c-1.8 0-3.4-1.5-3.4-3.4s1.6-3.3 3.4-3.3 3.4 1.5 3.4 3.3-1.6 3.4-3.4 3.4zm1.4-4.1h-.7v-.7c0-.3-.2-.5-.5-.5h-.4c-.3 0-.5.2-.5.5v.7h-.7c-.3 0-.5.2-.5.5v.5c0 .2.2.4.5.4h.7v.8c0 .2.2.4.5.4h.4c.3 0 .5-.2.5-.4v-.8h.7c.3 0 .5-.2.5-.4v-.5c0-.3-.2-.5-.5-.5z" } },
+	  custom87: { "path": { "d": "M18 4.8H6c-.4 0-.7.3-.7.7V17c0 .4.3.8.7.8h.2v.7c0 .4.4.7.8.7h.4c.4 0 .8-.3.8-.7v-.7h7.6v.7c0 .4.4.7.8.7h.4c.4 0 .8-.3.8-.7v-.7h.2c.4 0 .7-.4.7-.8V5.5c0-.4-.3-.7-.7-.7zM7.4 16.3c-.4 0-.7-.3-.7-.7V7c0-.4.3-.8.7-.8h9.2c.4 0 .7.4.7.8v8.6c0 .4-.3.7-.7.7H7.4zm8-8.6H8.6c-.2 0-.4.2-.4.5v6.2c0 .3.2.5.4.5h6.8c.2 0 .4-.2.4-.5V8.2c0-.3-.2-.5-.4-.5zM14.2 12h-2c-.2.5-.8 1-1.4 1-1 0-1.7-.8-1.7-1.7s.7-1.7 1.7-1.7c.6 0 1.2.5 1.4 1h2c.4 0 .7.3.7.7s-.3.7-.7.7z" } },
+	  custom88: { "path": { "d": "M18.7 16.8H5.3c-.3 0-.5.2-.5.4v.1c0 1 1.3 1.9 2.4 1.9h9.6c1.1 0 2.4-.9 2.4-1.9v-.1c0-.2-.2-.4-.5-.4zM5.5 15.4h4.3c.3 0 .5-.3.5-.6V6.6c0-.1-.1-.2-.2-.1L5.3 15c-.1.1 0 .4.2.4zm6.7 0h6c.3 0 .5-.3.5-.6-.2-1.7-.5-7.1-6.6-10-.1 0-.3 0-.3.2v9.8c0 .3.2.6.4.6z" } },
+	  custom89: { "path": { "d": "M13.9 10.4c-.1-.1-.3-.1-.4.1-.3.4-.5 1-.5 1.7v2.7c0 .4-.4.7-.8.7-.3 0-.7-.3-.7-.7V6.7c0-1.9-1.6-2.2-2.8-1.7-.3.1-.6.3-.8.5-.1.2-.3.3-.5.4-.4.1-1.2-.3-1.6-.5-.2-.1-.5-.1-.6.1l-.3.4c-.2.2-.1.6.1.7.5.3 1.2.8 1.7.9.9.1 1.7-.2 2.3-.7.1-.2.4-.4.6-.1.5.7-1.4 3.8-1.4 8.4v.4c0 1.9 1.9 3.6 3.9 3.7 2 .1 3.7-1.5 3.7-3.6 0-1 .4-1.7.8-2.1.1-.1.1-.2 0-.3l-2.7-2.8zm4.6 2.3c-.2 0-.4-.1-.5-.2l-3.9-3.8c-.3-.3-.3-.8 0-1 .3-.3.8-.3 1 0l3.9 3.8c.3.3.3.7 0 1-.2.1-.3.2-.5.2z" } },
+	  custom9: { "path": { "d": "M14.9 4.8h-4.1c-.6 0-1.1.4-1.3.9L7 12.2c-.2.5.1 1 .6 1h4.2l-1.6 5.4c-.1.5.5.8.8.4l6.4-7.5c.4-.4 0-1.2-.6-1.2h-3.1l2.7-4.4c.3-.5 0-1.1-.6-1.1h-.9z" } },
+	  custom90: { "path": { "d": "M18.6 6.2l-5.9.9v8.3c0 .1-.1.2-.2.2h-1c-.1 0-.2-.1-.2-.2V7.3l-5.7.9h-.1c-.3 0-.7-.3-.7-.7 0-.3.2-.7.6-.8L9.9 6c.4-.7 1.2-1.2 2.1-1.2.6 0 1.2.2 1.7.7l4.7-.7c.4 0 .8.2.8.6 0 .4-.2.8-.6.8zm-8.7 8.9c.2-.2.2-.5.1-.7L8.1 9.8c-.1-.3-.4-.4-.7-.4s-.5.1-.6.4l-2 4.6c0 .2 0 .4.1.6 0 .1 1 1.5 2.5 1.5.9 0 1.7-.4 2.5-1.4zm-2.5-3.2l1.1 2.5H6.4l1-2.5zm9.8-3.5c-.1-.3-.4-.5-.6-.5s-.6.2-.7.5L14 12.9c-.1.2-.1.5 0 .7.1.1 1 1.5 2.5 1.5.9 0 1.7-.5 2.5-1.4.2-.3.2-.5.1-.8l-1.9-4.5zm-.6 2.1l1 2.5h-2.1l1.1-2.5zM12 17c-1.3 0-2.7.5-3.7 1.3-.1.1-.1.3-.1.4 0 .3.2.5.4.5h6.8c.2 0 .4-.2.4-.5 0-.1 0-.3-.1-.4-1-.8-2.4-1.3-3.7-1.3z" } },
+	  custom91: { "path": { "d": "M18.7 7.8c-.7-.2-1.4-.7-1.8-1.3-.3-.5-.3-1.7-1.1-1.7H8.2c-.8 0-.8 1.2-1.1 1.7-.5.7-1.2.9-1.9 1.4-.8.5-.1 2.4.1 3 .7 2.7 2.1 5.2 4.3 6.9.7.5 1.3 1 2.1 1.3.6.4 1.7-.6 2.2-.9 1.2-.9 2.3-2 3.1-3.3.7-1.1 1.2-2.3 1.6-3.6.1-.5.3-1 .4-1.5.1-.4.3-1.1.1-1.5 0-.2-.2-.4-.4-.5-1.1-.3.3.1 0 0zm-1.1 1.7c-.6 3.2-2.4 6.2-5.2 8l-.4.2-.4-.2c-3.4-2.1-4.7-5.5-5.2-8L6.3 9l.4-.3c.8-.4 1.5-1.2 1.9-2.1l.2-.4h6.4l.2.3c.4.9 1.1 1.8 2 2.3l.3.2-.1.5zm-5.9-1.8c-.5 0-1.9 0-2.1.2-.5.4-.7 1-1.2 1.4-.5.5-.3.9-.1 1.5.3 1 .8 2 1.4 2.9.3.4.7.8 1.1 1.2.1.1 1.2 1.3 1.2.6V8.2c0-.3 0-.5-.3-.5z" } },
+	  custom92: { "path": { "d": "M17.7 13.5L12.2 11h-.4l-5.5 2.5c-.3.2-.4.5-.2.8.6.8.9 1.9 1.1 2.4 0 .2.2.3.4.3 1.9.5 3.4 1.6 4.1 2.1.2.1.4.1.6 0 .7-.5 2.2-1.6 4.1-2.1.2 0 .4-.1.4-.3.1-.5.5-1.6 1.1-2.4.2-.2.1-.6-.2-.8zm-7.1 1.4c-.4 0-.8-.5-.8-1s.4-.9.8-.9.7.4.7.9-.3 1-.7 1zm2.8 0c-.4 0-.7-.5-.7-1s.3-.9.7-.9.8.4.8.9-.4 1-.8 1zm-5.1-3.8l2.9-1.4c.3-.1.7-.2 1.1-.1.2 0 .4.1.5.1l2.9 1.4c.2.1.4-.1.4-.2V9.8c0-.1-.1-.2-.2-.3-.2-.3-.5-.6-1.3-.6V7.5c0-.2-.1-.4-.2-.4-.3-.2-.7-.4-1.4-.5V5.3c0-.3-.3-.5-.5-.5h-1c-.2 0-.5.2-.5.5v1.3c-.7.1-1.1.3-1.4.5-.1 0-.2.2-.2.4v1.4c-.8 0-1.1.3-1.3.5-.1.1-.2.2-.2.4v1c0 .2.2.3.4.3z" } },
+	  custom93: { "g": { "path": { "d": "M10.2 12h7.1c.2 0 .4-.1.4-.4L19 7.1c.1-.3-.1-.6-.4-.6h-11l-.2-.7c-.1-.3-.4-.5-.7-.5H5.6c-.4 0-.8.3-.8.7 0 .4.3.7.7.7h.7l2.2 7.7c.1.3.4.5.7.5h8.4c.4 0 .7-.3.8-.7 0-.4-.3-.8-.8-.8h-7.3c-.3 0-.6-.2-.7-.5-.1-.4.2-.9.7-.9z" }, "circle": [{ "cx": "10.32", "cy": "17.52", "r": "1.2" }, { "cx": "16.08", "cy": "17.52", "r": "1.2" }] } },
+	  custom94: { "path": { "d": "M13.4 9.1V5.5c0-.4-.3-.7-.7-.7h-.9c-.4 0-.8.3-.8.7s.4.7.8.7h.2v2.9c0 1.6-1.3 2.9-2.9 2.9s-2.9-1.3-2.9-2.9V6.2h.3c.4 0 .7-.3.7-.7s-.3-.7-.7-.7h-1c-.4 0-.7.3-.7.7v3.6c0 2.4 1.9 4.3 4.3 4.3s4.3-1.9 4.3-4.3zm5.8 2.9c0-1.2-1-2.2-2.2-2.2s-2.1 1-2.1 2.2c0 .9.6 1.7 1.4 2v.6c0 1.7-1.4 3.2-3.2 3.2-1.6 0-2.8-1.1-3.2-2.5 0-.3-.2-.4-.4-.4H9c-.3 0-.6.3-.5.6.4 2.1 2.3 3.7 4.5 3.7h.1c2.6 0 4.7-2.1 4.7-4.6V14c.8-.3 1.4-1.1 1.4-2zm-2.2.7c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.8.3.8.7-.4.7-.8.7z" } },
+	  custom95: { "path": { "d": "M12.7 7.2v-1h.3c.3 0 .7-.3.7-.7 0-.4-.3-.7-.7-.7h-2c-.3 0-.7.3-.7.7 0 .4.3.7.7.7h.3v1c-3 .4-5.3 2.9-5.3 6 0 3.3 2.7 6 6 6s6-2.7 6-6c0-3.1-2.3-5.6-5.3-6zM12 17.8c-2.5 0-4.6-2.1-4.6-4.6S9.5 8.6 12 8.6s4.6 2.1 4.6 4.6-2.1 4.6-4.6 4.6zm1.6-7l-1.1 1.1c-.2-.1-.3-.1-.5-.1-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4c0-.2 0-.3-.1-.5l1.1-1.1c.3-.2.3-.6 0-.8-.2-.3-.6-.3-.8 0z" } },
+	  custom96: { "path": { "d": "M19.1 6.9L17.8 6c-.2-.2-.4-.2-.6-.2H13v-.5c0-.3-.3-.5-.5-.5h-1c-.2 0-.5.2-.5.5v.5H6.2c-.2 0-.4.2-.4.4v2c0 .2.2.4.4.4h11c.2 0 .4 0 .6-.2l1.2-.9c.2-.2.2-.4.1-.6zM17.8 11H13v-.7c0-.1-.1-.2-.3-.2h-1.4c-.2 0-.3.1-.3.2v.7H6.8c-.2 0-.4.1-.6.2l-1.2 1c-.2.1-.2.4 0 .6l1.2.9c.2.1.4.2.6.2h11c.2 0 .4-.2.4-.5v-1.9c0-.2-.2-.5-.4-.5zM13 17.2v-1.6c0-.1-.1-.2-.3-.2h-1.4c-.2 0-.3.1-.3.2v1.6c-.9.2-1.4.8-1.6 1.5-.1.3.1.5.3.5h4.6c.2 0 .4-.2.3-.5-.2-.7-.7-1.3-1.6-1.5z" } },
+	  custom97: { "path": { "d": "M14.4 13.1V7c0-1.5-1.2-2.7-2.6-2.7h-.1c-1.4 0-2.6 1.2-2.6 2.7v6.1c-.7.7-1.2 1.7-1.2 2.7 0 2.2 1.7 3.9 3.9 3.9s3.8-1.7 3.8-3.9c0-1-.4-2-1.2-2.7zm-.6 2.7H9.7c-.2 0-.3-.2-.3-.4.1-.6.4-1.1.8-1.4.2-.2.3-.4.3-.6V7c0-.7.6-1.2 1.2-1.2h.1c.6 0 1.1.5 1.1 1.2v.2h-.7c-.4 0-.7.3-.7.7s.3.7.7.7h.7v1h-.7c-.4 0-.7.3-.7.7s.3.7.7.7h.7v1h-.7c-.4 0-.7.3-.7.7s.3.7.7.7h.7c.1.3.2.4.3.6.5.3.8.9.9 1.4.1.2-.1.4-.3.4z" } },
+	  custom98: { "g": { "path": [{ "d": "M19.5 11.1l-1.8-1.8c-.1-.1-.3-.2-.4-.2h-1.9c-.3 0-.5.2-.5.5v3.8c0 .2.1.3.3.3.4-.2.7-.3 1.1-.3 1.1 0 2 .6 2.5 1.5.1.1.3.2.4.1.3-.3.5-.6.5-1.1v-2.4c0-.1-.1-.3-.2-.4z" }, { "d": "M13 7H4.8c-.3 0-.5.2-.5.4v6.5c0 .5.2.8.5 1.1.1.1.3.1.4-.1.4-.9 1.4-1.5 2.5-1.5 1.2 0 2.2.8 2.6 1.8.1.1.2.2.3.2H12c.8 0 1.4-.7 1.4-1.5V7.4c0-.2-.2-.4-.4-.4z" }], "circle": [{ "cx": "16.32", "cy": "16.32", "r": "1.44" }, { "cx": "7.68", "cy": "16.32", "r": "1.44" }] } },
+	  custom99: { "path": { "d": "M17.8 8.6h-4.1c-.1-.2-.3-.5-.5-.7L14.7 6c.3-.4.2-.8-.1-1.1s-.8-.1-1 .2l-1.7 2.1h-.8L9.5 5.1c-.3-.3-.7-.4-1.1-.2-.3.3-.3.7-.1 1.1l1.5 1.9c-.2.2-.3.5-.5.7H6.2c-.8 0-1.4.7-1.4 1.5v6.7c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4v-6.7c0-.8-.6-1.5-1.4-1.5zm-2 7.7c0 .3-.2.5-.4.5H6.7c-.2 0-.5-.2-.5-.5v-5.7c0-.3.3-.5.5-.5h8.7c.2 0 .4.2.4.5v5.7zm1.7-2.4c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7zm0-2.4c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7z" } }
+	};
+	module.exports.viewBox = '0 0 24 24';
+
+/***/ },
+/* 41 */
+/***/ function(module, exports) {
+
+	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
+	"use strict";
+	
+	module.exports = {
+	  ai: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#FFC35E" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#FFB446" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#fff" }, { "d": "M9.1 20.2c-.2 0-.3 0-.3-.2l-.4-.8H6.2l-.3.8c-.1.2-.2.2-.3.2-.2 0-.3-.1-.3-.3v-.1l1.6-3.9c0-.1.2-.3.4-.3s.4.2.5.3l1.5 3.9c0 .1.1.1.1.1 0 .2-.2.3-.3.3zm-1.8-3.9l-.9 2.4h1.9l-1-2.4zm3.2 3.9c-.1 0-.3-.1-.3-.3v-4c0-.1.2-.3.3-.3.2 0 .3.2.3.3v4c0 .2-.1.3-.3.3z", "fill": "#fff" }] },
+	  attachment: { "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M3.4 0c-1 0-1.9.8-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill": "#8199AF" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#617F9B" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] }, "path": { "d": "M11.5 15.6c.4-.5.4-1.2 0-1.6s-1.1-.4-1.6 0l-3.4 3.4c-.4.5-.4 1.2 0 1.6s1.1.4 1.5 0l2.1-2.1c.2-.1.2-.3 0-.5s-.3-.1-.4 0l-1.3 1.4c-.2.2-.5.2-.7 0-.2-.2-.2-.5 0-.7L9 15.8c.5-.5 1.3-.5 1.8 0s.5 1.3 0 1.7l-2.1 2.2c-.8.7-2.1.7-2.9 0-.8-.8-.8-2.1 0-2.9l3.5-3.5c.8-.8 2-.8 2.8 0 .8.8.8 2.1 0 2.9l-.3.4c0-.4-.1-.7-.4-1l.1-.1z", "fill": "#fff" } },
+	  audio: { "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill": "#379FD3" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.3 2.1h4.8z", "fill": "#2987C8" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }, { "d": "M12.7 12.8l-5.3.6v5.1c-.3-.1-.6-.1-1 0-.7.1-1.2.6-1.1 1.1.2.4.9.7 1.6.5.7-.1 1.2-.5 1.2-.9v-4l3.9-.5v3.1c-.3-.1-.6-.1-1 0-.8.1-1.3.6-1.1 1.1.1.4.9.7 1.6.5.7-.1 1.2-.5 1.2-1v-5.6z", "fill": "#fff" }] } },
+	  box_notes: { "path": [{ "fill": "#277A84", "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z" }, { "fill": "#1E5B60", "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z" }, { "opacity": ".5", "fill": "#fff", "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z" }, { "fill": "#fff", "d": "M11.7 14.8l.8-.8H5.4s-.1 0-.1.1v.5c0 .1.1.1.1.1h6.3zm-2.8 2.7l.8-.8H5.4s-.1 0-.1.1v.5l.1.2h3.5zM7 20.2l.1-.8H5.4s-.1 0-.1.2v.5c0 .1.1.1.1.1H7zm.3 0h.8c.1-.1.2-.1.2-.1l4.9-5s-.2.2-.6-.2c-.3-.3-.2-.5-.2-.5l-4.8 4.8c-.1.1-.1.2-.1.2 0 .1-.2.8-.2.8zm5.7-6.4l-.4.4v.2c0 .1.2.5.6.6 0 0 .1 0 .2-.1.1 0 .4-.4.4-.4s.1 0 0-.2c0-.2-.3-.5-.6-.6-.1 0-.2.1-.2.1z" }] },
+	  csv: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#45B058" }, { "d": "M9.1 16.2c.1.1.1.1.1.2s-.1.3-.3.3c0 0-.1-.1-.2-.1-.2-.3-.7-.5-1.1-.5-1 0-1.7.7-1.7 1.8s.7 1.8 1.7 1.8c.4 0 .9-.2 1.1-.5.1-.1.2-.1.2-.1.2 0 .3.2.3.3 0 .1 0 .1-.1.2-.3.3-.8.6-1.5.6-1.3 0-2.3-.9-2.3-2.3s1-2.3 2.3-2.3c.7 0 1.2.2 1.5.6zm2.6 4c-.7 0-1.2-.2-1.6-.5-.1-.1-.1-.2-.1-.2 0-.2.1-.3.3-.3h.1c.3.3.8.5 1.3.5.8 0 1-.4 1-.8 0-1.1-2.6-.5-2.6-2.1 0-.7.6-1.2 1.5-1.2.6 0 1.1.1 1.5.4 0 .1.1.2.1.2 0 .2-.2.3-.3.3h-.2c-.3-.3-.7-.4-1.1-.4-.6 0-.9.3-.9.7 0 1 2.6.4 2.6 2.1 0 .6-.4 1.3-1.6 1.3zM18 16l-1.5 3.9c-.1.2-.3.3-.5.3s-.4-.1-.4-.3L14 16v-.1c0-.1.1-.3.3-.3.1 0 .2.1.3.2l1.4 3.7 1.5-3.7c0-.1.1-.2.3-.2.1 0 .3.1.3.3 0 0 0 .1-.1.1z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.3 2.1h4.8z", "fill": "#349C42" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  eps: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#FFC35E" }, { "d": "M8 20.2H5.7c-.2 0-.4-.2-.4-.4v-3.7c0-.2.2-.4.4-.4H8c.2 0 .3.1.3.3 0 .1-.1.2-.3.2H5.9v1.5H8c.1 0 .2.1.2.2 0 .2-.1.3-.2.3H5.9v1.5H8c.2 0 .3.1.3.3 0 .1-.1.2-.3.2zm3.1-1.8H9.9V20c0 .1-.2.3-.3.3-.2 0-.3-.2-.3-.3v-3.9c0-.2.2-.4.4-.4h1.4c.9 0 1.4.6 1.4 1.4 0 .7-.5 1.3-1.4 1.3zm-.1-2.2H9.9v1.7H11c.6 0 .9-.3.9-.8s-.3-.9-.9-.9zm3.9 4.1c-.7 0-1.2-.2-1.6-.6 0 0-.1-.1-.1-.2s.1-.2.3-.2h.2c.3.3.7.5 1.2.5.8 0 1.1-.4 1.1-.8 0-1.1-2.7-.5-2.7-2.1 0-.7.7-1.3 1.6-1.3.5 0 1 .2 1.4.5.1.1.1.2.1.2 0 .2-.1.3-.3.3 0 0-.1 0-.1-.1-.4-.2-.8-.4-1.2-.4-.5 0-.9.3-.9.8 0 1 2.7.4 2.7 2.1 0 .6-.5 1.3-1.7 1.3z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8c-.9 0-2.4-.5-2.3-2.5 0 0 .1 2.1 2.3 2.1h4.8z", "fill": "#FFB446" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  excel: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#45B058" }, { "d": "M8.8 20.2c-.1 0-.2 0-.2-.1l-1.4-1.8-1.4 1.8c-.1.1-.1.1-.2.1-.2 0-.3-.1-.3-.2s0-.2.1-.2l1.4-1.9-1.3-1.8c-.1-.1-.1-.1-.1-.2s.1-.3.3-.3c.1 0 .1.1.2.1l1.3 1.8 1.3-1.8s.1-.1.2-.1.3.2.3.3c0 .1-.1.1-.1.2l-1.3 1.8L9 19.8l.1.1c0 .2-.2.3-.3.3zm3.7 0h-2c-.2 0-.4-.2-.4-.4v-3.9c0-.1.1-.3.3-.3.1 0 .2.2.2.3v3.8h1.9c.2 0 .3.1.3.2 0 .2-.1.3-.3.3zm2.6.1c-.6 0-1.1-.3-1.5-.6-.1-.1-.1-.1-.1-.2s.1-.3.2-.3.2 0 .2.1c.3.2.8.5 1.3.5.8 0 1-.5 1-.8 0-1.2-2.6-.5-2.6-2.1 0-.8.6-1.3 1.5-1.3.6 0 1.1.2 1.5.5v.2c0 .1-.1.3-.2.3s-.1-.1-.2-.1c-.3-.3-.7-.4-1.1-.4-.6 0-1 .3-1 .7 0 1 2.7.5 2.7 2.1 0 .7-.4 1.4-1.6 1.4z", "fill": "#fff" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#349C42" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#fff" }] },
+	  exe: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1.1.9 1.9 1.9 1.9h17.2c1 0 1.9-.8 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#8199AF" }, { "d": "M8 20.2H5.7c-.2 0-.4-.2-.4-.4v-3.7c0-.2.2-.4.4-.4H8c.2 0 .3.1.3.3 0 .1-.1.2-.3.2H5.9v1.5H8c.1 0 .2.1.2.2 0 .2-.1.3-.2.3H5.9v1.5H8c.2 0 .3.1.3.3 0 .1-.1.2-.3.2zm4.6.1c-.1 0-.2-.1-.2-.1L11 18.3l-1.4 1.9c-.1 0-.1.1-.2.1-.2 0-.3-.1-.3-.3 0-.1 0-.1.1-.2l1.4-1.9-1.3-1.8c-.1 0-.1-.1-.1-.2s.1-.2.3-.2c.1 0 .1 0 .2.1l1.3 1.7 1.3-1.7c0-.1.1-.1.2-.1s.2.1.2.2v.2l-1.4 1.8 1.5 1.9c0 .1.1.1.1.2s-.2.3-.3.3zm4-.1h-2.3c-.2 0-.4-.2-.4-.4v-3.7c0-.2.2-.4.4-.4h2.3c.2 0 .3.1.3.3 0 .1-.1.2-.3.2h-2.2v1.5h2.2c.1 0 .2.1.2.2 0 .2-.1.3-.2.3h-2.2v1.5h2.2c.2 0 .3.1.3.3 0 .1-.1.2-.3.2z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#617F9B" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  flash: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#E53C3C" }, { "d": "M8 16.2H5.9v1.4H8c.1 0 .2.1.2.3 0 .1-.1.2-.2.2H5.9v1.8c0 .2-.2.3-.3.3-.2 0-.3-.1-.3-.3v-3.8c0-.3.2-.4.4-.4h2.4c.1 0 .2.1.2.2 0 .2-.1.3-.3.3zm3.6 4h-2c-.2 0-.4-.2-.4-.4v-3.9c0-.2.1-.3.3-.3.1 0 .2.1.2.3v3.8h1.9c.2 0 .3.1.3.2 0 .2-.1.3-.3.3zm4.6 0c-.1 0-.2-.1-.3-.2l-.3-.8h-2.2l-.4.8c0 .1-.1.2-.2.2-.2 0-.3-.1-.3-.3v-.1l1.5-3.9c.1-.2.3-.3.5-.3s.4.1.4.3l1.6 3.9v.1c0 .1-.1.3-.3.3zm-1.7-4l-1 2.5h1.9l-.9-2.5z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#DE2D2D" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  gdoc: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#3C8CEA" }, { "d": "M5.3 14h8.1v.8H5.3zm0 1.8h8.1v.8H5.3zm0 1.8h8.1v.8H5.3zm0 1.8h4.6v.8H5.3z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#2D6FE4" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  gdocs: { "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill": "#3C8CEA" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#2D6FE4" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }, { "d": "M11 19.8l-1.2.3c-.5.1-.9.1-1.3.1-2.3 0-3.2-1.7-3.2-3 0-1.6 1.2-3.1 3.4-3.1.4 0 .8.1 1.2.2.6.2.9.4 1.1.5l-.7.7H10l.2-.3c-.2-.3-.8-.8-1.7-.8-1.3 0-2.3 1-2.3 2.5s1.1 3 2.9 3c.5 0 .8-.1 1.1-.2v-1.4l-1.3.1.7-.3h1.7l-.2.2-.1.1v1.4z", "fill": "#fff" }] } },
+	  gpres: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#F8BE46" }, { "d": "M5.3 14v4.5H10V14H5.3zm4.2 3.7H5.7v-2.8h3.8v2.8zm.3-2v.9h3.1v2.8H9.1v-1.1h-.4v1.9h4.7v-4.5H9.8z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#F6AD34" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  gsheet: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#20A971" }, { "d": "M5.3 14v6.2h8.1V14H5.3zm2.4 5.7H5.8v-1.3h1.9v1.3zm0-1.9H5.8v-1.3h1.9v1.3zm0-1.9H5.8v-1.3h1.9v1.3zm5.1 3.8H8.3v-1.3h4.5v1.3zm0-1.9H8.3v-1.3h4.5v1.3zm0-1.9H8.3v-1.3h4.5v1.3z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#189355" }, { "d": "M15.4 0v5.4c0 .7.4 2.2 2.3 2.2h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  html: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#F7622C" }, { "d": "M8.6 19.1s-.1 0-.1-.1l-2.9-1.2c-.1-.1-.3-.3-.3-.5s.2-.4.3-.5l2.9-1.2c0-.1.1-.1.1-.1.2 0 .3.2.3.4 0 .1 0 .2-.2.3l-2.6 1.1 2.6 1.1c.2.1.2.2.2.3 0 .2-.1.4-.3.4zm3.2-4.2l-1.7 5c0 .2-.2.2-.3.2-.2 0-.4-.1-.4-.3 0 0 0-.1.1-.1l1.6-5c.1-.1.2-.2.4-.2s.3.1.3.3v.1zm3.8 2.9L12.8 19c-.1.1-.1.1-.2.1s-.3-.2-.3-.4c0-.1.1-.2.2-.3l2.6-1.1-2.6-1.1c-.1-.1-.2-.2-.2-.3 0-.2.2-.4.3-.4.1 0 .1 0 .2.1l2.8 1.2c.2.1.3.3.3.5s-.1.4-.3.5z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#F54921" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  image: { "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1.1.9 1.9 1.9 1.9h17.2c1 0 1.9-.8 1.9-1.9V7.6L15.4 0h-12z", "fill": "#49C9A7" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#37BB91" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] }, "path": { "d": "M5.3 20.2v-7.9h7.8v7.9H5.3zm7-7.1H6.1v4.7h6.2v-4.7zm-3.5 3.1l1.4-1.9.5.8.5-.2.4 2.1H6.7L8 15.8l.8.4zm-1.5-1.3c-.3 0-.6-.3-.6-.6s.3-.6.6-.6.6.3.6.6-.3.6-.6.6z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#fff" } },
+	  keynote: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#DB7A2A" }, { "d": "M8.2 20.3c-.1 0-.2-.1-.2-.1l-1.7-2-.4.5V20c0 .1-.2.2-.3.2-.2 0-.3-.1-.3-.2v-4.1c0-.1.1-.2.3-.2.1 0 .3.1.3.2V18l1.9-2.2c.1-.1.1-.1.2-.1.2 0 .3.1.3.2s0 .1-.1.2l-1.5 1.7 1.7 2c0 .1.1.1.1.2s-.2.3-.3.3zm4.1-.1H9.9c-.2 0-.4-.2-.4-.4v-3.7c0-.2.2-.4.4-.4h2.4c.1 0 .2.1.2.3 0 .1-.1.2-.2.2h-2.2v1.5h2.1c.2 0 .3.1.3.2s-.1.3-.3.3h-2.1v1.5h2.2c.1 0 .2.1.2.3 0 .1-.1.2-.2.2zm4.6-4.1l-1.5 2.2V20c0 .1-.1.2-.3.2-.1 0-.3-.1-.3-.2v-1.7l-1.5-2.2v-.2c0-.1.1-.2.3-.2 0 0 .1 0 .2.1l1.3 2 1.4-2c0-.1.1-.1.2-.1s.3.1.3.2-.1.1-.1.2z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#D25B1F" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  link: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#0C8FE8" }, { "d": "M12.1 13.4c-.8-.8-2-.8-2.8 0l-1.2 1.1c-.8.8-.8 2 0 2.8.2.2.5.2.7 0 .2-.2.2-.4 0-.6-.5-.4-.5-1.1 0-1.5L9.9 14c.4-.4 1.1-.4 1.5 0 .5.4.5 1.1 0 1.5l-.5.6c.1.3.2.7.2 1.1l1-1c.8-.8.8-2.1 0-2.8zm-2.9 2.2c-.2.2-.2.5 0 .6.4.5.4 1.1 0 1.6l-1.1 1.1c-.5.4-1.1.4-1.6 0-.4-.4-.4-1.1 0-1.5l.6-.6c-.2-.3-.2-.7-.2-1.1l-1 1c-.8.8-.8 2.1 0 2.9.8.7 2 .7 2.8 0l1.2-1.2c.7-.8.7-2 0-2.8-.2-.2-.5-.2-.7 0z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#0973E2" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  mp4: { "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill": "#9B64B2" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#824B9E" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] }, "path": { "d": "M9.4 20.2c-.1 0-.3-.1-.3-.3v-3.4l-1.5 3.6c0 .1 0 .1-.1.1s-.1 0-.1-.1l-1.5-3.6v3.4c0 .2-.2.3-.3.3-.2 0-.3-.1-.3-.3v-3.8c0-.3.2-.5.5-.5.1 0 .3.1.4.3L7.5 19l1.3-3.1c.1-.2.3-.3.4-.3.3 0 .5.2.5.5v3.8c0 .2-.1.3-.3.3zm3.3-1.8h-1.2v1.5c0 .2-.1.3-.3.3-.2 0-.3-.1-.3-.3v-3.8c0-.3.2-.4.4-.4h1.4c.9 0 1.4.6 1.4 1.3 0 .8-.5 1.4-1.4 1.4zm0-2.2h-1.2v1.7h1.2c.5 0 .9-.4.9-.9s-.4-.8-.9-.8zm5.2 2.8h-.5v.9c0 .2-.1.3-.2.3-.2 0-.3-.1-.3-.3V19H15c-.2 0-.3-.1-.3-.3 0 0 0-.1.1-.2l1.8-2.7c.1-.1.2-.2.4-.2s.4.2.4.5v2.4h.5c.1 0 .2.1.2.3 0 .1-.1.2-.2.2zm-1-2.8l-1.6 2.3h1.6v-2.3z", "fill": "#fff" } },
+	  overlay: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#A382D8" }, { "d": "M5.3 12.9v5.3h5.5v-5.3H5.3zm2 2v5.3h5.5v-5.3H7.3z", "fill": "#fff" }, { "fill": "#CBBBEF", "d": "M7.3 14.9h3.5v3.3H7.3z" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#8C62CE" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  pack: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#4E74B7" }, { "d": "M12.4 15.3v4.5c0 .2-.2.4-.4.4H5.7c-.2 0-.4-.2-.4-.4v-4.5-.1l.6-1.8c.1-.2.2-.3.4-.3h5.1c.2 0 .4.1.4.3l.6 1.8v.1zm-.9 0l-.4-1.3H6.7l-.5 1.3h5.3z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#3A57A5" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  pages: { "path": [{ "d": "M3.4 0c-1 0-1.9.8-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#6A6AE2" }, { "d": "M7.1 18.4H5.9v1.5c0 .2-.2.3-.3.3-.2 0-.3-.1-.3-.3v-3.8c0-.3.2-.4.4-.4h1.4c.9 0 1.4.6 1.4 1.3s-.5 1.4-1.4 1.4zM7 16.2H5.9v1.7H7c.6 0 .9-.4.9-.9s-.3-.8-.9-.8zm4.6 4.1c-1.3 0-2.4-1-2.4-2.4s1.1-2.3 2.4-2.3c.6 0 1.2.2 1.5.6.1.1.1.1.1.2s-.1.3-.3.3c0 0-.1-.1-.2-.1-.2-.3-.7-.5-1.1-.5-1 0-1.8.7-1.8 1.8s.8 1.9 1.8 1.9c.5 0 .9-.3 1.2-.5v-1h-1.4c-.1 0-.2-.1-.2-.2s.1-.2.2-.2h1.5c.3 0 .4.1.4.4v.8c0 .7-.9 1.2-1.7 1.2zm4.3-.1c-.7 0-1.2-.2-1.6-.5-.1-.1-.1-.1-.1-.2 0-.2.1-.3.3-.3 0 0 .1 0 .1.1.3.2.8.4 1.3.4.8 0 1.1-.4 1.1-.7 0-1.2-2.7-.5-2.7-2.2 0-.7.6-1.2 1.5-1.2.6 0 1.1.2 1.5.5 0 0 .1.1.1.2s-.1.2-.3.2h-.2c-.3-.3-.7-.4-1.1-.4-.6 0-.9.3-.9.7 0 1 2.6.4 2.6 2.1 0 .7-.4 1.3-1.6 1.3z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#4F4FDA" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  pdf: { "path": [{ "fill": "#8C181A", "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z" }, { "fill": "#6B0D12", "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.3 2.1h4.8z" }, { "opacity": ".5", "fill": "#fff", "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z" }, { "fill": "#fff", "d": "M7.1 18.4H5.8v1.5c0 .2-.1.3-.3.3-.1 0-.2-.1-.2-.3v-3.8c0-.2.2-.4.4-.4h1.4c.9 0 1.4.6 1.4 1.3 0 .8-.5 1.4-1.4 1.4zM7 16.2H5.8v1.7H7c.6 0 .9-.3.9-.9s-.3-.8-.9-.8zm3.9 4H9.8c-.2 0-.4-.2-.4-.4v-3.7c0-.2.2-.4.4-.4h1.1c1.4 0 2.4.9 2.4 2.2s-.9 2.3-2.4 2.3zm0-4H10v3.5h.9c1.1 0 1.8-.8 1.8-1.8 0-.9-.6-1.7-1.8-1.7zm6.2 0h-2.2v1.4H17c.2 0 .3.1.3.3s-.2.2-.3.2h-2.1v1.8c0 .2-.1.3-.3.3-.2 0-.3-.1-.3-.3v-3.8c0-.2.2-.4.4-.4h2.4c.1 0 .2.1.2.2s-.1.3-.2.3z" }] },
+	  ppt: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#E34221" }, { "d": "M7.1 18.4H5.9v1.5c0 .2-.2.3-.3.3-.2 0-.3-.1-.3-.3v-3.8c0-.3.2-.4.4-.4h1.4c.9 0 1.4.6 1.4 1.3 0 .8-.5 1.4-1.4 1.4zM7 16.2H5.9v1.7H7c.6 0 .9-.4.9-.9s-.3-.8-.9-.8zm4.2 2.2H10v1.5c0 .2-.1.3-.3.3-.1 0-.3-.1-.3-.3v-3.8c0-.3.2-.4.4-.4h1.4c.9 0 1.5.6 1.5 1.3 0 .8-.6 1.4-1.5 1.4zm0-2.2H10v1.7h1.2c.5 0 .9-.4.9-.9s-.4-.8-.9-.8zm5.3 0h-1.3v3.7c0 .2-.1.3-.2.3-.2 0-.3-.1-.3-.3v-3.7h-1.2c-.2 0-.3-.1-.3-.3 0-.1.1-.2.3-.2h3c.1 0 .2.1.2.2 0 .2-.1.3-.2.3z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#DC3119" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  psd: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1.1.9 1.9 1.9 1.9h17.2c1 0 1.9-.8 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#0C77C6" }, { "d": "M7.1 18.4H5.9v1.5c0 .2-.2.3-.3.3-.2 0-.3-.1-.3-.3v-3.8c0-.3.2-.4.4-.4h1.4c.9 0 1.4.6 1.4 1.3 0 .8-.5 1.4-1.4 1.4zM7 16.2H5.9v1.7H7c.6 0 .9-.4.9-.9s-.3-.8-.9-.8zm3.9 4.1c-.7 0-1.2-.3-1.6-.6-.1-.1-.1-.1-.1-.2s.1-.3.3-.3c0 0 .1 0 .1.1.4.2.8.4 1.3.4.8 0 1.1-.4 1.1-.7 0-1.2-2.7-.5-2.7-2.2 0-.7.7-1.2 1.5-1.2.6 0 1.1.2 1.5.5.1 0 .1.1.1.2s-.1.2-.3.2H12c-.4-.3-.8-.4-1.2-.4-.5 0-.9.3-.9.7 0 1 2.6.4 2.6 2.1 0 .7-.4 1.3-1.6 1.3zm4.2-.1H14c-.3 0-.4-.2-.4-.4v-3.7c0-.3.1-.4.4-.4h1.1c1.4 0 2.3.9 2.3 2.2 0 1.3-.9 2.3-2.3 2.3zm0-4h-1v3.5h1c1.1 0 1.7-.8 1.7-1.8s-.6-1.7-1.7-1.7z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#0959B7" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  rtf: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#00A1EE" }, { "d": "M7.4 18.3l.9 1.5.1.1c0 .2-.2.3-.3.3-.1 0-.2-.1-.2-.1l-1.1-1.7h-.9v1.5c0 .2-.2.3-.3.3-.2 0-.3-.1-.3-.3V16c0-.2.2-.4.4-.4h1.4c.8 0 1.4.6 1.4 1.4 0 .8-.5 1.3-1.1 1.3zm-1.5-2.2v1.8H7c.6 0 .9-.4.9-.9s-.3-.9-.9-.9H5.9zm6.5 0h-1.2v3.8c0 .2-.1.3-.3.3-.2 0-.3-.1-.3-.3v-3.8H9.4c-.1 0-.2-.1-.2-.2s.1-.3.2-.3h3c.1 0 .3.2.3.3 0 .1-.2.2-.3.2zm3.9 0h-2.2v1.5h2.1c.2 0 .3.1.3.3 0 .1-.1.2-.3.2h-2.1v1.8c0 .2-.1.3-.3.3-.2 0-.3-.1-.3-.3V16c0-.2.2-.4.4-.4h2.4c.1 0 .2.2.2.3 0 .1-.1.2-.2.2z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#0089E9" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  slide: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#1AB6D9" }, { "d": "M5.3 13v7.2h7.5V13H5.3zm6.8 5.8H6v-4.4h6.1v4.4z", "fill": "#fff" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#13A3CF" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#fff" }] },
+	  stypi: { "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill": "#DDD965" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#C1BC45" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }, { "d": "M12.5 13.1H5.9c-.3 0-.6.2-.6.5v6c0 .4.3.6.6.6h5l2.2-2.2v-4.4c0-.3-.2-.5-.6-.5z", "fill": "#fff" }, { "fill": "#DBD75D", "d": "M6.7 16.3h5.1v.6H6.7zm0-1.3h5.1v.6H6.7zm0 2.7H10v.6H6.7z" }] } },
+	  txt: { "path": [{ "d": "M3.4 0c-1 0-1.9.8-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#F9CA06" }, { "d": "M8.5 16.1H7.3v3.8c0 .2-.1.3-.3.3-.1 0-.3-.1-.3-.3v-3.8H5.5c-.1 0-.2-.1-.2-.2s.1-.3.2-.3h3c.2 0 .3.2.3.3 0 .1-.1.2-.3.2zm4.4 4.1c-.1 0-.1 0-.2-.1l-1.4-1.9-1.4 1.9c0 .1-.1.1-.2.1s-.3-.1-.3-.3l.1-.1 1.5-2L9.6 16l-.1-.1c0-.2.2-.3.3-.3.1 0 .2 0 .2.1l1.3 1.7 1.3-1.7c.1-.1.1-.1.2-.1.2 0 .3.1.3.3 0 0 0 .1-.1.1l-1.3 1.8 1.4 2c.1 0 .1.1.1.1 0 .2-.1.3-.3.3zm4.2-4.1h-1.2v3.8c0 .2-.1.3-.3.3-.1 0-.3-.1-.3-.3v-3.8h-1.2c-.1 0-.2-.1-.2-.2s.1-.3.2-.3h3c.2 0 .3.2.3.3 0 .1-.1.2-.3.2z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.3 2.1h4.8z", "fill": "#F7BC04" }, { "d": "M15.4 0v5.4c0 .7.4 2.2 2.3 2.2h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  unknown: { "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill": "#8199AF" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#617F9B" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  video: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#8E4C9E" }, { "d": "M10.7 17.1c0 .1-.1.2-.2.3 0 .1-1.9 1.7-4.4 2.7h-.5c-.1-.1-.2-.2-.2-.4 0-.1-.1-1.3-.1-2.6s.1-2.6.1-2.6c0-.2.1-.3.2-.4.1-.1.2-.1.3-.1h.2c2.5 1 4.4 2.6 4.4 2.7.1.1.2.2.2.4z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#713985" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  visio: { "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#496AB3" }, { "d": "M9.3 16l-1.5 3.9c-.1.2-.3.3-.5.3s-.4-.1-.4-.3L5.3 16v-.1c0-.1.1-.3.3-.3.1 0 .2.1.3.2l1.4 3.7 1.5-3.7c0-.1.1-.2.3-.2.1 0 .3.1.3.3 0 0 0 .1-.1.1zm1.2 4.2c-.1 0-.3-.1-.3-.3v-4c0-.2.2-.3.3-.3.2 0 .3.1.3.3v4c0 .2-.1.3-.3.3zm3 0c-.7 0-1.2-.2-1.6-.5-.1-.1-.1-.2-.1-.2 0-.2.1-.3.3-.3h.1c.4.3.8.5 1.3.5.8 0 1.1-.4 1.1-.7 0-1.2-2.7-.6-2.7-2.2 0-.7.7-1.2 1.5-1.2.6 0 1.1.2 1.5.5.1 0 .1.1.1.2s-.1.2-.3.2h-.1c-.4-.3-.8-.4-1.2-.4-.5 0-.9.3-.9.7 0 1 2.6.4 2.6 2.1 0 .7-.4 1.3-1.6 1.3z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#374FA0" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  webex: { "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M3.4 0c-1 0-1.9.9-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill": "#80BC4B" }, { "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#60AB38" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] }, "path": [{ "d": "M9.2 20.2c1.9-.1 3.4-1.7 3.4-3.7 0-1.9-1.5-3.5-3.4-3.6v7.3z", "fill": "#CFE8AF" }, { "d": "M8.8 20.2c-2-.1-3.5-1.7-3.5-3.7s1.5-3.5 3.5-3.6v7.3z", "fill": "#fff" }] },
+	  word: { "path": [{ "d": "M3.4 0c-1 0-1.9.8-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#14A9DA" }, { "d": "M6.8 20.2H5.7c-.2 0-.4-.2-.4-.4v-3.7c0-.2.2-.4.4-.4h1.1c1.4 0 2.4 1 2.4 2.3 0 1.2-1 2.2-2.4 2.2zm0-4h-.9v3.5h.9c1.1 0 1.8-.8 1.8-1.7 0-1-.6-1.8-1.8-1.8zm5.4 4.1c-1.3 0-2.2-1-2.2-2.3s.9-2.4 2.2-2.4c1.4 0 2.3 1 2.3 2.4 0 1.3-.9 2.3-2.3 2.3zm0-4.2c-1 0-1.6.8-1.6 1.9 0 1 .6 1.8 1.6 1.8 1.1 0 1.7-.8 1.7-1.8 0-1.1-.6-1.9-1.7-1.9zm7 .2v.2c0 .1-.1.2-.2.2s-.2 0-.2-.1c-.3-.3-.7-.5-1.1-.5-1 0-1.8.8-1.8 1.9 0 1 .8 1.8 1.8 1.8.4 0 .8-.2 1.1-.5 0-.1.1-.1.2-.1s.2.1.2.3v.1c-.4.4-.9.7-1.5.7-1.3 0-2.4-1-2.4-2.4s1.1-2.3 2.4-2.3c.6 0 1.1.3 1.5.7z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#0F93D0" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  xml: { "path": [{ "d": "M3.4 0c-1 0-1.9.8-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#FC7B24" }, { "d": "M8.8 20.2c-.1 0-.2 0-.2-.1l-1.4-1.9-1.4 1.9c-.1.1-.2.1-.2.1-.2 0-.3-.1-.3-.3v-.1l1.5-2L5.4 16v-.1c0-.2.1-.3.3-.3 0 0 .1 0 .2.1l1.3 1.7 1.3-1.7c0-.1.1-.1.2-.1s.2.1.2.3v.1l-1.4 1.8 1.5 2v.1c0 .2-.1.3-.2.3zm5.4 0c-.2 0-.3-.1-.3-.3v-3.5l-1.5 3.7c0 .1-.1.1-.1.1-.1 0-.2 0-.2-.1l-1.5-3.7v3.5c0 .2-.1.3-.3.3-.1 0-.2-.1-.2-.3v-3.8c0-.3.2-.5.4-.5s.4.1.5.3l1.3 3.1 1.3-3.1c0-.2.2-.3.4-.3.3 0 .5.2.5.5v3.8c0 .2-.2.3-.3.3zm3.9-.1h-2c-.2 0-.4-.1-.4-.4v-3.8c0-.2.1-.3.3-.3.1 0 .2.1.2.3v3.7h1.9c.2 0 .3.2.3.3 0 .1-.1.2-.3.2z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#FB5C1B" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } },
+	  zip: { "path": [{ "d": "M3.4 0c-1 0-1.9.8-1.9 1.9v20.2c0 1 .9 1.9 1.9 1.9h17.2c1 0 1.9-.9 1.9-1.9V7.6L15.4 0h-12z", "fill-rule": "evenodd", "clip-rule": "evenodd", "fill": "#8199AF" }, { "d": "M8.4 20.2H5.6c-.2 0-.3-.1-.3-.3v-.2l2.6-3.5H5.5c-.1 0-.2-.1-.2-.2 0-.2.1-.3.2-.3h2.8c.2 0 .3.1.3.3 0 .1 0 .2-.1.2L6 19.7h2.4c.1 0 .3.1.3.3 0 .1-.2.2-.3.2zm1.5.1c-.1 0-.3-.2-.3-.3v-4.1c0-.1.2-.2.3-.2.2 0 .3.1.3.2V20c0 .1-.1.3-.3.3zm3.3-1.9H12V20c0 .1-.1.3-.3.3-.2 0-.3-.2-.3-.3v-3.9c0-.2.2-.4.4-.4h1.4c.9 0 1.4.6 1.4 1.4s-.5 1.3-1.4 1.3zm0-2.2H12v1.7h1.2c.5 0 .9-.3.9-.8s-.4-.9-.9-.9z", "fill": "#fff" }], "g": { "fill-rule": "evenodd", "clip-rule": "evenodd", "path": [{ "d": "M22.5 7.6V8h-4.8s-2.4-.5-2.3-2.5c0 0 .1 2.1 2.2 2.1h4.9z", "fill": "#617F9B" }, { "d": "M15.4 0v5.5c0 .6.4 2.1 2.3 2.1h4.8L15.4 0z", "opacity": ".5", "fill": "#fff" }] } }
+	};
+	module.exports.viewBox = '0 0 24 24';
+
+/***/ },
+/* 42 */
+/***/ function(module, exports) {
+
+	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
+	"use strict";
+	
+	module.exports = {
+	  account: { "path": { "d": "M19 12.3c0-.5-.4-.7-.5-.7h-5.3c-.4 0-.5.5-.5.5v5.7H19v-5.5zm-3.6 4c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.5.5-.5h.5c.2 0 .5.3.5.5v.5zm0-2.5c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-.4c0-.3.2-.5.5-.5h.5c.2 0 .5.2.5.5v.4zm2.4 2.5c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.5.5-.5h.5c.2 0 .5.3.5.5v.5zm0-2.5c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-.4c0-.3.2-.5.5-.5h.5c.2 0 .5.2.5.5v.4zm-3.6-4.1V6.9c0-.5-.4-.7-.5-.7H5.6c-.5 0-.6.5-.6.6v11h6.3v-7.1s0-.5.5-.5h1.9s.5-.3.5-.5zm-6.5 6.4c0 .2-.2.4-.5.4h-.5c-.2 0-.5-.2-.5-.4v-.5c0-.3.3-.5.5-.5h.5c.3 0 .5.2.5.5v.5zm0-2.5c0 .2-.2.5-.5.5h-.5c-.2 0-.5-.3-.5-.5v-.5c0-.3.3-.5.5-.5h.5c.3 0 .5.2.5.5v.5zm0-2.5c0 .3-.2.5-.5.5h-.5c-.2 0-.5-.2-.5-.5v-.4c0-.3.3-.5.5-.5h.5c.3 0 .5.2.5.5v.4zm0-2.4c0 .3-.2.5-.5.5h-.5c-.2 0-.5-.2-.5-.5v-.5c0-.3.3-.5.5-.5h.5c.3 0 .5.2.5.5v.5zm2.6 7.4c0 .2-.2.4-.5.4h-.4c-.3 0-.5-.2-.5-.4v-.5c0-.3.2-.5.5-.5h.4c.3 0 .5.2.5.5v.5zm0-2.5c0 .2-.2.5-.5.5h-.4c-.3 0-.5-.3-.5-.5v-.5c0-.3.2-.5.5-.5h.4c.3 0 .5.2.5.5v.5zm0-2.5c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-.4c0-.3.2-.5.5-.5h.4c.3 0 .5.2.5.5v.4zm0-2.4c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-.5c0-.3.2-.5.5-.5h.4c.3 0 .5.2.5.5v.5zm2.7 0c0 .3-.3.5-.5.5H12c-.3 0-.5-.2-.5-.5v-.5c0-.3.2-.5.5-.5h.5c.2 0 .5.2.5.5v.5z" } },
+	  announcement: { "path": { "d": "M11 17.8l-.3-.3c-.5-.3-.5-.9-.5-1.2v-.8c0-.3-.2-.5-.4-.5H8c-.3 0-.5.2-.5.5v2.3c0 .8.5 1.4 1.2 1.4h1.5c.9 0 1-.6 1-.6s.1-.5-.2-.8zm6.8-8.2V5.5c0-.7-1-.9-1.4-.4l-2.7 2.5c-.5.3-1 .5-1.5.5H7.6C6 8.1 4.8 9.5 4.8 11v.1c0 1.5 1.2 2.7 2.8 2.7h4.6c.6 0 1.1.2 1.5.6l2.7 2.6c.4.4 1.4.3 1.4-.4v-4.1c.9 0 1.4-.6 1.4-1.5 0-.8-.6-1.4-1.4-1.4z" } },
+	  answer_best: { "title": {}, "path": [{ "d": "M11.9 5.2c-4 0-7.2 3-7.2 6.7 0 1.2.3 2.3.9 3.3.1.1.1.2 0 .4L5 17.7c-.2.4.2.7.6.6l2.1-.8c.1 0 .3 0 .4.1 1.1.6 2.4 1 3.8 1 4 0 7.2-3 7.2-6.7s-3.2-6.7-7.2-6.7zm3.4 5.2l-3.6 3.7c-.2.1-.3.2-.5.2s-.4-.1-.5-.2l-1.8-1.8c-.2-.2-.2-.4 0-.5l.5-.5c.1-.2.3-.2.5 0l1.3 1.3 3.1-3.2c.2-.2.4-.2.5 0l.5.5c.2.1.2.4 0 .5z" }, { "fill-opacity": ".65", "d": "M24 24v-9.1L14.9 24H24zm-1-3.2l-.8.7v.1l.2 1.1c0 .1-.1.1-.1.1l-.9-.5c-.1-.1-.1-.1-.1 0l-1 .5s-.1 0-.1-.1l.2-1.1v-.1l-.8-.7c0-.1 0-.2.1-.2l1-.2h.1l.4-1c0-.1.1-.1.2 0l.4 1h.1l1 .2c.1 0 .1.1.1.2z" }] },
+	  answer_private: { "title": {}, "path": [{ "fill-opacity": ".65", "d": "M21.4 20.2c-.3 0-.5.2-.5.4v.3h.9v-.3c0-.2-.2-.4-.4-.4z" }, { "fill-opacity": ".65", "d": "M24 24v-9.1L14.9 24H24zm-1.2-1.6c0 .2-.2.4-.4.4h-2.1c-.2 0-.4-.2-.4-.4v-1.2c0-.2.2-.3.4-.3h.1v-.3c0-.5.4-.9 1-.9s.9.4.9.9v.3h.1c.2 0 .4.1.4.3v1.2z" }, { "d": "M12 5.3c-4 0-7.2 3-7.2 6.7 0 1.2.3 2.3.9 3.3.1.1.1.3 0 .4l-.6 2.1c-.2.4.2.7.6.6l2.1-.7c.1-.1.3-.1.4 0 1.1.7 2.4 1 3.8 1 4 0 7.2-3 7.2-6.7S16 5.3 12 5.3zm3.5 5.2l-3.7 3.7c-.2.1-.3.2-.5.2s-.4-.1-.5-.2L9 12.4c-.1-.1-.1-.4 0-.5l.5-.5c.1-.1.4-.1.5 0l1.3 1.3 3.1-3.2c.2-.1.4-.1.6 0l.5.5c.1.2.1.4 0 .5z" }] },
+	  answer_public: { "path": { "d": "M12 5.3c-4 0-7.2 3-7.2 6.7 0 1.2.3 2.3.9 3.3.1.1.1.3.1.4l-.7 2.1c-.1.4.2.7.6.6l2.1-.7c.2-.1.3-.1.4 0 1.1.7 2.4 1 3.8 1 4 0 7.2-3 7.2-6.7S16 5.3 12 5.3zm3.5 5.2l-3.7 3.7c-.2.1-.3.2-.5.2s-.4-.1-.5-.2L9 12.4c-.1-.1-.1-.4 0-.5l.5-.5c.1-.1.4-.1.5 0l1.3 1.3 3.1-3.2c.2-.1.4-.1.6 0l.5.5c.1.2.1.4 0 .5z" } },
+	  approval: { "path": { "d": "M17.8 13h-2.7c-.8 0-1.4-.7-1.4-1.5.1-2.1 1.1-2.2 1.2-3.6.1-1.4-.8-2.7-2.3-3.1-1.8-.3-3.5 1.1-3.5 2.9 0 1.6 1.1 1.6 1.2 3.8 0 .8-.6 1.5-1.4 1.5H6.2c-.8 0-1.4.6-1.4 1.4v1c0 .2.2.4.5.4h13.4c.3 0 .5-.2.5-.4v-1c0-.8-.6-1.4-1.4-1.4zm0 4.3H6.2c-.2 0-.4.2-.4.4v.1c0 .8.6 1.4 1.4 1.4h9.6c.8 0 1.4-.6 1.4-1.4v-.1c0-.2-.2-.4-.4-.4z" } },
+	  apps: { "path": { "d": "M7.7 4.8H5.8c-.6 0-1 .4-1 1v1.9c0 .5.4.9 1 .9h1.9c.5 0 .9-.4.9-.9V5.8c0-.6-.4-1-.9-1zm5.3 0h-2c-.5 0-.9.4-.9 1v1.9c0 .5.4.9.9.9h2c.5 0 .9-.4.9-.9V5.8c0-.6-.4-1-.9-1zm5.2 0h-1.9c-.5 0-.9.4-.9 1v1.9c0 .5.4.9.9.9h1.9c.6 0 1-.4 1-.9V5.8c0-.6-.4-1-1-1zM7.7 10.1H5.8c-.6 0-1 .4-1 .9v2c0 .5.4.9 1 .9h1.9c.5 0 .9-.4.9-.9v-2c0-.5-.4-.9-.9-.9zm5.3 0h-2c-.5 0-.9.4-.9.9v2c0 .5.4.9.9.9h2c.5 0 .9-.4.9-.9v-2c0-.5-.4-.9-.9-.9zm5.2 0h-1.9c-.5 0-.9.4-.9.9v2c0 .5.4.9.9.9h1.9c.6 0 1-.4 1-.9v-2c0-.5-.4-.9-1-.9zM7.7 15.4H5.8c-.6 0-1 .4-1 .9v1.9c0 .6.4 1 1 1h1.9c.5 0 .9-.4.9-1v-1.9c0-.5-.4-.9-.9-.9zm5.3 0h-2c-.5 0-.9.4-.9.9v1.9c0 .6.4 1 .9 1h2c.5 0 .9-.4.9-1v-1.9c0-.5-.4-.9-.9-.9zm5.2 0h-1.9c-.5 0-.9.4-.9.9v1.9c0 .6.4 1 .9 1h1.9c.6 0 1-.4 1-1v-1.9c0-.5-.4-.9-1-.9z" } },
+	  apps_admin: { "path": { "d": "M17.5 5h-11C5.7 5 5 5.7 5 6.5v11c0 .8.7 1.5 1.5 1.5h11c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5zM17 17.5H7c-.3 0-.5-.2-.5-.5V7c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v10c0 .3-.2.5-.5.5zm-6.2-9.6H8.4c-.3 0-.5.2-.5.5v2.4c0 .3.2.5.5.5h2.4c.3 0 .5-.2.5-.5V8.4c0-.3-.2-.5-.5-.5zm4.8 0h-2.4c-.3 0-.5.2-.5.5v2.4c0 .3.2.5.5.5h2.4c.3 0 .5-.2.5-.5V8.4c0-.3-.2-.5-.5-.5zm-4.8 4.8H8.4c-.3 0-.5.2-.5.5v2.4c0 .3.2.5.5.5h2.4c.3 0 .5-.2.5-.5v-2.4c0-.3-.2-.5-.5-.5zm4.8 0h-2.4c-.3 0-.5.2-.5.5v2.4c0 .3.2.5.5.5h2.4c.3 0 .5-.2.5-.5v-2.4c0-.3-.2-.5-.5-.5z" } },
+	  article: { "path": { "d": "M7.7 14.2h3.1c.3 0 .5-.3.5-.5V6.5c0-.5-.5-1-1-1H7.8c-.4 0-.6.3-.6.6v7.6c0 .2.2.5.5.5zM18.2 7v7.6c0 .6-.4 1-.9 1H6.7c-.5 0-.9-.4-.9-1V7c-.8 0-1.5.6-1.5 1.4v7.2c0 .8.7 1.4 1.5 1.4h4.5c.3 0 .5.3.5.5s.2.5.5.5h1.4c.3 0 .5-.2.5-.5s.2-.5.5-.5h4.5c.8 0 1.5-.6 1.5-1.4V8.4c0-.8-.7-1.4-1.5-1.4zm-5 7.2h3c.4 0 .6-.3.6-.6V6c0-.3-.2-.5-.5-.5h-2.6c-.5 0-1 .5-1 1v7.2c0 .2.2.5.5.5z" } },
+	  avatar: { "path": { "d": "M19.2 17.1v.7c0 .8-.6 1.4-1.4 1.4H6.2c-.8 0-1.4-.6-1.4-1.4v-.7c0-1.8 2-2.8 4-3.7 0 0 .1 0 .2-.1.1 0 .3 0 .4.1.8.5 1.7.8 2.6.8.9 0 1.8-.3 2.6-.8.1-.1.3-.1.4 0 .1 0 .2 0 .2.1 2 .8 4 1.8 4 3.6z" }, "ellipse": { "cx": "12", "cy": "8.76", "rx": "3.576", "ry": "3.96" } },
+	  avatar_loading: { "g": { "opacity": ".5", "path": { "d": "M19.2 17.1v.7c0 .8-.6 1.4-1.4 1.4H6.2c-.8 0-1.4-.6-1.4-1.4v-.7c0-1.8 2-2.8 4-3.7 0 0 .1 0 .2-.1.1 0 .3 0 .4.1.8.5 1.7.8 2.6.8s1.8-.3 2.6-.8c.1-.1.3-.1.4 0 .1 0 .2 0 .2.1 2 .8 4 1.8 4 3.6z" }, "ellipse": { "cx": "12", "cy": "8.76", "rx": "3.576", "ry": "3.96" } } },
+	  calibration: { "path": { "d": "M7.7 11.9c-.2.1-.3.1-.5.1-.1 0-.3 0-.5-.1-.1 0-.2.1-.2.3v6.5c0 .3.2.5.5.5h.4c.3 0 .5-.2.5-.5v-6.5c0-.2-.1-.3-.2-.3zm4.8 5.1h-1c-.1-.1-.2.1-.2.2v1.5c0 .3.2.5.5.5h.4c.3 0 .5-.2.5-.5v-1.5c0-.2-.1-.3-.2-.2zm4.8-3.6h-1c-.1-.1-.2.1-.2.2v5.1c0 .3.2.5.5.5h.4c.3 0 .5-.2.5-.5v-5.1c0-.2-.1-.3-.2-.2zm-9.4-6V5.3c0-.3-.2-.5-.5-.5H7c-.3 0-.5.2-.5.5v2.1c-.6.2-1 .8-1 1.5 0 .9.8 1.7 1.7 1.7s1.7-.8 1.7-1.7c0-.7-.4-1.3-1-1.5zm4.8 5V5.3c0-.3-.2-.5-.5-.5h-.4c-.3 0-.5.2-.5.5v7.1c-.6.3-1 .8-1 1.5 0 1 .8 1.7 1.7 1.7s1.7-.7 1.7-1.7c0-.7-.4-1.2-1-1.5zm4.8-3.6V5.3c0-.3-.2-.5-.5-.5h-.4c-.3 0-.5.2-.5.5v3.5c-.6.3-1 .8-1 1.5 0 1 .8 1.7 1.7 1.7s1.7-.7 1.7-1.7c0-.7-.4-1.2-1-1.5z" } },
+	  call: { "path": { "d": "M18.6 15.3l-1.4-1.2c-.5-.4-1.3-.4-1.8 0l-1.4 1c-.2.2-.5.1-.6 0L11 13l-2.1-2.4c-.2-.2-.2-.4 0-.6l1-1.4c.4-.6.3-1.3-.1-1.8L8.6 5.3c-.5-.6-1.5-.7-2.1-.1L5.2 6.5c-.3.3-.4.7-.4 1.1.1 3 1.5 5.9 3.6 8s4.9 3.4 8 3.6c.4 0 .8-.2 1-.5l1.3-1.3c.7-.5.6-1.5-.1-2.1z" } },
+	  call_history: { "path": { "d": "M6.7 11.5v.5H5.3v-.5h1.4zM12 5.3c-3.6 0-6.5 2.7-6.7 6.2v.3H4.2c-.3 0-.5.3-.3.5l1.8 2.2c.2.2.4.2.6 0l1.8-2.2c.2-.2 0-.5-.3-.5H6.7v-.3C7 8.8 9.2 6.7 12 6.7c3.1 0 5.6 2.7 5.2 5.9-.2 2.3-2.4 4.4-4.7 4.7-1.7.1-3.3-.5-4.4-1.7-.2-.2-.3-.3-.5 0l-.6.6c-.1.2 0 .3.1.4 1.3 1.4 3.1 2.1 5 2.1 3.4 0 6.3-2.8 6.6-6.2.3-3.9-2.8-7.2-6.7-7.2zm-.7 5c.2-.2.2-.6 0-.8l-.5-.6c-.2-.3-.7-.3-.9-.1l-.6.6c-.1.1-.2.3-.2.5.1 1.3.7 2.6 1.6 3.4s2.1 1.5 3.4 1.6c.2 0 .4 0 .5-.2l.6-.6c.2-.2.2-.7-.1-.9l-.6-.5c-.2-.2-.6-.2-.8 0l-.6.4c-.1.1-.2.1-.3 0l-1-.9-.9-1c-.1-.1-.1-.2 0-.3l.4-.6z" } },
+	  campaign: { "path": { "d": "M12 4.8C8 4.8 4.8 8 4.8 12S8 19.2 12 19.2s7.2-3.2 7.2-7.2S16 4.8 12 4.8zm0 13c-3.2 0-5.8-2.6-5.8-5.8S8.8 6.2 12 6.2s5.8 2.6 5.8 5.8-2.6 5.8-5.8 5.8zm0-10.1c-2.4 0-4.3 1.9-4.3 4.3s1.9 4.3 4.3 4.3 4.3-1.9 4.3-4.3-1.9-4.3-4.3-4.3zm0 7.2c-1.6 0-2.9-1.3-2.9-2.9s1.3-2.9 2.9-2.9 2.9 1.3 2.9 2.9-1.3 2.9-2.9 2.9zm0-4.3c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z" } },
+	  campaign_members: { "path": [{ "fill-opacity": ".65", "d": "M24 14.9V24h-9.1l9.1-9.1zm-1.9 6.6c-.3-.1-.3-.2-.3-.4 0-.1.1-.2.2-.3.2-.2.2-.4.2-.7 0-.5-.3-.9-.8-.9s-.9.5-.9.9c0 .3.1.5.3.7.1.1.2.2.2.3s-.1.3-.4.4c-.5.2-.9.4-.9.8 0 .3.2.5.5.5h2.4c.2 0 .4-.2.4-.5 0-.4-.4-.6-.9-.8z" }, { "d": "M12 4.8C8 4.8 4.8 8 4.8 12S8 19.2 12 19.2s7.2-3.2 7.2-7.2S16 4.8 12 4.8zm0 13c-3.2 0-5.8-2.6-5.8-5.8S8.8 6.2 12 6.2s5.8 2.6 5.8 5.8-2.6 5.8-5.8 5.8zm0-10.1c-2.4 0-4.3 1.9-4.3 4.3s1.9 4.3 4.3 4.3 4.3-1.9 4.3-4.3-1.9-4.3-4.3-4.3zm0 7.2c-1.6 0-2.9-1.3-2.9-2.9s1.3-2.9 2.9-2.9 2.9 1.3 2.9 2.9-1.3 2.9-2.9 2.9zm0-4.3c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z" }] },
+	  canvas: { "path": { "d": "M17.7 15.8c0 .8-.1 1.7-.3 2.6 0 .2-.2.5-.5.5-1.6.2-3.3.3-4.9.3-1.6 0-3.2-.1-4.8-.3-.3 0-.6-.3-.6-.5-.2-1.4-.4-2.8-.4-4.1 0-1.4.2-2.7.4-4.1 0-.2.3-.5.5-.5 1-.1 2-.2 3-.2 0 0 .7-.1.7-.8 0-.7-1.2-1.1-1.2-2.3 0-.9.9-1.6 2.4-1.6 1.4 0 2.4.7 2.4 1.6 0 1.2-1.2 1.6-1.2 2.3-.1.7.7.8.7.8 1 0 2 .1 3 .2.2 0 .5.3.5.5.2 1 .3 1.8.3 2.7.1.3-.2.5-.5.5H17c-.3 0-.7-.2-.9-.4 0 0-.7-.6-1.3-.6-1.1-.1-2 .9-2 2s.8 2.1 1.9 2c.7 0 1.4-.7 1.4-.7.2-.1.6-.3.8-.3.1-.1.2-.1.3-.1.3.1.6.3.5.5z" } },
+	  "case": { "path": { "d": "M9.1 7h1c.1 0 .2-.1.2-.3V6h3.4v.7c0 .2.1.3.2.3h1c.1 0 .2-.1.2-.3V6c0-.8-.6-1.4-1.4-1.4h-3.4c-.8 0-1.4.6-1.4 1.4v.7c0 .2.1.3.2.3zm8.7 1.4H6.2c-.8 0-1.4.6-1.4 1.4v7.7c0 .8.6 1.5 1.4 1.5h11.6c.8 0 1.4-.7 1.4-1.5V9.8c0-.8-.6-1.4-1.4-1.4z" } },
+	  case_change_status: { "path": { "d": "M9.1 7.2h1c.1 0 .2-.1.2-.2v-.8h3.4V7c0 .1.1.2.2.2h1c.1 0 .2-.1.2-.2v-.8c0-.8-.6-1.4-1.4-1.4h-3.4c-.8 0-1.4.6-1.4 1.4V7c0 .1.1.2.2.2zm8.7 1.4H6.2c-.8 0-1.4.7-1.4 1.5v7.7c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4v-7.7c0-.8-.6-1.5-1.4-1.5zM14 13.9L11.5 17c-.1.1-.4 0-.3-.2l.6-2.2h-1.6c-.2 0-.4-.2-.3-.3l1-2.6c.1-.3.3-.4.5-.4h2c.2 0 .4.2.3.4l-1.1 1.7h1.2c.3 0 .4.4.2.5z" } },
+	  case_comment: { "path": { "d": "M9.1 7.2h1c.1 0 .2-.1.2-.2v-.8h3.4V7c0 .1.1.2.2.2h1c.1 0 .2-.1.2-.2v-.8c0-.8-.6-1.4-1.4-1.4h-3.4c-.8 0-1.4.6-1.4 1.4V7c0 .1.1.2.2.2zm8.7 1.4H6.2c-.8 0-1.4.7-1.4 1.5v7.7c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4v-7.7c0-.8-.6-1.5-1.4-1.5zm-5.6 7.7c-.5 0-1-.1-1.5-.4h-.1l-1 .4c-.1.1-.3-.1-.2-.2l.4-1c0-.1 0-.1-.1-.1-.2-.4-.3-.9-.3-1.3 0-1.5 1.3-2.7 2.8-2.7s2.8 1.2 2.8 2.7c0 1.4-1.2 2.6-2.8 2.6z" } },
+	  case_email: { "path": { "d": "M9.1 7.2h1c.1 0 .2-.1.2-.2v-.8h3.4V7c0 .1.1.2.2.2h1c.1 0 .2-.1.2-.2v-.8c0-.8-.6-1.4-1.4-1.4h-3.4c-.8 0-1.4.6-1.4 1.4V7c0 .1.1.2.2.2zm8.7 1.4H6.2c-.8 0-1.4.7-1.4 1.5v7.7c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4v-7.7c0-.8-.6-1.5-1.4-1.5zm-8.7 2.7h5.8c.2 0 .2.2.2.3l-3 2.7c0 .1-.1.1-.2 0l-3-2.7c-.1-.2 0-.3.2-.3zm6 4.1c0 .3-.4.7-.7.7H9.6c-.3 0-.7-.4-.7-.7v-2.7c0-.1.1-.2.2-.1l2.3 2.2c.2.1.4.2.6.2s.4-.1.6-.2l2.2-2.2c.1-.1.3 0 .3.1v2.7z" } },
+	  case_log_a_call: { "path": { "d": "M9.1 7.2h1c.1 0 .2-.1.2-.2v-.8h3.4V7c0 .1.1.2.2.2h1c.1 0 .2-.1.2-.2v-.8c0-.8-.6-1.4-1.4-1.4h-3.4c-.8 0-1.4.6-1.4 1.4V7c0 .1.1.2.2.2zm8.7 1.4H6.2c-.8 0-1.4.7-1.4 1.5v7.7c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4v-7.7c0-.8-.6-1.5-1.4-1.5zM15 15.9l-.6.5c-.1.1-.2.2-.4.2-1.2-.1-2.4-.7-3.2-1.5-.8-.8-1.4-1.9-1.4-3.2 0-.1 0-.3.1-.4l.6-.5c.2-.3.6-.2.8 0l.5.6c.2.2.2.5 0 .7l-.4.6v.2l.9 1 .9.8c.1.1.2.1.3 0l.5-.4c.2-.1.5-.1.7 0l.6.5c.3.2.3.6.1.9z" } },
+	  case_transcript: { "path": { "d": "M9.1 7.2h1c.1 0 .2-.1.2-.2v-.8h3.4V7c0 .1.1.2.2.2h1c.1 0 .2-.1.2-.2v-.8c0-.8-.6-1.4-1.4-1.4h-3.4c-.8 0-1.4.6-1.4 1.4V7c0 .1.1.2.2.2zm8.7 1.4H6.2c-.8 0-1.4.7-1.4 1.5v7.7c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4v-7.7c0-.8-.6-1.5-1.4-1.5zm-3.2 7.5c0 .4-.3.7-.7.7h-3.3c-.4 0-.8-.3-.8-.7v-4.6c0-.4.4-.7.8-.7h1.6c.2 0 .3.1.3.2v1.5c0 .2.2.5.5.5h1.4c.1 0 .2.1.2.2v2.9zm0-3.8c0 .1 0 .2-.1.2h-1.1c-.2 0-.4-.2-.4-.5v-1c0-.1 0-.2.1-.2h.1l1.4 1.4v.1z" } },
+	  client: { "path": { "d": "M10.8 14c.8-.5 1.7-.8 2.6-.8.3 0 .5.1.8.1.1 0 .1 0 0-.1-.4-.3-1-.5-1.5-.7-1-.5-1.2-.8-1.2-1.3 0-.4.3-.8.7-1.1.6-.5.9-1.3.9-2.2 0-1.6-1-3.1-2.9-3.1-1.8 0-2.8 1.5-2.8 3.1 0 .9.3 1.7.9 2.2.4.3.7.7.7 1.1 0 .4-.2.8-1.2 1.3-1.5.6-2.9 1.3-3 2.7 0 .9.7 1.6 1.6 1.6h3.4c.2 0 .4-.2.4-.4v-1.6c.1-.3.2-.6.6-.8zm7.8 1.4c-2.3.7-4.1-1.4-6.6-.4-.1 0-.2.2-.2.4V18c0 .3.2.6.6.5 2.4-.8 4.2 1.3 6.5.4.2-.1.3-.3.3-.5v-2.5c0-.3-.3-.6-.6-.5zm-3 2.4c-.6 0-1-.4-1-1s.4-.9 1-.9.9.4.9.9-.4 1-.9 1z" } },
+	  coaching: { "path": { "d": "M11.3 12.7c-.3 0-.6.1-.9.4-.4.4-.4 1.2 0 1.7.3.2.6.3.9.3.3 0 .6-.1.8-.3.5-.5.5-1.2 0-1.7-.2-.3-.5-.4-.8-.4zm7.8-5.4L17.5 5c-.2-.2-.5-.3-.7-.2l-8 5c-.8.5-1.4 1.1-1.9 2.2-.4 1-.5 2.1-.2 3.1-1.1.1-1.9 1-1.9 2.1s.9 2 2 2c.9 0 1.6-.5 1.9-1.2 1.9 1.2 4.4.9 6-.7 1.5-1.5 1.8-3.6.9-5.4-.2-.7-.1-1.4.5-1.8L19 8c.2-.1.2-.4.1-.7zM6.8 17.8c-.3 0-.6-.3-.6-.6s.3-.6.6-.6.6.2.6.6-.2.6-.6.6zm6.4-2c-.6.5-1.2.8-1.9.8s-1.4-.3-1.9-.8c-1-1-1-2.7 0-3.8.5-.5 1.2-.7 1.9-.7s1.3.2 1.9.7c1 1.1 1 2.8 0 3.8z" } },
+	  connected_apps: { "path": { "d": "M17.5 5h-11C5.7 5 5 5.7 5 6.5v11c0 .8.7 1.5 1.5 1.5h11c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5zM17 17.5H7c-.3 0-.5-.2-.5-.5V7c0-.3.2-.5.5-.5h10c.3 0 .5.2.5.5v10c0 .3-.2.5-.5.5zm-3-6.2h-1.5L13.8 9c.2-.2 0-.6-.3-.6h-2c-.2 0-.5.2-.6.5l-1.3 3.3c-.1.2.1.5.4.5h1.5l-.7 2.6c-.1.3.2.4.4.2l3.1-3.7c.2-.2.1-.5-.3-.5z" } },
+	  contact: { "path": { "d": "M17.8 7H6.2c-.8 0-1.4.6-1.4 1.4v7c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4v-7c0-.8-.6-1.4-1.4-1.4zm-6.1 8.1H7.5c-.4 0-.8-.5-.8-1 0-.7.8-1.1 1.6-1.5.5-.2.6-.4.6-.7s-.1-.4-.3-.6c-.3-.3-.5-.7-.5-1.2 0-.9.5-1.7 1.5-1.7s1.5.8 1.5 1.7c0 .5-.2.9-.5 1.2-.2.2-.4.4-.4.6s.1.5.7.7c.8.3 1.5.8 1.5 1.5.1.5-.3 1-.7 1zm5.6-1.7c0 .3-.2.5-.5.5h-2.2c-.2 0-.4-.2-.4-.5v-.7c0-.2.2-.5.4-.5h2.2c.3 0 .5.3.5.5v.7zm0-2.6c0 .3-.2.5-.5.5h-3.6c-.3 0-.5-.2-.5-.5v-.7c0-.3.2-.5.5-.5h3.6c.3 0 .5.2.5.5v.7z" } },
+	  contract: { "path": { "d": "M17.9 8.1l-3.2-3.2c0-.1-.1-.1-.2-.1-.2 0-.3.1-.3.3v2.6c0 .5.4.9.9.9h2.6c.2 0 .3-.1.3-.3 0-.1 0-.2-.1-.2zm-.4 2h-3.3c-.8 0-1.5-.7-1.5-1.5V5.3c0-.3-.2-.5-.5-.5H7.4c-.8 0-1.4.6-1.4 1.4v11.6c0 .8.6 1.4 1.4 1.4h9.2c.8 0 1.4-.6 1.4-1.4v-7.2c0-.3-.2-.5-.5-.5zM7.7 7.8l1.2-.1v-.1l.6-1.1h.1l.6 1.1v.1l1.2.1c.1 0 .1.1.1.2l-.9.8v.1l.2 1.2c0 .1-.1.1-.2.1l-1-.6h-.1l-1.1.6s-.1 0-.1-.1l.2-1.2-.1-.1-.8-.8c0-.1 0-.2.1-.2zm7.4 8c0 .3-.2.5-.5.5H8.4c-.3 0-.5-.2-.5-.5v-.4c0-.3.2-.5.5-.5h6.2c.3 0 .5.2.5.5v.4zm1-2.8c0 .2-.2.4-.5.4H8.4c-.3 0-.5-.2-.5-.4v-.5c0-.3.2-.5.5-.5h7.2c.3 0 .5.2.5.5v.5z" } },
+	  custom: { "path": { "d": "M19 7.9c0-.2-.3-.2-.4-.1l-2.4 2.4c-.2.2-.5.2-.7 0l-1.7-1.7c-.2-.2-.2-.5 0-.7l2.4-2.4c.2-.1.1-.4 0-.4-.5-.1-.9-.2-1.3-.2-2.6 0-4.6 2.2-4.3 4.8 0 .4.1.8.3 1.1l-5.6 5.6c-.7.7-.7 1.8 0 2.4.3.4.7.5 1.2.5s.8-.1 1.2-.5l5.6-5.6c.3.2.7.3 1.1.3 2.6.3 4.8-1.7 4.8-4.3 0-.4-.1-.8-.2-1.2z" } },
+	  dashboard: { "path": { "d": "M12 4.8C8 4.8 4.8 8 4.8 12S8 19.2 12 19.2s7.2-3.2 7.2-7.2S16 4.8 12 4.8zm0 1.9c2.9 0 5.3 2.4 5.3 5.3 0 .2 0 .5-.1.7h-2.1c-.2 0-.4.2-.5.4-.2 1.3-1.3 2.3-2.6 2.3s-2.4-1-2.6-2.3c0-.2-.3-.4-.5-.4H6.8c-.1-.2-.1-.5-.1-.7 0-2.9 2.4-5.3 5.3-5.3zm-.6 7.1c.6.3 1.4 0 1.7-.5.4-.9 1.3-4.6 1.1-4.7-.2-.1-2.8 2.7-3.2 3.6-.4.5-.2 1.3.4 1.6z" } },
+	  "default": { "path": { "opacity": ".5", "d": "M10.7 7.9c.5-.5 1.2-.8 1.9-.8 1.1 0 1.9.5 2.4 1.3.4-.1.9-.3 1.4-.3 1.8.1 3.3 1.5 3.3 3.3 0 1.8-1.5 3.3-3.3 3.3-.2 0-.5 0-.7-.1-.4.8-1.2 1.3-2.1 1.3-.4 0-.7-.1-1-.3-.5 1-1.4 1.7-2.6 1.7-1.2 0-2.2-.8-2.6-1.8-.2 0-.3.1-.5.1-1.4 0-2.6-1.2-2.6-2.6 0-.9.5-1.8 1.3-2.2-.2-.4-.2-.7-.2-1.2 0-1.6 1.3-2.9 2.9-2.9 1 0 1.9.5 2.4 1.2" } },
+	  document: { "path": { "d": "M17.5 10.1h-3.3c-.8 0-1.5-.7-1.5-1.5V5.3c0-.3-.2-.5-.5-.5H7.4c-.8 0-1.4.6-1.4 1.4v11.6c0 .8.6 1.4 1.4 1.4h9.2c.8 0 1.4-.6 1.4-1.4v-7.2c0-.3-.2-.5-.5-.5zm.4-2l-3.2-3.2c0-.1-.1-.1-.2-.1-.2 0-.3.1-.3.3v2.6c0 .5.4.9.9.9h2.6c.2 0 .3-.1.3-.3 0-.1 0-.2-.1-.2z" } },
+	  drafts: { "path": { "d": "M17.5 4.8H9.8c-.8 0-1.4.6-1.4 1.4v.3c0 .1.1.2.2.2h7c.8 0 1.4.7 1.4 1.5v7.4c0 .1.1.2.3.2h.2c.8 0 1.5-.6 1.5-1.4V6.2c0-.8-.7-1.4-1.5-1.4zm-3.3 3.4H6.5c-.8 0-1.5.6-1.5 1.4v8.2c0 .8.7 1.4 1.5 1.4h7.7c.8 0 1.4-.6 1.4-1.4V9.6c0-.8-.6-1.4-1.4-1.4zM7 10.6c0-.3.2-.5.4-.5h4.8c.3 0 .5.2.5.5v.4c0 .3-.2.5-.5.5H7.4c-.2 0-.4-.2-.4-.5v-.4zm5.7 6.2c0 .3-.2.5-.5.5H7.4c-.2 0-.4-.2-.4-.5v-.5c0-.2.2-.5.4-.5h4.8c.3 0 .5.3.5.5v.5zm1-2.9c0 .3-.2.5-.5.5H7.4c-.2 0-.4-.2-.4-.5v-.5c0-.2.2-.4.4-.4h5.8c.3 0 .5.2.5.4v.5z" } },
+	  email: { "path": { "d": "M11.7 13.2c.2.2.4.2.6 0l6.8-6.3c.1-.2.1-.6-.4-.6H5.3c-.4 0-.6.3-.4.6l6.8 6.3zm7.5-3.6c0-.3-.4-.5-.6-.3l-5.3 4.9c-.3.4-.8.5-1.3.5s-.9-.1-1.3-.5L5.4 9.3c-.2-.2-.6 0-.6.3v6.2c0 .8.7 1.5 1.5 1.5h11.5c.8 0 1.4-.7 1.4-1.5V9.6z" } },
+	  email_chatter: { "path": { "d": "M11.7 13.2c.2.2.4.2.6 0l6.8-6.3c.1-.2.1-.6-.4-.6H5.3c-.4 0-.6.3-.4.6l6.8 6.3zm7.5-3.6c0-.3-.4-.5-.6-.3l-5.3 4.9c-.3.4-.8.5-1.3.5s-.9-.1-1.3-.5L5.4 9.3c-.2-.2-.6 0-.6.3v6.2c0 .8.7 1.5 1.5 1.5h11.5c.8 0 1.4-.7 1.4-1.5V9.6z" } },
+	  empty: { "path": { "opacity": ".5", "d": "M17.3 18.7H6.7c-.8 0-1.4-.6-1.4-1.4V6.7c0-.8.6-1.4 1.4-1.4h10.6c.8 0 1.4.6 1.4 1.4v10.6c0 .8-.6 1.4-1.4 1.4zM6.7 7.2v9.6c0 .3.2.5.5.5h9.6c.3 0 .5-.2.5-.5V7.2c0-.3-.2-.5-.5-.5H7.2c-.3 0-.5.2-.5.5z" } },
+	  endorsement: { "path": { "d": "M6.7 10.1H5.3c-.3 0-.5.2-.5.5v7.7c0 .3.2.4.5.4h.5c.8 0 1.4-.6 1.4-1.4v-6.7c0-.3-.2-.5-.5-.5zm10.6.2h-1.5c-.8 0-1.4-.6-1.4-1.4V6c0-.8-.6-1.4-1.4-1.4h-1c-.3 0-.5.2-.5.4v2c0 1.6-.8 3.3-2.4 3.3-.2 0-.5.2-.5.5v6.7c0 .3.2.5.5.5 2.1.1 3.5.9 5.8.9 2.4 0 4.3-.7 4.3-3v-3.7c0-1-.9-1.9-1.9-1.9z" } },
+	  environment_hub: { "path": { "d": "M10.3 11.3c.1-1 .4-2 .9-2.9.8-1.3 2.1-2.1 3.8-2.2.3-.8 1.1-1.4 2-1.4 1.2 0 2.2 1 2.2 2.2s-1 2.1-2.2 2.1c-.9 0-1.7-.6-2-1.4-1.9.1-3 1.6-3.2 3.6H15c.3-.9 1.1-1.5 2-1.5 1.2 0 2.2 1 2.2 2.2s-1 2.2-2.2 2.2c-.9 0-1.7-.6-2-1.5h-3.2c.2 2.2 1.2 3.6 3.2 3.6.3-.8 1.1-1.4 2-1.4 1.2 0 2.2.9 2.2 2.1s-1 2.2-2.2 2.2c-.9 0-1.7-.6-2-1.4-1.8 0-3.1-.8-3.9-2.2-.4-.9-.7-1.8-.8-2.9H9c-.3.9-1.1 1.5-2 1.5-1.2 0-2.2-1-2.2-2.2s1-2.2 2.2-2.2c.9 0 1.7.6 2 1.5h1.3zM17 7.7c.4 0 .8-.3.8-.7s-.4-.8-.8-.8-.7.4-.7.8.3.7.7.7zm0 10.1c.4 0 .8-.4.8-.8s-.4-.7-.8-.7-.7.3-.7.7.3.8.7.8zm0-5.1c.4 0 .8-.3.8-.7s-.4-.7-.8-.7-.7.3-.7.7.3.7.7.7zm-10 0c.4 0 .7-.3.7-.7s-.3-.7-.7-.7-.8.3-.8.7.4.7.8.7z" } },
+	  event: { "path": { "d": "M18.2 10.1H5.8c-.3 0-.5.2-.5.5v7.2c0 .8.6 1.4 1.4 1.4h10.6c.8 0 1.4-.6 1.4-1.4v-7.2c0-.3-.2-.5-.5-.5zm-8.6 6.7c0 .3-.2.5-.5.5h-.9c-.3 0-.5-.2-.5-.5v-1c0-.2.2-.4.5-.4h.9c.3 0 .5.2.5.4v1zm0-3.4c0 .3-.2.5-.5.5h-.9c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h.9c.3 0 .5.2.5.5v.9zm3.4 3.4c0 .3-.3.5-.5.5h-1c-.2 0-.5-.2-.5-.5v-1c0-.2.3-.4.5-.4h1c.2 0 .5.2.5.4v1zm0-3.4c0 .3-.3.5-.5.5h-1c-.2 0-.5-.2-.5-.5v-.9c0-.3.3-.5.5-.5h1c.2 0 .5.2.5.5v.9zm3.3 3.4c0 .3-.2.5-.5.5h-.9c-.3 0-.5-.2-.5-.5v-1c0-.2.2-.4.5-.4h.9c.3 0 .5.2.5.4v1zm0-3.4c0 .3-.2.5-.5.5h-.9c-.3 0-.5-.2-.5-.5v-.9c0-.3.2-.5.5-.5h.9c.3 0 .5.2.5.5v.9zm1-7.2h-1.2v-.4c0-.6-.5-1-1-1s-.9.4-.9 1v.4H9.8v-.4c0-.6-.4-1-.9-1s-1 .4-1 1v.4H6.7c-.8 0-1.4.7-1.4 1.5v.5c0 .2.2.4.5.4h12.4c.3 0 .5-.2.5-.4v-.5c0-.8-.6-1.5-1.4-1.5z" } },
+	  feed: { "path": { "d": "M11.8 17.3c-.1 0-.3 0-.4-.1-.2-.1-.3-.3-.4-.5L9.2 9.2l-1.6 3.5c-.1.3-.4.5-.6.5H4.8c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4h1.7l2.2-5.1c.1-.3.4-.5.7-.5.3.1.6.3.7.6l1.9 7.6 2.4-5.6c.2-.3.5-.4.8-.4.2 0 .5.2.6.5l1.2 2.9h2.2c.3 0 .5.2.5.4v.5c0 .3-.2.5-.5.5h-2.6c-.3 0-.6-.2-.7-.4l-.8-1.9-2.7 5.9c-.1.3-.4.5-.6.5z" } },
+	  feedback: { "path": { "d": "M19 13.6v-.3c.4-.8.7-1.6.7-2.5 0-2.8-2.4-5-5.3-5-1.2 0-2.4.4-3.3 1.1 3 .6 5.2 3.2 5.2 6.3 0 .9-.1 1.7-.5 2.4.5-.1 1-.3 1.4-.5.1-.1.2-.1.3-.1l1.5.6c.3.1.5-.2.5-.5l-.5-1.5zM9.6 8.2c-2.9 0-5.3 2.2-5.3 5 0 .9.3 1.7.7 2.5 0 .1.1.2 0 .3l-.5 1.6c-.1.3.2.5.5.4l1.5-.5c.1-.1.2-.1.3 0 .8.5 1.8.7 2.8.7 2.9 0 5.3-2.2 5.3-5s-2.4-5-5.3-5zm-2.9 6c-.5 0-.9-.5-.9-1s.4-1 .9-1 1 .5 1 1-.5 1-1 1zm2.9 0c-.5 0-1-.5-1-1s.5-1 1-1 1 .5 1 1-.5 1-1 1zm2.9 0c-.5 0-1-.5-1-1s.5-1 1-1 .9.5.9 1-.4 1-.9 1z" } },
+	  file: { "path": { "d": "M7 15.1V7.4c-.8 0-1.5.7-1.5 1.5V18c0 .8.7 1.4 1.5 1.4h7.2c.8 0 1.4-.6 1.4-1.4H9.8C8.3 18 7 18 7 15.1zm11-6.2h-2.4c-.8 0-1.4-.7-1.4-1.5V5c0-.2-.3-.4-.5-.4H9.8c-.8 0-1.4.6-1.4 1.4v9.1c0 .8.6 1.5 1.4 1.5H17c.8 0 1.5-.7 1.5-1.5V9.4c0-.3-.2-.5-.5-.5zm.4-2l-2.2-2.2c-.1-.1-.2-.1-.3-.1-.2 0-.3.1-.3.3v1.6c0 .5.4.9 1 .9h1.5c.2 0 .4-.1.4-.3 0-.1 0-.2-.1-.2z" } },
+	  flow: { "path": { "d": "M19.2 7.4C18.6 6.1 17 3.9 14 5.2c-1.8.8-2.8 1.3-2.8 1.3L8.5 7.7c-.7.3-2.4-.2-3.3-.5-.2-.1-.5.2-.4.5.7 1.2 2.3 3.5 5.2 2.1 1.8-.8 5.5-2.4 5.5-2.4.7-.4 2.4.1 3.3.5.3 0 .5-.2.4-.5zm-6.4 3.8c-.3.2-1.6.8-1.6.8l-1.3.6c-.7.4-2.1-.1-2.9-.5-.3-.1-.5.2-.4.5.6 1.2 2 3.3 4.6 2 1.6-.8 2.9-1.3 2.9-1.3.7-.4 2.1.1 2.9.4.3.1.5-.2.4-.4-.6-1.2-2-3.4-4.6-2.1zm-.9 5.3c-.3.2-.7.5-.7.5-.5.3-1.6-.1-2.2-.4-.2-.1-.4.2-.3.4.4 1.1 1.5 3 3.4 1.8l.7-.4c.6-.3 1.6.1 2.2.4.2.1.4-.2.3-.5-.4-1-1.4-2.9-3.4-1.8z" } },
+	  folder: { "path": { "d": "M18 8.3h-6.8c-.4 0-.8-.2-1.1-.6l-1-1.8c-.2-.4-.6-.6-1.1-.6H6c-.7 0-1.2.5-1.2 1.2v11c0 .7.5 1.2 1.2 1.2h12c.7 0 1.2-.5 1.2-1.2V9.6c0-.7-.5-1.3-1.2-1.3zm0-2.4h-7.2c-.1 0-.2.1-.1.2l.4.8c.1.1.2.2.3.2H18c.3 0 .7.1.9.2.2.1.3 0 .3-.2 0-.7-.5-1.2-1.2-1.2z" } },
+	  generic_loading: { "path": { "opacity": ".15", "d": "M12.4 5.3h-.8c-.2 0-.3.1-.3.3v3.2c0 .2.1.3.3.3h.8c.2 0 .3-.1.3-.3V5.6c0-.2-.1-.3-.3-.3zm6 6h-3.2c-.2 0-.3.1-.3.3v.8c0 .2.1.3.3.3h3.2c.2 0 .3-.1.3-.3v-.8c0-.2-.1-.3-.3-.3zm-6 3.6h-.8c-.2 0-.3.1-.3.3v3.2c0 .2.1.3.3.3h.8c.2 0 .3-.1.3-.3v-3.2c0-.2-.1-.3-.3-.3zm-3.3-2.5v-.8c0-.2-.1-.3-.3-.3H5.6c-.2 0-.3.1-.3.3v.8c0 .2.1.3.3.3h3.2c.2 0 .3-.1.3-.3zm5.2-2.2c.1.2.3.2.5 0L17 8c.1-.1.1-.3 0-.5l-.5-.5c-.2-.1-.4-.1-.5 0l-2.2 2.2c-.2.2-.2.4 0 .5l.5.5zm.5 3.6c-.1-.2-.4-.2-.5 0l-.5.5c-.1.1-.1.3 0 .5L16 17c.2.1.4.1.5 0l.5-.5c.2-.2.2-.4 0-.5l-2.2-2.2zm-5.1 0c-.1-.2-.3-.2-.5 0L7 16c-.1.1-.1.3 0 .5l.5.5c.2.1.4.1.5 0l2.2-2.2c.2-.2.2-.4 0-.5l-.5-.5zM8 7c-.1-.2-.3-.2-.5 0l-.5.5c-.1.1-.1.3 0 .5l2.2 2.2c.2.1.4.1.5 0l.5-.5c.2-.1.2-.4 0-.5L8 7z" } },
+	  goals: { "path": { "d": "M6.2 4.8c-.8 0-1.4.6-1.4 1.4 0 .5.2.9.5 1.1v10.9c0 .6.4 1 .9 1s1-.4 1-1V7.3c.3-.2.5-.6.5-1.1 0-.8-.7-1.4-1.5-1.4zm12.2 2.6c-3.8 2-5.9-1.4-9.4-.1-.2 0-.4.2-.4.4v6.2c0 .3.4.6.7.5 3.4-1.1 5.5 2.2 9.2.1.1-.1.2-.2.2-.4V7.6c0-.2-.2-.3-.3-.2zm-1.1 3.3c-.5.1-.9.1-1.4.1h-.1v1.4h.1c.5 0 .9 0 1.4-.1v1.4c-.5.2-.9.2-1.4.2h-.1v-1.4c-.4 0-.9-.1-1.4-.2v1.4c-.3 0-.7-.1-1-.2-.2-.1-.3-.1-.4-.2v-1.4c-.6-.2-1-.3-1.5-.4v1.5c-.2-.1-.5-.1-.8-.1-.2 0-.4 0-.6.1v-1.5h1.4V10c-.2-.1-.5-.1-.8-.1h-.6V8.5c.2-.1.4-.1.6-.1.3 0 .6.1.8.1V10c.4.1.7.2 1.3.3 0 .1.1.1.2.1V9c.4.1.9.2 1.4.3v1.4c.5.1.9.1 1.4.1V9.4h.1c.5 0 .9 0 1.4-.1v1.4zm-4.3-.3v1.3c.1 0 .2.1.3.1.4.1.7.2 1.1.3v-1.4c-.5-.1-1-.2-1.4-.3z" } },
+	  group_loading: { "path": { "opacity": ".5", "d": "M8.8 12.6c-.4-.7-.6-1.4-.6-2.3 0-1.4.6-2.6 1.5-3.3-.3-.6-.9-1-1.8-1-1.4 0-2.1 1.1-2.1 2.4 0 .7.2 1.3.7 1.7.2.2.4.6.4.9 0 .3-.1.6-.9 1-1.1.5-2.1 1.1-2.2 2.2 0 .7.5 1.2 1.1 1.2H6c.1 0 .3-.1.4-.3.5-.9 1.4-1.5 2.2-1.9.3-.1.4-.4.2-.6zM18 12c-.8-.4-.9-.7-.9-1 0-.3.2-.7.4-.9.5-.4.7-1 .7-1.7 0-1.3-.7-2.4-2.1-2.4-.9 0-1.5.4-1.8 1 .9.7 1.5 1.9 1.5 3.3 0 .9-.2 1.6-.6 2.3-.2.2-.1.5.2.7.8.4 1.7.9 2.2 1.8.1.2.3.3.4.3h1.1c.6 0 1.1-.5 1.1-1.2-.1-1.1-1.1-1.7-2.2-2.2zm-3.9 2.3c-.9-.4-1-.7-1-1.1 0-.4.2-.7.5-1 .5-.4.8-1.1.8-1.9 0-1.4-.8-2.6-2.4-2.6s-2.4 1.2-2.4 2.6c0 .8.3 1.4.8 1.9.3.3.5.6.5 1s-.1.7-.9 1.1c-1.3.5-2.5 1.1-2.6 2.3 0 .7.6 1.4 1.3 1.4h6.6c.7 0 1.3-.7 1.3-1.4-.1-1.2-1.3-1.8-2.5-2.3z" } },
+	  groups: { "path": { "d": "M8.8 12.6c-.4-.7-.6-1.4-.6-2.3 0-1.4.6-2.6 1.5-3.3-.3-.6-.9-1-1.8-1-1.4 0-2.1 1.1-2.1 2.4 0 .7.2 1.3.7 1.7.2.2.4.6.4.9 0 .3-.1.6-.9 1-1.1.5-2.1 1.1-2.2 2.2 0 .7.5 1.2 1.1 1.2H6c.1 0 .3-.1.4-.3.5-.9 1.4-1.5 2.2-1.9.3-.1.4-.4.2-.6zM18 12c-.8-.4-.9-.7-.9-1 0-.3.2-.7.4-.9.5-.4.7-1 .7-1.7 0-1.3-.7-2.4-2.1-2.4-.9 0-1.5.4-1.8 1 .9.7 1.5 1.9 1.5 3.3 0 .9-.2 1.6-.6 2.3-.2.2-.1.5.2.7.8.4 1.7.9 2.2 1.8.1.2.3.3.4.3h1.1c.6 0 1.1-.5 1.1-1.2-.1-1.1-1.1-1.7-2.2-2.2zm-3.9 2.3c-.9-.4-1-.7-1-1.1 0-.4.2-.7.5-1 .5-.4.8-1.1.8-1.9 0-1.4-.8-2.6-2.4-2.6s-2.4 1.2-2.4 2.6c0 .8.3 1.4.8 1.9.3.3.5.6.5 1s-.1.7-.9 1.1c-1.3.5-2.5 1.1-2.6 2.3 0 .7.6 1.4 1.3 1.4h6.6c.7 0 1.3-.7 1.3-1.4-.1-1.2-1.3-1.8-2.5-2.3z" } },
+	  home: { "path": { "d": "M18.9 12.3h-1.5v6.6c0 .2-.1.3-.3.3h-3c-.2 0-.3-.1-.3-.3v-5.1h-3.6v5.1c0 .2-.1.3-.3.3h-3c-.2 0-.3-.1-.3-.3v-6.6H5.1c-.1 0-.3-.1-.3-.2s0-.2.1-.3l6.9-7c.1-.1.3-.1.4 0l7 7v.3s-.2.2-.3.2z" } },
+	  household: { "path": { "d": "M12.4 4.9c-.3-.1-.6-.1-.8 0L5 11.1c-.4.3-.2.9.3.9h.9v5.8c0 .8.7 1.4 1.5 1.4h8.6c.8 0 1.5-.6 1.5-1.4V12h.9c.5 0 .7-.6.3-.9l-6.6-6.2zM8.9 15.3c-.1.1-.2.1-.3.1H8c-.3 0-.6-.2-.6-.6.1-.6.6-.9 1.3-1.1.4-.2.5-.4.5-.6 0-.2-.2-.4-.3-.5-.3-.2-.4-.6-.4-1 0-.7.5-1.3 1.2-1.3.5 0 .8.2 1 .5-.5.5-.9 1.1-.9 1.9 0 .5.2.9.4 1.3.1.1 0 .3-.1.3-.4.2-1 .5-1.2 1zm4.9 1.7h-3.6c-.4 0-.7-.3-.7-.8 0-.6.7-1 1.3-1.3.5-.2.6-.4.6-.6 0-.2-.1-.4-.3-.5-.3-.3-.4-.6-.4-1.1 0-.8.5-1.5 1.3-1.5s1.4.7 1.4 1.5c0 .5-.2.8-.5 1.1-.1.1-.3.3-.3.5s.1.4.6.6c.7.3 1.4.7 1.4 1.3-.1.5-.4.8-.8.8zm2.2-1.6h-.6c-.1 0-.2 0-.3-.1-.2-.5-.8-.7-1.2-.9-.1-.1-.2-.2-.1-.4.2-.3.4-.8.4-1.2 0-.8-.4-1.5-.9-1.9.2-.3.5-.6 1-.6.8 0 1.2.7 1.2 1.4 0 .4-.1.7-.4.9-.1.2-.2.4-.2.6s0 .3.5.5c.6.3 1.2.6 1.2 1.1 0 .4-.3.6-.6.6z" } },
+	  insights: { "path": { "d": "M18.8 6.5H7.4c-.2 0-.4.1-.4.4v8.4c0 .3-.3.6-.6.6-.3-.1-.5-.3-.5-.6V9.2c0-.1-.1-.2-.3-.2h-.4c-.2 0-.4.1-.4.4v7c0 .6.5 1.1 1.1 1.1h12.2c.6 0 1.1-.5 1.1-1.1V6.9c0-.3-.2-.4-.4-.4zm-6.2 8c0 .2-.2.3-.3.3H9c-.2 0-.3-.1-.3-.3v-.6c0-.1.1-.2.3-.2h3.3c.1 0 .3.1.3.2v.6zm0-2.2c0 .2-.2.3-.3.3H9c-.2 0-.3-.1-.3-.3v-.6c0-.1.1-.3.3-.3h3.3c.1 0 .3.2.3.3v.6zm4.9 2.2c0 .2-.1.3-.2.3h-3.4c-.1 0-.2-.1-.2-.3v-.6c0-.1.1-.2.2-.2h3.4c.1 0 .2.1.2.2v.6zm0-2.2c0 .2-.1.3-.2.3h-3.4c-.1 0-.2-.1-.2-.3v-.6c0-.1.1-.3.2-.3h3.4c.1 0 .2.2.2.3v.6zm0-2.2c0 .1-.1.2-.2.2H9c-.2 0-.3-.1-.3-.2V8.4c0-.2.1-.3.3-.3h8.3c.1 0 .2.1.2.3v1.7z" } },
+	  investment_account: { "path": { "d": "M17.8 6.5H6.2c-.8 0-1.4.6-1.4 1.4v8.2c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4V7.9c0-.8-.6-1.4-1.4-1.4zM16.6 13c0 .2-.3.3-.4.1L15 12l-2.5 2.2c-.3.3-.7.3-1 0L10 12.5l-2.8 2.4c-.1.1-.2.1-.3 0l-.1-.2c-.1-.1-.1-.2 0-.3l2.7-3.7c.2-.3.7-.3 1 0l1.5 1.6 1.6-1.8-1-.9c-.2-.2-.1-.5.1-.5h3.4c.2 0 .4.3.4.5V13z" } },
+	  lead: { "circle": { "cx": "12", "cy": "6.96", "r": "2.16" }, "path": { "d": "M18.7 10.6H5.3c-.5 0-.7.6-.3.8l3.5 2.3c.2.1.3.3.2.5l-1.3 4.4c-.2.5.5.8.8.5l3.4-3.6c.2-.3.6-.3.8 0l3.4 3.6c.3.3.9 0 .8-.5l-1.3-4.4c-.1-.2 0-.4.2-.5l3.5-2.3c.4-.2.2-.8-.3-.8z" } },
+	  link: { "path": { "d": "M12.4 16.7c-.3-.1-.4-.1-.7-.1-.2-.1-.4-.1-.6-.2-.1-.1-.3 0-.4.1l-.1.1c-.9.9-2.3 1-3.2.2-1-.9-1.1-2.4-.1-3.4l2.3-2.3c.2-.3.6-.5 1-.6.5-.1 1-.1 1.4.1.3.2.6.3.8.5.1.2.2.3.3.4.1.2.4.3.5.1l.9-.8c.1-.1.1-.3 0-.5-.1-.1-.3-.3-.4-.5-.2-.2-.5-.4-.7-.5-.5-.3-.9-.5-1.4-.6-1-.2-2 0-2.8.4-.4.2-.7.5-1 .7L6 12c-1.6 1.6-1.7 4.2-.2 5.8 1.6 1.8 4.3 1.8 6 .2l.7-.8c.3-.2.1-.5-.1-.5zm5.5-10.8c-1.7-1.5-4.2-1.4-5.8.2l-.7.6c-.2.2-.1.6.2.6.4 0 .9.1 1.3.3.1 0 .3 0 .3-.1l.2-.2c.9-.8 2.2-.9 3.2-.1 1 .9 1 2.4.1 3.3l-2.3 2.3c-.3.3-.6.5-1 .6-.5.1-1 .1-1.4-.1-.3-.1-.6-.3-.8-.5-.1-.1-.2-.2-.3-.4-.1-.2-.4-.2-.6 0l-.8.8c-.1.1-.1.3 0 .5.1.1.2.3.4.4.2.3.4.4.7.6.4.3.9.4 1.4.5.9.2 1.9.1 2.8-.4.3-.2.7-.4.9-.7l2.3-2.3c1.6-1.6 1.6-4.3-.1-5.9z" } },
+	  log_a_call: { "path": { "d": "M16.7 4.8h-9c-.8 0-1.5.7-1.5 1.4v.5h-.4c-.6 0-1 .5-1 1s.4.9 1 .9h.4V11h-.4c-.6 0-1 .5-1 1s.4 1 1 1h.4v2.4h-.4c-.6 0-1 .4-1 .9s.4 1 1 1h.4v.5c0 .7.7 1.4 1.5 1.4h9c.8 0 1.5-.7 1.5-1.5V6.2c0-.8-.7-1.4-1.5-1.4zm-.8 9.7l-.7.6c-.2.2-.4.3-.6.3-1.5-.1-3-.9-4.1-1.9-1-1-1.8-2.5-1.8-4.1 0-.2 0-.4.2-.6l.7-.6c.3-.4.8-.3 1.1 0l.6.8c.2.3.2.6 0 .9l-.5.8c-.1.1-.1.2 0 .3l1.1 1.2 1.2 1.1c.1.1.2.1.3 0l.8-.5c.2-.2.6-.2.9 0l.8.6c.3.2.3.8 0 1.1z" } },
+	  marketing_actions: { "path": { "d": "M11.4 6.2c-1.2.1-2.2 1.1-2.3 2.3.1-1.2 1.1-2.2 2.3-2.3zm2.5 2.3c-.1-1.2-1-2.2-2.3-2.3 1.3.1 2.3 1.1 2.3 2.3zm1.4 4.7l-2.5-.9c-.2-.1-.3-.2-.3-.4V8.6c0-.5-.4-.9-.9-.9h-.1c-.5 0-.9.4-.9.9V15c0 .6-.7.8-1 .3L9 14c-.4-.6-1.1-.7-1.7-.3L7 14l2 4.9c.1.2.3.3.6.3H15c.2 0 .5-.2.5-.4l1-3.5c.2-.9-.3-1.8-1.2-2.1zm-6.2-2.1V8.5c.1-1.2 1.1-2.2 2.3-2.3h.2c1.3.1 2.2 1.1 2.3 2.3v2.6c0 .2.3.3.4.2.7-.7 1.1-1.7 1.1-2.7 0-2.2-2-4-4.2-3.8C9.4 5 8 6.3 7.7 8c-.2 1.2.2 2.4 1 3.3.2.1.4 0 .4-.2z" } },
+	  marketing_resources: { "path": { "d": "M9.4 10.6c.6 0 1.2-.6 1.2-1.2v.4c0 .4-.4.8-.8.8h-.4zm-2.9 0c-.4 0-.7-.4-.7-.8V6.5c0-.4.3-.7.7-.7h3.3c.4 0 .8.3.8.7V7c0-.7-.6-1.2-1.2-1.2H7c-.7 0-1.2.5-1.2 1.2v2.4c0 .6.5 1.2 1.2 1.2h-.5zM9.8 5H6.5C5.7 5 5 5.7 5 6.5v3.3c0 .8.7 1.5 1.5 1.5h3.3c.8 0 1.5-.7 1.5-1.5V6.5c0-.8-.7-1.5-1.5-1.5zM7 9.8c-.3 0-.5-.2-.5-.4V7c0-.3.2-.5.5-.5h2.4c.2 0 .4.2.4.5v2.4c0 .2-.2.4-.4.4H7zm2.4 8.4c.6 0 1.2-.5 1.2-1.2v.5c0 .4-.4.7-.8.7h-.4zm-2.9 0c-.4 0-.7-.3-.7-.7v-3.3c0-.4.3-.8.7-.8h3.3c.4 0 .8.4.8.8v.4c0-.6-.6-1.2-1.2-1.2H7c-.7 0-1.2.6-1.2 1.2V17c0 .7.5 1.2 1.2 1.2h-.5zm3.3-5.5H6.5c-.8 0-1.5.7-1.5 1.5v3.3c0 .8.7 1.5 1.5 1.5h3.3c.8 0 1.5-.7 1.5-1.5v-3.3c0-.8-.7-1.5-1.5-1.5zM7 17.5c-.3 0-.5-.2-.5-.5v-2.4c0-.2.2-.4.5-.4h2.4c.2 0 .4.2.4.4V17c0 .3-.2.5-.4.5H7zm10 .7c.7 0 1.2-.5 1.2-1.2v.5c0 .4-.3.7-.7.7H17zm-2.8 0c-.4 0-.8-.3-.8-.7v-3.3c0-.4.4-.8.8-.8h3.3c.4 0 .7.4.7.8v.4c0-.6-.5-1.2-1.2-1.2h-2.4c-.6 0-1.2.6-1.2 1.2V17c0 .7.6 1.2 1.2 1.2h-.4zm3.3-5.5h-3.3c-.8 0-1.5.7-1.5 1.5v3.3c0 .8.7 1.5 1.5 1.5h3.3c.8 0 1.5-.7 1.5-1.5v-3.3c0-.8-.7-1.5-1.5-1.5zm-2.9 4.8c-.2 0-.4-.2-.4-.5v-2.4c0-.2.2-.4.4-.4H17c.3 0 .5.2.5.4V17c0 .3-.2.5-.5.5h-2.4zm-.4-6.9c-.4 0-.8-.4-.8-.8V6.5c0-.4.4-.7.8-.7h3.3c.4 0 .7.3.7.7v3.3c0 .4-.3.8-.7.8h-3.3zm3.3-4.1v3.3h-3.3V6.5h3.3m0-1.5h-3.3c-.8 0-1.5.7-1.5 1.5v3.3c0 .8.7 1.5 1.5 1.5h3.3c.8 0 1.5-.7 1.5-1.5V6.5c0-.8-.7-1.5-1.5-1.5z" } },
+	  metrics: { "path": { "d": "M17.3 5.3H6.7c-.8 0-1.4.6-1.4 1.4v10.6c0 .8.6 1.4 1.4 1.4h10.6c.8 0 1.4-.6 1.4-1.4V6.7c0-.8-.6-1.4-1.4-1.4zM9.1 15.8c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-2.6c0-.3.2-.5.5-.5h.4c.3 0 .5.2.5.5v2.6zm2.4 0c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5V9.6c0-.3.2-.5.5-.5h.4c.3 0 .5.2.5.5v6.2zm2.4 0c0 .3-.2.5-.5.5H13c-.3 0-.5-.2-.5-.5V8.2c0-.3.2-.5.5-.5h.4c.3 0 .5.2.5.5v7.6zm2.4 0c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-4.5c0-.3.2-.5.5-.5h.4c.3 0 .5.2.5.5v4.5z" } },
+	  news: { "path": { "d": "M18.8 6.5H7.4c-.2 0-.4.1-.4.4v8.4c0 .3-.3.6-.6.6-.3-.1-.5-.3-.5-.6V9.2c0-.1-.1-.2-.3-.2h-.4c-.2 0-.4.1-.4.4v7c0 .6.5 1.1 1.1 1.1h12.2c.6 0 1.1-.5 1.1-1.1V6.9c0-.3-.2-.4-.4-.4zm-6.2 8c0 .2-.2.3-.3.3H9c-.2 0-.3-.1-.3-.3v-.6c0-.1.1-.2.3-.2h3.3c.1 0 .3.1.3.2v.6zm0-2.2c0 .2-.2.3-.3.3H9c-.2 0-.3-.1-.3-.3v-.6c0-.1.1-.3.3-.3h3.3c.1 0 .3.2.3.3v.6zm4.9 2.2c0 .2-.1.3-.2.3h-3.4c-.1 0-.2-.1-.2-.3v-.6c0-.1.1-.2.2-.2h3.4c.1 0 .2.1.2.2v.6zm0-2.2c0 .2-.1.3-.2.3h-3.4c-.1 0-.2-.1-.2-.3v-.6c0-.1.1-.3.2-.3h3.4c.1 0 .2.2.2.3v.6zm0-2.2c0 .1-.1.2-.2.2H9c-.2 0-.3-.1-.3-.2V8.4c0-.2.1-.3.3-.3h8.3c.1 0 .2.1.2.3v1.7z" } },
+	  note: { "path": { "d": "M17.1 16.1l-.3.2c-.2.3-.6.5-1.1.5H15c-.8 0-1.6-.6-1.6-1.6v-.7c0-.6.3-1 .5-1.2l3.2-3.2c.1-.1.2-.3.2-.4V7.2c0-.8-.7-1.4-1.5-1.4H8.2c-.8 0-1.5.7-1.5 1.4h-.5c-.5 0-.9.4-.9 1s.4.9.9.9h.5V11h-.5c-.5 0-.9.5-.9 1s.4 1 .9 1h.5v1.9h-.5c-.5 0-.9.4-.9.9s.4 1 .9 1h.5c0 1 .7 1.4 1.5 1.4h7.6c.8 0 1.5-.6 1.5-1.4v-.6c0-.2-.1-.2-.2-.1zm-2.5-6.7c0 .2-.2.4-.4.4H9.4c-.3 0-.5-.2-.5-.4v-.5c0-.3.2-.5.5-.5h4.8c.2 0 .4.2.4.5v.5zm-2.1 5.7c0 .3-.2.5-.5.5H9.4c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4H12c.3 0 .5.2.5.4v.5zm.7-2.9c0 .3-.2.5-.5.5H9.4c-.3 0-.5-.2-.5-.5v-.4c0-.3.2-.5.5-.5h3.3c.3 0 .5.2.5.5v.4zm6.3-1.3l-.3-.2c-.1-.2-.4-.2-.6 0l-3.7 3.7v.8c0 .1 0 .2.1.2h.7c.1 0 .1-.1.1-.1l3.7-3.7c.2-.2.2-.5 0-.7z" } },
+	  opportunity: { "path": { "d": "M17.1 16.6H6.9c-.2 0-.4.2-.4.4 0 .8.6 1.5 1.4 1.5h8.2c.8 0 1.4-.7 1.4-1.5 0-.2-.2-.4-.4-.4zm1.1-9.9c-.8 0-1.4.7-1.4 1.5 0 .4.2.8.5 1.1-.4.9-1.3 1.5-2.4 1.5-1.3-.1-2.3-1.1-2.4-2.4v-.6c.6-.2.9-.7.9-1.3 0-.8-.6-1.5-1.4-1.5s-1.4.7-1.4 1.5c0 .6.3 1.1.9 1.3v.6c-.1 1.3-1.1 2.3-2.4 2.4-1.1.1-2-.6-2.4-1.5.3-.3.5-.7.5-1.1 0-.8-.6-1.5-1.4-1.5s-1.5.7-1.5 1.5.7 1.4 1.5 1.4l.6 5.1c.1.3.2.4.5.4h10.2c.2 0 .4-.1.5-.4l.6-5.1c.8 0 1.5-.6 1.5-1.4s-.7-1.5-1.5-1.5z" } },
+	  orders: { "path": { "d": "M18.9 14.9l-.9-.4c-.1-.1-.2-.1-.4 0l-5.1 2.4c-.3.2-.7.2-1 0l-5.1-2.4c-.2-.1-.3-.1-.4 0l-.9.4c-.4.2-.4.7 0 .9l6.4 3c.3.2.7.2 1 0l6.4-3c.4-.2.4-.7 0-.9zm0-3.4l-.9-.4h-.4l-5.1 2.5c-.3.1-.7.1-1 0l-5.1-2.5H6l-.9.4c-.4.2-.4.7 0 .9l6.4 3.1c.3.1.7.1 1 0l6.4-3c.4-.2.4-.8 0-1zM5.1 9.1l6.4 3c.3.2.7.2 1 0l6.4-3c.4-.2.4-.7 0-.9l-6.4-3.1c-.3-.1-.7-.1-1 0L5.1 8.2c-.4.2-.4.7 0 .9z" } },
+	  people: { "path": { "d": "M19.2 17.1v.7c0 .8-.6 1.4-1.4 1.4H6.2c-.8 0-1.4-.6-1.4-1.4v-.7c0-1.8 2-2.8 4-3.7 0 0 .1 0 .2-.1.1 0 .3 0 .4.1.8.5 1.7.8 2.6.8.9 0 1.8-.3 2.6-.8.1-.1.3-.1.4 0 .1 0 .2 0 .2.1 2 .8 4 1.8 4 3.6z" }, "ellipse": { "cx": "12", "cy": "8.76", "rx": "3.576", "ry": "3.96" } },
+	  performance: { "path": { "d": "M7.2 4.8h-.5c-.8 0-1.4.7-1.4 1.4v11.6c0 .7.6 1.4 1.4 1.4h.5c.3 0 .5-.2.5-.5V5.3c0-.3-.2-.5-.5-.5zm10.1 0H9.6c-.3 0-.5.2-.5.5v13.4c0 .3.2.5.5.5h7.7c.8 0 1.4-.6 1.4-1.4V6.2c0-.8-.6-1.4-1.4-1.4zm-.5 6.4l-1.3 1.3v.1l.2 1.8c.1.2-.1.3-.2.2l-1.5-.8c-.1-.1-.1-.1-.2 0l-1.5.8c-.2.1-.3 0-.3-.2l.3-1.8v-.1L11 11.2c-.1-.1 0-.2.1-.2l1.7-.3c.1 0 .1 0 .2-.1l.7-1.6c.1-.2.2-.2.3 0l.8 1.6c0 .1 0 .1.1.1l1.7.3c.2 0 .2.1.2.2z" } },
+	  person_account: { "path": [{ "d": "M16.7 14.2c-.9-.4-1-.7-1-1.1 0-.4.2-.7.5-1 .5-.4.8-1.1.8-1.8 0-1.4-.9-2.6-2.5-2.6s-2.4 1.2-2.4 2.6c0 .7.3 1.4.8 1.8.3.3.5.6.5 1s-.1.7-1 1.1c-1.3.5-2.5 1.2-2.5 2.3 0 .8.6 1.5 1.3 1.5h6.7c.7 0 1.3-.7 1.3-1.5 0-1.1-1.2-1.8-2.5-2.3zm-5.8 1.1" }, { "d": "M11.2 12.3c-.1-.1-.6-.7-.5-2.3 0-1.6.7-2 .7-2V6.5c0-.3-.3-.5-.5-.5H5.3s-.5.2-.5.5v10.4H8c.1-2.6 3.2-3.7 3.2-3.7.4-.2.1-.7 0-.9zm-3.8 3.3c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4h.5c.3 0 .5.2.5.4v.5zm0-2.4c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-.4c0-.3.2-.5.5-.5h.5c.3 0 .5.2.5.5v.4zm0-2.3c0 .2-.2.5-.5.5h-.5c-.3 0-.5-.3-.5-.5v-.5c0-.3.2-.5.5-.5h.5c.3 0 .5.2.5.5v.5zm0-2.4c0 .3-.2.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V8c0-.2.2-.5.5-.5h.5c.3 0 .5.3.5.5v.5zm2.7 4.7c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-.4c0-.3.2-.5.5-.5h.5c.2 0 .5.2.5.5v.4zm0-2.3c0 .2-.3.5-.5.5h-.5c-.3 0-.5-.3-.5-.5v-.5c0-.3.2-.5.5-.5h.5c.2 0 .5.2.5.5v.5zm0-2.4c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V8c0-.2.2-.5.5-.5h.5c.2 0 .5.3.5.5v.5z" }] },
+	  photo: { "path": { "d": "M8.6 7.4h6.8c.2 0 .3-.2.2-.3l-.8-1.2c-.3-.5-.8-.8-1.3-.8h-3c-.5 0-1 .3-1.3.8l-.8 1.2c-.1.1 0 .3.2.3zm3.4 4.4c-1.1 0-1.9.8-1.9 1.9s.8 1.9 1.9 1.9 1.9-.9 1.9-1.9-.8-1.9-1.9-1.9zm5.8-2.9H6.2c-.8 0-1.4.6-1.4 1.4V17c0 .8.6 1.5 1.4 1.5h11.6c.8 0 1.4-.7 1.4-1.5v-6.7c0-.8-.6-1.4-1.4-1.4zM12 17c-1.8 0-3.4-1.5-3.4-3.3s1.6-3.4 3.4-3.4 3.4 1.5 3.4 3.4S13.8 17 12 17z" } },
+	  poll: { "path": { "d": "M18.2 4.8H5.8c-.6 0-1 .4-1 1v1.9c0 .5.4.9 1 .9h12.4c.6 0 1-.4 1-.9V5.8c0-.6-.4-1-1-1zm-6 2.9V5.8h6v1.9h-6zm6 2.4H5.8c-.6 0-1 .4-1 .9v2c0 .5.4.9 1 .9h12.4c.6 0 1-.4 1-.9v-2c0-.5-.4-.9-1-.9zM10.1 13v-2h8.1v2h-8.1zm8.1 2.4H5.8c-.6 0-1 .4-1 .9v1.9c0 .6.4 1 1 1h12.4c.6 0 1-.4 1-1v-1.9c0-.5-.4-.9-1-.9zm-3.8 2.8v-1.9h3.8v1.9h-3.8z" } },
+	  portal: { "path": { "d": "M17.3 5.3H6.7c-.8 0-1.4.6-1.4 1.4v10.6c0 .8.6 1.4 1.4 1.4h10.6c.8 0 1.4-.6 1.4-1.4V6.7c0-.8-.6-1.4-1.4-1.4zM14.2 15c0 .3-.2.6-.5.6h-3.4c-.3 0-.5-.3-.4-.6l.7-2.6c-.7-.5-1.1-1.5-1-2.5.2-1 1-1.7 1.9-1.9 1.6-.3 2.9.9 2.9 2.4 0 .8-.4 1.5-1 2l.8 2.6z" } },
+	  post: { "path": { "d": "M11.8 5.2c-4 0-7.2 3-7.2 6.7 0 1.2.3 2.3.9 3.3.1.1.1.3.1.4l-.7 2.1c-.1.4.2.8.6.6l2.1-.7c.2-.1.3 0 .4 0 1.1.7 2.4 1 3.8 1 4 0 7.2-3 7.2-6.7s-3.2-6.7-7.2-6.7z" } },
+	  pricebook: { "path": { "d": "M17.2 4.8h-9c-.8 0-1.5.7-1.5 1.4v.5h-.5c-.5 0-.9.5-.9 1s.4.9.9.9h.5V11h-.5c-.5 0-.9.5-.9 1s.4 1 .9 1h.5v2.4h-.5c-.5 0-.9.4-.9.9s.4 1 .9 1h.5v.4c0 .7.7 1.5 1.5 1.5h9c.8 0 1.5-.8 1.5-1.6V6.1c0-.8-.7-1.3-1.5-1.3zm-6.9 9.8c0 .2-.1.3-.2.3h-1c-.1 0-.2-.1-.2-.3V9.4c0-.2.1-.3.2-.3h1c.1 0 .2.1.2.3v5.2zm1.9 0c0 .2-.1.3-.2.3h-.5c-.1 0-.2-.1-.2-.3V9.4c0-.2.1-.3.2-.3h.5c.1 0 .2.1.2.3v5.2zm2.4 0c0 .2-.1.3-.2.3h-1c-.1 0-.2-.1-.2-.3V9.4c0-.2.1-.3.2-.3h1c.1 0 .2.1.2.3v5.2zm2 0c0 .2-.1.3-.3.3h-.5c-.1 0-.2-.1-.2-.3V9.4c0-.2.1-.3.2-.3h.5c.2 0 .3.1.3.3v5.2z" } },
+	  process: { "path": { "d": "M9 11.1l2.6-3.2c.2-.2.6-.2.8 0l2.6 3.2c0 .1.2.2.3.2h2.9c.3 0 .5-.2.5-.5V6.7c0-.8-.6-1.4-1.4-1.4H6.7c-.8 0-1.4.6-1.4 1.4v4.1c0 .3.2.5.5.5h2.8c.2 0 .3-.1.4-.2zm6 1.8l-2.6 3.2c-.2.2-.6.2-.8 0L9 12.9c-.1-.1-.2-.2-.4-.2H5.8c-.3 0-.5.2-.5.5v4.1c0 .8.6 1.4 1.4 1.4h10.6c.8 0 1.4-.6 1.4-1.4v-4.1c0-.3-.2-.5-.5-.5h-2.9c-.1 0-.3.1-.3.2z" } },
+	  product: { "path": { "d": "M5.3 15.8h1.2c.2 0 .5-.2.5-.4V7.9c0-.2-.3-.5-.5-.5H5.3c-.3 0-.5.3-.5.5v7.5c0 .2.2.4.5.4zm13.4-8.4h-1.2c-.2 0-.5.3-.5.5v7.5c0 .2.3.4.5.4h1.2c.3 0 .5-.2.5-.4V7.9c0-.2-.2-.5-.5-.5zm-6 8.4c.3 0 .5-.2.5-.4V7.9c0-.2-.2-.5-.5-.5h-1.4c-.3 0-.5.3-.5.5v7.5c0 .2.2.4.5.4h1.4zm2.9 0c.3 0 .5-.2.5-.4V7.9c0-.2-.2-.5-.5-.5h-.5c-.2 0-.5.3-.5.5v7.5c0 .2.3.4.5.4h.5zm-6.2 0c.2 0 .4-.2.4-.4V7.9c0-.2-.2-.5-.4-.5h-.5c-.3 0-.5.3-.5.5v7.5c0 .2.2.4.5.4h.5zm9.3 1.5H5.3c-.3 0-.5.2-.5.5v.4c0 .3.2.5.5.5h13.4c.3 0 .5-.2.5-.5v-.4c0-.3-.2-.5-.5-.5zm0-12.5H5.3c-.3 0-.5.2-.5.5v.5c0 .2.2.4.5.4h13.4c.3 0 .5-.2.5-.4v-.5c0-.3-.2-.5-.5-.5z" } },
+	  question_best: { "title": {}, "g": { "path": [{ "d": "M24 24v-9.1L14.9 24H24zm-.9-3.5l-.8.8v.1l.2 1.1s-.1.1-.2.1l-.9-.5c0-.1 0-.1 0 0l-1 .5c-.1 0-.1-.1-.1-.1l.1-1.1v-.1l-.7-.8c-.1 0 0-.1 0-.1l1.1-.2.5-1c0-.1.1-.1.2 0l.4 1h.1l1 .2c.1 0 .1.1.1.1z", "fill-opacity": ".65" }, { "d": "M12 5.3c-4 0-7.2 3-7.2 6.7 0 1.2.3 2.3.9 3.3.1.1.1.3 0 .4l-.6 2.1c-.2.4.2.7.6.6l2.1-.7c.1-.1.3-.1.4 0 1.1.7 2.4 1 3.8 1 4 0 7.2-3 7.2-6.7S16 5.3 12 5.3zm.7 10.8c0 .2-.2.5-.5.5h-.5c-.2 0-.4-.3-.4-.5v-.5c0-.3.2-.5.4-.5h.5c.3 0 .5.2.5.5v.5zm.2-3.1c-.1.1-.2.2-.2.3v.4c0 .2-.2.5-.5.5h-.4c-.3 0-.5-.3-.5-.5v-.4c0-.7.5-1.4 1.2-1.6.2-.1.5-.3.6-.5.8-1 0-2.3-1.1-2.3-.4 0-.7.1-1 .4-.2.2-.4.4-.4.7-.1.2-.3.3-.5.3h-.5c-.3 0-.5-.2-.5-.5.2-.6.4-1.1.9-1.5.5-.6 1.3-.9 2-.9 1.6.1 2.8 1.3 2.9 2.8 0 1.3-.8 2.4-2 2.8z" }] } },
+	  question_feed: { "path": { "d": "M12 5.3c-4 0-7.2 3-7.2 6.7 0 1.2.3 2.3.9 3.3.1.1.1.3.1.4l-.7 2.1c-.1.4.2.7.6.6l2.1-.7c.2-.1.3-.1.4 0 1.1.7 2.4 1 3.8 1 4 0 7.2-3 7.2-6.7S16 5.3 12 5.3zm.7 10.8c0 .2-.2.5-.5.5h-.4c-.3 0-.5-.3-.5-.5v-.5c0-.3.2-.5.5-.5h.4c.3 0 .5.2.5.5v.5zm.2-3.1c-.1.1-.2.2-.2.3v.4c0 .2-.2.5-.5.5h-.4c-.3 0-.5-.3-.5-.5v-.4c0-.7.5-1.4 1.2-1.6.2-.1.5-.3.6-.5.8-1 0-2.3-1.1-2.3-.4 0-.7.1-1 .4-.2.2-.4.4-.4.7-.1.2-.3.3-.5.3h-.5c-.3 0-.5-.2-.5-.5.2-.6.4-1.1.9-1.5.5-.6 1.3-.9 2-.9 1.6.1 2.8 1.3 2.9 2.8 0 1.3-.8 2.4-2 2.8z" } },
+	  quotes: { "path": { "d": "M17.3 5.3H12c-.3 0-.6.1-.8.4l-6.5 6.4c-.5.6-.5 1.5 0 2.1l5.1 5c.6.6 1.5.6 2.1 0l6.5-6.5c.2-.2.3-.6.3-.9V6.7c0-.8-.6-1.4-1.4-1.4zm-5.2 10.5l-.3.4c-.2.2-.5.2-.7 0l-3.3-3.3c-.2-.2-.2-.5 0-.7l.4-.3c.2-.2.4-.2.6 0l3.3 3.3c.2.2.2.4 0 .6zm1.9-1.9l-.3.4c-.2.1-.5.1-.7 0L9.7 11c-.1-.2-.1-.5 0-.7l.4-.3c.2-.2.5-.2.7 0l3.2 3.2c.2.2.2.5 0 .7zm1.4-4.1c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.6 1.2 1.2-.6 1.2-1.2 1.2z" } },
+	  recent: { "path": { "d": "M6.7 11.5v.5H5.3v-.5h1.4zm5.7-2.9h-.8c-.2 0-.3.2-.3.4v3.1c0 .1 0 .2.1.3l2 2c.1.2.4.2.5 0l.5-.5c.1-.1.1-.3 0-.5l-1.7-1.7V9c0-.2-.1-.4-.3-.4zM12 5.3c-3.6 0-6.5 2.7-6.7 6.2v.3H4.2c-.3 0-.5.3-.3.5l1.8 2.2c.2.2.4.2.6 0l1.8-2.2c.2-.2 0-.5-.3-.5H6.7v-.3C7 8.8 9.2 6.7 12 6.7c3.1 0 5.6 2.7 5.2 5.9-.2 2.3-2.4 4.4-4.7 4.7-1.7.1-3.3-.5-4.4-1.7-.2-.2-.3-.3-.5 0l-.6.6c-.1.2 0 .3.1.4 1.3 1.4 3.1 2.1 5 2.1 3.4 0 6.3-2.8 6.6-6.2.3-3.9-2.8-7.2-6.7-7.2z" } },
+	  record: { "path": { "d": "M9.4 7.7h5.2c.3 0 .5-.2.5-.5v-1c0-.8-.6-1.4-1.4-1.4h-3.4c-.8 0-1.4.6-1.4 1.4v1c0 .3.2.5.5.5zM17.3 6h-.5c-.1 0-.2.1-.2.2v1c0 1.1-.9 1.9-2 1.9H9.4c-1.1 0-2-.8-2-1.9v-1c0-.1-.1-.2-.2-.2h-.5c-.8 0-1.4.6-1.4 1.4v10.4c0 .8.6 1.4 1.4 1.4h10.6c.8 0 1.4-.6 1.4-1.4V7.4c0-.8-.6-1.4-1.4-1.4zM9.4 16.3c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4h.5c.2 0 .5.2.5.4v.5zm0-2.4c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4h.5c.2 0 .5.2.5.4v.5zm0-2.4c0 .3-.3.5-.5.5h-.5c-.3 0-.5-.2-.5-.5V11c0-.2.2-.4.5-.4h.5c.2 0 .5.2.5.4v.5zm6.7 4.8c0 .3-.2.5-.5.5h-4.8c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4h4.8c.3 0 .5.2.5.4v.5zm0-2.4c0 .3-.2.5-.5.5h-4.8c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4h4.8c.3 0 .5.2.5.4v.5zm0-2.4c0 .3-.2.5-.5.5h-4.8c-.3 0-.5-.2-.5-.5V11c0-.2.2-.4.5-.4h4.8c.3 0 .5.2.5.4v.5z" } },
+	  related_list: { "path": { "d": "M17.8 4.8h-7.7c-.8 0-1.5.6-1.5 1.4v.3c0 .1.1.2.3.2h6.9c.8 0 1.5.7 1.5 1.5v7.4c0 .1.1.2.2.2.9 0 1.7-.7 1.7-1.6v-8c0-.8-.6-1.4-1.4-1.4zM6.7 8.2c-.8 0-1.4.6-1.4 1.4v8.2c0 .8.6 1.4 1.4 1.4h7.7c.8 0 1.4-.6 1.4-1.4V9.6c0-.8-.6-1.4-1.4-1.4H6.7zm1.9 3.3c0 .3-.2.5-.4.5h-.5c-.3 0-.5-.2-.5-.5V11c0-.2.2-.4.5-.4h.5c.2 0 .4.2.4.4v.5zm5.3 0c0 .3-.2.5-.5.5h-3.3c-.3 0-.5-.2-.5-.5V11c0-.2.2-.4.5-.4h3.3c.3 0 .5.2.5.4v.5zm-5.3 2.4c0 .3-.2.5-.4.5h-.5c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4h.5c.2 0 .4.2.4.4v.5zm5.3 0c0 .3-.2.5-.5.5h-3.3c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4h3.3c.3 0 .5.2.5.4v.5zm-5.3 2.4c0 .3-.2.5-.4.5h-.5c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4h.5c.2 0 .4.2.4.4v.5zm5.3 0c0 .3-.2.5-.5.5h-3.3c-.3 0-.5-.2-.5-.5v-.5c0-.2.2-.4.5-.4h3.3c.3 0 .5.2.5.4v.5z" } },
+	  report: { "path": { "d": "M9.4 7.7h5.2c.3 0 .5-.2.5-.5v-1c0-.8-.6-1.4-1.4-1.4h-3.4c-.8 0-1.4.6-1.4 1.4v1c0 .3.2.5.5.5zM17.3 6h-.5c-.1 0-.2.1-.2.2v1c0 1.1-.9 1.9-2 1.9H9.4c-1.1 0-2-.8-2-1.9v-1c0-.1-.1-.2-.2-.2h-.5c-.8 0-1.4.6-1.4 1.4v10.4c0 .8.6 1.4 1.4 1.4h10.6c.8 0 1.4-.6 1.4-1.4V7.4c0-.8-.6-1.4-1.4-1.4zm-7 9.8c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-2.4c0-.2.2-.4.5-.4h.4c.3 0 .5.2.5.4v2.4zm2.4 0c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-4.5c0-.3.2-.5.5-.5h.4c.3 0 .5.2.5.5v4.5zm2.4 0c0 .3-.2.5-.5.5h-.4c-.3 0-.5-.2-.5-.5v-3.6c0-.2.2-.4.5-.4h.4c.3 0 .5.2.5.4v3.6z" } },
+	  reward: { "path": { "d": "M11.2 15.2l-2.8 4-.7-1.9H5.8l2.4-3.4c.5.3 1 .4 1.4.5h.3s.2.1.2.2c.3.2.7.5 1.1.6zm4.6-1.3c-.5.3-1 .4-1.4.5h-.3c-.1 0-.2.1-.3.2-.2.2-.6.5-1 .6l2.8 4 .7-1.9h1.9l-2.4-3.4zM12 7.7c-.9 0-1.7.7-1.7 1.7S11.1 11 12 11s1.7-.7 1.7-1.6-.8-1.7-1.7-1.7zm4.6 1.7c0 .5-.7 1-.9 1.5-.2.5-.1 1.3-.5 1.7-.4.4-1.1.3-1.7.5-.5.2-.9.8-1.5.8s-1-.6-1.5-.8c-.6-.2-1.3-.1-1.7-.5-.4-.4-.3-1.2-.5-1.7s-.9-1-.9-1.5c0-.6.7-1.1.9-1.6.2-.5.1-1.3.5-1.7.4-.3 1.1-.2 1.7-.5.5-.2.9-.8 1.5-.8s1 .6 1.5.8c.6.3 1.3.1 1.7.5.4.4.3 1.2.5 1.7s.9 1 .9 1.6zm-1.5 0c0-1.8-1.4-3.2-3.1-3.2S8.9 7.6 8.9 9.4s1.4 3.1 3.1 3.1 3.1-1.4 3.1-3.1z" } },
+	  scan_card: { "path": { "d": "M17.8 7.2H6.2c-.8 0-1.4.6-1.4 1.4v6.8c0 .8.6 1.4 1.4 1.4h11.6c.8 0 1.4-.6 1.4-1.4V8.6c0-.8-.6-1.4-1.4-1.4zM6 12.7c-.4 0-.7-.3-.7-.7s.3-.7.7-.7.7.3.7.7-.3.7-.7.7zm11.3 2.2c0 .2-.2.5-.5.5H7.7c-.3 0-.5-.3-.5-.5V9.1c0-.2.2-.5.5-.5h9.1c.3 0 .5.3.5.5v5.8zm-1.9-4.8H9.1c-.2 0-.5.2-.5.5v2.8c0 .3.3.5.5.5h6.3c.2 0 .4-.2.4-.5v-2.8c0-.3-.2-.5-.4-.5z" } },
+	  skill_entity: { "path": { "d": "M18.6 13.4l-1.8-2.6v-.2c0-3.2-2.6-5.8-5.8-5.8-.4 0-.9 0-1.3.2-2.6.5-4.4 2.9-4.4 5.6 0 1.1.3 2.2.8 3 1.1 1.4 1.7 2.6 1.3 4.2-.1.3 0 .7.2 1 .2.3.6.4.9.4h4.7c.6 0 1.1-.4 1.2-.9V18c.1-.3.3-.5.6-.5h.3c.6 0 1-.3 1.2-.8.1-.5.3-1.3.3-2.3h1.3c.2 0 .4-.2.5-.4.1-.2.1-.5 0-.6zm-3.9-3.3c-.2.3-.5.5-1.1.5-2.9 0-3.2 2.1-3.2 3.2 0 .4-.3.8-.8.8h-.1c-.4 0-.7-.2-.8-.7-.1-.4-.4-.6-.7-.8-.2-.2-.4-.3-.5-.5-.3-.6-.5-1.2-.5-2.1C7 8.7 8.3 7 10 6.6c.4 0 .7-.1 1-.1 1.6 0 3.1 1 3.7 2.5.1 0 .3.6 0 1.1z" } },
+	  social: { "path": { "d": "M16.8 13.7c-1.2 0-2.1.8-2.4 1.9h-3.1c-.2 0-.3.1-.3.3V16.8c-.1.1.1.2.2.2h3.4c.4.9 1.2 1.5 2.2 1.5 1.3 0 2.4-1.1 2.4-2.4s-1.1-2.4-2.4-2.4zm-6.4-2.8c-.3-.1-.6-.3-.8-.5-.1-.1-.3 0-.4.1l-1.7 3.2h-.3c-1.3 0-2.4 1.1-2.4 2.4s1.1 2.4 2.4 2.4 2.4-1.1 2.4-2.4c0-.7-.3-1.3-.7-1.8l1.6-3c.1-.2 0-.3-.1-.4zM12 9.8c.2 0 .5 0 .7-.1l1.6 3.1c.1.1.2.2.4.1.2-.2.5-.3.8-.4.1-.1.2-.2.1-.4l-1.7-3.2c.3-.4.5-.9.5-1.5C14.4 6.1 13.3 5 12 5S9.6 6.1 9.6 7.4s1.1 2.4 2.4 2.4z" } },
+	  solution: { "path": { "d": "M11.4 4.8C9.1 5.1 7.2 6.9 7 9.2c-.2 1.7.6 3.3 1.8 4.2.3.3.6.8.6 1.2 0 .7.5 1.3 1.2 1.3h2.8c.7 0 1.2-.6 1.2-1.3 0-.4.3-.9.6-1.2 1.1-.9 1.8-2.2 1.8-3.7 0-2.9-2.5-5.2-5.6-4.9zm2.8 12.5H9.8c-.2 0-.4.2-.4.5 0 .8.6 1.4 1.4 1.4h2.4c.8 0 1.4-.6 1.4-1.4 0-.3-.2-.5-.4-.5z" } },
+	  sossession: { "path": { "d": "M11.9 4.3c-4.2.1-7.6 3.6-7.6 7.8.1 4.2 3.6 7.6 7.8 7.6 4.2-.1 7.6-3.6 7.6-7.8-.1-4.2-3.6-7.6-7.8-7.6zm0 1c1.2 0 2.2.3 3.2.8L14 7.8c-.6-.3-1.3-.5-2-.5s-1.4.2-2 .5L8.9 6.1c.9-.5 1.9-.8 3-.8zM7.8 14l-1.7 1.1c-.5-.9-.8-1.9-.8-3 0-1.2.3-2.3.8-3.2l1.7 1c-.3.7-.5 1.4-.5 2.1s.2 1.4.5 2zm4.3 4.7c-1.2 0-2.2-.3-3.2-.8l1.1-1.7c.6.3 1.3.5 2 .5s1.4-.2 2-.5l1.1 1.7c-.9.5-1.9.8-3 .8zm-.1-3c-2 0-3.7-1.7-3.7-3.7S10 8.3 12 8.3s3.7 1.7 3.7 3.7-1.7 3.7-3.7 3.7zm4.2-1.7c.3-.6.5-1.3.5-2s-.2-1.4-.5-2l1.7-1.1c.5.9.8 1.9.8 3 0 1.2-.3 2.3-.8 3.2L16.2 14z" } },
+	  task: { "path": { "d": "M11.2 5.7l-.5-.5c-.2-.2-.4-.2-.5 0L7 8.4 5.7 7.1c-.1-.2-.3-.2-.5 0l-.5.5c-.1.1-.1.3 0 .5l1.8 1.8c.1.1.3.2.5.2s.4-.1.5-.2l3.7-3.7c.1-.1.1-.4 0-.5zm7.3 3.4h-6.3c-.2 0-.4-.2-.4-.5v-.9c0-.3.2-.5.4-.5h6.3c.2 0 .5.2.5.5v.9c0 .3-.3.5-.5.5zm0 4.3h-7.7c-.3 0-.5-.2-.5-.4v-1c0-.3.2-.5.5-.5h7.7c.2 0 .5.2.5.5v1c0 .2-.3.4-.5.4zm-10.6 0H7c-.3 0-.5-.2-.5-.4v-1c0-.3.2-.5.5-.5h.9c.3 0 .5.2.5.5v1c0 .2-.2.4-.5.4zm0 4.4H7c-.3 0-.5-.3-.5-.5v-1c0-.2.2-.5.5-.5h.9c.3 0 .5.3.5.5v1c0 .2-.2.5-.5.5zm10.6 0h-7.7c-.3 0-.5-.3-.5-.5v-1c0-.2.2-.5.5-.5h7.7c.2 0 .5.3.5.5v1c0 .2-.3.5-.5.5z" } },
+	  task2: { "path": { "d": "M10.2 17c-.3 0-.6-.1-.8-.3l-4.5-4.5c-.1-.2-.1-.5 0-.7l.9-.8c.2-.2.5-.2.7 0l3.7 3.7 7.3-7.3c.2-.2.5-.2.7 0l.9.9c.1.2.1.4 0 .6L11 16.7c-.2.2-.5.3-.8.3z" } },
+	  team_member: { "path": [{ "d": "M13.7 10.6h-2.9c-.8 0-1.4.6-1.4 1.4v2.2c0 .2.1.5.2.6.2.2.5.3.7.3v2.2c0 .8.7 1.4 1.5 1.4h.9c.8 0 1.5-.6 1.5-1.4v-2.2c.2 0 .5-.1.6-.3.2-.1.3-.4.3-.6V12c0-.8-.6-1.4-1.4-1.4z" }, { "d": "M8.8 16c-.1 0-.1-.1-.2-.1-.4-.5-.7-1.1-.7-1.7V12c0-.8.3-1.5.8-2 .2-.1 0-.4-.2-.4H6.2c-.8 0-1.4.6-1.4 1.4v2.2c0 .3.1.5.3.7.2.1.4.3.7.3v2.1c0 .8.6 1.5 1.4 1.5h1c.2 0 .4-.1.5-.2.1 0 .2-.1.2-.2v-1.2c0-.1 0-.1-.1-.2z" }, { "d": "M18.2 9.6h-2.3c-.2 0-.3.2-.1.4.5.5.8 1.2.8 2v2.2c0 .6-.3 1.2-.7 1.7-.1 0-.1.1-.2.1-.1.1-.1.1-.1.2v1.2c0 .1 0 .2.1.2.2.1.4.2.6.2h1c.8 0 1.4-.7 1.4-1.5v-2.1c.3 0 .5-.1.7-.3.2-.2.3-.4.3-.7V11c0-.8-.7-1.4-1.5-1.4z" }], "circle": [{ "cx": "12.24", "cy": "7.92", "r": "1.68" }, { "cx": "7.68", "cy": "6.96", "r": "1.68" }, { "cx": "16.8", "cy": "6.96", "r": "1.68" }] },
+	  thanks: { "path": { "d": "M17.8 8.4h-2.1c.6-.9.5-2.2-.2-3-.4-.4-1-.6-1.6-.6-.6 0-1.2.3-1.7.8-.1.1-.1.2-.2.3-.1-.1-.1-.2-.2-.3-.5-.5-1.1-.8-1.7-.8-.6 0-1.1.2-1.6.6-.7.8-.7 2.1-.1 3H6.2c-.8 0-1.4.6-1.4 1.4v1c0 .3.2.5.5.5h13.4c.3 0 .5-.2.5-.5v-1c0-.8-.6-1.4-1.4-1.4zm-6.5 0c-.5 0-1.2-.2-1.7-.6-.3-.4-.4-1 0-1.3.1-.2.3-.2.5-.2s.4.1.6.3c.4.4.6 1.2.6 1.7v.1zm3.1-.6c-.5.4-1.2.6-1.7.6v-.1c0-.5.2-1.3.6-1.7.2-.2.4-.4.6-.4.2 0 .4.1.5.2.3.4.3 1 0 1.4zm3.4 4.9h-5.1v6.5h4.1c.8 0 1.4-.6 1.4-1.4v-4.6c0-.3-.2-.5-.4-.5zm-12 .5v4.6c0 .8.6 1.4 1.4 1.4h4.1v-6.5H6.2c-.2 0-.4.2-.4.5z" } },
+	  thanks_loading: { "path": { "opacity": ".5", "d": "M17.8 8.4h-2.1c.6-.9.5-2.2-.2-3-.4-.4-1-.6-1.6-.6-.6 0-1.2.3-1.7.8-.1.1-.1.2-.2.3-.1-.1-.1-.2-.2-.3-.5-.5-1.1-.8-1.7-.8-.6 0-1.1.2-1.6.6-.7.8-.7 2.1-.1 3H6.2c-.8 0-1.4.6-1.4 1.4v1c0 .3.2.5.5.5h13.4c.3 0 .5-.2.5-.5v-1c0-.8-.6-1.4-1.4-1.4zm-6.5 0c-.5 0-1.2-.2-1.7-.6-.3-.4-.4-1 0-1.3.1-.2.3-.2.5-.2s.4.1.6.3c.4.4.6 1.2.6 1.7v.1zm3.1-.6c-.5.4-1.2.6-1.7.6v-.1c0-.5.2-1.3.6-1.7.2-.2.4-.4.6-.4.2 0 .4.1.5.2.3.4.3 1 0 1.4zm3.4 4.9h-5.1v6.5h4.1c.8 0 1.4-.6 1.4-1.4v-4.6c0-.3-.2-.5-.4-.5zm-12 .5v4.6c0 .8.6 1.4 1.4 1.4h4.1v-6.5H6.2c-.2 0-.4.2-.4.5z" } },
+	  today: { "path": { "d": "M12 4.8C8 4.8 4.8 8 4.8 12S8 19.2 12 19.2s7.2-3.2 7.2-7.2S16 4.8 12 4.8zm0 13c-3.2 0-5.8-2.6-5.8-5.8S8.8 6.2 12 6.2s5.8 2.6 5.8 5.8-2.6 5.8-5.8 5.8zm.7-6.1V8.6c0-.2-.2-.4-.5-.4h-.4c-.3 0-.5.2-.5.4V12c0 .2.1.4.2.5l2.3 2.3c.2.2.5.2.7 0l.3-.3c.2-.2.2-.5 0-.7l-2.1-2.1z" } },
+	  topic: { "path": { "d": "M14.7 8.9c.1.2.2.3.4.4l.5.1c.1 0 .2 0 .3-.1l1.1-2c.3-.4.1-.6-.4-.3l-1.9 1.1c-.1.1-.2.2-.1.3l.1.5zm-6.6.4c.1.1.2.1.3.1l.5-.1c.2-.1.3-.2.4-.4l.1-.5c0-.1 0-.2-.1-.3L7.3 7c-.4-.3-.6-.1-.3.4l1.1 1.9zm7.8 5.4c-.1-.1-.2-.1-.3-.1l-.5.1c-.2.1-.3.2-.4.4l-.1.5c0 .1 0 .2.1.3l2 1.1c.4.3.6.1.3-.4l-1.1-1.9zm-6.6.4c-.1-.2-.2-.3-.4-.4l-.5-.1c-.1 0-.2 0-.3.1l-1.1 2c-.3.4-.1.6.4.3l1.9-1.1c.1-.1.2-.2.1-.3l-.1-.5zm9.5-3.3l-4.9-1.4c-.2 0-.3-.1-.3-.3l-1.4-4.9c-.1-.5-.3-.5-.5 0l-1.3 4.9c0 .2-.2.3-.3.3l-4.9 1.4c-.5.1-.5.3 0 .5l4.9 1.3c.2 0 .3.2.3.3l1.4 4.9c.1.5.3.5.5 0l1.3-4.9c0-.2.2-.3.3-.3l4.9-1.4c.5-.1.5-.3 0-.4zM12 13.2c-.7 0-1.2-.5-1.2-1.2s.5-1.2 1.2-1.2 1.2.5 1.2 1.2-.5 1.2-1.2 1.2z" } },
+	  unmatched: { "path": { "d": "M15.8 11.2c-.1-.1-.2-.2-.3-.2h-7c-.1 0-.2.1-.3.2v1.6c.1.1.2.2.3.2h7c.1 0 .2-.1.3-.2V12v-.8zM12 4.8C8 4.8 4.8 8 4.8 12S8 19.2 12 19.2s7.2-3.2 7.2-7.2S16 4.8 12 4.8zm0 12.5c-2.9 0-5.3-2.4-5.3-5.3S9.1 6.7 12 6.7s5.3 2.4 5.3 5.3-2.4 5.3-5.3 5.3z" } },
+	  user: { "path": { "d": "M19.2 17.1v.7c0 .8-.6 1.4-1.4 1.4H6.2c-.8 0-1.4-.6-1.4-1.4v-.7c0-1.8 2-2.8 4-3.7 0 0 .1 0 .2-.1.1 0 .3 0 .4.1.8.5 1.7.8 2.6.8.9 0 1.8-.3 2.6-.8.1-.1.3-.1.4 0 .1 0 .2 0 .2.1 2 .8 4 1.8 4 3.6z" }, "ellipse": { "cx": "12", "cy": "8.76", "rx": "3.576", "ry": "3.96" } },
+	  work_order: { "path": { "d": "M15.6 12.5c-.8.4-1.2 1.2-1.2 1.3-.1.2-.2.2-.2.2H9.9c-.1 0-.2-.1-.2-.2-.4-.8-1.2-1.4-2.2-1.4-.9 0-1.6.4-2 1.2-.1.1-.2.1-.3 0-.3-.2-.4-.5-.4-.9 0 0-.1-2.7.8-4.2.2-.2.3-.3.5-.3h9.1c.1 0 .2 0 .3.1 0 0 1 1.5 1.2 1.6.1.2.2.3.5.3.2.1 2 .7 2 .7v1.8c0 .4-.1.7-.3.9-.1.1-.2 0-.3-.1-.4-.7-1.1-1.2-2-1.2-.4 0-.7.1-1 .2" }, "ellipse": [{ "cx": "16.56", "cy": "14.664", "rx": "1.176", "ry": "1.176" }, { "cx": "7.56", "cy": "14.664", "rx": "1.176", "ry": "1.176" }] },
+	  work_order_item: { "path": { "d": "M9.4 7.7h5.2c.3 0 .5-.2.5-.5v-1c0-.8-.6-1.4-1.4-1.4h-3.4c-.8 0-1.4.6-1.4 1.4v1c0 .3.2.5.5.5zM17.3 6h-.5c-.1 0-.2.1-.2.2v1c0 1.1-.9 1.9-2 1.9H9.4c-1.1 0-2-.8-2-1.9v-1c0-.1-.1-.2-.2-.2h-.5c-.8 0-1.4.6-1.4 1.4v10.4c0 .8.6 1.4 1.4 1.4h10.6c.8 0 1.4-.6 1.4-1.4V7.4c0-.8-.6-1.4-1.4-1.4zM16 11.8l-4.6 4.6c-.1.1-.2.2-.4.2s-.3-.1-.5-.2L8 13.8c-.2-.1-.2-.3 0-.4l.5-.5c.1-.1.2-.1.4 0L11 15l4.1-4.1c.1-.1.3-.1.4 0l.5.5c.1.1.1.3 0 .4z" } }
+	};
+	module.exports.viewBox = '0 0 24 24';
+
+/***/ },
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -5808,7 +6353,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(6);
 	
-	var _listItemLabel = __webpack_require__(40);
+	var _listItemLabel = __webpack_require__(44);
 	
 	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
 	
@@ -5954,7 +6499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 40 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -6002,7 +6547,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 41 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -6038,23 +6583,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
-	var _list = __webpack_require__(42);
+	var _list = __webpack_require__(46);
 	
 	var _list2 = _interopRequireDefault(_list);
 	
-	var _listItem = __webpack_require__(43);
+	var _listItem = __webpack_require__(47);
 	
 	var _listItem2 = _interopRequireDefault(_listItem);
 	
-	var _listItemLabel = __webpack_require__(44);
+	var _listItemLabel = __webpack_require__(48);
 	
 	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
 	
-	var _utilsCreateChainedFunction = __webpack_require__(45);
+	var _utilsCreateChainedFunction = __webpack_require__(49);
 	
 	var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
 	
-	var _SLDSButton = __webpack_require__(46);
+	var _SLDSButton = __webpack_require__(50);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
@@ -6064,7 +6609,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(6);
 	
-	var _lodashOmit = __webpack_require__(47);
+	var _lodashOmit = __webpack_require__(51);
 	
 	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
@@ -6091,7 +6636,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      className: '',
 	      listClassName: '',
 	      openOn: 'hover',
-	      listItemRenderer: _listItemLabel2['default'],
+	      listItemLabelRenderer: _listItemLabel2['default'],
+	      horizontalAlign: 'left',
 	      hoverCloseDelay: 300
 	    };
 	  },
@@ -6116,7 +6662,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.initialFocus) {
 	      this.setFocus();
 	    }
-	    if (this.props.openOn === 'hover') {}
+	    if (this.props.openOn === 'hover') {
+	      //TODO:Add functionality here
+	    }
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
@@ -6137,13 +6685,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else if (this.state.isFocused && !prevState.isFocused) {
 	      this.setState({ isOpen: false });
 	    } else if (!this.state.isFocused && prevState.isFocused) {
-	      if (this.refs.list) {
-	        if (this.isMounted() && this.refs.list) {
-	          if (this.refs.list.getDOMNode().contains(document.activeElement)) {
-	            return;
-	          }
-	          this.setState({ isOpen: false });
-	        }
+	      if (this.refs.list && this.isMounted()) {
+	        if (this.refs.list.getDOMNode().contains(document.activeElement)) return;
+	        this.setState({ isOpen: false });
 	      }
 	    } else if (this.state.isClosing && !prevState.isClosing) {
 	      setTimeout(function () {
@@ -6300,8 +6844,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  getModalPopover: function getModalPopover() {
+	    var className = 'slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--' + this.props.horizontalAlign;
 	    return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement(_SLDSPopover2['default'], {
-	      className: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
+	      className: className,
+	      horizontalAlign: this.props.horizontalAlign,
 	      targetElement: this.refs.button,
 	      closeOnTabKey: true,
 	      onClose: this.handleCancel }, this.getPopoverContent()) : null;
@@ -6323,6 +6869,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var className = this.state.currentSelectedItem ? 'slds-input--bare slds-hide' : 'slds-input--bare';
 	
 	    var props = (0, _lodashOmit2['default'])(this.props, ['aria-haspopup', 'label', 'className', 'style', 'variant', 'iconName', 'iconVariant', 'onBlur', 'onFocus', 'onClick', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'tabIndex', 'onKeyDown']);
+	
 	    return _react2['default'].createElement(_SLDSButton2['default'], _extends({
 	      ref: 'button',
 	      id: this.state.triggerId,
@@ -6350,7 +6897,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.ListItemLabel = _listItemLabel2['default'];
 
 /***/ },
-/* 42 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -6374,7 +6921,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSIcons = __webpack_require__(13);
 	
-	var _listItem = __webpack_require__(43);
+	var _listItem = __webpack_require__(47);
 	
 	var _listItem2 = _interopRequireDefault(_listItem);
 	
@@ -6534,7 +7081,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 43 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -6559,7 +7106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(6);
 	
-	var _listItemLabel = __webpack_require__(44);
+	var _listItemLabel = __webpack_require__(48);
 	
 	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
 	
@@ -6713,7 +7260,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 44 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -6761,7 +7308,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 45 */
+/* 49 */
 /***/ function(module, exports) {
 
 	/*
@@ -6814,7 +7361,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 46 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -6898,17 +7445,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _utilsCreateChainedFunction = __webpack_require__(45);
+	var _utilsCreateChainedFunction = __webpack_require__(49);
 	
 	var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
 	
 	var _SLDSIconsJs = __webpack_require__(13);
 	
-	var _lodashOmit = __webpack_require__(47);
+	var _lodashOmit = __webpack_require__(51);
 	
 	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
-	var classNames = __webpack_require__(65);
+	var classNames = __webpack_require__(69);
 	
 	var Button = (function (_React$Component) {
 	  _inherits(Button, _React$Component);
@@ -6945,19 +7492,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      var isSelected = this.props.stateful && this.state.active ? true : false;
 	      var notSelected = this.props.stateful && !this.state.active ? true : false;
-	      return classNames(this.props.className, 'slds-button', (_classNames = {}, _defineProperty(_classNames, 'slds-button--' + this.props.variant, this.props.variant), _defineProperty(_classNames, 'slds-button--icon-' + this.props.iconVariant, this.props.iconVariant), _defineProperty(_classNames, 'slds-max-small-button--stretch', this.props.responsive), _defineProperty(_classNames, 'slds-not-selected', notSelected), _defineProperty(_classNames, 'slds-is-selected', isSelected), _classNames));
+	      return classNames(this.props.className, 'slds-button', (_classNames = {}, _defineProperty(_classNames, 'slds-button--' + this.props.variant, this.props.variant), _defineProperty(_classNames, 'slds-button--icon-' + this.props.iconVariant, this.props.iconVariant), _defineProperty(_classNames, 'slds-max-small-button--stretch', this.props.responsive), _defineProperty(_classNames, 'slds-not-selected', notSelected), _defineProperty(_classNames, 'slds-is-selected', isSelected), _defineProperty(_classNames, 'slds-button--icon-inverse', this.props.inverse), _classNames));
 	    }
 	  }, {
 	    key: 'renderIcon',
-	    value: function renderIcon() {
-	      if (this.props.iconName) {
+	    value: function renderIcon(name) {
+	      if (this.props.iconName || this.props.notSelectedIcon || this.props.selectedIcon || this.props.selectedFocusIcon) {
 	        return _react2['default'].createElement(_SLDSIconsJs.ButtonIcon, {
 	          variant: this.props.variant,
 	          disabled: this.props.disabled,
 	          inverse: this.props.inverse,
 	          stateful: this.props.stateful,
 	          hint: this.props.hint,
-	          name: this.props.iconName,
+	          name: name,
 	          size: this.props.iconSize,
 	          position: this.props.iconPosition
 	        });
@@ -6986,7 +7533,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        props['disabled'] = 'disabled';
 	      };
 	
-	      return _react2['default'].createElement('button', _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === 'right' ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.renderIcon(), this.renderIconMore(), this.props.iconPosition === 'left' || !this.props.iconPosition ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.props.children);
+	      if (this.props.stateful) {
+	        return _react2['default'].createElement('button', _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), _react2['default'].createElement('span', { className: 'slds-text-not-selected' }, this.renderIcon(this.props.notSelectedIcon), this.props.notSelectedLabel), _react2['default'].createElement('span', { className: 'slds-text-selected' }, this.renderIcon(this.props.selectedIcon), this.props.selectedLabel), _react2['default'].createElement('span', { className: 'slds-text-selected-focus' }, this.renderIcon(this.props.selectedFocusIcon), this.props.selectedFocusLabel));
+	      } else {
+	        return _react2['default'].createElement('button', _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === 'right' ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.renderIcon(this.props.iconName), this.renderIconMore(), this.props.iconPosition === 'left' || !this.props.iconPosition ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.props.children);
+	      }
 	    }
 	  }]);
 	
@@ -7005,13 +7556,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  iconName: _react2['default'].PropTypes.string,
 	  iconVariant: _react2['default'].PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
 	  iconSize: _react2['default'].PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-	  iconPosition: _react2['default'].PropTypes.oneOf(['left', 'right'])
+	  iconPosition: _react2['default'].PropTypes.oneOf(['left', 'right']),
+	  onClick: _react2['default'].PropTypes.func
 	};
 	
 	module.exports = Button;
 
 /***/ },
-/* 47 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7022,14 +7574,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var arrayMap = __webpack_require__(48),
-	    baseDifference = __webpack_require__(49),
-	    baseFlatten = __webpack_require__(54),
-	    bindCallback = __webpack_require__(57),
-	    pickByArray = __webpack_require__(58),
-	    pickByCallback = __webpack_require__(59),
-	    keysIn = __webpack_require__(61),
-	    restParam = __webpack_require__(64);
+	var arrayMap = __webpack_require__(52),
+	    baseDifference = __webpack_require__(53),
+	    baseFlatten = __webpack_require__(58),
+	    bindCallback = __webpack_require__(61),
+	    pickByArray = __webpack_require__(62),
+	    pickByCallback = __webpack_require__(63),
+	    keysIn = __webpack_require__(65),
+	    restParam = __webpack_require__(68);
 	
 	/**
 	 * The opposite of `_.pick`; this method creates an object composed of the
@@ -7077,7 +7629,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 48 */
+/* 52 */
 /***/ function(module, exports) {
 
 	/**
@@ -7113,7 +7665,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 49 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7124,9 +7676,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseIndexOf = __webpack_require__(50),
-	    cacheIndexOf = __webpack_require__(51),
-	    createCache = __webpack_require__(52);
+	var baseIndexOf = __webpack_require__(54),
+	    cacheIndexOf = __webpack_require__(55),
+	    createCache = __webpack_require__(56);
 	
 	/** Used as the size to enable large array optimizations. */
 	var LARGE_ARRAY_SIZE = 200;
@@ -7182,7 +7734,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 50 */
+/* 54 */
 /***/ function(module, exports) {
 
 	/**
@@ -7245,7 +7797,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 51 */
+/* 55 */
 /***/ function(module, exports) {
 
 	/**
@@ -7304,7 +7856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 52 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -7315,7 +7867,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(53);
+	var getNative = __webpack_require__(57);
 	
 	/** Native method references. */
 	var Set = getNative(global, 'Set');
@@ -7402,7 +7954,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 53 */
+/* 57 */
 /***/ function(module, exports) {
 
 	/**
@@ -7545,7 +8097,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 54 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7556,8 +8108,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(55),
-	    isArray = __webpack_require__(56);
+	var isArguments = __webpack_require__(59),
+	    isArray = __webpack_require__(60);
 	
 	/**
 	 * Checks if `value` is object-like.
@@ -7682,7 +8234,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 55 */
+/* 59 */
 /***/ function(module, exports) {
 
 	/**
@@ -7794,7 +8346,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 56 */
+/* 60 */
 /***/ function(module, exports) {
 
 	/**
@@ -7980,7 +8532,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 57 */
+/* 61 */
 /***/ function(module, exports) {
 
 	/**
@@ -8051,7 +8603,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 58 */
+/* 62 */
 /***/ function(module, exports) {
 
 	/**
@@ -8130,7 +8682,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 59 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8141,8 +8693,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(60),
-	    keysIn = __webpack_require__(61);
+	var baseFor = __webpack_require__(64),
+	    keysIn = __webpack_require__(65);
 	
 	/**
 	 * The base implementation of `_.forIn` without support for callback
@@ -8180,7 +8732,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 60 */
+/* 64 */
 /***/ function(module, exports) {
 
 	/**
@@ -8272,7 +8824,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 61 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8283,8 +8835,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(62),
-	    isArray = __webpack_require__(63);
+	var isArguments = __webpack_require__(66),
+	    isArray = __webpack_require__(67);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -8410,7 +8962,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 62 */
+/* 66 */
 /***/ function(module, exports) {
 
 	/**
@@ -8522,7 +9074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 63 */
+/* 67 */
 /***/ function(module, exports) {
 
 	/**
@@ -8708,7 +9260,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 64 */
+/* 68 */
 /***/ function(module, exports) {
 
 	/**
@@ -8781,7 +9333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 65 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -8835,7 +9387,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 66 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -8903,7 +9455,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSIconsJs = __webpack_require__(13);
 	
-	var classNames = __webpack_require__(65);
+	var classNames = __webpack_require__(69);
 	
 	var ButtonGroup = (function (_React$Component) {
 	  _inherits(ButtonGroup, _React$Component);
@@ -8929,7 +9481,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ButtonGroup;
 
 /***/ },
-/* 67 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -9003,7 +9555,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Menu = __webpack_require__(68);
+	var _Menu = __webpack_require__(72);
 	
 	var _Menu2 = _interopRequireDefault(_Menu);
 	
@@ -9013,23 +9565,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSIcons = __webpack_require__(13);
 	
-	var _SLDSButton = __webpack_require__(46);
+	var _SLDSButton = __webpack_require__(50);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
 	var _utils = __webpack_require__(6);
 	
-	var _lodashEscaperegexp = __webpack_require__(70);
+	var _lodashEscaperegexp = __webpack_require__(74);
 	
 	var _lodashEscaperegexp2 = _interopRequireDefault(_lodashEscaperegexp);
 	
-	var _MenuDefaultFooter = __webpack_require__(72);
+	var _MenuDefaultFooter = __webpack_require__(76);
 	
 	var _MenuDefaultFooter2 = _interopRequireDefault(_MenuDefaultFooter);
 	
-	var _MenuDefaultHeader = __webpack_require__(73);
+	var _MenuDefaultHeader = __webpack_require__(77);
 	
 	var _MenuDefaultHeader2 = _interopRequireDefault(_MenuDefaultHeader);
+	
+	var _classnames = __webpack_require__(69);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
 	
 	var defaultFilter = function defaultFilter(term, item) {
 	  if (!term) return true;
@@ -9058,20 +9614,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  _createClass(SLDSLookup, [{
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      var lookup = this.props.type + 'Lookup';
+	      if (!isNaN(parseInt(prevState.selectedIndex)) && isNaN(parseInt(this.state.selectedIndex))) {
+	        if (this.refs[lookup]) {
+	          _react2['default'].findDOMNode(this.refs[lookup]).focus();
+	        }
+	      } else if (isNaN(parseInt(prevState.selectedIndex)) && !isNaN(parseInt(this.state.selectedIndex))) {
+	        var selectedItem = 'pill-' + this.state.selectedIndex;
+	        if (this.refs[selectedItem]) {
+	          _react2['default'].findDOMNode(this.refs[selectedItem]).focus();
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(newProps) {
+	      if (newProps.items) {
+	        this.modifyItems(newProps.items);
+	      }
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.modifyItems(this.props.items);
 	    }
 	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate(prevProps, prevState) {
-	      var lookup = this.props.type + 'Lookup';
-	      if (prevState.selectedIndex && !this.state.selectIndex) {
-	        if (this.refs[lookup]) _react2['default'].findDOMNode(this.refs[lookup]).focus();
-	      } else if (!prevState.selectedIndex && this.state.selectedIndex) {
-	        var selectedItem = 'pill-' + this.state.selectedIndex;
-	        if (this.refs[selectedItem]) _react2['default'].findDOMNode(this.refs[selectedItem]).focus();
-	      }
+	    key: 'modifyItems',
+	    value: function modifyItems(itemsToModify) {
+	      var items = itemsToModify.map(function (item, index) {
+	        return {
+	          id: 'item-' + index,
+	          label: item.label,
+	          data: item
+	        };
+	      });
+	
+	      this.setState({ items: items });
 	    }
 	
 	    //=================================================
@@ -9081,14 +9661,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'increaseIndex',
 	    value: function increaseIndex() {
-	      var items = this.state.listLength;
-	      this.setState({ focusIndex: this.state.focusIndex <= items ? this.state.focusIndex + 1 : 0 });
+	      var numFocusable = this.getNumFocusableItems();
+	      this.setState({ focusIndex: this.state.focusIndex < numFocusable - 1 ? this.state.focusIndex + 1 : 0 });
 	    }
 	  }, {
 	    key: 'decreaseIndex',
 	    value: function decreaseIndex() {
-	      var items = this.state.listLength;
-	      this.setState({ focusIndex: this.state.focusIndex > 0 ? this.state.focusIndex - 1 : items });
+	      var numFocusable = this.getNumFocusableItems();
+	      this.setState({ focusIndex: this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable - 1 });
 	    }
 	  }, {
 	    key: 'setFocus',
@@ -9098,7 +9678,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'getListLength',
 	    value: function getListLength(qty) {
-	      if (qty !== this.state.listLength) this.setState({ listLength: qty });
+	      if (qty !== this.state.listLength) {
+	        this.setState({ listLength: qty });
+	      }
+	    }
+	  }, {
+	    key: 'getNumFocusableItems',
+	    value: function getNumFocusableItems() {
+	      var offset = 0;
+	      if (this.refs.footer) {
+	        offset += 1;
+	      }
+	      if (this.refs.header) {
+	        offset += 1;
+	      }
+	      return this.state.listLength + offset;
 	    }
 	
 	    //=================================================
@@ -9106,13 +9700,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'selectItem',
 	    value: function selectItem(itemId) {
-	      var index = itemId.replace('item-', '');
-	      this.setState({
-	        selectedIndex: index,
-	        searchTerm: null
-	      });
-	      var data = this.state.items[index].data;
-	      if (this.props.onItemSelect) this.props.onItemSelect(data);
+	      if (itemId) {
+	        var index = itemId.replace('item-', '');
+	        this.selectItemByIndex(index);
+	      }
+	    }
+	  }, {
+	    key: 'selectItemByIndex',
+	    value: function selectItemByIndex(index) {
+	      if (index >= 0 && index < this.state.items.length) {
+	        this.setState({
+	          selectedIndex: index,
+	          searchTerm: null
+	        });
+	        var data = this.state.items[index].data;
+	        if (this.props.onItemSelect) {
+	          this.props.onItemSelect(data);
+	        }
+	      }
 	    }
 	  }, {
 	    key: 'handleDeleteSelected',
@@ -9121,6 +9726,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        selectedIndex: null,
 	        isOpen: true
 	      });
+	      if (this.props.onItemUnselect) {
+	        this.props.onItemUnselect();
+	      }
 	    }
 	
 	    //=================================================
@@ -9163,7 +9771,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function handleChange(event) {
 	      var target = event.target || event.currentTarget;
 	      this.setState({ searchTerm: target.value });
-	      if (this.props.onChange) this.props.onChange(target.value);
+	      if (this.props.onChange) {
+	        this.props.onChange(target.value);
+	      }
 	    }
 	  }, {
 	    key: 'handleKeyDown',
@@ -9180,20 +9790,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	        //If user hits up key, advance aria activedescendant to previous item
 	        else if (event.keyCode === _utils.KEYS.UP) {
 	            _utils.EventUtil.trapImmediate(event);
-	            this.state.focusIndex === null ? this.setState({ focusIndex: this.state.listLength + 1 }) : this.decreaseIndex();
+	            var numFocusable = this.getNumFocusableItems();
+	            this.state.focusIndex === null ? this.setState({ focusIndex: numFocusable - 1 }) : this.decreaseIndex();
 	          }
 	          //If user hits enter/space key, select current activedescendant item
 	          else if ((event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE) && this.state.focusIndex !== null) {
 	              _utils.EventUtil.trapImmediate(event);
 	              //If the focus is on the first fixed Action Item in Menu, click it
 	              if (this.refs.header && this.state.focusIndex === 0) {
-	                //          document.getElementById('menuContainer').firstChild.children[0].click();
 	                _react2['default'].findDOMNode(this.refs.header).click();
 	              }
 	              //If the focus is on the last fixed Action Item in Menu, click it
 	              else if (this.refs.footer && this.state.focusIndex === this.state.listLength + 1) {
 	                  _react2['default'].findDOMNode(this.refs.footer).click();
-	                  //          document.getElementById('menuContainer').lastChild.children[0].click();
 	                }
 	                //If not, then select menu item
 	                else {
@@ -9257,15 +9866,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	          searchTerm: this.state.searchTerm,
 	          label: this.props.label,
 	          type: this.props.type,
+	          iconCategory: this.props.iconCategory,
+	          iconName: this.props.iconName ? this.props.iconName : this.props.type,
 	          focusIndex: this.state.focusIndex,
 	          listLength: this.state.listLength,
 	          items: this.state.items,
+	          emptyMessage: this.props.emptyMessage,
+	          messages: this.props.messages,
+	          errors: this.props.errors,
 	          filterWith: this.props.filterWith,
 	          getListLength: this.getListLength.bind(this),
 	          setFocus: this.setFocus.bind(this),
 	          onSelect: this.selectItem.bind(this),
 	          header: this.getHeader(),
-	          footer: this.getFooter()
+	          footer: this.getFooter(),
+	          boldRegex: this.props.boldRegex,
+	          listItemLabelRenderer: this.props.listItemLabelRenderer
 	        });
 	      }
 	    }
@@ -9303,34 +9919,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }));
 	    }
 	  }, {
-	    key: 'modifyItems',
-	    value: function modifyItems(itemsToModify) {
-	      var items = itemsToModify.map(function (item, index) {
-	        return {
-	          id: 'item-' + index,
-	          label: item.label,
-	          data: item
-	        };
-	      });
-	
-	      this.setState({ items: items });
-	    }
-	  }, {
-	    key: 'componentWillReceiveProps',
-	    value: function componentWillReceiveProps(newProps) {
-	      if (newProps.items) {
-	        this.modifyItems(newProps.items);
-	      }
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var inputClasses = this.state.selectedIndex === null ? 'slds-input' : 'slds-input slds-hide';
 	      var componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside" : "slds-lookup ignore-react-onclickoutside slds-has-selection";
-	      var inputContainerClasses = this.state.selectedIndex === null ? '' : ' slds-input';
-	      var inputContainerStyle = this.state.selectedIndex === null ? {} : { padding: '5px' };
 	
-	      return _react2['default'].createElement('div', { className: componentClasses, 'data-select': 'multi', 'data-scope': 'single', 'data-typeahead': 'true' }, _react2['default'].createElement('section', { className: 'slds-form-element' }, _react2['default'].createElement('label', { className: 'slds-form-element__label', htmlFor: this.props.type + "Lookup" }, this.props.label), _react2['default'].createElement('div', { className: "slds-lookup__control slds-input-has-icon slds-input-has-icon--right" + inputContainerClasses, style: inputContainerStyle }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null, _react2['default'].createElement(_SLDSIcons.InputIcon, { name: 'search' }), _react2['default'].createElement('input', {
+	      var inputContainerClasses = {
+	        'slds-lookup__control': true,
+	        'slds-input-has-icon': true,
+	        'slds-input-has-icon--right': true,
+	        'slds-input': this.state.selectedIndex !== null,
+	        'slds-has-error': this.props.hasError
+	      };
+	
+	      var inputContainerStyle = this.state.selectedIndex === null ? {} : { padding: '5px' };
+	      var inputLabel = this.props.label ? _react2['default'].createElement('label', { className: 'slds-form-element__label', htmlFor: this.props.type + "Lookup" }, this.props.label) : null;
+	
+	      return _react2['default'].createElement('div', { className: componentClasses, 'data-select': 'multi', 'data-scope': 'single', 'data-typeahead': 'true' }, _react2['default'].createElement('section', { className: 'slds-form-element' }, inputLabel, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(inputContainerClasses), style: inputContainerStyle }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null, _react2['default'].createElement(_SLDSIcons.InputIcon, { name: 'search' }), _react2['default'].createElement('input', {
 	        id: this.props.type + "Lookup",
 	        ref: this.props.type + "Lookup",
 	        className: inputClasses,
@@ -9355,13 +9960,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	SLDSLookup.propTypes = {
 	  items: _react2['default'].PropTypes.array,
+	  emptyMessage: _react2['default'].PropTypes.string,
+	  messages: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.string),
+	  errors: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.string),
 	  label: _react2['default'].PropTypes.string,
 	  type: _react2['default'].PropTypes.string,
+	  iconCategory: _react2['default'].PropTypes.string,
+	  iconName: _react2['default'].PropTypes.string,
 	  filterWith: _react2['default'].PropTypes.func,
 	  onItemSelect: _react2['default'].PropTypes.func,
+	  onItemUnselect: _react2['default'].PropTypes.func,
 	  onChange: _react2['default'].PropTypes.func,
 	  modal: _react2['default'].PropTypes.bool,
-	  disabled: _react2['default'].PropTypes.bool
+	  disabled: _react2['default'].PropTypes.bool,
+	  hasError: _react2['default'].PropTypes.bool,
+	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
+	  listItemLabelRenderer: _react2['default'].PropTypes.func
 	};
 	
 	SLDSLookup.defaultProps = {
@@ -9371,13 +9985,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	module.exports = SLDSLookup;
-	
 	module.exports.DefaultHeader = _MenuDefaultHeader2['default'];
-	
 	module.exports.DefaultFooter = _MenuDefaultFooter2['default'];
 
 /***/ },
-/* 68 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -9441,7 +10053,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Item = __webpack_require__(69);
+	var _Item = __webpack_require__(73);
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
@@ -9462,7 +10074,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(Menu, [{
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate(prevProps, prevState) {
-	      var list = _react2['default'].findDOMNode(this.refs.list).children.length;
+	      // make an array of the children of the list
+	      // but only count the actual items (ignore errors/messages)
+	      var list = [].slice.call(_react2['default'].findDOMNode(this.refs.list).children).filter(function (child) {
+	        return child.className.indexOf("slds-lookup__item") > -1;
+	      }).length;
 	      this.props.getListLength(list);
 	    }
 	  }, {
@@ -9502,6 +10118,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
+	    key: 'renderErrors',
+	    value: function renderErrors() {
+	      return this.props.errors.map(function (error) {
+	        return _react2['default'].createElement('li', { className: 'slds-lookup__error', 'aria-live': 'polite' }, _react2['default'].createElement('span', null, error));
+	      });
+	    }
+	  }, {
 	    key: 'renderItems',
 	    value: function renderItems() {
 	      var _this = this;
@@ -9519,20 +10142,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	          key: id,
 	          id: id,
 	          type: _this.props.type,
+	          iconCategory: _this.props.iconCategory,
+	          iconName: _this.props.iconName,
 	          searchTerm: _this.props.searchTerm,
 	          index: i,
 	          isActive: isActive,
 	          setFocus: _this.props.setFocus,
 	          handleItemFocus: _this.handleItemFocus.bind(_this),
 	          onSelect: _this.props.onSelect,
-	          data: c.data
+	          data: c.data,
+	          boldRegex: _this.props.boldRegex,
+	          listItemLabelRenderer: _this.props.listItemLabelRenderer
 	        }, c);
 	      });
 	    }
 	  }, {
+	    key: 'renderMessages',
+	    value: function renderMessages() {
+	      return this.props.messages.map(function (message) {
+	        return _react2['default'].createElement('li', { className: 'slds-lookup__message', 'aria-live': 'polite' }, _react2['default'].createElement('span', null, message));
+	      });
+	    }
+	  }, {
+	    key: 'renderContent',
+	    value: function renderContent() {
+	      if (this.props.errors.length > 0) return this.renderErrors();else if (this.props.items.length === 0) return _react2['default'].createElement('li', { className: 'slds-lookup__message', 'aria-live': 'polite' }, _react2['default'].createElement('span', null, this.props.emptyMessage));
+	
+	      var elements = this.renderItems();
+	      if (this.props.messages.length > 0) {
+	        elements.concat(this.renderMessages());
+	      }
+	      return elements;
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2['default'].createElement('section', { id: 'menuContainer' }, this.renderHeader(), _react2['default'].createElement('ul', { id: 'list', className: 'slds-lookup__list', role: 'presentation', ref: 'list' }, this.renderItems()), this.renderFooter());
+	      return _react2['default'].createElement('section', { id: 'menuContainer' }, this.renderHeader(), _react2['default'].createElement('ul', { id: 'list', className: 'slds-lookup__list', role: 'presentation', ref: 'list' }, this.renderContent()), this.renderFooter());
 	    }
 	  }]);
 	
@@ -9543,20 +10188,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	  searchTerm: _react2['default'].PropTypes.string,
 	  label: _react2['default'].PropTypes.string,
 	  type: _react2['default'].PropTypes.string,
+	  iconCategory: _react2['default'].PropTypes.string,
 	  focusIndex: _react2['default'].PropTypes.number,
 	  listLength: _react2['default'].PropTypes.number,
 	  items: _react2['default'].PropTypes.array,
+	  emptyMessage: _react2['default'].PropTypes.string,
+	  errors: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.string),
 	  filterWith: _react2['default'].PropTypes.func,
 	  getListLength: _react2['default'].PropTypes.func,
-	  setFocus: _react2['default'].PropTypes.func
+	  setFocus: _react2['default'].PropTypes.func,
+	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp)
 	};
 	
-	Menu.defaultProps = {};
+	Menu.defaultProps = {
+	  emptyMessage: "No matches found.",
+	  messages: [],
+	  errors: []
+	};
 	
 	module.exports = Menu;
 
 /***/ },
-/* 69 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -9624,6 +10277,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(6);
 	
+	var _lodashEscaperegexp = __webpack_require__(74);
+	
+	var _lodashEscaperegexp2 = _interopRequireDefault(_lodashEscaperegexp);
+	
 	var Item = (function (_React$Component) {
 	  _inherits(Item, _React$Component);
 	
@@ -9644,9 +10301,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'boldSearchText',
 	    value: function boldSearchText(children) {
-	      var term = this.props.searchTerm;
-	      if (!children || !term) return children;
-	      var regex = new RegExp('(' + term + ')', 'gi');
+	      var regex = this.props.boldRegex;
+	      if (!regex) {
+	        var term = this.props.searchTerm;
+	        if (!children || !term) return children;
+	        regex = new RegExp('(' + (0, _lodashEscaperegexp2['default'])(term) + ')', 'gi');
+	      }
 	      return _react2['default'].Children.map(children, function (c) {
 	        return typeof c === 'string' ? _react2['default'].createElement('span', { dangerouslySetInnerHTML: { __html: c.replace(regex, '<mark>$1</mark>') } }) : c;
 	      });
@@ -9670,6 +10330,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (height && this.props.handleItemFocus) this.props.handleItemFocus(this.props.index, height);
 	    }
 	  }, {
+	    key: 'getLabel',
+	    value: function getLabel() {
+	      if (this.props.listItemLabelRenderer) {
+	        var ListItemLabel = this.props.listItemLabelRenderer;
+	        return _react2['default'].createElement(ListItemLabel, this.props);
+	      }
+	      return [_react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.iconName, category: this.props.iconCategory }), this.boldSearchText(this.props.children.label)];
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var className = 'slds-lookup__item';
@@ -9678,7 +10347,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      return(
 	        //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
-	        _react2['default'].createElement('li', { className: className, role: 'presentaion' }, _react2['default'].createElement('a', {
+	        _react2['default'].createElement('li', { className: className, role: 'presentation' }, _react2['default'].createElement('a', {
 	          href: this.props.href,
 	          id: id,
 	          ref: id,
@@ -9686,7 +10355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          'aria-disabled': this.props.isDisabled,
 	          role: 'option',
 	          onClick: this.handleClick.bind(this),
-	          onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.type }), this.boldSearchText(this.props.children.label)))
+	          onMouseDown: this.handleMouseDown.bind(this) }, this.getLabel()))
 	      );
 	    }
 	  }]);
@@ -9699,6 +10368,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  id: _react2['default'].PropTypes.string,
 	  href: _react2['default'].PropTypes.string,
 	  type: _react2['default'].PropTypes.string,
+	  iconCategory: _react2['default'].PropTypes.string,
 	  searchTerm: _react2['default'].PropTypes.string,
 	  index: _react2['default'].PropTypes.number,
 	  isActive: _react2['default'].PropTypes.bool,
@@ -9706,7 +10376,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  setFocus: _react2['default'].PropTypes.func,
 	  handleItemFocus: _react2['default'].PropTypes.func,
 	  onSelect: _react2['default'].PropTypes.func,
-	  data: _react2['default'].PropTypes.object
+	  data: _react2['default'].PropTypes.object,
+	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
+	  listItemLabelRenderer: _react2['default'].PropTypes.func
 	};
 	
 	Item.defaultProps = {};
@@ -9714,7 +10386,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Item;
 
 /***/ },
-/* 70 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9725,7 +10397,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseToString = __webpack_require__(71);
+	var baseToString = __webpack_require__(75);
 	
 	/**
 	 * Used to match `RegExp` [syntax characters](http://ecma-international.org/ecma-262/6.0/#sec-patterns)
@@ -9796,7 +10468,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 71 */
+/* 75 */
 /***/ function(module, exports) {
 
 	/**
@@ -9824,7 +10496,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 72 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -9936,7 +10608,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = DefaultFooter;
 
 /***/ },
-/* 73 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10051,7 +10723,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = DefaultHeader;
 
 /***/ },
-/* 74 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10073,7 +10745,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSButton = __webpack_require__(46);
+	var _SLDSButton = __webpack_require__(50);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
@@ -10083,7 +10755,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 	
-	var _classnames = __webpack_require__(65);
+	var _classnames = __webpack_require__(69);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -10254,7 +10926,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onClick: this.closeModal });
 	    }
 	
-	    return _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClasses) }, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(headingClasses) }, this.props.title), closeButton);
+	    return _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClasses) }, this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(headingClasses) }, this.props.title), closeButton);
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
@@ -10282,7 +10954,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 75 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10306,7 +10978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(6);
 	
-	var _index = __webpack_require__(74);
+	var _index = __webpack_require__(78);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -10324,6 +10996,151 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	module.exports = SLDSModalTrigger;
+
+/***/ },
+/* 80 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	'use strict';
+	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _defineProperty(obj, key, value) {
+	  if (key in obj) {
+	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+	  } else {
+	    obj[key] = value;
+	  }return obj;
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SLDSButton = __webpack_require__(50);
+	
+	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
+	
+	var _SLDSIcons = __webpack_require__(13);
+	
+	var classNames = __webpack_require__(69);
+	
+	var SLDSNotification = (function (_React$Component) {
+	  _inherits(SLDSNotification, _React$Component);
+	
+	  function SLDSNotification(props) {
+	    _classCallCheck(this, SLDSNotification);
+	
+	    _get(Object.getPrototypeOf(SLDSNotification.prototype), 'constructor', this).call(this, props);
+	    this.state = { isOpen: true };
+	  }
+	
+	  _createClass(SLDSNotification, [{
+	    key: 'getClassName',
+	    value: function getClassName() {
+	      var _classNames;
+	
+	      return classNames(this.props.className, 'slds-notify ', (_classNames = {}, _defineProperty(_classNames, 'slds-notify--' + this.props.variant, this.props.variant), _defineProperty(_classNames, 'slds-theme--' + this.props.theme, this.props.theme), _defineProperty(_classNames, 'slds-theme--alert-texture', this.props.texture), _classNames));
+	    }
+	  }, {
+	    key: 'renderIcon',
+	    value: function renderIcon() {
+	      if (this.props.icon) {
+	        return _react2['default'].createElement(_SLDSIcons.Icon, { category: 'utility', name: this.props.icon, size: 'small', className: 'slds-m-right--x-small slds-col slds-no-flex' });
+	      }
+	    }
+	  }, {
+	    key: 'onDismiss',
+	    value: function onDismiss() {
+	      if (this.props.onDismiss) this.props.onDismiss();
+	      this.setState({ isOpen: false });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      if (this.state.isOpen) {
+	        return _react2['default'].createElement('div', { className: 'slds-notify-container' }, _react2['default'].createElement('div', { className: this.getClassName(), role: 'alert' }, _react2['default'].createElement(_SLDSButton2['default'], {
+	          label: 'Dismiss Notification',
+	          variant: 'icon',
+	          iconName: 'close',
+	          iconSize: 'large',
+	          inverse: true,
+	          className: 'slds-button slds-notify__close',
+	          onClick: this.onDismiss.bind(this)
+	        }), _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.theme), _react2['default'].createElement('section', { className: 'notify__content slds-grid' }, this.renderIcon(), _react2['default'].createElement('h2', { className: 'slds-col slds-align-middle slds-text-heading--small' }, this.props.content))));
+	      } else {
+	        return null;
+	      }
+	    }
+	  }]);
+	
+	  return SLDSNotification;
+	})(_react2['default'].Component);
+	
+	SLDSNotification.propTypes = {
+	  content: _react2['default'].PropTypes.node,
+	  icon: _react2['default'].PropTypes.string,
+	  variant: _react2['default'].PropTypes.oneOf(['alert', 'toast']),
+	  theme: _react2['default'].PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
+	  texture: _react2['default'].PropTypes.bool,
+	  onDismiss: _react2['default'].PropTypes.func
+	};
+	module.exports = SLDSNotification;
 
 /***/ }
 /******/ ])

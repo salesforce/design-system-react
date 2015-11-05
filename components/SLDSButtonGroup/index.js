@@ -14,12 +14,12 @@ const classNames = require('classnames');
 import {ButtonIcon, Icon} from '../SLDSIcons.js';
 
 class ButtonGroup extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {};
   }
-  render(){
-    return(
+  render() {
+    return (
       <div className="slds-button-group" role="group">
         {this.props.children}
       </div>

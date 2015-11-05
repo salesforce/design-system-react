@@ -2624,6 +2624,9 @@ body {
     top: 0;
     z-index: 10000;
     text-align: center; }
+  .demo-only .slds-notify-container {
+    position: relative;
+  }
   .slds .slds-notify {
     color: white;
     position: relative;

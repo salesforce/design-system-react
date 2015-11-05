@@ -1,6 +1,6 @@
 {
   "name": "design-system-react",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Salesforce Lightning Design System React components",
   "scripts": {
     "start": "node server.js",
@@ -10,7 +10,7 @@
     "prepublish": "npm run compile",
     "test": "scripts/test --single-run",
     "postinstall": "node scripts/postinstall",
-    "icons": "node scripts/utility-icons"
+    "icons": "node scripts/inline-icons.js"
   },
   "repository": {
     "type": "git",

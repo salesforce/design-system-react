@@ -50,6 +50,17 @@ class Item extends React.Component {
     if(height && this.props.handleItemFocus) this.props.handleItemFocus(this.props.index,height);
   }
 
+  getLabel(){
+    if(this.props.listItemLabelRenderer){
+      const ListItemLabel = this.props.listItemLabelRenderer;
+      return <ListItemLabel {... this.props} />;
+    }
+    return [
+      <Icon name={this.props.iconName} category={this.props.iconCategory}/>,
+      this.boldSearchText(this.props.children.label)
+    ]
+  }
+
   render(){
     let className = 'slds-lookup__item';
     let id = this.props.id;
@@ -67,8 +78,9 @@ class Item extends React.Component {
           role="option"
           onClick={this.handleClick.bind(this)}
           onMouseDown={this.handleMouseDown.bind(this)}>
-          <Icon name={this.props.type} category={this.props.iconCategory}/>
-          { this.boldSearchText(this.props.children.label) }
+
+          { this.getLabel() }
+
         </a>
       </li>
     )
@@ -89,7 +101,8 @@ Item.propTypes = {
   handleItemFocus: React.PropTypes.func,
   onSelect: React.PropTypes.func,
   data: React.PropTypes.object,
-  boldRegex: React.PropTypes.instanceOf(RegExp)
+  boldRegex: React.PropTypes.instanceOf(RegExp),
+  listItemLabelRenderer: React.PropTypes.func
 };
 
 Item.defaultProps = {

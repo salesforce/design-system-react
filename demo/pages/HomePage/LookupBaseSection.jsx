@@ -74,10 +74,13 @@ module.exports = React.createClass( {
                   items={items}
                   label="Account"
                   type="account"
+                  iconCategory='standard'
+                  iconName='account'
                   headerRenderer={SLDSLookup.DefaultHeader}
                   footerRenderer={SLDSLookup.DefaultFooter}
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
+                  hasError={false}
                 />
               </div>
 
