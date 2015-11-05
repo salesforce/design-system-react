@@ -44,13 +44,11 @@ let Lookup = Lib.merge({}, LookupCore, {
 		});
 	},
 	
-	_renderInput (selectedItems) {
-		const hasSelection = selectedItems.length() > 0;
-		
+	_renderInput (hasSelection, selectedItems) {
 		return (
 		<div className="slds-form-element">
 			<label className="slds-form-element__label" htmlFor={this.state.inputId}>Accounts</label>
-			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={this._handleClicked}>
+			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
 				<Svg icon="utility.search" className="slds-input__icon" />
 				{hasSelection && this._renderPills(selectedItems)}
 				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant="" onChange={this._handleChanged} value={this.state.searchString} />
@@ -63,15 +61,15 @@ let Lookup = Lib.merge({}, LookupCore, {
 		return (
 		<div className="slds-pill-container slds-show">
 			<span className="slds-pill slds-pill--bare">
-				{selectedItems.map(item => {
+				{selectedItems.map((item, index) => {
 					return (
-					<a href="#" className="slds-pill__label">
-						<Svg icon="utility.close" className="slds-icon slds-icon-standard-account slds-icon--small" />
+					<a key={index} href="#" className="slds-pill__label">
+						<Svg icon="standard.account" className="slds-icon slds-icon-standard-account slds-icon--small" />
 						{item.getText()}
 					</a>
 					);
 				})}
-				<button className="slds-button slds-button--icon-bare">
+				<button className="slds-button slds-button--icon-bare" onClick={this._handleDeselect}>
 					<Svg icon="utility.close" className="slds-button__icon" />
 					<span className="slds-assistive-text">Remove</span>
 				</button>
@@ -90,10 +88,11 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 	render () {
 		const selectedItems = this._getSelectedItems();
+		const hasSelection = selectedItems.length() > 0;
 		
 		return (
-		<div className="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed}>
-			{this._renderInput(selectedItems)}
+		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed}>
+			{this._renderInput(hasSelection, selectedItems)}
 			<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 				<div className="slds-lookup__item">
 					<button className="slds-button">
@@ -136,6 +135,10 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_handleMenuItemSelected (selection) {
 		this._selectItem(selection);
+	},
+	
+	_handleDeselect () {
+		this.deselectAll();
 	},
 	
 	_handleChanged (e) {
