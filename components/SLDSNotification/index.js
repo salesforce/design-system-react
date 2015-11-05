@@ -70,7 +70,7 @@ class SLDSNotification extends React.Component {
   }
 }
 SLDSNotification.propTypes = {
-  content: React.PropTypes.string,
+  content: React.PropTypes.node,
   icon: React.PropTypes.string,
   variant: React.PropTypes.oneOf(['alert', 'toast']),
   theme: React.PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
