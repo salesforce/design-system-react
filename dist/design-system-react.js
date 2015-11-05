@@ -5633,17 +5633,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getShapes: function getShapes(data) {
 	    var shapes = [];
-	    if (data.g) {
-	      shapes.push(this.getGroups(data.g));
-	    }
-	    if (data.ellipse) {
-	      shapes.push(this.getEllipses(data.ellipse));
-	    }
-	    if (data.circle) {
-	      shapes.push(this.getCircles(data.circle));
-	    }
-	    if (data.path) {
-	      shapes.push(this.getPaths(data.path));
+	    if (data) {
+	      if (data.g) {
+	        shapes.push(this.getGroups(data.g));
+	      }
+	      if (data.ellipse) {
+	        shapes.push(this.getEllipses(data.ellipse));
+	      }
+	      if (data.circle) {
+	        shapes.push(this.getCircles(data.circle));
+	      }
+	      if (data.path) {
+	        shapes.push(this.getPaths(data.path));
+	      }
 	    }
 	    return shapes;
 	  },
@@ -11046,7 +11048,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, SLDSNotification);
 	
 	    _get(Object.getPrototypeOf(SLDSNotification.prototype), 'constructor', this).call(this, props);
-	    this.state = {};
+	    this.state = { isOpen: true };
 	  }
 	
 	  _createClass(SLDSNotification, [{
@@ -11057,24 +11059,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return classNames(this.props.className, 'slds-notify ', (_classNames = {}, _defineProperty(_classNames, 'slds-notify--' + this.props.variant, this.props.variant), _defineProperty(_classNames, 'slds-theme--' + this.props.theme, this.props.theme), _defineProperty(_classNames, 'slds-theme--alert-texture', this.props.texture), _classNames));
 	    }
 	  }, {
+	    key: 'renderIcon',
+	    value: function renderIcon() {
+	      if (this.props.icon) {
+	        return _react2['default'].createElement(_SLDSIcons.Icon, { category: 'utility', name: this.props.icon, size: 'small', className: 'slds-m-right--x-small slds-col slds-no-flex' });
+	      }
+	    }
+	  }, {
+	    key: 'onDismiss',
+	    value: function onDismiss() {
+	      if (this.props.onDismiss) this.props.onDismiss();
+	      this.setState({ isOpen: false });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2['default'].createElement('div', { className: 'slds-notify-container' }, _react2['default'].createElement('div', { className: this.getClassName(), role: 'alert' }, _react2['default'].createElement(_SLDSButton2['default'], {
-	        label: 'Dismiss Notification',
-	        variant: 'icon',
-	        iconName: 'close',
-	        iconSize: 'large',
-	        inverse: true,
-	        className: 'slds-button slds-notify__close',
-	        onClick: this.props.onDismiss
-	      }), _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.theme), _react2['default'].createElement('section', { className: 'notify__content slds-grid' }, _react2['default'].createElement(_SLDSIcons.Icon, { category: 'utility', name: this.props.icon, size: 'small', className: 'slds-m-right--x-small slds-col slds-no-flex' }), _react2['default'].createElement('h2', { className: 'slds-col slds-align-middle slds-text-heading--small' }, ' ', this.props.content, ' '))));
+	      if (this.state.isOpen) {
+	        return _react2['default'].createElement('div', { className: 'slds-notify-container' }, _react2['default'].createElement('div', { className: this.getClassName(), role: 'alert' }, _react2['default'].createElement(_SLDSButton2['default'], {
+	          label: 'Dismiss Notification',
+	          variant: 'icon',
+	          iconName: 'close',
+	          iconSize: 'large',
+	          inverse: true,
+	          className: 'slds-button slds-notify__close',
+	          onClick: this.onDismiss.bind(this)
+	        }), _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.theme), _react2['default'].createElement('section', { className: 'notify__content slds-grid' }, this.renderIcon(), _react2['default'].createElement('h2', { className: 'slds-col slds-align-middle slds-text-heading--small' }, this.props.content))));
+	      } else {
+	        return null;
+	      }
 	    }
 	  }]);
 	
 	  return SLDSNotification;
 	})(_react2['default'].Component);
 	
-	SLDSNotification.propTypes = {};
+	SLDSNotification.propTypes = {
+	  content: _react2['default'].PropTypes.node,
+	  icon: _react2['default'].PropTypes.string,
+	  variant: _react2['default'].PropTypes.oneOf(['alert', 'toast']),
+	  theme: _react2['default'].PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
+	  texture: _react2['default'].PropTypes.bool,
+	  onDismiss: _react2['default'].PropTypes.func
+	};
 	module.exports = SLDSNotification;
 
 /***/ }

@@ -65,17 +65,19 @@ module.exports = React.createClass({
 
   getShapes (data) {
     var shapes = [];
-    if(data.g){
-      shapes.push(this.getGroups(data.g));
-    }
-    if(data.ellipse){
-      shapes.push(this.getEllipses(data.ellipse));
-    }
-    if(data.circle){
-      shapes.push(this.getCircles(data.circle));
-    }
-    if(data.path){
-      shapes.push(this.getPaths(data.path));
+    if(data){
+      if(data.g){
+        shapes.push(this.getGroups(data.g));
+      }
+      if(data.ellipse){
+        shapes.push(this.getEllipses(data.ellipse));
+      }
+      if(data.circle){
+        shapes.push(this.getCircles(data.circle));
+      }
+      if(data.path){
+        shapes.push(this.getPaths(data.path));
+      }
     }
     return shapes;
   },
