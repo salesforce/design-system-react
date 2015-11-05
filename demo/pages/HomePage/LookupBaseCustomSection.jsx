@@ -72,6 +72,7 @@ module.exports = React.createClass( {
                   type="account"
                   iconCategory='utility'
                   iconName='open_folder'
+                  iconClasses='slds-icon-text-default'
                   headerRenderer={SLDSLookup.DefaultHeader}
                   footerRenderer={SLDSLookup.DefaultFooter}
                   onChange={this.onChange}
