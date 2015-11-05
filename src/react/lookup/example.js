@@ -18,7 +18,7 @@ export default function () {
 		render () {
 			return (
 				<div className="slds-col example">
-					<Lookup collection={this.state.collection} selection={this.state.selection} onChanged={this._handleModelChange} onFilter={this._filterCollection} />
+					<Lookup label="Accounts" collection={this.state.collection} selection={this.state.selection} onChanged={this._handleModelChange} onFilter={this._filterCollection} />
 				</div>
 			);
 		},

@@ -32,18 +32,14 @@ let Lookup = Lib.merge({}, LookupCore, {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
+		label: React.PropTypes.string.isRequired,
+		menuItemElement: React.PropTypes.element,
+		onChanged: React.PropTypes.func,
+		pillElement: React.PropTypes.element,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
-		]),
-		onChanged: React.PropTypes.func,
-		menuItemElement: React.PropTypes.element,
-		pillElement: React.PropTypes.element
-	},
-	
-	_defaultProperties: {
-		menuItemElement: <LookupMenuItem />,
-		pillElement: <LookupPill />
+		])
 	},
 	
 	getMenuItemId (index) {
@@ -65,7 +61,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		
 		return (
 		<div className="slds-form-element">
-			<label className="slds-form-element__label" htmlFor={this.state.inputId}>Accounts</label>
+			<label className="slds-form-element__label" htmlFor={this.state.inputId}>{this.props.label}</label>
 			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
 				<Svg icon="utility.search" className="slds-input__icon" />
 				{hasSelection && this._renderPillContainer(selectedItems)}
@@ -91,17 +87,26 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderPills (selectedItems) {
 		return selectedItems.map((item, index) => {
-			return React.cloneElement(this.props.pillElement, { item, key: index });
+			const props = { item, key: index };
+			let element;
+			
+			if (this.props.pillElement) {
+				element = React.cloneElement(this.props.pillElement, props);
+			} else {
+				element = <LookupPill {...props} />;
+			}
+			
+			return element;
 		});
 	},
 	
-	_renderMenu (hasSelection) {
+	_renderMenu () {
 		return (
 		<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 			<div className="slds-lookup__item">
 				<button className="slds-button">
 					<Svg icon="utility.search" className="slds-icon slds-icon-text-default slds-icon--small" />
-					&quot;{this.state.searchString}&quot; in Accounts
+					&quot;{this.state.searchString}&quot; in {this.props.label}
 				</button>
 			</div>
 			<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
@@ -120,8 +125,16 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_renderMenuItems () {
 		return this._collection.map((item, index) => {
 			const id = this.getMenuItemId(index);
+			const props = { item, id, onSelected: this._handleMenuItemSelected, key: index };
+			let element;
 			
-			return React.cloneElement(this.props.menuItemElement, { item, id, onSelected: this._handleMenuItemSelected, key: index });
+			if (this.props.menuItemElement) {
+				element = React.cloneElement(this.props.menuItemElement, props);
+			} else {
+				element = <LookupMenuItem {...props} />;
+			}
+			
+			return element;
 		});
 	},
 
