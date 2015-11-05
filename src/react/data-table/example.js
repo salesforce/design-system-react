@@ -72,9 +72,10 @@ export default function () {
 			return {
 				models: {
 					collection: collection,
-					columns: columns,
-					selection: ''
-				}
+					columns: columns
+				},
+
+				selection: []
 			};
 		},
 
@@ -84,15 +85,20 @@ export default function () {
 					<div className="slds-col example">
 						<DataTable
 							collection={this.state.models.collection}
-							selection={this.state.models.selection}
+							selection={this.state.selection}
 							columns={this.state.models.columns}
 							bordered={true}
 							striped={true}
+							onChanged={this.handleChanged}
 						/>
 					</div>
 					<div className="slds-col demo-controls"></div>
 				</div>
 			);
+		},
+
+		handleChanged (item, selection) {
+			this.setState({ selection });
 		},
 
 		_handleModelChange (index, selection) { // TODO: feature.selection

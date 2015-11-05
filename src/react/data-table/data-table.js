@@ -34,19 +34,48 @@ export const DataTableObject = {
 	},
 
 	_tableHeaders () {
-		return this.props.columns.map((column, index) => {
+		const isRowSelect = this.getProperty('selectRows');
+		const columns = this.getProperty('columns');
+		const self = this;
+
+		if (isRowSelect && !(columns[0].propertyName === 'select')) {
+			columns.splice(0, 0, {
+				propertyName: 'select',
+				displayName: '',
+				sortable: false,
+				hintParent: false
+			});
+		}
+
+		//TODO: this should probably be a seperate view
+		return columns.map((column, index) => {
+			let select = isRowSelect && index === 0 ? self._getSelectCheckbox() : false;
+
 			return (
 				<th scope="col" key={index} className={this._getClassNames({
 					sortable: column.sortable,
 					hintParent: column.hintParent
 				})}>
+					{select}
 					<span className="slds-truncate" data-prop={column.propertyName}>{column.displayName}</span>
 				</th>
 			);
 		});
 	},
 
+	_getSelectCheckbox () {
+		return (
+			<label className="slds-checkbox" >
+				<input type="checkbox" checked={this.allCheckActivated}></input>
+				<span className="slds-checkbox--faux" onClick={this._toggleAllItems}></span>
+				<span className="slds-form-element__label slds-assistive-text" >select</span>
+			</label>
+		);
+	},
+
 	_tableItems () {
+		const isRowSelect = this.getProperty('selectRows');
+
 		return this._collection.map((item, index) => {
 			const isSelected = this._isItemSelected(item);
 
@@ -57,14 +86,16 @@ export const DataTableObject = {
 					bordered={true}
 					headers={this.props.columns}
 					item={item}
-					onSelected={this._selectItem}
+					onSelected={this._selectDataItem}
 					selected={isSelected}
+					selectRows={isRowSelect}
 				/>
 			);
 		});
 	},
 
 	render () {
+
 		return (
 			<table className={this._getClassNames({
 				bordered: this.props.bordered,
@@ -73,9 +104,9 @@ export const DataTableObject = {
 				striped: this.props.striped
 			})}>
 				<thead>
-				<tr className="slds-text-heading--label">
-					{this._tableHeaders()}
-				</tr>
+					<tr className="slds-text-heading--label">
+						{this._tableHeaders()}
+					</tr>
 				</thead>
 				<tbody>
 					{this._tableItems()}

@@ -16,21 +16,50 @@ const DataTableItem = React.createClass({
 			hintParent: React.PropTypes.bool
 		})).isRequired,
 		onSelected: React.PropTypes.func.isRequired,
-		selected: React.PropTypes.bool.isRequired
+		selected: React.PropTypes.bool.isRequired,
+		selectRows: React.PropTypes.bool
 	},
 
 	render () {
-		return (											// TODO: feature.selection
-			<tr className=".slds-hint-parent">
+		var self = this;
+
+		return (
+			<tr className=".slds-hint-parent" onClick={this._handleItemClick}>
 				{this.props.headers.map((header, index) => {
 					return (
 						<td key={index} data-label={header.propertyName}>
-							<span className="slds-truncate">{this.props.item.get(header.propertyName)}</span>
+							{self._renderContent(header, index)}
 						</td>
 					);
 				})}
 			</tr>
 		);
+	},
+
+	_handleItemClick () {
+		this.props.onSelected(this.props.item);
+	},
+
+	_handleCheckClick (ev) {
+		ev.stopPropagation();
+	},
+
+	_renderContent (header, index) {
+		let content;
+
+		if( index === 0 && this.props.selectRows ){
+			content = (
+				<label className="slds-checkbox">
+					<input type="checkbox" checked={this.props.selected}></input>
+					<span className="slds-checkbox--faux" onClick={this._handleCheckClick}></span>
+					<span className="slds-form-element__label slds-assistive-text" >select</span>
+				</label>
+			)
+		} else {
+			content = <span className="slds-truncate">{this.props.item.get(header.propertyName)}</span>;
+		}
+
+		return content;
 	},
 
 	handleClicked (e) {		// TODO: feature.selection

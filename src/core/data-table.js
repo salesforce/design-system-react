@@ -35,6 +35,7 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 		striped: false,
 		stacked: false,
 		stackedHorizontal: false,
+
 		selectRows: true,
 		multiSelect: true,
 
@@ -62,7 +63,7 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 		},
 
 		getKey (item) {
-			return item.get('propertyName');
+			return { id: item.get('id') };
 		},
 
 		getId (item) {
@@ -119,6 +120,16 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 			this._deselectItem(item);
 		} else {
 			this._selectItem(item);
+		}
+	},
+
+	_toggleAllItems () {
+		if (this.allCheckActivated) {
+			this.allCheckActivated = false;
+			this.deselectAll();
+		} else {
+			this.allCheckActivated = true;
+			this.selectItems(this.getProperty('collection'));
 		}
 	},
 

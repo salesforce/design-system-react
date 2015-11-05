@@ -39,7 +39,7 @@ export const DataTableObject = {
 
 		if (this.getProperty('selectRows')) {
 			this.element.on('click.slds-table', 'tbody > tr', $.proxy(this._toggleItem, this));
-			this.element.on('click.slds-table', 'thead .slds-checkbox > input', $.proxy(this._toggleAllItems, this));
+			this.element.on('click.slds-table', 'thead .slds-checkbox', $.proxy(this._toggleAllItems, this));
 		}
 	},
 	
@@ -66,9 +66,12 @@ export const DataTableObject = {
 			class: 'col ' + classes
 		});
 		let $sort;
+		let $selCheck;
 
 		if (item.propertyName === 'select') {
-			$th.append($(this.selectCheckbox));
+			$selCheck = $(this.selectCheckbox);
+			$selCheck.find('input').prop('checked', this.allCheckActivated);
+			$th.append($selCheck);
 		} else {
 			$th.append($('<span/>', {
 				class: 'slds-truncate',
@@ -86,7 +89,9 @@ export const DataTableObject = {
 			$th.append($sort);
 		}
 
-		$th.data(item);
+		$th.data({
+			item: item
+		});
 	
 		return $th;
 	},
@@ -146,7 +151,9 @@ export const DataTableObject = {
 				self._renderSelection($row, item);
 			}
 
-			$row.data(item._item);
+			$row.data({
+				item: item._item
+			});
 
 			self.elements.tbody.append($row);
 		});
@@ -159,13 +166,13 @@ export const DataTableObject = {
 	},
 
 	_toggleSort (ev) {
-		const colData = $(ev.currentTarget).data();
+		const colData = $(ev.currentTarget).data('item');
 
 		this._sortColumn(colData);
 	},
 
 	_toggleItem (ev) {
-		const rowData = $(ev.currentTarget).data();
+		const rowData = $(ev.currentTarget).data('item');
 
 		this._selectDataItem(rowData);
 	},
@@ -190,23 +197,25 @@ export const DataTableObject = {
 	_onDeselected () {
 		this._renderCollection();
 	},
-
-	_toggleAllItems () {
-		if (this.allCheckActivated) {
-			this.deselectItems(this.getProperty('collection'));
-			this.allCheckActivated = false;
-		} else {
-			this.selectItems(this.getProperty('collection'));
-			this.allCheckActivated = true;
-		}
-	},
 	
 	_onRendered () {
 		this._bindUIEvents();
 	}
 };
 
+// LEGACY METHODS
+
+const legacyMethods = {
+	selectedItems () {
+		const selection = this._getSelectedItems();
+
+		return selection.get();
+	}
+};
+
 Lib.merge(DataTable.prototype, DataTableCore, Events, DOM, State, DataTableObject);
-DataTable = Lib.runHelpers('jquery', CONTROL, DataTable);
+DataTable = Lib.runHelpers('jquery', CONTROL, DataTable, {
+	legacyMethods
+});
 
 export default DataTable;
