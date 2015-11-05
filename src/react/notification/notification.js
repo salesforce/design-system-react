@@ -35,7 +35,7 @@ export const NotificationObject = {
 					assistiveText="Close"
 					iconStyle="icon-inverse"
 					onClick={this.hide} />
-				<h2 className="notify-text">{this.props.children}</h2>
+				<h2>{this.props.children}</h2>
 			</div>
 		);
 	}
