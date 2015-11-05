@@ -38,6 +38,12 @@ let Lookup = Lib.merge({}, LookupCore, {
 		onChanged: React.PropTypes.func
 	},
 	
+	getMenuItemId (index) {
+		if (index >= 0) {
+			return this.state.inputId + '-item-' + index;
+		}
+	},
+	
 	componentWillMount () {
 		this.setState({
 			inputId: Lib.uniqueId(CONTROL + '-input-')
@@ -45,13 +51,15 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	_renderInput (hasSelection, selectedItems) {
+		const activeDescendantId = this.getMenuItemId(this.state.focusedIndex);
+		
 		return (
 		<div className="slds-form-element">
 			<label className="slds-form-element__label" htmlFor={this.state.inputId}>Accounts</label>
 			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
 				<Svg icon="utility.search" className="slds-input__icon" />
 				{hasSelection && this._renderPills(selectedItems)}
-				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant="" onChange={this._handleChanged} value={this.state.searchString} />
+				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
 			</div>
 		</div>
 		);
@@ -80,8 +88,10 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenuItems () {
 		return this._collection.map((item, index) => {
+			const id = this.getMenuItemId(index);
+			
 			return (
-				<LookupItem key={index} item={item} onSelected={this._handleMenuItemSelected} />
+				<LookupItem id={id} key={id} item={item} onSelected={this._handleMenuItemSelected} />
 			);
 		});
 	},
@@ -91,7 +101,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		const hasSelection = selectedItems.length() > 0;
 		
 		return (
-		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed}>
+		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 			{this._renderInput(hasSelection, selectedItems)}
 			<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 				<div className="slds-lookup__item">
@@ -100,7 +110,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 						&quot;{this.state.searchString}&quot; in Accounts
 					</button>
 				</div>
-				<ul className="slds-lookup__list" role="presentation" ref={this._findElements}>
+				<ul className="slds-lookup__list" role="presentation" ref={this._setMenuItemsRef}>
 					{this._renderMenuItems()}
 				</ul>
 				<div className="slds-lookup__item">
@@ -114,23 +124,30 @@ let Lookup = Lib.merge({}, LookupCore, {
 		);
 	},
 	
-	_findElements (menu) {
+	_setMenuItemsRef (menu) {
 		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
 
-		this.elements.menuItems = [];
 		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-
-		for (let i = 0; i < menuItems.length; i++) {
-			const menuItem = menuItems[i].getElementsByTagName('a');
-
-			if (!menuItems[i].disabled && menuItem.length === 1) {
-				this.elements.menuItems.push(menuItem[0]);
+		this.elements.menuItems = Array.prototype.map.call(menuItems, menuItem => {
+			const anchor = menuItem.getElementsByTagName('a');
+			if (anchor.length === 1) {
+				return anchor[0];
 			}
-		}
+		});
+	},
+	
+	_setInputRef (input) {
+		this.elements.input = Lib.wrapElement(ReactDOM.findDOMNode(input));
 	},
 	
 	_onSelected () {
 		this.close();
+	},
+	
+	_onExpandOrCollapse () {
+		this.setState({
+			focusedIndex: this._defaultState.focusedIndex
+		});
 	},
 	
 	_handleMenuItemSelected (selection) {
@@ -158,7 +175,11 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape)/.test(e.key)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this.elements.menuItems);
+			if (!this._keyboardNav(e.key, this.elements.menuItems)) {
+				this.elements.input[0].focus();
+			};
+		} else if (e.key.length === 1) {
+			this.elements.input[0].focus();
 		}
 	}
 });

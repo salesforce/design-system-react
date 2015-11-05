@@ -12,7 +12,8 @@ const LookupItem = React.createClass({
 			getText: React.PropTypes.func.isRequired,
 			getIcon: React.PropTypes.func.isRequired
 		}).isRequired,
-		onSelected: React.PropTypes.func.isRequired
+		onSelected: React.PropTypes.func.isRequired,
+		id: React.PropTypes.string.isRequired
 	},
 
 	_renderIcon () {
@@ -26,7 +27,7 @@ const LookupItem = React.createClass({
 
 	render () {
 		return (
-		<li className="slds-lookup__item">
+		<li id={this.props.id} className="slds-lookup__item">
 			<a href="#" role="option" onClick={this.handleClicked}>
 				{this._renderIcon()}
 				{this.props.item.getText()}
