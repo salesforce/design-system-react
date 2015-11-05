@@ -72,6 +72,10 @@ module.exports = React.createClass( {
     this.closeModal();
   },
 
+  dismissToast(){
+    console.log('====> Dismiss Toast Message');
+  },
+
   render() {
     let message = ['New contact added ', <a href="#" key="0123">Sara Smith</a>];
     let errorMessage = 'There was a problem updating the record.';
@@ -93,7 +97,7 @@ module.exports = React.createClass( {
             1. Toasts
             <br />
             <div className="demo-only" style={toastStyle}>
-              {this.state.modalIsOpen ? null: <SLDSNotification variant='toast' theme='success' icon='notification' texture={true} content={message} animated={true} />}
+              {this.state.modalIsOpen ? null: <SLDSNotification variant='toast' theme='success' icon='notification' texture={true} content={message} onDismiss={this.dismissToast} animated={true} />}
             </div>
           </div>
 
@@ -106,7 +110,7 @@ module.exports = React.createClass( {
               onClick={this.openModal} />
             <SLDSModal
               isOpen={this.state.modalIsOpen}
-              toast={<SLDSNotification variant='toast' theme='error' icon='warning' texture={true} content={errorMessage} />}
+              toast={<SLDSNotification variant='toast' theme='error' icon='warning' texture={true} content={errorMessage} onDismiss={this.dismissToast} />}
               title={<span>Lightning Design System: Style with Ease</span>}
               footer={[
                 <SLDSButton key='cancelBtn' label='Cancel' variant='neutral' onClick={this.closeModal} />,

@@ -17,7 +17,7 @@ import {Icon} from '../SLDSIcons';
 class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
-    this.state = {};
+    this.state = {isOpen: true};
   }
 
   getClassName() {
@@ -28,7 +28,19 @@ class SLDSNotification extends React.Component {
     });
   }
 
+  renderIcon(){
+    if(this.props.icon){
+      return <Icon category='utility' name={this.props.icon} size='small' className='slds-m-right--x-small slds-col slds-no-flex' />;
+    }
+  }
+
+  onDismiss(){
+    if(this.props.onDismiss) this.props.onDismiss();
+    this.setState({isOpen:false});
+  }
+
   render(){
+    if(this.state.isOpen){
     return(
       <div className="slds-notify-container">
         <div className={this.getClassName()} role="alert">
@@ -39,23 +51,31 @@ class SLDSNotification extends React.Component {
             iconSize='large'
             inverse={true}
             className='slds-button slds-notify__close'
-            onClick={this.props.onDismiss}
+            onClick={this.onDismiss.bind(this)}
           />
 
           <span className="slds-assistive-text">{this.props.theme}</span>
 
           <section className="notify__content slds-grid">
-            <Icon category='utility' name={this.props.icon} size='small' className='slds-m-right--x-small slds-col slds-no-flex' />
-            <h2 className="slds-col slds-align-middle slds-text-heading--small"> {this.props.content} </h2>
+            {this.renderIcon()}
+            <h2 className="slds-col slds-align-middle slds-text-heading--small">{this.props.content}</h2>
           </section>
 
         </div>
       </div>
-
     );
+    }else{
+      return null;
+    }
   }
 }
 SLDSNotification.propTypes = {
+  content: React.PropTypes.string,
+  icon: React.PropTypes.string,
+  variant: React.PropTypes.oneOf(['alert', 'toast']),
+  theme: React.PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
+  texture: React.PropTypes.bool,
+  onDismiss: React.PropTypes.func,
 };
 module.exports = SLDSNotification;
 
