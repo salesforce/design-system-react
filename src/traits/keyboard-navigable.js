@@ -35,8 +35,8 @@ const KeyboardNavigable = {
 		let index;
 		let selection;
 		
-		if (isOpen && /(Escape)/.test(input) && Lib.isFunction(this.close)) {
-			this.close();
+		if (/(Escape)/.test(input)) {
+			if (isOpen && Lib.isFunction(this.close)) this.close();
 		} else if (!isOpen && Lib.isFunction(this.open)) {
 			this.open();
 		} else {

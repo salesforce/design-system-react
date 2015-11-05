@@ -179,6 +179,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 				this.elements.input[0].focus();
 			};
 		} else if (e.key.length === 1) {
+			if (!this.state.isOpen) this.open();
 			this.elements.input[0].focus();
 		}
 	}
