@@ -10,7 +10,6 @@ import { PicklistObject } from '../picklist/picklist';
 
 // Children
 import PicklistItems from '../picklist/picklist-items';
-import Button from '../button/button';
 import Svg from '../svg/svg';
 
 export const ComboboxObject = Lib.merge(PicklistObject, {
@@ -34,12 +33,12 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 		return (
 		<div className="slds-combobox slds-form-element">
 			<div aria-expanded="true" className="slds-picklist">
-				<Button size="small" iconStyle="icon-more picklist-label" theme="neutral" disabled={this.props.disabled} onClick={this._handleClicked}>
+				<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" disabled={this.props.disabled} aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
 					<div className="slds-form-element__control">
 						<input name={this.props.name} type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} className="slds-input" />
 					</div>
 					<Svg icon="utility.down" className="slds-icon" />
-				</Button>
+				</button>
 				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._findElements} />
 			</div>
 		</div>
