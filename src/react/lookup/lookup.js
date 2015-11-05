@@ -45,6 +45,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	componentWillMount () {
+		this.elements.menuItems = [];
+		
 		this.setState({
 			inputId: Lib.uniqueId(CONTROL + '-input-')
 		});
@@ -110,7 +112,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 						&quot;{this.state.searchString}&quot; in Accounts
 					</button>
 				</div>
-				<ul className="slds-lookup__list" role="presentation" ref={this._setMenuItemsRef}>
+				<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
 					{this._renderMenuItems()}
 				</ul>
 				<div className="slds-lookup__item">
@@ -124,9 +126,15 @@ let Lookup = Lib.merge({}, LookupCore, {
 		);
 	},
 	
-	_setMenuItemsRef (menu) {
+	componentDidUpdate () {
+		this._setMenuItemsRef();
+	},
+	
+	_setMenuRef (menu) {
 		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
-
+	},
+	
+	_setMenuItemsRef () {
 		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
 		this.elements.menuItems = Array.prototype.map.call(menuItems, menuItem => {
 			const anchor = menuItem.getElementsByTagName('a');
@@ -159,9 +167,15 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	_handleChanged (e) {
-		this.setState({
-			searchString: e.target.value
-		});
+		const searchString = e.target.value;
+		
+		if (this.state.searchString !== searchString) {
+			this.setState({
+				searchString
+			});
+			
+			this.trigger('filter', searchString);
+		}
 	},
 	
 	_handleClicked (e) {
@@ -177,7 +191,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			e.preventDefault();
 			if (!this._keyboardNav(e.key, this.elements.menuItems)) {
 				this.elements.input[0].focus();
-			};
+			}
 		} else if (e.key.length === 1) {
 			if (!this.state.isOpen) this.open();
 			this.elements.input[0].focus();

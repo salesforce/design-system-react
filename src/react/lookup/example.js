@@ -18,13 +18,29 @@ export default function () {
 		render () {
 			return (
 				<div className="slds-col example">
-					<Lookup collection={this.state.collection} selection={this.state.selection} onChanged={this._handleModelChange}/>
+					<Lookup collection={this.state.collection} selection={this.state.selection} onChanged={this._handleModelChange} onFilter={this._filterCollection} />
 				</div>
 			);
 		},
 
 		_handleModelChange (item, selection) {
 			this.setState({ selection });
+		},
+		
+		_filterCollection (searchTerm) {
+			let collection = sampleData.defaultArray;
+			
+			if (searchTerm) {
+				const pattern = searchTerm.toLowerCase();
+				
+				collection = collection.filter(item => {
+					return item.text.substr(0, pattern.length).toLowerCase() === pattern;
+				});
+			}
+			
+			this.setState({
+				collection
+			});
 		}
 	});
 
