@@ -48,23 +48,20 @@ export const LookupObject = Lib.merge(PicklistObject, {
 	},
 
 	render () {
-		const selection = this._getSelection();
-		const text = selection.getText();
-
 		return (
-		<div className="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true">
+		<div className="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true" onClick={this._handleClicked} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 			<div className="slds-form-element">
 				<label className="slds-form-element__label" htmlFor={this.state.inputId}>Accounts</label>
-				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={this._handleClicked}>
+				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
 					<Svg icon="utility.search" className="slds-input__icon" />
-					<input id={this.state.inputId} className="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant="" onChange={this._handleChanged} value={text} />
+					<input id={this.state.inputId} className="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant="" onChange={this._handleChanged} value={this.state.searchString} />
 				</div>
 			</div>
-			<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 				<div className="slds-lookup__item">
 					<button className="slds-button">
 						<Svg icon="utility.search" className="slds-icon slds-icon-text-default slds-icon--small" />
-						&quot;{text}&quot; in Accounts
+						&quot;{this.state.searchString}&quot; in Accounts
 					</button>
 				</div>
 				<ul className="slds-lookup__list" role="presentation" ref={this._findElements}>
@@ -82,11 +79,24 @@ export const LookupObject = Lib.merge(PicklistObject, {
 	},
 	
 	_handleChanged (e) {
-		const value = {};
+		this.setState({
+			searchString: e.target.value
+		});
+	},
+	
+	_handleClicked (e) {
+		if (e) {
+			e.nativeEvent.originator = this;
+		}
 		
-		value[this.accessors.textProp()] = e.target.value;
+		this.open();
+	},
 
-		this.setSelection(value);
+	_handleKeyPressed (e) {
+		if (e.key && (/(ArrowUp|ArrowDown)/.test(e.key) || (e.target.id !== this.state.inputId && e.key.length === 1))) {
+			e.preventDefault();
+			this._keyboardNav(e.key, this.elements.menuItems);
+		}
 	}
 });
 
