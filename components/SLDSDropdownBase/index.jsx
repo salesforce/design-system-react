@@ -47,7 +47,7 @@ module.exports = React.createClass( {
       className:'',
       listClassName:'',
       openOn:'hover',
-      listItemRenderer:ListItemLabel,
+      listItemLabelRenderer:ListItemLabel,
       horizontalAlign:'left',
       hoverCloseDelay:300
     }

@@ -1,0 +1,21 @@
+const items = [
+  {label:'Paddy\'s Pub'},
+  {label:'Tyrell Corp'},
+  {label:'Paper St. Soap Company'},
+  {label:'Nakatomi Investments'},
+  {label:'Acme Landscaping'},
+  {label:'Acme Construction'}
+];
+
+<SLDSLookup
+  items={items}
+  label="Account"
+  type="account"
+  headerRenderer={SLDSLookup.DefaultHeader}
+  footerRenderer={SLDSLookup.DefaultFooter}
+  onChange={this.onChange}
+  onItemSelect={this.selectItem}
+  hasError={true}
+  listItemLabelRenderer={CustomLookupListItemLabel}
+/>
+

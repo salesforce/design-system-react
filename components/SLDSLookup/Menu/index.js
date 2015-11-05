@@ -91,6 +91,7 @@ class Menu extends React.Component {
         onSelect={this.props.onSelect}
         data={c.data}
         boldRegex={this.props.boldRegex}
+        listItemLabelRenderer={this.props.listItemLabelRenderer}
       >
       {c}
       </Item>

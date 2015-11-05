@@ -286,6 +286,7 @@ class SLDSLookup extends React.Component {
         header={this.getHeader()}
         footer={this.getFooter()}
         boldRegex={this.props.boldRegex}
+        listItemLabelRenderer={this.props.listItemLabelRenderer}
       />;
     }
   }
@@ -396,6 +397,7 @@ SLDSLookup.propTypes = {
   disabled: React.PropTypes.bool,
   hasError: React.PropTypes.bool,
   boldRegex: React.PropTypes.instanceOf(RegExp),
+  listItemLabelRenderer: React.PropTypes.func
 };
 
 SLDSLookup.defaultProps = {

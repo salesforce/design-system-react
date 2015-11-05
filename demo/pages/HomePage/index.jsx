@@ -22,6 +22,9 @@ import ButtonGroupSection from './ButtonGroupSection';
 import NotificationSection from './NotificationSection';
 
 import LookupBaseSection from './LookupBaseSection';
+
+import LookupBaseCustomSection from './LookupBaseCustomSection';
+
 import LookupBaseDynamicSection from './LookupBaseDynamicSection';
 
 import PicklistBaseSection from './PicklistBaseSection';
@@ -92,6 +95,8 @@ module.exports = React.createClass( {
             <IconSection />
 
             <PicklistBaseCustomSection />
+
+            <LookupBaseCustomSection />
 
             <DropdownBaseSection />
 
