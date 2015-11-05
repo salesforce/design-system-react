@@ -70,6 +70,31 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		}
 	},
 	
+	_initializer () {
+		this.elements.menuItems = [];
+		
+		this.setState({
+			inputId: Lib.uniqueId(CONTROL + '-input-')
+		});
+	},
+	
+	_onSelected () {
+		this.search('');
+		this.close();
+	},
+	
+	_onExpandOrCollapse () {
+		this.setState({
+			focusedIndex: this._defaultState.focusedIndex
+		});
+	},
+	
+	getMenuItemId (index) {
+		if (index >= 0) {
+			return this.getState('inputId') + '-item-' + index;
+		}
+	},
+	
 	search (searchString) {
 		if (this.getState(searchString) !== searchString) {
 			this.setState({

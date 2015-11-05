@@ -243,6 +243,9 @@ export function getSVGPath (iconProperty) {
 			return [iconPath, icon[1]].join('#');
 		}
 	}
+	
+	// TODO: For now, if an appropriate path is not found we are going to assume that we were given one
+	return iconProperty;
 }
 
 // TODO: Generate JS icon module, currently one manually created file. Advise against multiple JS files due to need to register/modify if they change
