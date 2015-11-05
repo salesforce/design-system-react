@@ -6636,7 +6636,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      className: '',
 	      listClassName: '',
 	      openOn: 'hover',
-	      listItemRenderer: _listItemLabel2['default'],
+	      listItemLabelRenderer: _listItemLabel2['default'],
 	      horizontalAlign: 'left',
 	      hoverCloseDelay: 300
 	    };
@@ -9880,7 +9880,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onSelect: this.selectItem.bind(this),
 	          header: this.getHeader(),
 	          footer: this.getFooter(),
-	          boldRegex: this.props.boldRegex
+	          boldRegex: this.props.boldRegex,
+	          listItemLabelRenderer: this.props.listItemLabelRenderer
 	        });
 	      }
 	    }
@@ -9973,7 +9974,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  modal: _react2['default'].PropTypes.bool,
 	  disabled: _react2['default'].PropTypes.bool,
 	  hasError: _react2['default'].PropTypes.bool,
-	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp)
+	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
+	  listItemLabelRenderer: _react2['default'].PropTypes.func
 	};
 	
 	SLDSLookup.defaultProps = {
@@ -10149,7 +10151,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          handleItemFocus: _this.handleItemFocus.bind(_this),
 	          onSelect: _this.props.onSelect,
 	          data: c.data,
-	          boldRegex: _this.props.boldRegex
+	          boldRegex: _this.props.boldRegex,
+	          listItemLabelRenderer: _this.props.listItemLabelRenderer
 	        }, c);
 	      });
 	    }
@@ -10327,6 +10330,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (height && this.props.handleItemFocus) this.props.handleItemFocus(this.props.index, height);
 	    }
 	  }, {
+	    key: 'getLabel',
+	    value: function getLabel() {
+	      if (this.props.listItemLabelRenderer) {
+	        var ListItemLabel = this.props.listItemLabelRenderer;
+	        return _react2['default'].createElement(ListItemLabel, this.props);
+	      }
+	      return [_react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.iconName, category: this.props.iconCategory }), this.boldSearchText(this.props.children.label)];
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var className = 'slds-lookup__item';
@@ -10343,7 +10355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          'aria-disabled': this.props.isDisabled,
 	          role: 'option',
 	          onClick: this.handleClick.bind(this),
-	          onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.iconName, category: this.props.iconCategory }), this.boldSearchText(this.props.children.label)))
+	          onMouseDown: this.handleMouseDown.bind(this) }, this.getLabel()))
 	      );
 	    }
 	  }]);
@@ -10365,7 +10377,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  handleItemFocus: _react2['default'].PropTypes.func,
 	  onSelect: _react2['default'].PropTypes.func,
 	  data: _react2['default'].PropTypes.object,
-	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp)
+	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
+	  listItemLabelRenderer: _react2['default'].PropTypes.func
 	};
 	
 	Item.defaultProps = {};
