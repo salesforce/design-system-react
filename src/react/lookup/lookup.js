@@ -14,29 +14,70 @@ import classNames from 'classnames';
 
 // Framework specific
 import React from 'react';
-import { PicklistObject } from '../picklist/picklist';
+import ReactDOM from 'react-dom';
+import State from '../mixins/state';
+import Events from '../mixins/events';
+import genericWillMount from '../mixins/generic-will-mount';
 
 // Children
 import LookupItem from './lookup-item';
 import Svg from '../svg/svg';
 
-export const LookupObject = Lib.merge(PicklistObject, {
+let Lookup = Lib.merge({}, LookupCore, {
+	mixins: [State, Events, genericWillMount],
+	
 	propTypes: {
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		onChanged: React.PropTypes.func,
 		selection: React.PropTypes.oneOfType([
-			React.PropTypes.string,
+			React.PropTypes.array,
 			React.PropTypes.object
-		])
+		]),
+		onChanged: React.PropTypes.func
 	},
 	
 	componentWillMount () {
 		this.setState({
 			inputId: Lib.uniqueId(CONTROL + '-input-')
 		});
+	},
+	
+	_renderInput (selectedItems) {
+		const hasSelection = selectedItems.length() > 0;
+		
+		return (
+		<div className="slds-form-element">
+			<label className="slds-form-element__label" htmlFor={this.state.inputId}>Accounts</label>
+			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={this._handleClicked}>
+				<Svg icon="utility.search" className="slds-input__icon" />
+				{hasSelection && this._renderPills(selectedItems)}
+				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant="" onChange={this._handleChanged} value={this.state.searchString} />
+			</div>
+		</div>
+		);
+	},
+	
+	_renderPills (selectedItems) {
+		return (
+		<div className="slds-pill-container slds-show">
+			<span className="slds-pill slds-pill--bare">
+				{selectedItems.map(item => {
+					return (
+					<a href="#" className="slds-pill__label">
+						<Svg icon="utility.close" className="slds-icon slds-icon-standard-account slds-icon--small" />
+						{item.getText()}
+					</a>
+					);
+				})}
+				<button className="slds-button slds-button--icon-bare">
+					<Svg icon="utility.close" className="slds-button__icon" />
+					<span className="slds-assistive-text">Remove</span>
+				</button>
+			</span>
+		</div>
+		);
 	},
 	
 	_renderMenuItems () {
@@ -48,15 +89,11 @@ export const LookupObject = Lib.merge(PicklistObject, {
 	},
 
 	render () {
+		const selectedItems = this._getSelectedItems();
+		
 		return (
-		<div className="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true" onClick={this._handleClicked} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-			<div className="slds-form-element">
-				<label className="slds-form-element__label" htmlFor={this.state.inputId}>Accounts</label>
-				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
-					<Svg icon="utility.search" className="slds-input__icon" />
-					<input id={this.state.inputId} className="slds-input" type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant="" onChange={this._handleChanged} value={this.state.searchString} />
-				</div>
-			</div>
+		<div className="slds-lookup" data-select="multi" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed}>
+			{this._renderInput(selectedItems)}
 			<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 				<div className="slds-lookup__item">
 					<button className="slds-button">
@@ -78,6 +115,29 @@ export const LookupObject = Lib.merge(PicklistObject, {
 		);
 	},
 	
+	_findElements (menu) {
+		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
+
+		this.elements.menuItems = [];
+		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
+
+		for (let i = 0; i < menuItems.length; i++) {
+			const menuItem = menuItems[i].getElementsByTagName('a');
+
+			if (!menuItems[i].disabled && menuItem.length === 1) {
+				this.elements.menuItems.push(menuItem[0]);
+			}
+		}
+	},
+	
+	_onSelected () {
+		this.close();
+	},
+	
+	_handleMenuItemSelected (selection) {
+		this._selectItem(selection);
+	},
+	
 	_handleChanged (e) {
 		this.setState({
 			searchString: e.target.value
@@ -93,14 +153,12 @@ export const LookupObject = Lib.merge(PicklistObject, {
 	},
 
 	_handleKeyPressed (e) {
-		if (e.key && (/(ArrowUp|ArrowDown)/.test(e.key) || (e.target.id !== this.state.inputId && e.key.length === 1))) {
+		if (e.key && /(ArrowUp|ArrowDown|Escape)/.test(e.key)) {
 			e.preventDefault();
 			this._keyboardNav(e.key, this.elements.menuItems);
 		}
 	}
 });
-
-let Lookup = Lib.merge({}, LookupCore, LookupObject);
 
 Lookup = Lib.runHelpers('react', CONTROL, Lookup);
 Lookup = React.createClass(Lookup);

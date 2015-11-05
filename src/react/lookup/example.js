@@ -23,7 +23,7 @@ export default function () {
 			);
 		},
 
-		_handleModelChange (selection) {
+		_handleModelChange (item, selection) {
 			this.setState({ selection });
 		}
 	});

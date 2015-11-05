@@ -33,7 +33,9 @@ const KeyboardNavigable = {
 	_keyboardNav (input, menuItems) {
 		const isOpen = this.getState('isOpen');
 		
-		if (!isOpen && Lib.isFunction(this.open)) {
+		if (isOpen && /(Escape)/.test(input) && Lib.isFunction(this.close)) {
+			this.close();
+		} else if (!isOpen && Lib.isFunction(this.open)) {
 			this.open();
 			
 			this.setState({
