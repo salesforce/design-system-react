@@ -149,6 +149,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	_onSelected () {
+		this.search('');
 		this.close();
 	},
 	
@@ -167,15 +168,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	_handleChanged (e) {
-		const searchString = e.target.value;
-		
-		if (this.state.searchString !== searchString) {
-			this.setState({
-				searchString
-			});
-			
-			this.trigger('filter', searchString);
-		}
+		this.search(e.target.value);
 	},
 	
 	_handleClicked (e) {

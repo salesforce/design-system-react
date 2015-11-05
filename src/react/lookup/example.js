@@ -30,7 +30,7 @@ export default function () {
 		_filterCollection (searchTerm) {
 			let collection = sampleData.defaultArray;
 			
-			if (searchTerm) {
+			if (searchTerm && searchTerm.length > 0) {
 				const pattern = searchTerm.toLowerCase();
 				
 				collection = collection.filter(item => {

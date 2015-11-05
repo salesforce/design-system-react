@@ -24,6 +24,10 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		collection: [],
 		multiSelect: false
 	},
+	
+	_defaultState: {
+		searchString: ''
+	},
 
 	/* Accessors: These may be supplied in the options hash to override default behavior
 
@@ -64,6 +68,16 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 
 		getIcon (item) {
 			return item.get('icon');
+		}
+	},
+	
+	search (searchString) {
+		if (this.getState(searchString) !== searchString) {
+			this.setState({
+				searchString
+			});
+			
+			this.trigger('filter', searchString);
 		}
 	}
 });
