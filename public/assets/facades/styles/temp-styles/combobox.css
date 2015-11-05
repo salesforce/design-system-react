@@ -1,0 +1,13 @@
+.slds-combobox .slds-picklist__label {
+	padding-left: 0;
+}
+
+.slds-combobox button .slds-icon {
+	right: .7rem;
+}
+
+.slds-combobox button .slds-input {
+	border: none;
+	border-right: 1px solid #d8dde6;
+	border-radius: .25rem 0 0 .25rem;
+}

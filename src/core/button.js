@@ -53,7 +53,8 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		'icon-border': CONTROL + '--icon-border',
 		'icon-border-filled': CONTROL + '--icon-border-filled',
 		'icon-small': CONTROL + '--icon-small',
-		'icon-more': CONTROL + '--icon-more'
+		'icon-more': CONTROL + '--icon-more',
+		'picklist-label': 'slds-picklist__label'
 	},
 
 	_defaultProperties: {
@@ -79,6 +80,21 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		this._toggleSelected();
 	},
 
+	_parseStyles () {
+		const styles = this.getProperty('iconStyle');
+		const retVal = [];
+
+		if (Lib.isString(styles)) {
+			styles.split(' ').forEach(function (style) {
+				if (this.iconButtonStyles[style]) {
+					retVal.push(this.iconButtonStyles[style]);
+				}
+			}.bind(this));
+		}
+
+		return retVal;
+	},
+
 	_getClassNames (isStateful) {
 		const selectedClasses = {};
 		
@@ -90,7 +106,7 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		return classNames(this.cssClasses.CONTROL,
 			this.sizes[this.getProperty('size')],
 			this.themes[this.getProperty('theme')],
-			this.iconButtonStyles[this.getProperty('iconStyle')],
+			this._parseStyles(),
 			selectedClasses);
 	}
 	

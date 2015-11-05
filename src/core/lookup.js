@@ -1,4 +1,4 @@
-// PICKLIST CORE
+// LOOKUP CORE
 
 import * as Lib from '../lib/lib';
 import Base from './base';
@@ -6,27 +6,30 @@ import Base from './base';
 // Traits
 import Disableable from '../traits/disableable';
 import Openable from '../traits/openable';
-import Selectable from '../traits/selectable';
+import Multiselectable from '../traits/multiselectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
-export const CONTROL = 'picklist';
+export const CONTROL = 'slds-lookup';
 
-const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
+const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, KeyboardNavigable, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
-		LABEL: 'slds-truncate',
-		MENU: 'slds-dropdown',
-		LIST: 'slds-dropdown__list',
-		TOGGLE: 'slds-button',
-		HEADER: 'slds-dropdown__header',
-		HEADERTEXT: 'slds-text-heading--label',
-		DIVIDER: 'slds-has-divider',
-		ICON: 'slds-icon'
+		INPUT: 'slds-input',
+		MENU: 'slds-lookup__menu',
+		LIST: 'slds-lookup__list'
 	},
 
 	_defaultProperties: {
-		collection: []
+		collection: [],
+		multiSelect: false,
+		menuFooterElement: true,
+		menuHeaderElement: false, // Defaulting to hidden for the single scope version
+		searchIcon: 'utility.search'
+	},
+	
+	_defaultState: {
+		searchString: ''
 	},
 
 	/* Accessors: These may be supplied in the options hash to override default behavior
@@ -38,17 +41,13 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 	 Return the text value to display in the list
 	 item => object wrapped in an Item Adapter
 
-	 getType (item)
-	 Return the type of the current item - can be 'header', 'divider', or nothing
-	 item => object wrapped in an Item Adapter
-
-	 getDisabled (item)
-	 Return true if the item is disabled
-	 item => object wrapped in an Item Adapter
-
 	 getKey (item)
 	 Return either an object with key/value pairs to match or a match function
 	 Use this to reduce the number of fields required for searching if a unique key is available
+	 item => object wrapped in an Item Adapter
+
+	 getIcon (item)
+	 Return a string that points to the appropriate icon
 	 item => object wrapped in an Item Adapter
 
 	 */
@@ -62,14 +61,6 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 			return item.get(item.textProp());
 		},
 
-		getType (item) {
-			return item.get('_itemType');
-		},
-
-		getDisabled (item) {
-			return item.get('disabled') === true;
-		},
-
 		getKey (item) {
 			return item.get();
 		},
@@ -78,14 +69,16 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 			return item.get('icon');
 		}
 	},
-
-	_canSelect (newSelection, select) {
-		const item = this._getItemAdapter(newSelection);
-
-		if (!item.getType() && !item.getDisabled()) {
-			select();
+	
+	search (searchString) {
+		if (this.getState(searchString) !== searchString) {
+			this.setState({
+				searchString
+			});
+			
+			this.trigger('filter', searchString);
 		}
 	}
 });
 
-export default PicklistCore;
+export default LookupCore;
