@@ -27,15 +27,24 @@ const Multiselectable = {
 	},
 
 	_areItemsSelected (items, selection) {
-		let itemIsSelected;
+		const itemsAlreadySelected = [];
+		let itemNotSelected;
 
-		items.forEach( (item) => {
+		items.forEach( (item, index) => {
 			if (this._isItemSelected(item, selection)) {
-				itemIsSelected = true;
+				itemsAlreadySelected.push(index);
+			} else {
+				itemNotSelected = true;
 			}
 		});
 
-		return !!itemIsSelected;
+		if (itemsAlreadySelected.length) {
+			itemsAlreadySelected.reverse().forEach( (indexOfItem) => {
+				items.splice(indexOfItem, 1);
+			});
+		}
+
+		return !itemNotSelected;
 	},
 	
 	_selectItem (item, selectIndex) {
@@ -63,7 +72,7 @@ const Multiselectable = {
 			if (!Lib.isFunction(this._canSelect)) {
 				_select();
 			} else {
-				this._canSelect(item, _select);
+				console.log('in this damn thihng');
 			}
 		}
 	},
