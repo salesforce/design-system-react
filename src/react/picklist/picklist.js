@@ -68,7 +68,11 @@ export const PicklistObject = {
 	_handleKeyPressed (e) {
 		if (e.key && (/(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key) || e.key.length === 1)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this.setSelection);
+			const focusedIndex = this._keyboardNav(e.key, this.setSelection);
+			if (focusedIndex !== undefined) {
+				document.getElementById(this._getMenuItemId(focusedIndex)).getElementsByTagName('a')[0].focus();
+				console.log(document.getElementById(this._getMenuItemId(focusedIndex)));
+			}
 		}
 	}
 };

@@ -9,6 +9,8 @@ import Disableable from '../traits/disableable';
 export const CONTROL = 'search';
 
 const SearchCore = Lib.merge({}, Base, Disableable, {
+	CONTROL,
+	
 	cssClasses: {
 		ICON: 'glyphicon',
 		INPUT_GROUP: 'input-group',
@@ -19,7 +21,6 @@ const SearchCore = Lib.merge({}, Base, Disableable, {
 	},
 	
 	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-'),
 		clearOnEmpty: false
 	},
 

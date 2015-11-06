@@ -13,6 +13,8 @@ import Multiselectable from '../traits/multiselectable';
 export const CONTROL = 'slds-tree';
 
 const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -21,7 +23,6 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 
 	// Set the defaults
 	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-'),
 		collection: [],
 		folderSelect: false,
 		multiSelect: false,

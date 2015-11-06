@@ -110,7 +110,7 @@ const KeyboardNavigable = {
 			focusedSelection
 		});
 		
-		return focusedSelection;
+		return focusedIndex;
 	}
 };
 

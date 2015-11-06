@@ -15,6 +15,8 @@ import Multiselectable from '../traits/multiselectable';
 export const CONTROL = 'slds-table';
 
 const DataTableCore = Lib.merge({}, Base, Multiselectable, {
+	CONTROL,
+	
 	cssClasses: {
 		CONTROL: CONTROL,
 		NOHOVER: 'slds-no-row-hover',
@@ -30,7 +32,6 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 	},
 
 	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-'),
 		sortable: false,
 		collection: [],
 		selection: null,

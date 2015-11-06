@@ -9,6 +9,8 @@ import PicklistCore from './picklist';
 export const CONTROL = 'slds-dropdown';
 
 const DropdownCore = Lib.merge({}, PicklistCore, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -17,7 +19,6 @@ const DropdownCore = Lib.merge({}, PicklistCore, {
 	},
 
 	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-'),
 		icon: 'standard.empty',
 		swapIcon: true,
 		renderArrow: true

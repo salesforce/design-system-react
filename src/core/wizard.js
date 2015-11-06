@@ -13,6 +13,8 @@ const Selectable = customSelectable('step');
 export const CONTROL = 'wizard';
 
 const WizardCore = Lib.merge({}, Base, Selectable, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL

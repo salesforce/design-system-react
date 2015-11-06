@@ -14,6 +14,7 @@ export const CONTROL = 'slds-spinner';
 const assetsDir = '/assets/design-system/images/spinners/';
 
 const SpinnerCore = Lib.merge({}, Base, {
+	CONTROL,
 
 	sizes: {
 		'small': 'slds-spinner--small',
@@ -29,7 +30,6 @@ const SpinnerCore = Lib.merge({}, Base, {
 
 	// Set the defaults
 	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-'),
 		size: 'medium',
 		theme: 'base'
 	}

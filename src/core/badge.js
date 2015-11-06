@@ -12,6 +12,8 @@ import classNames from 'classnames';
 export const CONTROL = 'slds-badge';
 
 const BadgeCore = Lib.merge({}, Base, {
+	CONTROL,
+	
 	cssClasses: {
 		CONTROL: CONTROL
 	},
@@ -23,7 +25,6 @@ const BadgeCore = Lib.merge({}, Base, {
 	},
 
 	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-'),
 		text: 'label',
 		theme: null
 	},

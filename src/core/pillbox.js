@@ -17,13 +17,14 @@ import Multiselectable from '../traits/multiselectable';
 export const CONTROL = 'pillbox';
 
 const PillboxCore = Lib.merge({}, Base, Disableable, Multiselectable, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL
 	},
 
 	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-'),
 		multiSelect: true,
 		selection: [],
 		acceptKeyCodes: [13, 188]

@@ -14,13 +14,14 @@ import Checkable from '../traits/checkable';
 export const CONTROL = 'slds-checkbox';
 
 const CheckboxCore = Lib.merge({}, Base, Disableable, Checkable, {
+	CONTROL,
+	
 	cssClasses: {
 		CONTROL: CONTROL,
 		FAUX: 'slds-checkbox--faux'
 	},
 
 	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-'),
 		labelText: '',
 		value: '',
 		name: ''

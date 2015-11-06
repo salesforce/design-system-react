@@ -10,13 +10,11 @@ import CheckboxCore from './checkbox';
 export const CONTROL = 'slds-radio';
 
 const RadioCore = Lib.merge({}, CheckboxCore, {
+	CONTROL,
+	
 	cssClasses: {
 		CONTROL: CONTROL,
 		FAUX: 'slds-radio--faux'
-	},
-	
-	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-')
 	}
 });
 

@@ -19,6 +19,8 @@ import KeyboardNavigable from '../traits/keyboard-navigable';
 export const CONTROL = 'slds-lookup';
 
 const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, KeyboardNavigable, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -28,7 +30,6 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	},
 
 	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-'),
 		collection: [],
 		multiSelect: false,
 		menuFooterElement: true,

@@ -8,12 +8,10 @@ import PopoverCore from './popover';
 export const CONTROL = 'slds-tooltip';
 
 const TooltipCore = Lib.merge({}, PopoverCore, {
+	CONTROL,
+	
 	cssClasses: {
 		CONTROL: CONTROL
-	},
-	
-	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-')
 	}
 });
 

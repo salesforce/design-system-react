@@ -12,6 +12,8 @@ import KeyboardNavigable from '../traits/keyboard-navigable';
 export const CONTROL = 'slds-picklist';
 
 const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -26,7 +28,6 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 	},
 
 	_defaultProperties: {
-		id: Lib.uniqueId(CONTROL + '-'),
 		collection: []
 	},
 
