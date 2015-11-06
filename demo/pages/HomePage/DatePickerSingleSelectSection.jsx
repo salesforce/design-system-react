@@ -37,7 +37,7 @@ module.exports = React.createClass( {
 
             <div className="slds-p-around--medium">
 
-              <h3 className="slds-text-heading--medium slds-truncate">
+              <h3 id='datepickerSection' className="slds-text-heading--medium slds-truncate">
                 Datepickers (Work in progress)
               </h3>
 

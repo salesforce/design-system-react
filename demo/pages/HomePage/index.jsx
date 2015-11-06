@@ -49,6 +49,29 @@ module.exports = React.createClass( {
     return {};
   },
 
+  animate(elem,style,unit,from,to,time,prop) {
+    if( !elem) return;
+    var start = new Date().getTime(),
+      timer = setInterval(function() {
+      var step = Math.min(1,(new Date().getTime()-start)/time);
+      if (prop) {
+        elem[style] = (from+step*(to-from))+unit;
+      } else {
+        elem.style[style] = (from+step*(to-from))+unit;
+      }
+      if( step == 1) clearInterval(timer);
+    },25);
+    elem.style[style] = from+unit;
+  },
+
+  scrollTo(elemId) {
+    let that = this;
+    return function() {
+      var target = document.getElementById(elemId);
+      that.animate(document.body, "scrollTop", "", 0, target.offsetTop, 500, true);
+    };
+  },
+
   render() {
     return (
       <SLDSGrid flavor='vertical' className='stage slds-nowrap'>
@@ -75,8 +98,42 @@ module.exports = React.createClass( {
 
         <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
           <div className='region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large'>
+            <section className="slds-p-bottom--large">
+            <h3 className="slds-text-heading--medium">Current Components</h3>
+            <ul>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('buttonSection')}>Button</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('buttonGroupSection')}>Button Group</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('dropdownSection')}>Dropdown</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('iconSection')}>Icon</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('lookupSection')}>Lookup</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('modalSection')}>Modal</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('notificationSection')}>Notification</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('picklistSection')}>Picklist</a>
+              </li>
+            </ul>
 
-            <h1 className="slds-text-heading--large">Current Components</h1>
+            <h3 className="slds-text-heading--medium slds-p-top--medium">Future Components</h3>
+            <ul>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('datepickerSection')}>Date Picker</a>
+              </li>
+            </ul>
+            </section>
 
             <ButtonSection/>
 
@@ -100,7 +157,7 @@ module.exports = React.createClass( {
 
             <PicklistBaseCustomSection />
 
-            <h1 className="slds-text-heading--large">Work in Progress</h1>
+            <h1 className="slds-text-heading--large slds-p-top--large">Future Components</h1>
 
             <DatePickerSingleSelectSection />
           </div>

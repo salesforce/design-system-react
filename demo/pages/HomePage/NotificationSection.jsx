@@ -83,7 +83,7 @@ module.exports = React.createClass( {
     return (
 
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>
+        <h3 id='notificationSection' className='slds-text-heading--medium slds-truncate'>
           Notification
         </h3>
         <h4>

@@ -46,7 +46,7 @@ module.exports = React.createClass( {
 
             <div className="slds-p-around--medium">
 
-              <h3 className="slds-text-heading--medium slds-truncate">
+              <h3 id='picklistSection' className="slds-text-heading--medium slds-truncate">
                 Picklist Base
               </h3>
 

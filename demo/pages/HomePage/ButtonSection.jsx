@@ -55,7 +55,7 @@ module.exports = React.createClass( {
     return (
 
             <div className='slds-p-around--medium'>
-              <h3 className='slds-text-heading--medium slds-truncate'>
+              <h3 id='buttonSection' className='slds-text-heading--medium slds-truncate'>
                 Button
               </h3>
 

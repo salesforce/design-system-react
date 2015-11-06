@@ -36,7 +36,7 @@ module.exports = React.createClass( {
     return (
 
             <div className='slds-p-around--medium'>
-              <h3 className='slds-text-heading--medium slds-truncate'>
+              <h3 id='buttonGroupSection' className='slds-text-heading--medium slds-truncate'>
                 Button Group
               </h3>
 

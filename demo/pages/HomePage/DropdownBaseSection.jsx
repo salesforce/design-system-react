@@ -44,7 +44,7 @@ module.exports = React.createClass( {
 
             <div className="slds-p-around--medium">
 
-              <h3 className="slds-text-heading--medium slds-truncate">
+              <h3 id='dropdownSection' className="slds-text-heading--medium slds-truncate">
                 Dropdown Base
               </h3>
 
