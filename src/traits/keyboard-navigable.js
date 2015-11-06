@@ -39,7 +39,7 @@ const KeyboardNavigable = {
 			if (this._isSelectable || item.isSelectable()) {
 				items.push({
 					index,
-					text: item.getText().toLowerCase()
+					text: ('' + item.getText()).toLowerCase()
 				});
 				
 				items.indexes.push(index);
