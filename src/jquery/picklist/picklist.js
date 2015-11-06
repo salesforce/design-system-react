@@ -17,10 +17,10 @@ import template from './picklist-template';
 
 let Picklist = function Picklist () {
 	const options = this._getOptions(arguments);
-	
+
 	this.template = $(template);
 	this._closeOnClick = $.proxy(this._closeOnClick, this);
-	
+
 	this._initialize(options);
 };
 
@@ -29,7 +29,7 @@ export const PicklistObject = {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this._initElements();
 	},
-	
+
 	_initElements () {
 		this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
 		this.elements.hiddenField = this.element.find('input.slds-hide');
@@ -37,48 +37,48 @@ export const PicklistObject = {
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
 		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
 	},
-	
+
 	_bindUIEvents () {
 		this.elements.button.on('click', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
 		this.element.on('keydown', $.proxy(this._handleKeyDown, this));
 		this.element.on('keypress', $.proxy(this._handleKeyPressed, this));
 	},
-	
+
 	_renderItem (item) {
 		const disabled = item.getDisabled();
 		const $li = this.template.find('li').clone();
-	
+
 		$li.data({
 			item: item._item
 		});
 		$li.prop('disabled', disabled);
-	
+
 		const $a = $li.find('a');
 		$a.text(item.getText());
-	
+
 		if (disabled) {
 			$a.attr('aria-disabled', true);
 		}
-	
+
 		const icon = item.getIcon();
-	
+
 		if (Lib.isString(icon) && icon.length > 0) {
 			const $icon = this._renderIcon(icon, 'slds-icon--small slds-icon--right');
 			$a.append($icon);
 		}
-	
+
 		return $li;
 	},
-	
+
 	_renderHeader (item) {
 		return $('<li class="' + this.cssClasses.HEADER + '"><span class="' + this.cssClasses.HEADERTEXT + '">' + item.getText() + '</span></li>');
 	},
-	
+
 	_renderDivider () {
 		return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
 	},
-	
+
 	_renderMenu (elements) {
 		// Empty the menu from the template
 		elements.dropdownMenu.empty();
@@ -92,14 +92,14 @@ export const PicklistObject = {
 				divider: this._renderDivider,
 				item: this._renderItem
 			};
-			
+
 			func = funcMap[item.getType()] || this._renderItem;
 
 			$li = func.call(this, item);
 
 			elements.dropdownMenu.append($li);
 		});
-		
+
 		this._addCheckmark(elements);
 	},
 
@@ -122,10 +122,10 @@ export const PicklistObject = {
 		if (this._collection._data.length === 0) {
 			this.disable();
 		}
-		
+
 		return this.element;
 	},
-	
+
 	_onRendered () {
 		// Get the menu items for keyboard nav
 		this.elements.menuItems = [];
@@ -152,11 +152,11 @@ export const PicklistObject = {
 			this._addCheckmark(this.elements);
 		}
 	},
-	
+
 	_onExpandOrCollapse () {
 		if (this.rendered) {
 			const isOpen = this.getState('isOpen');
-			
+
 			this.elements.dropdown.toggleClass('slds-hide', !isOpen);
 			this.elements.button.attr('aria-expanded', isOpen);
 		}
@@ -165,7 +165,7 @@ export const PicklistObject = {
 	_onEnabledOrDisabled () {
 		if (this.rendered) {
 			const disabled = !!this.getProperty('disabled');
-			
+
 			this.elements.dropdown.toggleClass('slds-hide', disabled);
 			this.elements.button.prop('disabled', disabled);
 		}
@@ -187,7 +187,7 @@ export const PicklistObject = {
 
 		const $a = $(e.currentTarget);
 		const $li = $a.parent('li');
-		
+
 		if (!$li.prop('disabled')) {
 			this.setSelection($li.data('item'));
 		}
@@ -228,15 +228,19 @@ export const PicklistObject = {
 				}
 			});
 		}
-		
+
 		if ($li) {
 			$li.parent()
 				.find('.slds-is-selected').removeClass('slds-is-selected')
 				.find('svg.slds-icon--left').remove();
-	
+
 			$li.addClass('slds-is-selected');
 			$li.find('a').prepend(this._renderIcon('standard.task2', 'slds-icon--small slds-icon--left'));
 		}
+	},
+
+	destroy: function () {
+		this.element.remove();
 	}
 };
 
