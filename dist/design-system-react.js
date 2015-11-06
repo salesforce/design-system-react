@@ -201,6 +201,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getInitialState: function getInitialState() {
 	    return {
+	      triggerId: null,
 	      isOpen: false,
 	      isFocused: false,
 	      highlightedIndex: 0,
@@ -211,6 +212,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  componentDidMount: function componentDidMount() {
+	    var id = _react2['default'].findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
+	    this.setState({ triggerId: id });
+	
 	    if (this.props.initialFocus) {
 	      this.setFocus();
 	    }
@@ -275,7 +279,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  setFocus: function setFocus() {
 	    if (this.isMounted()) {
-	      _react2['default'].findDOMNode(this.refs.button).focus();
+	      _react2['default'].findDOMNode(this.refs.triggerbutton).focus();
 	    }
 	  },
 	
@@ -308,6 +312,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getPopoverContent: function getPopoverContent() {
 	    return _react2['default'].createElement(_list2['default'], {
+	      triggerId: this.state.triggerId,
 	      ref: 'list',
 	      options: this.props.options,
 	      label: this.props.label,
@@ -351,8 +356,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  render: function render() {
 	    return _react2['default'].createElement('div', { className: "slds-form-element slds-theme--" + this.props.theme }, _react2['default'].createElement('div', { className: "slds-picklist slds-theme--" + this.props.theme }, _react2['default'].createElement('button', {
-	      id: this.props.id,
-	      ref: 'button',
+	      id: this.state.triggerId,
+	      ref: 'triggerbutton',
 	      className: 'slds-button slds-button--neutral slds-picklist__label ' + this.props.className,
 	      'aria-haspopup': 'true',
 	      onBlur: this.handleBlur,
@@ -3411,7 +3416,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      ref: "scroll",
 	      className: "slds-dropdown__list slds-theme--" + this.props.theme,
 	      role: "menu",
-	      "aria-labelledby": this.props.label }, this.getItems()));
+	      "aria-labelledby": this.props.triggerId }, this.getItems()));
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {}
@@ -3501,13 +3506,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    getDefaultProps: function getDefaultProps() {
 	        return {
+	            name: '',
 	            category: 'standard'
 	        };
 	    },
 	
 	    render: function render() {
 	
-	        var name = this.props.name.replace(/_/g, '-');
+	        var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
 	        var iconClassName = 'slds-icon-' + this.props.category + '-' + (this.props.theme || name);
 	        var styles = this.props.category === 'action' ? { padding: '.5rem' } : null;
 	
@@ -6636,7 +6642,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      className: '',
 	      listClassName: '',
 	      openOn: 'hover',
-	      listItemLabelRenderer: _listItemLabel2['default'],
+	      listItemRenderer: _listItemLabel2['default'],
 	      horizontalAlign: 'left',
 	      hoverCloseDelay: 300
 	    };
@@ -6644,7 +6650,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getInitialState: function getInitialState() {
 	    return {
-	      triggerId: null,
 	      isOpen: false,
 	      isFocused: false,
 	      isClosing: false,
@@ -6657,8 +6662,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  componentDidMount: function componentDidMount() {
-	    var id = _react2['default'].findDOMNode(this.refs.button).getAttribute("data-reactid");
-	    this.setState({ triggerId: id });
 	    if (this.props.initialFocus) {
 	      this.setFocus();
 	    }
@@ -6685,9 +6688,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else if (this.state.isFocused && !prevState.isFocused) {
 	      this.setState({ isOpen: false });
 	    } else if (!this.state.isFocused && prevState.isFocused) {
-	      if (this.refs.list && this.isMounted()) {
-	        if (this.refs.list.getDOMNode().contains(document.activeElement)) return;
-	        this.setState({ isOpen: false });
+	      if (this.refs.list) {
+	        if (this.isMounted() && this.refs.list) {
+	          if (this.refs.list.getDOMNode().contains(document.activeElement)) {
+	            return;
+	          }
+	          this.setState({ isOpen: false });
+	        }
 	      }
 	    } else if (this.state.isClosing && !prevState.isClosing) {
 	      setTimeout(function () {
@@ -6819,7 +6826,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getPopoverContent: function getPopoverContent() {
 	    return _react2['default'].createElement(_list2['default'], {
-	      triggerId: this.state.triggerId,
 	      ref: 'list',
 	      options: this.props.options,
 	      className: this.props.listClassName,
@@ -6872,7 +6878,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    return _react2['default'].createElement(_SLDSButton2['default'], _extends({
 	      ref: 'button',
-	      id: this.state.triggerId,
 	      'aria-haspopup': 'true',
 	      label: this.props.label,
 	      className: this.props.className,
@@ -7072,8 +7077,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, _react2["default"].createElement("ul", {
 	      ref: "scroll",
 	      className: "slds-dropdown__list slds-theme--" + this.props.theme,
-	      role: "menu",
-	      "aria-labelledby": this.props.triggerId }, this.getItems()));
+	      role: "menu"
+	    }, this.getItems()));
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {}
@@ -9758,8 +9763,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }, {
 	    key: 'handleBlur',
-	    value: function handleBlur() {
+	    value: function handleBlur(event) {
 	      this.handleClose();
+	      if (this.props.onBlur) {
+	        var target = event.target || event.currentTarget;
+	        this.props.onBlur(target.value);
+	      }
 	    }
 	  }, {
 	    key: 'handleFocus',
@@ -9908,7 +9917,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'renderSelectedItem',
 	    value: function renderSelectedItem() {
 	      var selectedItem = this.props.items[this.state.selectedIndex].label;
-	      return _react2['default'].createElement('span', { tabIndex: '0', className: 'slds-pill', ref: 'pill-' + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2['default'].createElement('span', { className: 'slds-pill__label' }, _react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.type }), selectedItem), _react2['default'].createElement(_SLDSButton2['default'], {
+	      return _react2['default'].createElement('span', { tabIndex: '0', className: 'slds-pill', ref: 'pill-' + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2['default'].createElement('span', { className: 'slds-pill__label' }, _react2['default'].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: this.props.iconClasses }), selectedItem), _react2['default'].createElement(_SLDSButton2['default'], {
 	        label: 'Press delete to remove',
 	        tabIndex: '-1',
 	        variant: 'icon',
@@ -9971,6 +9980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onItemSelect: _react2['default'].PropTypes.func,
 	  onItemUnselect: _react2['default'].PropTypes.func,
 	  onChange: _react2['default'].PropTypes.func,
+	  onBlur: _react2['default'].PropTypes.func,
 	  modal: _react2['default'].PropTypes.bool,
 	  disabled: _react2['default'].PropTypes.bool,
 	  hasError: _react2['default'].PropTypes.bool,
@@ -10113,7 +10123,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	          footerActive = false;
 	          isActiveClass = '';
 	        }
-	
 	        return _react2['default'].createElement('div', { className: isActiveClass }, this.props.footer);
 	      }
 	    }
@@ -10594,7 +10603,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var className = 'slds-button';
 	      if (this.props.isActive) className += ' slds-theme--shade';
 	
-	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onClick: this.handleClick.bind(this), onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement('button', { id: 'newItem', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'add', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), 'New ' + this.props.type));
+	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onClick: this.handleClick.bind(this), onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement('button', { id: 'newItem', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'add', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.newItemLabel));
 	    }
 	  }]);
 	
@@ -10709,7 +10718,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var className = 'slds-button';
 	      if (this.props.isActive) className += ' slds-theme--shade aaa';
 	
-	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onMouseDown: this.handleMouseDown, onClick: this.handleClick.bind(this) }, _react2['default'].createElement('button', { id: 'searchRecords', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'search', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.searchTerm ? '"' + this.props.searchTerm + '"' + ' in ' + this.props.type + 's' : ' in ' + this.props.type + 's'));
+	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onMouseDown: this.handleMouseDown, onClick: this.handleClick.bind(this) }, _react2['default'].createElement('button', { id: 'searchRecords', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'search', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.searchLabel));
 	    }
 	  }]);
 	
@@ -10794,11 +10803,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  getDefaultProps: function getDefaultProps() {
 	    return {
 	      title: '',
+	      tagline: '',
 	      isOpen: false,
 	      content: [],
 	      footer: [],
 	      returnFocusTo: null,
-	      size: 'medium',
 	      prompt: '', //if prompt !== '', it renders modal as prompt
 	      directional: false
 	    };
@@ -10906,6 +10915,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return footer;
 	  },
 	
+	  renderTagline: function renderTagline() {
+	    if (this.props.tagline) {
+	      return _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline);
+	    }
+	  },
+	
 	  headerComponent: function headerComponent() {
 	    var headingClasses = [],
 	        headerClasses = ['slds-modal__header'];
@@ -10926,7 +10941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onClick: this.closeModal });
 	    }
 	
-	    return _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClasses) }, this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(headingClasses) }, this.props.title), closeButton);
+	    return _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClasses) }, this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(headingClasses) }, this.props.title), this.renderTagline(), closeButton);
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
