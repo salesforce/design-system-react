@@ -50,6 +50,10 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 	 Return either an object with key/value pairs to match or a match function
 	 Use this to reduce the number of fields required for searching if a unique key is available
 	 item => object wrapped in an Item Adapter
+	 
+	 isSelectable (item)
+	 Return true for items that are not of the type 'header' or 'divider' and are not disabled
+	 item => object wrapped in an Item Adapter
 
 	 */
 
@@ -76,13 +80,25 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 
 		getIcon (item) {
 			return item.get('icon');
+		},
+		
+		isSelectable (item) {
+			const type = item.getType();
+			
+			return type !== 'header' && type !== 'divider' && !item.getDisabled();
 		}
+	},
+	
+	_onExpandOrCollapse () {
+		this.setState({
+			focusedIndex: this._defaultState.focusedIndex
+		});
 	},
 
 	_canSelect (newSelection, select) {
 		const item = this._getItemAdapter(newSelection);
 
-		if (!item.getType() && !item.getDisabled()) {
+		if (item.isSelectable()) {
 			select();
 		}
 	}

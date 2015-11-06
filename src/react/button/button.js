@@ -21,40 +21,33 @@ export const ButtonObject = {
 	propTypes: {
 		assistiveText: React.PropTypes.string,
 		icon: isIcon,
-		text: React.PropTypes.string,
-		iconStyle: function (props, propName) {
-			if (props[propName]) {
-				props[propName].split(' ').forEach(function (style) {
-					if (!ButtonCore.iconButtonStyles[style]) {
-						return new Error('Invalid prop `' + propName + '` - should only contain values of type ButtonCore.iconButtonStyles');
-					}
-				});
-			}
-		},
 		iconPosition: React.PropTypes.oneOf(Object.keys(ButtonViewCore.iconPositions)),
-		disabled: React.PropTypes.bool,
-		size: React.PropTypes.oneOf(Object.keys(ButtonCore.sizes)),
-		theme: React.PropTypes.oneOf(Object.keys(ButtonCore.themes)),
+		iconSize: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonIconSizes)),
+		iconStyle: React.PropTypes.oneOf(Object.keys(ButtonCore.iconButtonStyles)),
 		selected: React.PropTypes.bool,
 		selectable: React.PropTypes.bool,
-		onClick: React.PropTypes.func,
-		children: function (props, propName, componentName) {
-			const prop = props[propName];
-			let error;
+		size: React.PropTypes.oneOf(Object.keys(ButtonCore.sizes)),
+		text: React.PropTypes.string,
+		theme: React.PropTypes.oneOf(Object.keys(ButtonCore.themes))
 
-			React.Children.forEach(prop, child => {
-				if (!error && child.type !== ButtonView) {
-					error = new Error(
-						'`' + componentName + '` ' +
-						'should only contain children of the type `ButtonView`.'
-					);
-				}
-			});
+		// TODO: Decide if this valid. Picklist needs spans and SVG as children.
+		// children: function (props, propName, componentName) {
+		// 	const prop = props[propName];
+		// 	let error;
+
+		// 	React.Children.forEach(prop, child => {
+		// 		if (!error && child.type !== ButtonView) {
+		// 			error = new Error(
+		// 				'`' + componentName + '` ' +
+		// 				'should only contain children of the type `ButtonView`.'
+		// 			);
+		// 		}
+		// 	});
 			
-			if (error) {
-				return error;
-			}
-		}
+		// 	if (error) {
+		// 		return error;
+		// 	}
+		// }
 	},
 	
 	_renderViews () {
@@ -63,21 +56,37 @@ export const ButtonObject = {
 		}) || [];
 		
 		const defaultView = views.length > 0 ? 'notSelected' : null;
-		
-		views.push(<ButtonView assistiveText={this.props.assistiveText} icon={this.props.icon} iconStyle={this.props.iconStyle} text={this.props.text} view={defaultView} iconPosition={this.props.iconPosition} key="default" />);
-		
+		views.push(<ButtonView
+									assistiveText={this.props.assistiveText}
+									icon={this.props.icon}
+									iconSize={this.props.iconSize}
+									iconStyle={this.props.iconStyle}
+									text={this.props.text}
+									view={defaultView}
+									iconPosition={this.props.iconPosition}
+									key="default" />);
 		return views;
 	},
 	
 	render () {
+		const {assistiveText,
+			className,
+			icon,
+			iconPosition,
+			iconSize,
+			iconStyle,
+			selected,
+			selectable,
+			size,
+			text,
+			theme,
+			...props} = this.props;
 		const hasChildren = React.Children.count(this.props.children);
-		
 		// TODO: Does the onClick received by the user need a specific payload or is the event alone enough?
 		return (
 			<button type="button"
-				onClick={this.props.onClick}
-				className={this._getClassNames(hasChildren || this.props.selectable)}
-				disabled={this.props.disabled}>{this._renderViews()}</button>
+				className={this._getClassNames(this.props.className, (hasChildren || this.props.selectable))}
+				{...props}>{this._renderViews()}</button>
 		);
 	}
 };

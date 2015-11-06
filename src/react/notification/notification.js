@@ -10,6 +10,10 @@ import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
+// Children
+import Button from '../button/button';
+
+
 // TODO: Internationalize
 export const NotificationObject = {
 	mixins: [State, Events, genericWillMount],
@@ -25,13 +29,13 @@ export const NotificationObject = {
 		return (
 			<div className={classNames} role="alert">
 				<span className="slds-assistive-text">Info</span>
-				<button className="slds-button slds-notify__close" onClick={this.hide}>
-					<svg aria-hidden="true" className="slds-button__icon slds-button__icon--inverse">
-						<use xlinkHref="/assets/design-system/icons/action-sprite/svg/symbols.svg#close"></use>
-					</svg>
-					<span className="slds-assistive-text">Close</span>
-				</button>
-				<h2 className="notify-text">{this.props.children}</h2>
+				<Button
+					className="slds-notify__close"
+					icon="action.close"
+					assistiveText="Close"
+					iconStyle="icon-inverse"
+					onClick={this.hide} />
+				<h2>{this.props.children}</h2>
 			</div>
 		);
 	}

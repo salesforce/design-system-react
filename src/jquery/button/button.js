@@ -74,7 +74,7 @@ export const ButtonObject = {
 
 	_render () {
 		const isStateful = this.getProperty('views').length > 0;
-		const className = this._getClassNames(isStateful);
+		const className = this._getClassNames('', isStateful);
 
 		this.element
 			.addClass(className)
@@ -94,7 +94,7 @@ export const ButtonObject = {
 
 	_onToggled () {
 		const isStateful = this.getProperty('views').length > 0;
-		this.elements.control[0].className = this._getClassNames(isStateful || this.getProperty('selectable'));
+		this.elements.control[0].className = this._getClassNames('', (isStateful || this.getProperty('selectable')));
 	},
 
 	_onEnabledOrDisabled () {

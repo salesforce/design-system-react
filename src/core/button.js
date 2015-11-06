@@ -49,11 +49,12 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 	// applied to the button, not the icon/SVG
 	iconButtonStyles: {
 		'icon-bare': CONTROL + '--icon-bare',
-		'icon-container': CONTROL + '--icon-container',
 		'icon-border': CONTROL + '--icon-border',
 		'icon-border-filled': CONTROL + '--icon-border-filled',
-		'icon-small': CONTROL + '--icon-small',
+		'icon-container': CONTROL + '--icon-container',
+		'icon-inverse': CONTROL + '--icon-inverse',
 		'icon-more': CONTROL + '--icon-more',
+		'icon-small': CONTROL + '--icon-small',
 		'picklist-label': 'slds-picklist__label'
 	},
 
@@ -80,22 +81,7 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		this._toggleSelected();
 	},
 
-	_parseStyles () {
-		const styles = this.getProperty('iconStyle');
-		const retVal = [];
-
-		if (Lib.isString(styles)) {
-			styles.split(' ').forEach(function (style) {
-				if (this.iconButtonStyles[style]) {
-					retVal.push(this.iconButtonStyles[style]);
-				}
-			}.bind(this));
-		}
-
-		return retVal;
-	},
-
-	_getClassNames (isStateful) {
+	_getClassNames (additionalClasses, isStateful) {
 		const selectedClasses = {};
 		
 		if (isStateful) {
@@ -106,11 +92,9 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		return classNames(this.cssClasses.CONTROL,
 			this.sizes[this.getProperty('size')],
 			this.themes[this.getProperty('theme')],
-			this._parseStyles(),
-			selectedClasses);
+			this.iconButtonStyles[this.getProperty('iconStyle')],
+			selectedClasses, additionalClasses);
 	}
-	
-	// TODO: We usually manage state and throw our own events here, so this will probably need to be expanded for jQuery support
 });
 
 export default ButtonCore;

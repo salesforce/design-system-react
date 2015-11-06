@@ -1,8 +1,15 @@
-// LOOKUP CORE
+// # Lookup Control
+// ### Core
 
+// Implements basic functionality required for the Lookup [design pattern](https://www.lightningdesignsystem.com/components/lookups) and pulls in any appropriate traits. This file is shared between all facades and should not know anything about specific frameworks.
+
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
+// Inherit from the [base control](base).
 import Base from './base';
 
+/* TODO: Finish documenting the core. */
 // Traits
 import Disableable from '../traits/disableable';
 import Openable from '../traits/openable';
@@ -25,7 +32,8 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		multiSelect: false,
 		menuFooterElement: true,
 		menuHeaderElement: false, // Defaulting to hidden for the single scope version
-		searchIcon: 'utility.search'
+		searchIcon: 'utility.search',
+		id: Lib.uniqueId(CONTROL + '-')
 	},
 	
 	_defaultState: {
@@ -67,6 +75,31 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 
 		getIcon (item) {
 			return item.get('icon');
+		}
+	},
+	
+	_onSelected () {
+		this.search('');
+		this.close();
+	},
+	
+	_onExpandOrCollapse () {
+		this.setState({
+			focusedIndex: this._defaultState.focusedIndex
+		});
+	},
+	
+	getInputId () {
+		return this.getProperty('id') + '-input';
+	},
+	
+	getMenuId () {
+		return this.getProperty('id') + '-menu';
+	},
+	
+	getMenuItemId (index) {
+		if (index >= 0) {
+			return this.getMenuId() + '-item-' + index;
 		}
 	},
 	

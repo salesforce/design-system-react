@@ -38,7 +38,7 @@ export const ButtonViewObject = {
 		}
 
 		if (position === 'right' && this.getProperty('iconStyle') === 'icon-more') {
-			$icon = $('<svg ' + 'class="' + this._getIconClassNames(this.iconSizes['x-small']) + '"><use xlink:href="' + Lib.getSVGPath(this.moreIcon) + '"></use></svg>')
+			$icon = $('<svg ' + 'class="' + this._getIconClassNames(this.buttonIconSizes['x-small']) + '"><use xlink:href="' + Lib.getSVGPath(this.moreIcon) + '"></use></svg>')
 				.attr('aria-hidden', 'true');
 		}
 

@@ -35,8 +35,8 @@ const NotificationCore = Lib.merge({}, Base, Hideable, {
 	
 	_getClassNames: function () {
 		const hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
-		
-		return classNames(this.cssClasses.CONTROL, this.cssClasses.ALERT, this.themes[this.getProperty('theme')], hiddenClass);
+
+		return classNames(this.cssClasses.CONTROL, this.cssClasses.ALERT, 'slds-theme--inverse-text', this.themes[this.getProperty('theme')], hiddenClass);
 	}
 });
 
