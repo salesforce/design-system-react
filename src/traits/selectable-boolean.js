@@ -3,7 +3,6 @@
 // Similar to checkable trait
 
 import * as Lib from '../lib/lib';
-import Base from '../core/base';
 
 const SelectableBoolean = {
 	cssClasses: {
