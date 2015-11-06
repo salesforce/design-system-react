@@ -60,7 +60,12 @@ var config = {
 		new ExtractTextPlugin("style.css", {
 			allChunks: true
 		}),
-		new StringReplacePlugin()
+		new StringReplacePlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			mangle: {
+				except: ['$', 'exports', 'require']
+			}
+		})
 	]
 };
 

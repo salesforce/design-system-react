@@ -59,7 +59,12 @@ var config = {
 		]
 	},
 	plugins: [
-		new StringReplacePlugin()
+		new StringReplacePlugin(),
+		new webpack.optimize.UglifyJsPlugin({
+			mangle: {
+				except: ['$', 'exports', 'require']
+			}
+		})
 	]
 };
 
