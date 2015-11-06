@@ -18,23 +18,6 @@ module.exports = function (grunt) {
 		// VARIABLES
 		port: grunt.option('port') || process.env.PORT || defaultPort,
 		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
-
-		// TASK CONFIG
-		// This task isn't currently used
-		// babel: {
-		// 	options: {
-		// 		modules: 'umd',
-		// 		experimental: true
-		// 	},
-		// 	dist: {
-		// 		files: [{
-		// 			expand: true,
-		// 			cwd: 'src/',
-		// 			src: ['**/*.js', '!**/example.js', '!**/examples.js'],
-		// 			dest: 'dist/'
-		// 		}]
-		// 	}
-		// },
 		eslint: {
 			target: [
 				'Gruntfile.js',
