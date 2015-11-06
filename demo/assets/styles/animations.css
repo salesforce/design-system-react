@@ -1,0 +1,11 @@
+.slds .slds-theme--alert-texture-animated {
+  background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.035) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.035) 50%, rgba(0, 0, 0, 0.035) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.035) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.035) 50%, rgba(0, 0, 0, 0.035) 75%, transparent 75%, transparent);
+  background-size: 64px 64px;
+  animation: progress-bar-stripes 2.4s 4 linear;
+}
+
+@keyframes progress-bar-stripes{
+  0% { background-position:0 64px; }
+  100% { background-position:0 0; }
+}

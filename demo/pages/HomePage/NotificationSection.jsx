@@ -77,8 +77,8 @@ module.exports = React.createClass( {
   },
 
   render() {
-    let message = ['New contact added ', <a href="#" key="0123">Sara Smith</a>];
-    let errorMessage = 'There was a problem updating the record.';
+    let successMsg = ['New contact added ', <a href="#" key="0123">Sara Smith</a>];
+    let errorMsg = 'There was a problem updating the record.';
     let toastStyle = { display: 'inline-block'};
     return (
 
@@ -94,23 +94,32 @@ module.exports = React.createClass( {
         </PrismCode>
         <div className='slds-p-vertical--medium'>
           <div className="slds-p-vertical--small">
-            1. Toasts
-            <br />
-            <div className="demo-only" style={toastStyle}>
-              {this.state.modalIsOpen ? null: <SLDSNotification variant='toast' theme='success' icon='notification' texture={true} content={message} onDismiss={this.dismissToast} animated={true} />}
+            <h4 className="slds-text-heading--small ">Alerts</h4>
+            <div className="demo-only">
+              Base
+              {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} onDismiss={this.dismissToast} />}
+
+              Animated
+              {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='error' icon='warning' texture={true} content={errorMsg} onDismiss={this.dismissToast} />}
             </div>
           </div>
 
           <div className="slds-p-vertical--small">
-            2. Modal Toasts
-            <br />
+            <h4 className="slds-text-heading--small ">Toasts</h4>
+
+            <div className="demo-only" style={toastStyle}>
+              Base
+              {this.state.modalIsOpen ? null: <SLDSNotification variant='toast' theme='success' icon='notification' content={successMsg} onDismiss={this.dismissToast} />}
+            </div>
+
+            <p>Modal Toasts</p>
             <SLDSButton
               label='Open Modal Toast'
               variant='brand'
               onClick={this.openModal} />
             <SLDSModal
               isOpen={this.state.modalIsOpen}
-              toast={<SLDSNotification variant='toast' theme='error' icon='warning' texture={true} content={errorMessage} onDismiss={this.dismissToast} />}
+              toast={<SLDSNotification variant='toast' theme='error' icon='warning' content={errorMsg} onDismiss={this.dismissToast} />}
               title={<span>Lightning Design System: Style with Ease</span>}
               footer={[
                 <SLDSButton key='cancelBtn' label='Cancel' variant='neutral' onClick={this.closeModal} />,

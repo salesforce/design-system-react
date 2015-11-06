@@ -17,14 +17,14 @@ import {Icon} from '../SLDSIcons';
 class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
-    this.state = {isOpen: true};
+    this.state = { isOpen: true };
   }
 
   getClassName() {
     return classNames(this.props.className, 'slds-notify ', {
       [`slds-notify--${this.props.variant}`]: this.props.variant,
       [`slds-theme--${this.props.theme}`]: this.props.theme,
-      [`slds-theme--alert-texture`]: this.props.texture,
+      [`slds-theme--alert-texture-animated`]: this.props.texture,
     });
   }
 
