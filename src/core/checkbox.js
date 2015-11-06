@@ -11,12 +11,12 @@ import Checkable from '../traits/checkable';
 // require('../../scss/components/forms/flavors/form-element/index.scss');
 // require('../../scss/components/forms/flavors/checkbox/index.scss');
 
-export const CONTROL = 'checkbox';
+export const CONTROL = 'slds-checkbox';
 
 const CheckboxCore = Lib.merge({}, Base, Disableable, Checkable, {
 	cssClasses: {
-		CONTROL: Base.cssClasses.NAMESPACE + CONTROL,
-		FAUX: Base.cssClasses.NAMESPACE + CONTROL + '--faux'
+		CONTROL: CONTROL,
+		FAUX: 'slds-checkbox--faux'
 	},
 
 	_defaultProperties: {

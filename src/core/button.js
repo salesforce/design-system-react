@@ -33,28 +33,28 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 	// TODO: add button property or check for button parent, inverse, size, etc.
 	cssClasses: {
 		'CONTROL': CONTROL,
-		'NOT_SELECTED': Base.cssClasses.NAMESPACE + 'not-selected'
+		'NOT_SELECTED': 'slds-not-selected'
 	},
 	
 	themes: {
-		'neutral': CONTROL + '--neutral',
-		'brand': CONTROL + '--brand',
-		'inverse': CONTROL + '--inverse'
+		'neutral': 'slds-button--neutral',
+		'brand': 'slds-button--brand',
+		'inverse': 'slds-button--inverse'
 	},
 	
 	sizes: {
-		'small': CONTROL + '--small'
+		'small': 'slds-button--small'
 	},
 	
 	// applied to the button, not the icon/SVG
 	iconButtonStyles: {
-		'icon-bare': CONTROL + '--icon-bare',
-		'icon-border': CONTROL + '--icon-border',
-		'icon-border-filled': CONTROL + '--icon-border-filled',
-		'icon-container': CONTROL + '--icon-container',
-		'icon-inverse': CONTROL + '--icon-inverse',
-		'icon-more': CONTROL + '--icon-more',
-		'icon-small': CONTROL + '--icon-small',
+		'icon-bare': 'slds-button--icon-bare',
+		'icon-border': 'slds-button--icon-border',
+		'icon-border-filled': 'slds-button--icon-border-filled',
+		'icon-container': 'slds-button--icon-container',
+		'icon-inverse': 'slds-button--icon-inverse',
+		'icon-more': 'slds-button--icon-more',
+		'icon-small': 'slds-button--icon-small',
 		'picklist-label': 'slds-picklist__label'
 	},
 

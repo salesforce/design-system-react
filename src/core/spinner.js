@@ -10,21 +10,21 @@ import Base from './base';
 // require('../../scss/components/spinners/flavors/medium/index.scss');
 
 // TODO: We need to come up with a way to manage assets across the whole project, this hard-coding solution can only be temporary
-export const CONTROL = 'spinner';
+export const CONTROL = 'slds-spinner';
 const assetsDir = '/assets/design-system/images/spinners/';
 
 const SpinnerCore = Lib.merge({}, Base, {
 
 	sizes: {
-		'small': Base.cssClasses.NAMESPACE + CONTROL + '--small',
-		'medium': Base.cssClasses.NAMESPACE + CONTROL + '--medium',
-		'large': Base.cssClasses.NAMESPACE + CONTROL + '--large'
+		'small': 'slds-spinner--small',
+		'medium': 'slds-spinner--medium',
+		'large': 'slds-spinner--large'
 	},
 
 	fileNames: {
-		base: assetsDir + 'slds_' + CONTROL + '.gif',
-		brand: assetsDir + 'slds_' + CONTROL + '_brand.gif',
-		inverse: assetsDir + 'slds_' + CONTROL + '_inverse.gif'
+		base: assetsDir + 'slds_spinner.gif',
+		brand: assetsDir + 'slds_spinner_brand.gif',
+		inverse: assetsDir + 'slds_spinner_inverse.gif'
 	},
 
 	// Set the defaults
