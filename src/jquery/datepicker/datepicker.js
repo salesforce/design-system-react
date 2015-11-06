@@ -23,6 +23,7 @@ let Datepicker = function Datepicker () {
 	this.template = $(template);
 	this.$weekTemplate = $('<tr></tr>');
 	this.$dayTemplate = $('<td role="gridcell" aria-disabled="true"><span class="slds-day"></span></td>');
+	this._closeOnClick = $.proxy(this._closeOnClick, this);
 
 	this._initialize(options);
 };
@@ -57,7 +58,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 	},
 
 	_bindUIEvents () {
-		this.element.on('click.slds-datepicker-form', '.slds-input', $.proxy(this._toggleDatepicker, this));
+		this.element.on('click.slds-datepicker-form', $.proxy(this._triggerCalendar, this));
 
 		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', $.proxy(this._backMonth, this));
 		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', $.proxy(this._forwardMonth, this));
@@ -74,14 +75,15 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 	_onRendered () {
 		this._bindUIEvents();
 	},
+	
+	_onExpandOrCollapse () {
+		this.elements.datepicker.toggleClass('slds-hidden', !this.getState('isOpen'));
+		this._updatePosition();
+	},
 
-	_toggleDatepicker () {
-		if (this.elements.datepicker.hasClass('slds-hidden')) {
-			this.elements.datepicker.removeClass('slds-hidden');
-			this._updatePosition();
-		} else {
-			this.elements.datepicker.addClass('slds-hidden');
-		}
+	_triggerCalendar (e) {
+		e.originalEvent.originator = this;
+		if (!this.getState('isOpen')) this.open();
 	},
 
 	_renderDateRange () {
