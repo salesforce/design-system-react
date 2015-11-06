@@ -79,7 +79,8 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	
 	_initializer () {
 		this.setState({
-			inputId: Lib.uniqueId(CONTROL + '-input-')
+			inputId: Lib.uniqueId(CONTROL + '-input-'),
+			listId: Lib.uniqueId(CONTROL + '-list-')
 		});
 	},
 	

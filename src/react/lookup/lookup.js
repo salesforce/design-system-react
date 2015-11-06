@@ -70,7 +70,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
 				<Svg icon={this.props.searchIcon} className="slds-input__icon" />
 				{hasSelection && this._renderPillContainer(selectedItems)}
-				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" aria-autocomplete="list" role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
+				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex="0" aria-autocomplete="list" aria-owns={this.state.listId} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
 			</div>
 		</div>
 		);
@@ -109,7 +109,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		return (
 		<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 			{this._renderMenuHeader()}
-			<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
+			<ul id={this.state.listId} className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
 				{this._renderMenuItems()}
 			</ul>
 			{this._renderMenuFooter()}
@@ -213,7 +213,11 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape)/.test(e.key)) {
 			e.preventDefault();
-			if (!this._keyboardNav(e.key, this.elements.menuItems)) {
+			const selection = this._keyboardNav(e.key, this.elements.menuItems);
+			if (selection) {
+				// TODO: We shouldn't have message around updating this, but setting aria-activedescendant isn't currenly having any effect
+				selection.focus();
+			} else {
 				this.elements.input[0].focus();
 			}
 		} else if (e.key.length === 1) {

@@ -88,7 +88,10 @@ export const PicklistObject = {
 	_handleKeyPressed (e) {
 		if (e.key && (/(ArrowUp|ArrowDown|Escape)/.test(e.key) || e.key.length === 1)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this.elements.menuItems);
+			const selection = this._keyboardNav(e.key, this.elements.menuItems);
+			if (selection) {
+				selection.focus();
+			}
 		}
 	}
 };

@@ -30,6 +30,7 @@ const KeyboardNavigable = {
 		this._keyBuffer = new KeyBuffer();
 	},
 
+	// TODO: Now that we don't have to worry about setting focus we can probably use the collection here instead of finding the list items in the DOM
 	_keyboardNav (input, menuItems) {
 		const isOpen = this.getState('isOpen');
 		let index;
@@ -63,27 +64,26 @@ const KeyboardNavigable = {
 			} else if (/(ArrowDown)/.test(input)) {
 				if (index < menuItems.length - 1) {
 					index++;
-					selection = menuItems[index];
+				} else {
+					index = menuItems.length - 1;
 				}
+				
+				selection = menuItems[index];
 			} else if (/(ArrowUp)/.test(input)) {
 				if (index > this._defaultState.focusedIndex) {
 					index--;
 					selection = menuItems[index];
+				} else {
+					index = this._defaultState.focusedIndex;
 				}
 			}
-		}
-		
-		if (selection) {
-			selection.focus();
-		} else {
-			index = this._defaultState.focusedIndex;
 		}
 		
 		this.setState({
 			focusedIndex: index
 		});
 		
-		return !!selection;
+		return selection;
 	}
 };
 
