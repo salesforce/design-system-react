@@ -62,13 +62,14 @@ export const Icon = React.createClass({
 
     getDefaultProps() {
         return {
+            name:'',
             category: 'standard',
         };
     },
 
     render() {
 
-        const name = this.props.name.replace(/_/g,'-');
+        const name = this.props.name?this.props.name.replace(/_/g,'-'):'';
         const iconClassName = 'slds-icon-' + this.props.category + '-' + (this.props.theme || name);
         const styles = this.props.category === 'action'?{padding:'.5rem'}:null;
 
