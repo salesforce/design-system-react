@@ -57,7 +57,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 	},
 
 	_bindUIEvents () {
-		this.element.on('click.slds-datepicker-form', '.slds-input', $.proxy(this._toggleDatepicker, this));
+		this.element.on('click.slds-datepicker-form', '.slds-form-element', $.proxy(this._toggleDatepicker, this));
 
 		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', $.proxy(this._backMonth, this));
 		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', $.proxy(this._forwardMonth, this));

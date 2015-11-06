@@ -13,11 +13,11 @@ const DateInput = React.createClass({
 
 	render () {
 		return (
-			<div className="slds-form-element">
+			<div className="slds-form-element" onClick={this.props.triggerCalendar}>
 				<div className="slds-form-element__control">
 					<div className="slds-input-has-icon slds-input-has-icon--right">
 						<Svg className="slds-input__icon slds-icon-text-default" icon="utility.event" />
-						<input className="slds-input" type="text" placeholder="Pick a Date" label="Date Picker Label" onClick={this.props.triggerCalendar} value={this.props.selectedDate}/>
+						<input className="slds-input" type="text" placeholder="Pick a Date" label="Date Picker Label" value={this.props.selectedDate}/>
 					</div>
 				</div>
 			</div>
