@@ -63,14 +63,15 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderInput (hasSelection, selectedItems) {
 		const activeDescendantId = this.getMenuItemId(this.state.focusedIndex);
+		const inputId = this.getInputId();
 		
 		return (
-		<div className="slds-form-element">
-			<label className="slds-form-element__label" htmlFor={this.state.inputId}>{this.props.label}</label>
+		<div className="slds-form-element" id={this.props.id}>
+			<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
 			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
 				<Svg icon={this.props.searchIcon} className="slds-input__icon" />
 				{hasSelection && this._renderPillContainer(selectedItems)}
-				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this.state.listId} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
+				<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this.getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
 			</div>
 		</div>
 		);
@@ -107,7 +108,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenu () {
 		return (
-		<div id={this.state.listId} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
+		<div id={this.getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 			{this._renderMenuHeader()}
 			<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
 				{this._renderMenuItems()}

@@ -32,7 +32,8 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		multiSelect: false,
 		menuFooterElement: true,
 		menuHeaderElement: false, // Defaulting to hidden for the single scope version
-		searchIcon: 'utility.search'
+		searchIcon: 'utility.search',
+		id: Lib.uniqueId(CONTROL + '-')
 	},
 	
 	_defaultState: {
@@ -77,13 +78,6 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		}
 	},
 	
-	_initializer () {
-		this.setState({
-			inputId: Lib.uniqueId(CONTROL + '-input-'),
-			listId: Lib.uniqueId(CONTROL + '-list-')
-		});
-	},
-	
 	_onSelected () {
 		this.search('');
 		this.close();
@@ -95,9 +89,17 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		});
 	},
 	
+	getInputId () {
+		return this.getProperty('id') + '-input';
+	},
+	
+	getMenuId () {
+		return this.getProperty('id') + '-menu';
+	},
+	
 	getMenuItemId (index) {
 		if (index >= 0) {
-			return this.getState('inputId') + '-item-' + index;
+			return this.getMenuId() + '-item-' + index;
 		}
 	},
 	
