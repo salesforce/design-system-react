@@ -23,17 +23,16 @@ const KeyBuffer = function () {
 
 const KeyboardNavigable = {
 	_defaultState: {
-		focusedIndex: -1
+		focusedIndex: undefined
 	},
 
 	_initializer () {
 		this._keyBuffer = new KeyBuffer();
-		this._isSelectable = !Lib.isFunction(this.accessors.isSelectable);
+		this._isSelectable = !this.accessors || !Lib.isFunction(this.accessors.isSelectable);
 	},
 	
 	_getNavigableItems () {
 		const items = [];
-		items.lastIndex = -1;
 		items.indexes = [];
 		
 		this._collection.forEach((item, index) => {
@@ -44,7 +43,6 @@ const KeyboardNavigable = {
 				});
 				
 				items.indexes.push(index);
-				items.lastIndex = index;
 			}
 		});
 		
@@ -53,25 +51,25 @@ const KeyboardNavigable = {
 
 	_keyboardNav (input, onSelect) {
 		const isOpen = this.getState('isOpen');
-		const navigableItems = this._getNavigableItems();
+		const navigableItems = this._navigableItems || this._getNavigableItems();
 		const indexes = navigableItems.indexes;
-		const lastIndex = navigableItems.lastIndex;
-		let index = -1;
-		let selection;
+		const lastIndex = indexes.length - 1;
+		let focusedIndex = undefined;
+		let focusedSelection;
 		
 		if (/(Escape)/.test(input)) {
 			if (isOpen && Lib.isFunction(this.close)) this.close();
 		} else if (!isOpen && Lib.isFunction(this.open)) {
 			this.open();
 		} else if (/(Enter)/.test(input)) {
-			selection = this.getState('focusedSelection');
+			focusedSelection = this.getState('focusedSelection');
 			
-			if (selection && Lib.isFunction(onSelect)) {
-				onSelect(selection);
+			if (focusedSelection && Lib.isFunction(onSelect)) {
+				onSelect(focusedSelection);
+				focusedSelection = undefined;
 			}
 		} else {
-			index = this.getState('focusedIndex');
-			let navigableIndex = indexes.indexOf(index);
+			let navigableIndex = indexes.indexOf(this.getState('focusedIndex'));
 			
 			if (input.length === 1) {
 				// Combine subsequent keypresses
@@ -84,37 +82,35 @@ const KeyboardNavigable = {
 				}
 				
 				navigableItems.forEach((item) => {
-					if ((!selection && item.text.substr(0, pattern.length) === pattern) ||
+					if ((focusedIndex === undefined && item.text.substr(0, pattern.length) === pattern) ||
 						(consecutive > 0 && item.text.substr(0, 1) === input.toLowerCase())) {
 						consecutive--;
-						index = item.index;
+						focusedIndex = item.index;
 					}
 				});
 			} else if (/(ArrowDown)/.test(input)) {
-				if (index < lastIndex) {
-					index = indexes[++navigableIndex];
+				if (navigableIndex < lastIndex) {
+					focusedIndex = indexes[++navigableIndex];
 				} else {
-					index = lastIndex;
+					focusedIndex = indexes[lastIndex];
 				}
 			} else if (/(ArrowUp)/.test(input)) {
-				if (index > -1) {
-					index = indexes[--navigableIndex] || -1;
-				} else {
-					index = -1;
+				if (navigableIndex > 0) {
+					focusedIndex = indexes[--navigableIndex];
 				}
 			}
 		}
 		
-		if (index > -1) {
-			selection = this._collection.at(index);
+		if (Lib.isNumber(focusedIndex)) {
+			focusedSelection = this._collection.at(focusedIndex);
 		}
 		
 		this.setState({
-			focusedIndex: index,
-			focusedSelection: selection
+			focusedIndex,
+			focusedSelection
 		});
 		
-		return selection;
+		return focusedSelection;
 	}
 };
 

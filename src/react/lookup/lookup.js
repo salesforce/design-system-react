@@ -61,6 +61,14 @@ let Lookup = Lib.merge({}, LookupCore, {
 		])
 	},
 	
+	componentWillMount () {
+		this._configureKeyboardNavigation();
+	},
+	
+	componentWillReceiveProps () {
+		this._configureKeyboardNavigation();
+	},
+	
 	_renderInput (hasSelection, selectedItems) {
 		const activeDescendantId = this.getMenuItemId(this.state.focusedIndex);
 		const inputId = this.getInputId();
@@ -132,6 +140,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenuHeader () {
 		const props = {
+			id: this.getMenuItemId('header'),
 			icon: this.props.searchIcon,
 			label: '"' + this.state.searchString + '" in ' + this.props.label
 		};
@@ -141,6 +150,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenuFooter () {
 		const props = {
+			id: this.getMenuItemId('footer'),
 			icon: 'utility.add',
 			label: 'Add',
 			onClick: this.props.onAddClick
@@ -191,6 +201,15 @@ let Lookup = Lib.merge({}, LookupCore, {
 		}
 		
 		this.open();
+	},
+	
+	_configureKeyboardNavigation () {
+		const navigableItems = this._getNavigableItems();
+		
+		if (this.props.menuHeaderElement) navigableItems.indexes.unshift('header');
+		if (this.props.menuFooterElement) navigableItems.indexes.push('footer');
+		
+		this._navigableItems = navigableItems;
 	},
 
 	_handleKeyPressed (e) {

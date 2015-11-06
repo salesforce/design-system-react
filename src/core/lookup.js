@@ -98,7 +98,7 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	},
 	
 	getMenuItemId (index) {
-		if (index >= 0) {
+		if (index !== undefined) {
 			return this.getMenuId() + '-item-' + index;
 		}
 	},
