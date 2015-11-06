@@ -24,6 +24,9 @@ Facades that consume Lightning Design System and extend with JavaScript in nativ
 * **If this is your first contribution you'll be much happier if you communicate early and often**
 * Try to keep your PRs small and manageable
 
+### License
+Source code is licensed under the [BSD 3-Clause License](http://opensource.org/licenses/bsd-3-clause)
+
 ### Requirements / Goals
 * Modern, performant UX framework
 * Easy path forward from current FuelUX and state of apps (migrating to FuelUX)
