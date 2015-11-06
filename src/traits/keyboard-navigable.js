@@ -30,9 +30,10 @@ const KeyboardNavigable = {
 		this._keyBuffer = new KeyBuffer();
 	},
 
-	// TODO: Now that we don't have to worry about setting focus we can probably use the collection here instead of finding the list items in the DOM
-	_keyboardNav (input, menuItems) {
+	_keyboardNav (input) {
 		const isOpen = this.getState('isOpen');
+		const lastIndex = this._collection.length() - 1;
+		const isSelectable = !Lib.isFunction(this.accessors.isSelectable);
 		let index;
 		let selection;
 		
@@ -53,26 +54,30 @@ const KeyboardNavigable = {
 					consecutive = pattern.length;
 				}
 				
-				menuItems.forEach(function compareMenuItem (menuItem, i) {
-					if ((!selection && menuItem.textContent.substr(0, pattern.length).toLowerCase() === pattern) ||
-						(consecutive > 0 && menuItem.textContent.substr(0, 1).toLowerCase() === input)) {
-						consecutive--;
-						index = i;
-						selection = menuItem;
+				this._collection.forEach(function compareItem (item, i) {
+					const text = item.getText();
+					
+					if (isSelectable || item.isSelectable()) {
+						if ((!selection && text.substr(0, pattern.length).toLowerCase() === pattern) ||
+							(consecutive > 0 && text.substr(0, 1).toLowerCase() === input)) {
+							consecutive--;
+							index = i;
+							selection = item;
+						}
 					}
 				});
 			} else if (/(ArrowDown)/.test(input)) {
-				if (index < menuItems.length - 1) {
+				if (index < lastIndex) {
 					index++;
 				} else {
-					index = menuItems.length - 1;
+					index = lastIndex;
 				}
 				
-				selection = menuItems[index];
+				selection = this._collection.at(index);
 			} else if (/(ArrowUp)/.test(input)) {
 				if (index > this._defaultState.focusedIndex) {
 					index--;
-					selection = menuItems[index];
+					selection = this._collection.at(index);
 				} else {
 					index = this._defaultState.focusedIndex;
 				}
@@ -80,7 +85,8 @@ const KeyboardNavigable = {
 		}
 		
 		this.setState({
-			focusedIndex: index
+			focusedIndex: index,
+			focusedSelection: selection
 		});
 		
 		return selection;

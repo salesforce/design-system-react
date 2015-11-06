@@ -41,7 +41,7 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 					</div>
 					<Svg className="slds-icon" style={{right: '.6rem'}} icon="utility.down" />
 				</button>
-				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._setMenuRef} />
+				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
 			</div>
 		);
 	},
@@ -61,12 +61,7 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape)/.test(e.key)) {
 			e.preventDefault();
-			const selection = this._keyboardNav(e.key, this.elements.menuItems);
-			if (selection) {
-				selection.focus();
-			} else {
-				this.elements.input[0].focus();
-			}
+			this._keyboardNav(e.key);
 		} else if (e.key.length === 1) {
 			if (!this.state.isOpen) this.open();
 			this.elements.input[0].focus();

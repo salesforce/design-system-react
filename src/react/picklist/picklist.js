@@ -6,7 +6,6 @@ import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Framework specific
 import React from 'react';
-import ReactDOM from 'react-dom';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
@@ -39,41 +38,21 @@ export const PicklistObject = {
 		};
 
 		return (
-			<div aria-haspopup="true" aria-expanded={this.state.isOpen} className="slds-picklist" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div className="slds-picklist" aria-expanded={this.state.isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<Button
 					className="slds-picklist__label"
 					disabled={this.props.disabled}
 					onClick={this._handleClicked}
 					style={styles}
-					theme="neutral">
+					theme="neutral"
+					aria-haspopup="true">
 					<span className="slds-truncate">{selectionName}</span>
 					<Svg className="slds-icon" icon="utility.down" />
 				</Button>
-				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._setMenuRef} />
+				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
 				<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
 			</div>
 		);
-	},
-
-	componentDidUpdate () {
-		this._setMenuItemsRef();
-	},
-	
-	_setMenuRef (menu) {
-		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
-	},
-	
-	_setMenuItemsRef () {
-		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-		this.elements.menuItems = [];
-		
-		for (let i = 0; i < menuItems.length; i++) {
-			const menuItem = menuItems[i].getElementsByTagName('a');
-
-			if (!menuItems[i].disabled && menuItem.length === 1) {
-				this.elements.menuItems.push(menuItem[0]);
-			}
-		}
 	},
 
 	_handleMenuItemSelected (selection) {
@@ -88,10 +67,7 @@ export const PicklistObject = {
 	_handleKeyPressed (e) {
 		if (e.key && (/(ArrowUp|ArrowDown|Escape)/.test(e.key) || e.key.length === 1)) {
 			e.preventDefault();
-			const selection = this._keyboardNav(e.key, this.elements.menuItems);
-			if (selection) {
-				selection.focus();
-			}
+			this._keyboardNav(e.key);
 		}
 	}
 };

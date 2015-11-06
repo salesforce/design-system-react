@@ -70,7 +70,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
 				<Svg icon={this.props.searchIcon} className="slds-input__icon" />
 				{hasSelection && this._renderPillContainer(selectedItems)}
-				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex="0" aria-autocomplete="list" aria-owns={this.state.listId} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
+				<input id={this.state.inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this.state.listId} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
 			</div>
 		</div>
 		);
@@ -107,9 +107,9 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenu () {
 		return (
-		<div className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
+		<div id={this.state.listId} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 			{this._renderMenuHeader()}
-			<ul id={this.state.listId} className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
+			<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
 				{this._renderMenuItems()}
 			</ul>
 			{this._renderMenuFooter()}
@@ -176,24 +176,6 @@ let Lookup = Lib.merge({}, LookupCore, {
 		);
 	},
 	
-	componentDidUpdate () {
-		this._setMenuItemsRef();
-	},
-	
-	_setMenuRef (menu) {
-		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
-	},
-	
-	_setMenuItemsRef () {
-		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-		this.elements.menuItems = Array.prototype.map.call(menuItems, menuItem => {
-			const anchor = menuItem.getElementsByTagName('a');
-			if (anchor.length === 1) {
-				return anchor[0];
-			}
-		});
-	},
-	
 	_setInputRef (input) {
 		this.elements.input = Lib.wrapElement(ReactDOM.findDOMNode(input));
 	},
@@ -213,13 +195,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape)/.test(e.key)) {
 			e.preventDefault();
-			const selection = this._keyboardNav(e.key, this.elements.menuItems);
-			if (selection) {
-				// TODO: We shouldn't have message around updating this, but setting aria-activedescendant isn't currenly having any effect
-				selection.focus();
-			} else {
-				this.elements.input[0].focus();
-			}
+			this._keyboardNav(e.key);
 		} else if (e.key.length === 1) {
 			if (!this.state.isOpen) this.open();
 			this.elements.input[0].focus();
