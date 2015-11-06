@@ -3,11 +3,10 @@
 // Similar to checkable trait
 
 import * as Lib from '../lib/lib';
-import Base from '../core/base';
 
 const SelectableBoolean = {
 	cssClasses: {
-		SELECTED: Base.cssClasses.NAMESPACE + 'is-selected'
+		SELECTED: 'slds-is-selected'
 	},
 	
 	_defaultProperties: {

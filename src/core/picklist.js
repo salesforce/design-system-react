@@ -9,9 +9,11 @@ import Openable from '../traits/openable';
 import Selectable from '../traits/selectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
-export const CONTROL = 'picklist';
+export const CONTROL = 'slds-picklist';
 
 const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -100,6 +102,16 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 
 		if (item.isSelectable()) {
 			select();
+		}
+	},
+	
+	_getMenuId () {
+		return this.getState('id') + '-menu';
+	},
+	
+	_getMenuItemId (index) {
+		if (index !== undefined) {
+			return this._getMenuId() + '-item-' + index;
 		}
 	}
 });

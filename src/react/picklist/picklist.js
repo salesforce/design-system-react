@@ -20,6 +20,7 @@ export const PicklistObject = {
 
 	propTypes: {
 		disabled: React.PropTypes.bool,
+		id: React.PropTypes.string,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.object
 		]),
@@ -38,7 +39,7 @@ export const PicklistObject = {
 		};
 
 		return (
-			<div className="slds-picklist" aria-expanded={this.state.isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div className="slds-picklist" id={this.state.id} aria-expanded={this.state.isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<Button
 					className="slds-picklist__label"
 					disabled={this.props.disabled}
@@ -49,7 +50,7 @@ export const PicklistObject = {
 					<span className="slds-truncate">{selectionName}</span>
 					<Svg className="slds-icon" icon="utility.down" />
 				</Button>
-				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
+				<PicklistItems id={this._getMenuId()} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
 				<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
 			</div>
 		);
@@ -67,7 +68,11 @@ export const PicklistObject = {
 	_handleKeyPressed (e) {
 		if (e.key && (/(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key) || e.key.length === 1)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this.setSelection);
+			const focusedIndex = this._keyboardNav(e.key, this.setSelection);
+			if (focusedIndex !== undefined) {
+				document.getElementById(this._getMenuItemId(focusedIndex)).getElementsByTagName('a')[0].focus();
+				console.log(document.getElementById(this._getMenuItemId(focusedIndex)));
+			}
 		}
 	}
 };

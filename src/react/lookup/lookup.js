@@ -40,6 +40,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
+		id: React.PropTypes.string,
 		label: React.PropTypes.string.isRequired,
 		menuFooterElement: React.PropTypes.oneOfType([
 			React.PropTypes.element,
@@ -70,16 +71,16 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	_renderInput (hasSelection, selectedItems) {
-		const activeDescendantId = this.getMenuItemId(this.state.focusedIndex);
-		const inputId = this.getInputId();
+		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
+		const inputId = this._getInputId();
 		
 		return (
-		<div className="slds-form-element" id={this.props.id}>
+		<div className="slds-form-element">
 			<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
 			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
 				<Svg icon={this.props.searchIcon} className="slds-input__icon" />
 				{hasSelection && this._renderPillContainer(selectedItems)}
-				<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this.getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
+				<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
 			</div>
 		</div>
 		);
@@ -116,7 +117,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenu () {
 		return (
-		<div id={this.getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
+		<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 			{this._renderMenuHeader()}
 			<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
 				{this._renderMenuItems()}
@@ -140,7 +141,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenuHeader () {
 		const props = {
-			id: this.getMenuItemId('header'),
+			id: this._getMenuItemId('header'),
 			icon: this.props.searchIcon,
 			label: '"' + this.state.searchString + '" in ' + this.props.label
 		};
@@ -150,7 +151,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenuFooter () {
 		const props = {
-			id: this.getMenuItemId('footer'),
+			id: this._getMenuItemId('footer'),
 			icon: 'utility.add',
 			label: 'Add',
 			onClick: this.props.onAddClick
@@ -161,7 +162,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenuItems () {
 		return this._collection.map((item, index) => {
-			const id = this.getMenuItemId(index);
+			const id = this._getMenuItemId(index);
 			const props = { item, id, onSelected: this._selectItem, key: index };
 			let element;
 			
@@ -180,7 +181,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		const hasSelection = selectedItems.length() > 0;
 		
 		return (
-		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 			{this._renderInput(hasSelection, selectedItems)}
 			{this._renderMenu(hasSelection)}
 		</div>

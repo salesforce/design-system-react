@@ -27,12 +27,6 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		selection: React.PropTypes.any
 	},
 
-	getInitialState () {
-		return {
-			isOpen: false
-		};
-	},
-
 	render () {
 		const calendarData = this._getCalendarData();
 		const selectedDates = this.getProperty('selection');
@@ -43,8 +37,8 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		}
 
 		return (
-			<div className="slds-form--stacked slds-float--left slds-datepicker-form" ref="container">
-				<DateInput triggerCalendar={this._triggerCalendar} selectedDate={selDateFormatted}/>
+			<div className="slds-form--stacked slds-float--left slds-datepicker-form" ref="container" onClick={this._triggerCalendar}>
+				<DateInput selectedDate={selDateFormatted}/>
 				<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !this.state.isOpen})} ref="popover" data-selection="single">
 					<div className="slds-datepicker__filter slds-grid">
 						<DateMonth monthName={this._getMonthName()} setViewingDate={this._setViewingDate} dateViewing={this.state.dateViewing}/>
@@ -66,10 +60,9 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		this._updatePosition();
 	},
 
-	_triggerCalendar () {
-		this.setState({
-			isOpen: !this.state.isOpen
-		});
+	_triggerCalendar (e) {
+		e.nativeEvent.originator = this;
+		if (!this.getState('isOpen')) this.open();
 	},
 
 	_selectDate (date) {

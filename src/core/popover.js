@@ -16,6 +16,8 @@ import classNames from 'classnames';
 export const CONTROL = 'slds-popover';
 
 const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
+	CONTROL,
+	
 	cssClasses: {
 		CONTROL: CONTROL,
 		TARGET: 'slds-popover-target'

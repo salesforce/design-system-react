@@ -8,12 +8,12 @@ import Svg from '../svg/svg';
 
 const LookupMenuItem = React.createClass({
 	propTypes: {
+		id: React.PropTypes.string.isRequired,
 		item: React.PropTypes.shape({
 			getText: React.PropTypes.func.isRequired,
 			getIcon: React.PropTypes.func.isRequired
 		}).isRequired,
-		onSelected: React.PropTypes.func.isRequired,
-		id: React.PropTypes.string.isRequired
+		onSelected: React.PropTypes.func.isRequired
 	},
 
 	_renderIcon () {
@@ -28,7 +28,7 @@ const LookupMenuItem = React.createClass({
 	render () {
 		return (
 		<li id={this.props.id} className="slds-lookup__item">
-			<a href="#" role="option" onClick={this.handleClicked}>
+			<a href="#" role="option" onClick={this.handleClicked} tabIndex="-1">
 				{this._renderIcon()}
 				{this.props.item.getText()}
 			</a>

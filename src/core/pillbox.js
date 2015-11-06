@@ -17,6 +17,8 @@ import Multiselectable from '../traits/multiselectable';
 export const CONTROL = 'pillbox';
 
 const PillboxCore = Lib.merge({}, Base, Disableable, Multiselectable, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL

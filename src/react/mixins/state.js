@@ -11,7 +11,7 @@ const State = {
 	getInitialState () {
 		return Lib.extend({}, this._defaultState);
 	},
-
+	
 	setProperties: Lib.noop,
 
 	getProperty (key) {
