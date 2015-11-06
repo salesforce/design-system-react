@@ -47,7 +47,7 @@ module.exports = React.createClass( {
       className:'',
       listClassName:'',
       openOn:'hover',
-      listItemLabelRenderer:ListItemLabel,
+      listItemRenderer:ListItemLabel,
       horizontalAlign:'left',
       hoverCloseDelay:300
     }
@@ -97,9 +97,13 @@ module.exports = React.createClass( {
       this.setState({isOpen:false});
     }
     else if(!this.state.isFocused && prevState.isFocused){
-      if(this.refs.list && this.isMounted()){
-        if(this.refs.list.getDOMNode().contains(document.activeElement)) return;
-        this.setState({isOpen:false})
+      if (this.refs.list) {
+        if (this.isMounted() && this.refs.list) {
+          if (this.refs.list.getDOMNode().contains(document.activeElement)) {
+            return;
+          }
+          this.setState({ isOpen: false });
+        }
       }
     }
     else if(this.state.isClosing && !prevState.isClosing){
