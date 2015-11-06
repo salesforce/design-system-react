@@ -10,6 +10,10 @@ export const CONTROL = 'slds-tooltip';
 const TooltipCore = Lib.merge({}, PopoverCore, {
 	cssClasses: {
 		CONTROL: CONTROL
+	},
+	
+	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-')
 	}
 });
 

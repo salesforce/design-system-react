@@ -59,6 +59,7 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 	},
 
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		iconStyle: null,
 		iconPosition: 'left',
 		selected: false,

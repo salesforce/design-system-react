@@ -28,12 +28,12 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	},
 
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		collection: [],
 		multiSelect: false,
 		menuFooterElement: true,
 		menuHeaderElement: false, // Defaulting to hidden for the single scope version
-		searchIcon: 'utility.search',
-		id: Lib.uniqueId(CONTROL + '-')
+		searchIcon: 'utility.search'
 	},
 	
 	_defaultState: {
@@ -89,17 +89,17 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		});
 	},
 	
-	getInputId () {
+	_getInputId () {
 		return this.getProperty('id') + '-input';
 	},
 	
-	getMenuId () {
+	_getMenuId () {
 		return this.getProperty('id') + '-menu';
 	},
 	
-	getMenuItemId (index) {
+	_getMenuItemId (index) {
 		if (index !== undefined) {
-			return this.getMenuId() + '-item-' + index;
+			return this._getMenuId() + '-item-' + index;
 		}
 	},
 	

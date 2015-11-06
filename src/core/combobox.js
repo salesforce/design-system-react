@@ -15,6 +15,10 @@ const ComboboxCore = Lib.merge({}, PicklistCore, {
 		INPUT: 'slds-input',
 		TOGGLE: 'slds-button'
 	},
+	
+	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-')
+	},
 
 	resize () {
 		if (this.elements.wrapper) {

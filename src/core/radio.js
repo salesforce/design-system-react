@@ -13,6 +13,10 @@ const RadioCore = Lib.merge({}, CheckboxCore, {
 	cssClasses: {
 		CONTROL: CONTROL,
 		FAUX: 'slds-radio--faux'
+	},
+	
+	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-')
 	}
 });
 

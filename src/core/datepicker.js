@@ -18,6 +18,7 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, Positio
 	},
 
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		multiSelect: false,
 		dateRange: [new Date('1991'), new Date('2030')],
 		targetDistance: 4, // Used by positionable

@@ -29,6 +29,7 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 	},
 
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		trigger: 'click',
 		target: null, // The element who's events will trigger the popover
 		container: null, // The element the popover will be contained within

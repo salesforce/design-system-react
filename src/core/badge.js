@@ -23,6 +23,7 @@ const BadgeCore = Lib.merge({}, Base, {
 	},
 
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		text: 'label',
 		theme: null
 	},

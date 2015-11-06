@@ -29,6 +29,7 @@ const SpinnerCore = Lib.merge({}, Base, {
 
 	// Set the defaults
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		size: 'medium',
 		theme: 'base'
 	}

@@ -8,8 +8,8 @@ import Svg from '../svg/svg';
 
 const LookupButton = React.createClass({
 	propTypes: {
-		id: React.PropTypes.string,
 		icon: React.PropTypes.string,
+		id: React.PropTypes.string,
 		label: React.PropTypes.string.isRequired,
 		onClick: React.PropTypes.func
 	},
@@ -23,7 +23,7 @@ const LookupButton = React.createClass({
 	render () {
 		return (
 		<div className="slds-lookup__item" id={this.props.id}>
-			<button className="slds-button" onClick={this.props.onClick}>
+			<button className="slds-button" onClick={this.props.onClick} tabIndex="-1">
 				{this._renderIcon()}
 				{this.props.label}
 			</button>

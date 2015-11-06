@@ -30,6 +30,7 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 	},
 
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		sortable: false,
 		collection: [],
 		selection: null,

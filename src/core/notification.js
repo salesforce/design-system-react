@@ -29,6 +29,7 @@ const NotificationCore = Lib.merge({}, Base, Hideable, {
 	},
 
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		text: 'label',
 		theme: null
 	},

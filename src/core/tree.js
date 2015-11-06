@@ -21,6 +21,7 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 
 	// Set the defaults
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		collection: [],
 		folderSelect: false,
 		multiSelect: false,

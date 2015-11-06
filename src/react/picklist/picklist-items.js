@@ -16,6 +16,8 @@ const PicklistItems = React.createClass({
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
+		id: React.PropTypes.string,
+		getMenuItemId: React.PropTypes.func.isRequired,
 		onSelected: React.PropTypes.func.isRequired,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.object
@@ -33,14 +35,14 @@ const PicklistItems = React.createClass({
 	_menuItems () {
 		return this.props.collection.map((item, index) => {
 			return (
-				<PicklistItem key={index} selected={item._item === this.props.selection} item={item} onSelected={this.props.onSelected} />
+				<PicklistItem id={this.props.getMenuItemId(index)} key={index} selected={item._item === this.props.selection} item={item} onSelected={this.props.onSelected} />
 			);
 		});
 	},
 
 	render () {
 		return (
-			<div className={classNames(this.cssClasses.DROPDOWN, this.cssClasses.LEFT, this.cssClasses.MENU, {'slds-hide': !this.props.show})}>
+			<div className={classNames(this.cssClasses.DROPDOWN, this.cssClasses.LEFT, this.cssClasses.MENU, {'slds-hide': !this.props.show})} id={this.props.id}>
 				<ul className={this.cssClasses.LIST} role="menu" ref={this.cssClasses.LIST}>
 				{this._menuItems()}
 				</ul>

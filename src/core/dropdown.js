@@ -17,6 +17,7 @@ const DropdownCore = Lib.merge({}, PicklistCore, {
 	},
 
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		icon: 'standard.empty',
 		swapIcon: true,
 		renderArrow: true

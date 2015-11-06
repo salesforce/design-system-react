@@ -20,6 +20,7 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, Checkable, {
 	},
 
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		labelText: '',
 		value: '',
 		name: ''

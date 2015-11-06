@@ -23,6 +23,7 @@ const PillboxCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	},
 
 	_defaultProperties: {
+		id: Lib.uniqueId(CONTROL + '-'),
 		multiSelect: true,
 		selection: [],
 		acceptKeyCodes: [13, 188]
