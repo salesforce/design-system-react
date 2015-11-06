@@ -1,10 +1,12 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var StringReplacePlugin = require('string-replace-webpack-plugin');
 
 var port = process.env.WEBPACK_PORT || 8080;
 var entries = ['webpack-dev-server/client?http://localhost:' + port, 'webpack/hot/dev-server'];
 var path = require('path');
 var node_modules_dir = path.join(__dirname, 'node_modules');
+var packageJson = require('./package.json');
 
 var config = {
 	entry: {
@@ -44,7 +46,14 @@ var config = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loaders: ['react-hot', 'babel-loader?optional=runtime']
+				loaders: ['react-hot', 'babel-loader?optional=runtime', StringReplacePlugin.replace({
+					replacements: [{
+						pattern: /__VERSION__/g,
+						replacement: function (match, p1, offset, string) {
+							return packageJson.version;
+						}
+					}]
+				})]
 			},
 			{
 				test: /\.css$/,
@@ -78,7 +87,8 @@ var config = {
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.DefinePlugin({
 			'process.env': {NODE_ENV: JSON.stringify('development')}
-		})
+		}),
+		new StringReplacePlugin()
 	]
 };
 

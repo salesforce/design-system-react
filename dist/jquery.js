@@ -1,4 +1,4 @@
-define(function() { return /******/ (function(modules) { // webpackBootstrap
+define("Facades", [], function() { return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -57,63 +57,63 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	__webpack_require__(3);
 	
-	var _badgeBadge = __webpack_require__(134);
+	var _badgeBadge = __webpack_require__(136);
 	
 	var _badgeBadge2 = _interopRequireDefault(_badgeBadge);
 	
-	var _buttonButton = __webpack_require__(148);
+	var _buttonButton = __webpack_require__(150);
 	
 	var _buttonButton2 = _interopRequireDefault(_buttonButton);
 	
 	// 	// import './buttongroup/example';
 	
-	var _checkboxCheckbox = __webpack_require__(154);
+	var _checkboxCheckbox = __webpack_require__(156);
 	
 	var _checkboxCheckbox2 = _interopRequireDefault(_checkboxCheckbox);
 	
-	var _comboboxCombobox = __webpack_require__(167);
+	var _comboboxCombobox = __webpack_require__(169);
 	
 	var _comboboxCombobox2 = _interopRequireDefault(_comboboxCombobox);
 	
-	var _dataTableDataTable = __webpack_require__(177);
+	var _dataTableDataTable = __webpack_require__(179);
 	
 	var _dataTableDataTable2 = _interopRequireDefault(_dataTableDataTable);
 	
 	// 	// import './datepicker/example';
 	
-	var _dropdownDropdown = __webpack_require__(181);
+	var _dropdownDropdown = __webpack_require__(183);
 	
 	var _dropdownDropdown2 = _interopRequireDefault(_dropdownDropdown);
 	
-	var _notificationNotification = __webpack_require__(184);
+	var _notificationNotification = __webpack_require__(186);
 	
 	var _notificationNotification2 = _interopRequireDefault(_notificationNotification);
 	
-	var _picklistPicklist = __webpack_require__(174);
+	var _picklistPicklist = __webpack_require__(176);
 	
 	var _picklistPicklist2 = _interopRequireDefault(_picklistPicklist);
 	
-	var _pillboxPillbox = __webpack_require__(188);
+	var _pillboxPillbox = __webpack_require__(190);
 	
 	var _pillboxPillbox2 = _interopRequireDefault(_pillboxPillbox);
 	
-	var _popoverPopover = __webpack_require__(191);
+	var _popoverPopover = __webpack_require__(193);
 	
 	var _popoverPopover2 = _interopRequireDefault(_popoverPopover);
 	
-	var _radioRadio = __webpack_require__(195);
+	var _radioRadio = __webpack_require__(197);
 	
 	var _radioRadio2 = _interopRequireDefault(_radioRadio);
 	
-	var _spinnerSpinner = __webpack_require__(198);
+	var _spinnerSpinner = __webpack_require__(200);
 	
 	var _spinnerSpinner2 = _interopRequireDefault(_spinnerSpinner);
 	
-	var _tooltipTooltip = __webpack_require__(200);
+	var _tooltipTooltip = __webpack_require__(202);
 	
 	var _tooltipTooltip2 = _interopRequireDefault(_tooltipTooltip);
 	
-	var _treeTree = __webpack_require__(203);
+	var _treeTree = __webpack_require__(205);
 	
 	var _treeTree2 = _interopRequireDefault(_treeTree);
 	
@@ -345,7 +345,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var _iconPaths2 = _interopRequireDefault(_iconPaths);
 	
-	var version = '__VERSION__';
+	var version = '0.0.7';
 	
 	exports.version = version;
 	var global = typeof self === 'object' && self.self === self && self || typeof global === 'object' && global.global === global && global;exports.global = global;
@@ -493,7 +493,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		return wrapped;
 	}
 	
-	// Browser
+	// Utility
+	
+	var _lodashUtilityUniqueId = __webpack_require__(134);
+	
+	exports.uniqueId = _interopRequire(_lodashUtilityUniqueId);
 	
 	function log() {
 		if (global.console && global.console.log) {
@@ -586,6 +590,9 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				return [iconPath, icon[1]].join('#');
 			}
 		}
+	
+		// TODO: For now, if an appropriate path is not found we are going to assume that we were given one
+		return iconProperty;
 	}
 	
 	registerIconPaths(_iconPaths2['default']);
@@ -669,10 +676,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// true  -> String#at
-	// false -> String#codePointAt
 	var toInteger = __webpack_require__(11)
 	  , defined   = __webpack_require__(12);
+	// true  -> String#at
+	// false -> String#codePointAt
 	module.exports = function(TO_STRING){
 	  return function(that, pos){
 	    var s = String(defined(that))
@@ -721,14 +728,18 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	  , has             = __webpack_require__(24)
 	  , SYMBOL_ITERATOR = __webpack_require__(25)('iterator')
 	  , Iterators       = __webpack_require__(28)
+	  , $iterCreate     = __webpack_require__(29)
+	  , setToStringTag  = __webpack_require__(30)
+	  , getProto        = __webpack_require__(20).getProto
 	  , BUGGY           = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
 	  , FF_ITERATOR     = '@@iterator'
 	  , KEYS            = 'keys'
 	  , VALUES          = 'values';
 	var returnThis = function(){ return this; };
 	module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE){
-	  __webpack_require__(29)(Constructor, NAME, next);
-	  var createMethod = function(kind){
+	  $iterCreate(Constructor, NAME, next);
+	  var getMethod = function(kind){
+	    if(!BUGGY && kind in proto)return proto[kind];
 	    switch(kind){
 	      case KEYS: return function keys(){ return new Constructor(this, kind); };
 	      case VALUES: return function values(){ return new Constructor(this, kind); };
@@ -737,31 +748,34 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	  var TAG      = NAME + ' Iterator'
 	    , proto    = Base.prototype
 	    , _native  = proto[SYMBOL_ITERATOR] || proto[FF_ITERATOR] || DEFAULT && proto[DEFAULT]
-	    , _default = _native || createMethod(DEFAULT)
+	    , _default = _native || getMethod(DEFAULT)
 	    , methods, key;
 	  // Fix native
 	  if(_native){
-	    var IteratorPrototype = __webpack_require__(20).getProto(_default.call(new Base));
+	    var IteratorPrototype = getProto(_default.call(new Base));
 	    // Set @@toStringTag to native iterators
-	    __webpack_require__(30)(IteratorPrototype, TAG, true);
+	    setToStringTag(IteratorPrototype, TAG, true);
 	    // FF fix
 	    if(!LIBRARY && has(proto, FF_ITERATOR))hide(IteratorPrototype, SYMBOL_ITERATOR, returnThis);
 	  }
 	  // Define iterator
-	  if(!LIBRARY || FORCE)hide(proto, SYMBOL_ITERATOR, _default);
+	  if((!LIBRARY || FORCE) && (BUGGY || !(SYMBOL_ITERATOR in proto))){
+	    hide(proto, SYMBOL_ITERATOR, _default);
+	  }
 	  // Plug for library
 	  Iterators[NAME] = _default;
 	  Iterators[TAG]  = returnThis;
 	  if(DEFAULT){
 	    methods = {
-	      values:  DEFAULT == VALUES ? _default : createMethod(VALUES),
-	      keys:    IS_SET            ? _default : createMethod(KEYS),
-	      entries: DEFAULT != VALUES ? _default : createMethod('entries')
+	      values:  DEFAULT == VALUES ? _default : getMethod(VALUES),
+	      keys:    IS_SET            ? _default : getMethod(KEYS),
+	      entries: DEFAULT != VALUES ? _default : getMethod('entries')
 	    };
 	    if(FORCE)for(key in methods){
 	      if(!(key in proto))$redef(proto, key, methods[key]);
 	    } else $def($def.P + $def.F * BUGGY, NAME, methods);
 	  }
+	  return methods;
 	};
 
 /***/ },
@@ -835,7 +849,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /* 17 */
 /***/ function(module, exports) {
 
-	var core = module.exports = {version: '1.2.3'};
+	var core = module.exports = {version: '1.2.5'};
 	if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
 
 /***/ },
@@ -923,10 +937,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	var store  = __webpack_require__(26)('wks')
+	  , uid    = __webpack_require__(27)
 	  , Symbol = __webpack_require__(16).Symbol;
 	module.exports = function(name){
 	  return store[name] || (store[name] =
-	    Symbol && Symbol[name] || (Symbol || __webpack_require__(27))('Symbol.' + name));
+	    Symbol && Symbol[name] || (Symbol || uid)('Symbol.' + name));
 	};
 
 /***/ },
@@ -961,15 +976,17 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var $ = __webpack_require__(20)
+	var $              = __webpack_require__(20)
+	  , descriptor     = __webpack_require__(21)
+	  , setToStringTag = __webpack_require__(30)
 	  , IteratorPrototype = {};
 	
 	// 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
 	__webpack_require__(19)(IteratorPrototype, __webpack_require__(25)('iterator'), function(){ return this; });
 	
 	module.exports = function(Constructor, NAME, next){
-	  Constructor.prototype = $.create(IteratorPrototype, {next: __webpack_require__(21)(1,next)});
-	  __webpack_require__(30)(Constructor, NAME + ' Iterator');
+	  Constructor.prototype = $.create(IteratorPrototype, {next: descriptor(1, next)});
+	  setToStringTag(Constructor, NAME + ' Iterator');
 	};
 
 /***/ },
@@ -997,16 +1014,16 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
-	var setUnscope = __webpack_require__(33)
-	  , step       = __webpack_require__(34)
-	  , Iterators  = __webpack_require__(28)
-	  , toIObject  = __webpack_require__(35);
+	var addToUnscopables = __webpack_require__(33)
+	  , step             = __webpack_require__(34)
+	  , Iterators        = __webpack_require__(28)
+	  , toIObject        = __webpack_require__(35);
 	
 	// 22.1.3.4 Array.prototype.entries()
 	// 22.1.3.13 Array.prototype.keys()
 	// 22.1.3.29 Array.prototype.values()
 	// 22.1.3.30 Array.prototype[@@iterator]()
-	__webpack_require__(13)(Array, 'Array', function(iterated, kind){
+	module.exports = __webpack_require__(13)(Array, 'Array', function(iterated, kind){
 	  this._t = toIObject(iterated); // target
 	  this._i = 0;                   // next index
 	  this._k = kind;                // kind
@@ -1027,9 +1044,9 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	// argumentsList[@@iterator] is %ArrayProto_values% (9.4.4.6, 9.4.4.7)
 	Iterators.Arguments = Iterators.Array;
 	
-	setUnscope('keys');
-	setUnscope('values');
-	setUnscope('entries');
+	addToUnscopables('keys');
+	addToUnscopables('values');
+	addToUnscopables('entries');
 
 /***/ },
 /* 33 */
@@ -1094,11 +1111,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	  , forOf      = __webpack_require__(45)
 	  , setProto   = __webpack_require__(50).set
 	  , same       = __webpack_require__(51)
-	  , species    = __webpack_require__(52)
 	  , SPECIES    = __webpack_require__(25)('species')
-	  , speciesConstructor = __webpack_require__(53)
+	  , speciesConstructor = __webpack_require__(52)
 	  , RECORD     = __webpack_require__(27)('record')
-	  , asap       = __webpack_require__(54)
+	  , asap       = __webpack_require__(53)
 	  , PROMISE    = 'Promise'
 	  , process    = global.process
 	  , isNode     = classof(process) == 'process'
@@ -1267,7 +1283,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	      $reject.call(record, err);
 	    }
 	  };
-	  __webpack_require__(59)(P.prototype, {
+	  __webpack_require__(58)(P.prototype, {
 	    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
 	    then: function then(onFulfilled, onRejected){
 	      var react = {
@@ -1296,8 +1312,8 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	// export
 	$def($def.G + $def.W + $def.F * !useNative, {Promise: P});
 	__webpack_require__(30)(P, PROMISE);
-	species(P);
-	species(Wrapper = __webpack_require__(17)[PROMISE]);
+	__webpack_require__(59)(PROMISE);
+	Wrapper = __webpack_require__(17)[PROMISE];
 	
 	// statics
 	$def($def.S + $def.F * !useNative, PROMISE, {
@@ -1472,10 +1488,12 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	// check on default Array iterator
-	var Iterators = __webpack_require__(28)
-	  , ITERATOR  = __webpack_require__(25)('iterator');
+	var Iterators  = __webpack_require__(28)
+	  , ITERATOR   = __webpack_require__(25)('iterator')
+	  , ArrayProto = Array.prototype;
+	
 	module.exports = function(it){
-	  return (Iterators.Array || Array.prototype[ITERATOR]) === it;
+	  return (Iterators.Array || ArrayProto[ITERATOR]) === it;
 	};
 
 /***/ },
@@ -1537,26 +1555,13 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /* 51 */
 /***/ function(module, exports) {
 
+	// 7.2.9 SameValue(x, y)
 	module.exports = Object.is || function is(x, y){
 	  return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
 	};
 
 /***/ },
 /* 52 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	var $       = __webpack_require__(20)
-	  , SPECIES = __webpack_require__(25)('species');
-	module.exports = function(C){
-	  if(__webpack_require__(22) && !(SPECIES in C))$.setDesc(C, SPECIES, {
-	    configurable: true,
-	    get: function(){ return this; }
-	  });
-	};
-
-/***/ },
-/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.3.20 SpeciesConstructor(O, defaultConstructor)
@@ -1569,11 +1574,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 54 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var global    = __webpack_require__(16)
-	  , macrotask = __webpack_require__(55).set
+	  , macrotask = __webpack_require__(54).set
 	  , Observer  = global.MutationObserver || global.WebKitMutationObserver
 	  , process   = global.process
 	  , isNode    = __webpack_require__(37)(process) == 'process'
@@ -1631,14 +1636,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 55 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 	var ctx                = __webpack_require__(39)
-	  , invoke             = __webpack_require__(56)
-	  , html               = __webpack_require__(57)
-	  , cel                = __webpack_require__(58)
+	  , invoke             = __webpack_require__(55)
+	  , html               = __webpack_require__(56)
+	  , cel                = __webpack_require__(57)
 	  , global             = __webpack_require__(16)
 	  , process            = global.process
 	  , setTask            = global.setImmediate
@@ -1712,7 +1717,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 56 */
+/* 55 */
 /***/ function(module, exports) {
 
 	// fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -1733,13 +1738,13 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 57 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__(16).document && document.documentElement;
 
 /***/ },
-/* 58 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var isObject = __webpack_require__(42)
@@ -1751,7 +1756,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 59 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $redef = __webpack_require__(18);
@@ -1761,24 +1766,44 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
+/* 59 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	var core        = __webpack_require__(17)
+	  , $           = __webpack_require__(20)
+	  , DESCRIPTORS = __webpack_require__(22)
+	  , SPECIES     = __webpack_require__(25)('species');
+	
+	module.exports = function(KEY){
+	  var C = core[KEY];
+	  if(DESCRIPTORS && C && !C[SPECIES])$.setDesc(C, SPECIES, {
+	    configurable: true,
+	    get: function(){ return this; }
+	  });
+	};
+
+/***/ },
 /* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var SYMBOL_ITERATOR = __webpack_require__(25)('iterator')
-	  , SAFE_CLOSING    = false;
+	var ITERATOR     = __webpack_require__(25)('iterator')
+	  , SAFE_CLOSING = false;
+	
 	try {
-	  var riter = [7][SYMBOL_ITERATOR]();
+	  var riter = [7][ITERATOR]();
 	  riter['return'] = function(){ SAFE_CLOSING = true; };
 	  Array.from(riter, function(){ throw 2; });
 	} catch(e){ /* empty */ }
+	
 	module.exports = function(exec, skipClosing){
 	  if(!skipClosing && !SAFE_CLOSING)return false;
 	  var safe = false;
 	  try {
 	    var arr  = [7]
-	      , iter = arr[SYMBOL_ITERATOR]();
+	      , iter = arr[ITERATOR]();
 	    iter.next = function(){ safe = true; };
-	    arr[SYMBOL_ITERATOR] = function(){ return iter; };
+	    arr[ITERATOR] = function(){ return iter; };
 	    exec(arr);
 	  } catch(e){ /* empty */ }
 	  return safe;
@@ -4517,8 +4542,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	var iconBasePath = '/assets/design-system/icons/';
 	
 	var icons = {
-		'utility': iconBasePath + 'utility-sprite/svg/symbols.svg',
-		'standard': iconBasePath + 'standard-sprite/svg/symbols.svg'
+		'action': iconBasePath + 'action-sprite/svg/symbols.svg',
+		'custom': iconBasePath + 'custom-sprite/svg/symbols.svg',
+		'doctype': iconBasePath + 'doctype-sprite/svg/symbols.svg',
+		'standard': iconBasePath + 'standard-sprite/svg/symbols.svg',
+		'utility': iconBasePath + 'utility-sprite/svg/symbols.svg'
 	};
 	
 	exports['default'] = icons;
@@ -4719,6 +4747,58 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var baseToString = __webpack_require__(135);
+	
+	/** Used to generate unique IDs. */
+	var idCounter = 0;
+	
+	/**
+	 * Generates a unique ID. If `prefix` is provided the ID is appended to it.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Utility
+	 * @param {string} [prefix] The value to prefix the ID with.
+	 * @returns {string} Returns the unique ID.
+	 * @example
+	 *
+	 * _.uniqueId('contact_');
+	 * // => 'contact_104'
+	 *
+	 * _.uniqueId();
+	 * // => '105'
+	 */
+	function uniqueId(prefix) {
+	  var id = ++idCounter;
+	  return baseToString(prefix) + id;
+	}
+	
+	module.exports = uniqueId;
+
+
+/***/ },
+/* 135 */
+/***/ function(module, exports) {
+
+	/**
+	 * Converts `value` to a string if it's not one. An empty string is returned
+	 * for `null` or `undefined` values.
+	 *
+	 * @private
+	 * @param {*} value The value to process.
+	 * @returns {string} Returns the string.
+	 */
+	function baseToString(value) {
+	  return value == null ? '' : (value + '');
+	}
+	
+	module.exports = baseToString;
+
+
+/***/ },
+/* 136 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// BADGE CONTROL - JQUERY FACADE
 	
 	// Core
@@ -4736,21 +4816,21 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreBadge = __webpack_require__(135);
+	var _coreBadge = __webpack_require__(137);
 	
 	var _coreBadge2 = _interopRequireDefault(_coreBadge);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
@@ -4785,7 +4865,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Badge;
 
 /***/ },
-/* 135 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// BADGE CORE
@@ -4804,13 +4884,13 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
 	// Third party
 	
-	var _classnames = __webpack_require__(144);
+	var _classnames = __webpack_require__(146);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -4844,12 +4924,18 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = BadgeCore;
 
 /***/ },
-/* 136 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// Base Control
+	// ------------
+	
+	// Inherited at the `core` level by all other controls.
+	
+	// Bring in the [shared library functions](../lib/lib).
 	'use strict';
 	
-	var _Object$keys = __webpack_require__(137)['default'];
+	var _Object$keys = __webpack_require__(139)['default'];
 	
 	var _interopRequireWildcard = __webpack_require__(4)['default'];
 	
@@ -4861,10 +4947,13 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	__webpack_require__(142);
+	// Always include the ["vanilla" data adapter](../data/vanilla), which allows controls to work with plain javascript arrays and objects. More about data adapters may be found in the data directory.
 	
+	__webpack_require__(144);
+	
+	// Declare the object which will be exported. This object is what will be mixed in to every other control.
 	var Base = {
-		// CSS classes used across every control
+		// Define shared CSS classes to be used across every control.
 		cssClasses: {
 			NAMESPACE: 'slds-',
 			ASSISTIVE_TEXT: 'slds-assistive-text',
@@ -4872,50 +4961,62 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			CONTROL: 'slds-form-element__control'
 		},
 	
+		// Define a default state with a strings object that is used by internationalization logic. The merge function used to mix `Base` into the other controls will allow this to be extended with additional defaults.
 		_defaultState: {
 			strings: {}
 		},
 	
+		// We can't count on exactly how each facade will handle object construction, so instead we ask that this function be called at an appropriate point by the facade.
 		_initialize: function _initialize(options) {
 			var _this = this;
 	
+			// `_onBeforeInitialize` is an optional lifecycle event that individual controls / facades may choose to implement. During this step the options are still available and still free to be modified.
 			if (Lib.isFunction(this._onBeforeInitialize)) this._onBeforeInitialize(options);
 	
-			// Accessors cannot be updated after initialization
+			// If any accessors were passed in as objects during construction use them to override the defaults for this control. _Important: acessors cannot be updated after initialization._
 			if (options && Lib.isObject(options.accessors)) {
 				this.accessors = Lib.extend({}, this.accessors, options.accessors);
 				delete options.accessors;
 			}
 	
+			// Set the current value of the props based on the options passed in. After this point the options are no longer available and any future code should reference only the props.
 			this.setProperties(options);
 	
+			// Many controls make use of a collection to define their contents (list items, table rows, etc). If one has been provided for this control we want to wrap it in a `dataAdapter` and save result to `this._collection`.
 			var collection = this.getProperty('collection');
 			if (collection) this._collection = this._getDataAdapter(collection);
 	
-			// Run any initializers provided by the control and/or the traits
+			// Run any initializers provided by the control and/or the traits. The special merge function used to mix together controls allows multiple `_onBeforeInitialize`, `_initializer`, and `_onInitialized` hooks to be defined, which will then run in sequence. More information can be found in `Lib.merge`.
 			if (Lib.isFunction(this._initializer)) this._initializer();
 	
+			// Kick off the internationalization logic.
 			this._getStrings(function (strings) {
 				_this.setState({
 					strings: strings
 				});
 	
+				// Any `_onInitialized` functions defined by the controls or traits will be executed asynchronously after internationalization completes.
 				if (Lib.isFunction(_this._onInitialized)) _this._onInitialized();
 			});
 		},
 	
+		// `onInitialized` is part of the public API. If it has been provided, run it after initialization is complete.
+		/* TODO: Determine how to delineate and document API methods and options so that they can be easily collected and displayed together. */
 		_onInitialized: function _onInitialized() {
 			var onInitialized = this.getProperty('onInitialized');
 	
 			if (Lib.isFunction(onInitialized)) onInitialized.call(this, this);
 		},
 	
+		// Item adapters are a key piece of functionality that allow Facades to work seamlessly with many different data sources. For example, an "item" might be a plain javascript object with key/value pairs or it might be a Backbone.js model.
 		_getItemAdapter: function _getItemAdapter(_item, _itemAdapter) {
 			var _this2 = this;
 	
+			// If a specific item adapter was passed in (typically this would be the one used provided by the data adapter we are using) then we want to use that one. Otherwise we'll fall back on a `Lib` function that walks all of the registered item adapters and chooses the first one that matches.
 			var itemAdapter = _itemAdapter || Lib.getItemAdapter;
 			var item = itemAdapter(_item);
 	
+			// When this function is used to wrap an item in an item adapter it has the added benefit of including the accessors for you. Accessors typically provide methods like `getText` or `getChildren` that provide flexibility in the structure of the data provided, while the adapter itself provides flexibility in the type of data.
 			if (this.accessors) {
 				_Object$keys(this.accessors).forEach(function (method) {
 					item[method] = Lib.bind(_this2.accessors[method], _this2, item);
@@ -4925,14 +5026,17 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			return item;
 		},
 	
+		// Like item adapters, data adpaters help Facades work with many different types of data. Data adapters work with the collections of data, like plain javascript arrays of objects or Backbone.js collections of models.
 		_getDataAdapter: function _getDataAdapter(_data) {
 			var data = Lib.getDataAdapter(_data);
 	
+			// This `Base` version of `getDataAdapter` largely delegates to the one in `Lib` with one key difference: this one uses the version of `getItemAdapter` defined above to ensure that the accessors are properly bound to each item.
 			data.getItemAdapter = Lib.partialRight(Lib.bind(this._getItemAdapter, this), data.getItemAdapter);
 	
 			return data;
 		},
 	
+		// Facades comes with support for internationalization of strings out of the box. Strings may be provided globally to `Lib` as either a js object or as a promise which resolves as such (see more details in that file), and overrides for a specific instance of a control may be passed in as properties.
 		_getStrings: function _getStrings(callback) {
 			var _this3 = this;
 	
@@ -4949,6 +5053,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			}).then(callback);
 		},
 	
+		// Every control inherits the current version of the library.
 		version: Lib.version
 	};
 	
@@ -4956,33 +5061,33 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 137 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(138), __esModule: true };
-
-/***/ },
-/* 138 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(139);
-	module.exports = __webpack_require__(17).Object.keys;
-
-/***/ },
 /* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = { "default": __webpack_require__(140), __esModule: true };
+
+/***/ },
+/* 140 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(141);
+	module.exports = __webpack_require__(17).Object.keys;
+
+/***/ },
+/* 141 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// 19.1.2.14 Object.keys(O)
-	var toObject = __webpack_require__(140);
+	var toObject = __webpack_require__(142);
 	
-	__webpack_require__(141)('keys', function($keys){
+	__webpack_require__(143)('keys', function($keys){
 	  return function keys(it){
 	    return $keys(toObject(it));
 	  };
 	});
 
 /***/ },
-/* 140 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// 7.1.13 ToObject(argument)
@@ -4992,27 +5097,30 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 141 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// most Object methods by ES6 should accept primitives
+	var $def  = __webpack_require__(15)
+	  , core  = __webpack_require__(17)
+	  , fails = __webpack_require__(23);
 	module.exports = function(KEY, exec){
 	  var $def = __webpack_require__(15)
-	    , fn   = (__webpack_require__(17).Object || {})[KEY] || Object[KEY]
+	    , fn   = (core.Object || {})[KEY] || Object[KEY]
 	    , exp  = {};
 	  exp[KEY] = exec(fn);
-	  $def($def.S + $def.F * __webpack_require__(23)(function(){ fn(1); }), 'Object', exp);
+	  $def($def.S + $def.F * fails(function(){ fn(1); }), 'Object', exp);
 	};
 
 /***/ },
-/* 142 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// VANILLA JS DATA ADPATER
 	
 	'use strict';
 	
-	var _Object$keys = __webpack_require__(137)['default'];
+	var _Object$keys = __webpack_require__(139)['default'];
 	
 	var _interopRequireWildcard = __webpack_require__(4)['default'];
 	
@@ -5026,7 +5134,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(143);
+	var _base = __webpack_require__(145);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
@@ -5102,8 +5210,8 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			var itemAddition = Lib.isArray(addition) ? addition : [addition];
 	
 			itemAddition.forEach(function (item, itemIndex) {
-				if (options && options.at) {
-					_this._data.splice(options.at + itemIndex, 0, item);
+				if (options && (options.at || options.at === 0)) {
+					_this._data.splice(options.at + itemIndex, 0, item._item);
 				} else {
 					_this._data.push(item._item);
 				}
@@ -5173,9 +5281,13 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 143 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
+	// Base Item & Data Adapter
+	// ------------------------
+	
+	// Bring in the [shared library functions](../lib/lib).
 	'use strict';
 	
 	var _interopRequireWildcard = __webpack_require__(4)['default'];
@@ -5188,36 +5300,49 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	// TODO: this function can probably be cleaned up a little, and maybe inherit some implementation from lodash
+	// "Children" of the base adapter will use this extend method as a form of prototypical inheritance. This differs from the mix in system used by the controls themselves, and is more similar to Backbone's `extend`.
+	/* TODO: this function can probably be cleaned up a little, and maybe inherit some implementation from lodash */
 	function _extend(protoProps) {
 		var parent = this;
+	
+		// Create a new function to apply the props to. This will be the child (or "subclass").
 		var child = function child() {
+			// The constructor of this child should call the constructor of the base control (which is the parent).
 			return parent.apply(this, arguments);
 		};
+	
+		// Pass on static properties of the parent if there are any.
+		Lib.extend(child, parent);
+	
+		// Set the prototype chain to inherit from the parent, without calling the parent's constructor function.
 		var Surrogate = function Surrogate() {
 			this.constructor = child;
 		};
 	
-		Lib.extend(child, parent);
-	
 		Surrogate.prototype = parent.prototype;
 		child.prototype = new Surrogate();
 	
+		// Add in the new instance properties.
 		if (protoProps) {
 			Lib.extend(child.prototype, protoProps);
 		}
 	
+		// Set a convenience property in case the parent’s prototype is needed later.
 		child.__super__ = parent.prototype;
 	
 		return child;
 	}
 	
+	// This method is used internally by `findWhere` to search for matches in the collection.
 	function _findMatch(data, isMatch) {
 		var found = undefined;
 	
+		// `isMatch` should be a function that returns true or false based on whether the item matches the current criteria.
 		if (Lib.isFunction(isMatch)) {
 			data.forEach(function (item) {
+				// Only return the first match.
 				if (!found) {
+					// Note that `item` here will be wrapped in an item adapter.
 					if (isMatch(item)) {
 						found = item;
 					}
@@ -5228,13 +5353,16 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		return found;
 	}
 	
+	// Lots of methods that operate on collections follow the same callback/iterator pattern and we need a way to easily wire up existing ones so that they can make use of item adapters. This is aliased on the base data adapter as `_addDefaultImplementations`.
 	function _addMethods(instance, methods) {
+		// For each method passed in we want to add a method on the instance (that is, the data adapter).
 		methods.forEach(function (method) {
 			instance.prototype[method] = function (callback) {
 				var _data;
 	
 				var self = this;
 	
+				// The first argument to the method will be the callback or iterator, which we'll wrap so that we can call `getItemAdapter` before calling it.
 				var _callback = function _callback(item) {
 					var _item = self.getItemAdapter(item);
 	
@@ -5346,7 +5474,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 144 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -5400,7 +5528,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 145 */
+/* 147 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// DOM - JQUERY FACADE
@@ -5482,7 +5610,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 146 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// EVENTS - JQUERY FACADE
@@ -5524,7 +5652,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 147 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// STATE - JQUERY FACADE
@@ -5589,7 +5717,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 148 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// BUTTON CONTROL - JQUERY FACADE
@@ -5609,27 +5737,27 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreButton = __webpack_require__(149);
+	var _coreButton = __webpack_require__(151);
 	
 	var _coreButton2 = _interopRequireDefault(_coreButton);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Children
 	
-	var _buttonView = __webpack_require__(152);
+	var _buttonView = __webpack_require__(154);
 	
 	var _buttonView2 = _interopRequireDefault(_buttonView);
 	
@@ -5668,8 +5796,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		},
 	
 		_renderViews: function _renderViews() {
+			var _this2 = this;
+	
 			var viewOptions = this.getProperty('views');
-			var views = [];
+			var viewElements = [];
 	
 			var childOptions = Lib.extend({
 				assistiveText: this.getProperty('assistiveText')
@@ -5681,22 +5811,23 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 			var $buttonview = new _buttonView2['default'](childOptions);
 	
-			views.push($buttonview.element);
+			viewElements.push($buttonview.element);
 	
 			// Other views
 			if (viewOptions.length > 0) {
 				viewOptions.forEach(function (options) {
 					$buttonview = new _buttonView2['default'](options);
-					views.push($buttonview.element);
+					_this2.getProperty('children').push($buttonview);
+					viewElements.push($buttonview.element);
 				});
 			}
 	
-			return views;
+			return viewElements;
 		},
 	
 		_render: function _render() {
 			var isStateful = this.getProperty('views').length > 0;
-			var className = this._getClassNames(isStateful);
+			var className = this._getClassNames('', isStateful);
 	
 			this.element.addClass(className).append(this._renderViews()).prop('disabled', this.getProperty('disabled'));
 	
@@ -5713,7 +5844,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 		_onToggled: function _onToggled() {
 			var isStateful = this.getProperty('views').length > 0;
-			this.elements.control[0].className = this._getClassNames(isStateful);
+			this.elements.control[0].className = this._getClassNames('', isStateful || this.getProperty('selectable'));
 		},
 	
 		_onEnabledOrDisabled: function _onEnabledOrDisabled() {
@@ -5732,7 +5863,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Button;
 
 /***/ },
-/* 149 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// BUTTON CORE
@@ -5751,23 +5882,23 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
 	// Traits
 	
-	var _traitsDisableable = __webpack_require__(150);
+	var _traitsDisableable = __webpack_require__(152);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsSelectableBoolean = __webpack_require__(151);
+	var _traitsSelectableBoolean = __webpack_require__(153);
 	
 	var _traitsSelectableBoolean2 = _interopRequireDefault(_traitsSelectableBoolean);
 	
 	// Third party
 	
-	var _classnames = __webpack_require__(144);
+	var _classnames = __webpack_require__(146);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -5811,11 +5942,13 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		// applied to the button, not the icon/SVG
 		iconButtonStyles: {
 			'icon-bare': CONTROL + '--icon-bare',
-			'icon-container': CONTROL + '--icon-container',
 			'icon-border': CONTROL + '--icon-border',
 			'icon-border-filled': CONTROL + '--icon-border-filled',
+			'icon-container': CONTROL + '--icon-container',
+			'icon-inverse': CONTROL + '--icon-inverse',
+			'icon-more': CONTROL + '--icon-more',
 			'icon-small': CONTROL + '--icon-small',
-			'icon-more': CONTROL + '--icon-more'
+			'picklist-label': 'slds-picklist__label'
 		},
 	
 		_defaultProperties: {
@@ -5824,7 +5957,8 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			selected: false,
 			size: null,
 			theme: null,
-			views: []
+			views: [],
+			children: []
 		},
 	
 		_canSelect: function _canSelect() {
@@ -5840,7 +5974,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			this._toggleSelected();
 		},
 	
-		_getClassNames: function _getClassNames(isStateful) {
+		_getClassNames: function _getClassNames(additionalClasses, isStateful) {
 			var selectedClasses = {};
 	
 			if (isStateful) {
@@ -5848,16 +5982,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				selectedClasses[this.cssClasses.SELECTED] = this.getProperty('selected');
 			}
 	
-			return (0, _classnames2['default'])(this.cssClasses.CONTROL, this.sizes[this.getProperty('size')], this.themes[this.getProperty('theme')], this.iconButtonStyles[this.getProperty('iconStyle')], selectedClasses);
+			return (0, _classnames2['default'])(this.cssClasses.CONTROL, this.sizes[this.getProperty('size')], this.themes[this.getProperty('theme')], this.iconButtonStyles[this.getProperty('iconStyle')], selectedClasses, additionalClasses);
 		}
-	
-		// TODO: We usually manage state and throw our own events here, so this will probably need to be expanded for jQuery support
 	});
 	
 	exports['default'] = ButtonCore;
 
 /***/ },
-/* 150 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// DISABLEABLE
@@ -5906,7 +6038,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 151 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// SELECTABLE BOOLEAN
@@ -5927,7 +6059,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreBase = __webpack_require__(136);
+	var _coreBase = __webpack_require__(138);
 	
 	var _coreBase2 = _interopRequireDefault(_coreBase);
 	
@@ -5988,7 +6120,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 152 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// BUTTONVIEW OBJECT - JQUERY FACADE
@@ -6009,17 +6141,17 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreButtonView = __webpack_require__(153);
+	var _coreButtonView = __webpack_require__(155);
 	
 	var _coreButtonView2 = _interopRequireDefault(_coreButtonView);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
@@ -6051,7 +6183,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			}
 	
 			if (position === 'right' && this.getProperty('iconStyle') === 'icon-more') {
-				$icon = $('<svg ' + 'class="' + this._getIconClassNames(this.iconSizes['x-small']) + '"><use xlink:href="' + Lib.getSVGPath(this.moreIcon) + '"></use></svg>').attr('aria-hidden', 'true');
+				$icon = $('<svg ' + 'class="' + this._getIconClassNames(this.buttonIconSizes['x-small']) + '"><use xlink:href="' + Lib.getSVGPath(this.moreIcon) + '"></use></svg>').attr('aria-hidden', 'true');
 			}
 	
 			return $icon;
@@ -6073,7 +6205,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = ButtonView;
 
 /***/ },
-/* 153 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// BUTTON VIEW CORE
@@ -6092,15 +6224,15 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
-	var _button = __webpack_require__(149);
+	var _button = __webpack_require__(151);
 	
 	// Third party
 	
-	var _classnames = __webpack_require__(144);
+	var _classnames = __webpack_require__(146);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -6127,14 +6259,17 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 		moreIcon: 'utility.down',
 	
-		iconSizes: {
-			'x-small': 'slds-button__icon--x-small'
+		buttonIconSizes: {
+			'x-small': _button.CONTROL + '__icon--x-small',
+			'small': _button.CONTROL + '__icon--small',
+			'large': _button.CONTROL + '__icon--large'
 		},
 	
 		_getIconClassNames: function _getIconClassNames(additionalClasses) {
 			// getIconClassNames is a part of button/button-view because icons within buttons
 			// have a completely different set of class than icons on their own
 			var iconBaseClass = undefined;
+			var buttonIconSizeClass = undefined;
 	
 			if (this.getProperty('view')) {
 				iconBaseClass = this.cssClasses.STATEFUL_ICON;
@@ -6142,14 +6277,18 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				iconBaseClass = this.cssClasses.ICON;
 			}
 	
-			return (0, _classnames2['default'])(iconBaseClass, !!this.getProperty('text') && this.iconPositions[this.getProperty('iconPosition')], additionalClasses);
+			if (this.getProperty('iconSize')) {
+				buttonIconSizeClass = this.buttonIconSizes[this.getProperty('iconSize')];
+			}
+	
+			return (0, _classnames2['default'])(iconBaseClass, !!this.getProperty('text') && this.iconPositions[this.getProperty('iconPosition')], buttonIconSizeClass, additionalClasses);
 		}
 	});
 	
 	exports['default'] = ButtonViewCore;
 
 /***/ },
-/* 154 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CHECKBOX CONTROL - JQUERY FACADE
@@ -6169,27 +6308,27 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreCheckbox = __webpack_require__(155);
+	var _coreCheckbox = __webpack_require__(157);
 	
 	var _coreCheckbox2 = _interopRequireDefault(_coreCheckbox);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _checkboxTemplate = __webpack_require__(157);
+	var _checkboxTemplate = __webpack_require__(159);
 	
 	var _checkboxTemplate2 = _interopRequireDefault(_checkboxTemplate);
 	
@@ -6257,7 +6396,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Checkbox;
 
 /***/ },
-/* 155 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CHECKBOX CORE
@@ -6276,17 +6415,17 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
 	// Traits
 	
-	var _traitsDisableable = __webpack_require__(150);
+	var _traitsDisableable = __webpack_require__(152);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsCheckable = __webpack_require__(156);
+	var _traitsCheckable = __webpack_require__(158);
 	
 	var _traitsCheckable2 = _interopRequireDefault(_traitsCheckable);
 	
@@ -6326,7 +6465,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = CheckboxCore;
 
 /***/ },
-/* 156 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CHECKABLE
@@ -6396,15 +6535,15 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 157 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TODO: figure out how to use base.LABEL and base.NAMESPACE throughout template
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -6416,14 +6555,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 158 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 	
-	var _Object$freeze = __webpack_require__(159)["default"];
+	var _Object$freeze = __webpack_require__(161)["default"];
 	
-	var _Object$defineProperties = __webpack_require__(162)["default"];
+	var _Object$defineProperties = __webpack_require__(164)["default"];
 	
 	exports["default"] = function (strings, raw) {
 	  return _Object$freeze(_Object$defineProperties(strings, {
@@ -6436,45 +6575,30 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports.__esModule = true;
 
 /***/ },
-/* 159 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = { "default": __webpack_require__(160), __esModule: true };
-
-/***/ },
-/* 160 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(161);
-	module.exports = __webpack_require__(17).Object.freeze;
-
-/***/ },
 /* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
-	// 19.1.2.5 Object.freeze(O)
-	var isObject = __webpack_require__(42);
-	
-	__webpack_require__(141)('freeze', function($freeze){
-	  return function freeze(it){
-	    return $freeze && isObject(it) ? $freeze(it) : it;
-	  };
-	});
+	module.exports = { "default": __webpack_require__(162), __esModule: true };
 
 /***/ },
 /* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = { "default": __webpack_require__(163), __esModule: true };
+	__webpack_require__(163);
+	module.exports = __webpack_require__(17).Object.freeze;
 
 /***/ },
 /* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var $ = __webpack_require__(20);
-	module.exports = function defineProperties(T, D){
-	  return $.setDescs(T, D);
-	};
+	// 19.1.2.5 Object.freeze(O)
+	var isObject = __webpack_require__(42);
+	
+	__webpack_require__(143)('freeze', function($freeze){
+	  return function freeze(it){
+	    return $freeze && isObject(it) ? $freeze(it) : it;
+	  };
+	});
 
 /***/ },
 /* 164 */
@@ -6486,11 +6610,26 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 /* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(166);
-	module.exports = __webpack_require__(17).String.raw;
+	var $ = __webpack_require__(20);
+	module.exports = function defineProperties(T, D){
+	  return $.setDescs(T, D);
+	};
 
 /***/ },
 /* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = { "default": __webpack_require__(167), __esModule: true };
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(168);
+	module.exports = __webpack_require__(17).String.raw;
+
+/***/ },
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var $def      = __webpack_require__(15)
@@ -6514,7 +6653,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 167 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// COMBOBOX CONTROL - JQUERY FACADE
@@ -6534,33 +6673,33 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreCombobox = __webpack_require__(168);
+	var _coreCombobox = __webpack_require__(170);
 	
 	var _coreCombobox2 = _interopRequireDefault(_coreCombobox);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
-	var _svg = __webpack_require__(173);
+	var _svg = __webpack_require__(175);
 	
 	var _svg2 = _interopRequireDefault(_svg);
 	
-	var _picklistPicklist = __webpack_require__(174);
+	var _picklistPicklist = __webpack_require__(176);
 	
 	// Template imports
 	
-	var _comboboxTemplate = __webpack_require__(176);
+	var _comboboxTemplate = __webpack_require__(178);
 	
 	var _comboboxTemplate2 = _interopRequireDefault(_comboboxTemplate);
 	
@@ -6584,8 +6723,8 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		_initElements: function _initElements() {
 			this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
 			this.elements.input = this.element.find('.' + this.cssClasses.INPUT);
-			this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
-			this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
+			this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
+			this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
 		},
 	
 		_bindUIEvents: function _bindUIEvents() {
@@ -6657,7 +6796,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Combobox;
 
 /***/ },
-/* 168 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// COMBOBOX CORE
@@ -6676,7 +6815,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _picklist = __webpack_require__(169);
+	var _picklist = __webpack_require__(171);
 	
 	var _picklist2 = _interopRequireDefault(_picklist);
 	
@@ -6691,12 +6830,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		cssClasses: {
 			CONTROL: CONTROL,
 			INPUT: 'slds-input',
-			DROPDOWN: 'slds-dropdown',
-			MENU: 'slds-dropdown__list',
-			TOGGLE: 'slds-button',
-			HEADER: 'slds-dropdown__header',
-			HEADERTEXT: 'slds-text-heading--label',
-			DIVIDER: 'slds-has-divider'
+			TOGGLE: 'slds-button'
 		},
 	
 		resize: function resize() {
@@ -6712,7 +6846,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = ComboboxCore;
 
 /***/ },
-/* 169 */
+/* 171 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// PICKLIST CORE
@@ -6731,44 +6865,27 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
 	// Traits
 	
-	var _traitsDisableable = __webpack_require__(150);
+	var _traitsDisableable = __webpack_require__(152);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsOpenable = __webpack_require__(170);
+	var _traitsOpenable = __webpack_require__(172);
 	
 	var _traitsOpenable2 = _interopRequireDefault(_traitsOpenable);
 	
-	var _traitsSelectable = __webpack_require__(171);
+	var _traitsSelectable = __webpack_require__(173);
 	
 	var _traitsSelectable2 = _interopRequireDefault(_traitsSelectable);
 	
-	var _traitsKeyboardNavigable = __webpack_require__(172);
+	var _traitsKeyboardNavigable = __webpack_require__(174);
 	
 	var _traitsKeyboardNavigable2 = _interopRequireDefault(_traitsKeyboardNavigable);
-	
-	// Styles
-	// require('../../scss/components/button-groups/flavors/base/index.scss');
-	// require('../../scss/components/buttons/flavors/base/index.scss');
-	// require('../../scss/components/buttons/flavors/neutral/index.scss');
-	// require('../../scss/components/buttons/flavors/brand/index.scss');
-	// require('../../scss/components/picklists/flavors/base/index.scss');
-	// require('../../scss/components/picklists/flavors/multi-select/index.scss');
-	// require('../../scss/components/picklists/flavors/quickfind/index.scss');
-	// require('../../scss/components/dropdowns/flavors/base/index.scss');
-	// require('../../scss/components/dropdowns/flavors/action-overflow/index.scss');
-	// require('../../scss/components/dropdowns/flavors/base/index.scss');
-	// require('../../scss/components/dropdowns/flavors/menu/index.scss');
-	// require('../../scss/components/dropdowns/flavors/menu-with-icons/index.scss');
-	// require('../../scss/components/dropdowns/flavors/menu-with-search/index.scss');
-	// require('../../scss/components/dropdowns/flavors/positioning/index.scss');
-	// require('../../scss/components/dropdowns/flavors/search-overflow/index.scss');
 	
 	var CONTROL = 'picklist';
 	
@@ -6778,8 +6895,8 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		cssClasses: {
 			CONTROL: CONTROL,
 			LABEL: 'slds-truncate',
-			DROPDOWN: 'slds-dropdown',
-			MENU: 'slds-dropdown__list',
+			MENU: 'slds-dropdown',
+			LIST: 'slds-dropdown__list',
 			TOGGLE: 'slds-button',
 			HEADER: 'slds-dropdown__header',
 			HEADERTEXT: 'slds-text-heading--label',
@@ -6835,6 +6952,12 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			}
 		},
 	
+		_onExpandOrCollapse: function _onExpandOrCollapse() {
+			this.setState({
+				focusedIndex: this._defaultState.focusedIndex
+			});
+		},
+	
 		_canSelect: function _canSelect(newSelection, select) {
 			var item = this._getItemAdapter(newSelection);
 	
@@ -6847,7 +6970,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = PicklistCore;
 
 /***/ },
-/* 170 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// OPENABLE
@@ -6924,14 +7047,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 171 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// SELECTABLE
 	
 	'use strict';
 	
-	var _Object$keys = __webpack_require__(137)['default'];
+	var _Object$keys = __webpack_require__(139)['default'];
 	
 	var _interopRequireWildcard = __webpack_require__(4)['default'];
 	
@@ -7044,7 +7167,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Selectable;
 
 /***/ },
-/* 172 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// KEYBOARD NAVIGABLE
@@ -7093,56 +7216,59 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			var _this = this;
 	
 			var isOpen = this.getState('isOpen');
+			var index = undefined;
+			var selection = undefined;
 	
-			if (!isOpen && Lib.isFunction(this.open)) {
+			if (/(Escape)/.test(input)) {
+				if (isOpen && Lib.isFunction(this.close)) this.close();
+			} else if (!isOpen && Lib.isFunction(this.open)) {
 				this.open();
-	
-				this.setState({
-					focusedIndex: this._defaultState.focusedIndex
-				});
 			} else {
-				(function () {
-					var index = _this.getState('focusedIndex');
-					var selection = undefined;
+				index = this.getState('focusedIndex');
 	
-					if (input.length === 1) {
-						(function () {
-							// Combine subsequent keypresses
-							var pattern = _this._keyBuffer(input).toLowerCase();
-							var consecutive = 0;
+				if (input.length === 1) {
+					(function () {
+						// Combine subsequent keypresses
+						var pattern = _this._keyBuffer(input).toLowerCase();
+						var consecutive = 0;
 	
-							// Support for navigating to the next option of the same letter with repeated presses of the same key
-							if (pattern.length > 1 && new RegExp('^[' + input.replace('\\', '\\\\') + ']+$').test(pattern)) {
-								consecutive = pattern.length;
+						// Support for navigating to the next option of the same letter with repeated presses of the same key
+						if (pattern.length > 1 && new RegExp('^[' + input.replace('\\', '\\\\') + ']+$').test(pattern)) {
+							consecutive = pattern.length;
+						}
+	
+						menuItems.forEach(function compareMenuItem(menuItem, i) {
+							if (!selection && menuItem.textContent.substr(0, pattern.length).toLowerCase() === pattern || consecutive > 0 && menuItem.textContent.substr(0, 1).toLowerCase() === input) {
+								consecutive--;
+								index = i;
+								selection = menuItem;
 							}
-	
-							menuItems.forEach(function compareMenuItem(menuItem, i) {
-								if (!selection && menuItem.textContent.substr(0, pattern.length).toLowerCase() === pattern || consecutive > 0 && menuItem.textContent.substr(0, 1).toLowerCase() === input) {
-									consecutive--;
-									index = i;
-									selection = menuItem;
-								}
-							});
-						})();
-					} else if (/(ArrowDown)/.test(input)) {
-						if (index < menuItems.length - 1) {
-							index++;
-							selection = menuItems[index];
-						}
-					} else if (/(ArrowUp)/.test(input)) {
-						if (index > _this._defaultState.focusedIndex) {
-							index--;
-							selection = menuItems[index];
-						}
+						});
+					})();
+				} else if (/(ArrowDown)/.test(input)) {
+					if (index < menuItems.length - 1) {
+						index++;
+						selection = menuItems[index];
 					}
-	
-					_this.setState({
-						focusedIndex: index
-					});
-	
-					if (selection) selection.focus();
-				})();
+				} else if (/(ArrowUp)/.test(input)) {
+					if (index > this._defaultState.focusedIndex) {
+						index--;
+						selection = menuItems[index];
+					}
+				}
 			}
+	
+			if (selection) {
+				selection.focus();
+			} else {
+				index = this._defaultState.focusedIndex;
+			}
+	
+			this.setState({
+				focusedIndex: index
+			});
+	
+			return !!selection;
 		}
 	};
 	
@@ -7150,7 +7276,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 173 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// SVG HELPER METHODS - JQUERY FACADE
@@ -7174,7 +7300,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	// Third party
 	
-	var _classnames = __webpack_require__(144);
+	var _classnames = __webpack_require__(146);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -7222,7 +7348,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = SvgObject;
 
 /***/ },
-/* 174 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// PICKLIST CONTROL - JQUERY FACADE
@@ -7242,31 +7368,31 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _corePicklist = __webpack_require__(169);
+	var _corePicklist = __webpack_require__(171);
 	
 	var _corePicklist2 = _interopRequireDefault(_corePicklist);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
-	var _svg = __webpack_require__(173);
+	var _svg = __webpack_require__(175);
 	
 	var _svg2 = _interopRequireDefault(_svg);
 	
 	// Template imports
 	
-	var _picklistTemplate = __webpack_require__(175);
+	var _picklistTemplate = __webpack_require__(177);
 	
 	var _picklistTemplate2 = _interopRequireDefault(_picklistTemplate);
 	
@@ -7291,8 +7417,8 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
 			this.elements.hiddenField = this.element.find('input.slds-hide');
 			this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
-			this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
-			this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
+			this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
+			this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
 		},
 	
 		_bindUIEvents: function _bindUIEvents() {
@@ -7560,14 +7686,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Picklist;
 
 /***/ },
-/* 175 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -7579,14 +7705,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 176 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -7598,7 +7724,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 177 */
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// PICKLIST CONTROL - JQUERY FACADE
@@ -7618,27 +7744,27 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreDataTable = __webpack_require__(178);
+	var _coreDataTable = __webpack_require__(180);
 	
 	var _coreDataTable2 = _interopRequireDefault(_coreDataTable);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _dataTableTemplate = __webpack_require__(180);
+	var _dataTableTemplate = __webpack_require__(182);
 	
 	var _dataTableTemplate2 = _interopRequireDefault(_dataTableTemplate);
 	
@@ -7731,7 +7857,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = DataTable;
 
 /***/ },
-/* 178 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// DATA-TABLE CORE
@@ -7750,17 +7876,17 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
-	var _classnames = __webpack_require__(144);
+	var _classnames = __webpack_require__(146);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
 	// Traits
 	
-	var _traitsMultiselectable = __webpack_require__(179);
+	var _traitsMultiselectable = __webpack_require__(181);
 	
 	var _traitsMultiselectable2 = _interopRequireDefault(_traitsMultiselectable);
 	
@@ -7857,7 +7983,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = DataTableCore;
 
 /***/ },
-/* 179 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// MULTISELECTABLE
@@ -7918,7 +8044,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 			var _select = Lib.bind(function _select() {
 				if (this.getProperty('multiSelect')) {
-					if (selectIndex) {
+					if (selectIndex || selectIndex === 0) {
 						selection.add(item, { at: selectIndex });
 					} else {
 						selection.add(item);
@@ -8012,14 +8138,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 180 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -8063,7 +8189,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 181 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// DROPDOWN CONTROL - JQUERY FACADE
@@ -8083,39 +8209,39 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreDropdown = __webpack_require__(182);
+	var _coreDropdown = __webpack_require__(184);
 	
 	var _coreDropdown2 = _interopRequireDefault(_coreDropdown);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
-	var _svg = __webpack_require__(173);
+	var _svg = __webpack_require__(175);
 	
 	var _svg2 = _interopRequireDefault(_svg);
 	
-	var _picklistPicklist = __webpack_require__(174);
+	var _picklistPicklist = __webpack_require__(176);
 	
 	// Children
 	
-	var _buttonButton = __webpack_require__(148);
+	var _buttonButton = __webpack_require__(150);
 	
 	var _buttonButton2 = _interopRequireDefault(_buttonButton);
 	
 	// Template imports
 	
-	var _dropdownTemplate = __webpack_require__(183);
+	var _dropdownTemplate = __webpack_require__(185);
 	
 	var _dropdownTemplate2 = _interopRequireDefault(_dropdownTemplate);
 	
@@ -8137,8 +8263,8 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		},
 	
 		_initElements: function _initElements() {
-			this.elements.dropdown = this.element.find('.' + this.cssClasses.DROPDOWN);
-			this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.MENU);
+			this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
+			this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
 		},
 	
 		_bindUIEvents: function _bindUIEvents() {
@@ -8207,7 +8333,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Dropdown;
 
 /***/ },
-/* 182 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// DROPDOWN CORE
@@ -8226,7 +8352,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _picklist = __webpack_require__(169);
+	var _picklist = __webpack_require__(171);
 	
 	var _picklist2 = _interopRequireDefault(_picklist);
 	
@@ -8241,12 +8367,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		cssClasses: {
 			CONTROL: CONTROL,
 			ICON_DOWN_SIZE: 'slds-button__icon--x-small',
-			TRIGGER: 'slds-dropdown-trigger',
-			DROPDOWN: 'slds-dropdown',
-			MENU: 'slds-dropdown__list',
-			HEADER: 'slds-dropdown__header',
-			HEADERTEXT: 'slds-text-heading--label',
-			DIVIDER: 'slds-has-divider'
+			TRIGGER: 'slds-dropdown-trigger'
 		},
 	
 		_defaultProperties: {
@@ -8268,14 +8389,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = DropdownCore;
 
 /***/ },
-/* 183 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -8287,7 +8408,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 184 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// NOTIFICATION CONTROL - JQUERY FACADE
@@ -8307,27 +8428,27 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreNotification = __webpack_require__(185);
+	var _coreNotification = __webpack_require__(187);
 	
 	var _coreNotification2 = _interopRequireDefault(_coreNotification);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _template = __webpack_require__(187);
+	var _template = __webpack_require__(189);
 	
 	var _template2 = _interopRequireDefault(_template);
 	
@@ -8381,7 +8502,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Notification;
 
 /***/ },
-/* 185 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// NOTIFICATION CORE
@@ -8400,19 +8521,19 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
 	// Third party
 	
-	var _classnames = __webpack_require__(144);
+	var _classnames = __webpack_require__(146);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
 	// Traits
 	
-	var _traitsHideable = __webpack_require__(186);
+	var _traitsHideable = __webpack_require__(188);
 	
 	var _traitsHideable2 = _interopRequireDefault(_traitsHideable);
 	
@@ -8444,14 +8565,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 		_getClassNames: function _getClassNames() {
 			var hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
 	
-			return (0, _classnames2['default'])(this.cssClasses.CONTROL, this.cssClasses.ALERT, this.themes[this.getProperty('theme')], hiddenClass);
+			return (0, _classnames2['default'])(this.cssClasses.CONTROL, this.cssClasses.ALERT, 'slds-theme--inverse-text', this.themes[this.getProperty('theme')], hiddenClass);
 		}
 	});
 	
 	exports['default'] = NotificationCore;
 
 /***/ },
-/* 186 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// HIDEABLE
@@ -8497,26 +8618,26 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 187 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
-	var _templateObject = _taggedTemplateLiteral(["\n<div class=\"slds-notify\" role=\"alert\">\n  <span class=\"slds-assistive-text\">Info</span>\n  <button class=\"slds-button slds-notify__close\">\n    <svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--inverse\">\n      <use xlink:href=\"/assets/design-system/icons/action-sprite/svg/symbols.svg#close\"></use>\n    </svg>\n    <span class=\"slds-assistive-text\">Close</span>\n  </button>\n  <h2 class=\"notify-text\">Base System Alert</h2>\n</div>\n"], ["\n<div class=\"slds-notify\" role=\"alert\">\n  <span class=\"slds-assistive-text\">Info</span>\n  <button class=\"slds-button slds-notify__close\">\n    <svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--inverse\">\n      <use xlink:href=\"/assets/design-system/icons/action-sprite/svg/symbols.svg#close\"></use>\n    </svg>\n    <span class=\"slds-assistive-text\">Close</span>\n  </button>\n  <h2 class=\"notify-text\">Base System Alert</h2>\n</div>\n"]);
+	var _templateObject = _taggedTemplateLiteral(["\n<div class=\"slds-notify\" role=\"alert\">\n  <span class=\"slds-assistive-text\">Info</span>\n  <button class=\"slds-button slds-button--icon-inverse slds-notify__close\">\n    <svg aria-hidden=\"true\" class=\"slds-button__icon\">\n      <use xlink:href=\"/assets/design-system/icons/action-sprite/svg/symbols.svg#close\"></use>\n    </svg>\n    <span class=\"slds-assistive-text\">Close</span>\n  </button>\n  <h2 class=\"notify-text\">Base System Alert</h2>\n</div>\n"], ["\n<div class=\"slds-notify\" role=\"alert\">\n  <span class=\"slds-assistive-text\">Info</span>\n  <button class=\"slds-button slds-button--icon-inverse slds-notify__close\">\n    <svg aria-hidden=\"true\" class=\"slds-button__icon\">\n      <use xlink:href=\"/assets/design-system/icons/action-sprite/svg/symbols.svg#close\"></use>\n    </svg>\n    <span class=\"slds-assistive-text\">Close</span>\n  </button>\n  <h2 class=\"notify-text\">Base System Alert</h2>\n</div>\n"]);
 
 	exports["default"] = _String$raw(_templateObject);
 	module.exports = exports["default"];
 
 /***/ },
-/* 188 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// PILLBOX CONTROL - JQUERY FACADE
@@ -8538,27 +8659,27 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _corePillbox = __webpack_require__(189);
+	var _corePillbox = __webpack_require__(191);
 	
 	var _corePillbox2 = _interopRequireDefault(_corePillbox);
 	
 	// Framework Specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _pillboxTemplate = __webpack_require__(190);
+	var _pillboxTemplate = __webpack_require__(192);
 	
 	var _pillboxTemplate2 = _interopRequireDefault(_pillboxTemplate);
 	
@@ -8706,7 +8827,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 			this.selectItems(items, baseZeroIndex);
 	
-			return this.elements.wrapper;
+			return this.elements.control;
 		},
 	
 		removeItems: function removeItems(index, count) {
@@ -8715,7 +8836,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 			this.deselectItems(selection.slice(baseZeroIndex, baseZeroIndex + count));
 	
-			return this.elements.wrapper;
+			return this.elements.control;
 		},
 	
 		items: function items() {
@@ -8739,7 +8860,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 			this.deselectItem(item);
 	
-			return this.elements.wrapper;
+			return this.elements.control;
 		},
 	
 		removeByText: function removeByText(text) {
@@ -8753,7 +8874,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				}
 			});
 	
-			return this.elements.wrapper;
+			return this.elements.control;
 		},
 	
 		removeByValue: function removeByValue(value) {
@@ -8767,7 +8888,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				}
 			});
 	
-			return this.elements.wrapper;
+			return this.elements.control;
 		}
 	};
 	
@@ -8779,7 +8900,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 189 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// PILLBOX CORE
@@ -8800,17 +8921,17 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
 	// Traits
 	
-	var _traitsDisableable = __webpack_require__(150);
+	var _traitsDisableable = __webpack_require__(152);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsMultiselectable = __webpack_require__(179);
+	var _traitsMultiselectable = __webpack_require__(181);
 	
 	var _traitsMultiselectable2 = _interopRequireDefault(_traitsMultiselectable);
 	
@@ -8891,14 +9012,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = PillboxCore;
 
 /***/ },
-/* 190 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -8910,7 +9031,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 191 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// POPOVER CONTROL - JQUERY FACADE
@@ -8930,27 +9051,27 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _corePopover = __webpack_require__(192);
+	var _corePopover = __webpack_require__(194);
 	
 	var _corePopover2 = _interopRequireDefault(_corePopover);
 	
 	// Framework Specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _popoverTemplate = __webpack_require__(194);
+	var _popoverTemplate = __webpack_require__(196);
 	
 	var _popoverTemplate2 = _interopRequireDefault(_popoverTemplate);
 	
@@ -9036,7 +9157,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = Popover;
 
 /***/ },
-/* 192 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// POPOVER CONTROL
@@ -9054,27 +9175,27 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
 	// Traits
 	
-	var _traitsPositionable = __webpack_require__(193);
+	var _traitsPositionable = __webpack_require__(195);
 	
 	var _traitsPositionable2 = _interopRequireDefault(_traitsPositionable);
 	
-	var _traitsDisableable = __webpack_require__(150);
+	var _traitsDisableable = __webpack_require__(152);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsHideable = __webpack_require__(186);
+	var _traitsHideable = __webpack_require__(188);
 	
 	var _traitsHideable2 = _interopRequireDefault(_traitsHideable);
 	
 	// Third party
 	
-	var _classnames = __webpack_require__(144);
+	var _classnames = __webpack_require__(146);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -9127,7 +9248,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = PopoverCore;
 
 /***/ },
-/* 193 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// POSITIONABLE
@@ -9147,7 +9268,9 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	var Positionable = {
 		_defaultProperties: {
 			position: 'right',
-			autoFlip: true
+			autoFlip: true,
+			targetDistance: 15,
+			targetLateralAlign: 'center' // center, left
 		},
 	
 		positions: {
@@ -9159,7 +9282,10 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 		_getElementAlignment: function _getElementAlignment(el, container, align, newPosition) {
 			var offset = Lib.offsetFromParent(align[0], container[0]);
+			var targetDistance = this.getProperty('targetDistance');
+			var targetLateralAlign = this.getProperty('targetLateralAlign');
 			var position = {};
+			var alignLatPos = 0;
 	
 			var popSize = {
 				width: el.outerWidth(),
@@ -9173,23 +9299,28 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 			var currentPosition = newPosition || this.getProperty('position');
 	
-			// TODO: Get ride of the hardcoded 15
+			if (targetLateralAlign === 'center') {
+				alignLatPos = popSize.width / 2 - alignSize.width / 2;
+			} else if (targetLateralAlign === 'left') {
+				alignLatPos = 0;
+			}
+	
 			switch (currentPosition) {
 				case 'left':
-					position.left = offset.left - (popSize.width + 15);
+					position.left = offset.left - (popSize.width + targetDistance);
 					position.top = offset.top - (popSize.height / 2 - alignSize.height / 2);
 					break;
 				case 'top':
-					position.left = offset.left - (popSize.width / 2 - alignSize.width / 2);
-					position.top = offset.top - (popSize.height + 15);
+					position.left = offset.left - alignLatPos;
+					position.top = offset.top - (popSize.height + targetDistance);
 					break;
 				case 'bottom':
-					position.left = offset.left - (popSize.width / 2 - alignSize.width / 2);
-					position.top = offset.top + alignSize.height + 15;
+					position.left = offset.left - alignLatPos;
+					position.top = offset.top + alignSize.height + targetDistance;
 					break;
 				case 'right':
 				default:
-					position.left = offset.left + alignSize.width + 15;
+					position.left = offset.left + alignSize.width + targetDistance;
 					position.top = offset.top - (popSize.height / 2 - alignSize.height / 2);
 					break;
 			}
@@ -9206,7 +9337,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 				popover.style.top = style.top + 'px';
 				popover.style.left = style.left + 'px';
 				// TODO: If we're going to call this here we need to check if it exists first. But maybe we shouldn't?
-				popover.className = this._getClassNames();
+				if (this._getClassNames) popover.className = this._getClassNames();
 			}
 		},
 	
@@ -9226,14 +9357,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 194 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -9245,7 +9376,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 195 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// RADIO CONTROL - JQUERY FACADE
@@ -9265,29 +9396,29 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreRadio = __webpack_require__(196);
+	var _coreRadio = __webpack_require__(198);
 	
 	var _coreRadio2 = _interopRequireDefault(_coreRadio);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
-	var _checkboxCheckbox = __webpack_require__(154);
+	var _checkboxCheckbox = __webpack_require__(156);
 	
 	// Template imports
 	
-	var _radioTemplate = __webpack_require__(197);
+	var _radioTemplate = __webpack_require__(199);
 	
 	var _radioTemplate2 = _interopRequireDefault(_radioTemplate);
 	
@@ -9339,7 +9470,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 196 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// RADIO CORE
@@ -9358,7 +9489,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _checkbox = __webpack_require__(155);
+	var _checkbox = __webpack_require__(157);
 	
 	var _checkbox2 = _interopRequireDefault(_checkbox);
 	
@@ -9379,14 +9510,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = RadioCore;
 
 /***/ },
-/* 197 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -9398,7 +9529,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 198 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// LOADER CONTROL - JQUERY FACADE
@@ -9418,17 +9549,17 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreSpinner = __webpack_require__(199);
+	var _coreSpinner = __webpack_require__(201);
 	
 	var _coreSpinner2 = _interopRequireDefault(_coreSpinner);
 	
 	// Framework specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
@@ -9471,7 +9602,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 199 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// SPINNER CORE
@@ -9490,7 +9621,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
@@ -9529,7 +9660,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = SpinnerCore;
 
 /***/ },
-/* 200 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TOOLTIP CONTROL - JQUERY FACADE
@@ -9549,31 +9680,31 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreTooltip = __webpack_require__(201);
+	var _coreTooltip = __webpack_require__(203);
 	
 	var _coreTooltip2 = _interopRequireDefault(_coreTooltip);
 	
 	// Inherited functionality from popover
 	
-	var _popoverPopover = __webpack_require__(191);
+	var _popoverPopover = __webpack_require__(193);
 	
 	// Framework Specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _tooltipTemplate = __webpack_require__(202);
+	var _tooltipTemplate = __webpack_require__(204);
 	
 	var _tooltipTemplate2 = _interopRequireDefault(_tooltipTemplate);
 	
@@ -9605,7 +9736,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 201 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TOOLTIP CONTROL
@@ -9623,7 +9754,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _popover = __webpack_require__(192);
+	var _popover = __webpack_require__(194);
 	
 	var _popover2 = _interopRequireDefault(_popover);
 	
@@ -9642,14 +9773,14 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = TooltipCore;
 
 /***/ },
-/* 202 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -9661,7 +9792,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports["default"];
 
 /***/ },
-/* 203 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TREE CONTROL - JQUERY FACADE
@@ -9683,27 +9814,27 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _coreTree = __webpack_require__(204);
+	var _coreTree = __webpack_require__(206);
 	
 	var _coreTree2 = _interopRequireDefault(_coreTree);
 	
 	// Framework Specific
 	
-	var _dom = __webpack_require__(145);
+	var _dom = __webpack_require__(147);
 	
 	var _dom2 = _interopRequireDefault(_dom);
 	
-	var _events = __webpack_require__(146);
+	var _events = __webpack_require__(148);
 	
 	var _events2 = _interopRequireDefault(_events);
 	
-	var _state = __webpack_require__(147);
+	var _state = __webpack_require__(149);
 	
 	var _state2 = _interopRequireDefault(_state);
 	
 	// Template imports
 	
-	var _treeTemplate = __webpack_require__(205);
+	var _treeTemplate = __webpack_require__(207);
 	
 	var _treeTemplate2 = _interopRequireDefault(_treeTemplate);
 	
@@ -9768,6 +9899,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	Lib.merge(Tree.prototype, _coreTree2['default'], _events2['default'], _dom2['default'], _state2['default'], {
 		_initializer: function _initializer() {
 			this.element = this.$el = this.elements.control = this.template.clone();
+			this.elements.list = this.element.find('.' + this.cssClasses.CONTROL);
 		},
 	
 		_onInitialized: function _onInitialized() {
@@ -9869,11 +10001,11 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 			var dataSource = this.getProperty('dataSource');
 	
 			if (this._collection.length()) {
-				this._loopChildren(this._collection, this.element, 1);
+				this._loopChildren(this._collection, this.elements.list, 1);
 			} else if (dataSource) {
 				dataSource({}, function (response) {
 					_this3._collection = _this3._getDataAdapter(response.data);
-					_this3._loopChildren(_this3._collection, _this3.element, 1);
+					_this3._loopChildren(_this3._collection, _this3.elements.list, 1);
 				});
 			}
 	
@@ -10039,7 +10171,7 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 204 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// TREE CORE
@@ -10060,30 +10192,31 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	
 	var Lib = _interopRequireWildcard(_libLib);
 	
-	var _base = __webpack_require__(136);
+	var _base = __webpack_require__(138);
 	
 	var _base2 = _interopRequireDefault(_base);
 	
 	// Traits
 	
-	var _traitsDisableable = __webpack_require__(150);
+	var _traitsDisableable = __webpack_require__(152);
 	
 	var _traitsDisableable2 = _interopRequireDefault(_traitsDisableable);
 	
-	var _traitsMultiselectable = __webpack_require__(179);
+	var _traitsMultiselectable = __webpack_require__(181);
 	
 	var _traitsMultiselectable2 = _interopRequireDefault(_traitsMultiselectable);
 	
 	// Styles
 	// require('../../scss/components/trees/flavors/base/index.scss');
 	
-	var CONTROL = 'tree';
+	var CONTROL = 'slds-tree';
 	
 	exports.CONTROL = CONTROL;
 	var TreeCore = Lib.merge({}, _base2['default'], _traitsDisableable2['default'], _traitsMultiselectable2['default'], {
 		// CSS classes used within this control
 		cssClasses: {
-			CONTROL: CONTROL
+			CONTROL: CONTROL,
+			CONTAINER: 'slds-tree-container'
 		},
 	
 		// Set the defaults
@@ -10238,20 +10371,20 @@ define(function() { return /******/ (function(modules) { // webpackBootstrap
 	exports['default'] = TreeCore;
 
 /***/ },
-/* 205 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	var _taggedTemplateLiteral = __webpack_require__(158)["default"];
+	var _taggedTemplateLiteral = __webpack_require__(160)["default"];
 
-	var _String$raw = __webpack_require__(164)["default"];
+	var _String$raw = __webpack_require__(166)["default"];
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 
-	var _templateObject = _taggedTemplateLiteral(["\n<div class=\"slds-tree-container\" role=\"application\">\n\t<ul class=\"tree slds-tree\" role=\"tree\" aria-labelledby=\"treeheading\">\n\t\t<li class=\"slds-tree__branch\" role=\"treeitem\" aria-expanded=\"true\">\n\t\t\t<div class=\"slds-tree__branch--header slds-tree__item\">\n\t\t\t\t<button class=\"slds-button slds-button--icon-bare slds-m-right--x-small\">\n\t\t\t\t\t<svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--small\">\n\t\t\t\t\t\t<use xlink:href=\"/examples/symbols.svg#chevronright\"></use>\n\t\t\t\t\t</svg>\n\t\t\t\t\t<span class=\"slds-assistive-text\">Toggle</span>\n\t\t\t\t</button>\n\t\t\t\t<div class=\"slds-tree__branch--name\" role=\"presentation\">Tree Branch</div>\n\t\t\t</div>\n\t\t\t<ul class=\"slds-tree__group slds-nested\" role=\"group\" aria-labelledby=\"tree0-node0-link\">\n\t\t\t\t<li className=\"slds-tree__loader\" role=\"alert\"></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li class=\"slds-tree__item\" data-template=\"treeitem\" role=\"treeitem\">\n\t\t\t<div role=\"presentation\" class=\"slds-tree__item-label | slds-truncate\">Tree Item</div>\n\t\t</li>\n\t</ul>\n</div>\n"], ["\n<div class=\"slds-tree-container\" role=\"application\">\n\t<ul class=\"tree slds-tree\" role=\"tree\" aria-labelledby=\"treeheading\">\n\t\t<li class=\"slds-tree__branch\" role=\"treeitem\" aria-expanded=\"true\">\n\t\t\t<div class=\"slds-tree__branch--header slds-tree__item\">\n\t\t\t\t<button class=\"slds-button slds-button--icon-bare slds-m-right--x-small\">\n\t\t\t\t\t<svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--small\">\n\t\t\t\t\t\t<use xlink:href=\"/examples/symbols.svg#chevronright\"></use>\n\t\t\t\t\t</svg>\n\t\t\t\t\t<span class=\"slds-assistive-text\">Toggle</span>\n\t\t\t\t</button>\n\t\t\t\t<div class=\"slds-tree__branch--name\" role=\"presentation\">Tree Branch</div>\n\t\t\t</div>\n\t\t\t<ul class=\"slds-tree__group slds-nested\" role=\"group\" aria-labelledby=\"tree0-node0-link\">\n\t\t\t\t<li className=\"slds-tree__loader\" role=\"alert\"></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li class=\"slds-tree__item\" data-template=\"treeitem\" role=\"treeitem\">\n\t\t\t<div role=\"presentation\" class=\"slds-tree__item-label | slds-truncate\">Tree Item</div>\n\t\t</li>\n\t</ul>\n</div>\n"]);
+	var _templateObject = _taggedTemplateLiteral(["\n<div class=\"slds-tree-container\" role=\"application\">\n\t<ul class=\"slds-tree\" role=\"tree\">\n\t\t<li class=\"slds-tree__branch\" role=\"treeitem\" aria-expanded=\"true\">\n\t\t\t<div class=\"slds-tree__branch--header slds-tree__item\">\n\t\t\t\t<button class=\"slds-button slds-button--icon-bare slds-m-right--x-small\">\n\t\t\t\t\t<svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--small\">\n\t\t\t\t\t\t<use xlink:href=\"/examples/symbols.svg#chevronright\"></use>\n\t\t\t\t\t</svg>\n\t\t\t\t\t<span class=\"slds-assistive-text\">Toggle</span>\n\t\t\t\t</button>\n\t\t\t\t<div class=\"slds-tree__branch--name\" role=\"presentation\">Tree Branch</div>\n\t\t\t</div>\n\t\t\t<ul class=\"slds-tree__group slds-nested\" role=\"group\" aria-labelledby=\"tree0-node0-link\">\n\t\t\t\t<li className=\"slds-tree__loader\" role=\"alert\"></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li class=\"slds-tree__item\" data-template=\"treeitem\" role=\"treeitem\">\n\t\t\t<div role=\"presentation\" class=\"slds-tree__item-label | slds-truncate\">Tree Item</div>\n\t\t</li>\n\t</ul>\n</div>\n"], ["\n<div class=\"slds-tree-container\" role=\"application\">\n\t<ul class=\"slds-tree\" role=\"tree\">\n\t\t<li class=\"slds-tree__branch\" role=\"treeitem\" aria-expanded=\"true\">\n\t\t\t<div class=\"slds-tree__branch--header slds-tree__item\">\n\t\t\t\t<button class=\"slds-button slds-button--icon-bare slds-m-right--x-small\">\n\t\t\t\t\t<svg aria-hidden=\"true\" class=\"slds-button__icon slds-button__icon--small\">\n\t\t\t\t\t\t<use xlink:href=\"/examples/symbols.svg#chevronright\"></use>\n\t\t\t\t\t</svg>\n\t\t\t\t\t<span class=\"slds-assistive-text\">Toggle</span>\n\t\t\t\t</button>\n\t\t\t\t<div class=\"slds-tree__branch--name\" role=\"presentation\">Tree Branch</div>\n\t\t\t</div>\n\t\t\t<ul class=\"slds-tree__group slds-nested\" role=\"group\" aria-labelledby=\"tree0-node0-link\">\n\t\t\t\t<li className=\"slds-tree__loader\" role=\"alert\"></li>\n\t\t\t</ul>\n\t\t</li>\n\t\t<li class=\"slds-tree__item\" data-template=\"treeitem\" role=\"treeitem\">\n\t\t\t<div role=\"presentation\" class=\"slds-tree__item-label | slds-truncate\">Tree Item</div>\n\t\t</li>\n\t</ul>\n</div>\n"]);
 
 	exports["default"] = _String$raw(_templateObject);
 	module.exports = exports["default"];

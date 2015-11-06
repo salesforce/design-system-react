@@ -1,8 +1,10 @@
 var webpack = require('webpack');
+var StringReplacePlugin = require('string-replace-webpack-plugin');
 
 var entries = ['webpack-dev-server/client?http://localhost:8080', 'webpack/hot/dev-server'];
 var path = require('path');
 var node_modules_dir = path.join(__dirname, 'node_modules');
+var packageJson = require('./package.json');
 
 var config = {
 	entry: {
@@ -31,31 +33,34 @@ var config = {
 	devtool: 'source-map',
 	output: {
 		libraryTarget: 'amd',
+		library: 'Facades',
 		path: __dirname + '/dist/',
 		publicPath: '/dist/',
 		filename: '[name].js'
+	},
+	externals: {
+		react: 'react',
+		'react-dom': 'react-dom'
 	},
 	module: {
 		loaders: [
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loaders: ['babel-loader?optional=runtime']
-			},
-			// {
-			// 	test: /\.css$/,
-			// 	loader: "style-loader!css-loader"
-			// },
-			// {
-			// 	test: /\.scss$/,
-			// 	loader: 'style!css!sass'
-			// }, {
-			// 	test: /\.less$/,
-			// 	loader: "style!css!less"
-			// }
+				loaders: ['babel-loader?optional=runtime', StringReplacePlugin.replace({
+					replacements: [{
+						pattern: /__VERSION__/g,
+						replacement: function (match, p1, offset, string) {
+							return packageJson.version;
+						}
+					}]
+				})]
+			}
 		]
 	},
-	plugins: []
+	plugins: [
+		new StringReplacePlugin()
+	]
 };
 
 module.exports = config;
