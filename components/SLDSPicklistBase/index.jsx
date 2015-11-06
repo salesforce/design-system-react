@@ -47,6 +47,7 @@ module.exports = React.createClass( {
 
   getInitialState(){
     return {
+      triggerId:null,
       isOpen:false,
       isFocused:false,
       highlightedIndex:0,
@@ -57,6 +58,9 @@ module.exports = React.createClass( {
   },
 
   componentDidMount () {
+    const id = React.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
+    this.setState({triggerId:id});
+
     if(this.props.initialFocus){
       this.setFocus();
     }
@@ -122,7 +126,7 @@ module.exports = React.createClass( {
 
   setFocus () {
     if(this.isMounted()){
-      React.findDOMNode(this.refs.button).focus();
+      React.findDOMNode(this.refs.triggerbutton).focus();
     }
   },
 
@@ -160,6 +164,7 @@ module.exports = React.createClass( {
 
   getPopoverContent() {
     return <List
+            triggerId={this.state.triggerId}
             ref='list'
             options={this.props.options}
             label={this.props.label}
@@ -216,8 +221,8 @@ module.exports = React.createClass( {
       <div className={"slds-form-element slds-theme--"+this.props.theme}>
         <div className={"slds-picklist slds-theme--"+this.props.theme}>
           <button
-            id={this.props.id}
-            ref="button"
+            id={this.state.triggerId}
+            ref="triggerbutton"
             className={'slds-button slds-button--neutral slds-picklist__label '+this.props.className }
             aria-haspopup="true"
             onBlur={this.handleBlur}

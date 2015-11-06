@@ -55,7 +55,6 @@ module.exports = React.createClass( {
 
   getInitialState(){
     return {
-      triggerId:null,
       isOpen:false,
       isFocused:false,
       isClosing:false,
@@ -68,8 +67,6 @@ module.exports = React.createClass( {
   },
 
   componentDidMount(){
-    const id = React.findDOMNode(this.refs.button).getAttribute("data-reactid");
-    this.setState({triggerId:id});
     if(this.props.initialFocus){
       this.setFocus();
     }
@@ -242,7 +239,6 @@ module.exports = React.createClass( {
 
   getPopoverContent(){
     return <List
-            triggerId={this.state.triggerId}
             ref='list'
             options={this.props.options}
             className={this.props.listClassName}
@@ -321,7 +317,6 @@ module.exports = React.createClass( {
 
     return <SLDSButton
         ref='button'
-        id={this.state.triggerId}
         aria-haspopup='true'
         label={this.props.label}
         className={this.props.className}

@@ -166,7 +166,7 @@ module.exports = React.createClass({
           ref="scroll"
           className={"slds-dropdown__list slds-theme--"+this.props.theme}
           role="menu"
-          aria-labelledby={this.props.label}>
+          aria-labelledby={this.props.triggerId}>
           { this.getItems() }
         </ul>
       </div>
