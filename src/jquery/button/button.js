@@ -57,16 +57,19 @@ export const ButtonObject = {
 		}
 
 		let $buttonview = new ButtonView(childOptions);
-
 		viewElements.push($buttonview.element);
 
 		// Other views
 		if (viewOptions.length > 0 ) {
+			const children = [].concat(this.getProperty('children'));
+
 			viewOptions.forEach((options) => {
 				$buttonview = new ButtonView(options);
-				this.getProperty('children').push($buttonview);
+				children.push($buttonview);
 				viewElements.push($buttonview.element);
 			});
+
+			this.setProperties({ children });
 		}
 
 		return viewElements;
@@ -103,6 +106,13 @@ export const ButtonObject = {
 		} else {
 			this.elements.control.removeAttr('disabled');
 		}
+	},
+
+	// If the button is stateful, it only affects the first view. See `this.childOptions`
+	renderView (options) {
+		this.childOptions = Lib.extend({}, this.childOptions, options);
+		this.element.empty();
+		this.element.append(this._renderViews());
 	}
 };
 
