@@ -91,11 +91,11 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	},
 	
 	_getInputId () {
-		return this.getProperty('id') + '-input';
+		return this.getState('id') + '-input';
 	},
 	
 	_getMenuId () {
-		return this.getProperty('id') + '-menu';
+		return this.getState('id') + '-menu';
 	},
 	
 	_getMenuItemId (index) {

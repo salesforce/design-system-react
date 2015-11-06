@@ -47,7 +47,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 
 	render () {
 		return (
-			<div className="slds-dropdown-trigger" id={this.props.id} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div className="slds-dropdown-trigger" id={this.state.id} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<Button icon={this._getIcon()} iconStyle={this._getStyle()} disabled={this.props.disabled} />
 				<PicklistItems id={this._getMenuId()} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={!this.props.disabled} onSelected={this._handleMenuItemSelected} />
 			</div>

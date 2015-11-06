@@ -106,7 +106,7 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 	},
 	
 	_getMenuId () {
-		return this.getProperty('id') + '-menu';
+		return this.getState('id') + '-menu';
 	},
 	
 	_getMenuItemId (index) {

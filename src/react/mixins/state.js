@@ -5,15 +5,13 @@ import * as Lib from '../../lib/lib';
 
 const State = {
 	getDefaultProps () {
-		return Lib.extend({
-			id: Lib.uniqueId(this.prototype.CONTROL + '-')
-		}, this.prototype._defaultProperties);
+		return Lib.extend({}, this.prototype._defaultProperties);
 	},
 
 	getInitialState () {
 		return Lib.extend({}, this._defaultState);
 	},
-
+	
 	setProperties: Lib.noop,
 
 	getProperty (key) {

@@ -39,7 +39,7 @@ export const PicklistObject = {
 		};
 
 		return (
-			<div className="slds-picklist" id={this.props.id} aria-expanded={this.state.isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div className="slds-picklist" id={this.state.id} aria-expanded={this.state.isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<Button
 					className="slds-picklist__label"
 					disabled={this.props.disabled}

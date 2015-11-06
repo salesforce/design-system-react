@@ -25,12 +25,14 @@ const Base = {
 	},
 
 	// We can't count on exactly how each facade will handle object construction, so instead we ask that this function be called at an appropriate point by the facade.
-	_initialize (options) {
+	_initialize (originalOptions) {
+		const options = Lib.extend({}, originalOptions);
+		
 		// `_onBeforeInitialize` is an optional lifecycle event that individual controls / facades may choose to implement. During this step the options are still available and still free to be modified.
 		if (Lib.isFunction(this._onBeforeInitialize)) this._onBeforeInitialize(options);
 
 		// If any accessors were passed in as objects during construction use them to override the defaults for this control. _Important: acessors cannot be updated after initialization._
-		if (options && Lib.isObject(options.accessors)) {
+		if (Lib.isObject(options.accessors)) {
 			this.accessors = Lib.extend({}, this.accessors, options.accessors);
 			delete options.accessors;
 		}
@@ -53,6 +55,12 @@ const Base = {
 
 			// Any `_onInitialized` functions defined by the controls or traits will be executed asynchronously after internationalization completes.
 			if (Lib.isFunction(this._onInitialized)) this._onInitialized();
+		});
+	},
+	
+	_initializer () {
+		this.setState({
+			id: this.getProperty('id') || Lib.uniqueId(this.CONTROL + '-')
 		});
 	},
 

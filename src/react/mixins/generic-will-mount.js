@@ -17,6 +17,8 @@ const genericWillMount = {
 	// These are handled slightly differently than your average props, so they need to be kept in sync here
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.collection) this._collection = this._getDataAdapter(nextProps.collection);
+		
+		if (nextProps.id) this.setState({ id: nextProps.id });
 
 		if (nextProps.strings) {
 			this.setState({

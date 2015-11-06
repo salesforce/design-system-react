@@ -35,7 +35,7 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 		/* TODO: Icon is currently absolute positioned due to picklist wrapper picklist, but needs centering.
 					Also, does not use Button component, because Button only supports ButtonViews as children right now. */
 		return (
-			<div aria-haspopup="true" aria-expanded={this.state.isOpen} className="slds-combobox slds-picklist" id={this.props.id} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div aria-haspopup="true" aria-expanded={this.state.isOpen} className="slds-combobox slds-picklist" id={this.state.id} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" style={{paddingLeft: 0}} disabled={this.props.disabled} aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
 					<div className="slds-form-element__control">
 						<input name={this.props.name} type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} className="slds-input" ref={this._setInputRef} />

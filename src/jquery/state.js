@@ -9,9 +9,7 @@ const State = {
 	},
 	
 	_initializeState () {
-		this._props = Lib.extend({
-			id: Lib.uniqueId(this.CONTROL + '-')
-		}, this._defaultProperties);
+		this._props = Lib.extend({}, this._defaultProperties);
 		this._state = Lib.extend({}, this._defaultState);
 	},
 	
