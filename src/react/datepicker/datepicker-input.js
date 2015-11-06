@@ -7,13 +7,12 @@ import Svg from '../svg/svg';
 const DateInput = React.createClass({
 
 	propTypes: {
-		triggerCalendar: React.PropTypes.func,
 		selectedDate: React.PropTypes.any
 	},
 
 	render () {
 		return (
-			<div className="slds-form-element" onClick={this.props.triggerCalendar}>
+			<div className="slds-form-element">
 				<div className="slds-form-element__control">
 					<div className="slds-input-has-icon slds-input-has-icon--right">
 						<Svg className="slds-input__icon slds-icon-text-default" icon="utility.event" />
