@@ -247,7 +247,9 @@ import {SLDSNotification} from 'design-system-react';
 
 ...
 
-<SLDSNotification variant='toast' theme='success' icon='notification' texture={true} content={message} animated={true} />
+<SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} onDismiss={this.dismissToast} />
+<SLDSNotification variant='alert' theme='error' icon='warning' texture={true} content={errorMsg} onDismiss={this.dismissToast} />
+<SLDSNotification variant='toast' theme='success' icon='notification' content={successMsg} />
 ```
 
 [![browser support](/readme-assets/SLDSNotifications.png)](/readme-assets/SLDSNotifications.png)

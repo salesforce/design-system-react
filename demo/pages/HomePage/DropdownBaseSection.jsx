@@ -43,7 +43,6 @@ module.exports = React.createClass( {
 
 
             <div className="slds-p-around--medium">
-
               <h3 id='dropdownSection' className="slds-text-heading--medium slds-truncate">
                 Dropdown Base
               </h3>
@@ -51,7 +50,6 @@ module.exports = React.createClass( {
               <PrismCode className='language-markup'>
                 {require("raw-loader!../../code-snippets/SLDSDropdownPage.txt")}
               </PrismCode>
-
               <div className="slds-p-vertical--large">
                 <SLDSDropdownBase
                     options={[
@@ -76,7 +74,6 @@ module.exports = React.createClass( {
                     onUpdateHighlighted={this.handleOnUpdateHighlighted}
                     />
               </div>
-
             </div>
 
 

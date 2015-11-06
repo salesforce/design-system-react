@@ -1,5 +1,7 @@
 
-<SLDSNotification variant='toast' theme='success' icon='notification' texture={true} content={message} animated={true} />
+<SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} onDismiss={this.dismissToast} />
+<SLDSNotification variant='alert' theme='error' icon='warning' texture={true} content={errorMsg} onDismiss={this.dismissToast} />
+<SLDSNotification variant='toast' theme='success' icon='notification' content={successMsg} />
 
 <SLDSModal
   isOpen={this.state.modalIsOpen}

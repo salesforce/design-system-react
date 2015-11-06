@@ -96,11 +96,12 @@ module.exports = React.createClass( {
           <div className="slds-p-vertical--small">
             <h4 className="slds-text-heading--small ">Alerts</h4>
             <div className="demo-only">
-              Base
-              {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} onDismiss={this.dismissToast} />}
-
-              Animated
-              {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='error' icon='warning' texture={true} content={errorMsg} onDismiss={this.dismissToast} />}
+              <div className="slds-p-bottom--small">
+                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} onDismiss={this.dismissToast} />}
+              </div>
+              <div className="slds-p-bottom--small">
+                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='error' icon='warning' texture={true} content={errorMsg} onDismiss={this.dismissToast} />}
+              </div>
             </div>
           </div>
 
