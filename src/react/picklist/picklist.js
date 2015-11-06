@@ -39,31 +39,34 @@ export const PicklistObject = {
 		};
 
 		return (
-			<div className="slds-form-element">
-				<div aria-haspopup="true" aria-expanded={this.state.isOpen} className="slds-picklist" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-					<Button
-						className="slds-picklist__label"
-						disabled={this.props.disabled}
-						onClick={this._handleClicked}
-						style={styles}
-						theme="neutral">
-						<span className="slds-truncate">{selectionName}</span>
-						<Svg className="slds-icon" icon="utility.down" />
-					</Button>
-
-					<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._findElements} />
-					<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
-				</div>
+			<div aria-haspopup="true" aria-expanded={this.state.isOpen} className="slds-picklist" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+				<Button
+					className="slds-picklist__label"
+					disabled={this.props.disabled}
+					onClick={this._handleClicked}
+					style={styles}
+					theme="neutral">
+					<span className="slds-truncate">{selectionName}</span>
+					<Svg className="slds-icon" icon="utility.down" />
+				</Button>
+				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._setMenuRef} />
+				<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
 			</div>
 		);
 	},
 
-	_findElements (menu) {
+	componentDidUpdate () {
+		this._setMenuItemsRef();
+	},
+	
+	_setMenuRef (menu) {
 		this.elements.dropdownMenu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
-
-		this.elements.menuItems = [];
+	},
+	
+	_setMenuItemsRef () {
 		const menuItems = this.elements.dropdownMenu[0].getElementsByTagName('li');
-
+		this.elements.menuItems = [];
+		
 		for (let i = 0; i < menuItems.length; i++) {
 			const menuItem = menuItems[i].getElementsByTagName('a');
 
@@ -73,12 +76,9 @@ export const PicklistObject = {
 		}
 	},
 
-	_onSelected () {
-		this.close();
-	},
-
 	_handleMenuItemSelected (selection) {
 		this.setSelection(selection);
+		this.close();
 	},
 
 	_handleClicked (e) {
@@ -86,7 +86,7 @@ export const PicklistObject = {
 	},
 
 	_handleKeyPressed (e) {
-		if (e.key && (/(ArrowUp|ArrowDown)/.test(e.key) || e.key.length === 1)) {
+		if (e.key && (/(ArrowUp|ArrowDown|Escape)/.test(e.key) || e.key.length === 1)) {
 			e.preventDefault();
 			this._keyboardNav(e.key, this.elements.menuItems);
 		}

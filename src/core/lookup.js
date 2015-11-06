@@ -78,8 +78,6 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	},
 	
 	_initializer () {
-		this.elements.menuItems = [];
-		
 		this.setState({
 			inputId: Lib.uniqueId(CONTROL + '-input-')
 		});

@@ -6,6 +6,7 @@ import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Framework specific
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { PicklistObject } from '../picklist/picklist';
 
 // Children
@@ -33,18 +34,20 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 		/* TODO: Icon is currently absolute positioned due to picklist wrapper picklist, but needs centering.
 					Also, does not use Button component, because Button only supports ButtonViews as children right now. */
 		return (
-		<div className="slds-combobox slds-form-element">
-			<div aria-expanded="true" className="slds-picklist">
+			<div aria-haspopup="true" aria-expanded={this.state.isOpen} className="slds-combobox slds-picklist" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<button className="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" style={{paddingLeft: 0}} disabled={this.props.disabled} aria-expanded={this.state.isOpen} onClick={this._handleClicked}>
 					<div className="slds-form-element__control">
-						<input name={this.props.name} type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} className="slds-input" />
+						<input name={this.props.name} type="text" value={selectionName} disabled={this.props.disabled} onChange={this._handleChanged} className="slds-input" ref={this._setInputRef} />
 					</div>
 					<Svg className="slds-icon" style={{right: '.6rem'}} icon="utility.down" />
 				</button>
-				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._findElements} />
+				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} ref={this._setMenuRef} />
 			</div>
-		</div>
 		);
+	},
+	
+	_setInputRef (input) {
+		this.elements.input = Lib.wrapElement(ReactDOM.findDOMNode(input));
 	},
 	
 	_handleChanged (e) {
@@ -53,6 +56,18 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 		value[this.accessors.textProp()] = e.target.value;
 
 		this.setSelection(value);
+	},
+	
+	_handleKeyPressed (e) {
+		if (e.key && /(ArrowUp|ArrowDown|Escape)/.test(e.key)) {
+			e.preventDefault();
+			if (!this._keyboardNav(e.key, this.elements.menuItems)) {
+				this.elements.input[0].focus();
+			}
+		} else if (e.key.length === 1) {
+			if (!this.state.isOpen) this.open();
+			this.elements.input[0].focus();
+		}
 	}
 });
 

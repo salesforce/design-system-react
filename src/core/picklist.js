@@ -78,6 +78,12 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 			return item.get('icon');
 		}
 	},
+	
+	_onExpandOrCollapse () {
+		this.setState({
+			focusedIndex: this._defaultState.focusedIndex
+		});
+	},
 
 	_canSelect (newSelection, select) {
 		const item = this._getItemAdapter(newSelection);
