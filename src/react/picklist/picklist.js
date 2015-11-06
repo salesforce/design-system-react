@@ -65,9 +65,9 @@ export const PicklistObject = {
 	},
 
 	_handleKeyPressed (e) {
-		if (e.key && (/(ArrowUp|ArrowDown|Escape)/.test(e.key) || e.key.length === 1)) {
+		if (e.key && (/(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key) || e.key.length === 1)) {
 			e.preventDefault();
-			this._keyboardNav(e.key);
+			this._keyboardNav(e.key, this.setSelection);
 		}
 	}
 };

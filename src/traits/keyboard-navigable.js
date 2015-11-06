@@ -28,25 +28,54 @@ const KeyboardNavigable = {
 
 	_initializer () {
 		this._keyBuffer = new KeyBuffer();
+		this._isSelectable = !Lib.isFunction(this.accessors.isSelectable);
+	},
+	
+	_getNavigableItems () {
+		const items = [];
+		items.lastIndex = -1;
+		items.indexes = [];
+		
+		this._collection.forEach((item, index) => {
+			if (this._isSelectable || item.isSelectable()) {
+				items.push({
+					index,
+					text: item.getText().toLowerCase()
+				});
+				
+				items.indexes.push(index);
+				items.lastIndex = index;
+			}
+		});
+		
+		return items;
 	},
 
-	_keyboardNav (input) {
+	_keyboardNav (input, onSelect) {
 		const isOpen = this.getState('isOpen');
-		const lastIndex = this._collection.length() - 1;
-		const isSelectable = !Lib.isFunction(this.accessors.isSelectable);
-		let index;
+		const navigableItems = this._getNavigableItems();
+		const indexes = navigableItems.indexes;
+		const lastIndex = navigableItems.lastIndex;
+		let index = -1;
 		let selection;
 		
 		if (/(Escape)/.test(input)) {
 			if (isOpen && Lib.isFunction(this.close)) this.close();
 		} else if (!isOpen && Lib.isFunction(this.open)) {
 			this.open();
+		} else if (/(Enter)/.test(input)) {
+			selection = this.getState('focusedSelection');
+			
+			if (selection && Lib.isFunction(onSelect)) {
+				onSelect(selection);
+			}
 		} else {
 			index = this.getState('focusedIndex');
+			let navigableIndex = indexes.indexOf(index);
 			
 			if (input.length === 1) {
 				// Combine subsequent keypresses
-				const pattern = this._keyBuffer(input).toLowerCase();
+				const pattern = this._keyBuffer(input.toLowerCase());
 				let consecutive = 0;
 				
 				// Support for navigating to the next option of the same letter with repeated presses of the same key
@@ -54,34 +83,30 @@ const KeyboardNavigable = {
 					consecutive = pattern.length;
 				}
 				
-				this._collection.forEach(function compareItem (item, i) {
-					const text = item.getText();
-					
-					if (isSelectable || item.isSelectable()) {
-						if ((!selection && text.substr(0, pattern.length).toLowerCase() === pattern) ||
-							(consecutive > 0 && text.substr(0, 1).toLowerCase() === input)) {
-							consecutive--;
-							index = i;
-							selection = item;
-						}
+				navigableItems.forEach((item) => {
+					if ((!selection && item.text.substr(0, pattern.length) === pattern) ||
+						(consecutive > 0 && item.text.substr(0, 1) === input.toLowerCase())) {
+						consecutive--;
+						index = item.index;
 					}
 				});
 			} else if (/(ArrowDown)/.test(input)) {
 				if (index < lastIndex) {
-					index++;
+					index = indexes[++navigableIndex];
 				} else {
 					index = lastIndex;
 				}
-				
-				selection = this._collection.at(index);
 			} else if (/(ArrowUp)/.test(input)) {
-				if (index > this._defaultState.focusedIndex) {
-					index--;
-					selection = this._collection.at(index);
+				if (index > -1) {
+					index = indexes[--navigableIndex] || -1;
 				} else {
-					index = this._defaultState.focusedIndex;
+					index = -1;
 				}
 			}
+		}
+		
+		if (index > -1) {
+			selection = this._collection.at(index);
 		}
 		
 		this.setState({
