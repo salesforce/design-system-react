@@ -161,9 +161,10 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	_renderMenuItems () {
+		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
 		return this._collection.map((item, index) => {
 			const id = this._getMenuItemId(index);
-			const props = { item, id, onSelected: this._selectItem, key: index };
+			const props = { item, id, onSelected: this._selectItem, key: index, isHighlighted: activeDescendantId === id };
 			let element;
 			
 			if (this.props.menuItemElement) {
@@ -181,7 +182,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		const hasSelection = selectedItems.length() > 0;
 		
 		return (
-		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.props.id} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 			{this._renderInput(hasSelection, selectedItems)}
 			{this._renderMenu(hasSelection)}
 		</div>
