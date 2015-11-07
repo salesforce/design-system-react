@@ -77,8 +77,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		this._configureKeyboardNavigation();
 	},
 	
-	_renderInput (hasSelection, selectedItems) {
-		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
+	_renderInput (hasSelection, selectedItems, activeDescendantId) {
 		const inputId = this._getInputId();
 		let pills;
 		
@@ -99,25 +98,26 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 
 	render () {
+		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
 		const selectedItems = this._getSelectedItems();
 		const hasSelection = selectedItems.length() > 0;
 		let header;
 		let footer;
 		
 		if (Lib.isFunction(this.props.menuHeaderRenderer)) {
-			header = <Action id={this._getMenuItemId('header')} label={this.props.label} renderer={this.props.menuHeaderRenderer} searchString={this.state.searchString} strings={this.state.strings} />;
+			header = <Action id={this._getMenuItemId('header')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuHeaderRenderer} searchString={this.state.searchString} strings={this.state.strings} />;
 		}
 		
 		if (Lib.isFunction(this.props.menuFooterRenderer)) {
-			footer = <Action id={this._getMenuItemId('footer')} label={this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} onClick={this.props.onAddClick} />;
+			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} onClick={this.props.onAddClick} />;
 		}
 		
 		return (
 		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-			{this._renderInput(hasSelection, selectedItems)}
+			{this._renderInput(hasSelection, selectedItems, activeDescendantId)}
 			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 				{header}
-				<MenuItems collection={this._collection} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
+				<MenuItems activeDescendantId={activeDescendantId} collection={this._collection} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
 			</div>
 		</div>

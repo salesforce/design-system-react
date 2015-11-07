@@ -1,4 +1,4 @@
-// LOOKUP PILL - REACT FACADE
+// LOOKUP PILLS - REACT FACADE
 
 // Framework specific
 import React from 'react';

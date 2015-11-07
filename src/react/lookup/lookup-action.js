@@ -1,10 +1,11 @@
-// LOOKUP BUTTON - REACT FACADE
+// LOOKUP ACTION - REACT FACADE
 
-// Framework specific
 import React from 'react';
+import classNames from 'classnames';
 
 const LookupAction = React.createClass({
 	propTypes: {
+		activeDescendantId: React.PropTypes.string,
 		id: React.PropTypes.string.isRequired,
 		label: React.PropTypes.string,
 		onClick: React.PropTypes.func,
@@ -14,8 +15,10 @@ const LookupAction = React.createClass({
 	},
 
 	render () {
+		const isHighlighted = this.props.activeDescendantId === this.props.id;
+		
 		return (
-			<div className="slds-lookup__item" id={this.props.id}>
+			<div className={classNames('slds-lookup__item', {'slds-theme--shade': isHighlighted})} id={this.props.id}>
 				<button className="slds-button" onClick={this.props.onClick} tabIndex="-1">
 					{this.props.renderer({
 						searchString: this.props.searchString,
