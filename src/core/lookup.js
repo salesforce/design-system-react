@@ -72,6 +72,9 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		this.setState({
 			focusedIndex: this._defaultState.focusedIndex
 		});
+		
+		const _menu = this.elements.menu[0];
+		_menu.scrollTop = 0;
 	},
 	
 	_getInputId () {
