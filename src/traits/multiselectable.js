@@ -53,10 +53,12 @@ const Multiselectable = {
 				selection.reset(item);
 			}
 
+			if (Lib.isFunction(this._onBeforeSelect)) this._onBeforeSelect(selection);
+			
 			this.setProperties({ selection: selection._data });
-			if (Lib.isFunction(this._onSelected)) this._onSelected(selection);
-
 			this.trigger('changed', item._item, selection._data);
+			
+			if (Lib.isFunction(this._onSelected)) this._onSelected(selection);
 		}, this);
 
 		if ( multipleItems ? !this._areItemsSelected(item, selection) : !this._isItemSelected(item, selection) ) {

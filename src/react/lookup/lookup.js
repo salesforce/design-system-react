@@ -119,6 +119,19 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	componentDidUpdate () {
 		this._scrollMenuItems();
+		
+		// TODO: This logic probably needs to be cleaned up and will have to be altered to work with multiselect, but it does help make for a smooth experience when navigating by keyboard.
+		if (this._focusOnPills) {
+			const deselectPillsButton = this.elements.input[0].parentNode.getElementsByTagName('button');
+			
+			if (deselectPillsButton && deselectPillsButton.length === 1) {
+				deselectPillsButton[0].focus();
+				this._focusOnPills = false;
+			}
+		} else if (this._focusOnInput) {
+			this.elements.input[0].focus();
+			this._focusOnInput = false;
+		}
 	},
 	
 	_setInputRef (input) {
@@ -146,6 +159,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this._deselectItem(item);
 		} else if (!item) {
 			this.deselectAll();
+			this._focusOnInput = true;
 		}
 	},
 	
@@ -161,7 +175,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this.selectItem);
+			this._keyboardNav(e.key, this._keyboardSelect);
 		} else if (e.key.length === 1) {
 			if (!this.state.isOpen) this.open();
 			this.elements.input[0].focus();
