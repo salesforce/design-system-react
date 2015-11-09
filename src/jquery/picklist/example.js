@@ -26,6 +26,9 @@ $(function () {
 	$('#picklist-jquery-disable').on('click', function () {
 		picklist.disable();
 	});
+	$('#picklist-jquery-destroy').on('click', function () {
+		picklist.destroy();
+	});
 
 	// events
 	$('#picklist-jquery-control .picklist1').on('changed', function (event, data) {

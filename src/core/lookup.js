@@ -19,6 +19,8 @@ import KeyboardNavigable from '../traits/keyboard-navigable';
 export const CONTROL = 'slds-lookup';
 
 const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, KeyboardNavigable, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,
@@ -30,51 +32,34 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	_defaultProperties: {
 		collection: [],
 		multiSelect: false,
-		menuFooterElement: true,
-		menuHeaderElement: false, // Defaulting to hidden for the single scope version
-		searchIcon: 'utility.search',
-		id: Lib.uniqueId(CONTROL + '-')
+		searchIcon: 'utility.search'
 	},
 	
 	_defaultState: {
 		searchString: ''
 	},
 
-	/* Accessors: These may be supplied in the options hash to override default behavior
-
-	 textProp ()
-	 Return the name of the property that contains the text
-
-	 getText (item)
-	 Return the text value to display in the list
-	 item => object wrapped in an Item Adapter
-
-	 getKey (item)
-	 Return either an object with key/value pairs to match or a match function
-	 Use this to reduce the number of fields required for searching if a unique key is available
-	 item => object wrapped in an Item Adapter
-
-	 getIcon (item)
-	 Return a string that points to the appropriate icon
-	 item => object wrapped in an Item Adapter
-
-	 */
-
+	// ### Accessors
+	// These may be supplied in the options hash / properties to override default behavior. All accessors take 'item' as their first properties, which is an object from the collection wrapped in an item adapter.
 	accessors: {
-		textProp () {
-			return 'text';
-		},
-
+		// Return the text value to display in the list
 		getText (item) {
-			return item.get(item.textProp());
+			return item.get('text');
 		},
 
+		// Return either an object with key/value pairs to match or a match function. Use this to reduce the number of fields required for searching if a unique key is available.
 		getKey (item) {
 			return item.get();
 		},
 
+		// Return a string that points to the appropriate icon.
 		getIcon (item) {
 			return item.get('icon');
+		},
+
+		// Return a function that renders the contents of each menu item. Defaults to a single renderer for the whole control.
+		getRenderer () {
+			return this.getProperty('menuItemRenderer');
 		}
 	},
 	
@@ -89,17 +74,17 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		});
 	},
 	
-	getInputId () {
-		return this.getProperty('id') + '-input';
+	_getInputId () {
+		return this.getState('id') + '-input';
 	},
 	
-	getMenuId () {
-		return this.getProperty('id') + '-menu';
+	_getMenuId () {
+		return this.getState('id') + '-menu';
 	},
 	
-	getMenuItemId (index) {
-		if (index >= 0) {
-			return this.getMenuId() + '-item-' + index;
+	_getMenuItemId (index) {
+		if (index !== undefined) {
+			return this._getMenuId() + '-item-' + index;
 		}
 	},
 	

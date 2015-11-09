@@ -23,10 +23,13 @@ import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
-// [LookupButton](lookup-button), [LookupMenuItem](lookup-menu-item), and [LookupPill](lookup-pill) are default implementations of the control that give it the standard Lightning Design System look and feel. These may be overriden via the properties `menuFooterElement`, `menuHeaderElement`, `menuItemElement`, and `pillElement`.
-import LookupButton from './lookup-button';
-import LookupMenuItem from './lookup-menu-item';
-import LookupPill from './lookup-pill';
+// Split out some rendering logic, just to make things easier to read.
+import Action from './lookup-action';
+import MenuItems from './lookup-menu-items';
+import Pills from './lookup-pills';
+
+// Provides the default renderers for items, pills, the header, and the footer.
+import LookupDefaultRenderers from './lookup-default-renderers';
 
 // The [Svg helper](../svg/svg) for React provides a simple wrapper around the markup required for SVGs, and uses `Lib.getSVGPath` to convert strings in the format `sprite file`.`icon name` into full paths.
 import Svg from '../svg/svg';
@@ -40,20 +43,21 @@ let Lookup = Lib.merge({}, LookupCore, {
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
+		id: React.PropTypes.string,
 		label: React.PropTypes.string.isRequired,
-		menuFooterElement: React.PropTypes.oneOfType([
-			React.PropTypes.element,
+		menuFooterRenderer: React.PropTypes.oneOfType([
+			React.PropTypes.func,
 			React.PropTypes.bool
 		]),
-		menuHeaderElement: React.PropTypes.oneOfType([
-			React.PropTypes.element,
+		menuHeaderRenderer: React.PropTypes.oneOfType([
+			React.PropTypes.func,
 			React.PropTypes.bool
 		]),
-		menuItemElement: React.PropTypes.element,
+		menuItemRenderer: React.PropTypes.func,
 		onAddClick: React.PropTypes.func,
 		onChanged: React.PropTypes.func,
 		onFilter: React.PropTypes.func,
-		pillElement: React.PropTypes.element,
+		pillRenderer: React.PropTypes.func,
 		searchIcon: React.PropTypes.string,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
@@ -61,118 +65,61 @@ let Lookup = Lib.merge({}, LookupCore, {
 		])
 	},
 	
-	_renderInput (hasSelection, selectedItems) {
-		const activeDescendantId = this.getMenuItemId(this.state.focusedIndex);
-		const inputId = this.getInputId();
+	getDefaultProps () {
+		return LookupDefaultRenderers;
+	},
+	
+	componentWillMount () {
+		this._configureKeyboardNavigation();
+	},
+	
+	componentWillReceiveProps () {
+		this._configureKeyboardNavigation();
+	},
+	
+	_renderInput (hasSelection, selectedItems, activeDescendantId) {
+		const inputId = this._getInputId();
+		let pills;
 		
-		return (
-		<div className="slds-form-element" id={this.props.id}>
-			<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
-			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
-				<Svg icon={this.props.searchIcon} className="slds-input__icon" />
-				{hasSelection && this._renderPillContainer(selectedItems)}
-				<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this.getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
-			</div>
-		</div>
-		);
-	},
-	
-	_renderPillContainer (selectedItems) {
-		return (
-		<div className="slds-pill-container slds-show">
-			<span className="slds-pill slds-pill--bare">
-				{this._renderPills(selectedItems)}
-				<button className="slds-button slds-button--icon-bare" onClick={this.deselectAll}>
-					<Svg icon="utility.close" className="slds-button__icon" />
-					<span className="slds-assistive-text">Remove</span>
-				</button>
-			</span>
-		</div>
-		);
-	},
-	
-	_renderPills (selectedItems) {
-		return selectedItems.map((item, index) => {
-			const props = { item, key: index };
-			let element;
-			
-			if (this.props.pillElement) {
-				element = React.cloneElement(this.props.pillElement, props);
-			} else {
-				element = <LookupPill {...props} />;
-			}
-			
-			return element;
-		});
-	},
-	
-	_renderMenu () {
-		return (
-		<div id={this.getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
-			{this._renderMenuHeader()}
-			<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
-				{this._renderMenuItems()}
-			</ul>
-			{this._renderMenuFooter()}
-		</div>
-		);
-	},
-	
-	_renderMenuButton (props, menuButtonElement) {
-		let element;
-		
-		if (menuButtonElement === true) {
-			element = <LookupButton {...props} />;
-		} else if (menuButtonElement) {
-			element = React.cloneElement(menuButtonElement, props);
+		if (hasSelection) {
+			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} />;
 		}
 		
-		return element;
-	},
-	
-	_renderMenuHeader () {
-		const props = {
-			icon: this.props.searchIcon,
-			label: '"' + this.state.searchString + '" in ' + this.props.label
-		};
-		
-		return this._renderMenuButton(props, this.props.menuHeaderElement);
-	},
-	
-	_renderMenuFooter () {
-		const props = {
-			icon: 'utility.add',
-			label: 'Add',
-			onClick: this.props.onAddClick
-		};
-		
-		return this._renderMenuButton(props, this.props.menuFooterElement);
-	},
-	
-	_renderMenuItems () {
-		return this._collection.map((item, index) => {
-			const id = this.getMenuItemId(index);
-			const props = { item, id, onSelected: this._selectItem, key: index };
-			let element;
-			
-			if (this.props.menuItemElement) {
-				element = React.cloneElement(this.props.menuItemElement, props);
-			} else {
-				element = <LookupMenuItem {...props} />;
-			}
-			
-			return element;
-		});
+		return (
+			<div className="slds-form-element">
+				<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
+				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
+					<Svg icon={this.props.searchIcon} className="slds-input__icon" />
+					{pills}
+					<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
+				</div>
+			</div>
+		);
 	},
 
 	render () {
+		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
 		const selectedItems = this._getSelectedItems();
 		const hasSelection = selectedItems.length() > 0;
+		let header;
+		let footer;
+		
+		if (Lib.isFunction(this.props.menuHeaderRenderer)) {
+			header = <Action id={this._getMenuItemId('header')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuHeaderRenderer} searchString={this.state.searchString} strings={this.state.strings} />;
+		}
+		
+		if (Lib.isFunction(this.props.menuFooterRenderer)) {
+			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} onClick={this.props.onAddClick} />;
+		}
 		
 		return (
-		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-			{this._renderInput(hasSelection, selectedItems)}
-			{this._renderMenu(hasSelection)}
+		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			{this._renderInput(hasSelection, selectedItems, activeDescendantId)}
+			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
+				{header}
+				<MenuItems activeDescendantId={activeDescendantId} collection={this._collection} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
+				{footer}
+			</div>
 		</div>
 		);
 	},
@@ -191,6 +138,23 @@ let Lookup = Lib.merge({}, LookupCore, {
 		}
 		
 		this.open();
+	},
+	
+	_handleDeselect (item) {
+		if (item && this.props.multiSelect) {
+			this._deselectItem(item);
+		} else if (!item) {
+			this.deselectAll();
+		}
+	},
+	
+	_configureKeyboardNavigation () {
+		const navigableItems = this._getNavigableItems();
+		
+		if (this.props.menuHeaderRenderer) navigableItems.indexes.unshift('header');
+		if (this.props.menuFooterRenderer) navigableItems.indexes.push('footer');
+		
+		this._navigableItems = navigableItems;
 	},
 
 	_handleKeyPressed (e) {

@@ -16,6 +16,9 @@ const PicklistItems = React.createClass({
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
+		id: React.PropTypes.string,
+		getMenuItemId: React.PropTypes.func.isRequired,
+		labelledBy: React.PropTypes.string,
 		onSelected: React.PropTypes.func.isRequired,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.object
@@ -23,25 +26,18 @@ const PicklistItems = React.createClass({
 		show: React.PropTypes.bool.isRequired
 	},
 
-	cssClasses: {
-		DROPDOWN: 'slds-dropdown',
-		LEFT: 'slds-dropdown--left',
-		MENU: 'slds-dropdown--menu',
-		LIST: 'slds-dropdown__list'
-	},
-
 	_menuItems () {
 		return this.props.collection.map((item, index) => {
 			return (
-				<PicklistItem key={index} selected={item._item === this.props.selection} item={item} onSelected={this.props.onSelected} />
+				<PicklistItem id={this.props.getMenuItemId(index)} key={index} selected={item._item === this.props.selection} item={item} onSelected={this.props.onSelected} />
 			);
 		});
 	},
 
 	render () {
 		return (
-			<div className={classNames(this.cssClasses.DROPDOWN, this.cssClasses.LEFT, this.cssClasses.MENU, {'slds-hide': !this.props.show})}>
-				<ul className={this.cssClasses.LIST} role="menu" ref={this.cssClasses.LIST}>
+			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--menu', {'slds-hide': !this.props.show})} id={this.props.id}>
+				<ul className="slds-dropdown__list" role="menu" aria-labelledby={this.props.labelledBy}>
 				{this._menuItems()}
 				</ul>
 			</div>

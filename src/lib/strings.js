@@ -1,10 +1,12 @@
 const strings = {
-	'NONE_SELECTED': 'None selected',
-	'TOGGLE_DROPDOWN': 'Toggle Dropdown',
+	'ADD': 'Add',
+	'COMPLETE': 'Complete',
 	'LOADING': 'Loading...',
-	'PREV': 'Prev',
 	'NEXT': 'Next',
-	'COMPLETE': 'Complete'
+	'NONE_SELECTED': 'None selected',
+	'PREV': 'Prev',
+	'THIS_IN_THAT': '%this% in %that%',
+	'TOGGLE_DROPDOWN': 'Toggle Dropdown'
 };
 
 export default strings;

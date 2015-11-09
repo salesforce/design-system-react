@@ -12,21 +12,23 @@ import Multiselectable from '../traits/multiselectable';
 // require('../../scss/components/data-tables/flavors/responsive-stacked/index.scss');
 // require('../../scss/components/data-tables/flavors/responsive-stacked-horizontal/index.scss');
 
-export const CONTROL = 'table';
+export const CONTROL = 'slds-table';
 
 const DataTableCore = Lib.merge({}, Base, Multiselectable, {
+	CONTROL,
+	
 	cssClasses: {
-		CONTROL: Base.cssClasses.NAMESPACE + CONTROL,
-		NOHOVER: Base.cssClasses.NAMESPACE + 'no-row-hover',
-		SORTABLE: Base.cssClasses.NAMESPACE + 'is-sortable',
-		HINTPARENT: Base.cssClasses.NAMESPACE + 'hint-parent',
-		CELLSHRINK: Base.cssClasses.NAMESPACE + 'cell-shrink',
-		CELLWRAP: Base.cssClasses.NAMESPACE + 'cell-wrap',
-		SCROLLABLEX: Base.cssClasses.NAMESPACE + 'scrollable--x',
-		BORDERED: Base.cssClasses.NAMESPACE + CONTROL + '--bordered',
-		STRIPED: Base.cssClasses.NAMESPACE + CONTROL + '--striped',
-		STACKED: Base.cssClasses.NAMESPACE + 'max-medium-table--stacked',
-		STACKEDHORIZONTAL: Base.cssClasses.NAMESPACE + 'max-medium-table--stacked-horizontalviewports'
+		CONTROL: CONTROL,
+		NOHOVER: 'slds-no-row-hover',
+		SORTABLE: 'slds-is-sortable',
+		HINTPARENT: 'slds-hint-parent',
+		CELLSHRINK: 'slds-cell-shrink',
+		CELLWRAP: 'slds-cell-wrap',
+		SCROLLABLEX: 'slds-scrollable--x',
+		BORDERED: 'slds-table--bordered',
+		STRIPED: 'slds-table--striped',
+		STACKED: 'slds-max-medium-table--stacked',
+		STACKEDHORIZONTAL: 'slds-max-medium-table--stacked-horizontalviewports'
 	},
 
 	_defaultProperties: {

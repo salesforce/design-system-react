@@ -17,6 +17,8 @@ import Hideable from '../traits/hideable';
 export const CONTROL = 'slds-notify';
 
 const NotificationCore = Lib.merge({}, Base, Hideable, {
+	CONTROL,
+	
 	cssClasses: {
 		CONTROL: CONTROL,
 		ALERT: 'slds-notify--alert slds-theme--alert-texture'

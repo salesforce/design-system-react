@@ -214,6 +214,13 @@ $(function () {
 	void(button23);
 	void(button24);
 
+	$('#button-jquery-set-icon').on('click', function () {
+		button19.renderView({
+			icon: 'utility.chart',
+			text: 'Updated'
+		});
+	});
+
 	$('#button-stateful-jquery-select').on('click', function () {
 		button22.toggle(true);
 	});

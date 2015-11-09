@@ -12,6 +12,8 @@ import classNames from 'classnames';
 export const CONTROL = 'slds-badge';
 
 const BadgeCore = Lib.merge({}, Base, {
+	CONTROL,
+	
 	cssClasses: {
 		CONTROL: CONTROL
 	},

@@ -10,6 +10,8 @@ import classNames from 'classnames';
 export const CONTROL = 'slds-buttonview';
 
 const ButtonViewCore = Lib.merge({}, Base, {
+	CONTROL,
+	
 	cssClasses: {
 		ICON: PARENT_CONTROL + '__icon',
 		STATEFUL_ICON: PARENT_CONTROL + '__icon--stateful',

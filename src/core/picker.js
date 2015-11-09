@@ -12,6 +12,8 @@ import Openable from '../traits/openable';
 export const CONTROL = 'picker';
 
 const PickerCore = Lib.merge({}, Base, Openable, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL

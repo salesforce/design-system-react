@@ -9,6 +9,8 @@ import PicklistCore from './picklist';
 export const CONTROL = 'slds-combobox';
 
 const ComboboxCore = Lib.merge({}, PicklistCore, {
+	CONTROL,
+	
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: CONTROL,

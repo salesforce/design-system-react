@@ -18,6 +18,7 @@ const PicklistItem = React.createClass({
 	},
 
 	propTypes: {
+		id: React.PropTypes.string,
 		// TODO: explore if item PropTypes can be done better
 		item: React.PropTypes.shape({
 			getType: React.PropTypes.func.isRequired,
@@ -32,16 +33,14 @@ const PicklistItem = React.createClass({
 	},
 	
 	_renderCheckmark () {
-		if (this.props.selected) {
-			return <Svg className="slds-icon slds-icon--small slds-icon--left" icon="standard.task2" />;
-		}
+		return <Svg className="slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-m-right--small" icon="utility.check" />;
 	},
 
 	_renderIcon () {
 		const icon = this.props.item.getIcon();
 
 		if (Lib.isString(icon)) {
-			return <Svg className="slds-icon slds-icon--small slds-icon--right" icon={icon} />;
+			return <Svg className="slds-icon slds-icon--x-small slds-icon-text-default slds-m-left--small slds-shrink-none" icon={icon} />;
 		}
 	},
 
@@ -50,19 +49,21 @@ const PicklistItem = React.createClass({
 
 		switch (this.props.item.getType()) {
 			case 'header':
-				html = <li className={this.cssClasses.HEADER}><span className={this.cssClasses.HEADERTEXT}>{this.props.item.getText()}</span></li>;
+				html = <li className={this.cssClasses.HEADER} id={this.props.id}><span className={this.cssClasses.HEADERTEXT}>{this.props.item.getText()}</span></li>;
 				break;
 			case 'divider':
-				html = <li className={this.cssClasses.DIVIDER}></li>;
+				html = <li className={this.cssClasses.DIVIDER} id={this.props.id}></li>;
 				break;
 			default:
 				const disabled = this.props.item.getDisabled();
 
 				html = (
-					<li className={classNames('slds-dropdown__item', 'slds-has-icon--left', {'slds-is-selected': this.props.selected})} disabled={disabled}>
-					<a href="#" className="slds-truncate" onClick={this.handleClicked} aria-disabled={disabled}>
-						{this._renderCheckmark()}
-						{this.props.item.getText()}
+					<li className={classNames('slds-dropdown__item', {'slds-is-selected': this.props.selected})} disabled={disabled} id={this.props.id}>
+					<a href="#" onClick={this.handleClicked} aria-disabled={disabled}>
+						<p className="slds-truncate">
+							{this._renderCheckmark()}
+							{this.props.item.getText()}
+						</p>
 						{this._renderIcon()}
 					</a>
 					</li>

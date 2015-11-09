@@ -90,7 +90,9 @@ export const DropdownObject = {
 		const icon = iconString || this.getProperty('icon');
 
 		if (Lib.isString(icon) && icon.length > 0 && this.getProperty('swapIcon')) {
-			// TODO: Implement this, which will require an update to Button
+			this.button.renderView({
+				icon: icon
+			});
 		}
 	}
 };

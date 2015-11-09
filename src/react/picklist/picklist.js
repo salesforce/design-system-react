@@ -20,6 +20,7 @@ export const PicklistObject = {
 
 	propTypes: {
 		disabled: React.PropTypes.bool,
+		id: React.PropTypes.string,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.object
 		]),
@@ -31,6 +32,7 @@ export const PicklistObject = {
 	},
 
 	render () {
+		const triggerId = this._getTriggerId();
 		const item = this._getSelection();
 		const selectionName = item.getText() || this.state.strings.NONE_SELECTED;
 		const styles = {
@@ -38,8 +40,9 @@ export const PicklistObject = {
 		};
 
 		return (
-			<div className="slds-picklist" aria-expanded={this.state.isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div className="slds-picklist" id={this.state.id} aria-expanded={this.state.isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<Button
+					id={triggerId}
 					className="slds-picklist__label"
 					disabled={this.props.disabled}
 					onClick={this._handleClicked}
@@ -49,8 +52,7 @@ export const PicklistObject = {
 					<span className="slds-truncate">{selectionName}</span>
 					<Svg className="slds-icon" icon="utility.down" />
 				</Button>
-				<PicklistItems collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
-				<input className="slds-hide" readOnly aria-hidden="true" type="text"></input>
+				<PicklistItems id={this._getMenuId()} labelledBy={triggerId} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
 			</div>
 		);
 	},
@@ -65,9 +67,13 @@ export const PicklistObject = {
 	},
 
 	_handleKeyPressed (e) {
-		if (e.key && (/(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key) || e.key.length === 1)) {
+		if (e.key && (/(ArrowUp|ArrowDown|Escape)/.test(e.key) || e.key.length === 1)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this.setSelection);
+			const focusedIndex = this._keyboardNav(e.key, this.setSelection);
+			if (focusedIndex !== undefined) {
+				document.getElementById(this._getMenuItemId(focusedIndex)).getElementsByTagName('a')[0].focus();
+				console.log(document.getElementById(this._getMenuItemId(focusedIndex)));
+			}
 		}
 	}
 };
