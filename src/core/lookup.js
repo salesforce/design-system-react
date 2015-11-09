@@ -88,6 +88,33 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		}
 	},
 	
+	_scrollMenuItems () {
+		const _menu = this.elements.menu[0];
+		let _menuItem = _menu.getElementsByClassName('slds-theme--shade');
+		
+		if (_menuItem && _menuItem.length === 1) {
+			_menuItem = _menuItem[0];
+			
+			const menuHeight = _menu.offsetHeight;
+			
+			const menuTop = _menu.scrollTop;
+			const menuItemTop = _menuItem.offsetTop;
+			
+			if (menuItemTop < menuTop) {
+				_menu.scrollTop = menuItemTop;
+			} else {
+				const menuBottom = menuTop + menuHeight + _menu.offsetTop;
+				const menuItemBottom = menuItemTop + _menuItem.offsetHeight;
+				
+				if (menuItemBottom > menuBottom) {
+					_menu.scrollTop = menuItemBottom - menuHeight;
+				}
+			}
+		} else {
+			_menu.scrollTop = 0;
+		}
+	},
+	
 	search (searchString) {
 		if (this.getState(searchString) !== searchString) {
 			this.setState({

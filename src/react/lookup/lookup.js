@@ -117,8 +117,16 @@ let Lookup = Lib.merge({}, LookupCore, {
 		);
 	},
 	
+	componentDidUpdate () {
+		this._scrollMenuItems();
+	},
+	
 	_setInputRef (input) {
 		this.elements.input = Lib.wrapElement(ReactDOM.findDOMNode(input));
+	},
+	
+	_setMenuRef (menu) {
+		this.elements.menu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
 	},
 	
 	_handleChanged (e) {

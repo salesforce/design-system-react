@@ -1,7 +1,6 @@
 // LOOKUP MENU ITEMS - REACT FACADE
 
 import React from 'react';
-import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 const LookupMenuItems = React.createClass({
@@ -15,7 +14,7 @@ const LookupMenuItems = React.createClass({
 
 	render () {
 		return (
-			<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
+			<ul className="slds-lookup__list" role="presentation">
 				{this.props.collection.map((item, index) => {
 					const id = this.props.getMenuItemId(index);
 					const isHighlighted = this.props.activeDescendantId === id;
@@ -36,36 +35,6 @@ const LookupMenuItems = React.createClass({
 				})}
 			</ul>
 		);
-	},
-	
-	_setMenuRef (menu) {
-		this._menu = ReactDOM.findDOMNode(menu);
-	},
-	
-	componentDidUpdate () {
-		let _menuItem = this._menu.getElementsByClassName('slds-theme--shade');
-		
-		if (_menuItem && _menuItem.length === 1) {
-			_menuItem = _menuItem[0];
-			
-			const menuHeight = this._menu.offsetHeight;
-			
-			const menuTop = this._menu.scrollTop;
-			const menuItemTop = _menuItem.offsetTop;
-			
-			if (menuItemTop < menuTop) {
-				this._menu.scrollTop = menuItemTop;
-			} else {
-				const menuBottom = menuTop + menuHeight + this._menu.offsetTop;
-				const menuItemBottom = menuItemTop + _menuItem.offsetHeight;
-				
-				if (menuItemBottom > menuBottom) {
-					this._menu.scrollTop = menuItemBottom - menuHeight;
-				}
-			}
-		} else {
-			this._menu.scrollTop = 0;
-		}
 	},
 
 	_handleClicked (item, e) {
