@@ -110,8 +110,6 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 					_menu.scrollTop = menuItemBottom - menuHeight;
 				}
 			}
-		} else {
-			_menu.scrollTop = 0;
 		}
 	},
 	
