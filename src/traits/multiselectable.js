@@ -26,49 +26,46 @@ const Multiselectable = {
 		return !!_selection.findWhere(key);
 	},
 
-	_areItemsSelected (items, selection) {
-		const itemsAlreadySelected = [];
-		let itemNotSelected;
+	_areItemsSelected (items, selection, returnCollection) {
+		const itemsNotSelected = [];
+		let anItemWasSelected = false;
 
-		items.forEach( (item, index) => {
+		items.forEach( (item) => {
 			if (this._isItemSelected(item, selection)) {
-				itemsAlreadySelected.push(index);
+				anItemWasSelected = true;
 			} else {
-				itemNotSelected = true;
+				itemsNotSelected.push(item);
 			}
 		});
 
-		if (itemsAlreadySelected.length) {
-			itemsAlreadySelected.reverse().forEach( (indexOfItem) => {
-				items.splice(indexOfItem, 1);
-			});
-		}
-
-		return !itemNotSelected;
+		return returnCollection ? itemsNotSelected : anItemWasSelected;
 	},
 	
 	_selectItem (item, selectIndex) {
 		const selection = this._getSelectedItems();
 		const multipleItems = Lib.isArray(item);
+		const itemsPreviouslySelected = multipleItems ? this._areItemsSelected(item, selection, true) : !this._isItemSelected(item, selection);
 
 		const _select = Lib.bind(function _select () {
+			const itemsToSelect = multipleItems ? itemsPreviouslySelected : item;
+
 			if (this.getProperty('multiSelect')) {
 				if (selectIndex || selectIndex === 0) {
-					selection.add(item, { at: selectIndex });
+					selection.add(itemsToSelect, { at: selectIndex });
 				} else {
-					selection.add(item);
+					selection.add(itemsToSelect);
 				}
 			} else {
-				selection.reset(item);
+				selection.reset(itemsToSelect);
 			}
 
 			this.setProperties({ selection: selection._data });
 			if (Lib.isFunction(this._onSelected)) this._onSelected(selection);
 
-			this.trigger('changed', item._item, selection._data);
+			this.trigger('changed', selection._item, selection._data);
 		}, this);
 
-		if ( multipleItems ? !this._areItemsSelected(item, selection) : !this._isItemSelected(item, selection) ) {
+		if ( multipleItems ? itemsPreviouslySelected.length : itemsPreviouslySelected ) {
 			if (!Lib.isFunction(this._canSelect)) {
 				_select();
 			} else {
@@ -94,9 +91,12 @@ const Multiselectable = {
 	_deselectItem (item) {
 		const selection = this._getSelectedItems();
 		const multipleItems = Lib.isArray(item);
+		const itemsPreviouslySelected = multipleItems ? this._areItemsSelected(item, selection, true) : this._isItemSelected(item, selection);
 
 		const _deSelect = Lib.bind(function _deSelect () {
-			selection.remove(item);
+			const itemsToDeselect = multipleItems ? itemsPreviouslySelected : item;
+
+			selection.remove(itemsToDeselect);
 
 			this.setProperties({ selection: selection._data });
 			if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
@@ -104,7 +104,7 @@ const Multiselectable = {
 			this.trigger('changed', selection._item, selection._data);
 		}, this);
 		
-		if (multipleItems ? this._areItemsSelected(item, selection) : this._isItemSelected(item, selection)) {
+		if (multipleItems ? itemsPreviouslySelected.length : itemsPreviouslySelected) {
 			if (!Lib.isFunction(this._canDeselect)) {
 				_deSelect();
 			} else {
