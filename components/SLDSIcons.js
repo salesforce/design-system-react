@@ -45,6 +45,10 @@ export const ButtonIcon = React.createClass({
         if (this.props.destructive) {
           className += ' slds-button__icon--destructive';
         }
+        if (this.props.className) {
+          className += this.props.className;
+        }
+
 /*
         if(this.props.category === 'utility'){
             return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;
@@ -77,9 +81,6 @@ export const Icon = React.createClass({
         if (this.props.stateful) {
             className += '--stateful';
         }
-        if (this.props.className) {
-            className += ' ' +this.props.className;
-        }
         if (this.props.size) {
             className += ' slds-icon--' + this.props.size;
         }
@@ -87,6 +88,9 @@ export const Icon = React.createClass({
             className += ' slds-icon--' + this.props.position;
         }
         className = className + ' ' + iconClassName;
+        if (this.props.className) {
+            className += ' ' +this.props.className;
+        }
         return <span className={'slds-icon__container '} style={styles}><SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} style={this.props.style}  /></span>;
     }
 
@@ -101,7 +105,10 @@ export const InputIcon = React.createClass({
     },
 
     render() {
-        const className  = 'slds-input__icon slds-icon-text-default';
+        let className = 'slds-input__icon slds-icon-text-default';
+        if (this.props.className) {
+          className += ' ' + this.props.className;
+        }
         return <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} />;
     }
 
