@@ -24,12 +24,17 @@ module.exports = React.createClass( {
 
   getInitialState () {
     return {
-      modalIsOpen: false
+      modalIsOpen: false,
+      promptIsOpen:false
     };
   },
 
   openModal () {
     this.setState({modalIsOpen: true});
+  },
+
+  togglePrompt () {
+    this.setState({promptIsOpen: !this.state.promptIsOpen});
   },
 
   closeModal () {
@@ -133,10 +138,7 @@ module.exports = React.createClass( {
         </PrismCode>
 
         <div className='slds-p-vertical--large'>
-          <SLDSButton
-            label='Open Modal'
-            variant='brand'
-            onClick={this.openModal} />
+          <SLDSButton label='Open Modal' variant='brand' onClick={this.openModal} />
           <SLDSModal
             size='medium'
             directional={true}
@@ -150,6 +152,17 @@ module.exports = React.createClass( {
                 onRequestClose={this.closeModal}>
                 {this.getModalContent()}
               </SLDSModal>
+
+          <SLDSButton label='Open Prompt' variant='brand' onClick={this.togglePrompt} />
+          <SLDSModal
+            prompt='error'
+            size='medium'
+            isOpen={this.state.promptIsOpen}
+            title={<span>Service Unavailable</span>}
+            footer={[ <SLDSButton label='ok' variant='neutral' onClick={this.togglePrompt} /> ]}
+            >
+            Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.
+          </SLDSModal>
             </div>
           </div>
     );
