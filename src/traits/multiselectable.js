@@ -72,7 +72,7 @@ const Multiselectable = {
 			if (!Lib.isFunction(this._canSelect)) {
 				_select();
 			} else {
-				console.log('in this damn thihng');
+				this._canSelect(item, _select);
 			}
 		}
 	},
