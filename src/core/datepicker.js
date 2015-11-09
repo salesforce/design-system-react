@@ -141,6 +141,24 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		return this._monthNames[month];
 	},
 
+	_canSelect: function (item, callback) {
+		let selDates;
+
+		if (this.getProperty('multiSelect')) {
+			selDates = this.getSelectedItems();
+
+			if (selDates.length) {
+				if (item.getDate().getTime() !== selDates[0].date.getTime()) {
+					callback();
+				}
+			} else {
+				callback();
+			}
+		} else {
+			callback();
+		}
+	},
+
 	_getYear: function (baseDate) {
 		const date = this.getState('dateViewing') || baseDate;
 
