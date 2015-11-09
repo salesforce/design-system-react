@@ -20,17 +20,38 @@ class SLDSNotification extends React.Component {
     this.state = { isOpen: true };
   }
 
-  getClassName() {
-    return classNames(this.props.className, 'slds-notify ', {
-      [`slds-notify--${this.props.variant}`]: this.props.variant,
-      [`slds-theme--${this.props.theme}`]: this.props.theme,
-      [`slds-theme--alert-texture-animated`]: this.props.texture,
-    });
-  }
-
   renderIcon(){
     if(this.props.icon){
-      return <Icon category='utility' name={this.props.icon} size='small' className='slds-m-right--x-small slds-col slds-no-flex' />;
+      let classes = '';
+      if(this.props.variant === 'alert') {
+        classes = 'slds-m-right--x-small';
+      }
+      else if(this.props.variant === 'toast') {
+        classes = 'slds-m-right--small slds-col slds-no-flex';
+      }
+      return <Icon category='utility' name={this.props.icon} size='small' className={classes} />;
+    }
+  }
+
+  renderClose(){
+    let that = this;
+    if(this.props.dismissible){
+      let size = '';
+      if(this.props.variant === 'alert') {
+        size = 'medium';
+      }
+      else if(this.props.variant === 'toast') {
+        size = 'large';
+      }
+      return <SLDSButton
+            label='Dismiss Notification'
+            variant='icon'
+            iconName='close'
+            iconSize={size}
+            inverse={true}
+            className='slds-button slds-notify__close'
+            onClick={that.onDismiss.bind(that)}
+          />
     }
   }
 
@@ -39,28 +60,47 @@ class SLDSNotification extends React.Component {
     this.setState({isOpen:false});
   }
 
+  renderAlertContent(){
+    if(this.props.variant === 'alert'){
+      return(
+          <h2>
+            {this.renderIcon()}
+            {this.props.content}
+          </h2>
+      );
+    }
+  }
+
+  renderToastContent(){
+    if(this.props.variant === 'toast'){
+      return(
+        <section className="notify__content slds-grid">
+          {this.renderIcon()}
+          <div className="slds-col slds-align-middle">
+          <h2 className="slds-text-heading--small ">{this.props.content}</h2>
+          </div>
+        </section>
+      );
+    }
+  }
+
+  getClassName() {
+    return classNames(this.props.className, 'slds-notify ', {
+      [`slds-notify--${this.props.variant}`]: this.props.variant,
+      [`slds-theme--${this.props.theme}`]: this.props.theme,
+      [`slds-theme--alert-texture-animated`]: this.props.texture,
+    });
+  }
+
   render(){
     if(this.state.isOpen){
     return(
       <div className="slds-notify-container">
         <div className={this.getClassName()} role="alert">
-          <SLDSButton
-            label='Dismiss Notification'
-            variant='icon'
-            iconName='close'
-            iconSize='large'
-            inverse={true}
-            className='slds-button slds-notify__close'
-            onClick={this.onDismiss.bind(this)}
-          />
-
           <span className="slds-assistive-text">{this.props.theme}</span>
-
-          <section className="notify__content slds-grid">
-            {this.renderIcon()}
-            <h2 className="slds-col slds-align-middle slds-text-heading--small">{this.props.content}</h2>
-          </section>
-
+          {this.renderClose()}
+          {this.renderAlertContent()}
+          {this.renderToastContent()}
         </div>
       </div>
     );
@@ -75,7 +115,13 @@ SLDSNotification.propTypes = {
   variant: React.PropTypes.oneOf(['alert', 'toast']),
   theme: React.PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
   texture: React.PropTypes.bool,
+  dismissible: React.PropTypes.bool,
   onDismiss: React.PropTypes.func,
 };
+
+SLDSNotification.defaultProps = {
+  dismissible: true
+};
+
 module.exports = SLDSNotification;
 

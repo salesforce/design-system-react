@@ -115,7 +115,8 @@ module.exports = React.createClass( {
     const modalClass = {
       'slds-modal': true,
       'slds-fade-in-open':this.state.revealed,
-      'slds-modal--large':this.props.size === 'large'
+      'slds-modal--large':this.props.size === 'large',
+      'slds-modal--prompt':this.isPrompt()
     };
 
     return <div
@@ -135,7 +136,6 @@ module.exports = React.createClass( {
 
               {this.props.children}
 
-              {this.isPrompt() ? this.props.footer : null}
             </div>
 
             {this.footerComponent()}
@@ -167,12 +167,13 @@ module.exports = React.createClass( {
 
     const footerClass = {
       'slds-modal__footer': true,
-      'slds-modal__footer--directional': this.props.directional
+      'slds-modal__footer--directional': this.props.directional,
+      'slds-theme--default': this.isPrompt()
     };
 
     const hasFooter = this.props.footer && this.props.footer.length > 0;
 
-    if (!this.isPrompt() && hasFooter ) {
+    if (hasFooter ) {
       footer = (<div className={cx(footerClass)}>{this.props.footer}</div>);
     }
 
@@ -191,6 +192,7 @@ module.exports = React.createClass( {
 
     if (this.isPrompt()) {
       headerClasses.push(`slds-theme--${this.props.prompt}`);
+      headerClasses.push('slds-theme--alert-texture');
       headingClasses.push('slds-text-heading--small');
     } else {
       headingClasses.push('slds-text-heading--medium')

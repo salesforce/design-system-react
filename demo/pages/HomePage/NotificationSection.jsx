@@ -79,6 +79,7 @@ module.exports = React.createClass( {
   render() {
     let successMsg = ['New contact added ', <a href="#" key="0123">Sara Smith</a>];
     let errorMsg = 'There was a problem updating the record.';
+    let offlineMsg = 'Sandbox: TestOrg123';
     let toastStyle = { display: 'inline-block'};
     return (
 
@@ -101,6 +102,9 @@ module.exports = React.createClass( {
               </div>
               <div className="slds-p-bottom--small">
                 {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='error' icon='warning' texture={true} content={errorMsg} onDismiss={this.dismissToast} />}
+              </div>
+              <div className="slds-p-bottom--small">
+                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' icon='user' content={offlineMsg} dismissible={false} onDismiss={this.dismissToast} />}
               </div>
             </div>
           </div>
