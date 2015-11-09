@@ -18,18 +18,12 @@ const PicklistItems = React.createClass({
 		]).isRequired,
 		id: React.PropTypes.string,
 		getMenuItemId: React.PropTypes.func.isRequired,
+		labelledBy: React.PropTypes.string,
 		onSelected: React.PropTypes.func.isRequired,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.object
 		]),
 		show: React.PropTypes.bool.isRequired
-	},
-
-	cssClasses: {
-		DROPDOWN: 'slds-dropdown',
-		LEFT: 'slds-dropdown--left slds-dropdown--small',
-		MENU: 'slds-dropdown--menu',
-		LIST: 'dropdown__list'
 	},
 
 	_menuItems () {
@@ -42,8 +36,8 @@ const PicklistItems = React.createClass({
 
 	render () {
 		return (
-			<div className={classNames(this.cssClasses.DROPDOWN, this.cssClasses.LEFT, {'slds-hide': !this.props.show})} id={this.props.id}>
-				<ul className={this.cssClasses.LIST} role="menu" ref={this.cssClasses.LIST}>
+			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--menu', {'slds-hide': !this.props.show})} id={this.props.id}>
+				<ul className="slds-dropdown__list" role="menu" aria-labelledby={this.props.labelledBy}>
 				{this._menuItems()}
 				</ul>
 			</div>
