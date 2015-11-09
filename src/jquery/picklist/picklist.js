@@ -59,6 +59,7 @@ export const PicklistObject = {
 		const $p = $a.find('p');
 		$p.text(item.getText());
 		
+		// TODO: Is this really the best way to add the checks?
 		const $check = this._renderIcon('utility.check', 'slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-m-right--small');
 		$check.prependTo($p);
 
