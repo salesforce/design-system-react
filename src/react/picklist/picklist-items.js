@@ -27,9 +27,9 @@ const PicklistItems = React.createClass({
 
 	cssClasses: {
 		DROPDOWN: 'slds-dropdown',
-		LEFT: 'slds-dropdown--left',
+		LEFT: 'slds-dropdown--left slds-dropdown--small',
 		MENU: 'slds-dropdown--menu',
-		LIST: 'slds-dropdown__list'
+		LIST: 'dropdown__list'
 	},
 
 	_menuItems () {
@@ -42,7 +42,7 @@ const PicklistItems = React.createClass({
 
 	render () {
 		return (
-			<div className={classNames(this.cssClasses.DROPDOWN, this.cssClasses.LEFT, this.cssClasses.MENU, {'slds-hide': !this.props.show})} id={this.props.id}>
+			<div className={classNames(this.cssClasses.DROPDOWN, this.cssClasses.LEFT, {'slds-hide': !this.props.show})} id={this.props.id}>
 				<ul className={this.cssClasses.LIST} role="menu" ref={this.cssClasses.LIST}>
 				{this._menuItems()}
 				</ul>
