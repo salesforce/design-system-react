@@ -23,10 +23,13 @@ import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
-// [LookupButton](lookup-button), [LookupMenuItem](lookup-menu-item), and [LookupPill](lookup-pill) are default implementations of the control that give it the standard Lightning Design System look and feel. These may be overriden via the properties `menuFooterElement`, `menuHeaderElement`, `menuItemElement`, and `pillElement`.
-import LookupButton from './lookup-button';
-import LookupMenuItem from './lookup-menu-item';
-import LookupPill from './lookup-pill';
+// Split out some rendering logic, just to make things easier to read.
+import Action from './lookup-action';
+import MenuItems from './lookup-menu-items';
+import Pills from './lookup-pills';
+
+// Provides the default renderers for items, pills, the header, and the footer.
+import LookupDefaultRenderers from './lookup-default-renderers';
 
 // The [Svg helper](../svg/svg) for React provides a simple wrapper around the markup required for SVGs, and uses `Lib.getSVGPath` to convert strings in the format `sprite file`.`icon name` into full paths.
 import Svg from '../svg/svg';
@@ -34,6 +37,8 @@ import Svg from '../svg/svg';
 /* TODO: Finish documenting the control's methods. */
 let Lookup = Lib.merge({}, LookupCore, {
 	mixins: [State, Events, genericWillMount],
+
+	displayName: CONTROL,
 	
 	propTypes: {
 		collection: React.PropTypes.oneOfType([
@@ -42,24 +47,28 @@ let Lookup = Lib.merge({}, LookupCore, {
 		]).isRequired,
 		id: React.PropTypes.string,
 		label: React.PropTypes.string.isRequired,
-		menuFooterElement: React.PropTypes.oneOfType([
-			React.PropTypes.element,
+		menuFooterRenderer: React.PropTypes.oneOfType([
+			React.PropTypes.func,
 			React.PropTypes.bool
 		]),
-		menuHeaderElement: React.PropTypes.oneOfType([
-			React.PropTypes.element,
+		menuHeaderRenderer: React.PropTypes.oneOfType([
+			React.PropTypes.func,
 			React.PropTypes.bool
 		]),
-		menuItemElement: React.PropTypes.element,
+		menuItemRenderer: React.PropTypes.func,
 		onAddClick: React.PropTypes.func,
 		onChanged: React.PropTypes.func,
 		onFilter: React.PropTypes.func,
-		pillElement: React.PropTypes.element,
+		pillRenderer: React.PropTypes.func,
 		searchIcon: React.PropTypes.string,
 		selection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
 		])
+	},
+	
+	getDefaultProps () {
+		return LookupDefaultRenderers;
 	},
 	
 	componentWillMount () {
@@ -69,128 +78,70 @@ let Lookup = Lib.merge({}, LookupCore, {
 	componentWillReceiveProps () {
 		this._configureKeyboardNavigation();
 	},
-	
-	_renderInput (hasSelection, selectedItems) {
-		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
+
+	render () {
 		const inputId = this._getInputId();
+		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
+		const selectedItems = this._getSelectedItems();
+		const hasSelection = selectedItems.length() > 0;
+		let pills;
+		let header;
+		let footer;
+		
+		if (Lib.isFunction(this.props.menuHeaderRenderer)) {
+			header = <Action id={this._getMenuItemId('header')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuHeaderRenderer} searchString={this.state.searchString} strings={this.state.strings} />;
+		}
+		
+		if (Lib.isFunction(this.props.menuFooterRenderer)) {
+			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} onClick={this.props.onAddClick} />;
+		}
+		
+		if (hasSelection) {
+			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} />;
+		}
 		
 		return (
-		<div className="slds-form-element">
-			<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
-			<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
-				<Svg icon={this.props.searchIcon} className="slds-input__icon" />
-				{hasSelection && this._renderPillContainer(selectedItems)}
-				<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
+		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true">
+			<div className="slds-form-element">
+				<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
+				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
+					<Svg icon={this.props.searchIcon} className="slds-input__icon" />
+					{pills}
+					<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
+				</div>
+			</div>
+			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
+				{header}
+				<MenuItems activeDescendantId={activeDescendantId} collection={this._collection} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
+				{footer}
 			</div>
 		</div>
 		);
 	},
 	
-	_renderPillContainer (selectedItems) {
-		return (
-		<div className="slds-pill-container slds-show">
-			<span className="slds-pill slds-pill--bare">
-				{this._renderPills(selectedItems)}
-				<button className="slds-button slds-button--icon-bare" onClick={this.deselectAll}>
-					<Svg icon="utility.close" className="slds-button__icon" />
-					<span className="slds-assistive-text">Remove</span>
-				</button>
-			</span>
-		</div>
-		);
-	},
-	
-	_renderPills (selectedItems) {
-		return selectedItems.map((item, index) => {
-			const props = { item, key: index };
-			let element;
-			
-			if (this.props.pillElement) {
-				element = React.cloneElement(this.props.pillElement, props);
-			} else {
-				element = <LookupPill {...props} />;
-			}
-			
-			return element;
-		});
-	},
-	
-	_renderMenu () {
-		return (
-		<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
-			{this._renderMenuHeader()}
-			<ul className="slds-lookup__list" role="presentation" ref={this._setMenuRef}>
-				{this._renderMenuItems()}
-			</ul>
-			{this._renderMenuFooter()}
-		</div>
-		);
-	},
-	
-	_renderMenuButton (props, menuButtonElement) {
-		let element;
+	componentDidUpdate () {
+		this._scrollMenuItems();
 		
-		if (menuButtonElement === true) {
-			element = <LookupButton {...props} />;
-		} else if (menuButtonElement) {
-			element = React.cloneElement(menuButtonElement, props);
+		// TODO: This logic probably needs to be cleaned up and will have to be altered to work with multiselect, but it does help make for a smooth experience when navigating by keyboard.
+		if (this._focusOnPills) {
+			const deselectPillsButton = this.elements.input[0].parentNode.getElementsByTagName('button');
+			
+			if (deselectPillsButton && deselectPillsButton.length === 1) {
+				deselectPillsButton[0].focus();
+				this._focusOnPills = false;
+			}
+		} else if (this._focusOnInput) {
+			this.elements.input[0].focus();
+			this._focusOnInput = false;
 		}
-		
-		return element;
-	},
-	
-	_renderMenuHeader () {
-		const props = {
-			id: this._getMenuItemId('header'),
-			icon: this.props.searchIcon,
-			label: '"' + this.state.searchString + '" in ' + this.props.label
-		};
-		
-		return this._renderMenuButton(props, this.props.menuHeaderElement);
-	},
-	
-	_renderMenuFooter () {
-		const props = {
-			id: this._getMenuItemId('footer'),
-			icon: 'utility.add',
-			label: 'Add',
-			onClick: this.props.onAddClick
-		};
-		
-		return this._renderMenuButton(props, this.props.menuFooterElement);
-	},
-	
-	_renderMenuItems () {
-		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
-		return this._collection.map((item, index) => {
-			const id = this._getMenuItemId(index);
-			const props = { item, id, onSelected: this._selectItem, key: index, isHighlighted: activeDescendantId === id };
-			let element;
-			
-			if (this.props.menuItemElement) {
-				element = React.cloneElement(this.props.menuItemElement, props);
-			} else {
-				element = <LookupMenuItem {...props} />;
-			}
-			
-			return element;
-		});
-	},
-
-	render () {
-		const selectedItems = this._getSelectedItems();
-		const hasSelection = selectedItems.length() > 0;
-		
-		return (
-		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-			{this._renderInput(hasSelection, selectedItems)}
-			{this._renderMenu(hasSelection)}
-		</div>
-		);
 	},
 	
 	_setInputRef (input) {
 		this.elements.input = Lib.wrapElement(ReactDOM.findDOMNode(input));
+	},
+	
+	_setMenuRef (menu) {
+		this.elements.menu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
 	},
 	
 	_handleChanged (e) {
@@ -205,11 +156,20 @@ let Lookup = Lib.merge({}, LookupCore, {
 		this.open();
 	},
 	
+	_handleDeselect (item) {
+		if (item && this.props.multiSelect) {
+			this._deselectItem(item);
+		} else if (!item) {
+			this.deselectAll();
+			this._focusOnInput = true;
+		}
+	},
+	
 	_configureKeyboardNavigation () {
 		const navigableItems = this._getNavigableItems();
 		
-		if (this.props.menuHeaderElement) navigableItems.indexes.unshift('header');
-		if (this.props.menuFooterElement) navigableItems.indexes.push('footer');
+		if (this.props.menuHeaderRenderer) navigableItems.indexes.unshift('header');
+		if (this.props.menuFooterRenderer) navigableItems.indexes.push('footer');
 		
 		this._navigableItems = navigableItems;
 	},
@@ -217,7 +177,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this.selectItem);
+			this._keyboardNav(e.key, this._keyboardSelect);
 		} else if (e.key.length === 1) {
 			if (!this.state.isOpen) this.open();
 			this.elements.input[0].focus();

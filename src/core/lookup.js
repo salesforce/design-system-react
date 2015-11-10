@@ -32,8 +32,6 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	_defaultProperties: {
 		collection: [],
 		multiSelect: false,
-		menuFooterElement: true,
-		menuHeaderElement: false, // Defaulting to hidden for the single scope version
 		searchIcon: 'utility.search'
 	},
 	
@@ -41,41 +39,27 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		searchString: ''
 	},
 
-	/* Accessors: These may be supplied in the options hash to override default behavior
-
-	 textProp ()
-	 Return the name of the property that contains the text
-
-	 getText (item)
-	 Return the text value to display in the list
-	 item => object wrapped in an Item Adapter
-
-	 getKey (item)
-	 Return either an object with key/value pairs to match or a match function
-	 Use this to reduce the number of fields required for searching if a unique key is available
-	 item => object wrapped in an Item Adapter
-
-	 getIcon (item)
-	 Return a string that points to the appropriate icon
-	 item => object wrapped in an Item Adapter
-
-	 */
-
+	// ### Accessors
+	// These may be supplied in the options hash / properties to override default behavior. All accessors take 'item' as their first properties, which is an object from the collection wrapped in an item adapter.
 	accessors: {
-		textProp () {
-			return 'text';
-		},
-
+		// Return the text value to display in the list
 		getText (item) {
-			return item.get(item.textProp());
+			return item.get('text');
 		},
 
+		// Return either an object with key/value pairs to match or a match function. Use this to reduce the number of fields required for searching if a unique key is available.
 		getKey (item) {
 			return item.get();
 		},
 
+		// Return a string that points to the appropriate icon.
 		getIcon (item) {
 			return item.get('icon');
+		},
+
+		// Return a function that renders the contents of each menu item. Defaults to a single renderer for the whole control.
+		getRenderer () {
+			return this.getProperty('menuItemRenderer');
 		}
 	},
 	
@@ -88,6 +72,9 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		this.setState({
 			focusedIndex: this._defaultState.focusedIndex
 		});
+		
+		const _menu = this.elements.menu[0];
+		_menu.scrollTop = 0;
 	},
 	
 	_getInputId () {
@@ -102,6 +89,36 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		if (index !== undefined) {
 			return this._getMenuId() + '-item-' + index;
 		}
+	},
+	
+	_scrollMenuItems () {
+		const _menu = this.elements.menu[0];
+		let _menuItem = _menu.getElementsByClassName('slds-theme--shade');
+		
+		if (_menuItem && _menuItem.length === 1) {
+			_menuItem = _menuItem[0];
+			
+			const menuHeight = _menu.offsetHeight;
+			
+			const menuTop = _menu.scrollTop;
+			const menuItemTop = _menuItem.offsetTop;
+			
+			if (menuItemTop < menuTop) {
+				_menu.scrollTop = menuItemTop;
+			} else {
+				const menuBottom = menuTop + menuHeight + _menu.offsetTop;
+				const menuItemBottom = menuItemTop + _menuItem.offsetHeight;
+				
+				if (menuItemBottom > menuBottom) {
+					_menu.scrollTop = menuItemBottom - menuHeight;
+				}
+			}
+		}
+	},
+	
+	_keyboardSelect (selection) {
+		this.selectItem(selection);
+		this._focusOnPills = true;
 	},
 	
 	search (searchString) {

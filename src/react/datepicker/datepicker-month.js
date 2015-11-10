@@ -4,7 +4,10 @@
 import React from 'react';
 import Button from '../button/button';
 
+export const CONTROL = 'datepicker-year';
+
 const DateMonth = React.createClass({
+	displayName: CONTROL,
 
 	propTypes: {
 		monthName: React.PropTypes.string,

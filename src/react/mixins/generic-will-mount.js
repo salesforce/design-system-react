@@ -11,7 +11,7 @@ const genericWillMount = {
 	},
 	
 	componentDidMount () {
-		this.elements.wrapper = Lib.wrapElement(ReactDOM.findDOMNode(this));
+		this.element = this.$el = this.elements.control = Lib.wrapElement(ReactDOM.findDOMNode(this));
 	},
 
 	// These are handled slightly differently than your average props, so they need to be kept in sync here

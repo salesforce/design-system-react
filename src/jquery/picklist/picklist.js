@@ -32,7 +32,6 @@ export const PicklistObject = {
 
 	_initElements () {
 		this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
-		this.elements.hiddenField = this.element.find('input.slds-hide');
 		this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
 		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
@@ -55,16 +54,19 @@ export const PicklistObject = {
 		$li.prop('disabled', disabled);
 
 		const $a = $li.find('a');
-		$a.text(item.getText());
-
-		if (disabled) {
-			$a.attr('aria-disabled', true);
-		}
+		$a.attr('aria-disabled', disabled);
+		
+		const $p = $a.find('p');
+		$p.text(item.getText());
+		
+		// TODO: Is this really the best way to add the checks?
+		const $check = this._renderIcon('utility.check', 'slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-m-right--small');
+		$check.prependTo($p);
 
 		const icon = item.getIcon();
 
 		if (Lib.isString(icon) && icon.length > 0) {
-			const $icon = this._renderIcon(icon, 'slds-icon--small slds-icon--right');
+			const $icon = this._renderIcon(icon, 'slds-icon slds-icon--x-small slds-icon-text-default slds-m-left--small slds-shrink-none');
 			$a.append($icon);
 		}
 
@@ -115,7 +117,6 @@ export const PicklistObject = {
 		// Show the current selection if there is one
 		const selectionName = selection.getText() || strings.NONE_SELECTED;
 		elements.label.text(selectionName);
-		elements.hiddenField.val(selection.getText());
 
 		this._renderMenu(elements);
 
@@ -146,7 +147,6 @@ export const PicklistObject = {
 		if (this.rendered) {
 			const strings = this.getState('strings');
 
-			this.elements.hiddenField.val(item.getText());
 			this.elements.label.text(item.getText() || strings.NONE_SELECTED);
 
 			this._addCheckmark(this.elements);
@@ -231,11 +231,9 @@ export const PicklistObject = {
 
 		if ($li) {
 			$li.parent()
-				.find('.slds-is-selected').removeClass('slds-is-selected')
-				.find('svg.slds-icon--left').remove();
+				.find('.slds-is-selected').removeClass('slds-is-selected');
 
 			$li.addClass('slds-is-selected');
-			$li.find('a').prepend(this._renderIcon('standard.task2', 'slds-icon--small slds-icon--left'));
 		}
 	},
 

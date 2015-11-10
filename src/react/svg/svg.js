@@ -7,8 +7,11 @@ import * as Lib from '../../lib/lib';
 import React from 'react';
 import isIcon from '../mixins/custom-prop-types/icon.js';
 
+export const CONTROL = 'svg';
 
 export const SvgObject = {
+	displayName: CONTROL,
+
 	propTypes: {
 		icon: isIcon
 	},

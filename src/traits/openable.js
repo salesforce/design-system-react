@@ -15,7 +15,7 @@ const Openable = {
 	open () {
 		const _open = Lib.bind(function _open () {
 			this.setState({ isOpen: true });
-			if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse();
+			if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse(true);
 	
 			document.addEventListener('click', this._closeOnClick, false);
 			this.trigger('opened');
@@ -30,7 +30,7 @@ const Openable = {
 
 	close () {
 		this.setState({ isOpen: false });
-		if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse();
+		if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse(false);
 
 		// TODO: Once we have a destroy event we might want to remove this there as well
 		document.removeEventListener('click', this._closeOnClick, false);

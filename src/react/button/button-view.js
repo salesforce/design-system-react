@@ -11,6 +11,8 @@ import State from '../mixins/state';
 import isIcon from '../mixins/custom-prop-types/icon.js';
 
 export const ButtonViewObject = {
+	displayName: CONTROL,
+
 	propTypes: {
 		assistiveText: React.PropTypes.string,
 		icon: isIcon,

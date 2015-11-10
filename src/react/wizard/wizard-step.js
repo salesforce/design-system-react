@@ -2,7 +2,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
+export const CONTROL = 'wizard-step';
+
 const WizardStep = React.createClass({
+	displayName: CONTROL,
+
 	propTypes: {
 		currentIndex: React.PropTypes.number.isRequired,
 		index: React.PropTypes.number.isRequired,

@@ -14,6 +14,8 @@ import PicklistItems from '../picklist/picklist-items';
 import Button from '../button/button';
 
 export const DropdownObject = Lib.merge(PicklistObject, {
+	displayName: CONTROL,
+
 	propTypes: {
 		// TODO: Type of collection unknown until parsed by Data Adapter
 		collection: React.PropTypes.oneOfType([
@@ -46,10 +48,12 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 	},
 
 	render () {
+		const triggerId = this._getTriggerId();
+		
 		return (
 			<div className="slds-dropdown-trigger" id={this.state.id} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-				<Button icon={this._getIcon()} iconStyle={this._getStyle()} disabled={this.props.disabled} />
-				<PicklistItems id={this._getMenuId()} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={!this.props.disabled} onSelected={this._handleMenuItemSelected} />
+				<Button id={triggerId} icon={this._getIcon()} iconStyle={this._getStyle()} disabled={this.props.disabled} aria-haspopup="true" />
+				<PicklistItems id={this._getMenuId()} labelledBy={triggerId} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={!this.props.disabled} onSelected={this._handleMenuItemSelected} />
 			</div>
 		);
 	}

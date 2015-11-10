@@ -10,6 +10,8 @@ import State from '../mixins/state';
 import Events from '../mixins/events';
 
 export const SearchObject = {
+	displayName: CONTROL,
+
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		onDisabled: React.PropTypes.func,

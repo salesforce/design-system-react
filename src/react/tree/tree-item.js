@@ -6,7 +6,11 @@ import React from 'react';
 // Third party
 import classNames from 'classnames';
 
+export const CONTROL = 'tree-item';
+
 const TreeItem = React.createClass({
+	displayName: CONTROL,
+
 	propTypes: {
 		// TODO: Modify when tree data adapter gets set up
 		item: React.PropTypes.shape({

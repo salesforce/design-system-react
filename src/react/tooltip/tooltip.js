@@ -15,6 +15,8 @@ import genericWillMount from '../mixins/generic-will-mount';
 import mountable from '../mixins/custom-prop-types/mountable';
 
 let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
+	displayName: CONTROL,
+
 	propTypes: {
 		align: mountable,
 		container: mountable,
