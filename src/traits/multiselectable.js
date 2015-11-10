@@ -131,7 +131,7 @@ const Multiselectable = {
 		this.setProperties({ selection: selection._data });
 		if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
 			
-		this.trigger('changed', null, selection._data);
+		this.trigger('changed', [null, selection._data]);
 	}
 };
 
