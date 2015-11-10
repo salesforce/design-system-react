@@ -11,8 +11,11 @@ const Events = {
 			if (Lib.isString(this.eventSuffix)) {
 				name = [name, this.eventSuffix].join('.');
 			}
+
+			const params = [];
+			params.push(...args);
 			
-			this.element.trigger(name, ...args);
+			this.element.trigger(name, params);
 		}
 	}
 };
