@@ -37,6 +37,8 @@ import Svg from '../svg/svg';
 /* TODO: Finish documenting the control's methods. */
 let Lookup = Lib.merge({}, LookupCore, {
 	mixins: [State, Events, genericWillMount],
+
+	displayName: CONTROL,
 	
 	propTypes: {
 		collection: React.PropTypes.oneOfType([
@@ -76,31 +78,13 @@ let Lookup = Lib.merge({}, LookupCore, {
 	componentWillReceiveProps () {
 		this._configureKeyboardNavigation();
 	},
-	
-	_renderInput (hasSelection, selectedItems, activeDescendantId) {
-		const inputId = this._getInputId();
-		let pills;
-		
-		if (hasSelection) {
-			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} />;
-		}
-		
-		return (
-			<div className="slds-form-element">
-				<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
-				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
-					<Svg icon={this.props.searchIcon} className="slds-input__icon" />
-					{pills}
-					<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} ref={this._setInputRef} />
-				</div>
-			</div>
-		);
-	},
 
 	render () {
+		const inputId = this._getInputId();
 		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
 		const selectedItems = this._getSelectedItems();
 		const hasSelection = selectedItems.length() > 0;
+		let pills;
 		let header;
 		let footer;
 		
@@ -112,9 +96,20 @@ let Lookup = Lib.merge({}, LookupCore, {
 			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} onClick={this.props.onAddClick} />;
 		}
 		
+		if (hasSelection) {
+			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} />;
+		}
+		
 		return (
-		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true" onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-			{this._renderInput(hasSelection, selectedItems, activeDescendantId)}
+		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true">
+			<div className="slds-form-element">
+				<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
+				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
+					<Svg icon={this.props.searchIcon} className="slds-input__icon" />
+					{pills}
+					<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
+				</div>
+			</div>
 			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 				{header}
 				<MenuItems activeDescendantId={activeDescendantId} collection={this._collection} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
@@ -124,8 +119,29 @@ let Lookup = Lib.merge({}, LookupCore, {
 		);
 	},
 	
+	componentDidUpdate () {
+		this._scrollMenuItems();
+		
+		// TODO: This logic probably needs to be cleaned up and will have to be altered to work with multiselect, but it does help make for a smooth experience when navigating by keyboard.
+		if (this._focusOnPills) {
+			const deselectPillsButton = this.elements.input[0].parentNode.getElementsByTagName('button');
+			
+			if (deselectPillsButton && deselectPillsButton.length === 1) {
+				deselectPillsButton[0].focus();
+				this._focusOnPills = false;
+			}
+		} else if (this._focusOnInput) {
+			this.elements.input[0].focus();
+			this._focusOnInput = false;
+		}
+	},
+	
 	_setInputRef (input) {
 		this.elements.input = Lib.wrapElement(ReactDOM.findDOMNode(input));
+	},
+	
+	_setMenuRef (menu) {
+		this.elements.menu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
 	},
 	
 	_handleChanged (e) {
@@ -145,6 +161,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this._deselectItem(item);
 		} else if (!item) {
 			this.deselectAll();
+			this._focusOnInput = true;
 		}
 	},
 	
@@ -160,7 +177,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this.selectItem);
+			this._keyboardNav(e.key, this._keyboardSelect);
 		} else if (e.key.length === 1) {
 			if (!this.state.isOpen) this.open();
 			this.elements.input[0].focus();

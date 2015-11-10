@@ -13,8 +13,12 @@ import genericWillMount from '../mixins/generic-will-mount';
 import Button from '../button/button';
 import Dropdown from '../dropdown/dropdown';
 
+export const CONTROL = 'slds-button-group';
+
 export const ButtonGroupObject = {
 	mixins: [State, Events, genericWillMount],
+
+	displayName: CONTROL,
 
 	propTypes: {
 		children: function (props, propName, componentName) {
@@ -42,8 +46,6 @@ export const ButtonGroupObject = {
 		);
 	}
 };
-
-const CONTROL = 'slds-button-group';
 
 let ButtonGroup = Lib.merge({}, ButtonGroupObject);
 

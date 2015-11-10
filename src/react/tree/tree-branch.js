@@ -15,7 +15,11 @@ import Button from '../button/button';
 
 let InnerTreeBranch;
 
+export const CONTROL = 'tree-branch';
+
 const TreeBranch = React.createClass({
+	displayName: CONTROL,
+
 	propTypes: {
 		autoOpenLevel: React.PropTypes.number.isRequired,
 		autoOpenLimit: React.PropTypes.number.isRequired,

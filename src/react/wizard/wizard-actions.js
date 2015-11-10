@@ -1,7 +1,11 @@
 // Framework specific
 import React from 'react';
 
-const WizardStep = React.createClass({
+export const CONTROL = 'wizard-actions';
+
+const WizardActions = React.createClass({
+	displayName: CONTROL,
+
 	propTypes: {
 		strings: React.PropTypes.object.isRequired,
 		isLast: React.PropTypes.bool.isRequired,
@@ -20,4 +24,4 @@ const WizardStep = React.createClass({
 	}
 });
 
-export default WizardStep;
+export default WizardActions;

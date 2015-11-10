@@ -3,7 +3,10 @@
 // Framework specific
 import React from 'react';
 
+export const CONTROL = 'data-table-item';
+
 const DataTableItem = React.createClass({
+	displayName: CONTROL,
 
 	// TODO: Break TD cell out into it's own child component, so that the shape of the headers object can be tested
 	propTypes: {

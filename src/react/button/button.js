@@ -18,6 +18,8 @@ import ButtonView from './button-view';
 export const ButtonObject = {
 	mixins: [State, Events, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		assistiveText: React.PropTypes.string,
 		icon: isIcon,

@@ -34,11 +34,6 @@ export const DropdownObject = {
 		this._initElements();
 	},
 	
-	_initElements () {
-		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
-		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
-	},
-	
 	_bindUIEvents () {
 		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
 	},

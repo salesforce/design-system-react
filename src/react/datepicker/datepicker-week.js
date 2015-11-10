@@ -5,7 +5,10 @@ import React from 'react';
 
 import DateDay from './datepicker-day';
 
+export const CONTROL = 'datepicker-week';
+
 const DateInput = React.createClass({
+	displayName: CONTROL,
 
 	propTypes: {
 		week: React.PropTypes.array

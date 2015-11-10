@@ -16,6 +16,8 @@ import classNames from 'classnames';
 export const CheckboxObject = {
 	mixins: [State, Events, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		checked: React.PropTypes.bool,
 		disabled: React.PropTypes.bool,

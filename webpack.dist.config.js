@@ -33,7 +33,6 @@ var config = {
 	devtool: 'source-map',
 	output: {
 		libraryTarget: 'amd',
-		library: 'Facades',
 		path: __dirname + '/dist/',
 		publicPath: '/dist/',
 		filename: '[name].js'
