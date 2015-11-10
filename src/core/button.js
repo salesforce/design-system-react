@@ -1,23 +1,27 @@
-// BUTTON CORE
+// # Button Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
+// Inherit from the [base control](base).
 import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
 import SelectableBoolean from '../traits/selectable-boolean';
 
-// Third party
+// Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
 
-export const CONTROL = 'slds-button';
+export const CONTROL = 'Button';
 
 const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 	CONTROL,
 	
 	// TODO: add button property or check for button parent, inverse, size, etc.
 	cssClasses: {
-		'CONTROL': CONTROL,
+		'CONTROL': 'slds-button',
 		'NOT_SELECTED': 'slds-not-selected'
 	},
 	

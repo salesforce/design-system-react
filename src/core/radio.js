@@ -1,19 +1,19 @@
-// RADIO CORE
+// # Radio Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
 import CheckboxCore from './checkbox';
 
-// Styles
-// require('../../scss/components/forms/flavors/form-element/index.scss');
-// require('../../scss/components/forms/flavors/radio/index.scss');
 
-export const CONTROL = 'slds-radio';
+export const CONTROL = 'Radio';
 
 const RadioCore = Lib.merge({}, CheckboxCore, {
 	CONTROL,
 	
 	cssClasses: {
-		CONTROL: CONTROL,
+		CONTROL: 'slds-radio',
 		FAUX: 'slds-radio--faux'
 	}
 });

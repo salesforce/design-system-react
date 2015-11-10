@@ -13,7 +13,6 @@ import '../data/vanilla';
 const Base = {
 	// Define shared CSS classes to be used across every control.
 	cssClasses: {
-		NAMESPACE: 'slds-',
 		ASSISTIVE_TEXT: 'slds-assistive-text',
 		LABEL: 'slds-form-element__label',
 		CONTROL: 'slds-form-element__control'

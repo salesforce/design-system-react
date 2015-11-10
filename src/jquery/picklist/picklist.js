@@ -244,60 +244,6 @@ export const PicklistObject = {
 
 Lib.merge(Picklist.prototype, PicklistCore, Events, DOM, State, Svg, PicklistObject);
 
-// LEGACY METHODS
-//
-
-// aliased by getValue and selectedItem
-function selectedItem () {
-	let selection = this._getSelection().get();
-
-	if (Lib.isObject(selection)) {
-		selection = Lib.extend({}, selection);
-
-		selection.selected = true;
-		delete selection._itemType;
-	} else {
-		selection = null;
-	}
-
-	return selection;
-}
-
-// TODO: add emptyLabelHTML that then overrides NONE_SELECTED
-
-export const legacyMethods = {
-	getValue: selectedItem,
-	selectedItem: selectedItem,
-
-	selectByValue (value) {
-		return this.setSelection({ value: value });
-	},
-
-	selectByText (text) {
-		return this.setSelection(item => {
-			const itemText = item && item.getText();
-
-			return item && Lib.isString(itemText) && Lib.isString(text) && itemText.toLowerCase() === text.toLowerCase();
-		});
-	},
-
-	selectBySelector (selector) {
-		const $item = $(selector);
-		return this.setSelection($item.data('item'));
-	},
-
-	selectByIndex (index) {
-		let i = index;
-
-		if (!Lib.isNumber(i)) {
-			i = parseInt(index, 10);
-		}
-		return this.setSelectionByIndex(i);
-	}
-};
-
-Picklist = Lib.runHelpers('jquery', CONTROL, Picklist, {
-	legacyMethods
-});
+Picklist = Lib.runHelpers('jquery', CONTROL, Picklist);
 
 export default Picklist;

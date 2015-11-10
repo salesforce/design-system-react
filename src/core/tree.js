@@ -1,23 +1,24 @@
-// TREE CORE
+// # Tree Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
+// Inherit from the [base control](base).
 import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
 import Multiselectable from '../traits/multiselectable';
 
-// Styles
-// require('../../scss/components/trees/flavors/base/index.scss');
-
-export const CONTROL = 'slds-tree';
+export const CONTROL = 'Tree';
 
 const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	CONTROL,
 	
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL,
+		CONTROL: 'slds-tree',
 		CONTAINER: 'slds-tree-container'
 	},
 
@@ -30,45 +31,15 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 		autoOpenLimit: 1
 	},
 
-/* Accessors: These may be supplied in the options hash to override default behavior
-
-getText (item)
-	Return the text value to display as the branch or item name
-	item => object wrapped in an Item Adapter
-
-getChildren (item)
-	Return the children of the specified item
-	May return either an array / collection that is supported by Data Adapters, or a promise the resolves as such
-	item => object wrapped in an Item Adapter
-
-getType (item)
-	Return the type of the current node - either 'folder' (for branches) or 'item'
-	item => object wrapped in an Item Adapter
-
-getIconClass (item)
-	Return an (optional) class name that can be used to override the icon
-	item => object wrapped in an Item Adapter
-
-getExpandable (item)
-	For branches, returns whether or not the branch is expandable (generally, whether it has children)
-	item => object wrapped in an Item Adapter
-
-getKey (item)
-	Return either an object with key/value pairs to match or a match function
-	Use this to reduce the number of fields required for searching if a unique key is available
-	item => object wrapped in an Item Adapter
-
-getId (item)
-	Return a unique value for each node
-	item => object wrapped in an Item Adapter
-
-*/
-
+	// ### Accessors
+	// These may be supplied in the options hash / properties to override default behavior. All accessors take 'item' as their first properties, which is an object from the collection wrapped in an item adapter.
 	accessors: {
+		// Return the text value to display as the branch or item name.
 		getText (item) {
 			return item.get('text');
 		},
 
+		// Return the children of the specified item. May return either an array / collection that is supported by Data Adapters, or a promise the resolves as such.
 		getChildren (item) {
 			return item.get('children');
 		},
@@ -78,23 +49,28 @@ getId (item)
 			return Promise.resolve(item.getChildren()).then(Lib.bind(this._getDataAdapter, this));
 		},
 
+		// Return the type of the current node - either 'folder' (for branches) or 'item'.
 		getType (item) {
 			// FIXME: Set a reasonable default or throw an error for "item-ish" items that don't have a type defined
 			return item.get('_itemType');
 		},
 
+		// Return an (optional) class name that can be used to override the icon.
 		getIconClass (item) {
 			return item.get('_iconClass');
 		},
 
+		// For branches, returns whether or not the branch is expandable (generally, whether it has children).
 		getExpandable (item) {
 			return item.get('_isExpandable') !== false;
 		},
 
+		// Return either an object with key/value pairs to match or a match function. Use this to reduce the number of fields required for searching if a unique key is available.
 		getKey (item) {
 			return { id: item.get('id') };
 		},
 
+		// Return a unique value for each node.
 		getId (item) {
 			return item.get('id');
 		}

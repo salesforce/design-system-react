@@ -211,29 +211,6 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 
 });
 
-// LEGACY METHODS
-
-const legacyMethods = {
-	getDate: function () {
-		const selectedDates = this.getSelectedItems();
-
-		return selectedDates[0] ? selectedDates[0].date : null;
-	},
-
-	getFormattedDate: function () {
-		return this._formatDate();
-	},
-
-	setDate: function (date) {
-		this.setState({ 'selectedDate': date });
-		this._renderDateRange();
-
-		return date;
-	}
-};
-
-Datepicker = Lib.runHelpers('jquery', CONTROL, Datepicker, {
-	legacyMethods
-});
+Datepicker = Lib.runHelpers('jquery', CONTROL, Datepicker);
 
 export default Datepicker;

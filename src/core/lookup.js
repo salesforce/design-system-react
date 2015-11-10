@@ -42,7 +42,7 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	// ### Accessors
 	// These may be supplied in the options hash / properties to override default behavior. All accessors take 'item' as their first properties, which is an object from the collection wrapped in an item adapter.
 	accessors: {
-		// Return the text value to display in the list
+		// Return the text value to display in the list.
 		getText (item) {
 			return item.get('text');
 		},

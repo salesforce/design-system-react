@@ -19,7 +19,7 @@ $(function () {
 
 	void(pillbox);
 
-	$('#pillbox-jquery-control .pillbox1').pillbox({
+	$('#pillbox-jquery-control .pillbox1').facades_pillbox({
 		selection: [
 			{
 				text: 'test1',

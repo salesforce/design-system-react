@@ -8,13 +8,14 @@ import * as Lib from '../lib/lib';
 // Framework specific
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const createPlugin = function (name, Constructor, helperOptions) {
-	const old = $.fn[name];
-	const namespaced = ['fu', name].join('.');
-	const initializeSelector = ['[data-initialize=', name, ']'].join('');
-	const legacyMethods = helperOptions && helperOptions.legacyMethods || {};
+const namespace = 'facades';
+
+const createPlugin = function (CONTROL, Constructor) {
+	const namespaced = [namespace, CONTROL.toLowerCase()].join('_');
+	const old = $.fn[namespaced];
+	const initializeSelector = ['[data-initialize=\'', namespaced, '\']'].join('');
 	
-	$.fn[name] = function (option) {
+	$.fn[namespaced] = function (option) {
 		const args = Array.prototype.slice.call(arguments, 1);
 		let methodReturn;
 
@@ -30,39 +31,35 @@ const createPlugin = function (name, Constructor, helperOptions) {
 
 			// If string, this is a method call, and apply with args
 			if (typeof option === 'string') {
-				if (!legacyMethods || Lib.isFunction(data[option])) {
-					methodReturn = data[option].apply(data, args);
-				} else {
-					methodReturn = legacyMethods[option].apply(data, args);
-				}
+				methodReturn = data[option].apply(data, args);
 			}
 		});
 
 		return (methodReturn === undefined) ? $set : methodReturn;
 	};
 
-	$.fn[name].Constructor = Constructor;
+	$.fn[namespaced].Constructor = Constructor;
 
-	$.fn[name].noConflict = function () {
-		$.fn[name] = old;
+	$.fn[namespaced].noConflict = function () {
+		$.fn[namespaced] = old;
 		return this;
 	};
 
 	// DATA-API
-
-	$(document).on(['mousedown', namespaced, 'data-api'].join('.'), initializeSelector, function (e) {
-		const $control = $(e.target).closest('.' + name);
-		if (!$control.data(namespaced)) {
-			$control[name]($control.data());
-		}
-	});
+	// Fuel only
+	// $(document).on(['mousedown', namespaced, 'data-api'].join('.'), initializeSelector, function (e) {
+	// 	const $control = $(e.target).closest('.' + name);
+	// 	if (!$control.data(namespaced)) {
+	// 		$control[name]($control.data());
+	// 	}
+	// });
 
 	// Must be domReady for AMD compatibility
 	$(function () {
 		$(initializeSelector).each(function () {
 			const $this = $(this);
 			if (!$this.data(namespaced)) {
-				$this[name]($this.data());
+				$this[namespaced]($this.data());
 			}
 		});
 	});

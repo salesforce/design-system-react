@@ -1,20 +1,23 @@
-// BUTTON VIEW CORE
+// # Button View Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
-import Base from './base';
-import {CONTROL as PARENT_CONTROL} from './button';
 
-// Third party
+// Inherit from the [base control](base).
+import Base from './base';
+
+// Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
 
-export const CONTROL = 'slds-buttonview';
+export const CONTROL = 'ButtonView';
 
 const ButtonViewCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	cssClasses: {
-		ICON: PARENT_CONTROL + '__icon',
-		STATEFUL_ICON: PARENT_CONTROL + '__icon--stateful',
+		ICON: 'slds-button__icon',
+		STATEFUL_ICON: 'slds-button__icon--stateful',
 		ASSISTIVE_TEXT: 'slds-assistive-text'
 	},
 	
@@ -25,16 +28,16 @@ const ButtonViewCore = Lib.merge({}, Base, {
 	},
 	
 	iconPositions: {
-		'left': PARENT_CONTROL + '__icon--left',
-		'right': PARENT_CONTROL + '__icon--right'
+		'left': 'slds-button__icon--left',
+		'right': 'slds-button__icon--right'
 	},
 
 	moreIcon: 'utility.down',
 
 	buttonIconSizes: {
-		'x-small': PARENT_CONTROL + '__icon--x-small',
-		'small': PARENT_CONTROL + '__icon--small',
-		'large': PARENT_CONTROL + '__icon--large'
+		'x-small': 'slds-button__icon--x-small',
+		'small': 'slds-button__icon--small',
+		'large': 'slds-button__icon--large'
 	},
 
 	_getIconClassNames (additionalClasses) {

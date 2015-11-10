@@ -1,6 +1,10 @@
-// DATEPICKER CORE
+// # Datepicker Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
+// Inherit from the [base control](base).
 import Base from './base';
 
 // Traits
@@ -9,14 +13,14 @@ import Openable from '../traits/openable';
 import Multiselectable from '../traits/multiselectable';
 import Positionable from '../traits/positionable';
 
-export const CONTROL = 'datepicker';
+export const CONTROL = 'Datepicker';
 
 const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, Positionable, {
 	CONTROL,
 	
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL,
+		CONTROL: 'slds-datepicker',
 		WRAPPER: 'slds-datepicker-form'
 	},
 
@@ -38,7 +42,10 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		'August', 'September', 'October', 'November', 'December'
 	],
 
+	// ### Accessors
+	// These may be supplied in the options hash / properties to override default behavior. All accessors take 'item' as their first properties, which is an object from the collection wrapped in an item adapter.
 	accessors: {
+		// Return the date
 		getDate (item) {
 			return item.get('date');
 		}
