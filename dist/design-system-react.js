@@ -581,7 +581,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether-drop 1.3.0 */
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether-drop 1.4.0 */
 	
 	(function(root, factory) {
 	  if (true) {
@@ -594,7 +594,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(this, function(Tether) {
 	
 	/* global Tether */
-	
 	'use strict';
 	
 	var _bind = Function.prototype.bind;
@@ -603,7 +602,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
@@ -704,6 +703,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      constrainToWindow: true,
 	      classes: '',
 	      remove: false,
+	      openDelay: 0,
+	      closeDelay: 50,
+	      // inherited from openDelay and closeDelay if not explicitly defined
+	      focusDelay: null,
+	      blurDelay: null,
+	      hoverOpenDelay: null,
+	      hoverCloseDelay: null,
 	      tetherOptions: {}
 	    }
 	  };
@@ -814,7 +820,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (typeof contentElementOrHTML === 'string') {
 	              _this.content.innerHTML = contentElementOrHTML;
 	            } else if (typeof contentElementOrHTML === 'object') {
-	              _this.content.innerHTML = "";
+	              _this.content.innerHTML = '';
 	              _this.content.appendChild(contentElementOrHTML);
 	            } else {
 	              throw new Error('Drop Error: Content function should return a string or HTMLElement.');
@@ -932,41 +938,43 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        }
 	
-	        var onUs = false;
+	        var inTimeout = null;
 	        var outTimeout = null;
 	
-	        var focusInHandler = function focusInHandler(event) {
-	          onUs = true;
-	          _this2.open(event);
+	        var inHandler = function inHandler(event) {
+	          if (outTimeout !== null) {
+	            clearTimeout(outTimeout);
+	          } else {
+	            inTimeout = setTimeout(function () {
+	              _this2.open(event);
+	              inTimeout = null;
+	            }, (event.type === 'focus' ? _this2.options.focusDelay : _this2.options.hoverOpenDelay) || _this2.options.openDelay);
+	          }
 	        };
 	
-	        var focusOutHandler = function focusOutHandler(event) {
-	          onUs = false;
-	
-	          if (typeof outTimeout !== 'undefined') {
-	            clearTimeout(outTimeout);
-	          }
-	
-	          outTimeout = setTimeout(function () {
-	            if (!onUs) {
+	        var outHandler = function outHandler(event) {
+	          if (inTimeout !== null) {
+	            clearTimeout(inTimeout);
+	          } else {
+	            outTimeout = setTimeout(function () {
 	              _this2.close(event);
-	            }
-	            outTimeout = null;
-	          }, 50);
+	              outTimeout = null;
+	            }, (event.type === 'blur' ? _this2.options.blurDelay : _this2.options.hoverCloseDelay) || _this2.options.closeDelay);
+	          }
 	        };
 	
 	        if (events.indexOf('hover') >= 0) {
-	          this._on(this.target, 'mouseover', focusInHandler);
-	          this._on(this.drop, 'mouseover', focusInHandler);
-	          this._on(this.target, 'mouseout', focusOutHandler);
-	          this._on(this.drop, 'mouseout', focusOutHandler);
+	          this._on(this.target, 'mouseover', inHandler);
+	          this._on(this.drop, 'mouseover', inHandler);
+	          this._on(this.target, 'mouseout', outHandler);
+	          this._on(this.drop, 'mouseout', outHandler);
 	        }
 	
 	        if (events.indexOf('focus') >= 0) {
-	          this._on(this.target, 'focus', focusInHandler);
-	          this._on(this.drop, 'focus', focusInHandler);
-	          this._on(this.target, 'blur', focusOutHandler);
-	          this._on(this.drop, 'blur', focusOutHandler);
+	          this._on(this.target, 'focus', inHandler);
+	          this._on(this.drop, 'focus', inHandler);
+	          this._on(this.target, 'blur', outHandler);
+	          this._on(this.drop, 'blur', outHandler);
 	        }
 	      }
 	    }, {
@@ -990,6 +998,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      value: function open(event) {
 	        var _this3 = this;
 	
+	        /* eslint no-unused-vars: 0 */
 	        if (this.isOpened()) {
 	          return;
 	        }
@@ -1181,9 +1190,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return parent;
 	    }
 	
-	    var overflow = style.overflow;
-	    var overflowX = style.overflowX;
-	    var overflowY = style.overflowY;
+	    var _style = style;
+	    var overflow = _style.overflow;
+	    var overflowX = _style.overflowX;
+	    var overflowY = _style.overflowY;
 	
 	    if (/(auto|scroll)/.test(overflow + overflowY + overflowX)) {
 	      if (position !== 'absolute' || ['relative', 'absolute', 'fixed'].indexOf(style.position) >= 0) {
@@ -1465,6 +1475,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function trigger(event) {
 	      if (typeof this.bindings !== 'undefined' && this.bindings[event]) {
 	        var i = 0;
+	
+	        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	          args[_key - 1] = arguments[_key];
+	        }
+	
 	        while (i < this.bindings[event].length) {
 	          var _bindings$event$i = this.bindings[event][i];
 	          var handler = _bindings$event$i.handler;
@@ -1474,10 +1489,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	          var context = ctx;
 	          if (typeof context === 'undefined') {
 	            context = this;
-	          }
-	
-	          for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-	            args[_key - 1] = arguments[_key];
 	          }
 	
 	          handler.apply(context, args);
@@ -1543,6 +1554,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	var transformKey = (function () {
+	  if (typeof document === 'undefined') {
+	    return '';
+	  }
 	  var el = document.createElement('div');
 	
 	  var transforms = ['transform', 'webkitTransform', 'OTransform', 'MozTransform', 'msTransform'];
@@ -1600,9 +1614,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    lastDuration = now() - lastCall;
 	  };
 	
-	  ['resize', 'scroll', 'touchmove'].forEach(function (event) {
-	    window.addEventListener(event, tick);
-	  });
+	  if (typeof window !== 'undefined') {
+	    ['resize', 'scroll', 'touchmove'].forEach(function (event) {
+	      window.addEventListener(event, tick);
+	    });
+	  }
 	})();
 	
 	var MIRROR_LR = {
@@ -2197,10 +2213,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      return true;
 	    }
-	  }, {
-	    key: 'move',
 	
 	    // THE ISSUE
+	  }, {
+	    key: 'move',
 	    value: function move(pos) {
 	      var _this6 = this;
 	
@@ -2259,7 +2275,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          if (transformKey !== 'msTransform') {
 	            // The Z transform will keep this in the GPU (faster, and prevents artifacts),
 	            // but IE9 doesn't support 3d transforms and will choke.
-	            css[transformKey] += ' translateZ(0)';
+	            css[transformKey] += " translateZ(0)";
 	          }
 	        } else {
 	          if (_same.top) {
@@ -2823,10 +2839,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      shift = shift.split(' ');
 	      shift[1] = shift[1] || shift[0];
 	
-	      var _shift = _slicedToArray(shift, 2);
+	      var _shift = shift;
 	
-	      shiftTop = _shift[0];
-	      shiftLeft = _shift[1];
+	      var _shift2 = _slicedToArray(_shift, 2);
+	
+	      shiftTop = _shift2[0];
+	      shiftLeft = _shift2[1];
 	
 	      shiftTop = parseFloat(shiftTop, 10);
 	      shiftLeft = parseFloat(shiftLeft, 10);
@@ -3166,11 +3184,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
 	        return function(evt) {
-	          if (evt.stopImmediatePropagation) {
-	            evt.stopImmediatePropagation();
-	          } else {
-	            evt.stopPropagation();
-	          }
+	          evt.stopPropagation();
 	          var source = evt.target;
 	          var found = false;
 	          // If source=local then this event came from "somewhere"
@@ -7406,11 +7420,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -9422,11 +9436,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -9524,11 +9538,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10027,11 +10041,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10246,11 +10260,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10533,11 +10547,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10645,11 +10659,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10871,7 +10885,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var modalClass = {
 	      'slds-modal': true,
 	      'slds-fade-in-open': this.state.revealed,
-	      'slds-modal--large': this.props.size === 'large'
+	      'slds-modal--large': this.props.size === 'large',
+	      'slds-modal--prompt': this.isPrompt()
 	    };
 	
 	    return _react2['default'].createElement('div', {
@@ -10882,7 +10897,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      role: 'dialog',
 	      className: 'slds-modal__container',
 	      onClick: this.handleModalClick
-	    }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children, this.isPrompt() ? this.props.footer : null), this.footerComponent()));
+	    }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), this.footerComponent()));
 	  },
 	
 	  render: function render() {
@@ -10903,12 +10918,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    var footerClass = {
 	      'slds-modal__footer': true,
-	      'slds-modal__footer--directional': this.props.directional
+	      'slds-modal__footer--directional': this.props.directional,
+	      'slds-theme--default': this.isPrompt()
 	    };
 	
 	    var hasFooter = this.props.footer && this.props.footer.length > 0;
 	
-	    if (!this.isPrompt() && hasFooter) {
+	    if (hasFooter) {
 	      footer = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(footerClass) }, this.props.footer);
 	    }
 	
@@ -10928,6 +10944,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    if (this.isPrompt()) {
 	      headerClasses.push('slds-theme--' + this.props.prompt);
+	      headerClasses.push('slds-theme--alert-texture');
 	      headingClasses.push('slds-text-heading--small');
 	    } else {
 	      headingClasses.push('slds-text-heading--medium');
@@ -11043,11 +11060,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -11106,17 +11123,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  _createClass(SLDSNotification, [{
-	    key: 'getClassName',
-	    value: function getClassName() {
-	      var _classNames;
-	
-	      return classNames(this.props.className, 'slds-notify ', (_classNames = {}, _defineProperty(_classNames, 'slds-notify--' + this.props.variant, this.props.variant), _defineProperty(_classNames, 'slds-theme--' + this.props.theme, this.props.theme), _defineProperty(_classNames, 'slds-theme--alert-texture', this.props.texture), _classNames));
-	    }
-	  }, {
 	    key: 'renderIcon',
 	    value: function renderIcon() {
 	      if (this.props.icon) {
-	        return _react2['default'].createElement(_SLDSIcons.Icon, { category: 'utility', name: this.props.icon, size: 'small', className: 'slds-m-right--x-small slds-col slds-no-flex' });
+	        var classes = '';
+	        if (this.props.variant === 'alert') {
+	          classes = 'slds-m-right--x-small';
+	        } else if (this.props.variant === 'toast') {
+	          classes = 'slds-m-right--small slds-col slds-no-flex';
+	        }
+	        return _react2['default'].createElement(_SLDSIcons.Icon, { category: 'utility', name: this.props.icon, size: 'small', className: classes });
+	      }
+	    }
+	  }, {
+	    key: 'renderClose',
+	    value: function renderClose() {
+	      var that = this;
+	      if (this.props.dismissible) {
+	        var size = '';
+	        if (this.props.variant === 'alert') {
+	          size = 'medium';
+	        } else if (this.props.variant === 'toast') {
+	          size = 'large';
+	        }
+	        return _react2['default'].createElement(_SLDSButton2['default'], {
+	          label: 'Dismiss Notification',
+	          variant: 'icon',
+	          iconName: 'close',
+	          iconSize: size,
+	          inverse: true,
+	          className: 'slds-button slds-notify__close',
+	          onClick: that.onDismiss.bind(that)
+	        });
 	      }
 	    }
 	  }, {
@@ -11126,18 +11164,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.setState({ isOpen: false });
 	    }
 	  }, {
+	    key: 'renderAlertContent',
+	    value: function renderAlertContent() {
+	      if (this.props.variant === 'alert') {
+	        return _react2['default'].createElement('h2', null, this.renderIcon(), this.props.content);
+	      }
+	    }
+	  }, {
+	    key: 'renderToastContent',
+	    value: function renderToastContent() {
+	      if (this.props.variant === 'toast') {
+	        return _react2['default'].createElement('section', { className: 'notify__content slds-grid' }, this.renderIcon(), _react2['default'].createElement('div', { className: 'slds-col slds-align-middle' }, _react2['default'].createElement('h2', { className: 'slds-text-heading--small ' }, this.props.content)));
+	      }
+	    }
+	  }, {
+	    key: 'getClassName',
+	    value: function getClassName() {
+	      var _classNames;
+	
+	      return classNames(this.props.className, 'slds-notify ', (_classNames = {}, _defineProperty(_classNames, 'slds-notify--' + this.props.variant, this.props.variant), _defineProperty(_classNames, 'slds-theme--' + this.props.theme, this.props.theme), _defineProperty(_classNames, 'slds-theme--alert-texture-animated', this.props.texture), _classNames));
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      if (this.state.isOpen) {
-	        return _react2['default'].createElement('div', { className: 'slds-notify-container' }, _react2['default'].createElement('div', { className: this.getClassName(), role: 'alert' }, _react2['default'].createElement(_SLDSButton2['default'], {
-	          label: 'Dismiss Notification',
-	          variant: 'icon',
-	          iconName: 'close',
-	          iconSize: 'large',
-	          inverse: true,
-	          className: 'slds-button slds-notify__close',
-	          onClick: this.onDismiss.bind(this)
-	        }), _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.theme), _react2['default'].createElement('section', { className: 'notify__content slds-grid' }, this.renderIcon(), _react2['default'].createElement('h2', { className: 'slds-col slds-align-middle slds-text-heading--small' }, this.props.content))));
+	        return _react2['default'].createElement('div', { className: 'slds-notify-container' }, _react2['default'].createElement('div', { className: this.getClassName(), role: 'alert' }, _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.theme), this.renderClose(), this.renderAlertContent(), this.renderToastContent()));
 	      } else {
 	        return null;
 	      }
@@ -11153,8 +11204,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  variant: _react2['default'].PropTypes.oneOf(['alert', 'toast']),
 	  theme: _react2['default'].PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
 	  texture: _react2['default'].PropTypes.bool,
+	  dismissible: _react2['default'].PropTypes.bool,
 	  onDismiss: _react2['default'].PropTypes.func
 	};
+	
+	SLDSNotification.defaultProps = {
+	  dismissible: true
+	};
+	
 	module.exports = SLDSNotification;
 
 /***/ }
