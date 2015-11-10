@@ -1,23 +1,23 @@
-// CHECKBOX CORE
+// # Checkbox Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
+// Inherit from the [base control](base).
 import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
 import Checkable from '../traits/checkable';
 
-// Styles
-// require('../../scss/components/forms/flavors/form-element/index.scss');
-// require('../../scss/components/forms/flavors/checkbox/index.scss');
-
-export const CONTROL = 'slds-checkbox';
+export const CONTROL = 'Checkbox';
 
 const CheckboxCore = Lib.merge({}, Base, Disableable, Checkable, {
 	CONTROL,
 	
 	cssClasses: {
-		CONTROL: CONTROL,
+		CONTROL: 'slds-checkbox',
 		FAUX: 'slds-checkbox--faux'
 	},
 
