@@ -15,7 +15,7 @@ import Pillbox from './pillbox/pillbox';
 import Popover from './popover/popover';
 import Radio from './radio/radio';
 import Spinner from './spinner/spinner';
-import Svg from './spinner/spinner';
+import Svg from './svg/svg';
 import Tooltip from './tooltip/tooltip';
 import Tree from './tree/tree';
 
