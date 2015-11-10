@@ -37,6 +37,8 @@ import Svg from '../svg/svg';
 /* TODO: Finish documenting the control's methods. */
 let Lookup = Lib.merge({}, LookupCore, {
 	mixins: [State, Events, genericWillMount],
+
+	displayName: CONTROL,
 	
 	propTypes: {
 		collection: React.PropTypes.oneOfType([

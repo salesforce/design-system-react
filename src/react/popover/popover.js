@@ -13,6 +13,8 @@ import genericWillMount from '../mixins/generic-will-mount';
 import mountable from '../mixins/custom-prop-types/mountable';
 
 export const PopoverMethods = {
+	displayName: CONTROL,
+
 	propTypes: {
 		align: mountable,
 		autoFlip: React.PropTypes.bool,

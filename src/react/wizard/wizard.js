@@ -17,6 +17,8 @@ import WizardActions from './wizard-actions';
 let Wizard = Lib.merge({}, WizardCore, {
 	mixins: [State, Events, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		// TODO: Modify when wizard data adapter gets set up
 		step: React.PropTypes.shape({

@@ -20,6 +20,8 @@ import TreeItem from './tree-item';
 let Tree = Lib.merge({}, TreeCore, {
 	mixins: [State, Events, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		autoOpen: React.PropTypes.bool,
 		autoOpenLimit: React.PropTypes.number,

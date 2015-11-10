@@ -12,6 +12,8 @@ import genericWillMount from '../mixins/generic-will-mount';
 let Spinner = Lib.merge({}, SpinnerCore, {
 	mixins: [State, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		size: React.PropTypes.oneOf(Object.keys(SpinnerCore.sizes)),
 		theme: React.PropTypes.oneOf(Object.keys(SpinnerCore.fileNames))

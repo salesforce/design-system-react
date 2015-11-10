@@ -14,6 +14,8 @@ import PicklistItems from '../picklist/picklist-items';
 import Svg from '../svg/svg';
 
 export const ComboboxObject = Lib.merge(PicklistObject, {
+	displayName: CONTROL,
+	
 	propTypes: {
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,

@@ -22,6 +22,8 @@ import DateInput from './datepicker-input';
 export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	mixins: [State, Events, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		dateRange: React.PropTypes.array,
 		selection: React.PropTypes.any

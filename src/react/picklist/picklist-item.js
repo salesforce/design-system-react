@@ -9,7 +9,10 @@ import Svg from '../svg/svg';
 // Third party
 import classNames from 'classnames';
 
+export const CONTROL = 'picklist-item';
+
 const PicklistItem = React.createClass({
+	displayName: CONTROL,
 
 	cssClasses: {
 		HEADER: 'slds-dropdown__header',

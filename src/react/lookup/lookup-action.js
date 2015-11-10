@@ -3,7 +3,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
+export const CONTROL = 'lookup-action';
+
 const LookupAction = React.createClass({
+	displayName: CONTROL,
+
 	propTypes: {
 		activeDescendantId: React.PropTypes.string,
 		id: React.PropTypes.string.isRequired,

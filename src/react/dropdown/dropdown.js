@@ -14,6 +14,8 @@ import PicklistItems from '../picklist/picklist-items';
 import Button from '../button/button';
 
 export const DropdownObject = Lib.merge(PicklistObject, {
+	displayName: CONTROL,
+
 	propTypes: {
 		// TODO: Type of collection unknown until parsed by Data Adapter
 		collection: React.PropTypes.oneOfType([

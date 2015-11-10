@@ -4,7 +4,10 @@
 import React from 'react';
 import Svg from '../svg/svg';
 
+export const CONTROL = 'datepicker-input';
+
 const DateInput = React.createClass({
+	displayName: CONTROL,
 
 	propTypes: {
 		selectedDate: React.PropTypes.any

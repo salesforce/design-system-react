@@ -18,6 +18,8 @@ import PicklistItems from './picklist-items';
 export const PicklistObject = {
 	mixins: [State, Events, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		disabled: React.PropTypes.bool,
 		id: React.PropTypes.string,

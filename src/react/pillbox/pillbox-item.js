@@ -4,7 +4,10 @@ import React from 'react';
 // Children
 import Button from '../button/button';
 
+export const CONTROL = 'pillbox-item';
+
 const PillboxItem = React.createClass({
+	displayName: CONTROL,
 
 	propTypes: {
 		// TODO: explore if item PropTypes can be done better

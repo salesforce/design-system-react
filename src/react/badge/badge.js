@@ -13,6 +13,8 @@ import genericWillMount from '../mixins/generic-will-mount';
 export const BadgeObject = {
 	mixins: [State, Events, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		children: React.PropTypes.string.isRequired,
 		theme: React.PropTypes.oneOf(Object.keys(BadgeCore.themes))

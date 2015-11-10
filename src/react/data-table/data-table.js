@@ -16,6 +16,8 @@ import DataTableItem from './data-table-item';
 export const DataTableObject = {
 	mixins: [State, Events, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		bordered: React.PropTypes.bool,
 		collection: React.PropTypes.array.isRequired,
