@@ -9,7 +9,11 @@ import classNames from 'classnames';
 // Children
 import PicklistItem from './picklist-item';
 
+export const CONTROL = 'picklist-items';
+
 const PicklistItems = React.createClass({
+	displayName: CONTROL,
+
 	propTypes: {
 		// TODO: Type of collection unknown until parsed by Data Adapter
 		collection: React.PropTypes.oneOfType([

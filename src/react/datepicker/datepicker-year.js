@@ -6,7 +6,10 @@ import React from 'react';
 // Children
 import Picklist from '../picklist/picklist';
 
+export const CONTROL = 'datepicker-year';
+
 const DateMonth = React.createClass({
+	displayName: CONTROL,
 
 	propTypes: {
 		getYearRange: React.PropTypes.func,

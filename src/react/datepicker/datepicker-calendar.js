@@ -5,7 +5,10 @@ import React from 'react';
 
 import DateWeek from './datepicker-week';
 
+export const CONTROL = 'datepicker-calendar';
+
 const Calendar = React.createClass({
+	displayName: CONTROL,
 
 	propTypes: {
 		calendarData: React.PropTypes.array,

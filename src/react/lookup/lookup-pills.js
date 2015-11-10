@@ -4,7 +4,11 @@
 import React from 'react';
 import Svg from '../svg/svg';
 
+export const CONTROL = 'lookup-pills';
+
 const LookupPills = React.createClass({
+	displayName: CONTROL,
+
 	propTypes: {
 		onDeselect: React.PropTypes.func.isRequired,
 		renderer: React.PropTypes.func.isRequired,

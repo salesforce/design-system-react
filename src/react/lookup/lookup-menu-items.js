@@ -3,7 +3,11 @@
 import React from 'react';
 import classNames from 'classnames';
 
+export const CONTROL = 'lookup-menu-items';
+
 const LookupMenuItems = React.createClass({
+	displayName: CONTROL,
+
 	propTypes: {
 		activeDescendantId: React.PropTypes.string,
 		collection: React.PropTypes.object.isRequired,

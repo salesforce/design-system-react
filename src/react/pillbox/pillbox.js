@@ -16,6 +16,8 @@ import PillboxItem from './pillbox-item';
 let Pillbox = Lib.merge({}, PillboxCore, {
 	mixins: [State, Events, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		selection: React.PropTypes.any
 	},

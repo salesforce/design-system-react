@@ -18,6 +18,8 @@ import Button from '../button/button';
 export const NotificationObject = {
 	mixins: [State, Events, genericWillMount],
 
+	displayName: CONTROL,
+
 	propTypes: {
 		children: React.PropTypes.string.isRequired,
 		theme: React.PropTypes.oneOf(Object.keys(NotificationCore.themes))
