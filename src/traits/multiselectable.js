@@ -56,7 +56,9 @@ const Multiselectable = {
 			if (Lib.isFunction(this._onBeforeSelect)) this._onBeforeSelect(selection);
 			
 			this.setProperties({ selection: selection._data });
-			this.trigger('changed', item._item, selection._data);
+
+			this.trigger('changed', [item._item, selection._data]);
+			this.trigger('selected', [item._item, selection._data]);
 			
 			if (Lib.isFunction(this._onSelected)) this._onSelected(selection);
 		}, this);
@@ -94,7 +96,8 @@ const Multiselectable = {
 			this.setProperties({ selection: selection._data });
 			if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
 
-			this.trigger('changed', selection._item, selection._data);
+			this.trigger('changed', [item._item, selection._data]);
+			this.trigger('deselected', [item._item, selection._data]);
 		}, this);
 		
 		if (multipleItems ? this._areItemsSelected(item, selection) : this._isItemSelected(item, selection)) {
