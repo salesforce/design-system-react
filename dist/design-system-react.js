@@ -581,7 +581,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether-drop 1.4.0 */
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether-drop 1.2.2 */
 	
 	(function(root, factory) {
 	  if (true) {
@@ -594,6 +594,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(this, function(Tether) {
 	
 	/* global Tether */
+	
 	'use strict';
 	
 	var _bind = Function.prototype.bind;
@@ -602,11 +603,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 	
-	var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	var _get = function get(_x2, _x3, _x4) { var _again = true; _function: while (_again) { var object = _x2, property = _x3, receiver = _x4; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x2 = parent; _x3 = property; _x4 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) subClass.__proto__ = superClass; }
 	
 	var _Tether$Utils = Tether.Utils;
 	var extend = _Tether$Utils.extend;
@@ -677,7 +678,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	// copy of drop which won't interact with other copies on the page (beyond calling the document events).
 	
 	function createContext() {
-	  var options = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+	  var options = arguments[0] === undefined ? {} : arguments[0];
 	
 	  var drop = function drop() {
 	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
@@ -703,13 +704,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      constrainToWindow: true,
 	      classes: '',
 	      remove: false,
-	      openDelay: 0,
-	      closeDelay: 50,
-	      // inherited from openDelay and closeDelay if not explicitly defined
-	      focusDelay: null,
-	      blurDelay: null,
-	      hoverOpenDelay: null,
-	      hoverCloseDelay: null,
 	      tetherOptions: {}
 	    }
 	  };
@@ -743,8 +737,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  };
 	
 	  var DropInstance = (function (_Evented) {
-	    _inherits(DropInstance, _Evented);
-	
 	    function DropInstance(opts) {
 	      _classCallCheck(this, DropInstance);
 	
@@ -754,22 +746,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      if (typeof this.target === 'undefined') {
 	        throw new Error('Drop Error: You must provide a target.');
-	      }
-	
-	      var dataPrefix = 'data-' + drop.classPrefix;
-	
-	      var contentAttr = this.target.getAttribute(dataPrefix);
-	      if (contentAttr) {
-	        this.options.content = contentAttr;
-	      }
-	
-	      var attrsOverride = ['position', 'openOn'];
-	      for (var i = 0; i < attrsOverride.length; ++i) {
-	
-	        var override = this.target.getAttribute(dataPrefix + '-' + attrsOverride[i]);
-	        if (override) {
-	          this.options[attrsOverride[i]] = override;
-	        }
 	      }
 	
 	      if (this.options.classes && this.options.addTargetClasses !== false) {
@@ -785,6 +761,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.setupEvents();
 	      this.setupTether();
 	    }
+	
+	    _inherits(DropInstance, _Evented);
 	
 	    _createClass(DropInstance, [{
 	      key: '_on',
@@ -938,43 +916,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	          }
 	        }
 	
-	        var inTimeout = null;
-	        var outTimeout = null;
-	
-	        var inHandler = function inHandler(event) {
-	          if (outTimeout !== null) {
-	            clearTimeout(outTimeout);
-	          } else {
-	            inTimeout = setTimeout(function () {
-	              _this2.open(event);
-	              inTimeout = null;
-	            }, (event.type === 'focus' ? _this2.options.focusDelay : _this2.options.hoverOpenDelay) || _this2.options.openDelay);
-	          }
-	        };
-	
-	        var outHandler = function outHandler(event) {
-	          if (inTimeout !== null) {
-	            clearTimeout(inTimeout);
-	          } else {
-	            outTimeout = setTimeout(function () {
-	              _this2.close(event);
-	              outTimeout = null;
-	            }, (event.type === 'blur' ? _this2.options.blurDelay : _this2.options.hoverCloseDelay) || _this2.options.closeDelay);
-	          }
-	        };
-	
 	        if (events.indexOf('hover') >= 0) {
-	          this._on(this.target, 'mouseover', inHandler);
-	          this._on(this.drop, 'mouseover', inHandler);
-	          this._on(this.target, 'mouseout', outHandler);
-	          this._on(this.drop, 'mouseout', outHandler);
-	        }
+	          (function () {
+	            var onUs = false;
 	
-	        if (events.indexOf('focus') >= 0) {
-	          this._on(this.target, 'focus', inHandler);
-	          this._on(this.drop, 'focus', inHandler);
-	          this._on(this.target, 'blur', outHandler);
-	          this._on(this.drop, 'blur', outHandler);
+	            var over = function over(event) {
+	              onUs = true;
+	              _this2.open(event);
+	            };
+	
+	            var outTimeout = null;
+	            var out = function out(event) {
+	              onUs = false;
+	
+	              if (typeof outTimeout !== 'undefined') {
+	                clearTimeout(outTimeout);
+	              }
+	
+	              outTimeout = setTimeout(function () {
+	                if (!onUs) {
+	                  _this2.close(event);
+	                }
+	                outTimeout = null;
+	              }, 50);
+	            };
+	
+	            _this2._on(_this2.target, 'mouseover', over);
+	            _this2._on(_this2.drop, 'mouseover', over);
+	            _this2._on(_this2.target, 'mouseout', out);
+	            _this2._on(_this2.drop, 'mouseout', out);
+	          })();
 	        }
 	      }
 	    }, {
@@ -998,7 +969,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      value: function open(event) {
 	        var _this3 = this;
 	
-	        /* eslint no-unused-vars: 0 */
 	        if (this.isOpened()) {
 	          return;
 	        }
@@ -1190,10 +1160,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return parent;
 	    }
 	
-	    var _style = style;
-	    var overflow = _style.overflow;
-	    var overflowX = _style.overflowX;
-	    var overflowY = _style.overflowY;
+	    var overflow = style.overflow;
+	    var overflowX = style.overflowX;
+	    var overflowY = style.overflowY;
 	
 	    if (/(auto|scroll)/.test(overflow + overflowY + overflowX)) {
 	      if (position !== 'absolute' || ['relative', 'absolute', 'fixed'].indexOf(style.position) >= 0) {
@@ -1475,11 +1444,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function trigger(event) {
 	      if (typeof this.bindings !== 'undefined' && this.bindings[event]) {
 	        var i = 0;
-	
-	        for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-	          args[_key - 1] = arguments[_key];
-	        }
-	
 	        while (i < this.bindings[event].length) {
 	          var _bindings$event$i = this.bindings[event][i];
 	          var handler = _bindings$event$i.handler;
@@ -1489,6 +1453,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	          var context = ctx;
 	          if (typeof context === 'undefined') {
 	            context = this;
+	          }
+	
+	          for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+	            args[_key - 1] = arguments[_key];
 	          }
 	
 	          handler.apply(context, args);
@@ -1554,9 +1522,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	var transformKey = (function () {
-	  if (typeof document === 'undefined') {
-	    return '';
-	  }
 	  var el = document.createElement('div');
 	
 	  var transforms = ['transform', 'webkitTransform', 'OTransform', 'MozTransform', 'msTransform'];
@@ -1614,11 +1579,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    lastDuration = now() - lastCall;
 	  };
 	
-	  if (typeof window !== 'undefined') {
-	    ['resize', 'scroll', 'touchmove'].forEach(function (event) {
-	      window.addEventListener(event, tick);
-	    });
-	  }
+	  ['resize', 'scroll', 'touchmove'].forEach(function (event) {
+	    window.addEventListener(event, tick);
+	  });
 	})();
 	
 	var MIRROR_LR = {
@@ -2213,10 +2176,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      return true;
 	    }
-	
-	    // THE ISSUE
 	  }, {
 	    key: 'move',
+	
+	    // THE ISSUE
 	    value: function move(pos) {
 	      var _this6 = this;
 	
@@ -2275,7 +2238,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          if (transformKey !== 'msTransform') {
 	            // The Z transform will keep this in the GPU (faster, and prevents artifacts),
 	            // but IE9 doesn't support 3d transforms and will choke.
-	            css[transformKey] += " translateZ(0)";
+	            css[transformKey] += ' translateZ(0)';
 	          }
 	        } else {
 	          if (_same.top) {
@@ -2839,12 +2802,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      shift = shift.split(' ');
 	      shift[1] = shift[1] || shift[0];
 	
-	      var _shift = shift;
+	      var _shift = _slicedToArray(shift, 2);
 	
-	      var _shift2 = _slicedToArray(_shift, 2);
-	
-	      shiftTop = _shift2[0];
-	      shiftLeft = _shift2[1];
+	      shiftTop = _shift[0];
+	      shiftLeft = _shift[1];
 	
 	      shiftTop = parseFloat(shiftTop, 10);
 	      shiftLeft = parseFloat(shiftLeft, 10);
