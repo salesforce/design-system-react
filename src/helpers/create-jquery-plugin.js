@@ -8,6 +8,7 @@ import * as Lib from '../lib/lib';
 // Framework specific
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// TODO: Move this out to a configurable property of Lib
 const namespace = 'facades';
 
 const createPlugin = function (CONTROL, Constructor) {
@@ -46,7 +47,7 @@ const createPlugin = function (CONTROL, Constructor) {
 	};
 
 	// DATA-API
-	// Fuel only
+	// TODO: This is Fuel only, can it be deleted for now?
 	// $(document).on(['mousedown', namespaced, 'data-api'].join('.'), initializeSelector, function (e) {
 	// 	const $control = $(e.target).closest('.' + name);
 	// 	if (!$control.data(namespaced)) {
