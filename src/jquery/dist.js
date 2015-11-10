@@ -2,11 +2,11 @@ import '../helpers/create-jquery-plugin';
 
 import Badge from './badge/badge';
 import Button from './button/button';
-// 	// import './buttongroup/example';
+import ButtonGroup from './button-group/button-group';
 import Checkbox from './checkbox/checkbox';
 import Combobox from './combobox/combobox';
-import DataTable from './data-table/data-table';
-// 	// import './datepicker/example';
+import Datatable from './data-table/data-table';
+import Datepicker from './datepicker/datepicker';
 import Dropdown from './dropdown/dropdown';
 import Notification from './notification/notification';
 import Picklist from './picklist/picklist';
@@ -20,9 +20,11 @@ import Tree from './tree/tree';
 module.exports = {
 	Badge,
 	Button,
+	ButtonGroup,
 	Checkbox,
 	Combobox,
-	DataTable,
+	Datatable,
+	Datepicker,
 	Dropdown,
 	Notification,
 	Picklist,

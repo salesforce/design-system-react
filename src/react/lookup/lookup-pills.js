@@ -19,10 +19,10 @@ const LookupPills = React.createClass({
 	render () {
 		return (
 			<div className="slds-pill-container slds-show">
-				<span className="slds-pill slds-pill--bare">
-					{this.props.selectedItems.map((item, index) => {
-						return (
-							<a key={index} href="#" className="slds-pill__label" onClick={this._handlePillClick.bind(this, item)}>
+				{this.props.selectedItems.map((item, index) => {
+					return (
+						<span key={index} className="slds-pill slds-pill--bare" tabIndex="0" onClick={this._handlePillClick.bind(this, item)}>
+							<a href="#" className="slds-pill__label" tabIndex="-1">
 								{this.props.renderer({
 									icon: item.getIcon(),
 									text: item.getText(),
@@ -30,13 +30,13 @@ const LookupPills = React.createClass({
 									strings: this.props.strings
 								})}
 							</a>
-						);
-					})}
-					<button className="slds-button slds-button--icon-bare" onClick={this._handleCloseClick}>
-						<Svg icon="utility.close" className="slds-button__icon" />
-						<span className="slds-assistive-text">Remove</span>
-					</button>
-				</span>
+							<button className="slds-button slds-button--icon-bare" onClick={this._handleCloseClick}>
+								<Svg icon="utility.close" className="slds-button__icon" />
+								<span className="slds-assistive-text">Remove</span>
+							</button>
+					</span>
+					);
+				})}
 			</div>
 		);
 	},
