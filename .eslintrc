@@ -52,13 +52,12 @@
       //
       // These rules are for code consistency and following best practices
       //
-      "default-case": 2, // require default case in switch statements (off by default)
-      "dot-notation": 2, // encourages use of dot notation whenever possible
-      "eqeqeq": 2, // require the use of === and !==
+      "default-case": 1, // require default case in switch statements (off by default)
+      "dot-notation": 1, // encourages use of dot notation whenever possible
+      "eqeqeq": 1, // require the use of === and !==
       "indent": [1, 2], // this option sets a specific tab width for your code (off by default)
       "brace-style": 1, // enforce one true brace style (off by default)
       "camelcase": 1, // require camel case names
-      "comma-spacing": [1, {"before": false, "after": true}], // enforce spacing before and after comma
       "key-spacing": [1, {"beforeColon": false, "afterColon": true}], // enforces spacing between keys and values in object literal properties
 
 
@@ -86,11 +85,10 @@
       //
       // React specific linting rules for ESLint
       //
-      "react/display-name": 2, // Prevent missing displayName in a React component definition
+      "react/display-name": 1, // Prevent missing displayName in a React component definition
       "react/jsx-no-undef": 2, // Disallow undeclared variables in JSX
-      "react/no-multi-comp": 2, // Prevent multiple component definition per file
+      "react/no-multi-comp": 1, // Prevent multiple component definition per file
       "react/no-unknown-property": 2, // Prevent usage of unknown DOM property
-      "react/prop-types": 2, // Prevent missing props validation in a React component definition
-      "react/wrap-multilines": 2, // Prevent missing parentheses around multilines JSX
+      "react/prop-types": 1, // Prevent missing props validation in a React component definition
     }
 }

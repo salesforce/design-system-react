@@ -21,7 +21,7 @@ class Button extends React.Component {
     super(props);
     this.displayName = "SLDSButton";
     this.state = { active: false };
-  };
+  }
 
   componentWillMount(){
     /*===============================
@@ -84,7 +84,7 @@ class Button extends React.Component {
 
 
   render() {
-    const props = omit(this.props,"className");
+    const props = omit(this.props, "className");
     const click = createChainedFunction(this.props.onClick, this.onClick.bind(this));
     const labelClasses = this.props.variant === "icon" ? "slds-assistive-text": "";
     if (this.props.disabled) { props["disabled"] = "disabled" };
