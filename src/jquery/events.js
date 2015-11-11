@@ -12,7 +12,7 @@ const Events = {
 				name = [name, this.eventSuffix].join('.');
 			}
 			
-			this.element.trigger(name, ...args);
+			this.element.trigger(name, args);
 		}
 	}
 };

@@ -1,5 +1,6 @@
 // MULTISELECTABLE
 // TODO: Combine this with Selectable
+// TODO: Clean up all of the "multipleItems" ternaries below
 
 import * as Lib from '../lib/lib';
 
@@ -62,7 +63,9 @@ const Multiselectable = {
 			if (Lib.isFunction(this._onBeforeSelect)) this._onBeforeSelect(selection);
 			
 			this.setProperties({ selection: selection._data });
+
 			this.trigger('changed', multipleItems ? item : item._item, selection._data);
+			this.trigger('selected', multipleItems ? item : item._item, selection._data);
 			
 			if (Lib.isFunction(this._onSelected)) this._onSelected(selection);
 		}, this);
@@ -103,7 +106,8 @@ const Multiselectable = {
 			this.setProperties({ selection: selection._data });
 			if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
 
-			this.trigger('changed', selection._item, selection._data);
+			this.trigger('changed', multipleItems ? item : item._item, selection._data);
+			this.trigger('deselected', multipleItems ? item : item._item, selection._data);
 		}, this);
 		
 		if (multipleItems ? itemsPreviouslySelected.length : itemsPreviouslySelected) {

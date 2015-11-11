@@ -4,46 +4,27 @@ import Pillbox from './pillbox';
 const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
-	const pillbox = new Pillbox($('#pillbox1'), {
+	$('#pillbox-jquery-control .pillbox1').facades_pillbox({
 		selection: [
 			{
-				text: 'test1',
-				value: 'test1'
+				text: 'item 1',
+				value: 1
 			},
 			{
-				text: 'test2',
-				value: 'test1'
+				text: 'item 2',
+				value: 2
+			},
+			{
+				text: 'item 3',
+				value: 3
 			}
 		]
 	});
 
-	void(pillbox);
-
-	$('#pillbox-jquery-control .pillbox1').facades_pillbox({
-		selection: [
-			{
-				text: 'test1',
-				value: 'test1'
-			},
-			{
-				text: 'test2',
-				value: 'test1'
-			}
-		],
-
-		onAdd: function (item, callback) {
-			setTimeout( function () {
-				console.log(item);
-				callback(item);
-			}, 0);
-		},
-
-		onRemove: function (item, callback) {
-			setTimeout( function () {
-				console.log(item);
-				callback(item);
-			}, 0);
-		}
+	$('#pillbox-jquery-control .pillbox1').on('changed', function (evt, item) {
+		console.log('pill removed', item);
 	});
+
+	void(Pillbox);
 });
 

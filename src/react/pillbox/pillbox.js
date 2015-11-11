@@ -29,9 +29,6 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 			<div className="pillbox slds-pillbox">
 				<ul className="slds-pill-group">
 					{items}
-					<li className="slds-pill-input-wrap">
-						<input type="text" onKeyUp={this._handleKeyUp} className="slds-input slds-input--x-small | slds-pill-add-item" placeholder="add item"/>
-					</li>
 				</ul>
 			</div>
 		);
@@ -43,27 +40,6 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 				<PillboxItem key={index} item={item} onClick={this._handleItemClick}/>
 			);
 		});
-	},
-
-	_handleKeyUp (e) {
-		let inputValue;
-
-		if (this._isAcceptKeyCode(e.keyCode)) {
-			inputValue = e.target.value;
-
-			// If commas are an accepted keycode clean inputValue of commas
-			if (e.keyCode === 188 && this._isAcceptKeyCode(188)) {
-				inputValue = inputValue.replace(/[ ]*\,[ ]*/, '');
-			}
-
-			// TODO: This will need to be updated when typeahead feature is added
-			this.selectItem({
-				text: inputValue,
-				value: inputValue
-			});
-
-			e.target.value = '';
-		}
 	},
 
 	_handleItemClick (item) {

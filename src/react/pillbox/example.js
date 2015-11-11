@@ -8,12 +8,16 @@ export default function () {
 			return {
 				selection: [
 					{
-						text: 'test1',
-						id: 1
+						text: 'item 1',
+						value: 1
 					},
 					{
-						text: 'test2',
-						id: 2
+						text: 'item 2',
+						value: 2
+					},
+					{
+						text: 'item 3',
+						value: 3
 					}
 				],
 				open: []
