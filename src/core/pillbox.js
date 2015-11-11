@@ -37,14 +37,6 @@ const PillboxCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 		}
 	},
 
-	_canSelect (item, select) {
-		select();
-	},
-
-	_canDeselect (item, deselect) {
-		deselect();
-	},
-
 	_isAcceptKeyCode (keyCode) {
 		const acceptKeys = this.getProperty('acceptKeyCodes');
 		let isAccepted;
