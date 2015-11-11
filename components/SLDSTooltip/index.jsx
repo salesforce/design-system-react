@@ -15,6 +15,7 @@ import SLDSPopover from '../SLDSPopover';
 import {KEYS,EventUtil} from '../utils';
 import omit from 'lodash.omit';
 
+import cx from 'classnames';
 
 module.exports = React.createClass( {
 
@@ -22,15 +23,20 @@ module.exports = React.createClass( {
     hoverCloseDelay:PropTypes.number
   },
 
-  getDefaultProps(){
+
+  getDefaultProps () {
     return {
-      hoverCloseDelay:300
-    }
+      content:<span>Tooltip</span>,
+      align: 'top',
+      hoverCloseDelay:200,
+      openOnHover:false
+    };
   },
 
   getInitialState(){
     return {
-      isOpen:false
+      isOpen:!this.props.openOnHover,
+      isClosing:false
     };
   },
 
@@ -38,35 +44,59 @@ module.exports = React.createClass( {
   },
 
   handleMouseEnter(event) {
-    this.setState({isOpen:true});
+    this.setState({
+      isOpen:true,
+      isClosing:false
+    });
   },
 
   handleMouseLeave(event) {
-    this.setState({isOpen:false});
+    this.setState({isClosing:true});
+    setTimeout(()=>{
+      if(this.isMounted && this.state.isClosing){
+        this.setState({
+          isOpen:false,
+          isClosing:false
+        });
+      }
+    },this.props.hoverCloseDelay)
   },
 
   getTooltipContent() {
-    return <div className='slds-popover__body'>SUPER STUFF IS HERE!</div>;
+    return <div className='slds-popover__body'>{this.props.content}</div>;
   },
 
   getTooltip() {
+    const style = {
+      'slds-popover':true,
+      'slds-popover--tooltip':true,
+      'slds-nubbin--top':this.props.align === 'bottom',
+      'slds-nubbin--bottom':this.props.align === 'top',
+      'slds-nubbin--left':this.props.align === 'left',
+      'slds-nubbin--right':this.props.align === 'right'
+    };
+
     return this.state.isOpen?<SLDSPopover
           targetElement={this.refs.tooltipTarget}
           closeOnTabKey={true}
           className=''
           marginTop='1rem'
           marginBottom='1rem'
-          horizontalAlign='center'
+          marginLeft='1rem'
+          marginRight='1rem'
+          horizontalAlign={this.props.align==='left' || this.props.align==='right'?this.props.align:'center'}
+          verticalAlign={this.props.align==='bottom' || this.props.align==='top'?this.props.align:'center'}
+          flippable={false}
           onClose={this.handleCancel}>
-          <div className='slds-popover slds-popover--tooltip slds-nubbin--top'>
-          {this.getTooltipContent()}
+          <div className={cx(style)}>
+            {this.getTooltipContent()}
           </div>
         </SLDSPopover>:null;
   },
 
   render(){
     return (
-      <span refs='tooltipTarget' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
+      <span refs='tooltipTarget' onMouseEnter={this.props.openOnHover?this.handleMouseEnter:null} onMouseLeave={this.props.openOnHover?this.handleMouseLeave:null}>
         { this.props.children }
         { this.getTooltip() }
       </span>

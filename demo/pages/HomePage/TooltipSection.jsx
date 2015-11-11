@@ -44,16 +44,33 @@ module.exports = React.createClass( {
 
             <div className="slds-p-around--medium">
               <h3 id='dropdownSection' className="slds-text-heading--medium slds-truncate">
-                Dropdown Base
+                Tooltip
               </h3>
-
+{/*
               <PrismCode className='language-markup'>
                 {require("raw-loader!../../code-snippets/SLDSDropdownPage.txt")}
               </PrismCode>
+*/}
               <div ref="super" className="slds-p-vertical--large">
-                SUPER!!!
+                <p>
+                  <SLDSTooltip 
+                    content={<span>Tooltip with top alignment</span>}
+                    align='top'
+                    targetElement={this.refs.super}>Tooltip align top</SLDSTooltip>
+                </p>
               </div>
-                <SLDSTooltip targetElement={this.refs.super}>Tooltip trigger</SLDSTooltip>
+
+              <div ref="super" className="slds-p-vertical--large">
+                <p>
+                  <SLDSTooltip 
+                    content={<span>Tooltip with bottom alignment</span>}
+                    align='bottom'
+                    openOnHover={true}
+                    targetElement={this.refs.super}>Tooltip open on hover</SLDSTooltip>
+                </p>
+              </div>
+
+
             </div>
 
 

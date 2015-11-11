@@ -41,7 +41,10 @@ module.exports = React.createClass( {
       className: 'slds-dropdown',
       closeOnTabKey: false,
       marginTop:'0.20rem',
-      marginBottom:'0.35rem'
+      marginBottom:'0.35rem',
+      marginLeft:0,
+      marginRight:0,
+      flippable:true
     };
   },
 
@@ -95,6 +98,8 @@ module.exports = React.createClass( {
           WebkitTransform:'none',
           'marginTop':this.props.marginTop,
           'marginBottom':this.props.marginBottom,
+          'marginLeft':this.props.marginLeft,
+          'marginRight':this.props.marginRight,
           'float':'inherit',
           'position':'inherit'
         }}
@@ -114,13 +119,14 @@ module.exports = React.createClass( {
   dropOptions () {
     const target = this.props.targetElement?React.findDOMNode(this.props.targetElement):React.findDOMNode(this).parentNode;
     const position = this.props.verticalAlign+' '+this.props.horizontalAlign;
+    console.log('position: ',position);
     return {
       target: target,
       content: this.popoverElement,
       position: position,
       openOn: 'always',
       beforeClose:this.beforeClose,
-      constrainToWindow:true,
+      constrainToWindow:this.props.flippable,
       constrainToScrollParent:false,
       remove:true
     };
