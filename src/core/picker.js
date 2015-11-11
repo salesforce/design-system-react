@@ -1,22 +1,23 @@
-// PICKER CORE
+// # Picker Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
+// Inherit from the [base control](base).
 import Base from './base';
 
 // Traits
 import Openable from '../traits/openable';
 
-// Styles
-// require('../../less/picker.less');
-
-export const CONTROL = 'picker';
+export const CONTROL = 'Picker';
 
 const PickerCore = Lib.merge({}, Base, Openable, {
 	CONTROL,
 	
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL
+		CONTROL: 'slds-picker'
 	},
 
 	_defaultState: {

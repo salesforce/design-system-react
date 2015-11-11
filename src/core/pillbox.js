@@ -1,27 +1,24 @@
-// PILLBOX CORE
+// # Pillbox Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
+// Inherit from the [base control](base).
 import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
 import Multiselectable from '../traits/multiselectable';
 
-// Styles
-// require('../../scss/components/buttons/flavors/base/index.scss');
-// require('../../scss/components/buttons/flavors/icon/index.scss');
-// require('../../scss/components/pills/flavors/base/index.scss');
-// require('../../scss/components/pills/flavors/portrait/index.scss');
-// require('../../scss/components/forms/flavors/input/index.scss');
-
-export const CONTROL = 'pillbox';
+export const CONTROL = 'Pillbox';
 
 const PillboxCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	CONTROL,
 	
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL
+		CONTROL: 'slds-pill'
 	},
 
 	_defaultProperties: {
