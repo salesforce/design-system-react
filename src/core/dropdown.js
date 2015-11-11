@@ -6,14 +6,14 @@ import PicklistCore from './picklist';
 // TODO: This doesn't actually exist, should we name some variant of picklist or something equivalent?
 // require('../../scss/components/forms/flavors/input/index.scss');
 
-export const CONTROL = 'slds-dropdown';
+export const CONTROL = 'Dropdown';
 
 const DropdownCore = Lib.merge({}, PicklistCore, {
 	CONTROL,
 	
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL,
+		CONTROL: 'slds-dropdown',
 		ICON_DOWN_SIZE: 'slds-button__icon--x-small',
 		TRIGGER: 'slds-dropdown-trigger'
 	},

@@ -16,14 +16,14 @@ import Openable from '../traits/openable';
 import Multiselectable from '../traits/multiselectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
-export const CONTROL = 'slds-lookup';
+export const CONTROL = 'Lookup';
 
 const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, KeyboardNavigable, {
 	CONTROL,
 	
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL,
+		CONTROL: 'slds-lookup',
 		INPUT: 'slds-input',
 		MENU: 'slds-lookup__menu',
 		LIST: 'slds-lookup__list'
