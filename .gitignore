@@ -9,9 +9,7 @@ test/tests-compiled.js
 test/tests-api.js
 test/tests.js
 build/
-docs/src/
-docs/public/
-docs/docco.css
+public/docs/src/
 # gh-pages
 _site/*
 
