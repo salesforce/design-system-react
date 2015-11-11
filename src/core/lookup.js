@@ -32,7 +32,10 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	_defaultProperties: {
 		collection: [],
 		multiSelect: false,
-		searchIcon: 'utility.search'
+		searchIcon: 'utility.search',
+		filterPredicate (text, pattern) {
+			return text.substr(0, pattern.length).toLowerCase() === pattern;
+		}
 	},
 	
 	_defaultState: {
@@ -91,6 +94,32 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		}
 	},
 	
+	_getFilteredCollection (collection, searchString) {
+		const _filterPredicate = this.getProperty('filterPredicate');
+		let _collection;
+		
+		if (searchString && searchString.length > 0) {
+			const pattern = searchString.toLowerCase();
+			
+			_collection = this._getDataAdapter(collection.filter(item => {
+				return _filterPredicate(item.getText(), pattern);
+			}));
+		} else {
+			_collection = collection;
+		}
+		
+		return _collection;
+	},
+	
+	_configureKeyboardNavigation (filteredCollection) {
+		const navigableItems = this._getNavigableItems(filteredCollection);
+		
+		if (this.getProperty('menuHeaderRenderer')) navigableItems.indexes.unshift('header');
+		if (this.getProperty('menuFooterRenderer')) navigableItems.indexes.push('footer');
+		
+		return navigableItems;
+	},
+	
 	_scrollMenuItems () {
 		const _menu = this.elements.menu[0];
 		let _menuItem = _menu.getElementsByClassName('slds-theme--shade');
@@ -127,7 +156,8 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 				searchString
 			});
 			
-			this.trigger('filter', searchString);
+			this._filteredCollection = this._getFilteredCollection(this._collection, searchString);
+			this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
 		}
 	}
 });
