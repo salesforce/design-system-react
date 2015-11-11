@@ -1,5 +1,5 @@
 export default String.raw`
-	<div class="slds-form--stacked slds-float--left slds-datepicker-form">
+	<div class="slds-form--stacked slds-datepicker-form">
 
 		<div class="slds-form-element">
 			<div class="slds-form-element__control">
