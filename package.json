@@ -58,7 +58,7 @@
   "scripts": {
     "start": "grunt serve",
     "test": "grunt test",
-    "webpack": "([[ -f ./build/react.bundle.js ]] || ./node_modules/.bin/webpack --config webpack.heroku.config.js --optimize-minimize)",
+    "webpack": "./node_modules/.bin/webpack --config webpack.heroku.config.js --optimize-minimize",
     "docs": "./node_modules/.bin/docco -t docs/templates/docco.jst -c public/assets/docco/docco.css -o public/docs {src/**,src/**/**,src/**/**/**}/*.js",
     "heroku-build": "npm run-script webpack && npm run-script docs",
     "heroku-start": "node app.js"
