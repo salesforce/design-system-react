@@ -38,9 +38,10 @@ module.exports = React.createClass( {
     return {
       verticalAlign: 'bottom',
       horizontalAlign: 'left',
-//      targetAttachment: 'bottom left',
       className: 'slds-dropdown',
-      closeOnTabKey: false
+      closeOnTabKey: false,
+      marginTop:'0.20rem',
+      marginBottom:'0.35rem'
     };
   },
 
@@ -92,8 +93,8 @@ module.exports = React.createClass( {
         style={{
           transform:'none',
           WebkitTransform:'none',
-          'marginTop':'0.20rem',
-          'marginBottom':'0.35rem',
+          'marginTop':this.props.marginTop,
+          'marginBottom':this.props.marginBottom,
           'float':'inherit',
           'position':'inherit'
         }}

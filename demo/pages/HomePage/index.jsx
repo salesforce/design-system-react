@@ -36,6 +36,7 @@ import DropdownBaseSection from './DropdownBaseSection';
 import ModalSection from './ModalSection';
 import DatePickerSingleSelectSection from './DatePickerSingleSelectSection';
 import IconSection from './IconSection';
+import TooltipSection from './TooltipSection';
 
 const SLDSColumn = SLDSGrid.Column;
 
@@ -134,6 +135,8 @@ module.exports = React.createClass( {
               </li>
             </ul>
             </section>
+
+            <TooltipSection/>
 
             <ButtonSection/>
 
