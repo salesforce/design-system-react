@@ -71,6 +71,12 @@ let Lookup = Lib.merge({}, LookupCore, {
 		return LookupDefaultRenderers;
 	},
 	
+	getInitialState () {
+		return {
+			autoFocusOnNewSelectedItems: false
+		};
+	},
+
 	componentWillMount () {
 		this._filteredCollection = this._getFilteredCollection(this._collection, this.state.searchString);
 		this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
@@ -79,6 +85,9 @@ let Lookup = Lib.merge({}, LookupCore, {
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.collection) this._filteredCollection = this._getFilteredCollection(this._collection, this.state.searchString);
 		this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
+		this.setState({
+			autoFocusOnNewSelectedItems: true
+		});
 	},
 
 	render () {
@@ -99,7 +108,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		}
 		
 		if (hasSelection) {
-			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} />;
+			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems}/>;
 		}
 		
 		return (
@@ -126,12 +135,12 @@ let Lookup = Lib.merge({}, LookupCore, {
 		
 		// TODO: This logic probably needs to be cleaned up and will have to be altered to work with multiselect, but it does help make for a smooth experience when navigating by keyboard.
 		if (this._focusOnPills) {
-			const deselectPillsButton = this.elements.input[0].parentNode.getElementsByTagName('button');
+//			const deselectPillsButton = this.elements.input[0].parentNode.getElementsByTagName('button');
 			
-			if (deselectPillsButton && deselectPillsButton.length === 1) {
-				deselectPillsButton[0].focus();
-				this._focusOnPills = false;
-			}
+//			if (deselectPillsButton && deselectPillsButton.length === 1) {
+//				deselectPillsButton[0].focus();
+			this._focusOnPills = false;
+//			}
 		} else if (this._focusOnInput) {
 			this.elements.input[0].focus();
 			this._focusOnInput = false;
@@ -159,8 +168,11 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	_handleDeselect (item) {
-		if (item && this.props.multiSelect) {
+		if (item) {
 			this._deselectItem(item);
+			if (!this.props.multiSelect) {
+				this._focusOnInput = true;
+			}
 		} else if (!item) {
 			this.deselectAll();
 			this._focusOnInput = true;
