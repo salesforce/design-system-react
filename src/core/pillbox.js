@@ -38,31 +38,11 @@ const PillboxCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	},
 
 	_canSelect (item, select) {
-		if (Lib.isFunction(this._onAdd)) {
-			Promise.resolve(this._onAdd(item)).then(canSelect => {
-				if (canSelect !== false) {
-					select();
-				}
-			}, error => {
-				Lib.log(error);
-			});
-		} else {
-			select();
-		}
+		select();
 	},
 
 	_canDeselect (item, deselect) {
-		if (Lib.isFunction(this._onRemove)) {
-			Promise.resolve(this._onRemove(item)).then(canDeselect => {
-				if (canDeselect !== false) {
-					deselect();
-				}
-			}, error => {
-				Lib.log(error);
-			});
-		} else {
-			deselect();
-		}
+		deselect();
 	},
 
 	_isAcceptKeyCode (keyCode) {
