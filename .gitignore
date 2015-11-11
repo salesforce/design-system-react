@@ -9,7 +9,7 @@ test/tests-compiled.js
 test/tests-api.js
 test/tests.js
 build/
-docs/
+public/docs/src/
 # gh-pages
 _site/*
 
