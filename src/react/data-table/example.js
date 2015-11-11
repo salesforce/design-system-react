@@ -2,41 +2,42 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import DataTable from './data-table';
+import _ from 'underscore';
 
 export default function () {
 	const collection = [
 		{
 			id: '8IKZHZZV80',
 			name: 'Item One',
-			count: '100,976',
+			count: 100976,
 			lastModified: 'Yesterday',
 			modifiedBy: 'Ashley McDougal'
 		},
 		{
 			id: '5GJOOOPWU7',
 			name: 'Item Two',
-			count: '54,976',
+			count: 54976,
 			lastModified: 'Today',
 			modifiedBy: 'Ashley McDougal'
 		},
 		{
 			id: 'Q8Z71ZUCEZ',
 			name: 'Item Three',
-			count: '10,128',
+			count: 10128,
 			lastModified: 'Today',
 			modifiedBy: 'Ashley McDougal'
 		},
 		{
 			id: 'WA0Q0XARAR',
 			name: 'Item Four',
-			count: '63,616',
+			count: 63616,
 			lastModified: 'Yesterday',
 			modifiedBy: 'Ashley McDougal'
 		},
 		{
 			id: 'N8M7CMNU39',
 			name: 'Item Five',
-			count: '25,615',
+			count: 25615,
 			lastModified: 'Yesterday',
 			modifiedBy: 'Steve Daniels'
 		}
@@ -70,11 +71,9 @@ export default function () {
 
 		getInitialState () {
 			return {
-				models: {
-					collection: collection,
-					columns: columns,
-					selection: ''
-				}
+				collection: collection,
+				columns: columns,
+				selection: []
 			};
 		},
 
@@ -83,16 +82,38 @@ export default function () {
 				<div>
 					<div className="slds-col example">
 						<DataTable
-							collection={this.state.models.collection}
-							selection={this.state.models.selection}
-							columns={this.state.models.columns}
+							collection={this.state.collection}
+							selection={this.state.selection}
+							columns={this.state.columns}
 							bordered={true}
 							striped={true}
+							onChanged={this.handleChanged}
+							onSort={this.sort}
 						/>
 					</div>
 					<div className="slds-col demo-controls"></div>
 				</div>
 			);
+		},
+
+		handleChanged (item, selection) {
+			this.setState({ selection });
+		},
+
+		sort (colData) {
+			let rowData = this.state.collection;
+
+			if (colData.sortColumn.propertyName === 'count') {
+				rowData = _.sortBy(rowData, 'count');
+			} else if (colData.sortColumn.propertyName === 'lastModified') {
+				rowData = _.sortBy(rowData, 'lastModified');
+			}
+
+			if ( colData.sortDirection === 'desc') rowData.reverse();
+
+			this.setState({
+				collection: rowData
+			});
 		},
 
 		_handleModelChange (index, selection) { // TODO: feature.selection

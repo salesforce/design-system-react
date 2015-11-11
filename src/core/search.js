@@ -1,12 +1,16 @@
-// SEARCH CORE
+// # Search Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
+// Inherit from the [base control](base).
 import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
 
-export const CONTROL = 'search';
+export const CONTROL = 'Search';
 
 const SearchCore = Lib.merge({}, Base, Disableable, {
 	CONTROL,

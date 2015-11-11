@@ -19,6 +19,9 @@ let DataTable = function DataTable () {
 	
 	const $html = $('<i />').append(template);
 	this.template = $html.find('table');
+
+	this.sortTemplate = '<button class="slds-button slds-button--icon-bare"><svg aria-hidden="true" class="slds-button__icon slds-button__icon--small"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/examples/symbols.svg#arrowdown"></use></svg> <span class="slds-assistive-text" >Sort</span></button>';
+	this.selectCheckbox = '<label class="slds-checkbox" ><input type="checkbox" ><span class="slds-checkbox--faux"></span><span class="slds-form-element__label slds-assistive-text" >select</span></label>';
 	
 	this._initialize(options);
 };
@@ -26,65 +29,173 @@ let DataTable = function DataTable () {
 export const DataTableObject = {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
+
+		this.elements.theadRow = this.element.find('thead tr.slds-text-heading--label');
+		this.elements.tbody = this.element.find('tbody');
 	},
 	
 	_bindUIEvents () {
-		// this.elements.button.on('click', $.proxy(this._handleClicked, this));
-		// this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
-		// this.elements.wrapper.on('keydown', $.proxy(this._handleKeyDown, this));
-		// this.elements.wrapper.on('keypress', $.proxy(this._handleKeyPressed, this));
+		this.element.on('click.slds-table', '.slds-is-sortable', $.proxy(this._toggleSort, this));
+
+		if (this.getProperty('selectRows')) {
+			this.element.on('click.slds-table', 'tbody > tr', $.proxy(this._toggleItem, this));
+			this.element.on('click.slds-table', 'thead .slds-checkbox', $.proxy(this._toggleAllItems, this));
+		}
 	},
 	
 	_renderItem (propertyName, item) {
-		return $('<td/>', {
+		const $row = $('<td/>', {
 			'data-label': propertyName
-		}).append($('<span/>', {
-			class: 'slds-truncate',
-			text: item.get(propertyName)
-		}));
+		});
+
+		if (propertyName === 'select') {
+			$row.addClass('slds-row-select');
+			$row.append($(this.selectCheckbox));
+		} else {
+			$row.append($('<span/>', {
+				class: 'slds-truncate',
+				text: item.get(propertyName)
+			}));
+		}
+
+		return $row;
 	},
 	
 	_renderHeader (item, classes) {
 		const $th = $('<th/>', {
 			class: 'col ' + classes
-		}).append($('<span/>', {
-			class: 'slds-truncate',
-			text: item.displayName
-		}));
+		});
+		let $sort;
+		let $selCheck;
+
+		if (item.propertyName === 'select') {
+			$selCheck = $(this.selectCheckbox);
+			$selCheck.find('input').prop('checked', this.allCheckActivated);
+			$th.append($selCheck);
+		} else {
+			$th.append($('<span/>', {
+				class: 'slds-truncate',
+				text: item.displayName
+			}));
+		}
+
+		if (item.sortDirection) {
+			$sort = $(this.sortTemplate);
+
+
+			$sort.find('use')
+				.attr({'xlink:href': '/examples/symbols.svg#' + (item.sortDirection === 'desc' ? 'arrowdown' : 'arrowup')});
+
+			$th.append($sort);
+		}
+
+		$th.data({
+			item: item
+		});
 	
 		return $th;
 	},
 
 	_render () {
-		// Get the template
-		const $el = this.element;
-		$el.addClass(this._getClassNames(this.getProperty('styles')));
-		
-		const $theadRow = $el.find('thead tr.slds-text-heading--label');
-		const $tbody = $el.find('tbody');
+		const dataSource = this.getProperty('dataSource');
 
-		this.getProperty('columns').forEach(item => {
+		if (dataSource) {
+			dataSource({}, (response) => {
+				this._collection = this._getDataAdapter(response.data);
+				this._renderCollection();
+			});
+		} else if (this._collection.length()) {
+			this._renderCollection();
+		}
+
+		this.element.addClass(this._getClassNames(this.getProperty('styles')));
+		
+		return this.element;
+	},
+
+	_renderCollection () {
+		const self = this;
+		const columns = this.getProperty('columns');
+		const isRowSelect = this.getProperty('selectRows');
+
+		if (isRowSelect && !(columns[0].propertyName === 'select')) {
+			columns.splice(0, 0, {
+				propertyName: 'select',
+				displayName: '',
+				sortable: false,
+				hintParent: false
+			});
+		}
+
+		this.elements.theadRow.empty();
+		columns.forEach(item => {
 			const styles = {
 				sortable: item.sortable,
-				hintParent: item.hintParent
+				hintParent: item.hintParent,
+				sortDirection: item.sortDirection
 			};
-			const classes = this._getClassNames(styles);
-			$theadRow.append(this._renderHeader(item, classes));
+			self.elements.theadRow.append(this._renderHeader(item, this._getClassNames(styles) ));
 		});
 
 		// For each item in the collection
+		this.elements.tbody.empty();
 		this._collection.forEach(item => {
 			const $row = $('<tr/>', { class: 'slds-hint-parent' });
 
 			// For each column marked for render, create a cell for that value on this data node
-			this.getProperty('columns').forEach(column => {
+			columns.forEach(column => {
 				$row.append(this._renderItem(column.propertyName, item));
 			});
 
-			$tbody.append($row);
+			if (isRowSelect) {
+				self._renderSelection($row, item);
+			}
+
+			$row.data({
+				item: item._item
+			});
+
+			self.elements.tbody.append($row);
 		});
-		
-		return this.element;
+	},
+
+	_renderSelection ($item, item, selection) {
+		const selected = this._isItemSelected(item, selection);
+
+		$item.find('.slds-checkbox input').prop('checked', selected);
+	},
+
+	_toggleSort (ev) {
+		const colData = $(ev.currentTarget).data('item');
+
+		this._sortColumn(colData);
+	},
+
+	_toggleItem (ev) {
+		const rowData = $(ev.currentTarget).data('item');
+
+		this._selectDataItem(rowData);
+	},
+
+	_onSort () {
+		const dataSource = this.getProperty('dataSource');
+
+		if (dataSource) {
+			dataSource(this._generatePropertyPayload(), (response) => {
+				this._collection = this._getDataAdapter(response.data);
+				this._renderCollection();
+			});
+		} else {
+			this._renderCollection();
+		}
+	},
+
+	_onSelected () {
+		this._renderCollection();
+	},
+
+	_onDeselected () {
+		this._renderCollection();
 	},
 	
 	_onRendered () {
@@ -92,7 +203,19 @@ export const DataTableObject = {
 	}
 };
 
+// LEGACY METHODS
+
+const legacyMethods = {
+	selectedItems () {
+		const selection = this._getSelectedItems();
+
+		return selection.get();
+	}
+};
+
 Lib.merge(DataTable.prototype, DataTableCore, Events, DOM, State, DataTableObject);
-DataTable = Lib.runHelpers('jquery', CONTROL, DataTable);
+DataTable = Lib.runHelpers('jquery', CONTROL, DataTable, {
+	legacyMethods
+});
 
 export default DataTable;

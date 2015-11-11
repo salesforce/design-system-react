@@ -1,6 +1,10 @@
-// PICKLIST CORE
+// # Picklist Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
+// Inherit from the [base control](base).
 import Base from './base';
 
 // Traits
@@ -9,14 +13,14 @@ import Openable from '../traits/openable';
 import Selectable from '../traits/selectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
-export const CONTROL = 'slds-picklist';
+export const CONTROL = 'Picklist';
 
 const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
 	CONTROL,
 	
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL,
+		CONTROL: 'slds-picklist',
 		LABEL: 'slds-truncate',
 		MENU: 'slds-dropdown',
 		LIST: 'slds-dropdown__list',

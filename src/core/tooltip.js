@@ -1,17 +1,18 @@
-// TOOLTIP CONTROL
+// # Tooltip Control
+// ### Core
+
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
 import PopoverCore from './popover';
 
-// Styles
-// require('../../scss/components/tooltips/flavors/base/index.scss');
-
-export const CONTROL = 'slds-tooltip';
+export const CONTROL = 'Tooltip';
 
 const TooltipCore = Lib.merge({}, PopoverCore, {
 	CONTROL,
 	
 	cssClasses: {
-		CONTROL: CONTROL
+		CONTROL: 'slds-tooltip'
 	}
 });
 

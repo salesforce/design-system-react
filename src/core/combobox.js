@@ -1,19 +1,19 @@
-// COMBOBOX CORE
+// # Combobox Control
+// ### Core
 
+// Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
+
 import PicklistCore from './picklist';
 
-// TODO: This doesn't actually exist, should we name some variant of picklist or something equivalent?
-// require('../../scss/components/forms/flavors/input/index.scss');
-
-export const CONTROL = 'slds-combobox';
+export const CONTROL = 'Combobox';
 
 const ComboboxCore = Lib.merge({}, PicklistCore, {
 	CONTROL,
 	
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL,
+		CONTROL: 'slds-combobox',
 		INPUT: 'slds-input',
 		TOGGLE: 'slds-button'
 	},

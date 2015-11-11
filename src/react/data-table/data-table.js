@@ -36,19 +36,68 @@ export const DataTableObject = {
 	},
 
 	_tableHeaders () {
-		return this.props.columns.map((column, index) => {
+		const isRowSelect = this.getProperty('selectRows');
+		const columns = this.getProperty('columns');
+		const self = this;
+
+		if (isRowSelect && !(columns[0].propertyName === 'select')) {
+			columns.splice(0, 0, {
+				propertyName: 'select',
+				displayName: '',
+				sortable: false,
+				hintParent: false
+			});
+		}
+
+		// TODO: this should probably be a seperate view
+		return columns.map((column, index) => {
+			const select = isRowSelect && index === 0 ? self._getSelectCheckbox() : false;
+			let sort;
+			let dir;
+
+			if (column.sortDirection) {
+				dir = column.sortDirection === 'desc' ? '/examples/symbols.svg#arrowdown' : '/examples/symbols.svg#arrowup';
+				sort = (
+					<button className="slds-button slds-button--icon-bare">
+						<svg aria-hidden="true"
+							className="slds-button__icon slds-button__icon--small"
+							dangerouslySetInnerHTML={{__html: '<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="' + dir + '"></use>'}}>
+						</svg>
+						<span className="slds-assistive-text">Sort</span>
+					</button>
+				);
+			}
+
 			return (
 				<th scope="col" key={index} className={this._getClassNames({
 					sortable: column.sortable,
 					hintParent: column.hintParent
-				})}>
+				})} onClick={column.sortable ? this._handleSort.bind(this, column) : false}>
+					{select}
 					<span className="slds-truncate" data-prop={column.propertyName}>{column.displayName}</span>
+					{sort}
 				</th>
 			);
 		});
 	},
 
+	_handleSort (col) {
+		this._sortColumn(col);
+	},
+
+	_getSelectCheckbox () {
+		return (
+			<label className="slds-checkbox" >
+				<input type="checkbox" checked={this.allCheckActivated}></input>
+				<span className="slds-checkbox--faux" onClick={this._toggleAllItems}></span>
+				<span className="slds-form-element__label slds-assistive-text" >select</span>
+			</label>
+		);
+	},
+
 	_tableItems () {
+		const isRowSelect = this.getProperty('selectRows');
+
 		return this._collection.map((item, index) => {
 			const isSelected = this._isItemSelected(item);
 
@@ -59,8 +108,9 @@ export const DataTableObject = {
 					bordered={true}
 					headers={this.props.columns}
 					item={item}
-					onSelected={this._selectItem}
+					onSelected={this._selectDataItem}
 					selected={isSelected}
+					selectRows={isRowSelect}
 				/>
 			);
 		});
@@ -75,9 +125,9 @@ export const DataTableObject = {
 				striped: this.props.striped
 			})}>
 				<thead>
-				<tr className="slds-text-heading--label">
-					{this._tableHeaders()}
-				</tr>
+					<tr className="slds-text-heading--label">
+						{this._tableHeaders()}
+					</tr>
 				</thead>
 				<tbody>
 					{this._tableItems()}
