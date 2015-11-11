@@ -10,9 +10,6 @@ export default String.raw`
         <span class="slds-assistive-text">Remove</span>
       </button>
     </li>
-    <li class="slds-pill-input-wrap">
-      <input type="text" class="slds-input slds-input--x-small | slds-pill-add-item" placeholder="add item">
-    </li>
   </ul>
 </div>
 `;
