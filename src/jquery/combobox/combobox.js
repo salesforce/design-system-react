@@ -36,6 +36,9 @@ export const ComboboxObject = {
 		this.elements.input = this.element.find('.' + this.cssClasses.INPUT);
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
 		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
+
+		const $icon = this._renderIcon('utility.down');
+		this.elements.button.find('x-svg').replaceWith($icon);
 	},
 	
 	_bindUIEvents () {

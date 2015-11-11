@@ -48,11 +48,13 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 	},
 
 	_defaultProperties: {
-		iconStyle: null,
 		iconPosition: 'left',
+		iconSize: null,
+		iconStyle: null,
 		selected: false,
 		size: null,
 		theme: null,
+		truncate: false,
 		views: [],
 		children: []
 	},

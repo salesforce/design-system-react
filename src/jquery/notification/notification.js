@@ -46,6 +46,7 @@ export const NotificationObject = {
 		// TODO: Should this also use the contents of the original? It's different in jQuery becasue in React 'Children' is actually just another prop
 		$el.find('.notify-text').text(this.getProperty('text'));
 
+		/* TODO: Needs internationalization */
 		const $closeButton = new Button({
 			assistiveText: 'Close',
 			iconStyle: 'icon-inverse',

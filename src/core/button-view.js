@@ -16,9 +16,11 @@ const ButtonViewCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	cssClasses: {
+		ASSISTIVE_TEXT: 'slds-assistive-text',
 		ICON: 'slds-button__icon',
+		ICON_ONLY: 'slds-icon',
 		STATEFUL_ICON: 'slds-button__icon--stateful',
-		ASSISTIVE_TEXT: 'slds-assistive-text'
+		TRUNCATE: 'slds-truncate'
 	},
 	
 	buttonStatefulViewStyles: {
@@ -52,12 +54,17 @@ const ButtonViewCore = Lib.merge({}, Base, {
 			iconBaseClass = this.cssClasses.ICON;
 		}
 
+		if (this.getProperty('iconStyle') === 'icon-only') {
+			iconBaseClass = this.cssClasses.ICON_ONLY;
+		}
+
 		if (this.getProperty('iconSize')) {
 			buttonIconSizeClass = this.buttonIconSizes[this.getProperty('iconSize')];
 		}
 
 		return classNames(iconBaseClass,
-			!!this.getProperty('text') && this.iconPositions[this.getProperty('iconPosition')],
+			!!this.getProperty('text') && this.getProperty('iconStyle') !== 'icon-only'
+				&& this.iconPositions[this.getProperty('iconPosition')],
 			buttonIconSizeClass,
 			additionalClasses);
 	}

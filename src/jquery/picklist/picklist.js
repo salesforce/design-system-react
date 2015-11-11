@@ -10,6 +10,9 @@ import Events from '../events';
 import State from '../state';
 import Svg from '../svg';
 
+// children
+import Button from '../button/button';
+
 const $ = Lib.global.jQuery || Lib.global.$;
 
 // Template imports
@@ -31,10 +34,21 @@ export const PicklistObject = {
 	},
 
 	_initElements () {
-		this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
-		this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
+		// this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
 		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
+
+		/* TODO: Needs internationalization */
+		this.button = new Button({
+			icon: 'utility.down',
+			iconStyle: 'icon-only',
+			text: 'Select an option',
+			theme: 'neutral',
+			truncate: true
+		});
+		this.button.element.addClass('slds-picklist__label');
+		this.element.find('x-button').replaceWith(this.button.element);
+		this.elements.button = this.element.find('button');
 	},
 
 	_bindUIEvents () {
@@ -116,7 +130,9 @@ export const PicklistObject = {
 
 		// Show the current selection if there is one
 		const selectionName = selection.getText() || strings.NONE_SELECTED;
-		elements.label.text(selectionName);
+		this.button.renderView({
+			text: selectionName
+		});
 
 		this._renderMenu(elements);
 
@@ -147,7 +163,9 @@ export const PicklistObject = {
 		if (this.rendered) {
 			const strings = this.getState('strings');
 
-			this.elements.label.text(item.getText() || strings.NONE_SELECTED);
+			this.button.renderView({
+				text: item.getText() || strings.NONE_SELECTED
+			});
 
 			this._addCheckmark(this.elements);
 		}
