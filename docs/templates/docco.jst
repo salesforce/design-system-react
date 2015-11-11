@@ -5,7 +5,7 @@
   <title><%= title %></title>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-  <link rel="stylesheet" media="all" href="<%= css %>" />
+  <link rel="stylesheet" media="all" href="/assets/docco/docco.css" />
 </head>
 <body>
   <div id="container">
@@ -26,7 +26,7 @@
                 var directory = path.dirname(src) || 'Top Level'; 
                 var arr = sources_hash[directory] || [];
                 arr.push({
-                  href:path.resolve(destination(src)),
+				  href:'/docs/'+directory+'/'+path.basename(src).replace('.js', '.html'),
                   label:directory+'/'+path.basename(src)
                 });
                 sources_hash[directory] = arr; 
