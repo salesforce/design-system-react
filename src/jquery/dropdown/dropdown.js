@@ -9,7 +9,7 @@ import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
 import Svg from '../svg';
-import { PicklistObject, legacyMethods } from '../picklist/picklist';
+import { PicklistObject } from '../picklist/picklist';
 
 // Children
 import Button from '../button/button';
@@ -94,8 +94,6 @@ export const DropdownObject = {
 
 Lib.merge(Dropdown.prototype, DropdownCore, Events, DOM, State, Svg, PicklistObject, DropdownObject);
 
-Dropdown = Lib.runHelpers('jquery', CONTROL, Dropdown, {
-	legacyMethods
-});
+Dropdown = Lib.runHelpers('jquery', CONTROL, Dropdown);
 
 export default Dropdown;

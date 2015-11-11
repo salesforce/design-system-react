@@ -9,7 +9,7 @@ import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
 import Svg from '../svg';
-import { PicklistObject, legacyMethods } from '../picklist/picklist';
+import { PicklistObject } from '../picklist/picklist';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -98,8 +98,6 @@ export const ComboboxObject = {
 Lib.merge(Combobox.prototype, ComboboxCore, Events, DOM, State, Svg, PicklistObject, ComboboxObject);
 
 
-Combobox = Lib.runHelpers('jquery', CONTROL, Combobox, {
-	legacyMethods
-});
+Combobox = Lib.runHelpers('jquery', CONTROL, Combobox);
 
 export default Combobox;

@@ -92,7 +92,7 @@ const KeyboardNavigable = {
 				if (navigableIndex < lastIndex) {
 					focusedIndex = indexes[++navigableIndex];
 				} else {
-					focusedIndex = indexes[lastIndex];
+					focusedIndex = indexes[0];
 				}
 			} else if (/(ArrowUp)/.test(input)) {
 				if (navigableIndex > 0) {
