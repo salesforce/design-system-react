@@ -1,6 +1,6 @@
 {
   "name": "design-system-facades",
-  "description": "Facades that consume Lightning Design System and extend with JavaScript in native libraries like jQuery, React, Backbone, and Angular",
+  "description": "Javascript components based on Lightning Design System with Facades for libraries and frameworks including jQuery, React, Backbone, and Angular",
   "version": "0.0.8",
   "contributors": [],
   "license": "BSD-3-Clause",

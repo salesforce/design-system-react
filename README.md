@@ -1,5 +1,5 @@
 # design-system-facades
-Facades that consume Lightning Design System and extend with JavaScript in native libraries like jQuery, React, Backbone, and Angular.
+Javascript components based on [Lightning Design System](https://www.lightningdesignsystem.com/) with Facades for libraries and frameworks including jQuery, React, Backbone, and Angular.
 
 ### Setup
 * Clone the project
