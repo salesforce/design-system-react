@@ -25,20 +25,21 @@ let Modal = function Modal () {
 Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
+
 		this._initElements();
 	},
 
 	_initElements () {
-		//this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
-		//this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
+		// this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
+		// this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
 	},
 
 	_bindUIEvents () {
-		//this.elements.button.on('click', $.proxy(this._handleClicked, this));
+		// this.elements.button.on('click', $.proxy(this._handleClicked, this));
 	},
 
 	_render () {
-		//append elements here
+		// append elements here
 
 		return this.element;
 	},

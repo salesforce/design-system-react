@@ -3,14 +3,9 @@
 import * as Lib from '../lib/lib';
 import Base from './base';
 
-import Openable from '../traits/openable';
-
-// Styles
-// require('../../less/modal.less');
-
 export const CONTROL = 'modal';
 
-const ModalCore = Lib.merge({}, Base, Openable, {
+const ModalCore = Lib.merge({}, Base, {
 	CONTROL,
 
 	// CSS classes used within this control
@@ -20,7 +15,9 @@ const ModalCore = Lib.merge({}, Base, Openable, {
 
 	// Set the defaults
 	_defaultProperties: {
-		collection: []
+		secondaryBtnText: 'Cancel',
+		primaryBtnText: 'Save',
+		isOpen: false
 	}
 
 });
