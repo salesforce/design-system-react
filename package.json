@@ -4,7 +4,7 @@
   "description": "Salesforce Lightning Design System React components",
   "scripts": {
     "start": "node server.js",
-    "lint": "eslint components",
+    "lint": "eslint --config=./.eslintrc components",
     "pages": "webpack",
     "compile": "scripts/compile",
     "prepublish": "npm run compile",
