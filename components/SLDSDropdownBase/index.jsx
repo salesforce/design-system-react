@@ -7,22 +7,18 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-'use strict';
 
-import React, {PropTypes} from 'react';
-import SLDSPopover from '../SLDSPopover';
-import List from './list';
-import ListItem from './list-item';
-import ListItemLabel from './list-item-label';
-import chain from '../utils/create-chained-function';
+import React, {PropTypes} from "react";
+import SLDSPopover from "../SLDSPopover";
+import List from "./list";
+import ListItem from "./list-item";
+import ListItemLabel from "./list-item-label";
+import chain from "../utils/create-chained-function";
 
-import SLDSButton from '../SLDSButton';
+import SLDSButton from "../SLDSButton";
 
-import {InputIcon, ButtonIcon} from "./../SLDSIcons";
-import {Icon} from "../SLDSIcons";
-
-import {KEYS,EventUtil} from '../utils';
-import omit from 'lodash.omit';
+import {KEYS,EventUtil} from "../utils";
+import omit from "lodash.omit";
 
 
 module.exports = React.createClass( {
@@ -35,20 +31,20 @@ module.exports = React.createClass( {
 
   getDefaultProps(){
     return {
-      variant:'neutral',
-      placeholder: 'Select an Option',
+      variant:"neutral",
+      placeholder: "Select an Option",
       disabled: false,
-      theme: 'default',
-      label: 'Dropdown',
+      theme: "default",
+      label: "Dropdown",
       value: null,
       options: [],
       initialFocus: false,
       modal: true,
-      className:'',
-      listClassName:'',
-      openOn:'hover',
+      className:"",
+      listClassName:"",
+      openOn:"hover",
       listItemRenderer:ListItemLabel,
-      horizontalAlign:'left',
+      horizontalAlign:"left",
       hoverCloseDelay:300
     }
   },
@@ -70,7 +66,7 @@ module.exports = React.createClass( {
     if(this.props.initialFocus){
       this.setFocus();
     }
-    if(this.props.openOn === 'hover'){
+    if(this.props.openOn === "hover"){
       //TODO:Add functionality here
     }
   },
@@ -150,8 +146,8 @@ module.exports = React.createClass( {
     });
   },
 
-  handleMouseEnter(event){
-    if(this.props.openOn === 'hover'){
+  handleMouseEnter(){
+    if(this.props.openOn === "hover"){
       this.state.isClosing = false;
       if(!this.state.isOpen){
         this.setState({
@@ -162,8 +158,8 @@ module.exports = React.createClass( {
     }
   },
 
-  handleMouseLeave(event){
-    if(this.props.openOn === 'hover'){
+  handleMouseLeave(){
+    if(this.props.openOn === "hover"){
       this.setState({isClosing:true});
     }
   },
@@ -239,7 +235,7 @@ module.exports = React.createClass( {
 
   getPopoverContent(){
     return <List
-            ref='list'
+            ref="list"
             options={this.props.options}
             className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
@@ -248,8 +244,8 @@ module.exports = React.createClass( {
             onUpdateHighlighted={this.handleUpdateHighlighted}
             onListBlur={this.handleListBlur}
             onListItemBlur={this.handleListItemBlur}
-            onMouseEnter={(this.props.openOn === 'hover')?this.handleMouseEnter:null}
-            onMouseLeave={(this.props.openOn === 'hover')?this.handleMouseLeave:null}
+            onMouseEnter={(this.props.openOn === "hover")?this.handleMouseEnter:null}
+            onMouseLeave={(this.props.openOn === "hover")?this.handleMouseLeave:null}
             onCancel={this.handleCancel}
             itemRenderer={this.props.listItemRenderer}
             isHover={this.state.isHover}
@@ -261,14 +257,14 @@ module.exports = React.createClass( {
       !this.props.disabled && this.state.isOpen?
         <div
           className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
-          style={{maxHeight:'20em'}}>
+          style={{maxHeight:"20em"}}>
           {this.getPopoverContent()}
         </div>:null
     );
   },
 
   getModalPopover(){
-    const className = 'slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--'+this.props.horizontalAlign;
+    const className = "slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--"+this.props.horizontalAlign;
     return(
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
@@ -295,29 +291,28 @@ module.exports = React.createClass( {
   },
 
   render(){
-    let className = this.state.currentSelectedItem? 'slds-input--bare slds-hide':'slds-input--bare';
 
     const props = omit(this.props, [
-        'aria-haspopup',
-        'label',
-        'className',
-        'style',
-        'variant',
-        'iconName',
-        'iconVariant',
-        'onBlur',
-        'onFocus',
-        'onClick',
-        'onMouseDown',
-        'onMouseEnter',
-        'onMouseLeave',
-        'tabIndex',
-        'onKeyDown'
+        "aria-haspopup",
+        "label",
+        "className",
+        "style",
+        "variant",
+        "iconName",
+        "iconVariant",
+        "onBlur",
+        "onFocus",
+        "onClick",
+        "onMouseDown",
+        "onMouseEnter",
+        "onMouseLeave",
+        "tabIndex",
+        "onKeyDown"
       ]);
 
     return <SLDSButton
-        ref='button'
-        aria-haspopup='true'
+        ref="button"
+        aria-haspopup="true"
         label={this.props.label}
         className={this.props.className}
         style={this.props.style}
@@ -328,8 +323,8 @@ module.exports = React.createClass( {
         onFocus={ chain(this.props.onFocus, this.handleFocus) }
         onClick={ chain(this.props.onClick, this.handleClick) }
         onMouseDown={ chain(this.props.onMouseDown, this.handleMouseDown) }
-        onMouseEnter={ chain(this.props.onMouseEnter, (this.props.openOn === 'hover')?this.handleMouseEnter:null) }
-        onMouseLeave={ chain(this.props.onMouseLeave, (this.props.openOn === 'hover')?this.handleMouseLeave:null ) }
+        onMouseEnter={ chain(this.props.onMouseEnter, (this.props.openOn === "hover")?this.handleMouseEnter:null) }
+        onMouseLeave={ chain(this.props.onMouseLeave, (this.props.openOn === "hover")?this.handleMouseLeave:null ) }
         tabIndex={this.state.isOpen?-1:0}
         onKeyDown={ chain(this.props.onKeyDown, this.handleKeyDown) }
         {...props}
