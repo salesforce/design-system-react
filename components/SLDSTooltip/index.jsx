@@ -27,8 +27,7 @@ module.exports = React.createClass( {
     content: PropTypes.node,
     hoverCloseDelay: PropTypes.number,
     openByDefault: PropTypes.bool,
-    openOnClick: PropTypes.bool,
-    openOnHover: PropTypes.bool,
+    openOn: PropTypes.string,
   },
 
 
@@ -38,8 +37,7 @@ module.exports = React.createClass( {
       content: <span>Tooltip</span>,
       hoverCloseDelay: 350,
       openByDefault: false,
-      openOnClick: false,
-      openOnHover: false,
+      openOn: 'hover',
     };
   },
 
@@ -142,7 +140,7 @@ module.exports = React.createClass( {
 
   render(){
     return (
-      <span refs='tooltipTarget' onClick={this.props.openOnClick?this.handleMouseClick:null} onMouseEnter={this.props.openOnHover?this.handleMouseEnter:null} onMouseLeave={this.props.openOnHover?this.handleMouseLeave:null}>
+      <span refs='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick:null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter:null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave:null}>
         { this.props.children }
         { this.getTooltip() }
       </span>
