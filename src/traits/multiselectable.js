@@ -92,8 +92,8 @@ const Multiselectable = {
 	},
 
 	// Delegate calls for single items wrapped in an item adapter to the public method (since we really only support arrays).
-	_selectItem (item) {
-		this.selectItem(item._item);
+	_selectItem (item, index) {
+		this.selectItem(item._item, index);
 	},
 
 	// Public API method for selection multiple items.
@@ -102,8 +102,8 @@ const Multiselectable = {
 	},
 
 	// Public API method for selection a single item.
-	selectItem (_item) {
-		this.selectItems([_item]);
+	selectItem (_item, index) {
+		this.selectItems([_item], index);
 	},
 
 	// Deselection works essentially the same way as selection.
