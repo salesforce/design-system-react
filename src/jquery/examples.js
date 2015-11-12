@@ -9,6 +9,7 @@ import './data-table/example';
 import './datepicker/example';
 	// import './dropdown/example';;
 import './dropdown/example';
+import './modal/example';
 import './notification/example';
 import './picklist/example';
 import './pillbox/example';
