@@ -67,4 +67,8 @@ $(function () {
 		const checkedValue = radios.getValue();
 		console.log('get value', checkedValue);
 	});
+
+	$('#radio-jquery-destroy').on('click', function () {
+		console.log(radios.destroy());
+	});
 });

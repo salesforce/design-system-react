@@ -23,7 +23,6 @@ $(function () {
 		'text': 'Bare Button'
 	});
 
-
 	const button5 = new Button($('#button-jquery-control .button-neutral-small'), {
 		text: 'Small',
 		theme: 'neutral',
@@ -235,5 +234,9 @@ $(function () {
 
 	$('#button-stateful-jquery-enable').on('click', function () {
 		button22.enable();
+	});
+
+	$('#button-stateful-jquery-destroy').on('click', function () {
+		console.log(button22.destroy());
 	});
 });

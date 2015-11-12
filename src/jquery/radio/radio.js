@@ -37,8 +37,7 @@ const RadioObject = {
 		return CheckboxObject._render.call(this);
 	},
 
-	// TODO: Update this when we add a universal destroy method
-	destroy () {
+	_onDestroy () {
 		const self = this;
 		const group = this._getGroup();
 		const index = group.findIndex(function (item) {
