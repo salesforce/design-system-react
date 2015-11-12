@@ -197,17 +197,20 @@ export const PicklistObject = {
 	},
 
 	_handleClicked (e) {
+		e.stopPropagation();
 		this._openToggleEvent(e.originalEvent);
 	},
 
 	_handleMenuItemSelected (e) {
 		e.preventDefault();
+		e.stopPropagation();
 
 		const $a = $(e.currentTarget);
 		const $li = $a.parent('li');
 
 		if (!$li.prop('disabled')) {
 			this.setSelection($li.data('item'));
+			this.close();
 		}
 	},
 
@@ -253,10 +256,6 @@ export const PicklistObject = {
 
 			$li.addClass('slds-is-selected');
 		}
-	},
-
-	destroy: function () {
-		this.element.remove();
 	}
 };
 

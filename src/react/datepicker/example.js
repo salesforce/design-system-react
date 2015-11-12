@@ -17,11 +17,7 @@ export default function () {
 		},
 
 		handleDateSelected (item, selection) {
-			if (selection.length > 2) {
-				this.setState({ selection: [item] });
-			} else {
-				this.setState({ selection: selection });
-			}
+			this.setState({ selection: selection });
 		}
 	});
 

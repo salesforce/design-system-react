@@ -5,7 +5,7 @@
 
 /* TODO: Add a full API description of the control here. */
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../../lib/lib';
 
 // Use the [shared core](../../core/lookup), which contains logic that is the same in every facade.
@@ -71,12 +71,23 @@ let Lookup = Lib.merge({}, LookupCore, {
 		return LookupDefaultRenderers;
 	},
 	
+	getInitialState () {
+		return {
+			autoFocusOnNewSelectedItems: false
+		};
+	},
+
 	componentWillMount () {
-		this._configureKeyboardNavigation();
+		this._filteredCollection = this._getFilteredCollection(this._collection, this.state.searchString);
+		this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
 	},
 	
-	componentWillReceiveProps () {
-		this._configureKeyboardNavigation();
+	componentWillReceiveProps (nextProps) {
+		if (nextProps.collection) this._filteredCollection = this._getFilteredCollection(this._collection, this.state.searchString);
+		this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
+		this.setState({
+			autoFocusOnNewSelectedItems: true
+		});
 	},
 
 	render () {
@@ -97,7 +108,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		}
 		
 		if (hasSelection) {
-			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} />;
+			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems}/>;
 		}
 		
 		return (
@@ -112,7 +123,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			</div>
 			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 				{header}
-				<MenuItems activeDescendantId={activeDescendantId} collection={this._collection} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
+				<MenuItems activeDescendantId={activeDescendantId} collection={this._filteredCollection} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
 			</div>
 		</div>
@@ -122,26 +133,21 @@ let Lookup = Lib.merge({}, LookupCore, {
 	componentDidUpdate () {
 		this._scrollMenuItems();
 		
-		// TODO: This logic probably needs to be cleaned up and will have to be altered to work with multiselect, but it does help make for a smooth experience when navigating by keyboard.
+		/* TODO: It'd be nice if we could get rid of these two booleans eventually. */
 		if (this._focusOnPills) {
-			const deselectPillsButton = this.elements.input[0].parentNode.getElementsByTagName('button');
-			
-			if (deselectPillsButton && deselectPillsButton.length === 1) {
-				deselectPillsButton[0].focus();
-				this._focusOnPills = false;
-			}
+			this._focusOnPills = false;
 		} else if (this._focusOnInput) {
-			this.elements.input[0].focus();
+			this.elements.input.focus();
 			this._focusOnInput = false;
 		}
 	},
 	
 	_setInputRef (input) {
-		this.elements.input = Lib.wrapElement(ReactDOM.findDOMNode(input));
+		this.elements.input = ReactDOM.findDOMNode(input);
 	},
 	
 	_setMenuRef (menu) {
-		this.elements.menu = Lib.wrapElement(ReactDOM.findDOMNode(menu));
+		this.elements.menu = ReactDOM.findDOMNode(menu);
 	},
 	
 	_handleChanged (e) {
@@ -157,21 +163,15 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	_handleDeselect (item) {
-		if (item && this.props.multiSelect) {
+		if (item) {
 			this._deselectItem(item);
+			if (!this.props.multiSelect) {
+				this._focusOnInput = true;
+			}
 		} else if (!item) {
 			this.deselectAll();
 			this._focusOnInput = true;
 		}
-	},
-	
-	_configureKeyboardNavigation () {
-		const navigableItems = this._getNavigableItems();
-		
-		if (this.props.menuHeaderRenderer) navigableItems.indexes.unshift('header');
-		if (this.props.menuFooterRenderer) navigableItems.indexes.push('footer');
-		
-		this._navigableItems = navigableItems;
 	},
 
 	_handleKeyPressed (e) {
@@ -180,7 +180,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this._keyboardNav(e.key, this._keyboardSelect);
 		} else if (e.key.length === 1) {
 			if (!this.state.isOpen) this.open();
-			this.elements.input[0].focus();
+			this.elements.input.focus();
 		}
 	}
 });

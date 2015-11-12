@@ -1,10 +1,10 @@
 // # Picker Control
 // ### Core
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
-// Inherit from the [base control](base).
+// Inherit from the [base control](base.html).
 import Base from './base';
 
 // Traits

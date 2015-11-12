@@ -81,10 +81,6 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		this.template.find('.slds-tree__loader').text(strings.LOADING);
 	},
 
-	selectItem (item) {
-		this._selectItem(this._getItemAdapter(item.jquery ? item.data('item') : item));
-	},
-
 	_configureBranchSelect () {
 		const branchSelect = this.getProperty('folderSelect');
 
@@ -242,14 +238,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 
 	_handleItemClicked ($event) {
 		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
-		const item = this._getItemAdapter($el.data('item'));
-		const selected = this._isItemSelected(item);
-
-		if (selected) {
-			this._deselectItem(item);
-		} else {
-			this._selectItem(item);
-		}
+		this.toggleItem($el.data('item'));
 	},
 
 	_onSelected (selection) {

@@ -3,10 +3,10 @@
 
 // Implements basic functionality required for the Lookup [design pattern](https://www.lightningdesignsystem.com/components/lookups) and pulls in any appropriate traits. This file is shared between all facades and should not know anything about specific frameworks.
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
-// Inherit from the [base control](base).
+// Inherit from the [base control](base.html).
 import Base from './base';
 
 /* TODO: Finish documenting the core. */
@@ -16,14 +16,14 @@ import Openable from '../traits/openable';
 import Multiselectable from '../traits/multiselectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
-export const CONTROL = 'slds-lookup';
+export const CONTROL = 'Lookup';
 
 const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, KeyboardNavigable, {
 	CONTROL,
 	
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL,
+		CONTROL: 'slds-lookup',
 		INPUT: 'slds-input',
 		MENU: 'slds-lookup__menu',
 		LIST: 'slds-lookup__list'
@@ -32,7 +32,10 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	_defaultProperties: {
 		collection: [],
 		multiSelect: false,
-		searchIcon: 'utility.search'
+		searchIcon: 'utility.search',
+		filterPredicate (text, pattern) {
+			return text.substr(0, pattern.length).toLowerCase() === pattern;
+		}
 	},
 	
 	_defaultState: {
@@ -73,7 +76,8 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 			focusedIndex: this._defaultState.focusedIndex
 		});
 		
-		const _menu = this.elements.menu[0];
+		/* TODO: Not using wrapped elements here, but jQuery facade will either have to use them or the underlying element. */
+		const _menu = this.elements.menu;
 		_menu.scrollTop = 0;
 	},
 	
@@ -91,8 +95,34 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		}
 	},
 	
+	_getFilteredCollection (collection, searchString) {
+		const _filterPredicate = this.getProperty('filterPredicate');
+		let _collection;
+		
+		if (searchString && searchString.length > 0) {
+			const pattern = searchString.toLowerCase();
+			
+			_collection = this._getDataAdapter(collection.filter(item => {
+				return _filterPredicate(item.getText(), pattern);
+			}));
+		} else {
+			_collection = collection;
+		}
+		
+		return _collection;
+	},
+	
+	_configureKeyboardNavigation (filteredCollection) {
+		const navigableItems = this._getNavigableItems(filteredCollection);
+		
+		if (this.getProperty('menuHeaderRenderer')) navigableItems.indexes.unshift('header');
+		if (this.getProperty('menuFooterRenderer')) navigableItems.indexes.push('footer');
+		
+		return navigableItems;
+	},
+	
 	_scrollMenuItems () {
-		const _menu = this.elements.menu[0];
+		const _menu = this.elements.menu;
 		let _menuItem = _menu.getElementsByClassName('slds-theme--shade');
 		
 		if (_menuItem && _menuItem.length === 1) {
@@ -127,7 +157,8 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 				searchString
 			});
 			
-			this.trigger('filter', searchString);
+			this._filteredCollection = this._getFilteredCollection(this._collection, searchString);
+			this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
 		}
 	}
 });

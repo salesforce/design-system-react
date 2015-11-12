@@ -31,11 +31,11 @@ const KeyboardNavigable = {
 		this._isSelectable = !this.accessors || !Lib.isFunction(this.accessors.isSelectable);
 	},
 	
-	_getNavigableItems () {
+	_getNavigableItems (collection) {
 		const items = [];
 		items.indexes = [];
 		
-		this._collection.forEach((item, index) => {
+		collection.forEach((item, index) => {
 			if (this._isSelectable || item.isSelectable()) {
 				items.push({
 					index,
@@ -51,7 +51,7 @@ const KeyboardNavigable = {
 
 	_keyboardNav (input, onSelect) {
 		const isOpen = this.getState('isOpen');
-		const navigableItems = this._navigableItems || this._getNavigableItems();
+		const navigableItems = this._navigableItems || this._getNavigableItems(this._collection);
 		const indexes = navigableItems.indexes;
 		const lastIndex = indexes.length - 1;
 		let focusedIndex = undefined;

@@ -1,10 +1,10 @@
 // # Pillbox Control
 // ### Core
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
-// Inherit from the [base control](base).
+// Inherit from the [base control](base.html).
 import Base from './base';
 
 // Traits
@@ -34,34 +34,6 @@ const PillboxCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 
 		getValue (item) {
 			return item.get('value');
-		}
-	},
-
-	_canSelect (item, select) {
-		if (Lib.isFunction(this._onAdd)) {
-			Promise.resolve(this._onAdd(item)).then(canSelect => {
-				if (canSelect !== false) {
-					select();
-				}
-			}, error => {
-				Lib.log(error);
-			});
-		} else {
-			select();
-		}
-	},
-
-	_canDeselect (item, deselect) {
-		if (Lib.isFunction(this._onRemove)) {
-			Promise.resolve(this._onRemove(item)).then(canDeselect => {
-				if (canDeselect !== false) {
-					deselect();
-				}
-			}, error => {
-				Lib.log(error);
-			});
-		} else {
-			deselect();
 		}
 	},
 

@@ -73,12 +73,7 @@ export const PopoverMethods = {
 
 Lib.merge(Popover.prototype, PopoverCore, Events, DOM, State, PopoverMethods, {
 	_render () {
-		const header = this.element.find('.slds-popover__header > p');
 		const body = this.element.find('.slds-popover__body');
-
-		if (this.getProperty('header')) {
-			header.append(this.getProperty('header'));
-		}
 
 		if (this.getProperty('content')) {
 			body.append(this.getProperty('content'));

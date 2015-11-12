@@ -3,10 +3,10 @@
 
 // The Backbone adapter is _optional_. It is included by default with the Marionette facade, but any project may choose to include it and register it with `Lib` when compatibility with Backbone collections and models is desired, no matter which facade is in use.
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
-// Inherit from the [base adapter](base).
+// Inherit from the [base adapter](base.html).
 import Base from './base';
 
 // This adapter is _optional_, and it depends on Backbone, so it should only be brought into environments in which Backbone data is going to be used.
@@ -80,21 +80,20 @@ const Data = Base.Data.extend({
 		return this._data.length;
 	},
 
-	add (item) {
-		this._data.add(item._item);
+	add () {
+		this._data.add(...arguments);
 		
 		return this;
 	},
 
-	remove (item) {
-		this._data.remove(item._item);
+	remove () {
+		this._data.remove(...arguments);
 		
 		return this;
 	},
 
-	/* TODO: This should probably use item._item like the other methods, shouldn't it? */
-	reset (item) {
-		this._data.reset(item);
+	reset () {
+		this._data.reset(...arguments);
 		
 		return this;
 	},

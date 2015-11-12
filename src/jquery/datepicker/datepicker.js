@@ -82,7 +82,8 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_bindUIEvents () {
-		this.element.on('click.slds-datepicker-form', $.proxy(this._triggerCalendar, this));
+		this.element.on('click.slds-form-element', '.slds-input', $.proxy(this._triggerCalendar, this));
+		this.element.on('click.slds-datepicker', this._cancelEventProp);
 
 		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', $.proxy(this._backMonth, this));
 		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', $.proxy(this._forwardMonth, this));
@@ -108,6 +109,10 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	_triggerCalendar (e) {
 		e.originalEvent.originator = this;
 		if (!this.getState('isOpen')) this.open();
+	},
+
+	_cancelEventProp (e) {
+		e.stopPropagation();
 	},
 
 	_renderDateRange () {
@@ -182,32 +187,37 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		}
 	},
 
-	_updateYear (event, data) {
+	_updateYear (e, data) {
 		const curViewDate = this.getState('dateViewing');
 
+		e.stopPropagation();
 		this.setState({ 'dateViewing': new Date(curViewDate.setYear(data.value))} );
 		this._renderDateRange();
 	},
 
-	_backMonth () {
+	_backMonth (e) {
 		const curMonth = this.getState('dateViewing');
 
+		e.stopPropagation();
 		this.setState({ 'dateViewing': new Date(curMonth.setMonth(curMonth.getMonth() - 1))} );
 		this._renderDateRange();
 	},
 
-	_forwardMonth () {
+	_forwardMonth (e) {
 		const curMonth = this.getState('dateViewing');
 
+		e.stopPropagation();
 		this.setState({ 'dateViewing': new Date(curMonth.setMonth(curMonth.getMonth() + 1))} );
 		this._renderDateRange();
 	},
 
-	_selectDate (ev) {
+	_selectDate (e) {
 		const isRangeSelect = this.getProperty('multiSelect');
-		const dayData = $(ev.currentTarget).data();
+		const dayData = $(e.currentTarget).data();
 		let insertIndex = 1;
 		let selectedDates;
+
+		e.stopPropagation();
 
 		if (!dayData.outside) {
 			if (isRangeSelect) {
@@ -221,9 +231,9 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 					insertIndex = 0;
 				}
 
-				this._selectItem(this._getItemAdapter({ date: dayData.date }), insertIndex);
+				this.selectItem({ date: dayData.date }, insertIndex);
 			} else {
-				this._selectItem(this._getItemAdapter({ date: dayData.date }));
+				this.selectItem({ date: dayData.date });
 			}
 		}
 	},

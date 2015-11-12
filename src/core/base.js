@@ -1,12 +1,12 @@
-// Base Control
-// ------------
+// # Base Control
+// ### Core
 
 // Inherited at the `core` level by all other controls.
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
-// Always include the ["vanilla" data adapter](../data/vanilla), which allows controls to work with plain javascript arrays and objects. More about data adapters may be found in the data directory.
+// Always include the ["vanilla" data adapter](../data/vanilla.html), which allows controls to work with plain javascript arrays and objects. More about data adapters may be found in the data directory.
 import '../data/vanilla';
 
 // Declare the object which will be exported. This object is what will be mixed in to every other control.

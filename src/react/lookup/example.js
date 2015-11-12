@@ -18,29 +18,29 @@ export default function () {
 		render () {
 			return (
 				<div className="slds-col example">
-					<Lookup label="Accounts" collection={this.state.collection} selection={this.state.selection} onChanged={this._handleModelChange} onFilter={this._filterCollection} onAddClick={this._handleAdd} />
+					<Lookup label="Accounts" collection={this.state.collection} selection={this.state.selection} onChanged={this._handleModelChange} filterPredicate={this._filterPredicate} onAddClick={this._handleAdd} />
 				</div>
 			);
+		},
+		
+		componentDidMount () {
+			this._addItemsTimeout = window.setTimeout(this._addItems, 4000);
+		},
+		
+		_addItems () {
+			this.setState({
+				collection: sampleData.defaultArray.concat(sampleData.additionalItems)
+			});
+			
+			window.clearTimeout(this._addItemsTimeout);
+		},
+		
+		_filterPredicate (text, pattern) {
+			return pattern.length < 2 || text.substr(0, pattern.length).toLowerCase() === pattern;
 		},
 
 		_handleModelChange (item, selection) {
 			this.setState({ selection });
-		},
-		
-		_filterCollection (searchTerm) {
-			let collection = sampleData.defaultArray;
-			
-			if (searchTerm && searchTerm.length > 0) {
-				const pattern = searchTerm.toLowerCase();
-				
-				collection = collection.filter(item => {
-					return item.text.substr(0, pattern.length).toLowerCase() === pattern;
-				});
-			}
-			
-			this.setState({
-				collection
-			});
 		},
 		
 		_handleAdd () {

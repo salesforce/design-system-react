@@ -5,6 +5,7 @@ const strings = {
 	'NEXT': 'Next',
 	'NONE_SELECTED': 'None selected',
 	'PREV': 'Prev',
+	'REMOVE': 'Remove',
 	'THIS_IN_THAT': '%this% in %that%',
 	'TOGGLE_DROPDOWN': 'Toggle Dropdown'
 };

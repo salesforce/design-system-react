@@ -14,6 +14,7 @@ app.use(serveStatic(__dirname + '/public', {'index': false}));
 
 // Serve up the built files
 app.use('/build', serveStatic(__dirname + '/build', {'index': false}));
+app.use('/docs', serveStatic(__dirname + '/public/docs', {'index': ['index.html']}));
 
 // Listen
 var server = app.listen(process.env.PORT || 3000, function() {
