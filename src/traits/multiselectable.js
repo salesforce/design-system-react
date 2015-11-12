@@ -5,7 +5,7 @@
 
 // Note that you should use multiselectable when you have discrete items or groups of items. For example, multiple _dates_ would be a good use case for multiselectable, while a single _date range_ is probably only a single selection. If, however, it's possible to select multiple date ranges then you're back to multiselectable again.
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
 const Multiselectable = {

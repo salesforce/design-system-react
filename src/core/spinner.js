@@ -1,10 +1,10 @@
 // # Spinner Control
 // ### Core
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
-// Inherit from the [base control](base).
+// Inherit from the [base control](base.html).
 import Base from './base';
 
 // TODO: We need to come up with a way to manage assets across the whole project, this hard-coding solution can only be temporary

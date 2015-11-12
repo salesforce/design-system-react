@@ -1,7 +1,7 @@
 // # Combobox Control
 // ### Core
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
 import PicklistCore from './picklist';

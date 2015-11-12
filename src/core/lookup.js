@@ -3,10 +3,10 @@
 
 // Implements basic functionality required for the Lookup [design pattern](https://www.lightningdesignsystem.com/components/lookups) and pulls in any appropriate traits. This file is shared between all facades and should not know anything about specific frameworks.
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
-// Inherit from the [base control](base).
+// Inherit from the [base control](base.html).
 import Base from './base';
 
 /* TODO: Finish documenting the core. */

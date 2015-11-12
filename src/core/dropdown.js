@@ -3,9 +3,6 @@
 import * as Lib from '../lib/lib';
 import PicklistCore from './picklist';
 
-// TODO: This doesn't actually exist, should we name some variant of picklist or something equivalent?
-// require('../../scss/components/forms/flavors/input/index.scss');
-
 export const CONTROL = 'Dropdown';
 
 const DropdownCore = Lib.merge({}, PicklistCore, {

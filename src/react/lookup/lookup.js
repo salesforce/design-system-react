@@ -5,7 +5,7 @@
 
 /* TODO: Add a full API description of the control here. */
 
-// Bring in the [shared library functions](../lib/lib).
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../../lib/lib';
 
 // Use the [shared core](../../core/lookup), which contains logic that is the same in every facade.
