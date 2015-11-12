@@ -6,7 +6,6 @@ import ModalCore, {CONTROL} from '../../core/modal';
 
 // Framework specific
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Events from '../mixins/events';
 
 // Third party
@@ -32,7 +31,7 @@ export const ModalObject = {
 	render () {
 		return (
 			<div>
-				<div aria-hidden="false" role="dialog" className={classNames('slds-modal', {'slds-fade-in-open': this.props.isOpen} )} onClick={this._onBackgroundClick} ref="background">
+				<div aria-hidden="false" role="dialog" className={classNames(this.cssClasses.MODAL, {'slds-fade-in-open': this.props.isOpen} )} onClick={this._onBackgroundClick} ref="background">
 					<div className="slds-modal__container" ref="modal">
 						<div className="slds-modal__header">
 							<h2 className="slds-text-heading--medium">Modal Header</h2>
@@ -46,7 +45,7 @@ export const ModalObject = {
 						</div>
 						<div className="slds-modal__footer">
 							<button className="slds-button slds-button--neutral" onClick={this._onCancelClick}>{this.props.secondaryBtnText}</button>
-							<button className="slds-button slds-button--neutral slds-button--brand" onClick={this._onCancelClick}>{this.props.primaryBtnText}</button>
+							<button className="slds-button slds-button--neutral slds-button--brand" onClick={this._onPrimaryClick}>{this.props.primaryBtnText}</button>
 						</div>
 					</div>
 				</div>
@@ -67,6 +66,10 @@ export const ModalObject = {
 		if (ev.target === this.refs.background || ev.target === this.refs.modal) {
 			this.props.onClose();
 		}
+	},
+
+	_onPrimaryClick () {
+		this.props.onPrimary();
 	}
 };
 

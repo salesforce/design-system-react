@@ -30,22 +30,67 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	},
 
 	_initElements () {
-		// this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
-		// this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
+		this.elements.modal = this.element.find('.' + this.cssClasses.MODAL);
+		this.elements.backdrop = this.element.find('.' + this.cssClasses.BACKDROP);
+		this.elements.close = this.element.find('.' + this.cssClasses.CLOSE);
+		this.elements.primaryBtn = this.element.find('.' + this.cssClasses.PRIMARYBTN);
+		this.elements.secondaryBtn = this.element.find('.slds-button--neutral:eq(0)');
 	},
 
 	_bindUIEvents () {
-		// this.elements.button.on('click', $.proxy(this._handleClicked, this));
+		this.elements.close.on('click', $.proxy(this.close, this));
+		this.elements.secondaryBtn.on('click', $.proxy(this._onSecondaryClicked, this));
+		this.elements.primaryBtn.on('click', $.proxy(this._onPrimaryClicked, this));
 	},
 
 	_render () {
-		// append elements here
+		const secondaryText = this.getProperty('secondaryBtnText');
+		const primaryText = this.getProperty('primaryBtnText');
+		const $content = this.elements.wrapper.contents().detach();
+
+		this.elements.secondaryBtn.html(secondaryText);
+		this.elements.primaryBtn.html(primaryText);
+		this.element.find('.' + this.cssClasses.CONTENT).append($content);
 
 		return this.element;
 	},
 
 	_onRendered () {
 		this._bindUIEvents();
+	},
+
+	_onPrimaryClicked () {
+		this.element.trigger('primary');
+	},
+
+	_onSecondaryClicked () {
+		this.element.trigger('secondary');
+	},
+
+	toggle () {
+		const isOpen = this.getProperty('isOpen');
+
+		if (isOpen) {
+			this.close();
+		} else {
+			this.open();
+		}
+	},
+
+	open () {
+		this.elements.modal.addClass(this.cssClasses.OPEN);
+		this.elements.backdrop.addClass(this.cssClasses.OPENBACKDROP);
+		this.setProperties({
+			isOpen: true
+		});
+	},
+
+	close () {
+		this.elements.modal.removeClass(this.cssClasses.OPEN);
+		this.elements.backdrop.removeClass(this.cssClasses.OPENBACKDROP);
+		this.setProperties({
+			isOpen: false
+		});
 	}
 });
 

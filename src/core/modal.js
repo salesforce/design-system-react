@@ -10,14 +10,21 @@ const ModalCore = Lib.merge({}, Base, {
 
 	// CSS classes used within this control
 	cssClasses: {
-		CONTROL: CONTROL
+		BACKDROP: 'slds-modal-backdrop',
+		CONTROL: CONTROL,
+		CLOSE: 'slds-modal__close',
+		CONTENT: 'slds-modal__content',
+		MODAL: 'slds-modal',
+		OPEN: 'slds-fade-in-open',
+		OPENBACKDROP: 'slds-modal-backdrop--open',
+		PRIMARYBTN: 'slds-button--brand'
 	},
 
 	// Set the defaults
 	_defaultProperties: {
-		secondaryBtnText: 'Cancel',
+		isOpen: false,
 		primaryBtnText: 'Save',
-		isOpen: false
+		secondaryBtnText: 'Cancel'
 	}
 
 });

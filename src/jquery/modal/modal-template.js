@@ -12,6 +12,7 @@ export default String.raw`
 	        </button>
 	      </div>
 	      <div class="slds-modal__content">
+
 	      </div>
 	      <div class="slds-modal__footer">
 	        <button class="slds-button slds-button--neutral">Cancel</button>

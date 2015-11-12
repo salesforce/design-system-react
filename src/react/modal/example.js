@@ -17,6 +17,7 @@ export default function () {
 						isOpen={this.state.isOpen}
 						onClose={this.onClose}
 						onCancel={this.onCancel}
+						onPrimary={this.onPrimary}
 						secondaryBtnText={'Cancel'}
 						primaryBtnText={'Save Test'}>
 						<p>This is a test modal!</p>
@@ -36,6 +37,10 @@ export default function () {
 			this.setState({
 				isOpen: false
 			});
+		},
+
+		onPrimary () {
+			console.log('Item has been saved!');
 		},
 
 		_handleClick () {
