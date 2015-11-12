@@ -12,9 +12,9 @@ const Openable = {
 		isOpen: false
 	},
 
-	open (silent) {
+	open () {
 		const _open = Lib.bind(function _open () {
-			if (!silent) this.setState({ isOpen: true });
+			this.setState({ isOpen: true });
 			if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse(true);
 	
 			document.addEventListener('click', this._closeOnClick, false);
@@ -28,8 +28,8 @@ const Openable = {
 		}
 	},
 
-	close (silten) {
-		if (!silten) this.setState({ isOpen: false });
+	close () {
+		this.setState({ isOpen: false });
 		if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse(false);
 
 		document.removeEventListener('click', this._closeOnClick, false);
