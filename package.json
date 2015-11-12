@@ -58,7 +58,10 @@
   "scripts": {
     "start": "grunt serve",
     "test": "grunt test",
-    "docs": "./node_modules/.bin/docco -t docs/templates/docco.jst -c public/assets/docco/docco.css -o public/docs {src/**,src/**/**,src/**/**/**}/*.js"
+    "webpack": "./node_modules/.bin/webpack --config webpack.heroku.config.js --optimize-minimize",
+    "docs": "./node_modules/.bin/docco -t docs/templates/docco.jst -c public/assets/docco/docco.css -o public/docs {src/**,src/**/**,src/**/**/**}/*.js",
+    "heroku-build": "npm run-script webpack",
+    "heroku-start": "node app.js"
   },
   "facades": [
     "jquery",
