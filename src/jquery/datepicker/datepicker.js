@@ -8,9 +8,11 @@ import DatepickerCore, {CONTROL} from '../../core/datepicker';
 import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
+import Svg from '../svg';
 
 // Children
 import Picklist from '../picklist/picklist';
+import Button from '../button/button';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -28,7 +30,7 @@ let Datepicker = function Datepicker () {
 	this._initialize(options);
 };
 
-Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
+Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_onBeforeInitialize (options) {
 		this.elements = {};
@@ -47,6 +49,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 		this.elements.formElement = this.$el.find('.slds-form-element');
 		this.elements.input = this.$el.find('.slds-input');
 		this.elements.datepicker = this.$el.find('.slds-datepicker');
+		this.elements.dropdown = this.$el.find('.slds-dropdown');
 		this.elements.calendar = this.$el.find('.datepicker__month');
 		this.elements.calendarDays = this.elements.calendar.find('tbody');
 		this.elements.monthName = this.$el.find('.slds-datepicker__filter--month h2');
@@ -55,6 +58,9 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 		this.elements.popover = Lib.wrapElement(this.elements.datepicker);
 		this.elements.container = Lib.wrapElement(this.$el);
 		this.elements.align = Lib.wrapElement(this.elements.formElement);
+
+		const $icon = this._renderIcon('utility.event', 'slds-input__icon slds-icon-text-default');
+		$icon.replaceAll(this.elements.formElement.find('x-input-icon')[0]);
 	},
 
 	_bindUIEvents () {
@@ -68,6 +74,27 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 	},
 
 	_render () {
+		const strings = this.getState('strings');
+		this.elements.input.attr('placeholder', strings.SELECT_A_DATE);
+
+		/* TODO: Needs internationalization */
+		const $previousMonthButton = new Button({
+			assistiveText: strings.PREVIOUS_MONTH,
+			iconStyle: 'icon-container',
+			icon: 'utility.left',
+			iconSize: 'small'
+		});
+		$previousMonthButton.replaceAll(this.elements.dropdown.find('x-previous-month-button')[0]);
+
+		/* TODO: Needs internationalization */
+		const $nextMonthButton = new Button({
+			assistiveText: strings.NEXT_MONTH,
+			iconStyle: 'icon-container',
+			icon: 'utility.right',
+			iconSize: 'small'
+		});
+		$nextMonthButton.replaceAll(this.elements.dropdown.find('x-next-month-button')[0]);
+
 		this._renderDateRange();
 
 		return this.element;

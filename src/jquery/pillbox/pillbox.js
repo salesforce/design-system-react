@@ -8,8 +8,10 @@ import PillboxCore, {CONTROL} from '../../core/pillbox';
 import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
-
 const $ = Lib.global.jQuery || Lib.global.$;
+
+// children
+import Button from '../button/button';
 
 // Template imports
 import template from './pillbox-template';
@@ -74,7 +76,16 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	},
 
 	_renderPill (pill) {
+		const strings = this.getState('strings');
 		const $pill = this.elements.pillTemplate.clone();
+
+		this.button = new Button({
+			assistiveText: strings.REMOVE,
+			icon: 'action.close',
+			iconStyle: 'icon-bare'
+		});
+		this.button.replaceAll($pill.find('x-remove-button')[0]);
+		$pill.button = this.button.element;
 
 		$pill.find('.slds-pill__label').text(pill.getText());
 		$pill.data({

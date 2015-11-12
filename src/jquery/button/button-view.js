@@ -46,8 +46,13 @@ export const ButtonViewObject = {
 	},
 
 	_render () {
+		if (this.getProperty('truncate')) {
+			this.element.prepend('<span>').addClass(this.cssClasses.TRUNCATE).text(this.getProperty('text'));
+		} else {
+			this.element.text(this.getProperty('text'));
+		}
+		
 		this.element
-			.text(this.getProperty('text'))
 			.addClass(this.buttonStatefulViewStyles[this.getProperty('view')])
 			.append(this._renderAssistiveText());
 		

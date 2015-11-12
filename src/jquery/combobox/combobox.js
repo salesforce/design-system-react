@@ -36,6 +36,10 @@ export const ComboboxObject = {
 		this.elements.input = this.element.find('.' + this.cssClasses.INPUT);
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
 		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
+
+		/* TODO: icon is not perfectly centered */
+		const $icon = this._renderIcon('utility.down');
+		$icon.replaceAll(this.elements.button.find('x-button-svg')[0]);
 	},
 	
 	_bindUIEvents () {

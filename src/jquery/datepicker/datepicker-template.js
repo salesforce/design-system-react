@@ -4,10 +4,8 @@ export default String.raw`
 		<div class="slds-form-element">
 			<div class="slds-form-element__control">
 				<div class="slds-input-has-icon slds-input-has-icon--right">
-					<svg aria-hidden="true" class="slds-input__icon slds-icon-text-default">
-						<use xlink:href="/examples/symbols.svg#event"></use>
-					</svg>
-					<input class="slds-input" type="text" placeholder="Pick a Date" label="Date Picker Label"/>
+					<x-input-icon></x-input-icon>
+					<input class="slds-input" type="text" label="Date Picker Label"/>
 				</div>
 			</div>
 		</div>
@@ -17,21 +15,11 @@ export default String.raw`
 
 				<div class="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
 					<div class="slds-align-middle">
-						<button class="slds-button slds-button--icon-container">
-							<svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-								<use xlink:href="/examples/symbols.svg#left"></use>
-							</svg>
-							<span class="slds-assistive-text">Previous Month</span>
-						</button>
+						<x-previous-month-button></x-previous-month-button>
 					</div>
 					<h2 class="slds-align-middle" aria-live="assertive" aria-atomic="true"></h2>
 					<div class="slds-align-middle">
-						<button class="slds-button slds-button--icon-container">
-							<svg aria-hidden="true" class="slds-button__icon slds-button__icon--small">
-								<use xlink:href="/examples/symbols.svg#right"></use>
-							</svg>
-							<span class="slds-assistive-text">Next Month</span>
-						</button>
+						<x-next-month-button></x-next-month-button>
 					</div>
 				</div>
 

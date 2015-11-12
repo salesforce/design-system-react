@@ -21,8 +21,10 @@ let Button = function Button () {
 	this.childOptions = {
 		icon: options.icon,
 		iconPosition: options.iconPosition,
+		iconSize: options.iconSize,
 		iconStyle: options.iconStyle,
-		text: options.text
+		text: options.text,
+		truncate: options.truncate
 	};
 	
 	// If button has views, button is stateful
@@ -92,7 +94,9 @@ export const ButtonObject = {
 	},
 
 	_handleClick () {
-		this.toggle();
+		if (this.getProperty('views').length > 0 || this.getProperty('selectable')) {
+			this.toggle();
+		}
 	},
 
 	_onToggled () {

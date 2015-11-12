@@ -51,6 +51,15 @@ const DOM = {
 		return this;
 	},
 	
+	// `on` is similar to jQuery's `on()` and is a shortcut to adding an event listener to the primary element. See [jQuery documentation](http://api.jquery.com/on/).
+	on () {
+		if (this.element) {
+			this.element.on.apply(this.element, arguments);
+		}
+		
+		return this;
+	},
+
 	// `prependTo` is similar to jQuery's `prependTo()` and prepends the control to the DOM node or jQuery element passed. See [jQuery documentation](http://api.jquery.com/prependto/).
 	prependTo (wrapper) {
 		this.elements.wrapper = $(wrapper);
@@ -63,11 +72,15 @@ const DOM = {
 		
 		return this;
 	},
-	
-	// `on` is similar to jQuery's `on()` and is a shortcut to adding an event listener to the primary element. See [jQuery documentation](http://api.jquery.com/on/).
-	on () {
-		if (this.element) {
-			this.element.on.apply(this.element, arguments);
+
+	// `replaceAll` is similar to jQuery's `replaceAll()` and replaces jQuery elements passed to it with the control's element. See [jQuery documentation](http://api.jquery.com/replaceall/).
+	replaceAll (target) {
+		this.elements.wrapper = $(target).parent();
+
+		if (this.rendered) {
+			this.element.replaceAll(target);
+		} else {
+			this._addToDOM = Lib.bind(this.replaceAll, this, target);
 		}
 		
 		return this;
