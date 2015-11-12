@@ -19,7 +19,6 @@ export const PopoverMethods = {
 		align: mountable,
 		autoFlip: React.PropTypes.bool,
 		container: mountable,
-		header: React.PropTypes.string,
 		position: React.PropTypes.oneOf(Object.keys(Positionable.positions)),
 		trigger: React.PropTypes.oneOf(Object.keys(PopoverCore.triggers))
 	},
@@ -58,21 +57,10 @@ let Popover = Lib.merge({}, PopoverCore, PopoverMethods, {
 		return (
 			<div className={this._getClassNames()} role="dialog" ref="popover">
 				<div className="slds-popover__content">
-					{this._renderHeader()}
 					<div className="slds-popover__body">{this.props.children}</div>
 				</div>
 			</div>
 		);
-	},
-
-	_renderHeader () {
-		if (this.props.header) {
-			return (
-				<div className="slds-popover__header">
-					<p className="slds-text-heading--small">{this.props.header}</p>
-				</div>
-			);
-		}
 	}
 
 });
