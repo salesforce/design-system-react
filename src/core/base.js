@@ -23,6 +23,11 @@ const Base = {
 		strings: {}
 	},
 
+	destroy () {
+		// `_onDestroy` is an optional end of lifecycle event that individual controls / facades may choose to implement.
+		if (Lib.isFunction(this._onDestroy)) return this._onDestroy();
+	},
+
 	// We can't count on exactly how each facade will handle object construction, so instead we ask that this function be called at an appropriate point by the facade.
 	_initialize (originalOptions) {
 		const options = Lib.extend({}, originalOptions);

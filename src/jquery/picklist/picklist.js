@@ -235,10 +235,6 @@ export const PicklistObject = {
 
 			$li.addClass('slds-is-selected');
 		}
-	},
-
-	destroy: function () {
-		this.element.remove();
 	}
 };
 
