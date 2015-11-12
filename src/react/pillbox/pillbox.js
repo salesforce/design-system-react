@@ -37,15 +37,10 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 	_generatePills () {
 		return this._getSelectedItems().map((item, index) => {
 			return (
-				<PillboxItem key={index} item={item} onClick={this._handleItemClick}/>
+				<PillboxItem key={index} item={item} onClick={this._deselectItem}/>
 			);
 		});
-	},
-
-	_handleItemClick (item) {
-		this._deselectItem(item);
 	}
-
 });
 
 Pillbox = Lib.runHelpers('react', CONTROL, Pillbox);

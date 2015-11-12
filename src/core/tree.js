@@ -77,7 +77,14 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	},
 
 	_canSelect (newSelection, select) {
-		if (newSelection.getType() === 'item' || !!this.getProperty('folderSelect')) {
+		const folderSelect = !!this.getProperty('folderSelect');
+		let canSelect = true;
+		
+		newSelection.forEach((item) => {
+			canSelect = canSelect && (folderSelect || item.getType() === 'item');
+		});
+		
+		if (canSelect) {
 			select();
 		}
 	},
@@ -116,10 +123,10 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 			let eventName;
 
 			if (isOpen) {
-				open.remove(folder);
+				open.remove(folder._item);
 				eventName = 'closed';
 			} else {
-				open.add(folder);
+				open.add(folder._item);
 				eventName = 'opened';
 			}
 

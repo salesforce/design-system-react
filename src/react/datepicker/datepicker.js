@@ -77,9 +77,9 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 				insertIndex = 0;
 			}
 
-			this._selectItem(this._getItemAdapter({ date: date.date }), insertIndex);
+			this.selectItem({ date: date.date }, insertIndex);
 		} else {
-			this._selectItem(this._getItemAdapter({ date: date.date }));
+			this.selectItem({ date: date.date });
 		}
 	},
 

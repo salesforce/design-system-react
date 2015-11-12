@@ -69,26 +69,26 @@ const Data = Base.Data.extend({
 		return this._data.length;
 	},
 	
-	add (addition, options) {
-		const itemAddition = Lib.isArray(addition) ? addition : [addition];
+	add (items, options) {
+		const addition = Lib.isArray(items) ? items : [items];
 
-		itemAddition.forEach( (item, itemIndex) => {
-			if (options && (options.at || options.at === 0)) {
-				this._data.splice(options.at + itemIndex, 0, item._item);
-			} else {
-				this._data.push(item._item);
-			}
-		});
+		if (options && Lib.isNumber(options.at)) {
+			this._data.splice(options.at, 0, ...addition);
+		} else {
+			this._data.push(...addition);
+		}
 		
 		return this;
 	},
 	
-	remove (removal) {
-		const _remove = Lib.bind(function _remove (itemToRemove) {
+	remove (items) {
+		const removal = Lib.isArray(items) ? items : [items];
+
+		removal.forEach((itemToRemove) => {
 			let indexToRemove;
 
 			this.forEach(function (item, index) {
-				if (indexToRemove === undefined && item._item === itemToRemove._item) {
+				if (indexToRemove === undefined && item._item === itemToRemove) {
 					indexToRemove = index;
 				}
 			});
@@ -96,26 +96,18 @@ const Data = Base.Data.extend({
 			if (indexToRemove !== undefined) {
 				this._data.splice(indexToRemove, 1);
 			}
-		}, this);
-
-		if (Lib.isArray(removal)) {
-			removal.forEach( (item) => {
-				_remove(item);
-			});
-		} else {
-			_remove(removal);
-		}
+		});
 		
 		return this;
 	},
 	
 	reset (item) {
-		if (!item) {
-			this._data.length = 0;
-		} else {
-			this.reset().add(item);
+		this._data.length = 0;
+
+		if (item) {
+			this.add(item);
 		}
-		
+
 		return this;
 	},
 	

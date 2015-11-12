@@ -207,9 +207,9 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 					insertIndex = 0;
 				}
 
-				this._selectItem(this._getItemAdapter({ date: dayData.date }), insertIndex);
+				this.selectItem({ date: dayData.date }, insertIndex);
 			} else {
-				this._selectItem(this._getItemAdapter({ date: dayData.date }));
+				this.selectItem({ date: dayData.date });
 			}
 		}
 	},

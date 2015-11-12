@@ -48,13 +48,18 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		// Return the date
 		getDate (item) {
 			return item.get('date');
+		},
+		
+		getKey (item) {
+			return item.getDate().getTime();
 		}
 	},
 
+	// TODO: Clean up all this logic. In particular, we shuld probably be setting every date in the selection, not just the first and last dates
 	_getCalendarData: function (baseDate) {
 		const date = this.getState('dateViewing') || baseDate;
-		const selectedDates = this.getSelectedItems();
-		const isRangeSelect = this.getProperty('multiSelect');
+		const selectedDates = this._getSelectedItems();
+		const isRangeSelect = this.getProperty('multiSelect') && selectedDates.length() > 1;
 		const dateConstraints = this.getProperty('dateRange');
 		const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay(); // Index of first day base 0 sunday
 		const lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(); // Date of the last day
@@ -66,21 +71,11 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		const nowMonth = now.getMonth(); // Today Month
 		const nowYear = now.getFullYear(); // Today Year
 		const MonthData = [];
-		const selectedDate = [];
 		let curDate;
 		let rows;
 		let dateCurrentLoop;
 		let wk;
 		let dy;
-
-		if ( isRangeSelect && selectedDates.length > 1 ) {
-			selectedDate.push(selectedDates[0].date);
-			selectedDate.push(selectedDates[1].date);
-		} else {
-			if (selectedDates[0]) {
-				selectedDate.push(selectedDates[0].date);
-			}
-		}
 
 		if (firstDay !== 0) {
 			curDate = lastMonthDate - firstDay + 1;
@@ -122,12 +117,12 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 					MonthData[wk][dy].outside = true;
 				}
 
-				if ( selectedDate.length && !MonthData[wk][dy].outside ) {
+				if (selectedDates.length() && !MonthData[wk][dy].outside) {
 					dateCurrentLoop = MonthData[wk][dy].date.getTime();
 
-					if (selectedDate.length === 1 && dateCurrentLoop === selectedDate[0].getTime()) {
+					if (!isRangeSelect && dateCurrentLoop === selectedDates.at(0).date.getTime()) {
 						MonthData[wk][dy].selected = true;
-					} else if (selectedDate.length === 2 && dateCurrentLoop >= selectedDate[0].getTime() && dateCurrentLoop <= selectedDate[1].getTime() ) {
+					} else if (isRangeSelect && dateCurrentLoop >= selectedDates.at(0).date.getTime() && dateCurrentLoop <= selectedDates.at(1).date.getTime() ) {
 						MonthData[wk][dy].selected = true;
 					}
 				}
@@ -146,24 +141,6 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		const month = date.getMonth();
 
 		return this._monthNames[month];
-	},
-
-	_canSelect: function (item, callback) {
-		let selDates;
-
-		if (this.getProperty('multiSelect')) {
-			selDates = this.getSelectedItems();
-
-			if (selDates.length) {
-				if (item.getDate().getTime() !== selDates[0].date.getTime()) {
-					callback();
-				}
-			} else {
-				callback();
-			}
-		} else {
-			callback();
-		}
 	},
 
 	_getYear: function (baseDate) {
@@ -194,15 +171,15 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 	},
 
 	_formatDate: function () {
-		const selectedDates = this.getSelectedItems();
+		const selectedDates = this._getSelectedItems();
 		let formattedDate;
 
-		if (selectedDates.length) {
-			if (selectedDates.length > 1) {
-				formattedDate = (selectedDates[0].date.getMonth() + 1) + '/' + selectedDates[0].date.getDate() + '/' + selectedDates[0].date.getFullYear();
-				formattedDate += ' - ' + (selectedDates[1].date.getMonth() + 1) + '/' + selectedDates[1].date.getDate() + '/' + selectedDates[1].date.getFullYear();
+		if (selectedDates.length()) {
+			if (selectedDates.length() > 1) {
+				formattedDate = (selectedDates.at(0).date.getMonth() + 1) + '/' + selectedDates.at(0).date.getDate() + '/' + selectedDates.at(0).date.getFullYear();
+				formattedDate += ' - ' + (selectedDates.at(1).date.getMonth() + 1) + '/' + selectedDates.at(1).date.getDate() + '/' + selectedDates.at(1).date.getFullYear();
 			} else {
-				formattedDate = (selectedDates[0].date.getMonth() + 1) + '/' + selectedDates[0].date.getDate() + '/' + selectedDates[0].date.getFullYear();
+				formattedDate = (selectedDates.at(0).date.getMonth() + 1) + '/' + selectedDates.at(0).date.getDate() + '/' + selectedDates.at(0).date.getFullYear();
 			}
 		}
 

@@ -80,21 +80,20 @@ const Data = Base.Data.extend({
 		return this._data.length;
 	},
 
-	add (item) {
-		this._data.add(item._item);
+	add () {
+		this._data.add(...arguments);
 		
 		return this;
 	},
 
-	remove (item) {
-		this._data.remove(item._item);
+	remove () {
+		this._data.remove(...arguments);
 		
 		return this;
 	},
 
-	/* TODO: This should probably use item._item like the other methods, shouldn't it? */
-	reset (item) {
-		this._data.reset(item);
+	reset () {
+		this._data.reset(...arguments);
 		
 		return this;
 	},

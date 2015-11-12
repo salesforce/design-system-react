@@ -118,14 +118,7 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 	},
 
 	_selectDataItem (selRow) {
-		const item = this._getItemAdapter(selRow);
-		const selected = this._isItemSelected(item);
-
-		if (selected) {
-			this._deselectItem(item);
-		} else {
-			this._selectItem(item);
-		}
+		this.toggleItem(selRow);
 	},
 
 	_toggleAllItems () {
