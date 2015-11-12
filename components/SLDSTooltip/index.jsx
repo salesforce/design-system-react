@@ -104,6 +104,13 @@ module.exports = React.createClass( {
     return 'middle';
   },
 
+  handleCancel() {
+    this.setState({
+      isOpen: false,
+      isClosing: false
+    });
+  },
+
   getTooltip() {
     const style = {
       'slds-popover': true,
