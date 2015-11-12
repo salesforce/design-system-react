@@ -33,9 +33,7 @@ let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
 
 		return (
 			<div className={this._getClassNames()} role="tooltip" ref="popover">
-				<div className="slds-tooltip__content">
-					<div className="slds-tooltip__body">{this.props.children}</div>
-				</div>
+				<div className="slds-popover__body">{this.props.children}</div>
 			</div>
 		);
 	}
