@@ -39,7 +39,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		}
 
 		return (
-			<div className="slds-form--stacked slds-float--left slds-datepicker-form" ref="container" onClick={this._triggerCalendar}>
+			<div className="slds-form--stacked slds-datepicker-form" ref="container" onClick={this._triggerCalendar}>
 				<DateInput selectedDate={selDateFormatted}/>
 				<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !this.state.isOpen})} ref="popover" data-selection="single">
 					<div className="slds-datepicker__filter slds-grid">
@@ -77,9 +77,9 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 				insertIndex = 0;
 			}
 
-			this._selectItem(this._getItemAdapter({ date: date.date }), insertIndex);
+			this.selectItem({ date: date.date }, insertIndex);
 		} else {
-			this._selectItem(this._getItemAdapter({ date: date.date }));
+			this.selectItem({ date: date.date });
 		}
 	},
 

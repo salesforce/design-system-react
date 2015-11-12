@@ -1,5 +1,5 @@
-// Base Control
-// ------------
+// # Base Control
+// ### Core
 
 // Inherited at the `core` level by all other controls.
 

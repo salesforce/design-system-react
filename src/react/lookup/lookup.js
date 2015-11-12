@@ -72,11 +72,13 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	componentWillMount () {
-		this._configureKeyboardNavigation();
+		this._filteredCollection = this._getFilteredCollection(this._collection, this.state.searchString);
+		this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
 	},
 	
-	componentWillReceiveProps () {
-		this._configureKeyboardNavigation();
+	componentWillReceiveProps (nextProps) {
+		if (nextProps.collection) this._filteredCollection = this._getFilteredCollection(this._collection, this.state.searchString);
+		this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
 	},
 
 	render () {
@@ -112,7 +114,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			</div>
 			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 				{header}
-				<MenuItems activeDescendantId={activeDescendantId} collection={this._collection} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
+				<MenuItems activeDescendantId={activeDescendantId} collection={this._filteredCollection} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
 			</div>
 		</div>
@@ -163,15 +165,6 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this.deselectAll();
 			this._focusOnInput = true;
 		}
-	},
-	
-	_configureKeyboardNavigation () {
-		const navigableItems = this._getNavigableItems();
-		
-		if (this.props.menuHeaderRenderer) navigableItems.indexes.unshift('header');
-		if (this.props.menuFooterRenderer) navigableItems.indexes.push('footer');
-		
-		this._navigableItems = navigableItems;
 	},
 
 	_handleKeyPressed (e) {
