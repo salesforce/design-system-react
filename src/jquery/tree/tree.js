@@ -8,8 +8,10 @@ import TreeCore, {CONTROL} from '../../core/tree';
 import DOM from '../dom';
 import Events from '../events';
 import State from '../state';
-
 const $ = Lib.global.jQuery || Lib.global.$;
+
+// children
+import Button from '../button/button';
 
 // Template imports
 import template from './tree-template';
@@ -89,10 +91,9 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		// When folder selection is allowed...
 		if (branchSelect) {
 			// Branch name clicks act like item clicks
-			this.element.on('click.fu.slds-tree', 'button.slds-button', $.proxy(this._handleBranchClicked, this));
-			this.element.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleItemClicked, this));
+			this.element.on('click.fu.slds-tree', '.slds-tree__item', $.proxy(this._handleItemClicked, this));
 		} else {
-			this.element.on('click.fu.slds-tree', '.slds-tree__branch--name', $.proxy(this._handleBranchClicked, this));
+			this.element.on('click.fu.slds-tree', '.slds-tree__item', $.proxy(this._handleBranchClicked, this));
 		}
 	},
 	
@@ -112,6 +113,15 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_renderBranch (branch, level) {
 		const $branch = this.template.find('.slds-tree__branch').clone();
 		const $branchContent = $branch.find('.slds-tree__group');
+
+		const $button = new Button({
+			assistiveText: 'Toggle',
+			icon: 'utility.chevronright',
+			iconSize: 'small',
+			iconStyle: 'icon-bare'
+		});
+		$button.element.addClass('slds-m-right--x-small');
+		$branch.find('x-button').replaceWith($button.element);
 
 		$branch.find('.slds-tree__branch--name').text(branch.getText());
 
