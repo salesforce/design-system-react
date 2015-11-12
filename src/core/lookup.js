@@ -76,7 +76,8 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 			focusedIndex: this._defaultState.focusedIndex
 		});
 		
-		const _menu = this.elements.menu[0];
+		/* TODO: Not using wrapped elements here, but jQuery facade will either have to use them or the underlying element. */
+		const _menu = this.elements.menu;
 		_menu.scrollTop = 0;
 	},
 	
@@ -121,7 +122,7 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	},
 	
 	_scrollMenuItems () {
-		const _menu = this.elements.menu[0];
+		const _menu = this.elements.menu;
 		let _menuItem = _menu.getElementsByClassName('slds-theme--shade');
 		
 		if (_menuItem && _menuItem.length === 1) {
