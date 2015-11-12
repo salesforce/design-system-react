@@ -68,10 +68,10 @@ module.exports = React.createClass( {
 
   getHorizontalAlign() {
     if (this.props.align==='left') {
-      return 'right';
+      return 'left';
     }
     else if (this.props.align==='right') {
-      return 'left';
+      return 'right';
     }
     return 'center';
   },
@@ -92,11 +92,12 @@ module.exports = React.createClass( {
       'slds-popover--tooltip':true,
       'slds-nubbin--top':this.props.align === 'bottom',
       'slds-nubbin--bottom':this.props.align === 'top',
-      'slds-nubbin--left':this.props.align === 'left',
-      'slds-nubbin--right':this.props.align === 'right'
+      'slds-nubbin--left':this.props.align === 'right',
+      'slds-nubbin--right':this.props.align === 'left'
     };
 
     return this.state.isOpen?<SLDSPopover
+          key={this.getHorizontalAlign()+' '+this.getVerticalAlign()}
           targetElement={this.refs.tooltipTarget}
           closeOnTabKey={true}
           className=''

@@ -14,7 +14,7 @@ import {SLDSTooltip,SLDSButton} from '../../../components';
 
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
-const alignNames = ['left','right','top','bottom'];
+const alignNames = ['left','top','right','bottom'];
 
 module.exports = React.createClass( {
 
@@ -31,7 +31,7 @@ module.exports = React.createClass( {
   componentDidMount () {
     setInterval ( ()=>{
       this.nextAlign();
-    },2000);
+    },300);
   },
 
   handleOnUpdateHighlighted () {
@@ -71,7 +71,6 @@ module.exports = React.createClass( {
                 <div className="slds-p-vertical--large">
                   <p>
                     <SLDSTooltip 
-                      key={'align_'+this.state.alignIndex}
                       content={<span>Tooltip with top alignment</span>}
                       align={alignNames[this.state.alignIndex]}>
                       Tooltip align top
@@ -80,7 +79,7 @@ module.exports = React.createClass( {
                 </div>
 
                 <div ref="super" className="slds-p-vertical--large">
-                  <p>
+                  <p style={{marginTop:'5rem'}}>
                     <SLDSTooltip 
                       content={<span>Tooltip with bottom alignment</span>}
                       align='bottom'
