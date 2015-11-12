@@ -32,7 +32,7 @@ const DOM = {
 	
 	destroy () {
 		// `_onDestroy` is an optional end of lifecycle event that individual controls / facades may choose to implement.
-		if (Lib.isFunction(this._onDestroy)) return this._onDestroy();
+		if (Lib.isFunction(this._onDestroy)) this._onDestroy();
 		
 		this.element.remove();
 		return this.element[0].outerHTML;
