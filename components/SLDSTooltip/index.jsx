@@ -132,7 +132,7 @@ module.exports = React.createClass( {
           verticalAlign={this.getVerticalAlign()}
           flippable={false}
           onClose={this.handleCancel}>
-          <div className={cx(style)}>
+          <div className={cx(style)} role="tooltip">
             {this.getTooltipContent()}
           </div>
         </SLDSPopover>:null;
