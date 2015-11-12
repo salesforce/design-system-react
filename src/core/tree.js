@@ -77,7 +77,14 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 	},
 
 	_canSelect (newSelection, select) {
-		if (newSelection.getType() === 'item' || !!this.getProperty('folderSelect')) {
+		const folderSelect = !!this.getProperty('folderSelect');
+		let canSelect = true;
+		
+		newSelection.forEach((item) => {
+			canSelect = canSelect && (folderSelect || item.getType() === 'item');
+		});
+		
+		if (canSelect) {
 			select();
 		}
 	},

@@ -48,6 +48,10 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		// Return the date
 		getDate (item) {
 			return item.get('date');
+		},
+		
+		getKey (item) {
+			return item.getDate().getTime();
 		}
 	},
 
@@ -146,24 +150,6 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		const month = date.getMonth();
 
 		return this._monthNames[month];
-	},
-
-	_canSelect: function (item, callback) {
-		let selDates;
-
-		if (this.getProperty('multiSelect')) {
-			selDates = this.getSelectedItems();
-
-			if (selDates.length) {
-				if (item.getDate().getTime() !== selDates[0].date.getTime()) {
-					callback();
-				}
-			} else {
-				callback();
-			}
-		} else {
-			callback();
-		}
 	},
 
 	_getYear: function (baseDate) {
