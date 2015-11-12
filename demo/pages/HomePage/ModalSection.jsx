@@ -33,12 +33,20 @@ module.exports = React.createClass( {
     this.setState({modalIsOpen: true});
   },
 
+  openNoHeader () {
+    this.setState({noHeaderIsOpen: true});
+  },
+
   togglePrompt () {
     this.setState({promptIsOpen: !this.state.promptIsOpen});
   },
 
   closeModal () {
-    this.setState({modalIsOpen: false});
+    this.setState({
+      modalIsOpen: false,
+      noHeaderIsOpen: false,
+      promptIsOpen: false,
+    });
   },
 
   handleSubmitModal () {
@@ -146,6 +154,22 @@ module.exports = React.createClass( {
             isOpen={this.state.modalIsOpen}
             title={<span>Lightning Design System: Style with Ease</span>}
             tagline={<span>The new design system framework from <a href="">Salesforce UX.</a></span>}
+            footer={[
+              <SLDSButton key='backBtn' label='Back' variant='neutral' onClick={this.closeModal} />,
+                <SLDSButton key='nextBtn' label='Next' variant='brand' onClick={this.handleSubmitModal} />
+                ]}
+                onRequestClose={this.closeModal}>
+                {this.getModalContent()}
+              </SLDSModal>
+
+            </div>
+
+        <div className='slds-p-vertical--medium'>
+          <h4 className="slds-text-heading--small ">Base without Header</h4>
+          <SLDSButton label='Open Modal' variant='brand' onClick={this.openNoHeader} />
+          <SLDSModal
+            size='medium'
+            isOpen={this.state.noHeaderIsOpen}
             footer={[
               <SLDSButton key='backBtn' label='Back' variant='neutral' onClick={this.closeModal} />,
                 <SLDSButton key='nextBtn' label='Next' variant='brand' onClick={this.handleSubmitModal} />

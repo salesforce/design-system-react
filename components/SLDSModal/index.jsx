@@ -180,6 +180,12 @@ module.exports = React.createClass( {
     return footer;
   },
 
+  renderTitle(headingClasses) {
+    if(this.props.title){
+      return <h2 className={cx(headingClasses)}>{this.props.title}</h2>;
+    }
+  },
+
   renderTagline() {
     if(this.props.tagline){
       return <p className="slds-m-top--x-small">{this.props.tagline}</p>;
@@ -188,31 +194,32 @@ module.exports = React.createClass( {
 
   headerComponent() {
     let headingClasses = [], headerClasses = ['slds-modal__header'];
+
     let closeButton;
+    let button = (<SLDSButton label='Close' variant='icon' iconName='close' iconSize='large' inverse={true} className='slds-modal__close' onClick={this.closeModal} />);
 
     if (this.isPrompt()) {
       headerClasses.push(`slds-theme--${this.props.prompt}`);
       headerClasses.push('slds-theme--alert-texture');
       headingClasses.push('slds-text-heading--small');
-    } else {
+    }
+    else if (!this.props.title) {
+      headerClasses = [];
+      closeButton = button;
+    }
+    else {
       headingClasses.push('slds-text-heading--medium')
-      closeButton =(<SLDSButton
-          label='Close'
-          variant='icon'
-          iconName='close'
-          iconSize='large'
-          inverse={true}
-          className='slds-modal__close'
-          onClick={this.closeModal} />);
+      closeButton = button;
     }
 
     return (
-      <div className={cx(headerClasses)}>
-        {this.props.toast}
-        <h2 className={cx(headingClasses)}>{this.props.title}</h2>
-        {this.renderTagline()}
-        {closeButton}
-     </div>);
+      <div className={cx(headerClasses)} style={{position:'relative'}}>
+      {this.props.toast}
+      {this.renderTitle(headingClasses)}
+      {this.renderTagline()}
+      {closeButton}
+      </div>
+    );
   },
 
   componentDidUpdate (prevProps, prevState) {
