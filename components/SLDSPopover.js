@@ -116,10 +116,22 @@ module.exports = React.createClass( {
   beforeClose (){
   },
 
+  getPosition () {
+    let positions = [];
+    if (this.props.verticalAlign === 'top' || this.props.verticalAlign === 'bottom') {
+      positions.push(this.props.verticalAlign);
+      positions.push(this.props.horizontalAlign);
+    }
+    else {
+      positions.push(this.props.horizontalAlign);
+      positions.push(this.props.verticalAlign);
+    }
+    return positions.join(' ');
+  },
+
   dropOptions () {
     const target = this.props.targetElement?React.findDOMNode(this.props.targetElement):React.findDOMNode(this).parentNode;
-    const position = this.props.verticalAlign+' '+this.props.horizontalAlign;
-    console.log('position: ',position);
+    const position = this.getPosition();
     return {
       target: target,
       content: this.popoverElement,

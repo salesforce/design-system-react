@@ -28,7 +28,7 @@ module.exports = React.createClass( {
     return {
       content:<span>Tooltip</span>,
       align: 'top',
-      hoverCloseDelay:200,
+      hoverCloseDelay:350,
       openOnHover:false
     };
   },
@@ -66,6 +66,26 @@ module.exports = React.createClass( {
     return <div className='slds-popover__body'>{this.props.content}</div>;
   },
 
+  getHorizontalAlign() {
+    if (this.props.align==='left') {
+      return 'right';
+    }
+    else if (this.props.align==='right') {
+      return 'left';
+    }
+    return 'center';
+  },
+
+  getVerticalAlign() {
+    if (this.props.align==='bottom') {
+      return 'bottom';
+    }
+    else if (this.props.align==='top') {
+      return 'top';
+    }
+    return 'middle';
+  },
+
   getTooltip() {
     const style = {
       'slds-popover':true,
@@ -82,10 +102,10 @@ module.exports = React.createClass( {
           className=''
           marginTop='1rem'
           marginBottom='1rem'
-          marginLeft='1rem'
-          marginRight='1rem'
-          horizontalAlign={this.props.align==='left' || this.props.align==='right'?this.props.align:'center'}
-          verticalAlign={this.props.align==='bottom' || this.props.align==='top'?this.props.align:'center'}
+          marginLeft='1.5rem'
+          marginRight='1.5rem'
+          horizontalAlign={this.getHorizontalAlign()}
+          verticalAlign={this.getVerticalAlign()}
           flippable={false}
           onClose={this.handleCancel}>
           <div className={cx(style)}>

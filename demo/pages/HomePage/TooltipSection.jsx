@@ -14,7 +14,7 @@ import {SLDSTooltip,SLDSButton} from '../../../components';
 
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
-
+const alignNames = ['left','right','top','bottom'];
 
 module.exports = React.createClass( {
 
@@ -23,7 +23,15 @@ module.exports = React.createClass( {
   },
 
   getInitialState () {
-    return {};
+    return {
+      alignIndex:0
+    };
+  },
+
+  componentDidMount () {
+    setInterval ( ()=>{
+      this.nextAlign();
+    },2000);
   },
 
   handleOnUpdateHighlighted () {
@@ -36,6 +44,14 @@ module.exports = React.createClass( {
 
   handleOnClick() {
     console.log('onClick should be defined');
+  },
+
+  nextAlign() {
+    let nextAlignIndex = this.state.alignIndex+1;
+    if (nextAlignIndex >= alignNames.length) {
+      nextAlignIndex = 0;
+    }
+    this.setState({alignIndex:nextAlignIndex});
   },
 
   render() {
@@ -51,24 +67,28 @@ module.exports = React.createClass( {
                 {require("raw-loader!../../code-snippets/SLDSDropdownPage.txt")}
               </PrismCode>
 */}
-              <div ref="super" className="slds-p-vertical--large">
-                <p>
-                  <SLDSTooltip 
-                    content={<span>Tooltip with top alignment</span>}
-                    align='top'
-                    targetElement={this.refs.super}>Tooltip align top</SLDSTooltip>
-                </p>
-              </div>
+              <section style={{paddingLeft:'10rem'}}>
+                <div className="slds-p-vertical--large">
+                  <p>
+                    <SLDSTooltip 
+                      key={'align_'+this.state.alignIndex}
+                      content={<span>Tooltip with top alignment</span>}
+                      align={alignNames[this.state.alignIndex]}>
+                      Tooltip align top
+                    </SLDSTooltip>
+                  </p>
+                </div>
 
-              <div ref="super" className="slds-p-vertical--large">
-                <p>
-                  <SLDSTooltip 
-                    content={<span>Tooltip with bottom alignment</span>}
-                    align='bottom'
-                    openOnHover={true}
-                    targetElement={this.refs.super}>Tooltip open on hover</SLDSTooltip>
-                </p>
-              </div>
+                <div ref="super" className="slds-p-vertical--large">
+                  <p>
+                    <SLDSTooltip 
+                      content={<span>Tooltip with bottom alignment</span>}
+                      align='bottom'
+                      openOnHover={true}
+                      targetElement={this.refs.super}>Tooltip open on hover</SLDSTooltip>
+                  </p>
+                </div>
+              </section>
 
 
             </div>
