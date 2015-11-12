@@ -32,7 +32,6 @@ const Openable = {
 		this.setState({ isOpen: false });
 		if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse(false);
 
-		// TODO: Once we have a destroy event we might want to remove this there as well
 		document.removeEventListener('click', this._closeOnClick, false);
 		this.trigger('closed');
 	},
@@ -55,6 +54,10 @@ const Openable = {
 		if (!e || e.originator !== this) {
 			this.close();
 		}
+	},
+	
+	_onDestroy () {
+		document.removeEventListener('click', this._closeOnClick, false);
 	}
 };
 

@@ -160,7 +160,7 @@ export { extend };
 
 import merge from 'lodash/object/merge';
 const customMerge = partialRight(merge, function (a, b, key) {
-	if (/(_onBeforeInitialize|_initializer|_onInitialized)/.test(key) && isFunction(a) && isFunction(b)) {
+	if (/(_onBeforeInitialize|_initializer|_onInitialized|_onDestroy)/.test(key) && isFunction(a) && isFunction(b)) {
 		return function () {
 			b.apply(this, arguments);
 			a.apply(this, arguments);
