@@ -34,6 +34,7 @@ export const NotificationObject = {
 	// TODO: Internationalize
 	// TODO: The patterns here are a little different than the rest of our controls
 	_render () {
+		const strings = this.getState('strings');
 		const classNames = this._getClassNames();
 
 		// Load template
@@ -48,12 +49,12 @@ export const NotificationObject = {
 
 		/* TODO: Needs internationalization */
 		const $closeButton = new Button({
-			assistiveText: 'Close',
+			assistiveText: strings.CLOSE,
 			iconStyle: 'icon-inverse',
 			icon: 'action.close'
 		});
 		$closeButton.element.addClass('slds-notify__close');
-		$el.find('x-button').replaceWith($closeButton.element);
+		$el.find('x-close-button').replaceWith($closeButton.element);
 
 		// Events
 		$el.find('.slds-notify__close').on('click', $.proxy(this.hide, this));

@@ -76,15 +76,16 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	},
 
 	_renderPill (pill) {
+		const strings = this.getState('strings');
 		const $pill = this.elements.pillTemplate.clone();
 
 		this.button = new Button({
-			assistiveText: 'Remove',
+			assistiveText: strings.REMOVE,
 			icon: 'action.close',
 			iconStyle: 'icon-bare'
 		});
-		$pill.find('x-button').replaceWith(this.button.element);
-		$pill.button = this.element.find('button');
+		this.button.replaceAll($pill.find('x-remove-button')[0]);
+		$pill.button = this.button.element;
 
 		$pill.find('.slds-pill__label').text(pill.getText());
 		$pill.data({

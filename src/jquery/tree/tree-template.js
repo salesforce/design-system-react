@@ -3,7 +3,7 @@ export default String.raw`
 	<ul class="slds-tree" role="tree">
 		<li class="slds-tree__branch" role="treeitem" aria-expanded="true">
 			<div class="slds-tree__branch--header slds-tree__item">
-				<x-button></x-button>
+				<x-branch-button></x-branch-button>
 				<div class="slds-tree__branch--name" role="presentation">Tree Branch</div>
 			</div>
 			<ul class="slds-tree__group slds-nested" role="group" aria-labelledby="tree0-node0-link">

@@ -60,25 +60,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this.elements.align = Lib.wrapElement(this.elements.formElement);
 
 		const $icon = this._renderIcon('utility.event', 'slds-input__icon slds-icon-text-default');
-		this.elements.formElement.find('x-svg').replaceWith($icon);
-
-		/* TODO: Needs internationalization */
-		const $previousMonthButton = new Button({
-			assistiveText: 'Previous Month',
-			iconStyle: 'icon-container',
-			icon: 'utility.left',
-			iconSize: 'small'
-		});
-		this.elements.dropdown.find('x-previous-month-button').replaceWith($previousMonthButton.element);
-
-		/* TODO: Needs internationalization */
-		const $nextMonthButton = new Button({
-			assistiveText: 'Next Month',
-			iconStyle: 'icon-container',
-			icon: 'utility.right',
-			iconSize: 'small'
-		});
-		this.elements.dropdown.find('x-next-month-button').replaceWith($nextMonthButton.element);
+		$icon.replaceAll(this.elements.formElement.find('x-input-icon')[0]);
 	},
 
 	_bindUIEvents () {
@@ -92,6 +74,27 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_render () {
+		const strings = this.getState('strings');
+		this.elements.input.attr('placeholder', strings.SELECT_A_DATE);
+
+		/* TODO: Needs internationalization */
+		const $previousMonthButton = new Button({
+			assistiveText: strings.PREVIOUS_MONTH,
+			iconStyle: 'icon-container',
+			icon: 'utility.left',
+			iconSize: 'small'
+		});
+		$previousMonthButton.replaceAll(this.elements.dropdown.find('x-previous-month-button')[0]);
+
+		/* TODO: Needs internationalization */
+		const $nextMonthButton = new Button({
+			assistiveText: strings.NEXT_MONTH,
+			iconStyle: 'icon-container',
+			icon: 'utility.right',
+			iconSize: 'small'
+		});
+		$nextMonthButton.replaceAll(this.elements.dropdown.find('x-next-month-button')[0]);
+
 		this._renderDateRange();
 
 		return this.element;

@@ -34,21 +34,18 @@ export const PicklistObject = {
 	},
 
 	_initElements () {
-		// this.elements.label = this.elements.button.find('.' + this.cssClasses.LABEL);
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
 		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
 
-		/* TODO: Needs internationalization */
 		this.button = new Button({
 			icon: 'utility.down',
 			iconStyle: 'icon-only',
-			text: 'Select an option',
 			theme: 'neutral',
 			truncate: true
 		});
 		this.button.element.addClass('slds-picklist__label');
-		this.element.find('x-button').replaceWith(this.button.element);
-		this.elements.button = this.element.find('button');
+		this.button.replaceAll(this.element.find('x-dropdown-button')[0]);
+		this.elements.button = this.button.element;
 	},
 
 	_bindUIEvents () {
@@ -129,7 +126,7 @@ export const PicklistObject = {
 		elements.button.prop('disabled', disabled);
 
 		// Show the current selection if there is one
-		const selectionName = selection.getText() || strings.NONE_SELECTED;
+		const selectionName = selection.getText() || strings.SELECT_AN_OPTION;
 		this.button.renderView({
 			text: selectionName
 		});

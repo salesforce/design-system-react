@@ -4,7 +4,7 @@ export default String.raw`
 		<div class="slds-form-element__control">
 			<input type="text" class="slds-input" style="border:none;border-right:1px solid #d8dde6;border-radius:.25rem 0 0 .25rem" />
 		</div>
-		<x-svg></x-svg>
+		<x-button-svg></x-button-svg>
 	</button>
 	<div class="slds-dropdown slds-dropdown--left slds-dropdown--menu slds-hide">
 		<ul class="slds-dropdown__list" role="menu">

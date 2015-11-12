@@ -107,17 +107,18 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	},
 
 	_renderBranch (branch, level) {
+		const strings = this.getState('strings');
 		const $branch = this.template.find('.slds-tree__branch').clone();
 		const $branchContent = $branch.find('.slds-tree__group');
 
 		const $button = new Button({
-			assistiveText: 'Toggle',
+			assistiveText: strings.TOGGLE_TREE_BRANCH,
 			icon: 'utility.chevronright',
 			iconSize: 'small',
 			iconStyle: 'icon-bare'
 		});
 		$button.element.addClass('slds-m-right--x-small');
-		$branch.find('x-button').replaceWith($button.element);
+		$button.element.replaceAll($branch.find('x-branch-button')[0]);
 
 		$branch.find('.slds-tree__branch--name').text(branch.getText());
 
