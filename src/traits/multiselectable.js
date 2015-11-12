@@ -3,6 +3,8 @@
 
 // Traits are inherited (typically at the `core` level) by other controls and provide functionality and consistency of APIs. Multiselectable, in particular, is a set of methods designed to deal with managing a set of items that have been selected out of a collection.
 
+// Note that you should use multiselectable when you have discrete items or groups of items. For example, multiple _dates_ would be a good use case for multiselectable, while a single _date range_ is probably only a single selection. If, however, it's possible to select multiple date ranges then you're back to multiselectable again.
+
 // Bring in the [shared library functions](../lib/lib).
 import * as Lib from '../lib/lib';
 
