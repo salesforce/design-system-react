@@ -45,8 +45,6 @@ const RadioObject = {
 		});
 
 		if (index > -1) group.splice(index, 1);
-		this.elements.wrapper.remove();
-		return this.elements.wrapper[0].outerHTML;
 	}
 };
 

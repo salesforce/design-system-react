@@ -15,12 +15,6 @@ const DOM = {
 			delete options.wrapper;
 		}
 	},
-
-	// `_onDestroy` is an end of lifecycle event that may be overwritten by individual controls.
-	_onDestroy () {
-		this.element.remove();
-		return this.element[0].outerHTML;
-	},
 	
 	// `_onInitialized` is an beginning of lifecycle event that may be overwritten by individual controls.
 	_onInitialized () {
@@ -34,6 +28,14 @@ const DOM = {
 		if (Lib.isFunction(this._addToDOM)) this._addToDOM();
 		
 		if (Lib.isFunction(this._onRendered)) this._onRendered();
+	},
+	
+	destroy () {
+		// `_onDestroy` is an optional end of lifecycle event that individual controls / facades may choose to implement.
+		if (Lib.isFunction(this._onDestroy)) return this._onDestroy();
+		
+		this.element.remove();
+		return this.element[0].outerHTML;
 	},
 	
 	// `appendTo` is similar to jQuery's `appendTo()` and appends the control to the DOM node or jQuery element passed. See [jQuery documentation](http://api.jquery.com/appendto/)

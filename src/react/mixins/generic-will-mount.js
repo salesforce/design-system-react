@@ -25,6 +25,11 @@ const genericWillMount = {
 				strings: Lib.extend({}, this.state.strings, nextProps.strings)
 			});
 		}
+	},
+	
+	componentWillUnmount () {
+		// For React-specific cleanup delcaring `componentWillUnmount` at the control level will suffice, but an optional `_onDestroy` lifecycle method is also provided for cleanup at the core or trait level.
+		if (Lib.isFunction(this._onDestroy)) return this._onDestroy();
 	}
 };
 
