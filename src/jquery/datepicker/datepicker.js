@@ -59,6 +59,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 
 	_bindUIEvents () {
 		this.element.on('click.slds-form-element', '.slds-input', $.proxy(this._triggerCalendar, this));
+		this.element.on('click.slds-datepicker', this._cancelEventProp);
 
 		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', $.proxy(this._backMonth, this));
 		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', $.proxy(this._forwardMonth, this));
@@ -84,6 +85,10 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 	_triggerCalendar (e) {
 		e.originalEvent.originator = this;
 		if (!this.getState('isOpen')) this.open();
+	},
+
+	_cancelEventProp (e) {
+		e.stopPropagation();
 	},
 
 	_renderDateRange () {
@@ -158,9 +163,10 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, DOM, {
 		}
 	},
 
-	_updateYear (event, data) {
+	_updateYear (e, data) {
 		const curViewDate = this.getState('dateViewing');
 
+		e.stopPropagation();
 		this.setState({ 'dateViewing': new Date(curViewDate.setYear(data.value))} );
 		this._renderDateRange();
 	},
