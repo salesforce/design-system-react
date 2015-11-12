@@ -12,7 +12,7 @@ const TooltipCore = Lib.merge({}, PopoverCore, {
 	CONTROL,
 	
 	cssClasses: {
-		CONTROL: 'slds-tooltip'
+		CONTROL: 'slds-popover slds-popover--tooltip'
 	}
 });
 

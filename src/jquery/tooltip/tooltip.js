@@ -27,7 +27,7 @@ let Tooltip = function Tooltip () {
 
 Lib.merge(Tooltip.prototype, TooltipCore, Events, DOM, State, PopoverMethods, {
 	_render () {
-		const body = this.elements.popover.find('.slds-tooltip__body');
+		const body = this.elements.popover.find('.slds-popover__body');
 
 		if (this.getProperty('content')) {
 			body.append(this.getProperty('content'));
