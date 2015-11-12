@@ -40,16 +40,6 @@ const LookupPills = React.createClass({
 				})}
 			</div>
 		);
-	},
-
-	_handlePillClick (item, e) {
-		e.preventDefault();
-		this.props.onDeselect(item);
-	},
-
-	_handleCloseClick (e) {
-		e.preventDefault();
-		this.props.onDeselect();
 	}
 });
 

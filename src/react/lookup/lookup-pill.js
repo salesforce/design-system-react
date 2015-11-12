@@ -25,12 +25,6 @@ const LookupPill = React.createClass({
 		};
 	},
 
-	componentDidMount () {
-		if (this.props.autoFocus) {
-			ReactDOM.findDOMNode(this).focus();
-		}
-	},
-
 	render () {
 		return (
 			<span className="slds-pill slds-pill--bare" tabIndex="0" onClick={this._handlePillClick} onKeyPress={this._handleKeyPressed} onKeyDown={this._handleKeyPressed}>
@@ -44,23 +38,23 @@ const LookupPill = React.createClass({
 				</a>
 				<button className="slds-button slds-button--icon-bare" onClick={this._handleCloseClick}>
 					<Svg icon="utility.close" className="slds-button__icon" />
-					<span className="slds-assistive-text">Remove</span>
+					<span className="slds-assistive-text">{this.props.strings.REMOVE}</span>
 				</button>
 			</span>
 		);
 	},
 
-	componentDidUpdate ( prevProps ) {
-		console.log('prevProps: ', prevProps);
+	componentDidMount () {
+		if (this.props.autoFocus) {
+			ReactDOM.findDOMNode(this).focus();
+		}
 	},
 
 	_handlePillClick (e) {
 		e.preventDefault();
-		this.props.onDeselect(this.props.item);
 	},
 
-	_handleCloseClick (e) {
-		e.preventDefault();
+	_handleCloseClick () {
 		this.props.onDeselect(this.props.item);
 	},
 
