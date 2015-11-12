@@ -69,6 +69,7 @@ module.exports = React.createClass( {
     let that = this;
     return function() {
       var target = document.getElementById(elemId);
+      console.log(target);
       that.animate(document.body, "scrollTop", "", 0, target.offsetTop, 500, true);
     };
   },
@@ -126,6 +127,9 @@ module.exports = React.createClass( {
               <li>
                 <a href="javascript:void(0)" onClick={this.scrollTo('picklistSection')}>Picklist</a>
               </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('tooltipSection')}>Tooltip</a>
+              </li>
             </ul>
 
             <h3 className="slds-text-heading--medium slds-p-top--medium">Future Components</h3>
@@ -136,7 +140,6 @@ module.exports = React.createClass( {
             </ul>
             </section>
 
-            <TooltipSection/>
 
             <ButtonSection/>
 
@@ -159,6 +162,8 @@ module.exports = React.createClass( {
             <PicklistBaseSection />
 
             <PicklistBaseCustomSection />
+
+            <TooltipSection/>
 
             <h1 className="slds-text-heading--large slds-p-top--large">Future Components</h1>
 

@@ -12,51 +12,69 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, {PropTypes} from 'react';
 import SLDSPopover from '../SLDSPopover';
 
-import {KEYS,EventUtil} from '../utils';
-import omit from 'lodash.omit';
+//import {KEYS,EventUtil} from '../utils';
+//import omit from 'lodash.omit';
 
 import cx from 'classnames';
 
 module.exports = React.createClass( {
 
+  displayName: 'SLDSToolip',
+
   propTypes: {
-    hoverCloseDelay:PropTypes.number
+    align: PropTypes.string,
+    children: PropTypes.node,
+    content: PropTypes.node,
+    hoverCloseDelay: PropTypes.number,
+    openByDefault: PropTypes.bool,
+    openOnClick: PropTypes.bool,
+    openOnHover: PropTypes.bool,
   },
 
 
   getDefaultProps () {
     return {
-      content:<span>Tooltip</span>,
       align: 'top',
-      hoverCloseDelay:350,
-      openOnHover:false
+      content: <span>Tooltip</span>,
+      hoverCloseDelay: 350,
+      openByDefault: false,
+      openOnClick: false,
+      openOnHover: false,
     };
   },
 
   getInitialState(){
     return {
-      isOpen:!this.props.openOnHover,
-      isClosing:false
+      isOpen: this.props.openByDefault,
+      isClosing: false
     };
   },
 
   componentDidMount(){
   },
 
+  handleMouseClick(event) {
+    this.setState({
+      isOpen: !this.state.isOpen,
+      isClosing: !this.state.isOpen
+    });
+  },
+
+
   handleMouseEnter(event) {
     this.setState({
-      isOpen:true,
-      isClosing:false
+      isOpen: true,
+      isClosing: false
     });
   },
 
   handleMouseLeave(event) {
-    this.setState({isClosing:true});
+    this.setState({isClosing: true});
     setTimeout(()=>{
       if(this.isMounted && this.state.isClosing){
         this.setState({
-          isOpen:false,
-          isClosing:false
+          isOpen: false,
+          isClosing: false
         });
       }
     },this.props.hoverCloseDelay)
@@ -88,12 +106,12 @@ module.exports = React.createClass( {
 
   getTooltip() {
     const style = {
-      'slds-popover':true,
-      'slds-popover--tooltip':true,
-      'slds-nubbin--top':this.props.align === 'bottom',
-      'slds-nubbin--bottom':this.props.align === 'top',
-      'slds-nubbin--left':this.props.align === 'right',
-      'slds-nubbin--right':this.props.align === 'left'
+      'slds-popover': true,
+      'slds-popover--tooltip': true,
+      'slds-nubbin--top': this.props.align === 'bottom',
+      'slds-nubbin--bottom': this.props.align === 'top',
+      'slds-nubbin--left': this.props.align === 'right',
+      'slds-nubbin--right': this.props.align === 'left'
     };
 
     return this.state.isOpen?<SLDSPopover
@@ -117,7 +135,7 @@ module.exports = React.createClass( {
 
   render(){
     return (
-      <span refs='tooltipTarget' onMouseEnter={this.props.openOnHover?this.handleMouseEnter:null} onMouseLeave={this.props.openOnHover?this.handleMouseLeave:null}>
+      <span refs='tooltipTarget' onClick={this.props.openOnClick?this.handleMouseClick:null} onMouseEnter={this.props.openOnHover?this.handleMouseEnter:null} onMouseLeave={this.props.openOnHover?this.handleMouseLeave:null}>
         { this.props.children }
         { this.getTooltip() }
       </span>

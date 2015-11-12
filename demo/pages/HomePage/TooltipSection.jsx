@@ -59,7 +59,7 @@ module.exports = React.createClass( {
 
 
             <div className="slds-p-around--medium">
-              <h3 id='dropdownSection' className="slds-text-heading--medium slds-truncate">
+              <h3 id='tooltipSection' className="slds-text-heading--medium slds-truncate">
                 Tooltip
               </h3>
 {/*
@@ -70,21 +70,36 @@ module.exports = React.createClass( {
               <section style={{paddingLeft:'10rem'}}>
                 <div className="slds-p-vertical--large">
                   <p>
-                    <SLDSTooltip 
+                    <SLDSTooltip
                       content={<span>Tooltip with top alignment</span>}
-                      align={alignNames[this.state.alignIndex]}>
-                      Tooltip align top
+                      align={alignNames[this.state.alignIndex]}
+                      openByDefault={true}>
+                        Tooltip align options
                     </SLDSTooltip>
                   </p>
                 </div>
 
-                <div ref="super" className="slds-p-vertical--large">
+                <div ref="tooltipOnHover" className="slds-p-vertical--large">
                   <p style={{marginTop:'5rem'}}>
-                    <SLDSTooltip 
+                    <SLDSTooltip
                       content={<span>Tooltip with bottom alignment</span>}
                       align='bottom'
                       openOnHover={true}
-                      targetElement={this.refs.super}>Tooltip open on hover</SLDSTooltip>
+                      targetElement={this.refs.tooltipOnHover}>
+                        Tooltip open on hover
+                      </SLDSTooltip>
+                  </p>
+                </div>
+
+                <div ref="tooltipOnClick" className="slds-p-vertical--large">
+                  <p style={{marginTop:'5rem'}}>
+                    <SLDSTooltip
+                      content={<span>Tooltip with right alignment</span>}
+                      align='right'
+                      openOnClick={true}
+                      targetElement={this.refs.tooltipOnClick}>
+                        Tooltip open on click
+                      </SLDSTooltip>
                   </p>
                 </div>
               </section>
