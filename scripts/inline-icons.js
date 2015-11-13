@@ -4,7 +4,7 @@ var parser = require('xml2json');
 var omit = require('lodash.omit');
 
 
-console.log('HERE!');
+console.log('SVG ICONS INLINE BUILD');
 var inlineIcons = function(striteType){
   var inputPath = path.join(__dirname,'..','node_modules','@salesforce-ux','icons','dist','salesforce-lightning-design-system-icons',striteType+'-sprite','svg','symbols.svg');
 
@@ -29,9 +29,6 @@ var inlineIcons = function(striteType){
   var icons = [];
   var viewbox;
   sprite.svg.symbol.forEach(function(symbol){
-    if(symbol.id === 'lead'){
-      console.log(symbol);
-    }
     var data = omit(symbol, ['id','viewBox']);
     content.push(symbol.id+':'+JSON.stringify(data)+',');
     viewBox = symbol.viewBox;
