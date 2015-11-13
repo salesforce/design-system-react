@@ -14,12 +14,13 @@ export default function () {
 			return (
 				<div>
 					<Modal
+						headerText="Modal Header"
 						isOpen={this.state.isOpen}
 						onClose={this.onClose}
 						onCancel={this.onCancel}
 						onPrimary={this.onPrimary}
-						secondaryBtnText={'Cancel'}
-						primaryBtnText={'Save Test'}>
+						primaryButtonText={'Save Test'}
+						secondaryButtonText={'Cancel'}>
 						<p>This is a test modal!</p>
 					</Modal>
 					<button className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Toggle</button>

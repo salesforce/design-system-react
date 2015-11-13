@@ -29,9 +29,9 @@ const ModalCore = Lib.merge({}, Base, {
 
 	// Set the defaults
 	_defaultProperties: {
-		isOpen: false,
 		header: 'Modal Header',
 		headerTextSize: 'medium',
+		isOpen: false,
 		primaryButtonText: 'Save',
 		secondaryButtonText: 'Cancel'
 	}
