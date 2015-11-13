@@ -4,7 +4,12 @@ import Modal from './modal';
 const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
-	const modal = new Modal($('#modal-jquery-control'), {});
+	const modal = new Modal($('#modal-jquery-control'), {
+		headerText: 'Modal Header',
+		headerTextSize: 'medium',
+		secondaryButtonText: 'Cancel',
+		primaryButtonText: 'Save'
+	});
 
 	modal.on('primary', function () {
 		console.log('Save primary modal');
