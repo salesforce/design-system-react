@@ -8,7 +8,7 @@
 // Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../../lib/lib';
 
-// Use the [shared core](../../core/lookup), which contains logic that is the same in every facade.
+// Use the [shared core](../../core/lookup.html), which contains logic that is the same in every facade.
 import LookupCore, {CONTROL} from '../../core/lookup';
 
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
@@ -18,7 +18,7 @@ import classNames from 'classnames';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-// [State](../mixins/state), [Events](../mixins/events), and [genericWillMount](../mixins/generic-will-mount) are wrappers that bring some consistency between facades controls.
+// [State](../mixins/state.html), [Events](../mixins/events.html), and [genericWillMount](../mixins/generic-will-mount.html) are mixins that appear in every facade and bring some consistency between how each framework deals with instantiation, events, and state.
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
@@ -29,15 +29,17 @@ import MenuItems from './lookup-menu-items';
 import Pills from './lookup-pills';
 
 // Provides the default renderers for items, pills, the header, and the footer.
-import LookupDefaultRenderers from './lookup-default-renderers';
+import DefaultRenderers from './lookup-default-renderers';
 
-// The [Svg helper](../svg/svg) for React provides a simple wrapper around the markup required for SVGs, and uses `Lib.getSVGPath` to convert strings in the format `sprite file`.`icon name` into full paths.
+// The [Svg helper](../svg/svg.html) for React provides a simple wrapper around the markup required for SVGs, and uses `Lib.getSVGPath` to convert strings in the format `sprite file`.`icon name` into full paths.
 import Svg from '../svg/svg';
 
-/* TODO: Finish documenting the control's methods. */
+// Facades **extends objects** by merging them together, rather than via the prototype chain or imititation of object-oriented inheritance. The important thing to remember is that _some methods will be available to the control which are not declared in this file_. These are not magic methods, they're not black box methods, but you do need to trace the depencies of the control to see where they are coming from. In particular, Lookup extends its [core](../../core/lookup.html), which in turn extends the base control and a series of traits.
 let Lookup = Lib.merge({}, LookupCore, {
+	// The React facade specifically is also extended via React's standard mixin model. These three mixins hook into native React lifecycle events and expose functionality needed for a cross-framework core. For example, some places in the core or traits a `setState` method is used. In React this is built in to the framework, and the other facades simply borrow the idea for their own use. Similarly, a `setProperties` method is available but in React it is actually a `noop` because React expects a one-way data flow, while in other Frameworks it typically does something very similar to `setState`.
 	mixins: [State, Events, genericWillMount],
 
+	// Always use the canonical control name (set in the core) as the React display name.
 	displayName: CONTROL,
 	
 	propTypes: {
@@ -67,8 +69,9 @@ let Lookup = Lib.merge({}, LookupCore, {
 		])
 	},
 	
+	// Additional default properties are shared at the core level and get mixed in via the `_defaultProperties` object, but these "default renderers" are unique to React. They provide functions that render the contents of the menu header, footer, and items as well as pills, but can be overridden by custom renderers passed in via props so that application developers have more control.
 	getDefaultProps () {
-		return LookupDefaultRenderers;
+		return DefaultRenderers;
 	},
 	
 	getInitialState () {
