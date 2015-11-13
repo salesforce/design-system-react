@@ -47,17 +47,16 @@ export const NotificationObject = {
 		// TODO: Should this also use the contents of the original? It's different in jQuery becasue in React 'Children' is actually just another prop
 		$el.find('.notify-text').text(this.getProperty('text'));
 
-		/* TODO: Needs internationalization */
 		const $closeButton = new Button({
 			assistiveText: strings.CLOSE,
 			iconStyle: 'icon-inverse',
 			icon: 'action.close'
 		});
 		$closeButton.element.addClass('slds-notify__close');
-		$el.find('x-close-button').replaceWith($closeButton.element);
+		$closeButton.replaceAll($el.find('x-close-button')[0]);
 
 		// Events
-		$el.find('.slds-notify__close').on('click', $.proxy(this.hide, this));
+		$closeButton.on('click', $.proxy(this.hide, this));
 	},
 	
 	_onShow: function () {
