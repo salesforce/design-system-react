@@ -1,4 +1,14 @@
+
+/*
+ *
+ * Custom Styles for Demo */
+
 .demo-only .slds-notify-container { position: static; }
+
+
+/*
+ *
+ * Animations */
 
 .slds .slds-theme--alert-texture-animated {
   background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.035) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.035) 50%, rgba(0, 0, 0, 0.035) 75%, transparent 75%, transparent);
@@ -7,7 +17,67 @@
   animation: progress-bar-stripes 2.4s 4 linear;
 }
 
-@keyframes progress-bar-stripes{
+@keyframes progress-bar-stripes {
   0% { background-position:0 64px; }
   100% { background-position:0 0; }
 }
+
+
+/*
+ * Basic fade in out
+ */
+.slds .slds-motion--fade-in--promptly {
+  animation: fade-in 0.2s ease-in-out;
+}
+
+.slds .slds-motion--fade-out--promptly {
+  animation: fade-out 0.2s ease-in-out;
+}
+
+@keyframes fade-in {
+  0% { opacity: 0 }
+  100% { opacity: 1 }
+}
+
+@keyframes fade-out {
+  0% { opacity: 1 }
+  100% { opacity: 0 }
+}
+
+
+/*
+ * Fall/Rise fade in and out
+ */
+.slds .slds-motion--fade-in-rise {
+  opacity: 0;
+  animation: fade-in-rise 0.4s 0.2s ease-in-out forwards;
+}
+
+.slds .slds-motion--fade-out-fall {
+  opacity: 1;
+  animation: fade-out-fall 0.2s ease-in-out forwards;
+}
+
+@keyframes fade-in-rise {
+  from {
+    opacity: 0;
+    transform: scale(.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-out-fall {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(.8);
+  }
+}
+
+
