@@ -14,6 +14,9 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // Template imports
 import template from './modal-template';
 
+// Provides the default renderers for the header, and the footer.
+import DefaultRenderers from './modal-default-renderers';
+
 let Modal = function Modal () {
 	const options = this._getOptions(arguments);
 
@@ -26,30 +29,37 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 
+		this.setProperties(DefaultRenderers);
+
 		this._initElements();
 	},
 
 	_initElements () {
 		this.elements.modal = this.element.find('.' + this.cssClasses.MODAL);
 		this.elements.backdrop = this.element.find('.' + this.cssClasses.BACKDROP);
-		this.elements.close = this.element.find('.' + this.cssClasses.CLOSE);
-		this.elements.primaryBtn = this.element.find('.' + this.cssClasses.PRIMARYBTN);
-		this.elements.secondaryBtn = this.element.find('.slds-button--neutral:eq(0)');
 	},
 
 	_bindUIEvents () {
-		this.elements.close.on('click', $.proxy(this.close, this));
-		this.elements.secondaryBtn.on('click', $.proxy(this._onSecondaryClicked, this));
-		this.elements.primaryBtn.on('click', $.proxy(this._onPrimaryClicked, this));
+		this.element.on('click', $.proxy(this._clickOutClose, this));
 	},
 
 	_render () {
-		const secondaryText = this.getProperty('secondaryBtnText');
-		const primaryText = this.getProperty('primaryBtnText');
+		const props = this.getProperties();
 		const $content = this.elements.wrapper.contents().detach();
 
-		this.elements.secondaryBtn.html(secondaryText);
-		this.elements.primaryBtn.html(primaryText);
+		this.element.find('.' + this.cssClasses.HEAD).append(props.renderHeader({
+			headerTitle: props.headerTitle,
+			headerTagline: props.headerTagline,
+			closeClicked: $.proxy(this.close, this)
+		}));
+
+		this.element.find('.' + this.cssClasses.FOOT).append(props.renderFooter({
+			primaryText: props.primaryBtnText,
+			secondaryText: props.secondaryBtnText,
+			primaryClicked: $.proxy(this._onPrimaryClicked, this),
+			secondaryClicked: $.proxy(this._onSecondaryClicked, this)
+		}));
+
 		this.element.find('.' + this.cssClasses.CONTENT).append($content);
 
 		return this.element;
@@ -91,6 +101,12 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 		this.setProperties({
 			isOpen: false
 		});
+	},
+
+	_clickOutClose (e) {
+		if (this.backgroundClicked(e.target)) {
+			this.close();
+		}
 	}
 });
 

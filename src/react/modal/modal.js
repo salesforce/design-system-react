@@ -11,8 +11,8 @@ import Events from '../mixins/events';
 // Third party
 import classNames from 'classnames';
 
-// Children
-import Svg from '../svg/svg';
+// Provides the default renderers for the header, and the footer.
+import DefaultRenderers from './modal-default-renderers';
 
 export const ModalObject = {
 	mixins: [Events],
@@ -25,28 +25,30 @@ export const ModalObject = {
 		primaryBtnText: React.PropTypes.string,
 		onClose: React.PropTypes.func,
 		onCancel: React.PropTypes.func,
-		onAction: React.PropTypes.func
+		onAction: React.PropTypes.func,
+		headerTitle: React.PropTypes.any,
+		headerTagline: React.PropTypes.any
 	},
 
 	render () {
 		return (
 			<div>
 				<div aria-hidden="false" role="dialog" className={classNames(this.cssClasses.MODAL, {'slds-fade-in-open': this.props.isOpen} )} onClick={this._onBackgroundClick} ref="background">
-					<div className="slds-modal__container" ref="modal">
-						<div className="slds-modal__header">
-							<h2 className="slds-text-heading--medium">Modal Header</h2>
-							<button className="slds-button slds-button--icon-inverse slds-modal__close" onClick={this._onCloseClick}>
-								<Svg className="slds-button__icon slds-button__icon--large" icon="utility.close" />
-								<span className="slds-assistive-text">Close</span>
-							</button>
-						</div>
+					<div className={this.cssClasses.MODALCONTAINER} ref="modal">
+						{this.props.renderHeader({
+							onCloseClick: this._onCloseClick,
+							headerTitle: this.props.headerTitle,
+							headerTagline: this.props.headerTagline
+						})}
 						<div className="slds-modal__content">
 							{this.props.children}
 						</div>
-						<div className="slds-modal__footer">
-							<button className="slds-button slds-button--neutral" onClick={this._onCancelClick}>{this.props.secondaryBtnText}</button>
-							<button className="slds-button slds-button--neutral slds-button--brand" onClick={this._onPrimaryClick}>{this.props.primaryBtnText}</button>
-						</div>
+						{this.props.renderFooter({
+							onPrimaryClick: this._onPrimaryClick,
+							onSecondaryClick: this._onSecondaryClick,
+							secondaryBtnText: this.props.secondaryBtnText,
+							primaryBtnText: this.props.primaryBtnText
+						})}
 					</div>
 				</div>
 				<div className={classNames('slds-modal-backdrop', {'slds-modal-backdrop--open': this.props.isOpen} )}></div>
@@ -54,16 +56,20 @@ export const ModalObject = {
 		);
 	},
 
+	getDefaultProps () {
+		return DefaultRenderers;
+	},
+
 	_onCloseClick () {
 		this.props.onClose();
 	},
 
-	_onCancelClick () {
+	_onSecondaryClick () {
 		this.props.onCancel();
 	},
 
-	_onBackgroundClick (ev) {
-		if (ev.target === this.refs.background || ev.target === this.refs.modal) {
+	_onBackgroundClick (e) {
+		if (e.target && this.backgroundClicked(e.target)) {
 			this.props.onClose();
 		}
 	},

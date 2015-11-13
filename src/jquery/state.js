@@ -36,6 +36,10 @@ const State = {
 	getProperty (key) {
 		return this._props[key];
 	},
+
+	getProperties () {
+		return this._props;
+	},
 	
 	setState (values) {
 		return Lib.extend(this._state, values);
