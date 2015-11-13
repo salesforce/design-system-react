@@ -15,7 +15,7 @@ describe('SLDSPicklistBase: ',  function(){
   it('onSelect fires upon selection change', sinon.test(function() {
     let onSelectStub = this.stub();
     let options = [
-      {"value" : '1', "label" : '1'}
+      {"value" : '1', "label" : '1',, "extra1": 'extra1', "extra2" : { "prop1" : 'prop1', "prop2" : 'prop2'}
     ];
 
     let cmp = TestUtils.renderIntoDocument(
@@ -30,6 +30,6 @@ describe('SLDSPicklistBase: ',  function(){
     clickOnItem(cmp, 0);
 
     expect(onSelectStub.calledOnce).to.be.ok;
-    expect(onSelectStub.calledWith('1')).to.be.ok;
+    expect(onSelectStub.calledWith({"value" : '1', "label" : '1',, "extra1": 'extra1', "extra2" : { "prop1" : 'prop1', "prop2" : 'prop2'})).to.be.ok;
   }));
 });
