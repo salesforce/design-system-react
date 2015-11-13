@@ -99,11 +99,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSLookup2 = _interopRequireDefault(_SLDSLookup);
 	
-	var _SLDSModal = __webpack_require__(78);
+	var _SLDSTooltip = __webpack_require__(78);
+	
+	var _SLDSTooltip2 = _interopRequireDefault(_SLDSTooltip);
+	
+	var _SLDSModal = __webpack_require__(79);
 	
 	var _SLDSModal2 = _interopRequireDefault(_SLDSModal);
 	
-	var _SLDSModalTrigger = __webpack_require__(79);
+	var _SLDSModalTrigger = __webpack_require__(80);
 	
 	var _SLDSModalTrigger2 = _interopRequireDefault(_SLDSModalTrigger);
 	
@@ -111,7 +115,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSIcons2 = _interopRequireDefault(_SLDSIcons);
 	
-	var _SLDSNotification = __webpack_require__(80);
+	var _SLDSNotification = __webpack_require__(81);
 	
 	var _SLDSNotification2 = _interopRequireDefault(_SLDSNotification);
 	
@@ -126,7 +130,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  SLDSModal: _SLDSModal2['default'],
 	  SLDSModalTrigger: _SLDSModalTrigger2['default'],
 	  SLDSIcons: _SLDSIcons2['default'],
-	  SLDSNotification: _SLDSNotification2['default']
+	  SLDSNotification: _SLDSNotification2['default'],
+	  SLDSTooltip: _SLDSTooltip2['default']
 	};
 
 /***/ },
@@ -461,9 +466,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return {
 	      verticalAlign: 'bottom',
 	      horizontalAlign: 'left',
-	      //      targetAttachment: 'bottom left',
 	      className: 'slds-dropdown',
-	      closeOnTabKey: false
+	      closeOnTabKey: false,
+	      marginTop: '0.20rem',
+	      marginBottom: '0.35rem',
+	      marginLeft: 0,
+	      marginRight: 0,
+	      flippable: true
 	    };
 	  },
 	
@@ -511,8 +520,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      style: {
 	        transform: 'none',
 	        WebkitTransform: 'none',
-	        'marginTop': '0.20rem',
-	        'marginBottom': '0.35rem',
+	        'marginTop': this.props.marginTop,
+	        'marginBottom': this.props.marginBottom,
+	        'marginLeft': this.props.marginLeft,
+	        'marginRight': this.props.marginRight,
 	        'float': 'inherit',
 	        'position': 'inherit'
 	      },
@@ -522,16 +533,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  beforeClose: function beforeClose() {},
 	
+	  getPosition: function getPosition() {
+	    var positions = [];
+	    if (this.props.verticalAlign === 'top' || this.props.verticalAlign === 'bottom') {
+	      positions.push(this.props.verticalAlign);
+	      positions.push(this.props.horizontalAlign);
+	    } else {
+	      positions.push(this.props.horizontalAlign);
+	      positions.push(this.props.verticalAlign);
+	    }
+	    return positions.join(' ');
+	  },
+	
 	  dropOptions: function dropOptions() {
 	    var target = this.props.targetElement ? _react2['default'].findDOMNode(this.props.targetElement) : _react2['default'].findDOMNode(this).parentNode;
-	    var position = this.props.verticalAlign + ' ' + this.props.horizontalAlign;
+	    var position = this.getPosition();
 	    return {
 	      target: target,
 	      content: this.popoverElement,
 	      position: position,
 	      openOn: 'always',
 	      beforeClose: this.beforeClose,
-	      constrainToWindow: true,
+	      constrainToWindow: this.props.flippable,
 	      constrainToScrollParent: false,
 	      remove: true
 	    };
@@ -3140,12 +3163,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  return {
 	    componentDidMount: function() {
-	      if(typeof this.handleClickOutside !== "function")
+	      if(!this.handleClickOutside)
 	        throw new Error("Component lacks a handleClickOutside(event) function for processing outside click events.");
 	
 	      var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
 	        return function(evt) {
-	          evt.stopPropagation();
 	          var source = evt.target;
 	          var found = false;
 	          // If source=local then this event came from "somewhere"
@@ -3200,7 +3222,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Can be called to explicitly disable event listening
 	     * for clicks and touches outside of this element.
 	     */
-	    disableOnClickOutside: function() {
+	    disableOnClickOutside: function(fn) {
 	      var fn = this.__outsideClickHandler;
 	      document.removeEventListener("mousedown", fn);
 	      document.removeEventListener("touchstart", fn);
@@ -6540,7 +6562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	*/
 	
-	'use strict';
+	"use strict";
 	
 	var _extends = Object.assign || function (target) {
 	  for (var i = 1; i < arguments.length; i++) {
@@ -6553,7 +6575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
+	  return obj && obj.__esModule ? obj : { "default": obj };
 	}
 	
 	var _react = __webpack_require__(2);
@@ -6584,18 +6606,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSIcons = __webpack_require__(13);
-	
-	var _SLDSIcons2 = __webpack_require__(13);
-	
 	var _utils = __webpack_require__(6);
 	
 	var _lodashOmit = __webpack_require__(51);
 	
 	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
-	module.exports = _react2['default'].createClass({
-	  displayName: 'exports',
+	module.exports = _react2["default"].createClass({
+	  displayName: "exports",
 	
 	  propTypes: {
 	    onClick: _react.PropTypes.func,
@@ -6605,20 +6623,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
-	      variant: 'neutral',
-	      placeholder: 'Select an Option',
+	      variant: "neutral",
+	      placeholder: "Select an Option",
 	      disabled: false,
-	      theme: 'default',
-	      label: 'Dropdown',
+	      theme: "default",
+	      label: "Dropdown",
 	      value: null,
 	      options: [],
 	      initialFocus: false,
 	      modal: true,
-	      className: '',
-	      listClassName: '',
-	      openOn: 'hover',
-	      listItemRenderer: _listItemLabel2['default'],
-	      horizontalAlign: 'left',
+	      className: "",
+	      listClassName: "",
+	      openOn: "hover",
+	      listItemRenderer: _listItemLabel2["default"],
+	      horizontalAlign: "left",
 	      hoverCloseDelay: 300
 	    };
 	  },
@@ -6640,7 +6658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.initialFocus) {
 	      this.setFocus();
 	    }
-	    if (this.props.openOn === 'hover') {
+	    if (this.props.openOn === "hover") {
 	      //TODO:Add functionality here
 	    }
 	  },
@@ -6717,8 +6735,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    });
 	  },
 	
-	  handleMouseEnter: function handleMouseEnter(event) {
-	    if (this.props.openOn === 'hover') {
+	  handleMouseEnter: function handleMouseEnter() {
+	    if (this.props.openOn === "hover") {
 	      this.state.isClosing = false;
 	      if (!this.state.isOpen) {
 	        this.setState({
@@ -6729,8 +6747,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  },
 	
-	  handleMouseLeave: function handleMouseLeave(event) {
-	    if (this.props.openOn === 'hover') {
+	  handleMouseLeave: function handleMouseLeave() {
+	    if (this.props.openOn === "hover") {
 	      this.setState({ isClosing: true });
 	    }
 	  },
@@ -6764,12 +6782,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  setFocus: function setFocus() {
 	    if (this.isMounted()) {
-	      _react2['default'].findDOMNode(this.getButtonNode()).focus();
+	      _react2["default"].findDOMNode(this.getButtonNode()).focus();
 	    }
 	  },
 	
 	  getButtonNode: function getButtonNode() {
-	    return _react2['default'].findDOMNode(this.refs.button);
+	    return _react2["default"].findDOMNode(this.refs.button);
 	  },
 	
 	  handleKeyDown: function handleKeyDown(event) {
@@ -6800,8 +6818,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  getPopoverContent: function getPopoverContent() {
-	    return _react2['default'].createElement(_list2['default'], {
-	      ref: 'list',
+	    return _react2["default"].createElement(_list2["default"], {
+	      ref: "list",
 	      options: this.props.options,
 	      className: this.props.listClassName,
 	      highlightedIndex: this.state.highlightedIndex,
@@ -6810,8 +6828,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onUpdateHighlighted: this.handleUpdateHighlighted,
 	      onListBlur: this.handleListBlur,
 	      onListItemBlur: this.handleListItemBlur,
-	      onMouseEnter: this.props.openOn === 'hover' ? this.handleMouseEnter : null,
-	      onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave : null,
+	      onMouseEnter: this.props.openOn === "hover" ? this.handleMouseEnter : null,
+	      onMouseLeave: this.props.openOn === "hover" ? this.handleMouseLeave : null,
 	      onCancel: this.handleCancel,
 	      itemRenderer: this.props.listItemRenderer,
 	      isHover: this.state.isHover,
@@ -6819,14 +6837,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  getSimplePopover: function getSimplePopover() {
-	    return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement('div', {
-	      className: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
-	      style: { maxHeight: '20em' } }, this.getPopoverContent()) : null;
+	    return !this.props.disabled && this.state.isOpen ? _react2["default"].createElement("div", {
+	      className: "slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu",
+	      style: { maxHeight: "20em" } }, this.getPopoverContent()) : null;
 	  },
 	
 	  getModalPopover: function getModalPopover() {
-	    var className = 'slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--' + this.props.horizontalAlign;
-	    return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement(_SLDSPopover2['default'], {
+	    var className = "slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--" + this.props.horizontalAlign;
+	    return !this.props.disabled && this.state.isOpen ? _react2["default"].createElement(_SLDSPopover2["default"], {
 	      className: className,
 	      horizontalAlign: this.props.horizontalAlign,
 	      targetElement: this.refs.button,
@@ -6847,34 +6865,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  render: function render() {
-	    var className = this.state.currentSelectedItem ? 'slds-input--bare slds-hide' : 'slds-input--bare';
 	
-	    var props = (0, _lodashOmit2['default'])(this.props, ['aria-haspopup', 'label', 'className', 'style', 'variant', 'iconName', 'iconVariant', 'onBlur', 'onFocus', 'onClick', 'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'tabIndex', 'onKeyDown']);
+	    var props = (0, _lodashOmit2["default"])(this.props, ["aria-haspopup", "label", "className", "style", "variant", "iconName", "iconVariant", "onBlur", "onFocus", "onClick", "onMouseDown", "onMouseEnter", "onMouseLeave", "tabIndex", "onKeyDown"]);
 	
-	    return _react2['default'].createElement(_SLDSButton2['default'], _extends({
-	      ref: 'button',
-	      'aria-haspopup': 'true',
+	    return _react2["default"].createElement(_SLDSButton2["default"], _extends({
+	      ref: "button",
+	      "aria-haspopup": "true",
 	      label: this.props.label,
 	      className: this.props.className,
 	      style: this.props.style,
 	      variant: this.props.variant,
 	      iconName: this.props.iconName,
 	      iconVariant: this.props.iconVariant,
-	      onBlur: (0, _utilsCreateChainedFunction2['default'])(this.props.onBlur, this.handleBlur),
-	      onFocus: (0, _utilsCreateChainedFunction2['default'])(this.props.onFocus, this.handleFocus),
-	      onClick: (0, _utilsCreateChainedFunction2['default'])(this.props.onClick, this.handleClick),
-	      onMouseDown: (0, _utilsCreateChainedFunction2['default'])(this.props.onMouseDown, this.handleMouseDown),
-	      onMouseEnter: (0, _utilsCreateChainedFunction2['default'])(this.props.onMouseEnter, this.props.openOn === 'hover' ? this.handleMouseEnter : null),
-	      onMouseLeave: (0, _utilsCreateChainedFunction2['default'])(this.props.onMouseLeave, this.props.openOn === 'hover' ? this.handleMouseLeave : null),
+	      onBlur: (0, _utilsCreateChainedFunction2["default"])(this.props.onBlur, this.handleBlur),
+	      onFocus: (0, _utilsCreateChainedFunction2["default"])(this.props.onFocus, this.handleFocus),
+	      onClick: (0, _utilsCreateChainedFunction2["default"])(this.props.onClick, this.handleClick),
+	      onMouseDown: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseDown, this.handleMouseDown),
+	      onMouseEnter: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseEnter, this.props.openOn === "hover" ? this.handleMouseEnter : null),
+	      onMouseLeave: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseLeave, this.props.openOn === "hover" ? this.handleMouseLeave : null),
 	      tabIndex: this.state.isOpen ? -1 : 0,
-	      onKeyDown: (0, _utilsCreateChainedFunction2['default'])(this.props.onKeyDown, this.handleKeyDown)
+	      onKeyDown: (0, _utilsCreateChainedFunction2["default"])(this.props.onKeyDown, this.handleKeyDown)
 	    }, props), this.props.modal ? this.getModalPopover() : this.getSimplePopover());
 	  }
 	
 	});
 	
-	module.exports.ListItem = _listItem2['default'];
-	module.exports.ListItemLabel = _listItemLabel2['default'];
+	module.exports.ListItem = _listItem2["default"];
+	module.exports.ListItemLabel = _listItemLabel2["default"];
 
 /***/ },
 /* 46 */
@@ -7355,7 +7372,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	*/
 	
-	'use strict';
+	"use strict";
 	
 	var _extends = Object.assign || function (target) {
 	  for (var i = 1; i < arguments.length; i++) {
@@ -7370,7 +7387,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
 	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
 	    }
 	  }return function (Constructor, protoProps, staticProps) {
 	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
@@ -7381,13 +7398,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
-	    } else if ('value' in desc) {
+	    } else if ("value" in desc) {
 	      return desc.value;
 	    } else {
 	      var getter = desc.get;if (getter === undefined) {
@@ -7398,7 +7415,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
+	  return obj && obj.__esModule ? obj : { "default": obj };
 	}
 	
 	function _defineProperty(obj, key, value) {
@@ -7411,13 +7428,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError('Cannot call a class as a function');
+	    throw new TypeError("Cannot call a class as a function");
 	  }
 	}
 	
 	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== 'function' && superClass !== null) {
-	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
 	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
@@ -7443,42 +7460,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function Button(props) {
 	    _classCallCheck(this, Button);
 	
-	    _get(Object.getPrototypeOf(Button.prototype), 'constructor', this).call(this, props);
-	    this.displayName = 'SLDSButton';
+	    _get(Object.getPrototypeOf(Button.prototype), "constructor", this).call(this, props);
+	    this.displayName = "SLDSButton";
 	    this.state = { active: false };
 	  }
 	
 	  _createClass(Button, [{
-	    key: 'componentWillMount',
+	    key: "componentWillMount",
 	    value: function componentWillMount() {
 	      /*===============================
-	      TODO: refactor so that React doesn't throw warnings in console
+	      TODO: refactor so that React doesn"t throw warnings in console
 	      for (var key in this.props) {
-	        if(this.props.hasOwnProperty(key) && typeof(this.props[key]) === 'string' && key !== 'label'){
+	        if(this.props.hasOwnProperty(key) && typeof(this.props[key]) === "string" && key !== "label"){
 	          this.props[key] = this.props[key].toLowerCase();
 	        }
 	      }
 	      ===============================*/
 	    }
 	  }, {
-	    key: 'onClick',
-	    value: function onClick(e) {
+	    key: "onClick",
+	    value: function onClick() {
 	      this.setState({ active: !this.state.active });
 	    }
 	  }, {
-	    key: 'getClassName',
+	    key: "getClassName",
 	    value: function getClassName() {
 	      var _classNames;
 	
 	      var isSelected = this.props.stateful && this.state.active ? true : false;
 	      var notSelected = this.props.stateful && !this.state.active ? true : false;
-	      return classNames(this.props.className, 'slds-button', (_classNames = {}, _defineProperty(_classNames, 'slds-button--' + this.props.variant, this.props.variant), _defineProperty(_classNames, 'slds-button--icon-' + this.props.iconVariant, this.props.iconVariant), _defineProperty(_classNames, 'slds-max-small-button--stretch', this.props.responsive), _defineProperty(_classNames, 'slds-not-selected', notSelected), _defineProperty(_classNames, 'slds-is-selected', isSelected), _defineProperty(_classNames, 'slds-button--icon-inverse', this.props.inverse), _classNames));
+	      return classNames(this.props.className, "slds-button", (_classNames = {}, _defineProperty(_classNames, "slds-button--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-button--icon-" + this.props.iconVariant, this.props.iconVariant), _defineProperty(_classNames, "slds-max-small-button--stretch", this.props.responsive), _defineProperty(_classNames, "slds-not-selected", notSelected), _defineProperty(_classNames, "slds-is-selected", isSelected), _defineProperty(_classNames, "slds-button--icon-inverse", this.props.inverse), _classNames));
 	    }
 	  }, {
-	    key: 'renderIcon',
+	    key: "renderIcon",
 	    value: function renderIcon(name) {
 	      if (this.props.iconName || this.props.notSelectedIcon || this.props.selectedIcon || this.props.selectedFocusIcon) {
-	        return _react2['default'].createElement(_SLDSIconsJs.ButtonIcon, {
+	        return _react2["default"].createElement(_SLDSIconsJs.ButtonIcon, {
 	          variant: this.props.variant,
 	          disabled: this.props.disabled,
 	          inverse: this.props.inverse,
@@ -7491,53 +7508,53 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: 'renderIconMore',
+	    key: "renderIconMore",
 	    value: function renderIconMore() {
-	      if (this.props.iconVariant === 'more') {
-	        return _react2['default'].createElement(_SLDSIconsJs.ButtonIcon, {
+	      if (this.props.iconVariant === "more") {
+	        return _react2["default"].createElement(_SLDSIconsJs.ButtonIcon, {
 	          variant: this.props.variant,
 	          disabled: this.props.disabled,
 	          inverse: this.props.inverse,
-	          name: 'down',
-	          size: 'x-small'
+	          name: "down",
+	          size: "x-small"
 	        });
 	      }
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      var props = (0, _lodashOmit2['default'])(this.props, 'className');
-	      var click = (0, _utilsCreateChainedFunction2['default'])(this.props.onClick, this.onClick.bind(this));
-	      var labelClasses = this.props.variant === 'icon' ? 'slds-assistive-text' : '';
+	      var props = (0, _lodashOmit2["default"])(this.props, "className");
+	      var click = (0, _utilsCreateChainedFunction2["default"])(this.props.onClick, this.onClick.bind(this));
+	      var labelClasses = this.props.variant === "icon" ? "slds-assistive-text" : "";
 	      if (this.props.disabled) {
-	        props['disabled'] = 'disabled';
+	        props["disabled"] = "disabled";
 	      };
 	
 	      if (this.props.stateful) {
-	        return _react2['default'].createElement('button', _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), _react2['default'].createElement('span', { className: 'slds-text-not-selected' }, this.renderIcon(this.props.notSelectedIcon), this.props.notSelectedLabel), _react2['default'].createElement('span', { className: 'slds-text-selected' }, this.renderIcon(this.props.selectedIcon), this.props.selectedLabel), _react2['default'].createElement('span', { className: 'slds-text-selected-focus' }, this.renderIcon(this.props.selectedFocusIcon), this.props.selectedFocusLabel));
+	        return _react2["default"].createElement("button", _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), _react2["default"].createElement("span", { className: "slds-text-not-selected" }, this.renderIcon(this.props.notSelectedIcon), this.props.notSelectedLabel), _react2["default"].createElement("span", { className: "slds-text-selected" }, this.renderIcon(this.props.selectedIcon), this.props.selectedLabel), _react2["default"].createElement("span", { className: "slds-text-selected-focus" }, this.renderIcon(this.props.selectedFocusIcon), this.props.selectedFocusLabel));
 	      } else {
-	        return _react2['default'].createElement('button', _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === 'right' ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.renderIcon(this.props.iconName), this.renderIconMore(), this.props.iconPosition === 'left' || !this.props.iconPosition ? _react2['default'].createElement('span', { className: labelClasses }, this.props.label) : null, this.props.children);
+	        return _react2["default"].createElement("button", _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === "right" ? _react2["default"].createElement("span", { className: labelClasses }, this.props.label) : null, this.renderIcon(this.props.iconName), this.renderIconMore(), this.props.iconPosition === "left" || !this.props.iconPosition ? _react2["default"].createElement("span", { className: labelClasses }, this.props.label) : null, this.props.children);
 	      }
 	    }
 	  }]);
 	
 	  return Button;
-	})(_react2['default'].Component);
+	})(_react2["default"].Component);
 	
 	Button.propTypes = {
-	  label: _react2['default'].PropTypes.string.isRequired,
-	  variant: _react2['default'].PropTypes.oneOf(['base', 'neutral', 'brand', 'destructive', 'icon']),
-	  tabindex: _react2['default'].PropTypes.string,
-	  disabled: _react2['default'].PropTypes.bool,
-	  inverse: _react2['default'].PropTypes.bool,
-	  hint: _react2['default'].PropTypes.bool,
-	  stateful: _react2['default'].PropTypes.bool,
-	  responsive: _react2['default'].PropTypes.bool,
-	  iconName: _react2['default'].PropTypes.string,
-	  iconVariant: _react2['default'].PropTypes.oneOf(['bare', 'container', 'border', 'border-filled', 'small', 'more']),
-	  iconSize: _react2['default'].PropTypes.oneOf(['x-small', 'small', 'medium', 'large']),
-	  iconPosition: _react2['default'].PropTypes.oneOf(['left', 'right']),
-	  onClick: _react2['default'].PropTypes.func
+	  label: _react2["default"].PropTypes.string.isRequired,
+	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon"]),
+	  tabindex: _react2["default"].PropTypes.string,
+	  disabled: _react2["default"].PropTypes.bool,
+	  inverse: _react2["default"].PropTypes.bool,
+	  hint: _react2["default"].PropTypes.bool,
+	  stateful: _react2["default"].PropTypes.bool,
+	  responsive: _react2["default"].PropTypes.bool,
+	  iconName: _react2["default"].PropTypes.string,
+	  iconVariant: _react2["default"].PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
+	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "medium", "large"]),
+	  iconPosition: _react2["default"].PropTypes.oneOf(["left", "right"]),
+	  onClick: _react2["default"].PropTypes.func
 	};
 	
 	module.exports = Button;
@@ -9321,14 +9338,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
-	/* global define */
 	
 	(function () {
 		'use strict';
 	
-		var hasOwn = {}.hasOwnProperty;
-	
 		function classNames () {
+	
 			var classes = '';
 	
 			for (var i = 0; i < arguments.length; i++) {
@@ -9337,13 +9352,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 				var argType = typeof arg;
 	
-				if (argType === 'string' || argType === 'number') {
+				if ('string' === argType || 'number' === argType) {
 					classes += ' ' + arg;
+	
 				} else if (Array.isArray(arg)) {
 					classes += ' ' + classNames.apply(null, arg);
-				} else if (argType === 'object') {
+	
+				} else if ('object' === argType) {
 					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
+						if (arg.hasOwnProperty(key) && arg[key]) {
 							classes += ' ' + key;
 						}
 					}
@@ -9355,14 +9372,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		if (typeof module !== 'undefined' && module.exports) {
 			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
+		} else if (true){
+			// AMD. Register as an anonymous module.
 			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
 			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			window.classNames = classNames;
 		}
+	
 	}());
 
 
@@ -9381,12 +9399,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	*/
 	
-	'use strict';
+	"use strict";
 	
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
 	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
 	    }
 	  }return function (Constructor, protoProps, staticProps) {
 	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
@@ -9397,13 +9415,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
-	    } else if ('value' in desc) {
+	    } else if ("value" in desc) {
 	      return desc.value;
 	    } else {
 	      var getter = desc.get;if (getter === undefined) {
@@ -9414,18 +9432,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
+	  return obj && obj.__esModule ? obj : { "default": obj };
 	}
 	
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError('Cannot call a class as a function');
+	    throw new TypeError("Cannot call a class as a function");
 	  }
 	}
 	
 	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== 'function' && superClass !== null) {
-	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
 	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
@@ -9433,31 +9451,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIconsJs = __webpack_require__(13);
-	
-	var classNames = __webpack_require__(69);
-	
 	var ButtonGroup = (function (_React$Component) {
 	  _inherits(ButtonGroup, _React$Component);
 	
 	  function ButtonGroup(props) {
 	    _classCallCheck(this, ButtonGroup);
 	
-	    _get(Object.getPrototypeOf(ButtonGroup.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(ButtonGroup.prototype), "constructor", this).call(this, props);
 	    this.state = {};
 	  }
 	
 	  _createClass(ButtonGroup, [{
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return _react2['default'].createElement('div', { className: 'slds-button-group', role: 'group' }, this.props.children);
+	      return _react2["default"].createElement("div", { className: "slds-button-group", role: "group" }, this.props.children);
 	    }
 	  }]);
 	
 	  return ButtonGroup;
-	})(_react2['default'].Component);
+	})(_react2["default"].Component);
 	
-	ButtonGroup.propTypes = {};
 	module.exports = ButtonGroup;
 
 /***/ },
@@ -9473,7 +9486,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	   */
 	
-	'use strict';
+	"use strict";
 	
 	var _extends = Object.assign || function (target) {
 	  for (var i = 1; i < arguments.length; i++) {
@@ -9488,7 +9501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
 	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
 	    }
 	  }return function (Constructor, protoProps, staticProps) {
 	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
@@ -9499,13 +9512,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
-	    } else if ('value' in desc) {
+	    } else if ("value" in desc) {
 	      return desc.value;
 	    } else {
 	      var getter = desc.get;if (getter === undefined) {
@@ -9516,18 +9529,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
+	  return obj && obj.__esModule ? obj : { "default": obj };
 	}
 	
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError('Cannot call a class as a function');
+	    throw new TypeError("Cannot call a class as a function");
 	  }
 	}
 	
 	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== 'function' && superClass !== null) {
-	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
 	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
@@ -9569,7 +9582,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var defaultFilter = function defaultFilter(term, item) {
 	  if (!term) return true;
-	  return item.label.match(new RegExp((0, _lodashEscaperegexp2['default'])(term), 'ig'));
+	  return item.label.match(new RegExp((0, _lodashEscaperegexp2["default"])(term), "ig"));
 	};
 	
 	var SLDSLookup = (function (_React$Component) {
@@ -9578,12 +9591,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function SLDSLookup(props) {
 	    _classCallCheck(this, SLDSLookup);
 	
-	    _get(Object.getPrototypeOf(SLDSLookup.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(SLDSLookup.prototype), "constructor", this).call(this, props);
 	
 	    //Dynamically assign ids to list items to reference for focusing and selecting items
 	
 	    this.state = {
-	      searchTerm: '',
+	      searchTerm: "",
 	      isOpen: false,
 	      currentFocus: null,
 	      focusIndex: null,
@@ -9594,38 +9607,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  _createClass(SLDSLookup, [{
-	    key: 'componentDidUpdate',
+	    key: "componentDidUpdate",
 	    value: function componentDidUpdate(prevProps, prevState) {
-	      var lookup = this.props.type + 'Lookup';
+	      var lookup = this.props.type + "Lookup";
 	      if (!isNaN(parseInt(prevState.selectedIndex)) && isNaN(parseInt(this.state.selectedIndex))) {
 	        if (this.refs[lookup]) {
-	          _react2['default'].findDOMNode(this.refs[lookup]).focus();
+	          _react2["default"].findDOMNode(this.refs[lookup]).focus();
 	        }
 	      } else if (isNaN(parseInt(prevState.selectedIndex)) && !isNaN(parseInt(this.state.selectedIndex))) {
-	        var selectedItem = 'pill-' + this.state.selectedIndex;
+	        var selectedItem = "pill-" + this.state.selectedIndex;
 	        if (this.refs[selectedItem]) {
-	          _react2['default'].findDOMNode(this.refs[selectedItem]).focus();
+	          _react2["default"].findDOMNode(this.refs[selectedItem]).focus();
 	        }
 	      }
 	    }
 	  }, {
-	    key: 'componentWillReceiveProps',
+	    key: "componentWillReceiveProps",
 	    value: function componentWillReceiveProps(newProps) {
 	      if (newProps.items) {
 	        this.modifyItems(newProps.items);
 	      }
 	    }
 	  }, {
-	    key: 'componentDidMount',
+	    key: "componentDidMount",
 	    value: function componentDidMount() {
 	      this.modifyItems(this.props.items);
 	    }
 	  }, {
-	    key: 'modifyItems',
+	    key: "modifyItems",
 	    value: function modifyItems(itemsToModify) {
 	      var items = itemsToModify.map(function (item, index) {
 	        return {
-	          id: 'item-' + index,
+	          id: "item-" + index,
 	          label: item.label,
 	          data: item
 	        };
@@ -9636,34 +9649,34 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    //=================================================
 	    // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
-	    // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
+	    // Need to keep track of filtered list length to be able to increment/decrement the focus index so it"s contained to the number of available list items.
 	    // Adding/subtracting 1 from focusIndex to account for fixed action items (searchRecords and addNewItem buttons)
 	  }, {
-	    key: 'increaseIndex',
+	    key: "increaseIndex",
 	    value: function increaseIndex() {
 	      var numFocusable = this.getNumFocusableItems();
 	      this.setState({ focusIndex: this.state.focusIndex < numFocusable - 1 ? this.state.focusIndex + 1 : 0 });
 	    }
 	  }, {
-	    key: 'decreaseIndex',
+	    key: "decreaseIndex",
 	    value: function decreaseIndex() {
 	      var numFocusable = this.getNumFocusableItems();
 	      this.setState({ focusIndex: this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable - 1 });
 	    }
 	  }, {
-	    key: 'setFocus',
+	    key: "setFocus",
 	    value: function setFocus(id) {
 	      this.setState({ currentFocus: id });
 	    }
 	  }, {
-	    key: 'getListLength',
+	    key: "getListLength",
 	    value: function getListLength(qty) {
 	      if (qty !== this.state.listLength) {
 	        this.setState({ listLength: qty });
 	      }
 	    }
 	  }, {
-	    key: 'getNumFocusableItems',
+	    key: "getNumFocusableItems",
 	    value: function getNumFocusableItems() {
 	      var offset = 0;
 	      if (this.refs.footer) {
@@ -9678,15 +9691,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //=================================================
 	    // Select menu item (onClick or on key enter/space)
 	  }, {
-	    key: 'selectItem',
+	    key: "selectItem",
 	    value: function selectItem(itemId) {
 	      if (itemId) {
-	        var index = itemId.replace('item-', '');
+	        var index = itemId.replace("item-", "");
 	        this.selectItemByIndex(index);
 	      }
 	    }
 	  }, {
-	    key: 'selectItemByIndex',
+	    key: "selectItemByIndex",
 	    value: function selectItemByIndex(index) {
 	      if (index >= 0 && index < this.state.items.length) {
 	        this.setState({
@@ -9700,7 +9713,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: 'handleDeleteSelected',
+	    key: "handleDeleteSelected",
 	    value: function handleDeleteSelected() {
 	      this.setState({
 	        selectedIndex: null,
@@ -9714,7 +9727,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //=================================================
 	    // Event Listeners on Input
 	  }, {
-	    key: 'handleClose',
+	    key: "handleClose",
 	    value: function handleClose() {
 	      this.setState({
 	        isOpen: false,
@@ -9723,7 +9736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  }, {
-	    key: 'handleCancel',
+	    key: "handleCancel",
 	    value: function handleCancel() {
 	      this.setState({
 	        isOpen: false,
@@ -9732,12 +9745,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  }, {
-	    key: 'handleClick',
+	    key: "handleClick",
 	    value: function handleClick() {
 	      this.setState({ isOpen: true });
 	    }
 	  }, {
-	    key: 'handleBlur',
+	    key: "handleBlur",
 	    value: function handleBlur(event) {
 	      this.handleClose();
 	      if (this.props.onBlur) {
@@ -9746,12 +9759,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: 'handleFocus',
+	    key: "handleFocus",
 	    value: function handleFocus() {
 	      this.setState({ isOpen: true });
 	    }
 	  }, {
-	    key: 'handleChange',
+	    key: "handleChange",
 	    value: function handleChange(event) {
 	      var target = event.target || event.currentTarget;
 	      this.setState({ searchTerm: target.value });
@@ -9760,7 +9773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: 'handleKeyDown',
+	    key: "handleKeyDown",
 	    value: function handleKeyDown(event) {
 	      if (event.keyCode) {
 	        //If user hits esc key, close menu
@@ -9782,11 +9795,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	              _utils.EventUtil.trapImmediate(event);
 	              //If the focus is on the first fixed Action Item in Menu, click it
 	              if (this.refs.header && this.state.focusIndex === 0) {
-	                _react2['default'].findDOMNode(this.refs.header).click();
+	                _react2["default"].findDOMNode(this.refs.header).click();
 	              }
 	              //If the focus is on the last fixed Action Item in Menu, click it
 	              else if (this.refs.footer && this.state.focusIndex === this.state.listLength + 1) {
-	                  _react2['default'].findDOMNode(this.refs.footer).click();
+	                  _react2["default"].findDOMNode(this.refs.footer).click();
 	                }
 	                //If not, then select menu item
 	                else {
@@ -9796,7 +9809,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: 'handlePillKeyDown',
+	    key: "handlePillKeyDown",
 	    value: function handlePillKeyDown(event) {
 	      if (event.keyCode) {
 	        if (event.keyCode === _utils.KEYS.DELETE || event.keyCode === _utils.KEYS.BACKSPACE) {
@@ -9806,20 +9819,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: 'getHeader',
+	    key: "getHeader",
 	    value: function getHeader() {
 	      if (this.props.headerRenderer) {
 	        var headerActive = false;
 	        var isActiveClass = null;
 	        if (this.state.focusIndex === 0) {
 	          headerActive = true;
-	          isActiveClass = 'slds-theme--shade';
+	          isActiveClass = "slds-theme--shade";
 	        } else {
 	          headerActive = false;
-	          isActiveClass = '';
+	          isActiveClass = "";
 	        }
 	        var Header = this.props.headerRenderer;
-	        return _react2['default'].createElement('div', { className: isActiveClass }, _react2['default'].createElement(Header, _extends({ ref: 'header' }, this.props, {
+	        return _react2["default"].createElement("div", { className: isActiveClass }, _react2["default"].createElement(Header, _extends({ ref: "header" }, this.props, {
 	          searchTerm: this.state.searchTerm,
 	          focusIndex: this.state.focusIndex,
 	          listLength: this.state.listLength,
@@ -9828,11 +9841,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: 'getFooter',
+	    key: "getFooter",
 	    value: function getFooter() {
 	      if (this.props.footerRenderer) {
 	        var Footer = this.props.footerRenderer;
-	        return _react2['default'].createElement(Footer, _extends({ ref: 'footer' }, this.props, {
+	        return _react2["default"].createElement(Footer, _extends({ ref: "footer" }, this.props, {
 	          focusIndex: this.state.focusIndex,
 	          listLength: this.state.listLength,
 	          onClose: this.handleClose.bind(this)
@@ -9843,10 +9856,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    //=================================================
 	    // Rendering Things
 	  }, {
-	    key: 'renderMenuContent',
+	    key: "renderMenuContent",
 	    value: function renderMenuContent() {
 	      if (this.state.isOpen) {
-	        return _react2['default'].createElement(_Menu2['default'], {
+	        return _react2["default"].createElement(_Menu2["default"], {
 	          searchTerm: this.state.searchTerm,
 	          label: this.props.label,
 	          type: this.props.type,
@@ -9870,65 +9883,65 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: 'renderSimpleMenu',
+	    key: "renderSimpleMenu",
 	    value: function renderSimpleMenu() {
 	      if (this.state.isOpen) {
-	        return _react2['default'].createElement('div', { className: 'ignore-react-onclickoutside slds-lookup__menu', role: 'listbox', ref: 'scroll' }, this.renderMenuContent());
+	        return _react2["default"].createElement("div", { className: "ignore-react-onclickoutside slds-lookup__menu", role: "listbox", ref: "scroll" }, this.renderMenuContent());
 	      }
 	    }
 	  }, {
-	    key: 'renderModalMenu',
+	    key: "renderModalMenu",
 	    value: function renderModalMenu() {
-	      var targetElem = this.props.type + 'Lookup';
+	      var targetElem = this.props.type + "Lookup";
 	      if (this.state.isOpen) {
-	        return _react2['default'].createElement(_SLDSPopover2['default'], {
-	          className: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
+	        return _react2["default"].createElement(_SLDSPopover2["default"], {
+	          className: "slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu",
 	          targetElement: this.refs[targetElem],
 	          closeOnTabKey: true,
 	          onClose: this.handleCancel.bind(this) }, this.renderMenuContent());
 	      }
 	    }
 	  }, {
-	    key: 'renderSelectedItem',
+	    key: "renderSelectedItem",
 	    value: function renderSelectedItem() {
 	      var selectedItem = this.props.items[this.state.selectedIndex].label;
-	      return _react2['default'].createElement('span', { tabIndex: '0', className: 'slds-pill', ref: 'pill-' + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2['default'].createElement('span', { className: 'slds-pill__label' }, _react2['default'].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: this.props.iconClasses }), selectedItem), _react2['default'].createElement(_SLDSButton2['default'], {
-	        label: 'Press delete to remove',
-	        tabIndex: '-1',
-	        variant: 'icon',
-	        iconName: 'close',
-	        iconSize: 'medium',
+	      return _react2["default"].createElement("span", { tabIndex: "0", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: this.props.iconClasses }), selectedItem), _react2["default"].createElement(_SLDSButton2["default"], {
+	        label: "Press delete to remove",
+	        tabIndex: "-1",
+	        variant: "icon",
+	        iconName: "close",
+	        iconSize: "medium",
 	        onClick: this.handleDeleteSelected.bind(this),
-	        ref: 'clearSelectedItemButton'
+	        ref: "clearSelectedItemButton"
 	      }));
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      var inputClasses = this.state.selectedIndex === null ? 'slds-input' : 'slds-input slds-hide';
+	      var inputClasses = this.state.selectedIndex === null ? "slds-input" : "slds-input slds-hide";
 	      var componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside" : "slds-lookup ignore-react-onclickoutside slds-has-selection";
 	
 	      var inputContainerClasses = {
-	        'slds-lookup__control': true,
-	        'slds-input-has-icon': true,
-	        'slds-input-has-icon--right': true,
-	        'slds-input': this.state.selectedIndex !== null,
-	        'slds-has-error': this.props.hasError
+	        "slds-lookup__control": true,
+	        "slds-input-has-icon": true,
+	        "slds-input-has-icon--right": true,
+	        "slds-input": this.state.selectedIndex !== null,
+	        "slds-has-error": this.props.hasError
 	      };
 	
-	      var inputContainerStyle = this.state.selectedIndex === null ? {} : { padding: '5px' };
-	      var inputLabel = this.props.label ? _react2['default'].createElement('label', { className: 'slds-form-element__label', htmlFor: this.props.type + "Lookup" }, this.props.label) : null;
+	      var inputContainerStyle = this.state.selectedIndex === null ? {} : { padding: "5px" };
+	      var inputLabel = this.props.label ? _react2["default"].createElement("label", { className: "slds-form-element__label", htmlFor: this.props.type + "Lookup" }, this.props.label) : null;
 	
-	      return _react2['default'].createElement('div', { className: componentClasses, 'data-select': 'multi', 'data-scope': 'single', 'data-typeahead': 'true' }, _react2['default'].createElement('section', { className: 'slds-form-element' }, inputLabel, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(inputContainerClasses), style: inputContainerStyle }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null, _react2['default'].createElement(_SLDSIcons.InputIcon, { name: 'search' }), _react2['default'].createElement('input', {
+	      return _react2["default"].createElement("div", { className: componentClasses, "data-select": "multi", "data-scope": "single", "data-typeahead": "true" }, _react2["default"].createElement("section", { className: "slds-form-element" }, inputLabel, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(inputContainerClasses), style: inputContainerStyle }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null, _react2["default"].createElement(_SLDSIcons.InputIcon, { name: "search" }), _react2["default"].createElement("input", {
 	        id: this.props.type + "Lookup",
 	        ref: this.props.type + "Lookup",
 	        className: inputClasses,
-	        type: 'text',
-	        'aria-haspopup': 'true',
-	        'aria-autocomplete': 'list',
-	        'aria-activedescendant': this.state.currentFocus ? this.state.currentFocus : "",
-	        'aria-expanded': this.state.isOpen,
-	        role: 'combobox',
+	        type: "text",
+	        "aria-haspopup": "true",
+	        "aria-autocomplete": "list",
+	        "aria-activedescendant": this.state.currentFocus ? this.state.currentFocus : "",
+	        "aria-expanded": this.state.isOpen,
+	        role: "combobox",
 	        onChange: this.handleChange.bind(this),
 	        onFocus: this.handleFocus.bind(this),
 	        onBlur: this.handleBlur.bind(this),
@@ -9940,27 +9953,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 	
 	  return SLDSLookup;
-	})(_react2['default'].Component);
+	})(_react2["default"].Component);
 	
 	SLDSLookup.propTypes = {
-	  items: _react2['default'].PropTypes.array,
-	  emptyMessage: _react2['default'].PropTypes.string,
-	  messages: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.string),
-	  errors: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.string),
-	  label: _react2['default'].PropTypes.string,
-	  type: _react2['default'].PropTypes.string,
-	  iconCategory: _react2['default'].PropTypes.string,
-	  iconName: _react2['default'].PropTypes.string,
-	  filterWith: _react2['default'].PropTypes.func,
-	  onItemSelect: _react2['default'].PropTypes.func,
-	  onItemUnselect: _react2['default'].PropTypes.func,
-	  onChange: _react2['default'].PropTypes.func,
-	  onBlur: _react2['default'].PropTypes.func,
-	  modal: _react2['default'].PropTypes.bool,
-	  disabled: _react2['default'].PropTypes.bool,
-	  hasError: _react2['default'].PropTypes.bool,
-	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
-	  listItemLabelRenderer: _react2['default'].PropTypes.func
+	  items: _react2["default"].PropTypes.array,
+	  emptyMessage: _react2["default"].PropTypes.string,
+	  messages: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
+	  errors: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
+	  label: _react2["default"].PropTypes.string,
+	  type: _react2["default"].PropTypes.string,
+	  iconCategory: _react2["default"].PropTypes.string,
+	  iconName: _react2["default"].PropTypes.string,
+	  filterWith: _react2["default"].PropTypes.func,
+	  onItemSelect: _react2["default"].PropTypes.func,
+	  onItemUnselect: _react2["default"].PropTypes.func,
+	  onChange: _react2["default"].PropTypes.func,
+	  onBlur: _react2["default"].PropTypes.func,
+	  modal: _react2["default"].PropTypes.bool,
+	  disabled: _react2["default"].PropTypes.bool,
+	  hasError: _react2["default"].PropTypes.bool,
+	  boldRegex: _react2["default"].PropTypes.instanceOf(RegExp),
+	  listItemLabelRenderer: _react2["default"].PropTypes.func
 	};
 	
 	SLDSLookup.defaultProps = {
@@ -9970,8 +9983,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	module.exports = SLDSLookup;
-	module.exports.DefaultHeader = _MenuDefaultHeader2['default'];
-	module.exports.DefaultFooter = _MenuDefaultFooter2['default'];
+	module.exports.DefaultHeader = _MenuDefaultHeader2["default"];
+	module.exports.DefaultFooter = _MenuDefaultFooter2["default"];
 
 /***/ },
 /* 72 */
@@ -10002,11 +10015,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10221,11 +10234,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10508,11 +10521,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10620,11 +10633,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10723,6 +10736,168 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SLDSPopover = __webpack_require__(3);
+	
+	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
+	
+	//import {KEYS,EventUtil} from '../utils';
+	//import omit from 'lodash.omit';
+	
+	var _classnames = __webpack_require__(69);
+	
+	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	module.exports = _react2['default'].createClass({
+	
+	  displayName: 'SLDSToolip',
+	
+	  propTypes: {
+	    align: _react.PropTypes.string,
+	    children: _react.PropTypes.node,
+	    content: _react.PropTypes.node,
+	    hoverCloseDelay: _react.PropTypes.number,
+	    openByDefault: _react.PropTypes.bool,
+	    openOn: _react.PropTypes.string
+	  },
+	
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      align: 'top',
+	      content: _react2['default'].createElement('span', null, 'Tooltip'),
+	      hoverCloseDelay: 350,
+	      openByDefault: false,
+	      openOn: 'hover'
+	    };
+	  },
+	
+	  getInitialState: function getInitialState() {
+	    return {
+	      isOpen: this.props.openByDefault,
+	      isClosing: false
+	    };
+	  },
+	
+	  componentDidMount: function componentDidMount() {},
+	
+	  handleMouseClick: function handleMouseClick(event) {
+	    this.setState({
+	      isOpen: !this.state.isOpen,
+	      isClosing: !this.state.isOpen
+	    });
+	  },
+	
+	  handleMouseEnter: function handleMouseEnter(event) {
+	    this.setState({
+	      isOpen: true,
+	      isClosing: false
+	    });
+	  },
+	
+	  handleMouseLeave: function handleMouseLeave(event) {
+	    var _this = this;
+	
+	    this.setState({ isClosing: true });
+	    setTimeout(function () {
+	      if (_this.isMounted && _this.state.isClosing) {
+	        _this.setState({
+	          isOpen: false,
+	          isClosing: false
+	        });
+	      }
+	    }, this.props.hoverCloseDelay);
+	  },
+	
+	  getTooltipContent: function getTooltipContent() {
+	    return _react2['default'].createElement('div', { className: 'slds-popover__body' }, this.props.content);
+	  },
+	
+	  getHorizontalAlign: function getHorizontalAlign() {
+	    if (this.props.align === 'left') {
+	      return 'left';
+	    } else if (this.props.align === 'right') {
+	      return 'right';
+	    }
+	    return 'center';
+	  },
+	
+	  getVerticalAlign: function getVerticalAlign() {
+	    if (this.props.align === 'bottom') {
+	      return 'bottom';
+	    } else if (this.props.align === 'top') {
+	      return 'top';
+	    }
+	    return 'middle';
+	  },
+	
+	  handleCancel: function handleCancel() {
+	    this.setState({
+	      isOpen: false,
+	      isClosing: false
+	    });
+	  },
+	
+	  getTooltip: function getTooltip() {
+	    var style = {
+	      'slds-popover': true,
+	      'slds-popover--tooltip': true,
+	      'slds-nubbin--top': this.props.align === 'bottom',
+	      'slds-nubbin--bottom': this.props.align === 'top',
+	      'slds-nubbin--left': this.props.align === 'right',
+	      'slds-nubbin--right': this.props.align === 'left'
+	    };
+	
+	    return this.state.isOpen ? _react2['default'].createElement(_SLDSPopover2['default'], {
+	      key: this.getHorizontalAlign() + ' ' + this.getVerticalAlign(),
+	      targetElement: this.refs.tooltipTarget,
+	      closeOnTabKey: true,
+	      className: '',
+	      marginTop: '1rem',
+	      marginBottom: '1rem',
+	      marginLeft: '1.5rem',
+	      marginRight: '1.5rem',
+	      horizontalAlign: this.getHorizontalAlign(),
+	      verticalAlign: this.getVerticalAlign(),
+	      flippable: false,
+	      onClose: this.handleCancel }, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(style) }, this.getTooltipContent())) : null;
+	  },
+	
+	  render: function render() {
+	    return _react2['default'].createElement('span', { refs: 'tooltipTarget', onClick: this.props.openOn === 'click' ? this.handleMouseClick : null, onMouseEnter: this.props.openOn === 'hover' ? this.handleMouseEnter : null, onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave : null }, this.props.children, this.getTooltip());
+	  }
+	
+	});
+
+/***/ },
+/* 79 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	'use strict';
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _defineProperty(obj, key, value) {
+	  if (key in obj) {
+	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+	  } else {
+	    obj[key] = value;
+	  }return obj;
 	}
 	
 	var _react = __webpack_require__(2);
@@ -10892,6 +11067,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return footer;
 	  },
 	
+	  renderTitle: function renderTitle(headingClasses) {
+	    if (this.props.title) {
+	      return _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(headingClasses) }, this.props.title);
+	    }
+	  },
+	
 	  renderTagline: function renderTagline() {
 	    if (this.props.tagline) {
 	      return _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline);
@@ -10899,27 +11080,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	  },
 	
 	  headerComponent: function headerComponent() {
-	    var headingClasses = [],
-	        headerClasses = ['slds-modal__header'];
-	    var closeButton = undefined;
+	    var _headerClass;
 	
-	    if (this.isPrompt()) {
-	      headerClasses.push('slds-theme--' + this.props.prompt);
-	      headerClasses.push('slds-theme--alert-texture');
-	      headingClasses.push('slds-text-heading--small');
+	    var header = undefined;
+	    var hasHeader = this.props.title;
+	
+	    var headerClass = (_headerClass = {}, _defineProperty(_headerClass, 'slds-modal__header', hasHeader), _defineProperty(_headerClass, 'slds-theme--' + this.props.prompt, this.isPrompt()), _defineProperty(_headerClass, 'slds-theme--alert-texture', this.isPrompt()), _headerClass);
+	
+	    var titleClass = {
+	      'slds-text-heading--small': this.isPrompt(),
+	      'slds-text-heading--medium': !this.isPrompt()
+	    };
+	
+	    if (hasHeader) {
+	      header = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass) }, this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null, _react2['default'].createElement(_SLDSButton2['default'], { label: 'Close', variant: 'icon', iconName: 'close', iconSize: 'large', inverse: true, className: 'slds-modal__close', onClick: this.closeModal }));
 	    } else {
-	      headingClasses.push('slds-text-heading--medium');
-	      closeButton = _react2['default'].createElement(_SLDSButton2['default'], {
-	        label: 'Close',
-	        variant: 'icon',
-	        iconName: 'close',
-	        iconSize: 'large',
-	        inverse: true,
-	        className: 'slds-modal__close',
-	        onClick: this.closeModal });
+	      header = _react2['default'].createElement('div', { style: { position: 'relative' } }, _react2['default'].createElement(_SLDSButton2['default'], { label: 'Close', variant: 'icon', iconName: 'close', iconSize: 'large', inverse: true, className: 'slds-modal__close', onClick: this.closeModal }));
 	    }
 	
-	    return _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClasses) }, this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(headingClasses) }, this.props.title), this.renderTagline(), closeButton);
+	    return header;
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
@@ -10947,7 +11126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10971,7 +11150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(6);
 	
-	var _index = __webpack_require__(78);
+	var _index = __webpack_require__(79);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -10991,7 +11170,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSModalTrigger;
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11005,12 +11184,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	*/
 	
-	'use strict';
+	"use strict";
 	
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
 	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
 	    }
 	  }return function (Constructor, protoProps, staticProps) {
 	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
@@ -11021,13 +11200,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
-	    } else if ('value' in desc) {
+	    } else if ("value" in desc) {
 	      return desc.value;
 	    } else {
 	      var getter = desc.get;if (getter === undefined) {
@@ -11038,7 +11217,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
+	  return obj && obj.__esModule ? obj : { "default": obj };
 	}
 	
 	function _defineProperty(obj, key, value) {
@@ -11051,13 +11230,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError('Cannot call a class as a function');
+	    throw new TypeError("Cannot call a class as a function");
 	  }
 	}
 	
 	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== 'function' && superClass !== null) {
-	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
 	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
@@ -11079,77 +11258,77 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function SLDSNotification(props) {
 	    _classCallCheck(this, SLDSNotification);
 	
-	    _get(Object.getPrototypeOf(SLDSNotification.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(SLDSNotification.prototype), "constructor", this).call(this, props);
 	    this.state = { isOpen: true };
 	  }
 	
 	  _createClass(SLDSNotification, [{
-	    key: 'renderIcon',
+	    key: "renderIcon",
 	    value: function renderIcon() {
 	      if (this.props.icon) {
-	        var classes = '';
-	        if (this.props.variant === 'alert') {
-	          classes = 'slds-m-right--x-small';
-	        } else if (this.props.variant === 'toast') {
-	          classes = 'slds-m-right--small slds-col slds-no-flex';
+	        var classes = "";
+	        if (this.props.variant === "alert") {
+	          classes = "slds-m-right--x-small";
+	        } else if (this.props.variant === "toast") {
+	          classes = "slds-m-right--small slds-col slds-no-flex";
 	        }
-	        return _react2['default'].createElement(_SLDSIcons.Icon, { category: 'utility', name: this.props.icon, size: 'small', className: classes });
+	        return _react2["default"].createElement(_SLDSIcons.Icon, { category: "utility", name: this.props.icon, size: "small", className: classes });
 	      }
 	    }
 	  }, {
-	    key: 'renderClose',
+	    key: "renderClose",
 	    value: function renderClose() {
 	      var that = this;
 	      if (this.props.dismissible) {
-	        var size = '';
-	        if (this.props.variant === 'alert') {
-	          size = 'medium';
-	        } else if (this.props.variant === 'toast') {
-	          size = 'large';
+	        var size = "";
+	        if (this.props.variant === "alert") {
+	          size = "medium";
+	        } else if (this.props.variant === "toast") {
+	          size = "large";
 	        }
-	        return _react2['default'].createElement(_SLDSButton2['default'], {
-	          label: 'Dismiss Notification',
-	          variant: 'icon',
-	          iconName: 'close',
+	        return _react2["default"].createElement(_SLDSButton2["default"], {
+	          label: "Dismiss Notification",
+	          variant: "icon",
+	          iconName: "close",
 	          iconSize: size,
 	          inverse: true,
-	          className: 'slds-button slds-notify__close',
+	          className: "slds-button slds-notify__close",
 	          onClick: that.onDismiss.bind(that)
 	        });
 	      }
 	    }
 	  }, {
-	    key: 'onDismiss',
+	    key: "onDismiss",
 	    value: function onDismiss() {
 	      if (this.props.onDismiss) this.props.onDismiss();
 	      this.setState({ isOpen: false });
 	    }
 	  }, {
-	    key: 'renderAlertContent',
+	    key: "renderAlertContent",
 	    value: function renderAlertContent() {
-	      if (this.props.variant === 'alert') {
-	        return _react2['default'].createElement('h2', null, this.renderIcon(), this.props.content);
+	      if (this.props.variant === "alert") {
+	        return _react2["default"].createElement("h2", null, this.renderIcon(), this.props.content);
 	      }
 	    }
 	  }, {
-	    key: 'renderToastContent',
+	    key: "renderToastContent",
 	    value: function renderToastContent() {
-	      if (this.props.variant === 'toast') {
-	        return _react2['default'].createElement('section', { className: 'notify__content slds-grid' }, this.renderIcon(), _react2['default'].createElement('div', { className: 'slds-col slds-align-middle' }, _react2['default'].createElement('h2', { className: 'slds-text-heading--small ' }, this.props.content)));
+	      if (this.props.variant === "toast") {
+	        return _react2["default"].createElement("section", { className: "notify__content slds-grid" }, this.renderIcon(), _react2["default"].createElement("div", { className: "slds-col slds-align-middle" }, _react2["default"].createElement("h2", { className: "slds-text-heading--small " }, this.props.content)));
 	      }
 	    }
 	  }, {
-	    key: 'getClassName',
+	    key: "getClassName",
 	    value: function getClassName() {
 	      var _classNames;
 	
-	      return classNames(this.props.className, 'slds-notify ', (_classNames = {}, _defineProperty(_classNames, 'slds-notify--' + this.props.variant, this.props.variant), _defineProperty(_classNames, 'slds-theme--' + this.props.theme, this.props.theme), _defineProperty(_classNames, 'slds-theme--alert-texture-animated', this.props.texture), _classNames));
+	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
 	      if (this.state.isOpen) {
-	        return _react2['default'].createElement('div', { className: 'slds-notify-container' }, _react2['default'].createElement('div', { className: this.getClassName(), role: 'alert' }, _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.theme), this.renderClose(), this.renderAlertContent(), this.renderToastContent()));
+	        return _react2["default"].createElement("div", { className: "slds-notify-container" }, _react2["default"].createElement("div", { className: this.getClassName(), role: "alert" }, _react2["default"].createElement("span", { className: "slds-assistive-text" }, this.props.theme), this.renderClose(), this.renderAlertContent(), this.renderToastContent()));
 	      } else {
 	        return null;
 	      }
@@ -11157,16 +11336,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 	
 	  return SLDSNotification;
-	})(_react2['default'].Component);
+	})(_react2["default"].Component);
 	
 	SLDSNotification.propTypes = {
-	  content: _react2['default'].PropTypes.node,
-	  icon: _react2['default'].PropTypes.string,
-	  variant: _react2['default'].PropTypes.oneOf(['alert', 'toast']),
-	  theme: _react2['default'].PropTypes.oneOf(['success', 'warning', 'error', 'offline']),
-	  texture: _react2['default'].PropTypes.bool,
-	  dismissible: _react2['default'].PropTypes.bool,
-	  onDismiss: _react2['default'].PropTypes.func
+	  content: _react2["default"].PropTypes.node,
+	  icon: _react2["default"].PropTypes.string,
+	  variant: _react2["default"].PropTypes.oneOf(["alert", "toast"]),
+	  theme: _react2["default"].PropTypes.oneOf(["success", "warning", "error", "offline"]),
+	  texture: _react2["default"].PropTypes.bool,
+	  dismissible: _react2["default"].PropTypes.bool,
+	  onDismiss: _react2["default"].PropTypes.func
 	};
 	
 	SLDSNotification.defaultProps = {
