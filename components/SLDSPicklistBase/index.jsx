@@ -83,7 +83,7 @@ module.exports = React.createClass( {
   getValueByIndex(index){
     const option = this.props.options[index];
     if(option){
-      return this.props.options[index].value;
+      return this.props.options[index];
     }
   },
 
