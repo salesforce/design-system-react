@@ -47,7 +47,7 @@ module.exports = React.createClass( {
               </PrismCode>
               <div className='slds-p-vertical--large'>
                 <div className='slds-input-has-icon slds-input-has-icon--left'>
-                  <Icon name='open_folder' category='utility' className='slds-input__icon slds-icon-text-default'/>
+                <Icon name='open_folder' category='utility' assistiveText='Files' className='slds-input__icon slds-icon-text-default'/>
                 </div>
               </div>
             </div>

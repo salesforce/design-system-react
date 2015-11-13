@@ -72,6 +72,7 @@ export const Icon = React.createClass({
         const name = this.props.name?this.props.name.replace(/_/g,'-'):'';
         const iconClassName = 'slds-icon-' + this.props.category + '-' + (this.props.theme || name);
         const styles = this.props.category === 'action'?{padding:'.5rem'}:null;
+        let label = null;
 
         let className  = 'slds-icon';
         if (this.props.stateful) {
@@ -86,8 +87,16 @@ export const Icon = React.createClass({
         if (this.props.position) {
             className += ' slds-icon--' + this.props.position;
         }
+        if (this.props.assistiveText) {
+          label = <span className="slds-assistive-text">{this.props.assistiveText}</span>;
+        }
         className = className + ' ' + iconClassName;
-        return <span className={'slds-icon__container '} style={styles}><SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} style={this.props.style}  /></span>;
+        return (
+        <span style={styles}>
+          {label}
+          <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} style={this.props.style}  />
+        </span>
+        );
     }
 
 });
