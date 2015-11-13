@@ -335,7 +335,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  getSimplePopover: function getSimplePopover() {
 	    return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement('div', {
-	      className: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
+	      className: 'slds-dropdown slds-dropdown--left slds-dropdown--menu',
 	      style: { maxHeight: '20em' } }, this.getPopoverContent()) : null;
 	  },
 	
@@ -357,20 +357,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      lastBlurredIndex: index,
 	      lastBlurredTimeStamp: Date.now()
 	    });
-	  },
-	
-	  render: function render() {
-	    return _react2['default'].createElement('div', { className: "slds-form-element slds-theme--" + this.props.theme }, _react2['default'].createElement('div', { className: "slds-picklist slds-theme--" + this.props.theme }, _react2['default'].createElement('button', {
-	      id: this.state.triggerId,
-	      ref: 'triggerbutton',
-	      className: 'slds-button slds-button--neutral slds-picklist__label ' + this.props.className,
-	      'aria-haspopup': 'true',
-	      onBlur: this.handleBlur,
-	      onFocus: this.handleFocus,
-	      onClick: this.handleClick,
-	      onMouseDown: this.handleMouseDown,
-	      tabIndex: this.state.isOpen ? -1 : 0,
-	      onKeyDown: this.handleKeyDown }, _react2['default'].createElement('span', { className: 'slds-truncate' }, this.getPlaceholder()), _react2['default'].createElement(_SLDSIcons2.Icon, { name: 'down', category: 'utility' })), this.props.modal ? this.getModalPopover() : this.getSimplePopover()));
 	  },
 	
 	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
@@ -398,6 +384,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (this.props.value !== prevProps.value) {
 	      this.handleSelect(this.getIndexByValue(this.props.value));
 	    }
+	  },
+	
+	  render: function render() {
+	    return _react2['default'].createElement('div', { className: 'slds-picklist', 'aria-expanded': this.state.isOpen }, _react2['default'].createElement('button', {
+	      id: this.state.triggerId,
+	      ref: 'triggerbutton',
+	      className: 'slds-button slds-button--neutral slds-picklist__label',
+	      'aria-haspopup': 'true',
+	      onBlur: this.handleBlur,
+	      onFocus: this.handleFocus,
+	      onClick: this.handleClick,
+	      onMouseDown: this.handleMouseDown,
+	      tabIndex: this.state.isOpen ? -1 : 0,
+	      onKeyDown: this.handleKeyDown }, _react2['default'].createElement('span', { className: 'slds-truncate' }, this.getPlaceholder()), _react2['default'].createElement(_SLDSIcons2.Icon, { name: 'down', category: 'utility' })), this.props.modal ? this.getModalPopover() : this.getSimplePopover());
 	  }
 	
 	});
@@ -3163,12 +3163,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  return {
 	    componentDidMount: function() {
-	      if(typeof this.handleClickOutside !== "function")
+	      if(!this.handleClickOutside)
 	        throw new Error("Component lacks a handleClickOutside(event) function for processing outside click events.");
 	
 	      var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
 	        return function(evt) {
-	          evt.stopPropagation();
 	          var source = evt.target;
 	          var found = false;
 	          // If source=local then this event came from "somewhere"
@@ -3223,7 +3222,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Can be called to explicitly disable event listening
 	     * for clicks and touches outside of this element.
 	     */
-	    disableOnClickOutside: function() {
+	    disableOnClickOutside: function(fn) {
 	      var fn = this.__outsideClickHandler;
 	      document.removeEventListener("mousedown", fn);
 	      document.removeEventListener("touchstart", fn);
@@ -3412,7 +3411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onMouseDown: this.handleMouseDown
 	    }, _react2["default"].createElement("ul", {
 	      ref: "scroll",
-	      className: "slds-dropdown__list slds-theme--" + this.props.theme,
+	      className: "slds-dropdown__list",
 	      role: "menu",
 	      "aria-labelledby": this.props.triggerId }, this.getItems()));
 	  },
@@ -3514,6 +3513,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
 	        var iconClassName = 'slds-icon-' + this.props.category + '-' + (this.props.theme || name);
 	        var styles = this.props.category === 'action' ? { padding: '.5rem' } : null;
+	        var label = null;
 	
 	        var className = 'slds-icon';
 	        if (this.props.stateful) {
@@ -3528,8 +3528,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.props.position) {
 	            className += ' slds-icon--' + this.props.position;
 	        }
+	        if (this.props.assistiveText) {
+	            label = _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.assistiveText);
+	        }
 	        className = className + ' ' + iconClassName;
-	        return _react2['default'].createElement('span', { className: 'slds-icon__container ', style: styles }, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className, style: this.props.style }));
+	        return _react2['default'].createElement('span', { style: styles }, label, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className, style: this.props.style }));
 	    }
 	
 	});
@@ -6484,7 +6487,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  render: function render() {
 	    return _react2['default'].createElement('li', {
-	      className: "slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--" + this.props.theme,
+	      className: 'slds-dropdown__item slds-has-icon slds-has-icon--left',
 	      onMouseDown: this.handleMouseDown,
 	      tabIndex: -1 }, _react2['default'].createElement('a', { id: 'menu-0-' + this.props.index,
 	      href: '',
@@ -7399,11 +7402,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -9339,14 +9342,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
-	/* global define */
 	
 	(function () {
 		'use strict';
 	
-		var hasOwn = {}.hasOwnProperty;
-	
 		function classNames () {
+	
 			var classes = '';
 	
 			for (var i = 0; i < arguments.length; i++) {
@@ -9355,13 +9356,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 				var argType = typeof arg;
 	
-				if (argType === 'string' || argType === 'number') {
+				if ('string' === argType || 'number' === argType) {
 					classes += ' ' + arg;
+	
 				} else if (Array.isArray(arg)) {
 					classes += ' ' + classNames.apply(null, arg);
-				} else if (argType === 'object') {
+	
+				} else if ('object' === argType) {
 					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
+						if (arg.hasOwnProperty(key) && arg[key]) {
 							classes += ' ' + key;
 						}
 					}
@@ -9373,14 +9376,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		if (typeof module !== 'undefined' && module.exports) {
 			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
+		} else if (true){
+			// AMD. Register as an anonymous module.
 			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
 			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			window.classNames = classNames;
 		}
+	
 	}());
 
 
@@ -9415,11 +9419,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -9512,11 +9516,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -10015,11 +10019,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10234,11 +10238,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10521,11 +10525,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10633,11 +10637,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -11200,11 +11204,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
