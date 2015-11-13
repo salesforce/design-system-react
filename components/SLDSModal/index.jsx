@@ -13,7 +13,6 @@ import React from 'react';
 import SLDSButton from '../SLDSButton';
 import cx from 'classnames';
 
-
 import Modal from 'react-modal';
 
 const customStyles = {
@@ -187,6 +186,8 @@ module.exports = React.createClass( {
     const modalClass = {
       'slds-modal': true,
       'slds-fade-in-open': this.state.revealed,
+      'slds-motion--fade-in-rise': this.state.revealed,
+      'slds-motion--fade-out-fall': !this.state.revealed,
       'slds-modal--large': this.props.size === 'large',
       'slds-modal--prompt': this.isPrompt(),
     };
@@ -202,7 +203,7 @@ module.exports = React.createClass( {
             {this.footerComponent()}
           </div>
         </div>
-        <div style={{pointerEvents: 'inherit'}} className="slds-backdrop slds-backdrop--open" onClick={this.isPrompt() ? undefined : this.closeModal}></div>
+        <div style={{pointerEvents: 'inherit'}} className="slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly" onClick={this.isPrompt() ? undefined : this.closeModal}></div>
       </div>
     )
   },
