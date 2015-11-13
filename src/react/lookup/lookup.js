@@ -73,47 +73,60 @@ let Lookup = Lib.merge({}, LookupCore, {
 	getDefaultProps () {
 		return DefaultRenderers;
 	},
-	
+
+	// If no selection has been made this does nothing, but we don't want docus to abruptly jump to the control if it renders with something pre-selected so on initial state we set the value of `autoFocusOnNewSelectedItems` to `false`. After a selection has been made this can be set to true. Note that this process may need to be updated in the future to work for multiple selected items.
 	getInitialState () {
 		return {
 			autoFocusOnNewSelectedItems: false
 		};
 	},
 
+	// While `this._collection` is always kept in sync with `this.props.collection`, `this._filteredCollection` may contain only subset of those items based on the current search value. It's important to populate the filtered collection on initial load as well as every time there is a change to the collection. The collection of items which can be reached via keyboard navigation also needs to be kept up-to-date so that it reflects the current filtered collection. Both of the functions called here live in the core.
+	/* TODO: Possibly move these both to state. */
 	componentWillMount () {
 		this._filteredCollection = this._getFilteredCollection(this._collection, this.state.searchString);
 		this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
 	},
-	
+
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.collection) this._filteredCollection = this._getFilteredCollection(this._collection, this.state.searchString);
 		this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
+		
+		// Right now we simply update `this.state.autoFocusOnNewSelectedItems` to `true` after initial load so that a selection (pill) will be focused immediately.
 		this.setState({
 			autoFocusOnNewSelectedItems: true
 		});
 	},
 
+	// While some functionality moves into the core or traits, each facade typically provides its own rendering logic so that it can take advantage of the benefits offered by the framework and maintain appropriate patterns for that framework.
 	render () {
+		// Get ids for individual child controls based on the id that was given to the lookup or the one that was auto-generated for it.
 		const inputId = this._getInputId();
 		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
+		
+		// Get the current selection (wrapped in a data adapter) and set a boolean based on whether it contains any items.
 		const selectedItems = this._getSelectedItems();
 		const hasSelection = selectedItems.length() > 0;
-		let pills;
+
+		// The menu header can be hidden by passing `false` to `this.props.menuHeaderRenderer`. The scaffolding needed for accessibility and display of the header is defined by the `Action` child control, but the contents of the control may vary based on the renderer passed in. If a render function (that returns React elements) is passed into the props that will be used to render the header, otherwise it will render the default renderer.
 		let header;
-		let footer;
-		
 		if (Lib.isFunction(this.props.menuHeaderRenderer)) {
 			header = <Action id={this._getMenuItemId('header')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuHeaderRenderer} searchString={this.state.searchString} strings={this.state.strings} />;
 		}
-		
+
+		// The menu footer works much the same as the menu header and even receives the same options.
+		let footer;
 		if (Lib.isFunction(this.props.menuFooterRenderer)) {
 			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} onClick={this.props.onAddClick} />;
 		}
-		
+
+		// Unlike the header and footer, the pills will always be rendered if there is a selection and there is no option to disable them by passing false to `this.props.pillRenderer`. However, it is still possible to override the contents of the pills by passing in a custom render function.
+		let pills;
 		if (hasSelection) {
 			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems}/>;
 		}
 		
+		// This markup should reflect the design system pattern for the control.
 		return (
 		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true">
 			<div className="slds-form-element">
@@ -132,63 +145,73 @@ let Lookup = Lib.merge({}, LookupCore, {
 		</div>
 		);
 	},
-	
+
+	// After the control has rendered, we may need to scroll the currently selected menu item into view. The function which actually peforms the scrolling lives in the core.
 	componentDidUpdate () {
 		this._scrollMenuItems();
-		
-		/* TODO: It'd be nice if we could get rid of these two booleans eventually. */
-		if (this._focusOnPills) {
-			this._focusOnPills = false;
-		} else if (this._focusOnInput) {
+
+		// After an item has been deselected we need to return the focus to the input element.
+		/* TODO: It'd be nice if we could get rid of this boolean eventually. */
+		if (this._focusOnInput) {
 			this.elements.input.focus();
 			this._focusOnInput = false;
 		}
 	},
-	
+
+	// Save a reference to the input element after it renders. This is primarily used for setting focus.
 	_setInputRef (input) {
 		this.elements.input = ReactDOM.findDOMNode(input);
 	},
-	
+
+	// Save a reference to the menu element after it renders so that we can modify the scroll position in `this._scrollMenuItems` if we need to.
 	_setMenuRef (menu) {
 		this.elements.menu = ReactDOM.findDOMNode(menu);
 	},
-	
+
+	// Update the search string when the value of the input changes.
 	_handleChanged (e) {
 		this.search(e.target.value);
 	},
-	
+
+	// Clicking on the input should open the menu.
 	_handleClicked (e) {
 		if (e) {
+			// The input should automatically close if we click anywhere outside of it, so we need to flag the events that originate at the control itself and stop them from closing it.
 			e.nativeEvent.originator = this;
 		}
 		
 		this.open();
 	},
-	
+
+	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
 	_handleDeselect (item) {
 		if (item) {
 			this._deselectItem(item);
-			if (!this.props.multiSelect) {
-				this._focusOnInput = true;
-			}
-		} else if (!item) {
+		} else {
 			this.deselectAll();
+		}
+	},
+
+	// After the last item has been removed from the selection the focus should return to the input. We have to set a flag for this here, but the actual focus can't occur until after render.
+	_onDeselected (selection) {
+		if (selection.length() <= 0) {
 			this._focusOnInput = true;
 		}
 	},
 
+	// Trap up and down arrow, escape, and enter keypresses and send them to the [keyboard navigable trait](../../traits/keyboard-navigable.html). This makes it easy to add accessibility features to controls where the keyboard should be used to navigate through a collection of items. Hitting enter will select the item while hitting escape will close the menu.
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
 			this._keyboardNav(e.key, this._keyboardSelect);
+		// Also listen for character key presses an ensure that the menu it open while typing in the input, but don't actually trap them.
 		} else if (e.key.length === 1) {
 			if (!this.state.isOpen) this.open();
-			this.elements.input.focus();
 		}
 	}
 });
 
-// `Helpers` are a feature of Facades that allows anyone to register code that can manipulate the control before it is encapsulated in a React class. This allows flexibility for adding custom behavior without modifying the original source, or for adding optional behavior. For example, the jQuery facade uses this mechanism to optionally create jQuery plugin versions of each control.
+// `Helpers` are a feature of Facades that allows anyone to register code that can manipulate the control before it is encapsulated in a React class. This allows flexibility for adding custom behavior without modifying the original source, or for adding optional behavior. For example, the jQuery facade uses this mechanism to optionally create jQuery plugin versions of each control. Nothing in the control itself should ever depend on the presence of helpers, as they are completely optional.
 Lookup = Lib.runHelpers('react', CONTROL, Lookup);
 
 // Once everything has been merged together and all registered helpers have been run we can create the React class and export the result for consumption by our apps.
