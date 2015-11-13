@@ -14,17 +14,26 @@ const ModalCore = Lib.merge({}, Base, {
 		CONTROL: CONTROL,
 		CLOSE: 'slds-modal__close',
 		CONTENT: 'slds-modal__content',
+		HEADER: 'slds-modal__header',
 		MODAL: 'slds-modal',
 		OPEN: 'slds-fade-in-open',
 		OPENBACKDROP: 'slds-modal-backdrop--open',
 		PRIMARYBTN: 'slds-button--brand'
 	},
 
+	headerTextSize: {
+		'small': 'slds-text-heading--small',
+		'medium': 'slds-text-heading--medium',
+		'large': 'slds-text-heading--large'
+	},
+
 	// Set the defaults
 	_defaultProperties: {
+		header: 'Modal Header',
+		headerTextSize: 'medium',
 		isOpen: false,
-		primaryBtnText: 'Save',
-		secondaryBtnText: 'Cancel'
+		primaryButtonText: 'Save',
+		secondaryButtonText: 'Cancel'
 	}
 
 });

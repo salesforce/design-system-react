@@ -11,6 +11,9 @@ import State from '../state';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// children
+import Button from '../button/button';
+
 // Template imports
 import template from './modal-template';
 
@@ -30,26 +33,54 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	},
 
 	_initElements () {
+		const strings = this.getState('strings');
+
 		this.elements.modal = this.element.find('.' + this.cssClasses.MODAL);
+		this.elements.header = this.element.find('.' + this.cssClasses.HEADER);
 		this.elements.backdrop = this.element.find('.' + this.cssClasses.BACKDROP);
-		this.elements.close = this.element.find('.' + this.cssClasses.CLOSE);
-		this.elements.primaryBtn = this.element.find('.' + this.cssClasses.PRIMARYBTN);
-		this.elements.secondaryBtn = this.element.find('.slds-button--neutral:eq(0)');
+
+		this.closeButton = new Button({
+			assistiveText: strings.CLOSE,
+			icon: 'utility.close',
+			iconSize: 'large',
+			iconStyle: 'icon-inverse'
+		});
+		this.closeButton.element.addClass(this.cssClasses.CLOSE);
+		this.closeButton.replaceAll(this.elements.modal.find('x-close-button')[0]);
+
+		this.secondaryButton = new Button({
+			theme: 'neutral'
+		});
+		this.secondaryButton.replaceAll(this.elements.modal.find('x-secondary-button')[0]);
+
+		this.primaryButton = new Button({
+			theme: 'brand'
+		});
+		this.primaryButton.replaceAll(this.elements.modal.find('x-primary-button')[0]);
 	},
 
 	_bindUIEvents () {
-		this.elements.close.on('click', $.proxy(this.close, this));
-		this.elements.secondaryBtn.on('click', $.proxy(this._onSecondaryClicked, this));
-		this.elements.primaryBtn.on('click', $.proxy(this._onPrimaryClicked, this));
+		this.closeButton.on('click', $.proxy(this.close, this));
+		this.secondaryButton.on('click', $.proxy(this._onSecondaryClicked, this));
+		this.primaryButton.on('click', $.proxy(this._onPrimaryClicked, this));
 	},
 
 	_render () {
-		const secondaryText = this.getProperty('secondaryBtnText');
-		const primaryText = this.getProperty('primaryBtnText');
+		const secondaryText = this.getProperty('secondaryButtonText');
+		const primaryText = this.getProperty('primaryButtonText');
 		const $content = this.elements.wrapper.contents().detach();
+		const $headerText = this.elements.header.find('h2');
+		$headerText.addClass(this.headerTextSize[this.getProperty('headerTextSize')]);
+		$headerText.text(this.getProperty('headerText'));
 
-		this.elements.secondaryBtn.html(secondaryText);
-		this.elements.primaryBtn.html(primaryText);
+		this.secondaryButton.renderView({
+			text: secondaryText
+		});
+
+		this.primaryButton.renderView({
+			text: primaryText
+		});
+
 		this.element.find('.' + this.cssClasses.CONTENT).append($content);
 
 		return this.element;

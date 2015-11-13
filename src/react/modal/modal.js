@@ -12,7 +12,7 @@ import Events from '../mixins/events';
 import classNames from 'classnames';
 
 // Children
-import Svg from '../svg/svg';
+import Button from '../button/button';
 
 export const ModalObject = {
 	mixins: [Events],
@@ -21,8 +21,10 @@ export const ModalObject = {
 	
 	propTypes: {
 		isOpen: React.PropTypes.bool,
-		secondaryBtnText: React.PropTypes.string,
-		primaryBtnText: React.PropTypes.string,
+		headerText: React.PropTypes.string,
+		headerTextSize: React.PropTypes.string,
+		primaryButtonText: React.PropTypes.string,
+		secondaryButtonText: React.PropTypes.string,
 		onClose: React.PropTypes.func,
 		onCancel: React.PropTypes.func,
 		onAction: React.PropTypes.func
@@ -31,21 +33,35 @@ export const ModalObject = {
 	render () {
 		return (
 			<div>
-				<div aria-hidden="false" role="dialog" className={classNames(this.cssClasses.MODAL, {'slds-fade-in-open': this.props.isOpen} )} onClick={this._onBackgroundClick} ref="background">
+				<div
+					aria-hidden="false"
+					role="dialog"
+					className={classNames(this.cssClasses.MODAL, {'slds-fade-in-open': this.props.isOpen} )}
+					onClick={this._onBackgroundClick}
+					ref="background">
 					<div className="slds-modal__container" ref="modal">
 						<div className="slds-modal__header">
-							<h2 className="slds-text-heading--medium">Modal Header</h2>
-							<button className="slds-button slds-button--icon-inverse slds-modal__close" onClick={this._onCloseClick}>
-								<Svg className="slds-button__icon slds-button__icon--large" icon="utility.close" />
-								<span className="slds-assistive-text">Close</span>
-							</button>
+							<h2 className={this.headerTextSize[this.props.headerTextSize]}>{this.props.headerText}</h2>
+							<Button
+								assistiveText="Close"
+								className="slds-modal__close"
+								icon="utility.close"
+								iconSize="large"
+								iconStyle="icon-inverse"
+								onClick={this._onCloseClick}/>
 						</div>
 						<div className="slds-modal__content">
 							{this.props.children}
 						</div>
 						<div className="slds-modal__footer">
-							<button className="slds-button slds-button--neutral" onClick={this._onCancelClick}>{this.props.secondaryBtnText}</button>
-							<button className="slds-button slds-button--neutral slds-button--brand" onClick={this._onPrimaryClick}>{this.props.primaryBtnText}</button>
+							<Button
+								text={this.props.secondaryButtonText}
+								theme="neutral"
+								onClick={this._onCancelClick}/>
+							<Button
+								text={this.props.primaryButtonText}
+								theme="brand"
+								onClick={this._onPrimaryClick}/>
 						</div>
 					</div>
 				</div>
