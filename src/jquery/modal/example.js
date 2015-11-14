@@ -5,8 +5,10 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	const modal = new Modal($('#modal-jquery-control'), {
-		headerTitle: 'jQuery Modal',
-		headerTagline: 'Look how awesome it is'
+		headerText: 'Modal Header',
+		headerTextSize: 'medium',
+		secondaryButtonText: 'Cancel',
+		primaryButtonText: 'Save'
 	});
 
 	modal.on('primary', function () {

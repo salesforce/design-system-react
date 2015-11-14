@@ -14,12 +14,13 @@ export default function () {
 			return (
 				<div>
 					<Modal
+						headerText="Modal Header"
 						isOpen={this.state.isOpen}
 						onClose={this.onClose}
 						onCancel={this.onCancel}
 						onPrimary={this.onPrimary}
-						primaryBtnText={'Save Test'}
-						secondaryBtnText={'Cancel'}
+						primaryButtonText={'Save Test'}
+						secondaryButtonText={'Cancel'}
 						headerTitle={'React Modal'}
 						headerTagline={<span>look what I can <a href="https://c2.staticflickr.com/4/3122/2850356021_eb4d1d9c4c.jpg">do</a></span>}>
 						<p>This is a test modal!</p>

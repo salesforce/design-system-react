@@ -13,6 +13,8 @@ import classNames from 'classnames';
 
 // Provides the default renderers for the header, and the footer.
 import DefaultRenderers from './modal-default-renderers';
+// Children
+import Button from '../button/button';
 
 export const ModalObject = {
 	mixins: [Events],
@@ -21,8 +23,10 @@ export const ModalObject = {
 	
 	propTypes: {
 		isOpen: React.PropTypes.bool,
-		secondaryBtnText: React.PropTypes.string,
-		primaryBtnText: React.PropTypes.string,
+		headerText: React.PropTypes.string,
+		headerTextSize: React.PropTypes.string,
+		primaryButtonText: React.PropTypes.string,
+		secondaryButtonText: React.PropTypes.string,
 		onClose: React.PropTypes.func,
 		onCancel: React.PropTypes.func,
 		onAction: React.PropTypes.func,

@@ -11,6 +11,9 @@ import State from '../state';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// children
+import Button from '../button/button';
+
 // Template imports
 import template from './modal-template';
 
@@ -35,7 +38,10 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	},
 
 	_initElements () {
+		const strings = this.getState('strings');
+
 		this.elements.modal = this.element.find('.' + this.cssClasses.MODAL);
+		this.elements.header = this.element.find('.' + this.cssClasses.HEADER);
 		this.elements.backdrop = this.element.find('.' + this.cssClasses.BACKDROP);
 	},
 
@@ -46,6 +52,9 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	_render () {
 		const props = this.getProperties();
 		const $content = this.elements.wrapper.contents().detach();
+		const $headerText = this.elements.header.find('h2');
+		$headerText.addClass(this.headerTextSize[this.getProperty('headerTextSize')]);
+		$headerText.text(this.getProperty('headerText'));
 
 		this.element.find('.' + this.cssClasses.HEAD).append(props.renderHeader({
 			headerTitle: props.headerTitle,
