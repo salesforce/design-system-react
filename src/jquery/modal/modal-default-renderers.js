@@ -3,21 +3,30 @@ import * as Lib from '../../lib/lib';
 import headTemplate from './modal-head-default-template';
 import footTemplate from './modal-foot-default-template';
 
+import Button from '../button/button';
+
 const $ = Lib.global.jQuery || Lib.global.$;
 
 module.exports = {
 	renderHeader (options) {
 		const $headTemplate = $(headTemplate);
+		const closeButton = new Button({
+			assistiveText: options.closeClicked,
+			icon: 'utility.close',
+			iconSize: 'large',
+			iconStyle: 'icon-inverse'
+		});
 
-		$headTemplate.on('click.slds-modal__close', options.closeClicked);
+		$headTemplate.append(closeButton.$el.addClass('slds-modal__close'));
+		closeButton.on('click', options.closeClicked);
 
-		$headTemplate.find('.slds-text-heading--medium')
+		$headTemplate.find('.slds-text-heading--' + options.headerTextSize)
 			.html(options.headerTitle);
 
 		$headTemplate.find('.slds-m-top--x-small')
 			.html(options.headerTagline);
 
-		return $headTemplate;
+		return $headTemplate.children();
 	},
 
 	renderFooter (options) {

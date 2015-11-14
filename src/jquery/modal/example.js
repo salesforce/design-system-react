@@ -6,6 +6,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 $(function () {
 	const modal = new Modal($('#modal-jquery-control'), {
 		headerText: 'Modal Header',
+		headerTagline: 'This is a tagline',
 		headerTextSize: 'medium',
 		secondaryButtonText: 'Cancel',
 		primaryButtonText: 'Save'

@@ -13,8 +13,6 @@ import classNames from 'classnames';
 
 // Provides the default renderers for the header, and the footer.
 import DefaultRenderers from './modal-default-renderers';
-// Children
-import Button from '../button/button';
 
 export const ModalObject = {
 	mixins: [Events],
@@ -50,8 +48,8 @@ export const ModalObject = {
 						{this.props.renderFooter({
 							onPrimaryClick: this._onPrimaryClick,
 							onSecondaryClick: this._onSecondaryClick,
-							secondaryBtnText: this.props.secondaryBtnText,
-							primaryBtnText: this.props.primaryBtnText
+							secondaryButtonText: this.props.secondaryButtonText,
+							primaryButtonText: this.props.primaryButtonText
 						})}
 					</div>
 				</div>
