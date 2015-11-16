@@ -37,20 +37,24 @@ export const ModalObject = {
 			<div>
 				<div aria-hidden="false" role="dialog" className={classNames(this.cssClasses.MODAL, {'slds-fade-in-open': this.props.isOpen} )} onClick={this._onBackgroundClick} ref="background">
 					<div className={this.cssClasses.MODALCONTAINER} ref="modal">
-						{this.props.renderHeader({
-							onCloseClick: this._onCloseClick,
-							headerTitle: this.props.headerTitle,
-							headerTagline: this.props.headerTagline
-						})}
+						<div className="slds-modal__header">
+							{this.props.renderHeader({
+								onCloseClick: this._onCloseClick,
+								headerTitle: this.props.headerTitle,
+								headerTagline: this.props.headerTagline
+							})}
+						</div>
 						<div className="slds-modal__content">
 							{this.props.children}
 						</div>
-						{this.props.renderFooter({
-							onPrimaryClick: this._onPrimaryClick,
-							onSecondaryClick: this._onSecondaryClick,
-							secondaryButtonText: this.props.secondaryButtonText,
-							primaryButtonText: this.props.primaryButtonText
-						})}
+						<div className="slds-modal__footer">
+							{this.props.renderFooter({
+								onPrimaryClick: this._onPrimaryClick,
+								onSecondaryClick: this._onSecondaryClick,
+								secondaryButtonText: this.props.secondaryButtonText,
+								primaryButtonText: this.props.primaryButtonText
+							})}
+						</div>
 					</div>
 				</div>
 				<div className={classNames('slds-modal-backdrop', {'slds-modal-backdrop--open': this.props.isOpen} )}></div>

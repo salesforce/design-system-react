@@ -6,7 +6,7 @@ import Button from '../button/button';
 module.exports = {
 	renderHeader (options) {
 		return (
-			<div className="slds-modal__header">
+			<div>
 				<h2 className="slds-text-heading--medium">{options.headerTitle}</h2>
 				<p className="slds-m-top--x-small">{options.headerTagline}</p>
 				<Button
@@ -22,7 +22,7 @@ module.exports = {
 
 	renderFooter (options) {
 		return (
-			<div className="slds-modal__footer">
+			<div>
 				<Button
 					text={options.secondaryButtonText}
 					theme="neutral"

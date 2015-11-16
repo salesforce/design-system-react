@@ -29,9 +29,11 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 
-		this.setProperties(DefaultRenderers);
-
 		this._initElements();
+	},
+
+	_setDefaultProperties () {
+		this.setProperties(DefaultRenderers);
 	},
 
 	_initElements () {
@@ -45,22 +47,21 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	},
 
 	_render () {
-		const props = this.getProperties();
 		const $content = this.elements.wrapper.contents().detach();
 		const $headerText = this.elements.header.find('h2');
 		$headerText.addClass(this.headerTextSize[this.getProperty('headerTextSize')]);
 		$headerText.text(this.getProperty('headerText'));
 
-		this.element.find('.' + this.cssClasses.HEAD).append(props.renderHeader({
-			headerTitle: props.headerText,
-			headerTextSize: props.headerTextSize,
-			headerTagline: props.headerTagline,
+		this.element.find('.' + this.cssClasses.HEAD).append(this._props.renderHeader({
+			headerTitle: this._props.headerText,
+			headerTextSize: this._props.headerTextSize,
+			headerTagline: this._props.headerTagline,
 			closeClicked: $.proxy(this.close, this)
 		}));
 
-		this.element.find('.' + this.cssClasses.FOOT).append(props.renderFooter({
-			primaryText: props.primaryButtonText,
-			secondaryText: props.secondaryButtonText,
+		this.element.find('.' + this.cssClasses.FOOT).append(this._props.renderFooter({
+			primaryText: this._props.primaryButtonText,
+			secondaryText: this._props.secondaryButtonText,
 			primaryClicked: $.proxy(this._onPrimaryClicked, this),
 			secondaryClicked: $.proxy(this._onSecondaryClicked, this)
 		}));

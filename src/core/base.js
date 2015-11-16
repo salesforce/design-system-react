@@ -36,6 +36,8 @@ const Base = {
 			delete options.accessors;
 		}
 
+		if (Lib.isFunction(this._setDefaultProperties)) this._setDefaultProperties();
+
 		// Set the current value of the props based on the options passed in. After this point the options are no longer available and any future code should reference only the props.
 		this.setProperties(options);
 
