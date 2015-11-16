@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>React</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fav icons -->
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+    <!-- dependencies -->
+    <link href="/assets/design-system/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/prism/themes/prism.css" rel="stylesheet" type="text/css">
+    <link href="/assets/site/styles/examples.css" rel="stylesheet" type="text/css">
+    <script src="vendor/prism/prism.js"></script>
+    <script src="vendor/require/require.js"></script>
+    <script>
+        requirejs.config({
+            baseUrl: '',
+            paths: {
+                'react': 'vendor/react/react.min',
+                'react-dom': 'vendor/react/react-dom.min',
+                'react-facade': 'dist/react'
+            },
+            shim: {
+                'react-facade': {
+                    deps: ['react', 'react-dom']
+                }
+            }
+        });
+        require(['react', 'react-dom', 'react-facade'], function (React, ReactDOM, facades) {
+            // badge
+            {{> react/examples/badge }}
+
+
+            // picklist
+            {{> react/examples/picklist }}
+
+        });
+    </script>
+</head>
+<body>
+<header class="site-masthead slds-page-header">
+    <div class="slds-grid">
+        <div class="slds-col slds-align-middle" >
+            <div class="slds-media slds-media--center" style="height:5rem;">
+                <div class="slds-media__figure">
+                    <span class="slds-icon__container slds-icon-action-fallback" style="padding:0.5rem;">
+                        <svg aria-hidden="true" class="slds-icon slds-icon-action-fallback">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/design-system/icons/action-sprite/svg/symbols.svg#fallback"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="slds-media__body site-title">React Components</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="slds-grid slds-m-top--medium">
+    <div class="slds-col slds-col--padded">
+
+        <!-- badge -->
+        <div class="slds-box">
+            <div class="slds-text-heading--label">Badge</div>
+            <div id="badge"></div>
+            <pre><code class="language-javascript">{{> react/examples/badge }}</code></pre>
+        </div>
+
+        <!-- picklist -->
+        <div class="slds-box">
+            <div class="slds-text-heading--label">Picklist</div>
+            <div id="picklist"></div>
+            <pre><code class="language-javascript">{{> react/examples/picklist }}</code></pre>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

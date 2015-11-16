@@ -12,10 +12,6 @@ var config = {
 		jquery: ['./src/jquery/dist.js']
 	},
 	resolve: {
-		// root: [
-		// 	node_modules,
-		// 	path.join(__dirname, 'scss')
-		// ],
 		modulesDirectories: [
 			'scss',
 			'node_modules',
