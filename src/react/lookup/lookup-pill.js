@@ -4,7 +4,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Svg from '../svg/svg';
+import Button from '../button/button';
 
 export const CONTROL = 'lookup-pill';
 
@@ -36,10 +36,7 @@ const LookupPill = React.createClass({
 						strings: this.props.strings
 					})}
 				</a>
-				<button className="slds-button slds-button--icon-bare" onClick={this._handleCloseClick}>
-					<Svg icon="utility.close" className="slds-button__icon" />
-					<span className="slds-assistive-text">{this.props.strings.REMOVE}</span>
-				</button>
+				<Button iconStyle="icon-bare" icon="utility.close" assistiveText={this.props.strings.REMOVE} onClick={this._handleCloseClick}/>
 			</span>
 		);
 	},
