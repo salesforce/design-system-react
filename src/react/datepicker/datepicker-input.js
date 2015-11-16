@@ -10,7 +10,9 @@ const DateInput = React.createClass({
 	displayName: CONTROL,
 
 	propTypes: {
-		selectedDate: React.PropTypes.any
+		selectedDate: React.PropTypes.any,
+		strings: React.PropTypes.object.isRequired,
+		ariaLabel: React.PropTypes.string
 	},
 
 	render () {
@@ -19,7 +21,7 @@ const DateInput = React.createClass({
 				<div className="slds-form-element__control">
 					<div className="slds-input-has-icon slds-input-has-icon--right">
 						<Svg className="slds-input__icon slds-icon-text-default" icon="utility.event" />
-						<input className="slds-input" type="text" placeholder="Pick a Date" label="Date Picker Label" value={this.props.selectedDate}/>
+						<input className="slds-input" type="text" placeholder={this.props.strings.DATE_FORMAT} aria-label={this.props.ariaLabel} value={this.props.selectedDate}/>
 					</div>
 				</div>
 			</div>

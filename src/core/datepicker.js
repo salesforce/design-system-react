@@ -25,6 +25,7 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 	},
 
 	_defaultProperties: {
+		inputLabel: null,
 		multiSelect: false,
 		dateRange: [new Date('1991'), new Date('2030')],
 		targetDistance: 4, // Used by positionable

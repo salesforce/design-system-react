@@ -6,7 +6,7 @@ const strings = {
 	'NEXT_MONTH': 'Next Month',
 	'PREVIOUS_MONTH': 'Previous Month',
 	'REMOVE': 'Remove',
-	'SELECT_A_DATE': 'Pick a Date',
+	'DATE_FORMAT': 'Pick a Date',
 	'SELECT_AN_OPTION': 'Select an Option',
 	/* TODO: Currently matches SLDS markup, but should be more descriptive. */
 	'TOGGLE_TREE_BRANCH': 'Toggle',
