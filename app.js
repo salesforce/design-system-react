@@ -13,25 +13,32 @@ app.set('view engine', '.hbs');
 // Compress all requests 
 app.use(compression());
 
-// Serve up public folder
-app.use(express.static('public'));
-
-// design system static directory
-// necessary because of hardcoded `/assets` path in CSS
+// Design system static directory
+// - Necessary because of hardcoded `/assets` path in CSS
 app.use('/assets', express.static(__dirname + '/node_modules/@salesforce-ux/design-system/assets'));
 app.use('/assets/design-system', express.static(__dirname + '/node_modules/@salesforce-ux/design-system/assets'));
 
-// index
+// Serve up public folder
+app.use(express.static('public'));
+
+// Third-party libraries
+app.use('/vendor/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/vendor/prism', express.static(__dirname + '/node_modules/prismjs'));
+app.use('/vendor/react', express.static(__dirname + '/node_modules/react/dist'));
+app.use('/vendor/react', express.static(__dirname + '/node_modules/react-dom/dist'));
+app.use('/vendor/require', express.static(__dirname + '/node_modules/requirejs'));
+
+// Index
 app.get('/', function(req, res) {
   res.render('index');
 });
 
-// jquery examples
+// jQuery examples
 app.get('/jquery', function(req, res) {
   res.render('jquery/index');
 });
 
-// react examples
+// React examples
 app.get('/react', function(req, res) {
   res.render('react/index');
 });

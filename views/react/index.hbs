@@ -11,17 +11,17 @@
     <link rel="icon" type="image/png" href="/img/favicon.png">
 
     <!-- dependencies -->
-    <link href="/assets/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
+    <link href="/assets/design-system/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
     <link href="/vendor/prism/themes/prism.css" rel="stylesheet" type="text/css">
     <link href="/assets/site/styles/examples.css" rel="stylesheet" type="text/css">
     <script src="vendor/prism/prism.js"></script>
-    <script src="vendor/requirejs/require.js"></script>
+    <script src="vendor/require/require.js"></script>
     <script>
         requirejs.config({
             baseUrl: '',
             paths: {
-                'react': 'vendor/react/react',
-                'react-dom': 'vendor/react/react-dom',
+                'react': 'vendor/react/react.min',
+                'react-dom': 'vendor/react/react-dom.min',
                 'react-facade': 'dist/react'
             },
             shim: {
