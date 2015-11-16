@@ -11,8 +11,8 @@ import Events from '../mixins/events';
 // Third party
 import classNames from 'classnames';
 
-// Children
-import Button from '../button/button';
+// Provides the default renderers for the header, and the footer.
+import DefaultRenderers from './modal-default-renderers';
 
 export const ModalObject = {
 	mixins: [Events],
@@ -27,41 +27,33 @@ export const ModalObject = {
 		secondaryButtonText: React.PropTypes.string,
 		onClose: React.PropTypes.func,
 		onCancel: React.PropTypes.func,
-		onAction: React.PropTypes.func
+		onAction: React.PropTypes.func,
+		headerTitle: React.PropTypes.any,
+		headerTagline: React.PropTypes.any
 	},
 
 	render () {
 		return (
 			<div>
-				<div
-					aria-hidden="false"
-					role="dialog"
-					className={classNames(this.cssClasses.MODAL, {'slds-fade-in-open': this.props.isOpen} )}
-					onClick={this._onBackgroundClick}
-					ref="background">
-					<div className="slds-modal__container" ref="modal">
+				<div aria-hidden="false" role="dialog" className={classNames(this.cssClasses.MODAL, {'slds-fade-in-open': this.props.isOpen} )} onClick={this._onBackgroundClick} ref="background">
+					<div className={this.cssClasses.MODALCONTAINER} ref="modal">
 						<div className="slds-modal__header">
-							<h2 className={this.headerTextSize[this.props.headerTextSize]}>{this.props.headerText}</h2>
-							<Button
-								assistiveText="Close"
-								className="slds-modal__close"
-								icon="utility.close"
-								iconSize="large"
-								iconStyle="icon-inverse"
-								onClick={this._onCloseClick}/>
+							{this.props.renderHeader({
+								onCloseClick: this._onCloseClick,
+								headerTitle: this.props.headerTitle,
+								headerTagline: this.props.headerTagline
+							})}
 						</div>
 						<div className="slds-modal__content">
 							{this.props.children}
 						</div>
 						<div className="slds-modal__footer">
-							<Button
-								text={this.props.secondaryButtonText}
-								theme="neutral"
-								onClick={this._onCancelClick}/>
-							<Button
-								text={this.props.primaryButtonText}
-								theme="brand"
-								onClick={this._onPrimaryClick}/>
+							{this.props.renderFooter({
+								onPrimaryClick: this._onPrimaryClick,
+								onSecondaryClick: this._onSecondaryClick,
+								secondaryButtonText: this.props.secondaryButtonText,
+								primaryButtonText: this.props.primaryButtonText
+							})}
 						</div>
 					</div>
 				</div>
@@ -70,16 +62,20 @@ export const ModalObject = {
 		);
 	},
 
+	getDefaultProps () {
+		return DefaultRenderers;
+	},
+
 	_onCloseClick () {
 		this.props.onClose();
 	},
 
-	_onCancelClick () {
+	_onSecondaryClick () {
 		this.props.onCancel();
 	},
 
-	_onBackgroundClick (ev) {
-		if (ev.target === this.refs.background || ev.target === this.refs.modal) {
+	_onBackgroundClick (e) {
+		if (e.target && this.backgroundClicked(e.target)) {
 			this.props.onClose();
 		}
 	},

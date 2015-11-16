@@ -1,0 +1,7 @@
+var items = [
+    { text: "one", value: 1 },
+    { text: "two", value: 2 }
+];
+
+var element = React.createElement(facades.Picklist, { collection:items });
+ReactDOM.render(element, document.getElementById('picklist'));

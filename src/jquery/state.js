@@ -28,6 +28,10 @@ const State = {
 		
 		return Lib.extend({ wrapper }, this._defaultProperties, options);
 	},
+
+	getDefaultProps (properties) {
+		this._props = Lib.extend(properties, this._props);
+	},
 	
 	setProperties (values) {
 		return Lib.extend(this._props, values);
@@ -35,6 +39,10 @@ const State = {
 
 	getProperty (key) {
 		return this._props[key];
+	},
+
+	getProperties () {
+		return this._props;
 	},
 	
 	setState (values) {
