@@ -32,7 +32,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 	render () {
 		const calendarData = this._getCalendarData();
-		const selectedDates = this.getProperty('selection');
+		const selectedDates = this.props.selection;
 		const selDateFormatted = selectedDates.length ? this._formatDate(selectedDates[0]) : '';
 
 		if (this.refs.popover) {
