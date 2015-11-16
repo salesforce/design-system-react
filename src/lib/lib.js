@@ -110,6 +110,12 @@ export function isOffscreen (element, details) {
 	return results;
 }
 
+export function isValidDate (strDate) {
+	const myDateStr = new Date(strDate);
+
+	return !isNaN(myDateStr.getMonth());
+}
+
 export function setWidth (element, width) {
 	element.setAttribute('style', 'width:' + width + 'px');
 	element.style.width = width + 'px';

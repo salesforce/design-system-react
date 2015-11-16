@@ -73,7 +73,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		let insertIndex = 1;
 
 		if (isRangeSelect) {
-			if (selectedItems.length === 1 && selectedItems[0].date.getTime() > date.date.getTime()) {
+			if (selectedItems && selectedItems.length === 1 && selectedItems[0].date.getTime() > date.date.getTime()) {
 				insertIndex = 0;
 			}
 

@@ -184,6 +184,30 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		}
 
 		return formattedDate;
+	},
+
+	_validateDateInput: function (input) {
+		let inputDate;
+		let hasAppropriateSpacers;
+		let hasAppropriateLength;
+		let validDate;
+
+		if (this.getProperty('multiSelect')) {
+			validDate = false;
+		} else {
+			inputDate = new Date(input);
+			hasAppropriateSpacers = input.match(/\//g) || input.match(/\-/g);
+			hasAppropriateLength = input.length >= 8 && input.length <= 10;
+
+			validDate = (Lib.isValidDate(input) && hasAppropriateSpacers && hasAppropriateLength) ? inputDate : false;
+		}
+
+		return validDate;
+	},
+
+	// Arrow right, Arrow left, Backspace not valid keys for date update
+	_validateInputKey: function (keyCode) {
+		return (keyCode !== 37 && keyCode !== 39 && keyCode !== 8);
 	}
 
 });
