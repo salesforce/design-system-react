@@ -10,20 +10,21 @@ const DateMonth = React.createClass({
 	displayName: CONTROL,
 
 	propTypes: {
+		dateViewing: React.PropTypes.instanceOf(Date),
 		monthName: React.PropTypes.string,
 		setViewingDate: React.PropTypes.func,
-		dateViewing: React.PropTypes.instanceOf(Date)
+		strings: React.PropTypes.object.isRequired
 	},
 
 	render () {
 		return (
 			<div className="slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4">
 				<div className="slds-align-middle">
-					<Button icon="utility.left" assistiveText="Previous Month" iconStyle="icon-container" onClick={this.backMonth}/>
+					<Button icon="utility.left" assistiveText={this.props.strings.PREVIOUS_MONTH} iconStyle="icon-container" onClick={this.backMonth}/>
 				</div>
 				<h2 id="month" className="slds-align-middle" aria-live="assertive" aria-atomic="true">{this.props.monthName}</h2>
 				<div className="slds-align-middle">
-					<Button icon="utility.right" assistiveText="Next Month" iconStyle="icon-container" onClick={this.forwardMonth}/>
+					<Button icon="utility.right" assistiveText={this.props.strings.NEXT_MONTH} iconStyle="icon-container" onClick={this.forwardMonth}/>
 				</div>
 			</div>
 		);

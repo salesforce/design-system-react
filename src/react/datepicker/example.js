@@ -12,7 +12,7 @@ export default function () {
 
 		render () {
 			return (
-				<Datepicker selection={this.state.selection} onChanged={this.handleDateSelected} multiSelect={true}/>
+				<Datepicker selection={this.state.selection} onChanged={this.handleDateSelected} multiSelect={true} inputLabel="Pick a Date"/>
 			);
 		},
 
