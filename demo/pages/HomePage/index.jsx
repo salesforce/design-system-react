@@ -38,6 +38,10 @@ import DatePickerSingleSelectSection from './DatePickerSingleSelectSection';
 import IconSection from './IconSection';
 import TooltipSection from './TooltipSection';
 
+import DOCS from '../../../docs';
+console.log('DOCS: ',DOCS);
+
+
 const SLDSColumn = SLDSGrid.Column;
 
 

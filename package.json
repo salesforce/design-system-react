@@ -50,6 +50,7 @@
     "eslint-plugin-react": "^2.7.1",
     "extract-text-webpack-plugin": "^0.8.2",
     "file-loader": "^0.8.4",
+    "json-loader": "^0.5.3",
     "karma": "^0.13.10",
     "karma-chai-sinon": "^0.1.5",
     "karma-chrome-launcher": "^0.2.0",
