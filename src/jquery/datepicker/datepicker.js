@@ -76,9 +76,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_render () {
 		const strings = this.getState('strings');
-		this.elements.input.attr('placeholder', strings.SELECT_A_DATE);
+		this.elements.input.attr('placeholder', strings.DATE_FORMAT);
+		if (this.getProperty('inputLabel')) {
+			this.elements.input.attr('aria-label', this.getProperty('inputLabel'));
+		}
 
-		/* TODO: Needs internationalization */
 		const $previousMonthButton = new Button({
 			assistiveText: strings.PREVIOUS_MONTH,
 			iconStyle: 'icon-container',
@@ -87,7 +89,6 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		});
 		$previousMonthButton.replaceAll(this.elements.dropdown.find('x-previous-month-button')[0]);
 
-		/* TODO: Needs internationalization */
 		const $nextMonthButton = new Button({
 			assistiveText: strings.NEXT_MONTH,
 			iconStyle: 'icon-container',

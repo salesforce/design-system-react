@@ -5,7 +5,7 @@ export default String.raw`
 			<div class="slds-form-element__control">
 				<div class="slds-input-has-icon slds-input-has-icon--right">
 					<x-input-icon></x-input-icon>
-					<input class="slds-input" type="text" label="Date Picker Label"/>
+					<input class="slds-input" type="text"/>
 				</div>
 			</div>
 		</div>

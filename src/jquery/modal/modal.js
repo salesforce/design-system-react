@@ -11,11 +11,11 @@ import State from '../state';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-// children
-import Button from '../button/button';
-
 // Template imports
 import template from './modal-template';
+
+// Provides the default renderers for the header, and the footer.
+import DefaultRenderers from './modal-default-renderers';
 
 let Modal = function Modal () {
 	const options = this._getOptions(arguments);
@@ -32,54 +32,39 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 		this._initElements();
 	},
 
-	_initElements () {
-		const strings = this.getState('strings');
+	_setDefaultProperties () {
+		this.setProperties(DefaultRenderers);
+	},
 
+	_initElements () {
 		this.elements.modal = this.element.find('.' + this.cssClasses.MODAL);
 		this.elements.header = this.element.find('.' + this.cssClasses.HEADER);
 		this.elements.backdrop = this.element.find('.' + this.cssClasses.BACKDROP);
-
-		this.closeButton = new Button({
-			assistiveText: strings.CLOSE,
-			icon: 'utility.close',
-			iconSize: 'large',
-			iconStyle: 'icon-inverse'
-		});
-		this.closeButton.element.addClass(this.cssClasses.CLOSE);
-		this.closeButton.replaceAll(this.elements.modal.find('x-close-button')[0]);
-
-		this.secondaryButton = new Button({
-			theme: 'neutral'
-		});
-		this.secondaryButton.replaceAll(this.elements.modal.find('x-secondary-button')[0]);
-
-		this.primaryButton = new Button({
-			theme: 'brand'
-		});
-		this.primaryButton.replaceAll(this.elements.modal.find('x-primary-button')[0]);
 	},
 
 	_bindUIEvents () {
-		this.closeButton.on('click', $.proxy(this.close, this));
-		this.secondaryButton.on('click', $.proxy(this._onSecondaryClicked, this));
-		this.primaryButton.on('click', $.proxy(this._onPrimaryClicked, this));
+		this.element.on('click', $.proxy(this._clickOutClose, this));
 	},
 
 	_render () {
-		const secondaryText = this.getProperty('secondaryButtonText');
-		const primaryText = this.getProperty('primaryButtonText');
 		const $content = this.elements.wrapper.contents().detach();
 		const $headerText = this.elements.header.find('h2');
 		$headerText.addClass(this.headerTextSize[this.getProperty('headerTextSize')]);
 		$headerText.text(this.getProperty('headerText'));
 
-		this.secondaryButton.renderView({
-			text: secondaryText
-		});
+		this.element.find('.' + this.cssClasses.HEAD).append(this._props.renderHeader({
+			headerTitle: this._props.headerText,
+			headerTextSize: this._props.headerTextSize,
+			headerTagline: this._props.headerTagline,
+			closeClicked: $.proxy(this.close, this)
+		}));
 
-		this.primaryButton.renderView({
-			text: primaryText
-		});
+		this.element.find('.' + this.cssClasses.FOOT).append(this._props.renderFooter({
+			primaryText: this._props.primaryButtonText,
+			secondaryText: this._props.secondaryButtonText,
+			primaryClicked: $.proxy(this._onPrimaryClicked, this),
+			secondaryClicked: $.proxy(this._onSecondaryClicked, this)
+		}));
 
 		this.element.find('.' + this.cssClasses.CONTENT).append($content);
 
@@ -122,6 +107,12 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 		this.setProperties({
 			isOpen: false
 		});
+	},
+
+	_clickOutClose (e) {
+		if (this.backgroundClicked(e.target)) {
+			this.close();
+		}
 	}
 });
 

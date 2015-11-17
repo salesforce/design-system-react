@@ -18,7 +18,10 @@ const ModalCore = Lib.merge({}, Base, {
 		MODAL: 'slds-modal',
 		OPEN: 'slds-fade-in-open',
 		OPENBACKDROP: 'slds-modal-backdrop--open',
-		PRIMARYBTN: 'slds-button--brand'
+		PRIMARYBTN: 'slds-button--brand',
+		MODALCONTAINER: 'slds-modal__container',
+		HEAD: 'slds-modal__header',
+		FOOT: 'slds-modal__footer'
 	},
 
 	headerTextSize: {
@@ -34,6 +37,10 @@ const ModalCore = Lib.merge({}, Base, {
 		isOpen: false,
 		primaryButtonText: 'Save',
 		secondaryButtonText: 'Cancel'
+	},
+
+	backgroundClicked: function (target) {
+		return target.className.match && (Lib.hasClass(target, this.cssClasses.MODAL) || Lib.hasClass(target, this.cssClasses.MODALCONTAINER));
 	}
 
 });

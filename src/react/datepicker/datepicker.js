@@ -26,12 +26,13 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 	propTypes: {
 		dateRange: React.PropTypes.array,
-		selection: React.PropTypes.any
+		selection: React.PropTypes.any,
+		inputLabel: React.PropTypes.string
 	},
 
 	render () {
 		const calendarData = this._getCalendarData();
-		const selectedDates = this.getProperty('selection');
+		const selectedDates = this.props.selection;
 		const selDateFormatted = selectedDates.length ? this._formatDate(selectedDates[0]) : '';
 
 		if (this.refs.popover) {
@@ -40,13 +41,26 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 		return (
 			<div className="slds-form--stacked slds-datepicker-form" ref="container" onClick={this._triggerCalendar}>
-				<DateInput selectedDate={selDateFormatted}/>
+				<DateInput
+					ariaLabel={this.props.inputLabel}
+					selectedDate={selDateFormatted}
+					strings={this.state.strings}/>
 				<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !this.state.isOpen})} ref="popover" data-selection="single">
 					<div className="slds-datepicker__filter slds-grid">
-						<DateMonth monthName={this._getMonthName()} setViewingDate={this._setViewingDate} dateViewing={this.state.dateViewing}/>
-						<DateYear getYearRange={this._getYearRangeData} setViewingDate={this._setViewingDate} dateViewing={this.state.dateViewing}/>
+						<DateMonth
+							monthName={this._getMonthName()}
+							setViewingDate={this._setViewingDate}
+							dateViewing={this.state.dateViewing}
+							strings={this.state.strings}/>
+						<DateYear
+							getYearRange={this._getYearRangeData}
+							setViewingDate={this._setViewingDate}
+							dateViewing={this.state.dateViewing}/>
 					</div>
-					<Calendar calendarData={calendarData} selectDate={this._selectDate} multiSelect={this.props.multiSelect}/>
+					<Calendar
+						calendarData={calendarData}
+						selectDate={this._selectDate}
+						multiSelect={this.props.multiSelect}/>
 				</div>
 			</div>
 		);
