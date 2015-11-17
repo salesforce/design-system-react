@@ -67,30 +67,9 @@ let Button = Lib.merge({}, ButtonCore, {
 		} */
 	},
 	
-		// While some functionality moves into the core or traits, each facade typically provides its own rendering logic so that it can take advantage of the benefits offered by the framework and maintain appropriate patterns for that framework.
-	_renderViews () {
-		// Clone children (if they exist) passed with the same `iconPosition`
-		const views = React.Children.map(this.props.children, (child, index) => {
-			return React.cloneElement(child, { iconPosition: this.props.iconPosition, key: index });
-		}) || [];
-
-		// `Button` always needs at least one `ButtonView`
-		const defaultView = views.length > 0 ? 'notSelected' : null;
-		views.push(<ButtonView
-									assistiveText={this.props.assistiveText}
-									icon={this.props.icon}
-									iconSize={this.props.iconSize}
-									iconStyle={this.props.iconStyle}
-									text={this.props.text}
-									view={defaultView}
-									iconPosition={this.props.iconPosition}
-									key="default" />);
-		return views;
-	},
-	
-	// `_getClassNames` can be found in the [shared core](../../core/button.html).
+	// While some functionality moves into the core or traits, each facade typically provides its own rendering logic so that it can take advantage of the benefits offered by the framework and maintain appropriate patterns for that framework.
 	render () {
-		// Alow any props not listed to be added to the `<button>` such as `onClick`.
+		// The following props have special meaning to us, but we want to allow any props not listed (such as `onClick`) to be added to the `<button>`. We can do this more cleanly with [object destructuring](https://facebook.github.io/react/docs/transferring-props.html#transferring-with-...-in-jsx).
 		const {assistiveText,
 			className,
 			icon,
@@ -103,11 +82,32 @@ let Button = Lib.merge({}, ButtonCore, {
 			text,
 			theme,
 			...props} = this.props;
+
+		// This button is a stateful button if it has any children or if we have flagged it as selectable.
 		const isStateful = React.Children.count(this.props.children) || this.props.selectable;
+
+		// If there are existing children (typically of type `ButtonView`), we need to clone them and pass them all the same `iconPosition` that is used by the button.
+		const views = React.Children.map(this.props.children, (child, index) => {
+			return React.cloneElement(child, { iconPosition: this.props.iconPosition, key: index });
+		}) || [];
+
+		// Whether or not there were existing children of this button, at least one `ButtonView` is always needed. If it's the only one it doesn't need a view type, but if it's one of several we'll give it the type `notSelected` to represent its role.
+		const defaultView = views.length > 0 ? 'notSelected' : null;
+		views.push(<ButtonView
+					assistiveText={this.props.assistiveText}
+					icon={this.props.icon}
+					iconSize={this.props.iconSize}
+					iconStyle={this.props.iconStyle}
+					text={this.props.text}
+					view={defaultView}
+					iconPosition={this.props.iconPosition}
+					key="default" />);
+		
+		// Time to put the button together using the props and views we configured above. `_getClassNames` can be found in the [shared core](../../core/button.html) as it is used by every facade.
 		return (
 			<button type="button"
 				className={this._getClassNames(this.props.className, isStateful)}
-				{...props}>{this._renderViews()}</button>
+				{...props}>{views}</button>
 		);
 	}
 });
