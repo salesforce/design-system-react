@@ -13,7 +13,7 @@ import * as Lib from '../../lib/lib';
 // Use the [shared core](../../core/button.html), which contains logic that is the same in every facade.
 import ButtonCore, {CONTROL} from '../../core/button';
 
-// React is an external depdencies of the project.
+// React is an external dependency.
 import React from 'react';
 
 // [State](../mixins/state.html), [Events](../mixins/events.html), and [genericWillMount](../mixins/generic-will-mount.html) are mixins that appear in every facade and bring some consistency between how each framework deals with instantiation, events, and state.
@@ -25,7 +25,7 @@ import genericWillMount from '../mixins/generic-will-mount';
 import ButtonViewCore from '../../core/button-view';
 import isIcon from '../mixins/custom-prop-types/icon.js';
 
-// Use `ButtonView` as children with `Button`.
+// `ButtonView` is a child control within `Button`.
 import ButtonView from './button-view';
 
 let Button = Lib.merge({}, ButtonCore, {
