@@ -7,19 +7,22 @@ import * as Lib from '../lib/lib';
 // Inherit from the [base control](base.html).
 import Base from './base';
 
-// Traits
-import Disableable from '../traits/disableable';
-import SelectableBoolean from '../traits/selectable-boolean';
-
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
 
+// [Disableable](../traits/disableable.html) and [SelectableBoolean](../traits/selectable-boolean.html) are traits. Traits extend the functionality of a control with common methods and properties related to a specific behavior. Not only do traits have the potential to speed up development, they also bring consistency to the API.
+import Disableable from '../traits/disableable';
+import SelectableBoolean from '../traits/selectable-boolean';
+
+// Export the canonical name of this control. The name specified here will be used to generate the React display name and the jQuery plugin name, among other things.
 export const CONTROL = 'Button';
 
+// Facades **extends objects** by merging them together, rather than via the prototype chain or imititation of object-oriented inheritance. The important thing to remember is that _some methods will be available to the control which are not declared in this file_. These are not magic methods, they're not black box methods, but you do need to trace the depencies of the control to see where they are coming from. This particular control extends the `Base`, the `SelectableBoolean` trait, and the `Disableable` trait. Adding an empty object as the first item of the merge ensures that all of these methods don't get added to `Base`, while the methods for this specific control must be the last thing added here so that they have the potential to override anything added fist as needed.
 const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
+	// Add the canonical class name as a property of the control, for future reference.
 	CONTROL,
 	
-	// CSS classes used within this control.
+	// Save a list of any CSS classes used within this control which will need to be used later to find specific elements or perform other operations. It's not neccessary to list every single class here as many are used only by the template or render function.
 	cssClasses: {
 		'CONTROL': 'slds-button',
 		'NOT_SELECTED': 'slds-not-selected'
