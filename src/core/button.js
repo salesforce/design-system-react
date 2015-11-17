@@ -19,23 +19,25 @@ export const CONTROL = 'Button';
 const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 	CONTROL,
 	
-	// TODO: add button property or check for button parent, inverse, size, etc.
+	// CSS classes used within this control.
 	cssClasses: {
 		'CONTROL': 'slds-button',
 		'NOT_SELECTED': 'slds-not-selected'
 	},
 	
+	// Themes or flavors that dictate style on the `<button>`.
 	themes: {
 		'neutral': 'slds-button--neutral',
 		'brand': 'slds-button--brand',
 		'inverse': 'slds-button--inverse'
 	},
 	
+	// Sizes dictate height of the `<button>`.
 	sizes: {
 		'small': 'slds-button--small'
 	},
 	
-	// applied to the button, not the icon/SVG
+	// `iconButtonStyles` are styles of buttons and the class is applied to the `<button>`, not the icon or SVG
 	iconButtonStyles: {
 		'icon-bare': 'slds-button--icon-bare',
 		'icon-border': 'slds-button--icon-border',
@@ -59,6 +61,7 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		children: []
 	},
 
+	// Internal method to determine if button is disabled.
 	_canSelect () {
 		if (this.getProperty('disabled')) {
 			// Component is disabled, do not allow a toggle to occur.
@@ -68,10 +71,12 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		return true;
 	},
 
+	// Public method that toogles selection state
 	toggle () {
 		this._toggleSelected();
 	},
 
+	// `_getClassNames` determines what CSS classes will be applied to `<button>`. Additional classes can be passed into it.
 	_getClassNames (additionalClasses, isStateful) {
 		const selectedClasses = {};
 		
