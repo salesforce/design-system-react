@@ -10,7 +10,8 @@
     "prepublish": "npm run compile",
     "test": "scripts/test --single-run",
     "postinstall": "node scripts/postinstall",
-    "icons": "node scripts/inline-icons.js"
+    "icons": "node scripts/inline-icons.js",
+    "docs": "node scripts/component-docs.js"
   },
   "repository": {
     "type": "git",
@@ -62,6 +63,7 @@
     "phantomjs": "^1.9.18",
     "raw-loader": "^0.5.1",
     "react": "^0.13.0",
+    "react-docgen": "^2.4.0",
     "react-hot-loader": "^1.2.7",
     "react-prism": "^1.4.1",
     "react-router": "^0.13.3",
