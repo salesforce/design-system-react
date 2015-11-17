@@ -19,7 +19,8 @@ const PillboxItem = React.createClass({
 			getText: React.PropTypes.func.isRequired
 			// getValue: React.PropTypes.func.isRequired
 		}).isRequired,
-		onClick: React.PropTypes.func.isRequired
+		onClick: React.PropTypes.func.isRequired,
+		strings: React.PropTypes.object.isRequired
 	},
 
 	render () {
@@ -28,7 +29,7 @@ const PillboxItem = React.createClass({
 				<span href="#" className="slds-pill__label">{this.props.item.getText()}</span>
 				<Button
 					icon="action.close"
-					assistiveText="Remove"
+					assistiveText={this.props.strings.REMOVE}
 					iconStyle="icon-bare"
 					onClick={this._onClick} />
 			</li>

@@ -79,9 +79,23 @@ const TreeBranch = React.createClass({
 			const id = model.getId();
 			
 			if (model.getType() === 'folder') {
-				children.push(<TreeBranch key={id} item={model} selectable={this.props.selectable} strings={this.props.strings} autoOpenLevel={this.props.autoOpenLevel + 1} autoOpenLimit={this.props.autoOpenLimit} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _isFolderOpen={this.props._isFolderOpen} _isItemSelected={this.props._isItemSelected} />);
+				children.push(<TreeBranch
+												key={id}
+												item={model}
+												selectable={this.props.selectable}
+												strings={this.props.strings}
+												autoOpenLevel={this.props.autoOpenLevel + 1}
+												autoOpenLimit={this.props.autoOpenLimit}
+												onItemClick={this._handleItemClick}
+												onExpandClick={this._handleExpandClick}
+												_isFolderOpen={this.props._isFolderOpen}
+												_isItemSelected={this.props._isItemSelected}/>);
 			} else {
-				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick.bind(this, model)} _isItemSelected={this.props._isItemSelected} />);
+				children.push(<TreeItem
+												key={id}
+												item={model}
+												onClick={this._handleItemClick.bind(this, model)}
+												_isItemSelected={this.props._isItemSelected}/>);
 			}
 		});
 
@@ -92,7 +106,7 @@ const TreeBranch = React.createClass({
 						className="slds-m-right--x-small"
 						icon="utility.chevronright"
 						iconSize="small"
-						assistiveText="Toggle"
+						assistiveText={this.props.strings.TOGGLE_TREE_BRANCH}
 						iconStyle="icon-bare"
 						onClick={this._handleExpandClick.bind(this, this.props.item)} />
 					<div className="slds-tree__branch--name" role="presentation" onClick={this._handleItemClick.bind(this, this.props.item)}>{this.props.item.getText()}</div>
