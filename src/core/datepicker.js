@@ -188,21 +188,38 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 
 	_validateDateInput: function (input) {
 		let inputDate;
+		let splitString;
 		let hasAppropriateSpacers;
 		let hasAppropriateLength;
 		let validDate;
 
 		if (this.getProperty('multiSelect')) {
-			validDate = false;
+			hasAppropriateLength = input.length >= 21 && input.length <= 23;
+			splitString = input.split('-');
+
+			if (hasAppropriateLength && splitString.length === 2) {
+				inputDate = [new Date(splitString[0]), new Date(splitString[1])];
+				validDate = [
+					Lib.isValidDate(inputDate[0]) && this._isWithinDateRange(inputDate[0]) ? inputDate[0] : false,
+					Lib.isValidDate(inputDate[1]) && this._isWithinDateRange(inputDate[1]) ? inputDate[1] : false
+				];
+				validDate = validDate[0] && validDate[1] ? validDate : false;
+			}
 		} else {
 			inputDate = new Date(input);
 			hasAppropriateSpacers = input.match(/\//g) || input.match(/\-/g);
 			hasAppropriateLength = input.length >= 8 && input.length <= 10;
 
-			validDate = (Lib.isValidDate(input) && hasAppropriateSpacers && hasAppropriateLength) ? inputDate : false;
+			validDate = (Lib.isValidDate(input) && this._isWithinDateRange(inputDate) && hasAppropriateSpacers && hasAppropriateLength) ? inputDate : false;
 		}
 
 		return validDate;
+	},
+
+	_isWithinDateRange: function (date) {
+		const dateRange = this.getProperty('dateRange');
+
+		return date.getTime() >= dateRange[0] && date.getTime() <= dateRange[1];
 	},
 
 	// Arrow right, Arrow left, Backspace not valid keys for date update

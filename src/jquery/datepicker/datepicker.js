@@ -219,9 +219,18 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		const inputValue = this.elements.input.val();
 		const validInputKey = this._validateInputKey(e.keyCode);
 		const validatedDate = validInputKey ? this._validateDateInput(inputValue) : false;
+		const multiselect = this.getProperty('multiSelect');
 
 		if (validatedDate) {
-			this.selectItem({ date: validatedDate });
+			if (multiselect) {
+				this.deselectAll();
+				this.selectItems([
+					{ date: validatedDate[0] },
+					{ date: validatedDate[1] }
+				]);
+			} else {
+				this.selectItem({ date: validatedDate });
+			}
 		}
 	},
 
