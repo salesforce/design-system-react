@@ -26,21 +26,12 @@ export const ButtonIcon = React.createClass({
     render() {
 
         let className  = 'slds-button__icon';
-        if (this.props.variant !== 'icon') {
+        if (this.props.position) {
           //If no position prop given, default to left
-          this.props.position ? className += ' slds-button__icon--' + this.props.position : className += ' slds-button__icon--left';
+          className += ' slds-button__icon--' + this.props.position;
         }
         if (this.props.size) {
           className += ' slds-button__icon--' + this.props.size;
-        }
-        if (this.props.inverse) {
-          className += ' slds-button__icon--inverse';
-        }
-        if (this.props.stateful) {
-          className += ' slds-button__icon--stateful';
-        }
-        if (this.props.hint) {
-          className += ' slds-button__icon--hint';
         }
         if (this.props.destructive) {
           className += ' slds-button__icon--destructive';
@@ -75,9 +66,6 @@ export const Icon = React.createClass({
         let label = null;
 
         let className  = 'slds-icon';
-        if (this.props.stateful) {
-            className += '--stateful';
-        }
         if (this.props.className) {
             className += ' ' +this.props.className;
         }
