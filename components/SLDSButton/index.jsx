@@ -48,8 +48,9 @@ class Button extends React.Component {
   getClassName() {
     let isSelected = this.props.stateful && this.state.active ? true : false;
     let notSelected = this.props.stateful && !this.state.active ? true : false;
+    const iconOnly = this.props.variant === 'icon' ? true : false;
     return classNames(this.props.className, "slds-button", {
-      [`slds-button--${this.props.variant}`]: this.props.variant,
+      [`slds-button--${this.props.variant}`]: !iconOnly,
       [`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
       ["slds-max-small-button--stretch"]: this.props.responsive,
       ["slds-not-selected"]: notSelected,
