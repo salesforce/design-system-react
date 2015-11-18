@@ -15,22 +15,27 @@ export { default as noop } from 'lodash/utility/noop';
 export { default as bind } from 'lodash/function/bind';
 
 // Type Helpers
-import isFunction from 'lodash/lang/isFunction';
-export { isFunction };
-
-export { default as isNumber } from 'lodash/lang/isNumber';
-
-import isString from 'lodash/lang/isString';
-export { isString };
-
-export { default as isRegExp } from 'lodash/lang/isRegExp';
-
 import isArray from 'lodash/lang/isArray';
 export { isArray };
 
 export { default as isBoolean } from 'lodash/lang/isBoolean';
 
-export { default as isObject } from 'lodash/lang/isObject';
+import isFunction from 'lodash/lang/isFunction';
+export { isFunction };
+
+export { default as isNumber } from 'lodash/lang/isNumber';
+
+import isObject from 'lodash/lang/isObject';
+export { isObject };
+
+export function isPromise (value) {
+	return isObject(value) && isFunction(value.then);
+}
+
+export { default as isRegExp } from 'lodash/lang/isRegExp';
+
+import isString from 'lodash/lang/isString';
+export { isString };
 
 // DOM
 export function hasClass (element, className) {
@@ -220,7 +225,7 @@ export function registerStrings (strings) {
 }
 
 export function getStrings () {
-	return Promise.resolve(_strings);
+	return _strings;
 }
 
 import defaultStrings from './strings';
