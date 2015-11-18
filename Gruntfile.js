@@ -15,10 +15,9 @@ module.exports = function (grunt) {
 	const defaultWatchFiles = ['Gruntfile.js', 'tasks/**/*.*', 'src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'];
 
 	grunt.initConfig({
-		// VARIABLES
 		port: grunt.option('port') || process.env.PORT || defaultPort,
 		excludePatternGeneratedTestFiles: excludePatternGeneratedTestFiles,
-		eslint: {
+		'eslint': {
 			target: [
 				'Gruntfile.js',
 				'src/**/*.js',
@@ -27,7 +26,7 @@ module.exports = function (grunt) {
 				'!test/compat/*.js'
 			].concat(excludePatternGeneratedTestFiles)
 		},
-		mocha: {
+		'mocha': {
 			main: {
 				options: {
 					urls: ['http://localhost:<%= port %>/test/index.html'],
@@ -37,17 +36,13 @@ module.exports = function (grunt) {
 				}
 			}
 		},
-		watch: {
-			eslint: {
-				files: defaultWatchFiles.concat(excludePatternGeneratedTestFiles),
-				tasks: ['eslint']
-			},
+		'watch': {
 			tests: {
 				files: defaultWatchFiles.concat(excludePatternGeneratedTestFiles),
 				tasks: ['eslint', 'compileTests', 'compileTestsApi']
 			}
 		},
-		connect: {
+		'connect': {
 			server: {
 				options: {
 					hostname: '*',
@@ -68,12 +63,13 @@ module.exports = function (grunt) {
 				}
 			}
 		},
+		'shell': {
+			docco: {
+				command: './bin/generate-docs.sh'
+			}
+		},
 		'webpack': {
 			options: require('./webpack.dist.config'),
-			build: {}
-		},
-		'webpack-heroku': {
-			options: require('./webpack.heroku.config'),
 			build: {}
 		},
 		'webpack-dev-server': {
@@ -89,10 +85,8 @@ module.exports = function (grunt) {
 		}
 	});
 
-	grunt.registerTask('default', ['compileTests', 'compileTestsApi']);
-	// Temporarily disabling linting of the tests
-	// grunt.registerTask('build', ['default', 'eslint', 'babel']);
-	grunt.registerTask('build', ['webpack']);
+	grunt.registerTask('default', ['shell:docco', 'compileTests', 'compileTestsApi']);
+	grunt.registerTask('build', ['default', 'webpack']);
 	grunt.registerTask('serve', 'Runs webpack with hot module swapping', ['default', 'webpack-dev-server:start']);
 	grunt.registerTask('serve-watch', 'For concurrent watch task / webpack watch (use in new window)', ['default', 'watch:tests']);
 	grunt.registerTask('test', ['default', 'webpack', 'connect', 'mocha']);
