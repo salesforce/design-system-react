@@ -136,7 +136,7 @@ export const ButtonObject = {
 
 	// Public API method that will re-render a `ButtonView` with different options. If the button is stateful, it only affects the first view. See `this.buttonViewOptions` for options that can be updated.
 	renderView (options) {
-		this.childOptions = Lib.extend({}, this.childOptions, options);
+		this.buttonViewOptions = Lib.extend({}, this.buttonViewOptions, options);
 		this.element.empty();
 		this.element.append(this._renderViews());
 	}

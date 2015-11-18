@@ -86,7 +86,7 @@ module.exports = function (grunt) {
 	});
 
 	grunt.registerTask('default', ['shell:docco', 'compileTests', 'compileTestsApi']);
-	grunt.registerTask('build', ['default', 'webpack']);
+	grunt.registerTask('build', ['webpack']);
 	grunt.registerTask('serve', 'Runs webpack with hot module swapping', ['default', 'webpack-dev-server:start']);
 	grunt.registerTask('serve-watch', 'For concurrent watch task / webpack watch (use in new window)', ['default', 'watch:tests']);
 	grunt.registerTask('test', ['default', 'webpack', 'connect', 'mocha']);
