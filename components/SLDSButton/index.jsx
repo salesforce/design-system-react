@@ -17,19 +17,19 @@ import omit from "lodash.omit";
 
 const displayName = 'SLDSButton';
 const propTypes = {
+  buttonSize: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   hint: React.PropTypes.bool,
   iconName: React.PropTypes.string,
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
   iconSize: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
-  inverse: React.PropTypes.bool,
   label: React.PropTypes.string.isRequired,
   onClick: React.PropTypes.func,
   responsive: React.PropTypes.bool,
   stateful: React.PropTypes.bool,
   tabindex: React.PropTypes.string,
-  variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon"]),
+  variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {};
 
@@ -55,7 +55,7 @@ class Button extends React.Component {
       ["slds-max-small-button--stretch"]: this.props.responsive,
       ["slds-not-selected"]: notSelected,
       ["slds-is-selected"]: isSelected,
-      ["slds-button--icon-inverse"]: this.props.inverse,
+      ["slds-button--small"]: this.props.buttonSize,
     });
   }
 
@@ -65,7 +65,6 @@ class Button extends React.Component {
         <ButtonIcon
           disabled={this.props.disabled}
           hint={this.props.hint}
-          inverse={this.props.inverse}
           name={name}
           position={this.props.iconPosition}
           size={this.props.iconSize}
@@ -81,7 +80,6 @@ class Button extends React.Component {
       return(
         <ButtonIcon
           disabled={this.props.disabled}
-          inverse={this.props.inverse}
           name="down"
           size="x-small"
           variant={this.props.variant}
@@ -94,7 +92,7 @@ class Button extends React.Component {
   render() {
     const props = omit(this.props, "className");
     const click = createChainedFunction(this.props.onClick, this.onClick.bind(this));
-    const labelClasses = this.props.variant === "icon" ? "slds-assistive-text": "";
+    const labelClasses = (this.props.variant === "icon" || this.props.variant === "icon-inverse") ? "slds-assistive-text": "";
     if (this.props.disabled) {
       props["disabled"] = "disabled"
     }
