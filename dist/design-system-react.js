@@ -200,7 +200,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      modal: false,
 	      className: '',
 	      listClassName: '',
-	      listItemRenderer: _listItemLabel2['default']
+	      listItemRenderer: null
 	    };
 	  },
 	
@@ -315,6 +315,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    this.setFocus();
 	  },
 	
+	  getListItemRenderer: function getListItemRenderer() {
+	    return this.props.listItemRenderer ? this.props.listItemRenderer : _listItemLabel2['default'];
+	  },
+	
 	  getPopoverContent: function getPopoverContent() {
 	    return _react2['default'].createElement(_list2['default'], {
 	      triggerId: this.state.triggerId,
@@ -329,7 +333,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      onListBlur: this.handleListBlur,
 	      onListItemBlur: this.handleListItemBlur,
 	      onCancel: this.handleCancel,
-	      itemRenderer: this.props.listItemRenderer,
+	      itemRenderer: this.getListItemRenderer(),
 	      theme: this.props.theme });
 	  },
 	
@@ -7458,6 +7462,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var classNames = __webpack_require__(69);
 	
+	var displayName = 'SLDSButton';
+	var propTypes = {
+	  buttonSize: _react2["default"].PropTypes.string,
+	  disabled: _react2["default"].PropTypes.bool,
+	  hint: _react2["default"].PropTypes.bool,
+	  iconName: _react2["default"].PropTypes.string,
+	  iconPosition: _react2["default"].PropTypes.oneOf(["left", "right"]),
+	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "medium", "large"]),
+	  iconVariant: _react2["default"].PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
+	  label: _react2["default"].PropTypes.string.isRequired,
+	  onClick: _react2["default"].PropTypes.func,
+	  responsive: _react2["default"].PropTypes.bool,
+	  stateful: _react2["default"].PropTypes.bool,
+	  tabindex: _react2["default"].PropTypes.string,
+	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
+	};
+	var defaultProps = {};
+	
 	var Button = (function (_React$Component) {
 	  _inherits(Button, _React$Component);
 	
@@ -7465,23 +7487,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, Button);
 	
 	    _get(Object.getPrototypeOf(Button.prototype), "constructor", this).call(this, props);
-	    this.displayName = "SLDSButton";
 	    this.state = { active: false };
 	  }
 	
 	  _createClass(Button, [{
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      /*===============================
-	      TODO: refactor so that React doesn"t throw warnings in console
-	      for (var key in this.props) {
-	        if(this.props.hasOwnProperty(key) && typeof(this.props[key]) === "string" && key !== "label"){
-	          this.props[key] = this.props[key].toLowerCase();
-	        }
-	      }
-	      ===============================*/
-	    }
-	  }, {
 	    key: "onClick",
 	    value: function onClick() {
 	      this.setState({ active: !this.state.active });
@@ -7493,21 +7502,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      var isSelected = this.props.stateful && this.state.active ? true : false;
 	      var notSelected = this.props.stateful && !this.state.active ? true : false;
-	      return classNames(this.props.className, "slds-button", (_classNames = {}, _defineProperty(_classNames, "slds-button--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-button--icon-" + this.props.iconVariant, this.props.iconVariant), _defineProperty(_classNames, "slds-max-small-button--stretch", this.props.responsive), _defineProperty(_classNames, "slds-not-selected", notSelected), _defineProperty(_classNames, "slds-is-selected", isSelected), _defineProperty(_classNames, "slds-button--icon-inverse", this.props.inverse), _classNames));
+	      var iconOnly = this.props.variant === 'icon' ? true : false;
+	      return classNames(this.props.className, "slds-button", (_classNames = {}, _defineProperty(_classNames, "slds-button--" + this.props.variant, !iconOnly), _defineProperty(_classNames, "slds-button--icon-" + this.props.iconVariant, this.props.iconVariant), _defineProperty(_classNames, "slds-max-small-button--stretch", this.props.responsive), _defineProperty(_classNames, "slds-not-selected", notSelected), _defineProperty(_classNames, "slds-is-selected", isSelected), _defineProperty(_classNames, "slds-button--small", this.props.buttonSize), _classNames));
 	    }
 	  }, {
 	    key: "renderIcon",
 	    value: function renderIcon(name) {
 	      if (this.props.iconName || this.props.notSelectedIcon || this.props.selectedIcon || this.props.selectedFocusIcon) {
 	        return _react2["default"].createElement(_SLDSIconsJs.ButtonIcon, {
-	          variant: this.props.variant,
 	          disabled: this.props.disabled,
-	          inverse: this.props.inverse,
-	          stateful: this.props.stateful,
 	          hint: this.props.hint,
 	          name: name,
+	          position: this.props.iconPosition,
 	          size: this.props.iconSize,
-	          position: this.props.iconPosition
+	          stateful: this.props.stateful,
+	          variant: this.props.variant
 	        });
 	      }
 	    }
@@ -7516,11 +7525,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function renderIconMore() {
 	      if (this.props.iconVariant === "more") {
 	        return _react2["default"].createElement(_SLDSIconsJs.ButtonIcon, {
-	          variant: this.props.variant,
 	          disabled: this.props.disabled,
-	          inverse: this.props.inverse,
 	          name: "down",
-	          size: "x-small"
+	          size: "x-small",
+	          variant: this.props.variant
 	        });
 	      }
 	    }
@@ -7529,10 +7537,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var props = (0, _lodashOmit2["default"])(this.props, "className");
 	      var click = (0, _utilsCreateChainedFunction2["default"])(this.props.onClick, this.onClick.bind(this));
-	      var labelClasses = this.props.variant === "icon" ? "slds-assistive-text" : "";
+	      var labelClasses = this.props.variant === "icon" || this.props.variant === "icon-inverse" ? "slds-assistive-text" : "";
 	      if (this.props.disabled) {
 	        props["disabled"] = "disabled";
-	      };
+	      }
 	
 	      if (this.props.stateful) {
 	        return _react2["default"].createElement("button", _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), _react2["default"].createElement("span", { className: "slds-text-not-selected" }, this.renderIcon(this.props.notSelectedIcon), this.props.notSelectedLabel), _react2["default"].createElement("span", { className: "slds-text-selected" }, this.renderIcon(this.props.selectedIcon), this.props.selectedLabel), _react2["default"].createElement("span", { className: "slds-text-selected-focus" }, this.renderIcon(this.props.selectedFocusIcon), this.props.selectedFocusLabel));
@@ -7545,21 +7553,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Button;
 	})(_react2["default"].Component);
 	
-	Button.propTypes = {
-	  label: _react2["default"].PropTypes.string.isRequired,
-	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon"]),
-	  tabindex: _react2["default"].PropTypes.string,
-	  disabled: _react2["default"].PropTypes.bool,
-	  inverse: _react2["default"].PropTypes.bool,
-	  hint: _react2["default"].PropTypes.bool,
-	  stateful: _react2["default"].PropTypes.bool,
-	  responsive: _react2["default"].PropTypes.bool,
-	  iconName: _react2["default"].PropTypes.string,
-	  iconVariant: _react2["default"].PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
-	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "medium", "large"]),
-	  iconPosition: _react2["default"].PropTypes.oneOf(["left", "right"]),
-	  onClick: _react2["default"].PropTypes.func
-	};
+	Button.displayName = displayName;
+	Button.propTypes = propTypes;
+	Button.defaultProps = defaultProps;
 	
 	module.exports = Button;
 
@@ -11097,9 +11093,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	
 	    if (hasHeader) {
-	      header = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass) }, this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null, _react2['default'].createElement(_SLDSButton2['default'], { label: 'Close', variant: 'icon', iconName: 'close', iconSize: 'large', inverse: true, className: 'slds-modal__close', onClick: this.closeModal }));
+	      header = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass) }, this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null, _react2['default'].createElement(_SLDSButton2['default'], { label: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal }));
 	    } else {
-	      header = _react2['default'].createElement('div', { style: { position: 'relative' } }, _react2['default'].createElement(_SLDSButton2['default'], { label: 'Close', variant: 'icon', iconName: 'close', iconSize: 'large', inverse: true, className: 'slds-modal__close', onClick: this.closeModal }));
+	      header = _react2['default'].createElement('div', { style: { position: 'relative' } }, _react2['default'].createElement(_SLDSButton2['default'], { label: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal }));
 	    }
 	
 	    return header;
