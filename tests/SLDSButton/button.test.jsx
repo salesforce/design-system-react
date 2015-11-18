@@ -49,12 +49,6 @@ describe('SLDSButton: ',  function(){
       expect(size).to.not.equal(undefined);
     });
 
-    it('without prop specified, renders icon position on left side', function() {
-      let button = generateButton(<SLDSButton label='Test' iconName='download' />);
-      let position = button.getElementsByClassName("slds-button__icon--left")[0];
-      expect(position).to.not.equal(undefined);
-    });
-
     it('renders icon position', function() {
       let button = generateButton(<SLDSButton label='Test' iconName='download' iconPosition='right' />);
       let position = button.getElementsByClassName("slds-button__icon--right")[0];
