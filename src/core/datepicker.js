@@ -26,6 +26,7 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 
 	_defaultProperties: {
 		inputLabel: null,
+		dateSelected: null,
 		multiSelect: false,
 		dateRange: [new Date('1991'), new Date('2030')],
 		targetDistance: 4, // Used by positionable
@@ -34,7 +35,6 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 	},
 
 	_defaultState: {
-		selectedDate: null,
 		dateViewing: new Date()
 	},
 
@@ -223,9 +223,8 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		return date.getTime() >= dateRange[0] && date.getTime() <= dateRange[1];
 	},
 
-	// Arrow right, Arrow left, Backspace not valid keys for date update
-	_validateInputKey: function (keyCode) {
-		return (keyCode !== 37 && keyCode !== 39 && keyCode !== 8);
+	_roundDate: function (date) {
+		return new Date(date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear());
 	}
 
 });
