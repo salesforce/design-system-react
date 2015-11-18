@@ -101,7 +101,7 @@ const Base = {
 
 	// Facades comes with support for internationalization of strings out of the box. Strings may be provided globally to `Lib` as either a js object or as a promise which resolves as such (see more details in that file), and overrides for a specific instance of a control may be passed in as properties.
 	_getStrings (callback) {
-		Lib.getStrings().then(_strings => {
+		const applyStrings = _strings => {
 			let strings = this.getProperty('strings');
 
 			if (strings) {
@@ -111,7 +111,15 @@ const Base = {
 			}
 
 			return strings;
-		}).then(callback);
+		};
+		
+		const globalStrings = Lib.getStrings();
+		
+		if (Lib.isPromise(globalStrings)) {
+			globalStrings.then(applyStrings).then(callback);
+		} else {
+			callback(applyStrings(globalStrings));
+		}
 	},
 
 	// Every control inherits the current version of the library.

@@ -79,6 +79,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		const strings = this.getState('strings');
 		const $pill = this.elements.pillTemplate.clone();
 
+		// TODO: Fix this so that it doesn't flicker. Even if that means ditching the button control and going back to hardcoded html
 		this.button = new Button({
 			assistiveText: strings.REMOVE,
 			icon: 'action.close',

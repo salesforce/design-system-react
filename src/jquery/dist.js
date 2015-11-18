@@ -13,6 +13,7 @@ import Picklist from './picklist/picklist';
 import Pillbox from './pillbox/pillbox';
 import Popover from './popover/popover';
 import Radio from './radio/radio';
+import Radios from './radio/radios';
 import Spinner from './spinner/spinner';
 import Tooltip from './tooltip/tooltip';
 import Tree from './tree/tree';
@@ -31,6 +32,7 @@ module.exports = {
 	Pillbox,
 	Popover,
 	Radio,
+	Radios,
 	Spinner,
 	Tooltip,
 	Tree

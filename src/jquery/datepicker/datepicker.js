@@ -65,6 +65,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_bindUIEvents () {
 		this.element.on('click.slds-form-element', '.slds-input', $.proxy(this._triggerCalendar, this));
+		this.element.on('keyup.slds-form-element', '.slds-input', $.proxy(this._manualDateInput, this));
 		this.element.on('click.slds-datepicker', this._cancelEventProp);
 
 		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', $.proxy(this._backMonth, this));
@@ -215,6 +216,25 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this._renderDateRange();
 	},
 
+	_manualDateInput (e) {
+		const inputValue = this.elements.input.val();
+		const validInputKey = this._validateInputKey(e.keyCode);
+		const validatedDate = validInputKey ? this._validateDateInput(inputValue) : false;
+		const multiselect = this.getProperty('multiSelect');
+
+		if (validatedDate) {
+			if (multiselect) {
+				this.deselectAll();
+				this.selectItems([
+					{ date: validatedDate[0] },
+					{ date: validatedDate[1] }
+				]);
+			} else {
+				this.selectItem({ date: validatedDate });
+			}
+		}
+	},
+
 	_selectDate (e) {
 		const isRangeSelect = this.getProperty('multiSelect');
 		const dayData = $(e.currentTarget).data();
@@ -227,11 +247,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 			if (isRangeSelect) {
 				selectedDates = this.getSelectedItems();
 
-				if (selectedDates.length > 1) {
+				if (selectedDates && selectedDates.length > 1) {
 					this.deselectAll();
 				}
 
-				if (selectedDates.length === 1 && selectedDates[0].date.getTime() > dayData.date.getTime()) {
+				if (selectedDates && selectedDates.length === 1 && selectedDates[0].date.getTime() > dayData.date.getTime()) {
 					insertIndex = 0;
 				}
 
