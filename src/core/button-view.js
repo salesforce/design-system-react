@@ -1,5 +1,9 @@
-// # Button View Control
+// # Button View Private Control
 // ### Core
+
+// Helps implement the Button [design pattern](https://www.lightningdesignsystem.com/components/buttons).
+
+// Buttons are made of one or more `ButtonViews`. Stateful buttons have three views, but most buttons only have one. `ButtonViews` should only be used within a button.
 
 // Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
@@ -42,9 +46,9 @@ const ButtonViewCore = Lib.merge({}, Base, {
 		'large': 'slds-button__icon--large'
 	},
 
+		// `getIconClassNames` is a part of button/button-view because icons within buttons
+		// have a completely different set of classes than icons on their own
 	_getIconClassNames (additionalClasses) {
-		// getIconClassNames is a part of button/button-view because icons within buttons
-		// have a completely different set of class than icons on their own
 		let iconBaseClass;
 		let buttonIconSizeClass;
 
@@ -54,6 +58,7 @@ const ButtonViewCore = Lib.merge({}, Base, {
 			iconBaseClass = this.cssClasses.ICON;
 		}
 
+		// Most icons within buttons use button icon styling, but a few use the standard icon style
 		if (this.getProperty('iconStyle') === 'icon-only') {
 			iconBaseClass = this.cssClasses.ICON_ONLY;
 		}
@@ -62,9 +67,11 @@ const ButtonViewCore = Lib.merge({}, Base, {
 			buttonIconSizeClass = this.buttonIconSizes[this.getProperty('iconSize')];
 		}
 
+		const iconPositionClass = !!this.getProperty('text') && this.getProperty('iconStyle') !== 'icon-only'
+				&& this.iconPositions[this.getProperty('iconPosition')];
+
 		return classNames(iconBaseClass,
-			!!this.getProperty('text') && this.getProperty('iconStyle') !== 'icon-only'
-				&& this.iconPositions[this.getProperty('iconPosition')],
+			iconPositionClass,
 			buttonIconSizeClass,
 			additionalClasses);
 	}
