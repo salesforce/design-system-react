@@ -19,7 +19,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // Template imports
 import template from './radios-template';
 
-const CONTROL = 'radios';
+const CONTROL = 'Radios';
 
 // Constructor
 let Radios = function Radios () {
