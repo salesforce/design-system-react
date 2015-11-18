@@ -210,10 +210,10 @@ module.exports = React.createClass( {
     if(hasHeader) {
       header = (
         <div className={cx(headerClass)}>
+          <SLDSButton label='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal} />
           {this.props.toast}
           <h2 className={cx(titleClass)}>{this.props.title}</h2>
           {this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p>:null}
-          <SLDSButton label='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal} />
         </div>
       )
     }else{
