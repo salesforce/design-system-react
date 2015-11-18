@@ -213,13 +213,13 @@ module.exports = React.createClass( {
           {this.props.toast}
           <h2 className={cx(titleClass)}>{this.props.title}</h2>
           {this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p>:null}
-          <SLDSButton label='Close' variant='icon' iconName='close' iconSize='large' inverse={true} className='slds-modal__close' onClick={this.closeModal} />
+          <SLDSButton label='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal} />
         </div>
       )
     }else{
       header = (
         <div style={{position: 'relative'}}>
-          <SLDSButton label='Close' variant='icon' iconName='close' iconSize='large' inverse={true} className='slds-modal__close' onClick={this.closeModal} />
+          <SLDSButton label='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal} />
         </div>
       )
     }
