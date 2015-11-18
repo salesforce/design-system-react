@@ -36,16 +36,6 @@ export const PicklistObject = {
 	_initElements () {
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
 		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
-
-		this.button = new Button({
-			icon: 'utility.down',
-			iconStyle: 'icon-only',
-			theme: 'neutral',
-			truncate: true
-		});
-		this.button.element.addClass('slds-picklist__label');
-		this.button.replaceAll(this.element.find('x-dropdown-button')[0]);
-		this.elements.button = this.button.element;
 	},
 
 	_bindUIEvents () {
@@ -121,15 +111,18 @@ export const PicklistObject = {
 		const selection = this._getSelection();
 		const elements = this.elements;
 
-		// Configure the button
-		const disabled = !!this.getProperty('disabled');
-		elements.button.prop('disabled', disabled);
-
-		// Show the current selection if there is one
-		const selectionName = selection.getText() || strings.SELECT_AN_OPTION;
-		this.button.renderView({
-			text: selectionName
+		this.button = new Button({
+			icon: 'utility.down',
+			iconStyle: 'icon-only',
+			theme: 'neutral',
+			truncate: true,
+			disabled: this.getProperty('disabled'),
+			text: selection.getText() || strings.SELECT_AN_OPTION
 		});
+		this.button.replaceAll(this.element.find('x-dropdown-button')[0]);
+		
+		this.elements.button = this.button.element;
+		this.elements.button.addClass('slds-picklist__label');
 
 		this._renderMenu(elements);
 
@@ -182,7 +175,12 @@ export const PicklistObject = {
 			const disabled = !!this.getProperty('disabled');
 
 			this.elements.dropdown.toggleClass('slds-hide', disabled);
-			this.elements.button.prop('disabled', disabled);
+			
+			if (disabled) {
+				this.button.disable();
+			} else {
+				this.button.enable();
+			}
 		}
 	},
 
