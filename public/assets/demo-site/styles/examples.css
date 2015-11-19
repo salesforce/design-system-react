@@ -13,3 +13,9 @@
 .slds-tooltip, .slds-popover {
     position:absolute;
 }
+
+/* React demo page */
+
+.demo-controls {
+	display: none;
+}

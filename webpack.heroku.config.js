@@ -9,6 +9,7 @@ var packageJson = require('./package.json');
 var config = {
 	entry: {
 		react: ['./src/react/examples'],
+		'react-demo': ['./public-source/js/examples'],
 		jquery: ['./src/jquery/examples']
 	},
 	resolve: {
