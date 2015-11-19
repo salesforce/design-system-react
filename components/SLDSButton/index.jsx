@@ -101,6 +101,7 @@ class SLDSButton extends React.Component {
         {this.renderIconMore()}
 
         {(this.props.iconPosition !== "right")? this.renderLabel(): null}
+        {this.props.children}
       </button>
     )
   }

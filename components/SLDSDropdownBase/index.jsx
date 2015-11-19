@@ -314,7 +314,6 @@ module.exports = React.createClass( {
         ref="button"
         aria-haspopup="true"
         label={this.props.label}
-        assistiveText={this.props.label}
         className={this.props.className}
         style={this.props.style}
         variant={this.props.variant}
