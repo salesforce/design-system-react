@@ -17,15 +17,15 @@ import SLDSUtilityIcon from './SLDSUtilityIcon';
 export const ButtonIcon = React.createClass({
 
     getDefaultProps() {
-
         return {
             category: 'utility', // Utility Icon Reference: https://www.lightningdesignsystem.com/resources/icons#utility
         };
     },
 
     render() {
-
         let className  = 'slds-button__icon';
+        let label = null;
+
         if (this.props.position) {
           //If no position prop given, default to left
           className += ' slds-button__icon--' + this.props.position;
@@ -36,13 +36,15 @@ export const ButtonIcon = React.createClass({
         if (this.props.destructive) {
           className += ' slds-button__icon--destructive';
         }
-/*
-        if(this.props.category === 'utility'){
-            return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;
+        if (this.props.assistiveText) {
+          label = <span className="slds-assistive-text">{this.props.assistiveText}</span>;
         }
-        return <svg aria-hidden='true' className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
-*/
-        return <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} />;
+        return (
+          <span>
+          {label}
+          <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} />
+          </span>
+        )
 
 
     }
