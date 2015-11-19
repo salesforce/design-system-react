@@ -222,10 +222,22 @@ let _strings;
 
 export function registerStrings (strings) {
 	_strings = strings;
+	
+	if (isPromise(strings)) {
+		Promise.resolve(strings).then(resolvedStrings => {
+			_strings = resolvedStrings;
+		});
+	}
 }
 
-export function getStrings () {
-	return _strings;
+export function getStrings (callback) {
+	if (isPromise(_strings)) {
+		_strings.then(callback);
+	} else {
+		callback(_strings);
+	}
+	
+	return Promise.resolve(_strings);
 }
 
 import defaultStrings from './strings';

@@ -45,20 +45,6 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		this._bindUIEvents();
 	},
 
-	_onRemove (newDeselection) {
-		return new Promise((resolve) => {
-			const onRemove = this.getProperty('onRemove');
-			
-			if (onRemove) {
-				onRemove([newDeselection._item], (itemsToDeselect) => {
-					resolve(itemsToDeselect);
-				});
-			} else {
-				resolve();
-			}
-		});
-	},
-
 	_onEnabledOrDisabled (props) {
 		this.element.toggleClass(this.cssClasses.DISABLED, props.disabled);
 	},
@@ -104,7 +90,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 			elements.push(self._renderPill(pill));
 		});
 
-		this.elements.group.find('.slds-pill').remove();
+		this.elements.group.empty();
 		this.elements.group.prepend(elements);
 	}
 });
