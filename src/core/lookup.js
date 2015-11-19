@@ -115,7 +115,6 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	_configureKeyboardNavigation (filteredCollection) {
 		const navigableItems = this._getNavigableItems(filteredCollection);
 		
-		if (this.getProperty('menuHeaderRenderer')) navigableItems.indexes.unshift('header');
 		if (this.getProperty('menuFooterRenderer')) navigableItems.indexes.push('footer');
 		
 		return navigableItems;
@@ -156,8 +155,13 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 				searchString
 			});
 			
-			this._filteredCollection = this._getFilteredCollection(this._collection, searchString);
-			this._navigableItems = this._configureKeyboardNavigation(this._filteredCollection);
+			const results = this._getFilteredCollection(this._collection, searchString);
+			
+			this.setState({
+				results
+			});
+			
+			this._navigableItems = this._configureKeyboardNavigation(results);
 		}
 	}
 });
