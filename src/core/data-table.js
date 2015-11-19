@@ -73,6 +73,27 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 
 		getId (item) {
 			return item.get('id');
+		},
+
+		compareTo (item, itemToCompare, field) {
+			let itemCompA = item.get(field.sortColumn.propertyName);
+			let itemCompB = itemToCompare.get(field.sortColumn.propertyName);
+			let sortResult = 0;
+
+			if (Lib.isString(itemCompA) && Lib.isString(itemCompB)) {
+				itemCompA = itemCompA.toLowerCase();
+				itemCompB = itemCompB.toLowerCase();
+			}
+
+
+			if (field.sortDirection === 'asc') {
+				sortResult = itemCompA < itemCompB ? 1 : -1;
+			} else {
+				sortResult = itemCompA > itemCompB ? 1 : -1;
+			}
+
+
+			return sortResult;
 		}
 	},
 

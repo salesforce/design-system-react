@@ -97,26 +97,17 @@ export const DataTableObject = {
 	},
 
 	_render () {
-		const dataSource = this.getProperty('dataSource');
-
-		if (dataSource) {
-			dataSource({}, (response) => {
-				this._collection = this._getDataAdapter(response.data);
-				this._renderCollection();
-			});
-		} else if (this._collection.length()) {
-			this._renderCollection();
-		}
-
+		this._renderCollection();
 		this.element.addClass(this._getClassNames(this.getProperty('styles')));
 		
 		return this.element;
 	},
 
-	_renderCollection () {
+	_renderCollection (sorted) {
 		const self = this;
 		const columns = this.getProperty('columns');
 		const isRowSelect = this.getProperty('selectRows');
+		const collectionForSort = sorted || this._collection;
 
 		if (isRowSelect && !(columns[0].propertyName === 'select')) {
 			columns.splice(0, 0, {
@@ -139,7 +130,8 @@ export const DataTableObject = {
 
 		// For each item in the collection
 		this.elements.tbody.empty();
-		this._collection.forEach(item => {
+
+		collectionForSort.forEach(item => {
 			const $row = $('<tr/>', { class: 'slds-hint-parent' });
 
 			// For each column marked for render, create a cell for that value on this data node
@@ -178,16 +170,38 @@ export const DataTableObject = {
 	},
 
 	_onSort () {
-		const dataSource = this.getProperty('dataSource');
+		const sortedCollection = [];
+		const sortProps = {
+			sortDirection: this._props.sortDirection,
+			sortColumn: this._props.sortColumn
+		};
 
-		if (dataSource) {
-			dataSource(this._generatePropertyPayload(), (response) => {
-				this._collection = this._getDataAdapter(response.data);
-				this._renderCollection();
-			});
-		} else {
-			this._renderCollection();
-		}
+		this._collection.forEach(item => {
+			let insertIndex = null;
+
+			if (sortedCollection.length) {
+				sortedCollection.forEach( (sortItem, index) => {
+					let relation;
+
+					if (!insertIndex && insertIndex !== 0) {
+						relation = item.compareTo(sortItem, sortProps);
+
+						if (relation > 0) {
+							insertIndex = index;
+						} else if (relation === 0 || relation < 0 && index === sortedCollection.length - 1 ) {
+							insertIndex = index + 1;
+						}
+					}
+				});
+				if (!insertIndex && insertIndex !== 0) insertIndex = sortedCollection.length - 1;
+
+				sortedCollection.splice(insertIndex, 0, item);
+			} else {
+				sortedCollection.push(item);
+			}
+		});
+
+		this._renderCollection(sortedCollection);
 	},
 
 	_onSelected () {
