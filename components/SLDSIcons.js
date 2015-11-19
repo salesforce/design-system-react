@@ -36,6 +36,9 @@ export const ButtonIcon = React.createClass({
         if (this.props.destructive) {
           className += ' slds-button__icon--destructive';
         }
+        if (this.props.hint) {
+          className += ' slds-button__icon--hint';
+        }
         if (this.props.assistiveText) {
           label = <span className="slds-assistive-text">{this.props.assistiveText}</span>;
         }

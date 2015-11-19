@@ -3486,6 +3486,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (this.props.destructive) {
 	            className += ' slds-button__icon--destructive';
 	        }
+	        if (this.props.hint) {
+	            className += ' slds-button__icon--hint';
+	        }
 	        if (this.props.assistiveText) {
 	            label = _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.assistiveText);
 	        }
@@ -7470,17 +7473,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var defaultProps = {};
 	
-	var Button = (function (_React$Component) {
-	  _inherits(Button, _React$Component);
+	var SLDSButton = (function (_React$Component) {
+	  _inherits(SLDSButton, _React$Component);
 	
-	  function Button(props) {
-	    _classCallCheck(this, Button);
+	  function SLDSButton(props) {
+	    _classCallCheck(this, SLDSButton);
 	
-	    _get(Object.getPrototypeOf(Button.prototype), "constructor", this).call(this, props);
+	    _get(Object.getPrototypeOf(SLDSButton.prototype), "constructor", this).call(this, props);
 	    this.state = { active: false };
 	  }
 	
-	  _createClass(Button, [{
+	  _createClass(SLDSButton, [{
 	    key: "onClick",
 	    value: function onClick() {
 	      this.setState({ active: !this.state.active });
@@ -7540,14 +7543,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }]);
 	
-	  return Button;
+	  return SLDSButton;
 	})(_react2["default"].Component);
 	
-	Button.displayName = displayName;
-	Button.propTypes = propTypes;
-	Button.defaultProps = defaultProps;
+	SLDSButton.displayName = displayName;
+	SLDSButton.propTypes = propTypes;
+	SLDSButton.defaultProps = defaultProps;
 	
-	module.exports = Button;
+	module.exports = SLDSButton;
 
 /***/ },
 /* 51 */
@@ -9441,27 +9444,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var ButtonGroup = (function (_React$Component) {
-	  _inherits(ButtonGroup, _React$Component);
+	var displayName = "SLDSButtonGroup";
+	var propTypes = {
+	  children: _react2["default"].PropTypes.node.isRequired
+	};
+	var defaultProps = {};
 	
-	  function ButtonGroup(props) {
-	    _classCallCheck(this, ButtonGroup);
+	var SLDSButtonGroup = (function (_React$Component) {
+	  _inherits(SLDSButtonGroup, _React$Component);
 	
-	    _get(Object.getPrototypeOf(ButtonGroup.prototype), "constructor", this).call(this, props);
+	  function SLDSButtonGroup(props) {
+	    _classCallCheck(this, SLDSButtonGroup);
+	
+	    _get(Object.getPrototypeOf(SLDSButtonGroup.prototype), "constructor", this).call(this, props);
 	    this.state = {};
 	  }
 	
-	  _createClass(ButtonGroup, [{
+	  _createClass(SLDSButtonGroup, [{
 	    key: "render",
 	    value: function render() {
 	      return _react2["default"].createElement("div", { className: "slds-button-group", role: "group" }, this.props.children);
 	    }
 	  }]);
 	
-	  return ButtonGroup;
+	  return SLDSButtonGroup;
 	})(_react2["default"].Component);
 	
-	module.exports = ButtonGroup;
+	SLDSButtonGroup.displayName = displayName;
+	SLDSButtonGroup.propTypes = propTypes;
+	SLDSButtonGroup.defaultProps = defaultProps;
+	
+	module.exports = SLDSButtonGroup;
 
 /***/ },
 /* 71 */

@@ -13,7 +13,7 @@ import React from "react";
 
 const displayName = "SLDSButtonGroup";
 const propTypes = {
-  children: React.PropTypes.element.isRequired
+  children: React.PropTypes.node.isRequired
 };
 const defaultProps = {};
 
@@ -36,5 +36,5 @@ SLDSButtonGroup.displayName = displayName;
 SLDSButtonGroup.propTypes = propTypes;
 SLDSButtonGroup.defaultProps = defaultProps;
 
-module.exports = ButtonGroup;
+module.exports = SLDSButtonGroup;
 
