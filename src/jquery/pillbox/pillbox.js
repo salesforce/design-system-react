@@ -65,14 +65,12 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		const strings = this.getState('strings');
 		const $pill = this.elements.pillTemplate.clone();
 
-		// TODO: Fix this so that it doesn't flicker. Even if that means ditching the button control and going back to hardcoded html
-		this.button = new Button({
+		$pill.button = new Button({
 			assistiveText: strings.REMOVE,
 			icon: 'action.close',
 			iconStyle: 'icon-bare'
-		});
-		this.button.replaceAll($pill.find('x-remove-button')[0]);
-		$pill.button = this.button.element;
+		}).element;
+		$pill.find('x-remove-button').replaceWith($pill.button);
 
 		$pill.find('.slds-pill__label').text(pill.getText());
 		$pill.data({
@@ -82,6 +80,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		return $pill;
 	},
 
+	// TODO: Fix this so that it doesn't flicker when a pill is removed
 	_renderSelection () {
 		const self = this;
 		const elements = [];
