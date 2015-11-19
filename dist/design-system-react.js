@@ -119,6 +119,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSNotification2 = _interopRequireDefault(_SLDSNotification);
 	
+	var _SLDSUtilityIcon = __webpack_require__(36);
+	
+	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
+	
 	module.exports = {
 	  SLDSPicklistBase: _SLDSPicklistBase2['default'],
 	  SLDSDropdownBase: _SLDSDropdownBase2['default'],
@@ -131,7 +135,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  SLDSModalTrigger: _SLDSModalTrigger2['default'],
 	  SLDSIcons: _SLDSIcons2['default'],
 	  SLDSNotification: _SLDSNotification2['default'],
-	  SLDSTooltip: _SLDSTooltip2['default']
+	  SLDSTooltip: _SLDSTooltip2['default'],
+	  SLDSUtilityIcon: _SLDSUtilityIcon2['default']
 	};
 
 /***/ },
@@ -3462,41 +3467,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	    displayName: 'ButtonIcon',
 	
 	    getDefaultProps: function getDefaultProps() {
-	
 	        return {
 	            category: 'utility' };
 	    },
 	
 	    // Utility Icon Reference: https://www.lightningdesignsystem.com/resources/icons#utility
 	    render: function render() {
-	
 	        var className = 'slds-button__icon';
-	        if (this.props.variant !== 'icon') {
+	        var label = null;
+	
+	        if (this.props.position) {
 	            //If no position prop given, default to left
-	            this.props.position ? className += ' slds-button__icon--' + this.props.position : className += ' slds-button__icon--left';
+	            className += ' slds-button__icon--' + this.props.position;
 	        }
 	        if (this.props.size) {
 	            className += ' slds-button__icon--' + this.props.size;
 	        }
-	        if (this.props.inverse) {
-	            className += ' slds-button__icon--inverse';
-	        }
-	        if (this.props.stateful) {
-	            className += ' slds-button__icon--stateful';
-	        }
-	        if (this.props.hint) {
-	            className += ' slds-button__icon--hint';
-	        }
 	        if (this.props.destructive) {
 	            className += ' slds-button__icon--destructive';
 	        }
-	        /*
-	                if(this.props.category === 'utility'){
-	                    return <SLDSUtilityIcon name={this.props.name} aria-hidden='true' className={className} />;
-	                }
-	                return <svg aria-hidden='true' className={className} dangerouslySetInnerHTML={{__html: useTag }} />;
-	        */
-	        return _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className });
+	        if (this.props.assistiveText) {
+	            label = _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.assistiveText);
+	        }
+	        return _react2['default'].createElement('span', null, label, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className }));
 	    }
 	
 	});
@@ -3520,9 +3513,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var label = null;
 	
 	        var className = 'slds-icon';
-	        if (this.props.stateful) {
-	            className += '--stateful';
-	        }
 	        if (this.props.className) {
 	            className += ' ' + this.props.className;
 	        }
@@ -11288,7 +11278,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	        return _react2["default"].createElement(_SLDSButton2["default"], {
 	          label: "Dismiss Notification",
-	          variant: "icon",
+	          variant: "icon-inverse",
 	          iconName: "close",
 	          iconSize: size,
 	          inverse: true,

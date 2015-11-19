@@ -80,7 +80,7 @@ class SLDSButtonStateful extends React.Component {
     else if(this.props.type === "icon") {
       return (
         <button className={this.getClassName()} onClick={this.handleClick.bind(this)}>
-          <ButtonIcon disabled={this.props.disabled} name="like" size="large" className="slds-button__icon--stateful"  />
+          <ButtonIcon disabled={this.props.disabled} name={this.props.iconName} size={this.props.iconSize} assistiveText={this.props.assistiveText} className="slds-button__icon--stateful"  />
         </button>
       )
     }
