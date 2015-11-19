@@ -52,7 +52,7 @@ module.exports = React.createClass( {
                   <SLDSButton label='Save' variant='neutral' />
 
                 <SLDSDropdownBase
-                    label='More Options'
+                    assistiveText='More Options'
                     variant='icon'
                     iconName='down'
                     iconVariant='border-filled'
