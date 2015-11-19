@@ -101,6 +101,12 @@ module.exports = React.createClass( {
     }
   },
 
+  clearBodyScroll: function updateBodyScroll() {
+    if (window && document && document.body) {
+      document.body.style.overflow = 'inherit';
+    }
+  },
+
   handleModalClick(event) {
     if(event && event.stopPropagation){
       event.stopPropagation();
@@ -252,6 +258,10 @@ module.exports = React.createClass( {
     }
 
 
+  },
+
+  componentWillUnmount () {
+    this.clearBodyScroll();
   }
 
 
