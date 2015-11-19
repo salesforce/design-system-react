@@ -61,11 +61,23 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 		const $icon = this._renderIcon('utility.event', 'slds-input__icon slds-icon-text-default');
 		$icon.replaceAll(this.elements.formElement.find('x-input-icon')[0]);
+
+		const selDate = this.getProperty('dateSelected');
+		if (selDate) {
+			if (this.getProperty('multiSelect')) {
+				this.selectItems([
+					{ date: this._roundDate(selDate[0]) },
+					{ date: this._roundDate(selDate[1]) }
+				]);
+			} else {
+				this.selectItem({date: this._roundDate(selDate)});
+			}
+		}
 	},
 
 	_bindUIEvents () {
 		this.element.on('click.slds-form-element', '.slds-input', $.proxy(this._triggerCalendar, this));
-		this.element.on('keyup.slds-form-element', '.slds-input', $.proxy(this._manualDateInput, this));
+		this.element.on('keyup.slds-form-element', '.slds-input', $.proxy(this._activateManualInput, this));
 		this.element.on('click.slds-datepicker', this._cancelEventProp);
 
 		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', $.proxy(this._backMonth, this));
@@ -216,10 +228,14 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this._renderDateRange();
 	},
 
-	_manualDateInput (e) {
+	_activateManualInput () {
+		this.element.off('focusout.slds-form-element', '.slds-input');
+		this.element.on('focusout.slds-form-element', '.slds-input', $.proxy(this._manualDateInput, this));
+	},
+
+	_manualDateInput () {
 		const inputValue = this.elements.input.val();
-		const validInputKey = this._validateInputKey(e.keyCode);
-		const validatedDate = validInputKey ? this._validateDateInput(inputValue) : false;
+		const validatedDate = this._validateDateInput(inputValue);
 		const multiselect = this.getProperty('multiSelect');
 
 		if (validatedDate) {
@@ -233,6 +249,8 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 				this.selectItem({ date: validatedDate });
 			}
 		}
+
+		this.element.off('focusout.slds-form-element', '.slds-input');
 	},
 
 	_selectDate (e) {
