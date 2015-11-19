@@ -46,8 +46,17 @@ module.exports = React.createClass( {
                 {require('raw-loader!../../code-snippets/SLDSIcon.txt')}
               </PrismCode>
               <div className='slds-p-vertical--large'>
-                <div className='slds-input-has-icon slds-input-has-icon--left'>
+                <div>
+                Utility
                 <Icon name='open_folder' category='utility' assistiveText='Files' className='slds-input__icon slds-icon-text-default'/>
+                </div>
+                <div>
+                Action
+                <Icon name='announcement' category='action' assistiveText='Action' />
+                </div>
+                <div>
+                Standard
+                <Icon name='account' category='standard' assistiveText='Action' />
                 </div>
               </div>
             </div>
