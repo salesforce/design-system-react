@@ -36,6 +36,15 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	},
 
 	_render () {
+		const strings = this.getState('strings');
+		
+		// TODO: Now that string rendering has been updated this should work fine, but further analysis may be required to ensure that is the case
+		this.elements.button = new Button({
+			assistiveText: strings.REMOVE,
+			icon: 'action.close',
+			iconStyle: 'icon-bare'
+		}).element;
+		
 		this._renderSelection();
 		
 		return this.element;
@@ -62,14 +71,9 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	},
 
 	_renderPill (pill) {
-		const strings = this.getState('strings');
 		const $pill = this.elements.pillTemplate.clone();
 
-		$pill.button = new Button({
-			assistiveText: strings.REMOVE,
-			icon: 'action.close',
-			iconStyle: 'icon-bare'
-		}).element;
+		$pill.button = this.elements.button.clone();
 		$pill.find('x-remove-button').replaceWith($pill.button);
 
 		$pill.find('.slds-pill__label').text(pill.getText());
