@@ -36,6 +36,7 @@
   "main": "lib/index.js",
   "homepage": "https://github.com/salesforce-ux/design-system-react",
   "devDependencies": {
+    "@salesforce-ux/design-system": "^0.12.0",
     "@salesforce-ux/icons": "latest",
     "babel": "^5.8.23",
     "babel-core": "^5.4.7",
