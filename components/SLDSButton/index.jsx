@@ -34,7 +34,7 @@ const propTypes = {
 const defaultProps = {};
 
 
-class Button extends React.Component {
+class SLDSButton extends React.Component {
 
   constructor(props) {
     super(props);
@@ -128,8 +128,8 @@ class Button extends React.Component {
   }
 }
 
-Button.displayName = displayName;
-Button.propTypes = propTypes;
-Button.defaultProps = defaultProps;
+SLDSButton.displayName = displayName;
+SLDSButton.propTypes = propTypes;
+SLDSButton.defaultProps = defaultProps;
 
-module.exports = Button;
+module.exports = SLDSButton;

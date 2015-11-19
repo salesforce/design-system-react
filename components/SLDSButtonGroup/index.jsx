@@ -11,19 +11,30 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 
-class ButtonGroup extends React.Component {
+const displayName = "SLDSButtonGroup";
+const propTypes = {
+  children: React.PropTypes.element.isRequired
+};
+const defaultProps = {};
+
+class SLDSButtonGroup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
+
   render() {
     return (
       <div className="slds-button-group" role="group">
         {this.props.children}
       </div>
-    );
+    )
   }
 }
+
+SLDSButtonGroup.displayName = displayName;
+SLDSButtonGroup.propTypes = propTypes;
+SLDSButtonGroup.defaultProps = defaultProps;
 
 module.exports = ButtonGroup;
 
