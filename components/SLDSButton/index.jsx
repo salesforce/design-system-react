@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 const classNames = require("classnames");
 import createChainedFunction from "../utils/create-chained-function";
-import {ButtonIcon} from "../SLDSIcons.js";
+import {ButtonIcon} from "../SLDSIcons";
 import omit from "lodash.omit";
 
 const displayName = 'SLDSButton';

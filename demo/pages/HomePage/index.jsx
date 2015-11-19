@@ -88,7 +88,7 @@ module.exports = React.createClass( {
               <SLDSColumn className='slds-has-flexi-truncate'>
                 <div className='slds-media'>
                   <div className='slds-media__figure'>
-                    <Icon name='lead' category='standard' size='large' position='left' />
+                    <Icon assistiveText="lead" name='lead' category='standard' size='large' position='left' />
                   </div>
                   <div className='slds-media__body'>
                     <p className='slds-text-heading--label'>Lightning Design System</p>
