@@ -52,7 +52,7 @@ module.exports = React.createClass( {
                   <SLDSButton label='Save' variant='neutral' />
 
                 <SLDSDropdownBase
-                    label='More Options'
+                    assistiveText='More Options'
                     variant='icon'
                     iconName='down'
                     iconVariant='border-filled'
@@ -83,7 +83,7 @@ module.exports = React.createClass( {
                 <SLDSButtonGroup>
                   <SLDSButtonStateful type="icon" assistiveText="View Reports" label='Chart' variant='icon' iconName='chart' />
                   <SLDSButtonStateful type="icon" assistiveText="Filter Data" label='Filter' variant='icon' iconName='filter' />
-                  <SLDSButton label='Sort' variant='icon' iconName='sort' iconVariant='more'/>
+                  <SLDSButton assistiveText='Sort' variant='icon' iconName='sort' iconVariant='more'/>
                 </SLDSButtonGroup>
               </div>
             </div>

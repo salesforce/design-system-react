@@ -10,12 +10,17 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from "react";
-import {ButtonIcon, Icon} from '../../SLDSIcons';
+import {ButtonIcon} from '../../SLDSIcons';
 const classNames = require("classnames");
 
 const displayName = "SLDSButtonStateful";
 const propTypes = {
-
+  assistiveText: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  iconName: React.PropTypes.string,
+  iconSize: React.PropTypes.string,
+  type: React.PropTypes.string,
+  variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {};
 

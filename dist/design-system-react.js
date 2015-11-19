@@ -3172,12 +3172,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  return {
 	    componentDidMount: function() {
-	      if(typeof this.handleClickOutside !== "function")
+	      if(!this.handleClickOutside)
 	        throw new Error("Component lacks a handleClickOutside(event) function for processing outside click events.");
 	
 	      var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
 	        return function(evt) {
-	          evt.stopPropagation();
 	          var source = evt.target;
 	          var found = false;
 	          // If source=local then this event came from "somewhere"
@@ -3232,7 +3231,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Can be called to explicitly disable event listening
 	     * for clicks and touches outside of this element.
 	     */
-	    disableOnClickOutside: function() {
+	    disableOnClickOutside: function(fn) {
 	      var fn = this.__outsideClickHandler;
 	      document.removeEventListener("mousedown", fn);
 	      document.removeEventListener("touchstart", fn);
@@ -7400,11 +7399,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -7458,17 +7457,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var displayName = 'SLDSButton';
 	var propTypes = {
-	  buttonSize: _react2["default"].PropTypes.string,
+	  assistiveText: _react2["default"].PropTypes.string,
+	  buttonSize: _react2["default"].PropTypes.oneOf(["small"]),
 	  disabled: _react2["default"].PropTypes.bool,
 	  hint: _react2["default"].PropTypes.bool,
 	  iconName: _react2["default"].PropTypes.string,
 	  iconPosition: _react2["default"].PropTypes.oneOf(["left", "right"]),
 	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "medium", "large"]),
 	  iconVariant: _react2["default"].PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
-	  label: _react2["default"].PropTypes.string.isRequired,
+	  label: _react2["default"].PropTypes.string,
 	  onClick: _react2["default"].PropTypes.func,
 	  responsive: _react2["default"].PropTypes.bool,
-	  stateful: _react2["default"].PropTypes.bool,
 	  tabindex: _react2["default"].PropTypes.string,
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
@@ -7494,23 +7493,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function getClassName() {
 	      var _classNames;
 	
-	      var isSelected = this.props.stateful && this.state.active ? true : false;
-	      var notSelected = this.props.stateful && !this.state.active ? true : false;
 	      var iconOnly = this.props.variant === 'icon' ? true : false;
-	      return classNames(this.props.className, "slds-button", (_classNames = {}, _defineProperty(_classNames, "slds-button--" + this.props.variant, !iconOnly), _defineProperty(_classNames, "slds-button--icon-" + this.props.iconVariant, this.props.iconVariant), _defineProperty(_classNames, "slds-max-small-button--stretch", this.props.responsive), _defineProperty(_classNames, "slds-not-selected", notSelected), _defineProperty(_classNames, "slds-is-selected", isSelected), _defineProperty(_classNames, "slds-button--small", this.props.buttonSize), _classNames));
+	      return classNames(this.props.className, "slds-button", (_classNames = {}, _defineProperty(_classNames, "slds-button--" + this.props.variant, !iconOnly), _defineProperty(_classNames, "slds-button--icon-" + this.props.iconVariant, this.props.iconVariant), _defineProperty(_classNames, "slds-max-small-button--stretch", this.props.responsive), _defineProperty(_classNames, "slds-button--small", this.props.buttonSize), _classNames));
 	    }
 	  }, {
 	    key: "renderIcon",
 	    value: function renderIcon(name) {
-	      if (this.props.iconName || this.props.notSelectedIcon || this.props.selectedIcon || this.props.selectedFocusIcon) {
+	      if (this.props.iconName) {
 	        return _react2["default"].createElement(_SLDSIconsJs.ButtonIcon, {
-	          disabled: this.props.disabled,
 	          hint: this.props.hint,
 	          name: name,
 	          position: this.props.iconPosition,
-	          size: this.props.iconSize,
-	          stateful: this.props.stateful,
-	          variant: this.props.variant
+	          size: this.props.iconSize
 	        });
 	      }
 	    }
@@ -7519,28 +7513,28 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function renderIconMore() {
 	      if (this.props.iconVariant === "more") {
 	        return _react2["default"].createElement(_SLDSIconsJs.ButtonIcon, {
-	          disabled: this.props.disabled,
 	          name: "down",
-	          size: "x-small",
-	          variant: this.props.variant
+	          size: "x-small"
 	        });
 	      }
+	    }
+	  }, {
+	    key: "renderLabel",
+	    value: function renderLabel() {
+	      var iconOnly = this.props.variant === "icon" || this.props.variant === "icon-inverse";
+	      return iconOnly && this.props.assistiveText ? _react2["default"].createElement("span", { className: "slds-assistive-text" }, this.props.assistiveText) : _react2["default"].createElement("span", null, this.props.label);
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
 	      var props = (0, _lodashOmit2["default"])(this.props, "className");
 	      var click = (0, _utilsCreateChainedFunction2["default"])(this.props.onClick, this.onClick.bind(this));
-	      var labelClasses = this.props.variant === "icon" || this.props.variant === "icon-inverse" ? "slds-assistive-text" : "";
+	
 	      if (this.props.disabled) {
 	        props["disabled"] = "disabled";
 	      }
 	
-	      if (this.props.stateful) {
-	        return _react2["default"].createElement("button", _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), _react2["default"].createElement("span", { className: "slds-text-not-selected" }, this.renderIcon(this.props.notSelectedIcon), this.props.notSelectedLabel), _react2["default"].createElement("span", { className: "slds-text-selected" }, this.renderIcon(this.props.selectedIcon), this.props.selectedLabel), _react2["default"].createElement("span", { className: "slds-text-selected-focus" }, this.renderIcon(this.props.selectedFocusIcon), this.props.selectedFocusLabel));
-	      } else {
-	        return _react2["default"].createElement("button", _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === "right" ? _react2["default"].createElement("span", { className: labelClasses }, this.props.label) : null, this.renderIcon(this.props.iconName), this.renderIconMore(), this.props.iconPosition === "left" || !this.props.iconPosition ? _react2["default"].createElement("span", { className: labelClasses }, this.props.label) : null, this.props.children);
-	      }
+	      return _react2["default"].createElement("button", _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === "right" ? this.renderLabel() : null, this.renderIcon(this.props.iconName), this.renderIconMore(), this.props.iconPosition !== "right" ? this.renderLabel() : null, this.props.children);
 	    }
 	  }]);
 	
@@ -9332,14 +9326,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
-	/* global define */
 	
 	(function () {
 		'use strict';
 	
-		var hasOwn = {}.hasOwnProperty;
-	
 		function classNames () {
+	
 			var classes = '';
 	
 			for (var i = 0; i < arguments.length; i++) {
@@ -9348,13 +9340,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 				var argType = typeof arg;
 	
-				if (argType === 'string' || argType === 'number') {
+				if ('string' === argType || 'number' === argType) {
 					classes += ' ' + arg;
+	
 				} else if (Array.isArray(arg)) {
 					classes += ' ' + classNames.apply(null, arg);
-				} else if (argType === 'object') {
+	
+				} else if ('object' === argType) {
 					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
+						if (arg.hasOwnProperty(key) && arg[key]) {
 							classes += ' ' + key;
 						}
 					}
@@ -9366,14 +9360,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		if (typeof module !== 'undefined' && module.exports) {
 			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
+		} else if (true){
+			// AMD. Register as an anonymous module.
 			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
 			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			window.classNames = classNames;
 		}
+	
 	}());
 
 
@@ -9408,11 +9403,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -9515,11 +9510,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -9909,7 +9904,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function renderSelectedItem() {
 	      var selectedItem = this.props.items[this.state.selectedIndex].label;
 	      return _react2["default"].createElement("span", { tabIndex: "0", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: this.props.iconClasses }), selectedItem), _react2["default"].createElement(_SLDSButton2["default"], {
-	        label: "Press delete to remove",
+	        assistiveText: "Press delete to remove",
 	        tabIndex: "-1",
 	        variant: "icon",
 	        iconName: "close",
@@ -10018,11 +10013,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10237,11 +10232,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10524,11 +10519,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -10636,11 +10631,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -11102,9 +11097,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    };
 	
 	    if (hasHeader) {
-	      header = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass) }, _react2['default'].createElement(_SLDSButton2['default'], { label: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal }), this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null);
+	      header = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass) }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal }), this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null);
 	    } else {
-	      header = _react2['default'].createElement('div', { style: { position: 'relative' } }, _react2['default'].createElement(_SLDSButton2['default'], { label: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal }));
+	      header = _react2['default'].createElement('div', { style: { position: 'relative' } }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal }));
 	    }
 	
 	    return header;
@@ -11213,11 +11208,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -11300,7 +11295,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          size = "large";
 	        }
 	        return _react2["default"].createElement(_SLDSButton2["default"], {
-	          label: "Dismiss Notification",
+	          assistiveText: "Click enter to dismiss Notification",
 	          variant: "icon-inverse",
 	          iconName: "close",
 	          iconSize: size,
