@@ -61,6 +61,7 @@ module.exports = React.createClass( {
       <SLDSButton label="Neutral Icon" variant="neutral" iconName="download" iconPosition="left" onClick={this.handleClick('Neutral Icon')} className="slds-m-right--medium"/>
       <SLDSButton label="Responsive" variant="neutral" responsive={true} onClick={this.handleClick('Responsive')}  className="slds-m-right--medium"/>
       <SLDSButton label="Brand" variant="brand" onClick={this.handleClick('Brand')} className="slds-m-right--medium"/>
+      <SLDSButton label="Brand Disabled" variant="brand" iconName="add" iconPosition="left" disabled={true} onClick={this.handleClick('Brand Disabled')} className="slds-m-right--medium"/>
       <SLDSButton label="Destructive" variant="destructive" onClick={this.handleClick('Destructive')} className="slds-m-right--medium"/>
       <div style={inverseBtnParent}>
       <SLDSButton label="Inverse" variant="inverse" onClick={this.handleClick('Inverse')} className="slds-m-right--medium"/>
