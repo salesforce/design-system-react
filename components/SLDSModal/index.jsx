@@ -101,6 +101,12 @@ module.exports = React.createClass( {
     }
   },
 
+  clearBodyScroll: function updateBodyScroll() {
+    if (window && document && document.body) {
+      document.body.style.overflow = 'inherit';
+    }
+  },
+
   handleModalClick(event) {
     if(event && event.stopPropagation){
       event.stopPropagation();
@@ -125,7 +131,7 @@ module.exports = React.createClass( {
             onClick={this.isPrompt() ? undefined : this.closeModal}
           >
           <div
-            role='dialog'
+            role='document'
             className='slds-modal__container'
             onClick={this.handleModalClick}
             >
@@ -210,10 +216,10 @@ module.exports = React.createClass( {
     if(hasHeader) {
       header = (
         <div className={cx(headerClass)}>
+          <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal} />
           {this.props.toast}
           <h2 className={cx(titleClass)}>{this.props.title}</h2>
           {this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p>:null}
-          <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal} />
         </div>
       )
     }else{
@@ -252,6 +258,10 @@ module.exports = React.createClass( {
     }
 
 
+  },
+
+  componentWillUnmount () {
+    this.clearBodyScroll();
   }
 
 
