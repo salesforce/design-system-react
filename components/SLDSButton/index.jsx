@@ -17,17 +17,17 @@ import omit from "lodash.omit";
 
 const displayName = 'SLDSButton';
 const propTypes = {
-  buttonSize: React.PropTypes.string,
+  assistiveText: React.PropTypes.string,
+  buttonSize: React.PropTypes.oneOf(["small"]),
   disabled: React.PropTypes.bool,
   hint: React.PropTypes.bool,
   iconName: React.PropTypes.string,
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
   iconSize: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
-  label: React.PropTypes.string.isRequired,
+  label: React.PropTypes.string,
   onClick: React.PropTypes.func,
   responsive: React.PropTypes.bool,
-  stateful: React.PropTypes.bool,
   tabindex: React.PropTypes.string,
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
@@ -46,30 +46,23 @@ class SLDSButton extends React.Component {
   }
 
   getClassName() {
-    let isSelected = this.props.stateful && this.state.active ? true : false;
-    let notSelected = this.props.stateful && !this.state.active ? true : false;
     const iconOnly = this.props.variant === 'icon' ? true : false;
     return classNames(this.props.className, "slds-button", {
       [`slds-button--${this.props.variant}`]: !iconOnly,
       [`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
       ["slds-max-small-button--stretch"]: this.props.responsive,
-      ["slds-not-selected"]: notSelected,
-      ["slds-is-selected"]: isSelected,
       ["slds-button--small"]: this.props.buttonSize,
     });
   }
 
   renderIcon(name){
-    if(this.props.iconName || this.props.notSelectedIcon || this.props.selectedIcon || this.props.selectedFocusIcon){
+    if(this.props.iconName){
       return (
         <ButtonIcon
-          disabled={this.props.disabled}
           hint={this.props.hint}
           name={name}
           position={this.props.iconPosition}
           size={this.props.iconSize}
-          stateful={this.props.stateful}
-          variant={this.props.variant}
           />
       );
     }
@@ -79,52 +72,37 @@ class SLDSButton extends React.Component {
     if(this.props.iconVariant === "more"){
       return(
         <ButtonIcon
-          disabled={this.props.disabled}
           name="down"
           size="x-small"
-          variant={this.props.variant}
           />
       );
     }
+  }
+
+  renderLabel() {
+    const iconOnly = this.props.variant === "icon" || this.props.variant === "icon-inverse";
+    return iconOnly && this.props.assistiveText ? <span className="slds-assistive-text">{this.props.assistiveText}</span> : <span>{this.props.label}</span>;
   }
 
 
   render() {
     const props = omit(this.props, "className");
     const click = createChainedFunction(this.props.onClick, this.onClick.bind(this));
-    const labelClasses = (this.props.variant === "icon" || this.props.variant === "icon-inverse") ? "slds-assistive-text": "";
+
     if (this.props.disabled) {
       props["disabled"] = "disabled"
     }
 
-    if(this.props.stateful){
-      return (
-        <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
-          <span className="slds-text-not-selected">
-            {this.renderIcon(this.props.notSelectedIcon)}
-            {this.props.notSelectedLabel}
-          </span>
-          <span className="slds-text-selected">
-            {this.renderIcon(this.props.selectedIcon)}
-            {this.props.selectedLabel}
-          </span>
-          <span className="slds-text-selected-focus">
-            {this.renderIcon(this.props.selectedFocusIcon)}
-            {this.props.selectedFocusLabel}
-          </span>
-        </button>
-      )
-    }else{
-      return (
-        <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
-          {this.props.iconPosition === "right" ? <span className={labelClasses}>{this.props.label}</span>: null}
-          {this.renderIcon(this.props.iconName)}
-          {this.renderIconMore()}
-          {(this.props.iconPosition === "left" || !this.props.iconPosition) ? <span className={labelClasses}>{this.props.label}</span>: null}
-          {this.props.children}
-        </button>
-      );
-    }
+    return (
+      <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
+        {this.props.iconPosition === "right" ? this.renderLabel(): null}
+
+        {this.renderIcon(this.props.iconName)}
+        {this.renderIconMore()}
+
+        {(this.props.iconPosition !== "right")? this.renderLabel(): null}
+      </button>
+    )
   }
 }
 

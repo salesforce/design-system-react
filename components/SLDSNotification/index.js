@@ -44,7 +44,7 @@ class SLDSNotification extends React.Component {
         size = "large";
       }
       return <SLDSButton
-            label="Dismiss Notification"
+            assistiveText="Dismiss Notification"
             variant="icon-inverse"
             iconName="close"
             iconSize={size}

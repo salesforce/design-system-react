@@ -84,56 +84,56 @@ module.exports = React.createClass( {
       <tr>
       <td className="slds-p-vertical--medium"><span className="slds-m-right--medium"> Icon base </span></td>
       <td>
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="small" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="medium" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="large" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="small" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="medium" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="large" onClick={this.handleClick('Icon')} />
       </td>
       </tr>
       <tr>
       <td className="slds-p-vertical--medium"><span className="slds-m-right--medium"> Icon bare </span></td>
       <td>
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="small" iconVariant="bare" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="medium" iconVariant="bare" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="large" iconVariant="bare" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="small" iconVariant="bare" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="medium" iconVariant="bare" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="large" iconVariant="bare" onClick={this.handleClick('Icon')} />
       </td>
       </tr>
       <tr>
       <td className="slds-p-vertical--medium"><span className="slds-m-right--medium"> Icon container </span></td>
       <td>
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="small" iconVariant="container" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="medium" iconVariant="container" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="large" iconVariant="container" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="small" iconVariant="container" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="medium" iconVariant="container" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="large" iconVariant="container" onClick={this.handleClick('Icon')} />
       </td>
       </tr>
       <tr>
       <td className="slds-p-vertical--medium"><span className="slds-m-right--medium"> Icon border </span></td>
       <td>
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="small" iconVariant="border" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="medium" iconVariant="border" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="large" iconVariant="border" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="small" iconVariant="border" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="medium" iconVariant="border" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="large" iconVariant="border" onClick={this.handleClick('Icon')} />
       </td>
       </tr>
       <tr>
       <td className="slds-p-vertical--medium"><span className="slds-m-right--medium"> Icon border filled </span></td>
       <td>
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="small" iconVariant="border-filled" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="medium" iconVariant="border-filled" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="large" iconVariant="border-filled" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="small" iconVariant="border-filled" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="medium" iconVariant="border-filled" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="large" iconVariant="border-filled" onClick={this.handleClick('Icon')} />
       </td>
       </tr>
       <tr>
       <td className="slds-p-vertical--medium"><span className="slds-m-right--medium"> Icon More </span></td>
       <td>
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="small" iconVariant="more" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="medium" iconVariant="more" onClick={this.handleClick('Icon')} />
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="large" iconVariant="more" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="small" iconVariant="more" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="medium" iconVariant="more" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="large" iconVariant="more" onClick={this.handleClick('Icon')} />
       </td>
       </tr>
       <tr>
       <td className="slds-m-vertical--medium"><span className="slds-m-right--medium"> Icon Inverse </span></td>
       <td>
       <div style={inverseBtnParent}>
-      <SLDSButton label="Icon" variant="icon-inverse" iconName="settings" iconSize="large" onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon-inverse" iconName="settings" iconSize="large" onClick={this.handleClick('Icon')} />
       </div>
       </td>
       </tr>
@@ -141,7 +141,7 @@ module.exports = React.createClass( {
       <td className="slds-m-vertical--medium"><span className="slds-m-right--medium"> Icon Hint </span></td>
       <td>
       <div style={hintBtnParent} className="slds-hint-parent">
-      <SLDSButton label="Icon" variant="icon" iconName="settings" iconSize="large" hint={true} onClick={this.handleClick('Icon')} />
+      <SLDSButton assistiveText="Icon" variant="icon" iconName="settings" iconSize="large" hint={true} onClick={this.handleClick('Icon')} />
       </div>
       </td>
       </tr>
