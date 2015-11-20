@@ -4520,22 +4520,35 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  _createClass(Icon, [{
-	    key: 'getClassName',
-	    value: function getClassName() {
+	    key: 'getContainerClassName',
+	    value: function getContainerClassName() {
 	      var _classNames;
 	
 	      var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
-	      return classNames(this.props.className, "slds-icon", (_classNames = {}, _defineProperty(_classNames, 'slds-icon--' + this.props.size, this.props.size), _defineProperty(_classNames, 'slds-icon--' + this.props.position, this.props.position), _defineProperty(_classNames, 'slds-icon-' + this.props.category + '-' + (this.props.theme || name), true), _classNames));
+	      var renderName = this.props.category === "action";
+	
+	      return classNames((_classNames = {}, _defineProperty(_classNames, "slds-icon__container", this.props.category !== "utility"), _defineProperty(_classNames, 'slds-icon-' + this.props.category + '-' + (this.props.theme || name), renderName), _classNames));
+	    }
+	  }, {
+	    key: 'getClassName',
+	    value: function getClassName() {
+	      var _classNames2;
+	
+	      var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
+	      var customName = this.props.name ? this.props.name.replace("custom", "custom-") : null;
+	
+	      return classNames(this.props.className, "slds-icon", (_classNames2 = {}, _defineProperty(_classNames2, 'slds-icon--' + this.props.size, this.props.size), _defineProperty(_classNames2, 'slds-icon--' + this.props.position, this.props.position), _defineProperty(_classNames2, 'slds-icon-' + customName, this.props.category === "custom"), _defineProperty(_classNames2, 'slds-icon-' + this.props.category + '-' + (this.props.theme || name), this.props.category === "standard"), _classNames2));
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var styles = this.props.category === 'action' ? { padding: '.5rem' } : null;
 	      var label = null;
+	      var styles = this.props.category === "action" ? { padding: "0.5rem" } : null;
+	
 	      if (this.props.assistiveText) {
 	        label = _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.assistiveText);
 	      }
-	      return _react2['default'].createElement('span', { style: styles }, label, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { className: this.getClassName(), name: this.props.name, category: this.props.category, 'aria-hidden': 'true', style: this.props.style }));
+	      return _react2['default'].createElement('span', { className: this.getContainerClassName(), style: styles }, label, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { className: this.getClassName(), name: this.props.name, category: this.props.category, 'aria-hidden': 'true' }));
 	    }
 	  }]);
 	
