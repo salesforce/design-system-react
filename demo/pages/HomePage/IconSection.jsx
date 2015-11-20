@@ -46,18 +46,42 @@ module.exports = React.createClass( {
                 {require('raw-loader!../../code-snippets/SLDSIcon.txt')}
               </PrismCode>
               <div className='slds-p-vertical--large'>
-                <div>
-                Utility
-                <Icon name='open_folder' category='utility' assistiveText='Files' className='slds-input__icon slds-icon-text-default'/>
-                </div>
-                <div>
+
+              <table className="slds-container--small">
+              <tr>
+                <td className="slds-p-vertical--medium">
                 Action
-                <Icon name='announcement' category='action' assistiveText='Action' />
-                </div>
-                <div>
+                </td>
+                <td>
+                <Icon name='announcement' category='action' size="medium" assistiveText='Action' />
+                </td>
+              </tr>
+              <tr>
+                <td className="slds-p-vertical--medium">
+                Custom
+                </td>
+                <td>
+                <Icon name='custom3' category='custom' size="large" assistiveText='Custom' />
+                </td>
+              </tr>
+              <tr>
+                <td className="slds-p-vertical--medium">
                 Standard
-                <Icon name='account' category='standard' assistiveText='Action' />
-                </div>
+                </td>
+                <td>
+                <Icon name='account' category='standard' size="large" assistiveText='Standard' />
+                </td>
+              </tr>
+              <tr>
+                <td className="slds-p-vertical--medium">
+                Utility
+                </td>
+                <td>
+                <Icon name='open_folder' category='utility' size="medium" assistiveText='Files' className="slds-icon-text-default" />
+                </td>
+              </tr>
+              </table>
+
               </div>
             </div>
 
