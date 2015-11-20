@@ -1,5 +1,5 @@
 import React from 'react';
-import Badge from '../badge';
+import {Badge} from '../../dist';
 
 export default React.createClass({
 	render () {
