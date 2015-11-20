@@ -1,7 +1,10 @@
 // WARNING: Keep this here as it is required for examples.html to work with webpack-dev-server
 // require('../../scss/index');
 
-import badge from './badge/example';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import badge from './badge/examples/site-example';
 import button from './button/example';
 import buttonGroup from './button-group/example';
 import combobox from './combobox/example';
@@ -21,7 +24,7 @@ import tooltip from './tooltip/example';
 import tree from './tree/example';
 import datatable from './data-table/example';
 
-badge();
+ReactDOM.render(React.createElement(badge), document.querySelector('.react .badge .site-example'));
 button();
 buttonGroup();
 combobox();
