@@ -10202,14 +10202,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "renderSelectedItem",
 	    value: function renderSelectedItem() {
 	      var selectedItem = this.props.items[this.state.selectedIndex].label;
-	      return _react2["default"].createElement("span", { tabIndex: "0", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: this.props.iconClasses }), selectedItem), _react2["default"].createElement(_SLDSButton2["default"], {
+	      return _react2["default"].createElement("span", { tabIndex: "0", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: "slds-m-right--x-small " + this.props.iconClasses }), selectedItem), _react2["default"].createElement(_SLDSButton2["default"], {
 	        assistiveText: "Press delete to remove",
 	        tabIndex: "-1",
 	        variant: "icon",
 	        iconName: "close",
 	        iconSize: "medium",
 	        onClick: this.handleDeleteSelected.bind(this),
-	        ref: "clearSelectedItemButton"
+	        ref: "clearSelectedItemButton",
+	        className: "slds-m-left--x-small "
 	      }));
 	    }
 	  }, {
