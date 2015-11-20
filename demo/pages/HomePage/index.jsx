@@ -16,7 +16,6 @@ const { Route, DefaultRoute, RouteHandler, Link } = Router;
 import SLDSGrid from '../../../components/SLDSGrid';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 
-import ButtonSectionREADME from './ButtonSectionREADME';
 import ButtonSection from './ButtonSection';
 import ButtonGroupSection from './ButtonGroupSection';
 
@@ -73,8 +72,8 @@ module.exports = React.createClass( {
     let that = this;
     return function() {
       var target = document.getElementById(elemId);
-      console.log(target);
       that.animate(document.body, "scrollTop", "", 0, target.offsetTop, 500, true);
+      target.focus();
     };
   },
 

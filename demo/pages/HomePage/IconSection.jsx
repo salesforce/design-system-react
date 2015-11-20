@@ -39,8 +39,10 @@ module.exports = React.createClass( {
     return (
 
             <div className='slds-p-around--medium'>
-              <h3 id='iconSection' className='slds-text-heading--medium slds-truncate'>
+              <h3 className='slds-text-heading--medium slds-truncate'>
+                <a href="javascript:void(0)" id='iconSection'>
                 Icon
+                </a>
               </h3>
               <PrismCode className='language-markup'>
                 {require('raw-loader!../../code-snippets/SLDSIcon.txt')}

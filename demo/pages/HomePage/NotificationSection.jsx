@@ -84,8 +84,10 @@ module.exports = React.createClass( {
     return (
 
       <div className='slds-p-around--medium'>
-        <h3 id='notificationSection' className='slds-text-heading--medium slds-truncate'>
+        <h3 className='slds-text-heading--medium slds-truncate'>
+          <a href="javascript:void(0)" id='notificationSection'>
           Notification
+          </a>
         </h3>
         <h4>
           * All notifications are fixed and centered at the top of the screen.

@@ -37,8 +37,10 @@ module.exports = React.createClass( {
     return (
 
             <div className='slds-p-around--medium'>
-              <h3 id='buttonGroupSection' className='slds-text-heading--medium slds-truncate'>
-                Button Group
+              <h3 className='slds-text-heading--medium slds-truncate'>
+                <a href="javascript:void(0)" id='buttonGroupSection'>
+                  Button Group
+                </a>
               </h3>
 
               <PrismCode className='language-markup'>
