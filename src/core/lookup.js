@@ -123,23 +123,23 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	_scrollMenuItems () {
 		const _menu = this.elements.menu;
 		let _menuItem = _menu.getElementsByClassName('slds-theme--shade');
-		
+
 		if (_menuItem && _menuItem.length === 1) {
 			_menuItem = _menuItem[0];
 			
 			const menuHeight = _menu.offsetHeight;
 			
 			const menuTop = _menu.scrollTop;
-			const menuItemTop = _menuItem.offsetTop;
+			const menuItemTop = _menuItem.offsetTop - _menu.offsetTop;
 			
 			if (menuItemTop < menuTop) {
 				_menu.scrollTop = menuItemTop;
 			} else {
 				const menuBottom = menuTop + menuHeight + _menu.offsetTop;
-				const menuItemBottom = menuItemTop + _menuItem.offsetHeight;
+				const menuItemBottom = menuItemTop + _menuItem.offsetHeight + _menu.offsetTop;
 				
 				if (menuItemBottom > menuBottom) {
-					_menu.scrollTop = menuItemBottom - menuHeight;
+					_menu.scrollTop = menuItemBottom - menuHeight - _menu.offsetTop;
 				}
 			}
 		}
