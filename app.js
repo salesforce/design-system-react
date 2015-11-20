@@ -2,8 +2,7 @@ var express = require('express');
 var compression = require('compression');
 var exphbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
-var fs = require('fs');
-var path = require('path');
+var reactExampleScripts = require('./site/example-code/react');
 
 // Create server
 var app = express();
@@ -12,8 +11,10 @@ var app = express();
 app.engine('.hbs', exphbs({
 	defaultLayout: false,
 	extname: '.hbs',
-	partialsDir: 'views'
+	partialsDir: 'site/views/'
 }));
+
+app.set('views', 'site/views/');
 app.set('view engine', '.hbs');
 
 // Compress all requests 
@@ -48,24 +49,8 @@ app.get('/jquery', function(req, res) {
 app.get('/react', function (req, res) {
 	var locals = {};
 
-	/* TODO: Make map function of directory */
-	var codeDir = './src/react/';
-	var controls = {
-		checkbox: fs.readFileSync(codeDir + 'checkbox/example.js', 'utf8'),
-		combobox: fs.readFileSync(codeDir + 'combobox/example.js', 'utf8'),
-		datepicker: fs.readFileSync(codeDir + 'datepicker/example.js', 'utf8'),
-		dataTable: fs.readFileSync(codeDir + 'data-table/example.js', 'utf8'),
-		dropdown: fs.readFileSync(codeDir + 'dropdown/example.js', 'utf8'),
-		lookup: fs.readFileSync(codeDir + 'lookup/example.js', 'utf8'),
-		picklist: fs.readFileSync(codeDir + 'picklist/example.js', 'utf8'),
-		pills: fs.readFileSync(codeDir + 'pillbox/example.js', 'utf8'),
-		popover: fs.readFileSync(codeDir + 'popover/example.js', 'utf8'),
-		tooltip: fs.readFileSync(codeDir + 'tooltip/example.js', 'utf8'),
-		tree: fs.readFileSync(codeDir + 'tree/example.js', 'utf8')
-	};
-
 	res.render('react/', locals, function () {
-		locals.code = controls;
+		locals.script = reactExampleScripts;
 		res.render('react/index', locals);
 	});
 });
