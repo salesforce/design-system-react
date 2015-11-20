@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>jQuery</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- fav icons -->
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+
+    <!-- dependencies -->
+    <link href="/assets/design-system/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/prism/themes/prism.css" rel="stylesheet" type="text/css">
+    <link href="/assets/demo-site/styles/examples.css" rel="stylesheet" type="text/css">
+    <style>
+
+    </style>
+    <script src="vendor/prism/prism.js"></script>
+    <script src="vendor/require/require.js"></script>
+    <script>
+        requirejs.config({
+            baseUrl: '',
+            paths: {
+                'jquery': 'vendor/jquery/jquery.min',
+                'jquery-facade': 'dist/jquery'
+            },
+            shim: {
+                'jquery': {
+                    exports: '$'
+                },
+                'jquery-facade': {
+                    deps: ['jquery']
+                }
+            }
+        });
+        require(['jquery', 'jquery-facade'], function ($, facades) {
+            // datepicker
+            {{> jquery/examples/datepicker }}
+
+            // datatable
+            {{> jquery/examples/datatable }}
+
+            // dropdown
+            {{> jquery/examples/dropdown }}
+
+            // picklist
+            {{> jquery/examples/picklist }}
+
+            // pills
+            {{> jquery/examples/pills }}
+
+            // popover
+            {{> jquery/examples/popover }}
+
+            // tooltip
+            {{> jquery/examples/tooltip }}
+
+            // tree
+            {{> jquery/examples/tree }}
+
+        });
+    </script>
+</head>
+<body>
+
+<main class="site-content">
+<header class="site-masthead slds-page-header">
+    <div class="slds-grid">
+        <div class="slds-col slds-align-middle" >
+            <div class="slds-media slds-media--center" style="height:5rem;">
+                <div class="slds-media__figure">
+                    <span class="slds-icon__container slds-icon-action-fallback" style="padding:0.5rem;">
+                        <svg aria-hidden="true" class="slds-icon slds-icon-action-fallback">
+                            <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/design-system/icons/action-sprite/svg/symbols.svg#fallback"></use>
+                        </svg>
+                    </span>
+                </div>
+                <div class="slds-media__body site-title">jQuery Widgets</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="slds-grid slds-m-top--medium">
+    <div class="slds-col slds-col--padded" style="max-width: 900px;">
+
+        <!-- datepicker -->
+        <div class="slds-box">
+            <div class="slds-text-heading--small slds-m-bottom--medium">Datepicker</div>
+            <div id="datepicker"></div>
+            <div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+            <pre><code class="language-javascript">{{> jquery/examples/datepicker }}</code></pre>
+        </div>
+
+        <!-- datatable -->
+        <div class="slds-box">
+            <div class="slds-text-heading--small slds-m-bottom--medium">Data-table</div>
+            <div id="datatable"></div>
+            <div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+            <pre style="max-height: 400px;"><code class="language-javascript">{{> jquery/examples/datatable }}</code></pre>
+        </div>
+
+        <!-- dropdown -->
+        <div class="slds-box">
+            <div class="slds-text-heading--small slds-m-bottom--medium">Dropdown</div>
+            <div id="dropdown"></div>
+            <div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+            <pre><code class="language-javascript">{{> jquery/examples/dropdown }}</code></pre>
+        </div>
+
+        <!-- picklist -->
+        <div class="slds-box">
+            <div class="slds-text-heading--small slds-m-bottom--medium">Picklist</div>
+            <div id="picklist"></div>
+            <div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+            <pre><code class="language-javascript">{{> jquery/examples/picklist }}</code></pre>
+        </div>
+
+        <!-- pills -->
+        <div class="slds-box">
+            <div class="slds-text-heading--small slds-m-bottom--medium">Pills</div>
+            <div id="pills"></div>
+            <div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+            <pre><code class="language-javascript">{{> jquery/examples/pills }}</code></pre>
+        </div>
+
+        <!-- popover -->
+        <div class="slds-box">
+            <div class="slds-text-heading--small slds-m-bottom--medium">Popover</div>
+            <button id="popover" class="slds-button slds-button--neutral">Popover</button>
+            <div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+            <pre><code class="language-javascript">{{> jquery/examples/popover }}</code></pre>
+        </div>
+
+        <!-- tooltip -->
+        <div class="slds-box">
+            <div class="slds-text-heading--small slds-m-bottom--medium">Tooltip</div>
+            <button id="tooltip" class="slds-button slds-button--neutral">Tooltip</button>
+            <div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+            <pre><code class="language-javascript">{{> jquery/examples/tooltip }}</code></pre>
+        </div>
+
+        <!-- tree -->
+        <div class="slds-box">
+            <div class="slds-text-heading--small slds-m-bottom--medium">Tree</div>
+            <div id="tree"></div>
+            <div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+            <pre style="max-height: 400px;"><code class="language-javascript">{{> jquery/examples/tree }}</code></pre>
+        </div>
+
+    </div>
+</div>
+</main>
+
+</body>
+</html>
