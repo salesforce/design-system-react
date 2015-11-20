@@ -10,7 +10,7 @@
 import React, { Component } from "react";
 import Menu from "./Menu";
 import SLDSPopover from "../SLDSPopover";
-import {Icon, InputIcon} from "./../SLDSIcons";
+import {ButtonIcon, Icon, InputIcon} from "./../SLDSIcons";
 import SLDSButton from "../SLDSButton";
 import {KEYS,EventUtil} from "../utils";
 import escapeRegExp from "lodash.escaperegexp";
@@ -320,7 +320,7 @@ class SLDSLookup extends React.Component {
     let selectedItem = this.props.items[this.state.selectedIndex].label;
     return <span tabIndex="0" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         <span className="slds-pill__label">
-          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.type} className={this.props.iconClasses} />
+          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.type} className={"slds-m-right--x-small " + this.props.iconClasses} />
           {selectedItem}
         </span>
         <SLDSButton
@@ -331,6 +331,7 @@ class SLDSLookup extends React.Component {
           iconSize="medium"
           onClick={this.handleDeleteSelected.bind(this)}
           ref="clearSelectedItemButton"
+          className="slds-m-left--x-small "
         />
       </span>
   }
