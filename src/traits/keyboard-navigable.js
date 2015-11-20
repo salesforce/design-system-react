@@ -52,7 +52,7 @@ const KeyboardNavigable = {
 	_keyboardNav (input, onSelect, collection) {
 		const _collection = collection || this._collection;
 		const isOpen = this.getState('isOpen');
-		const navigableItems = this._navigableItems || this._getNavigableItems(_collection);
+		const navigableItems = this.getState('navigableItems') || this._getNavigableItems(_collection);
 		const indexes = navigableItems.indexes;
 		const lastIndex = indexes.length - 1;
 		let focusedIndex = undefined;

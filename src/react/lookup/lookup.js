@@ -85,21 +85,23 @@ let Lookup = Lib.merge({}, LookupCore, {
 	// While `this._collection` is always kept in sync with `this.props.collection`, `this._filteredCollection` may contain only subset of those items based on the current search value. It's important to populate the filtered collection on initial load as well as every time there is a change to the collection. The collection of items which can be reached via keyboard navigation also needs to be kept up-to-date so that it reflects the current filtered collection. Both of the functions called here live in the core.
 	/* TODO: Possibly move these both to state. */
 	componentWillMount () {
-		const results = this._getFilteredCollection(this._collection, this.state.searchString);
-		this._navigableItems = this._configureKeyboardNavigation(results);
+		const searchResults = this._getFilteredCollection(this._collection, this.state.searchString);
+		const navigableItems = this._configureKeyboardNavigation(searchResults);
 		
 		this.setState({
-			results
+			searchResults,
+			navigableItems
 		});
 	},
 
 	componentWillReceiveProps (nextProps) {
 		if (nextProps.collection) {
-			const results = this._getFilteredCollection(this._collection, this.state.searchString);
-			this._navigableItems = this._configureKeyboardNavigation(results);
+			const searchResults = this._getFilteredCollection(this._collection, this.state.searchString);
+			const navigableItems = this._configureKeyboardNavigation(searchResults);
 			
 			this.setState({
-				results
+				searchResults,
+				navigableItems
 			});
 		}
 		
@@ -122,13 +124,13 @@ let Lookup = Lib.merge({}, LookupCore, {
 		// The menu header can be hidden by passing `false` to `this.props.menuHeaderRenderer`. The scaffolding needed for accessibility and display of the header is defined by the `Action` child control, but the contents of the control may vary based on the renderer passed in. If a render function (that returns React elements) is passed into the props that will be used to render the header, otherwise it will render the default renderer.
 		let header;
 		if (Lib.isFunction(this.props.menuHeaderRenderer)) {
-			header = <Action id={this._getMenuItemId('header')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuHeaderRenderer} searchString={this.state.searchString} strings={this.state.strings} parentProps={this.props} results={this.state.results} />;
+			header = <Action id={this._getMenuItemId('header')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuHeaderRenderer} searchString={this.state.searchString} strings={this.state.strings} parentProps={this.props} numResults={this.state.searchResults.length()} />;
 		}
 
 		// The menu footer works much the same as the menu header and even receives the same options.
 		let footer;
 		if (Lib.isFunction(this.props.menuFooterRenderer)) {
-			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.labelPlural || this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} onClick={this.props.onAddClick} />;
+			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.labelPlural || this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} parentProps={this.props} numResults={this.state.searchResults.length()} onClick={this.props.onAddClick} />;
 		}
 
 		// Unlike the header and footer, the pills will always be rendered if there is a selection and there is no option to disable them by passing false to `this.props.pillRenderer`. However, it is still possible to override the contents of the pills by passing in a custom render function.
@@ -150,7 +152,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			</div>
 			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 				{header}
-				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.results} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
+				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
 			</div>
 		</div>
@@ -214,7 +216,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this._keyboardSelect, this.state.results);
+			this._keyboardNav(e.key, this._keyboardSelect, this.state.searchResults);
 		// Also listen for character key presses an ensure that the menu it open while typing in the input, but don't actually trap them.
 		} else if (e.key.length === 1) {
 			if (!this.state.isOpen) this.open();

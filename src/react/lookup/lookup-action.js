@@ -15,7 +15,7 @@ const LookupAction = React.createClass({
 		onClick: React.PropTypes.func,
 		parentProps: React.PropTypes.object.isRequired,
 		renderer: React.PropTypes.func.isRequired,
-		results: React.PropTypes.object.isRequired,
+		numResults: React.PropTypes.number.isRequired,
 		searchString: React.PropTypes.string,
 		strings: React.PropTypes.object.isRequired
 	},
@@ -31,7 +31,7 @@ const LookupAction = React.createClass({
 						label: this.props.label,
 						strings: this.props.strings,
 						props: this.props.parentProps,
-						results: this.props.results
+						numResults: this.props.numResults
 					})}
 				</button>
 			</div>

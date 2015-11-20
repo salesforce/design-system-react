@@ -151,15 +151,13 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	
 	search (searchString) {
 		if (this.getState(searchString) !== searchString) {
-			this.setState({
-				searchString
-			});
-			
-			const results = this._getFilteredCollection(this._collection, searchString);
-			this._navigableItems = this._configureKeyboardNavigation(results);
+			const searchResults = this._getFilteredCollection(this._collection, searchString);
+			const navigableItems = this._configureKeyboardNavigation(searchResults);
 			
 			this.setState({
-				results
+				searchString,
+				searchResults,
+				navigableItems
 			});
 		}
 	}
