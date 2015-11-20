@@ -48,11 +48,11 @@ module.exports = React.createClass( {
   getDefaultProps () {
     return {
       title:'',
+      tagline:'',
       isOpen:false,
       content:[],
       footer:[],
       returnFocusTo:null,
-      size:'medium',
       prompt:'', //if prompt !== '', it renders modal as prompt
       directional: false
     };
@@ -101,6 +101,12 @@ module.exports = React.createClass( {
     }
   },
 
+  clearBodyScroll: function updateBodyScroll() {
+    if (window && document && document.body) {
+      document.body.style.overflow = 'inherit';
+    }
+  },
+
   handleModalClick(event) {
     if(event && event.stopPropagation){
       event.stopPropagation();
@@ -115,7 +121,8 @@ module.exports = React.createClass( {
     const modalClass = {
       'slds-modal': true,
       'slds-fade-in-open':this.state.revealed,
-      'slds-modal--large':this.props.size === 'large'
+      'slds-modal--large':this.props.size === 'large',
+      'slds-modal--prompt':this.isPrompt()
     };
 
     return <div
@@ -124,7 +131,7 @@ module.exports = React.createClass( {
             onClick={this.isPrompt() ? undefined : this.closeModal}
           >
           <div
-            role='dialog'
+            role='document'
             className='slds-modal__container'
             onClick={this.handleModalClick}
             >
@@ -135,7 +142,6 @@ module.exports = React.createClass( {
 
               {this.props.children}
 
-              {this.isPrompt() ? this.props.footer : null}
             </div>
 
             {this.footerComponent()}
@@ -167,42 +173,64 @@ module.exports = React.createClass( {
 
     const footerClass = {
       'slds-modal__footer': true,
-      'slds-modal__footer--directional': this.props.directional
+      'slds-modal__footer--directional': this.props.directional,
+      'slds-theme--default': this.isPrompt()
     };
 
     const hasFooter = this.props.footer && this.props.footer.length > 0;
 
-    if (!this.isPrompt() && hasFooter ) {
+    if (hasFooter ) {
       footer = (<div className={cx(footerClass)}>{this.props.footer}</div>);
     }
 
     return footer;
   },
 
-  headerComponent() {
-    let headingClasses = [], headerClasses = ['slds-modal__header'];
-    let closeButton;
+  renderTitle(headingClasses) {
+    if(this.props.title){
+      return <h2 className={cx(headingClasses)}>{this.props.title}</h2>;
+    }
+  },
 
-    if (this.isPrompt()) {
-      headerClasses.push(`slds-theme--${this.props.prompt}`);
-      headingClasses.push('slds-text-heading--small');
-    } else {
-      headingClasses.push('slds-text-heading--medium')
-      closeButton =(<SLDSButton
-          label='Close'
-          variant='icon'
-          iconName='close'
-          iconSize='large'
-          inverse={true}
-          className='slds-modal__close'
-          onClick={this.closeModal} />);
+  renderTagline() {
+    if(this.props.tagline){
+      return <p className="slds-m-top--x-small">{this.props.tagline}</p>;
+    }
+  },
+
+  headerComponent() {
+    let header;
+    const hasHeader = this.props.title;
+
+    const headerClass = {
+      ['slds-modal__header']: hasHeader,
+      [`slds-theme--${this.props.prompt}`]: this.isPrompt(),
+      ['slds-theme--alert-texture']: this.isPrompt(),
+    };
+
+    const titleClass = {
+      'slds-text-heading--small': this.isPrompt(),
+      'slds-text-heading--medium': !this.isPrompt(),
+    };
+
+    if(hasHeader) {
+      header = (
+        <div className={cx(headerClass)}>
+          <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal} />
+          {this.props.toast}
+          <h2 className={cx(titleClass)}>{this.props.title}</h2>
+          {this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p>:null}
+        </div>
+      )
+    }else{
+      header = (
+        <div style={{position: 'relative'}}>
+          <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal} />
+        </div>
+      )
     }
 
-    return (
-      <div className={cx(headerClasses)}>
-        <h2 className={cx(headingClasses)}>{this.props.title}</h2>
-        {closeButton}
-     </div>);
+    return header;
   },
 
   componentDidUpdate (prevProps, prevState) {
@@ -230,6 +258,10 @@ module.exports = React.createClass( {
     }
 
 
+  },
+
+  componentWillUnmount () {
+    this.clearBodyScroll();
   }
 
 

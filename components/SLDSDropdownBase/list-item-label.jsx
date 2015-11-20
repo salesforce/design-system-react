@@ -19,7 +19,7 @@ module.exports = React.createClass({
 
   displayName: 'SLDSPicklistBase-list-item-label',
 
-  getDefaultProps () {
+  getDefaultProps(){
     return {
       index: 0,
       label: '',
@@ -31,15 +31,11 @@ module.exports = React.createClass({
     };
   },
 
-  render () {
+  render(){
     return (
       <section>
-      {
-        this.props.isSelected?<Icon name='check'  position='left' category='utility' />:null
-      }
-      {
-        this.props.label
-      }
+      {this.props.isSelected?<Icon name='check'  position='left' category='utility' />:null}
+      {this.props.label}
       </section>
     );
   },

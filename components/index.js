@@ -17,9 +17,12 @@ import SLDSSettings from './SLDSSettings';
 import SLDSButton from './SLDSButton';
 import SLDSButtonGroup from './SLDSButtonGroup';
 import SLDSLookup from './SLDSLookup';
+import SLDSTooltip from './SLDSTooltip';
 import SLDSModal from './SLDSModal';
 import SLDSModalTrigger from './SLDSModal/trigger';
 import SLDSIcons from './SLDSIcons';
+import SLDSNotification from './SLDSNotification';
+import SLDSUtilityIcon from './SLDSUtilityIcon';
 
 module.exports = {
   SLDSPicklistBase: SLDSPicklistBase,
@@ -31,5 +34,8 @@ module.exports = {
   SLDSLookup: SLDSLookup,
   SLDSModal: SLDSModal,
   SLDSModalTrigger: SLDSModalTrigger,
-  SLDSIcons: SLDSIcons
+  SLDSIcons: SLDSIcons,
+  SLDSNotification: SLDSNotification,
+  SLDSTooltip: SLDSTooltip,
+  SLDSUtilityIcon: SLDSUtilityIcon,
 };

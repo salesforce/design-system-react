@@ -12,33 +12,111 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDS_ICONS_UTIL from './slds-icons-util';
+import SLDS_ICONS_UTILITY from './slds-icons-utility';
+import SLDS_ICONS_ACTION from './slds-icons-action';
+import SLDS_ICONS_CUSTOM from './slds-icons-custom';
+import SLDS_ICONS_DOCTYPE from './slds-icons-doctype';
+import SLDS_ICONS_STANDARD from './slds-icons-standard';
 
 module.exports = React.createClass({
 
   getDefaultProps () {
     return {
-      name:'announcenent'
+      name:'announcenent',
+      category:'utility'
     };
   },
 
-  getPaths (data) {
-    if(data instanceof Array){
-      return data.map((item)=>{
+  getPaths (paths) {
+    if(paths instanceof Array){
+      return paths.map((item)=>{
         return <path {...item} />;
       });
     }
-    return <path {...data} />;
+    return <path {...paths} />;
   },
 
-  getSVG (name) {
-    const data = SLDS_ICONS_UTIL[name.toLowerCase()];
-    return <svg {...this.props} viewBox={SLDS_ICONS_UTIL.viewBox}>{this.getPaths(data)}</svg>;
+  getCircles (circles) {
+    if(circles instanceof Array){
+      return circles.map((item)=>{
+        return <circle {...item} />;
+      });
+    }
+    return <circle {...circles} />;
+  },
+
+  getEllipses (ellipses) {
+    if(ellipses instanceof Array){
+      return ellipses.map((item)=>{
+        return <ellipse {...item} />;
+      });
+    }
+    return <ellipse {...ellipses} />;
+  },
+
+  getGroups (groups) {
+    if(groups instanceof Array){
+      return groups.map((item)=>{
+        return <g>{ this.getShapes(item) }</g>;
+      });
+    }
+    return <g>{ this.getShapes(groups) }</g>;
+  },
+
+  getShapes (data) {
+    var shapes = [];
+    if(data){
+      if(data.g){
+        shapes.push(this.getGroups(data.g));
+      }
+      if(data.ellipse){
+        shapes.push(this.getEllipses(data.ellipse));
+      }
+      if(data.circle){
+        shapes.push(this.getCircles(data.circle));
+      }
+      if(data.path){
+        shapes.push(this.getPaths(data.path));
+      }
+    }
+    return shapes;
+  },
+
+  getSVG (name, category) {
+    var data;
+    var viewBox;
+    switch (category) {
+      case 'utility':
+        data = SLDS_ICONS_UTILITY[name.toLowerCase()];
+        viewBox = SLDS_ICONS_UTILITY.viewBox;
+        break;
+      case 'action':
+        data = SLDS_ICONS_ACTION[name.toLowerCase()];
+        viewBox = SLDS_ICONS_ACTION.viewBox;
+        break;
+      case 'custom':
+        data = SLDS_ICONS_CUSTOM[name.toLowerCase()];
+        viewBox = SLDS_ICONS_CUSTOM.viewBox;
+        break;
+      case 'doctype':
+        data = SLDS_ICONS_DOCTYPE[name.toLowerCase()];
+        viewBox = SLDS_ICONS_DOCTYPE.viewBox;
+        break;
+      case 'standard':
+        data = SLDS_ICONS_STANDARD[name.toLowerCase()];
+        viewBox = SLDS_ICONS_STANDARD.viewBox;
+        break;
+      default:
+        data = SLDS_ICONS_UTILITY[name.toLowerCase()];
+        viewBox = SLDS_ICONS_UTILITY.viewBox;
+        break;
+    }
+    return <svg {...this.props} viewBox={viewBox}>{this.getShapes(data)}</svg>;
   },
 
   render () {
       return (
-        this.getSVG(this.props.name)
+        this.getSVG(this.props.name, this.props.category)
       );
   }
 });

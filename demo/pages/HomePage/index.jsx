@@ -10,16 +10,22 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
+import Router from 'react-router';
+const { Route, DefaultRoute, RouteHandler, Link } = Router;
+
 import SLDSGrid from '../../../components/SLDSGrid';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 
-
 import ButtonSection from './ButtonSection';
 import ButtonGroupSection from './ButtonGroupSection';
+
+import NotificationSection from './NotificationSection';
+
 import LookupBaseSection from './LookupBaseSection';
 
-import LookupBaseDynamicSection from './LookupBaseDynamicSection';
+import LookupBaseCustomSection from './LookupBaseCustomSection';
 
+import LookupBaseDynamicSection from './LookupBaseDynamicSection';
 
 import PicklistBaseSection from './PicklistBaseSection';
 import PicklistBaseCustomSection from './PicklistBaseCustomSection';
@@ -29,6 +35,11 @@ import DropdownBaseSection from './DropdownBaseSection';
 import ModalSection from './ModalSection';
 import DatePickerSingleSelectSection from './DatePickerSingleSelectSection';
 import IconSection from './IconSection';
+import TooltipSection from './TooltipSection';
+
+import DOCS from '../../../docs';
+console.log('DOCS: ',DOCS);
+
 
 const SLDSColumn = SLDSGrid.Column;
 
@@ -42,6 +53,29 @@ module.exports = React.createClass( {
     return {};
   },
 
+  animate(elem,style,unit,from,to,time,prop) {
+    if( !elem) return;
+    var start = new Date().getTime(),
+      timer = setInterval(function() {
+      var step = Math.min(1,(new Date().getTime()-start)/time);
+      if (prop) {
+        elem[style] = (from+step*(to-from))+unit;
+      } else {
+        elem.style[style] = (from+step*(to-from))+unit;
+      }
+      if( step == 1) clearInterval(timer);
+    },25);
+    elem.style[style] = from+unit;
+  },
+
+  scrollTo(elemId) {
+    let that = this;
+    return function() {
+      var target = document.getElementById(elemId);
+      that.animate(document.body, "scrollTop", "", 0, target.offsetTop, 500, true);
+      target.focus();
+    };
+  },
 
   render() {
     return (
@@ -53,7 +87,7 @@ module.exports = React.createClass( {
               <SLDSColumn className='slds-has-flexi-truncate'>
                 <div className='slds-media'>
                   <div className='slds-media__figure'>
-                    <Icon name='lead' category='standard' size='large' position='left' />
+                    <Icon assistiveText="lead" name='lead' category='standard' size='large' position='left' />
                   </div>
                   <div className='slds-media__body'>
                     <p className='slds-text-heading--label'>Lightning Design System</p>
@@ -66,30 +100,77 @@ module.exports = React.createClass( {
             </SLDSGrid>
           </div>
         </div>
+
         <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
           <div className='region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large'>
+            <section className="slds-p-bottom--large">
+            <h3 className="slds-text-heading--medium">Current Components</h3>
+            <ul>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('buttonSection')}>Button</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('buttonGroupSection')}>Button Group</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('dropdownSection')}>Dropdown</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('iconSection')}>Icon</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('lookupSection')}>Lookup</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('modalSection')}>Modal</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('notificationSection')}>Notification</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('picklistSection')}>Picklist</a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('tooltipSection')}>Tooltip</a>
+              </li>
+            </ul>
 
-            <ButtonSection />
+            <h3 className="slds-text-heading--medium slds-p-top--medium">Future Components</h3>
+            <ul>
+              <li>
+                <a href="javascript:void(0)" onClick={this.scrollTo('datepickerSection')}>Date Picker</a>
+              </li>
+            </ul>
+            </section>
+
+
+            <ButtonSection/>
 
             <ButtonGroupSection />
+
+            <DropdownBaseSection />
+
+            <IconSection />
 
             <LookupBaseSection />
 
             <LookupBaseDynamicSection />
 
-            <PicklistBaseSection />
+            <LookupBaseCustomSection />
 
             <ModalSection />
 
-            <DatePickerSingleSelectSection />
+            <NotificationSection/>
 
-            <IconSection />
+            <PicklistBaseSection />
 
             <PicklistBaseCustomSection />
 
-            <DropdownBaseSection />
+            <TooltipSection/>
 
+            <h1 className="slds-text-heading--large slds-p-top--large">Future Components</h1>
 
+            <DatePickerSingleSelectSection />
           </div>
         </main>
     </SLDSGrid>

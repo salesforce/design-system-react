@@ -43,15 +43,15 @@ module.exports = React.createClass( {
 
 
             <div className="slds-p-around--medium">
-
               <h3 className="slds-text-heading--medium slds-truncate">
+                <a href="javascript:void(0)" id='dropdownSection'>
                 Dropdown Base
+                </a>
               </h3>
 
               <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSPicklistBasePage.txt")}
+                {require("raw-loader!../../code-snippets/SLDSDropdownPage.txt")}
               </PrismCode>
-
               <div className="slds-p-vertical--large">
                 <SLDSDropdownBase
                     options={[
@@ -70,13 +70,12 @@ module.exports = React.createClass( {
                     value='C0'
                     label="Contacts"
                     modal={true}
-                    placeholder = "Select a contact"
+                    placeholder="Select a contact"
                     onSelect={this.handleOnSelect}
                     onClick={this.handleOnClick}
                     onUpdateHighlighted={this.handleOnUpdateHighlighted}
                     />
               </div>
-
             </div>
 
 

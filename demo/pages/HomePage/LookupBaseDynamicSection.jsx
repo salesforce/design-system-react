@@ -59,14 +59,15 @@ module.exports = React.createClass( {
             <div className="slds-p-around--medium">
             Dynamic list
               <div className="slds-p-vertical--large">
+
                 <SLDSLookup
                   items={this.state.items}
                   label="Accounts"
                   type="account"
                   onChange={this.onChange}
-                  onItemSelect={this.selectItem}
                   onItemSelect={this.handleItemSelect}
                 />
+
               </div>
 
             </div>

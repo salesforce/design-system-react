@@ -6,4 +6,13 @@ const options = [
       {label:'D Option',value:'D0'},
     ];
 
-<SLDSPicklistBase options={options} label="Contacts" placeholder="Select a contact"/>
+<SLDSPicklistBase
+  options={options}
+  value='C0'
+  label="Contacts"
+  modal={true}
+  placeholder = "Select a contact"
+  onSelect={this.handleOnSelect}
+  onClick={this.handleOnClick}
+  onUpdateHighlighted={this.handleOnUpdateHighlighted}
+  />

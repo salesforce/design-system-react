@@ -1,0 +1,312 @@
+{
+    "SLDSTooltip": {
+        "description": "",
+        "displayName": "SLDSToolip",
+        "props": {
+            "align": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "'top'",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
+            },
+            "content": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "<span>Tooltip</span>",
+                    "computed": false
+                }
+            },
+            "hoverCloseDelay": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "350",
+                    "computed": false
+                }
+            },
+            "openByDefault": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "openOn": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "'hover'",
+                    "computed": false
+                }
+            }
+        }
+    },
+    "SLDSLookup": {
+        "description": "",
+        "props": {
+            "items": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": ""
+            },
+            "emptyMessage": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "messages": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "string"
+                    }
+                },
+                "required": false,
+                "description": ""
+            },
+            "errors": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "string"
+                    }
+                },
+                "required": false,
+                "description": ""
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "type": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconCategory": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "filterWith": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
+                    "computed": false
+                }
+            },
+            "onItemSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onItemUnselect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onBlur": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "hasError": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "boldRegex": {
+                "type": {
+                    "name": "instanceOf",
+                    "value": "RegExp"
+                },
+                "required": false,
+                "description": ""
+            },
+            "listItemLabelRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSPicklistBase": {
+        "description": "",
+        "props": {
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": ""
+            },
+            "onUpdateHighlighted": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "placeholder": {
+                "defaultValue": {
+                    "value": "'Select an Option'",
+                    "computed": false
+                }
+            },
+            "disabled": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "theme": {
+                "defaultValue": {
+                    "value": "'default'",
+                    "computed": false
+                }
+            },
+            "label": {
+                "defaultValue": {
+                    "value": "'Picklist'",
+                    "computed": false
+                }
+            },
+            "value": {
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            },
+            "options": {
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "initialFocus": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "modal": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "className": {
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "listClassName": {
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "listItemRenderer": {
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            }
+        }
+    }
+}

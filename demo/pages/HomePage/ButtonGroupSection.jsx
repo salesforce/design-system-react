@@ -14,6 +14,7 @@ import React from 'react';
 import SLDSButtonGroup from '../../../components/SLDSButtonGroup';
 import SLDSDropdownBase from '../../../components/SLDSDropdownBase';
 import SLDSButton from '../../../components/SLDSButton';
+import SLDSButtonStateful from '../../../components/SLDSButton/SLDSButtonStateful';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
 
@@ -37,7 +38,9 @@ module.exports = React.createClass( {
 
             <div className='slds-p-around--medium'>
               <h3 className='slds-text-heading--medium slds-truncate'>
-                Button Group
+                <a href="javascript:void(0)" id='buttonGroupSection'>
+                  Button Group
+                </a>
               </h3>
 
               <PrismCode className='language-markup'>
@@ -51,7 +54,7 @@ module.exports = React.createClass( {
                   <SLDSButton label='Save' variant='neutral' />
 
                 <SLDSDropdownBase
-                    label='More Options'
+                    assistiveText='More Options'
                     variant='icon'
                     iconName='down'
                     iconVariant='border-filled'
@@ -68,6 +71,7 @@ module.exports = React.createClass( {
                       {label:'E2 Option Super Super Long',value:'E1'},
 
                     ]}
+                    horizontalAlign='right'
                     onSelect={this.handleOnSelect}
                     onClick={this.handleOnClick}
                     onUpdateHighlighted={this.handleOnUpdateHighlighted}
@@ -79,9 +83,9 @@ module.exports = React.createClass( {
 
               <div className='slds-p-vertical--small'>
                 <SLDSButtonGroup>
-                  <SLDSButton label='Chart' variant='icon' iconName='chart' iconVariant='border'/>
-                  <SLDSButton label='Filter' variant='icon' iconName='filter' iconVariant='border'/>
-                  <SLDSButton label='Sort' variant='icon' iconName='sort' iconVariant='more'/>
+                  <SLDSButtonStateful type="icon" assistiveText="View Reports" label='Chart' variant='icon' iconName='chart' />
+                  <SLDSButtonStateful type="icon" assistiveText="Filter Data" label='Filter' variant='icon' iconName='filter' />
+                  <SLDSButton assistiveText='Sort' variant='icon' iconName='sort' iconVariant='more'/>
                 </SLDSButtonGroup>
               </div>
             </div>

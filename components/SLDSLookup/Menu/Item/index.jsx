@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, { Component } from 'react';
 import {Icon} from "../../../SLDSIcons";
 import {EventUtil} from '../../../utils';
+import escapeRegExp from 'lodash.escaperegexp';
 
 class Item extends React.Component {
   constructor(props) {
@@ -17,16 +18,19 @@ class Item extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true){
+    if (nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
       this.scrollFocus();
       this.props.setFocus(this.props.id);
     }
   }
 
   boldSearchText(children) {
-    const term = this.props.searchTerm;
-    if(!children || !term) return children;
-    const regex = new RegExp('(' + term + ')', 'gi');
+    let regex = this.props.boldRegex
+    if (!regex) {
+      const term = this.props.searchTerm;
+      if(!children || !term) return children;
+      regex = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
+    }
     return React.Children.map(children, c => {
       return (typeof c === 'string') ? <span dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
     });
@@ -46,6 +50,17 @@ class Item extends React.Component {
     if(height && this.props.handleItemFocus) this.props.handleItemFocus(this.props.index,height);
   }
 
+  getLabel(){
+    if(this.props.listItemLabelRenderer){
+      const ListItemLabel = this.props.listItemLabelRenderer;
+      return <ListItemLabel {... this.props} />;
+    }
+    return [
+      <Icon name={this.props.iconName} category={this.props.iconCategory}/>,
+      this.boldSearchText(this.props.children.label)
+    ]
+  }
+
   render(){
     let className = 'slds-lookup__item';
     let id = this.props.id;
@@ -53,7 +68,7 @@ class Item extends React.Component {
 
     return (
       //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
-      <li className={className} role="presentaion">
+      <li className={className} role="presentation">
         <a
           href={this.props.href}
           id={id}
@@ -63,8 +78,9 @@ class Item extends React.Component {
           role="option"
           onClick={this.handleClick.bind(this)}
           onMouseDown={this.handleMouseDown.bind(this)}>
-          <Icon name={this.props.type} />
-          { this.boldSearchText(this.props.children.label) }
+
+          { this.getLabel() }
+
         </a>
       </li>
     )
@@ -76,6 +92,7 @@ Item.propTypes = {
   id: React.PropTypes.string,
   href: React.PropTypes.string,
   type: React.PropTypes.string,
+  iconCategory: React.PropTypes.string,
   searchTerm: React.PropTypes.string,
   index: React.PropTypes.number,
   isActive: React.PropTypes.bool,
@@ -83,7 +100,9 @@ Item.propTypes = {
   setFocus: React.PropTypes.func,
   handleItemFocus: React.PropTypes.func,
   onSelect: React.PropTypes.func,
-  data: React.PropTypes.object
+  data: React.PropTypes.object,
+  boldRegex: React.PropTypes.instanceOf(RegExp),
+  listItemLabelRenderer: React.PropTypes.func
 };
 
 Item.defaultProps = {

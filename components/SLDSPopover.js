@@ -31,14 +31,20 @@ module.exports = React.createClass( {
   },
 
   propTypes: {
-    targetAttachment: React.PropTypes.string,
+//    targetAttachment: React.PropTypes.string,
   },
 
   getDefaultProps () {
     return {
-      targetAttachment: 'bottom left',
+      verticalAlign: 'bottom',
+      horizontalAlign: 'left',
       className: 'slds-dropdown',
-      closeOnTabKey: false
+      closeOnTabKey: false,
+      marginTop:'0.20rem',
+      marginBottom:'0.35rem',
+      marginLeft:0,
+      marginRight:0,
+      flippable:true
     };
   },
 
@@ -90,31 +96,18 @@ module.exports = React.createClass( {
         style={{
           transform:'none',
           WebkitTransform:'none',
-          'marginTop':'0.20rem',
-          'marginBottom':'0.35rem',
+          'marginTop':this.props.marginTop,
+          'marginBottom':this.props.marginBottom,
+          'marginLeft':this.props.marginLeft,
+          'marginRight':this.props.marginRight,
           'float':'inherit',
           'position':'inherit'
         }}
         onKeyDown={this.handleKeyDown}
       >
-{/*
-        <Spring
-          defaultValue={{ val:0 }}
-          endValue={{ val:1, config: [70, 10] }}>
-          {currentVal => {
-              return (<div style={{opacity:currentVal.val}}>
-
-*/}
 {
                 this.props.children
               }
-{/*
-              </div>);
-            }.bind(this)
-          }
-        </Spring>
-
-*/}
       </div>
     );
 
@@ -123,15 +116,29 @@ module.exports = React.createClass( {
   beforeClose (){
   },
 
+  getPosition () {
+    let positions = [];
+    if (this.props.verticalAlign === 'top' || this.props.verticalAlign === 'bottom') {
+      positions.push(this.props.verticalAlign);
+      positions.push(this.props.horizontalAlign);
+    }
+    else {
+      positions.push(this.props.horizontalAlign);
+      positions.push(this.props.verticalAlign);
+    }
+    return positions.join(' ');
+  },
+
   dropOptions () {
-    let target = this.props.targetElement?React.findDOMNode(this.props.targetElement):React.findDOMNode(this).parentNode;
+    const target = this.props.targetElement?React.findDOMNode(this.props.targetElement):React.findDOMNode(this).parentNode;
+    const position = this.getPosition();
     return {
       target: target,
       content: this.popoverElement,
-      position: this.props.targetAttachment,
+      position: position,
       openOn: 'always',
       beforeClose:this.beforeClose,
-      constrainToWindow:true,
+      constrainToWindow:this.props.flippable,
       constrainToScrollParent:false,
       remove:true
     };

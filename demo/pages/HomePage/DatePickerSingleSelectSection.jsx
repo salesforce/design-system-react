@@ -38,7 +38,9 @@ module.exports = React.createClass( {
             <div className="slds-p-around--medium">
 
               <h3 className="slds-text-heading--medium slds-truncate">
+                <a href="javascript:void(0)" id='datepickerSection'>
                 Datepickers (Work in progress)
+                </a>
               </h3>
 
               <PrismCode className='language-markup'>

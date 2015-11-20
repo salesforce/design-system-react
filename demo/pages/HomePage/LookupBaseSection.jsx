@@ -12,7 +12,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import SLDSLookup from '../../../components/SLDSLookup';
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
-import ActionItem from '../../../components/SLDSLookup/Menu/ActionItem';
+//import DefaultHeader from '../../../components/SLDSLookup/Menu/DefaultHeader';
+//import DefaultFooter from '../../../components/SLDSLookup/Menu/DefaultFooter';
 
 const items = [
   {label:'Paddy\'s Pub'},
@@ -44,28 +45,13 @@ module.exports = React.createClass( {
     console.log(item , ' Selected');
   },
 
-  headerClick(){
-    console.log('=====> Lookup Header Clicked');
-  },
-
-  footerClick(){
-    console.log('=====> Lookup Footer Clicked');
-  },
-
   getHeader(){
-    return (
-    <div className="slds-lookup__item" onClick={this.headerClick} onMouseDown={this.headerClick}>
-      <ActionItem item='search' type='account' searchTerm={this.state.searchVal} />
-    </div>
-    )
+    let searchLabel = (this.state.searchVal ? '"' + this.state.searchVal + '"':"") + ' in Accounts';
+    return <DefaultHeader searchLabel={searchLabel} type='account' />;
   },
 
   getFooter(){
-    return (
-    <div className="slds-lookup__item" onClick={this.footerClick} onMouseDown={this.footerClick}>
-      <ActionItem item='newItem' type='account' />
-    </div>
-    )
+    return <DefaultFooter type='account' newItemLabel='New Account'/>;
   },
 
   render() {
@@ -76,7 +62,9 @@ module.exports = React.createClass( {
             <div className="slds-p-around--medium">
 
               <h3 className="slds-text-heading--medium slds-truncate">
+                <a href="javascript:void(0)" id='lookupSection'>
                 Lookups
+                </a>
               </h3>
 
               <PrismCode className='language-markup'>
@@ -88,10 +76,13 @@ module.exports = React.createClass( {
                   items={items}
                   label="Account"
                   type="account"
-                  header={this.getHeader()}
-                  footer={this.getFooter()}
+                  iconCategory='standard'
+                  iconName='account'
+                  headerRenderer={SLDSLookup.DefaultHeader}
+                  footerRenderer={SLDSLookup.DefaultFooter}
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
+                  hasError={false}
                 />
               </div>
 

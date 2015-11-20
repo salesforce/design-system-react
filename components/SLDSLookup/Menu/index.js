@@ -19,7 +19,10 @@ class Menu extends React.Component {
 
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
   componentDidUpdate(prevProps, prevState){
-    let list = React.findDOMNode(this.refs.list).children.length;
+    // make an array of the children of the list
+    // but only count the actual items (ignore errors/messages)
+    let list = [].slice.call(React.findDOMNode(this.refs.list).children)
+      .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
     this.props.getListLength(list);
   }
 
@@ -28,42 +31,39 @@ class Menu extends React.Component {
   }
 
   //Scroll menu up/down when using mouse keys
-  handleItemFocus (itemIndex, itemHeight) {
-    if(this.refs.list){
+  handleItemFocus(itemIndex, itemHeight){
+    if (this.refs.list) {
       React.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
     }
   }
 
   renderHeader(){
-    if(this.props.header){
-      let headerActive = false;
-      let isActiveClass = null;
-      if(this.props.focusIndex === 0){
-        headerActive = true;
-        isActiveClass = 'slds-theme--shade';
-      }else{
-        headerActive = false;
-        isActiveClass = '';
-      }
-
-      return <div className={isActiveClass}>{this.props.header}</div>;
-    }
+    return this.props.header;
   }
 
   renderFooter(){
-    if(this.props.footer){
+    if (this.props.footer) {
       let footerActive = false;
       let isActiveClass = null;
-      if(this.props.focusIndex === this.props.listLength+1){
+      if (this.props.focusIndex === this.props.listLength+1) {
         footerActive = true;
         isActiveClass = 'slds-theme--shade';
       }else{
         footerActive = false;
         isActiveClass = '';
       }
-
       return <div className={isActiveClass}>{this.props.footer}</div>;
     }
+  }
+
+  renderErrors(){
+    return this.props.errors.map((error) => {
+      return (
+        <li className="slds-lookup__error" aria-live="polite">
+          <span>{error}</span>
+        </li>
+      );
+    });
   }
 
   renderItems(){
@@ -71,40 +71,69 @@ class Menu extends React.Component {
       //isActive means it is aria-activedescendant
       const id = c.id;
       let isActive = false;
-      if(this.props.header){
-        isActive = this.props.focusIndex === i + 1? true : false;
+      if (this.props.header) {
+        isActive = this.props.focusIndex === i + 1 ? true : false;
       }else{
         isActive = this.props.focusIndex === i  ? true : false;
       }
       return <Item
-      key={id}
-      id={id}
-      type={this.props.type}
-      searchTerm={this.props.searchTerm}
-      index={i}
-      isActive={isActive}
-      setFocus={this.props.setFocus}
-      handleItemFocus={this.handleItemFocus.bind(this)}
-      onSelect={this.props.onSelect}
-      data={c.data}
+        key={id}
+        id={id}
+        type={this.props.type}
+        iconCategory={this.props.iconCategory}
+        iconName={this.props.iconName}
+        searchTerm={this.props.searchTerm}
+        index={i}
+        isActive={isActive}
+        setFocus={this.props.setFocus}
+        handleItemFocus={this.handleItemFocus.bind(this)}
+        onSelect={this.props.onSelect}
+        data={c.data}
+        boldRegex={this.props.boldRegex}
+        listItemLabelRenderer={this.props.listItemLabelRenderer}
       >
       {c}
       </Item>
     });
   }
 
+  renderMessages(){
+    return this.props.messages.map((message) => {
+      return (
+        <li className="slds-lookup__message" aria-live="polite">
+          <span>{message}</span>
+        </li>
+      );
+    });
+  }
+
+  renderContent(){
+    if (this.props.errors.length > 0)
+      return this.renderErrors()
+    else if (this.props.items.length === 0)
+      return (
+        <li className="slds-lookup__message" aria-live="polite">
+          <span>{this.props.emptyMessage}</span>
+        </li>
+      );
+
+    let elements = this.renderItems();
+    if (this.props.messages.length > 0) {
+      elements.concat(this.renderMessages());
+    }
+    return elements;
+  }
+
   render(){
     return (
       <section id="menuContainer">
         {this.renderHeader()}
-
         <ul id="list" className="slds-lookup__list" role="presentation" ref="list">
-          {this.renderItems()}
+          {this.renderContent()}
         </ul>
-
         {this.renderFooter()}
       </section>
-    )
+    );
   }
 }
 
@@ -112,15 +141,22 @@ Menu.propTypes = {
   searchTerm: React.PropTypes.string,
   label: React.PropTypes.string,
   type: React.PropTypes.string,
+  iconCategory: React.PropTypes.string,
   focusIndex: React.PropTypes.number,
   listLength: React.PropTypes.number,
   items: React.PropTypes.array,
+  emptyMessage: React.PropTypes.string,
+  errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func,
   getListLength: React.PropTypes.func,
   setFocus: React.PropTypes.func,
+  boldRegex: React.PropTypes.instanceOf(RegExp),
 };
 
 Menu.defaultProps = {
+  emptyMessage: "No matches found.",
+  messages: [],
+  errors: [],
 };
 
 module.exports = Menu;
