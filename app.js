@@ -50,7 +50,7 @@ app.get('/react', function (req, res) {
 	var locals = {};
 
 	res.render('react/', locals, function () {
-		locals.script = reactExampleScripts;
+		locals.code = reactExampleScripts;
 		res.render('react/index', locals);
 	});
 });

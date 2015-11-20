@@ -21,8 +21,6 @@ import tooltip from '../../src/react/tooltip/example';
 import tree from '../../src/react/tree/example';
 import datatable from '../../src/react/data-table/example';
 
-console.log(document.querySelector('.react .badge .site-example'));
-
 ReactDOM.render(React.createElement(badge), document.querySelector('.react .badge .site-example'));
 // button();
 // buttonGroup();
