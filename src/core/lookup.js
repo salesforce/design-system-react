@@ -156,12 +156,11 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 			});
 			
 			const results = this._getFilteredCollection(this._collection, searchString);
+			this._navigableItems = this._configureKeyboardNavigation(results);
 			
 			this.setState({
 				results
 			});
-			
-			this._navigableItems = this._configureKeyboardNavigation(results);
 		}
 	}
 });

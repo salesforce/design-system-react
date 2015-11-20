@@ -86,28 +86,22 @@ let Lookup = Lib.merge({}, LookupCore, {
 	/* TODO: Possibly move these both to state. */
 	componentWillMount () {
 		const results = this._getFilteredCollection(this._collection, this.state.searchString);
+		this._navigableItems = this._configureKeyboardNavigation(results);
 		
 		this.setState({
 			results
 		});
-		
-		this._navigableItems = this._configureKeyboardNavigation(results);
 	},
 
 	componentWillReceiveProps (nextProps) {
-		let results;
-		
 		if (nextProps.collection) {
-			results = this._getFilteredCollection(this._collection, this.state.searchString);
+			const results = this._getFilteredCollection(this._collection, this.state.searchString);
+			this._navigableItems = this._configureKeyboardNavigation(results);
 			
 			this.setState({
 				results
 			});
-		} else {
-			results = this.state.results;
 		}
-		
-		this._navigableItems = this._configureKeyboardNavigation(results);
 		
 		// Right now we simply update `this.state.autoFocusOnNewSelectedItems` to `true` after initial load so that a selection (pill) will be focused immediately.
 		this.setState({
@@ -220,7 +214,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this._keyboardSelect);
+			this._keyboardNav(e.key, this._keyboardSelect, this.state.results);
 		// Also listen for character key presses an ensure that the menu it open while typing in the input, but don't actually trap them.
 		} else if (e.key.length === 1) {
 			if (!this.state.isOpen) this.open();
