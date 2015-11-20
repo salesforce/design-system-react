@@ -28,7 +28,7 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		'NOT_SELECTED': 'slds-not-selected'
 	},
 	
-	// Themes or flavors that dictate style on the `<button>`.
+	// [Themes (or variants)](https://www.lightningdesignsystem.com/components/buttons) that dictate the general style of and are applied to the `<button>`.
 	themes: {
 		'neutral': 'slds-button--neutral',
 		'brand': 'slds-button--brand',
@@ -40,7 +40,7 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		'small': 'slds-button--small'
 	},
 	
-	// `iconButtonStyles` are styles of buttons and the class is applied to the `<button>`, not the icon or SVG
+	// `iconButtonStyles` are styles of buttons and the class is applied to the `<button>`, not the icon or SVG.
 	iconButtonStyles: {
 		'icon-bare': 'slds-button--icon-bare',
 		'icon-border': 'slds-button--icon-border',
@@ -64,7 +64,7 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		children: []
 	},
 
-	// Internal method to determine if button is disabled.
+	// `_canSelect` informs the trait, [SelectableBoolean](../traits/selectable-boolean.html), whether the button can be selected.
 	_canSelect () {
 		if (this.getProperty('disabled')) {
 			// Component is disabled, do not allow a toggle to occur.
@@ -74,12 +74,12 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		return true;
 	},
 
-	// Public method that toogles selection state
+	// Public method that toggles selection state (selected | not-selected) of a button. This is often caused by a user clicking the button.
 	toggle () {
 		this._toggleSelected();
 	},
 
-	// `_getClassNames` determines what CSS classes will be applied to `<button>`. Additional classes can be passed into it.
+	// `_getClassNames` determines what CSS classes will be applied to `<button>`. Additional classes can be added to the button based on properties.
 	_getClassNames (additionalClasses, isStateful) {
 		const selectedClasses = {};
 		
@@ -88,11 +88,14 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 			selectedClasses[this.cssClasses.SELECTED] = this.getProperty('selected');
 		}
 
-		return classNames(this.cssClasses.CONTROL,
+		// If falsey or object key/value is falsey, no classes are added for its respective property.
+		return classNames(
+			this.cssClasses.CONTROL,
 			this.sizes[this.getProperty('size')],
 			this.themes[this.getProperty('theme')],
 			this.iconButtonStyles[this.getProperty('iconStyle')],
-			selectedClasses, additionalClasses);
+			selectedClasses,
+			additionalClasses);
 	}
 });
 
