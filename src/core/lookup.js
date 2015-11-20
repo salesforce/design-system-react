@@ -77,8 +77,7 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		});
 		
 		/* TODO: Not using wrapped elements here, but jQuery facade will either have to use them or the underlying element. */
-		const _menu = this.elements.menu;
-		_menu.scrollTop = 0;
+		if (this.elements.menu) this.elements.menu.scrollTop = 0;
 	},
 	
 	_getInputId () {

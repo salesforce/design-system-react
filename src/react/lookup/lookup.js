@@ -92,6 +92,9 @@ let Lookup = Lib.merge({}, LookupCore, {
 			searchResults,
 			navigableItems
 		});
+		
+		this.elements.dropdown = document.createElement('span');
+		document.querySelector('body').appendChild(this.elements.dropdown);
 	},
 
 	componentWillReceiveProps (nextProps) {
@@ -121,6 +124,30 @@ let Lookup = Lib.merge({}, LookupCore, {
 		const selectedItems = this._getSelectedItems();
 		const hasSelection = selectedItems.length() > 0;
 
+		// Unlike the header and footer, the pills will always be rendered if there is a selection and there is no option to disable them by passing false to `this.props.pillRenderer`. However, it is still possible to override the contents of the pills by passing in a custom render function.
+		let pills;
+		if (hasSelection) {
+			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems}/>;
+		}
+		
+		// This markup should reflect the design system pattern for the control.
+		return (
+			<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true">
+				<div className="slds-form-element">
+					<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
+					<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
+						<Svg icon={this.props.searchIcon} className="slds-input__icon" />
+						{pills}
+						<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
+					</div>
+				</div>
+			</div>
+		);
+	},
+	
+	_renderMenu () {
+		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
+		
 		// The menu header can be hidden by passing `false` to `this.props.menuHeaderRenderer`. The scaffolding needed for accessibility and display of the header is defined by the `Action` child control, but the contents of the control may vary based on the renderer passed in. If a render function (that returns React elements) is passed into the props that will be used to render the header, otherwise it will render the default renderer.
 		let header;
 		if (Lib.isFunction(this.props.menuHeaderRenderer)) {
@@ -132,36 +159,22 @@ let Lookup = Lib.merge({}, LookupCore, {
 		if (Lib.isFunction(this.props.menuFooterRenderer)) {
 			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.labelPlural || this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} parentProps={this.props} numResults={this.state.searchResults.length()} onClick={this.props.onAddClick} />;
 		}
-
-		// Unlike the header and footer, the pills will always be rendered if there is a selection and there is no option to disable them by passing false to `this.props.pillRenderer`. However, it is still possible to override the contents of the pills by passing in a custom render function.
-		let pills;
-		if (hasSelection) {
-			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems}/>;
-		}
 		
-		// This markup should reflect the design system pattern for the control.
-		return (
-		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true">
-			<div className="slds-form-element">
-				<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
-				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
-					<Svg icon={this.props.searchIcon} className="slds-input__icon" />
-					{pills}
-					<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
-				</div>
-			</div>
+		const menu = (
 			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
 				{header}
 				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
 			</div>
-		</div>
 		);
+
+		ReactDOM.render(menu, this.elements.dropdown);
 	},
 
 	// After the control has rendered, we may need to scroll the currently selected menu item into view. The function which actually peforms the scrolling lives in the core.
 	componentDidUpdate () {
-		this._scrollMenuItems();
+		this._renderMenu();
+		if (this.elements.menu) this._scrollMenuItems();
 
 		// After an item has been deselected we need to return the focus to the input element.
 		/* TODO: It'd be nice if we could get rid of this boolean eventually. */
