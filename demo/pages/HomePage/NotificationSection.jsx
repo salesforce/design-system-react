@@ -22,7 +22,8 @@ module.exports = React.createClass( {
 
   getInitialState () {
     return {
-      modalIsOpen: false
+      modalIsOpen: false,
+      toastsAreOpen: true,
     };
   },
 
@@ -89,9 +90,14 @@ module.exports = React.createClass( {
           Notification
           </a>
         </h3>
-        <h4>
-          * All notifications are fixed and centered at the top of the screen.
-        </h4>
+        <ul className="slds-p-vertical--medium">
+          <li>
+            <h4>* All notifications are fixed and centered at the top of the screen.</h4>
+          </li>
+          <li>
+            <h4>* Toasts default duration is five seconds and will then disappear.</h4>
+          </li>
+        </ul>
         <PrismCode className='language-markup'>
           {require('raw-loader!../../code-snippets/SLDSNotification.txt')}
         </PrismCode>
@@ -101,6 +107,9 @@ module.exports = React.createClass( {
             <div className="demo-only">
               <div className="slds-p-bottom--small">
                 {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} onDismiss={this.dismissToast} />}
+              </div>
+              <div className="slds-p-bottom--small">
+                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} duration={5000} onDismiss={this.dismissToast} />}
               </div>
               <div className="slds-p-bottom--small">
                 {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='error' icon='warning' texture={true} content={errorMsg} onDismiss={this.dismissToast} />}
@@ -113,7 +122,6 @@ module.exports = React.createClass( {
 
           <div className="slds-p-vertical--small">
             <h4 className="slds-text-heading--small ">Toasts</h4>
-
             <div className="demo-only" style={toastStyle}>
               Base
               {this.state.modalIsOpen ? null: <SLDSNotification variant='toast' theme='success' icon='notification' content={successMsg} onDismiss={this.dismissToast} />}

@@ -14,10 +14,36 @@ const classNames = require("classnames");
 import SLDSButton from "../SLDSButton";
 import {Icon} from "../SLDSIcons";
 
+const displayName = 'SLDSNotification';
+const propTypes = {
+  className: React.PropTypes.string,
+  content: React.PropTypes.node,
+  dismissible: React.PropTypes.bool,
+  duration: React.PropTypes.number,
+  icon: React.PropTypes.string,
+  onDismiss: React.PropTypes.func,
+  texture: React.PropTypes.bool,
+  theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
+  variant: React.PropTypes.oneOf(["alert", "toast"]),
+};
+
+const defaultProps = {
+  dismissible: true,
+};
+
 class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
     this.state = { isOpen: true };
+  }
+
+  componentDidMount() {
+    if(this.props.duration) {
+      const that = this;
+      setTimeout(function() {
+        that.setState({ isOpen: false});
+      }, that.props.duration);
+    }
   }
 
   renderIcon(){
@@ -57,7 +83,7 @@ class SLDSNotification extends React.Component {
 
   onDismiss(){
     if(this.props.onDismiss) this.props.onDismiss();
-    this.setState({isOpen:false});
+    this.setState({isOpen: false});
   }
 
   renderAlertContent(){
@@ -94,34 +120,25 @@ class SLDSNotification extends React.Component {
 
   render(){
     if(this.state.isOpen){
-    return(
-      <div className="slds-notify-container">
-        <div className={this.getClassName()} role="alert">
-          <span className="slds-assistive-text">{this.props.theme}</span>
-          {this.renderClose()}
-          {this.renderAlertContent()}
-          {this.renderToastContent()}
+      return (
+        <div className="slds-notify-container">
+          <div className={this.getClassName()} role="alert">
+            <span className="slds-assistive-text">{this.props.theme}</span>
+            {this.renderClose()}
+            {this.renderAlertContent()}
+            {this.renderToastContent()}
+          </div>
         </div>
-      </div>
-    );
+      );
     }else{
       return null;
     }
   }
 }
-SLDSNotification.propTypes = {
-  content: React.PropTypes.node,
-  icon: React.PropTypes.string,
-  variant: React.PropTypes.oneOf(["alert", "toast"]),
-  theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
-  texture: React.PropTypes.bool,
-  dismissible: React.PropTypes.bool,
-  onDismiss: React.PropTypes.func,
-};
 
-SLDSNotification.defaultProps = {
-  dismissible: true
-};
+SLDSNotification.displayName = displayName;
+SLDSNotification.propTypes = propTypes;
+SLDSNotification.defaultProps = defaultProps;
 
 module.exports = SLDSNotification;
 
