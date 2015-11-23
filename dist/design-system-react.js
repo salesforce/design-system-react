@@ -10162,6 +10162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          type: this.props.type,
 	          iconCategory: this.props.iconCategory,
 	          iconName: this.props.iconName ? this.props.iconName : this.props.type,
+	          iconClasses: this.props.iconClasses,
 	          focusIndex: this.state.focusIndex,
 	          listLength: this.state.listLength,
 	          items: this.state.items,
@@ -10439,6 +10440,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          type: _this.props.type,
 	          iconCategory: _this.props.iconCategory,
 	          iconName: _this.props.iconName,
+	          iconClasses: _this.props.iconClasses,
 	          searchTerm: _this.props.searchTerm,
 	          index: i,
 	          isActive: isActive,
@@ -10631,7 +10633,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var ListItemLabel = this.props.listItemLabelRenderer;
 	        return _react2['default'].createElement(ListItemLabel, this.props);
 	      }
-	      return [_react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.iconName, category: this.props.iconCategory }), this.boldSearchText(this.props.children.label)];
+	      return [_react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.iconName, category: this.props.iconCategory, className: this.props.iconClasses }), this.boldSearchText(this.props.children.label)];
 	    }
 	  }, {
 	    key: 'render',
@@ -11557,6 +11559,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var classNames = __webpack_require__(23);
 	
+	var displayName = 'SLDSNotification';
+	var propTypes = {
+	  className: _react2["default"].PropTypes.string,
+	  content: _react2["default"].PropTypes.node,
+	  dismissible: _react2["default"].PropTypes.bool,
+	  duration: _react2["default"].PropTypes.number,
+	  icon: _react2["default"].PropTypes.string,
+	  onDismiss: _react2["default"].PropTypes.func,
+	  texture: _react2["default"].PropTypes.bool,
+	  theme: _react2["default"].PropTypes.oneOf(["success", "warning", "error", "offline"]),
+	  variant: _react2["default"].PropTypes.oneOf(["alert", "toast"])
+	};
+	
+	var defaultProps = {
+	  dismissible: true
+	};
+	
 	var SLDSNotification = (function (_React$Component) {
 	  _inherits(SLDSNotification, _React$Component);
 	
@@ -11568,6 +11587,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  _createClass(SLDSNotification, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      var _this = this;
+	
+	      if (this.props.duration) {
+	        (function () {
+	          var that = _this;
+	          setTimeout(function () {
+	            that.setState({ isOpen: false });
+	          }, that.props.duration);
+	        })();
+	      }
+	    }
+	  }, {
 	    key: "renderIcon",
 	    value: function renderIcon() {
 	      if (this.props.icon) {
@@ -11643,19 +11676,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return SLDSNotification;
 	})(_react2["default"].Component);
 	
-	SLDSNotification.propTypes = {
-	  content: _react2["default"].PropTypes.node,
-	  icon: _react2["default"].PropTypes.string,
-	  variant: _react2["default"].PropTypes.oneOf(["alert", "toast"]),
-	  theme: _react2["default"].PropTypes.oneOf(["success", "warning", "error", "offline"]),
-	  texture: _react2["default"].PropTypes.bool,
-	  dismissible: _react2["default"].PropTypes.bool,
-	  onDismiss: _react2["default"].PropTypes.func
-	};
-	
-	SLDSNotification.defaultProps = {
-	  dismissible: true
-	};
+	SLDSNotification.displayName = displayName;
+	SLDSNotification.propTypes = propTypes;
+	SLDSNotification.defaultProps = defaultProps;
 	
 	module.exports = SLDSNotification;
 
