@@ -277,6 +277,7 @@ class SLDSLookup extends React.Component {
         type={this.props.type}
         iconCategory={this.props.iconCategory}
         iconName={this.props.iconName?this.props.iconName:this.props.type}
+        iconClasses={this.props.iconClasses}
         focusIndex={this.state.focusIndex}
         listLength={this.state.listLength}
         items={this.state.items}
