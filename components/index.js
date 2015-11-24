@@ -22,6 +22,7 @@ import SLDSModal from './SLDSModal';
 import SLDSModalTrigger from './SLDSModal/trigger';
 import SLDSIcons from './SLDSIcons';
 import SLDSNotification from './SLDSNotification';
+import SLDSUtilityIcon from './SLDSUtilityIcon';
 
 module.exports = {
   SLDSPicklistBase: SLDSPicklistBase,
@@ -35,5 +36,6 @@ module.exports = {
   SLDSModalTrigger: SLDSModalTrigger,
   SLDSIcons: SLDSIcons,
   SLDSNotification: SLDSNotification,
-  SLDSTooltip:SLDSTooltip
+  SLDSTooltip: SLDSTooltip,
+  SLDSUtilityIcon: SLDSUtilityIcon,
 };

@@ -10,7 +10,7 @@
 import React, { Component } from "react";
 import Menu from "./Menu";
 import SLDSPopover from "../SLDSPopover";
-import {Icon, InputIcon} from "./../SLDSIcons";
+import {ButtonIcon, Icon, InputIcon} from "./../SLDSIcons";
 import SLDSButton from "../SLDSButton";
 import {KEYS,EventUtil} from "../utils";
 import escapeRegExp from "lodash.escaperegexp";
@@ -277,6 +277,7 @@ class SLDSLookup extends React.Component {
         type={this.props.type}
         iconCategory={this.props.iconCategory}
         iconName={this.props.iconName?this.props.iconName:this.props.type}
+        iconClasses={this.props.iconClasses}
         focusIndex={this.state.focusIndex}
         listLength={this.state.listLength}
         items={this.state.items}
@@ -320,17 +321,18 @@ class SLDSLookup extends React.Component {
     let selectedItem = this.props.items[this.state.selectedIndex].label;
     return <span tabIndex="0" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         <span className="slds-pill__label">
-          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.type} className={this.props.iconClasses} />
+          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.type} className={"slds-m-right--x-small " + this.props.iconClasses} />
           {selectedItem}
         </span>
         <SLDSButton
-          label="Press delete to remove"
+          assistiveText="Press delete to remove"
           tabIndex="-1"
           variant="icon"
           iconName="close"
           iconSize="medium"
           onClick={this.handleDeleteSelected.bind(this)}
           ref="clearSelectedItemButton"
+          className="slds-m-left--x-small "
         />
       </span>
   }

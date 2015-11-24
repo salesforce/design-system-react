@@ -41,7 +41,7 @@ module.exports = React.createClass( {
       modal: false,
       className:'',
       listClassName:'',
-      listItemRenderer:ListItemLabel
+      listItemRenderer:null
     }
   },
 
@@ -162,6 +162,10 @@ module.exports = React.createClass( {
     this.setFocus();
   },
 
+  getListItemRenderer() {
+    return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
+  },
+
   getPopoverContent() {
     return <List
             triggerId={this.state.triggerId}
@@ -176,7 +180,7 @@ module.exports = React.createClass( {
             onListBlur={this.handleListBlur}
             onListItemBlur={this.handleListItemBlur}
             onCancel={this.handleCancel}
-            itemRenderer={this.props.listItemRenderer}
+            itemRenderer={this.getListItemRenderer()}
             theme={this.props.theme} />;
   },
 

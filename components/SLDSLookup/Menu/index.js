@@ -82,6 +82,7 @@ class Menu extends React.Component {
         type={this.props.type}
         iconCategory={this.props.iconCategory}
         iconName={this.props.iconName}
+        iconClasses={this.props.iconClasses}
         searchTerm={this.props.searchTerm}
         index={i}
         isActive={isActive}

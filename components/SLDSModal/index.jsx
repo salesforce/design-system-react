@@ -11,12 +11,15 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSButton from '../SLDSButton';
+import {EventUtil} from '../utils';
+import SLDSSettings from '../SLDSSettings';
 import cx from 'classnames';
+
 
 import Modal from 'react-modal';
 
 const customStyles = {
-  content: {
+  content : {
     position                : 'default',
     top                     : 'default',
     left                    : 'default',
@@ -30,14 +33,12 @@ const customStyles = {
     outline                 : 'default',
     padding                 : 'default'
   },
-  overlay: {
+  overlay : {
     backgroundColor: 'default'
   }
 };
 
 module.exports = React.createClass( {
-
-  displayName: "SLDSModal",
 
   propTypes: {
     size: React.PropTypes.oneOf(['medium', 'large']),
@@ -46,13 +47,13 @@ module.exports = React.createClass( {
 
   getDefaultProps () {
     return {
-      title: '',
-      tagline: '',
-      isOpen: false,
-      content: [],
-      footer: [],
-      returnFocusTo: null,
-      prompt: '', //if prompt !== '', it renders modal as prompt
+      title:'',
+      tagline:'',
+      isOpen:false,
+      content:[],
+      footer:[],
+      returnFocusTo:null,
+      prompt:'', //if prompt !== '', it renders modal as prompt
       directional: false
     };
   },
@@ -66,27 +67,25 @@ module.exports = React.createClass( {
 
   componentDidMount () {
     //console.log('!!! window.activeElement !!! ',document.activeElement);
-    this.setState({returnFocusTo: document.activeElement})
+    this.setState({returnFocusTo:document.activeElement})
     if(!this.state.revealed){
       setTimeout(()=>{
-        this.setState({revealed: true});
+        this.setState({revealed:true});
       });
     }
     this.updateBodyScroll();
   },
 
   componentDidUpdate (prevProps, prevState) {
-    if(this.props.isOpen !== prevProps.isOpen){
+    if(this.props.isOpen !== prevProps.isOpen) {
       this.updateBodyScroll();
     }
 
-    if(this.state.isClosing !== prevState.isClosing){
-      if(this.state.isClosing){
-        //console.log('CLOSING: ');
-
-        if(this.isMounted()){
-          const el = React.findDOMNode(this).parentNode;
-          if(el && el.getAttribute('data-slds-modal')){
+    if(this.state.isClosing !== prevState.isClosing) {
+      if(this.state.isClosing) {
+        if(this.isMounted()) {
+          const el = this.getDOMNode().parentNode;
+          if(el && el.getAttribute('data-slds-modal')) {
             React.unmountComponentAtNode(el);
             document.body.removeChild(el);
           }
@@ -95,8 +94,8 @@ module.exports = React.createClass( {
     }
   },
 
-  isPrompt(){
-    return this.props.prompt !== '';
+  componentWillUnmount () {
+    this.clearBodyScroll();
   },
 
   closeModal () {
@@ -113,19 +112,94 @@ module.exports = React.createClass( {
     this.closeModal();
   },
 
+  updateBodyScroll () {
+    if(window && document && document.body){
+      if(this.props.isOpen){
+        document.body.style.overflow = 'hidden';
+      }
+      else{
+        document.body.style.overflow = 'inherit';
+      }
+    }
+  },
+
+  clearBodyScroll: function updateBodyScroll() {
+    if (window && document && document.body) {
+      document.body.style.overflow = 'inherit';
+    }
+  },
+
   handleModalClick(event) {
     if(event && event.stopPropagation){
       event.stopPropagation();
     }
   },
 
-  updateBodyScroll () {
-    if(window && document && document.body){
-      if(this.props.isOpen){
-        document.body.style.overflow = 'hidden';
-      }else{
-        document.body.style.overflow = 'inherit';
-      }
+  isPrompt(){
+    return this.props.prompt !== '';
+  },
+
+  getModal() {
+    const modalClass = {
+      'slds-modal': true,
+      'slds-fade-in-open':this.state.revealed,
+      'slds-modal--large':this.props.size === 'large',
+      'slds-modal--prompt':this.isPrompt()
+    };
+
+    return <div
+            className={cx(modalClass)}
+            style={{pointerEvents:'inherit'}}
+            onClick={this.isPrompt() ? undefined : this.closeModal}
+          >
+          <div
+            role='document'
+            className='slds-modal__container'
+            onClick={this.handleModalClick}
+            >
+
+            {this.headerComponent()}
+
+            <div className='slds-modal__content'>
+
+              {this.props.children}
+
+            </div>
+
+            {this.footerComponent()}
+
+          </div>
+
+        </div>;
+  },
+
+  footerComponent() {
+    let footer;
+
+    const footerClass = {
+      'slds-modal__footer': true,
+      'slds-modal__footer--directional': this.props.directional,
+      'slds-theme--default': this.isPrompt()
+    };
+
+    const hasFooter = this.props.footer && this.props.footer.length > 0;
+
+    if (hasFooter ) {
+      footer = (<div className={cx(footerClass)}>{this.props.footer}</div>);
+    }
+
+    return footer;
+  },
+
+  renderTitle(headingClasses) {
+    if(this.props.title){
+      return <h2 className={cx(headingClasses)}>{this.props.title}</h2>;
+    }
+  },
+
+  renderTagline() {
+    if(this.props.tagline){
+      return <p className="slds-m-top--x-small">{this.props.tagline}</p>;
     }
   },
 
@@ -147,16 +221,16 @@ module.exports = React.createClass( {
     if(hasHeader) {
       header = (
         <div className={cx(headerClass)}>
+          <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal} />
           {this.props.toast}
           <h2 className={cx(titleClass)}>{this.props.title}</h2>
           {this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p>:null}
-          <SLDSButton label='Close' variant='icon' iconName='close' iconSize='large' inverse={true} className='slds-modal__close' onClick={this.closeModal} />
         </div>
       )
     }else{
       header = (
         <div style={{position: 'relative'}}>
-          <SLDSButton label='Close' variant='icon' iconName='close' iconSize='large' inverse={true} className='slds-modal__close' onClick={this.closeModal} />
+          <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal} />
         </div>
       )
     }
@@ -164,62 +238,21 @@ module.exports = React.createClass( {
     return header;
   },
 
-  footerComponent() {
-    let footer;
-
-    const footerClass = {
-      'slds-modal__footer': true,
-      'slds-modal__footer--directional': this.props.directional,
-      'slds-theme--default': this.isPrompt()
-    };
-
-    const hasFooter = this.props.footer && this.props.footer.length > 0;
-
-    if (hasFooter ) {
-      footer = (<div className={cx(footerClass)}>{this.props.footer}</div>);
-    }
-
-    return footer;
-  },
-
-  getModal() {
-    const modalClass = {
-      'slds-modal': true,
-      'slds-fade-in-open': this.state.revealed,
-      'slds-motion--fade-in-rise': this.state.revealed,
-      'slds-motion--fade-out-fall': !this.state.revealed,
-      'slds-modal--large': this.props.size === 'large',
-      'slds-modal--prompt': this.isPrompt(),
-    };
-
-    return (
-      <div>
-        <div className={cx(modalClass)} style={{pointerEvents:'inherit'}} onClick={this.isPrompt() ? undefined : this.closeModal}>
-          <div aria-hidden="false" role='dialog' onClick={this.handleModalClick} className='slds-modal__container'>
-            {this.headerComponent()}
-            <div className='slds-modal__content'>
-              {this.props.children}
-            </div>
-            {this.footerComponent()}
-          </div>
-        </div>
-        <div style={{pointerEvents: 'inherit'}} className="slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly" onClick={this.isPrompt() ? undefined : this.closeModal}></div>
-      </div>
-    )
-  },
-
   render() {
+    const overlayClasses = {
+      'slds-modal-backdrop': true,
+      'slds-modal-backdrop--open':this.state.revealed
+    };
 
     return (
       <Modal
         isOpen={this.props.isOpen}
         onRequestClose={this.closeModal}
-        style={customStyles}>
-          {this.getModal()}
+        style={customStyles}
+        overlayClassName={cx(overlayClasses)} >
+        {this.getModal()}
       </Modal>
     );
   },
-
-
 
 });

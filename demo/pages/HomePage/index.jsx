@@ -16,7 +16,6 @@ const { Route, DefaultRoute, RouteHandler, Link } = Router;
 import SLDSGrid from '../../../components/SLDSGrid';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 
-import ButtonSectionREADME from './ButtonSectionREADME';
 import ButtonSection from './ButtonSection';
 import ButtonGroupSection from './ButtonGroupSection';
 
@@ -37,6 +36,10 @@ import ModalSection from './ModalSection';
 import DatePickerSingleSelectSection from './DatePickerSingleSelectSection';
 import IconSection from './IconSection';
 import TooltipSection from './TooltipSection';
+
+import DOCS from '../../../docs';
+console.log('DOCS: ',DOCS);
+
 
 const SLDSColumn = SLDSGrid.Column;
 
@@ -69,8 +72,8 @@ module.exports = React.createClass( {
     let that = this;
     return function() {
       var target = document.getElementById(elemId);
-      console.log(target);
       that.animate(document.body, "scrollTop", "", 0, target.offsetTop, 500, true);
+      target.focus();
     };
   },
 
@@ -84,7 +87,7 @@ module.exports = React.createClass( {
               <SLDSColumn className='slds-has-flexi-truncate'>
                 <div className='slds-media'>
                   <div className='slds-media__figure'>
-                    <Icon name='lead' category='standard' size='large' position='left' />
+                    <Icon assistiveText="lead" name='lead' category='standard' size='large' position='left' />
                   </div>
                   <div className='slds-media__body'>
                     <p className='slds-text-heading--label'>Lightning Design System</p>

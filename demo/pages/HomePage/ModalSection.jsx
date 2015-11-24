@@ -138,8 +138,10 @@ module.exports = React.createClass( {
     return (
       <div className='slds-p-around--medium'>
 
-      <h3 id='modalSection' className='slds-text-heading--medium slds-truncate'>
-      Modal
+      <h3 className='slds-text-heading--medium slds-truncate'>
+        <a href="javascript:void(0)" id='modalSection'>
+        Modal
+        </a>
       </h3>
       <PrismCode className='language-markup'>
         {require("raw-loader!../../code-snippets/SLDSModal.txt")}
