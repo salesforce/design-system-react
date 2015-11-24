@@ -131,7 +131,7 @@ module.exports = React.createClass( {
             onClick={this.isPrompt() ? undefined : this.closeModal}
           >
           <div
-            role='document'
+            role='dialog'
             className='slds-modal__container'
             onClick={this.handleModalClick}
             >
