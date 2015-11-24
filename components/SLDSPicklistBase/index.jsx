@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React, {PropTypes} from 'react';
+import isEqual from 'lodash.isequal';
 import SLDSPopover from '../SLDSPopover';
 import List from './list';
 import ListItem from './list-item';
@@ -245,7 +246,8 @@ module.exports = React.createClass( {
     }
 
 
-    if(this.props.value !== prevProps.value){
+    if(this.props.value !== prevProps.value ||
+        !isEqual(this.props.options, prevProps.options)){
       this.handleSelect(this.getIndexByValue(this.props.value));
     }
 
