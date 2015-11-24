@@ -90,7 +90,7 @@ class SLDSModal extends React.Component {
   }
 
   componentWillUnmount () {
-    this.updateBodyScroll();
+    this.clearBodyScroll();
   }
 
   closeModal () {
@@ -114,6 +114,12 @@ class SLDSModal extends React.Component {
       }else{
         document.body.style.overflow = 'inherit';
       }
+    }
+  }
+
+  clearBodyScroll: function updateBodyScroll() {
+    if (window && document && document.body) {
+      document.body.style.overflow = 'inherit';
     }
   }
 
