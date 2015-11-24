@@ -39,25 +39,22 @@ class SLDSTooltip extends React.Component {
     };
   }
 
-  componentDidMount(){
-  },
-
-  handleMouseClick(event) {
+  handleMouseClick() {
     this.setState({
       isOpen: !this.state.isOpen,
       isClosing: !this.state.isOpen
     });
-  },
+  }
 
 
-  handleMouseEnter(event) {
+  handleMouseEnter() {
     this.setState({
       isOpen: true,
       isClosing: false
     });
-  },
+  }
 
-  handleMouseLeave(event) {
+  handleMouseLeave() {
     this.setState({isClosing: true});
     setTimeout(()=>{
       if(this.isMounted && this.state.isClosing){
@@ -67,11 +64,11 @@ class SLDSTooltip extends React.Component {
         });
       }
     },this.props.hoverCloseDelay)
-  },
+  }
 
   getTooltipContent() {
     return <div className='slds-popover__body'>{this.props.content}</div>;
-  },
+  }
 
   getHorizontalAlign() {
     if (this.props.align==='left') {
@@ -81,7 +78,7 @@ class SLDSTooltip extends React.Component {
       return 'right';
     }
     return 'center';
-  },
+  }
 
   getVerticalAlign() {
     if (this.props.align==='bottom') {
@@ -91,14 +88,14 @@ class SLDSTooltip extends React.Component {
       return 'top';
     }
     return 'middle';
-  },
+  }
 
   handleCancel() {
     this.setState({
       isOpen: false,
       isClosing: false
     });
-  },
+  }
 
   getTooltip() {
     const style = {
@@ -127,18 +124,18 @@ class SLDSTooltip extends React.Component {
             {this.getTooltipContent()}
           </div>
         </SLDSPopover>:null;
-  },
+  }
 
   render(){
     return (
-      <span refs='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick:null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter:null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave:null}>
+      <span refs='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick:null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null}>
         { this.props.children }
         { this.getTooltip() }
       </span>
     );
   }
 
-};
+}
 
 
 SLDSTooltip.displayName = displayName;
