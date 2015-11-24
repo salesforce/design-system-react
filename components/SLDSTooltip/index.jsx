@@ -12,9 +12,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React, {PropTypes} from 'react';
 import SLDSPopover from '../SLDSPopover';
 
-//import {KEYS,EventUtil} from '../utils';
-//import omit from 'lodash.omit';
-
 import cx from 'classnames';
 
 module.exports = React.createClass( {

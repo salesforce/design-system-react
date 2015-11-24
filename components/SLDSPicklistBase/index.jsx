@@ -41,7 +41,7 @@ module.exports = React.createClass( {
       modal: false,
       className:'',
       listClassName:'',
-      listItemRenderer:ListItemLabel
+      listItemRenderer:null
     }
   },
 
@@ -83,7 +83,7 @@ module.exports = React.createClass( {
   getValueByIndex(index){
     const option = this.props.options[index];
     if(option){
-      return this.props.options[index].value;
+      return this.props.options[index];
     }
   },
 
@@ -162,6 +162,10 @@ module.exports = React.createClass( {
     this.setFocus();
   },
 
+  getListItemRenderer() {
+    return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
+  },
+
   getPopoverContent() {
     return <List
             triggerId={this.state.triggerId}
@@ -176,7 +180,7 @@ module.exports = React.createClass( {
             onListBlur={this.handleListBlur}
             onListItemBlur={this.handleListItemBlur}
             onCancel={this.handleCancel}
-            itemRenderer={this.props.listItemRenderer}
+            itemRenderer={this.getListItemRenderer()}
             theme={this.props.theme} />;
   },
 
@@ -184,7 +188,7 @@ module.exports = React.createClass( {
     return (
       !this.props.disabled && this.state.isOpen?
         <div
-          className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
+          className="slds-dropdown slds-dropdown--left slds-dropdown--menu"
           style={{maxHeight:'20em'}}>
           {this.getPopoverContent()}
         </div>:null
@@ -214,33 +218,6 @@ module.exports = React.createClass( {
       lastBlurredIndex:index,
       lastBlurredTimeStamp:Date.now()
     });
-  },
-
-  render() {
-    return (
-      <div className={"slds-form-element slds-theme--"+this.props.theme}>
-        <div className={"slds-picklist slds-theme--"+this.props.theme}>
-          <button
-            id={this.state.triggerId}
-            ref="triggerbutton"
-            className={'slds-button slds-button--neutral slds-picklist__label '+this.props.className }
-            aria-haspopup="true"
-            onBlur={this.handleBlur}
-            onFocus={this.handleFocus}
-            onClick={this.handleClick}
-            onMouseDown={this.handleMouseDown}
-            tabIndex={this.state.isOpen?-1:0}
-            onKeyDown={this.handleKeyDown} >
-            <span className="slds-truncate">{this.getPlaceholder()}</span>
-            <Icon name="down" category="utility" />
-          </button>
-
-          {this.props.modal?this.getModalPopover():this.getSimplePopover()}
-
-        </div>
-
-      </div>
-    );
   },
 
   componentDidUpdate( prevProps, prevState) {
@@ -274,7 +251,33 @@ module.exports = React.createClass( {
 
   },
 
+  render() {
+    return (
+      <div className="slds-picklist" aria-expanded={this.state.isOpen}>
+        <button
+          id={this.state.triggerId}
+          ref="triggerbutton"
+          className="slds-button slds-button--neutral slds-picklist__label"
+          aria-haspopup="true"
+          onBlur={this.handleBlur}
+          onFocus={this.handleFocus}
+          onClick={this.handleClick}
+          onMouseDown={this.handleMouseDown}
+          tabIndex={this.state.isOpen?-1:0}
+          onKeyDown={this.handleKeyDown}>
+            <span className="slds-truncate">{this.getPlaceholder()}</span>
+            <Icon name="down" category="utility" />
+        </button>
+
+        {this.props.modal?this.getModalPopover():this.getSimplePopover()}
+
+      </div>
+    );
+  },
+
+
 });
 
 module.exports.ListItem = ListItem;
 module.exports.ListItemLabel = ListItemLabel;
+

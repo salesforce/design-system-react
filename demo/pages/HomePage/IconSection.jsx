@@ -39,16 +39,51 @@ module.exports = React.createClass( {
     return (
 
             <div className='slds-p-around--medium'>
-              <h3 id='iconSection' className='slds-text-heading--medium slds-truncate'>
+              <h3 className='slds-text-heading--medium slds-truncate'>
+                <a href="javascript:void(0)" id='iconSection'>
                 Icon
+                </a>
               </h3>
               <PrismCode className='language-markup'>
                 {require('raw-loader!../../code-snippets/SLDSIcon.txt')}
               </PrismCode>
               <div className='slds-p-vertical--large'>
-                <div className='slds-input-has-icon slds-input-has-icon--left'>
-                  <Icon name='open_folder' category='utility' className='slds-input__icon slds-icon-text-default'/>
-                </div>
+
+              <table className="slds-container--small">
+              <tr>
+                <td className="slds-p-vertical--medium">
+                Action
+                </td>
+                <td>
+                <Icon name='announcement' category='action' size="medium" assistiveText='Action' />
+                </td>
+              </tr>
+              <tr>
+                <td className="slds-p-vertical--medium">
+                Custom
+                </td>
+                <td>
+                <Icon name='custom3' category='custom' size="large" assistiveText='Custom' />
+                </td>
+              </tr>
+              <tr>
+                <td className="slds-p-vertical--medium">
+                Standard
+                </td>
+                <td>
+                <Icon name='account' category='standard' size="large" assistiveText='Standard' />
+                </td>
+              </tr>
+              <tr>
+                <td className="slds-p-vertical--medium">
+                Utility
+                </td>
+                <td>
+                <Icon name='open_folder' category='utility' size="medium" assistiveText='Files' className="slds-icon-text-default" />
+                </td>
+              </tr>
+              </table>
+
               </div>
             </div>
 
