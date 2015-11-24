@@ -39,6 +39,14 @@ class SLDSTooltip extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.setState({ isMounted: true });
+  }
+
+  componentWillUnmount() {
+    this.setState({ isMounted: false });
+  }
+
   handleMouseClick() {
     this.setState({
       isOpen: !this.state.isOpen,
@@ -55,9 +63,10 @@ class SLDSTooltip extends React.Component {
   }
 
   handleMouseLeave() {
-    this.setState({isClosing: true});
+    this.setState({ isClosing: true });
+
     setTimeout(()=>{
-      if(this.isMounted && this.state.isClosing){
+      if(this.state.isMounted && this.state.isClosing){
         this.setState({
           isOpen: false,
           isClosing: false
@@ -119,7 +128,7 @@ class SLDSTooltip extends React.Component {
           horizontalAlign={this.getHorizontalAlign()}
           verticalAlign={this.getVerticalAlign()}
           flippable={false}
-          onClose={this.handleCancel}>
+          onClose={this.handleCancel.bind(this)}>
           <div className={cx(style)} role="tooltip">
             {this.getTooltipContent()}
           </div>
@@ -128,7 +137,7 @@ class SLDSTooltip extends React.Component {
 
   render(){
     return (
-      <span refs='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick:null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null}>
+      <span refs='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick.bind(this):null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null}>
         { this.props.children }
         { this.getTooltip() }
       </span>
