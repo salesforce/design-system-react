@@ -7,43 +7,37 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-'use strict';
 
-import React, {PropTypes} from 'react';
+import React from 'react';
 import SLDSPopover from '../SLDSPopover';
-
 import cx from 'classnames';
 
-module.exports = React.createClass( {
+const displayName = "SLDSTooltip";
+const propTypes = {
+  align: React.PropTypes.string,
+  children: React.PropTypes.node,
+  content: React.PropTypes.node,
+  hoverCloseDelay: React.PropTypes.number,
+  openByDefault: React.PropTypes.bool,
+  openOn: React.PropTypes.string,
+};
+const defaultProps = {
+  align: 'top',
+  content: <span>Tooltip</span>,
+  hoverCloseDelay: 350,
+  openByDefault: false,
+  openOn: 'hover',
+};
 
-  displayName: 'SLDSToolip',
+class SLDSTooltip extends React.Component {
 
-  propTypes: {
-    align: PropTypes.string,
-    children: PropTypes.node,
-    content: PropTypes.node,
-    hoverCloseDelay: PropTypes.number,
-    openByDefault: PropTypes.bool,
-    openOn: PropTypes.string,
-  },
-
-
-  getDefaultProps () {
-    return {
-      align: 'top',
-      content: <span>Tooltip</span>,
-      hoverCloseDelay: 350,
-      openByDefault: false,
-      openOn: 'hover',
-    };
-  },
-
-  getInitialState(){
-    return {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isClosing: false,
       isOpen: this.props.openByDefault,
-      isClosing: false
     };
-  },
+  }
 
   componentDidMount(){
   },
@@ -144,4 +138,12 @@ module.exports = React.createClass( {
     );
   }
 
-});
+};
+
+
+SLDSTooltip.displayName = displayName;
+SLDSTooltip.propTypes = propTypes;
+SLDSTooltip.defaultProps = defaultProps;
+
+module.exports = SLDSTooltip;
+
