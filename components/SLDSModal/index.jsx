@@ -133,6 +133,76 @@ class SLDSModal extends React.Component {
     return this.props.prompt !== '';
   }
 
+  getModal() {
+    const modalClass = {
+      'slds-modal': true,
+      'slds-fade-in-open':this.state.revealed,
+      'slds-modal--large':this.props.size === 'large',
+      'slds-modal--prompt':this.isPrompt()
+    };
+
+    return <div
+            className={cx(modalClass)}
+            style={{pointerEvents:'inherit'}}
+            onClick={this.isPrompt() ? undefined : this.closeModal}
+          >
+          <div
+            role='dialog'
+            className='slds-modal__container'
+            onClick={this.handleModalClick}
+            >
+
+            {this.headerComponent()}
+
+            <div className='slds-modal__content'>
+
+              {this.props.children}
+
+            </div>
+
+            {this.footerComponent()}
+
+          </div>
+
+        </div>;
+  },
+
+  render() {
+    const overlayClasses = {
+      'slds-modal-backdrop': true,
+      'slds-modal-backdrop--open':this.state.revealed
+    };
+
+    return (
+      <Modal
+        isOpen={this.props.isOpen}
+        onRequestClose={this.closeModal}
+        style={customStyles}
+        overlayClassName={cx(overlayClasses)} >
+        {this.getModal()}
+      </Modal>
+    );
+  },
+
+  footerComponent() {
+    let footer;
+
+    const footerClass = {
+      'slds-modal__footer': true,
+      'slds-modal__footer--directional': this.props.directional,
+      'slds-theme--default': this.isPrompt()
+    };
+
+    const hasFooter = this.props.footer && this.props.footer.length > 0;
+
+    if (hasFooter ) {
+      footer = (<div className={cx(footerClass)}>{this.props.footer}</div>);
+    }
+
+    return footer;
+  },
+>>>>>>> master
+
   renderTitle(headingClasses) {
     if(this.props.title){
       return <h2 className={cx(headingClasses)}>{this.props.title}</h2>;
