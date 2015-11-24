@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSPopover from '../SLDSPopover';
-import cx from 'classnames';
+const classNames = require("classnames");
 
 const displayName = "SLDSTooltip";
 const propTypes = {
@@ -106,16 +106,17 @@ class SLDSTooltip extends React.Component {
     });
   }
 
-  getTooltip() {
-    const style = {
-      'slds-popover': true,
-      'slds-popover--tooltip': true,
-      'slds-nubbin--top': this.props.align === 'bottom',
-      'slds-nubbin--bottom': this.props.align === 'top',
-      'slds-nubbin--left': this.props.align === 'right',
-      'slds-nubbin--right': this.props.align === 'left'
-    };
+  getClassName() {
+    return classNames(this.props.className, "slds-popover", {
+      ["slds-popover--tooltip"]: true,
+      ["slds-nubbin--top"]: this.props.align === 'bottom',
+      ['slds-nubbin--bottom']: this.props.align === 'top',
+      ['slds-nubbin--left']: this.props.align === 'right',
+      ['slds-nubbin--right']: this.props.align === 'left'
+    });
+  }
 
+  getTooltip() {
     return this.state.isOpen?<SLDSPopover
           key={this.getHorizontalAlign()+' '+this.getVerticalAlign()}
           targetElement={this.refs.tooltipTarget}
@@ -129,7 +130,7 @@ class SLDSTooltip extends React.Component {
           verticalAlign={this.getVerticalAlign()}
           flippable={false}
           onClose={this.handleCancel.bind(this)}>
-          <div className={cx(style)} role="tooltip">
+          <div className={this.getClassName()} role="tooltip">
             {this.getTooltipContent()}
           </div>
         </SLDSPopover>:null;
