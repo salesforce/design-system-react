@@ -74,7 +74,6 @@ class SLDSNotification extends React.Component {
             variant="icon-inverse"
             iconName="close"
             iconSize={size}
-            inverse={true}
             className="slds-button slds-notify__close"
             onClick={that.onDismiss.bind(that)}
           />
