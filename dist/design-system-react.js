@@ -230,9 +230,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var displayName = "SLDSPicklist";
 	var propTypes = {
-	  onClick: _react.PropTypes.func,
-	  onSelect: _react.PropTypes.func.isRequired,
-	  onUpdateHighlighted: _react.PropTypes.func
+	  onClick: _react2['default'].PropTypes.func,
+	  onSelect: _react2['default'].PropTypes.func.isRequired,
+	  onUpdateHighlighted: _react2['default'].PropTypes.func
 	};
 	var defaultProps = {
 	  className: '',
