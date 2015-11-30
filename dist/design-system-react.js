@@ -6444,7 +6444,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } else if (!this.state.isFocused && prevState.isFocused) {
 	        if (this.refs.list) {
 	          if (this.state.isMounted && this.refs.list) {
-	            if (this.refs.list.getDOMNode().contains(document.activeElement)) {
+	            if (_react2["default"].findDOMNode(this.refs.list).contains(document.activeElement)) {
 	              return;
 	            }
 	            this.setState({ isOpen: false });
@@ -6698,174 +6698,244 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	"use strict";
 	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ("value" in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { "default": obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIcons = __webpack_require__(21);
-	
 	var _listItem = __webpack_require__(37);
 	
 	var _listItem2 = _interopRequireDefault(_listItem);
 	
-	module.exports = _react2["default"].createClass({
-	
-	  displayName: "SLDSPicklistBase-list",
-	
-	  getInitialState: function getInitialState() {
-	    return {};
+	var displayName = "SLDSPicklistBase-list";
+	var propTypes = {
+	  className: _react2["default"].PropTypes.string,
+	  highlightedIndex: _react2["default"].PropTypes.number,
+	  itemRenderer: _react2["default"].PropTypes.func,
+	  label: _react2["default"].PropTypes.string,
+	  options: _react2["default"].PropTypes.array,
+	  onCancel: _react2["default"].PropTypes.func,
+	  onListBlur: _react2["default"].PropTypes.func,
+	  onListItemBlur: _react2["default"].PropTypes.func,
+	  onMoveFocus: _react2["default"].PropTypes.func,
+	  onSelect: _react2["default"].PropTypes.func,
+	  selectedIndex: _react2["default"].PropTypes.number
+	};
+	var defaultProps = {
+	  className: '',
+	  highlightedIndex: 0,
+	  itemRenderer: null,
+	  label: 'Menu',
+	  options: [],
+	  onCancel: function onCancel(delta) {
+	    console.log("onCancel should be overwritten");
 	  },
+	  onListBlur: function onListBlur() {
+	    console.log("onListBlur should be overwritten");
+	  },
+	  onListItemBlur: function onListItemBlur(listItemIndex) {
+	    console.log("onListItemBlur should be overwritten");
+	  },
+	  onMoveFocus: function onMoveFocus(delta) {
+	    console.log("onMoveFocus should be overwritten");
+	  },
+	  onSelect: function onSelect(index) {
+	    console.log("onSelect should be overwritten");
+	  },
+	  selectedIndex: -1
+	};
 	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      options: [],
-	      label: 'Menu',
-	      selectedIndex: -1,
-	      highlightedIndex: 0,
-	      className: '',
-	      itemRenderer: null,
-	      onListBlur: function onListBlur() {
-	        console.log("onListBlur should be overwritten");
-	      },
-	      onMoveFocus: function onMoveFocus(delta) {
-	        console.log("onMoveFocus should be overwritten");
-	      },
-	      onCancel: function onCancel(delta) {
-	        console.log("onCancel should be overwritten");
-	      },
-	      onSelect: function onSelect(index) {
-	        console.log("onSelect should be overwritten");
-	      },
-	      onListItemBlur: function onListItemBlur(listItemIndex) {
-	        console.log("onListItemBlur should be overwritten");
+	var SLDSList = (function (_React$Component) {
+	  _inherits(SLDSList, _React$Component);
+	
+	  function SLDSList() {
+	    _classCallCheck(this, SLDSList);
+	
+	    _get(Object.getPrototypeOf(SLDSList.prototype), "constructor", this).apply(this, arguments);
+	  }
+	
+	  _createClass(SLDSList, [{
+	    key: "handleClick",
+	    value: function handleClick(e) {
+	      if (e.nativeEvent) {
+	        e.nativeEvent.preventDefault();
+	        e.nativeEvent.stopImmediatePropagation();
 	      }
-	    };
-	  },
-	
-	  handleClick: function handleClick(e) {
-	    if (e.nativeEvent) {
-	      e.nativeEvent.preventDefault();
-	      e.nativeEvent.stopImmediatePropagation();
+	      e.preventDefault();
 	    }
-	    e.preventDefault();
-	  },
-	
-	  handleUpdateHighlighted: function handleUpdateHighlighted(nextIndex) {
-	    if (this.props.onUpdateHighlighted) {
-	      this.props.onUpdateHighlighted(nextIndex);
+	  }, {
+	    key: "handleUpdateHighlighted",
+	    value: function handleUpdateHighlighted(nextIndex) {
+	      if (this.props.onUpdateHighlighted) {
+	        this.props.onUpdateHighlighted(nextIndex);
+	      }
 	    }
-	  },
-	
-	  handleListItemBlur: function handleListItemBlur(index, relatedTarget) {
-	    if (this.props.onListItemBlur) {
-	      this.props.onListItemBlur(index);
+	  }, {
+	    key: "handleListItemBlur",
+	    value: function handleListItemBlur(index, relatedTarget) {
+	      if (this.props.onListItemBlur) {
+	        this.props.onListItemBlur(index);
+	      }
+	      this.setState({ lastBlurredIndex: index });
 	    }
-	    this.setState({ lastBlurredIndex: index });
-	  },
-	
-	  handleMoveFocus: function handleMoveFocus(delta) {
-	    var newHighlightedIndex = this.props.highlightedIndex + delta;
-	    if (newHighlightedIndex < 0) {
-	      newHighlightedIndex = this.props.options.length - 1;
-	    } else if (newHighlightedIndex >= this.props.options.length) {
-	      newHighlightedIndex = 0;
+	  }, {
+	    key: "handleMoveFocus",
+	    value: function handleMoveFocus(delta) {
+	      var newHighlightedIndex = this.props.highlightedIndex + delta;
+	      if (newHighlightedIndex < 0) {
+	        newHighlightedIndex = this.props.options.length - 1;
+	      } else if (newHighlightedIndex >= this.props.options.length) {
+	        newHighlightedIndex = 0;
+	      }
+	      if (this.props.onUpdateHighlighted) {
+	        this.props.onUpdateHighlighted(newHighlightedIndex);
+	      }
 	    }
-	    if (this.props.onUpdateHighlighted) {
-	      this.props.onUpdateHighlighted(newHighlightedIndex);
+	  }, {
+	    key: "handleCancel",
+	    value: function handleCancel() {
+	      if (this.props.onCancel) {
+	        this.props.onCancel();
+	      }
 	    }
-	  },
-	
-	  handleCancel: function handleCancel() {
-	    if (this.props.onCancel) {
-	      this.props.onCancel();
+	  }, {
+	    key: "handleSelect",
+	    value: function handleSelect(index) {
+	      if (this.props.onSelect) {
+	        this.props.onSelect(index);
+	      }
 	    }
-	  },
-	
-	  handleSelect: function handleSelect(index) {
-	    if (this.props.onSelect) {
-	      this.props.onSelect(index);
+	  }, {
+	    key: "handleItemFocus",
+	    value: function handleItemFocus(itemIndex, itemHeight) {
+	      if (this.refs.scroll) {
+	        _react2["default"].findDOMNode(this.refs.scroll).scrollTop = itemIndex * itemHeight;
+	      }
 	    }
-	  },
-	
-	  handleItemFocus: function handleItemFocus(itemIndex, itemHeight) {
-	    if (this.refs.scroll) {
-	      this.refs.scroll.getDOMNode().scrollTop = itemIndex * itemHeight;
-	    }
-	  },
-	
-	  handleSearch: function handleSearch(index, ch) {
-	    var searchChar = ch.toLowerCase();
-	    for (var i = index + 1; i < this.props.options.length; i++) {
-	      var option = this.props.options[i];
-	      if (option && option.label) {
-	        if (option.label.charAt(0).toLowerCase() === searchChar) {
-	          if (this.props.onUpdateHighlighted) {
-	            this.props.onUpdateHighlighted(i);
+	  }, {
+	    key: "handleSearch",
+	    value: function handleSearch(index, ch) {
+	      var searchChar = ch.toLowerCase();
+	      for (var i = index + 1; i < this.props.options.length; i++) {
+	        var option = this.props.options[i];
+	        if (option && option.label) {
+	          if (option.label.charAt(0).toLowerCase() === searchChar) {
+	            if (this.props.onUpdateHighlighted) {
+	              this.props.onUpdateHighlighted(i);
+	            }
+	            return;
 	          }
-	          return;
+	        }
+	      }
+	      for (var i = 0; i < index; i++) {
+	        var option = this.props.options[i];
+	        if (option && option.label) {
+	          if (option.label.charAt(0).toLowerCase() === searchChar) {
+	            if (this.props.onUpdateHighlighted) {
+	              this.props.onUpdateHighlighted(i);
+	            }
+	            return;
+	          }
 	        }
 	      }
 	    }
-	    for (var i = 0; i < index; i++) {
-	      var option = this.props.options[i];
-	      if (option && option.label) {
-	        if (option.label.charAt(0).toLowerCase() === searchChar) {
-	          if (this.props.onUpdateHighlighted) {
-	            this.props.onUpdateHighlighted(i);
-	          }
-	          return;
-	        }
-	      }
+	  }, {
+	    key: "getItems",
+	    value: function getItems() {
+	      var _this = this;
+	
+	      return this.props.options.map(function (option, index) {
+	        return _react2["default"].createElement(_listItem2["default"], {
+	          data: option,
+	          index: index,
+	          isHighlighted: index === _this.props.highlightedIndex,
+	          isHover: _this.props.isHover,
+	          isSelected: index === _this.props.selectedIndex,
+	          key: 'ListItem_' + index,
+	          label: option.label,
+	          labelRenderer: _this.props.itemRenderer,
+	          onBlur: _this.handleListItemBlur.bind(_this),
+	          onCancel: _this.handleCancel.bind(_this),
+	          onFocus: _this.handleItemFocus.bind(_this),
+	          onMoveFocus: _this.handleMoveFocus.bind(_this),
+	          onSearch: _this.handleSearch.bind(_this),
+	          onSelect: _this.handleSelect.bind(_this),
+	          onUpdateHighlighted: _this.handleUpdateHighlighted.bind(_this),
+	          value: option.value });
+	      });
 	    }
-	  },
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      return _react2["default"].createElement("div", {
+	        ref: "scroll",
+	        className: 'slds-wrap slds-grow slds-scrollable--y ' + this.props.className,
+	        onMouseEnter: this.props.onMouseEnter,
+	        onMouseLeave: this.props.onMouseLeave,
+	        style: {
+	          maxHeight: 260
+	        }
+	      }, _react2["default"].createElement("ul", {
+	        ref: "scroll",
+	        className: "slds-dropdown__list slds-theme--" + this.props.theme,
+	        role: "menu"
+	      }, this.getItems()));
+	    }
+	  }]);
 	
-	  getItems: function getItems() {
-	    var _this = this;
+	  return SLDSList;
+	})(_react2["default"].Component);
 	
-	    return this.props.options.map(function (option, index) {
-	      return _react2["default"].createElement(_listItem2["default"], {
-	        key: 'ListItem_' + index,
-	        index: index,
-	        label: option.label,
-	        value: option.value,
-	        data: option,
-	        isHighlighted: index === _this.props.highlightedIndex,
-	        isSelected: index === _this.props.selectedIndex,
-	        onUpdateHighlighted: _this.handleUpdateHighlighted,
-	        onMoveFocus: _this.handleMoveFocus,
-	        onBlur: _this.handleListItemBlur,
-	        onFocus: _this.handleItemFocus,
-	        onSelect: _this.handleSelect,
-	        onSearch: _this.handleSearch,
-	        labelRenderer: _this.props.itemRenderer,
-	        isHover: _this.props.isHover,
-	        onCancel: _this.handleCancel });
-	    });
-	  },
+	SLDSList.displayName = displayName;
+	SLDSList.propTypes = propTypes;
+	SLDSList.defaultProps = defaultProps;
 	
-	  render: function render() {
-	    return _react2["default"].createElement("div", {
-	      ref: "scroll",
-	      className: 'slds-wrap slds-grow slds-scrollable--y ' + this.props.className,
-	      onMouseEnter: this.props.onMouseEnter,
-	      onMouseLeave: this.props.onMouseLeave,
-	      style: {
-	        maxHeight: 260
-	      }
-	    }, _react2["default"].createElement("ul", {
-	      ref: "scroll",
-	      className: "slds-dropdown__list slds-theme--" + this.props.theme,
-	      role: "menu"
-	    }, this.getItems()));
-	  },
-	
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {}
-	
-	});
+	module.exports = SLDSList;
 
 /***/ },
 /* 37 */
@@ -6879,17 +6949,58 @@ return /******/ (function(modules) { // webpackBootstrap
 	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	*/
+	
 	'use strict';
+	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
 	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { 'default': obj };
 	}
 	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
-	
-	var _SLDSIcons = __webpack_require__(21);
 	
 	var _utils = __webpack_require__(14);
 	
@@ -6897,154 +7008,189 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
 	
-	module.exports = _react2['default'].createClass({
-	
-	  displayName: 'SLDSPicklistBase-list-item',
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      index: 0,
-	      label: '',
-	      value: null,
-	      inverted: false,
-	      isSelected: false,
-	      isHighlighted: false,
-	      labelRenderer: _listItemLabel2['default'],
-	      data: {},
-	
-	      onSelect: function onSelect(index) {
-	        console.log('onSelect should be defined ', index);
-	      },
-	
-	      onClick: function onClick(index) {
-	        console.log('onClick should be defined ', index);
-	      },
-	      onMoveFocus: function onMoveFocus(delta) {
-	        console.log('onMoveFocus should be defined ', delta);
-	      },
-	      onBlur: function onBlur(relatedTarget) {
-	        console.log('onBlur should be defined ', relatedTarget);
-	      },
-	      onFocus: function onFocus(index, height) {
-	        console.log('onFocus should be defined ', index, height);
-	      }
-	    };
+	var displayName = "SLDSPicklistBase-list-item";
+	var propTypes = {
+	  data: _react2['default'].PropTypes.object,
+	  index: _react2['default'].PropTypes.number,
+	  inverted: _react2['default'].PropTypes.bool,
+	  isHighlighted: _react2['default'].PropTypes.bool,
+	  isSelected: _react2['default'].PropTypes.bool,
+	  label: _react2['default'].PropTypes.string,
+	  labelRenderer: _react2['default'].PropTypes.func,
+	  value: _react2['default'].PropTypes.string,
+	  onBlur: _react2['default'].PropTypes.func,
+	  onClick: _react2['default'].PropTypes.func,
+	  onFocus: _react2['default'].PropTypes.func,
+	  onMoveFocus: _react2['default'].PropTypes.func,
+	  onSelect: _react2['default'].PropTypes.func
+	};
+	var defaultProps = {
+	  data: {},
+	  index: 0,
+	  inverted: false,
+	  isHighlighted: false,
+	  isSelected: false,
+	  label: '',
+	  labelRenderer: _listItemLabel2['default'],
+	  value: null,
+	  onBlur: function onBlur(relatedTarget) {
+	    console.log('onBlur should be defined ', relatedTarget);
 	  },
-	
-	  handleClick: function handleClick(e) {
-	    e.preventDefault();
-	    e.stopPropagation();
-	    if (this.props.onSelect) {
-	      this.props.onSelect(this.props.index);
-	    }
+	  onClick: function onClick(index) {
+	    console.log('onClick should be defined ', index);
 	  },
-	
-	  handleMouseDown: function handleMouseDown(e) {
-	    if (e.nativeEvent) {
-	      e.nativeEvent.preventDefault();
-	      e.nativeEvent.stopImmediatePropagation();
-	    }
-	    e.preventDefault();
+	  onFocus: function onFocus(index, height) {
+	    console.log('onFocus should be defined ', index, height);
 	  },
-	
-	  componentDidMount: function componentDidMount() {
-	    if (this.props.isHighlighted) {
-	      this.setFocus();
-	    }
+	  onMoveFocus: function onMoveFocus(delta) {
+	    console.log('onMoveFocus should be defined ', delta);
 	  },
+	  onSelect: function onSelect(index) {
+	    console.log('onSelect should be defined ', index);
+	  }
+	};
 	
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	    if (!prevProps.isHighlighted && this.props.isHighlighted) {
-	      this.setFocus();
-	    }
-	  },
+	var SLDSListItem = (function (_React$Component) {
+	  _inherits(SLDSListItem, _React$Component);
 	
-	  setFocus: function setFocus() {
-	    if (!this.props.isHover) {
-	      this.refs.link.getDOMNode().focus();
-	    }
-	  },
+	  function SLDSListItem() {
+	    _classCallCheck(this, SLDSListItem);
 	
-	  handleKeyDown: function handleKeyDown(event) {
-	
-	    if (event.keyCode) {
-	      if (event.keyCode === _utils.KEYS.DOWN) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onMoveFocus) {
-	          this.props.onMoveFocus(1);
-	        }
-	      } else if (event.keyCode === _utils.KEYS.UP) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onMoveFocus) {
-	          this.props.onMoveFocus(-1);
-	        }
-	      } else if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onSelect) {
-	          this.props.onSelect(this.props.index);
-	        }
-	      } else if (event.keyCode === _utils.KEYS.ESCAPE) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onCancel) {
-	          this.props.onCancel();
-	        }
-	      } else if (event.keyCode === _utils.KEYS.TAB) {} else {
-	        _utils.EventUtil.trapEvent(event);
-	        var ch = String.fromCharCode(event.keyCode);
-	        if (this.props.onSearch) {
-	          this.props.onSearch(this.props.index, ch);
-	        }
-	      }
-	    }
-	  },
-	
-	  handleBlur: function handleBlur(e) {
-	    if (this.props.onBlur) {
-	      this.props.onBlur(this.props.index, e.relatedTarget);
-	    }
-	  },
-	
-	  handleFocus: function handleFocus() {
-	    var height = this.getDOMNode().offsetHeight;
-	    if (height && this.props.onFocus) {
-	      this.props.onFocus(this.props.index, height);
-	    }
-	  },
-	
-	  getLabel: function getLabel() {
-	    var LabelComp = this.props.labelRenderer;
-	    return _react2['default'].createElement(LabelComp, {
-	      index: this.props.index,
-	      label: this.props.label,
-	      value: this.props.value,
-	      inverted: this.props.inverted,
-	      isSelected: this.props.isSelected,
-	      isHighlighted: this.props.isHighlighted,
-	      data: this.props.data
-	    });
-	  },
-	
-	  render: function render() {
-	    return _react2['default'].createElement('li', {
-	      className: "slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--" + this.props.theme,
-	      onMouseDown: this.handleMouseDown,
-	      onMouseEnter: this.props.onMouseEnter,
-	      onMouseLeave: this.props.onMouseLeave,
-	      tabIndex: -1 }, _react2['default'].createElement('a', { id: 'menu-0-' + this.props.index,
-	      href: '',
-	      ref: 'link',
-	      className: 'slds-truncate',
-	      onClick: this.handleClick,
-	      onMouseDown: this.handleMouseDown,
-	      onKeyDown: this.handleKeyDown,
-	      onBlur: this.handleBlur,
-	      onFocus: this.handleFocus,
-	      'aria-checked': this.props.isSelected,
-	      role: 'menuitemradio',
-	      tabIndex: -1 }, this.getLabel()));
+	    _get(Object.getPrototypeOf(SLDSListItem.prototype), 'constructor', this).apply(this, arguments);
 	  }
 	
-	});
+	  _createClass(SLDSListItem, [{
+	    key: 'handleClick',
+	    value: function handleClick(e) {
+	      e.preventDefault();
+	      e.stopPropagation();
+	      if (this.props.onSelect) {
+	        this.props.onSelect(this.props.index);
+	      }
+	    }
+	  }, {
+	    key: 'handleMouseDown',
+	    value: function handleMouseDown(e) {
+	      if (e.nativeEvent) {
+	        e.nativeEvent.preventDefault();
+	        e.nativeEvent.stopImmediatePropagation();
+	      }
+	      e.preventDefault();
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.props.isHighlighted) {
+	        this.setFocus();
+	      }
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      if (!prevProps.isHighlighted && this.props.isHighlighted) {
+	        this.setFocus();
+	      }
+	    }
+	  }, {
+	    key: 'setFocus',
+	    value: function setFocus() {
+	      if (!this.props.isHover) {
+	        _react2['default'].findDOMNode(this.refs.link).focus();
+	      }
+	    }
+	  }, {
+	    key: 'handleKeyDown',
+	    value: function handleKeyDown(event) {
+	      if (event.keyCode) {
+	        if (event.keyCode === _utils.KEYS.DOWN) {
+	          _utils.EventUtil.trapEvent(event);
+	          if (this.props.onMoveFocus) {
+	            this.props.onMoveFocus(1);
+	          }
+	        } else if (event.keyCode === _utils.KEYS.UP) {
+	          _utils.EventUtil.trapEvent(event);
+	          if (this.props.onMoveFocus) {
+	            this.props.onMoveFocus(-1);
+	          }
+	        } else if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE) {
+	          _utils.EventUtil.trapEvent(event);
+	          if (this.props.onSelect) {
+	            this.props.onSelect(this.props.index);
+	          }
+	        } else if (event.keyCode === _utils.KEYS.ESCAPE) {
+	          _utils.EventUtil.trapEvent(event);
+	          if (this.props.onCancel) {
+	            this.props.onCancel();
+	          }
+	        } else if (event.keyCode === _utils.KEYS.TAB) {} else {
+	          _utils.EventUtil.trapEvent(event);
+	          var ch = String.fromCharCode(event.keyCode);
+	          if (this.props.onSearch) {
+	            this.props.onSearch(this.props.index, ch);
+	          }
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'handleBlur',
+	    value: function handleBlur(e) {
+	      if (this.props.onBlur) {
+	        this.props.onBlur(this.props.index, e.relatedTarget);
+	      }
+	    }
+	  }, {
+	    key: 'handleFocus',
+	    value: function handleFocus() {
+	      var height = _react2['default'].findDOMNode(this).offsetHeight;
+	      if (height && this.props.onFocus) {
+	        this.props.onFocus(this.props.index, height);
+	      }
+	    }
+	  }, {
+	    key: 'getLabel',
+	    value: function getLabel() {
+	      var LabelComp = this.props.labelRenderer;
+	      return _react2['default'].createElement(LabelComp, {
+	        index: this.props.index,
+	        label: this.props.label,
+	        value: this.props.value,
+	        inverted: this.props.inverted,
+	        isSelected: this.props.isSelected,
+	        isHighlighted: this.props.isHighlighted,
+	        data: this.props.data
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement('li', {
+	        className: "slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--" + this.props.theme,
+	        onMouseDown: this.handleMouseDown.bind(this),
+	        onMouseEnter: this.props.onMouseEnter,
+	        onMouseLeave: this.props.onMouseLeave,
+	        tabIndex: -1 }, _react2['default'].createElement('a', { id: 'menu-0-' + this.props.index,
+	        href: '',
+	        ref: 'link',
+	        className: 'slds-truncate',
+	        onClick: this.handleClick.bind(this),
+	        onMouseDown: this.handleMouseDown.bind(this),
+	        onKeyDown: this.handleKeyDown.bind(this),
+	        onBlur: this.handleBlur.bind(this),
+	        onFocus: this.handleFocus.bind(this),
+	        'aria-checked': this.props.isSelected,
+	        role: 'menuitemradio',
+	        tabIndex: -1 }, this.getLabel()));
+	    }
+	  }]);
+	
+	  return SLDSListItem;
+	})(_react2['default'].Component);
+	
+	SLDSListItem.displayName = displayName;
+	SLDSListItem.propTypes = propTypes;
+	SLDSListItem.defaultProps = defaultProps;
+	
+	module.exports = SLDSListItem;
 
 /***/ },
 /* 38 */
