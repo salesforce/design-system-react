@@ -9,6 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ListItem from "./ListItem";
+import EventUtil from './EventUtil';
 
 const displayName = "SLDSPicklistBase-list";
 const propTypes = {
@@ -49,6 +50,10 @@ const defaultProps = {
 };
 
 class SLDSList extends React.Component {
+  handleMouseDown (event) {
+    EventUtil.trapImmediate(event);
+  }
+
   handleClick (e) {
     if(e.nativeEvent){
       e.nativeEvent.preventDefault();
@@ -161,11 +166,13 @@ class SLDSList extends React.Component {
         style={{
           maxHeight: 260
         }}
+        onMouseDown={this.handleMouseDown.bind(this)}
         >
         <ul
           ref="scroll"
           className={"slds-dropdown__list slds-theme--"+this.props.theme}
           role="menu"
+          aria-labelledby={this.props.triggerId}
           >
           {this.getItems()}
         </ul>
