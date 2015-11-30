@@ -25,36 +25,36 @@ const propTypes = {
   onUpdateHighlighted: PropTypes.func
 };
 const defaultProps = {
-  placeholder: 'Select an Option',
+  className: '',
   disabled: false,
-  theme: 'default',
-  label: 'Picklist',
-  value: null,
-  options: [],
   initialFocus: false,
+  label: 'Picklist',
+  listClassName: '',
+  listItemRenderer: null,
   modal: false,
-  className:'',
-  listClassName:'',
-  listItemRenderer:null
+  options: [],
+  placeholder: 'Select an Option',
+  theme: 'default',
+  value: null,
 };
 
 class SLDSPicklist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      triggerId:null,
-      isOpen:false,
-      isFocused:false,
-      highlightedIndex:0,
-      selectedIndex:this.getIndexByValue(this.props.value),
-      lastBlurredIndex:-1,
-      lastBlurredTimeStamp:-1
+      highlightedIndex: 0,
+      isOpen: false,
+      isFocused: false,
+      lastBlurredIndex: -1,
+      lastBlurredTimeStamp: -1,
+      selectedIndex: this.getIndexByValue(this.props.value),
+      triggerId: null,
     };
   }
 
   componentDidMount () {
     const id = React.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
-    this.setState({triggerId:id});
+    this.setState({triggerId: id});
 
     if(this.props.initialFocus){
       this.setFocus();
@@ -83,7 +83,7 @@ class SLDSPicklist extends React.Component {
   }
 
   handleSelect(index) {
-    this.setState({selectedIndex:index})
+    this.setState({selectedIndex: index})
     this.setFocus();
     if(this.props.onSelect){
       this.props.onSelect(this.getValueByIndex(index));
@@ -91,13 +91,13 @@ class SLDSPicklist extends React.Component {
   }
 
   handleClose() {
-    this.setState({isOpen:false});
+    this.setState({isOpen: false});
   }
 
   handleClick(event) {
     EventUtil.trap(event);
     if(!this.state.isOpen){
-      this.setState({isOpen:true});
+      this.setState({isOpen: true});
       if(this.props.onClick){
         this.props.onClick();
       }
@@ -112,20 +112,17 @@ class SLDSPicklist extends React.Component {
   }
 
   handleBlur(e) {
-    this.setState({isFocused:false});
+    this.setState({isFocused: false});
   }
 
   handleFocus() {
-    this.setState({isFocused:true});
+    this.setState({isFocused: true});
   }
 
   setFocus () {
     if(this.isMounted()){
       React.findDOMNode(this.refs.triggerbutton).focus();
     }
-  }
-
-  moveHighlight(delta) {
   }
 
   handleKeyDown(event) {
@@ -137,8 +134,8 @@ class SLDSPicklist extends React.Component {
         EventUtil.trapEvent(event);
 
         this.setState({
-          isOpen:true,
-          highlightedIndex:0
+          isOpen: true,
+          highlightedIndex: 0
         });
 
       }
@@ -146,11 +143,11 @@ class SLDSPicklist extends React.Component {
   }
 
   handleUpdateHighlighted(nextIndex){
-    this.setState({highlightedIndex:nextIndex});
+    this.setState({highlightedIndex: nextIndex});
   }
 
   handleListBlur(){
-    this.setState({isOpen:false});
+    this.setState({isOpen: false});
   }
 
   handleCancel () {
@@ -184,7 +181,7 @@ class SLDSPicklist extends React.Component {
       !this.props.disabled && this.state.isOpen?
         <div
           className="slds-dropdown slds-dropdown--left slds-dropdown--menu"
-          style={{maxHeight:'20em'}}>
+          style={{maxHeight: '20em'}}>
           {this.getPopoverContent()}
         </div>:null
     );
@@ -210,8 +207,8 @@ class SLDSPicklist extends React.Component {
 
   handleListItemBlur (index, relatedTarget) {
     this.setState({
-      lastBlurredIndex:index,
-      lastBlurredTimeStamp:Date.now()
+      lastBlurredIndex: index,
+      lastBlurredTimeStamp: Date.now()
     });
   }
 
@@ -226,7 +223,7 @@ class SLDSPicklist extends React.Component {
       this.handleClose();
     }
     else if(this.state.isFocused && !prevState.isFocused){
-      this.setState({isOpen:false});
+      this.setState({isOpen: false});
     }
     else if(!this.state.isFocused && prevState.isFocused){
       if(this.refs.list){
@@ -234,7 +231,7 @@ class SLDSPicklist extends React.Component {
           if(this.refs.list.getDOMNode().contains(document.activeElement)){
             return;
           }
-          this.setState({isOpen:false})
+          this.setState({isOpen: false})
         }
       }
     }
