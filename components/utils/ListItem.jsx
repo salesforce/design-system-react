@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
-import {KEYS,EventUtil} from './utils';
+import {KEYS,EventUtil} from './index';
 import ListItemLabelRenderer from './ListItemLabel';
 
 const displayName = "SLDSPicklistBase-list-item";
