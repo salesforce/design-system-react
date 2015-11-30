@@ -90,11 +90,12 @@ let Lookup = Lib.merge({}, LookupCore, {
 		
 		this.setState({
 			searchResults,
-			navigableItems
+			navigableItems,
+			isHidden: !this.props.isOpen
 		});
 		
-		this.elements.dropdown = document.createElement('span');
-		document.querySelector('body').appendChild(this.elements.dropdown);
+		this.elements.positionedElement = Lib.wrapElement(document.createElement('div'));
+		document.querySelector('body').appendChild(this.elements.positionedElement[0]);
 	},
 
 	componentWillReceiveProps (nextProps) {
@@ -104,7 +105,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 			
 			this.setState({
 				searchResults,
-				navigableItems
+				navigableItems,
+				isHidden: !nextProps.isOpen
 			});
 		}
 		
@@ -112,6 +114,28 @@ let Lookup = Lib.merge({}, LookupCore, {
 		this.setState({
 			autoFocusOnNewSelectedItems: true
 		});
+	},
+
+	componentDidMount () {
+		window.addEventListener('scroll', this.handleScroll);
+		window.addEventListener('resize', this.handleResize);
+	},
+
+	componentWillUnmount () {
+		window.removeEventListener('scroll', this.handleScroll);
+		window.removeEventListener('resize', this.handleResize);
+	},
+
+	handleScroll () {
+		if (this.state.isOpen) {
+			this._updatePosition();
+		}
+	},
+
+	handleResize () {
+		if (this.state.isOpen) {
+			this._updatePosition();
+		}
 	},
 
 	// While some functionality moves into the core or traits, each facade typically provides its own rendering logic so that it can take advantage of the benefits offered by the framework and maintain appropriate patterns for that framework.
@@ -138,7 +162,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 					<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
 						<Svg icon={this.props.searchIcon} className="slds-input__icon" />
 						{pills}
-						<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
+						<input id={inputId} className={classNames('slds-input', { 'slds-hidden': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
 					</div>
 				</div>
 			</div>
@@ -161,14 +185,27 @@ let Lookup = Lib.merge({}, LookupCore, {
 		}
 		
 		const menu = (
-			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
+			/* TODO: Remove inline style */
+			<div id={this._getMenuId()} className="slds-lookup__menu" role="listbox" style={{position: 'static'}}>
 				{header}
 				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
 			</div>
 		);
 
-		ReactDOM.render(menu, this.elements.dropdown);
+		if (!this.state.isOpen) {
+			this.elements.positionedElement.addClass('slds-hidden');
+		} else {
+			this.elements.positionedElement.removeClass('slds-hidden');
+		}
+
+		// positionedElement is a "wrapped element"
+		ReactDOM.render(menu, this.elements.positionedElement[0]);
+
+		// Used by positionable trait
+		this.elements.container = Lib.wrapElement(document.querySelector('body'));
+		this.elements.align = Lib.wrapElement(this.elements.input);
+		this._updatePosition();
 	},
 
 	// After the control has rendered, we may need to scroll the currently selected menu item into view. The function which actually peforms the scrolling lives in the core.
