@@ -6,57 +6,62 @@ Redistributions in binary form must reproduce the above copyright notice, this l
 Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-'use strict';
 
 
 import React from 'react';
-import {Icon} from '../SLDSIcons';
-
 import {KEYS,EventUtil} from '../utils';
-
 import ListItemLabelRenderer from './list-item-label';
 
-module.exports = React.createClass({
-
-  displayName: 'SLDSPicklistBase-list-item',
-
-  getDefaultProps () {
-    return {
-      index: 0,
-      label: '',
-      value: null,
-      inverted: false,
-      isSelected: false,
-      isHighlighted: false,
-      labelRenderer: ListItemLabelRenderer, 
-      data: {},
-
-      onSelect (index) {
-        console.log('onSelect should be defined ',index);
-      },
-
-      onClick (index) {
-        console.log('onClick should be defined ',index);
-      },
-      onMoveFocus (delta){
-        console.log('onMoveFocus should be defined ',delta);
-      },
-      onBlur (relatedTarget){
-        console.log('onBlur should be defined ',relatedTarget);
-      },
-      onFocus (index, height) {
-        console.log('onFocus should be defined ',index,height);
-      }
-    };
+const displayName = "SLDSPicklistBase-list-item";
+const propTypes = {
+  data: React.PropTypes.object,
+  index: React.PropTypes.number,
+  inverted: React.PropTypes.bool,
+  isHighlighted: React.PropTypes.bool,
+  isSelected: React.PropTypes.bool,
+  label: React.PropTypes.string,
+  labelRenderer: React.PropTypes.func,
+  value: React.PropTypes.string,
+  onBlur: React.PropTypes.func,
+  onClick: React.PropTypes.func,
+  onFocus: React.PropTypes.func,
+  onMoveFocus: React.PropTypes.func,
+  onSelect: React.PropTypes.func,
+};
+const defaultProps = {
+  data: {},
+  index: 0,
+  inverted: false,
+  isHighlighted: false,
+  isSelected: false,
+  label: '',
+  labelRenderer: ListItemLabelRenderer,
+  value: null,
+  onBlur (relatedTarget){
+    console.log('onBlur should be defined ',relatedTarget);
   },
+  onClick (index) {
+    console.log('onClick should be defined ',index);
+  },
+  onFocus (index, height) {
+    console.log('onFocus should be defined ',index,height);
+  },
+  onMoveFocus (delta){
+    console.log('onMoveFocus should be defined ',delta);
+  },
+  onSelect (index) {
+    console.log('onSelect should be defined ',index);
+  },
+};
 
+class SLDSListItem extends React.Component {
   handleClick (e) {
     e.preventDefault();
     e.stopPropagation();
     if(this.props.onSelect){
       this.props.onSelect(this.props.index);
     }
-  },
+  }
 
   handleMouseDown (e) {
     if(e.nativeEvent){
@@ -64,28 +69,27 @@ module.exports = React.createClass({
       e.nativeEvent.stopImmediatePropagation();
     }
     e.preventDefault();
-  },
+  }
 
   componentDidMount(){
     if(this.props.isHighlighted){
       this.setFocus();
     }
-  },
+  }
 
   componentDidUpdate( prevProps, prevState) {
     if(!prevProps.isHighlighted && this.props.isHighlighted){
       this.setFocus();
     }
-  },
+  }
 
   setFocus () {
     if(!this.props.isHover){
-      this.refs.link.getDOMNode().focus();
+      React.findDOMNode(this.refs.link).focus();
     }
-  },
+  }
 
   handleKeyDown(event) {
-
     if(event.keyCode){
       if(event.keyCode === KEYS.DOWN){
         EventUtil.trapEvent(event);
@@ -99,7 +103,7 @@ module.exports = React.createClass({
           this.props.onMoveFocus(-1);
         }
       }
-      else if(event.keyCode === KEYS.ENTER || 
+      else if(event.keyCode === KEYS.ENTER ||
           event.keyCode === KEYS.SPACE ){
         EventUtil.trapEvent(event);
         if(this.props.onSelect){
@@ -122,24 +126,24 @@ module.exports = React.createClass({
         }
       }
     }
-  },
+  }
 
   handleBlur(e) {
     if(this.props.onBlur){
       this.props.onBlur(this.props.index, e.relatedTarget);
     }
-  },
+  }
 
   handleFocus () {
-    const height = this.getDOMNode().offsetHeight;
+    const height = React.findDOMNode(this).offsetHeight;
     if(height && this.props.onFocus){
       this.props.onFocus(this.props.index,height);
     }
-  },
+  }
 
   getLabel () {
     const LabelComp = this.props.labelRenderer;
-    return <LabelComp 
+    return <LabelComp
       index={this.props.index}
       label={this.props.label}
       value={this.props.value}
@@ -148,25 +152,25 @@ module.exports = React.createClass({
       isHighlighted={this.props.isHighlighted}
       data={this.props.data}
     />;
-  },
+  }
 
   render () {
     return (
-      <li 
+      <li
         className={"slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--"+this.props.theme}
-        onMouseDown={this.handleMouseDown}
+        onMouseDown={this.handleMouseDown.bind(this)}
         onMouseEnter={this.props.onMouseEnter}
         onMouseLeave={this.props.onMouseLeave}
         tabIndex={-1}>
           <a id={'menu-0-'+this.props.index}
             href=''
             ref='link'
-            className='slds-truncate' 
-            onClick={this.handleClick}
-            onMouseDown={this.handleMouseDown}
-            onKeyDown={this.handleKeyDown}
-            onBlur={this.handleBlur}
-            onFocus={this.handleFocus}
+            className='slds-truncate'
+            onClick={this.handleClick.bind(this)}
+            onMouseDown={this.handleMouseDown.bind(this)}
+            onKeyDown={this.handleKeyDown.bind(this)}
+            onBlur={this.handleBlur.bind(this)}
+            onFocus={this.handleFocus.bind(this)}
             aria-checked={this.props.isSelected}
             role='menuitemradio'
             tabIndex={-1}>
@@ -174,8 +178,12 @@ module.exports = React.createClass({
           </a>
       </li>
     );
-  },
+  }
+}
 
+SLDSListItem.displayName = displayName;
+SLDSListItem.propTypes = propTypes;
+SLDSListItem.defaultProps = defaultProps;
 
+module.exports = SLDSListItem;
 
-});

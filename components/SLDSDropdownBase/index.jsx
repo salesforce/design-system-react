@@ -93,7 +93,7 @@ class SLDSDropdown extends React.Component {
     } else if(!this.state.isFocused && prevState.isFocused){
       if (this.refs.list) {
         if (this.state.isMounted && this.refs.list) {
-          if (this.refs.list.getDOMNode().contains(document.activeElement)) {
+          if (React.findDOMNode(this.refs.list).contains(document.activeElement)) {
             return;
           }
           this.setState({ isOpen: false });
