@@ -65,6 +65,36 @@ class SLDSPicklist extends React.Component {
     }
   }
 
+  componentDidUpdate( prevProps, prevState) {
+    if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
+      if(this.state.lastBlurredIndex === this.state.highlightedIndex){
+        this.handleClose();
+      }
+    }
+    if(this.state.selectedIndex !== prevState.selectedIndex){
+      this.handleClose();
+    }
+    else if(this.state.isFocused && !prevState.isFocused){
+      this.setState({isOpen: false});
+    }
+    else if(!this.state.isFocused && prevState.isFocused){
+      if(this.refs.list){
+        if(this.state.isMounted && this.refs.list){
+          if(React.findDOMNode(this.refs.list).contains(document.activeElement)){
+            return;
+          }
+          this.setState({isOpen: false})
+        }
+      }
+    }
+
+    if(this.props.value !== prevProps.value ||
+        !isEqual(this.props.options, prevProps.options)){
+      this.handleSelect(this.getIndexByValue(this.props.value));
+    }
+  }
+
+
   componentWillUnmount(){
     this.setState({ isMounted: false });
   }
@@ -127,7 +157,7 @@ class SLDSPicklist extends React.Component {
     this.setState({isFocused: true});
   }
 
-  setFocus () {
+  setFocus() {
     if(this.state.isMounted){
       React.findDOMNode(this.refs.triggerbutton).focus();
     }
@@ -218,38 +248,6 @@ class SLDSPicklist extends React.Component {
       lastBlurredIndex: index,
       lastBlurredTimeStamp: Date.now()
     });
-  }
-
-  componentDidUpdate( prevProps, prevState) {
-
-    if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
-      if(this.state.lastBlurredIndex === this.state.highlightedIndex){
-        this.handleClose();
-      }
-    }
-    if(this.state.selectedIndex !== prevState.selectedIndex){
-      this.handleClose();
-    }
-    else if(this.state.isFocused && !prevState.isFocused){
-      this.setState({isOpen: false});
-    }
-    else if(!this.state.isFocused && prevState.isFocused){
-      if(this.refs.list){
-        if(this.state.isMounted && this.refs.list){
-          if(React.findDOMNode(this.refs.list).contains(document.activeElement)){
-            return;
-          }
-          this.setState({isOpen: false})
-        }
-      }
-    }
-
-
-    if(this.props.value !== prevProps.value ||
-        !isEqual(this.props.options, prevProps.options)){
-      this.handleSelect(this.getIndexByValue(this.props.value));
-    }
-
   }
 
   render() {
