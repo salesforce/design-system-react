@@ -15,10 +15,11 @@ import Disableable from '../traits/disableable';
 import Openable from '../traits/openable';
 import Multiselectable from '../traits/multiselectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
+import Positionable from '../traits/positionable';
 
 export const CONTROL = 'Lookup';
 
-const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, KeyboardNavigable, {
+const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, Positionable, KeyboardNavigable, {
 	CONTROL,
 	
 	// CSS classes used within this control
@@ -35,7 +36,12 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		searchIcon: 'utility.search',
 		filterPredicate (text, pattern) {
 			return text.substr(0, pattern.length).toLowerCase() === pattern;
-		}
+		},
+		positionedTargetVerticalAttachment: 'bottom',
+		constrainWidthToTarget: true,
+		constrainPositionedToWindow: true,
+		positionedOffset: 0,
+		positionedTargetHorizontalAttachment: 'left'
 	},
 	
 	_defaultState: {
