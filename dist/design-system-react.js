@@ -12825,7 +12825,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2['default'].createElement('span', { refs: 'tooltipTarget', onClick: this.props.openOn === 'click' ? this.handleMouseClick.bind(this) : null, onMouseEnter: this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this) : null, onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this) : null }, this.props.children, this.getTooltip());
+	      var btnStyles = { color: "inherit" };
+	      return _react2['default'].createElement('button', { className: 'slds-button', refs: 'tooltipTarget', onClick: this.props.openOn === 'click' ? this.handleMouseClick.bind(this) : null, onMouseEnter: this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this) : null, onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this) : null, onFocus: this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this) : null, onBlur: this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this) : null, style: btnStyles }, this.props.children, this.getTooltip());
 	    }
 	  }]);
 	
@@ -13293,7 +13294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          size = "large";
 	        }
 	        return _react2["default"].createElement(_SLDSButton2["default"], {
-	          assistiveText: "Click enter to dismiss Notification",
+	          assistiveText: "Dismiss Notification",
 	          variant: "icon-inverse",
 	          iconName: "close",
 	          iconSize: size,
