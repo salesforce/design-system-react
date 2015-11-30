@@ -67,7 +67,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	},
 
 	_setElements () {
-		this.elements.popover = Lib.wrapElement(this.refs.popover);
+		this.elements.positionedElement = Lib.wrapElement(this.refs.popover);
 		this.elements.container = Lib.wrapElement(this.refs.container);
 		this.elements.align = Lib.wrapElement(this.refs.container);
 	},

@@ -19,12 +19,12 @@ export const PopoverMethods = {
 		align: mountable,
 		autoFlip: React.PropTypes.bool,
 		container: mountable,
-		position: React.PropTypes.oneOf(Object.keys(Positionable.positions)),
+		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions)),
 		trigger: React.PropTypes.oneOf(Object.keys(PopoverCore.triggers))
 	},
 
 	_setElements () {
-		this.elements.popover = Lib.wrapElement(this.refs.popover);
+		this.elements.positionedElement = Lib.wrapElement(this.refs.popover);
 		this.elements.container = Lib.wrapElement(this.props.container || this.element);
 		this.elements.align = Lib.wrapElement(this.props.align || this.elements.container);
 	},
