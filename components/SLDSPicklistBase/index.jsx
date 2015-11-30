@@ -170,11 +170,11 @@ class SLDSPicklist extends React.Component {
             className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
             selectedIndex={this.state.selectedIndex}
-            onSelect={this.handleSelect}
-            onUpdateHighlighted={this.handleUpdateHighlighted}
-            onListBlur={this.handleListBlur}
-            onListItemBlur={this.handleListItemBlur}
-            onCancel={this.handleCancel}
+            onSelect={this.handleSelect.bind(this)}
+            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
+            onListBlur={this.handleListBlur.bind(this)}
+            onListItemBlur={this.handleListItemBlur.bind(this)}
+            onCancel={this.handleCancel.bind(this)}
             itemRenderer={this.getListItemRenderer()}
             theme={this.props.theme} />;
   }
@@ -197,7 +197,7 @@ class SLDSPicklist extends React.Component {
           className='slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu'
           targetElement={this.refs.date}
           closeOnTabKey={true}
-          onClose={this.handleCancel}>
+          onClose={this.handleCancel.bind(this)}>
           {this.getPopoverContent()}
         </SLDSPopover>:null
     );
@@ -255,12 +255,12 @@ class SLDSPicklist extends React.Component {
           ref="triggerbutton"
           className="slds-button slds-button--neutral slds-picklist__label"
           aria-haspopup="true"
-          onBlur={this.handleBlur}
-          onFocus={this.handleFocus}
-          onClick={this.handleClick}
-          onMouseDown={this.handleMouseDown}
+          onBlur={this.handleBlur.bind(this)}
+          onFocus={this.handleFocus.bind(this)}
+          onClick={this.handleClick.bind(this)}
+          onMouseDown={this.handleMouseDown.bind(this)}
           tabIndex={this.state.isOpen?-1:0}
-          onKeyDown={this.handleKeyDown}>
+          onKeyDown={this.handleKeyDown.bind(this)}>
             <span className="slds-truncate">{this.getPlaceholder()}</span>
             <Icon name="down" category="utility" />
         </button>
