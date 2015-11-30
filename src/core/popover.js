@@ -44,7 +44,7 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 	},
 	
 	_getClassNames () {
-		const positionClass = this.positions[this.currentPosition];
+		const positionClass = this.cssClasses.NUBBIN[this.currentTargetAttachment];
 		const hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
 
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass, hiddenClass);
