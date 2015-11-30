@@ -7,47 +7,41 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-'use strict';
-
 import React, {PropTypes} from 'react';
 import isEqual from 'lodash.isequal';
+
 import SLDSPopover from '../SLDSPopover';
 import List from './list';
 import ListItem from './list-item';
 import ListItemLabel from './list-item-label';
-
-import {InputIcon, ButtonIcon} from "./../SLDSIcons";
 import {Icon} from "../SLDSIcons";
-
 import {KEYS,EventUtil} from '../utils';
 
 
-module.exports = React.createClass( {
+const displayName = "SLDSPicklist";
+const propTypes = {
+  onClick: PropTypes.func,
+  onSelect: PropTypes.func.isRequired,
+  onUpdateHighlighted: PropTypes.func
+};
+const defaultProps = {
+  placeholder: 'Select an Option',
+  disabled: false,
+  theme: 'default',
+  label: 'Picklist',
+  value: null,
+  options: [],
+  initialFocus: false,
+  modal: false,
+  className:'',
+  listClassName:'',
+  listItemRenderer:null
+};
 
-  propTypes : {
-        onClick: PropTypes.func,
-        onSelect: PropTypes.func.isRequired,
-        onUpdateHighlighted: PropTypes.func
-    },
-
-  getDefaultProps(){
-    return {
-      placeholder: 'Select an Option',
-      disabled: false,
-      theme: 'default',
-      label: 'Picklist',
-      value: null,
-      options: [],
-      initialFocus: false,
-      modal: false,
-      className:'',
-      listClassName:'',
-      listItemRenderer:null
-    }
-  },
-
-  getInitialState(){
-    return {
+class SLDSPicklist extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       triggerId:null,
       isOpen:false,
       isFocused:false,
@@ -56,7 +50,7 @@ module.exports = React.createClass( {
       lastBlurredIndex:-1,
       lastBlurredTimeStamp:-1
     };
-  },
+  }
 
   componentDidMount () {
     const id = React.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
@@ -65,7 +59,7 @@ module.exports = React.createClass( {
     if(this.props.initialFocus){
       this.setFocus();
     }
-  },
+  }
 
   getIndexByValue(value){
     let foundIndex = -1;
@@ -79,14 +73,14 @@ module.exports = React.createClass( {
       });
     }
     return foundIndex;
-  },
+  }
 
   getValueByIndex(index){
     const option = this.props.options[index];
     if(option){
       return this.props.options[index];
     }
-  },
+  }
 
   handleSelect(index) {
     this.setState({selectedIndex:index})
@@ -94,11 +88,11 @@ module.exports = React.createClass( {
     if(this.props.onSelect){
       this.props.onSelect(this.getValueByIndex(index));
     }
-  },
+  }
 
   handleClose() {
     this.setState({isOpen:false});
-  },
+  }
 
   handleClick(event) {
     EventUtil.trap(event);
@@ -111,28 +105,28 @@ module.exports = React.createClass( {
     else{
       this.handleClose();
     }
-  },
+  }
 
   handleMouseDown(event){
     EventUtil.trapImmediate(event);
-  },
+  }
 
   handleBlur(e) {
     this.setState({isFocused:false});
-  },
+  }
 
   handleFocus() {
     this.setState({isFocused:true});
-  },
+  }
 
   setFocus () {
     if(this.isMounted()){
       React.findDOMNode(this.refs.triggerbutton).focus();
     }
-  },
+  }
 
   moveHighlight(delta) {
-  },
+  }
 
   handleKeyDown(event) {
     if (event.keyCode){
@@ -149,23 +143,23 @@ module.exports = React.createClass( {
 
       }
     }
-  },
+  }
 
   handleUpdateHighlighted(nextIndex){
     this.setState({highlightedIndex:nextIndex});
-  },
+  }
 
   handleListBlur(){
     this.setState({isOpen:false});
-  },
+  }
 
   handleCancel () {
     this.setFocus();
-  },
+  }
 
   getListItemRenderer() {
     return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
-  },
+  }
 
   getPopoverContent() {
     return <List
@@ -183,7 +177,7 @@ module.exports = React.createClass( {
             onCancel={this.handleCancel}
             itemRenderer={this.getListItemRenderer()}
             theme={this.props.theme} />;
-  },
+  }
 
   getSimplePopover() {
     return (
@@ -194,7 +188,7 @@ module.exports = React.createClass( {
           {this.getPopoverContent()}
         </div>:null
     );
-  },
+  }
 
   getModalPopover() {
     return (
@@ -207,19 +201,19 @@ module.exports = React.createClass( {
           {this.getPopoverContent()}
         </SLDSPopover>:null
     );
-  },
+  }
 
   getPlaceholder() {
     const option = this.props.options[this.state.selectedIndex];
     return (option && option.label)?option.label:this.props.placeholder;
-  },
+  }
 
   handleListItemBlur (index, relatedTarget) {
     this.setState({
       lastBlurredIndex:index,
       lastBlurredTimeStamp:Date.now()
     });
-  },
+  }
 
   componentDidUpdate( prevProps, prevState) {
 
@@ -251,7 +245,7 @@ module.exports = React.createClass( {
       this.handleSelect(this.getIndexByValue(this.props.value));
     }
 
-  },
+  }
 
   render() {
     return (
@@ -275,11 +269,16 @@ module.exports = React.createClass( {
 
       </div>
     );
-  },
+  }
+
+}
 
 
-});
+SLDSPicklist.displayName = displayName;
+SLDSPicklist.propTypes = propTypes;
+SLDSPicklist.defaultProps = defaultProps;
 
+module.exports = SLDSPicklist;
 module.exports.ListItem = ListItem;
 module.exports.ListItemLabel = ListItemLabel;
 
