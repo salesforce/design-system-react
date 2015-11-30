@@ -45,6 +45,7 @@ class SLDSPicklist extends React.Component {
       highlightedIndex: 0,
       isOpen: false,
       isFocused: false,
+      isMounted: false,
       lastBlurredIndex: -1,
       lastBlurredTimeStamp: -1,
       selectedIndex: this.getIndexByValue(this.props.value),
@@ -54,11 +55,18 @@ class SLDSPicklist extends React.Component {
 
   componentDidMount () {
     const id = React.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
-    this.setState({triggerId: id});
+    this.setState({
+      triggerId: id,
+      isMounted: true,
+    });
 
     if(this.props.initialFocus){
       this.setFocus();
     }
+  }
+
+  componentWillUnmount(){
+    this.setState({ isMounted: false });
   }
 
   getIndexByValue(value){
@@ -120,7 +128,7 @@ class SLDSPicklist extends React.Component {
   }
 
   setFocus () {
-    if(this.isMounted()){
+    if(this.state.isMounted){
       React.findDOMNode(this.refs.triggerbutton).focus();
     }
   }
@@ -227,8 +235,8 @@ class SLDSPicklist extends React.Component {
     }
     else if(!this.state.isFocused && prevState.isFocused){
       if(this.refs.list){
-        if(this.isMounted() && this.refs.list){
-          if(this.refs.list.getDOMNode().contains(document.activeElement)){
+        if(this.state.isMounted && this.refs.list){
+          if(React.findDOMNode(this.refs.list).contains(document.activeElement)){
             return;
           }
           this.setState({isOpen: false})
