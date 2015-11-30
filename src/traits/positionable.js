@@ -42,7 +42,7 @@ const Positionable = {
 		const targetDistance = this.getProperty('positionedOffset');
 		const targetHorizontalAttachment = this.getProperty('positionedTargetHorizontalAttachment');
 		const newStyle = {};
-		let alignLatPos = 0;
+		let targetHorizontalPosition = 0;
 		
 		const elementSize = {
 			width: element.outerWidth(),
@@ -59,9 +59,9 @@ const Positionable = {
 		newStyle.width = this.getProperty('width') || targetSize.width;
 
 		if (targetHorizontalAttachment === 'center') {
-			alignLatPos = (elementSize.width / 2) - (targetSize.width / 2);
+			targetHorizontalPosition = (elementSize.width / 2) - (targetSize.width / 2);
 		} else if (targetHorizontalAttachment === 'left') {
-			alignLatPos = 0;
+			targetHorizontalPosition = 0;
 		}
 
 		switch (currentTargetAttachment) {
@@ -70,11 +70,11 @@ const Positionable = {
 				newStyle.top = offset.top - ((elementSize.height / 2) - (targetSize.height / 2));
 				break;
 			case 'top':
-				newStyle.left = offset.left - alignLatPos;
+				newStyle.left = offset.left - targetHorizontalPosition;
 				newStyle.top = offset.top - (elementSize.height + targetDistance);
 				break;
 			case 'bottom':
-				newStyle.left = offset.left - alignLatPos;
+				newStyle.left = offset.left - targetHorizontalPosition;
 				newStyle.top = offset.top + targetSize.height + targetDistance;
 				break;
 			case 'right':
