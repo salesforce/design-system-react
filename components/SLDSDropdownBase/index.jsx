@@ -10,14 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 import SLDSPopover from "../SLDSPopover";
-import List from "./list";
-import ListItem from "./list-item";
-import ListItemLabel from "./list-item-label";
-import chain from "../utils/create-chained-function";
-
 import SLDSButton from "../SLDSButton";
 
-import {KEYS,EventUtil} from "../utils";
+import chain from "../utils/create-chained-function";
+import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
 import omit from "lodash.omit";
 
 const displayName = "SLDSDropdown";
