@@ -55,7 +55,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this.elements.monthName = this.$el.find('.slds-datepicker__filter--month h2');
 		this.elements.year = this.$el.find('.slds-datepicker__filter .slds-picklist');
 
-		this.elements.popover = Lib.wrapElement(this.elements.datepicker);
+		this.elements.positionedElement = Lib.wrapElement(this.elements.datepicker);
 		this.elements.container = Lib.wrapElement(this.$el);
 		this.elements.align = Lib.wrapElement(this.elements.formElement);
 
