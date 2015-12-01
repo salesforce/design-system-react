@@ -32,8 +32,8 @@ module.exports = React.createClass( {
     console.log('onUpdateHighlighted should be defined');
   },
 
-  handleOnSelect() {
-    console.log('onSelect should be defined');
+  handleOnSelect(value) {
+    console.log('selected: ',value);
   },
 
   handleOnClick() {

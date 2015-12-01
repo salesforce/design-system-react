@@ -12,7 +12,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import SLDSPicklistBase from './SLDSPicklistBase';
 import SLDSDropdownBase from './SLDSDropdownBase';
 
-import SLDSPicklistBaseListItem from './SLDSPicklistBase/list-item';
 import SLDSSettings from './SLDSSettings';
 import SLDSButton from './SLDSButton';
 import SLDSButtonGroup from './SLDSButtonGroup';
@@ -27,7 +26,6 @@ import SLDSUtilityIcon from './SLDSUtilityIcon';
 module.exports = {
   SLDSPicklistBase: SLDSPicklistBase,
   SLDSDropdownBase: SLDSDropdownBase,
-  SLDSPicklistBaseListItem: SLDSPicklistBaseListItem,
   SLDSSettings: SLDSSettings,
   SLDSButton: SLDSButton,
   SLDSButtonGroup: SLDSButtonGroup,

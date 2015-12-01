@@ -123,7 +123,10 @@ class SLDSDropdown extends React.Component {
   }
 
   getValueByIndex(index){
-    return this.props.options[index].value;
+    const option = this.props.options[index];
+    if(option){
+      return this.props.options[index];
+    }
   }
 
   handleSelect(index){

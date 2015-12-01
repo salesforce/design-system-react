@@ -11,12 +11,8 @@ import React from 'react';
 import isEqual from 'lodash.isequal';
 
 import SLDSPopover from '../SLDSPopover';
-import List from './list';
-import ListItem from './list-item';
-import ListItemLabel from './list-item-label';
+import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
 import {Icon} from "../SLDSIcons";
-import {KEYS,EventUtil} from '../utils';
-
 
 const displayName = "SLDSPicklist";
 const propTypes = {
