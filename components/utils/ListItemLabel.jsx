@@ -6,44 +6,50 @@ Redistributions in binary form must reproduce the above copyright notice, this l
 Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-'use strict';
-
 
 import React from 'react';
 import {Icon} from '../SLDSIcons';
 
-import {KEYS,EventUtil} from '../utils';
+const displayName = "SLDSList-Item-Label";
+const propTypes = {
+  data: React.PropTypes.object,
+  index: React.PropTypes.number,
+  inverted: React.PropTypes.bool,
+  isHighlighted: React.PropTypes.bool,
+  isSelected: React.PropTypes.bool,
+  label: React.PropTypes.string,
+  value: React.PropTypes.string,
+};
+const defaultProps = {
+  data: {},
+  index: 0,
+  inverted: false,
+  isHighlighted: false,
+  isSelected: false,
+  label: '',
+  value: null,
+};
 
+class SLDSListItemLabel extends React.Component {
 
-module.exports = React.createClass({
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-  displayName: 'SLDSPicklistBase-list-item-label',
-
-  getDefaultProps () {
-    return {
-      index: 0,
-      label: '',
-      value: null,
-      inverted: false,
-      isSelected: false,
-      isHighlighted: false,
-      data:{}
-    };
-  },
-
-  render () {
+  render() {
     return (
       <section>
-      {
-        this.props.isSelected?<Icon name='check'  position='left' category='utility' />:null
-      }
-      {
-        this.props.label
-      }
+        {this.props.isSelected?<Icon name='check'  position='left' category='utility' />:null}
+        {this.props.label}
       </section>
-    );
-  },
+    )
+  }
+}
 
+SLDSListItemLabel.displayName = displayName;
+SLDSListItemLabel.propTypes = propTypes;
+SLDSListItemLabel.defaultProps = defaultProps;
 
+module.exports = SLDSListItemLabel;
 
-});

@@ -14,12 +14,18 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import DateUtil from './DateUtil';
 import EventUtil from './EventUtil';
 import CSSUtil from './CSSUtil';
-
 import KEYS from './KEYS';
 
+import List from './List';
+import ListItem from './ListItem';
+import ListItemLabel from './ListItemLabel';
+
 module.exports = {
-  DateUtil:DateUtil,
-  EventUtil:EventUtil,
-  CSSUtil:CSSUtil,
-  KEYS:KEYS
+  DateUtil: DateUtil,
+  EventUtil: EventUtil,
+  CSSUtil: CSSUtil,
+  KEYS: KEYS,
+  List: List,
+  ListItem: ListItem,
+  ListItemLabel: ListItemLabel,
 };
