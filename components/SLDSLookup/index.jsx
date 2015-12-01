@@ -7,39 +7,62 @@
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    */
 
-import React, { Component } from "react";
+import React from "react";
 import Menu from "./Menu";
 import SLDSPopover from "../SLDSPopover";
-import {ButtonIcon, Icon, InputIcon} from "./../SLDSIcons";
 import SLDSButton from "../SLDSButton";
+import {Icon, InputIcon} from "./../SLDSIcons";
 import {KEYS,EventUtil} from "../utils";
 import escapeRegExp from "lodash.escaperegexp";
 
 import DefaultFooter from "./Menu/DefaultFooter";
 import DefaultHeader from "./Menu/DefaultHeader";
-
 import cx from "classnames";
 
+const displayName = "SLDSLookup";
+const propTypes = {
+  boldRegex: React.PropTypes.instanceOf(RegExp),
+  modal: React.PropTypes.bool,
+  emptyMessage: React.PropTypes.string,
+  errors: React.PropTypes.arrayOf(React.PropTypes.string),
+  disabled: React.PropTypes.bool,
+  filterWith: React.PropTypes.func,
+  hasError: React.PropTypes.bool,
+  iconCategory: React.PropTypes.string,
+  iconName: React.PropTypes.string,
+  items: React.PropTypes.array,
+  label: React.PropTypes.string,
+  listItemLabelRenderer: React.PropTypes.func,
+  messages: React.PropTypes.arrayOf(React.PropTypes.string),
+  onBlur: React.PropTypes.func,
+  onChange: React.PropTypes.func,
+  onItemSelect: React.PropTypes.func,
+  onItemUnselect: React.PropTypes.func,
+  type: React.PropTypes.string,
+};
 
 const defaultFilter = (term, item) => {
   if(!term) return true;
   return item.label.match(new RegExp(escapeRegExp(term), "ig"));
 };
 
+const defaultProps = {
+  disabled: false,
+  filterWith: defaultFilter,
+  modal: false,
+};
+
 class SLDSLookup extends React.Component {
   constructor(props) {
     super(props);
-
-    //Dynamically assign ids to list items to reference for focusing and selecting items
-
     this.state = {
-      searchTerm: "",
-      isOpen:false,
-      currentFocus:null,
-      focusIndex:null,
+      currentFocus: null,
+      focusIndex: null,
+      isOpen: false,
+      items: [],
+      listLength: this.props.items.length,
       selectedIndex: null,
-      listLength:this.props.items.length,
-      items:[]
+      searchTerm: "",
     };
   }
 
@@ -71,13 +94,13 @@ class SLDSLookup extends React.Component {
   modifyItems(itemsToModify) {
     const items = itemsToModify.map((item, index) => {
       return {
-        id : "item-" + index,
+        id: "item-" + index,
         label: item.label,
-        data : item
+        data: item
       }
     });
 
-    this.setState({items:items});
+    this.setState({items: items});
   }
 
   //=================================================
@@ -95,12 +118,12 @@ class SLDSLookup extends React.Component {
   }
 
   setFocus(id) {
-    this.setState({currentFocus:id});
+    this.setState({currentFocus: id});
   }
 
   getListLength(qty) {
     if(qty !== this.state.listLength){
-      this.setState({ listLength:qty });
+      this.setState({ listLength: qty });
     }
   }
 
@@ -126,15 +149,15 @@ class SLDSLookup extends React.Component {
 
   selectItemByIndex(index){
     if(index >= 0 && index < this.state.items.length){
-	    this.setState({
-	      selectedIndex: index,
-	      searchTerm: null
-	    });
-	    const data = this.state.items[index].data;
+      this.setState({
+        selectedIndex: index,
+        searchTerm: null
+      });
+      const data = this.state.items[index].data;
       if(this.props.onItemSelect){
         this.props.onItemSelect(data);
       }
-	  }
+    }
   }
 
   handleDeleteSelected() {
@@ -151,22 +174,22 @@ class SLDSLookup extends React.Component {
   // Event Listeners on Input
   handleClose() {
     this.setState({
-      isOpen:false,
-      focusIndex:null,
-      currentFocus:null,
+      isOpen: false,
+      focusIndex: null,
+      currentFocus: null,
     });
   }
 
   handleCancel(){
     this.setState({
-      isOpen:false,
-      focusIndex:null,
-      currentFocus:null,
+      isOpen: false,
+      focusIndex: null,
+      currentFocus: null,
     });
-  };
+  }
 
   handleClick() {
-    this.setState({ isOpen:true });
+    this.setState({ isOpen: true });
   }
 
   handleBlur(event) {
@@ -178,7 +201,7 @@ class SLDSLookup extends React.Component {
   }
 
   handleFocus() {
-    this.setState({ isOpen:true });
+    this.setState({ isOpen: true });
   }
 
   handleChange(event) {
@@ -308,13 +331,13 @@ class SLDSLookup extends React.Component {
     let targetElem = this.props.type + "Lookup";
     if(this.state.isOpen){
       return <SLDSPopover
-          className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
-          targetElement={this.refs[targetElem]}
-          closeOnTabKey={true}
-          onClose={this.handleCancel.bind(this)}>
-          {this.renderMenuContent()}
-        </SLDSPopover>;
-      }
+      className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
+      targetElement={this.refs[targetElem]}
+      closeOnTabKey={true}
+      onClose={this.handleCancel.bind(this)}>
+      {this.renderMenuContent()}
+      </SLDSPopover>;
+    }
   }
 
   renderSelectedItem() {
@@ -343,10 +366,10 @@ class SLDSLookup extends React.Component {
 
     const inputContainerClasses = {
       "slds-lookup__control": true,
-      "slds-input-has-icon":true,
+      "slds-input-has-icon": true,
       "slds-input-has-icon--right": true,
       "slds-input": this.state.selectedIndex !== null,
-      "slds-has-error":this.props.hasError
+      "slds-has-error": this.props.hasError
     };
 
     const inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: "5px"};
@@ -386,34 +409,10 @@ class SLDSLookup extends React.Component {
   }
 }
 
-SLDSLookup.propTypes = {
-  items: React.PropTypes.array,
-  emptyMessage: React.PropTypes.string,
-  messages: React.PropTypes.arrayOf(React.PropTypes.string),
-  errors: React.PropTypes.arrayOf(React.PropTypes.string),
-  label: React.PropTypes.string,
-  type: React.PropTypes.string,
-  iconCategory: React.PropTypes.string,
-  iconName: React.PropTypes.string,
-  filterWith: React.PropTypes.func,
-  onItemSelect: React.PropTypes.func,
-  onItemUnselect: React.PropTypes.func,
-  onChange: React.PropTypes.func,
-  onBlur: React.PropTypes.func,
-  modal: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  hasError: React.PropTypes.bool,
-  boldRegex: React.PropTypes.instanceOf(RegExp),
-  listItemLabelRenderer: React.PropTypes.func
-};
+SLDSLookup.displayName = displayName;
+SLDSLookup.propTypes = propTypes;
+SLDSLookup.defaultProps = defaultProps;
 
-SLDSLookup.defaultProps = {
-  filterWith: defaultFilter,
-  modal: false,
-  disabled: false,
-};
-
-module.exports = SLDSLookup;
 module.exports.DefaultHeader = DefaultHeader;
 module.exports.DefaultFooter = DefaultFooter;
-
+module.exports = SLDSLookup;
