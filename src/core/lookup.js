@@ -40,6 +40,7 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, P
 		positionedTargetVerticalAttachment: 'bottom',
 		constrainWidthToTarget: true,
 		constrainPositionedToWindow: true,
+		modalMenu: false,
 		positionedOffset: 0,
 		positionedTargetHorizontalAttachment: 'left'
 	},

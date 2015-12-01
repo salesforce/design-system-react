@@ -36,6 +36,12 @@ const Positionable = {
 		top: 'top'
 	},
 
+	_attachPositionedElementToDOM () {
+		const element = document.createElement('div');
+		document.querySelector('body').appendChild(element);
+		return Lib.wrapElement(element);
+	},
+
 	// Based upon the positionable element's "x,y" document offset and options provided, this function returns the top and left offsets of the positionable element. It also returns the width of the target element.
 	_getElementStyles (element, constrainedToElement, target, newTargetAttachment) {
 		const offset = Lib.getElementOffset(target[0], constrainedToElement[0]);

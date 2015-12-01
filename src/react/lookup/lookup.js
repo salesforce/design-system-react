@@ -59,6 +59,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			React.PropTypes.bool
 		]),
 		menuItemRenderer: React.PropTypes.func,
+		modalMenu: React.PropTypes.bool,
 		onAddClick: React.PropTypes.func,
 		onChanged: React.PropTypes.func,
 		onFilter: React.PropTypes.func,
@@ -94,8 +95,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			isHidden: !this.props.isOpen
 		});
 		
-		this.elements.positionedElement = Lib.wrapElement(document.createElement('div'));
-		document.querySelector('body').appendChild(this.elements.positionedElement[0]);
+		this.elements.positionedElement = this._attachPositionedElementToDOM();
 	},
 
 	componentWillReceiveProps (nextProps) {
@@ -117,24 +117,16 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 
 	componentDidMount () {
-		window.addEventListener('scroll', this.handleScroll);
-		window.addEventListener('resize', this.handleResize);
-	},
-
-	componentWillUnmount () {
-		window.removeEventListener('scroll', this.handleScroll);
-		window.removeEventListener('resize', this.handleResize);
-	},
-
-	handleScroll () {
-		if (this.state.isOpen) {
-			this._updatePosition();
+		if (this.props.modalMenu) {
+			window.addEventListener('resize', this._handleResize);
+			window.addEventListener('scroll', this._handleScroll);
 		}
 	},
 
-	handleResize () {
-		if (this.state.isOpen) {
-			this._updatePosition();
+	componentWillUnmount () {
+		if (this.props.modalMenu) {
+			window.removeEventListener('resize', this._handleResize);
+			window.removeEventListener('scroll', this._handleScroll);
 		}
 	},
 
@@ -154,7 +146,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems}/>;
 		}
 		
-		// This markup should reflect the design system pattern for the control.
+		// This markup should reflect the design system pattern for the control. If the dropdown menu's parent is `body` and is absolutely positioned in order to visually attach the dropdown to the input, then the dropdown menu is not rendered in this function and is rendered in `componentDidUpdate` with `_renderModalMenu`.
 		return (
 			<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true">
 				<div className="slds-form-element">
@@ -165,6 +157,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 						<input id={inputId} className={classNames('slds-input', { 'slds-hidden': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
 					</div>
 				</div>
+				{this.props.modalMenu ? null : this._renderMenu()}
 			</div>
 		);
 	},
@@ -183,34 +176,48 @@ let Lookup = Lib.merge({}, LookupCore, {
 		if (Lib.isFunction(this.props.menuFooterRenderer)) {
 			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.labelPlural || this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} parentProps={this.props} numResults={this.state.searchResults.length()} onClick={this.props.onAddClick} />;
 		}
+
+		let style = {};
+
+		if (this.props.modalMenu) {
+			style = {position: 'static'};
+		}
 		
 		const menu = (
 			/* TODO: Remove inline style */
-			<div id={this._getMenuId()} className="slds-lookup__menu" role="listbox" style={{position: 'static'}}>
+			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox" style={style}>
 				{header}
 				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
 			</div>
 		);
 
+		return menu;
+	},
+
+	// Modal dropdown menus' parent is `body` and are absolutely positioned in order to visually attach the dropdown to the input.
+	_renderModalMenu () {
+		const menu = this._renderMenu();
+		// positionedElement is a "wrapped element"
+		ReactDOM.render(menu, this.elements.positionedElement.element);
+
+		this.elements.container = Lib.wrapElement(document.querySelector('body'));
+		this.elements.align = Lib.wrapElement(this.elements.input);
+		this._updatePosition();
+
 		if (!this.state.isOpen) {
 			this.elements.positionedElement.addClass('slds-hidden');
 		} else {
 			this.elements.positionedElement.removeClass('slds-hidden');
 		}
-
-		// positionedElement is a "wrapped element"
-		ReactDOM.render(menu, this.elements.positionedElement[0]);
-
-		// Used by positionable trait
-		this.elements.container = Lib.wrapElement(document.querySelector('body'));
-		this.elements.align = Lib.wrapElement(this.elements.input);
-		this._updatePosition();
 	},
 
 	// After the control has rendered, we may need to scroll the currently selected menu item into view. The function which actually peforms the scrolling lives in the core.
 	componentDidUpdate () {
-		this._renderMenu();
+		if (this.props.modalMenu) {
+			this._renderModalMenu();
+		}
+
 		if (this.elements.menu) this._scrollMenuItems();
 
 		// After an item has been deselected we need to return the focus to the input element.
@@ -252,6 +259,20 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this._deselectItem(item);
 		} else {
 			this.deselectAll();
+		}
+	},
+
+	// `_handleResize` is active when the dropdown menu's parent is `body` and is absolutely positioned in order to visually attach the dropdown to the input.
+	_handleResize () {
+		if (this.state.isOpen) {
+			this._updatePosition();
+		}
+	},
+
+	// `_handleScroll` is active when the dropdown menu's parent is `body` and is absolutely positioned in order to visually attach the dropdown to the input.
+	_handleScroll () {
+		if (this.state.isOpen) {
+			this._updatePosition();
 		}
 	},
 

@@ -18,14 +18,12 @@ export default function () {
 		render () {
 			return (
 				<div className="slds-col example" ref="container">
-					<Lookup label="Accounts" ref="target"
+					<Lookup label="Accounts"
 						collection={this.state.collection}
 						selection={this.state.selection}
 						onChanged={this._handleModelChange}
 						filterPredicate={this._filterPredicate}
 						onAddClick={this._handleAdd}
-						align={this.refs.target}
-						container={this.refs.container}
 						isOpen={this.state.isOpen} />
 				</div>
 			);
