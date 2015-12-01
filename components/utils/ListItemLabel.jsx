@@ -36,11 +36,10 @@ class SLDSListItemLabel extends React.Component {
     super(props);
     this.state = {};
   }
-
   render() {
     return (
       <section>
-        {this.props.isSelected?<Icon name='check'  position='left' category='utility' />:null}
+        <Icon name='check' position='left' category='utility' size="x-small" className="slds-icon--selected slds-icon-text-default slds-m-right--x-small" />
         {this.props.label}
       </section>
     )
