@@ -105,8 +105,7 @@ class SLDSLookup extends React.Component {
 
   //=================================================
   // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
-  // Need to keep track of filtered list length to be able to increment/decrement the focus index so it"s contained to the number of available list items.
-  // Adding/subtracting 1 from focusIndex to account for fixed action items (searchRecords and addNewItem buttons)
+  // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
   increaseIndex() {
     let numFocusable = this.getNumFocusableItems();
     this.setState({ focusIndex: this.state.focusIndex < numFocusable - 1 ? this.state.focusIndex + 1 : 0 });
@@ -342,52 +341,69 @@ class SLDSLookup extends React.Component {
 
   renderSelectedItem() {
     let selectedItem = this.props.items[this.state.selectedIndex].label;
-    return <span tabIndex="0" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
+    return (
+      <a href="javascript:void(0)" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         <span className="slds-pill__label">
-          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.type} className={"slds-m-right--x-small " + this.props.iconClasses} />
-          {selectedItem}
+          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.type} className={"slds-icon slds-icon-standard-account slds-pill__icon " + this.props.iconClasses} />
+          <span className="slds-pill__label">
+            {selectedItem}
+          </span>
         </span>
         <SLDSButton
-          assistiveText="Press delete to remove"
-          tabIndex="-1"
-          variant="icon"
-          iconName="close"
-          iconSize="medium"
-          onClick={this.handleDeleteSelected.bind(this)}
-          ref="clearSelectedItemButton"
-          className="slds-m-left--x-small "
+        assistiveText="Press delete to remove"
+        tabIndex="-1"
+        variant="icon"
+        iconName="close"
+        iconSize="medium"
+        onClick={this.handleDeleteSelected.bind(this)}
+        ref="clearSelectedItemButton"
+        className="slds-pill__remove slds-button--icon-bare"
         />
-      </span>
+      </a>
+    )
   }
 
   render() {
-    const inputClasses = this.state.selectedIndex === null ? "slds-input":"slds-input slds-hide";
-    const componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside":"slds-lookup ignore-react-onclickoutside slds-has-selection";
+    const inputClasses = {
+      "slds-input": true,
+      "slds-show": this.state.selectedIndex === null,
+      "slds-hide": this.state.selectedIndex !== null,
+    };
+
+    const componentClasses = {
+      "slds-lookup": true,
+      "slds-has-selection": this.state.selectedIndex !== null,
+    };
 
     const inputContainerClasses = {
-      "slds-lookup__control": true,
+      "slds-form-element__control": true,
       "slds-input-has-icon": true,
       "slds-input-has-icon--right": true,
-      "slds-input": this.state.selectedIndex !== null,
       "slds-has-error": this.props.hasError
+    };
+
+    const pillContainerClasses = {
+      "slds-pill__container": true,
+      "slds-show": this.state.selectedIndex !== null,
+      "slds-hide": this.state.selectedIndex === null,
     };
 
     const inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: "5px"};
     const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.props.type + "Lookup"}>{this.props.label}</label>:null;
 
     return (
-      <div className={componentClasses} data-select="multi" data-scope="single" data-typeahead="true">
+      <div className={cx(componentClasses)} data-select="single" data-scope="single" data-typeahead="true">
         <section className="slds-form-element">
-
           {inputLabel}
-
           <div className={cx(inputContainerClasses)} style={inputContainerStyle}>
+            <div className={cx(pillContainerClasses)}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
+            </div>
             <InputIcon name="search"/>
             <input
               id={this.props.type + "Lookup"}
               ref={this.props.type + "Lookup"}
-              className={inputClasses}
+              className={cx(inputClasses)}
               type="text"
               aria-haspopup="true"
               aria-autocomplete="list"
