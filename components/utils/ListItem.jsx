@@ -13,7 +13,7 @@ import KEYS from './KEYS';
 import EventUtil from './EventUtil';
 import ListItemLabelRenderer from './ListItemLabel';
 
-const displayName = "SLDSPicklistBase-list-item";
+const displayName = "SLDSList-Item";
 const propTypes = {
   data: React.PropTypes.object,
   index: React.PropTypes.number,

@@ -11,7 +11,7 @@ import React from 'react';
 import ListItem from "./ListItem";
 import EventUtil from './EventUtil';
 
-const displayName = "SLDSPicklistBase-list";
+const displayName = "SLDSList";
 const propTypes = {
   className: React.PropTypes.string,
   highlightedIndex: React.PropTypes.number,
