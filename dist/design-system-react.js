@@ -4975,8 +4975,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var isSelected = this.props.isSelected ? " slds-is-selected" : null;
 	      return _react2['default'].createElement('li', {
-	        className: "slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--" + this.props.theme,
+	        className: "slds-dropdown__item slds-theme--" + this.props.theme + isSelected,
 	        onMouseDown: this.handleMouseDown.bind(this),
 	        onMouseEnter: this.props.onMouseEnter,
 	        onMouseLeave: this.props.onMouseLeave,
@@ -5104,7 +5105,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(SLDSListItemLabel, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2['default'].createElement('section', null, this.props.isSelected ? _react2['default'].createElement(_SLDSIcons.Icon, { name: 'check', position: 'left', category: 'utility' }) : null, this.props.label);
+	      return _react2['default'].createElement('section', null, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'check', position: 'left', category: 'utility', size: 'x-small', className: 'slds-icon--selected slds-icon-text-default slds-m-right--x-small' }), this.props.label);
 	    }
 	  }]);
 	
