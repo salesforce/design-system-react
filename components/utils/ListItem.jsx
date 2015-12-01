@@ -37,7 +37,6 @@ const defaultProps = {
   isSelected: false,
   label: '',
   labelRenderer: ListItemLabelRenderer,
-  value: null,
   onBlur (relatedTarget){
     console.log('onBlur should be defined ',relatedTarget);
   },
@@ -53,6 +52,7 @@ const defaultProps = {
   onSelect (index) {
     console.log('onSelect should be defined ',index);
   },
+  value: null,
 };
 
 class SLDSListItem extends React.Component {
@@ -164,7 +164,7 @@ class SLDSListItem extends React.Component {
         onMouseLeave={this.props.onMouseLeave}
         tabIndex={-1}>
           <a id={'menu-0-'+this.props.index}
-            href=''
+            href='javascript:void(0)'
             ref='link'
             className='slds-truncate'
             onClick={this.handleClick.bind(this)}
