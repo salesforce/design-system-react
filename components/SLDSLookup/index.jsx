@@ -413,6 +413,7 @@ SLDSLookup.displayName = displayName;
 SLDSLookup.propTypes = propTypes;
 SLDSLookup.defaultProps = defaultProps;
 
+module.exports = SLDSLookup;
 module.exports.DefaultHeader = DefaultHeader;
 module.exports.DefaultFooter = DefaultFooter;
-module.exports = SLDSLookup;
+
