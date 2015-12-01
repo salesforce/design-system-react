@@ -79,70 +79,57 @@ module.exports = React.createClass( {
 
   render() {
     return (
-      <div>Please select a component</div>
+      <SLDSGrid flavor='vertical' className='stage slds-nowrap'>
 
+        <div className='region region--top slds-shrink-none'>
+          <div className='slds-page-header'>
+            <SLDSGrid>
+              <SLDSColumn className='slds-has-flexi-truncate'>
+                <div className='slds-media'>
+                  <div className='slds-media__figure'>
+                    <Icon assistiveText="lead" name='lead' category='standard' size='large' position='left' />
+                  </div>
+                  <div className='slds-media__body'>
+                    <p className='slds-text-heading--label'>Lightning Design System</p>
+                    <div className='slds-grid'>
+                      <h1 className='slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle' title='Record Title'>React Components</h1>
+                    </div>
+                  </div>
+                </div>
+              </SLDSColumn>
+            </SLDSGrid>
+          </div>
+        </div>
+
+      <div className="wrapper slds-grid">
+        <div className='region region--main slds-grow slds-size--1-of-4 slds-medium-size--1-of-4 slds-large-size--1-of-8 slds-col-rule--right slds-p-around--large'>
+
+            <section className="slds-p-bottom--large">
+              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Current</h3>
+              <ul>
+                <li><Link to="button">Button</Link></li>
+                <li><Link to="button-group">Button Group</Link></li>
+                <li><Link to="dropdown">Dropdown</Link></li>
+                <li><Link to="icon">Icon</Link></li>
+                <li><Link to="lookup">Lookup</Link></li>
+                <li><Link to="modal">Modal</Link></li>
+                <li><Link to="notification">Notification</Link></li>
+                <li><Link to="picklist">Picklist</Link></li>
+                <li><Link to="tooltip">Tooltip</Link></li>
+              </ul>
+              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Future</h3>
+              <ul>
+                <li><Link to="datepicker">Datepicker</Link></li>
+              </ul>
+            </section>
+        </div>
+
+        <div className="region region--main slds-grow slds-size--3-of-4 slds-medium-size--3-of-4 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
+          <RouteHandler/>
+        </div>
+      </div>
+
+    </SLDSGrid>
     );
   }
 });
-
-    //   { <SLDSGrid flavor='vertical' className='stage slds-nowrap'>
-
-    //     <div className='region region--top slds-shrink-none'>
-    //       <div className='slds-page-header'>
-    //         <SLDSGrid>
-    //           <SLDSColumn className='slds-has-flexi-truncate'>
-    //             <div className='slds-media'>
-    //               <div className='slds-media__figure'>
-    //                 <Icon assistiveText="lead" name='lead' category='standard' size='large' position='left' />
-    //               </div>
-    //               <div className='slds-media__body'>
-    //                 <p className='slds-text-heading--label'>Lightning Design System</p>
-    //                 <div className='slds-grid'>
-    //                   <h1 className='slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle' title='Record Title'>React Components</h1>
-    //                 </div>
-    //               </div>
-    //             </div>
-    //           </SLDSColumn>
-    //         </SLDSGrid>
-    //       </div>
-    //     </div>
-
-    //     /*
-
-    //     <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
-
-    //         <ButtonSection/>
-
-    //         <ButtonGroupSection />
-
-    //         <DropdownBaseSection />
-
-    //         <IconSection />
-
-    //         <LookupBaseSection />
-
-    //         <LookupBaseDynamicSection />
-
-    //         <LookupBaseCustomSection />
-
-    //         <ModalSection />
-
-    //         <NotificationSection/>
-
-    //         <PicklistBaseSection />
-
-    //         <PicklistBaseCustomSection />
-
-    //         <TooltipSection/>
-
-    //         <div class="component-details">
-    //           component-details
-    //         </div>
-
-    //         <h1 className="slds-text-heading--large slds-p-top--large">Future Components</h1>
-
-    //         <DatePickerSingleSelectSection />
-    //     </main>
-      
-    // </SLDSGrid>
-    //   }
