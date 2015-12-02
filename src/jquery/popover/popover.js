@@ -39,26 +39,26 @@ export const PopoverMethods = {
 	},
 
 	_setElementOptions () {
-		const target = this.getProperty('target');
+		const triggerElement = this.getProperty('target');
 		const container = this.getProperty('container');
 		const align = this.getProperty('align');
 
-		this.elements.target = Lib.wrapElement(target || this.elements.wrapper);
+		this.elements.triggerElement = Lib.wrapElement(triggerElement || this.elements.wrapper);
 		this.elements.container = Lib.wrapElement(container || this.elements.wrapper);
-		this.elements.align = Lib.wrapElement(align || this.elements.target);
+		this.elements.align = Lib.wrapElement(align || this.elements.triggerElement);
 	},
 
 	_setTrigger () {
 		const trigger = this.getProperty('trigger');
 
 		if (trigger === 'click') {
-			this.elements.target.on( 'click', $.proxy(this.toggle, this));
+			this.elements.triggerElement.on( 'click', $.proxy(this.toggle, this));
 		} else if (trigger === 'hover') {
-			this.elements.target.on( 'mouseover', $.proxy(this.show, this));
-			this.elements.target.on( 'mouseout', $.proxy(this.hide, this));
+			this.elements.triggerElement.on( 'mouseover', $.proxy(this.show, this));
+			this.elements.triggerElement.on( 'mouseout', $.proxy(this.hide, this));
 		} else if (trigger === 'focus') {
-			this.elements.target.on( 'focus', $.proxy(this.show, this));
-			this.elements.target.on( 'focusout', $.proxy(this.hide, this));
+			this.elements.triggerElement.on( 'focus', $.proxy(this.show, this));
+			this.elements.triggerElement.on( 'focusout', $.proxy(this.hide, this));
 		}
 	},
 	
