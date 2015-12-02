@@ -68,7 +68,7 @@ class Item extends React.Component {
 
     return (
       //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
-      <li className={className} role="presentation">
+      <li className={className}>
         <a
           href={this.props.href}
           id={id}
