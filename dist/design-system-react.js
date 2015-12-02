@@ -11628,7 +11628,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
-	var _SLDSIcons = __webpack_require__(22);
+	var displayName = 'SLDSLookup-Menu';
+	var propTypes = {
+	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
+	  emptyMessage: _react2['default'].PropTypes.string,
+	  errors: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.string),
+	  filterWith: _react2['default'].PropTypes.func,
+	  focusIndex: _react2['default'].PropTypes.number,
+	  getListLength: _react2['default'].PropTypes.func,
+	  iconCategory: _react2['default'].PropTypes.string,
+	  items: _react2['default'].PropTypes.array,
+	  label: _react2['default'].PropTypes.string,
+	  listLength: _react2['default'].PropTypes.number,
+	  searchTerm: _react2['default'].PropTypes.string,
+	  setFocus: _react2['default'].PropTypes.func,
+	  type: _react2['default'].PropTypes.string
+	};
+	var defaultProps = {
+	  emptyMessage: "No matches found.",
+	  errors: [],
+	  messages: []
+	};
 	
 	var Menu = (function (_React$Component) {
 	  _inherits(Menu, _React$Component);
@@ -11645,8 +11665,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(Menu, [{
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate(prevProps, prevState) {
-	      // make an array of the children of the list
-	      // but only count the actual items (ignore errors/messages)
+	      // make an array of the children of the list but only count the actual items (ignore errors/messages)
 	      var list = [].slice.call(_react2['default'].findDOMNode(this.refs.list).children).filter(function (child) {
 	        return child.className.indexOf("slds-lookup__item") > -1;
 	      }).length;
@@ -11755,27 +11774,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Menu;
 	})(_react2['default'].Component);
 	
-	Menu.propTypes = {
-	  searchTerm: _react2['default'].PropTypes.string,
-	  label: _react2['default'].PropTypes.string,
-	  type: _react2['default'].PropTypes.string,
-	  iconCategory: _react2['default'].PropTypes.string,
-	  focusIndex: _react2['default'].PropTypes.number,
-	  listLength: _react2['default'].PropTypes.number,
-	  items: _react2['default'].PropTypes.array,
-	  emptyMessage: _react2['default'].PropTypes.string,
-	  errors: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.string),
-	  filterWith: _react2['default'].PropTypes.func,
-	  getListLength: _react2['default'].PropTypes.func,
-	  setFocus: _react2['default'].PropTypes.func,
-	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp)
-	};
-	
-	Menu.defaultProps = {
-	  emptyMessage: "No matches found.",
-	  messages: [],
-	  errors: []
-	};
+	Menu.displayName = displayName;
+	Menu.propTypes = propTypes;
+	Menu.defaultProps = defaultProps;
 	
 	module.exports = Menu;
 
@@ -11852,6 +11853,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _lodashEscaperegexp2 = _interopRequireDefault(_lodashEscaperegexp);
 	
+	var displayName = 'SLDSLookup-Menu-Item';
+	var propTypes = {
+	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
+	  data: _react2['default'].PropTypes.object,
+	  handleItemFocus: _react2['default'].PropTypes.func,
+	  href: _react2['default'].PropTypes.string,
+	  iconCategory: _react2['default'].PropTypes.string,
+	  id: _react2['default'].PropTypes.string,
+	  index: _react2['default'].PropTypes.number,
+	  isActive: _react2['default'].PropTypes.bool,
+	  isDisabled: _react2['default'].PropTypes.bool,
+	  key: _react2['default'].PropTypes.string,
+	  listItemLabelRenderer: _react2['default'].PropTypes.func,
+	  onSelect: _react2['default'].PropTypes.func,
+	  searchTerm: _react2['default'].PropTypes.string,
+	  setFocus: _react2['default'].PropTypes.func,
+	  type: _react2['default'].PropTypes.string
+	};
+	var defaultProps = {};
+	
 	var Item = (function (_React$Component) {
 	  _inherits(Item, _React$Component);
 	
@@ -11918,7 +11939,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      return(
 	        //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
-	        _react2['default'].createElement('li', { className: className, role: 'presentation' }, _react2['default'].createElement('a', {
+	        _react2['default'].createElement('li', { className: className }, _react2['default'].createElement('a', {
 	          href: this.props.href,
 	          id: id,
 	          ref: id,
@@ -11934,25 +11955,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Item;
 	})(_react2['default'].Component);
 	
-	Item.propTypes = {
-	  key: _react2['default'].PropTypes.string,
-	  id: _react2['default'].PropTypes.string,
-	  href: _react2['default'].PropTypes.string,
-	  type: _react2['default'].PropTypes.string,
-	  iconCategory: _react2['default'].PropTypes.string,
-	  searchTerm: _react2['default'].PropTypes.string,
-	  index: _react2['default'].PropTypes.number,
-	  isActive: _react2['default'].PropTypes.bool,
-	  isDisabled: _react2['default'].PropTypes.bool,
-	  setFocus: _react2['default'].PropTypes.func,
-	  handleItemFocus: _react2['default'].PropTypes.func,
-	  onSelect: _react2['default'].PropTypes.func,
-	  data: _react2['default'].PropTypes.object,
-	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
-	  listItemLabelRenderer: _react2['default'].PropTypes.func
-	};
-	
-	Item.defaultProps = {};
+	Item.displayName = displayName;
+	Item.propTypes = propTypes;
+	Item.defaultProps = defaultProps;
 	
 	module.exports = Item;
 
@@ -12137,9 +12142,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var displayName = "LookupDefaultFooter";
 	var propTypes = {};
-	var defaultProps = {
-	  newItemLabel: "Add Item"
-	};
+	var defaultProps = { newItemLabel: "Add Item" };
 	
 	var DefaultFooter = (function (_React$Component) {
 	  _inherits(DefaultFooter, _React$Component);
@@ -12252,6 +12255,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(14);
 	
+	var displayName = "LookupDefaultHeader";
+	var propTypes = {};
+	var defaultProps = {};
+	
 	var DefaultHeader = (function (_React$Component) {
 	  _inherits(DefaultHeader, _React$Component);
 	
@@ -12292,9 +12299,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return DefaultHeader;
 	})(_react2['default'].Component);
 	
-	DefaultHeader.propTypes = {};
-	
-	DefaultHeader.defaultProps = {};
+	DefaultHeader.displayName = displayName;
+	DefaultHeader.propTypes = propTypes;
+	DefaultHeader.defaultProps = defaultProps;
 	
 	module.exports = DefaultHeader;
 
