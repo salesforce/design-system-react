@@ -77,7 +77,7 @@ const Positionable = {
 	// Based upon the positionable element's "x,y" document offset and options provided, this function returns the top and left offsets of the positionable element. It also returns the width of the target element.
 	_getElementStyles (element, constrainedToElement, target, newTargetAttachment) {
 		const offset = Lib.getElementOffset(target[0], constrainedToElement[0]);
-		const targetDistance = this.getProperty('positionedOffset');
+		const offsetAddedByOptions = this.getProperty('positionedOffset');
 		const targetHorizontalAttachment = this.getProperty('positionedTargetHorizontalAttachment');
 		const newStyle = {};
 		let targetHorizontalPosition = 0;
@@ -104,20 +104,20 @@ const Positionable = {
 
 		switch (currentTargetAttachment) {
 			case 'left':
-				newStyle.left = offset.left - (elementSize.width + targetDistance);
+				newStyle.left = offset.left - (elementSize.width + offsetAddedByOptions);
 				newStyle.top = offset.top - ((elementSize.height / 2) - (targetSize.height / 2));
 				break;
 			case 'top':
 				newStyle.left = offset.left - targetHorizontalPosition;
-				newStyle.top = offset.top - (elementSize.height + targetDistance);
+				newStyle.top = offset.top - (elementSize.height + offsetAddedByOptions);
 				break;
 			case 'bottom':
 				newStyle.left = offset.left - targetHorizontalPosition;
-				newStyle.top = offset.top + targetSize.height + targetDistance;
+				newStyle.top = offset.top + targetSize.height + offsetAddedByOptions;
 				break;
 			case 'right':
 			default:
-				newStyle.left = offset.left + targetSize.width + targetDistance;
+				newStyle.left = offset.left + targetSize.width + offsetAddedByOptions;
 				newStyle.top = offset.top - ((elementSize.height / 2) - (targetSize.height / 2));
 				break;
 		}
