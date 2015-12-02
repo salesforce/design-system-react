@@ -41,12 +41,14 @@ const customStyles = {
 module.exports = React.createClass( {
 
   propTypes: {
+    align: React.PropTypes.oneOf(['top', 'center']),
     size: React.PropTypes.oneOf(['medium', 'large']),
     prompt: React.PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info'])
   },
 
   getDefaultProps () {
     return {
+      align:'center',
       title:'',
       tagline:'',
       isOpen:false,
@@ -124,6 +126,7 @@ module.exports = React.createClass( {
       'slds-modal--large':this.props.size === 'large',
       'slds-modal--prompt':this.isPrompt()
     };
+    const modalStyle = this.props.align === "top"?{ "justify-content": "flex-start" }:null;
 
     return <div
             className={cx(modalClass)}
@@ -134,6 +137,7 @@ module.exports = React.createClass( {
             role='dialog'
             className='slds-modal__container'
             onClick={this.handleModalClick}
+            style={modalStyle}
             >
 
             {this.headerComponent()}
