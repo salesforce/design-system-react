@@ -25,7 +25,7 @@ let Popover = function Popover () {
 export const PopoverMethods = {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
-		this.elements.positionedElement = Lib.wrapElement(this.element);
+		this.elements.positionableElement = Lib.wrapElement(this.element);
 	},
 	
 	_onRendered () {
@@ -45,7 +45,7 @@ export const PopoverMethods = {
 
 		this.elements.triggerElement = Lib.wrapElement(triggerElement || this.elements.wrapper);
 		this.elements.positionableContainer = Lib.wrapElement(container || this.elements.wrapper);
-		this.elements.align = Lib.wrapElement(align || this.elements.triggerElement);
+		this.elements.positionableTarget = Lib.wrapElement(align || this.elements.triggerElement);
 	},
 
 	_setTrigger () {

@@ -198,16 +198,16 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_renderModalMenu () {
 		const menu = this._renderMenu();
 		// positionedElement is a "wrapped element"
-		ReactDOM.render(menu, this.elements.positionedElement.element);
+		ReactDOM.render(menu, this.elements.positionableElement.element);
 
 		this.elements.positionableContainer = Lib.wrapElement(document.querySelector('body'));
-		this.elements.align = Lib.wrapElement(this.elements.input);
+		this.elements.positionableTarget = Lib.wrapElement(this.elements.input);
 		this._updatePosition();
 
 		if (!this.state.isOpen) {
-			this.elements.positionedElement.addClass('slds-hidden');
+			this.elements.positionableElement.addClass('slds-hidden');
 		} else {
-			this.elements.positionedElement.removeClass('slds-hidden');
+			this.elements.positionableElement.removeClass('slds-hidden');
 		}
 	},
 

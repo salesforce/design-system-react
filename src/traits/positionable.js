@@ -39,7 +39,7 @@ const Positionable = {
 	_attachPositionedElementToBody () {
 		const element = document.createElement('div');
 		document.querySelector('body').appendChild(element);
-		this.elements.positionedElement = Lib.wrapElement(element);
+		this.elements.positionableElement = Lib.wrapElement(element);
 	},
 
 	// `addPositionableEventListeners` should be added at the beginning of the control's lifecycle in order to reposition based on browser events. The `stateKey` is an key into the state object to determine if the event handle should run the calculations to reposition the positionable element.
@@ -134,7 +134,7 @@ const Positionable = {
 	// Apply latest position (due to render, scroll, or resize).
 	_setElementStyles (style) {
 		if (style) {
-			const element = this.elements.positionedElement[0];
+			const element = this.elements.positionableElement[0];
 			let transformation = 'translateX(' + style.left + 'px) translateY(' + style.top + 'px)';
 			
 			element.style.top = 0;
@@ -161,14 +161,14 @@ const Positionable = {
 	_updatePosition () {
 		this._setElementStyles(
 			this._getElementStyles(
-				this.elements.positionedElement,
+				this.elements.positionableElement,
 				this.elements.positionableContainer,
-				this.elements.align
+				this.elements.positionableTarget
 				)
 			);
 		
 		if (this.getProperty('constrainPositionedToWindow')) {
-			const isOffscreen = this.elements.positionedElement.isOffscreen(true);
+			const isOffscreen = this.elements.positionableElement.isOffscreen(true);
 			let targetAttachment;
 
 			if (isOffscreen === 'top') {
@@ -179,9 +179,9 @@ const Positionable = {
 
 			this._setElementStyles(
 				this._getElementStyles(
-					this.elements.positionedElement,
+					this.elements.positionableElement,
 					this.elements.positionableContainer,
-					this.elements.align,
+					this.elements.positionableTarget,
 					targetAttachment
 				)
 			);
