@@ -95,7 +95,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 			isHidden: !this.props.isOpen
 		});
 		
-		this.elements.positionedElement = this._attachPositionedElementToDOM();
+		// `_attachPositionedElementToBody` creates an absolutely positionable container for the dropdown menu from within the [positionable trait]((../../traits/Positionable.html)).
+		this._attachPositionedElementToBody();
 	},
 
 	componentWillReceiveProps (nextProps) {
@@ -118,15 +119,13 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 	componentDidMount () {
 		if (this.props.modalMenu) {
-			window.addEventListener('resize', this._handleResize);
-			window.addEventListener('scroll', this._handleScroll);
+			this.addPositionableEventListeners('isOpen');
 		}
 	},
 
 	componentWillUnmount () {
 		if (this.props.modalMenu) {
-			window.removeEventListener('resize', this._handleResize);
-			window.removeEventListener('scroll', this._handleScroll);
+			this.removePositionableEventListeners('isOpen');
 		}
 	},
 
@@ -259,20 +258,6 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this._deselectItem(item);
 		} else {
 			this.deselectAll();
-		}
-	},
-
-	// `_handleResize` is active when the dropdown menu's parent is `body` and is absolutely positioned in order to visually attach the dropdown to the input.
-	_handleResize () {
-		if (this.state.isOpen) {
-			this._updatePosition();
-		}
-	},
-
-	// `_handleScroll` is active when the dropdown menu's parent is `body` and is absolutely positioned in order to visually attach the dropdown to the input.
-	_handleScroll () {
-		if (this.state.isOpen) {
-			this._updatePosition();
 		}
 	},
 

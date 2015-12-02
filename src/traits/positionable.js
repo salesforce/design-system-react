@@ -36,10 +36,42 @@ const Positionable = {
 		top: 'top'
 	},
 
-	_attachPositionedElementToDOM () {
+	_attachPositionedElementToBody () {
 		const element = document.createElement('div');
 		document.querySelector('body').appendChild(element);
-		return Lib.wrapElement(element);
+		this.elements.positionedElement = Lib.wrapElement(element);
+	},
+
+	// `addPositionableEventListeners` should be added at the beginning of the control's lifecycle in order to reposition based on browser events. The `stateKey` is an key into the state object to determine if the event handle should run the calculations to reposition the positionable element.
+	addPositionableEventListeners (stateKey) {
+		window.addEventListener('resize', () => {
+			this._handleResizeForPositionable(stateKey);
+		});
+		window.addEventListener('scroll', () => {
+			this._handleScrollForPositionable(stateKey);
+		});
+	},
+
+	// `removePositionableEventListeners` should be removed at the end of the control's lifecycle.
+	removePositionableEventListeners (stateKey) {
+		window.removeEventListener('resize', () => {
+			this._handleResizeForPositionable(stateKey);
+		});
+		window.removeEventListener('scroll', () => {
+			this._handleScrollForPositionable(stateKey);
+		});
+	},
+
+	_handleResizeForPositionable (stateKey) {
+		if (this.getState(stateKey)) {
+			this._updatePosition();
+		}
+	},
+
+	_handleScrollForPositionable (stateKey) {
+		if (this.getState(stateKey)) {
+			this._updatePosition();
+		}
 	},
 
 	// Based upon the positionable element's "x,y" document offset and options provided, this function returns the top and left offsets of the positionable element. It also returns the width of the target element.
