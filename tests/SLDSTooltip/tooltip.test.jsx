@@ -29,6 +29,7 @@ describe('SLDSTooltip: ',  function(){
       let tooltip = generateTooltip(<SLDSTooltip align='right' content={popoverText} openOn='click'>Click Me</SLDSTooltip>);
       TestUtils.Simulate.click(tooltip);
       let reactId = tooltip.getElementsByTagName('noscript')[0].getAttribute("data-reactid");
+      reactId.slice(3);
       expect(reactId).to.equal('.v.$right middle');
     });
   });
