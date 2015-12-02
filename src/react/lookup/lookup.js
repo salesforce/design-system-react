@@ -200,7 +200,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		// positionedElement is a "wrapped element"
 		ReactDOM.render(menu, this.elements.positionedElement.element);
 
-		this.elements.container = Lib.wrapElement(document.querySelector('body'));
+		this.elements.positionableContainer = Lib.wrapElement(document.querySelector('body'));
 		this.elements.align = Lib.wrapElement(this.elements.input);
 		this._updatePosition();
 

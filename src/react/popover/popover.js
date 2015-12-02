@@ -25,8 +25,8 @@ export const PopoverMethods = {
 
 	_setElements () {
 		this.elements.positionedElement = Lib.wrapElement(this.refs.popover);
-		this.elements.container = Lib.wrapElement(this.props.container || this.element);
-		this.elements.align = Lib.wrapElement(this.props.align || this.elements.container);
+		this.elements.positionableContainer = Lib.wrapElement(this.props.container || this.element);
+		this.elements.align = Lib.wrapElement(this.props.align || this.elements.positionableContainer);
 	},
 	
 	componentWillMount: function () {

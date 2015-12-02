@@ -162,7 +162,7 @@ const Positionable = {
 		this._setElementStyles(
 			this._getElementStyles(
 				this.elements.positionedElement,
-				this.elements.container,
+				this.elements.positionableContainer,
 				this.elements.align
 				)
 			);
@@ -180,7 +180,7 @@ const Positionable = {
 			this._setElementStyles(
 				this._getElementStyles(
 					this.elements.positionedElement,
-					this.elements.container,
+					this.elements.positionableContainer,
 					this.elements.align,
 					targetAttachment
 				)

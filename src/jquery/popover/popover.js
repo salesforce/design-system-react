@@ -33,7 +33,7 @@ export const PopoverMethods = {
 		this._setTrigger();
 		
 		// TODO: This is probably not the best way to do this or the best place for it to be
-		this.appendTo(this.elements.container);
+		this.appendTo(this.elements.positionableContainer);
 		
 		this._updatePosition();
 	},
@@ -44,7 +44,7 @@ export const PopoverMethods = {
 		const align = this.getProperty('align');
 
 		this.elements.triggerElement = Lib.wrapElement(triggerElement || this.elements.wrapper);
-		this.elements.container = Lib.wrapElement(container || this.elements.wrapper);
+		this.elements.positionableContainer = Lib.wrapElement(container || this.elements.wrapper);
 		this.elements.align = Lib.wrapElement(align || this.elements.triggerElement);
 	},
 
