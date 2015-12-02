@@ -26,7 +26,7 @@ export default function () {
 						secondaryButtonText={'Cancel'}
 						headerTitle={'React Modal'}
 						headerTagline={<span>look what I can <a href="https://c2.staticflickr.com/4/3122/2850356021_eb4d1d9c4c.jpg">do</a></span>}>
-						<p>This is a test modal!</p>
+						<p>The following are controls using the <em>modalMenu</em> functionality which enables "auto-flip" and dropdown menus to be "in front of" modals.</p>
 						<Lookup
 							label="Accounts"
 							collection={this.state.collection}
@@ -34,6 +34,7 @@ export default function () {
 							onChanged={this._handleModelChange}
 							modalMenu/>
 					</Modal>
+					
 					<button className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Toggle</button>
 				</div>
 			);
