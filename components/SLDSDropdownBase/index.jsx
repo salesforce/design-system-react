@@ -18,9 +18,24 @@ import omit from "lodash.omit";
 
 const displayName = "SLDSDropdown";
 const propTypes = {
+  className: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  horizontalAlign: React.PropTypes.string,
+  hoverCloseDelay: React.PropTypes.number,
+  initialFocus: React.PropTypes.bool,
+  label: React.PropTypes.string,
+  listClassName: React.PropTypes.string,
+  listItemRenderer: React.PropTypes.func,
+  modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func.isRequired,
   onUpdateHighlighted: React.PropTypes.func,
+  openOn: React.PropTypes.string,
+  options: React.PropTypes.array,
+  placeholder: React.PropTypes.string,
+  theme: React.PropTypes.string,
+  value: React.PropTypes.string,
+  variant: React.PropTypes.string,
 };
 const defaultProps = {
   className: "",
