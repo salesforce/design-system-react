@@ -11113,11 +11113,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
-	var _SLDSIcons = __webpack_require__(22);
-	
 	var _SLDSButton = __webpack_require__(36);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
+	
+	var _SLDSIcons = __webpack_require__(22);
 	
 	var _utils = __webpack_require__(14);
 	
@@ -11137,9 +11137,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
+	var displayName = "SLDSLookup";
+	var propTypes = {
+	  boldRegex: _react2["default"].PropTypes.instanceOf(RegExp),
+	  modal: _react2["default"].PropTypes.bool,
+	  emptyMessage: _react2["default"].PropTypes.string,
+	  errors: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
+	  disabled: _react2["default"].PropTypes.bool,
+	  filterWith: _react2["default"].PropTypes.func,
+	  hasError: _react2["default"].PropTypes.bool,
+	  iconCategory: _react2["default"].PropTypes.string,
+	  iconName: _react2["default"].PropTypes.string,
+	  items: _react2["default"].PropTypes.array,
+	  label: _react2["default"].PropTypes.string,
+	  listItemLabelRenderer: _react2["default"].PropTypes.func,
+	  messages: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
+	  onBlur: _react2["default"].PropTypes.func,
+	  onChange: _react2["default"].PropTypes.func,
+	  onItemSelect: _react2["default"].PropTypes.func,
+	  onItemUnselect: _react2["default"].PropTypes.func,
+	  type: _react2["default"].PropTypes.string
+	};
+	
 	var defaultFilter = function defaultFilter(term, item) {
 	  if (!term) return true;
 	  return item.label.match(new RegExp((0, _lodashEscaperegexp2["default"])(term), "ig"));
+	};
+	
+	var defaultProps = {
+	  disabled: false,
+	  filterWith: defaultFilter,
+	  modal: false
 	};
 	
 	var SLDSLookup = (function (_React$Component) {
@@ -11149,17 +11177,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, SLDSLookup);
 	
 	    _get(Object.getPrototypeOf(SLDSLookup.prototype), "constructor", this).call(this, props);
-	
-	    //Dynamically assign ids to list items to reference for focusing and selecting items
-	
 	    this.state = {
-	      searchTerm: "",
-	      isOpen: false,
 	      currentFocus: null,
 	      focusIndex: null,
-	      selectedIndex: null,
+	      isOpen: false,
+	      items: [],
 	      listLength: this.props.items.length,
-	      items: []
+	      selectedIndex: null,
+	      searchTerm: ""
 	    };
 	  }
 	
@@ -11206,8 +11231,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    //=================================================
 	    // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
-	    // Need to keep track of filtered list length to be able to increment/decrement the focus index so it"s contained to the number of available list items.
-	    // Adding/subtracting 1 from focusIndex to account for fixed action items (searchRecords and addNewItem buttons)
+	    // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
 	  }, {
 	    key: "increaseIndex",
 	    value: function increaseIndex() {
@@ -11463,7 +11487,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "renderSelectedItem",
 	    value: function renderSelectedItem() {
 	      var selectedItem = this.props.items[this.state.selectedIndex].label;
-	      return _react2["default"].createElement("span", { tabIndex: "0", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: "slds-m-right--x-small " + this.props.iconClasses }), selectedItem), _react2["default"].createElement(_SLDSButton2["default"], {
+	      return _react2["default"].createElement("a", { href: "javascript:void(0)", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: "slds-icon slds-icon-standard-account slds-pill__icon " + this.props.iconClasses }), _react2["default"].createElement("span", { className: "slds-pill__label" }, selectedItem)), _react2["default"].createElement(_SLDSButton2["default"], {
 	        assistiveText: "Press delete to remove",
 	        tabIndex: "-1",
 	        variant: "icon",
@@ -11471,30 +11495,43 @@ return /******/ (function(modules) { // webpackBootstrap
 	        iconSize: "medium",
 	        onClick: this.handleDeleteSelected.bind(this),
 	        ref: "clearSelectedItemButton",
-	        className: "slds-m-left--x-small "
+	        className: "slds-pill__remove slds-button--icon-bare"
 	      }));
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var inputClasses = this.state.selectedIndex === null ? "slds-input" : "slds-input slds-hide";
-	      var componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside" : "slds-lookup ignore-react-onclickoutside slds-has-selection";
+	      var inputClasses = {
+	        "slds-input": true,
+	        "slds-show": this.state.selectedIndex === null,
+	        "slds-hide": this.state.selectedIndex !== null
+	      };
+	
+	      var componentClasses = {
+	        "slds-lookup": true,
+	        "slds-has-selection": this.state.selectedIndex !== null
+	      };
 	
 	      var inputContainerClasses = {
-	        "slds-lookup__control": true,
+	        "slds-form-element__control": true,
 	        "slds-input-has-icon": true,
 	        "slds-input-has-icon--right": true,
-	        "slds-input": this.state.selectedIndex !== null,
 	        "slds-has-error": this.props.hasError
+	      };
+	
+	      var pillContainerClasses = {
+	        "slds-pill__container": true,
+	        "slds-show": this.state.selectedIndex !== null,
+	        "slds-hide": this.state.selectedIndex === null
 	      };
 	
 	      var inputContainerStyle = this.state.selectedIndex === null ? {} : { padding: "5px" };
 	      var inputLabel = this.props.label ? _react2["default"].createElement("label", { className: "slds-form-element__label", htmlFor: this.props.type + "Lookup" }, this.props.label) : null;
 	
-	      return _react2["default"].createElement("div", { className: componentClasses, "data-select": "multi", "data-scope": "single", "data-typeahead": "true" }, _react2["default"].createElement("section", { className: "slds-form-element" }, inputLabel, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(inputContainerClasses), style: inputContainerStyle }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null, _react2["default"].createElement(_SLDSIcons.InputIcon, { name: "search" }), _react2["default"].createElement("input", {
+	      return _react2["default"].createElement("div", { className: (0, _classnames2["default"])(componentClasses), "data-select": "single", "data-scope": "single", "data-typeahead": "true" }, _react2["default"].createElement("section", { className: "slds-form-element" }, inputLabel, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(inputContainerClasses), style: inputContainerStyle }, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(pillContainerClasses) }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null), _react2["default"].createElement(_SLDSIcons.InputIcon, { name: "search" }), _react2["default"].createElement("input", {
 	        id: this.props.type + "Lookup",
 	        ref: this.props.type + "Lookup",
-	        className: inputClasses,
+	        className: (0, _classnames2["default"])(inputClasses),
 	        type: "text",
 	        "aria-haspopup": "true",
 	        "aria-autocomplete": "list",
@@ -11514,32 +11551,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return SLDSLookup;
 	})(_react2["default"].Component);
 	
-	SLDSLookup.propTypes = {
-	  items: _react2["default"].PropTypes.array,
-	  emptyMessage: _react2["default"].PropTypes.string,
-	  messages: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
-	  errors: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
-	  label: _react2["default"].PropTypes.string,
-	  type: _react2["default"].PropTypes.string,
-	  iconCategory: _react2["default"].PropTypes.string,
-	  iconName: _react2["default"].PropTypes.string,
-	  filterWith: _react2["default"].PropTypes.func,
-	  onItemSelect: _react2["default"].PropTypes.func,
-	  onItemUnselect: _react2["default"].PropTypes.func,
-	  onChange: _react2["default"].PropTypes.func,
-	  onBlur: _react2["default"].PropTypes.func,
-	  modal: _react2["default"].PropTypes.bool,
-	  disabled: _react2["default"].PropTypes.bool,
-	  hasError: _react2["default"].PropTypes.bool,
-	  boldRegex: _react2["default"].PropTypes.instanceOf(RegExp),
-	  listItemLabelRenderer: _react2["default"].PropTypes.func
-	};
-	
-	SLDSLookup.defaultProps = {
-	  filterWith: defaultFilter,
-	  modal: false,
-	  disabled: false
-	};
+	SLDSLookup.displayName = displayName;
+	SLDSLookup.propTypes = propTypes;
+	SLDSLookup.defaultProps = defaultProps;
 	
 	module.exports = SLDSLookup;
 	module.exports.DefaultHeader = _MenuDefaultHeader2["default"];
@@ -12121,6 +12135,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(14);
 	
+	var displayName = "LookupDefaultFooter";
+	var propTypes = {};
+	var defaultProps = {
+	  newItemLabel: "Add Item"
+	};
+	
 	var DefaultFooter = (function (_React$Component) {
 	  _inherits(DefaultFooter, _React$Component);
 	
@@ -12150,7 +12170,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var className = 'slds-button';
 	      if (this.props.isActive) className += ' slds-theme--shade';
-	
 	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onClick: this.handleClick.bind(this), onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement('button', { id: 'newItem', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'add', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.newItemLabel));
 	    }
 	  }]);
@@ -12158,9 +12177,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return DefaultFooter;
 	})(_react2['default'].Component);
 	
-	DefaultFooter.propTypes = {};
-	
-	DefaultFooter.defaultProps = {};
+	DefaultFooter.displayName = displayName;
+	DefaultFooter.propTypes = propTypes;
+	DefaultFooter.defaultProps = defaultProps;
 	
 	module.exports = DefaultFooter;
 
