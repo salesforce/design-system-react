@@ -36,7 +36,7 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 		trigger: 'click',
 		target: null, // The element who's events will trigger the popover
 		container: null, // The element the popover will be contained within
-		align: null // The element the popover will be aligned with
+		alignmentTarget: null // The element the popover will be aligned with
 	},
 	
 	_defaultState: {

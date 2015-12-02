@@ -16,7 +16,7 @@ export const PopoverMethods = {
 	displayName: CONTROL,
 
 	propTypes: {
-		align: mountable,
+		alignmentTarget: mountable,
 		autoFlip: React.PropTypes.bool,
 		container: mountable,
 		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions)),
@@ -26,7 +26,7 @@ export const PopoverMethods = {
 	_setElements () {
 		this.elements.positionableElement = Lib.wrapElement(this.refs.popover);
 		this.elements.positionableContainer = Lib.wrapElement(this.props.container || this.element);
-		this.elements.positionableTarget = Lib.wrapElement(this.props.align || this.elements.positionableContainer);
+		this.elements.positionableTarget = Lib.wrapElement(this.props.alignmentTarget || this.elements.positionableContainer);
 	},
 	
 	componentWillMount: function () {

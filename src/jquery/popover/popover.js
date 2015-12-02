@@ -29,7 +29,7 @@ export const PopoverMethods = {
 	},
 	
 	_onRendered () {
-		this._setElementOptions();
+		this._setElements();
 		this._setTrigger();
 		
 		// TODO: This is probably not the best way to do this or the best place for it to be
@@ -38,7 +38,7 @@ export const PopoverMethods = {
 		this._updatePosition();
 	},
 
-	_setElementOptions () {
+	_setElements () {
 		const triggerElement = this.getProperty('target');
 		const container = this.getProperty('container');
 		const align = this.getProperty('align');

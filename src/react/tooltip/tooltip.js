@@ -19,7 +19,7 @@ let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
 	displayName: CONTROL,
 
 	propTypes: {
-		align: mountable,
+		alignmentTarget: mountable,
 		container: mountable,
 		isOpen: React.PropTypes.bool,
 		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
