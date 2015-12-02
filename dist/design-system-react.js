@@ -12603,12 +12603,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  displayName: 'exports',
 	
 	  propTypes: {
+	    align: _react2['default'].PropTypes.oneOf(['top', 'center']),
 	    size: _react2['default'].PropTypes.oneOf(['medium', 'large']),
 	    prompt: _react2['default'].PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info'])
 	  },
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
+	      align: 'center',
 	      title: '',
 	      tagline: '',
 	      isOpen: false,
@@ -12687,6 +12689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      'slds-modal--large': this.props.size === 'large',
 	      'slds-modal--prompt': this.isPrompt()
 	    };
+	    var modalStyle = this.props.align === "top" ? { "justify-content": "flex-start" } : null;
 	
 	    return _react2['default'].createElement('div', {
 	      className: (0, _classnames2['default'])(modalClass),
@@ -12695,7 +12698,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, _react2['default'].createElement('div', {
 	      role: 'dialog',
 	      className: 'slds-modal__container',
-	      onClick: this.handleModalClick
+	      onClick: this.handleModalClick,
+	      style: modalStyle
 	    }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), this.footerComponent()));
 	  },
 	
