@@ -13,9 +13,7 @@ import { EventUtil } from '../../../utils';
 
 const displayName = "LookupDefaultFooter";
 const propTypes = {};
-const defaultProps = {
-  newItemLabel: "Add Item"
-};
+const defaultProps = { newItemLabel: "Add Item" };
 
 class DefaultFooter extends React.Component {
   constructor(props) {

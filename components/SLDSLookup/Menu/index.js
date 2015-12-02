@@ -7,10 +7,30 @@
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
    */
 
-import React, { Component } from 'react';
+import React from 'react';
 import Item from './Item';
-import {Icon} from "../../SLDSIcons";
 
+const displayName = 'SLDSLookup-Menu';
+const propTypes = {
+  boldRegex: React.PropTypes.instanceOf(RegExp),
+  emptyMessage: React.PropTypes.string,
+  errors: React.PropTypes.arrayOf(React.PropTypes.string),
+  filterWith: React.PropTypes.func,
+  focusIndex: React.PropTypes.number,
+  getListLength: React.PropTypes.func,
+  iconCategory: React.PropTypes.string,
+  items: React.PropTypes.array,
+  label: React.PropTypes.string,
+  listLength: React.PropTypes.number,
+  searchTerm: React.PropTypes.string,
+  setFocus: React.PropTypes.func,
+  type: React.PropTypes.string,
+};
+const defaultProps = {
+  emptyMessage: "No matches found.",
+  errors: [],
+  messages: [],
+};
 class Menu extends React.Component {
   constructor(props){
     super(props);
@@ -19,8 +39,7 @@ class Menu extends React.Component {
 
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
   componentDidUpdate(prevProps, prevState){
-    // make an array of the children of the list
-    // but only count the actual items (ignore errors/messages)
+    // make an array of the children of the list but only count the actual items (ignore errors/messages)
     let list = [].slice.call(React.findDOMNode(this.refs.list).children)
       .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
     this.props.getListLength(list);
@@ -138,26 +157,8 @@ class Menu extends React.Component {
   }
 }
 
-Menu.propTypes = {
-  searchTerm: React.PropTypes.string,
-  label: React.PropTypes.string,
-  type: React.PropTypes.string,
-  iconCategory: React.PropTypes.string,
-  focusIndex: React.PropTypes.number,
-  listLength: React.PropTypes.number,
-  items: React.PropTypes.array,
-  emptyMessage: React.PropTypes.string,
-  errors: React.PropTypes.arrayOf(React.PropTypes.string),
-  filterWith: React.PropTypes.func,
-  getListLength: React.PropTypes.func,
-  setFocus: React.PropTypes.func,
-  boldRegex: React.PropTypes.instanceOf(RegExp),
-};
-
-Menu.defaultProps = {
-  emptyMessage: "No matches found.",
-  messages: [],
-  errors: [],
-};
+Menu.displayName = displayName;
+Menu.propTypes = propTypes;
+Menu.defaultProps = defaultProps;
 
 module.exports = Menu;
