@@ -186,7 +186,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			/* TODO: Remove inline style */
 			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox" style={style}>
 				{header}
-				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this.multiselectable._selectItem.bind(this)} strings={this.state.strings} ref={this._setMenuRef} />
+				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this._handleSelect} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
 			</div>
 		);
@@ -251,13 +251,17 @@ let Lookup = Lib.merge({}, LookupCore, {
 		
 		this.open();
 	},
+	
+	_handleSelect (item) {
+		this.multiselectable.selectItem.call(this, item._item, this.props.selection);
+	},
 
 	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
 	_handleDeselect (item) {
 		if (item) {
-			this.multiselectable._deselectItem.call(this, item);
+			this.multiselectable.deselectItem.call(this, item._item, this.props.selection);
 		} else {
-			this.multiselectable.deselectAll.call(this);
+			this.multiselectable.deselectAll.call(this, this.props.selection);
 		}
 	},
 

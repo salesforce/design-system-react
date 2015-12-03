@@ -67,7 +67,7 @@ let Tree = Lib.merge({}, TreeCore, {
 
 	_handleItemClick (item) {
 		if (item.getType() !== 'folder' || this.props.folderSelect) {
-			this.multiselectable.toggleItem.call(this, item._item);
+			this.multiselectable.toggleItem.call(this, item._item, this.props.selection);
 		} else {
 			this._toggleFolder(item);
 		}
