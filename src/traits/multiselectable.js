@@ -26,14 +26,14 @@ const multiselectable = {
 	},
 
 	// Take a set of items (most likely a new selection) and return only those which are not already part of the selection.
-	_getNotSelectedItems (items, selection) {
+	getNotSelectedItems (items, selection) {
 		return items.filter((item) => {
 			return !multiselectable.isItemSelected(item, selection);
 		});
 	},
 	
 	// Take a set of items (most likely a new selection) and return only those which are  already part of the selection.
-	_getPreviouslySelectedItems (items, selection) {
+	getPreviouslySelectedItems (items, selection) {
 		return items.filter((item) => {
 			return multiselectable.isItemSelected(item, selection);
 		});
@@ -42,7 +42,7 @@ const multiselectable = {
 	// Take a set of items and select any that aren't yet selected.
 	selectItems (items, currentSelection, selectIndex) {
 		const selection = multiselectable.getWrappedImmutableData.call(this, currentSelection);
-		const itemsToSelect = multiselectable._getNotSelectedItems(this._getDataAdapter(items), selection);
+		const itemsToSelect = multiselectable.getNotSelectedItems(this._getDataAdapter(items), selection);
 
 		// The main selection logic happens in this method. Controls may optionally declare a `_canSelect` method and if they do this will be passed to them as a callback. If they don't it will executed immediately.
 		const _select = () => {
@@ -88,7 +88,7 @@ const multiselectable = {
 	// Deselection works essentially the same way as selection.
 	deselectItems (items, currentSelection) {
 		const selection = multiselectable.getWrappedImmutableData.call(this, currentSelection);
-		const itemsToDeselect = multiselectable._getPreviouslySelectedItems(this._getDataAdapter(items), selection);
+		const itemsToDeselect = multiselectable.getPreviouslySelectedItems(this._getDataAdapter(items), selection);
 		
 		const _deselect = () => {
 			selection.remove(itemsToDeselect);
