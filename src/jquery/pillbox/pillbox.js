@@ -62,7 +62,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		const item = $(e.currentTarget).parent().data('item');
 
 		if (!this.getProperty('disabled')) {
-			this.multiselectable.deselectItem.call(this, item);
+			this.multiselectable.deselectItem.call(this, item, this.getProperty('selection'));
 		}
 	},
 
