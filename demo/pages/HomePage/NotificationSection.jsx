@@ -23,7 +23,7 @@ module.exports = React.createClass( {
   getInitialState () {
     return {
       modalIsOpen: false,
-      toastsAreOpen: true,
+      alertIsOpen: false,
     };
   },
 
@@ -77,6 +77,10 @@ module.exports = React.createClass( {
     console.log('====> Dismiss Toast Message');
   },
 
+  toggleAlert(){
+    this.setState({ alertIsOpen: !this.state.alertIsOpen });
+  },
+
   render() {
     let successMsg = ['New contact added ', <a href="#" key="0123">Sara Smith</a>];
     let errorMsg = 'There was a problem updating the record.';
@@ -104,27 +108,16 @@ module.exports = React.createClass( {
         <div className='slds-p-vertical--medium'>
           <div className="slds-p-vertical--small">
             <h4 className="slds-text-heading--small ">Alerts</h4>
-            <div className="demo-only">
-              <div className="slds-p-bottom--small">
-                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} onDismiss={this.dismissToast} />}
-              </div>
-              <div className="slds-p-bottom--small">
-                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} duration={5000} onDismiss={this.dismissToast} />}
-              </div>
-              <div className="slds-p-bottom--small">
-                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='error' icon='warning' texture={true} content={errorMsg} onDismiss={this.dismissToast} />}
-              </div>
-              <div className="slds-p-bottom--small">
-                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' icon='user' content={offlineMsg} dismissible={false} onDismiss={this.dismissToast} />}
-              </div>
-            </div>
+            <SLDSButton variant="neutral" label="Show Alert" onClick={this.toggleAlert} />
+            <SLDSNotification variant='alert' theme='success' icon='notification' isOpen={this.state.alertIsOpen} texture={true} content={successMsg} onDismiss={this.dismissToast} />
           </div>
 
           <div className="slds-p-vertical--small">
             <h4 className="slds-text-heading--small ">Toasts</h4>
             <div className="demo-only" style={toastStyle}>
               Base
-              {this.state.modalIsOpen ? null: <SLDSNotification variant='toast' theme='success' icon='notification' content={successMsg} onDismiss={this.dismissToast} />}
+              {this.state.modalIsOpen ? null:
+                <SLDSNotification variant='toast' theme='success' icon='notification' content={successMsg} onDismiss={this.dismissToast}/>}
             </div>
 
             <p>Modal Toasts</p>

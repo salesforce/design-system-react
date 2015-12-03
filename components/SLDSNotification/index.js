@@ -21,6 +21,7 @@ const propTypes = {
   dismissible: React.PropTypes.bool,
   duration: React.PropTypes.number,
   icon: React.PropTypes.string,
+  isOpen: React.PropTypes.bool,
   onDismiss: React.PropTypes.func,
   texture: React.PropTypes.bool,
   theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
@@ -34,7 +35,7 @@ const defaultProps = {
 class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
-    this.state = { isOpen: true };
+    this.state = { isOpen: this.props.isOpen };
   }
 
   componentDidMount() {
@@ -43,6 +44,12 @@ class SLDSNotification extends React.Component {
       setTimeout(function() {
         that.setState({ isOpen: false});
       }, that.props.duration);
+    }
+  }
+
+  componentWillReceiveProps(nextProps){
+    if(this.props.isOpen !== nextProps.isOpen){
+      this.setState({ isOpen: nextProps.isOpen });
     }
   }
 
