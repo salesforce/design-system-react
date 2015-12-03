@@ -65,12 +65,12 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		const selDate = this.getProperty('dateSelected');
 		if (selDate) {
 			if (this.getProperty('multiSelect')) {
-				this.selectItems([
+				this.selectDates([
 					{ date: this._roundDate(selDate[0]) },
 					{ date: this._roundDate(selDate[1]) }
 				]);
 			} else {
-				this.selectItem({date: this._roundDate(selDate)});
+				this.selectDate({date: this._roundDate(selDate)});
 			}
 		}
 	},
@@ -241,12 +241,12 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		if (validatedDate) {
 			if (multiselect) {
 				this.deselectAll();
-				this.selectItems([
+				this.selectDates([
 					{ date: validatedDate[0] },
 					{ date: validatedDate[1] }
 				]);
 			} else {
-				this.selectItem({ date: validatedDate });
+				this.selectDate({ date: validatedDate });
 			}
 		}
 
@@ -273,11 +273,19 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 					insertIndex = 0;
 				}
 
-				this.selectItem({ date: dayData.date }, insertIndex);
+				this.selectDate({ date: dayData.date }, insertIndex);
 			} else {
-				this.selectItem({ date: dayData.date });
+				this.selectDate({ date: dayData.date });
 			}
 		}
+	},
+	
+	selectDate (item, index) {
+		this.multiselectable.selectItem.call(this, item, index);
+	},
+	
+	selectDates (items, index) {
+		this.multiselectable.selectItems.call(this, items, index);
 	},
 
 	_onSelected () {

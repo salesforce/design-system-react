@@ -59,7 +59,7 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 	// TODO: Clean up all this logic. In particular, we shuld probably be setting every date in the selection, not just the first and last dates
 	_getCalendarData: function (baseDate) {
 		const date = this.getState('dateViewing') || baseDate;
-		const selectedDates = this._getSelectedItems();
+		const selectedDates = this._getDataAdapter(this.getProperty('selection'));
 		const isRangeSelect = this.getProperty('multiSelect') && selectedDates.length() > 1;
 		const dateConstraints = this.getProperty('dateRange');
 		const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay(); // Index of first day base 0 sunday
@@ -172,7 +172,7 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 	},
 
 	_formatDate: function () {
-		const selectedDates = this._getSelectedItems();
+		const selectedDates = this._getDataAdapter(this.getProperty('selection'));
 		let formattedDate;
 
 		if (selectedDates.length()) {

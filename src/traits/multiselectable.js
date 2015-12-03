@@ -8,20 +8,10 @@
 // Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
-const Multiselectable = {
-	// Because traits are mixed in via merge, objects like `cssClasses` may be present in eact trait, the control base, and the control facades, and the final object will contain all of the unique classes. This allows traits to bring classes with them.
-	cssClasses: {
-		'NOT_SELECTED': 'slds-not-selected'
-	},
-
-	// This is an API method which exposes the current selection. Not every framework relies on API methods, but it is available for consistency between those that do. Note that every facade provides a set of state management methods: `getProperty`, `setProperties`, `getState`, and `setState`. You can read the `state.js` helper in the framework you are working in to see how the facade for that framework handles these.
-	getSelectedItems () {
-		return this.getProperty('selection');
-	},
-
+const multiselectable = {
 	// The internal version of `getSelectedItems`. You can always access the raw selection yourself, of course, this method just wraps it in a `dataAdapter` for you so that you get the benefit of supporting multiple frameworks. It also clones the selection so that a selection passed in by reference won't be mutated.
 	_getSelectedItems () {
-		const selection = this.getSelectedItems();
+		const selection = this.getProperty('selection');
 		
 		if (selection) {
 			return this._getDataAdapter(selection).clone();
@@ -32,33 +22,32 @@ const Multiselectable = {
 	},
 	
 	// Accepts an item from the collection (wrapped in an item adapter) and compares it to the existing selection to determine if it has already been selected. If a `getKey` accessor has been provided that will be used instead of the item itself.
-	_isItemSelected (item, selection) {
-		const _selection = selection || this._getDataAdapter(this.getSelectedItems());
+	isItemSelected (item, selection) {
 		const key = Lib.isFunction(item.getKey) ? item.getKey() : item._item;
-		return !!_selection.findWhere(key);
+		return !!selection.findWhere(key);
 	},
 
 	// Take a set of items (most likely a new selection) and return only those which are not already part of the selection.
 	_getNotSelectedItems (items, selection) {
 		return items.filter((item) => {
-			return !this._isItemSelected(item, selection);
+			return !multiselectable.isItemSelected(item, selection);
 		});
 	},
 	
 	// Take a set of items (most likely a new selection) and return only those which are  already part of the selection.
 	_getPreviouslySelectedItems (items, selection) {
 		return items.filter((item) => {
-			return this._isItemSelected(item, selection);
+			return multiselectable.isItemSelected(item, selection);
 		});
 	},
 	
 	// Take a set of items and select any that aren't yet selected.
 	_selectItems (items, selectIndex) {
-		const selection = this._getSelectedItems();
-		const itemsToSelect = this._getNotSelectedItems(items, selection);
+		const selection = multiselectable._getSelectedItems.call(this);
+		const itemsToSelect = multiselectable._getNotSelectedItems(items, selection);
 
 		// The main selection logic happens in this method. Controls may optionally declare a `_canSelect` method and if they do this will be passed to them as a callback. If they don't it will executed immediately.
-		const _select = Lib.bind(function _select () {
+		const _select = () => {
 			// Multiselectable supports both single and multiple selection based on the `multiSelect` boolean option. That is, _controls_ that make use of the multiselectable trait support multiple selection, but that doesn't mean that an instance of one of thoe controls has to.
 			if (this.getProperty('multiSelect')) {
 				if (Lib.isNumber(selectIndex)) {
@@ -81,7 +70,7 @@ const Multiselectable = {
 			this.trigger('selected', itemsToSelect, selection._data);
 			
 			if (Lib.isFunction(this._onSelected)) this._onSelected(selection);
-		}, this);
+		};
 
 		// We only need to move forward if we actually have items to select. If we do, check for the `_canSelect` method.
 		if (itemsToSelect.length > 0) {
@@ -95,25 +84,25 @@ const Multiselectable = {
 
 	// Delegate calls for single items wrapped in an item adapter to the public method (since we really only support arrays).
 	_selectItem (item, index) {
-		this.selectItem(item._item, index);
+		multiselectable.selectItem.call(this, item._item, index);
 	},
 
 	// Public API method for selection multiple items.
 	selectItems (items, index) {
-		this._selectItems(this._getDataAdapter(items), index);
+		multiselectable._selectItems.call(this, this._getDataAdapter(items), index);
 	},
 
 	// Public API method for selection a single item.
 	selectItem (_item, index) {
-		this.selectItems([_item], index);
+		multiselectable.selectItems.call(this, [_item], index);
 	},
 
 	// Deselection works essentially the same way as selection.
 	_deselectItems (items) {
-		const selection = this._getSelectedItems();
-		const itemsToDeselect = this._getPreviouslySelectedItems(items, selection);
+		const selection = multiselectable._getSelectedItems.call(this);
+		const itemsToDeselect = multiselectable._getPreviouslySelectedItems(items, selection);
 		
-		const _deselect = Lib.bind(function _deselect () {
+		const _deselect = () => {
 			selection.remove(itemsToDeselect);
 
 			if (Lib.isFunction(this._onBeforeDeselect)) this._onBeforeDeselect(selection);
@@ -124,7 +113,7 @@ const Multiselectable = {
 			this.trigger('deselected', itemsToDeselect, selection._data);
 			
 			if (Lib.isFunction(this._onDeselected)) this._onDeselected(selection);
-		}, this);
+		};
 		
 		if (itemsToDeselect.length > 0) {
 			if (!Lib.isFunction(this._canDeselect)) {
@@ -136,20 +125,20 @@ const Multiselectable = {
 	},
 
 	_deselectItem (item) {
-		this.deselectItem(item._item);
+		multiselectable.deselectItem.call(this, item._item);
 	},
 
 	deselectItems (items) {
-		this._deselectItems(this._getDataAdapter(items));
+		multiselectable._deselectItems.call(this, this._getDataAdapter(items));
 	},
 
 	deselectItem (_item) {
-		this.deselectItems([_item]);
+		multiselectable.deselectItems.call(this, [_item]);
 	},
 
 	// Quickly empty the selection of all items.
 	deselectAll () {
-		const selection = this._getSelectedItems();
+		const selection = multiselectable._getSelectedItems.call(this);
 		
 		selection.reset(null);
 
@@ -164,12 +153,16 @@ const Multiselectable = {
 	},
 	
 	toggleItem (_item) {
-		if (this._isItemSelected(this._getItemAdapter(_item))) {
-			this.deselectItem(_item);
+		const selection = multiselectable._getSelectedItems.call(this);
+		
+		if (multiselectable.isItemSelected(this._getItemAdapter(_item), selection)) {
+			multiselectable.deselectItem.call(this, _item);
 		} else {
-			this.selectItem(_item);
+			multiselectable.selectItem.call(this, _item);
 		}
 	}
 };
 
-export default Multiselectable;
+export default {
+	multiselectable
+};

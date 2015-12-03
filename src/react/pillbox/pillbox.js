@@ -35,9 +35,11 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 	},
 
 	_generatePills () {
-		return this._getSelectedItems().map((item, index) => {
+		const selection = this._getDataAdapter(this.props.selection);
+		
+		return selection.map((item, index) => {
 			return (
-				<PillboxItem key={index} item={item} onClick={this._deselectItem} strings={this.state.strings}/>
+				<PillboxItem key={index} item={item} onClick={this.multiselectable._deselectItem.bind(this)} strings={this.state.strings}/>
 			);
 		});
 	}

@@ -136,7 +136,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
 		
 		// Get the current selection (wrapped in a data adapter) and set a boolean based on whether it contains any items.
-		const selectedItems = this._getSelectedItems();
+		const selectedItems = this._getDataAdapter(this.props.selection);
 		const hasSelection = selectedItems.length() > 0;
 
 		// Unlike the header and footer, the pills will always be rendered if there is a selection and there is no option to disable them by passing false to `this.props.pillRenderer`. However, it is still possible to override the contents of the pills by passing in a custom render function.
@@ -186,7 +186,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			/* TODO: Remove inline style */
 			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox" style={style}>
 				{header}
-				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
+				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this.multiselectable._selectItem.bind(this)} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
 			</div>
 		);
@@ -255,9 +255,9 @@ let Lookup = Lib.merge({}, LookupCore, {
 	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
 	_handleDeselect (item) {
 		if (item) {
-			this._deselectItem(item);
+			this.multiselectable._deselectItem.call(this, item);
 		} else {
-			this.deselectAll();
+			this.multiselectable.deselectAll.call(this);
 		}
 	},
 

@@ -139,7 +139,7 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 	},
 
 	_selectDataItem (selRow) {
-		this.toggleItem(selRow);
+		this.multiselectable.toggleItem.call(this, selRow);
 	},
 
 	_toggleAllItems () {
@@ -148,7 +148,7 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 			this.deselectAll();
 		} else {
 			this.allCheckActivated = true;
-			this.selectItems(this.getProperty('collection'));
+			this.multiselectable.selectItems.call(this, this.getProperty('collection'));
 		}
 	},
 

@@ -93,7 +93,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		}
 	},
 	
-	_renderItem (item) {
+	_renderItem (item, selection) {
 		const $item = this.template.find('li.slds-tree__item').clone();
 
 		$item.find('.slds-tree__item-label').text(item.getText());
@@ -101,12 +101,12 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 			item: item._item
 		});
 
-		this._renderSelection($item, item);
+		this._renderSelection($item, item, selection);
 
 		return $item;
 	},
 
-	_renderBranch (branch, level) {
+	_renderBranch (branch, selection, level) {
 		const strings = this.getState('strings');
 		const $branch = this.template.find('.slds-tree__branch').clone();
 		const $branchContent = $branch.find('.slds-tree__group');
@@ -127,7 +127,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 			id: branch.getId()
 		});
 
-		this._renderSelection($branch, branch);
+		this._renderSelection($branch, branch, selection);
 
 		// Expandable?
 		const isExpandable = branch.getExpandable();
@@ -167,7 +167,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	},
 	
 	_renderSelection ($item, item, selection) {
-		const selected = this._isItemSelected(item, selection);
+		const selected = this.multiselectable.isItemSelected(item, selection);
 
 		$item.toggleClass('slds-is-selected', selected);
 	},
@@ -196,14 +196,15 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_loopChildren (children, $el, level) {
 		const self = this;
 		const elements = [];
+		const selection = this._getDataAdapter(this.getProperty('selection'));
 
 		children.forEach(function buildBranch (item) {
 			const isBranch = item.getType() === 'folder';
 
 			if (!isBranch) {
-				elements.push(self._renderItem(item));
+				elements.push(self._renderItem(item, selection));
 			} else {
-				elements.push(self._renderBranch(item, level));
+				elements.push(self._renderBranch(item, selection, level));
 			}
 		});
 
@@ -222,12 +223,13 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		const self = this;
 		const id = branch.getId();
 		const $branches = this.element.find('.slds-tree__branch');
+		const selection = this._getDataAdapter(this.getProperty('selection'));
 
 		$branches.each(function () {
 			const $branch = $(this);
 
 			if ($branch.data('id') === id) {
-				$branch.replaceWith(self._renderBranch(branch));
+				$branch.replaceWith(self._renderBranch(branch, selection));
 			}
 		});
 	},
@@ -239,7 +241,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 
 	_handleItemClicked ($event) {
 		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
-		this.toggleItem($el.data('item'));
+		this.multiselectable.toggleItem.call(this, $el.data('item'));
 	},
 
 	_onSelected (selection) {

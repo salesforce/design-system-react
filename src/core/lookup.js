@@ -152,7 +152,7 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, P
 	},
 	
 	_keyboardSelect (selection) {
-		this.selectItem(selection);
+		this.multiselectable.selectItem.call(this, selection);
 	},
 	
 	search (searchString) {
