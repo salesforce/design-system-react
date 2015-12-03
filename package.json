@@ -71,7 +71,7 @@
     "react"
   ],
   "components": [
-    "baddge",
+    "badge",
     "button",
     "checkbox",
     "combobox",
