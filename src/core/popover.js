@@ -36,7 +36,7 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 		trigger: 'click',
 		target: null, // The element who's events will trigger the popover
 		container: null, // The element the popover will be contained within
-		align: null // The element the popover will be aligned with
+		alignmentTarget: null // The element the popover will be aligned with
 	},
 	
 	_defaultState: {
@@ -44,7 +44,7 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 	},
 	
 	_getClassNames () {
-		const positionClass = this.positions[this.currentPosition];
+		const positionClass = this.cssClasses.NUBBIN[this.currentTargetAttachment];
 		const hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
 
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass, hiddenClass);

@@ -6,6 +6,7 @@ import TooltipCore, {CONTROL} from '../../core/tooltip';
 
 // Inherited functionality from popover
 import { PopoverMethods } from '../popover/popover';
+import Positionable from '../../traits/positionable';
 
 // Framework specific
 import React from 'react';
@@ -18,10 +19,10 @@ let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
 	displayName: CONTROL,
 
 	propTypes: {
-		align: mountable,
+		alignmentTarget: mountable,
 		container: mountable,
 		isOpen: React.PropTypes.bool,
-		placement: React.PropTypes.string
+		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
 	},
 
 	mixins: [State, Events, genericWillMount],

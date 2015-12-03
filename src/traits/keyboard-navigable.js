@@ -49,9 +49,10 @@ const KeyboardNavigable = {
 		return items;
 	},
 
-	_keyboardNav (input, onSelect) {
+	_keyboardNav (input, onSelect, collection) {
+		const _collection = collection || this._collection;
 		const isOpen = this.getState('isOpen');
-		const navigableItems = this._navigableItems || this._getNavigableItems(this._collection);
+		const navigableItems = this.getState('navigableItems') || this._getNavigableItems(_collection);
 		const indexes = navigableItems.indexes;
 		const lastIndex = indexes.length - 1;
 		let focusedIndex = undefined;
@@ -63,7 +64,7 @@ const KeyboardNavigable = {
 			this.open();
 		} else if (/(Enter)/.test(input)) {
 			focusedSelection = this.getState('focusedSelection');
-			
+
 			if (focusedSelection && Lib.isFunction(onSelect)) {
 				onSelect(focusedSelection);
 				focusedSelection = undefined;
@@ -102,7 +103,7 @@ const KeyboardNavigable = {
 		}
 		
 		if (Lib.isNumber(focusedIndex)) {
-			focusedSelection = this._collection.at(focusedIndex);
+			focusedSelection = _collection.at(focusedIndex);
 		}
 		
 		this.setState({

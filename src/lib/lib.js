@@ -54,7 +54,7 @@ export function removeClass (element, className) {
 	}
 }
 
-export function offset (element) {
+export function getDocumentOffset (element) {
 	const rect = element.getBoundingClientRect();
 	
 	return {
@@ -63,13 +63,14 @@ export function offset (element) {
 	};
 }
 
-export function offsetFromParent (element, parent) {
-	const elementOffset = offset(element);
-	const parentOffset = offset(parent);
+// `elementOffset` provides the distance from the `baseElement` to the element. If the `baseElement` is comes before `element` the number will be positive.
+export function getElementOffset (element, baseElement) {
+	const elementDocumentOffset = getDocumentOffset(element);
+	const baseElementDocumentOffset = getDocumentOffset(baseElement);
 
 	return {
-		top: elementOffset.top - parentOffset.top,
-		left: elementOffset.left - parentOffset.left
+		top: elementDocumentOffset.top - baseElementDocumentOffset.top,
+		left: elementDocumentOffset.left - baseElementDocumentOffset.left
 	};
 }
 
@@ -95,24 +96,42 @@ export function outerWidth (element, includeMargin) {
 	return width;
 }
 
-export function isOffscreen (element, details) {
+export function isOffscreen (element, returnAttachmentKey) {
 	const windowHeight = window.innerHeight || document.documentElement.clientHeight || 0;
 	const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-	const elmentOffset = offset(element);
-	const top = elmentOffset.top;
-	const bottom = elmentOffset.top + outerHeight(element, true);
+	const elementOffset = getDocumentOffset(element);
+	const topOffset = elementOffset.top;
+	const bottomOffset = elementOffset.top + outerHeight(element, true);
 	let results = false;
 
-	if (details) {
-		results = bottom > windowHeight + scrollTop ? 'bottom' : false;
-		if (!results) {
-			results = top < scrollTop ? 'top' : false;
+	if (returnAttachmentKey) {
+		if (bottomOffset > windowHeight + scrollTop) {
+			results = 'bottom';
+		}
+		if (!results && topOffset < scrollTop ) {
+			results = 'top';
 		}
 	} else {
-		results = bottom > windowHeight + scrollTop || top < scrollTop;
+		results = bottomOffset > windowHeight + scrollTop || topOffset < scrollTop;
 	}
 
 	return results;
+}
+
+// This is a CSS feature detection function that returns a working CSS style.
+export function getSupportedCSSTransformKey () {
+	if (typeof document === 'undefined') {
+		return '';
+	}
+	const element = document.createElement('div');
+
+	const transforms = ['webkitTransform', 'OTransform', 'MozTransform', 'msTransform'];
+	for (let i = 0; i < transforms.length; ++i) {
+		const key = transforms[i];
+		if (element.style[key] !== undefined) {
+			return key;
+		}
+	}
 }
 
 export function isValidDate (strDate) {
@@ -132,7 +151,7 @@ function WrappedElement (element) {
 	this.hasClass = partial(hasClass, element);
 	this.addClass = partial(addClass, element);
 	this.removeClass = partial(removeClass, element);
-	this.offset = partial(offset, element);
+	this.offset = partial(getDocumentOffset, element);
 	this.outerHeight = partial(outerHeight, element);
 	this.outerWidth = partial(outerWidth, element);
 	this.width = partial(setWidth, element);

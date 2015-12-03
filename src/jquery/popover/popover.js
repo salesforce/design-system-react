@@ -25,40 +25,40 @@ let Popover = function Popover () {
 export const PopoverMethods = {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
-		this.elements.popover = Lib.wrapElement(this.element);
+		this.elements.positionableElement = Lib.wrapElement(this.element);
 	},
 	
 	_onRendered () {
-		this._setElementOptions();
+		this._setElements();
 		this._setTrigger();
 		
 		// TODO: This is probably not the best way to do this or the best place for it to be
-		this.appendTo(this.elements.container);
+		this.appendTo(this.elements.positionableContainer);
 		
 		this._updatePosition();
 	},
 
-	_setElementOptions () {
-		const target = this.getProperty('target');
+	_setElements () {
+		const triggerElement = this.getProperty('target');
 		const container = this.getProperty('container');
 		const align = this.getProperty('align');
 
-		this.elements.target = Lib.wrapElement(target || this.elements.wrapper);
-		this.elements.container = Lib.wrapElement(container || this.elements.wrapper);
-		this.elements.align = Lib.wrapElement(align || this.elements.target);
+		this.elements.triggerElement = Lib.wrapElement(triggerElement || this.elements.wrapper);
+		this.elements.positionableContainer = Lib.wrapElement(container || this.elements.wrapper);
+		this.elements.positionableTarget = Lib.wrapElement(align || this.elements.triggerElement);
 	},
 
 	_setTrigger () {
 		const trigger = this.getProperty('trigger');
 
 		if (trigger === 'click') {
-			this.elements.target.on( 'click', $.proxy(this.toggle, this));
+			this.elements.triggerElement.on( 'click', $.proxy(this.toggle, this));
 		} else if (trigger === 'hover') {
-			this.elements.target.on( 'mouseover', $.proxy(this.show, this));
-			this.elements.target.on( 'mouseout', $.proxy(this.hide, this));
+			this.elements.triggerElement.on( 'mouseover', $.proxy(this.show, this));
+			this.elements.triggerElement.on( 'mouseout', $.proxy(this.hide, this));
 		} else if (trigger === 'focus') {
-			this.elements.target.on( 'focus', $.proxy(this.show, this));
-			this.elements.target.on( 'focusout', $.proxy(this.hide, this));
+			this.elements.triggerElement.on( 'focus', $.proxy(this.show, this));
+			this.elements.triggerElement.on( 'focusout', $.proxy(this.hide, this));
 		}
 	},
 	
