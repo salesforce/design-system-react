@@ -66,6 +66,14 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		}
 	},
 
+	selectPill (item, index) {
+		this.multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+	},
+	
+	selectPills (items, index) {
+		this.multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
+	},
+
 	_onSelect (selection) {
 		this.setProperties({ selection: selection._data });
 	},

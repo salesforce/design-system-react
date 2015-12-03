@@ -145,7 +145,7 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 	_toggleAllItems () {
 		if (this.allCheckActivated) {
 			this.allCheckActivated = false;
-			this.deselectAll(this.getProperty('selection'));
+			this.multiselectable.deselectAll.call(this, this.getProperty('selection'));
 		} else {
 			this.allCheckActivated = true;
 			this.multiselectable.selectItems.call(this, this.getProperty('collection'), this.getProperty('selection'));

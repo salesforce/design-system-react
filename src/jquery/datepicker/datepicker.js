@@ -240,7 +240,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 		if (validatedDate) {
 			if (multiselect) {
-				this.deselectAll(this.getProperty('selection'));
+				this.multiselectable.deselectAll.call(this, this.getProperty('selection'));
 				this.selectDates([
 					{ date: validatedDate[0] },
 					{ date: validatedDate[1] }
@@ -266,7 +266,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 				selectedDates = this.getSelectedItems();
 
 				if (selectedDates && selectedDates.length > 1) {
-					this.deselectAll(this.getProperty('selection'));
+					this.multiselectable.deselectAll.call(this, this.getProperty('selection'));
 				}
 
 				if (selectedDates && selectedDates.length === 1 && selectedDates[0].date.getTime() > dayData.date.getTime()) {
@@ -279,7 +279,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 			}
 		}
 	},
-	
+
 	selectDate (item, index) {
 		this.multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
 	},

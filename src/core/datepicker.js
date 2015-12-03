@@ -226,7 +226,6 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 	_roundDate: function (date) {
 		return new Date(date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear());
 	}
-
 });
 
 export default DatepickerCore;

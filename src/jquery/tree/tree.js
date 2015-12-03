@@ -244,6 +244,14 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		this.multiselectable.toggleItem.call(this, $el.data('item'), this.getProperty('selection'));
 	},
 
+	selectItem (item, index) {
+		this.multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+	},
+	
+	selectItems (items, index) {
+		this.multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
+	},
+
 	_onSelect (selection) {
 		this.setProperties({ selection: selection._data });
 		this._onSelectionUpdated(selection);
