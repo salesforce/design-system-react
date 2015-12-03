@@ -66,8 +66,13 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		}
 	},
 
-	_onDeselected () {
-		this._renderSelection();
+	_onSelect (selection) {
+		this.setProperties({ selection: selection._data });
+	},
+	
+	_onDeselect (selection) {
+		this.setProperties({ selection: selection._data });
+		this._renderCollection();
 	},
 
 	_renderPill (pill) {

@@ -60,10 +60,10 @@ const multiselectable = {
 			// Call optional internal lifecycle methods before and after selection. Some facades will make use of these to perform rendering or other tasks.
 			if (Lib.isFunction(this._onBeforeSelect)) this._onBeforeSelect(selection);
 			
-			// Every facade must provide the `setProperties` state management method, but what they do with it can vary. For example, in the React facade **this actually does nothing**, as the expectation is that controls won't change their own properties and will instead wait for a state change at some level above themselves.
-			this.setProperties({ selection: selection._data });
+			// While this method is optional (it's not used by React, for example) most facades will use it to update the selection property.
+			if (Lib.isFunction(this._onSelect)) this._onSelect(selection);
 
-			// Every facade must also provide a `trigger` method for event handling. In this case we are triggering two "events" - both a `changed` event that fires for selection _and_ deselection, and a `selected` event that fires only for selection. It's important to note that exactly how these events bubble up will depend on how a particular framework typically works. They might be thrown on the control itself, on a DOM element tied to the control, or even called as a callback instead of as an event. You can read the `events.js` helper in the framework you are working in to see how the facade for that framework handles events.
+			// Every facade must provide a `trigger` method for event handling. In this case we are triggering two "events" - both a `changed` event that fires for selection _and_ deselection, and a `selected` event that fires only for selection. It's important to note that exactly how these events bubble up will depend on how a particular framework typically works. They might be thrown on the control itself, on a DOM element tied to the control, or even called as a callback instead of as an event. You can read the `events.js` helper in the framework you are working in to see how the facade for that framework handles events.
 			this.trigger('changed', itemsToSelect, selection._data);
 			this.trigger('selected', itemsToSelect, selection._data);
 			
@@ -95,7 +95,8 @@ const multiselectable = {
 
 			if (Lib.isFunction(this._onBeforeDeselect)) this._onBeforeDeselect(selection);
 
-			this.setProperties({ selection: selection._data });
+			// While this method is optional (it's not used by React, for example) most facades will use it to update the selection property.
+			if (Lib.isFunction(this._onDeselect)) this._onDeselect(selection);
 			
 			this.trigger('changed', itemsToDeselect, selection._data);
 			this.trigger('deselected', itemsToDeselect, selection._data);
@@ -123,7 +124,8 @@ const multiselectable = {
 
 		if (Lib.isFunction(this._onBeforeDeselect)) this._onBeforeDeselect(selection);
 
-		this.setProperties({ selection: selection._data });
+		// While this method is optional (it's not used by React, for example) most facades will use it to update the selection property.
+		if (Lib.isFunction(this._onDeselect)) this._onDeselect(selection);
 		
 		this.trigger('changed', null, selection._data);
 		this.trigger('deselected', null, selection._data);

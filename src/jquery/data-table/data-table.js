@@ -205,11 +205,13 @@ export const DataTableObject = {
 		this._renderCollection(sortedCollection);
 	},
 
-	_onSelected () {
+	_onSelect (selection) {
+		this.setProperties({ selection: selection._data });
 		this._renderCollection();
 	},
-
-	_onDeselected () {
+	
+	_onDeselect (selection) {
+		this.setProperties({ selection: selection._data });
 		this._renderCollection();
 	},
 	

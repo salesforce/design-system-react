@@ -287,12 +287,17 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	selectDates (items, index) {
 		this.multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
 	},
-
-	_onSelected () {
+	
+	_onSelect (selection) {
+		this.setProperties({ selection: selection._data });
+		
 		this.elements.input.val(this._formatDate());
 		this._renderDateRange();
+	},
+	
+	_onDeselect (selection) {
+		this.setProperties({ selection: selection._data });
 	}
-
 });
 
 Datepicker = Lib.runHelpers('jquery', CONTROL, Datepicker);
