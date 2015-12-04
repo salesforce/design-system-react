@@ -39,7 +39,7 @@ class SLDSNotification extends React.Component {
     this.state = {
       isOpen: this.props.isOpen,
       interval: null,
-      addSpace: false,
+      revealForScreenreader: false,
     };
   }
 
@@ -61,8 +61,8 @@ class SLDSNotification extends React.Component {
       this.setState({ isOpen: nextProps.isOpen });
       if(nextProps.isOpen && !this.state.interval){
         this.setState({interval: setTimeout(() => {
-          this.setState({addSpace: !this.state.addSpace});
-        }, 1000)})
+          this.setState({revealForScreenreader: !this.state.revealForScreenreader});
+        }, 500)})
       }
     }
   }
@@ -132,6 +132,7 @@ class SLDSNotification extends React.Component {
 
   getClassName() {
     return classNames(this.props.className, "slds-notify", {
+      [`slds-transition-hide`]: !this.state.revealForScreenreader,
       [`slds-notify--${this.props.variant}`]: this.props.variant,
       [`slds-theme--${this.props.theme}`]: this.props.theme,
       [`slds-theme--alert-texture-animated`]: this.props.texture,
@@ -139,15 +140,23 @@ class SLDSNotification extends React.Component {
   }
 
   renderContent() {
-    return (
-      <div>
-      {this.state.addSpace ? " x" : ""}
+    if(this.state.revealForScreenreader) {
+      return (
+        <div>
           <p ref="test" className="slds-assistive-text">{this.props.theme}</p>
           {this.renderClose()}
           {this.renderAlertContent()}
           {this.renderToastContent()}
-      </div>
-    )
+        </div>
+      )
+    }
+    else {
+      return (
+        <div className="slds-hidden">
+          Notification loading
+        </div>
+      )
+    }
   }
 
   render(){
