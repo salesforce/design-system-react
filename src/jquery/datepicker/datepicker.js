@@ -76,14 +76,14 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_bindUIEvents () {
-		this.element.on('click.slds-form-element', '.slds-input', $.proxy(this._triggerCalendar, this));
-		this.element.on('keyup.slds-form-element', '.slds-input', $.proxy(this._activateManualInput, this));
+		this.element.on('click.slds-form-element', '.slds-input', this._triggerCalendar.bind(this));
+		this.element.on('keyup.slds-form-element', '.slds-input', this._activateManualInput.bind(this));
 		this.element.on('click.slds-datepicker', this._cancelEventProp);
 
-		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', $.proxy(this._backMonth, this));
-		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', $.proxy(this._forwardMonth, this));
+		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', this._backMonth.bind(this));
+		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', this._forwardMonth.bind(this));
 
-		this.element.on('click.slds-datepicker-form', '.slds-day', $.proxy(this._selectDate, this));
+		this.element.on('click.slds-datepicker-form', '.slds-day', this._selectDate.bind(this));
 	},
 
 	_render () {
@@ -235,19 +235,10 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_manualDateInput () {
 		const inputValue = this.elements.input.val();
-		const validatedDate = this._validateDateInput(inputValue);
-		const multiselect = this.getProperty('multiSelect');
+		const validatedDates = this._validateDateInput(inputValue);
 
-		if (validatedDate) {
-			if (multiselect) {
-				this.multiselectable.deselectAll.call(this, this.getProperty('selection'));
-				this.selectDates([
-					{ date: validatedDate[0] },
-					{ date: validatedDate[1] }
-				]);
-			} else {
-				this.selectDate({ date: validatedDate });
-			}
+		if (validatedDates) {
+			this.selectDates(validatedDates);
 		}
 
 		this.element.off('focusout.slds-form-element', '.slds-input');
@@ -263,13 +254,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 		if (!dayData.outside) {
 			if (isRangeSelect) {
-				selectedDates = this.getSelectedItems();
+				selectedDates = this.getProperty('selection');
 
 				if (selectedDates && selectedDates.length > 1) {
-					this.multiselectable.deselectAll.call(this, this.getProperty('selection'));
-				}
-
-				if (selectedDates && selectedDates.length === 1 && selectedDates[0].date.getTime() > dayData.date.getTime()) {
+					this.setProperties({ selection: [] });
+				} else if (selectedDates && selectedDates.length === 1 && selectedDates[0].date.getTime() > dayData.date.getTime()) {
 					insertIndex = 0;
 				}
 
@@ -285,7 +274,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 	
 	selectDates (items, index) {
-		this.multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
+		this.multiselectable.selectItems.call(this, items, null, index);
 	},
 	
 	_onSelect (selection) {
