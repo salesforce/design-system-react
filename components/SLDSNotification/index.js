@@ -30,12 +30,17 @@ const propTypes = {
 
 const defaultProps = {
   dismissible: true,
+  isOpen: false
 };
 
 class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
-    this.state = { isOpen: this.props.isOpen };
+    this.state = {
+      isOpen: this.props.isOpen,
+      interval: null,
+      addSpace: false,
+    };
   }
 
   componentDidMount() {
@@ -47,9 +52,18 @@ class SLDSNotification extends React.Component {
     }
   }
 
+  componentWillUnmount(){
+    this.setState({interval: null});
+  }
+
   componentWillReceiveProps(nextProps){
     if(this.props.isOpen !== nextProps.isOpen){
       this.setState({ isOpen: nextProps.isOpen });
+      if(nextProps.isOpen && !this.state.interval){
+        this.setState({interval: setTimeout(() => {
+          this.setState({addSpace: !this.state.addSpace});
+        }, 1000)})
+      }
     }
   }
 
@@ -124,15 +138,24 @@ class SLDSNotification extends React.Component {
     });
   }
 
+  renderContent() {
+    return (
+      <div>
+      {this.state.addSpace ? " x" : ""}
+          <p ref="test" className="slds-assistive-text">{this.props.theme}</p>
+          {this.renderClose()}
+          {this.renderAlertContent()}
+          {this.renderToastContent()}
+      </div>
+    )
+  }
+
   render(){
     if(this.state.isOpen){
       return (
         <div className="slds-notify-container">
-          <div className={this.getClassName()} role="alert">
-            <span className="slds-assistive-text">{this.props.theme}</span>
-            {this.renderClose()}
-            {this.renderAlertContent()}
-            {this.renderToastContent()}
+          <div ref="alertContent" className={this.getClassName()} role="alert">
+          {this.renderContent()}
           </div>
         </div>
       );

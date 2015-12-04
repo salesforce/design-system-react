@@ -116,8 +116,8 @@ module.exports = React.createClass( {
             <h4 className="slds-text-heading--small ">Toasts</h4>
             <div className="demo-only" style={toastStyle}>
               Base
-              {this.state.modalIsOpen ? null:
-                <SLDSNotification variant='toast' theme='success' icon='notification' content={successMsg} onDismiss={this.dismissToast}/>}
+              {/*this.state.modalIsOpen ? null:
+                <SLDSNotification variant='toast' theme='success' icon='notification' content={successMsg} onDismiss={this.dismissToast}/>*/}
             </div>
 
             <p>Modal Toasts</p>
