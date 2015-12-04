@@ -148,7 +148,7 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 			this.multiselectable.deselectAll.call(this, this.getProperty('selection'));
 		} else {
 			this.allCheckActivated = true;
-			this.multiselectable.selectItems.call(this, this.getProperty('collection'), this.getProperty('selection'));
+			this.multiselectable.selectItems.call(this, this.getProperty('collection'));
 		}
 	},
 
