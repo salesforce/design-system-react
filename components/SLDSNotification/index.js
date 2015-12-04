@@ -37,7 +37,6 @@ class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      isOpen: this.props.isOpen,
       interval: null,
       revealForScreenreader: false,
     };
@@ -47,24 +46,25 @@ class SLDSNotification extends React.Component {
     if(this.props.duration) {
       const that = this;
       setTimeout(function() {
-        that.setState({ isOpen: false});
+        this.onDismiss();
       }, that.props.duration);
     }
   }
 
   componentWillUnmount(){
-    this.setState({interval: null});
+    this.setState({
+      interval: null
+    });
   }
 
   componentWillReceiveProps(nextProps){
     if(this.props.isOpen !== nextProps.isOpen){
-      this.setState({ isOpen: nextProps.isOpen });
       if(nextProps.isOpen && !this.state.interval){
         this.setState({interval: setTimeout(() => {
-          this.setState({revealForScreenreader: !this.state.revealForScreenreader});
-          console.log('the isOpen state inside is', this.state.isOpen);
+          this.setState({revealForScreenreader: true});
         }, 500)})
       }
+      console.log('revealForScreen', this.state.revealForScreenreader);
     }
   }
 
@@ -104,7 +104,10 @@ class SLDSNotification extends React.Component {
 
   onDismiss(){
     if(this.props.onDismiss) this.props.onDismiss();
-    this.setState({isOpen: false});
+    this.setState({
+      revealForScreenreader: false,
+      interval: null,
+    });
   }
 
   renderAlertContent(){
@@ -161,7 +164,7 @@ class SLDSNotification extends React.Component {
   }
 
   render(){
-    if(this.state.isOpen){
+    if(this.props.isOpen){
       return (
         <div className="slds-notify-container">
           <div ref="alertContent" className={this.getClassName()} role="alert">
