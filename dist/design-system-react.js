@@ -12945,6 +12945,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  dismissible: _react2["default"].PropTypes.bool,
 	  duration: _react2["default"].PropTypes.number,
 	  icon: _react2["default"].PropTypes.string,
+	  isOpen: _react2["default"].PropTypes.bool,
 	  onDismiss: _react2["default"].PropTypes.func,
 	  texture: _react2["default"].PropTypes.bool,
 	  theme: _react2["default"].PropTypes.oneOf(["success", "warning", "error", "offline"]),
@@ -12952,7 +12953,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	var defaultProps = {
-	  dismissible: true
+	  dismissible: true,
+	  isOpen: false
 	};
 	
 	var SLDSNotification = (function (_React$Component) {
@@ -12962,21 +12964,41 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, SLDSNotification);
 	
 	    _get(Object.getPrototypeOf(SLDSNotification.prototype), "constructor", this).call(this, props);
-	    this.state = { isOpen: true };
+	    this.state = {
+	      interval: null,
+	      revealForScreenreader: false
+	    };
 	  }
 	
 	  _createClass(SLDSNotification, [{
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
+	      if (this.props.duration) {
+	        var that = this;
+	        setTimeout(function () {
+	          this.onDismiss();
+	        }, that.props.duration);
+	      }
+	    }
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {
+	      this.setState({
+	        interval: null
+	      });
+	    }
+	  }, {
+	    key: "componentWillReceiveProps",
+	    value: function componentWillReceiveProps(nextProps) {
 	      var _this = this;
 	
-	      if (this.props.duration) {
-	        (function () {
-	          var that = _this;
-	          setTimeout(function () {
-	            that.setState({ isOpen: false });
-	          }, that.props.duration);
-	        })();
+	      if (this.props.isOpen !== nextProps.isOpen) {
+	        if (nextProps.isOpen && !this.state.interval) {
+	          this.setState({ interval: setTimeout(function () {
+	              _this.setState({ revealForScreenreader: true });
+	            }, 500) });
+	        }
+	        console.log('revealForScreen', this.state.revealForScreenreader);
 	      }
 	    }
 	  }, {
@@ -13017,7 +13039,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "onDismiss",
 	    value: function onDismiss() {
 	      if (this.props.onDismiss) this.props.onDismiss();
-	      this.setState({ isOpen: false });
+	      this.setState({
+	        revealForScreenreader: false,
+	        interval: null
+	      });
 	    }
 	  }, {
 	    key: "renderAlertContent",
@@ -13038,13 +13063,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function getClassName() {
 	      var _classNames;
 	
-	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
+	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-transition-hide", !this.state.revealForScreenreader), _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
+	    }
+	  }, {
+	    key: "renderContent",
+	    value: function renderContent() {
+	      if (this.state.revealForScreenreader) {
+	        return _react2["default"].createElement("div", null, _react2["default"].createElement("p", { ref: "test", className: "slds-assistive-text" }, this.props.theme), this.renderClose(), this.renderAlertContent(), this.renderToastContent());
+	      } else {
+	        return _react2["default"].createElement("div", { className: "slds-hidden" }, "Notification loading");
+	      }
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      if (this.state.isOpen) {
-	        return _react2["default"].createElement("div", { className: "slds-notify-container" }, _react2["default"].createElement("div", { className: this.getClassName(), role: "alert" }, _react2["default"].createElement("span", { className: "slds-assistive-text" }, this.props.theme), this.renderClose(), this.renderAlertContent(), this.renderToastContent()));
+	      if (this.props.isOpen) {
+	        return _react2["default"].createElement("div", { className: "slds-notify-container" }, _react2["default"].createElement("div", { ref: "alertContent", className: this.getClassName(), role: "alert" }, this.renderContent()));
 	      } else {
 	        return null;
 	      }
