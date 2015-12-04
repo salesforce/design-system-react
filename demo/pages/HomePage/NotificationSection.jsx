@@ -74,11 +74,12 @@ module.exports = React.createClass( {
   },
 
   dismissToast(){
+    this.setState({ alertIsOpen: false });
     console.log('====> Dismiss Toast Message');
   },
 
-  toggleAlert(){
-    this.setState({ alertIsOpen: !this.state.alertIsOpen });
+  openAlert(){
+    this.setState({ alertIsOpen: true });
   },
 
   render() {
@@ -108,7 +109,7 @@ module.exports = React.createClass( {
         <div className='slds-p-vertical--medium'>
           <div className="slds-p-vertical--small">
             <h4 className="slds-text-heading--small ">Alerts</h4>
-            <SLDSButton variant="neutral" label="Show Alert" onClick={this.toggleAlert} />
+            <SLDSButton variant="neutral" label="Show Alert" onClick={this.openAlert} />
             <SLDSNotification variant='alert' theme='success' icon='notification' isOpen={this.state.alertIsOpen} texture={true} content={successMsg} onDismiss={this.dismissToast} />
           </div>
 

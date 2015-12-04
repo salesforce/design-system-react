@@ -62,6 +62,7 @@ class SLDSNotification extends React.Component {
       if(nextProps.isOpen && !this.state.interval){
         this.setState({interval: setTimeout(() => {
           this.setState({revealForScreenreader: !this.state.revealForScreenreader});
+          console.log('the isOpen state inside is', this.state.isOpen);
         }, 500)})
       }
     }
