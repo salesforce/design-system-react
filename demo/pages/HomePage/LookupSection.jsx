@@ -8,42 +8,24 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 'use strict';
 
-
 import React from 'react';
-import {Icon} from '../SLDSIcons';
 
-import {KEYS,EventUtil} from '../utils';
+import LookupBaseSection from './LookupBaseSection';
 
+import LookupBaseCustomSection from './LookupBaseCustomSection';
+import LookupBaseDynamicSection from './LookupBaseDynamicSection';
 
-module.exports = React.createClass({
-
-  displayName: 'SLDSPicklistBase-list-item-label',
+module.exports = React.createClass( {
 
   getDefaultProps () {
-    return {
-      index: 0,
-      label: '',
-      value: null,
-      inverted: false,
-      isSelected: false,
-      isHighlighted: false,
-      data:{}
-    };
+    return {};
   },
 
-  render () {
-    return (
-      <section>
-      {
-        this.props.isSelected?<Icon name='check'  position='left' category='utility' />:null
-      }
-      {
-        this.props.label
-      }
-      </section>
-    );
-  },
-
-
-
+  render() {
+    return (<div>
+              <LookupBaseSection />
+              <LookupBaseDynamicSection />
+              <LookupBaseCustomSection />
+            </div>);
+  }
 });

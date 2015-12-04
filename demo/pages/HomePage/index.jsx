@@ -101,78 +101,34 @@ module.exports = React.createClass( {
           </div>
         </div>
 
-        <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
-          <div className='region region--main slds-grow slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large'>
+        <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>        
+          <div className='region region--main slds-grow slds-size--1-of-4 slds-medium-size--1-of-4 slds-large-size--1-of-8 slds-col-rule--right slds-p-around--large'>
+
             <section className="slds-p-bottom--large">
-            <h3 className="slds-text-heading--medium">Current Components</h3>
-            <ul>
-              <li>
-                <a href="javascript:void(0)" onClick={this.scrollTo('buttonSection')}>Button</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onClick={this.scrollTo('buttonGroupSection')}>Button Group</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onClick={this.scrollTo('dropdownSection')}>Dropdown</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onClick={this.scrollTo('iconSection')}>Icon</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onClick={this.scrollTo('lookupSection')}>Lookup</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onClick={this.scrollTo('modalSection')}>Modal</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onClick={this.scrollTo('notificationSection')}>Notification</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onClick={this.scrollTo('picklistSection')}>Picklist</a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" onClick={this.scrollTo('tooltipSection')}>Tooltip</a>
-              </li>
-            </ul>
-
-            <h3 className="slds-text-heading--medium slds-p-top--medium">Future Components</h3>
-            <ul>
-              <li>
-                <a href="javascript:void(0)" onClick={this.scrollTo('datepickerSection')}>Date Picker</a>
-              </li>
-            </ul>
+              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Current</h3>
+              <ul>
+                <li><Link to="button">Button</Link></li>
+                <li><Link to="button-group">Button Group</Link></li>
+                <li><Link to="dropdown">Dropdown</Link></li>
+                <li><Link to="icon">Icon</Link></li>
+                <li><Link to="lookup">Lookup</Link></li>
+                <li><Link to="modal">Modal</Link></li>
+                <li><Link to="notification">Notification</Link></li>
+                <li><Link to="picklist">Picklist</Link></li>
+                <li><Link to="tooltip">Tooltip</Link></li>
+              </ul>
+              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Future</h3>
+              <ul>
+                <li><Link to="datepicker">Datepicker</Link></li>
+              </ul>
             </section>
+        </div>
 
+        <div className="region region--main slds-grow slds-size--3-of-4 slds-medium-size--3-of-4 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
+          <RouteHandler/>
+        </div>
+      </main>
 
-            <ButtonSection/>
-
-            <ButtonGroupSection />
-
-            <DropdownBaseSection />
-
-            <IconSection />
-
-            <LookupBaseSection />
-
-            <LookupBaseDynamicSection />
-
-            <LookupBaseCustomSection />
-
-            <ModalSection />
-
-            <NotificationSection/>
-
-            <PicklistBaseSection />
-
-            <PicklistBaseCustomSection />
-
-            <TooltipSection/>
-
-            <h1 className="slds-text-heading--large slds-p-top--large">Future Components</h1>
-
-            <DatePickerSingleSelectSection />
-          </div>
-        </main>
     </SLDSGrid>
     );
   }

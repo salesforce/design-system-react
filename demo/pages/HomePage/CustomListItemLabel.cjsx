@@ -19,14 +19,11 @@ module.exports = React.createClass(
     return
 
   render: ->
-    icon = null
-    if(@props.isSelected)
-      icon = <Icon name='like'  position='left' category='utility' />
 
     <section
       onMouseOver={@handleMouseOver}
     >
-      { icon }
+      <Icon name='like' position='left' category='utility' size="x-small" className="slds-icon--selected slds-icon-text-default slds-m-right--x-small" />
       {
         @props.data.strongLabel
       }

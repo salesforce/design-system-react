@@ -14,6 +14,7 @@ import React from 'react';
 import SLDSButtonGroup from '../../../components/SLDSButtonGroup';
 import SLDSDropdownBase from '../../../components/SLDSDropdownBase';
 import SLDSButton from '../../../components/SLDSButton';
+import SLDSTooltip from '../../../components/SLDSTooltip';
 import SLDSButtonStateful from '../../../components/SLDSButton/SLDSButtonStateful';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
@@ -86,6 +87,17 @@ module.exports = React.createClass( {
                   <SLDSButtonStateful type="icon" assistiveText="View Reports" label='Chart' variant='icon' iconName='chart' />
                   <SLDSButtonStateful type="icon" assistiveText="Filter Data" label='Filter' variant='icon' iconName='filter' />
                   <SLDSButton assistiveText='Sort' variant='icon' iconName='sort' iconVariant='more'/>
+                </SLDSButtonGroup>
+              </div>
+
+              <div className='slds-p-vertical--small'>
+              <h3>Button Group wtih Tooltip</h3>
+                <SLDSButtonGroup>
+                  <SLDSButton label='Refresh' variant='neutral' />
+                  <SLDSTooltip align="bottom" content="hello" openOn="click">
+                    <SLDSButton label='Edit' variant='neutral' />
+                  </SLDSTooltip>
+                  <SLDSButton label='Save' variant='neutral' />
                 </SLDSButtonGroup>
               </div>
             </div>

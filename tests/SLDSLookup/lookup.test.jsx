@@ -19,10 +19,10 @@ describe('SLDSLookup: ',  function(){
   };
 
   const getLookup = function(withHeader) {
-    return <SLDSLookup 
-      items={items} 
-      label="Leads" 
-      type="lead" 
+    return <SLDSLookup
+      items={items}
+      label="Leads"
+      type="lead"
       headerRenderer={withHeader?SLDSLookup.DefaultHeader:null}
       footerRenderer={SLDSLookup.DefaultFooter}
     />;
@@ -105,7 +105,7 @@ describe('SLDSLookup: ',  function(){
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
       TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
-      let selected = lookup.getElementsByTagName("span")[0].getElementsByTagName('span')[0].innerText;
+      let selected = lookup.getElementsByTagName("a")[0].getElementsByTagName('span')[0].innerText;
       expect(selected).to.equal('Paper St. Soap Company');
     });
 

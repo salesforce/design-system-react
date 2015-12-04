@@ -7,10 +7,31 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React, { Component } from 'react';
+import React from 'react';
 import {Icon} from "../../../SLDSIcons";
 import {EventUtil} from '../../../utils';
 import escapeRegExp from 'lodash.escaperegexp';
+
+const displayName = 'SLDSLookup-Menu-Item';
+const propTypes = {
+  boldRegex: React.PropTypes.instanceOf(RegExp),
+  data: React.PropTypes.object,
+  handleItemFocus: React.PropTypes.func,
+  href: React.PropTypes.string,
+  iconCategory: React.PropTypes.string,
+  id: React.PropTypes.string,
+  index: React.PropTypes.number,
+  isActive: React.PropTypes.bool,
+  isDisabled: React.PropTypes.bool,
+  key: React.PropTypes.string,
+  listItemLabelRenderer: React.PropTypes.func,
+  onSelect: React.PropTypes.func,
+  searchTerm: React.PropTypes.string,
+  setFocus: React.PropTypes.func,
+  type: React.PropTypes.string,
+};
+const defaultProps = {
+};
 
 class Item extends React.Component {
   constructor(props) {
@@ -56,7 +77,7 @@ class Item extends React.Component {
       return <ListItemLabel {... this.props} />;
     }
     return [
-      <Icon name={this.props.iconName} category={this.props.iconCategory}/>,
+      <Icon name={this.props.iconName} category={this.props.iconCategory} className={this.props.iconClasses} />,
       this.boldSearchText(this.props.children.label)
     ]
   }
@@ -68,7 +89,7 @@ class Item extends React.Component {
 
     return (
       //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
-      <li className={className} role="presentation">
+      <li className={className}>
         <a
           href={this.props.href}
           id={id}
@@ -87,25 +108,8 @@ class Item extends React.Component {
   }
 }
 
-Item.propTypes = {
-  key: React.PropTypes.string,
-  id: React.PropTypes.string,
-  href: React.PropTypes.string,
-  type: React.PropTypes.string,
-  iconCategory: React.PropTypes.string,
-  searchTerm: React.PropTypes.string,
-  index: React.PropTypes.number,
-  isActive: React.PropTypes.bool,
-  isDisabled: React.PropTypes.bool,
-  setFocus: React.PropTypes.func,
-  handleItemFocus: React.PropTypes.func,
-  onSelect: React.PropTypes.func,
-  data: React.PropTypes.object,
-  boldRegex: React.PropTypes.instanceOf(RegExp),
-  listItemLabelRenderer: React.PropTypes.func
-};
-
-Item.defaultProps = {
-};
+Item.displayName = displayName;
+Item.propTypes = propTypes;
+Item.defaultProps = defaultProps;
 
 module.exports = Item;

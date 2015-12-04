@@ -8,38 +8,22 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 'use strict';
 
-
 import React from 'react';
-import {Icon} from '../SLDSIcons';
 
-import {KEYS,EventUtil} from '../utils';
+import PicklistBaseSection from './PicklistBaseSection';
 
+import PicklistBaseCustomSection from './PicklistBaseCustomSection';
 
-module.exports = React.createClass({
+module.exports = React.createClass( {
 
-  displayName: 'SLDSPicklistBase-list-item-label',
-
-  getDefaultProps(){
-    return {
-      index: 0,
-      label: '',
-      value: null,
-      inverted: false,
-      isSelected: false,
-      isHighlighted: false,
-      data:{}
-    };
+  getDefaultProps () {
+    return {};
   },
 
-  render(){
-    return (
-      <section>
-      {this.props.isSelected?<Icon name='check'  position='left' category='utility' />:null}
-      {this.props.label}
-      </section>
-    );
-  },
-
-
-
+  render() {
+    return (<div>
+              <PicklistBaseSection />
+              <PicklistBaseCustomSection />
+            </div>);
+  }
 });

@@ -75,58 +75,53 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSPicklistBase2 = _interopRequireDefault(_SLDSPicklistBase);
 	
-	var _SLDSDropdownBase = __webpack_require__(27);
+	var _SLDSDropdownBase = __webpack_require__(35);
 	
 	var _SLDSDropdownBase2 = _interopRequireDefault(_SLDSDropdownBase);
 	
-	var _SLDSPicklistBaseListItem = __webpack_require__(25);
-	
-	var _SLDSPicklistBaseListItem2 = _interopRequireDefault(_SLDSPicklistBaseListItem);
-	
-	var _SLDSSettings = __webpack_require__(51);
+	var _SLDSSettings = __webpack_require__(56);
 	
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 	
-	var _SLDSButton = __webpack_require__(32);
+	var _SLDSButton = __webpack_require__(36);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSButtonGroup = __webpack_require__(73);
+	var _SLDSButtonGroup = __webpack_require__(78);
 	
 	var _SLDSButtonGroup2 = _interopRequireDefault(_SLDSButtonGroup);
 	
-	var _SLDSLookup = __webpack_require__(74);
+	var _SLDSLookup = __webpack_require__(79);
 	
 	var _SLDSLookup2 = _interopRequireDefault(_SLDSLookup);
 	
-	var _SLDSTooltip = __webpack_require__(81);
+	var _SLDSTooltip = __webpack_require__(86);
 	
 	var _SLDSTooltip2 = _interopRequireDefault(_SLDSTooltip);
 	
-	var _SLDSModal = __webpack_require__(82);
+	var _SLDSModal = __webpack_require__(87);
 	
 	var _SLDSModal2 = _interopRequireDefault(_SLDSModal);
 	
-	var _SLDSModalTrigger = __webpack_require__(83);
+	var _SLDSModalTrigger = __webpack_require__(88);
 	
 	var _SLDSModalTrigger2 = _interopRequireDefault(_SLDSModalTrigger);
 	
-	var _SLDSIcons = __webpack_require__(13);
+	var _SLDSIcons = __webpack_require__(22);
 	
 	var _SLDSIcons2 = _interopRequireDefault(_SLDSIcons);
 	
-	var _SLDSNotification = __webpack_require__(84);
+	var _SLDSNotification = __webpack_require__(89);
 	
 	var _SLDSNotification2 = _interopRequireDefault(_SLDSNotification);
 	
-	var _SLDSUtilityIcon = __webpack_require__(15);
+	var _SLDSUtilityIcon = __webpack_require__(24);
 	
 	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
 	
 	module.exports = {
 	  SLDSPicklistBase: _SLDSPicklistBase2['default'],
 	  SLDSDropdownBase: _SLDSDropdownBase2['default'],
-	  SLDSPicklistBaseListItem: _SLDSPicklistBaseListItem2['default'],
 	  SLDSSettings: _SLDSSettings2['default'],
 	  SLDSButton: _SLDSButton2['default'],
 	  SLDSButtonGroup: _SLDSButtonGroup2['default'],
@@ -154,265 +149,334 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSPopover = __webpack_require__(3);
+	var _lodashIsequal = __webpack_require__(3);
+	
+	var _lodashIsequal2 = _interopRequireDefault(_lodashIsequal);
+	
+	var _SLDSPopover = __webpack_require__(11);
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
-	var _list = __webpack_require__(12);
+	var _utils = __webpack_require__(14);
 	
-	var _list2 = _interopRequireDefault(_list);
+	var _SLDSIcons = __webpack_require__(22);
 	
-	var _listItem = __webpack_require__(25);
+	var displayName = "SLDSPicklist";
+	var propTypes = {
+	  onClick: _react2['default'].PropTypes.func,
+	  onSelect: _react2['default'].PropTypes.func.isRequired,
+	  onUpdateHighlighted: _react2['default'].PropTypes.func
+	};
+	var defaultProps = {
+	  className: '',
+	  disabled: false,
+	  initialFocus: false,
+	  label: 'Picklist',
+	  listClassName: '',
+	  listItemRenderer: null,
+	  modal: false,
+	  options: [],
+	  placeholder: 'Select an Option',
+	  theme: 'default',
+	  value: null
+	};
 	
-	var _listItem2 = _interopRequireDefault(_listItem);
+	var SLDSPicklist = (function (_React$Component) {
+	  _inherits(SLDSPicklist, _React$Component);
 	
-	var _listItemLabel = __webpack_require__(26);
+	  function SLDSPicklist(props) {
+	    _classCallCheck(this, SLDSPicklist);
 	
-	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
-	
-	var _SLDSIcons = __webpack_require__(13);
-	
-	var _SLDSIcons2 = __webpack_require__(13);
-	
-	var _utils = __webpack_require__(6);
-	
-	module.exports = _react2['default'].createClass({
-	  displayName: 'exports',
-	
-	  propTypes: {
-	    onClick: _react.PropTypes.func,
-	    onSelect: _react.PropTypes.func.isRequired,
-	    onUpdateHighlighted: _react.PropTypes.func
-	  },
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      placeholder: 'Select an Option',
-	      disabled: false,
-	      theme: 'default',
-	      label: 'Picklist',
-	      value: null,
-	      options: [],
-	      initialFocus: false,
-	      modal: false,
-	      className: '',
-	      listClassName: '',
-	      listItemRenderer: null
-	    };
-	  },
-	
-	  getInitialState: function getInitialState() {
-	    return {
-	      triggerId: null,
+	    _get(Object.getPrototypeOf(SLDSPicklist.prototype), 'constructor', this).call(this, props);
+	    this.state = {
+	      highlightedIndex: 0,
 	      isOpen: false,
 	      isFocused: false,
-	      highlightedIndex: 0,
-	      selectedIndex: this.getIndexByValue(this.props.value),
+	      isMounted: false,
 	      lastBlurredIndex: -1,
-	      lastBlurredTimeStamp: -1
+	      lastBlurredTimeStamp: -1,
+	      selectedIndex: this.getIndexByValue(this.props.value),
+	      triggerId: null
 	    };
-	  },
+	  }
 	
-	  componentDidMount: function componentDidMount() {
-	    var id = _react2['default'].findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
-	    this.setState({ triggerId: id });
-	
-	    if (this.props.initialFocus) {
-	      this.setFocus();
-	    }
-	  },
-	
-	  getIndexByValue: function getIndexByValue(value) {
-	    var foundIndex = -1;
-	    if (this.props.options && this.props.options.length) {
-	      this.props.options.some(function (element, index, array) {
-	        if (element && element.value === value) {
-	          foundIndex = index;
-	          return true;
-	        }
-	        return false;
+	  _createClass(SLDSPicklist, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var id = _react2['default'].findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
+	      this.setState({
+	        triggerId: id,
+	        isMounted: true
 	      });
-	    }
-	    return foundIndex;
-	  },
 	
-	  getValueByIndex: function getValueByIndex(index) {
-	    var option = this.props.options[index];
-	    if (option) {
-	      return this.props.options[index];
-	    }
-	  },
-	
-	  handleSelect: function handleSelect(index) {
-	    this.setState({ selectedIndex: index });
-	    this.setFocus();
-	    if (this.props.onSelect) {
-	      this.props.onSelect(this.getValueByIndex(index));
-	    }
-	  },
-	
-	  handleClose: function handleClose() {
-	    this.setState({ isOpen: false });
-	  },
-	
-	  handleClick: function handleClick(event) {
-	    _utils.EventUtil.trap(event);
-	    if (!this.state.isOpen) {
-	      this.setState({ isOpen: true });
-	      if (this.props.onClick) {
-	        this.props.onClick();
+	      if (this.props.initialFocus) {
+	        this.setFocus();
 	      }
-	    } else {
-	      this.handleClose();
 	    }
-	  },
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      if (this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp) {
+	        if (this.state.lastBlurredIndex === this.state.highlightedIndex) {
+	          this.handleClose();
+	        }
+	      }
+	      if (this.state.selectedIndex !== prevState.selectedIndex) {
+	        this.handleClose();
+	      } else if (this.state.isFocused && !prevState.isFocused) {
+	        this.setState({ isOpen: false });
+	      } else if (!this.state.isFocused && prevState.isFocused) {
+	        if (this.refs.list) {
+	          if (this.state.isMounted && this.refs.list) {
+	            if (_react2['default'].findDOMNode(this.refs.list).contains(document.activeElement)) {
+	              return;
+	            }
+	            this.setState({ isOpen: false });
+	          }
+	        }
+	      }
 	
-	  handleMouseDown: function handleMouseDown(event) {
-	    _utils.EventUtil.trapImmediate(event);
-	  },
-	
-	  handleBlur: function handleBlur(e) {
-	    this.setState({ isFocused: false });
-	  },
-	
-	  handleFocus: function handleFocus() {
-	    this.setState({ isFocused: true });
-	  },
-	
-	  setFocus: function setFocus() {
-	    if (this.isMounted()) {
-	      _react2['default'].findDOMNode(this.refs.triggerbutton).focus();
+	      if (this.props.value !== prevProps.value || !(0, _lodashIsequal2['default'])(this.props.options, prevProps.options)) {
+	        this.handleSelect(this.getIndexByValue(this.props.value));
+	      }
 	    }
-	  },
-	
-	  moveHighlight: function moveHighlight(delta) {},
-	
-	  handleKeyDown: function handleKeyDown(event) {
-	    if (event.keyCode) {
-	      if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE || event.keyCode === _utils.KEYS.DOWN || event.keyCode === _utils.KEYS.UP) {
-	        _utils.EventUtil.trapEvent(event);
-	
-	        this.setState({
-	          isOpen: true,
-	          highlightedIndex: 0
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.setState({ isMounted: false });
+	    }
+	  }, {
+	    key: 'getIndexByValue',
+	    value: function getIndexByValue(value) {
+	      var foundIndex = -1;
+	      if (this.props.options && this.props.options.length) {
+	        this.props.options.some(function (element, index, array) {
+	          if (element && element.value === value) {
+	            foundIndex = index;
+	            return true;
+	          }
+	          return false;
 	        });
 	      }
+	      return foundIndex;
 	    }
-	  },
-	
-	  handleUpdateHighlighted: function handleUpdateHighlighted(nextIndex) {
-	    this.setState({ highlightedIndex: nextIndex });
-	  },
-	
-	  handleListBlur: function handleListBlur() {
-	    this.setState({ isOpen: false });
-	  },
-	
-	  handleCancel: function handleCancel() {
-	    this.setFocus();
-	  },
-	
-	  getListItemRenderer: function getListItemRenderer() {
-	    return this.props.listItemRenderer ? this.props.listItemRenderer : _listItemLabel2['default'];
-	  },
-	
-	  getPopoverContent: function getPopoverContent() {
-	    return _react2['default'].createElement(_list2['default'], {
-	      triggerId: this.state.triggerId,
-	      ref: 'list',
-	      options: this.props.options,
-	      label: this.props.label,
-	      className: this.props.listClassName,
-	      highlightedIndex: this.state.highlightedIndex,
-	      selectedIndex: this.state.selectedIndex,
-	      onSelect: this.handleSelect,
-	      onUpdateHighlighted: this.handleUpdateHighlighted,
-	      onListBlur: this.handleListBlur,
-	      onListItemBlur: this.handleListItemBlur,
-	      onCancel: this.handleCancel,
-	      itemRenderer: this.getListItemRenderer(),
-	      theme: this.props.theme });
-	  },
-	
-	  getSimplePopover: function getSimplePopover() {
-	    return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement('div', {
-	      className: 'slds-dropdown slds-dropdown--left slds-dropdown--menu',
-	      style: { maxHeight: '20em' } }, this.getPopoverContent()) : null;
-	  },
-	
-	  getModalPopover: function getModalPopover() {
-	    return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement(_SLDSPopover2['default'], {
-	      className: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
-	      targetElement: this.refs.date,
-	      closeOnTabKey: true,
-	      onClose: this.handleCancel }, this.getPopoverContent()) : null;
-	  },
-	
-	  getPlaceholder: function getPlaceholder() {
-	    var option = this.props.options[this.state.selectedIndex];
-	    return option && option.label ? option.label : this.props.placeholder;
-	  },
-	
-	  handleListItemBlur: function handleListItemBlur(index, relatedTarget) {
-	    this.setState({
-	      lastBlurredIndex: index,
-	      lastBlurredTimeStamp: Date.now()
-	    });
-	  },
-	
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	
-	    if (this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp) {
-	      if (this.state.lastBlurredIndex === this.state.highlightedIndex) {
+	  }, {
+	    key: 'getValueByIndex',
+	    value: function getValueByIndex(index) {
+	      var option = this.props.options[index];
+	      if (option) {
+	        return this.props.options[index];
+	      }
+	    }
+	  }, {
+	    key: 'handleSelect',
+	    value: function handleSelect(index) {
+	      this.setState({ selectedIndex: index });
+	      this.setFocus();
+	      if (this.props.onSelect) {
+	        this.props.onSelect(this.getValueByIndex(index));
+	      }
+	    }
+	  }, {
+	    key: 'handleClose',
+	    value: function handleClose() {
+	      this.setState({ isOpen: false });
+	    }
+	  }, {
+	    key: 'handleClick',
+	    value: function handleClick(event) {
+	      _utils.EventUtil.trap(event);
+	      if (!this.state.isOpen) {
+	        this.setState({ isOpen: true });
+	        if (this.props.onClick) {
+	          this.props.onClick();
+	        }
+	      } else {
 	        this.handleClose();
 	      }
 	    }
-	    if (this.state.selectedIndex !== prevState.selectedIndex) {
-	      this.handleClose();
-	    } else if (this.state.isFocused && !prevState.isFocused) {
-	      this.setState({ isOpen: false });
-	    } else if (!this.state.isFocused && prevState.isFocused) {
-	      if (this.refs.list) {
-	        if (this.isMounted() && this.refs.list) {
-	          if (this.refs.list.getDOMNode().contains(document.activeElement)) {
-	            return;
-	          }
-	          this.setState({ isOpen: false });
+	  }, {
+	    key: 'handleMouseDown',
+	    value: function handleMouseDown(event) {
+	      _utils.EventUtil.trapImmediate(event);
+	    }
+	  }, {
+	    key: 'handleBlur',
+	    value: function handleBlur(e) {
+	      this.setState({ isFocused: false });
+	    }
+	  }, {
+	    key: 'handleFocus',
+	    value: function handleFocus() {
+	      this.setState({ isFocused: true });
+	    }
+	  }, {
+	    key: 'setFocus',
+	    value: function setFocus() {
+	      if (this.state.isMounted) {
+	        _react2['default'].findDOMNode(this.refs.triggerbutton).focus();
+	      }
+	    }
+	  }, {
+	    key: 'handleKeyDown',
+	    value: function handleKeyDown(event) {
+	      if (event.keyCode) {
+	        if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE || event.keyCode === _utils.KEYS.DOWN || event.keyCode === _utils.KEYS.UP) {
+	          _utils.EventUtil.trapEvent(event);
+	
+	          this.setState({
+	            isOpen: true,
+	            highlightedIndex: 0
+	          });
 	        }
 	      }
 	    }
-	
-	    if (this.props.value !== prevProps.value) {
-	      this.handleSelect(this.getIndexByValue(this.props.value));
+	  }, {
+	    key: 'handleUpdateHighlighted',
+	    value: function handleUpdateHighlighted(nextIndex) {
+	      this.setState({ highlightedIndex: nextIndex });
 	    }
-	  },
+	  }, {
+	    key: 'handleListBlur',
+	    value: function handleListBlur() {
+	      this.setState({ isOpen: false });
+	    }
+	  }, {
+	    key: 'handleCancel',
+	    value: function handleCancel() {
+	      this.setFocus();
+	    }
+	  }, {
+	    key: 'getListItemRenderer',
+	    value: function getListItemRenderer() {
+	      return this.props.listItemRenderer ? this.props.listItemRenderer : _utils.ListItemLabel;
+	    }
+	  }, {
+	    key: 'getPopoverContent',
+	    value: function getPopoverContent() {
+	      return _react2['default'].createElement(_utils.List, {
+	        triggerId: this.state.triggerId,
+	        ref: 'list',
+	        options: this.props.options,
+	        label: this.props.label,
+	        className: this.props.listClassName,
+	        highlightedIndex: this.state.highlightedIndex,
+	        selectedIndex: this.state.selectedIndex,
+	        onSelect: this.handleSelect.bind(this),
+	        onUpdateHighlighted: this.handleUpdateHighlighted.bind(this),
+	        onListBlur: this.handleListBlur.bind(this),
+	        onListItemBlur: this.handleListItemBlur.bind(this),
+	        onCancel: this.handleCancel.bind(this),
+	        itemRenderer: this.getListItemRenderer(),
+	        theme: this.props.theme });
+	    }
+	  }, {
+	    key: 'getSimplePopover',
+	    value: function getSimplePopover() {
+	      return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement('div', {
+	        className: 'slds-dropdown slds-dropdown--left slds-dropdown--menu',
+	        style: { maxHeight: '20em' } }, this.getPopoverContent()) : null;
+	    }
+	  }, {
+	    key: 'getModalPopover',
+	    value: function getModalPopover() {
+	      return !this.props.disabled && this.state.isOpen ? _react2['default'].createElement(_SLDSPopover2['default'], {
+	        className: 'slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu',
+	        targetElement: this.refs.date,
+	        closeOnTabKey: true,
+	        onClose: this.handleCancel.bind(this) }, this.getPopoverContent()) : null;
+	    }
+	  }, {
+	    key: 'getPlaceholder',
+	    value: function getPlaceholder() {
+	      var option = this.props.options[this.state.selectedIndex];
+	      return option && option.label ? option.label : this.props.placeholder;
+	    }
+	  }, {
+	    key: 'handleListItemBlur',
+	    value: function handleListItemBlur(index, relatedTarget) {
+	      this.setState({
+	        lastBlurredIndex: index,
+	        lastBlurredTimeStamp: Date.now()
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement('div', { className: 'slds-picklist', 'aria-expanded': this.state.isOpen }, _react2['default'].createElement('button', {
+	        id: this.state.triggerId,
+	        ref: 'triggerbutton',
+	        className: 'slds-button slds-button--neutral slds-picklist__label',
+	        'aria-haspopup': 'true',
+	        onBlur: this.handleBlur.bind(this),
+	        onFocus: this.handleFocus.bind(this),
+	        onClick: this.handleClick.bind(this),
+	        onMouseDown: this.handleMouseDown.bind(this),
+	        tabIndex: this.state.isOpen ? -1 : 0,
+	        onKeyDown: this.handleKeyDown.bind(this) }, _react2['default'].createElement('span', { className: 'slds-truncate' }, this.getPlaceholder()), _react2['default'].createElement(_SLDSIcons.Icon, { name: 'down', category: 'utility' })), this.props.modal ? this.getModalPopover() : this.getSimplePopover());
+	    }
+	  }]);
 	
-	  render: function render() {
-	    return _react2['default'].createElement('div', { className: 'slds-picklist', 'aria-expanded': this.state.isOpen }, _react2['default'].createElement('button', {
-	      id: this.state.triggerId,
-	      ref: 'triggerbutton',
-	      className: 'slds-button slds-button--neutral slds-picklist__label',
-	      'aria-haspopup': 'true',
-	      onBlur: this.handleBlur,
-	      onFocus: this.handleFocus,
-	      onClick: this.handleClick,
-	      onMouseDown: this.handleMouseDown,
-	      tabIndex: this.state.isOpen ? -1 : 0,
-	      onKeyDown: this.handleKeyDown }, _react2['default'].createElement('span', { className: 'slds-truncate' }, this.getPlaceholder()), _react2['default'].createElement(_SLDSIcons2.Icon, { name: 'down', category: 'utility' })), this.props.modal ? this.getModalPopover() : this.getSimplePopover());
-	  }
+	  return SLDSPicklist;
+	})(_react2['default'].Component);
 	
-	});
+	SLDSPicklist.displayName = displayName;
+	SLDSPicklist.propTypes = propTypes;
+	SLDSPicklist.defaultProps = defaultProps;
 	
-	module.exports.ListItem = _listItem2['default'];
-	module.exports.ListItemLabel = _listItemLabel2['default'];
+	module.exports = SLDSPicklist;
+	module.exports.ListItem = _utils.ListItem;
+	module.exports.ListItemLabel = _utils.ListItemLabel;
 
 /***/ },
 /* 2 */
@@ -422,6 +486,1292 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * lodash 3.0.4 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modern modularize exports="npm" -o ./`
+	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+	var baseIsEqual = __webpack_require__(4),
+	    bindCallback = __webpack_require__(10);
+	
+	/**
+	 * Performs a deep comparison between two values to determine if they are
+	 * equivalent. If `customizer` is provided it is invoked to compare values.
+	 * If `customizer` returns `undefined` comparisons are handled by the method
+	 * instead. The `customizer` is bound to `thisArg` and invoked with three
+	 * arguments: (value, other [, index|key]).
+	 *
+	 * **Note:** This method supports comparing arrays, booleans, `Date` objects,
+	 * numbers, `Object` objects, regexes, and strings. Objects are compared by
+	 * their own, not inherited, enumerable properties. Functions and DOM nodes
+	 * are **not** supported. Provide a customizer function to extend support
+	 * for comparing other values.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @alias eq
+	 * @category Lang
+	 * @param {*} value The value to compare.
+	 * @param {*} other The other value to compare.
+	 * @param {Function} [customizer] The function to customize value comparisons.
+	 * @param {*} [thisArg] The `this` binding of `customizer`.
+	 * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+	 * @example
+	 *
+	 * var object = { 'user': 'fred' };
+	 * var other = { 'user': 'fred' };
+	 *
+	 * object == other;
+	 * // => false
+	 *
+	 * _.isEqual(object, other);
+	 * // => true
+	 *
+	 * // using a customizer callback
+	 * var array = ['hello', 'goodbye'];
+	 * var other = ['hi', 'goodbye'];
+	 *
+	 * _.isEqual(array, other, function(value, other) {
+	 *   if (_.every([value, other], RegExp.prototype.test, /^h(?:i|ello)$/)) {
+	 *     return true;
+	 *   }
+	 * });
+	 * // => true
+	 */
+	function isEqual(value, other, customizer, thisArg) {
+	  customizer = typeof customizer == 'function' ? bindCallback(customizer, thisArg, 3) : undefined;
+	  var result = customizer ? customizer(value, other) : undefined;
+	  return  result === undefined ? baseIsEqual(value, other, customizer) : !!result;
+	}
+	
+	module.exports = isEqual;
+
+
+/***/ },
+/* 4 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * lodash 3.0.7 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modern modularize exports="npm" -o ./`
+	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+	var isArray = __webpack_require__(5),
+	    isTypedArray = __webpack_require__(6),
+	    keys = __webpack_require__(7);
+	
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]',
+	    arrayTag = '[object Array]',
+	    boolTag = '[object Boolean]',
+	    dateTag = '[object Date]',
+	    errorTag = '[object Error]',
+	    numberTag = '[object Number]',
+	    objectTag = '[object Object]',
+	    regexpTag = '[object RegExp]',
+	    stringTag = '[object String]';
+	
+	/**
+	 * Checks if `value` is object-like.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+	
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/**
+	 * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+	
+	/**
+	 * A specialized version of `_.some` for arrays without support for callback
+	 * shorthands and `this` binding.
+	 *
+	 * @private
+	 * @param {Array} array The array to iterate over.
+	 * @param {Function} predicate The function invoked per iteration.
+	 * @returns {boolean} Returns `true` if any element passes the predicate check,
+	 *  else `false`.
+	 */
+	function arraySome(array, predicate) {
+	  var index = -1,
+	      length = array.length;
+	
+	  while (++index < length) {
+	    if (predicate(array[index], index, array)) {
+	      return true;
+	    }
+	  }
+	  return false;
+	}
+	
+	/**
+	 * The base implementation of `_.isEqual` without support for `this` binding
+	 * `customizer` functions.
+	 *
+	 * @private
+	 * @param {*} value The value to compare.
+	 * @param {*} other The other value to compare.
+	 * @param {Function} [customizer] The function to customize comparing values.
+	 * @param {boolean} [isLoose] Specify performing partial comparisons.
+	 * @param {Array} [stackA] Tracks traversed `value` objects.
+	 * @param {Array} [stackB] Tracks traversed `other` objects.
+	 * @returns {boolean} Returns `true` if the values are equivalent, else `false`.
+	 */
+	function baseIsEqual(value, other, customizer, isLoose, stackA, stackB) {
+	  if (value === other) {
+	    return true;
+	  }
+	  if (value == null || other == null || (!isObject(value) && !isObjectLike(other))) {
+	    return value !== value && other !== other;
+	  }
+	  return baseIsEqualDeep(value, other, baseIsEqual, customizer, isLoose, stackA, stackB);
+	}
+	
+	/**
+	 * A specialized version of `baseIsEqual` for arrays and objects which performs
+	 * deep comparisons and tracks traversed objects enabling objects with circular
+	 * references to be compared.
+	 *
+	 * @private
+	 * @param {Object} object The object to compare.
+	 * @param {Object} other The other object to compare.
+	 * @param {Function} equalFunc The function to determine equivalents of values.
+	 * @param {Function} [customizer] The function to customize comparing objects.
+	 * @param {boolean} [isLoose] Specify performing partial comparisons.
+	 * @param {Array} [stackA=[]] Tracks traversed `value` objects.
+	 * @param {Array} [stackB=[]] Tracks traversed `other` objects.
+	 * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+	 */
+	function baseIsEqualDeep(object, other, equalFunc, customizer, isLoose, stackA, stackB) {
+	  var objIsArr = isArray(object),
+	      othIsArr = isArray(other),
+	      objTag = arrayTag,
+	      othTag = arrayTag;
+	
+	  if (!objIsArr) {
+	    objTag = objToString.call(object);
+	    if (objTag == argsTag) {
+	      objTag = objectTag;
+	    } else if (objTag != objectTag) {
+	      objIsArr = isTypedArray(object);
+	    }
+	  }
+	  if (!othIsArr) {
+	    othTag = objToString.call(other);
+	    if (othTag == argsTag) {
+	      othTag = objectTag;
+	    } else if (othTag != objectTag) {
+	      othIsArr = isTypedArray(other);
+	    }
+	  }
+	  var objIsObj = objTag == objectTag,
+	      othIsObj = othTag == objectTag,
+	      isSameTag = objTag == othTag;
+	
+	  if (isSameTag && !(objIsArr || objIsObj)) {
+	    return equalByTag(object, other, objTag);
+	  }
+	  if (!isLoose) {
+	    var objIsWrapped = objIsObj && hasOwnProperty.call(object, '__wrapped__'),
+	        othIsWrapped = othIsObj && hasOwnProperty.call(other, '__wrapped__');
+	
+	    if (objIsWrapped || othIsWrapped) {
+	      return equalFunc(objIsWrapped ? object.value() : object, othIsWrapped ? other.value() : other, customizer, isLoose, stackA, stackB);
+	    }
+	  }
+	  if (!isSameTag) {
+	    return false;
+	  }
+	  // Assume cyclic values are equal.
+	  // For more information on detecting circular references see https://es5.github.io/#JO.
+	  stackA || (stackA = []);
+	  stackB || (stackB = []);
+	
+	  var length = stackA.length;
+	  while (length--) {
+	    if (stackA[length] == object) {
+	      return stackB[length] == other;
+	    }
+	  }
+	  // Add `object` and `other` to the stack of traversed objects.
+	  stackA.push(object);
+	  stackB.push(other);
+	
+	  var result = (objIsArr ? equalArrays : equalObjects)(object, other, equalFunc, customizer, isLoose, stackA, stackB);
+	
+	  stackA.pop();
+	  stackB.pop();
+	
+	  return result;
+	}
+	
+	/**
+	 * A specialized version of `baseIsEqualDeep` for arrays with support for
+	 * partial deep comparisons.
+	 *
+	 * @private
+	 * @param {Array} array The array to compare.
+	 * @param {Array} other The other array to compare.
+	 * @param {Function} equalFunc The function to determine equivalents of values.
+	 * @param {Function} [customizer] The function to customize comparing arrays.
+	 * @param {boolean} [isLoose] Specify performing partial comparisons.
+	 * @param {Array} [stackA] Tracks traversed `value` objects.
+	 * @param {Array} [stackB] Tracks traversed `other` objects.
+	 * @returns {boolean} Returns `true` if the arrays are equivalent, else `false`.
+	 */
+	function equalArrays(array, other, equalFunc, customizer, isLoose, stackA, stackB) {
+	  var index = -1,
+	      arrLength = array.length,
+	      othLength = other.length;
+	
+	  if (arrLength != othLength && !(isLoose && othLength > arrLength)) {
+	    return false;
+	  }
+	  // Ignore non-index properties.
+	  while (++index < arrLength) {
+	    var arrValue = array[index],
+	        othValue = other[index],
+	        result = customizer ? customizer(isLoose ? othValue : arrValue, isLoose ? arrValue : othValue, index) : undefined;
+	
+	    if (result !== undefined) {
+	      if (result) {
+	        continue;
+	      }
+	      return false;
+	    }
+	    // Recursively compare arrays (susceptible to call stack limits).
+	    if (isLoose) {
+	      if (!arraySome(other, function(othValue) {
+	            return arrValue === othValue || equalFunc(arrValue, othValue, customizer, isLoose, stackA, stackB);
+	          })) {
+	        return false;
+	      }
+	    } else if (!(arrValue === othValue || equalFunc(arrValue, othValue, customizer, isLoose, stackA, stackB))) {
+	      return false;
+	    }
+	  }
+	  return true;
+	}
+	
+	/**
+	 * A specialized version of `baseIsEqualDeep` for comparing objects of
+	 * the same `toStringTag`.
+	 *
+	 * **Note:** This function only supports comparing values with tags of
+	 * `Boolean`, `Date`, `Error`, `Number`, `RegExp`, or `String`.
+	 *
+	 * @private
+	 * @param {Object} value The object to compare.
+	 * @param {Object} other The other object to compare.
+	 * @param {string} tag The `toStringTag` of the objects to compare.
+	 * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+	 */
+	function equalByTag(object, other, tag) {
+	  switch (tag) {
+	    case boolTag:
+	    case dateTag:
+	      // Coerce dates and booleans to numbers, dates to milliseconds and booleans
+	      // to `1` or `0` treating invalid dates coerced to `NaN` as not equal.
+	      return +object == +other;
+	
+	    case errorTag:
+	      return object.name == other.name && object.message == other.message;
+	
+	    case numberTag:
+	      // Treat `NaN` vs. `NaN` as equal.
+	      return (object != +object)
+	        ? other != +other
+	        : object == +other;
+	
+	    case regexpTag:
+	    case stringTag:
+	      // Coerce regexes to strings and treat strings primitives and string
+	      // objects as equal. See https://es5.github.io/#x15.10.6.4 for more details.
+	      return object == (other + '');
+	  }
+	  return false;
+	}
+	
+	/**
+	 * A specialized version of `baseIsEqualDeep` for objects with support for
+	 * partial deep comparisons.
+	 *
+	 * @private
+	 * @param {Object} object The object to compare.
+	 * @param {Object} other The other object to compare.
+	 * @param {Function} equalFunc The function to determine equivalents of values.
+	 * @param {Function} [customizer] The function to customize comparing values.
+	 * @param {boolean} [isLoose] Specify performing partial comparisons.
+	 * @param {Array} [stackA] Tracks traversed `value` objects.
+	 * @param {Array} [stackB] Tracks traversed `other` objects.
+	 * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+	 */
+	function equalObjects(object, other, equalFunc, customizer, isLoose, stackA, stackB) {
+	  var objProps = keys(object),
+	      objLength = objProps.length,
+	      othProps = keys(other),
+	      othLength = othProps.length;
+	
+	  if (objLength != othLength && !isLoose) {
+	    return false;
+	  }
+	  var index = objLength;
+	  while (index--) {
+	    var key = objProps[index];
+	    if (!(isLoose ? key in other : hasOwnProperty.call(other, key))) {
+	      return false;
+	    }
+	  }
+	  var skipCtor = isLoose;
+	  while (++index < objLength) {
+	    key = objProps[index];
+	    var objValue = object[key],
+	        othValue = other[key],
+	        result = customizer ? customizer(isLoose ? othValue : objValue, isLoose? objValue : othValue, key) : undefined;
+	
+	    // Recursively compare objects (susceptible to call stack limits).
+	    if (!(result === undefined ? equalFunc(objValue, othValue, customizer, isLoose, stackA, stackB) : result)) {
+	      return false;
+	    }
+	    skipCtor || (skipCtor = key == 'constructor');
+	  }
+	  if (!skipCtor) {
+	    var objCtor = object.constructor,
+	        othCtor = other.constructor;
+	
+	    // Non `Object` object instances with different constructors are not equal.
+	    if (objCtor != othCtor &&
+	        ('constructor' in object && 'constructor' in other) &&
+	        !(typeof objCtor == 'function' && objCtor instanceof objCtor &&
+	          typeof othCtor == 'function' && othCtor instanceof othCtor)) {
+	      return false;
+	    }
+	  }
+	  return true;
+	}
+	
+	/**
+	 * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
+	 * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(1);
+	 * // => false
+	 */
+	function isObject(value) {
+	  // Avoid a V8 JIT bug in Chrome 19-20.
+	  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
+	  var type = typeof value;
+	  return !!value && (type == 'object' || type == 'function');
+	}
+	
+	module.exports = baseIsEqual;
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	/**
+	 * lodash 3.0.4 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modern modularize exports="npm" -o ./`
+	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+	
+	/** `Object#toString` result references. */
+	var arrayTag = '[object Array]',
+	    funcTag = '[object Function]';
+	
+	/** Used to detect host constructors (Safari > 5). */
+	var reIsHostCtor = /^\[object .+?Constructor\]$/;
+	
+	/**
+	 * Checks if `value` is object-like.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+	
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+	
+	/** Used to resolve the decompiled source of functions. */
+	var fnToString = Function.prototype.toString;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/**
+	 * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+	
+	/** Used to detect if a method is native. */
+	var reIsNative = RegExp('^' +
+	  fnToString.call(hasOwnProperty).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
+	  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+	);
+	
+	/* Native method references for those with the same name as other `lodash` methods. */
+	var nativeIsArray = getNative(Array, 'isArray');
+	
+	/**
+	 * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
+	 * of an array-like value.
+	 */
+	var MAX_SAFE_INTEGER = 9007199254740991;
+	
+	/**
+	 * Gets the native function at `key` of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @param {string} key The key of the method to get.
+	 * @returns {*} Returns the function if it's native, else `undefined`.
+	 */
+	function getNative(object, key) {
+	  var value = object == null ? undefined : object[key];
+	  return isNative(value) ? value : undefined;
+	}
+	
+	/**
+	 * Checks if `value` is a valid array-like length.
+	 *
+	 * **Note:** This function is based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+	 */
+	function isLength(value) {
+	  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+	}
+	
+	/**
+	 * Checks if `value` is classified as an `Array` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isArray([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isArray(function() { return arguments; }());
+	 * // => false
+	 */
+	var isArray = nativeIsArray || function(value) {
+	  return isObjectLike(value) && isLength(value.length) && objToString.call(value) == arrayTag;
+	};
+	
+	/**
+	 * Checks if `value` is classified as a `Function` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isFunction(_);
+	 * // => true
+	 *
+	 * _.isFunction(/abc/);
+	 * // => false
+	 */
+	function isFunction(value) {
+	  // The use of `Object#toString` avoids issues with the `typeof` operator
+	  // in older versions of Chrome and Safari which return 'function' for regexes
+	  // and Safari 8 equivalents which return 'object' for typed array constructors.
+	  return isObject(value) && objToString.call(value) == funcTag;
+	}
+	
+	/**
+	 * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
+	 * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(1);
+	 * // => false
+	 */
+	function isObject(value) {
+	  // Avoid a V8 JIT bug in Chrome 19-20.
+	  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
+	  var type = typeof value;
+	  return !!value && (type == 'object' || type == 'function');
+	}
+	
+	/**
+	 * Checks if `value` is a native function.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a native function, else `false`.
+	 * @example
+	 *
+	 * _.isNative(Array.prototype.push);
+	 * // => true
+	 *
+	 * _.isNative(_);
+	 * // => false
+	 */
+	function isNative(value) {
+	  if (value == null) {
+	    return false;
+	  }
+	  if (isFunction(value)) {
+	    return reIsNative.test(fnToString.call(value));
+	  }
+	  return isObjectLike(value) && reIsHostCtor.test(value);
+	}
+	
+	module.exports = isArray;
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	/**
+	 * lodash 3.0.2 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modern modularize exports="npm" -o ./`
+	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+	
+	/** `Object#toString` result references. */
+	var argsTag = '[object Arguments]',
+	    arrayTag = '[object Array]',
+	    boolTag = '[object Boolean]',
+	    dateTag = '[object Date]',
+	    errorTag = '[object Error]',
+	    funcTag = '[object Function]',
+	    mapTag = '[object Map]',
+	    numberTag = '[object Number]',
+	    objectTag = '[object Object]',
+	    regexpTag = '[object RegExp]',
+	    setTag = '[object Set]',
+	    stringTag = '[object String]',
+	    weakMapTag = '[object WeakMap]';
+	
+	var arrayBufferTag = '[object ArrayBuffer]',
+	    float32Tag = '[object Float32Array]',
+	    float64Tag = '[object Float64Array]',
+	    int8Tag = '[object Int8Array]',
+	    int16Tag = '[object Int16Array]',
+	    int32Tag = '[object Int32Array]',
+	    uint8Tag = '[object Uint8Array]',
+	    uint8ClampedTag = '[object Uint8ClampedArray]',
+	    uint16Tag = '[object Uint16Array]',
+	    uint32Tag = '[object Uint32Array]';
+	
+	/** Used to identify `toStringTag` values of typed arrays. */
+	var typedArrayTags = {};
+	typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
+	typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
+	typedArrayTags[int32Tag] = typedArrayTags[uint8Tag] =
+	typedArrayTags[uint8ClampedTag] = typedArrayTags[uint16Tag] =
+	typedArrayTags[uint32Tag] = true;
+	typedArrayTags[argsTag] = typedArrayTags[arrayTag] =
+	typedArrayTags[arrayBufferTag] = typedArrayTags[boolTag] =
+	typedArrayTags[dateTag] = typedArrayTags[errorTag] =
+	typedArrayTags[funcTag] = typedArrayTags[mapTag] =
+	typedArrayTags[numberTag] = typedArrayTags[objectTag] =
+	typedArrayTags[regexpTag] = typedArrayTags[setTag] =
+	typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
+	
+	/**
+	 * Checks if `value` is object-like.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+	
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+	
+	/**
+	 * Used to resolve the [`toStringTag`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+	
+	/**
+	 * Used as the [maximum length](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-number.max_safe_integer)
+	 * of an array-like value.
+	 */
+	var MAX_SAFE_INTEGER = 9007199254740991;
+	
+	/**
+	 * Checks if `value` is a valid array-like length.
+	 *
+	 * **Note:** This function is based on [`ToLength`](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-tolength).
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+	 */
+	function isLength(value) {
+	  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+	}
+	
+	/**
+	 * Checks if `value` is classified as a typed array.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isTypedArray(new Uint8Array);
+	 * // => true
+	 *
+	 * _.isTypedArray([]);
+	 * // => false
+	 */
+	function isTypedArray(value) {
+	  return isObjectLike(value) && isLength(value.length) && !!typedArrayTags[objToString.call(value)];
+	}
+	
+	module.exports = isTypedArray;
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/**
+	 * lodash 3.1.2 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modern modularize exports="npm" -o ./`
+	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+	var getNative = __webpack_require__(8),
+	    isArguments = __webpack_require__(9),
+	    isArray = __webpack_require__(5);
+	
+	/** Used to detect unsigned integer values. */
+	var reIsUint = /^\d+$/;
+	
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/* Native method references for those with the same name as other `lodash` methods. */
+	var nativeKeys = getNative(Object, 'keys');
+	
+	/**
+	 * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
+	 * of an array-like value.
+	 */
+	var MAX_SAFE_INTEGER = 9007199254740991;
+	
+	/**
+	 * The base implementation of `_.property` without support for deep paths.
+	 *
+	 * @private
+	 * @param {string} key The key of the property to get.
+	 * @returns {Function} Returns the new function.
+	 */
+	function baseProperty(key) {
+	  return function(object) {
+	    return object == null ? undefined : object[key];
+	  };
+	}
+	
+	/**
+	 * Gets the "length" property value of `object`.
+	 *
+	 * **Note:** This function is used to avoid a [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792)
+	 * that affects Safari on at least iOS 8.1-8.3 ARM64.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {*} Returns the "length" value.
+	 */
+	var getLength = baseProperty('length');
+	
+	/**
+	 * Checks if `value` is array-like.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+	 */
+	function isArrayLike(value) {
+	  return value != null && isLength(getLength(value));
+	}
+	
+	/**
+	 * Checks if `value` is a valid array-like index.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
+	 * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+	 */
+	function isIndex(value, length) {
+	  value = (typeof value == 'number' || reIsUint.test(value)) ? +value : -1;
+	  length = length == null ? MAX_SAFE_INTEGER : length;
+	  return value > -1 && value % 1 == 0 && value < length;
+	}
+	
+	/**
+	 * Checks if `value` is a valid array-like length.
+	 *
+	 * **Note:** This function is based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+	 */
+	function isLength(value) {
+	  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+	}
+	
+	/**
+	 * A fallback implementation of `Object.keys` which creates an array of the
+	 * own enumerable property names of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 */
+	function shimKeys(object) {
+	  var props = keysIn(object),
+	      propsLength = props.length,
+	      length = propsLength && object.length;
+	
+	  var allowIndexes = !!length && isLength(length) &&
+	    (isArray(object) || isArguments(object));
+	
+	  var index = -1,
+	      result = [];
+	
+	  while (++index < propsLength) {
+	    var key = props[index];
+	    if ((allowIndexes && isIndex(key, length)) || hasOwnProperty.call(object, key)) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+	
+	/**
+	 * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
+	 * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(1);
+	 * // => false
+	 */
+	function isObject(value) {
+	  // Avoid a V8 JIT bug in Chrome 19-20.
+	  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
+	  var type = typeof value;
+	  return !!value && (type == 'object' || type == 'function');
+	}
+	
+	/**
+	 * Creates an array of the own enumerable property names of `object`.
+	 *
+	 * **Note:** Non-object values are coerced to objects. See the
+	 * [ES spec](http://ecma-international.org/ecma-262/6.0/#sec-object.keys)
+	 * for more details.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.keys(new Foo);
+	 * // => ['a', 'b'] (iteration order is not guaranteed)
+	 *
+	 * _.keys('hi');
+	 * // => ['0', '1']
+	 */
+	var keys = !nativeKeys ? shimKeys : function(object) {
+	  var Ctor = object == null ? undefined : object.constructor;
+	  if ((typeof Ctor == 'function' && Ctor.prototype === object) ||
+	      (typeof object != 'function' && isArrayLike(object))) {
+	    return shimKeys(object);
+	  }
+	  return isObject(object) ? nativeKeys(object) : [];
+	};
+	
+	/**
+	 * Creates an array of the own and inherited enumerable property names of `object`.
+	 *
+	 * **Note:** Non-object values are coerced to objects.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Object
+	 * @param {Object} object The object to query.
+	 * @returns {Array} Returns the array of property names.
+	 * @example
+	 *
+	 * function Foo() {
+	 *   this.a = 1;
+	 *   this.b = 2;
+	 * }
+	 *
+	 * Foo.prototype.c = 3;
+	 *
+	 * _.keysIn(new Foo);
+	 * // => ['a', 'b', 'c'] (iteration order is not guaranteed)
+	 */
+	function keysIn(object) {
+	  if (object == null) {
+	    return [];
+	  }
+	  if (!isObject(object)) {
+	    object = Object(object);
+	  }
+	  var length = object.length;
+	  length = (length && isLength(length) &&
+	    (isArray(object) || isArguments(object)) && length) || 0;
+	
+	  var Ctor = object.constructor,
+	      index = -1,
+	      isProto = typeof Ctor == 'function' && Ctor.prototype === object,
+	      result = Array(length),
+	      skipIndexes = length > 0;
+	
+	  while (++index < length) {
+	    result[index] = (index + '');
+	  }
+	  for (var key in object) {
+	    if (!(skipIndexes && isIndex(key, length)) &&
+	        !(key == 'constructor' && (isProto || !hasOwnProperty.call(object, key)))) {
+	      result.push(key);
+	    }
+	  }
+	  return result;
+	}
+	
+	module.exports = keys;
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	/**
+	 * lodash 3.9.1 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modern modularize exports="npm" -o ./`
+	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+	
+	/** `Object#toString` result references. */
+	var funcTag = '[object Function]';
+	
+	/** Used to detect host constructors (Safari > 5). */
+	var reIsHostCtor = /^\[object .+?Constructor\]$/;
+	
+	/**
+	 * Checks if `value` is object-like.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+	
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+	
+	/** Used to resolve the decompiled source of functions. */
+	var fnToString = Function.prototype.toString;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/**
+	 * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objToString = objectProto.toString;
+	
+	/** Used to detect if a method is native. */
+	var reIsNative = RegExp('^' +
+	  fnToString.call(hasOwnProperty).replace(/[\\^$.*+?()[\]{}|]/g, '\\$&')
+	  .replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, '$1.*?') + '$'
+	);
+	
+	/**
+	 * Gets the native function at `key` of `object`.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @param {string} key The key of the method to get.
+	 * @returns {*} Returns the function if it's native, else `undefined`.
+	 */
+	function getNative(object, key) {
+	  var value = object == null ? undefined : object[key];
+	  return isNative(value) ? value : undefined;
+	}
+	
+	/**
+	 * Checks if `value` is classified as a `Function` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isFunction(_);
+	 * // => true
+	 *
+	 * _.isFunction(/abc/);
+	 * // => false
+	 */
+	function isFunction(value) {
+	  // The use of `Object#toString` avoids issues with the `typeof` operator
+	  // in older versions of Chrome and Safari which return 'function' for regexes
+	  // and Safari 8 equivalents which return 'object' for typed array constructors.
+	  return isObject(value) && objToString.call(value) == funcTag;
+	}
+	
+	/**
+	 * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
+	 * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+	 * @example
+	 *
+	 * _.isObject({});
+	 * // => true
+	 *
+	 * _.isObject([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObject(1);
+	 * // => false
+	 */
+	function isObject(value) {
+	  // Avoid a V8 JIT bug in Chrome 19-20.
+	  // See https://code.google.com/p/v8/issues/detail?id=2291 for more details.
+	  var type = typeof value;
+	  return !!value && (type == 'object' || type == 'function');
+	}
+	
+	/**
+	 * Checks if `value` is a native function.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a native function, else `false`.
+	 * @example
+	 *
+	 * _.isNative(Array.prototype.push);
+	 * // => true
+	 *
+	 * _.isNative(_);
+	 * // => false
+	 */
+	function isNative(value) {
+	  if (value == null) {
+	    return false;
+	  }
+	  if (isFunction(value)) {
+	    return reIsNative.test(fnToString.call(value));
+	  }
+	  return isObjectLike(value) && reIsHostCtor.test(value);
+	}
+	
+	module.exports = getNative;
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports) {
+
+	/**
+	 * lodash 3.0.4 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modern modularize exports="npm" -o ./`
+	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+	
+	/**
+	 * Checks if `value` is object-like.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+	
+	/** Used for native method references. */
+	var objectProto = Object.prototype;
+	
+	/** Used to check objects for own properties. */
+	var hasOwnProperty = objectProto.hasOwnProperty;
+	
+	/** Native method references. */
+	var propertyIsEnumerable = objectProto.propertyIsEnumerable;
+	
+	/**
+	 * Used as the [maximum length](http://ecma-international.org/ecma-262/6.0/#sec-number.max_safe_integer)
+	 * of an array-like value.
+	 */
+	var MAX_SAFE_INTEGER = 9007199254740991;
+	
+	/**
+	 * The base implementation of `_.property` without support for deep paths.
+	 *
+	 * @private
+	 * @param {string} key The key of the property to get.
+	 * @returns {Function} Returns the new function.
+	 */
+	function baseProperty(key) {
+	  return function(object) {
+	    return object == null ? undefined : object[key];
+	  };
+	}
+	
+	/**
+	 * Gets the "length" property value of `object`.
+	 *
+	 * **Note:** This function is used to avoid a [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792)
+	 * that affects Safari on at least iOS 8.1-8.3 ARM64.
+	 *
+	 * @private
+	 * @param {Object} object The object to query.
+	 * @returns {*} Returns the "length" value.
+	 */
+	var getLength = baseProperty('length');
+	
+	/**
+	 * Checks if `value` is array-like.
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+	 */
+	function isArrayLike(value) {
+	  return value != null && isLength(getLength(value));
+	}
+	
+	/**
+	 * Checks if `value` is a valid array-like length.
+	 *
+	 * **Note:** This function is based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
+	 *
+	 * @private
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+	 */
+	function isLength(value) {
+	  return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+	}
+	
+	/**
+	 * Checks if `value` is classified as an `arguments` object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isArguments(function() { return arguments; }());
+	 * // => true
+	 *
+	 * _.isArguments([1, 2, 3]);
+	 * // => false
+	 */
+	function isArguments(value) {
+	  return isObjectLike(value) && isArrayLike(value) &&
+	    hasOwnProperty.call(value, 'callee') && !propertyIsEnumerable.call(value, 'callee');
+	}
+	
+	module.exports = isArguments;
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports) {
+
+	/**
+	 * lodash 3.0.1 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modern modularize exports="npm" -o ./`
+	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+	
+	/**
+	 * A specialized version of `baseCallback` which only supports `this` binding
+	 * and specifying the number of arguments to provide to `func`.
+	 *
+	 * @private
+	 * @param {Function} func The function to bind.
+	 * @param {*} thisArg The `this` binding of `func`.
+	 * @param {number} [argCount] The number of arguments to provide to `func`.
+	 * @returns {Function} Returns the callback.
+	 */
+	function bindCallback(func, thisArg, argCount) {
+	  if (typeof func != 'function') {
+	    return identity;
+	  }
+	  if (thisArg === undefined) {
+	    return func;
+	  }
+	  switch (argCount) {
+	    case 1: return function(value) {
+	      return func.call(thisArg, value);
+	    };
+	    case 3: return function(value, index, collection) {
+	      return func.call(thisArg, value, index, collection);
+	    };
+	    case 4: return function(accumulator, value, index, collection) {
+	      return func.call(thisArg, accumulator, value, index, collection);
+	    };
+	    case 5: return function(value, other, key, object, source) {
+	      return func.call(thisArg, value, other, key, object, source);
+	    };
+	  }
+	  return function() {
+	    return func.apply(thisArg, arguments);
+	  };
+	}
+	
+	/**
+	 * This method returns the first argument provided to it.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Utility
+	 * @param {*} value Any value.
+	 * @returns {*} Returns `value`.
+	 * @example
+	 *
+	 * var object = { 'user': 'fred' };
+	 *
+	 * _.identity(object) === object;
+	 * // => true
+	 */
+	function identity(value) {
+	  return value;
+	}
+	
+	module.exports = bindCallback;
+
+
+/***/ },
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -443,11 +1793,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _tetherDrop = __webpack_require__(4);
+	var _tetherDrop = __webpack_require__(12);
 	
 	var _tetherDrop2 = _interopRequireDefault(_tetherDrop);
 	
-	var _utils = __webpack_require__(6);
+	var _utils = __webpack_require__(14);
 	
 	//import { TransitionSpring, Spring } from 'react-motion';
 	
@@ -455,7 +1805,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  displayName: 'SLDSPopover',
 	
-	  mixins: [__webpack_require__(11)],
+	  mixins: [__webpack_require__(34)],
 	
 	  handleClickOutside: function handleClickOutside() {
 	    this.handleClose();
@@ -610,14 +1960,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 4 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether-drop 1.2.2 */
 	
 	(function(root, factory) {
 	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(5)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(13)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if (typeof exports === 'object') {
 	    module.exports = factory(require('tether'));
 	  } else {
@@ -1146,7 +2496,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 5 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 1.1.0 */
@@ -2858,7 +4208,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 6 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -2878,31 +4228,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return obj && obj.__esModule ? obj : { 'default': obj };
 	}
 	
-	var _DateUtil = __webpack_require__(7);
+	var _DateUtil = __webpack_require__(15);
 	
 	var _DateUtil2 = _interopRequireDefault(_DateUtil);
 	
-	var _EventUtil = __webpack_require__(8);
+	var _EventUtil = __webpack_require__(16);
 	
 	var _EventUtil2 = _interopRequireDefault(_EventUtil);
 	
-	var _CSSUtil = __webpack_require__(9);
+	var _CSSUtil = __webpack_require__(17);
 	
 	var _CSSUtil2 = _interopRequireDefault(_CSSUtil);
 	
-	var _KEYS = __webpack_require__(10);
+	var _KEYS = __webpack_require__(18);
 	
 	var _KEYS2 = _interopRequireDefault(_KEYS);
+	
+	var _List = __webpack_require__(19);
+	
+	var _List2 = _interopRequireDefault(_List);
+	
+	var _ListItem = __webpack_require__(20);
+	
+	var _ListItem2 = _interopRequireDefault(_ListItem);
+	
+	var _ListItemLabel = __webpack_require__(21);
+	
+	var _ListItemLabel2 = _interopRequireDefault(_ListItemLabel);
 	
 	module.exports = {
 	  DateUtil: _DateUtil2['default'],
 	  EventUtil: _EventUtil2['default'],
 	  CSSUtil: _CSSUtil2['default'],
-	  KEYS: _KEYS2['default']
+	  KEYS: _KEYS2['default'],
+	  List: _List2['default'],
+	  ListItem: _ListItem2['default'],
+	  ListItemLabel: _ListItemLabel2['default']
 	};
 
 /***/ },
-/* 7 */
+/* 15 */
 /***/ function(module, exports) {
 
 	/*
@@ -2994,7 +4359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = DateUtil;
 
 /***/ },
-/* 8 */
+/* 16 */
 /***/ function(module, exports) {
 
 	/*
@@ -3046,7 +4411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = EventUtil;
 
 /***/ },
-/* 9 */
+/* 17 */
 /***/ function(module, exports) {
 
 	/*
@@ -3095,7 +4460,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 10 */
+/* 18 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -3114,135 +4479,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
-	 * A mixin for handling (effectively) onClickOutside for React components.
-	 * Note that we're not intercepting any events in this approach, and we're
-	 * not using double events for capturing and discarding in layers or wrappers.
-	 *
-	 * The idea is that components define function
-	 *
-	 *   handleClickOutside: function() { ... }
-	 *
-	 * If no such function is defined, an error will be thrown, as this means
-	 * either it still needs to be written, or the component should not be using
-	 * this mixing since it will not exhibit onClickOutside behaviour.
-	 *
-	 */
-	(function (root, factory) {
-	  if (true) {
-	    // AMD. Register as an anonymous module.
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(2)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	  } else if (typeof exports === 'object') {
-	    // Node. Note that this does not work with strict
-	    // CommonJS, but only CommonJS-like environments
-	    // that support module.exports
-	    module.exports = factory(require('react'));
-	  } else {
-	    // Browser globals (root is window)
-	    root.OnClickOutside = factory(React);
-	  }
-	}(this, function (React) {
-	  "use strict";
-	
-	  // Use a parallel array because we can't use
-	  // objects as keys, they get toString-coerced
-	  var registeredComponents = [];
-	  var handlers = [];
-	
-	  var IGNORE_CLASS = 'ignore-react-onclickoutside';
-	
-	  var isSourceFound = function(source, localNode) {
-	    if (source === localNode) {
-	      return true;
-	    }
-	    // SVG <use/> elements do not technically reside in the rendered DOM, so
-	    // they do not have classList directly, but they offer a link to their
-	    // corresponding element, which can have classList. This extra check is for
-	    // that case.
-	    // See: http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGUseElement
-	    // Discussion: https://github.com/Pomax/react-onclickoutside/pull/17
-	    if (source.correspondingElement) {
-	      return source.correspondingElement.classList.contains(IGNORE_CLASS);
-	    }
-	    return source.classList.contains(IGNORE_CLASS);
-	  };
-	
-	  return {
-	    componentDidMount: function() {
-	      if(!this.handleClickOutside)
-	        throw new Error("Component lacks a handleClickOutside(event) function for processing outside click events.");
-	
-	      var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
-	        return function(evt) {
-	          var source = evt.target;
-	          var found = false;
-	          // If source=local then this event came from "somewhere"
-	          // inside and should be ignored. We could handle this with
-	          // a layered approach, too, but that requires going back to
-	          // thinking in terms of Dom node nesting, running counter
-	          // to React's "you shouldn't care about the DOM" philosophy.
-	          while(source.parentNode) {
-	            found = isSourceFound(source, localNode);
-	            if(found) return;
-	            source = source.parentNode;
-	          }
-	          eventHandler(evt);
-	        }
-	      }(React.findDOMNode(this), this.handleClickOutside));
-	
-	      var pos = registeredComponents.length;
-	      registeredComponents.push(this);
-	      handlers[pos] = fn;
-	
-	      // If there is a truthy disableOnClickOutside property for this
-	      // component, don't immediately start listening for outside events.
-	      if (!this.props.disableOnClickOutside) {
-	        this.enableOnClickOutside();
-	      }
-	    },
-	
-	    componentWillUnmount: function() {
-	      this.disableOnClickOutside();
-	      this.__outsideClickHandler = false;
-	      var pos = registeredComponents.indexOf(this);
-	      if( pos>-1) {
-	        if (handlers[pos]) {
-	          // clean up so we don't leak memory
-	          handlers.splice(pos, 1);
-	          registeredComponents.splice(pos, 1);
-	        }
-	      }
-	    },
-	
-	    /**
-	     * Can be called to explicitly enable event listening
-	     * for clicks and touches outside of this element.
-	     */
-	    enableOnClickOutside: function() {
-	      var fn = this.__outsideClickHandler;
-	      document.addEventListener("mousedown", fn);
-	      document.addEventListener("touchstart", fn);
-	    },
-	
-	    /**
-	     * Can be called to explicitly disable event listening
-	     * for clicks and touches outside of this element.
-	     */
-	    disableOnClickOutside: function(fn) {
-	      var fn = this.__outsideClickHandler;
-	      document.removeEventListener("mousedown", fn);
-	      document.removeEventListener("touchstart", fn);
-	    }
-	  };
-	
-	}));
-
-
-/***/ },
-/* 12 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3254,183 +4491,635 @@ return /******/ (function(modules) { // webpackBootstrap
 	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	*/
 	
-	"use strict";
+	'use strict';
+	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
 	
 	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { "default": obj };
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIcons = __webpack_require__(13);
+	var _ListItem = __webpack_require__(20);
 	
-	var _listItem = __webpack_require__(25);
+	var _ListItem2 = _interopRequireDefault(_ListItem);
 	
-	var _listItem2 = _interopRequireDefault(_listItem);
+	var _EventUtil = __webpack_require__(16);
 	
-	var _utils = __webpack_require__(6);
+	var _EventUtil2 = _interopRequireDefault(_EventUtil);
 	
-	module.exports = _react2["default"].createClass({
-	
-	  displayName: "SLDSPicklistBase-list",
-	
-	  getInitialState: function getInitialState() {
-	    return {};
+	var displayName = "SLDSList";
+	var propTypes = {
+	  className: _react2['default'].PropTypes.string,
+	  highlightedIndex: _react2['default'].PropTypes.number,
+	  itemRenderer: _react2['default'].PropTypes.func,
+	  label: _react2['default'].PropTypes.string,
+	  options: _react2['default'].PropTypes.array,
+	  onCancel: _react2['default'].PropTypes.func,
+	  onListBlur: _react2['default'].PropTypes.func,
+	  onListItemBlur: _react2['default'].PropTypes.func,
+	  onMoveFocus: _react2['default'].PropTypes.func,
+	  onSelect: _react2['default'].PropTypes.func,
+	  selectedIndex: _react2['default'].PropTypes.number
+	};
+	var defaultProps = {
+	  className: '',
+	  highlightedIndex: 0,
+	  itemRenderer: null,
+	  label: 'Menu',
+	  options: [],
+	  onCancel: function onCancel(delta) {
+	    console.log("onCancel should be overwritten");
 	  },
+	  onListBlur: function onListBlur() {
+	    console.log("onListBlur should be overwritten");
+	  },
+	  onListItemBlur: function onListItemBlur(listItemIndex) {
+	    console.log("onListItemBlur should be overwritten");
+	  },
+	  onMoveFocus: function onMoveFocus(delta) {
+	    console.log("onMoveFocus should be overwritten");
+	  },
+	  onSelect: function onSelect(index) {
+	    console.log("onSelect should be overwritten");
+	  },
+	  selectedIndex: -1
+	};
 	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      options: [],
-	      label: 'Menu',
-	      selectedIndex: -1,
-	      highlightedIndex: 0,
-	      className: '',
-	      itemRenderer: null,
-	      onListBlur: function onListBlur() {
-	        console.log("onListBlur should be overwritten");
-	      },
-	      onMoveFocus: function onMoveFocus(delta) {
-	        console.log("onMoveFocus should be overwritten");
-	      },
-	      onCancel: function onCancel(delta) {
-	        console.log("onCancel should be overwritten");
-	      },
-	      onSelect: function onSelect(index) {
-	        console.log("onSelect should be overwritten");
-	      },
-	      onListItemBlur: function onListItemBlur(listItemIndex) {
-	        console.log("onListItemBlur should be overwritten");
+	var SLDSList = (function (_React$Component) {
+	  _inherits(SLDSList, _React$Component);
+	
+	  function SLDSList() {
+	    _classCallCheck(this, SLDSList);
+	
+	    _get(Object.getPrototypeOf(SLDSList.prototype), 'constructor', this).apply(this, arguments);
+	  }
+	
+	  _createClass(SLDSList, [{
+	    key: 'handleMouseDown',
+	    value: function handleMouseDown(event) {
+	      _EventUtil2['default'].trapImmediate(event);
+	    }
+	  }, {
+	    key: 'handleClick',
+	    value: function handleClick(e) {
+	      if (e.nativeEvent) {
+	        e.nativeEvent.preventDefault();
+	        e.nativeEvent.stopImmediatePropagation();
 	      }
-	    };
-	  },
-	
-	  handleClick: function handleClick(e) {
-	    if (e.nativeEvent) {
-	      e.nativeEvent.preventDefault();
-	      e.nativeEvent.stopImmediatePropagation();
+	      e.preventDefault();
 	    }
-	    e.preventDefault();
-	  },
-	
-	  handleUpdateHighlighted: function handleUpdateHighlighted(nextIndex) {
-	    if (this.props.onUpdateHighlighted) {
-	      this.props.onUpdateHighlighted(nextIndex);
+	  }, {
+	    key: 'handleUpdateHighlighted',
+	    value: function handleUpdateHighlighted(nextIndex) {
+	      if (this.props.onUpdateHighlighted) {
+	        this.props.onUpdateHighlighted(nextIndex);
+	      }
 	    }
-	  },
-	
-	  handleListItemBlur: function handleListItemBlur(index, relatedTarget) {
-	    if (this.props.onListItemBlur) {
-	      this.props.onListItemBlur(index);
+	  }, {
+	    key: 'handleListItemBlur',
+	    value: function handleListItemBlur(index, relatedTarget) {
+	      if (this.props.onListItemBlur) {
+	        this.props.onListItemBlur(index);
+	      }
+	      this.setState({ lastBlurredIndex: index });
 	    }
-	    this.setState({ lastBlurredIndex: index });
-	  },
-	
-	  handleMoveFocus: function handleMoveFocus(delta) {
-	    var newHighlightedIndex = this.props.highlightedIndex + delta;
-	    if (newHighlightedIndex < 0) {
-	      newHighlightedIndex = this.props.options.length - 1;
-	    } else if (newHighlightedIndex >= this.props.options.length) {
-	      newHighlightedIndex = 0;
+	  }, {
+	    key: 'handleMoveFocus',
+	    value: function handleMoveFocus(delta) {
+	      var newHighlightedIndex = this.props.highlightedIndex + delta;
+	      if (newHighlightedIndex < 0) {
+	        newHighlightedIndex = this.props.options.length - 1;
+	      } else if (newHighlightedIndex >= this.props.options.length) {
+	        newHighlightedIndex = 0;
+	      }
+	      if (this.props.onUpdateHighlighted) {
+	        this.props.onUpdateHighlighted(newHighlightedIndex);
+	      }
 	    }
-	    if (this.props.onUpdateHighlighted) {
-	      this.props.onUpdateHighlighted(newHighlightedIndex);
+	  }, {
+	    key: 'handleCancel',
+	    value: function handleCancel() {
+	      if (this.props.onCancel) {
+	        this.props.onCancel();
+	      }
 	    }
-	  },
-	
-	  handleCancel: function handleCancel() {
-	    if (this.props.onCancel) {
-	      this.props.onCancel();
+	  }, {
+	    key: 'handleSelect',
+	    value: function handleSelect(index) {
+	      if (this.props.onSelect) {
+	        this.props.onSelect(index);
+	      }
 	    }
-	  },
-	
-	  handleSelect: function handleSelect(index) {
-	    if (this.props.onSelect) {
-	      this.props.onSelect(index);
+	  }, {
+	    key: 'handleItemFocus',
+	    value: function handleItemFocus(itemIndex, itemHeight) {
+	      if (this.refs.scroll) {
+	        _react2['default'].findDOMNode(this.refs.scroll).scrollTop = itemIndex * itemHeight;
+	      }
 	    }
-	  },
-	
-	  handleItemFocus: function handleItemFocus(itemIndex, itemHeight) {
-	    if (this.refs.scroll) {
-	      this.refs.scroll.getDOMNode().scrollTop = itemIndex * itemHeight;
-	    }
-	  },
-	
-	  handleSearch: function handleSearch(index, ch) {
-	    var searchChar = ch.toLowerCase();
-	    for (var i = index + 1; i < this.props.options.length; i++) {
-	      var option = this.props.options[i];
-	      if (option && option.label) {
-	        if (option.label.charAt(0).toLowerCase() === searchChar) {
-	          if (this.props.onUpdateHighlighted) {
-	            this.props.onUpdateHighlighted(i);
+	  }, {
+	    key: 'handleSearch',
+	    value: function handleSearch(index, ch) {
+	      var searchChar = ch.toLowerCase();
+	      for (var i = index + 1; i < this.props.options.length; i++) {
+	        var option = this.props.options[i];
+	        if (option && option.label) {
+	          if (option.label.charAt(0).toLowerCase() === searchChar) {
+	            if (this.props.onUpdateHighlighted) {
+	              this.props.onUpdateHighlighted(i);
+	            }
+	            return;
 	          }
-	          return;
+	        }
+	      }
+	      for (var i = 0; i < index; i++) {
+	        var option = this.props.options[i];
+	        if (option && option.label) {
+	          if (option.label.charAt(0).toLowerCase() === searchChar) {
+	            if (this.props.onUpdateHighlighted) {
+	              this.props.onUpdateHighlighted(i);
+	            }
+	            return;
+	          }
 	        }
 	      }
 	    }
-	    for (var i = 0; i < index; i++) {
-	      var option = this.props.options[i];
-	      if (option && option.label) {
-	        if (option.label.charAt(0).toLowerCase() === searchChar) {
-	          if (this.props.onUpdateHighlighted) {
-	            this.props.onUpdateHighlighted(i);
-	          }
-	          return;
-	        }
-	      }
+	  }, {
+	    key: 'getItems',
+	    value: function getItems() {
+	      var _this = this;
+	
+	      return this.props.options.map(function (option, index) {
+	        return _react2['default'].createElement(_ListItem2['default'], {
+	          data: option,
+	          index: index,
+	          isHighlighted: index === _this.props.highlightedIndex,
+	          isHover: _this.props.isHover,
+	          isSelected: index === _this.props.selectedIndex,
+	          key: 'ListItem_' + index,
+	          label: option.label,
+	          labelRenderer: _this.props.itemRenderer,
+	          onBlur: _this.handleListItemBlur.bind(_this),
+	          onCancel: _this.handleCancel.bind(_this),
+	          onFocus: _this.handleItemFocus.bind(_this),
+	          onMoveFocus: _this.handleMoveFocus.bind(_this),
+	          onSearch: _this.handleSearch.bind(_this),
+	          onSelect: _this.handleSelect.bind(_this),
+	          onUpdateHighlighted: _this.handleUpdateHighlighted.bind(_this),
+	          value: option.value });
+	      });
 	    }
-	  },
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement('div', {
+	        ref: 'scroll',
+	        className: 'slds-wrap slds-grow slds-scrollable--y ' + this.props.className,
+	        onMouseEnter: this.props.onMouseEnter,
+	        onMouseLeave: this.props.onMouseLeave,
+	        style: {
+	          maxHeight: 260
+	        },
+	        onMouseDown: this.handleMouseDown.bind(this)
+	      }, _react2['default'].createElement('ul', {
+	        ref: 'scroll',
+	        className: "slds-dropdown__list slds-theme--" + this.props.theme,
+	        role: 'menu',
+	        'aria-labelledby': this.props.triggerId
+	      }, this.getItems()));
+	    }
+	  }]);
 	
-	  getItems: function getItems() {
-	    var _this = this;
+	  return SLDSList;
+	})(_react2['default'].Component);
 	
-	    return this.props.options.map(function (option, index) {
-	      return _react2["default"].createElement(_listItem2["default"], {
-	        key: 'ListItem_' + index,
-	        index: index,
-	        label: option.label,
-	        value: option.value,
-	        data: option,
-	        isHighlighted: index === _this.props.highlightedIndex,
-	        isSelected: index === _this.props.selectedIndex,
-	        onUpdateHighlighted: _this.handleUpdateHighlighted,
-	        onMoveFocus: _this.handleMoveFocus,
-	        onBlur: _this.handleListItemBlur,
-	        onFocus: _this.handleItemFocus,
-	        onSelect: _this.handleSelect,
-	        onSearch: _this.handleSearch,
-	        labelRenderer: _this.props.itemRenderer,
-	        onCancel: _this.handleCancel });
-	    });
-	  },
+	SLDSList.displayName = displayName;
+	SLDSList.propTypes = propTypes;
+	SLDSList.defaultProps = defaultProps;
 	
-	  handleMouseDown: function handleMouseDown(event) {
-	    _utils.EventUtil.trapImmediate(event);
-	  },
-	
-	  render: function render() {
-	    return _react2["default"].createElement("div", {
-	      ref: "scroll",
-	      className: 'slds-wrap slds-grow slds-scrollable--y ' + this.props.className,
-	      style: {
-	        maxHeight: 260
-	      },
-	      onMouseDown: this.handleMouseDown
-	    }, _react2["default"].createElement("ul", {
-	      ref: "scroll",
-	      className: "slds-dropdown__list",
-	      role: "menu",
-	      "aria-labelledby": this.props.triggerId }, this.getItems()));
-	  },
-	
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {}
-	
-	});
+	module.exports = SLDSList;
 
 /***/ },
-/* 13 */
+/* 20 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	'use strict';
+	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _KEYS = __webpack_require__(18);
+	
+	var _KEYS2 = _interopRequireDefault(_KEYS);
+	
+	var _EventUtil = __webpack_require__(16);
+	
+	var _EventUtil2 = _interopRequireDefault(_EventUtil);
+	
+	var _ListItemLabel = __webpack_require__(21);
+	
+	var _ListItemLabel2 = _interopRequireDefault(_ListItemLabel);
+	
+	var displayName = "SLDSList-Item";
+	var propTypes = {
+	  data: _react2['default'].PropTypes.object,
+	  index: _react2['default'].PropTypes.number,
+	  inverted: _react2['default'].PropTypes.bool,
+	  isHighlighted: _react2['default'].PropTypes.bool,
+	  isSelected: _react2['default'].PropTypes.bool,
+	  label: _react2['default'].PropTypes.string,
+	  labelRenderer: _react2['default'].PropTypes.func,
+	  value: _react2['default'].PropTypes.string,
+	  onBlur: _react2['default'].PropTypes.func,
+	  onClick: _react2['default'].PropTypes.func,
+	  onFocus: _react2['default'].PropTypes.func,
+	  onMoveFocus: _react2['default'].PropTypes.func,
+	  onSelect: _react2['default'].PropTypes.func
+	};
+	var defaultProps = {
+	  data: {},
+	  index: 0,
+	  inverted: false,
+	  isHighlighted: false,
+	  isSelected: false,
+	  label: '',
+	  labelRenderer: _ListItemLabel2['default'],
+	  onBlur: function onBlur(relatedTarget) {
+	    console.log('onBlur should be defined ', relatedTarget);
+	  },
+	  onClick: function onClick(index) {
+	    console.log('onClick should be defined ', index);
+	  },
+	  onFocus: function onFocus(index, height) {
+	    console.log('onFocus should be defined ', index, height);
+	  },
+	  onMoveFocus: function onMoveFocus(delta) {
+	    console.log('onMoveFocus should be defined ', delta);
+	  },
+	  onSelect: function onSelect(index) {
+	    console.log('onSelect should be defined ', index);
+	  },
+	  value: null
+	};
+	
+	var SLDSListItem = (function (_React$Component) {
+	  _inherits(SLDSListItem, _React$Component);
+	
+	  function SLDSListItem() {
+	    _classCallCheck(this, SLDSListItem);
+	
+	    _get(Object.getPrototypeOf(SLDSListItem.prototype), 'constructor', this).apply(this, arguments);
+	  }
+	
+	  _createClass(SLDSListItem, [{
+	    key: 'handleClick',
+	    value: function handleClick(e) {
+	      e.preventDefault();
+	      e.stopPropagation();
+	      if (this.props.onSelect) {
+	        this.props.onSelect(this.props.index);
+	      }
+	    }
+	  }, {
+	    key: 'handleMouseDown',
+	    value: function handleMouseDown(e) {
+	      if (e.nativeEvent) {
+	        e.nativeEvent.preventDefault();
+	        e.nativeEvent.stopImmediatePropagation();
+	      }
+	      e.preventDefault();
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      if (this.props.isHighlighted) {
+	        this.setFocus();
+	      }
+	    }
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      if (!prevProps.isHighlighted && this.props.isHighlighted) {
+	        this.setFocus();
+	      }
+	    }
+	  }, {
+	    key: 'setFocus',
+	    value: function setFocus() {
+	      if (!this.props.isHover) {
+	        _react2['default'].findDOMNode(this.refs.link).focus();
+	      }
+	    }
+	  }, {
+	    key: 'handleKeyDown',
+	    value: function handleKeyDown(event) {
+	      if (event.keyCode) {
+	        if (event.keyCode === _KEYS2['default'].DOWN) {
+	          _EventUtil2['default'].trapEvent(event);
+	          if (this.props.onMoveFocus) {
+	            this.props.onMoveFocus(1);
+	          }
+	        } else if (event.keyCode === _KEYS2['default'].UP) {
+	          _EventUtil2['default'].trapEvent(event);
+	          if (this.props.onMoveFocus) {
+	            this.props.onMoveFocus(-1);
+	          }
+	        } else if (event.keyCode === _KEYS2['default'].ENTER || event.keyCode === _KEYS2['default'].SPACE) {
+	          _EventUtil2['default'].trapEvent(event);
+	          if (this.props.onSelect) {
+	            this.props.onSelect(this.props.index);
+	          }
+	        } else if (event.keyCode === _KEYS2['default'].ESCAPE) {
+	          _EventUtil2['default'].trapEvent(event);
+	          if (this.props.onCancel) {
+	            this.props.onCancel();
+	          }
+	        } else if (event.keyCode === _KEYS2['default'].TAB) {} else {
+	          _EventUtil2['default'].trapEvent(event);
+	          var ch = String.fromCharCode(event.keyCode);
+	          if (this.props.onSearch) {
+	            this.props.onSearch(this.props.index, ch);
+	          }
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'handleBlur',
+	    value: function handleBlur(e) {
+	      if (this.props.onBlur) {
+	        this.props.onBlur(this.props.index, e.relatedTarget);
+	      }
+	    }
+	  }, {
+	    key: 'handleFocus',
+	    value: function handleFocus() {
+	      var height = _react2['default'].findDOMNode(this).offsetHeight;
+	      if (height && this.props.onFocus) {
+	        this.props.onFocus(this.props.index, height);
+	      }
+	    }
+	  }, {
+	    key: 'getLabel',
+	    value: function getLabel() {
+	      var LabelComp = this.props.labelRenderer;
+	      return _react2['default'].createElement(LabelComp, {
+	        index: this.props.index,
+	        label: this.props.label,
+	        value: this.props.value,
+	        inverted: this.props.inverted,
+	        isSelected: this.props.isSelected,
+	        isHighlighted: this.props.isHighlighted,
+	        data: this.props.data
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var isSelected = this.props.isSelected ? " slds-is-selected" : null;
+	      return _react2['default'].createElement('li', {
+	        className: "slds-dropdown__item slds-theme--" + this.props.theme + isSelected,
+	        onMouseDown: this.handleMouseDown.bind(this),
+	        onMouseEnter: this.props.onMouseEnter,
+	        onMouseLeave: this.props.onMouseLeave,
+	        tabIndex: -1 }, _react2['default'].createElement('a', { id: 'menu-0-' + this.props.index,
+	        href: 'javascript:void(0)',
+	        ref: 'link',
+	        className: 'slds-truncate',
+	        onClick: this.handleClick.bind(this),
+	        onMouseDown: this.handleMouseDown.bind(this),
+	        onKeyDown: this.handleKeyDown.bind(this),
+	        onBlur: this.handleBlur.bind(this),
+	        onFocus: this.handleFocus.bind(this),
+	        'aria-checked': this.props.isSelected,
+	        role: 'menuitemradio',
+	        tabIndex: -1 }, this.getLabel()));
+	    }
+	  }]);
+	
+	  return SLDSListItem;
+	})(_react2['default'].Component);
+	
+	SLDSListItem.displayName = displayName;
+	SLDSListItem.propTypes = propTypes;
+	SLDSListItem.defaultProps = defaultProps;
+	
+	module.exports = SLDSListItem;
+
+/***/ },
+/* 21 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	'use strict';
+	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SLDSIcons = __webpack_require__(22);
+	
+	var displayName = "SLDSList-Item-Label";
+	var propTypes = {
+	  data: _react2['default'].PropTypes.object,
+	  index: _react2['default'].PropTypes.number,
+	  inverted: _react2['default'].PropTypes.bool,
+	  isHighlighted: _react2['default'].PropTypes.bool,
+	  isSelected: _react2['default'].PropTypes.bool,
+	  label: _react2['default'].PropTypes.string,
+	  value: _react2['default'].PropTypes.string
+	};
+	var defaultProps = {
+	  data: {},
+	  index: 0,
+	  inverted: false,
+	  isHighlighted: false,
+	  isSelected: false,
+	  label: '',
+	  value: null
+	};
+	
+	var SLDSListItemLabel = (function (_React$Component) {
+	  _inherits(SLDSListItemLabel, _React$Component);
+	
+	  function SLDSListItemLabel(props) {
+	    _classCallCheck(this, SLDSListItemLabel);
+	
+	    _get(Object.getPrototypeOf(SLDSListItemLabel.prototype), 'constructor', this).call(this, props);
+	    this.state = {};
+	  }
+	
+	  _createClass(SLDSListItemLabel, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement('section', null, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'check', position: 'left', category: 'utility', size: 'x-small', className: 'slds-icon--selected slds-icon-text-default slds-m-right--x-small' }), this.props.label);
+	    }
+	  }]);
+	
+	  return SLDSListItemLabel;
+	})(_react2['default'].Component);
+	
+	SLDSListItemLabel.displayName = displayName;
+	SLDSListItemLabel.propTypes = propTypes;
+	SLDSListItemLabel.defaultProps = defaultProps;
+	
+	module.exports = SLDSListItemLabel;
+
+/***/ },
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3452,15 +5141,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _InputIcon = __webpack_require__(14);
+	var _InputIcon = __webpack_require__(23);
 	
 	var _InputIcon2 = _interopRequireDefault(_InputIcon);
 	
-	var _Icon = __webpack_require__(22);
+	var _Icon = __webpack_require__(31);
 	
 	var _Icon2 = _interopRequireDefault(_Icon);
 	
-	var _ButtonIcon = __webpack_require__(24);
+	var _ButtonIcon = __webpack_require__(33);
 	
 	var _ButtonIcon2 = _interopRequireDefault(_ButtonIcon);
 	
@@ -3471,7 +5160,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 14 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3537,7 +5226,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSUtilityIcon = __webpack_require__(15);
+	var _SLDSUtilityIcon = __webpack_require__(24);
 	
 	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
 	
@@ -3579,7 +5268,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = InputIcon;
 
 /***/ },
-/* 15 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3603,7 +5292,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SVG = __webpack_require__(16);
+	var _SVG = __webpack_require__(25);
 	
 	var _SVG2 = _interopRequireDefault(_SVG);
 	
@@ -3616,7 +5305,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 16 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3650,23 +5339,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _sldsIconsUtility = __webpack_require__(17);
+	var _sldsIconsUtility = __webpack_require__(26);
 	
 	var _sldsIconsUtility2 = _interopRequireDefault(_sldsIconsUtility);
 	
-	var _sldsIconsAction = __webpack_require__(18);
+	var _sldsIconsAction = __webpack_require__(27);
 	
 	var _sldsIconsAction2 = _interopRequireDefault(_sldsIconsAction);
 	
-	var _sldsIconsCustom = __webpack_require__(19);
+	var _sldsIconsCustom = __webpack_require__(28);
 	
 	var _sldsIconsCustom2 = _interopRequireDefault(_sldsIconsCustom);
 	
-	var _sldsIconsDoctype = __webpack_require__(20);
+	var _sldsIconsDoctype = __webpack_require__(29);
 	
 	var _sldsIconsDoctype2 = _interopRequireDefault(_sldsIconsDoctype);
 	
-	var _sldsIconsStandard = __webpack_require__(21);
+	var _sldsIconsStandard = __webpack_require__(30);
 	
 	var _sldsIconsStandard2 = _interopRequireDefault(_sldsIconsStandard);
 	
@@ -3775,7 +5464,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 17 */
+/* 26 */
 /***/ function(module, exports) {
 
 	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
@@ -3969,7 +5658,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
-/* 18 */
+/* 27 */
 /***/ function(module, exports) {
 
 	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
@@ -4151,7 +5840,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
-/* 19 */
+/* 28 */
 /***/ function(module, exports) {
 
 	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
@@ -4262,7 +5951,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
-/* 20 */
+/* 29 */
 /***/ function(module, exports) {
 
 	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
@@ -4308,7 +5997,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
-/* 21 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
@@ -4415,7 +6104,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
-/* 22 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -4489,11 +6178,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSUtilityIcon = __webpack_require__(15);
+	var _SLDSUtilityIcon = __webpack_require__(24);
 	
 	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
 	
-	var classNames = __webpack_require__(23);
+	var classNames = __webpack_require__(32);
 	
 	var displayName = "Icon";
 	var propTypes = {
@@ -4562,7 +6251,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Icon;
 
 /***/ },
-/* 23 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -4617,7 +6306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 24 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -4691,11 +6380,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSUtilityIcon = __webpack_require__(15);
+	var _SLDSUtilityIcon = __webpack_require__(24);
 	
 	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
 	
-	var classNames = __webpack_require__(23);
+	var classNames = __webpack_require__(32);
 	
 	var displayName = "ButtonIcon";
 	var propTypes = {
@@ -4749,226 +6438,135 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ButtonIcon;
 
 /***/ },
-/* 25 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	'use strict';
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
+	 * A mixin for handling (effectively) onClickOutside for React components.
+	 * Note that we're not intercepting any events in this approach, and we're
+	 * not using double events for capturing and discarding in layers or wrappers.
+	 *
+	 * The idea is that components define function
+	 *
+	 *   handleClickOutside: function() { ... }
+	 *
+	 * If no such function is defined, an error will be thrown, as this means
+	 * either it still needs to be written, or the component should not be using
+	 * this mixing since it will not exhibit onClickOutside behaviour.
+	 *
+	 */
+	(function (root, factory) {
+	  if (true) {
+	    // AMD. Register as an anonymous module.
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(2)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	  } else if (typeof exports === 'object') {
+	    // Node. Note that this does not work with strict
+	    // CommonJS, but only CommonJS-like environments
+	    // that support module.exports
+	    module.exports = factory(require('react'));
+	  } else {
+	    // Browser globals (root is window)
+	    root.OnClickOutside = factory(React);
+	  }
+	}(this, function (React) {
+	  "use strict";
 	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
+	  // Use a parallel array because we can't use
+	  // objects as keys, they get toString-coerced
+	  var registeredComponents = [];
+	  var handlers = [];
 	
-	var _react = __webpack_require__(2);
+	  var IGNORE_CLASS = 'ignore-react-onclickoutside';
 	
-	var _react2 = _interopRequireDefault(_react);
+	  var isSourceFound = function(source, localNode) {
+	    if (source === localNode) {
+	      return true;
+	    }
+	    // SVG <use/> elements do not technically reside in the rendered DOM, so
+	    // they do not have classList directly, but they offer a link to their
+	    // corresponding element, which can have classList. This extra check is for
+	    // that case.
+	    // See: http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGUseElement
+	    // Discussion: https://github.com/Pomax/react-onclickoutside/pull/17
+	    if (source.correspondingElement) {
+	      return source.correspondingElement.classList.contains(IGNORE_CLASS);
+	    }
+	    return source.classList.contains(IGNORE_CLASS);
+	  };
 	
-	var _SLDSIcons = __webpack_require__(13);
+	  return {
+	    componentDidMount: function() {
+	      if(!this.handleClickOutside)
+	        throw new Error("Component lacks a handleClickOutside(event) function for processing outside click events.");
 	
-	var _utils = __webpack_require__(6);
+	      var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
+	        return function(evt) {
+	          var source = evt.target;
+	          var found = false;
+	          // If source=local then this event came from "somewhere"
+	          // inside and should be ignored. We could handle this with
+	          // a layered approach, too, but that requires going back to
+	          // thinking in terms of Dom node nesting, running counter
+	          // to React's "you shouldn't care about the DOM" philosophy.
+	          while(source.parentNode) {
+	            found = isSourceFound(source, localNode);
+	            if(found) return;
+	            source = source.parentNode;
+	          }
+	          eventHandler(evt);
+	        }
+	      }(React.findDOMNode(this), this.handleClickOutside));
 	
-	var _listItemLabel = __webpack_require__(26);
+	      var pos = registeredComponents.length;
+	      registeredComponents.push(this);
+	      handlers[pos] = fn;
 	
-	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
-	
-	module.exports = _react2['default'].createClass({
-	
-	  displayName: 'SLDSPicklistBase-list-item',
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      index: 0,
-	      label: '',
-	      value: null,
-	      inverted: false,
-	      isSelected: false,
-	      isHighlighted: false,
-	      labelRenderer: _listItemLabel2['default'],
-	      data: {},
-	
-	      onSelect: function onSelect(index) {
-	        console.log('onSelect should be defined ', index);
-	      },
-	
-	      onClick: function onClick(index) {
-	        console.log('onClick should be defined ', index);
-	      },
-	      onMoveFocus: function onMoveFocus(delta) {
-	        console.log('onMoveFocus should be defined ', delta);
-	      },
-	      onBlur: function onBlur(relatedTarget) {
-	        console.log('onBlur should be defined ', relatedTarget);
-	      },
-	      onFocus: function onFocus(index, height) {
-	        console.log('onFocus should be defined ', index, height);
+	      // If there is a truthy disableOnClickOutside property for this
+	      // component, don't immediately start listening for outside events.
+	      if (!this.props.disableOnClickOutside) {
+	        this.enableOnClickOutside();
 	      }
-	    };
-	  },
+	    },
 	
-	  handleClick: function handleClick(e) {
-	    e.preventDefault();
-	    e.stopPropagation();
-	    if (this.props.onSelect) {
-	      this.props.onSelect(this.props.index);
-	    }
-	  },
-	
-	  handleMouseDown: function handleMouseDown(e) {
-	    if (e.nativeEvent) {
-	      e.nativeEvent.preventDefault();
-	      e.nativeEvent.stopImmediatePropagation();
-	    }
-	    e.preventDefault();
-	  },
-	
-	  componentDidMount: function componentDidMount() {
-	    if (this.props.isHighlighted) {
-	      this.refs.link.getDOMNode().focus();
-	    }
-	  },
-	
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	    if (!prevProps.isHighlighted && this.props.isHighlighted) {
-	      this.refs.link.getDOMNode().focus();
-	    }
-	  },
-	
-	  handleKeyDown: function handleKeyDown(event) {
-	
-	    if (event.keyCode) {
-	      if (event.keyCode === _utils.KEYS.DOWN) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onMoveFocus) {
-	          this.props.onMoveFocus(1);
-	        }
-	      } else if (event.keyCode === _utils.KEYS.UP) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onMoveFocus) {
-	          this.props.onMoveFocus(-1);
-	        }
-	      } else if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onSelect) {
-	          this.props.onSelect(this.props.index);
-	        }
-	      } else if (event.keyCode === _utils.KEYS.ESCAPE) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onCancel) {
-	          this.props.onCancel();
-	        }
-	      } else if (event.keyCode === _utils.KEYS.TAB) {} else {
-	        _utils.EventUtil.trapEvent(event);
-	        var ch = String.fromCharCode(event.keyCode);
-	        if (this.props.onSearch) {
-	          this.props.onSearch(this.props.index, ch);
+	    componentWillUnmount: function() {
+	      this.disableOnClickOutside();
+	      this.__outsideClickHandler = false;
+	      var pos = registeredComponents.indexOf(this);
+	      if( pos>-1) {
+	        if (handlers[pos]) {
+	          // clean up so we don't leak memory
+	          handlers.splice(pos, 1);
+	          registeredComponents.splice(pos, 1);
 	        }
 	      }
+	    },
+	
+	    /**
+	     * Can be called to explicitly enable event listening
+	     * for clicks and touches outside of this element.
+	     */
+	    enableOnClickOutside: function() {
+	      var fn = this.__outsideClickHandler;
+	      document.addEventListener("mousedown", fn);
+	      document.addEventListener("touchstart", fn);
+	    },
+	
+	    /**
+	     * Can be called to explicitly disable event listening
+	     * for clicks and touches outside of this element.
+	     */
+	    disableOnClickOutside: function(fn) {
+	      var fn = this.__outsideClickHandler;
+	      document.removeEventListener("mousedown", fn);
+	      document.removeEventListener("touchstart", fn);
 	    }
-	  },
+	  };
 	
-	  handleBlur: function handleBlur(e) {
-	    if (this.props.onBlur) {
-	      this.props.onBlur(this.props.index, e.relatedTarget);
-	    }
-	  },
-	
-	  handleFocus: function handleFocus() {
-	    var height = this.getDOMNode().offsetHeight;
-	    if (height && this.props.onFocus) {
-	      this.props.onFocus(this.props.index, height);
-	    }
-	  },
-	
-	  getLabel: function getLabel() {
-	    var LabelComp = this.props.labelRenderer;
-	    return _react2['default'].createElement(LabelComp, {
-	      index: this.props.index,
-	      label: this.props.label,
-	      value: this.props.value,
-	      inverted: this.props.inverted,
-	      isSelected: this.props.isSelected,
-	      isHighlighted: this.props.isHighlighted,
-	      data: this.props.data
-	    });
-	  },
-	
-	  render: function render() {
-	    return _react2['default'].createElement('li', {
-	      className: 'slds-dropdown__item slds-has-icon slds-has-icon--left',
-	      onMouseDown: this.handleMouseDown,
-	      tabIndex: -1 }, _react2['default'].createElement('a', { id: 'menu-0-' + this.props.index,
-	      href: '',
-	      ref: 'link',
-	      className: 'slds-truncate',
-	      onClick: this.handleClick,
-	      onMouseDown: this.handleMouseDown,
-	      onKeyDown: this.handleKeyDown,
-	      onBlur: this.handleBlur,
-	      onFocus: this.handleFocus,
-	      'aria-checked': this.props.isSelected,
-	      role: 'menuitemradio',
-	      tabIndex: -1 }, this.getLabel()));
-	  }
-	
-	});
+	}));
+
 
 /***/ },
-/* 26 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	'use strict';
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _SLDSIcons = __webpack_require__(13);
-	
-	var _utils = __webpack_require__(6);
-	
-	module.exports = _react2['default'].createClass({
-	
-	  displayName: 'SLDSPicklistBase-list-item-label',
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      index: 0,
-	      label: '',
-	      value: null,
-	      inverted: false,
-	      isSelected: false,
-	      isHighlighted: false,
-	      data: {}
-	    };
-	  },
-	
-	  render: function render() {
-	    return _react2['default'].createElement('section', null, this.props.isSelected ? _react2['default'].createElement(_SLDSIcons.Icon, { name: 'check', position: 'left', category: 'utility' }) : null, this.props.label);
-	  }
-	
-	});
-
-/***/ },
-/* 27 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -4992,791 +6590,415 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }return target;
 	};
 	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ("value" in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { "default": obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSPopover = __webpack_require__(3);
+	var _SLDSPopover = __webpack_require__(11);
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
-	var _list = __webpack_require__(28);
-	
-	var _list2 = _interopRequireDefault(_list);
-	
-	var _listItem = __webpack_require__(29);
-	
-	var _listItem2 = _interopRequireDefault(_listItem);
-	
-	var _listItemLabel = __webpack_require__(30);
-	
-	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
-	
-	var _utilsCreateChainedFunction = __webpack_require__(31);
-	
-	var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
-	
-	var _SLDSButton = __webpack_require__(32);
+	var _SLDSButton = __webpack_require__(36);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _utils = __webpack_require__(6);
+	var _utilsCreateChainedFunction = __webpack_require__(37);
 	
-	var _lodashOmit = __webpack_require__(33);
+	var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
+	
+	var _utils = __webpack_require__(14);
+	
+	var _lodashOmit = __webpack_require__(38);
 	
 	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
-	module.exports = _react2["default"].createClass({
-	  displayName: "exports",
+	var displayName = "SLDSDropdown";
+	var propTypes = {
+	  className: _react2["default"].PropTypes.string,
+	  disabled: _react2["default"].PropTypes.bool,
+	  horizontalAlign: _react2["default"].PropTypes.string,
+	  hoverCloseDelay: _react2["default"].PropTypes.number,
+	  initialFocus: _react2["default"].PropTypes.bool,
+	  label: _react2["default"].PropTypes.string,
+	  listClassName: _react2["default"].PropTypes.string,
+	  listItemRenderer: _react2["default"].PropTypes.func,
+	  modal: _react2["default"].PropTypes.bool,
+	  onClick: _react2["default"].PropTypes.func,
+	  onSelect: _react2["default"].PropTypes.func.isRequired,
+	  onUpdateHighlighted: _react2["default"].PropTypes.func,
+	  openOn: _react2["default"].PropTypes.string,
+	  options: _react2["default"].PropTypes.array,
+	  placeholder: _react2["default"].PropTypes.string,
+	  theme: _react2["default"].PropTypes.string,
+	  value: _react2["default"].PropTypes.string,
+	  variant: _react2["default"].PropTypes.string
+	};
+	var defaultProps = {
+	  className: "",
+	  disabled: false,
+	  horizontalAlign: "left",
+	  hoverCloseDelay: 300,
+	  initialFocus: false,
+	  label: "Dropdown",
+	  listClassName: "",
+	  listItemRenderer: _utils.ListItemLabel,
+	  modal: true,
+	  openOn: "hover",
+	  options: [],
+	  placeholder: "Select an Option",
+	  theme: "default",
+	  value: null,
+	  variant: "neutral"
+	};
 	
-	  propTypes: {
-	    onClick: _react.PropTypes.func,
-	    onSelect: _react.PropTypes.func.isRequired,
-	    onUpdateHighlighted: _react.PropTypes.func
-	  },
+	var SLDSDropdown = (function (_React$Component) {
+	  _inherits(SLDSDropdown, _React$Component);
 	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      variant: "neutral",
-	      placeholder: "Select an Option",
-	      disabled: false,
-	      theme: "default",
-	      label: "Dropdown",
-	      value: null,
-	      options: [],
-	      initialFocus: false,
-	      modal: true,
-	      className: "",
-	      listClassName: "",
-	      openOn: "hover",
-	      listItemRenderer: _listItemLabel2["default"],
-	      horizontalAlign: "left",
-	      hoverCloseDelay: 300
-	    };
-	  },
+	  function SLDSDropdown(props) {
+	    _classCallCheck(this, SLDSDropdown);
 	
-	  getInitialState: function getInitialState() {
-	    return {
-	      isOpen: false,
-	      isFocused: false,
-	      isClosing: false,
+	    _get(Object.getPrototypeOf(SLDSDropdown.prototype), "constructor", this).call(this, props);
+	    this.state = {
 	      highlightedIndex: 0,
-	      selectedIndex: this.getIndexByValue(this.props.value),
+	      isClosing: false,
+	      isFocused: false,
+	      isHover: false,
+	      isMounted: false,
+	      isOpen: false,
 	      lastBlurredIndex: -1,
 	      lastBlurredTimeStamp: -1,
-	      isHover: false
+	      selectedIndex: this.getIndexByValue(this.props.value)
 	    };
-	  },
+	  }
 	
-	  componentDidMount: function componentDidMount() {
-	    if (this.props.initialFocus) {
+	  _createClass(SLDSDropdown, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      this.setState({ isMounted: true });
+	      if (this.props.initialFocus) {
+	        this.setFocus();
+	      }
+	      if (this.props.openOn === "hover") {
+	        //TODO:Add functionality here
+	      }
+	    }
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {
+	      this.setState({ isMounted: false });
+	    }
+	  }, {
+	    key: "componentDidUpdate",
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      var _this = this;
+	
+	      if (this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp) {
+	        if (this.state.lastBlurredIndex === this.state.highlightedIndex) {
+	          this.handleClose();
+	        }
+	      }
+	
+	      if (this.state.isOpen && !prevState.isOpen) {
+	        this.state.isClosing = false;
+	      }
+	
+	      if (this.state.selectedIndex !== prevState.selectedIndex) {
+	        this.handleClose();
+	      } else if (this.state.isFocused && !prevState.isFocused) {
+	        this.setState({ isOpen: false });
+	      } else if (!this.state.isFocused && prevState.isFocused) {
+	        if (this.refs.list) {
+	          if (this.state.isMounted && this.refs.list) {
+	            if (_react2["default"].findDOMNode(this.refs.list).contains(document.activeElement)) {
+	              return;
+	            }
+	            this.setState({ isOpen: false });
+	          }
+	        }
+	      } else if (this.state.isClosing && !prevState.isClosing) {
+	        setTimeout(function () {
+	          if (_this.state.isClosing) {
+	            _this.setState({ isOpen: false });
+	          }
+	        }, this.props.hoverCloseDelay);
+	      }
+	
+	      if (this.props.value !== prevProps.value) {
+	        this.handleSelect(this.getIndexByValue(this.props.value));
+	      }
+	    }
+	  }, {
+	    key: "getIndexByValue",
+	    value: function getIndexByValue(value) {
+	      var foundIndex = -1;
+	      if (this.props.options && this.props.options.length) {
+	        this.props.options.some(function (element, index, array) {
+	          if (element && element.value === value) {
+	            foundIndex = index;
+	            return true;
+	          }
+	          return false;
+	        });
+	      }
+	      return foundIndex;
+	    }
+	  }, {
+	    key: "getValueByIndex",
+	    value: function getValueByIndex(index) {
+	      var option = this.props.options[index];
+	      if (option) {
+	        return this.props.options[index];
+	      }
+	    }
+	  }, {
+	    key: "handleSelect",
+	    value: function handleSelect(index) {
+	      this.setState({ selectedIndex: index });
 	      this.setFocus();
+	      if (this.props.onSelect) {
+	        this.props.onSelect(this.getValueByIndex(index));
+	      }
 	    }
-	    if (this.props.openOn === "hover") {
-	      //TODO:Add functionality here
+	  }, {
+	    key: "handleClose",
+	    value: function handleClose() {
+	      this.setState({
+	        isOpen: false,
+	        isHover: false
+	      });
 	    }
-	  },
-	
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	    var _this = this;
-	
-	    if (this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp) {
-	      if (this.state.lastBlurredIndex === this.state.highlightedIndex) {
+	  }, {
+	    key: "handleMouseEnter",
+	    value: function handleMouseEnter() {
+	      if (this.props.openOn === "hover") {
+	        this.state.isClosing = false;
+	        if (!this.state.isOpen) {
+	          this.setState({
+	            isOpen: true,
+	            isHover: true
+	          });
+	        }
+	      }
+	    }
+	  }, {
+	    key: "handleMouseLeave",
+	    value: function handleMouseLeave() {
+	      if (this.props.openOn === "hover") {
+	        this.setState({ isClosing: true });
+	      }
+	    }
+	  }, {
+	    key: "handleClick",
+	    value: function handleClick(event) {
+	      _utils.EventUtil.trap(event);
+	      if (!this.state.isOpen) {
+	        this.setState({ isOpen: true });
+	        if (this.props.onClick) {
+	          this.props.onClick();
+	        }
+	      } else {
 	        this.handleClose();
 	      }
 	    }
-	
-	    if (this.state.isOpen && !prevState.isOpen) {
-	      this.state.isClosing = false;
+	  }, {
+	    key: "handleMouseDown",
+	    value: function handleMouseDown(event) {
+	      _utils.EventUtil.trapImmediate(event);
 	    }
-	
-	    if (this.state.selectedIndex !== prevState.selectedIndex) {
-	      this.handleClose();
-	    } else if (this.state.isFocused && !prevState.isFocused) {
-	      this.setState({ isOpen: false });
-	    } else if (!this.state.isFocused && prevState.isFocused) {
-	      if (this.refs.list) {
-	        if (this.isMounted() && this.refs.list) {
-	          if (this.refs.list.getDOMNode().contains(document.activeElement)) {
-	            return;
-	          }
-	          this.setState({ isOpen: false });
-	        }
-	      }
-	    } else if (this.state.isClosing && !prevState.isClosing) {
-	      setTimeout(function () {
-	        if (_this.state.isClosing) {
-	          _this.setState({ isOpen: false });
-	        }
-	      }, this.props.hoverCloseDelay);
+	  }, {
+	    key: "handleBlur",
+	    value: function handleBlur(e) {
+	      this.setState({ isFocused: false });
 	    }
-	
-	    if (this.props.value !== prevProps.value) {
-	      this.handleSelect(this.getIndexByValue(this.props.value));
-	    }
-	  },
-	
-	  getIndexByValue: function getIndexByValue(value) {
-	    var foundIndex = -1;
-	    if (this.props.options && this.props.options.length) {
-	      this.props.options.some(function (element, index, array) {
-	        if (element && element.value === value) {
-	          foundIndex = index;
-	          return true;
-	        }
-	        return false;
+	  }, {
+	    key: "handleFocus",
+	    value: function handleFocus() {
+	      this.setState({
+	        isFocused: true,
+	        isHover: false
 	      });
 	    }
-	    return foundIndex;
-	  },
-	
-	  getValueByIndex: function getValueByIndex(index) {
-	    return this.props.options[index].value;
-	  },
-	
-	  handleSelect: function handleSelect(index) {
-	    this.setState({ selectedIndex: index });
-	    this.setFocus();
-	    if (this.props.onSelect) {
-	      this.props.onSelect(this.getValueByIndex(index));
-	    }
-	  },
-	
-	  handleClose: function handleClose() {
-	    this.setState({
-	      isOpen: false,
-	      isHover: false
-	    });
-	  },
-	
-	  handleMouseEnter: function handleMouseEnter() {
-	    if (this.props.openOn === "hover") {
-	      this.state.isClosing = false;
-	      if (!this.state.isOpen) {
-	        this.setState({
-	          isOpen: true,
-	          isHover: true
-	        });
+	  }, {
+	    key: "setFocus",
+	    value: function setFocus() {
+	      if (this.state.isMounted) {
+	        _react2["default"].findDOMNode(this.getButtonNode()).focus();
 	      }
 	    }
-	  },
-	
-	  handleMouseLeave: function handleMouseLeave() {
-	    if (this.props.openOn === "hover") {
-	      this.setState({ isClosing: true });
+	  }, {
+	    key: "getButtonNode",
+	    value: function getButtonNode() {
+	      return _react2["default"].findDOMNode(this.refs.button);
 	    }
-	  },
+	  }, {
+	    key: "handleKeyDown",
+	    value: function handleKeyDown(event) {
+	      if (event.keyCode) {
+	        if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE || event.keyCode === _utils.KEYS.DOWN || event.keyCode === _utils.KEYS.UP) {
+	          _utils.EventUtil.trapEvent(event);
 	
-	  handleClick: function handleClick(event) {
-	    _utils.EventUtil.trap(event);
-	    if (!this.state.isOpen) {
-	      this.setState({ isOpen: true });
-	      if (this.props.onClick) {
-	        this.props.onClick();
-	      }
-	    } else {
-	      this.handleClose();
-	    }
-	  },
-	
-	  handleMouseDown: function handleMouseDown(event) {
-	    _utils.EventUtil.trapImmediate(event);
-	  },
-	
-	  handleBlur: function handleBlur(e) {
-	    this.setState({ isFocused: false });
-	  },
-	
-	  handleFocus: function handleFocus() {
-	    this.setState({
-	      isFocused: true,
-	      isHover: false
-	    });
-	  },
-	
-	  setFocus: function setFocus() {
-	    if (this.isMounted()) {
-	      _react2["default"].findDOMNode(this.getButtonNode()).focus();
-	    }
-	  },
-	
-	  getButtonNode: function getButtonNode() {
-	    return _react2["default"].findDOMNode(this.refs.button);
-	  },
-	
-	  handleKeyDown: function handleKeyDown(event) {
-	    if (event.keyCode) {
-	      if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE || event.keyCode === _utils.KEYS.DOWN || event.keyCode === _utils.KEYS.UP) {
-	        _utils.EventUtil.trapEvent(event);
-	
-	        this.setState({
-	          isOpen: true,
-	          highlightedIndex: 0
-	        });
+	          this.setState({
+	            isOpen: true,
+	            highlightedIndex: 0
+	          });
+	        }
 	      }
 	    }
-	  },
-	
-	  handleUpdateHighlighted: function handleUpdateHighlighted(nextIndex) {
-	    this.setState({ highlightedIndex: nextIndex });
-	  },
-	
-	  handleListBlur: function handleListBlur() {
-	    this.setState({ isOpen: false });
-	  },
-	
-	  handleCancel: function handleCancel() {
-	    if (!this.state.isHover) {
-	      this.setFocus();
+	  }, {
+	    key: "handleUpdateHighlighted",
+	    value: function handleUpdateHighlighted(nextIndex) {
+	      this.setState({ highlightedIndex: nextIndex });
 	    }
-	  },
+	  }, {
+	    key: "handleListBlur",
+	    value: function handleListBlur() {
+	      this.setState({ isOpen: false });
+	    }
+	  }, {
+	    key: "handleListItemBlur",
+	    value: function handleListItemBlur(index, relatedTarget) {
+	      this.setState({
+	        lastBlurredIndex: index,
+	        lastBlurredTimeStamp: Date.now()
+	      });
+	    }
+	  }, {
+	    key: "handleCancel",
+	    value: function handleCancel() {
+	      if (!this.state.isHover) {
+	        this.setFocus();
+	      }
+	    }
+	  }, {
+	    key: "getPopoverContent",
+	    value: function getPopoverContent() {
+	      return _react2["default"].createElement(_utils.List, {
+	        ref: "list",
+	        options: this.props.options,
+	        className: this.props.listClassName,
+	        highlightedIndex: this.state.highlightedIndex,
+	        selectedIndex: this.state.selectedIndex,
+	        onSelect: this.handleSelect.bind(this),
+	        onUpdateHighlighted: this.handleUpdateHighlighted.bind(this),
+	        onListBlur: this.handleListBlur.bind(this),
+	        onListItemBlur: this.handleListItemBlur.bind(this),
+	        onMouseEnter: this.props.openOn === "hover" ? this.handleMouseEnter.bind(this) : null,
+	        onMouseLeave: this.props.openOn === "hover" ? this.handleMouseLeave.bind(this) : null,
+	        onCancel: this.handleCancel.bind(this),
+	        itemRenderer: this.props.listItemRenderer,
+	        isHover: this.state.isHover,
+	        theme: this.props.theme });
+	    }
+	  }, {
+	    key: "getSimplePopover",
+	    value: function getSimplePopover() {
+	      return !this.props.disabled && this.state.isOpen ? _react2["default"].createElement("div", {
+	        className: "slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu",
+	        style: { maxHeight: "20em" } }, this.getPopoverContent()) : null;
+	    }
+	  }, {
+	    key: "getModalPopover",
+	    value: function getModalPopover() {
+	      var className = "slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--" + this.props.horizontalAlign;
+	      return !this.props.disabled && this.state.isOpen ? _react2["default"].createElement(_SLDSPopover2["default"], {
+	        className: className,
+	        horizontalAlign: this.props.horizontalAlign,
+	        targetElement: this.refs.button,
+	        closeOnTabKey: true,
+	        onClose: this.handleCancel.bind(this) }, this.getPopoverContent()) : null;
+	    }
+	  }, {
+	    key: "getPlaceholder",
+	    value: function getPlaceholder() {
+	      var option = this.props.options[this.state.selectedIndex];
+	      return option && option.label ? option.label : this.props.placeholder;
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
 	
-	  getPopoverContent: function getPopoverContent() {
-	    return _react2["default"].createElement(_list2["default"], {
-	      ref: "list",
-	      options: this.props.options,
-	      className: this.props.listClassName,
-	      highlightedIndex: this.state.highlightedIndex,
-	      selectedIndex: this.state.selectedIndex,
-	      onSelect: this.handleSelect,
-	      onUpdateHighlighted: this.handleUpdateHighlighted,
-	      onListBlur: this.handleListBlur,
-	      onListItemBlur: this.handleListItemBlur,
-	      onMouseEnter: this.props.openOn === "hover" ? this.handleMouseEnter : null,
-	      onMouseLeave: this.props.openOn === "hover" ? this.handleMouseLeave : null,
-	      onCancel: this.handleCancel,
-	      itemRenderer: this.props.listItemRenderer,
-	      isHover: this.state.isHover,
-	      theme: this.props.theme });
-	  },
+	      var props = (0, _lodashOmit2["default"])(this.props, ["aria-haspopup", "label", "className", "style", "variant", "iconName", "iconVariant", "onBlur", "onFocus", "onClick", "onMouseDown", "onMouseEnter", "onMouseLeave", "tabIndex", "onKeyDown"]);
 	
-	  getSimplePopover: function getSimplePopover() {
-	    return !this.props.disabled && this.state.isOpen ? _react2["default"].createElement("div", {
-	      className: "slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu",
-	      style: { maxHeight: "20em" } }, this.getPopoverContent()) : null;
-	  },
+	      return _react2["default"].createElement(_SLDSButton2["default"], _extends({
+	        ref: "button",
+	        "aria-haspopup": "true",
+	        label: this.props.label,
+	        className: this.props.className,
+	        style: this.props.style,
+	        variant: this.props.variant,
+	        iconName: this.props.iconName,
+	        iconVariant: this.props.iconVariant,
+	        onBlur: (0, _utilsCreateChainedFunction2["default"])(this.props.onBlur, this.handleBlur.bind(this)),
+	        onFocus: (0, _utilsCreateChainedFunction2["default"])(this.props.onFocus, this.handleFocus.bind(this)),
+	        onClick: (0, _utilsCreateChainedFunction2["default"])(this.props.onClick, this.handleClick.bind(this)),
+	        onMouseDown: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseDown, this.handleMouseDown.bind(this)),
+	        onMouseEnter: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseEnter, this.props.openOn === "hover" ? this.handleMouseEnter.bind(this) : null),
+	        onMouseLeave: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseLeave, this.props.openOn === "hover" ? this.handleMouseLeave.bind(this) : null),
+	        tabIndex: this.state.isOpen ? -1 : 0,
+	        onKeyDown: (0, _utilsCreateChainedFunction2["default"])(this.props.onKeyDown, this.handleKeyDown.bind(this))
+	      }, props), this.props.modal ? this.getModalPopover() : this.getSimplePopover());
+	    }
+	  }]);
 	
-	  getModalPopover: function getModalPopover() {
-	    var className = "slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--" + this.props.horizontalAlign;
-	    return !this.props.disabled && this.state.isOpen ? _react2["default"].createElement(_SLDSPopover2["default"], {
-	      className: className,
-	      horizontalAlign: this.props.horizontalAlign,
-	      targetElement: this.refs.button,
-	      closeOnTabKey: true,
-	      onClose: this.handleCancel }, this.getPopoverContent()) : null;
-	  },
+	  return SLDSDropdown;
+	})(_react2["default"].Component);
 	
-	  getPlaceholder: function getPlaceholder() {
-	    var option = this.props.options[this.state.selectedIndex];
-	    return option && option.label ? option.label : this.props.placeholder;
-	  },
+	SLDSDropdown.displayName = displayName;
+	SLDSDropdown.propTypes = propTypes;
+	SLDSDropdown.defaultProps = defaultProps;
 	
-	  handleListItemBlur: function handleListItemBlur(index, relatedTarget) {
-	    this.setState({
-	      lastBlurredIndex: index,
-	      lastBlurredTimeStamp: Date.now()
-	    });
-	  },
-	
-	  render: function render() {
-	
-	    var props = (0, _lodashOmit2["default"])(this.props, ["aria-haspopup", "label", "className", "style", "variant", "iconName", "iconVariant", "onBlur", "onFocus", "onClick", "onMouseDown", "onMouseEnter", "onMouseLeave", "tabIndex", "onKeyDown"]);
-	
-	    return _react2["default"].createElement(_SLDSButton2["default"], _extends({
-	      ref: "button",
-	      "aria-haspopup": "true",
-	      label: this.props.label,
-	      className: this.props.className,
-	      style: this.props.style,
-	      variant: this.props.variant,
-	      iconName: this.props.iconName,
-	      iconVariant: this.props.iconVariant,
-	      onBlur: (0, _utilsCreateChainedFunction2["default"])(this.props.onBlur, this.handleBlur),
-	      onFocus: (0, _utilsCreateChainedFunction2["default"])(this.props.onFocus, this.handleFocus),
-	      onClick: (0, _utilsCreateChainedFunction2["default"])(this.props.onClick, this.handleClick),
-	      onMouseDown: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseDown, this.handleMouseDown),
-	      onMouseEnter: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseEnter, this.props.openOn === "hover" ? this.handleMouseEnter : null),
-	      onMouseLeave: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseLeave, this.props.openOn === "hover" ? this.handleMouseLeave : null),
-	      tabIndex: this.state.isOpen ? -1 : 0,
-	      onKeyDown: (0, _utilsCreateChainedFunction2["default"])(this.props.onKeyDown, this.handleKeyDown)
-	    }, props), this.props.modal ? this.getModalPopover() : this.getSimplePopover());
-	  }
-	
-	});
-	
-	module.exports.ListItem = _listItem2["default"];
-	module.exports.ListItemLabel = _listItemLabel2["default"];
+	module.exports = SLDSDropdown;
+	module.exports.ListItem = _utils.ListItem;
+	module.exports.ListItemLabel = _utils.ListItemLabel;
 
 /***/ },
-/* 28 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	
-	"use strict";
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { "default": obj };
-	}
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _SLDSIcons = __webpack_require__(13);
-	
-	var _listItem = __webpack_require__(29);
-	
-	var _listItem2 = _interopRequireDefault(_listItem);
-	
-	module.exports = _react2["default"].createClass({
-	
-	  displayName: "SLDSPicklistBase-list",
-	
-	  getInitialState: function getInitialState() {
-	    return {};
-	  },
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      options: [],
-	      label: 'Menu',
-	      selectedIndex: -1,
-	      highlightedIndex: 0,
-	      className: '',
-	      itemRenderer: null,
-	      onListBlur: function onListBlur() {
-	        console.log("onListBlur should be overwritten");
-	      },
-	      onMoveFocus: function onMoveFocus(delta) {
-	        console.log("onMoveFocus should be overwritten");
-	      },
-	      onCancel: function onCancel(delta) {
-	        console.log("onCancel should be overwritten");
-	      },
-	      onSelect: function onSelect(index) {
-	        console.log("onSelect should be overwritten");
-	      },
-	      onListItemBlur: function onListItemBlur(listItemIndex) {
-	        console.log("onListItemBlur should be overwritten");
-	      }
-	    };
-	  },
-	
-	  handleClick: function handleClick(e) {
-	    if (e.nativeEvent) {
-	      e.nativeEvent.preventDefault();
-	      e.nativeEvent.stopImmediatePropagation();
-	    }
-	    e.preventDefault();
-	  },
-	
-	  handleUpdateHighlighted: function handleUpdateHighlighted(nextIndex) {
-	    if (this.props.onUpdateHighlighted) {
-	      this.props.onUpdateHighlighted(nextIndex);
-	    }
-	  },
-	
-	  handleListItemBlur: function handleListItemBlur(index, relatedTarget) {
-	    if (this.props.onListItemBlur) {
-	      this.props.onListItemBlur(index);
-	    }
-	    this.setState({ lastBlurredIndex: index });
-	  },
-	
-	  handleMoveFocus: function handleMoveFocus(delta) {
-	    var newHighlightedIndex = this.props.highlightedIndex + delta;
-	    if (newHighlightedIndex < 0) {
-	      newHighlightedIndex = this.props.options.length - 1;
-	    } else if (newHighlightedIndex >= this.props.options.length) {
-	      newHighlightedIndex = 0;
-	    }
-	    if (this.props.onUpdateHighlighted) {
-	      this.props.onUpdateHighlighted(newHighlightedIndex);
-	    }
-	  },
-	
-	  handleCancel: function handleCancel() {
-	    if (this.props.onCancel) {
-	      this.props.onCancel();
-	    }
-	  },
-	
-	  handleSelect: function handleSelect(index) {
-	    if (this.props.onSelect) {
-	      this.props.onSelect(index);
-	    }
-	  },
-	
-	  handleItemFocus: function handleItemFocus(itemIndex, itemHeight) {
-	    if (this.refs.scroll) {
-	      this.refs.scroll.getDOMNode().scrollTop = itemIndex * itemHeight;
-	    }
-	  },
-	
-	  handleSearch: function handleSearch(index, ch) {
-	    var searchChar = ch.toLowerCase();
-	    for (var i = index + 1; i < this.props.options.length; i++) {
-	      var option = this.props.options[i];
-	      if (option && option.label) {
-	        if (option.label.charAt(0).toLowerCase() === searchChar) {
-	          if (this.props.onUpdateHighlighted) {
-	            this.props.onUpdateHighlighted(i);
-	          }
-	          return;
-	        }
-	      }
-	    }
-	    for (var i = 0; i < index; i++) {
-	      var option = this.props.options[i];
-	      if (option && option.label) {
-	        if (option.label.charAt(0).toLowerCase() === searchChar) {
-	          if (this.props.onUpdateHighlighted) {
-	            this.props.onUpdateHighlighted(i);
-	          }
-	          return;
-	        }
-	      }
-	    }
-	  },
-	
-	  getItems: function getItems() {
-	    var _this = this;
-	
-	    return this.props.options.map(function (option, index) {
-	      return _react2["default"].createElement(_listItem2["default"], {
-	        key: 'ListItem_' + index,
-	        index: index,
-	        label: option.label,
-	        value: option.value,
-	        data: option,
-	        isHighlighted: index === _this.props.highlightedIndex,
-	        isSelected: index === _this.props.selectedIndex,
-	        onUpdateHighlighted: _this.handleUpdateHighlighted,
-	        onMoveFocus: _this.handleMoveFocus,
-	        onBlur: _this.handleListItemBlur,
-	        onFocus: _this.handleItemFocus,
-	        onSelect: _this.handleSelect,
-	        onSearch: _this.handleSearch,
-	        labelRenderer: _this.props.itemRenderer,
-	        isHover: _this.props.isHover,
-	        onCancel: _this.handleCancel });
-	    });
-	  },
-	
-	  render: function render() {
-	    return _react2["default"].createElement("div", {
-	      ref: "scroll",
-	      className: 'slds-wrap slds-grow slds-scrollable--y ' + this.props.className,
-	      onMouseEnter: this.props.onMouseEnter,
-	      onMouseLeave: this.props.onMouseLeave,
-	      style: {
-	        maxHeight: 260
-	      }
-	    }, _react2["default"].createElement("ul", {
-	      ref: "scroll",
-	      className: "slds-dropdown__list slds-theme--" + this.props.theme,
-	      role: "menu"
-	    }, this.getItems()));
-	  },
-	
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {}
-	
-	});
-
-/***/ },
-/* 29 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	'use strict';
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _SLDSIcons = __webpack_require__(13);
-	
-	var _utils = __webpack_require__(6);
-	
-	var _listItemLabel = __webpack_require__(30);
-	
-	var _listItemLabel2 = _interopRequireDefault(_listItemLabel);
-	
-	module.exports = _react2['default'].createClass({
-	
-	  displayName: 'SLDSPicklistBase-list-item',
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      index: 0,
-	      label: '',
-	      value: null,
-	      inverted: false,
-	      isSelected: false,
-	      isHighlighted: false,
-	      labelRenderer: _listItemLabel2['default'],
-	      data: {},
-	
-	      onSelect: function onSelect(index) {
-	        console.log('onSelect should be defined ', index);
-	      },
-	
-	      onClick: function onClick(index) {
-	        console.log('onClick should be defined ', index);
-	      },
-	      onMoveFocus: function onMoveFocus(delta) {
-	        console.log('onMoveFocus should be defined ', delta);
-	      },
-	      onBlur: function onBlur(relatedTarget) {
-	        console.log('onBlur should be defined ', relatedTarget);
-	      },
-	      onFocus: function onFocus(index, height) {
-	        console.log('onFocus should be defined ', index, height);
-	      }
-	    };
-	  },
-	
-	  handleClick: function handleClick(e) {
-	    e.preventDefault();
-	    e.stopPropagation();
-	    if (this.props.onSelect) {
-	      this.props.onSelect(this.props.index);
-	    }
-	  },
-	
-	  handleMouseDown: function handleMouseDown(e) {
-	    if (e.nativeEvent) {
-	      e.nativeEvent.preventDefault();
-	      e.nativeEvent.stopImmediatePropagation();
-	    }
-	    e.preventDefault();
-	  },
-	
-	  componentDidMount: function componentDidMount() {
-	    if (this.props.isHighlighted) {
-	      this.setFocus();
-	    }
-	  },
-	
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	    if (!prevProps.isHighlighted && this.props.isHighlighted) {
-	      this.setFocus();
-	    }
-	  },
-	
-	  setFocus: function setFocus() {
-	    if (!this.props.isHover) {
-	      this.refs.link.getDOMNode().focus();
-	    }
-	  },
-	
-	  handleKeyDown: function handleKeyDown(event) {
-	
-	    if (event.keyCode) {
-	      if (event.keyCode === _utils.KEYS.DOWN) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onMoveFocus) {
-	          this.props.onMoveFocus(1);
-	        }
-	      } else if (event.keyCode === _utils.KEYS.UP) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onMoveFocus) {
-	          this.props.onMoveFocus(-1);
-	        }
-	      } else if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onSelect) {
-	          this.props.onSelect(this.props.index);
-	        }
-	      } else if (event.keyCode === _utils.KEYS.ESCAPE) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onCancel) {
-	          this.props.onCancel();
-	        }
-	      } else if (event.keyCode === _utils.KEYS.TAB) {} else {
-	        _utils.EventUtil.trapEvent(event);
-	        var ch = String.fromCharCode(event.keyCode);
-	        if (this.props.onSearch) {
-	          this.props.onSearch(this.props.index, ch);
-	        }
-	      }
-	    }
-	  },
-	
-	  handleBlur: function handleBlur(e) {
-	    if (this.props.onBlur) {
-	      this.props.onBlur(this.props.index, e.relatedTarget);
-	    }
-	  },
-	
-	  handleFocus: function handleFocus() {
-	    var height = this.getDOMNode().offsetHeight;
-	    if (height && this.props.onFocus) {
-	      this.props.onFocus(this.props.index, height);
-	    }
-	  },
-	
-	  getLabel: function getLabel() {
-	    var LabelComp = this.props.labelRenderer;
-	    return _react2['default'].createElement(LabelComp, {
-	      index: this.props.index,
-	      label: this.props.label,
-	      value: this.props.value,
-	      inverted: this.props.inverted,
-	      isSelected: this.props.isSelected,
-	      isHighlighted: this.props.isHighlighted,
-	      data: this.props.data
-	    });
-	  },
-	
-	  render: function render() {
-	    return _react2['default'].createElement('li', {
-	      className: "slds-dropdown__item slds-has-icon slds-has-icon--left slds-theme--" + this.props.theme,
-	      onMouseDown: this.handleMouseDown,
-	      onMouseEnter: this.props.onMouseEnter,
-	      onMouseLeave: this.props.onMouseLeave,
-	      tabIndex: -1 }, _react2['default'].createElement('a', { id: 'menu-0-' + this.props.index,
-	      href: '',
-	      ref: 'link',
-	      className: 'slds-truncate',
-	      onClick: this.handleClick,
-	      onMouseDown: this.handleMouseDown,
-	      onKeyDown: this.handleKeyDown,
-	      onBlur: this.handleBlur,
-	      onFocus: this.handleFocus,
-	      'aria-checked': this.props.isSelected,
-	      role: 'menuitemradio',
-	      tabIndex: -1 }, this.getLabel()));
-	  }
-	
-	});
-
-/***/ },
-/* 30 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	'use strict';
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _SLDSIcons = __webpack_require__(13);
-	
-	var _utils = __webpack_require__(6);
-	
-	module.exports = _react2['default'].createClass({
-	
-	  displayName: 'SLDSPicklistBase-list-item-label',
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      index: 0,
-	      label: '',
-	      value: null,
-	      inverted: false,
-	      isSelected: false,
-	      isHighlighted: false,
-	      data: {}
-	    };
-	  },
-	
-	  render: function render() {
-	    return _react2['default'].createElement('section', null, this.props.isSelected ? _react2['default'].createElement(_SLDSIcons.Icon, { name: 'check', position: 'left', category: 'utility' }) : null, this.props.label);
-	  }
-	
-	});
-
-/***/ },
-/* 31 */
-/***/ function(module, exports) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	
-	/**
-	 * Safe chained function
-	 *
-	 * Will only create a new function if needed,
-	 * otherwise will pass back existing functions or null.
-	 *
-	 * @param {function} one
-	 * @param {function} two
-	 * @returns {function|null}
-	 */
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	function createChainedFunction(one, two) {
-	  var hasOne = typeof one === 'function';
-	  var hasTwo = typeof two === 'function';
-	
-	  if (!hasOne && !hasTwo) {
-	    return null;
-	  }
-	  if (!hasOne) {
-	    return two;
-	  }
-	  if (!hasTwo) {
-	    return one;
-	  }
-	
-	  return function chainedFunction() {
-	    one.apply(this, arguments);
-	    two.apply(this, arguments);
-	  };
-	}
-	
-	exports['default'] = createChainedFunction;
-	module.exports = exports['default'];
-
-/***/ },
-/* 32 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -5860,17 +7082,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _utilsCreateChainedFunction = __webpack_require__(31);
+	var _utilsCreateChainedFunction = __webpack_require__(37);
 	
 	var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
 	
-	var _SLDSIcons = __webpack_require__(13);
+	var _SLDSIcons = __webpack_require__(22);
 	
-	var _lodashOmit = __webpack_require__(33);
+	var _lodashOmit = __webpack_require__(38);
 	
 	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
-	var classNames = __webpack_require__(23);
+	var classNames = __webpack_require__(32);
 	
 	var displayName = 'SLDSButton';
 	var propTypes = {
@@ -5965,7 +7187,60 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSButton;
 
 /***/ },
-/* 33 */
+/* 37 */
+/***/ function(module, exports) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	/**
+	 * Safe chained function
+	 *
+	 * Will only create a new function if needed,
+	 * otherwise will pass back existing functions or null.
+	 *
+	 * @param {function} one
+	 * @param {function} two
+	 * @returns {function|null}
+	 */
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	function createChainedFunction(one, two) {
+	  var hasOne = typeof one === 'function';
+	  var hasTwo = typeof two === 'function';
+	
+	  if (!hasOne && !hasTwo) {
+	    return null;
+	  }
+	  if (!hasOne) {
+	    return two;
+	  }
+	  if (!hasTwo) {
+	    return one;
+	  }
+	
+	  return function chainedFunction() {
+	    one.apply(this, arguments);
+	    two.apply(this, arguments);
+	  };
+	}
+	
+	exports['default'] = createChainedFunction;
+	module.exports = exports['default'];
+
+/***/ },
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -5976,14 +7251,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var arrayMap = __webpack_require__(34),
-	    baseDifference = __webpack_require__(35),
-	    baseFlatten = __webpack_require__(40),
-	    bindCallback = __webpack_require__(43),
-	    pickByArray = __webpack_require__(44),
-	    pickByCallback = __webpack_require__(45),
-	    keysIn = __webpack_require__(47),
-	    restParam = __webpack_require__(50);
+	var arrayMap = __webpack_require__(39),
+	    baseDifference = __webpack_require__(40),
+	    baseFlatten = __webpack_require__(45),
+	    bindCallback = __webpack_require__(48),
+	    pickByArray = __webpack_require__(49),
+	    pickByCallback = __webpack_require__(50),
+	    keysIn = __webpack_require__(52),
+	    restParam = __webpack_require__(55);
 	
 	/**
 	 * The opposite of `_.pick`; this method creates an object composed of the
@@ -6031,7 +7306,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 34 */
+/* 39 */
 /***/ function(module, exports) {
 
 	/**
@@ -6067,7 +7342,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 35 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6078,9 +7353,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseIndexOf = __webpack_require__(36),
-	    cacheIndexOf = __webpack_require__(37),
-	    createCache = __webpack_require__(38);
+	var baseIndexOf = __webpack_require__(41),
+	    cacheIndexOf = __webpack_require__(42),
+	    createCache = __webpack_require__(43);
 	
 	/** Used as the size to enable large array optimizations. */
 	var LARGE_ARRAY_SIZE = 200;
@@ -6136,7 +7411,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 36 */
+/* 41 */
 /***/ function(module, exports) {
 
 	/**
@@ -6199,7 +7474,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 37 */
+/* 42 */
 /***/ function(module, exports) {
 
 	/**
@@ -6258,7 +7533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 38 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -6269,7 +7544,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(39);
+	var getNative = __webpack_require__(44);
 	
 	/** Native method references. */
 	var Set = getNative(global, 'Set');
@@ -6356,7 +7631,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 39 */
+/* 44 */
 /***/ function(module, exports) {
 
 	/**
@@ -6499,7 +7774,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 40 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -6510,8 +7785,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(41),
-	    isArray = __webpack_require__(42);
+	var isArguments = __webpack_require__(46),
+	    isArray = __webpack_require__(47);
 	
 	/**
 	 * Checks if `value` is object-like.
@@ -6636,7 +7911,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 41 */
+/* 46 */
 /***/ function(module, exports) {
 
 	/**
@@ -6748,7 +8023,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 42 */
+/* 47 */
 /***/ function(module, exports) {
 
 	/**
@@ -6934,7 +8209,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 43 */
+/* 48 */
 /***/ function(module, exports) {
 
 	/**
@@ -7005,7 +8280,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 44 */
+/* 49 */
 /***/ function(module, exports) {
 
 	/**
@@ -7084,7 +8359,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 45 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7095,8 +8370,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(46),
-	    keysIn = __webpack_require__(47);
+	var baseFor = __webpack_require__(51),
+	    keysIn = __webpack_require__(52);
 	
 	/**
 	 * The base implementation of `_.forIn` without support for callback
@@ -7134,7 +8409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 46 */
+/* 51 */
 /***/ function(module, exports) {
 
 	/**
@@ -7226,7 +8501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 47 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -7237,8 +8512,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(48),
-	    isArray = __webpack_require__(49);
+	var isArguments = __webpack_require__(53),
+	    isArray = __webpack_require__(54);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -7364,7 +8639,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 48 */
+/* 53 */
 /***/ function(module, exports) {
 
 	/**
@@ -7476,7 +8751,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 49 */
+/* 54 */
 /***/ function(module, exports) {
 
 	/**
@@ -7662,7 +8937,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 50 */
+/* 55 */
 /***/ function(module, exports) {
 
 	/**
@@ -7735,7 +9010,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 51 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -7755,7 +9030,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return obj && obj.__esModule ? obj : { 'default': obj };
 	}
 	
-	var _reactModal = __webpack_require__(52);
+	var _reactModal = __webpack_require__(57);
 	
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 	
@@ -7782,22 +9057,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 52 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(53);
+	module.exports = __webpack_require__(58);
 	
 
 
 /***/ },
-/* 53 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {var React = __webpack_require__(2);
-	var ExecutionEnvironment = __webpack_require__(55);
-	var ModalPortal = React.createFactory(__webpack_require__(56));
-	var ariaAppHider = __webpack_require__(71);
-	var elementClass = __webpack_require__(72);
+	var ExecutionEnvironment = __webpack_require__(60);
+	var ModalPortal = React.createFactory(__webpack_require__(61));
+	var ariaAppHider = __webpack_require__(76);
+	var elementClass = __webpack_require__(77);
 	
 	var SafeHTMLElement = ExecutionEnvironment.canUseDOM ? window.HTMLElement : {};
 	
@@ -7875,10 +9150,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  delete props.ref;
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(54)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(59)))
 
 /***/ },
-/* 54 */
+/* 59 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -7975,7 +9250,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 55 */
+/* 60 */
 /***/ function(module, exports) {
 
 	/**
@@ -8023,14 +9298,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 56 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(2);
 	var div = React.DOM.div;
-	var focusManager = __webpack_require__(57);
-	var scopeTab = __webpack_require__(59);
-	var Assign = __webpack_require__(60);
+	var focusManager = __webpack_require__(62);
+	var scopeTab = __webpack_require__(64);
+	var Assign = __webpack_require__(65);
 	
 	
 	// so that our CSS is statically analyzable
@@ -8228,10 +9503,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 57 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(58);
+	var findTabbable = __webpack_require__(63);
 	var modalElement = null;
 	var focusLaterElement = null;
 	var needToFocus = false;
@@ -8302,7 +9577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 58 */
+/* 63 */
 /***/ function(module, exports) {
 
 	/*!
@@ -8358,10 +9633,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 59 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(58);
+	var findTabbable = __webpack_require__(63);
 	
 	module.exports = function(node, event) {
 	  var tabbable = findTabbable(node);
@@ -8379,7 +9654,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 60 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8390,9 +9665,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseAssign = __webpack_require__(61),
-	    createAssigner = __webpack_require__(67),
-	    keys = __webpack_require__(63);
+	var baseAssign = __webpack_require__(66),
+	    createAssigner = __webpack_require__(72),
+	    keys = __webpack_require__(68);
 	
 	/**
 	 * A specialized version of `_.assign` for customizing assigned values without
@@ -8465,7 +9740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 61 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8476,8 +9751,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseCopy = __webpack_require__(62),
-	    keys = __webpack_require__(63);
+	var baseCopy = __webpack_require__(67),
+	    keys = __webpack_require__(68);
 	
 	/**
 	 * The base implementation of `_.assign` without support for argument juggling,
@@ -8498,7 +9773,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 62 */
+/* 67 */
 /***/ function(module, exports) {
 
 	/**
@@ -8536,7 +9811,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 63 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -8547,9 +9822,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(64),
-	    isArguments = __webpack_require__(65),
-	    isArray = __webpack_require__(66);
+	var getNative = __webpack_require__(69),
+	    isArguments = __webpack_require__(70),
+	    isArray = __webpack_require__(71);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -8778,7 +10053,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 64 */
+/* 69 */
 /***/ function(module, exports) {
 
 	/**
@@ -8921,7 +10196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 65 */
+/* 70 */
 /***/ function(module, exports) {
 
 	/**
@@ -9033,7 +10308,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 66 */
+/* 71 */
 /***/ function(module, exports) {
 
 	/**
@@ -9219,7 +10494,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 67 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9230,9 +10505,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var bindCallback = __webpack_require__(68),
-	    isIterateeCall = __webpack_require__(69),
-	    restParam = __webpack_require__(70);
+	var bindCallback = __webpack_require__(73),
+	    isIterateeCall = __webpack_require__(74),
+	    restParam = __webpack_require__(75);
 	
 	/**
 	 * Creates a function that assigns properties of source object(s) to a given
@@ -9277,7 +10552,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 68 */
+/* 73 */
 /***/ function(module, exports) {
 
 	/**
@@ -9348,7 +10623,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 69 */
+/* 74 */
 /***/ function(module, exports) {
 
 	/**
@@ -9486,7 +10761,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 70 */
+/* 75 */
 /***/ function(module, exports) {
 
 	/**
@@ -9559,7 +10834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 71 */
+/* 76 */
 /***/ function(module, exports) {
 
 	var _element = document.body;
@@ -9607,7 +10882,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 72 */
+/* 77 */
 /***/ function(module, exports) {
 
 	module.exports = function(opts) {
@@ -9672,7 +10947,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 73 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -9771,7 +11046,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSButtonGroup;
 
 /***/ },
-/* 74 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -9845,41 +11120,69 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Menu = __webpack_require__(75);
+	var _Menu = __webpack_require__(80);
 	
 	var _Menu2 = _interopRequireDefault(_Menu);
 	
-	var _SLDSPopover = __webpack_require__(3);
+	var _SLDSPopover = __webpack_require__(11);
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
-	var _SLDSIcons = __webpack_require__(13);
-	
-	var _SLDSButton = __webpack_require__(32);
+	var _SLDSButton = __webpack_require__(36);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _utils = __webpack_require__(6);
+	var _SLDSIcons = __webpack_require__(22);
 	
-	var _lodashEscaperegexp = __webpack_require__(77);
+	var _utils = __webpack_require__(14);
+	
+	var _lodashEscaperegexp = __webpack_require__(82);
 	
 	var _lodashEscaperegexp2 = _interopRequireDefault(_lodashEscaperegexp);
 	
-	var _MenuDefaultFooter = __webpack_require__(79);
+	var _MenuDefaultFooter = __webpack_require__(84);
 	
 	var _MenuDefaultFooter2 = _interopRequireDefault(_MenuDefaultFooter);
 	
-	var _MenuDefaultHeader = __webpack_require__(80);
+	var _MenuDefaultHeader = __webpack_require__(85);
 	
 	var _MenuDefaultHeader2 = _interopRequireDefault(_MenuDefaultHeader);
 	
-	var _classnames = __webpack_require__(23);
+	var _classnames = __webpack_require__(32);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
+	
+	var displayName = "SLDSLookup";
+	var propTypes = {
+	  boldRegex: _react2["default"].PropTypes.instanceOf(RegExp),
+	  modal: _react2["default"].PropTypes.bool,
+	  emptyMessage: _react2["default"].PropTypes.string,
+	  errors: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
+	  disabled: _react2["default"].PropTypes.bool,
+	  filterWith: _react2["default"].PropTypes.func,
+	  hasError: _react2["default"].PropTypes.bool,
+	  iconCategory: _react2["default"].PropTypes.string,
+	  iconName: _react2["default"].PropTypes.string,
+	  items: _react2["default"].PropTypes.array,
+	  label: _react2["default"].PropTypes.string,
+	  listItemLabelRenderer: _react2["default"].PropTypes.func,
+	  messages: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
+	  onBlur: _react2["default"].PropTypes.func,
+	  onChange: _react2["default"].PropTypes.func,
+	  onItemSelect: _react2["default"].PropTypes.func,
+	  onItemUnselect: _react2["default"].PropTypes.func,
+	  type: _react2["default"].PropTypes.string
+	};
 	
 	var defaultFilter = function defaultFilter(term, item) {
 	  if (!term) return true;
 	  return item.label.match(new RegExp((0, _lodashEscaperegexp2["default"])(term), "ig"));
+	};
+	
+	var defaultProps = {
+	  disabled: false,
+	  filterWith: defaultFilter,
+	  modal: false
 	};
 	
 	var SLDSLookup = (function (_React$Component) {
@@ -9889,17 +11192,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, SLDSLookup);
 	
 	    _get(Object.getPrototypeOf(SLDSLookup.prototype), "constructor", this).call(this, props);
-	
-	    //Dynamically assign ids to list items to reference for focusing and selecting items
-	
 	    this.state = {
-	      searchTerm: "",
-	      isOpen: false,
 	      currentFocus: null,
 	      focusIndex: null,
-	      selectedIndex: null,
+	      isOpen: false,
+	      items: [],
 	      listLength: this.props.items.length,
-	      items: []
+	      selectedIndex: null,
+	      searchTerm: ""
 	    };
 	  }
 	
@@ -9946,8 +11246,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    //=================================================
 	    // Using down/up keys, set Focus on list item and assign it to aria-activedescendant attribute in input.
-	    // Need to keep track of filtered list length to be able to increment/decrement the focus index so it"s contained to the number of available list items.
-	    // Adding/subtracting 1 from focusIndex to account for fixed action items (searchRecords and addNewItem buttons)
+	    // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
 	  }, {
 	    key: "increaseIndex",
 	    value: function increaseIndex() {
@@ -10162,6 +11461,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          type: this.props.type,
 	          iconCategory: this.props.iconCategory,
 	          iconName: this.props.iconName ? this.props.iconName : this.props.type,
+	          iconClasses: this.props.iconClasses,
 	          focusIndex: this.state.focusIndex,
 	          listLength: this.state.listLength,
 	          items: this.state.items,
@@ -10202,7 +11502,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "renderSelectedItem",
 	    value: function renderSelectedItem() {
 	      var selectedItem = this.props.items[this.state.selectedIndex].label;
-	      return _react2["default"].createElement("span", { tabIndex: "0", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: "slds-m-right--x-small " + this.props.iconClasses }), selectedItem), _react2["default"].createElement(_SLDSButton2["default"], {
+	      return _react2["default"].createElement("a", { href: "javascript:void(0)", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: "slds-icon slds-icon-standard-account slds-pill__icon " + this.props.iconClasses }), _react2["default"].createElement("span", { className: "slds-pill__label" }, selectedItem)), _react2["default"].createElement(_SLDSButton2["default"], {
 	        assistiveText: "Press delete to remove",
 	        tabIndex: "-1",
 	        variant: "icon",
@@ -10210,30 +11510,43 @@ return /******/ (function(modules) { // webpackBootstrap
 	        iconSize: "medium",
 	        onClick: this.handleDeleteSelected.bind(this),
 	        ref: "clearSelectedItemButton",
-	        className: "slds-m-left--x-small "
+	        className: "slds-pill__remove slds-button--icon-bare"
 	      }));
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var inputClasses = this.state.selectedIndex === null ? "slds-input" : "slds-input slds-hide";
-	      var componentClasses = this.state.selectedIndex === null ? "slds-lookup ignore-react-onclickoutside" : "slds-lookup ignore-react-onclickoutside slds-has-selection";
+	      var inputClasses = {
+	        "slds-input": true,
+	        "slds-show": this.state.selectedIndex === null,
+	        "slds-hide": this.state.selectedIndex !== null
+	      };
+	
+	      var componentClasses = {
+	        "slds-lookup": true,
+	        "slds-has-selection": this.state.selectedIndex !== null
+	      };
 	
 	      var inputContainerClasses = {
-	        "slds-lookup__control": true,
+	        "slds-form-element__control": true,
 	        "slds-input-has-icon": true,
 	        "slds-input-has-icon--right": true,
-	        "slds-input": this.state.selectedIndex !== null,
 	        "slds-has-error": this.props.hasError
+	      };
+	
+	      var pillContainerClasses = {
+	        "slds-pill__container": true,
+	        "slds-show": this.state.selectedIndex !== null,
+	        "slds-hide": this.state.selectedIndex === null
 	      };
 	
 	      var inputContainerStyle = this.state.selectedIndex === null ? {} : { padding: "5px" };
 	      var inputLabel = this.props.label ? _react2["default"].createElement("label", { className: "slds-form-element__label", htmlFor: this.props.type + "Lookup" }, this.props.label) : null;
 	
-	      return _react2["default"].createElement("div", { className: componentClasses, "data-select": "multi", "data-scope": "single", "data-typeahead": "true" }, _react2["default"].createElement("section", { className: "slds-form-element" }, inputLabel, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(inputContainerClasses), style: inputContainerStyle }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null, _react2["default"].createElement(_SLDSIcons.InputIcon, { name: "search" }), _react2["default"].createElement("input", {
+	      return _react2["default"].createElement("div", { className: (0, _classnames2["default"])(componentClasses), "data-select": "single", "data-scope": "single", "data-typeahead": "true" }, _react2["default"].createElement("section", { className: "slds-form-element" }, inputLabel, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(inputContainerClasses), style: inputContainerStyle }, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(pillContainerClasses) }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null), _react2["default"].createElement(_SLDSIcons.InputIcon, { name: "search" }), _react2["default"].createElement("input", {
 	        id: this.props.type + "Lookup",
 	        ref: this.props.type + "Lookup",
-	        className: inputClasses,
+	        className: (0, _classnames2["default"])(inputClasses),
 	        type: "text",
 	        "aria-haspopup": "true",
 	        "aria-autocomplete": "list",
@@ -10253,39 +11566,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return SLDSLookup;
 	})(_react2["default"].Component);
 	
-	SLDSLookup.propTypes = {
-	  items: _react2["default"].PropTypes.array,
-	  emptyMessage: _react2["default"].PropTypes.string,
-	  messages: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
-	  errors: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
-	  label: _react2["default"].PropTypes.string,
-	  type: _react2["default"].PropTypes.string,
-	  iconCategory: _react2["default"].PropTypes.string,
-	  iconName: _react2["default"].PropTypes.string,
-	  filterWith: _react2["default"].PropTypes.func,
-	  onItemSelect: _react2["default"].PropTypes.func,
-	  onItemUnselect: _react2["default"].PropTypes.func,
-	  onChange: _react2["default"].PropTypes.func,
-	  onBlur: _react2["default"].PropTypes.func,
-	  modal: _react2["default"].PropTypes.bool,
-	  disabled: _react2["default"].PropTypes.bool,
-	  hasError: _react2["default"].PropTypes.bool,
-	  boldRegex: _react2["default"].PropTypes.instanceOf(RegExp),
-	  listItemLabelRenderer: _react2["default"].PropTypes.func
-	};
-	
-	SLDSLookup.defaultProps = {
-	  filterWith: defaultFilter,
-	  modal: false,
-	  disabled: false
-	};
+	SLDSLookup.displayName = displayName;
+	SLDSLookup.propTypes = propTypes;
+	SLDSLookup.defaultProps = defaultProps;
 	
 	module.exports = SLDSLookup;
 	module.exports.DefaultHeader = _MenuDefaultHeader2["default"];
 	module.exports.DefaultFooter = _MenuDefaultFooter2["default"];
 
 /***/ },
-/* 75 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10349,11 +11639,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Item = __webpack_require__(76);
+	var _Item = __webpack_require__(81);
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
-	var _SLDSIcons = __webpack_require__(13);
+	var displayName = 'SLDSLookup-Menu';
+	var propTypes = {
+	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
+	  emptyMessage: _react2['default'].PropTypes.string,
+	  errors: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.string),
+	  filterWith: _react2['default'].PropTypes.func,
+	  focusIndex: _react2['default'].PropTypes.number,
+	  getListLength: _react2['default'].PropTypes.func,
+	  iconCategory: _react2['default'].PropTypes.string,
+	  items: _react2['default'].PropTypes.array,
+	  label: _react2['default'].PropTypes.string,
+	  listLength: _react2['default'].PropTypes.number,
+	  searchTerm: _react2['default'].PropTypes.string,
+	  setFocus: _react2['default'].PropTypes.func,
+	  type: _react2['default'].PropTypes.string
+	};
+	var defaultProps = {
+	  emptyMessage: "No matches found.",
+	  errors: [],
+	  messages: []
+	};
 	
 	var Menu = (function (_React$Component) {
 	  _inherits(Menu, _React$Component);
@@ -10370,8 +11680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(Menu, [{
 	    key: 'componentDidUpdate',
 	    value: function componentDidUpdate(prevProps, prevState) {
-	      // make an array of the children of the list
-	      // but only count the actual items (ignore errors/messages)
+	      // make an array of the children of the list but only count the actual items (ignore errors/messages)
 	      var list = [].slice.call(_react2['default'].findDOMNode(this.refs.list).children).filter(function (child) {
 	        return child.className.indexOf("slds-lookup__item") > -1;
 	      }).length;
@@ -10439,6 +11748,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          type: _this.props.type,
 	          iconCategory: _this.props.iconCategory,
 	          iconName: _this.props.iconName,
+	          iconClasses: _this.props.iconClasses,
 	          searchTerm: _this.props.searchTerm,
 	          index: i,
 	          isActive: isActive,
@@ -10479,32 +11789,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Menu;
 	})(_react2['default'].Component);
 	
-	Menu.propTypes = {
-	  searchTerm: _react2['default'].PropTypes.string,
-	  label: _react2['default'].PropTypes.string,
-	  type: _react2['default'].PropTypes.string,
-	  iconCategory: _react2['default'].PropTypes.string,
-	  focusIndex: _react2['default'].PropTypes.number,
-	  listLength: _react2['default'].PropTypes.number,
-	  items: _react2['default'].PropTypes.array,
-	  emptyMessage: _react2['default'].PropTypes.string,
-	  errors: _react2['default'].PropTypes.arrayOf(_react2['default'].PropTypes.string),
-	  filterWith: _react2['default'].PropTypes.func,
-	  getListLength: _react2['default'].PropTypes.func,
-	  setFocus: _react2['default'].PropTypes.func,
-	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp)
-	};
-	
-	Menu.defaultProps = {
-	  emptyMessage: "No matches found.",
-	  messages: [],
-	  errors: []
-	};
+	Menu.displayName = displayName;
+	Menu.propTypes = propTypes;
+	Menu.defaultProps = defaultProps;
 	
 	module.exports = Menu;
 
 /***/ },
-/* 76 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10568,13 +11860,33 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIcons = __webpack_require__(13);
+	var _SLDSIcons = __webpack_require__(22);
 	
-	var _utils = __webpack_require__(6);
+	var _utils = __webpack_require__(14);
 	
-	var _lodashEscaperegexp = __webpack_require__(77);
+	var _lodashEscaperegexp = __webpack_require__(82);
 	
 	var _lodashEscaperegexp2 = _interopRequireDefault(_lodashEscaperegexp);
+	
+	var displayName = 'SLDSLookup-Menu-Item';
+	var propTypes = {
+	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
+	  data: _react2['default'].PropTypes.object,
+	  handleItemFocus: _react2['default'].PropTypes.func,
+	  href: _react2['default'].PropTypes.string,
+	  iconCategory: _react2['default'].PropTypes.string,
+	  id: _react2['default'].PropTypes.string,
+	  index: _react2['default'].PropTypes.number,
+	  isActive: _react2['default'].PropTypes.bool,
+	  isDisabled: _react2['default'].PropTypes.bool,
+	  key: _react2['default'].PropTypes.string,
+	  listItemLabelRenderer: _react2['default'].PropTypes.func,
+	  onSelect: _react2['default'].PropTypes.func,
+	  searchTerm: _react2['default'].PropTypes.string,
+	  setFocus: _react2['default'].PropTypes.func,
+	  type: _react2['default'].PropTypes.string
+	};
+	var defaultProps = {};
 	
 	var Item = (function (_React$Component) {
 	  _inherits(Item, _React$Component);
@@ -10631,7 +11943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var ListItemLabel = this.props.listItemLabelRenderer;
 	        return _react2['default'].createElement(ListItemLabel, this.props);
 	      }
-	      return [_react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.iconName, category: this.props.iconCategory }), this.boldSearchText(this.props.children.label)];
+	      return [_react2['default'].createElement(_SLDSIcons.Icon, { name: this.props.iconName, category: this.props.iconCategory, className: this.props.iconClasses }), this.boldSearchText(this.props.children.label)];
 	    }
 	  }, {
 	    key: 'render',
@@ -10642,7 +11954,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      return(
 	        //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
-	        _react2['default'].createElement('li', { className: className, role: 'presentation' }, _react2['default'].createElement('a', {
+	        _react2['default'].createElement('li', { className: className }, _react2['default'].createElement('a', {
 	          href: this.props.href,
 	          id: id,
 	          ref: id,
@@ -10658,30 +11970,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return Item;
 	})(_react2['default'].Component);
 	
-	Item.propTypes = {
-	  key: _react2['default'].PropTypes.string,
-	  id: _react2['default'].PropTypes.string,
-	  href: _react2['default'].PropTypes.string,
-	  type: _react2['default'].PropTypes.string,
-	  iconCategory: _react2['default'].PropTypes.string,
-	  searchTerm: _react2['default'].PropTypes.string,
-	  index: _react2['default'].PropTypes.number,
-	  isActive: _react2['default'].PropTypes.bool,
-	  isDisabled: _react2['default'].PropTypes.bool,
-	  setFocus: _react2['default'].PropTypes.func,
-	  handleItemFocus: _react2['default'].PropTypes.func,
-	  onSelect: _react2['default'].PropTypes.func,
-	  data: _react2['default'].PropTypes.object,
-	  boldRegex: _react2['default'].PropTypes.instanceOf(RegExp),
-	  listItemLabelRenderer: _react2['default'].PropTypes.func
-	};
-	
-	Item.defaultProps = {};
+	Item.displayName = displayName;
+	Item.propTypes = propTypes;
+	Item.defaultProps = defaultProps;
 	
 	module.exports = Item;
 
 /***/ },
-/* 77 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -10692,7 +11988,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseToString = __webpack_require__(78);
+	var baseToString = __webpack_require__(83);
 	
 	/**
 	 * Used to match `RegExp` [syntax characters](http://ecma-international.org/ecma-262/6.0/#sec-patterns)
@@ -10763,7 +12059,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 78 */
+/* 83 */
 /***/ function(module, exports) {
 
 	/**
@@ -10791,7 +12087,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 79 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10855,9 +12151,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIcons = __webpack_require__(13);
+	var _SLDSIcons = __webpack_require__(22);
 	
-	var _utils = __webpack_require__(6);
+	var _utils = __webpack_require__(14);
+	
+	var displayName = "LookupDefaultFooter";
+	var propTypes = {};
+	var defaultProps = { newItemLabel: "Add Item" };
 	
 	var DefaultFooter = (function (_React$Component) {
 	  _inherits(DefaultFooter, _React$Component);
@@ -10888,7 +12188,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var className = 'slds-button';
 	      if (this.props.isActive) className += ' slds-theme--shade';
-	
 	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onClick: this.handleClick.bind(this), onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement('button', { id: 'newItem', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'add', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.newItemLabel));
 	    }
 	  }]);
@@ -10896,14 +12195,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return DefaultFooter;
 	})(_react2['default'].Component);
 	
-	DefaultFooter.propTypes = {};
-	
-	DefaultFooter.defaultProps = {};
+	DefaultFooter.displayName = displayName;
+	DefaultFooter.propTypes = propTypes;
+	DefaultFooter.defaultProps = defaultProps;
 	
 	module.exports = DefaultFooter;
 
 /***/ },
-/* 80 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10967,9 +12266,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIcons = __webpack_require__(13);
+	var _SLDSIcons = __webpack_require__(22);
 	
-	var _utils = __webpack_require__(6);
+	var _utils = __webpack_require__(14);
+	
+	var displayName = "LookupDefaultHeader";
+	var propTypes = {};
+	var defaultProps = {};
 	
 	var DefaultHeader = (function (_React$Component) {
 	  _inherits(DefaultHeader, _React$Component);
@@ -11011,14 +12314,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return DefaultHeader;
 	})(_react2['default'].Component);
 	
-	DefaultHeader.propTypes = {};
-	
-	DefaultHeader.defaultProps = {};
+	DefaultHeader.displayName = displayName;
+	DefaultHeader.propTypes = propTypes;
+	DefaultHeader.defaultProps = defaultProps;
 	
 	module.exports = DefaultHeader;
 
 /***/ },
-/* 81 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11032,144 +12335,218 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _defineProperty(obj, key, value) {
+	  if (key in obj) {
+	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+	  } else {
+	    obj[key] = value;
+	  }return obj;
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSPopover = __webpack_require__(3);
+	var _SLDSPopover = __webpack_require__(11);
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
-	var _classnames = __webpack_require__(23);
+	var classNames = __webpack_require__(32);
 	
-	var _classnames2 = _interopRequireDefault(_classnames);
+	var displayName = "SLDSTooltip";
+	var propTypes = {
+	  align: _react2['default'].PropTypes.string,
+	  children: _react2['default'].PropTypes.node,
+	  content: _react2['default'].PropTypes.node,
+	  hoverCloseDelay: _react2['default'].PropTypes.number,
+	  openByDefault: _react2['default'].PropTypes.bool,
+	  openOn: _react2['default'].PropTypes.string
+	};
+	var defaultProps = {
+	  align: 'top',
+	  content: _react2['default'].createElement('span', null, 'Tooltip'),
+	  hoverCloseDelay: 350,
+	  openByDefault: false,
+	  openOn: 'hover'
+	};
 	
-	module.exports = _react2['default'].createClass({
+	var SLDSTooltip = (function (_React$Component) {
+	  _inherits(SLDSTooltip, _React$Component);
 	
-	  displayName: 'SLDSToolip',
+	  function SLDSTooltip(props) {
+	    _classCallCheck(this, SLDSTooltip);
 	
-	  propTypes: {
-	    align: _react.PropTypes.string,
-	    children: _react.PropTypes.node,
-	    content: _react.PropTypes.node,
-	    hoverCloseDelay: _react.PropTypes.number,
-	    openByDefault: _react.PropTypes.bool,
-	    openOn: _react.PropTypes.string
-	  },
-	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      align: 'top',
-	      content: _react2['default'].createElement('span', null, 'Tooltip'),
-	      hoverCloseDelay: 350,
-	      openByDefault: false,
-	      openOn: 'hover'
+	    _get(Object.getPrototypeOf(SLDSTooltip.prototype), 'constructor', this).call(this, props);
+	    this.state = {
+	      isClosing: false,
+	      isOpen: this.props.openByDefault
 	    };
-	  },
-	
-	  getInitialState: function getInitialState() {
-	    return {
-	      isOpen: this.props.openByDefault,
-	      isClosing: false
-	    };
-	  },
-	
-	  componentDidMount: function componentDidMount() {},
-	
-	  handleMouseClick: function handleMouseClick(event) {
-	    this.setState({
-	      isOpen: !this.state.isOpen,
-	      isClosing: !this.state.isOpen
-	    });
-	  },
-	
-	  handleMouseEnter: function handleMouseEnter(event) {
-	    this.setState({
-	      isOpen: true,
-	      isClosing: false
-	    });
-	  },
-	
-	  handleMouseLeave: function handleMouseLeave(event) {
-	    var _this = this;
-	
-	    this.setState({ isClosing: true });
-	    setTimeout(function () {
-	      if (_this.isMounted && _this.state.isClosing) {
-	        _this.setState({
-	          isOpen: false,
-	          isClosing: false
-	        });
-	      }
-	    }, this.props.hoverCloseDelay);
-	  },
-	
-	  getTooltipContent: function getTooltipContent() {
-	    return _react2['default'].createElement('div', { className: 'slds-popover__body' }, this.props.content);
-	  },
-	
-	  getHorizontalAlign: function getHorizontalAlign() {
-	    if (this.props.align === 'left') {
-	      return 'left';
-	    } else if (this.props.align === 'right') {
-	      return 'right';
-	    }
-	    return 'center';
-	  },
-	
-	  getVerticalAlign: function getVerticalAlign() {
-	    if (this.props.align === 'bottom') {
-	      return 'bottom';
-	    } else if (this.props.align === 'top') {
-	      return 'top';
-	    }
-	    return 'middle';
-	  },
-	
-	  handleCancel: function handleCancel() {
-	    this.setState({
-	      isOpen: false,
-	      isClosing: false
-	    });
-	  },
-	
-	  getTooltip: function getTooltip() {
-	    var style = {
-	      'slds-popover': true,
-	      'slds-popover--tooltip': true,
-	      'slds-nubbin--top': this.props.align === 'bottom',
-	      'slds-nubbin--bottom': this.props.align === 'top',
-	      'slds-nubbin--left': this.props.align === 'right',
-	      'slds-nubbin--right': this.props.align === 'left'
-	    };
-	
-	    return this.state.isOpen ? _react2['default'].createElement(_SLDSPopover2['default'], {
-	      key: this.getHorizontalAlign() + ' ' + this.getVerticalAlign(),
-	      targetElement: this.refs.tooltipTarget,
-	      closeOnTabKey: true,
-	      className: '',
-	      marginTop: '1rem',
-	      marginBottom: '1rem',
-	      marginLeft: '1.5rem',
-	      marginRight: '1.5rem',
-	      horizontalAlign: this.getHorizontalAlign(),
-	      verticalAlign: this.getVerticalAlign(),
-	      flippable: false,
-	      onClose: this.handleCancel }, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(style) }, this.getTooltipContent())) : null;
-	  },
-	
-	  render: function render() {
-	    return _react2['default'].createElement('span', { refs: 'tooltipTarget', onClick: this.props.openOn === 'click' ? this.handleMouseClick : null, onMouseEnter: this.props.openOn === 'hover' ? this.handleMouseEnter : null, onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave : null }, this.props.children, this.getTooltip());
 	  }
 	
-	});
+	  _createClass(SLDSTooltip, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.setState({ isMounted: true });
+	    }
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.setState({ isMounted: false });
+	    }
+	  }, {
+	    key: 'handleMouseClick',
+	    value: function handleMouseClick() {
+	      this.setState({
+	        isOpen: !this.state.isOpen,
+	        isClosing: !this.state.isOpen
+	      });
+	    }
+	  }, {
+	    key: 'handleMouseEnter',
+	    value: function handleMouseEnter() {
+	      this.setState({
+	        isOpen: true,
+	        isClosing: false
+	      });
+	    }
+	  }, {
+	    key: 'handleMouseLeave',
+	    value: function handleMouseLeave() {
+	      var _this = this;
+	
+	      this.setState({ isClosing: true });
+	
+	      setTimeout(function () {
+	        if (_this.state.isMounted && _this.state.isClosing) {
+	          _this.setState({
+	            isOpen: false,
+	            isClosing: false
+	          });
+	        }
+	      }, this.props.hoverCloseDelay);
+	    }
+	  }, {
+	    key: 'getTooltipContent',
+	    value: function getTooltipContent() {
+	      return _react2['default'].createElement('div', { className: 'slds-popover__body' }, this.props.content);
+	    }
+	  }, {
+	    key: 'getHorizontalAlign',
+	    value: function getHorizontalAlign() {
+	      if (this.props.align === 'left') {
+	        return 'left';
+	      } else if (this.props.align === 'right') {
+	        return 'right';
+	      }
+	      return 'center';
+	    }
+	  }, {
+	    key: 'getVerticalAlign',
+	    value: function getVerticalAlign() {
+	      if (this.props.align === 'bottom') {
+	        return 'bottom';
+	      } else if (this.props.align === 'top') {
+	        return 'top';
+	      }
+	      return 'middle';
+	    }
+	  }, {
+	    key: 'handleCancel',
+	    value: function handleCancel() {
+	      this.setState({
+	        isOpen: false,
+	        isClosing: false
+	      });
+	    }
+	  }, {
+	    key: 'getClassName',
+	    value: function getClassName() {
+	      var _classNames;
+	
+	      return classNames(this.props.className, "slds-popover", (_classNames = {}, _defineProperty(_classNames, "slds-popover--tooltip", true), _defineProperty(_classNames, "slds-nubbin--top", this.props.align === 'bottom'), _defineProperty(_classNames, 'slds-nubbin--bottom', this.props.align === 'top'), _defineProperty(_classNames, 'slds-nubbin--left', this.props.align === 'right'), _defineProperty(_classNames, 'slds-nubbin--right', this.props.align === 'left'), _classNames));
+	    }
+	  }, {
+	    key: 'getTooltip',
+	    value: function getTooltip() {
+	      return this.state.isOpen ? _react2['default'].createElement(_SLDSPopover2['default'], {
+	        key: this.getHorizontalAlign() + ' ' + this.getVerticalAlign(),
+	        targetElement: this.refs.tooltipTarget,
+	        closeOnTabKey: true,
+	        className: '',
+	        marginTop: '1rem',
+	        marginBottom: '1rem',
+	        marginLeft: '1.5rem',
+	        marginRight: '1.5rem',
+	        horizontalAlign: this.getHorizontalAlign(),
+	        verticalAlign: this.getVerticalAlign(),
+	        flippable: false,
+	        onClose: this.handleCancel.bind(this) }, _react2['default'].createElement('div', { className: this.getClassName(), role: 'tooltip' }, this.getTooltipContent())) : null;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var btnStyles = { color: "inherit" };
+	      return _react2['default'].createElement('button', { className: 'slds-button', refs: 'tooltipTarget', onClick: this.props.openOn === 'click' ? this.handleMouseClick.bind(this) : null, onMouseEnter: this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this) : null, onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this) : null, onFocus: this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this) : null, onBlur: this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this) : null, style: btnStyles }, this.props.children, this.getTooltip());
+	    }
+	  }]);
+	
+	  return SLDSTooltip;
+	})(_react2['default'].Component);
+	
+	SLDSTooltip.displayName = displayName;
+	SLDSTooltip.propTypes = propTypes;
+	SLDSTooltip.defaultProps = defaultProps;
+	
+	module.exports = SLDSTooltip;
 
 /***/ },
-/* 82 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11199,21 +12576,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSButton = __webpack_require__(32);
+	var _SLDSButton = __webpack_require__(36);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _utils = __webpack_require__(6);
+	var _utils = __webpack_require__(14);
 	
-	var _SLDSSettings = __webpack_require__(51);
+	var _SLDSSettings = __webpack_require__(56);
 	
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 	
-	var _classnames = __webpack_require__(23);
+	var _classnames = __webpack_require__(32);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _reactModal = __webpack_require__(52);
+	var _reactModal = __webpack_require__(57);
 	
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 	
@@ -11241,12 +12618,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  displayName: 'exports',
 	
 	  propTypes: {
+	    align: _react2['default'].PropTypes.oneOf(['top', 'center']),
 	    size: _react2['default'].PropTypes.oneOf(['medium', 'large']),
 	    prompt: _react2['default'].PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info'])
 	  },
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
+	      align: 'center',
 	      title: '',
 	      tagline: '',
 	      isOpen: false,
@@ -11325,15 +12704,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	      'slds-modal--large': this.props.size === 'large',
 	      'slds-modal--prompt': this.isPrompt()
 	    };
+	    var modalStyle = this.props.align === "top" ? { "justify-content": "flex-start" } : null;
 	
 	    return _react2['default'].createElement('div', {
 	      className: (0, _classnames2['default'])(modalClass),
 	      style: { pointerEvents: 'inherit' },
 	      onClick: this.isPrompt() ? undefined : this.closeModal
 	    }, _react2['default'].createElement('div', {
-	      role: 'document',
+	      role: 'dialog',
 	      className: 'slds-modal__container',
-	      onClick: this.handleModalClick
+	      onClick: this.handleModalClick,
+	      style: modalStyle
 	    }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), this.footerComponent()));
 	  },
 	
@@ -11431,7 +12812,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 83 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11453,9 +12834,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _utils = __webpack_require__(6);
+	var _utils = __webpack_require__(14);
 	
-	var _index = __webpack_require__(82);
+	var _index = __webpack_require__(87);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -11475,7 +12856,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSModalTrigger;
 
 /***/ },
-/* 84 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11549,13 +12930,32 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSButton = __webpack_require__(32);
+	var _SLDSButton = __webpack_require__(36);
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSIcons = __webpack_require__(13);
+	var _SLDSIcons = __webpack_require__(22);
 	
-	var classNames = __webpack_require__(23);
+	var classNames = __webpack_require__(32);
+	
+	var displayName = 'SLDSNotification';
+	var propTypes = {
+	  className: _react2["default"].PropTypes.string,
+	  content: _react2["default"].PropTypes.node,
+	  dismissible: _react2["default"].PropTypes.bool,
+	  duration: _react2["default"].PropTypes.number,
+	  icon: _react2["default"].PropTypes.string,
+	  isOpen: _react2["default"].PropTypes.bool,
+	  onDismiss: _react2["default"].PropTypes.func,
+	  texture: _react2["default"].PropTypes.bool,
+	  theme: _react2["default"].PropTypes.oneOf(["success", "warning", "error", "offline"]),
+	  variant: _react2["default"].PropTypes.oneOf(["alert", "toast"])
+	};
+	
+	var defaultProps = {
+	  dismissible: true,
+	  isOpen: false
+	};
 	
 	var SLDSNotification = (function (_React$Component) {
 	  _inherits(SLDSNotification, _React$Component);
@@ -11564,10 +12964,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, SLDSNotification);
 	
 	    _get(Object.getPrototypeOf(SLDSNotification.prototype), "constructor", this).call(this, props);
-	    this.state = { isOpen: true };
+	    this.state = {
+	      interval: null,
+	      revealForScreenreader: false
+	    };
 	  }
 	
 	  _createClass(SLDSNotification, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      if (this.props.duration) {
+	        var that = this;
+	        setTimeout(function () {
+	          this.onDismiss();
+	        }, that.props.duration);
+	      }
+	    }
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {
+	      this.setState({
+	        interval: null
+	      });
+	    }
+	  }, {
+	    key: "componentWillReceiveProps",
+	    value: function componentWillReceiveProps(nextProps) {
+	      var _this = this;
+	
+	      if (this.props.isOpen !== nextProps.isOpen) {
+	        if (nextProps.isOpen && !this.state.interval) {
+	          this.setState({ interval: setTimeout(function () {
+	              _this.setState({ revealForScreenreader: true });
+	            }, 500) });
+	        }
+	        console.log('revealForScreen', this.state.revealForScreenreader);
+	      }
+	    }
+	  }, {
 	    key: "renderIcon",
 	    value: function renderIcon() {
 	      if (this.props.icon) {
@@ -11592,11 +13026,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	          size = "large";
 	        }
 	        return _react2["default"].createElement(_SLDSButton2["default"], {
-	          assistiveText: "Click enter to dismiss Notification",
+	          assistiveText: "Dismiss Notification",
 	          variant: "icon-inverse",
 	          iconName: "close",
 	          iconSize: size,
-	          inverse: true,
 	          className: "slds-button slds-notify__close",
 	          onClick: that.onDismiss.bind(that)
 	        });
@@ -11606,7 +13039,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "onDismiss",
 	    value: function onDismiss() {
 	      if (this.props.onDismiss) this.props.onDismiss();
-	      this.setState({ isOpen: false });
+	      this.setState({
+	        revealForScreenreader: false,
+	        interval: null
+	      });
 	    }
 	  }, {
 	    key: "renderAlertContent",
@@ -11627,13 +13063,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function getClassName() {
 	      var _classNames;
 	
-	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
+	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-transition-hide", !this.state.revealForScreenreader), _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
+	    }
+	  }, {
+	    key: "renderContent",
+	    value: function renderContent() {
+	      if (this.state.revealForScreenreader) {
+	        return _react2["default"].createElement("div", null, _react2["default"].createElement("p", { ref: "test", className: "slds-assistive-text" }, this.props.theme), this.renderClose(), this.renderAlertContent(), this.renderToastContent());
+	      } else {
+	        return _react2["default"].createElement("div", { className: "slds-hidden" }, "Notification loading");
+	      }
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      if (this.state.isOpen) {
-	        return _react2["default"].createElement("div", { className: "slds-notify-container" }, _react2["default"].createElement("div", { className: this.getClassName(), role: "alert" }, _react2["default"].createElement("span", { className: "slds-assistive-text" }, this.props.theme), this.renderClose(), this.renderAlertContent(), this.renderToastContent()));
+	      if (this.props.isOpen) {
+	        return _react2["default"].createElement("div", { className: "slds-notify-container" }, _react2["default"].createElement("div", { ref: "alertContent", className: this.getClassName(), role: "alert" }, this.renderContent()));
 	      } else {
 	        return null;
 	      }
@@ -11643,19 +13088,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return SLDSNotification;
 	})(_react2["default"].Component);
 	
-	SLDSNotification.propTypes = {
-	  content: _react2["default"].PropTypes.node,
-	  icon: _react2["default"].PropTypes.string,
-	  variant: _react2["default"].PropTypes.oneOf(["alert", "toast"]),
-	  theme: _react2["default"].PropTypes.oneOf(["success", "warning", "error", "offline"]),
-	  texture: _react2["default"].PropTypes.bool,
-	  dismissible: _react2["default"].PropTypes.bool,
-	  onDismiss: _react2["default"].PropTypes.func
-	};
-	
-	SLDSNotification.defaultProps = {
-	  dismissible: true
-	};
+	SLDSNotification.displayName = displayName;
+	SLDSNotification.propTypes = propTypes;
+	SLDSNotification.defaultProps = defaultProps;
 	
 	module.exports = SLDSNotification;
 

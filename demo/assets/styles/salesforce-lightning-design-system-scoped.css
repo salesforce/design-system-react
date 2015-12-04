@@ -437,6 +437,8 @@ body {
       fill: currentColor; }
     .slds .slds-button + .slds-button-group {
       margin-left: 0.25rem; }
+    .slds .slds-button + .slds-button {
+      margin-left: 0.25rem; }
   .slds .slds-button-space-left {
     margin-left: 0.25rem; }
   .slds a.slds-button {
@@ -771,6 +773,734 @@ body {
     .slds .slds-max-large-button--horizontal + .slds-max-large-button--horizontal,
     .slds .slds-max-large-buttons--horizontal .slds-button + .slds-button {
       margin-left: 0.5rem; } }
+  .slds .slds-icon__container {
+    display: inline-block;
+    border-radius: 0.25rem; }
+    .slds .slds-icon__container--circle {
+      padding: 0.5rem;
+      border-radius: 50%; }
+  .slds .slds-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.25rem;
+    fill: white; }
+  .slds .slds-icon-action-approval {
+    background-color: #00c6b7; }
+  .slds .slds-icon-action-canvasapp {
+    background-color: #8199af; }
+  .slds .slds-icon-action-goal {
+    background-color: #56aadf; }
+  .slds .slds-icon-action-opportunity-competitor {
+    background-color: #fcb95b; }
+  .slds .slds-icon-action-opportunity-line-item {
+    background-color: #fcb95b; }
+  .slds .slds-icon-action-opportunity-team-member {
+    background-color: #fcb95b; }
+  .slds .slds-icon-action-question-post-action {
+    background-color: #32af5c; }
+  .slds .slds-icon-action-quote {
+    background-color: #88c651; }
+  .slds .slds-icon-action-reject {
+    background-color: #00c6b7; }
+  .slds .slds-icon-action-social-post {
+    background-color: #ea74a2; }
+  .slds .slds-icon-action-fallback {
+    background-color: #9895ee; }
+  .slds .slds-icon-action-edit {
+    background-color: #1dccbf; }
+  .slds .slds-icon-action-delete {
+    background-color: #e6717c; }
+  .slds .slds-icon-action-clone {
+    background-color: #6ca1e9; }
+  .slds .slds-icon-action-follow {
+    background-color: #31b9f8; }
+  .slds .slds-icon-action-following {
+    background-color: #7dcf64; }
+  .slds .slds-icon-action-join-group {
+    background-color: #779ef2; }
+  .slds .slds-icon-action-leave-group {
+    background-color: #f39e58; }
+  .slds .slds-icon-action-edit-group {
+    background-color: #34becd; }
+  .slds .slds-icon-action-share-post {
+    background-color: #65cae4; }
+  .slds .slds-icon-action-share-file {
+    background-color: #baac93; }
+  .slds .slds-icon-action-new-task {
+    background-color: #4bc076; }
+  .slds .slds-icon-action-new-contact {
+    background-color: #a094ed; }
+  .slds .slds-icon-action-new-opportunity {
+    background-color: #fcb95b; }
+  .slds .slds-icon-action-new-case {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-action-new-lead {
+    background-color: #f88962; }
+  .slds .slds-icon-action-share-thanks {
+    background-color: #e9696e; }
+  .slds .slds-icon-action-share-link {
+    background-color: #7a9ae6; }
+  .slds .slds-icon-action-share-poll {
+    background-color: #699be1; }
+  .slds .slds-icon-action-new-event {
+    background-color: #eb7092; }
+  .slds .slds-icon-action-new-child-case {
+    background-color: #fa975c; }
+  .slds .slds-icon-action-log-a-call {
+    background-color: #48c3cc; }
+  .slds .slds-icon-action-new-note {
+    background-color: #e6d478; }
+  .slds .slds-icon-action-new {
+    background-color: #33bce7; }
+  .slds .slds-icon-action-filter {
+    background-color: #fd90b5; }
+  .slds .slds-icon-action-sort {
+    background-color: #fab9a5; }
+  .slds .slds-icon-action-description {
+    background-color: #7dc37d; }
+  .slds .slds-icon-action-defer {
+    background-color: #ef7ead; }
+  .slds .slds-icon-action-update {
+    background-color: #81b4d6; }
+  .slds .slds-icon-action-log-this-event {
+    background-color: #f86268; }
+  .slds .slds-icon-action-email {
+    background-color: #95aec5; }
+  .slds .slds-icon-action-dial-in {
+    background-color: #8b9ae3; }
+  .slds .slds-icon-action-map {
+    background-color: #76c6ee; }
+  .slds .slds-icon-action-call {
+    background-color: #1fcaa0; }
+  .slds .slds-icon-action-google-news {
+    background-color: #f5675b; }
+  .slds .slds-icon-action-web-link {
+    background-color: #56aadf; }
+  .slds .slds-icon-action-submit-for-approval {
+    background-color: #50cc7a; }
+  .slds .slds-icon-action-search {
+    background-color: #48adeb; }
+  .slds .slds-icon-action-close {
+    background-color: #ef6e64; }
+  .slds .slds-icon-action-back {
+    background-color: #0dc2d9; }
+  .slds .slds-icon-action-office-365 {
+    background-color: #ff8041; }
+  .slds .slds-icon-action-concur {
+    background-color: #4cc3c7; }
+  .slds .slds-icon-action-dropbox {
+    background-color: #52aef9; }
+  .slds .slds-icon-action-evernote {
+    background-color: #86c86f; }
+  .slds .slds-icon-action-docusign {
+    background-color: #5080db; }
+  .slds .slds-icon-action-more {
+    background-color: #62b7ed; }
+  .slds .slds-icon-action-notebook {
+    background-color: #c871d6; }
+  .slds .slds-icon-action-preview {
+    background-color: #7f8de1; }
+  .slds .slds-icon-action-priority {
+    background-color: #fbb439; }
+  .slds .slds-icon-action-default-custom-object {
+    background-color: #8199af; }
+  .slds .slds-icon-action-new-custom-object {
+    background-color: #a7d44d; }
+  .slds .slds-icon-action-lead-convert {
+    background-color: #f88962; }
+  .slds .slds-icon-action-new-account {
+    background-color: #7f8de1; }
+  .slds .slds-icon-action-new-campaign {
+    background-color: #f49756; }
+  .slds .slds-icon-action-new-group {
+    background-color: #83b6ff; }
+  .slds .slds-icon-action-update-status {
+    background-color: #1ec7be; }
+  .slds .slds-icon-action-new-custom-1 {
+    background-color: #ff7b84; }
+  .slds .slds-icon-action-new-custom-2 {
+    background-color: #cfd05c; }
+  .slds .slds-icon-action-new-custom-3 {
+    background-color: #ecb46c; }
+  .slds .slds-icon-action-new-custom-4 {
+    background-color: #e1d951; }
+  .slds .slds-icon-action-new-custom-5 {
+    background-color: #9fdb66; }
+  .slds .slds-icon-action-new-custom-6 {
+    background-color: #54c473; }
+  .slds .slds-icon-action-new-custom-7 {
+    background-color: #6a89e5; }
+  .slds .slds-icon-action-new-custom-8 {
+    background-color: #50ceb9; }
+  .slds .slds-icon-action-new-custom-9 {
+    background-color: #6b9ee2; }
+  .slds .slds-icon-action-new-custom-10 {
+    background-color: #6488e3; }
+  .slds .slds-icon-action-new-custom-11 {
+    background-color: #8784ea; }
+  .slds .slds-icon-action-new-custom-12 {
+    background-color: #dc71d1; }
+  .slds .slds-icon-action-new-custom-13 {
+    background-color: #df6184; }
+  .slds .slds-icon-action-new-custom-14 {
+    background-color: #3cc2b3; }
+  .slds .slds-icon-action-new-custom-15 {
+    background-color: #f77e75; }
+  .slds .slds-icon-action-new-custom-16 {
+    background-color: #e9af67; }
+  .slds .slds-icon-action-new-custom-17 {
+    background-color: #acd360; }
+  .slds .slds-icon-action-new-custom-18 {
+    background-color: #4dca76; }
+  .slds .slds-icon-action-new-custom-19 {
+    background-color: #3abeb1; }
+  .slds .slds-icon-action-new-custom-20 {
+    background-color: #48c7c8; }
+  .slds .slds-icon-action-new-custom-21 {
+    background-color: #8a7aed; }
+  .slds .slds-icon-action-new-custom-22 {
+    background-color: #8b85f9; }
+  .slds .slds-icon-action-new-custom-23 {
+    background-color: #b070e6; }
+  .slds .slds-icon-action-new-custom-24 {
+    background-color: #e56798; }
+  .slds .slds-icon-action-new-custom-25 {
+    background-color: #e46fbe; }
+  .slds .slds-icon-action-new-custom-26 {
+    background-color: #7698f0; }
+  .slds .slds-icon-action-new-custom-27 {
+    background-color: #5ab0d2; }
+  .slds .slds-icon-action-new-custom-28 {
+    background-color: #89c059; }
+  .slds .slds-icon-action-new-custom-29 {
+    background-color: #bdd25f; }
+  .slds .slds-icon-action-new-custom-30 {
+    background-color: #f59f71; }
+  .slds .slds-icon-action-new-custom-31 {
+    background-color: #eb687f; }
+  .slds .slds-icon-action-new-custom-32 {
+    background-color: #38c393; }
+  .slds .slds-icon-action-new-custom-33 {
+    background-color: #97cf5d; }
+  .slds .slds-icon-action-new-custom-34 {
+    background-color: #d58a6a; }
+  .slds .slds-icon-action-new-custom-35 {
+    background-color: #e9637e; }
+  .slds .slds-icon-action-new-custom-36 {
+    background-color: #d472d4; }
+  .slds .slds-icon-action-new-custom-37 {
+    background-color: #8c89f2; }
+  .slds .slds-icon-action-new-custom-38 {
+    background-color: #53b6d7; }
+  .slds .slds-icon-action-new-custom-39 {
+    background-color: #4fbe75; }
+  .slds .slds-icon-action-new-custom-40 {
+    background-color: #83c75e; }
+  .slds .slds-icon-action-new-custom-41 {
+    background-color: #43b5b5; }
+  .slds .slds-icon-action-new-custom-42 {
+    background-color: #cfd05b; }
+  .slds .slds-icon-action-new-custom-43 {
+    background-color: #7f93f9; }
+  .slds .slds-icon-action-new-custom-44 {
+    background-color: #c8ca58; }
+  .slds .slds-icon-action-new-custom-45 {
+    background-color: #d95879; }
+  .slds .slds-icon-action-new-custom-46 {
+    background-color: #67a5e7; }
+  .slds .slds-icon-action-new-custom-47 {
+    background-color: #5fcc64; }
+  .slds .slds-icon-action-new-custom-48 {
+    background-color: #ef697f; }
+  .slds .slds-icon-action-new-custom-49 {
+    background-color: #e25c80; }
+  .slds .slds-icon-action-new-custom-50 {
+    background-color: #49bcd3; }
+  .slds .slds-icon-action-new-custom-51 {
+    background-color: #d8c760; }
+  .slds .slds-icon-action-new-custom-52 {
+    background-color: #ee8e6f; }
+  .slds .slds-icon-action-new-custom-53 {
+    background-color: #f36e83; }
+  .slds .slds-icon-action-new-custom-54 {
+    background-color: #ea70b1; }
+  .slds .slds-icon-action-new-custom-55 {
+    background-color: #d66ee0; }
+  .slds .slds-icon-action-new-custom-56 {
+    background-color: #718deb; }
+  .slds .slds-icon-action-new-custom-57 {
+    background-color: #5a9cdd; }
+  .slds .slds-icon-action-new-custom-58 {
+    background-color: #34b59d; }
+  .slds .slds-icon-action-new-custom-59 {
+    background-color: #e3d067; }
+  .slds .slds-icon-action-new-custom-60 {
+    background-color: #bf5a88; }
+  .slds .slds-icon-action-new-custom-61 {
+    background-color: #f57376; }
+  .slds .slds-icon-action-new-custom-62 {
+    background-color: #6b92dc; }
+  .slds .slds-icon-action-new-custom-63 {
+    background-color: #7ccf60; }
+  .slds .slds-icon-action-new-custom-64 {
+    background-color: #618fd8; }
+  .slds .slds-icon-action-new-custom-65 {
+    background-color: #f279ab; }
+  .slds .slds-icon-action-new-custom-66 {
+    background-color: #d8be5f; }
+  .slds .slds-icon-action-new-custom-67 {
+    background-color: #f87d76; }
+  .slds .slds-icon-action-new-custom-68 {
+    background-color: #f26979; }
+  .slds .slds-icon-action-new-custom-69 {
+    background-color: #ed6387; }
+  .slds .slds-icon-action-new-custom-70 {
+    background-color: #e769b4; }
+  .slds .slds-icon-action-new-custom-71 {
+    background-color: #e36ee3; }
+  .slds .slds-icon-action-new-custom-72 {
+    background-color: #8d9bfb; }
+  .slds .slds-icon-action-new-custom-73 {
+    background-color: #679ef0; }
+  .slds .slds-icon-action-new-custom-74 {
+    background-color: #41c8a0; }
+  .slds .slds-icon-action-new-custom-75 {
+    background-color: #cd9f65; }
+  .slds .slds-icon-action-new-custom-76 {
+    background-color: #db6d7a; }
+  .slds .slds-icon-action-new-custom-77 {
+    background-color: #b55d5b; }
+  .slds .slds-icon-action-new-custom-78 {
+    background-color: #5a95dd; }
+  .slds .slds-icon-action-new-custom-79 {
+    background-color: #8ed363; }
+  .slds .slds-icon-action-new-custom-80 {
+    background-color: #659ad5; }
+  .slds .slds-icon-action-new-custom-81 {
+    background-color: #da627f; }
+  .slds .slds-icon-action-new-custom-82 {
+    background-color: #d15b97; }
+  .slds .slds-icon-action-new-custom-83 {
+    background-color: #e7806f; }
+  .slds .slds-icon-action-new-custom-84 {
+    background-color: #f6707b; }
+  .slds .slds-icon-action-new-custom-85 {
+    background-color: #f26891; }
+  .slds .slds-icon-action-new-custom-86 {
+    background-color: #e260ab; }
+  .slds .slds-icon-action-new-custom-87 {
+    background-color: #d876e5; }
+  .slds .slds-icon-action-new-custom-88 {
+    background-color: #996fe6; }
+  .slds .slds-icon-action-new-custom-89 {
+    background-color: #3e99be; }
+  .slds .slds-icon-action-new-custom-90 {
+    background-color: #22a48a; }
+  .slds .slds-icon-action-new-custom-91 {
+    background-color: #bf7b66; }
+  .slds .slds-icon-action-new-custom-92 {
+    background-color: #517e82; }
+  .slds .slds-icon-action-new-custom-93 {
+    background-color: #904d4c; }
+  .slds .slds-icon-action-new-custom-94 {
+    background-color: #439cba; }
+  .slds .slds-icon-action-new-custom-95 {
+    background-color: #8bcf6a; }
+  .slds .slds-icon-action-new-custom-96 {
+    background-color: #6d9de3; }
+  .slds .slds-icon-action-new-custom-97 {
+    background-color: #dd6085; }
+  .slds .slds-icon-action-new-custom-98 {
+    background-color: #e1be5c; }
+  .slds .slds-icon-action-new-custom-99 {
+    background-color: #f0856e; }
+  .slds .slds-icon-action-new-custom-100 {
+    background-color: #e15d76; }
+  .slds .slds-icon-action-apex {
+    background-color: #696e71; }
+  .slds .slds-icon-action-flow {
+    background-color: #0079bc; }
+  .slds .slds-icon-action-announcement {
+    background-color: #fe8f60; }
+  .slds .slds-icon-action-record {
+    background-color: #7dc37d; }
+  .slds .slds-icon-custom-1 {
+    background-color: #ff7b84; }
+  .slds .slds-icon-custom-2 {
+    background-color: #cfd05c; }
+  .slds .slds-icon-custom-3 {
+    background-color: #ecb46c; }
+  .slds .slds-icon-custom-4 {
+    background-color: #e1d951; }
+  .slds .slds-icon-custom-5 {
+    background-color: #9fdb66; }
+  .slds .slds-icon-custom-6 {
+    background-color: #54c473; }
+  .slds .slds-icon-custom-7 {
+    background-color: #6a89e5; }
+  .slds .slds-icon-custom-8 {
+    background-color: #50ceb9; }
+  .slds .slds-icon-custom-9 {
+    background-color: #6b9ee2; }
+  .slds .slds-icon-custom-10 {
+    background-color: #6488e3; }
+  .slds .slds-icon-custom-11 {
+    background-color: #8784ea; }
+  .slds .slds-icon-custom-12 {
+    background-color: #dc71d1; }
+  .slds .slds-icon-custom-13 {
+    background-color: #df6184; }
+  .slds .slds-icon-custom-14 {
+    background-color: #3cc2b3; }
+  .slds .slds-icon-custom-15 {
+    background-color: #f77e75; }
+  .slds .slds-icon-custom-16 {
+    background-color: #e9af67; }
+  .slds .slds-icon-custom-17 {
+    background-color: #acd360; }
+  .slds .slds-icon-custom-18 {
+    background-color: #4dca76; }
+  .slds .slds-icon-custom-19 {
+    background-color: #3abeb1; }
+  .slds .slds-icon-custom-20 {
+    background-color: #48c7c8; }
+  .slds .slds-icon-custom-21 {
+    background-color: #8a7aed; }
+  .slds .slds-icon-custom-22 {
+    background-color: #8b85f9; }
+  .slds .slds-icon-custom-23 {
+    background-color: #b070e6; }
+  .slds .slds-icon-custom-24 {
+    background-color: #e56798; }
+  .slds .slds-icon-custom-25 {
+    background-color: #e46fbe; }
+  .slds .slds-icon-custom-26 {
+    background-color: #7698f0; }
+  .slds .slds-icon-custom-27 {
+    background-color: #5ab0d2; }
+  .slds .slds-icon-custom-28 {
+    background-color: #89c059; }
+  .slds .slds-icon-custom-29 {
+    background-color: #bdd25f; }
+  .slds .slds-icon-custom-30 {
+    background-color: #f59f71; }
+  .slds .slds-icon-custom-31 {
+    background-color: #eb687f; }
+  .slds .slds-icon-custom-32 {
+    background-color: #38c393; }
+  .slds .slds-icon-custom-33 {
+    background-color: #97cf5d; }
+  .slds .slds-icon-custom-34 {
+    background-color: #d58a6a; }
+  .slds .slds-icon-custom-35 {
+    background-color: #e9637e; }
+  .slds .slds-icon-custom-36 {
+    background-color: #d472d4; }
+  .slds .slds-icon-custom-37 {
+    background-color: #8c89f2; }
+  .slds .slds-icon-custom-38 {
+    background-color: #53b6d7; }
+  .slds .slds-icon-custom-39 {
+    background-color: #4fbe75; }
+  .slds .slds-icon-custom-40 {
+    background-color: #83c75e; }
+  .slds .slds-icon-custom-41 {
+    background-color: #43b5b5; }
+  .slds .slds-icon-custom-42 {
+    background-color: #cfd05b; }
+  .slds .slds-icon-custom-43 {
+    background-color: #7f93f9; }
+  .slds .slds-icon-custom-44 {
+    background-color: #c8ca58; }
+  .slds .slds-icon-custom-45 {
+    background-color: #d95879; }
+  .slds .slds-icon-custom-46 {
+    background-color: #67a5e7; }
+  .slds .slds-icon-custom-47 {
+    background-color: #5fcc64; }
+  .slds .slds-icon-custom-48 {
+    background-color: #ef697f; }
+  .slds .slds-icon-custom-49 {
+    background-color: #e25c80; }
+  .slds .slds-icon-custom-50 {
+    background-color: #49bcd3; }
+  .slds .slds-icon-custom-51 {
+    background-color: #d8c760; }
+  .slds .slds-icon-custom-52 {
+    background-color: #ee8e6f; }
+  .slds .slds-icon-custom-53 {
+    background-color: #f36e83; }
+  .slds .slds-icon-custom-54 {
+    background-color: #ea70b1; }
+  .slds .slds-icon-custom-55 {
+    background-color: #d66ee0; }
+  .slds .slds-icon-custom-56 {
+    background-color: #718deb; }
+  .slds .slds-icon-custom-57 {
+    background-color: #5a9cdd; }
+  .slds .slds-icon-custom-58 {
+    background-color: #34b59d; }
+  .slds .slds-icon-custom-59 {
+    background-color: #e3d067; }
+  .slds .slds-icon-custom-60 {
+    background-color: #bf5a88; }
+  .slds .slds-icon-custom-61 {
+    background-color: #f57376; }
+  .slds .slds-icon-custom-62 {
+    background-color: #6b92dc; }
+  .slds .slds-icon-custom-63 {
+    background-color: #7ccf60; }
+  .slds .slds-icon-custom-64 {
+    background-color: #618fd8; }
+  .slds .slds-icon-custom-65 {
+    background-color: #f279ab; }
+  .slds .slds-icon-custom-66 {
+    background-color: #d8be5f; }
+  .slds .slds-icon-custom-67 {
+    background-color: #f87d76; }
+  .slds .slds-icon-custom-68 {
+    background-color: #f26979; }
+  .slds .slds-icon-custom-69 {
+    background-color: #ed6387; }
+  .slds .slds-icon-custom-70 {
+    background-color: #e769b4; }
+  .slds .slds-icon-custom-71 {
+    background-color: #e36ee3; }
+  .slds .slds-icon-custom-72 {
+    background-color: #8d9bfb; }
+  .slds .slds-icon-custom-73 {
+    background-color: #679ef0; }
+  .slds .slds-icon-custom-74 {
+    background-color: #41c8a0; }
+  .slds .slds-icon-custom-75 {
+    background-color: #cd9f65; }
+  .slds .slds-icon-custom-76 {
+    background-color: #db6d7a; }
+  .slds .slds-icon-custom-77 {
+    background-color: #b55d5b; }
+  .slds .slds-icon-custom-78 {
+    background-color: #5a95dd; }
+  .slds .slds-icon-custom-79 {
+    background-color: #8ed363; }
+  .slds .slds-icon-custom-80 {
+    background-color: #659ad5; }
+  .slds .slds-icon-custom-81 {
+    background-color: #da627f; }
+  .slds .slds-icon-custom-82 {
+    background-color: #d15b97; }
+  .slds .slds-icon-custom-83 {
+    background-color: #e7806f; }
+  .slds .slds-icon-custom-84 {
+    background-color: #f6707b; }
+  .slds .slds-icon-custom-85 {
+    background-color: #f26891; }
+  .slds .slds-icon-custom-86 {
+    background-color: #e260ab; }
+  .slds .slds-icon-custom-87 {
+    background-color: #d876e5; }
+  .slds .slds-icon-custom-88 {
+    background-color: #996fe6; }
+  .slds .slds-icon-custom-89 {
+    background-color: #3e99be; }
+  .slds .slds-icon-custom-90 {
+    background-color: #22a48a; }
+  .slds .slds-icon-custom-91 {
+    background-color: #bf7b66; }
+  .slds .slds-icon-custom-92 {
+    background-color: #517e82; }
+  .slds .slds-icon-custom-93 {
+    background-color: #904d4c; }
+  .slds .slds-icon-custom-94 {
+    background-color: #439cba; }
+  .slds .slds-icon-custom-95 {
+    background-color: #8bcf6a; }
+  .slds .slds-icon-custom-96 {
+    background-color: #6d9de3; }
+  .slds .slds-icon-custom-97 {
+    background-color: #dd6085; }
+  .slds .slds-icon-custom-98 {
+    background-color: #e1be5c; }
+  .slds .slds-icon-custom-99 {
+    background-color: #f0856e; }
+  .slds .slds-icon-custom-100 {
+    background-color: #e15d76; }
+  .slds .slds-icon-standard-log-a-call {
+    background-color: #48c3cc; }
+  .slds .slds-icon-standard-account {
+    background-color: #7f8de1; }
+  .slds .slds-icon-standard-social-post {
+    background-color: #ea74a2; }
+  .slds .slds-icon-standard-campaign-members {
+    background-color: #f49756; }
+  .slds .slds-icon-standard-article {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-answer-public {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-answer-private {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-answer-best {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-avatar-loading {
+    background-color: #b8c3ce; }
+  .slds .slds-icon-standard-campaign {
+    background-color: #f49756; }
+  .slds .slds-icon-standard-calibration {
+    background-color: #47cfd2; }
+  .slds .slds-icon-standard-avatar {
+    background-color: #62b7ed; }
+  .slds .slds-icon-standard-approval {
+    background-color: #50cc7a; }
+  .slds .slds-icon-standard-apps {
+    background-color: #3c97dd; }
+  .slds .slds-icon-standard-user {
+    background-color: #34becd; }
+  .slds .slds-icon-standard-evernote {
+    background-color: #86c86f; }
+  .slds .slds-icon-standard-coaching {
+    background-color: #f67594; }
+  .slds .slds-icon-standard-connected-apps-admins {
+    background-color: #9895ee; }
+  .slds .slds-icon-standard-drafts {
+    background-color: #6ca1e9; }
+  .slds .slds-icon-standard-email {
+    background-color: #95aec5; }
+  .slds .slds-icon-standard-endorsement {
+    background-color: #8b9ae3; }
+  .slds .slds-icon-standard-event {
+    background-color: #eb7092; }
+  .slds .slds-icon-standard-dropbox {
+    background-color: #52aef9; }
+  .slds .slds-icon-standard-concur {
+    background-color: #4cc3c7; }
+  .slds .slds-icon-standard-email-chatter {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-case-transcript {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-case-comment {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-case-change-status {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-client {
+    background-color: #00d2be; }
+  .slds .slds-icon-standard-contract {
+    background-color: #6ec06e; }
+  .slds .slds-icon-standard-dashboard {
+    background-color: #ef6e64; }
+  .slds .slds-icon-standard-case {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-empty {
+    background-color: #8199af; }
+  .slds .slds-icon-standard-default {
+    background-color: #8199af; }
+  .slds .slds-icon-standard-custom {
+    background-color: #8199af; }
+  .slds .slds-icon-standard-canvas {
+    background-color: #8199af; }
+  .slds .slds-icon-standard-contact {
+    background-color: #a094ed; }
+  .slds .slds-icon-standard-portal {
+    background-color: #aec770; }
+  .slds .slds-icon-standard-product {
+    background-color: #b781d3; }
+  .slds .slds-icon-standard-feed {
+    background-color: #62b7ed; }
+  .slds .slds-icon-standard-feedback {
+    background-color: #6da1ea; }
+  .slds .slds-icon-standard-file {
+    background-color: #baac93; }
+  .slds .slds-icon-standard-goals {
+    background-color: #56aadf; }
+  .slds .slds-icon-standard-groups {
+    background-color: #779ef2; }
+  .slds .slds-icon-standard-household {
+    background-color: #00afa0; }
+  .slds .slds-icon-standard-insights {
+    background-color: #ec94ed; }
+  .slds .slds-icon-standard-investment-account {
+    background-color: #4bc076; }
+  .slds .slds-icon-standard-performance {
+    background-color: #f8b156; }
+  .slds .slds-icon-standard-link {
+    background-color: #7a9ae6; }
+  .slds .slds-icon-standard-metrics {
+    background-color: #56aadf; }
+  .slds .slds-icon-standard-note {
+    background-color: #e6d478; }
+  .slds .slds-icon-standard-lead {
+    background-color: #f88962; }
+  .slds .slds-icon-standard-opportunity {
+    background-color: #fcb95b; }
+  .slds .slds-icon-standard-log-a-call-chatter {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-orders {
+    background-color: #769ed9; }
+  .slds .slds-icon-standard-post {
+    background-color: #65cae4; }
+  .slds .slds-icon-standard-poll {
+    background-color: #699be1; }
+  .slds .slds-icon-standard-photo {
+    background-color: #d7d1d1; }
+  .slds .slds-icon-standard-people {
+    background-color: #34becd; }
+  .slds .slds-icon-standard-generic-loading {
+    background-color: #b8c3ce; }
+  .slds .slds-icon-standard-group-loading {
+    background-color: #b8c3ce; }
+  .slds .slds-icon-standard-recent {
+    background-color: #6ca1e9; }
+  .slds .slds-icon-standard-solution {
+    background-color: #8fc972; }
+  .slds .slds-icon-standard-record {
+    background-color: #7dc37d; }
+  .slds .slds-icon-standard-question-best {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-question-feed {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-related-list {
+    background-color: #59bcab; }
+  .slds .slds-icon-standard-skill-entity {
+    background-color: #8b9ae3; }
+  .slds .slds-icon-standard-scan-card {
+    background-color: #f39e58; }
+  .slds .slds-icon-standard-report {
+    background-color: #2ecbbe; }
+  .slds .slds-icon-standard-quotes {
+    background-color: #88c651; }
+  .slds .slds-icon-standard-task {
+    background-color: #4bc076; }
+  .slds .slds-icon-standard-team-member {
+    background-color: #f2cf5b; }
+  .slds .slds-icon-standard-thanks {
+    background-color: #e9696e; }
+  .slds .slds-icon-standard-thanks-loading {
+    background-color: #b8c3ce; }
+  .slds .slds-icon-standard-today {
+    background-color: #ef7ead; }
+  .slds .slds-icon-standard-topic {
+    background-color: #56aadf; }
+  .slds .slds-icon-standard-unmatched {
+    background-color: #62b7ed; }
+  .slds .slds-icon-standard-marketing-actions {
+    background-color: #6bbd6e; }
+  .slds .slds-icon-standard-marketing-resources {
+    background-color: black; }
+  .slds .slds-icon-text-default {
+    fill: #54698d; }
+  .slds .slds-icon-text-warning {
+    fill: #ffb75d; }
+  .slds .slds-icon-text-error {
+    fill: #c23934; }
+  .slds .slds-icon--x-small {
+    line-height: 1;
+    width: 1rem;
+    height: 1rem; }
+  .slds .slds-icon--small {
+    line-height: 1;
+    width: 1.5rem;
+    height: 1.5rem; }
+  .slds .slds-icon--large {
+    width: 3rem;
+    height: 3rem; }
   .slds .slds-card {
     padding: 0;
     border-radius: 0.25rem;
@@ -873,9 +1603,9 @@ body {
       width: 1rem;
       height: 1rem;
       position: absolute;
-      fill: #54698d;
       top: 50%;
-      margin-top: -0.5rem; }
+      margin-top: -0.5rem;
+      fill: #54698d; }
     .slds .slds-input-has-icon--left .slds-input__icon {
       left: 0.75rem; }
     .slds .slds-input-has-icon--left .slds-input,
@@ -2176,10 +2906,6 @@ body {
       top: 2rem;
       background: white;
       box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.07); }
-    .slds .slds-action-overflow--touch .slds-list--vertical.slds-has-dividers > .slds-list__item {
-      padding: 0; }
-    .slds .slds-action-overflow--touch a {
-      padding: 1rem 1.5rem; }
     .slds .slds-action-overflow--touch__footer {
       position: relative;
       -webkit-flex-shrink: 0;
@@ -2572,37 +3298,44 @@ body {
     padding: 0.25rem;
     border: 1px solid #d8dde6;
     border-radius: 0.25rem;
-    line-height: 1; }
+    vertical-align: middle;
+    line-height: 1.5; }
+    .slds .slds-pill + .slds-pill {
+      margin-left: 0.25rem; }
     .slds .slds-pill:hover {
       background-color: #f4f6f9; }
     .slds .slds-pill:focus {
       outline: 0;
       box-shadow: 0 0 3px #0070D2; }
-    .slds .slds-pill .slds-button {
-      margin-left: 0.5rem; }
-    .slds .slds-pill .slds-icon {
-      margin-right: 0.5rem; }
     .slds .slds-pill--bare {
       background-color: transparent;
       border: none; }
       .slds .slds-pill--bare:hover {
         background-color: transparent; }
-    .slds .slds-pill + .slds-pill {
-      margin-left: 0.25rem; }
-  .slds .slds-pill__label {
-    max-width: 13.5rem;
-    display: inline-block;
-    vertical-align: middle;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; }
-  .slds .slds-pill-container {
-    padding: 1px 0.25rem;
-    border-bottom: 1px solid #d8dde6;
-    min-height: calc(2.125rem + 2px); }
-  .slds .slds-form-element__control .slds-pill-container {
-    border: 1px solid #d8dde6;
-    border-radius: 0.25rem; }
+    .slds .slds-pill-container {
+      padding: 1px;
+      border: 1px solid #d8dde6;
+      border-radius: 0.25rem;
+      min-height: calc(2.125rem + 2px); }
+    .slds .slds-pill__container {
+      padding: 1px;
+      border: 1px solid #d8dde6;
+      border-radius: 0.25rem;
+      min-height: calc(2.125rem + 2px); }
+    .slds .slds-pill__label {
+      max-width: 13.5rem;
+      display: inline-block;
+      vertical-align: middle;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    .slds .slds-pill__icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      margin-right: 0.5rem;
+      border-radius: 0.125rem; }
+    .slds .slds-pill__remove {
+      margin-left: 0.5rem; }
   .slds .slds-pill .slds-avatar {
     margin-right: 0.5rem; }
   .slds .slds-spinner--small {
@@ -2692,45 +3425,84 @@ body {
           -ms-flex-align: start;
               align-items: flex-start;
       border-bottom: 1px solid #d8dde6; }
-      .slds .slds-tabs--default__nav .slds-tabs__item {
-        overflow: hidden; }
-        .slds .slds-tabs--default__nav .slds-tabs__item > a {
-          max-width: 100%;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          display: block;
-          text-decoration: none;
-          cursor: pointer;
-          height: 3rem;
-          line-height: 3rem; }
-          .slds .slds-tabs--default__nav .slds-tabs__item > a:focus {
-            outline: 0; }
+    .slds .slds-tabs--default .slds-tabs__item {
+      overflow: hidden; }
+      @media (min-width: 48em) {
+        .slds .slds-tabs--default .slds-tabs__item + .slds-tabs__item {
+          margin-left: 1.5rem; } }
+      .slds .slds-tabs--default .slds-tabs__item > a {
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        text-decoration: none;
+        cursor: pointer;
+        height: 3rem;
+        line-height: 3rem;
+        border-bottom: 2px solid transparent;
+        padding: 0 0.5rem;
+        color: #54698d; }
+        .slds .slds-tabs--default .slds-tabs__item > a:focus {
+          outline: 0; }
         @media (min-width: 48em) {
-          .slds .slds-tabs--default__nav .slds-tabs__item + .slds-tabs__item {
-            margin-left: 1.5rem; } }
-        .slds .slds-tabs--default__nav .slds-tabs__item > a {
-          border-bottom: 2px solid transparent;
-          padding: 0 0.5rem;
-          color: #54698d; }
-          @media (min-width: 48em) {
-            .slds .slds-tabs--default__nav .slds-tabs__item > a {
-              padding: 0 1rem; } }
-          .slds .slds-tabs--default__nav .slds-tabs__item > a:hover,
-          .slds .slds-tabs--default__nav .slds-tabs__item > a:focus {
-            border-color: #0070d2;
-            color: #16325c; }
-          .slds .slds-tabs--default__nav .slds-tabs__item > a:focus {
-            color: #0070d2;
-            box-shadow: #0070d2 0 -1px 0 inset; }
-        .slds .slds-tabs--default__nav .slds-tabs__item.slds-active > a {
+          .slds .slds-tabs--default .slds-tabs__item > a {
+            padding: 0 1rem; } }
+        .slds .slds-tabs--default .slds-tabs__item > a:hover,
+        .slds .slds-tabs--default .slds-tabs__item > a:focus {
+          text-decoration: none;
           border-color: #0070d2;
           color: #16325c; }
-          .slds .slds-tabs--default__nav .slds-tabs__item.slds-active > a:focus {
-            color: #0070d2; }
+        .slds .slds-tabs--default .slds-tabs__item > a:focus {
+          color: #0070d2;
+          box-shadow: #0070d2 0 -1px 0 inset; }
+      .slds .slds-tabs--default .slds-tabs__item.slds-active a {
+        border-color: #0070d2;
+        color: #16325c; }
+        .slds .slds-tabs--default .slds-tabs__item.slds-active a:focus {
+          color: #0070d2; }
     .slds .slds-tabs--default > .slds-tabs__content {
       position: relative;
       padding: 1rem 0; }
+  .slds .slds-tabs--default__item {
+    overflow: hidden; }
+    @media (min-width: 48em) {
+      .slds .slds-tabs--default__item + .slds-tabs--default__item {
+        margin-left: 1.5rem; } }
+  .slds .slds-tabs--default__content {
+    position: relative;
+    padding: 1rem 0; }
+  .slds .slds-tabs--default__link {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    height: 3rem;
+    line-height: 3rem;
+    border-bottom: 2px solid transparent;
+    padding: 0 0.5rem;
+    color: #54698d; }
+    .slds .slds-tabs--default__link:focus {
+      outline: 0; }
+    @media (min-width: 48em) {
+      .slds .slds-tabs--default__link {
+        padding: 0 1rem; } }
+    .slds .slds-tabs--default__link:hover,
+    .slds .slds-tabs--default__link:focus {
+      text-decoration: none;
+      border-color: #0070d2;
+      color: #16325c; }
+    .slds .slds-tabs--default__link:focus {
+      color: #0070d2;
+      box-shadow: #0070d2 0 -1px 0 inset; }
+  .slds.slds-active .slds-tabs--default__link {
+    border-color: #0070d2;
+    color: #16325c; }
+    .slds.slds-active .slds-tabs--default__link:focus {
+      color: #0070d2; }
   .slds .slds-tabs--default .slds-tabs__item--overflow {
     overflow: visible; }
   .slds .slds-dropdown--overflow {
@@ -2751,42 +3523,42 @@ body {
       background-color: #f4f6f9;
       border: 1px solid #d8dde6;
       border-radius: 0.25rem 0.25rem 0 0; }
-      .slds .slds-tabs--scoped__nav .slds-tabs__item {
+    .slds .slds-tabs--scoped .slds-tabs__item {
+      overflow: hidden;
+      position: relative;
+      margin-bottom: -1px; }
+      .slds .slds-tabs--scoped .slds-tabs__item + .slds-tabs__item {
+        margin-left: -1px; }
+      .slds .slds-tabs--scoped .slds-tabs__item:first-child > a {
+        border-left: none;
+        border-radius: 0.25rem 0 0 0; }
+      .slds .slds-tabs--scoped .slds-tabs__item > a {
+        max-width: 100%;
         overflow: hidden;
-        position: relative;
-        margin-bottom: -1px; }
-        .slds .slds-tabs--scoped__nav .slds-tabs__item > a {
-          max-width: 100%;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          display: block;
-          text-decoration: none;
-          cursor: pointer;
-          height: 3rem;
-          line-height: 3rem; }
-          .slds .slds-tabs--scoped__nav .slds-tabs__item > a:focus {
-            outline: 0; }
-        .slds .slds-tabs--scoped__nav .slds-tabs__item + .slds-tabs__item {
-          margin-left: -1px; }
-        .slds .slds-tabs--scoped__nav .slds-tabs__item:first-child a {
-          border-left: none;
-          border-radius: 0.25rem 0 0 0; }
-      .slds .slds-tabs--scoped__nav a {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        display: block;
+        text-decoration: none;
+        cursor: pointer;
+        height: 3rem;
+        line-height: 3rem;
         padding: 0 1.5rem;
         color: #54698d;
         background-clip: padding-box;
         border-left: 1px solid transparent;
         border-right: 1px solid transparent; }
-        .slds .slds-tabs--scoped__nav a:hover,
-        .slds .slds-tabs--scoped__nav a:focus {
+        .slds .slds-tabs--scoped .slds-tabs__item > a:focus {
+          outline: 0; }
+        .slds .slds-tabs--scoped .slds-tabs__item > a:hover,
+        .slds .slds-tabs--scoped .slds-tabs__item > a:focus {
+          text-decoration: none;
           color: #005fb2;
           border-color: #d8dde6; }
-      .slds .slds-tabs--scoped__nav .slds-active a {
+      .slds .slds-tabs--scoped .slds-tabs__item .slds-active > a {
         background-color: white;
         color: #0070d2;
         border-color: #d8dde6; }
-        .slds .slds-tabs--scoped__nav .slds-active a:focus {
+        .slds .slds-tabs--scoped .slds-tabs__item .slds-active > a:focus {
           text-decoration: underline; }
     .slds .slds-tabs--scoped > .slds-tabs__content {
       background-color: white;
@@ -2794,6 +3566,193 @@ body {
       border-top: none;
       border-radius: 0 0 0.25rem 0.25rem;
       padding: 1rem; }
+  .slds .slds-tabs--scoped__item {
+    overflow: hidden;
+    position: relative;
+    margin-bottom: -1px; }
+    .slds .slds-tabs--scoped__item + .slds-tabs--scoped__item {
+      margin-left: -1px; }
+    .slds .slds-tabs--scoped__item:first-child .slds-tabs--scoped__link {
+      border-left: none;
+      border-radius: 0.25rem 0 0 0; }
+  .slds .slds-tabs--scoped__content {
+    background-color: white;
+    border: 1px solid #d8dde6;
+    border-top: none;
+    border-radius: 0 0 0.25rem 0.25rem;
+    padding: 1rem; }
+  .slds .slds-tabs--scoped__link {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    height: 3rem;
+    line-height: 3rem;
+    padding: 0 1.5rem;
+    color: #54698d;
+    background-clip: padding-box;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent; }
+    .slds .slds-tabs--scoped__link:focus {
+      outline: 0; }
+    .slds .slds-tabs--scoped__link:hover,
+    .slds .slds-tabs--scoped__link:focus {
+      text-decoration: none;
+      color: #005fb2;
+      border-color: #d8dde6; }
+  .slds .slds-active .slds-tabs--scoped__link {
+    background-color: white;
+    color: #0070d2;
+    border-color: #d8dde6; }
+    .slds .slds-active .slds-tabs--scoped__link:focus {
+      text-decoration: underline; }
+  .slds .slds-tabs--path {
+    display: block;
+    width: 100%; }
+    .slds .slds-tabs--path__nav {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: start;
+      -webkit-align-items: flex-start;
+          -ms-flex-align: start;
+              align-items: flex-start; }
+    .slds .slds-tabs--path .slds-is-complete {
+      background-color: #4bca81; }
+      .slds .slds-tabs--path .slds-is-complete .slds-tabs--path__stage {
+        -webkit-transform: rotateX(0deg);
+                transform: rotateX(0deg); }
+      .slds .slds-tabs--path .slds-is-complete .slds-tabs--path__title {
+        -webkit-transform: rotateX(180deg);
+                transform: rotateX(180deg); }
+      .slds .slds-tabs--path .slds-is-complete:hover {
+        background-color: #04844b; }
+        .slds .slds-tabs--path .slds-is-complete:hover .slds-tabs--path__stage {
+          -webkit-transform: rotateX(-180deg);
+                  transform: rotateX(-180deg); }
+        .slds .slds-tabs--path .slds-is-complete:hover .slds-tabs--path__title {
+          -webkit-transform: rotateX(0deg);
+                  transform: rotateX(0deg); }
+    .slds .slds-tabs--path .slds-is-current {
+      background-color: #0076DE; }
+      .slds .slds-tabs--path .slds-is-current:hover {
+        background-color: #005fb2; }
+      .slds .slds-tabs--path .slds-is-current + .slds-is-incomplete:before {
+        background-color: #0076DE; }
+      .slds .slds-tabs--path .slds-is-current:hover + .slds-is-incomplete:before {
+        background-color: #005fb2; }
+    .slds .slds-tabs--path .slds-is-incomplete {
+      background-color: #e0e5ee; }
+      .slds .slds-tabs--path .slds-is-incomplete .slds-tabs--path__link {
+        color: #16325c; }
+    .slds .slds-tabs--path .slds-is-current .slds-tabs--path__link,
+    .slds .slds-tabs--path .slds-is-complete .slds-tabs--path__link {
+      color: white; }
+    .slds .slds-tabs--path .slds-is-active {
+      background-color: #061c3f; }
+      .slds .slds-tabs--path .slds-is-active .slds-tabs--path__link {
+        color: white; }
+      .slds .slds-tabs--path .slds-is-active .slds-tabs--path__stage {
+        -webkit-transform: rotateX(-180deg);
+                transform: rotateX(-180deg); }
+      .slds .slds-tabs--path .slds-is-active .slds-tabs--path__title {
+        -webkit-transform: rotateX(0deg);
+                transform: rotateX(0deg); }
+      .slds .slds-tabs--path .slds-is-active:hover {
+        background-color: #16325c; }
+        .slds .slds-tabs--path .slds-is-active:hover + .slds-tabs--path__item:before {
+          background-color: #16325c; }
+      .slds .slds-tabs--path .slds-is-active + .slds-tabs--path__item:before {
+        background-color: #061c3f; }
+      .slds .slds-tabs--path .slds-is-active ~ .slds-is-current {
+        background-color: white; }
+        .slds .slds-tabs--path .slds-is-active ~ .slds-is-current .slds-tabs--path__link {
+          color: #16325c; }
+        .slds .slds-tabs--path .slds-is-active ~ .slds-is-current + .slds-tabs--path__item:before {
+          background-color: white; }
+  .slds .slds-tabs--path__item {
+    overflow: hidden;
+    position: relative;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    min-width: 5rem;
+    max-height: 2rem;
+    text-align: center;
+    -webkit-perspective: 500;
+            perspective: 500;
+    -webkit-transition: -webkit-transform 0.1s ease-in-out, background-color 0.1s linear;
+            transition: transform 0.1s ease-in-out, background-color 0.1s linear; }
+    .slds .slds-tabs--path__item:first-child {
+      border-radius: 15rem 0 0 15rem; }
+    .slds .slds-tabs--path__item:last-child {
+      border-radius: 0 15rem 15rem 0;
+      border-right: none; }
+    .slds .slds-tabs--path__item:hover {
+      background-color: #d8dde6; }
+    .slds .slds-tabs--path__item:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: calc((2rem / 2 ) * -1);
+      top: 2px;
+      width: calc(2rem - (2px * 2));
+      height: calc(2rem - (2px * 2));
+      border: 2px solid white;
+      border-left: none;
+      border-bottom: none;
+      background-clip: padding-box;
+      -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+              transform: rotate(45deg);
+      -webkit-transition: -webkit-transform 0.1s ease-in-out, background-color 0.1s linear;
+              transition: transform 0.1s ease-in-out, background-color 0.1s linear; }
+    .slds .slds-tabs--path__item:first-child:before {
+      display: none; }
+    .slds .slds-tabs--path__item + .slds-is-complete:before,
+    .slds .slds-tabs--path__item + .slds-is-current:before {
+      background-color: #4bca81; }
+    .slds .slds-tabs--path__item:hover + .slds-is-complete:before {
+      background-color: #04844b; }
+    .slds .slds-tabs--path__item:hover + .slds-is-current:before {
+      background-color: #04844b; }
+    .slds .slds-tabs--path__item + .slds-is-incomplete:before {
+      background-color: #e0e5ee; }
+    .slds .slds-tabs--path__item:hover + .slds-is-incomplete:before {
+      background-color: #d8dde6; }
+  .slds .slds-tabs--path__title,
+  .slds .slds-tabs--path__stage {
+    display: block;
+    -webkit-transition: -webkit-transform 0.2s linear;
+            transition: transform 0.2s linear;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden; }
+  .slds .slds-tabs--path__stage {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    margin-top: calc((1rem - 0.25rem) * -1);
+    -webkit-transform: rotateX(-180deg);
+            transform: rotateX(-180deg); }
+  .slds .slds-tabs--path__link {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    position: relative;
+    padding: 0.25rem 0.5rem 0.25rem 1rem;
+    line-height: calc(3rem / 2); }
+    .slds .slds-tabs--path__link:focus {
+      outline: 0; }
   .slds .slds-notify-container {
     position: fixed;
     width: 100%;
@@ -2899,6 +3858,10 @@ body {
   .slds .slds-lookup[data-select="single"].slds-has-selection .slds-input,
   .slds .slds-lookup[data-select="single"].slds-has-selection .slds-input__icon {
     display: none; }
+  .slds .slds-lookup[data-select="multi"] .slds-pill__container {
+    border: transparent;
+      border-bottom: 1px solid #d8dde6;
+      border-radius: 0; }
   .slds .slds-lookup[data-scope="multi"] .slds-form-element__label {
     -webkit-align-self: center;
         -ms-flex-item-align: center;
@@ -3011,6 +3974,29 @@ body {
     margin: 0 0 0 0.75rem; }
   .slds .slds-media--small .slds-media__figure--reverse {
     margin-left: 0.25rem; }
+  .slds .slds-media--reverse > .slds-media__figure {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1; }
+  .slds .slds-media--reverse.slds-media--small .slds-media__figure {
+    margin-left: 0.25rem; }
+  .slds .slds-media--double > .slds-media__figure {
+    -webkit-box-ordinal-group: 2;
+    -webkit-order: 1;
+        -ms-flex-order: 1;
+            order: 1; }
+  .slds .slds-media--double .slds-media__figure--reverse {
+    -webkit-box-ordinal-group: 4;
+    -webkit-order: 3;
+        -ms-flex-order: 3;
+            order: 3;
+    margin: 0 0 0 1rem; }
+  .slds .slds-media--double .slds-media__body {
+    -webkit-box-ordinal-group: 3;
+    -webkit-order: 2;
+        -ms-flex-order: 2;
+            order: 2; }
   @media (max-width: 48em) {
     .slds .slds-media--responsive {
       display: block; }
@@ -3051,732 +4037,6 @@ body {
       margin-left: 0.5rem; }
     .slds .slds-badge:empty {
       padding: 0; }
-  .slds .slds-icon__container {
-    display: inline-block;
-    border-radius: 0.25rem; }
-    .slds .slds-icon__container--circle {
-      padding: 0.5rem;
-      border-radius: 50%; }
-  .slds .slds-icon {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 0.25rem;
-    fill: white; }
-  .slds .slds-icon-action-approval {
-    background-color: #00c6b7; }
-  .slds .slds-icon-action-canvasapp {
-    background-color: #8199af; }
-  .slds .slds-icon-action-goal {
-    background-color: #56aadf; }
-  .slds .slds-icon-action-opportunity-competitor {
-    background-color: #fcb95b; }
-  .slds .slds-icon-action-opportunity-line-item {
-    background-color: #fcb95b; }
-  .slds .slds-icon-action-opportunity-team-member {
-    background-color: #fcb95b; }
-  .slds .slds-icon-action-question-post-action {
-    background-color: #32af5c; }
-  .slds .slds-icon-action-quote {
-    background-color: #88c651; }
-  .slds .slds-icon-action-reject {
-    background-color: #00c6b7; }
-  .slds .slds-icon-action-social-post {
-    background-color: #ea74a2; }
-  .slds .slds-icon-action-fallback {
-    background-color: #9895ee; }
-  .slds .slds-icon-action-edit {
-    background-color: #1dccbf; }
-  .slds .slds-icon-action-delete {
-    background-color: #e6717c; }
-  .slds .slds-icon-action-clone {
-    background-color: #6ca1e9; }
-  .slds .slds-icon-action-follow {
-    background-color: #31b9f8; }
-  .slds .slds-icon-action-following {
-    background-color: #7dcf64; }
-  .slds .slds-icon-action-join-group {
-    background-color: #779ef2; }
-  .slds .slds-icon-action-leave-group {
-    background-color: #f39e58; }
-  .slds .slds-icon-action-edit-group {
-    background-color: #34becd; }
-  .slds .slds-icon-action-share-post {
-    background-color: #65cae4; }
-  .slds .slds-icon-action-share-file {
-    background-color: #baac93; }
-  .slds .slds-icon-action-new-task {
-    background-color: #4bc076; }
-  .slds .slds-icon-action-new-contact {
-    background-color: #a094ed; }
-  .slds .slds-icon-action-new-opportunity {
-    background-color: #fcb95b; }
-  .slds .slds-icon-action-new-case {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-action-new-lead {
-    background-color: #f88962; }
-  .slds .slds-icon-action-share-thanks {
-    background-color: #e9696e; }
-  .slds .slds-icon-action-share-link {
-    background-color: #7a9ae6; }
-  .slds .slds-icon-action-share-poll {
-    background-color: #699be1; }
-  .slds .slds-icon-action-new-event {
-    background-color: #eb7092; }
-  .slds .slds-icon-action-new-child-case {
-    background-color: #fa975c; }
-  .slds .slds-icon-action-log-a-call {
-    background-color: #48c3cc; }
-  .slds .slds-icon-action-new-note {
-    background-color: #e6d478; }
-  .slds .slds-icon-action-new {
-    background-color: #33bce7; }
-  .slds .slds-icon-action-filter {
-    background-color: #fd90b5; }
-  .slds .slds-icon-action-sort {
-    background-color: #fab9a5; }
-  .slds .slds-icon-action-description {
-    background-color: #7dc37d; }
-  .slds .slds-icon-action-defer {
-    background-color: #ef7ead; }
-  .slds .slds-icon-action-update {
-    background-color: #81b4d6; }
-  .slds .slds-icon-action-log-this-event {
-    background-color: #f86268; }
-  .slds .slds-icon-action-email {
-    background-color: #95aec5; }
-  .slds .slds-icon-action-dial-in {
-    background-color: #8b9ae3; }
-  .slds .slds-icon-action-map {
-    background-color: #76c6ee; }
-  .slds .slds-icon-action-call {
-    background-color: #1fcaa0; }
-  .slds .slds-icon-action-google-news {
-    background-color: #f5675b; }
-  .slds .slds-icon-action-web-link {
-    background-color: #56aadf; }
-  .slds .slds-icon-action-submit-for-approval {
-    background-color: #50cc7a; }
-  .slds .slds-icon-action-search {
-    background-color: #48adeb; }
-  .slds .slds-icon-action-close {
-    background-color: #ef6e64; }
-  .slds .slds-icon-action-back {
-    background-color: #0dc2d9; }
-  .slds .slds-icon-action-office-365 {
-    background-color: #ff8041; }
-  .slds .slds-icon-action-concur {
-    background-color: #4cc3c7; }
-  .slds .slds-icon-action-dropbox {
-    background-color: #52aef9; }
-  .slds .slds-icon-action-evernote {
-    background-color: #86c86f; }
-  .slds .slds-icon-action-docusign {
-    background-color: #5080db; }
-  .slds .slds-icon-action-more {
-    background-color: #62b7ed; }
-  .slds .slds-icon-action-notebook {
-    background-color: #c871d6; }
-  .slds .slds-icon-action-preview {
-    background-color: #7f8de1; }
-  .slds .slds-icon-action-priority {
-    background-color: #fbb439; }
-  .slds .slds-icon-action-default-custom-object {
-    background-color: #8199af; }
-  .slds .slds-icon-action-new-custom-object {
-    background-color: #a7d44d; }
-  .slds .slds-icon-action-lead-convert {
-    background-color: #f88962; }
-  .slds .slds-icon-action-new-account {
-    background-color: #7f8de1; }
-  .slds .slds-icon-action-new-campaign {
-    background-color: #f49756; }
-  .slds .slds-icon-action-new-group {
-    background-color: #83b6ff; }
-  .slds .slds-icon-action-update-status {
-    background-color: #1ec7be; }
-  .slds .slds-icon-action-new-custom-1 {
-    background-color: #ff7b84; }
-  .slds .slds-icon-action-new-custom-2 {
-    background-color: #cfd05c; }
-  .slds .slds-icon-action-new-custom-3 {
-    background-color: #ecb46c; }
-  .slds .slds-icon-action-new-custom-4 {
-    background-color: #e1d951; }
-  .slds .slds-icon-action-new-custom-5 {
-    background-color: #9fdb66; }
-  .slds .slds-icon-action-new-custom-6 {
-    background-color: #54c473; }
-  .slds .slds-icon-action-new-custom-7 {
-    background-color: #6a89e5; }
-  .slds .slds-icon-action-new-custom-8 {
-    background-color: #50ceb9; }
-  .slds .slds-icon-action-new-custom-9 {
-    background-color: #6b9ee2; }
-  .slds .slds-icon-action-new-custom-10 {
-    background-color: #6488e3; }
-  .slds .slds-icon-action-new-custom-11 {
-    background-color: #8784ea; }
-  .slds .slds-icon-action-new-custom-12 {
-    background-color: #dc71d1; }
-  .slds .slds-icon-action-new-custom-13 {
-    background-color: #df6184; }
-  .slds .slds-icon-action-new-custom-14 {
-    background-color: #3cc2b3; }
-  .slds .slds-icon-action-new-custom-15 {
-    background-color: #f77e75; }
-  .slds .slds-icon-action-new-custom-16 {
-    background-color: #e9af67; }
-  .slds .slds-icon-action-new-custom-17 {
-    background-color: #acd360; }
-  .slds .slds-icon-action-new-custom-18 {
-    background-color: #4dca76; }
-  .slds .slds-icon-action-new-custom-19 {
-    background-color: #3abeb1; }
-  .slds .slds-icon-action-new-custom-20 {
-    background-color: #48c7c8; }
-  .slds .slds-icon-action-new-custom-21 {
-    background-color: #8a7aed; }
-  .slds .slds-icon-action-new-custom-22 {
-    background-color: #8b85f9; }
-  .slds .slds-icon-action-new-custom-23 {
-    background-color: #b070e6; }
-  .slds .slds-icon-action-new-custom-24 {
-    background-color: #e56798; }
-  .slds .slds-icon-action-new-custom-25 {
-    background-color: #e46fbe; }
-  .slds .slds-icon-action-new-custom-26 {
-    background-color: #7698f0; }
-  .slds .slds-icon-action-new-custom-27 {
-    background-color: #5ab0d2; }
-  .slds .slds-icon-action-new-custom-28 {
-    background-color: #89c059; }
-  .slds .slds-icon-action-new-custom-29 {
-    background-color: #bdd25f; }
-  .slds .slds-icon-action-new-custom-30 {
-    background-color: #f59f71; }
-  .slds .slds-icon-action-new-custom-31 {
-    background-color: #eb687f; }
-  .slds .slds-icon-action-new-custom-32 {
-    background-color: #38c393; }
-  .slds .slds-icon-action-new-custom-33 {
-    background-color: #97cf5d; }
-  .slds .slds-icon-action-new-custom-34 {
-    background-color: #d58a6a; }
-  .slds .slds-icon-action-new-custom-35 {
-    background-color: #e9637e; }
-  .slds .slds-icon-action-new-custom-36 {
-    background-color: #d472d4; }
-  .slds .slds-icon-action-new-custom-37 {
-    background-color: #8c89f2; }
-  .slds .slds-icon-action-new-custom-38 {
-    background-color: #53b6d7; }
-  .slds .slds-icon-action-new-custom-39 {
-    background-color: #4fbe75; }
-  .slds .slds-icon-action-new-custom-40 {
-    background-color: #83c75e; }
-  .slds .slds-icon-action-new-custom-41 {
-    background-color: #43b5b5; }
-  .slds .slds-icon-action-new-custom-42 {
-    background-color: #cfd05b; }
-  .slds .slds-icon-action-new-custom-43 {
-    background-color: #7f93f9; }
-  .slds .slds-icon-action-new-custom-44 {
-    background-color: #c8ca58; }
-  .slds .slds-icon-action-new-custom-45 {
-    background-color: #d95879; }
-  .slds .slds-icon-action-new-custom-46 {
-    background-color: #67a5e7; }
-  .slds .slds-icon-action-new-custom-47 {
-    background-color: #5fcc64; }
-  .slds .slds-icon-action-new-custom-48 {
-    background-color: #ef697f; }
-  .slds .slds-icon-action-new-custom-49 {
-    background-color: #e25c80; }
-  .slds .slds-icon-action-new-custom-50 {
-    background-color: #49bcd3; }
-  .slds .slds-icon-action-new-custom-51 {
-    background-color: #d8c760; }
-  .slds .slds-icon-action-new-custom-52 {
-    background-color: #ee8e6f; }
-  .slds .slds-icon-action-new-custom-53 {
-    background-color: #f36e83; }
-  .slds .slds-icon-action-new-custom-54 {
-    background-color: #ea70b1; }
-  .slds .slds-icon-action-new-custom-55 {
-    background-color: #d66ee0; }
-  .slds .slds-icon-action-new-custom-56 {
-    background-color: #718deb; }
-  .slds .slds-icon-action-new-custom-57 {
-    background-color: #5a9cdd; }
-  .slds .slds-icon-action-new-custom-58 {
-    background-color: #34b59d; }
-  .slds .slds-icon-action-new-custom-59 {
-    background-color: #e3d067; }
-  .slds .slds-icon-action-new-custom-60 {
-    background-color: #bf5a88; }
-  .slds .slds-icon-action-new-custom-61 {
-    background-color: #f57376; }
-  .slds .slds-icon-action-new-custom-62 {
-    background-color: #6b92dc; }
-  .slds .slds-icon-action-new-custom-63 {
-    background-color: #7ccf60; }
-  .slds .slds-icon-action-new-custom-64 {
-    background-color: #618fd8; }
-  .slds .slds-icon-action-new-custom-65 {
-    background-color: #f279ab; }
-  .slds .slds-icon-action-new-custom-66 {
-    background-color: #d8be5f; }
-  .slds .slds-icon-action-new-custom-67 {
-    background-color: #f87d76; }
-  .slds .slds-icon-action-new-custom-68 {
-    background-color: #f26979; }
-  .slds .slds-icon-action-new-custom-69 {
-    background-color: #ed6387; }
-  .slds .slds-icon-action-new-custom-70 {
-    background-color: #e769b4; }
-  .slds .slds-icon-action-new-custom-71 {
-    background-color: #e36ee3; }
-  .slds .slds-icon-action-new-custom-72 {
-    background-color: #8d9bfb; }
-  .slds .slds-icon-action-new-custom-73 {
-    background-color: #679ef0; }
-  .slds .slds-icon-action-new-custom-74 {
-    background-color: #41c8a0; }
-  .slds .slds-icon-action-new-custom-75 {
-    background-color: #cd9f65; }
-  .slds .slds-icon-action-new-custom-76 {
-    background-color: #db6d7a; }
-  .slds .slds-icon-action-new-custom-77 {
-    background-color: #b55d5b; }
-  .slds .slds-icon-action-new-custom-78 {
-    background-color: #5a95dd; }
-  .slds .slds-icon-action-new-custom-79 {
-    background-color: #8ed363; }
-  .slds .slds-icon-action-new-custom-80 {
-    background-color: #659ad5; }
-  .slds .slds-icon-action-new-custom-81 {
-    background-color: #da627f; }
-  .slds .slds-icon-action-new-custom-82 {
-    background-color: #d15b97; }
-  .slds .slds-icon-action-new-custom-83 {
-    background-color: #e7806f; }
-  .slds .slds-icon-action-new-custom-84 {
-    background-color: #f6707b; }
-  .slds .slds-icon-action-new-custom-85 {
-    background-color: #f26891; }
-  .slds .slds-icon-action-new-custom-86 {
-    background-color: #e260ab; }
-  .slds .slds-icon-action-new-custom-87 {
-    background-color: #d876e5; }
-  .slds .slds-icon-action-new-custom-88 {
-    background-color: #996fe6; }
-  .slds .slds-icon-action-new-custom-89 {
-    background-color: #3e99be; }
-  .slds .slds-icon-action-new-custom-90 {
-    background-color: #22a48a; }
-  .slds .slds-icon-action-new-custom-91 {
-    background-color: #bf7b66; }
-  .slds .slds-icon-action-new-custom-92 {
-    background-color: #517e82; }
-  .slds .slds-icon-action-new-custom-93 {
-    background-color: #904d4c; }
-  .slds .slds-icon-action-new-custom-94 {
-    background-color: #439cba; }
-  .slds .slds-icon-action-new-custom-95 {
-    background-color: #8bcf6a; }
-  .slds .slds-icon-action-new-custom-96 {
-    background-color: #6d9de3; }
-  .slds .slds-icon-action-new-custom-97 {
-    background-color: #dd6085; }
-  .slds .slds-icon-action-new-custom-98 {
-    background-color: #e1be5c; }
-  .slds .slds-icon-action-new-custom-99 {
-    background-color: #f0856e; }
-  .slds .slds-icon-action-new-custom-100 {
-    background-color: #e15d76; }
-  .slds .slds-icon-action-apex {
-    background-color: #696e71; }
-  .slds .slds-icon-action-flow {
-    background-color: #0079bc; }
-  .slds .slds-icon-action-announcement {
-    background-color: #fe8f60; }
-  .slds .slds-icon-action-record {
-    background-color: #7dc37d; }
-  .slds .slds-icon-custom-1 {
-    background-color: #ff7b84; }
-  .slds .slds-icon-custom-2 {
-    background-color: #cfd05c; }
-  .slds .slds-icon-custom-3 {
-    background-color: #ecb46c; }
-  .slds .slds-icon-custom-4 {
-    background-color: #e1d951; }
-  .slds .slds-icon-custom-5 {
-    background-color: #9fdb66; }
-  .slds .slds-icon-custom-6 {
-    background-color: #54c473; }
-  .slds .slds-icon-custom-7 {
-    background-color: #6a89e5; }
-  .slds .slds-icon-custom-8 {
-    background-color: #50ceb9; }
-  .slds .slds-icon-custom-9 {
-    background-color: #6b9ee2; }
-  .slds .slds-icon-custom-10 {
-    background-color: #6488e3; }
-  .slds .slds-icon-custom-11 {
-    background-color: #8784ea; }
-  .slds .slds-icon-custom-12 {
-    background-color: #dc71d1; }
-  .slds .slds-icon-custom-13 {
-    background-color: #df6184; }
-  .slds .slds-icon-custom-14 {
-    background-color: #3cc2b3; }
-  .slds .slds-icon-custom-15 {
-    background-color: #f77e75; }
-  .slds .slds-icon-custom-16 {
-    background-color: #e9af67; }
-  .slds .slds-icon-custom-17 {
-    background-color: #acd360; }
-  .slds .slds-icon-custom-18 {
-    background-color: #4dca76; }
-  .slds .slds-icon-custom-19 {
-    background-color: #3abeb1; }
-  .slds .slds-icon-custom-20 {
-    background-color: #48c7c8; }
-  .slds .slds-icon-custom-21 {
-    background-color: #8a7aed; }
-  .slds .slds-icon-custom-22 {
-    background-color: #8b85f9; }
-  .slds .slds-icon-custom-23 {
-    background-color: #b070e6; }
-  .slds .slds-icon-custom-24 {
-    background-color: #e56798; }
-  .slds .slds-icon-custom-25 {
-    background-color: #e46fbe; }
-  .slds .slds-icon-custom-26 {
-    background-color: #7698f0; }
-  .slds .slds-icon-custom-27 {
-    background-color: #5ab0d2; }
-  .slds .slds-icon-custom-28 {
-    background-color: #89c059; }
-  .slds .slds-icon-custom-29 {
-    background-color: #bdd25f; }
-  .slds .slds-icon-custom-30 {
-    background-color: #f59f71; }
-  .slds .slds-icon-custom-31 {
-    background-color: #eb687f; }
-  .slds .slds-icon-custom-32 {
-    background-color: #38c393; }
-  .slds .slds-icon-custom-33 {
-    background-color: #97cf5d; }
-  .slds .slds-icon-custom-34 {
-    background-color: #d58a6a; }
-  .slds .slds-icon-custom-35 {
-    background-color: #e9637e; }
-  .slds .slds-icon-custom-36 {
-    background-color: #d472d4; }
-  .slds .slds-icon-custom-37 {
-    background-color: #8c89f2; }
-  .slds .slds-icon-custom-38 {
-    background-color: #53b6d7; }
-  .slds .slds-icon-custom-39 {
-    background-color: #4fbe75; }
-  .slds .slds-icon-custom-40 {
-    background-color: #83c75e; }
-  .slds .slds-icon-custom-41 {
-    background-color: #43b5b5; }
-  .slds .slds-icon-custom-42 {
-    background-color: #cfd05b; }
-  .slds .slds-icon-custom-43 {
-    background-color: #7f93f9; }
-  .slds .slds-icon-custom-44 {
-    background-color: #c8ca58; }
-  .slds .slds-icon-custom-45 {
-    background-color: #d95879; }
-  .slds .slds-icon-custom-46 {
-    background-color: #67a5e7; }
-  .slds .slds-icon-custom-47 {
-    background-color: #5fcc64; }
-  .slds .slds-icon-custom-48 {
-    background-color: #ef697f; }
-  .slds .slds-icon-custom-49 {
-    background-color: #e25c80; }
-  .slds .slds-icon-custom-50 {
-    background-color: #49bcd3; }
-  .slds .slds-icon-custom-51 {
-    background-color: #d8c760; }
-  .slds .slds-icon-custom-52 {
-    background-color: #ee8e6f; }
-  .slds .slds-icon-custom-53 {
-    background-color: #f36e83; }
-  .slds .slds-icon-custom-54 {
-    background-color: #ea70b1; }
-  .slds .slds-icon-custom-55 {
-    background-color: #d66ee0; }
-  .slds .slds-icon-custom-56 {
-    background-color: #718deb; }
-  .slds .slds-icon-custom-57 {
-    background-color: #5a9cdd; }
-  .slds .slds-icon-custom-58 {
-    background-color: #34b59d; }
-  .slds .slds-icon-custom-59 {
-    background-color: #e3d067; }
-  .slds .slds-icon-custom-60 {
-    background-color: #bf5a88; }
-  .slds .slds-icon-custom-61 {
-    background-color: #f57376; }
-  .slds .slds-icon-custom-62 {
-    background-color: #6b92dc; }
-  .slds .slds-icon-custom-63 {
-    background-color: #7ccf60; }
-  .slds .slds-icon-custom-64 {
-    background-color: #618fd8; }
-  .slds .slds-icon-custom-65 {
-    background-color: #f279ab; }
-  .slds .slds-icon-custom-66 {
-    background-color: #d8be5f; }
-  .slds .slds-icon-custom-67 {
-    background-color: #f87d76; }
-  .slds .slds-icon-custom-68 {
-    background-color: #f26979; }
-  .slds .slds-icon-custom-69 {
-    background-color: #ed6387; }
-  .slds .slds-icon-custom-70 {
-    background-color: #e769b4; }
-  .slds .slds-icon-custom-71 {
-    background-color: #e36ee3; }
-  .slds .slds-icon-custom-72 {
-    background-color: #8d9bfb; }
-  .slds .slds-icon-custom-73 {
-    background-color: #679ef0; }
-  .slds .slds-icon-custom-74 {
-    background-color: #41c8a0; }
-  .slds .slds-icon-custom-75 {
-    background-color: #cd9f65; }
-  .slds .slds-icon-custom-76 {
-    background-color: #db6d7a; }
-  .slds .slds-icon-custom-77 {
-    background-color: #b55d5b; }
-  .slds .slds-icon-custom-78 {
-    background-color: #5a95dd; }
-  .slds .slds-icon-custom-79 {
-    background-color: #8ed363; }
-  .slds .slds-icon-custom-80 {
-    background-color: #659ad5; }
-  .slds .slds-icon-custom-81 {
-    background-color: #da627f; }
-  .slds .slds-icon-custom-82 {
-    background-color: #d15b97; }
-  .slds .slds-icon-custom-83 {
-    background-color: #e7806f; }
-  .slds .slds-icon-custom-84 {
-    background-color: #f6707b; }
-  .slds .slds-icon-custom-85 {
-    background-color: #f26891; }
-  .slds .slds-icon-custom-86 {
-    background-color: #e260ab; }
-  .slds .slds-icon-custom-87 {
-    background-color: #d876e5; }
-  .slds .slds-icon-custom-88 {
-    background-color: #996fe6; }
-  .slds .slds-icon-custom-89 {
-    background-color: #3e99be; }
-  .slds .slds-icon-custom-90 {
-    background-color: #22a48a; }
-  .slds .slds-icon-custom-91 {
-    background-color: #bf7b66; }
-  .slds .slds-icon-custom-92 {
-    background-color: #517e82; }
-  .slds .slds-icon-custom-93 {
-    background-color: #904d4c; }
-  .slds .slds-icon-custom-94 {
-    background-color: #439cba; }
-  .slds .slds-icon-custom-95 {
-    background-color: #8bcf6a; }
-  .slds .slds-icon-custom-96 {
-    background-color: #6d9de3; }
-  .slds .slds-icon-custom-97 {
-    background-color: #dd6085; }
-  .slds .slds-icon-custom-98 {
-    background-color: #e1be5c; }
-  .slds .slds-icon-custom-99 {
-    background-color: #f0856e; }
-  .slds .slds-icon-custom-100 {
-    background-color: #e15d76; }
-  .slds .slds-icon-standard-log-a-call {
-    background-color: #48c3cc; }
-  .slds .slds-icon-standard-account {
-    background-color: #7f8de1; }
-  .slds .slds-icon-standard-social-post {
-    background-color: #ea74a2; }
-  .slds .slds-icon-standard-campaign-members {
-    background-color: #f49756; }
-  .slds .slds-icon-standard-article {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-answer-public {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-answer-private {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-answer-best {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-avatar-loading {
-    background-color: #b8c3ce; }
-  .slds .slds-icon-standard-campaign {
-    background-color: #f49756; }
-  .slds .slds-icon-standard-calibration {
-    background-color: #47cfd2; }
-  .slds .slds-icon-standard-avatar {
-    background-color: #62b7ed; }
-  .slds .slds-icon-standard-approval {
-    background-color: #50cc7a; }
-  .slds .slds-icon-standard-apps {
-    background-color: #3c97dd; }
-  .slds .slds-icon-standard-user {
-    background-color: #34becd; }
-  .slds .slds-icon-standard-evernote {
-    background-color: #86c86f; }
-  .slds .slds-icon-standard-coaching {
-    background-color: #f67594; }
-  .slds .slds-icon-standard-connected-apps-admins {
-    background-color: #9895ee; }
-  .slds .slds-icon-standard-drafts {
-    background-color: #6ca1e9; }
-  .slds .slds-icon-standard-email {
-    background-color: #95aec5; }
-  .slds .slds-icon-standard-endorsement {
-    background-color: #8b9ae3; }
-  .slds .slds-icon-standard-event {
-    background-color: #eb7092; }
-  .slds .slds-icon-standard-dropbox {
-    background-color: #52aef9; }
-  .slds .slds-icon-standard-concur {
-    background-color: #4cc3c7; }
-  .slds .slds-icon-standard-email-chatter {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-case-transcript {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-case-comment {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-case-change-status {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-client {
-    background-color: #00d2be; }
-  .slds .slds-icon-standard-contract {
-    background-color: #6ec06e; }
-  .slds .slds-icon-standard-dashboard {
-    background-color: #ef6e64; }
-  .slds .slds-icon-standard-case {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-empty {
-    background-color: #8199af; }
-  .slds .slds-icon-standard-default {
-    background-color: #8199af; }
-  .slds .slds-icon-standard-custom {
-    background-color: #8199af; }
-  .slds .slds-icon-standard-canvas {
-    background-color: #8199af; }
-  .slds .slds-icon-standard-contact {
-    background-color: #a094ed; }
-  .slds .slds-icon-standard-portal {
-    background-color: #aec770; }
-  .slds .slds-icon-standard-product {
-    background-color: #b781d3; }
-  .slds .slds-icon-standard-feed {
-    background-color: #62b7ed; }
-  .slds .slds-icon-standard-feedback {
-    background-color: #6da1ea; }
-  .slds .slds-icon-standard-file {
-    background-color: #baac93; }
-  .slds .slds-icon-standard-goals {
-    background-color: #56aadf; }
-  .slds .slds-icon-standard-groups {
-    background-color: #779ef2; }
-  .slds .slds-icon-standard-household {
-    background-color: #00afa0; }
-  .slds .slds-icon-standard-insights {
-    background-color: #ec94ed; }
-  .slds .slds-icon-standard-investment-account {
-    background-color: #4bc076; }
-  .slds .slds-icon-standard-performance {
-    background-color: #f8b156; }
-  .slds .slds-icon-standard-link {
-    background-color: #7a9ae6; }
-  .slds .slds-icon-standard-metrics {
-    background-color: #56aadf; }
-  .slds .slds-icon-standard-note {
-    background-color: #e6d478; }
-  .slds .slds-icon-standard-lead {
-    background-color: #f88962; }
-  .slds .slds-icon-standard-opportunity {
-    background-color: #fcb95b; }
-  .slds .slds-icon-standard-log-a-call-chatter {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-orders {
-    background-color: #769ed9; }
-  .slds .slds-icon-standard-post {
-    background-color: #65cae4; }
-  .slds .slds-icon-standard-poll {
-    background-color: #699be1; }
-  .slds .slds-icon-standard-photo {
-    background-color: #d7d1d1; }
-  .slds .slds-icon-standard-people {
-    background-color: #34becd; }
-  .slds .slds-icon-standard-generic-loading {
-    background-color: #b8c3ce; }
-  .slds .slds-icon-standard-group-loading {
-    background-color: #b8c3ce; }
-  .slds .slds-icon-standard-recent {
-    background-color: #6ca1e9; }
-  .slds .slds-icon-standard-solution {
-    background-color: #8fc972; }
-  .slds .slds-icon-standard-record {
-    background-color: #7dc37d; }
-  .slds .slds-icon-standard-question-best {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-question-feed {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-related-list {
-    background-color: #59bcab; }
-  .slds .slds-icon-standard-skill-entity {
-    background-color: #8b9ae3; }
-  .slds .slds-icon-standard-scan-card {
-    background-color: #f39e58; }
-  .slds .slds-icon-standard-report {
-    background-color: #2ecbbe; }
-  .slds .slds-icon-standard-quotes {
-    background-color: #88c651; }
-  .slds .slds-icon-standard-task {
-    background-color: #4bc076; }
-  .slds .slds-icon-standard-team-member {
-    background-color: #f2cf5b; }
-  .slds .slds-icon-standard-thanks {
-    background-color: #e9696e; }
-  .slds .slds-icon-standard-thanks-loading {
-    background-color: #b8c3ce; }
-  .slds .slds-icon-standard-today {
-    background-color: #ef7ead; }
-  .slds .slds-icon-standard-topic {
-    background-color: #56aadf; }
-  .slds .slds-icon-standard-unmatched {
-    background-color: #62b7ed; }
-  .slds .slds-icon-standard-marketing-actions {
-    background-color: #6bbd6e; }
-  .slds .slds-icon-standard-marketing-resources {
-    background-color: black; }
-  .slds .slds-icon-text-default {
-    fill: #54698d; }
-  .slds .slds-icon-text-warning {
-    fill: #ffb75d; }
-  .slds .slds-icon--x-small {
-    line-height: 1;
-    width: 1rem;
-    height: 1rem; }
-  .slds .slds-icon--small {
-    line-height: 1;
-    width: 1.5rem;
-    height: 1.5rem; }
-  .slds .slds-icon--large {
-    width: 3rem;
-    height: 3rem; }
   .slds .slds-table {
     background-color: white; }
     .slds .slds-table th,
@@ -5331,10 +5591,7 @@ body {
       vertical-align: middle; }
   .slds .slds-list--horizontal-large > .slds-list__item > a {
     padding: 0.75rem 1rem; }
-  .slds .slds-has-block-links a {
-    display: block;
-    text-decoration: none; }
-  .slds .slds-has-block-links .slds-is-nested {
+  .slds .slds-is-nested {
     margin-left: 1rem; }
   .slds .slds-has-divider {
     margin-top: 0.5rem;
@@ -5343,21 +5600,22 @@ body {
     .slds .slds-has-divider--top {
       border-top: 1px solid #d8dde6; }
       .slds .slds-has-divider--top-space {
+        border-top: 1px solid #d8dde6;
         margin-top: 0.5rem;
-        padding-top: 0.5rem;
-        border-top: 1px solid #d8dde6; }
+        padding-top: 0.5rem; }
     .slds .slds-has-divider--bottom {
       border-bottom: 1px solid #d8dde6; }
       .slds .slds-has-divider--bottom-space {
+        border-bottom: 1px solid #d8dde6;
         margin-bottom: 0.5rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid #d8dde6; }
+        padding-bottom: 0.5rem; }
   .slds .slds-list--vertical.slds-has-dividers > .slds-list__item {
     padding: 0.5rem;
     border-bottom: 1px solid #d8dde6; }
     .slds .slds-list--vertical.slds-has-dividers > .slds-list__item:hover {
       background-color: #f4f6f9;
-      border-color: #d8dde6; }
+      border-color: #d8dde6;
+      cursor: pointer; }
     .slds .slds-list--vertical.slds-has-dividers > .slds-list__item:active {
       background-color: #eef1f6;
       box-shadow: #d8dde6 0 -1px 0 inset; }
@@ -5367,6 +5625,35 @@ body {
       .slds .slds-list--vertical.slds-has-dividers > .slds-list__item.slds-is-selected:hover,
       .slds .slds-list--vertical.slds-has-dividers > .slds-list__item.slds-is-selected:focus {
         box-shadow: #1589ee 0 -2px 0 inset, #1589ee 0 0 0 1px inset; }
+  .slds .slds-has-dividers--top > .slds-list__item {
+    border-top: 1px solid #d8dde6; }
+  .slds .slds-has-dividers--top-space > .slds-list__item {
+    border-top: 1px solid #d8dde6;
+    padding: 0.75rem; }
+    @media (min-width: 30em) {
+      .slds .slds-has-dividers--top-space > .slds-list__item {
+        padding: 0.5rem; } }
+  .slds .slds-has-dividers--bottom > .slds-list__item {
+    border-bottom: 1px solid #d8dde6; }
+  .slds .slds-has-dividers--bottom-space > .slds-list__item {
+    border-bottom: 1px solid #d8dde6;
+    padding: 0.75rem; }
+    @media (min-width: 30em) {
+      .slds .slds-has-dividers--bottom-space > .slds-list__item {
+        padding: 0.5rem; } }
+  .slds .slds-has-list-interactions > .slds-list__item:hover {
+    background-color: #f4f6f9;
+    border-color: #d8dde6;
+    cursor: pointer; }
+  .slds .slds-has-list-interactions > .slds-list__item:active {
+    background-color: #eef1f6;
+    box-shadow: #d8dde6 0 -1px 0 inset; }
+  .slds .slds-has-list-interactions > .slds-list__item.slds-is-selected {
+    box-shadow: #0070d2 0 0 0 1px inset;
+    background-color: #f0f8fc; }
+    .slds .slds-has-list-interactions > .slds-list__item.slds-is-selected:hover,
+    .slds .slds-has-list-interactions > .slds-list__item.slds-is-selected:focus {
+      box-shadow: #1589ee 0 -2px 0 inset, #1589ee 0 0 0 1px inset; }
   .slds .slds-list--horizontal.slds-has-dividers > .slds-list__item {
     position: relative; }
     .slds .slds-list--horizontal.slds-has-dividers > .slds-list__item:after {
@@ -5384,25 +5671,80 @@ body {
       padding-right: 0; }
       .slds .slds-list--horizontal.slds-has-dividers > .slds-list__item:last-child:after {
         content: none; }
-  .slds .slds-list--vertical.slds-has-cards .slds-list__item {
-    padding: 0.5rem;
+  .slds .slds-has-dividers--left > .slds-list__item {
+    position: relative; }
+    .slds .slds-has-dividers--left > .slds-list__item:before {
+      width: 4px;
+      height: 4px;
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      border-radius: 50%;
+      background-color: #54698d; }
+    .slds .slds-has-dividers--left > .slds-list__item:first-child {
+      margin-right: 0;
+      padding-right: 0; }
+      .slds .slds-has-dividers--left > .slds-list__item:first-child:before {
+        content: none; }
+  .slds .slds-has-dividers--right > .slds-list__item {
+    position: relative; }
+    .slds .slds-has-dividers--right > .slds-list__item:after {
+      width: 4px;
+      height: 4px;
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      border-radius: 50%;
+      background-color: #54698d; }
+    .slds .slds-has-dividers--right > .slds-list__item:last-child {
+      margin-right: 0;
+      padding-right: 0; }
+      .slds .slds-has-dividers--right > .slds-list__item:last-child:after {
+        content: none; }
+  .slds .slds-has-cards .slds-list__item {
+    border: 1px solid #d8dde6;
+    border-radius: 0.25rem;
+    background-clip: padding-box; }
+    .slds .slds-has-cards .slds-list__item + .slds-list__item {
+      margin-top: 0.5rem; }
+  .slds .slds-has-cards--space .slds-list__item {
+    border: 1px solid #d8dde6;
     border-radius: 0.25rem;
     background-clip: padding-box;
-    border: 1px solid #d8dde6; }
-    .slds .slds-list--vertical.slds-has-cards .slds-list__item:hover {
-      background-color: #f4f6f9;
-      border-color: #d8dde6; }
-    .slds .slds-list--vertical.slds-has-cards .slds-list__item:active {
-      background-color: #eef1f6;
-      box-shadow: #d8dde6 0 -1px 0 inset; }
-    .slds .slds-list--vertical.slds-has-cards .slds-list__item.slds-is-selected {
-      box-shadow: #0070d2 0 0 0 1px inset;
-      background-color: #f0f8fc; }
-      .slds .slds-list--vertical.slds-has-cards .slds-list__item.slds-is-selected:hover,
-      .slds .slds-list--vertical.slds-has-cards .slds-list__item.slds-is-selected:focus {
-        box-shadow: #1589ee 0 -2px 0 inset, #1589ee 0 0 0 1px inset; }
-    .slds .slds-list--vertical.slds-has-cards .slds-list__item + .slds-list__item {
+    padding: 0.75rem; }
+    @media (min-width: 30em) {
+      .slds .slds-has-cards--space .slds-list__item {
+        padding: 0.5rem; } }
+    .slds .slds-has-cards--space .slds-list__item + .slds-list__item {
       margin-top: 0.5rem; }
+  .slds .slds-has-block-links a {
+    display: block;
+    text-decoration: none; }
+  .slds .slds-has-block-links .slds-is-nested {
+    margin-left: 1rem; }
+  .slds .slds-has-block-links--space .slds-list__item {
+    padding: 0; }
+  .slds .slds-has-block-links--space a {
+    display: block;
+    text-decoration: none;
+    padding: 0.75rem; }
+    @media (min-width: 48em) {
+      .slds .slds-has-block-links--space a {
+        padding: 0.5rem; } }
+  .slds .slds-has-inline-block-links a {
+    display: inline-block;
+    text-decoration: none; }
+  .slds .slds-has-inline-block-links--space a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.75rem; }
+    @media (min-width: 48em) {
+      .slds .slds-has-inline-block-links--space a {
+        padding: 0.5rem; } }
   .slds .slds-truncate {
     max-width: 100%;
     overflow: hidden;
