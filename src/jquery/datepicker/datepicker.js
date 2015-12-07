@@ -122,7 +122,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 	
 	_onOpened () {
-		this.elements.datepicker.toggleClass('slds-hidden', true);
+		this.elements.datepicker.toggleClass('slds-hidden', false);
 		this._updatePosition();
 	},
 	
