@@ -7,7 +7,7 @@ const Openable = {
 		if (e) {
 			e.originator = this;
 		}
-		
+
 		if (!this.getState('isOpen')) {
 			if (!Lib.isFunction(this._openable_closeOnClick)) {
 				this._openable_closeOnClick = Openable.closeOnClick.bind(this);
@@ -16,7 +16,7 @@ const Openable = {
 			const _open = () => {
 				if (Lib.isFunction(this._onBeforeOpen)) this._onBeforeOpen();
 				
-				document.addEventListener('click', this._openable_closeOnClick, false);
+				if (e) document.addEventListener('click', this._openable_closeOnClick, false);
 				this.setState({ isOpen: true });
 				this.trigger('opened');
 				

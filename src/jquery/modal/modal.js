@@ -25,6 +25,10 @@ let Modal = function Modal () {
 
 	this.template = $(template);
 
+	this.toggle = Openable.toggle.bind(this);
+	this.open = Openable.open.bind(this);
+	this.close = Openable.close.bind(this);
+
 	this._initialize(options);
 };
 
@@ -84,18 +88,6 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 
 	_onSecondaryClicked () {
 		this.element.trigger('secondary');
-	},
-
-	toggle () {
-		Openable.toggle.call(this);
-	},
-
-	open () {
-		Openable.open.call(this);
-	},
-
-	close () {
-		Openable.close.call(this);
 	},
 	
 	_onOpened () {
