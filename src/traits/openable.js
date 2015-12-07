@@ -4,11 +4,11 @@ import * as Lib from '../lib/lib';
 
 const Openable = {
 	open (e) {
+		if (e) {
+			e.originator = this;
+		}
+		
 		if (!this.getState('isOpen')) {
-			if (e) {
-				e.originator = this;
-			}
-			
 			if (!Lib.isFunction(this._openable_closeOnClick)) {
 				this._openable_closeOnClick = Openable.closeOnClick.bind(this);
 			}
