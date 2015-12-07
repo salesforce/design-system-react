@@ -78,12 +78,12 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 	_triggerCalendar (e) {
 		e.nativeEvent.originator = this;
-		if (!this.getState('isOpen')) this.open();
+		if (!this.state.isOpen) this.open();
 	},
 
 	_selectDate (date) {
-		const isRangeSelect = this.getProperty('multiSelect');
-		const selectedItems = this.getProperty('selection');
+		const isRangeSelect = this.props.multiSelect;
+		const selectedItems = this.props.selection;
 		let insertIndex = 1;
 
 		if (isRangeSelect) {
@@ -91,9 +91,9 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 				insertIndex = 0;
 			}
 
-			this.selectItem({ date: date.date }, insertIndex);
+			this.multiselectable.selectItem.call(this, { date: date.date }, selectedItems, insertIndex);
 		} else {
-			this.selectItem({ date: date.date });
+			this.multiselectable.selectItem.call(this, { date: date.date }, selectedItems);
 		}
 	},
 

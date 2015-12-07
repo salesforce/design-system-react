@@ -36,8 +36,8 @@ export const DataTableObject = {
 	},
 
 	_tableHeaders () {
-		const isRowSelect = this.getProperty('selectRows');
-		const columns = this.getProperty('columns');
+		const isRowSelect = this.props.selectRows;
+		const columns = this.props.columns;
 		const self = this;
 
 		if (isRowSelect && !(columns[0].propertyName === 'select')) {
@@ -96,10 +96,11 @@ export const DataTableObject = {
 	},
 
 	_tableItems () {
-		const isRowSelect = this.getProperty('selectRows');
+		const isRowSelect = this.props.selectRows;
+		const selection = this._getDataAdapter(this.props.selection);
 
 		return this._collection.map((item, index) => {
-			const isSelected = this._isItemSelected(item);
+			const isSelected = this.multiselectable.isItemSelected(item, selection);
 
 			return (
 				<DataTableItem

@@ -108,6 +108,7 @@ export const DataTableObject = {
 		const columns = this.getProperty('columns');
 		const isRowSelect = this.getProperty('selectRows');
 		const collectionForSort = sorted || this._collection;
+		const selection = this._getDataAdapter(this.getProperty('selection'));
 
 		if (isRowSelect && !(columns[0].propertyName === 'select')) {
 			columns.splice(0, 0, {
@@ -140,7 +141,7 @@ export const DataTableObject = {
 			});
 
 			if (isRowSelect) {
-				self._renderSelection($row, item);
+				self._renderSelection($row, item, selection);
 			}
 
 			$row.data({
@@ -152,7 +153,7 @@ export const DataTableObject = {
 	},
 
 	_renderSelection ($item, item, selection) {
-		const selected = this._isItemSelected(item, selection);
+		const selected = this.multiselectable.isItemSelected(item, selection);
 
 		$item.find('.slds-checkbox input').prop('checked', selected);
 	},
@@ -204,11 +205,21 @@ export const DataTableObject = {
 		this._renderCollection(sortedCollection);
 	},
 
-	_onSelected () {
-		this._renderCollection();
+	selectRow (item, index) {
+		this.multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+	},
+	
+	selectRows (items, index) {
+		this.multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
 	},
 
-	_onDeselected () {
+	_onSelect (selection) {
+		this.setProperties({ selection: selection._data });
+		this._renderCollection();
+	},
+	
+	_onDeselect (selection) {
+		this.setProperties({ selection: selection._data });
 		this._renderCollection();
 	},
 	
@@ -217,19 +228,7 @@ export const DataTableObject = {
 	}
 };
 
-// LEGACY METHODS
-
-const legacyMethods = {
-	selectedItems () {
-		const selection = this._getSelectedItems();
-
-		return selection.get();
-	}
-};
-
 Lib.merge(DataTable.prototype, DataTableCore, Events, DOM, State, DataTableObject);
-DataTable = Lib.runHelpers('jquery', CONTROL, DataTable, {
-	legacyMethods
-});
+DataTable = Lib.runHelpers('jquery', CONTROL, DataTable);
 
 export default DataTable;
