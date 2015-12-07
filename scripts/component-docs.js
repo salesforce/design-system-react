@@ -3,9 +3,17 @@ var fs = require('fs');
 var path = require('path');
 
 var componentNames = [
-  'SLDSTooltip',
-  'SLDSLookup',
-  'SLDSPicklistBase'
+  'SLDSButton',
+  //'SLDSButtonGroup',
+  //'SLDSDateInput',
+  //'SLDSDropdownBase',
+  //'SLDSGrid',
+  //'SLDSIcons',
+  //'SLDSLookup',
+  //'SLDSNotification',
+  //'SLDSPicklistBase',
+  //'SLDSTooltip',
+  //'SLDSUtilityIcon',
 ];
 
 var output = {};

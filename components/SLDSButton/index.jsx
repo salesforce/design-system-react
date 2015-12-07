@@ -33,6 +33,9 @@ const propTypes = {
 };
 const defaultProps = {};
 
+/**
+ * General component description.
+ */
 
 class SLDSButton extends React.Component {
 

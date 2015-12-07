@@ -1,126 +1,38 @@
 {
-    "SLDSTooltip": {
-        "description": "",
-        "displayName": "SLDSToolip",
+    "SLDSButton": {
+        "description": "General component description.",
+        "displayName": "SLDSButton",
         "props": {
-            "align": {
+            "assistiveText": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "'top'",
-                    "computed": false
-                }
+                "description": ""
             },
-            "children": {
+            "buttonSize": {
                 "type": {
-                    "name": "node"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
             },
-            "content": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "<span>Tooltip</span>",
-                    "computed": false
-                }
-            },
-            "hoverCloseDelay": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "350",
-                    "computed": false
-                }
-            },
-            "openByDefault": {
+            "disabled": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "openOn": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "'hover'",
-                    "computed": false
-                }
-            }
-        }
-    },
-    "SLDSLookup": {
-        "description": "",
-        "props": {
-            "items": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
                 "description": ""
             },
-            "emptyMessage": {
+            "hint": {
                 "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "messages": {
-                "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "string"
-                    }
-                },
-                "required": false,
-                "description": ""
-            },
-            "errors": {
-                "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "string"
-                    }
-                },
-                "required": false,
-                "description": ""
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "type": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "iconCategory": {
-                "type": {
-                    "name": "string"
+                    "name": "bool"
                 },
                 "required": false,
                 "description": ""
@@ -132,94 +44,88 @@
                 "required": false,
                 "description": ""
             },
-            "filterWith": {
+            "iconPosition": {
                 "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
-                    "computed": false
-                }
-            },
-            "onItemSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "onItemUnselect": {
-                "type": {
-                    "name": "func"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
             },
-            "onChange": {
+            "iconSize": {
                 "type": {
-                    "name": "func"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"x-small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"medium\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
             },
-            "onBlur": {
+            "iconVariant": {
                 "type": {
-                    "name": "func"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"bare\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"container\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"border\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"border-filled\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"more\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
             },
-            "modal": {
+            "label": {
                 "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "hasError": {
-                "type": {
-                    "name": "bool"
+                    "name": "string"
                 },
                 "required": false,
                 "description": ""
             },
-            "boldRegex": {
-                "type": {
-                    "name": "instanceOf",
-                    "value": "RegExp"
-                },
-                "required": false,
-                "description": ""
-            },
-            "listItemLabelRenderer": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            }
-        }
-    },
-    "SLDSPicklistBase": {
-        "description": "",
-        "props": {
             "onClick": {
                 "type": {
                     "name": "func"
@@ -227,85 +133,56 @@
                 "required": false,
                 "description": ""
             },
-            "onSelect": {
+            "responsive": {
                 "type": {
-                    "name": "func"
-                },
-                "required": true,
-                "description": ""
-            },
-            "onUpdateHighlighted": {
-                "type": {
-                    "name": "func"
+                    "name": "bool"
                 },
                 "required": false,
                 "description": ""
             },
-            "placeholder": {
-                "defaultValue": {
-                    "value": "'Select an Option'",
-                    "computed": false
-                }
+            "tabindex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
             },
-            "disabled": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "theme": {
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
-            },
-            "label": {
-                "defaultValue": {
-                    "value": "'Picklist'",
-                    "computed": false
-                }
-            },
-            "value": {
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
-            },
-            "options": {
-                "defaultValue": {
-                    "value": "[]",
-                    "computed": false
-                }
-            },
-            "initialFocus": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "modal": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "className": {
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
-            },
-            "listClassName": {
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
-            },
-            "listItemRenderer": {
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
             }
         }
     }
