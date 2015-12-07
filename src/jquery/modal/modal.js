@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import ModalCore, {CONTROL} from '../../core/modal';
 
+// Traits
+import Openable from '../../traits/openable';
+
 // Framework Specific
 import DOM from '../dom';
 import Events from '../events';
@@ -56,7 +59,7 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 			headerTitle: this._props.headerText,
 			headerTextSize: this._props.headerTextSize,
 			headerTagline: this._props.headerTagline,
-			closeClicked: $.proxy(this.close, this)
+			closeClicked: Openable.close.bind(this)
 		}));
 
 		this.element.find('.' + this.cssClasses.FOOT).append(this._props.renderFooter({
@@ -84,34 +87,30 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	},
 
 	toggle () {
-		const isOpen = this.getProperty('isOpen');
-
-		if (isOpen) {
-			this.close();
-		} else {
-			this.open();
-		}
+		Openable.toggle.call(this);
 	},
 
 	open () {
-		this.elements.modal.addClass(this.cssClasses.OPEN);
-		this.elements.backdrop.addClass(this.cssClasses.OPENBACKDROP);
-		this.setProperties({
-			isOpen: true
-		});
+		Openable.open.call(this);
 	},
 
 	close () {
+		Openable.close.call(this);
+	},
+	
+	_onOpened () {
+		this.elements.modal.addClass(this.cssClasses.OPEN);
+		this.elements.backdrop.addClass(this.cssClasses.OPENBACKDROP);
+	},
+	
+	_onClosed () {
 		this.elements.modal.removeClass(this.cssClasses.OPEN);
 		this.elements.backdrop.removeClass(this.cssClasses.OPENBACKDROP);
-		this.setProperties({
-			isOpen: false
-		});
 	},
 
 	_clickOutClose (e) {
 		if (this.backgroundClicked(e.target)) {
-			this.close();
+			Openable.close.call(this);
 		}
 	}
 });

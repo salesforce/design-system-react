@@ -2,6 +2,9 @@
 
 import * as Lib from '../lib/lib';
 
+// Traits
+import Openable from './openable';
+
 const KeyBuffer = function () {
 	const self = this;
 	this.buffer = '';
@@ -59,9 +62,9 @@ const KeyboardNavigable = {
 		let focusedSelection;
 		
 		if (/(Escape)/.test(input)) {
-			if (isOpen && Lib.isFunction(this.close)) this.close();
-		} else if (!isOpen && Lib.isFunction(this.open)) {
-			this.open();
+			if (isOpen) Openable.close.call(this);
+		} else if (!isOpen) {
+			Openable.open.call(this);
 		} else if (/(Enter)/.test(input)) {
 			focusedSelection = this.getState('focusedSelection');
 

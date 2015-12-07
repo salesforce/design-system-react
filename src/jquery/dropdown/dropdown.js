@@ -23,7 +23,6 @@ let Dropdown = function Dropdown () {
 	const options = this._getOptions(arguments);
 	
 	this.template = $(template);
-	this._closeOnClick = $.proxy(this._closeOnClick, this);
 	
 	this._initialize(options);
 };
@@ -73,11 +72,15 @@ export const DropdownObject = {
 		}
 	},
 	
-	_onExpandOrCollapse () {
+	_onOpened () {
 		if (this.rendered) {
-			const isOpen = this.getState('isOpen');
-			
-			this.elements.trigger.attr('aria-expanded', isOpen);
+			this.elements.trigger.attr('aria-expanded', true);
+		}
+	},
+	
+	_onClosed () {
+		if (this.rendered) {
+			this.elements.trigger.attr('aria-expanded', false);
 		}
 	},
 

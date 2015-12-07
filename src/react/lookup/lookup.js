@@ -13,6 +13,7 @@ import LookupCore, {CONTROL} from '../../core/lookup';
 
 // Traits
 import Multiselectable from '../../traits/multiselectable';
+import Openable from '../../traits/openable';
 
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
@@ -247,12 +248,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 	// Clicking on the input should open the menu.
 	_handleClicked (e) {
-		if (e) {
-			// The input should automatically close if we click anywhere outside of it, so we need to flag the events that originate at the control itself and stop them from closing it.
-			e.nativeEvent.originator = this;
-		}
-		
-		this.open();
+		Openable.open.call(this, e.nativeEvent);
 	},
 	
 	_handleSelect (item) {
@@ -282,7 +278,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this._keyboardNav(e.key, this._keyboardSelect, this.state.searchResults);
 		// Also listen for character key presses an ensure that the menu it open while typing in the input, but don't actually trap them.
 		} else if (e.key.length === 1) {
-			if (!this.state.isOpen) this.open();
+			Openable.open.call(this);
 		}
 	}
 });

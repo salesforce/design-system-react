@@ -20,7 +20,6 @@ let Combobox = function Combobox () {
 	const options = this._getOptions(arguments);
 	
 	this.template = $(template);
-	this._closeOnClick = $.proxy(this._closeOnClick, this);
 	
 	this._initialize(options);
 };

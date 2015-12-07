@@ -6,6 +6,7 @@ import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
 // Traits
 import Multiselectable from '../../traits/multiselectable';
+import Openable from '../../traits/openable';
 
 // Framework specific
 import React from 'react';
@@ -80,8 +81,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	},
 
 	_triggerCalendar (e) {
-		e.nativeEvent.originator = this;
-		if (!this.state.isOpen) this.open();
+		Openable.open.call(this, e.nativeEvent);
 	},
 
 	_selectDate (date) {

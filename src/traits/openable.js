@@ -3,61 +3,63 @@
 import * as Lib from '../lib/lib';
 
 const Openable = {
-	cssClasses: {
-		OPEN: 'open',
-		SHOWING: 'showing'
-	},
-	
-	_defaultState: {
-		isOpen: false
-	},
-
-	open () {
-		const _open = Lib.bind(function _open () {
-			this.setState({ isOpen: true });
-			if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse(true);
-	
-			document.addEventListener('click', this._closeOnClick, false);
-			this.trigger('opened');
-		}, this);
-		
-		if (!Lib.isFunction(this._canOpen)) {
-			_open();
-		} else {
-			this._canOpen(_open);
+	open (e) {
+		if (!this.getState('isOpen')) {
+			if (e) {
+				e.originator = this;
+			}
+			
+			if (!Lib.isFunction(this._openable_closeOnClick)) {
+				this._openable_closeOnClick = Openable.closeOnClick.bind(this);
+			}
+			
+			const _open = () => {
+				if (Lib.isFunction(this._onBeforeOpen)) this._onBeforeOpen();
+				
+				document.addEventListener('click', this._openable_closeOnClick, false);
+				this.setState({ isOpen: true });
+				this.trigger('opened');
+				
+				if (Lib.isFunction(this._onOpened)) this._onOpened();
+			};
+			
+			if (!Lib.isFunction(this._canOpen)) {
+				_open();
+			} else {
+				this._canOpen(_open);
+			}
 		}
 	},
 
 	close () {
-		this.setState({ isOpen: false });
-		if (Lib.isFunction(this._onExpandOrCollapse)) this._onExpandOrCollapse(false);
-
-		document.removeEventListener('click', this._closeOnClick, false);
-		this.trigger('closed');
-	},
-	
-	_openToggleEvent (e) {
-		if (e) {
-			e.originator = this;
-		}
-		
-		if (!this.getProperty('disabled')) {
-			if (this.getState('isOpen')) {
-				this.close();
-			} else {
-				this.open();
-			}
+		if (this.getState('isOpen')) {
+			if (Lib.isFunction(this._onBeforeClose)) this._onBeforeClose();
+			
+			if (Lib.isFunction(this._openable_closeOnClick)) document.removeEventListener('click', this._openable_closeOnClick, false);
+			this.setState({ isOpen: false });
+			this.trigger('closed');
+			
+			if (Lib.isFunction(this._onClosed)) this._onClosed();
 		}
 	},
 	
-	_closeOnClick (e) {
+	toggle (e) {
+		if (this.getState('isOpen')) {
+			Openable.close.call(this);
+		} else {
+			Openable.open.call(this, e);
+		}
+	},
+	
+	closeOnClick (e) {
 		if (!e || e.originator !== this) {
-			this.close();
+			Openable.close.call(this);
 		}
 	},
 	
+	/* TODO: We need a new way to automatically do this now that we don't have this lifecycle event to hook into */
 	_onDestroy () {
-		document.removeEventListener('click', this._closeOnClick, false);
+		document.removeEventListener('click', this._openable_closeOnClick, false);
 	}
 };
 

@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import PicklistCore, {CONTROL} from '../../core/picklist';
 
+// Traits
+import Openable from '../../traits/openable';
+
 // Framework specific
 import React from 'react';
 import State from '../mixins/state';
@@ -61,11 +64,11 @@ export const PicklistObject = {
 
 	_handleMenuItemSelected (selection) {
 		this.setSelection(selection);
-		this.close();
+		Openable.close.call(this);
 	},
 
 	_handleClicked (e) {
-		this._openToggleEvent(e.nativeEvent);
+		Openable.toggle.call(this, e.nativeEvent);
 	},
 
 	_handleKeyPressed (e) {
