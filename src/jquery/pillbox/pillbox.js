@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import PillboxCore, {CONTROL} from '../../core/pillbox';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework Specific
 import DOM from '../dom';
 import Events from '../events';
@@ -62,16 +65,16 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		const item = $(e.currentTarget).parent().data('item');
 
 		if (!this.getProperty('disabled')) {
-			this.multiselectable.deselectItem.call(this, item, this.getProperty('selection'));
+			Multiselectable.deselectItem.call(this, item, this.getProperty('selection'));
 		}
 	},
 
 	selectPill (item, index) {
-		this.multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+		Multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
 	},
 	
 	selectPills (items, index) {
-		this.multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
+		Multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
 	},
 
 	_onSelect (selection) {

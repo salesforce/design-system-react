@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework specific
 import React from 'react';
 import State from '../mixins/state';
@@ -91,9 +94,9 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 				insertIndex = 0;
 			}
 
-			this.multiselectable.selectItem.call(this, { date: date.date }, selectedItems, insertIndex);
+			Multiselectable.selectItem.call(this, { date: date.date }, selectedItems, insertIndex);
 		} else {
-			this.multiselectable.selectItem.call(this, { date: date.date }, selectedItems);
+			Multiselectable.selectItem.call(this, { date: date.date }, selectedItems);
 		}
 	},
 
