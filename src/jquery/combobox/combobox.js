@@ -44,7 +44,7 @@ export const ComboboxObject = {
 	_bindUIEvents () {
 		this.elements.button.on('click', $.proxy(this._handleClicked, this));
 		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
-		this.elements.input.on('change', $.proxy(this._handleChanged, this)).on('click', function (e) {e.stopPropagation();});
+		this.elements.input.on('change', $.proxy(this._handleChanged, this));
 		// TODO: Find the right element for these keypress triggers
 		this.elements.dropdown.on('keydown', $.proxy(this._handleKeyDown, this));
 		this.elements.dropdown.on('keypress', $.proxy(this._handleKeyPressed, this));
