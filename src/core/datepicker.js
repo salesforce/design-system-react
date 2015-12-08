@@ -9,13 +9,12 @@ import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
-import Openable from '../traits/openable';
 import Multiselectable from '../traits/multiselectable';
 import Positionable from '../traits/positionable';
 
 export const CONTROL = 'Datepicker';
 
-const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, Positionable, {
+const DatepickerCore = Lib.merge({}, Base, Disableable, Multiselectable, Positionable, {
 	CONTROL,
 	
 	// CSS classes used within this control

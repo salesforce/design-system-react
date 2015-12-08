@@ -7,12 +7,9 @@ import * as Lib from '../lib/lib';
 // Inherit from the [base control](base.html).
 import Base from './base';
 
-// Traits
-import Openable from '../traits/openable';
-
 export const CONTROL = 'Picker';
 
-const PickerCore = Lib.merge({}, Base, Openable, {
+const PickerCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	// CSS classes used within this control

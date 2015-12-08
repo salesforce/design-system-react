@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import PicklistCore, {CONTROL} from '../../core/picklist';
 
+// Traits
+import Openable from '../../traits/openable';
+
 // Framework specific
 import React from 'react';
 import State from '../mixins/state';
@@ -54,18 +57,18 @@ export const PicklistObject = {
 					<span className="slds-truncate">{selectionName}</span>
 					<Svg className="slds-icon" icon="utility.down" />
 				</Button>
-				<PicklistItems id={this._getMenuId()} labelledBy={triggerId} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
+				<PicklistItems id={this._getMenuId()} labelledBy={triggerId} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={!!this.state.isOpen} onSelected={this._handleMenuItemSelected} />
 			</div>
 		);
 	},
 
 	_handleMenuItemSelected (selection) {
 		this.setSelection(selection);
-		this.close();
+		Openable.close(this);
 	},
 
 	_handleClicked (e) {
-		this._openToggleEvent(e.nativeEvent);
+		Openable.toggle(this, e.nativeEvent);
 	},
 
 	_handleKeyPressed (e) {
