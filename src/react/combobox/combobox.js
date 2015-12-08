@@ -69,7 +69,7 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 			e.preventDefault();
 			this._keyboardNav(e.key, this.setSelection);
 		} else if (e.key.length === 1) {
-			Openable.open.call(this);
+			Openable.open(this);
 			this.elements.input[0].focus();
 		}
 	}

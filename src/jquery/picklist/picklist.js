@@ -200,7 +200,7 @@ export const PicklistObject = {
 
 	_handleClicked (e) {
 		e.stopPropagation();
-		Openable.toggle.call(this, e.originalEvent);
+		Openable.toggle(this, e.originalEvent);
 	},
 
 	_handleMenuItemSelected (e) {
@@ -212,7 +212,7 @@ export const PicklistObject = {
 
 		if (!$li.prop('disabled')) {
 			this.setSelection($li.data('item'));
-			Openable.close.call(this);
+			Openable.close(this);
 		}
 	},
 

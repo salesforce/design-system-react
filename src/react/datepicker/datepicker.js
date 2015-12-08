@@ -81,7 +81,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	},
 
 	_triggerCalendar (e) {
-		Openable.open.call(this, e.nativeEvent);
+		Openable.open(this, e.nativeEvent);
 	},
 
 	_selectDate (date) {

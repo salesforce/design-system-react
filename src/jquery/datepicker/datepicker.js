@@ -132,7 +132,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_triggerCalendar (e) {
-		Openable.open.call(this, e.originalEvent);
+		Openable.open(this, e.originalEvent);
 	},
 
 	_cancelEventProp (e) {

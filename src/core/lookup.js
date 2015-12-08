@@ -75,7 +75,7 @@ const LookupCore = Lib.merge({}, Base, Disableable, Positionable, KeyboardNaviga
 	
 	_onSelected () {
 		this.search('');
-		Openable.close.call(this);
+		Openable.close(this);
 	},
 	
 	_onClosed () {

@@ -131,6 +131,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 		if (this.props.modalMenu) {
 			this.removePositionableEventListeners('isOpen');
 		}
+		
+		Openable.removeEventListeners(this);
 	},
 
 	// While some functionality moves into the core or traits, each facade typically provides its own rendering logic so that it can take advantage of the benefits offered by the framework and maintain appropriate patterns for that framework.
@@ -248,7 +250,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 	// Clicking on the input should open the menu.
 	_handleClicked (e) {
-		Openable.open.call(this, e.nativeEvent);
+		Openable.open(this, e.nativeEvent);
 	},
 	
 	_handleSelect (item) {
@@ -278,7 +280,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this._keyboardNav(e.key, this._keyboardSelect, this.state.searchResults);
 		// Also listen for character key presses an ensure that the menu it open while typing in the input, but don't actually trap them.
 		} else if (e.key.length === 1) {
-			Openable.open.call(this);
+			Openable.open(this);
 		}
 	}
 });

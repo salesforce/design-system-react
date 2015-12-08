@@ -64,11 +64,11 @@ export const PicklistObject = {
 
 	_handleMenuItemSelected (selection) {
 		this.setSelection(selection);
-		Openable.close.call(this);
+		Openable.close(this);
 	},
 
 	_handleClicked (e) {
-		Openable.toggle.call(this, e.nativeEvent);
+		Openable.toggle(this, e.nativeEvent);
 	},
 
 	_handleKeyPressed (e) {

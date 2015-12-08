@@ -25,9 +25,9 @@ let Modal = function Modal () {
 
 	this.template = $(template);
 
-	this.toggle = Openable.toggle.bind(this);
-	this.open = Openable.open.bind(this);
-	this.close = Openable.close.bind(this);
+	this.toggle = Openable.toggle.bind(undefined, this);
+	this.open = Openable.open.bind(undefined, this);
+	this.close = Openable.close.bind(undefined, this);
 
 	this._initialize(options);
 };
@@ -63,14 +63,14 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 			headerTitle: this._props.headerText,
 			headerTextSize: this._props.headerTextSize,
 			headerTagline: this._props.headerTagline,
-			closeClicked: Openable.close.bind(this)
+			closeClicked: this.close
 		}));
 
 		this.element.find('.' + this.cssClasses.FOOT).append(this._props.renderFooter({
 			primaryText: this._props.primaryButtonText,
 			secondaryText: this._props.secondaryButtonText,
-			primaryClicked: $.proxy(this._onPrimaryClicked, this),
-			secondaryClicked: $.proxy(this._onSecondaryClicked, this)
+			primaryClicked: this._onPrimaryClicked.bind(this),
+			secondaryClicked: this._onSecondaryClicked.bind(this)
 		}));
 
 		this.element.find('.' + this.cssClasses.CONTENT).append($content);
@@ -102,7 +102,7 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 
 	_clickOutClose (e) {
 		if (this.backgroundClicked(e.target)) {
-			Openable.close.call(this);
+			Openable.close(this);
 		}
 	}
 });

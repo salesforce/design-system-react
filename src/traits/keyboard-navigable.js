@@ -62,9 +62,9 @@ const KeyboardNavigable = {
 		let focusedSelection;
 		
 		if (/(Escape)/.test(input)) {
-			if (isOpen) Openable.close.call(this);
+			if (isOpen) Openable.close(this);
 		} else if (!isOpen) {
-			Openable.open.call(this);
+			Openable.open(this);
 		} else if (/(Enter)/.test(input)) {
 			focusedSelection = this.getState('focusedSelection');
 
