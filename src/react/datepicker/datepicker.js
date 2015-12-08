@@ -94,9 +94,9 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 				insertIndex = 0;
 			}
 
-			Multiselectable.selectItem.call(this, { date: date.date }, selectedItems, insertIndex);
+			Multiselectable.selectItem(this, { date: date.date }, selectedItems, insertIndex);
 		} else {
-			Multiselectable.selectItem.call(this, { date: date.date }, selectedItems);
+			Multiselectable.selectItem(this, { date: date.date }, selectedItems);
 		}
 	},
 

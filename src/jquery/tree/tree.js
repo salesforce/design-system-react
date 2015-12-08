@@ -90,9 +90,9 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		// When folder selection is allowed...
 		if (branchSelect) {
 			// Branch name clicks act like item clicks
-			this.element.on('click.fu.slds-tree', '.slds-tree__item', $.proxy(this._handleItemClicked, this));
+			this.element.on('click.fu.slds-tree', '.slds-tree__item', this._handleItemClicked.bind(this));
 		} else {
-			this.element.on('click.fu.slds-tree', '.slds-tree__item', $.proxy(this._handleBranchClicked, this));
+			this.element.on('click.fu.slds-tree', '.slds-tree__item', this._handleBranchClicked.bind(this));
 		}
 	},
 	
@@ -193,7 +193,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_onRendered () {
 		this._configureBranchSelect();
 
-		this.element.on('click.fu.slds-tree', 'li.slds-tree__item', $.proxy(this._handleItemClicked, this));
+		this.element.on('click.fu.slds-tree', 'li.slds-tree__item', this._handleItemClicked.bind(this));
 	},
 
 	_loopChildren (children, $el, level) {
@@ -244,15 +244,15 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 
 	_handleItemClicked ($event) {
 		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
-		Multiselectable.toggleItem.call(this, $el.data('item'), this.getProperty('selection'));
+		Multiselectable.toggleItem(this, $el.data('item'), this.getProperty('selection'));
 	},
 
 	selectItem (item, index) {
-		Multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
 	},
 	
 	selectItems (items, index) {
-		Multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
+		Multiselectable.selectItems(this, items, this.getProperty('selection'), index);
 	},
 
 	_onSelect (selection) {

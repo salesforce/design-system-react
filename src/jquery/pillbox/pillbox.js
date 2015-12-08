@@ -35,7 +35,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	},
 	
 	_bindUIEvents () {
-		this.element.on('click.fu.tree', '.slds-pill > .slds-button', $.proxy(this._itemClicked, this));
+		this.element.on('click.fu.tree', '.slds-pill > .slds-button', this._itemClicked.bind(this));
 	},
 
 	_render () {
@@ -65,16 +65,16 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		const item = $(e.currentTarget).parent().data('item');
 
 		if (!this.getProperty('disabled')) {
-			Multiselectable.deselectItem.call(this, item, this.getProperty('selection'));
+			Multiselectable.deselectItem(this, item, this.getProperty('selection'));
 		}
 	},
 
 	selectPill (item, index) {
-		Multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
 	},
 	
 	selectPills (items, index) {
-		Multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
+		Multiselectable.selectItems(this, items, this.getProperty('selection'), index);
 	},
 
 	_onSelect (selection) {
