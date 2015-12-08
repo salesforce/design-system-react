@@ -45,7 +45,8 @@ const TreeCore = Lib.merge({}, Base, Disableable, {
 
 		// Proxy this call to the public accessor to ensure that we always receive a promise wrapped in a Data Adapter
 		_getChildren (item) {
-			return Promise.resolve(item.getChildren()).then(this._getDataAdapter.bind(this));
+			/* TODO: Right now we are using `Lib.bind` here to avoid React yelling about double-binding this function. A better solition should be found */
+			return Promise.resolve(item.getChildren()).then(Lib.bind(this._getDataAdapter, this));
 		},
 
 		// Return the type of the current node - either 'folder' (for branches) or 'item'.
