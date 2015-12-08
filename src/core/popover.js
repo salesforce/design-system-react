@@ -36,7 +36,16 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 		trigger: 'click',
 		target: null, // The element who's events will trigger the popover
 		container: null, // The element the popover will be contained within
-		alignmentTarget: null // The element the popover will be aligned with
+		alignmentTarget: null, // The element the popover will be aligned with
+
+		// positionable trait
+		constrainPositionedToWindow: true,
+		constrainWidthToTarget: false,
+		positionedTargetVerticalAttachment: 'right',	// default for popover
+		positionedOffset: 15,	// default for popover
+		positionedTargetHorizontalAttachment: 'left', // center, left. default for popover
+		positionedZIndex: '10001',
+		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
 	},
 	
 	_defaultState: {
@@ -44,7 +53,7 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Disableable, Hideable, {
 	},
 	
 	_getClassNames () {
-		const positionClass = this.cssClasses.NUBBIN[this.currentTargetAttachment];
+		const positionClass = this.positionable.cssClasses.NUBBIN[this.currentTargetAttachment];
 		const hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
 
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass, hiddenClass);

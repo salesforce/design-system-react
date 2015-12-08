@@ -96,7 +96,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		});
 		
 		// `_attachPositionedElementToBody` creates an absolutely positionable container for the dropdown menu from within the [positionable trait]((../../traits/Positionable.html)).
-		this._attachPositionedElementToBody();
+		this.elements.positionableElement = this.positionable._attachPositionedElementToBody();
 	},
 
 	componentWillReceiveProps (nextProps) {
@@ -119,13 +119,13 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 	componentDidMount () {
 		if (this.props.modalMenu) {
-			this.addPositionableEventListeners('isOpen');
+			this.positionable.addPositionableEventListeners('isOpen', this);
 		}
 	},
 
 	componentWillUnmount () {
 		if (this.props.modalMenu) {
-			this.removePositionableEventListeners('isOpen');
+			this.positionable.removePositionableEventListeners('isOpen', this);
 		}
 	},
 
@@ -202,7 +202,10 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 		this.elements.positionableContainer = Lib.wrapElement(document.querySelector('body'));
 		this.elements.positionableTarget = Lib.wrapElement(this.elements.input);
-		this._updatePosition();
+		this.positionable._updatePosition.call(this,
+			this.elements.positionableElement,
+			this.elements.positionableContainer,
+			this.elements.positionableTarget);
 
 		if (!this.state.isOpen) {
 			this.elements.positionableElement.addClass('slds-hidden');

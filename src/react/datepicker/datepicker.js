@@ -73,7 +73,10 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	},
 
 	componentDidUpdate () {
-		this._updatePosition();
+		this.positionable._updatePosition.call(this,
+			this.elements.positionableElement,
+			this.elements.positionableContainer,
+			this.elements.positionableTarget);
 	},
 
 	_triggerCalendar (e) {

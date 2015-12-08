@@ -34,8 +34,11 @@ export const PopoverMethods = {
 		
 		// TODO: This is probably not the best way to do this or the best place for it to be
 		this.appendTo(this.elements.positionableContainer);
-		
-		this._updatePosition();
+
+		this.positionable._updatePosition.call(this,
+			this.elements.positionableElement,
+			this.elements.positionableContainer,
+			this.elements.positionableTarget);
 	},
 
 	_setElements () {
@@ -63,11 +66,17 @@ export const PopoverMethods = {
 	},
 	
 	_onShow () {
-		this._updatePosition();
+		this.positionable._updatePosition.call(this,
+			this.elements.positionableElement,
+			this.elements.positionableContainer,
+			this.elements.positionableTarget);
 	},
 	
 	_onHide () {
-		this._updatePosition();
+		this.positionable._updatePosition.call(this,
+			this.elements.positionableElement,
+			this.elements.positionableContainer,
+			this.elements.positionableTarget);
 	}
 };
 

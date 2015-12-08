@@ -120,7 +120,10 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	
 	_onExpandOrCollapse () {
 		this.elements.datepicker.toggleClass('slds-hidden', !this.getState('isOpen'));
-		this._updatePosition();
+		this.positionable._updatePosition.call(this,
+			this.elements.positionableElement,
+			this.elements.positionableContainer,
+			this.elements.positionableTarget);
 	},
 
 	_triggerCalendar (e) {

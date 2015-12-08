@@ -19,7 +19,7 @@ export const PopoverMethods = {
 		alignmentTarget: mountable,
 		autoFlip: React.PropTypes.bool,
 		container: mountable,
-		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions)),
+		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.positionable.attatchmentOptions)),
 		trigger: React.PropTypes.oneOf(Object.keys(PopoverCore.triggers))
 	},
 
@@ -42,7 +42,10 @@ export const PopoverMethods = {
 	},
 
 	componentDidUpdate () {
-		this._updatePosition();
+		this.positionable._updatePosition.call(this,
+			this.elements.positionableElement,
+			this.elements.positionableContainer,
+			this.elements.positionableTarget);
 	}
 };
 

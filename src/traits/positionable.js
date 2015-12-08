@@ -4,18 +4,9 @@
 
 import * as Lib from '../lib/lib';
 
-const Positionable = {
+const positionable = {
 	/* TODO: Implement scrolling parent "autoflip" via `constrainTargetToScrollingParent: true`. */
 	/* TODO: The following properties/options may need to be an object in order to remove `positioned` prefix. */
-	_defaultProperties: {
-		constrainPositionedToWindow: true,
-		constrainWidthToTarget: false,
-		positionedTargetVerticalAttachment: 'right',	// default for popover
-		positionedOffset: 15,	// default for popover
-		positionedTargetHorizontalAttachment: 'left', // center, left. default for popover
-		positionedZIndex: '10001',
-		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
-	},
 
 	// A nubbin is the small arrow on the side of tooltips and popovers and face the triggering target element.
 	cssClasses: {
@@ -39,38 +30,46 @@ const Positionable = {
 	_attachPositionedElementToBody () {
 		const element = document.createElement('div');
 		document.querySelector('body').appendChild(element);
-		this.elements.positionableElement = Lib.wrapElement(element);
+		return Lib.wrapElement(element);
 	},
 
 	// `addPositionableEventListeners` should be added at the beginning of the control's lifecycle in order to reposition based on browser events. The `stateKey` is an key into the state object to determine if the event handle should run the calculations to reposition the positionable element.
-	addPositionableEventListeners (stateKey) {
+	addPositionableEventListeners (stateKey, controlContext) {
+		// return stateKey;
 		window.addEventListener('resize', () => {
-			this._handleResizeForPositionable(stateKey);
+			this._handleResizeForPositionable(stateKey, controlContext);
 		});
 		window.addEventListener('scroll', () => {
-			this._handleScrollForPositionable(stateKey);
+			this._handleScrollForPositionable(stateKey, controlContext);
 		});
 	},
 
 	// `removePositionableEventListeners` should be removed at the end of the control's lifecycle.
-	removePositionableEventListeners (stateKey) {
+	removePositionableEventListeners (stateKey, controlContext) {
+		// return stateKey;
 		window.removeEventListener('resize', () => {
-			this._handleResizeForPositionable(stateKey);
+			this._handleResizeForPositionable(stateKey, controlContext);
 		});
 		window.removeEventListener('scroll', () => {
-			this._handleScrollForPositionable(stateKey);
+			this._handleScrollForPositionable(stateKey, controlContext);
 		});
 	},
 
-	_handleResizeForPositionable (stateKey) {
-		if (this.getState(stateKey)) {
-			this._updatePosition();
+	_handleResizeForPositionable (stateKey, controlContext) {
+		if (controlContext.getState(stateKey)) {
+			controlContext.positionable._updatePosition.call(controlContext,
+				controlContext.elements.positionableElement,
+				controlContext.elements.positionableContainer,
+				controlContext.elements.positionableTarget);
 		}
 	},
 
-	_handleScrollForPositionable (stateKey) {
-		if (this.getState(stateKey)) {
-			this._updatePosition();
+	_handleScrollForPositionable (stateKey, controlContext) {
+		if (controlContext.getState(stateKey)) {
+			controlContext.positionable._updatePosition.call(controlContext,
+				controlContext.elements.positionableElement,
+				controlContext.elements.positionableContainer,
+				controlContext.elements.positionableTarget);
 		}
 	},
 
@@ -158,17 +157,20 @@ const Positionable = {
 		}
 	},
 	
-	_updatePosition () {
-		this._setElementStyles(
-			this._getElementStyles(
-				this.elements.positionableElement,
-				this.elements.positionableContainer,
-				this.elements.positionableTarget
-				)
-			);
+	_updatePosition (positionableElement, positionableContainer, positionableTarget) {
+		// multiselectable._selectItems.call(this, this._getDataAdapter(items), index);
+		positionable._setElementStyles.call(
+			this,
+			this.positionable._getElementStyles.call(
+				this,
+				positionableElement,
+				positionableContainer,
+				positionableTarget
+			)
+		);
 		
 		if (this.getProperty('constrainPositionedToWindow')) {
-			const isOffscreen = this.elements.positionableElement.isOffscreen(true);
+			const isOffscreen = positionableElement.isOffscreen(true);
 			let targetAttachment;
 
 			if (isOffscreen === 'top') {
@@ -177,11 +179,13 @@ const Positionable = {
 				targetAttachment = 'top';
 			}
 
-			this._setElementStyles(
-				this._getElementStyles(
-					this.elements.positionableElement,
-					this.elements.positionableContainer,
-					this.elements.positionableTarget,
+			positionable._setElementStyles.call(
+				this,
+				this.positionable._getElementStyles.call(
+					this,
+					positionableElement,
+					positionableContainer,
+					positionableTarget,
 					targetAttachment
 				)
 			);
@@ -189,4 +193,7 @@ const Positionable = {
 	}
 };
 
-export default Positionable;
+export default {
+	positionable,
+	key: 'positionable'
+};
