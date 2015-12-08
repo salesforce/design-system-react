@@ -35,7 +35,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	},
 	
 	_bindUIEvents () {
-		this.element.on('click.fu.tree', '.slds-pill > .slds-button', $.proxy(this._itemClicked, this));
+		this.element.on('click.fu.tree', '.slds-pill > .slds-button', this._itemClicked.bind(this));
 	},
 
 	_render () {

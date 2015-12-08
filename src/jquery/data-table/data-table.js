@@ -38,11 +38,11 @@ export const DataTableObject = {
 	},
 	
 	_bindUIEvents () {
-		this.element.on('click.slds-table', '.slds-is-sortable', $.proxy(this._toggleSort, this));
+		this.element.on('click.slds-table', '.slds-is-sortable', this._toggleSort.bind(this));
 
 		if (this.getProperty('selectRows')) {
-			this.element.on('click.slds-table', 'tbody > tr', $.proxy(this._toggleItem, this));
-			this.element.on('click.slds-table', 'thead .slds-checkbox', $.proxy(this._toggleAllItems, this));
+			this.element.on('click.slds-table', 'tbody > tr', this._toggleItem.bind(this));
+			this.element.on('click.slds-table', 'thead .slds-checkbox', this._toggleAllItems.bind(this));
 		}
 	},
 	
