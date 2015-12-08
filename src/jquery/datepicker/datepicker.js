@@ -55,10 +55,6 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this.elements.monthName = this.$el.find('.slds-datepicker__filter--month h2');
 		this.elements.year = this.$el.find('.slds-datepicker__filter .slds-picklist');
 
-		this.elements.positionableElement = Lib.wrapElement(this.elements.datepicker);
-		this.elements.positionableContainer = Lib.wrapElement(this.$el);
-		this.elements.positionableTarget = Lib.wrapElement(this.elements.formElement);
-
 		const $icon = this._renderIcon('utility.event', 'slds-input__icon slds-icon-text-default');
 		$icon.replaceAll(this.elements.formElement.find('x-input-icon')[0]);
 
@@ -120,10 +116,6 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	
 	_onExpandOrCollapse () {
 		this.elements.datepicker.toggleClass('slds-hidden', !this.getState('isOpen'));
-		this.positionable._updatePosition.call(this,
-			this.elements.positionableElement,
-			this.elements.positionableContainer,
-			this.elements.positionableTarget);
 	},
 
 	_triggerCalendar (e) {

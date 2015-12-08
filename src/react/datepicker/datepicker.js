@@ -35,10 +35,6 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		const selectedDates = this.props.selection;
 		const selDateFormatted = selectedDates.length ? this._formatDate(selectedDates[0]) : '';
 
-		if (this.refs.popover) {
-			this._setElements();
-		}
-
 		return (
 			<div className="slds-form--stacked slds-datepicker-form" ref="container" onClick={this._triggerCalendar}>
 				<DateInput
@@ -64,19 +60,6 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 				</div>
 			</div>
 		);
-	},
-
-	_setElements () {
-		this.elements.positionableElement = Lib.wrapElement(this.refs.popover);
-		this.elements.positionableContainer = Lib.wrapElement(this.refs.container);
-		this.elements.positionableTarget = Lib.wrapElement(this.refs.container);
-	},
-
-	componentDidUpdate () {
-		this.positionable._updatePosition.call(this,
-			this.elements.positionableElement,
-			this.elements.positionableContainer,
-			this.elements.positionableTarget);
 	},
 
 	_triggerCalendar (e) {
