@@ -207,7 +207,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 				selection: yearRange.selected
 			});
 
-			this.elements.year.on('changed', $.proxy(this._updateYear, this));
+			this.elements.year.on('changed', this._updateYear.bind(this));
 		}
 	},
 
@@ -237,7 +237,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_activateManualInput () {
 		this.element.off('focusout.slds-form-element', '.slds-input');
-		this.element.on('focusout.slds-form-element', '.slds-input', $.proxy(this._manualDateInput, this));
+		this.element.on('focusout.slds-form-element', '.slds-input', this._manualDateInput.bind(this));
 	},
 
 	_manualDateInput () {

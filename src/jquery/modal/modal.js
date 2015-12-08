@@ -50,7 +50,7 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	},
 
 	_bindUIEvents () {
-		this.element.on('click', $.proxy(this._clickOutClose, this));
+		this.element.on('click', this._clickOutClose.bind(this));
 	},
 
 	_render () {

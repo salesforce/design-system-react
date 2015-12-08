@@ -41,10 +41,10 @@ export const PicklistObject = {
 	},
 
 	_bindUIEvents () {
-		this.elements.button.on('click', $.proxy(this._handleClicked, this));
-		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
-		this.element.on('keydown', $.proxy(this._handleKeyDown, this));
-		this.element.on('keypress', $.proxy(this._handleKeyPressed, this));
+		this.elements.button.on('click', this._handleClicked.bind(this));
+		this.elements.dropdownMenu.on('click', 'a', this._handleMenuItemSelected.bind(this));
+		this.element.on('keydown', this._handleKeyDown.bind(this));
+		this.element.on('keypress', this._handleKeyPressed.bind(this));
 	},
 
 	_renderItem (item) {
