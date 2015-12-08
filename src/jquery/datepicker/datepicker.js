@@ -277,11 +277,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	selectDate (item, index) {
-		Multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
 	},
 	
 	selectDates (items, index) {
-		Multiselectable.selectItems.call(this, items, null, index);
+		Multiselectable.selectItems(this, items, null, index);
 	},
 	
 	_onSelect (selection) {

@@ -244,15 +244,15 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 
 	_handleItemClicked ($event) {
 		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
-		Multiselectable.toggleItem.call(this, $el.data('item'), this.getProperty('selection'));
+		Multiselectable.toggleItem(this, $el.data('item'), this.getProperty('selection'));
 	},
 
 	selectItem (item, index) {
-		Multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
 	},
 	
 	selectItems (items, index) {
-		Multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
+		Multiselectable.selectItems(this, items, this.getProperty('selection'), index);
 	},
 
 	_onSelect (selection) {

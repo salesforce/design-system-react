@@ -209,11 +209,11 @@ export const DataTableObject = {
 	},
 
 	selectRow (item, index) {
-		Multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
 	},
 	
 	selectRows (items, index) {
-		Multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
+		Multiselectable.selectItems(this, items, this.getProperty('selection'), index);
 	},
 
 	_onSelect (selection) {

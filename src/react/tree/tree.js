@@ -50,7 +50,7 @@ let Tree = Lib.merge({}, TreeCore, {
 			const id = model.getId();
 			const selectable = this.props.folderSelect;
 			const selection = this._getDataAdapter(this.props.selection);
-			const _isItemSelected = Lib.partialRight(Multiselectable.isItemSelected.bind(this), selection);
+			const _isItemSelected = Lib.partialRight(Multiselectable.isItemSelected, selection);
 
 			if (model.getType() === 'folder') {
 				children.push(<TreeBranch key={id} item={model} selectable={selectable} strings={this.state.strings} autoOpenLevel={1} autoOpenLimit={this.props.autoOpen ? this.props.autoOpenLimit : 0} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _isFolderOpen={this._isFolderOpen} _isItemSelected={_isItemSelected} />);
@@ -70,7 +70,7 @@ let Tree = Lib.merge({}, TreeCore, {
 
 	_handleItemClick (item) {
 		if (item.getType() !== 'folder' || this.props.folderSelect) {
-			Multiselectable.toggleItem.call(this, item._item, this.props.selection);
+			Multiselectable.toggleItem(this, item._item, this.props.selection);
 		} else {
 			this._toggleFolder(item);
 		}

@@ -50,9 +50,9 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
 	_handleDeselect (item) {
 		if (item) {
-			Multiselectable.deselectItem.call(this, item._item, this.props.selection);
+			Multiselectable.deselectItem(this, item._item, this.props.selection);
 		} else {
-			Multiselectable.deselectAll.call(this, this.props.selection);
+			Multiselectable.deselectAll(this, this.props.selection);
 		}
 	}
 });

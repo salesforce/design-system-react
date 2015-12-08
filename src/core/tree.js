@@ -9,11 +9,10 @@ import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
-import Multiselectable from '../traits/multiselectable';
 
 export const CONTROL = 'Tree';
 
-const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
+const TreeCore = Lib.merge({}, Base, Disableable, {
 	CONTROL,
 	
 	// CSS classes used within this control
