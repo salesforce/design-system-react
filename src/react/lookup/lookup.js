@@ -13,6 +13,7 @@ import LookupCore, {CONTROL} from '../../core/lookup';
 
 // Traits
 import Multiselectable from '../../traits/multiselectable';
+import Openable from '../../traits/openable';
 
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
@@ -130,6 +131,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 		if (this.props.modalMenu) {
 			this.positionable.removePositionableEventListeners('isOpen', this);
 		}
+		
+		Openable.removeEventListeners(this);
 	},
 
 	// While some functionality moves into the core or traits, each facade typically provides its own rendering logic so that it can take advantage of the benefits offered by the framework and maintain appropriate patterns for that framework.
@@ -250,24 +253,19 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 	// Clicking on the input should open the menu.
 	_handleClicked (e) {
-		if (e) {
-			// The input should automatically close if we click anywhere outside of it, so we need to flag the events that originate at the control itself and stop them from closing it.
-			e.nativeEvent.originator = this;
-		}
-		
-		this.open();
+		Openable.open(this, e.nativeEvent);
 	},
 	
 	_handleSelect (item) {
-		Multiselectable.selectItem.call(this, item._item, this.props.selection);
+		Multiselectable.selectItem(this, item._item, this.props.selection);
 	},
 
 	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
 	_handleDeselect (item) {
 		if (item) {
-			Multiselectable.deselectItem.call(this, item._item, this.props.selection);
+			Multiselectable.deselectItem(this, item._item, this.props.selection);
 		} else {
-			Multiselectable.deselectAll.call(this, this.props.selection);
+			Multiselectable.deselectAll(this, this.props.selection);
 		}
 	},
 
@@ -285,7 +283,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this._keyboardNav(e.key, this._keyboardSelect, this.state.searchResults);
 		// Also listen for character key presses an ensure that the menu it open while typing in the input, but don't actually trap them.
 		} else if (e.key.length === 1) {
-			if (!this.state.isOpen) this.open();
+			Openable.open(this);
 		}
 	}
 });

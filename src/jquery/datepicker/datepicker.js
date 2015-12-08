@@ -6,6 +6,7 @@ import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
 // Traits
 import Multiselectable from '../../traits/multiselectable';
+import Openable from '../../traits/openable';
 
 // Framework Specific
 import DOM from '../dom';
@@ -28,7 +29,6 @@ let Datepicker = function Datepicker () {
 	this.template = $(template);
 	this.$weekTemplate = $('<tr></tr>');
 	this.$dayTemplate = $('<td role="gridcell" aria-disabled="true"><span class="slds-day"></span></td>');
-	this._closeOnClick = $.proxy(this._closeOnClick, this);
 
 	this._initialize(options);
 };
@@ -117,13 +117,16 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this._bindUIEvents();
 	},
 	
-	_onExpandOrCollapse () {
-		this.elements.datepicker.toggleClass('slds-hidden', !this.getState('isOpen'));
+	_onOpened () {
+		this.elements.datepicker.toggleClass('slds-hidden', false);
+	},
+	
+	_onClosed () {
+		this.elements.datepicker.toggleClass('slds-hidden', true);
 	},
 
 	_triggerCalendar (e) {
-		e.originalEvent.originator = this;
-		if (!this.getState('isOpen')) this.open();
+		Openable.open(this, e.originalEvent);
 	},
 
 	_cancelEventProp (e) {
@@ -198,7 +201,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 				selection: yearRange.selected
 			});
 
-			this.elements.year.on('changed', $.proxy(this._updateYear, this));
+			this.elements.year.on('changed', this._updateYear.bind(this));
 		}
 	},
 
@@ -228,7 +231,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_activateManualInput () {
 		this.element.off('focusout.slds-form-element', '.slds-input');
-		this.element.on('focusout.slds-form-element', '.slds-input', $.proxy(this._manualDateInput, this));
+		this.element.on('focusout.slds-form-element', '.slds-input', this._manualDateInput.bind(this));
 	},
 
 	_manualDateInput () {
@@ -268,11 +271,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	selectDate (item, index) {
-		Multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
 	},
 	
 	selectDates (items, index) {
-		Multiselectable.selectItems.call(this, items, null, index);
+		Multiselectable.selectItems(this, items, null, index);
 	},
 	
 	_onSelect (selection) {

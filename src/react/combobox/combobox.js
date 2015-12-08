@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import ComboboxCore, {CONTROL} from '../../core/combobox';
 
+// Traits
+import Openable from '../../traits/openable';
+
 // Framework specific
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -44,7 +47,7 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 					</div>
 					<Svg className="slds-icon" style={{right: '.6rem'}} icon="utility.down" />
 				</button>
-				<PicklistItems id={this._getMenuId()} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={this.state.isOpen} onSelected={this._handleMenuItemSelected} />
+				<PicklistItems id={this._getMenuId()} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={!!this.state.isOpen} onSelected={this._handleMenuItemSelected} />
 			</div>
 		);
 	},
@@ -66,7 +69,7 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 			e.preventDefault();
 			this._keyboardNav(e.key, this.setSelection);
 		} else if (e.key.length === 1) {
-			if (!this.state.isOpen) this.open();
+			Openable.open(this);
 			this.elements.input[0].focus();
 		}
 	}

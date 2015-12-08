@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import PicklistCore, {CONTROL} from '../../core/picklist';
 
+// Traits
+import Openable from '../../traits/openable';
+
 // Framework specific
 import DOM from '../dom';
 import Events from '../events';
@@ -22,7 +25,6 @@ let Picklist = function Picklist () {
 	const options = this._getOptions(arguments);
 
 	this.template = $(template);
-	this._closeOnClick = $.proxy(this._closeOnClick, this);
 
 	this._initialize(options);
 };
@@ -39,10 +41,10 @@ export const PicklistObject = {
 	},
 
 	_bindUIEvents () {
-		this.elements.button.on('click', $.proxy(this._handleClicked, this));
-		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
-		this.element.on('keydown', $.proxy(this._handleKeyDown, this));
-		this.element.on('keypress', $.proxy(this._handleKeyPressed, this));
+		this.elements.button.on('click', this._handleClicked.bind(this));
+		this.elements.dropdownMenu.on('click', 'a', this._handleMenuItemSelected.bind(this));
+		this.element.on('keydown', this._handleKeyDown.bind(this));
+		this.element.on('keypress', this._handleKeyPressed.bind(this));
 	},
 
 	_renderItem (item) {
@@ -161,12 +163,17 @@ export const PicklistObject = {
 		}
 	},
 
-	_onExpandOrCollapse () {
+	_onOpened () {
 		if (this.rendered) {
-			const isOpen = this.getState('isOpen');
+			this.elements.dropdown.toggleClass('slds-hide', false);
+			this.elements.button.attr('aria-expanded', true);
+		}
+	},
 
-			this.elements.dropdown.toggleClass('slds-hide', !isOpen);
-			this.elements.button.attr('aria-expanded', isOpen);
+	_onClosed () {
+		if (this.rendered) {
+			this.elements.dropdown.toggleClass('slds-hide', true);
+			this.elements.button.attr('aria-expanded', false);
 		}
 	},
 
@@ -193,7 +200,7 @@ export const PicklistObject = {
 
 	_handleClicked (e) {
 		e.stopPropagation();
-		this._openToggleEvent(e.originalEvent);
+		Openable.toggle(this, e.originalEvent);
 	},
 
 	_handleMenuItemSelected (e) {
@@ -205,7 +212,7 @@ export const PicklistObject = {
 
 		if (!$li.prop('disabled')) {
 			this.setSelection($li.data('item'));
-			this.close();
+			Openable.close(this);
 		}
 	},
 
