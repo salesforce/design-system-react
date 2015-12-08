@@ -14,28 +14,45 @@ import SLDSButton from '../../../components/SLDSButton';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 import {default as PrismCode} from "react-prism/lib/PrismCode";
 import SLDSUtilityIcon from '../../../components/SLDSUtilityIcon';
-
-
-
-
+import CodeMirror from '../CodeMirror';
+require('codemirror/mode/javascript/javascript');
 
 module.exports = React.createClass( {
-
-  getDefaultProps () {
-    return {};
-  },
-
   getInitialState () {
-    return {};
-  },
-
-
+		return {
+			code: 'var component = { "test": "Donielle" };',
+			readOnly: false,
+			mode: 'javascript',
+		};
+	},
+	updateCode (newCode) {
+		this.setState({
+			code: newCode
+		});
+	},
+	changeMode (e) {
+		var mode = e.target.value;
+		this.setState({
+			mode: mode,
+			code: defaults[mode]
+		});
+	},
+	toggleReadOnly () {
+		this.setState({
+			readOnly: !this.state.readOnly
+		}, () => this.refs.editor.focus());
+	},
 
   handleButtonClick () {
     alert('Test Button Clicked');
   },
 
   render() {
+		var options = {
+			lineNumbers: true,
+			readOnly: this.state.readOnly,
+			mode: this.state.mode
+		};
     return (
 
             <div className='slds-p-around--medium'>
@@ -55,6 +72,9 @@ module.exports = React.createClass( {
                 Action
                 </td>
                 <td>
+			<div>
+				<CodeMirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
+			</div>
                 <Icon name='announcement' category='action' size="medium" assistiveText='Action' />
                 </td>
               </tr>
