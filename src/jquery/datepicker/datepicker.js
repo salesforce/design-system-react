@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework Specific
 import DOM from '../dom';
 import Events from '../events';
@@ -265,11 +268,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	selectDate (item, index) {
-		this.multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+		Multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
 	},
 	
 	selectDates (items, index) {
-		this.multiselectable.selectItems.call(this, items, null, index);
+		Multiselectable.selectItems.call(this, items, null, index);
 	},
 	
 	_onSelect (selection) {

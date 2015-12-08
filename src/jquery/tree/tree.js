@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import TreeCore, {CONTROL} from '../../core/tree';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework Specific
 import DOM from '../dom';
 import Events from '../events';
@@ -167,7 +170,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	},
 	
 	_renderSelection ($item, item, selection) {
-		const selected = this.multiselectable.isItemSelected(item, selection);
+		const selected = Multiselectable.isItemSelected(item, selection);
 
 		$item.toggleClass('slds-is-selected', selected);
 	},
@@ -241,15 +244,15 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 
 	_handleItemClicked ($event) {
 		const $el = $($event.currentTarget).closest('li.slds-tree__item, .slds-tree__branch');
-		this.multiselectable.toggleItem.call(this, $el.data('item'), this.getProperty('selection'));
+		Multiselectable.toggleItem.call(this, $el.data('item'), this.getProperty('selection'));
 	},
 
 	selectItem (item, index) {
-		this.multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+		Multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
 	},
 	
 	selectItems (items, index) {
-		this.multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
+		Multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
 	},
 
 	_onSelect (selection) {

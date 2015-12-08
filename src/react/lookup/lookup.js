@@ -11,6 +11,9 @@ import * as Lib from '../../lib/lib';
 // Use the [shared core](../../core/lookup.html), which contains logic that is the same in every facade.
 import LookupCore, {CONTROL} from '../../core/lookup';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
 
@@ -256,15 +259,15 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 	
 	_handleSelect (item) {
-		this.multiselectable.selectItem.call(this, item._item, this.props.selection);
+		Multiselectable.selectItem.call(this, item._item, this.props.selection);
 	},
 
 	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
 	_handleDeselect (item) {
 		if (item) {
-			this.multiselectable.deselectItem.call(this, item._item, this.props.selection);
+			Multiselectable.deselectItem.call(this, item._item, this.props.selection);
 		} else {
-			this.multiselectable.deselectAll.call(this, this.props.selection);
+			Multiselectable.deselectAll.call(this, this.props.selection);
 		}
 	},
 

@@ -3,12 +3,12 @@
 
 // Traits are inherited (typically at the `core` level) by other controls and provide functionality and consistency of APIs. Multiselectable, in particular, is a set of methods designed to deal with managing a set of items that have been selected out of a collection.
 
-// Note that you should use multiselectable when you have discrete items or groups of items. For example, multiple _dates_ would be a good use case for multiselectable, while a single _date range_ is probably only a single selection. If, however, it's possible to select multiple date ranges then you're back to multiselectable again.
+// Note that you should use Multiselectable when you have discrete items or groups of items. For example, multiple _dates_ would be a good use case for Multiselectable, while a single _date range_ is probably only a single selection. If, however, it's possible to select multiple date ranges then you're back to Multiselectable again.
 
 // Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
-const multiselectable = {
+const Multiselectable = {
 	// The internal version of `getSelectedItems`. You can always access the raw selection yourself, of course, this method just wraps it in a `dataAdapter` for you so that you get the benefit of supporting multiple frameworks. It also clones the selection so that a selection passed in by reference won't be mutated.
 	getWrappedImmutableData (data) {
 		if (data) {
@@ -28,25 +28,25 @@ const multiselectable = {
 	// Take a set of items (most likely a new selection) and return only those which are not already part of the selection.
 	getNotSelectedItems (items, selection) {
 		return items.filter((item) => {
-			return !multiselectable.isItemSelected(item, selection);
+			return !Multiselectable.isItemSelected(item, selection);
 		});
 	},
 	
 	// Take a set of items (most likely a new selection) and return only those which are  already part of the selection.
 	getPreviouslySelectedItems (items, selection) {
 		return items.filter((item) => {
-			return multiselectable.isItemSelected(item, selection);
+			return Multiselectable.isItemSelected(item, selection);
 		});
 	},
 	
 	// Take a set of items and select any that aren't yet selected.
 	selectItems (items, currentSelection, selectIndex) {
-		const selection = multiselectable.getWrappedImmutableData.call(this, currentSelection);
-		const itemsToSelect = multiselectable.getNotSelectedItems(this._getDataAdapter(items), selection);
+		const selection = Multiselectable.getWrappedImmutableData.call(this, currentSelection);
+		const itemsToSelect = Multiselectable.getNotSelectedItems(this._getDataAdapter(items), selection);
 
 		// The main selection logic happens in this method. Controls may optionally declare a `_canSelect` method and if they do this will be passed to them as a callback. If they don't it will executed immediately.
 		const _select = () => {
-			// Multiselectable supports both single and multiple selection based on the `multiSelect` boolean option. That is, _controls_ that make use of the multiselectable trait support multiple selection, but that doesn't mean that an instance of one of thoe controls has to.
+			// Multiselectable supports both single and multiple selection based on the `multiSelect` boolean option. That is, _controls_ that make use of the Multiselectable trait support multiple selection, but that doesn't mean that an instance of one of thoe controls has to.
 			if (this.getProperty('multiSelect')) {
 				if (Lib.isNumber(selectIndex)) {
 					selection.add(itemsToSelect, { at: selectIndex });
@@ -82,13 +82,13 @@ const multiselectable = {
 
 	// Public API method for selection a single item.
 	selectItem (item, currentSelection, index) {
-		multiselectable.selectItems.call(this, [item], currentSelection, index);
+		Multiselectable.selectItems.call(this, [item], currentSelection, index);
 	},
 
 	// Deselection works essentially the same way as selection.
 	deselectItems (items, currentSelection) {
-		const selection = multiselectable.getWrappedImmutableData.call(this, currentSelection);
-		const itemsToDeselect = multiselectable.getPreviouslySelectedItems(this._getDataAdapter(items), selection);
+		const selection = Multiselectable.getWrappedImmutableData.call(this, currentSelection);
+		const itemsToDeselect = Multiselectable.getPreviouslySelectedItems(this._getDataAdapter(items), selection);
 		
 		const _deselect = () => {
 			selection.remove(itemsToDeselect);
@@ -114,12 +114,12 @@ const multiselectable = {
 	},
 
 	deselectItem (item, currentSelection) {
-		multiselectable.deselectItems.call(this, [item], currentSelection);
+		Multiselectable.deselectItems.call(this, [item], currentSelection);
 	},
 
 	// Quickly empty the selection of all items.
 	deselectAll (currentSelection) {
-		const selection = multiselectable.getWrappedImmutableData.call(this, currentSelection);
+		const selection = Multiselectable.getWrappedImmutableData.call(this, currentSelection);
 		selection.reset(null);
 
 		if (Lib.isFunction(this._onBeforeDeselect)) this._onBeforeDeselect(selection);
@@ -134,14 +134,12 @@ const multiselectable = {
 	},
 	
 	toggleItem (item, currentSelection) {
-		if (multiselectable.isItemSelected(this._getItemAdapter(item), this._getDataAdapter(currentSelection))) {
-			multiselectable.deselectItem.call(this, item, currentSelection);
+		if (Multiselectable.isItemSelected(this._getItemAdapter(item), this._getDataAdapter(currentSelection))) {
+			Multiselectable.deselectItem.call(this, item, currentSelection);
 		} else {
-			multiselectable.selectItem.call(this, item, currentSelection);
+			Multiselectable.selectItem.call(this, item, currentSelection);
 		}
 	}
 };
 
-export default {
-	multiselectable
-};
+export default Multiselectable;

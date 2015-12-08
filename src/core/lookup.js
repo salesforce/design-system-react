@@ -19,7 +19,7 @@ import positionable from '../traits/positionable';
 
 export const CONTROL = 'Lookup';
 
-const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, positionable, KeyboardNavigable, {
+const LookupCore = Lib.merge({}, Base, Disableable, Openable, positionable, KeyboardNavigable, {
 	CONTROL,
 	
 	// CSS classes used within this control
@@ -156,7 +156,7 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, p
 	},
 	
 	_keyboardSelect (item) {
-		this.multiselectable.selectItem.call(this, item, this.getProperty('selection'));
+		Multiselectable.selectItem.call(this, item, this.getProperty('selection'));
 	},
 	
 	search (searchString) {

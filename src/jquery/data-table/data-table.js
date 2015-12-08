@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import DataTableCore, {CONTROL} from '../../core/data-table';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework specific
 import DOM from '../dom';
 import Events from '../events';
@@ -153,7 +156,7 @@ export const DataTableObject = {
 	},
 
 	_renderSelection ($item, item, selection) {
-		const selected = this.multiselectable.isItemSelected(item, selection);
+		const selected = Multiselectable.isItemSelected(item, selection);
 
 		$item.find('.slds-checkbox input').prop('checked', selected);
 	},
@@ -167,7 +170,7 @@ export const DataTableObject = {
 	_toggleItem (ev) {
 		const rowData = $(ev.currentTarget).data('item');
 
-		this._selectDataItem(rowData);
+		this._toggleDataItem(rowData);
 	},
 
 	_onSort () {
@@ -206,11 +209,11 @@ export const DataTableObject = {
 	},
 
 	selectRow (item, index) {
-		this.multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
+		Multiselectable.selectItem.call(this, item, this.getProperty('selection'), index);
 	},
 	
 	selectRows (items, index) {
-		this.multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
+		Multiselectable.selectItems.call(this, items, this.getProperty('selection'), index);
 	},
 
 	_onSelect (selection) {

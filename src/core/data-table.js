@@ -15,7 +15,7 @@ import Multiselectable from '../traits/multiselectable';
 
 export const CONTROL = 'DataTable';
 
-const DataTableCore = Lib.merge({}, Base, Multiselectable, {
+const DataTableCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	cssClasses: {
@@ -138,17 +138,17 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 		});
 	},
 
-	_selectDataItem (selRow) {
-		this.multiselectable.toggleItem.call(this, selRow, this.getProperty('selection'));
+	_toggleDataItem (item) {
+		Multiselectable.toggleItem.call(this, item, this.getProperty('selection'));
 	},
 
 	_toggleAllItems () {
 		if (this.allCheckActivated) {
 			this.allCheckActivated = false;
-			this.multiselectable.deselectAll.call(this, this.getProperty('selection'));
+			Multiselectable.deselectAll.call(this, this.getProperty('selection'));
 		} else {
 			this.allCheckActivated = true;
-			this.multiselectable.selectItems.call(this, this.getProperty('collection'));
+			Multiselectable.selectItems.call(this, this.getProperty('collection'));
 		}
 	},
 

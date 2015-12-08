@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import DataTableCore, {CONTROL} from '../../core/data-table';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework specific
 import React from 'react';
 import State from '../mixins/state';
@@ -100,7 +103,7 @@ export const DataTableObject = {
 		const selection = this._getDataAdapter(this.props.selection);
 
 		return this._collection.map((item, index) => {
-			const isSelected = this.multiselectable.isItemSelected(item, selection);
+			const isSelected = Multiselectable.isItemSelected(item, selection);
 
 			return (
 				<DataTableItem
@@ -109,7 +112,7 @@ export const DataTableObject = {
 					bordered={true}
 					headers={this.props.columns}
 					item={item}
-					onSelected={this._selectDataItem}
+					onSelect={this._toggleDataItem}
 					selected={isSelected}
 					selectRows={isRowSelect}
 				/>
