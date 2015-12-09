@@ -87,23 +87,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSButtonGroup = __webpack_require__(77);
+	var _SLDSButtonGroup = __webpack_require__(78);
 	
 	var _SLDSButtonGroup2 = _interopRequireDefault(_SLDSButtonGroup);
 	
-	var _SLDSLookup = __webpack_require__(78);
+	var _SLDSLookup = __webpack_require__(79);
 	
 	var _SLDSLookup2 = _interopRequireDefault(_SLDSLookup);
 	
-	var _SLDSTooltip = __webpack_require__(85);
+	var _SLDSTooltip = __webpack_require__(86);
 	
 	var _SLDSTooltip2 = _interopRequireDefault(_SLDSTooltip);
 	
-	var _SLDSModal = __webpack_require__(86);
+	var _SLDSModal = __webpack_require__(87);
 	
 	var _SLDSModal2 = _interopRequireDefault(_SLDSModal);
 	
-	var _SLDSModalTrigger = __webpack_require__(87);
+	var _SLDSModalTrigger = __webpack_require__(88);
 	
 	var _SLDSModalTrigger2 = _interopRequireDefault(_SLDSModalTrigger);
 	
@@ -111,7 +111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSIcons2 = _interopRequireDefault(_SLDSIcons);
 	
-	var _SLDSNotification = __webpack_require__(88);
+	var _SLDSNotification = __webpack_require__(89);
 	
 	var _SLDSNotification2 = _interopRequireDefault(_SLDSNotification);
 	
@@ -163,11 +163,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -4510,11 +4510,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -4775,11 +4775,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -5037,11 +5037,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -5193,11 +5193,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -6137,11 +6137,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -6262,14 +6262,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  Licensed under the MIT License (MIT), see
 	  http://jedwatson.github.io/classnames
 	*/
-	/* global define */
 	
 	(function () {
 		'use strict';
 	
-		var hasOwn = {}.hasOwnProperty;
-	
 		function classNames () {
+	
 			var classes = '';
 	
 			for (var i = 0; i < arguments.length; i++) {
@@ -6278,13 +6276,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 				var argType = typeof arg;
 	
-				if (argType === 'string' || argType === 'number') {
+				if ('string' === argType || 'number' === argType) {
 					classes += ' ' + arg;
+	
 				} else if (Array.isArray(arg)) {
 					classes += ' ' + classNames.apply(null, arg);
-				} else if (argType === 'object') {
+	
+				} else if ('object' === argType) {
 					for (var key in arg) {
-						if (hasOwn.call(arg, key) && arg[key]) {
+						if (arg.hasOwnProperty(key) && arg[key]) {
 							classes += ' ' + key;
 						}
 					}
@@ -6296,14 +6296,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 		if (typeof module !== 'undefined' && module.exports) {
 			module.exports = classNames;
-		} else if (true) {
-			// register as 'classnames', consistent with npm package name
+		} else if (true){
+			// AMD. Register as an anonymous module.
 			!(__WEBPACK_AMD_DEFINE_RESULT__ = function () {
 				return classNames;
 			}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 		} else {
 			window.classNames = classNames;
 		}
+	
 	}());
 
 
@@ -6338,11 +6339,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -6498,12 +6499,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  return {
 	    componentDidMount: function() {
-	      if(typeof this.handleClickOutside !== "function")
+	      if(!this.handleClickOutside)
 	        throw new Error("Component lacks a handleClickOutside(event) function for processing outside click events.");
 	
 	      var fn = this.__outsideClickHandler = (function(localNode, eventHandler) {
 	        return function(evt) {
-	          evt.stopPropagation();
 	          var source = evt.target;
 	          var found = false;
 	          // If source=local then this event came from "somewhere"
@@ -6558,7 +6558,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * Can be called to explicitly disable event listening
 	     * for clicks and touches outside of this element.
 	     */
-	    disableOnClickOutside: function() {
+	    disableOnClickOutside: function(fn) {
 	      var fn = this.__outsideClickHandler;
 	      document.removeEventListener("mousedown", fn);
 	      document.removeEventListener("touchstart", fn);
@@ -6607,11 +6607,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -7041,11 +7041,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -9072,10 +9072,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {var React = __webpack_require__(2);
-	var ExecutionEnvironment = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"react/lib/ExecutionEnvironment\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	var ModalPortal = React.createFactory(__webpack_require__(60));
-	var ariaAppHider = __webpack_require__(75);
-	var elementClass = __webpack_require__(76);
+	var ExecutionEnvironment = __webpack_require__(60);
+	var ModalPortal = React.createFactory(__webpack_require__(61));
+	var ariaAppHider = __webpack_require__(76);
+	var elementClass = __webpack_require__(77);
 	
 	var SafeHTMLElement = ExecutionEnvironment.canUseDOM ? window.HTMLElement : {};
 	
@@ -9254,13 +9254,61 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 60 */
+/***/ function(module, exports) {
+
+	/**
+	 * Copyright 2013-2015, Facebook, Inc.
+	 * All rights reserved.
+	 *
+	 * This source code is licensed under the BSD-style license found in the
+	 * LICENSE file in the root directory of this source tree. An additional grant
+	 * of patent rights can be found in the PATENTS file in the same directory.
+	 *
+	 * @providesModule ExecutionEnvironment
+	 */
+	
+	/*jslint evil: true */
+	
+	"use strict";
+	
+	var canUseDOM = !!(
+	  (typeof window !== 'undefined' &&
+	  window.document && window.document.createElement)
+	);
+	
+	/**
+	 * Simple, lightweight module assisting with the detection and context of
+	 * Worker. Helps avoid circular dependencies and allows code to reason about
+	 * whether or not they are in a Worker, even if they never include the main
+	 * `ReactWorker` dependency.
+	 */
+	var ExecutionEnvironment = {
+	
+	  canUseDOM: canUseDOM,
+	
+	  canUseWorkers: typeof Worker !== 'undefined',
+	
+	  canUseEventListeners:
+	    canUseDOM && !!(window.addEventListener || window.attachEvent),
+	
+	  canUseViewport: canUseDOM && !!window.screen,
+	
+	  isInWorker: !canUseDOM // For now, this is true - might change in the future.
+	
+	};
+	
+	module.exports = ExecutionEnvironment;
+
+
+/***/ },
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(2);
 	var div = React.DOM.div;
-	var focusManager = __webpack_require__(61);
-	var scopeTab = __webpack_require__(63);
-	var Assign = __webpack_require__(64);
+	var focusManager = __webpack_require__(62);
+	var scopeTab = __webpack_require__(64);
+	var Assign = __webpack_require__(65);
 	
 	
 	// so that our CSS is statically analyzable
@@ -9458,10 +9506,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 61 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(62);
+	var findTabbable = __webpack_require__(63);
 	var modalElement = null;
 	var focusLaterElement = null;
 	var needToFocus = false;
@@ -9532,7 +9580,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 62 */
+/* 63 */
 /***/ function(module, exports) {
 
 	/*!
@@ -9588,10 +9636,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 63 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(62);
+	var findTabbable = __webpack_require__(63);
 	
 	module.exports = function(node, event) {
 	  var tabbable = findTabbable(node);
@@ -9609,7 +9657,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 64 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9620,9 +9668,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseAssign = __webpack_require__(65),
-	    createAssigner = __webpack_require__(71),
-	    keys = __webpack_require__(67);
+	var baseAssign = __webpack_require__(66),
+	    createAssigner = __webpack_require__(72),
+	    keys = __webpack_require__(68);
 	
 	/**
 	 * A specialized version of `_.assign` for customizing assigned values without
@@ -9695,7 +9743,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 65 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9706,8 +9754,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseCopy = __webpack_require__(66),
-	    keys = __webpack_require__(67);
+	var baseCopy = __webpack_require__(67),
+	    keys = __webpack_require__(68);
 	
 	/**
 	 * The base implementation of `_.assign` without support for argument juggling,
@@ -9728,7 +9776,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 66 */
+/* 67 */
 /***/ function(module, exports) {
 
 	/**
@@ -9766,7 +9814,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 67 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9777,9 +9825,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(68),
-	    isArguments = __webpack_require__(69),
-	    isArray = __webpack_require__(70);
+	var getNative = __webpack_require__(69),
+	    isArguments = __webpack_require__(70),
+	    isArray = __webpack_require__(71);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -10008,7 +10056,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 68 */
+/* 69 */
 /***/ function(module, exports) {
 
 	/**
@@ -10151,7 +10199,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 69 */
+/* 70 */
 /***/ function(module, exports) {
 
 	/**
@@ -10263,7 +10311,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 70 */
+/* 71 */
 /***/ function(module, exports) {
 
 	/**
@@ -10449,7 +10497,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 71 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -10460,9 +10508,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var bindCallback = __webpack_require__(72),
-	    isIterateeCall = __webpack_require__(73),
-	    restParam = __webpack_require__(74);
+	var bindCallback = __webpack_require__(73),
+	    isIterateeCall = __webpack_require__(74),
+	    restParam = __webpack_require__(75);
 	
 	/**
 	 * Creates a function that assigns properties of source object(s) to a given
@@ -10507,7 +10555,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 72 */
+/* 73 */
 /***/ function(module, exports) {
 
 	/**
@@ -10578,7 +10626,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 73 */
+/* 74 */
 /***/ function(module, exports) {
 
 	/**
@@ -10716,7 +10764,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 74 */
+/* 75 */
 /***/ function(module, exports) {
 
 	/**
@@ -10789,7 +10837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 75 */
+/* 76 */
 /***/ function(module, exports) {
 
 	var _element = document.body;
@@ -10837,7 +10885,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 76 */
+/* 77 */
 /***/ function(module, exports) {
 
 	module.exports = function(opts) {
@@ -10902,7 +10950,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 77 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -10932,11 +10980,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -11001,7 +11049,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSButtonGroup;
 
 /***/ },
-/* 78 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11039,11 +11087,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
@@ -11075,7 +11123,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Menu = __webpack_require__(79);
+	var _Menu = __webpack_require__(80);
 	
 	var _Menu2 = _interopRequireDefault(_Menu);
 	
@@ -11091,15 +11139,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(14);
 	
-	var _lodashEscaperegexp = __webpack_require__(81);
+	var _lodashEscaperegexp = __webpack_require__(82);
 	
 	var _lodashEscaperegexp2 = _interopRequireDefault(_lodashEscaperegexp);
 	
-	var _MenuDefaultFooter = __webpack_require__(83);
+	var _MenuDefaultFooter = __webpack_require__(84);
 	
 	var _MenuDefaultFooter2 = _interopRequireDefault(_MenuDefaultFooter);
 	
-	var _MenuDefaultHeader = __webpack_require__(84);
+	var _MenuDefaultHeader = __webpack_require__(85);
 	
 	var _MenuDefaultHeader2 = _interopRequireDefault(_MenuDefaultHeader);
 	
@@ -11530,7 +11578,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.DefaultFooter = _MenuDefaultFooter2["default"];
 
 /***/ },
-/* 79 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11558,11 +11606,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -11594,7 +11642,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Item = __webpack_require__(80);
+	var _Item = __webpack_require__(81);
 	
 	var _Item2 = _interopRequireDefault(_Item);
 	
@@ -11751,7 +11799,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Menu;
 
 /***/ },
-/* 80 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11779,11 +11827,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -11819,7 +11867,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(14);
 	
-	var _lodashEscaperegexp = __webpack_require__(81);
+	var _lodashEscaperegexp = __webpack_require__(82);
 	
 	var _lodashEscaperegexp2 = _interopRequireDefault(_lodashEscaperegexp);
 	
@@ -11932,7 +11980,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Item;
 
 /***/ },
-/* 81 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11943,7 +11991,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseToString = __webpack_require__(82);
+	var baseToString = __webpack_require__(83);
 	
 	/**
 	 * Used to match `RegExp` [syntax characters](http://ecma-international.org/ecma-262/6.0/#sec-patterns)
@@ -12014,7 +12062,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 82 */
+/* 83 */
 /***/ function(module, exports) {
 
 	/**
@@ -12042,7 +12090,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 83 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -12070,11 +12118,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -12157,7 +12205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = DefaultFooter;
 
 /***/ },
-/* 84 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -12185,11 +12233,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -12276,7 +12324,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = DefaultHeader;
 
 /***/ },
-/* 85 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -12304,11 +12352,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ('value' in desc) {
 	      return desc.value;
@@ -12501,7 +12549,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSTooltip;
 
 /***/ },
-/* 86 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -12767,7 +12815,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 87 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -12791,7 +12839,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(14);
 	
-	var _index = __webpack_require__(86);
+	var _index = __webpack_require__(87);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -12811,7 +12859,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSModalTrigger;
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -12841,11 +12889,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var _again = true;_function: while (_again) {
 	    var object = _x,
 	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
 	      var parent = Object.getPrototypeOf(object);if (parent === null) {
 	        return undefined;
 	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
 	      }
 	    } else if ("value" in desc) {
 	      return desc.value;
