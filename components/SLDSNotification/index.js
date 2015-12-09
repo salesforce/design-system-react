@@ -46,7 +46,7 @@ class SLDSNotification extends React.Component {
     if(this.props.duration) {
       const that = this;
       setTimeout(function() {
-        this.onDismiss();
+        that.onDismiss();
       }, that.props.duration);
     }
   }

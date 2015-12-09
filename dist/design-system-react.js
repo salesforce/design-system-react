@@ -287,7 +287,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	
 	      if (this.props.value !== prevProps.value || !(0, _lodashIsequal2['default'])(this.props.options, prevProps.options)) {
-	        this.handleSelect(this.getIndexByValue(this.props.value));
+	        var newSelectedIndex = this.getIndexByValue(this.props.value);
+	        if (newSelectedIndex !== this.state.selectedIndex) {
+	          this.handleSelect(newSelectedIndex);
+	        }
 	      }
 	    }
 	  }, {
@@ -12973,11 +12976,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(SLDSNotification, [{
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
+	      var _this = this;
+	
 	      if (this.props.duration) {
-	        var that = this;
-	        setTimeout(function () {
-	          this.onDismiss();
-	        }, that.props.duration);
+	        (function () {
+	          var that = _this;
+	          setTimeout(function () {
+	            that.onDismiss();
+	          }, that.props.duration);
+	        })();
 	      }
 	    }
 	  }, {
@@ -12990,12 +12997,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "componentWillReceiveProps",
 	    value: function componentWillReceiveProps(nextProps) {
-	      var _this = this;
+	      var _this2 = this;
 	
 	      if (this.props.isOpen !== nextProps.isOpen) {
 	        if (nextProps.isOpen && !this.state.interval) {
 	          this.setState({ interval: setTimeout(function () {
-	              _this.setState({ revealForScreenreader: true });
+	              _this2.setState({ revealForScreenreader: true });
 	            }, 500) });
 	        }
 	        console.log('revealForScreen', this.state.revealForScreenreader);

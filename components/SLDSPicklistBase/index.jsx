@@ -86,7 +86,10 @@ class SLDSPicklist extends React.Component {
 
     if(this.props.value !== prevProps.value ||
         !isEqual(this.props.options, prevProps.options)){
-      this.handleSelect(this.getIndexByValue(this.props.value));
+      var newSelectedIndex = this.getIndexByValue(this.props.value);
+      if (newSelectedIndex !== this.state.selectedIndex) {
+        this.handleSelect(newSelectedIndex);
+      }
     }
   }
 
