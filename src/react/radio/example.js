@@ -79,33 +79,43 @@ export default function () {
 		},
 
 		_handleClick (e) {
+			const radioboxen = this.state.radioboxen;
+			
 			// translate text of button into method call
 			switch (e.target.firstChild.data.toLowerCase()) {
 				case 'check first':
-					this.refs.radio1.check();
+					radioboxen.get('radio1').checked = true;
+					radioboxen.get('radio2').checked = false;
+					radioboxen.get('radio3').checked = false;
 					break;
 				case 'check second':
-					this.refs.radio2.check();
+					radioboxen.get('radio1').checked = false;
+					radioboxen.get('radio2').checked = true;
+					radioboxen.get('radio3').checked = false;
 					break;
 				case 'disable first':
-					this.refs.radio1.disable();
+					radioboxen.get('radio1').disabled = true;
 					break;
 				case 'enable first':
-					this.refs.radio1.enable();
+					radioboxen.get('radio1').disabled = false;
 					break;
 				case 'disable all':
-					this.refs.radio1.disable();
-					this.refs.radio2.disable();
-					this.refs.radio3.disable();
+					radioboxen.get('radio1').disabled = true;
+					radioboxen.get('radio2').disabled = true;
+					radioboxen.get('radio3').disabled = true;
 					break;
 				case 'enable all':
-					this.refs.radio1.enable();
-					this.refs.radio2.enable();
-					this.refs.radio3.enable();
+					radioboxen.get('radio1').disabled = false;
+					radioboxen.get('radio2').disabled = false;
+					radioboxen.get('radio3').disabled = false;
 					break;
 				default:
 					break;
 			}
+			
+			this.setState({
+				radioboxen
+			});
 		},
 
 		_handleChange (radioName, checkedValue) {
