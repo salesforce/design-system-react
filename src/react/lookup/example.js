@@ -24,7 +24,6 @@ export default function () {
 						onChanged={this._handleModelChange}
 						filterPredicate={this._filterPredicate}
 						onAddClick={this._handleAdd}
-						modalMenu
 						isOpen={this.state.isOpen} />
 				</div>
 			);
