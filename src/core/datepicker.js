@@ -26,9 +26,16 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, {
 		dateSelected: null,
 		multiSelect: false,
 		dateRange: [new Date('1991'), new Date('2030')],
-		positionedOffset: 4,
+
+		// Positionable trait
+		positionedTargetVerticalAttachment: 'bottom',
+		constrainWidthToTarget: true,
+		constrainPositionedToWindow: true,
+		modalMenu: false,
+		positionedOffset: 0,
 		positionedTargetHorizontalAttachment: 'left',
-		positionedTargetVerticalAttachment: 'bottom'
+		positionedZIndex: '10001',
+		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
 	},
 
 	_defaultState: {
