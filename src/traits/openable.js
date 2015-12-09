@@ -3,12 +3,16 @@
 import * as Lib from '../lib/lib';
 
 const Openable = {
+	isOpen (controlContext) {
+		return !!controlContext.getState('isOpen');
+	},
+	
 	open (controlContext, e) {
 		if (e) {
 			e.originator = controlContext;
 		}
 
-		if (!controlContext.getState('isOpen')) {
+		if (!Openable.isOpen(controlContext)) {
 			const _open = () => {
 				if (Lib.isFunction(controlContext._onBeforeOpen)) controlContext._onBeforeOpen();
 				
@@ -28,7 +32,7 @@ const Openable = {
 	},
 
 	close (controlContext) {
-		if (controlContext.getState('isOpen')) {
+		if (Openable.isOpen(controlContext)) {
 			if (Lib.isFunction(controlContext._onBeforeClose)) controlContext._onBeforeClose();
 			
 			Openable.removeEventListeners(controlContext);
@@ -40,7 +44,7 @@ const Openable = {
 	},
 	
 	toggle (controlContext, e) {
-		if (controlContext.getState('isOpen')) {
+		if (Openable.isOpen(controlContext)) {
 			Openable.close(controlContext);
 		} else {
 			Openable.open(controlContext, e);

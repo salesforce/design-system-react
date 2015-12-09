@@ -54,7 +54,7 @@ const KeyboardNavigable = {
 
 	_keyboardNav (input, onSelect, collection) {
 		const _collection = collection || this._collection;
-		const isOpen = this.getState('isOpen');
+		const isOpen = Openable.isOpen(this);
 		const navigableItems = this.getState('navigableItems') || this._getNavigableItems(_collection);
 		const indexes = navigableItems.indexes;
 		const lastIndex = indexes.length - 1;

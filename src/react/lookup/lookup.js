@@ -96,8 +96,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		
 		this.setState({
 			searchResults,
-			navigableItems,
-			isHidden: !this.props.isOpen
+			navigableItems
 		});
 
 		Positionable.setElement(this, Positionable.attachPositionedElementToBody());
@@ -110,8 +109,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			
 			this.setState({
 				searchResults,
-				navigableItems,
-				isHidden: !nextProps.isOpen
+				navigableItems
 			});
 		}
 		
@@ -138,6 +136,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 		// Get the current selection (wrapped in a data adapter) and set a boolean based on whether it contains any items.
 		const selectedItems = this._getDataAdapter(this.props.selection);
 		const hasSelection = selectedItems.length() > 0;
+		
+		const isOpen = Openable.isOpen(this);
 
 		// Unlike the header and footer, the pills will always be rendered if there is a selection and there is no option to disable them by passing false to `this.props.pillRenderer`. However, it is still possible to override the contents of the pills by passing in a custom render function.
 		let pills;
@@ -153,7 +153,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 					<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
 						<Svg icon={this.props.searchIcon} className="slds-input__icon" />
 						{pills}
-						<input id={inputId} className={classNames('slds-input', { 'slds-hidden': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
+						<input id={inputId} className={classNames('slds-input', { 'slds-hidden': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
 					</div>
 				</div>
 				{this.props.modalMenu ? null : this._renderMenu()}
@@ -163,6 +163,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	
 	_renderMenu () {
 		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
+		const isOpen = Openable.isOpen(this);
 		
 		// The menu header can be hidden by passing `false` to `this.props.menuHeaderRenderer`. The scaffolding needed for accessibility and display of the header is defined by the `Action` child control, but the contents of the control may vary based on the renderer passed in. If a render function (that returns React elements) is passed into the props that will be used to render the header, otherwise it will render the default renderer.
 		let header;
@@ -184,7 +185,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		
 		const menu = (
 			/* TODO: Remove inline style */
-			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox" style={style}>
+			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !isOpen })} role="listbox" style={style}>
 				{header}
 				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this._handleSelect} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
@@ -197,6 +198,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 	// Modal dropdown menus' parent is `body` and are absolutely positioned in order to visually attach the dropdown to the input.
 	_renderModalMenu () {
 		const menu = this._renderMenu();
+		
+		// positionedElement is a "wrapped element"
 		ReactDOM.render(menu, Positionable.getElement(this));
 
 		Positionable.setContainer(this, document.querySelector('body'));
