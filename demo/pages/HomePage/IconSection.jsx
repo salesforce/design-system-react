@@ -68,7 +68,7 @@ module.exports = React.createClass( {
               </h3>
 
               <div>
-                <CodeMirror ref="editor" defaultCode={defaultCode} value={this.state.code} onChange={this.updateCode} options={options} />
+                <CodeMirror codeText={"var hello = 'hola'"} />
               </div>
       { /*
               <div className='slds-p-vertical--large'>

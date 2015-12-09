@@ -1,6 +1,10 @@
 const CM = require('codemirror');
 const React = require('react');
-const className = require('classnames');
+const ReactDOM = require('react-dom');
+const classNames = require('classnames');
+//const babel = require('babel-core');
+
+const {Icon}=  require('../../components/SLDSIcons');
 
 const displayName = 'CodeMirror';
 const propTypes = {
@@ -13,6 +17,10 @@ const propTypes = {
 };
 
 const defaultProps = {
+  transformer: function(code) {
+    return code
+    //return babel.transform(code).code;
+  }
 };
 
 class CodeMirrorEditor extends React.Component {
@@ -25,7 +33,7 @@ class CodeMirrorEditor extends React.Component {
     const node = React.findDOMNode(this.refs.editor);
     this.editor = CM.fromTextArea(node, {
       mode: 'text/jsx',
-      lineNumbers: false,
+      lineNumbers: true,
       lineWrapping: false,
       matchBrackets: true,
       tabSize: 2,
@@ -61,14 +69,72 @@ class CodeMirror extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      code: this.props.codeText,
+      codeChanged: false,
       showCode: true,
-      code: this.props.defaultCode,
     };
   }
 
-  handleCodeChange() {
-    console.log('changing code');
+  componentWillMount() {
+    // For the initial render, we can hijack React.render to intercept the
+    // example element and render it normally. This is safe because it's code
+    // that we supply, so we can ensure ahead of time that it won't throw an
+    // exception while rendering.
+    const originalRender = ReactDOM.render;
+    ReactDOM.render = (element) => this._initialExample = element;
+
+    // Stub out mountNode for the example code.
+    const mountNode = null;  // eslint-disable-line no-unused-vars
+
+    try {
+      const compiledCode = this.props.transformer(this.props.codeText);
+
+      /* eslint-disable */
+      eval(compiledCode);
+      /* eslint-enable */
+    } finally {
+      ReactDOM.render = originalRender;
+    }
   }
+
+  handleCodeChange(value) {
+    this.setState(
+      {code: value, codeChanged: true},
+      this.executeCode
+    );
+  }
+
+  executeCode() {
+    const mountNode = this.clearExample();
+
+    let compiledCode = null;
+    try {
+      compiledCode = this.props.transformer(this.state.code);
+
+      /* eslint-disable */
+      eval(compiledCode);
+      /* eslint-enable */
+    } catch (err) {
+      if (compiledCode !== null) {
+        console.log(err, compiledCode); // eslint-disable-line no-console
+      } else {
+        console.log(err); // eslint-disable-line no-console
+      }
+
+      this.updateTimeout(
+        () => {
+          ReactDOM.render(
+            <div bsStyle="danger">
+            {err.toString()}
+            </div>,
+            mountNode
+          );
+        },
+        500
+      );
+    }
+  }
+
 
   renderEditor() {
     if (!this.state.showCode) {
@@ -85,9 +151,32 @@ class CodeMirror extends React.Component {
     );
   }
 
+  renderExample() {
+    let example;
+    if (this.state.codeChanged) {
+      example = (
+        <div ref="mount" />
+      );
+    } else {
+      example = (
+        <div>{this._initialExample}</div>
+      );
+    }
+
+    return (
+      <div className={classNames('bs-example', this.props.exampleClassName)}>
+      {example}
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="playground">
+        <h1>Example</h1>
+        {this.renderExample()}
+
+        <h1>Editor</h1>
         {this.renderEditor()}
       </div>
     );
