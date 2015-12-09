@@ -1,43 +1,5 @@
+const handleClick = function() {
+  console.log("Neutral Button Clicked");
+};
 
-Default Props             Prop Values
-* variant='base'          ['base', 'neutral', 'brand', 'destructive', 'icon'] Use icon if you want an icon only button
-* label=undefined         Required Prop. If variant is icon, the label will be invisible but still readable by assistive technology.
-* disabled=false
-* tabindex=undefined
-* inverse=false
-* stateful=false
-* responsive=false
-* iconName=undefined      see https://www.lightningdesignsystem.com/resources/icons#utility for names
-* className=undefined     custom classes on the button tag
-
-** If iconName exists
-  * iconVariant='bare'    ['bare', 'container', 'border', 'border-filled', 'small', 'more']
-  * iconSize='medium'     ['x-small', 'medium', 'small', 'large']
-  * iconPosition='left'   ['left', 'right', 'large']
-
-** If stateful=true
-  * notSelectedIcon=undefined
-  * notSelectedLabel=undefined
-  * selectedIcon=undefined
-  * selectedLabel=undefined
-  * selectedFocusIcon=undefined
-  * selectedFocusLabel=undefined
-
-1. <SLDSButton label='Neutral' variant='neutral' onClick={this.handleNeutralClick} />
-2. <SLDSButton label='Neutral Icon' variant='neutral' iconName='download' iconSize='small' iconPosition='right' onClick={this.handleNeutralClick} />
-3. <SLDSButton label='Disabled' variant='neutral' disabled={true} onClick={this.handleDisabledClick} />
-4. <SLDSButton label='Brand' variant='brand' onClick={this.handleBrandClick} />
-5. <SLDSButton label='Settings' variant='icon' iconName='settings' iconSize='large' onClick={this.handleIconClick} />
-6. <SLDSButton label='User' variant='icon' inverse={true} iconName='user' iconSize='large' onClick={this.handleIconClick} />
-7. <SLDSButton label='Edit' variant='icon' hint={true} iconName='edit' iconSize='large' onClick={this.handleIconClick} />
-8. <SLDSButton
-      label='Follow'
-      variant='neutral'
-      stateful={true}
-      notSelectedIcon='add'
-      notSelectedLabel='Follow'
-      selectedIcon='check'
-      selectedLabel='Following'
-      selectedFocusIcon='close'
-      selectedFocusLabel='Unfollow'
-      onClick={this.handleStatefulClick} />
+<SLDSButton label='Neutral' variant='neutral' onClick={handleClick} />

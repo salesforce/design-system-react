@@ -61,9 +61,11 @@ module.exports = React.createClass( {
                 Icon
                 </a>
               </h3>
-              <PrismCode className='language-markup'>
-                {require('raw-loader!../../code-snippets/SLDSIcon.txt')}
-              </PrismCode>
+
+              <div>
+                <CodeMirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
+              </div>
+      { /*
               <div className='slds-p-vertical--large'>
 
               <table className="slds-container--small">
@@ -72,9 +74,6 @@ module.exports = React.createClass( {
                 Action
                 </td>
                 <td>
-			<div>
-				<CodeMirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
-			</div>
                 <Icon name='announcement' category='action' size="medium" assistiveText='Action' />
                 </td>
               </tr>
@@ -105,6 +104,7 @@ module.exports = React.createClass( {
               </table>
 
               </div>
+        */ }
             </div>
 
 
