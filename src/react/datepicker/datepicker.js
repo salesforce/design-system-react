@@ -38,6 +38,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		const calendarData = this._getCalendarData();
 		const selectedDates = this.props.selection;
 		const selDateFormatted = selectedDates.length ? this._formatDate(selectedDates[0]) : '';
+		const isOpen = Openable.isOpen(this);
 
 		if (this.refs.popover) {
 			this._setElements();
@@ -49,7 +50,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 					ariaLabel={this.props.inputLabel}
 					selectedDate={selDateFormatted}
 					strings={this.state.strings}/>
-				<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !this.state.isOpen})} ref="popover" data-selection="single">
+				<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !isOpen})} ref="popover" data-selection="single">
 					<div className="slds-datepicker__filter slds-grid">
 						<DateMonth
 							monthName={this._getMonthName()}

@@ -39,13 +39,14 @@ export const PicklistObject = {
 	render () {
 		const triggerId = this._getTriggerId();
 		const item = this._getSelection();
+		const isOpen = Openable.isOpen(this);
 		const selectionName = item.getText() || this.state.strings.NONE_SELECTED;
 		const styles = {
 			width: this.state.width
 		};
 
 		return (
-			<div className="slds-picklist" id={this.state.id} aria-expanded={this.state.isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div className="slds-picklist" id={this.state.id} aria-expanded={isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<Button
 					id={triggerId}
 					className="slds-picklist__label"
@@ -57,7 +58,7 @@ export const PicklistObject = {
 					<span className="slds-truncate">{selectionName}</span>
 					<Svg className="slds-icon" icon="utility.down" />
 				</Button>
-				<PicklistItems id={this._getMenuId()} labelledBy={triggerId} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={!!this.state.isOpen} onSelected={this._handleMenuItemSelected} />
+				<PicklistItems id={this._getMenuId()} labelledBy={triggerId} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={isOpen} onSelected={this._handleMenuItemSelected} />
 			</div>
 		);
 	},
