@@ -20,7 +20,7 @@ require('codemirror/mode/javascript/javascript');
 module.exports = React.createClass( {
   getInitialState () {
 		return {
-			code: 'var component = { "test": "Donielle" };',
+			code: "<Icon name='announcement' category='action' size='medium' assistiveText='Action' />",
 			readOnly: false,
 			mode: 'javascript',
 		};
@@ -48,11 +48,16 @@ module.exports = React.createClass( {
   },
 
   render() {
-		var options = {
-			lineNumbers: true,
-			readOnly: this.state.readOnly,
-			mode: this.state.mode
-		};
+    var options = {
+      mode: 'text/jsx',
+      lineNumbers: false,
+      lineWrapping: false,
+      matchBrackets: true,
+      tabSize: 2,
+      theme: 'solarized light',
+      readOnly: this.state.readOnly
+    };
+    var defaultCode = "<Icon name='announcement' category='action' size='medium' assistiveText='Action' />";
     return (
 
             <div className='slds-p-around--medium'>
@@ -63,7 +68,7 @@ module.exports = React.createClass( {
               </h3>
 
               <div>
-                <CodeMirror ref="editor" value={this.state.code} onChange={this.updateCode} options={options} />
+                <CodeMirror ref="editor" defaultCode={defaultCode} value={this.state.code} onChange={this.updateCode} options={options} />
               </div>
       { /*
               <div className='slds-p-vertical--large'>

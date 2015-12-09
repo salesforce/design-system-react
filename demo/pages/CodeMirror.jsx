@@ -15,6 +15,87 @@ const propTypes = {
 const defaultProps = {
 };
 
+class CodeMirrorEditor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    const node = React.findDOMNode(this.refs.editor);
+    this.editor = CM.fromTextArea(node, {
+      mode: 'text/jsx',
+      lineNumbers: false,
+      lineWrapping: false,
+      matchBrackets: true,
+      tabSize: 2,
+      theme: 'solarized light',
+      readOnly: this.props.readOnly
+    });
+    this.editor.on('change', this.handleChange);
+  }
+
+  componentDidUpdate() {
+    if (this.props.readOnly) {
+      this.editor.setValue(this.props.codeText);
+    }
+  }
+
+  handleChange() {
+    if (!this.props.readOnly && this.props.onChange) {
+      this.props.onChange(this.editor.getValue());
+    }
+  }
+
+  render() {
+    let editor = <textarea ref="editor" defaultValue={this.props.codeText} />;
+    return (
+      <div style={this.props.style} className={this.props.className}>
+        {editor}
+      </div>
+      );
+  }
+}
+
+class CodeMirror extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      showCode: true,
+      code: this.props.defaultCode,
+    };
+  }
+
+  handleCodeChange() {
+    console.log('changing code');
+  }
+
+  renderEditor() {
+    if (!this.state.showCode) {
+      return null;
+    }
+
+    return (
+      <CodeMirrorEditor
+        key="jsx"
+        onChange={this.handleCodeChange}
+        className="highlight"
+        codeText={this.state.code}
+      />
+    );
+  }
+
+  render() {
+    return (
+      <div className="playground">
+        {this.renderEditor()}
+      </div>
+    );
+  }
+}
+
+/*
+
 class CodeMirror extends React.Component {
   constructor(props){
     super(props);
@@ -91,6 +172,7 @@ class CodeMirror extends React.Component {
   }
 }
 
+*/
 CodeMirror.displayName = displayName;
 CodeMirror.propTypes = propTypes;
 CodeMirror.defaultProps = defaultProps;
