@@ -8,12 +8,11 @@ import * as Lib from '../lib/lib';
 import Base from './base';
 
 // Traits
-import Disableable from '../traits/disableable';
 import Checkable from '../traits/checkable';
 
 export const CONTROL = 'Checkbox';
 
-const CheckboxCore = Lib.merge({}, Base, Disableable, Checkable, {
+const CheckboxCore = Lib.merge({}, Base, Checkable, {
 	CONTROL,
 	
 	cssClasses: {
@@ -27,13 +26,9 @@ const CheckboxCore = Lib.merge({}, Base, Disableable, Checkable, {
 		name: ''
 	},
 
+	// Disabled controls cannot be checked
 	_canCheck () {
-		if (this.getProperty('disabled')) {
-			// Component is disabled, do not allow a toggle to occur.
-			return false;
-		}
-
-		return true;
+		return !this.getProperty('disabled');
 	},
 
 	toggle () {

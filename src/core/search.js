@@ -7,12 +7,9 @@ import * as Lib from '../lib/lib';
 // Inherit from the [base control](base.html).
 import Base from './base';
 
-// Traits
-import Disableable from '../traits/disableable';
-
 export const CONTROL = 'Search';
 
-const SearchCore = Lib.merge({}, Base, Disableable, {
+const SearchCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	cssClasses: {
@@ -21,7 +18,8 @@ const SearchCore = Lib.merge({}, Base, Disableable, {
 		REMOVE_ICON: 'glyphicon-remove',
 		SEARCH: 'search',
 		SEARCH_ICON: 'glyphicon-search',
-		SEARCHED: 'searched'
+		SEARCHED: 'searched',
+		DISABLED: 'slds-disabled'
 	},
 	
 	_defaultProperties: {
@@ -137,16 +135,16 @@ const SearchCore = Lib.merge({}, Base, Disableable, {
 		}
 	},
 
-	_onEnabledOrDisabled: function () {
-		if (this.getProperty('disabled')) {
-			Lib.addClass(this.elements.root, this.cssClasses.DISABLED);
-			this.elements.input.setAttribute('disabled', 'disabled');
-			Lib.addClass(this.elements.button, this.cssClasses.DISABLED);
-		} else {
-			Lib.removeClass(this.elements.root, this.cssClasses.DISABLED);
-			this.elements.input.removeAttribute('disabled');
-			Lib.removeClass(this.elements.button, this.cssClasses.DISABLED);
-		}
+	enable: function () {
+		Lib.removeClass(this.elements.root, this.cssClasses.DISABLED);
+		this.elements.input.removeAttribute('disabled');
+		Lib.removeClass(this.elements.button, this.cssClasses.DISABLED);
+	},
+	
+	disable: function () {
+		Lib.addClass(this.elements.root, this.cssClasses.DISABLED);
+		this.elements.input.setAttribute('disabled', 'disabled');
+		Lib.addClass(this.elements.button, this.cssClasses.DISABLED);
 	}
 });
 

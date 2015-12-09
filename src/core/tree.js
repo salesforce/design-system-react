@@ -7,12 +7,9 @@ import * as Lib from '../lib/lib';
 // Inherit from the [base control](base.html).
 import Base from './base';
 
-// Traits
-import Disableable from '../traits/disableable';
-
 export const CONTROL = 'Tree';
 
-const TreeCore = Lib.merge({}, Base, Disableable, {
+const TreeCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	// CSS classes used within this control

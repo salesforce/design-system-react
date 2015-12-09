@@ -53,9 +53,10 @@ export const ComboboxObject = {
 	_render () {
 		const selection = this._getSelection();
 
-		// Configure the button
-		const disabled = !!this.getProperty('disabled');
-		this.elements.button.prop('disabled', disabled);
+		if (this.getProperty('disabled')) {
+			this.elements.input.attr('disabled', 'disabled');
+			this.elements.button.attr('disabled', 'disabled');
+		}
 
 		// Show the current selection if there is one
 		this.elements.input.val(selection.getText());
@@ -73,6 +74,27 @@ export const ComboboxObject = {
 		}
 	},
 
+	enable () {
+		this.setProperties({
+			disabled: false
+		});
+
+		if (this.rendered) {
+			this.elements.input.removeAttr('disabled');
+			this.elements.button.removeAttr('disabled');
+		}
+	},
+
+	disable () {
+		this.setProperties({
+			disabled: true
+		});
+
+		if (this.rendered) {
+			this.elements.input.attr('disabled', 'disabled');
+			this.elements.button.attr('disabled', 'disabled');
+		}
+	},
 	_onEnabledOrDisabled () {
 		if (this.rendered) {
 			const disabled = !!this.getProperty('disabled');

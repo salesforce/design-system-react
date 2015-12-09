@@ -8,12 +8,11 @@ import * as Lib from '../lib/lib';
 import Base from './base';
 
 // Traits
-import Disableable from '../traits/disableable';
 import Positionable from '../traits/positionable';
 
 export const CONTROL = 'Datepicker';
 
-const DatepickerCore = Lib.merge({}, Base, Disableable, Positionable, {
+const DatepickerCore = Lib.merge({}, Base, Positionable, {
 	CONTROL,
 	
 	// CSS classes used within this control

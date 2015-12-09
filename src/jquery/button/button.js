@@ -127,12 +127,23 @@ export const ButtonObject = {
 		this.elements.control[0].className = this._getClassNames('', (isStateful || this.getProperty('selectable')));
 	},
 
-	// Triggered when control is enabled or disabled. See [disableable]('../traits/disableable').
-	_onEnabledOrDisabled () {
-		if ( this.getProperty('disabled') ) {
-			this.elements.control.attr('disabled', 'disabled');
-		} else {
+	enable () {
+		this.setProperties({
+			disabled: false
+		});
+
+		if (this.rendered) {
 			this.elements.control.removeAttr('disabled');
+		}
+	},
+
+	disable () {
+		this.setProperties({
+			disabled: true
+		});
+
+		if (this.rendered) {
+			this.elements.control.attr('disabled', 'disabled');
 		}
 	},
 
