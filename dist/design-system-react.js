@@ -7115,6 +7115,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	var defaultProps = {};
 	
+	/**
+	 * General component description.
+	 */
+	
 	var SLDSButton = (function (_React$Component) {
 	  _inherits(SLDSButton, _React$Component);
 	

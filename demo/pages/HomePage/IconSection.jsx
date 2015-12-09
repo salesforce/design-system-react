@@ -19,44 +19,10 @@ require('codemirror/mode/javascript/javascript');
 
 module.exports = React.createClass( {
   getInitialState () {
-		return {
-			code: "<Icon name='announcement' category='action' size='medium' assistiveText='Action' />",
-			readOnly: false,
-			mode: 'javascript',
-		};
+		return {};
 	},
-	updateCode (newCode) {
-		this.setState({
-			code: newCode
-		});
-	},
-	changeMode (e) {
-		var mode = e.target.value;
-		this.setState({
-			mode: mode,
-			code: defaults[mode]
-		});
-	},
-	toggleReadOnly () {
-		this.setState({
-			readOnly: !this.state.readOnly
-		}, () => this.refs.editor.focus());
-	},
-
-  handleButtonClick () {
-    alert('Test Button Clicked');
-  },
 
   render() {
-    var options = {
-      mode: 'text/jsx',
-      lineNumbers: false,
-      lineWrapping: false,
-      matchBrackets: true,
-      tabSize: 2,
-      theme: 'solarized light',
-      readOnly: this.state.readOnly
-    };
     var defaultCode = "<Icon name='announcement' category='action' size='medium' assistiveText='Action' />";
     return (
 
@@ -68,7 +34,7 @@ module.exports = React.createClass( {
               </h3>
 
               <div>
-                <CodeMirror codeText={"var hello = 'hola'"} />
+                <CodeMirror codeText={defaultCode} />
               </div>
       { /*
               <div className='slds-p-vertical--large'>

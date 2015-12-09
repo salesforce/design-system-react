@@ -2,7 +2,7 @@ const CM = require('codemirror');
 const React = require('react');
 const ReactDOM = require('react-dom');
 const classNames = require('classnames');
-//const babel = require('babel-core');
+import babel from 'babel-core/browser';
 
 const {Icon}=  require('../../components/SLDSIcons');
 
@@ -18,8 +18,7 @@ const propTypes = {
 
 const defaultProps = {
   transformer: function(code) {
-    return code
-    //return babel.transform(code).code;
+    return babel.transform(code).code;
   }
 };
 
@@ -104,6 +103,21 @@ class CodeMirror extends React.Component {
     );
   }
 
+  clearExample() {
+    if (!this.state.codeChanged) {
+      return null;
+    }
+
+    const mountNode = React.findDOMNode(this.refs.mount);
+    try {
+      ReactDOM.unmountComponentAtNode(mountNode);
+    } catch (e) {
+      console.error(e); // eslint-disable-line no-console
+    }
+
+    return mountNode;
+  }
+
   executeCode() {
     const mountNode = this.clearExample();
 
@@ -144,7 +158,7 @@ class CodeMirror extends React.Component {
     return (
       <CodeMirrorEditor
         key="jsx"
-        onChange={this.handleCodeChange}
+        onChange={this.handleCodeChange.bind(this)}
         className="highlight"
         codeText={this.state.code}
       />
