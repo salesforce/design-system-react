@@ -19,14 +19,14 @@ export const PopoverMethods = {
 		alignmentTarget: mountable,
 		autoFlip: React.PropTypes.bool,
 		container: mountable,
-		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.positionable.attatchmentOptions)),
+		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions)),
 		trigger: React.PropTypes.oneOf(Object.keys(PopoverCore.triggers))
 	},
 
 	_setElements () {
-		this.elements.positionableElement = Lib.wrapElement(this.refs.popover);
-		this.elements.positionableContainer = Lib.wrapElement(this.props.container || this.element);
-		this.elements.positionableTarget = Lib.wrapElement(this.props.alignmentTarget || this.elements.positionableContainer);
+		Positionable.setElement(this, this.refs.popover);
+		Positionable.setContainer(this, this.props.container || this.element);
+		Positionable.setTarget(this, this.props.alignmentTarget || Positionable.getContainer(this));
 	},
 	
 	componentWillMount: function () {
@@ -42,10 +42,7 @@ export const PopoverMethods = {
 	},
 
 	componentDidUpdate () {
-		this.positionable._updatePosition.call(this,
-			this.elements.positionableElement,
-			this.elements.positionableContainer,
-			this.elements.positionableTarget);
+		Positionable.position(this);
 	}
 };
 

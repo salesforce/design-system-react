@@ -22,7 +22,7 @@ let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
 		alignmentTarget: mountable,
 		container: mountable,
 		isOpen: React.PropTypes.bool,
-		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.positionable.attatchmentOptions))
+		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
 	},
 
 	mixins: [State, Events, genericWillMount],

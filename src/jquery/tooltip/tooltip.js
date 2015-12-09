@@ -7,6 +7,9 @@ import TooltipCore, {CONTROL} from '../../core/tooltip';
 // Inherited functionality from popover
 import { PopoverMethods } from '../popover/popover';
 
+// Traits
+import Positionable from '../../traits/positionable';
+
 // Framework Specific
 import DOM from '../dom';
 import Events from '../events';
@@ -27,7 +30,7 @@ let Tooltip = function Tooltip () {
 
 Lib.merge(Tooltip.prototype, TooltipCore, Events, DOM, State, PopoverMethods, {
 	_render () {
-		const body = this.elements.positionableElement.find('.slds-popover__body');
+		const body = $(Positionable.getElement(this)).find('.slds-popover__body');
 
 		if (this.getProperty('content')) {
 			body.append(this.getProperty('content'));

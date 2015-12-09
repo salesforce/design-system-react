@@ -14,6 +14,7 @@ import LookupCore, {CONTROL} from '../../core/lookup';
 // Traits
 import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
+import Positionable from '../../traits/positionable';
 
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
@@ -98,9 +99,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 			navigableItems,
 			isHidden: !this.props.isOpen
 		});
-		
-		// `_attachPositionedElementToBody` creates an absolutely positionable container for the dropdown menu from within the [positionable trait]((../../traits/Positionable.html)).
-		this.elements.positionableElement = this.positionable._attachPositionedElementToBody();
+
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody());
 	},
 
 	componentWillReceiveProps (nextProps) {
@@ -121,15 +121,9 @@ let Lookup = Lib.merge({}, LookupCore, {
 		});
 	},
 
-	componentDidMount () {
-		if (this.props.modalMenu) {
-			this.positionable.addPositionableEventListeners('isOpen', this);
-		}
-	},
-
 	componentWillUnmount () {
 		if (this.props.modalMenu) {
-			this.positionable.removePositionableEventListeners('isOpen', this);
+			Positionable.removeEventListeners(this);
 		}
 		
 		Openable.removeEventListeners(this);
@@ -203,21 +197,19 @@ let Lookup = Lib.merge({}, LookupCore, {
 	// Modal dropdown menus' parent is `body` and are absolutely positioned in order to visually attach the dropdown to the input.
 	_renderModalMenu () {
 		const menu = this._renderMenu();
-		// positionedElement is a "wrapped element"
-		ReactDOM.render(menu, this.elements.positionableElement.element);
+		ReactDOM.render(menu, Positionable.getElement(this));
 
-		this.elements.positionableContainer = Lib.wrapElement(document.querySelector('body'));
-		this.elements.positionableTarget = Lib.wrapElement(this.elements.input);
-		this.positionable._updatePosition.call(this,
-			this.elements.positionableElement,
-			this.elements.positionableContainer,
-			this.elements.positionableTarget);
+		Positionable.setContainer(this, document.querySelector('body'));
+		Positionable.setTarget(this, this.elements.input);
+		Positionable.position(this);
+	},
 
-		if (!this.state.isOpen) {
-			this.elements.positionableElement.addClass('slds-hidden');
-		} else {
-			this.elements.positionableElement.removeClass('slds-hidden');
-		}
+	_onOpened () {
+		Positionable.show(this);
+	},
+
+	_onClosed () {
+		Positionable.hide(this);
 	},
 
 	// After the control has rendered, we may need to scroll the currently selected menu item into view. The function which actually peforms the scrolling lives in the core.
@@ -234,9 +226,15 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this.elements.input.focus();
 			this._focusOnInput = false;
 		}
+
+		if (this.props.modalMenu && this.state.isOpen) {
+			Positionable.addEventListeners(this);
+		} else if (this.props.modalMenu && !this.state.isOpen) {
+			Positionable.removeEventListeners(this);
+		}
 	},
 
-	// Save a reference to the input element after it renders. This is primarily used for setting focus.
+	// Save a reference to the input element after it renders. This is primarily used for setting focus. It is also used for positioning the menu.
 	_setInputRef (input) {
 		this.elements.input = ReactDOM.findDOMNode(input);
 	},
