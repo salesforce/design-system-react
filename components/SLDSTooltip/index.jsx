@@ -10,6 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSPopover from '../SLDSPopover';
+
+import tooltip from './tooltip';
+
+
 const classNames = require("classnames");
 
 const displayName = "SLDSTooltip";
@@ -72,31 +76,11 @@ class SLDSTooltip extends React.Component {
           isClosing: false
         });
       }
-    },this.props.hoverCloseDelay)
+    },this.props.hoverCloseDelay);
   }
 
   getTooltipContent() {
     return <div className='slds-popover__body'>{this.props.content}</div>;
-  }
-
-  getHorizontalAlign() {
-    if (this.props.align==='left') {
-      return 'left';
-    }
-    else if (this.props.align==='right') {
-      return 'right';
-    }
-    return 'center';
-  }
-
-  getVerticalAlign() {
-    if (this.props.align==='bottom') {
-      return 'bottom';
-    }
-    else if (this.props.align==='top') {
-      return 'top';
-    }
-    return 'middle';
   }
 
   handleCancel() {
@@ -106,43 +90,17 @@ class SLDSTooltip extends React.Component {
     });
   }
 
-  getClassName() {
-    return classNames(this.props.className, "slds-popover", {
-      ["slds-popover--tooltip"]: true,
-      ["slds-nubbin--top"]: this.props.align === 'bottom',
-      ['slds-nubbin--bottom']: this.props.align === 'top',
-      ['slds-nubbin--left']: this.props.align === 'right',
-      ['slds-nubbin--right']: this.props.align === 'left'
-    });
-  }
-
   getTooltip() {
-    return this.state.isOpen?<SLDSPopover
-          key={this.getHorizontalAlign()+' '+this.getVerticalAlign()}
-          targetElement={this.refs.tooltipTarget}
-          closeOnTabKey={true}
-          className=''
-          marginTop='1rem'
-          marginBottom='1rem'
-          marginLeft='1.5rem'
-          marginRight='1.5rem'
-          horizontalAlign={this.getHorizontalAlign()}
-          verticalAlign={this.getVerticalAlign()}
-          flippable={false}
-          onClose={this.handleCancel.bind(this)}>
-          <div className={this.getClassName()} role="tooltip">
-            {this.getTooltipContent()}
-          </div>
-        </SLDSPopover>:null;
+    return this.state.isOpen?tooltip.getTooltip(this.props, this.getTooltipContent(), this.refs.tooltipTarget, this.handleCancel.bind(this)):null;
   }
 
   render(){
     const btnStyles = { color: "inherit"};
     return (
-      <button className="slds-button" refs='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick.bind(this):null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} onFocus={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onBlur={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} style={btnStyles}>
+      <span ref='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick.bind(this):null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} onFocus={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onBlur={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} style={btnStyles}>
         { this.props.children }
         { this.getTooltip() }
-      </button>
+      </span>
     );
   }
 
@@ -154,4 +112,3 @@ SLDSTooltip.propTypes = propTypes;
 SLDSTooltip.defaultProps = defaultProps;
 
 module.exports = SLDSTooltip;
-
