@@ -76,31 +76,11 @@ class SLDSTooltip extends React.Component {
           isClosing: false
         });
       }
-    },this.props.hoverCloseDelay)
+    },this.props.hoverCloseDelay);
   }
 
   getTooltipContent() {
     return <div className='slds-popover__body'>{this.props.content}</div>;
-  }
-
-  getHorizontalAlign() {
-    if (this.props.align==='left') {
-      return 'left';
-    }
-    else if (this.props.align==='right') {
-      return 'right';
-    }
-    return 'center';
-  }
-
-  getVerticalAlign() {
-    if (this.props.align==='bottom') {
-      return 'bottom';
-    }
-    else if (this.props.align==='top') {
-      return 'top';
-    }
-    return 'middle';
   }
 
   handleCancel() {
@@ -111,23 +91,7 @@ class SLDSTooltip extends React.Component {
   }
 
   getTooltip() {
-    return this.state.isOpen?<SLDSPopover
-          key={this.getHorizontalAlign()+' '+this.getVerticalAlign()}
-          targetElement={this.refs.tooltipTarget}
-          closeOnTabKey={true}
-          className=''
-          marginTop='1rem'
-          marginBottom='1rem'
-          marginLeft='1.5rem'
-          marginRight='1.5rem'
-          horizontalAlign={this.getHorizontalAlign()}
-          verticalAlign={this.getVerticalAlign()}
-          flippable={false}
-          onClose={this.handleCancel.bind(this)}>
-          <div className={tooltip.getClassName(this.props)} role="tooltip">
-            {this.getTooltipContent()}
-          </div>
-        </SLDSPopover>:null;
+    return this.state.isOpen?tooltip.getTooltip(this.props, this.getTooltipContent(), this.refs.tooltipTarget, this.handleCancel.bind(this)):null;
   }
 
   render(){
@@ -148,4 +112,3 @@ SLDSTooltip.propTypes = propTypes;
 SLDSTooltip.defaultProps = defaultProps;
 
 module.exports = SLDSTooltip;
-

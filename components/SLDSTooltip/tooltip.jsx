@@ -7,18 +7,70 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+import React from 'react';
+import SLDSPopover from '../SLDSPopover';
+
+
 const classNames = require("classnames");
+
+const getClassName = (props) => {
+  return classNames(props.className, "slds-popover", {
+    ["slds-popover--tooltip"]: true,
+    ["slds-nubbin--top"]: props.align === 'bottom',
+    ['slds-nubbin--bottom']: props.align === 'top',
+    ['slds-nubbin--left']: props.align === 'right',
+    ['slds-nubbin--right']: props.align === 'left'
+  });
+};
+
+const getHorizontalAlign = (align) => {
+  if (align==='left') {
+    return 'left';
+  }
+  else if (align==='right') {
+    return 'right';
+  }
+  return 'center';
+};
+
+const getVerticalAlign = (align) => {
+  if (align==='bottom') {
+    return 'bottom';
+  }
+  else if (align==='top') {
+    return 'top';
+  }
+  return 'middle';
+};
+
+const getTooltip = (props, content, target, onClose) => {
+  return <SLDSPopover
+        key={getHorizontalAlign(props.align)+' '+getVerticalAlign(props.align)}
+        targetElement={target}
+        closeOnTabKey={true}
+        className=''
+        marginTop='1rem'
+        marginBottom='1rem'
+        marginLeft='1.5rem'
+        marginRight='1.5rem'
+        horizontalAlign={getHorizontalAlign(props.align)}
+        verticalAlign={getVerticalAlign(props.align)}
+        flippable={false}
+        onClose={onClose}>
+        <div className={getClassName(props)} role="tooltip">
+          {content}
+        </div>
+      </SLDSPopover>;
+}
 
 module.exports = {
 
-  getClassName(props) {
-    return classNames(props.className, "slds-popover", {
-      ["slds-popover--tooltip"]: true,
-      ["slds-nubbin--top"]: props.align === 'bottom',
-      ['slds-nubbin--bottom']: props.align === 'top',
-      ['slds-nubbin--left']: props.align === 'right',
-      ['slds-nubbin--right']: props.align === 'left'
-    });
-  }
+  getClassName: getClassName,
+
+  getHorizontalAlign: getHorizontalAlign,
+
+  getVerticalAlign: getVerticalAlign,
+
+  getTooltip: getTooltip
 
 };
