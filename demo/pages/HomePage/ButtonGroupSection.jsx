@@ -97,7 +97,9 @@ module.exports = React.createClass( {
                   <SLDSTooltip align="bottom" content="hello" openOn="click">
                     <SLDSButton label='Edit' variant='neutral' />
                   </SLDSTooltip>
-                  <SLDSButton label='Save' variant='neutral' />
+                  <SLDSTooltip align="bottom" content="hello" openOn="click">
+                    <SLDSButton label='Save' variant='neutral' />
+                  </SLDSTooltip>
                 </SLDSButtonGroup>
               </div>
             </div>

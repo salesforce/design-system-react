@@ -10,6 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSPopover from '../SLDSPopover';
+
+import tooltip from './tooltip';
+
+
 const classNames = require("classnames");
 
 const displayName = "SLDSTooltip";
@@ -106,16 +110,6 @@ class SLDSTooltip extends React.Component {
     });
   }
 
-  getClassName() {
-    return classNames(this.props.className, "slds-popover", {
-      ["slds-popover--tooltip"]: true,
-      ["slds-nubbin--top"]: this.props.align === 'bottom',
-      ['slds-nubbin--bottom']: this.props.align === 'top',
-      ['slds-nubbin--left']: this.props.align === 'right',
-      ['slds-nubbin--right']: this.props.align === 'left'
-    });
-  }
-
   getTooltip() {
     return this.state.isOpen?<SLDSPopover
           key={this.getHorizontalAlign()+' '+this.getVerticalAlign()}
@@ -130,7 +124,7 @@ class SLDSTooltip extends React.Component {
           verticalAlign={this.getVerticalAlign()}
           flippable={false}
           onClose={this.handleCancel.bind(this)}>
-          <div className={this.getClassName()} role="tooltip">
+          <div className={tooltip.getClassName(this.props)} role="tooltip">
             {this.getTooltipContent()}
           </div>
         </SLDSPopover>:null;
