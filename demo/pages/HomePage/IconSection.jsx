@@ -23,7 +23,9 @@ module.exports = React.createClass( {
 	},
 
   render() {
-    var defaultCode = "<Icon name='announcement' category='action' size='medium' assistiveText='Action' />";
+    var defaultCode = "const instance = <Icon name='announcement' category='action' size='medium' assistiveText='Action' />; React.render(instance, mountNode)";
+    var testCode = "console.log('my example div is ', document.getElementById('exampleDiv'));";
+
     return (
 
             <div className='slds-p-around--medium'>

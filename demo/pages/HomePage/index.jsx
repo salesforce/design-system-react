@@ -38,7 +38,7 @@ import IconSection from './IconSection';
 import TooltipSection from './TooltipSection';
 
 import DOCS from '../../../docs';
-console.log('DOCS: ',DOCS);
+//console.log('DOCS: ',DOCS);
 
 
 const SLDSColumn = SLDSGrid.Column;
@@ -101,7 +101,7 @@ module.exports = React.createClass( {
           </div>
         </div>
 
-        <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>        
+        <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
           <div className='region region--main slds-grow slds-size--1-of-4 slds-medium-size--1-of-4 slds-large-size--1-of-8 slds-col-rule--right slds-p-around--large'>
 
             <section className="slds-p-bottom--large">
