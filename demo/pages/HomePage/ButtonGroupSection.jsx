@@ -17,7 +17,6 @@ import SLDSButton from '../../../components/SLDSButton';
 import SLDSTooltip from '../../../components/SLDSTooltip';
 import SLDSButtonStateful from '../../../components/SLDSButton/SLDSButtonStateful';
 import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
-import {default as PrismCode} from "react-prism/lib/PrismCode";
 
 module.exports = React.createClass( {
 
@@ -43,10 +42,6 @@ module.exports = React.createClass( {
                   Button Group
                 </a>
               </h3>
-
-              <PrismCode className='language-markup'>
-                {require('raw-loader!../../code-snippets/SLDSButtonGroup.txt')}
-              </PrismCode>
 
               <div className='slds-p-vertical--small'>
                 <SLDSButtonGroup>

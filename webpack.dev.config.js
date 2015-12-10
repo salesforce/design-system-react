@@ -33,6 +33,12 @@ module.exports = {
         loaders: ['react-hot', 'babel'],
         include: [path.join(__dirname, 'demo'),path.join(__dirname, 'components')]
       },
+{ test: /Samples.js/, loader: "transform?brfs" },
+      //{
+      //  test: /\.js$/,
+      //  include: path.join(__dirname, "demo/pages"), //export code example file content as string for codemirror
+      //  loader: "transform?brfs"
+      //},
       {
           test: /\.(js|jsx)?$/,
           loaders: ['react-hot', 'babel'],
@@ -43,15 +49,15 @@ module.exports = {
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
 
-      { 
-        test: /\.coffee$/, 
+      {
+        test: /\.coffee$/,
         loader: "coffee-loader"
       },
       {
-        test: /\.(coffee\.md|litcoffee)$/, 
+        test: /\.(coffee\.md|litcoffee)$/,
         loader: "coffee-loader?literate"
       },
-      { 
+      {
         test: /\.cjsx$/, loader: "coffee-jsx-loader"
       },
 /*
@@ -66,4 +72,5 @@ module.exports = {
       }
     ]
   },
+node: { fs: "empty" },
 };

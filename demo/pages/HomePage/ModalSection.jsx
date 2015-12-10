@@ -10,10 +10,8 @@
 'use strict';
 
 import React from 'react';
-import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
 import {SLDSButton, SLDSPicklistBase, SLDSLookup} from '../../../components';
-
 import SLDSModal from '../../../components/SLDSModal';
 
 module.exports = React.createClass( {
@@ -143,10 +141,6 @@ module.exports = React.createClass( {
         Modal
         </a>
       </h3>
-      <PrismCode className='language-markup'>
-        {require("raw-loader!../../code-snippets/SLDSModal.txt")}
-      </PrismCode>
-
       <div className='slds-p-vertical--medium'>
         <h4 className="slds-text-heading--small ">Base</h4>
         <SLDSButton label='Open Modal' variant='brand' onClick={this.openModal} />

@@ -12,11 +12,6 @@
 import React from "react";
 import SLDSButton from "../../../components/SLDSButton";
 import SLDSButtonStateful from "../../../components/SLDSButton/SLDSButtonStateful";
-import {default as PrismCode} from "react-prism/lib/PrismCode";
-
-
-
-
 
 module.exports = React.createClass( {
 
@@ -51,11 +46,9 @@ module.exports = React.createClass( {
           </a>
         </h3>
 
-        <PrismCode className="language-markup">
-        {/*require("raw-loader!../../code-snippets/SLDSButton.txt") */}
-        </PrismCode>
+<CodeMirror codeText={Samples.Buttons} />
 
-
+{ /*
         <div className="slds-p-vertical--medium">
           <h4 className="slds-text-heading--small">Standard Buttons</h4>
           <SLDSButton label="Base" variant="base" onClick={this.handleClick('Base')} className="slds-m-right--medium"/>
@@ -151,6 +144,9 @@ module.exports = React.createClass( {
           </table>
 
         </div>
+
+  */
+}
       </div>
 
 

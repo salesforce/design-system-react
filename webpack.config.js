@@ -35,15 +35,15 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract("style-loader", "css-loader")
       },
-      { 
-        test: /\.coffee$/, 
+      {
+        test: /\.coffee$/,
         loader: "coffee-loader"
       },
       {
-        test: /\.(coffee\.md|litcoffee)$/, 
+        test: /\.(coffee\.md|litcoffee)$/,
         loader: "coffee-loader?literate"
       },
-      { 
+      {
         test: /\.cjsx$/, loader: "coffee-jsx-loader"
       },
 

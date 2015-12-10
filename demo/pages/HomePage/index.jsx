@@ -14,28 +14,7 @@ import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;
 
 import SLDSGrid from '../../../components/SLDSGrid';
-import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
-
-import ButtonSection from './ButtonSection';
-import ButtonGroupSection from './ButtonGroupSection';
-
-import NotificationSection from './NotificationSection';
-
-import LookupBaseSection from './LookupBaseSection';
-
-import LookupBaseCustomSection from './LookupBaseCustomSection';
-
-import LookupBaseDynamicSection from './LookupBaseDynamicSection';
-
-import PicklistBaseSection from './PicklistBaseSection';
-import PicklistBaseCustomSection from './PicklistBaseCustomSection';
-
-import DropdownBaseSection from './DropdownBaseSection';
-
-import ModalSection from './ModalSection';
-import DatePickerSingleSelectSection from './DatePickerSingleSelectSection';
-import IconSection from './IconSection';
-import TooltipSection from './TooltipSection';
+import {Icon} from "./../../../components/SLDSIcons";
 
 import DOCS from '../../../docs';
 //console.log('DOCS: ',DOCS);

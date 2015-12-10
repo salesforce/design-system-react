@@ -10,12 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDSButton from '../../../components/SLDSButton';
-import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
-import {default as PrismCode} from "react-prism/lib/PrismCode";
-import SLDSUtilityIcon from '../../../components/SLDSUtilityIcon';
 import CodeMirror from '../CodeMirror';
-require('codemirror/mode/javascript/javascript');
+import Samples from '../Samples';
 
 module.exports = React.createClass( {
   getInitialState () {
@@ -23,9 +19,6 @@ module.exports = React.createClass( {
 	},
 
   render() {
-    var defaultCode = "const instance = <Icon name='announcement' category='action' size='medium' assistiveText='Action' />; React.render(instance, mountNode)";
-    var testCode = "console.log('my example div is ', document.getElementById('exampleDiv'));";
-
     return (
 
             <div className='slds-p-around--medium'>
@@ -35,49 +28,7 @@ module.exports = React.createClass( {
                 </a>
               </h3>
 
-              <div>
-                <CodeMirror codeText={defaultCode} />
-              </div>
-      { /*
-              <div className='slds-p-vertical--large'>
-
-              <table className="slds-container--small">
-              <tr>
-                <td className="slds-p-vertical--medium">
-                Action
-                </td>
-                <td>
-                <Icon name='announcement' category='action' size="medium" assistiveText='Action' />
-                </td>
-              </tr>
-              <tr>
-                <td className="slds-p-vertical--medium">
-                Custom
-                </td>
-                <td>
-                <Icon name='custom3' category='custom' size="large" assistiveText='Custom' />
-                </td>
-              </tr>
-              <tr>
-                <td className="slds-p-vertical--medium">
-                Standard
-                </td>
-                <td>
-                <Icon name='account' category='standard' size="large" assistiveText='Standard' />
-                </td>
-              </tr>
-              <tr>
-                <td className="slds-p-vertical--medium">
-                Utility
-                </td>
-                <td>
-                <Icon name='open_folder' category='utility' size="medium" assistiveText='Files' className="slds-icon-text-default" />
-                </td>
-              </tr>
-              </table>
-
-              </div>
-        */ }
+              <CodeMirror codeText={Samples.Icons} />
             </div>
 
 

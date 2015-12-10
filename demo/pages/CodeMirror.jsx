@@ -1,8 +1,13 @@
 const CM = require('codemirror');
+import 'codemirror/addon/runmode/runmode';
+import 'codemirror/mode/htmlmixed/htmlmixed';
+import 'codemirror/theme/solarized.css';
+import '../assets/styles/codemirror.css';
+import babel from 'babel-core/browser';
+
 const React = require('react');
 const ReactDOM = require('react-dom');
 const classNames = require('classnames');
-import babel from 'babel-core/browser';
 
 const {Icon}=  require('../../components/SLDSIcons');
 
@@ -31,7 +36,7 @@ class CodeMirrorEditor extends React.Component {
   componentDidMount() {
     const node = React.findDOMNode(this.refs.editor);
     this.editor = CM.fromTextArea(node, {
-      mode: 'text/jsx',
+      mode: 'javascript',
       lineNumbers: true,
       lineWrapping: false,
       matchBrackets: true,

@@ -14,11 +14,6 @@ import SLDSPicklistBase from '../../../components/SLDSPicklistBase';
 
 import SLDSDateInput from '../../../components/SLDSDateInput';
 
-import {default as PrismCode} from 'react-prism/lib/PrismCode';
-
-
-
-
 
 module.exports = React.createClass( {
 
@@ -42,10 +37,6 @@ module.exports = React.createClass( {
                 Datepickers (Work in progress)
                 </a>
               </h3>
-
-              <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSDateInputPage.txt")}
-              </PrismCode>
 
               <div className="slds-p-vertical--large">
                 <SLDSDateInput />
