@@ -99,11 +99,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSTooltip2 = _interopRequireDefault(_SLDSTooltip);
 	
-	var _SLDSModal = __webpack_require__(87);
+	var _SLDSModal = __webpack_require__(88);
 	
 	var _SLDSModal2 = _interopRequireDefault(_SLDSModal);
 	
-	var _SLDSModalTrigger = __webpack_require__(88);
+	var _SLDSModalTrigger = __webpack_require__(89);
 	
 	var _SLDSModalTrigger2 = _interopRequireDefault(_SLDSModalTrigger);
 	
@@ -111,7 +111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSIcons2 = _interopRequireDefault(_SLDSIcons);
 	
-	var _SLDSNotification = __webpack_require__(89);
+	var _SLDSNotification = __webpack_require__(90);
 	
 	var _SLDSNotification2 = _interopRequireDefault(_SLDSNotification);
 	
@@ -12376,14 +12376,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return obj && obj.__esModule ? obj : { 'default': obj };
 	}
 	
-	function _defineProperty(obj, key, value) {
-	  if (key in obj) {
-	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
-	  } else {
-	    obj[key] = value;
-	  }return obj;
-	}
-	
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
 	    throw new TypeError('Cannot call a class as a function');
@@ -12403,6 +12395,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _SLDSPopover = __webpack_require__(11);
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
+	
+	var _tooltip = __webpack_require__(87);
+	
+	var _tooltip2 = _interopRequireDefault(_tooltip);
 	
 	var classNames = __webpack_require__(32);
 	
@@ -12484,26 +12480,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return _react2['default'].createElement('div', { className: 'slds-popover__body' }, this.props.content);
 	    }
 	  }, {
-	    key: 'getHorizontalAlign',
-	    value: function getHorizontalAlign() {
-	      if (this.props.align === 'left') {
-	        return 'left';
-	      } else if (this.props.align === 'right') {
-	        return 'right';
-	      }
-	      return 'center';
-	    }
-	  }, {
-	    key: 'getVerticalAlign',
-	    value: function getVerticalAlign() {
-	      if (this.props.align === 'bottom') {
-	        return 'bottom';
-	      } else if (this.props.align === 'top') {
-	        return 'top';
-	      }
-	      return 'middle';
-	    }
-	  }, {
 	    key: 'handleCancel',
 	    value: function handleCancel() {
 	      this.setState({
@@ -12512,34 +12488,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	      });
 	    }
 	  }, {
-	    key: 'getClassName',
-	    value: function getClassName() {
-	      var _classNames;
-	
-	      return classNames(this.props.className, "slds-popover", (_classNames = {}, _defineProperty(_classNames, "slds-popover--tooltip", true), _defineProperty(_classNames, "slds-nubbin--top", this.props.align === 'bottom'), _defineProperty(_classNames, 'slds-nubbin--bottom', this.props.align === 'top'), _defineProperty(_classNames, 'slds-nubbin--left', this.props.align === 'right'), _defineProperty(_classNames, 'slds-nubbin--right', this.props.align === 'left'), _classNames));
-	    }
-	  }, {
 	    key: 'getTooltip',
 	    value: function getTooltip() {
-	      return this.state.isOpen ? _react2['default'].createElement(_SLDSPopover2['default'], {
-	        key: this.getHorizontalAlign() + ' ' + this.getVerticalAlign(),
-	        targetElement: this.refs.tooltipTarget,
-	        closeOnTabKey: true,
-	        className: '',
-	        marginTop: '1rem',
-	        marginBottom: '1rem',
-	        marginLeft: '1.5rem',
-	        marginRight: '1.5rem',
-	        horizontalAlign: this.getHorizontalAlign(),
-	        verticalAlign: this.getVerticalAlign(),
-	        flippable: false,
-	        onClose: this.handleCancel.bind(this) }, _react2['default'].createElement('div', { className: this.getClassName(), role: 'tooltip' }, this.getTooltipContent())) : null;
+	      return this.state.isOpen ? _tooltip2['default'].getTooltip(this.props, this.getTooltipContent(), this.refs.tooltipTarget, this.handleCancel.bind(this)) : null;
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var btnStyles = { color: "inherit" };
-	      return _react2['default'].createElement('button', { className: 'slds-button', refs: 'tooltipTarget', onClick: this.props.openOn === 'click' ? this.handleMouseClick.bind(this) : null, onMouseEnter: this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this) : null, onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this) : null, onFocus: this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this) : null, onBlur: this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this) : null, style: btnStyles }, this.props.children, this.getTooltip());
+	      return _react2['default'].createElement('span', { ref: 'tooltipTarget', onClick: this.props.openOn === 'click' ? this.handleMouseClick.bind(this) : null, onMouseEnter: this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this) : null, onMouseLeave: this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this) : null, onFocus: this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this) : null, onBlur: this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this) : null, style: btnStyles }, this.props.children, this.getTooltip());
 	    }
 	  }]);
 	
@@ -12554,6 +12511,95 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 87 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	'use strict';
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _defineProperty(obj, key, value) {
+	  if (key in obj) {
+	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+	  } else {
+	    obj[key] = value;
+	  }return obj;
+	}
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SLDSPopover = __webpack_require__(11);
+	
+	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
+	
+	var classNames = __webpack_require__(32);
+	
+	var getClassName = function getClassName(props) {
+	  var _classNames;
+	
+	  return classNames(props.className, "slds-popover", (_classNames = {}, _defineProperty(_classNames, "slds-popover--tooltip", true), _defineProperty(_classNames, "slds-nubbin--top", props.align === 'bottom'), _defineProperty(_classNames, 'slds-nubbin--bottom', props.align === 'top'), _defineProperty(_classNames, 'slds-nubbin--left', props.align === 'right'), _defineProperty(_classNames, 'slds-nubbin--right', props.align === 'left'), _classNames));
+	};
+	
+	var getHorizontalAlign = function getHorizontalAlign(align) {
+	  if (align === 'left') {
+	    return 'left';
+	  } else if (align === 'right') {
+	    return 'right';
+	  }
+	  return 'center';
+	};
+	
+	var getVerticalAlign = function getVerticalAlign(align) {
+	  if (align === 'bottom') {
+	    return 'bottom';
+	  } else if (align === 'top') {
+	    return 'top';
+	  }
+	  return 'middle';
+	};
+	
+	var getTooltip = function getTooltip(props, content, target, onClose) {
+	  return _react2['default'].createElement(_SLDSPopover2['default'], {
+	    key: getHorizontalAlign(props.align) + ' ' + getVerticalAlign(props.align),
+	    targetElement: target,
+	    closeOnTabKey: true,
+	    className: '',
+	    marginTop: '1rem',
+	    marginBottom: '1rem',
+	    marginLeft: '1.5rem',
+	    marginRight: '1.5rem',
+	    horizontalAlign: getHorizontalAlign(props.align),
+	    verticalAlign: getVerticalAlign(props.align),
+	    flippable: false,
+	    onClose: onClose }, _react2['default'].createElement('div', { className: getClassName(props), role: 'tooltip' }, content));
+	};
+	
+	module.exports = {
+	
+	  getClassName: getClassName,
+	
+	  getHorizontalAlign: getHorizontalAlign,
+	
+	  getVerticalAlign: getVerticalAlign,
+	
+	  getTooltip: getTooltip
+	
+	};
+
+/***/ },
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -12819,7 +12865,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 88 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -12843,7 +12889,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _utils = __webpack_require__(14);
 	
-	var _index = __webpack_require__(87);
+	var _index = __webpack_require__(88);
 	
 	var _index2 = _interopRequireDefault(_index);
 	
@@ -12863,7 +12909,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSModalTrigger;
 
 /***/ },
-/* 89 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
