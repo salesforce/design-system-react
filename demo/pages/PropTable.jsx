@@ -9,43 +9,67 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
-import CodeMirror from '../CodeMirror';
-import PropTable from '../PropTable';
-import Samples from '../Samples';
+import DOCS from '../../docs';
 
-const displayName = "IconSection";
-const propTypes = {};
-const defaultProps = {};
+const displayName = "PropTable";
+const propTypes = {
+};
+const defaultProps = {
+};
 
-class IconSection extends React.Component {
+class PropTable extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {};
   }
 
+  componentWillMount() {
+    if(!DOCS[this.props.component]){
+      return;
+    }
+  }
+
+  renderPropInfo() {
+    const docs = DOCS[this.props.component].props;
+    let props = [];
+    for(var prop in docs) {
+      let row = (
+        <tr>
+          <td>{prop}</td>
+          <td>{docs[prop].type ? docs[prop].type.name : ""}</td>
+          <td>{docs[prop].defaultValue ? docs[prop].defaultValue.value : ""}</td>
+          <td>{docs[prop].description}</td>
+        </tr>
+      );
+      props.push(row);
+    }
+    return props;
+  }
+
   render(){
     return (
-      <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>
-          <a href="javascript:void(0)" id='iconSection'>
-          Icon
-          </a>
-        </h3>
-
-        <div className="demo-only">
-          <CodeMirror codeText={Samples.Icons} />
-          <PropTable component="SLDSIcons/Icon" />
-        </div>
-      </div>
+      <table className="slds-table slds-table--bordered slds-max-medium-table--stacked slds-no-row-hover">
+        <thead>
+          <tr className="site-text-heading--label">
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.renderPropInfo()}
+        </tbody>
+      </table>
     );
   }
 
 }
 
-IconSection.displayName = displayName;
-IconSection.propTypes = propTypes;
-IconSection.defaultProps = defaultProps;
+PropTable.displayName = displayName;
+PropTable.propTypes = propTypes;
+PropTable.defaultProps = defaultProps;
 
-module.exports = IconSection;
+module.exports = PropTable;
 

@@ -16,10 +16,6 @@ const { Route, DefaultRoute, RouteHandler, Link } = Router;
 import SLDSGrid from '../../../components/SLDSGrid';
 import {Icon} from "./../../../components/SLDSIcons";
 
-import DOCS from '../../../docs';
-//console.log('DOCS: ',DOCS);
-
-
 const SLDSColumn = SLDSGrid.Column;
 
 

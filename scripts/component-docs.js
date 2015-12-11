@@ -4,6 +4,7 @@ var path = require('path');
 
 var componentNames = [
   'SLDSButton',
+  'SLDSIcons/Icon',
   //'SLDSButtonGroup',
   //'SLDSDateInput',
   //'SLDSDropdownBase',
