@@ -56,7 +56,11 @@ module.exports = {
       {
         test: /\.(woff|woff2|svg)$/,
         loader: 'url-loader?limit=100000'
-      }
+      },
+      {
+        test: /Samples.js/,
+        loader: "transform?brfs" //for using fs to compile component example files into strings for codemirror demos
+      },
     ]
   },
 
