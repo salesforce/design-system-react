@@ -1,3 +1,4 @@
+/* Lightning Design System 2.0.0-dev.1034.1 */
 /*
 Copyright (c) 2015, salesforce.com, inc. All rights reserved.
 
@@ -202,8 +203,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds .slds-timeline__item {
     padding-left: 0.75rem;
     padding-right: 0.75rem; }
-  .slds .slds-page-header__detail-row {
-    margin: 1.5rem 0 0.75rem 3rem; }
   .slds .slds-breadcrumb .slds-list__item {
     position: relative; }
     .slds .slds-breadcrumb .slds-list__item:before {
@@ -1355,6 +1354,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     fill: #54698d; }
   .slds .slds-icon-text-warning {
     fill: #ffb75d; }
+  .slds .slds-icon-standard-call {
+    background: #CB5FFF; }
   .slds .slds-icon-text-error {
     fill: #c23934; }
   .slds .slds-icon--x-small {
@@ -1464,6 +1465,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     .slds .slds-input--bare:focus,
     .slds .slds-input--bare:active {
       outline: 0; }
+  .slds .slds-input--height {
+    min-height: calc(2.125rem + 2px); }
   .slds .slds-input-has-icon {
     position: relative; }
     .slds .slds-input-has-icon .slds-input__icon {
@@ -1739,6 +1742,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       margin-bottom: 0; }
       .slds .slds-form--horizontal .slds-form-element > .slds-form-element__label--top {
         top: 0; } }
+  .slds .slds-form--horizontal .slds-form-element + .slds-form-element {
+    margin-top: 0.75rem; }
+    @media (min-width: 64em) {
+      .slds .slds-form--horizontal .slds-form-element + .slds-form-element {
+        margin-top: 0.5rem; } }
   .slds .slds-form--horizontal .slds-form-element__control {
     width: 100%; }
     @media (max-width: 64em) {
@@ -1752,25 +1760,29 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     .slds .slds-form--horizontal .slds-form-element__control .slds-checkbox,
     .slds .slds-form--horizontal .slds-form-element__control .slds-radio {
       display: block; }
-  @media (max-width: 30em) {
-    .slds .slds-form--horizontal .slds-form-element {
-      margin-bottom: 1rem; } }
-  .slds .slds-form--horizontal .slds-form-element + .slds-form-element {
-    margin-top: 1rem; }
   .slds .slds-form--stacked .slds-form-element {
     display: block; }
     .slds .slds-form--stacked .slds-form-element + .slds-form-element {
-      margin-top: 0.5rem; }
+      margin-top: 0.75rem; }
+      @media (min-width: 64em) {
+        .slds .slds-form--stacked .slds-form-element + .slds-form-element {
+          margin-top: 0.5rem; } }
     .slds .slds-form--stacked .slds-form-element .slds-checkbox,
     .slds .slds-form--stacked .slds-form-element .slds-radio {
       display: block; }
-  @media (max-width: 30em) {
-    .slds .slds-form--inline .slds-form-element {
-      margin-bottom: 0.75rem; } }
-  @media (min-width: 30em) {
+  .slds .slds-form--inline .slds-form-element,
+  .slds .slds-form--inline .slds-form-element__label,
+  .slds .slds-form--inline .slds-form-element__control {
+    display: block; }
+  .slds .slds-form--inline .slds-form-element + .slds-form-element {
+    margin-top: 0.75rem; }
+  @media (min-width: 64em) {
     .slds .slds-form--inline .slds-form-element {
       margin-right: 1rem; }
+      .slds .slds-form--inline .slds-form-element + .slds-form-element {
+        margin-top: 0; }
     .slds .slds-form--inline .slds-form-element,
+    .slds .slds-form--inline .slds-form-element__label,
     .slds .slds-form--inline .slds-form-element__control {
       display: inline-block;
       vertical-align: middle; } }
@@ -1865,8 +1877,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
               flex-direction: column; }
     .slds-text-longform .slds .slds-grid {
       padding-left: 0; }
-  .slds .slds-grid,
-  .slds-text-longform .slds .slds-grid {
+  .slds ul.slds-grid {
     margin-left: 0;
     list-style: none; }
   .slds .slds-col,
@@ -2045,6 +2056,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       -webkit-flex-grow: 0;
           -ms-flex-positive: 0;
               flex-grow: 0; }
+  .slds .slds-grid--align-end {
+    -webkit-box-pack: end;
+    -webkit-justify-content: flex-end;
+        -ms-flex-pack: end;
+            justify-content: flex-end; }
   .slds .slds-align-top {
     vertical-align: top;
     -webkit-align-self: flex-start;
@@ -2090,6 +2106,27 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       padding: 0.5rem 0.75rem;
       font-size: 0.75rem;
       color: white; }
+  .slds .slds-page-header {
+    padding: 1rem 0.75rem;
+    border-bottom: 1px solid #d8dde6;
+    background: #f4f6f9; }
+    .slds .slds-page-header__title {
+      margin-top: 0.125rem;
+      font-weight: 300;
+      font-size: 1.125rem;
+      line-height: 1.25; }
+    .slds .slds-page-header__info {
+      margin-top: 0.25rem; }
+    @media (min-width: 48em) {
+      .slds .slds-page-header {
+        padding: 1.5rem 1.5rem 0.75rem; }
+        .slds .slds-page-header__title {
+          margin-top: 0;
+          font-size: 1.5rem; }
+        .slds .slds-page-header__info {
+          margin-top: 0.5rem; } }
+  .slds .slds-page-header__detail-row {
+    margin: 1.5rem 0 0.75rem 3rem; }
   .slds .slds-popover {
     position: relative;
     border-radius: 0.25rem;
@@ -2564,6 +2601,30 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     .slds .slds-dropdown--large {
       min-width: 25rem;
       max-width: 512px; }
+    .slds .slds-dropdown--length-5 {
+      max-height: calc(((0.875rem * 1.5) + 1rem) * 5);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch; }
+    .slds .slds-dropdown--length-7 {
+      max-height: calc(((0.875rem * 1.5) + 1rem) * 7);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch; }
+    .slds .slds-dropdown--length-10 {
+      max-height: calc(((0.875rem * 1.5) + 1rem) * 10);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch; }
+    .slds .slds-dropdown--length-with-icon-5 {
+      max-height: calc((1.5rem + 1rem) * 5);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch; }
+    .slds .slds-dropdown--length-with-icon-7 {
+      max-height: calc((1.5rem + 1rem) * 7);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch; }
+    .slds .slds-dropdown--length-with-icon-10 {
+      max-height: calc((1.5rem + 1rem) * 10);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch; }
     .slds .slds-dropdown mark {
       font-weight: 700;
       background-color: transparent; }
@@ -2707,10 +2768,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds .slds-picklist {
     position: relative; }
     .slds .slds-picklist .slds-dropdown {
-      width: 15rem;
-      max-height: calc((((0.875rem * 1.5) + 1rem) * 5) + 0.5rem + 2px);
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch; }
+      width: 15rem; }
     .slds .slds-picklist--fluid .slds-picklist__label,
     .slds .slds-picklist--fluid .slds-dropdown {
       width: auto;
@@ -2729,14 +2787,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       top: 50%;
       margin-top: -0.375rem;
       fill: #54698d; }
-    .slds .slds-picklist__label[aria-disabled="true"] {
-      border-color: #a8b7c7;
-      background-color: #e0e5ee;
-      cursor: not-allowed;
-      -webkit-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none; }
     .slds .slds-picklist__label .slds-truncate {
       display: block; }
   .slds .slds-dropdown--actions a {
@@ -2871,6 +2921,137 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         background: #f4f6f9;
         text-decoration: none;
         cursor: pointer; }
+  .slds .slds-docked-container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 0 1.5rem;
+    height: 40px; }
+  .slds .slds-docked-composer {
+    position: relative;
+    border-radius: 0.25rem 0.25rem 0 0;
+    width: 480px;
+    height: 40px;
+    float: left;
+    box-shadow: 0px -2px 2px 0px rgba(0, 0, 0, 0.16); }
+    .slds .slds-docked-composer.slds-is-open {
+      height: 480px; }
+    .slds .slds-docked-composer:hover .slds-docked-composer__header,
+    .slds .slds-docked-composer:focus .slds-docked-composer__header {
+      background: #061c3f; }
+    .slds .slds-docked-composer + .slds-docked-composer {
+      margin-left: 1.5rem; }
+    .slds .slds-docked-composer__header {
+      background: #16325c;
+      border-radius: 0.25rem 0.25rem 0 0;
+      padding: 0.5rem;
+      color: white; }
+      .slds .slds-docked-composer__header:hover {
+        cursor: pointer; }
+    .slds .slds-docked-composer__actions .slds-button {
+      margin-left: 0.75rem; }
+    .slds .slds-docked-composer__body {
+      background: white;
+      min-height: 259px;
+      max-height: 380px;
+      border: 1px solid #d8dde6;
+        border-top: none;
+        border-bottom: none; }
+    .slds .slds-docked-composer__lead {
+      background: white;
+      padding: 1rem 0.5rem; }
+    .slds .slds-docked-composer__toolbar {
+      background: #f4f6f9;
+      padding: 0.25rem 0.5rem;
+      max-height: 60px;
+      overflow-y: auto;
+      border-top: 1px solid #d8dde6;
+      border-bottom: 1px solid #d8dde6; }
+    .slds .slds-docked-composer__input {
+      background: white;
+      padding: 1rem;
+      min-height: 6rem;
+      resize: none;
+      overflow: hidden;
+        overflow-y: auto; }
+    .slds .slds-docked-composer__footer {
+      background: #f4f6f9;
+      padding: 0.75rem 0.5rem;
+      border: 1px solid #d8dde6;
+        border-bottom: none; }
+    .slds .slds-docked-composer.slds-is-recording .slds-icon-record .slds-button__icon {
+      fill: #c23934;
+      -webkit-animation: pulse 2s ease infinite;
+              animation: pulse 2s ease infinite; }
+
+@-webkit-keyframes pulse {
+  0%, 100% {
+    -webkit-filter: drop-shadow(0px 0px 4px rgba(194, 57, 52, 0));
+            filter: drop-shadow(0px 0px 4px rgba(194, 57, 52, 0)); }
+  50% {
+    -webkit-filter: drop-shadow(0px 0px 4px #9a2d29);
+            filter: drop-shadow(0px 0px 4px #9a2d29); } }
+
+@keyframes pulse {
+  0%, 100% {
+    -webkit-filter: drop-shadow(0px 0px 4px rgba(194, 57, 52, 0));
+            filter: drop-shadow(0px 0px 4px rgba(194, 57, 52, 0)); }
+  50% {
+    -webkit-filter: drop-shadow(0px 0px 4px #9a2d29);
+            filter: drop-shadow(0px 0px 4px #9a2d29); } }
+  .slds .slds-docked-composer__body--email {
+    position: relative; }
+    .slds .slds-docked-composer__body--email .slds-input {
+      border-radius: 0; }
+      .slds .slds-docked-composer__body--email .slds-input:focus {
+        z-index: 1; }
+      .slds .slds-docked-composer__body--email .slds-input:not(:focus) {
+        border-color: transparent;
+        border-top: 1px solid #d8dde6; }
+    .slds .slds-docked-composer__body--email .slds-picklist__label {
+      padding-left: 0.75rem;
+      padding-right: 1.5rem; }
+      .slds .slds-docked-composer__body--email .slds-picklist__label .slds-icon {
+        right: 0.5rem; }
+  .slds .slds-email-composer__label {
+    width: 2rem; }
+  .slds .slds-docked-composer-modal .slds-modal__content {
+    padding: 0; }
+  .slds .slds-docked-composer-modal .slds-docked-composer {
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    float: none;
+    border-radius: 0; }
+    .slds .slds-docked-composer-modal .slds-docked-composer__header {
+      border-radius: 0; }
+  .slds .slds-docked-composer__body--form {
+    padding: 1rem; }
+  .slds .slds-docked-composer--overflow {
+    width: auto; }
+  .slds .slds-docked-composer__overflow-pill {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 0 0.75rem;
+    height: inherit;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem; }
+    .slds .slds-docked-composer__overflow-pill:hover,
+    .slds .slds-docked-composer__overflow-pill:focus {
+      text-decoration: none; }
+    .slds .slds-docked-composer__overflow-pill .slds-text-body--small {
+      color: white;
+      margin-left: 0.5rem; }
   .slds .slds-publisher.slds-is-active .slds-publisher__toggle-visibility {
     display: inherit; }
   .slds .slds-publisher.slds-is-active .slds-publisher__input {
@@ -3189,6 +3370,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       border: 1px solid #d8dde6;
       border-radius: 0.25rem;
       min-height: calc(2.125rem + 2px); }
+    .slds .slds-pill__container--bare {
+      padding: 2px 1px; }
     .slds .slds-pill__label {
       max-width: 13.5rem;
       display: inline-block;
@@ -3205,6 +3388,85 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       margin-left: 0.5rem; }
   .slds .slds-pill .slds-avatar {
     margin-right: 0.5rem; }
+  .slds .slds-wizard {
+    position: relative; }
+    .slds .slds-wizard__list {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+          -ms-flex-pack: justify;
+              justify-content: space-between;
+      position: relative;
+      margin: auto; }
+    .slds .slds-wizard__item {
+      -webkit-box-flex: 2;
+      -webkit-flex: 2 0 auto;
+          -ms-flex: 2 0 auto;
+              flex: 2 0 auto;
+      text-align: center;
+      width: 0%;
+      -webkit-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none; }
+      .slds .slds-wizard__item:first-child {
+        text-align: left;
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+            -ms-flex-positive: 1;
+                flex-grow: 1; }
+      .slds .slds-wizard__item:last-child {
+        text-align: right;
+        -webkit-box-flex: 1;
+        -webkit-flex-grow: 1;
+            -ms-flex-positive: 1;
+                flex-grow: 1; }
+      .slds .slds-wizard__item a:hover,
+      .slds .slds-wizard__item a:focus {
+        outline: 0;
+        text-decoration: none; }
+        .slds .slds-wizard__item a:hover .slds-wizard__marker,
+        .slds .slds-wizard__item a:focus .slds-wizard__marker {
+          background: #d8dde6; }
+    .slds .slds-wizard__link {
+      display: block; }
+    .slds .slds-wizard__marker {
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: #e0e5ee;
+      display: inline-block;
+      vertical-align: middle;
+      z-index: 1;
+      position: relative; }
+    .slds .slds-wizard__label {
+      display: block;
+      margin-top: 0.75rem; }
+    .slds .slds-wizard__progress {
+      position: absolute;
+      left: 0;
+      top: 0.625rem;
+      height: 0.25rem;
+      display: block;
+      width: 100%;
+      z-index: -1;
+      background: #e0e5ee; }
+    .slds .slds-wizard__progress-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      background: #0076DE;
+      -webkit-transition: width 0.2s ease;
+              transition: width 0.2s ease; }
+    .slds .slds-wizard .slds-is-active .slds-wizard__marker {
+      background: #0076DE; }
+    .slds .slds-wizard .slds-is-active a:hover .slds-wizard__marker,
+    .slds .slds-wizard .slds-is-active a:focus .slds-wizard__marker {
+      background: #005fb2; }
   .slds .slds-spinner--small {
     width: 32px;
     height: 32px; }
@@ -3372,9 +3634,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       color: #0070d2; }
   .slds .slds-tabs--default .slds-tabs__item--overflow {
     overflow: visible; }
-  .slds .slds-dropdown--overflow {
-    max-height: calc((2rem + (0.25rem * 2)) * 10);
-    overflow: auto; }
   .slds .slds-tabs--scoped {
     display: block;
     width: 100%; }
@@ -3736,7 +3995,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     margin-left: 0.5rem;
     margin-right: 0;
     margin-bottom: 0;
-    font-size: 0.875rem;
     max-width: 12rem;
     -webkit-box-pack: end;
     -webkit-justify-content: flex-end;
@@ -3753,13 +4011,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
   .slds .slds-lookup[data-scope="multi"] .slds-input {
     padding-left: 12rem; }
   .slds .slds-lookup[data-scope="multi"] .slds-form-element__control {
-    background-color: white;
-    color: #16325c;
-    border: 1px solid #d8dde6;
-      border-radius: 0.25rem;
-    width: 100%;
-    -webkit-transition: border 0.1s linear, background-color 0.1s linear;
-            transition: border 0.1s linear, background-color 0.1s linear;
     -webkit-flex-wrap: wrap;
         -ms-flex-wrap: wrap;
             flex-wrap: wrap;
@@ -3771,26 +4022,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex; }
-    .slds .slds-lookup[data-scope="multi"] .slds-form-element__control:focus,
-    .slds .slds-lookup[data-scope="multi"] .slds-form-element__control:active {
-      outline: 0;
-      border-color: #1589ee;
-      background-color: white;
-      box-shadow: 0 0 3px #0070D2; }
-    .slds .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled],
-    .slds .slds-lookup[data-scope="multi"] .slds-form-element__control.slds-is-disabled {
-      background-color: #e0e5ee;
-      border-color: #a8b7c7;
-      cursor: not-allowed;
-      -webkit-user-select: none;
-         -moz-user-select: none;
-          -ms-user-select: none;
-              user-select: none; }
-      .slds .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled]:focus,
-      .slds .slds-lookup[data-scope="multi"] .slds-form-element__control[disabled]:active,
-      .slds .slds-lookup[data-scope="multi"] .slds-form-element__control.slds-is-disabled:focus,
-      .slds .slds-lookup[data-scope="multi"] .slds-form-element__control.slds-is-disabled:active {
-        box-shadow: none; }
     .slds .slds-lookup[data-scope="multi"] .slds-form-element__control .slds-input--bare {
       -webkit-box-flex: 1;
       -webkit-flex: 1;
@@ -3909,7 +4140,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     .slds .slds-table th,
     .slds .slds-table td {
       padding: 0.5rem;
-      white-space: nowrap; }
+      white-space: nowrap;
+      position: relative; }
       .slds .slds-table th.slds-text-center,
       .slds .slds-table td.slds-text-center {
         text-align: center; }
@@ -3974,6 +4206,34 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       color: #0070d2; }
       .slds .slds-is-sortable:hover .slds-button {
         visibility: visible; }
+  .slds .slds-table--resizable {
+    position: relative; }
+    .slds .slds-table--resizable .slds-cell-content {
+      position: static; }
+  .slds .slds-resizable {
+    max-width: 100%; }
+    .slds .slds-resizable__handle {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 0.25rem;
+      height: 100%;
+      background: #0070d2;
+      display: block;
+      cursor: col-resize;
+      opacity: 0;
+      z-index: 5000; }
+      .slds .slds-resizable__handle:hover,
+      .slds .slds-resizable__handle:active {
+        opacity: 1; }
+      .slds .slds-resizable__handle--indicator {
+        right: auto; }
+    .slds .slds-resizable__divider {
+      position: absolute;
+      left: 50%;
+      height: 100vh;
+      width: 1px;
+      background: #0070d2; }
   @media (max-width: 48em) {
     .slds .slds-max-medium-table--stacked {
       border: 0; }
@@ -5617,10 +5877,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap; }
-  .slds .slds-page-header {
-    padding: 1.5rem 1.5rem 0.75rem;
-    border-bottom: 1px solid #d8dde6;
-    background: #f4f6f9; }
   .slds .slds-box {
     padding: 1rem;
     border-radius: 0.25rem;
@@ -5630,6 +5886,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
       padding: 0.5rem; }
     .slds .slds-box--small {
       padding: 0.75rem; }
+    .slds .slds-box--border {
+      padding: 0;
+      border-radius: 0.25rem;
+      background-clip: padding-box;
+      border: 1px solid #d8dde6; }
   .slds .slds-theme--default {
     background-color: white; }
   .slds .slds-theme--shade {

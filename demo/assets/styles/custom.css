@@ -1,7 +1,6 @@
 .demo-only .slds-notify-container { position: static; }
 .demo-only .slds-icon__container { margin-right: 20px; }
 
-
 .slds .slds-theme--alert-texture-animated {
   background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.035) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.035) 50%, rgba(0, 0, 0, 0.035) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.035) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.035) 50%, rgba(0, 0, 0, 0.035) 75%, transparent 75%, transparent);
@@ -12,4 +11,9 @@
 @keyframes progress-bar-stripes{
   0% { background-position:0 64px; }
   100% { background-position:0 0; }
+}
+
+.site-text-heading--label th {
+    text-transform: uppercase;
+    font-size: 1.1em;
 }
