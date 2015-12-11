@@ -7,6 +7,7 @@ import DatepickerCore, {CONTROL} from '../../core/datepicker';
 // Traits
 import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
+import Positionable from '../../traits/positionable';
 
 // Framework specific
 import React from 'react';
@@ -30,8 +31,9 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 	propTypes: {
 		dateRange: React.PropTypes.array,
-		selection: React.PropTypes.any,
-		inputLabel: React.PropTypes.string
+		inputLabel: React.PropTypes.string,
+		modalMenu: React.PropTypes.bool,
+		selection: React.PropTypes.any
 	},
 
 	render () {
@@ -40,17 +42,19 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		const selDateFormatted = selectedDates.length ? this._formatDate(selectedDates[0]) : '';
 		const isOpen = Openable.isOpen(this);
 
-		if (this.refs.popover) {
-			this._setElements();
+		if (this.props.modalMenu && this.refs.dropdown) {
+			Positionable.setElement(this, this.refs.dropdown);
+			Positionable.setContainer(this, this.refs.container);
+			Positionable.setTarget(this, this.refs.container);
 		}
-
+		
 		return (
 			<div className="slds-form--stacked slds-datepicker-form" ref="container" onClick={this._triggerCalendar}>
 				<DateInput
 					ariaLabel={this.props.inputLabel}
 					selectedDate={selDateFormatted}
 					strings={this.state.strings}/>
-				<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !isOpen})} ref="popover" data-selection="single">
+				<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !isOpen})} ref="dropdown" data-selection="single">
 					<div className="slds-datepicker__filter slds-grid">
 						<DateMonth
 							monthName={this._getMonthName()}
@@ -71,14 +75,10 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		);
 	},
 
-	_setElements () {
-		this.elements.positionableElement = Lib.wrapElement(this.refs.popover);
-		this.elements.positionableContainer = Lib.wrapElement(this.refs.container);
-		this.elements.positionableTarget = Lib.wrapElement(this.refs.container);
-	},
-
 	componentDidUpdate () {
-		this._updatePosition();
+		if (this.props.modalMenu && this.refs.dropdown) {
+			Positionable.position(this);
+		}
 	},
 
 	_triggerCalendar (e) {

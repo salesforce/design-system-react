@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import PopoverCore, {CONTROL} from '../../core/popover';
 
+// Traits
+import Positionable from '../../traits/positionable';
+
 // Framework Specific
 import DOM from '../dom';
 import Events from '../events';
@@ -25,7 +28,7 @@ let Popover = function Popover () {
 export const PopoverMethods = {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
-		this.elements.positionableElement = Lib.wrapElement(this.element);
+		Positionable.setElement(this, this.element);
 	},
 	
 	_onRendered () {
@@ -33,9 +36,9 @@ export const PopoverMethods = {
 		this._setTrigger();
 		
 		// TODO: This is probably not the best way to do this or the best place for it to be
-		this.appendTo(this.elements.positionableContainer);
-		
-		this._updatePosition();
+		this.appendTo(Positionable.getContainer(this));
+
+		Positionable.position(this);
 	},
 
 	_setElements () {
@@ -44,8 +47,8 @@ export const PopoverMethods = {
 		const align = this.getProperty('align');
 
 		this.elements.triggerElement = Lib.wrapElement(triggerElement || this.elements.wrapper);
-		this.elements.positionableContainer = Lib.wrapElement(container || this.elements.wrapper);
-		this.elements.positionableTarget = Lib.wrapElement(align || this.elements.triggerElement);
+		Positionable.setContainer(this, container || this.elements.wrapper);
+		Positionable.setTarget(this, align || this.elements.triggerElement);
 	},
 
 	_setTrigger () {
@@ -63,11 +66,11 @@ export const PopoverMethods = {
 	},
 	
 	_onShow () {
-		this._updatePosition();
+		Positionable.position(this);
 	},
 	
 	_onHide () {
-		this._updatePosition();
+		Positionable.position(this);
 	}
 };
 

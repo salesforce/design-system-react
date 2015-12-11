@@ -9,11 +9,10 @@ import Base from './base';
 
 // Traits
 import Disableable from '../traits/disableable';
-import Positionable from '../traits/positionable';
 
 export const CONTROL = 'Datepicker';
 
-const DatepickerCore = Lib.merge({}, Base, Disableable, Positionable, {
+const DatepickerCore = Lib.merge({}, Base, Disableable, {
 	CONTROL,
 	
 	// CSS classes used within this control
@@ -27,9 +26,16 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Positionable, {
 		dateSelected: null,
 		multiSelect: false,
 		dateRange: [new Date('1991'), new Date('2030')],
-		positionedOffset: 4,
+
+		// Positionable trait
+		positionedTargetVerticalAttachment: 'bottom',
+		constrainWidthToTarget: true,
+		constrainPositionedToWindow: true,
+		modalMenu: false,
+		positionedOffset: 0,
 		positionedTargetHorizontalAttachment: 'left',
-		positionedTargetVerticalAttachment: 'bottom'
+		positionedZIndex: '10001',
+		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
 	},
 
 	_defaultState: {

@@ -24,9 +24,9 @@ export const PopoverMethods = {
 	},
 
 	_setElements () {
-		this.elements.positionableElement = Lib.wrapElement(this.refs.popover);
-		this.elements.positionableContainer = Lib.wrapElement(this.props.container || this.element);
-		this.elements.positionableTarget = Lib.wrapElement(this.props.alignmentTarget || this.elements.positionableContainer);
+		Positionable.setElement(this, this.refs.popover);
+		Positionable.setContainer(this, this.props.container || this.element);
+		Positionable.setTarget(this, this.props.alignmentTarget || Positionable.getContainer(this));
 	},
 	
 	componentWillMount: function () {
@@ -42,7 +42,7 @@ export const PopoverMethods = {
 	},
 
 	componentDidUpdate () {
-		this._updatePosition();
+		Positionable.position(this);
 	}
 };
 
