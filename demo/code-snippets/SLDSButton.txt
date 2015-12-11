@@ -1,5 +1,0 @@
-const handleClick = function() {
-  console.log("Neutral Button Clicked");
-};
-
-<SLDSButton label='Neutral' variant='neutral' onClick={handleClick} />

@@ -9,6 +9,8 @@ const React = require('react');
 const ReactDOM = require('react-dom');
 const classNames = require('classnames');
 
+const SLDSButton =  require('../../components/SLDSButton');
+const SLDSButtonStateful =  require('../../components/SLDSButton/SLDSButtonStateful');
 const {Icon}=  require('../../components/SLDSIcons');
 
 const displayName = 'CodeMirror';
@@ -192,11 +194,14 @@ class CodeMirror extends React.Component {
   render() {
     return (
       <div className="playground">
-        <h1>Example</h1>
-        {this.renderExample()}
+        <div className="slds-p-vertical--medium">
+          {this.renderExample()}
+        </div>
 
-        <h1>Editor</h1>
-        {this.renderEditor()}
+        <div className="slds-p-vertical--large">
+          <h1 className="slds-text-heading--small slds-p-vertical--small">Edit code to modify above examples</h1>
+          {this.renderEditor()}
+        </div>
       </div>
     );
   }
