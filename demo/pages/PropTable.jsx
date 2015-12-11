@@ -35,7 +35,7 @@ class PropTable extends React.Component {
     let props = [];
     for(var prop in docs) {
       let row = (
-        <tr>
+        <tr key={prop}>
           <td>{prop}</td>
           <td>{docs[prop].type ? docs[prop].type.name : ""}</td>
           <td>{docs[prop].defaultValue ? docs[prop].defaultValue.value : ""}</td>
@@ -49,19 +49,22 @@ class PropTable extends React.Component {
 
   render(){
     return (
-      <table className="slds-table slds-table--bordered slds-max-medium-table--stacked slds-no-row-hover">
-        <thead>
-          <tr className="site-text-heading--label">
-            <th>Name</th>
-            <th>Type</th>
-            <th>Default</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.renderPropInfo()}
-        </tbody>
-      </table>
+      <div className="slds-p-vertical--medium">
+        <h1 className="slds-text-heading--medium slds-p-vertical--small">Prop Details</h1>
+        <table className="slds-table slds-table--bordered slds-max-medium-table--stacked slds-no-row-hover">
+          <thead>
+            <tr className="site-text-heading--label">
+              <th>Name</th>
+              <th>Type</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderPropInfo()}
+          </tbody>
+        </table>
+      </div>
     );
   }
 
