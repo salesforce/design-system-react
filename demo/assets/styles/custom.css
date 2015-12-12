@@ -1,5 +1,7 @@
 .demo-only .slds-notify-container { position: static; }
 .demo-only .slds-icon__container { margin-right: 20px; }
+.demo-only .mw-col { max-width: 300px; }
+.demo-only .slds .slds-table th, .slds .slds-table td { white-space: inherit; }
 
 .slds .slds-theme--alert-texture-animated {
   background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.035) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.035) 50%, rgba(0, 0, 0, 0.035) 75%, transparent 75%, transparent);

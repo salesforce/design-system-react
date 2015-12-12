@@ -15,14 +15,19 @@ const classNames = require("classnames");
 
 const displayName = "Icon";
 const propTypes = {
-  assistiveText: React.PropTypes.string,
   /**
-   * assistiveText is text that is visually hidden but read aloud by screenreaders to tell the user what the icon means. Naked icons must have assistive text, however, if you also have a label with the icon, declare this prop as assistiveText="".
+   * assistiveText is text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+   * Naked icons must have assistive text, however, if you also have a label with the icon,
+   * declare this prop as assistiveText="".
    */
-  category: React.PropTypes.string,
+  assistiveText: React.PropTypes.string,
+  category: React.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]),
+  /**
+   * name is the name of the icon. Visit http://www.lightningdesignsystem.com/resources/icons to reference icon names.
+   */
   name: React.PropTypes.string,
   position: React.PropTypes.oneOf(["left", "right"]),
-  size: React.PropTypes.string,
+  size: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
   theme: React.PropTypes.string,
 };
 const defaultProps = {

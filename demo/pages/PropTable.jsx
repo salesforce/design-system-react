@@ -30,16 +30,45 @@ class PropTable extends React.Component {
     }
   }
 
+  renderEnum(enumType) {
+    const enumValues = enumType.value || [];
+    const renderedEnumValues = [];
+    enumValues.forEach(function renderEnumValue(enumValue, i) {
+      if (i > 0) {
+        renderedEnumValues.push(
+          <span key={`${i}c`}>, </span>
+        );
+      }
+
+      renderedEnumValues.push(
+        <code key={i}>{enumValue}</code>
+      );
+    });
+
+    return (
+      <span>one of: {renderedEnumValues}</span>
+    );
+  }
+
   renderPropInfo() {
     const docs = DOCS[this.props.component].props;
     let props = [];
     for(var prop in docs) {
+      let p = docs[prop];
+      let propType = p.type ? p.type : null;
+
+      console.log("default props is ", p);
+      let type;
+      propType.name === 'enum' ? type = this.renderEnum(propType) : type = p.type;
+
       let row = (
         <tr key={prop}>
           <td>{prop}</td>
-          <td>{docs[prop].type ? docs[prop].type.name : ""}</td>
+          <td>{type}</td>
           <td>{docs[prop].defaultValue ? docs[prop].defaultValue.value : ""}</td>
-          <td>{docs[prop].description}</td>
+          <td className="mw-col">
+            <div dangerouslySetInnerHTML={{__html: docs[prop].description }} />
+          </td>
         </tr>
       );
       props.push(row);

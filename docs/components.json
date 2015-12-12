@@ -195,11 +195,33 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "assistiveText is text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have a label with the icon,\ndeclare this prop as assistiveText=\"\"."
             },
             "category": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"action\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"custom\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"doctype\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"standard\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"utility\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
@@ -209,7 +231,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "name is the name of the icon. Visit http://www.lightningdesignsystem.com/resources/icons to reference icon names."
             },
             "position": {
                 "type": {
@@ -230,7 +252,25 @@
             },
             "size": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"x-small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"medium\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
