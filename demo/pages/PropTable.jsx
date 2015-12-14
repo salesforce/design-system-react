@@ -76,7 +76,7 @@ class PropTable extends React.Component {
   render(){
     return (
       <div className="slds-p-vertical--medium">
-        <h1 className="slds-text-heading--medium slds-p-vertical--small">Prop Details</h1>
+        <h1 className="slds-text-heading--small slds-p-vertical--medium">Prop Details</h1>
         <table className="slds-table slds-table--bordered slds-max-medium-table--stacked slds-no-row-hover">
           <thead>
             <tr className="site-text-heading--label">

@@ -11,6 +11,7 @@ const classNames = require('classnames');
 
 const SLDSButton =  require('../../components/SLDSButton');
 const SLDSButtonStateful =  require('../../components/SLDSButton/SLDSButtonStateful');
+const SLDSButtonGroup =  require('../../components/SLDSButtonGroup');
 const {Icon}=  require('../../components/SLDSIcons');
 
 const displayName = 'CodeMirror';

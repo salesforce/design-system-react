@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "General component description.",
+        "description": "SLDS Button component can be used for label buttons, icon buttons, or buttons that have both.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -8,7 +8,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "assistiveText is text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText."
+                "description": "text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
             },
             "buttonSize": {
                 "type": {
@@ -117,7 +117,7 @@
                     ]
                 },
                 "required": false,
-                "description": "For icon button variants, please reference the [SLDS Icons page](https://design-system-dev.herokuapp.com/components/buttons#icon)."
+                "description": "For icon variants, please reference https://design-system-dev.herokuapp.com/components/buttons#icon."
             },
             "label": {
                 "type": {
@@ -182,6 +182,111 @@
                     ]
                 },
                 "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSButton/SLDSButtonStateful": {
+        "description": "",
+        "displayName": "SLDSButtonStateful",
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconSize": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "type": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"join\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"follow\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "join - join, member, leave\nfollow - follow, following, unfollow\nicon - \"selected\", \"unselect\", \"not selected\" communicated through background color"
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSButtonGroup": {
+        "description": "",
+        "displayName": "SLDSButtonGroup",
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
                 "description": ""
             }
         }

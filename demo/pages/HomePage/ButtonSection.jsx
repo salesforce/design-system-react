@@ -35,7 +35,13 @@ class ButtonSection extends React.Component {
 
         <div className="demo-only">
           <CodeMirror codeText={Samples.Buttons} />
+          <CodeMirror codeText={Samples.IconButtons} />
           <PropTable component="SLDSButton" />
+        </div>
+
+        <div className="demo-only">
+          <CodeMirror codeText={Samples.StatefulButtons} />
+          <PropTable component="SLDSButton/SLDSButtonStateful" />
         </div>
       </div>
     );

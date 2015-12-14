@@ -5,7 +5,7 @@ const handleClick = function(buttonInstance) {
 };
 const examples = (
   <div>
-    <h4 className="slds-text-heading--medium slds-p-vertical--medium">Standard Buttons</h4>
+    <h4 className="slds-text-heading--small slds-p-vertical--medium">Standard Buttons</h4>
     <SLDSButton label="Base" variant="base" onClick={handleClick('Base')} className="slds-m-right--medium"/>
     <SLDSButton label="Neutral" variant="neutral" onClick={handleClick('Neutral')} className="slds-m-right--medium"/>
     <SLDSButton label="Neutral Icon" variant="neutral" iconName="download" iconPosition="left" onClick={handleClick('Neutral Icon')} className="slds-m-right--medium"/>
