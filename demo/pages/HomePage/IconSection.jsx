@@ -12,6 +12,7 @@ import React from 'react';
 import CodeMirror from '../CodeMirror';
 import PropTable from '../PropTable';
 import Samples from '../Samples';
+import DOCS from '../../../docs';
 
 const displayName = "IconSection";
 const propTypes = {};
@@ -24,14 +25,19 @@ class IconSection extends React.Component {
     this.state = {};
   }
 
+  getDescription() {
+    const desc = DOCS["SLDSIcons/Icon"].description;
+    return {__html: desc };
+  }
+
   render(){
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
-          <a href="javascript:void(0)" id='iconSection'>
           Icon
-          </a>
         </h3>
+
+        <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" />
 
         <div className="demo-only">
           <CodeMirror codeText={Samples.Icons} />
