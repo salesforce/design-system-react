@@ -246,23 +246,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	  buttonSize: _react2["default"].PropTypes.oneOf(["small"]),
 	  disabled: _react2["default"].PropTypes.bool,
 	  hint: _react2["default"].PropTypes.bool,
+	  /**
+	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
+	   */
 	  iconName: _react2["default"].PropTypes.string,
 	  iconPosition: _react2["default"].PropTypes.oneOf(["left", "right"]),
 	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "medium", "large"]),
 	  /**
-	   * For icon variants, please reference https://design-system-dev.herokuapp.com/components/buttons#icon.
+	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Lightening Design System - Icons</a>
 	   */
 	  iconVariant: _react2["default"].PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
 	  label: _react2["default"].PropTypes.string,
 	  onClick: _react2["default"].PropTypes.func,
 	  responsive: _react2["default"].PropTypes.bool,
 	  tabindex: _react2["default"].PropTypes.string,
+	  /**
+	   * use "icon-inverse" for white icons.
+	   */
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
 	var defaultProps = {};
 	
 	/**
-	 * SLDS Button component can be used for label buttons, icon buttons, or buttons that have both.
+	 * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
+	 * Use the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />
+	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">Lightening Design System - Buttons</a>.
 	 */
 	
 	var SLDSButton = (function (_React$Component) {
@@ -1468,22 +1476,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	var propTypes = {
 	  /**
 	   * text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-	   * Naked icons must have assistive text, however, if you also have a label with the icon,
+	   * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
 	   * declare this prop as assistiveText="".
 	   */
 	  assistiveText: _react2['default'].PropTypes.string,
 	  category: _react2['default'].PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]),
 	  /**
-	   * name of the icon. Visit http://www.lightningdesignsystem.com/resources/icons to reference icon names.
+	   * css classes that are applied to the svg
+	   */
+	  className: _react2['default'].PropTypes.string,
+	  /**
+	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
 	   */
 	  name: _react2['default'].PropTypes.string,
-	  position: _react2['default'].PropTypes.oneOf(["left", "right"]),
-	  size: _react2['default'].PropTypes.oneOf(["x-small", "small", "medium", "large"]),
-	  theme: _react2['default'].PropTypes.string
+	  size: _react2['default'].PropTypes.oneOf(["x-small", "small", "medium", "large"])
 	};
 	var defaultProps = {
 	  category: 'standard'
 	};
+	
+	/**
+	 * The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />
+	 * The icon color is white by default. Add the class, "slds-icon-text-default", to create a text-colored fill color for utility icons. <br />
+	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">Lightening Design System - Icons</a>.
+	 */
 	
 	var Icon = (function (_React$Component) {
 	  _inherits(Icon, _React$Component);
@@ -1503,7 +1519,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
 	      var renderName = this.props.category === "action";
 	
-	      return classNames((_classNames = {}, _defineProperty(_classNames, "slds-icon__container", this.props.category !== "utility"), _defineProperty(_classNames, 'slds-icon-' + this.props.category + '-' + (this.props.theme || name), renderName), _classNames));
+	      return classNames((_classNames = {}, _defineProperty(_classNames, "slds-icon__container", this.props.category !== "utility"), _defineProperty(_classNames, 'slds-icon-' + this.props.category + '-' + name, renderName), _classNames));
 	    }
 	  }, {
 	    key: 'getClassName',
@@ -1513,7 +1529,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
 	      var customName = this.props.name ? this.props.name.replace("custom", "custom-") : null;
 	
-	      return classNames(this.props.className, "slds-icon", (_classNames2 = {}, _defineProperty(_classNames2, 'slds-icon--' + this.props.size, this.props.size), _defineProperty(_classNames2, 'slds-icon--' + this.props.position, this.props.position), _defineProperty(_classNames2, 'slds-icon-' + customName, this.props.category === "custom"), _defineProperty(_classNames2, 'slds-icon-' + this.props.category + '-' + (this.props.theme || name), this.props.category === "standard"), _classNames2));
+	      return classNames(this.props.className, "slds-icon", (_classNames2 = {}, _defineProperty(_classNames2, 'slds-icon--' + this.props.size, this.props.size), _defineProperty(_classNames2, 'slds-icon-' + customName, this.props.category === "custom"), _defineProperty(_classNames2, 'slds-icon-' + this.props.category + '-' + name, this.props.category === "standard"), _classNames2));
 	    }
 	  }, {
 	    key: 'render',
@@ -3581,14 +3597,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  assistiveText: _react2["default"].PropTypes.string,
 	  disabled: _react2["default"].PropTypes.bool,
+	  /**
+	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
+	   */
 	  iconName: _react2["default"].PropTypes.string,
 	  iconSize: _react2["default"].PropTypes.string,
 	  /**
-	   * join - join, member, leave
-	   * follow - follow, following, unfollow
-	   * icon - "selected", "unselect", "not selected" communicated through background color
+	   * join - states are join, member, leave <br />
+	   * follow - states are follow, following, unfollow <br />
+	   * icon - states are "selected", "unselect", "not selected"
 	   */
 	  type: _react2["default"].PropTypes.oneOf(["join", "follow", "icon"]),
+	  /**
+	   * use "icon-inverse" for white icons.
+	   */
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
 	var defaultProps = {};
