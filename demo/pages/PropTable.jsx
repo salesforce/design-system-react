@@ -63,9 +63,9 @@ class PropTable extends React.Component {
       let row = (
         <tr key={prop}>
           <td>{prop}</td>
-          <td>{type}</td>
+          <td className="mw-col-m">{type}</td>
           <td>{docs[prop].defaultValue ? docs[prop].defaultValue.value : ""}</td>
-          <td className="mw-col">{docs[prop].description }</td>
+          <td className="mw-col-l">{docs[prop].description }</td>
         </tr>
       );
       props.push(row);

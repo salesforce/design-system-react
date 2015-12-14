@@ -8,7 +8,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "assistiveText is text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText."
             },
             "buttonSize": {
                 "type": {
@@ -117,7 +117,7 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "For icon button variants, please reference the [SLDS Icons page](https://design-system-dev.herokuapp.com/components/buttons#icon)."
             },
             "label": {
                 "type": {
@@ -195,7 +195,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "assistiveText is text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have a label with the icon,\ndeclare this prop as assistiveText=\"\"."
+                "description": "text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have a label with the icon,\ndeclare this prop as assistiveText=\"\"."
             },
             "category": {
                 "type": {
@@ -231,7 +231,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "name is the name of the icon. Visit http://www.lightningdesignsystem.com/resources/icons to reference icon names."
+                "description": "name of the icon. Visit http://www.lightningdesignsystem.com/resources/icons to reference icon names."
             },
             "position": {
                 "type": {

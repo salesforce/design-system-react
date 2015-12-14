@@ -17,6 +17,10 @@ import omit from "lodash.omit";
 
 const displayName = 'SLDSButton';
 const propTypes = {
+  /**
+   * text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop.
+   */
   assistiveText: React.PropTypes.string,
   buttonSize: React.PropTypes.oneOf(["small"]),
   disabled: React.PropTypes.bool,
@@ -24,6 +28,9 @@ const propTypes = {
   iconName: React.PropTypes.string,
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
   iconSize: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
+  /**
+   * For icon variants, please reference https://design-system-dev.herokuapp.com/components/buttons#icon.
+   */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
   label: React.PropTypes.string,
   onClick: React.PropTypes.func,
@@ -34,7 +41,7 @@ const propTypes = {
 const defaultProps = {};
 
 /**
- * General component description.
+ * SLDS Button component can be used for label buttons, icon buttons, or buttons that have both.
  */
 
 class SLDSButton extends React.Component {

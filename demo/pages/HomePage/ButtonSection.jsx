@@ -11,6 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import CodeMirror from '../CodeMirror';
 import Samples from '../Samples';
+import PropTable from '../PropTable';
 
 const displayName = "ButtonSection";
 const propTypes = {};
@@ -32,7 +33,10 @@ class ButtonSection extends React.Component {
           </a>
         </h3>
 
-        <CodeMirror codeText={Samples.Buttons} />
+        <div className="demo-only">
+          <CodeMirror codeText={Samples.Buttons} />
+          <PropTable component="SLDSButton" />
+        </div>
       </div>
     );
   }
