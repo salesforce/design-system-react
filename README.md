@@ -1,7 +1,7 @@
 design-system-react
 =====================
 
-Future home of SLDS-React components
+SLDS React component library based off [Salesforce Lightening Design System](http://www.lightningdesignsystem.com). This project is in beta, very experimental, and not yet open-sourced. Until this project is open-sourced, documentation for using the SLDS React Components runs locally from this repo. Inside your local directory, run `npm start` and open `localhost:3000` to view docs.
 
 ## Usage
 
@@ -17,16 +17,23 @@ open http://localhost:3000
 npm test
 ```
 
+## Build Pages
+
+```
+npm install
+npm run pages
+```
+
 ## Components
 
-### Table of Contents
-* [Buttons](#buttons)
-* [Button Groups](#button-groups)
-* [Dropdowns](#dropdowns)
-* [Icons](#icons)
-* [Lookups](#lookups)
-* [Modals](#modals)
-* [Notifications](#notifications)
-* [Picklists](#picklists)
+* Buttons
+* Button Groups
+* Dropdowns
+* Icons
+* Lookups
+* Modals
+* Notifications
+* Picklists
+* Tooltip
 
 
