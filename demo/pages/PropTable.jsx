@@ -41,7 +41,7 @@ class PropTable extends React.Component {
       }
 
       renderedEnumValues.push(
-        <code key={i}>{enumValue}</code>
+        <code key={`${i}val`}>{enumValue}</code>
       );
     });
 
@@ -57,7 +57,6 @@ class PropTable extends React.Component {
       let p = docs[prop];
       let propType = p.type ? p.type : null;
 
-      console.log("default props is ", p);
       let type;
       propType.name === 'enum' ? type = this.renderEnum(propType) : type = p.type;
 
@@ -66,9 +65,7 @@ class PropTable extends React.Component {
           <td>{prop}</td>
           <td>{type}</td>
           <td>{docs[prop].defaultValue ? docs[prop].defaultValue.value : ""}</td>
-          <td className="mw-col">
-            <div dangerouslySetInnerHTML={{__html: docs[prop].description }} />
-          </td>
+          <td className="mw-col">{docs[prop].description }</td>
         </tr>
       );
       props.push(row);

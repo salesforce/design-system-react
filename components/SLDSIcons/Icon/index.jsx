@@ -31,7 +31,7 @@ const propTypes = {
   theme: React.PropTypes.string,
 };
 const defaultProps = {
-  category: 'standard', // standard Icon Reference: https://www.lightningdesignsystem.com/resources/icons
+  category: 'standard',
 };
 
 class Icon extends React.Component {
