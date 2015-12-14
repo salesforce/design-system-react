@@ -36,19 +36,19 @@ const customStyles = {
 const displayName = "SLDSModal";
 const propTypes = {
   align: React.PropTypes.oneOf(['top', 'center']),
+  prompt: React.PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info']),
   size: React.PropTypes.oneOf(['medium', 'large']),
-  prompt: React.PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info'])
 };
 const defaultProps = {
-  align:'center',
-  title:'',
-  tagline:'',
-  isOpen:false,
-  content:[],
-  footer:[],
-  returnFocusTo:null,
-  prompt:'', //if prompt !== '', it renders modal as prompt
-  directional: false
+  align: 'center',
+  content: [],
+  directional: false,
+  footer: [],
+  isOpen: false,
+  prompt: '', //if prompt !== '', it renders modal as prompt
+  returnFocusTo: null,
+  tagline: '',
+  title: '',
 };
 
 class SLDSModal extends React.Component {
@@ -63,10 +63,10 @@ class SLDSModal extends React.Component {
 
   componentDidMount () {
     //console.log('!!! window.activeElement !!! ',document.activeElement);
-    this.setState({returnFocusTo:document.activeElement})
+    this.setState({returnFocusTo: document.activeElement})
     if(!this.state.revealed){
       setTimeout(()=>{
-        this.setState({revealed:true});
+        this.setState({revealed: true});
       });
     }
     this.updateBodyScroll();
@@ -140,15 +140,15 @@ class SLDSModal extends React.Component {
   getModal() {
     const modalClass = {
       'slds-modal': true,
-      'slds-fade-in-open':this.state.revealed,
-      'slds-modal--large':this.props.size === 'large',
-      'slds-modal--prompt':this.isPrompt()
+      'slds-fade-in-open': this.state.revealed,
+      'slds-modal--large': this.props.size === 'large',
+      'slds-modal--prompt': this.isPrompt()
     };
     const modalStyle = this.props.align === "top"?{ "justify-content": "flex-start" }:null;
 
     return <div
             className={classNames(modalClass)}
-            style={{pointerEvents:'inherit'}}
+            style={{pointerEvents: 'inherit'}}
             onClick={this.isPrompt() ? undefined : this.closeModal}
           >
           <div
@@ -241,7 +241,7 @@ class SLDSModal extends React.Component {
   render() {
     const overlayClasses = {
       'slds-modal-backdrop': true,
-      'slds-modal-backdrop--open':this.state.revealed
+      'slds-modal-backdrop--open': this.state.revealed
     };
 
     return (
