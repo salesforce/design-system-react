@@ -307,7 +307,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have a label with the icon,\ndeclare this prop as assistiveText=\"\"."
+                "description": "text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have visible descriptive text with the icon,\ndeclare this prop as assistiveText=\"\"."
             },
             "category": {
                 "type": {
@@ -338,29 +338,19 @@
                 "required": false,
                 "description": ""
             },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "css classes that are applied to the svg"
+            },
             "name": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "name of the icon. Visit http://www.lightningdesignsystem.com/resources/icons to reference icon names."
-            },
-            "position": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "\"left\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"right\"",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": ""
             },
             "size": {
                 "type": {
@@ -383,13 +373,6 @@
                             "computed": false
                         }
                     ]
-                },
-                "required": false,
-                "description": ""
-            },
-            "theme": {
-                "type": {
-                    "name": "string"
                 },
                 "required": false,
                 "description": ""

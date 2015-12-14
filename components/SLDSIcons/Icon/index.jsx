@@ -17,18 +17,20 @@ const displayName = "Icon";
 const propTypes = {
   /**
    * text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-   * Naked icons must have assistive text, however, if you also have a label with the icon,
+   * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
    * declare this prop as assistiveText="".
    */
   assistiveText: React.PropTypes.string,
   category: React.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]),
   /**
+   * css classes that are applied to the svg
+   */
+  className: React.PropTypes.string,
+  /**
    * name of the icon. Visit http://www.lightningdesignsystem.com/resources/icons to reference icon names.
    */
   name: React.PropTypes.string,
-  position: React.PropTypes.oneOf(["left", "right"]),
   size: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
-  theme: React.PropTypes.string,
 };
 const defaultProps = {
   category: 'standard',
@@ -47,7 +49,7 @@ class Icon extends React.Component {
 
     return classNames({
       ["slds-icon__container"]: this.props.category !== "utility",
-      [`slds-icon-${this.props.category}-${this.props.theme || name}`]: renderName,
+      [`slds-icon-${this.props.category}-${name}`]: renderName,
     })
   }
 
@@ -57,9 +59,8 @@ class Icon extends React.Component {
 
     return classNames(this.props.className, "slds-icon", {
       [`slds-icon--${this.props.size}`]: this.props.size,
-      [`slds-icon--${this.props.position}`]: this.props.position,
       [`slds-icon-${customName}`]: this.props.category === "custom",
-      [`slds-icon-${this.props.category}-${this.props.theme || name}`]: this.props.category === "standard",
+      [`slds-icon-${this.props.category}-${name}`]: this.props.category === "standard",
     });
   }
 

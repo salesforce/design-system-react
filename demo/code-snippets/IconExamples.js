@@ -1,10 +1,10 @@
 const iconExamples = (
   <div>
-    <Icon name='custom1' category='custom' size='small' assistiveText='Favorite' />
-    <Icon name='account' category='standard' size='medium' assistiveText='Accounts' />
-    <Icon name='announcement' category='action' size='medium' assistiveText='Announcements' />
-    <Icon name='approval' category='action' size='large' assistiveText='Approval' />
-    <Icon name='open_folder' category='utility' size='large' assistiveText='' className='slds-icon-text-default' />
+    <Icon assistiveText='Favorite' category='custom' name='custom1' size='small' />
+    <Icon assistiveText='Accounts' category='standard' name='account' size='medium' />
+    <Icon assistiveText='Announcements' category='action' name='announcement' size='medium' />
+    <Icon assistiveText='Approval' category='action' name='approval' size='large' />
+    <Icon assistiveText='' category='utility' className='slds-icon-text-default' name='open_folder' size='large' />
     <span className="slds-m-left--x-small">Documents Folder</span>
   </div>
 );
