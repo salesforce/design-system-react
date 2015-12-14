@@ -142,35 +142,23 @@ class SLDSModal extends React.Component {
       'slds-modal': true,
       'slds-fade-in-open': this.state.revealed,
       'slds-modal--large': this.props.size === 'large',
-      'slds-modal--prompt': this.isPrompt()
+      'slds-modal--prompt': this.isPrompt(),
     };
-    const modalStyle = this.props.align === "top"?{ "justify-content": "flex-start" }:null;
-
-    return <div
-            className={classNames(modalClass)}
-            style={{pointerEvents: 'inherit'}}
-            onClick={this.isPrompt() ? undefined : this.closeModal}
-          >
-          <div
-            role='dialog'
-            className='slds-modal__container'
-            onClick={this.handleModalClick}
-            style={modalStyle}
-            >
-
+    const modalStyle = this.props.align === "top" ? {"justify-content": "flex-start"} : null;
+    return (
+      <div>
+        <div className={classNames(modalClass)} style={{pointerEvents: 'inherit'}} onClick={this.isPrompt() ? undefined : this.closeModal.bind(this)}>
+          <div aria-hidden="false" role='dialog' onClick={this.handleModalClick.bind(this)} className='slds-modal__container' style={modalStyle}>
             {this.headerComponent()}
-
             <div className='slds-modal__content'>
-
               {this.props.children}
-
             </div>
-
             {this.footerComponent()}
-
           </div>
-
-        </div>;
+        </div>
+        <div style={{pointerEvents: 'inherit'}} className="slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly" onClick={this.isPrompt() ? undefined : this.closeModal.bind(this)}></div>
+      </div>
+    )
   }
 
   footerComponent() {
@@ -239,17 +227,11 @@ class SLDSModal extends React.Component {
   }
 
   render() {
-    const overlayClasses = {
-      'slds-modal-backdrop': true,
-      'slds-modal-backdrop--open': this.state.revealed
-    };
-
     return (
       <Modal
         isOpen={this.props.isOpen}
         onRequestClose={this.closeModal}
-        style={customStyles}
-        overlayClassName={classNames(overlayClasses)} >
+        style={customStyles}>
         {this.getModal()}
       </Modal>
     );
