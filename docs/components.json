@@ -287,6 +287,13 @@
                     "name": "node"
                 },
                 "required": true,
+                "description": "Children are expected to be SLDSButton components"
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
                 "description": ""
             }
         }
