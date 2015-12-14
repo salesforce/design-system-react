@@ -72,6 +72,28 @@ class SLDSModal extends React.Component {
     this.updateBodyScroll();
   }
 
+  componentDidUpdate (prevProps, prevState) {
+    if(this.props.isOpen !== prevProps.isOpen){
+      this.updateBodyScroll();
+    }
+    if(this.state.isClosing !== prevState.isClosing){
+      if(this.state.isClosing){
+        //console.log('CLOSING: ');
+        if(this.isMounted()){
+          const el = this.getDOMNode().parentNode;
+          if(el && el.getAttribute('data-slds-modal')){
+            React.unmountComponentAtNode(el);
+            document.body.removeChild(el);
+          }
+        }
+      }
+    }
+  }
+
+  componentWillUnmount () {
+    this.clearBodyScroll();
+  }
+
   closeModal () {
     this.setState({isClosing: true});
     if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
@@ -151,23 +173,6 @@ class SLDSModal extends React.Component {
         </div>;
   }
 
-  render() {
-    const overlayClasses = {
-      'slds-modal-backdrop': true,
-      'slds-modal-backdrop--open':this.state.revealed
-    };
-
-    return (
-      <Modal
-        isOpen={this.props.isOpen}
-        onRequestClose={this.closeModal}
-        style={customStyles}
-        overlayClassName={classNames(overlayClasses)} >
-        {this.getModal()}
-      </Modal>
-    );
-  }
-
   footerComponent() {
     let footer;
 
@@ -233,37 +238,22 @@ class SLDSModal extends React.Component {
     return header;
   }
 
-  componentDidUpdate (prevProps, prevState) {
+  render() {
+    const overlayClasses = {
+      'slds-modal-backdrop': true,
+      'slds-modal-backdrop--open':this.state.revealed
+    };
 
-
-    if(this.props.isOpen !== prevProps.isOpen){
-      this.updateBodyScroll();
-    }
-
-    if(this.state.isClosing !== prevState.isClosing){
-
-
-
-      if(this.state.isClosing){
-        //console.log('CLOSING: ');
-
-        if(this.isMounted()){
-          const el = this.getDOMNode().parentNode;
-          if(el && el.getAttribute('data-slds-modal')){
-            React.unmountComponentAtNode(el);
-            document.body.removeChild(el);
-          }
-        }
-      }
-    }
-
-
+    return (
+      <Modal
+        isOpen={this.props.isOpen}
+        onRequestClose={this.closeModal}
+        style={customStyles}
+        overlayClassName={classNames(overlayClasses)} >
+        {this.getModal()}
+      </Modal>
+    );
   }
-
-  componentWillUnmount () {
-    this.clearBodyScroll();
-  }
-
 
 }
 
