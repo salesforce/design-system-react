@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "SLDS Button component can be used for label buttons, icon buttons, or buttons that have both.",
+        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />\nUse the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightening Design System - Buttons</a>.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -42,7 +42,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightening Design System - Icons</a> to reference icon names."
             },
             "iconPosition": {
                 "type": {
@@ -117,7 +117,7 @@
                     ]
                 },
                 "required": false,
-                "description": "For icon variants, please reference https://design-system-dev.herokuapp.com/components/buttons#icon."
+                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">Lightening Design System - Icons</a>"
             },
             "label": {
                 "type": {
@@ -182,7 +182,7 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "use \"icon-inverse\" for white icons."
             }
         }
     },
@@ -209,7 +209,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightening Design System - Icons</a> to reference icon names."
             },
             "iconSize": {
                 "type": {
@@ -237,7 +237,7 @@
                     ]
                 },
                 "required": false,
-                "description": "join - join, member, leave\nfollow - follow, following, unfollow\nicon - \"selected\", \"unselect\", \"not selected\" communicated through background color"
+                "description": "join - states are join, member, leave <br />\nfollow - states are follow, following, unfollow <br />\nicon - states are \"selected\", \"unselect\", \"not selected\""
             },
             "variant": {
                 "type": {
@@ -274,7 +274,7 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "use \"icon-inverse\" for white icons."
             }
         }
     },
@@ -299,7 +299,7 @@
         }
     },
     "SLDSIcons/Icon": {
-        "description": "The SLDS Icon component should be used for icons only. For icons that are buttons, use the SLDS Button component. <br />\nThe icon color is white by default. Add the class, \"slds-icon-text-default\", to create a text-colored fill color for utility icons. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightening Design System - Icons</a>.",
+        "description": "The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />\nThe icon color is white by default. Add the class, \"slds-icon-text-default\", to create a text-colored fill color for utility icons. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightening Design System - Icons</a>.",
         "displayName": "Icon",
         "props": {
             "assistiveText": {
@@ -350,7 +350,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "name of the icon. Visit http://www.lightningdesignsystem.com/resources/icons to reference icon names."
+                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightening Design System - Icons</a> to reference icon names."
             },
             "size": {
                 "type": {

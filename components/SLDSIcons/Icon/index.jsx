@@ -27,7 +27,7 @@ const propTypes = {
    */
   className: React.PropTypes.string,
   /**
-   * name of the icon. Visit http://www.lightningdesignsystem.com/resources/icons to reference icon names.
+   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
    */
   name: React.PropTypes.string,
   size: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
@@ -37,7 +37,7 @@ const defaultProps = {
 };
 
 /**
- * The SLDS Icon component should be used for icons only. For icons that are buttons, use the SLDS Button component. <br />
+ * The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />
  * The icon color is white by default. Add the class, "slds-icon-text-default", to create a text-colored fill color for utility icons. <br />
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">Lightening Design System - Icons</a>.
  */

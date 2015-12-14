@@ -21,14 +21,20 @@ const propTypes = {
    */
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
+  /**
+   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
+   */
   iconName: React.PropTypes.string,
   iconSize: React.PropTypes.string,
   /**
-   * join - join, member, leave
-   * follow - follow, following, unfollow
-   * icon - "selected", "unselect", "not selected" communicated through background color
+   * join - states are join, member, leave <br />
+   * follow - states are follow, following, unfollow <br />
+   * icon - states are "selected", "unselect", "not selected"
    */
   type: React.PropTypes.oneOf(["join", "follow", "icon"]),
+  /**
+   * use "icon-inverse" for white icons.
+   */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {};

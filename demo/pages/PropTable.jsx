@@ -50,6 +50,10 @@ class PropTable extends React.Component {
     );
   }
 
+  getMarkup(docString) {
+    return {__html: docString };
+  }
+
   renderPropInfo() {
     const docs = DOCS[this.props.component].props;
     let props = [];
@@ -65,7 +69,9 @@ class PropTable extends React.Component {
           <td>{prop}</td>
           <td className="mw-col-m">{type}</td>
           <td>{docs[prop].defaultValue ? docs[prop].defaultValue.value : ""}</td>
-          <td className="mw-col-l">{docs[prop].description }</td>
+          <td className="mw-col-l">
+            <span dangerouslySetInnerHTML={this.getMarkup(docs[prop].description)} />
+          </td>
         </tr>
       );
       props.push(row);

@@ -12,6 +12,7 @@ import React from 'react';
 import CodeMirror from '../CodeMirror';
 import Samples from '../Samples';
 import PropTable from '../PropTable';
+import DOCS from '../../../docs';
 
 const displayName = "ButtonSection";
 const propTypes = {};
@@ -24,14 +25,18 @@ class ButtonSection extends React.Component {
     this.state = {};
   }
 
+  getDescription() {
+    const desc = DOCS["SLDSButton"].description;
+    return {__html: desc };
+  }
+
   render(){
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
-          <a href="javascript:void(0)" id='buttonSection'>
           Button
-          </a>
         </h3>
+        <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" />
 
         <div className="demo-only">
           <CodeMirror codeText={Samples.Buttons} />
