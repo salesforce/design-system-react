@@ -52,19 +52,20 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 		this.elements.formElement = this.$el.find('.slds-form-element');
 		this.elements.input = this.$el.find('.slds-input');
-		this.elements.datepicker = this.$el.find('.slds-datepicker');
 		this.elements.dropdown = this.$el.find('.slds-dropdown');
-		this.elements.calendar = this.$el.find('.datepicker__month');
-		this.elements.calendarDays = this.elements.calendar.find('tbody');
-		this.elements.monthName = this.$el.find('.slds-datepicker__filter--month h2');
-		this.elements.year = this.$el.find('.slds-datepicker__filter .slds-picklist');
 
 		if (this.getProperty('modalCalendar')) {
 			Positionable.setElement(this, Positionable.attachPositionedElementToBody());
 			Positionable.setContainer(this, document.querySelector('body'));
 			Positionable.setTarget(this, this.elements.formElement);
-			this.elements.datepicker = $(Positionable.getElement(this)).append(this.elements.dropdown).find('.slds-datepicker');
+			
+			this.elements.dropdown = $(Positionable.getElement(this)).append(this.elements.dropdown).find('.slds-dropdown');
 		}
+
+		this.elements.calendar = this.elements.dropdown.find('.datepicker__month');
+		this.elements.calendarDays = this.elements.calendar.find('tbody');
+		this.elements.monthName = this.elements.dropdown.find('.slds-datepicker__filter--month h2');
+		this.elements.year = this.elements.dropdown.find('.slds-datepicker__filter .slds-picklist');
 
 		const $icon = this._renderIcon('utility.event', 'slds-input__icon slds-icon-text-default');
 		$icon.replaceAll(this.elements.formElement.find('x-input-icon')[0]);
@@ -83,14 +84,13 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_bindUIEvents () {
-		this.element.on('click.slds-form-element', '.slds-input', this._triggerCalendar.bind(this));
-		this.element.on('keyup.slds-form-element', '.slds-input', this._activateManualInput.bind(this));
-		this.element.on('click.slds-datepicker', this._cancelEventProp);
+		this.elements.input.on('click.slds-form-element', this._triggerCalendar.bind(this));
+		this.elements.input.on('keyup.slds-form-element', this._activateManualInput.bind(this));
 
-		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', this._backMonth.bind(this));
-		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', this._forwardMonth.bind(this));
-
-		this.element.on('click.slds-datepicker-form', '.slds-day', this._selectDate.bind(this));
+		this.elements.dropdown.on('click.slds-datepicker', this._cancelEventProp);
+		this.elements.dropdown.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', this._backMonth.bind(this));
+		this.elements.dropdown.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', this._forwardMonth.bind(this));
+		this.elements.dropdown.on('click.slds-datepicker-form', '.slds-day', this._selectDate.bind(this));
 	},
 
 	_render () {
@@ -126,8 +126,8 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 	
 	_onOpened () {
-		console.log(this.elements.datepicker);
-		this.elements.datepicker.toggleClass('slds-hidden', false);
+		console.log(this.elements.dropdown);
+		this.elements.dropdown.toggleClass('slds-hidden', false);
 		if (this.getProperty('modalCalendar')) {
 			Positionable.position(this);
 			Positionable.show(this);
@@ -135,7 +135,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 	
 	_onClosed () {
-		this.elements.datepicker.toggleClass('slds-hidden', true);
+		this.elements.dropdown.toggleClass('slds-hidden', true);
 		if (this.getProperty('modalCalendar')) {
 			Positionable.hide(this);
 		}
@@ -246,8 +246,8 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_activateManualInput () {
-		this.element.off('focusout.slds-form-element', '.slds-input');
-		this.element.on('focusout.slds-form-element', '.slds-input', this._manualDateInput.bind(this));
+		// this.element.off('focusout.slds-form-element', '.slds-input');
+		// this.element.on('focusout.slds-form-element', '.slds-input', this._manualDateInput.bind(this));
 	},
 
 	_manualDateInput () {
