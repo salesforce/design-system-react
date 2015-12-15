@@ -13,6 +13,7 @@ const SLDSButton =  require('../../components/SLDSButton');
 const SLDSButtonStateful =  require('../../components/SLDSButton/SLDSButtonStateful');
 const SLDSButtonGroup =  require('../../components/SLDSButtonGroup');
 const {Icon}=  require('../../components/SLDSIcons');
+const SLDSModal =  require('../../components/SLDSModal');
 
 const displayName = 'CodeMirror';
 const propTypes = {

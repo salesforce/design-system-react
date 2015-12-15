@@ -378,5 +378,134 @@
                 "description": ""
             }
         }
+    },
+    "SLDSModal": {
+        "description": "",
+        "displayName": "SLDSModal",
+        "props": {
+            "align": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'top'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'center'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Vertical alignment of modal"
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Modal content"
+            },
+            "directional": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "if directional, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons."
+            },
+            "footer": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": ""
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "isPassive": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key"
+            },
+            "prompt": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'success'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'warning'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'wrench'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'offline'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'info'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "returnFocusTo": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "tagline": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text underneath the title"
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
     }
 }

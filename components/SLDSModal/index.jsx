@@ -35,14 +35,35 @@ const customStyles = {
 
 const displayName = "SLDSModal";
 const propTypes = {
+  /**
+   * Vertical alignment of modal
+   */
   align: React.PropTypes.oneOf(['top', 'center']),
+  /**
+   * Modal content
+   */
+  children: React.PropTypes.node,
+  /**
+   * if directional, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
+   */
+  directional: React.PropTypes.bool,
+  footer: React.PropTypes.array,
+  isOpen: React.PropTypes.bool,
+  /**
+   * if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key
+   */
   isPassive: React.PropTypes.bool,
-  prompt: React.PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info']),
+  prompt: React.PropTypes.oneOf(['success', 'warning', 'error', 'wrench', 'offline', 'info']),
+  returnFocusTo: React.PropTypes.node,
   size: React.PropTypes.oneOf(['medium', 'large']),
+  /**
+   * Text underneath the title
+   */
+  tagline: React.PropTypes.string,
+  title: React.PropTypes.string,
 };
 const defaultProps = {
   align: 'center',
-  content: [],
   directional: false,
   footer: [],
   isOpen: false,
@@ -53,6 +74,9 @@ const defaultProps = {
   title: '',
 };
 
+/**
+ *
+ */
 class SLDSModal extends React.Component {
 
   constructor(props) {
