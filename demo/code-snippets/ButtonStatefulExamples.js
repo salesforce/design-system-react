@@ -7,10 +7,18 @@ let inverseBtnParent = {backgroundColor: "#16325c", padding: "10px", display: "i
 const examples = (
   <div className="slds-x-small-buttons--horizontal">
     <h4 className="slds-text-heading--medium slds-p-vertical--medium">Stateful Buttons</h4>
-    <SLDSButtonStateful iconName="like" iconSize="large" type="icon" />
-    <SLDSButtonStateful type="follow"/>
+    <SLDSButtonStateful
+      iconName="like"
+      iconSize="large"
+      type="icon" />
+
+    <SLDSButtonStateful
+      type="follow"/>
+
     <div style={inverseBtnParent} className="slds-m-horizontal--small">
-      <SLDSButtonStateful type="join" variant="inverse" />
+      <SLDSButtonStateful
+        type="join"
+        variant="inverse" />
     </div>
   </div>
 );

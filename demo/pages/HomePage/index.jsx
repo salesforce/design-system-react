@@ -77,7 +77,7 @@ module.exports = React.createClass( {
         </div>
 
         <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
-          <div className='region region--main slds-grow slds-size--1-of-4 slds-medium-size--1-of-4 slds-large-size--1-of-8 slds-col-rule--right slds-p-around--large'>
+          <div className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-around--large'>
 
             <section className="slds-p-bottom--large">
               <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Current</h3>
@@ -99,7 +99,7 @@ module.exports = React.createClass( {
             </section>
         </div>
 
-        <div className="region region--main slds-grow slds-size--3-of-4 slds-medium-size--3-of-4 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
+        <div className="region region--main slds-grow slds-size--5-of-6 slds-medium-size--5-of-6 slds-large-size--10-of-12 slds-col-rule--right slds-p-around--large">
           <RouteHandler/>
         </div>
       </main>
