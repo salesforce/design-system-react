@@ -31,7 +31,17 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Selectable, KeyboardNaviga
 	},
 
 	_defaultProperties: {
-		collection: []
+		collection: [],
+		
+		// positionable trait
+		positionedTargetVerticalAttachment: 'bottom',
+		constrainWidthToTarget: true,
+		constrainPositionedToWindow: true,
+		modalMenu: false,
+		positionedOffset: 0,
+		positionedTargetHorizontalAttachment: 'left',
+		positionedZIndex: '10001',
+		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
 	},
 
 	/* Accessors: These may be supplied in the options hash to override default behavior
