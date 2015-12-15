@@ -19,9 +19,7 @@ import template from './popover-template';
 
 let Popover = function Popover () {
 	const options = this._getOptions(arguments);
-	
 	this.template = $(template);
-	
 	this._initialize(options);
 };
 
@@ -36,9 +34,7 @@ export const PopoverMethods = {
 		this._setTrigger();
 		
 		// TODO: This is probably not the best way to do this or the best place for it to be
-		this.appendTo(Positionable.getContainer(this));
-
-		Positionable.position(this);
+		this.appendTo($(Positionable.getContainer(this)));
 	},
 
 	_setElements () {
@@ -67,10 +63,11 @@ export const PopoverMethods = {
 	
 	_onShow () {
 		Positionable.position(this);
+		Positionable.show(this);
 	},
 	
 	_onHide () {
-		Positionable.position(this);
+		Positionable.hide(this);
 	}
 };
 
