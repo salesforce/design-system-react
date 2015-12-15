@@ -126,7 +126,6 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 	
 	_onOpened () {
-		console.log(this.elements.dropdown);
 		this.elements.dropdown.toggleClass('slds-hidden', false);
 		if (this.getProperty('modalCalendar')) {
 			Positionable.position(this);
