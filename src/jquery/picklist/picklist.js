@@ -6,6 +6,7 @@ import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Traits
 import Openable from '../../traits/openable';
+import Positionable from '../../traits/positionable';
 
 // Framework specific
 import DOM from '../dom';
@@ -37,7 +38,18 @@ export const PicklistObject = {
 
 	_initElements () {
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
-		this.elements.dropdownMenu = this.element.find('.' + this.cssClasses.LIST);
+
+		if (this.getProperty('modalMenu')) {
+			console.log( Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-picklist')) );
+			Positionable.setContainer(this, document.querySelector('body'));
+			
+			this.elements.dropdown = $(Positionable.getElement(this)).append(this.elements.dropdown).find('.' + this.cssClasses.MENU);
+			console.log(Positionable.getElement(this));
+			// console.log(Positionable.getContainer(this));
+			// console.log(Positionable.getTarget(this));
+		}
+
+		this.elements.dropdownMenu = this.elements.dropdown.find('.' + this.cssClasses.LIST);
 	},
 
 	_bindUIEvents () {
@@ -124,6 +136,10 @@ export const PicklistObject = {
 		this.button.replaceAll(this.element.find('x-dropdown-button')[0]);
 		
 		this.elements.button = this.button.element;
+		if (this.getProperty('modalMenu')) {
+			Positionable.setTarget(this, this.elements.button);
+			console.log(Positionable.getTarget(this));
+		}
 		this.elements.button.addClass('slds-picklist__label');
 
 		this._renderMenu(elements);
@@ -167,6 +183,11 @@ export const PicklistObject = {
 		if (this.rendered) {
 			this.elements.dropdown.toggleClass('slds-hide', false);
 			this.elements.button.attr('aria-expanded', true);
+
+			if (this.getProperty('modalMenu')) {
+				Positionable.position(this);
+				Positionable.show(this);
+			}
 		}
 	},
 
@@ -174,6 +195,9 @@ export const PicklistObject = {
 		if (this.rendered) {
 			this.elements.dropdown.toggleClass('slds-hide', true);
 			this.elements.button.attr('aria-expanded', false);
+			if (this.getProperty('modalMenu')) {
+				Positionable.hide(this);
+			}
 		}
 	},
 
