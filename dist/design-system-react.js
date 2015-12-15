@@ -9055,6 +9055,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = "SLDSModal";
 	var propTypes = {
 	  align: _react2['default'].PropTypes.oneOf(['top', 'center']),
+	  isPassive: _react2['default'].PropTypes.bool,
 	  prompt: _react2['default'].PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info']),
 	  size: _react2['default'].PropTypes.oneOf(['medium', 'large'])
 	};
@@ -9064,6 +9065,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  directional: false,
 	  footer: [],
 	  isOpen: false,
+	  isPassive: true,
 	  prompt: '', //if prompt !== '', it renders modal as prompt
 	  returnFocusTo: null,
 	  tagline: '',
@@ -9128,12 +9130,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'closeModal',
 	    value: function closeModal() {
-	      this.setState({ isClosing: true });
-	      if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
-	        this.state.returnFocusTo.focus();
-	      }
-	      if (this.props.onRequestClose) {
-	        this.props.onRequestClose();
+	      if (this.props.isPassive) {
+	        this.setState({ isClosing: true });
+	        if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
+	          this.state.returnFocusTo.focus();
+	        }
+	        if (this.props.onRequestClose) {
+	          this.props.onRequestClose();
+	        }
 	      }
 	    }
 	  }, {
@@ -9238,14 +9242,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'slds-modal--prompt': this.isPrompt()
 	      };
 	      var modalStyle = this.props.align === "top" ? { "justify-content": "flex-start" } : null;
-	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(modalClass), style: { pointerEvents: 'inherit' }, onClick: this.isPrompt() ? undefined : this.closeModal.bind(this) }, _react2['default'].createElement('div', { 'aria-hidden': 'false', role: 'dialog', onClick: this.handleModalClick.bind(this), className: 'slds-modal__container', style: modalStyle }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), this.footerComponent())), _react2['default'].createElement('div', { style: { pointerEvents: 'inherit' }, className: 'slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly', onClick: this.isPrompt() ? undefined : this.closeModal.bind(this) }));
+	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(modalClass), style: { pointerEvents: 'inherit' }, onClick: this.closeModal.bind(this) }, _react2['default'].createElement('div', { 'aria-hidden': 'false', role: 'dialog', onClick: this.handleModalClick.bind(this), className: 'slds-modal__container', style: modalStyle }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), this.footerComponent())), _react2['default'].createElement('div', { style: { pointerEvents: 'inherit' }, className: 'slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly' }));
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2['default'].createElement(_reactModal2['default'], {
 	        isOpen: this.props.isOpen,
-	        onRequestClose: this.closeModal,
+	        onRequestClose: this.closeModal.bind(this),
 	        style: customStyles }, this.getModal());
 	    }
 	  }]);
