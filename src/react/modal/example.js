@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import Datepicker from '../datepicker/datepicker';
 import Modal from './modal';
 import Lookup from '../lookup/lookup';
 import sampleData from '../../../sample-data/lookup';
@@ -8,8 +10,12 @@ export default function () {
 	const ModalExample = React.createClass({
 		getInitialState () {
 			return {
+				// modal
 				isOpen: false,
-				collection: sampleData.defaultArray
+
+				// There are the state for additional example controls
+				lookupCollection: sampleData.defaultArray,
+				datepickerSelection: []
 			};
 		},
 
@@ -29,15 +35,27 @@ export default function () {
 						<p>The following are controls using the <em>modalMenu</em> functionality which enables "auto-flip" and dropdown menus to be "in front of" modals.</p>
 						<Lookup
 							label="Accounts"
-							collection={this.state.collection}
-							selection={this.state.selection}
-							onChanged={this._handleModelChange}
+							collection={this.state.lookupCollection}
 							modalMenu/>
+						<Datepicker
+							selection={this.state.datepickerSelection}
+							onChanged={this.handleDateSelected}
+							multiSelect={true}
+							modalCalendar
+							inputLabel="Pick a Date"/>
 					</Modal>
 					
 					<button className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Toggle</button>
 				</div>
 			);
+		},
+
+		handleDateSelected (item, selection) {
+			if (selection.length > 2) {
+				this.setState({ datepickerSelection: item });
+			} else {
+				this.setState({ datepickerSelection: selection });
+			}
 		},
 
 		onClose () {
