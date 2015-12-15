@@ -3,17 +3,20 @@ const handleClick = function(buttonInstance) {
     alert(buttonInstance + " Button Clicked");
    };
 };
+let inverseBtnParent = {backgroundColor: "#16325c", padding: "10px", display: "inline-block"};
 const examples = (
-  <div>
+  <div className="slds-x-small-buttons--horizontal">
     <h4 className="slds-text-heading--medium slds-p-vertical--medium">Standard Buttons</h4>
-    <SLDSButton className="slds-m-right--medium" label="Base" onClick={handleClick('Base')} variant="base" />
-    <SLDSButton className="slds-m-right--medium" label="Neutral" onClick={handleClick('Neutral')} variant="neutral" />
-    <SLDSButton className="slds-m-right--medium" iconName="download" iconPosition="left" label="Neutral Icon" onClick={handleClick('Neutral Icon')} variant="neutral" />
-    <SLDSButton className="slds-m-right--medium" label="Responsive" onClick={handleClick('Responsive')} responsive={true} variant="neutral" />
-    <SLDSButton className="slds-m-right--medium" label="Brand" onClick={handleClick('Brand')} variant="brand" />
-    <SLDSButton className="slds-m-right--medium" disabled={true} iconName="add" iconPosition="left" label="Brand Disabled" onClick={handleClick('Brand Disabled')} variant="brand" />
-    <SLDSButton className="slds-m-right--medium" label="Destructive" onClick={handleClick('Destructive')} variant="destructive" />
-    <SLDSButton className="slds-m-right--medium" label="Inverse" onClick={handleClick('Inverse')} variant="inverse"/>
+    <SLDSButton label="Base" onClick={handleClick('Base')} variant="base" />
+    <SLDSButton label="Neutral" onClick={handleClick('Neutral')} variant="neutral" />
+    <SLDSButton iconName="download" iconPosition="left" label="Neutral Icon" onClick={handleClick('Neutral Icon')} variant="neutral" />
+    <SLDSButton label="Responsive" onClick={handleClick('Responsive')} responsive={true} variant="neutral" />
+    <SLDSButton label="Brand" onClick={handleClick('Brand')} variant="brand" />
+    <SLDSButton disabled={true} label="Disabled" onClick={handleClick('Disabled')} variant="brand" />
+    <SLDSButton label="Destructive" onClick={handleClick('Destructive')} variant="destructive" />
+    <div style={inverseBtnParent} className="slds-m-horizontal--small">
+      <SLDSButton label="Inverse" onClick={handleClick('Inverse')} variant="inverse"/>
+    </div>
   </div>
 );
 
