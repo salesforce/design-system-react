@@ -245,8 +245,8 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_activateManualInput () {
-		// this.element.off('focusout.slds-form-element', '.slds-input');
-		// this.element.on('focusout.slds-form-element', '.slds-input', this._manualDateInput.bind(this));
+		this.element.off('focusout.slds-form-element', '.slds-input');
+		this.element.on('focusout.slds-form-element', '.slds-input', this._manualDateInput.bind(this));
 	},
 
 	_manualDateInput () {
