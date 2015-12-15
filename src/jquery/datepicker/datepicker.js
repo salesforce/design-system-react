@@ -59,10 +59,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this.elements.monthName = this.$el.find('.slds-datepicker__filter--month h2');
 		this.elements.year = this.$el.find('.slds-datepicker__filter .slds-picklist');
 
-		if (this.getProperty('modalMenu')) {
-			Positionable.setElement(this, this.elements.datepicker);
-			Positionable.setContainer(this, this.elements.control);
+		if (this.getProperty('modalCalendar')) {
+			Positionable.setElement(this, Positionable.attachPositionedElementToBody());
+			Positionable.setContainer(this, document.querySelector('body'));
 			Positionable.setTarget(this, this.elements.formElement);
+			this.elements.datepicker = $(Positionable.getElement(this)).append(this.elements.dropdown).find('.slds-datepicker');
 		}
 
 		const $icon = this._renderIcon('utility.event', 'slds-input__icon slds-icon-text-default');
@@ -125,12 +126,19 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 	
 	_onOpened () {
+		console.log(this.elements.datepicker);
 		this.elements.datepicker.toggleClass('slds-hidden', false);
-		Positionable.position(this);
+		if (this.getProperty('modalCalendar')) {
+			Positionable.position(this);
+			Positionable.show(this);
+		}
 	},
 	
 	_onClosed () {
 		this.elements.datepicker.toggleClass('slds-hidden', true);
+		if (this.getProperty('modalCalendar')) {
+			Positionable.hide(this);
+		}
 	},
 
 	_triggerCalendar (e) {
