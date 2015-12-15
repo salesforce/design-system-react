@@ -80,15 +80,7 @@ const Positionable = {
 		}
 	},
 
-	resetPositionedChild (controlContext) {
-		console.log(Positionable.getElement(controlContext).firstChild);
-		if (Positionable.getElement(controlContext).firstChild) {
-			Positionable.getElement(controlContext).firstChild.style.position = 'static';
-		}
-	},
-
 	show (controlContext) {
-		// Positionable.resetPositionedChild(controlContext);
 		Lib.wrapElement(Positionable.getElement(controlContext)).removeClass('slds-hidden');
 	},
 
