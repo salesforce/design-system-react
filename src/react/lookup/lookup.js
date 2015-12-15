@@ -199,7 +199,6 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_renderModalMenu () {
 		const menu = this._renderMenu();
 		
-		// positionedElement is a "wrapped element"
 		ReactDOM.render(menu, Positionable.getElement(this));
 
 		Positionable.setContainer(this, document.querySelector('body'));
