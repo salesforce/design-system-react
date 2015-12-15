@@ -237,7 +237,7 @@ class SLDSModal extends React.Component {
     return (
       <Modal
         isOpen={this.props.isOpen}
-        onRequestClose={this.closeModal}
+        onRequestClose={this.closeModal.bind(this)}
         style={customStyles}>
         {this.getModal()}
       </Modal>
