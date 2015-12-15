@@ -33,7 +33,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	propTypes: {
 		dateRange: React.PropTypes.array,
 		inputLabel: React.PropTypes.string,
-		modalMenu: React.PropTypes.bool,
+		modalCalendar: React.PropTypes.bool,
 		selection: React.PropTypes.any
 	},
 
@@ -96,8 +96,10 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		}
 
 		if (this.props.modalCalendar && Openable.isOpen(this)) {
+			Positionable.show(this);
 			Positionable.addEventListeners(this);
 		} else if (this.props.modalCalendar && !Openable.isOpen(this)) {
+			Positionable.hide(this);
 			Positionable.removeEventListeners(this);
 		}
 	},
