@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import Datepicker from '../datepicker/datepicker';
-import Modal from './modal';
 import Lookup from '../lookup/lookup';
+import Modal from './modal';
+import Picklist from '../picklist/picklist';
 import sampleData from '../../../sample-data/lookup';
 
 export default function () {
@@ -15,8 +16,34 @@ export default function () {
 
 				// There are the state for additional example controls
 				lookupCollection: sampleData.defaultArray,
-				datepickerSelection: []
+				datepickerSelection: [],
+
+				models: [
+					{
+						collection: sampleData.defaultArray,
+						disabled: false,
+						selection: sampleData.defaultArray[1]
+					}
+				]
 			};
+		},
+
+		_renderPicklist () {
+			const picklists = this.state.models.map((model, index) => {
+				return (
+					<div key={index}>
+						<div className="slds-col example">
+							<Picklist {...model} modalMenu />
+						</div>
+					</div>
+				);
+			});
+
+			return (
+				<div>
+					{picklists}
+				</div>
+			);
 		},
 
 		render () {
@@ -43,6 +70,7 @@ export default function () {
 							multiSelect={true}
 							modalCalendar
 							inputLabel="Pick a Date"/>
+						{this._renderPicklist()}
 					</Modal>
 					
 					<button className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Toggle</button>
