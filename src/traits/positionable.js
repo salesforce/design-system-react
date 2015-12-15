@@ -92,15 +92,18 @@ const Positionable = {
 
 	// ACCESSORS
 	getElement (controlContext) {
-		return controlContext._positionableElement.element;
+		// This is the same as `.element` and is present for jQuery element compatibility.
+		return controlContext._positionableElement[0];
 	},
 
 	getContainer (controlContext) {
-		return controlContext._positionableContainer.element;
+		// This is the same as `.element` and is present for jQuery element compatibility.
+		return controlContext._positionableContainer[0];
 	},
 
 	getTarget (controlContext) {
-		return controlContext._positionableTarget.element;
+		// This is the same as `.element` and is present for jQuery element compatibility.
+		return controlContext._positionableTarget[0];
 	},
 
 	setContainer (controlContext, element) {
