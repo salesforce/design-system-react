@@ -99,19 +99,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSModal2 = _interopRequireDefault(_SLDSModal);
 	
-	var _SLDSModalTrigger = __webpack_require__(79);
+	var _SLDSModalTrigger = __webpack_require__(78);
 	
 	var _SLDSModalTrigger2 = _interopRequireDefault(_SLDSModalTrigger);
 	
-	var _SLDSNotification = __webpack_require__(80);
+	var _SLDSNotification = __webpack_require__(79);
 	
 	var _SLDSNotification2 = _interopRequireDefault(_SLDSNotification);
 	
-	var _SLDSPicklistBase = __webpack_require__(81);
+	var _SLDSPicklistBase = __webpack_require__(80);
 	
 	var _SLDSPicklistBase2 = _interopRequireDefault(_SLDSPicklistBase);
 	
-	var _SLDSSettings = __webpack_require__(57);
+	var _SLDSSettings = __webpack_require__(89);
 	
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 	
@@ -8962,6 +8962,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;desc = parent = getter = undefined;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
 	function _interopRequireDefault(obj) {
 	  return obj && obj.__esModule ? obj : { 'default': obj };
 	}
@@ -8974,6 +9004,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }return obj;
 	}
 	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -8982,17 +9024,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _utils = __webpack_require__(40);
-	
-	var _SLDSSettings = __webpack_require__(57);
-	
-	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
-	
 	var _classnames = __webpack_require__(14);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _reactModal = __webpack_require__(58);
+	var _reactModal = __webpack_require__(57);
 	
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 	
@@ -9016,267 +9052,230 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	};
 	
-	module.exports = _react2['default'].createClass({
-	  displayName: 'exports',
+	var displayName = "SLDSModal";
+	var propTypes = {
+	  align: _react2['default'].PropTypes.oneOf(['top', 'center']),
+	  prompt: _react2['default'].PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info']),
+	  size: _react2['default'].PropTypes.oneOf(['medium', 'large'])
+	};
+	var defaultProps = {
+	  align: 'center',
+	  content: [],
+	  directional: false,
+	  footer: [],
+	  isOpen: false,
+	  prompt: '', //if prompt !== '', it renders modal as prompt
+	  returnFocusTo: null,
+	  tagline: '',
+	  title: ''
+	};
 	
-	  propTypes: {
-	    align: _react2['default'].PropTypes.oneOf(['top', 'center']),
-	    size: _react2['default'].PropTypes.oneOf(['medium', 'large']),
-	    prompt: _react2['default'].PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info'])
-	  },
+	var SLDSModal = (function (_React$Component) {
+	  _inherits(SLDSModal, _React$Component);
 	
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      align: 'center',
-	      title: '',
-	      tagline: '',
-	      isOpen: false,
-	      content: [],
-	      footer: [],
-	      returnFocusTo: null,
-	      prompt: '', //if prompt !== '', it renders modal as prompt
-	      directional: false
-	    };
-	  },
+	  function SLDSModal(props) {
+	    _classCallCheck(this, SLDSModal);
 	
-	  getInitialState: function getInitialState() {
-	    return {
+	    _get(Object.getPrototypeOf(SLDSModal.prototype), 'constructor', this).call(this, props);
+	    this.state = {
 	      isClosing: false,
+	      isMounted: false,
 	      revealed: false
 	    };
-	  },
+	  }
 	
-	  componentDidMount: function componentDidMount() {
-	    var _this = this;
+	  _createClass(SLDSModal, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this = this;
 	
-	    //console.log('!!! window.activeElement !!! ',document.activeElement);
-	    this.setState({ returnFocusTo: document.activeElement });
-	    if (!this.state.revealed) {
-	      setTimeout(function () {
-	        _this.setState({ revealed: true });
+	      this.setState({
+	        returnFocusTo: document.activeElement,
+	        isMounted: true
 	      });
-	    }
-	    this.updateBodyScroll();
-	  },
-	
-	  closeModal: function closeModal() {
-	    this.setState({ isClosing: true });
-	    if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
-	      this.state.returnFocusTo.focus();
-	    }
-	    if (this.props.onRequestClose) {
-	      this.props.onRequestClose();
-	    }
-	  },
-	
-	  handleSubmitModal: function handleSubmitModal() {
-	    this.closeModal();
-	  },
-	
-	  updateBodyScroll: function updateBodyScroll() {
-	    if (window && document && document.body) {
-	      if (this.props.isOpen) {
-	        document.body.style.overflow = 'hidden';
-	      } else {
-	        document.body.style.overflow = 'inherit';
+	      if (!this.state.revealed) {
+	        setTimeout(function () {
+	          _this.setState({ revealed: true });
+	        });
 	      }
-	    }
-	  },
-	
-	  clearBodyScroll: function updateBodyScroll() {
-	    if (window && document && document.body) {
-	      document.body.style.overflow = 'inherit';
-	    }
-	  },
-	
-	  handleModalClick: function handleModalClick(event) {
-	    if (event && event.stopPropagation) {
-	      event.stopPropagation();
-	    }
-	  },
-	
-	  isPrompt: function isPrompt() {
-	    return this.props.prompt !== '';
-	  },
-	
-	  getModal: function getModal() {
-	    var modalClass = {
-	      'slds-modal': true,
-	      'slds-fade-in-open': this.state.revealed,
-	      'slds-modal--large': this.props.size === 'large',
-	      'slds-modal--prompt': this.isPrompt()
-	    };
-	    var modalStyle = this.props.align === "top" ? { "justify-content": "flex-start" } : null;
-	
-	    return _react2['default'].createElement('div', {
-	      className: (0, _classnames2['default'])(modalClass),
-	      style: { pointerEvents: 'inherit' },
-	      onClick: this.isPrompt() ? undefined : this.closeModal
-	    }, _react2['default'].createElement('div', {
-	      role: 'dialog',
-	      className: 'slds-modal__container',
-	      onClick: this.handleModalClick,
-	      style: modalStyle
-	    }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), this.footerComponent()));
-	  },
-	
-	  render: function render() {
-	    var overlayClasses = {
-	      'slds-modal-backdrop': true,
-	      'slds-modal-backdrop--open': this.state.revealed
-	    };
-	
-	    return _react2['default'].createElement(_reactModal2['default'], {
-	      isOpen: this.props.isOpen,
-	      onRequestClose: this.closeModal,
-	      style: customStyles,
-	      overlayClassName: (0, _classnames2['default'])(overlayClasses) }, this.getModal());
-	  },
-	
-	  footerComponent: function footerComponent() {
-	    var footer = undefined;
-	
-	    var footerClass = {
-	      'slds-modal__footer': true,
-	      'slds-modal__footer--directional': this.props.directional,
-	      'slds-theme--default': this.isPrompt()
-	    };
-	
-	    var hasFooter = this.props.footer && this.props.footer.length > 0;
-	
-	    if (hasFooter) {
-	      footer = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(footerClass) }, this.props.footer);
-	    }
-	
-	    return footer;
-	  },
-	
-	  renderTitle: function renderTitle(headingClasses) {
-	    if (this.props.title) {
-	      return _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(headingClasses) }, this.props.title);
-	    }
-	  },
-	
-	  renderTagline: function renderTagline() {
-	    if (this.props.tagline) {
-	      return _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline);
-	    }
-	  },
-	
-	  headerComponent: function headerComponent() {
-	    var _headerClass;
-	
-	    var header = undefined;
-	    var hasHeader = this.props.title;
-	
-	    var headerClass = (_headerClass = {}, _defineProperty(_headerClass, 'slds-modal__header', hasHeader), _defineProperty(_headerClass, 'slds-theme--' + this.props.prompt, this.isPrompt()), _defineProperty(_headerClass, 'slds-theme--alert-texture', this.isPrompt()), _headerClass);
-	
-	    var titleClass = {
-	      'slds-text-heading--small': this.isPrompt(),
-	      'slds-text-heading--medium': !this.isPrompt()
-	    };
-	
-	    if (hasHeader) {
-	      header = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass) }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal }), this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null);
-	    } else {
-	      header = _react2['default'].createElement('div', { style: { position: 'relative' } }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal }));
-	    }
-	
-	    return header;
-	  },
-	
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	
-	    if (this.props.isOpen !== prevProps.isOpen) {
 	      this.updateBodyScroll();
 	    }
-	
-	    if (this.state.isClosing !== prevState.isClosing) {
-	
-	      if (this.state.isClosing) {
-	        //console.log('CLOSING: ');
-	
-	        if (this.isMounted()) {
-	          var el = this.getDOMNode().parentNode;
-	          if (el && el.getAttribute('data-slds-modal')) {
-	            _react2['default'].unmountComponentAtNode(el);
-	            document.body.removeChild(el);
+	  }, {
+	    key: 'componentDidUpdate',
+	    value: function componentDidUpdate(prevProps, prevState) {
+	      if (this.props.isOpen !== prevProps.isOpen) {
+	        this.updateBodyScroll();
+	      }
+	      if (this.state.isClosing !== prevState.isClosing) {
+	        if (this.state.isClosing) {
+	          //console.log('CLOSING: ');
+	          if (this.state.isMounted) {
+	            var el = _react2['default'].findDOMNode(this).parentNode;
+	            if (el && el.getAttribute('data-slds-modal')) {
+	              _react2['default'].unmountComponentAtNode(el);
+	              document.body.removeChild(el);
+	            }
 	          }
 	        }
 	      }
 	    }
-	  },
+	  }, {
+	    key: 'componentWillUnmount',
+	    value: function componentWillUnmount() {
+	      this.clearBodyScroll();
+	      this.setState({ isMounted: false });
+	    }
+	  }, {
+	    key: 'closeModal',
+	    value: function closeModal() {
+	      this.setState({ isClosing: true });
+	      if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
+	        this.state.returnFocusTo.focus();
+	      }
+	      if (this.props.onRequestClose) {
+	        this.props.onRequestClose();
+	      }
+	    }
+	  }, {
+	    key: 'handleSubmitModal',
+	    value: function handleSubmitModal() {
+	      this.closeModal();
+	    }
+	  }, {
+	    key: 'updateBodyScroll',
+	    value: function updateBodyScroll() {
+	      if (window && document && document.body) {
+	        if (this.props.isOpen) {
+	          document.body.style.overflow = 'hidden';
+	        } else {
+	          document.body.style.overflow = 'inherit';
+	        }
+	      }
+	    }
+	  }, {
+	    key: 'clearBodyScroll',
+	    value: function clearBodyScroll() {
+	      return function updateBodyScroll() {
+	        if (window && document && document.body) {
+	          document.body.style.overflow = 'inherit';
+	        }
+	      };
+	    }
+	  }, {
+	    key: 'handleModalClick',
+	    value: function handleModalClick(event) {
+	      if (event && event.stopPropagation) {
+	        event.stopPropagation();
+	      }
+	    }
+	  }, {
+	    key: 'isPrompt',
+	    value: function isPrompt() {
+	      return this.props.prompt !== '';
+	    }
+	  }, {
+	    key: 'footerComponent',
+	    value: function footerComponent() {
+	      var footer = undefined;
+	      var hasFooter = this.props.footer && this.props.footer.length > 0;
 	
-	  componentWillUnmount: function componentWillUnmount() {
-	    this.clearBodyScroll();
-	  }
+	      var footerClass = {
+	        'slds-modal__footer': true,
+	        'slds-modal__footer--directional': this.props.directional,
+	        'slds-theme--default': this.isPrompt()
+	      };
 	
-	});
+	      if (hasFooter) {
+	        footer = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(footerClass) }, this.props.footer);
+	      }
+	
+	      return footer;
+	    }
+	  }, {
+	    key: 'renderTitle',
+	    value: function renderTitle(headingClasses) {
+	      if (this.props.title) {
+	        return _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(headingClasses) }, this.props.title);
+	      }
+	    }
+	  }, {
+	    key: 'renderTagline',
+	    value: function renderTagline() {
+	      if (this.props.tagline) {
+	        return _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline);
+	      }
+	    }
+	  }, {
+	    key: 'headerComponent',
+	    value: function headerComponent() {
+	      var _headerClass;
+	
+	      var header = undefined;
+	      var hasHeader = this.props.title;
+	
+	      var headerClass = (_headerClass = {}, _defineProperty(_headerClass, 'slds-modal__header', hasHeader), _defineProperty(_headerClass, 'slds-theme--' + this.props.prompt, this.isPrompt()), _defineProperty(_headerClass, 'slds-theme--alert-texture', this.isPrompt()), _headerClass);
+	
+	      var titleClass = {
+	        'slds-text-heading--small': this.isPrompt(),
+	        'slds-text-heading--medium': !this.isPrompt()
+	      };
+	
+	      if (hasHeader) {
+	        header = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass) }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal.bind(this) }), this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null);
+	      } else {
+	        header = _react2['default'].createElement('div', { style: { position: 'relative' } }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal.bind(this) }));
+	      }
+	
+	      return header;
+	    }
+	  }, {
+	    key: 'getModal',
+	    value: function getModal() {
+	      var modalClass = {
+	        'slds-modal': true,
+	        'slds-fade-in-open': this.state.revealed,
+	        'slds-modal--large': this.props.size === 'large',
+	        'slds-modal--prompt': this.isPrompt()
+	      };
+	      var modalStyle = this.props.align === "top" ? { "justify-content": "flex-start" } : null;
+	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(modalClass), style: { pointerEvents: 'inherit' }, onClick: this.isPrompt() ? undefined : this.closeModal.bind(this) }, _react2['default'].createElement('div', { 'aria-hidden': 'false', role: 'dialog', onClick: this.handleModalClick.bind(this), className: 'slds-modal__container', style: modalStyle }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), this.footerComponent())), _react2['default'].createElement('div', { style: { pointerEvents: 'inherit' }, className: 'slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly', onClick: this.isPrompt() ? undefined : this.closeModal.bind(this) }));
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(_reactModal2['default'], {
+	        isOpen: this.props.isOpen,
+	        onRequestClose: this.closeModal,
+	        style: customStyles }, this.getModal());
+	    }
+	  }]);
+	
+	  return SLDSModal;
+	})(_react2['default'].Component);
+	
+	SLDSModal.displayName = displayName;
+	SLDSModal.propTypes = propTypes;
+	SLDSModal.defaultProps = defaultProps;
+	
+	module.exports = SLDSModal;
 
 /***/ },
 /* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	module.exports = __webpack_require__(58);
 	
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	
-	'use strict';
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-	
-	var _reactModal = __webpack_require__(58);
-	
-	var _reactModal2 = _interopRequireDefault(_reactModal);
-	
-	var assetsPath = 'assets/';
-	var appRoot = undefined;
-	module.exports = {
-	  setAssetsPath: function setAssetsPath(path) {
-	    if (path) {
-	      assetsPath = path;
-	    }
-	  },
-	  getAssetsPath: function getAssetsPath() {
-	    return String(assetsPath);
-	  },
-	  setAppElement: function setAppElement(el) {
-	    if (el) {
-	      appRoot = el;
-	      _reactModal2['default'].setAppElement(el);
-	    }
-	  },
-	  getAppElement: function getAppElement() {
-	    return appRoot;
-	  }
-	};
+
 
 /***/ },
 /* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(59);
-	
-
-
-/***/ },
-/* 59 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* WEBPACK VAR INJECTION */(function(process) {var React = __webpack_require__(2);
-	var ExecutionEnvironment = __webpack_require__(61);
-	var ModalPortal = React.createFactory(__webpack_require__(62));
-	var ariaAppHider = __webpack_require__(77);
-	var elementClass = __webpack_require__(78);
+	var ExecutionEnvironment = __webpack_require__(60);
+	var ModalPortal = React.createFactory(__webpack_require__(61));
+	var ariaAppHider = __webpack_require__(76);
+	var elementClass = __webpack_require__(77);
 	
 	var SafeHTMLElement = ExecutionEnvironment.canUseDOM ? window.HTMLElement : {};
 	
@@ -9354,10 +9353,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  delete props.ref;
 	}
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(59)))
 
 /***/ },
-/* 60 */
+/* 59 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -9454,7 +9453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 61 */
+/* 60 */
 /***/ function(module, exports) {
 
 	/**
@@ -9502,14 +9501,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 62 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(2);
 	var div = React.DOM.div;
-	var focusManager = __webpack_require__(63);
-	var scopeTab = __webpack_require__(65);
-	var Assign = __webpack_require__(66);
+	var focusManager = __webpack_require__(62);
+	var scopeTab = __webpack_require__(64);
+	var Assign = __webpack_require__(65);
 	
 	
 	// so that our CSS is statically analyzable
@@ -9707,10 +9706,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 63 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(64);
+	var findTabbable = __webpack_require__(63);
 	var modalElement = null;
 	var focusLaterElement = null;
 	var needToFocus = false;
@@ -9781,7 +9780,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 64 */
+/* 63 */
 /***/ function(module, exports) {
 
 	/*!
@@ -9837,10 +9836,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 65 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(64);
+	var findTabbable = __webpack_require__(63);
 	
 	module.exports = function(node, event) {
 	  var tabbable = findTabbable(node);
@@ -9858,7 +9857,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 66 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9869,9 +9868,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseAssign = __webpack_require__(67),
-	    createAssigner = __webpack_require__(73),
-	    keys = __webpack_require__(69);
+	var baseAssign = __webpack_require__(66),
+	    createAssigner = __webpack_require__(72),
+	    keys = __webpack_require__(68);
 	
 	/**
 	 * A specialized version of `_.assign` for customizing assigned values without
@@ -9944,7 +9943,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 67 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -9955,8 +9954,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseCopy = __webpack_require__(68),
-	    keys = __webpack_require__(69);
+	var baseCopy = __webpack_require__(67),
+	    keys = __webpack_require__(68);
 	
 	/**
 	 * The base implementation of `_.assign` without support for argument juggling,
@@ -9977,7 +9976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 68 */
+/* 67 */
 /***/ function(module, exports) {
 
 	/**
@@ -10015,7 +10014,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 69 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -10026,9 +10025,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(70),
-	    isArguments = __webpack_require__(71),
-	    isArray = __webpack_require__(72);
+	var getNative = __webpack_require__(69),
+	    isArguments = __webpack_require__(70),
+	    isArray = __webpack_require__(71);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -10257,7 +10256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 70 */
+/* 69 */
 /***/ function(module, exports) {
 
 	/**
@@ -10400,7 +10399,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 71 */
+/* 70 */
 /***/ function(module, exports) {
 
 	/**
@@ -10512,7 +10511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 72 */
+/* 71 */
 /***/ function(module, exports) {
 
 	/**
@@ -10698,7 +10697,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 73 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -10709,9 +10708,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var bindCallback = __webpack_require__(74),
-	    isIterateeCall = __webpack_require__(75),
-	    restParam = __webpack_require__(76);
+	var bindCallback = __webpack_require__(73),
+	    isIterateeCall = __webpack_require__(74),
+	    restParam = __webpack_require__(75);
 	
 	/**
 	 * Creates a function that assigns properties of source object(s) to a given
@@ -10756,7 +10755,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 74 */
+/* 73 */
 /***/ function(module, exports) {
 
 	/**
@@ -10827,7 +10826,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 75 */
+/* 74 */
 /***/ function(module, exports) {
 
 	/**
@@ -10965,7 +10964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 76 */
+/* 75 */
 /***/ function(module, exports) {
 
 	/**
@@ -11038,7 +11037,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 77 */
+/* 76 */
 /***/ function(module, exports) {
 
 	var _element = document.body;
@@ -11086,7 +11085,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 78 */
+/* 77 */
 /***/ function(module, exports) {
 
 	module.exports = function(opts) {
@@ -11151,7 +11150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 79 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11195,7 +11194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSModalTrigger;
 
 /***/ },
-/* 80 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11438,7 +11437,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSNotification;
 
 /***/ },
-/* 81 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -11502,7 +11501,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _lodashIsequal = __webpack_require__(82);
+	var _lodashIsequal = __webpack_require__(81);
 	
 	var _lodashIsequal2 = _interopRequireDefault(_lodashIsequal);
 	
@@ -11785,7 +11784,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.ListItemLabel = _utils.ListItemLabel;
 
 /***/ },
-/* 82 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11796,8 +11795,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseIsEqual = __webpack_require__(83),
-	    bindCallback = __webpack_require__(89);
+	var baseIsEqual = __webpack_require__(82),
+	    bindCallback = __webpack_require__(88);
 	
 	/**
 	 * Performs a deep comparison between two values to determine if they are
@@ -11853,7 +11852,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 83 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -11864,9 +11863,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArray = __webpack_require__(84),
-	    isTypedArray = __webpack_require__(85),
-	    keys = __webpack_require__(86);
+	var isArray = __webpack_require__(83),
+	    isTypedArray = __webpack_require__(84),
+	    keys = __webpack_require__(85);
 	
 	/** `Object#toString` result references. */
 	var argsTag = '[object Arguments]',
@@ -12201,7 +12200,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 84 */
+/* 83 */
 /***/ function(module, exports) {
 
 	/**
@@ -12387,7 +12386,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 85 */
+/* 84 */
 /***/ function(module, exports) {
 
 	/**
@@ -12503,7 +12502,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 86 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -12514,9 +12513,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(87),
-	    isArguments = __webpack_require__(88),
-	    isArray = __webpack_require__(84);
+	var getNative = __webpack_require__(86),
+	    isArguments = __webpack_require__(87),
+	    isArray = __webpack_require__(83);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -12745,7 +12744,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 87 */
+/* 86 */
 /***/ function(module, exports) {
 
 	/**
@@ -12888,7 +12887,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 88 */
+/* 87 */
 /***/ function(module, exports) {
 
 	/**
@@ -13000,7 +12999,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 89 */
+/* 88 */
 /***/ function(module, exports) {
 
 	/**
@@ -13069,6 +13068,53 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	module.exports = bindCallback;
 
+
+/***/ },
+/* 89 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	'use strict';
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	var _reactModal = __webpack_require__(57);
+	
+	var _reactModal2 = _interopRequireDefault(_reactModal);
+	
+	var assetsPath = 'assets/';
+	var appRoot = undefined;
+	module.exports = {
+	  setAssetsPath: function setAssetsPath(path) {
+	    if (path) {
+	      assetsPath = path;
+	    }
+	  },
+	  getAssetsPath: function getAssetsPath() {
+	    return String(assetsPath);
+	  },
+	  setAppElement: function setAppElement(el) {
+	    if (el) {
+	      appRoot = el;
+	      _reactModal2['default'].setAppElement(el);
+	    }
+	  },
+	  getAppElement: function getAppElement() {
+	    return appRoot;
+	  }
+	};
 
 /***/ },
 /* 90 */
