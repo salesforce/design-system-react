@@ -36,6 +36,7 @@ const customStyles = {
 const displayName = "SLDSModal";
 const propTypes = {
   align: React.PropTypes.oneOf(['top', 'center']),
+  isPassive: React.PropTypes.bool,
   prompt: React.PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info']),
   size: React.PropTypes.oneOf(['medium', 'large']),
 };
@@ -45,6 +46,7 @@ const defaultProps = {
   directional: false,
   footer: [],
   isOpen: false,
+  isPassive: true,
   prompt: '', //if prompt !== '', it renders modal as prompt
   returnFocusTo: null,
   tagline: '',
@@ -99,12 +101,14 @@ class SLDSModal extends React.Component {
   }
 
   closeModal () {
-    this.setState({isClosing: true});
-    if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
-      this.state.returnFocusTo.focus();
-    }
-    if(this.props.onRequestClose){
-      this.props.onRequestClose();
+    if(this.props.isPassive){
+      this.setState({isClosing: true});
+      if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
+        this.state.returnFocusTo.focus();
+      }
+      if(this.props.onRequestClose){
+        this.props.onRequestClose();
+      }
     }
   }
 
@@ -215,7 +219,7 @@ class SLDSModal extends React.Component {
     const modalStyle = this.props.align === "top" ? {"justify-content": "flex-start"} : null;
     return (
       <div>
-        <div className={classNames(modalClass)} style={{pointerEvents: 'inherit'}} onClick={this.isPrompt() ? undefined : this.closeModal.bind(this)}>
+        <div className={classNames(modalClass)} style={{pointerEvents: 'inherit'}} onClick={this.closeModal.bind(this)}>
           <div aria-hidden="false" role='dialog' onClick={this.handleModalClick.bind(this)} className='slds-modal__container' style={modalStyle}>
             {this.headerComponent()}
             <div className='slds-modal__content'>
@@ -224,7 +228,7 @@ class SLDSModal extends React.Component {
             {this.footerComponent()}
           </div>
         </div>
-        <div style={{pointerEvents: 'inherit'}} className="slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly" onClick={this.isPrompt() ? undefined : this.closeModal.bind(this)}></div>
+        <div style={{pointerEvents: 'inherit'}} className="slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly"></div>
       </div>
     )
   }
