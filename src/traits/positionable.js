@@ -9,6 +9,7 @@ import * as Lib from '../lib/lib';
 // These are private function redefined below the public export object.
 let setElementStyles = () => {};
 let handleWindowEvents = () => {};
+let constrainToWindow = () => {};
 
 const Positionable = {
 	/* TODO: Implement scrolling parent "autoflip" via `constrainTargetToScrollingParent: true`. */
@@ -33,21 +34,22 @@ const Positionable = {
 	},
 
 	// PUBLIC METHODS FOR CONTROLS
-	attachPositionedElementToBody () {
+	attachPositionedElementToBody (classes = '') {
 		const element = document.createElement('div');
+		element.className = element.className + classes;
 		document.querySelector('body').appendChild(element);
 		return Lib.wrapElement(element);
 	},
 
 	addEventListeners (controlContext) {
-		if (!controlContext._positionable_resize_event_handler) {
-			controlContext._positionable_resize_event_handler = handleWindowEvents.bind(this, controlContext);
-			window.addEventListener('resize', controlContext._positionable_resize_event_handler);
+		if (!controlContext._positionableResizeEventHandler) {
+			controlContext._positionableResizeEventHandler = handleWindowEvents.bind(this, controlContext);
+			window.addEventListener('resize', controlContext._positionableResizeEventHandler);
 		}
 
 		if (!controlContext._positionable_scroll_event_handler) {
-			controlContext._positionable_scroll_event_handler = handleWindowEvents.bind(this, controlContext);
-			window.addEventListener('scroll', controlContext._positionable_scroll_event_handler);
+			controlContext._positionableScrollEventHandler = handleWindowEvents.bind(this, controlContext);
+			window.addEventListener('scroll', controlContext._positionableScrollEventHandler);
 		}
 	},
 
@@ -56,37 +58,37 @@ const Positionable = {
 	},
 
 	position (controlContext) {
+		/* sometimes position is called before the positioned element is initialized */
 		if (Positionable.getElement(controlContext)) {
 			setElementStyles(controlContext);
 		
-			if (controlContext.getProperty('constrainPositionedToWindow') && Positionable.getElement(controlContext)) {
-				/* sometimes position is called before the positioned element is initialized */
-				const isOffscreen = Lib.wrapElement(Positionable.getElement(controlContext)).isOffscreen(true);
-				let targetAttachment;
-
-				if (isOffscreen === 'top') {
-					targetAttachment = 'bottom';
-				} else if (isOffscreen === 'bottom') {
-					targetAttachment = 'top';
-				}
-
-				setElementStyles(controlContext, targetAttachment);
+			if (controlContext.getProperty('constrainPositionedToWindow')) {
+				// This also sets the element style. `setElementStyles` is intentionally ran twice, so that there is not a noticable visual delay. */
+				constrainToWindow(controlContext);
 			}
 		}
 	},
 
 	// `removePositionableEventListeners` should be removed at the end of the control's lifecycle.
 	removeEventListeners (controlContext) {
-		if (controlContext._positionable_resize_event_handler) {
-			window.removeEventListener('resize', controlContext._positionable_resize_event_handler);
+		if (controlContext._positionableResizeEventHandler) {
+			window.removeEventListener('resize', controlContext._positionableResizeEventHandler);
 		}
 
-		if (controlContext._positionable_scroll_event_handler) {
-			window.removeEventListener('scroll', controlContext._positionable_scroll_event_handler);
+		if (controlContext._positionableScrollEventHandler) {
+			window.removeEventListener('scroll', controlContext._positionableScrollEventHandler);
+		}
+	},
+
+	resetPositionedChild (controlContext) {
+		console.log(Positionable.getElement(controlContext).firstChild);
+		if (Positionable.getElement(controlContext).firstChild) {
+			Positionable.getElement(controlContext).firstChild.style.position = 'static';
 		}
 	},
 
 	show (controlContext) {
+		// Positionable.resetPositionedChild(controlContext);
 		Lib.wrapElement(Positionable.getElement(controlContext)).removeClass('slds-hidden');
 	},
 
@@ -143,9 +145,15 @@ const getElementStyles = (controlContext, newTargetAttachment) => {
 	const newStyle = {};
 	let targetHorizontalPosition = 0;
 	
+	let elementHeight = wrappedElement.outerHeight();
+
+	if (elementHeight === 0 && Positionable.getElement(controlContext).firstChild) {
+		elementHeight = Lib.wrapElement(Positionable.getElement(controlContext).firstChild).outerHeight();
+	}
+
 	const elementSize = {
 		width: wrappedElement.outerWidth(),
-		height: wrappedElement.outerHeight()
+		height: elementHeight
 	};
 	
 	const targetSize = {
@@ -219,6 +227,29 @@ setElementStyles = (controlContext, targetAttachment) => {
 		/* TODO: If we're going to call this here we need to check if it exists first. But maybe we shouldn't? */
 		if (controlContext._getClassNames) element.className = controlContext._getClassNames();
 	}
+};
+
+constrainToWindow = (controlContext) => {
+	let targetAttachment = false;
+	let elementToMeasure;
+
+	/* Positioned element's height is typically zero, since it often contains positioned elements such as dropdowns and menus. */
+	if (Lib.wrapElement(Positionable.getElement(controlContext)).outerHeight() === 0
+			&& Positionable.getElement(controlContext).firstChild) {
+		elementToMeasure = Positionable.getElement(controlContext).firstChild;
+	}	else {
+		elementToMeasure = Positionable.getElement(controlContext);
+	}
+
+	/* `isOffscreen` returns false or the vertical alignment of the positioned elment to the target */
+	const isOffscreen = Lib.wrapElement(elementToMeasure).isOffscreen(true);
+	if (isOffscreen === 'top') {
+		targetAttachment = 'bottom';
+	} else if (isOffscreen === 'bottom') {
+		targetAttachment = 'top';
+	}
+
+	setElementStyles(controlContext, targetAttachment);
 };
 
 export default Positionable;
