@@ -57,13 +57,16 @@ class SLDSModal extends React.Component {
     super(props);
     this.state = {
       isClosing: false,
-      revealed: false
+      isMounted: false,
+      revealed: false,
     };
   }
 
   componentDidMount () {
-    //console.log('!!! window.activeElement !!! ',document.activeElement);
-    this.setState({returnFocusTo: document.activeElement})
+    this.setState({
+      returnFocusTo: document.activeElement,
+      isMounted: true,
+    })
     if(!this.state.revealed){
       setTimeout(()=>{
         this.setState({revealed: true});
@@ -79,8 +82,8 @@ class SLDSModal extends React.Component {
     if(this.state.isClosing !== prevState.isClosing){
       if(this.state.isClosing){
         //console.log('CLOSING: ');
-        if(this.isMounted()){
-          const el = this.getDOMNode().parentNode;
+        if(this.state.isMounted){
+          const el = React.findDOMNode(this).parentNode;
           if(el && el.getAttribute('data-slds-modal')){
             React.unmountComponentAtNode(el);
             document.body.removeChild(el);
@@ -92,6 +95,7 @@ class SLDSModal extends React.Component {
 
   componentWillUnmount () {
     this.clearBodyScroll();
+    this.setState({ isMounted: false });
   }
 
   closeModal () {
@@ -137,32 +141,9 @@ class SLDSModal extends React.Component {
     return this.props.prompt !== '';
   }
 
-  getModal() {
-    const modalClass = {
-      'slds-modal': true,
-      'slds-fade-in-open': this.state.revealed,
-      'slds-modal--large': this.props.size === 'large',
-      'slds-modal--prompt': this.isPrompt(),
-    };
-    const modalStyle = this.props.align === "top" ? {"justify-content": "flex-start"} : null;
-    return (
-      <div>
-        <div className={classNames(modalClass)} style={{pointerEvents: 'inherit'}} onClick={this.isPrompt() ? undefined : this.closeModal.bind(this)}>
-          <div aria-hidden="false" role='dialog' onClick={this.handleModalClick.bind(this)} className='slds-modal__container' style={modalStyle}>
-            {this.headerComponent()}
-            <div className='slds-modal__content'>
-              {this.props.children}
-            </div>
-            {this.footerComponent()}
-          </div>
-        </div>
-        <div style={{pointerEvents: 'inherit'}} className="slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly" onClick={this.isPrompt() ? undefined : this.closeModal.bind(this)}></div>
-      </div>
-    )
-  }
-
   footerComponent() {
     let footer;
+    const hasFooter = this.props.footer && this.props.footer.length > 0;
 
     const footerClass = {
       'slds-modal__footer': true,
@@ -170,9 +151,7 @@ class SLDSModal extends React.Component {
       'slds-theme--default': this.isPrompt()
     };
 
-    const hasFooter = this.props.footer && this.props.footer.length > 0;
-
-    if (hasFooter ) {
+    if (hasFooter) {
       footer = (<div className={classNames(footerClass)}>{this.props.footer}</div>);
     }
 
@@ -224,6 +203,30 @@ class SLDSModal extends React.Component {
     }
 
     return header;
+  }
+
+  getModal() {
+    const modalClass = {
+      'slds-modal': true,
+      'slds-fade-in-open': this.state.revealed,
+      'slds-modal--large': this.props.size === 'large',
+      'slds-modal--prompt': this.isPrompt(),
+    };
+    const modalStyle = this.props.align === "top" ? {"justify-content": "flex-start"} : null;
+    return (
+      <div>
+        <div className={classNames(modalClass)} style={{pointerEvents: 'inherit'}} onClick={this.isPrompt() ? undefined : this.closeModal.bind(this)}>
+          <div aria-hidden="false" role='dialog' onClick={this.handleModalClick.bind(this)} className='slds-modal__container' style={modalStyle}>
+            {this.headerComponent()}
+            <div className='slds-modal__content'>
+              {this.props.children}
+            </div>
+            {this.footerComponent()}
+          </div>
+        </div>
+        <div style={{pointerEvents: 'inherit'}} className="slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly" onClick={this.isPrompt() ? undefined : this.closeModal.bind(this)}></div>
+      </div>
+    )
   }
 
   render() {
