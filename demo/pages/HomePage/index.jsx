@@ -14,32 +14,7 @@ import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;
 
 import SLDSGrid from '../../../components/SLDSGrid';
-import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
-
-import ButtonSection from './ButtonSection';
-import ButtonGroupSection from './ButtonGroupSection';
-
-import NotificationSection from './NotificationSection';
-
-import LookupBaseSection from './LookupBaseSection';
-
-import LookupBaseCustomSection from './LookupBaseCustomSection';
-
-import LookupBaseDynamicSection from './LookupBaseDynamicSection';
-
-import PicklistBaseSection from './PicklistBaseSection';
-import PicklistBaseCustomSection from './PicklistBaseCustomSection';
-
-import DropdownBaseSection from './DropdownBaseSection';
-
-import ModalSection from './ModalSection';
-import DatePickerSingleSelectSection from './DatePickerSingleSelectSection';
-import IconSection from './IconSection';
-import TooltipSection from './TooltipSection';
-
-import DOCS from '../../../docs';
-console.log('DOCS: ',DOCS);
-
+import {Icon} from "./../../../components/SLDSIcons";
 
 const SLDSColumn = SLDSGrid.Column;
 
@@ -101,8 +76,8 @@ module.exports = React.createClass( {
           </div>
         </div>
 
-        <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>        
-          <div className='region region--main slds-grow slds-size--1-of-4 slds-medium-size--1-of-4 slds-large-size--1-of-8 slds-col-rule--right slds-p-around--large'>
+        <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
+          <div className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-around--large'>
 
             <section className="slds-p-bottom--large">
               <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Current</h3>
@@ -124,7 +99,7 @@ module.exports = React.createClass( {
             </section>
         </div>
 
-        <div className="region region--main slds-grow slds-size--3-of-4 slds-medium-size--3-of-4 slds-large-size--8-of-12 slds-col-rule--right slds-p-around--large">
+        <div className="region region--main slds-grow slds-size--5-of-6 slds-medium-size--5-of-6 slds-large-size--10-of-12 slds-col-rule--right slds-p-around--large">
           <RouteHandler/>
         </div>
       </main>

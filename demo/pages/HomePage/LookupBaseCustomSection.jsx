@@ -11,7 +11,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSLookup from '../../../components/SLDSLookup';
-import {default as PrismCode} from 'react-prism/lib/PrismCode';
 //import DefaultHeader from '../../../components/SLDSLookup/Menu/DefaultHeader';
 //import DefaultFooter from '../../../components/SLDSLookup/Menu/DefaultFooter';
 import CustomLookupListItemLabel from './CustomLookupListItemLabel.cjsx';
@@ -60,10 +59,6 @@ module.exports = React.createClass( {
               <h3 className="slds-text-heading--medium slds-truncate">
                 Lookup with Custom Item Label Renderer
               </h3>
-
-              <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSLookupCustomPage.txt")}
-              </PrismCode>
 
               <div className="slds-p-vertical--large">
                 <SLDSLookup

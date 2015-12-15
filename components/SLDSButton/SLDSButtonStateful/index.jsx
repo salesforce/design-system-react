@@ -15,11 +15,26 @@ const classNames = require("classnames");
 
 const displayName = "SLDSButtonStateful";
 const propTypes = {
+  /**
+   * text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop.
+   */
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
+  /**
+   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
+   */
   iconName: React.PropTypes.string,
   iconSize: React.PropTypes.string,
-  type: React.PropTypes.string,
+  /**
+   * join - states are join, member, leave <br />
+   * follow - states are follow, following, unfollow <br />
+   * icon - states are "selected", "unselect", "not selected"
+   */
+  type: React.PropTypes.oneOf(["join", "follow", "icon"]),
+  /**
+   * use "icon-inverse" for white icons.
+   */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {};

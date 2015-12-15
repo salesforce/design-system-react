@@ -14,22 +14,14 @@ import HomePage from './pages/HomePage';
 
 import ButtonSection from './pages/HomePage/ButtonSection';
 import ButtonGroupSection from './pages/HomePage/ButtonGroupSection';
+import DatePickerSingleSelectSection from './pages/HomePage/DatePickerSingleSelectSection';
+import DropdownBaseSection from './pages/HomePage/DropdownBaseSection';
 import IconSection from './pages/HomePage/IconSection';
+import LookupSection from './pages/HomePage/LookupSection';
 import ModalSection from './pages/HomePage/ModalSection';
 import NotificationSection from './pages/HomePage/NotificationSection';
-import TooltipSection from './pages/HomePage/TooltipSection';
-
-import LookupSection from './pages/HomePage/LookupSection';
-
 import PicklistSection from './pages/HomePage/PicklistSection';
-
-import DropdownBaseSection from './pages/HomePage/DropdownBaseSection';
-
-import DatePickerSingleSelectSection from './pages/HomePage/DatePickerSingleSelectSection';
-
-import WorkspacePage from './pages/WorkspacePage';
-import ReferencePage from './pages/ReferencePage';
-
+import TooltipSection from './pages/HomePage/TooltipSection';
 
 const routes = (
   <Route handler={App} path="/">
@@ -46,8 +38,6 @@ const routes = (
       <Route name="tooltip" path="tooltip" handler={TooltipSection}/>
       <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
     </Route>
-    <Route name="workspace" path="workspace" handler={WorkspacePage}/>
-    <Route name="reference" path="reference" handler={ReferencePage}/>
   </Route>
 );
 

@@ -108,6 +108,22 @@ module.exports = React.createClass( {
                       </SLDSTooltip>
                   </p>
                 </div>
+
+
+                <div ref="tooltipOnClick" className="slds-p-vertical--medium">
+                  <p style={{marginTop: '5rem'}}>
+                    <SLDSTooltip
+                      content={<span>Tooltip with right alignment</span>}
+                      align='right'
+                      openOn='hover'
+                      openByDefault={true}
+                      targetElement={this.refs.tooltipOnClick}>
+                        <SLDSButton variant="brand" label="BUTTON" />
+                      </SLDSTooltip>
+                  </p>
+                </div>
+
+
               </section>
 
 

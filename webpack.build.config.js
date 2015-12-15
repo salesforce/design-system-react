@@ -33,7 +33,11 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: path.resolve(BASE_DIR, 'node_modules/babel-loader')
-      }
+      },
+      {
+        test: /Samples.js/,
+        loader: "transform?brfs" //for using fs to compile component example files into strings for codemirror demos
+      },
     ]
   },
   plugins: plugins

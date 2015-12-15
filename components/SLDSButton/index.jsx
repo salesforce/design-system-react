@@ -17,23 +17,40 @@ import omit from "lodash.omit";
 
 const displayName = 'SLDSButton';
 const propTypes = {
+  /**
+   * text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop.
+   */
   assistiveText: React.PropTypes.string,
   buttonSize: React.PropTypes.oneOf(["small"]),
   disabled: React.PropTypes.bool,
   hint: React.PropTypes.bool,
+  /**
+   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
+   */
   iconName: React.PropTypes.string,
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
   iconSize: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
+  /**
+   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Lightening Design System - Icons</a>
+   */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
   label: React.PropTypes.string,
   onClick: React.PropTypes.func,
   responsive: React.PropTypes.bool,
   tabindex: React.PropTypes.string,
+  /**
+   * use "icon-inverse" for white icons.
+   */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {};
 
-
+/**
+ * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
+ * Use the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">Lightening Design System - Buttons</a>.
+ */
 class SLDSButton extends React.Component {
 
   constructor(props) {

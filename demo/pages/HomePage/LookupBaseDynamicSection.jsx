@@ -12,8 +12,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import SLDSLookup from '../../../components/SLDSLookup';
 
-import {default as PrismCode} from 'react-prism/lib/PrismCode';
-
 module.exports = React.createClass( {
 
   getDefaultProps () {

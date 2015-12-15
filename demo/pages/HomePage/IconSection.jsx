@@ -7,87 +7,51 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-'use strict';
 
 import React from 'react';
-import SLDSButton from '../../../components/SLDSButton';
-import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
-import {default as PrismCode} from "react-prism/lib/PrismCode";
-import SLDSUtilityIcon from '../../../components/SLDSUtilityIcon';
+import CodeMirror from '../CodeMirror';
+import PropTable from '../PropTable';
+import Samples from '../Samples';
+import DOCS from '../../../docs';
 
+const displayName = "IconSection";
+const propTypes = {};
+const defaultProps = {};
 
+class IconSection extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
+  getDescription() {
+    const desc = DOCS["SLDSIcons/Icon"].description;
+    return {__html: desc };
+  }
 
-module.exports = React.createClass( {
-
-  getDefaultProps () {
-    return {};
-  },
-
-  getInitialState () {
-    return {};
-  },
-
-
-
-  handleButtonClick () {
-    alert('Test Button Clicked');
-  },
-
-  render() {
+  render(){
     return (
+      <div className='slds-p-around--medium'>
+        <h3 className='slds-text-heading--medium slds-truncate'>
+          Icon
+        </h3>
 
-            <div className='slds-p-around--medium'>
-              <h3 className='slds-text-heading--medium slds-truncate'>
-                <a href="javascript:void(0)" id='iconSection'>
-                Icon
-                </a>
-              </h3>
-              <PrismCode className='language-markup'>
-                {require('raw-loader!../../code-snippets/SLDSIcon.txt')}
-              </PrismCode>
-              <div className='slds-p-vertical--large'>
+        <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" />
 
-              <table className="slds-container--small">
-              <tr>
-                <td className="slds-p-vertical--medium">
-                Action
-                </td>
-                <td>
-                <Icon name='announcement' category='action' size="medium" assistiveText='Action' />
-                </td>
-              </tr>
-              <tr>
-                <td className="slds-p-vertical--medium">
-                Custom
-                </td>
-                <td>
-                <Icon name='custom3' category='custom' size="large" assistiveText='Custom' />
-                </td>
-              </tr>
-              <tr>
-                <td className="slds-p-vertical--medium">
-                Standard
-                </td>
-                <td>
-                <Icon name='account' category='standard' size="large" assistiveText='Standard' />
-                </td>
-              </tr>
-              <tr>
-                <td className="slds-p-vertical--medium">
-                Utility
-                </td>
-                <td>
-                <Icon name='open_folder' category='utility' size="medium" assistiveText='Files' className="slds-icon-text-default" />
-                </td>
-              </tr>
-              </table>
-
-              </div>
-            </div>
-
-
+        <div className="demo-only">
+          <CodeMirror codeText={Samples.Icons} />
+          <PropTable component="SLDSIcons/Icon" />
+        </div>
+      </div>
     );
   }
-});
+
+}
+
+IconSection.displayName = displayName;
+IconSection.propTypes = propTypes;
+IconSection.defaultProps = defaultProps;
+
+module.exports = IconSection;
+

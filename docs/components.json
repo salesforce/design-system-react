@@ -1,126 +1,38 @@
 {
-    "SLDSTooltip": {
-        "description": "",
-        "displayName": "SLDSToolip",
+    "SLDSButton": {
+        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />\nUse the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightening Design System - Buttons</a>.",
+        "displayName": "SLDSButton",
         "props": {
-            "align": {
+            "assistiveText": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "'top'",
-                    "computed": false
-                }
+                "description": "text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
             },
-            "children": {
+            "buttonSize": {
                 "type": {
-                    "name": "node"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
             },
-            "content": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "<span>Tooltip</span>",
-                    "computed": false
-                }
-            },
-            "hoverCloseDelay": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "350",
-                    "computed": false
-                }
-            },
-            "openByDefault": {
+            "disabled": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "openOn": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "'hover'",
-                    "computed": false
-                }
-            }
-        }
-    },
-    "SLDSLookup": {
-        "description": "",
-        "props": {
-            "items": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
                 "description": ""
             },
-            "emptyMessage": {
+            "hint": {
                 "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "messages": {
-                "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "string"
-                    }
-                },
-                "required": false,
-                "description": ""
-            },
-            "errors": {
-                "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "string"
-                    }
-                },
-                "required": false,
-                "description": ""
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "type": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "iconCategory": {
-                "type": {
-                    "name": "string"
+                    "name": "bool"
                 },
                 "required": false,
                 "description": ""
@@ -130,96 +42,90 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightening Design System - Icons</a> to reference icon names."
             },
-            "filterWith": {
+            "iconPosition": {
                 "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
-                    "computed": false
-                }
-            },
-            "onItemSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "onItemUnselect": {
-                "type": {
-                    "name": "func"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
             },
-            "onChange": {
+            "iconSize": {
                 "type": {
-                    "name": "func"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"x-small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"medium\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
             },
-            "onBlur": {
+            "iconVariant": {
                 "type": {
-                    "name": "func"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"bare\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"container\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"border\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"border-filled\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"more\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">Lightening Design System - Icons</a>"
+            },
+            "label": {
+                "type": {
+                    "name": "string"
                 },
                 "required": false,
                 "description": ""
             },
-            "modal": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "hasError": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": ""
-            },
-            "boldRegex": {
-                "type": {
-                    "name": "instanceOf",
-                    "value": "RegExp"
-                },
-                "required": false,
-                "description": ""
-            },
-            "listItemLabelRenderer": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            }
-        }
-    },
-    "SLDSPicklistBase": {
-        "description": "",
-        "props": {
             "onClick": {
                 "type": {
                     "name": "func"
@@ -227,85 +133,249 @@
                 "required": false,
                 "description": ""
             },
-            "onSelect": {
+            "responsive": {
                 "type": {
-                    "name": "func"
-                },
-                "required": true,
-                "description": ""
-            },
-            "onUpdateHighlighted": {
-                "type": {
-                    "name": "func"
+                    "name": "bool"
                 },
                 "required": false,
                 "description": ""
             },
-            "placeholder": {
-                "defaultValue": {
-                    "value": "'Select an Option'",
-                    "computed": false
-                }
+            "tabindex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "use \"icon-inverse\" for white icons."
+            }
+        }
+    },
+    "SLDSButton/SLDSButtonStateful": {
+        "description": "",
+        "displayName": "SLDSButtonStateful",
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
             },
             "disabled": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
             },
-            "theme": {
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightening Design System - Icons</a> to reference icon names."
             },
-            "label": {
-                "defaultValue": {
-                    "value": "'Picklist'",
-                    "computed": false
-                }
+            "iconSize": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
             },
-            "value": {
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
+            "type": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"join\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"follow\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "join - states are join, member, leave <br />\nfollow - states are follow, following, unfollow <br />\nicon - states are \"selected\", \"unselect\", \"not selected\""
             },
-            "options": {
-                "defaultValue": {
-                    "value": "[]",
-                    "computed": false
-                }
-            },
-            "initialFocus": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "modal": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "use \"icon-inverse\" for white icons."
+            }
+        }
+    },
+    "SLDSButtonGroup": {
+        "description": "",
+        "displayName": "SLDSButtonGroup",
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Children are expected to be SLDSButton components"
             },
             "className": {
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSIcons/Icon": {
+        "description": "The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />\nThe icon color is white by default. Add the class, \"slds-icon-text-default\", to create a text-colored fill color for utility icons. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightening Design System - Icons</a>.",
+        "displayName": "Icon",
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have visible descriptive text with the icon,\ndeclare this prop as assistiveText=\"\"."
             },
-            "listClassName": {
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+            "category": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"action\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"custom\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"doctype\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"standard\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"utility\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
             },
-            "listItemRenderer": {
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "css classes that are applied to the svg"
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightening Design System - Icons</a> to reference icon names."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"x-small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"medium\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
             }
         }
     }
