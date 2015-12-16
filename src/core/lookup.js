@@ -11,14 +11,13 @@ import Base from './base';
 
 /* TODO: Finish documenting the core. */
 // Traits
-import Disableable from '../traits/disableable';
 import Openable from '../traits/openable';
 import Multiselectable from '../traits/multiselectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
 export const CONTROL = 'Lookup';
 
-const LookupCore = Lib.merge({}, Base, Disableable, KeyboardNavigable, {
+const LookupCore = Lib.merge({}, Base, KeyboardNavigable, {
 	CONTROL,
 	
 	// CSS classes used within this control

@@ -28,6 +28,10 @@ let Pillbox = function Pillbox () {
 };
 
 Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
+	cssClasses: {
+		DISABLED: 'slds-disabled'
+	},
+	
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this.elements.group = this.element.find('.slds-pill-group');
@@ -57,8 +61,24 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		this._bindUIEvents();
 	},
 
-	_onEnabledOrDisabled (props) {
-		this.element.toggleClass(this.cssClasses.DISABLED, props.disabled);
+	enable () {
+		this.setProperties({
+			disabled: false
+		});
+
+		if (this.rendered) {
+			this.elements.toggleClass(this.cssClasses.DISABLED, false);
+		}
+	},
+
+	disable () {
+		this.setProperties({
+			disabled: true
+		});
+
+		if (this.rendered) {
+			this.element.toggleClass(this.cssClasses.DISABLED, true);
+		}
 	},
 
 	_itemClicked (e) {

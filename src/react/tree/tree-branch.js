@@ -29,7 +29,6 @@ const TreeBranch = React.createClass({
 		item: React.PropTypes.shape({
 			// getType: React.PropTypes.func.isRequired,
 			_getChildren: React.PropTypes.func.isRequired,
-			// getDisabled: React.PropTypes.func.isRequired,
 			// getIcon: React.PropTypes.func.isRequired,
 			// getId: React.PropTypes.func.isRequired,
 			getText: React.PropTypes.func.isRequired

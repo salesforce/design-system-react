@@ -4,9 +4,6 @@
 import * as Lib from '../../lib/lib';
 import Base from '../../core/base';
 
-// Traits
-import Disableable from '../../traits/disableable';
-
 // Framework specific
 import DOM from '../dom';
 import Events from '../events';
@@ -62,7 +59,10 @@ const RadiosObject = {
 		this._bindUIEvents();
 		// Only run if all need disabled. Otherwise it will incorrectly enable explicitly disabled radios on init.
 		if (this.getProperty('disabled')) {
-			this._onEnabledOrDisabled();
+			this.element.attr('disabled', 'disabled');
+			this.radios.map(function (radio) {
+				radio.disable();
+			});
 		}
 	},
 	
@@ -78,18 +78,28 @@ const RadiosObject = {
 		this.check(targetI);
 	},
 
-	_onEnabledOrDisabled () {
-		const disabled = this.getProperty('disabled');
+	enable () {
+		this.setProperties({
+			disabled: false
+		});
 
-		if (disabled) {
-			this.element.attr('disabled', 'disabled');
-			this.radios.map( function (radio) {
-				radio.disable();
-			});
-		} else {
+		if (this.rendered) {
 			this.element.removeAttr('disabled');
 			this.radios.map( function (radio) {
 				radio.enable();
+			});
+		}
+	},
+
+	disable () {
+		this.setProperties({
+			disabled: true
+		});
+
+		if (this.rendered) {
+			this.element.attr('disabled', 'disabled');
+			this.radios.map(function (radio) {
+				radio.disable();
 			});
 		}
 	},
@@ -154,7 +164,7 @@ const RadiosObject = {
 };
 
 // Merging into prototype
-Lib.merge(Radios.prototype, Base, Disableable, Events, DOM, State, RadiosObject);
+Lib.merge(Radios.prototype, Base, Events, DOM, State, RadiosObject);
 
 // Framework setup
 Radios = Lib.runHelpers('jquery', CONTROL, Radios);

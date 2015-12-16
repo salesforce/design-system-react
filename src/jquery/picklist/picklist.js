@@ -177,18 +177,28 @@ export const PicklistObject = {
 		}
 	},
 
-	_onEnabledOrDisabled () {
-		if (this.rendered) {
-			const disabled = !!this.getProperty('disabled');
+	enable () {
+		this.setProperties({
+			disabled: false
+		});
 
-			this.elements.dropdown.toggleClass('slds-hide', disabled);
-			
-			if (disabled) {
-				this.button.disable();
-			} else {
-				this.button.enable();
-			}
+		if (this.rendered) {
+			this.elements.dropdown.toggleClass('slds-hide', false);
 		}
+		
+		this.button.enable();
+	},
+
+	disable () {
+		this.setProperties({
+			disabled: true
+		});
+
+		if (this.rendered) {
+			this.elements.dropdown.toggleClass('slds-hide', true);
+		}
+		
+		this.button.disable();
 	},
 
 	_resetWidth (width) {
