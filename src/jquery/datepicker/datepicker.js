@@ -7,6 +7,7 @@ import DatepickerCore, {CONTROL} from '../../core/datepicker';
 // Traits
 import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
+import Positionable from '../../traits/positionable';
 
 // Framework Specific
 import DOM from '../dom';
@@ -58,9 +59,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this.elements.monthName = this.$el.find('.slds-datepicker__filter--month h2');
 		this.elements.year = this.$el.find('.slds-datepicker__filter .slds-picklist');
 
-		this.elements.positionableElement = Lib.wrapElement(this.elements.datepicker);
-		this.elements.positionableContainer = Lib.wrapElement(this.$el);
-		this.elements.positionableTarget = Lib.wrapElement(this.elements.formElement);
+		if (this.getProperty('modalMenu')) {
+			Positionable.setElement(this, this.elements.datepicker);
+			Positionable.setContainer(this, this.elements.control);
+			Positionable.setTarget(this, this.elements.formElement);
+		}
 
 		const $icon = this._renderIcon('utility.event', 'slds-input__icon slds-icon-text-default');
 		$icon.replaceAll(this.elements.formElement.find('x-input-icon')[0]);
@@ -123,12 +126,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	
 	_onOpened () {
 		this.elements.datepicker.toggleClass('slds-hidden', false);
-		this._updatePosition();
+		Positionable.position(this);
 	},
 	
 	_onClosed () {
 		this.elements.datepicker.toggleClass('slds-hidden', true);
-		this._updatePosition();
 	},
 
 	_triggerCalendar (e) {

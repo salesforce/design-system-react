@@ -14,11 +14,10 @@ import Base from './base';
 import Openable from '../traits/openable';
 import Multiselectable from '../traits/multiselectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
-import Positionable from '../traits/positionable';
 
 export const CONTROL = 'Lookup';
 
-const LookupCore = Lib.merge({}, Base, Positionable, KeyboardNavigable, {
+const LookupCore = Lib.merge({}, Base, KeyboardNavigable, {
 	CONTROL,
 	
 	// CSS classes used within this control
@@ -36,12 +35,16 @@ const LookupCore = Lib.merge({}, Base, Positionable, KeyboardNavigable, {
 		filterPredicate (text, pattern) {
 			return text.substr(0, pattern.length).toLowerCase() === pattern;
 		},
+
+		// positionable trait
 		positionedTargetVerticalAttachment: 'bottom',
 		constrainWidthToTarget: true,
 		constrainPositionedToWindow: true,
 		modalMenu: false,
 		positionedOffset: 0,
-		positionedTargetHorizontalAttachment: 'left'
+		positionedTargetHorizontalAttachment: 'left',
+		positionedZIndex: '10001',
+		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
 	},
 	
 	_defaultState: {
