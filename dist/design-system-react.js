@@ -9054,23 +9054,49 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var displayName = "SLDSModal";
 	var propTypes = {
+	  /**
+	   * Vertical alignment of modal
+	   */
 	  align: _react2['default'].PropTypes.oneOf(['top', 'center']),
+	  /**
+	   * Modal content
+	   */
+	  children: _react2['default'].PropTypes.node,
+	  /**
+	   * if directional, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
+	   */
+	  directional: _react2['default'].PropTypes.bool,
+	  footer: _react2['default'].PropTypes.array,
+	  isOpen: _react2['default'].PropTypes.bool,
+	  /**
+	   * if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key
+	   */
 	  isPassive: _react2['default'].PropTypes.bool,
-	  prompt: _react2['default'].PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info']),
-	  size: _react2['default'].PropTypes.oneOf(['medium', 'large'])
+	  prompt: _react2['default'].PropTypes.oneOf(['success', 'warning', 'error', 'wrench', 'offline', 'info']),
+	  returnFocusTo: _react2['default'].PropTypes.node,
+	  size: _react2['default'].PropTypes.oneOf(['medium', 'large']),
+	  /**
+	   * Text underneath the title
+	   */
+	  tagline: _react2['default'].PropTypes.string,
+	  title: _react2['default'].PropTypes.string
 	};
 	var defaultProps = {
 	  align: 'center',
-	  content: [],
 	  directional: false,
 	  footer: [],
 	  isOpen: false,
 	  isPassive: true,
-	  prompt: '', //if prompt !== '', it renders modal as prompt
+	  prompt: '',
 	  returnFocusTo: null,
 	  tagline: '',
 	  title: ''
 	};
+	
+	/**
+	 * The SLDS Modal component is used for modals and prompts. <br />
+	 * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">Lightening Design System - Modals</a>.
+	 */
 	
 	var SLDSModal = (function (_React$Component) {
 	  _inherits(SLDSModal, _React$Component);
@@ -9242,7 +9268,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'slds-modal--prompt': this.isPrompt()
 	      };
 	      var modalStyle = this.props.align === "top" ? { "justify-content": "flex-start" } : null;
-	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(modalClass), style: { pointerEvents: 'inherit' }, onClick: this.closeModal.bind(this) }, _react2['default'].createElement('div', { 'aria-hidden': 'false', role: 'dialog', onClick: this.handleModalClick.bind(this), className: 'slds-modal__container', style: modalStyle }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content' }, this.props.children), this.footerComponent())), _react2['default'].createElement('div', { style: { pointerEvents: 'inherit' }, className: 'slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly' }));
+	      var contentStyle = this.props.title ? null : { "border-radius": ".25rem" };
+	
+	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(modalClass), style: { pointerEvents: 'inherit' }, onClick: this.closeModal.bind(this) }, _react2['default'].createElement('div', { 'aria-hidden': 'false', role: 'dialog', onClick: this.handleModalClick.bind(this), className: 'slds-modal__container', style: modalStyle }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content', style: contentStyle }, this.props.children), this.footerComponent())), _react2['default'].createElement('div', { style: { pointerEvents: 'inherit' }, className: 'slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly' }));
 	    }
 	  }, {
 	    key: 'render',

@@ -249,6 +249,7 @@ view-port
   font-family: monospace;
   height: 400px;
   color: black;
+  z-index: 0;
 }
 
 /* PADDING */
