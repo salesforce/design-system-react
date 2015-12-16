@@ -380,7 +380,7 @@
         }
     },
     "SLDSModal": {
-        "description": "",
+        "description": "The SLDS Modal component is used for modals and prompts. <br />\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">Lightening Design System - Modals</a>.",
         "displayName": "SLDSModal",
         "props": {
             "align": {

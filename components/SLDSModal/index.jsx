@@ -68,14 +68,15 @@ const defaultProps = {
   footer: [],
   isOpen: false,
   isPassive: true,
-  prompt: '', //if prompt !== '', it renders modal as prompt
+  prompt: '',
   returnFocusTo: null,
   tagline: '',
   title: '',
 };
 
 /**
- *
+ * The SLDS Modal component is used for modals and prompts. <br />
+ * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">Lightening Design System - Modals</a>.
  */
 class SLDSModal extends React.Component {
 
