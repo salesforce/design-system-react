@@ -9072,14 +9072,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key
 	   */
 	  isPassive: _react2['default'].PropTypes.bool,
-	  prompt: _react2['default'].PropTypes.oneOf(['success', 'warning', 'error', 'wrench', 'offline', 'info']),
+	  prompt: _react2['default'].PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info']),
 	  returnFocusTo: _react2['default'].PropTypes.node,
 	  size: _react2['default'].PropTypes.oneOf(['medium', 'large']),
 	  /**
 	   * Text underneath the title
 	   */
-	  tagline: _react2['default'].PropTypes.string,
-	  title: _react2['default'].PropTypes.string
+	  tagline: _react2['default'].PropTypes.node,
+	  title: _react2['default'].PropTypes.node
 	};
 	var defaultProps = {
 	  align: 'center',
@@ -9206,9 +9206,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'footerComponent',
 	    value: function footerComponent() {
-	      var footer = undefined;
+	      var footer = null;
 	      var hasFooter = this.props.footer && this.props.footer.length > 0;
-	
 	      var footerClass = {
 	        'slds-modal__footer': true,
 	        'slds-modal__footer--directional': this.props.directional,
@@ -9218,45 +9217,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if (hasFooter) {
 	        footer = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(footerClass) }, this.props.footer);
 	      }
-	
 	      return footer;
-	    }
-	  }, {
-	    key: 'renderTitle',
-	    value: function renderTitle(headingClasses) {
-	      if (this.props.title) {
-	        return _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(headingClasses) }, this.props.title);
-	      }
-	    }
-	  }, {
-	    key: 'renderTagline',
-	    value: function renderTagline() {
-	      if (this.props.tagline) {
-	        return _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline);
-	      }
 	    }
 	  }, {
 	    key: 'headerComponent',
 	    value: function headerComponent() {
 	      var _headerClass;
 	
-	      var header = undefined;
-	      var hasHeader = this.props.title;
-	
+	      var headerContent = null;
+	      var hasHeader = this.props.title || this.props.tagline;
 	      var headerClass = (_headerClass = {}, _defineProperty(_headerClass, 'slds-modal__header', hasHeader), _defineProperty(_headerClass, 'slds-theme--' + this.props.prompt, this.isPrompt()), _defineProperty(_headerClass, 'slds-theme--alert-texture', this.isPrompt()), _headerClass);
-	
 	      var titleClass = {
 	        'slds-text-heading--small': this.isPrompt(),
 	        'slds-text-heading--medium': !this.isPrompt()
 	      };
 	
 	      if (hasHeader) {
-	        header = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass) }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal.bind(this) }), this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null);
-	      } else {
-	        header = _react2['default'].createElement('div', { style: { position: 'relative' } }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal.bind(this) }));
+	        headerContent = _react2['default'].createElement('span', null, this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null);
 	      }
 	
-	      return header;
+	      return _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass), style: { position: "relative" } }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal.bind(this) }), headerContent);
 	    }
 	  }, {
 	    key: 'getModal',
@@ -9267,10 +9247,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        'slds-modal--large': this.props.size === 'large',
 	        'slds-modal--prompt': this.isPrompt()
 	      };
-	      var modalStyle = this.props.align === "top" ? { "justify-content": "flex-start" } : null;
-	      var contentStyle = this.props.title ? null : { "border-radius": ".25rem" };
-	
-	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { className: (0, _classnames2['default'])(modalClass), style: { pointerEvents: 'inherit' }, onClick: this.closeModal.bind(this) }, _react2['default'].createElement('div', { 'aria-hidden': 'false', role: 'dialog', onClick: this.handleModalClick.bind(this), className: 'slds-modal__container', style: modalStyle }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content', style: contentStyle }, this.props.children), this.footerComponent())), _react2['default'].createElement('div', { style: { pointerEvents: 'inherit' }, className: 'slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly' }));
+	      var modalStyle = this.props.align === "top" ? { "justifyContent": "flex-start" } : null;
+	      var contentStyle = this.props.title ? null : { "borderRadius": ".25rem" };
+	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { 'aria-hidden': 'false', role: 'dialog', className: (0, _classnames2['default'])(modalClass), onClick: this.closeModal.bind(this) }, _react2['default'].createElement('div', { className: 'slds-modal__container', style: modalStyle }, _react2['default'].createElement('div', { onClick: this.handleModalClick.bind(this) }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content', style: contentStyle }, this.props.children), this.footerComponent()))), _react2['default'].createElement('div', { className: 'slds-backdrop slds-backdrop--open' }));
 	    }
 	  }, {
 	    key: 'render',
@@ -11346,12 +11325,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _this = this;
 	
 	      if (this.props.duration) {
-	        (function () {
-	          var that = _this;
-	          setTimeout(function () {
-	            that.onDismiss();
-	          }, that.props.duration);
-	        })();
+	        setTimeout(function () {
+	          _this.onDismiss();
+	        }, this.props.duration);
 	      }
 	    }
 	  }, {
@@ -11372,7 +11348,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	              _this2.setState({ revealForScreenreader: true });
 	            }, 500) });
 	        }
-	        console.log('revealForScreen', this.state.revealForScreenreader);
+	        //console.log('revealForScreen', this.state.revealForScreenreader);
 	      }
 	    }
 	  }, {
@@ -11391,7 +11367,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "renderClose",
 	    value: function renderClose() {
-	      var that = this;
 	      if (this.props.dismissible) {
 	        var size = "";
 	        if (this.props.variant === "alert") {
@@ -11405,7 +11380,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          iconName: "close",
 	          iconSize: size,
 	          className: "slds-button slds-notify__close",
-	          onClick: that.onDismiss.bind(that)
+	          onClick: this.onDismiss.bind(this)
 	        });
 	      }
 	    }
