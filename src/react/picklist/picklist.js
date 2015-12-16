@@ -7,6 +7,7 @@ import PicklistCore, {CONTROL} from '../../core/picklist';
 // Traits
 import Openable from '../../traits/openable';
 import Positionable from '../../traits/positionable';
+import KeyboardNavigable from '../../traits/keyboard-navigable';
 
 // Framework specific
 import React from 'react';
@@ -119,7 +120,7 @@ export const PicklistObject = {
 	_handleKeyPressed (e) {
 		if (e.key && (/(ArrowUp|ArrowDown|Escape)/.test(e.key) || e.key.length === 1)) {
 			e.preventDefault();
-			const focusedIndex = this._keyboardNav(e.key, this.setSelection);
+			const focusedIndex = KeyboardNavigable.keyboardNav(this, e.key, this.setSelection, this._collection);
 			if (focusedIndex !== undefined) {
 				document.getElementById(this._getMenuItemId(focusedIndex)).getElementsByTagName('a')[0].focus();
 				console.log(document.getElementById(this._getMenuItemId(focusedIndex)));

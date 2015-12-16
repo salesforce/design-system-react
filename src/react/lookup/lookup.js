@@ -15,6 +15,7 @@ import LookupCore, {CONTROL} from '../../core/lookup';
 import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
 import Positionable from '../../traits/positionable';
+import KeyboardNavigable from '../../traits/keyboard-navigable';
 
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
@@ -275,7 +276,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this._keyboardSelect, this.state.searchResults);
+			KeyboardNavigable.keyboardNav(this, e.key, this._keyboardSelect, this.state.searchResults);
 		// Also listen for character key presses an ensure that the menu it open while typing in the input, but don't actually trap them.
 		} else if (e.key.length === 1) {
 			Openable.open(this);

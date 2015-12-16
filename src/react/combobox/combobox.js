@@ -6,6 +6,7 @@ import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Traits
 import Openable from '../../traits/openable';
+import KeyboardNavigable from '../../traits/keyboard-navigable';
 
 // Framework specific
 import React from 'react';
@@ -68,7 +69,7 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this.setSelection);
+			KeyboardNavigable.keyboardNav(this, e.key, this.setSelection, this._collection);
 		} else if (e.key.length === 1) {
 			Openable.open(this);
 			this.elements.input[0].focus();

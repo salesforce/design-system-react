@@ -17,7 +17,7 @@ import KeyboardNavigable from '../traits/keyboard-navigable';
 
 export const CONTROL = 'Lookup';
 
-const LookupCore = Lib.merge({}, Base, KeyboardNavigable, {
+const LookupCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	// CSS classes used within this control
@@ -121,7 +121,7 @@ const LookupCore = Lib.merge({}, Base, KeyboardNavigable, {
 	},
 	
 	_configureKeyboardNavigation (filteredCollection) {
-		const navigableItems = this._getNavigableItems(filteredCollection);
+		const navigableItems = KeyboardNavigable.getNavigableItems(this, filteredCollection);
 		
 		if (this.getProperty('menuFooterRenderer')) navigableItems.indexes.push('footer');
 		
