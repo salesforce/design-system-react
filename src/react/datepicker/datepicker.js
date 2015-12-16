@@ -11,6 +11,7 @@ import Positionable from '../../traits/positionable';
 
 // Framework specific
 import React from 'react';
+import ReactDOM from 'react-dom';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
@@ -32,53 +33,79 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	propTypes: {
 		dateRange: React.PropTypes.array,
 		inputLabel: React.PropTypes.string,
-		modalMenu: React.PropTypes.bool,
+		modalCalendar: React.PropTypes.bool,
 		selection: React.PropTypes.any
 	},
 
+	componentWillMount () {
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody());
+	},
+
 	render () {
-		const calendarData = this._getCalendarData();
 		const selectedDates = this.props.selection;
 		const selDateFormatted = selectedDates.length ? this._formatDate(selectedDates[0]) : '';
-		const isOpen = Openable.isOpen(this);
 
-		if (this.props.modalMenu && this.refs.dropdown) {
-			Positionable.setElement(this, this.refs.dropdown);
-			Positionable.setContainer(this, this.refs.container);
-			Positionable.setTarget(this, this.refs.container);
-		}
-		
 		return (
-			<div className="slds-form--stacked slds-datepicker-form" ref="container" onClick={this._triggerCalendar}>
+			<div className="slds-form--stacked slds-datepicker-form" ref={this._dateInputRendered} onClick={this._triggerCalendar}>
 				<DateInput
 					ariaLabel={this.props.inputLabel}
 					selectedDate={selDateFormatted}
 					strings={this.state.strings}/>
-				<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !isOpen})} ref="dropdown" data-selection="single">
-					<div className="slds-datepicker__filter slds-grid">
-						<DateMonth
-							monthName={this._getMonthName()}
-							setViewingDate={this._setViewingDate}
-							dateViewing={this.state.dateViewing}
-							strings={this.state.strings}/>
-						<DateYear
-							getYearRange={this._getYearRangeData}
-							setViewingDate={this._setViewingDate}
-							dateViewing={this.state.dateViewing}/>
-					</div>
-					<Calendar
-						calendarData={calendarData}
-						selectDate={this._selectDate}
-						multiSelect={this.props.multiSelect}/>
-				</div>
+					{this.props.modalCalendar ? null : this._renderCalendar()}
 			</div>
 		);
 	},
 
+	_renderCalendar () {
+		const calendarData = this._getCalendarData();
+		const isOpen = Openable.isOpen(this);
+
+		return (
+			<div className={classNames('slds-dropdown slds-dropdown--left slds-datepicker', {'slds-hidden': !isOpen})} data-selection="single">
+				<div className="slds-datepicker__filter slds-grid">
+					<DateMonth
+						monthName={this._getMonthName()}
+						setViewingDate={this._setViewingDate}
+						dateViewing={this.state.dateViewing}
+						strings={this.state.strings}/>
+					<DateYear
+						getYearRange={this._getYearRangeData}
+						setViewingDate={this._setViewingDate}
+						dateViewing={this.state.dateViewing}/>
+				</div>
+				<Calendar
+					calendarData={calendarData}
+					selectDate={this._selectDate}
+					multiSelect={this.props.multiSelect}/>
+			</div>
+		);
+	},
+
+	_renderModalCalendar () {
+		const calendar = this._renderCalendar();
+
+		ReactDOM.render(calendar, Positionable.getElement(this));
+
+		Positionable.setContainer(this, document.querySelector('body'));
+		Positionable.position(this);
+	},
+
 	componentDidUpdate () {
-		if (this.props.modalMenu && this.refs.dropdown) {
-			Positionable.position(this);
+		if (this.props.modalCalendar) {
+			this._renderModalCalendar();
 		}
+
+		if (this.props.modalCalendar && Openable.isOpen(this)) {
+			Positionable.show(this);
+			Positionable.addEventListeners(this);
+		} else if (this.props.modalCalendar && !Openable.isOpen(this)) {
+			Positionable.hide(this);
+			Positionable.removeEventListeners(this);
+		}
+	},
+
+	_dateInputRendered (element) {
+		Positionable.setTarget(this, element);
 	},
 
 	_triggerCalendar (e) {

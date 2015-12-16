@@ -6,6 +6,11 @@
 
 import * as Lib from '../lib/lib';
 
+// These are private function redefined below the public export object.
+let setElementStyles = () => {};
+let handleWindowEvents = () => {};
+let constrainToWindow = () => {};
+
 const Positionable = {
 	/* TODO: Implement scrolling parent "autoflip" via `constrainTargetToScrollingParent: true`. */
 
@@ -28,182 +33,215 @@ const Positionable = {
 		top: 'top'
 	},
 
-	_handleWindowEvents (controlContext) {
-		Positionable.position(controlContext);
-	},
-
-	// Based upon the positionable element's "x,y" document offset and options provided, this function returns the top and left offsets of the positionable element. It also returns the width of the target element.
-	_getElementStyles (controlContext, newTargetAttachment) {
-		const element = controlContext.elements._positionable_element;
-		const constrainedToElement = controlContext.elements._positionable_container;
-		const target = controlContext.elements._positionable_target;
-		// element is [0] for jQuery compatibility
-		const offset = Lib.getElementOffset(target[0], constrainedToElement[0]);
-		const offsetAddedByOptions = controlContext.getProperty('positionedOffset');
-		const targetHorizontalAttachment = controlContext.getProperty('positionedTargetHorizontalAttachment');
-		const newStyle = {};
-		let targetHorizontalPosition = 0;
-		
-		const elementSize = {
-			width: element.outerWidth(),
-			height: element.outerHeight()
-		};
-		
-		const targetSize = {
-			width: target.outerWidth(),
-			height: target.outerHeight()
-		};
-		
-		const currentTargetAttachment = newTargetAttachment || controlContext.getProperty('positionedTargetVerticalAttachment');
-
-		newStyle.width = controlContext.getProperty('width') || targetSize.width;
-
-		if (targetHorizontalAttachment === 'center') {
-			targetHorizontalPosition = (elementSize.width / 2) - (targetSize.width / 2);
-		} else if (targetHorizontalAttachment === 'left') {
-			targetHorizontalPosition = 0;
-		}
-
-		switch (currentTargetAttachment) {
-			case 'left':
-				newStyle.left = offset.left - (elementSize.width + offsetAddedByOptions);
-				newStyle.top = offset.top - ((elementSize.height / 2) - (targetSize.height / 2));
-				break;
-			case 'top':
-				newStyle.left = offset.left - targetHorizontalPosition;
-				newStyle.top = offset.top - (elementSize.height + offsetAddedByOptions);
-				break;
-			case 'bottom':
-				newStyle.left = offset.left - targetHorizontalPosition;
-				newStyle.top = offset.top + targetSize.height + offsetAddedByOptions;
-				break;
-			case 'right':
-			default:
-				newStyle.left = offset.left + targetSize.width + offsetAddedByOptions;
-				newStyle.top = offset.top - ((elementSize.height / 2) - (targetSize.height / 2));
-				break;
-		}
-
-		// currentTargetAttachment is used to set nubbin class names
-		controlContext.currentTargetAttachment = currentTargetAttachment;
-
-		newStyle.left = Math.round(newStyle.left);
-		newStyle.top = Math.round(newStyle.top);
-
-		return newStyle;
-	},
-	
-	// Apply latest position (due to render, scroll, or resize).
-	_setElementStyles (controlContext, style) {
-		if (style) {
-			const element = controlContext.elements._positionable_element[0];
-			let transformation = 'translateX(' + style.left + 'px) translateY(' + style.top + 'px)';
-			
-			element.style.top = 0;
-			element.style.left = 0;
-			element.style.position = 'absolute';
-			element.style.zIndex = controlContext.getProperty('positionedZIndex');
-
-			if (controlContext.getProperty('supportedCSSTransformKey') !== 'msTransform') {
-				// The Z transform will trigger GPU usage (faster, les artifacts), but IE9 doesn't support 3d transforms and will choke. Observations say that a dropdown inside a modal will still oscillate when scrolling.
-				transformation += ' translateZ(0)';
-			}
-
-			element.style[controlContext.getProperty('supportedCSSTransformKey')] = transformation;
-
-			if (controlContext.getProperty('constrainWidthToTarget')) {
-				element.style.width = style.width + 'px';
-			}
-
-			/* TODO: If we're going to call this here we need to check if it exists first. But maybe we shouldn't? */
-			if (controlContext._getClassNames) element.className = controlContext._getClassNames();
-		}
-	},
-
 	// PUBLIC METHODS FOR CONTROLS
-	attachPositionedElementToBody () {
+	attachPositionedElementToBody (classes = '') {
 		const element = document.createElement('div');
+		element.className = element.className + classes;
 		document.querySelector('body').appendChild(element);
 		return Lib.wrapElement(element);
 	},
 
 	addEventListeners (controlContext) {
-		if (!controlContext._positionable_resize_event_handler) {
-			controlContext._positionable_resize_event_handler = Positionable._handleWindowEvents.bind(this, controlContext);
-			window.addEventListener('resize', controlContext._positionable_resize_event_handler);
+		if (!controlContext._positionableResizeEventHandler) {
+			controlContext._positionableResizeEventHandler = handleWindowEvents.bind(this, controlContext);
+			window.addEventListener('resize', controlContext._positionableResizeEventHandler);
 		}
 
 		if (!controlContext._positionable_scroll_event_handler) {
-			controlContext._positionable_scroll_event_handler = Positionable._handleWindowEvents.bind(this, controlContext);
-			window.addEventListener('scroll', controlContext._positionable_scroll_event_handler);
+			controlContext._positionableScrollEventHandler = handleWindowEvents.bind(this, controlContext);
+			window.addEventListener('scroll', controlContext._positionableScrollEventHandler);
 		}
 	},
 
 	hide (controlContext) {
-		controlContext.elements._positionable_element.addClass('slds-hidden');
+		Lib.wrapElement(Positionable.getElement(controlContext)).addClass('slds-hidden');
+	},
+
+	position (controlContext) {
+		/* sometimes position is called before the positioned element is initialized */
+		if (Positionable.getElement(controlContext)) {
+			setElementStyles(controlContext);
+		
+			if (controlContext.getProperty('constrainPositionedToWindow')) {
+				// This also sets the element style. `setElementStyles` is intentionally ran twice, so that there is not a noticable visual delay. */
+				constrainToWindow(controlContext);
+			}
+		}
 	},
 
 	// `removePositionableEventListeners` should be removed at the end of the control's lifecycle.
 	removeEventListeners (controlContext) {
-		if (controlContext._positionable_resize_event_handler) {
-			window.removeEventListener('resize', controlContext._positionable_resize_event_handler);
+		if (controlContext._positionableResizeEventHandler) {
+			window.removeEventListener('resize', controlContext._positionableResizeEventHandler);
 		}
 
-		if (controlContext._positionable_scroll_event_handler) {
-			window.removeEventListener('scroll', controlContext._positionable_scroll_event_handler);
-		}
-	},
-
-	position (controlContext) {
-		// multiselectable._selectItems.call(this, this._getDataAdapter(items), index);
-		Positionable._setElementStyles(controlContext,
-			Positionable._getElementStyles(controlContext)
-		);
-		
-		if (controlContext.getProperty('constrainPositionedToWindow')) {
-			const isOffscreen = controlContext.elements._positionable_element.isOffscreen(true);
-			let targetAttachment;
-
-			if (isOffscreen === 'top') {
-				targetAttachment = 'bottom';
-			} else if (isOffscreen === 'bottom') {
-				targetAttachment = 'top';
-			}
-
-			Positionable._setElementStyles(controlContext,
-				Positionable._getElementStyles(controlContext, targetAttachment)
-			);
+		if (controlContext._positionableScrollEventHandler) {
+			window.removeEventListener('scroll', controlContext._positionableScrollEventHandler);
 		}
 	},
 
 	show (controlContext) {
-		controlContext.elements._positionable_element.removeClass('slds-hidden');
+		Lib.wrapElement(Positionable.getElement(controlContext)).removeClass('slds-hidden');
 	},
 
 	// ACCESSORS
 	getElement (controlContext) {
-		return controlContext.elements._positionable_element.element;
+		// This is the same as `.element` and is present for jQuery element compatibility.
+		return controlContext._positionableElement[0];
 	},
 
 	getContainer (controlContext) {
-		return controlContext.elements._positionable_container.element;
+		// This is the same as `.element` and is present for jQuery element compatibility.
+		return controlContext._positionableContainer[0];
+	},
+
+	getTarget (controlContext) {
+		// This is the same as `.element` and is present for jQuery element compatibility.
+		return controlContext._positionableTarget[0];
 	},
 
 	setContainer (controlContext, element) {
-		controlContext.elements._positionable_container = Lib.wrapElement(element);
-		return controlContext.elements._positionable_container;
+		controlContext._positionableContainer = Lib.wrapElement(element);
+		return element;
 	},
 
 	setElement (controlContext, element) {
-		controlContext.elements._positionable_element = Lib.wrapElement(element);
-		return controlContext.elements._positionable_element;
+		controlContext._positionableElement = Lib.wrapElement(element);
+		return element;
 	},
 	
 	setTarget (controlContext, element) {
-		controlContext.elements._positionable_target = Lib.wrapElement(element);
-		return controlContext.elements._positionable_target;
+		controlContext._positionableTarget = Lib.wrapElement(element);
+		return element;
 	}
 
+};
+
+// PRIVATE FUNCTIONS
+
+handleWindowEvents = (controlContext) => {
+	Positionable.position(controlContext);
+};
+
+// Based upon the positionable element's "x,y" document offset and options provided, this function returns the top and left offsets of the positionable element. It also returns the width of the target element.
+const getElementStyles = (controlContext, newTargetAttachment) => {
+	const wrappedElement = Lib.wrapElement(Positionable.getElement(controlContext));
+	const container = Positionable.getContainer(controlContext);
+
+	const target = Positionable.getTarget(controlContext);
+	const wrappedTarget = Lib.wrapElement(Positionable.getTarget(controlContext));
+
+	const offset = Lib.getElementOffset(target, container);
+	const offsetAddedByOptions = controlContext.getProperty('positionedOffset');
+	const targetHorizontalAttachment = controlContext.getProperty('positionedTargetHorizontalAttachment');
+	const newStyle = {};
+	let targetHorizontalPosition = 0;
+	
+	let elementHeight = wrappedElement.outerHeight();
+
+	if (elementHeight === 0 && Positionable.getElement(controlContext).firstChild) {
+		elementHeight = Lib.wrapElement(Positionable.getElement(controlContext).firstChild).outerHeight();
+	}
+
+	const elementSize = {
+		width: wrappedElement.outerWidth(),
+		height: elementHeight
+	};
+	
+	const targetSize = {
+		width: wrappedTarget.outerWidth(),
+		height: wrappedTarget.outerHeight()
+	};
+	
+	const currentTargetAttachment = newTargetAttachment || controlContext.getProperty('positionedTargetVerticalAttachment');
+
+	newStyle.width = controlContext.getProperty('width') || targetSize.width;
+
+	if (targetHorizontalAttachment === 'center') {
+		targetHorizontalPosition = (elementSize.width / 2) - (targetSize.width / 2);
+	} else if (targetHorizontalAttachment === 'left') {
+		targetHorizontalPosition = 0;
+	}
+
+	switch (currentTargetAttachment) {
+		case 'left':
+			newStyle.left = offset.left - (elementSize.width + offsetAddedByOptions);
+			newStyle.top = offset.top - ((elementSize.height / 2) - (targetSize.height / 2));
+			break;
+		case 'top':
+			newStyle.left = offset.left - targetHorizontalPosition;
+			newStyle.top = offset.top - (elementSize.height + offsetAddedByOptions);
+			break;
+		case 'bottom':
+			newStyle.left = offset.left - targetHorizontalPosition;
+			newStyle.top = offset.top + targetSize.height + offsetAddedByOptions;
+			break;
+		case 'right':
+		default:
+			newStyle.left = offset.left + targetSize.width + offsetAddedByOptions;
+			newStyle.top = offset.top - ((elementSize.height / 2) - (targetSize.height / 2));
+			break;
+	}
+
+	// currentTargetAttachment is used to set nubbin class names
+	controlContext.currentTargetAttachment = currentTargetAttachment;
+
+	newStyle.left = Math.round(newStyle.left);
+	newStyle.top = Math.round(newStyle.top);
+
+	return newStyle;
+};
+
+// Apply latest position (due to render, scroll, or resize).
+setElementStyles = (controlContext, targetAttachment) => {
+	const style = getElementStyles(controlContext, targetAttachment);
+
+	if (style) {
+		const element = Positionable.getElement(controlContext);
+		let transformation = 'translateX(' + style.left + 'px) translateY(' + style.top + 'px)';
+		
+		element.style.top = 0;
+		element.style.left = 0;
+		element.style.position = 'absolute';
+		element.style.zIndex = controlContext.getProperty('positionedZIndex');
+
+		if (controlContext.getProperty('supportedCSSTransformKey') !== 'msTransform') {
+			// The Z transform will trigger GPU usage (faster, les artifacts), but IE9 doesn't support 3d transforms and will choke. Observations say that a dropdown inside a modal will still oscillate when scrolling.
+			transformation += ' translateZ(0)';
+		}
+
+		element.style[controlContext.getProperty('supportedCSSTransformKey')] = transformation;
+
+		if (controlContext.getProperty('constrainWidthToTarget')) {
+			element.style.width = style.width + 'px';
+		}
+
+		/* TODO: If we're going to call this here we need to check if it exists first. But maybe we shouldn't? */
+		if (controlContext._getClassNames) element.className = controlContext._getClassNames();
+	}
+};
+
+constrainToWindow = (controlContext) => {
+	let targetAttachment = false;
+	let elementToMeasure;
+
+	/* Positioned element's height is typically zero, since it often contains positioned elements such as dropdowns and menus. */
+	if (Lib.wrapElement(Positionable.getElement(controlContext)).outerHeight() === 0
+			&& Positionable.getElement(controlContext).firstChild) {
+		elementToMeasure = Positionable.getElement(controlContext).firstChild;
+	}	else {
+		elementToMeasure = Positionable.getElement(controlContext);
+	}
+
+	/* `isOffscreen` returns false or the vertical alignment of the positioned elment to the target */
+	const isOffscreen = Lib.wrapElement(elementToMeasure).isOffscreen(true);
+	if (isOffscreen === 'top') {
+		targetAttachment = 'bottom';
+	} else if (isOffscreen === 'bottom') {
+		targetAttachment = 'top';
+	}
+
+	setElementStyles(controlContext, targetAttachment);
 };
 
 export default Positionable;

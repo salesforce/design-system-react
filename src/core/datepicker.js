@@ -26,7 +26,7 @@ const DatepickerCore = Lib.merge({}, Base, {
 
 		// Positionable trait
 		positionedTargetVerticalAttachment: 'bottom',
-		constrainWidthToTarget: true,
+		constrainWidthToTarget: false,
 		constrainPositionedToWindow: true,
 		modalMenu: false,
 		positionedOffset: 0,

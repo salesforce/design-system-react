@@ -99,7 +99,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			navigableItems
 		});
 
-		Positionable.setElement(this, Positionable.attachPositionedElementToBody());
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-lookup'));
 	},
 
 	componentWillReceiveProps (nextProps) {
@@ -177,15 +177,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.labelPlural || this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} parentProps={this.props} numResults={this.state.searchResults.length()} onClick={this.props.onAddClick} />;
 		}
 
-		let style = {};
-
-		if (this.props.modalMenu) {
-			style = {position: 'static'};
-		}
-		
 		const menu = (
-			/* TODO: Remove inline style */
-			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !isOpen })} role="listbox" style={style}>
+			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !isOpen })} role="listbox">
 				{header}
 				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this._handleSelect} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
@@ -199,7 +192,6 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_renderModalMenu () {
 		const menu = this._renderMenu();
 		
-		// positionedElement is a "wrapped element"
 		ReactDOM.render(menu, Positionable.getElement(this));
 
 		Positionable.setContainer(this, document.querySelector('body'));
