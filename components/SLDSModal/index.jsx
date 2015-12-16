@@ -228,12 +228,14 @@ class SLDSModal extends React.Component {
     return (
       <div>
         <div aria-hidden="false" role="dialog" className={classNames(modalClass)} onClick={this.closeModal.bind(this)}>
-          <div className="slds-modal__container" onClick={this.handleModalClick.bind(this)} style={modalStyle}>
-            {this.headerComponent()}
-            <div className="slds-modal__content" style={contentStyle}>
-              {this.props.children}
+          <div className="slds-modal__container" style={modalStyle}>
+            <div onClick={this.handleModalClick.bind(this)}>
+              {this.headerComponent()}
+              <div className="slds-modal__content" style={contentStyle}>
+                {this.props.children}
+              </div>
+              {this.footerComponent()}
             </div>
-            {this.footerComponent()}
           </div>
         </div>
         <div className="slds-backdrop slds-backdrop--open"></div>
