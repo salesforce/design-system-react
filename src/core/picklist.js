@@ -9,11 +9,10 @@ import Base from './base';
 
 // Traits
 import Selectable from '../traits/selectable';
-import KeyboardNavigable from '../traits/keyboard-navigable';
 
 export const CONTROL = 'Picklist';
 
-const PicklistCore = Lib.merge({}, Base, Selectable, KeyboardNavigable, {
+const PicklistCore = Lib.merge({}, Base, Selectable, {
 	CONTROL,
 	
 	// CSS classes used within this control

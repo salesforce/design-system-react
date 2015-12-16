@@ -7,6 +7,7 @@ import PicklistCore, {CONTROL} from '../../core/picklist';
 // Traits
 import Openable from '../../traits/openable';
 import Positionable from '../../traits/positionable';
+import KeyboardNavigable from '../../traits/keyboard-navigable';
 
 // Framework specific
 import DOM from '../dom';
@@ -261,7 +262,7 @@ export const PicklistObject = {
 
 		if (key) {
 			e.preventDefault();
-			this._keyboardNav(key, this.elements.menuItems);
+			KeyboardNavigable.keyboardNav(this, key, this.elements.menuItems, this._collection);
 		}
 	},
 
@@ -270,7 +271,7 @@ export const PicklistObject = {
 
 		if (key && key.length === 1) {
 			e.preventDefault();
-			this._keyboardNav(key, this.elements.menuItems);
+			KeyboardNavigable.keyboardNav(this, key, this.elements.menuItems, this._collection);
 		}
 	},
 
