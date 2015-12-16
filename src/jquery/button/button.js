@@ -10,7 +10,7 @@
 // Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../../lib/lib';
 
-// Use the [shared core](../../core/button.html), which contains logic that is the same in every facade.
+// Use the [shared button core](../../core/button.html), which contains logic that is the same in every facade.
 import ButtonCore, {CONTROL} from '../../core/button';
 
 // jQuery is an external dependency.
@@ -28,7 +28,7 @@ import ButtonView from './button-view';
 
 // Constructor
 let Button = function Button () {
-	// `_getOptions` can be found in [State](../state.html) and determines if a wrapper element is passed and also merges in the default properties found in the [shared core](../../core/button.html).
+	// `_getOptions` can be found in [State](../state.html) and determines if a wrapper element is passed and also merges in the default properties found in the [shared button core](../../core/button.html).
 	const options = this._getOptions(arguments);
 
 	// Specifies the options that get passed on (or "inherited") to the child `ButtonViews`
@@ -121,7 +121,7 @@ export const ButtonObject = {
 		}
 	},
 
-	// Toggles selected state if button is stateful. See [selectable-boolean]('../traits/selectable-boolean').
+	// Toggles selected state if button is stateful. See the [shared button core](../../core/button.html).
 	_onToggled () {
 		const isStateful = this.getProperty('views').length > 0;
 		this.elements.control[0].className = this._getClassNames('', (isStateful || this.getProperty('selectable')));

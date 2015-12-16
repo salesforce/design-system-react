@@ -12,20 +12,20 @@ import classNames from 'classnames';
 
 // [Disableable](../traits/disableable.html) and [SelectableBoolean](../traits/selectable-boolean.html) are traits. Traits extend the functionality of a control with common methods and properties related to a specific behavior. Not only do traits have the potential to speed up development, they also bring consistency to the API.
 import Disableable from '../traits/disableable';
-import SelectableBoolean from '../traits/selectable-boolean';
 
 // Export the canonical name of this control. The name specified here will be used to generate the React display name and the jQuery plugin name, among other things.
 export const CONTROL = 'Button';
 
 // Facades **extends objects** by merging them together, rather than via the prototype chain or imititation of object-oriented inheritance. The important thing to remember is that _some methods will be available to the control which are not declared in this file_. These are not magic methods, they're not black box methods, but you do need to trace the depencies of the control to see where they are coming from. This particular control extends the `Base`, the `SelectableBoolean` trait, and the `Disableable` trait. Adding an empty object as the first item of the merge ensures that all of these methods don't get added to `Base`, while the methods for this specific control must be the last thing added here so that they have the potential to override anything added fist as needed.
-const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
+const ButtonCore = Lib.merge({}, Base, Disableable, {
 	// Add the canonical class name as a property of the control, for future reference.
 	CONTROL,
 	
 	// Save a list of any CSS classes used within this control which will need to be used later to find specific elements or perform other operations. It's not neccessary to list every single class here as many are used only by the template or render function.
 	cssClasses: {
-		'CONTROL': 'slds-button',
-		'NOT_SELECTED': 'slds-not-selected'
+		CONTROL: 'slds-button',
+		NOT_SELECTED: 'slds-not-selected',
+		SELECTED: 'slds-is-selected'
 	},
 	
 	// [Themes (or variants)](https://www.lightningdesignsystem.com/components/buttons) that dictate the general style of and are applied to the `<button>`.
@@ -56,7 +56,7 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 		iconPosition: 'left',
 		iconSize: null,
 		iconStyle: null,
-		selected: false,
+		selected: null,
 		size: null,
 		theme: null,
 		truncate: false,
@@ -76,7 +76,11 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 
 	// Public method that toggles selection state (selected | not-selected) of a button. This is often caused by a user clicking the button.
 	toggle () {
-		this._toggleSelected();
+		if (this.isSelected()) {
+			this.deselect();
+		} else {
+			this.select();
+		}
 	},
 
 	// `_getClassNames` determines what CSS classes will be applied to `<button>`. Additional classes can be added to the button based on properties.
@@ -96,6 +100,41 @@ const ButtonCore = Lib.merge({}, Base, SelectableBoolean, Disableable, {
 			this.iconButtonStyles[this.getProperty('iconStyle')],
 			selectedClasses,
 			additionalClasses);
+	},
+
+	// "Selectable-Boolean" methods
+	isSelected () {
+		return !!this.getProperty('selected');
+	},
+
+	_setSelected (selected) {
+		if (Lib.isFunction(this._canSelect) && !this._canSelect(selected)) {
+			return false;
+		}
+
+		if (selected === this.isSelected()) {
+			return false;
+		}
+
+		this.setProperties({ selected });
+
+		if (Lib.isFunction(this._onToggled)) this._onToggled(selected);
+
+		this.trigger('changed', selected);
+
+		return true;
+	},
+
+	select () {
+		if (this._setSelected(true)) {
+			this.trigger('selected');
+		}
+	},
+
+	deselect () {
+		if (this._setSelected(false)) {
+			this.trigger('deselected');
+		}
 	}
 });
 
