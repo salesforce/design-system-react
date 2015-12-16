@@ -242,12 +242,14 @@ class SLDSModal extends React.Component {
       'slds-modal--prompt': this.isPrompt(),
     };
     const modalStyle = this.props.align === "top" ? {"justify-content": "flex-start"} : null;
+    const contentStyle = this.props.title ? null: {"border-radius": ".25rem"};
+
     return (
       <div>
         <div className={classNames(modalClass)} style={{pointerEvents: 'inherit'}} onClick={this.closeModal.bind(this)}>
           <div aria-hidden="false" role='dialog' onClick={this.handleModalClick.bind(this)} className='slds-modal__container' style={modalStyle}>
             {this.headerComponent()}
-            <div className='slds-modal__content'>
+            <div className="slds-modal__content" style={contentStyle}>
               {this.props.children}
             </div>
             {this.footerComponent()}
