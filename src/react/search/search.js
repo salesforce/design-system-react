@@ -34,14 +34,9 @@ export const SearchObject = {
 		);
 	},
 
-	componentDidUpdate () {
-		this._onEnabledOrDisabled();
-	},
-
 	componentDidMount () {
 		this._getElements(this.getDOMNode());
 		this._addEventListeners();
-		this._onEnabledOrDisabled();
 	},
 
 	componentWillUnmount () {
