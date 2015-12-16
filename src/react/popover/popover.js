@@ -19,8 +19,7 @@ export const PopoverMethods = {
 		alignmentTarget: mountable,
 		autoFlip: React.PropTypes.bool,
 		container: mountable,
-		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions)),
-		trigger: React.PropTypes.oneOf(Object.keys(PopoverCore.triggers))
+		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
 	},
 
 	_setElements () {
@@ -28,16 +27,16 @@ export const PopoverMethods = {
 		Positionable.setContainer(this, this.props.container || this.element);
 		Positionable.setTarget(this, this.props.alignmentTarget || Positionable.getContainer(this));
 	},
-	
+
 	componentWillMount: function () {
 		this.setState({
-			isHidden: !this.props.isOpen
+			isOpen: this.props.isOpen
 		});
 	},
 	
 	componentWillReceiveProps: function (nextProps) {
 		this.setState({
-			isHidden: !nextProps.isOpen
+			isOpen: nextProps.isOpen
 		});
 	},
 
@@ -62,7 +61,6 @@ let Popover = Lib.merge({}, PopoverCore, PopoverMethods, {
 			</div>
 		);
 	}
-
 });
 
 Popover = Lib.runHelpers('react', CONTROL, Popover);

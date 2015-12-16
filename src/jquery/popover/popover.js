@@ -6,6 +6,7 @@ import PopoverCore, {CONTROL} from '../../core/popover';
 
 // Traits
 import Positionable from '../../traits/positionable';
+import Openable from '../../traits/openable';
 
 // Framework Specific
 import DOM from '../dom';
@@ -20,6 +21,11 @@ import template from './popover-template';
 let Popover = function Popover () {
 	const options = this._getOptions(arguments);
 	this.template = $(template);
+	
+	this.toggle = Openable.toggle.bind(undefined, this);
+	this.open = Openable.open.bind(undefined, this);
+	this.close = Openable.close.bind(undefined, this);
+	
 	this._initialize(options);
 };
 
@@ -53,21 +59,21 @@ export const PopoverMethods = {
 		if (trigger === 'click') {
 			this.elements.triggerElement.on( 'click', $.proxy(this.toggle, this));
 		} else if (trigger === 'hover') {
-			this.elements.triggerElement.on( 'mouseover', $.proxy(this.show, this));
-			this.elements.triggerElement.on( 'mouseout', $.proxy(this.hide, this));
+			this.elements.triggerElement.on( 'mouseover', $.proxy(this.open, this));
+			this.elements.triggerElement.on( 'mouseout', $.proxy(this.close, this));
 		} else if (trigger === 'focus') {
-			this.elements.triggerElement.on( 'focus', $.proxy(this.show, this));
-			this.elements.triggerElement.on( 'focusout', $.proxy(this.hide, this));
+			this.elements.triggerElement.on( 'focus', $.proxy(this.open, this));
+			this.elements.triggerElement.on( 'focusout', $.proxy(this.close, this));
 		}
 	},
 	
-	_onShow () {
+	_onOpened () {
 		Positionable.position(this);
 		Positionable.show(this);
 	},
 	
-	_onHide () {
-		Positionable.hide(this);
+	_onClosed () {
+		Positionable.position(this);
 	}
 };
 

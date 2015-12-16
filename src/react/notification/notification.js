@@ -13,7 +13,6 @@ import genericWillMount from '../mixins/generic-will-mount';
 // Children
 import Button from '../button/button';
 
-
 // TODO: Internationalize
 export const NotificationObject = {
 	mixins: [State, Events, genericWillMount],
@@ -40,6 +39,12 @@ export const NotificationObject = {
 				<h2>{this.props.children}</h2>
 			</div>
 		);
+	},
+	
+	hide () {
+		this.setState({
+			hidden: this.cssClasses.HIDDEN
+		});
 	}
 };
 

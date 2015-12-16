@@ -10,17 +10,15 @@ import Base from './base';
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
 
-// Traits
-import Hideable from '../traits/hideable';
-
 export const CONTROL = 'Notify';
 
-const NotificationCore = Lib.merge({}, Base, Hideable, {
+const NotificationCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	cssClasses: {
 		CONTROL: 'slds-notify',
-		ALERT: 'slds-notify--alert slds-theme--alert-texture'
+		ALERT: 'slds-notify--alert slds-theme--alert-texture',
+		HIDDEN: 'slds-hidden'
 	},
 	
 	themes: {
@@ -35,9 +33,7 @@ const NotificationCore = Lib.merge({}, Base, Hideable, {
 	},
 	
 	_getClassNames: function () {
-		const hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
-
-		return classNames(this.cssClasses.CONTROL, this.cssClasses.ALERT, 'slds-theme--inverse-text', this.themes[this.getProperty('theme')], hiddenClass);
+		return classNames(this.cssClasses.CONTROL, this.cssClasses.ALERT, 'slds-theme--inverse-text', this.themes[this.getProperty('theme')], this.getState('hidden'));
 	}
 });
 

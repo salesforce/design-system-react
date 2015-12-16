@@ -9,19 +9,20 @@ import Base from './base';
 
 // Traits
 import Positionable from '../traits/positionable';
-import Hideable from '../traits/hideable';
+import Openable from '../traits/openable';
 
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
 
 export const CONTROL = 'Popover';
 
-const PopoverCore = Lib.merge({}, Base, Positionable, Hideable, {
+const PopoverCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	cssClasses: {
 		CONTROL: 'slds-popover',
-		TARGET: 'slds-popover-target'
+		TARGET: 'slds-popover-target',
+		HIDDEN: 'slds-hidden'
 	},
 
 	triggers: {
@@ -47,23 +48,11 @@ const PopoverCore = Lib.merge({}, Base, Positionable, Hideable, {
 		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
 	},
 	
-	_defaultState: {
-		isHidden: true
-	},
-	
 	_getClassNames () {
 		const positionClass = Positionable.cssClasses.NUBBIN[this.currentTargetAttachment];
-		const hiddenClass = this.getState('isHidden') && this.cssClasses.HIDDEN;
+		const hiddenClass = !Openable.isOpen(this) && this.cssClasses.HIDDEN;
 
 		return classNames(this.cssClasses.CONTROL, this.cssClasses.TARGET, positionClass, hiddenClass);
-	},
-	
-	toggle () {
-		if (this.getState('isHidden')) {
-			this.show();
-		} else {
-			this.hide();
-		}
 	}
 });
 

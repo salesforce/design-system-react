@@ -9,6 +9,7 @@ import { PopoverMethods } from '../popover/popover';
 
 // Traits
 import Positionable from '../../traits/positionable';
+import Openable from '../../traits/openable';
 
 // Framework Specific
 import DOM from '../dom';
@@ -24,6 +25,10 @@ let Tooltip = function Tooltip () {
 	const options = this._getOptions(arguments);
 	
 	this.template = $(template);
+	
+	this.toggle = Openable.toggle.bind(undefined, this);
+	this.open = Openable.open.bind(undefined, this);
+	this.close = Openable.close.bind(undefined, this);
 	
 	this._initialize(options);
 };
