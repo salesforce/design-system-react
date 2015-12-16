@@ -17,7 +17,7 @@ export default function () {
 
 		render () {
 			return (
-				<div className="slds-col example" ref="container">
+				<div className="slds-col example">
 					<Lookup label="Accounts"
 						collection={this.state.collection}
 						selection={this.state.selection}
