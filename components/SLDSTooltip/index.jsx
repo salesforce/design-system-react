@@ -95,12 +95,12 @@ class SLDSTooltip extends React.Component {
   }
 
   render(){
-    const btnStyles = { color: "inherit"};
+    const btnStyles = { color: "inherit", textDecoration: "none"};
     return (
-      <span ref='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick.bind(this):null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} onFocus={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onBlur={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} style={btnStyles}>
+      <a href="javascript:void(0)" ref='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick.bind(this):null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} onFocus={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onBlur={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} style={btnStyles}>
         { this.props.children }
         { this.getTooltip() }
-      </span>
+      </a>
     );
   }
 
