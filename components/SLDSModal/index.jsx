@@ -171,9 +171,8 @@ class SLDSModal extends React.Component {
   }
 
   footerComponent() {
-    let footer;
+    let footer = null;
     const hasFooter = this.props.footer && this.props.footer.length > 0;
-
     const footerClass = {
       'slds-modal__footer': true,
       'slds-modal__footer--directional': this.props.directional,
@@ -183,55 +182,38 @@ class SLDSModal extends React.Component {
     if (hasFooter) {
       footer = (<div className={classNames(footerClass)}>{this.props.footer}</div>);
     }
-
     return footer;
   }
 
-  renderTitle(headingClasses) {
-    if(this.props.title){
-      return <h2 className={classNames(headingClasses)}>{this.props.title}</h2>;
-    }
-  }
-
-  renderTagline() {
-    if(this.props.tagline){
-      return <p className="slds-m-top--x-small">{this.props.tagline}</p>;
-    }
-  }
-
   headerComponent() {
-    let header;
-    const hasHeader = this.props.title;
-
+    let headerContent = null;
+    const hasHeader = this.props.title || this.props.tagline;
     const headerClass = {
       ['slds-modal__header']: hasHeader,
       [`slds-theme--${this.props.prompt}`]: this.isPrompt(),
       ['slds-theme--alert-texture']: this.isPrompt(),
     };
-
     const titleClass = {
       'slds-text-heading--small': this.isPrompt(),
       'slds-text-heading--medium': !this.isPrompt(),
     };
 
     if(hasHeader) {
-      header = (
-        <div className={classNames(headerClass)}>
-          <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal.bind(this)} />
+      headerContent = (
+        <span>
           {this.props.toast}
           <h2 className={classNames(titleClass)}>{this.props.title}</h2>
           {this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p>:null}
-        </div>
-      )
-    }else{
-      header = (
-        <div style={{position: 'relative'}}>
-          <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal.bind(this)} />
-        </div>
+        </span>
       )
     }
 
-    return header;
+    return (
+      <div className={classNames(headerClass)} style={{position: "relative"}}>
+        <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal.bind(this)} />
+        {headerContent}
+      </div>
+    )
   }
 
   getModal() {
@@ -243,11 +225,10 @@ class SLDSModal extends React.Component {
     };
     const modalStyle = this.props.align === "top" ? {"justifyContent": "flex-start"} : null;
     const contentStyle = this.props.title ? null: {"borderRadius": ".25rem"};
-
     return (
       <div>
-        <div className={classNames(modalClass)} style={{pointerEvents: 'inherit'}} onClick={this.closeModal.bind(this)}>
-          <div aria-hidden="false" role='dialog' onClick={this.handleModalClick.bind(this)} className='slds-modal__container' style={modalStyle}>
+        <div aria-hidden="false" role="dialog" className={classNames(modalClass)} onClick={this.closeModal.bind(this)}>
+          <div className="slds-modal__container" onClick={this.handleModalClick.bind(this)} style={modalStyle}>
             {this.headerComponent()}
             <div className="slds-modal__content" style={contentStyle}>
               {this.props.children}
@@ -255,9 +236,10 @@ class SLDSModal extends React.Component {
             {this.footerComponent()}
           </div>
         </div>
-        <div style={{pointerEvents: 'inherit'}} className="slds-backdrop slds-backdrop--open slds-motion--fade-in--promptly"></div>
+        <div className="slds-backdrop slds-backdrop--open"></div>
       </div>
     )
+
   }
 
   render() {
