@@ -58,15 +58,15 @@ const Openable = {
 	},
 	
 	addEventListeners (controlContext) {
-		if (!Lib.isFunction(controlContext._openable_closeOnClickHandler)) {
-			controlContext._openable_closeOnClickHandler = Openable.closeOnClick.bind(undefined, controlContext);
+		if (!Lib.isFunction(controlContext._openableCloseOnClickHandler)) {
+			controlContext._openableCloseOnClickHandler = Openable.closeOnClick.bind(undefined, controlContext);
 		}
 
-		document.addEventListener('click', controlContext._openable_closeOnClickHandler, false);
+		document.addEventListener('click', controlContext._openableCloseOnClickHandler, false);
 	},
 	
 	removeEventListeners (controlContext) {
-		if (controlContext._openable_closeOnClickHandler) document.removeEventListener('click', controlContext._openable_closeOnClickHandler, false);
+		if (controlContext._openableCloseOnClickHandler) document.removeEventListener('click', controlContext._openableCloseOnClickHandler, false);
 	}
 };
 
