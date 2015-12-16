@@ -25,11 +25,11 @@ function KeyBuffer () {
 }
 
 function initializeKeyBuffer (controlContext) {
-	controlContext._positionableKeyBuffer = new KeyBuffer();
+	controlContext._keyboardNavigableKeyBuffer = new KeyBuffer();
 }
 
 function initializeIsSelectable (controlContext) {
-	controlContext._positionableIsSelectable = !controlContext.accessors || !Lib.isFunction(controlContext.accessors.isSelectable);
+	controlContext._keyboardIsSelectable = !controlContext.accessors || !Lib.isFunction(controlContext.accessors.isSelectable);
 }
 
 const KeyboardNavigable = {
@@ -37,12 +37,12 @@ const KeyboardNavigable = {
 		const items = [];
 		items.indexes = [];
 		
-		if (controlContext._positionableIsSelectable === undefined) {
+		if (controlContext._keyboardIsSelectable === undefined) {
 			initializeIsSelectable(controlContext);
 		}
 		
 		collection.forEach((item, index) => {
-			if (controlContext._positionableIsSelectable || item.isSelectable()) {
+			if (controlContext._keyboardIsSelectable || item.isSelectable()) {
 				items.push({
 					index,
 					text: ('' + item.getText()).toLowerCase()
@@ -78,12 +78,12 @@ const KeyboardNavigable = {
 			let navigableIndex = indexes.indexOf(controlContext.getState('focusedIndex'));
 			
 			if (input.length === 1) {
-				if (controlContext._positionableKeyBuffer === undefined) {
+				if (controlContext._keyboardNavigableKeyBuffer === undefined) {
 					initializeKeyBuffer(controlContext);
 				}
 				
 				// Combine subsequent keypresses
-				const pattern = controlContext._positionableKeyBuffer(input.toLowerCase());
+				const pattern = controlContext._keyboardNavigableKeyBuffer(input.toLowerCase());
 				let consecutive = 0;
 				
 				// Support for navigating to the next option of the same letter with repeated presses of the same key
