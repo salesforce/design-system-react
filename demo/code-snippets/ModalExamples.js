@@ -52,12 +52,12 @@ class ModalExample extends React.Component {
           <SLDSButton label="Open Standard" onClick={this.openModal('modalBopen').bind(this)} variant="brand" />
           <SLDSModal
             footer={[
-              <SLDSButton label="Cancel" variant="neutral" onClick={this.closeModal('modalBopen').bind(this)} />,
-              <SLDSButton label="Save" variant="brand" onClick={this.closeModal('modalBopen').bind(this)} />
+              <SLDSButton key="modalBCancel" label="Cancel" variant="neutral" onClick={this.closeModal('modalBopen').bind(this)} />,
+              <SLDSButton key="modalBSave" label="Save" variant="brand" onClick={this.closeModal('modalBopen').bind(this)} />
             ]}
             isOpen={this.state.modalBopen}
             onRequestClose={this.closeModal('modalBopen')}
-            tagline={<span>Tagline goes here.</span>}
+            tagline="Tagline goes here"
             title={<span>My Title</span>}>
               {this.getModalContent()}
           </SLDSModal>
@@ -66,7 +66,7 @@ class ModalExample extends React.Component {
         <div className="slds-p-bottom--medium">
           <SLDSButton label="Open Prompt" onClick={this.openModal('promptOpen').bind(this)} variant="brand" />
           <SLDSModal
-            footer={[ <SLDSButton label='Got it' variant='neutral' onClick={this.closeModal('promptOpen')} /> ]}
+            footer={[ <SLDSButton key="promptBtn" label='Got it' variant='neutral' onClick={this.closeModal('promptOpen')} /> ]}
             isOpen={this.state.promptOpen}
             isPassive={false}
             onRequestClose={this.closeModal('promptOpen')}

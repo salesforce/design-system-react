@@ -440,6 +440,10 @@
                     "name": "enum",
                     "value": [
                         {
+                            "value": "''",
+                            "computed": false
+                        },
+                        {
                             "value": "'success'",
                             "computed": false
                         },
@@ -494,14 +498,14 @@
             },
             "tagline": {
                 "type": {
-                    "name": "string"
+                    "name": "node"
                 },
                 "required": false,
                 "description": "Text underneath the title"
             },
             "title": {
                 "type": {
-                    "name": "string"
+                    "name": "node"
                 },
                 "required": false,
                 "description": ""

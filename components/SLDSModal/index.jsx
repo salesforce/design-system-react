@@ -53,14 +53,14 @@ const propTypes = {
    * if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key
    */
   isPassive: React.PropTypes.bool,
-  prompt: React.PropTypes.oneOf(['success', 'warning', 'error', 'wrench', 'offline', 'info']),
+  prompt: React.PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info']),
   returnFocusTo: React.PropTypes.node,
   size: React.PropTypes.oneOf(['medium', 'large']),
   /**
    * Text underneath the title
    */
-  tagline: React.PropTypes.string,
-  title: React.PropTypes.string,
+  tagline: React.PropTypes.node,
+  title: React.PropTypes.node,
 };
 const defaultProps = {
   align: 'center',
@@ -241,8 +241,8 @@ class SLDSModal extends React.Component {
       'slds-modal--large': this.props.size === 'large',
       'slds-modal--prompt': this.isPrompt(),
     };
-    const modalStyle = this.props.align === "top" ? {"justify-content": "flex-start"} : null;
-    const contentStyle = this.props.title ? null: {"border-radius": ".25rem"};
+    const modalStyle = this.props.align === "top" ? {"justifyContent": "flex-start"} : null;
+    const contentStyle = this.props.title ? null: {"borderRadius": ".25rem"};
 
     return (
       <div>
