@@ -11,14 +11,13 @@ import Base from './base';
 
 /* TODO: Finish documenting the core. */
 // Traits
-import Disableable from '../traits/disableable';
 import Openable from '../traits/openable';
 import Multiselectable from '../traits/multiselectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
 export const CONTROL = 'Lookup';
 
-const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, KeyboardNavigable, {
+const LookupCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	// CSS classes used within this control
@@ -35,7 +34,17 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 		searchIcon: 'utility.search',
 		filterPredicate (text, pattern) {
 			return text.substr(0, pattern.length).toLowerCase() === pattern;
-		}
+		},
+
+		// positionable trait
+		positionedTargetVerticalAttachment: 'bottom',
+		constrainWidthToTarget: true,
+		constrainPositionedToWindow: true,
+		modalMenu: false,
+		positionedOffset: 0,
+		positionedTargetHorizontalAttachment: 'left',
+		positionedZIndex: '10001',
+		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
 	},
 	
 	_defaultState: {
@@ -68,17 +77,16 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	
 	_onSelected () {
 		this.search('');
-		this.close();
+		Openable.close(this);
 	},
 	
-	_onExpandOrCollapse () {
+	_onClosed () {
 		this.setState({
 			focusedIndex: this._defaultState.focusedIndex
 		});
 		
 		/* TODO: Not using wrapped elements here, but jQuery facade will either have to use them or the underlying element. */
-		const _menu = this.elements.menu;
-		_menu.scrollTop = 0;
+		if (this.elements.menu) this.elements.menu.scrollTop = 0;
 	},
 	
 	_getInputId () {
@@ -113,7 +121,7 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	},
 	
 	_configureKeyboardNavigation (filteredCollection) {
-		const navigableItems = this._getNavigableItems(filteredCollection);
+		const navigableItems = KeyboardNavigable.getNavigableItems(this, filteredCollection);
 		
 		if (this.getProperty('menuFooterRenderer')) navigableItems.indexes.push('footer');
 		
@@ -123,45 +131,42 @@ const LookupCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, K
 	_scrollMenuItems () {
 		const _menu = this.elements.menu;
 		let _menuItem = _menu.getElementsByClassName('slds-theme--shade');
-		
+
 		if (_menuItem && _menuItem.length === 1) {
 			_menuItem = _menuItem[0];
 			
 			const menuHeight = _menu.offsetHeight;
 			
 			const menuTop = _menu.scrollTop;
-			const menuItemTop = _menuItem.offsetTop;
+			const menuItemTop = _menuItem.offsetTop - _menu.offsetTop;
 			
 			if (menuItemTop < menuTop) {
 				_menu.scrollTop = menuItemTop;
 			} else {
 				const menuBottom = menuTop + menuHeight + _menu.offsetTop;
-				const menuItemBottom = menuItemTop + _menuItem.offsetHeight;
+				const menuItemBottom = menuItemTop + _menuItem.offsetHeight + _menu.offsetTop;
 				
 				if (menuItemBottom > menuBottom) {
-					_menu.scrollTop = menuItemBottom - menuHeight;
+					_menu.scrollTop = menuItemBottom - menuHeight - _menu.offsetTop;
 				}
 			}
 		}
 	},
 	
-	_keyboardSelect (selection) {
-		this.selectItem(selection);
+	_keyboardSelect (item) {
+		Multiselectable.selectItem(this, item, this.getProperty('selection'));
 	},
 	
 	search (searchString) {
 		if (this.getState(searchString) !== searchString) {
-			this.setState({
-				searchString
-			});
-			
-			const results = this._getFilteredCollection(this._collection, searchString);
+			const searchResults = this._getFilteredCollection(this._collection, searchString);
+			const navigableItems = this._configureKeyboardNavigation(searchResults);
 			
 			this.setState({
-				results
+				searchString,
+				searchResults,
+				navigableItems
 			});
-			
-			this._navigableItems = this._configureKeyboardNavigation(results);
 		}
 	}
 });

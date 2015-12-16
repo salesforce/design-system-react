@@ -1,6 +1,5 @@
 import * as Lib from '../../lib/lib';
 import DataTable from './data-table';
-import _ from 'underscore';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -70,21 +69,6 @@ $(function () {
 		styles: {
 			bordered: true,
 			striped: true
-		},
-		dataSource: function (data, callback) {
-			let rowData = collection;
-
-			if (data.sortColumn && data.sortColumn.propertyName === 'count') {
-				rowData = _.sortBy(rowData, 'count');
-			} else if ( data.sortColumn && data.sortColumn.propertyName === 'lastModified') {
-				rowData = _.sortBy(rowData, 'lastModified');
-			}
-
-			if ( data.sortDirection === 'desc') rowData.reverse();
-
-			callback({
-				data: rowData
-			});
 		}
 	});
 

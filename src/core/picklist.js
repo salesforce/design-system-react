@@ -8,14 +8,11 @@ import * as Lib from '../lib/lib';
 import Base from './base';
 
 // Traits
-import Disableable from '../traits/disableable';
-import Openable from '../traits/openable';
 import Selectable from '../traits/selectable';
-import KeyboardNavigable from '../traits/keyboard-navigable';
 
 export const CONTROL = 'Picklist';
 
-const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, KeyboardNavigable, {
+const PicklistCore = Lib.merge({}, Base, Selectable, {
 	CONTROL,
 	
 	// CSS classes used within this control
@@ -32,7 +29,17 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 	},
 
 	_defaultProperties: {
-		collection: []
+		collection: [],
+		
+		// positionable trait
+		positionedTargetVerticalAttachment: 'bottom',
+		constrainWidthToTarget: true,
+		constrainPositionedToWindow: true,
+		modalMenu: false,
+		positionedOffset: 0,
+		positionedTargetHorizontalAttachment: 'left',
+		positionedZIndex: '10001',
+		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
 	},
 
 	/* Accessors: These may be supplied in the options hash to override default behavior
@@ -95,7 +102,7 @@ const PicklistCore = Lib.merge({}, Base, Disableable, Openable, Selectable, Keyb
 		}
 	},
 	
-	_onExpandOrCollapse () {
+	_onClosed () {
 		this.setState({
 			focusedIndex: this._defaultState.focusedIndex
 		});

@@ -2,7 +2,10 @@
 
 import * as Lib from '../lib/lib';
 
-const KeyBuffer = function () {
+// Traits
+import Openable from './openable';
+
+function KeyBuffer () {
 	const self = this;
 	this.buffer = '';
 	
@@ -19,24 +22,27 @@ const KeyBuffer = function () {
 		self.buffer = self.buffer + key;
 		return self.buffer;
 	};
-};
+}
+
+function initializeKeyBuffer (controlContext) {
+	controlContext._keyboardNavigableKeyBuffer = new KeyBuffer();
+}
+
+function initializeIsSelectable (controlContext) {
+	controlContext._keyboardIsSelectable = !controlContext.accessors || !Lib.isFunction(controlContext.accessors.isSelectable);
+}
 
 const KeyboardNavigable = {
-	_defaultState: {
-		focusedIndex: undefined
-	},
-
-	_initializer () {
-		this._keyBuffer = new KeyBuffer();
-		this._isSelectable = !this.accessors || !Lib.isFunction(this.accessors.isSelectable);
-	},
-	
-	_getNavigableItems (collection) {
+	getNavigableItems (controlContext, collection) {
 		const items = [];
 		items.indexes = [];
 		
+		if (controlContext._keyboardIsSelectable === undefined) {
+			initializeIsSelectable(controlContext);
+		}
+		
 		collection.forEach((item, index) => {
-			if (this._isSelectable || item.isSelectable()) {
+			if (controlContext._keyboardIsSelectable || item.isSelectable()) {
 				items.push({
 					index,
 					text: ('' + item.getText()).toLowerCase()
@@ -49,31 +55,35 @@ const KeyboardNavigable = {
 		return items;
 	},
 
-	_keyboardNav (input, onSelect) {
-		const isOpen = this.getState('isOpen');
-		const navigableItems = this._navigableItems || this._getNavigableItems(this._collection);
+	keyboardNav (controlContext, input, onSelect, collection) {
+		const isOpen = Openable.isOpen(controlContext);
+		const navigableItems = controlContext.getState('navigableItems') || KeyboardNavigable.getNavigableItems(controlContext, collection);
 		const indexes = navigableItems.indexes;
 		const lastIndex = indexes.length - 1;
 		let focusedIndex = undefined;
 		let focusedSelection;
 		
 		if (/(Escape)/.test(input)) {
-			if (isOpen && Lib.isFunction(this.close)) this.close();
-		} else if (!isOpen && Lib.isFunction(this.open)) {
-			this.open();
+			if (isOpen) Openable.close(controlContext);
+		} else if (!isOpen) {
+			Openable.open(controlContext);
 		} else if (/(Enter)/.test(input)) {
-			focusedSelection = this.getState('focusedSelection');
-			
+			focusedSelection = controlContext.getState('focusedSelection');
+
 			if (focusedSelection && Lib.isFunction(onSelect)) {
 				onSelect(focusedSelection);
 				focusedSelection = undefined;
 			}
 		} else {
-			let navigableIndex = indexes.indexOf(this.getState('focusedIndex'));
+			let navigableIndex = indexes.indexOf(controlContext.getState('focusedIndex'));
 			
 			if (input.length === 1) {
+				if (controlContext._keyboardNavigableKeyBuffer === undefined) {
+					initializeKeyBuffer(controlContext);
+				}
+				
 				// Combine subsequent keypresses
-				const pattern = this._keyBuffer(input.toLowerCase());
+				const pattern = controlContext._keyboardNavigableKeyBuffer(input.toLowerCase());
 				let consecutive = 0;
 				
 				// Support for navigating to the next option of the same letter with repeated presses of the same key
@@ -102,10 +112,10 @@ const KeyboardNavigable = {
 		}
 		
 		if (Lib.isNumber(focusedIndex)) {
-			focusedSelection = this._collection.at(focusedIndex);
+			focusedSelection = collection.at(focusedIndex);
 		}
 		
-		this.setState({
+		controlContext.setState({
 			focusedIndex,
 			focusedSelection
 		});

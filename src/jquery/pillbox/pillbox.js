@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import PillboxCore, {CONTROL} from '../../core/pillbox';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework Specific
 import DOM from '../dom';
 import Events from '../events';
@@ -25,6 +28,10 @@ let Pillbox = function Pillbox () {
 };
 
 Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
+	cssClasses: {
+		DISABLED: 'slds-disabled'
+	},
+	
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this.elements.group = this.element.find('.slds-pill-group');
@@ -32,7 +39,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	},
 	
 	_bindUIEvents () {
-		this.element.on('click.fu.tree', '.slds-pill > .slds-button', $.proxy(this._itemClicked, this));
+		this.element.on('click.fu.tree', '.slds-pill > .slds-button', this._itemClicked.bind(this));
 	},
 
 	_render () {
@@ -54,20 +61,49 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		this._bindUIEvents();
 	},
 
-	_onEnabledOrDisabled (props) {
-		this.element.toggleClass(this.cssClasses.DISABLED, props.disabled);
+	enable () {
+		this.setProperties({
+			disabled: false
+		});
+
+		if (this.rendered) {
+			this.elements.toggleClass(this.cssClasses.DISABLED, false);
+		}
+	},
+
+	disable () {
+		this.setProperties({
+			disabled: true
+		});
+
+		if (this.rendered) {
+			this.element.toggleClass(this.cssClasses.DISABLED, true);
+		}
 	},
 
 	_itemClicked (e) {
 		const item = $(e.currentTarget).parent().data('item');
 
 		if (!this.getProperty('disabled')) {
-			this.deselectItem(item);
+			Multiselectable.deselectItem(this, item, this.getProperty('selection'));
 		}
 	},
 
-	_onDeselected () {
-		this._renderSelection();
+	selectPill (item, index) {
+		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
+	},
+	
+	selectPills (items, index) {
+		Multiselectable.selectItems(this, items, this.getProperty('selection'), index);
+	},
+
+	_onSelect (selection) {
+		this.setProperties({ selection: selection._data });
+	},
+	
+	_onDeselect (selection) {
+		this.setProperties({ selection: selection._data });
+		this._renderCollection();
 	},
 
 	_renderPill (pill) {
@@ -88,8 +124,9 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	_renderSelection () {
 		const self = this;
 		const elements = [];
+		const selection = this._getDataAdapter(this.getProperty('selection'));
 
-		this._getSelectedItems().forEach(function (pill) {
+		selection.forEach(function (pill) {
 			elements.push(self._renderPill(pill));
 		});
 

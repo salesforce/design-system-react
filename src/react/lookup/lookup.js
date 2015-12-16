@@ -11,6 +11,12 @@ import * as Lib from '../../lib/lib';
 // Use the [shared core](../../core/lookup.html), which contains logic that is the same in every facade.
 import LookupCore, {CONTROL} from '../../core/lookup';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+import Openable from '../../traits/openable';
+import Positionable from '../../traits/positionable';
+import KeyboardNavigable from '../../traits/keyboard-navigable';
+
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
 
@@ -59,6 +65,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			React.PropTypes.bool
 		]),
 		menuItemRenderer: React.PropTypes.func,
+		modalMenu: React.PropTypes.bool,
 		onAddClick: React.PropTypes.func,
 		onChanged: React.PropTypes.func,
 		onFilter: React.PropTypes.func,
@@ -85,34 +92,40 @@ let Lookup = Lib.merge({}, LookupCore, {
 	// While `this._collection` is always kept in sync with `this.props.collection`, `this._filteredCollection` may contain only subset of those items based on the current search value. It's important to populate the filtered collection on initial load as well as every time there is a change to the collection. The collection of items which can be reached via keyboard navigation also needs to be kept up-to-date so that it reflects the current filtered collection. Both of the functions called here live in the core.
 	/* TODO: Possibly move these both to state. */
 	componentWillMount () {
-		const results = this._getFilteredCollection(this._collection, this.state.searchString);
+		const searchResults = this._getFilteredCollection(this._collection, this.state.searchString);
+		const navigableItems = this._configureKeyboardNavigation(searchResults);
 		
 		this.setState({
-			results
+			searchResults,
+			navigableItems
 		});
-		
-		this._navigableItems = this._configureKeyboardNavigation(results);
+
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-lookup'));
 	},
 
 	componentWillReceiveProps (nextProps) {
-		let results;
-		
 		if (nextProps.collection) {
-			results = this._getFilteredCollection(this._collection, this.state.searchString);
+			const searchResults = this._getFilteredCollection(this._collection, this.state.searchString);
+			const navigableItems = this._configureKeyboardNavigation(searchResults);
 			
 			this.setState({
-				results
+				searchResults,
+				navigableItems
 			});
-		} else {
-			results = this.state.results;
 		}
-		
-		this._navigableItems = this._configureKeyboardNavigation(results);
 		
 		// Right now we simply update `this.state.autoFocusOnNewSelectedItems` to `true` after initial load so that a selection (pill) will be focused immediately.
 		this.setState({
 			autoFocusOnNewSelectedItems: true
 		});
+	},
+
+	componentWillUnmount () {
+		if (this.props.modalMenu) {
+			Positionable.removeEventListeners(this);
+		}
+		
+		Openable.removeEventListeners(this);
 	},
 
 	// While some functionality moves into the core or traits, each facade typically provides its own rendering logic so that it can take advantage of the benefits offered by the framework and maintain appropriate patterns for that framework.
@@ -122,20 +135,10 @@ let Lookup = Lib.merge({}, LookupCore, {
 		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
 		
 		// Get the current selection (wrapped in a data adapter) and set a boolean based on whether it contains any items.
-		const selectedItems = this._getSelectedItems();
+		const selectedItems = this._getDataAdapter(this.props.selection);
 		const hasSelection = selectedItems.length() > 0;
-
-		// The menu header can be hidden by passing `false` to `this.props.menuHeaderRenderer`. The scaffolding needed for accessibility and display of the header is defined by the `Action` child control, but the contents of the control may vary based on the renderer passed in. If a render function (that returns React elements) is passed into the props that will be used to render the header, otherwise it will render the default renderer.
-		let header;
-		if (Lib.isFunction(this.props.menuHeaderRenderer)) {
-			header = <Action id={this._getMenuItemId('header')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuHeaderRenderer} searchString={this.state.searchString} strings={this.state.strings} parentProps={this.props} results={this.state.results} />;
-		}
-
-		// The menu footer works much the same as the menu header and even receives the same options.
-		let footer;
-		if (Lib.isFunction(this.props.menuFooterRenderer)) {
-			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.labelPlural || this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} onClick={this.props.onAddClick} />;
-		}
+		
+		const isOpen = Openable.isOpen(this);
 
 		// Unlike the header and footer, the pills will always be rendered if there is a selection and there is no option to disable them by passing false to `this.props.pillRenderer`. However, it is still possible to override the contents of the pills by passing in a custom render function.
 		let pills;
@@ -143,29 +146,75 @@ let Lookup = Lib.merge({}, LookupCore, {
 			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems}/>;
 		}
 		
-		// This markup should reflect the design system pattern for the control.
+		// This markup should reflect the design system pattern for the control. If the dropdown menu's parent is `body` and is absolutely positioned in order to visually attach the dropdown to the input, then the dropdown menu is not rendered in this function and is rendered in `componentDidUpdate` with `_renderModalMenu`.
 		return (
-		<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true">
-			<div className="slds-form-element">
-				<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
-				<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
-					<Svg icon={this.props.searchIcon} className="slds-input__icon" />
-					{pills}
-					<input id={inputId} className={classNames('slds-input', { 'slds-hide': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={this.state.isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
+			<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true">
+				<div className="slds-form-element">
+					<label className="slds-form-element__label" htmlFor={inputId}>{this.props.label}</label>
+					<div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right" onClick={!hasSelection && this._handleClicked}>
+						<Svg icon={this.props.searchIcon} className="slds-input__icon" />
+						{pills}
+						<input id={inputId} className={classNames('slds-input', { 'slds-hidden': hasSelection })} type="text" tabIndex={this.props.tabIndex} aria-autocomplete="list" aria-owns={this._getMenuId()} role="combobox" aria-expanded={isOpen} aria-activedescendant={activeDescendantId} onChange={this._handleChanged} value={this.state.searchString} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed} ref={this._setInputRef} />
+					</div>
 				</div>
+				{this.props.modalMenu ? null : this._renderMenu()}
 			</div>
-			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !this.state.isOpen })} role="listbox">
+		);
+	},
+	
+	_renderMenu () {
+		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
+		const isOpen = Openable.isOpen(this);
+		
+		// The menu header can be hidden by passing `false` to `this.props.menuHeaderRenderer`. The scaffolding needed for accessibility and display of the header is defined by the `Action` child control, but the contents of the control may vary based on the renderer passed in. If a render function (that returns React elements) is passed into the props that will be used to render the header, otherwise it will render the default renderer.
+		let header;
+		if (Lib.isFunction(this.props.menuHeaderRenderer)) {
+			header = <Action id={this._getMenuItemId('header')} activeDescendantId={activeDescendantId} label={this.props.label} renderer={this.props.menuHeaderRenderer} searchString={this.state.searchString} strings={this.state.strings} parentProps={this.props} numResults={this.state.searchResults.length()} />;
+		}
+
+		// The menu footer works much the same as the menu header and even receives the same options.
+		let footer;
+		if (Lib.isFunction(this.props.menuFooterRenderer)) {
+			footer = <Action id={this._getMenuItemId('footer')} activeDescendantId={activeDescendantId} label={this.props.labelPlural || this.props.label} renderer={this.props.menuFooterRenderer} searchString={this.state.searchString} strings={this.state.strings} parentProps={this.props} numResults={this.state.searchResults.length()} onClick={this.props.onAddClick} />;
+		}
+
+		const menu = (
+			<div id={this._getMenuId()} className={classNames('slds-lookup__menu', { 'slds-hide': !isOpen })} role="listbox">
 				{header}
-				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.results} getMenuItemId={this._getMenuItemId} onSelected={this._selectItem} strings={this.state.strings} ref={this._setMenuRef} />
+				<MenuItems activeDescendantId={activeDescendantId} collection={this.state.searchResults} getMenuItemId={this._getMenuItemId} onSelected={this._handleSelect} strings={this.state.strings} ref={this._setMenuRef} />
 				{footer}
 			</div>
-		</div>
 		);
+
+		return menu;
+	},
+
+	// Modal dropdown menus' parent is `body` and are absolutely positioned in order to visually attach the dropdown to the input.
+	_renderModalMenu () {
+		const menu = this._renderMenu();
+		
+		ReactDOM.render(menu, Positionable.getElement(this));
+
+		Positionable.setContainer(this, document.querySelector('body'));
+		Positionable.setTarget(this, this.elements.input);
+		Positionable.position(this);
+	},
+
+	_onOpened () {
+		Positionable.show(this);
+	},
+
+	_onClosed () {
+		Positionable.hide(this);
 	},
 
 	// After the control has rendered, we may need to scroll the currently selected menu item into view. The function which actually peforms the scrolling lives in the core.
 	componentDidUpdate () {
-		this._scrollMenuItems();
+		if (this.props.modalMenu) {
+			this._renderModalMenu();
+		}
+
+		if (this.elements.menu) this._scrollMenuItems();
 
 		// After an item has been deselected we need to return the focus to the input element.
 		/* TODO: It'd be nice if we could get rid of this boolean eventually. */
@@ -173,9 +222,17 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this.elements.input.focus();
 			this._focusOnInput = false;
 		}
+
+		const isOpen = Openable.isOpen(this);
+
+		if (this.props.modalMenu && isOpen) {
+			Positionable.addEventListeners(this);
+		} else if (this.props.modalMenu && !isOpen) {
+			Positionable.removeEventListeners(this);
+		}
 	},
 
-	// Save a reference to the input element after it renders. This is primarily used for setting focus.
+	// Save a reference to the input element after it renders. This is primarily used for setting focus. It is also used for positioning the menu.
 	_setInputRef (input) {
 		this.elements.input = ReactDOM.findDOMNode(input);
 	},
@@ -192,20 +249,19 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 	// Clicking on the input should open the menu.
 	_handleClicked (e) {
-		if (e) {
-			// The input should automatically close if we click anywhere outside of it, so we need to flag the events that originate at the control itself and stop them from closing it.
-			e.nativeEvent.originator = this;
-		}
-		
-		this.open();
+		Openable.open(this, e.nativeEvent);
+	},
+	
+	_handleSelect (item) {
+		Multiselectable.selectItem(this, item._item, this.props.selection);
 	},
 
 	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
 	_handleDeselect (item) {
 		if (item) {
-			this._deselectItem(item);
+			Multiselectable.deselectItem(this, item._item, this.props.selection);
 		} else {
-			this.deselectAll();
+			Multiselectable.deselectAll(this, this.props.selection);
 		}
 	},
 
@@ -220,10 +276,10 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
-			this._keyboardNav(e.key, this._keyboardSelect);
+			KeyboardNavigable.keyboardNav(this, e.key, this._keyboardSelect, this.state.searchResults);
 		// Also listen for character key presses an ensure that the menu it open while typing in the input, but don't actually trap them.
 		} else if (e.key.length === 1) {
-			if (!this.state.isOpen) this.open();
+			Openable.open(this);
 		}
 	}
 });

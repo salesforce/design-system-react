@@ -4,6 +4,10 @@
 import * as Lib from '../../lib/lib';
 import PopoverCore, {CONTROL} from '../../core/popover';
 
+// Traits
+import Positionable from '../../traits/positionable';
+import Openable from '../../traits/openable';
+
 // Framework Specific
 import DOM from '../dom';
 import Events from '../events';
@@ -16,8 +20,11 @@ import template from './popover-template';
 
 let Popover = function Popover () {
 	const options = this._getOptions(arguments);
-	
 	this.template = $(template);
+	
+	this.toggle = Openable.toggle.bind(undefined, this);
+	this.open = Openable.open.bind(undefined, this);
+	this.close = Openable.close.bind(undefined, this);
 	
 	this._initialize(options);
 };
@@ -25,49 +32,48 @@ let Popover = function Popover () {
 export const PopoverMethods = {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
-		this.elements.popover = Lib.wrapElement(this.element);
+		Positionable.setElement(this, this.element);
 	},
 	
 	_onRendered () {
-		this._setElementOptions();
+		this._setElements();
 		this._setTrigger();
 		
 		// TODO: This is probably not the best way to do this or the best place for it to be
-		this.appendTo(this.elements.container);
-		
-		this._updatePosition();
+		this.appendTo($(Positionable.getContainer(this)));
 	},
 
-	_setElementOptions () {
-		const target = this.getProperty('target');
+	_setElements () {
+		const triggerElement = this.getProperty('target');
 		const container = this.getProperty('container');
 		const align = this.getProperty('align');
 
-		this.elements.target = Lib.wrapElement(target || this.elements.wrapper);
-		this.elements.container = Lib.wrapElement(container || this.elements.wrapper);
-		this.elements.align = Lib.wrapElement(align || this.elements.target);
+		this.elements.triggerElement = Lib.wrapElement(triggerElement || this.elements.wrapper);
+		Positionable.setContainer(this, container || this.elements.wrapper);
+		Positionable.setTarget(this, align || this.elements.triggerElement);
 	},
 
 	_setTrigger () {
 		const trigger = this.getProperty('trigger');
 
 		if (trigger === 'click') {
-			this.elements.target.on( 'click', $.proxy(this.toggle, this));
+			this.elements.triggerElement.on( 'click', $.proxy(this.toggle, this));
 		} else if (trigger === 'hover') {
-			this.elements.target.on( 'mouseover', $.proxy(this.show, this));
-			this.elements.target.on( 'mouseout', $.proxy(this.hide, this));
+			this.elements.triggerElement.on( 'mouseover', $.proxy(this.open, this));
+			this.elements.triggerElement.on( 'mouseout', $.proxy(this.close, this));
 		} else if (trigger === 'focus') {
-			this.elements.target.on( 'focus', $.proxy(this.show, this));
-			this.elements.target.on( 'focusout', $.proxy(this.hide, this));
+			this.elements.triggerElement.on( 'focus', $.proxy(this.open, this));
+			this.elements.triggerElement.on( 'focusout', $.proxy(this.close, this));
 		}
 	},
 	
-	_onShow () {
-		this._updatePosition();
+	_onOpened () {
+		Positionable.position(this);
+		Positionable.show(this);
 	},
 	
-	_onHide () {
-		this._updatePosition();
+	_onClosed () {
+		Positionable.position(this);
 	}
 };
 

@@ -4,6 +4,11 @@
 import * as Lib from '../../lib/lib';
 import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+import Openable from '../../traits/openable';
+import Positionable from '../../traits/positionable';
+
 // Framework Specific
 import DOM from '../dom';
 import Events from '../events';
@@ -25,7 +30,6 @@ let Datepicker = function Datepicker () {
 	this.template = $(template);
 	this.$weekTemplate = $('<tr></tr>');
 	this.$dayTemplate = $('<td role="gridcell" aria-disabled="true"><span class="slds-day"></span></td>');
-	this._closeOnClick = $.proxy(this._closeOnClick, this);
 
 	this._initialize(options);
 };
@@ -48,16 +52,20 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 		this.elements.formElement = this.$el.find('.slds-form-element');
 		this.elements.input = this.$el.find('.slds-input');
-		this.elements.datepicker = this.$el.find('.slds-datepicker');
 		this.elements.dropdown = this.$el.find('.slds-dropdown');
-		this.elements.calendar = this.$el.find('.datepicker__month');
-		this.elements.calendarDays = this.elements.calendar.find('tbody');
-		this.elements.monthName = this.$el.find('.slds-datepicker__filter--month h2');
-		this.elements.year = this.$el.find('.slds-datepicker__filter .slds-picklist');
 
-		this.elements.popover = Lib.wrapElement(this.elements.datepicker);
-		this.elements.container = Lib.wrapElement(this.$el);
-		this.elements.align = Lib.wrapElement(this.elements.formElement);
+		if (this.getProperty('modalCalendar')) {
+			Positionable.setElement(this, Positionable.attachPositionedElementToBody());
+			Positionable.setContainer(this, document.querySelector('body'));
+			Positionable.setTarget(this, this.elements.formElement);
+			
+			this.elements.dropdown = $(Positionable.getElement(this)).append(this.elements.dropdown).find('.slds-dropdown');
+		}
+
+		this.elements.calendar = this.elements.dropdown.find('.datepicker__month');
+		this.elements.calendarDays = this.elements.calendar.find('tbody');
+		this.elements.monthName = this.elements.dropdown.find('.slds-datepicker__filter--month h2');
+		this.elements.year = this.elements.dropdown.find('.slds-datepicker__filter .slds-picklist');
 
 		const $icon = this._renderIcon('utility.event', 'slds-input__icon slds-icon-text-default');
 		$icon.replaceAll(this.elements.formElement.find('x-input-icon')[0]);
@@ -65,25 +73,24 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		const selDate = this.getProperty('dateSelected');
 		if (selDate) {
 			if (this.getProperty('multiSelect')) {
-				this.selectItems([
+				this.selectDates([
 					{ date: this._roundDate(selDate[0]) },
 					{ date: this._roundDate(selDate[1]) }
 				]);
 			} else {
-				this.selectItem({date: this._roundDate(selDate)});
+				this.selectDate({date: this._roundDate(selDate)});
 			}
 		}
 	},
 
 	_bindUIEvents () {
-		this.element.on('click.slds-form-element', '.slds-input', $.proxy(this._triggerCalendar, this));
-		this.element.on('keyup.slds-form-element', '.slds-input', $.proxy(this._activateManualInput, this));
-		this.element.on('click.slds-datepicker', this._cancelEventProp);
+		this.elements.input.on('click.slds-form-element', this._triggerCalendar.bind(this));
+		this.elements.input.on('keyup.slds-form-element', this._activateManualInput.bind(this));
 
-		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', $.proxy(this._backMonth, this));
-		this.element.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', $.proxy(this._forwardMonth, this));
-
-		this.element.on('click.slds-datepicker-form', '.slds-day', $.proxy(this._selectDate, this));
+		this.elements.dropdown.on('click.slds-datepicker', this._cancelEventProp);
+		this.elements.dropdown.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', this._backMonth.bind(this));
+		this.elements.dropdown.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(1)', this._forwardMonth.bind(this));
+		this.elements.dropdown.on('click.slds-datepicker-form', '.slds-day', this._selectDate.bind(this));
 	},
 
 	_render () {
@@ -118,14 +125,23 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this._bindUIEvents();
 	},
 	
-	_onExpandOrCollapse () {
-		this.elements.datepicker.toggleClass('slds-hidden', !this.getState('isOpen'));
-		this._updatePosition();
+	_onOpened () {
+		this.elements.dropdown.toggleClass('slds-hidden', false);
+		if (this.getProperty('modalCalendar')) {
+			Positionable.position(this);
+			Positionable.show(this);
+		}
+	},
+	
+	_onClosed () {
+		this.elements.dropdown.toggleClass('slds-hidden', true);
+		if (this.getProperty('modalCalendar')) {
+			Positionable.hide(this);
+		}
 	},
 
 	_triggerCalendar (e) {
-		e.originalEvent.originator = this;
-		if (!this.getState('isOpen')) this.open();
+		Openable.open(this, e.originalEvent);
 	},
 
 	_cancelEventProp (e) {
@@ -200,7 +216,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 				selection: yearRange.selected
 			});
 
-			this.elements.year.on('changed', $.proxy(this._updateYear, this));
+			this.elements.year.on('changed', this._updateYear.bind(this));
 		}
 	},
 
@@ -230,24 +246,15 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_activateManualInput () {
 		this.element.off('focusout.slds-form-element', '.slds-input');
-		this.element.on('focusout.slds-form-element', '.slds-input', $.proxy(this._manualDateInput, this));
+		this.element.on('focusout.slds-form-element', '.slds-input', this._manualDateInput.bind(this));
 	},
 
 	_manualDateInput () {
 		const inputValue = this.elements.input.val();
-		const validatedDate = this._validateDateInput(inputValue);
-		const multiselect = this.getProperty('multiSelect');
+		const validatedDates = this._validateDateInput(inputValue);
 
-		if (validatedDate) {
-			if (multiselect) {
-				this.deselectAll();
-				this.selectItems([
-					{ date: validatedDate[0] },
-					{ date: validatedDate[1] }
-				]);
-			} else {
-				this.selectItem({ date: validatedDate });
-			}
+		if (validatedDates) {
+			this.selectDates(validatedDates);
 		}
 
 		this.element.off('focusout.slds-form-element', '.slds-input');
@@ -263,28 +270,39 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 		if (!dayData.outside) {
 			if (isRangeSelect) {
-				selectedDates = this.getSelectedItems();
+				selectedDates = this.getProperty('selection');
 
 				if (selectedDates && selectedDates.length > 1) {
-					this.deselectAll();
-				}
-
-				if (selectedDates && selectedDates.length === 1 && selectedDates[0].date.getTime() > dayData.date.getTime()) {
+					this.setProperties({ selection: [] });
+				} else if (selectedDates && selectedDates.length === 1 && selectedDates[0].date.getTime() > dayData.date.getTime()) {
 					insertIndex = 0;
 				}
 
-				this.selectItem({ date: dayData.date }, insertIndex);
+				this.selectDate({ date: dayData.date }, insertIndex);
 			} else {
-				this.selectItem({ date: dayData.date });
+				this.selectDate({ date: dayData.date });
 			}
 		}
 	},
 
-	_onSelected () {
+	selectDate (item, index) {
+		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
+	},
+	
+	selectDates (items, index) {
+		Multiselectable.selectItems(this, items, null, index);
+	},
+	
+	_onSelect (selection) {
+		this.setProperties({ selection: selection._data });
+		
 		this.elements.input.val(this._formatDate());
 		this._renderDateRange();
+	},
+	
+	_onDeselect (selection) {
+		this.setProperties({ selection: selection._data });
 	}
-
 });
 
 Datepicker = Lib.runHelpers('jquery', CONTROL, Datepicker);

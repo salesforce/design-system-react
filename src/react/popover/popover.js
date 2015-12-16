@@ -16,33 +16,32 @@ export const PopoverMethods = {
 	displayName: CONTROL,
 
 	propTypes: {
-		align: mountable,
+		alignmentTarget: mountable,
 		autoFlip: React.PropTypes.bool,
 		container: mountable,
-		position: React.PropTypes.oneOf(Object.keys(Positionable.positions)),
-		trigger: React.PropTypes.oneOf(Object.keys(PopoverCore.triggers))
+		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
 	},
 
 	_setElements () {
-		this.elements.popover = Lib.wrapElement(this.refs.popover);
-		this.elements.container = Lib.wrapElement(this.props.container || this.element);
-		this.elements.align = Lib.wrapElement(this.props.align || this.elements.container);
+		Positionable.setElement(this, this.refs.popover);
+		Positionable.setContainer(this, this.props.container || this.element);
+		Positionable.setTarget(this, this.props.alignmentTarget || Positionable.getContainer(this));
 	},
-	
+
 	componentWillMount: function () {
 		this.setState({
-			isHidden: !this.props.isOpen
+			isOpen: this.props.isOpen
 		});
 	},
 	
 	componentWillReceiveProps: function (nextProps) {
 		this.setState({
-			isHidden: !nextProps.isOpen
+			isOpen: nextProps.isOpen
 		});
 	},
 
 	componentDidUpdate () {
-		this._updatePosition();
+		Positionable.position(this);
 	}
 };
 
@@ -62,7 +61,6 @@ let Popover = Lib.merge({}, PopoverCore, PopoverMethods, {
 			</div>
 		);
 	}
-
 });
 
 Popover = Lib.runHelpers('react', CONTROL, Popover);

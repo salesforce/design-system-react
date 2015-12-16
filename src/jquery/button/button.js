@@ -1,5 +1,5 @@
 // # Button Control
-// ### React Facade
+// ### Jquery Facade
 
 // Implements the Button [design pattern](https://www.lightningdesignsystem.com/components/buttons) in React.
 
@@ -10,7 +10,7 @@
 // Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../../lib/lib';
 
-// Use the [shared core](../../core/button.html), which contains logic that is the same in every facade.
+// Use the [shared button core](../../core/button.html), which contains logic that is the same in every facade.
 import ButtonCore, {CONTROL} from '../../core/button';
 
 // jQuery is an external dependency.
@@ -20,17 +20,18 @@ const $ = Lib.global.jQuery || Lib.global.$;
 import Events from '../events';
 import State from '../state';
 
-// [DOM](../dom.html) is a mixin that wraps some jQuery DOM manipulattion methods, so they can be called from the control itself and not the jQuery element connected to the control.
+// [DOM](../dom.html) is a mixin that wraps some jQuery DOM manipulattion methods, so they can be called from the control itself and not the jQuery element connected to the control. See [DOM](../dom.html).
 import DOM from '../dom';
 
-// `ButtonView` is a "private" child control within `Button`.
+// [ButtonView](./button-view.html) is a "private" child control within `Button`.
 import ButtonView from './button-view';
 
 // Constructor
 let Button = function Button () {
+	// `_getOptions` can be found in [State](../state.html) and determines if a wrapper element is passed and also merges in the default properties found in the [shared button core](../../core/button.html).
 	const options = this._getOptions(arguments);
 
-	// Specify the options that get passed on to the child `ButtonViews`
+	// Specifies the options that get passed on (or "inherited") to the child `ButtonViews`
 	this.buttonViewOptions = {
 		icon: options.icon,
 		iconPosition: options.iconPosition,
@@ -46,6 +47,7 @@ let Button = function Button () {
 			return Lib.extend({}, this.buttonViewOptions, buttonView);
 		});
 	}
+
 	// Handles setup tasks such as creating state, setting default properties, and loading internationalization strings. The call stack eventually triggers `render`. See [Base](../core/base.html).
 	this._initialize(options);
 };
@@ -107,7 +109,7 @@ export const ButtonObject = {
 		return this.element;
 	},
 	
-	// Triggered when `render` is complete. See [DOM](../dom.html).
+	// Triggered when `render` is complete and elements have been addded to the DOM. See [DOM](../dom.html).
 	_onRendered () {
 		this._bindUIEvents();
 	},
@@ -119,18 +121,29 @@ export const ButtonObject = {
 		}
 	},
 
-	// Toggles selected state if button is stateful. See [selectable-boolean]('../traits/selectable-boolean').
+	// Toggles selected state if button is stateful. See the [shared button core](../../core/button.html).
 	_onToggled () {
 		const isStateful = this.getProperty('views').length > 0;
 		this.elements.control[0].className = this._getClassNames('', (isStateful || this.getProperty('selectable')));
 	},
 
-	// Triggered when control is enabled or disabled. See [disableable]('../traits/disableable').
-	_onEnabledOrDisabled () {
-		if ( this.getProperty('disabled') ) {
-			this.elements.control.attr('disabled', 'disabled');
-		} else {
+	enable () {
+		this.setProperties({
+			disabled: false
+		});
+
+		if (this.rendered) {
 			this.elements.control.removeAttr('disabled');
+		}
+	},
+
+	disable () {
+		this.setProperties({
+			disabled: true
+		});
+
+		if (this.rendered) {
+			this.elements.control.attr('disabled', 'disabled');
 		}
 	},
 

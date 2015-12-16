@@ -15,7 +15,6 @@ const TreeItem = React.createClass({
 		// TODO: Modify when tree data adapter gets set up
 		item: React.PropTypes.shape({
 			// getType: React.PropTypes.func.isRequired,
-			// getDisabled: React.PropTypes.func.isRequired,
 			// getIcon: React.PropTypes.func.isRequired,
 			// getId: React.PropTypes.func.isRequired,
 			getText: React.PropTypes.func.isRequired

@@ -7,15 +7,9 @@ import * as Lib from '../lib/lib';
 // Inherit from the [base control](base.html).
 import Base from './base';
 
-// Traits
-import Disableable from '../traits/disableable';
-import Openable from '../traits/openable';
-import Multiselectable from '../traits/multiselectable';
-import Positionable from '../traits/positionable';
-
 export const CONTROL = 'Datepicker';
 
-const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectable, Positionable, {
+const DatepickerCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	// CSS classes used within this control
@@ -29,9 +23,16 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		dateSelected: null,
 		multiSelect: false,
 		dateRange: [new Date('1991'), new Date('2030')],
-		targetDistance: 4, // Used by positionable
-		targetLateralAlign: 'left',
-		position: 'bottom'
+
+		// Positionable trait
+		positionedTargetVerticalAttachment: 'bottom',
+		constrainWidthToTarget: false,
+		constrainPositionedToWindow: true,
+		modalMenu: false,
+		positionedOffset: 0,
+		positionedTargetHorizontalAttachment: 'left',
+		positionedZIndex: '10001',
+		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
 	},
 
 	_defaultState: {
@@ -59,7 +60,7 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 	// TODO: Clean up all this logic. In particular, we shuld probably be setting every date in the selection, not just the first and last dates
 	_getCalendarData: function (baseDate) {
 		const date = this.getState('dateViewing') || baseDate;
-		const selectedDates = this._getSelectedItems();
+		const selectedDates = this._getDataAdapter(this.getProperty('selection'));
 		const isRangeSelect = this.getProperty('multiSelect') && selectedDates.length() > 1;
 		const dateConstraints = this.getProperty('dateRange');
 		const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay(); // Index of first day base 0 sunday
@@ -172,7 +173,7 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 	},
 
 	_formatDate: function () {
-		const selectedDates = this._getSelectedItems();
+		const selectedDates = this._getDataAdapter(this.getProperty('selection'));
 		let formattedDate;
 
 		if (selectedDates.length()) {
@@ -192,7 +193,7 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 		let splitString;
 		let hasAppropriateSpacers;
 		let hasAppropriateLength;
-		let validDate;
+		let validDate = false;
 
 		if (this.getProperty('multiSelect')) {
 			hasAppropriateLength = input.length >= 21 && input.length <= 23;
@@ -200,18 +201,22 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 
 			if (hasAppropriateLength && splitString.length === 2) {
 				inputDate = [new Date(splitString[0]), new Date(splitString[1])];
-				validDate = [
-					Lib.isValidDate(inputDate[0]) && this._isWithinDateRange(inputDate[0]) ? inputDate[0] : false,
-					Lib.isValidDate(inputDate[1]) && this._isWithinDateRange(inputDate[1]) ? inputDate[1] : false
-				];
-				validDate = validDate[0] && validDate[1] ? validDate : false;
+				
+				if (Lib.isValidDate(inputDate[0]) && this._isWithinDateRange(inputDate[0]) && Lib.isValidDate(inputDate[1]) && this._isWithinDateRange(inputDate[1])) {
+					validDate = [
+						{ date: inputDate[0] },
+						{ date: inputDate[1] }
+					];
+				}
 			}
 		} else {
 			inputDate = new Date(input);
 			hasAppropriateSpacers = input.match(/\//g) || input.match(/\-/g);
 			hasAppropriateLength = input.length >= 8 && input.length <= 10;
 
-			validDate = (Lib.isValidDate(input) && this._isWithinDateRange(inputDate) && hasAppropriateSpacers && hasAppropriateLength) ? inputDate : false;
+			if (Lib.isValidDate(input) && this._isWithinDateRange(inputDate) && hasAppropriateSpacers && hasAppropriateLength) {
+				validDate = [{ date: inputDate }];
+			}
 		}
 
 		return validDate;
@@ -226,7 +231,6 @@ const DatepickerCore = Lib.merge({}, Base, Disableable, Openable, Multiselectabl
 	_roundDate: function (date) {
 		return new Date(date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear());
 	}
-
 });
 
 export default DatepickerCore;

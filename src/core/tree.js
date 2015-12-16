@@ -7,13 +7,9 @@ import * as Lib from '../lib/lib';
 // Inherit from the [base control](base.html).
 import Base from './base';
 
-// Traits
-import Disableable from '../traits/disableable';
-import Multiselectable from '../traits/multiselectable';
-
 export const CONTROL = 'Tree';
 
-const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
+const TreeCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	// CSS classes used within this control
@@ -46,6 +42,7 @@ const TreeCore = Lib.merge({}, Base, Disableable, Multiselectable, {
 
 		// Proxy this call to the public accessor to ensure that we always receive a promise wrapped in a Data Adapter
 		_getChildren (item) {
+			/* TODO: Right now we are using `Lib.bind` here to avoid React yelling about double-binding this function. A better solition should be found */
 			return Promise.resolve(item.getChildren()).then(Lib.bind(this._getDataAdapter, this));
 		},
 

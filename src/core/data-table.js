@@ -15,7 +15,7 @@ import Multiselectable from '../traits/multiselectable';
 
 export const CONTROL = 'DataTable';
 
-const DataTableCore = Lib.merge({}, Base, Multiselectable, {
+const DataTableCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	cssClasses: {
@@ -73,6 +73,27 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 
 		getId (item) {
 			return item.get('id');
+		},
+
+		compareTo (item, itemToCompare, field) {
+			let itemCompA = item.get(field.sortColumn.propertyName);
+			let itemCompB = itemToCompare.get(field.sortColumn.propertyName);
+			let sortResult = 0;
+
+			if (Lib.isString(itemCompA) && Lib.isString(itemCompB)) {
+				itemCompA = itemCompA.toLowerCase();
+				itemCompB = itemCompB.toLowerCase();
+			}
+
+
+			if (field.sortDirection === 'asc') {
+				sortResult = itemCompA < itemCompB ? 1 : -1;
+			} else {
+				sortResult = itemCompA > itemCompB ? 1 : -1;
+			}
+
+
+			return sortResult;
 		}
 	},
 
@@ -117,17 +138,17 @@ const DataTableCore = Lib.merge({}, Base, Multiselectable, {
 		});
 	},
 
-	_selectDataItem (selRow) {
-		this.toggleItem(selRow);
+	_toggleDataItem (item) {
+		Multiselectable.toggleItem(this, item, this.getProperty('selection'));
 	},
 
 	_toggleAllItems () {
 		if (this.allCheckActivated) {
 			this.allCheckActivated = false;
-			this.deselectAll();
+			Multiselectable.deselectAll(this, this.getProperty('selection'));
 		} else {
 			this.allCheckActivated = true;
-			this.selectItems(this.getProperty('collection'));
+			Multiselectable.selectItems(this, this.getProperty('collection'));
 		}
 	},
 

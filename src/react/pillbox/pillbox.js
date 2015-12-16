@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import PillboxCore, {CONTROL} from '../../core/pillbox';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework specific
 import React from 'react';
 import State from '../mixins/state';
@@ -35,11 +38,22 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 	},
 
 	_generatePills () {
-		return this._getSelectedItems().map((item, index) => {
+		const selection = this._getDataAdapter(this.props.selection);
+		
+		return selection.map((item, index) => {
 			return (
-				<PillboxItem key={index} item={item} onClick={this._deselectItem} strings={this.state.strings}/>
+				<PillboxItem key={index} item={item} onClick={this._handleDeselect} strings={this.state.strings}/>
 			);
 		});
+	},
+	
+	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
+	_handleDeselect (item) {
+		if (item) {
+			Multiselectable.deselectItem(this, item._item, this.props.selection);
+		} else {
+			Multiselectable.deselectAll(this, this.props.selection);
+		}
 	}
 });
 

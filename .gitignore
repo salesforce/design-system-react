@@ -10,11 +10,14 @@ test/tests-api.js
 test/tests.js
 build/
 public/docs/src/
+
 # gh-pages
 _site/*
 
 # Editors / IDEs
 .idea
+*.sublime-project
+*.sublime-workspace
 
 # node_module cache for TravisCI, etc.
 node_modules.tar.gz

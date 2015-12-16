@@ -20,7 +20,7 @@ let Spinner = Lib.merge({}, SpinnerCore, {
 	},
 
 	render () {
-		const strings = this.getState('strings');
+		const strings = this.state.strings;
 		
 		return (
 			<div className={this.sizes[this.props.size]}>

@@ -41,7 +41,9 @@ export const CheckboxObject = {
 		this.elements.input.attr('checked', this.getProperty('checked'));
 		this.elements.label.append(this.getProperty('text'));
 
-		this._onEnabledOrDisabled();
+		if (this.getProperty('disabled')) {
+			this.elements.input.attr('disabled', 'disabled');
+		}
 		
 		return this.element;
 	},
@@ -50,14 +52,23 @@ export const CheckboxObject = {
 		this._bindUIEvents();
 	},
 	
-	_onEnabledOrDisabled () {
-		const disabled = this.getProperty('disabled');
-		const disabledAttr = 'disabled';
+	enable () {
+		this.setProperties({
+			disabled: false
+		});
 
-		if (disabled) {
-			this.elements.input.attr(disabledAttr, disabledAttr);
-		} else {
-			this.elements.input.removeAttr(disabledAttr);
+		if (this.rendered) {
+			this.elements.input.removeAttr('disabled');
+		}
+	},
+
+	disable () {
+		this.setProperties({
+			disabled: true
+		});
+
+		if (this.rendered) {
+			this.elements.input.attr('disabled', 'disabled');
 		}
 	},
 

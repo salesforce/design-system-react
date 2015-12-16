@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import TreeCore, {CONTROL} from '../../core/tree';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework specific
 import React from 'react';
 import State from '../mixins/state';
@@ -45,12 +48,14 @@ let Tree = Lib.merge({}, TreeCore, {
 
 		this._collection.forEach(model => {
 			const id = model.getId();
-			const selectable = this.getProperty('folderSelect');
+			const selectable = this.props.folderSelect;
+			const selection = this._getDataAdapter(this.props.selection);
+			const _isItemSelected = Lib.partialRight(Multiselectable.isItemSelected, selection);
 
 			if (model.getType() === 'folder') {
-				children.push(<TreeBranch key={id} item={model} selectable={selectable} strings={this.state.strings} autoOpenLevel={1} autoOpenLimit={this.props.autoOpen ? this.props.autoOpenLimit : 0} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _isFolderOpen={this._isFolderOpen} _isItemSelected={this._isItemSelected} />);
+				children.push(<TreeBranch key={id} item={model} selectable={selectable} strings={this.state.strings} autoOpenLevel={1} autoOpenLimit={this.props.autoOpen ? this.props.autoOpenLimit : 0} onItemClick={this._handleItemClick} onExpandClick={this._handleExpandClick} _isFolderOpen={this._isFolderOpen} _isItemSelected={_isItemSelected} />);
 			} else {
-				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick} _isItemSelected={this._isItemSelected} />);
+				children.push(<TreeItem key={id} item={model} onClick={this._handleItemClick} _isItemSelected={_isItemSelected} />);
 			}
 		});
 
@@ -64,8 +69,8 @@ let Tree = Lib.merge({}, TreeCore, {
 	},
 
 	_handleItemClick (item) {
-		if (item.getType() !== 'folder' || this.getProperty('folderSelect')) {
-			this.toggleItem(item._item);
+		if (item.getType() !== 'folder' || this.props.folderSelect) {
+			Multiselectable.toggleItem(this, item._item, this.props.selection);
 		} else {
 			this._toggleFolder(item);
 		}

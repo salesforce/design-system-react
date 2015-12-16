@@ -13,7 +13,7 @@ module.exports = {
 	menuHeaderRenderer (options) {
 		let output;
 		
-		if (options.results.length() <= 0) {
+		if (options.numResults <= 0) {
 			// TODO: Internationalize
 			output = (
 				<div>0 Results</div>

@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import ModalCore, {CONTROL} from '../../core/modal';
 
+// Traits
+import Openable from '../../traits/openable';
+
 // Framework Specific
 import DOM from '../dom';
 import Events from '../events';
@@ -21,6 +24,10 @@ let Modal = function Modal () {
 	const options = this._getOptions(arguments);
 
 	this.template = $(template);
+
+	this.toggle = Openable.toggle.bind(undefined, this);
+	this.open = Openable.open.bind(undefined, this);
+	this.close = Openable.close.bind(undefined, this);
 
 	this._initialize(options);
 };
@@ -43,7 +50,7 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	},
 
 	_bindUIEvents () {
-		this.element.on('click', $.proxy(this._clickOutClose, this));
+		this.element.on('click', this._clickOutClose.bind(this));
 	},
 
 	_render () {
@@ -56,14 +63,14 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 			headerTitle: this._props.headerText,
 			headerTextSize: this._props.headerTextSize,
 			headerTagline: this._props.headerTagline,
-			closeClicked: $.proxy(this.close, this)
+			closeClicked: this.close
 		}));
 
 		this.element.find('.' + this.cssClasses.FOOT).append(this._props.renderFooter({
 			primaryText: this._props.primaryButtonText,
 			secondaryText: this._props.secondaryButtonText,
-			primaryClicked: $.proxy(this._onPrimaryClicked, this),
-			secondaryClicked: $.proxy(this._onSecondaryClicked, this)
+			primaryClicked: this._onPrimaryClicked.bind(this),
+			secondaryClicked: this._onSecondaryClicked.bind(this)
 		}));
 
 		this.element.find('.' + this.cssClasses.CONTENT).append($content);
@@ -82,36 +89,20 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	_onSecondaryClicked () {
 		this.element.trigger('secondary');
 	},
-
-	toggle () {
-		const isOpen = this.getProperty('isOpen');
-
-		if (isOpen) {
-			this.close();
-		} else {
-			this.open();
-		}
-	},
-
-	open () {
+	
+	_onOpened () {
 		this.elements.modal.addClass(this.cssClasses.OPEN);
 		this.elements.backdrop.addClass(this.cssClasses.OPENBACKDROP);
-		this.setProperties({
-			isOpen: true
-		});
 	},
-
-	close () {
+	
+	_onClosed () {
 		this.elements.modal.removeClass(this.cssClasses.OPEN);
 		this.elements.backdrop.removeClass(this.cssClasses.OPENBACKDROP);
-		this.setProperties({
-			isOpen: false
-		});
 	},
 
 	_clickOutClose (e) {
 		if (this.backgroundClicked(e.target)) {
-			this.close();
+			Openable.close(this);
 		}
 	}
 });

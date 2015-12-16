@@ -18,7 +18,7 @@ const DataTableItem = React.createClass({
 			sortable: React.PropTypes.bool,
 			hintParent: React.PropTypes.bool
 		})).isRequired,
-		onSelected: React.PropTypes.func.isRequired,
+		onSelect: React.PropTypes.func.isRequired,
 		selected: React.PropTypes.bool.isRequired,
 		selectRows: React.PropTypes.bool
 	},
@@ -40,7 +40,7 @@ const DataTableItem = React.createClass({
 	},
 
 	_handleItemClick () {
-		this.props.onSelected(this.props.item);
+		this.props.onSelect(this.props.item._item);
 	},
 
 	_handleCheckClick (ev) {
@@ -67,7 +67,7 @@ const DataTableItem = React.createClass({
 
 	handleClicked (e) {		// TODO: feature.selection
 		e.preventDefault();
-		// this.props.onSelected(this.props.item);
+		// this.props.onSelect(this.props.item);
 	}
 });
 

@@ -20,7 +20,6 @@ let Combobox = function Combobox () {
 	const options = this._getOptions(arguments);
 	
 	this.template = $(template);
-	this._closeOnClick = $.proxy(this._closeOnClick, this);
 	
 	this._initialize(options);
 };
@@ -43,20 +42,21 @@ export const ComboboxObject = {
 	},
 	
 	_bindUIEvents () {
-		this.elements.button.on('click', $.proxy(this._handleClicked, this));
-		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
-		this.elements.input.on('change', $.proxy(this._handleChanged, this)).on('click', function (e) {e.stopPropagation();});
+		this.elements.button.on('click', this._handleClicked.bind(this));
+		this.elements.dropdownMenu.on('click', 'a', this._handleMenuItemSelected.bind(this));
+		this.elements.input.on('change', this._handleChanged.bind(this));
 		// TODO: Find the right element for these keypress triggers
-		this.elements.dropdown.on('keydown', $.proxy(this._handleKeyDown, this));
-		this.elements.dropdown.on('keypress', $.proxy(this._handleKeyPressed, this));
+		this.elements.dropdown.on('keydown', this._handleKeyDown.bind(this));
+		this.elements.dropdown.on('keypress', this._handleKeyPressed.bind(this));
 	},
 
 	_render () {
 		const selection = this._getSelection();
 
-		// Configure the button
-		const disabled = !!this.getProperty('disabled');
-		this.elements.button.prop('disabled', disabled);
+		if (this.getProperty('disabled')) {
+			this.elements.input.attr('disabled', 'disabled');
+			this.elements.button.attr('disabled', 'disabled');
+		}
 
 		// Show the current selection if there is one
 		this.elements.input.val(selection.getText());
@@ -74,6 +74,27 @@ export const ComboboxObject = {
 		}
 	},
 
+	enable () {
+		this.setProperties({
+			disabled: false
+		});
+
+		if (this.rendered) {
+			this.elements.input.removeAttr('disabled');
+			this.elements.button.removeAttr('disabled');
+		}
+	},
+
+	disable () {
+		this.setProperties({
+			disabled: true
+		});
+
+		if (this.rendered) {
+			this.elements.input.attr('disabled', 'disabled');
+			this.elements.button.attr('disabled', 'disabled');
+		}
+	},
 	_onEnabledOrDisabled () {
 		if (this.rendered) {
 			const disabled = !!this.getProperty('disabled');

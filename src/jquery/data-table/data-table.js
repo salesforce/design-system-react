@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import DataTableCore, {CONTROL} from '../../core/data-table';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework specific
 import DOM from '../dom';
 import Events from '../events';
@@ -35,11 +38,11 @@ export const DataTableObject = {
 	},
 	
 	_bindUIEvents () {
-		this.element.on('click.slds-table', '.slds-is-sortable', $.proxy(this._toggleSort, this));
+		this.element.on('click.slds-table', '.slds-is-sortable', this._toggleSort.bind(this));
 
 		if (this.getProperty('selectRows')) {
-			this.element.on('click.slds-table', 'tbody > tr', $.proxy(this._toggleItem, this));
-			this.element.on('click.slds-table', 'thead .slds-checkbox', $.proxy(this._toggleAllItems, this));
+			this.element.on('click.slds-table', 'tbody > tr', this._toggleItem.bind(this));
+			this.element.on('click.slds-table', 'thead .slds-checkbox', this._toggleAllItems.bind(this));
 		}
 	},
 	
@@ -97,26 +100,18 @@ export const DataTableObject = {
 	},
 
 	_render () {
-		const dataSource = this.getProperty('dataSource');
-
-		if (dataSource) {
-			dataSource({}, (response) => {
-				this._collection = this._getDataAdapter(response.data);
-				this._renderCollection();
-			});
-		} else if (this._collection.length()) {
-			this._renderCollection();
-		}
-
+		this._renderCollection();
 		this.element.addClass(this._getClassNames(this.getProperty('styles')));
 		
 		return this.element;
 	},
 
-	_renderCollection () {
+	_renderCollection (sorted) {
 		const self = this;
 		const columns = this.getProperty('columns');
 		const isRowSelect = this.getProperty('selectRows');
+		const collectionForSort = sorted || this._collection;
+		const selection = this._getDataAdapter(this.getProperty('selection'));
 
 		if (isRowSelect && !(columns[0].propertyName === 'select')) {
 			columns.splice(0, 0, {
@@ -139,7 +134,8 @@ export const DataTableObject = {
 
 		// For each item in the collection
 		this.elements.tbody.empty();
-		this._collection.forEach(item => {
+
+		collectionForSort.forEach(item => {
 			const $row = $('<tr/>', { class: 'slds-hint-parent' });
 
 			// For each column marked for render, create a cell for that value on this data node
@@ -148,7 +144,7 @@ export const DataTableObject = {
 			});
 
 			if (isRowSelect) {
-				self._renderSelection($row, item);
+				self._renderSelection($row, item, selection);
 			}
 
 			$row.data({
@@ -160,7 +156,7 @@ export const DataTableObject = {
 	},
 
 	_renderSelection ($item, item, selection) {
-		const selected = this._isItemSelected(item, selection);
+		const selected = Multiselectable.isItemSelected(item, selection);
 
 		$item.find('.slds-checkbox input').prop('checked', selected);
 	},
@@ -174,27 +170,59 @@ export const DataTableObject = {
 	_toggleItem (ev) {
 		const rowData = $(ev.currentTarget).data('item');
 
-		this._selectDataItem(rowData);
+		this._toggleDataItem(rowData);
 	},
 
 	_onSort () {
-		const dataSource = this.getProperty('dataSource');
+		const sortedCollection = [];
+		const sortProps = {
+			sortDirection: this._props.sortDirection,
+			sortColumn: this._props.sortColumn
+		};
 
-		if (dataSource) {
-			dataSource(this._generatePropertyPayload(), (response) => {
-				this._collection = this._getDataAdapter(response.data);
-				this._renderCollection();
-			});
-		} else {
-			this._renderCollection();
-		}
+		this._collection.forEach(item => {
+			let insertIndex = null;
+
+			if (sortedCollection.length) {
+				sortedCollection.forEach( (sortItem, index) => {
+					let relation;
+
+					if (!insertIndex && insertIndex !== 0) {
+						relation = item.compareTo(sortItem, sortProps);
+
+						if (relation > 0) {
+							insertIndex = index;
+						} else if (relation === 0 || relation < 0 && index === sortedCollection.length - 1 ) {
+							insertIndex = index + 1;
+						}
+					}
+				});
+				if (!insertIndex && insertIndex !== 0) insertIndex = sortedCollection.length - 1;
+
+				sortedCollection.splice(insertIndex, 0, item);
+			} else {
+				sortedCollection.push(item);
+			}
+		});
+
+		this._renderCollection(sortedCollection);
 	},
 
-	_onSelected () {
+	selectRow (item, index) {
+		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
+	},
+	
+	selectRows (items, index) {
+		Multiselectable.selectItems(this, items, this.getProperty('selection'), index);
+	},
+
+	_onSelect (selection) {
+		this.setProperties({ selection: selection._data });
 		this._renderCollection();
 	},
-
-	_onDeselected () {
+	
+	_onDeselect (selection) {
+		this.setProperties({ selection: selection._data });
 		this._renderCollection();
 	},
 	
@@ -203,19 +231,7 @@ export const DataTableObject = {
 	}
 };
 
-// LEGACY METHODS
-
-const legacyMethods = {
-	selectedItems () {
-		const selection = this._getSelectedItems();
-
-		return selection.get();
-	}
-};
-
 Lib.merge(DataTable.prototype, DataTableCore, Events, DOM, State, DataTableObject);
-DataTable = Lib.runHelpers('jquery', CONTROL, DataTable, {
-	legacyMethods
-});
+DataTable = Lib.runHelpers('jquery', CONTROL, DataTable);
 
 export default DataTable;

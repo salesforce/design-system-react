@@ -7,13 +7,9 @@ import * as Lib from '../lib/lib';
 // Inherit from the [base control](base.html).
 import Base from './base';
 
-// Traits
-import Disableable from '../traits/disableable';
-import Multiselectable from '../traits/multiselectable';
-
 export const CONTROL = 'Pillbox';
 
-const PillboxCore = Lib.merge({}, Base, Disableable, Multiselectable, {
+const PillboxCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	// CSS classes used within this control
