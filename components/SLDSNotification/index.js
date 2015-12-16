@@ -44,10 +44,9 @@ class SLDSNotification extends React.Component {
 
   componentDidMount() {
     if(this.props.duration) {
-      const that = this;
-      setTimeout(function() {
-        that.onDismiss();
-      }, that.props.duration);
+      setTimeout(() => {
+        this.onDismiss();
+      }, this.props.duration)
     }
   }
 
@@ -64,7 +63,7 @@ class SLDSNotification extends React.Component {
           this.setState({revealForScreenreader: true});
         }, 500)})
       }
-      console.log('revealForScreen', this.state.revealForScreenreader);
+      //console.log('revealForScreen', this.state.revealForScreenreader);
     }
   }
 
@@ -82,7 +81,6 @@ class SLDSNotification extends React.Component {
   }
 
   renderClose(){
-    let that = this;
     if(this.props.dismissible){
       let size = "";
       if(this.props.variant === "alert") {
@@ -97,7 +95,7 @@ class SLDSNotification extends React.Component {
             iconName="close"
             iconSize={size}
             className="slds-button slds-notify__close"
-            onClick={that.onDismiss.bind(that)}
+            onClick={this.onDismiss.bind(this)}
           />
     }
   }

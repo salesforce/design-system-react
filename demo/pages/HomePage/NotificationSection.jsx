@@ -12,7 +12,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import SLDSNotification from '../../../components/SLDSNotification';
 import {SLDSButton, SLDSModal} from '../../../components';
-import {default as PrismCode} from "react-prism/lib/PrismCode";
 
 module.exports = React.createClass( {
 
@@ -103,9 +102,6 @@ module.exports = React.createClass( {
             <h4>* Toasts default duration is five seconds and will then disappear.</h4>
           </li>
         </ul>
-        <PrismCode className='language-markup'>
-          {require('raw-loader!../../code-snippets/SLDSNotification.txt')}
-        </PrismCode>
         <div className='slds-p-vertical--medium'>
           <div className="slds-p-vertical--small">
             <h4 className="slds-text-heading--small ">Alerts</h4>
