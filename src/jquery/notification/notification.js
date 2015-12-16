@@ -56,15 +56,17 @@ export const NotificationObject = {
 		$closeButton.replaceAll($el.find('x-close-button')[0]);
 
 		// Events
-		$closeButton.on('click', $.proxy(this.hide, this));
+		$closeButton.on('click', this.hide.bind(this));
 	},
 	
-	_onShow: function () {
-		this.element.removeClass(this.cssClasses.HIDDEN);
+	show: function () {
+		this.element.toggleClass(this.cssClasses.HIDDEN, false);
+		this.trigger('shown');
 	},
 
-	_onHide: function () {
-		this.element.addClass(this.cssClasses.HIDDEN);
+	hide: function () {
+		this.element.toggleClass(this.cssClasses.HIDDEN, true);
+		this.trigger('hidden');
 	}
 };
 
