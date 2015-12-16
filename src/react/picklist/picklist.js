@@ -139,10 +139,12 @@ export const PicklistObject = {
 		if (this.props.modalMenu) {
 			this._renderModalMenu();
 		}
+		
+		const isOpen = Openable.isOpen(this);
 
-		if (this.props.modalMenu && this.state.isOpen) {
+		if (this.props.modalMenu && isOpen) {
 			Positionable.addEventListeners(this);
-		} else if (this.props.modalMenu && !this.state.isOpen) {
+		} else if (this.props.modalMenu && !isOpen) {
 			Positionable.removeEventListeners(this);
 		}
 	}

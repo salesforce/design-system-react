@@ -222,9 +222,11 @@ let Lookup = Lib.merge({}, LookupCore, {
 			this._focusOnInput = false;
 		}
 
-		if (this.props.modalMenu && this.state.isOpen) {
+		const isOpen = Openable.isOpen(this);
+
+		if (this.props.modalMenu && isOpen) {
 			Positionable.addEventListeners(this);
-		} else if (this.props.modalMenu && !this.state.isOpen) {
+		} else if (this.props.modalMenu && !isOpen) {
 			Positionable.removeEventListeners(this);
 		}
 	},
