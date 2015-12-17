@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />\nUse the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightening Design System - Buttons</a>.",
+        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />\nUse the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightning Design System - Buttons</a>.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -42,7 +42,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightening Design System - Icons</a> to reference icon names."
+                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System - Icons</a> to reference icon names."
             },
             "iconPosition": {
                 "type": {
@@ -117,7 +117,7 @@
                     ]
                 },
                 "required": false,
-                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">Lightening Design System - Icons</a>"
+                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">Lightning Design System - Icons</a>"
             },
             "label": {
                 "type": {
@@ -209,7 +209,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightening Design System - Icons</a> to reference icon names."
+                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System - Icons</a> to reference icon names."
             },
             "iconSize": {
                 "type": {
@@ -299,7 +299,7 @@
         }
     },
     "SLDSIcons/Icon": {
-        "description": "The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />\nThe icon color is white by default. Add the class, \"slds-icon-text-default\", to create a text-colored fill color for utility icons. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightening Design System - Icons</a>.",
+        "description": "The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />\nThe icon color is white by default. Add the class, \"slds-icon-text-default\", to create a text-colored fill color for utility icons. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightning Design System - Icons</a>.",
         "displayName": "Icon",
         "props": {
             "assistiveText": {
@@ -350,7 +350,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightening Design System - Icons</a> to reference icon names."
+                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System - Icons</a> to reference icon names."
             },
             "size": {
                 "type": {
@@ -380,7 +380,7 @@
         }
     },
     "SLDSModal": {
-        "description": "The SLDS Modal component is used for modals and prompts. <br />\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">Lightening Design System - Modals</a>.",
+        "description": "The SLDS Modal component is used for modals and prompts. <br />\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">Lightning Design System - Modals</a>.",
         "displayName": "SLDSModal",
         "props": {
             "align": {

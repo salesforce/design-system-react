@@ -22,7 +22,7 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
-   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
+   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
   iconSize: React.PropTypes.string,

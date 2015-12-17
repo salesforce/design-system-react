@@ -26,13 +26,13 @@ const propTypes = {
   disabled: React.PropTypes.bool,
   hint: React.PropTypes.bool,
   /**
-   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
+   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
   iconSize: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
   /**
-   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Lightening Design System - Icons</a>
+   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Lightning Design System - Icons</a>
    */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
   label: React.PropTypes.string,
@@ -49,7 +49,7 @@ const defaultProps = {};
 /**
  * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
  * Use the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">Lightening Design System - Buttons</a>.
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">Lightning Design System - Buttons</a>.
  */
 class SLDSButton extends React.Component {
 
