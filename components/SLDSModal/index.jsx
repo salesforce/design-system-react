@@ -76,7 +76,7 @@ const defaultProps = {
 
 /**
  * The SLDS Modal component is used for modals and prompts. <br />
- * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">Lightening Design System - Modals</a>.
+ * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">Lightning Design System - Modals</a>.
  */
 class SLDSModal extends React.Component {
 
