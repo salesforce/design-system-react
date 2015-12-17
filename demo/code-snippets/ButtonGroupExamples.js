@@ -1,6 +1,5 @@
 const examples = (
   <div>
-    <h4 className="slds-text-heading--small slds-p-vertical--medium">Button Groups</h4>
     <SLDSButtonGroup className="slds-p-vertical--medium">
       <SLDSButton
         label="Refresh"

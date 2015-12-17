@@ -28,9 +28,7 @@ class ButtonGroupSection extends React.Component {
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
-          <a href="javascript:void(0)" id='buttonSection'>
-          Button Group
-          </a>
+          Button Groups
         </h3>
 
         <div className="demo-only">
