@@ -33,7 +33,6 @@ const propTypes = {
   openOn: React.PropTypes.string,
   options: React.PropTypes.array,
   placeholder: React.PropTypes.string,
-  theme: React.PropTypes.string,
   value: React.PropTypes.string,
   variant: React.PropTypes.string,
 };
@@ -50,7 +49,6 @@ const defaultProps = {
   openOn: "hover",
   options: [],
   placeholder: "Select an Option",
-  theme: "default",
   value: null,
   variant: "neutral",
 };
@@ -268,7 +266,7 @@ class SLDSDropdown extends React.Component {
             onCancel={this.handleCancel.bind(this)}
             itemRenderer={this.props.listItemRenderer}
             isHover={this.state.isHover}
-            theme={this.props.theme} />;
+            />;
   }
 
   getSimplePopover(){
