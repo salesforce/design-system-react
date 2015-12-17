@@ -64,8 +64,10 @@ class SLDSButton extends React.Component {
 
   getClassName() {
     const iconOnly = this.props.variant === 'icon' ? true : false;
+    const base = this.props.variant === 'base' ? true : false;
+
     return classNames(this.props.className, "slds-button", {
-      [`slds-button--${this.props.variant}`]: !iconOnly,
+      [`slds-button--${this.props.variant}`]: !base && !iconOnly,
       [`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
       ["slds-max-small-button--stretch"]: this.props.responsive,
       ["slds-button--small"]: this.props.buttonSize,
@@ -111,7 +113,7 @@ class SLDSButton extends React.Component {
     }
 
     return (
-      <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
+      <button tabIndex={this.props.tabindex} className={this.getClassName()} onClick={click}>
         {this.props.iconPosition === "right" ? this.renderLabel(): null}
 
         {this.renderIcon(this.props.iconName)}
