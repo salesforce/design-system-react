@@ -14,6 +14,7 @@ const examples = (
 
     <SLDSButton
       label="Neutral"
+      tabIndex="-1"
       onClick={handleClick("Neutral")}
       variant="neutral" />
 

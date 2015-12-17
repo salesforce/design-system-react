@@ -11,7 +11,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 const classNames = require("classnames");
-import createChainedFunction from "../utils/create-chained-function";
 import {ButtonIcon} from "../SLDSIcons";
 import omit from "lodash.omit";
 
@@ -38,7 +37,7 @@ const propTypes = {
   label: React.PropTypes.string,
   onClick: React.PropTypes.func,
   responsive: React.PropTypes.bool,
-  tabindex: React.PropTypes.string,
+  tabIndex: React.PropTypes.string,
   /**
    * use "icon-inverse" for white icons.
    */
@@ -104,13 +103,12 @@ class SLDSButton extends React.Component {
     return iconOnly && this.props.assistiveText ? <span className="slds-assistive-text">{this.props.assistiveText}</span> : <span>{this.props.label}</span>;
   }
 
-
   render() {
-    const props = omit(this.props, ["className", "label"]);
+    const props = omit(this.props, ["className", "label", "onClick"]);
     if (this.props.disabled) props["disabled"] = "disabled";
 
     return (
-      <button tabIndex={this.props.tabindex} className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props}>
+      <button className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props}>
         {this.props.iconPosition === "right" ? this.renderLabel(): null}
 
         {this.renderIcon(this.props.iconName)}
