@@ -303,43 +303,23 @@ class SLDSDropdown extends React.Component {
   }
 
   render(){
-
-    const props = omit(this.props, [
-      "aria-haspopup",
-      "label",
-      "className",
-      "style",
-      "variant",
-      "iconName",
-      "iconVariant",
-      "onBlur",
-      "onFocus",
-      "onClick",
-      "onMouseDown",
-      "onMouseEnter",
-      "onMouseLeave",
-      "tabIndex",
-      "onKeyDown"
-    ]);
-
     return <SLDSButton
-        ref="button"
         aria-haspopup="true"
-        label={this.props.label}
         className={this.props.className}
-        style={this.props.style}
-        variant={this.props.variant}
         iconName={this.props.iconName}
         iconVariant={this.props.iconVariant}
+        label={this.props.label}
         onBlur={ chain(this.props.onBlur, this.handleBlur.bind(this)) }
-        onFocus={ chain(this.props.onFocus, this.handleFocus.bind(this)) }
         onClick={ chain(this.props.onClick, this.handleClick.bind(this)) }
+        onFocus={ chain(this.props.onFocus, this.handleFocus.bind(this)) }
+        onKeyDown={ chain(this.props.onKeyDown, this.handleKeyDown.bind(this)) }
         onMouseDown={ chain(this.props.onMouseDown, this.handleMouseDown.bind(this)) }
         onMouseEnter={ chain(this.props.onMouseEnter, (this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null) }
         onMouseLeave={ chain(this.props.onMouseLeave, (this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null ) }
+        ref="button"
+        style={this.props.style}
         tabIndex={this.state.isOpen?-1:0}
-        onKeyDown={ chain(this.props.onKeyDown, this.handleKeyDown.bind(this)) }
-        {...props}
+        variant={this.props.variant}
         >
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
       </SLDSButton>;
