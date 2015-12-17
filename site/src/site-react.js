@@ -26,12 +26,12 @@ ReactDOM.render(React.createElement(badge), document.querySelector('.react .badg
 // buttonGroup();
 // checkbox();
 // combobox();
-datepicker();
+ReactDOM.render(React.createElement(datepicker), document.querySelector('#datepicker-react-control'));
 dropdown();
-lookup();
+ReactDOM.render(React.createElement(lookup), document.querySelector('#lookup-react-control'));
 // modal();
 // notification();
-picklist();
+ReactDOM.render(React.createElement(picklist), document.querySelector('#picklist-react-control'));
 // 	// picker();
 pillbox();
 popover();
