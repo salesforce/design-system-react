@@ -11,7 +11,7 @@ import dropdown from '../../src/react/dropdown/example';
 import lookup from '../../src/react/lookup/examples/site-example';
 // import modal from '../../src/react/modal/example';
 // import notification from '../../src/react/notification/example';
-import picklist from '../../src/react/picklist/example';
+import picklist from '../../src/react/picklist/examples/site-example';
 // 	// import picker from '../../src/react/picker/example';
 import pillbox from '../../src/react/pillbox/example';
 import popover from '../../src/react/popover/example';
