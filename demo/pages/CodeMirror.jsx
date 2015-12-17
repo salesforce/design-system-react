@@ -6,7 +6,6 @@ import '../assets/styles/codemirror.css';
 import babel from 'babel-core/browser';
 
 const React = require('react');
-const ReactDOM = require('react-dom');
 const classNames = require('classnames');
 
 const SLDSButton =  require('../../components/SLDSButton');
@@ -119,7 +118,7 @@ class CodeMirror extends React.Component {
 
     const mountNode = React.findDOMNode(this.refs.mount);
     try {
-      ReactDOM.unmountComponentAtNode(mountNode);
+      React.unmountComponentAtNode(mountNode);
     } catch (e) {
       console.error(e); // eslint-disable-line no-console
     }
@@ -146,7 +145,7 @@ class CodeMirror extends React.Component {
 
       this.updateTimeout(
         () => {
-          ReactDOM.render(
+          React.render(
             <div bsStyle="danger">
             {err.toString()}
             </div>,
