@@ -10,8 +10,8 @@ var packageJson = require('./package.json');
 
 var config = {
 	entry: {
-		react: entries.concat('./src/react/examples.js'),
-		jquery: entries.concat('./src/jquery/examples.js')
+		'source-examples-react': entries.concat('./src/react/examples.js'),
+		'source-examples-jquery': entries.concat('./src/jquery/examples.js')
 	},
 	resolve: {
 		// root: [

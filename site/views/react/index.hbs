@@ -24,7 +24,7 @@
 	<script src="vendor/prism/prism.js"></script>
 	<script src="vendor/prism/components/prism-jsx.js"></script>
 </head>
-<body>
+<body class="react">
 <header class="site-masthead slds-page-header">
 	<div class="slds-grid">
 		<div class="slds-col slds-align-middle" >
@@ -44,6 +44,14 @@
 
 	<div class="slds-grid slds-m-top--medium">
 		<div class="slds-col slds-col--padded" style="max-width: 900px;">
+
+			<!-- badge -->
+			<div class="slds-box badge">
+				<div class="slds-text-heading--small slds-m-bottom--medium">Badge</div>
+				<div class="site-example"></div>
+				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.badge.siteExample }}</code></pre>
+			</div>
 
 			<!-- datepicker -->
 			<div class="slds-box">
@@ -123,6 +131,6 @@
 
 		</div>
 	</div>
-	<script src="build/react-demo.bundle.js"></script>
+	<script src="build/site-examples-react.bundle.js"></script>
 </body>
 </html>

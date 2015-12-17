@@ -1,6 +1,7 @@
-// require('../../scss/index');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-// import badge from '../../src/react/badge/example';
+import badge from '../../src/react/badge/examples/site-example';
 // import button from './button/example';
 // import buttonGroup from './button-group/example';
 // import checkbox from '../../src/react/checkbox/example';
@@ -20,7 +21,7 @@ import tooltip from '../../src/react/tooltip/example';
 import tree from '../../src/react/tree/example';
 import datatable from '../../src/react/data-table/example';
 
-// badge();
+ReactDOM.render(React.createElement(badge), document.querySelector('.react .badge .site-example'));
 // button();
 // buttonGroup();
 // checkbox();
