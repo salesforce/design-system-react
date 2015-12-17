@@ -75,19 +75,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSButtonSLDSButtonStateful = __webpack_require__(34);
+	var _SLDSButtonSLDSButtonStateful = __webpack_require__(33);
 	
 	var _SLDSButtonSLDSButtonStateful2 = _interopRequireDefault(_SLDSButtonSLDSButtonStateful);
 	
-	var _SLDSButtonGroup = __webpack_require__(35);
+	var _SLDSButtonGroup = __webpack_require__(34);
 	
 	var _SLDSButtonGroup2 = _interopRequireDefault(_SLDSButtonGroup);
 	
-	var _SLDSDropdownBase = __webpack_require__(36);
+	var _SLDSDropdownBase = __webpack_require__(35);
 	
 	var _SLDSDropdownBase2 = _interopRequireDefault(_SLDSDropdownBase);
 	
-	var _SLDSIcons = __webpack_require__(4);
+	var _SLDSIcons = __webpack_require__(3);
 	
 	var _SLDSIcons2 = _interopRequireDefault(_SLDSIcons);
 	
@@ -119,7 +119,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSTooltip2 = _interopRequireDefault(_SLDSTooltip);
 	
-	var _SLDSUtilityIcon = __webpack_require__(6);
+	var _SLDSUtilityIcon = __webpack_require__(5);
 	
 	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
 	
@@ -224,17 +224,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _utilsCreateChainedFunction = __webpack_require__(3);
+	var _SLDSIcons = __webpack_require__(3);
 	
-	var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
-	
-	var _SLDSIcons = __webpack_require__(4);
-	
-	var _lodashOmit = __webpack_require__(16);
+	var _lodashOmit = __webpack_require__(15);
 	
 	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
-	var classNames = __webpack_require__(14);
+	var classNames = __webpack_require__(13);
 	
 	var displayName = 'SLDSButton';
 	var propTypes = {
@@ -247,19 +243,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	  disabled: _react2["default"].PropTypes.bool,
 	  hint: _react2["default"].PropTypes.bool,
 	  /**
-	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
+	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
 	   */
 	  iconName: _react2["default"].PropTypes.string,
 	  iconPosition: _react2["default"].PropTypes.oneOf(["left", "right"]),
 	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "medium", "large"]),
 	  /**
-	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Lightening Design System - Icons</a>
+	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Lightning Design System - Icons</a>
 	   */
 	  iconVariant: _react2["default"].PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
 	  label: _react2["default"].PropTypes.string,
 	  onClick: _react2["default"].PropTypes.func,
 	  responsive: _react2["default"].PropTypes.bool,
-	  tabindex: _react2["default"].PropTypes.string,
+	  tabIndex: _react2["default"].PropTypes.string,
 	  /**
 	   * use "icon-inverse" for white icons.
 	   */
@@ -270,7 +266,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
 	 * Use the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />
-	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">Lightening Design System - Buttons</a>.
+	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">Lightning Design System - Buttons</a>.
 	 */
 	
 	var SLDSButton = (function (_React$Component) {
@@ -284,8 +280,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  _createClass(SLDSButton, [{
-	    key: "onClick",
-	    value: function onClick() {
+	    key: "handleClick",
+	    value: function handleClick() {
+	      if (this.props.onClick) this.props.onClick();
 	      this.setState({ active: !this.state.active });
 	    }
 	  }, {
@@ -294,7 +291,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var _classNames;
 	
 	      var iconOnly = this.props.variant === 'icon' ? true : false;
-	      return classNames(this.props.className, "slds-button", (_classNames = {}, _defineProperty(_classNames, "slds-button--" + this.props.variant, !iconOnly), _defineProperty(_classNames, "slds-button--icon-" + this.props.iconVariant, this.props.iconVariant), _defineProperty(_classNames, "slds-max-small-button--stretch", this.props.responsive), _defineProperty(_classNames, "slds-button--small", this.props.buttonSize), _classNames));
+	      var base = this.props.variant === 'base' ? true : false;
+	
+	      return classNames(this.props.className, "slds-button", (_classNames = {}, _defineProperty(_classNames, "slds-button--" + this.props.variant, !base && !iconOnly), _defineProperty(_classNames, "slds-button--icon-" + this.props.iconVariant, this.props.iconVariant), _defineProperty(_classNames, "slds-max-small-button--stretch", this.props.responsive), _defineProperty(_classNames, "slds-button--small", this.props.buttonSize), _classNames));
 	    }
 	  }, {
 	    key: "renderIcon",
@@ -327,14 +326,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var props = (0, _lodashOmit2["default"])(this.props, "className");
-	      var click = (0, _utilsCreateChainedFunction2["default"])(this.props.onClick, this.onClick.bind(this));
+	      var props = (0, _lodashOmit2["default"])(this.props, ["className", "label", "onClick"]);
+	      if (this.props.disabled) props["disabled"] = "disabled";
 	
-	      if (this.props.disabled) {
-	        props["disabled"] = "disabled";
-	      }
-	
-	      return _react2["default"].createElement("button", _extends({ tabIndex: this.props.tabindex, className: this.getClassName() }, props, { onClick: click }), this.props.iconPosition === "right" ? this.renderLabel() : null, this.renderIcon(this.props.iconName), this.renderIconMore(), this.props.iconPosition !== "right" ? this.renderLabel() : null, this.props.children);
+	      return _react2["default"].createElement("button", _extends({ className: this.getClassName(), onClick: this.handleClick.bind(this) }, props), this.props.iconPosition === "right" ? this.renderLabel() : null, this.renderIcon(this.props.iconName), this.renderIconMore(), this.props.iconPosition !== "right" ? this.renderLabel() : null, this.props.children);
 	    }
 	  }]);
 	
@@ -355,59 +350,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 3 */
-/***/ function(module, exports) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	
-	/**
-	 * Safe chained function
-	 *
-	 * Will only create a new function if needed,
-	 * otherwise will pass back existing functions or null.
-	 *
-	 * @param {function} one
-	 * @param {function} two
-	 * @returns {function|null}
-	 */
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	function createChainedFunction(one, two) {
-	  var hasOne = typeof one === 'function';
-	  var hasTwo = typeof two === 'function';
-	
-	  if (!hasOne && !hasTwo) {
-	    return null;
-	  }
-	  if (!hasOne) {
-	    return two;
-	  }
-	  if (!hasTwo) {
-	    return one;
-	  }
-	
-	  return function chainedFunction() {
-	    one.apply(this, arguments);
-	    two.apply(this, arguments);
-	  };
-	}
-	
-	exports['default'] = createChainedFunction;
-	module.exports = exports['default'];
-
-/***/ },
-/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -429,15 +371,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _InputIcon = __webpack_require__(5);
+	var _InputIcon = __webpack_require__(4);
 	
 	var _InputIcon2 = _interopRequireDefault(_InputIcon);
 	
-	var _Icon = __webpack_require__(13);
+	var _Icon = __webpack_require__(12);
 	
 	var _Icon2 = _interopRequireDefault(_Icon);
 	
-	var _ButtonIcon = __webpack_require__(15);
+	var _ButtonIcon = __webpack_require__(14);
 	
 	var _ButtonIcon2 = _interopRequireDefault(_ButtonIcon);
 	
@@ -448,7 +390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -514,7 +456,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSUtilityIcon = __webpack_require__(6);
+	var _SLDSUtilityIcon = __webpack_require__(5);
 	
 	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
 	
@@ -556,7 +498,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = InputIcon;
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -580,7 +522,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SVG = __webpack_require__(7);
+	var _SVG = __webpack_require__(6);
 	
 	var _SVG2 = _interopRequireDefault(_SVG);
 	
@@ -593,7 +535,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -627,23 +569,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _sldsIconsUtility = __webpack_require__(8);
+	var _sldsIconsUtility = __webpack_require__(7);
 	
 	var _sldsIconsUtility2 = _interopRequireDefault(_sldsIconsUtility);
 	
-	var _sldsIconsAction = __webpack_require__(9);
+	var _sldsIconsAction = __webpack_require__(8);
 	
 	var _sldsIconsAction2 = _interopRequireDefault(_sldsIconsAction);
 	
-	var _sldsIconsCustom = __webpack_require__(10);
+	var _sldsIconsCustom = __webpack_require__(9);
 	
 	var _sldsIconsCustom2 = _interopRequireDefault(_sldsIconsCustom);
 	
-	var _sldsIconsDoctype = __webpack_require__(11);
+	var _sldsIconsDoctype = __webpack_require__(10);
 	
 	var _sldsIconsDoctype2 = _interopRequireDefault(_sldsIconsDoctype);
 	
-	var _sldsIconsStandard = __webpack_require__(12);
+	var _sldsIconsStandard = __webpack_require__(11);
 	
 	var _sldsIconsStandard2 = _interopRequireDefault(_sldsIconsStandard);
 	
@@ -752,7 +694,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports) {
 
 	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
@@ -946,7 +888,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports) {
 
 	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
@@ -1128,7 +1070,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
-/* 10 */
+/* 9 */
 /***/ function(module, exports) {
 
 	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
@@ -1239,7 +1181,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports) {
 
 	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
@@ -1285,7 +1227,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports) {
 
 	/*  Copyright (c) 2015, salesforce.com, inc. All rights reserved.    Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:  Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.  Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.  Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.  */
@@ -1392,7 +1334,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.viewBox = '0 0 24 24';
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1466,11 +1408,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSUtilityIcon = __webpack_require__(6);
+	var _SLDSUtilityIcon = __webpack_require__(5);
 	
 	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
 	
-	var classNames = __webpack_require__(14);
+	var classNames = __webpack_require__(13);
 	
 	var displayName = "Icon";
 	var propTypes = {
@@ -1486,7 +1428,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  className: _react2['default'].PropTypes.string,
 	  /**
-	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
+	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
 	   */
 	  name: _react2['default'].PropTypes.string,
 	  size: _react2['default'].PropTypes.oneOf(["x-small", "small", "medium", "large"])
@@ -1498,7 +1440,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/**
 	 * The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />
 	 * The icon color is white by default. Add the class, "slds-icon-text-default", to create a text-colored fill color for utility icons. <br />
-	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">Lightening Design System - Icons</a>.
+	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">Lightning Design System - Icons</a>.
 	 */
 	
 	var Icon = (function (_React$Component) {
@@ -1554,7 +1496,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = Icon;
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -1609,7 +1551,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 15 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -1683,11 +1625,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSUtilityIcon = __webpack_require__(6);
+	var _SLDSUtilityIcon = __webpack_require__(5);
 	
 	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
 	
-	var classNames = __webpack_require__(14);
+	var classNames = __webpack_require__(13);
 	
 	var displayName = "ButtonIcon";
 	var propTypes = {
@@ -1741,7 +1683,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ButtonIcon;
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1752,14 +1694,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var arrayMap = __webpack_require__(17),
-	    baseDifference = __webpack_require__(18),
-	    baseFlatten = __webpack_require__(23),
-	    bindCallback = __webpack_require__(26),
-	    pickByArray = __webpack_require__(27),
-	    pickByCallback = __webpack_require__(28),
-	    keysIn = __webpack_require__(30),
-	    restParam = __webpack_require__(33);
+	var arrayMap = __webpack_require__(16),
+	    baseDifference = __webpack_require__(17),
+	    baseFlatten = __webpack_require__(22),
+	    bindCallback = __webpack_require__(25),
+	    pickByArray = __webpack_require__(26),
+	    pickByCallback = __webpack_require__(27),
+	    keysIn = __webpack_require__(29),
+	    restParam = __webpack_require__(32);
 	
 	/**
 	 * The opposite of `_.pick`; this method creates an object composed of the
@@ -1807,7 +1749,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports) {
 
 	/**
@@ -1843,7 +1785,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 18 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -1854,9 +1796,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseIndexOf = __webpack_require__(19),
-	    cacheIndexOf = __webpack_require__(20),
-	    createCache = __webpack_require__(21);
+	var baseIndexOf = __webpack_require__(18),
+	    cacheIndexOf = __webpack_require__(19),
+	    createCache = __webpack_require__(20);
 	
 	/** Used as the size to enable large array optimizations. */
 	var LARGE_ARRAY_SIZE = 200;
@@ -1912,7 +1854,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports) {
 
 	/**
@@ -1975,7 +1917,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports) {
 
 	/**
@@ -2034,7 +1976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -2045,7 +1987,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var getNative = __webpack_require__(22);
+	var getNative = __webpack_require__(21);
 	
 	/** Native method references. */
 	var Set = getNative(global, 'Set');
@@ -2132,7 +2074,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports) {
 
 	/**
@@ -2275,7 +2217,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -2286,8 +2228,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(24),
-	    isArray = __webpack_require__(25);
+	var isArguments = __webpack_require__(23),
+	    isArray = __webpack_require__(24);
 	
 	/**
 	 * Checks if `value` is object-like.
@@ -2412,7 +2354,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 24 */
+/* 23 */
 /***/ function(module, exports) {
 
 	/**
@@ -2524,7 +2466,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 25 */
+/* 24 */
 /***/ function(module, exports) {
 
 	/**
@@ -2710,7 +2652,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 26 */
+/* 25 */
 /***/ function(module, exports) {
 
 	/**
@@ -2781,7 +2723,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 27 */
+/* 26 */
 /***/ function(module, exports) {
 
 	/**
@@ -2860,7 +2802,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 28 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -2871,8 +2813,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseFor = __webpack_require__(29),
-	    keysIn = __webpack_require__(30);
+	var baseFor = __webpack_require__(28),
+	    keysIn = __webpack_require__(29);
 	
 	/**
 	 * The base implementation of `_.forIn` without support for callback
@@ -2910,7 +2852,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 29 */
+/* 28 */
 /***/ function(module, exports) {
 
 	/**
@@ -3002,7 +2944,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 30 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -3013,8 +2955,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var isArguments = __webpack_require__(31),
-	    isArray = __webpack_require__(32);
+	var isArguments = __webpack_require__(30),
+	    isArray = __webpack_require__(31);
 	
 	/** Used to detect unsigned integer values. */
 	var reIsUint = /^\d+$/;
@@ -3140,7 +3082,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 31 */
+/* 30 */
 /***/ function(module, exports) {
 
 	/**
@@ -3252,7 +3194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 32 */
+/* 31 */
 /***/ function(module, exports) {
 
 	/**
@@ -3438,7 +3380,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 33 */
+/* 32 */
 /***/ function(module, exports) {
 
 	/**
@@ -3511,7 +3453,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 34 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3585,9 +3527,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIcons = __webpack_require__(4);
+	var _SLDSIcons = __webpack_require__(3);
 	
-	var classNames = __webpack_require__(14);
+	var classNames = __webpack_require__(13);
 	
 	var displayName = "SLDSButtonStateful";
 	var propTypes = {
@@ -3598,7 +3540,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  assistiveText: _react2["default"].PropTypes.string,
 	  disabled: _react2["default"].PropTypes.bool,
 	  /**
-	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightening Design System - Icons</a> to reference icon names.
+	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
 	   */
 	  iconName: _react2["default"].PropTypes.string,
 	  iconSize: _react2["default"].PropTypes.string,
@@ -3662,7 +3604,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSButtonStateful;
 
 /***/ },
-/* 35 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3765,7 +3707,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSButtonGroup;
 
 /***/ },
-/* 36 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -3778,16 +3720,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	*/
 	
 	"use strict";
-	
-	var _extends = Object.assign || function (target) {
-	  for (var i = 1; i < arguments.length; i++) {
-	    var source = arguments[i];for (var key in source) {
-	      if (Object.prototype.hasOwnProperty.call(source, key)) {
-	        target[key] = source[key];
-	      }
-	    }
-	  }return target;
-	};
 	
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
@@ -3839,7 +3771,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSPopover = __webpack_require__(37);
+	var _SLDSPopover = __webpack_require__(36);
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
@@ -3847,13 +3779,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _utilsCreateChainedFunction = __webpack_require__(3);
+	var _utilsCreateChainedFunction = __webpack_require__(48);
 	
 	var _utilsCreateChainedFunction2 = _interopRequireDefault(_utilsCreateChainedFunction);
 	
-	var _utils = __webpack_require__(40);
+	var _utils = __webpack_require__(39);
 	
-	var _lodashOmit = __webpack_require__(16);
+	var _lodashOmit = __webpack_require__(15);
 	
 	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
@@ -4161,27 +4093,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "render",
 	    value: function render() {
-	
-	      var props = (0, _lodashOmit2["default"])(this.props, ["aria-haspopup", "label", "className", "style", "variant", "iconName", "iconVariant", "onBlur", "onFocus", "onClick", "onMouseDown", "onMouseEnter", "onMouseLeave", "tabIndex", "onKeyDown"]);
-	
-	      return _react2["default"].createElement(_SLDSButton2["default"], _extends({
-	        ref: "button",
+	      return _react2["default"].createElement(_SLDSButton2["default"], {
 	        "aria-haspopup": "true",
-	        label: this.props.label,
 	        className: this.props.className,
-	        style: this.props.style,
-	        variant: this.props.variant,
 	        iconName: this.props.iconName,
 	        iconVariant: this.props.iconVariant,
+	        label: this.props.label,
 	        onBlur: (0, _utilsCreateChainedFunction2["default"])(this.props.onBlur, this.handleBlur.bind(this)),
-	        onFocus: (0, _utilsCreateChainedFunction2["default"])(this.props.onFocus, this.handleFocus.bind(this)),
 	        onClick: (0, _utilsCreateChainedFunction2["default"])(this.props.onClick, this.handleClick.bind(this)),
+	        onFocus: (0, _utilsCreateChainedFunction2["default"])(this.props.onFocus, this.handleFocus.bind(this)),
+	        onKeyDown: (0, _utilsCreateChainedFunction2["default"])(this.props.onKeyDown, this.handleKeyDown.bind(this)),
 	        onMouseDown: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseDown, this.handleMouseDown.bind(this)),
 	        onMouseEnter: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseEnter, this.props.openOn === "hover" ? this.handleMouseEnter.bind(this) : null),
 	        onMouseLeave: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseLeave, this.props.openOn === "hover" ? this.handleMouseLeave.bind(this) : null),
+	        ref: "button",
+	        style: this.props.style,
 	        tabIndex: this.state.isOpen ? -1 : 0,
-	        onKeyDown: (0, _utilsCreateChainedFunction2["default"])(this.props.onKeyDown, this.handleKeyDown.bind(this))
-	      }, props), this.props.modal ? this.getModalPopover() : this.getSimplePopover());
+	        variant: this.props.variant
+	      }, this.props.modal ? this.getModalPopover() : this.getSimplePopover());
 	    }
 	  }]);
 	
@@ -4197,7 +4126,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports.ListItemLabel = _utils.ListItemLabel;
 
 /***/ },
-/* 37 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -4219,11 +4148,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _tetherDrop = __webpack_require__(38);
+	var _tetherDrop = __webpack_require__(37);
 	
 	var _tetherDrop2 = _interopRequireDefault(_tetherDrop);
 	
-	var _utils = __webpack_require__(40);
+	var _utils = __webpack_require__(39);
 	
 	//import { TransitionSpring, Spring } from 'react-motion';
 	
@@ -4231,7 +4160,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	  displayName: 'SLDSPopover',
 	
-	  mixins: [__webpack_require__(48)],
+	  mixins: [__webpack_require__(47)],
 	
 	  handleClickOutside: function handleClickOutside() {
 	    this.handleClose();
@@ -4386,14 +4315,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 38 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether-drop 1.2.2 */
 	
 	(function(root, factory) {
 	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(39)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(38)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  } else if (typeof exports === 'object') {
 	    module.exports = factory(require('tether'));
 	  } else {
@@ -4922,7 +4851,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 39 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! tether 1.1.0 */
@@ -6634,7 +6563,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 40 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -6654,31 +6583,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return obj && obj.__esModule ? obj : { 'default': obj };
 	}
 	
-	var _DateUtil = __webpack_require__(41);
+	var _DateUtil = __webpack_require__(40);
 	
 	var _DateUtil2 = _interopRequireDefault(_DateUtil);
 	
-	var _EventUtil = __webpack_require__(42);
+	var _EventUtil = __webpack_require__(41);
 	
 	var _EventUtil2 = _interopRequireDefault(_EventUtil);
 	
-	var _CSSUtil = __webpack_require__(43);
+	var _CSSUtil = __webpack_require__(42);
 	
 	var _CSSUtil2 = _interopRequireDefault(_CSSUtil);
 	
-	var _KEYS = __webpack_require__(44);
+	var _KEYS = __webpack_require__(43);
 	
 	var _KEYS2 = _interopRequireDefault(_KEYS);
 	
-	var _List = __webpack_require__(45);
+	var _List = __webpack_require__(44);
 	
 	var _List2 = _interopRequireDefault(_List);
 	
-	var _ListItem = __webpack_require__(46);
+	var _ListItem = __webpack_require__(45);
 	
 	var _ListItem2 = _interopRequireDefault(_ListItem);
 	
-	var _ListItemLabel = __webpack_require__(47);
+	var _ListItemLabel = __webpack_require__(46);
 	
 	var _ListItemLabel2 = _interopRequireDefault(_ListItemLabel);
 	
@@ -6693,7 +6622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 41 */
+/* 40 */
 /***/ function(module, exports) {
 
 	/*
@@ -6785,7 +6714,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = DateUtil;
 
 /***/ },
-/* 42 */
+/* 41 */
 /***/ function(module, exports) {
 
 	/*
@@ -6837,7 +6766,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = EventUtil;
 
 /***/ },
-/* 43 */
+/* 42 */
 /***/ function(module, exports) {
 
 	/*
@@ -6886,7 +6815,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 44 */
+/* 43 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -6905,7 +6834,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 45 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -6969,11 +6898,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ListItem = __webpack_require__(46);
+	var _ListItem = __webpack_require__(45);
 	
 	var _ListItem2 = _interopRequireDefault(_ListItem);
 	
-	var _EventUtil = __webpack_require__(42);
+	var _EventUtil = __webpack_require__(41);
 	
 	var _EventUtil2 = _interopRequireDefault(_EventUtil);
 	
@@ -7170,7 +7099,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSList;
 
 /***/ },
-/* 46 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -7234,15 +7163,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _KEYS = __webpack_require__(44);
+	var _KEYS = __webpack_require__(43);
 	
 	var _KEYS2 = _interopRequireDefault(_KEYS);
 	
-	var _EventUtil = __webpack_require__(42);
+	var _EventUtil = __webpack_require__(41);
 	
 	var _EventUtil2 = _interopRequireDefault(_EventUtil);
 	
-	var _ListItemLabel = __webpack_require__(47);
+	var _ListItemLabel = __webpack_require__(46);
 	
 	var _ListItemLabel2 = _interopRequireDefault(_ListItemLabel);
 	
@@ -7432,7 +7361,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSListItem;
 
 /***/ },
-/* 47 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -7496,7 +7425,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIcons = __webpack_require__(4);
+	var _SLDSIcons = __webpack_require__(3);
 	
 	var displayName = "SLDSList-Item-Label";
 	var propTypes = {
@@ -7545,7 +7474,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SLDSListItemLabel;
 
 /***/ },
-/* 48 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -7673,6 +7602,59 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
+/* 48 */
+/***/ function(module, exports) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	/**
+	 * Safe chained function
+	 *
+	 * Will only create a new function if needed,
+	 * otherwise will pass back existing functions or null.
+	 *
+	 * @param {function} one
+	 * @param {function} two
+	 * @returns {function|null}
+	 */
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	function createChainedFunction(one, two) {
+	  var hasOne = typeof one === 'function';
+	  var hasTwo = typeof two === 'function';
+	
+	  if (!hasOne && !hasTwo) {
+	    return null;
+	  }
+	  if (!hasOne) {
+	    return two;
+	  }
+	  if (!hasTwo) {
+	    return one;
+	  }
+	
+	  return function chainedFunction() {
+	    one.apply(this, arguments);
+	    two.apply(this, arguments);
+	  };
+	}
+	
+	exports['default'] = createChainedFunction;
+	module.exports = exports['default'];
+
+/***/ },
 /* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -7751,7 +7733,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _Menu2 = _interopRequireDefault(_Menu);
 	
-	var _SLDSPopover = __webpack_require__(37);
+	var _SLDSPopover = __webpack_require__(36);
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
@@ -7759,9 +7741,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSIcons = __webpack_require__(4);
+	var _SLDSIcons = __webpack_require__(3);
 	
-	var _utils = __webpack_require__(40);
+	var _utils = __webpack_require__(39);
 	
 	var _lodashEscaperegexp = __webpack_require__(52);
 	
@@ -7775,7 +7757,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _MenuDefaultHeader2 = _interopRequireDefault(_MenuDefaultHeader);
 	
-	var _classnames = __webpack_require__(14);
+	var _classnames = __webpack_require__(13);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -8487,9 +8469,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIcons = __webpack_require__(4);
+	var _SLDSIcons = __webpack_require__(3);
 	
-	var _utils = __webpack_require__(40);
+	var _utils = __webpack_require__(39);
 	
 	var _lodashEscaperegexp = __webpack_require__(52);
 	
@@ -8778,9 +8760,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIcons = __webpack_require__(4);
+	var _SLDSIcons = __webpack_require__(3);
 	
-	var _utils = __webpack_require__(40);
+	var _utils = __webpack_require__(39);
 	
 	var displayName = "LookupDefaultFooter";
 	var propTypes = {};
@@ -8893,9 +8875,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSIcons = __webpack_require__(4);
+	var _SLDSIcons = __webpack_require__(3);
 	
-	var _utils = __webpack_require__(40);
+	var _utils = __webpack_require__(39);
 	
 	var displayName = "LookupDefaultHeader";
 	var propTypes = {};
@@ -9024,7 +9006,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _classnames = __webpack_require__(14);
+	var _classnames = __webpack_require__(13);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -9095,7 +9077,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	/**
 	 * The SLDS Modal component is used for modals and prompts. <br />
-	 * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">Lightening Design System - Modals</a>.
+	 * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">Lightning Design System - Modals</a>.
 	 */
 	
 	var SLDSModal = (function (_React$Component) {
@@ -11183,7 +11165,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _utils = __webpack_require__(40);
+	var _utils = __webpack_require__(39);
 	
 	var _index = __webpack_require__(56);
 	
@@ -11283,9 +11265,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSIcons = __webpack_require__(4);
+	var _SLDSIcons = __webpack_require__(3);
 	
-	var classNames = __webpack_require__(14);
+	var classNames = __webpack_require__(13);
 	
 	var displayName = 'SLDSNotification';
 	var propTypes = {
@@ -11512,13 +11494,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _lodashIsequal2 = _interopRequireDefault(_lodashIsequal);
 	
-	var _SLDSPopover = __webpack_require__(37);
+	var _SLDSPopover = __webpack_require__(36);
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
-	var _utils = __webpack_require__(40);
+	var _utils = __webpack_require__(39);
 	
-	var _SLDSIcons = __webpack_require__(4);
+	var _SLDSIcons = __webpack_require__(3);
 	
 	var displayName = "SLDSPicklist";
 	var propTypes = {
@@ -13188,7 +13170,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSPopover = __webpack_require__(37);
+	var _SLDSPopover = __webpack_require__(36);
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
@@ -13196,7 +13178,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _tooltip2 = _interopRequireDefault(_tooltip);
 	
-	var classNames = __webpack_require__(14);
+	var classNames = __webpack_require__(13);
 	
 	var displayName = "SLDSTooltip";
 	var propTypes = {
@@ -13336,11 +13318,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _SLDSPopover = __webpack_require__(37);
+	var _SLDSPopover = __webpack_require__(36);
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
-	var classNames = __webpack_require__(14);
+	var classNames = __webpack_require__(13);
 	
 	var getClassName = function getClassName(props) {
 	  var _classNames;

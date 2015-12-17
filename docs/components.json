@@ -140,7 +140,7 @@
                 "required": false,
                 "description": ""
             },
-            "tabindex": {
+            "tabIndex": {
                 "type": {
                     "name": "string"
                 },
