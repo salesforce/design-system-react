@@ -3469,6 +3469,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	"use strict";
 	
+	var _extends = Object.assign || function (target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i];for (var key in source) {
+	      if (Object.prototype.hasOwnProperty.call(source, key)) {
+	        target[key] = source[key];
+	      }
+	    }
+	  }return target;
+	};
+	
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
 	    for (var i = 0; i < props.length; i++) {
@@ -3529,6 +3539,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSIcons = __webpack_require__(3);
 	
+	var _lodashOmit = __webpack_require__(15);
+	
+	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
+	
 	var classNames = __webpack_require__(13);
 	
 	var displayName = "SLDSButtonStateful";
@@ -3544,6 +3558,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  iconName: _react2["default"].PropTypes.string,
 	  iconSize: _react2["default"].PropTypes.string,
+	  onClick: _react2["default"].PropTypes.func,
+	  responsive: _react2["default"].PropTypes.bool,
+	  tabIndex: _react2["default"].PropTypes.string,
 	  /**
 	   * join - states are join, member, leave <br />
 	   * follow - states are follow, following, unfollow <br />
@@ -3570,6 +3587,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(SLDSButtonStateful, [{
 	    key: "handleClick",
 	    value: function handleClick() {
+	      if (this.props.onClick) this.props.onClick();
 	      this.setState({ active: !this.state.active });
 	    }
 	  }, {
@@ -3577,19 +3595,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function getClassName() {
 	      var _classNames;
 	
-	      return classNames(this.props.className, "slds-button", (_classNames = {}, _defineProperty(_classNames, "slds-button--neutral", this.props.type !== "icon"), _defineProperty(_classNames, "slds-button--inverse", this.props.variant === "inverse"), _defineProperty(_classNames, "slds-not-selected", !this.state.active), _defineProperty(_classNames, "slds-is-selected", this.state.active), _defineProperty(_classNames, "slds-button--icon-border", this.props.type === "icon"), _classNames));
+	      return classNames(this.props.className, "slds-button", (_classNames = {}, _defineProperty(_classNames, "slds-button--neutral", this.props.type !== "icon"), _defineProperty(_classNames, "slds-button--inverse", this.props.variant === "inverse"), _defineProperty(_classNames, "slds-not-selected", !this.state.active), _defineProperty(_classNames, "slds-is-selected", this.state.active), _defineProperty(_classNames, "slds-max-small-button--stretch", this.props.responsive), _defineProperty(_classNames, "slds-button--icon-border", this.props.type === "icon"), _classNames));
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
+	      var props = (0, _lodashOmit2["default"])(this.props, ["className", "label", "onClick", "type"]);
+	      if (this.props.disabled) props["disabled"] = "disabled";
+	
 	      if (this.props.type === "follow") {
-	        return _react2["default"].createElement("button", { className: this.getClassName(), "aria-live": "assertive", onClick: this.handleClick.bind(this) }, _react2["default"].createElement("span", { className: "slds-text-not-selected" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "add", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Follow"), _react2["default"].createElement("span", { className: "slds-text-selected" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "check", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Following"), _react2["default"].createElement("span", { className: "slds-text-selected-focus" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "close", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Unfollow"));
+	        return _react2["default"].createElement("button", _extends({ className: this.getClassName(), "aria-live": "assertive", onClick: this.handleClick.bind(this) }, props), _react2["default"].createElement("span", { className: "slds-text-not-selected" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "add", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Follow"), _react2["default"].createElement("span", { className: "slds-text-selected" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "check", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Following"), _react2["default"].createElement("span", { className: "slds-text-selected-focus" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "close", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Unfollow"));
 	      } else if (this.props.type === "join") {
-	        return _react2["default"].createElement("button", { className: this.getClassName(), "aria-live": "assertive", onClick: this.handleClick.bind(this) }, _react2["default"].createElement("span", { className: "slds-text-not-selected" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "add", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Join"), _react2["default"].createElement("span", { className: "slds-text-selected" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "check", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Member"), _react2["default"].createElement("span", { className: "slds-text-selected-focus" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "close", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Leave"));
+	        return _react2["default"].createElement("button", _extends({ className: this.getClassName(), "aria-live": "assertive", onClick: this.handleClick.bind(this) }, props), _react2["default"].createElement("span", { className: "slds-text-not-selected" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "add", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Join"), _react2["default"].createElement("span", { className: "slds-text-selected" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "check", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Member"), _react2["default"].createElement("span", { className: "slds-text-selected-focus" }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: "close", size: "small", position: "left", className: "slds-button__icon--stateful" }), "Leave"));
 	      } else if (this.props.type === "icon") {
-	        return _react2["default"].createElement("button", { className: this.getClassName(), onClick: this.handleClick.bind(this) }, _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: this.props.iconName, size: this.props.iconSize, assistiveText: this.props.assistiveText, className: "slds-button__icon--stateful" }));
+	        return _react2["default"].createElement("button", _extends({ className: this.getClassName(), onClick: this.handleClick.bind(this) }, props), _react2["default"].createElement(_SLDSIcons.ButtonIcon, { disabled: this.props.disabled, name: this.props.iconName, size: this.props.iconSize, assistiveText: this.props.assistiveText, className: "slds-button__icon--stateful" }));
 	      } else {
-	        return _react2["default"].createElement("div", { className: "" }, "SLDS Stateful Button needs proper type prop: follow, join, or icon.");
+	        return _react2["default"].createElement("div", null, "SLDS Stateful Button needs proper type prop: follow, join, or icon.");
 	      }
 	    }
 	  }]);
