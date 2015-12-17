@@ -218,6 +218,27 @@
                 "required": false,
                 "description": ""
             },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "responsive": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
             "type": {
                 "type": {
                     "name": "enum",

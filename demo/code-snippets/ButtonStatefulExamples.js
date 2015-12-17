@@ -15,6 +15,10 @@ const examples = (
     <SLDSButtonStateful
       type="follow"/>
 
+    <SLDSButtonStateful
+      disabled={true}
+      type="follow"/>
+
     <div style={inverseBtnParent} className="slds-m-horizontal--small">
       <SLDSButtonStateful
         type="join"

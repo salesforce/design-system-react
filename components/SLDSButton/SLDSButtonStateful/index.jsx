@@ -12,6 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 import {ButtonIcon} from '../../SLDSIcons';
 const classNames = require("classnames");
+import omit from "lodash.omit";
 
 const displayName = "SLDSButtonStateful";
 const propTypes = {
@@ -26,6 +27,9 @@ const propTypes = {
    */
   iconName: React.PropTypes.string,
   iconSize: React.PropTypes.string,
+  onClick: React.PropTypes.func,
+  responsive: React.PropTypes.bool,
+  tabIndex: React.PropTypes.string,
   /**
    * join - states are join, member, leave <br />
    * follow - states are follow, following, unfollow <br />
@@ -47,6 +51,7 @@ class SLDSButtonStateful extends React.Component {
   }
 
   handleClick() {
+    if(this.props.onClick) this.props.onClick();
     this.setState({ active: !this.state.active });
   }
 
@@ -56,14 +61,18 @@ class SLDSButtonStateful extends React.Component {
       ["slds-button--inverse"]: this.props.variant === "inverse",
       ["slds-not-selected"]: !this.state.active,
       ["slds-is-selected"]: this.state.active,
+      ["slds-max-small-button--stretch"]: this.props.responsive,
       ["slds-button--icon-border"]: this.props.type === "icon",
     });
   }
 
   render() {
+    const props = omit(this.props, ["className", "label", "onClick", "type"]);
+    if (this.props.disabled) props["disabled"] = "disabled";
+
     if(this.props.type === "follow") {
       return (
-        <button className={this.getClassName()} aria-live="assertive" onClick={this.handleClick.bind(this)}>
+        <button className={this.getClassName()} aria-live="assertive" onClick={this.handleClick.bind(this)} {...props}>
           <span className="slds-text-not-selected">
             <ButtonIcon disabled={this.props.disabled} name="add" size="small" position="left" className="slds-button__icon--stateful" />
             Follow
@@ -81,7 +90,7 @@ class SLDSButtonStateful extends React.Component {
     }
     else if(this.props.type === "join") {
       return (
-        <button className={this.getClassName()} aria-live="assertive" onClick={this.handleClick.bind(this)}>
+        <button className={this.getClassName()} aria-live="assertive" onClick={this.handleClick.bind(this)} {...props}>
           <span className="slds-text-not-selected">
             <ButtonIcon disabled={this.props.disabled} name="add" size="small" position="left" className="slds-button__icon--stateful" />
             Join
@@ -99,14 +108,14 @@ class SLDSButtonStateful extends React.Component {
     }
     else if(this.props.type === "icon") {
       return (
-        <button className={this.getClassName()} onClick={this.handleClick.bind(this)}>
+        <button className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props}>
           <ButtonIcon disabled={this.props.disabled} name={this.props.iconName} size={this.props.iconSize} assistiveText={this.props.assistiveText} className="slds-button__icon--stateful"  />
         </button>
       )
     }
     else {
       return (
-        <div className="">SLDS Stateful Button needs proper type prop: follow, join, or icon.</div>
+        <div>SLDS Stateful Button needs proper type prop: follow, join, or icon.</div>
       )
     }
 
