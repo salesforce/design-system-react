@@ -3827,7 +3827,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  openOn: _react2["default"].PropTypes.string,
 	  options: _react2["default"].PropTypes.array,
 	  placeholder: _react2["default"].PropTypes.string,
-	  theme: _react2["default"].PropTypes.string,
 	  value: _react2["default"].PropTypes.string,
 	  variant: _react2["default"].PropTypes.string
 	};
@@ -3844,7 +3843,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  openOn: "hover",
 	  options: [],
 	  placeholder: "Select an Option",
-	  theme: "default",
 	  value: null,
 	  variant: "neutral"
 	};
@@ -4084,8 +4082,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onMouseLeave: this.props.openOn === "hover" ? this.handleMouseLeave.bind(this) : null,
 	        onCancel: this.handleCancel.bind(this),
 	        itemRenderer: this.props.listItemRenderer,
-	        isHover: this.state.isHover,
-	        theme: this.props.theme });
+	        isHover: this.state.isHover
+	      });
 	    }
 	  }, {
 	    key: "getSimplePopover",
@@ -7103,7 +7101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onMouseDown: this.handleMouseDown.bind(this)
 	      }, _react2['default'].createElement('ul', {
 	        ref: 'scroll',
-	        className: "slds-dropdown__list slds-theme--" + this.props.theme,
+	        className: "slds-dropdown__list",
 	        role: 'menu',
 	        'aria-labelledby': this.props.triggerId
 	      }, this.getItems()));
@@ -7351,9 +7349,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var isSelected = this.props.isSelected ? " slds-is-selected" : null;
+	      var isSelected = this.props.isSelected ? " slds-is-selected" : "";
 	      return _react2['default'].createElement('li', {
-	        className: "slds-dropdown__item slds-theme--" + this.props.theme + isSelected,
+	        className: "slds-dropdown__item" + isSelected,
 	        onMouseDown: this.handleMouseDown.bind(this),
 	        onMouseEnter: this.props.onMouseEnter,
 	        onMouseLeave: this.props.onMouseLeave,
