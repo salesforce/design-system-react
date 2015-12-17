@@ -22,7 +22,9 @@ module.exports = React.createClass( {
   getInitialState () {
     return {
       modalIsOpen: false,
+      modalToastIsOpen: false,
       alertIsOpen: false,
+      toastIsOpen: false,
     };
   },
 
@@ -61,7 +63,13 @@ module.exports = React.createClass( {
   },
 
   openModal () {
-    this.setState({modalIsOpen: true});
+    this.setState({ modalIsOpen: true });
+
+    setTimeout(function() {
+      this.setState({
+        modalToastIsOpen: true,
+      })
+    }, 400);
   },
 
   closeModal () {
@@ -72,71 +80,77 @@ module.exports = React.createClass( {
     this.closeModal();
   },
 
+  openToast(){
+    this.setState({ toastIsOpen: true });
+  },
+
   dismissToast(){
-    this.setState({ alertIsOpen: false });
+    this.setState({ toastIsOpen: false });
     console.log('====> Dismiss Toast Message');
+  },
+
+  dismissModalToast(){
+    this.setState({ modalToastIsOpen: false });
+    console.log('====> Dismiss Modal Toast');
   },
 
   openAlert(){
     this.setState({ alertIsOpen: true });
   },
 
+  dismissAlert(){
+    console.log('====> Dismiss Alert');
+    this.setState({ alertIsOpen: false });
+  },
+
   render() {
     let successMsg = ['New contact added ', <a href="#" key="0123">Sara Smith</a>];
     let errorMsg = 'There was a problem updating the record.';
-    let offlineMsg = 'Sandbox: TestOrg123';
-    let toastStyle = { display: 'inline-block'};
+
     return (
 
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>
-          <a href="javascript:void(0)" id='notificationSection'>
-          Notification
-          </a>
-        </h3>
+        <h3 className='slds-text-heading--medium slds-truncate'>Notification</h3>
         <ul className="slds-p-vertical--medium">
-          <li>
-            <h4>* All notifications are fixed and centered at the top of the screen.</h4>
-          </li>
-          <li>
-            <h4>* Toasts default duration is five seconds and will then disappear.</h4>
-          </li>
+          <li> <h4>* All notifications are fixed and centered at the top of the screen.</h4> </li>
+          <li> <h4>* Toasts default duration is five seconds and will then disappear.</h4> </li>
         </ul>
+
         <div className='slds-p-vertical--medium'>
           <div className="slds-p-vertical--small">
             <h4 className="slds-text-heading--small ">Alerts</h4>
             <SLDSButton variant="neutral" label="Show Alert" onClick={this.openAlert} />
-            <SLDSNotification variant='alert' theme='success' icon='notification' isOpen={this.state.alertIsOpen} texture={true} content={successMsg} onDismiss={this.dismissToast} />
+            <SLDSNotification variant='alert' theme='success' icon='notification' isOpen={this.state.alertIsOpen} texture={true} content={successMsg} onDismiss={this.dismissAlert} />
           </div>
 
           <div className="slds-p-vertical--small">
             <h4 className="slds-text-heading--small ">Toasts</h4>
-            <div className="demo-only" style={toastStyle}>
-              Base
-              {/*this.state.modalIsOpen ? null:
-                <SLDSNotification variant='toast' theme='success' icon='notification' content={successMsg} onDismiss={this.dismissToast}/>*/}
-            </div>
+            <SLDSButton variant="neutral" label="Show Toast" onClick={this.openToast} />
+            <SLDSNotification variant='toast' theme='success' icon='notification' isOpen={this.state.toastIsOpen} content={successMsg} onDismiss={this.dismissToast} />
+          </div>
 
-            <p>Modal Toasts</p>
-            <SLDSButton
-              label='Open Modal Toast'
-              variant='brand'
-              onClick={this.openModal} />
+          <div className="slds-p-vertical--small">
+            <h4 className="slds-text-heading--small ">Modal Toasts</h4>
+            <SLDSButton variant="neutral" label="Show Modal Toast" onClick={this.openModal} />
             <SLDSModal
               isOpen={this.state.modalIsOpen}
-              toast={<SLDSNotification variant='toast' theme='error' icon='warning' content={errorMsg} onDismiss={this.dismissToast} />}
-              title={<span>Lightning Design System: Style with Ease</span>}
+              toast={
+                <SLDSNotification variant='toast' theme='error' icon='warning' isOpen={this.state.modalToastIsOpen} content={errorMsg} onDismiss={this.dismissModalToast} />
+              }
+              title={
+                <span>Lightning Design System: Style with Ease</span>
+              }
               footer={[
                 <SLDSButton key='cancelBtn' label='Cancel' variant='neutral' onClick={this.closeModal} />,
-                  <SLDSButton key='saveBtn' label='Save' variant='brand' onClick={this.handleSubmitModal} />
-                  ]}
-                  onRequestClose={this.closeModal}>
-                  {this.getModalContent()}
-                </SLDSModal>
-              </div>
+                <SLDSButton key='saveBtn' label='Save' variant='brand' onClick={this.handleSubmitModal} />
+              ]}
+              onRequestClose={this.closeModal}>
+                {this.getModalContent()}
+            </SLDSModal>
+        </div>
 
-            </div>
-          </div>
+        </div>
+      </div>
 
 
     );
