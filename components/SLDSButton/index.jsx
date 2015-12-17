@@ -58,7 +58,8 @@ class SLDSButton extends React.Component {
     this.state = { active: false };
   }
 
-  onClick() {
+  handleClick() {
+    if(this.props.onClick) this.props.onClick();
     this.setState({ active: !this.state.active });
   }
 
@@ -105,15 +106,11 @@ class SLDSButton extends React.Component {
 
 
   render() {
-    const props = omit(this.props, "className");
-    const click = createChainedFunction(this.props.onClick, this.onClick.bind(this));
-
-    if (this.props.disabled) {
-      props["disabled"] = "disabled"
-    }
+    const props = omit(this.props, ["className", "label"]);
+    if (this.props.disabled) props["disabled"] = "disabled";
 
     return (
-      <button tabIndex={this.props.tabindex} className={this.getClassName()} onClick={click}>
+      <button tabIndex={this.props.tabindex} className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props}>
         {this.props.iconPosition === "right" ? this.renderLabel(): null}
 
         {this.renderIcon(this.props.iconName)}
