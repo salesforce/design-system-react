@@ -28,11 +28,23 @@ const propTypes = {
   emptyMessage: React.PropTypes.string,
   errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func,
+  /**
+   * react component for lookup footer
+   */
+  footerRenderer: React.PropTypes.func,
   hasError: React.PropTypes.bool,
+  /**
+   * react component for lookup header
+   */
+  headerRenderer: React.PropTypes.func,
   iconCategory: React.PropTypes.string,
+  iconClasses: React.PropTypes.string,
   iconName: React.PropTypes.string,
   items: React.PropTypes.array,
   label: React.PropTypes.string,
+  /**
+   * react component that overrides the default Menu Item component
+   */
   listItemLabelRenderer: React.PropTypes.func,
   messages: React.PropTypes.arrayOf(React.PropTypes.string),
   modal: React.PropTypes.bool,
@@ -40,6 +52,9 @@ const propTypes = {
   onChange: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
   onItemUnselect: React.PropTypes.func,
+  /**
+   * salesforce object type
+   */
   type: React.PropTypes.string,
 };
 
@@ -53,6 +68,10 @@ const defaultProps = {
   modal: false,
 };
 
+
+/**
+ * salesforce object type
+ */
 class SLDSLookup extends React.Component {
   constructor(props) {
     super(props);

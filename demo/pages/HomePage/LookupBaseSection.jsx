@@ -68,6 +68,7 @@ module.exports = React.createClass( {
 
               <div className="slds-p-vertical--large">
                 <SLDSLookup
+                  emptyMessage="No items found"
                   items={items}
                   label="Account"
                   type="account"

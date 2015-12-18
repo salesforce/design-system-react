@@ -62,18 +62,19 @@ module.exports = React.createClass( {
 
               <div className="slds-p-vertical--large">
                 <SLDSLookup
+                  emptyMessage="No items found"
+                  footerRenderer={SLDSLookup.DefaultFooter}
+                  hasError={true}
+                  headerRenderer={SLDSLookup.DefaultHeader}
+                  iconCategory='utility'
+                  iconClasses='slds-icon-text-default'
+                  iconName='open_folder'
                   items={items}
                   label="Account"
-                  type="account"
-                  iconCategory='utility'
-                  iconName='open_folder'
-                  iconClasses='slds-icon-text-default'
-                  headerRenderer={SLDSLookup.DefaultHeader}
-                  footerRenderer={SLDSLookup.DefaultFooter}
+                  listItemLabelRenderer={CustomLookupListItemLabel}
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
-                  hasError={true}
-                  listItemLabelRenderer={CustomLookupListItemLabel}
+                  type="account"
                 />
               </div>
 
