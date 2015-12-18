@@ -70,7 +70,7 @@ const defaultProps = {
 
 
 /**
- * salesforce object type
+ * The SLDSLookup component currently supports the base variant. For more details, please reference <a href="http://www.lightningdesignsystem.com/components/lookups/">Lightening Design System - Lookups</a>.
  */
 class SLDSLookup extends React.Component {
   constructor(props) {

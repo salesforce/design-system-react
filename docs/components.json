@@ -400,6 +400,159 @@
             }
         }
     },
+    "SLDSLookup": {
+        "description": "The SLDSLookup component currently supports the base variant. For more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/lookups/\">Lightening Design System - Lookups</a>.",
+        "displayName": "SLDSLookup",
+        "props": {
+            "boldRegex": {
+                "type": {
+                    "name": "instanceOf",
+                    "value": "RegExp"
+                },
+                "required": false,
+                "description": ""
+            },
+            "emptyMessage": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "message for when no search results found"
+            },
+            "errors": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "string"
+                    }
+                },
+                "required": false,
+                "description": ""
+            },
+            "filterWith": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "footerRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "react component for lookup footer"
+            },
+            "hasError": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "headerRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "react component for lookup header"
+            },
+            "iconCategory": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconClasses": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "items": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": ""
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "listItemLabelRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "react component that overrides the default Menu Item component"
+            },
+            "messages": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "string"
+                    }
+                },
+                "required": false,
+                "description": ""
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onBlur": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onItemSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onItemUnselect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "type": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "salesforce object type"
+            }
+        }
+    },
     "SLDSModal": {
         "description": "The SLDS Modal component is used for modals and prompts. <br />\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">Lightning Design System - Modals</a>.",
         "displayName": "SLDSModal",
