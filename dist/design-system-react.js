@@ -527,7 +527,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _SVG2 = _interopRequireDefault(_SVG);
 	
 	module.exports = _react2['default'].createClass({
-	  displayName: 'exports',
+	  displayName: "SLDSUtilityIcon",
 	
 	  render: function render() {
 	    return _react2['default'].createElement(_SVG2['default'], this.props);
@@ -590,7 +590,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _sldsIconsStandard2 = _interopRequireDefault(_sldsIconsStandard);
 	
 	module.exports = _react2['default'].createClass({
-	  displayName: 'exports',
+	
+	  displayName: "SLDSSvg",
 	
 	  getDefaultProps: function getDefaultProps() {
 	    return {
@@ -605,7 +606,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _react2['default'].createElement('path', item);
 	      });
 	    }
-	    return _react2['default'].createElement('path', paths);
+	    return _react2['default'].createElement('path', _extends({ key: 'pathSVG' }, paths));
 	  },
 	
 	  getCircles: function getCircles(circles) {
@@ -614,7 +615,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _react2['default'].createElement('circle', item);
 	      });
 	    }
-	    return _react2['default'].createElement('circle', circles);
+	    return _react2['default'].createElement('circle', _extends({ key: 'circleSVG' }, circles));
 	  },
 	
 	  getEllipses: function getEllipses(ellipses) {
@@ -623,7 +624,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _react2['default'].createElement('ellipse', item);
 	      });
 	    }
-	    return _react2['default'].createElement('ellipse', ellipses);
+	    return _react2['default'].createElement('ellipse', _extends({ key: 'ellipseSVG' }, ellipses));
 	  },
 	
 	  getGroups: function getGroups(groups) {
@@ -634,7 +635,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _react2['default'].createElement('g', null, _this.getShapes(item));
 	      });
 	    }
-	    return _react2['default'].createElement('g', null, this.getShapes(groups));
+	    return _react2['default'].createElement('g', { key: 'groupsSVG' }, this.getShapes(groups));
 	  },
 	
 	  getShapes: function getShapes(data) {
