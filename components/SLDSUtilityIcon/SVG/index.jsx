@@ -20,6 +20,8 @@ import SLDS_ICONS_STANDARD from './slds-icons-standard';
 
 module.exports = React.createClass({
 
+  displayName: "SLDSSvg",
+
   getDefaultProps () {
     return {
       name:'announcenent',
@@ -33,7 +35,7 @@ module.exports = React.createClass({
         return <path {...item} />;
       });
     }
-    return <path {...paths} />;
+    return <path key="pathSVG" {...paths} />;
   },
 
   getCircles (circles) {
@@ -42,7 +44,7 @@ module.exports = React.createClass({
         return <circle {...item} />;
       });
     }
-    return <circle {...circles} />;
+    return <circle key="circleSVG" {...circles} />;
   },
 
   getEllipses (ellipses) {
@@ -51,7 +53,7 @@ module.exports = React.createClass({
         return <ellipse {...item} />;
       });
     }
-    return <ellipse {...ellipses} />;
+    return <ellipse key="ellipseSVG" {...ellipses} />;
   },
 
   getGroups (groups) {
@@ -60,7 +62,7 @@ module.exports = React.createClass({
         return <g>{ this.getShapes(item) }</g>;
       });
     }
-    return <g>{ this.getShapes(groups) }</g>;
+    return <g key="groupsSVG">{ this.getShapes(groups) }</g>;
   },
 
   getShapes (data) {

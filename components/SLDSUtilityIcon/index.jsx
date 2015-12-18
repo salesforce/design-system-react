@@ -15,7 +15,9 @@ import React from 'react';
 import SVG from './SVG';
 
 module.exports = React.createClass( {
-  render () { 
+  displayName: "SLDSUtilityIcon",
+
+  render () {
     return <SVG {...this.props} />;
   }
 });
