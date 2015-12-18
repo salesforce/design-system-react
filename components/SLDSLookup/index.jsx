@@ -23,9 +23,11 @@ const displayName = "SLDSLookup";
 const propTypes = {
   boldRegex: React.PropTypes.instanceOf(RegExp),
   modal: React.PropTypes.bool,
+  /**
+   * text is no search results found
+   */
   emptyMessage: React.PropTypes.string,
   errors: React.PropTypes.arrayOf(React.PropTypes.string),
-  disabled: React.PropTypes.bool,
   filterWith: React.PropTypes.func,
   hasError: React.PropTypes.bool,
   iconCategory: React.PropTypes.string,
@@ -47,7 +49,6 @@ const defaultFilter = (term, item) => {
 };
 
 const defaultProps = {
-  disabled: false,
   filterWith: defaultFilter,
   modal: false,
 };
