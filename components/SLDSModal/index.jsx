@@ -200,11 +200,11 @@ class SLDSModal extends React.Component {
 
     if(hasHeader) {
       headerContent = (
-        <span>
+        <div>
           {this.props.toast}
           <h2 className={classNames(titleClass)}>{this.props.title}</h2>
           {this.props.tagline ? <p className="slds-m-top--x-small">{this.props.tagline}</p>:null}
-        </span>
+        </div>
       )
     }
 

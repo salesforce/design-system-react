@@ -62,7 +62,6 @@ module.exports = React.createClass( {
 
               <div className="slds-p-vertical--large">
                 <SLDSLookup
-                  emptyMessage="No items found"
                   footerRenderer={SLDSLookup.DefaultFooter}
                   hasError={true}
                   headerRenderer={SLDSLookup.DefaultHeader}
