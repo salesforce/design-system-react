@@ -38,7 +38,7 @@ class LookupSection extends React.Component {
         </h3>
         <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" />
 
-        <div className="demo-only">
+        <div>
           <CodeMirror codeText={Samples.Lookups} />
           <PropTable component="SLDSLookup" />
         </div>
