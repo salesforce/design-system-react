@@ -127,7 +127,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  SLDSButton: _SLDSButton2['default'],
 	  SLDSButtonStateful: _SLDSButtonSLDSButtonStateful2['default'],
 	  SLDSButtonGroup: _SLDSButtonGroup2['default'],
-	  SLDSDropdownBase: _SLDSDropdownBase2['default'],
+	  SLDSDropdown: _SLDSDropdownBase2['default'],
 	  SLDSIcons: _SLDSIcons2['default'],
 	  SLDSLookup: _SLDSLookup2['default'],
 	  SLDSModal: _SLDSModal2['default'],
@@ -3815,20 +3815,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	var propTypes = {
 	  className: _react2["default"].PropTypes.string,
 	  disabled: _react2["default"].PropTypes.bool,
-	  horizontalAlign: _react2["default"].PropTypes.string,
+	  horizontalAlign: _react2["default"].PropTypes.oneOf(["left", "right"]),
 	  hoverCloseDelay: _react2["default"].PropTypes.number,
 	  initialFocus: _react2["default"].PropTypes.bool,
 	  label: _react2["default"].PropTypes.string,
 	  listClassName: _react2["default"].PropTypes.string,
 	  listItemRenderer: _react2["default"].PropTypes.func,
+	  /**
+	   * if modal, dropdown renders specifically to work inside a modal
+	   */
 	  modal: _react2["default"].PropTypes.bool,
 	  onClick: _react2["default"].PropTypes.func,
 	  onSelect: _react2["default"].PropTypes.func.isRequired,
 	  onUpdateHighlighted: _react2["default"].PropTypes.func,
-	  openOn: _react2["default"].PropTypes.string,
+	  openOn: _react2["default"].PropTypes.oneOf(["hover", "click"]),
 	  options: _react2["default"].PropTypes.array,
 	  placeholder: _react2["default"].PropTypes.string,
 	  value: _react2["default"].PropTypes.string,
+	  /**
+	   * determines variant of button that triggers modal
+	   */
 	  variant: _react2["default"].PropTypes.string
 	};
 	var defaultProps = {
@@ -3847,6 +3853,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: null,
 	  variant: "neutral"
 	};
+	
+	/**
+	 * The SLDSDropdown component is a variant of the Menu component in SLDS. For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightening Design System - Menus</a>.
+	 */
 	
 	var SLDSDropdown = (function (_React$Component) {
 	  _inherits(SLDSDropdown, _React$Component);
@@ -4070,20 +4080,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "getPopoverContent",
 	    value: function getPopoverContent() {
 	      return _react2["default"].createElement(_utils.List, {
-	        ref: "list",
-	        options: this.props.options,
 	        className: this.props.listClassName,
 	        highlightedIndex: this.state.highlightedIndex,
-	        selectedIndex: this.state.selectedIndex,
-	        onSelect: this.handleSelect.bind(this),
-	        onUpdateHighlighted: this.handleUpdateHighlighted.bind(this),
+	        isHover: this.state.isHover,
+	        itemRenderer: this.props.listItemRenderer,
 	        onListBlur: this.handleListBlur.bind(this),
 	        onListItemBlur: this.handleListItemBlur.bind(this),
+	        onCancel: this.handleCancel.bind(this),
 	        onMouseEnter: this.props.openOn === "hover" ? this.handleMouseEnter.bind(this) : null,
 	        onMouseLeave: this.props.openOn === "hover" ? this.handleMouseLeave.bind(this) : null,
-	        onCancel: this.handleCancel.bind(this),
-	        itemRenderer: this.props.listItemRenderer,
-	        isHover: this.state.isHover
+	        onSelect: this.handleSelect.bind(this),
+	        onUpdateHighlighted: this.handleUpdateHighlighted.bind(this),
+	        options: this.props.options,
+	        ref: "list",
+	        selectedIndex: this.state.selectedIndex
 	      });
 	    }
 	  }, {
@@ -4099,10 +4109,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var className = "slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--" + this.props.horizontalAlign;
 	      return !this.props.disabled && this.state.isOpen ? _react2["default"].createElement(_SLDSPopover2["default"], {
 	        className: className,
-	        horizontalAlign: this.props.horizontalAlign,
-	        targetElement: this.refs.button,
 	        closeOnTabKey: true,
-	        onClose: this.handleCancel.bind(this) }, this.getPopoverContent()) : null;
+	        horizontalAlign: this.props.horizontalAlign,
+	        onClose: this.handleCancel.bind(this),
+	        targetElement: this.refs.button
+	      }, this.getPopoverContent()) : null;
 	    }
 	  }, {
 	    key: "getPlaceholder",
@@ -4128,7 +4139,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        onMouseLeave: (0, _utilsCreateChainedFunction2["default"])(this.props.onMouseLeave, this.props.openOn === "hover" ? this.handleMouseLeave.bind(this) : null),
 	        ref: "button",
 	        style: this.props.style,
-	        tabIndex: this.state.isOpen ? -1 : 0,
+	        tabIndex: this.state.isOpen ? "-1" : "0",
 	        variant: this.props.variant
 	      }, this.props.modal ? this.getModalPopover() : this.getSimplePopover());
 	    }

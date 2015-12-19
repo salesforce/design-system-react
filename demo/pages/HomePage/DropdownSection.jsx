@@ -26,22 +26,20 @@ class DropdownSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSDropdown"].description;
+    const desc = DOCS["SLDSDropdownBase"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSDropdown"] ? true : false;
+    const docs = DOCS["SLDSDropdownBase"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>
-          Dropdown
-        </h3>
+        <h3 className='slds-text-heading--medium slds-truncate'>Dropdown</h3>
         {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
         <div>
           <CodeMirror codeText={Samples.Dropdowns} />
-          <PropTable component="SLDSDropdown" />
+          <PropTable component="SLDSDropdownBase" />
         </div>
       </div>
     );

@@ -320,7 +320,7 @@
         }
     },
     "SLDSDropdownBase": {
-        "description": "",
+        "description": "The SLDSDropdown component is a variant of the Menu component in SLDS. For more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">Lightening Design System - Menus</a>.",
         "displayName": "SLDSDropdown",
         "props": {
             "className": {
@@ -339,7 +339,17 @@
             },
             "horizontalAlign": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
@@ -384,7 +394,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "if modal, dropdown renders specifically to work inside a modal"
             },
             "onClick": {
                 "type": {
@@ -409,7 +419,17 @@
             },
             "openOn": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"hover\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"click\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
                 "description": ""
@@ -440,7 +460,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "determines variant of button that triggers modal"
             }
         }
     },

@@ -20,20 +20,26 @@ const displayName = "SLDSDropdown";
 const propTypes = {
   className: React.PropTypes.string,
   disabled: React.PropTypes.bool,
-  horizontalAlign: React.PropTypes.string,
+  horizontalAlign: React.PropTypes.oneOf(["left", "right"]),
   hoverCloseDelay: React.PropTypes.number,
   initialFocus: React.PropTypes.bool,
   label: React.PropTypes.string,
   listClassName: React.PropTypes.string,
   listItemRenderer: React.PropTypes.func,
+  /**
+   * if modal, dropdown renders specifically to work inside a modal
+   */
   modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func.isRequired,
   onUpdateHighlighted: React.PropTypes.func,
-  openOn: React.PropTypes.string,
+  openOn: React.PropTypes.oneOf(["hover", "click"]),
   options: React.PropTypes.array,
   placeholder: React.PropTypes.string,
   value: React.PropTypes.string,
+  /**
+   * determines variant of button that triggers modal
+   */
   variant: React.PropTypes.string,
 };
 const defaultProps = {
@@ -53,6 +59,9 @@ const defaultProps = {
   variant: "neutral",
 };
 
+/**
+ * The SLDSDropdown component is a variant of the Menu component in SLDS. For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightening Design System - Menus</a>.
+ */
 class SLDSDropdown extends React.Component {
 
   constructor(props) {
@@ -252,20 +261,20 @@ class SLDSDropdown extends React.Component {
 
   getPopoverContent(){
     return <List
-            ref="list"
-            options={this.props.options}
             className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
-            selectedIndex={this.state.selectedIndex}
-            onSelect={this.handleSelect.bind(this)}
-            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
+            isHover={this.state.isHover}
+            itemRenderer={this.props.listItemRenderer}
             onListBlur={this.handleListBlur.bind(this)}
             onListItemBlur={this.handleListItemBlur.bind(this)}
+            onCancel={this.handleCancel.bind(this)}
             onMouseEnter={(this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null}
             onMouseLeave={(this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null}
-            onCancel={this.handleCancel.bind(this)}
-            itemRenderer={this.props.listItemRenderer}
-            isHover={this.state.isHover}
+            onSelect={this.handleSelect.bind(this)}
+            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
+            options={this.props.options}
+            ref="list"
+            selectedIndex={this.state.selectedIndex}
             />;
   }
 
@@ -286,10 +295,11 @@ class SLDSDropdown extends React.Component {
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
           className={className}
-          horizontalAlign={this.props.horizontalAlign}
-          targetElement={this.refs.button}
           closeOnTabKey={true}
-          onClose={this.handleCancel.bind(this)}>
+          horizontalAlign={this.props.horizontalAlign}
+          onClose={this.handleCancel.bind(this)}
+          targetElement={this.refs.button}
+          >
           {this.getPopoverContent()}
         </SLDSPopover>:null
     );
