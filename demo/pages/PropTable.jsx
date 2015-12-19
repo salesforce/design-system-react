@@ -55,7 +55,10 @@ class PropTable extends React.Component {
   }
 
   renderPropInfo() {
-    const docs = DOCS[this.props.component].props;
+    const docs = DOCS[this.props.component] ? DOCS[this.props.component].props : null;
+    if(!docs){
+      return;
+    }
     let props = [];
     for(var prop in docs) {
       let p = docs[prop];

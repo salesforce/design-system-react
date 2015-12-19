@@ -12,11 +12,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import SLDSPicklistBase from '../../../components/SLDSPicklistBase';
 
-import {default as PrismCode} from 'react-prism/lib/PrismCode';
-
-
-
-
 
 module.exports = React.createClass( {
 
@@ -51,10 +46,6 @@ module.exports = React.createClass( {
                 Picklist Base
                 </a>
               </h3>
-
-              <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSPicklistBasePage.txt")}
-              </PrismCode>
 
               <div className="slds-p-vertical--large">
                 <SLDSPicklistBase

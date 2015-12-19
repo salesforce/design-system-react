@@ -14,11 +14,12 @@ import HomePage from './pages/HomePage';
 
 import ButtonSection from './pages/HomePage/ButtonSection';
 import ButtonGroupSection from './pages/HomePage/ButtonGroupSection';
-import DatePickerSingleSelectSection from './pages/HomePage/DatePickerSingleSelectSection';
-import DropdownBaseSection from './pages/HomePage/DropdownBaseSection';
+import DropdownBaseSection from './pages/HomePage/DropdownSection';
 import IconSection from './pages/HomePage/IconSection';
 import LookupSection from './pages/HomePage/LookupSection';
 import ModalSection from './pages/HomePage/ModalSection';
+
+import DatePickerSingleSelectSection from './pages/HomePage/DatePickerSingleSelectSection';
 import NotificationSection from './pages/HomePage/NotificationSection';
 import PicklistSection from './pages/HomePage/PicklistSection';
 import TooltipSection from './pages/HomePage/TooltipSection';

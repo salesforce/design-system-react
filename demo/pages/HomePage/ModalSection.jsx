@@ -31,12 +31,13 @@ class ModalSection extends React.Component {
   }
 
   render(){
+    const docs = DOCS["SLDSModal"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
           Modal
         </h3>
-        <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" />
+        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
         <div className="demo-only">
           <CodeMirror codeText={Samples.Modals} />

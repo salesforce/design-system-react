@@ -14,11 +14,11 @@ import Samples from '../Samples';
 import PropTable from '../PropTable';
 import DOCS from '../../../docs';
 
-const displayName = "LookupSection";
+const displayName = "DropdownSection";
 const propTypes = {};
 const defaultProps = {};
 
-class LookupSection extends React.Component {
+class DropdownSection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,22 +26,22 @@ class LookupSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSLookup"].description;
+    const desc = DOCS["SLDSDropdown"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSLookup"] ? true : false;
+    const docs = DOCS["SLDSDropdown"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
-          Lookup
+          Dropdown
         </h3>
         {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
         <div>
-          <CodeMirror codeText={Samples.Lookups} />
-          <PropTable component="SLDSLookup" />
+          <CodeMirror codeText={Samples.Dropdowns} />
+          <PropTable component="SLDSDropdown" />
         </div>
       </div>
     );
@@ -49,9 +49,9 @@ class LookupSection extends React.Component {
 
 }
 
-LookupSection.displayName = displayName;
-LookupSection.propTypes = propTypes;
-LookupSection.defaultProps = defaultProps;
+DropdownSection.displayName = displayName;
+DropdownSection.propTypes = propTypes;
+DropdownSection.defaultProps = defaultProps;
 
-module.exports = LookupSection;
+module.exports = DropdownSection;
 

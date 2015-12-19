@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import SLDSButton from './SLDSButton';
 import SLDSButtonStateful from './SLDSButton/SLDSButtonStateful';
 import SLDSButtonGroup from './SLDSButtonGroup';
-import SLDSDropdownBase from './SLDSDropdownBase';
+import SLDSDropdown from './SLDSDropdownBase';
 import SLDSIcons from './SLDSIcons';
 import SLDSLookup from './SLDSLookup';
 import SLDSModal from './SLDSModal';
@@ -27,7 +27,7 @@ module.exports = {
   SLDSButton: SLDSButton,
   SLDSButtonStateful: SLDSButtonStateful,
   SLDSButtonGroup: SLDSButtonGroup,
-  SLDSDropdownBase: SLDSDropdownBase,
+  SLDSDropdown: SLDSDropdown,
   SLDSIcons: SLDSIcons,
   SLDSLookup: SLDSLookup,
   SLDSModal: SLDSModal,

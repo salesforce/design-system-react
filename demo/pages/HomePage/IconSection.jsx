@@ -31,13 +31,13 @@ class IconSection extends React.Component {
   }
 
   render(){
+    const docs = DOCS["SLDSIcons/Icon"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
           Icon
         </h3>
-
-        <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" />
+        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
         <div className="demo-only">
           <CodeMirror codeText={Samples.Icons} />

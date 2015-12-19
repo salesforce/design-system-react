@@ -12,6 +12,7 @@ import React from 'react';
 import CodeMirror from '../CodeMirror';
 import Samples from '../Samples';
 import PropTable from '../PropTable';
+import DOCS from '../../../docs';
 
 const displayName = "ButtonGroupSection";
 const propTypes = {};
@@ -24,12 +25,19 @@ class ButtonGroupSection extends React.Component {
     this.state = {};
   }
 
+  getDescription() {
+    const desc = DOCS["SLDSButtonGroup"].description;
+    return {__html: desc };
+  }
+
   render(){
+    const docs = DOCS["SLDSButtonGroup"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
           Button Groups
         </h3>
+        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
         <div className="demo-only">
           <CodeMirror codeText={Samples.ButtonGroups} />

@@ -316,7 +316,7 @@ class SLDSDropdown extends React.Component {
         onMouseLeave={ chain(this.props.onMouseLeave, (this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null ) }
         ref="button"
         style={this.props.style}
-        tabIndex={this.state.isOpen?-1:0}
+        tabIndex={this.state.isOpen ? "-1" : "0"}
         variant={this.props.variant}
         >
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
