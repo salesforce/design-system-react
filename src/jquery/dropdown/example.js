@@ -1,12 +1,12 @@
 import * as Lib from '../../lib/lib';
 import Dropdown from './dropdown';
-import sampleData from '../../../sample-data/dropdown';
+import {sampleData} from 'design-system-facades-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	const dropdown = new Dropdown($('#dropdown-jquery-control .dropdown1'), {
-		collection: sampleData.defaultArray,
+		collection: sampleData.dropdown.defaultArray,
 		selection: { value: '1' }
 	});
 
@@ -18,7 +18,7 @@ $(function () {
 		dropdown.setSelectionByIndex(1);
 	});
 	$('#dropdown-jquery-setByObject').on('click', function () {
-		dropdown.setSelection(sampleData.defaultArray[5]);
+		dropdown.setSelection(sampleData.dropdown.defaultArray[5]);
 	});
 	$('#dropdown-jquery-enable').on('click', function () {
 		dropdown.enable();

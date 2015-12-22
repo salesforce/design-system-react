@@ -30,7 +30,10 @@ var config = {
 			'.web.js',
 			'.js',
 			'.scss'
-		]
+		],
+		alias: {
+			'design-system-facades-utilities': path.join(__dirname, 'utilities/main.js')
+		}
 	},
 	devServer: {
 		port: port

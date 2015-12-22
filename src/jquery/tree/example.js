@@ -1,11 +1,11 @@
 import * as Lib from '../../lib/lib';
 import Tree from './tree';
-import sampleData from '../../../sample-data/tree';
+import {sampleData} from 'design-system-facades-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
 const options = {
-	collection: sampleData.defaultArray,
+	collection: sampleData.tree.defaultArray,
 	folderSelect: false,
 	multiSelect: true
 };

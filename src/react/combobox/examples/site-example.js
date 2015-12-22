@@ -1,80 +1,67 @@
 import * as Lib from '../../../lib/lib';
 import React from 'react';
 import {Combobox} from '../../dist';
-import sampleData from '../../../../sample-data/picklist';
+
+// utilities
+import {sampleData} from 'design-system-facades-utilities';
+import {ExampleEvents} from 'design-system-facades-utilities';
 
 export default React.createClass({
 	propTypes: {
+		modal: React.PropTypes.bool,
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
+	},
+
+	componentDidMount () {
+		ExampleEvents.registerEventListener(this, 'combobox', 'exampleMethod');
 	},
 
 	getInitialState () {
 		return {
-			models: [
-				{
-					collection: sampleData.defaultArray,
-					disabled: false,
-					selection: sampleData.defaultArray[1],
-					resize: 'auto'
-				}
-			]
+			model: {
+				collection: sampleData.picklist.defaultArray,
+				selection: sampleData.picklist.defaultArray[1],
+				resize: 'auto'
+			}
 		};
 	},
 
 	render () {
-		const comboboxen = this.state.models.map((model, index) => {
-			return (
-				<div key={index}>
-					<div className="slds-col example">
-						<div>
-							<Combobox {...model} onChanged={this._handleModelChange.bind(this, index)}/>
-						</div>
-					</div>
-					<div className="slds-col demo-controls">
-						<div className="slds-button-group" role="group">
-							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.logSelectedItem.bind(this, index)}>Log selected item</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" disabled>Set by index</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.setSelection.bind(this, index)}>Set by object</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.enable.bind(this, index)}>Enable</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.disable.bind(this, index)}>Disable</button>
-						</div>
-					</div>
-				</div>
-			);
-		});
-
 		return (
 			<div>
-				{comboboxen}
+				<Combobox
+					{...this.state.model}
+					modalMenu={this.props.modal}
+					onChanged={this._handleModelChange}/>
 			</div>
 		);
 	},
 
-	_handleModelChange (index, selection) {
-		const models = this.state.models;
-		models[index].selection = selection;
-		this.setState({models});
+	_handleModelChange (selection) {
+		const model = this.state.model;
+		model.selection = selection;
+		this.setState({model});
 	},
 
-	logSelectedItem (index) {
-		Lib.log(this.state.models[index].selection);
+	logSelectedItem () {
+		Lib.log(this.state.model.selection);
 	},
 
-	setSelection (index) {
-		const models = this.state.models;
-		models[index].selection = sampleData.defaultArray[5];
-		this.setState({models});
+	setSelection () {
+		const model = this.state.model;
+		model.selection = sampleData.picklist.defaultArray[5];
+		this.setState({model});
 	},
 
-	enable (index) {
-		const models = this.state.models;
-		models[index].disabled = false;
-		this.setState({models});
+	enable () {
+		const model = this.state.model;
+		model.disabled = false;
+		this.setState({model});
 	},
 
-	disable (index) {
-		const models = this.state.models;
-		models[index].disabled = true;
-		this.setState({models});
+	disable () {
+		const model = this.state.model;
+		model.disabled = true;
+		this.setState({model});
 	}
 });

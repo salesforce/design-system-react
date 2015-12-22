@@ -1,15 +1,16 @@
 import React from 'react';
 import Lookup from '../lookup';
-import sampleData from '../../../../sample-data/lookup';
+import {sampleData} from 'design-system-facades-utilities';
 
 export default React.createClass({
 	propTypes: {
+		modal: React.PropTypes.bool,
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
 	},
 
 	getInitialState () {
 		return {
-			collection: sampleData.defaultArray
+			collection: sampleData.lookup.defaultArray
 		};
 	},
 
@@ -21,6 +22,7 @@ export default React.createClass({
 					selection={this.state.selection}
 					onChanged={this._handleModelChange}
 					filterPredicate={this._filterPredicate}
+					modalMenu={this.props.modal}
 					onAddClick={this._handleAdd}
 					isOpen={this.state.isOpen} />
 			</div>
@@ -33,7 +35,7 @@ export default React.createClass({
 	
 	_addItems () {
 		this.setState({
-			collection: sampleData.defaultArray.concat(sampleData.additionalItems)
+			collection: sampleData.lookup.defaultArray.concat(sampleData.lookup.additionalItems)
 		});
 		
 		window.clearTimeout(this._addItemsTimeout);

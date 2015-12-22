@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import badge from './badge/examples/site-example';
 import button from './button/example';
 import buttonGroup from './button-group/example';
-import combobox from './combobox/examples/site-example';
+import combobox from './combobox/examples/dev-example';
 import checkbox from './checkbox/example';
 import datepicker from './datepicker/examples/site-example';
 import dropdown from './dropdown/example';

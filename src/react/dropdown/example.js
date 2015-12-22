@@ -2,7 +2,7 @@ import * as Lib from '../../lib/lib';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Dropdown from './dropdown';
-import sampleData from '../../../sample-data/dropdown';
+import {sampleData} from 'design-system-facades-utilities';
 
 export default function () {
 	const DropdownExample = React.createClass({
@@ -14,9 +14,9 @@ export default function () {
 			return {
 				models: [
 					{
-						collection: sampleData.defaultArray,
+						collection: sampleData.dropdown.defaultArray,
 						disabled: false,
-						selection: sampleData.defaultArray[1]
+						selection: sampleData.dropdown.defaultArray[1]
 					}
 				]
 			};
