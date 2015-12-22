@@ -1,4 +1,4 @@
-import Lib from '../lib/lib';
+import * as Lib from '../lib/lib';
 
 import Badge from './badge/badge';
 import Button from './button/button';
