@@ -32,7 +32,9 @@ var config = {
 			'.scss'
 		],
 		alias: {
-			'design-system-facades-utilities': path.join(__dirname, 'utilities/main.js')
+			'design-system-jquery': path.join(__dirname, 'src/jquery/dist.js'),
+			'design-system-react': path.join(__dirname, 'src/react/dist.js'),
+			'design-system-utilities': path.join(__dirname, 'utilities/main.js')
 		}
 	},
 	devServer: {
