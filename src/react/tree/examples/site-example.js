@@ -23,7 +23,7 @@ export default React.createClass({
 						open={this.state.open}
 						onChanged={this.handleChanged}
 						onOpened={this.handleToggle}
-						onClosed={this.handleToggle} />;
+						onClosed={this.handleToggle} />
 				</div>
 				<div className="slds-col demo-controls"></div>
 			</div>

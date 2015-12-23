@@ -3,6 +3,8 @@ var fs = require('fs');
 var codeDir = './src/react/';
 var exampleCode = {
 	badge: fs.readFileSync(codeDir + 'badge/examples/site-example.js', 'utf8'),
+	button: fs.readFileSync(codeDir + 'button/examples/site-example.js', 'utf8'),
+	buttonGroup: fs.readFileSync(codeDir + 'button-group/examples/site-example.js', 'utf8'),
 	checkbox: fs.readFileSync(codeDir + 'checkbox/examples/site-example.js', 'utf8'),
 	combobox: fs.readFileSync(codeDir + 'combobox/examples/site-example.js', 'utf8'),
 	datepicker: fs.readFileSync(codeDir + 'datepicker/examples/site-example.js', 'utf8'),
