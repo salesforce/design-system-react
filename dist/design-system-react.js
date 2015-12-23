@@ -4099,13 +4099,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "getSimplePopover",
 	    value: function getSimplePopover() {
 	      return !this.props.disabled && this.state.isOpen ? _react2["default"].createElement("div", {
-	        className: "slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu",
+	        className: "slds-dropdown slds-dropdown--menu slds-dropdown--left",
 	        style: { maxHeight: "20em" } }, this.getPopoverContent()) : null;
 	    }
 	  }, {
 	    key: "getModalPopover",
 	    value: function getModalPopover() {
-	      var className = "slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--" + this.props.horizontalAlign;
+	      var className = "slds-dropdown slds-dropdown--menu slds-dropdown--" + this.props.horizontalAlign;
 	      return !this.props.disabled && this.state.isOpen ? _react2["default"].createElement(_SLDSPopover2["default"], {
 	        className: className,
 	        closeOnTabKey: true,
@@ -7365,8 +7365,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        className: "slds-dropdown__item" + isSelected,
 	        onMouseDown: this.handleMouseDown.bind(this),
 	        onMouseEnter: this.props.onMouseEnter,
-	        onMouseLeave: this.props.onMouseLeave,
-	        tabIndex: -1 }, _react2['default'].createElement('a', { id: 'menu-0-' + this.props.index,
+	        onMouseLeave: this.props.onMouseLeave }, _react2['default'].createElement('a', { id: 'menu-0-' + this.props.index,
 	        href: 'javascript:void(0)',
 	        ref: 'link',
 	        className: 'slds-truncate',
@@ -7490,7 +7489,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  _createClass(SLDSListItemLabel, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2['default'].createElement('section', null, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'check', position: 'left', category: 'utility', size: 'x-small', className: 'slds-icon--selected slds-icon-text-default slds-m-right--x-small' }), this.props.label);
+	      return _react2['default'].createElement('p', null, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'check', position: 'left', category: 'utility', size: 'x-small', className: 'slds-icon--selected slds-icon-text-default slds-m-right--x-small' }), this.props.label);
 	    }
 	  }]);
 	
