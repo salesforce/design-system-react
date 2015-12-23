@@ -162,8 +162,7 @@ class SLDSListItem extends React.Component {
         className={"slds-dropdown__item" + isSelected}
         onMouseDown={this.handleMouseDown.bind(this)}
         onMouseEnter={this.props.onMouseEnter}
-        onMouseLeave={this.props.onMouseLeave}
-        tabIndex={-1}>
+        onMouseLeave={this.props.onMouseLeave}>
           <a id={'menu-0-'+this.props.index}
             href='javascript:void(0)'
             ref='link'

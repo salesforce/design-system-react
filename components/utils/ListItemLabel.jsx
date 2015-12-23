@@ -38,10 +38,10 @@ class SLDSListItemLabel extends React.Component {
   }
   render() {
     return (
-      <section>
+      <p>
         <Icon name='check' position='left' category='utility' size="x-small" className="slds-icon--selected slds-icon-text-default slds-m-right--x-small" />
         {this.props.label}
-      </section>
+      </p>
     )
   }
 }

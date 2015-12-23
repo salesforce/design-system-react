@@ -282,7 +282,7 @@ class SLDSDropdown extends React.Component {
     return(
       !this.props.disabled && this.state.isOpen?
         <div
-          className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
+          className="slds-dropdown slds-dropdown--menu slds-dropdown--left"
           style={{maxHeight: "20em"}}>
           {this.getPopoverContent()}
         </div>:null
@@ -290,7 +290,7 @@ class SLDSDropdown extends React.Component {
   }
 
   getModalPopover(){
-    const className = "slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--"+this.props.horizontalAlign;
+    const className = "slds-dropdown slds-dropdown--menu slds-dropdown--"+this.props.horizontalAlign;
     return(
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
