@@ -9,6 +9,7 @@ import Combobox from './combobox/combobox';
 import Datatable from './data-table/data-table';
 import Datepicker from './datepicker/datepicker';
 import Dropdown from './dropdown/dropdown';
+import Modal from './modal/modal';
 import Notification from './notification/notification';
 import Picklist from './picklist/picklist';
 import Pillbox from './pillbox/pillbox';
@@ -29,6 +30,7 @@ module.exports = {
 	Datatable,
 	Datepicker,
 	Dropdown,
+	Modal,
 	Notification,
 	Picklist,
 	Pillbox,
