@@ -1432,7 +1432,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
 	   */
 	  name: _react2['default'].PropTypes.string,
-	  size: _react2['default'].PropTypes.oneOf(["x-small", "small", "medium", "large"])
+	  size: _react2['default'].PropTypes.oneOf(["x-small", "small", "large"])
 	};
 	var defaultProps = {
 	  category: 'standard'
