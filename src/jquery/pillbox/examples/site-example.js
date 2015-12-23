@@ -1,5 +1,4 @@
-import * as Lib from '../../lib/lib';
-import Pillbox from './pillbox';
+import {Lib, Pillbox} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

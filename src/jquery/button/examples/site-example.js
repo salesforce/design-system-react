@@ -1,5 +1,4 @@
-import * as Lib from '../../lib/lib';
-import Button from './button';
+import {Lib, Button} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

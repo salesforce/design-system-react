@@ -1,5 +1,4 @@
-import * as Lib from '../../lib/lib';
-import Notification from './notification';
+import {Lib, Notification} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

@@ -1,5 +1,4 @@
-import * as Lib from '../../lib/lib';
-import {Datatable} from 'design-system-jquery';
+import {Lib, Datatable} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

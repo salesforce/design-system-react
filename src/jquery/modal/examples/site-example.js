@@ -1,5 +1,4 @@
-import * as Lib from '../../lib/lib';
-import Modal from './modal';
+import {Lib, Modal} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

@@ -1,6 +1,4 @@
-import {Lib} from 'design-system-jquery';
-
-import Badge from './badge';
+import {Lib, Badge} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

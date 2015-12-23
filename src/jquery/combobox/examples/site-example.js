@@ -1,5 +1,4 @@
-import * as Lib from '../../lib/lib';
-import Combobox from './combobox';
+import {Lib, Combobox} from 'design-system-jquery';
 import {sampleData} from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;

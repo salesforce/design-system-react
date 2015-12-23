@@ -3,6 +3,7 @@ var compression = require('compression');
 var exphbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
 var reactExampleScripts = require('./site/example-code/react');
+var jqueryExampleScripts = require('./site/example-code/jquery');
 
 // Create server
 var app = express();
@@ -36,13 +37,18 @@ app.use('/vendor/react', express.static(__dirname + '/node_modules/react-dom/dis
 app.use('/vendor/require', express.static(__dirname + '/node_modules/requirejs'));
 
 // Index
-app.get('/', function(req, res) {
+app.get('/', function (req, res) {
   res.render('index');
 });
 
 // jQuery examples
-app.get('/jquery', function(req, res) {
-  res.render('jquery/index');
+app.get('/jquery', function (req, res) {
+	var locals = {};
+
+	res.render('jquery/', locals, function () {
+		locals.code = jqueryExampleScripts;
+		res.render('jquery/index', locals);
+	});
 });
 
 // React examples

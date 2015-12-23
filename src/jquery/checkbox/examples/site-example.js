@@ -1,5 +1,4 @@
-import * as Lib from '../../lib/lib';
-import Checkbox from './checkbox';
+import {Lib, Checkbox} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

@@ -1,6 +1,4 @@
-import * as Lib from '../../lib/lib';
-import Radios from './radios';
-
+import {Lib, Radios} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

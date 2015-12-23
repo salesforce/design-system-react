@@ -1,5 +1,4 @@
-import * as Lib from '../../lib/lib';
-import Datepicker from './datepicker';
+import {Lib, Datepicker} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
