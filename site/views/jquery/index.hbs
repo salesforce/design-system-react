@@ -18,50 +18,6 @@
 
 	</style>
 	<script src="vendor/prism/prism.js"></script>
-	<script src="vendor/require/require.js"></script>
-	<script>
-		requirejs.config({
-			baseUrl: '',
-			paths: {
-				'jquery': 'vendor/jquery/jquery.min',
-				'jquery-facade': 'dist/jquery'
-			},
-			shim: {
-				'jquery': {
-					exports: '$'
-				},
-				'jquery-facade': {
-					deps: ['jquery']
-				}
-			}
-		});
-		require(['jquery', 'jquery-facade'], function ($, facades) {
-			// datepicker
-			{{ code.datepicker }}
-
-			// datatable
-			{{ code.datatable }}
-
-			// dropdown
-			{{ code.dropdown }}
-
-			// picklist
-			{{ code.picklist }}
-
-			// pills
-			{{ code.pills }}
-
-			// popover
-			{{ code.popover }}
-
-			// tooltip
-			{{ code.tooltip }}
-
-			// tree
-			{{ code.tree }}
-
-		});
-	</script>
 </head>
 <body>
 
@@ -89,7 +45,12 @@
 			<!-- badge -->
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Badge</div>
-				<div id="datepicker"></div>
+				<div id="badge-jquery-control">
+					<span class="badge1"></span>
+					<span class="badge2"></span>
+					<span class="badge3"></span>
+					<span class="badge4"></span>
+				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre><code class="language-javascript">{{ code.badge }}</code></pre>
 			</div>
@@ -97,7 +58,9 @@
 			<!-- datepicker -->
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Datepicker</div>
-				<div id="datepicker"></div>
+				<div id="datepicker-jquery-control">
+					<div class=""></div>
+				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre><code class="language-javascript">{{ code.datepicker }}</code></pre>
 			</div>
@@ -105,7 +68,9 @@
 			<!-- datatable -->
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Data-table</div>
-				<div id="datatable"></div>
+				<div id="datatable-jquery-control" class="slds-col | example">
+					<div class="dataTable1"></div>
+				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre style="max-height: 400px;"><code class="language-javascript">{{ code.datatable }}</code></pre>
 			</div>
@@ -113,7 +78,9 @@
 			<!-- dropdown -->
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Dropdown</div>
-				<div id="dropdown"></div>
+				<div id="dropdown-jquery-control">
+					<div class="dropdown1"></div>
+				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre><code class="language-javascript">{{ code.dropdown }}</code></pre>
 			</div>
@@ -121,7 +88,9 @@
 			<!-- picklist -->
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Picklist</div>
-				<div id="picklist"></div>
+				<div id="picklist-jquery-control" class="slds-col | example">
+					<div class="picklist1"></div>
+				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre><code class="language-javascript">{{ code.picklist }}</code></pre>
 			</div>
@@ -129,7 +98,9 @@
 			<!-- pills -->
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Pills</div>
-				<div id="pills"></div>
+				<div id="pillbox-jquery-control" class="slds-col | example">
+					<div class="pillbox1"></div>
+				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre><code class="language-javascript">{{ code.pills }}</code></pre>
 			</div>
@@ -137,7 +108,9 @@
 			<!-- popover -->
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Popover</div>
-				<button id="popover" class="slds-button slds-button--neutral">Popover</button>
+				<div id="popover-jquery-control" class="slds-col | example">
+					<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--x-small">Toggle</button>
+				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre><code class="language-javascript">{{ code.popover }}</code></pre>
 			</div>
@@ -145,7 +118,9 @@
 			<!-- tooltip -->
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Tooltip</div>
-				<button id="tooltip" class="slds-button slds-button--neutral">Tooltip</button>
+				<div id="tooltip-jquery-control" class="slds-col | example">
+					<button id="tooltip-jquery-toggle" class="slds-button slds-button--neutral slds-button--x-small">Toggle</button>
+				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre><code class="language-javascript">{{ code.tooltip }}</code></pre>
 			</div>
@@ -153,7 +128,9 @@
 			<!-- tree -->
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Tree</div>
-				<div id="tree"></div>
+				<div id="tree-jquery-control" class="slds-col | example">
+					<div class="tree1"></div>
+				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre style="max-height: 400px;"><code class="language-javascript">{{ code.tree }}</code></pre>
 			</div>
@@ -161,6 +138,7 @@
 		</div>
 	</div>
 	</div>
-	<script src="build/site-examples-react.bundle.js"></script>
+	<script src="/assets/facades/scripts/jquery.min.js"></script>
+	<script src="build/site-examples-jquery.bundle.js"></script>
 </body>
 </html>
