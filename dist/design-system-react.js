@@ -1478,12 +1478,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'render',
 	    value: function render() {
 	      var label = null;
-	      var styles = this.props.category === "action" ? { padding: "0.5rem" } : null;
 	
 	      if (this.props.assistiveText) {
 	        label = _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.assistiveText);
 	      }
-	      return _react2['default'].createElement('span', { className: this.getContainerClassName(), style: styles }, label, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { className: this.getClassName(), name: this.props.name, category: this.props.category, 'aria-hidden': 'true' }));
+	      return _react2['default'].createElement('span', { className: this.getContainerClassName() }, label, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { className: this.getClassName(), name: this.props.name, category: this.props.category, 'aria-hidden': 'true' }));
 	    }
 	  }]);
 	
