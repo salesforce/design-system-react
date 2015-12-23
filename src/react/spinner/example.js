@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Spinner from './spinner';
+import {Spinner} from 'design-system-react';
 
 // require('../../../scss/components/grid-system/flavors/automatic-sizing/index.scss');
 // require('../../../scss/components/grid-system/flavors/horizontal-alignment-spread/index.scss');

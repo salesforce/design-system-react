@@ -1,5 +1,5 @@
 import React from 'react';
-import {ExampleEvents} from 'design-system-facades-utilities';
+import {ExampleEvents} from 'design-system-utilities';
 import SiteExample from './site-example';
 
 const control = 'combobox';

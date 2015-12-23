@@ -35,7 +35,6 @@ ReactDOM.render(React.createElement(lookup), document.querySelector('#lookup-rea
 ReactDOM.render(React.createElement(modal), document.querySelector('#modal-react-control'));
 notification();
 ReactDOM.render(React.createElement(picklist), document.querySelector('#picklist-react-control'));
-	// picker();
 pillbox();
 popover();
 radio();

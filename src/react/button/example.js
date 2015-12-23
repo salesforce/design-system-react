@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from './button';
-import ButtonView from './button-view';
+import {Button} from 'design-system-react';
+import {ButtonView} from 'design-system-react';
 
 export default function () {
 	const ButtonStatefulExample = React.createClass({

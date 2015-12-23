@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Popover from './popover';
+import {Popover} from 'design-system-react';
 
 export default function () {
 	const PopoverExample = React.createClass({

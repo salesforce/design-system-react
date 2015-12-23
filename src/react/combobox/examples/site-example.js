@@ -1,10 +1,8 @@
-import * as Lib from '../../../lib/lib';
 import React from 'react';
-import {Combobox} from '../../dist';
-
-// utilities
-import {sampleData} from 'design-system-facades-utilities';
-import {ExampleEvents} from 'design-system-facades-utilities';
+import {Lib} from 'design-system-react';
+import {Combobox} from 'design-system-react';
+import {sampleData} from 'design-system-utilities';
+import {ExampleEvents} from 'design-system-utilities';
 
 export default React.createClass({
 	propTypes: {

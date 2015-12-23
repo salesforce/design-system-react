@@ -1,7 +1,7 @@
-// import * as Lib from '../../lib/lib';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DataTable from './data-table';
+// import * as Lib from 'design-system-react';
+import {Datatable} from 'design-system-react';
 import _ from 'underscore';
 
 export default function () {
@@ -64,7 +64,7 @@ export default function () {
 		}
 	];
 
-	const DataTableExample = React.createClass({
+	const DatatableExample = React.createClass({
 		propTypes: {
 			models: React.PropTypes.arrayOf(React.PropTypes.object)
 		},
@@ -81,7 +81,7 @@ export default function () {
 			return (
 				<div>
 					<div className="slds-col example">
-						<DataTable
+						<Datatable
 							collection={this.state.collection}
 							selection={this.state.selection}
 							columns={this.state.columns}
@@ -136,5 +136,5 @@ export default function () {
 		}
 	});
 
-	ReactDOM.render(<DataTableExample />, document.getElementById('data-table-react-control'));
+	ReactDOM.render(<DatatableExample />, document.getElementById('data-table-react-control'));
 }

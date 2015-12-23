@@ -1,6 +1,6 @@
 import * as Lib from '../../lib/lib';
 import Picklist from './picklist';
-import {sampleData} from 'design-system-facades-utilities';
+import {sampleData} from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

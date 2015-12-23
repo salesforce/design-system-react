@@ -1,6 +1,6 @@
 import React from 'react';
-import Lookup from '../lookup';
-import {sampleData} from 'design-system-facades-utilities';
+import {Lookup} from 'design-system-react';
+import {sampleData} from 'design-system-utilities';
 
 export default React.createClass({
 	propTypes: {

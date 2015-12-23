@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Tree from './tree';
-import {sampleData} from 'design-system-facades-utilities';
+import {Tree} from 'design-system-react';
+import {sampleData} from 'design-system-utilities';
 
 export default function () {
 	const TreeExample = React.createClass({

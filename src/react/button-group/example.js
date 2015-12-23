@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Button from '../button/button';
-import ButtonGroup from '../button-group/button-group';
+import {Button} from 'design-system-react';
+import {ButtonGroup} from 'design-system-react';
 
 export default function () {
 	const ButtonGroupExample = React.createClass({

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Pillbox from './pillbox';
+import {Pillbox} from 'design-system-react';
 
 export default function () {
 	const PillboxExample = React.createClass({

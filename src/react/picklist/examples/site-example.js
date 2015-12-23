@@ -1,7 +1,7 @@
-import * as Lib from '../../../lib/lib';
 import React from 'react';
-import Picklist from '../picklist';
-import {sampleData} from 'design-system-facades-utilities';
+import {Lib} from 'design-system-react';
+import {Picklist} from 'design-system-react';
+import {sampleData} from 'design-system-utilities';
 
 export default React.createClass({
 	propTypes: {

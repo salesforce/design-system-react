@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Wizard from './wizard';
+import {Wizard} from 'design-system-react';
 
 export default function (element) {
 	// Note that you certainly don't *have* to put content in your collection, but you can!

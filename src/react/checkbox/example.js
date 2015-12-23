@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Checkbox from './checkbox';
+import {Checkbox} from 'design-system-react';
 
 // https://www.lightningdesignsystem.com/components/forms#checkbox
 

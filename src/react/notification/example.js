@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Notification from './notification';
+import {Notification} from 'design-system-react';
 
 export default function () {
 	ReactDOM.render(

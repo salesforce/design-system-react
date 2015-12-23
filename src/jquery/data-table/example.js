@@ -1,5 +1,5 @@
 import * as Lib from '../../lib/lib';
-import DataTable from './data-table';
+import {Datatable} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -63,7 +63,7 @@ const columns = [
 ];
 
 $(function () {
-	const dataTable1 = new DataTable($('#data-table-jquery-control .dataTable1'), {
+	const dataTable1 = new Datatable($('#data-table-jquery-control .dataTable1'), {
 		collection: collection,
 		columns: columns,
 		styles: {

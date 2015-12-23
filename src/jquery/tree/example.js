@@ -1,6 +1,6 @@
 import * as Lib from '../../lib/lib';
 import Tree from './tree';
-import {sampleData} from 'design-system-facades-utilities';
+import {sampleData} from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 

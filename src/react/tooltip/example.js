@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Tooltip from './tooltip';
+import {Tooltip} from 'design-system-react';
 
 export default function () {
 	const TooltipExample = React.createClass({

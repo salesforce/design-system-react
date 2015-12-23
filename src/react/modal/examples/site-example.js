@@ -1,11 +1,11 @@
 import React from 'react';
 
-// Modal Contents
+// Modal Contents (paths may not be accurate if code is copied)
 import DatepickerSiteExample from '../../datepicker/examples/site-example';
 import LookupSiteExample from '../../lookup/examples/site-example';
 import PicklistSiteExample from '../../picklist/examples/site-example';
 
-import Modal from '../modal';
+import {Modal} from 'design-system-react';
 
 export default React.createClass({
 	getInitialState () {

@@ -1,8 +1,8 @@
-import * as Lib from '../../lib/lib';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Dropdown from './dropdown';
-import {sampleData} from 'design-system-facades-utilities';
+import {Lib} from 'design-system-react';
+import {Dropdown} from 'design-system-react';
+import {sampleData} from 'design-system-utilities';
 
 export default function () {
 	const DropdownExample = React.createClass({

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Datepicker} from '../../dist';
+import {Datepicker} from 'design-system-react';
 
 export default React.createClass({
 	propTypes: {

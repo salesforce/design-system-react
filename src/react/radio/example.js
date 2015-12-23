@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Radio from './radio';
+import {Radio} from 'design-system-react';
 
 // https://www.lightningdesignsystem.com/components/forms#radio
 
