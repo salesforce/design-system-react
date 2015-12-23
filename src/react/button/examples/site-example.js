@@ -1,6 +1,5 @@
 import React from 'react';
-import {Button} from 'design-system-react';
-import {ButtonView} from 'design-system-react';
+import {Button, ButtonView} from 'design-system-react';
 
 export default React.createClass({
 	getInitialState () {

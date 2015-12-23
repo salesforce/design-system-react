@@ -1,8 +1,6 @@
 import React from 'react';
-import {Lib} from 'design-system-react';
-import {Combobox} from 'design-system-react';
-import {sampleData} from 'design-system-utilities';
-import {ExampleEvents} from 'design-system-utilities';
+import {Lib, Combobox} from 'design-system-react';
+import {sampleData, ExampleEvents} from 'design-system-utilities';
 
 export default React.createClass({
 	propTypes: {

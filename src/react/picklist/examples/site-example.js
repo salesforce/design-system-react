@@ -1,6 +1,5 @@
 import React from 'react';
-import {Lib} from 'design-system-react';
-import {Picklist} from 'design-system-react';
+import {Lib, Picklist} from 'design-system-react';
 import {sampleData} from 'design-system-utilities';
 
 export default React.createClass({
