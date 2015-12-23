@@ -8,7 +8,7 @@ import badge from './badge/examples/site-example';
 import button from './button/examples/site-example';
 import buttonGroup from './button-group/examples/site-example';
 import combobox from './combobox/examples/dev-example';
-import checkbox from './checkbox/examples/site-example';
+import checkbox from './checkbox/examples/dev-example';
 import datepicker from './datepicker/examples/site-example';
 import dropdown from './dropdown/examples/site-example';
 import lookup from './lookup/examples/site-example';

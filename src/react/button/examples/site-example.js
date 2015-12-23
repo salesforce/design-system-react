@@ -65,7 +65,6 @@ export default React.createClass({
 			</div>
 
 		</div>
-		<div className="slds-col demo-controls"></div>
 	</div>
 		);
 	},

@@ -9,28 +9,10 @@ export default React.createClass({
 		return (
 			<div>
 				<div className="slds-col example">
-				<SiteExample/>
+					<SiteExample/>
 				</div>
 				<div className="slds-col demo-controls">
 					<div className="slds-button-group" role="group">
-						<button
-							type="button"
-							className="slds-button slds-button--neutral slds-button--x-small"
-							onClick={
-								ExampleEvents.fireExampleEvent.bind(this,
-									{
-										control: control,
-										callbackMethod: 'logSelectedItem'
-									})}>Log selected item</button>
-						<button
-							type="button"
-							className="slds-button slds-button--neutral slds-button--x-small"
-							onClick={
-								ExampleEvents.fireExampleEvent.bind(this,
-									{
-										control: control,
-										callbackMethod: 'setSelection'
-									})}>Set by object</button>
 						<button
 							type="button"
 							className="slds-button slds-button--neutral slds-button--x-small"
@@ -49,6 +31,24 @@ export default React.createClass({
 										control: control,
 										callbackMethod: 'disable'
 									})}>Disable</button>
+						<button
+							type="button"
+							className="slds-button slds-button--neutral slds-button--x-small"
+							onClick={
+								ExampleEvents.fireExampleEvent.bind(this,
+									{
+										control: control,
+										callbackMethod: 'logSelectedItem'
+									})}>Log selected item</button>
+						<button
+							type="button"
+							className="slds-button slds-button--neutral slds-button--x-small"
+							onClick={
+								ExampleEvents.fireExampleEvent.bind(this,
+									{
+										control: control,
+										callbackMethod: 'setSelection'
+									})}>Set by object</button>
 					</div>
 				</div>
 			</div>
