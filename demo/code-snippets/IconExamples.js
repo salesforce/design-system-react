@@ -15,12 +15,14 @@ const iconExamples = (
     <Icon
       assistiveText="Announcements"
       category="action"
+      className="slds-m-around--x-small"
       name="announcement"
       size="medium" />
 
     <Icon
       assistiveText="Approval"
       category="action"
+      className="slds-m-around--x-small"
       name="approval"
       size="large" />
 

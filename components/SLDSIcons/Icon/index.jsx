@@ -71,13 +71,12 @@ class Icon extends React.Component {
 
   render() {
     let label = null;
-    const styles = this.props.category === "action" ? {padding: "0.5rem"}:null;
 
     if(this.props.assistiveText) {
       label = <span className="slds-assistive-text">{this.props.assistiveText}</span>;
     }
     return (
-      <span className={this.getContainerClassName()} style={styles}>
+      <span className={this.getContainerClassName()}>
       {label}
       <SLDSUtilityIcon className={this.getClassName()} name={this.props.name} category={this.props.category} aria-hidden='true' />
       </span>
