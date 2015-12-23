@@ -1,5 +1,4 @@
 import React from 'react';
-// import * as Lib from 'design-system-react';
 import {Datatable} from 'design-system-react';
 import _ from 'underscore';
 
