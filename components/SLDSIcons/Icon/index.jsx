@@ -30,7 +30,7 @@ const propTypes = {
    * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
    */
   name: React.PropTypes.string,
-  size: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
+  size: React.PropTypes.oneOf(["x-small", "small", "large"]),
 };
 const defaultProps = {
   category: 'standard',

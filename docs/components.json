@@ -531,10 +531,6 @@
                             "computed": false
                         },
                         {
-                            "value": "\"medium\"",
-                            "computed": false
-                        },
-                        {
                             "value": "\"large\"",
                             "computed": false
                         }

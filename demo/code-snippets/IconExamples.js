@@ -9,15 +9,13 @@ const iconExamples = (
     <Icon
       assistiveText="Accounts"
       category="standard"
-      name="account"
-      size="medium" />
+      name="account" />
 
     <Icon
       assistiveText="Announcements"
       category="action"
       className="slds-m-around--x-small"
-      name="announcement"
-      size="medium" />
+      name="announcement" />
 
     <Icon
       assistiveText="Approval"
