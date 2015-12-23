@@ -1,44 +1,39 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Pillbox} from 'design-system-react';
 
-export default function () {
-	const PillboxExample = React.createClass({
-		getInitialState () {
-			return {
-				selection: [
-					{
-						text: 'item 1',
-						value: 1
-					},
-					{
-						text: 'item 2',
-						value: 2
-					},
-					{
-						text: 'item 3',
-						value: 3
-					}
-				],
-				open: []
-			};
-		},
+export default React.createClass({
+	getInitialState () {
+		return {
+			selection: [
+				{
+					text: 'item 1',
+					value: 1
+				},
+				{
+					text: 'item 2',
+					value: 2
+				},
+				{
+					text: 'item 3',
+					value: 3
+				}
+			],
+			open: []
+		};
+	},
 
-		render () {
-			return <Pillbox selection={this.state.selection} onChanged={this.handleChanged}/>;
-		},
-
-		handleChanged (item, selection) {
-			this.setState({ selection });
-		}
-	});
-
-	ReactDOM.render(
-		<div>
-			<div className="slds-col example">
-				<PillboxExample/>
+	render () {
+		return (
+			<div>
+				<div className="slds-col example">
+					<Pillbox selection={this.state.selection} onChanged={this.handleChanged}/>;
+				</div>
+				<div className="slds-col demo-controls"></div>
 			</div>
-			<div className="slds-col demo-controls"></div>
-		</div>
-	, document.getElementById('pillbox-react-control'));
-}
+		);
+	},
+
+	handleChanged (item, selection) {
+		this.setState({ selection });
+	}
+});
