@@ -9,12 +9,11 @@ var packageJson = require('./package.json');
 var config = {
 	entry: {
 		'source-examples-react': ['./src/react/examples'],
-		'site-examples-react': ['./site/src/site-react'],
-		'source-examples-jquery': ['./src/jquery/examples']
+		'source-examples-jquery': ['./src/jquery/examples'],
+		'site-examples-react': ['./site/src/site-react']
 	},
 	resolve: {
 		modulesDirectories: [
-			'scss',
 			'node_modules',
 			'web_modules',
 			'other'
@@ -50,6 +49,10 @@ var config = {
 			{
 				test: /\.css$/,
 				loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+			},
+			{
+				test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+				loader: 'url-loader?limit=30000000000000&name=/examples/[name]-[hash].[ext]'
 			},
 			{
 				test: /\.scss$/,

@@ -29,11 +29,16 @@ const TreeBranch = React.createClass({
 		item: React.PropTypes.shape({
 			// getType: React.PropTypes.func.isRequired,
 			_getChildren: React.PropTypes.func.isRequired,
+			// getDisabled: React.PropTypes.func.isRequired,
 			// getIcon: React.PropTypes.func.isRequired,
-			// getId: React.PropTypes.func.isRequired,
+			getId: React.PropTypes.func.isRequired,
 			getText: React.PropTypes.func.isRequired
 			// getValue: React.PropTypes.func.isRequired
 		}).isRequired,
+		getControlNodeId: React.PropTypes.func.isRequired,
+		getControlNodeLabelId: React.PropTypes.func.isRequired,
+		getControlNodeTogglerId: React.PropTypes.func.isRequired,
+		id: React.PropTypes.string,
 		onItemClick: React.PropTypes.func.isRequired,
 		onExpandClick: React.PropTypes.func.isRequired,
 		selectable: React.PropTypes.bool.isRequired,
@@ -51,11 +56,11 @@ const TreeBranch = React.createClass({
 		if (!InnerTreeBranch) {
 			InnerTreeBranch = require('./tree-branch');
 		}
-		
+
 		if (this.props.autoOpenLevel <= this.props.autoOpenLimit && !this.props._isFolderOpen(this.props.item)) {
 			this._handleExpandClick(this.props.item);
 		}
-		
+
 		this.props.item._getChildren().then(resolvedChildren => {
 			this.setState({
 				children: resolvedChildren,
@@ -73,44 +78,59 @@ const TreeBranch = React.createClass({
 		const isOpen = this.props._isFolderOpen(this.props.item);
 		const isSelected = this.props._isItemSelected(this.props.item);
 		const children = [];
+		const labelId = this.props.getControlNodeLabelId(this.props.item.getId());
+		const togglerId = this.props.getControlNodeTogglerId(this.props.item.getId());
 
 		this.state.children.forEach(model => {
-			const id = model.getId();
-			
+			const modelId = model.getId();
+			const domId = this.props.getControlNodeId(modelId);
+
 			if (model.getType() === 'folder') {
 				children.push(<TreeBranch
-												key={id}
-												item={model}
-												selectable={this.props.selectable}
-												strings={this.props.strings}
-												autoOpenLevel={this.props.autoOpenLevel + 1}
-												autoOpenLimit={this.props.autoOpenLimit}
-												onItemClick={this._handleItemClick}
-												onExpandClick={this._handleExpandClick}
-												_isFolderOpen={this.props._isFolderOpen}
-												_isItemSelected={this.props._isItemSelected}/>);
+								key={modelId}
+								item={model}
+								id={domId}
+								selectable={this.props.selectable}
+								strings={this.props.strings}
+								autoOpenLevel={this.props.autoOpenLevel + 1}
+								autoOpenLimit={this.props.autoOpenLimit}
+								onItemClick={this._handleItemClick}
+								onExpandClick={this._handleExpandClick}
+								getControlNodeId={this.props.getControlNodeId}
+								getControlNodeLabelId={this.props.getControlNodeLabelId}
+								getControlNodeTogglerId={this.props.getControlNodeTogglerId}
+								_isFolderOpen={this.props._isFolderOpen}
+								_isItemSelected={this.props._isItemSelected}/>);
 			} else {
 				children.push(<TreeItem
-												key={id}
-												item={model}
-												onClick={this._handleItemClick.bind(this, model)}
-												_isItemSelected={this.props._isItemSelected}/>);
+								key={modelId}
+								item={model}
+								id={domId}
+								getControlNodeId={this.props.getControlNodeId}
+								getControlNodeLabelId={this.props.getControlNodeLabelId}
+								autoOpenLevel={this.props.autoOpenLevel + 1}
+								onClick={this._handleItemClick.bind(this, model)}
+								_isItemSelected={this.props._isItemSelected}/>);
 			}
 		});
 
 		return (
-			<li className={classNames('slds-tree__branch', {'slds-is-open': isOpen, 'slds-is-selected': isSelected})} role="treeitem" aria-expanded={isOpen ? 'false' : 'true'}>
-				<div className="slds-tree__branch--header slds-tree__item">
+			<li id={this.props.id} role="treeitem" aria-expanded={isOpen ? 'true' : 'false'} aria-level={this.props.autoOpenLevel}>
+				<div className={classNames('slds-tree__item', {'slds-is-selected': isSelected})} aria-selected={isSelected ? 'true' : 'false'} >
 					<Button
+						id={togglerId}
+						aria-controls={this.props.id}
 						className="slds-m-right--x-small"
 						icon="utility.chevronright"
 						iconSize="small"
 						assistiveText={this.props.strings.TOGGLE_TREE_BRANCH}
 						iconStyle="icon-bare"
 						onClick={this._handleExpandClick.bind(this, this.props.item)} />
-					<div className="slds-tree__branch--name" role="presentation" onClick={this._handleItemClick.bind(this, this.props.item)}>{this.props.item.getText()}</div>
+						<a id={labelId} aria-controls={this.props.id} tabIndex="-1" role="presentation" className={classNames('slds-truncate', 'slds-size--1-of-1')} onClick={this._handleItemClick.bind(this, this.props.item)}>
+							{this.props.item.getText()}
+						</a>
 				</div>
-				<ul className="slds-tree__group slds-nested" role="group">
+				<ul className={classNames({'slds-is-expanded': isOpen}, {'slds-is-collapsed': !isOpen}, )} role="group" aria-labelledby={labelId} aria-aria-controlledby={togglerId}>
 					{isOpen ? children : undefined}
 				</ul>
 				<div className={classNames('slds-tree__loader', {'slds-hide': !this.state.loading || !isOpen})} role="alert">Loading</div>

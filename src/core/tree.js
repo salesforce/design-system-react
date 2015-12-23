@@ -11,7 +11,7 @@ export const CONTROL = 'Tree';
 
 const TreeCore = Lib.merge({}, Base, {
 	CONTROL,
-	
+
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: 'slds-tree',
@@ -21,6 +21,7 @@ const TreeCore = Lib.merge({}, Base, {
 	// Set the defaults
 	_defaultProperties: {
 		collection: [],
+		heading: '',
 		folderSelect: false,
 		multiSelect: false,
 		autoOpen: false,
@@ -73,14 +74,40 @@ const TreeCore = Lib.merge({}, Base, {
 		}
 	},
 
+	_getControlContainerId () {
+		return this.getState('id') + '-' + CONTROL + '-container';
+	},
+
+	_getControlId () {
+		return this.getState('id') + '-' + CONTROL;
+	},
+
+	_getControlNodeId (index) {
+		if (index !== undefined) {
+			return this._getControlId() + '--node--' + index;
+		}
+	},
+
+	_getControlNodeLabelId (index) {
+		if (index !== undefined) {
+			return this._getControlNodeId(index) + '__label';
+		}
+	},
+
+	_getControlNodeTogglerId (index) {
+		if (index !== undefined) {
+			return this._getControlNodeId(index) + '__toggler';
+		}
+	},
+
 	_canSelect (newSelection, select) {
 		const folderSelect = !!this.getProperty('folderSelect');
 		let canSelect = true;
-		
+
 		newSelection.forEach((item) => {
 			canSelect = canSelect && (folderSelect || item.getType() === 'item');
 		});
-		
+
 		if (canSelect) {
 			select();
 		}

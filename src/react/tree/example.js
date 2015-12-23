@@ -13,7 +13,7 @@ export default function () {
 		},
 
 		render () {
-			return <Tree folderSelect={false} multiSelect={true} autoOpen={false} collection={sampleData.defaultArray} selection={this.state.selection} open={this.state.open} onChanged={this.handleChanged} onOpened={this.handleToggle} onClosed={this.handleToggle} />;
+			return <Tree folderSelect={false} multiSelect={true} autoOpen={false} heading={sampleData.heading} collection={sampleData.defaultArray} selection={this.state.selection} open={this.state.open} onChanged={this.handleChanged} onOpened={this.handleToggle} onClosed={this.handleToggle} />;
 		},
 
 		handleChanged (item, selection) {

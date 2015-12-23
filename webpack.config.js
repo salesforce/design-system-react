@@ -10,6 +10,7 @@ var packageJson = require('./package.json');
 
 var config = {
 	entry: {
+		'source-site-shared': entries.concat('./site/assets/facades/scripts/examples.js'),
 		'source-examples-react': entries.concat('./src/react/examples.js'),
 		'source-examples-jquery': entries.concat('./src/jquery/examples.js')
 	},
@@ -64,12 +65,9 @@ var config = {
 				loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!sass-loader")
 			},
 			{
-				test: /\.less$/,
-				loader: 'style!css!less'
-			},
-			{
 				test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
-				loader: 'url-loader?limit=30000&name=/examples/[name]-[hash].[ext]'
+				loader: ExtractTextPlugin.extract('url-loader?limit=30&name=/examples/[path][name].[ext]')
+				// loader: 'url-loader?limit=30000&name=/examples/[name].[ext]'
 			}
 		],
 		preLoaders: [

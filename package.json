@@ -9,8 +9,22 @@
     "url": "git@github.com:salesforce-ux/design-system-facades.git"
   },
   "private": true,
+  "scripts": {
+    "app-start": "node app.js",
+    "dist-npm": "./scripts/dist.js",
+    "build-dev": "./scripts/shell/dev-build.sh",
+    "dev-build": "./scripts/shell/dev-build.sh",
+    "build-heroku": "./scripts/shell/heroku-build.sh",
+    "build-www": "./scripts/shell/build-www.sh",
+    "heroku-build": "./scripts/shell/heroku-build.sh",
+    "heroku-start": "node app.js",
+    "start": "grunt serve",
+    "dev": "grunt serve",
+    "test": "grunt test",
+    "www-build": "./scripts/shell/build-www.sh"
+  },
   "dependencies": {
-    "@salesforce-ux/design-system": "^0.11.0",
+    "@salesforce-ux/design-system": "^0.12.0",
     "babel": "^5.6.14",
     "babel-core": "^5.6.20",
     "babel-eslint": "^4.0.5",
@@ -59,12 +73,6 @@
     "sass-loader": "^3.0.0",
     "url-loader": "^0.5.6",
     "webpack-dev-server": "^1.10.1"
-  },
-  "scripts": {
-    "start": "grunt serve",
-    "test": "grunt test",
-    "heroku-build": "./bin/heroku-build.sh",
-    "heroku-start": "node app.js"
   },
   "facades": [
     "jquery",
