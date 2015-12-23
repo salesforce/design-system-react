@@ -2,6 +2,7 @@
   "name": "design-system-react",
   "version": "0.0.26",
   "description": "Salesforce Lightning Design System React components",
+  "license": "SEE LICENSE IN README.md",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint --config=./.eslintrc components",
