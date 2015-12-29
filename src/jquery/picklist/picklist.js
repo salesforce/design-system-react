@@ -41,13 +41,10 @@ export const PicklistObject = {
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
 
 		if (this.getProperty('modalMenu')) {
-			console.log( Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-picklist')) );
+			Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-picklist'));
 			Positionable.setContainer(this, document.querySelector('body'));
 			
 			this.elements.dropdown = $(Positionable.getElement(this)).append(this.elements.dropdown).find('.' + this.cssClasses.MENU);
-			console.log(Positionable.getElement(this));
-			// console.log(Positionable.getContainer(this));
-			// console.log(Positionable.getTarget(this));
 		}
 
 		this.elements.dropdownMenu = this.elements.dropdown.find('.' + this.cssClasses.LIST);

@@ -1,47 +1,17 @@
 import React from 'react';
 
-import Datepicker from '../../datepicker/datepicker';
-import Lookup from '../../lookup/lookup';
-import Modal from '../modal';
-import Picklist from '../../picklist/picklist';
-import sampleData from '../../../../sample-data/lookup';
+// Modal Contents (paths may not be accurate if code is copied)
+import DatepickerSiteExample from '../../datepicker/examples/site-example';
+import LookupSiteExample from '../../lookup/examples/site-example';
+import PicklistSiteExample from '../../picklist/examples/site-example';
+
+import {Modal} from 'design-system-react';
 
 export default React.createClass({
 	getInitialState () {
 		return {
-			// modal
-			isOpen: false,
-
-			// There are the state for additional example controls
-			lookupCollection: sampleData.defaultArray,
-			datepickerSelection: [],
-
-			models: [
-				{
-					collection: sampleData.defaultArray,
-					disabled: false,
-					selection: sampleData.defaultArray[1]
-				}
-			]
+			isOpen: false
 		};
-	},
-
-	_renderPicklist () {
-		const picklists = this.state.models.map((model, index) => {
-			return (
-				<div key={index}>
-					<div className="slds-col example">
-						<Picklist {...model} modalMenu />
-					</div>
-				</div>
-			);
-		});
-
-		return (
-			<div>
-				{picklists}
-			</div>
-		);
 	},
 
 	render () {
@@ -57,31 +27,19 @@ export default React.createClass({
 					secondaryButtonText={'Cancel'}
 					headerTitle={'React Modal'}
 					headerTagline={<span>look what I can <a href="https://c2.staticflickr.com/4/3122/2850356021_eb4d1d9c4c.jpg">do</a></span>}>
-					<p>The following are controls using the <em>modalMenu</em> functionality which enables "auto-flip" and dropdown menus to be "in front of" modals.</p>
-					<Lookup
-						label="Accounts"
-						collection={this.state.lookupCollection}
-						modalMenu/>
-					<Datepicker
-						selection={this.state.datepickerSelection}
-						onChanged={this.handleDateSelected}
-						multiSelect={true}
-						modalCalendar
-						inputLabel="Pick a Date"/>
-					{this._renderPicklist()}
+					<p className="slds-text-heading--label slds-m-top--small">The explanation</p>
+					<p className="slds-m-top-small slds-m-top--x-small">The following are controls using the <em>modal</em> functionality which enables "auto-flip" and dropdown menus to be "in front of" modals and not hidden by <code>overflow:hidden</code>.</p>
+					<p className="slds-text-heading--label slds-m-top--small">The examples</p>
+					<div className="slds-m-top--x-small"></div>
+					<DatepickerSiteExample modal/>
+					<LookupSiteExample modal/>
+					<PicklistSiteExample modal/>
+					<p style={{height: '1000px'}}>&nbsp;</p>
 				</Modal>
 				
 				<button className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Toggle</button>
 			</div>
 		);
-	},
-
-	handleDateSelected (item, selection) {
-		if (selection.length > 2) {
-			this.setState({ datepickerSelection: item });
-		} else {
-			this.setState({ datepickerSelection: selection });
-		}
 	},
 
 	onClose () {
@@ -100,10 +58,6 @@ export default React.createClass({
 		console.log('Item has been saved!');
 	},
 	
-	_handleModelChange (item, selection) {
-		this.setState({ selection });
-	},
-
 	_handleClick () {
 		this.setState({
 			isOpen: true

@@ -1,4 +1,5 @@
 import '../helpers/create-jquery-plugin';
+import * as Lib from '../lib/lib';
 
 import Badge from './badge/badge';
 import Button from './button/button';
@@ -20,6 +21,7 @@ import Tooltip from './tooltip/tooltip';
 import Tree from './tree/tree';
 
 module.exports = {
+	Lib,
 	Badge,
 	Button,
 	ButtonGroup,
