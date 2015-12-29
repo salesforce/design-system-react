@@ -14,7 +14,7 @@ const classNames = require("classnames");
 import SLDSButton from "../SLDSButton";
 import {Icon} from "../SLDSIcons";
 
-const displayName = 'SLDSNotification';
+const displayName = "SLDSNotification";
 const propTypes = {
   className: React.PropTypes.string,
   content: React.PropTypes.node,
@@ -36,10 +36,7 @@ const defaultProps = {
 class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
-    this.state = {
-      interval: null,
-      revealForScreenreader: false,
-    };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -47,23 +44,6 @@ class SLDSNotification extends React.Component {
       setTimeout(() => {
         this.onDismiss();
       }, this.props.duration)
-    }
-  }
-
-  componentWillUnmount(){
-    this.setState({
-      interval: null
-    });
-  }
-
-  componentWillReceiveProps(nextProps){
-    if(this.props.isOpen !== nextProps.isOpen){
-      if(nextProps.isOpen && !this.state.interval){
-        this.setState({interval: setTimeout(() => {
-          this.setState({revealForScreenreader: true});
-        }, 500)})
-      }
-      //console.log('revealForScreen', this.state.revealForScreenreader);
     }
   }
 
@@ -102,39 +82,31 @@ class SLDSNotification extends React.Component {
 
   onDismiss(){
     if(this.props.onDismiss) this.props.onDismiss();
-    this.setState({
-      revealForScreenreader: false,
-      interval: null,
-    });
   }
 
   renderAlertContent(){
-    if(this.props.variant === "alert"){
-      return(
-          <h2>
-            {this.renderIcon()}
-            {this.props.content}
-          </h2>
-      );
-    }
+    return (
+      <h2>
+        {this.renderIcon()}
+        {this.props.content}
+      </h2>
+    );
   }
 
   renderToastContent(){
-    if(this.props.variant === "toast"){
-      return(
-        <section className="notify__content slds-grid">
-          {this.renderIcon()}
-          <div className="slds-col slds-align-middle">
+    return (
+      <section className="notify__content slds-grid">
+        {this.renderIcon()}
+        <div className="slds-col slds-align-middle">
           <h2 className="slds-text-heading--small ">{this.props.content}</h2>
-          </div>
-        </section>
-      );
-    }
+        </div>
+      </section>
+    );
   }
 
   getClassName() {
     return classNames(this.props.className, "slds-notify", {
-      [`slds-transition-hide`]: !this.state.revealForScreenreader,
+      [`slds-transition-hide`]: !this.props.isOpen,
       [`slds-notify--${this.props.variant}`]: this.props.variant,
       [`slds-theme--${this.props.theme}`]: this.props.theme,
       [`slds-theme--alert-texture-animated`]: this.props.texture,
@@ -142,37 +114,29 @@ class SLDSNotification extends React.Component {
   }
 
   renderContent() {
-    if(this.state.revealForScreenreader) {
-      return (
-        <div>
-          <p ref="test" className="slds-assistive-text">{this.props.theme}</p>
-          {this.renderClose()}
-          {this.renderAlertContent()}
-          {this.renderToastContent()}
-        </div>
-      )
-    }
-    else {
-      return (
-        <div className="slds-hidden">
-          Notification loading
-        </div>
-      )
-    }
+    return (
+      <div>
+        {this.renderClose()}
+        {this.props.variant === "toast" ? this.renderToastContent() : null}
+        {this.props.variant === "alert" ? this.renderAlertContent() : null}
+      </div>
+    )
+  }
+
+  blankContent() {
+    return (
+      <div></div>
+    )
   }
 
   render(){
-    if(this.props.isOpen){
       return (
         <div className="slds-notify-container">
-          <div ref="alertContent" className={this.getClassName()} role="alert">
-          {this.renderContent()}
+          <div ref="alertContent" className={this.props.isOpen ? this.getClassName() : ""} role="alert">
+          {this.props.isOpen ? this.renderContent() : this.blankContent()}
           </div>
         </div>
       );
-    }else{
-      return null;
-    }
   }
 }
 

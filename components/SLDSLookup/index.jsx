@@ -419,7 +419,7 @@ class SLDSLookup extends React.Component {
             <div className={cx(pillContainerClasses)}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             </div>
-            <InputIcon name="search"/>
+            <InputIcon name="search" />
             <input
               aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:""}
               aria-autocomplete="list"
