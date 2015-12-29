@@ -12,7 +12,8 @@ import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 import mountable from '../mixins/custom-prop-types/mountable';
 
-export const PopoverMethods = {
+export const PopoverObject = {
+	mixins: [State, Events, genericWillMount],
 	displayName: CONTROL,
 
 	propTypes: {
@@ -22,10 +23,24 @@ export const PopoverMethods = {
 		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
 	},
 
-	_setElements () {
-		Positionable.setElement(this, this.refs.popover);
-		Positionable.setContainer(this, this.props.container || this.element);
-		Positionable.setTarget(this, this.props.alignmentTarget || Positionable.getContainer(this));
+	_popoverRendered (element) {
+		this.state.popoverElement = element;
+	},
+
+	render () {
+		return (
+			<div className={this._getClassNames()} role="dialog" ref={this._popoverRendered}>
+				<div className="slds-popover__content">
+					<div className="slds-popover__body">{this.props.children}</div>
+				</div>
+			</div>
+		);
+	},
+
+	_setPositionableElements () {
+		Positionable.setElement(this, this.state.popoverElement);
+		Positionable.setContainer(this, this.props.container);
+		Positionable.setTarget(this, this.props.alignmentTarget);
 	},
 
 	componentWillMount: function () {
@@ -41,28 +56,14 @@ export const PopoverMethods = {
 	},
 
 	componentDidUpdate () {
-		Positionable.position(this);
+		if (this.state.popoverElement && this.props.alignmentTarget && this.props.container) {
+			this._setPositionableElements();
+			Positionable.position(this);
+		}
 	}
 };
 
-let Popover = Lib.merge({}, PopoverCore, PopoverMethods, {
-	mixins: [State, Events, genericWillMount],
-
-	render () {
-		if (this.refs.popover) {
-			this._setElements();
-		}
-
-		return (
-			<div className={this._getClassNames()} role="dialog" ref="popover">
-				<div className="slds-popover__content">
-					<div className="slds-popover__body">{this.props.children}</div>
-				</div>
-			</div>
-		);
-	}
-});
-
+let Popover = Lib.merge({}, PopoverCore, PopoverObject);
 Popover = Lib.runHelpers('react', CONTROL, Popover);
 Popover = React.createClass(Popover);
 
