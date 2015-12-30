@@ -11,6 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import {SLDSTooltip,SLDSButton} from '../../../components';
+import {Icon} from '../../../components/SLDSIcons';
 
 import {default as PrismCode} from 'react-prism/lib/PrismCode';
 
@@ -66,25 +67,7 @@ module.exports = React.createClass( {
                 Tooltip
                 </a>
               </h3>
-{/*
-              <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSDropdownPage.txt")}
-              </PrismCode>
-*/}
               <section style={{paddingLeft: '10rem'}}>
-                {/*
-                <div className="slds-p-vertical--large">
-                  <p>
-                    <SLDSTooltip
-                      content={<span>Tooltip with top alignment</span>}
-                      align={alignNames[this.state.alignIndex]}
-                      openByDefault={true}>
-                        Tooltip align options
-                    </SLDSTooltip>
-                  </p>
-                </div>
-                  */}
-
                 <div ref="tooltipOnHover" className="slds-p-vertical--medium">
                   <p style={{marginTop: '5rem'}}>
                     <SLDSTooltip
@@ -92,23 +75,10 @@ module.exports = React.createClass( {
                       align='top'
                       openOn='hover'
                       targetElement={this.refs.tooltipOnHover}>
-                        Tooltip open on hover
+                        <Icon category="utility" name="info" size="medium" className="slds-icon-text-default" />
                       </SLDSTooltip>
                   </p>
                 </div>
-
-                <div ref="tooltipOnClick" className="slds-p-vertical--medium">
-                  <p style={{marginTop: '5rem'}}>
-                    <SLDSTooltip
-                      content={<span>Tooltip with right alignment</span>}
-                      align='right'
-                      openOn='click'
-                      targetElement={this.refs.tooltipOnClick}>
-                        Tooltip open on click
-                      </SLDSTooltip>
-                  </p>
-                </div>
-
 
                 <div ref="tooltipOnClick" className="slds-p-vertical--medium">
                   <p style={{marginTop: '5rem'}}>

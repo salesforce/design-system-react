@@ -8,11 +8,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 
-import React from 'react';
-import SLDSPopover from '../SLDSPopover';
-
-import tooltip from './tooltip';
-
+import React from "react";
+import SLDSPopover from "../SLDSPopover";
+import tooltip from "./tooltip";
 
 const classNames = require("classnames");
 
@@ -26,11 +24,11 @@ const propTypes = {
   openOn: React.PropTypes.string,
 };
 const defaultProps = {
-  align: 'top',
+  align: "top",
   content: <span>Tooltip</span>,
   hoverCloseDelay: 350,
   openByDefault: false,
-  openOn: 'hover',
+  openOn: "hover",
 };
 
 class SLDSTooltip extends React.Component {
@@ -58,7 +56,6 @@ class SLDSTooltip extends React.Component {
     });
   }
 
-
   handleMouseEnter() {
     this.setState({
       isOpen: true,
@@ -80,7 +77,7 @@ class SLDSTooltip extends React.Component {
   }
 
   getTooltipContent() {
-    return <div className='slds-popover__body'>{this.props.content}</div>;
+    return <div className="slds-popover__body">{this.props.content}</div>;
   }
 
   handleCancel() {
@@ -97,7 +94,16 @@ class SLDSTooltip extends React.Component {
   render(){
     const btnStyles = { color: "inherit", textDecoration: "none"};
     return (
-      <a href="javascript:void(0)" ref='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick.bind(this):null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} onFocus={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onBlur={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} style={btnStyles}>
+      <a
+        aria-describedby=""
+        href="javascript:void(0)"
+        onBlur={this.props.openOn === "hover" ? this.handleMouseLeave.bind(this):null}
+        onClick={this.props.openOn === "click" ? this.handleMouseClick.bind(this):null}
+        onFocus={this.props.openOn === "hover" ? this.handleMouseEnter.bind(this):null}
+        onMouseEnter={this.props.openOn === "hover" ? this.handleMouseEnter.bind(this):null}
+        onMouseLeave={this.props.openOn === "hover" ? this.handleMouseLeave.bind(this):null}
+        ref="tooltipTarget"
+        style={btnStyles}>
         { this.props.children }
         { this.getTooltip() }
       </a>
