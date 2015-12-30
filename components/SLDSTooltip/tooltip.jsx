@@ -45,22 +45,19 @@ const getVerticalAlign = (align) => {
 
 const getTooltip = (props, content, target, onClose) => {
   return <SLDSPopover
-        key={getHorizontalAlign(props.align)+' '+getVerticalAlign(props.align)}
-        targetElement={target}
-        closeOnTabKey={true}
-        className=''
-        marginTop='1rem'
-        marginBottom='1rem'
-        marginLeft='1.5rem'
-        marginRight='1.5rem'
-        horizontalAlign={getHorizontalAlign(props.align)}
-        verticalAlign={getVerticalAlign(props.align)}
-        flippable={false}
-        onClose={onClose}>
-        <div className={getClassName(props)} role="tooltip">
-          {content}
-        </div>
-      </SLDSPopover>;
+            className=''
+            closeOnTabKey={true}
+            flippable={false}
+            horizontalAlign={getHorizontalAlign(props.align)}
+            marginBottom='1rem'
+            marginLeft='1.5rem'
+            marginRight='1.5rem'
+            marginTop='1rem'
+            onClose={onClose}
+            targetElement={target}
+            verticalAlign={getVerticalAlign(props.align)}>
+              <div className={getClassName(props)} role="tooltip">{content}</div>
+          </SLDSPopover>;
 }
 
 module.exports = {

@@ -7,19 +7,17 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-'use strict';
+"use strict";
 
-import React from 'react';
-import {SLDSTooltip,SLDSButton} from '../../../components';
-import {Icon} from '../../../components/SLDSIcons';
+import React from "react";
+import {SLDSTooltip,SLDSButton} from "../../../components";
+import {Icon} from "../../../components/SLDSIcons";
 
-import {default as PrismCode} from 'react-prism/lib/PrismCode';
-
-const alignNames = ['left','top','right','bottom'];
+const alignNames = ["left","top","right","bottom"];
 
 module.exports = React.createClass( {
 
-  displayName: 'Toolip',
+  displayName: "Toolip",
 
   getDefaultProps () {
     return {};
@@ -38,15 +36,15 @@ module.exports = React.createClass( {
   },
 
   handleOnUpdateHighlighted () {
-    console.log('onUpdateHighlighted should be defined');
+    console.log("onUpdateHighlighted should be defined");
   },
 
   handleOnSelect() {
-    console.log('onSelect should be defined');
+    console.log("onSelect should be defined");
   },
 
   handleOnClick() {
-    console.log('onClick should be defined');
+    console.log("onClick should be defined");
   },
 
   nextAlign() {
@@ -63,32 +61,30 @@ module.exports = React.createClass( {
 
             <div className="slds-p-around--medium">
               <h3 className="slds-text-heading--medium slds-truncate">
-                <a href="javascript:void(0)" id='tooltipSection'>
+                <a href="javascript:void(0)" id="tooltipSection">
                 Tooltip
                 </a>
               </h3>
-              <section style={{paddingLeft: '10rem'}}>
+              <section style={{paddingLeft: "10rem"}}>
                 <div ref="tooltipOnHover" className="slds-p-vertical--medium">
-                  <p style={{marginTop: '5rem'}}>
+                  <p style={{marginTop: "5rem"}}>
                     <SLDSTooltip
-                      content={<span>Tooltip with top alignment</span>}
-                      align='top'
-                      openOn='hover'
+                      align="top"
+                      content={<span>Tooltip on top</span>}
                       targetElement={this.refs.tooltipOnHover}>
-                        <Icon category="utility" name="info" size="medium" className="slds-icon-text-default" />
+                        <Icon category="utility" name="info" className="slds-icon-text-default" />
                       </SLDSTooltip>
                   </p>
                 </div>
 
                 <div ref="tooltipOnClick" className="slds-p-vertical--medium">
-                  <p style={{marginTop: '5rem'}}>
+                  <p style={{marginTop: "5rem"}}>
                     <SLDSTooltip
+                      align="right"
                       content={<span>Tooltip with right alignment</span>}
-                      align='right'
-                      openOn='hover'
                       openByDefault={true}
                       targetElement={this.refs.tooltipOnClick}>
-                        <SLDSButton variant="brand" label="BUTTON" />
+                        <SLDSButton variant="brand" label="Hover to Open" tabIndex="-1" />
                       </SLDSTooltip>
                   </p>
                 </div>
