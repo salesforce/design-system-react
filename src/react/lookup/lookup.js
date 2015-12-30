@@ -100,7 +100,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			navigableItems
 		});
 
-		Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-lookup'));
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({classes: 'slds-lookup'}));
 	},
 
 	componentWillReceiveProps (nextProps) {

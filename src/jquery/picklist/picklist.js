@@ -41,7 +41,7 @@ export const PicklistObject = {
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
 
 		if (this.getProperty('modalMenu')) {
-			Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-picklist'));
+			Positionable.setElement(this, Positionable.attachPositionedElementToBody({classes: 'slds-picklist'}));
 			Positionable.setContainer(this, document.querySelector('body'));
 			
 			this.elements.dropdown = $(Positionable.getElement(this)).append(this.elements.dropdown).find('.' + this.cssClasses.MENU);
