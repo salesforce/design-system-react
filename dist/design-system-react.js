@@ -11318,7 +11318,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var classNames = __webpack_require__(13);
 	
-	var displayName = 'SLDSNotification';
+	var displayName = "SLDSNotification";
 	var propTypes = {
 	  className: _react2["default"].PropTypes.string,
 	  content: _react2["default"].PropTypes.node,
@@ -11344,10 +11344,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    _classCallCheck(this, SLDSNotification);
 	
 	    _get(Object.getPrototypeOf(SLDSNotification.prototype), "constructor", this).call(this, props);
-	    this.state = {
-	      interval: null,
-	      revealForScreenreader: false
-	    };
+	    this.state = {};
 	  }
 	
 	  _createClass(SLDSNotification, [{
@@ -11359,27 +11356,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        setTimeout(function () {
 	          _this.onDismiss();
 	        }, this.props.duration);
-	      }
-	    }
-	  }, {
-	    key: "componentWillUnmount",
-	    value: function componentWillUnmount() {
-	      this.setState({
-	        interval: null
-	      });
-	    }
-	  }, {
-	    key: "componentWillReceiveProps",
-	    value: function componentWillReceiveProps(nextProps) {
-	      var _this2 = this;
-	
-	      if (this.props.isOpen !== nextProps.isOpen) {
-	        if (nextProps.isOpen && !this.state.interval) {
-	          this.setState({ interval: setTimeout(function () {
-	              _this2.setState({ revealForScreenreader: true });
-	            }, 500) });
-	        }
-	        //console.log('revealForScreen', this.state.revealForScreenreader);
 	      }
 	    }
 	  }, {
@@ -11419,49 +11395,47 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "onDismiss",
 	    value: function onDismiss() {
 	      if (this.props.onDismiss) this.props.onDismiss();
-	      this.setState({
-	        revealForScreenreader: false,
-	        interval: null
-	      });
 	    }
 	  }, {
 	    key: "renderAlertContent",
 	    value: function renderAlertContent() {
-	      if (this.props.variant === "alert") {
-	        return _react2["default"].createElement("h2", null, this.renderIcon(), this.props.content);
-	      }
+	      return _react2["default"].createElement("h2", null, this.renderIcon(), this.props.content);
 	    }
 	  }, {
 	    key: "renderToastContent",
 	    value: function renderToastContent() {
-	      if (this.props.variant === "toast") {
-	        return _react2["default"].createElement("section", { className: "notify__content slds-grid" }, this.renderIcon(), _react2["default"].createElement("div", { className: "slds-col slds-align-middle" }, _react2["default"].createElement("h2", { className: "slds-text-heading--small " }, this.props.content)));
-	      }
+	      return _react2["default"].createElement("section", { className: "notify__content slds-grid" }, this.renderIcon(), _react2["default"].createElement("div", { className: "slds-col slds-align-middle" }, _react2["default"].createElement("h2", { className: "slds-text-heading--small " }, this.props.content)));
 	    }
 	  }, {
 	    key: "getClassName",
 	    value: function getClassName() {
 	      var _classNames;
 	
-	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-transition-hide", !this.state.revealForScreenreader), _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
+	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-transition-hide", !this.props.isOpen), _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
 	    }
 	  }, {
 	    key: "renderContent",
 	    value: function renderContent() {
-	      if (this.state.revealForScreenreader) {
-	        return _react2["default"].createElement("div", null, _react2["default"].createElement("p", { ref: "test", className: "slds-assistive-text" }, this.props.theme), this.renderClose(), this.renderAlertContent(), this.renderToastContent());
-	      } else {
-	        return _react2["default"].createElement("div", { className: "slds-hidden" }, "Notification loading");
-	      }
+	      return _react2["default"].createElement("div", null, this.renderClose(), this.props.variant === "toast" ? this.renderToastContent() : null, this.props.variant === "alert" ? this.renderAlertContent() : null);
+	    }
+	
+	    /*
+	     * The parent container with role="alert" only announces its content if there is a change inside of it.
+	     * Because React renders the entire element to the DOM, we must switch out a blank div for the real content.
+	     * Bummer, I know.
+	     */
+	  }, {
+	    key: "blankContent",
+	    value: function blankContent() {
+	      return _react2["default"].createElement("div", null);
 	    }
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      if (this.props.isOpen) {
-	        return _react2["default"].createElement("div", { className: "slds-notify-container" }, _react2["default"].createElement("div", { ref: "alertContent", className: this.getClassName(), role: "alert" }, this.renderContent()));
-	      } else {
-	        return null;
-	      }
+	      //TODO: If there are multiple notifications on a page, we must 'hide' the ones that aren't open.
+	      //Need to find a better way to do this than using width:0 to override slds-notify-container.
+	      var styles = !this.props.isOpen ? { "width": "0" } : { "width": "100%" };
+	      return _react2["default"].createElement("div", { className: "slds-notify-container", style: styles }, _react2["default"].createElement("div", { ref: "alertContent", className: this.getClassName(), role: "alert" }, this.props.isOpen ? this.renderContent() : this.blankContent()));
 	    }
 	  }]);
 	
