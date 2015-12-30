@@ -13230,7 +13230,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  align: "top",
 	  content: _react2["default"].createElement("span", null, "Tooltip"),
 	  hoverCloseDelay: 350,
-	  openByDefault: true
+	  openByDefault: false
 	};
 	
 	var SLDSTooltip = (function (_React$Component) {

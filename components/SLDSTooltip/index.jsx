@@ -24,7 +24,7 @@ const defaultProps = {
   align: "top",
   content: <span>Tooltip</span>,
   hoverCloseDelay: 350,
-  openByDefault: true,
+  openByDefault: false,
 };
 
 class SLDSTooltip extends React.Component {
