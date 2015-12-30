@@ -15,6 +15,7 @@ const SLDSDropdown =  require('../../components/SLDSDropdownBase');
 const {Icon}=  require('../../components/SLDSIcons');
 const SLDSLookup =  require('../../components/SLDSLookup');
 const SLDSModal =  require('../../components/SLDSModal');
+const SLDSNotification =  require('../../components/SLDSNotification');
 
 const displayName = 'CodeMirror';
 const propTypes = {

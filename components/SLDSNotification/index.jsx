@@ -16,23 +16,42 @@ import {Icon} from "../SLDSIcons";
 
 const displayName = "SLDSNotification";
 const propTypes = {
+  /**
+   * Custom classes applied to Notification element
+   */
   className: React.PropTypes.string,
+  /**
+   * Message for notification
+   */
   content: React.PropTypes.node,
-  dismissible: React.PropTypes.bool,
+  /**
+   * if isDissmissible, close button appears for users to dismiss notification.
+   */
+  isDismissible: React.PropTypes.bool,
+  /**
+   * if duration exists, the notification will be visible for that amount of time.
+   */
   duration: React.PropTypes.number,
   icon: React.PropTypes.string,
   isOpen: React.PropTypes.bool,
   onDismiss: React.PropTypes.func,
+  /**
+   * styling for notification background
+   */
   texture: React.PropTypes.bool,
   theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
   variant: React.PropTypes.oneOf(["alert", "toast"]),
 };
 
 const defaultProps = {
-  dismissible: true,
+  isDismissible: true,
   isOpen: false
 };
 
+/**
+ * The SLDS Notification component is used for alerts and toasts. For prompts, use the SLDS Modal component.<br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/notifications">Lightning Design System - Notifications</a>.
+ */
 class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
@@ -61,7 +80,7 @@ class SLDSNotification extends React.Component {
   }
 
   renderClose(){
-    if(this.props.dismissible){
+    if(this.props.isDismissible){
       let size = "";
       if(this.props.variant === "alert") {
         size = "medium";

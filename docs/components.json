@@ -826,5 +826,109 @@
                 "description": ""
             }
         }
+    },
+    "SLDSNotification": {
+        "description": "The SLDS Notification component is used for alerts and toasts. For prompts, use the SLDS Modal component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">Lightning Design System - Notifications</a>.",
+        "displayName": "SLDSNotification",
+        "props": {
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Custom classes applied to Notification element"
+            },
+            "content": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Message for notification"
+            },
+            "isDismissible": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "if isDissmissible, close button appears for users to dismiss notification."
+            },
+            "duration": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "if duration exists, the notification will be visible for that amount of time."
+            },
+            "icon": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onDismiss": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "texture": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "styling for notification background"
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"success\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"warning\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"error\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"offline\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"alert\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"toast\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            }
+        }
     }
 }

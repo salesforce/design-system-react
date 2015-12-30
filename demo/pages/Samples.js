@@ -6,6 +6,7 @@ const Samples =  {
   IconButtons: require('fs').readFileSync('demo/code-snippets/ButtonIconExamples.js', 'utf8'),
   Lookups: require('fs').readFileSync('demo/code-snippets/LookupExamples.js', 'utf8'),
   Modals: require('fs').readFileSync('demo/code-snippets/ModalExamples.js', 'utf8'),
+  Notifications: require('fs').readFileSync('demo/code-snippets/NotificationExamples.js', 'utf8'),
   StatefulButtons: require('fs').readFileSync('demo/code-snippets/ButtonStatefulExamples.js', 'utf8'),
 };
 
