@@ -22,18 +22,24 @@ let Tooltip = Lib.merge({}, TooltipCore, PopoverObject, {
 		alignmentTarget: mountable,
 		container: mountable,
 		isOpen: React.PropTypes.bool,
+		modal: React.PropTypes.bool,
 		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
 	},
 
 	mixins: [State, Events, genericWillMount],
 
+	componentWillMount () {
+		this.setState({
+			isOpen: this.props.isOpen
+		});
+
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({attributes: [['role', 'tooltip']]}));
+	},
+
 	render () {
-		return (
-			<div className={this._getClassNames()} role="tooltip" ref={this._popoverRendered}>
-				<div className="slds-popover__body">{this.props.children}</div>
-			</div>
-		);
+		return false;
 	}
+
 });
 
 Tooltip = Lib.runHelpers('react', CONTROL, Tooltip);

@@ -3,10 +3,14 @@
 // Core
 import * as Lib from '../../lib/lib';
 import PopoverCore, {CONTROL} from '../../core/popover';
+
+// Traits
 import Positionable from '../../traits/positionable';
+import Openable from '../../traits/openable';
 
 // Framework specific
 import React from 'react';
+import ReactDOM from 'react-dom';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
@@ -20,46 +24,73 @@ export const PopoverObject = {
 		alignmentTarget: mountable,
 		autoFlip: React.PropTypes.bool,
 		container: mountable,
+		modal: React.PropTypes.bool,
 		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
 	},
 
-	_popoverRendered (element) {
-		this.state.popoverElement = element;
-	},
-
-	render () {
+	_renderPopoverContent () {
 		return (
-			<div className={this._getClassNames()} role="dialog" ref={this._popoverRendered}>
 				<div className="slds-popover__content">
 					<div className="slds-popover__body">{this.props.children}</div>
 				</div>
-			</div>
 		);
 	},
 
-	_setPositionableElements () {
-		Positionable.setElement(this, this.state.popoverElement);
-		Positionable.setContainer(this, this.props.container);
-		Positionable.setTarget(this, this.props.alignmentTarget);
+	// This function renders popover as an absolutely-positioned `div` based on the target. If the property `modal` is true, then the listeners will be created for scrolling and resizing.
+	_renderModalPopover () {
+		Positionable.setContainer(this, this.props.container || document.querySelector('body'));
+		Positionable.setTarget(this, this.props.alignmentTarget || document.querySelector('body'));
+
+		const isOpen = Openable.isOpen(this);
+		if (this.props.modal && isOpen) {
+			Positionable.addEventListeners(this);
+		} else if (this.props.modal && !isOpen) {
+			Positionable.removeEventListeners(this);
+		}
+
+		// `_setControlElement` is part of the `genericWillMount` mixin.
+		this._setControlElement(Positionable.getElement(this));
+
+		const popoverContent = this._renderPopoverContent();
+		ReactDOM.render(popoverContent, Positionable.getElement(this));
+		Positionable.position(this);
 	},
 
-	componentWillMount: function () {
+	// The real render occurs within `_renderModalPopover`.
+	render () {
+		return false;
+	},
+
+	_onOpened () {
+		Positionable.show(this);
+	},
+
+	_onClosed () {
+		Positionable.hide(this);
+	},
+
+	componentWillMount () {
 		this.setState({
 			isOpen: this.props.isOpen
 		});
+
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({attributes: [['role', 'dialog']]}));
+	},
+
+	componentWillUnmount () {
+		if (this.props.modal) {
+			Positionable.removeEventListeners(this);
+		}
 	},
 	
-	componentWillReceiveProps: function (nextProps) {
+	componentWillReceiveProps (nextProps) {
 		this.setState({
 			isOpen: nextProps.isOpen
 		});
 	},
 
 	componentDidUpdate () {
-		if (this.state.popoverElement && this.props.alignmentTarget && this.props.container) {
-			this._setPositionableElements();
-			Positionable.position(this);
-		}
+		this._renderModalPopover();
 	}
 };
 

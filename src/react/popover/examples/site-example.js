@@ -12,26 +12,25 @@ export default React.createClass({
 		};
 	},
 
-	_containerRendered (element) {
-		this.setState({container: element});
-	},
-
 	_buttonRendered (element) {
 		this.setState({target: element});
 	},
 
 	render () {
-		return (
-			<div className="react-popover-example-wrap" ref={this._containerRendered}>
-				<button id="popover-react-toggle" className="slds-button slds-button--neutral slds-button--x-small" ref={this._buttonRendered} onClick={this._handleClick}>Toggle</button>
-				<Popover
-					modal={this.props.modal}
-					positionedTargetHorizontalAttachment="right"
+		let popover = null;
+		if (this.state.target) {
+			popover = (<Popover
 					alignmentTarget={this.state.target}
-					container={this.state.container}
-					isOpen={this.state.isOpen}>
+					isOpen={this.state.isOpen}
+					modal={this.props.modal}
+					positionedTargetHorizontalAttachment="right">
 					<span>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</span>
-				</Popover>
+				</Popover>);
+		}
+		return (
+			<div className="react-popover-example-wrap">
+				<button id="popover-react-toggle" className="slds-button slds-button--neutral slds-button--x-small" ref={this._buttonRendered} onClick={this._handleClick}>Toggle</button>
+					{popover}
 			</div>
 		);
 	},
