@@ -126,7 +126,7 @@ module.exports = React.createClass( {
           <div className="slds-p-vertical--small">
             <h4 className="slds-text-heading--small ">Toasts</h4>
             <SLDSButton variant="neutral" label="Show Toast" onClick={this.openToast} />
-            <SLDSNotification variant="toast" theme="error" icon="notification" isOpen={this.state.toastIsOpen} content={errorMsg} onDismiss={this.dismissToast} />
+            <SLDSNotification variant="toast" theme="error" icon="notification" isOpen={this.state.toastIsOpen} texture={true} content={errorMsg} onDismiss={this.dismissToast} />
           </div>
 
           <div className="slds-p-vertical--small">

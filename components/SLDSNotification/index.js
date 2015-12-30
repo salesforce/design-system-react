@@ -123,6 +123,11 @@ class SLDSNotification extends React.Component {
     )
   }
 
+  /*
+   * The parent container with role="alert" only announces its content if there is a change inside of it.
+   * Because React renders the entire element to the DOM, we must switch out a blank div for the real content.
+   * Bummer, I know.
+   */
   blankContent() {
     return (
       <div></div>
@@ -130,13 +135,16 @@ class SLDSNotification extends React.Component {
   }
 
   render(){
-      return (
-        <div className="slds-notify-container">
-          <div ref="alertContent" className={this.props.isOpen ? this.getClassName() : ""} role="alert">
-          {this.props.isOpen ? this.renderContent() : this.blankContent()}
-          </div>
+    //TODO: If there are multiple notifications on a page, we must 'hide' the ones that aren't open.
+    //Need to find a better way to do this than using width:0 to override slds-notify-container.
+    let styles = !this.props.isOpen ? { "width": "0" } : {"width": "100%"};
+    return (
+      <div className="slds-notify-container" style={styles}>
+        <div ref="alertContent" className={this.getClassName()} role="alert">
+        {this.props.isOpen ? this.renderContent() : this.blankContent()}
         </div>
-      );
+      </div>
+    );
   }
 }
 
