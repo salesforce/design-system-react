@@ -63,17 +63,17 @@ module.exports = React.createClass( {
   },
 
   openModal () {
-    this.setState({ modalIsOpen: true });
-
-    setTimeout(function() {
-      this.setState({
-        modalToastIsOpen: true,
-      })
-    }, 400);
+    this.setState({
+      modalIsOpen: true,
+      modalToastIsOpen: true,
+    });
   },
 
   closeModal () {
-    this.setState({modalIsOpen: false});
+    this.setState({
+      modalIsOpen: false,
+      modalToastIsOpen: false,
+    });
   },
 
   handleSubmitModal () {
