@@ -1,4 +1,4 @@
-// PICKLIST CONTROL - JQUERY FACADE
+// DATATABLE CONTROL - JQUERY FACADE
 
 // Core
 import * as Lib from '../../lib/lib';
