@@ -5,9 +5,10 @@ import * as Lib from '../../lib/lib';
 import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Traits
+import KeyboardNavigable from '../../traits/keyboard-navigable';
+import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
 import Positionable from '../../traits/positionable';
-import KeyboardNavigable from '../../traits/keyboard-navigable';
 
 // Framework specific
 import React from 'react';
@@ -30,9 +31,7 @@ export const PicklistObject = {
 		disabled: React.PropTypes.bool,
 		id: React.PropTypes.string,
 		modalMenu: React.PropTypes.bool,
-		selection: React.PropTypes.oneOfType([
-			React.PropTypes.object
-		]),
+		selection: React.PropTypes.object,
 		// TODO: Type of collection unknown until parsed by Data Adapter
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
@@ -46,6 +45,20 @@ export const PicklistObject = {
 
 	componentWillUnmount () {
 		if (this.props.modalMenu) {
+			Positionable.removeEventListeners(this);
+		}
+	},
+	
+	componentDidUpdate () {
+		if (this.props.modalMenu) {
+			this._renderModalMenu();
+		}
+		
+		const isOpen = Openable.isOpen(this);
+
+		if (this.props.modalMenu && isOpen) {
+			Positionable.addEventListeners(this);
+		} else if (this.props.modalMenu && !isOpen) {
 			Positionable.removeEventListeners(this);
 		}
 	},
@@ -66,7 +79,7 @@ export const PicklistObject = {
 					className="slds-picklist__label"
 					disabled={this.props.disabled}
 					onClick={this._handleClicked}
-					ref={this.onButtonRendered}
+					ref={this._onButtonRendered}
 					style={styles}
 					theme="neutral"
 					aria-haspopup="true">
@@ -88,16 +101,12 @@ export const PicklistObject = {
 				labelledBy={triggerId}
 				getMenuItemId={this._getMenuItemId}
 				collection={this._collection}
-				selection={this.getSelection()}
+				selection={this._getSelection()._item}
 				show={isOpen}
 				onSelected={this._handleMenuItemSelected} />
 		);
 
 		return menu;
-	},
-
-	onButtonRendered (element) {
-		Positionable.setTarget(this, ReactDOM.findDOMNode(element));
 	},
 
 	// Modal dropdown menus' parent is `body` and are absolutely positioned in order to visually attach the dropdown to the input.
@@ -109,7 +118,7 @@ export const PicklistObject = {
 	},
 
 	_handleMenuItemSelected (selection) {
-		this.setSelection(selection);
+		Multiselectable.selectItem(this, selection);
 		Openable.close(this);
 	},
 
@@ -117,15 +126,23 @@ export const PicklistObject = {
 		Openable.toggle(this, e.nativeEvent);
 	},
 
+	_keyboardSelect (item) {
+		Multiselectable.selectItem(this, item, this.getProperty('selection'));
+	},
+
 	_handleKeyPressed (e) {
 		if (e.key && (/(ArrowUp|ArrowDown|Escape)/.test(e.key) || e.key.length === 1)) {
 			e.preventDefault();
-			const focusedIndex = KeyboardNavigable.keyboardNav(this, e.key, this.setSelection, this._collection);
+			const focusedIndex = KeyboardNavigable.keyboardNav(this, e.key, this._keyboardSelect, this._collection);
 			if (focusedIndex !== undefined) {
 				document.getElementById(this._getMenuItemId(focusedIndex)).getElementsByTagName('a')[0].focus();
 				console.log(document.getElementById(this._getMenuItemId(focusedIndex)));
 			}
 		}
+	},
+	
+	_onButtonRendered (element) {
+		Positionable.setTarget(this, ReactDOM.findDOMNode(element));
 	},
 
 	_onOpened () {
@@ -135,19 +152,15 @@ export const PicklistObject = {
 	_onClosed () {
 		Positionable.hide(this);
 	},
-
-	componentDidUpdate () {
-		if (this.props.modalMenu) {
-			this._renderModalMenu();
+	
+	_getSelection () {
+		let item = this._collection.findWhere(this.props.selection);
+		
+		if (!item) {
+			item = this._getItemAdapter(this.props.selection);
 		}
 		
-		const isOpen = Openable.isOpen(this);
-
-		if (this.props.modalMenu && isOpen) {
-			Positionable.addEventListeners(this);
-		} else if (this.props.modalMenu && !isOpen) {
-			Positionable.removeEventListeners(this);
-		}
+		return item;
 	}
 };
 
