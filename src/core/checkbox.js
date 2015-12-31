@@ -7,12 +7,9 @@ import * as Lib from '../lib/lib';
 // Inherit from the [base control](base.html).
 import Base from './base';
 
-// Traits
-import Checkable from '../traits/checkable';
-
 export const CONTROL = 'Checkbox';
 
-const CheckboxCore = Lib.merge({}, Base, Checkable, {
+const CheckboxCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	cssClasses: {
@@ -23,16 +20,50 @@ const CheckboxCore = Lib.merge({}, Base, Checkable, {
 	_defaultProperties: {
 		labelText: '',
 		value: '',
-		name: ''
+		name: '',
+		checked: false
 	},
 
-	// Disabled controls cannot be checked
-	_canCheck () {
-		return !this.getProperty('disabled');
+	checked () {
+		return !!this.getProperty('checked');
+	},
+
+	_setChecked (checked) {
+		if (this.getProperty('disabled')) {
+			return false;
+		}
+
+		if (checked === this.checked()) {
+			return false;
+		}
+
+		this.setProperties({ checked });
+
+		if (Lib.isFunction(this._onToggled)) this._onToggled(checked);
+
+		this.trigger('changed', checked);
+
+		return true;
 	},
 
 	toggle () {
-		this._toggleChecked();
+		if (this.checked()) {
+			this.uncheck();
+		} else {
+			this.check();
+		}
+	},
+
+	check () {
+		if (this._setChecked(true)) {
+			this.trigger('checked');
+		}
+	},
+
+	uncheck () {
+		if (this._setChecked(false)) {
+			this.trigger('unchecked');
+		}
 	}
 });
 
