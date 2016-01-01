@@ -15,9 +15,9 @@ const PicklistItem = React.createClass({
 	displayName: CONTROL,
 
 	cssClasses: {
-		HEADER: 'slds-dropdown__header',
-		HEADERTEXT: 'slds-text-heading--label',
-		DIVIDER: 'slds-has-divider'
+		ITEMHEADER: 'slds-dropdown__header',
+		ITEMHEADERTEXT: 'slds-text-heading--label',
+		ITEMDIVIDER: 'slds-has-divider'
 	},
 
 	propTypes: {
@@ -52,10 +52,10 @@ const PicklistItem = React.createClass({
 
 		switch (this.props.item.getType()) {
 			case 'header':
-				html = <li className={this.cssClasses.HEADER} id={this.props.id}><span className={this.cssClasses.HEADERTEXT}>{this.props.item.getText()}</span></li>;
+				html = <li className={this.cssClasses.ITEMHEADER} id={this.props.id}><span className={this.cssClasses.ITEMHEADERTEXT}>{this.props.item.getText()}</span></li>;
 				break;
 			case 'divider':
-				html = <li className={this.cssClasses.DIVIDER} id={this.props.id}></li>;
+				html = <li className={this.cssClasses.ITEMDIVIDER} id={this.props.id}></li>;
 				break;
 			default:
 				const disabled = this.props.item.getDisabled();
