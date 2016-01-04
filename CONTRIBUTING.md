@@ -19,9 +19,9 @@ We'll review your code, suggest any needed changes, and merge it in. Thank you.
 
 1. Use es6 syntax
 
-2. propTypes, defaultProps, and declaration of props on components should be in alphabetical order.
+2. `propTypes`, `defaultProps`, and declaration of props on components should be in alphabetical order.
 
-3. Components' lifecyle methods should be near the top, and the render() function should be the last function in the component so that users can easily find them.
+3. Components' lifecyle methods should be near the top (`componentDidMount`,`componentWillUnmount`, etc.), and the `render()` function should be the last function in the component so that users can easily find them.
 
 4. Below is a react component template. Note that `displayName`, `propTypes`, and `defaultProps` are required.
 
