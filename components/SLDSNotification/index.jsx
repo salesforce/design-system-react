@@ -74,6 +74,13 @@ class SLDSNotification extends React.Component {
     }
   }
 
+  //componentDidUpdate(prevProps) {
+  //  if(prevProps.isOpen !== this.props.isOpen){
+  //    const btn = React.findDOMNode(this.refs.dismissNotificationBtn);
+  //    if(btn) btn.focus();
+  //  }
+  //}
+
   renderIcon(){
     if(this.props.icon){
       let classes = "";
@@ -103,6 +110,7 @@ class SLDSNotification extends React.Component {
             iconSize={size}
             className="slds-button slds-notify__close"
             onClick={this.onDismiss.bind(this)}
+            //ref="dismissNotificationBtn"
           />
     }
   }
