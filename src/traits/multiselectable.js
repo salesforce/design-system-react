@@ -8,7 +8,11 @@
 // Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
 
+import Eventable from './eventable';
+
 const Multiselectable = {
+	eventKey: '_multiselectableEvents',
+	
 	// The internal version of `getSelectedItems`. You can always access the raw selection yourself, of course, this method just wraps it in a `dataAdapter` for you so that you get the benefit of supporting multiple frameworks. It also clones the selection so that a selection passed in by reference won't be mutated.
 	getWrappedImmutableData (controlContext, data) {
 		if (data) {
@@ -57,17 +61,7 @@ const Multiselectable = {
 				selection.reset(itemsToSelect);
 			}
 
-			// Call optional internal lifecycle methods before and after selection. Some facades will make use of these to perform rendering or other tasks.
-			if (Lib.isFunction(controlContext._onBeforeSelect)) controlContext._onBeforeSelect(selection);
-			
-			// While this method is optional (it's not used by React, for example) most facades will use it to update the selection property.
-			if (Lib.isFunction(controlContext._onSelect)) controlContext._onSelect(selection);
-
-			// Every facade must provide a `trigger` method for event handling. In this case we are triggering two "events" - both a `changed` event that fires for selection _and_ deselection, and a `selected` event that fires only for selection. It's important to note that exactly how these events bubble up will depend on how a particular framework typically works. They might be thrown on the control itself, on a DOM element tied to the control, or even called as a callback instead of as an event. You can read the `events.js` helper in the framework you are working in to see how the facade for that framework handles events.
-			controlContext.trigger('changed', itemsToSelect, selection._data);
-			controlContext.trigger('selected', itemsToSelect, selection._data);
-			
-			if (Lib.isFunction(controlContext._onSelected)) controlContext._onSelected(selection);
+			Eventable.trigger(controlContext, Multiselectable.eventKey, 'select', itemsToSelect, selection);
 		};
 
 		// We only need to move forward if we actually have items to select. If we do, check for the `_canSelect` method.
@@ -93,15 +87,7 @@ const Multiselectable = {
 		const _deselect = () => {
 			selection.remove(itemsToDeselect);
 
-			if (Lib.isFunction(controlContext._onBeforeDeselect)) controlContext._onBeforeDeselect(selection);
-
-			// While this method is optional (it's not used by React, for example) most facades will use it to update the selection property.
-			if (Lib.isFunction(controlContext._onDeselect)) controlContext._onDeselect(selection);
-			
-			controlContext.trigger('changed', itemsToDeselect, selection._data);
-			controlContext.trigger('deselected', itemsToDeselect, selection._data);
-			
-			if (Lib.isFunction(controlContext._onDeselected)) controlContext._onDeselected(selection);
+			Eventable.trigger(controlContext, Multiselectable.eventKey, 'deselect', itemsToDeselect, selection);
 		};
 		
 		if (itemsToDeselect.length > 0) {
@@ -122,15 +108,7 @@ const Multiselectable = {
 		const selection = Multiselectable.getWrappedImmutableData(controlContext, currentSelection);
 		selection.reset(null);
 
-		if (Lib.isFunction(controlContext._onBeforeDeselect)) controlContext._onBeforeDeselect(selection);
-
-		// While this method is optional (it's not used by React, for example) most facades will use it to update the selection property.
-		if (Lib.isFunction(controlContext._onDeselect)) controlContext._onDeselect(selection);
-		
-		controlContext.trigger('changed', null, selection._data);
-		controlContext.trigger('deselected', null, selection._data);
-		
-		if (Lib.isFunction(controlContext._onDeselected)) controlContext._onDeselected(selection);
+		Eventable.trigger(controlContext, Multiselectable.eventKey, 'deselect', null, selection);
 	},
 	
 	toggleItem (controlContext, item, currentSelection) {

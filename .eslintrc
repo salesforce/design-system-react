@@ -13,7 +13,7 @@
 		"no-console": 0,
 		"react/jsx-boolean-value": 0,
 		"react/sort-comp": 0,
-		"id-length": [2, {"min": 2, "properties": "never", "exceptions": ["$", "_", "e", "i", "a", "b"]}],
+		"id-length": [2, {"min": 2, "properties": "never", "exceptions": ["$", "_", "e", "i", "j", "a", "b"]}],
 		"no-undef": 1,
 		"react/no-multi-comp": 0
 	}

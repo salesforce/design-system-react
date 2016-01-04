@@ -1,8 +1,9 @@
 import * as Lib from '../lib/lib';
 
 const Eventable = {
-	on (events, name, callback, context) {
-		if (!Lib.isObject(events)) return;
+	on (controlContext, eventsKey, name, callback, context) {
+		const events = controlContext[eventsKey] || (controlContext[eventsKey] = {});
+		if (!Lib.isObject(events)) return undefined;
 		
 		if (Lib.isFunction(callback)) {
 			const handlers = events[name] || (events[name] = []);
@@ -13,14 +14,16 @@ const Eventable = {
 		return events;
 	},
 	
-	off (events, name, callback, context) {
-		if (!Lib.isObject(events)) return;
+	off (controlContext, eventsKey, name, callback, context) {
+		const events = controlContext[eventsKey] || (controlContext[eventsKey] = {});
+		if (!Lib.isObject(events)) return undefined;
 
 		const names = name ? [name] : Lib.keys(events);
+		let eventName;
 		
 		for (let i = 0; i < names.length; i++) {
-			name = names[i];
-			const handlers = events[name];
+			eventName = names[i];
+			const handlers = events[eventName];
 
 			if (!handlers) break;
 
@@ -35,30 +38,33 @@ const Eventable = {
 			}
 
 			if (remaining.length) {
-				events[name] = remaining;
+				events[eventName] = remaining;
 			} else {
-				delete events[name];
+				delete events[eventName];
 			}
 		}
 		
 		return events;
 	},
 	
-	trigger (events, name) {
-		if (!Lib.isObject(events)) return;
+	trigger (controlContext, eventsKey, name) {
+		const events = controlContext[eventsKey] || (controlContext[eventsKey] = {});
+		if (!Lib.isObject(events)) return undefined;
 		
-		const argumentsLength = Math.max(0, arguments.length - 2);
+		let i;
+		
+		const argumentsLength = Math.max(0, arguments.length - 3);
 		const args = Array(argumentsLength);
-		for (let i = 0; i < argumentsLength; i++) {
-			args[i] = arguments[i + 2]
+		for (i = 0; i < argumentsLength; i++) {
+			args[i] = arguments[i + 3];
 		}
 		
 		const handlers = events[name];
 		let handler;
 		if (handlers) {
 			const handlersLength = handlers.length;
-			for (let j = 0; j < handlersLength; j++) {
-				handler = handlers[j];
+			for (i = 0; i < handlersLength; i++) {
+				handler = handlers[i];
 				handler.callback.apply(handler.context, args);
 			}
 		}
