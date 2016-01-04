@@ -65,7 +65,12 @@ var config = {
 				loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!sass-loader")
 			},
 			{
-				test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+				test: /\.(svg|png|jpg)$/,
+				loader: ExtractTextPlugin.extract('url-loader?limit=30&name=/examples/[path][name].[ext]')
+				// loader: 'url-loader?limit=30000&name=/examples/[name].[ext]'
+			},
+			{
+				test: /\.(eot|woff|woff2|ttf)$/,
 				loader: ExtractTextPlugin.extract('url-loader?limit=30&name=/examples/[path][name].[ext]')
 				// loader: 'url-loader?limit=30000&name=/examples/[name].[ext]'
 			}
@@ -73,8 +78,42 @@ var config = {
 		preLoaders: [
 			{
 				test: /\.js$/,
-				loader: 'eslint-loader',
+				loaders: ['eslint-loader', StringReplacePlugin.replace({
+					replacements: [{
+						pattern: /assets\/icons/g,
+						replacement: function (match, p1, offset, string) {
+							return 'assets/design-system/icons';
+						}
+					}]
+				})],
 				exclude: /node_modules|test\/tests|test\/tests-api|test\/tests-compiled|jquery-declarative|test\/compat/
+			},
+			{
+				test: /\.css$/,
+				loader: StringReplacePlugin.replace({
+					replacements: [{
+						pattern: /assets\/fonts\/webfonts/g,
+						replacement: function (match, p1, offset, string) {
+							return 'assets/design-system/fonts/webfonts';
+						}
+					},{
+						pattern: /assets\/images\/landing/g,
+						replacement: function (match, p1, offset, string) {
+							return 'assets/design-system/images/landing';
+						}
+					}]
+				})
+			},
+			{
+				test: /\.scss$/,
+				loader: StringReplacePlugin.replace({
+					replacements: [{
+						pattern: /assets\/images\/landing/g,
+						replacement: function (match, p1, offset, string) {
+							return 'assets/demo-site/images/landing';
+						}
+					}]
+				})
 			}
 		]
 	},

@@ -23,7 +23,7 @@ var node_modules = path.resolve(root, 'node_modules');
 
 var paths = {
   'app_modules': app_modules,
-  'assets': path.resolve(root, 'site/assets'),
+  'assets': path.resolve(root, 'public/assets'),
   'build': path.resolve(root, 'build'),
   'dist': path.resolve(root, '.dist'),
   'docs': path.resolve(root, 'docs'),
@@ -35,8 +35,8 @@ var paths = {
   'root': root,
   'scripts': path.resolve(root, 'scripts'),
   'scss': path.resolve(root, 'scss'),
-  'site_assets': path.resolve(root, 'site/assets/facades'),
-  'slds_site_assets': path.resolve(root, 'site/assets/design-system'),
+  'site_assets': path.resolve(root, 'public/assets/facades'),
+  'slds_site_assets': path.resolve(root, 'public/assets/design-system'),
   'slds': path.resolve(node_modules, '@salesforce-ux/design-system'),
   'slds_assets': path.resolve(node_modules, '@salesforce-ux/design-system/assets'),
   'source_files': path.resolve(root, 'src'),

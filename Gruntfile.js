@@ -1,4 +1,5 @@
 module.exports = function (grunt) {
+	require('./scripts/helpers/setup');
 	grunt.loadTasks('tasks');
 
 	// Look in ./tasks for additional task modules
@@ -65,7 +66,7 @@ module.exports = function (grunt) {
 		},
 		'shell': {
 			docco: {
-				command: './bin/generate-docs.sh'
+				command: './scripts/generate-docs.sh'
 			}
 		},
 		'webpack': {
