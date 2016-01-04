@@ -114,8 +114,7 @@ export const DataTableObject = {
 					item={item}
 					onSelect={this._toggleDataItem}
 					selected={isSelected}
-					selectRows={isRowSelect}
-				/>
+					selectRows={isRowSelect}/>
 			);
 		});
 	},

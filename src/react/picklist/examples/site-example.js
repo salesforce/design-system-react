@@ -1,16 +1,19 @@
-import * as Lib from '../../../lib/lib';
 import React from 'react';
-import Picklist from '../picklist';
-import sampleData from '../../../../sample-data/picklist';
+import {Lib, Picklist} from 'design-system-react';
+import {sampleData} from 'design-system-utilities';
 
 export default React.createClass({
+	propTypes: {
+		modal: React.PropTypes.bool
+	},
+
 	getInitialState () {
 		return {
 			models: [
 				{
-					collection: sampleData.defaultArray,
+					collection: sampleData.picklist.defaultArray,
 					disabled: false,
-					selection: sampleData.defaultArray[1]
+					selection: sampleData.picklist.defaultArray[1]
 				}
 			]
 		};
@@ -21,7 +24,10 @@ export default React.createClass({
 			return (
 				<div key={index}>
 					<div className="slds-col example">
-						<Picklist {...model} onChanged={this._handleModelChange.bind(this, index)} />
+						<Picklist
+							{...model}
+							modalMenu={this.props.modal}
+							onChanged={this._handleModelChange.bind(this, index)} />
 					</div>
 					<div className="slds-col demo-controls">
 						<div className="slds-button-group" role="group">
@@ -64,7 +70,7 @@ export default React.createClass({
 
 	setSelection (index) {
 		const models = this.state.models;
-		models[index].selection = sampleData.defaultArray[5];
+		models[index].selection = sampleData.picklist.defaultArray[5];
 		this.setState({models});
 	},
 

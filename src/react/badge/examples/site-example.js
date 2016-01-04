@@ -1,5 +1,5 @@
 import React from 'react';
-import {Badge} from '../../dist';
+import {Badge} from 'design-system-react';
 
 export default React.createClass({
 	render () {

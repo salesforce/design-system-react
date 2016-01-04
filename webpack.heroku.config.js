@@ -9,8 +9,9 @@ var packageJson = require('./package.json');
 var config = {
 	entry: {
 		'source-examples-react': ['./src/react/examples'],
-		'source-examples-jquery': ['./src/jquery/examples'],
-		'site-examples-react': ['./site/src/site-react']
+		'site-examples-react': ['./site/src/site-react'],
+		'site-examples-jquery': ['./site/src/site-jquery'],
+		'source-examples-jquery': ['./src/jquery/examples']
 	},
 	resolve: {
 		modulesDirectories: [
@@ -24,7 +25,12 @@ var config = {
 			'.web.js',
 			'.js',
 			'.scss'
-		]
+		],
+		alias: {
+			'design-system-jquery': path.join(__dirname, 'src/jquery/dist.js'),
+			'design-system-react': path.join(__dirname, 'src/react/dist.js'),
+			'design-system-utilities': path.join(__dirname, 'utilities/main.js')
+		}
 	},
 	devtool: 'source-map',
 	output: {
