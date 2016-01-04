@@ -880,12 +880,19 @@
                 "required": false,
                 "description": ""
             },
+            "returnFocusTo": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "styling for notification background"
+            },
             "texture": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "styling for notification background"
+                "description": ""
             },
             "theme": {
                 "type": {

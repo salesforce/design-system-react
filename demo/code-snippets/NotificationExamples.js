@@ -20,6 +20,7 @@ class NotificationExample extends React.Component {
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
+        <SLDSButton variant="neutral" label="Open Toast" onClick={this.openModalToast.bind(this)} />
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
@@ -33,7 +34,6 @@ class NotificationExample extends React.Component {
   openModal () {
     this.setState({
       modalIsOpen: true,
-      modalToastIsOpen: true,
     });
   }
 
@@ -55,6 +55,10 @@ class NotificationExample extends React.Component {
   dismissToast(){
     this.setState({ toastIsOpen: false });
     console.log("====> Dismiss Toast Message");
+  }
+
+  openModalToast(){
+    this.setState({ modalToastIsOpen: true });
   }
 
   dismissModalToast(){
