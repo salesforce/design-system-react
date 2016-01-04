@@ -11342,6 +11342,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  /**
 	   * styling for notification background
 	   */
+	  returnFocusTo: _react2["default"].PropTypes.node,
 	  texture: _react2["default"].PropTypes.bool,
 	  theme: _react2["default"].PropTypes.oneOf(["success", "warning", "error", "offline"]),
 	  variant: _react2["default"].PropTypes.oneOf(["alert", "toast"])
@@ -11349,7 +11350,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var defaultProps = {
 	  isDismissible: true,
-	  isOpen: false
+	  isOpen: false,
+	  returnFocusTo: null
 	};
 	
 	/**
@@ -11376,6 +11378,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	        setTimeout(function () {
 	          _this.onDismiss();
 	        }, this.props.duration);
+	      }
+	    }
+	  }, {
+	    key: "componentWillReceiveProps",
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (nextProps.isOpen !== this.props.isOpen) {
+	        this.setState({ returnFocusTo: document.activeElement });
 	      }
 	    }
 	  }, {
@@ -11415,6 +11424,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "onDismiss",
 	    value: function onDismiss() {
 	      if (this.props.onDismiss) this.props.onDismiss();
+	      if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
+	        this.state.returnFocusTo.focus();
+	      }
 	    }
 	  }, {
 	    key: "renderAlertContent",
