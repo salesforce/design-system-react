@@ -11388,6 +11388,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
+	    key: "componentDidUpdate",
+	    value: function componentDidUpdate(prevProps) {
+	      if (prevProps.isOpen !== this.props.isOpen) {
+	        var btn = _react2["default"].findDOMNode(this.refs.dismissNotificationBtn);
+	        if (btn) btn.focus();
+	      }
+	    }
+	  }, {
 	    key: "renderIcon",
 	    value: function renderIcon() {
 	      if (this.props.icon) {
@@ -11416,7 +11424,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	          iconName: "close",
 	          iconSize: size,
 	          className: "slds-button slds-notify__close",
-	          onClick: this.onDismiss.bind(this)
+	          onClick: this.onDismiss.bind(this),
+	          ref: "dismissNotificationBtn"
 	        });
 	      }
 	    }
