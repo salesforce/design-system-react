@@ -38,6 +38,7 @@ const propTypes = {
   /**
    * styling for notification background
    */
+  returnFocusTo: React.PropTypes.node,
   texture: React.PropTypes.bool,
   theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
   variant: React.PropTypes.oneOf(["alert", "toast"]),
@@ -45,7 +46,8 @@ const propTypes = {
 
 const defaultProps = {
   isDismissible: true,
-  isOpen: false
+  isOpen: false,
+  returnFocusTo: null,
 };
 
 /**
@@ -63,6 +65,12 @@ class SLDSNotification extends React.Component {
       setTimeout(() => {
         this.onDismiss();
       }, this.props.duration)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.isOpen !== this.props.isOpen){
+      this.setState({ returnFocusTo: document.activeElement });
     }
   }
 
@@ -101,6 +109,9 @@ class SLDSNotification extends React.Component {
 
   onDismiss(){
     if(this.props.onDismiss) this.props.onDismiss();
+    if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
+      this.state.returnFocusTo.focus();
+    }
   }
 
   renderAlertContent(){
