@@ -72,7 +72,7 @@ module.exports = React.createClass( {
                       align="top"
                       content={<span>Tooltip on top</span>}
                       targetElement={this.refs.tooltipOnHover}>
-                        <Icon category="utility" name="info" className="slds-icon-text-default" />
+                        <Icon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />
                       </SLDSTooltip>
                   </p>
                 </div>
