@@ -23,11 +23,7 @@ export default React.createClass({
 		);
 	},
 
-	handleDateSelected (item, selection) {
-		if (selection.length > 2) {
-			this.setState({ selection: item });
-		} else {
-			this.setState({ selection: selection });
-		}
+	handleDateSelected (selection) {
+		this.setState({ selection });
 	}
 });

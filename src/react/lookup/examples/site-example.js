@@ -45,7 +45,7 @@ export default React.createClass({
 		return pattern.length < 2 || text.substr(0, pattern.length).toLowerCase() === pattern;
 	},
 
-	_handleModelChange (item, selection) {
+	_handleModelChange (selection) {
 		this.setState({ selection });
 	},
 	

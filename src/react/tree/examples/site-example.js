@@ -30,7 +30,7 @@ export default React.createClass({
 		);
 	},
 
-	handleChanged (item, selection) {
+	handleChanged (selection) {
 		this.setState({ selection });
 	},
 
