@@ -50,7 +50,7 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 					</div>
 					<Svg className="slds-icon" style={{right: '.6rem'}} icon="utility.down" />
 				</button>
-				<PicklistItems id={this._getMenuId()} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={isOpen} onSelected={this._handleMenuItemSelected} />
+				<PicklistItems id={this._getMenuId()} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={item._item} show={isOpen} onSelected={this._handleMenuItemSelected} />
 			</div>
 		);
 	},
