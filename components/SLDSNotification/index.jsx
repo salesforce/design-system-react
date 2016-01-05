@@ -124,7 +124,7 @@ class SLDSNotification extends React.Component {
 
   renderAlertContent(){
     return (
-      <h2>
+      <h2 id="dialogTitle">
         {this.renderIcon()}
         {this.props.content}
       </h2>
@@ -136,7 +136,7 @@ class SLDSNotification extends React.Component {
       <section className="notify__content slds-grid">
         {this.renderIcon()}
         <div className="slds-col slds-align-middle">
-          <h2 className="slds-text-heading--small ">{this.props.content}</h2>
+          <h2 id="dialogTitle" className="slds-text-heading--small ">{this.props.content}</h2>
         </div>
       </section>
     );
@@ -178,7 +178,7 @@ class SLDSNotification extends React.Component {
     let styles = !this.props.isOpen ? { "width": "0" } : {"width": "100%"};
     return (
       <div className="slds-notify-container" style={styles}>
-        <div ref="alertContent" className={this.getClassName()} role="alert">
+        <div className={this.getClassName()} role="alertdialog" aria-labelledby="dialogTitle">
         {this.props.isOpen ? this.renderContent() : this.blankContent()}
         </div>
       </div>
