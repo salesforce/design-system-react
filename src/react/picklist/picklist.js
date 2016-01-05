@@ -105,7 +105,7 @@ export const PicklistObject = {
 				labelledBy={triggerId}
 				getMenuItemId={this._getMenuItemId}
 				collection={this._collection}
-				selection={this._getSelection()._item}
+				selection={this.props.selection}
 				show={isOpen}
 				onSelected={this._handleMenuItemSelected} />
 		);
@@ -131,7 +131,7 @@ export const PicklistObject = {
 	},
 
 	_keyboardSelect (item) {
-		Multiselectable.selectItem(this, item, [this.getProperty('selection')]);
+		Multiselectable.selectItem(this, item, [this.props.selection]);
 	},
 
 	_handleKeyPressed (e) {
@@ -169,7 +169,7 @@ export const PicklistObject = {
 
 	_onSelect (itemsToSelect, selection) {
 		if (Lib.isFunction(this.props.onSelect)) {
-			this.props.onSelect(itemsToSelect, selection.at(0));
+			this.props.onSelect(selection.at(0));
 		}
 		
 		if (Lib.isFunction(this.props.onChange)) {
@@ -179,7 +179,7 @@ export const PicklistObject = {
 
 	_onDeselect (itemsToDeselect, selection) {
 		if (Lib.isFunction(this.props.onDeselect)) {
-			this.props.onDeselect(itemsToDeselect, selection.at(0));
+			this.props.onDeselect(selection.at(0));
 		}
 		
 		if (Lib.isFunction(this.props.onChange)) {
