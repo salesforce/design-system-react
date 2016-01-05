@@ -11440,12 +11440,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "renderAlertContent",
 	    value: function renderAlertContent() {
-	      return _react2["default"].createElement("h2", null, this.renderIcon(), this.props.content);
+	      return _react2["default"].createElement("h2", { id: "dialogTitle" }, this.renderIcon(), this.props.content);
 	    }
 	  }, {
 	    key: "renderToastContent",
 	    value: function renderToastContent() {
-	      return _react2["default"].createElement("section", { className: "notify__content slds-grid" }, this.renderIcon(), _react2["default"].createElement("div", { className: "slds-col slds-align-middle" }, _react2["default"].createElement("h2", { className: "slds-text-heading--small " }, this.props.content)));
+	      return _react2["default"].createElement("section", { className: "notify__content slds-grid" }, this.renderIcon(), _react2["default"].createElement("div", { className: "slds-col slds-align-middle" }, _react2["default"].createElement("h2", { id: "dialogTitle", className: "slds-text-heading--small " }, this.props.content)));
 	    }
 	  }, {
 	    key: "getClassName",
@@ -11476,7 +11476,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      //TODO: If there are multiple notifications on a page, we must 'hide' the ones that aren't open.
 	      //Need to find a better way to do this than using width:0 to override slds-notify-container.
 	      var styles = !this.props.isOpen ? { "width": "0" } : { "width": "100%" };
-	      return _react2["default"].createElement("div", { className: "slds-notify-container", style: styles }, _react2["default"].createElement("div", { ref: "alertContent", className: this.getClassName(), role: "alert" }, this.props.isOpen ? this.renderContent() : this.blankContent()));
+	      return _react2["default"].createElement("div", { className: "slds-notify-container", style: styles }, _react2["default"].createElement("div", { className: this.getClassName(), role: "alertdialog", "aria-labelledby": "dialogTitle" }, this.props.isOpen ? this.renderContent() : this.blankContent()));
 	    }
 	  }]);
 	
