@@ -103,8 +103,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 		Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-lookup'));
 		
-		Eventable.on(this, Multiselectable.eventKey, 'select', this._onSelect);
-		Eventable.on(this, Multiselectable.eventKey, 'deselect', this._onDeselect);
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	componentWillReceiveProps (nextProps) {
@@ -284,7 +284,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 	// After the last item has been removed from the selection the focus should return to the input. We have to set a flag for this here, but the actual focus can't occur until after render.
 	_onDeselect (itemsToDeselect, selection) {
-		if (Lib.isFunction(this.props.onSelect)) {
+		if (Lib.isFunction(this.props.onDeselect)) {
 			this.props.onDeselect(itemsToDeselect, selection._data);
 		}
 		

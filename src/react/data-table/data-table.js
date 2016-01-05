@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import DataTableCore, {CONTROL} from '../../core/data-table';
 
 // Traits
+import Eventable from '../../traits/eventable';
 import Multiselectable from '../../traits/multiselectable';
 
 // Framework specific
@@ -36,6 +37,11 @@ export const DataTableObject = {
 		stacked: React.PropTypes.bool,
 		stackedHorizontal: React.PropTypes.bool,
 		striped: React.PropTypes.bool
+	},
+
+	componentWillMount () {
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	_tableHeaders () {
@@ -138,6 +144,26 @@ export const DataTableObject = {
 				</tbody>
 			</table>
 		);
+	},
+
+	_onSelect (itemsToSelect, selection) {
+		if (Lib.isFunction(this.props.onSelect)) {
+			this.props.onSelect(itemsToSelect, selection._data);
+		}
+		
+		if (Lib.isFunction(this.props.onChange)) {
+			this.props.onChange(selection._data);
+		}
+	},
+
+	_onDeselect (itemsToDeselect, selection) {
+		if (Lib.isFunction(this.props.onDeselect)) {
+			this.props.onDeselect(itemsToDeselect, selection._data);
+		}
+		
+		if (Lib.isFunction(this.props.onChange)) {
+			this.props.onChange(selection._data);
+		}
 	}
 };
 

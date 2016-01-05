@@ -11,8 +11,6 @@ import * as Lib from '../lib/lib';
 import Eventable from './eventable';
 
 const Multiselectable = {
-	eventKey: '_multiselectableEvents',
-	
 	// The internal version of `getSelectedItems`. You can always access the raw selection yourself, of course, this method just wraps it in a `dataAdapter` for you so that you get the benefit of supporting multiple frameworks. It also clones the selection so that a selection passed in by reference won't be mutated.
 	getWrappedImmutableData (controlContext, data) {
 		if (data) {
@@ -61,7 +59,7 @@ const Multiselectable = {
 				selection.reset(itemsToSelect);
 			}
 
-			Eventable.trigger(controlContext, Multiselectable.eventKey, 'select', itemsToSelect, selection);
+			Eventable.trigger(controlContext, 'select', itemsToSelect, selection);
 		};
 
 		// We only need to move forward if we actually have items to select. If we do, check for the `_canSelect` method.
@@ -87,7 +85,7 @@ const Multiselectable = {
 		const _deselect = () => {
 			selection.remove(itemsToDeselect);
 
-			Eventable.trigger(controlContext, Multiselectable.eventKey, 'deselect', itemsToDeselect, selection);
+			Eventable.trigger(controlContext, 'deselect', itemsToDeselect, selection);
 		};
 		
 		if (itemsToDeselect.length > 0) {
@@ -108,7 +106,7 @@ const Multiselectable = {
 		const selection = Multiselectable.getWrappedImmutableData(controlContext, currentSelection);
 		selection.reset(null);
 
-		Eventable.trigger(controlContext, Multiselectable.eventKey, 'deselect', null, selection);
+		Eventable.trigger(controlContext, 'deselect', null, selection);
 	},
 	
 	toggleItem (controlContext, item, currentSelection) {

@@ -1,8 +1,8 @@
 import * as Lib from '../lib/lib';
 
 const Eventable = {
-	on (controlContext, eventsKey, name, callback, context) {
-		const events = controlContext[eventsKey] || (controlContext[eventsKey] = {});
+	on (controlContext, name, callback, context) {
+		const events = controlContext._eventableEvents || (controlContext._eventableEvents = {});
 		if (!Lib.isObject(events)) return undefined;
 		
 		if (Lib.isFunction(callback)) {
@@ -14,8 +14,8 @@ const Eventable = {
 		return events;
 	},
 	
-	off (controlContext, eventsKey, name, callback, context) {
-		const events = controlContext[eventsKey] || (controlContext[eventsKey] = {});
+	off (controlContext, name, callback, context) {
+		const events = controlContext._eventableEvents || (controlContext._eventableEvents = {});
 		if (!Lib.isObject(events)) return undefined;
 
 		const names = name ? [name] : Lib.keys(events);
@@ -47,16 +47,16 @@ const Eventable = {
 		return events;
 	},
 	
-	trigger (controlContext, eventsKey, name) {
-		const events = controlContext[eventsKey] || (controlContext[eventsKey] = {});
+	trigger (controlContext, name) {
+		const events = controlContext._eventableEvents || (controlContext._eventableEvents = {});
 		if (!Lib.isObject(events)) return undefined;
 		
 		let i;
 		
-		const argumentsLength = Math.max(0, arguments.length - 3);
+		const argumentsLength = Math.max(0, arguments.length - 2);
 		const args = Array(argumentsLength);
 		for (i = 0; i < argumentsLength; i++) {
-			args[i] = arguments[i + 3];
+			args[i] = arguments[i + 2];
 		}
 		
 		const handlers = events[name];

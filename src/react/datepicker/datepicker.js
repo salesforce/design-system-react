@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
 // Traits
+import Eventable from '../../traits/eventable';
 import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
 import Positionable from '../../traits/positionable';
@@ -39,6 +40,9 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 	componentWillMount () {
 		Positionable.setElement(this, Positionable.attachPositionedElementToBody());
+		
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	render () {
@@ -132,6 +136,26 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		this.setState({
 			dateViewing: date
 		});
+	},
+
+	_onSelect (itemsToSelect, selection) {
+		if (Lib.isFunction(this.props.onSelect)) {
+			this.props.onSelect(itemsToSelect, selection._data);
+		}
+		
+		if (Lib.isFunction(this.props.onChange)) {
+			this.props.onChange(selection._data);
+		}
+	},
+
+	_onDeselect (itemsToDeselect, selection) {
+		if (Lib.isFunction(this.props.onDeselect)) {
+			this.props.onDeselect(itemsToDeselect, selection._data);
+		}
+		
+		if (Lib.isFunction(this.props.onChange)) {
+			this.props.onChange(selection._data);
+		}
 	}
 });
 
