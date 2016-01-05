@@ -131,7 +131,7 @@ export const PicklistObject = {
 	},
 
 	_keyboardSelect (item) {
-		Multiselectable.selectItem(this, item, this.getProperty('selection'));
+		Multiselectable.selectItem(this, item, [this.getProperty('selection')]);
 	},
 
 	_handleKeyPressed (e) {
@@ -169,21 +169,21 @@ export const PicklistObject = {
 
 	_onSelect (itemsToSelect, selection) {
 		if (Lib.isFunction(this.props.onSelect)) {
-			this.props.onSelect(itemsToSelect, selection._data);
+			this.props.onSelect(itemsToSelect, selection.at(0));
 		}
 		
 		if (Lib.isFunction(this.props.onChange)) {
-			this.props.onChange(selection._data);
+			this.props.onChange(selection.at(0));
 		}
 	},
 
 	_onDeselect (itemsToDeselect, selection) {
 		if (Lib.isFunction(this.props.onDeselect)) {
-			this.props.onDeselect(itemsToDeselect, selection._data);
+			this.props.onDeselect(itemsToDeselect, selection.at(0));
 		}
 		
 		if (Lib.isFunction(this.props.onChange)) {
-			this.props.onChange(selection._data);
+			this.props.onChange(selection.at(0));
 		}
 	}
 };

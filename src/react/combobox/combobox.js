@@ -7,6 +7,7 @@ import ComboboxCore, {CONTROL} from '../../core/combobox';
 // Traits
 import Openable from '../../traits/openable';
 import KeyboardNavigable from '../../traits/keyboard-navigable';
+import Multiselectable from '../../traits/multiselectable';
 
 // Framework specific
 import React from 'react';
@@ -63,13 +64,13 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 		
 		value[this.accessors.textProp()] = e.target.value;
 
-		this.setSelection(value);
+		Multiselectable.selectItem(this, value);
 	},
 	
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
-			KeyboardNavigable.keyboardNav(this, e.key, this.setSelection, this._collection);
+			KeyboardNavigable.keyboardNav(this, e.key, this._keyboardSelect, this._collection);
 		} else if (e.key.length === 1) {
 			Openable.open(this);
 			this.elements.input[0].focus();
