@@ -11476,7 +11476,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      //TODO: If there are multiple notifications on a page, we must 'hide' the ones that aren't open.
 	      //Need to find a better way to do this than using width:0 to override slds-notify-container.
 	      var styles = !this.props.isOpen ? { "width": "0" } : { "width": "100%" };
-	      return _react2["default"].createElement("div", { className: "slds-notify-container", style: styles }, _react2["default"].createElement("div", { className: this.getClassName(), role: "alertdialog", "aria-labelledby": "dialogTitle", "aria-describedby": "dialogTitle" }, this.props.isOpen ? this.renderContent() : this.blankContent()));
+	      return _react2["default"].createElement("div", { className: "slds-notify-container", style: styles }, _react2["default"].createElement("div", { className: this.getClassName(), role: "alertdialog", "aria-labelledby": "dialogTitle" }, this.props.isOpen ? this.renderContent() : this.blankContent()));
 	    }
 	  }]);
 	
