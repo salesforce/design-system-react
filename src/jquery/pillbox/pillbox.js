@@ -38,8 +38,8 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		this.elements.group = this.element.find('.slds-pill-group');
 		this.elements.pillTemplate = this.elements.group.find('.slds-pill').remove();
 		
-		Eventable.on(this, 'select', this._onSelect);
-		Eventable.on(this, 'deselect', this._onDeselect);
+		Eventable.on(this, 'select', this._onSelect, this);
+		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 	
 	_bindUIEvents () {
@@ -110,7 +110,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	
 	_onDeselect (itemsToDeselect, selection) {
 		this.setProperties({ selection: selection._data });
-		this._renderCollection();
+		this._renderSelection();
 	
 		this.trigger('deselected', itemsToDeselect, selection._data);
 		this.trigger('changed', itemsToDeselect, selection._data);

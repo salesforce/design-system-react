@@ -37,8 +37,8 @@ export const DataTableObject = {
 		this.elements.theadRow = this.element.find('thead tr.slds-text-heading--label');
 		this.elements.tbody = this.element.find('tbody');
 		
-		Eventable.on(this, 'select', this._onSelect);
-		Eventable.on(this, 'deselect', this._onDeselect);
+		Eventable.on(this, 'select', this._onSelect, this);
+		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 	
 	_bindUIEvents () {

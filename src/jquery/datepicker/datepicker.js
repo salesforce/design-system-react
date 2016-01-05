@@ -83,8 +83,8 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 			}
 		}
 		
-		Eventable.on(this, 'select', this._onSelect);
-		Eventable.on(this, 'deselect', this._onDeselect);
+		Eventable.on(this, 'select', this._onSelect, this);
+		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 
 	_bindUIEvents () {

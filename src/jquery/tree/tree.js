@@ -79,8 +79,8 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this.elements.list = this.element.find('.' + this.cssClasses.CONTROL);
 		
-		Eventable.on(this, 'select', this._onSelect);
-		Eventable.on(this, 'deselect', this._onDeselect);
+		Eventable.on(this, 'select', this._onSelect, this);
+		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 	
 	_onInitialized () {
