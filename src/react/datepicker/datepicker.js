@@ -151,7 +151,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	},
 
 	_onDeselect (itemsToDeselect, selection) {
-		const dates = selection.length() > 2 ? itemsToSelect : selection._data;
+		const dates = selection.length() > 2 ? itemsToDeselect : selection._data;
 
 		if (Lib.isFunction(this.props.onDeselect)) {
 			this.props.onDeselect(itemsToDeselect, dates);

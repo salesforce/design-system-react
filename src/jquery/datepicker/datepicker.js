@@ -228,8 +228,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		const curViewDate = this.getState('dateViewing');
 
 		e.stopPropagation();
-		this.setState({ 'dateViewing': new Date(curViewDate.setYear(data.value))} );
-		this._renderDateRange();
+
+		if (curViewDate.getFullYear() !== data.value) {
+			this.setState({ 'dateViewing': new Date(curViewDate.setYear(data.value))} );
+			this._renderDateRange();
+		}
 	},
 
 	_backMonth (e) {
@@ -284,7 +287,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 				this.selectDate({ date: dayData.date }, insertIndex);
 			} else {
-				this.selectDate({ date: dayData.date });
+				this.selectDates([{ date: dayData.date }]);
 			}
 		}
 	},
