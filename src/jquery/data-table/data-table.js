@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import DataTableCore, {CONTROL} from '../../core/data-table';
 
 // Traits
+import Eventable from '../../traits/eventable';
 import Multiselectable from '../../traits/multiselectable';
 
 // Framework specific
@@ -35,6 +36,9 @@ export const DataTableObject = {
 
 		this.elements.theadRow = this.element.find('thead tr.slds-text-heading--label');
 		this.elements.tbody = this.element.find('tbody');
+		
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 	
 	_bindUIEvents () {
@@ -216,14 +220,20 @@ export const DataTableObject = {
 		Multiselectable.selectItems(this, items, this.getProperty('selection'), index);
 	},
 
-	_onSelect (selection) {
+	_onSelect (itemsToSelect, selection) {
 		this.setProperties({ selection: selection._data });
 		this._renderCollection();
+	
+		this.trigger('selected', itemsToSelect, selection._data);
+		this.trigger('changed', itemsToSelect, selection._data);
 	},
 	
-	_onDeselect (selection) {
+	_onDeselect (itemsToDeselect, selection) {
 		this.setProperties({ selection: selection._data });
 		this._renderCollection();
+	
+		this.trigger('deselected', itemsToDeselect, selection._data);
+		this.trigger('changed', itemsToDeselect, selection._data);
 	},
 	
 	_onRendered () {

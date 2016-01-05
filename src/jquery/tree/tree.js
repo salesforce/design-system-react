@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import TreeCore, {CONTROL} from '../../core/tree';
 
 // Traits
+import Eventable from '../../traits/eventable';
 import Multiselectable from '../../traits/multiselectable';
 
 // Framework Specific
@@ -77,6 +78,9 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this.elements.list = this.element.find('.' + this.cssClasses.CONTROL);
+		
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 	
 	_onInitialized () {
@@ -255,14 +259,20 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		Multiselectable.selectItems(this, items, this.getProperty('selection'), index);
 	},
 
-	_onSelect (selection) {
+	_onSelect (itemsToSelect, selection) {
 		this.setProperties({ selection: selection._data });
 		this._onSelectionUpdated(selection);
+	
+		this.trigger('selected', itemsToSelect, selection._data);
+		this.trigger('changed', itemsToSelect, selection._data);
 	},
 	
-	_onDeselect (selection) {
+	_onDeselect (itemsToDeselect, selection) {
 		this.setProperties({ selection: selection._data });
 		this._onSelectionUpdated(selection);
+	
+		this.trigger('deselected', itemsToDeselect, selection._data);
+		this.trigger('changed', itemsToDeselect, selection._data);
 	},
 
 	_onSelectionUpdated (selection) {
