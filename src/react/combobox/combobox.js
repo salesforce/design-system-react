@@ -5,7 +5,6 @@ import * as Lib from '../../lib/lib';
 import ComboboxCore, {CONTROL} from '../../core/combobox';
 
 // Traits
-import Eventable from '../../traits/eventable';
 import Openable from '../../traits/openable';
 import KeyboardNavigable from '../../traits/keyboard-navigable';
 
@@ -33,11 +32,6 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 			React.PropTypes.string,
 			React.PropTypes.object
 		])
-	},
-
-	componentWillMount () {
-		Eventable.on(this, 'select', this._onSelect);
-		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	render () {
@@ -79,26 +73,6 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 		} else if (e.key.length === 1) {
 			Openable.open(this);
 			this.elements.input[0].focus();
-		}
-	},
-
-	_onSelect (itemsToSelect, selection) {
-		if (Lib.isFunction(this.props.onSelect)) {
-			this.props.onSelect(itemsToSelect, selection._data);
-		}
-		
-		if (Lib.isFunction(this.props.onChange)) {
-			this.props.onChange(selection._data);
-		}
-	},
-
-	_onDeselect (itemsToDeselect, selection) {
-		if (Lib.isFunction(this.props.onDeselect)) {
-			this.props.onDeselect(itemsToDeselect, selection._data);
-		}
-		
-		if (Lib.isFunction(this.props.onChange)) {
-			this.props.onChange(selection._data);
 		}
 	}
 });

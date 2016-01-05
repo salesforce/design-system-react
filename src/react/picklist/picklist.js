@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Traits
+import Eventable from '../../traits/eventable';
 import KeyboardNavigable from '../../traits/keyboard-navigable';
 import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
@@ -41,6 +42,9 @@ export const PicklistObject = {
 
 	componentWillMount () {
 		Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-picklist'));
+		
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	componentWillUnmount () {
@@ -161,6 +165,26 @@ export const PicklistObject = {
 		}
 		
 		return item;
+	},
+
+	_onSelect (itemsToSelect, selection) {
+		if (Lib.isFunction(this.props.onSelect)) {
+			this.props.onSelect(itemsToSelect, selection._data);
+		}
+		
+		if (Lib.isFunction(this.props.onChange)) {
+			this.props.onChange(selection._data);
+		}
+	},
+
+	_onDeselect (itemsToDeselect, selection) {
+		if (Lib.isFunction(this.props.onDeselect)) {
+			this.props.onDeselect(itemsToDeselect, selection._data);
+		}
+		
+		if (Lib.isFunction(this.props.onChange)) {
+			this.props.onChange(selection._data);
+		}
 	}
 };
 

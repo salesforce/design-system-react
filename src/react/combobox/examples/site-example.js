@@ -28,7 +28,7 @@ export default React.createClass({
 				<Combobox
 					{...this.state.model}
 					modalMenu={this.props.modal}
-					onChanged={this._handleModelChange}/>
+					onChange={this._handleModelChange}/>
 			</div>
 		);
 	},

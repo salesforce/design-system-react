@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import PillboxCore, {CONTROL} from '../../core/pillbox';
 
 // Traits
+import Eventable from '../../traits/eventable';
 import Multiselectable from '../../traits/multiselectable';
 
 // Framework specific
@@ -23,6 +24,11 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 
 	propTypes: {
 		selection: React.PropTypes.any
+	},
+
+	componentWillMount () {
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	render () {
@@ -53,6 +59,26 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 			Multiselectable.deselectItem(this, item._item, this.props.selection);
 		} else {
 			Multiselectable.deselectAll(this, this.props.selection);
+		}
+	},
+
+	_onSelect (itemsToSelect, selection) {
+		if (Lib.isFunction(this.props.onSelect)) {
+			this.props.onSelect(itemsToSelect, selection._data);
+		}
+		
+		if (Lib.isFunction(this.props.onChange)) {
+			this.props.onChange(selection._data);
+		}
+	},
+
+	_onDeselect (itemsToDeselect, selection) {
+		if (Lib.isFunction(this.props.onDeselect)) {
+			this.props.onDeselect(itemsToDeselect, selection._data);
+		}
+		
+		if (Lib.isFunction(this.props.onChange)) {
+			this.props.onChange(selection._data);
 		}
 	}
 });

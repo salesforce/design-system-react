@@ -16,7 +16,7 @@ export default React.createClass({
 		return (
 			<Datepicker
 				selection={this.state.selection}
-				onChanged={this.handleDateSelected}
+				onChange={this.handleDateSelected}
 				modalCalendar={this.props.modal}
 				multiSelect={true}
 				inputLabel="Pick a Date"/>

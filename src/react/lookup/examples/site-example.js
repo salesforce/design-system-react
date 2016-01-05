@@ -20,7 +20,7 @@ export default React.createClass({
 				<Lookup label="Accounts"
 					collection={this.state.collection}
 					selection={this.state.selection}
-					onChanged={this._handleModelChange}
+					onChange={this._handleModelChange}
 					filterPredicate={this._filterPredicate}
 					modalMenu={this.props.modal}
 					onAddClick={this._handleAdd}

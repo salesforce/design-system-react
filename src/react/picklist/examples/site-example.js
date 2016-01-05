@@ -27,7 +27,7 @@ export default React.createClass({
 						<Picklist
 							{...model}
 							modalMenu={this.props.modal}
-							onChanged={this._handleModelChange.bind(this, index)} />
+							onChange={this._handleModelChange.bind(this, index)} />
 					</div>
 					<div className="slds-col demo-controls">
 						<div className="slds-button-group" role="group">
