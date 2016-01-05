@@ -178,7 +178,7 @@ class SLDSNotification extends React.Component {
     let styles = !this.props.isOpen ? { "width": "0" } : {"width": "100%"};
     return (
       <div className="slds-notify-container" style={styles}>
-        <div className={this.getClassName()} role="alertdialog" aria-labelledby="dialogTitle" aria-describedby="dialogTitle">
+        <div className={this.getClassName()} role="alertdialog" aria-labelledby="dialogTitle">
         {this.props.isOpen ? this.renderContent() : this.blankContent()}
         </div>
       </div>
