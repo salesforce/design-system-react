@@ -58,15 +58,20 @@ module.exports = React.createClass( {
             <section className="slds-p-bottom--large">
               <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Current</h3>
               <ul>
+{/*
                 <li><Link to="button">Button</Link></li>
                 <li><Link to="button-group">Button Group</Link></li>
                 <li><Link to="dropdown">Dropdown</Link></li>
                 <li><Link to="icon">Icon</Link></li>
+*/}
                 <li><Link to="lookup">Lookup</Link></li>
+{/*
                 <li><Link to="modal">Modal</Link></li>
+*/}
                 <li><Link to="notification">Notification</Link></li>
                 <li><Link to="picklist">Picklist</Link></li>
                 <li><Link to="tooltip">Tooltip</Link></li>
+
               </ul>
               <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Future</h3>
               <ul>
