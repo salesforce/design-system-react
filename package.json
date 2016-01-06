@@ -68,6 +68,7 @@
     "raw-loader": "^0.5.1",
     "react": "^0.14.0",
     "react-docgen": "^2.4.0",
+    "react-dom": "^0.14.5",
     "react-hot-loader": "^1.2.7",
     "react-prism": "^3.0.0",
     "react-router": "^0.13.3",
