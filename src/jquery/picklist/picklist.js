@@ -6,9 +6,11 @@ import KeyNumber from '../../lib/keys';
 import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Traits
+import Eventable from '../../traits/eventable';
+import KeyboardNavigable from '../../traits/keyboard-navigable';
+import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
 import Positionable from '../../traits/positionable';
-import KeyboardNavigable from '../../traits/keyboard-navigable';
 
 // Framework specific
 import DOM from '../dom';
@@ -36,6 +38,9 @@ export const PicklistObject = {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this._initElements();
+		
+		Eventable.on(this, 'select', this._onSelect, this);
+		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 
 	_initElements () {
@@ -155,18 +160,6 @@ export const PicklistObject = {
 		this._bindUIEvents();
 	},
 
-	_onSelected (item) {
-		if (this.rendered) {
-			const strings = this.getState('strings');
-
-			this.button.renderView({
-				text: item.getText() || strings.NONE_SELECTED
-			});
-
-			this._addCheckmark(this.elements);
-		}
-	},
-
 	_onOpened () {
 		if (this.rendered) {
 			this.elements.dropdown.toggleClass('slds-hide', false);
@@ -233,7 +226,7 @@ export const PicklistObject = {
 		const $li = $a.parent('li');
 
 		if (!$li.prop('disabled')) {
-			this.setSelection($li.data('item'));
+			Multiselectable.selectItem(this, $li.data('item'));
 			Openable.close(this);
 		}
 	},
@@ -269,7 +262,7 @@ export const PicklistObject = {
 	},
 
 	_addCheckmark (elements) {
-		const selection = this.getSelection();
+		const selection = this.getProperty('selection');
 		let $li;
 
 		if (selection) {
@@ -286,6 +279,54 @@ export const PicklistObject = {
 
 			$li.addClass('slds-is-selected');
 		}
+	},
+
+	_getSelection () {
+		let item = this._collection.findWhere(this.getProperty('selection'));
+		
+		if (!item) {
+			item = this._getItemAdapter(this.getProperty('selection'));
+		}
+		
+		return item;
+	},
+
+	_onSelect (itemsToSelect, selection) {
+		const item = selection.at(0);
+		
+		this.setProperties({ selection: item });
+		
+		this.trigger('selected', item);
+		this.trigger('changed', item);
+		
+		this._onChanged();
+	},
+
+	_onDeselect () {
+		this.setProperties({ selection: undefined });
+		
+		this.trigger('deselected');
+		this.trigger('changed');
+		
+		this._onChanged();
+	},
+
+	_onChanged () {
+		const item = this._getSelection();
+		
+		if (this.rendered) {
+			const strings = this.getState('strings');
+
+			this.button.renderView({
+				text: item.getText() || strings.NONE_SELECTED
+			});
+
+			this._addCheckmark(this.elements);
+		}
+	},
+	
+	setSelection (item) {
+		Multiselectable.selectItem(this, item);
 	}
 };
 

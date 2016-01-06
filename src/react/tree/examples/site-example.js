@@ -21,7 +21,7 @@ export default React.createClass({
 						collection={sampleData.tree.defaultArray}
 						selection={this.state.selection}
 						open={this.state.open}
-						onChanged={this.handleChanged}
+						onChange={this.handleChanged}
 						onOpened={this.handleToggle}
 						onClosed={this.handleToggle} />
 				</div>
@@ -30,7 +30,7 @@ export default React.createClass({
 		);
 	},
 
-	handleChanged (item, selection) {
+	handleChanged (selection) {
 		this.setState({ selection });
 	},
 

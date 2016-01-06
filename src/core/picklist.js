@@ -7,12 +7,9 @@ import * as Lib from '../lib/lib';
 // Inherit from the [base control](base.html).
 import Base from './base';
 
-// Traits
-import Selectable from '../traits/selectable';
-
 export const CONTROL = 'Picklist';
 
-const PicklistCore = Lib.merge({}, Base, Selectable, {
+const PicklistCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	// CSS classes used within this control
@@ -40,7 +37,8 @@ const PicklistCore = Lib.merge({}, Base, Selectable, {
 		positionedOffset: 0,
 		positionedTargetHorizontalAttachment: 'left',
 		positionedZIndex: '10001',
-		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey()
+		supportedCSSTransformKey: Lib.getSupportedCSSTransformKey(),
+		multiSelect: false
 	},
 
 	/* Accessors: These may be supplied in the options hash to override default behavior
@@ -114,9 +112,13 @@ const PicklistCore = Lib.merge({}, Base, Selectable, {
 	},
 
 	_canSelect (newSelection, select) {
-		const item = this._getItemAdapter(newSelection);
-
-		if (item.isSelectable()) {
+		let canSelect = true;
+		
+		newSelection.forEach(item => {
+			canSelect = canSelect && item.isSelectable();
+		});
+		
+		if (canSelect) {
 			select();
 		}
 	},

@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
 // Traits
+import Eventable from '../../traits/eventable';
 import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
 import Positionable from '../../traits/positionable';
@@ -81,6 +82,9 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 				this.selectDate({date: this._roundDate(selDate)});
 			}
 		}
+		
+		Eventable.on(this, 'select', this._onSelect, this);
+		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 
 	_bindUIEvents () {
@@ -224,8 +228,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		const curViewDate = this.getState('dateViewing');
 
 		e.stopPropagation();
-		this.setState({ 'dateViewing': new Date(curViewDate.setYear(data.value))} );
-		this._renderDateRange();
+
+		if (curViewDate.getFullYear() !== data.value) {
+			this.setState({ 'dateViewing': new Date(curViewDate.setYear(data.value))} );
+			this._renderDateRange();
+		}
 	},
 
 	_backMonth (e) {
@@ -280,7 +287,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 				this.selectDate({ date: dayData.date }, insertIndex);
 			} else {
-				this.selectDate({ date: dayData.date });
+				this.selectDates([{ date: dayData.date }]);
 			}
 		}
 	},
@@ -293,15 +300,21 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		Multiselectable.selectItems(this, items, null, index);
 	},
 	
-	_onSelect (selection) {
+	_onSelect (itemsToSelect, selection) {
 		this.setProperties({ selection: selection._data });
 		
 		this.elements.input.val(this._formatDate());
 		this._renderDateRange();
+	
+		this.trigger('selected', itemsToSelect, selection._data);
+		this.trigger('changed', itemsToSelect, selection._data);
 	},
 	
-	_onDeselect (selection) {
+	_onDeselect (itemsToDeselect, selection) {
 		this.setProperties({ selection: selection._data });
+	
+		this.trigger('deselected', itemsToDeselect, selection._data);
+		this.trigger('changed', itemsToDeselect, selection._data);
 	}
 });
 

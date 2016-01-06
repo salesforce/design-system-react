@@ -11,7 +11,6 @@ import Base from './base';
 
 /* TODO: Finish documenting the core. */
 // Traits
-import Openable from '../traits/openable';
 import Multiselectable from '../traits/multiselectable';
 import KeyboardNavigable from '../traits/keyboard-navigable';
 
@@ -73,11 +72,6 @@ const LookupCore = Lib.merge({}, Base, {
 		getRenderer () {
 			return this.getProperty('menuItemRenderer');
 		}
-	},
-	
-	_onSelected () {
-		this.search('');
-		Openable.close(this);
 	},
 	
 	_onClosed () {

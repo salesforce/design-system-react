@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import ComboboxCore, {CONTROL} from '../../core/combobox';
 
+// Traits
+import Multiselectable from '../../traits/multiselectable';
+
 // Framework specific
 import DOM from '../dom';
 import Events from '../events';
@@ -66,7 +69,9 @@ export const ComboboxObject = {
 		return this.element;
 	},
 
-	_onSelected (item) {
+	_onChanged () {
+		const item = this._getSelection();
+		
 		if (this.rendered) {
 			this.elements.input.val(item.getText());
 			
@@ -116,7 +121,7 @@ export const ComboboxObject = {
 		// TODO: Not SLDS related, I've realized this model won't work perfectly with all data accessor types - might want to consider this
 		value[this.accessors.textProp()] = this.elements.input.val();
 
-		this.setSelection(value);
+		Multiselectable.selectItem(this, value);
 	}
 };
 

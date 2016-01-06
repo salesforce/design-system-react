@@ -82,12 +82,12 @@ export default React.createClass({
 				columns={this.state.columns}
 				bordered={true}
 				striped={true}
-				onChanged={this.handleChanged}
+				onChange={this.handleChanged}
 				onSort={this.sort}/>
 		);
 	},
 
-	handleChanged (item, selection) {
+	handleChanged (selection) {
 		this.setState({ selection });
 	},
 

@@ -20,7 +20,7 @@ export default React.createClass({
 				<Lookup label="Accounts"
 					collection={this.state.collection}
 					selection={this.state.selection}
-					onChanged={this._handleModelChange}
+					onChange={this._handleModelChange}
 					filterPredicate={this._filterPredicate}
 					modalMenu={this.props.modal}
 					onAddClick={this._handleAdd}
@@ -45,7 +45,7 @@ export default React.createClass({
 		return pattern.length < 2 || text.substr(0, pattern.length).toLowerCase() === pattern;
 	},
 
-	_handleModelChange (item, selection) {
+	_handleModelChange (selection) {
 		this.setState({ selection });
 	},
 	
