@@ -13240,12 +13240,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var displayName = "SLDSTooltip";
 	var propTypes = {
+	  /**
+	   * alignment of the Tooltip relative to the element that triggers it
+	   */
 	  align: _react2["default"].PropTypes.string,
+	  /**
+	   * Pass the element that triggers Tooltip as a child of the Tooltip component
+	   */
 	  children: _react2["default"].PropTypes.node,
+	  /**
+	   * Content inside Tooltip
+	   */
 	  content: _react2["default"].PropTypes.node,
 	  hoverCloseDelay: _react2["default"].PropTypes.number,
-	  openByDefault: _react2["default"].PropTypes.bool,
-	  targetElement: _react2["default"].PropTypes.object
+	  openByDefault: _react2["default"].PropTypes.bool
 	};
 	var defaultProps = {
 	  align: "top",
@@ -13253,6 +13261,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  hoverCloseDelay: 350,
 	  openByDefault: false
 	};
+	
+	/**
+	 * The SLDS Tooltip component is a popover that provides additional information for a particular element on the page. <br />
+	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/popovers#tooltips">Lightning Design System - Tooltips</a>.
+	 */
 	
 	var SLDSTooltip = (function (_React$Component) {
 	  _inherits(SLDSTooltip, _React$Component);
