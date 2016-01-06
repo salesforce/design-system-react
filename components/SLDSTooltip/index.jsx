@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 import tooltip from "./tooltip";
-import _ from "lodash";
+import flatten from "lodash.flatten";
 
 const displayName = "SLDSTooltip";
 const propTypes = {
@@ -116,7 +116,7 @@ class SLDSTooltip extends React.Component {
         onFocus: this.handleMouseEnter.bind(this),
         onMouseEnter: this.handleMouseEnter.bind(this),
         onMouseLeave: this.handleMouseLeave.bind(this),
-        children: (child.props.children ? _.flatten([child.props.children]).concat(asstText) : asstText)
+        children: (child.props.children ? flatten([child.props.children]).concat(asstText) : asstText)
       });
      })
   }
