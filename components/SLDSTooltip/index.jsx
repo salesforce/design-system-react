@@ -95,19 +95,22 @@ class SLDSTooltip extends React.Component {
     return this.state.isOpen?tooltip.getTooltip(this.props, this.getTooltipContent(), this.refs.tooltipTarget, this.handleCancel.bind(this)):<span></span>;
   }
 
+  getContent() {
+    return React.Children.map(this.props.children, child =>
+      React.cloneElement(child, {
+        onBlur: this.handleMouseLeave.bind(this),
+        onFocus: this.handleMouseEnter.bind(this),
+        onMouseEnter: this.handleMouseEnter.bind(this),
+        onMouseLeave: this.handleMouseLeave.bind(this),
+      })
+    );
+  }
+
   render(){
     const containerStyles = { display: "inline" };
     return (
-      <div
-        aria-describedby={this.state.triggerId}
-        onBlur={this.handleMouseLeave.bind(this)}
-        onFocus={this.handleMouseEnter.bind(this)}
-        onMouseEnter={this.handleMouseEnter.bind(this)}
-        onMouseLeave={this.handleMouseLeave.bind(this)}
-        ref="tooltipTarget"
-        style={containerStyles}
-        tabIndex="0">
-        { this.props.children }
+      <div aria-describedby={this.state.triggerId} style={containerStyles} ref="tooltipTarget" role="tooltip" aria-live="polite">
+        { this.getContent() }
         { this.getTooltip() }
         { this.state.isOpen ? <span className="slds-assistive-text">{this.props.content}</span> : null }
       </div>

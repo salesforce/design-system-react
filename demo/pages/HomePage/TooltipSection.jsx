@@ -72,7 +72,9 @@ module.exports = React.createClass( {
                       align="top"
                       content={<span>Tooltip on top</span>}
                       targetElement={this.refs.tooltipOnHover}>
-                        <Icon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />
+                        <a href="javascript:void(0)">
+                          <Icon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />
+                        </a>
                       </SLDSTooltip>
                   </p>
                 </div>
@@ -84,7 +86,7 @@ module.exports = React.createClass( {
                       content={<span>Tooltip with right alignment</span>}
                       openByDefault={true}
                       targetElement={this.refs.tooltipOnClick}>
-                        <SLDSButton variant="brand" label="Hover to Open" tabIndex="-1" />
+                        <SLDSButton variant="brand" label="Hover to Open" />
                       </SLDSTooltip>
                   </p>
                 </div>
