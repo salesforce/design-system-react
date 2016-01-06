@@ -7,7 +7,9 @@ const Samples =  {
   Lookups: require('fs').readFileSync('demo/code-snippets/LookupExamples.js', 'utf8'),
   Modals: require('fs').readFileSync('demo/code-snippets/ModalExamples.js', 'utf8'),
   Notifications: require('fs').readFileSync('demo/code-snippets/NotificationExamples.js', 'utf8'),
+  Picklists: require('fs').readFileSync('demo/code-snippets/PicklistExamples.js', 'utf8'),
   StatefulButtons: require('fs').readFileSync('demo/code-snippets/ButtonStatefulExamples.js', 'utf8'),
+  Tooltips: require('fs').readFileSync('demo/code-snippets/TooltipExamples.js', 'utf8'),
 };
 
 module.exports = Samples;

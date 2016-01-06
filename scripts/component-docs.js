@@ -11,10 +11,10 @@ var componentNames = [
   'SLDSLookup',
   'SLDSModal',
   'SLDSNotification',
+  'SLDSPicklistBase',
+  'SLDSTooltip',
   //'SLDSDateInput',
   //'SLDSGrid',
-  //'SLDSPicklistBase',
-  //'SLDSTooltip',
   //'SLDSUtilityIcon',
 ];
 

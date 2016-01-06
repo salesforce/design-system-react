@@ -82,19 +82,19 @@ class NotificationExample extends React.Component {
 
     return (
       <div className="slds-p-vertical--medium demo">
-        <div className="slds-p-vertical--small">
+        <div className="slds-p-horizontal--medium" style={{"display": "inline-block"}}>
           <h4 className="slds-text-heading--small">Alerts</h4>
           <SLDSButton variant="neutral" label="Show Alert" onClick={this.openAlert.bind(this)} />
           <SLDSNotification variant="alert" theme="success" icon="notification" isOpen={this.state.alertIsOpen} texture={true} content={successMsg} onDismiss={this.dismissAlert.bind(this)} />
         </div>
 
-        <div className="slds-p-vertical--small">
+        <div className="slds-p-horizontal--medium" style={{"display": "inline-block"}}>
           <h4 className="slds-text-heading--small ">Toasts</h4>
           <SLDSButton variant="neutral" label="Show Toast" onClick={this.openToast.bind(this)} />
           <SLDSNotification variant="toast" theme="error" icon="notification" isOpen={this.state.toastIsOpen} texture={true} content={errorMsg} onDismiss={this.dismissToast.bind(this)} />
         </div>
 
-        <div className="slds-p-vertical--small">
+        <div className="slds-p-horizontal--medium" style={{"display": "inline-block"}}>
           <h4 className="slds-text-heading--small">Modal Toasts</h4>
           <SLDSButton variant="neutral" label="Show Modal Toast" onClick={this.openModal.bind(this)} />
           <SLDSModal

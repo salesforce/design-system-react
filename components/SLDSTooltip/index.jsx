@@ -13,12 +13,20 @@ import tooltip from "./tooltip";
 
 const displayName = "SLDSTooltip";
 const propTypes = {
+  /**
+   * alignment of the Tooltip relative to the element that triggers it
+   */
   align: React.PropTypes.string,
+  /**
+   * Pass the element that triggers Tooltip as a child of the Tooltip component
+   */
   children: React.PropTypes.node,
+  /**
+   * Content inside Tooltip
+   */
   content: React.PropTypes.node,
   hoverCloseDelay: React.PropTypes.number,
   openByDefault: React.PropTypes.bool,
-  targetElement: React.PropTypes.object,
 };
 const defaultProps = {
   align: "top",
@@ -27,6 +35,10 @@ const defaultProps = {
   openByDefault: false,
 };
 
+/**
+ * The SLDS Tooltip component is a popover that provides additional information for a particular element on the page. <br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/popovers#tooltips">Lightning Design System - Tooltips</a>.
+ */
 class SLDSTooltip extends React.Component {
 
   constructor(props) {

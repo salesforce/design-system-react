@@ -7,97 +7,49 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-"use strict";
 
-import React from "react";
-import {SLDSTooltip,SLDSButton} from "../../../components";
-import {Icon} from "../../../components/SLDSIcons";
+import React from 'react';
+import CodeMirror from '../CodeMirror';
+import Samples from '../Samples';
+import PropTable from '../PropTable';
+import DOCS from '../../../docs';
 
-const alignNames = ["left","top","right","bottom"];
+const displayName = "TooltipSection";
+const propTypes = {};
+const defaultProps = {};
 
-module.exports = React.createClass( {
+class TooltipSection extends React.Component {
 
-  displayName: "Toolip",
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-  getDefaultProps () {
-    return {};
-  },
+  getDescription() {
+    const desc = DOCS["SLDSTooltip"].description;
+    return {__html: desc };
+  }
 
-  getInitialState () {
-    return {
-      alignIndex: 0
-    };
-  },
-
-  componentDidMount () {
-    setInterval ( ()=>{
-      this.nextAlign();
-    },300);
-  },
-
-  handleOnUpdateHighlighted () {
-    console.log("onUpdateHighlighted should be defined");
-  },
-
-  handleOnSelect() {
-    console.log("onSelect should be defined");
-  },
-
-  handleOnClick() {
-    console.log("onClick should be defined");
-  },
-
-  nextAlign() {
-    let nextAlignIndex = this.state.alignIndex+1;
-    if (nextAlignIndex >= alignNames.length) {
-      nextAlignIndex = 0;
-    }
-    this.setState({alignIndex: nextAlignIndex});
-  },
-
-  render() {
+  render(){
+    const docs = DOCS["SLDSTooltip"] ? true : false;
     return (
+      <div className='slds-p-around--medium'>
+        <h3 className='slds-text-heading--medium slds-truncate'>Tooltip</h3>
+        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
-
-            <div className="slds-p-around--medium">
-              <h3 className="slds-text-heading--medium slds-truncate">
-                <a href="javascript:void(0)" id="tooltipSection">
-                Tooltip
-                </a>
-              </h3>
-              <section style={{paddingLeft: "10rem"}}>
-                <div ref="tooltipOnHover" className="slds-p-vertical--medium">
-                  <p style={{marginTop: "5rem"}}>
-                    <SLDSTooltip
-                      align="top"
-                      content={<span>Tooltip on top</span>}
-                      targetElement={this.refs.tooltipOnHover}>
-                        <a href="javascript:void(0)">
-                          <Icon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />
-                        </a>
-                      </SLDSTooltip>
-                  </p>
-                </div>
-
-                <div ref="tooltipOnClick" className="slds-p-vertical--medium">
-                  <p style={{marginTop: "5rem"}}>
-                    <SLDSTooltip
-                      align="right"
-                      content={<span>Tooltip with right alignment</span>}
-                      openByDefault={true}
-                      targetElement={this.refs.tooltipOnClick}>
-                        <SLDSButton variant="brand" label="Hover to Open" />
-                      </SLDSTooltip>
-                  </p>
-                </div>
-
-
-              </section>
-
-
-            </div>
-
-
+        <div>
+          <CodeMirror codeText={Samples.Tooltips} />
+          <PropTable component="SLDSTooltip" />
+        </div>
+      </div>
     );
   }
-});
+
+}
+
+TooltipSection.displayName = displayName;
+TooltipSection.propTypes = propTypes;
+TooltipSection.defaultProps = defaultProps;
+
+module.exports = TooltipSection;
+

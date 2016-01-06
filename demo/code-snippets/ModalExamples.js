@@ -37,7 +37,7 @@ class ModalExample extends React.Component {
   render(){
     return (
       <div>
-        <div className="slds-p-bottom--medium">
+        <div className="slds-p-horizontal--medium" style={{"display": "inline-block"}}>
           <SLDSButton label="Open Bare" onClick={this.openModal('modalAopen').bind(this)} variant="brand" />
           <SLDSModal
             align="top"
@@ -48,7 +48,7 @@ class ModalExample extends React.Component {
           </SLDSModal>
         </div>
 
-        <div className="slds-p-bottom--medium">
+        <div className="slds-p-horizontal--medium" style={{"display": "inline-block"}}>
           <SLDSButton label="Open Standard" onClick={this.openModal('modalBopen').bind(this)} variant="brand" />
           <SLDSModal
             footer={[
@@ -63,7 +63,7 @@ class ModalExample extends React.Component {
           </SLDSModal>
         </div>
 
-        <div className="slds-p-bottom--medium">
+        <div className="slds-p-horizontal--medium" style={{"display": "inline-block"}}>
           <SLDSButton label="Open Prompt" onClick={this.openModal('promptOpen').bind(this)} variant="brand" />
           <SLDSModal
             footer={[ <SLDSButton key="promptBtn" label='Got it' variant='neutral' onClick={this.closeModal('promptOpen')} /> ]}

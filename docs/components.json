@@ -937,5 +937,73 @@
                 "description": ""
             }
         }
+    },
+    "SLDSPicklistBase": {
+        "description": "",
+        "displayName": "SLDSPicklist",
+        "props": {
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": ""
+            },
+            "onUpdateHighlighted": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSTooltip": {
+        "description": "The SLDS Tooltip component is a popover that provides additional information for a particular element on the page. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">Lightning Design System - Tooltips</a>.",
+        "displayName": "SLDSTooltip",
+        "props": {
+            "align": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "alignment of the Tooltip relative to the element that triggers it"
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Pass the element that triggers Tooltip as a child of the Tooltip component"
+            },
+            "content": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Content inside Tooltip"
+            },
+            "hoverCloseDelay": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": ""
+            },
+            "openByDefault": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
     }
 }
