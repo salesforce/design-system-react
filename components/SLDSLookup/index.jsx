@@ -419,7 +419,7 @@ class SLDSLookup extends React.Component {
             <div className={cx(pillContainerClasses)}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             </div>
-            <InputIcon name="search" />
+            <InputIcon name="search" onClick={this.handleClick.bind(this)} />
             <input
               aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:""}
               aria-autocomplete="list"
@@ -435,6 +435,7 @@ class SLDSLookup extends React.Component {
               ref={this.props.type + "Lookup"}
               role="combobox"
               type="text"
+              emptyMessage="No items found"
               value={this.state.searchTerm}
             />
           </div>
