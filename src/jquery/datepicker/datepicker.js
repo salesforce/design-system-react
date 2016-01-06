@@ -5,8 +5,6 @@ import * as Lib from '../../lib/lib';
 import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
 // Traits
-import Eventable from '../../traits/eventable';
-import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
 import Positionable from '../../traits/positionable';
 
@@ -70,21 +68,6 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 		const $icon = this._renderIcon('utility.event', 'slds-input__icon slds-icon-text-default');
 		$icon.replaceAll(this.elements.formElement.find('x-input-icon')[0]);
-
-		const selDate = this.getProperty('dateSelected');
-		if (selDate) {
-			if (this.getProperty('multiSelect')) {
-				this.selectDates([
-					{ date: this._roundDate(selDate[0]) },
-					{ date: this._roundDate(selDate[1]) }
-				]);
-			} else {
-				this.selectDate({date: this._roundDate(selDate)});
-			}
-		}
-		
-		Eventable.on(this, 'select', this._onSelect, this);
-		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 
 	_bindUIEvents () {
@@ -99,7 +82,9 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_render () {
 		const strings = this.getState('strings');
+		
 		this.elements.input.attr('placeholder', strings.DATE_FORMAT);
+		
 		if (this.getProperty('inputLabel')) {
 			this.elements.input.attr('aria-label', this.getProperty('inputLabel'));
 		}
@@ -161,7 +146,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	_renderCalender () {
 		const self = this;
 		const calenderData = this._getCalendarData();
-		const isRangeSelect = this.getProperty('multiSelect');
+		const multiSelect = this.getProperty('multiSelect');
 
 		self.elements.calendarDays.empty();
 
@@ -184,7 +169,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 				if (day.selected) {
 					specialClasses += 'slds-is-selected ';
 
-					if ( isRangeSelect ) {
+					if (multiSelect) {
 						specialClasses += 'slds-is-selected-multi';
 					}
 				}
@@ -258,63 +243,55 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_manualDateInput () {
 		const inputValue = this.elements.input.val();
-		const validatedDates = this._validateDateInput(inputValue);
+		const validatedDates = this._getStartAndEndDates(inputValue);
 
-		if (validatedDates) {
-			this.selectDates(validatedDates);
+		if (validatedDates && validatedDates.startDate) {
+			this._selectDates(validatedDates);
 		}
 
 		this.element.off('focusout.slds-form-element', '.slds-input');
 	},
 
 	_selectDate (e) {
-		const isRangeSelect = this.getProperty('multiSelect');
 		const dayData = $(e.currentTarget).data();
-		let insertIndex = 1;
-		let selectedDates;
+		const date = dayData.date;
+		let startDate;
+		let endDate;
 
 		e.stopPropagation();
 
 		if (!dayData.outside) {
-			if (isRangeSelect) {
-				selectedDates = this.getProperty('selection');
-
-				if (selectedDates && selectedDates.length > 1) {
-					this.setProperties({ selection: [] });
-				} else if (selectedDates && selectedDates.length === 1 && selectedDates[0].date.getTime() > dayData.date.getTime()) {
-					insertIndex = 0;
+			if (this.getProperty('multiSelect')) {
+				startDate = this.getProperty('startDate');
+				endDate = this.getProperty('endDate');
+				
+				if (!startDate || endDate) {
+					startDate = date;
+					endDate = undefined;
+				} else if (this._roundDate(startDate).getTime() > date.getTime()) {
+					endDate = startDate;
+					startDate = date;
+				} else {
+					endDate = date;
 				}
-
-				this.selectDate({ date: dayData.date }, insertIndex);
 			} else {
-				this.selectDates([{ date: dayData.date }]);
+				startDate = date;
 			}
 		}
-	},
-
-	selectDate (item, index) {
-		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
-	},
-	
-	selectDates (items, index) {
-		Multiselectable.selectItems(this, items, null, index);
-	},
-	
-	_onSelect (itemsToSelect, selection) {
-		this.setProperties({ selection: selection._data });
 		
-		this.elements.input.val(this._formatDate());
-		this._renderDateRange();
-	
-		this.trigger('selected', itemsToSelect, selection._data);
-		this.trigger('changed', itemsToSelect, selection._data);
+		this._selectDates({
+			startDate,
+			endDate
+		});
 	},
 	
-	_onDeselect (itemsToDeselect, selection) {
-		this.setProperties({ selection: selection._data });
-	
-		this.trigger('deselected', itemsToDeselect, selection._data);
-		this.trigger('changed', itemsToDeselect, selection._data);
+	_selectDates (dates) {
+		this.setProperties(dates);
+		
+		this.elements.input.val(this._formatSelectedDates());
+		this._renderDateRange();
+
+		this.trigger('changed', dates.startDate, dates.endDate);
 	}
 });
 

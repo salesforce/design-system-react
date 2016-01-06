@@ -20,9 +20,10 @@ const DatepickerCore = Lib.merge({}, Base, {
 
 	_defaultProperties: {
 		inputLabel: null,
-		dateSelected: null,
+		startDate: null,
+		endDate: null,
 		multiSelect: false,
-		dateRange: [new Date('1991'), new Date('2030')],
+		range: [new Date('1991'), new Date('2030')],
 
 		// Positionable trait
 		positionedTargetVerticalAttachment: 'bottom',
@@ -56,102 +57,139 @@ const DatepickerCore = Lib.merge({}, Base, {
 			return item.getDate().getTime();
 		}
 	},
+	
+	_isDateInRange (date) {
+		if (!date) {
+			return false;
+		}
+		
+		const time = date && this._roundDate(date).getTime();
+		const range = Lib.getDataAdapter(this.getProperty('range'));
+		const length = range.length();
+		let inRange = false;
+		
+		switch (length) {
+			case 2:
+				inRange = (time >= this._roundDate(range.at(0)).getTime() && time <= this._roundDate(range.at(1)).getTime());
+				break;
+			case 1:
+				inRange = (time >= this._roundDate(range.at(0)).getTime());
+				break;
+			default:
+				break;
+		}
+		
+		return inRange;
+	},
+	
+	_isDateSelected (date) {
+		const startDate = this._roundDate(this.getProperty('startDate'));
+		const endDate = this._roundDate(this.getProperty('endDate'));
+		const time = date && this._roundDate(date).getTime();
+		let selected = false;
+		
+		if (this.getProperty('multiSelect') && endDate) {
+			if (time && startDate) {
+				selected = (time >= startDate.getTime());
+			}
+			
+			if (time && endDate) {
+				selected = (selected && time <= endDate.getTime());
+			}
+		} else if (time && startDate) {
+			selected = (time === startDate.getTime());
+		}
+		
+		return selected;
+	},
 
-	// TODO: Clean up all this logic. In particular, we shuld probably be setting every date in the selection, not just the first and last dates
-	_getCalendarData: function (baseDate) {
+	_getCalendarData (baseDate) {
 		const date = this.getState('dateViewing') || baseDate;
-		const selectedDates = this._getDataAdapter(this.getProperty('selection'));
-		const isRangeSelect = this.getProperty('multiSelect') && selectedDates.length() > 1;
-		const dateConstraints = this.getProperty('dateRange');
-		const firstDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay(); // Index of first day base 0 sunday
-		const lastDate = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate(); // Date of the last day
-		const lastMonthDate = new Date(date.getFullYear(), date.getMonth(), 0).getDate(); // Last date for previous month
-		const month = date.getMonth(); // Month of the date selected
 		const year = date.getFullYear(); // Year of the date selected
-		const now = new Date(); // Today Date
-		const nowDate = now.getDate(); // Today Day
-		const nowMonth = now.getMonth(); // Today Month
-		const nowYear = now.getFullYear(); // Today Year
-		const MonthData = [];
-		let curDate;
-		let rows;
-		let dateCurrentLoop;
-		let wk;
-		let dy;
+		const month = date.getMonth(); // Month of the date selected
+		const firstDay = new Date(year, month, 1).getDay(); // Index of first day base 0 sunday
+		const lastDate = new Date(year, month + 1, 0).getDate(); // Date of the last day
+		const lastMonthDate = new Date(year, month, 0).getDate(); // Last date for previous month
 
+		// Today's Date
+		const now = this._roundDate(new Date());
+
+		let curDate;
 		if (firstDay !== 0) {
 			curDate = lastMonthDate - firstDay + 1;
 		} else {
 			curDate = 1;
 		}
 
-		rows = (lastDate <= (35 - firstDay)) ? 5 : 6;
+		const rows = (lastDate <= (35 - firstDay)) ? 5 : 6;
+		const MonthData = [];
 
-		for (wk = 0; wk < rows; wk++) {
-			MonthData.push([]);
-			for (dy = 0; dy < 7; dy++) {
-				MonthData[wk].push({
+		for (let wk = 0; wk < rows; wk++) {
+			const row = [];
+			
+			for (let dy = 0; dy < 7; dy++) {
+				const cell = {
 					day: curDate,
 					month: month,
 					year: year,
-					date: new Date((month + 1) + '-' + curDate + '-' + year)
-				});
+					date: new Date(year, month, curDate)
+				};
 
 				if (wk === 0) {
 					if (curDate === lastMonthDate) {
 						curDate = 0;
-						MonthData[wk][dy].month = month - 1;
-						MonthData[wk][dy].outside = true;
+						cell.month = month - 1;
+						cell.outside = true;
 					} else if (curDate > 7) {
-						MonthData[wk][dy].month = month - 1;
-						MonthData[wk][dy].outside = true;
+						cell.month = month - 1;
+						cell.outside = true;
 					}
 				} else if ( wk >= 4 ) {
 					if (curDate === lastDate) {
 						curDate = 0;
 					} else if (curDate < 7) {
-						MonthData[wk][dy].month = month + 1;
-						MonthData[wk][dy].outside = true;
+						cell.month = month + 1;
+						cell.outside = true;
 					}
 				}
 
-				if ( MonthData[wk][dy].date.getTime() < dateConstraints[0].getTime() || MonthData[wk][dy].date.getTime() > dateConstraints[1].getTime() ) {
-					MonthData[wk][dy].outside = true;
+				if (!cell.outside && !this._isDateInRange(cell.date)) {
+					cell.outside = true;
+				}
+				
+				if (!cell.outside && this._isDateSelected(cell.date)) {
+					cell.selected = true;
+				}
+				
+				if (cell.date === now) {
+					cell.today = true;
 				}
 
-				if (selectedDates.length() && !MonthData[wk][dy].outside) {
-					dateCurrentLoop = MonthData[wk][dy].date.getTime();
-
-					if (!isRangeSelect && dateCurrentLoop === selectedDates.at(0).date.getTime()) {
-						MonthData[wk][dy].selected = true;
-					} else if (isRangeSelect && dateCurrentLoop >= selectedDates.at(0).date.getTime() && dateCurrentLoop <= selectedDates.at(1).date.getTime() ) {
-						MonthData[wk][dy].selected = true;
-					}
-				}
-
-				MonthData[wk][dy].today = (year === nowYear && MonthData[wk][dy].month === nowMonth && curDate === nowDate);
+				row.push(cell);
 
 				curDate++;
 			}
+			
+			MonthData.push(row);
 		}
 
 		return MonthData;
 	},
 
-	_getMonthName: function (baseDate) {
+	_getMonthName (baseDate) {
 		const date = this.getState('dateViewing') || baseDate;
 		const month = date.getMonth();
 
 		return this._monthNames[month];
 	},
 
-	_getYear: function (baseDate) {
+	_getYear (baseDate) {
 		const date = this.getState('dateViewing') || baseDate;
 
 		return date.getFullYear();
 	},
 
-	_getYearRangeData: function () {
+	_getYearRangeData () {
 		const dateRange = this.getProperty('dateRange');
 		const viewingYear = this._getYear();
 		const allDates = [];
@@ -171,65 +209,69 @@ const DatepickerCore = Lib.merge({}, Base, {
 			all: allDates
 		};
 	},
+	
+	_formatDate (date) {
+		if (date) {
+			return [date.getMonth() + 1, date.getDate(), date.getFullYear()].join('/');
+		}
+	},
 
-	_formatDate: function () {
-		const selectedDates = this._getDataAdapter(this.getProperty('selection'));
-		let formattedDate;
-
-		if (selectedDates.length()) {
-			if (selectedDates.length() > 1) {
-				formattedDate = (selectedDates.at(0).date.getMonth() + 1) + '/' + selectedDates.at(0).date.getDate() + '/' + selectedDates.at(0).date.getFullYear();
-				formattedDate += ' - ' + (selectedDates.at(1).date.getMonth() + 1) + '/' + selectedDates.at(1).date.getDate() + '/' + selectedDates.at(1).date.getFullYear();
-			} else {
-				formattedDate = (selectedDates.at(0).date.getMonth() + 1) + '/' + selectedDates.at(0).date.getDate() + '/' + selectedDates.at(0).date.getFullYear();
+	_formatSelectedDates () {
+		const formattedDates = [];
+		const startDate = this.getProperty('startDate');
+		
+		if (startDate) {
+			formattedDates.push(this._formatDate(startDate));
+		}
+		
+		if (startDate && this.getProperty('multiSelect')) {
+			const endDate = this.getProperty('endDate');
+			
+			if (endDate) {
+				formattedDates.push(this._formatDate(endDate));
 			}
 		}
 
-		return formattedDate;
+		return formattedDates.join(' - ');
+	},
+	
+	_convertToDate (string) {
+		const date = new Date(string);
+		
+		if (Lib.isValidDate(date) && this._isDateInRange(date)) {
+			return date;
+		}
 	},
 
-	_validateDateInput: function (input) {
-		let inputDate;
-		let splitString;
-		let hasAppropriateSpacers;
-		let hasAppropriateLength;
-		let validDate = false;
-
-		if (this.getProperty('multiSelect')) {
-			hasAppropriateLength = input.length >= 21 && input.length <= 23;
-			splitString = input.split('-');
-
-			if (hasAppropriateLength && splitString.length === 2) {
-				inputDate = [new Date(splitString[0]), new Date(splitString[1])];
-				
-				if (Lib.isValidDate(inputDate[0]) && this._isWithinDateRange(inputDate[0]) && Lib.isValidDate(inputDate[1]) && this._isWithinDateRange(inputDate[1])) {
-					validDate = [
-						{ date: inputDate[0] },
-						{ date: inputDate[1] }
-					];
-				}
+	_getStartAndEndDates (input) {
+		const isDateRange = (input.length >= 21 && input.length <= 23);
+		let startDate;
+		let endDate;
+		
+		if (isDateRange) {
+			const dates = input.split('-');
+			startDate = this._convertToDate(dates[0]);
+			endDate = this._convertToDate(dates[1]);
+			
+			if (endDate && (!startDate || startDate.getTime() > endDate.getTime())) {
+				const tempDate = startDate;
+				startDate = endDate;
+				endDate = tempDate;
 			}
 		} else {
-			inputDate = new Date(input);
-			hasAppropriateSpacers = input.match(/\//g) || input.match(/\-/g);
-			hasAppropriateLength = input.length >= 8 && input.length <= 10;
-
-			if (Lib.isValidDate(input) && this._isWithinDateRange(inputDate) && hasAppropriateSpacers && hasAppropriateLength) {
-				validDate = [{ date: inputDate }];
-			}
+			startDate = this._convertToDate(input);
 		}
 
-		return validDate;
+		return {
+			startDate,
+			endDate
+		};
 	},
-
-	_isWithinDateRange: function (date) {
-		const dateRange = this.getProperty('dateRange');
-
-		return date.getTime() >= dateRange[0] && date.getTime() <= dateRange[1];
-	},
-
-	_roundDate: function (date) {
-		return new Date(date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear());
+	
+	_roundDate (date) {
+		if (date) {
+			return new Date(this._formatDate(date));
+		}
 	}
 });
 

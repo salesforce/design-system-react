@@ -47,7 +47,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 	render () {
 		const selectedDates = this.props.selection;
-		const selDateFormatted = selectedDates.length ? this._formatDate(selectedDates[0]) : '';
+		const selDateFormatted = selectedDates.length ? this._formatSelectedDates(selectedDates[0]) : '';
 
 		return (
 			<div className="slds-form--stacked slds-datepicker-form" ref={this._dateInputRendered} onClick={this._triggerCalendar}>
