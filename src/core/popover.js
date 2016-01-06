@@ -41,6 +41,7 @@ const PopoverCore = Lib.merge({}, Base, {
 		// positionable trait
 		constrainPositionedToWindow: true,
 		constrainWidthToTarget: false,
+		modal: false,
 		positionedTargetVerticalAttachment: 'right',	// default for popover
 		positionedOffset: 15,	// default for popover
 		positionedTargetHorizontalAttachment: 'left', // center, left. default for popover

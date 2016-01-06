@@ -22,9 +22,10 @@ const PicklistCore = Lib.merge({}, Base, Selectable, {
 		MENU: 'slds-dropdown',
 		LIST: 'slds-dropdown__list',
 		TOGGLE: 'slds-button',
-		HEADER: 'slds-dropdown__header',
-		HEADERTEXT: 'slds-text-heading--label',
-		DIVIDER: 'slds-has-divider',
+		ITEM: 'slds-dropdown__item',
+		ITEMHEADER: 'slds-dropdown__header',
+		ITEMHEADERTEXT: 'slds-text-heading--label',
+		ITEMDIVIDER: 'slds-has-divider',
 		ICON: 'slds-icon'
 	},
 
@@ -89,6 +90,10 @@ const PicklistCore = Lib.merge({}, Base, Selectable, {
 
 		getKey (item) {
 			return item.get();
+		},
+
+		getId (item) {
+			return item.get('id');
 		},
 
 		getIcon (item) {

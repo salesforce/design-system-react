@@ -5,7 +5,7 @@ import * as Lib from '../../lib/lib';
 import TooltipCore, {CONTROL} from '../../core/tooltip';
 
 // Inherited functionality from popover
-import { PopoverMethods } from '../popover/popover';
+import { PopoverObject } from '../popover/popover';
 import Positionable from '../../traits/positionable';
 
 // Framework specific
@@ -15,28 +15,29 @@ import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 import mountable from '../mixins/custom-prop-types/mountable';
 
-let Tooltip = Lib.merge({}, TooltipCore, PopoverMethods, {
+let Tooltip = Lib.merge({}, TooltipCore, PopoverObject, {
 	displayName: CONTROL,
 
 	propTypes: {
 		alignmentTarget: mountable,
 		container: mountable,
 		isOpen: React.PropTypes.bool,
+		modal: React.PropTypes.bool,
 		positionedTargetVerticalAttachment: React.PropTypes.oneOf(Object.keys(Positionable.attatchmentOptions))
 	},
 
 	mixins: [State, Events, genericWillMount],
 
-	render () {
-		if (this.refs.popover) {
-			this._setElements();
-		}
+	componentWillMount () {
+		this.setState({
+			isOpen: this.props.isOpen
+		});
 
-		return (
-			<div className={this._getClassNames()} role="tooltip" ref="popover">
-				<div className="slds-popover__body">{this.props.children}</div>
-			</div>
-		);
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({attributes: [['role', 'tooltip']]}));
+	},
+
+	render () {
+		return false;
 	}
 
 });

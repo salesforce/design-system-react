@@ -2,6 +2,7 @@
 
 // Core
 import * as Lib from '../../lib/lib';
+import KeyNumber from '../../lib/keys';
 import PicklistCore, {CONTROL} from '../../core/picklist';
 
 // Traits
@@ -41,7 +42,7 @@ export const PicklistObject = {
 		this.elements.dropdown = this.element.find('.' + this.cssClasses.MENU);
 
 		if (this.getProperty('modalMenu')) {
-			Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-picklist'));
+			Positionable.setElement(this, Positionable.attachPositionedElementToBody({classes: 'slds-picklist'}));
 			Positionable.setContainer(this, document.querySelector('body'));
 			
 			this.elements.dropdown = $(Positionable.getElement(this)).append(this.elements.dropdown).find('.' + this.cssClasses.MENU);
@@ -57,64 +58,54 @@ export const PicklistObject = {
 		this.element.on('keypress', this._handleKeyPressed.bind(this));
 	},
 
-	_renderItem (item) {
-		const disabled = item.getDisabled();
-		const $li = this.template.find('li').clone();
+	_renderItem (item, collectionIndex) {
+		const type = item.getType() || '';
+		const itemClass = this.cssClasses[String('item' + type).toUpperCase()];
+		const $li = this.template.find('li.' + itemClass).clone();
+		$li.attr('id', '' + this._getMenuItemId(collectionIndex));
 
-		$li.data({
-			item: item._item
-		});
-		$li.prop('disabled', disabled);
+		if (type === 'header') {
+			$li.children().text(item.getText());
+		} else if (type === 'divider') {
+			$li.attr('role', 'separator');
+		} else {
+			const disabled = item.getDisabled();
+			const $a = $li.find('a');
+			$a.attr('aria-disabled', disabled);
+			$li.prop('disabled', disabled);
 
-		const $a = $li.find('a');
-		$a.attr('aria-disabled', disabled);
-		
-		const $p = $a.find('p');
-		$p.text(item.getText());
-		
-		// TODO: Is this really the best way to add the checks?
-		const $check = this._renderIcon('utility.check', 'slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-m-right--small');
-		$check.prependTo($p);
+			$li.data({
+				item: item._item
+			});
+			
+			const $p = $a.find('p');
+			$p.text(item.getText());
+			
+			// TODO: Is this really the best way to add the checks?
+			const $check = this._renderIcon('utility.check', 'slds-icon slds-icon--selected slds-icon--x-small slds-icon-text-default slds-m-right--small');
+			$check.prependTo($p);
 
-		const icon = item.getIcon();
+			const icon = item.getIcon();
 
-		if (Lib.isString(icon) && icon.length > 0) {
-			const $icon = this._renderIcon(icon, 'slds-icon slds-icon--x-small slds-icon-text-default slds-m-left--small slds-shrink-none');
-			$a.append($icon);
+			if (Lib.isString(icon) && icon.length > 0) {
+				const $icon = this._renderIcon(icon, 'slds-icon slds-icon--x-small slds-icon-text-default slds-m-left--small slds-shrink-none');
+				$a.append($icon);
+			}
 		}
 
 		return $li;
 	},
 
-	_renderHeader (item) {
-		return $('<li class="' + this.cssClasses.HEADER + '"><span class="' + this.cssClasses.HEADERTEXT + '">' + item.getText() + '</span></li>');
-	},
-
-	_renderDivider () {
-		return $('<li class="' + this.cssClasses.DIVIDER + '" role="separator"></li>');
-	},
-
 	_renderMenu (elements) {
-		// Empty the menu from the template
+		// Empty the initial or current menu
 		elements.dropdownMenu.empty();
+		const menuItems = [];
 
-		// Building the menu items
-		this._collection.forEach(item => {
-			let $li;
-			let func;
-			const funcMap = {
-				header: this._renderHeader,
-				divider: this._renderDivider,
-				item: this._renderItem
-			};
-
-			func = funcMap[item.getType()] || this._renderItem;
-
-			$li = func.call(this, item);
-
-			elements.dropdownMenu.append($li);
+		this._collection.map((item, index) => {
+			menuItems.push(this._renderItem(item, index));
 		});
 
+		elements.dropdownMenu.append(menuItems);
 		this._addCheckmark(elements);
 	},
 
@@ -136,7 +127,6 @@ export const PicklistObject = {
 		this.elements.button = this.button.element;
 		if (this.getProperty('modalMenu')) {
 			Positionable.setTarget(this, this.elements.button);
-			console.log(Positionable.getTarget(this));
 		}
 		this.elements.button.addClass('slds-picklist__label');
 
@@ -248,27 +238,33 @@ export const PicklistObject = {
 		}
 	},
 
+	// The `keydown` event is best used to catch non-character key events. The `which` event object key is the standardized IE9+ (and the rest) for reporting key codes.
 	_handleKeyDown (e) {
-		let key;
+		const keyNumber = e.which;
 
-		if (/(38)/.test(e.which)) {
-			key = 'ArrowUp';
-		} else if (/(40)/.test(e.which)) {
-			key = 'ArrowDown';
-		}
-
-		if (key) {
-			e.preventDefault();
-			KeyboardNavigable.keyboardNav(this, key, this.elements.menuItems, this._collection);
+		if (KeyNumber.UP === keyNumber ||
+				KeyNumber.DOWN === keyNumber) {
+			this._focusOnItemFromKeyEvent(e, KeyNumber[keyNumber]);
+		} else if (KeyNumber.ESCAPE === keyNumber) {
+			Openable.close(this);
 		}
 	},
 
+	// The `keypress` event is typically triggered after `keydown` by only character keys (A,B,C...). The `which` event object key is the standardized IE9+ (and the rest) for reporting key codes.
 	_handleKeyPressed (e) {
-		const key = String.fromCharCode(e.which);
+		const keyCharacter = String.fromCharCode(e.which);
 
-		if (key && key.length === 1) {
-			e.preventDefault();
-			KeyboardNavigable.keyboardNav(this, key, this.elements.menuItems, this._collection);
+		if (keyCharacter && keyCharacter.length === 1) {
+			this._focusOnItemFromKeyEvent(e, keyCharacter);
+		}
+	},
+
+	_focusOnItemFromKeyEvent (e, key) {
+		const focusedIndex = KeyboardNavigable.keyboardNav(this, key, this.setSelection, this._collection);
+
+		e.preventDefault();
+		if (focusedIndex !== undefined) {
+			document.getElementById(this._getMenuItemId(focusedIndex)).getElementsByTagName('a')[0].focus();
 		}
 	},
 
