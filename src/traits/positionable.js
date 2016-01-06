@@ -34,9 +34,19 @@ const Positionable = {
 	},
 
 	// PUBLIC METHODS FOR CONTROLS
-	attachPositionedElementToBody (classes = '') {
+	attachPositionedElementToBody (options) {
 		const element = document.createElement('div');
-		element.className = element.className + classes;
+
+		if (options && typeof options.classes !== 'undefined') {
+			element.className = element.className + options.classes;
+		}
+		
+		if (options && Array.isArray(options.attributes)) {
+			options.attributes.forEach(function (attribute) {
+				element.setAttribute(attribute[0], attribute[1]);
+			});
+		}
+
 		document.querySelector('body').appendChild(element);
 		return Lib.wrapElement(element);
 	},

@@ -98,13 +98,14 @@ const KeyboardNavigable = {
 						focusedIndex = item.index;
 					}
 				});
-			} else if (/(ArrowDown)/.test(input)) {
+				// TODO: Sync up key "strings" and standardize input into this trait. May need JSON map of react strings to standard strings
+			} else if (/(ArrowDown|DOWN)/.test(input)) {
 				if (navigableIndex < lastIndex) {
 					focusedIndex = indexes[++navigableIndex];
 				} else {
 					focusedIndex = indexes[0];
 				}
-			} else if (/(ArrowUp)/.test(input)) {
+			} else if (/(ArrowUp|UP)/.test(input)) {
 				if (navigableIndex > 0) {
 					focusedIndex = indexes[--navigableIndex];
 				}

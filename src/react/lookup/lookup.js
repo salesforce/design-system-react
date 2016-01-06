@@ -101,7 +101,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			navigableItems
 		});
 
-		Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-lookup'));
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({classes: 'slds-lookup'}));
 		
 		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);

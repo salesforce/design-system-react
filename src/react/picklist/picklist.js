@@ -41,7 +41,7 @@ export const PicklistObject = {
 	},
 
 	componentWillMount () {
-		Positionable.setElement(this, Positionable.attachPositionedElementToBody('slds-picklist'));
+		Positionable.setElement(this, Positionable.attachPositionedElementToBody({classes: 'slds-picklist'}));
 		
 		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);
