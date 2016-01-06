@@ -190,13 +190,13 @@ const DatepickerCore = Lib.merge({}, Base, {
 	},
 
 	_getYearRangeData () {
-		const dateRange = this.getProperty('dateRange');
+		const range = this.getProperty('range');
 		const viewingYear = this._getYear();
 		const allDates = [];
 		let selDate;
 		let curDate;
 
-		for (curDate = dateRange[0].getFullYear(); curDate <= dateRange[1].getFullYear(); curDate++) {
+		for (curDate = range[0].getFullYear(); curDate <= range[1].getFullYear(); curDate++) {
 			allDates.push({text: curDate, value: curDate });
 
 			if (viewingYear === curDate) {

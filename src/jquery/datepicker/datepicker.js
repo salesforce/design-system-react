@@ -197,7 +197,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	_renderYearPicklist () {
 		const yearRange = this._getYearRangeData();
 
-		if ( this.yearPicklist ) {
+		if (this.yearPicklist) {
 			this.yearPicklist.setSelection(yearRange.selected);
 		} else {
 			this.yearPicklist = new Picklist(this.elements.year, {
@@ -210,30 +210,44 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_updateYear (e, data) {
-		const curViewDate = this.getState('dateViewing');
+		const dateViewing = new Date(this.getState('dateViewing'));
 
 		e.stopPropagation();
 
-		if (curViewDate.getFullYear() !== data.value) {
-			this.setState({ 'dateViewing': new Date(curViewDate.setYear(data.value))} );
-			this._renderDateRange();
+		if (data && data.value && dateViewing.getFullYear() !== data.value) {
+			dateViewing.setYear(data.value);
+			
+			if (this._isDateInRange(dateViewing)) {
+				this.setState({ dateViewing } );
+				this._renderDateRange();
+			}
 		}
 	},
 
 	_backMonth (e) {
-		const curMonth = this.getState('dateViewing');
+		const dateViewing = new Date(this.getState('dateViewing'));
 
 		e.stopPropagation();
-		this.setState({ 'dateViewing': new Date(curMonth.setMonth(curMonth.getMonth() - 1))} );
-		this._renderDateRange();
+
+		dateViewing.setMonth(dateViewing.getMonth() - 1);
+
+		if (this._isDateInRange(dateViewing)) {
+			this.setState({ dateViewing } );
+			this._renderDateRange();
+		}
 	},
 
 	_forwardMonth (e) {
-		const curMonth = this.getState('dateViewing');
+		const dateViewing = new Date(this.getState('dateViewing'));
 
 		e.stopPropagation();
-		this.setState({ 'dateViewing': new Date(curMonth.setMonth(curMonth.getMonth() + 1))} );
-		this._renderDateRange();
+
+		dateViewing.setMonth(dateViewing.getMonth() + 1);
+		
+		if (this._isDateInRange(dateViewing)) {
+			this.setState({ dateViewing } );
+			this._renderDateRange();
+		}
 	},
 
 	_activateManualInput () {
@@ -247,6 +261,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 		if (validatedDates && validatedDates.startDate) {
 			this._selectDates(validatedDates);
+		} else {
+			this._selectDates({
+				startDate: undefined,
+				endDate: undefined
+			});
 		}
 
 		this.element.off('focusout.slds-form-element', '.slds-input');
