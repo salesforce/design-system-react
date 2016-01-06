@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 import tooltip from "./tooltip";
+import _ from "lodash";
 
 const displayName = "SLDSTooltip";
 const propTypes = {
@@ -108,23 +109,24 @@ class SLDSTooltip extends React.Component {
   }
 
   getContent() {
-    return React.Children.map(this.props.children, child =>
-      React.cloneElement(child, {
+    const asstText = <span className="slds-assistive-text">{this.props.content}</span>;
+    return React.Children.map(this.props.children, child => {
+      return React.cloneElement(child, {
         onBlur: this.handleMouseLeave.bind(this),
         onFocus: this.handleMouseEnter.bind(this),
         onMouseEnter: this.handleMouseEnter.bind(this),
         onMouseLeave: this.handleMouseLeave.bind(this),
-      })
-    );
+        children: (child.props.children ? _.flatten([child.props.children]).concat(asstText) : asstText)
+      });
+     })
   }
 
   render(){
     const containerStyles = { display: "inline" };
     return (
-      <div aria-describedby={this.state.triggerId} style={containerStyles} ref="tooltipTarget" role="tooltip" aria-live="polite">
+      <div aria-describedby={this.state.triggerId} style={containerStyles} ref="tooltipTarget" role="tooltip">
         { this.getContent() }
         { this.getTooltip() }
-        { this.state.isOpen ? <span className="slds-assistive-text">{this.props.content}</span> : null }
       </div>
     );
   }
