@@ -11,7 +11,16 @@ const genericWillMount = {
 	},
 	
 	componentDidMount () {
-		this.element = this.$el = this.elements.control = Lib.wrapElement(ReactDOM.findDOMNode(this));
+		// If the render method returns `null` or `false`, then element is not set and should be set within the control object.
+		const node = ReactDOM.findDOMNode(this);
+		if (node) {
+			this._setControlElement(Lib.wrapElement(node));
+		}
+	},
+
+	_setControlElement (element) {
+		this.element = this.$el = this.elements.control = element;
+		return element;
 	},
 
 	// These are handled slightly differently than your average props, so they need to be kept in sync here
