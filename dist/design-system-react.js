@@ -13336,18 +13336,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return this.state.isOpen ? _tooltip2["default"].getTooltip(this.props, this.getTooltipContent(), this.refs.tooltipTarget, this.handleCancel.bind(this)) : _react2["default"].createElement("span", null);
 	    }
 	  }, {
+	    key: "getContent",
+	    value: function getContent() {
+	      var _this2 = this;
+	
+	      return _react2["default"].Children.map(this.props.children, function (child) {
+	        return _react2["default"].cloneElement(child, {
+	          onBlur: _this2.handleMouseLeave.bind(_this2),
+	          onFocus: _this2.handleMouseEnter.bind(_this2),
+	          onMouseEnter: _this2.handleMouseEnter.bind(_this2),
+	          onMouseLeave: _this2.handleMouseLeave.bind(_this2)
+	        });
+	      });
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      var containerStyles = { display: "inline" };
-	      return _react2["default"].createElement("div", {
-	        "aria-describedby": this.state.triggerId,
-	        onBlur: this.handleMouseLeave.bind(this),
-	        onFocus: this.handleMouseEnter.bind(this),
-	        onMouseEnter: this.handleMouseEnter.bind(this),
-	        onMouseLeave: this.handleMouseLeave.bind(this),
-	        ref: "tooltipTarget",
-	        style: containerStyles,
-	        tabIndex: "0" }, this.props.children, this.getTooltip(), this.state.isOpen ? _react2["default"].createElement("span", { className: "slds-assistive-text" }, this.props.content) : null);
+	      return _react2["default"].createElement("div", { "aria-describedby": this.state.triggerId, style: containerStyles, ref: "tooltipTarget", role: "tooltip", "aria-live": "polite" }, this.getContent(), this.getTooltip(), this.state.isOpen ? _react2["default"].createElement("span", { className: "slds-assistive-text" }, this.props.content) : null);
 	    }
 	  }]);
 	
