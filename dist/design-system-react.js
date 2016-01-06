@@ -406,6 +406,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	'use strict';
 	
+	var _extends = Object.assign || function (target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i];for (var key in source) {
+	      if (Object.prototype.hasOwnProperty.call(source, key)) {
+	        target[key] = source[key];
+	      }
+	    }
+	  }return target;
+	};
+	
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
 	    for (var i = 0; i < props.length; i++) {
@@ -484,7 +494,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'render',
 	    value: function render() {
 	      var className = 'slds-input__icon slds-icon-text-default';
-	      return _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className });
+	      return _react2['default'].createElement(_SLDSUtilityIcon2['default'], _extends({ name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className }, this.props));
 	    }
 	  }]);
 	
@@ -8201,11 +8211,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var inputContainerStyle = this.state.selectedIndex === null ? {} : { padding: "5px" };
 	      var inputLabel = this.props.label ? _react2["default"].createElement("label", { className: "slds-form-element__label", htmlFor: this.props.type + "Lookup" }, this.props.label) : null;
 	
-	      return _react2["default"].createElement("div", { className: (0, _classnames2["default"])(componentClasses), "data-select": "single", "data-scope": "single", "data-typeahead": "true" }, _react2["default"].createElement("section", { className: "slds-form-element" }, inputLabel, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(inputContainerClasses), style: inputContainerStyle }, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(pillContainerClasses) }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null), _react2["default"].createElement(_SLDSIcons.InputIcon, { name: "search" }), _react2["default"].createElement("input", {
+	      return _react2["default"].createElement("div", { className: (0, _classnames2["default"])(componentClasses), "data-select": "single", "data-scope": "single", "data-typeahead": "true" }, _react2["default"].createElement("section", { className: "slds-form-element" }, inputLabel, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(inputContainerClasses), style: inputContainerStyle }, _react2["default"].createElement("div", { className: (0, _classnames2["default"])(pillContainerClasses) }, this.state.selectedIndex !== null ? this.renderSelectedItem() : null), _react2["default"].createElement("input", {
 	        "aria-activedescendant": this.state.currentFocus ? this.state.currentFocus : "",
 	        "aria-autocomplete": "list",
 	        "aria-expanded": this.state.isOpen,
 	        "aria-haspopup": "true",
+	        style: { background: "\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><circle cx='15' cy='15' r='10' /></svg>\"", height: '50px', width: '50px' },
 	        className: (0, _classnames2["default"])(inputClasses),
 	        id: this.props.type + "Lookup",
 	        onBlur: this.handleBlur.bind(this),
@@ -8349,6 +8360,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function filter(item) {
 	      return this.props.filterWith(this.props.searchTerm, item);
 	    }
+	  }, {
+	    key: 'filteredItems',
+	    value: function filteredItems() {
+	      return this.props.items.filter(this.filter, this);
+	    }
 	
 	    //Scroll menu up/down when using mouse keys
 	  }, {
@@ -8391,7 +8407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function renderItems() {
 	      var _this = this;
 	
-	      return this.props.items.filter(this.filter, this).map(function (c, i) {
+	      return this.filteredItems().map(function (c, i) {
 	        //isActive means it is aria-activedescendant
 	        var id = c.id;
 	        var isActive = false;
@@ -8429,7 +8445,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'renderContent',
 	    value: function renderContent() {
-	      if (this.props.errors.length > 0) return this.renderErrors();else if (this.props.items.length === 0) return _react2['default'].createElement('li', { className: 'slds-lookup__message', 'aria-live': 'polite' }, _react2['default'].createElement('span', null, this.props.emptyMessage));
+	      if (this.props.errors.length > 0) return this.renderErrors();else if (this.filteredItems().length === 0) return _react2['default'].createElement('li', { className: 'slds-lookup__message', 'aria-live': 'polite' }, _react2['default'].createElement('span', null, this.props.emptyMessage));
 	
 	      var elements = this.renderItems();
 	      if (this.props.messages.length > 0) {
