@@ -50,7 +50,6 @@ const defaultProps = {
   initialFocus: false,
   label: "Dropdown",
   listClassName: "",
-  listItemRenderer: ListItemLabel,
   modal: true,
   openOn: "hover",
   options: [],
@@ -149,6 +148,10 @@ class SLDSDropdown extends React.Component {
     if(option){
       return this.props.options[index];
     }
+  }
+
+  getListItemRenderer() {
+    return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
   }
 
   handleSelect(index){
@@ -264,7 +267,7 @@ class SLDSDropdown extends React.Component {
             className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
             isHover={this.state.isHover}
-            itemRenderer={this.props.listItemRenderer}
+            itemRenderer={this.getListItemRenderer()}
             onListBlur={this.handleListBlur.bind(this)}
             onListItemBlur={this.handleListItemBlur.bind(this)}
             onCancel={this.handleCancel.bind(this)}
