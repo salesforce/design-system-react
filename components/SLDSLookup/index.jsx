@@ -435,7 +435,6 @@ class SLDSLookup extends React.Component {
               ref={this.props.type + "Lookup"}
               role="combobox"
               type="text"
-              emptyMessage="No items found"
               value={this.state.searchTerm}
             />
           </div>
