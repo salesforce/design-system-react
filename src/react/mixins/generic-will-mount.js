@@ -12,8 +12,9 @@ const genericWillMount = {
 	
 	componentDidMount () {
 		// If the render method returns `null` or `false`, then element is not set and should be set within the control object.
-		if (ReactDOM.findDOMNode(this)) {
-			this._setControlElement(Lib.wrapElement(ReactDOM.findDOMNode(this)));
+		const node = ReactDOM.findDOMNode(this);
+		if (node) {
+			this._setControlElement(Lib.wrapElement(node));
 		}
 	},
 
