@@ -296,12 +296,12 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 			} else {
 				startDate = date;
 			}
-		}
 		
-		this._selectDates({
-			startDate,
-			endDate
-		});
+			this._selectDates({
+				startDate,
+				endDate
+			});
+		}
 	},
 	
 	_selectDates (dates) {

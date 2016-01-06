@@ -5,8 +5,6 @@ import * as Lib from '../../lib/lib';
 import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
 // Traits
-import Eventable from '../../traits/eventable';
-import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
 import Positionable from '../../traits/positionable';
 
@@ -32,22 +30,16 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	displayName: CONTROL,
 
 	propTypes: {
-		dateRange: React.PropTypes.array,
 		inputLabel: React.PropTypes.string,
-		modalCalendar: React.PropTypes.bool,
-		selection: React.PropTypes.any
+		modalCalendar: React.PropTypes.bool
 	},
 
 	componentWillMount () {
 		Positionable.setElement(this, Positionable.attachPositionedElementToBody());
-		
-		Eventable.on(this, 'select', this._onSelect);
-		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	render () {
-		const selectedDates = this.props.selection;
-		const selDateFormatted = selectedDates.length ? this._formatSelectedDates(selectedDates[0]) : '';
+		const selDateFormatted = this._formatSelectedDates();
 
 		return (
 			<div className="slds-form--stacked slds-datepicker-form" ref={this._dateInputRendered} onClick={this._triggerCalendar}>
@@ -116,49 +108,45 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		Openable.open(this, e.nativeEvent);
 	},
 
-	_selectDate (date) {
-		const isRangeSelect = this.props.multiSelect;
-		const selectedItems = this.props.selection;
-		let insertIndex = 1;
-
-		if (isRangeSelect) {
-			if (selectedItems && selectedItems.length === 1 && selectedItems[0].date.getTime() > date.date.getTime()) {
-				insertIndex = 0;
-			}
-
-			Multiselectable.selectItem(this, { date: date.date }, selectedItems, insertIndex);
-		} else {
-			Multiselectable.selectItem(this, { date: date.date }, selectedItems);
-		}
-	},
-
 	_setViewingDate (date) {
 		this.setState({
 			dateViewing: date
 		});
 	},
 
-	_onSelect (itemsToSelect, selection) {
-		const dates = selection.length() > 2 ? itemsToSelect : selection._data;
+	_selectDate (dayData) {
+		const date = dayData.date;
+		let startDate;
+		let endDate;
 
-		if (Lib.isFunction(this.props.onSelect)) {
-			this.props.onSelect(itemsToSelect, dates);
-		}
+		if (!dayData.outside) {
+			if (this.props.multiSelect) {
+				startDate = this.props.startDate;
+				endDate = this.props.endDate;
+				
+				if (!startDate || endDate) {
+					startDate = date;
+					endDate = undefined;
+				} else if (this._roundDate(startDate).getTime() > date.getTime()) {
+					endDate = startDate;
+					startDate = date;
+				} else {
+					endDate = date;
+				}
+			} else {
+				startDate = date;
+			}
 		
-		if (Lib.isFunction(this.props.onChange)) {
-			this.props.onChange(dates);
+			this._selectDates({
+				startDate,
+				endDate
+			});
 		}
 	},
 
-	_onDeselect (itemsToDeselect, selection) {
-		const dates = selection.length() > 2 ? itemsToDeselect : selection._data;
-
-		if (Lib.isFunction(this.props.onDeselect)) {
-			this.props.onDeselect(itemsToDeselect, dates);
-		}
-		
+	_selectDates (dates) {
 		if (Lib.isFunction(this.props.onChange)) {
-			this.props.onChange(dates);
+			this.props.onChange(dates.startDate, dates.endDate);
 		}
 	}
 });
