@@ -11,7 +11,7 @@ export default String.raw`
 				<li role="treeitem" aria-level="2">
 					<div class="slds-tree__item">
 						<div class="slds-spinner slds-spinner--small" role="alert">
-							<img src="/assets/images/spinners/slds_spinner.gif" alt="Loading..." />
+							<img src="/assets/design-system/images/spinners/slds_spinner.gif" alt="Loading..." />
 						</div>
 					</div>
 				</li>

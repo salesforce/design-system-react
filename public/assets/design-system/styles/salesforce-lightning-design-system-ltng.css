@@ -5674,18 +5674,17 @@
     float: left;
     padding-left: 0.25rem; } }
 
-.slds .slds-dl--horizontal {
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap;
-  -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex; }
-
 @media (min-width: 48em) {
+  .slds .slds-dl--horizontal {
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-align-items: flex-start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; }
   .slds .slds-dl--horizontal__label {
     width: 33%;
     padding-right: 0.75rem; }

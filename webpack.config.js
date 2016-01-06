@@ -70,8 +70,13 @@ var config = {
 				loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!sass-loader")
 			},
 			{
-				test: /\.(svg|png|jpg)$/,
-				loader: ExtractTextPlugin.extract('url-loader?limit=30&name=/examples/[path][name].[ext]')
+				test: /\.(png)$/,
+				loader: ExtractTextPlugin.extract('url-loader?limit=30000000&mimetype=image/png&name=../public/assets/facades/images/[name].[ext]')
+				// loader: 'url-loader?limit=30000&name=/examples/[name].[ext]'
+			},
+			{
+				test: /\.(svg|jpg)$/,
+				loader: ExtractTextPlugin.extract('url-loader?limit=3000000&name=../public/assets/facades/images/[name].[ext]')
 				// loader: 'url-loader?limit=30000&name=/examples/[name].[ext]'
 			},
 			{

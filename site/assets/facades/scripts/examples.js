@@ -1,3 +1,23 @@
 // require('../../../../node_modules/@salesforce-ux/design-system/assets/fonts/webfonts/SalesforceSans-Light.woff2');
 require('../../../../node_modules/@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system.css');
 require('../scss/site');
+
+// require('../images/favicon-16x16.png');
+// require('../images/jquery-logo.png');
+// require('../images/react-logo.png');
+// require('../images/ff-large.svg');
+// require('../images/ff-medium.svg');
+// require('../images/ff-small.svg');
+// require('../images/header-components.svg');
+// require('../images/header-design.svg');
+// require('../images/header-faq.svg');
+// require('../images/header-getting-started.svg');
+// require('../images/header-native.svg');
+// require('../images/header-resources.svg');
+// require('../images/header-voice-and-tone.svg');
+// require('../images/logo.svg');
+// require('../images/marionette-logo.svg');
+// require('../images/social-dribbble.svg');
+// require('../images/social-github-icon-only.svg');
+// require('../images/social-github.svg');
+// require('../images/social-twitter.svg');

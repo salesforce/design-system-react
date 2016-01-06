@@ -66,7 +66,7 @@ module.exports = function (grunt) {
 		},
 		'shell': {
 			docco: {
-				command: './scripts/generate-docs.sh'
+				command: './scripts/shell/generate-docs.sh'
 			}
 		},
 		'webpack': {
