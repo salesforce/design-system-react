@@ -11,6 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 import tooltip from "./tooltip";
 import flatten from "lodash.flatten";
+import compact from "lodash.compact";
 
 const displayName = "SLDSTooltip";
 const propTypes = {
@@ -111,12 +112,13 @@ class SLDSTooltip extends React.Component {
   getContent() {
     const asstText = <span className="slds-assistive-text">{this.props.content}</span>;
     return React.Children.map(this.props.children, child => {
+      const {props={}} = child;
       return React.cloneElement(child, {
         onBlur: this.handleMouseLeave.bind(this),
         onFocus: this.handleMouseEnter.bind(this),
         onMouseEnter: this.handleMouseEnter.bind(this),
         onMouseLeave: this.handleMouseLeave.bind(this),
-        children: (child.props.children ? flatten([child.props.children]).concat(asstText) : asstText)
+        children: compact(flatten([props.children]).concat(asstText))
       });
      })
   }

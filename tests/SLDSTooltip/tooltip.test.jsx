@@ -19,8 +19,8 @@ describe('SLDSTooltip: ',  function(){
   describe('component basic props render', function() {
     it('renders tooltip trigger text', function() {
       let triggerText = 'Click here for tooltip';
-      let content = 'This is more info. blah blah.';
-      let tooltip = generateTooltip(<SLDSTooltip align='left' content={content}>{triggerText}</SLDSTooltip>);
+      let content = <span>'This is more info. blah blah.'</span>;
+      let tooltip = generateTooltip(<SLDSTooltip align='left' content={content}>{<span>triggerText</span>}</SLDSTooltip>);
       let tooltipTrigger = tooltip.innerText;
       //TODO: upon upgrading to React 14, add 'hover' simulation with Test Utils. Currently a bug in 13.
       //https://github.com/facebook/react/issues/4264
@@ -30,8 +30,8 @@ describe('SLDSTooltip: ',  function(){
 
   describe('functionality works', function() {
     it('opens on hover', function() {
-      let popoverText = 'This is more info. blah blah.';
-      let tooltip = generateTooltip(<SLDSTooltip align='right' content={popoverText}>Hover Me</SLDSTooltip>);
+      let popoverText = <span>'This is more info. blah blah.'</span>;
+      let tooltip = generateTooltip(<SLDSTooltip align='right' content={popoverText}><a>Hover Me</a></SLDSTooltip>);
       //TODO: upon upgrading to React 14, add 'hover' simulation with Test Utils. Currently a bug in 13.
       //https://github.com/facebook/react/issues/4264
     });
