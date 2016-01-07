@@ -253,7 +253,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * If omitted, icon position is cenetered.
 	   */
 	  iconPosition: _react2["default"].PropTypes.oneOf(["left", "right"]),
-	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "medium", "large"]),
+	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "large"]),
 	  /**
 	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>
 	   */
@@ -270,7 +270,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
-	var defaultProps = {};
+	var defaultProps = {
+	  iconSize: "medium"
+	};
 	
 	/**
 	 * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
@@ -3258,31 +3260,36 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = "SLDSButtonStateful";
 	var propTypes = {
 	  /**
-	   * text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
 	   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop.
 	   */
 	  assistiveText: _react2["default"].PropTypes.string,
 	  disabled: _react2["default"].PropTypes.bool,
 	  /**
-	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
+	   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
 	   */
 	  iconName: _react2["default"].PropTypes.string,
-	  iconSize: _react2["default"].PropTypes.string,
+	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "large"]),
 	  onClick: _react2["default"].PropTypes.func,
+	  /**
+	   * If true, button scales 100% width on small form factors
+	   */
 	  responsive: _react2["default"].PropTypes.bool,
 	  tabIndex: _react2["default"].PropTypes.string,
 	  /**
-	   * join - states are join, member, leave <br />
-	   * follow - states are follow, following, unfollow <br />
-	   * icon - states are "selected", "unselect", "not selected"
+	   * <code>join</code> - states are join, member, leave <br />
+	   * <code>follow</code> - states are follow, following, unfollow <br />
+	   * <code>icon</code> - states are "selected", "unselect", "not selected"
 	   */
 	  type: _react2["default"].PropTypes.oneOf(["join", "follow", "icon"]),
 	  /**
-	   * use "icon-inverse" for white icons.
+	   * Use <code>icon-inverse</code> for white icons.
 	   */
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
-	var defaultProps = {};
+	var defaultProps = {
+	  iconSize: "medium"
+	};
 	
 	var SLDSButtonStateful = (function (_React$Component) {
 	  _inherits(SLDSButtonStateful, _React$Component);
