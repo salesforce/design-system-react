@@ -67,6 +67,7 @@ module.exports = React.createClass( {
                 <li><Link to="notification">Notification</Link></li>
                 <li><Link to="picklist">Picklist</Link></li>
                 <li><Link to="tooltip">Tooltip</Link></li>
+
               </ul>
               <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Future</h3>
               <ul>
