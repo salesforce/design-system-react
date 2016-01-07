@@ -11,10 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
-
-import chain from "../utils/create-chained-function";
 import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
-import omit from "lodash.omit";
 
 const displayName = "SLDSDropdown";
 const propTypes = {
@@ -76,9 +73,6 @@ class SLDSDropdown extends React.Component {
     this.setState({ isMounted: true });
     if(this.props.initialFocus){
       this.setFocus();
-    }
-    if(this.props.openOn === "hover"){
-      //TODO:Add functionality here
     }
   }
 
@@ -164,44 +158,43 @@ class SLDSDropdown extends React.Component {
   }
 
   handleMouseEnter(){
-    if(this.props.openOn === "hover"){
-      this.state.isClosing = false;
-      if(!this.state.isOpen){
-        this.setState({
-          isOpen: true,
-          isHover: true
-        });
-      }
+    if(this.props.onMouseEnter) this.props.onMouseEnter();
+    this.state.isClosing = false;
+    if(!this.state.isOpen){
+      this.setState({
+        isOpen: true,
+        isHover: true
+      });
     }
   }
 
   handleMouseLeave(){
-    if(this.props.openOn === "hover"){
-      this.setState({isClosing: true});
-    }
+    if(this.props.onMouseLeave) this.props.onMouseLeave();
+    this.setState({isClosing: true});
   }
 
   handleClick(event){
     EventUtil.trap(event);
     if(!this.state.isOpen){
+      if(this.props.onClick) this.props.onClick();
       this.setState({isOpen: true});
-      if(this.props.onClick){
-        this.props.onClick();
-      }
     }else{
       this.handleClose();
     }
   }
 
   handleMouseDown(event){
+    if(this.props.onMouseDown) this.props.onMouseDown();
     EventUtil.trapImmediate(event);
   }
 
   handleBlur(e){
+    if(this.props.onBlur) this.props.onBlur();
     this.setState({isFocused: false});
   }
 
   handleFocus(){
+    if(this.props.onFocus) this.props.onFocus();
     this.setState({
       isFocused: true,
       isHover: false
@@ -221,16 +214,16 @@ class SLDSDropdown extends React.Component {
   handleKeyDown(event){
     if(event.keyCode){
       if(event.keyCode === KEYS.ENTER ||
-          event.keyCode === KEYS.SPACE ||
-          event.keyCode === KEYS.DOWN ||
-          event.keyCode === KEYS.UP){
-        EventUtil.trapEvent(event);
+         event.keyCode === KEYS.SPACE ||
+         event.keyCode === KEYS.DOWN ||
+         event.keyCode === KEYS.UP) {
 
-        this.setState({
-          isOpen: true,
-          highlightedIndex: 0
-        });
-
+          if(this.props.onKeyDown) this.props.onKeyDown();
+          EventUtil.trapEvent(event);
+          this.setState({
+            isOpen: true,
+            highlightedIndex: 0
+          });
       }
     }
   }
@@ -314,13 +307,13 @@ class SLDSDropdown extends React.Component {
         iconName={this.props.iconName}
         iconVariant={this.props.iconVariant}
         label={this.props.label}
-        onBlur={ chain(this.props.onBlur, this.handleBlur.bind(this)) }
-        onClick={ chain(this.props.onClick, this.handleClick.bind(this)) }
-        onFocus={ chain(this.props.onFocus, this.handleFocus.bind(this)) }
-        onKeyDown={ chain(this.props.onKeyDown, this.handleKeyDown.bind(this)) }
-        onMouseDown={ chain(this.props.onMouseDown, this.handleMouseDown.bind(this)) }
-        onMouseEnter={ chain(this.props.onMouseEnter, (this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null) }
-        onMouseLeave={ chain(this.props.onMouseLeave, (this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null ) }
+        onBlur={this.handleBlur.bind(this)}
+        onClick={this.handleClick.bind(this)}
+        onFocus={this.handleFocus.bind(this)}
+        onKeyDown={this.handleKeyDown.bind(this)}
+        onMouseDown={this.handleMouseDown.bind(this)}
+        onMouseEnter={this.props.openOn === "hover" ? this.handleMouseEnter.bind(this):null}
+        onMouseLeave={this.props.openOn === "hover" ? this.handleMouseLeave.bind(this):null}
         ref="button"
         style={this.props.style}
         tabIndex={this.state.isOpen ? "-1" : "0"}
