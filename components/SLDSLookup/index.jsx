@@ -39,6 +39,7 @@ const propTypes = {
   onItemSelect: React.PropTypes.func,
   onItemUnselect: React.PropTypes.func,
   type: React.PropTypes.string,
+  searchTerm: React.PropTypes.string,
 };
 
 const defaultFilter = (term, item) => {
@@ -50,6 +51,7 @@ const defaultProps = {
   disabled: false,
   filterWith: defaultFilter,
   modal: false,
+  searchTerm: "",
 };
 
 class SLDSLookup extends React.Component {
@@ -62,7 +64,7 @@ class SLDSLookup extends React.Component {
       items: [],
       listLength: this.props.items.length,
       selectedIndex: null,
-      searchTerm: "",
+      searchTerm: this.props.searchTerm,
     };
   }
 
