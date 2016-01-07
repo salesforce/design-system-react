@@ -10,6 +10,7 @@ import * as Lib from '../../lib/lib';
 import TreeCore, {CONTROL} from '../../core/tree';
 
 // Traits
+import Eventable from '../../traits/eventable';
 import Multiselectable from '../../traits/multiselectable';
 
 // Framework Specific
@@ -21,8 +22,9 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 // Split out some rendering logic, just to make things easier to read, button and the template that the Tree control is built from.
 import Button from '../button/button';
-import template from './tree-template';
 
+// Template imports
+import template from './tree-template';
 
 const legacyAccessors = {
 	getText (item) {
@@ -84,6 +86,9 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this.elements.list = this.element.find('.' + this.cssClasses.CONTROL);
+		
+		Eventable.on(this, 'select', this._onSelect, this);
+		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 
 	_onInitialized () {
@@ -161,7 +166,6 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 
 		// Expandable?
 		const isExpandable = branch.getExpandable();
-
 
 		$branch.attr('data-has-children', isExpandable ? undefined : 'false');
 
@@ -299,14 +303,20 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		Multiselectable.selectItems(this, items, this.getProperty('selection'), index);
 	},
 
-	_onSelect (selection) {
+	_onSelect (itemsToSelect, selection) {
 		this.setProperties({ selection: selection._data });
 		this._onSelectionUpdated(selection);
+	
+		this.trigger('selected', itemsToSelect, selection._data);
+		this.trigger('changed', itemsToSelect, selection._data);
 	},
 
-	_onDeselect (selection) {
+	_onDeselect (itemsToDeselect, selection) {
 		this.setProperties({ selection: selection._data });
 		this._onSelectionUpdated(selection);
+	
+		this.trigger('deselected', itemsToDeselect, selection._data);
+		this.trigger('changed', itemsToDeselect, selection._data);
 	},
 
 	_onSelectionUpdated (selection) {

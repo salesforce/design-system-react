@@ -26,14 +26,14 @@ export default React.createClass({
 		return (
 			<div>
 				<div className="slds-col example">
-					<Pillbox selection={this.state.selection} onChanged={this.handleChanged}/>;
+					<Pillbox selection={this.state.selection} onChange={this.handleChanged}/>
 				</div>
 				<div className="slds-col demo-controls"></div>
 			</div>
 		);
 	},
 
-	handleChanged (item, selection) {
+	handleChanged (selection) {
 		this.setState({ selection });
 	}
 });

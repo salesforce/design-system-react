@@ -53,7 +53,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 		return (
 			<div className="slds-dropdown-trigger" id={this.state.id} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
 				<Button id={triggerId} icon={this._getIcon()} iconStyle={this._getStyle()} disabled={this.props.disabled} aria-haspopup="true" />
-				<PicklistItems id={this._getMenuId()} labelledBy={triggerId} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this.getSelection()} show={!this.props.disabled} onSelected={this._handleMenuItemSelected} />
+				<PicklistItems id={this._getMenuId()} labelledBy={triggerId} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this._getSelection()._item} show={!this.props.disabled} onSelected={this._handleMenuItemSelected} />
 			</div>
 		);
 	}

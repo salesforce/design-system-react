@@ -65,7 +65,9 @@ export const DropdownObject = {
 		return this.element;
 	},
 
-	_onSelected (item) {
+	_onChanged () {
+		const item = this._getSelection();
+		
 		if (this.rendered) {
 			this._addCheckmark(this.elements);
 			this._swapIcon(item.getIcon());

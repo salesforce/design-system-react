@@ -24,7 +24,7 @@ export default React.createClass({
 			return (
 				<div key={index}>
 					<div className="slds-col example">
-						<Dropdown {...model} onChanged={this._handleModelChange.bind(this, index)} />
+						<Dropdown {...model} onChange={this._handleModelChange.bind(this, index)} />
 					</div>
 					<div className="slds-col demo-controls">
 						<div className="slds-button-group" role="group">

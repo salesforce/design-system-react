@@ -5,6 +5,7 @@ import * as Lib from '../../lib/lib';
 import TreeCore, {CONTROL} from '../../core/tree';
 
 // Traits
+import Eventable from '../../traits/eventable';
 import Multiselectable from '../../traits/multiselectable';
 
 // Framework specific
@@ -47,6 +48,11 @@ let Tree = Lib.merge({}, TreeCore, {
 		onOpened: React.PropTypes.func,
 		open: React.PropTypes.any,
 		selection: React.PropTypes.any
+	},
+
+	componentWillMount () {
+		Eventable.on(this, 'select', this._onSelect);
+		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	render () {
@@ -112,6 +118,26 @@ let Tree = Lib.merge({}, TreeCore, {
 
 	_handleExpandClick (item) {
 		this._toggleFolder(item);
+	},
+
+	_onSelect (itemsToSelect, selection) {
+		if (Lib.isFunction(this.props.onSelect)) {
+			this.props.onSelect(itemsToSelect, selection._data);
+		}
+		
+		if (Lib.isFunction(this.props.onChange)) {
+			this.props.onChange(selection._data);
+		}
+	},
+
+	_onDeselect (itemsToDeselect, selection) {
+		if (Lib.isFunction(this.props.onDeselect)) {
+			this.props.onDeselect(itemsToDeselect, selection._data);
+		}
+		
+		if (Lib.isFunction(this.props.onChange)) {
+			this.props.onChange(selection._data);
+		}
 	}
 });
 
