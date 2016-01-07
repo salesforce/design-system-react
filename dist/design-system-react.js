@@ -235,29 +235,38 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = 'SLDSButton';
 	var propTypes = {
 	  /**
-	   * text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
 	   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop.
 	   */
 	  assistiveText: _react2["default"].PropTypes.string,
 	  buttonSize: _react2["default"].PropTypes.oneOf(["small"]),
 	  disabled: _react2["default"].PropTypes.bool,
+	  /**
+	   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">SLDS Buttons > Hint</a>
+	   */
 	  hint: _react2["default"].PropTypes.bool,
 	  /**
-	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
+	   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
 	   */
 	  iconName: _react2["default"].PropTypes.string,
+	  /**
+	   * If omitted, icon position is cenetered.
+	   */
 	  iconPosition: _react2["default"].PropTypes.oneOf(["left", "right"]),
 	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "medium", "large"]),
 	  /**
-	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Lightning Design System - Icons</a>
+	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>
 	   */
 	  iconVariant: _react2["default"].PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
 	  label: _react2["default"].PropTypes.string,
 	  onClick: _react2["default"].PropTypes.func,
+	  /**
+	   * If true, button scales 100% width on small form factors
+	   */
 	  responsive: _react2["default"].PropTypes.bool,
 	  tabIndex: _react2["default"].PropTypes.string,
 	  /**
-	   * use "icon-inverse" for white icons.
+	   * Use <code>icon-inverse</code> for white icons.
 	   */
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
@@ -265,7 +274,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	/**
 	 * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
-	 * Use the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />
+	 * For stateful buttons, use the SLDSButtonStateful component. <br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">SLDS Buttons</a>.
 	 */
 	
@@ -29212,16 +29221,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = "SLDSPicklist";
 	var propTypes = {
 	  /**
-	   * classes applied to component
+	   * classes applied to menu list of component
 	   */
 	  className: _react2['default'].PropTypes.string,
 	  disabled: _react2['default'].PropTypes.bool,
-	  initialFocus: _react2['default'].PropTypes.bool,
 	  label: _react2['default'].PropTypes.string,
-	  /**
-	   * classes applied to menu list of component
-	   */
-	  listClassName: _react2['default'].PropTypes.string,
 	  /**
 	   * custom element that overrides the default Menu Item component
 	   */
@@ -29247,11 +29251,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: _react2['default'].PropTypes.node
 	};
 	var defaultProps = {
-	  className: '',
 	  disabled: false,
-	  initialFocus: false,
 	  label: 'Picklist',
-	  listClassName: '',
 	  listItemRenderer: null,
 	  modal: false,
 	  options: [],
@@ -29291,10 +29292,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        isMounted: true,
 	        triggerId: id
 	      });
-	
-	      if (this.props.initialFocus) {
-	        this.setFocus();
-	      }
+	      this.setFocus();
 	    }
 	  }, {
 	    key: 'componentDidUpdate',
@@ -29441,7 +29439,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: 'getPopoverContent',
 	    value: function getPopoverContent() {
 	      return _react2['default'].createElement(_utils.List, {
-	        className: this.props.listClassName,
+	        className: this.props.className,
 	        highlightedIndex: this.state.highlightedIndex,
 	        itemRenderer: this.getListItemRenderer(),
 	        label: this.props.label,
