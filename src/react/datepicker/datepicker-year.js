@@ -21,7 +21,7 @@ const DateMonth = React.createClass({
 		const picklistRange = this.props.getYearRange();
 
 		return (
-			<Picklist collection={picklistRange.all} selection={picklistRange.selected} onChanged={this._handleModelChange} />
+			<Picklist collection={picklistRange.collection} selection={picklistRange.selection} onChanged={this._handleModelChange} />
 		);
 	},
 

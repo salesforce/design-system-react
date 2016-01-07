@@ -44,36 +44,35 @@ const DatepickerCore = Lib.merge({}, Base, {
 		'January', 'February', 'March', 'April', 'May', 'June', 'July',
 		'August', 'September', 'October', 'November', 'December'
 	],
-
-	// ### Accessors
-	// These may be supplied in the options hash / properties to override default behavior. All accessors take 'item' as their first properties, which is an object from the collection wrapped in an item adapter.
-	accessors: {
-		// Return the date
-		getDate (item) {
-			return item.get('date');
-		},
+	
+	_getRange () {
+		const range = this.getProperty('range');
 		
-		getKey (item) {
-			return item.getDate().getTime();
-		}
+		return (range || []).map((val) => {
+			return this._roundDate(val).getTime();
+		});
 	},
 	
-	_isDateInRange (date) {
+	_isDateInRange (date, dateRange) {
 		if (!date) {
 			return false;
 		}
+		const time = date.getTime();
 		
-		const time = date && this._roundDate(date).getTime();
-		const range = Lib.getDataAdapter(this.getProperty('range'));
-		const length = range.length();
+		let range;
+		if (!dateRange) {
+			range = this._getRange();
+		} else {
+			range = dateRange;
+		}
+		
 		let inRange = false;
-		
-		switch (length) {
+		switch (range.length) {
 			case 2:
-				inRange = (time >= this._roundDate(range.at(0)).getTime() && time <= this._roundDate(range.at(1)).getTime());
+				inRange = (time >= range[0] && time <= range[1]);
 				break;
 			case 1:
-				inRange = (time >= this._roundDate(range.at(0)).getTime());
+				inRange = (time === range[0]);
 				break;
 			default:
 				break;
@@ -82,34 +81,41 @@ const DatepickerCore = Lib.merge({}, Base, {
 		return inRange;
 	},
 	
-	_isDateSelected (date) {
-		const startDate = this._roundDate(this.getProperty('startDate'));
-		const endDate = this._roundDate(this.getProperty('endDate'));
-		const time = date && this._roundDate(date).getTime();
-		let selected = false;
+	_getSelectionRange () {
+		const range = [];
+		const startDate = this.getProperty('startDate');
+		const endDate = this.getProperty('endDate');
 		
-		if (this.getProperty('multiSelect') && endDate) {
-			if (time && startDate) {
-				selected = (time >= startDate.getTime());
-			}
+		if (startDate) {
+			range.push(this._roundDate(startDate).getTime());
 			
-			if (time && endDate) {
-				selected = (selected && time <= endDate.getTime());
+			if (this.getProperty('multiSelect') && endDate) {
+				range.push(this._roundDate(endDate).getTime());
 			}
-		} else if (time && startDate) {
-			selected = (time === startDate.getTime());
 		}
 		
-		return selected;
+		return range;
+	},
+	
+	_isDateSelected (date, selectionRange) {
+		let range;
+		if (!selectionRange) {
+			range = this._getSelectionRange();
+		} else {
+			range = selectionRange;
+		}
+		
+		return this._isDateInRange(date, range);
 	},
 
-	_getCalendarData (baseDate) {
-		const date = this.getState('dateViewing') || baseDate;
-		const year = date.getFullYear(); // Year of the date selected
-		const month = date.getMonth(); // Month of the date selected
+	_getCalendarData (date) {
+		const year = this._getYear(date); // Year of the date viewing
+		const month = this._getMonth(date); // Month of the date viewing
 		const firstDay = new Date(year, month, 1).getDay(); // Index of first day base 0 sunday
 		const lastDate = new Date(year, month + 1, 0).getDate(); // Date of the last day
 		const lastMonthDate = new Date(year, month, 0).getDate(); // Last date for previous month
+		const range = this._getRange();
+		const selection = this._getSelectionRange();
 
 		// Today's Date
 		const now = this._roundDate(new Date());
@@ -153,11 +159,11 @@ const DatepickerCore = Lib.merge({}, Base, {
 					}
 				}
 
-				if (!cell.outside && !this._isDateInRange(cell.date)) {
+				if (!cell.outside && !this._isDateInRange(cell.date, range)) {
 					cell.outside = true;
 				}
 				
-				if (!cell.outside && this._isDateSelected(cell.date)) {
+				if (!cell.outside && this._isDateSelected(cell.date, selection)) {
 					cell.selected = true;
 				}
 				
@@ -176,41 +182,53 @@ const DatepickerCore = Lib.merge({}, Base, {
 		return MonthData;
 	},
 
-	_getMonthName (baseDate) {
-		const date = this.getState('dateViewing') || baseDate;
-		const month = date.getMonth();
-
-		return this._monthNames[month];
+	_getMonth (date) {
+		return (date || this.getState('dateViewing')).getMonth();
 	},
 
-	_getYear (baseDate) {
-		const date = this.getState('dateViewing') || baseDate;
+	_getMonthName (date) {
+		return this._monthNames[this._getMonth(date)];
+	},
 
-		return date.getFullYear();
+	_getYear (date) {
+		return (date || this.getState('dateViewing')).getFullYear();
 	},
 
 	_getYearRangeData () {
 		const range = this.getProperty('range');
+		let year = range[0].getFullYear();
+		const endYear = range[1].getFullYear();
 		const viewingYear = this._getYear();
-		const allDates = [];
-		let selDate;
-		let curDate;
+		
+		const rangeData = {
+			collection: []
+		};
 
-		for (curDate = range[0].getFullYear(); curDate <= range[1].getFullYear(); curDate++) {
-			allDates.push({text: curDate, value: curDate });
+		for (; year <= endYear; year++) {
+			const yearData = {
+				text: year,
+				value: year
+			};
+			
+			rangeData.collection.push(yearData);
 
-			if (viewingYear === curDate) {
-				selDate = {text: curDate, value: curDate };
+			if (year === viewingYear) {
+				rangeData.selection = yearData;
 			}
 		}
 
-		return {
-			selected: selDate,
-			all: allDates
-		};
+		return rangeData;
 	},
-	
-	_formatDate (date) {
+
+	_convertStringToDate (string) {
+		const date = new Date(string);
+		
+		if (Lib.isValidDate(date) && this._isDateInRange(date)) {
+			return date;
+		}
+	},
+
+	_convertDateToString (date) {
 		if (date) {
 			return [date.getMonth() + 1, date.getDate(), date.getFullYear()].join('/');
 		}
@@ -221,45 +239,28 @@ const DatepickerCore = Lib.merge({}, Base, {
 		const startDate = this.getProperty('startDate');
 		
 		if (startDate) {
-			formattedDates.push(this._formatDate(startDate));
+			formattedDates.push(this._convertDateToString(startDate));
 		}
 		
 		if (startDate && this.getProperty('multiSelect')) {
 			const endDate = this.getProperty('endDate');
 			
 			if (endDate) {
-				formattedDates.push(this._formatDate(endDate));
+				formattedDates.push(this._convertDateToString(endDate));
 			}
 		}
 
 		return formattedDates.join(' - ');
 	},
-	
-	_convertToDate (string) {
-		const date = new Date(string);
-		
-		if (Lib.isValidDate(date) && this._isDateInRange(date)) {
-			return date;
-		}
-	},
 
-	_getStartAndEndDates (input) {
-		const isDateRange = (input.length >= 21 && input.length <= 23);
-		let startDate;
-		let endDate;
+	_getStartAndEndDates (dates) {
+		let startDate = dates[0];
+		let endDate = dates[1];
 		
-		if (isDateRange) {
-			const dates = input.split('-');
-			startDate = this._convertToDate(dates[0]);
-			endDate = this._convertToDate(dates[1]);
-			
-			if (endDate && (!startDate || startDate.getTime() > endDate.getTime())) {
-				const tempDate = startDate;
-				startDate = endDate;
-				endDate = tempDate;
-			}
-		} else {
-			startDate = this._convertToDate(input);
+		if (endDate && (!startDate || startDate.getTime() > endDate.getTime())) {
+			const tempDate = startDate;
+			startDate = endDate;
+			endDate = tempDate;
 		}
 
 		return {
@@ -267,10 +268,26 @@ const DatepickerCore = Lib.merge({}, Base, {
 			endDate
 		};
 	},
-	
+
+	_getStartAndEndDatesFromString (string) {
+		const isDateRange = (string.length >= 21 && string.length <= 23);
+		let dates;
+		
+		if (isDateRange) {
+			dates = string.split('-');
+			
+			dates[0] = this._convertStringToDate(dates[0]);
+			dates[1] = this._convertStringToDate(dates[1]);
+		} else {
+			dates = [this._convertStringToDate(string)];
+		}
+		
+		return this._getStartAndEndDates(dates);
+	},
+
 	_roundDate (date) {
 		if (date) {
-			return new Date(this._formatDate(date));
+			return new Date(this._convertDateToString(date));
 		}
 	}
 });

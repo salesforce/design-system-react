@@ -198,12 +198,9 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		const yearRange = this._getYearRangeData();
 
 		if (this.yearPicklist) {
-			this.yearPicklist.setSelection(yearRange.selected);
+			this.yearPicklist.setSelection(yearRange.selection);
 		} else {
-			this.yearPicklist = new Picklist(this.elements.year, {
-				collection: yearRange.all,
-				selection: yearRange.selected
-			});
+			this.yearPicklist = new Picklist(this.elements.year, yearRange);
 
 			this.elements.year.on('changed', this._updateYear.bind(this));
 		}
@@ -257,7 +254,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_manualDateInput () {
 		const inputValue = this.elements.input.val();
-		const validatedDates = this._getStartAndEndDates(inputValue);
+		const validatedDates = this._getStartAndEndDatesFromString(inputValue);
 
 		if (validatedDates && validatedDates.startDate) {
 			this._selectDates(validatedDates);
