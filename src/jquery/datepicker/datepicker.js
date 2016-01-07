@@ -207,14 +207,21 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_updateYear (e, data) {
-		const dateViewing = new Date(this.getState('dateViewing'));
-
 		e.stopPropagation();
+		
+		let dateViewing = new Date(this.getState('dateViewing'));
+		const range = this._getRange();
 
 		if (data && data.value && dateViewing.getFullYear() !== data.value) {
 			dateViewing.setYear(data.value);
 			
-			if (this._isDateInRange(dateViewing)) {
+			if (dateViewing.getTime() < range[0]) {
+				dateViewing = new Date(range[0]);
+			} else if (dateViewing.getTime() > range[1]) {
+				dateViewing = new Date(range[1]);
+			}
+			
+			if (this._isDateInRange(dateViewing, range)) {
 				this.setState({ dateViewing } );
 				this._renderDateRange();
 			}
