@@ -54,6 +54,10 @@ export function removeClass (element, className) {
 	}
 }
 
+export function toggleClass (element, className) {
+	return element && typeof className === 'string' && hasClass(element, className) ? removeClass(element, className) : addClass(element, className);
+}
+
 export function getDocumentOffset (element) {
 	const rect = element.getBoundingClientRect();
 	
@@ -151,6 +155,7 @@ function WrappedElement (element) {
 	this.hasClass = partial(hasClass, element);
 	this.addClass = partial(addClass, element);
 	this.removeClass = partial(removeClass, element);
+	this.toggleClass = partial(toggleClass, element);
 	this.offset = partial(getDocumentOffset, element);
 	this.outerHeight = partial(outerHeight, element);
 	this.outerWidth = partial(outerWidth, element);
