@@ -35,7 +35,7 @@ const propTypes = {
    * If omitted, icon position is cenetered.
    */
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
-  iconSize: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
+  iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   /**
    * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>
    */
@@ -52,7 +52,9 @@ const propTypes = {
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
-const defaultProps = {};
+const defaultProps = {
+  iconSize: "medium"
+};
 
 /**
  * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />

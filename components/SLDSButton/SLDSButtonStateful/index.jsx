@@ -17,31 +17,36 @@ import omit from "lodash.omit";
 const displayName = "SLDSButtonStateful";
 const propTypes = {
   /**
-   * text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
    * If the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop.
    */
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
-   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
-  iconSize: React.PropTypes.string,
+  iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   onClick: React.PropTypes.func,
+  /**
+   * If true, button scales 100% width on small form factors
+   */
   responsive: React.PropTypes.bool,
   tabIndex: React.PropTypes.string,
   /**
-   * join - states are join, member, leave <br />
-   * follow - states are follow, following, unfollow <br />
-   * icon - states are "selected", "unselect", "not selected"
+   * <code>join</code> - states are join, member, leave <br />
+   * <code>follow</code> - states are follow, following, unfollow <br />
+   * <code>icon</code> - states are "selected", "unselect", "not selected"
    */
   type: React.PropTypes.oneOf(["join", "follow", "icon"]),
   /**
-   * use "icon-inverse" for white icons.
+   * Use <code>icon-inverse</code> for white icons.
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
-const defaultProps = {};
+const defaultProps = {
+  iconSize: "medium"
+};
 
 class SLDSButtonStateful extends React.Component {
 
