@@ -12,7 +12,8 @@ const DateInput = React.createClass({
 	propTypes: {
 		selectedDate: React.PropTypes.any,
 		strings: React.PropTypes.object.isRequired,
-		ariaLabel: React.PropTypes.string
+		ariaLabel: React.PropTypes.string,
+		onChange: React.PropTypes.func.isRequired
 	},
 
 	render () {
@@ -21,11 +22,15 @@ const DateInput = React.createClass({
 				<div className="slds-form-element__control">
 					<div className="slds-input-has-icon slds-input-has-icon--right">
 						<Svg className="slds-input__icon slds-icon-text-default" icon="utility.event" />
-						<input className="slds-input" type="text" placeholder={this.props.strings.DATE_FORMAT} aria-label={this.props.ariaLabel} value={this.props.selectedDate}/>
+						<input className="slds-input" type="text" placeholder={this.props.strings.DATE_FORMAT} aria-label={this.props.ariaLabel} value={this.props.selectedDate} onChange={this.handleChange} />
 					</div>
 				</div>
 			</div>
 		);
+	},
+	
+	handleChange: function (event) {
+		this.props.onChange(event.target.value);
 	}
 });
 

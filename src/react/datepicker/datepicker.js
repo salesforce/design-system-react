@@ -36,17 +36,28 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 	componentWillMount () {
 		Positionable.setElement(this, Positionable.attachPositionedElementToBody());
+		
+		this.setState({
+			inputValue: this._formatSelectedDates()
+		});
+	},
+	
+	componentWillReceiveProps (nextProps) {
+		if (nextProps.startDate || nextProps.endDate) {
+			this.setState({
+				inputValue: this._formatSelectedDates(nextProps.startDate, nextProps.endDate)
+			});
+		}
 	},
 
 	render () {
-		const selDateFormatted = this._formatSelectedDates();
-
 		return (
 			<div className="slds-form--stacked slds-datepicker-form" ref={this._dateInputRendered} onClick={this._triggerCalendar}>
 				<DateInput
 					ariaLabel={this.props.inputLabel}
-					selectedDate={selDateFormatted}
-					strings={this.state.strings}/>
+					selectedDate={this.state.inputValue}
+					strings={this.state.strings}
+					onChange={this._manualDateInput} />
 					{this.props.modalCalendar ? null : this._renderCalendar()}
 			</div>
 		);
@@ -61,12 +72,12 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 				<div className="slds-datepicker__filter slds-grid">
 					<DateMonth
 						monthName={this._getMonthName()}
-						setViewingDate={this._setViewingDate}
+						setViewingDate={this._jumpToDate}
 						dateViewing={this.state.dateViewing}
 						strings={this.state.strings}/>
 					<DateYear
 						getYearRange={this._getYearRangeData}
-						setViewingDate={this._setViewingDate}
+						setViewingDate={this._jumpToDate}
 						dateViewing={this.state.dateViewing}/>
 				</div>
 				<Calendar
@@ -107,10 +118,10 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	_triggerCalendar (e) {
 		Openable.open(this, e.nativeEvent);
 	},
-
-	_setViewingDate (date) {
+	
+	_manualDateInput (inputValue) {
 		this.setState({
-			dateViewing: date
+			inputValue
 		});
 	},
 

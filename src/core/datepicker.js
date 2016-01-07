@@ -267,16 +267,16 @@ const DatepickerCore = Lib.merge({}, Base, {
 		}
 	},
 
-	_formatSelectedDates () {
+	_formatSelectedDates (newStartDate, newEndDate) {
 		const formattedDates = [];
-		const startDate = this.getProperty('startDate');
+		const startDate = newStartDate || this.getProperty('startDate');
 		
 		if (startDate) {
 			formattedDates.push(this._convertDateToString(startDate));
 		}
 		
 		if (startDate && this.getProperty('multiSelect')) {
-			const endDate = this.getProperty('endDate');
+			const endDate = newEndDate || this.getProperty('endDate');
 			
 			if (endDate) {
 				formattedDates.push(this._convertDateToString(endDate));
