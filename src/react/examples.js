@@ -1,5 +1,7 @@
 // WARNING: Keep this here as it is required for examples.html to work with webpack-dev-server
 // require('../../scss/index');
+require('../../site/assets/facades/scss/index');
+require('../../site/assets/demo-site/scss/index');
 
 import React from 'react';
 import ReactDOM from 'react-dom';

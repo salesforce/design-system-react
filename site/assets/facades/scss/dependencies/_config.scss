@@ -1,0 +1,52 @@
+/// Version number
+/// Helps deprecating pieces of the codebase
+/// Note: update at each release
+///
+/// For internal use only
+///
+/// @type String
+/// @access private
+$app-version: '0.0.11';
+
+/// Debug mode (uncomment to activate)
+/// Turn on to output deprecation warnings during development
+/// Note: remove when/if gulp-sass starts supporting the --quiet flag
+///
+/// @type Boolean
+// $app-debug: true;
+
+/// Icon Path
+///
+/// @type String
+$static-icon-path: '/assets/icons' !default;
+
+/// Image Path
+///
+/// @type String
+$static-image-path: '/assets/images' !default;
+
+/// Font Path
+///
+/// @type String
+$static-font-path: '/assets/fonts/webfonts' !default;
+
+/// CSS Prefix
+/// Will prefix all CSS classes
+///
+/// @example scss Compile without prefix
+///  $css-prefix: '';
+///
+/// @example scss Use in a class name
+///  .#{$css-prefix}foo { ... } // outputs .slds-foo { ... }
+///
+/// @type String
+$css-prefix: 'slds-' !default;
+
+/// Reset wrapping class
+/// Wraps a version of normalize
+///
+/// @example scss
+///  #{$reset-wrapping-class} .foo { ... } // outputs .slds .foo { ... }
+///
+/// @type String
+$reset-wrapping-class: '.slds' !default;
