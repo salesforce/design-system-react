@@ -52,9 +52,7 @@ const propTypes = {
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
-const defaultProps = {
-  iconSize: "medium"
-};
+const defaultProps = {};
 
 /**
  * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />

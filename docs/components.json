@@ -80,11 +80,7 @@
                     ]
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"medium\"",
-                    "computed": false
-                }
+                "description": ""
             },
             "iconVariant": {
                 "type": {
@@ -230,11 +226,7 @@
                     ]
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"medium\"",
-                    "computed": false
-                }
+                "description": ""
             },
             "onClick": {
                 "type": {
