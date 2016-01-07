@@ -333,12 +333,12 @@
         "description": "The SLDSDropdown component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
         "displayName": "SLDSDropdown",
         "props": {
-            "className": {
+            "buttonClassName": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Classes applied to SLDSButton"
             },
             "disabled": {
                 "type": {
@@ -373,7 +373,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "",
+                "description": "Delay on menu closing",
                 "defaultValue": {
                     "value": "300",
                     "computed": false
@@ -390,19 +390,12 @@
                     "computed": false
                 }
             },
-            "listClassName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
             "listItemRenderer": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Custom element that overrides the default Menu Item component"
             },
             "modal": {
                 "type": {

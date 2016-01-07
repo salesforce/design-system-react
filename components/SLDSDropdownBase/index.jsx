@@ -15,12 +15,20 @@ import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
 
 const displayName = "SLDSDropdown";
 const propTypes = {
-  className: React.PropTypes.string,
+  /**
+   * Classes applied to SLDSButton
+   */
+  buttonClassName: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   horizontalAlign: React.PropTypes.oneOf(["left", "right"]),
+  /**
+   * Delay on menu closing
+   */
   hoverCloseDelay: React.PropTypes.number,
   label: React.PropTypes.string,
-  listClassName: React.PropTypes.string,
+  /**
+   * Custom element that overrides the default Menu Item component
+   */
   listItemRenderer: React.PropTypes.func,
   /**
    * If true, component renders specifically to work inside Modal
@@ -239,7 +247,6 @@ class SLDSDropdown extends React.Component {
 
   getPopoverContent(){
     return <List
-            className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
             isHover={this.state.isHover}
             itemRenderer={this.getListItemRenderer()}
@@ -286,7 +293,7 @@ class SLDSDropdown extends React.Component {
   render(){
     return <SLDSButton
         aria-haspopup="true"
-        className={this.props.className}
+        className={this.props.buttonClassName}
         iconName={this.props.iconName}
         iconVariant={this.props.iconVariant}
         label={this.props.label}
