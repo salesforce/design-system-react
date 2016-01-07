@@ -16,9 +16,19 @@ import {Icon} from "../SLDSIcons";
 
 const displayName = "SLDSPicklist";
 const propTypes = {
+  className: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  initialFocus: React.PropTypes.bool,
+  label: React.PropTypes.string,
+  listClassName: React.PropTypes.string,
+  listItemRenderer: React.PropTypes.node,
+  modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func.isRequired,
-  onUpdateHighlighted: React.PropTypes.func
+  onUpdateHighlighted: React.PropTypes.func,
+  options: React.PropTypes.array,
+  placeholder: React.PropTypes.string,
+  value: React.PropTypes.node,
 };
 const defaultProps = {
   className: '',
@@ -30,7 +40,6 @@ const defaultProps = {
   modal: false,
   options: [],
   placeholder: 'Select an Option',
-  theme: 'default',
   value: null,
 };
 
@@ -56,8 +65,8 @@ class SLDSPicklist extends React.Component {
   componentDidMount () {
     const id = React.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
     this.setState({
-      triggerId: id,
       isMounted: true,
+      triggerId: id,
     });
 
     if(this.props.initialFocus){
@@ -201,20 +210,20 @@ class SLDSPicklist extends React.Component {
 
   getPopoverContent() {
     return <List
-            triggerId={this.state.triggerId}
-            ref='list'
-            options={this.props.options}
-            label={this.props.label}
             className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
-            selectedIndex={this.state.selectedIndex}
-            onSelect={this.handleSelect.bind(this)}
-            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
+            itemRenderer={this.getListItemRenderer()}
+            label={this.props.label}
+            onCancel={this.handleCancel.bind(this)}
             onListBlur={this.handleListBlur.bind(this)}
             onListItemBlur={this.handleListItemBlur.bind(this)}
-            onCancel={this.handleCancel.bind(this)}
-            itemRenderer={this.getListItemRenderer()}
-            theme={this.props.theme} />;
+            onSelect={this.handleSelect.bind(this)}
+            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
+            options={this.props.options}
+            ref='list'
+            selectedIndex={this.state.selectedIndex}
+            triggerId={this.state.triggerId}
+            />;
   }
 
   getSimplePopover() {
@@ -233,9 +242,9 @@ class SLDSPicklist extends React.Component {
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
           className='slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu'
-          targetElement={this.refs.date}
           closeOnTabKey={true}
-          onClose={this.handleCancel.bind(this)}>
+          onClose={this.handleCancel.bind(this)}
+          targetElement={this.refs.date}>
           {this.getPopoverContent()}
         </SLDSPopover>:null
     );
@@ -257,22 +266,20 @@ class SLDSPicklist extends React.Component {
     return (
       <div className="slds-picklist" aria-expanded={this.state.isOpen}>
         <button
-          id={this.state.triggerId}
-          ref="triggerbutton"
-          className="slds-button slds-button--neutral slds-picklist__label"
           aria-haspopup="true"
+          className="slds-button slds-button--neutral slds-picklist__label"
+          id={this.state.triggerId}
           onBlur={this.handleBlur.bind(this)}
-          onFocus={this.handleFocus.bind(this)}
           onClick={this.handleClick.bind(this)}
+          onFocus={this.handleFocus.bind(this)}
+          onKeyDown={this.handleKeyDown.bind(this)}
           onMouseDown={this.handleMouseDown.bind(this)}
-          tabIndex={this.state.isOpen?-1:0}
-          onKeyDown={this.handleKeyDown.bind(this)}>
+          ref="triggerbutton"
+          tabIndex={this.state.isOpen?-1:0}>
             <span className="slds-truncate">{this.getPlaceholder()}</span>
             <Icon name="down" category="utility" />
         </button>
-
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
-
       </div>
     );
   }
