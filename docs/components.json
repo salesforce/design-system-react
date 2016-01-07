@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />\nUse the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightning Design System - Buttons</a>.",
+        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />\nUse the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">SLDS Buttons</a>.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -320,7 +320,7 @@
         }
     },
     "SLDSDropdownBase": {
-        "description": "The SLDSDropdown component is a variant of the Menu component in SLDS. For more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">Lightening Design System - Menus</a>.",
+        "description": "The SLDSDropdown component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
         "displayName": "SLDSDropdown",
         "props": {
             "className": {
@@ -328,14 +328,22 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "\"\"",
+                    "computed": false
+                }
             },
             "disabled": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "horizontalAlign": {
                 "type": {
@@ -352,35 +360,55 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "\"left\"",
+                    "computed": false
+                }
             },
             "hoverCloseDelay": {
                 "type": {
                     "name": "number"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "300",
+                    "computed": false
+                }
             },
             "initialFocus": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "label": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "\"Dropdown\"",
+                    "computed": false
+                }
             },
             "listClassName": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "\"\"",
+                    "computed": false
+                }
             },
             "listItemRenderer": {
                 "type": {
@@ -394,7 +422,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if modal, dropdown renders specifically to work inside a modal"
+                "description": "if modal, dropdown renders specifically to work inside a modal",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
             },
             "onClick": {
                 "type": {
@@ -432,40 +464,60 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "\"hover\"",
+                    "computed": false
+                }
             },
             "options": {
                 "type": {
                     "name": "array"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
             },
             "placeholder": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "\"Select an Option\"",
+                    "computed": false
+                }
             },
             "value": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
             },
             "variant": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "determines variant of button that triggers modal"
+                "description": "determines variant of button that triggers modal",
+                "defaultValue": {
+                    "value": "\"neutral\"",
+                    "computed": false
+                }
             }
         }
     },
     "SLDSIcons/Icon": {
-        "description": "The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />\nThe icon color is white by default. Add the class, \"slds-icon-text-default\", to create a text-colored fill color for utility icons. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightning Design System - Icons</a>.",
+        "description": "The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />\nThe icon color is white by default. Add the class, \"slds-icon-text-default\", to create a text-colored fill color for utility icons. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">SLDS Icons</a>.",
         "displayName": "Icon",
         "props": {
             "assistiveText": {
@@ -502,7 +554,11 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "'standard'",
+                    "computed": false
+                }
             },
             "className": {
                 "type": {
@@ -542,7 +598,7 @@
         }
     },
     "SLDSLookup": {
-        "description": "The SLDSLookup component currently supports the base variant. For more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/lookups/\">Lightening Design System - Lookups</a>.",
+        "description": "The SLDSLookup component currently supports the base variant. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/lookups/\">SLDS Lookups</a>.",
         "displayName": "SLDSLookup",
         "props": {
             "boldRegex": {
@@ -575,7 +631,11 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
+                    "computed": false
+                }
             },
             "footerRenderer": {
                 "type": {
@@ -655,7 +715,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "onBlur": {
                 "type": {
@@ -695,7 +759,7 @@
         }
     },
     "SLDSModal": {
-        "description": "The SLDS Modal component is used for modals and prompts. <br />\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">Lightning Design System - Modals</a>.",
+        "description": "The SLDSModal component is used for modals and prompts. <br />\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">SLDS Modals</a>.",
         "displayName": "SLDSModal",
         "props": {
             "align": {
@@ -713,7 +777,11 @@
                     ]
                 },
                 "required": false,
-                "description": "Vertical alignment of modal"
+                "description": "Vertical alignment of modal",
+                "defaultValue": {
+                    "value": "'center'",
+                    "computed": false
+                }
             },
             "children": {
                 "type": {
@@ -727,28 +795,44 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if directional, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons."
+                "description": "if directional, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "footer": {
                 "type": {
                     "name": "array"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
             },
             "isOpen": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "isPassive": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key"
+                "description": "if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
             },
             "prompt": {
                 "type": {
@@ -785,14 +869,22 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
             },
             "returnFocusTo": {
                 "type": {
                     "name": "node"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
             },
             "size": {
                 "type": {
@@ -816,19 +908,27 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Text underneath the title"
+                "description": "Text underneath the title",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
             },
             "title": {
                 "type": {
                     "name": "node"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
             }
         }
     },
     "SLDSNotification": {
-        "description": "The SLDS Notification component is used for alerts and toasts. For prompts, use the SLDS Modal component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">Lightning Design System - Notifications</a>.",
+        "description": "The SLDSNotification component is used for alerts and toasts. For prompts, use the SLDSModal component with prompt={true}.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">SLDS Notifications</a>.",
         "displayName": "SLDSNotification",
         "props": {
             "className": {
@@ -850,7 +950,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if isDissmissible, close button appears for users to dismiss notification."
+                "description": "if isDissmissible, close button appears for users to dismiss notification.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
             },
             "duration": {
                 "type": {
@@ -871,7 +975,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "onDismiss": {
                 "type": {
@@ -885,7 +993,11 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "styling for notification background"
+                "description": "styling for notification background",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
             },
             "texture": {
                 "type": {
@@ -939,7 +1051,7 @@
         }
     },
     "SLDSPicklistBase": {
-        "description": "",
+        "description": "The SLDSPicklist component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
         "displayName": "SLDSPicklist",
         "props": {
             "onClick": {
@@ -962,11 +1074,77 @@
                 },
                 "required": false,
                 "description": ""
+            },
+            "className": {
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "disabled": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "initialFocus": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "label": {
+                "defaultValue": {
+                    "value": "'Picklist'",
+                    "computed": false
+                }
+            },
+            "listClassName": {
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "listItemRenderer": {
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            },
+            "modal": {
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "options": {
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "placeholder": {
+                "defaultValue": {
+                    "value": "'Select an Option'",
+                    "computed": false
+                }
+            },
+            "theme": {
+                "defaultValue": {
+                    "value": "'default'",
+                    "computed": false
+                }
+            },
+            "value": {
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
             }
         }
     },
     "SLDSTooltip": {
-        "description": "The SLDS Tooltip component is a popover that provides additional information for a particular element on the page. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">Lightning Design System - Tooltips</a>.",
+        "description": "The SLDSTooltip component is variant of the Popover component. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">SLDS Popovers > Tooltips</a>.",
         "displayName": "SLDSTooltip",
         "props": {
             "align": {
@@ -974,7 +1152,11 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "alignment of the Tooltip relative to the element that triggers it"
+                "description": "alignment of the Tooltip relative to the element that triggers it",
+                "defaultValue": {
+                    "value": "\"top\"",
+                    "computed": false
+                }
             },
             "children": {
                 "type": {
@@ -988,21 +1170,33 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Content inside Tooltip"
+                "description": "Content inside Tooltip",
+                "defaultValue": {
+                    "value": "<span>Tooltip</span>",
+                    "computed": false
+                }
             },
             "hoverCloseDelay": {
                 "type": {
                     "name": "number"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "350",
+                    "computed": false
+                }
             },
             "openByDefault": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             }
         }
     }

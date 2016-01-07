@@ -59,7 +59,8 @@ const defaultProps = {
 };
 
 /**
- * The SLDSDropdown component is a variant of the Menu component in SLDS. For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightening Design System - Menus</a>.
+ * The SLDSDropdown component is a variant of the Menu component.<br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">SLDS Menus > Dropdown</a>.
  */
 class SLDSDropdown extends React.Component {
 

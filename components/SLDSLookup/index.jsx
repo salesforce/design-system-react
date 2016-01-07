@@ -70,7 +70,8 @@ const defaultProps = {
 
 
 /**
- * The SLDSLookup component currently supports the base variant. For more details, please reference <a href="http://www.lightningdesignsystem.com/components/lookups/">Lightening Design System - Lookups</a>.
+ * The SLDSLookup component currently supports the base variant. <br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/lookups/">SLDS Lookups</a>.
  */
 class SLDSLookup extends React.Component {
   constructor(props) {

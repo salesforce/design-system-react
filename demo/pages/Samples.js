@@ -8,6 +8,7 @@ const Samples =  {
   Modals: require('fs').readFileSync('demo/code-snippets/ModalExamples.js', 'utf8'),
   Notifications: require('fs').readFileSync('demo/code-snippets/NotificationExamples.js', 'utf8'),
   Picklists: require('fs').readFileSync('demo/code-snippets/PicklistExamples.js', 'utf8'),
+  CustomPicklists: require('fs').readFileSync('demo/code-snippets/PicklistCustomExamples.js', 'utf8'),
   StatefulButtons: require('fs').readFileSync('demo/code-snippets/ButtonStatefulExamples.js', 'utf8'),
   Tooltips: require('fs').readFileSync('demo/code-snippets/TooltipExamples.js', 'utf8'),
 };
