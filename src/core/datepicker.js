@@ -290,7 +290,9 @@ const DatepickerCore = Lib.merge({}, Base, {
 		let startDate = dates[0];
 		let endDate = dates[1];
 		
-		if (endDate && (!startDate || startDate.getTime() > endDate.getTime())) {
+		if (!this.getProperty('multiSelect')) {
+			endDate = undefined;
+		} else if (endDate && (!startDate || startDate.getTime() > endDate.getTime())) {
 			const tempDate = startDate;
 			startDate = endDate;
 			endDate = tempDate;

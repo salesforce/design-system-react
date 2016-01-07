@@ -72,7 +72,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_bindUIEvents () {
 		this.elements.input.on('click.slds-form-element', this._triggerCalendar.bind(this));
-		this.elements.input.on('keyup.slds-form-element', this._activateManualInput.bind(this));
+		this.elements.input.on('change.slds-form-element', this._manualDateInput.bind(this));
 
 		this.elements.dropdown.on('click.slds-datepicker', this._cancelEventProp);
 		this.elements.dropdown.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', this._backMonth.bind(this));
@@ -105,8 +105,6 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		});
 		$nextMonthButton.replaceAll(this.elements.dropdown.find('x-next-month-button')[0]);
 
-		this._renderDateRange();
-
 		return this.element;
 	},
 
@@ -115,6 +113,12 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 	
 	_onOpened () {
+		this.setState({
+			dateViewing: this.getProperty('startDate') || new Date()
+		});
+		
+		this._renderDateRange();
+		
 		this.elements.dropdown.toggleClass('slds-hidden', false);
 		if (this.getProperty('modalCalendar')) {
 			Positionable.position(this);
@@ -230,16 +234,15 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		}
 	},
 
-	_activateManualInput () {
-		this.element.off('focusout.slds-form-element', '.slds-input');
-		this.element.on('focusout.slds-form-element', '.slds-input', this._manualDateInput.bind(this));
-	},
-
 	_manualDateInput () {
-		const inputValue = this.elements.input.val();
+		const inputValue = this.elements.input.val() || '';
 		const validatedDates = this._getStartAndEndDatesFromString(inputValue);
 
 		if (validatedDates && validatedDates.startDate) {
+			this.setState({
+				dateViewing: validatedDates.startDate
+			});
+			
 			this._selectDates(validatedDates);
 		} else {
 			this._selectDates({
@@ -247,8 +250,6 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 				endDate: undefined
 			});
 		}
-
-		this.element.off('focusout.slds-form-element', '.slds-input');
 	},
 
 	_selectDate (e) {
