@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />\nUse the SLDSButton component for all variants except for stateful buttons (use the SLDSButtonStateful component). <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">SLDS Buttons</a>.",
+        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />\nFor stateful buttons, use the SLDSButtonStateful component. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">SLDS Buttons</a>.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -8,7 +8,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
             },
             "buttonSize": {
                 "type": {
@@ -35,14 +35,14 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#hint\">SLDS Buttons > Hint</a>"
             },
             "iconName": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System - Icons</a> to reference icon names."
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to reference icon names."
             },
             "iconPosition": {
                 "type": {
@@ -59,7 +59,7 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "If omitted, icon position is cenetered."
             },
             "iconSize": {
                 "type": {
@@ -117,7 +117,7 @@
                     ]
                 },
                 "required": false,
-                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">Lightning Design System - Icons</a>"
+                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">SLDS Icons</a>"
             },
             "label": {
                 "type": {
@@ -138,7 +138,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "If true, button scales 100% width on small form factors"
             },
             "tabIndex": {
                 "type": {
@@ -182,7 +182,7 @@
                     ]
                 },
                 "required": false,
-                "description": "use \"icon-inverse\" for white icons."
+                "description": "Use <code>icon-inverse</code> for white icons."
             }
         }
     },
