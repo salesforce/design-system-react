@@ -318,7 +318,7 @@
         }
     },
     "SLDSButtonGroup": {
-        "description": "",
+        "description": "The SLDSButtonGroup component wraps SLDSButton components.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">SLDS Button Groups</a>",
         "displayName": "SLDSButtonGroup",
         "props": {
             "children": {

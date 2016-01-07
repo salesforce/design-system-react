@@ -1,6 +1,6 @@
 const examples = (
   <div>
-    <SLDSButtonGroup className="slds-p-vertical--medium">
+    <SLDSButtonGroup className="slds-p-bottom--medium">
       <SLDSButton
         label="Refresh"
         variant="neutral" />
@@ -20,24 +20,26 @@ const examples = (
         variant="icon" />
     </SLDSButtonGroup>
 
-    <SLDSButtonGroup className="slds-p-vertical--medium">
-      <SLDSButton
-        assistiveText="Chart"
-        iconName="chart"
-        iconVariant="border"
-        variant="icon" />
+    <SLDSButtonGroup className="slds-p-bottom--medium">
+    <SLDSButtonStateful
+      assistiveText="View Reports"
+      iconName='chart'
+      label='Chart'
+      type="icon"
+      variant='icon' />
 
-      <SLDSButton
-        assistiveText="Filter"
-        iconName="filter"
-        iconVariant="border"
-        variant="icon" />
+    <SLDSButtonStateful
+      assistiveText="Filter Data"
+      iconName='filter'
+      label='Filter'
+      type="icon"
+      variant='icon' />
 
-      <SLDSButton
-        assistiveText="Sort"
-        iconName="sort"
-        iconVariant="more"
-        variant="icon" />
+    <SLDSButton
+      assistiveText='Sort'
+      iconName='sort'
+      iconVariant='more'
+      variant='icon' />
     </SLDSButtonGroup>
   </div>
 );

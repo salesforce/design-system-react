@@ -21,6 +21,10 @@ const propTypes = {
 };
 const defaultProps = {};
 
+/**
+ * The SLDSButtonGroup component wraps SLDSButton components.<br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/button-groups">SLDS Button Groups</a>
+ */
 class SLDSButtonGroup extends React.Component {
   constructor(props) {
     super(props);
