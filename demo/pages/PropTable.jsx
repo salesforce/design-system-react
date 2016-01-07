@@ -41,7 +41,7 @@ class PropTable extends React.Component {
       }
 
       renderedEnumValues.push(
-        <code key={`${i}val`}>{enumValue}</code>
+        <code key={`${i}val`}>{enumValue.value}</code>
       );
     });
 
@@ -70,7 +70,7 @@ class PropTable extends React.Component {
       let row = (
         <tr key={prop}>
           <td>{prop}</td>
-          <td className="mw-col-m">{type.name} {JSON.stringify(type.value)}</td>
+          <td className="mw-col-m">{type.name ? type.name : type.props.children}</td>
           <td>{docs[prop].defaultValue ? docs[prop].defaultValue.value : ""}</td>
           <td className="mw-col-l">
             <span dangerouslySetInnerHTML={this.getMarkup(docs[prop].description)} />
