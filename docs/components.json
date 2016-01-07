@@ -1059,24 +1059,9 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "classes applied to component",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "classes applied to menu list of component"
             },
             "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "initialFocus": {
                 "type": {
                     "name": "bool"
                 },
@@ -1095,17 +1080,6 @@
                 "description": "",
                 "defaultValue": {
                     "value": "'Picklist'",
-                    "computed": false
-                }
-            },
-            "listClassName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "classes applied to menu list of component",
-                "defaultValue": {
-                    "value": "''",
                     "computed": false
                 }
             },

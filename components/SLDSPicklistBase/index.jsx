@@ -17,16 +17,11 @@ import {Icon} from "../SLDSIcons";
 const displayName = "SLDSPicklist";
 const propTypes = {
   /**
-   * classes applied to component
+   * classes applied to menu list of component
    */
   className: React.PropTypes.string,
   disabled: React.PropTypes.bool,
-  initialFocus: React.PropTypes.bool,
   label: React.PropTypes.string,
-  /**
-   * classes applied to menu list of component
-   */
-  listClassName: React.PropTypes.string,
   /**
    * custom element that overrides the default Menu Item component
    */
@@ -52,11 +47,8 @@ const propTypes = {
   value: React.PropTypes.node,
 };
 const defaultProps = {
-  className: '',
   disabled: false,
-  initialFocus: false,
   label: 'Picklist',
-  listClassName: '',
   listItemRenderer: null,
   modal: false,
   options: [],
@@ -89,10 +81,7 @@ class SLDSPicklist extends React.Component {
       isMounted: true,
       triggerId: id,
     });
-
-    if(this.props.initialFocus){
-      this.setFocus();
-    }
+    this.setFocus();
   }
 
   componentDidUpdate( prevProps, prevState) {
@@ -231,7 +220,7 @@ class SLDSPicklist extends React.Component {
 
   getPopoverContent() {
     return <List
-            className={this.props.listClassName}
+            className={this.props.className}
             highlightedIndex={this.state.highlightedIndex}
             itemRenderer={this.getListItemRenderer()}
             label={this.props.label}
