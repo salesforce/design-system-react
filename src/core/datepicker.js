@@ -189,17 +189,42 @@ const DatepickerCore = Lib.merge({}, Base, {
 	_getMonth (date) {
 		return (date || this.getState('dateViewing')).getMonth();
 	},
-	
-	_getPreviousMonth () {
-		return new Date(this._getYear(), this._getMonth(), 0);
-	},
-	
-	_getNextMonth () {
-		return new Date(this._getYear(), this._getMonth() + 1, 1);
-	},
 
 	_getMonthName (date) {
 		return this._monthNames[this._getMonth(date)];
+	},
+	
+	_jumpToDate (date) {
+		const range = this._getRange();
+		let dateViewing = date;
+		
+		if (dateViewing.getTime() < range[0]) {
+			dateViewing = new Date(range[0]);
+		} else if (dateViewing.getTime() > range[1]) {
+			dateViewing = new Date(range[1]);
+		}
+		
+		if (this._isDateInRange(dateViewing, range)) {
+			this.setState({ dateViewing } );
+			return true;
+		}
+	},
+	
+	_jumpToYear (year) {
+		if (year !== this._getYear()) {
+			const date = new Date(this.getState('dateViewing'));
+			date.setYear(year);
+			
+			return this._jumpToDate(date);
+		}
+	},
+	
+	_jumpToNextMonth () {
+		return this._jumpToDate(new Date(this._getYear(), this._getMonth() + 1, 1));
+	},
+	
+	_jumpToPreviousMonth () {
+		return this._jumpToDate(new Date(this._getYear(), this._getMonth(), 0));
 	},
 
 	_getYearRangeData () {
