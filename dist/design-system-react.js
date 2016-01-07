@@ -270,9 +270,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
-	var defaultProps = {
-	  iconSize: "medium"
-	};
+	var defaultProps = {};
 	
 	/**
 	 * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
@@ -673,7 +671,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var viewBox;
 	    switch (category) {
 	      case 'utility':
-	        data = _sldsIconsUtility2['default'][name.toLowerCase()];
+	        data = _sldsIconsUtility2['default'][name];
+	
 	        viewBox = _sldsIconsUtility2['default'].viewBox;
 	        break;
 	      case 'action':
@@ -3287,9 +3286,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
-	var defaultProps = {
-	  iconSize: "medium"
-	};
+	var defaultProps = {};
 	
 	var SLDSButtonStateful = (function (_React$Component) {
 	  _inherits(SLDSButtonStateful, _React$Component);
@@ -7888,7 +7885,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	        assistiveText: "Press delete to remove",
 	        className: "slds-pill__remove slds-button--icon-bare",
 	        iconName: "close",
-	        iconSize: "medium",
 	        onClick: this.handleDeleteSelected.bind(this),
 	        ref: "clearSelectedItemButton",
 	        tabIndex: "-1",

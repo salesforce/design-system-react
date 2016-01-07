@@ -374,7 +374,6 @@ class SLDSLookup extends React.Component {
         assistiveText="Press delete to remove"
         className="slds-pill__remove slds-button--icon-bare"
         iconName="close"
-        iconSize="medium"
         onClick={this.handleDeleteSelected.bind(this)}
         ref="clearSelectedItemButton"
         tabIndex="-1"

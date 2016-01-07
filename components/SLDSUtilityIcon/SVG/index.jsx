@@ -89,7 +89,8 @@ module.exports = React.createClass({
     var viewBox;
     switch (category) {
       case 'utility':
-        data = SLDS_ICONS_UTILITY[name.toLowerCase()];
+        data = SLDS_ICONS_UTILITY[name];
+
         viewBox = SLDS_ICONS_UTILITY.viewBox;
         break;
       case 'action':

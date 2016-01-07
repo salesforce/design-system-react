@@ -44,9 +44,7 @@ const propTypes = {
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
-const defaultProps = {
-  iconSize: "medium"
-};
+const defaultProps = {};
 
 class SLDSButtonStateful extends React.Component {
 
