@@ -1054,6 +1054,83 @@
         "description": "The SLDSPicklist component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
         "displayName": "SLDSPicklist",
         "props": {
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "classes applied to component",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "initialFocus": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "'Picklist'",
+                    "computed": false
+                }
+            },
+            "listClassName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "classes applied to menu list of component",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "listItemRenderer": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "custom element that overrides the default Menu Item component",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "if true, dropdown renders specifically to work inside a modal",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
             "onClick": {
                 "type": {
                     "name": "func"
@@ -1073,69 +1150,36 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
-            },
-            "className": {
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
-            },
-            "disabled": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "initialFocus": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "label": {
-                "defaultValue": {
-                    "value": "'Picklist'",
-                    "computed": false
-                }
-            },
-            "listClassName": {
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
-            },
-            "listItemRenderer": {
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
-            },
-            "modal": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": "callback function for when item is hovered"
             },
             "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "menu item data",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
                 }
             },
             "placeholder": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
                 "defaultValue": {
                     "value": "'Select an Option'",
                     "computed": false
                 }
             },
-            "theme": {
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
-            },
             "value": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "current selected item",
                 "defaultValue": {
                     "value": "null",
                     "computed": false

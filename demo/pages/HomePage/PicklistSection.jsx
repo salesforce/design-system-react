@@ -39,7 +39,7 @@ class PicklistSection extends React.Component {
 
         <div>
           <CodeMirror codeText={Samples.Picklists} />
-          <PropTable component="SLDSPicklist" />
+          <PropTable component="SLDSPicklistBase" />
         </div>
       </div>
     );

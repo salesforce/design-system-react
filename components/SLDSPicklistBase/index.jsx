@@ -16,18 +16,39 @@ import {Icon} from "../SLDSIcons";
 
 const displayName = "SLDSPicklist";
 const propTypes = {
+  /**
+   * classes applied to component
+   */
   className: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   initialFocus: React.PropTypes.bool,
   label: React.PropTypes.string,
+  /**
+   * classes applied to menu list of component
+   */
   listClassName: React.PropTypes.string,
+  /**
+   * custom element that overrides the default Menu Item component
+   */
   listItemRenderer: React.PropTypes.node,
+  /**
+   * if true, dropdown renders specifically to work inside a modal
+   */
   modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func.isRequired,
+  /**
+   * callback function for when item is hovered
+   */
   onUpdateHighlighted: React.PropTypes.func,
+  /**
+   * menu item data
+   */
   options: React.PropTypes.array,
   placeholder: React.PropTypes.string,
+  /**
+   * current selected item
+   */
   value: React.PropTypes.node,
 };
 const defaultProps = {
