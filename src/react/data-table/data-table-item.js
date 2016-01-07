@@ -1,4 +1,4 @@
-// DATATABLE ITEM - REACT FACADE
+// DATA TABLE ITEM - REACT FACADE
 
 // Framework specific
 import React from 'react';
