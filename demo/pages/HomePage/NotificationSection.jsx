@@ -37,10 +37,6 @@ class NotificationSection extends React.Component {
         <h3 className='slds-text-heading--medium slds-truncate'>
           Notification
         </h3>
-        <ul className="slds-p-vertical--medium">
-          <li> <h4>* All notifications are fixed and centered at the top of the screen.</h4> </li>
-          <li> <h4>* Toasts default duration is five seconds and will then disappear.</h4> </li>
-        </ul>
         {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
         <div className="demo-only">
