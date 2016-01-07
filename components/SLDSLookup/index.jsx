@@ -88,7 +88,7 @@ class SLDSLookup extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let lookup = this.props.type + "Lookup";
+    let lookup = this.inputRefName()
     if(!isNaN(parseInt(prevState.selectedIndex)) && isNaN(parseInt(this.state.selectedIndex))){
       if(this.refs[lookup]){
         React.findDOMNode(this.refs[lookup]).focus();
@@ -348,7 +348,7 @@ class SLDSLookup extends React.Component {
   }
 
   renderModalMenu() {
-    let targetElem = this.props.type + "Lookup";
+    let targetElem = this.inputRefName();
     if(this.state.isOpen){
       return <SLDSPopover
       className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
@@ -384,6 +384,14 @@ class SLDSLookup extends React.Component {
     )
   }
 
+  inputRefName() {
+    return `${this.props.type}Lookup`;
+  }
+
+  focusInput() {
+    this.refs[this.inputRefName()].focus();
+  }
+
   render() {
     const inputClasses = {
       "slds-input": true,
@@ -410,7 +418,7 @@ class SLDSLookup extends React.Component {
     };
 
     const inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: "5px"};
-    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.props.type + "Lookup"}>{this.props.label}</label>:null;
+    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()}>{this.props.label}</label>:null;
 
     return (
       <div className={cx(componentClasses)} data-select="single" data-scope="single" data-typeahead="true">
@@ -420,20 +428,20 @@ class SLDSLookup extends React.Component {
             <div className={cx(pillContainerClasses)}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             </div>
-            <InputIcon name="search" />
+            <InputIcon name="search" onClick={this.focusInput.bind(this)} />
             <input
               aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:""}
               aria-autocomplete="list"
               aria-expanded={this.state.isOpen}
               aria-haspopup="true"
               className={cx(inputClasses)}
-              id={this.props.type + "Lookup"}
+              id={this.inputRefName()}
               onBlur={this.handleBlur.bind(this)}
               onChange={this.handleChange.bind(this)}
               onClick={this.handleClick.bind(this)}
               onFocus={this.handleFocus.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)}
-              ref={this.props.type + "Lookup"}
+              ref={this.inputRefName()}
               role="combobox"
               type="text"
               value={this.state.searchTerm}

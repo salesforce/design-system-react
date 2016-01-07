@@ -48,7 +48,7 @@ class LookupExample extends React.Component {
           iconName='account'
           headerRenderer={SLDSLookup.DefaultHeader}
           footerRenderer={SLDSLookup.DefaultFooter}
-          onChange={this.onChange}
+          onChange={this.onChange.bind(this)}
           onItemSelect={this.selectItem}
           hasError={false}
         />

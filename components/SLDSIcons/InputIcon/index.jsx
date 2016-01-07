@@ -30,7 +30,7 @@ class InputIcon extends React.Component {
 
   render() {
     const className  = 'slds-input__icon slds-icon-text-default';
-    return <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} />;
+    return <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} onClick={this.props.onClick} />;
   }
 }
 

@@ -49,6 +49,10 @@ class Menu extends React.Component {
     return this.props.filterWith(this.props.searchTerm, item);
   }
 
+  filteredItems() {
+    return this.props.items.filter(this.filter, this)
+  }
+
   //Scroll menu up/down when using mouse keys
   handleItemFocus(itemIndex, itemHeight){
     if (this.refs.list) {
@@ -86,7 +90,7 @@ class Menu extends React.Component {
   }
 
   renderItems(){
-    return this.props.items.filter(this.filter, this).map((c, i) => {
+    return this.filteredItems().map((c, i) => {
       //isActive means it is aria-activedescendant
       const id = c.id;
       let isActive = false;
@@ -130,7 +134,7 @@ class Menu extends React.Component {
   renderContent(){
     if (this.props.errors.length > 0)
       return this.renderErrors()
-    else if (this.props.items.length === 0)
+    else if (this.filteredItems().length === 0)
       return (
         <li className="slds-lookup__message" aria-live="polite">
           <span>{this.props.emptyMessage}</span>
