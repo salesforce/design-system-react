@@ -338,22 +338,14 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"\"",
-                    "computed": false
-                }
+                "description": ""
             },
             "disabled": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": ""
             },
             "horizontalAlign": {
                 "type": {
@@ -387,17 +379,6 @@
                     "computed": false
                 }
             },
-            "initialFocus": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
             "label": {
                 "type": {
                     "name": "string"
@@ -414,11 +395,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"\"",
-                    "computed": false
-                }
+                "description": ""
             },
             "listItemRenderer": {
                 "type": {
@@ -432,11 +409,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if modal, dropdown renders specifically to work inside a modal",
-                "defaultValue": {
-                    "value": "true",
-                    "computed": false
-                }
+                "description": "If true, component renders specifically to work inside Modal"
             },
             "onClick": {
                 "type": {
@@ -450,13 +423,6 @@
                     "name": "func"
                 },
                 "required": true,
-                "description": ""
-            },
-            "onUpdateHighlighted": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
                 "description": ""
             },
             "openOn": {
@@ -485,20 +451,9 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "",
+                "description": "Menu item data",
                 "defaultValue": {
                     "value": "[]",
-                    "computed": false
-                }
-            },
-            "placeholder": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"Select an Option\"",
                     "computed": false
                 }
             },
@@ -507,7 +462,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "",
+                "description": "Current selected menu item",
                 "defaultValue": {
                     "value": "null",
                     "computed": false
@@ -518,7 +473,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "determines variant of button that triggers modal",
+                "description": "Determines variant of SLDSButton that triggers dropdown",
                 "defaultValue": {
                     "value": "\"neutral\"",
                     "computed": false
