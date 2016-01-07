@@ -38,16 +38,14 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		Positionable.setElement(this, Positionable.attachPositionedElementToBody());
 		
 		this.setState({
-			inputValue: this._formatSelectedDates()
+			inputValue: this._formatSelectedDates(this.props.startDate, this.props.endDate)
 		});
 	},
 	
 	componentWillReceiveProps (nextProps) {
-		if (nextProps.startDate || nextProps.endDate) {
-			this.setState({
-				inputValue: this._formatSelectedDates(nextProps.startDate, nextProps.endDate)
-			});
-		}
+		this.setState({
+			inputValue: this._formatSelectedDates(nextProps.startDate, nextProps.endDate)
+		});
 	},
 
 	render () {

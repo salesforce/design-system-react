@@ -25,8 +25,8 @@ export default React.createClass({
 
 	handleDateSelected (startDate, endDate) {
 		this.setState({
-			startDate,
-			endDate
+			startDate: startDate,
+			endDate: endDate
 		});
 	}
 });

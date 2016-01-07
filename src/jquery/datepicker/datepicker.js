@@ -288,7 +288,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	_selectDates (dates) {
 		this.setProperties(dates);
 		
-		this.elements.input.val(this._formatSelectedDates());
+		this.elements.input.val(this._formatSelectedDates(this.getProperty('startDate'), this.getProperty('endDate')));
 		this._renderDateRange();
 
 		this.trigger('changed', dates.startDate, dates.endDate);
