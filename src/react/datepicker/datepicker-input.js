@@ -15,6 +15,20 @@ const DateInput = React.createClass({
 		ariaLabel: React.PropTypes.string,
 		onChange: React.PropTypes.func.isRequired
 	},
+	
+	componentWillMount () {
+		this.setState({
+			selectedDate: this.props.selectedDate
+		});
+	},
+	
+	componentWillReceiveProps (nextProps) {
+		if (nextProps.selectedDate) {
+			this.setState({
+				selectedDate: nextProps.selectedDate
+			});
+		}
+	},
 
 	render () {
 		return (
@@ -22,15 +36,29 @@ const DateInput = React.createClass({
 				<div className="slds-form-element__control">
 					<div className="slds-input-has-icon slds-input-has-icon--right">
 						<Svg className="slds-input__icon slds-icon-text-default" icon="utility.event" />
-						<input className="slds-input" type="text" placeholder={this.props.strings.DATE_FORMAT} aria-label={this.props.ariaLabel} value={this.props.selectedDate} onChange={this.handleChange} />
+						<input className="slds-input" type="text" placeholder={this.props.strings.DATE_FORMAT} aria-label={this.props.ariaLabel} value={this.state.selectedDate} onChange={this.handleChange} onKeyPress={this.handleKeyPress} onBlur={this.callOnChange} />
 					</div>
 				</div>
 			</div>
 		);
 	},
 	
-	handleChange: function (event) {
-		this.props.onChange(event.target.value);
+	handleChange (event) {
+		this.setState({
+			selectedDate: event.target.value
+		});
+	},
+	
+	handleKeyPress (e) {
+		if (e.key === 'Enter') {
+			this.callOnChange();
+		}
+	},
+	
+	callOnChange () {
+		if (this.state.selectedDate !== this.props.selectedDate) {
+			this.props.onChange(this.state.selectedDate);
+		}
 	}
 });
 

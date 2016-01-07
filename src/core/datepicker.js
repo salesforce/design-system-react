@@ -305,7 +305,7 @@ const DatepickerCore = Lib.merge({}, Base, {
 	},
 
 	_getStartAndEndDatesFromString (string) {
-		const isDateRange = (string.length >= 21 && string.length <= 23);
+		const isDateRange = (string.length >= 19 && string.length <= 23);
 		let dates;
 		
 		if (isDateRange) {

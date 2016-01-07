@@ -242,7 +242,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 			this.setState({
 				dateViewing: validatedDates.startDate
 			});
-			
+
 			this._selectDates(validatedDates);
 		} else {
 			this._selectDates({

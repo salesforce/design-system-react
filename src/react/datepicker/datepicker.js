@@ -120,9 +120,20 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 	},
 	
 	_manualDateInput (inputValue) {
-		this.setState({
-			inputValue
-		});
+		const validatedDates = this._getStartAndEndDatesFromString(inputValue);
+
+		if (validatedDates && validatedDates.startDate) {
+			this.setState({
+				dateViewing: validatedDates.startDate
+			});
+
+			this._selectDates(validatedDates);
+		} else {
+			this._selectDates({
+				startDate: undefined,
+				endDate: undefined
+			});
+		}
 	},
 
 	_selectDate (dayData) {
