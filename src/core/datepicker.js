@@ -182,16 +182,24 @@ const DatepickerCore = Lib.merge({}, Base, {
 		return MonthData;
 	},
 
+	_getYear (date) {
+		return (date || this.getState('dateViewing')).getFullYear();
+	},
+
 	_getMonth (date) {
 		return (date || this.getState('dateViewing')).getMonth();
+	},
+	
+	_getPreviousMonth () {
+		return new Date(this._getYear(), this._getMonth(), 0);
+	},
+	
+	_getNextMonth () {
+		return new Date(this._getYear(), this._getMonth() + 1, 1);
 	},
 
 	_getMonthName (date) {
 		return this._monthNames[this._getMonth(date)];
-	},
-
-	_getYear (date) {
-		return (date || this.getState('dateViewing')).getFullYear();
 	},
 
 	_getYearRangeData () {

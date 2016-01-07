@@ -222,12 +222,10 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_backMonth (e) {
-		const dateViewing = new Date(this.getState('dateViewing'));
-
 		e.stopPropagation();
-
-		dateViewing.setMonth(dateViewing.getMonth() - 1);
-
+		
+		const dateViewing = this._getPreviousMonth();
+		
 		if (this._isDateInRange(dateViewing)) {
 			this.setState({ dateViewing } );
 			this._renderDateRange();
@@ -235,12 +233,10 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	_forwardMonth (e) {
-		const dateViewing = new Date(this.getState('dateViewing'));
-
 		e.stopPropagation();
-
-		dateViewing.setMonth(dateViewing.getMonth() + 1);
 		
+		const dateViewing = this._getNextMonth();
+
 		if (this._isDateInRange(dateViewing)) {
 			this.setState({ dateViewing } );
 			this._renderDateRange();
