@@ -23,24 +23,27 @@ const propTypes = {
    */
   className: React.PropTypes.string,
   /**
-   * Message for notification
+   * Message for Notification
    */
   content: React.PropTypes.node,
   /**
-   * if isDissmissible, close button appears for users to dismiss notification.
+   * If true, close button appears for users to dismiss notification.
    */
   isDismissible: React.PropTypes.bool,
   /**
-   * if duration exists, the notification will be visible for that amount of time.
+   * If duration exists, the notification will disappear after that amount of time.
    */
   duration: React.PropTypes.number,
   icon: React.PropTypes.string,
   isOpen: React.PropTypes.bool,
   onDismiss: React.PropTypes.func,
   /**
-   * styling for notification background
+   * Upon dismissing Notification, return keyboard focus to this DOM element
    */
   returnFocusTo: React.PropTypes.node,
+  /**
+   * Styling for notification background
+   */
   texture: React.PropTypes.bool,
   theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
   variant: React.PropTypes.oneOf(["alert", "toast"]),
@@ -50,6 +53,7 @@ const defaultProps = {
   isDismissible: true,
   isOpen: false,
   returnFocusTo: null,
+  texture: false,
 };
 
 /**

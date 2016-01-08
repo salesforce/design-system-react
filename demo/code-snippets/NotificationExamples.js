@@ -76,9 +76,9 @@ class NotificationExample extends React.Component {
   }
 
   render() {
-    let successMsg = ["Your new contact ", <a href="#" key="0123">Sara Smith</a>, " was successfully created."];
-    let errorMsg = "There was a problem updating the record.";
-    let warnMsg = "Oops, you've missed some required form inputs.";
+    const successMsg = ["Your new contact ", <a href="#" key="0123">Sara Smith</a>, " was successfully created."];
+    const errorMsg = "There was a problem updating the record.";
+    const warnMsg = "Oops, you've missed some required form inputs.";
 
     return (
       <div className="slds-p-vertical--medium demo">

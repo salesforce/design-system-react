@@ -908,14 +908,14 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Message for notification"
+                "description": "Message for Notification"
             },
             "isDismissible": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if isDissmissible, close button appears for users to dismiss notification.",
+                "description": "If true, close button appears for users to dismiss notification.",
                 "defaultValue": {
                     "value": "true",
                     "computed": false
@@ -926,7 +926,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "if duration exists, the notification will be visible for that amount of time."
+                "description": "If duration exists, the notification will disappear after that amount of time."
             },
             "icon": {
                 "type": {
@@ -958,7 +958,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "styling for notification background",
+                "description": "Upon dismissing Notification, return keyboard focus to this DOM element",
                 "defaultValue": {
                     "value": "null",
                     "computed": false
@@ -969,7 +969,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "Styling for notification background",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "theme": {
                 "type": {

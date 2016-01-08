@@ -40,7 +40,7 @@ class DropdownExample extends React.Component {
     return (
       <div>
         <SLDSDropdown
-          label="Contacts Hover"
+          label="Dropdown Hover"
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           onSelect={this.handleOnSelect}
@@ -48,7 +48,7 @@ class DropdownExample extends React.Component {
           value='C0' />
 
         <SLDSDropdown
-          label="Contacts Click"
+          label="Dropdown Click"
           onClick={this.handleOnClick}
           onSelect={this.handleOnSelect}
           openOn="click"
