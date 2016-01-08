@@ -572,7 +572,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "message for when no search results found"
+                "description": "Custom message for when no search results found"
             },
             "errors": {
                 "type": {
@@ -600,28 +600,28 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "react component for lookup footer"
+                "description": "Custom component for Lookup footer"
             },
             "hasError": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "If true, input field indicates error state"
             },
             "headerRenderer": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "react component for lookup header"
+                "description": "Custom component for Lookup header"
             },
             "iconCategory": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to view categories"
             },
             "iconClasses": {
                 "type": {
@@ -635,14 +635,14 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Name of icon. Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to view icon names."
             },
             "items": {
                 "type": {
                     "name": "array"
                 },
                 "required": false,
-                "description": ""
+                "description": "Lookup items data"
             },
             "label": {
                 "type": {
@@ -656,7 +656,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "react component that overrides the default Menu Item component"
+                "description": "Custom component that overrides the default Lookup Item component"
             },
             "messages": {
                 "type": {
@@ -673,11 +673,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": "If true, component renders specifically to work inside Modal"
             },
             "onBlur": {
                 "type": {
@@ -707,12 +703,23 @@
                 "required": false,
                 "description": ""
             },
+            "searchTerm": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"\"",
+                    "computed": false
+                }
+            },
             "type": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "salesforce object type"
+                "description": "Salesforce object type for Lookup items"
             }
         }
     },
