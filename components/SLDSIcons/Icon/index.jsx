@@ -29,7 +29,7 @@ const propTypes = {
   /**
    * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
    */
-  name: React.PropTypes.string,
+  name: React.PropTypes.string.isRequired,
   /**
    * If omitted, icon size is medium.
    */
