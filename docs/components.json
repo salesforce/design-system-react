@@ -525,7 +525,7 @@
                 "type": {
                     "name": "string"
                 },
-                "required": false,
+                "required": true,
                 "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to reference icon names."
             },
             "size": {
