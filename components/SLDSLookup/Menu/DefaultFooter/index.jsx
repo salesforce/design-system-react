@@ -39,7 +39,7 @@ class DefaultFooter extends React.Component {
       <div className="slds-lookup__item" onClick={this.handleClick.bind(this)} onMouseDown={this.handleMouseDown.bind(this)}>
         <button id='newItem' tabIndex="-1" className={className}>
         <Icon name='add' category="utility" size="x-small" className="slds-icon-text-default" />
-        {this.props.newItemLabel}
+        {this.props.type ? "Add " + this.props.type : this.props.newItemLabel}
         </button>
       </div>
     )

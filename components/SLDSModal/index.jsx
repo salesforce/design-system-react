@@ -182,7 +182,7 @@ class SLDSModal extends React.Component {
     };
 
     if (hasFooter) {
-      footer = (<div className={classNames(footerClass)}>{this.props.footer}</div>);
+      footer = (<div className={classNames(footerClass)} onClick={this.handleModalClick.bind(this)}>{this.props.footer}</div>);
     }
     return footer;
   }
@@ -211,7 +211,7 @@ class SLDSModal extends React.Component {
     }
 
     return (
-      <div className={classNames(headerClass)} style={{position: "relative"}}>
+      <div className={classNames(headerClass)} style={{position: "relative"}} onClick={this.handleModalClick.bind(this)}>
         <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal.bind(this)} />
         {headerContent}
       </div>
@@ -231,13 +231,11 @@ class SLDSModal extends React.Component {
       <div>
         <div aria-hidden="false" role="dialog" className={classNames(modalClass)} onClick={this.closeModal.bind(this)}>
           <div className="slds-modal__container" style={modalStyle}>
-            <div onClick={this.handleModalClick.bind(this)}>
-              {this.headerComponent()}
-              <div className="slds-modal__content" style={contentStyle}>
-                {this.props.children}
-              </div>
-              {this.footerComponent()}
-            </div>
+           {this.headerComponent()}
+           <div className="slds-modal__content" style={contentStyle} onClick={this.handleModalClick.bind(this)}>
+             {this.props.children}
+           </div>
+           {this.footerComponent()}
           </div>
         </div>
         <div className="slds-backdrop slds-backdrop--open"></div>

@@ -24,37 +24,53 @@ const displayName = "SLDSLookup";
 const propTypes = {
   boldRegex: React.PropTypes.instanceOf(RegExp),
   /**
-   * message for when no search results found
+   * Custom message for when no search results found
    */
   emptyMessage: React.PropTypes.string,
   errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func,
   /**
-   * react component for lookup footer
+   * Custom component for Lookup footer
    */
   footerRenderer: React.PropTypes.func,
+  /**
+   * If true, input field indicates error state
+   */
   hasError: React.PropTypes.bool,
   /**
-   * react component for lookup header
+   * Custom component for Lookup header
    */
   headerRenderer: React.PropTypes.func,
+  /**
+   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view categories
+   */
   iconCategory: React.PropTypes.string,
   iconClasses: React.PropTypes.string,
+  /**
+   * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view icon names.
+   */
   iconName: React.PropTypes.string,
+  /**
+   * Lookup items data
+   */
   items: React.PropTypes.array,
   label: React.PropTypes.string,
   /**
-   * react component that overrides the default Menu Item component
+   * Custom component that overrides the default Lookup Item component
    */
   listItemLabelRenderer: React.PropTypes.func,
   messages: React.PropTypes.arrayOf(React.PropTypes.string),
+  /**
+   * If true, component renders specifically to work inside Modal
+   */
   modal: React.PropTypes.bool,
   onBlur: React.PropTypes.func,
   onChange: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
   onItemUnselect: React.PropTypes.func,
+  searchTerm: React.PropTypes.string,
   /**
-   * salesforce object type
+   * Salesforce object type for Lookup items
    */
   type: React.PropTypes.string,
 };
@@ -66,7 +82,7 @@ const defaultFilter = (term, item) => {
 
 const defaultProps = {
   filterWith: defaultFilter,
-  modal: false,
+  searchTerm: "",
 };
 
 
@@ -83,7 +99,7 @@ class SLDSLookup extends React.Component {
       items: [],
       isOpen: false,
       listLength: this.props.items.length,
-      searchTerm: "",
+      searchTerm: this.props.searchTerm,
       selectedIndex: null,
     };
   }
@@ -307,6 +323,7 @@ class SLDSLookup extends React.Component {
         focusIndex={this.state.focusIndex}
         listLength={this.state.listLength}
         onClose={this.handleClose.bind(this)}
+        type={this.props.type}
       />;
     }
   }
@@ -372,14 +389,14 @@ class SLDSLookup extends React.Component {
           </span>
         </span>
         <SLDSButton
-        assistiveText="Press delete to remove"
-        className="slds-pill__remove slds-button--icon-bare"
-        iconName="close"
-        onClick={this.handleDeleteSelected.bind(this)}
-        ref="clearSelectedItemButton"
-        tabIndex="-1"
-        variant="icon"
-        />
+          assistiveText="Press delete to remove"
+          className="slds-pill__remove slds-button--icon-bare"
+          iconName="close"
+          onClick={this.handleDeleteSelected.bind(this)}
+          ref="clearSelectedItemButton"
+          tabIndex="-1"
+          variant="icon"
+          />
       </a>
     )
   }
