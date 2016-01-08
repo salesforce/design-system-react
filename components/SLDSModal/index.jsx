@@ -9,6 +9,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import SLDSButton from '../SLDSButton';
 import classNames from 'classnames';
 import Modal from 'react-modal';
@@ -110,9 +112,9 @@ class SLDSModal extends React.Component {
       if(this.state.isClosing){
         //console.log('CLOSING: ');
         if(this.state.isMounted){
-          const el = React.findDOMNode(this).parentNode;
+          const el = ReactDOM.findDOMNode(this).parentNode;
           if(el && el.getAttribute('data-slds-modal')){
-            React.unmountComponentAtNode(el);
+            ReactDOM.unmountComponentAtNode(el);
             document.body.removeChild(el);
           }
         }

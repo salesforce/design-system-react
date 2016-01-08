@@ -8,6 +8,8 @@
    */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import Item from './Item';
 
 const displayName = 'SLDSLookup-Menu';
@@ -40,7 +42,7 @@ class Menu extends React.Component {
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
   componentDidUpdate(prevProps, prevState){
     // make an array of the children of the list but only count the actual items (ignore errors/messages)
-    let list = [].slice.call(React.findDOMNode(this.refs.list).children)
+    let list = [].slice.call(ReactDOM.findDOMNode(this.refs.list).children)
       .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
     this.props.getListLength(list);
   }
@@ -56,7 +58,7 @@ class Menu extends React.Component {
   //Scroll menu up/down when using mouse keys
   handleItemFocus(itemIndex, itemHeight){
     if (this.refs.list) {
-      React.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
+      ReactDOM.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
     }
   }
 

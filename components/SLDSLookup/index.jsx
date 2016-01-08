@@ -8,6 +8,7 @@
    */
 
 import React from "react";
+import ReactDOM from "react-dom";
 import Menu from "./Menu";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
@@ -107,13 +108,13 @@ class SLDSLookup extends React.Component {
     let lookup = this.inputRefName()
     if(!isNaN(parseInt(prevState.selectedIndex)) && isNaN(parseInt(this.state.selectedIndex))){
       if(this.refs[lookup]){
-        React.findDOMNode(this.refs[lookup]).focus();
+        ReactDOM.findDOMNode(this.refs[lookup]).focus();
       }
     }
     else if(isNaN(parseInt(prevState.selectedIndex)) && !isNaN(parseInt(this.state.selectedIndex))){
       let selectedItem = "pill-" + this.state.selectedIndex;
       if(this.refs[selectedItem]){
-        React.findDOMNode(this.refs[selectedItem]).focus();
+        ReactDOM.findDOMNode(this.refs[selectedItem]).focus();
       }
     }
   }
@@ -269,11 +270,11 @@ class SLDSLookup extends React.Component {
         EventUtil.trapImmediate(event);
         //If the focus is on the first fixed Action Item in Menu, click it
         if(this.refs.header && this.state.focusIndex === 0){
-          React.findDOMNode(this.refs.header).click();
+          ReactDOM.findDOMNode(this.refs.header).click();
         }
         //If the focus is on the last fixed Action Item in Menu, click it
         else if(this.refs.footer && this.state.focusIndex === (this.state.listLength + 1)){
-          React.findDOMNode(this.refs.footer).click();
+          ReactDOM.findDOMNode(this.refs.footer).click();
         }
         //If not, then select menu item
         else{

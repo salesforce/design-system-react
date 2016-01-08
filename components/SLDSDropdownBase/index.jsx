@@ -9,6 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from "react";
+import ReactDOM from "react-dom";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
 import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
@@ -103,7 +104,7 @@ class SLDSDropdown extends React.Component {
     } else if(!this.state.isFocused && prevState.isFocused){
       if (this.refs.list) {
         if (this.state.isMounted && this.refs.list) {
-          if (React.findDOMNode(this.refs.list).contains(document.activeElement)) {
+          if (ReactDOM.findDOMNode(this.refs.list).contains(document.activeElement)) {
             return;
           }
           this.setState({ isOpen: false });
@@ -202,11 +203,11 @@ class SLDSDropdown extends React.Component {
   }
 
   setFocus(){
-    if(this.state.isMounted) React.findDOMNode(this.getButtonNode()).focus();
+    if(this.state.isMounted) ReactDOM.findDOMNode(this.getButtonNode()).focus();
   }
 
   getButtonNode(){
-    return React.findDOMNode(this.refs.button);
+    return ReactDOM.findDOMNode(this.refs.button);
   }
 
   handleKeyDown(event){
