@@ -6,7 +6,7 @@ import Button from './button/button';
 import ButtonGroup from './button-group/button-group';
 import Checkbox from './checkbox/checkbox';
 import Combobox from './combobox/combobox';
-import Datatable from './data-table/data-table';
+import DataTable from './data-table/data-table';
 import Datepicker from './datepicker/datepicker';
 import Dropdown from './dropdown/dropdown';
 import Modal from './modal/modal';
@@ -27,7 +27,7 @@ module.exports = {
 	ButtonGroup,
 	Checkbox,
 	Combobox,
-	Datatable,
+	DataTable,
 	Datepicker,
 	Dropdown,
 	Modal,
