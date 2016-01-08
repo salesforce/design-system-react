@@ -23,7 +23,7 @@ import radio from './radio/examples/site-example';
 import spinner from './spinner/examples/site-example';
 import tooltip from './tooltip/examples/site-example';
 import tree from './tree/examples/site-example';
-import datatable from './data-table/examples/site-example';
+import dataTable from './data-table/examples/site-example';
 
 ReactDOM.render(React.createElement(badge), document.querySelector('.react .badge .site-example'));
 ReactDOM.render(React.createElement(button), document.querySelector('#button-react-control'));
@@ -42,4 +42,4 @@ ReactDOM.render(React.createElement(radio), document.querySelector('#radio-react
 ReactDOM.render(React.createElement(spinner), document.querySelector('#spinner-react-control'));
 ReactDOM.render(React.createElement(tree), document.querySelector('#tree-react-control'));
 ReactDOM.render(React.createElement(tooltip), document.querySelector('#tooltip-react-control'));
-ReactDOM.render(React.createElement(datatable), document.querySelector('#data-table-react-control'));
+ReactDOM.render(React.createElement(dataTable), document.querySelector('#data-table-react-control'));
