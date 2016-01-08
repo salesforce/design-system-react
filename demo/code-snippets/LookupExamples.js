@@ -41,16 +41,16 @@ class LookupExample extends React.Component {
       <div>
         <SLDSLookup
           emptyMessage="No items found"
-          items={items}
-          label="Account"
-          type="account"
+          footerRenderer={SLDSLookup.DefaultFooter}
+          hasError={false}
+          headerRenderer={SLDSLookup.DefaultHeader}
           iconCategory='standard'
           iconName='account'
-          headerRenderer={SLDSLookup.DefaultHeader}
-          footerRenderer={SLDSLookup.DefaultFooter}
+          items={items}
+          label="Account"
           onChange={this.onChange.bind(this)}
           onItemSelect={this.selectItem}
-          hasError={false}
+          type="account"
         />
       </div>
     );
