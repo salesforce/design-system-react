@@ -8,7 +8,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop."
             },
             "buttonSize": {
                 "type": {
@@ -178,7 +178,11 @@
                     ]
                 },
                 "required": false,
-                "description": "Use <code>icon-inverse</code> for white icons."
+                "description": "Use <code>icon-inverse</code> for white icons.",
+                "defaultValue": {
+                    "value": "\"base\"",
+                    "computed": false
+                }
             }
         }
     },

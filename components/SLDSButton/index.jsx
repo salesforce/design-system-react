@@ -18,7 +18,7 @@ const displayName = 'SLDSButton';
 const propTypes = {
   /**
    * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop.
+   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop.
    */
   assistiveText: React.PropTypes.string,
   buttonSize: React.PropTypes.oneOf(["small"]),
@@ -58,7 +58,9 @@ const propTypes = {
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
-const defaultProps = {};
+const defaultProps = {
+  variant: "base",
+};
 
 /**
  * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
