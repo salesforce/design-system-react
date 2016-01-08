@@ -67,11 +67,14 @@ class PropTable extends React.Component {
       let type;
       propType.name === 'enum' ? type = this.renderEnum(propType) : type = p.type;
 
+      let defaultProp;
+      docs[prop].defaultValue ? defaultProp = docs[prop].defaultValue.value.replace(/'|"/g, "") : defaultProp = "";
+
       let row = (
         <tr key={prop}>
           <td>{prop}</td>
           <td className="mw-col-m">{type.name ? type.name : type.props.children}</td>
-          <td>{docs[prop].defaultValue ? docs[prop].defaultValue.value : ""}</td>
+          <td>{defaultProp}</td>
           <td className="mw-col-l">
             <span dangerouslySetInnerHTML={this.getMarkup(docs[prop].description)} />
           </td>

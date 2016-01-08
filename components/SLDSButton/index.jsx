@@ -35,6 +35,9 @@ const propTypes = {
    * If omitted, icon position is cenetered.
    */
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
+  /**
+   * If omitted, icon size is medium.
+   */
   iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   /**
    * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>

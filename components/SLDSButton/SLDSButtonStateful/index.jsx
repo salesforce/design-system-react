@@ -26,6 +26,9 @@ const propTypes = {
    * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
+  /**
+   * If omitted, icon size is medium.
+   */
   iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   onClick: React.PropTypes.func,
   /**
