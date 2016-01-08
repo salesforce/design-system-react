@@ -7757,7 +7757,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        return _react2["default"].createElement(Footer, _extends({ ref: "footer" }, this.props, {
 	          focusIndex: this.state.focusIndex,
 	          listLength: this.state.listLength,
-	          onClose: this.handleClose.bind(this)
+	          onClose: this.handleClose.bind(this),
+	          type: this.props.type
 	        }));
 	      }
 	    }
@@ -8515,7 +8516,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var className = 'slds-button';
 	      if (this.props.isActive) className += ' slds-theme--shade';
-	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onClick: this.handleClick.bind(this), onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement('button', { id: 'newItem', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'add', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.newItemLabel));
+	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onClick: this.handleClick.bind(this), onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement('button', { id: 'newItem', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'add', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.type ? "Add " + this.props.type : this.props.newItemLabel));
 	    }
 	  }]);
 	
@@ -8634,7 +8635,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var className = 'slds-button';
 	      if (this.props.isActive) className += ' slds-theme--shade aaa';
 	
-	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onMouseDown: this.handleMouseDown, onClick: this.handleClick.bind(this) }, _react2['default'].createElement('button', { id: 'searchRecords', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'search', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.searchLabel));
+	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onMouseDown: this.handleMouseDown, onClick: this.handleClick.bind(this) }, _react2['default'].createElement('button', { id: 'searchRecords', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'search', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.searchTerm));
 	    }
 	  }]);
 	
