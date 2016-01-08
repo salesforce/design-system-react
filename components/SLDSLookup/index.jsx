@@ -74,14 +74,14 @@ const propTypes = {
   type: React.PropTypes.string,
 };
 
-const defaultProps = {
-  filterWith: defaultFilter,
-  searchTerm: "",
-};
-
 const defaultFilter = (term, item) => {
   if(!term) return true;
   return item.label.match(new RegExp(escapeRegExp(term), "ig"));
+};
+
+const defaultProps = {
+  filterWith: defaultFilter,
+  searchTerm: "",
 };
 
 
