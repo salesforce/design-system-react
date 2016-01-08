@@ -322,6 +322,7 @@ class SLDSLookup extends React.Component {
         focusIndex={this.state.focusIndex}
         listLength={this.state.listLength}
         onClose={this.handleClose.bind(this)}
+        type={this.props.type}
       />;
     }
   }
