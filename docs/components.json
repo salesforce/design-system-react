@@ -862,7 +862,7 @@
         }
     },
     "SLDSNotification": {
-        "description": "The SLDSNotification component is used for alerts and toasts. For prompts, use the SLDSModal component with prompt={true}.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">SLDS Notifications</a>.",
+        "description": "The SLDSNotification component is used for alerts and toasts. For prompt notifications, use the SLDSModal component with <code>prompt={true}</code>.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">SLDS Notifications</a>.",
         "displayName": "SLDSNotification",
         "props": {
             "className": {
@@ -876,15 +876,15 @@
                 "type": {
                     "name": "node"
                 },
-                "required": false,
+                "required": true,
                 "description": "Message for Notification"
             },
-            "isDismissible": {
+            "dismissible": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, close button appears for users to dismiss notification.",
+                "description": "If true, close button appears for users to dismiss Notification.",
                 "defaultValue": {
                     "value": "true",
                     "computed": false
@@ -895,7 +895,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "If duration exists, the notification will disappear after that amount of time."
+                "description": "If duration exists, the Notification will disappear after that amount of time."
             },
             "icon": {
                 "type": {
@@ -908,7 +908,7 @@
                 "type": {
                     "name": "bool"
                 },
-                "required": false,
+                "required": true,
                 "description": "",
                 "defaultValue": {
                     "value": "false",
@@ -922,23 +922,12 @@
                 "required": false,
                 "description": ""
             },
-            "returnFocusTo": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Upon dismissing Notification, return keyboard focus to this DOM element",
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
-            },
             "texture": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Styling for notification background",
+                "description": "Styling for Notification background",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -967,7 +956,7 @@
                     ]
                 },
                 "required": false,
-                "description": ""
+                "description": "Styling for Notification background color. Please reference <a href=\"http://www.lightningdesignsystem.com/components/utilities/themes#color\">SLDS Themes > Color</a>"
             },
             "variant": {
                 "type": {
@@ -983,7 +972,7 @@
                         }
                     ]
                 },
-                "required": false,
+                "required": true,
                 "description": ""
             }
         }

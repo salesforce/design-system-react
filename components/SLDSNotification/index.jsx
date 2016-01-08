@@ -25,39 +25,37 @@ const propTypes = {
   /**
    * Message for Notification
    */
-  content: React.PropTypes.node,
+  content: React.PropTypes.node.isRequired,
   /**
-   * If true, close button appears for users to dismiss notification.
+   * If true, close button appears for users to dismiss Notification.
    */
-  isDismissible: React.PropTypes.bool,
+  dismissible: React.PropTypes.bool,
   /**
-   * If duration exists, the notification will disappear after that amount of time.
+   * If duration exists, the Notification will disappear after that amount of time.
    */
   duration: React.PropTypes.number,
   icon: React.PropTypes.string,
-  isOpen: React.PropTypes.bool,
+  isOpen: React.PropTypes.bool.isRequired,
   onDismiss: React.PropTypes.func,
   /**
-   * Upon dismissing Notification, return keyboard focus to this DOM element
-   */
-  returnFocusTo: React.PropTypes.node,
-  /**
-   * Styling for notification background
+   * Styling for Notification background
    */
   texture: React.PropTypes.bool,
+  /**
+   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes#color">SLDS Themes > Color</a>
+   */
   theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
-  variant: React.PropTypes.oneOf(["alert", "toast"]),
+  variant: React.PropTypes.oneOf(["alert", "toast"]).isRequired,
 };
 
 const defaultProps = {
-  isDismissible: true,
+  dismissible: true,
   isOpen: false,
-  returnFocusTo: null,
   texture: false,
 };
 
 /**
- * The SLDSNotification component is used for alerts and toasts. For prompts, use the SLDSModal component with prompt={true}.<br />
+ * The SLDSNotification component is used for alerts and toasts. For prompt notifications, use the SLDSModal component with <code>prompt={true}</code>.<br />
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/notifications">SLDS Notifications</a>.
  */
 class SLDSNotification extends React.Component {
@@ -101,7 +99,7 @@ class SLDSNotification extends React.Component {
   }
 
   renderClose(){
-    if(this.props.isDismissible){
+    if(this.props.dismissible){
       let size = "";
       if(this.props.variant === "alert") {
         size = "medium";

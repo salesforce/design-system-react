@@ -66,7 +66,7 @@ class PropTable extends React.Component {
 
       let type = propType.name === 'enum' ? this.renderEnum(propType) : p.type;
       let defaultProp = docs[prop].defaultValue ? docs[prop].defaultValue.value.replace(/'|"/g, "") : "";
-      let required = docs[prop].required ? docs[prop].required.toString() : "";
+      let required = docs[prop].required ? "x" : "";
 
       let row = (
         <tr key={prop}>
