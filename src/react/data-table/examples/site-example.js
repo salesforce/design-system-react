@@ -1,5 +1,5 @@
 import React from 'react';
-import {Datatable} from 'design-system-react';
+import {DataTable} from 'design-system-react';
 import _ from 'underscore';
 
 const collection = [
@@ -76,7 +76,7 @@ export default React.createClass({
 
 	render () {
 		return (
-			<Datatable
+			<DataTable
 				collection={this.state.collection}
 				selection={this.state.selection}
 				columns={this.state.columns}
