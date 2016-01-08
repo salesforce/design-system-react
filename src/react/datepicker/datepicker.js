@@ -75,8 +75,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 						strings={this.state.strings}/>
 					<DateYear
 						getYearRange={this._getYearRangeData}
-						setViewingDate={this._jumpToDate}
-						dateViewing={this.state.dateViewing}/>
+						setYear={this._jumpToYear} />
 				</div>
 				<Calendar
 					calendarData={calendarData}

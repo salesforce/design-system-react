@@ -13,22 +13,19 @@ const DateMonth = React.createClass({
 
 	propTypes: {
 		getYearRange: React.PropTypes.func,
-		setViewingDate: React.PropTypes.func,
-		dateViewing: React.PropTypes.instanceOf(Date)
+		setYear: React.PropTypes.func
 	},
 
 	render () {
 		const picklistRange = this.props.getYearRange();
 
 		return (
-			<Picklist collection={picklistRange.collection} selection={picklistRange.selection} onChanged={this._handleModelChange} />
+			<Picklist collection={picklistRange.collection} selection={picklistRange.selection} onChange={this._handleModelChange} />
 		);
 	},
 
 	_handleModelChange (info) {
-		const curViewDate = this.props.dateViewing;
-
-		this.props.setViewingDate(new Date(curViewDate.setYear(info.value)));
+		this.props.setYear(info.value);
 	}
 });
 
