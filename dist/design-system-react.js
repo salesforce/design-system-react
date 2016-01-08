@@ -7432,37 +7432,53 @@ return /******/ (function(modules) { // webpackBootstrap
 	var propTypes = {
 	  boldRegex: _react2["default"].PropTypes.instanceOf(RegExp),
 	  /**
-	   * message for when no search results found
+	   * Custom message for when no search results found
 	   */
 	  emptyMessage: _react2["default"].PropTypes.string,
 	  errors: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
 	  filterWith: _react2["default"].PropTypes.func,
 	  /**
-	   * react component for lookup footer
+	   * Custom component for Lookup footer
 	   */
 	  footerRenderer: _react2["default"].PropTypes.func,
+	  /**
+	   * If true, input field indicates error state
+	   */
 	  hasError: _react2["default"].PropTypes.bool,
 	  /**
-	   * react component for lookup header
+	   * Custom component for Lookup header
 	   */
 	  headerRenderer: _react2["default"].PropTypes.func,
+	  /**
+	   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view categories
+	   */
 	  iconCategory: _react2["default"].PropTypes.string,
 	  iconClasses: _react2["default"].PropTypes.string,
+	  /**
+	   * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view icon names.
+	   */
 	  iconName: _react2["default"].PropTypes.string,
+	  /**
+	   * Lookup items data
+	   */
 	  items: _react2["default"].PropTypes.array,
 	  label: _react2["default"].PropTypes.string,
 	  /**
-	   * react component that overrides the default Menu Item component
+	   * Custom component that overrides the default Lookup Item component
 	   */
 	  listItemLabelRenderer: _react2["default"].PropTypes.func,
 	  messages: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
+	  /**
+	   * If true, component renders specifically to work inside Modal
+	   */
 	  modal: _react2["default"].PropTypes.bool,
 	  onBlur: _react2["default"].PropTypes.func,
 	  onChange: _react2["default"].PropTypes.func,
 	  onItemSelect: _react2["default"].PropTypes.func,
 	  onItemUnselect: _react2["default"].PropTypes.func,
+	  searchTerm: _react2["default"].PropTypes.string,
 	  /**
-	   * salesforce object type
+	   * Salesforce object type for Lookup items
 	   */
 	  type: _react2["default"].PropTypes.string
 	};
@@ -7474,7 +7490,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var defaultProps = {
 	  filterWith: defaultFilter,
-	  modal: false
+	  searchTerm: ""
 	};
 	
 	/**
@@ -7495,7 +7511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      items: [],
 	      isOpen: false,
 	      listLength: this.props.items.length,
-	      searchTerm: "",
+	      searchTerm: this.props.searchTerm,
 	      selectedIndex: null
 	    };
 	  }
