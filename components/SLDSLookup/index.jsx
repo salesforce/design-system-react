@@ -22,24 +22,41 @@ import cx from "classnames";
 const displayName = "SLDSLookup";
 const propTypes = {
   boldRegex: React.PropTypes.instanceOf(RegExp),
-  modal: React.PropTypes.bool,
+  /**
+   * message for when no search results found
+   */
   emptyMessage: React.PropTypes.string,
   errors: React.PropTypes.arrayOf(React.PropTypes.string),
-  disabled: React.PropTypes.bool,
   filterWith: React.PropTypes.func,
+  /**
+   * react component for lookup footer
+   */
+  footerRenderer: React.PropTypes.func,
   hasError: React.PropTypes.bool,
+  /**
+   * react component for lookup header
+   */
+  headerRenderer: React.PropTypes.func,
   iconCategory: React.PropTypes.string,
+  iconClasses: React.PropTypes.string,
   iconName: React.PropTypes.string,
   items: React.PropTypes.array,
   label: React.PropTypes.string,
+  /**
+   * react component that overrides the default Menu Item component
+   */
   listItemLabelRenderer: React.PropTypes.func,
   messages: React.PropTypes.arrayOf(React.PropTypes.string),
+  modal: React.PropTypes.bool,
   onBlur: React.PropTypes.func,
   onChange: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
   onItemUnselect: React.PropTypes.func,
-  type: React.PropTypes.string,
   searchTerm: React.PropTypes.string,
+  /**
+   * salesforce object type
+   */
+  type: React.PropTypes.string,
 };
 
 const defaultFilter = (term, item) => {
@@ -48,28 +65,32 @@ const defaultFilter = (term, item) => {
 };
 
 const defaultProps = {
-  disabled: false,
   filterWith: defaultFilter,
   modal: false,
   searchTerm: "",
 };
 
+
+/**
+ * The SLDSLookup component currently supports the base variant. <br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/lookups/">SLDS Lookups</a>.
+ */
 class SLDSLookup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentFocus: null,
       focusIndex: null,
-      isOpen: false,
       items: [],
+      isOpen: false,
       listLength: this.props.items.length,
-      selectedIndex: null,
       searchTerm: this.props.searchTerm,
+      selectedIndex: null,
     };
   }
 
   componentDidUpdate(prevProps, prevState) {
-    let lookup = this.props.type + "Lookup";
+    let lookup = this.inputRefName()
     if(!isNaN(parseInt(prevState.selectedIndex)) && isNaN(parseInt(this.state.selectedIndex))){
       if(this.refs[lookup]){
         React.findDOMNode(this.refs[lookup]).focus();
@@ -271,10 +292,10 @@ class SLDSLookup extends React.Component {
       const Header = this.props.headerRenderer;
       return <div className={isActiveClass}>
         <Header ref="header" {... this.props}
-          searchTerm={this.state.searchTerm}
           focusIndex={this.state.focusIndex}
           listLength={this.state.listLength}
           onClose={this.handleClose.bind(this)}
+          searchTerm={this.state.searchTerm}
         />
       </div>;
     }
@@ -296,26 +317,26 @@ class SLDSLookup extends React.Component {
   renderMenuContent() {
     if(this.state.isOpen){
       return <Menu
-        searchTerm={this.state.searchTerm}
-        label={this.props.label}
-        type={this.props.type}
-        iconCategory={this.props.iconCategory}
-        iconName={this.props.iconName?this.props.iconName:this.props.type}
-        iconClasses={this.props.iconClasses}
-        focusIndex={this.state.focusIndex}
-        listLength={this.state.listLength}
-        items={this.state.items}
+        boldRegex={this.props.boldRegex}
         emptyMessage={this.props.emptyMessage}
-        messages={this.props.messages}
         errors={this.props.errors}
         filterWith={this.props.filterWith}
-        getListLength={this.getListLength.bind(this)}
-        setFocus={this.setFocus.bind(this)}
-        onSelect={this.selectItem.bind(this)}
-        header={this.getHeader()}
+        focusIndex={this.state.focusIndex}
         footer={this.getFooter()}
-        boldRegex={this.props.boldRegex}
+        getListLength={this.getListLength.bind(this)}
+        header={this.getHeader()}
+        iconCategory={this.props.iconCategory}
+        iconClasses={this.props.iconClasses}
+        iconName={this.props.iconName?this.props.iconName:this.props.type}
+        items={this.state.items}
+        label={this.props.label}
         listItemLabelRenderer={this.props.listItemLabelRenderer}
+        listLength={this.state.listLength}
+        messages={this.props.messages}
+        onSelect={this.selectItem.bind(this)}
+        searchTerm={this.state.searchTerm}
+        setFocus={this.setFocus.bind(this)}
+        type={this.props.type}
       />;
     }
   }
@@ -329,13 +350,13 @@ class SLDSLookup extends React.Component {
   }
 
   renderModalMenu() {
-    let targetElem = this.props.type + "Lookup";
+    let targetElem = this.inputRefName();
     if(this.state.isOpen){
       return <SLDSPopover
       className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
-      targetElement={this.refs[targetElem]}
       closeOnTabKey={true}
-      onClose={this.handleCancel.bind(this)}>
+      onClose={this.handleCancel.bind(this)}
+      targetElement={this.refs[targetElem]}>
       {this.renderMenuContent()}
       </SLDSPopover>;
     }
@@ -353,16 +374,23 @@ class SLDSLookup extends React.Component {
         </span>
         <SLDSButton
         assistiveText="Press delete to remove"
-        tabIndex="-1"
-        variant="icon"
+        className="slds-pill__remove slds-button--icon-bare"
         iconName="close"
-        iconSize="medium"
         onClick={this.handleDeleteSelected.bind(this)}
         ref="clearSelectedItemButton"
-        className="slds-pill__remove slds-button--icon-bare"
+        tabIndex="-1"
+        variant="icon"
         />
       </a>
     )
+  }
+
+  inputRefName() {
+    return `${this.props.type}Lookup`;
+  }
+
+  focusInput() {
+    this.refs[this.inputRefName()].focus();
   }
 
   render() {
@@ -391,7 +419,7 @@ class SLDSLookup extends React.Component {
     };
 
     const inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: "5px"};
-    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.props.type + "Lookup"}>{this.props.label}</label>:null;
+    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()}>{this.props.label}</label>:null;
 
     return (
       <div className={cx(componentClasses)} data-select="single" data-scope="single" data-typeahead="true">
@@ -401,22 +429,22 @@ class SLDSLookup extends React.Component {
             <div className={cx(pillContainerClasses)}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             </div>
-            <InputIcon name="search"/>
+            <InputIcon name="search" onClick={this.focusInput.bind(this)} />
             <input
-              id={this.props.type + "Lookup"}
-              ref={this.props.type + "Lookup"}
-              className={cx(inputClasses)}
-              type="text"
-              aria-haspopup="true"
-              aria-autocomplete="list"
               aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:""}
+              aria-autocomplete="list"
               aria-expanded={this.state.isOpen}
-              role="combobox"
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.handleFocus.bind(this)}
+              aria-haspopup="true"
+              className={cx(inputClasses)}
+              id={this.inputRefName()}
               onBlur={this.handleBlur.bind(this)}
+              onChange={this.handleChange.bind(this)}
               onClick={this.handleClick.bind(this)}
+              onFocus={this.handleFocus.bind(this)}
               onKeyDown={this.handleKeyDown.bind(this)}
+              ref={this.inputRefName()}
+              role="combobox"
+              type="text"
               value={this.state.searchTerm}
             />
           </div>

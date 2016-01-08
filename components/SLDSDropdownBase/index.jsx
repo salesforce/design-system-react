@@ -11,35 +11,59 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
-
-import chain from "../utils/create-chained-function";
 import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
-import omit from "lodash.omit";
 
 const displayName = "SLDSDropdown";
 const propTypes = {
+  /**
+   * Classes applied to SLDSButton
+   */
+  buttonClassName: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
+  horizontalAlign: React.PropTypes.oneOf(["left", "right"]),
+  /**
+   * Delay on menu closing
+   */
+  hoverCloseDelay: React.PropTypes.number,
+  label: React.PropTypes.string,
+  /**
+   * Custom element that overrides the default Menu Item component
+   */
+  listItemRenderer: React.PropTypes.func,
+  /**
+   * If true, component renders specifically to work inside Modal
+   */
+  modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func.isRequired,
-  onUpdateHighlighted: React.PropTypes.func,
+  openOn: React.PropTypes.oneOf(["hover", "click"]),
+  /**
+   * Menu item data
+   */
+  options: React.PropTypes.array,
+  /**
+   * Current selected menu item
+   */
+  value: React.PropTypes.string,
+  /**
+   * Determines variant of SLDSButton that triggers dropdown
+   */
+  variant: React.PropTypes.string,
 };
 const defaultProps = {
-  className: "",
-  disabled: false,
   horizontalAlign: "left",
   hoverCloseDelay: 300,
-  initialFocus: false,
   label: "Dropdown",
-  listClassName: "",
-  listItemRenderer: ListItemLabel,
-  modal: true,
   openOn: "hover",
   options: [],
-  placeholder: "Select an Option",
-  theme: "default",
   value: null,
   variant: "neutral",
 };
 
+/**
+ * The SLDSDropdown component is a variant of the Menu component.<br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">SLDS Menus > Dropdown</a>.
+ */
 class SLDSDropdown extends React.Component {
 
   constructor(props) {
@@ -59,12 +83,6 @@ class SLDSDropdown extends React.Component {
 
   componentDidMount(){
     this.setState({ isMounted: true });
-    if(this.props.initialFocus){
-      this.setFocus();
-    }
-    if(this.props.openOn === "hover"){
-      //TODO:Add functionality here
-    }
   }
 
   componentWillUnmount() {
@@ -73,14 +91,10 @@ class SLDSDropdown extends React.Component {
 
   componentDidUpdate(prevProps, prevState){
     if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
-      if(this.state.lastBlurredIndex === this.state.highlightedIndex){
-        this.handleClose();
-      }
+      if(this.state.lastBlurredIndex === this.state.highlightedIndex) this.handleClose();
     }
 
-    if(this.state.isOpen && !prevState.isOpen){
-      this.state.isClosing = false;
-    }
+    if(this.state.isOpen && !prevState.isOpen) this.state.isClosing = false;
 
     if(this.state.selectedIndex !== prevState.selectedIndex){
       this.handleClose();
@@ -95,12 +109,12 @@ class SLDSDropdown extends React.Component {
           this.setState({ isOpen: false });
         }
       }
-    } else if(this.state.isClosing && !prevState.isClosing){
+    } else if(this.state.isClosing && !prevState.isClosing) {
       setTimeout(()=>{
         if(this.state.isClosing){
           this.setState({isOpen: false});
         }
-      },this.props.hoverCloseDelay);
+      }, this.props.hoverCloseDelay);
     }
 
     if(this.props.value !== prevProps.value){
@@ -124,62 +138,59 @@ class SLDSDropdown extends React.Component {
 
   getValueByIndex(index){
     const option = this.props.options[index];
-    if(option){
-      return this.props.options[index];
-    }
+    if(option) return this.props.options[index];
+  }
+
+  getListItemRenderer() {
+    return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
   }
 
   handleSelect(index){
     this.setState({selectedIndex: index})
     this.setFocus();
-    if(this.props.onSelect){
-      this.props.onSelect(this.getValueByIndex(index));
-    }
+    if(this.props.onSelect) this.props.onSelect(this.getValueByIndex(index));
   }
 
   handleClose(){
     this.setState({
       isOpen: false,
       isHover: false
-    });
+    })
   }
 
   handleMouseEnter(){
-    if(this.props.openOn === "hover"){
-      this.state.isClosing = false;
-      if(!this.state.isOpen){
-        this.setState({
-          isOpen: true,
-          isHover: true
-        });
-      }
+    this.state.isClosing = false;
+    if(!this.state.isOpen){
+      this.setState({
+        isOpen: true,
+        isHover: true
+      });
     }
+    if(this.props.onMouseEnter) this.props.onMouseEnter();
   }
 
   handleMouseLeave(){
-    if(this.props.openOn === "hover"){
-      this.setState({isClosing: true});
-    }
+    this.setState({isClosing: true});
+    if(this.props.onMouseLeave) this.props.onMouseLeave();
   }
 
-  handleClick(event){
-    EventUtil.trap(event);
+  handleClick(){
     if(!this.state.isOpen){
       this.setState({isOpen: true});
-      if(this.props.onClick){
-        this.props.onClick();
-      }
+      if(this.props.onClick) this.props.onClick();
     }else{
       this.handleClose();
     }
   }
 
   handleMouseDown(event){
-    EventUtil.trapImmediate(event);
+    if(event) EventUtil.trapImmediate(event);
+    if(this.props.onMouseDown) this.props.onMouseDown();
   }
 
   handleBlur(e){
     this.setState({isFocused: false});
+    if(this.props.onBlur) this.props.onBlur();
   }
 
   handleFocus(){
@@ -187,12 +198,11 @@ class SLDSDropdown extends React.Component {
       isFocused: true,
       isHover: false
     });
+    if(this.props.onFocus) this.props.onFocus();
   }
 
   setFocus(){
-    if(this.state.isMounted){
-      React.findDOMNode(this.getButtonNode()).focus();
-    }
+    if(this.state.isMounted) React.findDOMNode(this.getButtonNode()).focus();
   }
 
   getButtonNode(){
@@ -202,17 +212,17 @@ class SLDSDropdown extends React.Component {
   handleKeyDown(event){
     if(event.keyCode){
       if(event.keyCode === KEYS.ENTER ||
-          event.keyCode === KEYS.SPACE ||
-          event.keyCode === KEYS.DOWN ||
-          event.keyCode === KEYS.UP){
-        EventUtil.trapEvent(event);
+         event.keyCode === KEYS.SPACE ||
+         event.keyCode === KEYS.DOWN ||
+         event.keyCode === KEYS.UP) {
 
-        this.setState({
-          isOpen: true,
-          highlightedIndex: 0
-        });
-
+          EventUtil.trap(event);
+          this.setState({
+            isOpen: true,
+            highlightedIndex: 0
+          });
       }
+      if(this.props.onKeyDown) this.props.onKeyDown();
     }
   }
 
@@ -232,35 +242,32 @@ class SLDSDropdown extends React.Component {
   }
 
   handleCancel(){
-    if(!this.state.isHover){
-      this.setFocus();
-    }
+    if(!this.state.isHover) this.setFocus();
   }
 
   getPopoverContent(){
     return <List
-            ref="list"
-            options={this.props.options}
-            className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
-            selectedIndex={this.state.selectedIndex}
-            onSelect={this.handleSelect.bind(this)}
-            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
+            isHover={this.state.isHover}
+            itemRenderer={this.getListItemRenderer()}
             onListBlur={this.handleListBlur.bind(this)}
             onListItemBlur={this.handleListItemBlur.bind(this)}
+            onCancel={this.handleCancel.bind(this)}
             onMouseEnter={(this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null}
             onMouseLeave={(this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null}
-            onCancel={this.handleCancel.bind(this)}
-            itemRenderer={this.props.listItemRenderer}
-            isHover={this.state.isHover}
-            theme={this.props.theme} />;
+            onSelect={this.handleSelect.bind(this)}
+            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
+            options={this.props.options}
+            ref="list"
+            selectedIndex={this.state.selectedIndex}
+            />;
   }
 
   getSimplePopover(){
     return(
       !this.props.disabled && this.state.isOpen?
         <div
-          className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
+          className="slds-dropdown slds-dropdown--menu slds-dropdown--left"
           style={{maxHeight: "20em"}}>
           {this.getPopoverContent()}
         </div>:null
@@ -268,63 +275,39 @@ class SLDSDropdown extends React.Component {
   }
 
   getModalPopover(){
-    const className = "slds-dropdown slds-dropdown--small slds-dropdown--menu slds-dropdown--"+this.props.horizontalAlign;
+    const className = "slds-dropdown slds-dropdown--menu slds-dropdown--"+this.props.horizontalAlign;
     return(
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
           className={className}
-          horizontalAlign={this.props.horizontalAlign}
-          targetElement={this.refs.button}
           closeOnTabKey={true}
-          onClose={this.handleCancel.bind(this)}>
+          horizontalAlign={this.props.horizontalAlign}
+          onClose={this.handleCancel.bind(this)}
+          targetElement={this.refs.button}
+          >
           {this.getPopoverContent()}
         </SLDSPopover>:null
     );
   }
 
-  getPlaceholder(){
-    const option = this.props.options[this.state.selectedIndex];
-    return (option && option.label)?option.label:this.props.placeholder;
-  }
-
   render(){
-
-    const props = omit(this.props, [
-      "aria-haspopup",
-      "label",
-      "className",
-      "style",
-      "variant",
-      "iconName",
-      "iconVariant",
-      "onBlur",
-      "onFocus",
-      "onClick",
-      "onMouseDown",
-      "onMouseEnter",
-      "onMouseLeave",
-      "tabIndex",
-      "onKeyDown"
-    ]);
-
     return <SLDSButton
-        ref="button"
         aria-haspopup="true"
-        label={this.props.label}
-        className={this.props.className}
-        style={this.props.style}
-        variant={this.props.variant}
+        className={this.props.buttonClassName}
         iconName={this.props.iconName}
         iconVariant={this.props.iconVariant}
-        onBlur={ chain(this.props.onBlur, this.handleBlur.bind(this)) }
-        onFocus={ chain(this.props.onFocus, this.handleFocus.bind(this)) }
-        onClick={ chain(this.props.onClick, this.handleClick.bind(this)) }
-        onMouseDown={ chain(this.props.onMouseDown, this.handleMouseDown.bind(this)) }
-        onMouseEnter={ chain(this.props.onMouseEnter, (this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null) }
-        onMouseLeave={ chain(this.props.onMouseLeave, (this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null ) }
-        tabIndex={this.state.isOpen?-1:0}
-        onKeyDown={ chain(this.props.onKeyDown, this.handleKeyDown.bind(this)) }
-        {...props}
+        label={this.props.label}
+        onBlur={this.props.openOn === "hover" ? this.handleBlur.bind(this):null}
+        onClick={this.props.openOn === "click" ? this.handleClick.bind(this):null}
+        onFocus={this.props.openOn === "hover" ? this.handleFocus.bind(this):null}
+        onKeyDown={this.handleKeyDown.bind(this)}
+        onMouseDown={this.props.openOn === "click" ? this.handleMouseDown.bind(this):null}
+        onMouseEnter={this.props.openOn === "hover" ? this.handleMouseEnter.bind(this):null}
+        onMouseLeave={this.props.openOn === "hover" ? this.handleMouseLeave.bind(this):null}
+        ref="button"
+        style={this.props.style}
+        tabIndex={this.state.isOpen ? "-1" : "0"}
+        variant={this.props.variant}
         >
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
       </SLDSButton>;

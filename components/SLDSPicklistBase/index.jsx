@@ -7,33 +7,48 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from 'react';
-import isEqual from 'lodash.isequal';
+import React from "react";
+import isEqual from "lodash.isequal";
 
-import SLDSPopover from '../SLDSPopover';
+import SLDSPopover from "../SLDSPopover";
 import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
 import {Icon} from "../SLDSIcons";
 
 const displayName = "SLDSPicklist";
 const propTypes = {
+  disabled: React.PropTypes.bool,
+  label: React.PropTypes.string,
+  /**
+   * Custom element that overrides the default Menu Item component
+   */
+  listItemRenderer: React.PropTypes.node,
+  /**
+   * If true, component renders specifically to work inside Modal
+   */
+  modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func.isRequired,
-  onUpdateHighlighted: React.PropTypes.func
+  /**
+   * Menu item data
+   */
+  options: React.PropTypes.array,
+  placeholder: React.PropTypes.string,
+  /**
+   * Current selected item
+   */
+  value: React.PropTypes.node,
 };
 const defaultProps = {
-  className: '',
-  disabled: false,
-  initialFocus: false,
-  label: 'Picklist',
-  listClassName: '',
-  listItemRenderer: null,
-  modal: false,
+  label: "Picklist",
   options: [],
-  placeholder: 'Select an Option',
-  theme: 'default',
+  placeholder: "Select an Option",
   value: null,
 };
 
+/**
+ * The SLDSPicklist component is a variant of the Menu component.<br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#picklist">SLDS Menus > Picklists</a>.
+ */
 class SLDSPicklist extends React.Component {
   constructor(props) {
     super(props);
@@ -52,13 +67,10 @@ class SLDSPicklist extends React.Component {
   componentDidMount () {
     const id = React.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
     this.setState({
-      triggerId: id,
       isMounted: true,
+      triggerId: id,
     });
-
-    if(this.props.initialFocus){
-      this.setFocus();
-    }
+    this.setFocus();
   }
 
   componentDidUpdate( prevProps, prevState) {
@@ -86,10 +98,12 @@ class SLDSPicklist extends React.Component {
 
     if(this.props.value !== prevProps.value ||
         !isEqual(this.props.options, prevProps.options)){
-      this.handleSelect(this.getIndexByValue(this.props.value));
+      var newSelectedIndex = this.getIndexByValue(this.props.value);
+      if (newSelectedIndex !== this.state.selectedIndex) {
+        this.handleSelect(newSelectedIndex);
+      }
     }
   }
-
 
   componentWillUnmount(){
     this.setState({ isMounted: false });
@@ -128,13 +142,10 @@ class SLDSPicklist extends React.Component {
     this.setState({isOpen: false});
   }
 
-  handleClick(event) {
-    EventUtil.trap(event);
+  handleClick() {
     if(!this.state.isOpen){
       this.setState({isOpen: true});
-      if(this.props.onClick){
-        this.props.onClick();
-      }
+      if(this.props.onClick) this.props.onClick();
     }
     else{
       this.handleClose();
@@ -194,20 +205,19 @@ class SLDSPicklist extends React.Component {
 
   getPopoverContent() {
     return <List
-            triggerId={this.state.triggerId}
-            ref='list'
-            options={this.props.options}
-            label={this.props.label}
-            className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
-            selectedIndex={this.state.selectedIndex}
-            onSelect={this.handleSelect.bind(this)}
-            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
+            itemRenderer={this.getListItemRenderer()}
+            label={this.props.label}
+            onCancel={this.handleCancel.bind(this)}
             onListBlur={this.handleListBlur.bind(this)}
             onListItemBlur={this.handleListItemBlur.bind(this)}
-            onCancel={this.handleCancel.bind(this)}
-            itemRenderer={this.getListItemRenderer()}
-            theme={this.props.theme} />;
+            onSelect={this.handleSelect.bind(this)}
+            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
+            options={this.props.options}
+            ref="list"
+            selectedIndex={this.state.selectedIndex}
+            triggerId={this.state.triggerId}
+            />;
   }
 
   getSimplePopover() {
@@ -215,7 +225,7 @@ class SLDSPicklist extends React.Component {
       !this.props.disabled && this.state.isOpen?
         <div
           className="slds-dropdown slds-dropdown--left slds-dropdown--menu"
-          style={{maxHeight: '20em'}}>
+          style={{maxHeight: "20em"}}>
           {this.getPopoverContent()}
         </div>:null
     );
@@ -225,10 +235,10 @@ class SLDSPicklist extends React.Component {
     return (
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
-          className='slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu'
-          targetElement={this.refs.date}
+          className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
           closeOnTabKey={true}
-          onClose={this.handleCancel.bind(this)}>
+          onClose={this.handleCancel.bind(this)}
+          targetElement={this.refs.date}>
           {this.getPopoverContent()}
         </SLDSPopover>:null
     );
@@ -250,22 +260,20 @@ class SLDSPicklist extends React.Component {
     return (
       <div className="slds-picklist" aria-expanded={this.state.isOpen}>
         <button
-          id={this.state.triggerId}
-          ref="triggerbutton"
-          className="slds-button slds-button--neutral slds-picklist__label"
           aria-haspopup="true"
+          className="slds-button slds-button--neutral slds-picklist__label"
+          id={this.state.triggerId}
           onBlur={this.handleBlur.bind(this)}
-          onFocus={this.handleFocus.bind(this)}
           onClick={this.handleClick.bind(this)}
+          onFocus={this.handleFocus.bind(this)}
+          onKeyDown={this.handleKeyDown.bind(this)}
           onMouseDown={this.handleMouseDown.bind(this)}
-          tabIndex={this.state.isOpen?-1:0}
-          onKeyDown={this.handleKeyDown.bind(this)}>
+          ref="triggerbutton"
+          tabIndex={this.state.isOpen?-1:0}>
             <span className="slds-truncate">{this.getPlaceholder()}</span>
             <Icon name="down" category="utility" />
         </button>
-
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
-
       </div>
     );
   }

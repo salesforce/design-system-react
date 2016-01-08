@@ -11,29 +11,54 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 const classNames = require("classnames");
-import createChainedFunction from "../utils/create-chained-function";
 import {ButtonIcon} from "../SLDSIcons";
 import omit from "lodash.omit";
 
 const displayName = 'SLDSButton';
 const propTypes = {
+  /**
+   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop.
+   */
   assistiveText: React.PropTypes.string,
   buttonSize: React.PropTypes.oneOf(["small"]),
   disabled: React.PropTypes.bool,
+  /**
+   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">SLDS Buttons > Hint</a>
+   */
   hint: React.PropTypes.bool,
+  /**
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+   */
   iconName: React.PropTypes.string,
+  /**
+   * If omitted, icon position is cenetered.
+   */
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
-  iconSize: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
+  iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
+  /**
+   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>
+   */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
   label: React.PropTypes.string,
   onClick: React.PropTypes.func,
+  /**
+   * If true, button scales 100% width on small form factors
+   */
   responsive: React.PropTypes.bool,
-  tabindex: React.PropTypes.string,
+  tabIndex: React.PropTypes.string,
+  /**
+   * Use <code>icon-inverse</code> for white icons.
+   */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {};
 
-
+/**
+ * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
+ * For stateful buttons, use the SLDSButtonStateful component. <br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">SLDS Buttons</a>.
+ */
 class SLDSButton extends React.Component {
 
   constructor(props) {
@@ -41,14 +66,17 @@ class SLDSButton extends React.Component {
     this.state = { active: false };
   }
 
-  onClick() {
+  handleClick() {
+    if(this.props.onClick) this.props.onClick();
     this.setState({ active: !this.state.active });
   }
 
   getClassName() {
     const iconOnly = this.props.variant === 'icon' ? true : false;
+    const base = this.props.variant === 'base' ? true : false;
+
     return classNames(this.props.className, "slds-button", {
-      [`slds-button--${this.props.variant}`]: !iconOnly,
+      [`slds-button--${this.props.variant}`]: !base && !iconOnly,
       [`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
       ["slds-max-small-button--stretch"]: this.props.responsive,
       ["slds-button--small"]: this.props.buttonSize,
@@ -84,17 +112,12 @@ class SLDSButton extends React.Component {
     return iconOnly && this.props.assistiveText ? <span className="slds-assistive-text">{this.props.assistiveText}</span> : <span>{this.props.label}</span>;
   }
 
-
   render() {
-    const props = omit(this.props, "className");
-    const click = createChainedFunction(this.props.onClick, this.onClick.bind(this));
-
-    if (this.props.disabled) {
-      props["disabled"] = "disabled"
-    }
+    const props = omit(this.props, ["className", "label", "onClick"]);
+    if (this.props.disabled) props["disabled"] = "disabled";
 
     return (
-      <button tabIndex={this.props.tabindex} className={this.getClassName()} {...props} onClick={click}>
+      <button className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props}>
         {this.props.iconPosition === "right" ? this.renderLabel(): null}
 
         {this.renderIcon(this.props.iconName)}

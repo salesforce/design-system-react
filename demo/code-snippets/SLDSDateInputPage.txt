@@ -1,2 +1,0 @@
-
-<SLDSDateInput onChangeDate={this.handleChangeDate}/>

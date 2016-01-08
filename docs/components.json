@@ -1,16 +1,743 @@
 {
-    "SLDSTooltip": {
-        "description": "",
-        "displayName": "SLDSToolip",
+    "SLDSButton": {
+        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />\nFor stateful buttons, use the SLDSButtonStateful component. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">SLDS Buttons</a>.",
+        "displayName": "SLDSButton",
         "props": {
-            "align": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
+            },
+            "buttonSize": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "hint": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#hint\">SLDS Buttons > Hint</a>"
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to reference icon names."
+            },
+            "iconPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "If omitted, icon position is cenetered."
+            },
+            "iconSize": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"x-small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconVariant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"bare\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"container\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"border\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"border-filled\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"more\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">SLDS Icons</a>"
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "responsive": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, button scales 100% width on small form factors"
+            },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Use <code>icon-inverse</code> for white icons."
+            }
+        }
+    },
+    "SLDSButton/SLDSButtonStateful": {
+        "description": "",
+        "displayName": "SLDSButtonStateful",
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to reference icon names."
+            },
+            "iconSize": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"x-small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "responsive": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, button scales 100% width on small form factors"
+            },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "type": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"join\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"follow\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "<code>join</code> - states are join, member, leave <br />\n<code>follow</code> - states are follow, following, unfollow <br />\n<code>icon</code> - states are \"selected\", \"unselect\", \"not selected\""
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Use <code>icon-inverse</code> for white icons."
+            }
+        }
+    },
+    "SLDSButtonGroup": {
+        "description": "",
+        "displayName": "SLDSButtonGroup",
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Children are expected to be SLDSButton components"
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSDropdownBase": {
+        "description": "The SLDSDropdown component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
+        "displayName": "SLDSDropdown",
+        "props": {
+            "buttonClassName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Classes applied to SLDSButton"
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "horizontalAlign": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"left\"",
+                    "computed": false
+                }
+            },
+            "hoverCloseDelay": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Delay on menu closing",
+                "defaultValue": {
+                    "value": "300",
+                    "computed": false
+                }
+            },
+            "label": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
                 "description": "",
                 "defaultValue": {
-                    "value": "'top'",
+                    "value": "\"Dropdown\"",
+                    "computed": false
+                }
+            },
+            "listItemRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Custom element that overrides the default Menu Item component"
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, component renders specifically to work inside Modal"
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": ""
+            },
+            "openOn": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"hover\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"click\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"hover\"",
+                    "computed": false
+                }
+            },
+            "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Menu item data",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Current selected menu item",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            },
+            "variant": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Determines variant of SLDSButton that triggers dropdown",
+                "defaultValue": {
+                    "value": "\"neutral\"",
+                    "computed": false
+                }
+            }
+        }
+    },
+    "SLDSIcons/Icon": {
+        "description": "The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />\nThe icon color is white by default. Add the class, \"slds-icon-text-default\", to create a text-colored fill color for utility icons. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">SLDS Icons</a>.",
+        "displayName": "Icon",
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have visible descriptive text with the icon,\ndeclare this prop as assistiveText=\"\"."
+            },
+            "category": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"action\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"custom\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"doctype\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"standard\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"utility\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "'standard'",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "css classes that are applied to the svg"
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System - Icons</a> to reference icon names."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"x-small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSLookup": {
+        "description": "The SLDSLookup component currently supports the base variant. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/lookups/\">SLDS Lookups</a>.",
+        "displayName": "SLDSLookup",
+        "props": {
+            "boldRegex": {
+                "type": {
+                    "name": "instanceOf",
+                    "value": "RegExp"
+                },
+                "required": false,
+                "description": ""
+            },
+            "emptyMessage": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "message for when no search results found"
+            },
+            "errors": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "string"
+                    }
+                },
+                "required": false,
+                "description": ""
+            },
+            "filterWith": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
+                    "computed": false
+                }
+            },
+            "footerRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "react component for lookup footer"
+            },
+            "hasError": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "headerRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "react component for lookup header"
+            },
+            "iconCategory": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconClasses": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "items": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": ""
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "listItemLabelRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "react component that overrides the default Menu Item component"
+            },
+            "messages": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "string"
+                    }
+                },
+                "required": false,
+                "description": ""
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "onBlur": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onItemSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onItemUnselect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "type": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "salesforce object type"
+            }
+        }
+    },
+    "SLDSModal": {
+        "description": "The SLDSModal component is used for modals and prompts. <br />\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">SLDS Modals</a>.",
+        "displayName": "SLDSModal",
+        "props": {
+            "align": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'top'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'center'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Vertical alignment of modal",
+                "defaultValue": {
+                    "value": "'center'",
                     "computed": false
                 }
             },
@@ -19,14 +746,381 @@
                     "name": "node"
                 },
                 "required": false,
+                "description": "Modal content"
+            },
+            "directional": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "if directional, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "footer": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "isPassive": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "prompt": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "''",
+                            "computed": false
+                        },
+                        {
+                            "value": "'success'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'warning'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'error'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'wrench'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'offline'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'info'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "returnFocusTo": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
                 "description": ""
+            },
+            "tagline": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Text underneath the title",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "title": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            }
+        }
+    },
+    "SLDSNotification": {
+        "description": "The SLDSNotification component is used for alerts and toasts. For prompts, use the SLDSModal component with prompt={true}.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">SLDS Notifications</a>.",
+        "displayName": "SLDSNotification",
+        "props": {
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Custom classes applied to Notification element"
             },
             "content": {
                 "type": {
                     "name": "node"
                 },
                 "required": false,
+                "description": "Message for notification"
+            },
+            "isDismissible": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "if isDissmissible, close button appears for users to dismiss notification.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "duration": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "if duration exists, the notification will be visible for that amount of time."
+            },
+            "icon": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
                 "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "onDismiss": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "returnFocusTo": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "styling for notification background",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            },
+            "texture": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"success\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"warning\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"error\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"offline\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"alert\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"toast\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSPicklistBase": {
+        "description": "The SLDSPicklist component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
+        "displayName": "SLDSPicklist",
+        "props": {
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"Picklist\"",
+                    "computed": false
+                }
+            },
+            "listItemRenderer": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Custom element that overrides the default Menu Item component"
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, component renders specifically to work inside Modal"
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": ""
+            },
+            "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Menu item data",
+                "defaultValue": {
+                    "value": "[]",
+                    "computed": false
+                }
+            },
+            "placeholder": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"Select an Option\"",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Current selected item",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            }
+        }
+    },
+    "SLDSTooltip": {
+        "description": "The SLDSTooltip component is variant of the Popover component. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">SLDS Popovers > Tooltips</a>.",
+        "displayName": "SLDSTooltip",
+        "props": {
+            "align": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "alignment of the Tooltip relative to the element that triggers it",
+                "defaultValue": {
+                    "value": "\"top\"",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Pass the element that triggers Tooltip as a child of the Tooltip component"
+            },
+            "content": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Content inside Tooltip",
                 "defaultValue": {
                     "value": "<span>Tooltip</span>",
                     "computed": false
@@ -51,259 +1145,6 @@
                 "description": "",
                 "defaultValue": {
                     "value": "false",
-                    "computed": false
-                }
-            },
-            "openOn": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "'hover'",
-                    "computed": false
-                }
-            }
-        }
-    },
-    "SLDSLookup": {
-        "description": "",
-        "props": {
-            "items": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": ""
-            },
-            "emptyMessage": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "messages": {
-                "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "string"
-                    }
-                },
-                "required": false,
-                "description": ""
-            },
-            "errors": {
-                "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "string"
-                    }
-                },
-                "required": false,
-                "description": ""
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "type": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "iconCategory": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "iconName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "filterWith": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
-                    "computed": false
-                }
-            },
-            "onItemSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "onItemUnselect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "onChange": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "onBlur": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "modal": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "hasError": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": ""
-            },
-            "boldRegex": {
-                "type": {
-                    "name": "instanceOf",
-                    "value": "RegExp"
-                },
-                "required": false,
-                "description": ""
-            },
-            "listItemLabelRenderer": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            }
-        }
-    },
-    "SLDSPicklistBase": {
-        "description": "",
-        "props": {
-            "onClick": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "onSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": true,
-                "description": ""
-            },
-            "onUpdateHighlighted": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "placeholder": {
-                "defaultValue": {
-                    "value": "'Select an Option'",
-                    "computed": false
-                }
-            },
-            "disabled": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "theme": {
-                "defaultValue": {
-                    "value": "'default'",
-                    "computed": false
-                }
-            },
-            "label": {
-                "defaultValue": {
-                    "value": "'Picklist'",
-                    "computed": false
-                }
-            },
-            "value": {
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
-            },
-            "options": {
-                "defaultValue": {
-                    "value": "[]",
-                    "computed": false
-                }
-            },
-            "initialFocus": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "modal": {
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
-            },
-            "className": {
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
-            },
-            "listClassName": {
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
-            },
-            "listItemRenderer": {
-                "defaultValue": {
-                    "value": "null",
                     "computed": false
                 }
             }

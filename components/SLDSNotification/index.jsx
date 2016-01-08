@@ -14,35 +14,70 @@ const classNames = require("classnames");
 import SLDSButton from "../SLDSButton";
 import {Icon} from "../SLDSIcons";
 
-const displayName = 'SLDSNotification';
+const displayName = "SLDSNotification";
 const propTypes = {
+  /**
+   * Custom classes applied to Notification element
+   */
   className: React.PropTypes.string,
+  /**
+   * Message for notification
+   */
   content: React.PropTypes.node,
-  dismissible: React.PropTypes.bool,
+  /**
+   * if isDissmissible, close button appears for users to dismiss notification.
+   */
+  isDismissible: React.PropTypes.bool,
+  /**
+   * if duration exists, the notification will be visible for that amount of time.
+   */
   duration: React.PropTypes.number,
   icon: React.PropTypes.string,
+  isOpen: React.PropTypes.bool,
   onDismiss: React.PropTypes.func,
+  /**
+   * styling for notification background
+   */
+  returnFocusTo: React.PropTypes.node,
   texture: React.PropTypes.bool,
   theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
   variant: React.PropTypes.oneOf(["alert", "toast"]),
 };
 
 const defaultProps = {
-  dismissible: true,
+  isDismissible: true,
+  isOpen: false,
+  returnFocusTo: null,
 };
 
+/**
+ * The SLDSNotification component is used for alerts and toasts. For prompts, use the SLDSModal component with prompt={true}.<br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/notifications">SLDS Notifications</a>.
+ */
 class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
-    this.state = { isOpen: true };
+    this.state = {};
   }
 
   componentDidMount() {
     if(this.props.duration) {
-      const that = this;
-      setTimeout(function() {
-        that.setState({ isOpen: false});
-      }, that.props.duration);
+      setTimeout(() => {
+        this.onDismiss();
+      }, this.props.duration)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.isOpen !== this.props.isOpen){
+      this.setState({ returnFocusTo: document.activeElement });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if(prevProps.isOpen !== this.props.isOpen){
+      const btn = React.findDOMNode(this.refs.dismissNotificationBtn);
+      if(btn) btn.focus();
     }
   }
 
@@ -60,8 +95,7 @@ class SLDSNotification extends React.Component {
   }
 
   renderClose(){
-    let that = this;
-    if(this.props.dismissible){
+    if(this.props.isDismissible){
       let size = "";
       if(this.props.variant === "alert") {
         size = "medium";
@@ -75,63 +109,80 @@ class SLDSNotification extends React.Component {
             iconName="close"
             iconSize={size}
             className="slds-button slds-notify__close"
-            onClick={that.onDismiss.bind(that)}
+            onClick={this.onDismiss.bind(this)}
+            ref="dismissNotificationBtn"
           />
     }
   }
 
   onDismiss(){
     if(this.props.onDismiss) this.props.onDismiss();
-    this.setState({isOpen: false});
+    if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
+      this.state.returnFocusTo.focus();
+    }
   }
 
   renderAlertContent(){
-    if(this.props.variant === "alert"){
-      return(
-          <h2>
-            {this.renderIcon()}
-            {this.props.content}
-          </h2>
-      );
-    }
+    return (
+      <h2 id="dialogTitle">
+        {this.renderIcon()}
+        {this.props.content}
+      </h2>
+    );
   }
 
   renderToastContent(){
-    if(this.props.variant === "toast"){
-      return(
-        <section className="notify__content slds-grid">
-          {this.renderIcon()}
-          <div className="slds-col slds-align-middle">
-          <h2 className="slds-text-heading--small ">{this.props.content}</h2>
-          </div>
-        </section>
-      );
-    }
+    return (
+      <section className="notify__content slds-grid">
+        {this.renderIcon()}
+        <div className="slds-col slds-align-middle">
+          <h2 id="dialogTitle" className="slds-text-heading--small ">{this.props.content}</h2>
+        </div>
+      </section>
+    );
   }
 
   getClassName() {
     return classNames(this.props.className, "slds-notify", {
+      [`slds-transition-hide`]: !this.props.isOpen,
       [`slds-notify--${this.props.variant}`]: this.props.variant,
       [`slds-theme--${this.props.theme}`]: this.props.theme,
       [`slds-theme--alert-texture-animated`]: this.props.texture,
     });
   }
 
+  renderContent() {
+    return (
+      <div>
+        {this.renderClose()}
+        {this.props.variant === "toast" ? this.renderToastContent() : null}
+        {this.props.variant === "alert" ? this.renderAlertContent() : null}
+      </div>
+    )
+  }
+
+  /*
+   * The parent container with role="alert" only announces its content if there is a change inside of it.
+   * Because React renders the entire element to the DOM, we must switch out a blank div for the real content.
+   * Bummer, I know.
+   */
+  blankContent() {
+    return (
+      <div></div>
+    )
+  }
+
   render(){
-    if(this.state.isOpen){
-      return (
-        <div className="slds-notify-container">
-          <div className={this.getClassName()} role="alert">
-            <span className="slds-assistive-text">{this.props.theme}</span>
-            {this.renderClose()}
-            {this.renderAlertContent()}
-            {this.renderToastContent()}
-          </div>
+    //TODO: If there are multiple notifications on a page, we must 'hide' the ones that aren't open.
+    //Need to find a better way to do this than using width:0 to override slds-notify-container.
+    let styles = !this.props.isOpen ? { "width": "0" } : {"width": "100%"};
+    return (
+      <div className="slds-notify-container" style={styles}>
+        <div className={this.getClassName()} role="alertdialog" aria-labelledby="dialogTitle">
+        {this.props.isOpen ? this.renderContent() : this.blankContent()}
         </div>
-      );
-    }else{
-      return null;
-    }
+      </div>
+    );
   }
 }
 

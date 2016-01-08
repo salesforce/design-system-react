@@ -11,7 +11,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSLookup from '../../../components/SLDSLookup';
-import {default as PrismCode} from 'react-prism/lib/PrismCode';
 //import DefaultHeader from '../../../components/SLDSLookup/Menu/DefaultHeader';
 //import DefaultFooter from '../../../components/SLDSLookup/Menu/DefaultFooter';
 import CustomLookupListItemLabel from './CustomLookupListItemLabel.cjsx';
@@ -61,24 +60,20 @@ module.exports = React.createClass( {
                 Lookup with Custom Item Label Renderer
               </h3>
 
-              <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSLookupCustomPage.txt")}
-              </PrismCode>
-
               <div className="slds-p-vertical--large">
                 <SLDSLookup
+                  footerRenderer={SLDSLookup.DefaultFooter}
+                  hasError={true}
+                  headerRenderer={SLDSLookup.DefaultHeader}
+                  iconCategory='utility'
+                  iconClasses='slds-icon-text-default'
+                  iconName='open_folder'
                   items={items}
                   label="Account"
-                  type="account"
-                  iconCategory='utility'
-                  iconName='open_folder'
-                  iconClasses='slds-icon-text-default'
-                  headerRenderer={SLDSLookup.DefaultHeader}
-                  footerRenderer={SLDSLookup.DefaultFooter}
+                  listItemLabelRenderer={CustomLookupListItemLabel}
                   onChange={this.onChange}
                   onItemSelect={this.selectItem}
-                  hasError={true}
-                  listItemLabelRenderer={CustomLookupListItemLabel}
+                  type="account"
                 />
               </div>
 

@@ -7,149 +7,51 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-'use strict';
 
 import React from 'react';
-import SLDSNotification from '../../../components/SLDSNotification';
-import {SLDSButton, SLDSModal} from '../../../components';
-import {default as PrismCode} from "react-prism/lib/PrismCode";
+import CodeMirror from '../CodeMirror';
+import Samples from '../Samples';
+import PropTable from '../PropTable';
+import DOCS from '../../../docs';
 
-module.exports = React.createClass( {
+const displayName = "NotificationSection";
+const propTypes = {};
+const defaultProps = {};
 
-  getDefaultProps () {
-    return {};
-  },
+class NotificationSection extends React.Component {
 
-  getInitialState () {
-    return {
-      modalIsOpen: false,
-      toastsAreOpen: true,
-    };
-  },
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-  getModalContent(){
+  getDescription() {
+    const desc = DOCS["SLDSNotification"].description;
+    return {__html: desc };
+  }
+
+  render(){
+    const docs = DOCS["SLDSNotification"] ? true : false;
     return (
-      <div>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-      </div>
-    )
-  },
-
-  openModal () {
-    this.setState({modalIsOpen: true});
-  },
-
-  closeModal () {
-    this.setState({modalIsOpen: false});
-  },
-
-  handleSubmitModal () {
-    this.closeModal();
-  },
-
-  dismissToast(){
-    console.log('====> Dismiss Toast Message');
-  },
-
-  render() {
-    let successMsg = ['New contact added ', <a href="#" key="0123">Sara Smith</a>];
-    let errorMsg = 'There was a problem updating the record.';
-    let offlineMsg = 'Sandbox: TestOrg123';
-    let toastStyle = { display: 'inline-block'};
-    return (
-
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
-          <a href="javascript:void(0)" id='notificationSection'>
           Notification
-          </a>
         </h3>
-        <ul className="slds-p-vertical--medium">
-          <li>
-            <h4>* All notifications are fixed and centered at the top of the screen.</h4>
-          </li>
-          <li>
-            <h4>* Toasts default duration is five seconds and will then disappear.</h4>
-          </li>
-        </ul>
-        <PrismCode className='language-markup'>
-          {require('raw-loader!../../code-snippets/SLDSNotification.txt')}
-        </PrismCode>
-        <div className='slds-p-vertical--medium'>
-          <div className="slds-p-vertical--small">
-            <h4 className="slds-text-heading--small ">Alerts</h4>
-            <div className="demo-only">
-              <div className="slds-p-bottom--small">
-                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} onDismiss={this.dismissToast} />}
-              </div>
-              <div className="slds-p-bottom--small">
-                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='success' icon='notification' texture={true} content={successMsg} duration={5000} onDismiss={this.dismissToast} />}
-              </div>
-              <div className="slds-p-bottom--small">
-                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' theme='error' icon='warning' texture={true} content={errorMsg} onDismiss={this.dismissToast} />}
-              </div>
-              <div className="slds-p-bottom--small">
-                {this.state.modalIsOpen ? null: <SLDSNotification variant='alert' icon='user' content={offlineMsg} dismissible={false} onDismiss={this.dismissToast} />}
-              </div>
-            </div>
-          </div>
+        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
-          <div className="slds-p-vertical--small">
-            <h4 className="slds-text-heading--small ">Toasts</h4>
-            <div className="demo-only" style={toastStyle}>
-              Base
-              {this.state.modalIsOpen ? null: <SLDSNotification variant='toast' theme='success' icon='notification' content={successMsg} onDismiss={this.dismissToast} />}
-            </div>
-
-            <p>Modal Toasts</p>
-            <SLDSButton
-              label='Open Modal Toast'
-              variant='brand'
-              onClick={this.openModal} />
-            <SLDSModal
-              isOpen={this.state.modalIsOpen}
-              toast={<SLDSNotification variant='toast' theme='error' icon='warning' content={errorMsg} onDismiss={this.dismissToast} />}
-              title={<span>Lightning Design System: Style with Ease</span>}
-              footer={[
-                <SLDSButton key='cancelBtn' label='Cancel' variant='neutral' onClick={this.closeModal} />,
-                  <SLDSButton key='saveBtn' label='Save' variant='brand' onClick={this.handleSubmitModal} />
-                  ]}
-                  onRequestClose={this.closeModal}>
-                  {this.getModalContent()}
-                </SLDSModal>
-              </div>
-
-            </div>
-          </div>
-
-
+        <div className="demo-only">
+          <CodeMirror codeText={Samples.Notifications} />
+          <PropTable component="SLDSNotification" />
+        </div>
+      </div>
     );
   }
-});
+
+}
+
+NotificationSection.displayName = displayName;
+NotificationSection.propTypes = propTypes;
+NotificationSection.defaultProps = defaultProps;
+
+module.exports = NotificationSection;
 

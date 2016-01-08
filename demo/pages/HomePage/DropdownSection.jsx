@@ -7,27 +7,49 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React, { Component } from 'react';
-import SLDSDateInput from '../../components/SLDSDateInput/index';
-import SLDSGrid from '../../components/SLDSGrid';
 
-const SLDSColumn = SLDSGrid.Column;
-export default class SecondPage extends Component {
+import React from 'react';
+import CodeMirror from '../CodeMirror';
+import Samples from '../Samples';
+import PropTable from '../PropTable';
+import DOCS from '../../../docs';
 
-  render() {
+const displayName = "DropdownSection";
+const propTypes = {};
+const defaultProps = {};
+
+class DropdownSection extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  getDescription() {
+    const desc = DOCS["SLDSDropdownBase"].description;
+    return {__html: desc };
+  }
+
+  render(){
+    const docs = DOCS["SLDSDropdownBase"] ? true : false;
     return (
-    <div className="sds-grid sds-grid--align-center">
+      <div className='slds-p-around--medium'>
+        <h3 className='slds-text-heading--medium slds-truncate'>Dropdown</h3>
+        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
-
-
-      <div className="slds-col slds-text-align--center slds-p-around--large">
-        <h3 className="slds-text-heading--large">Coming Soon!</h3>
+        <div>
+          <CodeMirror codeText={Samples.Dropdowns} />
+          <PropTable component="SLDSDropdownBase" />
+        </div>
       </div>
-
-
-
-    </div>
-
     );
   }
+
 }
+
+DropdownSection.displayName = displayName;
+DropdownSection.propTypes = propTypes;
+DropdownSection.defaultProps = defaultProps;
+
+module.exports = DropdownSection;
+

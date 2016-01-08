@@ -10,11 +10,13 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import {SLDSDropdownBase,SLDSButton} from '../../../components';
 
-import {default as PrismCode} from 'react-prism/lib/PrismCode';
-
-
+import SLDSButtonGroup from '../../../components/SLDSButtonGroup';
+import SLDSDropdownBase from '../../../components/SLDSDropdownBase';
+import SLDSButton from '../../../components/SLDSButton';
+import SLDSTooltip from '../../../components/SLDSTooltip';
+import SLDSButtonStateful from '../../../components/SLDSButton/SLDSButtonStateful';
+import {ButtonIcon, Icon} from "./../../../components/SLDSIcons";
 
 module.exports = React.createClass( {
 
@@ -26,34 +28,32 @@ module.exports = React.createClass( {
     return {};
   },
 
-  handleOnUpdateHighlighted () {
-    console.log('onUpdateHighlighted should be defined');
-  },
-
-  handleOnSelect(value) {
-    console.log('selected: ',value);
-  },
-
-  handleOnClick() {
-    console.log('onClick should be defined');
+  handleOnSelect(){
+    console.log('onSelect triggered');
   },
 
   render() {
+
     return (
 
-
-            <div className="slds-p-around--medium">
-              <h3 className="slds-text-heading--medium slds-truncate">
-                <a href="javascript:void(0)" id='dropdownSection'>
-                Dropdown Base
+            <div className='slds-p-around--medium'>
+              <h3 className='slds-text-heading--medium slds-truncate'>
+                <a href="javascript:void(0)" id='buttonGroupSection'>
+                  Button Group
                 </a>
               </h3>
 
-              <PrismCode className='language-markup'>
-                {require("raw-loader!../../code-snippets/SLDSDropdownPage.txt")}
-              </PrismCode>
-              <div className="slds-p-vertical--large">
+              <div className='slds-p-vertical--small'>
+                <SLDSButtonGroup>
+                  <SLDSButton label='Refresh' variant='neutral' />
+                  <SLDSButton label='Edit' variant='neutral' />
+                  <SLDSButton label='Save' variant='neutral' />
+
                 <SLDSDropdownBase
+                    assistiveText='More Options'
+                    variant='icon'
+                    iconName='down'
+                    iconVariant='border-filled'
                     options={[
                       {label:'A Option Option Super Super Long',value:'A0'},
                       {label:'B Option',value:'B0'},
@@ -67,18 +67,40 @@ module.exports = React.createClass( {
                       {label:'E2 Option Super Super Long',value:'E1'},
 
                     ]}
-                    value='C0'
-                    label="Contacts"
-                    modal={true}
-                    placeholder="Select a contact"
+                    horizontalAlign='right'
                     onSelect={this.handleOnSelect}
                     onClick={this.handleOnClick}
                     onUpdateHighlighted={this.handleOnUpdateHighlighted}
                     />
+
+
+                </SLDSButtonGroup>
+              </div>
+
+              <div className='slds-p-vertical--small'>
+                <SLDSButtonGroup>
+                  <SLDSButtonStateful type="icon" assistiveText="View Reports" label='Chart' variant='icon' iconName='chart' />
+                  <SLDSButtonStateful type="icon" assistiveText="Filter Data" label='Filter' variant='icon' iconName='filter' />
+                  <SLDSButton assistiveText='Sort' variant='icon' iconName='sort' iconVariant='more'/>
+                </SLDSButtonGroup>
+              </div>
+
+              <div className='slds-p-vertical--small'>
+              <h3>Button Group wtih Tooltip</h3>
+                <SLDSButtonGroup>
+                  <SLDSButton label='Refresh' variant='neutral' />
+                  <SLDSTooltip align="bottom" content="hello" openOn="click">
+                    <SLDSButton label='Edit' variant='neutral' />
+                  </SLDSTooltip>
+                  <SLDSTooltip align="bottom" content="hello" openOn="click">
+                    <SLDSButton label='Save' variant='neutral' />
+                  </SLDSTooltip>
+                </SLDSButtonGroup>
               </div>
             </div>
 
 
     );
+
   }
 });

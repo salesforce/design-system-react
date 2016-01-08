@@ -53,7 +53,7 @@ class Item extends React.Component {
       regex = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
     }
     return React.Children.map(children, c => {
-      return (typeof c === 'string') ? <span dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
+      return (typeof c === 'string') ? <span key={c} dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
     });
   }
 
@@ -77,7 +77,7 @@ class Item extends React.Component {
       return <ListItemLabel {... this.props} />;
     }
     return [
-      <Icon name={this.props.iconName} category={this.props.iconCategory} className={this.props.iconClasses} />,
+      <Icon key={this.props.iconName} name={this.props.iconName} category={this.props.iconCategory} className={this.props.iconClasses} />,
       this.boldSearchText(this.props.children.label)
     ]
   }

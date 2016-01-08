@@ -8,27 +8,38 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 
-import React from 'react';
-import SLDSPopover from '../SLDSPopover';
-const classNames = require("classnames");
+import React from "react";
+import tooltip from "./tooltip";
+import flatten from "lodash.flatten";
 
 const displayName = "SLDSTooltip";
 const propTypes = {
+  /**
+   * alignment of the Tooltip relative to the element that triggers it
+   */
   align: React.PropTypes.string,
+  /**
+   * Pass the element that triggers Tooltip as a child of the Tooltip component
+   */
   children: React.PropTypes.node,
+  /**
+   * Content inside Tooltip
+   */
   content: React.PropTypes.node,
   hoverCloseDelay: React.PropTypes.number,
   openByDefault: React.PropTypes.bool,
-  openOn: React.PropTypes.string,
 };
 const defaultProps = {
-  align: 'top',
+  align: "top",
   content: <span>Tooltip</span>,
   hoverCloseDelay: 350,
   openByDefault: false,
-  openOn: 'hover',
 };
 
+/**
+ * The SLDSTooltip component is variant of the Popover component. <br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/popovers#tooltips">SLDS Popovers > Tooltips</a>.
+ */
 class SLDSTooltip extends React.Component {
 
   constructor(props) {
@@ -36,15 +47,23 @@ class SLDSTooltip extends React.Component {
     this.state = {
       isClosing: false,
       isOpen: this.props.openByDefault,
+      triggerId: null,
     };
   }
 
   componentDidMount() {
-    this.setState({ isMounted: true });
+    const id = React.findDOMNode(this.refs.tooltipTarget).getAttribute("data-reactid");
+    this.setState({
+      isMounted: true,
+      triggerId: id,
+    });
   }
 
   componentWillUnmount() {
-    this.setState({ isMounted: false });
+    this.setState({
+      isMounted: false,
+      triggerId: null,
+    });
   }
 
   handleMouseClick() {
@@ -53,7 +72,6 @@ class SLDSTooltip extends React.Component {
       isClosing: !this.state.isOpen
     });
   }
-
 
   handleMouseEnter() {
     this.setState({
@@ -72,31 +90,11 @@ class SLDSTooltip extends React.Component {
           isClosing: false
         });
       }
-    },this.props.hoverCloseDelay)
+    },this.props.hoverCloseDelay);
   }
 
   getTooltipContent() {
-    return <div className='slds-popover__body'>{this.props.content}</div>;
-  }
-
-  getHorizontalAlign() {
-    if (this.props.align==='left') {
-      return 'left';
-    }
-    else if (this.props.align==='right') {
-      return 'right';
-    }
-    return 'center';
-  }
-
-  getVerticalAlign() {
-    if (this.props.align==='bottom') {
-      return 'bottom';
-    }
-    else if (this.props.align==='top') {
-      return 'top';
-    }
-    return 'middle';
+    return <div id={this.state.triggerId} className="slds-popover__body">{this.props.content}</div>;
   }
 
   handleCancel() {
@@ -106,43 +104,30 @@ class SLDSTooltip extends React.Component {
     });
   }
 
-  getClassName() {
-    return classNames(this.props.className, "slds-popover", {
-      ["slds-popover--tooltip"]: true,
-      ["slds-nubbin--top"]: this.props.align === 'bottom',
-      ['slds-nubbin--bottom']: this.props.align === 'top',
-      ['slds-nubbin--left']: this.props.align === 'right',
-      ['slds-nubbin--right']: this.props.align === 'left'
-    });
+  getTooltip() {
+    return this.state.isOpen?tooltip.getTooltip(this.props, this.getTooltipContent(), this.refs.tooltipTarget, this.handleCancel.bind(this)):<span></span>;
   }
 
-  getTooltip() {
-    return this.state.isOpen?<SLDSPopover
-          key={this.getHorizontalAlign()+' '+this.getVerticalAlign()}
-          targetElement={this.refs.tooltipTarget}
-          closeOnTabKey={true}
-          className=''
-          marginTop='1rem'
-          marginBottom='1rem'
-          marginLeft='1.5rem'
-          marginRight='1.5rem'
-          horizontalAlign={this.getHorizontalAlign()}
-          verticalAlign={this.getVerticalAlign()}
-          flippable={false}
-          onClose={this.handleCancel.bind(this)}>
-          <div className={this.getClassName()} role="tooltip">
-            {this.getTooltipContent()}
-          </div>
-        </SLDSPopover>:null;
+  getContent() {
+    const asstText = <span className="slds-assistive-text">{this.props.content}</span>;
+    return React.Children.map(this.props.children, child => {
+      return React.cloneElement(child, {
+        onBlur: this.handleMouseLeave.bind(this),
+        onFocus: this.handleMouseEnter.bind(this),
+        onMouseEnter: this.handleMouseEnter.bind(this),
+        onMouseLeave: this.handleMouseLeave.bind(this),
+        children: (child.props.children ? flatten([child.props.children]).concat(asstText) : asstText)
+      });
+     })
   }
 
   render(){
-    const btnStyles = { color: "inherit"};
+    const containerStyles = { display: "inline" };
     return (
-      <button className="slds-button" refs='tooltipTarget' onClick={this.props.openOn === 'click' ? this.handleMouseClick.bind(this):null} onMouseEnter={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onMouseLeave={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} onFocus={this.props.openOn === 'hover' ? this.handleMouseEnter.bind(this):null} onBlur={this.props.openOn === 'hover' ? this.handleMouseLeave.bind(this):null} style={btnStyles}>
-        { this.props.children }
+      <div aria-describedby={this.state.triggerId} style={containerStyles} ref="tooltipTarget" role="tooltip">
+        { this.getContent() }
         { this.getTooltip() }
-      </button>
+      </div>
     );
   }
 

@@ -170,7 +170,7 @@ class SLDSList extends React.Component {
         >
         <ul
           ref="scroll"
-          className={"slds-dropdown__list slds-theme--"+this.props.theme}
+          className={"slds-dropdown__list"}
           role="menu"
           aria-labelledby={this.props.triggerId}
           >

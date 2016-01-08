@@ -13,7 +13,11 @@ import React from "react";
 
 const displayName = "SLDSButtonGroup";
 const propTypes = {
-  children: React.PropTypes.node.isRequired
+  /**
+   * Children are expected to be SLDSButton components
+   */
+  children: React.PropTypes.node.isRequired,
+  className: React.PropTypes.string,
 };
 const defaultProps = {};
 
@@ -25,7 +29,7 @@ class SLDSButtonGroup extends React.Component {
 
   render() {
     return (
-      <div className="slds-button-group" role="group">
+      <div className={"slds-button-group" + " " + this.props.className} role="group">
         {this.props.children}
       </div>
     )

@@ -1,2 +1,0 @@
-
-<Icon name='open_folder' category='utility' className='slds-input__icon slds-icon-text-default'/>
