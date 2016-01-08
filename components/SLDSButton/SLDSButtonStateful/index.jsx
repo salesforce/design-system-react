@@ -32,6 +32,9 @@ const propTypes = {
    * If true, button scales 100% width on small form factors
    */
   responsive: React.PropTypes.bool,
+  /**
+   * Write <code>"-1"</code> if you don't want the user to tab to it.
+   */
   tabIndex: React.PropTypes.string,
   /**
    * <code>join</code> - states are join, member, leave <br />
@@ -111,8 +114,8 @@ class SLDSButtonStateful extends React.Component {
     }
     else if(this.props.type === "icon") {
       return (
-        <button className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props}>
-          <ButtonIcon disabled={this.props.disabled} name={this.props.iconName} size={this.props.iconSize} assistiveText={this.props.assistiveText} className="slds-button__icon--stateful"  />
+        <button className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props} aria-live="polite">
+          <ButtonIcon assistiveText={this.state.active ?  this.props.assistiveText + " selected" : this.props.assistiveText} disabled={this.props.disabled} name={this.props.iconName} size={this.props.iconSize}  className="slds-button__icon--stateful"  />
         </button>
       )
     }

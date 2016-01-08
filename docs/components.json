@@ -141,7 +141,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to it."
             },
             "variant": {
                 "type": {
@@ -247,7 +247,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to it."
             },
             "type": {
                 "type": {
@@ -384,11 +384,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"Dropdown\"",
-                    "computed": false
-                }
+                "description": ""
             },
             "listItemRenderer": {
                 "type": {

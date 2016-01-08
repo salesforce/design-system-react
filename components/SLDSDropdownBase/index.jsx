@@ -54,7 +54,6 @@ const propTypes = {
 const defaultProps = {
   horizontalAlign: "left",
   hoverCloseDelay: 300,
-  label: "Dropdown",
   openOn: "hover",
   options: [],
   value: null,

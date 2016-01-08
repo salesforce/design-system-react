@@ -46,6 +46,9 @@ const propTypes = {
    * If true, button scales 100% width on small form factors
    */
   responsive: React.PropTypes.bool,
+  /**
+   * Write <code>"-1"</code> if you don't want the user to tab to it.
+   */
   tabIndex: React.PropTypes.string,
   /**
    * Use <code>icon-inverse</code> for white icons.
