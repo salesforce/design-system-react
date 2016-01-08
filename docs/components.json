@@ -322,7 +322,7 @@
                     "name": "node"
                 },
                 "required": true,
-                "description": "Children are expected to be SLDSButton components"
+                "description": "Children are expected to be components. If last button triggers a dropdown menu, use SLDSDropdown instead of SLDSButton."
             },
             "className": {
                 "type": {

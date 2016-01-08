@@ -14,7 +14,7 @@ import React from "react";
 const displayName = "SLDSButtonGroup";
 const propTypes = {
   /**
-   * Children are expected to be SLDSButton components
+   * Children are expected to be components. If last button triggers a dropdown menu, use SLDSDropdown instead of SLDSButton.
    */
   children: React.PropTypes.node.isRequired,
   className: React.PropTypes.string,
