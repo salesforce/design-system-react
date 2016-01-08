@@ -78,7 +78,12 @@ class Icon extends React.Component {
     return (
       <span className={this.getContainerClassName()}>
       {label}
-      <SLDSUtilityIcon className={this.getClassName()} name={this.props.name} category={this.props.category} aria-hidden='true' />
+      <SLDSUtilityIcon
+        aria-hidden='true'
+        category={this.props.category}
+        className={this.getClassName()}
+        name={this.props.name}
+        />
       </span>
     )
   }
