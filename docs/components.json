@@ -716,7 +716,7 @@
         }
     },
     "SLDSModal": {
-        "description": "The SLDSModal component is used for modals and prompts. <br />\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">SLDS Modals</a>.",
+        "description": "The SLDSModal component is used for modals and <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">prompt notifications</a>. <br />\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">SLDS Modals</a>.",
         "displayName": "SLDSModal",
         "props": {
             "align": {
@@ -724,11 +724,11 @@
                     "name": "enum",
                     "value": [
                         {
-                            "value": "'top'",
+                            "value": "\"top\"",
                             "computed": false
                         },
                         {
-                            "value": "'center'",
+                            "value": "\"center\"",
                             "computed": false
                         }
                     ]
@@ -736,7 +736,7 @@
                 "required": false,
                 "description": "Vertical alignment of modal",
                 "defaultValue": {
-                    "value": "'center'",
+                    "value": "\"center\"",
                     "computed": false
                 }
             },
@@ -744,7 +744,7 @@
                 "type": {
                     "name": "node"
                 },
-                "required": false,
+                "required": true,
                 "description": "Modal content"
             },
             "directional": {
@@ -763,17 +763,13 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "[]",
-                    "computed": false
-                }
+                "description": ""
             },
             "isOpen": {
                 "type": {
                     "name": "bool"
                 },
-                "required": false,
+                "required": true,
                 "description": "",
                 "defaultValue": {
                     "value": "false",
@@ -796,31 +792,31 @@
                     "name": "enum",
                     "value": [
                         {
-                            "value": "''",
+                            "value": "\"\"",
                             "computed": false
                         },
                         {
-                            "value": "'success'",
+                            "value": "\"success\"",
                             "computed": false
                         },
                         {
-                            "value": "'warning'",
+                            "value": "\"warning\"",
                             "computed": false
                         },
                         {
-                            "value": "'error'",
+                            "value": "\"error\"",
                             "computed": false
                         },
                         {
-                            "value": "'wrench'",
+                            "value": "\"wrench\"",
                             "computed": false
                         },
                         {
-                            "value": "'offline'",
+                            "value": "\"offline\"",
                             "computed": false
                         },
                         {
-                            "value": "'info'",
+                            "value": "\"info\"",
                             "computed": false
                         }
                     ]
@@ -828,18 +824,7 @@
                 "required": false,
                 "description": "",
                 "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
-            },
-            "returnFocusTo": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "null",
+                    "value": "\"\"",
                     "computed": false
                 }
             },
@@ -848,11 +833,11 @@
                     "name": "enum",
                     "value": [
                         {
-                            "value": "'medium'",
+                            "value": "\"medium\"",
                             "computed": false
                         },
                         {
-                            "value": "'large'",
+                            "value": "\"large\"",
                             "computed": false
                         }
                     ]
@@ -865,22 +850,14 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Text underneath the title",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": "Text underneath the title"
             },
             "title": {
                 "type": {
                     "name": "node"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
+                "description": ""
             }
         }
     },
