@@ -18,21 +18,22 @@ export const CONTROL = 'ButtonView';
 
 const ButtonViewCore = Lib.merge({}, Base, {
 	CONTROL,
-	
+
 	cssClasses: {
 		ASSISTIVE_TEXT: 'slds-assistive-text',
 		BUTTON_ICON: 'slds-button__icon',
+		BUTTON_ICON_HINT: 'slds-button__icon slds-button__icon--hint',
 		ICON: 'slds-icon',
 		STATEFUL_ICON: 'slds-button__icon--stateful',
 		TRUNCATE: 'slds-truncate'
 	},
-	
+
 	buttonStatefulViewStyles: {
 		notSelected: 'slds-text-not-selected',
 		selected: 'slds-text-selected',
 		selectedHover: 'slds-text-selected-focus'
 	},
-	
+
 	iconPositions: {
 		'left': 'slds-button__icon--left',
 		'right': 'slds-button__icon--right'
@@ -58,7 +59,17 @@ const ButtonViewCore = Lib.merge({}, Base, {
 			iconBaseClass = this.cssClasses.STATEFUL_ICON;
 		} else if (this.getProperty('iconStyle') === 'icon-only') {
 			iconBaseClass = this.cssClasses.ICON;
-		}	else {
+		} else if (
+				this.getProperty('iconStyle') === 'icon-bare-hint' ||
+				this.getProperty('iconStyle') === 'icon-border-hint' ||
+				this.getProperty('iconStyle') === 'icon-border-filled-hint' ||
+				this.getProperty('iconStyle') === 'icon-container-hint' ||
+				this.getProperty('iconStyle') === 'icon-inverse-hint' ||
+				this.getProperty('iconStyle') === 'icon-more-hint' ||
+				this.getProperty('iconStyle') === 'icon-small-hint'
+		) {
+			iconBaseClass = this.cssClasses.BUTTON_ICON_HINT;
+		} else {
 			iconBaseClass = this.cssClasses.BUTTON_ICON;
 		}
 
