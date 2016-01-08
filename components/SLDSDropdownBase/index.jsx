@@ -191,9 +191,6 @@ class SLDSDropdown extends React.Component {
     EventUtil.trap(event);
     if(!this.state.isOpen){
       this.setState({isOpen: true});
-      if(this.props.onClick){
-        this.props.onClick();
-      }
     }else{
       this.handleClose();
     }
