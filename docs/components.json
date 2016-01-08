@@ -333,27 +333,19 @@
         "description": "The SLDSDropdown component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
         "displayName": "SLDSDropdown",
         "props": {
-            "className": {
+            "buttonClassName": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"\"",
-                    "computed": false
-                }
+                "description": "Classes applied to SLDSButton"
             },
             "disabled": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": ""
             },
             "horizontalAlign": {
                 "type": {
@@ -381,20 +373,9 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "",
+                "description": "Delay on menu closing",
                 "defaultValue": {
                     "value": "300",
-                    "computed": false
-                }
-            },
-            "initialFocus": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
                     "computed": false
                 }
             },
@@ -409,34 +390,19 @@
                     "computed": false
                 }
             },
-            "listClassName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"\"",
-                    "computed": false
-                }
-            },
             "listItemRenderer": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": ""
+                "description": "Custom element that overrides the default Menu Item component"
             },
             "modal": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if modal, dropdown renders specifically to work inside a modal",
-                "defaultValue": {
-                    "value": "true",
-                    "computed": false
-                }
+                "description": "If true, component renders specifically to work inside Modal"
             },
             "onClick": {
                 "type": {
@@ -450,13 +416,6 @@
                     "name": "func"
                 },
                 "required": true,
-                "description": ""
-            },
-            "onUpdateHighlighted": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
                 "description": ""
             },
             "openOn": {
@@ -485,20 +444,9 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": "",
+                "description": "Menu item data",
                 "defaultValue": {
                     "value": "[]",
-                    "computed": false
-                }
-            },
-            "placeholder": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"Select an Option\"",
                     "computed": false
                 }
             },
@@ -507,7 +455,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "",
+                "description": "Current selected menu item",
                 "defaultValue": {
                     "value": "null",
                     "computed": false
@@ -518,7 +466,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "determines variant of button that triggers modal",
+                "description": "Determines variant of SLDSButton that triggers dropdown",
                 "defaultValue": {
                     "value": "\"neutral\"",
                     "computed": false
@@ -624,7 +572,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "message for when no search results found"
+                "description": "Custom message for when no search results found"
             },
             "errors": {
                 "type": {
@@ -652,28 +600,28 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "react component for lookup footer"
+                "description": "Custom component for Lookup footer"
             },
             "hasError": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "If true, input field indicates error state"
             },
             "headerRenderer": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "react component for lookup header"
+                "description": "Custom component for Lookup header"
             },
             "iconCategory": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to view categories"
             },
             "iconClasses": {
                 "type": {
@@ -687,14 +635,14 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Name of icon. Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to view icon names."
             },
             "items": {
                 "type": {
                     "name": "array"
                 },
                 "required": false,
-                "description": ""
+                "description": "Lookup items data"
             },
             "label": {
                 "type": {
@@ -708,7 +656,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "react component that overrides the default Menu Item component"
+                "description": "Custom component that overrides the default Lookup Item component"
             },
             "messages": {
                 "type": {
@@ -725,11 +673,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": "If true, component renders specifically to work inside Modal"
             },
             "onBlur": {
                 "type": {
@@ -759,12 +703,23 @@
                 "required": false,
                 "description": ""
             },
+            "searchTerm": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"\"",
+                    "computed": false
+                }
+            },
             "type": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "salesforce object type"
+                "description": "Salesforce object type for Lookup items"
             }
         }
     },
@@ -1064,23 +1019,12 @@
         "description": "The SLDSPicklist component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
         "displayName": "SLDSPicklist",
         "props": {
-            "className": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "classes applied to menu list of component"
-            },
             "disabled": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": ""
             },
             "label": {
                 "type": {
@@ -1089,7 +1033,7 @@
                 "required": false,
                 "description": "",
                 "defaultValue": {
-                    "value": "'Picklist'",
+                    "value": "\"Picklist\"",
                     "computed": false
                 }
             },
@@ -1098,22 +1042,14 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "custom element that overrides the default Menu Item component",
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
+                "description": "Custom element that overrides the default Menu Item component"
             },
             "modal": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if true, dropdown renders specifically to work inside a modal",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": "If true, component renders specifically to work inside Modal"
             },
             "onClick": {
                 "type": {
@@ -1129,19 +1065,12 @@
                 "required": true,
                 "description": ""
             },
-            "onUpdateHighlighted": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "callback function for when item is hovered"
-            },
             "options": {
                 "type": {
                     "name": "array"
                 },
                 "required": false,
-                "description": "menu item data",
+                "description": "Menu item data",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -1154,7 +1083,7 @@
                 "required": false,
                 "description": "",
                 "defaultValue": {
-                    "value": "'Select an Option'",
+                    "value": "\"Select an Option\"",
                     "computed": false
                 }
             },
@@ -1163,7 +1092,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "current selected item",
+                "description": "Current selected item",
                 "defaultValue": {
                     "value": "null",
                     "computed": false

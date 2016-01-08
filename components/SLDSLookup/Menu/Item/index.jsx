@@ -8,6 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Icon} from "../../../SLDSIcons";
 import {EventUtil} from '../../../utils';
 import escapeRegExp from 'lodash.escaperegexp';
@@ -67,7 +68,7 @@ class Item extends React.Component {
 
   //Scroll menu item based on up/down mouse keys (assumes all items are the same height)
   scrollFocus(){
-    const height = React.findDOMNode(this).offsetHeight;
+    const height = ReactDOM.findDOMNode(this).offsetHeight;
     if(height && this.props.handleItemFocus) this.props.handleItemFocus(this.props.index,height);
   }
 

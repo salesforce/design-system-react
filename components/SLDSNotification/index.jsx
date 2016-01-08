@@ -10,6 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from "react";
+import ReactDOM from "react-dom";
+
 const classNames = require("classnames");
 import SLDSButton from "../SLDSButton";
 import {Icon} from "../SLDSIcons";
@@ -76,7 +78,7 @@ class SLDSNotification extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(prevProps.isOpen !== this.props.isOpen){
-      const btn = React.findDOMNode(this.refs.dismissNotificationBtn);
+      const btn = ReactDOM.findDOMNode(this.refs.dismissNotificationBtn);
       if(btn) btn.focus();
     }
   }

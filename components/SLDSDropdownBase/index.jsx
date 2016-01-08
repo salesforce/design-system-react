@@ -9,51 +9,54 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from "react";
+import ReactDOM from "react-dom";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
-
-import chain from "../utils/create-chained-function";
 import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
-import omit from "lodash.omit";
 
 const displayName = "SLDSDropdown";
 const propTypes = {
-  className: React.PropTypes.string,
+  /**
+   * Classes applied to SLDSButton
+   */
+  buttonClassName: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   horizontalAlign: React.PropTypes.oneOf(["left", "right"]),
+  /**
+   * Delay on menu closing
+   */
   hoverCloseDelay: React.PropTypes.number,
-  initialFocus: React.PropTypes.bool,
   label: React.PropTypes.string,
-  listClassName: React.PropTypes.string,
+  /**
+   * Custom element that overrides the default Menu Item component
+   */
   listItemRenderer: React.PropTypes.func,
   /**
-   * if modal, dropdown renders specifically to work inside a modal
+   * If true, component renders specifically to work inside Modal
    */
   modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func.isRequired,
-  onUpdateHighlighted: React.PropTypes.func,
   openOn: React.PropTypes.oneOf(["hover", "click"]),
+  /**
+   * Menu item data
+   */
   options: React.PropTypes.array,
-  placeholder: React.PropTypes.string,
+  /**
+   * Current selected menu item
+   */
   value: React.PropTypes.string,
   /**
-   * determines variant of button that triggers modal
+   * Determines variant of SLDSButton that triggers dropdown
    */
   variant: React.PropTypes.string,
 };
 const defaultProps = {
-  className: "",
-  disabled: false,
   horizontalAlign: "left",
   hoverCloseDelay: 300,
-  initialFocus: false,
   label: "Dropdown",
-  listClassName: "",
-  modal: true,
   openOn: "hover",
   options: [],
-  placeholder: "Select an Option",
   value: null,
   variant: "neutral",
 };
@@ -81,12 +84,6 @@ class SLDSDropdown extends React.Component {
 
   componentDidMount(){
     this.setState({ isMounted: true });
-    if(this.props.initialFocus){
-      this.setFocus();
-    }
-    if(this.props.openOn === "hover"){
-      //TODO:Add functionality here
-    }
   }
 
   componentWillUnmount() {
@@ -95,14 +92,10 @@ class SLDSDropdown extends React.Component {
 
   componentDidUpdate(prevProps, prevState){
     if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
-      if(this.state.lastBlurredIndex === this.state.highlightedIndex){
-        this.handleClose();
-      }
+      if(this.state.lastBlurredIndex === this.state.highlightedIndex) this.handleClose();
     }
 
-    if(this.state.isOpen && !prevState.isOpen){
-      this.state.isClosing = false;
-    }
+    if(this.state.isOpen && !prevState.isOpen) this.state.isClosing = false;
 
     if(this.state.selectedIndex !== prevState.selectedIndex){
       this.handleClose();
@@ -111,18 +104,18 @@ class SLDSDropdown extends React.Component {
     } else if(!this.state.isFocused && prevState.isFocused){
       if (this.refs.list) {
         if (this.state.isMounted && this.refs.list) {
-          if (React.findDOMNode(this.refs.list).contains(document.activeElement)) {
+          if (ReactDOM.findDOMNode(this.refs.list).contains(document.activeElement)) {
             return;
           }
           this.setState({ isOpen: false });
         }
       }
-    } else if(this.state.isClosing && !prevState.isClosing){
+    } else if(this.state.isClosing && !prevState.isClosing) {
       setTimeout(()=>{
         if(this.state.isClosing){
           this.setState({isOpen: false});
         }
-      },this.props.hoverCloseDelay);
+      }, this.props.hoverCloseDelay);
     }
 
     if(this.props.value !== prevProps.value){
@@ -146,9 +139,7 @@ class SLDSDropdown extends React.Component {
 
   getValueByIndex(index){
     const option = this.props.options[index];
-    if(option){
-      return this.props.options[index];
-    }
+    if(option) return this.props.options[index];
   }
 
   getListItemRenderer() {
@@ -158,54 +149,49 @@ class SLDSDropdown extends React.Component {
   handleSelect(index){
     this.setState({selectedIndex: index})
     this.setFocus();
-    if(this.props.onSelect){
-      this.props.onSelect(this.getValueByIndex(index));
-    }
+    if(this.props.onSelect) this.props.onSelect(this.getValueByIndex(index));
   }
 
   handleClose(){
     this.setState({
       isOpen: false,
       isHover: false
-    });
+    })
   }
 
   handleMouseEnter(){
-    if(this.props.openOn === "hover"){
-      this.state.isClosing = false;
-      if(!this.state.isOpen){
-        this.setState({
-          isOpen: true,
-          isHover: true
-        });
-      }
+    this.state.isClosing = false;
+    if(!this.state.isOpen){
+      this.setState({
+        isOpen: true,
+        isHover: true
+      });
     }
+    if(this.props.onMouseEnter) this.props.onMouseEnter();
   }
 
   handleMouseLeave(){
-    if(this.props.openOn === "hover"){
-      this.setState({isClosing: true});
-    }
+    this.setState({isClosing: true});
+    if(this.props.onMouseLeave) this.props.onMouseLeave();
   }
 
-  handleClick(event){
-    EventUtil.trap(event);
+  handleClick(){
     if(!this.state.isOpen){
       this.setState({isOpen: true});
-      if(this.props.onClick){
-        this.props.onClick();
-      }
+      if(this.props.onClick) this.props.onClick();
     }else{
       this.handleClose();
     }
   }
 
   handleMouseDown(event){
-    EventUtil.trapImmediate(event);
+    if(event) EventUtil.trapImmediate(event);
+    if(this.props.onMouseDown) this.props.onMouseDown();
   }
 
   handleBlur(e){
     this.setState({isFocused: false});
+    if(this.props.onBlur) this.props.onBlur();
   }
 
   handleFocus(){
@@ -213,32 +199,31 @@ class SLDSDropdown extends React.Component {
       isFocused: true,
       isHover: false
     });
+    if(this.props.onFocus) this.props.onFocus();
   }
 
   setFocus(){
-    if(this.state.isMounted){
-      React.findDOMNode(this.getButtonNode()).focus();
-    }
+    if(this.state.isMounted) ReactDOM.findDOMNode(this.getButtonNode()).focus();
   }
 
   getButtonNode(){
-    return React.findDOMNode(this.refs.button);
+    return ReactDOM.findDOMNode(this.refs.button);
   }
 
   handleKeyDown(event){
     if(event.keyCode){
       if(event.keyCode === KEYS.ENTER ||
-          event.keyCode === KEYS.SPACE ||
-          event.keyCode === KEYS.DOWN ||
-          event.keyCode === KEYS.UP){
-        EventUtil.trapEvent(event);
+         event.keyCode === KEYS.SPACE ||
+         event.keyCode === KEYS.DOWN ||
+         event.keyCode === KEYS.UP) {
 
-        this.setState({
-          isOpen: true,
-          highlightedIndex: 0
-        });
-
+          EventUtil.trap(event);
+          this.setState({
+            isOpen: true,
+            highlightedIndex: 0
+          });
       }
+      if(this.props.onKeyDown) this.props.onKeyDown();
     }
   }
 
@@ -258,14 +243,11 @@ class SLDSDropdown extends React.Component {
   }
 
   handleCancel(){
-    if(!this.state.isHover){
-      this.setFocus();
-    }
+    if(!this.state.isHover) this.setFocus();
   }
 
   getPopoverContent(){
     return <List
-            className={this.props.listClassName}
             highlightedIndex={this.state.highlightedIndex}
             isHover={this.state.isHover}
             itemRenderer={this.getListItemRenderer()}
@@ -309,25 +291,20 @@ class SLDSDropdown extends React.Component {
     );
   }
 
-  getPlaceholder(){
-    const option = this.props.options[this.state.selectedIndex];
-    return (option && option.label)?option.label:this.props.placeholder;
-  }
-
   render(){
     return <SLDSButton
         aria-haspopup="true"
-        className={this.props.className}
+        className={this.props.buttonClassName}
         iconName={this.props.iconName}
         iconVariant={this.props.iconVariant}
         label={this.props.label}
-        onBlur={ chain(this.props.onBlur, this.handleBlur.bind(this)) }
-        onClick={ chain(this.props.onClick, this.handleClick.bind(this)) }
-        onFocus={ chain(this.props.onFocus, this.handleFocus.bind(this)) }
-        onKeyDown={ chain(this.props.onKeyDown, this.handleKeyDown.bind(this)) }
-        onMouseDown={ chain(this.props.onMouseDown, this.handleMouseDown.bind(this)) }
-        onMouseEnter={ chain(this.props.onMouseEnter, (this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null) }
-        onMouseLeave={ chain(this.props.onMouseLeave, (this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null ) }
+        onBlur={this.props.openOn === "hover" ? this.handleBlur.bind(this):null}
+        onClick={this.props.openOn === "click" ? this.handleClick.bind(this):null}
+        onFocus={this.props.openOn === "hover" ? this.handleFocus.bind(this):null}
+        onKeyDown={this.handleKeyDown.bind(this)}
+        onMouseDown={this.props.openOn === "click" ? this.handleMouseDown.bind(this):null}
+        onMouseEnter={this.props.openOn === "hover" ? this.handleMouseEnter.bind(this):null}
+        onMouseLeave={this.props.openOn === "hover" ? this.handleMouseLeave.bind(this):null}
         ref="button"
         style={this.props.style}
         tabIndex={this.state.isOpen ? "-1" : "0"}
