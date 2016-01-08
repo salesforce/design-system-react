@@ -1,4 +1,4 @@
-// DATATABLR CONTROL - REACT FACADE
+// DATA TABLE CONTROL - REACT FACADE
 
 // Core
 import * as Lib from '../../lib/lib';
