@@ -1012,23 +1012,12 @@
         "description": "The SLDSPicklist component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
         "displayName": "SLDSPicklist",
         "props": {
-            "className": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "classes applied to menu list of component"
-            },
             "disabled": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": ""
             },
             "label": {
                 "type": {
@@ -1037,7 +1026,7 @@
                 "required": false,
                 "description": "",
                 "defaultValue": {
-                    "value": "'Picklist'",
+                    "value": "\"Picklist\"",
                     "computed": false
                 }
             },
@@ -1046,22 +1035,14 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "custom element that overrides the default Menu Item component",
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
+                "description": "Custom element that overrides the default Menu Item component"
             },
             "modal": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if true, dropdown renders specifically to work inside a modal",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": "If true, component renders specifically to work inside Modal"
             },
             "onClick": {
                 "type": {
@@ -1077,19 +1058,12 @@
                 "required": true,
                 "description": ""
             },
-            "onUpdateHighlighted": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "callback function for when item is hovered"
-            },
             "options": {
                 "type": {
                     "name": "array"
                 },
                 "required": false,
-                "description": "menu item data",
+                "description": "Menu item data",
                 "defaultValue": {
                     "value": "[]",
                     "computed": false
@@ -1102,7 +1076,7 @@
                 "required": false,
                 "description": "",
                 "defaultValue": {
-                    "value": "'Select an Option'",
+                    "value": "\"Select an Option\"",
                     "computed": false
                 }
             },
@@ -1111,7 +1085,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "current selected item",
+                "description": "Current selected item",
                 "defaultValue": {
                     "value": "null",
                     "computed": false
