@@ -8916,7 +8916,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	
 	      if (hasFooter) {
-	        footer = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(footerClass) }, this.props.footer);
+	        footer = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(footerClass), onClick: this.handleModalClick.bind(this) }, this.props.footer);
 	      }
 	      return footer;
 	    }
@@ -8937,7 +8937,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        headerContent = _react2['default'].createElement('div', null, this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null);
 	      }
 	
-	      return _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass), style: { position: "relative" } }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal.bind(this) }), headerContent);
+	      return _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass), style: { position: "relative" }, onClick: this.handleModalClick.bind(this) }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal.bind(this) }), headerContent);
 	    }
 	  }, {
 	    key: 'getModal',
@@ -8950,7 +8950,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      };
 	      var modalStyle = this.props.align === "top" ? { "justifyContent": "flex-start" } : null;
 	      var contentStyle = this.props.title ? null : { "borderRadius": ".25rem" };
-	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { 'aria-hidden': 'false', role: 'dialog', className: (0, _classnames2['default'])(modalClass), onClick: this.closeModal.bind(this) }, _react2['default'].createElement('div', { className: 'slds-modal__container', style: modalStyle }, _react2['default'].createElement('div', { onClick: this.handleModalClick.bind(this) }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content', style: contentStyle }, this.props.children), this.footerComponent()))), _react2['default'].createElement('div', { className: 'slds-backdrop slds-backdrop--open' }));
+	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { 'aria-hidden': 'false', role: 'dialog', className: (0, _classnames2['default'])(modalClass), onClick: this.closeModal.bind(this) }, _react2['default'].createElement('div', { className: 'slds-modal__container', style: modalStyle }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content', style: contentStyle, onClick: this.handleModalClick.bind(this) }, this.props.children), this.footerComponent())), _react2['default'].createElement('div', { className: 'slds-backdrop slds-backdrop--open' }));
 	    }
 	  }, {
 	    key: 'render',
