@@ -52,6 +52,7 @@ const propTypes = {
   onChange: React.PropTypes.func,
   onItemSelect: React.PropTypes.func,
   onItemUnselect: React.PropTypes.func,
+  searchTerm: React.PropTypes.string,
   /**
    * salesforce object type
    */
@@ -66,6 +67,7 @@ const defaultFilter = (term, item) => {
 const defaultProps = {
   filterWith: defaultFilter,
   modal: false,
+  searchTerm: "",
 };
 
 
@@ -82,7 +84,7 @@ class SLDSLookup extends React.Component {
       items: [],
       isOpen: false,
       listLength: this.props.items.length,
-      searchTerm: "",
+      searchTerm: this.props.searchTerm,
       selectedIndex: null,
     };
   }
