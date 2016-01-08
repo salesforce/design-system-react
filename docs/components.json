@@ -1060,10 +1060,28 @@
         "props": {
             "align": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"top\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"bottom\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"left\"",
+                            "computed": false
+                        }
+                    ]
                 },
-                "required": false,
-                "description": "alignment of the Tooltip relative to the element that triggers it",
+                "required": true,
+                "description": "Alignment of the Tooltip relative to the element that triggers it.",
                 "defaultValue": {
                     "value": "\"top\"",
                     "computed": false
@@ -1073,15 +1091,15 @@
                 "type": {
                     "name": "node"
                 },
-                "required": false,
-                "description": "Pass the element that triggers Tooltip as a child of the Tooltip component"
+                "required": true,
+                "description": "Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it."
             },
             "content": {
                 "type": {
                     "name": "node"
                 },
-                "required": false,
-                "description": "Content inside Tooltip",
+                "required": true,
+                "description": "Content inside Tooltip.",
                 "defaultValue": {
                     "value": "<span>Tooltip</span>",
                     "computed": false
@@ -1103,11 +1121,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "false",
-                    "computed": false
-                }
+                "description": ""
             }
         }
     }

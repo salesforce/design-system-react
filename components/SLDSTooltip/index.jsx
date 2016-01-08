@@ -17,17 +17,17 @@ import flatten from "lodash.flatten";
 const displayName = "SLDSTooltip";
 const propTypes = {
   /**
-   * alignment of the Tooltip relative to the element that triggers it
+   * Alignment of the Tooltip relative to the element that triggers it.
    */
-  align: React.PropTypes.string,
+  align: React.PropTypes.oneOf(["top", "right", "bottom", "left"]).isRequired,
   /**
-   * Pass the element that triggers Tooltip as a child of the Tooltip component
+   * Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it.
    */
-  children: React.PropTypes.node,
+  children: React.PropTypes.node.isRequired,
   /**
-   * Content inside Tooltip
+   * Content inside Tooltip.
    */
-  content: React.PropTypes.node,
+  content: React.PropTypes.node.isRequired,
   hoverCloseDelay: React.PropTypes.number,
   openByDefault: React.PropTypes.bool,
 };
@@ -35,7 +35,6 @@ const defaultProps = {
   align: "top",
   content: <span>Tooltip</span>,
   hoverCloseDelay: 350,
-  openByDefault: false,
 };
 
 /**
@@ -114,11 +113,11 @@ class SLDSTooltip extends React.Component {
     const asstText = <span className="slds-assistive-text">{this.props.content}</span>;
     return React.Children.map(this.props.children, child => {
       return React.cloneElement(child, {
+        children: (child.props.children ? flatten([child.props.children]).concat(asstText) : asstText),
         onBlur: this.handleMouseLeave.bind(this),
         onFocus: this.handleMouseEnter.bind(this),
         onMouseEnter: this.handleMouseEnter.bind(this),
         onMouseLeave: this.handleMouseLeave.bind(this),
-        children: (child.props.children ? flatten([child.props.children]).concat(asstText) : asstText)
       });
      })
   }
