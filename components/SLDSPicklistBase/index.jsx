@@ -18,7 +18,7 @@ import {Icon} from "../SLDSIcons";
 const displayName = "SLDSPicklist";
 const propTypes = {
   disabled: React.PropTypes.bool,
-  label: React.PropTypes.string,
+  label: React.PropTypes.string.isRequired,
   /**
    * Custom element that overrides the default Menu Item component
    */
@@ -32,7 +32,7 @@ const propTypes = {
   /**
    * Menu item data
    */
-  options: React.PropTypes.array,
+  options: React.PropTypes.array.isRequired,
   placeholder: React.PropTypes.string,
   /**
    * Current selected item
@@ -41,9 +41,7 @@ const propTypes = {
 };
 const defaultProps = {
   label: "Picklist",
-  options: [],
   placeholder: "Select an Option",
-  value: null,
 };
 
 /**

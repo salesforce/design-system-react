@@ -443,23 +443,15 @@
                 "type": {
                     "name": "array"
                 },
-                "required": false,
-                "description": "Menu item data",
-                "defaultValue": {
-                    "value": "[]",
-                    "computed": false
-                }
+                "required": true,
+                "description": "Menu item data"
             },
             "value": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Current selected menu item",
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
+                "description": "Current selected menu item"
             },
             "variant": {
                 "type": {
@@ -511,7 +503,7 @@
                         }
                     ]
                 },
-                "required": false,
+                "required": true,
                 "description": "",
                 "defaultValue": {
                     "value": "'standard'",
@@ -571,7 +563,7 @@
                 "type": {
                     "name": "string"
                 },
-                "required": false,
+                "required": true,
                 "description": "Custom message for when no search results found"
             },
             "errors": {
@@ -588,7 +580,7 @@
                 "type": {
                     "name": "func"
                 },
-                "required": false,
+                "required": true,
                 "description": "",
                 "defaultValue": {
                     "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
@@ -641,14 +633,14 @@
                 "type": {
                     "name": "array"
                 },
-                "required": false,
+                "required": true,
                 "description": "Lookup items data"
             },
             "label": {
                 "type": {
                     "name": "string"
                 },
-                "required": false,
+                "required": true,
                 "description": ""
             },
             "listItemLabelRenderer": {
@@ -693,7 +685,7 @@
                 "type": {
                     "name": "func"
                 },
-                "required": false,
+                "required": true,
                 "description": ""
             },
             "onItemUnselect": {
@@ -1034,7 +1026,7 @@
                 "type": {
                     "name": "string"
                 },
-                "required": false,
+                "required": true,
                 "description": "",
                 "defaultValue": {
                     "value": "\"Picklist\"",
@@ -1073,12 +1065,8 @@
                 "type": {
                     "name": "array"
                 },
-                "required": false,
-                "description": "Menu item data",
-                "defaultValue": {
-                    "value": "[]",
-                    "computed": false
-                }
+                "required": true,
+                "description": "Menu item data"
             },
             "placeholder": {
                 "type": {
@@ -1096,11 +1084,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Current selected item",
-                "defaultValue": {
-                    "value": "null",
-                    "computed": false
-                }
+                "description": "Current selected item"
             }
         }
     },

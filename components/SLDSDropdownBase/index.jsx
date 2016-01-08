@@ -41,7 +41,7 @@ const propTypes = {
   /**
    * Menu item data
    */
-  options: React.PropTypes.array,
+  options: React.PropTypes.array.isRequired,
   /**
    * Current selected menu item
    */
@@ -55,8 +55,6 @@ const defaultProps = {
   horizontalAlign: "left",
   hoverCloseDelay: 300,
   openOn: "hover",
-  options: [],
-  value: null,
   variant: "neutral",
 };
 

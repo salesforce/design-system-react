@@ -21,7 +21,7 @@ const propTypes = {
    * declare this prop as <code>assistiveText=""</code>.
    */
   assistiveText: React.PropTypes.string,
-  category: React.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]),
+  category: React.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]).isRequired,
   /**
    * css classes that are applied to the svg
    */

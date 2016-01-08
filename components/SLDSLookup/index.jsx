@@ -26,9 +26,9 @@ const propTypes = {
   /**
    * Custom message for when no search results found
    */
-  emptyMessage: React.PropTypes.string,
+  emptyMessage: React.PropTypes.string.isRequired,
   errors: React.PropTypes.arrayOf(React.PropTypes.string),
-  filterWith: React.PropTypes.func,
+  filterWith: React.PropTypes.func.isRequired,
   /**
    * Custom component for Lookup footer
    */
@@ -53,8 +53,8 @@ const propTypes = {
   /**
    * Lookup items data
    */
-  items: React.PropTypes.array,
-  label: React.PropTypes.string,
+  items: React.PropTypes.array.isRequired,
+  label: React.PropTypes.string.isRequired,
   /**
    * Custom component that overrides the default Lookup Item component
    */
@@ -66,7 +66,7 @@ const propTypes = {
   modal: React.PropTypes.bool,
   onBlur: React.PropTypes.func,
   onChange: React.PropTypes.func,
-  onItemSelect: React.PropTypes.func,
+  onItemSelect: React.PropTypes.func.isRequired,
   onItemUnselect: React.PropTypes.func,
   searchTerm: React.PropTypes.string,
   /**
