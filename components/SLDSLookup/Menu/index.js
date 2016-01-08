@@ -102,23 +102,22 @@ class Menu extends React.Component {
         isActive = this.props.focusIndex === i  ? true : false;
       }
       return <Item
-        key={id}
-        id={id}
-        type={this.props.type}
+        boldRegex={this.props.boldRegex}
+        data={c.data}
+        handleItemFocus={this.handleItemFocus.bind(this)}
         iconCategory={this.props.iconCategory}
-        iconName={this.props.iconName}
         iconClasses={this.props.iconClasses}
-        searchTerm={this.props.searchTerm}
+        iconName={this.props.iconName}
+        id={id}
         index={i}
         isActive={isActive}
-        setFocus={this.props.setFocus}
-        handleItemFocus={this.handleItemFocus.bind(this)}
-        onSelect={this.props.onSelect}
-        data={c.data}
-        boldRegex={this.props.boldRegex}
+        key={id}
         listItemLabelRenderer={this.props.listItemLabelRenderer}
-      >
-      {c}
+        onSelect={this.props.onSelect}
+        searchTerm={this.props.searchTerm}
+        setFocus={this.props.setFocus}
+        type={this.props.type}>
+          {c}
       </Item>
     });
   }

@@ -78,7 +78,7 @@ class Item extends React.Component {
       return <ListItemLabel {... this.props} />;
     }
     return [
-      <Icon key={this.props.iconName} name={this.props.iconName} category={this.props.iconCategory} className={this.props.iconClasses} />,
+      <Icon category={this.props.iconCategory} className={this.props.iconClasses} key={this.props.iconName} name={this.props.iconName} />,
       this.boldSearchText(this.props.children.label)
     ]
   }
@@ -92,17 +92,15 @@ class Item extends React.Component {
       //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
       <li className={className}>
         <a
+          aria-disabled={this.props.isDisabled}
           href={this.props.href}
           id={id}
-          ref={id}
-          tabIndex="-1"
-          aria-disabled={this.props.isDisabled}
-          role="option"
           onClick={this.handleClick.bind(this)}
-          onMouseDown={this.handleMouseDown.bind(this)}>
-
-          { this.getLabel() }
-
+          onMouseDown={this.handleMouseDown.bind(this)}
+          ref={id}
+          role="option"
+          tabIndex="-1">
+            { this.getLabel() }
         </a>
       </li>
     )
