@@ -6,7 +6,7 @@ require('../../site/assets/demo-site/scss/index');
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import badge from './badge/examples/site-example';
+import badge from './badge/examples/dev-example';
 import button from './button/examples/site-example';
 import buttonGroup from './button-group/examples/site-example';
 import combobox from './combobox/examples/dev-example';

@@ -14,15 +14,22 @@ export const CONTROL = 'Badge';
 
 const BadgeCore = Lib.merge({}, Base, {
 	CONTROL,
-	
+
 	cssClasses: {
 		CONTROL: 'slds-badge'
 	},
-	
+
 	themes: {
 		'default': 'slds-theme--default',
-		shade: 'slds-theme--shade',
-		inverse: 'slds-theme--inverse'
+		'shade': 'slds-theme--shade',
+		'inverse': 'slds-theme--inverse',
+		'alt-inverse': 'slds-theme--alt-inverse',
+		'info': 'slds-theme--info',
+		'success': 'slds-theme--success',
+		'warning': 'slds-theme--warning',
+		'error': 'slds-theme--error',
+		'offline': 'slds-theme--offline',
+		'shade-alert-texture': 'slds-theme--shade slds-theme--alert-texture'
 	},
 
 	_defaultProperties: {

@@ -13,11 +13,39 @@ export default React.createClass({
 	<div>
 		<div className="slds-col example">
 			<div className="slds-grid slds-grid--vertical">
+// Base
+// Neutral
+// Neutral Icon
+// Brand
+// Destructive
+// Inverse
+// Stateful
+// Stateful Inverse
+// Icon
+// Icon Sizing
+// Icon More
+// Icon Stateful
+// Icon Inverse
+// Hint
+// Stretch
+// Stacked
+// Horizontal
+				<div className="slds-col row">
+					<Button text="Base"/>
+					<Button text="Disabled" disabled/>
+				</div>
+				<div className="slds-col row">
+					<Button text="With Icon" icon="utility.table" iconPosition="right" iconStyle="icon-bare" />
+					<Button text="With Icon (disabled)" icon="utility.table" iconPosition="right" iconStyle="icon-bare" disabled />
+				</div>
+				<div className="slds-col row">
+					<Button text="Neutral" theme="neutral" icon="utility.table" iconPosition="left" />
+					<Button text="Neutral" theme="neutral" icon="utility.table" iconPosition="right" />
+				</div>
 				<div className="slds-col row">
 					<Button text="Neutral" theme="neutral" />
 					<Button text="Brand" theme="brand" />
 					<Button text="Inverse" theme="inverse" />
-					<Button text="Bare Button"/>
 				</div>
 				<div className="slds-col row">
 					<Button text="Small" theme="neutral" size="small" />
@@ -26,9 +54,6 @@ export default React.createClass({
 				</div>
 
 				<div className="slds-col row">
-					<Button text="Neutral" theme="neutral" icon="utility.table" iconPosition="left" />
-					<Button text="Neutral" theme="neutral" icon="utility.table" iconPosition="right" />
-					<Button text="Bare & disabled" icon="utility.table" iconPosition="right" iconStyle="icon-bare" disabled />
 				</div>
 				<div className="slds-col row">
 					<Button text="Small" theme="neutral" icon="utility.table" iconPosition="left" size="small" />
