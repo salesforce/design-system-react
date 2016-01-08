@@ -70,9 +70,9 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 				<div className="slds-datepicker__filter slds-grid">
 					<DateMonth
 						monthName={this._getMonthName()}
-						setViewingDate={this._jumpToDate}
-						dateViewing={this.state.dateViewing}
-						strings={this.state.strings}/>
+						jumpToPreviousMonth={this._jumpToPreviousMonth}
+						jumpToNextMonth={this._jumpToNextMonth}
+						strings={this.state.strings} />
 					<DateYear
 						getYearRange={this._getYearRangeData}
 						setYear={this._jumpToYear} />
@@ -80,7 +80,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 				<Calendar
 					calendarData={calendarData}
 					selectDate={this._selectDate}
-					multiSelect={this.props.multiSelect}/>
+					multiSelect={this.props.multiSelect} />
 			</div>
 		);
 	},
