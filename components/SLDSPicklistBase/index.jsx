@@ -8,6 +8,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import isEqual from 'lodash.isequal';
 
 import SLDSPopover from '../SLDSPopover';
@@ -76,7 +78,7 @@ class SLDSPicklist extends React.Component {
   }
 
   componentDidMount () {
-    const id = React.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
+    const id = ReactDOM.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
     this.setState({
       isMounted: true,
       triggerId: id,
@@ -99,7 +101,7 @@ class SLDSPicklist extends React.Component {
     else if(!this.state.isFocused && prevState.isFocused){
       if(this.refs.list){
         if(this.state.isMounted && this.refs.list){
-          if(React.findDOMNode(this.refs.list).contains(document.activeElement)){
+          if(ReactDOM.findDOMNode(this.refs.list).contains(document.activeElement)){
             return;
           }
           this.setState({isOpen: false})
@@ -181,7 +183,7 @@ class SLDSPicklist extends React.Component {
 
   setFocus() {
     if(this.state.isMounted){
-      React.findDOMNode(this.refs.triggerbutton).focus();
+      ReactDOM.findDOMNode(this.refs.triggerbutton).focus();
     }
   }
 

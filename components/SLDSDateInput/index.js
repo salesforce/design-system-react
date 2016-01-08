@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import SLDSPopover from '../SLDSPopover';
 import SLDSDatePicker from './SLDSDatePicker/index';
 import {InputIcon} from './../SLDSIcons';
@@ -74,7 +75,7 @@ module.exports = React.createClass( {
 
   setFocus () {
     if(this.isMounted()){
-      React.findDOMNode(this.refs.date).focus();
+      ReactDOM.findDOMNode(this.refs.date).focus();
     }
   },
 
@@ -92,7 +93,7 @@ module.exports = React.createClass( {
   },
 
   handleInputChange() {
-    let string = React.findDOMNode(this.refs.date).value;
+    let string = ReactDOM.findDOMNode(this.refs.date).value;
     let date = this.props.parser(string);
     if(date){
       this.setState({

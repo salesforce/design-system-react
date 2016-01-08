@@ -9,6 +9,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from "react";
+import ReactDOM from "react-dom";
+
 import tooltip from "./tooltip";
 import flatten from "lodash.flatten";
 
@@ -52,7 +54,7 @@ class SLDSTooltip extends React.Component {
   }
 
   componentDidMount() {
-    const id = React.findDOMNode(this.refs.tooltipTarget).getAttribute("data-reactid");
+    const id = ReactDOM.findDOMNode(this.refs.tooltipTarget).getAttribute("data-reactid");
     this.setState({
       isMounted: true,
       triggerId: id,

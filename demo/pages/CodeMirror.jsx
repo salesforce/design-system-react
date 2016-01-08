@@ -6,6 +6,7 @@ import '../assets/styles/codemirror.css';
 import babel from 'babel-core/browser';
 
 const React = require('react');
+const ReactDOM = require('react-dom');
 const classNames = require('classnames');
 
 const SLDSButton =  require('../../components/SLDSButton');
@@ -42,7 +43,7 @@ class CodeMirrorEditor extends React.Component {
   }
 
   componentDidMount() {
-    const node = React.findDOMNode(this.refs.editor);
+    const node = ReactDOM.findDOMNode(this.refs.editor);
     this.editor = CM.fromTextArea(node, {
       mode: 'javascript',
       lineNumbers: true,
@@ -121,7 +122,7 @@ class CodeMirror extends React.Component {
       return null;
     }
 
-    const mountNode = React.findDOMNode(this.refs.mount);
+    const mountNode = ReactDOM.findDOMNode(this.refs.mount);
     try {
       React.unmountComponentAtNode(mountNode);
     } catch (e) {

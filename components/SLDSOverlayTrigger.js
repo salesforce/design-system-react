@@ -10,6 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 const React = require('react');
+const ReactDOM = require('react-dom');
+
 const PT = React.PropTypes;
 const classNames = require('classnames');
 import omit from 'lodash.omit';
@@ -26,7 +28,7 @@ class OverlayTrigger extends React.Component {
   }
 
   unmountPopover() {
-    React.unmountComponentAtNode(this.wrapper);
+    ReactDOM.unmountComponentAtNode(this.wrapper);
     return false;
   }
 
@@ -36,7 +38,7 @@ class OverlayTrigger extends React.Component {
         {this.cloneOverlay()}
       </SLDSPopover>
     );
-    React.render(popover, this.wrapper);
+    ReactDOM.render(popover, this.wrapper);
     return true;
   }
 
@@ -51,7 +53,7 @@ class OverlayTrigger extends React.Component {
 
   appendWrapperDiv() {
     const div = document.createElement('div');
-    const root = React.findDOMNode(this);
+    const root = ReactDOM.findDOMNode(this);
     div.className = 'slds-popover-wrapper slds-fall-into-ground';
     root.appendChild(div);
     return div;

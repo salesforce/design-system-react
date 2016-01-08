@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;
 
@@ -44,6 +45,6 @@ const routes = (
 
 
 Router.run(routes, function (Handler) {
-  React.render(<Handler/>, document.getElementById('root'));
+  ReactDOM.render(<Handler/>, document.getElementById('root'));
 });
 

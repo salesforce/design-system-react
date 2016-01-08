@@ -10,6 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import {EventUtil} from '../utils';
 import SLDSModal from './index';
 
@@ -24,7 +26,7 @@ const SLDSModalTrigger = {
               isOpen={true}>
               {cfg.content}
             </SLDSModal>
-    React.render(comp, el);
+    ReactDOM.render(comp, el);
   }
 };
 

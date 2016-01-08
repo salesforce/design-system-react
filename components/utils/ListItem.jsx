@@ -9,6 +9,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import KEYS from './KEYS';
 import EventUtil from './EventUtil';
 import ListItemLabelRenderer from './ListItemLabel';
@@ -86,7 +88,7 @@ class SLDSListItem extends React.Component {
 
   setFocus () {
     if(!this.props.isHover){
-      React.findDOMNode(this.refs.link).focus();
+      ReactDOM.findDOMNode(this.refs.link).focus();
     }
   }
 
@@ -136,7 +138,7 @@ class SLDSListItem extends React.Component {
   }
 
   handleFocus () {
-    const height = React.findDOMNode(this).offsetHeight;
+    const height = ReactDOM.findDOMNode(this).offsetHeight;
     if(height && this.props.onFocus){
       this.props.onFocus(this.props.index,height);
     }
