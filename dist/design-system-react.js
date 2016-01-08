@@ -230,7 +230,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
-	var classNames = __webpack_require__(13);
+	var classNames = __webpack_require__(12);
 	
 	var displayName = 'SLDSButton';
 	var propTypes = {
@@ -253,6 +253,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * If omitted, icon position is cenetered.
 	   */
 	  iconPosition: _react2["default"].PropTypes.oneOf(["left", "right"]),
+	  /**
+	   * If omitted, icon size is medium.
+	   */
 	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "large"]),
 	  /**
 	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>
@@ -383,22 +386,22 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _InputIcon = __webpack_require__(4);
-	
-	var _InputIcon2 = _interopRequireDefault(_InputIcon);
-	
-	var _Icon = __webpack_require__(12);
-	
-	var _Icon2 = _interopRequireDefault(_Icon);
-	
-	var _ButtonIcon = __webpack_require__(14);
+	var _ButtonIcon = __webpack_require__(4);
 	
 	var _ButtonIcon2 = _interopRequireDefault(_ButtonIcon);
 	
+	var _InputIcon = __webpack_require__(13);
+	
+	var _InputIcon2 = _interopRequireDefault(_InputIcon);
+	
+	var _Icon = __webpack_require__(14);
+	
+	var _Icon2 = _interopRequireDefault(_Icon);
+	
 	module.exports = {
+	  ButtonIcon: _ButtonIcon2['default'],
 	  InputIcon: _InputIcon2['default'],
-	  Icon: _Icon2['default'],
-	  ButtonIcon: _ButtonIcon2['default']
+	  Icon: _Icon2['default']
 	};
 
 /***/ },
@@ -452,6 +455,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  return obj && obj.__esModule ? obj : { 'default': obj };
 	}
 	
+	function _defineProperty(obj, key, value) {
+	  if (key in obj) {
+	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
+	  } else {
+	    obj[key] = value;
+	  }return obj;
+	}
+	
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
 	    throw new TypeError('Cannot call a class as a function');
@@ -472,42 +483,62 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
 	
-	var displayName = "InputIcon";
+	var classNames = __webpack_require__(12);
+	
+	var displayName = "ButtonIcon";
 	var propTypes = {
+	  assistiveText: _react2['default'].PropTypes.string,
 	  category: _react2['default'].PropTypes.string,
-	  name: _react2['default'].PropTypes.string
+	  hint: _react2['default'].PropTypes.bool,
+	  name: _react2['default'].PropTypes.string,
+	  position: _react2['default'].PropTypes.oneOf(["left", "right"]),
+	  size: _react2['default'].PropTypes.string
 	};
 	var defaultProps = {
-	  category: 'utility' };
+	  category: 'utility'
+	};
 	
-	// Utility Icon Reference: https://www.lightningdesignsystem.com/resources/icons#utility
+	var ButtonIcon = (function (_React$Component) {
+	  _inherits(ButtonIcon, _React$Component);
 	
-	var InputIcon = (function (_React$Component) {
-	  _inherits(InputIcon, _React$Component);
+	  function ButtonIcon(props) {
+	    _classCallCheck(this, ButtonIcon);
 	
-	  function InputIcon(props) {
-	    _classCallCheck(this, InputIcon);
-	
-	    _get(Object.getPrototypeOf(InputIcon.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(ButtonIcon.prototype), 'constructor', this).call(this, props);
 	    this.state = {};
 	  }
 	
-	  _createClass(InputIcon, [{
+	  _createClass(ButtonIcon, [{
+	    key: 'getClassName',
+	    value: function getClassName() {
+	      var _classNames;
+	
+	      return classNames(this.props.className, "slds-button__icon", (_classNames = {}, _defineProperty(_classNames, 'slds-button__icon--' + this.props.position, this.props.position), _defineProperty(_classNames, 'slds-button__icon--' + this.props.size, this.props.size), _defineProperty(_classNames, 'slds-button__icon--hint', this.props.hint), _classNames));
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var className = 'slds-input__icon slds-icon-text-default';
-	      return _react2['default'].createElement(_SLDSUtilityIcon2['default'], { name: this.props.name, category: this.props.category, 'aria-hidden': 'true', className: className, onClick: this.props.onClick });
+	      var label = null;
+	      if (this.props.assistiveText) {
+	        label = _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.assistiveText);
+	      }
+	      return _react2['default'].createElement('span', null, label, _react2['default'].createElement(_SLDSUtilityIcon2['default'], {
+	        'aria-hidden': 'true',
+	        category: this.props.category,
+	        className: this.getClassName(),
+	        name: this.props.name
+	      }));
 	    }
 	  }]);
 	
-	  return InputIcon;
+	  return ButtonIcon;
 	})(_react2['default'].Component);
 	
-	InputIcon.displayName = displayName;
-	InputIcon.propTypes = propTypes;
-	InputIcon.defaultProps = defaultProps;
+	ButtonIcon.displayName = displayName;
+	ButtonIcon.propTypes = propTypes;
+	ButtonIcon.defaultProps = defaultProps;
 	
-	module.exports = InputIcon;
+	module.exports = ButtonIcon;
 
 /***/ },
 /* 5 */
@@ -1351,167 +1382,6 @@ return /******/ (function(modules) { // webpackBootstrap
 /* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	
-	'use strict';
-	
-	var _createClass = (function () {
-	  function defineProperties(target, props) {
-	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-	    }
-	  }return function (Constructor, protoProps, staticProps) {
-	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-	  };
-	})();
-	
-	var _get = function get(_x, _x2, _x3) {
-	  var _again = true;_function: while (_again) {
-	    var object = _x,
-	        property = _x2,
-	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
-	      var parent = Object.getPrototypeOf(object);if (parent === null) {
-	        return undefined;
-	      } else {
-	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
-	      }
-	    } else if ('value' in desc) {
-	      return desc.value;
-	    } else {
-	      var getter = desc.get;if (getter === undefined) {
-	        return undefined;
-	      }return getter.call(receiver);
-	    }
-	  }
-	};
-	
-	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
-	}
-	
-	function _defineProperty(obj, key, value) {
-	  if (key in obj) {
-	    Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });
-	  } else {
-	    obj[key] = value;
-	  }return obj;
-	}
-	
-	function _classCallCheck(instance, Constructor) {
-	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError('Cannot call a class as a function');
-	  }
-	}
-	
-	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== 'function' && superClass !== null) {
-	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
-	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
-	}
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _SLDSUtilityIcon = __webpack_require__(5);
-	
-	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
-	
-	var classNames = __webpack_require__(13);
-	
-	var displayName = "Icon";
-	var propTypes = {
-	  /**
-	   * text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-	   * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
-	   * declare this prop as assistiveText="".
-	   */
-	  assistiveText: _react2['default'].PropTypes.string,
-	  category: _react2['default'].PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]),
-	  /**
-	   * css classes that are applied to the svg
-	   */
-	  className: _react2['default'].PropTypes.string,
-	  /**
-	   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
-	   */
-	  name: _react2['default'].PropTypes.string,
-	  size: _react2['default'].PropTypes.oneOf(["x-small", "small", "large"])
-	};
-	var defaultProps = {
-	  category: 'standard'
-	};
-	
-	/**
-	 * The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />
-	 * The icon color is white by default. Add the class, "slds-icon-text-default", to create a text-colored fill color for utility icons. <br />
-	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">SLDS Icons</a>.
-	 */
-	
-	var Icon = (function (_React$Component) {
-	  _inherits(Icon, _React$Component);
-	
-	  function Icon(props) {
-	    _classCallCheck(this, Icon);
-	
-	    _get(Object.getPrototypeOf(Icon.prototype), 'constructor', this).call(this, props);
-	    this.state = {};
-	  }
-	
-	  _createClass(Icon, [{
-	    key: 'getContainerClassName',
-	    value: function getContainerClassName() {
-	      var _classNames;
-	
-	      var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
-	      var renderName = this.props.category === "action";
-	
-	      return classNames((_classNames = {}, _defineProperty(_classNames, "slds-icon__container", this.props.category !== "utility"), _defineProperty(_classNames, 'slds-icon-' + this.props.category + '-' + name, renderName), _classNames));
-	    }
-	  }, {
-	    key: 'getClassName',
-	    value: function getClassName() {
-	      var _classNames2;
-	
-	      var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
-	      var customName = this.props.name ? this.props.name.replace("custom", "custom-") : null;
-	
-	      return classNames(this.props.className, "slds-icon", (_classNames2 = {}, _defineProperty(_classNames2, 'slds-icon--' + this.props.size, this.props.size), _defineProperty(_classNames2, 'slds-icon-' + customName, this.props.category === "custom"), _defineProperty(_classNames2, 'slds-icon-' + this.props.category + '-' + name, this.props.category === "standard"), _classNames2));
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var label = null;
-	
-	      if (this.props.assistiveText) {
-	        label = _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.assistiveText);
-	      }
-	      return _react2['default'].createElement('span', { className: this.getContainerClassName() }, label, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { className: this.getClassName(), name: this.props.name, category: this.props.category, 'aria-hidden': 'true' }));
-	    }
-	  }]);
-	
-	  return Icon;
-	})(_react2['default'].Component);
-	
-	Icon.displayName = displayName;
-	Icon.propTypes = propTypes;
-	Icon.defaultProps = defaultProps;
-	
-	module.exports = Icon;
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 	  Copyright (c) 2016 Jed Watson.
 	  Licensed under the MIT License (MIT), see
@@ -1561,6 +1431,119 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 	}());
 
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	
+	'use strict';
+	
+	var _createClass = (function () {
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
+	})();
+	
+	var _get = function get(_x, _x2, _x3) {
+	  var _again = true;_function: while (_again) {
+	    var object = _x,
+	        property = _x2,
+	        receiver = _x3;_again = false;if (object === null) object = Function.prototype;var desc = Object.getOwnPropertyDescriptor(object, property);if (desc === undefined) {
+	      var parent = Object.getPrototypeOf(object);if (parent === null) {
+	        return undefined;
+	      } else {
+	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
+	      }
+	    } else if ('value' in desc) {
+	      return desc.value;
+	    } else {
+	      var getter = desc.get;if (getter === undefined) {
+	        return undefined;
+	      }return getter.call(receiver);
+	    }
+	  }
+	};
+	
+	function _interopRequireDefault(obj) {
+	  return obj && obj.__esModule ? obj : { 'default': obj };
+	}
+	
+	function _classCallCheck(instance, Constructor) {
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError('Cannot call a class as a function');
+	  }
+	}
+	
+	function _inherits(subClass, superClass) {
+	  if (typeof superClass !== 'function' && superClass !== null) {
+	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	}
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _SLDSUtilityIcon = __webpack_require__(5);
+	
+	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
+	
+	var displayName = "InputIcon";
+	var propTypes = {
+	  category: _react2['default'].PropTypes.string,
+	  name: _react2['default'].PropTypes.string
+	};
+	var defaultProps = {
+	  category: 'utility'
+	};
+	
+	var InputIcon = (function (_React$Component) {
+	  _inherits(InputIcon, _React$Component);
+	
+	  function InputIcon(props) {
+	    _classCallCheck(this, InputIcon);
+	
+	    _get(Object.getPrototypeOf(InputIcon.prototype), 'constructor', this).call(this, props);
+	    this.state = {};
+	  }
+	
+	  _createClass(InputIcon, [{
+	    key: 'render',
+	    value: function render() {
+	      var className = 'slds-input__icon slds-icon-text-default';
+	      return _react2['default'].createElement(_SLDSUtilityIcon2['default'], {
+	        'aria-hidden': 'true',
+	        category: this.props.category,
+	        className: className,
+	        name: this.props.name,
+	        onClick: this.props.onClick
+	      });
+	    }
+	  }]);
+	
+	  return InputIcon;
+	})(_react2['default'].Component);
+	
+	InputIcon.displayName = displayName;
+	InputIcon.propTypes = propTypes;
+	InputIcon.defaultProps = defaultProps;
+	
+	module.exports = InputIcon;
 
 /***/ },
 /* 14 */
@@ -1641,58 +1624,95 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSUtilityIcon2 = _interopRequireDefault(_SLDSUtilityIcon);
 	
-	var classNames = __webpack_require__(13);
+	var classNames = __webpack_require__(12);
 	
-	var displayName = "ButtonIcon";
+	var displayName = "Icon";
 	var propTypes = {
+	  /**
+	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	   * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
+	   * declare this prop as <code>assistiveText=""</code>.
+	   */
 	  assistiveText: _react2['default'].PropTypes.string,
-	  category: _react2['default'].PropTypes.string,
-	  hint: _react2['default'].PropTypes.bool,
-	  name: _react2['default'].PropTypes.string,
-	  position: _react2['default'].PropTypes.oneOf(["left", "right"]),
-	  size: _react2['default'].PropTypes.string
+	  category: _react2['default'].PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]),
+	  /**
+	   * css classes that are applied to the svg
+	   */
+	  className: _react2['default'].PropTypes.string,
+	  /**
+	   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+	   */
+	  name: _react2['default'].PropTypes.string.isRequired,
+	  /**
+	   * If omitted, icon size is medium.
+	   */
+	  size: _react2['default'].PropTypes.oneOf(["x-small", "small", "large"])
 	};
 	var defaultProps = {
-	  category: 'utility' };
+	  category: 'standard'
+	};
 	
-	// Utility Icon Reference: https://www.lightningdesignsystem.com/resources/icons#utility
+	/**
+	 * The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />
+	 * The icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons. <br />
+	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">SLDS Icons</a>.
+	 */
 	
-	var ButtonIcon = (function (_React$Component) {
-	  _inherits(ButtonIcon, _React$Component);
+	var Icon = (function (_React$Component) {
+	  _inherits(Icon, _React$Component);
 	
-	  function ButtonIcon(props) {
-	    _classCallCheck(this, ButtonIcon);
+	  function Icon(props) {
+	    _classCallCheck(this, Icon);
 	
-	    _get(Object.getPrototypeOf(ButtonIcon.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(Icon.prototype), 'constructor', this).call(this, props);
 	    this.state = {};
 	  }
 	
-	  _createClass(ButtonIcon, [{
-	    key: 'getClassName',
-	    value: function getClassName() {
+	  _createClass(Icon, [{
+	    key: 'getContainerClassName',
+	    value: function getContainerClassName() {
 	      var _classNames;
 	
-	      return classNames(this.props.className, "slds-button__icon", (_classNames = {}, _defineProperty(_classNames, 'slds-button__icon--' + this.props.position, this.props.position), _defineProperty(_classNames, 'slds-button__icon--' + this.props.size, this.props.size), _defineProperty(_classNames, 'slds-button__icon--hint', this.props.hint), _classNames));
+	      var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
+	      var renderName = this.props.category === "action";
+	
+	      return classNames((_classNames = {}, _defineProperty(_classNames, "slds-icon__container", this.props.category !== "utility"), _defineProperty(_classNames, 'slds-icon-' + this.props.category + '-' + name, renderName), _classNames));
+	    }
+	  }, {
+	    key: 'getClassName',
+	    value: function getClassName() {
+	      var _classNames2;
+	
+	      var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
+	      var customName = this.props.name ? this.props.name.replace("custom", "custom-") : null;
+	
+	      return classNames(this.props.className, "slds-icon", (_classNames2 = {}, _defineProperty(_classNames2, 'slds-icon--' + this.props.size, this.props.size), _defineProperty(_classNames2, 'slds-icon-' + customName, this.props.category === "custom"), _defineProperty(_classNames2, 'slds-icon-' + this.props.category + '-' + name, this.props.category === "standard"), _classNames2));
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var label = null;
+	
 	      if (this.props.assistiveText) {
 	        label = _react2['default'].createElement('span', { className: 'slds-assistive-text' }, this.props.assistiveText);
 	      }
-	      return _react2['default'].createElement('span', null, label, _react2['default'].createElement(_SLDSUtilityIcon2['default'], { className: this.getClassName(), name: this.props.name, category: this.props.category, 'aria-hidden': 'true' }));
+	      return _react2['default'].createElement('span', { className: this.getContainerClassName() }, label, _react2['default'].createElement(_SLDSUtilityIcon2['default'], {
+	        'aria-hidden': 'true',
+	        category: this.props.category,
+	        className: this.getClassName(),
+	        name: this.props.name
+	      }));
 	    }
 	  }]);
 	
-	  return ButtonIcon;
+	  return Icon;
 	})(_react2['default'].Component);
 	
-	ButtonIcon.displayName = displayName;
-	ButtonIcon.propTypes = propTypes;
-	ButtonIcon.defaultProps = defaultProps;
+	Icon.displayName = displayName;
+	Icon.propTypes = propTypes;
+	Icon.defaultProps = defaultProps;
 	
-	module.exports = ButtonIcon;
+	module.exports = Icon;
 
 /***/ },
 /* 15 */
@@ -3257,7 +3277,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _lodashOmit2 = _interopRequireDefault(_lodashOmit);
 	
-	var classNames = __webpack_require__(13);
+	var classNames = __webpack_require__(12);
 	
 	var displayName = "SLDSButtonStateful";
 	var propTypes = {
@@ -3271,6 +3291,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
 	   */
 	  iconName: _react2["default"].PropTypes.string,
+	  /**
+	   * If omitted, icon size is medium.
+	   */
 	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "large"]),
 	  onClick: _react2["default"].PropTypes.func,
 	  /**
@@ -3420,6 +3443,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  className: _react2["default"].PropTypes.string
 	};
 	var defaultProps = {};
+	
+	/**
+	 * The SLDSButtonGroup component wraps SLDSButton components.<br />
+	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/button-groups">SLDS Button Groups</a>
+	 */
 	
 	var SLDSButtonGroup = (function (_React$Component) {
 	  _inherits(SLDSButtonGroup, _React$Component);
@@ -26057,7 +26085,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _MenuDefaultHeader2 = _interopRequireDefault(_MenuDefaultHeader);
 	
-	var _classnames = __webpack_require__(13);
+	var _classnames = __webpack_require__(12);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -26708,22 +26736,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	          isActive = _this.props.focusIndex === i ? true : false;
 	        }
 	        return _react2['default'].createElement(_Item2['default'], {
-	          key: id,
-	          id: id,
-	          type: _this.props.type,
+	          boldRegex: _this.props.boldRegex,
+	          data: c.data,
+	          handleItemFocus: _this.handleItemFocus.bind(_this),
 	          iconCategory: _this.props.iconCategory,
-	          iconName: _this.props.iconName,
 	          iconClasses: _this.props.iconClasses,
-	          searchTerm: _this.props.searchTerm,
+	          iconName: _this.props.iconName,
+	          id: id,
 	          index: i,
 	          isActive: isActive,
-	          setFocus: _this.props.setFocus,
-	          handleItemFocus: _this.handleItemFocus.bind(_this),
+	          key: id,
+	          listItemLabelRenderer: _this.props.listItemLabelRenderer,
 	          onSelect: _this.props.onSelect,
-	          data: c.data,
-	          boldRegex: _this.props.boldRegex,
-	          listItemLabelRenderer: _this.props.listItemLabelRenderer
-	        }, c);
+	          searchTerm: _this.props.searchTerm,
+	          setFocus: _this.props.setFocus,
+	          type: _this.props.type }, c);
 	      });
 	    }
 	  }, {
@@ -26912,7 +26939,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var ListItemLabel = this.props.listItemLabelRenderer;
 	        return _react2['default'].createElement(ListItemLabel, this.props);
 	      }
-	      return [_react2['default'].createElement(_SLDSIcons.Icon, { key: this.props.iconName, name: this.props.iconName, category: this.props.iconCategory, className: this.props.iconClasses }), this.boldSearchText(this.props.children.label)];
+	      return [_react2['default'].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, className: this.props.iconClasses, key: this.props.iconName, name: this.props.iconName }), this.boldSearchText(this.props.children.label)];
 	    }
 	  }, {
 	    key: 'render',
@@ -26924,14 +26951,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return(
 	        //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
 	        _react2['default'].createElement('li', { className: className }, _react2['default'].createElement('a', {
+	          'aria-disabled': this.props.isDisabled,
 	          href: this.props.href,
 	          id: id,
-	          ref: id,
-	          tabIndex: '-1',
-	          'aria-disabled': this.props.isDisabled,
-	          role: 'option',
 	          onClick: this.handleClick.bind(this),
-	          onMouseDown: this.handleMouseDown.bind(this) }, this.getLabel()))
+	          onMouseDown: this.handleMouseDown.bind(this),
+	          ref: id,
+	          role: 'option',
+	          tabIndex: '-1' }, this.getLabel()))
 	      );
 	    }
 	  }]);
@@ -27370,7 +27397,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _classnames = __webpack_require__(13);
+	var _classnames = __webpack_require__(12);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -28951,7 +28978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSIcons = __webpack_require__(3);
 	
-	var classNames = __webpack_require__(13);
+	var classNames = __webpack_require__(12);
 	
 	var displayName = "SLDSNotification";
 	var propTypes = {
@@ -28960,24 +28987,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  className: _react2["default"].PropTypes.string,
 	  /**
-	   * Message for notification
+	   * Message for Notification
 	   */
 	  content: _react2["default"].PropTypes.node,
 	  /**
-	   * if isDissmissible, close button appears for users to dismiss notification.
+	   * If true, close button appears for users to dismiss notification.
 	   */
 	  isDismissible: _react2["default"].PropTypes.bool,
 	  /**
-	   * if duration exists, the notification will be visible for that amount of time.
+	   * If duration exists, the notification will disappear after that amount of time.
 	   */
 	  duration: _react2["default"].PropTypes.number,
 	  icon: _react2["default"].PropTypes.string,
 	  isOpen: _react2["default"].PropTypes.bool,
 	  onDismiss: _react2["default"].PropTypes.func,
 	  /**
-	   * styling for notification background
+	   * Upon dismissing Notification, return keyboard focus to this DOM element
 	   */
 	  returnFocusTo: _react2["default"].PropTypes.node,
+	  /**
+	   * Styling for notification background
+	   */
 	  texture: _react2["default"].PropTypes.bool,
 	  theme: _react2["default"].PropTypes.oneOf(["success", "warning", "error", "offline"]),
 	  variant: _react2["default"].PropTypes.oneOf(["alert", "toast"])
@@ -28986,7 +29016,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var defaultProps = {
 	  isDismissible: true,
 	  isOpen: false,
-	  returnFocusTo: null
+	  returnFocusTo: null,
+	  texture: false
 	};
 	
 	/**
@@ -30318,7 +30349,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 	
-	var classNames = __webpack_require__(13);
+	var classNames = __webpack_require__(12);
 	
 	var getClassName = function getClassName(props) {
 	  var _classNames;
