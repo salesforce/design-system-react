@@ -1,3 +1,12 @@
+const moreOptions = [
+  {label:'undo',value:'A0'},
+  {label:'redo',value:'B0'},
+  {label:'activate',value:'C0'},
+];
+const sortOptions = [
+  {label:'Sort ascending',value:'A0'},
+  {label:'Sort descending',value:'B0'},
+];
 const examples = (
   <div>
     <SLDSButtonGroup className="slds-p-vertical--medium">
@@ -13,31 +22,38 @@ const examples = (
         label="Save"
         variant="neutral" />
 
-      <SLDSButton
-        assistiveText="More Options"
-        iconName="down"
-        iconVariant="border-filled"
-        variant="icon" />
+        <SLDSDropdown
+          assistiveText="More Options"
+          iconName="down"
+          iconVariant="border-filled"
+          openOn="click"
+          options={moreOptions}
+          variant="icon" />
     </SLDSButtonGroup>
 
     <SLDSButtonGroup className="slds-p-vertical--medium">
-      <SLDSButton
-        assistiveText="Chart"
+      <SLDSButtonStateful
+        assistiveText="Show Chart"
         iconName="chart"
         iconVariant="border"
+        type="icon"
         variant="icon" />
 
-      <SLDSButton
+      <SLDSButtonStateful
         assistiveText="Filter"
         iconName="filter"
         iconVariant="border"
+        type="icon"
         variant="icon" />
 
-      <SLDSButton
-        assistiveText="Sort"
-        iconName="sort"
-        iconVariant="more"
-        variant="icon" />
+        <SLDSDropdown
+          assistiveText="Sort"
+          iconName="sort"
+          iconVariant="more"
+          openOn="click"
+          options={sortOptions}
+          variant="icon" />
+
     </SLDSButtonGroup>
   </div>
 );

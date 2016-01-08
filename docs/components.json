@@ -384,11 +384,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"Dropdown\"",
-                    "computed": false
-                }
+                "description": ""
             },
             "listItemRenderer": {
                 "type": {
