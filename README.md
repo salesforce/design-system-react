@@ -41,13 +41,15 @@ npm run pages
 
 Note: design-system-react is currently optimized for React 0.14.x.
 
-To use it in your code base, follow these steps:
+To use it in your code base, follow these steps.
+
+First, install the npm module:
 
 ```
 npm install --save design-system-react
 ```
 
-In your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSIcons or SLDSButtons.
+Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSIcons or SLDSButtons.
 
 For example to import the Icons component:
 
@@ -55,7 +57,7 @@ For example to import the Icons component:
 import {SLDSIcons} from 'design-system-react';
 ```
 
-Then, in your JSX, refer to the specific variant you want to use using the COMPONENT.COMPONENT_VARIANT, e.g. SLDSIcons.Icon.
+In your JSX, refer to the specific variant you want to use as COMPONENT.COMPONENT_VARIANT, e.g. SLDSIcons.Icon.
 
 Here is an example media object:
 
