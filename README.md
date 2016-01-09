@@ -26,13 +26,15 @@ To use it in your code base, follow these steps:
 npm install --save design-system-react
 ```
 
-In your React code, import the library by specifying the specific components you would like to use. Refer to each component using the "SLDS" prefix, e.g. SLDSIcons or SLDSButtons. For example:
+Then, in your React code, import the library as follows. Refer to each component using the "SLDS" prefix, e.g. SLDSIcons or SLDSButtons. For example:
 
 ```
 import {SLDSIcons} from 'design-system-react';
 ```
 
-In your JSX, refer to the component as COMPONENT_TYPE.COMPONENT_VARIANT, e.g. SLDSIcons.Icon. Here is an example media object using a SLDSIcons.Icon:
+In your JSX, refer to the component as COMPONENT.COMPONENT_VARIANT, e.g. SLDSIcons.Icon.
+
+Here is an example media object using SLDSIcons.Icon:
 
 ```
   <div className="slds-media slds-media-center">
@@ -48,6 +50,8 @@ In your JSX, refer to the component as COMPONENT_TYPE.COMPONENT_VARIANT, e.g. SL
     </div>
   </div>
 ```
+
+Have fun!
 
 ## Running local server
 
