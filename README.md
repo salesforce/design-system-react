@@ -26,15 +26,17 @@ To use it in your code base, follow these steps:
 npm install --save design-system-react
 ```
 
-Then, in your React code, import the library as follows. Refer to each component using the "SLDS" prefix, e.g. SLDSIcons or SLDSButtons. For example:
+In your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSIcons or SLDSButtons.
+
+For example to import the Icons component:
 
 ```
 import {SLDSIcons} from 'design-system-react';
 ```
 
-In your JSX, refer to the component as COMPONENT.COMPONENT_VARIANT, e.g. SLDSIcons.Icon.
+Then, in your JSX, refer to the specific variant you want to use using the COMPONENT.COMPONENT_VARIANT, e.g. SLDSIcons.Icon.
 
-Here is an example media object using SLDSIcons.Icon:
+Here is an example media object:
 
 ```
   <div className="slds-media slds-media-center">
