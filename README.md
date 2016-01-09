@@ -16,9 +16,30 @@ SLDS React component library based off [Salesforce Lightning Design System](http
 * Tooltip
 
 
+## Run local server
+
+```
+npm install
+npm start
+open http://localhost:3000
+```
+
+## Run tests
+
+```
+npm test
+```
+
+## Run Build
+
+```
+npm install
+npm run pages
+```
+
 ## Using the React components
 
-Note: design-system-react is currently optimized for React 0.14.x
+Note: design-system-react is currently optimized for React 0.14.x.
 
 To use it in your code base, follow these steps:
 
@@ -55,26 +76,7 @@ Here is an example media object:
 
 Have fun!
 
-## Running local server
 
-```
-npm install
-npm start
-open http://localhost:3000
-```
-
-## Tests
-
-```
-npm test
-```
-
-## Run Build
-
-```
-npm install
-npm run pages
-```
 
 ## Contributing to the code base
 
