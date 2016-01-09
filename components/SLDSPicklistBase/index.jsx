@@ -20,22 +20,22 @@ const propTypes = {
   disabled: React.PropTypes.bool,
   label: React.PropTypes.string.isRequired,
   /**
-   * Custom element that overrides the default Menu Item component
+   * Custom element that overrides the default Menu Item component.
    */
   listItemRenderer: React.PropTypes.node,
   /**
-   * If true, component renders specifically to work inside Modal
+   * If true, component renders specifically to work inside Modal.
    */
   modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func.isRequired,
   /**
-   * Menu item data
+   * Menu item data.
    */
   options: React.PropTypes.array.isRequired,
   placeholder: React.PropTypes.string,
   /**
-   * Current selected item
+   * Current selected item.
    */
   value: React.PropTypes.node,
 };

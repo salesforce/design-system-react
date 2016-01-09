@@ -28,6 +28,9 @@ const propTypes = {
    * Content inside Tooltip.
    */
   content: React.PropTypes.node.isRequired,
+  /**
+   * Delay on Tooltip closing.
+   */
   hoverCloseDelay: React.PropTypes.number,
   openByDefault: React.PropTypes.bool,
 };

@@ -19,11 +19,11 @@ import {Icon} from "../SLDSIcons";
 const displayName = "SLDSNotification";
 const propTypes = {
   /**
-   * Custom classes applied to Notification element
+   * Custom classes applied to Notification element.
    */
   className: React.PropTypes.string,
   /**
-   * Message for Notification
+   * Message for Notification.
    */
   content: React.PropTypes.node.isRequired,
   /**
@@ -34,15 +34,18 @@ const propTypes = {
    * If duration exists, the Notification will disappear after that amount of time.
    */
   duration: React.PropTypes.number,
-  icon: React.PropTypes.string,
+  /**
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+   */
+  iconName: React.PropTypes.string,
   isOpen: React.PropTypes.bool.isRequired,
   onDismiss: React.PropTypes.func,
   /**
-   * Styling for Notification background
+   * Styling for Notification background.
    */
   texture: React.PropTypes.bool,
   /**
-   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes#color">SLDS Themes > Color</a>
+   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes#color">SLDS Themes > Color</a>.
    */
   theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
   variant: React.PropTypes.oneOf(["alert", "toast"]).isRequired,
@@ -86,7 +89,7 @@ class SLDSNotification extends React.Component {
   }
 
   renderIcon(){
-    if(this.props.icon){
+    if(this.props.iconName){
       let classes = "";
       if(this.props.variant === "alert") {
         classes = "slds-m-right--x-small";
@@ -94,19 +97,15 @@ class SLDSNotification extends React.Component {
       else if(this.props.variant === "toast") {
         classes = "slds-m-right--small slds-col slds-no-flex";
       }
-      return <Icon category="utility" name={this.props.icon} size="small" className={classes} />;
+      return <Icon category="utility" name={this.props.iconName} size="small" className={classes} />;
     }
   }
 
   renderClose(){
     if(this.props.dismissible){
-      let size = "";
-      if(this.props.variant === "alert") {
-        size = "medium";
-      }
-      else if(this.props.variant === "toast") {
-        size = "large";
-      }
+      let size = null;
+      if(this.props.variant === "toast") size = "large";
+
       return <SLDSButton
             assistiveText="Dismiss Notification"
             variant="icon-inverse"

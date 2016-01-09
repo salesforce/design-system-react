@@ -24,7 +24,7 @@ const propTypes = {
   buttonSize: React.PropTypes.oneOf(["small"]),
   disabled: React.PropTypes.bool,
   /**
-   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">SLDS Buttons > Hint</a>
+   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">SLDS Buttons > Hint</a>.
    */
   hint: React.PropTypes.bool,
   /**
@@ -40,13 +40,13 @@ const propTypes = {
    */
   iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   /**
-   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>
+   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>.
    */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
   label: React.PropTypes.string,
   onClick: React.PropTypes.func,
   /**
-   * If true, button scales 100% width on small form factors
+   * If true, button scales 100% width on small form factors.
    */
   responsive: React.PropTypes.bool,
   /**
@@ -93,12 +93,13 @@ class SLDSButton extends React.Component {
 
   renderIcon(name){
     if(this.props.iconName){
+      let iconSize = this.props.iconSize === '' ? null : this.props.iconSize;
       return (
         <ButtonIcon
           hint={this.props.hint}
           name={name}
           position={this.props.iconPosition}
-          size={this.props.iconSize}
+          size={iconSize}
           />
       );
     }

@@ -24,25 +24,25 @@ const displayName = "SLDSLookup";
 const propTypes = {
   boldRegex: React.PropTypes.instanceOf(RegExp),
   /**
-   * Custom message for when no search results found
+   * Custom message for when no search results found.
    */
   emptyMessage: React.PropTypes.string.isRequired,
   errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func.isRequired,
   /**
-   * Custom component for Lookup footer
+   * Custom component for Lookup footer.
    */
   footerRenderer: React.PropTypes.func,
   /**
-   * If true, input field indicates error state
+   * If true, input field indicates error state.
    */
   hasError: React.PropTypes.bool,
   /**
-   * Custom component for Lookup header
+   * Custom component for Lookup header.
    */
   headerRenderer: React.PropTypes.func,
   /**
-   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view categories
+   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view categories.
    */
   iconCategory: React.PropTypes.string,
   iconClasses: React.PropTypes.string,
@@ -51,17 +51,17 @@ const propTypes = {
    */
   iconName: React.PropTypes.string,
   /**
-   * Lookup items data
+   * Lookup items data.
    */
   items: React.PropTypes.array.isRequired,
   label: React.PropTypes.string.isRequired,
   /**
-   * Custom component that overrides the default Lookup Item component
+   * Custom component that overrides the default Lookup Item component.
    */
   listItemLabelRenderer: React.PropTypes.func,
   messages: React.PropTypes.arrayOf(React.PropTypes.string),
   /**
-   * If true, component renders specifically to work inside Modal
+   * If true, component renders specifically to work inside Modal.
    */
   modal: React.PropTypes.bool,
   onBlur: React.PropTypes.func,
@@ -70,7 +70,7 @@ const propTypes = {
   onItemUnselect: React.PropTypes.func,
   searchTerm: React.PropTypes.string,
   /**
-   * Salesforce object type for Lookup items
+   * Salesforce object type for Lookup items.
    */
   type: React.PropTypes.string,
 };

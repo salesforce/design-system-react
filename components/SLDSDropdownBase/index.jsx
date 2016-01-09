@@ -17,39 +17,39 @@ import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
 const displayName = "SLDSDropdown";
 const propTypes = {
   /**
-   * Classes applied to SLDSButton
+   * Classes applied to SLDSButton.
    */
   buttonClassName: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   horizontalAlign: React.PropTypes.oneOf(["left", "right"]),
   /**
-   * Delay on menu closing
+   * Delay on menu closing.
    */
   hoverCloseDelay: React.PropTypes.number,
   label: React.PropTypes.string,
   /**
-   * Custom element that overrides the default Menu Item component
+   * Custom element that overrides the default Menu Item component.
    */
   listItemRenderer: React.PropTypes.func,
   /**
-   * If true, component renders specifically to work inside Modal
+   * If true, component renders specifically to work inside Modal.
    */
   modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func.isRequired,
   openOn: React.PropTypes.oneOf(["hover", "click"]),
   /**
-   * Menu item data
+   * Menu item data.
    */
   options: React.PropTypes.array.isRequired,
   /**
-   * Current selected menu item
+   * Current selected menu item.
    */
   value: React.PropTypes.string,
   /**
-   * Determines variant of SLDSButton that triggers dropdown
+   * Determines variant of SLDSButton that triggers dropdown.
    */
-  variant: React.PropTypes.string,
+  variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {
   horizontalAlign: "left",

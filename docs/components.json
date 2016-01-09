@@ -35,7 +35,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#hint\">SLDS Buttons > Hint</a>"
+                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#hint\">SLDS Buttons > Hint</a>."
             },
             "iconName": {
                 "type": {
@@ -113,7 +113,7 @@
                     ]
                 },
                 "required": false,
-                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">SLDS Icons</a>"
+                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">SLDS Icons</a>."
             },
             "label": {
                 "type": {
@@ -134,7 +134,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, button scales 100% width on small form factors"
+                "description": "If true, button scales 100% width on small form factors."
             },
             "tabIndex": {
                 "type": {
@@ -314,7 +314,7 @@
         }
     },
     "SLDSButtonGroup": {
-        "description": "The SLDSButtonGroup component wraps SLDSButton components.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">SLDS Button Groups</a>",
+        "description": "The SLDSButtonGroup component wraps SLDSButton components.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">SLDS Button Groups</a>.",
         "displayName": "SLDSButtonGroup",
         "props": {
             "children": {
@@ -342,7 +342,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Classes applied to SLDSButton"
+                "description": "Classes applied to SLDSButton."
             },
             "disabled": {
                 "type": {
@@ -377,7 +377,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on menu closing",
+                "description": "Delay on menu closing.",
                 "defaultValue": {
                     "value": "300",
                     "computed": false
@@ -395,14 +395,14 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom element that overrides the default Menu Item component"
+                "description": "Custom element that overrides the default Menu Item component."
             },
             "modal": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, component renders specifically to work inside Modal"
+                "description": "If true, component renders specifically to work inside Modal."
             },
             "onClick": {
                 "type": {
@@ -444,21 +444,51 @@
                     "name": "array"
                 },
                 "required": true,
-                "description": "Menu item data"
+                "description": "Menu item data."
             },
             "value": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Current selected menu item"
+                "description": "Current selected menu item."
             },
             "variant": {
                 "type": {
-                    "name": "string"
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
                 },
                 "required": false,
-                "description": "Determines variant of SLDSButton that triggers dropdown",
+                "description": "Determines variant of SLDSButton that triggers dropdown.",
                 "defaultValue": {
                     "value": "\"neutral\"",
                     "computed": false
@@ -564,7 +594,7 @@
                     "name": "string"
                 },
                 "required": true,
-                "description": "Custom message for when no search results found"
+                "description": "Custom message for when no search results found."
             },
             "errors": {
                 "type": {
@@ -592,28 +622,28 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom component for Lookup footer"
+                "description": "Custom component for Lookup footer."
             },
             "hasError": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, input field indicates error state"
+                "description": "If true, input field indicates error state."
             },
             "headerRenderer": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom component for Lookup header"
+                "description": "Custom component for Lookup header."
             },
             "iconCategory": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to view categories"
+                "description": "Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to view categories."
             },
             "iconClasses": {
                 "type": {
@@ -634,7 +664,7 @@
                     "name": "array"
                 },
                 "required": true,
-                "description": "Lookup items data"
+                "description": "Lookup items data."
             },
             "label": {
                 "type": {
@@ -648,7 +678,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom component that overrides the default Lookup Item component"
+                "description": "Custom component that overrides the default Lookup Item component."
             },
             "messages": {
                 "type": {
@@ -665,7 +695,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, component renders specifically to work inside Modal"
+                "description": "If true, component renders specifically to work inside Modal."
             },
             "onBlur": {
                 "type": {
@@ -711,7 +741,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Salesforce object type for Lookup items"
+                "description": "Salesforce object type for Lookup items."
             }
         }
     },
@@ -734,7 +764,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Vertical alignment of modal",
+                "description": "Vertical alignment of modal.",
                 "defaultValue": {
                     "value": "\"center\"",
                     "computed": false
@@ -745,14 +775,14 @@
                     "name": "node"
                 },
                 "required": true,
-                "description": "Modal content"
+                "description": "Modal content."
             },
             "directional": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if directional, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons.",
+                "description": "If true, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -781,7 +811,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key",
+                "description": "If true, prompt modals can be dismissed by clicking outside of modal or pressing esc key.",
                 "defaultValue": {
                     "value": "true",
                     "computed": false
@@ -850,7 +880,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Text underneath the title"
+                "description": "Content underneath the title."
             },
             "title": {
                 "type": {
@@ -870,14 +900,14 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Custom classes applied to Notification element"
+                "description": "Custom classes applied to Notification element."
             },
             "content": {
                 "type": {
                     "name": "node"
                 },
                 "required": true,
-                "description": "Message for Notification"
+                "description": "Message for Notification."
             },
             "dismissible": {
                 "type": {
@@ -897,12 +927,12 @@
                 "required": false,
                 "description": "If duration exists, the Notification will disappear after that amount of time."
             },
-            "icon": {
+            "iconName": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to reference icon names."
             },
             "isOpen": {
                 "type": {
@@ -927,7 +957,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Styling for Notification background",
+                "description": "Styling for Notification background.",
                 "defaultValue": {
                     "value": "false",
                     "computed": false
@@ -956,7 +986,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Styling for Notification background color. Please reference <a href=\"http://www.lightningdesignsystem.com/components/utilities/themes#color\">SLDS Themes > Color</a>"
+                "description": "Styling for Notification background color. Please reference <a href=\"http://www.lightningdesignsystem.com/components/utilities/themes#color\">SLDS Themes > Color</a>."
             },
             "variant": {
                 "type": {
@@ -1004,14 +1034,14 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Custom element that overrides the default Menu Item component"
+                "description": "Custom element that overrides the default Menu Item component."
             },
             "modal": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, component renders specifically to work inside Modal"
+                "description": "If true, component renders specifically to work inside Modal."
             },
             "onClick": {
                 "type": {
@@ -1032,7 +1062,7 @@
                     "name": "array"
                 },
                 "required": true,
-                "description": "Menu item data"
+                "description": "Menu item data."
             },
             "placeholder": {
                 "type": {
@@ -1050,7 +1080,7 @@
                     "name": "node"
                 },
                 "required": false,
-                "description": "Current selected item"
+                "description": "Current selected item."
             }
         }
     },
@@ -1110,7 +1140,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "",
+                "description": "Delay on Tooltip closing.",
                 "defaultValue": {
                     "value": "350",
                     "computed": false
