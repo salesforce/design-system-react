@@ -236,13 +236,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	var propTypes = {
 	  /**
 	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-	   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop.
+	   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop.
 	   */
 	  assistiveText: _react2["default"].PropTypes.string,
 	  buttonSize: _react2["default"].PropTypes.oneOf(["small"]),
 	  disabled: _react2["default"].PropTypes.bool,
 	  /**
-	   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">SLDS Buttons > Hint</a>
+	   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">SLDS Buttons > Hint</a>.
 	   */
 	  hint: _react2["default"].PropTypes.bool,
 	  /**
@@ -258,13 +258,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  iconSize: _react2["default"].PropTypes.oneOf(["x-small", "small", "large"]),
 	  /**
-	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>
+	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>.
 	   */
 	  iconVariant: _react2["default"].PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
 	  label: _react2["default"].PropTypes.string,
 	  onClick: _react2["default"].PropTypes.func,
 	  /**
-	   * If true, button scales 100% width on small form factors
+	   * If true, button scales 100% width on small form factors.
 	   */
 	  responsive: _react2["default"].PropTypes.bool,
 	  /**
@@ -276,7 +276,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
-	var defaultProps = {};
+	var defaultProps = {
+	  variant: "base"
+	};
 	
 	/**
 	 * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
@@ -314,11 +316,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "renderIcon",
 	    value: function renderIcon(name) {
 	      if (this.props.iconName) {
+	        var iconSize = this.props.iconSize === '' ? null : this.props.iconSize;
 	        return _react2["default"].createElement(_SLDSIcons.ButtonIcon, {
 	          hint: this.props.hint,
 	          name: name,
 	          position: this.props.iconPosition,
-	          size: this.props.iconSize
+	          size: iconSize
 	        });
 	      }
 	    }
@@ -1634,7 +1637,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * declare this prop as <code>assistiveText=""</code>.
 	   */
 	  assistiveText: _react2['default'].PropTypes.string,
-	  category: _react2['default'].PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]),
+	  category: _react2['default'].PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]).isRequired,
 	  /**
 	   * css classes that are applied to the svg
 	   */
@@ -3437,7 +3440,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = "SLDSButtonGroup";
 	var propTypes = {
 	  /**
-	   * Children are expected to be SLDSButton components
+	   * Children are expected to be components. If last button triggers a dropdown menu, use SLDSDropdown instead of SLDSButton.
 	   */
 	  children: _react2["default"].PropTypes.node.isRequired,
 	  className: _react2["default"].PropTypes.string
@@ -3446,7 +3449,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	/**
 	 * The SLDSButtonGroup component wraps SLDSButton components.<br />
-	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/button-groups">SLDS Button Groups</a>
+	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/button-groups">SLDS Button Groups</a>.
 	 */
 	
 	var SLDSButtonGroup = (function (_React$Component) {
@@ -3557,46 +3560,44 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = "SLDSDropdown";
 	var propTypes = {
 	  /**
-	   * Classes applied to SLDSButton
+	   * Classes applied to SLDSButton.
 	   */
 	  buttonClassName: _react2["default"].PropTypes.string,
 	  disabled: _react2["default"].PropTypes.bool,
 	  horizontalAlign: _react2["default"].PropTypes.oneOf(["left", "right"]),
 	  /**
-	   * Delay on menu closing
+	   * Delay on menu closing.
 	   */
 	  hoverCloseDelay: _react2["default"].PropTypes.number,
 	  label: _react2["default"].PropTypes.string,
 	  /**
-	   * Custom element that overrides the default Menu Item component
+	   * Custom element that overrides the default Menu Item component.
 	   */
 	  listItemRenderer: _react2["default"].PropTypes.func,
 	  /**
-	   * If true, component renders specifically to work inside Modal
+	   * If true, component renders specifically to work inside Modal.
 	   */
 	  modal: _react2["default"].PropTypes.bool,
 	  onClick: _react2["default"].PropTypes.func,
 	  onSelect: _react2["default"].PropTypes.func.isRequired,
 	  openOn: _react2["default"].PropTypes.oneOf(["hover", "click"]),
 	  /**
-	   * Menu item data
+	   * Menu item data.
 	   */
-	  options: _react2["default"].PropTypes.array,
+	  options: _react2["default"].PropTypes.array.isRequired,
 	  /**
-	   * Current selected menu item
+	   * Current selected menu item.
 	   */
 	  value: _react2["default"].PropTypes.string,
 	  /**
-	   * Determines variant of SLDSButton that triggers dropdown
+	   * Determines variant of SLDSButton that triggers dropdown.
 	   */
-	  variant: _react2["default"].PropTypes.string
+	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
 	var defaultProps = {
 	  horizontalAlign: "left",
 	  hoverCloseDelay: 300,
 	  openOn: "hover",
-	  options: [],
-	  value: null,
 	  variant: "neutral"
 	};
 	
@@ -26093,25 +26094,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	var propTypes = {
 	  boldRegex: _react2["default"].PropTypes.instanceOf(RegExp),
 	  /**
-	   * Custom message for when no search results found
+	   * Custom message for when no search results found.
 	   */
-	  emptyMessage: _react2["default"].PropTypes.string,
+	  emptyMessage: _react2["default"].PropTypes.string.isRequired,
 	  errors: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
-	  filterWith: _react2["default"].PropTypes.func,
+	  filterWith: _react2["default"].PropTypes.func.isRequired,
 	  /**
-	   * Custom component for Lookup footer
+	   * Custom component for Lookup footer.
 	   */
 	  footerRenderer: _react2["default"].PropTypes.func,
 	  /**
-	   * If true, input field indicates error state
+	   * If true, input field indicates error state.
 	   */
 	  hasError: _react2["default"].PropTypes.bool,
 	  /**
-	   * Custom component for Lookup header
+	   * Custom component for Lookup header.
 	   */
 	  headerRenderer: _react2["default"].PropTypes.func,
 	  /**
-	   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view categories
+	   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view categories.
 	   */
 	  iconCategory: _react2["default"].PropTypes.string,
 	  iconClasses: _react2["default"].PropTypes.string,
@@ -26120,26 +26121,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  iconName: _react2["default"].PropTypes.string,
 	  /**
-	   * Lookup items data
+	   * Lookup items data.
 	   */
-	  items: _react2["default"].PropTypes.array,
-	  label: _react2["default"].PropTypes.string,
+	  items: _react2["default"].PropTypes.array.isRequired,
+	  label: _react2["default"].PropTypes.string.isRequired,
 	  /**
-	   * Custom component that overrides the default Lookup Item component
+	   * Custom component that overrides the default Lookup Item component.
 	   */
 	  listItemLabelRenderer: _react2["default"].PropTypes.func,
 	  messages: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
 	  /**
-	   * If true, component renders specifically to work inside Modal
+	   * If true, component renders specifically to work inside Modal.
 	   */
 	  modal: _react2["default"].PropTypes.bool,
 	  onBlur: _react2["default"].PropTypes.func,
 	  onChange: _react2["default"].PropTypes.func,
-	  onItemSelect: _react2["default"].PropTypes.func,
+	  onItemSelect: _react2["default"].PropTypes.func.isRequired,
 	  onItemUnselect: _react2["default"].PropTypes.func,
 	  searchTerm: _react2["default"].PropTypes.string,
 	  /**
-	   * Salesforce object type for Lookup items
+	   * Salesforce object type for Lookup items.
 	   */
 	  type: _react2["default"].PropTypes.string
 	};
@@ -27329,12 +27330,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	*/
 	
-	'use strict';
+	"use strict";
 	
 	var _createClass = (function () {
 	  function defineProperties(target, props) {
 	    for (var i = 0; i < props.length; i++) {
-	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ('value' in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
 	    }
 	  }return function (Constructor, protoProps, staticProps) {
 	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
@@ -27351,7 +27352,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      } else {
 	        _x = parent;_x2 = property;_x3 = receiver;_again = true;desc = parent = undefined;continue _function;
 	      }
-	    } else if ('value' in desc) {
+	    } else if ("value" in desc) {
 	      return desc.value;
 	    } else {
 	      var getter = desc.get;if (getter === undefined) {
@@ -27362,7 +27363,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	function _interopRequireDefault(obj) {
-	  return obj && obj.__esModule ? obj : { 'default': obj };
+	  return obj && obj.__esModule ? obj : { "default": obj };
 	}
 	
 	function _defineProperty(obj, key, value) {
@@ -27375,13 +27376,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	function _classCallCheck(instance, Constructor) {
 	  if (!(instance instanceof Constructor)) {
-	    throw new TypeError('Cannot call a class as a function');
+	    throw new TypeError("Cannot call a class as a function");
 	  }
 	}
 	
 	function _inherits(subClass, superClass) {
-	  if (typeof superClass !== 'function' && superClass !== null) {
-	    throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass);
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + typeof superClass);
 	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 	
@@ -27407,67 +27408,62 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var customStyles = {
 	  content: {
-	    position: 'default',
-	    top: 'default',
-	    left: 'default',
-	    right: 'default',
-	    bottom: 'default',
-	    border: 'default',
-	    background: 'default',
-	    overflow: 'default',
-	    WebkitOverflowScrolling: 'default',
-	    borderRadius: 'default',
-	    outline: 'default',
-	    padding: 'default'
+	    position: "default",
+	    top: "default",
+	    left: "default",
+	    right: "default",
+	    bottom: "default",
+	    border: "default",
+	    background: "default",
+	    overflow: "default",
+	    WebkitOverflowScrolling: "default",
+	    borderRadius: "default",
+	    outline: "default",
+	    padding: "default"
 	  },
 	  overlay: {
-	    backgroundColor: 'default'
+	    backgroundColor: "default"
 	  }
 	};
 	
 	var displayName = "SLDSModal";
 	var propTypes = {
 	  /**
-	   * Vertical alignment of modal
+	   * Vertical alignment of modal.
 	   */
-	  align: _react2['default'].PropTypes.oneOf(['top', 'center']),
+	  align: _react2["default"].PropTypes.oneOf(["top", "center"]),
 	  /**
-	   * Modal content
+	   * Modal content.
 	   */
-	  children: _react2['default'].PropTypes.node,
+	  children: _react2["default"].PropTypes.node.isRequired,
 	  /**
-	   * if directional, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
+	   * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
 	   */
-	  directional: _react2['default'].PropTypes.bool,
-	  footer: _react2['default'].PropTypes.array,
-	  isOpen: _react2['default'].PropTypes.bool,
+	  directional: _react2["default"].PropTypes.bool,
+	  footer: _react2["default"].PropTypes.array,
+	  isOpen: _react2["default"].PropTypes.bool.isRequired,
 	  /**
-	   * if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key
+	   * If true, prompt modals can be dismissed by clicking outside of modal or pressing esc key.
 	   */
-	  isPassive: _react2['default'].PropTypes.bool,
-	  prompt: _react2['default'].PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info']),
-	  returnFocusTo: _react2['default'].PropTypes.node,
-	  size: _react2['default'].PropTypes.oneOf(['medium', 'large']),
+	  isPassive: _react2["default"].PropTypes.bool,
+	  prompt: _react2["default"].PropTypes.oneOf(["", "success", "warning", "error", "wrench", "offline", "info"]),
+	  size: _react2["default"].PropTypes.oneOf(["medium", "large"]),
 	  /**
-	   * Text underneath the title
+	   * Content underneath the title.
 	   */
-	  tagline: _react2['default'].PropTypes.node,
-	  title: _react2['default'].PropTypes.node
+	  tagline: _react2["default"].PropTypes.node,
+	  title: _react2["default"].PropTypes.node
 	};
 	var defaultProps = {
-	  align: 'center',
+	  align: "center",
 	  directional: false,
-	  footer: [],
 	  isOpen: false,
 	  isPassive: true,
-	  prompt: '',
-	  returnFocusTo: null,
-	  tagline: '',
-	  title: ''
+	  prompt: ""
 	};
 	
 	/**
-	 * The SLDSModal component is used for modals and prompts. <br />
+	 * The SLDSModal component is used for modals and <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">prompt notifications</a>. <br />
 	 * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">SLDS Modals</a>.
 	 */
 	
@@ -27477,7 +27473,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function SLDSModal(props) {
 	    _classCallCheck(this, SLDSModal);
 	
-	    _get(Object.getPrototypeOf(SLDSModal.prototype), 'constructor', this).call(this, props);
+	    _get(Object.getPrototypeOf(SLDSModal.prototype), "constructor", this).call(this, props);
 	    this.state = {
 	      isClosing: false,
 	      isMounted: false,
@@ -27486,7 +27482,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }
 	
 	  _createClass(SLDSModal, [{
-	    key: 'componentDidMount',
+	    key: "componentDidMount",
 	    value: function componentDidMount() {
 	      var _this = this;
 	
@@ -27502,18 +27498,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	      this.updateBodyScroll();
 	    }
 	  }, {
-	    key: 'componentDidUpdate',
+	    key: "componentDidUpdate",
 	    value: function componentDidUpdate(prevProps, prevState) {
 	      if (this.props.isOpen !== prevProps.isOpen) {
 	        this.updateBodyScroll();
 	      }
 	      if (this.state.isClosing !== prevState.isClosing) {
 	        if (this.state.isClosing) {
-	          //console.log('CLOSING: ');
+	          //console.log("CLOSING: ");
 	          if (this.state.isMounted) {
-	            var el = _reactDom2['default'].findDOMNode(this).parentNode;
-	            if (el && el.getAttribute('data-slds-modal')) {
-	              _reactDom2['default'].unmountComponentAtNode(el);
+	            var el = _reactDom2["default"].findDOMNode(this).parentNode;
+	            if (el && el.getAttribute("data-slds-modal")) {
+	              _reactDom2["default"].unmountComponentAtNode(el);
 	              document.body.removeChild(el);
 	            }
 	          }
@@ -27521,13 +27517,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: 'componentWillUnmount',
+	    key: "componentWillUnmount",
 	    value: function componentWillUnmount() {
 	      this.clearBodyScroll();
 	      this.setState({ isMounted: false });
 	    }
 	  }, {
-	    key: 'closeModal',
+	    key: "closeModal",
 	    value: function closeModal() {
 	      if (this.props.isPassive) {
 	        this.setState({ isClosing: true });
@@ -27540,94 +27536,94 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 	  }, {
-	    key: 'handleSubmitModal',
+	    key: "handleSubmitModal",
 	    value: function handleSubmitModal() {
 	      this.closeModal();
 	    }
 	  }, {
-	    key: 'updateBodyScroll',
+	    key: "updateBodyScroll",
 	    value: function updateBodyScroll() {
 	      if (window && document && document.body) {
 	        if (this.props.isOpen) {
-	          document.body.style.overflow = 'hidden';
+	          document.body.style.overflow = "hidden";
 	        } else {
-	          document.body.style.overflow = 'inherit';
+	          document.body.style.overflow = "inherit";
 	        }
 	      }
 	    }
 	  }, {
-	    key: 'clearBodyScroll',
+	    key: "clearBodyScroll",
 	    value: function clearBodyScroll() {
 	      return function updateBodyScroll() {
 	        if (window && document && document.body) {
-	          document.body.style.overflow = 'inherit';
+	          document.body.style.overflow = "inherit";
 	        }
 	      };
 	    }
 	  }, {
-	    key: 'handleModalClick',
+	    key: "handleModalClick",
 	    value: function handleModalClick(event) {
 	      if (event && event.stopPropagation) {
 	        event.stopPropagation();
 	      }
 	    }
 	  }, {
-	    key: 'isPrompt',
+	    key: "isPrompt",
 	    value: function isPrompt() {
-	      return this.props.prompt !== '';
+	      return this.props.prompt !== "";
 	    }
 	  }, {
-	    key: 'footerComponent',
+	    key: "footerComponent",
 	    value: function footerComponent() {
 	      var footer = null;
 	      var hasFooter = this.props.footer && this.props.footer.length > 0;
 	      var footerClass = {
-	        'slds-modal__footer': true,
-	        'slds-modal__footer--directional': this.props.directional,
-	        'slds-theme--default': this.isPrompt()
+	        "slds-modal__footer": true,
+	        "slds-modal__footer--directional": this.props.directional,
+	        "slds-theme--default": this.isPrompt()
 	      };
 	
 	      if (hasFooter) {
-	        footer = _react2['default'].createElement('div', { className: (0, _classnames2['default'])(footerClass), onClick: this.handleModalClick.bind(this) }, this.props.footer);
+	        footer = _react2["default"].createElement("div", { className: (0, _classnames2["default"])(footerClass), onClick: this.handleModalClick.bind(this) }, this.props.footer);
 	      }
 	      return footer;
 	    }
 	  }, {
-	    key: 'headerComponent',
+	    key: "headerComponent",
 	    value: function headerComponent() {
 	      var _headerClass;
 	
 	      var headerContent = null;
 	      var hasHeader = this.props.title || this.props.tagline;
-	      var headerClass = (_headerClass = {}, _defineProperty(_headerClass, 'slds-modal__header', hasHeader), _defineProperty(_headerClass, 'slds-theme--' + this.props.prompt, this.isPrompt()), _defineProperty(_headerClass, 'slds-theme--alert-texture', this.isPrompt()), _headerClass);
+	      var headerClass = (_headerClass = {}, _defineProperty(_headerClass, "slds-modal__header", hasHeader), _defineProperty(_headerClass, "slds-theme--" + this.props.prompt, this.isPrompt()), _defineProperty(_headerClass, "slds-theme--alert-texture", this.isPrompt()), _headerClass);
 	      var titleClass = {
-	        'slds-text-heading--small': this.isPrompt(),
-	        'slds-text-heading--medium': !this.isPrompt()
+	        "slds-text-heading--small": this.isPrompt(),
+	        "slds-text-heading--medium": !this.isPrompt()
 	      };
 	
 	      if (hasHeader) {
-	        headerContent = _react2['default'].createElement('div', null, this.props.toast, _react2['default'].createElement('h2', { className: (0, _classnames2['default'])(titleClass) }, this.props.title), this.props.tagline ? _react2['default'].createElement('p', { className: 'slds-m-top--x-small' }, this.props.tagline) : null);
+	        headerContent = _react2["default"].createElement("div", null, this.props.toast, _react2["default"].createElement("h2", { className: (0, _classnames2["default"])(titleClass) }, this.props.title), this.props.tagline ? _react2["default"].createElement("p", { className: "slds-m-top--x-small" }, this.props.tagline) : null);
 	      }
 	
-	      return _react2['default'].createElement('div', { className: (0, _classnames2['default'])(headerClass), style: { position: "relative" }, onClick: this.handleModalClick.bind(this) }, _react2['default'].createElement(_SLDSButton2['default'], { assistiveText: 'Close', variant: 'icon-inverse', iconName: 'close', iconSize: 'large', className: 'slds-modal__close', onClick: this.closeModal.bind(this) }), headerContent);
+	      return _react2["default"].createElement("div", { className: (0, _classnames2["default"])(headerClass), style: { position: "relative" }, onClick: this.handleModalClick.bind(this) }, _react2["default"].createElement(_SLDSButton2["default"], { assistiveText: "Close", variant: "icon-inverse", iconName: "close", iconSize: "large", className: "slds-modal__close", onClick: this.closeModal.bind(this) }), headerContent);
 	    }
 	  }, {
-	    key: 'getModal',
+	    key: "getModal",
 	    value: function getModal() {
 	      var modalClass = {
-	        'slds-modal': true,
-	        'slds-fade-in-open': this.state.revealed,
-	        'slds-modal--large': this.props.size === 'large',
-	        'slds-modal--prompt': this.isPrompt()
+	        "slds-modal": true,
+	        "slds-fade-in-open": this.state.revealed,
+	        "slds-modal--large": this.props.size === "large",
+	        "slds-modal--prompt": this.isPrompt()
 	      };
 	      var modalStyle = this.props.align === "top" ? { "justifyContent": "flex-start" } : null;
 	      var contentStyle = this.props.title ? null : { "borderRadius": ".25rem" };
-	      return _react2['default'].createElement('div', null, _react2['default'].createElement('div', { 'aria-hidden': 'false', role: 'dialog', className: (0, _classnames2['default'])(modalClass), onClick: this.closeModal.bind(this) }, _react2['default'].createElement('div', { className: 'slds-modal__container', style: modalStyle }, this.headerComponent(), _react2['default'].createElement('div', { className: 'slds-modal__content', style: contentStyle, onClick: this.handleModalClick.bind(this) }, this.props.children), this.footerComponent())), _react2['default'].createElement('div', { className: 'slds-backdrop slds-backdrop--open' }));
+	      return _react2["default"].createElement("div", null, _react2["default"].createElement("div", { "aria-hidden": "false", role: "dialog", className: (0, _classnames2["default"])(modalClass), onClick: this.closeModal.bind(this) }, _react2["default"].createElement("div", { className: "slds-modal__container", style: modalStyle }, this.headerComponent(), _react2["default"].createElement("div", { className: "slds-modal__content", style: contentStyle, onClick: this.handleModalClick.bind(this) }, this.props.children), this.footerComponent())), _react2["default"].createElement("div", { className: "slds-backdrop slds-backdrop--open" }));
 	    }
 	  }, {
-	    key: 'render',
+	    key: "render",
 	    value: function render() {
-	      return _react2['default'].createElement(_reactModal2['default'], {
+	      return _react2["default"].createElement(_reactModal2["default"], {
 	        isOpen: this.props.isOpen,
 	        onRequestClose: this.closeModal.bind(this),
 	        style: customStyles }, this.getModal());
@@ -27635,7 +27631,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }]);
 	
 	  return SLDSModal;
-	})(_react2['default'].Component);
+	})(_react2["default"].Component);
 	
 	SLDSModal.displayName = displayName;
 	SLDSModal.propTypes = propTypes;
@@ -28983,45 +28979,46 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = "SLDSNotification";
 	var propTypes = {
 	  /**
-	   * Custom classes applied to Notification element
+	   * Custom classes applied to Notification element.
 	   */
 	  className: _react2["default"].PropTypes.string,
 	  /**
-	   * Message for Notification
+	   * Message for Notification.
 	   */
-	  content: _react2["default"].PropTypes.node,
+	  content: _react2["default"].PropTypes.node.isRequired,
 	  /**
-	   * If true, close button appears for users to dismiss notification.
+	   * If true, close button appears for users to dismiss Notification.
 	   */
-	  isDismissible: _react2["default"].PropTypes.bool,
+	  dismissible: _react2["default"].PropTypes.bool,
 	  /**
-	   * If duration exists, the notification will disappear after that amount of time.
+	   * If duration exists, the Notification will disappear after that amount of time.
 	   */
 	  duration: _react2["default"].PropTypes.number,
-	  icon: _react2["default"].PropTypes.string,
-	  isOpen: _react2["default"].PropTypes.bool,
+	  /**
+	   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+	   */
+	  iconName: _react2["default"].PropTypes.string,
+	  isOpen: _react2["default"].PropTypes.bool.isRequired,
 	  onDismiss: _react2["default"].PropTypes.func,
 	  /**
-	   * Upon dismissing Notification, return keyboard focus to this DOM element
-	   */
-	  returnFocusTo: _react2["default"].PropTypes.node,
-	  /**
-	   * Styling for notification background
+	   * Styling for Notification background.
 	   */
 	  texture: _react2["default"].PropTypes.bool,
+	  /**
+	   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes#color">SLDS Themes > Color</a>.
+	   */
 	  theme: _react2["default"].PropTypes.oneOf(["success", "warning", "error", "offline"]),
-	  variant: _react2["default"].PropTypes.oneOf(["alert", "toast"])
+	  variant: _react2["default"].PropTypes.oneOf(["alert", "toast"]).isRequired
 	};
 	
 	var defaultProps = {
-	  isDismissible: true,
+	  dismissible: true,
 	  isOpen: false,
-	  returnFocusTo: null,
 	  texture: false
 	};
 	
 	/**
-	 * The SLDSNotification component is used for alerts and toasts. For prompts, use the SLDSModal component with prompt={true}.<br />
+	 * The SLDSNotification component is used for alerts and toasts. For prompt notifications, use the SLDSModal component with <code>prompt={true}</code>.<br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/notifications">SLDS Notifications</a>.
 	 */
 	
@@ -29064,26 +29061,23 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "renderIcon",
 	    value: function renderIcon() {
-	      if (this.props.icon) {
+	      if (this.props.iconName) {
 	        var classes = "";
 	        if (this.props.variant === "alert") {
 	          classes = "slds-m-right--x-small";
 	        } else if (this.props.variant === "toast") {
 	          classes = "slds-m-right--small slds-col slds-no-flex";
 	        }
-	        return _react2["default"].createElement(_SLDSIcons.Icon, { category: "utility", name: this.props.icon, size: "small", className: classes });
+	        return _react2["default"].createElement(_SLDSIcons.Icon, { category: "utility", name: this.props.iconName, size: "small", className: classes });
 	      }
 	    }
 	  }, {
 	    key: "renderClose",
 	    value: function renderClose() {
-	      if (this.props.isDismissible) {
-	        var size = "";
-	        if (this.props.variant === "alert") {
-	          size = "medium";
-	        } else if (this.props.variant === "toast") {
-	          size = "large";
-	        }
+	      if (this.props.dismissible) {
+	        var size = null;
+	        if (this.props.variant === "toast") size = "large";
+	
 	        return _react2["default"].createElement(_SLDSButton2["default"], {
 	          assistiveText: "Dismiss Notification",
 	          variant: "icon-inverse",
@@ -29239,32 +29233,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = "SLDSPicklist";
 	var propTypes = {
 	  disabled: _react2["default"].PropTypes.bool,
-	  label: _react2["default"].PropTypes.string,
+	  label: _react2["default"].PropTypes.string.isRequired,
 	  /**
-	   * Custom element that overrides the default Menu Item component
+	   * Custom element that overrides the default Menu Item component.
 	   */
 	  listItemRenderer: _react2["default"].PropTypes.node,
 	  /**
-	   * If true, component renders specifically to work inside Modal
+	   * If true, component renders specifically to work inside Modal.
 	   */
 	  modal: _react2["default"].PropTypes.bool,
 	  onClick: _react2["default"].PropTypes.func,
 	  onSelect: _react2["default"].PropTypes.func.isRequired,
 	  /**
-	   * Menu item data
+	   * Menu item data.
 	   */
-	  options: _react2["default"].PropTypes.array,
+	  options: _react2["default"].PropTypes.array.isRequired,
 	  placeholder: _react2["default"].PropTypes.string,
 	  /**
-	   * Current selected item
+	   * Current selected item.
 	   */
 	  value: _react2["default"].PropTypes.node
 	};
 	var defaultProps = {
 	  label: "Picklist",
-	  options: [],
-	  placeholder: "Select an Option",
-	  value: null
+	  placeholder: "Select an Option"
 	};
 	
 	/**
@@ -30174,25 +30166,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = "SLDSTooltip";
 	var propTypes = {
 	  /**
-	   * alignment of the Tooltip relative to the element that triggers it
+	   * Alignment of the Tooltip relative to the element that triggers it.
 	   */
-	  align: _react2["default"].PropTypes.string,
+	  align: _react2["default"].PropTypes.oneOf(["top", "right", "bottom", "left"]).isRequired,
 	  /**
-	   * Pass the element that triggers Tooltip as a child of the Tooltip component
+	   * Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it.
 	   */
-	  children: _react2["default"].PropTypes.node,
+	  children: _react2["default"].PropTypes.node.isRequired,
 	  /**
-	   * Content inside Tooltip
+	   * Content inside Tooltip.
 	   */
-	  content: _react2["default"].PropTypes.node,
+	  content: _react2["default"].PropTypes.node.isRequired,
+	  /**
+	   * Delay on Tooltip closing.
+	   */
 	  hoverCloseDelay: _react2["default"].PropTypes.number,
 	  openByDefault: _react2["default"].PropTypes.bool
 	};
 	var defaultProps = {
 	  align: "top",
 	  content: _react2["default"].createElement("span", null, "Tooltip"),
-	  hoverCloseDelay: 350,
-	  openByDefault: false
+	  hoverCloseDelay: 350
 	};
 	
 	/**
@@ -30289,11 +30283,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      var asstText = _react2["default"].createElement("span", { className: "slds-assistive-text" }, this.props.content);
 	      return _react2["default"].Children.map(this.props.children, function (child) {
 	        return _react2["default"].cloneElement(child, {
+	          children: child.props.children ? (0, _lodashFlatten2["default"])([child.props.children]).concat(asstText) : asstText,
 	          onBlur: _this2.handleMouseLeave.bind(_this2),
 	          onFocus: _this2.handleMouseEnter.bind(_this2),
 	          onMouseEnter: _this2.handleMouseEnter.bind(_this2),
-	          onMouseLeave: _this2.handleMouseLeave.bind(_this2),
-	          children: child.props.children ? (0, _lodashFlatten2["default"])([child.props.children]).concat(asstText) : asstText
+	          onMouseLeave: _this2.handleMouseLeave.bind(_this2)
 	        });
 	      });
 	    }
