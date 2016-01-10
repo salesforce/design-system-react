@@ -337,21 +337,7 @@
         "description": "The SLDSDropdown component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
         "displayName": "SLDSDropdown",
         "props": {
-            "buttonClassName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Classes applied to SLDSButton."
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": ""
-            },
-            "horizontalAlign": {
+            "align": {
                 "type": {
                     "name": "enum",
                     "value": [
@@ -371,6 +357,20 @@
                     "value": "\"left\"",
                     "computed": false
                 }
+            },
+            "buttonClassName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Classes applied to SLDSButton."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
             },
             "hoverCloseDelay": {
                 "type": {
@@ -659,13 +659,6 @@
                 "required": false,
                 "description": "Name of icon. Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to view icon names."
             },
-            "items": {
-                "type": {
-                    "name": "array"
-                },
-                "required": true,
-                "description": "Lookup items data."
-            },
             "label": {
                 "type": {
                     "name": "string"
@@ -725,6 +718,13 @@
                 "required": false,
                 "description": ""
             },
+            "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "Lookup items data."
+            },
             "searchTerm": {
                 "type": {
                     "name": "string"
@@ -736,7 +736,7 @@
                     "computed": false
                 }
             },
-            "type": {
+            "salesforceObj": {
                 "type": {
                     "name": "string"
                 },
@@ -788,6 +788,17 @@
                     "computed": false
                 }
             },
+            "dismissible": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, prompt modals can be dismissed by clicking outside of modal or pressing esc key.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
             "footer": {
                 "type": {
                     "name": "array"
@@ -803,17 +814,6 @@
                 "description": "",
                 "defaultValue": {
                     "value": "false",
-                    "computed": false
-                }
-            },
-            "isPassive": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, prompt modals can be dismissed by clicking outside of modal or pressing esc key.",
-                "defaultValue": {
-                    "value": "true",
                     "computed": false
                 }
             },

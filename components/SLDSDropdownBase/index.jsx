@@ -16,12 +16,12 @@ import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
 
 const displayName = "SLDSDropdown";
 const propTypes = {
+  align: React.PropTypes.oneOf(["left", "right"]),
   /**
    * Classes applied to SLDSButton.
    */
   buttonClassName: React.PropTypes.string,
   disabled: React.PropTypes.bool,
-  horizontalAlign: React.PropTypes.oneOf(["left", "right"]),
   /**
    * Delay on menu closing.
    */
@@ -52,7 +52,7 @@ const propTypes = {
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {
-  horizontalAlign: "left",
+  align: "left",
   hoverCloseDelay: 300,
   openOn: "hover",
   variant: "neutral",
@@ -273,13 +273,14 @@ class SLDSDropdown extends React.Component {
   }
 
   getModalPopover(){
-    const className = "slds-dropdown slds-dropdown--menu slds-dropdown--"+this.props.horizontalAlign;
+    console.log('this.props.align ', this.props.align);
+    const className = "slds-dropdown slds-dropdown--menu slds-dropdown--"+this.props.align;
     return(
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
           className={className}
           closeOnTabKey={true}
-          horizontalAlign={this.props.horizontalAlign}
+          horizontalAlign={this.props.align}
           onClose={this.handleCancel.bind(this)}
           targetElement={this.refs.button}
           >

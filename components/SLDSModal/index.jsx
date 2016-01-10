@@ -49,12 +49,12 @@ const propTypes = {
    * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
    */
   directional: React.PropTypes.bool,
-  footer: React.PropTypes.array,
-  isOpen: React.PropTypes.bool.isRequired,
   /**
    * If true, prompt modals can be dismissed by clicking outside of modal or pressing esc key.
    */
-  isPassive: React.PropTypes.bool,
+  dismissible: React.PropTypes.bool,
+  footer: React.PropTypes.array,
+  isOpen: React.PropTypes.bool.isRequired,
   prompt: React.PropTypes.oneOf(["", "success", "warning", "error", "wrench", "offline", "info"]),
   size: React.PropTypes.oneOf(["medium", "large"]),
   /**
@@ -67,7 +67,7 @@ const defaultProps = {
   align: "center",
   directional: false,
   isOpen: false,
-  isPassive: true,
+  dismissible: true,
   prompt: "",
 };
 
@@ -123,7 +123,7 @@ class SLDSModal extends React.Component {
   }
 
   closeModal () {
-    if(this.props.isPassive){
+    if(this.props.dismissible){
       this.setState({isClosing: true});
       if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
         this.state.returnFocusTo.focus();

@@ -16,6 +16,7 @@ const displayName = "InputIcon";
 const propTypes = {
   category: React.PropTypes.string,
   name: React.PropTypes.string,
+  onClick: React.PropTypes.func,
 };
 const defaultProps = {
   category: 'utility',

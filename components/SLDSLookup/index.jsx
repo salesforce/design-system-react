@@ -50,10 +50,6 @@ const propTypes = {
    * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view icon names.
    */
   iconName: React.PropTypes.string,
-  /**
-   * Lookup items data.
-   */
-  items: React.PropTypes.array.isRequired,
   label: React.PropTypes.string.isRequired,
   /**
    * Custom component that overrides the default Lookup Item component.
@@ -68,11 +64,15 @@ const propTypes = {
   onChange: React.PropTypes.func,
   onItemSelect: React.PropTypes.func.isRequired,
   onItemUnselect: React.PropTypes.func,
+  /**
+   * Lookup items data.
+   */
+  options: React.PropTypes.array.isRequired,
   searchTerm: React.PropTypes.string,
   /**
    * Salesforce object type for Lookup items.
    */
-  type: React.PropTypes.string,
+  salesforceObj: React.PropTypes.string,
 };
 
 const defaultFilter = (term, item) => {
@@ -98,7 +98,7 @@ class SLDSLookup extends React.Component {
       focusIndex: null,
       items: [],
       isOpen: false,
-      listLength: this.props.items.length,
+      listLength: this.props.options.length,
       searchTerm: this.props.searchTerm,
       selectedIndex: null,
     };
@@ -120,13 +120,13 @@ class SLDSLookup extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if(newProps.items){
-      this.modifyItems(newProps.items);
+    if(newProps.options){
+      this.modifyItems(newProps.options);
     }
   }
 
   componentDidMount() {
-    this.modifyItems(this.props.items);
+    this.modifyItems(this.props.options);
   }
 
   modifyItems(itemsToModify) {
@@ -323,7 +323,7 @@ class SLDSLookup extends React.Component {
         focusIndex={this.state.focusIndex}
         listLength={this.state.listLength}
         onClose={this.handleClose.bind(this)}
-        type={this.props.type}
+        salesforceObj={this.props.salesforceObj}
       />;
     }
   }
@@ -343,7 +343,7 @@ class SLDSLookup extends React.Component {
         header={this.getHeader()}
         iconCategory={this.props.iconCategory}
         iconClasses={this.props.iconClasses}
-        iconName={this.props.iconName?this.props.iconName:this.props.type}
+        iconName={this.props.iconName?this.props.iconName:this.props.salesforceObj}
         items={this.state.items}
         label={this.props.label}
         listItemLabelRenderer={this.props.listItemLabelRenderer}
@@ -352,7 +352,7 @@ class SLDSLookup extends React.Component {
         onSelect={this.selectItem.bind(this)}
         searchTerm={this.state.searchTerm}
         setFocus={this.setFocus.bind(this)}
-        type={this.props.type}
+        salesforceObj={this.props.salesforceObj}
       />;
     }
   }
@@ -379,11 +379,11 @@ class SLDSLookup extends React.Component {
   }
 
   renderSelectedItem() {
-    let selectedItem = this.props.items[this.state.selectedIndex].label;
+    let selectedItem = this.props.options[this.state.selectedIndex].label;
     return (
       <a href="javascript:void(0)" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         <span className="slds-pill__label">
-          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.type} className={"slds-icon slds-icon-standard-account slds-pill__icon " + this.props.iconClasses} />
+          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.salesforceObj} className={"slds-icon slds-icon-standard-account slds-pill__icon " + this.props.iconClasses} />
           <span className="slds-pill__label">
             {selectedItem}
           </span>
@@ -402,7 +402,7 @@ class SLDSLookup extends React.Component {
   }
 
   inputRefName() {
-    return `${this.props.type}Lookup`;
+    return `${this.props.salesforceObj}Lookup`;
   }
 
   focusInput() {

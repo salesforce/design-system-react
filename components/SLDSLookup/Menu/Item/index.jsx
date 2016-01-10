@@ -24,12 +24,10 @@ const propTypes = {
   index: React.PropTypes.number,
   isActive: React.PropTypes.bool,
   isDisabled: React.PropTypes.bool,
-  key: React.PropTypes.string,
   listItemLabelRenderer: React.PropTypes.func,
   onSelect: React.PropTypes.func,
   searchTerm: React.PropTypes.string,
   setFocus: React.PropTypes.func,
-  type: React.PropTypes.string,
 };
 const defaultProps = {
 };
