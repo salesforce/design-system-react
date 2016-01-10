@@ -49,17 +49,17 @@ First, install the npm module:
 npm install --save design-system-react
 ```
 
-Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSIcons or SLDSButtons.
+Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSTooltip.
 
-For example to import the Icons component:
+For example to import the Tooltip and Icons components:
 
 ```
-import {SLDSIcons} from 'design-system-react';
+import {SLDSTooltip, SLDSIcons} from 'design-system-react';
 ```
 
-In your JSX, refer to the specific variant you want to use as COMPONENT.COMPONENT_VARIANT, e.g. SLDSIcons.Icon.
+You can then use the components in your JSX markup, e.g. SLDSTooltip, or SLDSIcons.Icon.
 
-Here is an example media object:
+Here is an example media object using SLDSIcons.Icon:
 
 ```
   <div className="slds-media slds-media-center">
