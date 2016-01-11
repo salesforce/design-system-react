@@ -9,6 +9,14 @@ import Base from './base';
 
 export const CONTROL = 'Datepicker';
 
+function addYears (years, currentDate) {
+	const date = currentDate || new Date();
+	
+	date.setFullYear(date.getFullYear() + years);
+	
+	return date;
+}
+
 const DatepickerCore = Lib.merge({}, Base, {
 	CONTROL,
 	
@@ -23,7 +31,7 @@ const DatepickerCore = Lib.merge({}, Base, {
 		startDate: null,
 		endDate: null,
 		multiSelect: false,
-		range: [new Date('1991'), new Date('2030')],
+		range: [addYears(-15), addYears(15)],
 
 		// Positionable trait
 		positionedTargetVerticalAttachment: 'bottom',
