@@ -383,7 +383,7 @@ class SLDSLookup extends React.Component {
     return (
       <a href="javascript:void(0)" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         <span className="slds-pill__label">
-          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.salesforceObj} className={"slds-icon slds-icon-standard-account slds-pill__icon " + this.props.iconClasses} />
+          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.salesforceObj} className={"slds-icon slds-pill__icon " + this.props.iconClasses} />
           <span className="slds-pill__label">
             {selectedItem}
           </span>
