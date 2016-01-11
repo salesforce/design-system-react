@@ -147,7 +147,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		// Unlike the header and footer, the pills will always be rendered if there is a selection and there is no option to disable them by passing false to `this.props.pillRenderer`. However, it is still possible to override the contents of the pills by passing in a custom render function.
 		let pills;
 		if (hasSelection) {
-			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selection={this.props.selection} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems} accessors={this.accessors} />;
+			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selection={this.props.selection} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems} accessors={this.accessors} bare={!this.props.multiSelect} />;
 		}
 		
 		// This markup should reflect the design system pattern for the control. If the dropdown menu's parent is `body` and is absolutely positioned in order to visually attach the dropdown to the input, then the dropdown menu is not rendered in this function and is rendered in `componentDidUpdate` with `_renderModalMenu`.

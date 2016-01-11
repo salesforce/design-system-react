@@ -27,6 +27,7 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 
 	propTypes: {
 		autoFocusOnNewItems: React.PropTypes.bool,
+		bare: React.PropTypes.bool,
 		onDeselect: React.PropTypes.func,
 		renderer: React.PropTypes.func,
 		selection: React.PropTypes.any.isRequired
@@ -44,7 +45,7 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 		const selectedItems = this._getDataAdapter(this.props.selection);
 		
 		return (
-			<div className="slds-pill-container slds-show">
+			<div className="slds-pill-container">
 				{selectedItems.map((item, index) => {
 					return (
 						<PillboxItem
@@ -54,6 +55,7 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 							renderer={this.props.renderer}
 							strings={this.state.strings}
 							autoFocus={this.props.autoFocusOnNewItems}
+							bare={this.props.bare}
 						/>
 					);
 				})}

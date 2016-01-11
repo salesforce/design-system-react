@@ -4,6 +4,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
+import classNames from 'classnames';
+
 import Button from '../button/button';
 
 export const CONTROL = 'lookup-pill';
@@ -12,22 +15,24 @@ const PillboxItem = React.createClass({
 	displayName: CONTROL,
 
 	propTypes: {
+		autoFocus: React.PropTypes.bool,
+		bare: React.PropTypes.bool,
+		item: React.PropTypes.object.isRequired,
 		onDeselect: React.PropTypes.func.isRequired,
 		renderer: React.PropTypes.func.isRequired,
-		item: React.PropTypes.object.isRequired,
-		strings: React.PropTypes.object.isRequired,
-		autoFocus: React.PropTypes.bool
+		strings: React.PropTypes.object.isRequired
 	},
 
 	getDefaultProps () {
 		return {
-			autoFocus: false
+			autoFocus: false,
+			bare: false
 		};
 	},
 
 	render () {
 		return (
-			<span className="slds-pill slds-pill--bare" tabIndex="0" onClick={this._handlePillClick} onKeyPress={this._handleKeyPressed} onKeyDown={this._handleKeyPressed}>
+			<span className={classNames('slds-pill', { 'slds-pill--bare': this.props.bare })} tabIndex="0" onClick={this._handlePillClick} onKeyPress={this._handleKeyPressed} onKeyDown={this._handleKeyPressed}>
 				<a href="#" className="slds-pill__label" tabIndex="-1">
 					{this.props.renderer({
 						icon: this.props.item.getIcon(),
