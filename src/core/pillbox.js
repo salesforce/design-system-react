@@ -12,38 +12,27 @@ export const CONTROL = 'Pillbox';
 const PillboxCore = Lib.merge({}, Base, {
 	CONTROL,
 	
-	// CSS classes used within this control
-	cssClasses: {
-		CONTROL: 'slds-pill'
-	},
-
-	_defaultProperties: {
-		multiSelect: true,
-		selection: [],
-		acceptKeyCodes: [13, 188]
-	},
-
 	accessors: {
+		// Return the text value to display in the list.
 		getText (item) {
 			return item.get('text');
 		},
 
-		getValue (item) {
-			return item.get('value');
+		// Return either an object with key/value pairs to match or a match function. Use this to reduce the number of fields required for searching if a unique key is available.
+		getKey (item) {
+			return item.get();
+		},
+
+		// Return a string that points to the appropriate icon.
+		getIcon (item) {
+			return item.get('icon');
 		}
 	},
 
-	_isAcceptKeyCode (keyCode) {
-		const acceptKeys = this.getProperty('acceptKeyCodes');
-		let isAccepted;
-
-		acceptKeys.forEach( (key) => {
-			if (key === keyCode) {
-				isAccepted = true;
-			}
-		});
-
-		return isAccepted;
+	_defaultProperties: {
+		autoFocusOnNewItems: false,
+		multiSelect: true,
+		selection: []
 	}
 });
 

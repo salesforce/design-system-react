@@ -37,14 +37,5 @@ module.exports = {
 				{options.strings.ADD}
 			</span>
 		);
-	},
-	pillRenderer (options) {
-		// TODO: This is the same as the menu item renderer, should we collapse this down to one item renderer?
-		return (
-			<span>
-				<Svg className="slds-icon slds-icon-standard-account slds-icon--small" icon={options.icon} />
-				{options.text}
-			</span>
-		);
 	}
 };

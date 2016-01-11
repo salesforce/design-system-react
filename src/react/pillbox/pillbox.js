@@ -14,6 +14,9 @@ import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
+// Provides the default renderer for pills
+import DefaultRenderer from './pillbox-default-renderer';
+
 // Children
 import PillboxItem from './pillbox-item';
 
@@ -23,34 +26,39 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 	displayName: CONTROL,
 
 	propTypes: {
-		selection: React.PropTypes.any
+		autoFocusOnNewItems: React.PropTypes.bool,
+		onDeselect: React.PropTypes.func,
+		renderer: React.PropTypes.func,
+		selection: React.PropTypes.any.isRequired
+	},
+
+	getDefaultProps () {
+		return DefaultRenderer;
 	},
 
 	componentWillMount () {
-		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	render () {
-		const items = this._generatePills();
-
+		const selectedItems = this._getDataAdapter(this.props.selection);
+		
 		return (
-			<div className="pillbox slds-pillbox">
-				<ul className="slds-pill-group">
-					{items}
-				</ul>
+			<div className="slds-pill-container slds-show">
+				{selectedItems.map((item, index) => {
+					return (
+						<PillboxItem
+							key={index}
+							item={item}
+							onDeselect={this._handleDeselect}
+							renderer={this.props.renderer}
+							strings={this.state.strings}
+							autoFocus={this.props.autoFocusOnNewItems}
+						/>
+					);
+				})}
 			</div>
 		);
-	},
-
-	_generatePills () {
-		const selection = this._getDataAdapter(this.props.selection);
-		
-		return selection.map((item, index) => {
-			return (
-				<PillboxItem key={index} item={item} onClick={this._handleDeselect} strings={this.state.strings}/>
-			);
-		});
 	},
 	
 	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
@@ -59,16 +67,6 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 			Multiselectable.deselectItem(this, item._item, this.props.selection);
 		} else {
 			Multiselectable.deselectAll(this, this.props.selection);
-		}
-	},
-
-	_onSelect (itemsToSelect, selection) {
-		if (Lib.isFunction(this.props.onSelect)) {
-			this.props.onSelect(itemsToSelect, selection._data);
-		}
-		
-		if (Lib.isFunction(this.props.onChange)) {
-			this.props.onChange(selection._data);
 		}
 	},
 
