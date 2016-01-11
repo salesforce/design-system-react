@@ -29,11 +29,11 @@ class LookupExample extends React.Component {
 
   getHeader(){
     let searchLabel = (this.state.searchVal ? '"' + this.state.searchVal + '"':"") + ' in Accounts';
-    return <DefaultHeader searchLabel={searchLabel} type='account' />;
+    return <DefaultHeader searchLabel={searchLabel} salesforceObj='account' />;
   }
 
   getFooter(){
-    return <DefaultFooter type='account' newItemLabel='New Account'/>;
+    return <DefaultFooter salesforceObj='account' newItemLabel='New Account'/>;
   }
 
   render(){
@@ -46,11 +46,11 @@ class LookupExample extends React.Component {
           headerRenderer={SLDSLookup.DefaultHeader}
           iconCategory='standard'
           iconName='account'
-          items={items}
           label="Account"
           onChange={this.onChange.bind(this)}
           onItemSelect={this.selectItem}
-          type="account"
+          options={items}
+          salesforceObj="account"
         />
       </div>
     );

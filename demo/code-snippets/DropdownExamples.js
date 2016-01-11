@@ -40,6 +40,7 @@ class DropdownExample extends React.Component {
     return (
       <div>
         <SLDSDropdown
+          align="right"
           label="Dropdown Hover"
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}

@@ -273,7 +273,6 @@ class SLDSDropdown extends React.Component {
   }
 
   getModalPopover(){
-    console.log('this.props.align ', this.props.align);
     const className = "slds-dropdown slds-dropdown--menu slds-dropdown--"+this.props.align;
     return(
       !this.props.disabled && this.state.isOpen?
