@@ -63,8 +63,8 @@ const defaultProps = {
 };
 
 /**
- * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
- * For stateful buttons, use the SLDSButtonStateful component. <br />
+ * The Button component should be used for label buttons, icon buttons, or buttons that have both. <br />
+ * For stateful buttons, use the ButtonStateful component. <br />
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">SLDS Buttons</a>.
  */
 class SLDSButton extends React.Component {

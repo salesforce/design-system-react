@@ -41,7 +41,7 @@ const defaultProps = {
 };
 
 /**
- * The SLDSTooltip component is variant of the Popover component. <br />
+ * The Tooltip component is variant of the Popover component. <br />
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/popovers#tooltips">SLDS Popovers > Tooltips</a>.
  */
 class SLDSTooltip extends React.Component {

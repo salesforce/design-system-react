@@ -30,7 +30,7 @@ const propTypes = {
   errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func.isRequired,
   /**
-   * Custom component for Lookup footer.
+   * Custom component for Lookup footer. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>
    */
   footerRenderer: React.PropTypes.func,
   /**
@@ -38,7 +38,7 @@ const propTypes = {
    */
   hasError: React.PropTypes.bool,
   /**
-   * Custom component for Lookup header.
+   * Custom component for Lookup header. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>
    */
   headerRenderer: React.PropTypes.func,
   /**
@@ -87,7 +87,7 @@ const defaultProps = {
 
 
 /**
- * The SLDSLookup component currently supports the base variant. <br />
+ * The Lookup component currently supports the base variant. <br />
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/lookups/">SLDS Lookups</a>.
  */
 class SLDSLookup extends React.Component {

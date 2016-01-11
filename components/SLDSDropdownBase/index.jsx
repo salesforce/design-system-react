@@ -18,7 +18,7 @@ const displayName = "SLDSDropdown";
 const propTypes = {
   align: React.PropTypes.oneOf(["left", "right"]),
   /**
-   * Classes applied to SLDSButton.
+   * Classes applied to the Button component.
    */
   buttonClassName: React.PropTypes.string,
   disabled: React.PropTypes.bool,
@@ -47,7 +47,7 @@ const propTypes = {
    */
   value: React.PropTypes.string,
   /**
-   * Determines variant of SLDSButton that triggers dropdown.
+   * Determines variant of the Button component that triggers dropdown.
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
@@ -59,7 +59,7 @@ const defaultProps = {
 };
 
 /**
- * The SLDSDropdown component is a variant of the Menu component.<br />
+ * The Dropdown component is a variant of the Menu component.<br />
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">SLDS Menus > Dropdown</a>.
  */
 class SLDSDropdown extends React.Component {
