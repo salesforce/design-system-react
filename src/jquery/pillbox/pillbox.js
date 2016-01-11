@@ -35,15 +35,14 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
-		this.elements.group = this.element.find('.slds-pill-group');
-		this.elements.pillTemplate = this.elements.group.find('.slds-pill').remove();
+		this.elements.pillTemplate = this.element.find('.slds-pill').remove();
 		
 		Eventable.on(this, 'select', this._onSelect, this);
 		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 	
 	_bindUIEvents () {
-		this.element.on('click.fu.tree', '.slds-pill > .slds-button', this._itemClicked.bind(this));
+		this.element.on('click', '.slds-pill > .slds-button', this._itemClicked.bind(this));
 	},
 
 	_render () {
@@ -52,7 +51,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		// TODO: Now that string rendering has been updated this should work fine, but further analysis may be required to ensure that is the case
 		this.elements.button = new Button({
 			assistiveText: strings.REMOVE,
-			icon: 'action.close',
+			icon: 'utility.close',
 			iconStyle: 'icon-bare'
 		}).element;
 		
@@ -140,8 +139,8 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 			elements.push(self._renderPill(pill));
 		});
 
-		this.elements.group.empty();
-		this.elements.group.prepend(elements);
+		this.element.empty();
+		this.element.prepend(elements);
 	}
 });
 
