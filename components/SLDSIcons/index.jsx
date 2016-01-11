@@ -9,12 +9,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 
+import ButtonIcon from './ButtonIcon';
 import InputIcon from './InputIcon';
 import Icon from './Icon';
-import ButtonIcon from './ButtonIcon';
 
 module.exports = {
+  ButtonIcon: ButtonIcon,
   InputIcon: InputIcon,
   Icon: Icon,
-  ButtonIcon: ButtonIcon
 };

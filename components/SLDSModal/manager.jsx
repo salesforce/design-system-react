@@ -10,6 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import SLDSButton from '../SLDSButton';
 import {Icon} from '../SLDSIcons';
 import {EventUtil} from '../utils';
@@ -133,7 +135,7 @@ module.exports = React.createClass( {
         if(this.isMounted()){
           const el = this.getDOMNode().parentNode;
           if(el && el.getAttribute('data-slds-modal')){
-            React.unmountComponentAtNode(el);
+            ReactDOM.unmountComponentAtNode(el);
             document.body.removeChild(el);
           }
         }

@@ -8,6 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Icon} from "../../../SLDSIcons";
 import {EventUtil} from '../../../utils';
 import escapeRegExp from 'lodash.escaperegexp';
@@ -23,12 +24,10 @@ const propTypes = {
   index: React.PropTypes.number,
   isActive: React.PropTypes.bool,
   isDisabled: React.PropTypes.bool,
-  key: React.PropTypes.string,
   listItemLabelRenderer: React.PropTypes.func,
   onSelect: React.PropTypes.func,
   searchTerm: React.PropTypes.string,
   setFocus: React.PropTypes.func,
-  type: React.PropTypes.string,
 };
 const defaultProps = {
 };
@@ -67,7 +66,7 @@ class Item extends React.Component {
 
   //Scroll menu item based on up/down mouse keys (assumes all items are the same height)
   scrollFocus(){
-    const height = React.findDOMNode(this).offsetHeight;
+    const height = ReactDOM.findDOMNode(this).offsetHeight;
     if(height && this.props.handleItemFocus) this.props.handleItemFocus(this.props.index,height);
   }
 
@@ -77,7 +76,7 @@ class Item extends React.Component {
       return <ListItemLabel {... this.props} />;
     }
     return [
-      <Icon key={this.props.iconName} name={this.props.iconName} category={this.props.iconCategory} className={this.props.iconClasses} />,
+      <Icon category={this.props.iconCategory} className={this.props.iconClasses} key={this.props.iconName} name={this.props.iconName} />,
       this.boldSearchText(this.props.children.label)
     ]
   }
@@ -91,17 +90,15 @@ class Item extends React.Component {
       //IMPORTANT: anchor id is used to set lookup's input's aria-activedescendant
       <li className={className}>
         <a
+          aria-disabled={this.props.isDisabled}
           href={this.props.href}
           id={id}
-          ref={id}
-          tabIndex="-1"
-          aria-disabled={this.props.isDisabled}
-          role="option"
           onClick={this.handleClick.bind(this)}
-          onMouseDown={this.handleMouseDown.bind(this)}>
-
-          { this.getLabel() }
-
+          onMouseDown={this.handleMouseDown.bind(this)}
+          ref={id}
+          role="option"
+          tabIndex="-1">
+            { this.getLabel() }
         </a>
       </li>
     )

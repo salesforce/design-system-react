@@ -29,11 +29,11 @@ class LookupExample extends React.Component {
 
   getHeader(){
     let searchLabel = (this.state.searchVal ? '"' + this.state.searchVal + '"':"") + ' in Accounts';
-    return <DefaultHeader searchLabel={searchLabel} type='account' />;
+    return <DefaultHeader searchLabel={searchLabel} salesforceObj='account' />;
   }
 
   getFooter(){
-    return <DefaultFooter type='account' newItemLabel='New Account'/>;
+    return <DefaultFooter salesforceObj='account' newItemLabel='New Account'/>;
   }
 
   render(){
@@ -41,16 +41,16 @@ class LookupExample extends React.Component {
       <div>
         <SLDSLookup
           emptyMessage="No items found"
-          items={items}
-          label="Account"
-          type="account"
+          footerRenderer={SLDSLookup.DefaultFooter}
+          hasError={false}
+          headerRenderer={SLDSLookup.DefaultHeader}
           iconCategory='standard'
           iconName='account'
-          headerRenderer={SLDSLookup.DefaultHeader}
-          footerRenderer={SLDSLookup.DefaultFooter}
-          onChange={this.onChange}
+          label="Account"
+          onChange={this.onChange.bind(this)}
           onItemSelect={this.selectItem}
-          hasError={false}
+          options={items}
+          salesforceObj="account"
         />
       </div>
     );

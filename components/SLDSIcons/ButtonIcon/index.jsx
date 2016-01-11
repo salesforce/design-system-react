@@ -23,7 +23,7 @@ const propTypes = {
   size: React.PropTypes.string,
 };
 const defaultProps = {
-  category: 'utility', // Utility Icon Reference: https://www.lightningdesignsystem.com/resources/icons#utility
+  category: 'utility',
 };
 
 class ButtonIcon extends React.Component {
@@ -49,7 +49,12 @@ class ButtonIcon extends React.Component {
     return (
       <span>
         {label}
-        <SLDSUtilityIcon className={this.getClassName()} name={this.props.name} category={this.props.category} aria-hidden='true' />
+        <SLDSUtilityIcon
+          aria-hidden='true'
+          category={this.props.category}
+          className={this.getClassName()}
+          name={this.props.name}
+          />
       </span>
     )
   }

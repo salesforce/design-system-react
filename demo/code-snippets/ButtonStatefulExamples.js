@@ -8,6 +8,7 @@ const examples = (
   <div className="slds-x-small-buttons--horizontal">
     <h4 className="slds-text-heading--medium slds-p-vertical--medium">Stateful Buttons</h4>
     <SLDSButtonStateful
+      assistiveText="like"
       iconName="like"
       iconSize="large"
       type="icon" />

@@ -15,7 +15,8 @@ SLDS React component library based off [Salesforce Lightning Design System](http
 * Picklists
 * Tooltip
 
-## Usage
+
+## Run local server
 
 ```
 npm install
@@ -23,7 +24,7 @@ npm start
 open http://localhost:3000
 ```
 
-## Tests
+## Run tests
 
 ```
 npm test
@@ -35,6 +36,49 @@ npm test
 npm install
 npm run pages
 ```
+
+## Using the React components
+
+Note: design-system-react is currently optimized for React 0.14.x.
+
+To use it in your code base, follow these steps.
+
+First, install the npm module:
+
+```
+npm install --save design-system-react
+```
+
+Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSTooltip.
+
+For example to import the Tooltip and Icons components:
+
+```
+import {SLDSTooltip, SLDSIcons} from 'design-system-react';
+```
+
+You can then use the components in your JSX markup, e.g. SLDSTooltip, or SLDSIcons.Icon.
+
+Here is an example media object using SLDSIcons.Icon:
+
+```
+  <div className="slds-media slds-media-center">
+    <div className="slds-media__figure">
+      <SLDSIcons.Icon assistiveText=""
+          category="utility"
+          className="slds-icon-text-default"
+          name="like"
+          size="small" />
+    </div>
+    <div className="slds-media__body">
+      <h2 className="slds-text-heading--small slds-truncate">Card Header (2)</h2>
+    </div>
+  </div>
+```
+
+Have fun!
+
+
 
 ## Contributing to the code base
 

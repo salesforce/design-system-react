@@ -10,6 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from "react";
+import ReactDOM from "react-dom";
+
 const classNames = require("classnames");
 import SLDSButton from "../SLDSButton";
 import {Icon} from "../SLDSIcons";
@@ -17,42 +19,47 @@ import {Icon} from "../SLDSIcons";
 const displayName = "SLDSNotification";
 const propTypes = {
   /**
-   * Custom classes applied to Notification element
+   * Custom classes applied to Notification element.
    */
   className: React.PropTypes.string,
   /**
-   * Message for notification
+   * Message for Notification.
    */
-  content: React.PropTypes.node,
+  content: React.PropTypes.node.isRequired,
   /**
-   * if isDissmissible, close button appears for users to dismiss notification.
+   * If true, close button appears for users to dismiss Notification.
    */
-  isDismissible: React.PropTypes.bool,
+  dismissible: React.PropTypes.bool,
   /**
-   * if duration exists, the notification will be visible for that amount of time.
+   * If duration exists, the Notification will disappear after that amount of time.
    */
   duration: React.PropTypes.number,
-  icon: React.PropTypes.string,
-  isOpen: React.PropTypes.bool,
+  /**
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+   */
+  iconName: React.PropTypes.string,
+  isOpen: React.PropTypes.bool.isRequired,
   onDismiss: React.PropTypes.func,
   /**
-   * styling for notification background
+   * Styling for Notification background.
    */
-  returnFocusTo: React.PropTypes.node,
   texture: React.PropTypes.bool,
+  /**
+   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes#color">SLDS Themes > Color</a>.
+   */
   theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
-  variant: React.PropTypes.oneOf(["alert", "toast"]),
+  variant: React.PropTypes.oneOf(["alert", "toast"]).isRequired,
 };
 
 const defaultProps = {
-  isDismissible: true,
+  dismissible: true,
   isOpen: false,
-  returnFocusTo: null,
+  texture: false,
 };
 
 /**
- * The SLDS Notification component is used for alerts and toasts. For prompts, use the SLDS Modal component.<br />
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/notifications">Lightning Design System - Notifications</a>.
+ * The Notification component is used for alerts and toasts. For prompt notifications, use the Modal component with <code>prompt={true}</code>.<br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/notifications">SLDS Notifications</a>.
  */
 class SLDSNotification extends React.Component {
   constructor(props){
@@ -76,13 +83,13 @@ class SLDSNotification extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(prevProps.isOpen !== this.props.isOpen){
-      const btn = React.findDOMNode(this.refs.dismissNotificationBtn);
+      const btn = ReactDOM.findDOMNode(this.refs.dismissNotificationBtn);
       if(btn) btn.focus();
     }
   }
 
   renderIcon(){
-    if(this.props.icon){
+    if(this.props.iconName){
       let classes = "";
       if(this.props.variant === "alert") {
         classes = "slds-m-right--x-small";
@@ -90,19 +97,15 @@ class SLDSNotification extends React.Component {
       else if(this.props.variant === "toast") {
         classes = "slds-m-right--small slds-col slds-no-flex";
       }
-      return <Icon category="utility" name={this.props.icon} size="small" className={classes} />;
+      return <Icon category="utility" name={this.props.iconName} size="small" className={classes} />;
     }
   }
 
   renderClose(){
-    if(this.props.isDismissible){
-      let size = "";
-      if(this.props.variant === "alert") {
-        size = "medium";
-      }
-      else if(this.props.variant === "toast") {
-        size = "large";
-      }
+    if(this.props.dismissible){
+      let size = null;
+      if(this.props.variant === "toast") size = "large";
+
       return <SLDSButton
             assistiveText="Dismiss Notification"
             variant="icon-inverse"

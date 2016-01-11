@@ -20,12 +20,16 @@ class DropdownExample extends React.Component {
     this.state = {};
   }
 
-  handleOnUpdateHighlighted () {
-    console.log('onUpdateHighlighted should be defined');
-  }
-
   handleOnSelect(value) {
     console.log('selected: ',value);
+  }
+
+  handleMouseEnter() {
+    console.log('onEnter should be defined');
+  }
+
+  handleMouseLeave() {
+    console.log('onLeave should be defined');
   }
 
   handleOnClick() {
@@ -36,15 +40,21 @@ class DropdownExample extends React.Component {
     return (
       <div>
         <SLDSDropdown
-          label="Contacts"
-          modal={true}
+          align="right"
+          label="Dropdown Hover"
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+          onSelect={this.handleOnSelect}
+          options={options}
+          value='C0' />
+
+        <SLDSDropdown
+          label="Dropdown Click"
           onClick={this.handleOnClick}
           onSelect={this.handleOnSelect}
-          onUpdateHighlighted={this.handleOnUpdateHighlighted}
+          openOn="click"
           options={options}
-          placeholder="Select a contact"
-          value='C0'
-          />
+          value='C0' />
       </div>
     );
   }

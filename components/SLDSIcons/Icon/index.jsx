@@ -16,20 +16,23 @@ const classNames = require("classnames");
 const displayName = "Icon";
 const propTypes = {
   /**
-   * text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
    * Naked icons must have assistive text, however, if you also have visible descriptive text with the icon,
-   * declare this prop as assistiveText="".
+   * declare this prop as <code>assistiveText=""</code>.
    */
   assistiveText: React.PropTypes.string,
-  category: React.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]),
+  category: React.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]).isRequired,
   /**
    * css classes that are applied to the svg
    */
   className: React.PropTypes.string,
   /**
-   * name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System - Icons</a> to reference icon names.
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
    */
-  name: React.PropTypes.string,
+  name: React.PropTypes.string.isRequired,
+  /**
+   * If omitted, icon size is medium.
+   */
   size: React.PropTypes.oneOf(["x-small", "small", "large"]),
 };
 const defaultProps = {
@@ -37,9 +40,9 @@ const defaultProps = {
 };
 
 /**
- * The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />
- * The icon color is white by default. Add the class, "slds-icon-text-default", to create a text-colored fill color for utility icons. <br />
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">Lightning Design System - Icons</a>.
+ * The Icon component should be used for icons only. For icons that are buttons, use the Button component. <br />
+ * The icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons. <br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">SLDS Icons</a>.
  */
 class Icon extends React.Component {
 
@@ -78,7 +81,12 @@ class Icon extends React.Component {
     return (
       <span className={this.getContainerClassName()}>
       {label}
-      <SLDSUtilityIcon className={this.getClassName()} name={this.props.name} category={this.props.category} aria-hidden='true' />
+      <SLDSUtilityIcon
+        aria-hidden='true'
+        category={this.props.category}
+        className={this.getClassName()}
+        name={this.props.name}
+        />
       </span>
     )
   }

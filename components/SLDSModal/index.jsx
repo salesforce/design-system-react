@@ -8,75 +8,72 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 
-import React from 'react';
-import SLDSButton from '../SLDSButton';
-import classNames from 'classnames';
-import Modal from 'react-modal';
+import React from "react";
+import ReactDOM from "react-dom";
+
+import SLDSButton from "../SLDSButton";
+import classNames from "classnames";
+import Modal from "react-modal";
 
 const customStyles = {
   content : {
-    position                : 'default',
-    top                     : 'default',
-    left                    : 'default',
-    right                   : 'default',
-    bottom                  : 'default',
-    border                  : 'default',
-    background              : 'default',
-    overflow                : 'default',
-    WebkitOverflowScrolling : 'default',
-    borderRadius            : 'default',
-    outline                 : 'default',
-    padding                 : 'default'
+    position                : "default",
+    top                     : "default",
+    left                    : "default",
+    right                   : "default",
+    bottom                  : "default",
+    border                  : "default",
+    background              : "default",
+    overflow                : "default",
+    WebkitOverflowScrolling : "default",
+    borderRadius            : "default",
+    outline                 : "default",
+    padding                 : "default"
   },
   overlay : {
-    backgroundColor: 'default'
+    backgroundColor: "default"
   }
 };
 
 const displayName = "SLDSModal";
 const propTypes = {
   /**
-   * Vertical alignment of modal
+   * Vertical alignment of modal.
    */
-  align: React.PropTypes.oneOf(['top', 'center']),
+  align: React.PropTypes.oneOf(["top", "center"]),
   /**
-   * Modal content
+   * Modal content.
    */
-  children: React.PropTypes.node,
+  children: React.PropTypes.node.isRequired,
   /**
-   * if directional, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
+   * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
    */
   directional: React.PropTypes.bool,
-  footer: React.PropTypes.array,
-  isOpen: React.PropTypes.bool,
   /**
-   * if isPassive, prompt modals can be dismissed by clicking outside of modal or pressing esc key
+   * If true, prompt modals can be dismissed by clicking outside of modal or pressing esc key.
    */
-  isPassive: React.PropTypes.bool,
-  prompt: React.PropTypes.oneOf(['', 'success', 'warning', 'error', 'wrench', 'offline', 'info']),
-  returnFocusTo: React.PropTypes.node,
-  size: React.PropTypes.oneOf(['medium', 'large']),
+  dismissible: React.PropTypes.bool,
+  footer: React.PropTypes.array,
+  isOpen: React.PropTypes.bool.isRequired,
+  prompt: React.PropTypes.oneOf(["", "success", "warning", "error", "wrench", "offline", "info"]),
+  size: React.PropTypes.oneOf(["medium", "large"]),
   /**
-   * Text underneath the title
+   * Content underneath the title.
    */
   tagline: React.PropTypes.node,
   title: React.PropTypes.node,
 };
 const defaultProps = {
-  align: 'center',
+  align: "center",
   directional: false,
-  footer: [],
   isOpen: false,
-  isPassive: true,
-  prompt: '',
-  returnFocusTo: null,
-  tagline: '',
-  title: '',
+  dismissible: true,
+  prompt: "",
 };
 
 /**
- * The SLDS Modal component is used for modals and prompts. <br />
- * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">Lightning Design System - Modals</a>.
+ * The Modal component is used for modals and <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">prompt notifications</a>. <br />
+ * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">SLDS Modals</a>.
  */
 class SLDSModal extends React.Component {
 
@@ -108,11 +105,11 @@ class SLDSModal extends React.Component {
     }
     if(this.state.isClosing !== prevState.isClosing){
       if(this.state.isClosing){
-        //console.log('CLOSING: ');
+        //console.log("CLOSING: ");
         if(this.state.isMounted){
-          const el = React.findDOMNode(this).parentNode;
-          if(el && el.getAttribute('data-slds-modal')){
-            React.unmountComponentAtNode(el);
+          const el = ReactDOM.findDOMNode(this).parentNode;
+          if(el && el.getAttribute("data-slds-modal")){
+            ReactDOM.unmountComponentAtNode(el);
             document.body.removeChild(el);
           }
         }
@@ -126,7 +123,7 @@ class SLDSModal extends React.Component {
   }
 
   closeModal () {
-    if(this.props.isPassive){
+    if(this.props.dismissible){
       this.setState({isClosing: true});
       if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
         this.state.returnFocusTo.focus();
@@ -144,10 +141,10 @@ class SLDSModal extends React.Component {
   updateBodyScroll () {
     if(window && document && document.body){
       if(this.props.isOpen){
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = "hidden";
       }
       else{
-        document.body.style.overflow = 'inherit';
+        document.body.style.overflow = "inherit";
       }
     }
   }
@@ -155,7 +152,7 @@ class SLDSModal extends React.Component {
   clearBodyScroll() {
     return function updateBodyScroll() {
       if (window && document && document.body) {
-        document.body.style.overflow = 'inherit';
+        document.body.style.overflow = "inherit";
       }
     }
   }
@@ -167,20 +164,20 @@ class SLDSModal extends React.Component {
   }
 
   isPrompt(){
-    return this.props.prompt !== '';
+    return this.props.prompt !== "";
   }
 
   footerComponent() {
     let footer = null;
     const hasFooter = this.props.footer && this.props.footer.length > 0;
     const footerClass = {
-      'slds-modal__footer': true,
-      'slds-modal__footer--directional': this.props.directional,
-      'slds-theme--default': this.isPrompt()
+      "slds-modal__footer": true,
+      "slds-modal__footer--directional": this.props.directional,
+      "slds-theme--default": this.isPrompt()
     };
 
     if (hasFooter) {
-      footer = (<div className={classNames(footerClass)}>{this.props.footer}</div>);
+      footer = (<div className={classNames(footerClass)} onClick={this.handleModalClick.bind(this)}>{this.props.footer}</div>);
     }
     return footer;
   }
@@ -189,13 +186,13 @@ class SLDSModal extends React.Component {
     let headerContent = null;
     const hasHeader = this.props.title || this.props.tagline;
     const headerClass = {
-      ['slds-modal__header']: hasHeader,
+      ["slds-modal__header"]: hasHeader,
       [`slds-theme--${this.props.prompt}`]: this.isPrompt(),
-      ['slds-theme--alert-texture']: this.isPrompt(),
+      ["slds-theme--alert-texture"]: this.isPrompt(),
     };
     const titleClass = {
-      'slds-text-heading--small': this.isPrompt(),
-      'slds-text-heading--medium': !this.isPrompt(),
+      "slds-text-heading--small": this.isPrompt(),
+      "slds-text-heading--medium": !this.isPrompt(),
     };
 
     if(hasHeader) {
@@ -209,8 +206,8 @@ class SLDSModal extends React.Component {
     }
 
     return (
-      <div className={classNames(headerClass)} style={{position: "relative"}}>
-        <SLDSButton assistiveText='Close' variant='icon-inverse' iconName='close' iconSize='large' className='slds-modal__close' onClick={this.closeModal.bind(this)} />
+      <div className={classNames(headerClass)} style={{position: "relative"}} onClick={this.handleModalClick.bind(this)}>
+        <SLDSButton assistiveText="Close" variant="icon-inverse" iconName="close" iconSize="large" className="slds-modal__close" onClick={this.closeModal.bind(this)} />
         {headerContent}
       </div>
     )
@@ -218,10 +215,10 @@ class SLDSModal extends React.Component {
 
   getModal() {
     const modalClass = {
-      'slds-modal': true,
-      'slds-fade-in-open': this.state.revealed,
-      'slds-modal--large': this.props.size === 'large',
-      'slds-modal--prompt': this.isPrompt(),
+      "slds-modal": true,
+      "slds-fade-in-open": this.state.revealed,
+      "slds-modal--large": this.props.size === "large",
+      "slds-modal--prompt": this.isPrompt(),
     };
     const modalStyle = this.props.align === "top" ? {"justifyContent": "flex-start"} : null;
     const contentStyle = this.props.title ? null: {"borderRadius": ".25rem"};
@@ -229,13 +226,11 @@ class SLDSModal extends React.Component {
       <div>
         <div aria-hidden="false" role="dialog" className={classNames(modalClass)} onClick={this.closeModal.bind(this)}>
           <div className="slds-modal__container" style={modalStyle}>
-            <div onClick={this.handleModalClick.bind(this)}>
-              {this.headerComponent()}
-              <div className="slds-modal__content" style={contentStyle}>
-                {this.props.children}
-              </div>
-              {this.footerComponent()}
-            </div>
+           {this.headerComponent()}
+           <div className="slds-modal__content" style={contentStyle} onClick={this.handleModalClick.bind(this)}>
+             {this.props.children}
+           </div>
+           {this.footerComponent()}
           </div>
         </div>
         <div className="slds-backdrop slds-backdrop--open"></div>
