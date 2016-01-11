@@ -20,7 +20,7 @@ describe('SLDSLookup: ',  function(){
 
   const getLookup = function(withHeader) {
     return <SLDSLookup
-      items={items}
+      options={items}
       label="Leads"
       type="lead"
       headerRenderer={withHeader?SLDSLookup.DefaultHeader:null}
