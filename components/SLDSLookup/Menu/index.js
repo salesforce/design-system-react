@@ -8,6 +8,8 @@
    */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import Item from './Item';
 
 const displayName = 'SLDSLookup-Menu';
@@ -24,7 +26,7 @@ const propTypes = {
   listLength: React.PropTypes.number,
   searchTerm: React.PropTypes.string,
   setFocus: React.PropTypes.func,
-  type: React.PropTypes.string,
+  salesforceObj: React.PropTypes.string,
 };
 const defaultProps = {
   emptyMessage: "No matches found.",
@@ -40,7 +42,7 @@ class Menu extends React.Component {
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
   componentDidUpdate(prevProps, prevState){
     // make an array of the children of the list but only count the actual items (ignore errors/messages)
-    let list = [].slice.call(React.findDOMNode(this.refs.list).children)
+    let list = [].slice.call(ReactDOM.findDOMNode(this.refs.list).children)
       .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
     this.props.getListLength(list);
   }
@@ -49,10 +51,14 @@ class Menu extends React.Component {
     return this.props.filterWith(this.props.searchTerm, item);
   }
 
+  filteredItems() {
+    return this.props.items.filter(this.filter, this)
+  }
+
   //Scroll menu up/down when using mouse keys
   handleItemFocus(itemIndex, itemHeight){
     if (this.refs.list) {
-      React.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
+      ReactDOM.findDOMNode(this.refs.list).scrollTop = itemIndex * itemHeight;
     }
   }
 
@@ -86,7 +92,7 @@ class Menu extends React.Component {
   }
 
   renderItems(){
-    return this.props.items.filter(this.filter, this).map((c, i) => {
+    return this.filteredItems().map((c, i) => {
       //isActive means it is aria-activedescendant
       const id = c.id;
       let isActive = false;
@@ -96,23 +102,22 @@ class Menu extends React.Component {
         isActive = this.props.focusIndex === i  ? true : false;
       }
       return <Item
-        key={id}
-        id={id}
-        type={this.props.type}
+        boldRegex={this.props.boldRegex}
+        data={c.data}
+        handleItemFocus={this.handleItemFocus.bind(this)}
         iconCategory={this.props.iconCategory}
-        iconName={this.props.iconName}
         iconClasses={this.props.iconClasses}
-        searchTerm={this.props.searchTerm}
+        iconName={this.props.iconName}
+        id={id}
         index={i}
         isActive={isActive}
-        setFocus={this.props.setFocus}
-        handleItemFocus={this.handleItemFocus.bind(this)}
-        onSelect={this.props.onSelect}
-        data={c.data}
-        boldRegex={this.props.boldRegex}
+        key={id}
         listItemLabelRenderer={this.props.listItemLabelRenderer}
-      >
-      {c}
+        onSelect={this.props.onSelect}
+        searchTerm={this.props.searchTerm}
+        setFocus={this.props.setFocus}
+        salesforceObj={this.props.salesforceObj}>
+          {c}
       </Item>
     });
   }
@@ -130,7 +135,7 @@ class Menu extends React.Component {
   renderContent(){
     if (this.props.errors.length > 0)
       return this.renderErrors()
-    else if (this.props.items.length === 0)
+    else if (this.filteredItems().length === 0)
       return (
         <li className="slds-lookup__message" aria-live="polite">
           <span>{this.props.emptyMessage}</span>

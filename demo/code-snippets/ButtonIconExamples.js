@@ -26,7 +26,6 @@ const examples = (
     <SLDSButton
       assistiveText="Icon Border medium"
       iconName="settings"
-      iconSize="medium"
       iconVariant="border"
       onClick={handleClick("Icon border")}
       variant="icon" />
@@ -34,7 +33,6 @@ const examples = (
     <SLDSButton
       assistiveText="Icon Border-filled medium"
       iconName="settings"
-      iconSize="medium"
       iconVariant="border-filled"
       onClick={handleClick("Icon border-filled")}
       variant="icon" />

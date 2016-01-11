@@ -20,7 +20,7 @@ class NotificationExample extends React.Component {
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-        <SLDSButton variant="neutral" label="Open Toast" onClick={this.openModalToast.bind(this)} />
+        <SLDSButton label="Open Toast" onClick={this.openModalToast.bind(this)} variant="neutral" />
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
         <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
@@ -76,39 +76,54 @@ class NotificationExample extends React.Component {
   }
 
   render() {
-    let successMsg = ["Your new contact ", <a href="#" key="0123">Sara Smith</a>, " was successfully created."];
-    let errorMsg = "There was a problem updating the record.";
-    let warnMsg = "Oops, you've missed some required form inputs.";
+    const successMsg = ["Your new contact ", <a href="#" key="0123">Sara Smith</a>, " was successfully created."];
+    const errorMsg = "There was a problem updating the record.";
+    const warnMsg = "Oops, you've missed some required form inputs.";
 
     return (
       <div className="slds-p-vertical--medium demo">
         <div className="slds-p-horizontal--medium" style={{"display": "inline-block"}}>
           <h4 className="slds-text-heading--small">Alerts</h4>
-          <SLDSButton variant="neutral" label="Show Alert" onClick={this.openAlert.bind(this)} />
-          <SLDSNotification variant="alert" theme="success" icon="notification" isOpen={this.state.alertIsOpen} texture={true} content={successMsg} onDismiss={this.dismissAlert.bind(this)} />
+          <SLDSButton label="Show Alert" onClick={this.openAlert.bind(this)} variant="neutral" />
+          <SLDSNotification
+            content={successMsg}
+            iconName="notification"
+            isOpen={this.state.alertIsOpen}
+            onDismiss={this.dismissAlert.bind(this)}
+            texture={true}
+            theme="success"
+            variant="alert" />
         </div>
 
         <div className="slds-p-horizontal--medium" style={{"display": "inline-block"}}>
           <h4 className="slds-text-heading--small ">Toasts</h4>
-          <SLDSButton variant="neutral" label="Show Toast" onClick={this.openToast.bind(this)} />
-          <SLDSNotification variant="toast" theme="error" icon="notification" isOpen={this.state.toastIsOpen} texture={true} content={errorMsg} onDismiss={this.dismissToast.bind(this)} />
+          <SLDSButton label="Show Toast" onClick={this.openToast.bind(this)} variant="neutral" />
+          <SLDSNotification
+            content={errorMsg}
+            iconName="notification"
+            isOpen={this.state.toastIsOpen}
+            onDismiss={this.dismissToast.bind(this)}
+            texture={true}
+            theme="error"
+            variant="toast"
+            />
         </div>
 
         <div className="slds-p-horizontal--medium" style={{"display": "inline-block"}}>
           <h4 className="slds-text-heading--small">Modal Toasts</h4>
-          <SLDSButton variant="neutral" label="Show Modal Toast" onClick={this.openModal.bind(this)} />
+          <SLDSButton label="Show Modal Toast" onClick={this.openModal.bind(this)} variant="neutral" />
           <SLDSModal
-            isOpen={this.state.modalIsOpen}
-            toast={
-              <SLDSNotification variant="toast" theme="warning" icon="warning" isOpen={this.state.modalToastIsOpen} content={warnMsg} onDismiss={this.dismissModalToast.bind(this)} />
-            }
-            title={
-              <span>Lightning Design System: Style with Ease</span>
-            }
             footer={[
               <SLDSButton key="cancelBtn" label="Cancel" variant="neutral" onClick={this.closeModal.bind(this)} />,
               <SLDSButton key="saveBtn" label="Save" variant="brand" onClick={this.handleSubmitModal.bind(this)} />
             ]}
+            isOpen={this.state.modalIsOpen}
+            title={
+              <span>Lightning Design System: Style with Ease</span>
+            }
+            toast={
+              <SLDSNotification variant="toast" theme="warning" iconName="warning" isOpen={this.state.modalToastIsOpen} content={warnMsg} onDismiss={this.dismissModalToast.bind(this)} />
+            }
             onRequestClose={this.closeModal.bind(this)}>
               {this.getModalContent()}
           </SLDSModal>

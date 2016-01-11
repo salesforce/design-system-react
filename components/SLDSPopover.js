@@ -10,6 +10,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import TetherDrop from 'tether-drop';
 import {EventUtil,KEYS} from './utils';
 //import { TransitionSpring, Spring } from 'react-motion';
@@ -130,7 +132,7 @@ module.exports = React.createClass( {
   },
 
   dropOptions () {
-    const target = this.props.targetElement?React.findDOMNode(this.props.targetElement):React.findDOMNode(this).parentNode;
+    const target = this.props.targetElement?ReactDOM.findDOMNode(this.props.targetElement):ReactDOM.findDOMNode(this).parentNode;
     const position = this.getPosition();
     return {
       target: target,
@@ -150,7 +152,7 @@ module.exports = React.createClass( {
 
   renderPopover () {
 
-    React.render( this.popoverComp(), this.popoverElement );
+    ReactDOM.render( this.popoverComp(), this.popoverElement );
 
     if(this.popoverElement &&
         this.popoverElement.parentNode &&
@@ -173,7 +175,7 @@ module.exports = React.createClass( {
   componentWillUnmount () {
 
     this.drop.destroy();
-    React.unmountComponentAtNode( this.popoverElement );
+    ReactDOM.unmountComponentAtNode( this.popoverElement );
     if ( this.popoverElement.parentNode ) {
       this.popoverElement.parentNode.removeChild( this.popoverElement );
     }

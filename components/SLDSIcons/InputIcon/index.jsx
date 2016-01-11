@@ -16,9 +16,10 @@ const displayName = "InputIcon";
 const propTypes = {
   category: React.PropTypes.string,
   name: React.PropTypes.string,
+  onClick: React.PropTypes.func,
 };
 const defaultProps = {
-  category: 'utility', // Utility Icon Reference: https://www.lightningdesignsystem.com/resources/icons#utility
+  category: 'utility',
 };
 
 class InputIcon extends React.Component {
@@ -29,8 +30,14 @@ class InputIcon extends React.Component {
   }
 
   render() {
-    const className  = 'slds-input__icon slds-icon-text-default';
-    return <SLDSUtilityIcon name={this.props.name} category={this.props.category} aria-hidden='true' className={className} />;
+    const className = 'slds-input__icon slds-icon-text-default';
+    return <SLDSUtilityIcon
+              aria-hidden='true'
+              category={this.props.category}
+              className={className}
+              name={this.props.name}
+              onClick={this.props.onClick}
+              />;
   }
 }
 

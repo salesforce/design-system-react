@@ -1,9 +1,9 @@
 const React = require('react/addons');
 const TestUtils = React.addons.TestUtils;
+const {Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag} = TestUtils;
 import {SLDSLookup} from '../../components';
 
 describe('SLDSLookup: ',  function(){
-
   let items = [
     {label:'Paddy\'s Pub'},
     {label:'Tyrell Corp'},
@@ -20,7 +20,7 @@ describe('SLDSLookup: ',  function(){
 
   const getLookup = function(withHeader) {
     return <SLDSLookup
-      items={items}
+      options={items}
       label="Leads"
       type="lead"
       headerRenderer={withHeader?SLDSLookup.DefaultHeader:null}
@@ -139,4 +139,36 @@ describe('SLDSLookup: ',  function(){
 
   });
 
+  describe("filtering items", function() {
+    let lookup, input, getItems;
+
+    beforeEach(function() {
+      lookup = generateLookup(getLookup());
+      input = lookup.getElementsByTagName("input")[0];
+      Simulate.click(input);
+      getItems = () => lookup.getElementsByClassName('slds-lookup__item');
+    });
+
+    it('filters its items', () => {
+      Simulate.change(input, {target: {value: 'Pa'}});
+      expect(getItems().length).to.equal(3);
+    });
+
+    it('filters its items all the way!', () => {
+      Simulate.change(input, {target: {value: 'Poof!'}});
+      expect(getItems().length).to.equal(1); //1 cause of add-item
+    });
+
+    it('unfilters its items if no val', () => {
+      Simulate.change(input, {target: {value: ''}});
+      expect(getItems().length).to.equal(7);
+    });
+
+    it('displays no items when item count is 0', () => {
+      expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(0);
+      Simulate.change(input, {target: {value: 'kdjfksjdf'}});
+      expect(getItems().length).to.equal(1); // add item
+      expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(1);
+    });
+  });
 });

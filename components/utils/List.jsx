@@ -8,6 +8,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import ListItem from "./ListItem";
 import EventUtil from './EventUtil';
 
@@ -102,7 +104,7 @@ class SLDSList extends React.Component {
 
   handleItemFocus (itemIndex, itemHeight) {
     if(this.refs.scroll){
-      React.findDOMNode(this.refs.scroll).scrollTop = itemIndex * itemHeight;
+      ReactDOM.findDOMNode(this.refs.scroll).scrollTop = itemIndex * itemHeight;
     }
   }
 

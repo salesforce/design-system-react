@@ -9,12 +9,10 @@ const examples = (
     <h4 className="slds-text-heading--medium slds-p-vertical--medium">Standard Buttons</h4>
     <SLDSButton
       label="Base"
-      onClick={handleClick("Base")}
-      variant="base" />
+      onClick={handleClick("Base")} />
 
     <SLDSButton
       label="Neutral"
-      tabIndex="-1"
       onClick={handleClick("Neutral")}
       variant="neutral" />
 
