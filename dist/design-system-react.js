@@ -281,8 +281,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	/**
-	 * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both. <br />
-	 * For stateful buttons, use the SLDSButtonStateful component. <br />
+	 * The Button component should be used for label buttons, icon buttons, or buttons that have both. <br />
+	 * For stateful buttons, use the ButtonStateful component. <br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">SLDS Buttons</a>.
 	 */
 	
@@ -1657,7 +1657,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	/**
-	 * The SLDSIcon component should be used for icons only. For icons that are buttons, use the SLDSButton component. <br />
+	 * The Icon component should be used for icons only. For icons that are buttons, use the Button component. <br />
 	 * The icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons. <br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">SLDS Icons</a>.
 	 */
@@ -3441,7 +3441,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = "SLDSButtonGroup";
 	var propTypes = {
 	  /**
-	   * Children are expected to be components. If last button triggers a dropdown menu, use SLDSDropdown instead of SLDSButton.
+	   * Children are expected to be components. If last button triggers a dropdown menu, use Dropdown instead of Button.
 	   */
 	  children: _react2["default"].PropTypes.node.isRequired,
 	  className: _react2["default"].PropTypes.string
@@ -3449,7 +3449,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var defaultProps = {};
 	
 	/**
-	 * The SLDSButtonGroup component wraps SLDSButton components.<br />
+	 * The Button Group component wraps SLDS components.<br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/button-groups">SLDS Button Groups</a>.
 	 */
 	
@@ -3562,7 +3562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var propTypes = {
 	  align: _react2["default"].PropTypes.oneOf(["left", "right"]),
 	  /**
-	   * Classes applied to SLDSButton.
+	   * Classes applied to the Button component.
 	   */
 	  buttonClassName: _react2["default"].PropTypes.string,
 	  disabled: _react2["default"].PropTypes.bool,
@@ -3591,7 +3591,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  value: _react2["default"].PropTypes.string,
 	  /**
-	   * Determines variant of SLDSButton that triggers dropdown.
+	   * Determines variant of the Button component that triggers dropdown.
 	   */
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
@@ -3603,7 +3603,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	/**
-	 * The SLDSDropdown component is a variant of the Menu component.<br />
+	 * The Dropdown component is a variant of the Menu component.<br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">SLDS Menus > Dropdown</a>.
 	 */
 	
@@ -26101,7 +26101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  errors: _react2["default"].PropTypes.arrayOf(_react2["default"].PropTypes.string),
 	  filterWith: _react2["default"].PropTypes.func.isRequired,
 	  /**
-	   * Custom component for Lookup footer.
+	   * Custom component for Lookup footer. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>
 	   */
 	  footerRenderer: _react2["default"].PropTypes.func,
 	  /**
@@ -26109,7 +26109,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   */
 	  hasError: _react2["default"].PropTypes.bool,
 	  /**
-	   * Custom component for Lookup header.
+	   * Custom component for Lookup header. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>
 	   */
 	  headerRenderer: _react2["default"].PropTypes.func,
 	  /**
@@ -26157,7 +26157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	/**
-	 * The SLDSLookup component currently supports the base variant. <br />
+	 * The Lookup component currently supports the base variant. <br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/lookups/">SLDS Lookups</a>.
 	 */
 	
@@ -27462,7 +27462,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	/**
-	 * The SLDSModal component is used for modals and <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">prompt notifications</a>. <br />
+	 * The Modal component is used for modals and <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">prompt notifications</a>. <br />
 	 * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">SLDS Modals</a>.
 	 */
 	
@@ -29017,7 +29017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	/**
-	 * The SLDSNotification component is used for alerts and toasts. For prompt notifications, use the SLDSModal component with <code>prompt={true}</code>.<br />
+	 * The Notification component is used for alerts and toasts. For prompt notifications, use the Modal component with <code>prompt={true}</code>.<br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/notifications">SLDS Notifications</a>.
 	 */
 	
@@ -29259,7 +29259,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	/**
-	 * The SLDSPicklist component is a variant of the Menu component.<br />
+	 * The Picklist component is a variant of the Menu component.<br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#picklist">SLDS Menus > Picklists</a>.
 	 */
 	
@@ -30189,7 +30189,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 	
 	/**
-	 * The SLDSTooltip component is variant of the Popover component. <br />
+	 * The Tooltip component is variant of the Popover component. <br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/popovers#tooltips">SLDS Popovers > Tooltips</a>.
 	 */
 	
