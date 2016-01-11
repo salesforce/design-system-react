@@ -14,6 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 const EventUtil = {
 
   trapEvent(event){
+    if(!event) return
     event.preventDefault();
     event.stopPropagation();
     if(event.nativeEvent && event.nativeEvent.preventDefault){

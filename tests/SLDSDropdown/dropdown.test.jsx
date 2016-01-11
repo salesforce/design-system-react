@@ -24,8 +24,7 @@ describe('SLDSDropdown: ',  function(){
   const renderDropdown = inst => {
     body = document.createElement('div');
     document.body.appendChild(body)
-    const cls = props => <div>{inst}</div>
-    return React.render(React.createElement(cls), body)
+    return React.render(inst, body)
   }
 
   const defaultProps = {label: "Contacts",
@@ -39,39 +38,22 @@ describe('SLDSDropdown: ',  function(){
   const dropItDown = ps => renderDropdown(createDropdown(ps))
 
   describe('Rendering', () => {
-    let btn;
+    let cmp, btn;
     const getMenu = () => body.querySelector('.slds-dropdown--menu')
 
     beforeEach(() => {
-      dropItDown({})
-      console.log('\n\n\n\n\n\n\n\n ------cmp', body, '\n\n\n\n\n\n')
-      btn = body.querySelector('.slds-button')
+      cmp = dropItDown({})
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
     })
 
     it('gives the button correct aria properties', () => {
-      expect(btn.props['aria-haspopup']).to.equal('aria-haspopup="true'')
+      expect(btn.props['aria-haspopup']).to.equal("true")
     })
 
     it('expands the dropdown on hover', () => {
-      expect(getMenu()).to.be.falsy
+      expect(getMenu()).to.equal(null)
       Simulate.mouseEnter(btn, {})
-      console.log('\n\n\n\n\n\n 1111', getMenu(), '\n\n\n\n\n\n')
-      expect(getMenu()).to.be.truthy
-      Simulate.mouseLeave(btn, {})
-      console.log('\n\n\n\n\n\n 22222', getMenu(), '\n\n\n\n\n\n')
-      expect(getMenu()).to.be.falsy
-    })
-
-    it('selects an option', () => {
-      Simulate.mouseEnter(btn, {})
-      console.log('\n\n\n\n\n\n 3333', getMenu(), '\n\n\n\n\n\n')
-      const items = getMenu().querySelectorAll('.slds-dropdown__item')
-      console.log('\n\n\n\n\n\n', items[2], '\n\n\n\n\n\n')
-      expect(items[2].className).to.not.include('slds-is-selected')
-      Simulate.click(items[2], {})
-      expect(items[2].className).to.include('slds-is-selected')
-      Simulate.click(items[3], {})
-      expect(items[2].className).to.not.include('slds-is-selected')
+      expect(getMenu().className).to.include('slds-dropdown')
     })
   })
 })
