@@ -5,8 +5,6 @@ import * as Lib from '../../lib/lib';
 import DatepickerCore, {CONTROL} from '../../core/datepicker';
 
 // Traits
-import Eventable from '../../traits/eventable';
-import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
 import Positionable from '../../traits/positionable';
 
@@ -70,26 +68,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 		const $icon = this._renderIcon('utility.event', 'slds-input__icon slds-icon-text-default');
 		$icon.replaceAll(this.elements.formElement.find('x-input-icon')[0]);
-
-		const selDate = this.getProperty('dateSelected');
-		if (selDate) {
-			if (this.getProperty('multiSelect')) {
-				this.selectDates([
-					{ date: this._roundDate(selDate[0]) },
-					{ date: this._roundDate(selDate[1]) }
-				]);
-			} else {
-				this.selectDate({date: this._roundDate(selDate)});
-			}
-		}
-		
-		Eventable.on(this, 'select', this._onSelect, this);
-		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 
 	_bindUIEvents () {
 		this.elements.input.on('click.slds-form-element', this._triggerCalendar.bind(this));
-		this.elements.input.on('keyup.slds-form-element', this._activateManualInput.bind(this));
+		this.elements.input.on('change.slds-form-element', this._manualDateInput.bind(this));
 
 		this.elements.dropdown.on('click.slds-datepicker', this._cancelEventProp);
 		this.elements.dropdown.on('click.slds-datepicker-form', '.slds-datepicker__filter--month .slds-button:eq(0)', this._backMonth.bind(this));
@@ -99,7 +82,9 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_render () {
 		const strings = this.getState('strings');
+		
 		this.elements.input.attr('placeholder', strings.DATE_FORMAT);
+		
 		if (this.getProperty('inputLabel')) {
 			this.elements.input.attr('aria-label', this.getProperty('inputLabel'));
 		}
@@ -120,8 +105,6 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		});
 		$nextMonthButton.replaceAll(this.elements.dropdown.find('x-next-month-button')[0]);
 
-		this._renderDateRange();
-
 		return this.element;
 	},
 
@@ -130,6 +113,12 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 	
 	_onOpened () {
+		this.setState({
+			dateViewing: this.getProperty('startDate') || new Date()
+		});
+		
+		this._renderDateRange();
+		
 		this.elements.dropdown.toggleClass('slds-hidden', false);
 		if (this.getProperty('modalCalendar')) {
 			Positionable.position(this);
@@ -161,7 +150,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	_renderCalender () {
 		const self = this;
 		const calenderData = this._getCalendarData();
-		const isRangeSelect = this.getProperty('multiSelect');
+		const multiSelect = this.getProperty('multiSelect');
 
 		self.elements.calendarDays.empty();
 
@@ -184,7 +173,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 				if (day.selected) {
 					specialClasses += 'slds-is-selected ';
 
-					if ( isRangeSelect ) {
+					if (multiSelect) {
 						specialClasses += 'slds-is-selected-multi';
 					}
 				}
@@ -212,109 +201,97 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	_renderYearPicklist () {
 		const yearRange = this._getYearRangeData();
 
-		if ( this.yearPicklist ) {
-			this.yearPicklist.setSelection(yearRange.selected);
+		if (this.yearPicklist) {
+			this.yearPicklist.setSelection(yearRange.selection);
 		} else {
-			this.yearPicklist = new Picklist(this.elements.year, {
-				collection: yearRange.all,
-				selection: yearRange.selected
-			});
+			this.yearPicklist = new Picklist(this.elements.year, yearRange);
 
 			this.elements.year.on('changed', this._updateYear.bind(this));
 		}
 	},
 
 	_updateYear (e, data) {
-		const curViewDate = this.getState('dateViewing');
-
 		e.stopPropagation();
 
-		if (curViewDate.getFullYear() !== data.value) {
-			this.setState({ 'dateViewing': new Date(curViewDate.setYear(data.value))} );
+		if (data && data.value && this._jumpToYear(data.value)) {
 			this._renderDateRange();
 		}
 	},
 
 	_backMonth (e) {
-		const curMonth = this.getState('dateViewing');
-
 		e.stopPropagation();
-		this.setState({ 'dateViewing': new Date(curMonth.setMonth(curMonth.getMonth() - 1))} );
-		this._renderDateRange();
+
+		if (this._jumpToPreviousMonth()) {
+			this._renderDateRange();
+		}
 	},
 
 	_forwardMonth (e) {
-		const curMonth = this.getState('dateViewing');
-
 		e.stopPropagation();
-		this.setState({ 'dateViewing': new Date(curMonth.setMonth(curMonth.getMonth() + 1))} );
-		this._renderDateRange();
-	},
 
-	_activateManualInput () {
-		this.element.off('focusout.slds-form-element', '.slds-input');
-		this.element.on('focusout.slds-form-element', '.slds-input', this._manualDateInput.bind(this));
+		if (this._jumpToNextMonth()) {
+			this._renderDateRange();
+		}
 	},
 
 	_manualDateInput () {
-		const inputValue = this.elements.input.val();
-		const validatedDates = this._validateDateInput(inputValue);
+		const inputValue = this.elements.input.val() || '';
+		const validatedDates = this._getStartAndEndDatesFromString(inputValue);
 
-		if (validatedDates) {
-			this.selectDates(validatedDates);
+		if (validatedDates && validatedDates.startDate) {
+			this.setState({
+				dateViewing: validatedDates.startDate
+			});
+
+			this._selectDates(validatedDates);
+		} else {
+			this._selectDates({
+				startDate: undefined,
+				endDate: undefined
+			});
 		}
-
-		this.element.off('focusout.slds-form-element', '.slds-input');
 	},
 
 	_selectDate (e) {
-		const isRangeSelect = this.getProperty('multiSelect');
 		const dayData = $(e.currentTarget).data();
-		let insertIndex = 1;
-		let selectedDates;
+		const date = dayData.date;
+		let startDate;
+		let endDate;
 
 		e.stopPropagation();
 
 		if (!dayData.outside) {
-			if (isRangeSelect) {
-				selectedDates = this.getProperty('selection');
-
-				if (selectedDates && selectedDates.length > 1) {
-					this.setProperties({ selection: [] });
-				} else if (selectedDates && selectedDates.length === 1 && selectedDates[0].date.getTime() > dayData.date.getTime()) {
-					insertIndex = 0;
+			if (this.getProperty('multiSelect')) {
+				startDate = this.getProperty('startDate');
+				endDate = this.getProperty('endDate');
+				
+				if (!startDate || endDate) {
+					startDate = date;
+					endDate = undefined;
+				} else if (this._roundDate(startDate).getTime() > date.getTime()) {
+					endDate = startDate;
+					startDate = date;
+				} else {
+					endDate = date;
 				}
-
-				this.selectDate({ date: dayData.date }, insertIndex);
 			} else {
-				this.selectDates([{ date: dayData.date }]);
+				startDate = date;
 			}
+		
+			this._selectDates({
+				startDate,
+				endDate
+			});
 		}
 	},
-
-	selectDate (item, index) {
-		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
-	},
 	
-	selectDates (items, index) {
-		Multiselectable.selectItems(this, items, null, index);
-	},
-	
-	_onSelect (itemsToSelect, selection) {
-		this.setProperties({ selection: selection._data });
+	_selectDates (dates) {
+		this.setProperties(dates);
 		
-		this.elements.input.val(this._formatDate());
+		this.elements.input.val(this._formatSelectedDates(this.getProperty('startDate'), this.getProperty('endDate')));
 		this._renderDateRange();
-	
-		this.trigger('selected', itemsToSelect, selection._data);
-		this.trigger('changed', itemsToSelect, selection._data);
-	},
-	
-	_onDeselect (itemsToDeselect, selection) {
-		this.setProperties({ selection: selection._data });
-	
-		this.trigger('deselected', itemsToDeselect, selection._data);
-		this.trigger('changed', itemsToDeselect, selection._data);
+
+		this.trigger('changed', dates.startDate, dates.endDate);
 	}
 });
 

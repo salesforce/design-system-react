@@ -226,7 +226,7 @@ export const PicklistObject = {
 		const $li = $a.parent('li');
 
 		if (!$li.prop('disabled')) {
-			Multiselectable.selectItem(this, $li.data('item'));
+			this.setSelection($li.data('item'));
 			Openable.close(this);
 		}
 	},
@@ -262,16 +262,8 @@ export const PicklistObject = {
 	},
 
 	_addCheckmark (elements) {
-		const selection = this.getProperty('selection');
-		let $li;
-
-		if (selection) {
-			elements.dropdownMenu.find('li').each(function () {
-				if ($(this).data('item') === selection) {
-					$li = $(this);
-				}
-			});
-		}
+		const selectedIndex = this._collection.indexOf(this._getSelection());
+		const $li = elements.dropdownMenu.find('#' + this._getMenuItemId(selectedIndex));
 
 		if ($li) {
 			$li.parent()

@@ -122,7 +122,7 @@ export const PicklistObject = {
 	},
 
 	_handleMenuItemSelected (selection) {
-		Multiselectable.selectItem(this, selection);
+		Multiselectable.selectItem(this, selection._item);
 		Openable.close(this);
 	},
 
@@ -131,7 +131,7 @@ export const PicklistObject = {
 	},
 
 	_keyboardSelect (item) {
-		Multiselectable.selectItem(this, item, [this.props.selection]);
+		Multiselectable.selectItem(this, item._item, [this.props.selection]);
 	},
 
 	_handleKeyPressed (e) {
@@ -140,7 +140,6 @@ export const PicklistObject = {
 			const focusedIndex = KeyboardNavigable.keyboardNav(this, e.key, this._keyboardSelect, this._collection);
 			if (focusedIndex !== undefined) {
 				document.getElementById(this._getMenuItemId(focusedIndex)).getElementsByTagName('a')[0].focus();
-				console.log(document.getElementById(this._getMenuItemId(focusedIndex)));
 			}
 		}
 	},

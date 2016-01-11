@@ -44,7 +44,7 @@ const Multiselectable = {
 	// Take a set of items and select any that aren't yet selected.
 	selectItems (controlContext, items, currentSelection, selectIndex) {
 		const selection = Multiselectable.getWrappedImmutableData(controlContext, currentSelection);
-		const itemsToSelect = Multiselectable.getNotSelectedItems(controlContext._getDataAdapter(items), selection);
+		const itemsToSelect = currentSelection ? Multiselectable.getNotSelectedItems(controlContext._getDataAdapter(items), selection) : items;
 
 		// The main selection logic happens in this method. Controls may optionally declare a `_canSelect` method and if they do this will be passed to them as a callback. If they don't it will executed immediately.
 		const _select = () => {

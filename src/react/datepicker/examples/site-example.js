@@ -8,14 +8,14 @@ export default React.createClass({
 
 	getInitialState () {
 		return {
-			selection: []
 		};
 	},
 
 	render () {
 		return (
 			<Datepicker
-				selection={this.state.selection}
+				startDate={this.state.startDate}
+				endDate={this.state.endDate}
 				onChange={this.handleDateSelected}
 				modalCalendar={this.props.modal}
 				multiSelect={true}
@@ -23,7 +23,10 @@ export default React.createClass({
 		);
 	},
 
-	handleDateSelected (selection) {
-		this.setState({ selection });
+	handleDateSelected (startDate, endDate) {
+		this.setState({
+			startDate: startDate,
+			endDate: endDate
+		});
 	}
 });
