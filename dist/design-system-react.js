@@ -1509,7 +1509,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	var displayName = "InputIcon";
 	var propTypes = {
 	  category: _react2['default'].PropTypes.string,
-	  name: _react2['default'].PropTypes.string
+	  name: _react2['default'].PropTypes.string,
+	  onClick: _react2['default'].PropTypes.func
 	};
 	var defaultProps = {
 	  category: 'utility'
@@ -3559,12 +3560,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var displayName = "SLDSDropdown";
 	var propTypes = {
+	  align: _react2["default"].PropTypes.oneOf(["left", "right"]),
 	  /**
 	   * Classes applied to SLDSButton.
 	   */
 	  buttonClassName: _react2["default"].PropTypes.string,
 	  disabled: _react2["default"].PropTypes.bool,
-	  horizontalAlign: _react2["default"].PropTypes.oneOf(["left", "right"]),
 	  /**
 	   * Delay on menu closing.
 	   */
@@ -3595,7 +3596,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
 	var defaultProps = {
-	  horizontalAlign: "left",
+	  align: "left",
 	  hoverCloseDelay: 300,
 	  openOn: "hover",
 	  variant: "neutral"
@@ -3839,11 +3840,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "getModalPopover",
 	    value: function getModalPopover() {
-	      var className = "slds-dropdown slds-dropdown--menu slds-dropdown--" + this.props.horizontalAlign;
+	      var className = "slds-dropdown slds-dropdown--menu slds-dropdown--" + this.props.align;
 	      return !this.props.disabled && this.state.isOpen ? _react2["default"].createElement(_SLDSPopover2["default"], {
 	        className: className,
 	        closeOnTabKey: true,
-	        horizontalAlign: this.props.horizontalAlign,
+	        horizontalAlign: this.props.align,
 	        onClose: this.handleCancel.bind(this),
 	        targetElement: this.refs.button
 	      }, this.getPopoverContent()) : null;
@@ -26120,10 +26121,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view icon names.
 	   */
 	  iconName: _react2["default"].PropTypes.string,
-	  /**
-	   * Lookup items data.
-	   */
-	  items: _react2["default"].PropTypes.array.isRequired,
 	  label: _react2["default"].PropTypes.string.isRequired,
 	  /**
 	   * Custom component that overrides the default Lookup Item component.
@@ -26138,11 +26135,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  onChange: _react2["default"].PropTypes.func,
 	  onItemSelect: _react2["default"].PropTypes.func.isRequired,
 	  onItemUnselect: _react2["default"].PropTypes.func,
+	  /**
+	   * Lookup items data.
+	   */
+	  options: _react2["default"].PropTypes.array.isRequired,
 	  searchTerm: _react2["default"].PropTypes.string,
 	  /**
 	   * Salesforce object type for Lookup items.
 	   */
-	  type: _react2["default"].PropTypes.string
+	  salesforceObj: _react2["default"].PropTypes.string
 	};
 	
 	var defaultFilter = function defaultFilter(term, item) {
@@ -26172,7 +26173,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      focusIndex: null,
 	      items: [],
 	      isOpen: false,
-	      listLength: this.props.items.length,
+	      listLength: this.props.options.length,
 	      searchTerm: this.props.searchTerm,
 	      selectedIndex: null
 	    };
@@ -26196,14 +26197,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "componentWillReceiveProps",
 	    value: function componentWillReceiveProps(newProps) {
-	      if (newProps.items) {
-	        this.modifyItems(newProps.items);
+	      if (newProps.options) {
+	        this.modifyItems(newProps.options);
 	      }
 	    }
 	  }, {
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
-	      this.modifyItems(this.props.items);
+	      this.modifyItems(this.props.options);
 	    }
 	  }, {
 	    key: "modifyItems",
@@ -26420,7 +26421,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          focusIndex: this.state.focusIndex,
 	          listLength: this.state.listLength,
 	          onClose: this.handleClose.bind(this),
-	          type: this.props.type
+	          salesforceObj: this.props.salesforceObj
 	        }));
 	      }
 	    }
@@ -26442,7 +26443,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          header: this.getHeader(),
 	          iconCategory: this.props.iconCategory,
 	          iconClasses: this.props.iconClasses,
-	          iconName: this.props.iconName ? this.props.iconName : this.props.type,
+	          iconName: this.props.iconName ? this.props.iconName : this.props.salesforceObj,
 	          items: this.state.items,
 	          label: this.props.label,
 	          listItemLabelRenderer: this.props.listItemLabelRenderer,
@@ -26451,7 +26452,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onSelect: this.selectItem.bind(this),
 	          searchTerm: this.state.searchTerm,
 	          setFocus: this.setFocus.bind(this),
-	          type: this.props.type
+	          salesforceObj: this.props.salesforceObj
 	        });
 	      }
 	    }
@@ -26477,8 +26478,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "renderSelectedItem",
 	    value: function renderSelectedItem() {
-	      var selectedItem = this.props.items[this.state.selectedIndex].label;
-	      return _react2["default"].createElement("a", { href: "javascript:void(0)", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.type, className: "slds-icon slds-icon-standard-account slds-pill__icon " + this.props.iconClasses }), _react2["default"].createElement("span", { className: "slds-pill__label" }, selectedItem)), _react2["default"].createElement(_SLDSButton2["default"], {
+	      var selectedItem = this.props.options[this.state.selectedIndex].label;
+	      return _react2["default"].createElement("a", { href: "javascript:void(0)", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.salesforceObj, className: "slds-icon slds-icon-standard-account slds-pill__icon " + this.props.iconClasses }), _react2["default"].createElement("span", { className: "slds-pill__label" }, selectedItem)), _react2["default"].createElement(_SLDSButton2["default"], {
 	        assistiveText: "Press delete to remove",
 	        className: "slds-pill__remove slds-button--icon-bare",
 	        iconName: "close",
@@ -26491,7 +26492,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "inputRefName",
 	    value: function inputRefName() {
-	      return this.props.type + "Lookup";
+	      return this.props.salesforceObj + "Lookup";
 	    }
 	  }, {
 	    key: "focusInput",
@@ -26646,7 +26647,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  listLength: _react2['default'].PropTypes.number,
 	  searchTerm: _react2['default'].PropTypes.string,
 	  setFocus: _react2['default'].PropTypes.func,
-	  type: _react2['default'].PropTypes.string
+	  salesforceObj: _react2['default'].PropTypes.string
 	};
 	var defaultProps = {
 	  emptyMessage: "No matches found.",
@@ -26751,7 +26752,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	          onSelect: _this.props.onSelect,
 	          searchTerm: _this.props.searchTerm,
 	          setFocus: _this.props.setFocus,
-	          type: _this.props.type }, c);
+	          salesforceObj: _this.props.salesforceObj }, c);
 	      });
 	    }
 	  }, {
@@ -26876,12 +26877,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  index: _react2['default'].PropTypes.number,
 	  isActive: _react2['default'].PropTypes.bool,
 	  isDisabled: _react2['default'].PropTypes.bool,
-	  key: _react2['default'].PropTypes.string,
 	  listItemLabelRenderer: _react2['default'].PropTypes.func,
 	  onSelect: _react2['default'].PropTypes.func,
 	  searchTerm: _react2['default'].PropTypes.string,
-	  setFocus: _react2['default'].PropTypes.func,
-	  type: _react2['default'].PropTypes.string
+	  setFocus: _react2['default'].PropTypes.func
 	};
 	var defaultProps = {};
 	
@@ -27185,7 +27184,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function render() {
 	      var className = 'slds-button';
 	      if (this.props.isActive) className += ' slds-theme--shade';
-	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onClick: this.handleClick.bind(this), onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement('button', { id: 'newItem', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'add', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.type ? "Add " + this.props.type : this.props.newItemLabel));
+	      return _react2['default'].createElement('div', { className: 'slds-lookup__item', onClick: this.handleClick.bind(this), onMouseDown: this.handleMouseDown.bind(this) }, _react2['default'].createElement('button', { id: 'newItem', tabIndex: '-1', className: className }, _react2['default'].createElement(_SLDSIcons.Icon, { name: 'add', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }), this.props.salesforceObj ? "Add " + this.props.salesforceObj : this.props.newItemLabel));
 	    }
 	  }]);
 	
@@ -27440,12 +27439,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * If true, modal footer buttons render left and right. An example use case would be for "back" and "next" buttons.
 	   */
 	  directional: _react2["default"].PropTypes.bool,
-	  footer: _react2["default"].PropTypes.array,
-	  isOpen: _react2["default"].PropTypes.bool.isRequired,
 	  /**
 	   * If true, prompt modals can be dismissed by clicking outside of modal or pressing esc key.
 	   */
-	  isPassive: _react2["default"].PropTypes.bool,
+	  dismissible: _react2["default"].PropTypes.bool,
+	  footer: _react2["default"].PropTypes.array,
+	  isOpen: _react2["default"].PropTypes.bool.isRequired,
 	  prompt: _react2["default"].PropTypes.oneOf(["", "success", "warning", "error", "wrench", "offline", "info"]),
 	  size: _react2["default"].PropTypes.oneOf(["medium", "large"]),
 	  /**
@@ -27458,7 +27457,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  align: "center",
 	  directional: false,
 	  isOpen: false,
-	  isPassive: true,
+	  dismissible: true,
 	  prompt: ""
 	};
 	
@@ -27525,7 +27524,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: "closeModal",
 	    value: function closeModal() {
-	      if (this.props.isPassive) {
+	      if (this.props.dismissible) {
 	        this.setState({ isClosing: true });
 	        if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
 	          this.state.returnFocusTo.focus();
