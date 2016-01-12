@@ -157,6 +157,7 @@ class SLDSNotification extends React.Component {
   renderContent() {
     return (
       <div>
+        <span className="slds-assistive-text">{this.props.theme}</span>
         {this.renderClose()}
         {this.props.variant === "toast" ? this.renderToastContent() : null}
         {this.props.variant === "alert" ? this.renderAlertContent() : null}
