@@ -35,9 +35,9 @@ class IconSection extends React.Component {
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
-          Icon
+          SLDSIcon
         </h3>
-        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
+        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
 
         <div className="demo-only">
           <CodeMirror codeText={Samples.Icons} />
