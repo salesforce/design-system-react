@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "The Button component should be used for label buttons, icon buttons, or buttons that have both. <br />\nFor stateful buttons, use the ButtonStateful component. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">SLDS Buttons</a>.",
+        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <code>SLDSButtonStateful</code> component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">SLDS Buttons</a>.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -120,7 +120,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": ""
+                "description": "Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop."
             },
             "onClick": {
                 "type": {
@@ -187,7 +187,7 @@
         }
     },
     "SLDSButtonStateful": {
-        "description": "The Button Stateful component is used for buttons that have a state of unselected or selected. The initial state is unselected.<br />\nThe three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">SLDS Buttons > Stateful</a>.",
+        "description": "The SLDSButtonStateful component is used for buttons that have a state of unselected or selected. The initial state is unselected.\nThe three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">SLDS Buttons > Stateful</a>.",
         "displayName": "SLDSButtonStateful",
         "props": {
             "assistiveText": {
@@ -314,7 +314,7 @@
         }
     },
     "SLDSButtonGroup": {
-        "description": "The Button Group component wraps SLDS components.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">SLDS Button Groups</a>.",
+        "description": "The SLDSButtonGroup component wraps other SLDS components.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">SLDS Button Groups</a>.",
         "displayName": "SLDSButtonGroup",
         "props": {
             "children": {
@@ -334,7 +334,7 @@
         }
     },
     "SLDSDropdownBase": {
-        "description": "The Dropdown component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
+        "description": "The SLDSDropdown component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
         "displayName": "SLDSDropdown",
         "props": {
             "align": {
@@ -497,7 +497,7 @@
         }
     },
     "SLDSIcons/Icon": {
-        "description": "The Icon component should be used for icons only. For icons that are buttons, use the Button component. <br />\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">SLDS Icons</a>.",
+        "description": "The SLDSIcon component should be used for naked icons. For icons that are buttons, use the SLDSButton component.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">SLDS Icons</a>.",
         "displayName": "Icon",
         "props": {
             "assistiveText": {
@@ -578,7 +578,7 @@
         }
     },
     "SLDSLookup": {
-        "description": "The Lookup component currently supports the base variant. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/lookups/\">SLDS Lookups</a>.",
+        "description": "The SLDSLookup component currently supports the base variant.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">SLDS Lookups > Base</a>.",
         "displayName": "SLDSLookup",
         "props": {
             "boldRegex": {
@@ -622,7 +622,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom component for Lookup footer. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>"
+                "description": "Custom component for Lookup footer. The default footer allows user to add new item - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">SLDS Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>."
             },
             "hasError": {
                 "type": {
@@ -636,7 +636,7 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom component for Lookup header. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>"
+                "description": "Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">SLDS Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>."
             },
             "iconCategory": {
                 "type": {
@@ -746,7 +746,7 @@
         }
     },
     "SLDSModal": {
-        "description": "The Modal component is used for modals and <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">prompt notifications</a>. <br />\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">SLDS Modals</a>.",
+        "description": "The SLDSModal component is used for modals and <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">prompt notifications</a>.\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">SLDS Modals</a>.",
         "displayName": "SLDSModal",
         "props": {
             "align": {
@@ -892,7 +892,7 @@
         }
     },
     "SLDSNotification": {
-        "description": "The Notification component is used for alerts and toasts. For prompt notifications, use the Modal component with <code>prompt={true}</code>.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">SLDS Notifications</a>.",
+        "description": "The SLDSNotification component is used for alerts and toasts. For prompt notifications, use the SLDSModal component with <code>prompt={true}</code>.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">SLDS Notifications</a>.",
         "displayName": "SLDSNotification",
         "props": {
             "className": {
@@ -1008,7 +1008,7 @@
         }
     },
     "SLDSPicklistBase": {
-        "description": "The Picklist component is a variant of the Menu component.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
+        "description": "The SLDSPicklist component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
         "displayName": "SLDSPicklist",
         "props": {
             "disabled": {
@@ -1085,7 +1085,7 @@
         }
     },
     "SLDSTooltip": {
-        "description": "The Tooltip component is variant of the Popover component. <br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">SLDS Popovers > Tooltips</a>.",
+        "description": "The SLDSTooltip component is variant of the Popover component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">SLDS Popovers > Tooltips</a>.",
         "displayName": "SLDSTooltip",
         "props": {
             "align": {

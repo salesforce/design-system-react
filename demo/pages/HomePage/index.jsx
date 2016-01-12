@@ -58,16 +58,16 @@ module.exports = React.createClass( {
             <section className="slds-p-bottom--large">
               <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Current</h3>
               <ul>
-                <li><Link to="button">Button</Link></li>
-                <li><Link to="button-stateful">Button Stateful</Link></li>
-                <li><Link to="button-group">Button Group</Link></li>
-                <li><Link to="dropdown">Dropdown</Link></li>
-                <li><Link to="icon">Icon</Link></li>
-                <li><Link to="lookup">Lookup</Link></li>
-                <li><Link to="modal">Modal</Link></li>
-                <li><Link to="notification">Notification</Link></li>
-                <li><Link to="picklist">Picklist</Link></li>
-                <li><Link to="tooltip">Tooltip</Link></li>
+                <li><Link to="button">SLDSButton</Link></li>
+                <li><Link to="button-stateful">SLDSButtonStateful</Link></li>
+                <li><Link to="button-group">SLDSButtonGroup</Link></li>
+                <li><Link to="dropdown">SLDSDropdown</Link></li>
+                <li><Link to="icon">SLDSIcon</Link></li>
+                <li><Link to="lookup">SLDSLookup</Link></li>
+                <li><Link to="modal">SLDSModal</Link></li>
+                <li><Link to="notification">SLDSNotification</Link></li>
+                <li><Link to="picklist">SLDSPicklist</Link></li>
+                <li><Link to="tooltip">SLDSTooltip</Link></li>
 
               </ul>
               <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Future</h3>

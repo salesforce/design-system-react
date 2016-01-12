@@ -23,9 +23,9 @@ class TooltipExample extends React.Component {
 
         <div ref="tooltipOnClick" className="slds-p-horizontal--medium" style={{ "display": "inline-block"}}>
           <SLDSTooltip
+            key="tooltipDemo"
             align="right"
             content={<span>Tooltip with right alignment</span>}
-            openByDefault={true}
             targetElement={this.refs.tooltipOnClick}>
               <SLDSButton variant="brand" label="Hover to Open" />
             </SLDSTooltip>

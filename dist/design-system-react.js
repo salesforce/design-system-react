@@ -261,6 +261,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>.
 	   */
 	  iconVariant: _react2["default"].PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
+	  /**
+	   * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
+	   */
 	  label: _react2["default"].PropTypes.string,
 	  onClick: _react2["default"].PropTypes.func,
 	  /**
@@ -282,7 +285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	/**
 	 * The Button component should be used for label buttons, icon buttons, or buttons that have both. <br />
-	 * For stateful buttons, use the ButtonStateful component. <br />
+	 * For buttons that maintain selected/unselected states, use the ButtonStateful component. Either a label or assistiveText is required; see the Prop Details table below. <br />
 	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">SLDS Buttons</a>.
 	 */
 	
@@ -25104,6 +25107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var EventUtil = {
 	
 	  trapEvent: function trapEvent(event) {
+	    if (!event) return;
 	    event.preventDefault();
 	    event.stopPropagation();
 	    if (event.nativeEvent && event.nativeEvent.preventDefault) {
@@ -30168,6 +30172,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _lodashFlatten2 = _interopRequireDefault(_lodashFlatten);
 	
+	var _lodashCompact = __webpack_require__(225);
+	
+	var _lodashCompact2 = _interopRequireDefault(_lodashCompact);
+	
 	var displayName = "SLDSTooltip";
 	var propTypes = {
 	  /**
@@ -30287,8 +30295,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	      var asstText = _react2["default"].createElement("span", { className: "slds-assistive-text" }, this.props.content);
 	      return _react2["default"].Children.map(this.props.children, function (child) {
+	        var _child$props = child.props;
+	        var props = _child$props === undefined ? {} : _child$props;
+	
 	        return _react2["default"].cloneElement(child, {
-	          children: child.props.children ? (0, _lodashFlatten2["default"])([child.props.children]).concat(asstText) : asstText,
+	          children: (0, _lodashCompact2["default"])((0, _lodashFlatten2["default"])([props.children]).concat(asstText)),
 	          onBlur: _this2.handleMouseLeave.bind(_this2),
 	          onFocus: _this2.handleMouseEnter.bind(_this2),
 	          onMouseEnter: _this2.handleMouseEnter.bind(_this2),
@@ -30445,6 +30456,51 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 	
 	module.exports = flatten;
+
+
+/***/ },
+/* 225 */
+/***/ function(module, exports) {
+
+	/**
+	 * lodash 3.0.0 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modern modularize exports="npm" -o ./`
+	 * Copyright 2012-2015 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.7.0 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+	
+	/**
+	 * Creates an array with all falsey values removed. The values `false`, `null`,
+	 * `0`, `""`, `undefined`, and `NaN` are falsey.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Array
+	 * @param {Array} array The array to compact.
+	 * @returns {Array} Returns the new array of filtered values.
+	 * @example
+	 *
+	 * _.compact([0, 1, false, 2, '', 3]);
+	 * // => [1, 2, 3]
+	 */
+	function compact(array) {
+	  var index = -1,
+	      length = array ? array.length : 0,
+	      resIndex = -1,
+	      result = [];
+	
+	  while (++index < length) {
+	    var value = array[index];
+	    if (value) {
+	      result[++resIndex] = value;
+	    }
+	  }
+	  return result;
+	}
+	
+	module.exports = compact;
 
 
 /***/ }

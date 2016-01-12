@@ -45,7 +45,7 @@ const defaultProps = {
 };
 
 /**
- * The Picklist component is a variant of the Menu component.<br />
+ * The SLDSPicklist component is a variant of the Menu component.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#picklist">SLDS Menus > Picklists</a>.
  */
 class SLDSPicklist extends React.Component {

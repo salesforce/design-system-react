@@ -43,6 +43,9 @@ const propTypes = {
    * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>.
    */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
+  /**
+   * Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop.
+   */
   label: React.PropTypes.string,
   onClick: React.PropTypes.func,
   /**
@@ -63,8 +66,8 @@ const defaultProps = {
 };
 
 /**
- * The Button component should be used for label buttons, icon buttons, or buttons that have both. <br />
- * For stateful buttons, use the ButtonStateful component. <br />
+ * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both.
+ * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <code>SLDSButtonStateful</code> component.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">SLDS Buttons</a>.
  */
 class SLDSButton extends React.Component {

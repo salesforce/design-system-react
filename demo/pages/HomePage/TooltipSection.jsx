@@ -34,8 +34,8 @@ class TooltipSection extends React.Component {
     const docs = DOCS["SLDSTooltip"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>Tooltip</h3>
-        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
+        <h3 className='slds-text-heading--medium slds-truncate'>SLDSTooltip</h3>
+        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
 
         <div>
           <CodeMirror codeText={Samples.Tooltips} />
