@@ -29,7 +29,7 @@ export default React.createClass({
 			<fieldset className="slds-form-element">
 				<legend className="slds-form-element__label slds-form-element__label--top"></legend>
 				<div className="slds-form-element__control">
-					<Checkbox ref="checkbox1"
+					<Checkbox
 						checked={this.state.model.checkbox1.checked}
 						disabled={this.state.model.checkbox1.disabled}
 						labelText="Checked"
@@ -39,7 +39,7 @@ export default React.createClass({
 						value="checkbox"/>
 				</div>
 				<div className="slds-form-element__control">
-					<Checkbox ref="checkbox2"
+					<Checkbox
 						checked={this.state.model.checkbox2.checked}
 						disabled={this.state.model.checkbox2.checked.disabled}
 						labelText="Unchecked"
