@@ -27,16 +27,11 @@ const propTypes = {
    * Custom message for when no search results found.
    */
   emptyMessage: React.PropTypes.string.isRequired,
-  errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func.isRequired,
   /**
    * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">SLDS Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
    */
   footerRenderer: React.PropTypes.func,
-  /**
-   * If true, input field indicates error state.
-   */
-  hasError: React.PropTypes.bool,
   /**
    * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">SLDS Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>.
    */
@@ -335,7 +330,6 @@ class SLDSLookup extends React.Component {
       return <Menu
         boldRegex={this.props.boldRegex}
         emptyMessage={this.props.emptyMessage}
-        errors={this.props.errors}
         filterWith={this.props.filterWith}
         focusIndex={this.state.focusIndex}
         footer={this.getFooter()}
@@ -424,8 +418,7 @@ class SLDSLookup extends React.Component {
     const inputContainerClasses = {
       "slds-form-element__control": true,
       "slds-input-has-icon": true,
-      "slds-input-has-icon--right": true,
-      "slds-has-error": this.props.hasError
+      "slds-input-has-icon--right": true
     };
 
     const pillContainerClasses = {

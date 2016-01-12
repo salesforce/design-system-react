@@ -16,7 +16,6 @@ const displayName = 'SLDSLookup-Menu';
 const propTypes = {
   boldRegex: React.PropTypes.instanceOf(RegExp),
   emptyMessage: React.PropTypes.string,
-  errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func,
   focusIndex: React.PropTypes.number,
   getListLength: React.PropTypes.func,
@@ -30,7 +29,6 @@ const propTypes = {
 };
 const defaultProps = {
   emptyMessage: "No matches found.",
-  errors: [],
   messages: [],
 };
 class Menu extends React.Component {
@@ -81,16 +79,6 @@ class Menu extends React.Component {
     }
   }
 
-  renderErrors(){
-    return this.props.errors.map((error) => {
-      return (
-        <li className="slds-lookup__error" aria-live="polite">
-          <span>{error}</span>
-        </li>
-      );
-    });
-  }
-
   renderItems(){
     return this.filteredItems().map((c, i) => {
       //isActive means it is aria-activedescendant
@@ -133,9 +121,7 @@ class Menu extends React.Component {
   }
 
   renderContent(){
-    if (this.props.errors.length > 0)
-      return this.renderErrors()
-    else if (this.filteredItems().length === 0)
+    if (this.filteredItems().length === 0)
       return (
         <li className="slds-lookup__message" aria-live="polite">
           <span className="slds-m-left--x-large slds-p-vertical--medium">{this.props.emptyMessage}</span>
