@@ -75,9 +75,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSButtonSLDSButtonStateful = __webpack_require__(31);
+	var _SLDSButtonStateful = __webpack_require__(31);
 	
-	var _SLDSButtonSLDSButtonStateful2 = _interopRequireDefault(_SLDSButtonSLDSButtonStateful);
+	var _SLDSButtonStateful2 = _interopRequireDefault(_SLDSButtonStateful);
 	
 	var _SLDSButtonGroup = __webpack_require__(32);
 	
@@ -125,7 +125,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	module.exports = {
 	  SLDSButton: _SLDSButton2['default'],
-	  SLDSButtonStateful: _SLDSButtonSLDSButtonStateful2['default'],
+	  SLDSButtonStateful: _SLDSButtonStateful2['default'],
 	  SLDSButtonGroup: _SLDSButtonGroup2['default'],
 	  SLDSDropdown: _SLDSDropdownBase2['default'],
 	  SLDSIcons: _SLDSIcons2['default'],
@@ -3320,6 +3320,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
 	var defaultProps = {};
+	
+	/**
+	 * The Button Stateful component is used for buttons that have a state of unselected or selected. The initial state is unselected.<br />
+	 * The three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.<br />
+	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">SLDS Buttons > Stateful</a>.
+	 */
 	
 	var SLDSButtonStateful = (function (_React$Component) {
 	  _inherits(SLDSButtonStateful, _React$Component);
