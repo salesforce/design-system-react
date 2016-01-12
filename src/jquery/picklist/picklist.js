@@ -162,7 +162,7 @@ export const PicklistObject = {
 
 	_onOpened () {
 		if (this.rendered) {
-			this.elements.dropdown.toggleClass('slds-hide', false);
+			this.elements.dropdown.removeClass('slds-hide');
 			this.elements.button.attr('aria-expanded', true);
 
 			if (this.getProperty('modalMenu')) {
@@ -174,7 +174,7 @@ export const PicklistObject = {
 
 	_onClosed () {
 		if (this.rendered) {
-			this.elements.dropdown.toggleClass('slds-hide', true);
+			this.elements.dropdown.addClass('slds-hide');
 			this.elements.button.attr('aria-expanded', false);
 			if (this.getProperty('modalMenu')) {
 				Positionable.hide(this);
@@ -188,7 +188,7 @@ export const PicklistObject = {
 		});
 
 		if (this.rendered) {
-			this.elements.dropdown.toggleClass('slds-hide', false);
+			this.elements.dropdown.removeClass('slds-hide');
 		}
 		
 		this.button.enable();
@@ -200,7 +200,7 @@ export const PicklistObject = {
 		});
 
 		if (this.rendered) {
-			this.elements.dropdown.toggleClass('slds-hide', true);
+			this.elements.dropdown.addClass('slds-hide');
 		}
 		
 		this.button.disable();
