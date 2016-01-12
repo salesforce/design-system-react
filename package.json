@@ -8,7 +8,6 @@
     "lint": "eslint --config=./.eslintrc components",
     "pages": "webpack",
     "compile": "scripts/compile",
-    "prepublish": "npm run compile",
     "test": "scripts/test --single-run",
     "postinstall": "node scripts/postinstall",
     "icons": "node scripts/inline-icons.js",
