@@ -581,14 +581,6 @@
         "description": "The SLDSLookup component currently supports the base variant.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">SLDS Lookups > Base</a>.",
         "displayName": "SLDSLookup",
         "props": {
-            "boldRegex": {
-                "type": {
-                    "name": "instanceOf",
-                    "value": "RegExp"
-                },
-                "required": false,
-                "description": ""
-            },
             "emptyMessage": {
                 "type": {
                     "name": "string"

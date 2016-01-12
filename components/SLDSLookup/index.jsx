@@ -9,12 +9,12 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
+import defaultFilter from "../default_filter";
 import Menu from "./Menu";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
 import {Icon, InputIcon} from "./../SLDSIcons";
 import {KEYS,EventUtil} from "../utils";
-import escapeRegExp from "lodash.escaperegexp";
 
 import DefaultFooter from "./Menu/DefaultFooter";
 import DefaultHeader from "./Menu/DefaultHeader";
@@ -22,7 +22,6 @@ import cx from "classnames";
 
 const displayName = "SLDSLookup";
 const propTypes = {
-  boldRegex: React.PropTypes.instanceOf(RegExp),
   /**
    * Custom message for when no search results found.
    */
@@ -69,10 +68,6 @@ const propTypes = {
   salesforceObj: React.PropTypes.string,
 };
 
-const defaultFilter = (term, item) => {
-  if(!term) return true;
-  return item.label.match(new RegExp(escapeRegExp(term), "ig"));
-};
 
 const defaultProps = {
   filterWith: defaultFilter,
@@ -327,7 +322,6 @@ class SLDSLookup extends React.Component {
   renderMenuContent() {
     if(this.state.isOpen){
       return <Menu
-        boldRegex={this.props.boldRegex}
         emptyMessage={this.props.emptyMessage}
         filterWith={this.props.filterWith}
         focusIndex={this.state.focusIndex}
