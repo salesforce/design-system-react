@@ -61,12 +61,12 @@ module.exports = React.createClass( {
                 <li><Link to="button">SLDSButton</Link></li>
                 <li><Link to="button-stateful">SLDSButtonStateful</Link></li>
                 <li><Link to="button-group">SLDSButtonGroup</Link></li>
-                <li><Link to="dropdown">SLDSDropdown</Link></li>
+                <li><Link to="dropdown">SLDSDropdownBase</Link></li>
                 <li><Link to="icon">SLDSIcon</Link></li>
                 <li><Link to="lookup">SLDSLookup</Link></li>
                 <li><Link to="modal">SLDSModal</Link></li>
                 <li><Link to="notification">SLDSNotification</Link></li>
-                <li><Link to="picklist">SLDSPicklist</Link></li>
+                <li><Link to="picklist">SLDSPicklistBase</Link></li>
                 <li><Link to="tooltip">SLDSTooltip</Link></li>
               </ul>
             </section>

@@ -334,7 +334,7 @@
         }
     },
     "SLDSDropdownBase": {
-        "description": "The SLDSDropdown component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
+        "description": "The SLDSDropdownBase component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
         "displayName": "SLDSDropdown",
         "props": {
             "align": {
@@ -1008,8 +1008,8 @@
         }
     },
     "SLDSPicklistBase": {
-        "description": "The SLDSPicklist component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
-        "displayName": "SLDSPicklist",
+        "description": "The SLDSPicklistBase component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
+        "displayName": "SLDSPicklistBase",
         "props": {
             "disabled": {
                 "type": {
