@@ -56,7 +56,7 @@ module.exports = React.createClass( {
           <div className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-around--large'>
 
             <section className="slds-p-bottom--large">
-              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Current</h3>
+              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Components</h3>
               <ul>
                 <li><Link to="button">SLDSButton</Link></li>
                 <li><Link to="button-stateful">SLDSButtonStateful</Link></li>
@@ -68,11 +68,6 @@ module.exports = React.createClass( {
                 <li><Link to="notification">SLDSNotification</Link></li>
                 <li><Link to="picklist">SLDSPicklist</Link></li>
                 <li><Link to="tooltip">SLDSTooltip</Link></li>
-
-              </ul>
-              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Future</h3>
-              <ul>
-                <li><Link to="datepicker">Datepicker</Link></li>
               </ul>
             </section>
         </div>
