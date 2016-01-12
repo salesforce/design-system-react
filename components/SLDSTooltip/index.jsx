@@ -13,6 +13,7 @@ import ReactDOM from "react-dom";
 
 import tooltip from "./tooltip";
 import flatten from "lodash.flatten";
+import compact from "lodash.compact";
 
 const displayName = "SLDSTooltip";
 const propTypes = {
@@ -115,8 +116,9 @@ class SLDSTooltip extends React.Component {
   getContent() {
     const asstText = <span className="slds-assistive-text">{this.props.content}</span>;
     return React.Children.map(this.props.children, child => {
+      const {props={}} = child;
       return React.cloneElement(child, {
-        children: (child.props.children ? flatten([child.props.children]).concat(asstText) : asstText),
+        children: compact(flatten([props.children]).concat(asstText)),
         onBlur: this.handleMouseLeave.bind(this),
         onFocus: this.handleMouseEnter.bind(this),
         onMouseEnter: this.handleMouseEnter.bind(this),

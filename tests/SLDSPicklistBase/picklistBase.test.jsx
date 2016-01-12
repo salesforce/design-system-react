@@ -13,11 +13,11 @@ describe('SLDSPicklistBase: ',  function(){
    };
 
   it('onSelect fires upon selection change', sinon.test(function() {
-    const expectedSelOption = {"value" : '1', "label" : '1', "extra1": 'extra1', "extra2" : { "prop1" : 'prop1', "prop2" : 'prop2'};
+    const expectedSelOption = {"value" : '1', "label" : '1', "extra1": 'extra1', "extra2" : { "prop1" : 'prop1', "prop2" : 'prop2'}};
     const onSelectStub = this.stub();
     
     let options = [
-      {"value" : '1', "label" : '1', "extra1": 'extra1', "extra2" : { "prop1" : 'prop1', "prop2" : 'prop2'}
+      {"value" : '1', "label" : '1', "extra1": 'extra1', "extra2" : { "prop1" : 'prop1', "prop2" : 'prop2'}}
     ];
 
     let cmp = TestUtils.renderIntoDocument(
