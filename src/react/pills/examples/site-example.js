@@ -1,5 +1,5 @@
 import React from 'react';
-import {Pillbox} from 'design-system-react';
+import {Pills} from 'design-system-react';
 
 export default React.createClass({
 	getInitialState () {
@@ -26,7 +26,7 @@ export default React.createClass({
 		return (
 			<div>
 				<div className="slds-col example">
-					<Pillbox selection={this.state.selection} onChange={this.handleChanged}/>
+					<Pills selection={this.state.selection} onChange={this.handleChanged}/>
 				</div>
 				<div className="slds-col demo-controls"></div>
 			</div>

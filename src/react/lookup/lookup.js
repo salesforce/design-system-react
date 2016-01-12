@@ -33,7 +33,7 @@ import genericWillMount from '../mixins/generic-will-mount';
 // Split out some rendering logic, just to make things easier to read.
 import Action from './lookup-action';
 import MenuItems from './lookup-menu-items';
-import Pills from './lookup-pills';
+import Pills from '../pills/pills';
 
 // Provides the default renderers for items, pills, the header, and the footer.
 import DefaultRenderers from './lookup-default-renderers';
@@ -147,7 +147,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		// Unlike the header and footer, the pills will always be rendered if there is a selection and there is no option to disable them by passing false to `this.props.pillRenderer`. However, it is still possible to override the contents of the pills by passing in a custom render function.
 		let pills;
 		if (hasSelection) {
-			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selectedItems={selectedItems} strings={this.state.strings} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems}/>;
+			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selection={this.props.selection} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems} accessors={this.accessors} bare={!this.props.multiSelect} />;
 		}
 		
 		// This markup should reflect the design system pattern for the control. If the dropdown menu's parent is `body` and is absolutely positioned in order to visually attach the dropdown to the input, then the dropdown menu is not rendered in this function and is rendered in `componentDidUpdate` with `_renderModalMenu`.
@@ -261,12 +261,8 @@ let Lookup = Lib.merge({}, LookupCore, {
 	},
 
 	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
-	_handleDeselect (item) {
-		if (item) {
-			Multiselectable.deselectItem(this, item._item, this.props.selection);
-		} else {
-			Multiselectable.deselectAll(this, this.props.selection);
-		}
+	_handleDeselect (items) {
+		Multiselectable.deselectItems(this, items, this.props.selection);
 	},
 	
 	_onSelect (itemsToSelect, selection) {

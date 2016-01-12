@@ -1,9 +1,9 @@
-import {Lib, Pillbox} from 'design-system-jquery';
+import {Lib, Pills} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
-	$('#pillbox-jquery-control .pillbox1').facades_pillbox({
+	$('#pills-jquery-control .pills1').facades_pills({
 		selection: [
 			{
 				text: 'item 1',
@@ -20,10 +20,10 @@ $(function () {
 		]
 	});
 
-	$('#pillbox-jquery-control .pillbox1').on('changed', function (evt, item) {
+	$('#pills-jquery-control .pills1').on('changed', function (evt, item) {
 		console.log('pill removed', item);
 	});
 
-	void(Pillbox);
+	void(Pills);
 });
 

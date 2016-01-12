@@ -11,7 +11,7 @@ import '../../src/jquery/dropdown/examples/site-example';
 import '../../src/jquery/modal/examples/site-example';
 import '../../src/jquery/notification/examples/site-example';
 import '../../src/jquery/picklist/examples/site-example';
-import '../../src/jquery/pillbox/examples/site-example';
+import '../../src/jquery/pills/examples/site-example';
 import '../../src/jquery/popover/examples/site-example';
 import '../../src/jquery/radio/examples/site-example';
 import '../../src/jquery/spinner/examples/site-example';
