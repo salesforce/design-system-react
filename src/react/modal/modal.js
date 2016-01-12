@@ -6,7 +6,10 @@ import ModalCore, {CONTROL} from '../../core/modal';
 
 // Framework specific
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Events from '../mixins/events';
+import State from '../mixins/state';
+import genericWillMount from '../mixins/generic-will-mount';
 
 // Third party
 import classNames from 'classnames';
@@ -15,10 +18,10 @@ import classNames from 'classnames';
 import DefaultRenderers from './modal-default-renderers';
 
 export const ModalObject = {
-	mixins: [Events],
+	mixins: [State, Events, genericWillMount],
 
 	displayName: CONTROL,
-	
+
 	propTypes: {
 		isOpen: React.PropTypes.bool,
 		headerText: React.PropTypes.string,
@@ -35,8 +38,8 @@ export const ModalObject = {
 	render () {
 		return (
 			<div>
-				<div aria-hidden="false" role="dialog" className={classNames(this.cssClasses.MODAL, {'slds-fade-in-open': this.props.isOpen} )} onClick={this._onBackgroundClick} ref="background">
-					<div className={this.cssClasses.MODALCONTAINER} ref="modal">
+				<div aria-hidden="false" role="dialog" className={classNames(this.cssClasses.MODAL, {'slds-fade-in-open': this.props.isOpen} )} onClick={this._onBackgroundClick} ref={this._setBackgroundRef}>
+					<div className={this.cssClasses.MODALCONTAINER} ref={this._setModalRef}>
 						<div className="slds-modal__header">
 							{this.props.renderHeader({
 								onCloseClick: this._onCloseClick,
@@ -82,7 +85,16 @@ export const ModalObject = {
 
 	_onPrimaryClick () {
 		this.props.onPrimary();
+	},
+
+	_setBackgroundRef (background) {
+		this.elements.background = Lib.wrapElement(ReactDOM.findDOMNode(background));
+	},
+
+	_setModalRef (modal) {
+		this.elements.modal = Lib.wrapElement(ReactDOM.findDOMNode(modal));
 	}
+
 };
 
 let Modal = Lib.merge({}, ModalCore, ModalObject);
