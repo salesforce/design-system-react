@@ -1,24 +1,17 @@
 const React = require('react/addons')
+const assign = require('lodash.assign')
 const TestUtils = React.addons.TestUtils
 const { Simulate,
         scryRenderedDOMComponentsWithClass,
         findRenderedDOMComponentWithClass } = TestUtils
 import {SLDSDropdown} from '../../components'
 
-describe('SLDSDropdown: ',  function(){
+describe('SLDSDropdown: ', function(){
 
   let body;
   const options = [
-    {label:'A Option Option Super Super Long',value:'A0'},
-    {label:'B Option',value:'B0'},
-    {label:'C Option',value:'C0'},
-    {label:'D Option',value:'D0'},
-    {label:'E Option',value:'E0'},
-    {label:'A1 Option',value:'A1'},
-    {label:'B2 Option',value:'B1'},
-    {label:'C2 Option',value:'C1'},
-    {label:'D2 Option',value:'D1'},
-    {label:'E2 Option Super Super Long',value:'E1'}
+    {label:'A super short',value:'A'},
+    {label:'B Option Super Super Long',value:'B'}
   ]
 
   const renderDropdown = inst => {
@@ -33,16 +26,17 @@ describe('SLDSDropdown: ',  function(){
                         placeholder: "Select a contact",
                         value: 'C0'}
 
-  const createDropdown = props => React.createElement(SLDSDropdown, defaultProps)
+  const createDropdown = props => React.createElement(SLDSDropdown, assign(props, defaultProps))
 
   const dropItDown = ps => renderDropdown(createDropdown(ps))
 
-  describe('Rendering', () => {
+  const getMenu = dom => dom.querySelector('.slds-dropdown--menu')
+
+  describe('Hoverable', () => {
     let cmp, btn;
-    const getMenu = () => body.querySelector('.slds-dropdown--menu')
 
     beforeEach(() => {
-      cmp = dropItDown({})
+      cmp = dropItDown({buttonClassName: 'dijkstrafied'})
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
     })
 
@@ -50,10 +44,81 @@ describe('SLDSDropdown: ',  function(){
       expect(btn.props['aria-haspopup']).to.equal("true")
     })
 
+    it('sets the label', () => {
+      expect(btn.innerText).to.equal("Contacts")
+    })
+
+    it('preseves the className', () => {
+      expect(btn.className).to.include("dijkstrafied")
+    })
+
     it('expands the dropdown on hover', () => {
-      expect(getMenu()).to.equal(null)
+      expect(getMenu(body)).to.equal(null)
       Simulate.mouseEnter(btn, {})
-      expect(getMenu().className).to.include('slds-dropdown')
+      expect(getMenu(body).className).to.include('slds-dropdown')
+    })
+
+    it('closes on blur based on timeout delay', (done) => {
+      expect(getMenu(body)).to.equal(null)
+      Simulate.mouseEnter(btn, {})
+      Simulate.mouseLeave(btn)
+      expect(getMenu(body)).to.not.equal(null)
+      setTimeout(() => {
+        expect(getMenu(body)).to.equal(null)
+        done()
+      }, 600)
     })
   })
+
+  describe('Clickable', () => {
+    let cmp, btn, clicked;
+
+    beforeEach(() => {
+      clicked = false;
+      cmp = dropItDown({openOn: 'click', onClick: () => clicked = true })
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+    })
+
+    it('doesnt expand on hover', () => {
+      expect(getMenu(body)).to.equal(null)
+      Simulate.mouseEnter(btn, {})
+      expect(getMenu(body)).to.equal(null)
+    })
+
+    it('expands/contracts on click', () => {
+      expect(getMenu(body)).to.equal(null)
+      Simulate.click(btn, {})
+      expect(getMenu(body).className).to.include('slds-dropdown')
+      Simulate.click(btn, {})
+      expect(getMenu(body)).to.equal(null)
+    })
+
+    it('preserves click behavior', () => {
+      expect(clicked).to.be.false
+      Simulate.click(btn, {})
+      expect(clicked).to.be.true
+    })
+
+    xit('does some crazy shit in componentDidUpdate', () => {
+    })
+  })
+  describe('Expanded', () => {
+    let cmp, btn, selected;
+
+    beforeEach(() => {
+      selected = false;
+      cmp = dropItDown({openOn: 'click', onSelect: i => selected = i })
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+      Simulate.click(btn, {})
+    })
+
+    it('selects an item', () => {
+      expect(selected).to.be.false
+      const items = getMenu(body).querySelectorAll('.slds-dropdown__item')
+      Simulate.click(items[1].querySelector('a'), {})
+      expect(selected.value).to.equal('B')
+    })
+
+  })
+
 })
