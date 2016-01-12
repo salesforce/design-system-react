@@ -84,7 +84,7 @@ class CodeMirror extends React.Component {
     this.state = {
       code: this.props.codeText,
       codeChanged: false,
-      showCode: true,
+      showCode: false,
     };
   }
 
@@ -170,12 +170,15 @@ class CodeMirror extends React.Component {
     }
 
     return (
-      <CodeMirrorEditor
-        key="jsx"
-        onChange={this.handleCodeChange.bind(this)}
-        className="highlight"
-        codeText={this.state.code}
-      />
+      <div>
+        <h1 className="slds-text-heading--small slds-p-vertical--small">Edit code to modify above examples</h1>
+        <CodeMirrorEditor
+          key="jsx"
+          onChange={this.handleCodeChange.bind(this)}
+          className="highlight"
+          codeText={this.state.code}
+        />
+      </div>
     );
   }
 
@@ -198,6 +201,10 @@ class CodeMirror extends React.Component {
     );
   }
 
+  toggleEditor() {
+    this.setState({ showCode: !this.state.showCode })
+  }
+
   render() {
     return (
       <div className="playground">
@@ -205,10 +212,8 @@ class CodeMirror extends React.Component {
           {this.renderExample()}
         </div>
 
-        <div className="slds-p-vertical--large">
-          <h1 className="slds-text-heading--small slds-p-vertical--small">Edit code to modify above examples</h1>
-          {this.renderEditor()}
-        </div>
+        <SLDSButton label={this.state.showCode ? "Hide Code" : "Show Code"} onClick={this.toggleEditor.bind(this)} />
+        {this.renderEditor()}
       </div>
     );
   }
