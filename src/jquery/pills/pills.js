@@ -1,8 +1,8 @@
-// PILLBOX CONTROL - JQUERY FACADE
+// PILLS CONTROL - JQUERY FACADE
 
 // Core
 import * as Lib from '../../lib/lib';
-import PillboxCore, {CONTROL} from '../../core/pillbox';
+import PillsCore, {CONTROL} from '../../core/pills';
 
 // Traits
 import Eventable from '../../traits/eventable';
@@ -18,9 +18,9 @@ const $ = Lib.global.jQuery || Lib.global.$;
 import Button from '../button/button';
 
 // Template imports
-import template from './pillbox-template';
+import template from './pills-template';
 
-let Pillbox = function Pillbox () {
+let Pills = function Pills () {
 	const options = this._getOptions(arguments);
 	
 	this.template = $(template);
@@ -28,22 +28,21 @@ let Pillbox = function Pillbox () {
 	this._initialize(options);
 };
 
-Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
+Lib.merge(Pills.prototype, PillsCore, Events, DOM, State, {
 	cssClasses: {
 		DISABLED: 'slds-disabled'
 	},
 	
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
-		this.elements.group = this.element.find('.slds-pill-group');
-		this.elements.pillTemplate = this.elements.group.find('.slds-pill').remove();
+		this.elements.pillTemplate = this.element.find('.slds-pill').remove();
 		
 		Eventable.on(this, 'select', this._onSelect, this);
 		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 	
 	_bindUIEvents () {
-		this.element.on('click.fu.tree', '.slds-pill > .slds-button', this._itemClicked.bind(this));
+		this.element.on('click', '.slds-pill > .slds-button', this._itemClicked.bind(this));
 	},
 
 	_render () {
@@ -52,7 +51,7 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 		// TODO: Now that string rendering has been updated this should work fine, but further analysis may be required to ensure that is the case
 		this.elements.button = new Button({
 			assistiveText: strings.REMOVE,
-			icon: 'action.close',
+			icon: 'utility.close',
 			iconStyle: 'icon-bare'
 		}).element;
 		
@@ -140,11 +139,11 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 			elements.push(self._renderPill(pill));
 		});
 
-		this.elements.group.empty();
-		this.elements.group.prepend(elements);
+		this.element.empty();
+		this.element.prepend(elements);
 	}
 });
 
-Pillbox = Lib.runHelpers('jquery', CONTROL, Pillbox);
+Pills = Lib.runHelpers('jquery', CONTROL, Pills);
 
-export default Pillbox;
+export default Pills;
