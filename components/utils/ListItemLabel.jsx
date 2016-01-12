@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import {Icon} from '../SLDSIcons';
+import {Icon} from '../SLDSIcon';
 
 const displayName = "SLDSList-Item-Label";
 const propTypes = {

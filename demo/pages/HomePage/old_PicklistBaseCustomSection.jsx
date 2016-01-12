@@ -10,11 +10,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import {SLDSPicklistBase, SLDSIcons} from '../../../components';
+import {SLDSPicklistBase, SLDSIcon} from '../../../components';
 
 import CustomListItemLabel from './CustomListItemLabel.cjsx';
 
-const Icon = SLDSIcons.Icon;
+const Icon = SLDSIcon.Icon;
 /*
 const CustomListItemLabel = React.createClass( {
   getDefaultProps () {

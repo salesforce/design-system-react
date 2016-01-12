@@ -13,7 +13,7 @@ import isEqual from "lodash.isequal";
 
 import SLDSPopover from "../SLDSPopover";
 import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
-import {Icon} from "../SLDSIcons";
+import {Icon} from "../SLDSIcon";
 
 const displayName = "SLDSPicklist";
 const propTypes = {

@@ -1,9 +1,9 @@
 React = require('react')
 SLDS = require('../../../components')
 SLDSPicklistBase = SLDS.SLDSPicklistBase
-SLDSIcons = SLDS.SLDSIcons
-Icon = SLDSIcons.Icon
-InputIcon = SLDSIcons.InputIcon
+SLDSIcon = SLDS.SLDSIcon
+Icon = SLDSIcon.Icon
+InputIcon = SLDSIcon.InputIcon
 escapeRegExp = require('lodash.escaperegexp')
 
 module.exports = React.createClass(

@@ -8,7 +8,7 @@
    */
 
 import React from 'react';
-import {Icon} from "../../../SLDSIcons";
+import {Icon} from "../../../SLDSIcon";
 import { EventUtil } from '../../../utils';
 
 const displayName = "LookupDefaultHeader";

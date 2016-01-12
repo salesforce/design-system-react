@@ -13,7 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import SLDSButton from '../SLDSButton';
-import {Icon} from '../SLDSIcons';
+import {Icon} from '../SLDSIcon';
 import {EventUtil} from '../utils';
 
 

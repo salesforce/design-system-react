@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 
-import {ButtonIcon, Icon} from "./../../components/SLDSIcons";
+import {ButtonIcon, Icon} from "./../../components/SLDSIcon";
 import SLDSGrid from '../../components/SLDSGrid';
 
 const SLDSColumn = SLDSGrid.Column;

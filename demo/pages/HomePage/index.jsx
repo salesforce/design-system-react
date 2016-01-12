@@ -14,7 +14,7 @@ import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;
 
 import SLDSGrid from '../../../components/SLDSGrid';
-import {Icon} from "./../../../components/SLDSIcons";
+import {Icon} from "./../../../components/SLDSIcon";
 
 const SLDSColumn = SLDSGrid.Column;
 

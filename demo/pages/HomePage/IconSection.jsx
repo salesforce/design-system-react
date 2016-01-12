@@ -26,12 +26,12 @@ class IconSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSIcons/Icon"].description;
+    const desc = DOCS["SLDSIcon/Icon"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSIcons/Icon"] ? true : false;
+    const docs = DOCS["SLDSIcon/Icon"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
@@ -41,7 +41,7 @@ class IconSection extends React.Component {
 
         <div className="demo-only">
           <CodeMirror codeText={Samples.Icons} />
-          <PropTable component="SLDSIcons/Icon" />
+          <PropTable component="SLDSIcon/Icon" />
         </div>
       </div>
     );

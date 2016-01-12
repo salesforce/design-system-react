@@ -13,7 +13,7 @@ import SLDSButton from './SLDSButton';
 import SLDSButtonStateful from './SLDSButtonStateful';
 import SLDSButtonGroup from './SLDSButtonGroup';
 import SLDSDropdown from './SLDSDropdownBase';
-import SLDSIcons from './SLDSIcons';
+import SLDSIcon from './SLDSIcon';
 import SLDSLookup from './SLDSLookup';
 import SLDSModal from './SLDSModal';
 import SLDSModalTrigger from './SLDSModal/trigger';
@@ -28,7 +28,7 @@ module.exports = {
   SLDSButtonStateful: SLDSButtonStateful,
   SLDSButtonGroup: SLDSButtonGroup,
   SLDSDropdown: SLDSDropdown,
-  SLDSIcons: SLDSIcons,
+  SLDSIcon: SLDSIcon,
   SLDSLookup: SLDSLookup,
   SLDSModal: SLDSModal,
   SLDSModalTrigger: SLDSModalTrigger,

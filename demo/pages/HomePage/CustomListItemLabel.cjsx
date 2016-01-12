@@ -1,8 +1,8 @@
 React = require('react')
 SLDS = require('../../../components')
 SLDSPicklistBase = SLDS.SLDSPicklistBase
-SLDSIcons = SLDS.SLDSIcons
-Icon = SLDSIcons.Icon
+SLDSIcon = SLDS.SLDSIcon
+Icon = SLDSIcon.Icon
 module.exports = React.createClass(
   getDefaultProps: ->
     {

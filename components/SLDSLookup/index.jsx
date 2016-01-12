@@ -12,7 +12,7 @@ import ReactDOM from "react-dom";
 import Menu from "./Menu";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
-import {Icon, InputIcon} from "./../SLDSIcons";
+import {Icon, InputIcon} from "./../SLDSIcon";
 import {KEYS,EventUtil} from "../utils";
 import escapeRegExp from "lodash.escaperegexp";
 

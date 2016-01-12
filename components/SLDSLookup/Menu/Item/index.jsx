@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Icon} from "../../../SLDSIcons";
+import {Icon} from "../../../SLDSIcon";
 import {EventUtil} from '../../../utils';
 import escapeRegExp from 'lodash.escaperegexp';
 
