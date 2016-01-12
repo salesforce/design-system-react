@@ -1,8 +1,8 @@
-// PILLBOX CONTROL - REACT FACADE
+// PILLS CONTROL - REACT FACADE
 
 // Core
 import * as Lib from '../../lib/lib';
-import PillboxCore, {CONTROL} from '../../core/pillbox';
+import PillsCore, {CONTROL} from '../../core/pills';
 
 // Traits
 import Eventable from '../../traits/eventable';
@@ -14,43 +14,53 @@ import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
-// Children
-import PillboxItem from './pillbox-item';
+// Provides the default renderer for pills
+import DefaultRenderer from './pills-default-renderer';
 
-let Pillbox = Lib.merge({}, PillboxCore, {
+// Children
+import Pill from './pill';
+
+let Pills = Lib.merge({}, PillsCore, {
 	mixins: [State, Events, genericWillMount],
 
 	displayName: CONTROL,
 
 	propTypes: {
-		selection: React.PropTypes.any
+		autoFocusOnNewItems: React.PropTypes.bool,
+		bare: React.PropTypes.bool,
+		onDeselect: React.PropTypes.func,
+		renderer: React.PropTypes.func,
+		selection: React.PropTypes.any.isRequired
+	},
+
+	getDefaultProps () {
+		return DefaultRenderer;
 	},
 
 	componentWillMount () {
-		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
 	render () {
-		const items = this._generatePills();
-
+		const selectedItems = this._getDataAdapter(this.props.selection);
+		
 		return (
-			<div className="pillbox slds-pillbox">
-				<ul className="slds-pill-group">
-					{items}
-				</ul>
+			<div className="slds-pill-container">
+				{selectedItems.map((item, index) => {
+					return (
+						<Pill
+							key={index}
+							item={item}
+							onDeselect={this._handleDeselect}
+							renderer={this.props.renderer}
+							strings={this.state.strings}
+							autoFocus={this.props.autoFocusOnNewItems}
+							bare={this.props.bare}
+						/>
+					);
+				})}
 			</div>
 		);
-	},
-
-	_generatePills () {
-		const selection = this._getDataAdapter(this.props.selection);
-		
-		return selection.map((item, index) => {
-			return (
-				<PillboxItem key={index} item={item} onClick={this._handleDeselect} strings={this.state.strings}/>
-			);
-		});
 	},
 	
 	// The [multiselectable trait](../../traits/multiselectable.html) is used to maintain the collection of selected items. When this event handler is called, it should defer to the trait to deselect either the single item passed in or all of them if no item is provided.
@@ -59,16 +69,6 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 			Multiselectable.deselectItem(this, item._item, this.props.selection);
 		} else {
 			Multiselectable.deselectAll(this, this.props.selection);
-		}
-	},
-
-	_onSelect (itemsToSelect, selection) {
-		if (Lib.isFunction(this.props.onSelect)) {
-			this.props.onSelect(itemsToSelect, selection._data);
-		}
-		
-		if (Lib.isFunction(this.props.onChange)) {
-			this.props.onChange(selection._data);
 		}
 	},
 
@@ -83,7 +83,7 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 	}
 });
 
-Pillbox = Lib.runHelpers('react', CONTROL, Pillbox);
-Pillbox = React.createClass(Pillbox);
+Pills = Lib.runHelpers('react', CONTROL, Pills);
+Pills = React.createClass(Pills);
 
-export default Pillbox;
+export default Pills;

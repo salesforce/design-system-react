@@ -17,7 +17,7 @@ import lookup from './lookup/examples/site-example';
 import modal from './modal/examples/site-example';
 import notification from './notification/examples/site-example';
 import picklist from './picklist/examples/site-example';
-import pillbox from './pillbox/examples/site-example';
+import pills from './pills/examples/site-example';
 import popover from './popover/examples/site-example';
 import radio from './radio/examples/site-example';
 import spinner from './spinner/examples/site-example';
@@ -36,7 +36,7 @@ ReactDOM.render(React.createElement(lookup), document.querySelector('#lookup-rea
 ReactDOM.render(React.createElement(modal), document.querySelector('#modal-react-control'));
 ReactDOM.render(React.createElement(notification), document.querySelector('#notification-react-control'));
 ReactDOM.render(React.createElement(picklist), document.querySelector('#picklist-react-control'));
-ReactDOM.render(React.createElement(pillbox), document.querySelector('#pillbox-react-control'));
+ReactDOM.render(React.createElement(pills), document.querySelector('#pills-react-control'));
 ReactDOM.render(React.createElement(popover), document.querySelector('#popover-react-control'));
 ReactDOM.render(React.createElement(radio), document.querySelector('#radio-react-control'));
 ReactDOM.render(React.createElement(spinner), document.querySelector('#spinner-react-control'));

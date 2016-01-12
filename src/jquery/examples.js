@@ -15,7 +15,7 @@ import './dropdown/examples/site-example';
 import './modal/examples/site-example';
 import './notification/examples/site-example';
 import './picklist/examples/site-example';
-import './pillbox/examples/site-example';
+import './pills/examples/site-example';
 import './popover/examples/site-example';
 import './radio/examples/site-example';
 import './spinner/examples/site-example';
