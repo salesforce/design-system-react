@@ -4,6 +4,9 @@
 import * as Lib from '../../lib/lib';
 import DropdownCore, {CONTROL} from '../../core/dropdown';
 
+// Traits
+import Openable from '../../traits/openable';
+
 // Framework specific
 import React from 'react';
 import { PicklistObject } from '../picklist/picklist';
@@ -47,13 +50,37 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 		return this.props.renderArrow ? 'icon-more' : 'icon-container';
 	},
 
+	_handleClicked (e) {
+		Openable.toggle(this, e.nativeEvent);
+		this.elements.control.toggleClass('slds-is-open');
+	},
+
 	render () {
+		const isOpen = Openable.isOpen(this);
 		const triggerId = this._getTriggerId();
 		
 		return (
-			<div className="slds-dropdown-trigger" id={this.state.id} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
-				<Button id={triggerId} icon={this._getIcon()} iconStyle={this._getStyle()} disabled={this.props.disabled} aria-haspopup="true" />
-				<PicklistItems id={this._getMenuId()} labelledBy={triggerId} getMenuItemId={this._getMenuItemId} collection={this._collection} selection={this._getSelection()._item} show={!this.props.disabled} onSelected={this._handleMenuItemSelected} />
+			<div className="slds-dropdown-trigger--click"
+					id={this.state.id}
+					aria-expanded={isOpen}
+					onKeyDown={this._handleKeyPressed}
+					onKeyPress={this._handleKeyPressed}>
+				<Button
+					className=""
+					id={triggerId}
+					icon={this._getIcon()}
+					iconStyle={this._getStyle()}
+					disabled={this.props.disabled}
+					onClick={this._handleClicked}
+					aria-haspopup="true" />
+				<PicklistItems
+					id={this._getMenuId()}
+					labelledBy={triggerId}
+					getMenuItemId={this._getMenuItemId}
+					collection={this._collection}
+					selection={this._getSelection()._item}
+					show={ isOpen && !this.props.disabled}
+					onSelected={this._handleMenuItemSelected}/>
 			</div>
 		);
 	}

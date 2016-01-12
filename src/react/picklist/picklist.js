@@ -77,7 +77,11 @@ export const PicklistObject = {
 		};
 
 		return (
-			<div className="slds-picklist" id={this.state.id} aria-expanded={isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div className="slds-picklist"
+				id={this.state.id}
+				aria-expanded={isOpen}
+				onKeyDown={this._handleKeyPressed}
+				onKeyPress={this._handleKeyPressed}>
 				<Button
 					id={triggerId}
 					className="slds-picklist__label"
@@ -124,10 +128,12 @@ export const PicklistObject = {
 	_handleMenuItemSelected (selection) {
 		Multiselectable.selectItem(this, selection._item);
 		Openable.close(this);
+		this.elements.control.toggleClass('slds-is-open');
 	},
 
 	_handleClicked (e) {
 		Openable.toggle(this, e.nativeEvent);
+		this.elements.control.toggleClass('slds-is-open');
 	},
 
 	_keyboardSelect (item) {
