@@ -656,16 +656,6 @@
                 "required": false,
                 "description": "Custom component that overrides the default Lookup Item component."
             },
-            "messages": {
-                "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "string"
-                    }
-                },
-                "required": false,
-                "description": ""
-            },
             "modal": {
                 "type": {
                     "name": "bool"

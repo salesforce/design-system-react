@@ -50,7 +50,6 @@ const propTypes = {
    * Custom component that overrides the default Lookup Item component.
    */
   listItemLabelRenderer: React.PropTypes.func,
-  messages: React.PropTypes.arrayOf(React.PropTypes.string),
   /**
    * If true, component renders specifically to work inside Modal.
    */
@@ -342,7 +341,6 @@ class SLDSLookup extends React.Component {
         label={this.props.label}
         listItemLabelRenderer={this.props.listItemLabelRenderer}
         listLength={this.state.listLength}
-        messages={this.props.messages}
         onSelect={this.selectItem.bind(this)}
         searchTerm={this.state.searchTerm}
         setFocus={this.setFocus.bind(this)}

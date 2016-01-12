@@ -28,8 +28,7 @@ const propTypes = {
   salesforceObj: React.PropTypes.string,
 };
 const defaultProps = {
-  emptyMessage: "No matches found.",
-  messages: [],
+  emptyMessage: "No matches found."
 };
 class Menu extends React.Component {
   constructor(props){
@@ -39,7 +38,7 @@ class Menu extends React.Component {
 
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
   componentDidUpdate(prevProps, prevState){
-    // make an array of the children of the list but only count the actual items (ignore errors/messages)
+    // make an array of the children of the list but only count the actual items
     let list = [].slice.call(ReactDOM.findDOMNode(this.refs.list).children)
       .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
     this.props.getListLength(list);
@@ -110,16 +109,6 @@ class Menu extends React.Component {
     });
   }
 
-  renderMessages(){
-    return this.props.messages.map((message) => {
-      return (
-        <li className="slds-lookup__message" aria-live="polite">
-          <span>{message}</span>
-        </li>
-      );
-    });
-  }
-
   renderContent(){
     if (this.filteredItems().length === 0)
       return (
@@ -128,11 +117,7 @@ class Menu extends React.Component {
         </li>
       );
 
-    let elements = this.renderItems();
-    if (this.props.messages.length > 0) {
-      elements.concat(this.renderMessages());
-    }
-    return elements;
+    return this.renderItems();
   }
 
   render(){
