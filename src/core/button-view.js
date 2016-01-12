@@ -73,7 +73,7 @@ const ButtonViewCore = Lib.merge({}, Base, {
 			iconBaseClass = this.cssClasses.BUTTON_ICON;
 		}
 
-		// Set the position class. By default, the position of an icon is left of the text. If there is no visible text and only an icon is visibly present, then use the default of the set icon position.
+		// Set the position class. By default, the position of an icon is left of the text. If there is no visible text and only an icon is visibly present, then use the default position set in button core.
 		if (Boolean(this.getProperty('text')) && this.getProperty('iconStyle') !== 'icon-only') {
 			iconPositionClass = this.iconPositions[this.getProperty('iconPosition')];
 		}

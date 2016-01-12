@@ -11,6 +11,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 /* eslint-disable camelcase */
 
+console.log('[PATHS] Initializing...');
+
 var argv = require('minimist')(process.argv.slice(2));
 var isProd = argv.prod === true;
 var _ = require('lodash');
@@ -25,6 +27,7 @@ var paths = {
   'app_modules': app_modules,
   'assets': path.resolve(root, 'public/assets'),
   'build': path.resolve(root, 'build'),
+  'content_base': path.resolve(root, 'public'),
   'dist': path.resolve(root, '.dist'),
   'docs': path.resolve(root, 'docs'),
   'generated': path.resolve(root, '.generated'),

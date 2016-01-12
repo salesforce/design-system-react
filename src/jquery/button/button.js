@@ -38,9 +38,10 @@ let Button = function Button () {
 		iconSize: options.iconSize,
 		iconStyle: options.iconStyle,
 		text: options.text,
-		truncate: options.truncate
+		truncate: options.truncate,
+		selected: options.selected
 	};
-	
+
 	// If button has views, button is stateful.
 	if (options.views.length > 0) {
 		options.views = options.views.map((buttonView) => {
@@ -71,7 +72,7 @@ export const ButtonObject = {
 		const buttonViewOptions = Lib.extend({
 			assistiveText: this.getProperty('assistiveText')
 		}, this.buttonViewOptions);
-		
+
 		if (viewOptions.length > 0) {
 			buttonViewOptions.view = 'notSelected';
 		}
@@ -98,17 +99,33 @@ export const ButtonObject = {
 
 	// Renders are asyncronous. See [Base](../core/base.html) and [DOM](../dom.html) in order to trace stack.
 	_render () {
-		const isStateful = this.getProperty('views').length > 0;
+		const isStateful = (
+			this.getProperty('views').length > 0 ||
+			(
+				typeof this.getProperty('selected') !== 'undefined' &&
+				(
+					this.getProperty('selected') === true ||
+					this.getProperty('selected') === false
+				)
+			) ||
+			(
+				typeof this.getProperty('selectable') !== 'undefined' &&
+				(
+					this.getProperty('selectable') === true ||
+					this.getProperty('selectable') === false
+				)
+			)
+		);
 		const className = this._getClassNames('', isStateful);
 
 		this.element
 			.addClass(className)
 			.append(this._renderViews())
 			.prop('disabled', this.getProperty('disabled'));
-		
+
 		return this.element;
 	},
-	
+
 	// Triggered when `render` is complete and elements have been addded to the DOM. See [DOM](../dom.html).
 	_onRendered () {
 		this._bindUIEvents();
@@ -116,14 +133,48 @@ export const ButtonObject = {
 
 	// Toggles selected state if button is stateful.
 	_handleClick () {
-		if (this.getProperty('views').length > 0 || this.getProperty('selectable')) {
+		const isStateful = (
+			this.getProperty('views').length > 0 ||
+			(
+				typeof this.getProperty('selected') !== 'undefined' &&
+				(
+					this.getProperty('selected') === true ||
+					this.getProperty('selected') === false
+				)
+			) ||
+			(
+				typeof this.getProperty('selectable') !== 'undefined' &&
+				(
+					this.getProperty('selectable') === true ||
+					this.getProperty('selectable') === false
+				)
+			)
+		);
+		if (isStateful) {
 			this.toggle();
 		}
 	},
 
 	// Toggles selected state if button is stateful. See the [shared button core](../../core/button.html).
 	_onToggled () {
-		const isStateful = this.getProperty('views').length > 0;
+		// const isStateful = this.getProperty('views').length > 0;
+		const isStateful = (
+			this.getProperty('views').length > 0 ||
+			(
+				typeof this.getProperty('selected') !== 'undefined' &&
+				(
+					this.getProperty('selected') === true ||
+					this.getProperty('selected') === false
+				)
+			) ||
+			(
+				typeof this.getProperty('selectable') !== 'undefined' &&
+				(
+					this.getProperty('selectable') === true ||
+					this.getProperty('selectable') === false
+				)
+			)
+		);
 		this.elements.control[0].className = this._getClassNames('', (isStateful || this.getProperty('selectable')));
 	},
 

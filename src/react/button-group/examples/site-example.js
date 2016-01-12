@@ -17,6 +17,11 @@ export default React.createClass({
 					<Button text="Refresh" theme="neutral"/>
 					<Button text="Edit" theme="neutral"/>
 					<Button text="Save" theme="neutral"/>
+					<Button icon="utility.down" assistiveText="More Actions" iconStyle="icon-border"/>
+				</ButtonGroup>
+				<ButtonGroup>
+					<Button text="New Lead" theme="neutral"/>
+					<Button icon="utility.down" assistiveText="More Actions" iconStyle="icon-border"/>
 				</ButtonGroup>
 				<ButtonGroup>
 					<Button icon="utility.chart" iconStyle="icon-border" assistiveText="Chart" selectable selected={this.state.chartSelected} onClick={this.handleClick.bind(this, 'chart')} key="chart" />

@@ -19,7 +19,7 @@ $app-version: '0.0.12';
 /// Website Section Path
 ///
 /// @type String
-$static-section-directory: '/facades';
+$static-section-directory: '/demo-site';
 
 
 /// Icon Path
@@ -34,11 +34,11 @@ $static-icon-path: '/assets#{$static-section-directory}/icons';
 $static-image-path: '/assets#{$static-section-directory}/images';
 
 
-/// Development Site Prefix
-/// Will prefix all CSS classes used only in the deveopment site
+/// Demo Site Prefix
+/// Will prefix all CSS classes used only in the demo site
 ///
 /// @example scss Use in a class name
-///  .#{$dev-prefix}foo { ... } // outputs .facades-dev-foo { ... }
+///  .#{$demo-prefix}foo { ... } // outputs .facades-demo-foo { ... }
 ///
 /// @type String
-$dev-prefix: 'facades-dev-' !default;
+$demo-prefix: 'facades-demo-' !default;

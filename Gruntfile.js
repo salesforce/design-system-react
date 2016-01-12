@@ -1,4 +1,5 @@
 module.exports = function (grunt) {
+	const path = require('path');
 	require('./scripts/helpers/setup');
 	grunt.loadTasks('tasks');
 
@@ -66,7 +67,7 @@ module.exports = function (grunt) {
 		},
 		'shell': {
 			docco: {
-				command: './scripts/shell/generate-docs.sh'
+				command: __PATHS__.scripts + '/shell/generate-docs.sh'
 			}
 		},
 		'webpack': {
@@ -77,7 +78,7 @@ module.exports = function (grunt) {
 			start: {
 				webpack: require('./webpack.config'),
 				publicPath: '/build/',
-				contentBase: './public',
+				contentBase: __PATHS__.content_base,
 				port: '<%= port %>',
 				keepAlive: true,
 				hot: true,

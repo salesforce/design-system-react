@@ -1,0 +1,46 @@
+
+
+code {
+    white-space: nowrap;
+    font-family: Consolas, Monaco, 'Andale Mono', monospace, monospace;
+    color: black;
+}
+
+th code {
+    font-weight: 400;
+}
+
+code[class*="language"] {
+    // overflow: visible;
+    // height: auto;
+}
+
+pre[class*="language-"] {
+    margin: 1rem 0 0 0;
+    border: 0;
+    padding: 0 0 0 0.5rem;
+    background: #f5f2f0;
+    max-height: none;
+    box-shadow: inset 0px 0px 3px 1px rgba(103, 100, 55, 0.17),0 0 0px 1px #dfdfdf;
+
+    &:before, &:after {
+        display: none;
+    }
+
+    code {
+        padding: 0.5rem 0rem;
+    }
+}
+
+[data-key="design-tokens"] {
+    color: purple;
+}
+
+span.token.comment {
+  white-space: pre-line;
+}
+
+pre[class*=language-] code {
+  white-space: pre-wrap;
+}
+

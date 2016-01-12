@@ -19,6 +19,19 @@ $(function () {
 			},
 			{
 				text: 'Save'
+			},
+			{
+				assistiveText: 'button-icon-border',
+				disabled: false,
+				domNode: '.button-icon-border',
+				icon: 'utility.table',
+				iconPosition: '',
+				iconStyle: 'icon-border',
+				iconSize: '',
+				size: '',
+				text: '',
+				theme: '',
+				views: []
 			}
 		],
 		children: [button1]

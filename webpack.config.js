@@ -1,3 +1,4 @@
+require('./scripts/helpers/setup');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var StringReplacePlugin = require('string-replace-webpack-plugin');
@@ -10,7 +11,9 @@ var packageJson = require('./package.json');
 
 var config = {
 	entry: {
-		'source-site-shared': entries.concat('./site/assets/facades/scripts/examples.js'),
+		'styles-shared': entries.concat('./site/assets/shared/scripts/styles.js'),
+		'styles-facades': entries.concat('./site/assets/facades/scripts/styles.js'),
+		'styles-demo-site': entries.concat('./site/assets/demo-site/scripts/styles.js'),
 		'source-examples-react': entries.concat('./src/react/examples.js'),
 		'source-examples-jquery': entries.concat('./src/jquery/examples.js')
 	},

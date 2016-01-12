@@ -10,16 +10,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 export default {
-  abbreviatedName: 'DSF',
+  abbreviatedName: 'SLDSF',
   cssPrefix: 'slds-',
-  displayName: 'Design System Facades',
+  displayName: 'Salesforce Lightning Design System Facades',
   filenamePrefix: 'slds',
   analyticsHostWhitelist: [
-    'getslds.com',
-    'www.getslds.com',
-    'lightningdesignsystem.com',
-    'www.lightningdesignsystem.com',
-    'lightning-design-system.herokuapp.com',
+    'getdsf.com',
+    'www.getdsf.com',
+    'designsystemfacades.com',
+    'www.designsystemfacades.com',
+    'design-system-facades.herokuapp.com',
     'salesforce.com',
     'www.salesforce.com'
   ],
