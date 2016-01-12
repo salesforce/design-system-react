@@ -26765,7 +26765,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'renderContent',
 	    value: function renderContent() {
-	      if (this.props.errors.length > 0) return this.renderErrors();else if (this.filteredItems().length === 0) return _react2['default'].createElement('li', { className: 'slds-lookup__message', 'aria-live': 'polite' }, _react2['default'].createElement('span', null, this.props.emptyMessage));
+	      if (this.props.errors.length > 0) return this.renderErrors();else if (this.filteredItems().length === 0) return _react2['default'].createElement('li', { className: 'slds-lookup__message', 'aria-live': 'polite' }, _react2['default'].createElement('span', { className: 'slds-m-left--x-large slds-p-vertical--medium' }, this.props.emptyMessage));
 	
 	      var elements = this.renderItems();
 	      if (this.props.messages.length > 0) {
