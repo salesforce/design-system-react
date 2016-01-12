@@ -144,7 +144,6 @@ class SLDSDropdown extends React.Component {
   }
 
   handleSelect(index){
-    console.log("\n\n\n\n\n=======SELECTED", index)
     this.setState({selectedIndex: index})
     this.setFocus();
     if(this.props.onSelect) this.props.onSelect(this.getValueByIndex(index));
