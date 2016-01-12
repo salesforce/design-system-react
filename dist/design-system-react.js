@@ -26939,7 +26939,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var ListItemLabel = this.props.listItemLabelRenderer;
 	        return _react2['default'].createElement(ListItemLabel, this.props);
 	      }
-	      return [_react2['default'].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, className: this.props.iconClasses, key: this.props.iconName, name: this.props.iconName }), this.boldSearchText(this.props.children.label)];
+	      return [_react2['default'].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, className: this.props.iconClasses, key: this.props.iconName, name: this.props.iconName, size: 'small' }), this.boldSearchText(this.props.children.label)];
 	    }
 	  }, {
 	    key: 'render',
