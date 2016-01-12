@@ -6,7 +6,6 @@ const handleClick = function(buttonInstance) {
 let inverseBtnParent = {backgroundColor: "#16325c", padding: "10px", display: "inline-block"};
 const examples = (
   <div className="slds-x-small-buttons--horizontal">
-    <h4 className="slds-text-heading--medium slds-p-vertical--medium">Stateful Buttons</h4>
     <SLDSButtonStateful
       assistiveText="like"
       iconName="like"

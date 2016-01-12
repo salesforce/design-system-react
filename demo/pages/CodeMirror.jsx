@@ -10,7 +10,7 @@ const ReactDOM = require('react-dom');
 const classNames = require('classnames');
 
 const SLDSButton =  require('../../components/SLDSButton');
-const SLDSButtonStateful =  require('../../components/SLDSButton/SLDSButtonStateful');
+const SLDSButtonStateful =  require('../../components/SLDSButtonStateful');
 const SLDSButtonGroup =  require('../../components/SLDSButtonGroup');
 const SLDSDropdown =  require('../../components/SLDSDropdownBase');
 const {Icon}=  require('../../components/SLDSIcons');

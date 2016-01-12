@@ -14,6 +14,7 @@ import App from './App';
 import HomePage from './pages/HomePage';
 
 import ButtonSection from './pages/HomePage/ButtonSection';
+import ButtonStatefulSection from './pages/HomePage/ButtonStatefulSection';
 import ButtonGroupSection from './pages/HomePage/ButtonGroupSection';
 import DropdownBaseSection from './pages/HomePage/DropdownSection';
 import IconSection from './pages/HomePage/IconSection';
@@ -30,6 +31,7 @@ const routes = (
     <DefaultRoute handler={HomePage} />
     <Route name="home" handler={HomePage}>
       <Route name="button" path="button" handler={ButtonSection}/>
+      <Route name="button-stateful" path="button-stateful" handler={ButtonStatefulSection}/>
       <Route name="button-group" path="button-group" handler={ButtonGroupSection}/>
       <Route name="dropdown" path="dropdown" handler={DropdownBaseSection}/>
       <Route name="icon" path="icon" handler={IconSection}/>

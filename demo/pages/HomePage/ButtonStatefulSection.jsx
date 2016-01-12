@@ -14,11 +14,11 @@ import Samples from '../Samples';
 import PropTable from '../PropTable';
 import DOCS from '../../../docs';
 
-const displayName = "ButtonSection";
+const displayName = "ButtonStatefulSection";
 const propTypes = {};
 const defaultProps = {};
 
-class ButtonSection extends React.Component {
+class ButtonStatefulSection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,23 +26,22 @@ class ButtonSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSButton"].description;
+    const desc = DOCS["SLDSButtonStateful"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSButton"] ? true : false;
+    const docs = DOCS["SLDSButtonStateful"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
-          Button
+          Button Stateful
         </h3>
         {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
         <div className="demo-only">
-          <CodeMirror codeText={Samples.Buttons} />
-          <CodeMirror codeText={Samples.IconButtons} />
-          <PropTable component="SLDSButton" />
+          <CodeMirror codeText={Samples.StatefulButtons} />
+          <PropTable component="SLDSButtonStateful" />
         </div>
       </div>
     );
@@ -50,9 +49,9 @@ class ButtonSection extends React.Component {
 
 }
 
-ButtonSection.displayName = displayName;
-ButtonSection.propTypes = propTypes;
-ButtonSection.defaultProps = defaultProps;
+ButtonStatefulSection.displayName = displayName;
+ButtonStatefulSection.propTypes = propTypes;
+ButtonStatefulSection.defaultProps = defaultProps;
 
-module.exports = ButtonSection;
+module.exports = ButtonStatefulSection;
 
