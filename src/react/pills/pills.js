@@ -1,8 +1,8 @@
-// PILLBOX CONTROL - REACT FACADE
+// PILLS CONTROL - REACT FACADE
 
 // Core
 import * as Lib from '../../lib/lib';
-import PillboxCore, {CONTROL} from '../../core/pillbox';
+import PillsCore, {CONTROL} from '../../core/pills';
 
 // Traits
 import Eventable from '../../traits/eventable';
@@ -15,12 +15,12 @@ import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
 
 // Provides the default renderer for pills
-import DefaultRenderer from './pillbox-default-renderer';
+import DefaultRenderer from './pills-default-renderer';
 
 // Children
-import PillboxItem from './pillbox-item';
+import Pill from './pill';
 
-let Pillbox = Lib.merge({}, PillboxCore, {
+let Pills = Lib.merge({}, PillsCore, {
 	mixins: [State, Events, genericWillMount],
 
 	displayName: CONTROL,
@@ -48,7 +48,7 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 			<div className="slds-pill-container">
 				{selectedItems.map((item, index) => {
 					return (
-						<PillboxItem
+						<Pill
 							key={index}
 							item={item}
 							onDeselect={this._handleDeselect}
@@ -83,7 +83,7 @@ let Pillbox = Lib.merge({}, PillboxCore, {
 	}
 });
 
-Pillbox = Lib.runHelpers('react', CONTROL, Pillbox);
-Pillbox = React.createClass(Pillbox);
+Pills = Lib.runHelpers('react', CONTROL, Pills);
+Pills = React.createClass(Pills);
 
-export default Pillbox;
+export default Pills;

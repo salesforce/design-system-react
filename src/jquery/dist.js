@@ -12,7 +12,7 @@ import Dropdown from './dropdown/dropdown';
 import Modal from './modal/modal';
 import Notification from './notification/notification';
 import Picklist from './picklist/picklist';
-import Pillbox from './pillbox/pillbox';
+import Pills from './pills/pills';
 import Popover from './popover/popover';
 import Radio from './radio/radio';
 import Radios from './radio/radios';
@@ -33,7 +33,7 @@ module.exports = {
 	Modal,
 	Notification,
 	Picklist,
-	Pillbox,
+	Pills,
 	Popover,
 	Radio,
 	Radios,

@@ -1,4 +1,4 @@
-// LOOKUP PILL - REACT FACADE
+// PILL - REACT FACADE
 
 // Framework specific
 import React from 'react';
@@ -11,7 +11,7 @@ import Button from '../button/button';
 
 export const CONTROL = 'lookup-pill';
 
-const PillboxItem = React.createClass({
+const Pill = React.createClass({
 	displayName: CONTROL,
 
 	propTypes: {
@@ -68,4 +68,4 @@ const PillboxItem = React.createClass({
 	}
 });
 
-export default PillboxItem;
+export default Pill;

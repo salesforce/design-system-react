@@ -1,8 +1,8 @@
-// PILLBOX CONTROL - JQUERY FACADE
+// PILLS CONTROL - JQUERY FACADE
 
 // Core
 import * as Lib from '../../lib/lib';
-import PillboxCore, {CONTROL} from '../../core/pillbox';
+import PillsCore, {CONTROL} from '../../core/pills';
 
 // Traits
 import Eventable from '../../traits/eventable';
@@ -18,9 +18,9 @@ const $ = Lib.global.jQuery || Lib.global.$;
 import Button from '../button/button';
 
 // Template imports
-import template from './pillbox-template';
+import template from './pills-template';
 
-let Pillbox = function Pillbox () {
+let Pills = function Pills () {
 	const options = this._getOptions(arguments);
 	
 	this.template = $(template);
@@ -28,7 +28,7 @@ let Pillbox = function Pillbox () {
 	this._initialize(options);
 };
 
-Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
+Lib.merge(Pills.prototype, PillsCore, Events, DOM, State, {
 	cssClasses: {
 		DISABLED: 'slds-disabled'
 	},
@@ -144,6 +144,6 @@ Lib.merge(Pillbox.prototype, PillboxCore, Events, DOM, State, {
 	}
 });
 
-Pillbox = Lib.runHelpers('jquery', CONTROL, Pillbox);
+Pills = Lib.runHelpers('jquery', CONTROL, Pills);
 
-export default Pillbox;
+export default Pills;

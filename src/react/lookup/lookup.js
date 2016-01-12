@@ -33,7 +33,7 @@ import genericWillMount from '../mixins/generic-will-mount';
 // Split out some rendering logic, just to make things easier to read.
 import Action from './lookup-action';
 import MenuItems from './lookup-menu-items';
-import Pills from '../pillbox/pillbox';
+import Pills from '../pills/pills';
 
 // Provides the default renderers for items, pills, the header, and the footer.
 import DefaultRenderers from './lookup-default-renderers';

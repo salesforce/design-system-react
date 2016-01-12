@@ -1,4 +1,4 @@
-// # Pillbox Control
+// # Pills Control
 // ### Core
 
 // Bring in the [shared library functions](../lib/lib.html).
@@ -7,9 +7,9 @@ import * as Lib from '../lib/lib';
 // Inherit from the [base control](base.html).
 import Base from './base';
 
-export const CONTROL = 'Pillbox';
+export const CONTROL = 'Pills';
 
-const PillboxCore = Lib.merge({}, Base, {
+const PillsCore = Lib.merge({}, Base, {
 	CONTROL,
 	
 	accessors: {
@@ -36,4 +36,4 @@ const PillboxCore = Lib.merge({}, Base, {
 	}
 });
 
-export default PillboxCore;
+export default PillsCore;
