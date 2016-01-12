@@ -50,11 +50,6 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 		return this.props.renderArrow ? 'icon-more' : 'icon-container';
 	},
 
-	_handleClicked (e) {
-		Openable.toggle(this, e.nativeEvent);
-		this.elements.control.toggleClass('slds-is-open');
-	},
-
 	render () {
 		const isOpen = Openable.isOpen(this);
 		const triggerId = this._getTriggerId();

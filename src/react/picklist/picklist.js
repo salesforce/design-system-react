@@ -128,12 +128,10 @@ export const PicklistObject = {
 	_handleMenuItemSelected (selection) {
 		Multiselectable.selectItem(this, selection._item);
 		Openable.close(this);
-		this.elements.control.toggleClass('slds-is-open');
 	},
 
 	_handleClicked (e) {
 		Openable.toggle(this, e.nativeEvent);
-		this.elements.control.toggleClass('slds-is-open');
 	},
 
 	_keyboardSelect (item) {
@@ -155,10 +153,12 @@ export const PicklistObject = {
 	},
 
 	_onOpened () {
+		this.elements.control.addClass('slds-is-open');
 		Positionable.show(this);
 	},
 
 	_onClosed () {
+		this.elements.control.removeClass('slds-is-open');
 		Positionable.hide(this);
 	},
 	
