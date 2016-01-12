@@ -34,7 +34,7 @@ class DropdownSection extends React.Component {
     const docs = DOCS["SLDSDropdownBase"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>Dropdown</h3>
+        <h3 className='slds-text-heading--medium slds-truncate'>SLDSDropdown</h3>
         {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
 
         <div>

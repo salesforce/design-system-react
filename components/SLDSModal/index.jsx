@@ -72,7 +72,7 @@ const defaultProps = {
 };
 
 /**
- * The Modal component is used for modals and <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">prompt notifications</a>. <br />
+ * The SLDSModal component is used for modals and <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">prompt notifications</a>.
  * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">SLDS Modals</a>.
  */
 class SLDSModal extends React.Component {

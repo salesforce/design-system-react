@@ -56,23 +56,18 @@ module.exports = React.createClass( {
           <div className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-around--large'>
 
             <section className="slds-p-bottom--large">
-              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Current</h3>
+              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Components</h3>
               <ul>
-                <li><Link to="button">Button</Link></li>
-                <li><Link to="button-stateful">Button Stateful</Link></li>
-                <li><Link to="button-group">Button Group</Link></li>
-                <li><Link to="dropdown">Dropdown</Link></li>
-                <li><Link to="icon">Icon</Link></li>
-                <li><Link to="lookup">Lookup</Link></li>
-                <li><Link to="modal">Modal</Link></li>
-                <li><Link to="notification">Notification</Link></li>
-                <li><Link to="picklist">Picklist</Link></li>
-                <li><Link to="tooltip">Tooltip</Link></li>
-
-              </ul>
-              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Future</h3>
-              <ul>
-                <li><Link to="datepicker">Datepicker</Link></li>
+                <li><Link to="button">SLDSButton</Link></li>
+                <li><Link to="button-stateful">SLDSButtonStateful</Link></li>
+                <li><Link to="button-group">SLDSButtonGroup</Link></li>
+                <li><Link to="dropdown">SLDSDropdown</Link></li>
+                <li><Link to="icon">SLDSIcon</Link></li>
+                <li><Link to="lookup">SLDSLookup</Link></li>
+                <li><Link to="modal">SLDSModal</Link></li>
+                <li><Link to="notification">SLDSNotification</Link></li>
+                <li><Link to="picklist">SLDSPicklist</Link></li>
+                <li><Link to="tooltip">SLDSTooltip</Link></li>
               </ul>
             </section>
         </div>
