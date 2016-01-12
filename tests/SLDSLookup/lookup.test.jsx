@@ -1,4 +1,5 @@
 const React = require('react/addons');
+const assign = require('lodash.assign');
 const TestUtils = React.addons.TestUtils;
 const {Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag} = TestUtils;
 import {SLDSLookup} from '../../components';
@@ -18,15 +19,11 @@ describe('SLDSLookup: ',  function(){
     return React.findDOMNode(reactCmp);
   };
 
-  const getLookup = function(withHeader) {
-    return <SLDSLookup
-      options={items}
-      label="Leads"
-      type="lead"
-      headerRenderer={withHeader?SLDSLookup.DefaultHeader:null}
-      footerRenderer={SLDSLookup.DefaultFooter}
-    />;
-  };
+  const defaultProps = { options: items, label: 'Leads', type: 'lead', footerRenderer: SLDSLookup.DefaultFooter }
+
+  const getLookup = (props={}) => React.createElement(SLDSLookup, assign({}, defaultProps, props))
+
+  const getItems = lookup => lookup.getElementsByClassName('slds-lookup__item');
 
   describe('component renders', function() {
     it('lookup renders', function() {
@@ -88,7 +85,7 @@ describe('SLDSLookup: ',  function(){
     });
 
     it('with fixed header: focuses correct item', function() {
-      let lookup = generateLookup(getLookup(true));
+      let lookup = generateLookup(getLookup({headerRenderer: SLDSLookup.DefaultHeader}));
       let input = lookup.getElementsByTagName("input")[0];
       TestUtils.Simulate.click(input);
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
@@ -139,36 +136,57 @@ describe('SLDSLookup: ',  function(){
 
   });
 
-  describe("filtering items", function() {
-    let lookup, input, getItems;
+  describe("expanded", function() {
+    let lookup, input;
 
     beforeEach(function() {
       lookup = generateLookup(getLookup());
       input = lookup.getElementsByTagName("input")[0];
       Simulate.click(input);
-      getItems = () => lookup.getElementsByClassName('slds-lookup__item');
     });
 
     it('filters its items', () => {
       Simulate.change(input, {target: {value: 'Pa'}});
-      expect(getItems().length).to.equal(3);
+      expect(getItems(lookup).length).to.equal(3);
     });
 
     it('filters its items all the way!', () => {
       Simulate.change(input, {target: {value: 'Poof!'}});
-      expect(getItems().length).to.equal(1); //1 cause of add-item
+      expect(getItems(lookup).length).to.equal(1); //1 cause of add-item
     });
 
     it('unfilters its items if no val', () => {
       Simulate.change(input, {target: {value: ''}});
-      expect(getItems().length).to.equal(7);
+      expect(getItems(lookup).length).to.equal(7);
     });
 
     it('displays no items when item count is 0', () => {
       expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(0);
       Simulate.change(input, {target: {value: 'kdjfksjdf'}});
-      expect(getItems().length).to.equal(1); // add item
+      expect(getItems(lookup).length).to.equal(1); // add item
       expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(1);
     });
+
+    it('highlights its matched text', () => {
+      Simulate.change(input, {target: {value: 'Pa'}});
+      expect(getItems(lookup)[0].querySelector('mark').innerText).to.equal('Pa');
+    });
   });
+
+  describe("custom filter", function() {
+    let lookup, input;
+
+    beforeEach(function() {
+      lookup = generateLookup(getLookup({filterWith: (t, i) => t === i.label[0] }));
+      input = lookup.getElementsByTagName("input")[0];
+      Simulate.click(input);
+    });
+
+    it('filters its items by case sensitive first letter', () => {
+      Simulate.change(input, {target: {value: 'P'}});
+      expect(getItems(lookup).length).to.equal(3);
+      Simulate.change(input, {target: {value: 'p'}});
+      expect(getItems(lookup).length).to.equal(1);
+    });
+  })
 });
