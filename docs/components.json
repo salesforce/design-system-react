@@ -186,8 +186,8 @@
             }
         }
     },
-    "SLDSButton/SLDSButtonStateful": {
-        "description": "",
+    "SLDSButtonStateful": {
+        "description": "The Button Stateful component is used for buttons that have a state of unselected or selected. The initial state is unselected.<br />\nThe three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.<br />\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">SLDS Buttons > Stateful</a>.",
         "displayName": "SLDSButtonStateful",
         "props": {
             "assistiveText": {

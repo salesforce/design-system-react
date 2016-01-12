@@ -59,6 +59,7 @@ module.exports = React.createClass( {
               <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Current</h3>
               <ul>
                 <li><Link to="button">Button</Link></li>
+                <li><Link to="button-stateful">Button Stateful</Link></li>
                 <li><Link to="button-group">Button Group</Link></li>
                 <li><Link to="dropdown">Dropdown</Link></li>
                 <li><Link to="icon">Icon</Link></li>

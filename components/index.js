@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import SLDSButton from './SLDSButton';
-import SLDSButtonStateful from './SLDSButton/SLDSButtonStateful';
+import SLDSButtonStateful from './SLDSButtonStateful';
 import SLDSButtonGroup from './SLDSButtonGroup';
 import SLDSDropdown from './SLDSDropdownBase';
 import SLDSIcons from './SLDSIcons';

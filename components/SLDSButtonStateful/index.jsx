@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from "react";
-import {ButtonIcon} from '../../SLDSIcons';
+import {ButtonIcon} from '../SLDSIcons';
 const classNames = require("classnames");
 import omit from "lodash.omit";
 
@@ -52,6 +52,11 @@ const propTypes = {
 };
 const defaultProps = {};
 
+/**
+ * The Button Stateful component is used for buttons that have a state of unselected or selected. The initial state is unselected.<br />
+ * The three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.<br />
+ * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">SLDS Buttons > Stateful</a>.
+ */
 class SLDSButtonStateful extends React.Component {
 
   constructor(props) {

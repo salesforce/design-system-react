@@ -75,9 +75,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	var _SLDSButton2 = _interopRequireDefault(_SLDSButton);
 	
-	var _SLDSButtonSLDSButtonStateful = __webpack_require__(31);
+	var _SLDSButtonStateful = __webpack_require__(31);
 	
-	var _SLDSButtonSLDSButtonStateful2 = _interopRequireDefault(_SLDSButtonSLDSButtonStateful);
+	var _SLDSButtonStateful2 = _interopRequireDefault(_SLDSButtonStateful);
 	
 	var _SLDSButtonGroup = __webpack_require__(32);
 	
@@ -125,7 +125,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	module.exports = {
 	  SLDSButton: _SLDSButton2['default'],
-	  SLDSButtonStateful: _SLDSButtonSLDSButtonStateful2['default'],
+	  SLDSButtonStateful: _SLDSButtonStateful2['default'],
 	  SLDSButtonGroup: _SLDSButtonGroup2['default'],
 	  SLDSDropdown: _SLDSDropdownBase2['default'],
 	  SLDSIcons: _SLDSIcons2['default'],
@@ -3320,6 +3320,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	  variant: _react2["default"].PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
 	var defaultProps = {};
+	
+	/**
+	 * The Button Stateful component is used for buttons that have a state of unselected or selected. The initial state is unselected.<br />
+	 * The three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.<br />
+	 * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">SLDS Buttons > Stateful</a>.
+	 */
 	
 	var SLDSButtonStateful = (function (_React$Component) {
 	  _inherits(SLDSButtonStateful, _React$Component);
@@ -26479,7 +26485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: "renderSelectedItem",
 	    value: function renderSelectedItem() {
 	      var selectedItem = this.props.options[this.state.selectedIndex].label;
-	      return _react2["default"].createElement("a", { href: "javascript:void(0)", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.salesforceObj, className: "slds-icon slds-icon-standard-account slds-pill__icon " + this.props.iconClasses }), _react2["default"].createElement("span", { className: "slds-pill__label" }, selectedItem)), _react2["default"].createElement(_SLDSButton2["default"], {
+	      return _react2["default"].createElement("a", { href: "javascript:void(0)", className: "slds-pill", ref: "pill-" + this.state.selectedIndex, onKeyDown: this.handlePillKeyDown.bind(this) }, _react2["default"].createElement("span", { className: "slds-pill__label" }, _react2["default"].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, name: this.props.iconName ? this.props.iconName : this.props.salesforceObj, className: "slds-icon slds-pill__icon " + this.props.iconClasses }), _react2["default"].createElement("span", { className: "slds-pill__label" }, selectedItem)), _react2["default"].createElement(_SLDSButton2["default"], {
 	        assistiveText: "Press delete to remove",
 	        className: "slds-pill__remove slds-button--icon-bare",
 	        iconName: "close",
@@ -26765,7 +26771,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  }, {
 	    key: 'renderContent',
 	    value: function renderContent() {
-	      if (this.props.errors.length > 0) return this.renderErrors();else if (this.filteredItems().length === 0) return _react2['default'].createElement('li', { className: 'slds-lookup__message', 'aria-live': 'polite' }, _react2['default'].createElement('span', null, this.props.emptyMessage));
+	      if (this.props.errors.length > 0) return this.renderErrors();else if (this.filteredItems().length === 0) return _react2['default'].createElement('li', { className: 'slds-lookup__message', 'aria-live': 'polite' }, _react2['default'].createElement('span', { className: 'slds-m-left--x-large slds-p-vertical--medium' }, this.props.emptyMessage));
 	
 	      var elements = this.renderItems();
 	      if (this.props.messages.length > 0) {
@@ -26939,7 +26945,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var ListItemLabel = this.props.listItemLabelRenderer;
 	        return _react2['default'].createElement(ListItemLabel, this.props);
 	      }
-	      return [_react2['default'].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, className: this.props.iconClasses, key: this.props.iconName, name: this.props.iconName }), this.boldSearchText(this.props.children.label)];
+	      return [_react2['default'].createElement(_SLDSIcons.Icon, { category: this.props.iconCategory, className: this.props.iconClasses, key: this.props.iconName, name: this.props.iconName, size: 'small' }), this.boldSearchText(this.props.children.label)];
 	    }
 	  }, {
 	    key: 'render',
