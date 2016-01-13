@@ -93,7 +93,7 @@ class CodeMirror extends React.Component {
     // example element and render it normally. This is safe because it's code
     // that we supply, so we can ensure ahead of time that it won't throw an
     // exception while rendering.
-    const originalRender = React.render;
+    const originalRender = ReactDOM.render;
     React.render = (element) => this._initialExample = element;
 
     // Stub out mountNode for the example code.
@@ -124,7 +124,7 @@ class CodeMirror extends React.Component {
 
     const mountNode = ReactDOM.findDOMNode(this.refs.mount);
     try {
-      React.unmountComponentAtNode(mountNode);
+      ReactDOM.unmountComponentAtNode(mountNode);
     } catch (e) {
       console.error(e); // eslint-disable-line no-console
     }
@@ -151,7 +151,7 @@ class CodeMirror extends React.Component {
 
       this.updateTimeout(
         () => {
-          React.render(
+          ReactDOM.render(
             <div bsStyle="danger">
             {err.toString()}
             </div>,
