@@ -13,8 +13,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 const classNames = require("classnames");
-import SLDSButton from "../SLDSButton";
-import {Icon} from "../SLDSIcons";
+import SLDSButton from "components/SLDSButton";
+import SLDSIcon from "components/SLDSIcon";
 
 const displayName = "SLDSNotification";
 const propTypes = {
@@ -97,7 +97,7 @@ class SLDSNotification extends React.Component {
       else if(this.props.variant === "toast") {
         classes = "slds-m-right--small slds-col slds-no-flex";
       }
-      return <Icon category="utility" name={this.props.iconName} size="small" className={classes} />;
+      return <SLDSIcon category="utility" name={this.props.iconName} size="small" className={classes} />;
     }
   }
 
@@ -157,6 +157,7 @@ class SLDSNotification extends React.Component {
   renderContent() {
     return (
       <div>
+        <span className="slds-assistive-text">{this.props.theme}</span>
         {this.renderClose()}
         {this.props.variant === "toast" ? this.renderToastContent() : null}
         {this.props.variant === "alert" ? this.renderAlertContent() : null}

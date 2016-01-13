@@ -5,15 +5,15 @@ SLDS React component library based off [Salesforce Lightning Design System](http
 
 ## Components
 
-* Buttons
-* Button Groups
-* Dropdowns
-* Icons
-* Lookups
-* Modals
-* Notifications
-* Picklists
-* Tooltip
+* SLDSButton
+* SLDSButtonGroup
+* SLDSDropdown
+* SLDSIcon
+* SLDSLookup
+* SLDSModal
+* SLDSNotification
+* SLDSPicklist
+* SLDSTooltip
 
 
 ## Run local server
@@ -39,9 +39,12 @@ npm run pages
 
 ## Using the React components
 
-Note: design-system-react is currently optimized for React 0.14.x.
+Note: design-system-react is optimized for React 0.14.x.
 
-To use it in your code base, follow these steps.
+To use it in your code base, you have a couple of options.
+
+
+### Option 1: NPM
 
 First, install the npm module:
 
@@ -51,20 +54,20 @@ npm install --save design-system-react
 
 Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSTooltip.
 
-For example to import the Tooltip and Icons components:
+For example to import the Tooltip and Icon components:
 
 ```
-import {SLDSTooltip, SLDSIcons} from 'design-system-react';
+import {SLDSTooltip, SLDSIcon} from 'design-system-react';
 ```
 
-You can then use the components in your JSX markup, e.g. SLDSTooltip, or SLDSIcons.Icon.
+You can then use the components in your JSX markup, e.g. SLDSTooltip, or SLDSIcon.
 
-Here is an example media object using SLDSIcons.Icon:
+Here is an example media object using SLDSIcon:
 
 ```
   <div className="slds-media slds-media-center">
     <div className="slds-media__figure">
-      <SLDSIcons.Icon assistiveText=""
+      <SLDSIcon assistiveText=""
           category="utility"
           className="slds-icon-text-default"
           name="like"

@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import SLDSPopover from '../SLDSPopover';
+import SLDSPopover from 'components/SLDSPopover';
 
 
 const classNames = require("classnames");

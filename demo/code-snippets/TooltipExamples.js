@@ -16,7 +16,7 @@ class TooltipExample extends React.Component {
             content={<span>Tooltip on top</span>}
             targetElement={this.refs.tooltipOnHover}>
               <a href="javascript:void(0)">
-                <Icon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />
+                <SLDSIcon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />
               </a>
             </SLDSTooltip>
         </div>

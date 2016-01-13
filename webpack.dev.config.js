@@ -24,7 +24,10 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx'],
     alias: {
-      'ui': '/src/ui'
+      "components": __dirname + '/components',
+      "demo": __dirname + '/demo',
+      "docs": __dirname + '/docs',
+      'ui': '/src/ui',
     }
   },
   module: {

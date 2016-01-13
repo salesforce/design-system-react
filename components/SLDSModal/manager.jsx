@@ -12,9 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import SLDSButton from '../SLDSButton';
-import {Icon} from '../SLDSIcons';
-import {EventUtil} from '../utils';
+import SLDSButton from 'components/SLDSButton';
+import SLDSIcon from 'components/SLDSIcon';
+import {EventUtil} from 'components/utils';
 
 
 import Modal from 'react-modal';
@@ -88,13 +88,13 @@ module.exports = React.createClass( {
   },
 
   getModal() {
-    return <div className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')} 
+    return <div className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')}
           onClick={this.closeModal}>
           <div className='slds-modal__container' onClick={(e)=>{EventUtil.trap(e);}}>
             <div className='slds-modal__header'>
               <h2 className='slds-text-heading--medium'>{this.props.title}</h2>
               <SLDSButton className='slds-button slds-modal__close' onClick={this.closeModal}>
-                <Icon name='close' category='utility' size='small'/>
+                <SLDSIcon name='close' category='utility' size='small'/>
                 <span className='slds-assistive-text'>Close</span>
               </SLDSButton>
             </div>

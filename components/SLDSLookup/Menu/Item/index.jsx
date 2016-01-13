@@ -9,13 +9,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Icon} from "../../../SLDSIcons";
-import {EventUtil} from '../../../utils';
+import SLDSIcon from "components/SLDSIcon";
+import {EventUtil} from 'components/utils';
 import escapeRegExp from 'lodash.escaperegexp';
 
 const displayName = 'SLDSLookup-Menu-Item';
 const propTypes = {
-  boldRegex: React.PropTypes.instanceOf(RegExp),
   data: React.PropTypes.object,
   handleItemFocus: React.PropTypes.func,
   href: React.PropTypes.string,
@@ -45,12 +44,9 @@ class Item extends React.Component {
   }
 
   boldSearchText(children) {
-    let regex = this.props.boldRegex
-    if (!regex) {
-      const term = this.props.searchTerm;
-      if(!children || !term) return children;
-      regex = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
-    }
+    const term = this.props.searchTerm;
+    if(!children || !term) return children;
+    const regex = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
     return React.Children.map(children, c => {
       return (typeof c === 'string') ? <span key={c} dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
     });
@@ -76,7 +72,7 @@ class Item extends React.Component {
       return <ListItemLabel {... this.props} />;
     }
     return [
-      <Icon category={this.props.iconCategory} className={this.props.iconClasses} key={this.props.iconName} name={this.props.iconName} size="small" />,
+      <SLDSIcon category={this.props.iconCategory} className={this.props.iconClasses} key={this.props.iconName} name={this.props.iconName} size="small" />,
       this.boldSearchText(this.props.children.label)
     ]
   }

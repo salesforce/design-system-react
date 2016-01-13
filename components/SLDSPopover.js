@@ -13,7 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import TetherDrop from 'tether-drop';
-import {EventUtil,KEYS} from './utils';
+import {EventUtil,KEYS} from 'components/utils';
 //import { TransitionSpring, Spring } from 'react-motion';
 
 module.exports = React.createClass( {
@@ -46,7 +46,9 @@ module.exports = React.createClass( {
       marginBottom:'0.35rem',
       marginLeft:0,
       marginRight:0,
-      flippable:true
+      flippable:true,
+      constrainToScrollParent:false,
+      inheritTargetWidth: false
     };
   },
 
@@ -102,6 +104,7 @@ module.exports = React.createClass( {
           'marginBottom':this.props.marginBottom,
           'marginLeft':this.props.marginLeft,
           'marginRight':this.props.marginRight,
+          'width': (this.props.inheritTargetWidth ? this.target().getBoundingClientRect().width : 'inherit'),
           'float':'inherit',
           'position':'inherit'
         }}
@@ -131,17 +134,21 @@ module.exports = React.createClass( {
     return positions.join(' ');
   },
 
+  target () {
+    return this.props.targetElement?ReactDOM.findDOMNode(this.props.targetElement):ReactDOM.findDOMNode(this).parentNode;
+  },
+
   dropOptions () {
-    const target = this.props.targetElement?ReactDOM.findDOMNode(this.props.targetElement):ReactDOM.findDOMNode(this).parentNode;
     const position = this.getPosition();
+
     return {
-      target: target,
+      target: this.target(),
       content: this.popoverElement,
       position: position,
       openOn: 'always',
       beforeClose:this.beforeClose,
       constrainToWindow:this.props.flippable,
-      constrainToScrollParent:false,
+      constrainToScrollParent:this.props.constrainToScrollParent,
       remove:true
     };
   },

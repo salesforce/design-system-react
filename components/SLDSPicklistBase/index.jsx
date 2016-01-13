@@ -11,9 +11,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import isEqual from "lodash.isequal";
 
-import SLDSPopover from "../SLDSPopover";
-import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
-import {Icon} from "../SLDSIcons";
+import SLDSPopover from "components/SLDSPopover";
+import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "components/utils";
+import SLDSIcon from "components/SLDSIcon";
 
 const displayName = "SLDSPicklist";
 const propTypes = {
@@ -270,7 +270,7 @@ class SLDSPicklist extends React.Component {
           ref="triggerbutton"
           tabIndex={this.state.isOpen?-1:0}>
             <span className="slds-truncate">{this.getPlaceholder()}</span>
-            <Icon name="down" category="utility" />
+            <SLDSIcon name="down" category="utility" />
         </button>
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
       </div>

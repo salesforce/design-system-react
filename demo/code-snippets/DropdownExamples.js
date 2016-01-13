@@ -43,6 +43,7 @@ class DropdownExample extends React.Component {
           align="right"
           label="Dropdown Hover"
           buttonClassName="green"
+          modal={true}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           onSelect={this.handleOnSelect}
@@ -51,6 +52,7 @@ class DropdownExample extends React.Component {
 
         <SLDSDropdown
           label="Dropdown Click"
+          modal={true}
           onClick={this.handleOnClick}
           onSelect={this.handleOnSelect}
           openOn="click"

@@ -11,25 +11,29 @@ SLDSSettings.setAppElement('#root');
 //console.log('SLDSSettings.getAssetsPath: '+SLDSSettings.getAssetsPath());
 
 import App from './App';
-import HomePage from './pages/HomePage';
+import HomePage from './pages';
+import GettingStarted from './pages/GettingStarted';
+import FAQ from './pages/FAQ';
 
-import ButtonSection from './pages/HomePage/ButtonSection';
-import ButtonStatefulSection from './pages/HomePage/ButtonStatefulSection';
-import ButtonGroupSection from './pages/HomePage/ButtonGroupSection';
-import DropdownBaseSection from './pages/HomePage/DropdownSection';
-import IconSection from './pages/HomePage/IconSection';
-import LookupSection from './pages/HomePage/LookupSection';
-import ModalSection from './pages/HomePage/ModalSection';
+import ButtonSection from './pages/ButtonSection';
+import ButtonStatefulSection from './pages/ButtonStatefulSection';
+import ButtonGroupSection from './pages/ButtonGroupSection';
+import DropdownBaseSection from './pages/DropdownSection';
+import IconSection from './pages/IconSection';
+import LookupSection from './pages/LookupSection';
+import ModalSection from './pages/ModalSection';
 
-import DatePickerSingleSelectSection from './pages/HomePage/DatePickerSingleSelectSection';
-import NotificationSection from './pages/HomePage/NotificationSection';
-import PicklistSection from './pages/HomePage/PicklistSection';
-import TooltipSection from './pages/HomePage/TooltipSection';
+import DatePickerSingleSelectSection from './pages/DatePickerSingleSelectSection';
+import NotificationSection from './pages/NotificationSection';
+import PicklistSection from './pages/PicklistSection';
+import TooltipSection from './pages/TooltipSection';
 
 const routes = (
   <Route handler={App} path="/">
     <DefaultRoute handler={HomePage} />
     <Route name="home" handler={HomePage}>
+      <Route name="getting-started" path="getting-started" handler={GettingStarted}/>
+
       <Route name="button" path="button" handler={ButtonSection}/>
       <Route name="button-stateful" path="button-stateful" handler={ButtonStatefulSection}/>
       <Route name="button-group" path="button-group" handler={ButtonGroupSection}/>
@@ -41,6 +45,8 @@ const routes = (
       <Route name="picklist" path="picklist" handler={PicklistSection}/>
       <Route name="tooltip" path="tooltip" handler={TooltipSection}/>
       <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
+
+      <Route name="faq" path="faq" handler={FAQ}/>
     </Route>
   </Route>
 );

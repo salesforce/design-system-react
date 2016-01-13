@@ -16,7 +16,6 @@ const displayName = 'SLDSLookup-Menu';
 const propTypes = {
   boldRegex: React.PropTypes.instanceOf(RegExp),
   emptyMessage: React.PropTypes.string,
-  errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func,
   focusIndex: React.PropTypes.number,
   getListLength: React.PropTypes.func,
@@ -29,9 +28,7 @@ const propTypes = {
   salesforceObj: React.PropTypes.string,
 };
 const defaultProps = {
-  emptyMessage: "No matches found.",
-  errors: [],
-  messages: [],
+  emptyMessage: "No matches found."
 };
 class Menu extends React.Component {
   constructor(props){
@@ -41,7 +38,7 @@ class Menu extends React.Component {
 
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
   componentDidUpdate(prevProps, prevState){
-    // make an array of the children of the list but only count the actual items (ignore errors/messages)
+    // make an array of the children of the list but only count the actual items
     let list = [].slice.call(ReactDOM.findDOMNode(this.refs.list).children)
       .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
     this.props.getListLength(list);
@@ -81,16 +78,6 @@ class Menu extends React.Component {
     }
   }
 
-  renderErrors(){
-    return this.props.errors.map((error) => {
-      return (
-        <li className="slds-lookup__error" aria-live="polite">
-          <span>{error}</span>
-        </li>
-      );
-    });
-  }
-
   renderItems(){
     return this.filteredItems().map((c, i) => {
       //isActive means it is aria-activedescendant
@@ -122,31 +109,15 @@ class Menu extends React.Component {
     });
   }
 
-  renderMessages(){
-    return this.props.messages.map((message) => {
-      return (
-        <li className="slds-lookup__message" aria-live="polite">
-          <span>{message}</span>
-        </li>
-      );
-    });
-  }
-
   renderContent(){
-    if (this.props.errors.length > 0)
-      return this.renderErrors()
-    else if (this.filteredItems().length === 0)
+    if (this.filteredItems().length === 0)
       return (
         <li className="slds-lookup__message" aria-live="polite">
           <span className="slds-m-left--x-large slds-p-vertical--medium">{this.props.emptyMessage}</span>
         </li>
       );
 
-    let elements = this.renderItems();
-    if (this.props.messages.length > 0) {
-      elements.concat(this.renderMessages());
-    }
-    return elements;
+    return this.renderItems();
   }
 
   render(){

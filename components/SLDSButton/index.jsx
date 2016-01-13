@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 const classNames = require("classnames");
-import {ButtonIcon} from "../SLDSIcons";
+import ButtonIcon from "components/SLDSIcon/ButtonIcon";
 import omit from "lodash.omit";
 
 const displayName = 'SLDSButton';

@@ -8,8 +8,8 @@
    */
 
 import React from 'react';
-import {Icon} from "../../../SLDSIcons";
-import { EventUtil } from '../../../utils';
+import SLDSIcon from "components/SLDSIcon";
+import { EventUtil } from 'components/utils';
 
 const displayName = "LookupDefaultHeader";
 const propTypes = {};
@@ -42,7 +42,7 @@ class DefaultHeader extends React.Component {
     return (
       <div className="slds-lookup__item" onMouseDown={this.handleMouseDown} onClick={this.handleClick.bind(this)}>
         <button id='searchRecords' tabIndex="-1" className={className}>
-          <Icon name='search' category="utility" size="x-small" className="slds-icon-text-default" />
+          <SLDSIcon name='search' category="utility" size="x-small" className="slds-icon-text-default" />
           {this.props.searchTerm}
         </button>
       </div>

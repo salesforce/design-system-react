@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {EventUtil} from '../utils';
+import {EventUtil} from 'components/utils';
 import SLDSModal from './index';
 
 const SLDSModalTrigger = {
@@ -20,7 +20,7 @@ const SLDSModalTrigger = {
     const el = document.createElement('span');
     el.setAttribute('data-slds-modal', true);
     document.body.appendChild(el);
-    const comp = <SLDSModal 
+    const comp = <SLDSModal
               title={cfg.title}
               footer={cfg.footer}
               isOpen={true}>
