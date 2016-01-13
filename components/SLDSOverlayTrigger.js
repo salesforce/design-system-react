@@ -17,8 +17,8 @@ const classNames = require('classnames');
 import omit from 'lodash.omit';
 import extend from 'lodash.assign';
 
-import createChainedFunction from './utils/create-chained-function';
-import SLDSPopover from './SLDSPopover';
+import createChainedFunction from 'components/utils/create-chained-function';
+import SLDSPopover from 'components/SLDSPopover';
 
 const eventDict = {click: ['onClick'], hover: ['onMouseEnter', 'onMouseLeave', 'onFocus', 'onBlur'], focus: ['onFocus', 'onBlur'] };
 
