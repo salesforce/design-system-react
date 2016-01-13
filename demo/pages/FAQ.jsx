@@ -9,6 +9,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
+import Router from 'react-router';
+const { Route, DefaultRoute, RouteHandler, Link } = Router;
 
 const displayName = "FAQSection";
 const propTypes = {};
@@ -23,10 +25,91 @@ class FAQSection extends React.Component {
 
   render(){
     return (
-      <div className='slds-p-around--medium'>
+      <div className='slds-p-around--medium' style={{"maxWidth": "800px"}}>
         <h3 className='slds-text-heading--medium slds-truncate'>
           FAQ
         </h3>
+
+        <section className="slds-p-vertical--medium">
+          <p className="slds-text-heading--medium slds-p-vertical--medium">
+            What is the <a href="http://www.lightningdesignsystem.com/">Lightening Design System</a>?
+          </p>
+          <p>
+            It is collection of design patterns, components, and guidelines for creating unified UI in the Salesforce ecosystem.
+          </p>
+        </section>
+
+        <section className="slds-p-vertical--medium">
+          <p className="slds-text-heading--medium slds-p-vertical--medium">
+            How is the SLDS React Library different than the Lightening Design System?
+          </p>
+          <p>
+            The Lightening Design System consists of static markup components. The SLDS React Library is the ReactJS component implementation.
+          </p>
+        </section>
+
+        <section className="slds-p-vertical--medium">
+          <p className="slds-text-heading--medium slds-p-vertical--medium">
+            How do I start using the SLDS React Library components in my project?
+          </p>
+          <p>
+            Visit the <Link to="getting-started">Getting Started</Link> page for set up instructions.
+          </p>
+        </section>
+
+        <section className="slds-p-vertical--medium">
+          <p className="slds-text-heading--medium slds-p-vertical--medium">
+            Are the SLDS React components accessible?
+          </p>
+          <p>
+            We strive to make all components accessible for keyboard users and screen readers. If you find any accessibility bugs, please submit a <a href="https://github.com/salesforce-ux/design-system-react/issues">Github Issue</a>.
+          </p>
+        </section>
+
+        <section className="slds-p-vertical--medium">
+          <p className="slds-text-heading--medium slds-p-vertical--medium">
+            Will there be Lightening Design System libraries for other Javascript frameworks?
+          </p>
+          <p>
+            [TODO: Get answer from Sonke]
+          </p>
+        </section>
+
+        <section className="slds-p-vertical--medium">
+          <p className="slds-text-heading--medium slds-p-vertical--medium">Which browsers are supported?</p>
+          <table className='slds-table slds-max-medium-table--stacked slds-no-row-hover' style={{"maxWidth": "800px"}}>
+            <thead>
+              <tr className="site-text-heading--label">
+                <th scope="col">Browser</th>
+                <th scope="col">Version</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Browser">Google Chrome</td>
+                <td data-label="Version">Latest</td>
+              </tr>
+              <tr>
+                <td data-label="Browser">Mozilla Firefox</td>
+                <td data-label="Version">Latest</td>
+              </tr>
+              <tr>
+                <td data-label="Browser">Safari</td>
+                <td data-label="Version">Latest</td>
+              </tr>
+              <tr>
+                <td data-label="Browser">Internet Explorer</td>
+                <td data-label="Version">11</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section className="slds-p-vertical--medium">
+          <p className="slds-text-heading--small slds-p-vertical--medium">
+            Visit the <a href="http://www.lightningdesignsystem.com/faq">Lightening Design System - FAQ</a> for more FAQs.
+          </p>
+        </section>
       </div>
     );
   }
