@@ -1,8 +1,8 @@
 React = require('react')
 SLDS = require('../../../components')
 SLDSPicklistBase = SLDS.SLDSPicklistBase
-SLDSIcons = SLDS.SLDSIcons
-Icon = SLDSIcons.Icon
+SLDSIcon = SLDS.SLDSIcon
+
 module.exports = React.createClass(
   getDefaultProps: ->
     {
@@ -23,7 +23,7 @@ module.exports = React.createClass(
     <section
       onMouseOver={@handleMouseOver}
     >
-      <Icon name='like' position='left' category='utility' size="x-small" className="slds-icon--selected slds-icon-text-default slds-m-right--x-small" />
+      <SLDSIcon name='like' position='left' category='utility' size="x-small" className="slds-icon--selected slds-icon-text-default slds-m-right--x-small" />
       {
         @props.data.strongLabel
       }

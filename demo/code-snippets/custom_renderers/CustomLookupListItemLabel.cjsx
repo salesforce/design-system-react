@@ -1,9 +1,8 @@
 React = require('react')
 SLDS = require('../../../components')
 SLDSPicklistBase = SLDS.SLDSPicklistBase
-SLDSIcons = SLDS.SLDSIcons
-Icon = SLDSIcons.Icon
-InputIcon = SLDSIcons.InputIcon
+SLDSIcon = SLDS.SLDSIcon
+
 escapeRegExp = require('lodash.escaperegexp')
 
 module.exports = React.createClass(
@@ -31,7 +30,7 @@ module.exports = React.createClass(
 
   render: ->
     <section>
-      <Icon name='open_folder' category="utility" size="small" className="slds-icon-text-default" />
+      <SLDSIcon name='open_folder' category="utility" size="small" className="slds-icon-text-default" />
 
       { this.boldSearchText(this.props.children.label) }
     </section>

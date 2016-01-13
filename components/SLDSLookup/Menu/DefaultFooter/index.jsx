@@ -8,7 +8,7 @@
    */
 
 import React from 'react';
-import {Icon} from "../../../SLDSIcons";
+import SLDSIcon from "../../../SLDSIcon";
 import { EventUtil } from '../../../utils';
 
 const displayName = "LookupDefaultFooter";
@@ -38,7 +38,7 @@ class DefaultFooter extends React.Component {
     return (
       <div className="slds-lookup__item" onClick={this.handleClick.bind(this)} onMouseDown={this.handleMouseDown.bind(this)}>
         <button id='newItem' tabIndex="-1" className={className}>
-        <Icon name='add' category="utility" size="x-small" className="slds-icon-text-default" />
+        <SLDSIcon name='add' category="utility" size="x-small" className="slds-icon-text-default" />
         {this.props.salesforceObj ? "Add " + this.props.salesforceObj : this.props.newItemLabel}
         </button>
       </div>

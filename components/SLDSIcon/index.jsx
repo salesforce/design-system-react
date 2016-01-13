@@ -10,10 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import SLDSUtilityIcon from '../../SLDSUtilityIcon';
+import SLDSUtilityIcon from '../SLDSUtilityIcon';
 const classNames = require("classnames");
 
-const displayName = "Icon";
+const displayName = "SLDSIcon";
 const propTypes = {
   /**
    * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
@@ -44,7 +44,7 @@ const defaultProps = {
  * The icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">SLDS Icons</a>.
  */
-class Icon extends React.Component {
+class SLDSIcon extends React.Component {
 
   constructor(props) {
     super(props);
@@ -92,9 +92,8 @@ class Icon extends React.Component {
   }
 }
 
-Icon.displayName = displayName;
-Icon.propTypes = propTypes;
-Icon.defaultProps = defaultProps;
+SLDSIcon.displayName = displayName;
+SLDSIcon.propTypes = propTypes;
+SLDSIcon.defaultProps = defaultProps;
 
-module.exports = Icon;
-
+module.exports = SLDSIcon;

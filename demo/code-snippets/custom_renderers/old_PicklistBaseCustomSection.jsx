@@ -10,11 +10,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import {SLDSPicklistBase, SLDSIcons} from '../../../components';
+import {SLDSPicklistBase, SLDSIcon} from '../../../components';
 
 import CustomListItemLabel from './CustomListItemLabel.cjsx';
 
-const Icon = SLDSIcons.Icon;
 /*
 const CustomListItemLabel = React.createClass( {
   getDefaultProps () {
@@ -37,7 +36,7 @@ const CustomListItemLabel = React.createClass( {
       onMouseOver={this.handleMouseOver}
     >
       {
-        this.props.isSelected?<Icon name='like'  position='left' category='utility' />:null
+        this.props.isSelected?<SLDSIcon name='like'  position='left' category='utility' />:null
       }
       {
         this.props.data.strongLabel

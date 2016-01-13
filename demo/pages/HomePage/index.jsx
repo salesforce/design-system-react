@@ -14,7 +14,7 @@ import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;
 
 import SLDSGrid from '../../../components/SLDSGrid';
-import {Icon} from "./../../../components/SLDSIcons";
+import SLDSIcon from "./../../../components/SLDSIcon";
 
 const SLDSColumn = SLDSGrid.Column;
 
@@ -38,7 +38,7 @@ module.exports = React.createClass( {
               <SLDSColumn className='slds-has-flexi-truncate'>
                 <div className='slds-media'>
                   <div className='slds-media__figure'>
-                    <Icon assistiveText="lead" name='lead' category='standard' size='large' position='left' />
+                    <SLDSIcon assistiveText="lead" name='lead' category='standard' size='large' />
                   </div>
                   <div className='slds-media__body'>
                     <p className='slds-text-heading--label'>Lightning Design System</p>

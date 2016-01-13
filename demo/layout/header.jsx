@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 
-import {ButtonIcon, Icon} from "./../../components/SLDSIcons";
+import SLDSIcon from "./../../components/SLDSIcon";
 
 module.exports = React.createClass( {
 
@@ -32,7 +32,7 @@ module.exports = React.createClass( {
           onClick={this.handleClick}>
           <span className="slds-icon__container slds-align-middle">
 
-            <Icon name="rows" category="utility" size="small" />
+            <SLDSIcon name="rows" category="utility" size="small" />
             <span className="slds-assistive-text">Toggle Menu</span>
 
           </span>

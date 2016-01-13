@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Icon} from "../../../SLDSIcons";
+import SLDSIcon from "../../../SLDSIcon";
 import {EventUtil} from '../../../utils';
 import escapeRegExp from 'lodash.escaperegexp';
 
@@ -72,7 +72,7 @@ class Item extends React.Component {
       return <ListItemLabel {... this.props} />;
     }
     return [
-      <Icon category={this.props.iconCategory} className={this.props.iconClasses} key={this.props.iconName} name={this.props.iconName} size="small" />,
+      <SLDSIcon category={this.props.iconCategory} className={this.props.iconClasses} key={this.props.iconName} name={this.props.iconName} size="small" />,
       this.boldSearchText(this.props.children.label)
     ]
   }

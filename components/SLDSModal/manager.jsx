@@ -13,7 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import SLDSButton from '../SLDSButton';
-import {Icon} from '../SLDSIcons';
+import SLDSIcon from '../SLDSIcon';
 import {EventUtil} from '../utils';
 
 
@@ -94,7 +94,7 @@ module.exports = React.createClass( {
             <div className='slds-modal__header'>
               <h2 className='slds-text-heading--medium'>{this.props.title}</h2>
               <SLDSButton className='slds-button slds-modal__close' onClick={this.closeModal}>
-                <Icon name='close' category='utility' size='small'/>
+                <SLDSIcon name='close' category='utility' size='small'/>
                 <span className='slds-assistive-text'>Close</span>
               </SLDSButton>
             </div>
