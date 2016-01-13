@@ -7,6 +7,7 @@ import ModalCore, {CONTROL} from '../../core/modal';
 // Framework specific
 import React from 'react';
 import Events from '../mixins/events';
+import ReactDOM from 'react-dom';
 
 // Third party
 import classNames from 'classnames';
@@ -29,7 +30,8 @@ export const ModalObject = {
 		onCancel: React.PropTypes.func,
 		onAction: React.PropTypes.func,
 		headerTitle: React.PropTypes.any,
-		headerTagline: React.PropTypes.any
+		headerTagline: React.PropTypes.any,
+		triggerNode: React.PropTypes.object
 	},
 
 	render () {
@@ -67,10 +69,16 @@ export const ModalObject = {
 	},
 
 	_onCloseClick () {
+		if (this.props.triggerNode) {
+			ReactDOM.findDOMNode(this.props.triggerNode).focus();
+		}
 		this.props.onClose();
 	},
 
 	_onSecondaryClick () {
+		if (this.props.triggerNode) {
+			ReactDOM.findDOMNode(this.props.triggerNode).focus();
+		}
 		this.props.onCancel();
 	},
 
@@ -81,6 +89,9 @@ export const ModalObject = {
 	},
 
 	_onPrimaryClick () {
+		if (this.props.triggerNode) {
+			ReactDOM.findDOMNode(this.props.triggerNode).focus();
+		}
 		this.props.onPrimary();
 	}
 };

@@ -292,6 +292,8 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this._renderDateRange();
 
 		this.trigger('changed', dates.startDate, dates.endDate);
+
+		Lib.returnFocusToPopupTrigger(this);
 	}
 });
 

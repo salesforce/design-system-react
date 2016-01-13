@@ -98,6 +98,7 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	_onClosed () {
 		this.elements.modal.removeClass(this.cssClasses.OPEN);
 		this.elements.backdrop.removeClass(this.cssClasses.OPENBACKDROP);
+		this.element.trigger('close');
 	},
 
 	_clickOutClose (e) {

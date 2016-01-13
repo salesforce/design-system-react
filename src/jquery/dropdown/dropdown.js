@@ -52,6 +52,10 @@ export const DropdownObject = {
 			icon,
 			iconStyle: 'icon-more'
 		});
+
+		this.elements.button = this.button.element;
+
+		this.elements.button.attr('aria-haspopup', true);
 		
 		this.button.prependTo(this.element);
 

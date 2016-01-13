@@ -167,6 +167,8 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 		if (Lib.isFunction(this.props.onChange)) {
 			this.props.onChange(dates.startDate, dates.endDate);
 		}
+
+		Lib.returnFocusToPopupTrigger(this);
 	}
 });
 
