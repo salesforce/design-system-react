@@ -49,10 +49,10 @@ const getTooltip = (props, content, target, onClose) => {
             closeOnTabKey={true}
             flippable={false}
             horizontalAlign={getHorizontalAlign(props.align)}
-            marginBottom='1rem'
-            marginLeft='1.5rem'
-            marginRight='1.5rem'
-            marginTop='1rem'
+            marginBottom='1.2rem'
+            marginLeft='.75rem'
+            marginRight='.75rem'
+            marginTop='1.2rem'
             onClose={onClose}
             targetElement={target}
             verticalAlign={getVerticalAlign(props.align)}>
