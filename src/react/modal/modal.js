@@ -23,16 +23,20 @@ export const ModalObject = {
 	displayName: CONTROL,
 
 	propTypes: {
-		isOpen: React.PropTypes.bool,
-		headerText: React.PropTypes.string,
-		headerTextSize: React.PropTypes.string,
-		primaryButtonText: React.PropTypes.string,
-		secondaryButtonText: React.PropTypes.string,
-		onClose: React.PropTypes.func,
-		onCancel: React.PropTypes.func,
-		onAction: React.PropTypes.func,
+		headerTagline: React.PropTypes.any,
 		headerTitle: React.PropTypes.any,
-		headerTagline: React.PropTypes.any
+		isOpen: React.PropTypes.bool,
+		onCancel: React.PropTypes.func,
+		onClose: React.PropTypes.func,
+		onPrimary: React.PropTypes.func,
+		primaryButtonText: React.PropTypes.string,
+		renderFooter: React.PropTypes.func,
+		renderHeader: React.PropTypes.func,
+		secondaryButtonText: React.PropTypes.string
+	},
+	
+	getDefaultProps () {
+		return DefaultRenderers;
 	},
 
 	render () {
@@ -42,7 +46,7 @@ export const ModalObject = {
 					<div className={this.cssClasses.MODALCONTAINER} ref={this._setModalRef}>
 						<div className="slds-modal__header">
 							{this.props.renderHeader({
-								onCloseClick: this._onCloseClick,
+								onCloseClick: this.props.onClose,
 								headerTitle: this.props.headerTitle,
 								headerTagline: this.props.headerTagline
 							})}
@@ -52,8 +56,8 @@ export const ModalObject = {
 						</div>
 						<div className="slds-modal__footer">
 							{this.props.renderFooter({
-								onPrimaryClick: this._onPrimaryClick,
-								onSecondaryClick: this._onSecondaryClick,
+								onPrimaryClick: this.props.onPrimary,
+								onSecondaryClick: this.props.onCancel,
 								secondaryButtonText: this.props.secondaryButtonText,
 								primaryButtonText: this.props.primaryButtonText
 							})}
@@ -65,36 +69,19 @@ export const ModalObject = {
 		);
 	},
 
-	getDefaultProps () {
-		return DefaultRenderers;
-	},
-
-	_onCloseClick () {
-		this.props.onClose();
-	},
-
-	_onSecondaryClick () {
-		this.props.onCancel();
-	},
-
-	_onBackgroundClick (e) {
-		if (e.target && this.backgroundClicked(e.target)) {
-			this.props.onClose();
-		}
-	},
-
-	_onPrimaryClick () {
-		this.props.onPrimary();
-	},
-
 	_setBackgroundRef (background) {
 		this.elements.background = Lib.wrapElement(ReactDOM.findDOMNode(background));
 	},
 
 	_setModalRef (modal) {
 		this.elements.modal = Lib.wrapElement(ReactDOM.findDOMNode(modal));
-	}
+	},
 
+	_onBackgroundClick (e) {
+		if (e.target && this.backgroundClicked(e.target)) {
+			this.props.onClose();
+		}
+	}
 };
 
 let Modal = Lib.merge({}, ModalCore, ModalObject);
