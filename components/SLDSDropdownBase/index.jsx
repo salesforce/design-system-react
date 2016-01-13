@@ -10,9 +10,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 import ReactDOM from "react-dom";
-import SLDSPopover from "../SLDSPopover";
-import SLDSButton from "../SLDSButton";
-import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
+import SLDSPopover from "components/SLDSPopover";
+import SLDSButton from "components/SLDSButton";
+import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "components/utils";
 
 const displayName = "SLDSDropdown";
 const propTypes = {

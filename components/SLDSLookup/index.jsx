@@ -9,14 +9,14 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import defaultFilter from "../default_filter";
-import Menu from "./Menu";
-import SLDSPopover from "../SLDSPopover";
-import SLDSButton from "../SLDSButton";
-import SLDSIcon from "./../SLDSIcon";
-import InputIcon from "./../SLDSIcon/InputIcon";
-import {KEYS,EventUtil} from "../utils";
+import defaultFilter from "components/default_filter";
+import SLDSPopover from "components/SLDSPopover";
+import SLDSButton from "components/SLDSButton";
+import SLDSIcon from "components/SLDSIcon";
+import InputIcon from "components/SLDSIcon/InputIcon";
+import {KEYS,EventUtil} from "components/utils";
 
+import Menu from "./Menu";
 import DefaultFooter from "./Menu/DefaultFooter";
 import DefaultHeader from "./Menu/DefaultHeader";
 import cx from "classnames";

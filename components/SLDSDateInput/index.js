@@ -11,9 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SLDSPopover from '../SLDSPopover';
+import SLDSPopover from 'components/SLDSPopover';
 import SLDSDatePicker from './SLDSDatePicker/index';
-import InputIcon from './../SLDSIcon/InputIcon';
+import InputIcon from 'components/SLDSIcon/InputIcon';
 
 import {KEYS,EventUtil} from '../utils';
 
@@ -82,10 +82,10 @@ module.exports = React.createClass( {
   popover() {
     if(this.state && this.state.isOpen){
       return <SLDSPopover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
-        <SLDSDatePicker 
+        <SLDSDatePicker
           onChange={this.handleChange}
           selected={this.state.selected}
-          onClose={this.handleClose} 
+          onClose={this.handleClose}
           selectedDate={this.state.value} />
       </SLDSPopover>;
     }
@@ -113,9 +113,9 @@ module.exports = React.createClass( {
 
   handleKeyDown(event) {
     if (event.keyCode){
-      if (event.keyCode === KEYS.ENTER || 
-          event.keyCode === KEYS.SPACE || 
-          event.keyCode === KEYS.DOWN || 
+      if (event.keyCode === KEYS.ENTER ||
+          event.keyCode === KEYS.SPACE ||
+          event.keyCode === KEYS.DOWN ||
           event.keyCode === KEYS.UP){
         EventUtil.trapEvent(event);
 
@@ -133,12 +133,12 @@ module.exports = React.createClass( {
         <div className='slds-form-element__control'>
           <div className='slds-input-has-icon slds-input-has-icon--right'>
             <InputIcon name='event'/>
-            <input 
+            <input
               name='date'
-              ref='date' 
-              className='slds-input' 
+              ref='date'
+              className='slds-input'
               type='text'
-              placeholder={this.props.placeholder} 
+              placeholder={this.props.placeholder}
               value={this.state.value?this.state.string:''}
               onKeyDown={this.handleKeyDown}
               onChange={this.handleInputChange}
