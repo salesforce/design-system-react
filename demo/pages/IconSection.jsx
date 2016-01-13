@@ -7,18 +7,17 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 import React from 'react';
-import CodeMirror from '../CodeMirror';
-import Samples from '../Samples';
-import PropTable from '../PropTable';
-import DOCS from '../../../docs';
+import CodeMirror from 'demo/CodeMirror';
+import Samples from 'demo/Samples';
+import PropTable from 'demo/PropTable';
+import DOCS from 'docs';
 
-const displayName = "LookupSection";
+const displayName = "IconSection";
 const propTypes = {};
 const defaultProps = {};
 
-class LookupSection extends React.Component {
+class IconSection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,22 +25,22 @@ class LookupSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSLookup"].description;
+    const desc = DOCS["SLDSIcon"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSLookup"] ? true : false;
+    const docs = DOCS["SLDSIcon"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
-          SLDSLookup
+          SLDSIcon
         </h3>
         {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
 
-        <div>
-          <CodeMirror codeText={Samples.Lookups} />
-          <PropTable component="SLDSLookup" />
+        <div className="demo-only">
+          <CodeMirror codeText={Samples.Icons} />
+          <PropTable component="SLDSIcon" />
         </div>
       </div>
     );
@@ -49,9 +48,9 @@ class LookupSection extends React.Component {
 
 }
 
-LookupSection.displayName = displayName;
-LookupSection.propTypes = propTypes;
-LookupSection.defaultProps = defaultProps;
+IconSection.displayName = displayName;
+IconSection.propTypes = propTypes;
+IconSection.defaultProps = defaultProps;
 
-module.exports = LookupSection;
+module.exports = IconSection;
 

@@ -7,18 +7,17 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-
 import React from 'react';
-import CodeMirror from '../CodeMirror';
-import Samples from '../Samples';
-import PropTable from '../PropTable';
-import DOCS from '../../../docs';
+import CodeMirror from 'demo/CodeMirror';
+import Samples from 'demo/Samples';
+import PropTable from 'demo/PropTable';
+import DOCS from 'docs';
 
-const displayName = "ModalSection";
+const displayName = "NotificationSection";
 const propTypes = {};
 const defaultProps = {};
 
-class ModalSection extends React.Component {
+class NotificationSection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,22 +25,22 @@ class ModalSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSModal"].description;
+    const desc = DOCS["SLDSNotification"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSModal"] ? true : false;
+    const docs = DOCS["SLDSNotification"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
-          SLDSModal
+          SLDSNotification
         </h3>
         {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
 
         <div className="demo-only">
-          <CodeMirror codeText={Samples.Modals} />
-          <PropTable component="SLDSModal" />
+          <CodeMirror codeText={Samples.Notifications} />
+          <PropTable component="SLDSNotification" />
         </div>
       </div>
     );
@@ -49,9 +48,9 @@ class ModalSection extends React.Component {
 
 }
 
-ModalSection.displayName = displayName;
-ModalSection.propTypes = propTypes;
-ModalSection.defaultProps = defaultProps;
+NotificationSection.displayName = displayName;
+NotificationSection.propTypes = propTypes;
+NotificationSection.defaultProps = defaultProps;
 
-module.exports = ModalSection;
+module.exports = NotificationSection;
 

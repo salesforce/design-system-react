@@ -27,6 +27,15 @@ module.exports = {
     'react': 'React',
     'react/addons': 'React'
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
+    alias: {
+      "components": __dirname + '/components',
+      "demo": __dirname + '/demo',
+      "docs": __dirname + '/docs',
+      'ui': '/src/ui',
+    }
+  },
   module: {
     loaders: [
       {

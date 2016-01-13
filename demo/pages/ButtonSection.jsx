@@ -9,16 +9,16 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
-import CodeMirror from '../CodeMirror';
-import Samples from '../Samples';
-import PropTable from '../PropTable';
-import DOCS from '../../../docs';
+import CodeMirror from 'demo/CodeMirror';
+import Samples from 'demo/Samples';
+import PropTable from 'demo/PropTable';
+import DOCS from 'docs';
 
-const displayName = "ButtonStatefulSection";
+const displayName = "ButtonSection";
 const propTypes = {};
 const defaultProps = {};
 
-class ButtonStatefulSection extends React.Component {
+class ButtonSection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -26,22 +26,23 @@ class ButtonStatefulSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSButtonStateful"].description;
+    const desc = DOCS["SLDSButton"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSButtonStateful"] ? true : false;
+    const docs = DOCS["SLDSButton"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>
-          SLDSButtonStateful
+          SLDSButton
         </h3>
-        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}} /> : null}
+        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}/> : null}
 
         <div className="demo-only">
-          <CodeMirror codeText={Samples.StatefulButtons} />
-          <PropTable component="SLDSButtonStateful" />
+          <CodeMirror codeText={Samples.Buttons} />
+          <CodeMirror codeText={Samples.IconButtons} />
+          <PropTable component="SLDSButton" />
         </div>
       </div>
     );
@@ -49,9 +50,9 @@ class ButtonStatefulSection extends React.Component {
 
 }
 
-ButtonStatefulSection.displayName = displayName;
-ButtonStatefulSection.propTypes = propTypes;
-ButtonStatefulSection.defaultProps = defaultProps;
+ButtonSection.displayName = displayName;
+ButtonSection.propTypes = propTypes;
+ButtonSection.defaultProps = defaultProps;
 
-module.exports = ButtonStatefulSection;
+module.exports = ButtonSection;
 
