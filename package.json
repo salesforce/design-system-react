@@ -64,6 +64,7 @@
     "start": "grunt serve",
     "test": "grunt test",
     "postinstall": "./bin/heroku-build.sh",
+    "heroku-build": "./bin/heroku-build.sh",
     "heroku-start": "node app.js"
   },
   "facades": [
