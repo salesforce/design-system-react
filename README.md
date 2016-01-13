@@ -39,9 +39,12 @@ npm run pages
 
 ## Using the React components
 
-Note: design-system-react is currently optimized for React 0.14.x.
+Note: design-system-react is optimized for React 0.14.x.
 
-To use it in your code base, follow these steps.
+To use it in your code base, you havew a couple of options.
+
+
+### Option 1: NPM
 
 First, install the npm module:
 
