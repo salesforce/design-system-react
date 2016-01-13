@@ -11,9 +11,7 @@ var packageJson = require('./package.json');
 
 var config = {
 	entry: {
-		'styles-shared': entries.concat('./site/assets/shared/scripts/styles.js'),
 		'styles-facades': entries.concat('./site/assets/facades/scripts/styles.js'),
-		'styles-demo-site': entries.concat('./site/assets/demo-site/scripts/styles.js'),
 		'source-examples-react': entries.concat('./src/react/examples.js'),
 		'source-examples-jquery': entries.concat('./src/jquery/examples.js')
 	},

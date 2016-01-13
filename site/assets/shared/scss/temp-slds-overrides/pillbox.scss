@@ -1,5 +1,5 @@
-.slds-pillbox {
-    .slds-pill-add-item {
+.#{$css-prefix}pillbox {
+    .#{$css-prefix}pill-add-item {
         border: none;
         color: rgb(84, 105, 141);
 
@@ -14,7 +14,7 @@
         }
     }
 
-    .slds-pill, .slds-pill-input-wrap {
+    .#{$css-prefix}pill, .#{$css-prefix}pill-input-wrap {
         float: left;
     }
 }

@@ -10,9 +10,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 /* eslint-disable camelcase */
-
-console.log('[PATHS] Initializing...');
-
 var argv = require('minimist')(process.argv.slice(2));
 var isProd = argv.prod === true;
 var _ = require('lodash');

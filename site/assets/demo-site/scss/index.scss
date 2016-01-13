@@ -1,8 +1,13 @@
-.site-masthead {
+@import "../../shared/scss/index";
+@import "dependencies/_config";
+@import "dependencies/prism";
+@import "dependencies/prism-overrides";
+
+.#{$app-prefix}masthead {
     background-color: #16324C;
 }
 
-.site-title {
+.#{$app-prefix}title {
     color: #fff;
     font-size: 2rem;
     font-weight: 300;
@@ -18,14 +23,14 @@
 
 
 .section1 {
-    background: url(/assets/demo-site/images/hero-bg.jpg) no-repeat scroll 0 0 / 100% 100%;
+    background: url(#{$static-image-path}/hero-bg.jpg) no-repeat scroll 0 0 / 100% 100%;
     height: 400px;
     position: relative;
     overflow: hidden;
     margin-bottom: 10px;
 }
 
-.site-desc {
+.#{$app-prefix}desc {
     text-align: center;
 }
 
@@ -92,7 +97,7 @@
 }
 
 .floating-icons {
-    background: url(/assets/demo-site/images/rectangle.svg) no-repeat scroll 188px 228px / 76px auto, url("/assets/demo-site/images/diamond.svg") no-repeat scroll 134px 22px / 87px auto, url("/assets/demo-site/images/square.svg") no-repeat scroll -4px 207px / 180px auto, url("/assets/demo-site/images/triangle.svg") no-repeat scroll 28px 95px / 109px auto, rgba(0, 0, 0, 0) url("/assets/demo-site/images/circle.svg") no-repeat scroll 156px 120px / 93px auto;
+    background: url(#{$static-image-path}/rectangle.svg) no-repeat scroll 188px 228px / 76px auto, url(#{$static-image-path}/diamond.svg) no-repeat scroll 134px 22px / 87px auto, url(#{$static-image-path}/square.svg) no-repeat scroll -4px 207px / 180px auto, url(#{$static-image-path}/triangle.svg) no-repeat scroll 28px 95px / 109px auto, rgba(0, 0, 0, 0) url(#{$static-image-path}/circle.svg) no-repeat scroll 156px 120px / 93px auto;
     height: 100%;
     position: absolute;
     right: 18%;

@@ -1,3 +1,43 @@
 @import "dependencies/_config";
-@import "dependencies/demo-site";
-@import "dependencies/facades";
+@import "dependencies/component-examples";
+@import "temp-slds-overrides/index";
+
+#component-list {
+    margin-bottom: 30px;
+}
+
+.component-wrapper {
+    margin-top: 40px;
+
+    .header {
+        border-bottom: 2px solid #b8c3ce;
+    }
+}
+
+.component .body {
+    border: 1px solid #e0e5ee;
+
+    .example-type {
+        border-left: 1px solid #e0e5ee;
+
+        &:first-child {
+            border-left: none;
+        }
+    }
+
+    .example-wrapper {
+        padding: 5px;
+
+        .example {
+            padding: 10px;
+        }
+
+        .type {
+            margin-top: -5px;
+        }
+    }
+}
+
+.example .row {
+    padding-bottom: 5px;
+}
