@@ -46,7 +46,8 @@ module.exports = React.createClass( {
       marginBottom:'0.35rem',
       marginLeft:0,
       marginRight:0,
-      flippable:true
+      flippable:true,
+      constrainToScrollParent:false
     };
   },
 
@@ -134,6 +135,7 @@ module.exports = React.createClass( {
   dropOptions () {
     const target = this.props.targetElement?ReactDOM.findDOMNode(this.props.targetElement):ReactDOM.findDOMNode(this).parentNode;
     const position = this.getPosition();
+
     return {
       target: target,
       content: this.popoverElement,
@@ -141,7 +143,7 @@ module.exports = React.createClass( {
       openOn: 'always',
       beforeClose:this.beforeClose,
       constrainToWindow:this.props.flippable,
-      constrainToScrollParent:false,
+      constrainToScrollParent:this.props.constrainToScrollParent,
       remove:true
     };
   },
