@@ -9,7 +9,8 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
-import defaultFilter from "components/default_filter";
+import escapeRegExp from "lodash.escaperegexp";
+
 import SLDSPopover from "components/SLDSPopover";
 import SLDSButton from "components/SLDSButton";
 import SLDSIcon from "components/SLDSIcon";
@@ -67,6 +68,16 @@ const propTypes = {
    * Salesforce object type for Lookup items.
    */
   salesforceObj: React.PropTypes.string,
+};
+
+
+
+/**
+ * A function that takes a term string and an item and returns a truthy value if the item should be kept.
+ */
+const defaultProps = (term, item) => {
+  if(!term) return true;
+  return item.label.match(new RegExp(escapeRegExp(term), "ig"));
 };
 
 
