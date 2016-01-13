@@ -47,7 +47,8 @@ module.exports = React.createClass( {
       marginLeft:0,
       marginRight:0,
       flippable:true,
-      constrainToScrollParent:false
+      constrainToScrollParent:false,
+      inheritTargetWidth: false
     };
   },
 
@@ -103,6 +104,7 @@ module.exports = React.createClass( {
           'marginBottom':this.props.marginBottom,
           'marginLeft':this.props.marginLeft,
           'marginRight':this.props.marginRight,
+          'width': (this.props.inheritTargetWidth ? this.target().getBoundingClientRect().width : 'inherit'),
           'float':'inherit',
           'position':'inherit'
         }}
@@ -132,12 +134,15 @@ module.exports = React.createClass( {
     return positions.join(' ');
   },
 
+  target () {
+    return this.props.targetElement?ReactDOM.findDOMNode(this.props.targetElement):ReactDOM.findDOMNode(this).parentNode;
+  },
+
   dropOptions () {
-    const target = this.props.targetElement?ReactDOM.findDOMNode(this.props.targetElement):ReactDOM.findDOMNode(this).parentNode;
     const position = this.getPosition();
 
     return {
-      target: target,
+      target: this.target(),
       content: this.popoverElement,
       position: position,
       openOn: 'always',
