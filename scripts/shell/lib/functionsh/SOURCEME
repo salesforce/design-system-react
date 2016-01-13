@@ -1,0 +1,27 @@
+# get path to this script
+if [ "x${functionsh_path}" = "x" ]; then
+    # determine the path to this script. it will become the gitscripts path. the cfg directory
+    # must live in the same directory as this script for any user overrides to take effect.
+    functionsh_path="${BASH_SOURCE[0]}"
+    if [ -h "${functionsh_path}" ]; then
+        while [ -h "${functionsh_path}" ]; do
+            functionsh_path=`readlink "${functionsh_path}"`
+        done
+    fi
+    pushd . > /dev/null
+    cd `dirname ${functionsh_path}` > /dev/null
+    export functionsh_path=`pwd`;
+    popd  > /dev/null
+fi
+
+
+# source main script if it exists, and try to
+# source user script after that
+for file in "${functionsh_path}/functions/"*; do source "$file"; done
+export functionsh_reload="__source_all \"${functionsh_path}/functions\""
+if [ -f "${functionsh_path}/functions/__source_all.sh" ]; then
+    $functionsh_reload
+fi
+
+
+echo "${B}${COL_MAGENTA}functionsh loaded.${X}"

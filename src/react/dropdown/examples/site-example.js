@@ -28,11 +28,11 @@ export default React.createClass({
 					</div>
 					<div className="slds-col demo-controls">
 						<div className="slds-button-group" role="group">
-							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.logSelectedItem.bind(this, index)}>Log selected item</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" disabled>Set by index</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.setSelection.bind(this, index)}>Set by object</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.enable.bind(this, index)}>Enable</button>
-							<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this.disable.bind(this, index)}>Disable</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.logSelectedItem.bind(this, index)}>Log selected item</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--small" disabled>Set by index</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.setSelection.bind(this, index)}>Set by object</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.enable.bind(this, index)}>Enable</button>
+							<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this.disable.bind(this, index)}>Disable</button>
 						</div>
 					</div>
 				</div>

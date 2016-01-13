@@ -37,7 +37,7 @@ var paths = {
   'scripts': path.resolve(root, 'scripts'),
   'scss': path.resolve(root, 'scss'),
   'site_assets': path.resolve(root, 'public/assets/facades'),
-  'slds_site_assets': path.resolve(root, 'public/assets/design-system'),
+  'slds_public_assets': path.resolve(root, 'public/assets/design-system'),
   'slds': path.resolve(node_modules, '@salesforce-ux/design-system'),
   'slds_assets': path.resolve(node_modules, '@salesforce-ux/design-system/assets'),
   'source_files': path.resolve(root, 'src'),

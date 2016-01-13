@@ -62,14 +62,14 @@ export default React.createClass({
 				</div>
 				<div className="slds-col demo-controls">
 					<div className="slds-button-group" role="group">
-						<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Check first</button>
-						<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Check second</button>
+						<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this._handleClick}>Check first</button>
+						<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this._handleClick}>Check second</button>
 					</div>
 					<div className="slds-button-group" role="group">
-						<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Disable first</button>
-						<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Enable first</button>
-						<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Disable all</button>
-						<button type="button" className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Enable all</button>
+						<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this._handleClick}>Disable first</button>
+						<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this._handleClick}>Enable first</button>
+						<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this._handleClick}>Disable all</button>
+						<button type="button" className="slds-button slds-button--neutral slds-button--small" onClick={this._handleClick}>Enable all</button>
 					</div>
 				</div>
 			</div>
@@ -78,7 +78,7 @@ export default React.createClass({
 
 	_handleClick (e) {
 		const radioboxen = this.state.radioboxen;
-		
+
 		// translate text of button into method call
 		switch (e.target.firstChild.data.toLowerCase()) {
 			case 'check first':
@@ -110,7 +110,7 @@ export default React.createClass({
 			default:
 				break;
 		}
-		
+
 		this.setState({
 			radioboxen
 		});

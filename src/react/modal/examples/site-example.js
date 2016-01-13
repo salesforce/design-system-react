@@ -40,8 +40,8 @@ export default React.createClass({
 					<PicklistSiteExample modal/>
 					<p style={{height: '1000px'}}>&nbsp;</p>
 				</Modal>
-				
-				<button className="slds-button slds-button--neutral slds-button--x-small" onClick={this._handleClick}>Toggle</button>
+
+				<button className="slds-button slds-button--neutral slds-button--small" onClick={this._handleClick}>Toggle</button>
 			</div>
 		);
 	},
@@ -61,7 +61,7 @@ export default React.createClass({
 	onPrimary () {
 		console.log('Item has been saved!');
 	},
-	
+
 	_handleClick () {
 		this.setState({
 			isOpen: true

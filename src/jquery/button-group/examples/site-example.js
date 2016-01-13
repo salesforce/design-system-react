@@ -21,23 +21,32 @@ $(function () {
 				text: 'Save'
 			},
 			{
-				assistiveText: 'button-icon-border',
+				assistiveText: 'More Actions',
 				disabled: false,
-				domNode: '.button-icon-border',
-				icon: 'utility.table',
-				iconPosition: '',
+				icon: 'utility.down',
 				iconStyle: 'icon-border',
-				iconSize: '',
-				size: '',
-				text: '',
-				theme: '',
-				views: []
+				theme: 'icon-border'
 			}
 		],
 		children: [button1]
 	});
-
 	const buttonGroup2 = new ButtonGroup($('#button-group-jquery-control'), {
+		theme: 'neutral',
+		buttons: [
+			{
+				text: 'New Lead'
+			},
+			{
+				theme: 'icon-border',
+				assistiveText: 'button-icon-border',
+				disabled: false,
+				icon: 'utility.down',
+				iconStyle: 'icon-border'
+			}
+		]
+	});
+
+	const buttonGroup3 = new ButtonGroup($('#button-group-jquery-control'), {
 		iconStyle: 'icon-border',
 		buttons: [
 			{
@@ -60,12 +69,13 @@ $(function () {
 
 	void(buttonGroup1);
 	void(buttonGroup2);
+	void(buttonGroup3);
 
 	$('#button-group-jquery-button-select').on('click', function () {
-		buttonGroup2.getProperty('children')[0].toggle(true);
+		buttonGroup3.getProperty('children')[0].toggle(true);
 	});
 
 	$('#button-group-jquery-button-deselect').on('click', function () {
-		buttonGroup2.getProperty('children')[0].toggle(false);
+		buttonGroup3.getProperty('children')[1].toggle(true);
 	});
 });
