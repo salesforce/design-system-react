@@ -2,7 +2,7 @@
 # React Components: design-system-react
 # Release notes
 
-## Release 0.0.28 (upcoming)
+## Release 0.0.27 (upcoming)
 
 **MAJOR CHANGES**
 - SLDSIcons.Icon refactored to SLDSIcon
