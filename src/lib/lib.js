@@ -58,7 +58,7 @@ export function addClass (element, className) {
 
 export function removeClass (element, className) {
 	if (element && typeof className === 'string') {
-		element.className = element.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+		element.className = element.className.replace(new RegExp('(^|\\b)\\s?' + className.split(' ').join('|') + '(\\b|$)', 'gi'), '');
 	}
 }
 

@@ -33,10 +33,6 @@ export const DropdownObject = {
 		this._initElements();
 	},
 	
-	_bindUIEvents () {
-		this.elements.dropdownMenu.on('click', 'a', $.proxy(this._handleMenuItemSelected, this));
-	},
-
 	_render () {
 		// Configure the button
 		let icon;
@@ -78,18 +74,6 @@ export const DropdownObject = {
 		}
 	},
 	
-	_onOpened () {
-		if (this.rendered) {
-			this.elements.trigger.attr('aria-expanded', true);
-		}
-	},
-	
-	_onClosed () {
-		if (this.rendered) {
-			this.elements.trigger.attr('aria-expanded', false);
-		}
-	},
-
 	_swapIcon (iconString) {
 		const icon = iconString || this.getProperty('icon');
 

@@ -18,7 +18,7 @@ export default React.createClass({
 	render () {
 		const name = 'radioGroup1';
 		const radios = [
-			<Radio ref="radio1"
+			<Radio
 				checked={this.state.radioboxen.get('radio1').checked}
 				disabled={this.state.radioboxen.get('radio1').disabled}
 				key="1"
@@ -28,7 +28,7 @@ export default React.createClass({
 				onDisabled={this._handleDisable.bind(this, 'radio1', true)}
 				onEnabled={this._handleDisable.bind(this, 'radio1', false)}
 				value="value1" />,
-			<Radio ref="radio2"
+			<Radio
 				checked={this.state.radioboxen.get('radio2').checked}
 				disabled={this.state.radioboxen.get('radio2').disabled}
 				key="2"
@@ -38,7 +38,7 @@ export default React.createClass({
 				onDisabled={this._handleDisable.bind(this, 'radio2', true)}
 				onEnabled={this._handleDisable.bind(this, 'radio2', false)}
 				value="value3" />,
-			<Radio ref="radio3"
+			<Radio
 				checked={this.state.radioboxen.get('radio3').checked}
 				disabled={this.state.radioboxen.get('radio3').disabled}
 				key="3"
@@ -78,7 +78,7 @@ export default React.createClass({
 
 	_handleClick (e) {
 		const radioboxen = this.state.radioboxen;
-		
+
 		// translate text of button into method call
 		switch (e.target.firstChild.data.toLowerCase()) {
 			case 'check first':
@@ -110,7 +110,7 @@ export default React.createClass({
 			default:
 				break;
 		}
-		
+
 		this.setState({
 			radioboxen
 		});

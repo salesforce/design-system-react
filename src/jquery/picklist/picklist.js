@@ -163,7 +163,8 @@ export const PicklistObject = {
 
 	_onOpened () {
 		if (this.rendered) {
-			this.elements.dropdown.toggleClass('slds-hide', false);
+			this.elements.control.addClass('slds-is-open');
+			this.elements.dropdown.removeClass('slds-hide');
 			this.elements.button.attr('aria-expanded', true);
 
 			if (this.getProperty('modalMenu')) {
@@ -175,7 +176,8 @@ export const PicklistObject = {
 
 	_onClosed () {
 		if (this.rendered) {
-			this.elements.dropdown.toggleClass('slds-hide', true);
+			this.elements.control.removeClass('slds-is-open');
+			this.elements.dropdown.addClass('slds-hide');
 			this.elements.button.attr('aria-expanded', false);
 			if (this.getProperty('modalMenu')) {
 				Positionable.hide(this);

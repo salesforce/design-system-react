@@ -77,7 +77,11 @@ export const PicklistObject = {
 		};
 
 		return (
-			<div className="slds-picklist" id={this.state.id} aria-expanded={isOpen} onKeyDown={this._handleKeyPressed} onKeyPress={this._handleKeyPressed}>
+			<div className="slds-picklist"
+				id={this.state.id}
+				aria-expanded={isOpen}
+				onKeyDown={this._handleKeyPressed}
+				onKeyPress={this._handleKeyPressed}>
 				<Button
 					id={triggerId}
 					className="slds-picklist__label"
@@ -150,10 +154,12 @@ export const PicklistObject = {
 	},
 
 	_onOpened () {
+		this.elements.control.addClass('slds-is-open');
 		Positionable.show(this);
 	},
 
 	_onClosed () {
+		this.elements.control.removeClass('slds-is-open');
 		Positionable.hide(this);
 	},
 	

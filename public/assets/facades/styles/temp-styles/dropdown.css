@@ -1,0 +1,14 @@
+  .slds-dropdown-trigger--click {
+    position: relative;
+  }
+  .slds-dropdown-trigger--click .slds-dropdown {
+    visibility: hidden;
+    opacity: 0; }
+  .slds-dropdown-trigger--click.slds-is-open .slds-dropdown {
+    display: block; /* <-- edit */
+    visibility: visible;
+    opacity: 1; }
+  .slds-dropdown-trigger > [class*="slds-button--icon"] ~ .slds-dropdown--left[class*="slds-nubbin"] {
+    left: -1rem; }
+  .slds-dropdown-trigger > [class*="slds-button--icon"] ~ .slds-dropdown--right[class*="slds-nubbin"] {
+    right: -1rem; }
