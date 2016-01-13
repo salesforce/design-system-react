@@ -1,5 +1,5 @@
 export default String.raw`
-<div class="slds-dropdown-trigger">
+<div class="slds-dropdown-trigger--click">
 	<div class="slds-dropdown slds-dropdown--left slds-dropdown--small">
 		<ul class="slds-dropdown__list" role="menu">
 			<li class="slds-dropdown__header">

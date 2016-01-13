@@ -1,4 +1,4 @@
-# design-system-facades
+# [Design System Facades](http://design-system-facades.herokuapp.com/)
 Javascript components based on [Lightning Design System](https://www.lightningdesignsystem.com/) with Facades for libraries and frameworks including jQuery, React, Backbone, and Angular.
 
 ### Setup
@@ -19,7 +19,8 @@ Javascript components based on [Lightning Design System](https://www.lightningde
 ### Contributing
 * Fork the repo!
 * Read up (and feel free to comment on) this [theory doc](https://docs.google.com/a/salesforce.com/document/d/1w8sy0Eex8nwsQ0vx_MUysIL8alOfOCXWfuq19Ikbky8/edit?usp=sharing)
-* Look at the current issues, or create your own so that we know what you're working on
+* Look at the [current issues](https://github.com/salesforce-ux/design-system-facades/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22), or create your own so that we know what you're working on
+* Make sure you assign yourself to the issue and add a comment about your plan
 * Feel free to shoot questions to mc-uxdev@salesforce.com or dbrainer-banker@salesforce.com
 * **If this is your first contribution you'll be much happier if you communicate early and often**
 * Try to keep your PRs small and manageable
