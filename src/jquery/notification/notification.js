@@ -60,12 +60,12 @@ export const NotificationObject = {
 	},
 	
 	show: function () {
-		this.element.toggleClass(this.cssClasses.HIDDEN, false);
+		this.element.removeClass(this.cssClasses.HIDDEN);
 		this.trigger('shown');
 	},
 
 	hide: function () {
-		this.element.toggleClass(this.cssClasses.HIDDEN, true);
+		this.element.addClass(this.cssClasses.HIDDEN);
 		this.trigger('hidden');
 	}
 };
