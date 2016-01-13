@@ -8,7 +8,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import {Icon} from '../SLDSIcon';
+import SLDSIcon from '../SLDSIcon';
 
 const displayName = "SLDSList-Item-Label";
 const propTypes = {
@@ -39,7 +39,7 @@ class SLDSListItemLabel extends React.Component {
   render() {
     return (
       <p>
-        <Icon name='check' position='left' category='utility' size="x-small" className="slds-icon--selected slds-icon-text-default slds-m-right--x-small" />
+        <SLDSIcon name='check' position='left' category='utility' size="x-small" className="slds-icon--selected slds-icon-text-default slds-m-right--x-small" />
         {this.props.label}
       </p>
     )

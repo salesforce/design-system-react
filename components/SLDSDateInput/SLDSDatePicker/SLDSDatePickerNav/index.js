@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import SLDSSelectYear from '../../SLDSYearSelector/index';
-import {ButtonIcon} from './../../../SLDSIcon';
+import ButtonIcon from './../../../SLDSIcon/ButtonIcon';
 import {DateUtil, EventUtil, KEYS} from './../../../utils';
 
 module.exports = React.createClass( {

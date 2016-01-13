@@ -57,14 +57,14 @@ For example to import the Tooltip and Icon components:
 import {SLDSTooltip, SLDSIcon} from 'design-system-react';
 ```
 
-You can then use the components in your JSX markup, e.g. SLDSTooltip, or SLDSIcon.Icon.
+You can then use the components in your JSX markup, e.g. SLDSTooltip, or SLDSIcon.
 
-Here is an example media object using SLDSIcon.Icon:
+Here is an example media object using SLDSIcon:
 
 ```
   <div className="slds-media slds-media-center">
     <div className="slds-media__figure">
-      <SLDSIcon.Icon assistiveText=""
+      <SLDSIcon assistiveText=""
           category="utility"
           className="slds-icon-text-default"
           name="like"

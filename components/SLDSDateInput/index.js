@@ -13,7 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SLDSPopover from '../SLDSPopover';
 import SLDSDatePicker from './SLDSDatePicker/index';
-import {InputIcon} from './../SLDSIcon';
+import InputIcon from './../SLDSIcon/InputIcon';
 
 import {KEYS,EventUtil} from '../utils';
 

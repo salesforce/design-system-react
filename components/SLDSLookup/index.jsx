@@ -12,7 +12,8 @@ import ReactDOM from "react-dom";
 import Menu from "./Menu";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
-import {Icon, InputIcon} from "./../SLDSIcon";
+import SLDSIcon from "./../SLDSIcon";
+import InputIcon from "./../SLDSIcon/InputIcon";
 import {KEYS,EventUtil} from "../utils";
 import escapeRegExp from "lodash.escaperegexp";
 
@@ -383,7 +384,7 @@ class SLDSLookup extends React.Component {
     return (
       <a href="javascript:void(0)" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         <span className="slds-pill__label">
-          <Icon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.salesforceObj} className={"slds-icon slds-pill__icon " + this.props.iconClasses} />
+          <SLDSIcon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.salesforceObj} className={"slds-icon slds-pill__icon " + this.props.iconClasses} />
           <span className="slds-pill__label">
             {selectedItem}
           </span>

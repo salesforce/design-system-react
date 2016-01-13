@@ -14,7 +14,7 @@ import ReactDOM from "react-dom";
 
 const classNames = require("classnames");
 import SLDSButton from "../SLDSButton";
-import {Icon} from "../SLDSIcon";
+import SLDSIcon from "../SLDSIcon";
 
 const displayName = "SLDSNotification";
 const propTypes = {
@@ -97,7 +97,7 @@ class SLDSNotification extends React.Component {
       else if(this.props.variant === "toast") {
         classes = "slds-m-right--small slds-col slds-no-flex";
       }
-      return <Icon category="utility" name={this.props.iconName} size="small" className={classes} />;
+      return <SLDSIcon category="utility" name={this.props.iconName} size="small" className={classes} />;
     }
   }
 

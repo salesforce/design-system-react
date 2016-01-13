@@ -7,7 +7,7 @@ var componentNames = [
   'SLDSButtonStateful',
   'SLDSButtonGroup',
   'SLDSDropdownBase',
-  'SLDSIcon/Icon',
+  'SLDSIcon',
   'SLDSLookup',
   'SLDSModal',
   'SLDSNotification',

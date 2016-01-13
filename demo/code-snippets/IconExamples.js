@@ -1,30 +1,30 @@
 const iconExamples = (
   <div>
-    <Icon
+    <SLDSIcon
       assistiveText="Favorite"
       category="custom"
       name="custom1"
       size="small" />
 
-    <Icon
+    <SLDSIcon
       assistiveText="Accounts"
       category="standard"
       name="account" />
 
-    <Icon
+    <SLDSIcon
       assistiveText="Announcements"
       category="action"
       className="slds-m-around--x-small"
       name="announcement" />
 
-    <Icon
+    <SLDSIcon
       assistiveText="Approval"
       category="action"
       className="slds-m-around--x-small"
       name="approval"
       size="large" />
 
-    <Icon
+    <SLDSIcon
       assistiveText=""
       category="utility"
       className="slds-icon-text-default"

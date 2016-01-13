@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 
-import {ButtonIcon, Icon} from "./../../components/SLDSIcon";
+import SLDSIcon from "./../../components/SLDSIcon";
 import SLDSGrid from '../../components/SLDSGrid';
 
 const SLDSColumn = SLDSGrid.Column;
@@ -32,7 +32,7 @@ module.exports = React.createClass( {
         <li>
           <Link to={navItem.to}>
           <span className={"slds-icon__container slds-icon-standard-"+navItem.icon+" slds-m-right--small"}>
-            <Icon name={navItem.icon} category="standard" />
+            <SLDSIcon name={navItem.icon} category="standard" />
             <span className="slds-assistive-text">{navItem.title}</span>
           </span>
           <span className="stage-left__text slds-max-medium-hide">{navItem.title}</span>
