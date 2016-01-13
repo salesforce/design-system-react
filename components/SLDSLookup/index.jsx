@@ -369,7 +369,7 @@ class SLDSLookup extends React.Component {
     let targetElem = this.inputRefName();
     if(this.state.isOpen){
       return <SLDSPopover
-      className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu slds-lookup__menu"
+      className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
       closeOnTabKey={true}
       onClose={this.handleCancel.bind(this)}
       flippable={false}
