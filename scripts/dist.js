@@ -15,7 +15,6 @@ import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
 import async from 'async';
-import autoprefixer from 'autoprefixer';
 import globals from '../app_modules/global';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
@@ -27,7 +26,6 @@ import minimist from 'minimist';
 import rimraf from 'rimraf';
 import sass from 'node-sass';
 import through from 'through2';
-import postcss from 'postcss';
 
 const argv = minimist(process.argv.slice(2));
 const isNpm = argv.npm === true;
@@ -102,10 +100,9 @@ async.series([
     gulp.src([
       path.resolve(__PATHS__.build_for_dist, '**/*.js')
     ], { base: __PATHS__.build_for_dist })
-      // not doing this -- for now, but i think we should ;)
-      // .pipe(gulprename(function (path) {
-      //   path.basename = "design-system-facades." + path.basename;
-      // }))
+      .pipe(gulprename(function (path) {
+        path.basename = "facades." + path.basename;
+      }))
       .pipe(gulprename(function (path) {
         path.basename = path.basename.replace('.bundle', '');
       }))
