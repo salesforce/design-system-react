@@ -23,7 +23,6 @@ import gulpif from 'gulp-if';
 import gulpinsert from 'gulp-insert';
 import gulpzip from 'gulp-zip';
 import gulprename from 'gulp-rename';
-import { C_STYLE as license } from 'scripts/tasks/update-boilerplate';
 import minimist from 'minimist';
 import rimraf from 'rimraf';
 import sass from 'node-sass';
@@ -103,9 +102,10 @@ async.series([
     gulp.src([
       path.resolve(__PATHS__.build_for_dist, '**/*.js')
     ], { base: __PATHS__.build_for_dist })
-      .pipe(gulprename(function (path) {
-        path.basename = "design-system-facades." + path.basename;
-      }))
+      // not doing this -- for now, but i think we should ;)
+      // .pipe(gulprename(function (path) {
+      //   path.basename = "design-system-facades." + path.basename;
+      // }))
       .pipe(gulprename(function (path) {
         path.basename = path.basename.replace('.bundle', '');
       }))

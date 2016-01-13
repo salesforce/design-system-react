@@ -80,17 +80,26 @@
   ],
   "components": [
     "badge",
+    "base",
+    "button-view",
     "button",
     "checkbox",
     "combobox",
     "data-table",
     "datepicker",
+    "dropdown",
+    "lookup",
+    "modal",
     "notification",
+    "picker",
     "picklist",
-    "pillbox",
+    "pills",
     "popover",
     "radio",
+    "search",
     "spinner",
-    "tree"
+    "tooltip",
+    "tree",
+    "wizard"
   ]
 }
