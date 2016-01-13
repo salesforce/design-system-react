@@ -56,8 +56,11 @@ module.exports = React.createClass( {
           <div className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-around--large'>
 
             <section className="slds-p-bottom--large">
-              <h3 className="slds-text-heading--medium slds-p-top--medium slds-p-bottom--medium">Components</h3>
-              <ul>
+              <p className="slds-text-heading--small slds-p-vertical--small">
+                <Link to="getting-started">Getting Started</Link>
+              </p>
+              <p className="slds-text-heading--small slds-p-vertical--small">Components</p>
+              <ul className="slds-p-bottom--small">
                 <li><Link to="button">SLDSButton</Link></li>
                 <li><Link to="button-stateful">SLDSButtonStateful</Link></li>
                 <li><Link to="button-group">SLDSButtonGroup</Link></li>
@@ -69,6 +72,9 @@ module.exports = React.createClass( {
                 <li><Link to="picklist">SLDSPicklistBase</Link></li>
                 <li><Link to="tooltip">SLDSTooltip</Link></li>
               </ul>
+              <p className="slds-text-heading--small slds-p-vertical--small">
+                <Link to="faq">FAQ</Link>
+              </p>
             </section>
         </div>
 
