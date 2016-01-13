@@ -9,7 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
-import DOCS from '../../docs';
+import DOCS from '../docs';
 
 const displayName = "PropTable";
 const propTypes = {

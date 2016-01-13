@@ -2,23 +2,23 @@ const CM = require('codemirror');
 import 'codemirror/addon/runmode/runmode';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/theme/solarized.css';
-import '../assets/styles/codemirror.css';
+import 'demo/assets/styles/codemirror.css';
 import babel from 'babel-core/browser';
 
 const React = require('react');
 const ReactDOM = require('react-dom');
 const classNames = require('classnames');
 
-const SLDSButton =  require('../../components/SLDSButton');
-const SLDSButtonStateful =  require('../../components/SLDSButtonStateful');
-const SLDSButtonGroup =  require('../../components/SLDSButtonGroup');
-const SLDSDropdown =  require('../../components/SLDSDropdownBase');
-const SLDSIcon =  require('../../components/SLDSIcon');
-const SLDSLookup =  require('../../components/SLDSLookup');
-const SLDSModal =  require('../../components/SLDSModal');
-const SLDSNotification =  require('../../components/SLDSNotification');
-const SLDSPicklist =  require('../../components/SLDSPicklistBase');
-const SLDSTooltip =  require('../../components/SLDSTooltip');
+const SLDSButton =  require('../components/SLDSButton');
+const SLDSButtonStateful =  require('../components/SLDSButtonStateful');
+const SLDSButtonGroup =  require('../components/SLDSButtonGroup');
+const SLDSDropdown =  require('../components/SLDSDropdownBase');
+const SLDSIcon =  require('../components/SLDSIcon');
+const SLDSLookup =  require('../components/SLDSLookup');
+const SLDSModal =  require('../components/SLDSModal');
+const SLDSNotification =  require('../components/SLDSNotification');
+const SLDSPicklist =  require('../components/SLDSPicklistBase');
+const SLDSTooltip =  require('../components/SLDSTooltip');
 
 const displayName = 'CodeMirror';
 const propTypes = {
