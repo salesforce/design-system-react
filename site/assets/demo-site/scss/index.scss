@@ -13,11 +13,11 @@
     font-weight: 300;
 }
 
-.slds-box {
+.#{$css-prefix}box {
     margin-bottom: 20px;
 }
 
-.slds-tooltip, .slds-popover {
+.#{$css-prefix}tooltip, .#{$css-prefix}popover {
     position: absolute;
 }
 

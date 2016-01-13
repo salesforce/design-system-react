@@ -26,6 +26,7 @@ var paths = {
   'build': path.resolve(root, 'build'),
   'content_base': path.resolve(root, 'public'),
   'dist': path.resolve(root, '.dist'),
+  'build_for_dist': path.resolve(root, 'dist'),
   'docs': path.resolve(root, 'docs'),
   'generated': path.resolve(root, '.generated'),
   'node_modules': node_modules,

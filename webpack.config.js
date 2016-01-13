@@ -11,9 +11,9 @@ var packageJson = require('./package.json');
 
 var config = {
 	entry: {
-		'styles-facades': entries.concat('./site/assets/facades/scripts/styles.js'),
-		'source-examples-react': entries.concat('./src/react/examples.js'),
-		'source-examples-jquery': entries.concat('./src/jquery/examples.js')
+		'dev-examples-styles': entries.concat('./site/assets/facades/scripts/styles.js'),
+		'dev-examples-react': entries.concat('./src/react/dev-examples.js'),
+		'dev-examples-jquery': entries.concat('./src/jquery/dev-examples.js')
 	},
 	resolve: {
 		// root: [
@@ -129,7 +129,7 @@ var config = {
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin("style.css", {
+		new ExtractTextPlugin("dev-examples-styles.css", {
 			allChunks: true
 		}),
 		new webpack.HotModuleReplacementPlugin(),

@@ -9,10 +9,11 @@ var packageJson = require('./package.json');
 
 var config = {
 	entry: {
-		'styles-demo-site': ['./site/assets/demo-site/scripts/styles.js'],
-		'source-examples-react': ['./src/react/examples'],
+		'facades-demo-styles': ['./site/assets/shared/scripts/styles.js', './site/assets/demo-site/scripts/styles.js'],
+		'dev-examples-styles': ['./site/assets/facades/scripts/styles.js'],
+		'dev-examples-react': ['./src/react/dev-examples'],
 		'demo-site-examples-react': ['./site/src/demo-site-examples-react'],
-		'source-examples-jquery': ['./src/jquery/examples'],
+		'dev-examples-jquery': ['./src/jquery/dev-examples'],
 		'demo-site-examples-jquery': ['./site/src/demo-site-examples-jquery']
 	},
 	resolve: {
@@ -110,9 +111,7 @@ var config = {
 		]
 	},
 	plugins: [
-		new ExtractTextPlugin("style.css", {
-			allChunks: true
-		}),
+		new ExtractTextPlugin("[name].css"),
 		new StringReplacePlugin(),
 		new webpack.optimize.UglifyJsPlugin({
 			mangle: {

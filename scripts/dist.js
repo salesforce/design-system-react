@@ -86,7 +86,7 @@ async.series([
     delete packageJSON.scripts;
     delete packageJSON.devDependencies;
     fs.writeFile(
-      distPath('package.json'), 
+      distPath('package.json'),
       JSON.stringify(packageJSON, null, 2),
       done
     );
@@ -101,8 +101,8 @@ async.series([
    */
   (done) => {
     gulp.src([
-      path.resolve(__PATHS__.build, '**/*.js')
-    ], { base: __PATHS__.build })
+      path.resolve(__PATHS__.build_for_dist, '**/*.js')
+    ], { base: __PATHS__.build_for_dist })
       .pipe(gulprename(function (path) {
         path.basename = "design-system-facades." + path.basename;
       }))

@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 export default {
-  abbreviatedName: 'SLDSF',
+  abbreviatedName: 'DSF',
   cssPrefix: 'slds-',
   displayName: 'Salesforce Lightning Design System Facades',
   filenamePrefix: 'slds',

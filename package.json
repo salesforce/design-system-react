@@ -11,17 +11,17 @@
   "private": true,
   "scripts": {
     "app-start": "node app.js",
-    "dist-npm": "./scripts/dist.js",
     "build-dev": "./scripts/shell/dev-build.sh",
-    "dev-build": "./scripts/shell/dev-build.sh",
+    "build-dist": "./scripts/shell/dist-build.sh",
     "build-heroku": "./scripts/shell/heroku-build.sh",
-    "build-www": "./scripts/shell/build-www.sh",
+    "dev": "grunt serve",
+    "dev-build": "./scripts/shell/dev-build.sh",
+    "dist": "./scripts/shell/dist.sh",
+    "dist-npm": "./scripts/shell/dist-npm.sh",
     "heroku-build": "./scripts/shell/heroku-build.sh",
     "heroku-start": "node app.js",
     "start": "grunt serve",
-    "dev": "grunt serve",
-    "test": "grunt test",
-    "www-build": "./scripts/shell/build-www.sh"
+    "test": "grunt test"
   },
   "dependencies": {
     "@salesforce-ux/design-system": "^0.12.0",
