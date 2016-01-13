@@ -26,7 +26,7 @@ describe('SLDSDropdown: ', function(){
                         placeholder: "Select a contact",
                         value: 'C0'}
 
-  const createDropdown = props => React.createElement(SLDSDropdown, assign(props, defaultProps))
+  const createDropdown = props => React.createElement(SLDSDropdown, assign({}, defaultProps, props))
 
   const dropItDown = ps => renderDropdown(createDropdown(ps))
 
@@ -56,6 +56,7 @@ describe('SLDSDropdown: ', function(){
       expect(getMenu(body)).to.equal(null)
       Simulate.mouseEnter(btn, {})
       expect(getMenu(body).className).to.include('slds-dropdown')
+      Simulate.mouseLeave(btn, {})
     })
 
     it('closes on blur based on timeout delay', (done) => {
@@ -97,6 +98,7 @@ describe('SLDSDropdown: ', function(){
       expect(clicked).to.be.false
       Simulate.click(btn, {})
       expect(clicked).to.be.true
+      Simulate.click(btn, {}) //cleanup
     })
 
     xit('does some crazy shit in componentDidUpdate', () => {
@@ -110,6 +112,10 @@ describe('SLDSDropdown: ', function(){
       cmp = dropItDown({openOn: 'click', onSelect: i => selected = i })
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
       Simulate.click(btn, {})
+    })
+
+    afterEach(() => {
+      Simulate.click(btn, {}) //cleanup
     })
 
     it('selects an item', () => {
