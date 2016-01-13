@@ -41,7 +41,7 @@ npm run pages
 
 Note: design-system-react is optimized for React 0.14.x.
 
-To use it in your code base, you havew a couple of options.
+To use it in your code base, you have a couple of options.
 
 
 ### Option 1: NPM
