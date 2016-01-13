@@ -581,30 +581,12 @@
         "description": "The SLDSLookup component currently supports the base variant.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">SLDS Lookups > Base</a>.",
         "displayName": "SLDSLookup",
         "props": {
-            "boldRegex": {
-                "type": {
-                    "name": "instanceOf",
-                    "value": "RegExp"
-                },
-                "required": false,
-                "description": ""
-            },
             "emptyMessage": {
                 "type": {
                     "name": "string"
                 },
                 "required": true,
                 "description": "Custom message for when no search results found."
-            },
-            "errors": {
-                "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "string"
-                    }
-                },
-                "required": false,
-                "description": ""
             },
             "filterWith": {
                 "type": {
@@ -623,13 +605,6 @@
                 },
                 "required": false,
                 "description": "Custom component for Lookup footer. The default footer allows user to add new item - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">SLDS Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>."
-            },
-            "hasError": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, input field indicates error state."
             },
             "headerRenderer": {
                 "type": {
@@ -672,16 +647,6 @@
                 },
                 "required": false,
                 "description": "Custom component that overrides the default Lookup Item component."
-            },
-            "messages": {
-                "type": {
-                    "name": "arrayOf",
-                    "value": {
-                        "name": "string"
-                    }
-                },
-                "required": false,
-                "description": ""
             },
             "modal": {
                 "type": {

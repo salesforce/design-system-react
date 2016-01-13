@@ -9,12 +9,12 @@
 
 import React from "react";
 import ReactDOM from "react-dom";
+import defaultFilter from "../default_filter";
 import Menu from "./Menu";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
 import {Icon, InputIcon} from "./../SLDSIcons";
 import {KEYS,EventUtil} from "../utils";
-import escapeRegExp from "lodash.escaperegexp";
 
 import DefaultFooter from "./Menu/DefaultFooter";
 import DefaultHeader from "./Menu/DefaultHeader";
@@ -22,21 +22,15 @@ import cx from "classnames";
 
 const displayName = "SLDSLookup";
 const propTypes = {
-  boldRegex: React.PropTypes.instanceOf(RegExp),
   /**
    * Custom message for when no search results found.
    */
   emptyMessage: React.PropTypes.string.isRequired,
-  errors: React.PropTypes.arrayOf(React.PropTypes.string),
   filterWith: React.PropTypes.func.isRequired,
   /**
    * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">SLDS Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
    */
   footerRenderer: React.PropTypes.func,
-  /**
-   * If true, input field indicates error state.
-   */
-  hasError: React.PropTypes.bool,
   /**
    * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">SLDS Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>.
    */
@@ -55,7 +49,6 @@ const propTypes = {
    * Custom component that overrides the default Lookup Item component.
    */
   listItemLabelRenderer: React.PropTypes.func,
-  messages: React.PropTypes.arrayOf(React.PropTypes.string),
   /**
    * If true, component renders specifically to work inside Modal.
    */
@@ -75,10 +68,6 @@ const propTypes = {
   salesforceObj: React.PropTypes.string,
 };
 
-const defaultFilter = (term, item) => {
-  if(!term) return true;
-  return item.label.match(new RegExp(escapeRegExp(term), "ig"));
-};
 
 const defaultProps = {
   filterWith: defaultFilter,
@@ -333,9 +322,7 @@ class SLDSLookup extends React.Component {
   renderMenuContent() {
     if(this.state.isOpen){
       return <Menu
-        boldRegex={this.props.boldRegex}
         emptyMessage={this.props.emptyMessage}
-        errors={this.props.errors}
         filterWith={this.props.filterWith}
         focusIndex={this.state.focusIndex}
         footer={this.getFooter()}
@@ -348,7 +335,6 @@ class SLDSLookup extends React.Component {
         label={this.props.label}
         listItemLabelRenderer={this.props.listItemLabelRenderer}
         listLength={this.state.listLength}
-        messages={this.props.messages}
         onSelect={this.selectItem.bind(this)}
         searchTerm={this.state.searchTerm}
         setFocus={this.setFocus.bind(this)}
@@ -424,8 +410,7 @@ class SLDSLookup extends React.Component {
     const inputContainerClasses = {
       "slds-form-element__control": true,
       "slds-input-has-icon": true,
-      "slds-input-has-icon--right": true,
-      "slds-has-error": this.props.hasError
+      "slds-input-has-icon--right": true
     };
 
     const pillContainerClasses = {

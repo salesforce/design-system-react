@@ -15,7 +15,6 @@ import escapeRegExp from 'lodash.escaperegexp';
 
 const displayName = 'SLDSLookup-Menu-Item';
 const propTypes = {
-  boldRegex: React.PropTypes.instanceOf(RegExp),
   data: React.PropTypes.object,
   handleItemFocus: React.PropTypes.func,
   href: React.PropTypes.string,
@@ -45,12 +44,9 @@ class Item extends React.Component {
   }
 
   boldSearchText(children) {
-    let regex = this.props.boldRegex
-    if (!regex) {
-      const term = this.props.searchTerm;
-      if(!children || !term) return children;
-      regex = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
-    }
+    const term = this.props.searchTerm;
+    if(!children || !term) return children;
+    const regex = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
     return React.Children.map(children, c => {
       return (typeof c === 'string') ? <span key={c} dangerouslySetInnerHTML={{ __html: c.replace(regex, '<mark>$1</mark>')}}></span> : c;
     });
