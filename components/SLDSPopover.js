@@ -13,7 +13,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import TetherDrop from 'tether-drop';
-import {EventUtil,KEYS} from './utils';
+import {EventUtil,KEYS} from 'components/utils';
 //import { TransitionSpring, Spring } from 'react-motion';
 
 module.exports = React.createClass( {

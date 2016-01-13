@@ -12,9 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import SLDSButton from '../SLDSButton';
-import SLDSIcon from '../SLDSIcon';
-import {EventUtil} from '../utils';
+import SLDSButton from 'components/SLDSButton';
+import SLDSIcon from 'components/SLDSIcon';
+import {EventUtil} from 'components/utils';
 
 
 import Modal from 'react-modal';
@@ -88,7 +88,7 @@ module.exports = React.createClass( {
   },
 
   getModal() {
-    return <div className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')} 
+    return <div className={'slds-modal' +(this.state.revealed?' slds-fade-in-open':'')}
           onClick={this.closeModal}>
           <div className='slds-modal__container' onClick={(e)=>{EventUtil.trap(e);}}>
             <div className='slds-modal__header'>
