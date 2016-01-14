@@ -623,7 +623,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, component renders specifically to work inside Modal."
+                "description": "If true, component renders specifically to work inside Modal.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
             },
             "onClick": {
                 "type": {

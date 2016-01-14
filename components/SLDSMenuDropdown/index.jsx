@@ -59,6 +59,7 @@ const defaultProps = {
   align: "left",
   hoverCloseDelay: 300,
   openOn: "hover",
+  modal: true,
   variant: "neutral",
 };
 
