@@ -4,8 +4,7 @@ node_js:
 install:
   - npm install
 script:
-  - npm run compile
-  - npm test
+  - npm run pages
 cache:
   directories:
     - node_modules
