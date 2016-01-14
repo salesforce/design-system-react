@@ -39,7 +39,7 @@ class SLDSListItemLabel extends React.Component {
   render() {
     return (
       <p>
-        <SLDSIcon name='check' position='left' category='utility' size="x-small" className="slds-icon--selected slds-icon-text-default slds-m-right--x-small" />
+        {this.props.checkmark ? <SLDSIcon name='check' position='left' category='utility' size="x-small" className="slds-icon--selected slds-icon-text-default slds-m-right--x-small" />: null}
         {this.props.label}
       </p>
     )

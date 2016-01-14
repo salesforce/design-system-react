@@ -16,6 +16,7 @@ import EventUtil from './EventUtil';
 const displayName = "SLDSList";
 const propTypes = {
   className: React.PropTypes.string,
+  checkmark: React.PropTypes.bool,
   highlightedIndex: React.PropTypes.number,
   itemRenderer: React.PropTypes.func,
   label: React.PropTypes.string,
@@ -138,6 +139,7 @@ class SLDSList extends React.Component {
     return this.props.options.map((option, index) =>{
       return (
         <ListItem
+          checkmark={this.props.checkmark}
           data={option}
           index={index}
           isHighlighted={(index===this.props.highlightedIndex)}

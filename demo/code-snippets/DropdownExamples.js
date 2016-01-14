@@ -41,6 +41,7 @@ class DropdownExample extends React.Component {
       <div>
         <SLDSDropdown
           align="right"
+          checkmark={true}
           label="Dropdown Hover"
           buttonClassName="green"
           modal={true}

@@ -365,6 +365,13 @@
                 "required": false,
                 "description": "Classes applied to the Button component."
             },
+            "checkmark": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, renders checkmark icon on the selected Menu Item."
+            },
             "disabled": {
                 "type": {
                     "name": "bool"
@@ -574,6 +581,139 @@
                 },
                 "required": false,
                 "description": "If omitted, icon size is medium."
+            }
+        }
+    },
+    "SLDSLookup": {
+        "description": "The SLDSLookup component currently supports the base variant.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">SLDS Lookups > Base</a>.",
+        "displayName": "SLDSLookup",
+        "props": {
+            "emptyMessage": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "Custom message for when no search results found."
+            },
+            "filterWith": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": "",
+                "defaultValue": {
+                    "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
+                    "computed": false
+                }
+            },
+            "footerRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Custom component for Lookup footer. The default footer allows user to add new item - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">SLDS Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>."
+            },
+            "headerRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">SLDS Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>."
+            },
+            "iconCategory": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to view categories."
+            },
+            "iconClasses": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of icon. Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to view icon names."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": ""
+            },
+            "listItemLabelRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Custom component that overrides the default Lookup Item component."
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, component renders specifically to work inside Modal."
+            },
+            "onBlur": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onItemSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": ""
+            },
+            "onItemUnselect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "Lookup items data."
+            },
+            "searchTerm": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"\"",
+                    "computed": false
+                }
+            },
+            "salesforceObj": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Salesforce object type for Lookup items."
             }
         }
     },

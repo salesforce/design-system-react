@@ -21,6 +21,10 @@ const propTypes = {
    * Classes applied to the Button component.
    */
   buttonClassName: React.PropTypes.string,
+  /**
+   * If true, renders checkmark icon on the selected Menu Item.
+   */
+  checkmark: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   /**
    * Delay on menu closing.
@@ -245,6 +249,7 @@ class SLDSDropdown extends React.Component {
 
   getPopoverContent(){
     return <List
+            checkmark={this.props.checkmark}
             highlightedIndex={this.state.highlightedIndex}
             isHover={this.state.isHover}
             itemRenderer={this.getListItemRenderer()}
