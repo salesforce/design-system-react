@@ -94,11 +94,12 @@ describe('SLDSDropdown: ', function(){
       expect(getMenu(body)).to.equal(null)
     })
 
-    it('preserves click behavior', () => {
+    it('preserves click behavior', (done) => {
       expect(clicked).to.be.false
       Simulate.click(btn, {})
       expect(clicked).to.be.true
       Simulate.click(btn, {}) //cleanup
+      setTimeout(() => done(), 600)
     })
 
     xit('does some crazy shit in componentDidUpdate', () => {
@@ -111,14 +112,10 @@ describe('SLDSDropdown: ', function(){
       selected = false;
       cmp = dropItDown({openOn: 'click', onSelect: i => selected = i })
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
-      Simulate.click(btn, {})
-    })
-
-    afterEach(() => {
-      Simulate.click(btn, {}) //cleanup
     })
 
     it('selects an item', () => {
+      Simulate.click(btn, {})
       expect(selected).to.be.false
       const items = getMenu(body).querySelectorAll('.slds-dropdown__item')
       Simulate.click(items[1].querySelector('a'), {})

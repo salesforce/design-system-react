@@ -35,7 +35,7 @@ describe('SLDSPicklistBase: ',  function() {
     Simulate.click(items[index]);
   }
 
-  describe.only('in modal mode', () => {
+  describe('in modal mode', () => {
     let cmp, btn;
 
     beforeEach(() => {
@@ -43,14 +43,15 @@ describe('SLDSPicklistBase: ',  function() {
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
     })
 
-    it('expands/contracts the dropdown on click', () => {
+    it('expands/contracts the dropdown on click', (done) => {
       expect(getMenu(document.body)).to.equal(null)
-      console.log('\n\n\n\n\n-------BODY1-----', document.body)
       Simulate.click(btn, {})
-      console.log('\n\n\n\n\n-------BODY2-----', document.body)
-      expect(getMenu(document.body).className).to.include('slds-dropdown--small')
-      Simulate.click(btn, {})
-      expect(getMenu(document.body)).to.equal(null)
+      setTimeout(() => {
+        expect(getMenu(document.body).className).to.include('slds-dropdown--small')
+        Simulate.click(btn, {})
+        expect(getMenu(document.body)).to.equal(null)
+        done()
+      }, 600)
     })
   })
 
