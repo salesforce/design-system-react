@@ -13,7 +13,7 @@ SLDS React component library based off [Salesforce Lightning Design System](http
 * SLDSModal
 * SLDSNotification
 * SLDSPicklist
-* SLDSTooltip
+* SLDSPopoverTooltip
 
 
 ## Run local server
@@ -52,40 +52,43 @@ First, install the npm module:
 npm install --save design-system-react
 ```
 
-Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSTooltip.
+Then, in your React code, refer to each Lightning Design System component using the "SLDS" prefix, e.g. SLDSPopoverTooltip.
 
 For example to import the Tooltip and Icon components:
 
 ```
-import {SLDSTooltip, SLDSIcon} from 'design-system-react';
+import {SLDSPopoverTooltip, SLDSIcon} from 'design-system-react';
 ```
 
-You can then use the components in your JSX markup, e.g. SLDSTooltip, or SLDSIcon.
+You can then use the components in your JSX markup, e.g. SLDSPopoverTooltip, or SLDSIcon.
 
-Here is an example media object using SLDSIcon:
+Here is an example for building a tooltip over an info icon:
 
 ```
-  <div className="slds-media slds-media-center">
-    <div className="slds-media__figure">
-      <SLDSIcon assistiveText=""
-          category="utility"
-          className="slds-icon-text-default"
-          name="like"
-          size="small" />
-    </div>
-    <div className="slds-media__body">
-      <h2 className="slds-text-heading--small slds-truncate">Card Header (2)</h2>
-    </div>
-  </div>
+Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor) so that keyboard users can navigate to it.
+
+<div ref="tooltipDemoExample">
+  <SLDSPopoverTooltip>
+    'align="top"
+    'content={<span>Here is more information.</span>}
+    'targetElement={this.refs.tooltipDemoExample}>
+      <a href="javascript:void(0)">
+        <SLDSIcon assistiveText="More Info" category="utility" name="info" className="slds-icon-text-default" />
+      </a>
+  </SLDSPopoverTooltip>
+</div>
 ```
-
-Have fun!
-
 
 
 ## Contributing to the code base
 
-See <a href="CONTRIBUTING.md">CONTRIBUTING.md</a>
+Please read the <a href="CONTRIBUTING.md">CONTRIBUTING.md</a> first.
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
 
 ## Licenses
 

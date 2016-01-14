@@ -106,6 +106,15 @@ class FAQSection extends React.Component {
         </section>
 
         <section className="slds-p-vertical--medium">
+          <p className="slds-text-heading--medium slds-p-vertical--medium">
+            How can I contribute?
+          </p>
+          <p>
+            First off - thank you! The SLDS React project is open-source, and we would love your input! Please visit the <a href="https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md">Contributing Guidelines</a> beforehand.
+          </p>
+        </section>
+
+        <section className="slds-p-vertical--medium">
           <p className="slds-text-heading--small slds-p-vertical--medium">
             Visit the <a href="http://www.lightningdesignsystem.com/faq">Lightening Design System - FAQ</a> for more FAQs.
           </p>
