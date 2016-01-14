@@ -58,6 +58,8 @@ const columns = [
 ];
 
 module.exports = {
-	collection: collection,
-	columns: columns
+	default: {
+		collection: collection,
+		columns: columns
+	}
 };

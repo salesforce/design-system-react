@@ -5,8 +5,8 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	const dataTable1 = new DataTable($('#data-table-jquery-control .dataTable1'), {
-		collection: sampleData.dataTable.collection,
-		columns: sampleData.dataTable.columns,
+		collection: sampleData.dataTable.default.collection,
+		columns: sampleData.dataTable.default.columns,
 		styles: {
 			bordered: true,
 			striped: true

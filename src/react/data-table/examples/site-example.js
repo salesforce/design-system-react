@@ -12,8 +12,8 @@ export default React.createClass({
 
 	getInitialState () {
 		return {
-			collection: sampleData.dataTable.collection,
-			columns: sampleData.dataTable.columns,
+			collection: sampleData.dataTable.default.collection,
+			columns: sampleData.dataTable.default.columns,
 			selection: []
 		};
 	},

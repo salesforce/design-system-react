@@ -5,7 +5,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	const combobox1 = new Combobox($('#combobox-jquery-control .combobox1'), {
-		collection: sampleData.picklist.defaultArray,
+		collection: sampleData.picklist.default.collection,
 		resize: 'auto',
 		selection: { value: '1' }
 	});
@@ -18,7 +18,7 @@ $(function () {
 		combobox1.setSelectionByIndex(1);
 	});
 	$('#combobox-jquery-setByObject').on('click', function () {
-		combobox1.setSelection(sampleData.picklist.defaultArray[5]);
+		combobox1.setSelection(sampleData.picklist.default.collection[5]);
 	});
 	$('#combobox-jquery-enable').on('click', function () {
 		combobox1.enable();
