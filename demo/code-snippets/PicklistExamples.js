@@ -35,7 +35,7 @@ class PicklistExample extends React.Component {
   render(){
     return (
       <div>
-       <SLDSPicklist
+       <SLDSMenuPicklist
          label="Contacts"
          modal={true}
          onClick={this.handleOnClick}

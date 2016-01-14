@@ -14,7 +14,7 @@ import SLDSPopover from "components/SLDSPopover";
 import SLDSButton from "components/SLDSButton";
 import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "components/utils";
 
-const displayName = "SLDSDropdown";
+const displayName = "SLDSMenuDropdown";
 const propTypes = {
   align: React.PropTypes.oneOf(["left", "right"]),
   /**
@@ -63,10 +63,10 @@ const defaultProps = {
 };
 
 /**
- * The SLDSDropdown component is a variant of the Menu component.
+ * The SLDSMenuDropdown component is a variant of the Menu component.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">SLDS Menus > Dropdown</a>.
  */
-class SLDSDropdown extends React.Component {
+class SLDSMenuDropdown extends React.Component {
 
   constructor(props) {
     super(props);
@@ -318,11 +318,11 @@ class SLDSDropdown extends React.Component {
 
 }
 
-SLDSDropdown.displayName = displayName;
-SLDSDropdown.propTypes = propTypes;
-SLDSDropdown.defaultProps = defaultProps;
+SLDSMenuDropdown.displayName = displayName;
+SLDSMenuDropdown.propTypes = propTypes;
+SLDSMenuDropdown.defaultProps = defaultProps;
 
-module.exports = SLDSDropdown;
+module.exports = SLDSMenuDropdown;
 module.exports.ListItem = ListItem;
 module.exports.ListItemLabel = ListItemLabel;
 

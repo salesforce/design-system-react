@@ -15,7 +15,7 @@ import tooltip from "./tooltip";
 import flatten from "lodash.flatten";
 import compact from "lodash.compact";
 
-const displayName = "SLDSTooltip";
+const displayName = "SLDSPopoverTooltip";
 const propTypes = {
   /**
    * Alignment of the Tooltip relative to the element that triggers it.
@@ -42,10 +42,10 @@ const defaultProps = {
 };
 
 /**
- * The SLDSTooltip component is variant of the Popover component.
+ * The SLDSPopoverTooltip component is variant of the Popover component.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/popovers#tooltips">SLDS Popovers > Tooltips</a>.
  */
-class SLDSTooltip extends React.Component {
+class SLDSPopoverTooltip extends React.Component {
 
   constructor(props) {
     super(props);
@@ -116,10 +116,10 @@ class SLDSTooltip extends React.Component {
   render(){
     const containerStyles = { display: "inline" };
     return (
-      <div 
-        aria-describedby={this.state.triggerId} 
-        style={containerStyles} 
-        ref="tooltipTarget" 
+      <div
+        aria-describedby={this.state.triggerId}
+        style={containerStyles}
+        ref="tooltipTarget"
         role="tooltip"
         onBlur={this.handleMouseLeave.bind(this)}
         onFocus={this.handleMouseEnter.bind(this)}
@@ -135,9 +135,9 @@ class SLDSTooltip extends React.Component {
 }
 
 
-SLDSTooltip.displayName = displayName;
-SLDSTooltip.propTypes = propTypes;
-SLDSTooltip.defaultProps = defaultProps;
+SLDSPopoverTooltip.displayName = displayName;
+SLDSPopoverTooltip.propTypes = propTypes;
+SLDSPopoverTooltip.defaultProps = defaultProps;
 
-module.exports = SLDSTooltip;
+module.exports = SLDSPopoverTooltip;
 

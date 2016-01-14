@@ -15,7 +15,7 @@ import SLDSPopover from "components/SLDSPopover";
 import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "components/utils";
 import SLDSIcon from "components/SLDSIcon";
 
-const displayName = "SLDSPicklist";
+const displayName = "SLDSMenuPicklist";
 const propTypes = {
   disabled: React.PropTypes.bool,
   label: React.PropTypes.string.isRequired,
@@ -45,10 +45,10 @@ const defaultProps = {
 };
 
 /**
- * The SLDSPicklist component is a variant of the Menu component.
+ * The SLDSMenuPicklist component is a variant of the Menu component.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#picklist">SLDS Menus > Picklists</a>.
  */
-class SLDSPicklist extends React.Component {
+class SLDSMenuPicklist extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -280,11 +280,11 @@ class SLDSPicklist extends React.Component {
 }
 
 
-SLDSPicklist.displayName = displayName;
-SLDSPicklist.propTypes = propTypes;
-SLDSPicklist.defaultProps = defaultProps;
+SLDSMenuPicklist.displayName = displayName;
+SLDSMenuPicklist.propTypes = propTypes;
+SLDSMenuPicklist.defaultProps = defaultProps;
 
-module.exports = SLDSPicklist;
+module.exports = SLDSMenuPicklist;
 module.exports.ListItem = ListItem;
 module.exports.ListItemLabel = ListItemLabel;
 

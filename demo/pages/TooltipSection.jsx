@@ -25,20 +25,20 @@ class TooltipSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSTooltip"].description;
+    const desc = DOCS["SLDSPopoverTooltip"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSTooltip"] ? true : false;
+    const docs = DOCS["SLDSPopoverTooltip"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>SLDSTooltip</h3>
+        <h3 className='slds-text-heading--medium slds-truncate'>SLDSPopoverTooltip</h3>
         {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
 
         <div>
           <CodeMirror codeText={Samples.Tooltips} />
-          <PropTable component="SLDSTooltip" />
+          <PropTable component="SLDSPopoverTooltip" />
         </div>
       </div>
     );

@@ -25,7 +25,7 @@ const examples = (
         label="Save"
         variant="neutral" />
 
-        <SLDSDropdown
+        <SLDSMenuDropdown
           assistiveText="More Options"
           iconName="down"
           iconVariant="border-filled"
@@ -51,7 +51,7 @@ const examples = (
         type="icon"
         variant="icon" />
 
-        <SLDSDropdown
+        <SLDSMenuDropdown
           assistiveText="Sort"
           checkmark={true}
           iconName="sort"

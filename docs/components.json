@@ -333,176 +333,6 @@
             }
         }
     },
-    "SLDSDropdownBase": {
-        "description": "The SLDSDropdown component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
-        "displayName": "SLDSDropdown",
-        "props": {
-            "align": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "\"left\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"right\"",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"left\"",
-                    "computed": false
-                }
-            },
-            "buttonClassName": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Classes applied to the Button component."
-            },
-            "checkmark": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, renders checkmark icon on the selected Menu Item."
-            },
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": ""
-            },
-            "hoverCloseDelay": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "Delay on menu closing.",
-                "defaultValue": {
-                    "value": "300",
-                    "computed": false
-                }
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": ""
-            },
-            "listItemRenderer": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Custom element that overrides the default Menu Item component."
-            },
-            "modal": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, component renders specifically to work inside Modal."
-            },
-            "onClick": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "onSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": true,
-                "description": ""
-            },
-            "openOn": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "\"hover\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"click\"",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"hover\"",
-                    "computed": false
-                }
-            },
-            "options": {
-                "type": {
-                    "name": "array"
-                },
-                "required": true,
-                "description": "Menu item data."
-            },
-            "value": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Current selected menu item."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "\"base\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"neutral\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"brand\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"destructive\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"icon\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"inverse\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"icon-inverse\"",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines variant of the Button component that triggers dropdown.",
-                "defaultValue": {
-                    "value": "\"neutral\"",
-                    "computed": false
-                }
-            }
-        }
-    },
     "SLDSIcon": {
         "description": "The SLDSIcon component should be used for naked icons. For icons that are buttons, use the SLDSButton component.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">SLDS Icons</a>.",
         "displayName": "SLDSIcon",
@@ -714,6 +544,253 @@
                 },
                 "required": false,
                 "description": "Salesforce object type for Lookup items."
+            }
+        }
+    },
+    "SLDSMenuDropdown": {
+        "description": "The SLDSMenuDropdown component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
+        "displayName": "SLDSMenuDropdown",
+        "props": {
+            "align": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"left\"",
+                    "computed": false
+                }
+            },
+            "buttonClassName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Classes applied to the Button component."
+            },
+            "checkmark": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, renders checkmark icon on the selected Menu Item."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "hoverCloseDelay": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Delay on menu closing.",
+                "defaultValue": {
+                    "value": "300",
+                    "computed": false
+                }
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "listItemRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Custom element that overrides the default Menu Item component."
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, component renders specifically to work inside Modal."
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": ""
+            },
+            "openOn": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"hover\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"click\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"hover\"",
+                    "computed": false
+                }
+            },
+            "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "Menu item data."
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Current selected menu item."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines variant of the Button component that triggers dropdown.",
+                "defaultValue": {
+                    "value": "\"neutral\"",
+                    "computed": false
+                }
+            }
+        }
+    },
+    "SLDSMenuPicklist": {
+        "description": "The SLDSMenuPicklist component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
+        "displayName": "SLDSMenuPicklist",
+        "props": {
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"Picklist\"",
+                    "computed": false
+                }
+            },
+            "listItemRenderer": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Custom element that overrides the default Menu Item component."
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, component renders specifically to work inside Modal."
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": ""
+            },
+            "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "Menu item data."
+            },
+            "placeholder": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"Select an Option\"",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Current selected item."
             }
         }
     },
@@ -979,86 +1056,9 @@
             }
         }
     },
-    "SLDSPicklistBase": {
-        "description": "The SLDSPicklist component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
-        "displayName": "SLDSPicklist",
-        "props": {
-            "disabled": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": ""
-            },
-            "label": {
-                "type": {
-                    "name": "string"
-                },
-                "required": true,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"Picklist\"",
-                    "computed": false
-                }
-            },
-            "listItemRenderer": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Custom element that overrides the default Menu Item component."
-            },
-            "modal": {
-                "type": {
-                    "name": "bool"
-                },
-                "required": false,
-                "description": "If true, component renders specifically to work inside Modal."
-            },
-            "onClick": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": ""
-            },
-            "onSelect": {
-                "type": {
-                    "name": "func"
-                },
-                "required": true,
-                "description": ""
-            },
-            "options": {
-                "type": {
-                    "name": "array"
-                },
-                "required": true,
-                "description": "Menu item data."
-            },
-            "placeholder": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"Select an Option\"",
-                    "computed": false
-                }
-            },
-            "value": {
-                "type": {
-                    "name": "node"
-                },
-                "required": false,
-                "description": "Current selected item."
-            }
-        }
-    },
-    "SLDSTooltip": {
-        "description": "The SLDSTooltip component is variant of the Popover component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">SLDS Popovers > Tooltips</a>.",
-        "displayName": "SLDSTooltip",
+    "SLDSPopoverTooltip": {
+        "description": "The SLDSPopoverTooltip component is variant of the Popover component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">SLDS Popovers > Tooltips</a>.",
+        "displayName": "SLDSPopoverTooltip",
         "props": {
             "align": {
                 "type": {

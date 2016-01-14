@@ -25,20 +25,20 @@ class PicklistSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSPicklistBase"].description;
+    const desc = DOCS["SLDSMenuPicklist"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSPicklistBase"] ? true : false;
+    const docs = DOCS["SLDSMenuPicklist"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>SLDSPicklistBase</h3>
+        <h3 className='slds-text-heading--medium slds-truncate'>SLDSMenuPicklist</h3>
         {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
 
         <div>
           <CodeMirror codeText={Samples.Picklists} />
-          <PropTable component="SLDSPicklistBase" />
+          <PropTable component="SLDSMenuPicklist" />
         </div>
       </div>
     );

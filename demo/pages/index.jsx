@@ -64,13 +64,13 @@ module.exports = React.createClass( {
                 <li><Link to="button">SLDSButton</Link></li>
                 <li><Link to="button-stateful">SLDSButtonStateful</Link></li>
                 <li><Link to="button-group">SLDSButtonGroup</Link></li>
-                <li><Link to="dropdown">SLDSDropdownBase</Link></li>
                 <li><Link to="icon">SLDSIcon</Link></li>
                 <li><Link to="lookup">SLDSLookup</Link></li>
+                <li><Link to="dropdown">SLDSMenuDropdown</Link></li>
+                <li><Link to="picklist">SLDSMenuPicklist</Link></li>
                 <li><Link to="modal">SLDSModal</Link></li>
                 <li><Link to="notification">SLDSNotification</Link></li>
-                <li><Link to="picklist">SLDSPicklistBase</Link></li>
-                <li><Link to="tooltip">SLDSTooltip</Link></li>
+                <li><Link to="tooltip">SLDSPopoverTooltip</Link></li>
               </ul>
               <p className="slds-text-heading--small slds-p-vertical--small">
                 <Link to="faq">FAQ</Link>

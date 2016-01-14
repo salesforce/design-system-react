@@ -14,7 +14,7 @@ import Samples from 'demo/Samples';
 import PropTable from 'demo/PropTable';
 import DOCS from 'docs';
 
-import SLDSPicklistBase from 'components/SLDSPicklistBase';
+import SLDSMenuPicklist from 'components/SLDSMenuPicklist';
 import SLDSDateInput from 'components/SLDSDateInput';
 
 module.exports = React.createClass( {

@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 'use strict';
 
 import React from 'react';
-import SLDSPicklistBase from '../../SLDSPicklistBase';
+import SLDSMenuPicklist from '../../SLDSMenuPicklist';
 
 module.exports = React.createClass( {
 
@@ -50,8 +50,8 @@ module.exports = React.createClass( {
     return (
       <div className='slds-form-element'>
 
-        <SLDSPicklistBase 
-          options={this.getOptions()} 
+        <SLDSMenuPicklist
+          options={this.getOptions()}
           label='Year'
           placeholder='Year'
           value={this.props.displayedDate.getFullYear()}
