@@ -1,8 +1,8 @@
 const React = require('react/addons');
 const TestUtils = React.addons.TestUtils;
-import {SLDSPicklistBase} from '../../components';
+import {SLDSMenuPicklist} from '../../components';
 
-describe('SLDSPicklistBase: ',  function(){
+describe('SLDSMenuPicklist: ',  function(){
 
   let clickOnItem = (cmp, index) => {
        let items = TestUtils.scryRenderedDOMComponentsWithTag(
@@ -15,13 +15,13 @@ describe('SLDSPicklistBase: ',  function(){
   it('onSelect fires upon selection change', sinon.test(function() {
     const expectedSelOption = {"value" : '1', "label" : '1', "extra1": 'extra1', "extra2" : { "prop1" : 'prop1', "prop2" : 'prop2'}};
     const onSelectStub = this.stub();
-    
+
     let options = [
       {"value" : '1', "label" : '1', "extra1": 'extra1', "extra2" : { "prop1" : 'prop1', "prop2" : 'prop2'}}
     ];
 
     let cmp = TestUtils.renderIntoDocument(
-      <SLDSPicklistBase options={options} onSelect={onSelectStub}/>
+      <SLDSMenuPicklistoptions={options} onSelect={onSelectStub}/>
     );
 
     let button = TestUtils.findRenderedDOMComponentWithTag(

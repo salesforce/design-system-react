@@ -4,9 +4,9 @@ const TestUtils = React.addons.TestUtils
 const { Simulate,
         scryRenderedDOMComponentsWithClass,
         findRenderedDOMComponentWithClass } = TestUtils
-import {SLDSDropdown} from '../../components'
+import {SLDSMenuDropdown} from '../../components'
 
-describe('SLDSDropdown: ', function(){
+describe('SLDSMenuDropdown: ', function(){
 
   let body;
   const options = [
@@ -26,7 +26,7 @@ describe('SLDSDropdown: ', function(){
                         placeholder: "Select a contact",
                         value: 'C0'}
 
-  const createDropdown = props => React.createElement(SLDSDropdown, assign(props, defaultProps))
+  const createDropdown = props => React.createElement(SLDSMenuDropdown, assign(props, defaultProps))
 
   const dropItDown = ps => renderDropdown(createDropdown(ps))
 
