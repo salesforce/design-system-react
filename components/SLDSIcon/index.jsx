@@ -40,7 +40,7 @@ const defaultProps = {
 };
 
 /**
- * The SLDSIcon component should be used for naked icons. For icons that are buttons, use the SLDSButton component.
+ * The SLDSIcon component should be used for naked icons. For icons that are buttons, use the SLDSButton component with <code>variant="icon"</code>.
  * The icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">SLDS Icons</a>.
  */

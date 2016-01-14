@@ -53,7 +53,7 @@ const propTypes = {
 const defaultProps = {};
 
 /**
- * The SLDSButtonStateful component is used for buttons that have a state of unselected or selected. The initial state is unselected.
+ * The SLDSButtonStateful component is a variant of the Button component. It is used for buttons that have a state of unselected or selected. The initial state is unselected.
  * The three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">SLDS Buttons > Stateful</a>.
  */

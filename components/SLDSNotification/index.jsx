@@ -59,6 +59,7 @@ const defaultProps = {
 
 /**
  * The SLDSNotification component is used for alerts and toasts. For prompt notifications, use the SLDSModal component with <code>prompt={true}</code>.
+ * This component opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/notifications">SLDS Notifications</a>.
  */
 class SLDSNotification extends React.Component {

@@ -42,7 +42,7 @@ const defaultProps = {
 };
 
 /**
- * The SLDSPopoverTooltip component is variant of the Popover component.
+ * The SLDSPopoverTooltip component is variant of the Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/popovers#tooltips">SLDS Popovers > Tooltips</a>.
  */
 class SLDSPopoverTooltip extends React.Component {
