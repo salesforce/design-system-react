@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "4.2"
+install:
+  - npm install
+script:
+  - npm run compile
+  - npm test
+cache:
+  directories:
+    - node_modules
