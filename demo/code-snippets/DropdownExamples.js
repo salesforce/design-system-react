@@ -39,20 +39,19 @@ class DropdownExample extends React.Component {
   render(){
     return (
       <div>
-        <SLDSDropdown
+        <SLDSMenuDropdown
           align="right"
+          checkmark={true}
           label="Dropdown Hover"
           buttonClassName="green"
-          modal={true}
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           onSelect={this.handleOnSelect}
           options={options}
           value='C0' />
 
-        <SLDSDropdown
+        <SLDSMenuDropdown
           label="Dropdown Click"
-          modal={true}
           onClick={this.handleOnClick}
           onSelect={this.handleOnSelect}
           openOn="click"

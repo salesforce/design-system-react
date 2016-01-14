@@ -1,8 +1,3 @@
-const handleClick = function(buttonInstance) {
-  return function() {
-    alert(buttonInstance + " Button Clicked");
-   };
-};
 let inverseBtnParent = {backgroundColor: "#16325c", padding: "10px", display: "inline-block"};
 const examples = (
   <div className="slds-x-small-buttons--horizontal">

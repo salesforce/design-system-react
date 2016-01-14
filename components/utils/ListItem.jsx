@@ -18,6 +18,7 @@ import ListItemLabelRenderer from './ListItemLabel';
 const displayName = "SLDSList-Item";
 const propTypes = {
   data: React.PropTypes.object,
+  checkmark: React.PropTypes.bool,
   index: React.PropTypes.number,
   inverted: React.PropTypes.bool,
   isHighlighted: React.PropTypes.bool,
@@ -147,6 +148,7 @@ class SLDSListItem extends React.Component {
   getLabel () {
     const LabelComp = this.props.labelRenderer;
     return <LabelComp
+      checkmark={this.props.checkmark}
       index={this.props.index}
       label={this.props.label}
       value={this.props.value}

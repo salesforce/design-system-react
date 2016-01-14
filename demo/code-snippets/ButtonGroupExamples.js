@@ -1,11 +1,11 @@
 const moreOptions = [
-  {label:'undo',value:'A0'},
-  {label:'redo',value:'B0'},
-  {label:'activate',value:'C0'},
+  {label:"undo", value:"A0"},
+  {label:"redo", value:"B0"},
+  {label:"activate", value:"C0"},
 ];
 const sortOptions = [
-  {label:'Sort ascending',value:'A0'},
-  {label:'Sort descending',value:'B0'},
+  {label:"Sort ascending", value:"A0"},
+  {label:"Sort descending", value:"B0"},
 ];
 const selectItem = function(item) {
   console.log(item.label, "selected");
@@ -25,13 +25,14 @@ const examples = (
         label="Save"
         variant="neutral" />
 
-        <SLDSDropdown
+        <SLDSMenuDropdown
           assistiveText="More Options"
           iconName="down"
           iconVariant="border-filled"
           onSelect={selectItem}
           openOn="click"
           options={moreOptions}
+          modal={true}
           variant="icon" />
     </SLDSButtonGroup>
 
@@ -50,13 +51,16 @@ const examples = (
         type="icon"
         variant="icon" />
 
-        <SLDSDropdown
+        <SLDSMenuDropdown
           assistiveText="Sort"
+          checkmark={true}
           iconName="sort"
           iconVariant="more"
           onSelect={selectItem}
           openOn="click"
+          modal={true}
           options={sortOptions}
+          value="A0"
           variant="icon" />
     </SLDSButtonGroup>
   </div>

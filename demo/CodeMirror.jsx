@@ -12,13 +12,13 @@ const classNames = require('classnames');
 const SLDSButton =  require('../components/SLDSButton');
 const SLDSButtonStateful =  require('../components/SLDSButtonStateful');
 const SLDSButtonGroup =  require('../components/SLDSButtonGroup');
-const SLDSDropdown =  require('../components/SLDSDropdownBase');
 const SLDSIcon =  require('../components/SLDSIcon');
 const SLDSLookup =  require('../components/SLDSLookup');
+const SLDSMenuDropdown =  require('../components/SLDSMenuDropdown');
+const SLDSMenuPicklist =  require('../components/SLDSMenuPicklist');
 const SLDSModal =  require('../components/SLDSModal');
 const SLDSNotification =  require('../components/SLDSNotification');
-const SLDSPicklist =  require('../components/SLDSPicklistBase');
-const SLDSTooltip =  require('../components/SLDSTooltip');
+const SLDSPopoverTooltip =  require('../components/SLDSPopoverTooltip');
 
 const displayName = 'CodeMirror';
 const propTypes = {
@@ -84,7 +84,7 @@ class CodeMirror extends React.Component {
     this.state = {
       code: this.props.codeText,
       codeChanged: false,
-      showCode: false,
+      showCode: true,
     };
   }
 

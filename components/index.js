@@ -12,29 +12,29 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import SLDSButton from './SLDSButton';
 import SLDSButtonStateful from './SLDSButtonStateful';
 import SLDSButtonGroup from './SLDSButtonGroup';
-import SLDSDropdown from './SLDSDropdownBase';
 import SLDSIcon from './SLDSIcon';
 import SLDSLookup from './SLDSLookup';
+import SLDSMenuDropdown from './SLDSMenuDropdown';
+import SLDSMenuPicklist from './SLDSMenuPicklist';
 import SLDSModal from './SLDSModal';
 import SLDSModalTrigger from './SLDSModal/trigger';
 import SLDSNotification from './SLDSNotification';
-import SLDSPicklistBase from './SLDSPicklistBase';
+import SLDSPopoverTooltip from './SLDSPopoverTooltip';
 import SLDSSettings from './SLDSSettings';
-import SLDSTooltip from './SLDSTooltip';
 import SLDSUtilityIcon from './SLDSUtilityIcon';
 
 module.exports = {
   SLDSButton: SLDSButton,
   SLDSButtonStateful: SLDSButtonStateful,
   SLDSButtonGroup: SLDSButtonGroup,
-  SLDSDropdown: SLDSDropdown,
   SLDSIcon: SLDSIcon,
   SLDSLookup: SLDSLookup,
+  SLDSMenuDropdown: SLDSMenuDropdown,
+  SLDSMenuPicklist: SLDSMenuPicklist,
   SLDSModal: SLDSModal,
   SLDSModalTrigger: SLDSModalTrigger,
   SLDSNotification: SLDSNotification,
-  SLDSPicklistBase: SLDSPicklistBase,
+  SLDSPopoverTooltip: SLDSPopoverTooltip,
   SLDSSettings: SLDSSettings,
-  SLDSTooltip: SLDSTooltip,
   SLDSUtilityIcon: SLDSUtilityIcon,
 };

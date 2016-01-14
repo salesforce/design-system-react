@@ -37,7 +37,7 @@ class PicklistCustomExample extends React.Component {
   render(){
     return (
       <div>
-       <SLDSPicklist
+       <SLDSMenuPicklist
          label="Contacts"
          listItemRenderer={CustomListItemLabel}
          modal={true}
