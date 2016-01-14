@@ -7,5 +7,5 @@ BABEL="babel -d lib/ components/"
 BUILD="webpack --devtool source-map --config webpack.build.config.js"
 
 eval $BABEL
-eval $BUILD
-eval "MINIFY=1 $BUILD"
+#eval $BUILD
+#eval "MINIFY=1 $BUILD"
