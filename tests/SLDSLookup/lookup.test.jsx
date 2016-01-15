@@ -166,11 +166,6 @@ describe('SLDSLookup: ',  function(){
       expect(getItems(lookup).length).to.equal(1); // add item
       expect(lookup.getElementsByClassName('slds-lookup__message').length).to.equal(1);
     });
-
-    it('highlights its matched text', () => {
-      Simulate.change(input, {target: {value: 'Pa'}});
-      expect(getItems(lookup)[0].querySelector('mark').innerText).to.equal('Pa');
-    });
   });
 
   describe("custom filter", function() {

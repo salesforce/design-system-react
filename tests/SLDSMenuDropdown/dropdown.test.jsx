@@ -36,7 +36,7 @@ describe('SLDSMenuDropdown: ', function(){
     let cmp, btn;
 
     beforeEach(() => {
-      cmp = dropItDown({buttonClassName: 'dijkstrafied'})
+      cmp = dropItDown({buttonClassName: 'dijkstrafied', openOn: 'hover'})
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
     })
 
