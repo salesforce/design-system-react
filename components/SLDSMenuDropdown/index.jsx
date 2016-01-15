@@ -54,6 +54,9 @@ const propTypes = {
    * Current selected menu item.
    */
   value: React.PropTypes.string,
+
+  tooltip: React.PropTypes.node
+
 };
 const defaultProps = {
   align: "left",
@@ -312,6 +315,7 @@ class SLDSMenuDropdown extends React.Component {
         style={this.props.style}
         tabIndex={this.state.isOpen ? "-1" : "0"}
         variant={this.props.buttonVariant}
+        tooltip={this.props.tooltip}
         >
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
       </SLDSButton>;
