@@ -1,3 +1,9 @@
+const moreOptions = [
+  {label:'undo',value:'A0'},
+  {label:'redo',value:'B0'},
+  {label:'activate',value:'C0'},
+];
+
 class TooltipExample extends React.Component {
 
   displayName: "TooltipExample"
@@ -30,6 +36,49 @@ class TooltipExample extends React.Component {
               <SLDSButton variant="brand" label="Hover to Open" />
             </SLDSPopoverTooltip>
         </div>
+
+
+
+
+        <div style={{margin:'10rem'}}>
+        <SLDSButtonGroup className="slds-p-bottom--medium">
+          <SLDSButton
+            label="Refresh"
+            variant="neutral" 
+            tooltip={<SLDSPopoverTooltip 
+              content="Buttonbar Tooltip"
+              align="bottom" 
+              openByDefault={true}></SLDSPopoverTooltip>}
+          />
+
+          <SLDSButton
+            label="Edit"
+            variant="neutral"
+            tooltip={<SLDSPopoverTooltip 
+              content="Buttonbar Tooltip"
+              align="bottom" 
+              openByDefault={true}></SLDSPopoverTooltip>}
+          />
+
+          <SLDSMenuDropdown
+            assistiveText="More Options"
+            iconName="down"
+            iconVariant="border-filled"
+            openOn="hover"
+            options={moreOptions}
+            variant="icon" 
+            tooltip={<SLDSPopoverTooltip 
+              content="Dropdown Tooltip"
+              align="top" 
+              openByDefault={true}></SLDSPopoverTooltip>}
+          />
+
+        </SLDSButtonGroup>
+
+      </div>
+
+
+
       </div>
     );
   }
