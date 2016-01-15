@@ -44,32 +44,32 @@ class TooltipExample extends React.Component {
         <SLDSButtonGroup className="slds-p-bottom--medium">
           <SLDSButton
             label="Refresh"
-            variant="neutral" 
-            tooltip={<SLDSPopoverTooltip 
+            variant="neutral"
+            tooltip={<SLDSPopoverTooltip
+              align="bottom"
               content="Buttonbar Tooltip"
-              align="bottom" 
               openByDefault={true}></SLDSPopoverTooltip>}
           />
 
           <SLDSButton
             label="Edit"
             variant="neutral"
-            tooltip={<SLDSPopoverTooltip 
+            tooltip={<SLDSPopoverTooltip
+              align="bottom"
               content="Buttonbar Tooltip"
-              align="bottom" 
               openByDefault={true}></SLDSPopoverTooltip>}
           />
 
           <SLDSMenuDropdown
             assistiveText="More Options"
+            buttonVariant="icon"
             iconName="down"
             iconVariant="border-filled"
             openOn="hover"
             options={moreOptions}
-            variant="icon" 
-            tooltip={<SLDSPopoverTooltip 
+            tooltip={<SLDSPopoverTooltip
+              align="top"
               content="Dropdown Tooltip"
-              align="top" 
               openByDefault={true}></SLDSPopoverTooltip>}
           />
 
