@@ -24,75 +24,87 @@ class GettingStartedSection extends React.Component {
 
   render(){
     return (
-      <div className='slds-p-around--medium'>
-        <div className='slds-p-around--medium'>
+      <div className='slds-p-around--medium' style={{"maxWidth":"800px"}}>
         <h3 className='slds-text-heading--medium slds-truncate'>
           Getting Started
         </h3>
 
-        <p className="slds-m-top--large">
-          Note: design-system-react is optimized for React 0.14.x.
+        <p className="slds-m-vertical--small">
+          Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.0.
         </p>
 
-        <p className="slds-m-top--large">
-        TODO: add general overview
-        </p>
+        <div className='slds-p-vertical--medium'>
+          <h3 className='slds-text-heading--medium slds-p-vertical--small'>
+            Project Overview
+          </h3>
 
-        <p className="slds-p-vertical--small">
-          To use it in your code base via npm, proceed as follows.
-        </p>
+          <p className="slds-m-vertical--small">
+            The design system react library is the Reactjs implementation of the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a> components.
+            Each SLDS React component is a specific variant of a component from Lightning Design System.
+            For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightning Design System Menu > Dropdown</a>,
+            and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup (base)</a>.
+          </p>
+
+          <p className="slds-m-vertical--small">
+            There are a couple exceptions to this rule. If the component has a prop <code>variant=""</code>, then you pass in the variant on the component itself.
+            For example, <code>SLDSButton variant="brand"</code> represents <a href="http://www.lightningdesignsystem.com/components/buttons#brand">Lightning Design System Button > Brand</a>
+          </p>
         </div>
 
-        <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-p-vertical--small'>
-          Example for tooltip over an info icon
-        </h3>
+        <div className='slds-p-vertical--medium'>
+          <h3 className='slds-text-heading--medium slds-p-vertical--small'>
+            Example for tooltip over an info icon
+          </h3>
 
-        <p className="slds-p-vertical--small">
-          First, install the npm module:
-        </p>
+          <p className="slds-p-vertical--small">
+            To use it in your code base via npm, proceed as follows.
+          </p>
 
-        <code className="slds-p-vertical--small">
-          {"npm install --save design-system-react"}
-        </code>
+          <p className="slds-p-vertical--small">
+            First, install the npm module:
+          </p>
 
-        <p className="slds-p-vertical--small slds-m-top--large ">
-          Then, in the files where you're using the components, refer to each Lightning Design System component using the "SLDS" prefix. For example to import the Tooltip and Icon components:
-        </p>
+          <code className="slds-p-vertical--small">
+            {"npm install --save design-system-react"}
+          </code>
 
-        <code className="slds-p-vertical--small">
-          {"import {SLDSPopoverTooltip, SLDSIcon} from \"design-system-react\""}
-        </code>
+          <p className="slds-p-vertical--small slds-m-top--large ">
+            Then, in the files where you're using the components, refer to each Lightning Design System component using the "SLDS" prefix. For example to import the Tooltip and Icon components:
+          </p>
 
-        <p className="slds-p-vertical--small slds-m-top--large ">
-          You can then use the components in your JSX markup. For example:
-        </p>
+          <code className="slds-p-vertical--small">
+            {"import {SLDSPopoverTooltip, SLDSIcon} from \"design-system-react\""}
+          </code>
 
-        <code className="slds-p-vertical--small">
-          {'Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor).'}<br />
-          <br />
-          {'<div ref="tooltipDemoExample">'}<br />
-          &nbsp;&nbsp;{'<SLDSPopoverTooltip'}<br />
-           &nbsp;&nbsp;&nbsp;&nbsp;{'align="top"'}<br />
-           &nbsp;&nbsp;&nbsp;&nbsp;{'content={<span>Here is more information.</span>}'}<br />
-           &nbsp;&nbsp;&nbsp;&nbsp;{'targetElement={this.refs.tooltipDemoExample}>'}<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'<a href="javascript:void(0)">'}<br />
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'<SLDSIcon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />'}<br />
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'</a>'}<br />
-          &nbsp;&nbsp;{'</SLDSPopoverTooltip>'}<br />
-          {'</div>'}<br />
-        </code>
+          <p className="slds-p-vertical--small slds-m-top--large ">
+            You can then use the components in your JSX markup. For example:
+          </p>
 
-        <p className="slds-p-vertical--small slds-m-top--large ">
-          Here's the result when you hover over the info icon:
-        </p>
-        <img src="demo/assets/images/tooltipHover.png" alt="Tooltip opened on hover" />
+          <code className="slds-p-vertical--small">
+            {'Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor).'}<br />
+            <br />
+            {'<div ref="tooltipDemoExample">'}<br />
+            &nbsp;&nbsp;{'<SLDSPopoverTooltip'}<br />
+             &nbsp;&nbsp;&nbsp;&nbsp;{'align="top"'}<br />
+             &nbsp;&nbsp;&nbsp;&nbsp;{'content={<span>Here is more information.</span>}'}<br />
+             &nbsp;&nbsp;&nbsp;&nbsp;{'targetElement={this.refs.tooltipDemoExample}>'}<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'<a href="javascript:void(0)">'}<br />
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'<SLDSIcon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />'}<br />
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'</a>'}<br />
+            &nbsp;&nbsp;{'</SLDSPopoverTooltip>'}<br />
+            {'</div>'}<br />
+          </code>
 
-        <p className="slds-p-vertical--small slds-m-top--large ">
-          Have fun! If you have any questions (and we hope you do!), please check out our <a href="/#/home/faq">FAQ</a>. If you don't find an answer there, then please let us know via our <a href="https://github.com/salesforce-ux/design-system-react/issues">Github Issues</a>.
-        </p>
+          <p className="slds-p-vertical--small slds-m-top--large ">
+            Here's the result when you hover over the info icon:
+          </p>
+          <img src="demo/assets/images/tooltipHover.png" alt="Tooltip opened on hover" />
 
-      </div>
+          <p className="slds-p-vertical--small slds-m-top--large ">
+            Have fun! If you have any questions (and we hope you do!), please check out our <a href="/#/home/faq">FAQ</a>. If you don't find an answer there, then please let us know via our <a href="https://github.com/salesforce-ux/design-system-react/issues">Github Issues</a>.
+          </p>
+
+        </div>
       </div>
     );
   }
