@@ -28,11 +28,12 @@ import NotificationSection from './pages/NotificationSection';
 import PicklistSection from './pages/PicklistSection';
 import TooltipSection from './pages/TooltipSection';
 
+
 const routes = (
   <Route handler={App} path="/">
     <DefaultRoute handler={HomePage} />
     <Route name="home" handler={HomePage}>
-      <Route name="getting-started" path="getting-started" handler={GettingStarted}/>
+      <Route name="getting-started" path="getting-started" handler={GettingStarted} />
 
       <Route name="button" path="button" handler={ButtonSection}/>
       <Route name="button-stateful" path="button-stateful" handler={ButtonStatefulSection}/>
@@ -46,7 +47,7 @@ const routes = (
       <Route name="tooltip" path="tooltip" handler={TooltipSection}/>
       <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
 
-      <Route name="faq" path="faq" handler={FAQ}/>
+      <Route name="faq" path="faq" handler={FAQ} />
     </Route>
   </Route>
 );
