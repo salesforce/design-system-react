@@ -39,15 +39,15 @@ class GettingStartedSection extends React.Component {
           </h3>
 
           <p className="slds-m-vertical--small">
-            The design system react library is the Reactjs implementation of the <a href="http://www.lightningdesignsystem.com/">Lightening Design System</a> components.
-            Each SLDS React component is a specific variant of a component from Lightening Design System.
-            For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightening Design System Menu > Dropdown</a>,
-            and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightening Design System Lookup (base)</a>.
+            The design system react library is the Reactjs implementation of the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a> components.
+            Each SLDS React component is a specific variant of a component from Lightning Design System.
+            For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightning Design System Menu > Dropdown</a>,
+            and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup (base)</a>.
           </p>
 
           <p className="slds-m-vertical--small">
             There are a couple exceptions to this rule. If the component has a prop <code>variant=""</code>, then you pass in the variant on the component itself.
-            For example, <code>SLDSButton variant="brand"</code> represents <a href="http://www.lightningdesignsystem.com/components/buttons#brand">Lightening Design System Button > Brand</a>
+            For example, <code>SLDSButton variant="brand"</code> represents <a href="http://www.lightningdesignsystem.com/components/buttons#brand">Lightning Design System Button > Brand</a>
           </p>
         </div>
 
