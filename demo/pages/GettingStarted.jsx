@@ -34,6 +34,10 @@ class GettingStartedSection extends React.Component {
           Note: design-system-react is optimized for React 0.14.x.
         </p>
 
+        <p className="slds-m-top--large">
+        TODO: add general overview
+        </p>
+
         <p className="slds-p-vertical--small">
           To use it in your code base via npm, proceed as follows.
         </p>
