@@ -9,7 +9,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
-//import {PrismCode} from "react-prism";
 
 const displayName = "GettingStartedSection";
 const propTypes = {};

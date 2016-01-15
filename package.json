@@ -73,7 +73,6 @@
     "react-docgen": "^2.4.0",
     "react-dom": "^0.14.0",
     "react-hot-loader": "^1.2.7",
-    "react-prism": "^3.0.0",
     "react-router": "^0.13.3",
     "sinon": "^1.17.1",
     "sinon-chai": "^2.8.0",
