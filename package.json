@@ -3,7 +3,14 @@
   "description": "Javascript components based on Lightning Design System with Facades for libraries and frameworks including jQuery, React, Backbone, and Angular",
   "version": "0.0.12",
   "contributors": [],
+  "files": [
+    "dist",
+    "src",
+    "scripts",
+    "utilities"
+  ],
   "license": "BSD-3-Clause",
+  "main": "src/main.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:salesforce-ux/design-system-facades.git"
@@ -62,7 +69,7 @@
   "scripts": {
     "start": "grunt serve",
     "test": "grunt test",
-    "postinstall": "node ./bin/postinstall.js",
+    "postinstall": "node ./scripts/postinstall.js",
     "heroku-build": "./bin/heroku-build.sh",
     "heroku-start": "node app.js"
   },
