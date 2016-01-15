@@ -10,19 +10,6 @@
                 "required": false,
                 "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop."
             },
-            "buttonSize": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "\"small\"",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": ""
-            },
             "disabled": {
                 "type": {
                     "name": "bool"
@@ -579,6 +566,47 @@
                 "required": false,
                 "description": "Classes applied to the Button component."
             },
+            "buttonVariant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines variant of the Button component that triggers dropdown.",
+                "defaultValue": {
+                    "value": "\"neutral\"",
+                    "computed": false
+                }
+            },
             "checkmark": {
                 "type": {
                     "name": "bool"
@@ -677,47 +705,6 @@
                 },
                 "required": false,
                 "description": "Current selected menu item."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "\"base\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"neutral\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"brand\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"destructive\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"icon\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"inverse\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"icon-inverse\"",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines variant of the Button component that triggers dropdown.",
-                "defaultValue": {
-                    "value": "\"neutral\"",
-                    "computed": false
-                }
             }
         }
     },

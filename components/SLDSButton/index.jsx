@@ -21,7 +21,6 @@ const propTypes = {
    * If the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop.
    */
   assistiveText: React.PropTypes.string,
-  buttonSize: React.PropTypes.oneOf(["small"]),
   disabled: React.PropTypes.bool,
   /**
    * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">SLDS Buttons > Hint</a>.
@@ -90,7 +89,6 @@ class SLDSButton extends React.Component {
       [`slds-button--${this.props.variant}`]: !base && !iconOnly,
       [`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
       ["slds-max-small-button--stretch"]: this.props.responsive,
-      ["slds-button--small"]: this.props.buttonSize,
     });
   }
 
