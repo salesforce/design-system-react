@@ -58,7 +58,7 @@ const propTypes = {
 const defaultProps = {
   align: "left",
   hoverCloseDelay: 300,
-  openOn: "hover",
+  openOn: "click",
   modal: true,
   buttonVariant: "neutral",
 };

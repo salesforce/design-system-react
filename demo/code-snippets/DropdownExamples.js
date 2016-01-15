@@ -40,22 +40,21 @@ class DropdownExample extends React.Component {
     return (
       <div>
         <SLDSMenuDropdown
-          align="right"
-          checkmark={true}
-          label="Dropdown Hover"
-          buttonClassName="green"
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
-          onSelect={this.handleOnSelect}
-          options={options}
-          value='C0' />
-
-        <SLDSMenuDropdown
-          buttonVariant="brand"
           label="Dropdown Click"
           onClick={this.handleOnClick}
           onSelect={this.handleOnSelect}
-          openOn="click"
+          options={options} />
+
+        <SLDSMenuDropdown
+          align="right"
+          buttonClassName="green"
+          buttonVariant="brand"
+          checkmark={true}
+          label="Dropdown Hover"
+          onMouseEnter={this.handleMouseEnter}
+          onMouseLeave={this.handleMouseLeave}
+          onSelect={this.handleOnSelect}
+          openOn="hover"
           options={options}
           value='C0' />
       </div>

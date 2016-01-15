@@ -688,7 +688,7 @@
                 "required": false,
                 "description": "",
                 "defaultValue": {
-                    "value": "\"hover\"",
+                    "value": "\"click\"",
                     "computed": false
                 }
             },
