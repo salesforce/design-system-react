@@ -32,7 +32,7 @@ class FAQSection extends React.Component {
 
         <section className="slds-p-vertical--medium">
           <p className="slds-text-heading--medium slds-p-vertical--medium">
-            What is the <a href="http://www.lightningdesignsystem.com/">Lightening Design System</a>?
+            What is the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>?
           </p>
           <p>
             It is collection of design patterns, components, and guidelines for creating unified UI in the Salesforce ecosystem.
@@ -41,10 +41,10 @@ class FAQSection extends React.Component {
 
         <section className="slds-p-vertical--medium">
           <p className="slds-text-heading--medium slds-p-vertical--medium">
-            How is the SLDS React Library different than the Lightening Design System?
+            How is the SLDS React Library different than the Lightning Design System?
           </p>
           <p>
-            The Lightening Design System consists of static markup components. The SLDS React Library is the ReactJS component implementation.
+            The Lightning Design System consists of static markup components. The SLDS React Library is the ReactJS component implementation.
           </p>
         </section>
 
@@ -68,7 +68,7 @@ class FAQSection extends React.Component {
 
         <section className="slds-p-vertical--medium">
           <p className="slds-text-heading--medium slds-p-vertical--medium">
-            Will there be Lightening Design System libraries for other Javascript frameworks?
+            Will there be Lightning Design System libraries for other Javascript frameworks?
           </p>
           <p>
             [TODO: Get answer from Sonke]
@@ -116,7 +116,7 @@ class FAQSection extends React.Component {
 
         <section className="slds-p-vertical--medium">
           <p className="slds-text-heading--small slds-p-vertical--medium">
-            Visit the <a href="http://www.lightningdesignsystem.com/faq">Lightening Design System - FAQ</a> for more FAQs.
+            Visit the <a href="http://www.lightningdesignsystem.com/faq">Lightning Design System - FAQ</a> for more FAQs.
           </p>
         </section>
       </div>
