@@ -20,7 +20,7 @@ const propTypes = {
   /**
    * Alignment of the Tooltip relative to the element that triggers it.
    */
-  align: React.PropTypes.oneOf(["top", "right", "bottom", "left"]).isRequired,
+  align: React.PropTypes.oneOf(["top", "top-left", "top-right", "right", "right-top", "right-bottom", "bottom", "bottom-left", "bottom-right", "left", "left-top", "left-bottom"]).isRequired,
   /**
    * Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it.
    */
