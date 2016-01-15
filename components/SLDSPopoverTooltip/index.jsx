@@ -24,7 +24,7 @@ const propTypes = {
   /**
    * Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it.
    */
-  children: React.PropTypes.node.isRequired,
+  children: React.PropTypes.node,
   /**
    * Content inside Tooltip.
    */
@@ -34,6 +34,7 @@ const propTypes = {
    */
   hoverCloseDelay: React.PropTypes.number,
   openByDefault: React.PropTypes.bool,
+  target: React.PropTypes.any
 };
 const defaultProps = {
   align: "top",
@@ -52,23 +53,46 @@ class SLDSPopoverTooltip extends React.Component {
     this.state = {
       isClosing: false,
       isOpen: this.props.openByDefault,
-      triggerId: null,
     };
   }
 
   componentDidMount() {
-    const id = ReactDOM.findDOMNode(this.refs.tooltipTarget).getAttribute("data-reactid");
     this.setState({
       isMounted: true,
-      triggerId: id,
+      el: ReactDOM.findDOMNode(this)
     });
   }
 
   componentWillUnmount() {
     this.setState({
-      isMounted: false,
-      triggerId: null,
+      isMounted: false
     });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(this.props.target && this.props.target !== prevProps.target){
+      this.setState({
+        tooltipTarget: this.getTooltipTarget()
+      })
+    }
+    if(!prevState.isMounted && this.state.isMounted){
+      setTimeout( ()=> {
+        this.setState({
+          isOpen: this.props.openByDefault
+        });
+      }.bind(this));
+    }
+  }
+
+  getTooltipTarget() {
+    return this.props.target?this.props.target:this.state.el;
+  }
+
+  getTriggerId() {
+    const trigger = this.getTooltipTarget();
+    if(trigger){
+      return trigger.getAttribute("data-reactid");
+    }
   }
 
   handleMouseClick() {
@@ -99,7 +123,7 @@ class SLDSPopoverTooltip extends React.Component {
   }
 
   getTooltipContent() {
-    return <div id={this.state.triggerId} className="slds-popover__body">{this.props.content}</div>;
+    return <div id={this.getTriggerId()} className="slds-popover__body">{this.props.content}</div>;
   }
 
   handleCancel() {
@@ -110,14 +134,14 @@ class SLDSPopoverTooltip extends React.Component {
   }
 
   getTooltip() {
-    return this.state.isOpen?tooltip.getTooltip(this.props, this.getTooltipContent(), this.refs.tooltipTarget, this.handleCancel.bind(this)):<span></span>;
+    return this.state.isOpen?tooltip.getTooltip(this.props, this.getTooltipContent(), this.getTooltipTarget(), this.handleCancel.bind(this)):<span></span>;
   }
 
   render(){
     const containerStyles = { display: "inline" };
     return (
       <div
-        aria-describedby={this.state.triggerId}
+        aria-describedby={this.getTriggerId()}
         style={containerStyles}
         ref="tooltipTarget"
         role="tooltip"

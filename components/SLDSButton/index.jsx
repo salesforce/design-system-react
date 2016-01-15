@@ -12,6 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 const classNames = require("classnames");
 import ButtonIcon from "components/SLDSIcon/ButtonIcon";
+import SLDSTooltipTrigger from "../SLDSPopoverTooltip/trigger"
 import omit from "lodash.omit";
 
 const displayName = 'SLDSButton';
@@ -59,6 +60,8 @@ const propTypes = {
    * Use <code>icon-inverse</code> for white icons.
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
+
+  tooltip: React.PropTypes.node
 };
 const defaultProps = {
   variant: "base",
@@ -69,11 +72,19 @@ const defaultProps = {
  * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <code>SLDSButtonStateful</code> component.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">SLDS Buttons</a>.
  */
-class SLDSButton extends React.Component {
+class SLDSButton extends SLDSTooltipTrigger {
 
   constructor(props) {
     super(props);
     this.state = { active: false };
+  }
+
+  componentDidMount() {
+    super.componentDidMount()
+  }
+
+  componentWillUnmount() {
+    super.componentWillUnmount()
   }
 
   handleClick() {
@@ -135,6 +146,9 @@ class SLDSButton extends React.Component {
 
         {(this.props.iconPosition !== "right")? this.renderLabel(): null}
         {this.props.children}
+        {
+          this.getTooltip()
+        }
       </button>
     )
   }
