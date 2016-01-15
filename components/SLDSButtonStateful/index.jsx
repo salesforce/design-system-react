@@ -11,6 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 import ButtonIcon from 'components/SLDSIcon/ButtonIcon';
+import SLDSTooltipTrigger from "../SLDSPopoverTooltip/trigger"
 const classNames = require("classnames");
 import omit from "lodash.omit";
 
@@ -49,19 +50,29 @@ const propTypes = {
    * Use <code>icon-inverse</code> for white icons.
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
+
+  tooltip: React.PropTypes.node
 };
 const defaultProps = {};
 
 /**
- * The SLDSButtonStateful component is used for buttons that have a state of unselected or selected. The initial state is unselected.
+ * The SLDSButtonStateful component is a variant of the Button component. It is used for buttons that have a state of unselected or selected. The initial state is unselected.
  * The three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.
  * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">SLDS Buttons > Stateful</a>.
  */
-class SLDSButtonStateful extends React.Component {
+class SLDSButtonStateful extends SLDSTooltipTrigger {
 
   constructor(props) {
     super(props);
     this.state = {active: false};
+  }
+
+  componentDidMount() {
+    super.componentDidMount()
+  }
+
+  componentWillUnmount() {
+    super.componentWillUnmount()
   }
 
   handleClick() {
@@ -99,6 +110,7 @@ class SLDSButtonStateful extends React.Component {
             <ButtonIcon disabled={this.props.disabled} name="close" size="small" position="left" className="slds-button__icon--stateful"  />
             Unfollow
           </span>
+          { this.getTooltip() }
         </button>
       )
     }
@@ -117,6 +129,7 @@ class SLDSButtonStateful extends React.Component {
             <ButtonIcon disabled={this.props.disabled} name="close" size="small" position="left" className="slds-button__icon--stateful"  />
             Leave
           </span>
+          { this.getTooltip() }
         </button>
       )
     }
@@ -124,6 +137,7 @@ class SLDSButtonStateful extends React.Component {
       return (
         <button className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props} aria-live="polite">
           <ButtonIcon assistiveText={this.state.active ?  this.props.assistiveText + " selected" : this.props.assistiveText} disabled={this.props.disabled} name={this.props.iconName} size={this.props.iconSize}  className="slds-button__icon--stateful"  />
+          { this.getTooltip() }
         </button>
       )
     }

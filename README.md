@@ -1,6 +1,8 @@
 design-system-react
 =====================
 
+[![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
+
 SLDS React component library based off [Salesforce Lightning Design System](http://www.lightningdesignsystem.com). This project is in beta, very experimental, and not yet open-sourced. Until this project is open-sourced, documentation for using the SLDS React Components runs locally from this repo. Inside your local directory, run `npm start` and open `localhost:3000` to view docs.
 
 ## Components

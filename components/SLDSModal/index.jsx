@@ -72,7 +72,7 @@ const defaultProps = {
 };
 
 /**
- * The SLDSModal component is used for modals and <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">prompt notifications</a>.
+ * The SLDSModal component is used for modals and <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">prompt notifications</a>. This component wraps around the modal content and opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
  * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">SLDS Modals</a>.
  */
 class SLDSModal extends React.Component {

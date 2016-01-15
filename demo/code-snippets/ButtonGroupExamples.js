@@ -27,22 +27,21 @@ const examples = (
 
         <SLDSMenuDropdown
           assistiveText="More Options"
+          buttonVariant="icon"
           iconName="down"
           iconVariant="border-filled"
           onSelect={selectItem}
           openOn="click"
-          options={moreOptions}
-          modal={true}
-          variant="icon" />
+          options={moreOptions} />
     </SLDSButtonGroup>
 
     <SLDSButtonGroup className="slds-p-vertical--medium">
       <SLDSButtonStateful
         assistiveText="Show Chart"
+        buttonVariant="icon"
         iconName="chart"
         iconVariant="border"
-        type="icon"
-        variant="icon" />
+        type="icon" />
 
       <SLDSButtonStateful
         assistiveText="Filter"

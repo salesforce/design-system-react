@@ -22,6 +22,10 @@ const propTypes = {
    */
   buttonClassName: React.PropTypes.string,
   /**
+   * Determines variant of the Button component that triggers dropdown.
+   */
+  buttonVariant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
+  /**
    * If true, renders checkmark icon on the selected Menu Item.
    */
   checkmark: React.PropTypes.bool,
@@ -50,17 +54,16 @@ const propTypes = {
    * Current selected menu item.
    */
   value: React.PropTypes.string,
-  /**
-   * Determines variant of the Button component that triggers dropdown.
-   */
-  variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
+
+  tooltip: React.PropTypes.node
+
 };
 const defaultProps = {
   align: "left",
   hoverCloseDelay: 300,
-  openOn: "hover",
+  openOn: "click",
   modal: true,
-  variant: "neutral",
+  buttonVariant: "neutral",
 };
 
 /**
@@ -311,7 +314,8 @@ class SLDSMenuDropdown extends React.Component {
         ref="button"
         style={this.props.style}
         tabIndex={this.state.isOpen ? "-1" : "0"}
-        variant={this.props.variant}
+        variant={this.props.buttonVariant}
+        tooltip={this.props.tooltip}
         >
         {this.props.modal?this.getModalPopover():this.getSimplePopover()}
       </SLDSButton>;

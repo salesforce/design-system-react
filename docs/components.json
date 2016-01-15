@@ -10,19 +10,6 @@
                 "required": false,
                 "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop."
             },
-            "buttonSize": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "\"small\"",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": ""
-            },
             "disabled": {
                 "type": {
                     "name": "bool"
@@ -187,7 +174,7 @@
         }
     },
     "SLDSButtonStateful": {
-        "description": "The SLDSButtonStateful component is used for buttons that have a state of unselected or selected. The initial state is unselected.\nThe three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">SLDS Buttons > Stateful</a>.",
+        "description": "The SLDSButtonStateful component is a variant of the Button component. It is used for buttons that have a state of unselected or selected. The initial state is unselected.\nThe three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">SLDS Buttons > Stateful</a>.",
         "displayName": "SLDSButtonStateful",
         "props": {
             "assistiveText": {
@@ -334,7 +321,7 @@
         }
     },
     "SLDSIcon": {
-        "description": "The SLDSIcon component should be used for naked icons. For icons that are buttons, use the SLDSButton component.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">SLDS Icons</a>.",
+        "description": "The SLDSIcon component should be used for naked icons. For icons that are buttons, use the SLDSButton component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">SLDS Icons</a>.",
         "displayName": "SLDSIcon",
         "props": {
             "assistiveText": {
@@ -579,6 +566,47 @@
                 "required": false,
                 "description": "Classes applied to the Button component."
             },
+            "buttonVariant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines variant of the Button component that triggers dropdown.",
+                "defaultValue": {
+                    "value": "\"neutral\"",
+                    "computed": false
+                }
+            },
             "checkmark": {
                 "type": {
                     "name": "bool"
@@ -660,7 +688,7 @@
                 "required": false,
                 "description": "",
                 "defaultValue": {
-                    "value": "\"hover\"",
+                    "value": "\"click\"",
                     "computed": false
                 }
             },
@@ -677,47 +705,6 @@
                 },
                 "required": false,
                 "description": "Current selected menu item."
-            },
-            "variant": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "\"base\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"neutral\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"brand\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"destructive\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"icon\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"inverse\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"icon-inverse\"",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "Determines variant of the Button component that triggers dropdown.",
-                "defaultValue": {
-                    "value": "\"neutral\"",
-                    "computed": false
-                }
             }
         }
     },
@@ -799,7 +786,7 @@
         }
     },
     "SLDSModal": {
-        "description": "The SLDSModal component is used for modals and <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">prompt notifications</a>.\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">SLDS Modals</a>.",
+        "description": "The SLDSModal component is used for modals and <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">prompt notifications</a>. This component wraps around the modal content and opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">SLDS Modals</a>.",
         "displayName": "SLDSModal",
         "props": {
             "align": {
@@ -945,7 +932,7 @@
         }
     },
     "SLDSNotification": {
-        "description": "The SLDSNotification component is used for alerts and toasts. For prompt notifications, use the SLDSModal component with <code>prompt={true}</code>.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">SLDS Notifications</a>.",
+        "description": "The SLDSNotification component is used for alerts and toasts. For prompt notifications, use the SLDSModal component with <code>prompt={true}</code>.\nThis component opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">SLDS Notifications</a>.",
         "displayName": "SLDSNotification",
         "props": {
             "className": {
@@ -1061,7 +1048,7 @@
         }
     },
     "SLDSPopoverTooltip": {
-        "description": "The SLDSPopoverTooltip component is variant of the Popover component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">SLDS Popovers > Tooltips</a>.",
+        "description": "The SLDSPopoverTooltip component is variant of the Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">SLDS Popovers > Tooltips</a>.",
         "displayName": "SLDSPopoverTooltip",
         "props": {
             "align": {

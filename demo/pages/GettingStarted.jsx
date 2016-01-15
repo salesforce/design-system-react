@@ -9,7 +9,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
-//import {PrismCode} from "react-prism";
 
 const displayName = "GettingStartedSection";
 const propTypes = {};
@@ -33,6 +32,10 @@ class GettingStartedSection extends React.Component {
 
         <p className="slds-m-top--large">
           Note: design-system-react is optimized for React 0.14.x.
+        </p>
+
+        <p className="slds-m-top--large">
+        TODO: add general overview
         </p>
 
         <p className="slds-p-vertical--small">

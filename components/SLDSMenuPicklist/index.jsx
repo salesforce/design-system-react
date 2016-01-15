@@ -204,6 +204,7 @@ class SLDSMenuPicklist extends React.Component {
 
   getPopoverContent() {
     return <List
+            checkmark={true}
             highlightedIndex={this.state.highlightedIndex}
             itemRenderer={this.getListItemRenderer()}
             label={this.props.label}
