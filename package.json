@@ -62,7 +62,7 @@
   "scripts": {
     "start": "grunt serve",
     "test": "grunt test",
-    "postinstall": "./bin/heroku-build.sh",
+    "postinstall": "node ./bin/postinstall.js",
     "heroku-build": "./bin/heroku-build.sh",
     "heroku-start": "node app.js"
   },
