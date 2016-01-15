@@ -51,6 +51,7 @@ class DropdownExample extends React.Component {
           value='C0' />
 
         <SLDSMenuDropdown
+          buttonVariant="brand"
           label="Dropdown Click"
           onClick={this.handleOnClick}
           onSelect={this.handleOnSelect}
