@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <code>SLDSButtonStateful</code> component.\nFor more details on the markup, please review the Button documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Design System website</a>.",
+        "description": "The SLDSButton component is the Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/home/button-stateful\">SLDSButtonStateful</a> component.\nFor more details on the markup, please review the Button documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Design System website</a>.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -181,7 +181,7 @@
         }
     },
     "SLDSButtonStateful": {
-        "description": "The SLDSButtonStateful component is a variant of the Button component. It is used for buttons that have a state of unselected or selected. The initial state is unselected.\nThe three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">SLDS Buttons > Stateful</a>.",
+        "description": "The SLDSButtonStateful component is a variant of the Design System Button component. It is used for buttons that have a state of unselected or selected.\nThe three types of stateful buttons are <code>icon</code>, <code>follow</code>, and <code>join</code>.\nThe type determines the text for the button's initial state (ie. follow), when the button is selected (ie. following), and unselected (ie. unfollow).\nFor more details on the markup, please review the Button > Stateful documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">Design System website</a>.",
         "displayName": "SLDSButtonStateful",
         "props": {
             "assistiveText": {
@@ -266,7 +266,7 @@
                     ]
                 },
                 "required": false,
-                "description": "<code>join</code> - states are join, member, leave <br />\n<code>follow</code> - states are follow, following, unfollow <br />\n<code>icon</code> - states are \"selected\", \"unselect\", \"not selected\""
+                "description": "<code>join</code> - text is join, member, or leave <br />\n<code>follow</code> - text is follow, following, or unfollow <br />\n<code>icon</code> - styling is \"selected\", \"unselect\", or \"not selected\""
             },
             "variant": {
                 "type": {

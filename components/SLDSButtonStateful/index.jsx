@@ -41,9 +41,9 @@ const propTypes = {
    */
   tabIndex: React.PropTypes.string,
   /**
-   * <code>join</code> - states are join, member, leave <br />
-   * <code>follow</code> - states are follow, following, unfollow <br />
-   * <code>icon</code> - states are "selected", "unselect", "not selected"
+   * <code>join</code> - text is join, member, or leave <br />
+   * <code>follow</code> - text is follow, following, or unfollow <br />
+   * <code>icon</code> - styling is "selected", "unselect", or "not selected"
    */
   type: React.PropTypes.oneOf(["join", "follow", "icon"]),
   /**
@@ -56,9 +56,10 @@ const propTypes = {
 const defaultProps = {};
 
 /**
- * The SLDSButtonStateful component is a variant of the Button component. It is used for buttons that have a state of unselected or selected. The initial state is unselected.
- * The three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">SLDS Buttons > Stateful</a>.
+ * The SLDSButtonStateful component is a variant of the Design System Button component. It is used for buttons that have a state of unselected or selected.
+ * The three types of stateful buttons are <code>icon</code>, <code>follow</code>, and <code>join</code>.
+ * The type determines the text for the button's initial state (ie. follow), when the button is selected (ie. following), and unselected (ie. unfollow).
+ * For more details on the markup, please review the Button > Stateful documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">Design System website</a>.
  */
 class SLDSButtonStateful extends SLDSTooltipTrigger {
 
