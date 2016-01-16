@@ -24,15 +24,15 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
-   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">SLDS Buttons > Hint</a>.
+   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">Design System Buttons > Hint</a>.
    */
   hint: React.PropTypes.bool,
   /**
-   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Design System Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
   /**
-   * If omitted, icon position is cenetered.
+   * If omitted, icon position is centered.
    */
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
   /**
@@ -40,7 +40,7 @@ const propTypes = {
    */
   iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   /**
-   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>.
+   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Design System Icons</a>.
    */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
   /**
@@ -49,28 +49,28 @@ const propTypes = {
   label: React.PropTypes.string,
   onClick: React.PropTypes.func,
   /**
-   * If true, button scales 100% width on small form factors.
+   * If true, button scales to 100% width on small form factors.
    */
   responsive: React.PropTypes.bool,
   /**
-   * Write <code>"-1"</code> if you don't want the user to tab to it.
+   * Write <code>"-1"</code> if you don't want the user to tab to the button.
    */
   tabIndex: React.PropTypes.string,
+  tooltip: React.PropTypes.node,
   /**
    * Use <code>icon-inverse</code> for white icons.
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
-
-  tooltip: React.PropTypes.node
 };
 const defaultProps = {
   variant: "base",
 };
 
 /**
- * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both.
- * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <code>SLDSButtonStateful</code> component.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">SLDS Buttons</a>.
+ * The SLDSButton component is the Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.
+ * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.
+ * For buttons that maintain selected/unselected states, use the <a href="#/home/button-stateful">SLDSButtonStateful</a> component.
+ * For more details on the markup, please review the Button documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons">Design System website</a>.
  */
 class SLDSButton extends SLDSTooltipTrigger {
 

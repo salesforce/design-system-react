@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <code>SLDSButtonStateful</code> component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">SLDS Buttons</a>.",
+        "description": "The SLDSButton component is the Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/home/button-stateful\">SLDSButtonStateful</a> component.\nFor more details on the markup, please review the Button documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Design System website</a>.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -22,14 +22,14 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#hint\">SLDS Buttons > Hint</a>."
+                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#hint\">Design System Buttons > Hint</a>."
             },
             "iconName": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to reference icon names."
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Design System Icons</a> to reference icon names."
             },
             "iconPosition": {
                 "type": {
@@ -46,7 +46,7 @@
                     ]
                 },
                 "required": false,
-                "description": "If omitted, icon position is cenetered."
+                "description": "If omitted, icon position is centered."
             },
             "iconSize": {
                 "type": {
@@ -100,7 +100,7 @@
                     ]
                 },
                 "required": false,
-                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">SLDS Icons</a>."
+                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">Design System Icons</a>."
             },
             "label": {
                 "type": {
@@ -121,14 +121,21 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, button scales 100% width on small form factors."
+                "description": "If true, button scales to 100% width on small form factors."
             },
             "tabIndex": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to it."
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             },
             "variant": {
                 "type": {
@@ -174,7 +181,7 @@
         }
     },
     "SLDSButtonStateful": {
-        "description": "The SLDSButtonStateful component is a variant of the Button component. It is used for buttons that have a state of unselected or selected. The initial state is unselected.\nThe three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">SLDS Buttons > Stateful</a>.",
+        "description": "The SLDSButtonStateful component is a variant of the Design System Button component. It is used for buttons that have a state of unselected or selected.\nThe three types of stateful buttons are <code>icon</code>, <code>follow</code>, and <code>join</code>.\nThe type determines the text for the button's initial state (ie. follow), when the button is selected (ie. following), and unselected (ie. unfollow).\nFor more details on the markup, please review the Button > Stateful documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">Design System website</a>.",
         "displayName": "SLDSButtonStateful",
         "props": {
             "assistiveText": {
@@ -196,7 +203,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to reference icon names."
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Design System Icons</a> to reference icon names."
             },
             "iconSize": {
                 "type": {
@@ -231,14 +238,21 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, button scales 100% width on small form factors"
+                "description": "If true, button scales to 100% width on small form factors"
             },
             "tabIndex": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to it."
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             },
             "type": {
                 "type": {
@@ -259,7 +273,7 @@
                     ]
                 },
                 "required": false,
-                "description": "<code>join</code> - states are join, member, leave <br />\n<code>follow</code> - states are follow, following, unfollow <br />\n<code>icon</code> - states are \"selected\", \"unselect\", \"not selected\""
+                "description": "<code>join</code> - text is join, member, or leave <br />\n<code>follow</code> - text is follow, following, or unfollow <br />\n<code>icon</code> - styling is \"selected\", \"unselect\", or \"not selected\""
             },
             "variant": {
                 "type": {
@@ -301,7 +315,7 @@
         }
     },
     "SLDSButtonGroup": {
-        "description": "The SLDSButtonGroup component wraps other SLDS components.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">SLDS Button Groups</a>.",
+        "description": "The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).\nFor more details on the markup, please review the Button Group documentation on the <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">Design System website</a>.",
         "displayName": "SLDSButtonGroup",
         "props": {
             "children": {
@@ -309,7 +323,7 @@
                     "name": "node"
                 },
                 "required": true,
-                "description": "Children are expected to be components. If last button triggers a dropdown menu, use Dropdown instead of Button."
+                "description": "Children are expected to be components. If last button triggers a dropdown menu, use SLDSDropdown instead of SLDSButton."
             },
             "className": {
                 "type": {
@@ -321,7 +335,7 @@
         }
     },
     "SLDSIcon": {
-        "description": "The SLDSIcon component should be used for naked icons. For icons that are buttons, use the SLDSButton component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/icons\">SLDS Icons</a>.",
+        "description": "The SLDSIcon component is the Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/home/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details on the markup, please review the Icon documentation on the <a href=\"http://www.lightningdesignsystem.com/components/icons\">Design System website</a>.",
         "displayName": "SLDSIcon",
         "props": {
             "assistiveText": {
@@ -376,7 +390,7 @@
                     "name": "string"
                 },
                 "required": true,
-                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to reference icon names."
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Design System Icons</a> to reference icon names."
             },
             "size": {
                 "type": {
@@ -705,6 +719,13 @@
                 },
                 "required": false,
                 "description": "Current selected menu item."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             }
         }
     },
@@ -1084,7 +1105,7 @@
                 "type": {
                     "name": "node"
                 },
-                "required": true,
+                "required": false,
                 "description": "Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it."
             },
             "content": {
@@ -1112,6 +1133,13 @@
             "openByDefault": {
                 "type": {
                     "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "target": {
+                "type": {
+                    "name": "any"
                 },
                 "required": false,
                 "description": ""

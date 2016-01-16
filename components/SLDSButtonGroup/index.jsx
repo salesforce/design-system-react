@@ -14,7 +14,7 @@ import React from "react";
 const displayName = "SLDSButtonGroup";
 const propTypes = {
   /**
-   * Children are expected to be components. If last button triggers a dropdown menu, use Dropdown instead of Button.
+   * Children are expected to be components. If last button triggers a dropdown menu, use SLDSDropdown instead of SLDSButton.
    */
   children: React.PropTypes.node.isRequired,
   className: React.PropTypes.string,
@@ -22,8 +22,8 @@ const propTypes = {
 const defaultProps = {};
 
 /**
- * The SLDSButtonGroup component wraps other SLDS components.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/button-groups">SLDS Button Groups</a>.
+ * The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).
+ * For more details on the markup, please review the Button Group documentation on the <a href="http://www.lightningdesignsystem.com/components/button-groups">Design System website</a>.
  */
 class SLDSButtonGroup extends React.Component {
   constructor(props) {

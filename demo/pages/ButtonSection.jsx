@@ -40,8 +40,12 @@ class ButtonSection extends React.Component {
         {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}/> : null}
 
         <div className="demo-only">
-          <CodeMirror codeText={Samples.Buttons} />
-          <CodeMirror codeText={Samples.IconButtons} />
+          <section className="slds-p-bottom--x-large">
+            <CodeMirror codeText={Samples.Buttons} />
+          </section>
+          <section className="slds-p-top--x-large">
+            <CodeMirror codeText={Samples.IconButtons} />
+          </section>
           <PropTable component="SLDSButton" />
         </div>
       </div>
