@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <code>SLDSButtonStateful</code> component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons\">SLDS Buttons</a>.",
+        "description": "The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <code>SLDSButtonStateful</code> component.\nFor more details on the markup, please review the Button documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Design System website</a>.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -46,7 +46,7 @@
                     ]
                 },
                 "required": false,
-                "description": "If omitted, icon position is cenetered."
+                "description": "If omitted, icon position is centered."
             },
             "iconSize": {
                 "type": {
@@ -121,14 +121,14 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, button scales 100% width on small form factors."
+                "description": "If true, button scales to 100% width on small form factors."
             },
             "tabIndex": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to it."
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
             },
             "variant": {
                 "type": {
@@ -170,6 +170,13 @@
                     "value": "\"base\"",
                     "computed": false
                 }
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             }
         }
     },
@@ -297,6 +304,13 @@
                 },
                 "required": false,
                 "description": "Use <code>icon-inverse</code> for white icons."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             }
         }
     },
@@ -705,6 +719,13 @@
                 },
                 "required": false,
                 "description": "Current selected menu item."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             }
         }
     },
@@ -1084,7 +1105,7 @@
                 "type": {
                     "name": "node"
                 },
-                "required": true,
+                "required": false,
                 "description": "Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it."
             },
             "content": {
@@ -1112,6 +1133,13 @@
             "openByDefault": {
                 "type": {
                     "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "target": {
+                "type": {
+                    "name": "any"
                 },
                 "required": false,
                 "description": ""

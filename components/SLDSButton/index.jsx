@@ -32,7 +32,7 @@ const propTypes = {
    */
   iconName: React.PropTypes.string,
   /**
-   * If omitted, icon position is cenetered.
+   * If omitted, icon position is centered.
    */
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
   /**
@@ -49,11 +49,11 @@ const propTypes = {
   label: React.PropTypes.string,
   onClick: React.PropTypes.func,
   /**
-   * If true, button scales 100% width on small form factors.
+   * If true, button scales to 100% width on small form factors.
    */
   responsive: React.PropTypes.bool,
   /**
-   * Write <code>"-1"</code> if you don't want the user to tab to it.
+   * Write <code>"-1"</code> if you don't want the user to tab to the button.
    */
   tabIndex: React.PropTypes.string,
   /**
@@ -68,9 +68,9 @@ const defaultProps = {
 };
 
 /**
- * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both.
+ * The SLDSButton component should be used for label buttons, icon buttons, or buttons that have both labels and icons.
  * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below. For buttons that maintain selected/unselected states, use the <code>SLDSButtonStateful</code> component.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons">SLDS Buttons</a>.
+ * For more details on the markup, please review the Button documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons">Design System website</a>.
  */
 class SLDSButton extends SLDSTooltipTrigger {
 
