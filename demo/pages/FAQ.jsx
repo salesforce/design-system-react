@@ -41,16 +41,16 @@ class FAQSection extends React.Component {
 
         <section className="slds-p-vertical--medium">
           <p className="slds-text-heading--medium slds-p-vertical--medium">
-            How is the SLDS React Library different than the Lightning Design System?
+            How is the Design System React Library different than the Lightning Design System?
           </p>
           <p>
-            The Lightning Design System consists of static markup components. The SLDS React Library is the ReactJS component implementation.
+            The Lightning Design System consists of static markup components. The Design System React Library is the ReactJS implementation.
           </p>
         </section>
 
         <section className="slds-p-vertical--medium">
           <p className="slds-text-heading--medium slds-p-vertical--medium">
-            How do I start using the SLDS React Library components in my project?
+            How do I start using the Design System React Library components in my project?
           </p>
           <p>
             Visit the <Link to="getting-started">Getting Started</Link> page for set up instructions.
@@ -59,7 +59,7 @@ class FAQSection extends React.Component {
 
         <section className="slds-p-vertical--medium">
           <p className="slds-text-heading--medium slds-p-vertical--medium">
-            Are the SLDS React components accessible?
+            Are the Design System React components accessible?
           </p>
           <p>
             We strive to make all components accessible for keyboard users and screen readers. If you find any accessibility bugs, please submit a <a href="https://github.com/salesforce-ux/design-system-react/issues">Github Issue</a>.
@@ -110,7 +110,7 @@ class FAQSection extends React.Component {
             How can I contribute?
           </p>
           <p>
-            First off - thank you! The SLDS React project is open-source, and we would love your input! Please visit the <a href="https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md">Contributing Guidelines</a> beforehand.
+            First off - thank you! The Design System React project is open-source, and we would love your input! Please visit the <a href="https://github.com/salesforce-ux/design-system-react/blob/master/CONTRIBUTING.md">Contributing Guidelines</a> beforehand.
           </p>
         </section>
 

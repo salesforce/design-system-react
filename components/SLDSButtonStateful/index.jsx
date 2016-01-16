@@ -24,7 +24,7 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
-   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Design System Icons</a> to reference icon names.
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
   /**
@@ -55,10 +55,10 @@ const propTypes = {
 const defaultProps = {};
 
 /**
- * The SLDSButtonStateful component is a variant of the Design System Button component. It is used for buttons that have a state of unselected or selected.
+ * The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
  * The three types of stateful buttons are <code>icon</code>, <code>follow</code>, and <code>join</code>.
  * The type determines the text for the button's initial state (ie. follow), when the button is selected (ie. following), and unselected (ie. unfollow).
- * For more details on the markup, please review the Button > Stateful documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">Design System website</a>.
+ * For more details on the markup, please review the Button > Stateful documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">Lightning Design System website</a>.
  */
 class SLDSButtonStateful extends SLDSTooltipTrigger {
 

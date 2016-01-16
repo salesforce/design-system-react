@@ -24,11 +24,11 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
-   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">Design System Buttons > Hint</a>.
+   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">Lightning Design System Buttons > Hint</a>.
    */
   hint: React.PropTypes.bool,
   /**
-   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Design System Icons</a> to reference icon names.
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
   /**
@@ -40,7 +40,7 @@ const propTypes = {
    */
   iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   /**
-   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Design System Icons</a>.
+   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Lightning Design System Icons</a>.
    */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
   /**
@@ -67,10 +67,10 @@ const defaultProps = {
 };
 
 /**
- * The SLDSButton component is the Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.
+ * The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.
  * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.
  * For buttons that maintain selected/unselected states, use the <a href="#/home/button-stateful">SLDSButtonStateful</a> component.
- * For more details on the markup, please review the Button documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons">Design System website</a>.
+ * For more details on the markup, please review the Button documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons">Lightning Design System website</a>.
  */
 class SLDSButton extends SLDSTooltipTrigger {
 
