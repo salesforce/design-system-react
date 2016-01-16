@@ -24,7 +24,7 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
-   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Design System Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
   /**
@@ -33,13 +33,14 @@ const propTypes = {
   iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   onClick: React.PropTypes.func,
   /**
-   * If true, button scales 100% width on small form factors
+   * If true, button scales to 100% width on small form factors
    */
   responsive: React.PropTypes.bool,
   /**
-   * Write <code>"-1"</code> if you don't want the user to tab to it.
+   * Write <code>"-1"</code> if you don't want the user to tab to the button.
    */
   tabIndex: React.PropTypes.string,
+  tooltip: React.PropTypes.node,
   /**
    * <code>join</code> - text is join, member, or leave <br />
    * <code>follow</code> - text is follow, following, or unfollow <br />
@@ -50,8 +51,6 @@ const propTypes = {
    * Use <code>icon-inverse</code> for white icons.
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
-
-  tooltip: React.PropTypes.node
 };
 const defaultProps = {};
 

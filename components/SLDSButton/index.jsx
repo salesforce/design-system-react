@@ -24,11 +24,11 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
-   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">SLDS Buttons > Hint</a>.
+   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">Design System Buttons > Hint</a>.
    */
   hint: React.PropTypes.bool,
   /**
-   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Design System Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
   /**
@@ -40,7 +40,7 @@ const propTypes = {
    */
   iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   /**
-   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">SLDS Icons</a>.
+   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Design System Icons</a>.
    */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
   /**
@@ -56,12 +56,11 @@ const propTypes = {
    * Write <code>"-1"</code> if you don't want the user to tab to the button.
    */
   tabIndex: React.PropTypes.string,
+  tooltip: React.PropTypes.node,
   /**
    * Use <code>icon-inverse</code> for white icons.
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
-
-  tooltip: React.PropTypes.node
 };
 const defaultProps = {
   variant: "base",
