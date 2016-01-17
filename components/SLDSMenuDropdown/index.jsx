@@ -12,7 +12,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
-import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "components/utils";
+import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
 
 const displayName = "SLDSMenuDropdown";
 const propTypes = {

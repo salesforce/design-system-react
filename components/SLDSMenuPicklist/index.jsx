@@ -12,7 +12,7 @@ import ReactDOM from "react-dom";
 import isEqual from "lodash.isequal";
 
 import SLDSPopover from "../SLDSPopover";
-import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "components/utils";
+import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
 import SLDSIcon from "../SLDSIcon";
 
 const displayName = "SLDSMenuPicklist";
