@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 import ReactDOM from "react-dom";
 
-import SLDSButton from "components/SLDSButton";
+import SLDSButton from "../SLDSButton";
 import classNames from "classnames";
 import Modal from "react-modal";
 

@@ -12,9 +12,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import SLDSButton from 'components/SLDSButton';
-import SLDSIcon from 'components/SLDSIcon';
-import {EventUtil} from 'components/utils';
+import SLDSButton from '../SLDSButton';
+import SLDSIcon from '../SLDSIcon';
+import {EventUtil} from '../utils';
 
 
 import Modal from 'react-modal';

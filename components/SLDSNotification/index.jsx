@@ -13,8 +13,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 const classNames = require("classnames");
-import SLDSButton from "components/SLDSButton";
-import SLDSIcon from "components/SLDSIcon";
+import SLDSButton from "../SLDSButton";
+import SLDSIcon from "../SLDSIcon";
 
 const displayName = "SLDSNotification";
 const propTypes = {

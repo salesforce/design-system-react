@@ -11,9 +11,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import isEqual from "lodash.isequal";
 
-import SLDSPopover from "components/SLDSPopover";
+import SLDSPopover from "../SLDSPopover";
 import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "components/utils";
-import SLDSIcon from "components/SLDSIcon";
+import SLDSIcon from "../SLDSIcon";
 
 const displayName = "SLDSMenuPicklist";
 const propTypes = {

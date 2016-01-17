@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from "react";
-import ButtonIcon from 'components/SLDSIcon/ButtonIcon';
+import ButtonIcon from '../SLDSIcon/ButtonIcon';
 import SLDSTooltipTrigger from "../SLDSPopoverTooltip/trigger"
 const classNames = require("classnames");
 import omit from "lodash.omit";
