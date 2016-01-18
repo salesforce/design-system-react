@@ -549,7 +549,7 @@
         }
     },
     "SLDSMenuDropdown": {
-        "description": "The SLDSMenuDropdown component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">SLDS Menus > Dropdown</a>.",
+        "description": "The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.\nFor more details on the markup, please review the Menu > Dropdown documentation on the <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">Lightning Design System website</a>.",
         "displayName": "SLDSMenuDropdown",
         "props": {
             "align": {
