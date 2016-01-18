@@ -181,7 +181,7 @@
         }
     },
     "SLDSButtonStateful": {
-        "description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nThe three types of stateful buttons are <code>icon</code>, <code>follow</code>, and <code>join</code>.\nThe type determines the text for the button's initial state (ie. follow), when the button is selected (ie. following), and unselected (ie. unfollow).\nFor more details on the markup, please review the Button > Stateful documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">Lightning Design System website</a>.",
+        "description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nThe three types of stateful buttons are <code>icon</code>, <code>follow</code>, and <code>join</code>.\nThe type determines the text for the button's initial state (ie. follow), when the button is selected (ie. following), and to deselect the button (ie. unfollow).\nFor more details on the markup, please review the Button > Stateful documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">Lightning Design System website</a>.",
         "displayName": "SLDSButtonStateful",
         "props": {
             "assistiveText": {
@@ -273,7 +273,7 @@
                     ]
                 },
                 "required": false,
-                "description": "<code>join</code> - text is join, member, or leave <br />\n<code>follow</code> - text is follow, following, or unfollow <br />\n<code>icon</code> - styling is \"selected\", \"unselect\", or \"not selected\""
+                "description": "<code>join</code> - text is join, member, or leave <br />\n<code>follow</code> - text is follow, following, or unfollow <br />\n<code>icon</code> - styling is \"selected\" or \"not selected\""
             },
             "variant": {
                 "type": {
@@ -807,7 +807,7 @@
         }
     },
     "SLDSModal": {
-        "description": "The SLDSModal component is used for modals and <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">prompt notifications</a>. This component wraps around the modal content and opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details, please reference <a href=\"https://www.lightningdesignsystem.com/components/modals\">SLDS Modals</a>.",
+        "description": "The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the markup, please review the Lightning Design System website's <a href=\"https://www.lightningdesignsystem.com/components/modals\"> Modal documentation</a> or the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notification > Prompt documentation</a>.",
         "displayName": "SLDSModal",
         "props": {
             "align": {
@@ -825,7 +825,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Vertical alignment of modal.",
+                "description": "Vertical alignment of Modal.",
                 "defaultValue": {
                     "value": "\"center\"",
                     "computed": false
@@ -854,7 +854,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, prompt modals can be dismissed by clicking outside of modal or pressing esc key.",
+                "description": "If true, prompt Modals can be dismissed by clicking outside of modal or pressing esc key.",
                 "defaultValue": {
                     "value": "true",
                     "computed": false
@@ -865,7 +865,7 @@
                     "name": "array"
                 },
                 "required": false,
-                "description": ""
+                "description": "Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true."
             },
             "isOpen": {
                 "type": {

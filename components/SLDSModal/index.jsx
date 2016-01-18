@@ -38,7 +38,7 @@ const customStyles = {
 const displayName = "SLDSModal";
 const propTypes = {
   /**
-   * Vertical alignment of modal.
+   * Vertical alignment of Modal.
    */
   align: React.PropTypes.oneOf(["top", "center"]),
   /**
@@ -50,9 +50,12 @@ const propTypes = {
    */
   directional: React.PropTypes.bool,
   /**
-   * If true, prompt modals can be dismissed by clicking outside of modal or pressing esc key.
+   * If true, prompt Modals can be dismissed by clicking outside of modal or pressing esc key.
    */
   dismissible: React.PropTypes.bool,
+  /**
+   * Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true.
+   */
   footer: React.PropTypes.array,
   isOpen: React.PropTypes.bool.isRequired,
   prompt: React.PropTypes.oneOf(["", "success", "warning", "error", "wrench", "offline", "info"]),
@@ -72,8 +75,8 @@ const defaultProps = {
 };
 
 /**
- * The SLDSModal component is used for modals and <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">prompt notifications</a>. This component wraps around the modal content and opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
- * For more details, please reference <a href="https://www.lightningdesignsystem.com/components/modals">SLDS Modals</a>.
+ * The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
+ * For more details on the markup, please review the Lightning Design System website's <a href="https://www.lightningdesignsystem.com/components/modals"> Modal documentation</a> or the <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">Notification > Prompt documentation</a>.
  */
 class SLDSModal extends React.Component {
 
