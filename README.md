@@ -88,23 +88,23 @@ Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either
 ```
 
 ## FAQ
-1.  What is the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>?
+1.  **What is the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>?**
 
     It is collection of design patterns, components, and guidelines for creating unified UI in the Salesforce ecosystem.
 
-2.  How is the Design System React Library different than the Lightning Design System?
+2.  **How is the Design System React Library different than the Lightning Design System?**
 
     The Lightning Design System consists of static markup components. The Design System React Library is the ReactJS implementation.
 
-3.  Are the Design System React components accessible?
+3.  **Are the Design System React components accessible?**
 
     We strive to make all components accessible for keyboard users and screen readers. If you find any accessibility bugs, please submit a <a href="https://github.com/salesforce-ux/design-system-react/issues">Github Issue</a>.
 
-4.  Which version of React and Lightning Design System do you support?
+4.  **Which version of React and Lightning Design System do you support?**
 
     Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.0.
 
-5.  Which browsers are supported?
+5.  **Which browsers are supported?**
 
     We support the same browsers as the Lightning Design System. Please visit <a href="http://www.lightningdesignsystem.com/faq#what-browsers-are-supported">Lightning Design System - FAQ</a> for details.
 
