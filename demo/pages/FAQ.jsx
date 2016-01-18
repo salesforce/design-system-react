@@ -68,10 +68,10 @@ class FAQSection extends React.Component {
 
         <section className="slds-p-vertical--medium">
           <p className="slds-text-heading--medium slds-p-vertical--medium">
-            Will there be Lightning Design System libraries for other Javascript frameworks?
+            Which version of React and Lightning Design System do you support?
           </p>
           <p>
-            [TODO: Get answer from Sonke]
+           Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.0.
           </p>
         </section>
 
