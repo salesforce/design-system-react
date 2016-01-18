@@ -1,8 +1,8 @@
 import '../../src/helpers/create-jquery-plugin';
 
 import '../../src/jquery/badge/examples/site-example';
-import '../../src/jquery/button/examples/site-example';
 import '../../src/jquery/button-group/examples/site-example';
+import '../../src/jquery/button/examples/site-example';
 import '../../src/jquery/checkbox/examples/site-example';
 import '../../src/jquery/combobox/examples/site-example';
 import '../../src/jquery/data-table/examples/site-example';
