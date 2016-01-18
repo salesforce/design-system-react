@@ -76,33 +76,12 @@ class FAQSection extends React.Component {
         </section>
 
         <section className="slds-p-vertical--medium">
-          <p className="slds-text-heading--medium slds-p-vertical--medium">Which browsers are supported?</p>
-          <table className='slds-table slds-max-medium-table--stacked slds-no-row-hover' style={{"maxWidth": "800px"}}>
-            <thead>
-              <tr className="site-text-heading--label">
-                <th scope="col">Browser</th>
-                <th scope="col">Version</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Browser">Google Chrome</td>
-                <td data-label="Version">Latest</td>
-              </tr>
-              <tr>
-                <td data-label="Browser">Mozilla Firefox</td>
-                <td data-label="Version">Latest</td>
-              </tr>
-              <tr>
-                <td data-label="Browser">Safari</td>
-                <td data-label="Version">Latest</td>
-              </tr>
-              <tr>
-                <td data-label="Browser">Internet Explorer</td>
-                <td data-label="Version">11</td>
-              </tr>
-            </tbody>
-          </table>
+          <p className="slds-text-heading--medium slds-p-vertical--medium">
+          Which browsers are supported?
+          </p>
+          <p>
+            We support the same browsers as the Lightning Design System. Please visit <a href="http://www.lightningdesignsystem.com/faq#what-browsers-are-supported">Lightning Design System - FAQ</a> for details.
+          </p>
         </section>
 
         <section className="slds-p-vertical--medium">

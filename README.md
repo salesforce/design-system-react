@@ -3,18 +3,25 @@ design-system-react
 
 [![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
 
-SLDS React component library based off [Salesforce Lightning Design System](http://www.lightningdesignsystem.com). This project is in beta, very experimental, and not yet open-sourced. Until this project is open-sourced, documentation for using the SLDS React Components runs locally from this repo. Inside your local directory, run `npm start` and open `localhost:3000` to view docs.
+## Overview
+The Design System React library is the Reactjs implementation of the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>.
+Each Design System React component is a specific variant of a component from Lightning Design System.
+For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightning Design System Menu > Dropdown</a>,
+and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup (base)</a>.
+
+
+This project is in beta and very experimental. Please visit [Design System React](http://salesforce-ux.github.io/desigh-system-react/) for documentation and examples of using the Design System React Components.
 
 ## Components
 
 * SLDSButton
 * SLDSButtonGroup
-* SLDSDropdown
 * SLDSIcon
 * SLDSLookup
+* SLDSMenuDropdown
+* SLDSMenuPicklist
 * SLDSModal
 * SLDSNotification
-* SLDSPicklist
 * SLDSPopoverTooltip
 
 
@@ -36,12 +43,14 @@ npm test
 
 ```
 npm install
+npm run compile
 npm run pages
 ```
 
-## Using the React components
 
-Note: design-system-react is optimized for React 0.14.x.
+## Getting Started
+
+Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.0.
 
 To use it in your code base, you have a couple of options.
 
@@ -81,6 +90,21 @@ Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either
 </div>
 ```
 
+## FAQ
+1.  What is the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>?
+It is collection of design patterns, components, and guidelines for creating unified UI in the Salesforce ecosystem.
+
+2.  How is the Design System React Library different than the Lightning Design System?
+The Lightning Design System consists of static markup components. The Design System React Library is the ReactJS implementation.
+
+3.  Are the Design System React components accessible?
+We strive to make all components accessible for keyboard users and screen readers. If you find any accessibility bugs, please submit a <a href="https://github.com/salesforce-ux/design-system-react/issues">Github Issue</a>.
+
+4.  Which version of React and Lightning Design System do you support?
+Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.0.
+
+5.  Which browsers are supported?
+We support the same browsers as the Lightning Design System. Please visit <a href="http://www.lightningdesignsystem.com/faq#what-browsers-are-supported">Lightning Design System - FAQ</a> for details.
 
 ## Contributing to the code base
 
