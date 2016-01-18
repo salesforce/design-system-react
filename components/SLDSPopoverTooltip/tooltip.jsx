@@ -22,13 +22,8 @@ const getClassName = (props) => {
     ['slds-nubbin--bottom']: props.align === 'top',
     ['slds-nubbin--bottom-left']: props.align === 'top left',
     ['slds-nubbin--bottom-right']: props.align === 'top right',
-    ['slds-nubbin--left']: props.align === 'right',
-    ['slds-nubbin--left-top']: props.align === 'right bottom',
-    ['slds-nubbin--left-bottom']: props.align === 'right top',
-    ['slds-nubbin--right']: props.align === 'left',
-    ['slds-nubbin--right-top']: props.align === 'left bottom',
-    ['slds-nubbin--right-bottom']: props.align === 'left top'
-
+    ['slds-nubbin--left']: (props.align === 'right' || props.align === 'right bottom' || props.align === 'right top'),
+    ['slds-nubbin--right']: (props.align === 'left' || props.align === 'left bottom' || props.align === 'left top')
   });
 };
 
@@ -67,11 +62,17 @@ const getMarginLeft = (align) => {
 }
 
 const getMarginTop = (align) => {
-  return '1.2rem';
+  if(getVerticalAlign(align)==='top' && align.indexOf('top')>0){
+    return '0.25rem';
+  }
+  return '1rem';
 }
 
 const getMarginBottom = (align) => {
-  return '1.2rem';
+  if(getVerticalAlign(align)==='bottom' && align.indexOf('bottom')>0){
+    return '0.25rem';
+  }
+  return '1rem';
 }
 
 const getTooltip = (props, content, target, onClose) => {

@@ -115,20 +115,23 @@ class TooltipExample extends React.Component {
         </SLDSButtonGroup>
       </div>
 
+      <div style={{
+            margin:'5rem'
+      }}>
 
       <div className="slds-grid">
         <div className="slds-col">
           <div style={{
-            margin:'5rem'
+            margin:'1rem'
           }}>
             <SLDSPopoverTooltip
               align="left"
-              openByDefault={true}
               content={<span>Tooltip on left</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   left
                 </div>
               </SLDSPopoverTooltip>
@@ -136,46 +139,46 @@ class TooltipExample extends React.Component {
         </div>
         <div className="slds-col">
           <div style={{
-            margin:'5rem'
+            margin:'1rem'
           }}>
             <SLDSPopoverTooltip
               align="right"
-              openByDefault={true}
               content={<span>Tooltip on right</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   right
                 </div>
             </SLDSPopoverTooltip>
           </div>
         </div>
         <div className="slds-col">
-          <div style={{margin:'5rem'}}>
+          <div style={{margin:'1rem'}}>
             <SLDSPopoverTooltip
               align="bottom"
-              openByDefault={true}
               content={<span>Tooltip on bottom</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   bottom
                 </div>
               </SLDSPopoverTooltip>
           </div>
         </div>
         <div className="slds-col">
-          <div style={{margin:'5rem'}}>
+          <div style={{margin:'1rem'}}>
             <SLDSPopoverTooltip
               align="top"
-              openByDefault={true}
               content={<span>Tooltip on top</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   top
                 </div>
               </SLDSPopoverTooltip>
@@ -185,15 +188,15 @@ class TooltipExample extends React.Component {
 
       <div className="slds-grid">
         <div className="slds-col">
-          <div style={{margin:'5rem'}}>
+          <div style={{margin:'1rem'}}>
             <SLDSPopoverTooltip
               align="bottom left"
-              openByDefault={true}
               content={<span>Tooltip on bottom left</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   bottom left
                 </div>
               </SLDSPopoverTooltip>
@@ -201,15 +204,15 @@ class TooltipExample extends React.Component {
         </div>        
 
         <div className="slds-col">
-          <div style={{margin:'5rem'}}>
+          <div style={{margin:'1rem'}}>
             <SLDSPopoverTooltip
               align="bottom right"
-              openByDefault={true}
               content={<span>Tooltip on bottom right</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   bottom right
                 </div>
               </SLDSPopoverTooltip>
@@ -217,15 +220,15 @@ class TooltipExample extends React.Component {
         </div>
 
         <div className="slds-col">
-          <div style={{margin:'5rem'}}>
+          <div style={{margin:'1rem'}}>
             <SLDSPopoverTooltip
               align="top left"
-              openByDefault={true}
               content={<span>Tooltip on top left</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   top left
                 </div>
               </SLDSPopoverTooltip>
@@ -233,15 +236,15 @@ class TooltipExample extends React.Component {
         </div>        
 
         <div className="slds-col">
-          <div style={{margin:'5rem'}}>
+          <div style={{margin:'1rem'}}>
             <SLDSPopoverTooltip
               align="top right"
-              openByDefault={true}
               content={<span>Tooltip on top right</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   top right
                 </div>
               </SLDSPopoverTooltip>
@@ -255,15 +258,15 @@ class TooltipExample extends React.Component {
 
       <div className="slds-grid">
         <div className="slds-col">
-          <div style={{margin:'5rem'}}>
+          <div style={{margin:'1rem'}}>
             <SLDSPopoverTooltip
               align="left bottom"
-              openByDefault={true}
               content={<span>Tooltip on bottom left</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   left bottom
                 </div>
               </SLDSPopoverTooltip>
@@ -271,15 +274,15 @@ class TooltipExample extends React.Component {
         </div>        
 
         <div className="slds-col">
-          <div style={{margin:'5rem'}}>
+          <div style={{margin:'1rem'}}>
             <SLDSPopoverTooltip
               align="right bottom"
-              openByDefault={true}
               content={<span>Tooltip on bottom right</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   right bottom
                 </div>
               </SLDSPopoverTooltip>
@@ -287,15 +290,15 @@ class TooltipExample extends React.Component {
         </div>
 
         <div className="slds-col">
-          <div style={{margin:'5rem'}}>
+          <div style={{margin:'1rem'}}>
             <SLDSPopoverTooltip
               align="left top"
-              openByDefault={true}
               content={<span>Tooltip on top left</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   left top
                 </div>
               </SLDSPopoverTooltip>
@@ -303,15 +306,15 @@ class TooltipExample extends React.Component {
         </div>        
 
         <div className="slds-col">
-          <div style={{margin:'5rem'}}>
+          <div style={{margin:'1rem'}}>
             <SLDSPopoverTooltip
               align="right top"
-              openByDefault={true}
               content={<span>Tooltip on top right</span>}>
                 <div style={{
                   backgroundColor:'lightGray',
                   padding:'2rem'
                 }}>
+                  tooltip on hover: position
                   right top
                 </div>
               </SLDSPopoverTooltip>
@@ -319,6 +322,7 @@ class TooltipExample extends React.Component {
         </div>
 
 
+      </div>
       </div>
 
 
