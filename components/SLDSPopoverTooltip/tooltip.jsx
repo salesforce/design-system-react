@@ -85,6 +85,7 @@ const getTooltip = (props, content, target, onClose) => {
             marginTop={getMarginTop(props.align)}
             onClose={onClose}
             targetElement={target}
+            align={props.align}
             horizontalAlign={getHorizontalAlign(props.align)}
             verticalAlign={getVerticalAlign(props.align)}>
               <div className={getClassName(props)} role="tooltip">{content}</div>

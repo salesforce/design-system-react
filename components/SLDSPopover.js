@@ -121,17 +121,72 @@ module.exports = React.createClass( {
   beforeClose (){
   },
 
+  getHorizontalAlign (align) {
+    if (align.indexOf('left')>-1) {
+      return 'left';
+    }
+    else if (align.indexOf('right')>-1) {
+      return 'right';
+    }
+    return 'center';
+  },
+
+  getVerticalAlign (align) {
+    if (align.indexOf('bottom')===0) {
+      return 'bottom';
+    }
+    else if (align.indexOf('top')===0) {
+      return 'top';
+    }
+    return 'middle';
+  },
+
+  isHorizontalAlign (align) {
+    if (align === 'left') {
+      return true;
+    }
+    else if (align === 'right') {
+      return true;
+    }
+    else if (align === 'center') {
+      return true;
+    }
+  },
+
+  isVerticalAlign (align) {
+    if (align === 'bottom') {
+      return true;
+    }
+    else if (align === 'top') {
+      return true;
+    }
+    else if (align === 'middle') {
+      return true;
+    }
+  },
+
   getPosition () {
-    let positions = [];
-    if (this.props.verticalAlign === 'top' || this.props.verticalAlign === 'bottom') {
-      positions.push(this.props.verticalAlign);
-      positions.push(this.props.horizontalAlign);
+
+    let align = [];
+    if(this.props.align){
+      const splits = this.props.align.split(' ');
+      if(this.isHorizontalAlign(splits[0])){
+        const verticalAlign = splits.length > 1?this.getVerticalAlign(splits[1]):this.getVerticalAlign('');
+        align = [
+          this.getHorizontalAlign(splits[0]),
+          verticalAlign
+        ];
+      }
+      else {
+        const horizontalAlign = splits.length > 1?this.getHorizontalAlign(splits[1]):this.getHorizontalAlign('');
+        align = [
+          this.getVerticalAlign(splits[0]),
+          horizontalAlign
+        ];
+      }
     }
-    else {
-      positions.push(this.props.horizontalAlign);
-      positions.push(this.props.verticalAlign);
-    }
-    return positions.join(' ');
+    return align.join(' ');
+
   },
 
   target () {

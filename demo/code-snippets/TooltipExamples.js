@@ -116,109 +116,210 @@ class TooltipExample extends React.Component {
       </div>
 
 
-        <div style={{margin:'5rem'}}>
-          <SLDSPopoverTooltip
-            align="right"
-            openByDefault={false}
-            content={<span>Tooltip on right</span>}>
-              <div style={{backgroundColor:'gray'}}>
-                right<br />
-                right<br />
-                right
-              </div>
-          </SLDSPopoverTooltip>
+      <div className="slds-grid">
+        <div className="slds-col">
+          <div style={{
+            margin:'5rem'
+          }}>
+            <SLDSPopoverTooltip
+              align="left"
+              openByDefault={true}
+              content={<span>Tooltip on left</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  left
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
+        </div>
+        <div className="slds-col">
+          <div style={{
+            margin:'5rem'
+          }}>
+            <SLDSPopoverTooltip
+              align="right"
+              openByDefault={true}
+              content={<span>Tooltip on right</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  right
+                </div>
+            </SLDSPopoverTooltip>
+          </div>
+        </div>
+        <div className="slds-col">
+          <div style={{margin:'5rem'}}>
+            <SLDSPopoverTooltip
+              align="bottom"
+              openByDefault={true}
+              content={<span>Tooltip on bottom</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  bottom
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
+        </div>
+        <div className="slds-col">
+          <div style={{margin:'5rem'}}>
+            <SLDSPopoverTooltip
+              align="top"
+              openByDefault={true}
+              content={<span>Tooltip on top</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  top
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
+        </div>
+      </div>
+
+      <div className="slds-grid">
+        <div className="slds-col">
+          <div style={{margin:'5rem'}}>
+            <SLDSPopoverTooltip
+              align="bottom left"
+              openByDefault={true}
+              content={<span>Tooltip on bottom left</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  bottom left
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
+        </div>        
+
+        <div className="slds-col">
+          <div style={{margin:'5rem'}}>
+            <SLDSPopoverTooltip
+              align="bottom right"
+              openByDefault={true}
+              content={<span>Tooltip on bottom right</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  bottom right
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
         </div>
 
-        <div style={{margin:'5rem'}}>
-          <SLDSPopoverTooltip
-            align="left"
-            openByDefault={false}
-            content={<span>Tooltip on left</span>}>
-              <div style={{backgroundColor:'gray'}}>
-                left<br />
-                left<br />
-                left
-              </div>
-            </SLDSPopoverTooltip>
+        <div className="slds-col">
+          <div style={{margin:'5rem'}}>
+            <SLDSPopoverTooltip
+              align="top left"
+              openByDefault={true}
+              content={<span>Tooltip on top left</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  top left
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
+        </div>        
+
+        <div className="slds-col">
+          <div style={{margin:'5rem'}}>
+            <SLDSPopoverTooltip
+              align="top right"
+              openByDefault={true}
+              content={<span>Tooltip on top right</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  top right
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
         </div>
 
-        <div style={{margin:'5rem'}}>
-          <SLDSPopoverTooltip
-            align="bottom"
-            openByDefault={false}
-            content={<span>Tooltip on bottom</span>}>
-              <div style={{backgroundColor:'gray'}}>
-                bottom<br />
-                bottom<br />
-                bottom
-              </div>
-            </SLDSPopoverTooltip>
+
+      </div>
+
+
+
+      <div className="slds-grid">
+        <div className="slds-col">
+          <div style={{margin:'5rem'}}>
+            <SLDSPopoverTooltip
+              align="left bottom"
+              openByDefault={true}
+              content={<span>Tooltip on bottom left</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  left bottom
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
+        </div>        
+
+        <div className="slds-col">
+          <div style={{margin:'5rem'}}>
+            <SLDSPopoverTooltip
+              align="right bottom"
+              openByDefault={true}
+              content={<span>Tooltip on bottom right</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  right bottom
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
         </div>
 
-        <div style={{margin:'5rem'}}>
-          <SLDSPopoverTooltip
-            align="top"
-            openByDefault={false}
-            content={<span>Tooltip on top</span>}>
-              <div style={{backgroundColor:'gray'}}>
-                top<br />
-                top<br />
-                top
-              </div>
-            </SLDSPopoverTooltip>
+        <div className="slds-col">
+          <div style={{margin:'5rem'}}>
+            <SLDSPopoverTooltip
+              align="left top"
+              openByDefault={true}
+              content={<span>Tooltip on top left</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  left top
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
+        </div>        
+
+        <div className="slds-col">
+          <div style={{margin:'5rem'}}>
+            <SLDSPopoverTooltip
+              align="right top"
+              openByDefault={true}
+              content={<span>Tooltip on top right</span>}>
+                <div style={{
+                  backgroundColor:'lightGray',
+                  padding:'2rem'
+                }}>
+                  right top
+                </div>
+              </SLDSPopoverTooltip>
+          </div>
         </div>
 
-        <div style={{margin:'5rem'}}>
-          <SLDSPopoverTooltip
-            align="top left"
-            openByDefault={false}
-            content={<span>Tooltip on top left</span>}>
-              <div style={{backgroundColor:'gray'}}>
-                top left<br />
-                top left<br />
-                top left
-              </div>
-            </SLDSPopoverTooltip>
-        </div>
 
-        <div style={{margin:'5rem'}}>
-          <SLDSPopoverTooltip
-            align="top right"
-            openByDefault={false}
-            content={<span>Tooltip on top right</span>}>
-              <div style={{backgroundColor:'gray'}}>
-                top right<br />
-                top right<br />
-                top right
-              </div>
-            </SLDSPopoverTooltip>
-        </div>
-
-        <div style={{margin:'5rem'}}>
-          <SLDSPopoverTooltip
-            align="bottom left"
-            openByDefault={false}
-            content={<span>Tooltip on bottom left</span>}>
-              <div style={{backgroundColor:'gray'}}>
-                bottom left<br />
-                bottom left<br />
-                bottom left
-              </div>
-            </SLDSPopoverTooltip>
-        </div>
-
-        <div style={{margin:'5rem'}}>
-          <SLDSPopoverTooltip
-            align="bottom right"
-            openByDefault={false}
-            content={<span>Tooltip on bottom right</span>}>
-              <div style={{backgroundColor:'gray'}}>
-                bottom right<br />
-                bottom right<br />
-                bottom right
-              </div>
-            </SLDSPopoverTooltip>
-        </div>
+      </div>
 
 
       </div>
