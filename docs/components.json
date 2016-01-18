@@ -953,7 +953,7 @@
         }
     },
     "SLDSNotification": {
-        "description": "The SLDSNotification component is used for alerts and toasts. For prompt notifications, use the SLDSModal component with <code>prompt={true}</code>.\nThis component opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/notifications\">SLDS Notifications</a>.",
+        "description": "The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/home/modal\">SLDSModal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the markup, please review the Notification documentation on the <a href=\"http://www.lightningdesignsystem.com/components/notifications\">Lightning Design System website</a>.",
         "displayName": "SLDSNotification",
         "props": {
             "className": {
@@ -993,7 +993,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">SLDS Icons</a> to reference icon names."
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lighning Design System Icons</a> to reference icon names."
             },
             "isOpen": {
                 "type": {
@@ -1047,7 +1047,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Styling for Notification background color. Please reference <a href=\"http://www.lightningdesignsystem.com/components/utilities/themes#color\">SLDS Themes > Color</a>."
+                "description": "Styling for Notification background color. Please reference <a href=\"http://www.lightningdesignsystem.com/components/utilities/themes#color\">Lighning Design System Themes > Color</a>."
             },
             "variant": {
                 "type": {
@@ -1069,7 +1069,7 @@
         }
     },
     "SLDSPopoverTooltip": {
-        "description": "The SLDSPopoverTooltip component is variant of the Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">SLDS Popovers > Tooltips</a>.",
+        "description": "The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.\nFor more details on the markup, please review the Popover > Tooltip documentation on the <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">Lightning Design System website</a>.",
         "displayName": "SLDSPopoverTooltip",
         "props": {
             "align": {
