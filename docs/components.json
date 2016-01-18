@@ -528,6 +528,13 @@
                 "required": true,
                 "description": "Lookup item data."
             },
+            "requiredField": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, adds asterisk next to input label to indicate it is a required field."
+            },
             "searchTerm": {
                 "type": {
                     "name": "string"

@@ -66,6 +66,10 @@ const propTypes = {
    * Lookup item data.
    */
   options: React.PropTypes.array.isRequired,
+  /**
+   * If true, adds asterisk next to input label to indicate it is a required field.
+   */
+  requiredField: React.PropTypes.bool,
   searchTerm: React.PropTypes.string,
   /**
    * Salesforce object type for Lookup items.
@@ -438,7 +442,7 @@ class SLDSLookup extends React.Component {
     };
 
     const inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: "5px"};
-    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()}>{this.props.label}</label>:null;
+    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()}>{this.props.requiredField ? `*${this.props.label}`: this.props.label}</label>:null;
 
     return (
       <div className={cx(componentClasses)} data-select="single" data-scope="single" data-typeahead="true">
