@@ -28,22 +28,25 @@ const propTypes = {
    * Custom message for when no search results found.
    */
   emptyMessage: React.PropTypes.string.isRequired,
+  /**
+   * Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.
+   */
   filterWith: React.PropTypes.func.isRequired,
   /**
-   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">SLDS Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
+   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
    */
   footerRenderer: React.PropTypes.func,
   /**
-   * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">SLDS Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>.
+   * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>.
    */
   headerRenderer: React.PropTypes.func,
   /**
-   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view categories.
+   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view categories.
    */
   iconCategory: React.PropTypes.string,
   iconClasses: React.PropTypes.string,
   /**
-   * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view icon names.
+   * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view icon names.
    */
   iconName: React.PropTypes.string,
   label: React.PropTypes.string.isRequired,
@@ -60,7 +63,7 @@ const propTypes = {
   onItemSelect: React.PropTypes.func.isRequired,
   onItemUnselect: React.PropTypes.func,
   /**
-   * Lookup items data.
+   * Lookup item data.
    */
   options: React.PropTypes.array.isRequired,
   searchTerm: React.PropTypes.string,
@@ -88,8 +91,8 @@ const defaultProps = {
 
 
 /**
- * The SLDSLookup component currently supports the base variant.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/lookups/#base">SLDS Lookups > Base</a>.
+ * The SLDSLookup is the Lightning Design System Lookup base component.
+ * For more details on the markup, please review the Lookup > Base documentation on the <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System website</a>.
  */
 class SLDSLookup extends React.Component {
   constructor(props) {
