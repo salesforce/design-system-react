@@ -730,7 +730,7 @@
         }
     },
     "SLDSMenuPicklist": {
-        "description": "The SLDSMenuPicklist component is a variant of the Menu component.\nFor more details, please reference <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">SLDS Menus > Picklists</a>.",
+        "description": "The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.\nFor more details on the markup, please review the Menu > Picklist documentation on the <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">Lightning Design System website</a>.",
         "displayName": "SLDSMenuPicklist",
         "props": {
             "disabled": {
