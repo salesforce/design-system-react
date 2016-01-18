@@ -10,7 +10,7 @@ For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightn
 and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup (base)</a>.
 
 
-This project is in beta and very experimental. Please visit [Design System React](http://salesforce-ux.github.io/desigh-system-react/) for documentation and examples of using the Design System React Components.
+This project is in beta and very experimental. Please visit [Design System React](http://salesforce-ux.github.io/design-system-react) for documentation and examples of using the Design System React Components.
 
 ## Components
 
