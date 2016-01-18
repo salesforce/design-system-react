@@ -132,10 +132,10 @@ module.exports = React.createClass( {
   },
 
   getVerticalAlign (align) {
-    if (align.indexOf('bottom')===0) {
+    if (align.indexOf('bottom')>-1) {
       return 'bottom';
     }
-    else if (align.indexOf('top')===0) {
+    else if (align.indexOf('top')>-1) {
       return 'top';
     }
     return 'middle';
@@ -167,6 +167,9 @@ module.exports = React.createClass( {
 
   getPosition () {
 
+    if(this.props.align){
+
+
     let align = [];
     if(this.props.align){
       const splits = this.props.align.split(' ');
@@ -186,7 +189,18 @@ module.exports = React.createClass( {
       }
     }
     return align.join(' ');
+    }
 
+    let positions = [];
+    if (this.props.verticalAlign === 'top' || this.props.verticalAlign === 'bottom') {
+      positions.push(this.props.verticalAlign);
+      positions.push(this.props.horizontalAlign);
+    }
+    else {
+      positions.push(this.props.horizontalAlign);
+      positions.push(this.props.verticalAlign);
+    }
+    return positions.join(' ');
   },
 
   target () {
