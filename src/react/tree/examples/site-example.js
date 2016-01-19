@@ -18,8 +18,8 @@ export default React.createClass({
 						folderSelect={false}
 						multiSelect={true}
 						autoOpen={false}
-						heading={sampleData.tree.heading}
-						collection={sampleData.tree.defaultArray}
+						heading={sampleData.tree.default.heading}
+						collection={sampleData.tree.default.collection}
 						selection={this.state.selection}
 						open={this.state.open}
 						onChange={this.handleChanged}

@@ -11,9 +11,9 @@ export default React.createClass({
 		return {
 			models: [
 				{
-					collection: sampleData.dropdown.defaultArray,
+					collection: sampleData.dropdown.default.collection,
 					disabled: false,
-					selection: sampleData.dropdown.defaultArray[1]
+					selection: sampleData.dropdown.default.collection[1]
 				}
 			]
 		};
@@ -67,7 +67,7 @@ export default React.createClass({
 
 	setSelection (index) {
 		const models = this.state.models;
-		models[index].selection = sampleData.defaultArray[5];
+		models[index].selection = sampleData.default.Array[5];
 		this.setState({models});
 	},
 
