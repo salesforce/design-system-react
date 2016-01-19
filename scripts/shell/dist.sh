@@ -14,7 +14,8 @@ set -e
 export GIT_VERSION=`node scripts/helpers/version.js`
 echo "DSF version: <$GIT_VERSION>"
 
-grunt build
+
+./node_modules/.bin/webpack --config webpack.dist.config.js
 
 ./node_modules/.bin/babel-node scripts/dist.js
 
