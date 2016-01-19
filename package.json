@@ -28,7 +28,6 @@
     "heroku-build": "./scripts/shell/heroku-build.sh",
     "heroku-start": "node app.js",
     "menu": "./scripts/shell/menu-trial.sh",
-    "postinstall": "./scripts/shell/heroku-build.sh",
     "start": "grunt serve",
     "test": "grunt test"
   },
