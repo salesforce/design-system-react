@@ -10,7 +10,6 @@
     "utilities"
   ],
   "license": "BSD-3-Clause",
-  "main": "src/main.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:salesforce-ux/design-system-facades.git"
