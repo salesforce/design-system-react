@@ -137,6 +137,20 @@ class SLDSPopoverTooltip extends React.Component {
     return this.state.isOpen?tooltip.getTooltip(this.props, this.getTooltipContent(), this.getTooltipTarget(), this.handleCancel.bind(this)):<span></span>;
   }
 
+  getContent() {
+    const asstText = <span className="slds-assistive-text">{this.props.content}</span>;
+    return React.Children.map(this.props.children, child => {
+      const {props={}} = child;
+      return React.cloneElement(child, {
+        children: compact(flatten([props.children]).concat(asstText)),
+        onBlur: this.handleMouseLeave.bind(this),
+        onFocus: this.handleMouseEnter.bind(this),
+        onMouseEnter: this.handleMouseEnter.bind(this),
+        onMouseLeave: this.handleMouseLeave.bind(this),
+      });
+     })
+  }
+
   render(){
     const containerStyles = { display: "inline" };
     return (
@@ -144,13 +158,8 @@ class SLDSPopoverTooltip extends React.Component {
         aria-describedby={this.getTriggerId()}
         style={containerStyles}
         ref="tooltipTarget"
-        role="tooltip"
-        onBlur={this.handleMouseLeave.bind(this)}
-        onFocus={this.handleMouseEnter.bind(this)}
-        onMouseEnter={this.handleMouseEnter.bind(this)}
-        onMouseLeave={this.handleMouseLeave.bind(this)} >
-        { this.props.children }
-        <span className="slds-assistive-text">{this.props.content}</span>
+        role="tooltip" >
+        { this.getContent() }
         { this.getTooltip() }
       </div>
     );
