@@ -457,6 +457,7 @@ class SLDSLookup extends React.Component {
             </div>
             <InputIcon name="search" onClick={this.focusInput.bind(this)} />
             <input
+              aria-activedescendant={this.state.currentFocus ? this.state.currentFocus:""}
               aria-autocomplete="list"
               aria-expanded={this.state.isOpen}
               aria-haspopup="true"
