@@ -93,7 +93,6 @@
   ],
   "components": [
     "badge",
-    "base",
     "button-view",
     "button",
     "checkbox",
@@ -104,15 +103,12 @@
     "lookup",
     "modal",
     "notification",
-    "picker",
     "picklist",
     "pills",
     "popover",
     "radio",
-    "search",
     "spinner",
     "tooltip",
-    "tree",
-    "wizard"
+    "tree"
   ]
 }

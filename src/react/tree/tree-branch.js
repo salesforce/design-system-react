@@ -133,7 +133,7 @@ const TreeBranch = React.createClass({
 				<ul className={classNames({'slds-is-expanded': isOpen}, {'slds-is-collapsed': !isOpen}, )} role="group" aria-labelledby={labelId} aria-aria-controlledby={togglerId}>
 					{isOpen ? children : undefined}
 				</ul>
-				<div className={classNames('slds-tree__loader', {'slds-hide': !this.state.loading || !isOpen})} role="alert">Loading</div>
+				<div className={classNames('slds-spinner', 'slds-spinner--small', {'slds-hide': !this.state.loading || !isOpen})} role="alert">Loading</div>
 			</li>
 		);
 	},

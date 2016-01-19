@@ -15,10 +15,6 @@ export default {
   displayName: 'Salesforce Lightning Design System Facades',
   filenamePrefix: 'slds',
   analyticsHostWhitelist: [
-    'getdsf.com',
-    'www.getdsf.com',
-    'designsystemfacades.com',
-    'www.designsystemfacades.com',
     'design-system-facades.herokuapp.com',
     'salesforce.com',
     'www.salesforce.com'

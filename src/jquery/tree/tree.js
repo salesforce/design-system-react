@@ -77,8 +77,6 @@ let Tree = function Tree () {
 		options.accessors = legacyAccessors;
 	}
 
-	console.log('[tree.js:78] options:', options);
-
 	this._initialize(options);
 };
 
@@ -86,16 +84,16 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this.elements.list = this.element.find('.' + this.cssClasses.CONTROL);
-		
+
 		Eventable.on(this, 'select', this._onSelect, this);
 		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 
 	_onInitialized () {
 		const strings = this.getState('strings');
+		this.setState({loading: true});
 		this.template.find('[role="alert"] img').attr('alt', strings.LOADING);
 		this.element.find('.slds-text-heading--label').text(this.getProperty('heading'));
-		console.log('[tree.js:93] this.getState(\'id\'):', this.getState('id'));
 		this.element.attr('id', this._getControlContainerId());
 	},
 
@@ -121,7 +119,6 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		$item.data({
 			item: item._item
 		});
-		// console.log('[tree.js:119] item:', item);
 
 		this._renderSelection($item, item, selection);
 
@@ -193,7 +190,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 
 		if (isOpen) {
 			const $loader = this.template.find('[role="alert"]').parents('[role="treeitem"]').clone();
-
+			$loader.addClass('slds-hide');
 			$branchContent.append($loader);
 
 			branch._getChildren().then(resolvedChildren => {
@@ -203,7 +200,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 				this._loopChildren(Lib.getDataAdapter(), $branchContent, _level);
 			});
 		}
-
+		$branch.find('[role="alert"]').addClass('slds-hide');
 		return $branch;
 	},
 
@@ -253,6 +250,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 
 		$el.empty();
 		$el.append(elements);
+		self.setState({loading: false});
 	},
 
 	_handleBranchClicked ($event) {
@@ -306,7 +304,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_onSelect (itemsToSelect, selection) {
 		this.setProperties({ selection: selection._data });
 		this._onSelectionUpdated(selection);
-	
+
 		this.trigger('selected', itemsToSelect, selection._data);
 		this.trigger('changed', itemsToSelect, selection._data);
 	},
@@ -314,7 +312,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	_onDeselect (itemsToDeselect, selection) {
 		this.setProperties({ selection: selection._data });
 		this._onSelectionUpdated(selection);
-	
+
 		this.trigger('deselected', itemsToDeselect, selection._data);
 		this.trigger('changed', itemsToDeselect, selection._data);
 	},
