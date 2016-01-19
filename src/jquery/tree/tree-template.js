@@ -1,5 +1,5 @@
 export default String.raw`
-<div class="slds-tree-container" role="application">
+<div class="slds-tree_container" role="application">
 	<h4 class="slds-text-heading--label">Tree Example</h4>
 	<ul class="slds-tree" role="tree" aria-labelledby="treeheading-jquery" aria-activedescendant="">
 		<li role="treeitem" aria-level="1" aria-expanded="true">

@@ -15,7 +15,7 @@ const TreeCore = Lib.merge({}, Base, {
 	// CSS classes used within this control
 	cssClasses: {
 		CONTROL: 'slds-tree',
-		CONTAINER: 'slds-tree-container'
+		CONTAINER: 'slds-tree_container'
 	},
 
 	// Set the defaults
