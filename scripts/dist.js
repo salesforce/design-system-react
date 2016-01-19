@@ -94,7 +94,19 @@ async.series([
   ////////////////////////////////////
 
   /**
-   * Move all the bundled script files to dist/scripts
+   * Move src script files to .dist/scripts
+   */
+  (done) => {
+    gulp.src([
+      path.resolve(__PATHS__.source_files, '**/*.js')
+    ], { base: __PATHS__.source_files })
+      .pipe(gulp.dest(path.resolve(__PATHS__.dist, 'src')))
+      .on('error', done)
+      .on('finish', done);
+  },
+
+  /**
+   * Move all the bundled script files to .tmp/scripts
    */
   (done) => {
     gulp.src([
