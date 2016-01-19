@@ -27,7 +27,7 @@ componentNames.forEach(function(componentName){
   output[componentName] = doc;
 });
 
-var outputPath = path.join(__dirname,'..','docs','components.json');
+var outputPath = path.join(__dirname,'..','demo','docs','components.json');
 
 fs.writeFile(outputPath, JSON.stringify(output,null, 4), function (err) {
   if (err) return console.log(err);
