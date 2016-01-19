@@ -5,8 +5,7 @@
   "contributors": [],
   "files": [
     "dist",
-    "src",
-    "scripts"
+    "src"
   ],
   "license": "BSD-3-Clause",
   "repository": {
