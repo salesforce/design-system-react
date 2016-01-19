@@ -17,35 +17,43 @@ export const CONTROL = 'Button';
 const ButtonCore = Lib.merge({}, Base, {
 	// Add the canonical class name as a property of the control, for future reference.
 	CONTROL,
-	
+
 	// Save a list of any CSS classes used within this control which will need to be used later to find specific elements or perform other operations. It's not neccessary to list every single class here as many are used only by the template or render function.
 	cssClasses: {
 		CONTROL: 'slds-button',
 		NOT_SELECTED: 'slds-not-selected',
 		SELECTED: 'slds-is-selected'
 	},
-	
+
 	// [Themes (or variants)](https://www.lightningdesignsystem.com/components/buttons) that dictate the general style of and are applied to the `<button>`.
 	themes: {
 		'neutral': 'slds-button--neutral',
 		'brand': 'slds-button--brand',
+		'destructive': 'slds-button--destructive',
 		'inverse': 'slds-button--inverse'
 	},
-	
+
 	// Sizes dictate height of the `<button>`.
 	sizes: {
 		'small': 'slds-button--small'
 	},
-	
+
 	// `iconButtonStyles` are styles of buttons and the class is applied to the `<button>`, not the icon or SVG.
 	iconButtonStyles: {
 		'icon-bare': 'slds-button--icon-bare',
+		'icon-bare-hint': 'slds-button--icon-bare',
 		'icon-border': 'slds-button--icon-border',
+		'icon-border-hint': 'slds-button--icon-border',
 		'icon-border-filled': 'slds-button--icon-border-filled',
+		'icon-border-filled-hint': 'slds-button--icon-border-filled',
 		'icon-container': 'slds-button--icon-container',
+		'icon-container-hint': 'slds-button--icon-container',
 		'icon-inverse': 'slds-button--icon-inverse',
+		'icon-inverse-hint': 'slds-button--icon-inverse',
 		'icon-more': 'slds-button--icon-more',
+		'icon-more-hint': 'slds-button--icon-more',
 		'icon-small': 'slds-button--icon-small',
+		'icon-small-hint': 'slds-button--icon-small',
 		'picklist-label': 'slds-picklist__label'
 	},
 
@@ -78,7 +86,7 @@ const ButtonCore = Lib.merge({}, Base, {
 	// `_getClassNames` determines what CSS classes will be applied to `<button>`. Additional classes can be added to the button based on properties.
 	_getClassNames (additionalClasses, isStateful) {
 		const selectedClasses = {};
-		
+
 		if (isStateful) {
 			selectedClasses[this.cssClasses.NOT_SELECTED] = !this.getProperty('selected');
 			selectedClasses[this.cssClasses.SELECTED] = this.getProperty('selected');

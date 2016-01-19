@@ -4,11 +4,24 @@ import {Badge} from 'design-system-react';
 export default React.createClass({
 	render () {
 		return (
-		<div>
-			<Badge>Label</Badge>
-			<Badge theme="default">Label</Badge>
-			<Badge theme="shade">Label</Badge>
-			<Badge theme="inverse">Label</Badge>
+		<div className="slds-grid slds-grid--vertical">
+			<div className="slds-col | slds-m-bottom--medium">
+				<Badge>Base</Badge>
+				<Badge theme="default">Default</Badge>
+				<Badge theme="shade">Shade</Badge>
+			</div>
+			<div className="slds-col | slds-m-bottom--medium">
+				<Badge theme="inverse">Inverse</Badge>
+				<Badge theme="alt-inverse">Alt Inverse</Badge>
+				<Badge theme="info">Info</Badge>
+				<Badge theme="success">Success</Badge>
+			</div>
+			<div className="slds-col | slds-m-bottom--medium">
+				<Badge theme="warning">Warning</Badge>
+				<Badge theme="error">Error</Badge>
+				<Badge theme="offline">Offline</Badge>
+				<Badge theme="shade-alert-texture">Shade - Alert Texture</Badge>
+			</div>
 		</div>
 		);
 	}

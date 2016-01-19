@@ -3,76 +3,8 @@
 	<head>
 		<meta charset=utf-8/>
 		<title>Design System Facades</title>
-		<link href="/assets/design-system/styles/salesforce-lightning-design-system.css" rel="stylesheet">
-		<link href="/assets/facades/styles/temp-styles/temp-styles.css" rel="stylesheet">
-		<link href="/assets/facades/styles/example-styles.css" rel="stylesheet">
+		<link href="/build/dev-examples-styles.css" rel="stylesheet">
 		<link href="/assets/facades/images/favicon-16x16.png" sizes="16x16" rel="icon" type="image/png">
-		<style>
-
-
-			#component-list {
-				margin-bottom: 30px;
-			}
-
-			.component-wrapper {
-				margin-top: 40px;
-			}
-
-			.component-wrapper .header {
-				border-bottom: 2px solid #b8c3ce;
-			}
-
-			.component .body {
-				border: 1px solid #e0e5ee;
-			}
-
-			.component .body .example-type {
-				border-left: 1px solid #e0e5ee;
-			}
-
-			.component .body .example-type:first-child {
-				border-left: none;
-			}
-
-			.component .body .example-wrapper {
-				padding: 5px;
-			}
-
-			.component .body .example-wrapper .example {
-				padding: 10px;
-			}
-
-			.component .body .example-wrapper .type {
-				margin-top: -5px;
-			}
-
-			.slds-button.slds-button--neutral.slds-button--x-small {
-				margin: 2px 0px;
-				font-size: 0.7rem;
-				padding-left: 0.8rem;
-				padding-right: 0.8rem;
-				line-height: 1.575rem;
-				min-height: 1.6rem;
-			}
-
-			.slds-spinner--small {
-				position: relative;
-				top: 18px;
-			}
-
-			.slds-spinner--medium {
-				position: relative;
-				top: 5px;
-			}
-
-			.slds-button-group {
-				margin-top: 10px;
-			}
-
-			.example .row {
-				padding-bottom: 5px;
-			}
-		</style>
 	</head>
 	<body>
 		<header class="slds-page-header">
@@ -107,14 +39,14 @@
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
 							<div class="slds-col | header">
-								<h2 class="slds-text-heading--large">
+								<h2 id="badge" class="slds-text-heading--large">
 									<span>Badge</span>
 									<span class="slds-badge | slds-theme--shade">alpha: done</span>
 								</h2>
 							</div>
-							<div class="slds-col | body react">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type react">
+							<div class="slds-col | body | react">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type react">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -124,17 +56,33 @@
 											</div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
 											<div>
 												<div id="badge-jquery-control" class="slds-col | example">
-													<span class="badge1"></span>
-													<span class="badge2"></span>
-													<span class="badge3"></span>
-													<span class="badge4"></span>
+													<div class="slds-grid slds-grid--vertical">
+														<div class="slds-col | slds-m-bottom--medium">
+															<span class="badge0"></span>
+															<span class="badge1"></span>
+															<span class="badge2"></span>
+														</div>
+														<div class="slds-col | slds-m-bottom--medium">
+															<span class="badge3"></span>
+															<span class="badge4"></span>
+															<span class="badge5"></span>
+															<span class="badge6"></span>
+														</div>
+														<div class="slds-col | slds-m-bottom--medium">
+															<span class="badge7"></span>
+															<span class="badge8"></span>
+															<span class="badge9"></span>
+															<span class="badge10"></span>
+															<span class="badge15"></span>
+														</div>
+													</div>
 												</div>
 												<div class="slds-col | demo-controls"></div>
 											</div>
@@ -157,8 +105,8 @@
 							</div>
 
 							<div class="slds-col body">
-								<div class="slds-grid">
-									<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 example-type">
 										<div class="slds-grid slds-grid--vertical example-wrapper">
 											<div class="slds-col type">
 												<span class="slds-text-heading--label">React</span>
@@ -166,7 +114,7 @@
 											<div id="button-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 example-type">
+									<div class="slds-col slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 example-type">
 										<div class="slds-grid slds-grid--vertical example-wrapper">
 											<div class="slds-col type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -176,68 +124,123 @@
 
 													<div class="slds-grid slds-grid--vertical">
 														<div class="slds-col row">
+															<span class="button-base"></span>
+															<span class="button-base-disabled" ></span>
+														</div>
+														<div class="slds-col row">
 															<span class="button-neutral"></span>
-															<span class="button-brand" ></span>
-															<span class="button-inverse"></span>
-															<span class="button-bare"></span>
+															<span class="button-neutral-disabled" ></span>
+															<span class="button-neutral-small" ></span>
 														</div>
 														<div class="slds-col row">
-															<span class="button-neutral-small"></span>
-															<span class="button-brand-small"></span>
-															<span class="button-inverse-small"></span>
+															<span class="button-neutral-icon-left"></span>
+															<span class="button-neutral-icon-right" ></span>
 														</div>
 														<div class="slds-col row">
-															<span class="button-icon-left"></span>
-															<span class="button-icon-right"></span>
-															<span class="button-bare-icon-right"></span>
+															<span class="button-brand"></span>
+															<span class="button-brand-disabled" ></span>
+															<span class="button-brand-small" ></span>
 														</div>
 														<div class="slds-col row">
-															<span class="button-icon-left-small"></span>
-															<span class="button-icon-right-small"></span>
-															<span class="button-bare-icon-right-small"></span>
+															<span class="button-destructive"></span>
+															<span class="button-destructive-disabled" ></span>
+															<span class="button-destructive-small" ></span>
+														</div>
+														<div class="slds-col row">
+															<div class="slds-box slds-box--x-small | slds-theme--inverse">
+																<span class="button-inverse"></span>
+																<span class="button-inverse-disabled" ></span>
+																<span class="button-inverse-small" ></span>
+															</div>
+														</div>
+														<div class="slds-col row">
+															<span class="button-stateful"></span>
+														</div>
+														<div class="slds-col row">
+															<div class="button-stateful-inverse | slds-box slds-box--x-small | slds-theme--inverse"></div>
+														</div>
+														<div class="slds-col row">
+															<span class="button-icon-bare-x-small"></span>
+															<span class="button-icon-bare-small"></span>
+															<span class="button-icon-bare"></span>
+															<span class="button-icon-bare-large"></span>
+														</div>
+														<div class="slds-col row">
+															<span class="button-icon-bare-x-small--disabled"></span>
+															<span class="button-icon-bare-small--disabled"></span>
+															<span class="button-icon-bare--disabled"></span>
+															<span class="button-icon-bare-large--disabled"></span>
+														</div>
+														<div class="slds-col row">
+															<span class="button-icon-container"></span>
+															<span class="button-icon-container-disabled"></span>
+														</div>
+														<div class="slds-col row">
+															<span class="button-icon-border"></span>
+															<span class="button-icon-border-disabled"></span>
+														</div>
+														<div class="slds-col row">
+															<div class="slds-box slds-box--x-small | slds-theme--success">
+																<span class="button-icon-border-filled"></span>
+																<span class="button-icon-border-filled-disabled"></span>
+															</div>
 														</div>
 														<div class="slds-col row">
 															<span class="button-icon-more"></span>
 															<span class="button-icon-more-disabled"></span>
 														</div>
 														<div class="slds-col row">
-															<span class="button-icon-container"></span>
-															<span class="button-icon-container-disabled"></span>
-
-															<span class="button-icon-border"></span>
-															<span class="button-icon-border-disabled"></span>
-
-															<span class="button-icon-border-filled"></span>
-															<span class="button-icon-border-filled-disabled"></span>
-
-															<span class="button-icon-small"></span>
-															<span class="button-icon-small-disabled"></span>
+															<span class="button-icon-stateful"></span>
 														</div>
-													</div>
+														<div class="slds-col row">
+															<div class="slds-box slds-box--x-small | slds-theme--inverse">
+																<span class="button-icon-inverse"></span>
+																<span class="button-icon-inverse-disabled"></span>
 
+															</div>
+														</div>
+														<div class="slds-col row">
+															<div class="button-icon-hint | slds-box slds-box--x-small | slds-hint-parent">
+																<span class="button-icon-bare-hint"></span>
+																<span class="button-icon-border-hint"></span>
+																<span class="button-icon-border-filled-hint"></span>
+																<span class="button-icon-container-hint"></span>
 
-
-													<div class="slds-col demo-controls">
-														<div class="slds-button-group" role="group">
-															<button type="button" id="button-jquery-set-icon" class="slds-button slds-button--neutral slds-button--x-small">Render view</button>
+															</div>
 														</div>
 													</div>
 
 													<div class="slds-col row">&nbsp;</div>
 
-													<div class="slds-col row">
-															<span class="button-stateful"></span>
+													<div class="slds-col | demo-controls">
+														<div class="slds-box slds-box--x-small | slds-theme--shade | slds-m-bottom--medium">
+															<h4 class="slds-text-heading--label">
+																Neutral button with icon
+															</h4>
+															<div class="slds-button-group" role="group">
+																<button type="button" id="button-jquery-set-icon" class="slds-button slds-button--neutral slds-button--small">Re-render neutral icon button view</button>
+															</div>
+														</div>
 													</div>
 
+													<div class="slds-col | demo-controls">
+														<div class="slds-box slds-box--small | slds-theme--shade">
+															<h4 class="slds-text-heading--label">
+																Stateful button
+															</h4>
+															<div class="slds-button-group" role="group">
+																<button type="button" id="button-stateful-jquery-select" class="slds-button slds-button--neutral slds-button--small">Select</button>
+																<button type="button" id="button-stateful-jquery-deselect" class="slds-button slds-button--neutral slds-button--small">Deselect</button>
+																<button type="button" id="button-stateful-jquery-disable" class="slds-button slds-button--neutral slds-button--small">Disable</button>
+																<button type="button" id="button-stateful-jquery-enable" class="slds-button slds-button--neutral slds-button--small">Enable</button>
+															</div>
+															<div class="slds-button-group" role="group">
+																<button type="button" id="button-stateful-jquery-destroy" class="slds-button slds-button--neutral slds-button--small">Destroy</button>
+																<button type="button" id="button-stateful-jquery-recreate" class="slds-button slds-button--neutral slds-button--small">Re-create</button>
+															</div>
+														</div>
 													</div>
-												<div class="slds-col demo-controls">
-													<div class="slds-button-group" role="group">
-														<button type="button" id="button-stateful-jquery-select" class="slds-button slds-button--neutral slds-button--x-small">Select</button>
-														<button type="button" id="button-stateful-jquery-deselect" class="slds-button slds-button--neutral slds-button--x-small">Deselect</button>
-														<button type="button" id="button-stateful-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
-														<button type="button" id="button-stateful-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
-														<button type="button" id="button-stateful-jquery-destroy" class="slds-button slds-button--neutral slds-button--x-small">Destroy</button>
-													</div>
+
 												</div>
 											</div>
 										</div>
@@ -251,35 +254,40 @@
 					<!-- button group -->
 					<div class="slds-col | component-wrapper">
 						<div class="slds-grid slds-grid--vertical | component">
+
 							<div class="slds-col | header">
 								<h2 id="button-group" class="slds-text-heading--large">
 									<span>Button Group</span>
 									<span class="slds-badge | slds-theme--warning slds-theme--inverse-text">alpha: in progress</span>
 								</h2>
 							</div>
+
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
-											<div class="slds-col | type">
+											<div class="slds-col | row | type">
 												<span class="slds-text-heading--label">React</span>
 											</div>
-											<div id="button-group-react-control">
+											<div id="button-group-react-control" class="slds-col | row | example">
 											</div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
-											<div class="slds-col | type">
+											<div class="slds-col | row | type">
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
-											<div id="button-group-jquery-control"></div>
+											<div id="button-group-jquery-control" class="slds-col | row | example"></div>
 											<div class="slds-col | demo-controls">
-												<div class="slds-button-group" role="group">
-													<button type="button" id="button-group-jquery-button-select" class="slds-button slds-button--neutral slds-button--x-small">Select</button>
-													<button type="button" id="button-group-jquery-button-deselect" class="slds-button slds-button--neutral slds-button--x-small">Deselect</button>
+												<div class="slds-box slds-box--x-small | slds-theme--shade | slds-m-bottom--medium">
+													<div class="slds-button-group" role="group">
+														<button type="button" id="button-group-jquery-button-select" class="slds-button slds-button--neutral slds-button--small">Toggle 1</button>
+														<button type="button" id="button-group-jquery-button-deselect" class="slds-button slds-button--neutral slds-button--small">Toggle 2</button>
+													</div>
 												</div>
 											</div>
+
 										</div>
 									</div>
 								</div>
@@ -297,8 +305,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -308,7 +316,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -323,10 +331,10 @@
 												</div>
 												<div class="slds-col | demo-controls">
 													<div class="slds-button-group" role="group">
-														<button type="button" id="checkbox-jquery-check" class="slds-button slds-button--neutral slds-button--x-small">Check</button>
-														<button type="button" id="checkbox-jquery-uncheck" class="slds-button slds-button--neutral slds-button--x-small">Uncheck</button>
-														<button type="button" id="checkbox-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
-														<button type="button" id="checkbox-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
+														<button type="button" id="checkbox-jquery-check" class="slds-button slds-button--neutral slds-button--small">Check</button>
+														<button type="button" id="checkbox-jquery-uncheck" class="slds-button slds-button--neutral slds-button--small">Uncheck</button>
+														<button type="button" id="checkbox-jquery-disable" class="slds-button slds-button--neutral slds-button--small">Disable</button>
+														<button type="button" id="checkbox-jquery-enable" class="slds-button slds-button--neutral slds-button--small">Enable</button>
 													</div>
 												</div>
 											</div>
@@ -347,8 +355,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -356,7 +364,7 @@
 											<div id="combobox-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -367,11 +375,11 @@
 												</div>
 												<div class="slds-col | demo-controls">
 													<div class="slds-button-group" role="group">
-														<button type="button" id="combobox-jquery-log" class="slds-button slds-button--neutral slds-button--x-small">Log selected item</button>
-														<button type="button" id="combobox-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--x-small">Set by index</button>
-														<button type="button" id="combobox-jquery-setByObject" class="slds-button slds-button--neutral slds-button--x-small">Set by object</button>
-														<button type="button" id="combobox-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
-														<button type="button" id="combobox-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
+														<button type="button" id="combobox-jquery-log" class="slds-button slds-button--neutral slds-button--small">Log selected item</button>
+														<button type="button" id="combobox-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--small">Set by index</button>
+														<button type="button" id="combobox-jquery-setByObject" class="slds-button slds-button--neutral slds-button--small">Set by object</button>
+														<button type="button" id="combobox-jquery-enable" class="slds-button slds-button--neutral slds-button--small">Enable</button>
+														<button type="button" id="combobox-jquery-disable" class="slds-button slds-button--neutral slds-button--small">Disable</button>
 													</div>
 												</div>
 											</div>
@@ -392,8 +400,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -404,7 +412,7 @@
 											<div className="slds-col demo-controls"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -432,8 +440,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -443,7 +451,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -473,8 +481,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -482,7 +490,7 @@
 											<div id="dropdown-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -493,11 +501,11 @@
 												</div>
 												<div class="slds-col | demo-controls">
 													<div class="slds-button-group" role="group">
-														<button id="dropdown-jquery-log" class="slds-button slds-button--neutral slds-button--x-small">Log selected item</button>
-														<button id="dropdown-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--x-small">Set by index</button>
-														<button id="dropdown-jquery-setByObject" class="slds-button slds-button--neutral slds-button--x-small">Set by object</button>
-														<button id="dropdown-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
-														<button id="dropdown-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
+														<button id="dropdown-jquery-log" class="slds-button slds-button--neutral slds-button--small">Log selected item</button>
+														<button id="dropdown-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--small">Set by index</button>
+														<button id="dropdown-jquery-setByObject" class="slds-button slds-button--neutral slds-button--small">Set by object</button>
+														<button id="dropdown-jquery-enable" class="slds-button slds-button--neutral slds-button--small">Enable</button>
+														<button id="dropdown-jquery-disable" class="slds-button slds-button--neutral slds-button--small">Disable</button>
 													</div>
 												</div>
 											</div>
@@ -518,8 +526,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid slds-grid--vertical-stretch | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -527,7 +535,7 @@
 											<div id="lookup-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -557,8 +565,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -566,13 +574,13 @@
 											<div id="modal-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
 											<div>
-												<button type="button" id="modal-jquery-control-launch" class="slds-button slds-button--neutral slds-button--x-small">Show</button>
+												<button type="button" id="modal-jquery-control-launch" class="slds-button slds-button--neutral slds-button--small">Show</button>
 												<div id="modal-jquery-control" class="slds-col | example">
 													<p>This is the sample content for the jquery modal!</p>
 												</div>
@@ -597,8 +605,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -606,7 +614,7 @@
 											<div id="notification-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -620,8 +628,8 @@
 												</div>
 												<div class="slds-col | demo-controls">
 													<div class="slds-button-group" role="group">
-														<button type="button" id="notification-jquery-hide" class="slds-button slds-button--neutral slds-button--x-small">Hide</button>
-														<button type="button" id="notification-jquery-show" class="slds-button slds-button--neutral slds-button--x-small">Show</button>
+														<button type="button" id="notification-jquery-hide" class="slds-button slds-button--neutral slds-button--small">Hide</button>
+														<button type="button" id="notification-jquery-show" class="slds-button slds-button--neutral slds-button--small">Show</button>
 													</div>
 												</div>
 											</div>
@@ -642,8 +650,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -651,7 +659,7 @@
 											<div id="picklist-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -662,12 +670,12 @@
 												</div>
 												<div class="slds-col | demo-controls">
 													<div class="slds-button-group" role="group">
-														<button id="picklist-jquery-log" class="slds-button slds-button--neutral slds-button--x-small">Log selected item</button>
-														<button id="picklist-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--x-small">Set by index</button>
-														<button id="picklist-jquery-setByObject" class="slds-button slds-button--neutral slds-button--x-small">Set by object</button>
-														<button id="picklist-jquery-enable" class="slds-button slds-button--neutral slds-button--x-small">Enable</button>
-														<button id="picklist-jquery-disable" class="slds-button slds-button--neutral slds-button--x-small">Disable</button>
-														<button id="picklist-jquery-destroy" class="slds-button slds-button--neutral slds-button--x-small">Destroy</button>
+														<button id="picklist-jquery-log" class="slds-button slds-button--neutral slds-button--small">Log selected item</button>
+														<button id="picklist-jquery-setByIndex" class="slds-button slds-button--neutral slds-button--small">Set by index</button>
+														<button id="picklist-jquery-setByObject" class="slds-button slds-button--neutral slds-button--small">Set by object</button>
+														<button id="picklist-jquery-enable" class="slds-button slds-button--neutral slds-button--small">Enable</button>
+														<button id="picklist-jquery-disable" class="slds-button slds-button--neutral slds-button--small">Disable</button>
+														<button id="picklist-jquery-destroy" class="slds-button slds-button--neutral slds-button--small">Destroy</button>
 													</div>
 												</div>
 											</div>
@@ -688,8 +696,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -697,7 +705,7 @@
 											<div id="pills-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -727,8 +735,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -737,13 +745,13 @@
 											</div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
 											<div id="popover-jquery-control" class="slds-col | example">
-												<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--x-small">Toggle</button>
+												<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--small">Toggle</button>
 											</div>
 											<div class="slds-col | demo-controls">
 												<div class="slds-button-group" role="group"></div>
@@ -765,8 +773,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -774,7 +782,7 @@
 											<div id="radio-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -782,19 +790,19 @@
 											<div id="radio-jquery-control" class="slds-col | example"></div>
 											<div class="slds-col | demo-controls">
 												<div class="slds-button-group" role="group">
-													<button id="radio-jquery-checkFirst" type="button" class="slds-button slds-button--neutral slds-button--x-small">Check first</button>
-													<button id="radio-jquery-checkSecond" type="button" class="slds-button slds-button--neutral slds-button--x-small">Check second</button>
+													<button id="radio-jquery-checkFirst" type="button" class="slds-button slds-button--neutral slds-button--small">Check first</button>
+													<button id="radio-jquery-checkSecond" type="button" class="slds-button slds-button--neutral slds-button--small">Check second</button>
 												</div>
 												<div class="slds-button-group" role="group">
-													<button id="radio-jquery-disableFirst" type="button" class="slds-button slds-button--neutral slds-button--x-small">Disable first</button>
-													<button id="radio-jquery-enableFirst" type="button" class="slds-button slds-button--neutral slds-button--x-small">Enable first</button>
-													<button id="radio-jquery-disableAll" type="button" class="slds-button slds-button--neutral slds-button--x-small">Disable all</button>
-													<button id="radio-jquery-enableAll" type="button" class="slds-button slds-button--neutral slds-button--x-small">Enable all</button>
+													<button id="radio-jquery-disableFirst" type="button" class="slds-button slds-button--neutral slds-button--small">Disable first</button>
+													<button id="radio-jquery-enableFirst" type="button" class="slds-button slds-button--neutral slds-button--small">Enable first</button>
+													<button id="radio-jquery-disableAll" type="button" class="slds-button slds-button--neutral slds-button--small">Disable all</button>
+													<button id="radio-jquery-enableAll" type="button" class="slds-button slds-button--neutral slds-button--small">Enable all</button>
 												</div>
 												<div class="slds-button-group" role="group">
-													<button id="radio-jquery-logChecked" type="button" class="slds-button slds-button--neutral slds-button--x-small">Log Checked</button>
-													<button id="radio-jquery-logValue" type="button" class="slds-button slds-button--neutral slds-button--x-small">Log Value</button>
-													<button id="radio-jquery-destroy" type="button" class="slds-button slds-button--neutral slds-button--x-small">Destroy</button>
+													<button id="radio-jquery-logChecked" type="button" class="slds-button slds-button--neutral slds-button--small">Log Checked</button>
+													<button id="radio-jquery-logValue" type="button" class="slds-button slds-button--neutral slds-button--small">Log Value</button>
+													<button id="radio-jquery-destroy" type="button" class="slds-button slds-button--neutral slds-button--small">Destroy</button>
 												</div>
 											</div>
 										</div>
@@ -814,61 +822,59 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
 											</div>
-											<div id="spinner-react-control"></div>
+											<div id="spinner-react-control" class="slds-col | example"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
-											<div>
-												<div id="spinner-jquery-control" class="slds-col | example">
-													<div class="slds-grid slds-grid--vertical">
-														<div class="slds-col slds-theme--default">
-															<div class="slds-float--left spinner">
-																<div class="spinner1"></div>
-															</div>
-															<div class="slds-float--left spinner">
-																<div class="spinner2"></div>
-															</div>
-															<div class="slds-float--left spinner">
-																<div class="spinner3"></div>
-															</div>
+											<div id="spinner-jquery-control" class="slds-col | example">
+												<div class="slds-grid slds-grid--vertical">
+													<div class="slds-col slds-theme--default">
+														<div class="slds-float--left spinner">
+															<div class="spinner1"></div>
 														</div>
-														<div class="slds-col slds-theme--shade">
-															<div class="slds-float--left spinner">
-																<div class="spinner4"></div>
-															</div>
-															<div class="slds-float--left spinner">
-																<div class="spinner5"></div>
-															</div>
-															<div class="slds-float--left spinner">
-																<div class="spinner6"></div>
-															</div>
+														<div class="slds-float--left spinner">
+															<div class="spinner2"></div>
 														</div>
-														<div class="slds-col slds-theme--inverse">
-															<div class="slds-float--left spinner">
-																<div class="spinner7"></div>
-															</div>
-															<div class="slds-float--left spinner">
-																<div class="spinner8"></div>
-															</div>
-															<div class="slds-float--left spinner">
-																<div class="spinner9"></div>
-															</div>
+														<div class="slds-float--left spinner">
+															<div class="spinner3"></div>
+														</div>
+													</div>
+													<div class="slds-col slds-theme--shade">
+														<div class="slds-float--left spinner">
+															<div class="spinner4"></div>
+														</div>
+														<div class="slds-float--left spinner">
+															<div class="spinner5"></div>
+														</div>
+														<div class="slds-float--left spinner">
+															<div class="spinner6"></div>
+														</div>
+													</div>
+													<div class="slds-col slds-theme--inverse">
+														<div class="slds-float--left spinner">
+															<div class="spinner7"></div>
+														</div>
+														<div class="slds-float--left spinner">
+															<div class="spinner8"></div>
+														</div>
+														<div class="slds-float--left spinner">
+															<div class="spinner9"></div>
 														</div>
 													</div>
 												</div>
-												<div class="slds-col | demo-controls">
-													<div class="slds-button-group" role="group"></div>
-												</div>
+											</div>
+											<div class="slds-col | demo-controls">
+												<div class="slds-button-group" role="group"></div>
 											</div>
 										</div>
 									</div>
@@ -887,8 +893,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -896,7 +902,7 @@
 											<div id="tabs-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -926,8 +932,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -935,14 +941,14 @@
 											<div id="tooltip-react-control" class="slds-col | example"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
 											</div>
 											<div>
 												<div id="tooltip-jquery-control" class="slds-col | example">
-													<button id="tooltip-jquery-toggle" class="slds-button slds-button--neutral slds-button--x-small">Toggle</button>
+													<button id="tooltip-jquery-toggle" class="slds-button slds-button--neutral slds-button--small">Toggle</button>
 												</div>
 												<div class="slds-col | demo-controls">
 													<div class="slds-button-group" role="group"></div>
@@ -965,8 +971,8 @@
 								</h2>
 							</div>
 							<div class="slds-col | body">
-								<div class="slds-grid">
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+								<div class="slds-grid | slds-wrap">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">React</span>
@@ -974,7 +980,7 @@
 											<div id="tree-react-control"></div>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-2 slds-medium-size--1-of-2 slds-large-size--1-of-2 | example-type">
+									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type">
 										<div class="slds-grid slds-grid--vertical | example-wrapper">
 											<div class="slds-col | type">
 												<span class="slds-text-heading--label">jQuery</span>
@@ -1001,8 +1007,8 @@
 			</div>
 		</section>
 		<script src="/assets/facades/scripts/jquery.min.js"></script>
-		<script src="/build/source-examples-jquery.bundle.js"></script>
-		<script src="/build/source-examples-react.bundle.js"></script>
+		<script src="/build/dev-examples-jquery.bundle.js"></script>
+		<script src="/build/dev-examples-react.bundle.js"></script>
 	</body>
 
 </html>

@@ -1,0 +1,44 @@
+/// Version number
+/// Helps deprecating pieces of the codebase
+/// Note: update at each release
+///
+/// For internal use only
+///
+/// @type String
+/// @access private
+$app-version: '0.0.12';
+
+/// Debug mode (uncomment to activate)
+/// Turn on to output deprecation warnings during development
+/// Note: remove when/if gulp-sass starts supporting the --quiet flag
+///
+/// @type Boolean
+// $app-debug: true;
+
+
+/// Website Section Path
+///
+/// @type String
+$static-section-directory: '/demo-site';
+
+
+/// Icon Path
+///
+/// @type String
+$static-icon-path: '/assets#{$static-section-directory}/icons';
+
+
+/// Image Path
+///
+/// @type String
+$static-image-path: '/assets#{$static-section-directory}/images';
+
+
+/// Demo Site Prefix
+/// Will prefix all CSS classes used only in the demo site
+///
+/// @example scss Use in a class name
+///  .#{$app-prefix}foo { ... } // outputs .facades-demo-foo { ... }
+///
+/// @type String
+$app-prefix: 'facades-demo-' !default;

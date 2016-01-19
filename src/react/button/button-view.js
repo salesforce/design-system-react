@@ -21,7 +21,7 @@ export const ButtonViewObject = {
 		text: React.PropTypes.string,
 		view: React.PropTypes.oneOf(Object.keys(ButtonViewCore.buttonStatefulViewStyles))
 	},
-	
+
 	_renderAssistiveText () {
 		if (this.props.assistiveText) {
 			return <span className={this.cssClasses.ASSISTIVE_TEXT}>{this.props.assistiveText}</span>;
@@ -47,7 +47,7 @@ export const ButtonViewObject = {
 
 	render () {
 		return (
-			<span className={this.buttonStatefulViewStyles[this.props.view]}>{this._renderIcon('left')}{this.props.text}{this._renderIcon('right')}{this._renderAssistiveText()}</span>
+			<span className={this.buttonStatefulViewStyles[this.props.view]}>{this._renderIcon('left')}{this.props.text}{this._renderAssistiveText()}{this._renderIcon('right')}</span>
 		);
 	}
 };

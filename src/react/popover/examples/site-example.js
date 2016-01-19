@@ -5,7 +5,7 @@ export default React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool
 	},
-	
+
 	getInitialState () {
 		return {
 			isOpen: false
@@ -29,7 +29,7 @@ export default React.createClass({
 		}
 		return (
 			<div className="react-popover-example-wrap">
-				<button id="popover-react-toggle" className="slds-button slds-button--neutral slds-button--x-small" ref={this._buttonRendered} onClick={this._handleClick}>Toggle</button>
+				<button id="popover-react-toggle" className="slds-button slds-button--neutral slds-button--small" ref={this._buttonRendered} onClick={this._handleClick}>Toggle</button>
 					{popover}
 			</div>
 		);

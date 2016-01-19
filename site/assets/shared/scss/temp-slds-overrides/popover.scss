@@ -1,0 +1,5 @@
+.#{$css-prefix}popover {
+    &.#{$css-prefix}popover-target, &.#{$css-prefix}popover-absolute {
+        position: absolute;
+    }
+}

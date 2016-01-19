@@ -18,21 +18,22 @@ export const CONTROL = 'ButtonView';
 
 const ButtonViewCore = Lib.merge({}, Base, {
 	CONTROL,
-	
+
 	cssClasses: {
 		ASSISTIVE_TEXT: 'slds-assistive-text',
 		BUTTON_ICON: 'slds-button__icon',
+		BUTTON_ICON_HINT: 'slds-button__icon--hint',
 		ICON: 'slds-icon',
 		STATEFUL_ICON: 'slds-button__icon--stateful',
 		TRUNCATE: 'slds-truncate'
 	},
-	
+
 	buttonStatefulViewStyles: {
 		notSelected: 'slds-text-not-selected',
 		selected: 'slds-text-selected',
 		selectedHover: 'slds-text-selected-focus'
 	},
-	
+
 	iconPositions: {
 		'left': 'slds-button__icon--left',
 		'right': 'slds-button__icon--right'
@@ -51,6 +52,7 @@ const ButtonViewCore = Lib.merge({}, Base, {
 	_getIconClassNames (additionalClasses) {
 		let iconBaseClass;
 		let buttonIconSizeClass;
+		let buttonIconHintClass;
 		let iconPositionClass;
 
 		// Set the base class. This is based on whether the icon should be styled like [an icon is within a stateful button](https://www.lightningdesignsystem.com/components/buttons#stateful), like [an icon is outside of a button](https://www.lightningdesignsystem.com/components/icons), or a [standard icon within a button](https://www.lightningdesignsystem.com/components/buttons#icon).
@@ -58,11 +60,24 @@ const ButtonViewCore = Lib.merge({}, Base, {
 			iconBaseClass = this.cssClasses.STATEFUL_ICON;
 		} else if (this.getProperty('iconStyle') === 'icon-only') {
 			iconBaseClass = this.cssClasses.ICON;
-		}	else {
+		} else {
 			iconBaseClass = this.cssClasses.BUTTON_ICON;
 		}
 
-		// Set the position class. By default, the position of an icon is left of the text. If there is no visible text and only an icon is visibly present, then use the default of the set icon position.
+		if (
+				this.getProperty('iconStyle') === 'icon-bare-hint' ||
+				this.getProperty('iconStyle') === 'icon-border-hint' ||
+				this.getProperty('iconStyle') === 'icon-border-filled-hint' ||
+				this.getProperty('iconStyle') === 'icon-container-hint' ||
+				this.getProperty('iconStyle') === 'icon-inverse-hint' ||
+				this.getProperty('iconStyle') === 'icon-more-hint' ||
+				this.getProperty('iconStyle') === 'icon-small-hint'
+		) {
+			buttonIconHintClass = this.cssClasses.BUTTON_ICON_HINT;
+		}
+
+
+		// Set the position class. By default, the position of an icon is left of the text. If there is no visible text and only an icon is visibly present, then use the default position set in button core.
 		if (Boolean(this.getProperty('text')) && this.getProperty('iconStyle') !== 'icon-only') {
 			iconPositionClass = this.iconPositions[this.getProperty('iconPosition')];
 		}
@@ -76,6 +91,7 @@ const ButtonViewCore = Lib.merge({}, Base, {
 			iconBaseClass,
 			iconPositionClass,
 			buttonIconSizeClass,
+			buttonIconHintClass,
 			additionalClasses);
 	}
 });

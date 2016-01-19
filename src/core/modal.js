@@ -10,14 +10,14 @@ const ModalCore = Lib.merge({}, Base, {
 
 	// CSS classes used within this control
 	cssClasses: {
-		BACKDROP: 'slds-modal-backdrop',
+		BACKDROP: 'slds-backdrop',
 		CONTROL: CONTROL,
 		CLOSE: 'slds-modal__close',
 		CONTENT: 'slds-modal__content',
 		HEADER: 'slds-modal__header',
 		MODAL: 'slds-modal',
 		OPEN: 'slds-fade-in-open',
-		OPENBACKDROP: 'slds-modal-backdrop--open',
+		OPENBACKDROP: 'slds-backdrop--open',
 		PRIMARYBTN: 'slds-button--brand',
 		MODALCONTAINER: 'slds-modal__container',
 		HEAD: 'slds-modal__header',
