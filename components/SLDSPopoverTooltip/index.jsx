@@ -95,13 +95,6 @@ class SLDSPopoverTooltip extends React.Component {
     }
   }
 
-  handleMouseClick() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-      isClosing: !this.state.isOpen
-    });
-  }
-
   handleMouseEnter() {
     this.setState({
       isOpen: true,

@@ -170,6 +170,13 @@
                     "value": "\"base\"",
                     "computed": false
                 }
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             }
         }
     },
@@ -297,6 +304,13 @@
                 },
                 "required": false,
                 "description": "Use <code>icon-inverse</code> for white icons."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             }
         }
     },
@@ -705,6 +719,13 @@
                 },
                 "required": false,
                 "description": "Current selected menu item."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
             }
         }
     },
@@ -1060,7 +1081,23 @@
                             "computed": false
                         },
                         {
+                            "value": "\"top-left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"top-right\"",
+                            "computed": false
+                        },
+                        {
                             "value": "\"right\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right-top\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right-bottom\"",
                             "computed": false
                         },
                         {
@@ -1068,7 +1105,23 @@
                             "computed": false
                         },
                         {
+                            "value": "\"bottom-left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"bottom-right\"",
+                            "computed": false
+                        },
+                        {
                             "value": "\"left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"left-top\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"left-bottom\"",
                             "computed": false
                         }
                     ]
@@ -1084,7 +1137,7 @@
                 "type": {
                     "name": "node"
                 },
-                "required": true,
+                "required": false,
                 "description": "Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it."
             },
             "content": {
@@ -1112,6 +1165,13 @@
             "openByDefault": {
                 "type": {
                     "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "target": {
+                "type": {
+                    "name": "any"
                 },
                 "required": false,
                 "description": ""

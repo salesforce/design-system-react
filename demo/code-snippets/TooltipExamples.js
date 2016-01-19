@@ -19,20 +19,17 @@ class TooltipExample extends React.Component {
         <div ref="tooltipOnHover" className="slds-p-horizontal--medium" style={{ "display": "inline-block"}}>
           <SLDSPopoverTooltip
             align="top"
-            content={<span>Tooltip on top</span>}
-            targetElement={this.refs.tooltipOnHover}>
+            content={<span>Tooltip on top</span>}>
               <a href="javascript:void(0)">
                 <SLDSIcon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />
               </a>
             </SLDSPopoverTooltip>
         </div>
-
-        <div ref="tooltipOnClick" className="slds-p-horizontal--medium" style={{ "display": "inline-block"}}>
+        <div className="slds-p-horizontal--medium" style={{ "display": "inline-block"}}>
           <SLDSPopoverTooltip
             key="tooltipDemo"
             align="right"
-            content={<span>Tooltip with right alignment</span>}
-            targetElement={this.refs.tooltipOnClick}>
+            content={<span>Tooltip with right alignment</span>}>
               <SLDSButton variant="brand" label="Hover to Open" />
             </SLDSPopoverTooltip>
         </div>
