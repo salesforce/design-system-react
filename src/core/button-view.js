@@ -22,7 +22,7 @@ const ButtonViewCore = Lib.merge({}, Base, {
 	cssClasses: {
 		ASSISTIVE_TEXT: 'slds-assistive-text',
 		BUTTON_ICON: 'slds-button__icon',
-		BUTTON_ICON_HINT: 'slds-button__icon slds-button__icon--hint',
+		BUTTON_ICON_HINT: 'slds-button__icon--hint',
 		ICON: 'slds-icon',
 		STATEFUL_ICON: 'slds-button__icon--stateful',
 		TRUNCATE: 'slds-truncate'
@@ -52,6 +52,7 @@ const ButtonViewCore = Lib.merge({}, Base, {
 	_getIconClassNames (additionalClasses) {
 		let iconBaseClass;
 		let buttonIconSizeClass;
+		let buttonIconHintClass;
 		let iconPositionClass;
 
 		// Set the base class. This is based on whether the icon should be styled like [an icon is within a stateful button](https://www.lightningdesignsystem.com/components/buttons#stateful), like [an icon is outside of a button](https://www.lightningdesignsystem.com/components/icons), or a [standard icon within a button](https://www.lightningdesignsystem.com/components/buttons#icon).
@@ -59,7 +60,11 @@ const ButtonViewCore = Lib.merge({}, Base, {
 			iconBaseClass = this.cssClasses.STATEFUL_ICON;
 		} else if (this.getProperty('iconStyle') === 'icon-only') {
 			iconBaseClass = this.cssClasses.ICON;
-		} else if (
+		} else {
+			iconBaseClass = this.cssClasses.BUTTON_ICON;
+		}
+
+		if (
 				this.getProperty('iconStyle') === 'icon-bare-hint' ||
 				this.getProperty('iconStyle') === 'icon-border-hint' ||
 				this.getProperty('iconStyle') === 'icon-border-filled-hint' ||
@@ -68,10 +73,9 @@ const ButtonViewCore = Lib.merge({}, Base, {
 				this.getProperty('iconStyle') === 'icon-more-hint' ||
 				this.getProperty('iconStyle') === 'icon-small-hint'
 		) {
-			iconBaseClass = this.cssClasses.BUTTON_ICON_HINT;
-		} else {
-			iconBaseClass = this.cssClasses.BUTTON_ICON;
+			buttonIconHintClass = this.cssClasses.BUTTON_ICON_HINT;
 		}
+
 
 		// Set the position class. By default, the position of an icon is left of the text. If there is no visible text and only an icon is visibly present, then use the default position set in button core.
 		if (Boolean(this.getProperty('text')) && this.getProperty('iconStyle') !== 'icon-only') {
@@ -87,6 +91,7 @@ const ButtonViewCore = Lib.merge({}, Base, {
 			iconBaseClass,
 			iconPositionClass,
 			buttonIconSizeClass,
+			buttonIconHintClass,
 			additionalClasses);
 	}
 });
