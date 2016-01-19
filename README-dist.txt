@@ -17,6 +17,6 @@ Presented here are Javascript components based on [Lightning Design System](http
 
 * assets/
   - scripts/
-    - jquery.js
-    - react.js
+    - facades.jquery.js
+    - facades.react.js
 
