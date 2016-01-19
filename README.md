@@ -16,6 +16,19 @@ Javascript components based on [Lightning Design System](https://www.lightningde
 ### Building
 * Run `grunt build` for the default build. This will run eslint and create the dist files
 
+### Scripts
+* Run like `npm run app-start`
+* Run `npm run menu` to see an interactive menu of available scripts.
+  - *app-start*: Start the demo application
+  - *build-dev*: See what the webpack hot-dev-server is doing. Outputs to `build/`
+  - *build-heroku*: Run production config webpack and output to `build/`
+  - *clean*: Remove all files from `build/`
+  - *dev*: Start the webpack hot dev server
+  - *dist*: Run the distribution config webpack, build to `.tmp/` directory and then package it up in `.dist/` with a .zip file and README.md
+  - *dist-npm*: Run the distribution config webpack, build to `.tmp/` directory and then package it up for distribution to NPM in `.dist/`
+  - *test*: Run the test suite.
+
+
 ### Contributing
 * Fork the repo!
 * Read up (and feel free to comment on) this [theory doc](https://docs.google.com/a/salesforce.com/document/d/1w8sy0Eex8nwsQ0vx_MUysIL8alOfOCXWfuq19Ikbky8/edit?usp=sharing)
