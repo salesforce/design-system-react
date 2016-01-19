@@ -5,7 +5,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	const picklist = new Picklist($('#picklist-jquery-control .picklist1'), {
-		collection: sampleData.picklist.defaultArray,
+		collection: sampleData.picklist.default.collection,
 		selection: { value: '1' }
 	});
 
@@ -17,7 +17,7 @@ $(function () {
 		picklist.setSelectionByIndex(1);
 	});
 	$('#picklist-jquery-setByObject').on('click', function () {
-		picklist.setSelection(sampleData.picklist.defaultArray[5]);
+		picklist.setSelection(sampleData.picklist.default.collection[5]);
 	});
 	$('#picklist-jquery-enable').on('click', function () {
 		picklist.enable();

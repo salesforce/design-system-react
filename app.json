@@ -1,0 +1,15 @@
+{
+  "name": "Design System Façades Documentation Site",
+  "description": "A whole new way to build apps using Lightning Design System with your application famework of choice. Our facades currently support the JavaScript frameworks below.",
+  "keywords": [
+    "salesforce",
+  ],
+  "website": "http://design-system-facades.herokuapp.com/",
+  "repository": "https://github.com/salesforce-ux/design-system-facades",
+  "env": {
+    "NODE_MODULES_CACHE": true,
+    "NPM_CONFIG_PRODUCTION": false,
+    "TZ": "America/New_York"
+  },
+  "image": "heroku/node"
+}

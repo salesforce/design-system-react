@@ -70,7 +70,7 @@ Lib.merge(Pills.prototype, PillsCore, Events, DOM, State, {
 		});
 
 		if (this.rendered) {
-			this.elements.toggleClass(this.cssClasses.DISABLED, false);
+			this.elements.removeClass(this.cssClasses.DISABLED);
 		}
 	},
 
@@ -80,7 +80,7 @@ Lib.merge(Pills.prototype, PillsCore, Events, DOM, State, {
 		});
 
 		if (this.rendered) {
-			this.element.toggleClass(this.cssClasses.DISABLED, true);
+			this.element.addClass(this.cssClasses.DISABLED);
 		}
 	},
 

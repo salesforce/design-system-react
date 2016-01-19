@@ -191,7 +191,7 @@ export const PicklistObject = {
 		});
 
 		if (this.rendered) {
-			this.elements.dropdown.toggleClass('slds-hide', false);
+			this.elements.dropdown.removeClass('slds-hide');
 		}
 		
 		this.button.enable();
@@ -203,7 +203,7 @@ export const PicklistObject = {
 		});
 
 		if (this.rendered) {
-			this.elements.dropdown.toggleClass('slds-hide', true);
+			this.elements.dropdown.addClass('slds-hide');
 		}
 		
 		this.button.disable();

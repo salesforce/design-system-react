@@ -1,0 +1,12 @@
+/// SLDS CSS Prefix
+/// Will prefix all CSS classes used by SLDS
+///
+/// @example scss Compile without prefix
+///  $css-prefix: '';
+///
+/// @example scss Use in a class name
+///  .#{$css-prefix}foo { ... } // outputs .slds-foo { ... }
+///
+/// @type String
+$css-prefix: 'slds-' !default;
+

@@ -10,7 +10,7 @@ export default React.createClass({
 
 	getInitialState () {
 		return {
-			collection: sampleData.lookup.defaultArray
+			collection: sampleData.lookup.default.collection
 		};
 	},
 
@@ -35,7 +35,7 @@ export default React.createClass({
 	
 	_addItems () {
 		this.setState({
-			collection: sampleData.lookup.defaultArray.concat(sampleData.lookup.additionalItems)
+			collection: sampleData.lookup.default.collection.concat(sampleData.lookup.default.additionalItems)
 		});
 		
 		window.clearTimeout(this._addItemsTimeout);

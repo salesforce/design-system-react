@@ -4,7 +4,8 @@ import {sampleData} from 'design-system-utilities';
 const $ = Lib.global.jQuery || Lib.global.$;
 
 const options = {
-	collection: sampleData.tree.defaultArray,
+	collection: sampleData.tree.default.collection,
+	heading: sampleData.tree.default.heading,
 	folderSelect: false,
 	multiSelect: true
 };

@@ -9,7 +9,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Events from '../mixins/events';
 import State from '../mixins/state';
-import ReactDOM from 'react-dom';
 import genericWillMount from '../mixins/generic-will-mount';
 
 // Third party
@@ -24,17 +23,19 @@ export const ModalObject = {
 	displayName: CONTROL,
 
 	propTypes: {
+		headerTagline: React.PropTypes.any,
+		headerTitle: React.PropTypes.any,
 		isOpen: React.PropTypes.bool,
-		headerText: React.PropTypes.string,
-		headerTextSize: React.PropTypes.string,
+		onCancel: React.PropTypes.func,
+		onClose: React.PropTypes.func,
+		onPrimary: React.PropTypes.func,
 		primaryButtonText: React.PropTypes.string,
 		secondaryButtonText: React.PropTypes.string,
-		onClose: React.PropTypes.func,
-		onCancel: React.PropTypes.func,
-		onAction: React.PropTypes.func,
-		headerTitle: React.PropTypes.any,
-		headerTagline: React.PropTypes.any,
 		triggerNode: React.PropTypes.object
+	},
+
+	getDefaultProps () {
+		return DefaultRenderers;
 	},
 
 	render () {
@@ -44,12 +45,12 @@ export const ModalObject = {
 					<div className={this.cssClasses.MODALCONTAINER} ref={this._setModalRef}>
 						<div className="slds-modal__header">
 							{this.props.renderHeader({
-								onCloseClick: this._onCloseClick,
+								onCloseClick: this._onClose,
 								headerTitle: this.props.headerTitle,
 								headerTagline: this.props.headerTagline
 							})}
 						</div>
-						<div className="slds-modal__content">
+						<div className="slds-modal__content | slds-p-around--medium">
 							{this.props.children}
 						</div>
 						<div className="slds-modal__footer">
@@ -62,23 +63,33 @@ export const ModalObject = {
 						</div>
 					</div>
 				</div>
-				<div className={classNames('slds-modal-backdrop', {'slds-modal-backdrop--open': this.props.isOpen} )}></div>
+				<div className={classNames('slds-backdrop', {'slds-backdrop--open': this.props.isOpen} )}></div>
 			</div>
 		);
 	},
 
-	getDefaultProps () {
-		return DefaultRenderers;
+	_setBackgroundRef (background) {
+		this.elements.background = Lib.wrapElement(ReactDOM.findDOMNode(background));
 	},
 
-	_onCloseClick () {
-		if (this.props.triggerNode) {
-			ReactDOM.findDOMNode(this.props.triggerNode).focus();
-		}
+	_setModalRef (modal) {
+		this.elements.modal = Lib.wrapElement(ReactDOM.findDOMNode(modal));
+
 		this.props.onClose();
 	},
 
+	_onClose () {
+		console.log('test');
+
+		if (this.props.triggerNode) {
+			ReactDOM.findDOMNode(this.props.triggerNode).focus();
+		}
+		this.props.onCancel();
+	},
+
 	_onSecondaryClick () {
+		console.log('test');
+
 		if (this.props.triggerNode) {
 			ReactDOM.findDOMNode(this.props.triggerNode).focus();
 		}
@@ -92,20 +103,12 @@ export const ModalObject = {
 	},
 
 	_onPrimaryClick () {
+		console.log(this.props.triggerNode);
+
 		if (this.props.triggerNode) {
 			ReactDOM.findDOMNode(this.props.triggerNode).focus();
 		}
-		this.props.onPrimary();
-	},
-
-	_setBackgroundRef (background) {
-		this.elements.background = Lib.wrapElement(ReactDOM.findDOMNode(background));
-	},
-
-	_setModalRef (modal) {
-		this.elements.modal = Lib.wrapElement(ReactDOM.findDOMNode(modal));
 	}
-
 };
 
 let Modal = Lib.merge({}, ModalCore, ModalObject);

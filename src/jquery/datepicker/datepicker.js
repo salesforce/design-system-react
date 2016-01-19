@@ -119,7 +119,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		
 		this._renderDateRange();
 		
-		this.elements.dropdown.toggleClass('slds-hidden', false);
+		this.elements.dropdown.removeClass('slds-hidden');
 		if (this.getProperty('modalCalendar')) {
 			Positionable.position(this);
 			Positionable.show(this);
@@ -127,7 +127,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 	
 	_onClosed () {
-		this.elements.dropdown.toggleClass('slds-hidden', true);
+		this.elements.dropdown.addClass('slds-hidden');
 		if (this.getProperty('modalCalendar')) {
 			Positionable.hide(this);
 		}

@@ -5,7 +5,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	const dropdown = new Dropdown($('#dropdown-jquery-control .dropdown1'), {
-		collection: sampleData.dropdown.defaultArray,
+		collection: sampleData.dropdown.default.collection,
 		selection: { value: '1' }
 	});
 
@@ -17,7 +17,7 @@ $(function () {
 		dropdown.setSelectionByIndex(1);
 	});
 	$('#dropdown-jquery-setByObject').on('click', function () {
-		dropdown.setSelection(sampleData.dropdown.defaultArray[5]);
+		dropdown.setSelection(sampleData.dropdown.default.collection[5]);
 	});
 	$('#dropdown-jquery-enable').on('click', function () {
 		dropdown.enable();

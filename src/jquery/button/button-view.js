@@ -24,7 +24,7 @@ import DOM from '../dom';
 // Constructors are functions that are called by the `new` keyword and is the function that an options object is passed into.
 let ButtonView = function ButtonView () {
 	const options = this._getOptions(arguments);
-	
+
 	this._initialize(options);
 };
 
@@ -44,7 +44,6 @@ export const ButtonViewObject = {
 
 	_renderIcon (position) {
 		let $icon;
-
 		if (this.getProperty('icon') && this.getProperty('iconPosition') === position) {
 			$icon = $('<svg ' + 'class="' + this._getIconClassNames() + '"><use xlink:href="' + Lib.getSVGPath(this.getProperty('icon')) + '"></use></svg>')
 				.attr('aria-hidden', 'true');
@@ -63,15 +62,15 @@ export const ButtonViewObject = {
 		} else {
 			this.element.text(this.getProperty('text'));
 		}
-		
+
 		this.element
 			.addClass(this.buttonStatefulViewStyles[this.getProperty('view')])
 			.append(this._renderAssistiveText());
-		
+
 		this.element
 			.append(this._renderIcon('right'))
 			.prepend(this._renderIcon('left'));
-		
+
 		return this.element;
 	}
 };

@@ -2,30 +2,35 @@ import {Lib, Badge} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+const badgesProperties = [
+	{text: 'Base', theme: ''},
+	{text: 'Default', theme: 'default'},
+	{text: 'Shade', theme: 'shade'},
+	{text: 'Inverse', theme: 'inverse'},
+	{text: 'Alt Inverse', theme: 'alt-inverse'},
+	{text: 'Info', theme: 'info'},
+	{text: 'Success', theme: 'success'},
+	{text: 'Warning', theme: 'warning'},
+	{text: 'Error', theme: 'error'},
+	{text: 'Offline', theme: 'offline'},
+	{text: 'Shade - Alert Texture', theme: 'shade-alert-texture'}
+];
+
 $(function () {
-	const badge1 = new Badge($('#badge-jquery-control .badge1'), {
-		'text': 'badge'
-	});
-
-	const badge2 = new Badge($('#badge-jquery-control .badge2'), {
-		text: 'default',
-		theme: 'default'
-	});
-
-	const badge3 = new Badge($('#badge-jquery-control .badge3'), {
-		text: 'shade',
-		theme: 'shade'
+	const badges = [];
+	$.each(badgesProperties, function ( index, value ) {
+		badges['badge' + index] = new Badge($('#badge-jquery-control .badge' + index), {
+			'text': value.text,
+			'theme': value.theme
+		});
+		void(badges['badge' + index]);
 	});
 
 	// Example of instantiating without an element and subsequently appending
-	const badge4 = new Badge({
-		text: 'inverse',
+	const badge15 = new Badge({
+		text: 'Appended',
 		theme: 'inverse'
 	});
-	badge4.appendTo($('#badge-jquery-control .badge4'));
-
-	void(badge1);
-	void(badge2);
-	void(badge3);
-	void(badge4);
+	badge15.appendTo($('#badge-jquery-control .badge15'));
+	void(badge15);
 });

@@ -4,7 +4,7 @@ import Svg from '../svg/svg';
 function getIcon (icon) {
 	if (icon) {
 		return (
-			<Svg className="slds-icon slds-icon-standard-account slds-icon--small" icon={icon} />
+			<Svg className="slds-icon slds-icon-standard-account | slds-pill__icon" icon={icon} />
 		);
 	}
 }
@@ -14,7 +14,7 @@ module.exports = {
 		return (
 			<span>
 				{getIcon(options.icon)}
-				{options.text}
+				<span className="slds-pill__label">{options.text}</span>
 			</span>
 		);
 	}

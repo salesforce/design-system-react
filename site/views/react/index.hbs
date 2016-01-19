@@ -1,201 +1,194 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>React</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- fav icons -->
-	<link rel="icon" type="image/png" href="/img/favicon.png">
-
-	<!-- dependencies -->
-	<link href="/assets/design-system/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
-	<link href="/vendor/prism/themes/prism.css" rel="stylesheet" type="text/css">
-
-	<!-- from development examples -->
-	<link href="/assets/facades/styles/temp-styles/temp-styles.css" rel="stylesheet">
-	<link href="/assets/facades/styles/example-styles.css" rel="stylesheet">
-
-	<!-- for this demo site -->
-	<link href="/assets/demo-site/styles/examples.css" rel="stylesheet" type="text/css">
-
-	<script src="vendor/prism/prism.js"></script>
-	<script src="vendor/prism/components/prism-jsx.js"></script>
-</head>
-<body class="react">
-<header class="site-masthead slds-page-header">
-	<div class="slds-grid">
-		<div class="slds-col slds-align-middle" >
-			<div class="slds-media slds-media--center" style="height:5rem;">
-				<div class="slds-media__figure">
-					<span class="slds-icon__container slds-icon-action-fallback" style="padding:0.5rem;">
-						<svg aria-hidden="true" class="slds-icon slds-icon-action-fallback">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/design-system/icons/action-sprite/svg/symbols.svg#fallback"></use>
-						</svg>
-					</span>
-				</div>
-				<div class="slds-media__body site-title">React Components</div>
-			</div>
-		</div>
-	</div>
-</header>
-
-	<div class="slds-grid slds-m-top--medium">
-		<div class="slds-col slds-col--padded" style="max-width: 900px;">
-			<p class="slds-m-bottom--medium">The following examples are provided as component classes with state. They still need to be rendered to the DOM. <code>ReactDOM.render(React.createElement(<i>[importedComponent]</i>), document.querySelector('#react-control'));</code></p>
-
-			<!-- badge -->
-			<div class="slds-box badge">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Badge</div>
-				<div id="badge-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.badge }}</code></pre>
-			</div>
-
-			<!-- button -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Button</div>
-				<div id="button-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.button }}</code></pre>
-			</div>
-
-			<!-- button-group -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Button Group</div>
-				<div id="button-group-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.buttonGroup }}</code></pre>
-			</div>
-
-			<!-- checkbox -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Checkbox</div>
-				<div id="checkbox-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.checkbox }}</code></pre>
-			</div>
-
-			<!-- combobox -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Combobox</div>
-				<div id="combobox-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.combobox }}</code></pre>
-			</div>
-
-			<!-- datepicker -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Datepicker</div>
-				<div id="datepicker-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.datepicker }}</code></pre>
-			</div>
-
-			<!-- datatable -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Data-table</div>
-				<div id="data-table-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.datatable }}</code></pre>
-			</div>
-
-			<!-- dropdown -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Dropdown</div>
-				<div id="dropdown-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.dropdown }}</code></pre>
-			</div>
-
-			<!-- lookup -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Lookup</div>
-				<div id="lookup-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.lookup }}</code></pre>
-			</div>
-
-			<!-- modal -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Modal</div>
-				<div id="modal-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.modal }}</code></pre>
-			</div>
-
-			<!-- notification -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Notification</div>
-				<div id="notification-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.notification }}</code></pre>
-			</div>
-
-			<!-- picklist -->
-			<div class="slds-box">
-				<div class="slds-text-heading--small slds-m-bottom--medium">Picklist</div>
-				<div id="picklist-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.picklist }}</code></pre>
-			</div>
-
-			<!-- pills -->
-			<div class="slds-box">
-				<div class="slds-grid slds-grid--vertical | example-wrapper">
-					<div class="slds-col | type">
-						<span class="slds-text-heading--small slds-m-bottom--medium">Pills</span>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>React</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<!-- fav icons -->
+		<link rel="icon" type="image/png" href="/img/favicon.png">
+		<!-- dependencies -->
+		<link href="/assets/design-system/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
+		<!-- for this demo site -->
+		<link href="/build/facades-demo-styles.css" rel="stylesheet" type="text/css">
+	</head>
+	<body class="react">
+		<header class="facades-demo-masthead slds-page-header">
+			<div class="slds-grid">
+				<div class="slds-col slds-align-middle" >
+					<div class="slds-media slds-media--center" style="height:5rem;">
+						<div class="slds-media__figure">
+							<span class="slds-icon__container slds-icon-action-fallback" style="padding:0.5rem;">
+								<svg aria-hidden="true" class="slds-icon slds-icon-action-fallback">
+									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/design-system/icons/action-sprite/svg/symbols.svg#fallback"></use>
+								</svg>
+							</span>
+						</div>
+						<div class="slds-media__body facades-demo-title">React Components</div>
 					</div>
-					<div id="pills-react-control"></div>
 				</div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.pills }}</code></pre>
 			</div>
+		</header>
 
-			<!-- popover -->
-			<div class="slds-box">
-				<div class="slds-text-heading--label">Popover</div>
-				<div id="popover-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.popover }}</code></pre>
+		<div id="component-list" class="slds-grid slds-grid--vertical">
+			<div class="slds-col slds-col--padded" style="max-width: 900px;">
+				<div class="slds-box | slds-theme--info slds-theme--alert-texture | slds-m-vertical--large">
+					<p class="slds-m-bottom--medium">The following examples are provided as component classes with state. They still need to be rendered to the DOM:</p>
+					<pre style="max-height: 400px;" class="language-jsx"><code>ReactDOM.render(React.createElement(<i>[importedComponent]</i>), document.querySelector('#react-control'));</code></pre>
+				</div>
+				<!-- badge -->
+				<div class="slds-box | component | badge">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Badge</div>
+					<div id="badge-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.badge }}</code></pre>
+				</div>
+
+				<!-- button -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Button</div>
+					<div id="button-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.button }}</code></pre>
+				</div>
+
+				<!-- button-group -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Button Group</div>
+					<div id="button-group-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.buttonGroup }}</code></pre>
+				</div>
+
+				<!-- checkbox -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Checkbox</div>
+					<div id="checkbox-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.checkbox }}</code></pre>
+				</div>
+
+				<!-- combobox -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Combobox</div>
+					<div id="combobox-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.combobox }}</code></pre>
+				</div>
+
+				<!-- datepicker -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Datepicker</div>
+					<div id="datepicker-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.datepicker }}</code></pre>
+				</div>
+
+				<!-- datatable -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Data-table</div>
+					<div id="data-table-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.datatable }}</code></pre>
+				</div>
+
+				<!-- dropdown -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Dropdown</div>
+					<div id="dropdown-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.dropdown }}</code></pre>
+				</div>
+
+				<!-- lookup -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Lookup</div>
+					<div id="lookup-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.lookup }}</code></pre>
+				</div>
+
+				<!-- modal -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Modal</div>
+					<div id="modal-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.modal }}</code></pre>
+				</div>
+
+				<!-- notification -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Notification</div>
+					<div id="notification-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.notification }}</code></pre>
+				</div>
+
+				<!-- picklist -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--small slds-m-bottom--medium">Picklist</div>
+					<div id="picklist-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.picklist }}</code></pre>
+				</div>
+
+				<!-- pills -->
+				<div class="slds-box | component">
+					<div class="slds-grid slds-grid--vertical | example-wrapper">
+						<div class="slds-col | type">
+							<span class="slds-text-heading--small slds-m-bottom--medium">Pills</span>
+						</div>
+						<div id="pills-react-control" class="example"></div>
+					</div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.pills }}</code></pre>
+				</div>
+
+				<!-- popover -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--label">Popover</div>
+					<div id="popover-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.popover }}</code></pre>
+				</div>
+
+				<!-- radio -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--label">Radio</div>
+					<div id="radio-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.radio }}</code></pre>
+				</div>
+
+				<!-- spinner -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--label">Spinner</div>
+					<div id="spinner-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.spinner }}</code></pre>
+				</div>
+
+				<!-- tooltip -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--label">Tooltip</div>
+					<div id="tooltip-react-control" class="example"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.tooltip }}</code></pre>
+				</div>
+
+				<!-- tree -->
+				<div class="slds-box | component">
+					<div class="slds-text-heading--label">Tree</div>
+					<div id="tree-react-control"></div>
+					<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
+					<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.tree }}</code></pre>
+				</div>
+
 			</div>
-
-			<!-- radio -->
-			<div class="slds-box">
-				<div class="slds-text-heading--label">Radio</div>
-				<div id="radio-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.radio }}</code></pre>
-			</div>
-
-			<!-- spinner -->
-			<div class="slds-box">
-				<div class="slds-text-heading--label">Spinner</div>
-				<div id="spinner-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.spinner }}</code></pre>
-			</div>
-
-			<!-- tooltip -->
-			<div class="slds-box">
-				<div class="slds-text-heading--label">Tooltip</div>
-				<div id="tooltip-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.tooltip }}</code></pre>
-			</div>
-
-			<!-- tree -->
-			<div class="slds-box">
-				<div class="slds-text-heading--label">Tree</div>
-				<div id="tree-react-control"></div>
-				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ code.tree }}</code></pre>
-			</div>
-
 		</div>
-	</div>
-	<script src="build/site-examples-react.bundle.js"></script>
-</body>
+		<script src="vendor/prism/prism.js"></script>
+		<script src="vendor/prism/components/prism-jsx.js"></script>
+		<script src="build/demo-site-examples-react.bundle.js"></script>
+	</body>
 </html>
