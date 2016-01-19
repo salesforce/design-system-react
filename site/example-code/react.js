@@ -12,9 +12,11 @@ var exampleCode = {
 	dropdown: fs.readFileSync(codeDir + 'dropdown/examples/site-example.js', 'utf8'),
 	lookup: fs.readFileSync(codeDir + 'lookup/examples/site-example.js', 'utf8'),
 	modal: fs.readFileSync(codeDir + 'modal/examples/site-example.js', 'utf8'),
+	notification: fs.readFileSync(codeDir + 'notification/examples/site-example.js', 'utf8'),
 	picklist: fs.readFileSync(codeDir + 'picklist/examples/site-example.js', 'utf8'),
 	pills: fs.readFileSync(codeDir + 'pills/examples/site-example.js', 'utf8'),
 	popover: fs.readFileSync(codeDir + 'popover/examples/site-example.js', 'utf8'),
+	radio: fs.readFileSync(codeDir + 'radio/examples/site-example.js', 'utf8'),
 	tooltip: fs.readFileSync(codeDir + 'tooltip/examples/site-example.js', 'utf8'),
 	tree: fs.readFileSync(codeDir + 'tree/examples/site-example.js', 'utf8')
 };

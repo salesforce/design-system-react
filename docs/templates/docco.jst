@@ -18,18 +18,18 @@
           <div id="jump_wrapper">
            <div id="jump_page_wrapper">
             <div id="jump_page">
-            <% 
+            <%
               var sources_hash = {}, directory;
-              
+
               for (var i=0, l=sources.length; i<l; i++) {
-                var src = sources[i]; 
-                var directory = path.dirname(src) || 'Top Level'; 
+                var src = sources[i];
+                var directory = path.dirname(src) || 'Top Level';
                 var arr = sources_hash[directory] || [];
                 arr.push({
 				  href:'/docs/'+directory+'/'+path.basename(src).replace('.js', '.html'),
                   label:directory+'/'+path.basename(src)
                 });
-                sources_hash[directory] = arr; 
+                sources_hash[directory] = arr;
               }
 
 

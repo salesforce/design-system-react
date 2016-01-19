@@ -12,12 +12,8 @@
 
 	<!-- dependencies -->
 	<link href="/assets/design-system/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
-	<link href="/vendor/prism/themes/prism.css" rel="stylesheet" type="text/css">
-	<link href="/assets/demo-site/styles/examples.css" rel="stylesheet" type="text/css">
-	<style>
+	<link href="/build/facades-demo-styles.css" rel="stylesheet" type="text/css">
 
-	</style>
-	<script src="vendor/prism/prism.js"></script>
 </head>
 <body>
 
@@ -109,7 +105,7 @@
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Popover</div>
 				<div id="popover-jquery-control" class="slds-col | example">
-					<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--x-small">Toggle</button>
+					<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--small">Toggle</button>
 				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre style="max-height: 400px;"><code class="language-javascript">{{ code.popover }}</code></pre>
@@ -119,7 +115,7 @@
 			<div class="slds-box">
 				<div class="slds-text-heading--small slds-m-bottom--medium">Tooltip</div>
 				<div id="tooltip-jquery-control" class="slds-col | example">
-					<button id="tooltip-jquery-toggle" class="slds-button slds-button--neutral slds-button--x-small">Toggle</button>
+					<button id="tooltip-jquery-toggle" class="slds-button slds-button--neutral slds-button--small">Toggle</button>
 				</div>
 				<div class="slds-text-heading--label slds-m-top--medium">Example Code</div>
 				<pre style="max-height: 400px;"><code class="language-javascript">{{ code.tooltip }}</code></pre>
@@ -138,7 +134,8 @@
 		</div>
 	</div>
 	</div>
+	<script src="vendor/prism/prism.js"></script>
 	<script src="/assets/facades/scripts/jquery.min.js"></script>
-	<script src="build/site-examples-jquery.bundle.js"></script>
+	<script src="build/demo-site-examples-jquery.bundle.js"></script>
 </body>
 </html>

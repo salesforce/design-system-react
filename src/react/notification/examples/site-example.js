@@ -13,8 +13,8 @@ export default React.createClass({
 				</div>
 				<div className="slds-col demo-controls">
 					<div className="slds-button-group" role="group">
-						<button type="button" id="notification-react-hide" className="slds-button slds-button--neutral slds-button--x-small" disabled>Hide</button>
-						<button type="button" id="notification-react-show" className="slds-button slds-button--neutral slds-button--x-small" disabled>Show</button>
+						<button type="button" id="notification-react-hide" className="slds-button slds-button--neutral slds-button--small" disabled>Hide</button>
+						<button type="button" id="notification-react-show" className="slds-button slds-button--neutral slds-button--small" disabled>Show</button>
 					</div>
 				</div>
 			</div>

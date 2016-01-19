@@ -51,7 +51,7 @@ export const ModalObject = {
 								headerTagline: this.props.headerTagline
 							})}
 						</div>
-						<div className="slds-modal__content">
+						<div className="slds-modal__content | slds-p-around--medium">
 							{this.props.children}
 						</div>
 						<div className="slds-modal__footer">
@@ -64,7 +64,7 @@ export const ModalObject = {
 						</div>
 					</div>
 				</div>
-				<div className={classNames('slds-modal-backdrop', {'slds-modal-backdrop--open': this.props.isOpen} )}></div>
+				<div className={classNames('slds-backdrop', {'slds-backdrop--open': this.props.isOpen} )}></div>
 			</div>
 		);
 	},
