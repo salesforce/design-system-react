@@ -44,41 +44,14 @@ source "${app_scripts_config_path}__colors.sh"
 declare -a choices
 
 choices[0]="${A}app-start${STYLE_MENU_OPTION} - Start the demo application"${X}
-choices[1]="${A}build-dev${STYLE_MENU_OPTION} - Run developer config webpack and output to ${STYLE_BRANCH_H1}build/${STYLE_MENU_OPTION}"${X}
-choices[2]="${A}build-dist${STYLE_MENU_OPTION} - Build the distribution files"${X}
+choices[1]="${A}build-dev${STYLE_MENU_OPTION} - See what the webpack hot-dev-server is doing. Outputs to ${STYLE_BRANCH_H1}build/${STYLE_MENU_OPTION}"${X}
+choices[2]="${A}build-dist${STYLE_MENU_OPTION} - Build the distribution files, outputs to ${STYLE_BRANCH_H1}dist/${STYLE_MENU_OPTION}"${X}
 choices[3]="${A}build-heroku${STYLE_MENU_OPTION} - Run production config webpack and output to ${STYLE_BRANCH_H1}build/${STYLE_MENU_OPTION}"${X}
 choices[4]="${A}clean${STYLE_MENU_OPTION} - Remove all files from ${STYLE_BRANCH_H1}build/${STYLE_MENU_OPTION}"${X}
 choices[5]="${A}dev${STYLE_MENU_OPTION} - Start the webpack hot dev server"${X}
-choices[6]="${A}dist${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}dist/${STYLE_MENU_OPTION} directory and then package it up in the ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION} with a .zip file and README.md"${X}
-choices[7]="${A}dist-npm${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}dist/${STYLE_MENU_OPTION} directory and then package it up for distribution to NPM in the ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION}"${X}
+choices[6]="${A}dist${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}dist/${STYLE_MENU_OPTION} directory and then package it up in ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION} with a .zip file and README.md"${X}
+choices[7]="${A}dist-npm${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}dist/${STYLE_MENU_OPTION} directory and then package it up for distribution to NPM in ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION}"${X}
 choices[8]="${A}test${STYLE_MENU_OPTION} - Run the test suite."${X}
-# choices[0]="${A}heroku-build${STYLE_MENU_OPTION} - "${X}
-# choices[0]="${A}heroku-start${STYLE_MENU_OPTION} - "${X}
-# choices[0]="${A}menu${STYLE_MENU_OPTION} - "${X}
-# choices[0]="${A}start${STYLE_MENU_OPTION} - "${X}
-
-# choices[0]="${A}app-start": "node app.js",
-# choices[0]="${A}build-dev": "./scripts/shell/dev-build.sh",
-# choices[0]="${A}build-dist": "./scripts/shell/dist-build.sh",
-# choices[0]="${A}build-heroku": "./scripts/shell/heroku-build.sh",
-# choices[0]="${A}clean": "grunt kill-webpack-build",
-# choices[0]="${A}dev": "grunt serve",
-# choices[0]="${A}dev-build": "./scripts/shell/dev-build.sh",
-# choices[0]="${A}dist": "./scripts/shell/dist.sh",
-# choices[0]="${A}dist-npm": "./scripts/shell/dist-npm.sh",
-# choices[0]="${A}heroku-build": "./scripts/shell/heroku-build.sh",
-# choices[0]="${A}heroku-start": "node app.js",
-# choices[0]="${A}menu": "./scripts/shell/menu-trial.sh",
-# choices[0]="${A}start": "grunt serve",
-# choices[0]="${A}test": "grunt test"
-
-
-# choices[0]="${A}Commit${STYLE_MENU_OPTION} changes and continue with checkout of \`${B}YOUR MOM\`"${X}
-# choices[1]="${A}Stash${STYLE_MENU_OPTION} Changes and continue with checkout of \`${B}YOUR MOM\`"${X}
-# choices[2]="${A}Reset${STYLE_MENU_OPTION} (revert) all changes to tracked files (ignores untracked files), and continue with checkout of \`${B}YOUR MOM\`"${X}
-# choices[3]="${A}Clean${STYLE_MENU_OPTION} (delete) untracked files, and continue with checkout of \`${B}YOUR MOM\`"${X}
-# choices[4]="${A}Reset & Clean${STYLE_MENU_OPTION} (revert & delete) all changes, and continue with checkout of \`${B}YOUR MOM\`"${X}
-# choices[2]="${STYLE_BRIGHT}I know what I'm doing${STYLE_MENU_OPTION} -- continue with checkout of \`${B}YOUR MOM\`"${X}
 
 if __menu "${choices[@]}"; then
 	echo ${X}
