@@ -217,15 +217,19 @@ class SLDSLookup extends React.Component {
 
   //=================================================
   // Event Listeners on Input
-  handleClose(event) {
-    if(event){
-      EventUtil.trap(event);
-    }
+  handleClose() {
     this.setState({
       isOpen: false,
       focusIndex: null,
       currentFocus: null,
     });
+  }
+
+  handleEscape(event) {
+    if(this.state.isOpen && event){
+      EventUtil.trap(event);
+    }
+    this.handleClose();
   }
 
   handleCancel(){
@@ -263,7 +267,7 @@ class SLDSLookup extends React.Component {
   handleKeyDown(event) {
     if(event.keyCode){
       //If user hits esc key, close menu
-      event.keyCode === KEYS.ESCAPE ? this.handleClose(event) : this.handleClick();
+      event.keyCode === KEYS.ESCAPE ? this.handleEscape(event) : this.handleClick();
 
       //If user hits down key, advance aria activedescendant to next item
       if(event.keyCode === KEYS.DOWN){
