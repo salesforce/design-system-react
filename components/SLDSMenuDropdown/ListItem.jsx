@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import KEYS from './KEYS';
+import KEYS from '../utils/KEYS';
 import EventUtil from '../utils/EventUtil';
 import ListItemLabelRenderer from './ListItemLabel';
 
