@@ -45,13 +45,12 @@ declare -a choices
 
 choices[0]="${A}app-start${STYLE_MENU_OPTION} - Start the demo application"${X}
 choices[1]="${A}build-dev${STYLE_MENU_OPTION} - See what the webpack hot-dev-server is doing. Outputs to ${STYLE_BRANCH_H1}build/${STYLE_MENU_OPTION}"${X}
-choices[2]="${A}build-dist${STYLE_MENU_OPTION} - Build the distribution files, outputs to ${STYLE_BRANCH_H1}dist/${STYLE_MENU_OPTION}"${X}
-choices[3]="${A}build-heroku${STYLE_MENU_OPTION} - Run production config webpack and output to ${STYLE_BRANCH_H1}build/${STYLE_MENU_OPTION}"${X}
-choices[4]="${A}clean${STYLE_MENU_OPTION} - Remove all files from ${STYLE_BRANCH_H1}build/${STYLE_MENU_OPTION}"${X}
-choices[5]="${A}dev${STYLE_MENU_OPTION} - Start the webpack hot dev server"${X}
-choices[6]="${A}dist${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}dist/${STYLE_MENU_OPTION} directory and then package it up in ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION} with a .zip file and README.md"${X}
-choices[7]="${A}dist-npm${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}dist/${STYLE_MENU_OPTION} directory and then package it up for distribution to NPM in ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION}"${X}
-choices[8]="${A}test${STYLE_MENU_OPTION} - Run the test suite."${X}
+choices[2]="${A}build-heroku${STYLE_MENU_OPTION} - Run production config webpack and output to ${STYLE_BRANCH_H1}build/${STYLE_MENU_OPTION}"${X}
+choices[3]="${A}clean${STYLE_MENU_OPTION} - Remove all files from ${STYLE_BRANCH_H1}build/${STYLE_MENU_OPTION}"${X}
+choices[4]="${A}dev${STYLE_MENU_OPTION} - Start the webpack hot dev server"${X}
+choices[5]="${A}dist${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}.tmp/${STYLE_MENU_OPTION} directory and then package it up in ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION} with a .zip file and README.md"${X}
+choices[6]="${A}dist-npm${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}.tmp/${STYLE_MENU_OPTION} directory and then package it up for distribution to NPM in ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION}"${X}
+choices[7]="${A}test${STYLE_MENU_OPTION} - Run the test suite."${X}
 
 if __menu "${choices[@]}"; then
 	echo ${X}
@@ -69,36 +68,31 @@ if __menu "${choices[@]}"; then
 			echo;;
 
 		3)
-			echo "Running webpack to build dist to  ${STYLE_BRANCH_H1}dist/${X}";
-			npm run build-dist;
-			echo;;
-
-		4)
 			echo "Running production config webpack, outputting files to ${STYLE_BRANCH_H1}build/${X}";
 			npm run build-heroku;
 			echo;;
 
-		5)
+		4)
 			echo "Removing all files from ${STYLE_BRANCH_H1}build/${X}";
 			npm run clean;
 			echo;;
 
-		6)
+		5)
 			echo "Starting webpack hot dev server at: ${STYLE_BRANCH_H1}http://localhost:8080/examples/${X}";
 			npm run dev;
 			echo;;
 
-		7)
-			echo "Running distribution config webpack, building to ${STYLE_BRANCH_H1}dist/${X} directory and then packaging it up in the ${STYLE_BRANCH_H1}.dist/${X} with a .zip file and README.md${X}";
+		6)
+			echo "Running distribution config webpack, building to ${STYLE_BRANCH_H1}.tmp/${X} directory and then packaging it up in the ${STYLE_BRANCH_H1}.dist/${X} with a .zip file and README.md${X}";
 			npm run dist;
 			echo;;
 
-		8)
-			echo "Running distribution config webpack, building to ${STYLE_BRANCH_H1}dist/${X} directory and then packaging it up for uploading to npm in the ${STYLE_BRANCH_H1}.dist/${X}";
+		7)
+			echo "Running distribution config webpack, building to ${STYLE_BRANCH_H1}.tmp/${X} directory and then packaging it up for uploading to npm in the ${STYLE_BRANCH_H1}.dist/${X}";
 			npm run dist-npm;
 			echo;;
 
-		9)
+		8)
 			echo "Running the test suite...${X}";
 			npm run test;
 			echo;;

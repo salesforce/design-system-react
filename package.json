@@ -12,7 +12,6 @@
   "scripts": {
     "app-start": "node app.js",
     "build-dev": "./scripts/shell/dev-build.sh",
-    "build-dist": "./scripts/shell/dist-build.sh",
     "build-heroku": "./scripts/shell/heroku-build.sh",
     "clean": "grunt kill-webpack-build",
     "dev": "grunt serve",
