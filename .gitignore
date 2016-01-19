@@ -27,3 +27,4 @@ npm-debug.log
 .tmp/
 .dist/
 dist/
+public/assets/design-system/
