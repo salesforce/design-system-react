@@ -6,8 +6,7 @@
   "files": [
     "dist",
     "src",
-    "scripts",
-    "utilities"
+    "scripts"
   ],
   "license": "BSD-3-Clause",
   "repository": {
