@@ -12,7 +12,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import KEYS from './KEYS';
-import EventUtil from './EventUtil';
+import EventUtil from '../utils/EventUtil';
 import ListItemLabelRenderer from './ListItemLabel';
 
 const displayName = "SLDSList-Item";

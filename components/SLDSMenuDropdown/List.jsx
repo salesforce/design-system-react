@@ -11,7 +11,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import ListItem from "./ListItem";
-import EventUtil from './EventUtil';
+import EventUtil from '../utils/EventUtil';
 
 const displayName = "SLDSList";
 const propTypes = {
