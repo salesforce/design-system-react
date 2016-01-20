@@ -37,7 +37,7 @@ class Menu extends React.Component {
   }
 
   //Set filtered list length in parent to determine active indexes for aria-activedescendent
-  componentDidUpdate(prevProps, prevState){
+  componentDidUpdate(){
     // make an array of the children of the list but only count the actual items
     let list = [].slice.call(ReactDOM.findDOMNode(this.refs.list).children)
       .filter((child) => child.className.indexOf("slds-lookup__item") > -1).length;
