@@ -25,9 +25,9 @@ import cx from "classnames";
 const displayName = "SLDSLookup";
 const propTypes = {
   /**
-   * Custom message for when no search results found.
+   * Custom message that renders when no matches found. The default empty state is just text that says, "No matches found.".
    */
-  emptyMessage: React.PropTypes.string.isRequired,
+  emptyMessage: React.PropTypes.string,
   /**
    * Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.
    */
@@ -154,12 +154,12 @@ class SLDSLookup extends React.Component {
   // Need to keep track of filtered list length to be able to increment/decrement the focus index so it's contained to the number of available list items.
   increaseIndex() {
     let numFocusable = this.getNumFocusableItems();
-    this.setState({ focusIndex: this.state.focusIndex < numFocusable - 1 ? this.state.focusIndex + 1 : 0 });
+    this.setState({ focusIndex: this.state.focusIndex < numFocusable ? this.state.focusIndex + 1 : 0 });
   }
 
   decreaseIndex() {
     let numFocusable = this.getNumFocusableItems();
-    this.setState({ focusIndex: this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable - 1 });
+    this.setState({ focusIndex: this.state.focusIndex > 0 ? this.state.focusIndex - 1 : numFocusable});
   }
 
   setFocus(id) {
@@ -180,7 +180,7 @@ class SLDSLookup extends React.Component {
     if(this.refs.header){
       offset += 1
     }
-    return this.state.listLength + offset
+    return (this.state.listLength - 1) + offset
   }
 
   //=================================================
@@ -196,7 +196,7 @@ class SLDSLookup extends React.Component {
     if(index >= 0 && index < this.state.items.length){
       this.setState({
         selectedIndex: index,
-        searchTerm: null
+        searchTerm: ""
       });
       const data = this.state.items[index].data;
       if(this.props.onItemSelect){
@@ -278,7 +278,7 @@ class SLDSLookup extends React.Component {
       else if(event.keyCode === KEYS.UP){
         EventUtil.trapImmediate(event);
         let numFocusable = this.getNumFocusableItems()
-        this.state.focusIndex === null ? this.setState({ focusIndex: numFocusable - 1 }) : this.decreaseIndex();
+        this.state.focusIndex === null ? this.setState({ focusIndex: numFocusable}) : this.decreaseIndex();
       }
       //If user hits enter/space key, select current activedescendant item
       else if((event.keyCode === KEYS.ENTER || event.keyCode === KEYS.SPACE) && this.state.focusIndex !== null){
@@ -310,35 +310,33 @@ class SLDSLookup extends React.Component {
 
   getHeader(){
     if(this.props.headerRenderer){
-      let headerActive = false;
-      let isActiveClass = null;
-      if(this.state.focusIndex === 0){
-        headerActive = true;
-        isActiveClass = "slds-theme--shade";
-      }else{
-        headerActive = false;
-        isActiveClass = "";
-      }
       const Header = this.props.headerRenderer;
-      return <div className={isActiveClass}>
-        <Header ref="header" {... this.props}
+      let headerActive = false;
+      this.state.focusIndex === 0 ? headerActive = true : headerActive = false;
+
+      return <Header ref="header" {...this.props}
           focusIndex={this.state.focusIndex}
-          listLength={this.state.listLength}
+          isActive={headerActive}
           onClose={this.handleClose.bind(this)}
           searchTerm={this.state.searchTerm}
+          setFocus={this.setFocus.bind(this)}
         />
-      </div>;
     }
   }
 
   getFooter() {
     if(this.props.footerRenderer){
       const Footer = this.props.footerRenderer;
+      let footerActive = false;
+      let numFocusable = this.getNumFocusableItems();
+      this.state.focusIndex === numFocusable ? footerActive = true : footerActive = false;
+
       return <Footer ref="footer" {... this.props}
         focusIndex={this.state.focusIndex}
-        listLength={this.state.listLength}
+        isActive={footerActive}
         onClose={this.handleClose.bind(this)}
         salesforceObj={this.props.salesforceObj}
+        setFocus={this.setFocus.bind(this)}
       />;
     }
   }

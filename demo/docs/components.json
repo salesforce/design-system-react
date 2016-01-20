@@ -423,8 +423,8 @@
                 "type": {
                     "name": "string"
                 },
-                "required": true,
-                "description": "Custom message for when no search results found."
+                "required": false,
+                "description": "Custom message that renders when no matches found. The default empty state is just text that says, \"No matches found.\"."
             },
             "filterWith": {
                 "type": {
