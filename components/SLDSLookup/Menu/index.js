@@ -122,7 +122,7 @@ class Menu extends React.Component {
 
   render(){
     return (
-      <section id="menuContainer">
+      <section id="menuContainer" className="ignore-react-onclickoutside">
         {this.renderHeader()}
         <ul id="list" className="slds-lookup__list" role="presentation" ref="list">
           {this.renderContent()}
