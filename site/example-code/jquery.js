@@ -4,11 +4,11 @@ var codeDir = './src/jquery/';
 var exampleCode = {
 	badge: fs.readFileSync(codeDir + 'badge/examples/site-example.js', 'utf8'),
 	button: fs.readFileSync(codeDir + 'button/examples/site-example.js', 'utf8'),
-	buttongroup: fs.readFileSync(codeDir + 'button-group/examples/site-example.js', 'utf8'),
+	buttonGroup: fs.readFileSync(codeDir + 'button-group/examples/site-example.js', 'utf8'),
 	checkbox: fs.readFileSync(codeDir + 'checkbox/examples/site-example.js', 'utf8'),
 	combobox: fs.readFileSync(codeDir + 'combobox/examples/site-example.js', 'utf8'),
+	dataTable: fs.readFileSync(codeDir + 'data-table/examples/site-example.js', 'utf8'),
 	datepicker: fs.readFileSync(codeDir + 'datepicker/examples/site-example.js', 'utf8'),
-	datatable: fs.readFileSync(codeDir + 'data-table/examples/site-example.js', 'utf8'),
 	dropdown: fs.readFileSync(codeDir + 'dropdown/examples/site-example.js', 'utf8'),
 	// lookup: fs.readFileSync(codeDir + 'lookup/examples/site-example.js', 'utf8'),
 	modal: fs.readFileSync(codeDir + 'modal/examples/site-example.js', 'utf8'),
