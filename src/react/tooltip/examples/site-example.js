@@ -30,7 +30,7 @@ export default React.createClass({
 
 		return (
 			<div className="react-tooltip-example-wrap">
-				<button id="tooltip-react-toggle" className="slds-button slds-button--neutral slds-button--x-small" ref={this._buttonRendered} onClick={this._handleClick}>Toggle</button>
+				<button id="tooltip-react-toggle" className="slds-button slds-button--neutral slds-button--small" ref={this._buttonRendered} onClick={this._handleClick}>Toggle</button>
 					{tooltip}
 			</div>
 		);

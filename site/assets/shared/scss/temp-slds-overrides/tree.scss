@@ -1,0 +1,93 @@
+$color-background-button-brand: rgb(0, 112, 210) !default;
+$color-background-row-hover: rgb(244, 246, 249) !default;
+$color-background-row-selected: rgb(240, 248, 252) !default;
+$color-text-default: rgb(22, 50, 92) !default;
+$duration-promptly: 0.2s !default;
+$line-height-button: (2.125rem) !default;
+$spacing-medium: 1rem !default;
+$spacing-small: 0.75rem !default;
+$spacing-x-small: 0.5rem !default;
+
+@mixin tree-item-hover {
+  background: $color-background-row-hover;
+  cursor: pointer;
+}
+
+@mixin tree-item-selected {
+  background: $color-background-row-selected;
+  box-shadow: $color-background-button-brand 4px 0 0 inset;
+}
+
+.#{$css-prefix}tree-container,
+.#{$css-prefix}tree_container {
+
+
+  min-width: rem(120px);
+  max-width: rem(400px);
+
+  > .#{$css-prefix}text-heading--label {
+    margin-bottom: $spacing-x-small;
+  }
+}
+
+.#{$css-prefix}tree {
+
+  &__item {
+    display: flex;
+    line-height: $line-height-button;
+    padding-left: $spacing-medium;
+
+    a {
+      color: $color-text-default;
+    }
+
+    a:hover,
+    a:focus {
+      outline: 0;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:focus {
+      @include tree-item-hover;
+    }
+  }
+
+  .#{$css-prefix}is-selected {
+    @include tree-item-selected;
+  }
+
+  .#{$css-prefix}is-hovered,
+  .#{$css-prefix}is-focused {
+    @include tree-item-hover;
+  }
+
+  // This is only going 20 levels deep for now -- it may have to be expanded later if people are building deep deep trees.
+  $max-nesting-depth: 20 !default;
+  @for $current-level from 1 through $max-nesting-depth {
+    [aria-level="#{$current-level}"] > &__item {
+        padding-left: ((($spacing-medium * $current-level) + ($spacing-x-small * $current-level)));
+    }
+  }
+
+  [aria-expanded="false"] > &__item > .#{$css-prefix}button[aria-controls] > .#{$css-prefix}button__icon,
+  [aria-expanded="false"] > &__item > .#{$css-prefix}button[aria-controls] > span > .#{$css-prefix}button__icon {
+    transition: $duration-promptly transform ease-in-out;
+    transform: rotate(0deg);
+  }
+
+  [aria-expanded="true"] > &__item > .#{$css-prefix}button[aria-controls] > .#{$css-prefix}button__icon,
+  [aria-expanded="true"] > &__item > .#{$css-prefix}button[aria-controls] > span > .#{$css-prefix}button__icon {
+    transition: $duration-promptly transform ease-in-out;
+    transform: rotate(90deg);
+  }
+
+  .#{$css-prefix}button {
+    align-self: center;
+  }
+
+  .#{$css-prefix}pill {
+    margin-left: $spacing-small;
+  }
+
+}

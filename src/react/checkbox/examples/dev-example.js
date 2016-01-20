@@ -15,7 +15,7 @@ export default React.createClass({
 					<div className="slds-button-group" role="group">
 						<button
 							type="button"
-							className="slds-button slds-button--neutral slds-button--x-small"
+							className="slds-button slds-button--neutral slds-button--small"
 							onClick={
 								ExampleEvents.fireExampleEvent.bind(this,
 									{
@@ -24,7 +24,7 @@ export default React.createClass({
 									})}>Enable</button>
 						<button
 							type="button"
-							className="slds-button slds-button--neutral slds-button--x-small"
+							className="slds-button slds-button--neutral slds-button--small"
 							onClick={
 								ExampleEvents.fireExampleEvent.bind(this,
 									{
@@ -33,7 +33,7 @@ export default React.createClass({
 									})}>Disable</button>
 						<button
 							type="button"
-							className="slds-button slds-button--neutral slds-button--x-small"
+							className="slds-button slds-button--neutral slds-button--small"
 							onClick={
 								ExampleEvents.fireExampleEvent.bind(this,
 									{
@@ -42,7 +42,7 @@ export default React.createClass({
 									})}>Check</button>
 						<button
 							type="button"
-							className="slds-button slds-button--neutral slds-button--x-small"
+							className="slds-button slds-button--neutral slds-button--small"
 							onClick={
 								ExampleEvents.fireExampleEvent.bind(this,
 									{

@@ -29,8 +29,8 @@ var config = {
 	devtool: 'source-map',
 	output: {
 		libraryTarget: 'amd',
-		path: __dirname + '/dist/',
-		publicPath: '/dist/',
+		path: __dirname + '/.tmp/',
+		publicPath: '/.tmp/',
 		filename: '[name].js'
 	},
 	externals: {

@@ -1,4 +1,6 @@
 module.exports = function (grunt) {
+	const path = require('path');
+	require('./scripts/helpers/setup');
 	grunt.loadTasks('tasks');
 
 	// Look in ./tasks for additional task modules
@@ -12,7 +14,7 @@ module.exports = function (grunt) {
 		'!test/tests-compiled.js'
 	];
 
-	const defaultWatchFiles = ['Gruntfile.js', 'tasks/**/*.*', 'src/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'];
+	const defaultWatchFiles = ['Gruntfile.js', 'tasks/**/*.*', 'src/**/*.*', 'site/**/*.*', 'sample-data/**/*.*', 'test/**/*.*'];
 
 	grunt.initConfig({
 		port: grunt.option('port') || process.env.PORT || defaultPort,
@@ -39,7 +41,7 @@ module.exports = function (grunt) {
 		'watch': {
 			tests: {
 				files: defaultWatchFiles.concat(excludePatternGeneratedTestFiles),
-				tasks: ['eslint', 'compileTests', 'compileTestsApi']
+				tasks: ['eslint', 'compileTests', 'compileTestsApi', 'shell:docco']
 			}
 		},
 		'connect': {
@@ -65,7 +67,7 @@ module.exports = function (grunt) {
 		},
 		'shell': {
 			docco: {
-				command: './bin/generate-docs.sh'
+				command: __PATHS__.scripts + '/shell/generate-docs.sh'
 			}
 		},
 		'webpack': {
@@ -76,7 +78,7 @@ module.exports = function (grunt) {
 			start: {
 				webpack: require('./webpack.config'),
 				publicPath: '/build/',
-				contentBase: './public',
+				contentBase: __PATHS__.content_base,
 				port: '<%= port %>',
 				keepAlive: true,
 				hot: true,
@@ -85,7 +87,7 @@ module.exports = function (grunt) {
 		}
 	});
 
-	grunt.registerTask('default', ['shell:docco', 'compileTests', 'compileTestsApi']);
+	grunt.registerTask('default', ['shell:docco', 'compileTests', 'compileTestsApi', 'build-slds-public-assets']);
 	grunt.registerTask('build', ['webpack']);
 	grunt.registerTask('serve', 'Runs webpack with hot module swapping', ['default', 'webpack-dev-server:start']);
 	grunt.registerTask('serve-watch', 'For concurrent watch task / webpack watch (use in new window)', ['default', 'watch:tests']);
