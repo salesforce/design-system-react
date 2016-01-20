@@ -95,8 +95,8 @@
   ],
   "components": [
     "badge",
-    "button-view",
     "button",
+    "button-group",
     "checkbox",
     "combobox",
     "data-table",

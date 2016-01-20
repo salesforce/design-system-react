@@ -2,8 +2,8 @@ var express = require('express');
 var compression = require('compression');
 var exphbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
-var reactExampleScripts = require('./site/example-code/react');
-var jqueryExampleScripts = require('./site/example-code/jquery');
+var jQueryExamples = require('./site/examples/demo-components')('jquery');
+var reactExamples = require('./site/examples/demo-components')('react');
 
 // Create server
 var app = express();
@@ -38,27 +38,28 @@ app.use('/vendor/require', express.static(__dirname + '/node_modules/requirejs')
 
 // Index
 app.get('/', function (req, res) {
-  res.render('index');
+	res.render('index');
 });
 
 // jQuery examples
+var jQueryCode;
 app.get('/jquery', function (req, res) {
-	var locals = {};
-
-	res.render('jquery/', locals, function () {
-		locals.code = jqueryExampleScripts;
-		res.render('jquery/index', locals);
-	});
+	// needed for these examples until we make them more modular
+	if (!jQueryCode) {
+		jQueryCode = {};
+		jQueryExamples.forEach(function (example) {
+			if (example) {
+				jQueryCode[example.component.replace('-', '')] = example.code;
+			}
+		});
+	}
+	
+	res.render('jquery/index', jQueryCode);
 });
 
 // React examples
 app.get('/react', function (req, res) {
-	var locals = {};
-
-	res.render('react/', locals, function () {
-		locals.code = reactExampleScripts;
-		res.render('react/index', locals);
-	});
+	res.render('react/index', { examples: reactExamples });
 });
 
 // Serve up the built files
@@ -68,5 +69,5 @@ app.use('/docs', express.static(__dirname + '/public/docs', {'index': ['index.ht
 
 // Listen
 var server = app.listen(port, function() {
-  console.log('server listening on port ' + server.address().port);
+	console.log('server listening on port ' + server.address().port);
 });
