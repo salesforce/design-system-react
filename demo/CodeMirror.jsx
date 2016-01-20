@@ -29,13 +29,7 @@ const propTypes = {
   path: React.PropTypes.string,
   value: React.PropTypes.string,
 };
-
-const defaultProps = {
-  transformer: function(code) {
-    return code;
-    //return babel.transform(code).code;
-  }
-};
+const defaultProps = {};
 
 function request (url, method, data, callback) {
   const request = new window.XMLHttpRequest()
