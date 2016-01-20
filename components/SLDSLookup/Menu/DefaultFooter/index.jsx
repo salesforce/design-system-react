@@ -21,11 +21,16 @@ class DefaultFooter extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
+    if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
+      this.props.setFocus('newItem');
+    }
   }
 
   handleClick(){
     console.log('=====> Lookup Footer Clicked');
+    if(this.props.onClose){
+      this.props.onClose();
+    }
   }
 
   handleMouseDown(event) {
@@ -35,6 +40,7 @@ class DefaultFooter extends React.Component {
   render(){
     let className = 'slds-button';
     if(this.props.isActive) className += ' slds-theme--shade'
+
     return (
       <div className="slds-lookup__item" onClick={this.handleClick.bind(this)} onMouseDown={this.handleMouseDown.bind(this)}>
         <button id='newItem' tabIndex="-1" className={className}>

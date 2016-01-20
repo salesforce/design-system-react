@@ -64,18 +64,7 @@ class Menu extends React.Component {
   }
 
   renderFooter(){
-    if (this.props.footer) {
-      let footerActive = false;
-      let isActiveClass = null;
-      if (this.props.focusIndex === this.props.listLength+1) {
-        footerActive = true;
-        isActiveClass = 'slds-theme--shade';
-      }else{
-        footerActive = false;
-        isActiveClass = '';
-      }
-      return <div className={isActiveClass}>{this.props.footer}</div>;
-    }
+    return this.props.footer;
   }
 
   renderItems(){

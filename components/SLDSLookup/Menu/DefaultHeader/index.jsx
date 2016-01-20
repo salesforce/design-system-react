@@ -21,7 +21,9 @@ class DefaultHeader extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) this.props.setFocus(this.props.id);
+    if(nextProps.isActive !== this.props.isActive && nextProps.isActive === true) {
+      this.props.setFocus('searchRecords');
+    }
   }
 
   handleClick(){
@@ -37,13 +39,13 @@ class DefaultHeader extends React.Component {
 
   render(){
     let className = 'slds-button';
-    if(this.props.isActive) className += ' slds-theme--shade aaa'
+    if(this.props.isActive) className += ' slds-theme--shade'
 
     return (
       <div className="slds-lookup__item" onMouseDown={this.handleMouseDown} onClick={this.handleClick.bind(this)}>
         <button id='searchRecords' tabIndex="-1" className={className}>
-          <SLDSIcon name='search' category="utility" size="x-small" className="slds-icon-text-default" />
-          {this.props.searchTerm}
+          <SLDSIcon assistiveText="Search " name='search' category="utility" size="x-small" className="slds-icon-text-default" />
+          {" " + this.props.searchTerm}
         </button>
       </div>
     )
