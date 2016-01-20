@@ -30,11 +30,10 @@ export const ModalObject = {
 		onClose: React.PropTypes.func,
 		onPrimary: React.PropTypes.func,
 		primaryButtonText: React.PropTypes.string,
-		renderFooter: React.PropTypes.func,
-		renderHeader: React.PropTypes.func,
-		secondaryButtonText: React.PropTypes.string
+		secondaryButtonText: React.PropTypes.string,
+		triggerNode: React.PropTypes.object
 	},
-	
+
 	getDefaultProps () {
 		return DefaultRenderers;
 	},
@@ -46,7 +45,7 @@ export const ModalObject = {
 					<div className={this.cssClasses.MODALCONTAINER} ref={this._setModalRef}>
 						<div className="slds-modal__header">
 							{this.props.renderHeader({
-								onCloseClick: this.props.onClose,
+								onCloseClick: this._onClose,
 								headerTitle: this.props.headerTitle,
 								headerTagline: this.props.headerTagline
 							})}
@@ -56,8 +55,8 @@ export const ModalObject = {
 						</div>
 						<div className="slds-modal__footer">
 							{this.props.renderFooter({
-								onPrimaryClick: this.props.onPrimary,
-								onSecondaryClick: this.props.onCancel,
+								onPrimaryClick: this._onPrimaryClick,
+								onSecondaryClick: this._onSecondaryClick,
 								secondaryButtonText: this.props.secondaryButtonText,
 								primaryButtonText: this.props.primaryButtonText
 							})}
@@ -75,11 +74,39 @@ export const ModalObject = {
 
 	_setModalRef (modal) {
 		this.elements.modal = Lib.wrapElement(ReactDOM.findDOMNode(modal));
+
+		this.props.onClose();
+	},
+
+	_onClose () {
+		console.log('test');
+
+		if (this.props.triggerNode) {
+			ReactDOM.findDOMNode(this.props.triggerNode).focus();
+		}
+		this.props.onCancel();
+	},
+
+	_onSecondaryClick () {
+		console.log('test');
+
+		if (this.props.triggerNode) {
+			ReactDOM.findDOMNode(this.props.triggerNode).focus();
+		}
+		this.props.onCancel();
 	},
 
 	_onBackgroundClick (e) {
 		if (e.target && this.backgroundClicked(e.target)) {
 			this.props.onClose();
+		}
+	},
+
+	_onPrimaryClick () {
+		console.log(this.props.triggerNode);
+
+		if (this.props.triggerNode) {
+			ReactDOM.findDOMNode(this.props.triggerNode).focus();
 		}
 	}
 };

@@ -50,6 +50,9 @@ export const DropdownObject = {
 		});
 
 		this.elements.button = this.button.element;
+
+		this.elements.button.attr('aria-haspopup', true);
+		
 		this.button.prependTo(this.element);
 
 		// Render the menu
