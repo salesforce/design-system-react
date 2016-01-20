@@ -37,17 +37,22 @@ class Trigger extends React.Component {
   }
 
   componentDidMount() {
-    ReactDOM.findDOMNode(this).addEventListener('mouseenter', this.handleTooltipMouseEnter.bind(this));
-    ReactDOM.findDOMNode(this).addEventListener('focus', this.handleTooltipMouseEnter.bind(this));
-    ReactDOM.findDOMNode(this).addEventListener('mouseleave', this.handleTooltipMouseLeave.bind(this));
-    ReactDOM.findDOMNode(this).addEventListener('blur', this.handleTooltipMouseLeave.bind(this));
-
+    if(this.props.tooltip){
+      this.addListeners()
+    }
     const openByDefault = this.props && this.props.tooltip && this.props.tooltip.props && this.props.tooltip.props.openByDefault ? this.props.tooltip.props.openByDefault : false;
     this.setState({
       isTooltipOpen: openByDefault,
       tooltipTarget: ReactDOM.findDOMNode(this),
       isMounted: true
     });
+  }
+
+  addListeners() {
+    ReactDOM.findDOMNode(this).addEventListener('mouseenter', this.handleTooltipMouseEnter.bind(this));
+    ReactDOM.findDOMNode(this).addEventListener('focus', this.handleTooltipMouseEnter.bind(this));
+    ReactDOM.findDOMNode(this).addEventListener('mouseleave', this.handleTooltipMouseLeave.bind(this));
+    ReactDOM.findDOMNode(this).addEventListener('blur', this.handleTooltipMouseLeave.bind(this));
   }
 
   componentWillUnmount() {
