@@ -149,6 +149,7 @@ export const PicklistObject = {
 	},
 	
 	_onButtonRendered (element) {
+		this.elements.button = ReactDOM.findDOMNode(element);
 		Positionable.setTarget(this, ReactDOM.findDOMNode(element));
 	},
 
@@ -176,10 +177,12 @@ export const PicklistObject = {
 		if (Lib.isFunction(this.props.onSelect)) {
 			this.props.onSelect(selection.at(0));
 		}
-		
+
 		if (Lib.isFunction(this.props.onChange)) {
 			this.props.onChange(selection.at(0));
 		}
+
+		Lib.returnFocusToPopupTrigger(this);
 	},
 
 	_onDeselect (itemsToDeselect, selection) {

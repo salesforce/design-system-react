@@ -38,6 +38,14 @@ import isString from 'lodash/lang/isString';
 export { isString };
 
 // DOM
+
+export function returnFocusToPopupTrigger (controlContext) {
+	const trigger = controlContext.elements.control[0].querySelector('[aria-haspopup=true]');
+	if (trigger) {
+		trigger.focus();
+	}
+}
+
 export function hasClass (element, className) {
 	return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;
 }
