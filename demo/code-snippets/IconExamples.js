@@ -35,5 +35,4 @@ const iconExamples = (
   </div>
 );
 
-React.render(iconExamples, mountNode);
-
+ReactDOM.render(iconExamples, mountNode);

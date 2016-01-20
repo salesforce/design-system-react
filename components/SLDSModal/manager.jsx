@@ -59,7 +59,7 @@ module.exports = React.createClass( {
     if(!this.state.revealed){
       setTimeout(()=>{
         this.setState({revealed:true});
-      }.bind(this));
+      });
     }
     this.updateBodyScroll();
   },

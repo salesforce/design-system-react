@@ -77,7 +77,7 @@ class Trigger extends React.Component {
             isTooltipClosing: false
           });
         }
-      }.bind(this),delay
+      },delay
     );
   }
 

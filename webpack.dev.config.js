@@ -31,9 +31,6 @@ module.exports = {
     }
   },
   module: {
-    noParse: [
-      path.join(__dirname, "node_modules", "babel-core")
-    ],
     loaders: [{
         test: /\.jsx?$/,
         loaders: ['react-hot', 'babel'],
@@ -81,5 +78,5 @@ module.exports = {
       },
     ]
   },
-node: { fs: "empty" },
+  node: { fs: "empty" },
 };
