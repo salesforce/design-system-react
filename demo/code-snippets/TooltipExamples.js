@@ -63,6 +63,7 @@ class TooltipExample extends React.Component {
               iconName="down"
               iconVariant="border-filled"
               openOn="hover"
+              onSelect={(i) => console.log('selected', i)}
               options={moreOptions}
               tooltip={<SLDSPopoverTooltip
                 align="top right"
@@ -101,6 +102,7 @@ class TooltipExample extends React.Component {
               buttonVariant="icon"
               iconName="down"
               iconVariant="border-filled"
+              onSelect={(i) => console.log('selected', i)}
               openOn="click"
               options={moreOptions}
               tooltip={<SLDSPopoverTooltip
