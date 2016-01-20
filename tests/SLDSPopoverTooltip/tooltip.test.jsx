@@ -35,7 +35,7 @@ describe('SLDSPopoverTooltip: ',  function(){
     beforeEach(() => {
       const content = <span style={{width: 30}}>'This is more info. blah blah.'</span>
       cmp = generateTooltip({align:'bottom', content:content}, <button>'Hover me for tooltip'</button>)
-      trigger = document.body.querySelector('[role=tooltip]')
+      trigger = document.body.querySelector('[role=tooltip]').firstChild
     })
 
     it('renders the content as assistive text', () => {
@@ -92,7 +92,7 @@ describe('SLDSPopoverTooltip: ',  function(){
     beforeEach(() => {
       const content = <span style={{width: 30}}>'This is more info. blah blah.'</span>
       cmp = generateTooltip({align:'bottom', content:content, target: target}, <button>'Hover me for tooltip'</button>)
-      trigger = document.body.querySelector('[role=tooltip]')
+      trigger = document.body.querySelector('[role=tooltip]').firstChild
     })
 
     describe('expanded', () => {
