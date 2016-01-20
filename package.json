@@ -3,6 +3,10 @@
   "description": "Javascript components based on Lightning Design System with Facades for libraries and frameworks including jQuery, React, Backbone, and Angular",
   "version": "0.0.12",
   "contributors": [],
+  "files": [
+    "dist",
+    "src"
+  ],
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
@@ -21,7 +25,6 @@
     "heroku-build": "./scripts/shell/heroku-build.sh",
     "heroku-start": "node app.js",
     "menu": "./scripts/shell/menu-trial.sh",
-    "postinstall": "./scripts/shell/heroku-build.sh",
     "start": "grunt serve",
     "test": "grunt test"
   },

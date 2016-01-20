@@ -134,6 +134,7 @@ export const PicklistObject = {
 			Positionable.setTarget(this, this.elements.button);
 		}
 		this.elements.button.addClass('slds-picklist__label');
+		this.elements.button.attr('aria-haspopup', true);
 
 		this._renderMenu(elements);
 
@@ -230,6 +231,7 @@ export const PicklistObject = {
 		if (!$li.prop('disabled')) {
 			this.setSelection($li.data('item'));
 			Openable.close(this);
+			Lib.returnFocusToPopupTrigger(this);
 		}
 	},
 

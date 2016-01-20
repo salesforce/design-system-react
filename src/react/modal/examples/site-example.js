@@ -16,9 +16,15 @@ export default React.createClass({
 		};
 	},
 
+	_buttonRendered (element) {
+		this.triggerNode = element;
+		console.log(this.triggerNode);
+	},
+
 	render () {
 		return (
 			<div>
+				<button className="slds-button slds-button--neutral slds-button--x-small" ref={this._buttonRendered} onClick={this._handleClick}>Toggle</button>
 				<Modal
 					headerText="Modal Header"
 					isOpen={this.state.isOpen}
@@ -28,6 +34,7 @@ export default React.createClass({
 					primaryButtonText={'Save Test'}
 					secondaryButtonText={'Cancel'}
 					headerTitle={'React Modal'}
+					triggerNode={this.triggerNode}
 					headerTagline={<span>look what I can <a href="https://c2.staticflickr.com/4/3122/2850356021_eb4d1d9c4c.jpg">do</a></span>}>
 					<p className="slds-text-heading--label slds-m-top--small">The explanation</p>
 					<p className="slds-m-top-small slds-m-top--x-small">The following are controls using the <em>modal</em> functionality which enables "auto-flip" and dropdown menus to be "in front of" modals and not hidden by <code>overflow:hidden</code>.</p>
@@ -41,7 +48,6 @@ export default React.createClass({
 					<p style={{height: '1000px'}}>&nbsp;</p>
 				</Modal>
 
-				<button className="slds-button slds-button--neutral slds-button--small" onClick={this._handleClick}>Toggle</button>
 			</div>
 		);
 	},

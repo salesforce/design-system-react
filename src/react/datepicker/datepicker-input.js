@@ -36,7 +36,16 @@ const DateInput = React.createClass({
 				<div className="slds-form-element__control">
 					<div className="slds-input-has-icon slds-input-has-icon--right">
 						<Svg className="slds-input__icon slds-icon-text-default" icon="utility.event" />
-						<input className="slds-input" type="text" placeholder={this.props.strings.DATE_FORMAT} aria-label={this.props.ariaLabel} value={this.state.selectedDate} onChange={this.handleChange} onKeyPress={this.handleKeyPress} onBlur={this.callOnChange} />
+						<input
+							className="slds-input"
+							type="text"
+							placeholder={this.props.strings.DATE_FORMAT}
+							aria-label={this.props.ariaLabel}
+							aria-haspopup="true"
+							value={this.state.selectedDate}
+							onChange={this.handleChange}
+							onKeyPress={this.handleKeyPress}
+							onBlur={this.callOnChange} />
 					</div>
 				</div>
 			</div>
