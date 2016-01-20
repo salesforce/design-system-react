@@ -6,3 +6,5 @@ export GIT_VERSION=`node scripts/helpers/version.js`
 echo "DSF version: <$GIT_VERSION>"
 
 ./node_modules/.bin/webpack --config webpack.heroku.config.js
+./scripts/shell/generate-docs.sh
+
