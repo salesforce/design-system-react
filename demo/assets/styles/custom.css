@@ -28,3 +28,7 @@
 .drop-element-attached-bottom .SLDSPopover {
   align-self: flex-end;
 }
+
+.CodeMirror-code pre {
+  overflow: inherit;
+}

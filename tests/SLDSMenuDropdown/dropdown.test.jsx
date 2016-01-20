@@ -101,9 +101,6 @@ describe('SLDSMenuDropdown: ', function(){
       Simulate.click(btn, {}) //cleanup
       setTimeout(() => done(), 600)
     })
-
-    xit('does some crazy shit in componentDidUpdate', () => {
-    })
   })
   describe('Expanded', () => {
     let cmp, btn, selected;

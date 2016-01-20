@@ -95,13 +95,6 @@ class SLDSPopoverTooltip extends React.Component {
     }
   }
 
-  handleMouseClick() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-      isClosing: !this.state.isOpen
-    });
-  }
-
   handleMouseEnter() {
     this.setState({
       isOpen: true,
@@ -137,18 +130,30 @@ class SLDSPopoverTooltip extends React.Component {
     return this.state.isOpen?tooltip.getTooltip(this.props, this.getTooltipContent(), this.getTooltipTarget(), this.handleCancel.bind(this)):<span></span>;
   }
 
+  renderAssistantText() {
+    return <span className="slds-assistive-text">{this.props.content}</span>;
+  }
+
+  decorateGrandKidsWithKeyToSilenceWarning(grandKids) {
+    return React.Children.map(grandKids, (c, i) => React.isValidElement(c) ? React.cloneElement(c, {key: i}) : c)
+  }
+
+  grandKidsWithAsstText(child) {
+    const {props={}} = child;
+    const grandKids = compact(flatten([this.renderAssistantText()].concat(props.children)));
+    return this.decorateGrandKidsWithKeyToSilenceWarning(grandKids);
+  }
+
   getContent() {
-    const asstText = <span className="slds-assistive-text">{this.props.content}</span>;
-    return React.Children.map(this.props.children, child => {
-      const {props={}} = child;
+    return React.Children.map(this.props.children, (child, i) => {
       return React.cloneElement(child, {
-        children: compact(flatten([props.children]).concat(asstText)),
+        key: i,
         onBlur: this.handleMouseLeave.bind(this),
         onFocus: this.handleMouseEnter.bind(this),
         onMouseEnter: this.handleMouseEnter.bind(this),
         onMouseLeave: this.handleMouseLeave.bind(this),
-      });
-     })
+      }, this.grandKidsWithAsstText(child));
+     });
   }
 
   render(){
