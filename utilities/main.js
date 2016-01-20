@@ -1,4 +1,5 @@
 // Sample data
+import button from './sample-data/button';
 import dropdown from './sample-data/dropdown';
 import dataTable from './sample-data/data-table';
 import lookup from './sample-data/lookup';
@@ -9,6 +10,7 @@ import tree from './sample-data/tree';
 import ExampleEvents from './example-events';
 
 const sampleData = {
+	button,
 	dataTable,
 	dropdown,
 	lookup,

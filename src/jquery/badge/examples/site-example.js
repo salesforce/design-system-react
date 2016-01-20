@@ -1,4 +1,5 @@
 import {Lib, Badge} from 'design-system-jquery';
+import * as controlTemplate from './template-control';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
@@ -17,6 +18,7 @@ const badgesProperties = [
 ];
 
 $(function () {
+	$('#badge-jquery-control').append(controlTemplate.template);
 	const badges = [];
 	$.each(badgesProperties, function ( index, value ) {
 		badges['badge' + index] = new Badge($('#badge-jquery-control .badge' + index), {

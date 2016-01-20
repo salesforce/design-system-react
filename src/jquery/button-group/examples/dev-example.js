@@ -72,4 +72,12 @@ $(function () {
 	void(buttonGroup1);
 	void(buttonGroup2);
 	void(buttonGroup3);
+
+	$('#button-group-jquery-button-select').on('click', function () {
+		buttonGroup3.getProperty('children')[0].toggle(true);
+	});
+
+	$('#button-group-jquery-button-deselect').on('click', function () {
+		buttonGroup3.getProperty('children')[1].toggle(true);
+	});
 });

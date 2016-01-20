@@ -8,7 +8,7 @@ import ReactDOM from 'react-dom';
 
 import badge from './badge/examples/dev-example';
 import button from './button/examples/site-example';
-import buttongroup from './button-group/examples/site-example';
+import buttonGroup from './button-group/examples/site-example';
 import combobox from './combobox/examples/dev-example';
 import checkbox from './checkbox/examples/dev-example';
 import datepicker from './datepicker/examples/site-example';
@@ -25,9 +25,9 @@ import tooltip from './tooltip/examples/site-example';
 import tree from './tree/examples/site-example';
 import dataTable from './data-table/examples/site-example';
 
-ReactDOM.render(React.createElement(badge), document.querySelector('.react .badge .site-example'));
+ReactDOM.render(React.createElement(badge), document.querySelector('#badge-react-control'));
 ReactDOM.render(React.createElement(button), document.querySelector('#button-react-control'));
-ReactDOM.render(React.createElement(buttongroup), document.querySelector('#button-group-react-control'));
+ReactDOM.render(React.createElement(buttonGroup), document.querySelector('#button-group-react-control'));
 ReactDOM.render(React.createElement(combobox), document.querySelector('#combobox-react-control'));
 ReactDOM.render(React.createElement(checkbox), document.querySelector('#checkbox-react-control'));
 ReactDOM.render(React.createElement(datepicker), document.querySelector('#datepicker-react-control'));

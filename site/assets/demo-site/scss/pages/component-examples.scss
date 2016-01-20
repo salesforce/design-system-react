@@ -1,27 +1,19 @@
-@import "../../shared/scss/index";
-@import "dependencies/_config";
-
-.facades-demo-code-showcase {
-	display: none;
-}
-
 #component-list {
 	margin-bottom: 30px;
 }
 
 .component-wrapper {
-	margin-top: 40px;
 
 	.header {
-		border-bottom: 2px solid #b8c3ce;
+		border-bottom: none;
 	}
 }
 
 .component .body {
-	border: 1px solid #e0e5ee;
+	border: none;
 
 	.example-type {
-		border-left: 1px solid #e0e5ee;
+		border-left: none;
 
 		&:first-child {
 			border-left: none;
@@ -29,10 +21,10 @@
 	}
 
 	.example-wrapper {
-		padding: 5px;
+		padding: 0;
 
 		.example {
-			padding: 10px;
+			padding: 10px 0;
 		}
 
 		.type {

@@ -1,11 +1,12 @@
 import {Lib, Checkbox} from 'design-system-jquery';
 import * as controlTemplate from './template-control';
+import * as demoControlsTemplate from './template-demo-controls';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	$('#checkbox-jquery-control').append(controlTemplate.template);
-
+	$('#checkbox-jquery-demo-controls').append(demoControlsTemplate.template);
 	// new api controls
 	const checkbox1 = new Checkbox($('#checkbox1'), {
 		text: 'Checked',

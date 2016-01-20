@@ -1,8 +1,12 @@
 import {Lib, Modal} from 'design-system-jquery';
+import * as controlTemplate from './template-control';
+import * as controlTemplateLauncher from './template-control-launcher';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
+	$('#modal-jquery-control').append(controlTemplate.template);
+	$('#modal-jquery-control').before(controlTemplateLauncher.template);
 	const modal = new Modal($('#modal-jquery-control'), {
 		headerText: 'Modal Header',
 		headerTagline: 'This is a tagline',
