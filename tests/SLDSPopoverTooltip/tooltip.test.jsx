@@ -5,11 +5,14 @@ const { Simulate,
         findRenderedDOMComponentWithClass } = TestUtils
 import {SLDSPopoverTooltip} from '../../components';
 
-describe.only('SLDSPopoverTooltip: ',  function(){
+describe('SLDSPopoverTooltip: ',  function(){
   let body;
 
   afterEach(() => {
+    try {
+      Array.prototype.forEach.call(document.body.querySelectorAll('.drop'), c => document.body.removeChild(c))
     if(body) document.body.removeChild(body)
+    } catch(e){}
   })
 
   const renderTooltip = inst => {
@@ -40,24 +43,46 @@ describe.only('SLDSPopoverTooltip: ',  function(){
       expect(span.innerText).to.equal("'This is more info. blah blah.'")
     })
 
-    it('expands the dropdown on hover', (done) => {
+    it('is not open', () => {
       expect(getTip(document.body)).to.equal(null)
-      setTimeout(() => {
-        Simulate.mouseEnter(trigger, {})
+    })
+
+    describe('expanded', () => {
+      let tip;
+
+      beforeEach((done) => {
+        expect(getTip(document.body)).to.equal(null)
+
         setTimeout(() => {
-           const tip = getTip(document.body)
-           const tip_rect = tip.getBoundingClientRect()
-           const trigger_rect = trigger.getBoundingClientRect()
-           expect(tip_rect.bottom).to.be.within(trigger_rect.bottom, trigger_rect.bottom + 40)
-           expect(tip.className).to.include('slds-popover--tooltip')
-           expect(tip.className).to.include('slds-nubbin--top')
-           Simulate.mouseLeave(trigger, {})
-           setTimeout(() => {
-             expect(getTip(document.body)).to.be.null
-             done()
-           }, 600)
+          Simulate.mouseEnter(trigger, {})
+          setTimeout(() => {
+            tip = getTip(document.body)
+            done()
+          }, 200)
         }, 200)
-      }, 200)
+      })
+
+      it('has the right classname', () => {
+        expect(tip.className).to.include('slds-popover--tooltip')
+      })
+
+      it('places tooltip at the trigger if no target', () => {
+         const tip_rect = tip.getBoundingClientRect()
+         const trigger_rect = trigger.getBoundingClientRect()
+         expect(tip_rect.bottom).to.be.within(trigger_rect.bottom, trigger_rect.bottom + 40)
+      })
+
+      it('adds nubbin', () => {
+        expect(tip.className).to.include('slds-nubbin--top')
+      })
+
+      it('closes', (done) => {
+         Simulate.mouseLeave(trigger, {})
+         setTimeout(() => {
+           expect(getTip(document.body)).to.be.null
+           done()
+         }, 600)
+      })
     })
   })
 
@@ -70,24 +95,26 @@ describe.only('SLDSPopoverTooltip: ',  function(){
       trigger = document.body.querySelector('[role=tooltip]')
     })
 
-    it('expands the dropdown on hover', (done) => {
-      expect(getTip(document.body)).to.equal(null)
-      setTimeout(() => {
-        Simulate.mouseEnter(trigger, {})
-        setTimeout(() => {
-           const tip = getTip(document.body)
-           const tip_rect = tip.getBoundingClientRect()
-           const target_rect = target.getBoundingClientRect()
-           expect(tip_rect.bottom).to.be.within(target_rect.bottom, target_rect.bottom+40)
-           expect(tip.className).to.include('slds-popover--tooltip')
-           Simulate.mouseLeave(trigger, {})
-           setTimeout(() => {
-             expect(getTip(document.body)).to.be.null
-             done()
-           }, 600)
-        }, 200)
-      }, 200)
-    })
+    describe('expanded', () => {
+      let tip;
 
+      beforeEach((done) => {
+        expect(getTip(document.body)).to.equal(null)
+
+        setTimeout(() => {
+          Simulate.mouseEnter(trigger, {})
+          setTimeout(() => {
+            tip = getTip(document.body)
+            done()
+          }, 200)
+        }, 200)
+      })
+
+      it('sets the tooltip close to the target, not the trigger', () => {
+        const tip_rect = tip.getBoundingClientRect()
+        const target_rect = target.getBoundingClientRect()
+        expect(tip_rect.bottom).to.be.within(target_rect.bottom, target_rect.bottom+40)
+      })
+    })
   })
 })
