@@ -11,9 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SLDSPopover from 'components/SLDSPopover';
+import SLDSPopover from '../SLDSPopover';
 import SLDSDatePicker from './SLDSDatePicker/index';
-import InputIcon from 'components/SLDSIcon/InputIcon';
+import InputIcon from '../SLDSIcon/InputIcon';
 
 import {KEYS,EventUtil} from '../utils';
 

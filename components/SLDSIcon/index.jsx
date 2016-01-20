@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import SLDSUtilityIcon from 'components/SLDSUtilityIcon';
+import SLDSUtilityIcon from '../SLDSUtilityIcon';
 const classNames = require("classnames");
 
 const displayName = "SLDSIcon";
@@ -27,7 +27,7 @@ const propTypes = {
    */
   className: React.PropTypes.string,
   /**
-   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
    */
   name: React.PropTypes.string.isRequired,
   /**
@@ -40,9 +40,9 @@ const defaultProps = {
 };
 
 /**
- * The SLDSIcon component should be used for naked icons. For icons that are buttons, use the SLDSButton component with <code>variant="icon"</code>.
+ * The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href="#/home/button">SLDSButton component</a> component with <code>variant="icon"</code>.
  * The icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/icons">SLDS Icons</a>.
+ * For more details on the markup, please review the Icon documentation on the <a href="http://www.lightningdesignsystem.com/components/icons">Lightning Design System website</a>.
  */
 class SLDSIcon extends React.Component {
 

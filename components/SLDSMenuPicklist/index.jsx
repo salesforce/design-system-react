@@ -11,9 +11,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import isEqual from "lodash.isequal";
 
-import SLDSPopover from "components/SLDSPopover";
-import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "components/utils";
-import SLDSIcon from "components/SLDSIcon";
+import SLDSPopover from "../SLDSPopover";
+import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "../utils";
+import SLDSIcon from "../SLDSIcon";
 
 const displayName = "SLDSMenuPicklist";
 const propTypes = {
@@ -45,8 +45,8 @@ const defaultProps = {
 };
 
 /**
- * The SLDSMenuPicklist component is a variant of the Menu component.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#picklist">SLDS Menus > Picklists</a>.
+ * The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.
+ * For more details on the markup, please review the Menu > Picklist documentation on the <a href="http://www.lightningdesignsystem.com/components/menus#picklist">Lightning Design System website</a>.
  */
 class SLDSMenuPicklist extends React.Component {
   constructor(props) {

@@ -9,8 +9,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SLDSIcon from "components/SLDSIcon";
-import {EventUtil} from 'components/utils';
+import SLDSIcon from "../../../SLDSIcon";
+import {EventUtil} from '../../../utils';
 import escapeRegExp from 'lodash.escaperegexp';
 
 const displayName = 'SLDSLookup-Menu-Item';

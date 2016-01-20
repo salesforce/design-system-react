@@ -1,0 +1,1188 @@
+{
+    "SLDSButton": {
+        "description": "The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/home/button-stateful\">SLDSButtonStateful</a> component.\nFor more details on the markup, please review the Button documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightning Design System website</a>.",
+        "displayName": "SLDSButton",
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "hint": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#hint\">Lightning Design System Buttons > Hint</a>."
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
+            },
+            "iconPosition": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "If omitted, icon position is centered."
+            },
+            "iconSize": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"x-small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "If omitted, icon size is medium."
+            },
+            "iconVariant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"bare\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"container\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"border\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"border-filled\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"more\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">Lightning Design System Icons</a>."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Visible label on the button. If the button is an icon button with no label, you must use the <code>assistiveText</code> prop."
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "responsive": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, button scales to 100% width on small form factors."
+            },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Use <code>icon-inverse</code> for white icons.",
+                "defaultValue": {
+                    "value": "\"base\"",
+                    "computed": false
+                }
+            }
+        }
+    },
+    "SLDSButtonStateful": {
+        "description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nThe three types of stateful buttons are <code>icon</code>, <code>follow</code>, and <code>join</code>.\nThe type determines the text for the button's initial state (ie. follow), when the button is selected (ie. following), and to deselect the button (ie. unfollow).\nFor more details on the markup, please review the Button > Stateful documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">Lightning Design System website</a>.",
+        "displayName": "SLDSButtonStateful",
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
+            },
+            "iconSize": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"x-small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "If omitted, icon size is medium."
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "responsive": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, button scales to 100% width on small form factors"
+            },
+            "tabIndex": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
+            },
+            "type": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"join\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"follow\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "<code>join</code> - text is join, member, or leave <br />\n<code>follow</code> - text is follow, following, or unfollow <br />\n<code>icon</code> - styling is \"selected\" or \"not selected\""
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Use <code>icon-inverse</code> for white icons."
+            }
+        }
+    },
+    "SLDSButtonGroup": {
+        "description": "The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).\nFor more details on the markup, please review the Button Group documentation on the <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">Lightning Design System website</a>.",
+        "displayName": "SLDSButtonGroup",
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Children are expected to be components. If last button triggers a dropdown menu, use SLDSDropdown instead of SLDSButton."
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSIcon": {
+        "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/home/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details on the markup, please review the Icon documentation on the <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightning Design System website</a>.",
+        "displayName": "SLDSIcon",
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have visible descriptive text with the icon,\ndeclare this prop as <code>assistiveText=\"\"</code>."
+            },
+            "category": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"action\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"custom\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"doctype\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"standard\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"utility\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "",
+                "defaultValue": {
+                    "value": "'standard'",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "css classes that are applied to the svg"
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"x-small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"small\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "If omitted, icon size is medium."
+            }
+        }
+    },
+    "SLDSLookup": {
+        "description": "The SLDSLookup is the Lightning Design System Lookup base component.\nFor more details on the markup, please review the Lookup > Base documentation on the <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System website</a>.",
+        "displayName": "SLDSLookup",
+        "props": {
+            "emptyMessage": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "Custom message for when no search results found."
+            },
+            "filterWith": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": "Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.",
+                "defaultValue": {
+                    "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
+                    "computed": false
+                }
+            },
+            "footerRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Custom component for Lookup footer. The default footer allows user to add new item - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>."
+            },
+            "headerRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>."
+            },
+            "iconCategory": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to view categories."
+            },
+            "iconClasses": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of icon. Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to view icon names."
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": ""
+            },
+            "listItemLabelRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Custom component that overrides the default Lookup Item component."
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, component renders specifically to work inside Modal."
+            },
+            "onBlur": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onChange": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onItemSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": ""
+            },
+            "onItemUnselect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "Lookup item data."
+            },
+            "requiredField": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, adds asterisk next to input label to indicate it is a required field."
+            },
+            "searchTerm": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"\"",
+                    "computed": false
+                }
+            },
+            "salesforceObj": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Salesforce object type for Lookup items."
+            }
+        }
+    },
+    "SLDSMenuDropdown": {
+        "description": "The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.\nFor more details on the markup, please review the Menu > Dropdown documentation on the <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">Lightning Design System website</a>.",
+        "displayName": "SLDSMenuDropdown",
+        "props": {
+            "align": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"left\"",
+                    "computed": false
+                }
+            },
+            "buttonClassName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Classes applied to the Button component."
+            },
+            "buttonVariant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"base\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"neutral\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"brand\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"destructive\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"inverse\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"icon-inverse\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Determines variant of the Button component that triggers dropdown.",
+                "defaultValue": {
+                    "value": "\"neutral\"",
+                    "computed": false
+                }
+            },
+            "checkmark": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, renders checkmark icon on the selected Menu Item."
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "hoverCloseDelay": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Delay on menu closing.",
+                "defaultValue": {
+                    "value": "300",
+                    "computed": false
+                }
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "listItemRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Custom element that overrides the default Menu Item component."
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, component renders specifically to work inside Modal.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": ""
+            },
+            "openOn": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"hover\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"click\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"click\"",
+                    "computed": false
+                }
+            },
+            "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "Menu item data."
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Current selected menu item."
+            },
+            "tooltip": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSMenuPicklist": {
+        "description": "The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.\nFor more details on the markup, please review the Menu > Picklist documentation on the <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">Lightning Design System website</a>.",
+        "displayName": "SLDSMenuPicklist",
+        "props": {
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"Picklist\"",
+                    "computed": false
+                }
+            },
+            "listItemRenderer": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Custom element that overrides the default Menu Item component."
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, component renders specifically to work inside Modal."
+            },
+            "onClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onSelect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": true,
+                "description": ""
+            },
+            "options": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": "Menu item data."
+            },
+            "placeholder": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"Select an Option\"",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Current selected item."
+            }
+        }
+    },
+    "SLDSModal": {
+        "description": "The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the markup, please review the Lightning Design System website's <a href=\"https://www.lightningdesignsystem.com/components/modals\"> Modal documentation</a> or the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notification > Prompt documentation</a>.",
+        "displayName": "SLDSModal",
+        "props": {
+            "align": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"top\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"center\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Vertical alignment of Modal.",
+                "defaultValue": {
+                    "value": "\"center\"",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Modal content."
+            },
+            "directional": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, modal footer buttons render left and right. An example use case would be for \"back\" and \"next\" buttons.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "dismissible": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, prompt Modals can be dismissed by clicking outside of modal or pressing esc key.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "footer": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "Array of buttons to be placed in the footer. They render on the right side by default but are floated left and right if <code>directional</code> is true."
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": true,
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "prompt": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"success\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"warning\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"error\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"wrench\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"offline\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"info\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "\"\"",
+                    "computed": false
+                }
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"medium\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"large\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "tagline": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Content underneath the title."
+            },
+            "title": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "SLDSNotification": {
+        "description": "The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/home/modal\">SLDSModal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the markup, please review the Notification documentation on the <a href=\"http://www.lightningdesignsystem.com/components/notifications\">Lightning Design System website</a>.",
+        "displayName": "SLDSNotification",
+        "props": {
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Custom classes applied to Notification element."
+            },
+            "content": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Message for Notification."
+            },
+            "dismissible": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, close button appears for users to dismiss Notification.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "duration": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "If duration exists, the Notification will disappear after that amount of time."
+            },
+            "iconName": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lighning Design System Icons</a> to reference icon names."
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": true,
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "onDismiss": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "texture": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "Styling for Notification background.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"success\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"warning\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"error\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"offline\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "Styling for Notification background color. Please reference <a href=\"http://www.lightningdesignsystem.com/components/utilities/themes#color\">Lighning Design System Themes > Color</a>."
+            },
+            "variant": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"alert\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"toast\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": ""
+            }
+        }
+    },
+    "SLDSPopoverTooltip": {
+        "description": "The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.\nFor more details on the markup, please review the Popover > Tooltip documentation on the <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">Lightning Design System website</a>.",
+        "displayName": "SLDSPopoverTooltip",
+        "props": {
+            "align": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"top\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"top left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"top right\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right top\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"right bottom\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"bottom\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"bottom left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"bottom right\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"left\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"left top\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"left bottom\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "Alignment of the Tooltip relative to the element that triggers it.",
+                "defaultValue": {
+                    "value": "\"top\"",
+                    "computed": false
+                }
+            },
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": false,
+                "description": "Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it."
+            },
+            "content": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Content inside Tooltip.",
+                "defaultValue": {
+                    "value": "<span>Tooltip</span>",
+                    "computed": false
+                }
+            },
+            "hoverCloseDelay": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Delay on Tooltip closing.",
+                "defaultValue": {
+                    "value": "150",
+                    "computed": false
+                }
+            },
+            "openByDefault": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "target": {
+                "type": {
+                    "name": "any"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    }
+}

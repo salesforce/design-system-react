@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from "react";
-import ButtonIcon from 'components/SLDSIcon/ButtonIcon';
+import ButtonIcon from '../SLDSIcon/ButtonIcon';
 import SLDSTooltipTrigger from "../SLDSPopoverTooltip/trigger"
 const classNames = require("classnames");
 import omit from "lodash.omit";
@@ -24,7 +24,7 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
-   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
   /**
@@ -33,32 +33,32 @@ const propTypes = {
   iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   onClick: React.PropTypes.func,
   /**
-   * If true, button scales 100% width on small form factors
+   * If true, button scales to 100% width on small form factors
    */
   responsive: React.PropTypes.bool,
   /**
-   * Write <code>"-1"</code> if you don't want the user to tab to it.
+   * Write <code>"-1"</code> if you don't want the user to tab to the button.
    */
   tabIndex: React.PropTypes.string,
+  tooltip: React.PropTypes.node,
   /**
-   * <code>join</code> - states are join, member, leave <br />
-   * <code>follow</code> - states are follow, following, unfollow <br />
-   * <code>icon</code> - states are "selected", "unselect", "not selected"
+   * <code>join</code> - text is join, member, or leave <br />
+   * <code>follow</code> - text is follow, following, or unfollow <br />
+   * <code>icon</code> - styling is "selected" or "not selected"
    */
   type: React.PropTypes.oneOf(["join", "follow", "icon"]),
   /**
    * Use <code>icon-inverse</code> for white icons.
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
-
-  tooltip: React.PropTypes.node
 };
 const defaultProps = {};
 
 /**
- * The SLDSButtonStateful component is a variant of the Button component. It is used for buttons that have a state of unselected or selected. The initial state is unselected.
- * The three types of stateful buttons are <code>join</code>, <code>follow</code>, and <code>icon</code>.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">SLDS Buttons > Stateful</a>.
+ * The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
+ * The three types of stateful buttons are <code>icon</code>, <code>follow</code>, and <code>join</code>.
+ * The type determines the text for the button's initial state (ie. follow), when the button is selected (ie. following), and to deselect the button (ie. unfollow).
+ * For more details on the markup, please review the Button > Stateful documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">Lightning Design System website</a>.
  */
 class SLDSButtonStateful extends SLDSTooltipTrigger {
 

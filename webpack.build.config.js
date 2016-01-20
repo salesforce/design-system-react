@@ -32,7 +32,7 @@ module.exports = {
     alias: {
       "components": __dirname + '/components',
       "demo": __dirname + '/demo',
-      "docs": __dirname + '/docs',
+      "docs": __dirname + '/demo/docs',
       'ui': '/src/ui',
     }
   },

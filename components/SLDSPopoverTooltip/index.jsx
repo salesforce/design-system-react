@@ -20,7 +20,7 @@ const propTypes = {
   /**
    * Alignment of the Tooltip relative to the element that triggers it.
    */
-  align: React.PropTypes.oneOf(["top", "top-left", "top-right", "right", "right-top", "right-bottom", "bottom", "bottom-left", "bottom-right", "left", "left-top", "left-bottom"]).isRequired,
+  align: React.PropTypes.oneOf(["top", "top left", "top right", "right", "right top", "right bottom", "bottom", "bottom left", "bottom right", "left", "left top", "left bottom"]).isRequired,
   /**
    * Pass the element that triggers Tooltip as a child of the Tooltip component. It must be either an anchor or button so keyboard users can tab to it.
    */
@@ -39,12 +39,12 @@ const propTypes = {
 const defaultProps = {
   align: "top",
   content: <span>Tooltip</span>,
-  hoverCloseDelay: 350,
+  hoverCloseDelay: 150,
 };
 
 /**
- * The SLDSPopoverTooltip component is variant of the Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/popovers#tooltips">SLDS Popovers > Tooltips</a>.
+ * The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.
+ * For more details on the markup, please review the Popover > Tooltip documentation on the <a href="http://www.lightningdesignsystem.com/components/popovers#tooltips">Lightning Design System website</a>.
  */
 class SLDSPopoverTooltip extends React.Component {
 
@@ -130,6 +130,20 @@ class SLDSPopoverTooltip extends React.Component {
     return this.state.isOpen?tooltip.getTooltip(this.props, this.getTooltipContent(), this.getTooltipTarget(), this.handleCancel.bind(this)):<span></span>;
   }
 
+  getContent() {
+    const asstText = <span className="slds-assistive-text">{this.props.content}</span>;
+    return React.Children.map(this.props.children, child => {
+      const {props={}} = child;
+      return React.cloneElement(child, {
+        children: compact(flatten([props.children]).concat(asstText)),
+        onBlur: this.handleMouseLeave.bind(this),
+        onFocus: this.handleMouseEnter.bind(this),
+        onMouseEnter: this.handleMouseEnter.bind(this),
+        onMouseLeave: this.handleMouseLeave.bind(this),
+      });
+     })
+  }
+
   render(){
     const containerStyles = { display: "inline" };
     return (
@@ -137,13 +151,8 @@ class SLDSPopoverTooltip extends React.Component {
         aria-describedby={this.getTriggerId()}
         style={containerStyles}
         ref="tooltipTarget"
-        role="tooltip"
-        onBlur={this.handleMouseLeave.bind(this)}
-        onFocus={this.handleMouseEnter.bind(this)}
-        onMouseEnter={this.handleMouseEnter.bind(this)}
-        onMouseLeave={this.handleMouseLeave.bind(this)} >
-        { this.props.children }
-        <span className="slds-assistive-text">{this.props.content}</span>
+        role="tooltip" >
+        { this.getContent() }
         { this.getTooltip() }
       </div>
     );

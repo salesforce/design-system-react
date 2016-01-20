@@ -10,9 +10,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from "react";
 import ReactDOM from "react-dom";
-import SLDSPopover from "components/SLDSPopover";
-import SLDSButton from "components/SLDSButton";
-import {List, ListItem, ListItemLabel, KEYS, EventUtil} from "components/utils";
+import SLDSPopover from "../SLDSPopover";
+import SLDSButton from "../SLDSButton";
+import {KEYS, EventUtil} from "../utils";
+import List from './List'; 
+import ListItem from './ListItem';
+import ListItemLabel from './ListItemLabel';
 
 const displayName = "SLDSMenuDropdown";
 const propTypes = {
@@ -67,8 +70,8 @@ const defaultProps = {
 };
 
 /**
- * The SLDSMenuDropdown component is a variant of the Menu component.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">SLDS Menus > Dropdown</a>.
+ * The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.
+ * For more details on the markup, please review the Menu > Dropdown documentation on the <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightning Design System website</a>.
  */
 class SLDSMenuDropdown extends React.Component {
 

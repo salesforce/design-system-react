@@ -13,8 +13,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 const classNames = require("classnames");
-import SLDSButton from "components/SLDSButton";
-import SLDSIcon from "components/SLDSIcon";
+import SLDSButton from "../SLDSButton";
+import SLDSIcon from "../SLDSIcon";
 
 const displayName = "SLDSNotification";
 const propTypes = {
@@ -35,7 +35,7 @@ const propTypes = {
    */
   duration: React.PropTypes.number,
   /**
-   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to reference icon names.
+   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lighning Design System Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
   isOpen: React.PropTypes.bool.isRequired,
@@ -45,7 +45,7 @@ const propTypes = {
    */
   texture: React.PropTypes.bool,
   /**
-   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes#color">SLDS Themes > Color</a>.
+   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes#color">Lighning Design System Themes > Color</a>.
    */
   theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
   variant: React.PropTypes.oneOf(["alert", "toast"]).isRequired,
@@ -58,9 +58,9 @@ const defaultProps = {
 };
 
 /**
- * The SLDSNotification component is used for alerts and toasts. For prompt notifications, use the SLDSModal component with <code>prompt={true}</code>.
- * This component opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/notifications">SLDS Notifications</a>.
+ * The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href="#/home/modal">SLDSModal</a> component with <code>prompt={true}</code>.
+ * The Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
+ * For more details on the markup, please review the Notification documentation on the <a href="http://www.lightningdesignsystem.com/components/notifications">Lightning Design System website</a>.
  */
 class SLDSNotification extends React.Component {
   constructor(props){

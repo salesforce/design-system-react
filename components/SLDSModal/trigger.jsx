@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {EventUtil} from 'components/utils';
+import {EventUtil} from '../utils';
 import SLDSModal from './index';
 
 const SLDSModalTrigger = {

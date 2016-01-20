@@ -11,11 +11,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import escapeRegExp from "lodash.escaperegexp";
 
-import SLDSPopover from "components/SLDSPopover";
-import SLDSButton from "components/SLDSButton";
-import SLDSIcon from "components/SLDSIcon";
-import InputIcon from "components/SLDSIcon/InputIcon";
-import {KEYS,EventUtil} from "components/utils";
+import SLDSPopover from "../SLDSPopover";
+import SLDSButton from "../SLDSButton";
+import SLDSIcon from "../SLDSIcon";
+import InputIcon from "../SLDSIcon/InputIcon";
+import {KEYS,EventUtil} from "../utils";
 
 import Menu from "./Menu";
 import DefaultFooter from "./Menu/DefaultFooter";
@@ -28,22 +28,25 @@ const propTypes = {
    * Custom message for when no search results found.
    */
   emptyMessage: React.PropTypes.string.isRequired,
+  /**
+   * Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.
+   */
   filterWith: React.PropTypes.func.isRequired,
   /**
-   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">SLDS Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
+   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
    */
   footerRenderer: React.PropTypes.func,
   /**
-   * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">SLDS Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>.
+   * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>.
    */
   headerRenderer: React.PropTypes.func,
   /**
-   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view categories.
+   * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view categories.
    */
   iconCategory: React.PropTypes.string,
   iconClasses: React.PropTypes.string,
   /**
-   * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">SLDS Icons</a> to view icon names.
+   * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view icon names.
    */
   iconName: React.PropTypes.string,
   label: React.PropTypes.string.isRequired,
@@ -60,9 +63,13 @@ const propTypes = {
   onItemSelect: React.PropTypes.func.isRequired,
   onItemUnselect: React.PropTypes.func,
   /**
-   * Lookup items data.
+   * Lookup item data.
    */
   options: React.PropTypes.array.isRequired,
+  /**
+   * If true, adds asterisk next to input label to indicate it is a required field.
+   */
+  requiredField: React.PropTypes.bool,
   searchTerm: React.PropTypes.string,
   /**
    * Salesforce object type for Lookup items.
@@ -88,8 +95,8 @@ const defaultProps = {
 
 
 /**
- * The SLDSLookup component currently supports the base variant.
- * For more details, please reference <a href="http://www.lightningdesignsystem.com/components/lookups/#base">SLDS Lookups > Base</a>.
+ * The SLDSLookup is the Lightning Design System Lookup base component.
+ * For more details on the markup, please review the Lookup > Base documentation on the <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System website</a>.
  */
 class SLDSLookup extends React.Component {
   constructor(props) {
@@ -218,6 +225,13 @@ class SLDSLookup extends React.Component {
     });
   }
 
+  handleEscape(event) {
+    if(this.state.isOpen && event){
+      EventUtil.trap(event);
+    }
+    this.handleClose();
+  }
+
   handleCancel(){
     this.setState({
       isOpen: false,
@@ -253,7 +267,7 @@ class SLDSLookup extends React.Component {
   handleKeyDown(event) {
     if(event.keyCode){
       //If user hits esc key, close menu
-      event.keyCode === KEYS.ESCAPE ? this.handleClose() : this.handleClick();
+      event.keyCode === KEYS.ESCAPE ? this.handleEscape(event) : this.handleClick();
 
       //If user hits down key, advance aria activedescendant to next item
       if(event.keyCode === KEYS.DOWN){
@@ -435,7 +449,7 @@ class SLDSLookup extends React.Component {
     };
 
     const inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: "5px"};
-    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()}>{this.props.label}</label>:null;
+    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()}>{this.props.requiredField ? `*${this.props.label}`: this.props.label}</label>:null;
 
     return (
       <div className={cx(componentClasses)} data-select="single" data-scope="single" data-typeahead="true">

@@ -39,8 +39,8 @@ class GettingStartedSection extends React.Component {
           </h3>
 
           <p className="slds-m-vertical--small">
-            The design system react library is the Reactjs implementation of the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a> components.
-            Each SLDS React component is a specific variant of a component from Lightning Design System.
+            The Design System React library is the Reactjs implementation of the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>.
+            Each Design System React component is a specific variant of a component from Lightning Design System.
             For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightning Design System Menu > Dropdown</a>,
             and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup (base)</a>.
           </p>
