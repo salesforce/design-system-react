@@ -24,7 +24,7 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
-   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">Lightning Design System Buttons > Hint</a>.
+   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
    */
   hint: React.PropTypes.bool,
   /**
