@@ -13,7 +13,7 @@ const picklistOptions = [
 
 class PicklistExample extends React.Component {
 
-  displayName: "PicklistExample"
+  displayName: "PicklistExample";
 
   constructor(props) {
     super(props);
@@ -51,5 +51,5 @@ class PicklistExample extends React.Component {
 
 }
 
-React.render(<PicklistExample />, mountNode);
+ReactDOM.render(<PicklistExample />, mountNode);
 

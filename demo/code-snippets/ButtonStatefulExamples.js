@@ -18,5 +18,5 @@ const examples = (
   </div>
 );
 
-React.render(examples, mountNode);
+ReactDOM.render(examples, mountNode);
 
