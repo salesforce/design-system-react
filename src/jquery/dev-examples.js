@@ -14,7 +14,7 @@ import './datepicker/examples/site-example';
 import './dropdown/examples/site-example';
 import './lookup/examples/site-example';
 import './modal/examples/site-example';
-import './notification/examples/site-example';
+import './notification/examples/dev-example';
 import './picklist/examples/site-example';
 import './pills/examples/site-example';
 import './popover/examples/site-example';

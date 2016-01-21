@@ -1,10 +1,12 @@
 import {Lib, Notification} from 'design-system-jquery';
 import * as controlTemplate from './template-control';
+import * as demoControlsTemplate from './template-demo-controls';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	$('#notification-jquery-control').append(controlTemplate.template);
+	$('#notification-jquery-demo-controls').append(demoControlsTemplate.template);
 	// notification
 	const notification1 = new Notification($('#notification-jquery-control .notification1'), {
 		text: 'Base System Alert'
@@ -22,8 +24,16 @@ $(function () {
 		theme: 'offline'
 	});
 
+	// methods
+	$('#notification-jquery-hide').on('click', function () {
+		notification4.hide();
+	});
+
+	$('#notification-jquery-show').on('click', function () {
+		notification4.show();
+	});
+
 	void(notification1);
 	void(notification2);
 	void(notification3);
-	void(notification4);
 });
