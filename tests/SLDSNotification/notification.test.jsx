@@ -1,5 +1,8 @@
-const React = require('react/addons');
-const TestUtils = React.addons.TestUtils;
+import React from 'react';
+import ReactDOM from 'react-dom';
+import assign from 'lodash.assign';
+import TestUtils from 'react-addons-test-utils';
+
 import {SLDSNotification} from '../../components';
 
 describe('SLDSNotification: ',  function(){

@@ -1,10 +1,12 @@
-const React = require('react/addons')
-const assign = require('lodash.assign')
-const TestUtils = React.addons.TestUtils
+import React from 'react';
+import ReactDOM from 'react-dom';
+import assign from 'lodash.assign';
+import TestUtils from 'react-addons-test-utils';
+
+import {SLDSMenuDropdown} from '../../components'
 const { Simulate,
         scryRenderedDOMComponentsWithClass,
         findRenderedDOMComponentWithClass } = TestUtils
-import {SLDSMenuDropdown} from '../../components'
 
 describe('SLDSMenuDropdown: ', function(){
 
@@ -17,7 +19,7 @@ describe('SLDSMenuDropdown: ', function(){
   const renderDropdown = inst => {
     body = document.createElement('div');
     document.body.appendChild(body)
-    return React.render(inst, body)
+    return ReactDOM.render(inst, body)
   }
 
   const defaultProps = {label: "Contacts",

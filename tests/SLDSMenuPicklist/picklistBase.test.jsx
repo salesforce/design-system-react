@@ -1,10 +1,12 @@
-const React = require('react/addons');
-const TestUtils = React.addons.TestUtils;
-const assign = require('lodash.assign')
+import React from 'react';
+import ReactDOM from 'react-dom';
+import assign from 'lodash.assign';
+import TestUtils from 'react-addons-test-utils';
+
+import {SLDSMenuPicklist} from '../../components';
 const { Simulate,
         scryRenderedDOMComponentsWithTag,
         findRenderedDOMComponentWithClass } = TestUtils
-import {SLDSMenuPicklist} from '../../components';
 
 describe('SLDSMenuPicklist: ',  function(){
   let body;
@@ -17,7 +19,7 @@ describe('SLDSMenuPicklist: ',  function(){
   const renderPicklist = inst => {
     body = document.createElement('div');
     document.body.appendChild(body)
-    return React.render(inst, body)
+    return ReactDOM.render(inst, body)
   }
 
   const defaultProps = { modal: false,

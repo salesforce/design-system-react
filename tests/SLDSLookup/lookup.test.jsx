@@ -1,8 +1,9 @@
-const React = require('react/addons');
-const assign = require('lodash.assign');
-const TestUtils = React.addons.TestUtils;
-const {Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag} = TestUtils;
+import React from 'react';
+import assign from 'lodash.assign';
+import TestUtils from 'react-addons-test-utils';
+
 import {SLDSLookup} from '../../components';
+const {Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag} = TestUtils;
 
 describe('SLDSLookup: ',  function(){
   let items = [

@@ -1,11 +1,13 @@
-const React = require('react/addons')
-const assign = require('lodash.assign')
-const TestUtils = React.addons.TestUtils
+import React from 'react';
+import ReactDOM from 'react-dom';
+import assign from 'lodash.assign';
+import TestUtils from 'react-addons-test-utils';
+
+import {SLDSModal} from '../../components'
 const { Simulate,
         renderIntoDocument,
         scryRenderedDOMComponentsWithClass,
         findRenderedDOMComponentWithClass } = TestUtils
-import {SLDSModal} from '../../components'
 
 describe('SLDSModal: ', function(){
   let body, opener;
@@ -21,7 +23,7 @@ describe('SLDSModal: ', function(){
     body = document.createElement('div');
     opener = <button>{inst}</button>
     document.body.appendChild(body)
-    return React.render(opener, body)
+    return ReactDOM.render(opener, body)
   }
 
   const createModal = props => React.createElement(SLDSModal, assign({}, defaultProps, props))

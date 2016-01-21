@@ -1,11 +1,13 @@
-const React = require('react/addons')
-const assign = require('lodash.assign')
-const TestUtils = React.addons.TestUtils
+import React from 'react';
+import ReactDOM from 'react-dom';
+import assign from 'lodash.assign';
+import TestUtils from 'react-addons-test-utils';
+
+import {SLDSIcon} from '../../components';
 const { Simulate,
         scryRenderedDOMComponentsWithClass,
         findRenderedDOMComponentWithTag,
         findRenderedDOMComponentWithClass } = TestUtils
-import {SLDSIcon} from '../../components';
 const handleClick = x => console.log(x, ' was clicked.');
 
 describe('SLDSIcon: ',  function(){
@@ -14,7 +16,7 @@ describe('SLDSIcon: ',  function(){
   const renderIcon = inst => {
     body = document.createElement('div');
     document.body.appendChild(body)
-    return React.render(inst, body)
+    return ReactDOM.render(inst, body)
   }
   const createIcon = props => React.createElement(SLDSIcon, assign({}, defaultProps, props));
   const getIcon = ps => renderIcon(createIcon(ps));

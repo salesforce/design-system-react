@@ -1,5 +1,6 @@
-const React = require('react/addons');
-const TestUtils = React.addons.TestUtils;
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
+
 import {SLDSButtonGroup} from '../../components';
 import {SLDSButton} from '../../components';
 

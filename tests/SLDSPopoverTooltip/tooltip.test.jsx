@@ -1,9 +1,12 @@
-const React = require('react/addons')
-const TestUtils = React.addons.TestUtils
+import React from 'react';
+import ReactDOM from 'react-dom';
+import assign from 'lodash.assign';
+import TestUtils from 'react-addons-test-utils';
+
+import {SLDSPopoverTooltip} from '../../components';
 const { Simulate,
         scryRenderedDOMComponentsWithClass,
         findRenderedDOMComponentWithClass } = TestUtils
-import {SLDSPopoverTooltip} from '../../components';
 
 describe('SLDSPopoverTooltip: ',  function(){
   let body;
@@ -20,7 +23,7 @@ describe('SLDSPopoverTooltip: ',  function(){
     body = document.createElement('div')
     body.appendChild(target)
     document.body.appendChild(body)
-    return React.render(inst, body)
+    return ReactDOM.render(inst, body)
   }
 
   const createTooltip = (props, kids) => React.createElement(SLDSPopoverTooltip, props, kids)

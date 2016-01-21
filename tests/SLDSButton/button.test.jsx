@@ -1,6 +1,8 @@
-const React = require('react/addons')
-const assign = require('lodash.assign')
-const TestUtils = React.addons.TestUtils
+import React from 'react';
+import ReactDOM from 'react-dom';
+import assign from 'lodash.assign';
+import TestUtils from 'react-addons-test-utils';
+
 const { Simulate,
         scryRenderedDOMComponentsWithClass,
         findRenderedDOMComponentWithTag,
@@ -19,7 +21,7 @@ describe('SLDSButton: ',  function(){
   const renderButton = inst => {
     body = document.createElement('div');
     document.body.appendChild(body)
-    return React.render(inst, body)
+    return ReactDOM.render(inst, body)
   }
   const createButton = props => React.createElement(SLDSButton, assign({}, defaultProps, props));
   const getButton = ps => renderButton(createButton(ps));
