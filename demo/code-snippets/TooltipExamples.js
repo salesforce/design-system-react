@@ -200,7 +200,7 @@ class TooltipExample extends React.Component {
                 </div>
               </SLDSPopoverTooltip>
           </div>
-        </div>        
+        </div>
 
         <div className="slds-col">
           <div style={{margin:'1rem'}}>
@@ -232,7 +232,7 @@ class TooltipExample extends React.Component {
                 </div>
               </SLDSPopoverTooltip>
           </div>
-        </div>        
+        </div>
 
         <div className="slds-col">
           <div style={{margin:'1rem'}}>
@@ -270,7 +270,7 @@ class TooltipExample extends React.Component {
                 </div>
               </SLDSPopoverTooltip>
           </div>
-        </div>        
+        </div>
 
         <div className="slds-col">
           <div style={{margin:'1rem'}}>
@@ -302,7 +302,7 @@ class TooltipExample extends React.Component {
                 </div>
               </SLDSPopoverTooltip>
           </div>
-        </div>        
+        </div>
 
         <div className="slds-col">
           <div style={{margin:'1rem'}}>

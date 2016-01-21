@@ -13,7 +13,7 @@ const options = [
 
 class DropdownExample extends React.Component {
 
-  displayName: "DropdownExample"
+  displayName: "DropdownExample";
 
   constructor(props) {
     super(props);
@@ -63,5 +63,5 @@ class DropdownExample extends React.Component {
 
 }
 
-React.render(<DropdownExample />, mountNode);
+ReactDOM.render(<DropdownExample />, mountNode);
 

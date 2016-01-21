@@ -9,7 +9,7 @@ const items = [
 
 class LookupExample extends React.Component {
 
-  displayName: "LookupExample"
+  displayName: "LookupExample";
 
   constructor(props) {
     super(props);
@@ -58,5 +58,5 @@ class LookupExample extends React.Component {
 
 }
 
-React.render(<LookupExample />, mountNode);
+ReactDOM.render(<LookupExample />, mountNode);
 

@@ -128,5 +128,5 @@ class ModalExample extends React.Component {
 
 }
 
-React.render(<ModalExample />, mountNode);
+ReactDOM.render(<ModalExample />, mountNode);
 

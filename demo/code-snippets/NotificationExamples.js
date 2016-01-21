@@ -1,6 +1,6 @@
 class NotificationExample extends React.Component {
 
-  displayName: "NotificationExample"
+  displayName: "NotificationExample";
 
   constructor(props) {
     super(props);
@@ -134,5 +134,5 @@ class NotificationExample extends React.Component {
   }
 }
 
-React.render(<NotificationExample />, mountNode);
+ReactDOM.render(<NotificationExample />, mountNode);
 
