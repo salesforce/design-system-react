@@ -45,7 +45,7 @@ const propTypes = {
    */
   texture: React.PropTypes.bool,
   /**
-   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes#color">Lighning Design System Themes > Color</a>.
+   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes/#color">Lighning Design System Themes > Color</a>.
    */
   theme: React.PropTypes.oneOf(["success", "warning", "error", "offline"]),
   variant: React.PropTypes.oneOf(["alert", "toast"]).isRequired,
