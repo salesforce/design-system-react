@@ -76,10 +76,10 @@ Here is an example for building a tooltip over an info icon:
 Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor) so that keyboard users can navigate to it.
 
 <div ref="tooltipDemoExample">
-  <SLDSPopoverTooltip>
-    'align="top"
-    'content={<span>Here is more information.</span>}
-    'targetElement={this.refs.tooltipDemoExample}>
+  <SLDSPopoverTooltip
+    align="top"
+    content={<span>Here is more information.</span>}
+    targetElement={this.refs.tooltipDemoExample}>
       <a href="javascript:void(0)">
         <SLDSIcon assistiveText="More Info" category="utility" name="info" className="slds-icon-text-default" />
       </a>

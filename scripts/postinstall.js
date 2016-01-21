@@ -1,9 +1,6 @@
-var webpack = require('webpack');
-var webpackConfig = require('../webpack.config.heroku');
-
 if (process.env.HEROKU) {
   console.log('Compiling webpack');
-  webpack(webpackConfig, function (err, stats) {
+  require('webpack')(require('../webpack.config.heroku'), function (err, stats) {
     if (err) throw err;
   });
 }
