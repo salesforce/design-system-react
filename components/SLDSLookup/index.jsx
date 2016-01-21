@@ -107,7 +107,7 @@ class SLDSLookup extends React.Component {
       items: [],
       isOpen: false,
       listLength: this.props.options.length,
-      searchTerm: this.props.searchTerm,
+      searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
       selectedIndex: null,
     };
   }
@@ -258,7 +258,7 @@ class SLDSLookup extends React.Component {
 
   handleChange(event) {
     const target = event.target || event.currentTarget;
-    this.setState({searchTerm: target.value});
+    this.setState({searchTerm: this.normalizeSearchTerm(target.value)});
     if(this.props.onChange){
       this.props.onChange(target.value);
     }
@@ -339,6 +339,10 @@ class SLDSLookup extends React.Component {
         setFocus={this.setFocus.bind(this)}
       />;
     }
+  }
+
+  normalizeSearchTerm(string) {
+    return (string || '').toString().replace(/^\s+/, '').replace(/\s+$/, '');
   }
 
   //=================================================
