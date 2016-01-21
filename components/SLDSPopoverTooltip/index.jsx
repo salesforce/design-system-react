@@ -58,15 +58,13 @@ class SLDSPopoverTooltip extends React.Component {
 
   componentDidMount() {
     this.setState({
-      isMounted: true,
-      el: ReactDOM.findDOMNode(this)
+      el: ReactDOM.findDOMNode(this),
+      isOpen: this.props.openByDefault
     });
   }
 
   componentWillUnmount() {
-    this.setState({
-      isMounted: false
-    });
+    this.isUnmounting = true;
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -74,13 +72,6 @@ class SLDSPopoverTooltip extends React.Component {
       this.setState({
         tooltipTarget: this.getTooltipTarget()
       })
-    }
-    if(!prevState.isMounted && this.state.isMounted){
-      setTimeout( ()=> {
-        this.setState({
-          isOpen: this.props.openByDefault
-        });
-      });
     }
   }
 
@@ -106,7 +97,7 @@ class SLDSPopoverTooltip extends React.Component {
     this.setState({ isClosing: true });
 
     setTimeout(()=>{
-      if(this.state.isMounted && this.state.isClosing){
+      if(!this.isUnmounting && this.state.isClosing){
         this.setState({
           isOpen: false,
           isClosing: false

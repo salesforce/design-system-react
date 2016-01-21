@@ -84,15 +84,13 @@ class SLDSModal extends React.Component {
     super(props);
     this.state = {
       isClosing: false,
-      isMounted: false,
       revealed: false,
     };
   }
 
   componentDidMount () {
     this.setState({
-      returnFocusTo: document.activeElement,
-      isMounted: true,
+      returnFocusTo: document.activeElement
     })
     if(!this.state.revealed){
       setTimeout(()=>{
@@ -109,7 +107,7 @@ class SLDSModal extends React.Component {
     if(this.state.isClosing !== prevState.isClosing){
       if(this.state.isClosing){
         //console.log("CLOSING: ");
-        if(this.state.isMounted){
+        if(!this.isUnmounting){
           const el = ReactDOM.findDOMNode(this).parentNode;
           if(el && el.getAttribute("data-slds-modal")){
             ReactDOM.unmountComponentAtNode(el);
@@ -121,8 +119,8 @@ class SLDSModal extends React.Component {
   }
 
   componentWillUnmount () {
+    this.isUnmounting = true;
     this.clearBodyScroll();
-    this.setState({ isMounted: false });
   }
 
   closeModal () {

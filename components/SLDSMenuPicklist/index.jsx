@@ -58,7 +58,6 @@ class SLDSMenuPicklist extends React.Component {
       highlightedIndex: 0,
       isOpen: false,
       isFocused: false,
-      isMounted: false,
       lastBlurredIndex: -1,
       lastBlurredTimeStamp: -1,
       selectedIndex: this.getIndexByValue(this.props.value),
@@ -69,10 +68,13 @@ class SLDSMenuPicklist extends React.Component {
   componentDidMount () {
     const id = ReactDOM.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
     this.setState({
-      isMounted: true,
       triggerId: id,
     });
     this.setFocus();
+  }
+
+  componentWillUnmount(){
+    this.isUnmounting = true;
   }
 
   componentDidUpdate( prevProps, prevState) {
@@ -89,7 +91,7 @@ class SLDSMenuPicklist extends React.Component {
     }
     else if(!this.state.isFocused && prevState.isFocused){
       if(this.refs.list){
-        if(this.state.isMounted && this.refs.list){
+        if(!this.isUnmounting && this.refs.list){
           if(ReactDOM.findDOMNode(this.refs.list).contains(document.activeElement)){
             return;
           }
@@ -105,10 +107,6 @@ class SLDSMenuPicklist extends React.Component {
         this.handleSelect(newSelectedIndex);
       }
     }
-  }
-
-  componentWillUnmount(){
-    this.setState({ isMounted: false });
   }
 
   getIndexByValue(value){
@@ -167,7 +165,7 @@ class SLDSMenuPicklist extends React.Component {
   }
 
   setFocus() {
-    if(this.state.isMounted){
+    if(!this.isUnmounting){
       ReactDOM.findDOMNode(this.refs.triggerbutton).focus();
     }
   }
