@@ -50,7 +50,6 @@ class SLDSPopoverTooltip extends React.Component {
 
   constructor(props) {
     super(props);
-    this.mounted = false;
     this.state = {
       isClosing: false,
       isOpen: this.props.openByDefault,
@@ -58,7 +57,6 @@ class SLDSPopoverTooltip extends React.Component {
   }
 
   componentDidMount() {
-    this.mounted = true;
     this.setState({
       el: ReactDOM.findDOMNode(this),
       isOpen: this.props.openByDefault
@@ -66,7 +64,7 @@ class SLDSPopoverTooltip extends React.Component {
   }
 
   componentWillUnmount() {
-    this.mounted = false;
+    this.isUnmounting = true;
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -99,7 +97,7 @@ class SLDSPopoverTooltip extends React.Component {
     this.setState({ isClosing: true });
 
     setTimeout(()=>{
-      if(this.mounted && this.state.isClosing){
+      if(!this.isUnmounting && this.state.isClosing){
         this.setState({
           isOpen: false,
           isClosing: false

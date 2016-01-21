@@ -45,7 +45,6 @@ class Trigger extends React.Component {
       isTooltipOpen: openByDefault,
       tooltipTarget: ReactDOM.findDOMNode(this),
     });
-    this.mounted = true;
   }
 
   addListeners() {
@@ -56,11 +55,11 @@ class Trigger extends React.Component {
   }
 
   componentWillUnmount() {
+    this.isUnmounting = true;
     ReactDOM.findDOMNode(this).removeEventListener('mouseenter', this.handleTooltipMouseEnter.bind(this));
     ReactDOM.findDOMNode(this).removeEventListener('focus', this.handleTooltipMouseEnter.bind(this));
     ReactDOM.findDOMNode(this).removeEventListener('mouseleave', this.handleTooltipMouseLeave.bind(this));
     ReactDOM.findDOMNode(this).removeEventListener('blur', this.handleTooltipMouseLeave.bind(this));
-    this.mounted = false;
   }
 
   handleTooltipMouseEnter() {
@@ -71,7 +70,7 @@ class Trigger extends React.Component {
   }
 
   handleTooltipMouseLeave() {
-    if(!this.mounted) return;
+    if(this.isUnmounting) return;
     this.setState({ isTooltipClosing: true });
     const delay = this.props.tooltip && this.props.tooltip.props && this.props.tooltip.props.hoverCloseDelay?this.props.tooltip.props.hoverCloseDelay:0;
     setTimeout(()=>{
