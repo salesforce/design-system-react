@@ -6,7 +6,7 @@ const moreOptions = [
 
 class TooltipExample extends React.Component {
 
-  displayName: "TooltipExample"
+  displayName: "TooltipExample";
 
   constructor(props) {
     super(props);
@@ -331,5 +331,5 @@ class TooltipExample extends React.Component {
 
 }
 
-React.render(<TooltipExample />, mountNode);
+ReactDOM.render(<TooltipExample />, mountNode);
 

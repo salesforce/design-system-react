@@ -80,7 +80,7 @@ class SLDSPopoverTooltip extends React.Component {
         this.setState({
           isOpen: this.props.openByDefault
         });
-      }.bind(this));
+      });
     }
   }
 

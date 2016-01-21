@@ -1,14 +1,10 @@
-'use strict';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Router from 'react-router';
-const { Route, DefaultRoute, RouteHandler, Link } = Router;
+import Router, { Route, DefaultRoute, RouteHandler, Link } from 'react-router';
 
 import { SLDSSettings } from '../components/';
 SLDSSettings.setAssetsPath('demo/assets/');
 SLDSSettings.setAppElement('#root');
-//console.log('SLDSSettings.getAssetsPath: '+SLDSSettings.getAssetsPath());
 
 import App from './App';
 import HomePage from './pages';
@@ -27,7 +23,6 @@ import DatePickerSingleSelectSection from './pages/DatePickerSingleSelectSection
 import NotificationSection from './pages/NotificationSection';
 import PicklistSection from './pages/PicklistSection';
 import TooltipSection from './pages/TooltipSection';
-
 
 const routes = (
   <Route handler={App} path="/">
@@ -52,8 +47,6 @@ const routes = (
   </Route>
 );
 
-
 Router.run(routes, function (Handler) {
   ReactDOM.render(<Handler/>, document.getElementById('root'));
 });
-

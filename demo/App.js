@@ -1,18 +1,8 @@
-import React, { Component } from 'react';
-import Router from 'react-router';
-const { Route, DefaultRoute, RouteHandler, Link } = Router;
+import React from 'react';
+import { RouteHandler } from 'react-router';
 
-require('./index.css')
+import '@salesforce-ux/design-system/assets/styles/salesforce-lightning-design-system-scoped.min.css';
+import './assets/styles/codemirror.css';
+import './assets/styles/custom.css';
 
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  render() {
-    return (
-        <RouteHandler />
-    );
-  }
-}
+export default props => <RouteHandler />;

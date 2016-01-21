@@ -17,8 +17,16 @@
 }
 
 .site-text-heading--label th {
-    text-transform: uppercase;
-    font-size: 1.1em;
+  text-transform: uppercase;
+  font-size: 1.1em;
+}
+
+.drop.drop-out-of-bounds-top {
+  display:none;
+}
+
+.drop-element-attached-bottom .SLDSPopover {
+  align-self: flex-end;
 }
 
 .CodeMirror-code pre {

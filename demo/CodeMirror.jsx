@@ -1,9 +1,9 @@
 const CM = require('codemirror');
 import 'codemirror/addon/runmode/runmode';
 import 'codemirror/mode/htmlmixed/htmlmixed';
+import 'codemirror/mode/javascript/javascript';
 import 'codemirror/theme/solarized.css';
 import 'demo/assets/styles/codemirror.css';
-import babel from 'babel-core/browser';
 
 const React = require('react');
 const ReactDOM = require('react-dom');
@@ -29,12 +29,29 @@ const propTypes = {
   path: React.PropTypes.string,
   value: React.PropTypes.string,
 };
+const defaultProps = {};
 
-const defaultProps = {
-  transformer: function(code) {
-    return babel.transform(code).code;
+function request (url, method, data, callback) {
+  const request = new window.XMLHttpRequest()
+  request.onreadystatechange = () => {
+    if (request.readyState === 4) {
+      const res = JSON.parse(request.responseText)
+      if (request.status === 200) {
+        if (res.response) {
+          return callback(null, res.response)
+        }
+        if (res.error) {
+          return callback(new Error(res.error))
+        }
+      } else {
+        return callback(new Error('REQUEST_ERROR'))
+      }
+    }
   }
-};
+  request.open(method, url)
+  request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8')
+  request.send(JSON.stringify(data))
+}
 
 class CodeMirrorEditor extends React.Component {
   constructor(props) {
@@ -82,85 +99,54 @@ class CodeMirror extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      code: this.props.codeText,
-      codeChanged: false,
-      showCode: true,
+      code: props.codeText,
+      showCode: true
     };
   }
 
-  componentWillMount() {
-    // For the initial render, we can hijack React.render to intercept the
-    // example element and render it normally. This is safe because it's code
-    // that we supply, so we can ensure ahead of time that it won't throw an
-    // exception while rendering.
-    const originalRender = ReactDOM.render;
-    React.render = (element) => this._initialExample = element;
-
-    // Stub out mountNode for the example code.
-    const mountNode = null;  // eslint-disable-line no-unused-vars
-
-    try {
-      const compiledCode = this.props.transformer(this.props.codeText);
-
-      /* eslint-disable */
-      eval(compiledCode);
-      /* eslint-enable */
-    } finally {
-      React.render = originalRender;
-    }
+  componentDidMount() {
+    this.executeCode();
   }
 
-  handleCodeChange(value) {
-    this.setState(
-      {code: value, codeChanged: true},
-      this.executeCode
-    );
+  handleCodeChange(code) {
+    clearTimeout(this._codeTimeout);
+    this._codeTimeout = setTimeout(() => {
+      this.setState({ code }, this.executeCode);
+    }, 300)
   }
 
   clearExample() {
-    if (!this.state.codeChanged) {
-      return null;
-    }
-
     const mountNode = ReactDOM.findDOMNode(this.refs.mount);
     try {
       ReactDOM.unmountComponentAtNode(mountNode);
     } catch (e) {
       console.error(e); // eslint-disable-line no-console
     }
-
     return mountNode;
   }
 
   executeCode() {
-    const mountNode = this.clearExample();
-
-    let compiledCode = null;
-    try {
-      compiledCode = this.props.transformer(this.state.code);
-
-      /* eslint-disable */
-      eval(compiledCode);
-      /* eslint-enable */
-    } catch (err) {
-      if (compiledCode !== null) {
-        console.log(err, compiledCode); // eslint-disable-line no-console
-      } else {
-        console.log(err); // eslint-disable-line no-console
-      }
-
-      this.updateTimeout(
-        () => {
+    request('/api/transform/js', 'POST', {
+      js: this.state.code
+    }, (err, result) => {
+      const mountNode = this.clearExample();
+      if (err) {
+        // TODO: Display error message
+        clearTimeout(this.errorTimeout);
+        this.errorTimeout = setTimeout(() => {
           ReactDOM.render(
             <div bsStyle="danger">
             {err.toString()}
             </div>,
             mountNode
           );
-        },
-        500
-      );
-    }
+        }, 500);
+        return;
+      }
+      /* eslint-disable */
+      eval(result);
+      /* eslint-enable */
+    })
   }
 
 
@@ -183,20 +169,9 @@ class CodeMirror extends React.Component {
   }
 
   renderExample() {
-    let example;
-    if (this.state.codeChanged) {
-      example = (
-        <div ref="mount" />
-      );
-    } else {
-      example = (
-        <div>{this._initialExample}</div>
-      );
-    }
-
     return (
       <div className={classNames('bs-example', this.props.exampleClassName)}>
-      {example}
+        <div ref="mount" />
       </div>
     );
   }
