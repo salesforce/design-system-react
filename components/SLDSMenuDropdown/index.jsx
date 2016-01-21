@@ -77,12 +77,12 @@ class SLDSMenuDropdown extends React.Component {
 
   constructor(props) {
     super(props);
+    this.mounted = false;
     this.state = {
       highlightedIndex: 0,
       isClosing: false,
       isFocused: false,
       isHover: false,
-      isMounted: false,
       isOpen: false,
       lastBlurredIndex: -1,
       lastBlurredTimeStamp: -1,
@@ -91,11 +91,11 @@ class SLDSMenuDropdown extends React.Component {
   }
 
   componentDidMount(){
-    this.setState({ isMounted: true });
+    this.mounted = true;
   }
 
   componentWillUnmount() {
-    this.setState({ isMounted: false });
+    this.mounted = false;
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -111,7 +111,7 @@ class SLDSMenuDropdown extends React.Component {
       this.setState({isOpen: false});
     } else if(!this.state.isFocused && prevState.isFocused){
       if (this.refs.list) {
-        if (this.state.isMounted && this.refs.list) {
+        if (this.mounted && this.refs.list) {
           if (ReactDOM.findDOMNode(this.refs.list).contains(document.activeElement)) {
             return;
           }
@@ -211,7 +211,7 @@ class SLDSMenuDropdown extends React.Component {
   }
 
   setFocus(){
-    if(this.state.isMounted) ReactDOM.findDOMNode(this.getButtonNode()).focus();
+    if(this.mounted) ReactDOM.findDOMNode(this.getButtonNode()).focus();
   }
 
   getButtonNode(){

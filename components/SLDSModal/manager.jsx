@@ -56,6 +56,7 @@ module.exports = React.createClass( {
   },
 
   componentDidMount () {
+    this.mounted = true;
     if(!this.state.revealed){
       setTimeout(()=>{
         this.setState({revealed:true});
@@ -63,6 +64,10 @@ module.exports = React.createClass( {
     }
     this.updateBodyScroll();
   },
+
+  componentWillUnmount () {
+    this.mounted = false;
+  }
 
   openModal () {
     this.setState({isOpen: true});
@@ -132,7 +137,7 @@ module.exports = React.createClass( {
       this.updateBodyScroll();
 
       if(!this.state.isOpen){
-        if(this.isMounted()){
+        if(this.mounted){
           const el = this.getDOMNode().parentNode;
           if(el && el.getAttribute('data-slds-modal')){
             ReactDOM.unmountComponentAtNode(el);
