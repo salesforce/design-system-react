@@ -206,7 +206,7 @@ class SLDSMenuDropdown extends React.Component {
   }
 
   setFocus(){
-    if(this.mounted) ReactDOM.findDOMNode(this.getButtonNode()).focus();
+    if(!this.isUnmounting) ReactDOM.findDOMNode(this.getButtonNode()).focus();
   }
 
   getButtonNode(){
