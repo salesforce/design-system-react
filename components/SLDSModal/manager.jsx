@@ -67,7 +67,7 @@ module.exports = React.createClass( {
 
   componentWillUnmount () {
     this.mounted = false;
-  }
+  },
 
   openModal () {
     this.setState({isOpen: true});
