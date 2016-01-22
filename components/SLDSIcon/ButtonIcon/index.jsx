@@ -16,14 +16,15 @@ const classNames = require("classnames");
 const displayName = "ButtonIcon";
 const propTypes = {
   assistiveText: React.PropTypes.string,
-  category: React.PropTypes.string,
+  category: React.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]).isRequired,
   hint: React.PropTypes.bool,
   name: React.PropTypes.string,
   position: React.PropTypes.oneOf(["left", "right"]),
-  size: React.PropTypes.string,
+  size: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
 };
 const defaultProps = {
   category: 'utility',
+  iconSize: 'medium',
 };
 
 class ButtonIcon extends React.Component {
@@ -36,7 +37,7 @@ class ButtonIcon extends React.Component {
   getClassName() {
     return classNames(this.props.className, "slds-button__icon", {
       [`slds-button__icon--${this.props.position}`]: this.props.position,
-      [`slds-button__icon--${this.props.size}`]: this.props.size,
+      [`slds-button__icon--${this.props.size}`]: this.props.size !== "medium",
       [`slds-button__icon--hint`]: this.props.hint,
     });
   }

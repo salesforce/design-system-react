@@ -8,7 +8,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop."
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
             },
             "disabled": {
                 "type": {
@@ -22,7 +22,7 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#hint\">Lightning Design System Buttons > Hint</a>."
+                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#hint\">Lightning Design System Buttons > Hint</a>."
             },
             "iconName": {
                 "type": {
@@ -61,13 +61,21 @@
                             "computed": false
                         },
                         {
+                            "value": "\"medium\"",
+                            "computed": false
+                        },
+                        {
                             "value": "\"large\"",
                             "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "If omitted, icon size is medium."
+                "description": "",
+                "defaultValue": {
+                    "value": "\"medium\"",
+                    "computed": false
+                }
             },
             "iconVariant": {
                 "type": {
@@ -100,7 +108,7 @@
                     ]
                 },
                 "required": false,
-                "description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">Lightning Design System Icons</a>."
+                "description": "For icon variants, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#icon\">Lightning Design System Icons</a>."
             },
             "label": {
                 "type": {
@@ -189,7 +197,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the label prop."
             },
             "disabled": {
                 "type": {
@@ -218,13 +226,21 @@
                             "computed": false
                         },
                         {
+                            "value": "\"medium\"",
+                            "computed": false
+                        },
+                        {
                             "value": "\"large\"",
                             "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "If omitted, icon size is medium."
+                "description": "",
+                "defaultValue": {
+                    "value": "\"medium\"",
+                    "computed": false
+                }
             },
             "onClick": {
                 "type": {
@@ -383,7 +399,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "css classes that are applied to the svg"
+                "description": "CSS classes that are applied to the SVG"
             },
             "name": {
                 "type": {
@@ -405,13 +421,21 @@
                             "computed": false
                         },
                         {
+                            "value": "\"medium\"",
+                            "computed": false
+                        },
+                        {
                             "value": "\"large\"",
                             "computed": false
                         }
                     ]
                 },
                 "required": false,
-                "description": "If omitted, icon size is medium."
+                "description": "",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
             }
         }
     },
@@ -442,14 +466,14 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom component for Lookup footer. The default footer allows user to add new item - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>."
+                "description": "Custom component for Lookup footer. The default footer allows user to add new item - see <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>."
             },
             "headerRenderer": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
-                "description": "Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>."
+                "description": "Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>."
             },
             "iconCategory": {
                 "type": {
@@ -1054,7 +1078,7 @@
                     ]
                 },
                 "required": false,
-                "description": "Styling for Notification background color. Please reference <a href=\"http://www.lightningdesignsystem.com/components/utilities/themes#color\">Lighning Design System Themes > Color</a>."
+                "description": "Styling for Notification background color. Please reference <a href=\"http://www.lightningdesignsystem.com/components/utilities/themes/#color\">Lighning Design System Themes > Color</a>."
             },
             "variant": {
                 "type": {

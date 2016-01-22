@@ -27,10 +27,7 @@ const propTypes = {
    * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
-  /**
-   * If omitted, icon size is medium.
-   */
-  iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
+  iconSize: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
   onClick: React.PropTypes.func,
   /**
    * If true, button scales to 100% width on small form factors
@@ -52,7 +49,9 @@ const propTypes = {
    */
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
-const defaultProps = {};
+const defaultProps = {
+  iconSize: "medium",
+};
 
 /**
  * The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.

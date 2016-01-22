@@ -30,13 +30,11 @@ const propTypes = {
    * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
    */
   name: React.PropTypes.string.isRequired,
-  /**
-   * If omitted, icon size is medium.
-   */
-  size: React.PropTypes.oneOf(["x-small", "small", "large"]),
+  size: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
 };
 const defaultProps = {
   category: 'standard',
+  size: 'medium',
 };
 
 /**
@@ -66,7 +64,7 @@ class SLDSIcon extends React.Component {
     const customName = this.props.name ? this.props.name.replace("custom", "custom-"): null;
 
     return classNames(this.props.className, "slds-icon", {
-      [`slds-icon--${this.props.size}`]: this.props.size,
+      [`slds-icon--${this.props.size}`]: this.props.size !== "medium",
       [`slds-icon-${customName}`]: this.props.category === "custom",
       [`slds-icon-${this.props.category}-${name}`]: this.props.category === "standard",
     });
