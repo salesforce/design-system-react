@@ -12,11 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import Router from 'react-router';
 const { Route, DefaultRoute, RouteHandler, Link } = Router;
-
 import SLDSGrid from '../../components/SLDSGrid';
-import SLDSIcon from "../../components/SLDSIcon";
-
-const SLDSColumn = SLDSGrid.Column;
 
 
 module.exports = React.createClass( {
@@ -31,56 +27,43 @@ module.exports = React.createClass( {
   render() {
     return (
       <SLDSGrid flavor='vertical' className='stage slds-nowrap'>
+        <header className='slds-page-header'>
+          <Link to="welcome">
+            <div className='slds-media'>
+              <span className='slds-media__figure site-logo'>Salesforce</span>
+              <div className='slds-media__body'>
+                <h1 className='slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle' title='Record Title'>Design System React</h1>
+              </div>
+            </div>
+          </Link>
+        </header>
 
-        <div className='region region--top slds-shrink-none'>
-          <div className='slds-page-header'>
-            <SLDSGrid>
-              <SLDSColumn className='slds-has-flexi-truncate'>
-                <div className='slds-media'>
-                  <div className='slds-media__figure'>
-                    <SLDSIcon assistiveText="lead" name='lead' category='standard' size='large' />
-                  </div>
-                  <div className='slds-media__body'>
-                    <p className='slds-text-heading--label'>Lightning Design System</p>
-                    <div className='slds-grid'>
-                      <h1 className='slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle' title='Record Title'>React Components</h1>
-                    </div>
-                  </div>
-                </div>
-              </SLDSColumn>
-            </SLDSGrid>
+        <main className='stage-main slds-grid slds-wrap slds-grow'>
+          <aside className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-around--large'>
+            <p className="slds-text-heading--small slds-p-vertical--small">
+              <Link to="getting-started">Getting Started</Link>
+            </p>
+            <p className="slds-text-heading--small slds-p-vertical--small">Components</p>
+            <ul className="slds-p-bottom--small">
+              <li><Link to="button">SLDSButton</Link></li>
+              <li><Link to="button-stateful">SLDSButtonStateful</Link></li>
+              <li><Link to="button-group">SLDSButtonGroup</Link></li>
+              <li><Link to="icon">SLDSIcon</Link></li>
+              <li><Link to="lookup">SLDSLookup</Link></li>
+              <li><Link to="dropdown">SLDSMenuDropdown</Link></li>
+              <li><Link to="picklist">SLDSMenuPicklist</Link></li>
+              <li><Link to="modal">SLDSModal</Link></li>
+              <li><Link to="notification">SLDSNotification</Link></li>
+              <li><Link to="tooltip">SLDSPopoverTooltip</Link></li>
+            </ul>
+            <p className="slds-text-heading--small slds-p-vertical--small">
+              <Link to="faq">FAQ</Link>
+            </p>
+          </aside>
+
+          <div className="region region--main slds-grow slds-size--5-of-6 slds-medium-size--5-of-6 slds-large-size--10-of-12 slds-col-rule--right slds-p-around--large">
+            <RouteHandler/>
           </div>
-        </div>
-
-        <main className='stage-main slds-grid slds-wrap slds-grow' role='main'>
-          <div className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-around--large'>
-
-            <section className="slds-p-bottom--large">
-              <p className="slds-text-heading--small slds-p-vertical--small">
-                <Link to="getting-started">Getting Started</Link>
-              </p>
-              <p className="slds-text-heading--small slds-p-vertical--small">Components</p>
-              <ul className="slds-p-bottom--small">
-                <li><Link to="button">SLDSButton</Link></li>
-                <li><Link to="button-stateful">SLDSButtonStateful</Link></li>
-                <li><Link to="button-group">SLDSButtonGroup</Link></li>
-                <li><Link to="icon">SLDSIcon</Link></li>
-                <li><Link to="lookup">SLDSLookup</Link></li>
-                <li><Link to="dropdown">SLDSMenuDropdown</Link></li>
-                <li><Link to="picklist">SLDSMenuPicklist</Link></li>
-                <li><Link to="modal">SLDSModal</Link></li>
-                <li><Link to="notification">SLDSNotification</Link></li>
-                <li><Link to="tooltip">SLDSPopoverTooltip</Link></li>
-              </ul>
-              <p className="slds-text-heading--small slds-p-vertical--small">
-                <Link to="faq">FAQ</Link>
-              </p>
-            </section>
-        </div>
-
-        <div className="region region--main slds-grow slds-size--5-of-6 slds-medium-size--5-of-6 slds-large-size--10-of-12 slds-col-rule--right slds-p-around--large">
-          <RouteHandler/>
-        </div>
       </main>
 
     </SLDSGrid>

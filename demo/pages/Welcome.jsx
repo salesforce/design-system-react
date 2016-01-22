@@ -8,51 +8,49 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import CodeMirror from 'demo/CodeMirror';
-import Samples from 'demo/Samples';
-import PropTable from 'demo/PropTable';
-import DOCS from 'docs';
+import Router from 'react-router';
+const { Link } = Router;
 
-const displayName = "ModalSection";
+
+const displayName = "TooltipSection";
 const propTypes = {};
 const defaultProps = {};
 
-class ModalSection extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  getDescription() {
-    const desc = DOCS["SLDSModal"].description;
-    return {__html: desc };
-  }
-
+class Welcome extends React.Component {
   render(){
-    const docs = DOCS["SLDSModal"] ? true : false;
     return (
-      <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>
-          SLDSModal
-        </h3>
-        <div className="copy-text">
-          {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
-        </div>
+      <section className="copy-text" style={{"maxWidth": "800px"}}>
+        <h1 className='site-text--xl'>
+          Design System React
+        </h1>
+        <p className="slds-text-heading--medium">
+        Create the world’s best enterprise app experiences.
+        </p>
 
-        <div className="demo-only">
-          <CodeMirror codeText={Samples.Modals} />
-          <PropTable component="SLDSModal" />
-        </div>
-      </div>
+        <p className="slds-p-vertical--small" style={{"backgroundColor":"yellow"}}>
+        Current release: TODO -- add link to release notes
+        </p>
+
+        <p className="slds-p-vertical--small" style={{"backgroundColor":"yellow"}}>
+        Github Stars: TODO -- add github stars button
+        </p>
+
+        <p className="slds-p-vertical--small">
+        Design System React is the ReactJS implementation of <a href="http://www.lightningdesignsystem.com/">Ligtning Design System</a>, a collection of design patterns, components, and guidelines for creating unified UI in the Salesforce ecosystem.
+        </p>
+
+        <p className="slds-p-vertical--small">
+        Check out the <Link to="getting-started">Getting Started</Link> page to learn how to import Design System React into your project.
+        </p>
+      </section>
     );
   }
 
 }
 
-ModalSection.displayName = displayName;
-ModalSection.propTypes = propTypes;
-ModalSection.defaultProps = defaultProps;
+Welcome.displayName = displayName;
+Welcome.propTypes = propTypes;
+Welcome.defaultProps = defaultProps;
 
-module.exports = ModalSection;
+module.exports = Welcome;
 

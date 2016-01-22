@@ -9,6 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
+import GlobalVariables from 'demo/docs/globalVariables';
 
 const displayName = "GettingStartedSection";
 const propTypes = {};
@@ -24,13 +25,13 @@ class GettingStartedSection extends React.Component {
 
   render(){
     return (
-      <div className='slds-p-around--medium'>
+      <div className='slds-p-around--medium copy-text'>
         <h3 className='slds-text-heading--medium slds-truncate'>
           Getting Started
         </h3>
 
         <p className="slds-m-vertical--small">
-          Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.1.
+          Note: Design System React is optimized for {GlobalVariables.reactVersion} and uses {GlobalVariables.sldsVersion}.
         </p>
 
         <div className='slds-p-vertical--medium' style={{"maxWidth":"800px"}}>
@@ -101,7 +102,7 @@ class GettingStartedSection extends React.Component {
             <p className="slds-p-vertical--small slds-m-top--large ">
               Here's the result when you hover over the info icon:
             </p>
-            <img src="demo/assets/images/tooltipHover.png" alt="Tooltip opened on hover" />
+            <img src="assets/tooltipHover.png" alt="Tooltip opened on hover" />
 
             <p className="slds-p-vertical--small slds-m-top--large ">
               Have fun! If you have any questions (and we hope you do!), please check out our <a href="/#/home/faq">FAQ</a>. If you don't find an answer there, then please let us know via our <a href="https://github.com/salesforce-ux/design-system-react/issues">Github Issues</a>.

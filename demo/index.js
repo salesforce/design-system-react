@@ -8,6 +8,7 @@ SLDSSettings.setAppElement('#root');
 
 import App from './App';
 import HomePage from './pages';
+import Welcome from './pages/Welcome';
 import GettingStarted from './pages/GettingStarted';
 import FAQ from './pages/FAQ';
 
@@ -28,8 +29,8 @@ const routes = (
   <Route handler={App} path="/">
     <DefaultRoute handler={HomePage} />
     <Route name="home" handler={HomePage}>
+      <Route name="welcome" path="welcome" handler={Welcome} />
       <Route name="getting-started" path="getting-started" handler={GettingStarted} />
-
       <Route name="button" path="button" handler={ButtonSection}/>
       <Route name="button-stateful" path="button-stateful" handler={ButtonStatefulSection}/>
       <Route name="button-group" path="button-group" handler={ButtonGroupSection}/>
@@ -41,7 +42,6 @@ const routes = (
       <Route name="picklist" path="picklist" handler={PicklistSection}/>
       <Route name="tooltip" path="tooltip" handler={TooltipSection}/>
       <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
-
       <Route name="faq" path="faq" handler={FAQ} />
     </Route>
   </Route>
