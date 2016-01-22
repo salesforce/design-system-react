@@ -23,7 +23,7 @@ const propTypes = {
   assistiveText: React.PropTypes.string,
   category: React.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]).isRequired,
   /**
-   * css classes that are applied to the svg
+   * CSS classes that are applied to the SVG
    */
   className: React.PropTypes.string,
   /**
