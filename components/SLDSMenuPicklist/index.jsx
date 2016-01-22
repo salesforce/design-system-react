@@ -236,7 +236,7 @@ class SLDSMenuPicklist extends React.Component {
     return (
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover
-          className="slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu"
+          className="slds-dropdown slds-dropdown--left "
           closeOnTabKey={true}
           onClose={this.handleCancel.bind(this)}
           flippable={false}

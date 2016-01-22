@@ -170,7 +170,6 @@ class SLDSListItem extends React.Component {
           <a id={'menu-0-'+this.props.index}
             href='javascript:void(0)'
             ref='link'
-            className='slds-truncate'
             onClick={this.handleClick.bind(this)}
             onMouseDown={this.handleMouseDown.bind(this)}
             onKeyDown={this.handleKeyDown.bind(this)}
