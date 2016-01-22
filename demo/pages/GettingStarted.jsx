@@ -101,7 +101,7 @@ class GettingStartedSection extends React.Component {
             <p className="slds-p-vertical--small slds-m-top--large ">
               Here's the result when you hover over the info icon:
             </p>
-            <img src="demo/assets/images/tooltipHover.png" alt="Tooltip opened on hover" />
+            <img src="assets/tooltipHover.png" alt="Tooltip opened on hover" />
 
             <p className="slds-p-vertical--small slds-m-top--large ">
               Have fun! If you have any questions (and we hope you do!), please check out our <a href="/#/home/faq">FAQ</a>. If you don't find an answer there, then please let us know via our <a href="https://github.com/salesforce-ux/design-system-react/issues">Github Issues</a>.

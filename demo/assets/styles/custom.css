@@ -44,3 +44,12 @@ html {
   color: #5876A3;
 }
 
+.site-logo {
+  display: inline-block;
+  background-position: center center;
+  background-size: 100%;
+  width: 3.9375rem;
+  height: 2.75rem;
+  text-indent: -9999em;
+  background: url(logo.svg) no-repeat;
+}
