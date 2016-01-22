@@ -32,3 +32,15 @@
 .CodeMirror-code pre {
   overflow: inherit;
 }
+
+code {
+  color: black;
+  background-color: #f6f6f6;
+  border-radius: 4px;
+}
+
+html {
+  line-height: 1.71429;
+  color: #5876A3;
+}
+

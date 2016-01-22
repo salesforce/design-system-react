@@ -23130,12 +23130,12 @@
 	var propTypes = {
 	  /**
 	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-	   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop.
+	   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	   */
 	  assistiveText: _react2.default.PropTypes.string,
 	  disabled: _react2.default.PropTypes.bool,
 	  /**
-	   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">Lightning Design System Buttons > Hint</a>.
+	   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
 	   */
 	  hint: _react2.default.PropTypes.bool,
 	  /**
@@ -23146,12 +23146,9 @@
 	   * If omitted, icon position is centered.
 	   */
 	  iconPosition: _react2.default.PropTypes.oneOf(["left", "right"]),
+	  iconSize: _react2.default.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
 	  /**
-	   * If omitted, icon size is medium.
-	   */
-	  iconSize: _react2.default.PropTypes.oneOf(["x-small", "small", "large"]),
-	  /**
-	   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Lightning Design System Icons</a>.
+	   * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
 	   */
 	  iconVariant: _react2.default.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
 	  /**
@@ -23174,6 +23171,7 @@
 	  variant: _react2.default.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
 	var defaultProps = {
+	  iconSize: "medium",
 	  variant: "base"
 	};
 
@@ -23327,14 +23325,15 @@
 	var displayName = "ButtonIcon";
 	var propTypes = {
 	  assistiveText: _react2.default.PropTypes.string,
-	  category: _react2.default.PropTypes.string,
+	  category: _react2.default.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]).isRequired,
 	  hint: _react2.default.PropTypes.bool,
 	  name: _react2.default.PropTypes.string,
 	  position: _react2.default.PropTypes.oneOf(["left", "right"]),
-	  size: _react2.default.PropTypes.string
+	  size: _react2.default.PropTypes.oneOf(["x-small", "small", "medium", "large"])
 	};
 	var defaultProps = {
-	  category: 'utility'
+	  category: 'utility',
+	  iconSize: 'medium'
 	};
 
 	var ButtonIcon = function (_React$Component) {
@@ -23354,7 +23353,7 @@
 	    value: function getClassName() {
 	      var _classNames;
 
-	      return classNames(this.props.className, "slds-button__icon", (_classNames = {}, _defineProperty(_classNames, 'slds-button__icon--' + this.props.position, this.props.position), _defineProperty(_classNames, 'slds-button__icon--' + this.props.size, this.props.size), _defineProperty(_classNames, 'slds-button__icon--hint', this.props.hint), _classNames));
+	      return classNames(this.props.className, "slds-button__icon", (_classNames = {}, _defineProperty(_classNames, 'slds-button__icon--' + this.props.position, this.props.position), _defineProperty(_classNames, 'slds-button__icon--' + this.props.size, this.props.size !== "medium"), _defineProperty(_classNames, 'slds-button__icon--hint', this.props.hint), _classNames));
 	    }
 	  }, {
 	    key: 'render',
@@ -24348,8 +24347,7 @@
 	      var openByDefault = this.props && this.props.tooltip && this.props.tooltip.props && this.props.tooltip.props.openByDefault ? this.props.tooltip.props.openByDefault : false;
 	      this.setState({
 	        isTooltipOpen: openByDefault,
-	        tooltipTarget: _reactDom2.default.findDOMNode(this),
-	        isMounted: true
+	        tooltipTarget: _reactDom2.default.findDOMNode(this)
 	      });
 	    }
 	  }, {
@@ -24368,9 +24366,6 @@
 	      _reactDom2.default.findDOMNode(this).removeEventListener('focus', this.handleTooltipMouseEnter.bind(this));
 	      _reactDom2.default.findDOMNode(this).removeEventListener('mouseleave', this.handleTooltipMouseLeave.bind(this));
 	      _reactDom2.default.findDOMNode(this).removeEventListener('blur', this.handleTooltipMouseLeave.bind(this));
-	      this.setState({
-	        isMounted: false
-	      });
 	    }
 	  }, {
 	    key: "handleTooltipMouseEnter",
@@ -24389,7 +24384,7 @@
 	      this.setState({ isTooltipClosing: true });
 	      var delay = this.props.tooltip && this.props.tooltip.props && this.props.tooltip.props.hoverCloseDelay ? this.props.tooltip.props.hoverCloseDelay : 0;
 	      setTimeout(function () {
-	        if (_this2.state.isMounted && _this2.state.isTooltipClosing) {
+	        if (_this2.state.isTooltipClosing) {
 	          _this2.setState({
 	            isTooltipOpen: false,
 	            isTooltipClosing: false
@@ -26052,7 +26047,7 @@
 	var propTypes = {
 	  /**
 	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-	   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop.
+	   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	   */
 	  assistiveText: _react2.default.PropTypes.string,
 	  disabled: _react2.default.PropTypes.bool,
@@ -26060,10 +26055,7 @@
 	   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 	   */
 	  iconName: _react2.default.PropTypes.string,
-	  /**
-	   * If omitted, icon size is medium.
-	   */
-	  iconSize: _react2.default.PropTypes.oneOf(["x-small", "small", "large"]),
+	  iconSize: _react2.default.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
 	  onClick: _react2.default.PropTypes.func,
 	  /**
 	   * If true, button scales to 100% width on small form factors
@@ -26085,7 +26077,9 @@
 	   */
 	  variant: _react2.default.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
-	var defaultProps = {};
+	var defaultProps = {
+	  iconSize: "medium"
+	};
 
 	/**
 	 * The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
@@ -26332,20 +26326,18 @@
 	  assistiveText: _react2.default.PropTypes.string,
 	  category: _react2.default.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]).isRequired,
 	  /**
-	   * css classes that are applied to the svg
+	   * CSS classes that are applied to the SVG
 	   */
 	  className: _react2.default.PropTypes.string,
 	  /**
 	   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 	   */
 	  name: _react2.default.PropTypes.string.isRequired,
-	  /**
-	   * If omitted, icon size is medium.
-	   */
-	  size: _react2.default.PropTypes.oneOf(["x-small", "small", "large"])
+	  size: _react2.default.PropTypes.oneOf(["x-small", "small", "medium", "large"])
 	};
 	var defaultProps = {
-	  category: 'standard'
+	  category: 'standard',
+	  size: 'medium'
 	};
 
 	/**
@@ -26384,7 +26376,7 @@
 	      var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
 	      var customName = this.props.name ? this.props.name.replace("custom", "custom-") : null;
 
-	      return classNames(this.props.className, "slds-icon", (_classNames2 = {}, _defineProperty(_classNames2, 'slds-icon--' + this.props.size, this.props.size), _defineProperty(_classNames2, 'slds-icon-' + customName, this.props.category === "custom"), _defineProperty(_classNames2, 'slds-icon-' + this.props.category + '-' + name, this.props.category === "standard"), _classNames2));
+	      return classNames(this.props.className, "slds-icon", (_classNames2 = {}, _defineProperty(_classNames2, 'slds-icon--' + this.props.size, this.props.size !== "medium"), _defineProperty(_classNames2, 'slds-icon-' + customName, this.props.category === "custom"), _defineProperty(_classNames2, 'slds-icon-' + this.props.category + '-' + name, this.props.category === "standard"), _classNames2));
 	    }
 	  }, {
 	    key: 'render',
@@ -26503,11 +26495,11 @@
 	   */
 	  filterWith: _react2.default.PropTypes.func.isRequired,
 	  /**
-	   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
+	   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
 	   */
 	  footerRenderer: _react2.default.PropTypes.func,
 	  /**
-	   * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>.
+	   * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>.
 	   */
 	  headerRenderer: _react2.default.PropTypes.func,
 	  /**
@@ -26579,7 +26571,7 @@
 	      items: [],
 	      isOpen: false,
 	      listLength: _this.props.options.length,
-	      searchTerm: _this.props.searchTerm,
+	      searchTerm: _this.normalizeSearchTerm(_this.props.searchTerm),
 	      selectedIndex: null
 	    };
 	    return _this;
@@ -26756,7 +26748,7 @@
 	    key: "handleChange",
 	    value: function handleChange(event) {
 	      var target = event.target || event.currentTarget;
-	      this.setState({ searchTerm: target.value });
+	      this.setState({ searchTerm: this.normalizeSearchTerm(target.value) });
 	      if (this.props.onChange) {
 	        this.props.onChange(target.value);
 	      }
@@ -26841,6 +26833,11 @@
 	          setFocus: this.setFocus.bind(this)
 	        }));
 	      }
+	    }
+	  }, {
+	    key: "normalizeSearchTerm",
+	    value: function normalizeSearchTerm(string) {
+	      return (string || '').toString().replace(/^\s+/, '').replace(/\s+$/, '');
 	    }
 
 	    //=================================================
@@ -30718,7 +30715,6 @@
 	      isClosing: false,
 	      isFocused: false,
 	      isHover: false,
-	      isMounted: false,
 	      isOpen: false,
 	      lastBlurredIndex: -1,
 	      lastBlurredTimeStamp: -1,
@@ -30728,14 +30724,9 @@
 	  }
 
 	  _createClass(SLDSMenuDropdown, [{
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      this.setState({ isMounted: true });
-	    }
-	  }, {
 	    key: "componentWillUnmount",
 	    value: function componentWillUnmount() {
-	      this.setState({ isMounted: false });
+	      this.isUnmounting = true;
 	    }
 	  }, {
 	    key: "componentDidUpdate",
@@ -30754,7 +30745,7 @@
 	        this.setState({ isOpen: false });
 	      } else if (!this.state.isFocused && prevState.isFocused) {
 	        if (this.refs.list) {
-	          if (this.state.isMounted && this.refs.list) {
+	          if (!this.isUnmounting && this.refs.list) {
 	            if (_reactDom2.default.findDOMNode(this.refs.list).contains(document.activeElement)) {
 	              return;
 	            }
@@ -30866,7 +30857,7 @@
 	  }, {
 	    key: "setFocus",
 	    value: function setFocus() {
-	      if (this.state.isMounted) _reactDom2.default.findDOMNode(this.getButtonNode()).focus();
+	      if (!this.isUnmounting) _reactDom2.default.findDOMNode(this.getButtonNode()).focus();
 	    }
 	  }, {
 	    key: "getButtonNode",
@@ -31665,7 +31656,6 @@
 	      highlightedIndex: 0,
 	      isOpen: false,
 	      isFocused: false,
-	      isMounted: false,
 	      lastBlurredIndex: -1,
 	      lastBlurredTimeStamp: -1,
 	      selectedIndex: _this.getIndexByValue(_this.props.value),
@@ -31679,10 +31669,14 @@
 	    value: function componentDidMount() {
 	      var id = _reactDom2.default.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
 	      this.setState({
-	        isMounted: true,
 	        triggerId: id
 	      });
 	      this.setFocus();
+	    }
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {
+	      this.isUnmounting = true;
 	    }
 	  }, {
 	    key: "componentDidUpdate",
@@ -31698,7 +31692,7 @@
 	        this.setState({ isOpen: false });
 	      } else if (!this.state.isFocused && prevState.isFocused) {
 	        if (this.refs.list) {
-	          if (this.state.isMounted && this.refs.list) {
+	          if (!this.isUnmounting && this.refs.list) {
 	            if (_reactDom2.default.findDOMNode(this.refs.list).contains(document.activeElement)) {
 	              return;
 	            }
@@ -31713,11 +31707,6 @@
 	          this.handleSelect(newSelectedIndex);
 	        }
 	      }
-	    }
-	  }, {
-	    key: "componentWillUnmount",
-	    value: function componentWillUnmount() {
-	      this.setState({ isMounted: false });
 	    }
 	  }, {
 	    key: "getIndexByValue",
@@ -31784,7 +31773,7 @@
 	  }, {
 	    key: "setFocus",
 	    value: function setFocus() {
-	      if (this.state.isMounted) {
+	      if (!this.isUnmounting) {
 	        _reactDom2.default.findDOMNode(this.refs.triggerbutton).focus();
 	      }
 	    }
@@ -31858,7 +31847,7 @@
 	      return !this.props.disabled && this.state.isOpen ? _react2.default.createElement(
 	        _SLDSPopover2.default,
 	        {
-	          className: "slds-dropdown slds-dropdown--left slds-dropdown--small slds-dropdown--menu",
+	          className: "slds-dropdown slds-dropdown--left ",
 	          closeOnTabKey: true,
 	          onClose: this.handleCancel.bind(this),
 	          flippable: false,
@@ -32936,11 +32925,12 @@
 	        'div',
 	        {
 	          ref: 'scroll',
-	          className: 'slds-wrap slds-grow slds-scrollable--y ' + this.props.className,
+	          className: 'slds-scrollable--y ' + this.props.className,
 	          onMouseEnter: this.props.onMouseEnter,
 	          onMouseLeave: this.props.onMouseLeave,
 	          style: {
-	            maxHeight: 260
+	            maxHeight: 260,
+	            width: '15rem'
 	          },
 	          onMouseDown: this.handleMouseDown.bind(this)
 	        },
@@ -32948,7 +32938,7 @@
 	          'ul',
 	          {
 	            ref: 'scroll',
-	            className: "slds-dropdown__list",
+	            className: "slds-dropdown__list slds-dropdown--length-5",
 	            role: 'menu',
 	            'aria-labelledby': this.props.triggerId
 	          },
@@ -33181,7 +33171,6 @@
 	          { id: 'menu-0-' + this.props.index,
 	            href: 'javascript:void(0)',
 	            ref: 'link',
-	            className: 'slds-truncate',
 	            onClick: this.handleClick.bind(this),
 	            onMouseDown: this.handleMouseDown.bind(this),
 	            onKeyDown: this.handleKeyDown.bind(this),
@@ -33273,7 +33262,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'p',
-	        null,
+	        { className: 'slds-truncate' },
 	        this.props.checkmark ? _react2.default.createElement(_SLDSIcon2.default, { name: 'check', position: 'left', category: 'utility', size: 'x-small', className: 'slds-icon--selected slds-icon-text-default slds-m-right--x-small' }) : null,
 	        this.props.label
 	      );
@@ -33408,7 +33397,6 @@
 
 	    _this.state = {
 	      isClosing: false,
-	      isMounted: false,
 	      revealed: false
 	    };
 	    return _this;
@@ -33420,8 +33408,7 @@
 	      var _this2 = this;
 
 	      this.setState({
-	        returnFocusTo: document.activeElement,
-	        isMounted: true
+	        returnFocusTo: document.activeElement
 	      });
 	      if (!this.state.revealed) {
 	        setTimeout(function () {
@@ -33439,7 +33426,7 @@
 	      if (this.state.isClosing !== prevState.isClosing) {
 	        if (this.state.isClosing) {
 	          //console.log("CLOSING: ");
-	          if (this.state.isMounted) {
+	          if (!this.isUnmounting) {
 	            var el = _reactDom2.default.findDOMNode(this).parentNode;
 	            if (el && el.getAttribute("data-slds-modal")) {
 	              _reactDom2.default.unmountComponentAtNode(el);
@@ -33452,8 +33439,8 @@
 	  }, {
 	    key: "componentWillUnmount",
 	    value: function componentWillUnmount() {
+	      this.isUnmounting = true;
 	      this.clearBodyScroll();
-	      this.setState({ isMounted: false });
 	    }
 	  }, {
 	    key: "closeModal",
@@ -34702,7 +34689,7 @@
 	   */
 	  texture: _react2.default.PropTypes.bool,
 	  /**
-	   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes#color">Lighning Design System Themes > Color</a>.
+	   * Styling for Notification background color. Please reference <a href="http://www.lightningdesignsystem.com/components/utilities/themes/#color">Lighning Design System Themes > Color</a>.
 	   */
 	  theme: _react2.default.PropTypes.oneOf(["success", "warning", "error", "offline"]),
 	  variant: _react2.default.PropTypes.oneOf(["alert", "toast"]).isRequired
@@ -34985,32 +34972,21 @@
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
 	      this.setState({
-	        isMounted: true,
-	        el: _reactDom2.default.findDOMNode(this)
+	        el: _reactDom2.default.findDOMNode(this),
+	        isOpen: this.props.openByDefault
 	      });
 	    }
 	  }, {
 	    key: "componentWillUnmount",
 	    value: function componentWillUnmount() {
-	      this.setState({
-	        isMounted: false
-	      });
+	      this.isUnmounting = true;
 	    }
 	  }, {
 	    key: "componentDidUpdate",
 	    value: function componentDidUpdate(prevProps, prevState) {
-	      var _this2 = this;
-
 	      if (this.props.target && this.props.target !== prevProps.target) {
 	        this.setState({
 	          tooltipTarget: this.getTooltipTarget()
-	        });
-	      }
-	      if (!prevState.isMounted && this.state.isMounted) {
-	        setTimeout(function () {
-	          _this2.setState({
-	            isOpen: _this2.props.openByDefault
-	          });
 	        });
 	      }
 	    }
@@ -35038,13 +35014,13 @@
 	  }, {
 	    key: "handleMouseLeave",
 	    value: function handleMouseLeave() {
-	      var _this3 = this;
+	      var _this2 = this;
 
 	      this.setState({ isClosing: true });
 
 	      setTimeout(function () {
-	        if (_this3.state.isMounted && _this3.state.isClosing) {
-	          _this3.setState({
+	        if (!_this2.isUnmounting && _this2.state.isClosing) {
+	          _this2.setState({
 	            isOpen: false,
 	            isClosing: false
 	          });
@@ -35101,16 +35077,16 @@
 	  }, {
 	    key: "getContent",
 	    value: function getContent() {
-	      var _this4 = this;
+	      var _this3 = this;
 
 	      return _react2.default.Children.map(this.props.children, function (child, i) {
 	        return _react2.default.cloneElement(child, {
 	          key: i,
-	          onBlur: _this4.handleMouseLeave.bind(_this4),
-	          onFocus: _this4.handleMouseEnter.bind(_this4),
-	          onMouseEnter: _this4.handleMouseEnter.bind(_this4),
-	          onMouseLeave: _this4.handleMouseLeave.bind(_this4)
-	        }, _this4.grandKidsWithAsstText(child));
+	          onBlur: _this3.handleMouseLeave.bind(_this3),
+	          onFocus: _this3.handleMouseEnter.bind(_this3),
+	          onMouseEnter: _this3.handleMouseEnter.bind(_this3),
+	          onMouseLeave: _this3.handleMouseLeave.bind(_this3)
+	        }, _this3.grandKidsWithAsstText(child));
 	      });
 	    }
 	  }, {
@@ -35821,7 +35797,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'slds-p-around--medium', style: { "maxWidth": "800px" } },
+	        { className: 'slds-p-around--medium' },
 	        _react2.default.createElement(
 	          'h3',
 	          { className: 'slds-text-heading--medium slds-truncate' },
@@ -35830,11 +35806,11 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'slds-m-vertical--small' },
-	          'Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.0.'
+	          'Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.1.'
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'slds-p-vertical--medium' },
+	          { className: 'slds-p-vertical--medium', style: { "maxWidth": "800px" } },
 	          _react2.default.createElement(
 	            'h3',
 	            { className: 'slds-text-heading--medium slds-p-vertical--small' },
@@ -35858,7 +35834,7 @@
 	            ' represents ',
 	            _react2.default.createElement(
 	              'a',
-	              { href: 'http://www.lightningdesignsystem.com/components/menus#dropdown' },
+	              { href: 'http://www.lightningdesignsystem.com/components/menus/#dropdown' },
 	              'Lightning Design System Menu > Dropdown'
 	            ),
 	            ', and ',
@@ -35870,8 +35846,8 @@
 	            ' represents ',
 	            _react2.default.createElement(
 	              'a',
-	              { href: 'http://www.lightningdesignsystem.com/components/lookups#base' },
-	              'Lightning Design System Lookup (base)'
+	              { href: 'http://www.lightningdesignsystem.com/components/lookups/#base' },
+	              'Lightning Design System Lookup > Base'
 	            ),
 	            '.'
 	          ),
@@ -35893,7 +35869,7 @@
 	            ' represents ',
 	            _react2.default.createElement(
 	              'a',
-	              { href: 'http://www.lightningdesignsystem.com/components/buttons#brand' },
+	              { href: 'http://www.lightningdesignsystem.com/components/buttons/#brand' },
 	              'Lightning Design System Button > Brand'
 	            )
 	          )
@@ -35902,75 +35878,82 @@
 	          'div',
 	          { className: 'slds-p-vertical--medium' },
 	          _react2.default.createElement(
-	            'h3',
-	            { className: 'slds-text-heading--medium slds-p-vertical--small' },
-	            'Example for tooltip over an info icon'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small' },
-	            'To use it in your code base via npm, proceed as follows.'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small' },
-	            'First, install the npm module:'
-	          ),
-	          _react2.default.createElement(
-	            'code',
-	            { className: 'slds-p-vertical--small' },
-	            "npm install --save design-system-react"
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small slds-m-top--large ' },
-	            'Then, in the files where you\'re using the components, refer to each Lightning Design System component using the "SLDS" prefix. For example to import the Tooltip and Icon components:'
-	          ),
-	          _react2.default.createElement(
-	            'code',
-	            { className: 'slds-p-vertical--small' },
-	            "import {SLDSPopoverTooltip, SLDSIcon} from \"design-system-react\""
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small slds-m-top--large ' },
-	            'You can then use the components in your JSX markup. For example:'
-	          ),
-	          _react2.default.createElement(
-	            'code',
-	            { className: 'slds-p-vertical--small' },
-	            'Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor).',
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            '<div ref="tooltipDemoExample">',
-	            _react2.default.createElement('br', null),
-	            '  ',
-	            '<SLDSPopoverTooltip',
-	            _react2.default.createElement('br', null),
-	            '    ',
-	            'align="top"',
-	            _react2.default.createElement('br', null),
-	            '    ',
-	            'content={<span>Here is more information.</span>}',
-	            _react2.default.createElement('br', null),
-	            '    ',
-	            'targetElement={this.refs.tooltipDemoExample}>',
-	            _react2.default.createElement('br', null),
-	            '      ',
-	            '<a href="javascript:void(0)">',
-	            _react2.default.createElement('br', null),
-	            '        ',
-	            '<SLDSIcon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />',
-	            _react2.default.createElement('br', null),
-	            '      ',
-	            '</a>',
-	            _react2.default.createElement('br', null),
-	            '  ',
-	            '</SLDSPopoverTooltip>',
-	            _react2.default.createElement('br', null),
-	            '</div>',
-	            _react2.default.createElement('br', null)
-	          ),
+	            'div',
+	            { style: { "maxWidth": "800px" } },
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'slds-text-heading--medium slds-p-vertical--small' },
+	              'Example for tooltip over an info icon'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small' },
+	              'To use it in your code base via npm, proceed as follows.'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small' },
+	              'First, install the npm module:'
+	            ),
+	            _react2.default.createElement(
+	              'code',
+	              null,
+	              "npm install --save design-system-react"
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small slds-m-top--large ' },
+	              'Then, in the files where you\'re using the components, refer to each Lightning Design System component using the "SLDS" prefix. For example to import the Tooltip and Icon components:'
+	            ),
+	            _react2.default.createElement(
+	              'code',
+	              null,
+	              "import {SLDSPopoverTooltip, SLDSIcon} from \"design-system-react\""
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small slds-m-top--large ' },
+	              'You can then use the components in your JSX markup. For example:'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'code',
+	          null,
+	          'Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor).',
+	          _react2.default.createElement('br', null),
+	          '<div ref="tooltipDemoExample">',
+	          _react2.default.createElement('br', null),
+	          '  ',
+	          '<SLDSPopoverTooltip',
+	          _react2.default.createElement('br', null),
+	          '    ',
+	          'align="top"',
+	          _react2.default.createElement('br', null),
+	          '    ',
+	          'content={<span>Here is more information.</span>}',
+	          _react2.default.createElement('br', null),
+	          '    ',
+	          'targetElement={this.refs.tooltipDemoExample}>',
+	          _react2.default.createElement('br', null),
+	          '      ',
+	          '<a href="javascript:void(0)">',
+	          _react2.default.createElement('br', null),
+	          '        ',
+	          '<SLDSIcon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />',
+	          _react2.default.createElement('br', null),
+	          '      ',
+	          '</a>',
+	          _react2.default.createElement('br', null),
+	          '  ',
+	          '</SLDSPopoverTooltip>',
+	          _react2.default.createElement('br', null),
+	          '</div>',
+	          _react2.default.createElement('br', null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: { "maxWidth": "800px" } },
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'slds-p-vertical--small slds-m-top--large ' },
@@ -36156,7 +36139,7 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            'Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.0.'
+	            'Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.1.'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -36173,7 +36156,7 @@
 	            'We support the same browsers as the Lightning Design System. Please visit ',
 	            _react2.default.createElement(
 	              'a',
-	              { href: 'http://www.lightningdesignsystem.com/faq#what-browsers-are-supported' },
+	              { href: 'http://www.lightningdesignsystem.com/faq/#what-browsers-are-supported' },
 	              'Lightning Design System - FAQ'
 	            ),
 	            ' for details.'
@@ -47747,6 +47730,10 @@
 
 	var _docs2 = _interopRequireDefault(_docs);
 
+	var _SLDSIcon = __webpack_require__(232);
+
+	var _SLDSIcon2 = _interopRequireDefault(_SLDSIcon);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47795,21 +47782,22 @@
 	          renderedEnumValues.push(_react2.default.createElement(
 	            'span',
 	            { key: i + 'c' },
-	            ', '
+	            ' | '
 	          ));
 	        }
 
+	        var val = enumValue.value.replace(/'|"/g, "");
 	        renderedEnumValues.push(_react2.default.createElement(
 	          'code',
 	          { key: i + 'val' },
-	          enumValue.value
+	          val
 	        ));
 	      });
 
 	      return _react2.default.createElement(
 	        'span',
 	        null,
-	        'one of: ',
+	        'string: ',
 	        renderedEnumValues
 	      );
 	    }
@@ -47832,7 +47820,7 @@
 
 	        var type = propType.name === 'enum' ? this.renderEnum(propType) : p.type;
 	        var defaultProp = docs[prop].defaultValue ? docs[prop].defaultValue.value.replace(/'|"/g, "") : "";
-	        var required = docs[prop].required ? "x" : "";
+	        var required = docs[prop].required ? _react2.default.createElement(_SLDSIcon2.default, { name: 'check', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }) : "";
 
 	        var row = _react2.default.createElement(
 	          'tr',
@@ -47849,7 +47837,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'td',
-	            null,
+	            { style: { textAlign: "center" } },
 	            required
 	          ),
 	          _react2.default.createElement(
@@ -47955,7 +47943,7 @@
 						"name": "string"
 					},
 					"required": false,
-					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop."
+					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
 				},
 				"disabled": {
 					"type": {
@@ -47969,7 +47957,7 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons#hint\">Lightning Design System Buttons > Hint</a>."
+					"description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#hint\">Lightning Design System Buttons > Hint</a>."
 				},
 				"iconName": {
 					"type": {
@@ -48008,13 +47996,21 @@
 								"computed": false
 							},
 							{
+								"value": "\"medium\"",
+								"computed": false
+							},
+							{
 								"value": "\"large\"",
 								"computed": false
 							}
 						]
 					},
 					"required": false,
-					"description": "If omitted, icon size is medium."
+					"description": "",
+					"defaultValue": {
+						"value": "\"medium\"",
+						"computed": false
+					}
 				},
 				"iconVariant": {
 					"type": {
@@ -48047,7 +48043,7 @@
 						]
 					},
 					"required": false,
-					"description": "For icon variants, please reference <a href=\"https://design-system-dev.herokuapp.com/components/buttons#icon\">Lightning Design System Icons</a>."
+					"description": "For icon variants, please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#icon\">Lightning Design System Icons</a>."
 				},
 				"label": {
 					"type": {
@@ -48136,7 +48132,7 @@
 						"name": "string"
 					},
 					"required": false,
-					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the assistiveText prop and use the label prop."
+					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
 				},
 				"disabled": {
 					"type": {
@@ -48165,13 +48161,21 @@
 								"computed": false
 							},
 							{
+								"value": "\"medium\"",
+								"computed": false
+							},
+							{
 								"value": "\"large\"",
 								"computed": false
 							}
 						]
 					},
 					"required": false,
-					"description": "If omitted, icon size is medium."
+					"description": "",
+					"defaultValue": {
+						"value": "\"medium\"",
+						"computed": false
+					}
 				},
 				"onClick": {
 					"type": {
@@ -48330,7 +48334,7 @@
 						"name": "string"
 					},
 					"required": false,
-					"description": "css classes that are applied to the svg"
+					"description": "CSS classes that are applied to the SVG"
 				},
 				"name": {
 					"type": {
@@ -48352,13 +48356,21 @@
 								"computed": false
 							},
 							{
+								"value": "\"medium\"",
+								"computed": false
+							},
+							{
 								"value": "\"large\"",
 								"computed": false
 							}
 						]
 					},
 					"required": false,
-					"description": "If omitted, icon size is medium."
+					"description": "",
+					"defaultValue": {
+						"value": "'medium'",
+						"computed": false
+					}
 				}
 			}
 		},
@@ -48389,14 +48401,14 @@
 						"name": "func"
 					},
 					"required": false,
-					"description": "Custom component for Lookup footer. The default footer allows user to add new item - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>."
+					"description": "Custom component for Lookup footer. The default footer allows user to add new item - see <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>."
 				},
 				"headerRenderer": {
 					"type": {
 						"name": "func"
 					},
 					"required": false,
-					"description": "Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href=\"http://www.lightningdesignsystem.com/components/lookups#base\">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>."
+					"description": "Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>."
 				},
 				"iconCategory": {
 					"type": {
@@ -49001,7 +49013,7 @@
 						]
 					},
 					"required": false,
-					"description": "Styling for Notification background color. Please reference <a href=\"http://www.lightningdesignsystem.com/components/utilities/themes#color\">Lighning Design System Themes > Color</a>."
+					"description": "Styling for Notification background color. Please reference <a href=\"http://www.lightningdesignsystem.com/components/utilities/themes/#color\">Lighning Design System Themes > Color</a>."
 				},
 				"variant": {
 					"type": {

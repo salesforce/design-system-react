@@ -30,7 +30,7 @@ describe('SLDSMenuPicklist: ',  function(){
   const createPicklist = props => React.createElement(SLDSMenuPicklist, assign({}, defaultProps, props))
 
   const getPicklist = props => renderPicklist(createPicklist(props))
-  const getMenu = dom => dom.querySelector('.slds-dropdown--menu')
+  const getMenu = dom => dom.querySelector('.slds-dropdown--left')
 
   const clickOnItem = (cmp, index) => {
     const items = scryRenderedDOMComponentsWithTag(cmp, 'a');
@@ -49,7 +49,7 @@ describe('SLDSMenuPicklist: ',  function(){
       expect(getMenu(document.body)).to.equal(null)
       Simulate.click(btn, {})
       setTimeout(() => {
-        expect(getMenu(document.body).className).to.include('slds-dropdown--small')
+        expect(getMenu(document.body).className).to.include('slds-dropdown--left')
         Simulate.click(btn, {})
         expect(getMenu(document.body)).to.equal(null)
         done()
