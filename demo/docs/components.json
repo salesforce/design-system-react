@@ -454,7 +454,7 @@
                 "type": {
                     "name": "func"
                 },
-                "required": true,
+                "required": false,
                 "description": "Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.",
                 "defaultValue": {
                     "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
@@ -500,7 +500,7 @@
                 "type": {
                     "name": "string"
                 },
-                "required": true,
+                "required": false,
                 "description": ""
             },
             "listItemLabelRenderer": {
@@ -535,7 +535,7 @@
                 "type": {
                     "name": "func"
                 },
-                "required": true,
+                "required": false,
                 "description": ""
             },
             "onItemUnselect": {
@@ -709,7 +709,7 @@
                 "type": {
                     "name": "func"
                 },
-                "required": true,
+                "required": false,
                 "description": ""
             },
             "openOn": {
@@ -771,7 +771,7 @@
                 "type": {
                     "name": "string"
                 },
-                "required": true,
+                "required": false,
                 "description": "",
                 "defaultValue": {
                     "value": "\"Picklist\"",
@@ -803,7 +803,7 @@
                 "type": {
                     "name": "func"
                 },
-                "required": true,
+                "required": false,
                 "description": ""
             },
             "options": {

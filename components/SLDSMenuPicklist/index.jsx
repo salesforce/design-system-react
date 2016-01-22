@@ -21,7 +21,7 @@ import ListItemLabel from "./ListItemLabel";
 const displayName = "SLDSMenuPicklist";
 const propTypes = {
   disabled: React.PropTypes.bool,
-  label: React.PropTypes.string.isRequired,
+  label: React.PropTypes.string,
   /**
    * Custom element that overrides the default Menu Item component.
    */
@@ -31,7 +31,7 @@ const propTypes = {
    */
   modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
-  onSelect: React.PropTypes.func.isRequired,
+  onSelect: React.PropTypes.func,
   /**
    * Menu item data.
    */

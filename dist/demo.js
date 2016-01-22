@@ -26493,7 +26493,7 @@
 	  /**
 	   * Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.
 	   */
-	  filterWith: _react2.default.PropTypes.func.isRequired,
+	  filterWith: _react2.default.PropTypes.func,
 	  /**
 	   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
 	   */
@@ -26511,7 +26511,7 @@
 	   * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view icon names.
 	   */
 	  iconName: _react2.default.PropTypes.string,
-	  label: _react2.default.PropTypes.string.isRequired,
+	  label: _react2.default.PropTypes.string,
 	  /**
 	   * Custom component that overrides the default Lookup Item component.
 	   */
@@ -26522,7 +26522,7 @@
 	  modal: _react2.default.PropTypes.bool,
 	  onBlur: _react2.default.PropTypes.func,
 	  onChange: _react2.default.PropTypes.func,
-	  onItemSelect: _react2.default.PropTypes.func.isRequired,
+	  onItemSelect: _react2.default.PropTypes.func,
 	  onItemUnselect: _react2.default.PropTypes.func,
 	  /**
 	   * Lookup item data.
@@ -30675,7 +30675,7 @@
 	   */
 	  modal: _react2.default.PropTypes.bool,
 	  onClick: _react2.default.PropTypes.func,
-	  onSelect: _react2.default.PropTypes.func.isRequired,
+	  onSelect: _react2.default.PropTypes.func,
 	  openOn: _react2.default.PropTypes.oneOf(["hover", "click"]),
 	  /**
 	   * Menu item data.
@@ -31612,7 +31612,7 @@
 	var displayName = "SLDSMenuPicklist";
 	var propTypes = {
 	  disabled: _react2.default.PropTypes.bool,
-	  label: _react2.default.PropTypes.string.isRequired,
+	  label: _react2.default.PropTypes.string,
 	  /**
 	   * Custom element that overrides the default Menu Item component.
 	   */
@@ -31622,7 +31622,7 @@
 	   */
 	  modal: _react2.default.PropTypes.bool,
 	  onClick: _react2.default.PropTypes.func,
-	  onSelect: _react2.default.PropTypes.func.isRequired,
+	  onSelect: _react2.default.PropTypes.func,
 	  /**
 	   * Menu item data.
 	   */

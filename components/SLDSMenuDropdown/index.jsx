@@ -47,7 +47,7 @@ const propTypes = {
    */
   modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
-  onSelect: React.PropTypes.func.isRequired,
+  onSelect: React.PropTypes.func,
   openOn: React.PropTypes.oneOf(["hover", "click"]),
   /**
    * Menu item data.
