@@ -39,7 +39,6 @@ const propTypes = {
 const defaultProps = {
   align: "top",
   content: <span>Tooltip</span>,
-  hoverCloseDelay: 150,
 };
 
 /**

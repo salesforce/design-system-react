@@ -13,7 +13,7 @@ import ReactDOM from "react-dom";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
 import {KEYS, EventUtil} from "../utils";
-import List from './List'; 
+import List from './List';
 import ListItem from './ListItem';
 import ListItemLabel from './ListItemLabel';
 
@@ -63,7 +63,6 @@ const propTypes = {
 };
 const defaultProps = {
   align: "left",
-  hoverCloseDelay: 300,
   openOn: "click",
   modal: true,
   buttonVariant: "neutral",
