@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import DOCS from './docs';
+import SLDSIcon from 'components/SLDSIcon';
 
 const displayName = "PropTable";
 const propTypes = {
@@ -36,17 +37,18 @@ class PropTable extends React.Component {
     enumValues.forEach(function renderEnumValue(enumValue, i) {
       if (i > 0) {
         renderedEnumValues.push(
-          <span key={`${i}c`}>, </span>
+          <span key={`${i}c`}> | </span>
         );
       }
 
+      let val = enumValue.value.replace(/'|"/g, "");
       renderedEnumValues.push(
-        <code key={`${i}val`}>{enumValue.value}</code>
+        <code key={`${i}val`}>{val}</code>
       );
     });
 
     return (
-      <span>one of: {renderedEnumValues}</span>
+      <span>string: {renderedEnumValues}</span>
     );
   }
 
@@ -66,13 +68,13 @@ class PropTable extends React.Component {
 
       let type = propType.name === 'enum' ? this.renderEnum(propType) : p.type;
       let defaultProp = docs[prop].defaultValue ? docs[prop].defaultValue.value.replace(/'|"/g, "") : "";
-      let required = docs[prop].required ? "x" : "";
+      let required = docs[prop].required ? <SLDSIcon name='check' category='utility' size="x-small" className="slds-icon-text-default" /> : "";
 
       let row = (
         <tr key={prop}>
           <td>{prop}</td>
           <td className="mw-col-m">{type.name ? type.name : type.props.children}</td>
-          <td>{required}</td>
+          <td style={{textAlign: "center"}}>{required}</td>
           <td>{defaultProp}</td>
           <td className="mw-col-l">
             <span dangerouslySetInnerHTML={this.getMarkup(docs[prop].description)} />
