@@ -16,7 +16,7 @@ class TooltipExample extends React.Component {
   render(){
     return (
       <div>
-        <div ref="tooltipOnHover" className="slds-p-horizontal--medium" style={{ "display": "inline-block"}}>
+        <div ref="tooltipOnHover" className="slds-p-horizontal--large" style={{ "display": "inline-block"}}>
           <SLDSPopoverTooltip
             align="top"
             content={<span>Tooltip on top</span>}>
@@ -25,7 +25,7 @@ class TooltipExample extends React.Component {
               </a>
             </SLDSPopoverTooltip>
         </div>
-        <div className="slds-p-horizontal--medium" style={{ "display": "inline-block"}}>
+        <div className="slds-p-horizontal--large" style={{ "display": "inline-block"}}>
           <SLDSPopoverTooltip
             key="tooltipDemo"
             align="right"
@@ -33,17 +33,13 @@ class TooltipExample extends React.Component {
               <SLDSButton variant="brand" label="Hover to Open" />
             </SLDSPopoverTooltip>
         </div>
-
-
-
-
-        <div style={{margin:'5rem'}}>
+        <div className="slds-p-horizontal--large" style={{ "display": "inline-block"}}>
           <SLDSButtonGroup className="slds-p-bottom--medium">
             <SLDSButton
               label="Refresh"
               variant="neutral"
               tooltip={<SLDSPopoverTooltip
-                align="top"
+                align="bottom"
                 content="Buttonbar Tooltip"
                 openByDefault={false}></SLDSPopoverTooltip>}
             />
@@ -52,7 +48,7 @@ class TooltipExample extends React.Component {
               label="Edit"
               variant="neutral"
               tooltip={<SLDSPopoverTooltip
-                align="top right"
+                align="bottom right"
                 content="Buttonbar Tooltip"
                 openByDefault={false}></SLDSPopoverTooltip>}
             />
@@ -72,10 +68,10 @@ class TooltipExample extends React.Component {
             />
 
         </SLDSButtonGroup>
+        </div>
 
-      </div>
 
-
+        {/*
 
         <div style={{margin:'5rem'}}>
           <SLDSButtonGroup className="slds-p-bottom--medium">
@@ -323,6 +319,7 @@ class TooltipExample extends React.Component {
 
       </div>
       </div>
+        */ }
 
 
       </div>

@@ -671,11 +671,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on menu closing.",
-                "defaultValue": {
-                    "value": "300",
-                    "computed": false
-                }
+                "description": "Delay on menu closing."
             },
             "label": {
                 "type": {
@@ -1187,11 +1183,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on Tooltip closing.",
-                "defaultValue": {
-                    "value": "150",
-                    "computed": false
-                }
+                "description": "Delay on Tooltip closing."
             },
             "openByDefault": {
                 "type": {
