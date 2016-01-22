@@ -30,7 +30,7 @@ class GettingStartedSection extends React.Component {
         </h3>
 
         <p className="slds-m-vertical--small">
-          Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.0.
+          Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.1.
         </p>
 
         <div className='slds-p-vertical--medium' style={{"maxWidth":"800px"}}>
@@ -42,7 +42,7 @@ class GettingStartedSection extends React.Component {
             The Design System React library is the Reactjs implementation of the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>.
             Each Design System React component is a specific variant of a component from Lightning Design System.
             For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightningdesignsystem.com/components/menus/#dropdown">Lightning Design System Menu > Dropdown</a>,
-            and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup (base)</a>.
+            and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>.
           </p>
 
           <p className="slds-m-vertical--small">
