@@ -9,6 +9,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 
 import React from 'react';
+import GlobalVariables from 'demo/docs/globalVariables';
 
 const displayName = "GettingStartedSection";
 const propTypes = {};
@@ -24,13 +25,13 @@ class GettingStartedSection extends React.Component {
 
   render(){
     return (
-      <div className='slds-p-around--medium'>
+      <div className='slds-p-around--medium copy-text'>
         <h3 className='slds-text-heading--medium slds-truncate'>
           Getting Started
         </h3>
 
         <p className="slds-m-vertical--small">
-          Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.1.
+          Note: Design System React is optimized for {GlobalVariables.reactVersion} and uses {GlobalVariables.sldsVersion}.
         </p>
 
         <div className='slds-p-vertical--medium' style={{"maxWidth":"800px"}}>

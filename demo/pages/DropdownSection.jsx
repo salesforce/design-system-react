@@ -34,7 +34,9 @@ class DropdownSection extends React.Component {
     return (
       <div className='slds-p-around--medium'>
         <h3 className='slds-text-heading--medium slds-truncate'>SLDSMenuDropdown</h3>
-        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" /> : null}
+        <div className="copy-text">
+          {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}} /> : null}
+        </div>
 
         <div>
           <CodeMirror codeText={Samples.Dropdowns} />

@@ -25,7 +25,7 @@ class FAQSection extends React.Component {
 
   render(){
     return (
-      <div className='slds-p-around--medium' style={{"maxWidth": "800px"}}>
+      <div className='slds-p-around--medium copy-text' style={{"maxWidth": "800px"}}>
         <h3 className='slds-text-heading--medium slds-truncate'>
           FAQ
         </h3>

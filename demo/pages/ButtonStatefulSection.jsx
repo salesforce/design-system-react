@@ -36,7 +36,9 @@ class ButtonStatefulSection extends React.Component {
         <h3 className='slds-text-heading--medium slds-truncate'>
           SLDSButtonStateful
         </h3>
-        {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}} /> : null}
+        <div className="copy-text">
+          {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}} /> : null}
+        </div>
 
         <div className="demo-only">
           <CodeMirror codeText={Samples.StatefulButtons} />

@@ -66,8 +66,29 @@ module.exports = React.createClass( {
             {/*
              //TODO: Refactor landing page into separate File
               */}
-             <section>
-               HOMEPAGE
+             <section className="copy-text" style={{"maxWidth": "800px"}}>
+               <h1 className='site-text--xl'>
+                 Design System React
+               </h1>
+               <p className="slds-text-heading--medium">
+               Create the world’s best enterprise app experiences.
+               </p>
+
+               <p className="slds-p-vertical--small" style={{"backgroundColor":"yellow"}}>
+               Current release: TODO -- add link to release notes
+               </p>
+
+               <p className="slds-p-vertical--small" style={{"backgroundColor":"yellow"}}>
+               Github Stars: TODO -- add github stars button
+               </p>
+
+               <p className="slds-p-vertical--small">
+               Design System React is the ReactJS implementation of <a href="http://www.lightningdesignsystem.com/">Ligtning Design System</a>, a collection of design patterns, components, and guidelines for creating unified UI in the Salesforce ecosystem.
+               </p>
+
+               <p className="slds-p-vertical--small">
+               Check out the <Link to="getting-started">Getting Started</Link> page to learn how to import Design System React into your project.
+               </p>
              </section>
           </div>
       </main>

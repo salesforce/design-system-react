@@ -3,3 +3,4 @@ npm-debug.log
 .DS_Store
 server/node_modules
 server/public/assets
+scripts/pre-commit.sh

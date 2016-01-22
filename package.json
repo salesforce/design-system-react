@@ -11,7 +11,8 @@
     "test": "scripts/test --single-run",
     "postinstall": "node scripts/postinstall",
     "icons": "node scripts/inline-icons.js",
-    "docs": "node scripts/component-docs.js"
+    "docs": "node scripts/component-docs.js",
+    "validate": "npm ls"
   },
   "repository": {
     "type": "git",
@@ -69,6 +70,7 @@
     "karma-webpack": "^1.7.0",
     "mocha": "^2.3.3",
     "phantomjs": "^1.9.18",
+    "precommit-hook": "^3.0.0",
     "raw-loader": "^0.5.1",
     "react": "^0.14.0",
     "react-addons-test-utils": "^0.14.6",
@@ -96,5 +98,10 @@
     "tether": "1.1.0",
     "tether-drop": "1.2.2",
     "transform-loader": "^0.2.3"
-  }
+  },
+  "pre-commit": [
+    "lint",
+    "validate",
+    "test"
+  ]
 }
