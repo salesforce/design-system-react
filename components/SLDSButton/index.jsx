@@ -35,10 +35,7 @@ const propTypes = {
    * If omitted, icon position is centered.
    */
   iconPosition: React.PropTypes.oneOf(["left", "right"]),
-  /**
-   * If omitted, icon size is medium.
-   */
-  iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
+  iconSize: React.PropTypes.oneOf(["x-small", "small", "medium", "large"]),
   /**
    * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
    */
@@ -63,6 +60,7 @@ const propTypes = {
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {
+  iconSize: "medium",
   variant: "base",
 };
 
