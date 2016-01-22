@@ -26047,7 +26047,7 @@
 	var propTypes = {
 	  /**
 	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-	   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the label prop.
+	   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	   */
 	  assistiveText: _react2.default.PropTypes.string,
 	  disabled: _react2.default.PropTypes.bool,
@@ -26493,7 +26493,7 @@
 	  /**
 	   * Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.
 	   */
-	  filterWith: _react2.default.PropTypes.func.isRequired,
+	  filterWith: _react2.default.PropTypes.func,
 	  /**
 	   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
 	   */
@@ -26511,7 +26511,7 @@
 	   * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view icon names.
 	   */
 	  iconName: _react2.default.PropTypes.string,
-	  label: _react2.default.PropTypes.string.isRequired,
+	  label: _react2.default.PropTypes.string,
 	  /**
 	   * Custom component that overrides the default Lookup Item component.
 	   */
@@ -26522,7 +26522,7 @@
 	  modal: _react2.default.PropTypes.bool,
 	  onBlur: _react2.default.PropTypes.func,
 	  onChange: _react2.default.PropTypes.func,
-	  onItemSelect: _react2.default.PropTypes.func.isRequired,
+	  onItemSelect: _react2.default.PropTypes.func,
 	  onItemUnselect: _react2.default.PropTypes.func,
 	  /**
 	   * Lookup item data.
@@ -30675,7 +30675,7 @@
 	   */
 	  modal: _react2.default.PropTypes.bool,
 	  onClick: _react2.default.PropTypes.func,
-	  onSelect: _react2.default.PropTypes.func.isRequired,
+	  onSelect: _react2.default.PropTypes.func,
 	  openOn: _react2.default.PropTypes.oneOf(["hover", "click"]),
 	  /**
 	   * Menu item data.
@@ -30691,7 +30691,6 @@
 	};
 	var defaultProps = {
 	  align: "left",
-	  hoverCloseDelay: 300,
 	  openOn: "click",
 	  modal: true,
 	  buttonVariant: "neutral"
@@ -31613,7 +31612,7 @@
 	var displayName = "SLDSMenuPicklist";
 	var propTypes = {
 	  disabled: _react2.default.PropTypes.bool,
-	  label: _react2.default.PropTypes.string.isRequired,
+	  label: _react2.default.PropTypes.string,
 	  /**
 	   * Custom element that overrides the default Menu Item component.
 	   */
@@ -31623,7 +31622,7 @@
 	   */
 	  modal: _react2.default.PropTypes.bool,
 	  onClick: _react2.default.PropTypes.func,
-	  onSelect: _react2.default.PropTypes.func.isRequired,
+	  onSelect: _react2.default.PropTypes.func,
 	  /**
 	   * Menu item data.
 	   */
@@ -34944,8 +34943,7 @@
 	    "span",
 	    null,
 	    "Tooltip"
-	  ),
-	  hoverCloseDelay: 150
+	  )
 	};
 
 	/**
@@ -35797,7 +35795,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'slds-p-around--medium', style: { "maxWidth": "800px" } },
+	        { className: 'slds-p-around--medium' },
 	        _react2.default.createElement(
 	          'h3',
 	          { className: 'slds-text-heading--medium slds-truncate' },
@@ -35806,11 +35804,11 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'slds-m-vertical--small' },
-	          'Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.0.'
+	          'Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.1.'
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'slds-p-vertical--medium' },
+	          { className: 'slds-p-vertical--medium', style: { "maxWidth": "800px" } },
 	          _react2.default.createElement(
 	            'h3',
 	            { className: 'slds-text-heading--medium slds-p-vertical--small' },
@@ -35847,7 +35845,7 @@
 	            _react2.default.createElement(
 	              'a',
 	              { href: 'http://www.lightningdesignsystem.com/components/lookups/#base' },
-	              'Lightning Design System Lookup (base)'
+	              'Lightning Design System Lookup > Base'
 	            ),
 	            '.'
 	          ),
@@ -35878,75 +35876,82 @@
 	          'div',
 	          { className: 'slds-p-vertical--medium' },
 	          _react2.default.createElement(
-	            'h3',
-	            { className: 'slds-text-heading--medium slds-p-vertical--small' },
-	            'Example for tooltip over an info icon'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small' },
-	            'To use it in your code base via npm, proceed as follows.'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small' },
-	            'First, install the npm module:'
-	          ),
-	          _react2.default.createElement(
-	            'code',
-	            { className: 'slds-p-vertical--small' },
-	            "npm install --save design-system-react"
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small slds-m-top--large ' },
-	            'Then, in the files where you\'re using the components, refer to each Lightning Design System component using the "SLDS" prefix. For example to import the Tooltip and Icon components:'
-	          ),
-	          _react2.default.createElement(
-	            'code',
-	            { className: 'slds-p-vertical--small' },
-	            "import {SLDSPopoverTooltip, SLDSIcon} from \"design-system-react\""
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small slds-m-top--large ' },
-	            'You can then use the components in your JSX markup. For example:'
-	          ),
-	          _react2.default.createElement(
-	            'code',
-	            { className: 'slds-p-vertical--small' },
-	            'Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor).',
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            '<div ref="tooltipDemoExample">',
-	            _react2.default.createElement('br', null),
-	            '  ',
-	            '<SLDSPopoverTooltip',
-	            _react2.default.createElement('br', null),
-	            '    ',
-	            'align="top"',
-	            _react2.default.createElement('br', null),
-	            '    ',
-	            'content={<span>Here is more information.</span>}',
-	            _react2.default.createElement('br', null),
-	            '    ',
-	            'targetElement={this.refs.tooltipDemoExample}>',
-	            _react2.default.createElement('br', null),
-	            '      ',
-	            '<a href="javascript:void(0)">',
-	            _react2.default.createElement('br', null),
-	            '        ',
-	            '<SLDSIcon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />',
-	            _react2.default.createElement('br', null),
-	            '      ',
-	            '</a>',
-	            _react2.default.createElement('br', null),
-	            '  ',
-	            '</SLDSPopoverTooltip>',
-	            _react2.default.createElement('br', null),
-	            '</div>',
-	            _react2.default.createElement('br', null)
-	          ),
+	            'div',
+	            { style: { "maxWidth": "800px" } },
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'slds-text-heading--medium slds-p-vertical--small' },
+	              'Example for tooltip over an info icon'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small' },
+	              'To use it in your code base via npm, proceed as follows.'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small' },
+	              'First, install the npm module:'
+	            ),
+	            _react2.default.createElement(
+	              'code',
+	              null,
+	              "npm install --save design-system-react"
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small slds-m-top--large ' },
+	              'Then, in the files where you\'re using the components, refer to each Lightning Design System component using the "SLDS" prefix. For example to import the Tooltip and Icon components:'
+	            ),
+	            _react2.default.createElement(
+	              'code',
+	              null,
+	              "import {SLDSPopoverTooltip, SLDSIcon} from \"design-system-react\""
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small slds-m-top--large ' },
+	              'You can then use the components in your JSX markup. For example:'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'code',
+	          null,
+	          'Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor).',
+	          _react2.default.createElement('br', null),
+	          '<div ref="tooltipDemoExample">',
+	          _react2.default.createElement('br', null),
+	          '  ',
+	          '<SLDSPopoverTooltip',
+	          _react2.default.createElement('br', null),
+	          '    ',
+	          'align="top"',
+	          _react2.default.createElement('br', null),
+	          '    ',
+	          'content={<span>Here is more information.</span>}',
+	          _react2.default.createElement('br', null),
+	          '    ',
+	          'targetElement={this.refs.tooltipDemoExample}>',
+	          _react2.default.createElement('br', null),
+	          '      ',
+	          '<a href="javascript:void(0)">',
+	          _react2.default.createElement('br', null),
+	          '        ',
+	          '<SLDSIcon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />',
+	          _react2.default.createElement('br', null),
+	          '      ',
+	          '</a>',
+	          _react2.default.createElement('br', null),
+	          '  ',
+	          '</SLDSPopoverTooltip>',
+	          _react2.default.createElement('br', null),
+	          '</div>',
+	          _react2.default.createElement('br', null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: { "maxWidth": "800px" } },
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'slds-p-vertical--small slds-m-top--large ' },
@@ -36132,7 +36137,7 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            'Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.0.'
+	            'Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.1.'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -47702,7 +47707,7 @@
 	  Picklists: "const picklistOptions = [\n  {label:'A Option Option Super Super Long',value:'A0', title: 'Greg'},\n  {label:'B Option',value:'B0'},\n  {label:'C Option',value:'C0'},\n  {label:'D Option',value:'D0'},\n  {label:'E Option',value:'E0'},\n  {label:'A1 Option',value:'A1'},\n  {label:'B2 Option',value:'B1'},\n  {label:'C2 Option',value:'C1'},\n  {label:'D2 Option',value:'D1'},\n  {label:'E2 Option Super Super Long',value:'E1'},\n];\n\nclass PicklistExample extends React.Component {\n\n  displayName: \"PicklistExample\";\n\n  constructor(props) {\n    super(props);\n    this.state = {};\n  }\n\n  handleOnUpdateHighlighted () {\n    console.log('onUpdateHighlighted should be defined');\n  }\n\n  handleOnSelect(value) {\n    console.log('selected: ',value);\n  }\n\n  handleOnClick() {\n    console.log('onClick should be defined');\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistOptions}\n         placeholder = \"Select a contact\"\n         value='C0'\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistExample />, mountNode);\n\n",
 	  CustomPicklists: "import CustomListItemLabel from './CustomListItemLabel.cjsx';\n\nconst picklistCustomOptions = [\n  {label:'A Option Option Super Super Long',value:'A0',strongLabel:'SUPER TITLE B0'},\n  {label:'B Option',value:'B0',strongLabel:'SUPER TITLE B0'},\n  {label:'C Option',value:'C0',strongLabel:'SUPER TITLE C0'},\n  {label:'D Option',value:'D0',strongLabel:'SUPER TITLE D0'},\n  {label:'E Option',value:'E0',strongLabel:'SUPER TITLE E0'},\n  {label:'A1 Option',value:'A1',strongLabel:'SUPER TITLE A1'},\n  {label:'B2 Option',value:'B1',strongLabel:'SUPER TITLE B1'},\n  {label:'C2 Option',value:'C1',strongLabel:'SUPER TITLE C1'},\n  {label:'D2 Option',value:'D1',strongLabel:'SUPER TITLE D1'},\n  {label:'E2 Option Super Super Long',value:'E1',strongLabel:'SUPER TITLE E1'},\n];\n\nclass PicklistCustomExample extends React.Component {\n\n  displayName: \"PicklistCustomExample\"\n\n  constructor(props) {\n    super(props);\n    this.state = {};\n  }\n\n  handleOnUpdateHighlighted () {\n    console.log('onUpdateHighlighted should be defined');\n  }\n\n  handleOnSelect(value) {\n    console.log('selected: ',value);\n  }\n\n  handleOnClick() {\n    console.log('onClick should be defined');\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         listItemRenderer={CustomListItemLabel}\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistCustomOptions}\n         placeholder=\"Select a contact\"\n         value='C0'\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistCustomExample />, mountNode);\n\n",
 	  StatefulButtons: "let inverseBtnParent = {backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"};\nconst examples = (\n  <div className=\"slds-x-small-buttons--horizontal\">\n    <SLDSButtonStateful\n      assistiveText=\"like\"\n      iconName=\"like\"\n      iconSize=\"large\"\n      type=\"icon\" />\n\n    <SLDSButtonStateful\n      type=\"follow\"/>\n\n    <div style={inverseBtnParent} className=\"slds-m-horizontal--small\">\n      <SLDSButtonStateful\n        type=\"join\"\n        variant=\"inverse\" />\n    </div>\n  </div>\n);\n\nReactDOM.render(examples, mountNode);\n\n",
-	  Tooltips: "const moreOptions = [\n  {label:'undo',value:'A0'},\n  {label:'redo',value:'B0'},\n  {label:'activate',value:'C0'},\n];\n\nclass TooltipExample extends React.Component {\n\n  displayName: \"TooltipExample\";\n\n  constructor(props) {\n    super(props);\n    this.state = {};\n  }\n\n  render(){\n    return (\n      <div>\n        <div ref=\"tooltipOnHover\" className=\"slds-p-horizontal--medium\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSPopoverTooltip\n            align=\"top\"\n            content={<span>Tooltip on top</span>}>\n              <a href=\"javascript:void(0)\">\n                <SLDSIcon assistiveText=\"info\" category=\"utility\" name=\"info\" className=\"slds-icon-text-default\" />\n              </a>\n            </SLDSPopoverTooltip>\n        </div>\n        <div className=\"slds-p-horizontal--medium\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSPopoverTooltip\n            key=\"tooltipDemo\"\n            align=\"right\"\n            content={<span>Tooltip with right alignment</span>}>\n              <SLDSButton variant=\"brand\" label=\"Hover to Open\" />\n            </SLDSPopoverTooltip>\n        </div>\n\n\n\n\n        <div style={{margin:'5rem'}}>\n          <SLDSButtonGroup className=\"slds-p-bottom--medium\">\n            <SLDSButton\n              label=\"Refresh\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"top\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSButton\n              label=\"Edit\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"top right\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSMenuDropdown\n              assistiveText=\"More Options\"\n              buttonVariant=\"icon\"\n              iconName=\"down\"\n              iconVariant=\"border-filled\"\n              openOn=\"hover\"\n              onSelect={(i) => console.log('selected', i)}\n              options={moreOptions}\n              tooltip={<SLDSPopoverTooltip\n                align=\"top right\"\n                content=\"Dropdown Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n        </SLDSButtonGroup>\n\n      </div>\n\n\n\n        <div style={{margin:'5rem'}}>\n          <SLDSButtonGroup className=\"slds-p-bottom--medium\">\n            <SLDSButton\n              label=\"Refresh\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSButton\n              label=\"Edit\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom right\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSMenuDropdown\n              assistiveText=\"More Options\"\n              buttonVariant=\"icon\"\n              iconName=\"down\"\n              iconVariant=\"border-filled\"\n              onSelect={(i) => console.log('selected', i)}\n              openOn=\"click\"\n              options={moreOptions}\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom right\"\n                content=\"Dropdown Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n        </SLDSButtonGroup>\n      </div>\n\n      <div style={{\n            margin:'5rem'\n      }}>\n\n      <div className=\"slds-grid\">\n        <div className=\"slds-col\">\n          <div style={{\n            margin:'1rem'\n          }}>\n            <SLDSPopoverTooltip\n              align=\"left\"\n              content={<span>Tooltip on left</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  left\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n        <div className=\"slds-col\">\n          <div style={{\n            margin:'1rem'\n          }}>\n            <SLDSPopoverTooltip\n              align=\"right\"\n              content={<span>Tooltip on right</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  right\n                </div>\n            </SLDSPopoverTooltip>\n          </div>\n        </div>\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"bottom\"\n              content={<span>Tooltip on bottom</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  bottom\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"top\"\n              content={<span>Tooltip on top</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  top\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n      </div>\n\n      <div className=\"slds-grid\">\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"bottom left\"\n              content={<span>Tooltip on bottom left</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  bottom left\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"bottom right\"\n              content={<span>Tooltip on bottom right</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  bottom right\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"top left\"\n              content={<span>Tooltip on top left</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  top left\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"top right\"\n              content={<span>Tooltip on top right</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  top right\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n\n      </div>\n\n\n\n      <div className=\"slds-grid\">\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"left bottom\"\n              content={<span>Tooltip on bottom left</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  left bottom\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"right bottom\"\n              content={<span>Tooltip on bottom right</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  right bottom\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"left top\"\n              content={<span>Tooltip on top left</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  left top\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"right top\"\n              content={<span>Tooltip on top right</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  right top\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n\n      </div>\n      </div>\n\n\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<TooltipExample />, mountNode);\n\n"
+	  Tooltips: "const moreOptions = [\n  {label:'undo',value:'A0'},\n  {label:'redo',value:'B0'},\n  {label:'activate',value:'C0'},\n];\n\nclass TooltipExample extends React.Component {\n\n  displayName: \"TooltipExample\";\n\n  constructor(props) {\n    super(props);\n    this.state = {};\n  }\n\n  render(){\n    return (\n      <div>\n        <div ref=\"tooltipOnHover\" className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSPopoverTooltip\n            align=\"top\"\n            content={<span>Tooltip on top</span>}>\n              <a href=\"javascript:void(0)\">\n                <SLDSIcon assistiveText=\"info\" category=\"utility\" name=\"info\" className=\"slds-icon-text-default\" />\n              </a>\n            </SLDSPopoverTooltip>\n        </div>\n        <div className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSPopoverTooltip\n            key=\"tooltipDemo\"\n            align=\"right\"\n            content={<span>Tooltip with right alignment</span>}>\n              <SLDSButton variant=\"brand\" label=\"Hover to Open\" />\n            </SLDSPopoverTooltip>\n        </div>\n        <div className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSButtonGroup className=\"slds-p-bottom--medium\">\n            <SLDSButton\n              label=\"Refresh\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSButton\n              label=\"Edit\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom right\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSMenuDropdown\n              assistiveText=\"More Options\"\n              buttonVariant=\"icon\"\n              iconName=\"down\"\n              iconVariant=\"border-filled\"\n              openOn=\"hover\"\n              onSelect={(i) => console.log('selected', i)}\n              options={moreOptions}\n              tooltip={<SLDSPopoverTooltip\n                align=\"top right\"\n                content=\"Dropdown Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n        </SLDSButtonGroup>\n        </div>\n\n\n        {/*\n\n        <div style={{margin:'5rem'}}>\n          <SLDSButtonGroup className=\"slds-p-bottom--medium\">\n            <SLDSButton\n              label=\"Refresh\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSButton\n              label=\"Edit\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom right\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSMenuDropdown\n              assistiveText=\"More Options\"\n              buttonVariant=\"icon\"\n              iconName=\"down\"\n              iconVariant=\"border-filled\"\n              onSelect={(i) => console.log('selected', i)}\n              openOn=\"click\"\n              options={moreOptions}\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom right\"\n                content=\"Dropdown Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n        </SLDSButtonGroup>\n      </div>\n\n      <div style={{\n            margin:'5rem'\n      }}>\n\n      <div className=\"slds-grid\">\n        <div className=\"slds-col\">\n          <div style={{\n            margin:'1rem'\n          }}>\n            <SLDSPopoverTooltip\n              align=\"left\"\n              content={<span>Tooltip on left</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  left\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n        <div className=\"slds-col\">\n          <div style={{\n            margin:'1rem'\n          }}>\n            <SLDSPopoverTooltip\n              align=\"right\"\n              content={<span>Tooltip on right</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  right\n                </div>\n            </SLDSPopoverTooltip>\n          </div>\n        </div>\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"bottom\"\n              content={<span>Tooltip on bottom</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  bottom\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"top\"\n              content={<span>Tooltip on top</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  top\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n      </div>\n\n      <div className=\"slds-grid\">\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"bottom left\"\n              content={<span>Tooltip on bottom left</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  bottom left\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"bottom right\"\n              content={<span>Tooltip on bottom right</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  bottom right\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"top left\"\n              content={<span>Tooltip on top left</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  top left\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"top right\"\n              content={<span>Tooltip on top right</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  top right\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n\n      </div>\n\n\n\n      <div className=\"slds-grid\">\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"left bottom\"\n              content={<span>Tooltip on bottom left</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  left bottom\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"right bottom\"\n              content={<span>Tooltip on bottom right</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  right bottom\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"left top\"\n              content={<span>Tooltip on top left</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  left top\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n        <div className=\"slds-col\">\n          <div style={{margin:'1rem'}}>\n            <SLDSPopoverTooltip\n              align=\"right top\"\n              content={<span>Tooltip on top right</span>}>\n                <div style={{\n                  backgroundColor:'lightGray',\n                  padding:'2rem'\n                }}>\n                  tooltip on hover: position\n                  right top\n                </div>\n              </SLDSPopoverTooltip>\n          </div>\n        </div>\n\n\n      </div>\n      </div>\n        */ }\n\n\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<TooltipExample />, mountNode);\n\n"
 	};
 
 	module.exports = Samples;
@@ -47722,6 +47727,10 @@
 	var _docs = __webpack_require__(303);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _SLDSIcon = __webpack_require__(232);
+
+	var _SLDSIcon2 = _interopRequireDefault(_SLDSIcon);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -47771,21 +47780,22 @@
 	          renderedEnumValues.push(_react2.default.createElement(
 	            'span',
 	            { key: i + 'c' },
-	            ', '
+	            ' | '
 	          ));
 	        }
 
+	        var val = enumValue.value.replace(/'|"/g, "");
 	        renderedEnumValues.push(_react2.default.createElement(
 	          'code',
 	          { key: i + 'val' },
-	          enumValue.value
+	          val
 	        ));
 	      });
 
 	      return _react2.default.createElement(
 	        'span',
 	        null,
-	        'one of: ',
+	        'string: ',
 	        renderedEnumValues
 	      );
 	    }
@@ -47808,7 +47818,7 @@
 
 	        var type = propType.name === 'enum' ? this.renderEnum(propType) : p.type;
 	        var defaultProp = docs[prop].defaultValue ? docs[prop].defaultValue.value.replace(/'|"/g, "") : "";
-	        var required = docs[prop].required ? "x" : "";
+	        var required = docs[prop].required ? _react2.default.createElement(_SLDSIcon2.default, { name: 'check', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }) : "";
 
 	        var row = _react2.default.createElement(
 	          'tr',
@@ -47825,7 +47835,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'td',
-	            null,
+	            { style: { textAlign: "center" } },
 	            required
 	          ),
 	          _react2.default.createElement(
@@ -48120,7 +48130,7 @@
 						"name": "string"
 					},
 					"required": false,
-					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the label prop."
+					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
 				},
 				"disabled": {
 					"type": {
@@ -48594,11 +48604,7 @@
 						"name": "number"
 					},
 					"required": false,
-					"description": "Delay on menu closing.",
-					"defaultValue": {
-						"value": "300",
-						"computed": false
-					}
+					"description": "Delay on menu closing."
 				},
 				"label": {
 					"type": {
@@ -49110,11 +49116,7 @@
 						"name": "number"
 					},
 					"required": false,
-					"description": "Delay on Tooltip closing.",
-					"defaultValue": {
-						"value": "150",
-						"computed": false
-					}
+					"description": "Delay on Tooltip closing."
 				},
 				"openByDefault": {
 					"type": {

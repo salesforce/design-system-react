@@ -31,7 +31,7 @@ const propTypes = {
   /**
    * Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.
    */
-  filterWith: React.PropTypes.func.isRequired,
+  filterWith: React.PropTypes.func,
   /**
    * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
    */
@@ -49,7 +49,7 @@ const propTypes = {
    * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view icon names.
    */
   iconName: React.PropTypes.string,
-  label: React.PropTypes.string.isRequired,
+  label: React.PropTypes.string,
   /**
    * Custom component that overrides the default Lookup Item component.
    */
@@ -60,7 +60,7 @@ const propTypes = {
   modal: React.PropTypes.bool,
   onBlur: React.PropTypes.func,
   onChange: React.PropTypes.func,
-  onItemSelect: React.PropTypes.func.isRequired,
+  onItemSelect: React.PropTypes.func,
   onItemUnselect: React.PropTypes.func,
   /**
    * Lookup item data.

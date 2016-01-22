@@ -454,7 +454,7 @@
                 "type": {
                     "name": "func"
                 },
-                "required": true,
+                "required": false,
                 "description": "Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.",
                 "defaultValue": {
                     "value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
@@ -500,7 +500,7 @@
                 "type": {
                     "name": "string"
                 },
-                "required": true,
+                "required": false,
                 "description": ""
             },
             "listItemLabelRenderer": {
@@ -535,7 +535,7 @@
                 "type": {
                     "name": "func"
                 },
-                "required": true,
+                "required": false,
                 "description": ""
             },
             "onItemUnselect": {
@@ -671,11 +671,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on menu closing.",
-                "defaultValue": {
-                    "value": "300",
-                    "computed": false
-                }
+                "description": "Delay on menu closing."
             },
             "label": {
                 "type": {
@@ -713,7 +709,7 @@
                 "type": {
                     "name": "func"
                 },
-                "required": true,
+                "required": false,
                 "description": ""
             },
             "openOn": {
@@ -775,7 +771,7 @@
                 "type": {
                     "name": "string"
                 },
-                "required": true,
+                "required": false,
                 "description": "",
                 "defaultValue": {
                     "value": "\"Picklist\"",
@@ -807,7 +803,7 @@
                 "type": {
                     "name": "func"
                 },
-                "required": true,
+                "required": false,
                 "description": ""
             },
             "options": {
@@ -1187,11 +1183,7 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on Tooltip closing.",
-                "defaultValue": {
-                    "value": "150",
-                    "computed": false
-                }
+                "description": "Delay on Tooltip closing."
             },
             "openByDefault": {
                 "type": {
