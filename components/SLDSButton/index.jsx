@@ -19,12 +19,12 @@ const displayName = 'SLDSButton';
 const propTypes = {
   /**
    * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-   * If the button has an icon and a visible label, you can omit the assistiveText prop and use the <code>label</code> prop.
+   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
    */
   assistiveText: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
-   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons#hint">Lightning Design System Buttons > Hint</a>.
+   * Please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#hint">Lightning Design System Buttons > Hint</a>.
    */
   hint: React.PropTypes.bool,
   /**
@@ -40,7 +40,7 @@ const propTypes = {
    */
   iconSize: React.PropTypes.oneOf(["x-small", "small", "large"]),
   /**
-   * For icon variants, please reference <a href="https://design-system-dev.herokuapp.com/components/buttons#icon">Lightning Design System Icons</a>.
+   * For icon variants, please reference <a href="http://www.lightningdesignsystem.com/components/buttons/#icon">Lightning Design System Icons</a>.
    */
   iconVariant: React.PropTypes.oneOf(["bare", "container", "border", "border-filled", "small", "more"]),
   /**

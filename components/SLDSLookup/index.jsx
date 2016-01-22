@@ -33,11 +33,11 @@ const propTypes = {
    */
   filterWith: React.PropTypes.func.isRequired,
   /**
-   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
+   * Custom component for Lookup footer. The default footer allows user to add new item - see <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>. To use the default footer, pass in <code>SLDSLookup.DefaultFooter</code>.
    */
   footerRenderer: React.PropTypes.func,
   /**
-   * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>.
+   * Custom component for Lookup header. The default header has a search icon and shows the search term - see <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>. To use the default header, pass in <code>SLDSLookup.DefaultHeader</code>.
    */
   headerRenderer: React.PropTypes.func,
   /**
@@ -107,7 +107,7 @@ class SLDSLookup extends React.Component {
       items: [],
       isOpen: false,
       listLength: this.props.options.length,
-      searchTerm: this.props.searchTerm,
+      searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
       selectedIndex: null,
     };
   }
@@ -258,7 +258,7 @@ class SLDSLookup extends React.Component {
 
   handleChange(event) {
     const target = event.target || event.currentTarget;
-    this.setState({searchTerm: target.value});
+    this.setState({searchTerm: this.normalizeSearchTerm(target.value)});
     if(this.props.onChange){
       this.props.onChange(target.value);
     }
@@ -339,6 +339,10 @@ class SLDSLookup extends React.Component {
         setFocus={this.setFocus.bind(this)}
       />;
     }
+  }
+
+  normalizeSearchTerm(string) {
+    return (string || '').toString().replace(/^\s+/, '').replace(/\s+$/, '');
   }
 
   //=================================================

@@ -80,7 +80,7 @@ class FAQSection extends React.Component {
           Which browsers are supported?
           </p>
           <p>
-            We support the same browsers as the Lightning Design System. Please visit <a href="http://www.lightningdesignsystem.com/faq#what-browsers-are-supported">Lightning Design System - FAQ</a> for details.
+            We support the same browsers as the Lightning Design System. Please visit <a href="http://www.lightningdesignsystem.com/faq/#what-browsers-are-supported">Lightning Design System - FAQ</a> for details.
           </p>
         </section>
 
