@@ -26047,7 +26047,7 @@
 	var propTypes = {
 	  /**
 	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-	   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the label prop.
+	   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	   */
 	  assistiveText: _react2.default.PropTypes.string,
 	  disabled: _react2.default.PropTypes.bool,
@@ -35797,7 +35797,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'slds-p-around--medium', style: { "maxWidth": "800px" } },
+	        { className: 'slds-p-around--medium' },
 	        _react2.default.createElement(
 	          'h3',
 	          { className: 'slds-text-heading--medium slds-truncate' },
@@ -35806,11 +35806,11 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'slds-m-vertical--small' },
-	          'Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.0.'
+	          'Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.1.'
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          { className: 'slds-p-vertical--medium' },
+	          { className: 'slds-p-vertical--medium', style: { "maxWidth": "800px" } },
 	          _react2.default.createElement(
 	            'h3',
 	            { className: 'slds-text-heading--medium slds-p-vertical--small' },
@@ -35847,7 +35847,7 @@
 	            _react2.default.createElement(
 	              'a',
 	              { href: 'http://www.lightningdesignsystem.com/components/lookups/#base' },
-	              'Lightning Design System Lookup (base)'
+	              'Lightning Design System Lookup > Base'
 	            ),
 	            '.'
 	          ),
@@ -35878,75 +35878,82 @@
 	          'div',
 	          { className: 'slds-p-vertical--medium' },
 	          _react2.default.createElement(
-	            'h3',
-	            { className: 'slds-text-heading--medium slds-p-vertical--small' },
-	            'Example for tooltip over an info icon'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small' },
-	            'To use it in your code base via npm, proceed as follows.'
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small' },
-	            'First, install the npm module:'
-	          ),
-	          _react2.default.createElement(
-	            'code',
-	            { className: 'slds-p-vertical--small' },
-	            "npm install --save design-system-react"
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small slds-m-top--large ' },
-	            'Then, in the files where you\'re using the components, refer to each Lightning Design System component using the "SLDS" prefix. For example to import the Tooltip and Icon components:'
-	          ),
-	          _react2.default.createElement(
-	            'code',
-	            { className: 'slds-p-vertical--small' },
-	            "import {SLDSPopoverTooltip, SLDSIcon} from \"design-system-react\""
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-p-vertical--small slds-m-top--large ' },
-	            'You can then use the components in your JSX markup. For example:'
-	          ),
-	          _react2.default.createElement(
-	            'code',
-	            { className: 'slds-p-vertical--small' },
-	            'Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor).',
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement('br', null),
-	            '<div ref="tooltipDemoExample">',
-	            _react2.default.createElement('br', null),
-	            '  ',
-	            '<SLDSPopoverTooltip',
-	            _react2.default.createElement('br', null),
-	            '    ',
-	            'align="top"',
-	            _react2.default.createElement('br', null),
-	            '    ',
-	            'content={<span>Here is more information.</span>}',
-	            _react2.default.createElement('br', null),
-	            '    ',
-	            'targetElement={this.refs.tooltipDemoExample}>',
-	            _react2.default.createElement('br', null),
-	            '      ',
-	            '<a href="javascript:void(0)">',
-	            _react2.default.createElement('br', null),
-	            '        ',
-	            '<SLDSIcon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />',
-	            _react2.default.createElement('br', null),
-	            '      ',
-	            '</a>',
-	            _react2.default.createElement('br', null),
-	            '  ',
-	            '</SLDSPopoverTooltip>',
-	            _react2.default.createElement('br', null),
-	            '</div>',
-	            _react2.default.createElement('br', null)
-	          ),
+	            'div',
+	            { style: { "maxWidth": "800px" } },
+	            _react2.default.createElement(
+	              'h3',
+	              { className: 'slds-text-heading--medium slds-p-vertical--small' },
+	              'Example for tooltip over an info icon'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small' },
+	              'To use it in your code base via npm, proceed as follows.'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small' },
+	              'First, install the npm module:'
+	            ),
+	            _react2.default.createElement(
+	              'code',
+	              null,
+	              "npm install --save design-system-react"
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small slds-m-top--large ' },
+	              'Then, in the files where you\'re using the components, refer to each Lightning Design System component using the "SLDS" prefix. For example to import the Tooltip and Icon components:'
+	            ),
+	            _react2.default.createElement(
+	              'code',
+	              null,
+	              "import {SLDSPopoverTooltip, SLDSIcon} from \"design-system-react\""
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--small slds-m-top--large ' },
+	              'You can then use the components in your JSX markup. For example:'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'code',
+	          null,
+	          'Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either a button or anchor).',
+	          _react2.default.createElement('br', null),
+	          '<div ref="tooltipDemoExample">',
+	          _react2.default.createElement('br', null),
+	          '  ',
+	          '<SLDSPopoverTooltip',
+	          _react2.default.createElement('br', null),
+	          '    ',
+	          'align="top"',
+	          _react2.default.createElement('br', null),
+	          '    ',
+	          'content={<span>Here is more information.</span>}',
+	          _react2.default.createElement('br', null),
+	          '    ',
+	          'targetElement={this.refs.tooltipDemoExample}>',
+	          _react2.default.createElement('br', null),
+	          '      ',
+	          '<a href="javascript:void(0)">',
+	          _react2.default.createElement('br', null),
+	          '        ',
+	          '<SLDSIcon assistiveText="info" category="utility" name="info" className="slds-icon-text-default" />',
+	          _react2.default.createElement('br', null),
+	          '      ',
+	          '</a>',
+	          _react2.default.createElement('br', null),
+	          '  ',
+	          '</SLDSPopoverTooltip>',
+	          _react2.default.createElement('br', null),
+	          '</div>',
+	          _react2.default.createElement('br', null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { style: { "maxWidth": "800px" } },
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'slds-p-vertical--small slds-m-top--large ' },
@@ -36132,7 +36139,7 @@
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            'Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.0.'
+	            'Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.1.'
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -47723,6 +47730,10 @@
 
 	var _docs2 = _interopRequireDefault(_docs);
 
+	var _SLDSIcon = __webpack_require__(232);
+
+	var _SLDSIcon2 = _interopRequireDefault(_SLDSIcon);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47771,21 +47782,22 @@
 	          renderedEnumValues.push(_react2.default.createElement(
 	            'span',
 	            { key: i + 'c' },
-	            ', '
+	            ' | '
 	          ));
 	        }
 
+	        var val = enumValue.value.replace(/'|"/g, "");
 	        renderedEnumValues.push(_react2.default.createElement(
 	          'code',
 	          { key: i + 'val' },
-	          enumValue.value
+	          val
 	        ));
 	      });
 
 	      return _react2.default.createElement(
 	        'span',
 	        null,
-	        'one of: ',
+	        'string: ',
 	        renderedEnumValues
 	      );
 	    }
@@ -47808,7 +47820,7 @@
 
 	        var type = propType.name === 'enum' ? this.renderEnum(propType) : p.type;
 	        var defaultProp = docs[prop].defaultValue ? docs[prop].defaultValue.value.replace(/'|"/g, "") : "";
-	        var required = docs[prop].required ? "x" : "";
+	        var required = docs[prop].required ? _react2.default.createElement(_SLDSIcon2.default, { name: 'check', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }) : "";
 
 	        var row = _react2.default.createElement(
 	          'tr',
@@ -47825,7 +47837,7 @@
 	          ),
 	          _react2.default.createElement(
 	            'td',
-	            null,
+	            { style: { textAlign: "center" } },
 	            required
 	          ),
 	          _react2.default.createElement(
@@ -48120,7 +48132,7 @@
 						"name": "string"
 					},
 					"required": false,
-					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the label prop."
+					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
 				},
 				"disabled": {
 					"type": {
