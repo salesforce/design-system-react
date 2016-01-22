@@ -15,9 +15,6 @@ import SLDSTooltipTrigger from "../SLDSPopoverTooltip/trigger"
 const classNames = require("classnames");
 import omit from "lodash.omit";
 
-
-const blurElement = e => e.currentTarget && e.currentTarget.blur()
-
 const displayName = "SLDSButtonStateful";
 const propTypes = {
   /**
@@ -99,7 +96,7 @@ class SLDSButtonStateful extends SLDSTooltipTrigger {
 
     if(this.props.type === "follow") {
       return (
-        <button onMouseLeave={blurElement} className={this.getClassName()} aria-live="assertive" onClick={this.handleClick.bind(this)} {...props}>
+        <button className={this.getClassName()} aria-live="assertive" onClick={this.handleClick.bind(this)} {...props}>
           <span className="slds-text-not-selected">
             <ButtonIcon disabled={this.props.disabled} name="add" size="small" position="left" className="slds-button__icon--stateful" />
             Follow
@@ -118,7 +115,7 @@ class SLDSButtonStateful extends SLDSTooltipTrigger {
     }
     else if(this.props.type === "join") {
       return (
-        <button onMouseLeave={blurElement} className={this.getClassName()} aria-live="assertive" onClick={this.handleClick.bind(this)} {...props}>
+        <button className={this.getClassName()} aria-live="assertive" onClick={this.handleClick.bind(this)} {...props}>
           <span className="slds-text-not-selected">
             <ButtonIcon disabled={this.props.disabled} name="add" size="small" position="left" className="slds-button__icon--stateful" />
             Join
@@ -137,7 +134,7 @@ class SLDSButtonStateful extends SLDSTooltipTrigger {
     }
     else if(this.props.type === "icon") {
       return (
-        <button onMouseLeave={blurElement} className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props} aria-live="polite">
+        <button className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props} aria-live="polite">
           <ButtonIcon assistiveText={this.state.active ?  this.props.assistiveText + " selected" : this.props.assistiveText} disabled={this.props.disabled} name={this.props.iconName} size={this.props.iconSize}  className="slds-button__icon--stateful"  />
           { this.getTooltip() }
         </button>
