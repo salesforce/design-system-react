@@ -27,9 +27,9 @@ module.exports = React.createClass( {
   render() {
     return (
       <SLDSGrid flavor='vertical' className='stage slds-nowrap'>
-        <header className='slds-page-header'>
-          <Link to="welcome">
-            <div className='slds-media'>
+        <header className='slds-page-header slds-clearfix'>
+          <Link to="welcome" className="slds-float--left a-plain slds-p-vertical--x-small">
+            <div className='slds-media slds-media--center'>
               <span className='slds-media__figure site-logo'>Salesforce</span>
               <div className='slds-media__body'>
                 <h1 className='slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle' title='Record Title'>Design System React</h1>
@@ -39,25 +39,25 @@ module.exports = React.createClass( {
         </header>
 
         <main className='stage-main slds-grid slds-wrap slds-grow'>
-          <aside className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-around--large'>
+          <aside className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-vertical--large'>
             <p className="slds-text-heading--small slds-p-vertical--small">
-              <Link to="getting-started">Getting Started</Link>
+              <Link to="getting-started" className="a-plain slds-p-horizontal--large slds-p-vertical--x-small">Getting Started</Link>
             </p>
-            <p className="slds-text-heading--small slds-p-vertical--small">Components</p>
+            <p className="slds-text-heading--small slds-p-horizontal--large slds-p-vertical--small">Components</p>
             <ul className="slds-p-bottom--small">
-              <li><Link to="button">SLDSButton</Link></li>
-              <li><Link to="button-stateful">SLDSButtonStateful</Link></li>
-              <li><Link to="button-group">SLDSButtonGroup</Link></li>
-              <li><Link to="icon">SLDSIcon</Link></li>
-              <li><Link to="lookup">SLDSLookup</Link></li>
-              <li><Link to="dropdown">SLDSMenuDropdown</Link></li>
-              <li><Link to="picklist">SLDSMenuPicklist</Link></li>
-              <li><Link to="modal">SLDSModal</Link></li>
-              <li><Link to="notification">SLDSNotification</Link></li>
-              <li><Link to="tooltip">SLDSPopoverTooltip</Link></li>
+              <li><Link to="button" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButton</Link></li>
+              <li><Link to="button-stateful" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButtonStateful</Link></li>
+              <li><Link to="button-group" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButtonGroup</Link></li>
+              <li><Link to="icon" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSIcon</Link></li>
+              <li><Link to="lookup" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSLookup</Link></li>
+              <li><Link to="dropdown" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSMenuDropdown</Link></li>
+              <li><Link to="picklist" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSMenuPicklist</Link></li>
+              <li><Link to="modal" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSModal</Link></li>
+              <li><Link to="notification" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSNotification</Link></li>
+              <li><Link to="tooltip" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSPopoverTooltip</Link></li>
             </ul>
             <p className="slds-text-heading--small slds-p-vertical--small">
-              <Link to="faq">FAQ</Link>
+              <Link to="faq" className="a-plain slds-p-horizontal--large slds-p-vertical--x-small">FAQ</Link>
             </p>
           </aside>
 
