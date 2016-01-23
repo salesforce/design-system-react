@@ -55,8 +55,19 @@ html {
   width: 3.9375rem;
   height: 2.75rem;
   text-indent: -9999em;
-  background: url(logo.svg) no-repeat;
+  background: url('/assets/logo.svg') no-repeat;
 }
 .site-text--xl {
   font-size: 3rem !important;
 }
+
+.a-plain { color: inherit !important; }
+.a-plain:hover, .a-plain:focus {
+  text-decoration: none !important;
+  background-color: #f6f6f6;
+}
+
+aside a {
+  display: block;
+}
+

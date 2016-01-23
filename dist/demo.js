@@ -75,55 +75,59 @@
 
 	var _pages2 = _interopRequireDefault(_pages);
 
-	var _GettingStarted = __webpack_require__(290);
+	var _Welcome = __webpack_require__(290);
+
+	var _Welcome2 = _interopRequireDefault(_Welcome);
+
+	var _GettingStarted = __webpack_require__(291);
 
 	var _GettingStarted2 = _interopRequireDefault(_GettingStarted);
 
-	var _FAQ = __webpack_require__(291);
+	var _FAQ = __webpack_require__(293);
 
 	var _FAQ2 = _interopRequireDefault(_FAQ);
 
-	var _ButtonSection = __webpack_require__(292);
+	var _ButtonSection = __webpack_require__(294);
 
 	var _ButtonSection2 = _interopRequireDefault(_ButtonSection);
 
-	var _ButtonStatefulSection = __webpack_require__(305);
+	var _ButtonStatefulSection = __webpack_require__(307);
 
 	var _ButtonStatefulSection2 = _interopRequireDefault(_ButtonStatefulSection);
 
-	var _ButtonGroupSection = __webpack_require__(306);
+	var _ButtonGroupSection = __webpack_require__(308);
 
 	var _ButtonGroupSection2 = _interopRequireDefault(_ButtonGroupSection);
 
-	var _DropdownSection = __webpack_require__(307);
+	var _DropdownSection = __webpack_require__(309);
 
 	var _DropdownSection2 = _interopRequireDefault(_DropdownSection);
 
-	var _IconSection = __webpack_require__(308);
+	var _IconSection = __webpack_require__(310);
 
 	var _IconSection2 = _interopRequireDefault(_IconSection);
 
-	var _LookupSection = __webpack_require__(309);
+	var _LookupSection = __webpack_require__(311);
 
 	var _LookupSection2 = _interopRequireDefault(_LookupSection);
 
-	var _ModalSection = __webpack_require__(310);
+	var _ModalSection = __webpack_require__(312);
 
 	var _ModalSection2 = _interopRequireDefault(_ModalSection);
 
-	var _DatePickerSingleSelectSection = __webpack_require__(311);
+	var _DatePickerSingleSelectSection = __webpack_require__(313);
 
 	var _DatePickerSingleSelectSection2 = _interopRequireDefault(_DatePickerSingleSelectSection);
 
-	var _NotificationSection = __webpack_require__(319);
+	var _NotificationSection = __webpack_require__(321);
 
 	var _NotificationSection2 = _interopRequireDefault(_NotificationSection);
 
-	var _PicklistSection = __webpack_require__(320);
+	var _PicklistSection = __webpack_require__(322);
 
 	var _PicklistSection2 = _interopRequireDefault(_PicklistSection);
 
-	var _TooltipSection = __webpack_require__(321);
+	var _TooltipSection = __webpack_require__(323);
 
 	var _TooltipSection2 = _interopRequireDefault(_TooltipSection);
 
@@ -139,6 +143,7 @@
 	  _react2.default.createElement(
 	    _reactRouter.Route,
 	    { name: 'home', handler: _pages2.default },
+	    _react2.default.createElement(_reactRouter.Route, { name: 'welcome', path: 'welcome', handler: _Welcome2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'getting-started', path: 'getting-started', handler: _GettingStarted2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'button', path: 'button', handler: _ButtonSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'button-stateful', path: 'button-stateful', handler: _ButtonStatefulSection2.default }),
@@ -35437,18 +35442,12 @@
 
 	var _SLDSGrid2 = _interopRequireDefault(_SLDSGrid);
 
-	var _SLDSIcon = __webpack_require__(232);
-
-	var _SLDSIcon2 = _interopRequireDefault(_SLDSIcon);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Route = _reactRouter2.default.Route;
 	var DefaultRoute = _reactRouter2.default.DefaultRoute;
 	var RouteHandler = _reactRouter2.default.RouteHandler;
 	var Link = _reactRouter2.default.Link;
-
-	var SLDSColumn = _SLDSGrid2.default.Column;
 
 	module.exports = _react2.default.createClass({
 	  displayName: 'exports',
@@ -35463,43 +35462,26 @@
 	      _SLDSGrid2.default,
 	      { flavor: 'vertical', className: 'stage slds-nowrap' },
 	      _react2.default.createElement(
-	        'div',
-	        { className: 'region region--top slds-shrink-none' },
+	        'header',
+	        { className: 'slds-page-header slds-clearfix' },
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'slds-page-header' },
+	          Link,
+	          { to: 'welcome', className: 'slds-float--left a-plain slds-p-vertical--x-small' },
 	          _react2.default.createElement(
-	            _SLDSGrid2.default,
-	            null,
+	            'div',
+	            { className: 'slds-media slds-media--center' },
 	            _react2.default.createElement(
-	              SLDSColumn,
-	              { className: 'slds-has-flexi-truncate' },
+	              'span',
+	              { className: 'slds-media__figure site-logo' },
+	              'Salesforce'
+	            ),
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'slds-media__body' },
 	              _react2.default.createElement(
-	                'div',
-	                { className: 'slds-media' },
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'slds-media__figure' },
-	                  _react2.default.createElement(_SLDSIcon2.default, { assistiveText: 'lead', name: 'lead', category: 'standard', size: 'large' })
-	                ),
-	                _react2.default.createElement(
-	                  'div',
-	                  { className: 'slds-media__body' },
-	                  _react2.default.createElement(
-	                    'p',
-	                    { className: 'slds-text-heading--label' },
-	                    'Lightning Design System'
-	                  ),
-	                  _react2.default.createElement(
-	                    'div',
-	                    { className: 'slds-grid' },
-	                    _react2.default.createElement(
-	                      'h1',
-	                      { className: 'slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle', title: 'Record Title' },
-	                      'React Components'
-	                    )
-	                  )
-	                )
+	                'h1',
+	                { className: 'slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle', title: 'Record Title' },
+	                'Design System React'
 	              )
 	            )
 	          )
@@ -35507,129 +35489,125 @@
 	      ),
 	      _react2.default.createElement(
 	        'main',
-	        { className: 'stage-main slds-grid slds-wrap slds-grow', role: 'main' },
+	        { className: 'stage-main slds-grid slds-wrap slds-grow' },
 	        _react2.default.createElement(
-	          'div',
-	          { className: 'region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-around--large' },
+	          'aside',
+	          { className: 'region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-vertical--large' },
 	          _react2.default.createElement(
-	            'section',
-	            { className: 'slds-p-bottom--large' },
+	            'p',
+	            { className: 'slds-text-heading--small slds-p-vertical--small' },
 	            _react2.default.createElement(
-	              'p',
-	              { className: 'slds-text-heading--small slds-p-vertical--small' },
+	              Link,
+	              { to: 'getting-started', className: 'a-plain slds-p-horizontal--large slds-p-vertical--x-small' },
+	              'Getting Started'
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'slds-text-heading--small slds-p-horizontal--large slds-p-vertical--small' },
+	            'Components'
+	          ),
+	          _react2.default.createElement(
+	            'ul',
+	            { className: 'slds-p-bottom--small' },
+	            _react2.default.createElement(
+	              'li',
+	              null,
 	              _react2.default.createElement(
 	                Link,
-	                { to: 'getting-started' },
-	                'Getting Started'
+	                { to: 'button', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSButton'
 	              )
 	            ),
 	            _react2.default.createElement(
-	              'p',
-	              { className: 'slds-text-heading--small slds-p-vertical--small' },
-	              'Components'
-	            ),
-	            _react2.default.createElement(
-	              'ul',
-	              { className: 'slds-p-bottom--small' },
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  Link,
-	                  { to: 'button' },
-	                  'SLDSButton'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  Link,
-	                  { to: 'button-stateful' },
-	                  'SLDSButtonStateful'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  Link,
-	                  { to: 'button-group' },
-	                  'SLDSButtonGroup'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  Link,
-	                  { to: 'icon' },
-	                  'SLDSIcon'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  Link,
-	                  { to: 'lookup' },
-	                  'SLDSLookup'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  Link,
-	                  { to: 'dropdown' },
-	                  'SLDSMenuDropdown'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  Link,
-	                  { to: 'picklist' },
-	                  'SLDSMenuPicklist'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  Link,
-	                  { to: 'modal' },
-	                  'SLDSModal'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  Link,
-	                  { to: 'notification' },
-	                  'SLDSNotification'
-	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                null,
-	                _react2.default.createElement(
-	                  Link,
-	                  { to: 'tooltip' },
-	                  'SLDSPopoverTooltip'
-	                )
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'p',
-	              { className: 'slds-text-heading--small slds-p-vertical--small' },
+	              'li',
+	              null,
 	              _react2.default.createElement(
 	                Link,
-	                { to: 'faq' },
-	                'FAQ'
+	                { to: 'button-stateful', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSButtonStateful'
 	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                Link,
+	                { to: 'button-group', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSButtonGroup'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                Link,
+	                { to: 'icon', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSIcon'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                Link,
+	                { to: 'lookup', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSLookup'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                Link,
+	                { to: 'dropdown', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSMenuDropdown'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                Link,
+	                { to: 'picklist', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSMenuPicklist'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                Link,
+	                { to: 'modal', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSModal'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                Link,
+	                { to: 'notification', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSNotification'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                Link,
+	                { to: 'tooltip', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSPopoverTooltip'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'slds-text-heading--small slds-p-vertical--small' },
+	            _react2.default.createElement(
+	              Link,
+	              { to: 'faq', className: 'a-plain slds-p-horizontal--large slds-p-vertical--x-small' },
+	              'FAQ'
 	            )
 	          )
 	        ),
@@ -35759,6 +35737,117 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(160);
+
+	var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
+	var Link = _reactRouter2.default.Link;
+
+	var displayName = "TooltipSection";
+	var propTypes = {};
+	var defaultProps = {};
+
+	var Welcome = function (_React$Component) {
+	  _inherits(Welcome, _React$Component);
+
+	  function Welcome() {
+	    _classCallCheck(this, Welcome);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Welcome).apply(this, arguments));
+	  }
+
+	  _createClass(Welcome, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'section',
+	        { className: 'copy-text', style: { "maxWidth": "800px" } },
+	        _react2.default.createElement(
+	          'h1',
+	          { className: 'site-text--xl' },
+	          'Design System React'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'slds-text-heading--medium' },
+	          'Create the world’s best enterprise app experiences.'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'slds-p-vertical--small', style: { "backgroundColor": "yellow" } },
+	          'Current release: TODO -- add link to release notes'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'slds-p-vertical--small', style: { "backgroundColor": "yellow" } },
+	          'Github Stars: TODO -- add github stars button'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'slds-p-vertical--small' },
+	          'Design System React is the ReactJS implementation of ',
+	          _react2.default.createElement(
+	            'a',
+	            { href: 'http://www.lightningdesignsystem.com/' },
+	            'Ligtning Design System'
+	          ),
+	          ', a collection of design patterns, components, and guidelines for creating unified UI in the Salesforce ecosystem.'
+	        ),
+	        _react2.default.createElement(
+	          'p',
+	          { className: 'slds-p-vertical--small' },
+	          'Check out the ',
+	          _react2.default.createElement(
+	            Link,
+	            { to: 'getting-started' },
+	            'Getting Started'
+	          ),
+	          ' page to learn how to import Design System React into your project.'
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Welcome;
+	}(_react2.default.Component);
+
+	Welcome.displayName = displayName;
+	Welcome.propTypes = propTypes;
+	Welcome.defaultProps = defaultProps;
+
+	module.exports = Welcome;
+
+/***/ },
+/* 291 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _globalVariables = __webpack_require__(292);
+
+	var _globalVariables2 = _interopRequireDefault(_globalVariables);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35795,7 +35884,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'slds-p-around--medium' },
+	        { className: 'slds-p-around--medium copy-text' },
 	        _react2.default.createElement(
 	          'h3',
 	          { className: 'slds-text-heading--medium slds-truncate' },
@@ -35804,7 +35893,11 @@
 	        _react2.default.createElement(
 	          'p',
 	          { className: 'slds-m-vertical--small' },
-	          'Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.1.'
+	          'Note: Design System React is optimized for ',
+	          _globalVariables2.default.reactVersion,
+	          ' and uses ',
+	          _globalVariables2.default.sldsVersion,
+	          '.'
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -35957,7 +36050,7 @@
 	            { className: 'slds-p-vertical--small slds-m-top--large ' },
 	            'Here\'s the result when you hover over the info icon:'
 	          ),
-	          _react2.default.createElement('img', { src: 'demo/assets/images/tooltipHover.png', alt: 'Tooltip opened on hover' }),
+	          _react2.default.createElement('img', { src: 'assets/tooltipHover.png', alt: 'Tooltip opened on hover' }),
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'slds-p-vertical--small slds-m-top--large ' },
@@ -35990,7 +36083,32 @@
 	module.exports = GettingStartedSection;
 
 /***/ },
-/* 291 */
+/* 292 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+
+	exports.default = {
+	  reactVersion: 'react0.14.x',
+	  sldsVersion: 'Lightning Design System 0.12.1'
+	};
+
+/***/ },
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36046,7 +36164,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'slds-p-around--medium', style: { "maxWidth": "800px" } },
+	        { className: 'slds-p-around--medium copy-text', style: { "maxWidth": "800px" } },
 	        _react2.default.createElement(
 	          'h3',
 	          { className: 'slds-text-heading--medium slds-truncate' },
@@ -36209,7 +36327,7 @@
 	module.exports = FAQSection;
 
 /***/ },
-/* 292 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36220,19 +36338,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -36285,7 +36403,11 @@
 	          { className: 'slds-text-heading--medium slds-truncate' },
 	          'SLDSButton'
 	        ),
-	        docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
@@ -36315,20 +36437,20 @@
 	module.exports = ButtonSection;
 
 /***/ },
-/* 293 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	__webpack_require__(294);
-
 	__webpack_require__(296);
 
 	__webpack_require__(298);
 
 	__webpack_require__(300);
+
+	__webpack_require__(302);
 
 	__webpack_require__(286);
 
@@ -36338,7 +36460,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var CM = __webpack_require__(295);
+	var CM = __webpack_require__(297);
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
@@ -36575,7 +36697,7 @@
 	module.exports = CodeMirror;
 
 /***/ },
-/* 294 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -36583,7 +36705,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(295));
+	    mod(__webpack_require__(297));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -36653,7 +36775,7 @@
 
 
 /***/ },
-/* 295 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -45549,7 +45671,7 @@
 
 
 /***/ },
-/* 296 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -45557,7 +45679,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(295), __webpack_require__(297), __webpack_require__(298), __webpack_require__(299));
+	    mod(__webpack_require__(297), __webpack_require__(299), __webpack_require__(300), __webpack_require__(301));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror", "../xml/xml", "../javascript/javascript", "../css/css"], mod);
 	  else // Plain browser env
@@ -45705,7 +45827,7 @@
 
 
 /***/ },
-/* 297 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -45713,7 +45835,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(295));
+	    mod(__webpack_require__(297));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -46105,7 +46227,7 @@
 
 
 /***/ },
-/* 298 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -46115,7 +46237,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(295));
+	    mod(__webpack_require__(297));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -46853,7 +46975,7 @@
 
 
 /***/ },
-/* 299 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -46861,7 +46983,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(295));
+	    mod(__webpack_require__(297));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -47684,13 +47806,13 @@
 
 
 /***/ },
-/* 300 */
+/* 302 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 301 */
+/* 303 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -47713,7 +47835,7 @@
 	module.exports = Samples;
 
 /***/ },
-/* 302 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47724,7 +47846,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -47920,15 +48042,15 @@
 	module.exports = PropTable;
 
 /***/ },
-/* 303 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	module.exports = __webpack_require__(304);
+	module.exports = __webpack_require__(306);
 
 /***/ },
-/* 304 */
+/* 306 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -48387,7 +48509,7 @@
 					"type": {
 						"name": "func"
 					},
-					"required": true,
+					"required": false,
 					"description": "Custom function to filter the Lookup items when typing into input field. The default function is case-insensitive and uses the searchTerm to filter Lookup items on their labels.",
 					"defaultValue": {
 						"value": "(term, item) => {\n  if(!term) return true;\n  return item.label.match(new RegExp(escapeRegExp(term), \"ig\"));\n}",
@@ -48433,7 +48555,7 @@
 					"type": {
 						"name": "string"
 					},
-					"required": true,
+					"required": false,
 					"description": ""
 				},
 				"listItemLabelRenderer": {
@@ -48468,7 +48590,7 @@
 					"type": {
 						"name": "func"
 					},
-					"required": true,
+					"required": false,
 					"description": ""
 				},
 				"onItemUnselect": {
@@ -48642,7 +48764,7 @@
 					"type": {
 						"name": "func"
 					},
-					"required": true,
+					"required": false,
 					"description": ""
 				},
 				"openOn": {
@@ -48704,7 +48826,7 @@
 					"type": {
 						"name": "string"
 					},
-					"required": true,
+					"required": false,
 					"description": "",
 					"defaultValue": {
 						"value": "\"Picklist\"",
@@ -48736,7 +48858,7 @@
 					"type": {
 						"name": "func"
 					},
-					"required": true,
+					"required": false,
 					"description": ""
 				},
 				"options": {
@@ -49137,7 +49259,7 @@
 	};
 
 /***/ },
-/* 305 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49148,19 +49270,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -49213,7 +49335,11 @@
 	          { className: 'slds-text-heading--medium slds-truncate' },
 	          'SLDSButtonStateful'
 	        ),
-	        docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
@@ -49234,7 +49360,7 @@
 	module.exports = ButtonStatefulSection;
 
 /***/ },
-/* 306 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49245,19 +49371,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -49310,7 +49436,11 @@
 	          { className: 'slds-text-heading--medium slds-truncate' },
 	          'SLDSButtonGroup'
 	        ),
-	        docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
@@ -49331,7 +49461,7 @@
 	module.exports = ButtonGroupSection;
 
 /***/ },
-/* 307 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49342,19 +49472,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -49407,7 +49537,11 @@
 	          { className: 'slds-text-heading--medium slds-truncate' },
 	          'SLDSMenuDropdown'
 	        ),
-	        docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small' }) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -49428,7 +49562,7 @@
 	module.exports = DropdownSection;
 
 /***/ },
-/* 308 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49439,19 +49573,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -49504,7 +49638,11 @@
 	          { className: 'slds-text-heading--medium slds-truncate' },
 	          'SLDSIcon'
 	        ),
-	        docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
@@ -49525,7 +49663,7 @@
 	module.exports = IconSection;
 
 /***/ },
-/* 309 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49536,19 +49674,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -49601,7 +49739,11 @@
 	          { className: 'slds-text-heading--medium slds-truncate' },
 	          'SLDSLookup'
 	        ),
-	        docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -49622,7 +49764,7 @@
 	module.exports = LookupSection;
 
 /***/ },
-/* 310 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49633,19 +49775,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -49698,7 +49840,11 @@
 	          { className: 'slds-text-heading--medium slds-truncate' },
 	          'SLDSModal'
 	        ),
-	        docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
@@ -49719,7 +49865,7 @@
 	module.exports = ModalSection;
 
 /***/ },
-/* 311 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -49737,19 +49883,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -49757,7 +49903,7 @@
 
 	var _SLDSMenuPicklist2 = _interopRequireDefault(_SLDSMenuPicklist);
 
-	var _SLDSDateInput = __webpack_require__(312);
+	var _SLDSDateInput = __webpack_require__(314);
 
 	var _SLDSDateInput2 = _interopRequireDefault(_SLDSDateInput);
 
@@ -49794,7 +49940,7 @@
 	});
 
 /***/ },
-/* 312 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -49820,7 +49966,7 @@
 
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 
-	var _index = __webpack_require__(313);
+	var _index = __webpack_require__(315);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -49963,7 +50109,7 @@
 	});
 
 /***/ },
-/* 313 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -49981,11 +50127,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _index = __webpack_require__(314);
+	var _index = __webpack_require__(316);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _index3 = __webpack_require__(317);
+	var _index3 = __webpack_require__(319);
 
 	var _index4 = _interopRequireDefault(_index3);
 
@@ -50130,7 +50276,7 @@
 	});
 
 /***/ },
-/* 314 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -50147,7 +50293,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _index = __webpack_require__(315);
+	var _index = __webpack_require__(317);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -50374,7 +50520,7 @@
 	});
 
 /***/ },
-/* 315 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -50392,7 +50538,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _index = __webpack_require__(316);
+	var _index = __webpack_require__(318);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -50469,7 +50615,7 @@
 	});
 
 /***/ },
-/* 316 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -50628,7 +50774,7 @@
 	});
 
 /***/ },
-/* 317 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -50646,7 +50792,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _index = __webpack_require__(318);
+	var _index = __webpack_require__(320);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -50773,7 +50919,7 @@
 	});
 
 /***/ },
-/* 318 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -50844,7 +50990,7 @@
 	});
 
 /***/ },
-/* 319 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50855,19 +51001,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -50920,7 +51066,11 @@
 	          { className: 'slds-text-heading--medium slds-truncate' },
 	          'SLDSNotification'
 	        ),
-	        docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
@@ -50941,7 +51091,7 @@
 	module.exports = NotificationSection;
 
 /***/ },
-/* 320 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50952,19 +51102,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -51017,7 +51167,11 @@
 	          { className: 'slds-text-heading--medium slds-truncate' },
 	          'SLDSMenuPicklist'
 	        ),
-	        docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          null,
@@ -51038,7 +51192,7 @@
 	module.exports = PicklistSection;
 
 /***/ },
-/* 321 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51049,19 +51203,19 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(293);
+	var _CodeMirror = __webpack_require__(295);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(301);
+	var _Samples = __webpack_require__(303);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(302);
+	var _PropTable = __webpack_require__(304);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(303);
+	var _docs = __webpack_require__(305);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -51114,7 +51268,11 @@
 	          { className: 'slds-text-heading--medium slds-truncate' },
 	          'SLDSPopoverTooltip'
 	        ),
-	        docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
 	        _react2.default.createElement(
 	          'div',
 	          null,
