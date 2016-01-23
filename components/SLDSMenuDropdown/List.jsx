@@ -101,6 +101,9 @@ class SLDSList extends React.Component {
     if(this.props.onSelect){
       this.props.onSelect(index);
     }
+    if(this.props.onUpdateHighlighted){
+      this.props.onUpdateHighlighted(index);
+    }
   }
 
   handleItemFocus (itemIndex, itemHeight) {
