@@ -66,6 +66,7 @@ const defaultProps = {
   openOn: "click",
   modal: true,
   buttonVariant: "neutral",
+  hoverCloseDelay: 300
 };
 
 /**
