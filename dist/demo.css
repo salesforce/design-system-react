@@ -369,7 +369,7 @@ span.CodeMirror-selectedtext { background: none; }
   text-transform: uppercase;
   font-size: 1.1em;
 }
-
+/*
 .drop.drop-out-of-bounds-top {
   display:none;
 }
@@ -377,7 +377,7 @@ span.CodeMirror-selectedtext { background: none; }
 .drop-element-attached-bottom .SLDSPopover {
   align-self: flex-end;
 }
-
+*/
 .CodeMirror-code pre {
   overflow: inherit;
 }
@@ -404,7 +404,7 @@ html {
   width: 3.9375rem;
   height: 2.75rem;
   text-indent: -9999em;
-  background: url('/assets/logo.svg') no-repeat;
+  background: url('https://www.lightningdesignsystem.com/assets/images/logo.svg') no-repeat;
 }
 .site-text--xl {
   font-size: 3rem !important;

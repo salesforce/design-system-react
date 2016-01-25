@@ -63,6 +63,8 @@ const propTypes = {
 };
 const defaultProps = {
   align: "left",
+  disabled: false,
+  checkmark: false,
   openOn: "click",
   modal: true,
   buttonVariant: "neutral",

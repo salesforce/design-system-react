@@ -15,14 +15,22 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "hint": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#hint\">Lightning Design System Buttons > Hint</a>."
+                "description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#hint\">Lightning Design System Buttons > Hint</a>.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "iconName": {
                 "type": {
@@ -129,7 +137,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, button scales to 100% width on small form factors."
+                "description": "If true, button scales to 100% width on small form factors.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "tabIndex": {
                 "type": {
@@ -204,7 +216,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "iconName": {
                 "type": {
@@ -254,7 +270,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, button scales to 100% width on small form factors"
+                "description": "If true, button scales to 100% width on small form factors",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "tabIndex": {
                 "type": {
@@ -527,7 +547,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, component renders specifically to work inside Modal."
+                "description": "If true, component renders specifically to work inside Modal.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "onBlur": {
                 "type": {
@@ -569,7 +593,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, adds asterisk next to input label to indicate it is a required field."
+                "description": "If true, adds asterisk next to input label to indicate it is a required field.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "searchTerm": {
                 "type": {
@@ -669,14 +697,22 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, renders checkmark icon on the selected Menu Item."
+                "description": "If true, renders checkmark icon on the selected Menu Item.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "disabled": {
                 "type": {
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "hoverCloseDelay": {
                 "type": {
@@ -781,7 +817,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "label": {
                 "type": {
@@ -806,7 +846,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": "If true, component renders specifically to work inside Modal."
+                "description": "If true, component renders specifically to work inside Modal.",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "onClick": {
                 "type": {
@@ -1210,7 +1254,11 @@
                     "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
+                    "computed": false
+                }
             },
             "target": {
                 "type": {

@@ -58,7 +58,9 @@ const propTypes = {
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {
+  disabled: false,
   iconSize: "medium",
+  responsive: false,
   stateOne: { iconName: "add", label: "Follow" },
   stateTwo: { iconName: "check", label: "Following" },
   stateThree: { iconName: "close", label: "Unfollow" },

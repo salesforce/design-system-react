@@ -23176,7 +23176,10 @@
 	  variant: _react2.default.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
 	var defaultProps = {
+	  disabled: false,
+	  hint: false,
 	  iconSize: "medium",
+	  responsive: false,
 	  variant: "base"
 	};
 
@@ -26110,7 +26113,9 @@
 	  variant: _react2.default.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"])
 	};
 	var defaultProps = {
+	  disabled: false,
 	  iconSize: "medium",
+	  responsive: false,
 	  stateOne: { iconName: "add", label: "Follow" },
 	  stateTwo: { iconName: "check", label: "Following" },
 	  stateThree: { iconName: "close", label: "Unfollow" }
@@ -26553,6 +26558,8 @@
 
 	var defaultProps = {
 	  filterWith: defaultFilter,
+	  modal: false,
+	  requiredField: false,
 	  searchTerm: ""
 	};
 
@@ -30695,6 +30702,8 @@
 	};
 	var defaultProps = {
 	  align: "left",
+	  disabled: false,
+	  checkmark: false,
 	  openOn: "click",
 	  modal: true,
 	  buttonVariant: "neutral",
@@ -31642,7 +31651,9 @@
 	  value: _react2.default.PropTypes.node
 	};
 	var defaultProps = {
+	  disabled: false,
 	  label: "Picklist",
+	  modal: false,
 	  placeholder: "Select an Option"
 	};
 
@@ -33384,8 +33395,8 @@
 	var defaultProps = {
 	  align: "center",
 	  directional: false,
-	  isOpen: false,
 	  dismissible: true,
+	  isOpen: false,
 	  prompt: ""
 	};
 
@@ -34952,7 +34963,8 @@
 	    null,
 	    "Tooltip"
 	  ),
-	  hoverCloseDelay: 50
+	  hoverCloseDelay: 50,
+	  openByDefault: false
 	};
 
 	/**
@@ -35484,8 +35496,13 @@
 	              { className: 'slds-media__body' },
 	              _react2.default.createElement(
 	                'h1',
-	                { className: 'slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle', title: 'Record Title' },
-	                'Design System React'
+	                { className: 'slds-text-heading--small slds-m-right--small slds-truncate slds-align-middle', title: 'Record Title' },
+	                'design system : ',
+	                _react2.default.createElement(
+	                  'strong',
+	                  null,
+	                  'interactive accessible components for React'
+	                )
 	              )
 	            )
 	          )
@@ -48074,14 +48091,22 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": ""
+					"description": "",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"hint": {
 					"type": {
 						"name": "bool"
 					},
 					"required": false,
-					"description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#hint\">Lightning Design System Buttons > Hint</a>."
+					"description": "Please reference <a href=\"http://www.lightningdesignsystem.com/components/buttons/#hint\">Lightning Design System Buttons > Hint</a>.",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"iconName": {
 					"type": {
@@ -48188,7 +48213,11 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": "If true, button scales to 100% width on small form factors."
+					"description": "If true, button scales to 100% width on small form factors.",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"tabIndex": {
 					"type": {
@@ -48263,7 +48292,11 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": ""
+					"description": "",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"iconName": {
 					"type": {
@@ -48313,7 +48346,11 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": "If true, button scales to 100% width on small form factors"
+					"description": "If true, button scales to 100% width on small form factors",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"tabIndex": {
 					"type": {
@@ -48586,7 +48623,11 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": "If true, component renders specifically to work inside Modal."
+					"description": "If true, component renders specifically to work inside Modal.",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"onBlur": {
 					"type": {
@@ -48628,7 +48669,11 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": "If true, adds asterisk next to input label to indicate it is a required field."
+					"description": "If true, adds asterisk next to input label to indicate it is a required field.",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"searchTerm": {
 					"type": {
@@ -48728,14 +48773,22 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": "If true, renders checkmark icon on the selected Menu Item."
+					"description": "If true, renders checkmark icon on the selected Menu Item.",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"disabled": {
 					"type": {
 						"name": "bool"
 					},
 					"required": false,
-					"description": ""
+					"description": "",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"hoverCloseDelay": {
 					"type": {
@@ -48840,7 +48893,11 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": ""
+					"description": "",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"label": {
 					"type": {
@@ -48865,7 +48922,11 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": "If true, component renders specifically to work inside Modal."
+					"description": "If true, component renders specifically to work inside Modal.",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"onClick": {
 					"type": {
@@ -49269,7 +49330,11 @@
 						"name": "bool"
 					},
 					"required": false,
-					"description": ""
+					"description": "",
+					"defaultValue": {
+						"value": "false",
+						"computed": false
+					}
 				},
 				"target": {
 					"type": {

@@ -60,7 +60,10 @@ const propTypes = {
   variant: React.PropTypes.oneOf(["base", "neutral", "brand", "destructive", "icon", "inverse", "icon-inverse"]),
 };
 const defaultProps = {
+  disabled: false,
+  hint: false,
   iconSize: "medium",
+  responsive: false,
   variant: "base",
 };
 

@@ -90,6 +90,8 @@ const defaultFilter = (term, item) => {
 
 const defaultProps = {
   filterWith: defaultFilter,
+  modal: false,
+  requiredField: false,
   searchTerm: "",
 };
 

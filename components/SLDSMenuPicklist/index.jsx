@@ -43,7 +43,9 @@ const propTypes = {
   value: React.PropTypes.node,
 };
 const defaultProps = {
+  disabled: false,
   label: "Picklist",
+  modal: false,
   placeholder: "Select an Option",
 };
 
