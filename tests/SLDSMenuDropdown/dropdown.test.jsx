@@ -71,6 +71,19 @@ describe('SLDSMenuDropdown: ', function(){
         done()
       }, 600)
     })
+
+    it('doesn\'t close on quick hover outside', (done) => {
+      expect(getMenu(body)).to.equal(null)
+      Simulate.mouseEnter(btn, {})
+      Simulate.mouseLeave(btn)
+      setTimeout(() => {
+        expect(getMenu(body)).to.not.equal(null)
+        setTimeout(() => {
+          expect(getMenu(body)).to.equal(null)
+          done()
+        }, 600)
+      }, 100)
+    })
   })
 
   describe('Clickable', () => {

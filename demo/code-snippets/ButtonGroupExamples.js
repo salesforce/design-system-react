@@ -41,13 +41,12 @@ const examples = (
         buttonVariant="icon"
         iconName="chart"
         iconVariant="border"
-        type="icon" />
+        variant="icon" />
 
       <SLDSButtonStateful
         assistiveText="Filter"
         iconName="filter"
         iconVariant="border"
-        type="icon"
         variant="icon" />
 
         <SLDSMenuDropdown

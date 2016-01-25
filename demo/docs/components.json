@@ -189,7 +189,7 @@
         }
     },
     "SLDSButtonStateful": {
-        "description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nThe three types of stateful buttons are <code>icon</code>, <code>follow</code>, and <code>join</code>.\nThe type determines the text for the button's initial state (ie. follow), when the button is selected (ie. following), and to deselect the button (ie. unfollow).\nFor more details on the markup, please review the Button > Stateful documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">Lightning Design System website</a>.",
+        "description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant=\"icon\"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: \"add\", label: \"Follow\"}}</code>).\nFor more details on the markup, please review the Button > Stateful documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">Lightning Design System website</a>.",
         "displayName": "SLDSButtonStateful",
         "props": {
             "assistiveText": {
@@ -263,33 +263,45 @@
                 "required": false,
                 "description": "Write <code>\"-1\"</code> if you don't want the user to tab to the button."
             },
+            "stateOne": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Initial label and icon (optional) of button.",
+                "defaultValue": {
+                    "value": "{ iconName: \"add\", label: \"Follow\" }",
+                    "computed": false
+                }
+            },
+            "stateTwo": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Selected label and icon (optional) of button.",
+                "defaultValue": {
+                    "value": "{ iconName: \"check\", label: \"Following\" }",
+                    "computed": false
+                }
+            },
+            "stateThree": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": "Deselect label and icon (optional) of button.",
+                "defaultValue": {
+                    "value": "{ iconName: \"close\", label: \"Unfollow\" }",
+                    "computed": false
+                }
+            },
             "tooltip": {
                 "type": {
                     "name": "node"
                 },
                 "required": false,
                 "description": ""
-            },
-            "type": {
-                "type": {
-                    "name": "enum",
-                    "value": [
-                        {
-                            "value": "\"join\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"follow\"",
-                            "computed": false
-                        },
-                        {
-                            "value": "\"icon\"",
-                            "computed": false
-                        }
-                    ]
-                },
-                "required": false,
-                "description": "<code>join</code> - text is join, member, or leave <br />\n<code>follow</code> - text is follow, following, or unfollow <br />\n<code>icon</code> - styling is \"selected\" or \"not selected\""
             },
             "variant": {
                 "type": {
@@ -671,7 +683,11 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on menu closing."
+                "description": "Delay on menu closing.",
+                "defaultValue": {
+                    "value": "300",
+                    "computed": false
+                }
             },
             "label": {
                 "type": {
@@ -1183,7 +1199,11 @@
                     "name": "number"
                 },
                 "required": false,
-                "description": "Delay on Tooltip closing."
+                "description": "Delay on Tooltip closing.",
+                "defaultValue": {
+                    "value": "50",
+                    "computed": false
+                }
             },
             "openByDefault": {
                 "type": {
