@@ -54,6 +54,7 @@
     "chai": "^3.3.0",
     "codemirror": "^5.9.0",
     "cors": "^2.7.1",
+    "eslint": "^1.10.3",
     "eslint-plugin-react": "^2.7.1",
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^0.8.2",
