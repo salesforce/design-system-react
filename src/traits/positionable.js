@@ -51,43 +51,6 @@ const Positionable = {
 		return Lib.wrapElement(element);
 	},
 
-	getScrollingParent (element) {
-		// Firefox: If the element is in an `iframe` with `display: none;` `window.getComputedStyle()` will be `null`; https://bugzilla.mozilla.org/show_bug.cgi?id=548397
-		const computedStyle = window.getComputedStyle(element) || {};
-		const position = computedStyle.position;
-
-		// If position is fixed, a scrolling parent does not matter.
-		if (position === 'fixed') {
-			return element;
-		}
-
-		// Loop through the parent nodes of the element and see if any have overflow or position CSS attributes. If no parents have these, the document element will be returned.
-		let parent = element;
-		while (parent) {
-			parent = parent.parentNode;
-			let style;
-			try {
-				style = window.getComputedStyle(parent);
-			} catch (err) {
-				/* Do nothing */
-			}
-
-			// Check to see if parent is the document element
-			if (typeof style === 'undefined' || style === null) {
-				return parent;
-			}
-
-			const {overflow, overflowX, overflowY} = style;
-			if (/(auto|scroll)/.test(overflow + overflowY + overflowX)) {
-				if (position !== 'absolute' || ['relative', 'absolute', 'fixed'].indexOf(style.position) >= 0) {
-					return parent;
-				}
-			}
-		}
-
-		return document.body;
-	},
-
 	addEventListeners (controlContext) {
 		if (!controlContext._positionableResizeEventHandler) {
 			controlContext._positionableResizeEventHandler = handleWindowEvents.bind(this, controlContext);
@@ -98,7 +61,7 @@ const Positionable = {
 			controlContext._positionableScrollEventHandler = handleWindowEvents.bind(this, controlContext);
 			window.addEventListener('scroll', controlContext._positionableScrollEventHandler);
 
-			controlContext._positionableScrollingParent = this.getScrollingParent(Positionable.getTarget(controlContext));
+			controlContext._positionableScrollingParent = Lib.getScrollingParent(Positionable.getTarget(controlContext));
 			if (controlContext._positionableScrollingParent !== document.documentElement) {
 				controlContext._positionableScrollingParent.addEventListener('scroll', controlContext._positionableScrollEventHandler);
 			}
@@ -288,11 +251,21 @@ constrainToWindow = (controlContext) => {
 		elementToMeasure = Positionable.getElement(controlContext);
 	}
 
-	/* `isOffscreen` returns false or the vertical alignment of the positioned elment to the target */
-	const isOffscreen = Lib.wrapElement(elementToMeasure).isOffscreen(true);
-	if (isOffscreen === 'top') {
+	const isOffscreen = Lib.wrapElement(elementToMeasure).isOffscreen();
+
+	if (controlContext.getProperty('modalMenu')) {
+		const isVisible = Lib.isVisible(Positionable.getTarget(controlContext));
+
+		if (isVisible) {
+			Positionable.show(controlContext);
+		} else {
+			Positionable.hide(controlContext);
+		}
+	}
+
+	if (isOffscreen && isOffscreen.top === true) {
 		targetAttachment = 'bottom';
-	} else if (isOffscreen === 'bottom') {
+	} else if (isOffscreen && isOffscreen.bottom === true) {
 		targetAttachment = 'top';
 	}
 
