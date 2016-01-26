@@ -7,7 +7,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 $(function () {
 	$('#notification-jquery-control').append(controlTemplate.template);
 	$('#notification-jquery-demo-controls').append(demoControlsTemplate.template);
-	// notification
+
 	const notification1 = new Notification($('#notification-jquery-control .notification1'), {
 		text: 'Base System Alert'
 	});

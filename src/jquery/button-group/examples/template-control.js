@@ -10,12 +10,11 @@ function formatIt (strings, ...keys) {
 	};
 }
 
+
 const template = formatIt`
-	<div class="${'controlName'}1"></div>
+	<div></div>
 `;
 
 module.exports = {
 	template
 };
-
-

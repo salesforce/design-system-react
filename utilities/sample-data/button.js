@@ -1,221 +1,116 @@
 const collection = [
 	{
 		assistiveText: 'button-base',
-		disabled: false,
-		domNode: '.button-base',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Button Base',
-		theme: '',
-		views: []
+		domNode: '#component-wrapper-button__button-base',
+		text: 'Button Base'
 	},
 	{
 		assistiveText: 'button-base-disabled',
 		disabled: true,
-		domNode: '.button-base-disabled',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
+		domNode: '#component-wrapper-button__button-base-disabled',
 		text: 'Disabled',
-		theme: 'neutral',
-		views: []
+		theme: 'neutral'
 	},
 	{
 		assistiveText: 'button-neutral',
-		disabled: false,
-		domNode: '.button-neutral',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
+		domNode: '#component-wrapper-button__button-neutral',
 		text: 'Button Neutral',
-		theme: 'neutral',
-		views: []
+		theme: 'neutral'
 	},
 	{
 		assistiveText: 'button-neutral-disabled',
 		disabled: true,
-		domNode: '.button-neutral-disabled',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
+		domNode: '#component-wrapper-button__button-neutral-disabled',
 		text: 'Disabled',
-		theme: 'neutral',
-		views: []
+		theme: 'neutral'
 	},
 	{
 		assistiveText: 'button-neutral-small',
-		disabled: false,
-		domNode: '.button-neutral-small',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
+		domNode: '#component-wrapper-button__button-neutral-small',
 		size: 'small',
 		text: 'Small',
-		theme: 'neutral',
-		views: []
+		theme: 'neutral'
 	},
 	{
 		assistiveText: 'button-neutral-icon-left',
-		disabled: false,
-		domNode: '.button-neutral-icon-left',
+		domNode: '#component-wrapper-button__button-neutral-icon-left',
 		icon: 'utility.download',
 		iconPosition: 'left',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
 		text: 'Download',
-		theme: 'neutral',
-		views: []
+		theme: 'neutral'
 	},
 	{
 		assistiveText: 'button-neutral-icon-right',
-		disabled: false,
-		domNode: '.button-neutral-icon-right',
+		domNode: '#component-wrapper-button__button-neutral-icon-right',
 		icon: 'utility.download',
 		iconPosition: 'right',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
 		text: 'Download',
-		theme: 'neutral',
-		views: []
+		theme: 'neutral'
 	},
 	{
 		assistiveText: 'button-brand',
-		disabled: false,
-		domNode: '.button-brand',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
+		domNode: '#component-wrapper-button__button-brand',
 		text: 'Button Brand',
-		theme: 'brand',
-		views: []
+		theme: 'brand'
 	},
 	{
 		assistiveText: 'button-brand-disabled',
 		disabled: true,
-		domNode: '.button-brand-disabled',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
+		domNode: '#component-wrapper-button__button-brand-disabled',
 		text: 'Disabled',
-		theme: 'brand',
-		views: []
+		theme: 'brand'
 	},
 	{
 		assistiveText: 'button-brand-small',
-		disabled: false,
-		domNode: '.button-brand-small',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
+		domNode: '#component-wrapper-button__button-brand-small',
 		size: 'small',
 		text: 'Small',
-		theme: 'brand',
-		views: []
+		theme: 'brand'
 	},
 	{
 		assistiveText: 'button-destructive',
-		disabled: false,
-		domNode: '.button-destructive',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
+		domNode: '#component-wrapper-button__button-destructive',
 		text: 'Button Destructive',
-		theme: 'destructive',
-		views: []
+		theme: 'destructive'
 	},
 	{
 		assistiveText: 'button-destructive-disabled',
 		disabled: true,
-		domNode: '.button-destructive-disabled',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
+		domNode: '#component-wrapper-button__button-destructive-disabled',
 		text: 'Disabled',
-		theme: 'destructive',
-		views: []
+		theme: 'destructive'
 	},
 	{
 		assistiveText: 'button-destructive-small',
-		disabled: false,
-		domNode: '.button-destructive-small',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
+		domNode: '#component-wrapper-button__button-destructive-small',
 		size: 'small',
 		text: 'Small',
-		theme: 'destructive',
-		views: []
+		theme: 'destructive'
 	},
 	{
 		assistiveText: 'button-inverse',
-		disabled: false,
-		domNode: '.button-inverse',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
+		domNode: '#component-wrapper-button__button-inverse',
 		text: 'Button Inverse',
-		theme: 'inverse',
-		views: []
+		theme: 'inverse'
 	},
 	{
 		assistiveText: 'button-inverse-disabled',
 		disabled: true,
-		domNode: '.button-inverse-disabled',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
+		domNode: '#component-wrapper-button__button-inverse-disabled',
 		text: 'Disabled',
-		theme: 'inverse',
-		views: []
+		theme: 'inverse'
 	},
 	{
 		assistiveText: 'button-inverse-small',
-		disabled: false,
-		domNode: '.button-inverse-small',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
+		domNode: '#component-wrapper-button__button-inverse-small',
 		size: 'small',
 		text: 'Small',
-		theme: 'inverse',
-		views: []
+		theme: 'inverse'
 	},
 	{
 		assistiveText: 'button-stateful',
-		disabled: false,
-		domNode: '.button-stateful',
+		domNode: '#component-wrapper-button__button-stateful',
 		icon: 'utility.add',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
 		text: 'Follow',
 		theme: 'neutral',
 		views: [
@@ -233,13 +128,8 @@ const collection = [
 	},
 	{
 		assistiveText: 'button-stateful-inverse',
-		disabled: false,
-		domNode: '.button-stateful-inverse',
+		domNode: '#component-wrapper-button__button-stateful-inverse',
 		icon: 'utility.add',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
 		text: 'Follow',
 		theme: 'inverse',
 		views: [
@@ -257,303 +147,157 @@ const collection = [
 	},
 	{
 		assistiveText: 'button-icon-bare-x-small',
-		disabled: false,
-		domNode: '.button-icon-bare-x-small',
+		domNode: '#component-wrapper-button__button-icon-bare-x-small',
 		icon: 'utility.close',
-		iconPosition: '',
 		iconStyle: 'icon-bare',
-		iconSize: 'x-small',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconSize: 'x-small'
 	},
 	{
 		assistiveText: 'button-icon-bare-small',
-		disabled: false,
-		domNode: '.button-icon-bare-small',
+		domNode: '#component-wrapper-button__button-icon-bare-small',
 		icon: 'utility.close',
-		iconPosition: '',
 		iconStyle: 'icon-bare',
-		iconSize: 'small',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconSize: 'small'
 	},
 	{
 		assistiveText: 'button-icon-bare',
-		disabled: false,
-		domNode: '.button-icon-bare',
+		domNode: '#component-wrapper-button__button-icon-bare',
 		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-bare'
 	},
 	{
 		assistiveText: 'button-icon-bare-large',
-		disabled: false,
-		domNode: '.button-icon-bare-large',
+		domNode: '#component-wrapper-button__button-icon-bare-large',
 		icon: 'utility.close',
-		iconPosition: '',
 		iconStyle: 'icon-bare',
-		iconSize: 'large',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconSize: 'large'
 	},
 	{
 		assistiveText: 'button-icon-bare-x-small--disabled',
 		disabled: true,
-		domNode: '.button-icon-bare-x-small--disabled',
+		domNode: '#component-wrapper-button__button-icon-bare-x-small--disabled',
 		icon: 'utility.close',
-		iconPosition: '',
 		iconStyle: 'icon-bare',
-		iconSize: 'x-small',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconSize: 'x-small'
 	},
 	{
 		assistiveText: 'button-icon-bare-small--disabled',
 		disabled: true,
-		domNode: '.button-icon-bare-small--disabled',
+		domNode: '#component-wrapper-button__button-icon-bare-small--disabled',
 		icon: 'utility.close',
-		iconPosition: '',
 		iconStyle: 'icon-bare',
-		iconSize: 'small',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconSize: 'small'
 	},
 	{
 		assistiveText: 'button-icon-bare--disabled',
 		disabled: true,
-		domNode: '.button-icon-bare--disabled',
+		domNode: '#component-wrapper-button__button-icon-bare--disabled',
 		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-bare'
 	},
 	{
 		assistiveText: 'button-icon-bare-large--disabled',
 		disabled: true,
-		domNode: '.button-icon-bare-large--disabled',
+		domNode: '#component-wrapper-button__button-icon-bare-large--disabled',
 		icon: 'utility.close',
-		iconPosition: '',
 		iconStyle: 'icon-bare',
-		iconSize: 'large',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconSize: 'large'
 	},
 	{
 		assistiveText: 'button-icon-container',
-		disabled: false,
-		domNode: '.button-icon-container',
+		domNode: '#component-wrapper-button__button-icon-container',
 		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-container',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-container'
 	},
 	{
 		assistiveText: 'button-icon-container-disabled',
 		disabled: true,
-		domNode: '.button-icon-container-disabled',
+		domNode: '#component-wrapper-button__button-icon-container-disabled',
 		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-container',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-container'
 	},
 	{
 		assistiveText: 'button-icon-border',
-		disabled: false,
-		domNode: '.button-icon-border',
+		domNode: '#component-wrapper-button__button-icon-border',
 		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-border',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-border'
 	},
 	{
 		assistiveText: 'button-icon-border-disabled',
 		disabled: true,
-		domNode: '.button-icon-border-disabled',
+		domNode: '#component-wrapper-button__button-icon-border-disabled',
 		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-border',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-border'
 	},
 	{
 		assistiveText: 'button-icon-border-filled',
-		disabled: false,
-		domNode: '.button-icon-border-filled',
+		domNode: '#component-wrapper-button__button-icon-border-filled',
 		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-border-filled',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-border-filled'
 	},
 	{
 		assistiveText: 'button-icon-border-filled-disabled',
 		disabled: true,
-		domNode: '.button-icon-border-filled-disabled',
+		domNode: '#component-wrapper-button__button-icon-border-filled-disabled',
 		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-border-filled',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-border-filled'
 	},
 	{
 		assistiveText: 'button-icon-more',
-		disabled: false,
-		domNode: '.button-icon-more',
+		domNode: '#component-wrapper-button__button-icon-more',
 		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-more',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-more'
 	},
 	{
 		assistiveText: 'button-icon-more-disabled',
 		disabled: true,
-		domNode: '.button-icon-more-disabled',
+		domNode: '#component-wrapper-button__button-icon-more-disabled',
 		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-more',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-more'
 	},
 	{
 		assistiveText: 'button-icon-stateful',
-		disabled: false,
-		domNode: '.button-icon-stateful',
+		domNode: '#component-wrapper-button__button-icon-stateful',
 		icon: 'utility.like',
-		iconPosition: '',
 		iconStyle: 'icon-border',
-		iconSize: '',
-		selected: false,
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		selected: false
 	},
 	{
 		assistiveText: 'button-icon-inverse',
-		disabled: false,
-		domNode: '.button-icon-inverse',
+		domNode: '#component-wrapper-button__button-icon-inverse',
 		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-inverse',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-inverse'
 	},
 	{
 		assistiveText: 'button-icon-inverse-disabled',
 		disabled: true,
-		domNode: '.button-icon-inverse-disabled',
+		domNode: '#component-wrapper-button__button-icon-inverse-disabled',
 		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-inverse',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-inverse'
 	},
 	{
 		assistiveText: 'button-icon-bare-hint',
-		disabled: false,
-		domNode: '.button-icon-bare-hint',
+		domNode: '#component-wrapper-button__button-icon-bare-hint',
 		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare-hint',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-bare-hint'
 	},
 	{
 		assistiveText: 'button-icon-border-hint',
-		disabled: false,
-		domNode: '.button-icon-border-hint',
+		domNode: '#component-wrapper-button__button-icon-border-hint',
 		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-border-hint',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-border-hint'
 	},
 	{
 		assistiveText: 'button-icon-border-filled-hint',
-		disabled: false,
-		domNode: '.button-icon-border-filled-hint',
+		domNode: '#component-wrapper-button__button-icon-border-filled-hint',
 		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-border-filled-hint',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-border-filled-hint'
 	},
 	{
 		assistiveText: 'button-icon-container-hint',
-		disabled: false,
-		domNode: '.button-icon-container-hint',
+		domNode: '#component-wrapper-button__button-icon-container-hint',
 		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-container-hint',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+		iconStyle: 'icon-container-hint'
 	}
 ];
 

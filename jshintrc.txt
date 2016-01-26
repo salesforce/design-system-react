@@ -29,7 +29,7 @@
   "eqeqeq": true,
 
   // Enforce tab width of 2 spaces.
-  "indent": 2,
+  "indent": 4,
 
   // Prohibit use of a variable before it is defined.
   "latedef": true,

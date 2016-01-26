@@ -1,18 +1,45 @@
-import { Lib, Button } from 'design-system-jquery';
+import { Lib, Button as Component } from 'design-system-jquery';
 import * as controlTemplate from './template-control';
 import * as demoControlsTemplate from './template-demo-controls';
 import { sampleData } from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
-const buttonsProperties = sampleData.button.default.collection;
+
+const COMPONENT_NAME = 'button';
+const COMPONENT_DISPLAY_NAME = 'Buttons';
+const COMPONENT_SAMPLE_DATA_ACCESSOR = 'button';
+const COMPONENT_COLLECTION = sampleData[COMPONENT_SAMPLE_DATA_ACCESSOR].default.collection;
 
 $(function () {
-	$('#button-jquery-control').append(controlTemplate.template);
-	$('#button-jquery-demo-controls').append(demoControlsTemplate.template);
-	const buttons = [];
-	$.each(buttonsProperties, function (index, value) {
-		const thisButtonProperties = {};
-		const defaultButtonProperties = [
+	$('#' + COMPONENT_NAME + '-jquery-control')
+	.attr(
+		'data-component-name', COMPONENT_NAME
+	).attr(
+		'data-component-display-name', COMPONENT_DISPLAY_NAME
+	).append(
+		controlTemplate.template({
+			componentCollection: COMPONENT_COLLECTION,
+			componentName: COMPONENT_NAME,
+			componentDisplayName: COMPONENT_DISPLAY_NAME
+		}
+	));
+
+	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
+		.attr('data-component-name', COMPONENT_NAME)
+		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
+		.append(demoControlsTemplate.template({
+			componentCollection: COMPONENT_COLLECTION,
+			componentName: COMPONENT_NAME,
+			componentDisplayName: COMPONENT_DISPLAY_NAME
+		})
+	);
+
+	const components = [];
+
+
+	$.each(COMPONENT_COLLECTION, function (index, value) {
+		const thisComponentProperties = {};
+		const defaultComponentProperties = [
 			'assistiveText',
 			'disabled',
 			'children',
@@ -29,51 +56,51 @@ $(function () {
 			'views'
 		];
 
-		$.each(defaultButtonProperties, function (index2, value2) {
+		$.each(defaultComponentProperties, function (index2, value2) {
 			if ( typeof value[value2] !== 'undefined') {
 				if ( value[value2] !== '' ) {
-					thisButtonProperties[value2] = value[value2];
+					thisComponentProperties[value2] = value[value2];
 				}
 			}
 		});
-		buttons['button' + index] = new Button($('#button-jquery-control ' + value.domNode), thisButtonProperties);
-		void (buttons['button' + index]);
+		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control ' + value.domNode), thisComponentProperties);
+		void (components[COMPONENT_NAME + index]);
 	});
 
-	$('#button-jquery-set-icon').on('click', function () {
-		buttons.button5.renderView({
+	$('#' + COMPONENT_NAME + '-jquery-set-icon').on('click', function () {
+		components.button5.renderView({
 			icon: 'utility.check',
 			text: 'Icon Updated!'
 		});
 	});
 
-	$('#button-stateful-jquery-select').on('click', function () {
-		buttons.button16.toggle(true);
+	$('#' + COMPONENT_NAME + '-stateful-jquery-select').on('click', function () {
+		components.button16.toggle(true);
 	});
 
-	$('#button-stateful-jquery-deselect').on('click', function () {
-		buttons.button16.toggle(false);
+	$('#' + COMPONENT_NAME + '-stateful-jquery-deselect').on('click', function () {
+		components.button16.toggle(false);
 	});
 
-	$('#button-stateful-jquery-disable').on('click', function () {
-		buttons.button16.disable();
+	$('#' + COMPONENT_NAME + '-stateful-jquery-disable').on('click', function () {
+		components.button16.disable();
 	});
 
-	$('#button-stateful-jquery-enable').on('click', function () {
-		buttons.button16.enable();
+	$('#' + COMPONENT_NAME + '-stateful-jquery-enable').on('click', function () {
+		components.button16.enable();
 	});
 
-	$('#button-stateful-jquery-recreate').attr('disabled', true);
-	$('#button-stateful-jquery-destroy').on('click', function () {
-		$('#button-stateful-jquery-destroy').attr('disabled', true);
-		$('#button-stateful-jquery-recreate').attr('disabled', false);
-		console.log(buttons.button16.destroy());
+	$('#' + COMPONENT_NAME + '-stateful-jquery-recreate').attr('disabled', true);
+	$('#' + COMPONENT_NAME + '-stateful-jquery-destroy').on('click', function () {
+		$('#' + COMPONENT_NAME + '-stateful-jquery-destroy').attr('disabled', true);
+		$('#' + COMPONENT_NAME + '-stateful-jquery-recreate').attr('disabled', false);
+		console.log(components.button16.destroy());
 	});
 
-	$('#button-stateful-jquery-recreate').on('click', function () {
-		$('#button-stateful-jquery-destroy').attr('disabled', false);
-		$('#button-stateful-jquery-recreate').attr('disabled', true);
-		buttons.button16 = new Button($('#button-jquery-control .button-stateful'), {
+	$('#' + COMPONENT_NAME + '-stateful-jquery-recreate').on('click', function () {
+		$('#' + COMPONENT_NAME + '-stateful-jquery-destroy').attr('disabled', false);
+		$('#' + COMPONENT_NAME + '-stateful-jquery-recreate').attr('disabled', true);
+		components.button16 = new Component($('#' + COMPONENT_NAME + '-jquery-control .button-stateful'), {
 			assistiveText: 'button-stateful',
 			disabled: false,
 			icon: 'utility.add',
@@ -92,6 +119,6 @@ $(function () {
 				}
 			]
 		});
-		void (buttons.button16);
+		void (components.button16);
 	});
 });
