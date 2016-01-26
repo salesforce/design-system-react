@@ -29,7 +29,7 @@ html {
 .site-text--center { text-align: center !important; }
 
 .a-plain { color: inherit !important; }
-.a-plain:hover, .a-plain:focus {
+.a-plain:hover, .a-plain:focus, .a-plain.active {
   text-decoration: none !important;
   background-color: #f6f6f6;
 }
