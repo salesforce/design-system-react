@@ -7,25 +7,25 @@
 }
 
 .component {
-	.example {
-		.#{$css-prefix}button-group {
-			margin-top: 10px;
+    .example {
+        .#{$css-prefix}button-group {
+            margin-top: 10px;
 
-			+ .#{$css-prefix}button-group {
-				margin-left: 0;
-			}
-		}
+            + .#{$css-prefix}button-group {
+                margin-left: 0;
+            }
+        }
 
-		.#{$css-prefix}spinner {
-			&--small, &--medium {
-				position: relative;
-			}
-			&--small {
-				top: 18px;
-			}
-			&--medium {
-				top: 5px;
-			}
-		}
-	}
+        .#{$css-prefix}spinner {
+            &--small, &--medium {
+                position: relative;
+            }
+            &--small {
+                top: 18px;
+            }
+            &--medium {
+                top: 5px;
+            }
+        }
+    }
 }
