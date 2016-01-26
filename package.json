@@ -110,6 +110,14 @@
     "data-table",
     "datepicker",
     "dropdown",
-    "modal"
+    "modal",
+    "notification",
+    "picklist",
+    "pills",
+    "popover",
+    "radio",
+    "spinner",
+    "tooltip",
+    "tree"
   ]
 }

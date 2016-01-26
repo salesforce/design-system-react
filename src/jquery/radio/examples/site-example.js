@@ -1,72 +1,58 @@
-import {Lib, Radios} from 'design-system-jquery';
+import { Lib, Radios as Component } from 'design-system-jquery';
+import * as controlTemplate from './template-control';
+import * as demoControlsTemplate from './template-demo-controls';
+import { sampleData } from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+const COMPONENT_NAME = 'radio';
+const COMPONENT_DISPLAY_NAME = 'Radio';
+const COMPONENT_SAMPLE_DATA_ACCESSOR = 'radio';
+const COMPONENT_COLLECTION = sampleData[COMPONENT_SAMPLE_DATA_ACCESSOR].default.collection;
+
 $(function () {
-	const radios = new Radios($('#radio-jquery-control'), {
-		labelText: 'Radio Group Label',
-		name: 'rads',
-		radios: [
-			{
-				text: 'Checked',
-				value: 'value9',
-				checked: true
-			},
-			{
-				text: 'Unchecked',
-				value: 'value10',
-				checked: false
-			},
-			{
-				text: 'Unchecked Disabled',
-				value: 'value11',
-				checked: false,
-				disabled: true
+	$('#' + COMPONENT_NAME + '-jquery-control')
+		.attr('data-component-name', COMPONENT_NAME)
+		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
+		.append(controlTemplate.template({
+			componentCollection: COMPONENT_COLLECTION,
+			componentName: COMPONENT_NAME,
+			componentDisplayName: COMPONENT_DISPLAY_NAME
+		})
+	);
+
+	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
+		.attr('data-component-name', COMPONENT_NAME)
+		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
+		.append(demoControlsTemplate.template({
+			componentCollection: COMPONENT_COLLECTION,
+			componentName: COMPONENT_NAME,
+			componentDisplayName: COMPONENT_DISPLAY_NAME
+		})
+	);
+
+	const components = [];
+
+	$.each(COMPONENT_COLLECTION, function (index, value) {
+		const thisComponentProperties = {};
+		const defaultComponentProperties = [
+			'labelText',
+			'name',
+			'radios'
+		];
+		$.each(defaultComponentProperties, function (index2, value2) {
+			if (typeof value[value2] !== 'undefined') {
+				if (value[value2] !== '') {
+					thisComponentProperties[value2] = value[value2];
+				}
 			}
-		]
-	});
+		});
 
-	$('#radio-jquery-checkFirst').on('click', function () {
-		console.log('check first');
-		radios.check(0);
-	});
-
-	$('#radio-jquery-checkSecond').on('click', function () {
-		console.log('check second');
-		radios.check(1);
-	});
-
-	$('#radio-jquery-disableFirst').on('click', function () {
-		console.log('disable first');
-		radios.radio(0).disable();
-	});
-
-	$('#radio-jquery-enableFirst').on('click', function () {
-		console.log('enable first');
-		radios.radio(0).enable();
-	});
-
-	$('#radio-jquery-disableAll').on('click', function () {
-		console.log('disable all');
-		radios.disable();
-	});
-
-	$('#radio-jquery-enableAll').on('click', function () {
-		console.log('enable all');
-		radios.enable();
-	});
-
-	$('#radio-jquery-logChecked').on('click', function () {
-		const checked = radios.getChecked();
-		console.log('get checked', checked);
-	});
-
-	$('#radio-jquery-logValue').on('click', function () {
-		const checkedValue = radios.getValue();
-		console.log('get value', checkedValue);
-	});
-
-	$('#radio-jquery-destroy').on('click', function () {
-		console.log(radios.destroy());
+		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control'), thisComponentProperties);
+		void (components[COMPONENT_NAME + index]);
+		// Log on change
+		$('#component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME).on('changed', function (event, data) {
+			Lib.log('changed', data);
+		});
 	});
 });

@@ -66,9 +66,32 @@ app.get('/jquery', function (req, res) {
 	res.render('jquery/index', jQueryCode);
 });
 
-// React examples
+// jQuery examples
+var reactCode;
 app.get('/react', function (req, res) {
-	res.render('react/index', { examples: reactExamples });
+	// needed for these examples until we make them more modular
+	if (!reactCode) {
+		reactCode = {};
+		reactCode['components'] = [];
+		reactExamples.forEach(function (example) {
+			if (example) {
+				var componentDisplayName = example.displayName;
+				var componentName = example.name;
+				reactCode[example.component.replace('-', '')] = example.code;
+				reactCode['components'].push({
+					'component': example.component,
+					'componentName': componentName,
+					'componentDisplayName': componentDisplayName,
+					'code': example.code,
+					'sampleData': example.sampleData
+				});
+			}
+		});
+	}
+
+	console.log("[app.js:91] reactCode:", reactCode);
+
+	res.render('react/index', reactCode);
 });
 
 // Serve up the built files

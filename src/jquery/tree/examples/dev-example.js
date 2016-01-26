@@ -1,13 +1,13 @@
-import { Lib, Popover as Component } from 'design-system-jquery';
+import { Lib, Tree as Component } from 'design-system-jquery';
 import * as controlTemplate from './template-control';
 import * as demoControlsTemplate from './template-demo-controls';
 import { sampleData } from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const COMPONENT_NAME = 'popover';
-const COMPONENT_DISPLAY_NAME = 'Popover';
-const COMPONENT_SAMPLE_DATA_ACCESSOR = 'popover';
+const COMPONENT_NAME = 'tree';
+const COMPONENT_DISPLAY_NAME = 'Tree';
+const COMPONENT_SAMPLE_DATA_ACCESSOR = 'tree';
 const COMPONENT_COLLECTION = sampleData[COMPONENT_SAMPLE_DATA_ACCESSOR].default.collection;
 
 $(function () {
@@ -36,10 +36,7 @@ $(function () {
 	$.each(COMPONENT_COLLECTION, function (index, value) {
 		const thisComponentProperties = {};
 		const defaultComponentProperties = [
-			'content',
-			'trigger',
-			'positionedTargetVerticalAttachment',
-			'constrainedToElement'
+			'selection'
 		];
 		$.each(defaultComponentProperties, function (index2, value2) {
 			if (typeof value[value2] !== 'undefined') {
@@ -48,10 +45,10 @@ $(function () {
 				}
 			}
 		});
-		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME + '__' + index), thisComponentProperties);
+		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME), thisComponentProperties);
 		void (components[COMPONENT_NAME + index]);
 		// Log on change
-		$('#component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME + '__' + index).on('changed', function (event, data) {
+		$('#component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME).on('changed', function (event, data) {
 			Lib.log('changed', data);
 		});
 	});

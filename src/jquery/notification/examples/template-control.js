@@ -14,6 +14,12 @@ const template = formatIt`
 	<div
 		data-component-display-name="${'componentDisplayName'}"
 		data-component-name="${'componentName'}"
+		id="component-wrapper-${'componentName'}__0"
+		class="component-wrapper component-wrapper-${'componentName'} | slds-m-bottom--small"
+	></div>
+	<div
+		data-component-display-name="${'componentDisplayName'}"
+		data-component-name="${'componentName'}"
 		id="component-wrapper-${'componentName'}__1"
 		class="component-wrapper component-wrapper-${'componentName'} | slds-m-bottom--small"
 	></div>
@@ -27,12 +33,6 @@ const template = formatIt`
 		data-component-display-name="${'componentDisplayName'}"
 		data-component-name="${'componentName'}"
 		id="component-wrapper-${'componentName'}__3"
-		class="component-wrapper component-wrapper-${'componentName'} | slds-m-bottom--small"
-	></div>
-	<div
-		data-component-display-name="${'componentDisplayName'}"
-		data-component-name="${'componentName'}"
-		id="component-wrapper-${'componentName'}__4"
 		class="component-wrapper component-wrapper-${'componentName'} | "
 	></div>
 `;

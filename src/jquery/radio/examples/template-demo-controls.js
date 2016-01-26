@@ -11,12 +11,7 @@ function formatIt (strings, ...keys) {
 }
 
 const template = formatIt`
-	<div
-		data-component-display-name="${'componentDisplayName'}"
-		data-component-name="${'componentName'}"
-		id="component-wrapper-${'componentName'}__${'componentName'}"
-		class="component-wrapper component-wrapper-${'componentName'}"
-	></div>
+	<div></div>
 `;
 
 module.exports = {

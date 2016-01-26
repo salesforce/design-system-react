@@ -12,7 +12,7 @@ var config = {
 		'facades-demo-styles': ['./site/assets/shared/scripts/styles.js', './site/assets/demo-site/scripts/styles.js'],
 		'dev-examples-styles': ['./site/assets/facades/scripts/styles.js'],
 		// 'dev-examples-react': ['./src/react/dev-examples'],
-		// 'demo-site-examples-react': ['./site/src/demo-site-examples-react'],
+		'demo-site-examples-react': ['./site/src/demo-site-examples-react'],
 		// 'dev-examples-jquery': ['./src/jquery/dev-examples'],
 		'demo-site-examples-jquery': ['./site/src/demo-site-examples-jquery']
 	},

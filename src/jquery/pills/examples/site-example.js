@@ -1,29 +1,55 @@
-import {Lib, Pills} from 'design-system-jquery';
+import { Lib, Pills as Component } from 'design-system-jquery';
+import * as controlTemplate from './template-control';
+import * as demoControlsTemplate from './template-demo-controls';
+import { sampleData } from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+const COMPONENT_NAME = 'pills';
+const COMPONENT_DISPLAY_NAME = 'Pills';
+const COMPONENT_SAMPLE_DATA_ACCESSOR = 'pills';
+const COMPONENT_COLLECTION = sampleData[COMPONENT_SAMPLE_DATA_ACCESSOR].default.collection;
+
 $(function () {
-	$('#pills-jquery-control .pills1').facades_pills({
-		selection: [
-			{
-				text: 'item 1',
-				value: 1
-			},
-			{
-				text: 'item 2',
-				value: 2
-			},
-			{
-				text: 'item 3',
-				value: 3
+	$('#' + COMPONENT_NAME + '-jquery-control')
+		.attr('data-component-name', COMPONENT_NAME)
+		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
+		.append(controlTemplate.template({
+			componentCollection: COMPONENT_COLLECTION,
+			componentName: COMPONENT_NAME,
+			componentDisplayName: COMPONENT_DISPLAY_NAME
+		})
+	);
+
+	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
+		.attr('data-component-name', COMPONENT_NAME)
+		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
+		.append(demoControlsTemplate.template({
+			componentCollection: COMPONENT_COLLECTION,
+			componentName: COMPONENT_NAME,
+			componentDisplayName: COMPONENT_DISPLAY_NAME
+		})
+	);
+
+	const components = [];
+
+	$.each(COMPONENT_COLLECTION, function (index, value) {
+		const thisComponentProperties = {};
+		const defaultComponentProperties = [
+			'selection'
+		];
+		$.each(defaultComponentProperties, function (index2, value2) {
+			if (typeof value[value2] !== 'undefined') {
+				if (value[value2] !== '') {
+					thisComponentProperties[value2] = value[value2];
+				}
 			}
-		]
+		});
+		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME), thisComponentProperties);
+		void (components[COMPONENT_NAME + index]);
+		// Log on change
+		$('#component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME).on('changed', function (event, data) {
+			Lib.log('changed', data);
+		});
 	});
-
-	$('#pills-jquery-control .pills1').on('changed', function (evt, item) {
-		console.log('pill removed', item);
-	});
-
-	void(Pills);
 });
-
