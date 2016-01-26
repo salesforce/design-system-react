@@ -1,4 +1,4 @@
-Salesforce Design System: Interactive Accessible components for React 
+##Salesforce Design System: Interactive Accessible components for React 
 =====================
 
 [![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
