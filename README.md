@@ -6,8 +6,8 @@ design-system-react
 ## Overview
 The Design System React library is the Reactjs implementation of the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>.
 Each Design System React component is a specific variant of a component from Lightning Design System.
-For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightning Design System Menu > Dropdown</a>,
-and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups#base">Lightning Design System Lookup (base)</a>.
+For example, <code>SLDSMenuDropdown</code> represents <a href="http://www.lightningdesignsystem.com/components/menus/#dropdown">Lightning Design System Menu > Dropdown</a>,
+and <code>SLDSLookup</code> represents <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>.
 
 
 This project is in beta and very experimental. Please visit [Design System React](http://salesforce-ux.github.io/design-system-react) for documentation and examples of using the Design System React Components.
@@ -16,6 +16,7 @@ This project is in beta and very experimental. Please visit [Design System React
 
 * SLDSButton
 * SLDSButtonGroup
+* SLDSButtonStateful
 * SLDSIcon
 * SLDSLookup
 * SLDSMenuDropdown
@@ -50,7 +51,7 @@ npm run pages
 
 ## Getting Started
 
-Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.0.
+Note: design-system-react is optimized for react0.14.x and uses Lightning Design System 0.12.1.
 
 ### NPM
 
@@ -102,11 +103,11 @@ Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either
 
 4.  **Which version of React and Lightning Design System do you support?**
 
-    Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.0.
+    Design System React is optimized for react0.14.x and uses Lightning Design System 0.12.1.
 
 5.  **Which browsers are supported?**
 
-    We support the same browsers as the Lightning Design System. Please visit <a href="http://www.lightningdesignsystem.com/faq#what-browsers-are-supported">Lightning Design System - FAQ</a> for details.
+    We support the same browsers as the Lightning Design System. Please visit <a href="http://www.lightningdesignsystem.com/faq/#what-browsers-are-supported">Lightning Design System - FAQ</a> for details.
 
 
 ## Contributing to the code base
