@@ -1,9 +1,66 @@
-.demo-only .slds-icon__container { margin-right: 20px; }
-.demo-only .mw-col-m { max-width: 200px; }
-.demo-only .mw-col-l { max-width: 300px; }
-.demo-only .slds .slds-table th, .slds .slds-table td { white-space: inherit; }
-.demo-only .slds-notify-container { position: fixed !important; }
+/*
+ * Global Demo Styles
+ */
+html {
+  line-height: 1.71429;
+  color: #5876A3;
+}
 
+.site-logo {
+  display: inline-block;
+  background-position: center center;
+  background-size: 100%;
+  width: 3.9375rem;
+  height: 2.75rem;
+  text-indent: -9999em;
+  background: url('https://www.lightningdesignsystem.com/assets/images/logo.svg') no-repeat;
+}
+
+/*
+ * Demo Documentation styles
+ */
+.demo-only .mw-col-m { max-width: 150px; }
+.demo-only .mw-col-l { max-width: 300px; }
+
+
+/* Typography */
+.copy-text p { font-size: .95rem; }
+.site-text--xl { font-size: 3rem !important; }
+.site-text--center { text-align: center !important; }
+
+.a-plain { color: inherit !important; }
+.a-plain:hover, .a-plain:focus {
+  text-decoration: none !important;
+  background-color: #f6f6f6;
+}
+code {
+  color: black;
+  background-color: #f6f6f6;
+  border-radius: 4px;
+}
+aside a {
+  display: block;
+}
+
+
+/* Property Table */
+.demo-only .slds .slds-table th, .slds .slds-table td { white-space: inherit; }
+.demo-only .site-text-heading--label th {
+  text-transform: uppercase;
+  font-size: 1.1em;
+}
+
+/*
+ * Demo Component Specific Styles
+ */
+.demo-only .slds-notify-container { position: fixed !important; }
+.demo-only .slds-icon__container { margin-right: 20px; }
+
+
+
+/*
+ * Animations
+ */
 .slds .slds-theme--alert-texture-animated {
   background-image: -webkit-linear-gradient(45deg, rgba(0, 0, 0, 0.035) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.035) 50%, rgba(0, 0, 0, 0.035) 75%, transparent 75%, transparent);
   background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.035) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.035) 50%, rgba(0, 0, 0, 0.035) 75%, transparent 75%, transparent);
@@ -16,58 +73,11 @@
   100% { background-position:0 0; }
 }
 
-.site-text-heading--label th {
-  text-transform: uppercase;
-  font-size: 1.1em;
-}
-/*
-.drop.drop-out-of-bounds-top {
-  display:none;
-}
 
-.drop-element-attached-bottom .SLDSPopover {
-  align-self: flex-end;
-}
-*/
+/*
+ * Codemirror - live editor styles
+ */
 .CodeMirror-code pre {
   overflow: inherit;
-}
-
-code {
-  color: black;
-  background-color: #f6f6f6;
-  border-radius: 4px;
-}
-
-html {
-  line-height: 1.71429;
-  color: #5876A3;
-}
-
-.copy-text p {
-  font-size: .95rem;
-}
-
-.site-logo {
-  display: inline-block;
-  background-position: center center;
-  background-size: 100%;
-  width: 3.9375rem;
-  height: 2.75rem;
-  text-indent: -9999em;
-  background: url('https://www.lightningdesignsystem.com/assets/images/logo.svg') no-repeat;
-}
-.site-text--xl {
-  font-size: 3rem !important;
-}
-
-.a-plain { color: inherit !important; }
-.a-plain:hover, .a-plain:focus {
-  text-decoration: none !important;
-  background-color: #f6f6f6;
-}
-
-aside a {
-  display: block;
 }
 

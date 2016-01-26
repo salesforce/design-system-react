@@ -74,8 +74,8 @@ class PropTable extends React.Component {
         <tr key={prop}>
           <td>{prop}</td>
           <td className="mw-col-m">{type.name ? type.name : type.props.children}</td>
-          <td style={{textAlign: "center"}}>{required}</td>
-          <td>{defaultProp}</td>
+          <td className="site-text--center">{required}</td>
+          <td className="mw-col-m">{defaultProp}</td>
           <td className="mw-col-l">
             <span dangerouslySetInnerHTML={this.getMarkup(docs[prop].description)} />
           </td>
@@ -88,14 +88,14 @@ class PropTable extends React.Component {
 
   render(){
     return (
-      <div className="slds-p-vertical--medium">
+      <div className="slds-p-vertical--medium demo-only">
         <h1 className="slds-text-heading--small slds-p-vertical--medium">Property Details</h1>
         <table className="slds-table slds-table--bordered slds-max-medium-table--stacked slds-no-row-hover">
           <thead>
             <tr className="site-text-heading--label">
               <th>Name</th>
               <th>Type</th>
-              <th>Required</th>
+              <th className="site-text--center">Required</th>
               <th>Default</th>
               <th>Description</th>
             </tr>

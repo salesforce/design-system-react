@@ -27,7 +27,7 @@ module.exports = React.createClass( {
   render() {
     return (
       <SLDSGrid flavor='vertical' className='stage slds-nowrap'>
-        <header className='slds-page-header slds-clearfix'>
+        <header className='slds-page-header slds-clearfix demo-only'>
           <Link to="welcome" className="slds-float--left a-plain slds-p-vertical--x-small">
             <div className='slds-media slds-media--center'>
               <span className='slds-media__figure site-logo'>Salesforce</span>
