@@ -95,19 +95,23 @@ module.exports = React.createClass( {
     if(!this.state.isOpen){
       return <span></span>;
     }
+    const style = {
+      transform:'none',
+      WebkitTransform:'none',
+      'marginTop':this.props.marginTop,
+      'marginBottom':this.props.marginBottom,
+      'marginLeft':this.props.marginLeft,
+      'marginRight':this.props.marginRight,
+      'float':'inherit',
+      'position':'inherit'
+    }
+    if (this.props.inheritTargetWidth)  {
+      style.width = this.target().getBoundingClientRect().width
+    }
+
     return (
       <div className={'SLDSPopover '+this.props.className}
-        style={{
-          transform:'none',
-          WebkitTransform:'none',
-          'marginTop':this.props.marginTop,
-          'marginBottom':this.props.marginBottom,
-          'marginLeft':this.props.marginLeft,
-          'marginRight':this.props.marginRight,
-          'width': (this.props.inheritTargetWidth ? this.target().getBoundingClientRect().width : 'inherit'),
-          'float':'inherit',
-          'position':'inherit'
-        }}
+        style={style}
         onKeyDown={this.handleKeyDown}
       >
 {
@@ -211,14 +215,15 @@ module.exports = React.createClass( {
     const position = this.getPosition();
 
     return {
-      target: this.target(),
-      content: this.popoverElement,
-      position: position,
-      openOn: 'always',
       beforeClose:this.beforeClose,
+      classes: this.props.dropClass,
       constrainToWindow:this.props.flippable,
       constrainToScrollParent:this.props.constrainToScrollParent,
-      remove:true
+      content: this.popoverElement,
+      openOn: 'always',
+      position: position,
+      remove:true,
+      target: this.target()
     };
   },
 

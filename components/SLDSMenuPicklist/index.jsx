@@ -240,9 +240,10 @@ class SLDSMenuPicklist extends React.Component {
         <SLDSPopover
           className="slds-dropdown slds-dropdown--left "
           closeOnTabKey={true}
-          onClose={this.handleCancel.bind(this)}
-          flippable={true}
           constrainToScrollParent={true}
+          dropClass="slds-picklist"
+          flippable={true}
+          onClose={this.handleCancel.bind(this)}
           targetElement={this.refs.triggerbutton}>
           {this.getPopoverContent()}
         </SLDSPopover>:null

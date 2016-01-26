@@ -27235,20 +27235,24 @@
 	    if (!this.state.isOpen) {
 	      return _react2.default.createElement('span', null);
 	    }
+	    var style = {
+	      transform: 'none',
+	      WebkitTransform: 'none',
+	      'marginTop': this.props.marginTop,
+	      'marginBottom': this.props.marginBottom,
+	      'marginLeft': this.props.marginLeft,
+	      'marginRight': this.props.marginRight,
+	      'float': 'inherit',
+	      'position': 'inherit'
+	    };
+	    if (this.props.inheritTargetWidth) {
+	      style.width = this.target().getBoundingClientRect().width;
+	    }
+
 	    return _react2.default.createElement(
 	      'div',
 	      { className: 'SLDSPopover ' + this.props.className,
-	        style: {
-	          transform: 'none',
-	          WebkitTransform: 'none',
-	          'marginTop': this.props.marginTop,
-	          'marginBottom': this.props.marginBottom,
-	          'marginLeft': this.props.marginLeft,
-	          'marginRight': this.props.marginRight,
-	          'width': this.props.inheritTargetWidth ? this.target().getBoundingClientRect().width : 'inherit',
-	          'float': 'inherit',
-	          'position': 'inherit'
-	        },
+	        style: style,
 	        onKeyDown: this.handleKeyDown
 	      },
 	      this.props.children
@@ -27324,14 +27328,15 @@
 	    var position = this.getPosition();
 
 	    return {
-	      target: this.target(),
-	      content: this.popoverElement,
-	      position: position,
-	      openOn: 'always',
 	      beforeClose: this.beforeClose,
+	      classes: this.props.dropClass,
 	      constrainToWindow: this.props.flippable,
 	      constrainToScrollParent: this.props.constrainToScrollParent,
-	      remove: true
+	      content: this.popoverElement,
+	      openOn: 'always',
+	      position: position,
+	      remove: true,
+	      target: this.target()
 	    };
 	  },
 	  handleOpen: function handleOpen() {
@@ -30932,9 +30937,7 @@
 	    value: function getSimplePopover() {
 	      return !this.props.disabled && this.state.isOpen ? _react2.default.createElement(
 	        "div",
-	        {
-	          className: "slds-dropdown slds-dropdown--menu slds-dropdown--left",
-	          style: { maxHeight: "20em" } },
+	        { className: "slds-dropdown slds-dropdown--menu slds-dropdown--left" },
 	        this.getPopoverContent()
 	      ) : null;
 	    }
@@ -30947,8 +30950,9 @@
 	        {
 	          className: className,
 	          closeOnTabKey: true,
-	          horizontalAlign: this.props.align,
-	          flippable: false,
+	          dropClass: "slds-picklist" //TODO: in next SLDS release, remove slds-picklist class because slds-dropdown--length-5 will be active.
+	          , horizontalAlign: this.props.align,
+	          flippable: true,
 	          onClose: this.handleCancel.bind(this),
 	          targetElement: this.refs.button
 	        },
@@ -31205,27 +31209,17 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
+	        'ul',
 	        {
-	          ref: 'scroll',
-	          className: 'slds-wrap slds-grow slds-scrollable--y ' + this.props.className,
+	          'aria-labelledby': this.props.triggerId,
+	          className: "slds-dropdown__list slds-dropdown--length-5 " + this.props.className,
+	          onMouseDown: this.handleMouseDown.bind(this),
 	          onMouseEnter: this.props.onMouseEnter,
 	          onMouseLeave: this.props.onMouseLeave,
-	          style: {
-	            maxHeight: 260
-	          },
-	          onMouseDown: this.handleMouseDown.bind(this)
+	          ref: 'scroll',
+	          role: 'menu'
 	        },
-	        _react2.default.createElement(
-	          'ul',
-	          {
-	            ref: 'scroll',
-	            className: "slds-dropdown__list",
-	            role: 'menu',
-	            'aria-labelledby': this.props.triggerId
-	          },
-	          this.getItems()
-	        )
+	        this.getItems()
 	      );
 	    }
 	  }]);
@@ -31859,9 +31853,10 @@
 	        {
 	          className: "slds-dropdown slds-dropdown--left ",
 	          closeOnTabKey: true,
-	          onClose: this.handleCancel.bind(this),
-	          flippable: false,
 	          constrainToScrollParent: true,
+	          dropClass: "slds-picklist",
+	          flippable: true,
+	          onClose: this.handleCancel.bind(this),
 	          targetElement: this.refs.triggerbutton },
 	        this.getPopoverContent()
 	      ) : null;
@@ -32932,28 +32927,17 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
+	        'ul',
 	        {
-	          ref: 'scroll',
-	          className: 'slds-scrollable--y ' + this.props.className,
+	          'aria-labelledby': this.props.triggerId,
+	          className: "slds-dropdown__list slds-dropdown--length-5 " + this.props.className,
 	          onMouseEnter: this.props.onMouseEnter,
+	          onMouseDown: this.handleMouseDown.bind(this),
 	          onMouseLeave: this.props.onMouseLeave,
-	          style: {
-	            maxHeight: 260,
-	            width: '15rem'
-	          },
-	          onMouseDown: this.handleMouseDown.bind(this)
+	          ref: 'scroll',
+	          role: 'menu'
 	        },
-	        _react2.default.createElement(
-	          'ul',
-	          {
-	            ref: 'scroll',
-	            className: "slds-dropdown__list slds-dropdown--length-5",
-	            role: 'menu',
-	            'aria-labelledby': this.props.triggerId
-	          },
-	          this.getItems()
-	        )
+	        this.getItems()
 	      );
 	    }
 	  }]);
