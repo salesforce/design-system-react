@@ -62,7 +62,7 @@ class FAQSection extends React.Component {
             Are the Design System React components accessible?
           </p>
           <p>
-            We strive to make all components accessible for keyboard users and screen readers. If you find any accessibility bugs, please submit a <a href="https://github.com/salesforce-ux/design-system-react/issues">Github Issue</a>.
+            We strive to make all components accessible for keyboard users and screen readers. If you find any accessibility bugs, please submit a <a href="https://github.com/salesforce-ux/design-system-react/issues">GitHub Issue</a>.
           </p>
         </section>
 

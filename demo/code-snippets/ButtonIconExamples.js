@@ -3,8 +3,9 @@ const handleClick = function(buttonInstance) {
     alert(buttonInstance + " Clicked");
    };
 };
-let hintBtnParent = {backgroundColor: "#7fdbff", padding: "10px 50px", display: "inline-block"};
+let hintBtnParent = {backgroundColor: "#FFB75D", padding: "10px 50px", display: "inline-block"};
 let inverseBtnParent = {backgroundColor: "#16325c", padding: "10px", display: "inline-block"};
+let iconBtnParent = {backgroundColor: "#4BC076", padding: "10px", display: "inline-block"};
 const examples = (
   <div className="slds-x-small-buttons--horizontal">
     <h4 className="slds-text-heading--medium slds-p-vertical--medium">Icon Buttons</h4>
@@ -23,6 +24,7 @@ const examples = (
       onClick={handleClick("Icon Container")}
       variant="icon" />
 
+    <div style={iconBtnParent} className="slds-m-horizontal--small">
     <SLDSButton
       assistiveText="Icon Border medium"
       iconName="settings"
@@ -36,6 +38,7 @@ const examples = (
       iconVariant="border-filled"
       onClick={handleClick("Icon border-filled")}
       variant="icon" />
+    </div>
 
     <SLDSButton
       assistiveText="Icon More large"
