@@ -162,26 +162,17 @@ class SLDSList extends React.Component {
 
   render () {
     return (
-      <div
-        ref="scroll"
-        className={'slds-scrollable--y '+this.props.className}
+      <ul
+        aria-labelledby={this.props.triggerId}
+        className={"slds-dropdown__list slds-dropdown--length-5 "+this.props.className}
         onMouseEnter={this.props.onMouseEnter}
-        onMouseLeave={this.props.onMouseLeave}
-        style={{
-          maxHeight: 260,
-          width:'15rem'
-        }}
         onMouseDown={this.handleMouseDown.bind(this)}
+        onMouseLeave={this.props.onMouseLeave}
+        ref="scroll"
+        role="menu"
         >
-        <ul
-          ref="scroll"
-          className={"slds-dropdown__list slds-dropdown--length-5"}
-          role="menu"
-          aria-labelledby={this.props.triggerId}
-          >
-          {this.getItems()}
-        </ul>
-      </div>
+        {this.getItems()}
+      </ul>
     );
   }
 }
