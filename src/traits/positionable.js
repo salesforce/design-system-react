@@ -61,7 +61,7 @@ const Positionable = {
 			controlContext._positionableScrollEventHandler = handleWindowEvents.bind(this, controlContext);
 			window.addEventListener('scroll', controlContext._positionableScrollEventHandler);
 
-			controlContext._positionableScrollingParent = Lib.getScrollingParent(Positionable.getTarget(controlContext));
+			controlContext._positionableScrollingParent = Lib.getScrollingAncestor(Positionable.getTarget(controlContext));
 			if (controlContext._positionableScrollingParent !== document.documentElement) {
 				controlContext._positionableScrollingParent.addEventListener('scroll', controlContext._positionableScrollEventHandler);
 			}

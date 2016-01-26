@@ -79,8 +79,6 @@ export const ModalObject = {
 	},
 
 	_onClose () {
-		console.log('test');
-
 		if (this.props.triggerNode) {
 			ReactDOM.findDOMNode(this.props.triggerNode).focus();
 		}

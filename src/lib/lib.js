@@ -78,37 +78,38 @@ export function isElementInDocument (element) {
 	return false;
 }
 
-/* `getScrollingParent` iterates through the ancestors of an element in order to find a parent that has has overflow settings set to allow scroll. This is useful with modals. */
-export function getScrollingParent (element) {
+/* `getScrollingAncestor` iterates through the ancestors of an element in order to find an element that has overflow settings set to allow scrolling. This is useful within modals. If no ancestors have these, the document element will be returned. */
+export function getScrollingAncestor (element) {
 	// Firefox: If the element is in an `iframe` with `display: none;` `window.getComputedStyle()` will be `null`; https://bugzilla.mozilla.org/show_bug.cgi?id=548397
-	const computedStyle = window.getComputedStyle(element) || {};
-	const position = computedStyle.position;
+	const initialElementStyle = window.getComputedStyle(element) || {};
 
-	// If position is fixed, a scrolling parent does not matter.
-	if (position === 'fixed') {
+	// If position is fixed, a scrolling ancestor does not matter.
+	if (initialElementStyle.position === 'fixed') {
 		return element;
 	}
 
-	// Loop through the parent nodes of the element and see if any have overflow or position CSS attributes. If no parents have these, the document element will be returned.
-	let parent = element;
-	while (parent) {
-		parent = parent.parentNode;
-		let style;
+	let currentAncestor = element;
+	while (currentAncestor) {
+		currentAncestor = currentAncestor.parentNode;
+		let ancestorStyle;
 		try {
-			style = window.getComputedStyle(parent);
+			ancestorStyle = window.getComputedStyle(currentAncestor);
 		} catch (err) {
 			/* Do nothing */
 		}
 
-		// Check to see if parent is the document element
-		if (typeof style === 'undefined' || style === null) {
-			return parent;
+		/* This should only be true if the currentAncestor is the document element. */
+		if (typeof ancestorStyle === 'undefined' || ancestorStyle === null) {
+			return currentAncestor;
 		}
 
-		const {overflow, overflowX, overflowY} = style;
-		if (/(auto|scroll|hidden)/.test(overflow + overflowY + overflowX)) {
-			if (position !== 'absolute' || ['relative', 'absolute', 'fixed'].indexOf(style.position) >= 0) {
-				return parent;
+		/* Detect if current ancestor in loop has overflows styles that can be cause hiding or scrolling of content. Then, check that the initial element is not absolutely-positioned or that the current ancestor in the loop has one of the listed positions. */
+		if (/(auto|scroll|hidden)/.test(ancestorStyle.overflow + ancestorStyle.overflowY + ancestorStyle.overflowX)) {
+			if (initialElementStyle.position !== 'absolute' ||
+					ancestorStyle.position === 'relative' ||
+					ancestorStyle.position === 'absolute' ||
+					ancestorStyle.position === 'fixed') {
+				return currentAncestor;
 			}
 		}
 	}
@@ -241,7 +242,7 @@ export function isOutsideBounds (element, constrainingElement, padding) {
 
 /* `isVisible` detects if all or part of the element is hidden. */
 export function isVisible (element) {
-	const scrollingParent = getScrollingParent(element);
+	const scrollingParent = getScrollingAncestor(element);
 	const parentBoundaryPadding = {top: 5, right: 5, bottom: 5, left: 5};
 	let _isVisible = true;
 
