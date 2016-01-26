@@ -289,7 +289,7 @@ class SLDSMenuDropdown extends React.Component {
           className={className}
           closeOnTabKey={true}
           horizontalAlign={this.props.align}
-          flippable={false}
+          flippable={true}
           onClose={this.handleCancel.bind(this)}
           targetElement={this.refs.button}
           >
