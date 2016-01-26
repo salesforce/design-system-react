@@ -25,7 +25,6 @@ const propTypes = {
   listLength: React.PropTypes.number,
   searchTerm: React.PropTypes.string,
   setFocus: React.PropTypes.func,
-  salesforceObj: React.PropTypes.string,
 };
 const defaultProps = {
   emptyMessage: "No matches found."
@@ -92,7 +91,7 @@ class Menu extends React.Component {
         onSelect={this.props.onSelect}
         searchTerm={this.props.searchTerm}
         setFocus={this.props.setFocus}
-        salesforceObj={this.props.salesforceObj}>
+        >
           {c}
       </Item>
     });

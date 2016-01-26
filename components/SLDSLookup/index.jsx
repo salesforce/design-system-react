@@ -71,10 +71,6 @@ const propTypes = {
    */
   requiredField: React.PropTypes.bool,
   searchTerm: React.PropTypes.string,
-  /**
-   * Salesforce object type for Lookup items.
-   */
-  salesforceObj: React.PropTypes.string,
 };
 
 
@@ -337,7 +333,6 @@ class SLDSLookup extends React.Component {
         focusIndex={this.state.focusIndex}
         isActive={footerActive}
         onClose={this.handleClose.bind(this)}
-        salesforceObj={this.props.salesforceObj}
         setFocus={this.setFocus.bind(this)}
       />;
     }
@@ -360,7 +355,7 @@ class SLDSLookup extends React.Component {
         header={this.getHeader()}
         iconCategory={this.props.iconCategory}
         iconClasses={this.props.iconClasses}
-        iconName={this.props.iconName?this.props.iconName:this.props.salesforceObj}
+        iconName={this.props.iconName}
         items={this.state.items}
         label={this.props.label}
         listItemLabelRenderer={this.props.listItemLabelRenderer}
@@ -368,7 +363,6 @@ class SLDSLookup extends React.Component {
         onSelect={this.selectItem.bind(this)}
         searchTerm={this.state.searchTerm}
         setFocus={this.setFocus.bind(this)}
-        salesforceObj={this.props.salesforceObj}
       />;
     }
   }
@@ -402,7 +396,7 @@ class SLDSLookup extends React.Component {
     return (
       <a href="javascript:void(0)" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         <span className="slds-pill__label">
-          <SLDSIcon category={this.props.iconCategory} name={this.props.iconName?this.props.iconName:this.props.salesforceObj} className={"slds-icon slds-pill__icon " + this.props.iconClasses} />
+          <SLDSIcon category={this.props.iconCategory} name={this.props.iconName} className={"slds-icon slds-pill__icon " + this.props.iconClasses} />
           <span className="slds-pill__label">
             {selectedItem}
           </span>
@@ -421,7 +415,7 @@ class SLDSLookup extends React.Component {
   }
 
   inputRefName() {
-    return `${this.props.salesforceObj}Lookup`;
+    return `${this.props.label}Lookup`;
   }
 
   focusInput() {
@@ -452,14 +446,13 @@ class SLDSLookup extends React.Component {
       "slds-hide": this.state.selectedIndex === null,
     };
 
-    const inputContainerStyle = this.state.selectedIndex === null ? {} : {padding: "5px"};
     const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()}>{this.props.requiredField ? `*${this.props.label}`: this.props.label}</label>:null;
 
     return (
       <div className={cx(componentClasses)} data-select="single" data-scope="single" data-typeahead="true">
         <section className="slds-form-element">
           {inputLabel}
-          <div className={cx(inputContainerClasses)} style={inputContainerStyle}>
+          <div className={cx(inputContainerClasses)}>
             <div className={cx(pillContainerClasses)}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             </div>

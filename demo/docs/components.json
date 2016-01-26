@@ -609,13 +609,6 @@
                     "value": "\"\"",
                     "computed": false
                 }
-            },
-            "salesforceObj": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "Salesforce object type for Lookup items."
             }
         }
     },

@@ -27,15 +27,6 @@ class LookupExample extends React.Component {
     console.log(item , " Selected");
   }
 
-  getHeader(){
-    let searchLabel = (this.state.searchVal ? '"' + this.state.searchVal + '"':"") + ' in Accounts';
-    return <DefaultHeader searchLabel={searchLabel} salesforceObj="account" />;
-  }
-
-  getFooter(){
-    return <DefaultFooter salesforceObj="account" newItemLabel="New Account"/>;
-  }
-
   render(){
     return (
       <div>
@@ -50,7 +41,6 @@ class LookupExample extends React.Component {
           onChange={this.onChange.bind(this)}
           onItemSelect={this.selectItem}
           options={items}
-          salesforceObj="account"
         />
       </div>
     );
