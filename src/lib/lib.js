@@ -37,8 +37,11 @@ export { default as isRegExp } from 'lodash/lang/isRegExp';
 import isString from 'lodash/lang/isString';
 export { isString };
 
-// DOM
+// ===================================
+// DOM Manipulation and Calculation
+// ===================================
 
+/* `returnFocusToPopupTrigger` returns the focus to an input or button from a modal or downdown menu. */
 export function returnFocusToPopupTrigger (controlContext) {
 	const trigger = controlContext.elements.control[0].querySelector('[aria-haspopup=true]');
 	if (trigger) {
@@ -46,6 +49,7 @@ export function returnFocusToPopupTrigger (controlContext) {
 	}
 }
 
+// CSS Classes & style
 export function hasClass (element, className) {
 	return element.className.match(new RegExp('\\b' + className + '\\b')) !== null;
 }
@@ -62,26 +66,77 @@ export function removeClass (element, className) {
 	}
 }
 
-export function getDocumentOffset (element) {
-	const rect = element.getBoundingClientRect();
-	
-	return {
-		top: rect.top + document.body.scrollTop,
-		left: rect.left + document.body.scrollLeft
-	};
+/* `isElementInDocument` will iterate through the ancestors of element to see if it is a child of a document. It will return false if the element is the document. */
+export function isElementInDocument (element) {
+	let _element = element;
+	while (_element) {
+		_element = _element.parentNode;
+		if (_element === document) {
+			return true;
+		}
+	}
+	return false;
 }
 
-// `elementOffset` provides the distance from the `baseElement` to the element. If the `baseElement` is comes before `element` the number will be positive.
-export function getElementOffset (element, baseElement) {
-	const elementDocumentOffset = getDocumentOffset(element);
-	const baseElementDocumentOffset = getDocumentOffset(baseElement);
+/* `getScrollingAncestor` iterates through the ancestors of an element in order to find an element that has overflow settings set to allow scrolling. This is useful within modals. If no ancestors have these, the document element will be returned. */
+export function getScrollingAncestor (element) {
+	// Firefox: If the element is in an `iframe` with `display: none;` `window.getComputedStyle()` will be `null`; https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+	const initialElementStyle = window.getComputedStyle(element) || {};
 
-	return {
-		top: elementDocumentOffset.top - baseElementDocumentOffset.top,
-		left: elementDocumentOffset.left - baseElementDocumentOffset.left
-	};
+	// If position is fixed, a scrolling ancestor does not matter.
+	if (initialElementStyle.position === 'fixed') {
+		return element;
+	}
+
+	let currentAncestor = element;
+	while (currentAncestor) {
+		currentAncestor = currentAncestor.parentNode;
+		let ancestorStyle;
+		try {
+			ancestorStyle = window.getComputedStyle(currentAncestor);
+		} catch (err) {
+			/* Do nothing */
+		}
+
+		/* This should only be true if the currentAncestor is the document element. */
+		if (typeof ancestorStyle === 'undefined' || ancestorStyle === null) {
+			return currentAncestor;
+		}
+
+		/* Detect if current ancestor in loop has overflows styles that can be cause hiding or scrolling of content. Then, check that the initial element is not absolutely-positioned or that the current ancestor in the loop has one of the listed positions. */
+		if (/(auto|scroll|hidden)/.test(ancestorStyle.overflow + ancestorStyle.overflowY + ancestorStyle.overflowX)) {
+			if (initialElementStyle.position !== 'absolute' ||
+					ancestorStyle.position === 'relative' ||
+					ancestorStyle.position === 'absolute' ||
+					ancestorStyle.position === 'fixed') {
+				return currentAncestor;
+			}
+		}
+	}
+
+	return document.body;
 }
 
+/* `getStyle` is a cross-browser method to get style properties. A `try`/`catch` is needed in case the node does not have a `getComputedStyle`. */
+export function getStyle (element, property) {
+	let style = undefined;
+	try {
+		style = getComputedStyle(element);
+		return style[property];
+	} catch (err) {
+		/* Do nothing */
+	}
+}
+
+/* `isStyleHidden` returns `false` if the element is invisible. */
+export function isStyleHidden (element) {
+	if (getStyle(element, 'opacity') === '0' ||
+			getStyle(element, 'display') === 'none' ||
+			getStyle(element, 'visibility') === 'hidden') {
+		return true;
+	}
+}
+/* When `includeMargin` is set to `true`, `outerHeight` returns the true height due to margin being counted. */
 export function outerHeight (element, includeMargin) {
 	let height = element.offsetHeight;
 	
@@ -93,6 +148,7 @@ export function outerHeight (element, includeMargin) {
 	return height;
 }
 
+/* When `includeMargin` is set to `true`, `outerWidth` returns the true width due to margin being counted. */
 export function outerWidth (element, includeMargin) {
 	let width = element.offsetWidth;
 	
@@ -104,26 +160,100 @@ export function outerWidth (element, includeMargin) {
 	return width;
 }
 
-export function isOffscreen (element, returnAttachmentKey) {
-	const windowHeight = window.innerHeight || document.documentElement.clientHeight || 0;
-	const scrollTop = window.pageYOffset || document.documentElement.scrollTop || 0;
-	const elementOffset = getDocumentOffset(element);
-	const topOffset = elementOffset.top;
-	const bottomOffset = elementOffset.top + outerHeight(element, true);
-	let results = false;
+/* `padOffsets` adds or substracts an arbitary amount of padding to offsets. This is useful for modifying document relative offsets. */
+export function padOffsets (offsets, padding) {
+	const _padding = padding || {top: 0, right: 0, bottom: 0, left: 0};
+	return {
+		top: offsets.top + _padding.top,
+		right: offsets.right - _padding.right,
+		bottom: offsets.bottom - _padding.bottom,
+		left: offsets.left + _padding.left
+	};
+}
 
-	if (returnAttachmentKey) {
-		if (bottomOffset > windowHeight + scrollTop) {
-			results = 'bottom';
-		}
-		if (!results && topOffset < scrollTop ) {
-			results = 'top';
-		}
+/* `getDocumentOffset` returns an element's boundaries. */
+export function getDocumentOffset (element) {
+	const rect = element.getBoundingClientRect();
+	const top = rect.top + document.body.scrollTop;
+	const	left = rect.left + document.body.scrollLeft;
+
+	return {
+		top: top,
+		right: left + outerWidth(element, true),
+		bottom: top + outerHeight(element, true),
+		left: left
+	};
+}
+
+// `elementOffset` provides the distance from the `baseElement` to the element. If the `baseElement` is above the `element` then the number will be positive.
+export function getElementOffset (element, baseElement) {
+	const elementDocumentOffset = getDocumentOffset(element);
+	const baseElementDocumentOffset = getDocumentOffset(baseElement);
+
+	return {
+		top: elementDocumentOffset.top - baseElementDocumentOffset.top,
+		left: elementDocumentOffset.left - baseElementDocumentOffset.left
+	};
+}
+
+/* `viewportBounds` returns the document relative offsets of the viewport window. */
+export function getViewportOffset () {
+	const top = window.pageYOffset || document.documentElement.scrollTop || 0;
+	const left = window.pageXOffset || document.documentElement.scrollLeft || 0;
+	const bottom = top + (window.innerHeight || document.documentElement.clientHeight || 0);
+	const right = left + (window.innerWidth || document.documentElement.clientWidth || 0);
+
+	const bounds = {
+		top: top,
+		right: right,
+		bottom: bottom,
+		left: left
+	};
+
+	return bounds;
+}
+
+/* `isOutsideBounds` detects if the element is outside the  The parameter `padding` is an inside margin (padding) that changes the boundaries if boundaries need to be modified. */
+export function isOutsideBounds (element, constrainingElement, padding) {
+	const _padding = padding || {top: 0, right: 0, bottom: 0, left: 0};
+	const elementBounds = getDocumentOffset(element);
+	let bounds = {top: 0, right: 0, bottom: 0, left: 0};
+	let isOutOfBounds = false;
+
+	if (constrainingElement === window) {
+		bounds = padOffsets(getViewportOffset(), _padding);
 	} else {
-		results = bottomOffset > windowHeight + scrollTop || topOffset < scrollTop;
+		bounds = padOffsets(getDocumentOffset(constrainingElement), _padding);
 	}
 
-	return results;
+	const outOfBounds = {
+		top: elementBounds.top < bounds.top,
+		right: elementBounds.right > bounds.right,
+		bottom: elementBounds.bottom > bounds.bottom,
+		left: elementBounds.left < bounds.left
+	};
+
+	if (outOfBounds.top || outOfBounds.right || outOfBounds.bottom || outOfBounds.left) {
+		isOutOfBounds = outOfBounds;
+	}
+
+	return isOutOfBounds;
+}
+
+/* `isVisible` detects if all or part of the element is hidden. */
+export function isVisible (element) {
+	const scrollingParent = getScrollingAncestor(element);
+	const parentBoundaryPadding = {top: 5, right: 5, bottom: 5, left: 5};
+	let _isVisible = true;
+
+	// Try to catch edge cases before we do DOM element offset calculations
+	if (!isElementInDocument(element) ||
+		isStyleHidden(element) ||
+		isOutsideBounds(element, scrollingParent, parentBoundaryPadding)) {
+		_isVisible = false;
+	}
+
+	return _isVisible;
 }
 
 // This is a CSS feature detection function that returns a working CSS style.
@@ -140,12 +270,6 @@ export function getSupportedCSSTransformKey () {
 			return key;
 		}
 	}
-}
-
-export function isValidDate (strDate) {
-	const myDateStr = new Date(strDate);
-
-	return !isNaN(myDateStr.getMonth());
 }
 
 export function setWidth (element, width) {
@@ -176,11 +300,21 @@ export function wrapElement (element) {
 	}
 	
 	// Special function to check if the element is offScreen (not a jQuery method clone)
+	if (!isFunction(wrapped.isVisible)) {
+		wrapped.isVisible = partial(isVisible, wrapped[0]);
+	}
 	if (!isFunction(wrapped.isOffscreen)) {
-		wrapped.isOffscreen = partial(isOffscreen, wrapped[0]);
+		wrapped.isOffscreen = partial(isOutsideBounds, wrapped[0], window);
 	}
 	
 	return wrapped;
+}
+
+
+export function isValidDate (strDate) {
+	const myDateStr = new Date(strDate);
+
+	return !isNaN(myDateStr.getMonth());
 }
 
 // Utility
