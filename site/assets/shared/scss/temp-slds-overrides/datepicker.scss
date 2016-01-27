@@ -1,24 +1,24 @@
 .#{$css-prefix}datepicker-form {
-    position: relative;
+	position: relative;
 }
 
 .#{$css-prefix}datepicker {
-    margin-top: 0;
+	margin-top: 0;
 
-    // this is pretty nitpicky -- do we _need_ the margin top to change?
-    .#{$css-prefix}datepicker__filter--month h2 {
-        margin-top: 2px;
-    }
+	// this is pretty nitpicky -- do we _need_ the margin top to change?
+	.#{$css-prefix}datepicker__filter--month h2 {
+		margin-top: 2px;
+	}
 
-    // once picklist is updated to support pickklist-fluid, these won't be needed
-    .#{$css-prefix}picklist {
-        .#{$css-prefix}button {
-            width: 100px;
-        }
+	// once picklist is updated to support pickklist-fluid, these won't be needed
+	.#{$css-prefix}picklist {
+		.#{$css-prefix}button {
+			width: 100px;
+		}
 
-        .#{$css-prefix}dropdown {
-            min-width: 100px;
-            width: 100px;
-        }
-    }
+		.#{$css-prefix}dropdown {
+			min-width: 100px;
+			width: 100px;
+		}
+	}
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ExampleEvents} from 'design-system-utilities';
+import {ExampleEvents} from 'design-system-utilities-react';
 import SiteExample from './site-example';
 
 const control = 'checkbox';

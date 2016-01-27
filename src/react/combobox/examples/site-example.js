@@ -1,6 +1,6 @@
 import React from 'react';
 import {Lib, Combobox} from 'design-system-react';
-import {sampleData, ExampleEvents} from 'design-system-utilities';
+import {sampleData, ExampleEvents} from 'design-system-utilities-react';
 
 export default React.createClass({
 	propTypes: {
@@ -15,8 +15,8 @@ export default React.createClass({
 	getInitialState () {
 		return {
 			model: {
-				collection: sampleData.picklist.default.collection,
-				selection: sampleData.picklist.default.collection[1],
+				collection: sampleData.combobox.default.collection,
+				selection: sampleData.combobox.default.collection[1],
 				resize: 'auto'
 			}
 		};
@@ -45,7 +45,7 @@ export default React.createClass({
 
 	setSelection () {
 		const model = this.state.model;
-		model.selection = sampleData.picklist.default.collection[5];
+		model.selection = sampleData.combobox.default.collection[5];
 		this.setState({model});
 	},
 

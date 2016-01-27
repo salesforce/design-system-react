@@ -1,6 +1,6 @@
 import React from 'react';
 import {Lookup} from 'design-system-react';
-import {sampleData} from 'design-system-utilities';
+import {sampleData} from 'design-system-utilities-react';
 
 export default React.createClass({
 	propTypes: {
@@ -28,19 +28,19 @@ export default React.createClass({
 			</div>
 		);
 	},
-	
+
 	componentDidMount () {
 		this._addItemsTimeout = window.setTimeout(this._addItems, 4000);
 	},
-	
+
 	_addItems () {
 		this.setState({
 			collection: sampleData.lookup.default.collection.concat(sampleData.lookup.default.additionalItems)
 		});
-		
+
 		window.clearTimeout(this._addItemsTimeout);
 	},
-	
+
 	_filterPredicate (text, pattern) {
 		return pattern.length < 2 || text.substr(0, pattern.length).toLowerCase() === pattern;
 	},
@@ -48,7 +48,7 @@ export default React.createClass({
 	_handleModelChange (selection) {
 		this.setState({ selection });
 	},
-	
+
 	_handleAdd () {
 		console.log('Add an item!');
 	}

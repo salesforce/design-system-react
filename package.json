@@ -110,6 +110,7 @@
     "data-table",
     "datepicker",
     "dropdown",
+    "lookup",
     "modal",
     "notification",
     "picklist",

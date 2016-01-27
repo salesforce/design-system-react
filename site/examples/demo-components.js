@@ -27,7 +27,10 @@ module.exports = function (facade) {
 	const codeDir = __PATHS__.source_files + '/' + facade;
 	// console.log("[demo-components.js:28] codeDir:", codeDir);
 	// const codeDir = './src/' + facade;
-	const sampleCodeDir = __PATHS__.sample_data;
+	var sampleCodeDir = __PATHS__.sample_data;
+	if (facade === 'react') {
+		sampleCodeDir += '-react';
+	}
 	// console.log("[demo-components.js:31] sampleCodeDir:", sampleCodeDir);
 	// const sampleCodeDir = '../utilities/sample-data';
 

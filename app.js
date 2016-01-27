@@ -89,8 +89,6 @@ app.get('/react', function (req, res) {
 		});
 	}
 
-	console.log("[app.js:91] reactCode:", reactCode);
-
 	res.render('react/index', reactCode);
 });
 

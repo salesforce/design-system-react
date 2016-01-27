@@ -1,9 +1,10 @@
 import React from 'react';
 import {Tree} from 'design-system-react';
-import {sampleData} from 'design-system-utilities';
+import {sampleData} from 'design-system-utilities-react';
 
 export default React.createClass({
 	getInitialState () {
+		console.log("[site-example.js:7] sampleData.tree.default:", sampleData.tree.default);
 		return {
 			selection: [],
 			open: []
@@ -12,22 +13,17 @@ export default React.createClass({
 
 	render () {
 		return (
-			<div>
-				<div className="slds-col example">
-					<Tree
-						folderSelect={false}
-						multiSelect={true}
-						autoOpen={false}
-						heading={sampleData.tree.default.collection.heading}
-						collection={sampleData.tree.default.collection.collection}
-						selection={this.state.selection}
-						open={this.state.open}
-						onChange={this.handleChanged}
-						onOpened={this.handleToggle}
-						onClosed={this.handleToggle} />
-				</div>
-				<div className="slds-col demo-controls"></div>
-			</div>
+			<Tree
+				folderSelect={false}
+				multiSelect={true}
+				autoOpen={false}
+				heading={sampleData.tree.default.heading}
+				collection={sampleData.tree.default.collection}
+				selection={this.state.selection}
+				open={this.state.open}
+				onChange={this.handleChanged}
+				onOpened={this.handleToggle}
+				onClosed={this.handleToggle} />
 		);
 	},
 

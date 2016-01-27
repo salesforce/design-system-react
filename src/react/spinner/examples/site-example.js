@@ -1,10 +1,6 @@
 import React from 'react';
 import {Spinner} from 'design-system-react';
 
-// require('../../../scss/components/grid-system/flavors/automatic-sizing/index.scss');
-// require('../../../scss/components/grid-system/flavors/horizontal-alignment-spread/index.scss');
-// require('../../../scss/components/grid-system/flavors/vertical-alignment/index.scss');
-
 export default React.createClass({
 	render () {
 		return (

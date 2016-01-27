@@ -1,6 +1,6 @@
 import React from 'react';
 import {DataTable} from 'design-system-react';
-import {sampleData} from 'design-system-utilities';
+import {sampleData} from 'design-system-utilities-react';
 
 // Third-party
 import _ from 'underscore';

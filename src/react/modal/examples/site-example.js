@@ -18,7 +18,6 @@ export default React.createClass({
 
 	_buttonRendered (element) {
 		this.triggerNode = element;
-		console.log(this.triggerNode);
 	},
 
 	render () {
