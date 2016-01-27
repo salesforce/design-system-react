@@ -32,7 +32,7 @@ module.exports = React.createClass( {
             <div className='slds-media slds-media--center'>
               <span className='slds-media__figure site-logo'>Salesforce</span>
               <div className='slds-media__body'>
-                <h1 className='slds-text-heading--small slds-m-right--small slds-truncate slds-align-middle' title='Record Title'>design system : <strong>interactive accessible components for React</strong></h1>
+                <h1 className='slds-text-heading--small slds-m-right--small slds-truncate slds-align-middle' title='Record Title'><span className="site-text--bold">design system</span>: interactive accessible components for React</h1>
               </div>
             </div>
           </Link>
@@ -40,9 +40,11 @@ module.exports = React.createClass( {
 
         <main className='stage-main slds-grid slds-wrap slds-grow'>
           <aside className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-vertical--large'>
+            {/*
             <p className="slds-text-heading--small slds-p-vertical--small">
               <Link to="getting-started" className="a-plain slds-p-horizontal--large slds-p-vertical--x-small">Getting Started</Link>
             </p>
+            */}
             <p className="slds-text-heading--small slds-p-horizontal--large slds-p-vertical--small">Components</p>
             <ul className="slds-p-bottom--small">
               <li><Link to="button" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButton</Link></li>
@@ -58,9 +60,11 @@ module.exports = React.createClass( {
               <li><Link to="notification" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSNotification</Link></li>
               <li><Link to="tooltip" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSPopoverTooltip</Link></li>
             </ul>
+            {/*
             <p className="slds-text-heading--small slds-p-vertical--small">
               <Link to="faq" className="a-plain slds-p-horizontal--large slds-p-vertical--x-small">FAQ</Link>
             </p>
+            */}
           </aside>
 
           <div className="region region--main slds-grow slds-size--5-of-6 slds-medium-size--5-of-6 slds-large-size--10-of-12 slds-col-rule--right slds-p-around--large">

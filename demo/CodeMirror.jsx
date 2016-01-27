@@ -2,7 +2,6 @@ const CM = require('codemirror');
 import 'codemirror/addon/runmode/runmode';
 import 'codemirror/mode/htmlmixed/htmlmixed';
 import 'codemirror/mode/javascript/javascript';
-import 'codemirror/theme/solarized.css';
 import 'demo/assets/styles/codemirror.css';
 
 const React = require('react');
@@ -69,7 +68,6 @@ class CodeMirrorEditor extends React.Component {
       lineWrapping: false,
       matchBrackets: true,
       tabSize: 2,
-      theme: 'solarized light',
       readOnly: this.props.readOnly
     });
     this.editor.on('change', this.handleChange);

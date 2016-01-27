@@ -25,6 +25,7 @@ html {
 
 /* Typography */
 .copy-text p { font-size: .95rem; }
+.site-text--bold { font-weight: 700; }
 .site-text--xl { font-size: 3rem !important; }
 .site-text--center { text-align: center !important; }
 
