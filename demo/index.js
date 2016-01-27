@@ -24,6 +24,8 @@ import DatePickerSingleSelectSection from './pages/DatePickerSingleSelectSection
 import NotificationSection from './pages/NotificationSection';
 import PicklistSection from './pages/PicklistSection';
 import TooltipSection from './pages/TooltipSection';
+import DateInputSection from './pages/DateInputSection';
+
 
 const routes = (
   <Route handler={App} path="/">
@@ -42,6 +44,8 @@ const routes = (
       <Route name="picklist" path="picklist" handler={PicklistSection}/>
       <Route name="tooltip" path="tooltip" handler={TooltipSection}/>
       <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
+      <Route name="dateinput" path="dateinput" handler={DateInputSection}/>
+
       <Route name="faq" path="faq" handler={FAQ} />
     </Route>
   </Route>
