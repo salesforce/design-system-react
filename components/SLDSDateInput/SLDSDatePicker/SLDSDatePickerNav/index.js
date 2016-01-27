@@ -97,7 +97,7 @@ module.exports = React.createClass( {
             </button>
           </div>
 
-          <div id='month' className='slds-align-middle' role='heading' aria-live='assertive' aria-atomic={true}>{this.getMonthLabel()}</div>
+          <h2 id='month' className='slds-align-middle' role='heading' aria-live='assertive' aria-atomic={true}>{this.getMonthLabel()}</h2>
           <div className='slds-align-middle' role='button' aria-labelledby='bn_next-label' tabIndex={-1}>
             <button 
               ref='nextMonth'
@@ -108,7 +108,7 @@ module.exports = React.createClass( {
             </button>
           </div>
         </div>
-        <div className='slds-picklist datepicker__filter--year slds-shrink-none'>
+        <div className='slds-picklist slds-picklist--fluid slds-shrink-none'>
           <SLDSSelectYear 
             displayedDate={this.props.displayedDate} 
             onChange={this.handleYearSelect} />

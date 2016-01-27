@@ -21,6 +21,8 @@ module.exports = React.createClass({
 
       selectedDate:new Date(),
 
+      calendarHasFocus: false,
+
       onSelectDate (date) {
         console.log('onSelectDate should be defined ',date);
       },
@@ -71,17 +73,13 @@ module.exports = React.createClass({
   },
 
   handleToPrevWeek(){
-    console.log('>>> handleToPrevWeek');
     if(this.props.onPrevWeek){
-      console.log('>>> this.props.onPrevWeek');
       this.props.onPrevWeek(this.props.date);
     }
   },
 
   handleToNextWeek(){
-    console.log('>>> handleToNextWeek');
     if(this.props.onNextWeek){
-      console.log('>>> this.props.onNextWeek');
       this.props.onNextWeek(this.props.date);
     }
   },
@@ -102,12 +100,14 @@ module.exports = React.createClass({
         }
       }
       else if(event.keyCode === KEYS.TAB){
+/*
         if(!event.shiftKey){
           EventUtil.trapEvent(event);
           if(this.props.onCancel){
             this.props.onCancel();
           }
         }
+*/
       }
       else if(event.keyCode === KEYS.RIGHT){
         EventUtil.trapEvent(event);
@@ -136,7 +136,9 @@ module.exports = React.createClass({
   },
 
   setFocus () {
-    this.getDOMNode().focus();
+    if(this.isMounted() && this.props.calendarHasFocus){
+      this.getDOMNode().focus();
+    }
   },
 
   render () {
@@ -150,8 +152,8 @@ module.exports = React.createClass({
       <td role='gridcell'
         aria-disabled={!isCurrentMonth}
         aria-selected={isSelectedDay}
-        autoFocus={this.props.focused}
-        tabIndex={isCurrentMonth && isFirstDayOfMonth && this.props.focused?0:-1} 
+//        autoFocus={this.props.calendarHasFocus && this.props.focused}
+        tabIndex={!this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth?0:-1} 
         className={(isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (isSelectedDay? ' slds-is-selected' : '')} 
         onClick={this.handleClick}
         onMouseDown={this.handleClick}

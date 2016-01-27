@@ -41,7 +41,7 @@ module.exports = React.createClass( {
   handleSelect(selectedValue){
     if(selectedValue){
       if(this.props.onChange){
-        this.props.onChange(new Date(this.props.displayedDate.setFullYear(parseInt(selectedValue))));
+        this.props.onChange(new Date(this.props.displayedDate.setFullYear(parseInt(selectedValue.value))));
       }
     }
   },
@@ -56,8 +56,8 @@ module.exports = React.createClass( {
           placeholder='Year'
           value={this.props.displayedDate.getFullYear()}
           onSelect={this.handleSelect}
+          className='slds-picklist--fluid slds-shrink-none'
           initialFocus={false}/>
-
       </div>
     );
   }

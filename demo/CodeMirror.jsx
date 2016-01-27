@@ -19,6 +19,8 @@ const SLDSMenuPicklist =  require('../components/SLDSMenuPicklist');
 const SLDSModal =  require('../components/SLDSModal');
 const SLDSNotification =  require('../components/SLDSNotification');
 const SLDSPopoverTooltip =  require('../components/SLDSPopoverTooltip');
+const SLDSDateInput =  require('../components/SLDSDateInput');
+
 
 const displayName = 'CodeMirror';
 const propTypes = {

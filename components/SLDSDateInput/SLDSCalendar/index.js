@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import Week from './SLDSCalendarWeek/index';
-import {DateUtil} from '../../utils';
+import {EventUtil, DateUtil} from '../../utils';
 
 module.exports = React.createClass({
 
@@ -36,7 +36,8 @@ module.exports = React.createClass({
 
   getInitialState () {
     return {
-      highlightedDate: DateUtil.firstDayOfMonth(this.props.displayedDate)
+      highlightedDate: DateUtil.firstDayOfMonth(this.props.displayedDate),
+      hasFocus: false
     };
   },
 
@@ -99,10 +100,28 @@ module.exports = React.createClass({
     }
   },
 
+  handleTodaySelect (event) {
+    this.handleSelectDate(new Date());
+  },
+
+  handleFocus (event) {
+    this.setState({hasFocus:true});
+  },
+
+  handleBlur (event) {
+    this.setState({hasFocus:false});
+  },
+
+  handleTodayFocus (event) {
+    EventUtil.trap(event);
+    this.setState({hasFocus:false});
+  },
+
   render () {
-
-
-    return (<div className='SLDSCalendar'>
+    return (<div className='SLDSCalendar'
+        onFocus={this.handleFocus}
+        onBlur={this.handleBlur}
+      >
       <table className='datepicker__month' role='grid' aria-labelledby='month'>
         <thead>
           <tr ref='weekdays'>
@@ -131,9 +150,26 @@ module.exports = React.createClass({
         </thead>
         <tbody>
           {this.renderWeeks()}
+          {this.renderToday()}
         </tbody>
       </table>
     </div>);
+  },
+
+  renderToday () {
+    return <tr>
+      <td 
+        colSpan="7"
+        role="gridcell">
+        <a href="javascript:void(0)"
+          onFocus={this.handleTodayFocus}
+          tabIndex="0"
+          className="slds-show--inline-block slds-p-bottom--x-small"
+          onClick={this.handleTodaySelect} >
+            Today
+          </a>
+        </td>
+    </tr>;
   },
 
   renderWeeks () {
@@ -165,6 +201,7 @@ module.exports = React.createClass({
           onNextDay={this.handleNextDay}
           onPrevWeek={this.handlePrevWeek}
           onNextWeek={this.handleNextWeek}
+          calendarHasFocus={this.state.hasFocus}
           onCancel={this.handleCancel} />);
       date = DateUtil.addWeeks(date,1);
       done = count++ > 2 && monthIndex !== date.getMonth();
