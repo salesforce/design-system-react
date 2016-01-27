@@ -33,7 +33,7 @@ class DatepickerSingleSelectSection extends React.Component {
     const docs = DOCS["DatepickerSingleSelect"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>DatepickerSingleSelect</h3>
+        <h3 className='slds-text-heading--medium slds-truncate'>SLDSDatepickerSingleSelect</h3>
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
