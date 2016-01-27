@@ -1,15 +1,15 @@
 
-class DateInputExample extends React.Component {
+class SLDSDatepickerSingleSelectExample extends React.Component {
 
-  displayName: "DateInputExample";
+  displayName: "SLDSDatepickerSingleSelectExample";
 
   render(){
     return (
-      <SLDSDateInput />
+      <SLDSDatepickerSingleSelect />
     );
   }
 
 }
 
-ReactDOM.render(<DateInputExample />, mountNode);
+ReactDOM.render(<SLDSDatepickerSingleSelect />, mountNode);
 

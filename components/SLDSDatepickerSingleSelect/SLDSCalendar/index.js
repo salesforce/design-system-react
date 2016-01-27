@@ -100,15 +100,15 @@ module.exports = React.createClass({
     }
   },
 
-  handleTodaySelect (event) {
+  handleTodaySelect () {
     this.handleSelectDate(new Date());
   },
 
-  handleFocus (event) {
+  handleFocus () {
     this.setState({hasFocus:true});
   },
 
-  handleBlur (event) {
+  handleBlur () {
     this.setState({hasFocus:false});
   },
 

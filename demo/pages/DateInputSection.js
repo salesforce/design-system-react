@@ -13,11 +13,11 @@ import Samples from 'demo/Samples';
 import PropTable from 'demo/PropTable';
 import DOCS from 'docs';
 
-const displayName = "DateInputSection";
+const displayName = "DatepickerSingleSelectSection";
 const propTypes = {};
 const defaultProps = {};
 
-class DateInputSection extends React.Component {
+class DatepickerSingleSelectSection extends React.Component {
 
   constructor(props) {
     super(props);
@@ -25,22 +25,22 @@ class DateInputSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSDateInput"].description;
+    const desc = DOCS["DatepickerSingleSelect"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSDateInput"] ? true : false;
+    const docs = DOCS["DatepickerSingleSelect"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>SLDSDateInput</h3>
+        <h3 className='slds-text-heading--medium slds-truncate'>DatepickerSingleSelect</h3>
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
 
         <div>
-          <CodeMirror codeText={Samples.DateInput} />
-          <PropTable component="SLDSDateInput" />
+          <CodeMirror codeText={Samples.DatepickerSingleSelect} />
+          <PropTable component="DatepickerSingleSelect" />
         </div>
       </div>
     );
@@ -48,9 +48,9 @@ class DateInputSection extends React.Component {
 
 }
 
-DateInputSection.displayName = displayName;
-DateInputSection.propTypes = propTypes;
-DateInputSection.defaultProps = defaultProps;
+DatepickerSingleSelectSection.displayName = displayName;
+DatepickerSingleSelectSection.propTypes = propTypes;
+DatepickerSingleSelectSection.defaultProps = defaultProps;
 
-module.exports = DateInputSection;
+module.exports = DatepickerSingleSelectSection;
 

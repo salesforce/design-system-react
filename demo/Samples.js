@@ -11,7 +11,7 @@ const Samples =  {
   CustomPicklists: require('fs').readFileSync('demo/code-snippets/PicklistCustomExamples.js', 'utf8'),
   StatefulButtons: require('fs').readFileSync('demo/code-snippets/ButtonStatefulExamples.js', 'utf8'),
   Tooltips: require('fs').readFileSync('demo/code-snippets/TooltipExamples.js', 'utf8'),
-  DateInput: require('fs').readFileSync('demo/code-snippets/DateInputExample-1.js', 'utf8'),
+  DatepickerSingleSelect: require('fs').readFileSync('demo/code-snippets/DateInputExample-1.js', 'utf8'),
 };
 
 module.exports = Samples;

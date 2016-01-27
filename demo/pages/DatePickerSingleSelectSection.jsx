@@ -15,7 +15,7 @@ import PropTable from 'demo/PropTable';
 import DOCS from 'docs';
 
 import SLDSMenuPicklist from 'components/SLDSMenuPicklist';
-import SLDSDateInput from 'components/SLDSDateInput';
+import SLDSDatepickerSingleSelect from 'components/SLDSDatepickerSingleSelect';
 
 module.exports = React.createClass( {
 
@@ -41,7 +41,7 @@ module.exports = React.createClass( {
               </h3>
 
               <div className="slds-p-vertical--large">
-                <SLDSDateInput />
+                <SLDSDatepickerSingleSelect />
               </div>
 
             </div>

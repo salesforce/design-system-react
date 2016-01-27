@@ -55,7 +55,7 @@ module.exports = React.createClass( {
               <li><Link to="modal" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSModal</Link></li>
               <li><Link to="notification" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSNotification</Link></li>
               <li><Link to="tooltip" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSPopoverTooltip</Link></li>
-              <li><Link to="dateinput" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSDateInput</Link></li>
+              <li><Link to="dateinput" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSDatePicker</Link></li>
             </ul>
             <p className="slds-text-heading--small slds-p-vertical--small">
               <Link to="faq" className="a-plain slds-p-horizontal--large slds-p-vertical--x-small">FAQ</Link>

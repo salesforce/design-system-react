@@ -165,7 +165,7 @@ module.exports = React.createClass({
     );
   },
 
-  componentDidUpdate (prevProps, prevState) {
+  componentDidUpdate (prevProps) {
     if(this.props.focused && !prevProps.focused){
       this.setFocus();
     }

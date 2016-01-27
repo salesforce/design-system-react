@@ -20,7 +20,7 @@ import SLDSModal from './SLDSModal';
 import SLDSModalTrigger from './SLDSModal/trigger';
 import SLDSNotification from './SLDSNotification';
 import SLDSPopoverTooltip from './SLDSPopoverTooltip';
-import SLDSDateInput from './SLDSDateInput';
+import SLDSDatepickerSingleSelect from './SLDSDatepickerSingleSelect';
 import SLDSSettings from './SLDSSettings';
 import SLDSUtilityIcon from './SLDSUtilityIcon';
 
@@ -28,7 +28,7 @@ module.exports = {
   SLDSButton: SLDSButton,
   SLDSButtonStateful: SLDSButtonStateful,
   SLDSButtonGroup: SLDSButtonGroup,
-  SLDSDateInput: SLDSDateInput,
+  SLDSDatepickerSingleSelect: SLDSDatepickerSingleSelect,
   SLDSIcon: SLDSIcon,
   SLDSLookup: SLDSLookup,
   SLDSMenuDropdown: SLDSMenuDropdown,

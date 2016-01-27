@@ -1262,7 +1262,7 @@
             }
         }
     },
-    "SLDSDateInput": {
+    "SLDSDatepickerSingleSelect": {
         "description": "",
         "props": {
             "string": {
