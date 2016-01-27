@@ -1,8 +1,11 @@
 import React from 'react';
 import {Pills} from 'design-system-react';
+import {sampleData} from 'design-system-utilities-react';
 
 export default React.createClass({
 	getInitialState () {
+		console.log("[site-example.js:7] sampleData.pills.default.collection:", sampleData.pills.default.collection);
+
 		return {
 			selection: [
 				{

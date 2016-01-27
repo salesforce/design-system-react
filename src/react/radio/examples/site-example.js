@@ -4,12 +4,11 @@ import {sampleData} from 'design-system-utilities-react';
 
 // https://www.lightningdesignsystem.com/components/forms#radio
 
-// TODO: consider creation of a Radios React component based off of this example code (as we did with jQuery)
 export default React.createClass({
 	getInitialState () {
 		const radioboxen = new Map();
 
-		function populateRadioboxen(element, index, array) {
+		function populateRadioboxen ( element, index ) {
 			radioboxen.set('radio' + (index + 1), element);
 		}
 		sampleData.radio.default.collection.forEach(populateRadioboxen);
@@ -17,7 +16,8 @@ export default React.createClass({
 	},
 
 	render () {
-		const name = 'radioGroup1';
+		const name = sampleData.radio.default.name;
+		const labelText = sampleData.radio.default.labelText;
 		const radios = [
 			<Radio
 				checked={this.state.radioboxen.get('radio1').checked}
@@ -55,7 +55,7 @@ export default React.createClass({
 			<div>
 				<div className="slds-col example">
 					<fieldset className="slds-form-element">
-						<legend className="slds-form-element__label slds-form-element__label--top">Opts</legend>
+						<legend className="slds-form-element__label slds-form-element__label--top">{labelText}</legend>
 						<div className="slds-form-element__control">
 							{radios}
 						</div>

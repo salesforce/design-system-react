@@ -38,11 +38,11 @@ import ReactDOM from 'react-dom';
 // import picklist from '../../src/react/picklist/examples/site-example';
 // ReactDOM.render(React.createElement(picklist), document.querySelector('#picklist-react-control'));
 
-// import pills from '../../src/react/pills/examples/site-example';
-// ReactDOM.render(React.createElement(pills), document.querySelector('#pills-react-control'));
+import pills from '../../src/react/pills/examples/site-example';
+ReactDOM.render(React.createElement(pills), document.querySelector('#pills-react-control'));
 
-// import popover from '../../src/react/popover/examples/site-example';
-// ReactDOM.render(React.createElement(popover), document.querySelector('#popover-react-control'));
+import popover from '../../src/react/popover/examples/site-example';
+ReactDOM.render(React.createElement(popover), document.querySelector('#popover-react-control'));
 
 import radio from '../../src/react/radio/examples/site-example';
 ReactDOM.render(React.createElement(radio), document.querySelector('#radio-react-control'));

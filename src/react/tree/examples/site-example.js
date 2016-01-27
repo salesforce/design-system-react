@@ -4,7 +4,6 @@ import {sampleData} from 'design-system-utilities-react';
 
 export default React.createClass({
 	getInitialState () {
-		console.log("[site-example.js:7] sampleData.tree.default:", sampleData.tree.default);
 		return {
 			selection: [],
 			open: []
