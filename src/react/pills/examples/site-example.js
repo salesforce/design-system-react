@@ -4,24 +4,12 @@ import {sampleData} from 'design-system-utilities-react';
 
 export default React.createClass({
 	getInitialState () {
-		console.log("[site-example.js:7] sampleData.pills.default.collection:", sampleData.pills.default.collection);
-
+		console.log("[site-example.js:7] sampleData.pills.default.selection:", sampleData.pills.default.selection);
+		console.log("[site-example.js:7] sampleData.pills.default.open:", sampleData.pills.default.open);
+		console.log("[site-example.js:9] sampleData.pills.default:", sampleData.pills.default);
 		return {
-			selection: [
-				{
-					text: 'item 1',
-					value: 1
-				},
-				{
-					text: 'item 2',
-					value: 2
-				},
-				{
-					text: 'item 3',
-					value: 3
-				}
-			],
-			open: []
+			selection: sampleData.pills.default.selection,
+			open: sampleData.pills.default.open
 		};
 	},
 
