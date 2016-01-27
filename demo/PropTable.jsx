@@ -65,8 +65,10 @@ class PropTable extends React.Component {
     for(var prop in docs) {
       let p = docs[prop];
       let propType = p.type ? p.type : null;
-
-      let type = propType.name === 'enum' ? this.renderEnum(propType) : p.type;
+      if(!propType){
+        continue;
+      }
+      let type = propType && propType.name === 'enum' ? this.renderEnum(propType) : p.type;
       let defaultProp = docs[prop].defaultValue ? docs[prop].defaultValue.value.replace(/'|"/g, "") : "";
       let required = docs[prop].required ? <SLDSIcon name='check' category='utility' size="x-small" className="slds-icon-text-default" /> : "";
 

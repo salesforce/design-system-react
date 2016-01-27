@@ -13,7 +13,7 @@ var componentNames = [
   'SLDSModal',
   'SLDSNotification',
   'SLDSPopoverTooltip',
-  //'SLDSDateInput',
+  'SLDSDateInput',
   //'SLDSGrid',
   //'SLDSUtilityIcon',
 ];

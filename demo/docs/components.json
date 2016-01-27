@@ -1261,5 +1261,46 @@
                 "description": ""
             }
         }
+    },
+    "SLDSDateInput": {
+        "description": "",
+        "props": {
+            "string": {
+                "defaultValue": {
+                    "value": "''",
+                    "computed": false
+                }
+            },
+            "value": {
+                "defaultValue": {
+                    "value": "new Date()",
+                    "computed": false
+                }
+            },
+            "placeholder": {
+                "defaultValue": {
+                    "value": "'Pick a Date'",
+                    "computed": false
+                }
+            },
+            "formatter": {
+                "defaultValue": {
+                    "value": "function(date) {\n  return (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();\n}",
+                    "computed": false
+                }
+            },
+            "parser": {
+                "defaultValue": {
+                    "value": "function(str) {\n  return new Date(str);\n}",
+                    "computed": false
+                }
+            },
+            "onDateChange": {
+                "defaultValue": {
+                    "value": "function(date) {\n  console.log('onDateChange should be defined');\n}",
+                    "computed": false
+                }
+            }
+        }
     }
 }

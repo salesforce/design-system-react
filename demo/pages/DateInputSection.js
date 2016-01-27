@@ -25,22 +25,22 @@ class DateInputSection extends React.Component {
   }
 
   getDescription() {
-    const desc = DOCS["SLDSPopoverTooltip"].description;
+    const desc = DOCS["SLDSDateInput"].description;
     return {__html: desc };
   }
 
   render(){
-    const docs = DOCS["SLDSPopoverTooltip"] ? true : false;
+    const docs = DOCS["SLDSDateInput"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>SLDSPopoverTooltip</h3>
+        <h3 className='slds-text-heading--medium slds-truncate'>SLDSDateInput</h3>
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
 
         <div>
           <CodeMirror codeText={Samples.DateInput} />
-          <PropTable component="SLDSPopoverTooltip" />
+          <PropTable component="SLDSDateInput" />
         </div>
       </div>
     );
