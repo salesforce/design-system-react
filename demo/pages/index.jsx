@@ -48,6 +48,8 @@ module.exports = React.createClass( {
               <li><Link to="button" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButton</Link></li>
               <li><Link to="button-stateful" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButtonStateful</Link></li>
               <li><Link to="button-group" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButtonGroup</Link></li>
+              <li><Link to="dateinput" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSDatepicker</Link></li>
+
               <li><Link to="icon" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSIcon</Link></li>
               <li><Link to="lookup" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSLookup</Link></li>
               <li><Link to="dropdown" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSMenuDropdown</Link></li>
@@ -55,7 +57,6 @@ module.exports = React.createClass( {
               <li><Link to="modal" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSModal</Link></li>
               <li><Link to="notification" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSNotification</Link></li>
               <li><Link to="tooltip" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSPopoverTooltip</Link></li>
-              <li><Link to="dateinput" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSDatePicker</Link></li>
             </ul>
             <p className="slds-text-heading--small slds-p-vertical--small">
               <Link to="faq" className="a-plain slds-p-horizontal--large slds-p-vertical--x-small">FAQ</Link>
