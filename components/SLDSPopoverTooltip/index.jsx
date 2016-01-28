@@ -34,7 +34,6 @@ const propTypes = {
    */
   hoverCloseDelay: React.PropTypes.number,
   openByDefault: React.PropTypes.bool,
-  target: React.PropTypes.any
 };
 const defaultProps = {
   align: "top",
