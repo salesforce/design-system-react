@@ -2,5 +2,5 @@ node_modules
 npm-debug.log
 .DS_Store
 server/node_modules
-server/public/assets
+server/public/assets/bundle
 scripts/pre-commit.sh
