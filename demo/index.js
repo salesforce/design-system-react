@@ -28,9 +28,9 @@ import TooltipSection from './pages/TooltipSection';
 
 const routes = (
   <Route handler={App} path="/">
-    <DefaultRoute handler={HomePage} />
+    <Route name="home" path="/" handler={HomePage}>
+      <DefaultRoute handler={Welcome} />
 
-    <Route name="home" handler={HomePage}>
       <Route name="welcome" path="welcome" handler={Welcome} />
       <Route name="getting-started" path="getting-started" handler={GettingStarted} />
       <Route name="button" path="button" handler={ButtonSection}/>
