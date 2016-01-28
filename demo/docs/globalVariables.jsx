@@ -10,6 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 export default {
+  sldsReactVersion: '0.1.0',
   reactVersion: 'react0.14.x',
   sldsVersion: 'Lightning Design System 0.12.1',
 };

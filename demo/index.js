@@ -15,27 +15,29 @@ import FAQ from './pages/FAQ';
 import ButtonSection from './pages/ButtonSection';
 import ButtonStatefulSection from './pages/ButtonStatefulSection';
 import ButtonGroupSection from './pages/ButtonGroupSection';
+import DateInputSection from './pages/DateInputSection';
+import DatePickerSingleSelectSection from './pages/DatePickerSingleSelectSection';
 import DropdownBaseSection from './pages/DropdownSection';
 import IconSection from './pages/IconSection';
 import LookupSection from './pages/LookupSection';
 import ModalSection from './pages/ModalSection';
-
-import DatePickerSingleSelectSection from './pages/DatePickerSingleSelectSection';
 import NotificationSection from './pages/NotificationSection';
 import PicklistSection from './pages/PicklistSection';
 import TooltipSection from './pages/TooltipSection';
-import DateInputSection from './pages/DateInputSection';
 
 
 const routes = (
   <Route handler={App} path="/">
     <DefaultRoute handler={HomePage} />
+
     <Route name="home" handler={HomePage}>
       <Route name="welcome" path="welcome" handler={Welcome} />
       <Route name="getting-started" path="getting-started" handler={GettingStarted} />
       <Route name="button" path="button" handler={ButtonSection}/>
       <Route name="button-stateful" path="button-stateful" handler={ButtonStatefulSection}/>
       <Route name="button-group" path="button-group" handler={ButtonGroupSection}/>
+      <Route name="dateinput" path="dateinput" handler={DateInputSection}/>
+      <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
       <Route name="dropdown" path="dropdown" handler={DropdownBaseSection}/>
       <Route name="icon" path="icon" handler={IconSection}/>
       <Route name="lookup" path="lookup" handler={LookupSection}/>
@@ -43,9 +45,6 @@ const routes = (
       <Route name="notification" path="notification" handler={NotificationSection}/>
       <Route name="picklist" path="picklist" handler={PicklistSection}/>
       <Route name="tooltip" path="tooltip" handler={TooltipSection}/>
-      <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
-      <Route name="dateinput" path="dateinput" handler={DateInputSection}/>
-
       <Route name="faq" path="faq" handler={FAQ} />
     </Route>
   </Route>

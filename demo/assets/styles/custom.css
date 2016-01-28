@@ -6,6 +6,9 @@ html {
   color: #5876A3;
 }
 
+.site-page-header {
+
+}
 .site-logo {
   display: inline-block;
   background-position: center center;
@@ -25,6 +28,7 @@ html {
   background: white;
   border: none;
 }
+.demo-only .bg-lt-gray { background: rgb(244, 246, 249); }
 .demo-only .bb-gray { border-bottom: 1px solid	rgb(216, 221, 230); }
 
 

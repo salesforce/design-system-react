@@ -27,16 +27,25 @@ module.exports = React.createClass( {
   render() {
     return (
       <SLDSGrid flavor='vertical' className='stage slds-nowrap'>
-        <header className='slds-page-header slds-clearfix demo-only'>
+        <section className="demo-only">
+        <header className='bg-lt-gray bb-gray slds-clearfix slds-p-vertical--small slds-p-horizontal--medium'>
           <Link to="welcome" className="slds-float--left a-plain slds-p-vertical--x-small">
             <div className='slds-media slds-media--center'>
               <span className='slds-media__figure site-logo'>Salesforce</span>
               <div className='slds-media__body'>
-                <h1 className='slds-text-heading--small slds-m-right--small slds-truncate slds-align-middle' title='Record Title'><span className="site-text--bold">design system</span>: interactive accessible components for React</h1>
+                <h1 className='slds-text-heading--small slds-m-right--small slds-truncate slds-align-middle' title='Record Title'><span className="site-text--bold">design-system-react</span>: interactive accessible components for React</h1>
               </div>
             </div>
           </Link>
+
+          <p className="slds-float--right slds-p-vertical--x-small">
+            <a href="https://github.com/salesforce-ux/design-system-react" className="a-plain ">
+              <span className="slds-p-right--x-small">View on GitHub</span>
+              <img src="assets/gitHubLogo.png" alt="GitHub Logo" width="40" height="40" />
+            </a>
+          </p>
         </header>
+        </section>
 
         <main className='stage-main slds-grid slds-wrap slds-grow'>
           <aside className='region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-vertical--large'>
@@ -60,11 +69,6 @@ module.exports = React.createClass( {
               <li><Link to="notification" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSNotification</Link></li>
               <li><Link to="tooltip" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSPopoverTooltip</Link></li>
             </ul>
-            {/*
-            <p className="slds-text-heading--small slds-p-vertical--small">
-              <Link to="faq" className="a-plain slds-p-horizontal--large slds-p-vertical--x-small">FAQ</Link>
-            </p>
-            */}
           </aside>
 
           <div className="region region--main slds-grow slds-size--5-of-6 slds-medium-size--5-of-6 slds-large-size--10-of-12 slds-col-rule--right slds-p-around--large">
