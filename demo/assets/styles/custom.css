@@ -21,6 +21,11 @@ html {
  */
 .demo-only .mw-col-m { max-width: 150px; }
 .demo-only .mw-col-l { max-width: 300px; }
+.demo-only button {
+  background: white;
+  border: none;
+}
+.demo-only .bb-gray { border-bottom: 1px solid	rgb(216, 221, 230); }
 
 
 /* Typography */

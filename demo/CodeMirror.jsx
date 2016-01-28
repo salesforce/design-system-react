@@ -12,6 +12,7 @@ const SLDSButton =  require('../components/SLDSButton');
 const SLDSButtonStateful =  require('../components/SLDSButtonStateful');
 const SLDSButtonGroup =  require('../components/SLDSButtonGroup');
 const SLDSIcon =  require('../components/SLDSIcon');
+const SLDSButtonIcon =  require('../components/SLDSIcon/ButtonIcon');
 const SLDSLookup =  require('../components/SLDSLookup');
 const SLDSMenuDropdown =  require('../components/SLDSMenuDropdown');
 const SLDSMenuPicklist =  require('../components/SLDSMenuPicklist');
@@ -156,15 +157,12 @@ class CodeMirror extends React.Component {
     }
 
     return (
-      <div>
-        <h1 className="slds-text-heading--small slds-p-vertical--small">Edit code to modify above examples</h1>
         <CodeMirrorEditor
           key="jsx"
           onChange={this.handleCodeChange.bind(this)}
-          className="highlight"
+          className="highlight bb-gray"
           codeText={this.state.code}
         />
-      </div>
     );
   }
 
@@ -184,10 +182,17 @@ class CodeMirror extends React.Component {
     return (
       <div className="playground">
         <div className="slds-p-vertical--medium">
-          {this.renderExample()}
+            {this.renderExample()}
+        </div>
+        <div className="bb-gray slds-text-align--right slds-p-around--x-small">
+          <button onClick={this.toggleEditor.bind(this)}>
+            <SLDSButtonIcon name={this.state.showCode ? "chevronup" : "chevrondown"} position="left" />
+            <span>
+              {this.state.showCode ? "Hide Code" : "Show Code"}
+            </span>
+          </button>
         </div>
 
-        <SLDSButton label={this.state.showCode ? "Hide Code" : "Show Code"} onClick={this.toggleEditor.bind(this)} />
         {this.renderEditor()}
       </div>
     );
