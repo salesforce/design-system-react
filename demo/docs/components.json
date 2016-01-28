@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/home/button-stateful\">SLDSButtonStateful</a> component.\nFor more details on the markup, please review the Button documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightning Design System website</a>.",
+        "description": "The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">SLDSButtonStateful</a> component.\nFor more details on the markup, please review the Button documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightning Design System website</a>.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -383,7 +383,7 @@
         }
     },
     "SLDSIcon": {
-        "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/home/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details on the markup, please review the Icon documentation on the <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightning Design System website</a>.",
+        "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details on the markup, please review the Icon documentation on the <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightning Design System website</a>.",
         "displayName": "SLDSIcon",
         "props": {
             "assistiveText": {
@@ -1033,7 +1033,7 @@
         }
     },
     "SLDSNotification": {
-        "description": "The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/home/modal\">SLDSModal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the markup, please review the Notification documentation on the <a href=\"http://www.lightningdesignsystem.com/components/notifications\">Lightning Design System website</a>.",
+        "description": "The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/modal\">SLDSModal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the markup, please review the Notification documentation on the <a href=\"http://www.lightningdesignsystem.com/components/notifications\">Lightning Design System website</a>.",
         "displayName": "SLDSNotification",
         "props": {
             "className": {

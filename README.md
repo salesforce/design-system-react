@@ -1,4 +1,4 @@
-### Salesforce Design System: Interactive accessible components for React 
+### Salesforce Design System: Interactive accessible components for React
 
 [![Build Status](https://travis-ci.com/salesforce-ux/design-system-react.svg?token=BMXxPFKR5GZuYsqAFsEf&branch=master)](https://travis-ci.com/salesforce-ux/design-system-react)
 
@@ -78,8 +78,7 @@ Note: the SLDSPopoverTooltip requires a focusable element as a child (ie. either
 <div ref="tooltipDemoExample">
   <SLDSPopoverTooltip
     align="top"
-    content={<span>Here is more information.</span>}
-    targetElement={this.refs.tooltipDemoExample}>
+    content={<span>Here is more information.</span>}>
       <a href="javascript:void(0)">
         <SLDSIcon assistiveText="More Info" category="utility" name="info" className="slds-icon-text-default" />
       </a>
