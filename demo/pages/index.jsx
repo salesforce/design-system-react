@@ -41,7 +41,7 @@ module.exports = React.createClass( {
           <p className="slds-float--right slds-p-vertical--x-small">
             <a href="https://github.com/salesforce-ux/design-system-react" className="a-plain ">
               <span className="slds-p-right--x-small">View on GitHub</span>
-              <img src="assets/gitHubLogo.png" alt="GitHub Logo" width="40" height="40" />
+              <img src="assets/bundle/gitHubLogo.png" alt="GitHub Logo" width="40" height="40" />
             </a>
           </p>
         </header>
