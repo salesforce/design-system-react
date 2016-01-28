@@ -1,6 +1,7 @@
 const collection = [
 	{
-		text: 'Base System Alert'
+		text: 'Base System Alert',
+		theme: ''
 	},
 	{
 		text: 'Scheduled Maintenance Notification: Sunday March 15, 8:00 AM-10:00 PST',

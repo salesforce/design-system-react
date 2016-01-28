@@ -8,7 +8,7 @@ import '../../src/jquery/combobox/examples/site-example';
 import '../../src/jquery/data-table/examples/site-example';
 import '../../src/jquery/datepicker/examples/site-example';
 import '../../src/jquery/dropdown/examples/site-example';
-import '../../src/jquery/lookup/examples/site-example';
+// import '../../src/jquery/lookup/examples/site-example';
 import '../../src/jquery/modal/examples/site-example';
 import '../../src/jquery/notification/examples/site-example';
 import '../../src/jquery/picklist/examples/site-example';

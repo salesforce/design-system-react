@@ -1,171 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>jQuery Examples :: Facades :: Salesforce Lightning Design System</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/assets/demo-site/images/favicon.png" sizes="16x16" rel="icon" type="image/png">
-	<!-- dependencies -->
-	<link href="/assets/design-system/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
-	<link href="/build/facades-demo-styles.css" rel="stylesheet" type="text/css">
-
-</head>
-<body class="facades-demo | jquery">
-	<nav class="facades-demo-main-nav slds-page-header">
-		<div class="slds-grid">
-			<a href="/" class="slds-media slds-media--center">
-				<div class="slds-media__figure">
-					<img src="/assets/demo-site/images/salesforce-logo.svg" width="40">
-				</div>
-				<div class="slds-media__body">
-					<h4 class="slds-text-heading--label">
-						Design System Facades
-					</h4>
-				</div>
-			</a>
-		</div>
-	</nav>
-	<header class="facades-demo-masthead slds-page-header | slds-theme--alt-inverse">
-
-		<div class="slds-grid">
-			<div class="slds-col slds-align-middle" >
-				<div class="slds-media slds-media--center" style="height:5rem;">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>{{facadeDisplayName}} Examples :: Facades :: Salesforce Lightning Design System</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="/assets/demo-site/images/favicon.png" sizes="16x16" rel="icon" type="image/png">
+		<link href="/assets/design-system/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
+		<link href="/build/facades-demo-styles.css" rel="stylesheet" type="text/css">
+	</head>
+	<body class="facades-demo | {{facade}}">
+		<nav class="facades-demo-main-nav slds-page-header">
+			<div class="slds-grid">
+				<a href="/" class="slds-media slds-media--center">
 					<div class="slds-media__figure">
-						<svg width="70" version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							 viewBox="-95 7 600 600" style="enable-background:new -95 7 600 600;" xml:space="preserve">
-						<style type="text/css">
-							.st0{fill:#0868AC;}
-						</style>
-						<g>
-							<path class="st0" d="M-45.5,160.4c-50.8,73-44.5,168.1-5.7,245.7c0.9,1.9,1.9,3.7,2.8,5.5c0.6,1.2,1.2,2.4,1.8,3.5
-								c0.4,0.7,0.8,1.4,1.1,2c0.7,1.2,1.3,2.4,2,3.6c1.2,2.1,2.4,4.2,3.7,6.4c0.7,1.2,1.4,2.3,2.1,3.5c1.4,2.3,2.8,4.5,4.3,6.7
-								c0.6,1,1.2,1.9,1.8,2.8c2,3,4.1,6,6.2,9c0.1,0.1,0.1,0.2,0.2,0.2c0.3,0.5,0.7,0.9,1,1.4c1.8,2.5,3.8,5.1,5.7,7.5
-								c0.7,0.9,1.4,1.8,2.1,2.7c1.7,2.2,3.5,4.3,5.2,6.4c0.7,0.8,1.3,1.6,2,2.4c2.4,2.8,4.8,5.6,7.3,8.4c0,0,0.1,0.1,0.1,0.1
-								c0.1,0.1,0.2,0.2,0.3,0.3c2.4,2.6,4.9,5.2,7.4,7.8c0.8,0.8,1.6,1.6,2.4,2.4c2,2,3.9,3.9,5.9,5.8c0.8,0.8,1.6,1.6,2.4,2.3
-								c2.7,2.5,5.4,5,8.1,7.4c0,0,0.1,0.1,0.1,0.1c0.5,0.4,1,0.8,1.4,1.2c2.4,2.1,4.9,4.2,7.4,6.2c1,0.8,2,1.6,3.1,2.4
-								c2,1.6,4.1,3.2,6.2,4.8c1.1,0.8,2.2,1.7,3.3,2.5c2.3,1.7,4.6,3.3,6.9,5c0.8,0.6,1.7,1.2,2.5,1.8c0.2,0.2,0.5,0.3,0.7,0.5
-								c2.2,1.5,4.5,3,6.7,4.4c1,0.6,1.9,1.3,2.9,1.9c3.5,2.2,7,4.3,10.5,6.4c1,0.6,1.9,1.1,2.9,1.6c2.6,1.5,5.2,3,7.9,4.4
-								c1.4,0.8,2.9,1.5,4.4,2.2c1.9,1,3.7,2,5.6,2.9c0.4,0.2,0.9,0.4,1.3,0.6c0.8,0.4,1.5,0.7,2.3,1.1c3,1.4,5.9,2.8,8.9,4.1
-								c0.6,0.3,1.3,0.6,1.9,0.8c3.4,1.5,6.9,2.9,10.4,4.3c0.8,0.3,1.7,0.7,2.5,1c3.2,1.3,6.5,2.5,9.8,3.6c0.4,0.1,0.8,0.3,1.2,0.4
-								c3.6,1.3,7.3,2.4,11,3.6c0.9,0.3,1.8,0.5,2.6,0.8c3.8,1.1,7.5,2.5,11.3,3.2C406.8,621.5,478.1,429,478.1,429
-								c-60,78.1-166.4,98.7-267.2,75.8c-3.8-0.9-7.5-2.1-11.3-3.2c-0.9-0.3-1.9-0.6-2.8-0.8c-3.6-1.1-7.2-2.3-10.8-3.5
-								c-0.5-0.2-1-0.4-1.5-0.5c-3.2-1.1-6.4-2.3-9.6-3.5c-0.9-0.4-1.8-0.7-2.7-1.1c-3.5-1.4-6.9-2.8-10.3-4.3c-0.7-0.3-1.4-0.6-2.1-0.9
-								c-2.9-1.3-5.8-2.7-8.7-4c-0.8-0.4-1.7-0.8-2.5-1.2c-2.3-1.1-4.5-2.3-6.7-3.4c-1.5-0.8-3-1.5-4.5-2.4c-2.7-1.5-5.4-3-8.1-4.5
-								c-0.9-0.5-1.8-1-2.7-1.5c-3.5-2.1-7-4.2-10.5-6.4c-1-0.6-1.9-1.3-2.8-1.9c-2.5-1.6-5-3.3-7.5-5c-0.8-0.6-1.6-1.1-2.4-1.7
-								c-2.4-1.7-4.7-3.4-7.1-5.1c-1.1-0.8-2.1-1.6-3.1-2.4c-2.1-1.6-4.3-3.3-6.4-5c-1-0.8-1.9-1.5-2.8-2.3c-2.7-2.2-5.3-4.4-7.9-6.7
-								c-0.3-0.2-0.6-0.5-0.9-0.7c-2.8-2.5-5.6-5-8.4-7.6c-0.8-0.8-1.6-1.5-2.4-2.3c-2-1.9-4-3.9-6-5.9c-0.8-0.8-1.6-1.6-2.4-2.4
-								c-2.5-2.6-5-5.2-7.4-7.8c-0.1-0.1-0.2-0.3-0.4-0.4c-2.5-2.8-5-5.6-7.5-8.5c-0.7-0.8-1.3-1.5-2-2.3c-1.8-2.2-3.6-4.4-5.4-6.6
-								c-0.7-0.8-1.3-1.6-2-2.5c-2.1-2.7-4.2-5.5-6.2-8.3c-56-76.4-76.1-181.7-31.4-268.2"/>
-							<path class="st0" d="M112.2,98.8c-36.8,52.9-34.8,123.7-6.1,179.6c4.8,9.4,10.2,18.5,16.3,27.1c5.5,7.9,11.6,17.3,18.9,23.6
-								c2.6,2.9,5.4,5.8,8.2,8.6c0.7,0.7,1.4,1.4,2.2,2.1c2.7,2.7,5.5,5.3,8.4,7.8c0.1,0.1,0.2,0.2,0.3,0.3c0,0,0.1,0,0.1,0.1
-								c3.2,2.8,6.5,5.5,9.8,8.1c0.7,0.6,1.5,1.2,2.2,1.7c3.4,2.6,6.8,5.1,10.3,7.5c0.1,0.1,0.2,0.1,0.3,0.2c1.5,1.1,3.1,2.1,4.7,3.1
-								c0.8,0.5,1.5,1,2.2,1.5c2.5,1.6,5,3.2,7.6,4.7c0.4,0.2,0.7,0.4,1.1,0.6c2.2,1.3,4.5,2.5,6.7,3.8c0.8,0.4,1.6,0.8,2.4,1.3
-								c1.6,0.8,3.1,1.7,4.7,2.4c0.2,0.1,0.5,0.2,0.7,0.3c3.2,1.6,6.5,3.1,9.8,4.6c0.7,0.3,1.5,0.6,2.2,0.9c2.7,1.1,5.4,2.2,8.1,3.3
-								c1.1,0.4,2.3,0.8,3.5,1.3c2.5,0.9,4.9,1.7,7.4,2.6c1.1,0.4,2.2,0.7,3.3,1.1c3.5,1.1,7,2.5,10.7,3.1
-								C448.2,431.6,492,285.5,492,285.5c-39.5,56.9-116,84-197.6,62.8c-3.6-1-7.2-2-10.7-3.1c-1.1-0.3-2.2-0.7-3.2-1
-								c-2.5-0.8-5-1.7-7.5-2.6c-1.1-0.4-2.3-0.8-3.4-1.3c-2.7-1-5.4-2.1-8.1-3.3c-0.7-0.3-1.5-0.6-2.2-0.9c-3.3-1.5-6.6-3-9.9-4.6
-								c-1.7-0.8-3.3-1.7-5-2.5c-1-0.5-1.9-1-2.9-1.5c-2.1-1.1-4.2-2.3-6.3-3.5c-0.5-0.3-1-0.6-1.5-0.8c-2.6-1.5-5.1-3.1-7.6-4.6
-								c-0.8-0.5-1.5-1-2.3-1.5c-1.7-1.1-3.3-2.2-4.9-3.3c-3.5-2.4-6.9-4.9-10.3-7.5c-0.8-0.6-1.5-1.2-2.3-1.8
-								c-35.7-28.2-64-66.7-77.5-110.5c-14.1-45.3-11.1-96.2,13.4-137.5"/>
-							<path class="st0" d="M244.9,52.9c-21.7,31.9-23.8,71.5-8.8,106.7c15.9,37.4,48.3,66.7,86.3,80.6c1.6,0.6,3.1,1.1,4.7,1.6
-								c0.7,0.2,1.4,0.4,2.1,0.7c2.2,0.7,4.5,1.5,6.8,2c104.8,20.2,133.2-53.8,140.8-64.7c-24.9,35.8-66.7,44.4-118.1,32
-								c-4.1-1-8.5-2.5-12.4-3.8c-5-1.8-10-3.8-14.7-6.1c-9.1-4.4-17.8-9.7-25.9-15.8c-45.9-34.9-74.5-101.3-44.5-155.5"/>
-						</g>
-						</svg>
-
+						<img src="/assets/demo-site/images/salesforce-logo.svg" width="40">
 					</div>
 					<div class="slds-media__body">
-						<div class="slds-grid">
-							<h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">jQuery Components</h1>
+						<h4 class="slds-text-heading--label">
+							Design System Facades
+						</h4>
+					</div>
+				</a>
+			</div>
+		</nav>
+
+		<header class="facades-demo-masthead slds-page-header | slds-theme--alt-inverse">
+			<div class="slds-grid">
+				<div class="slds-col slds-align-middle" >
+					<div class="slds-media slds-media--center" style="height:5rem;">
+						<div class="slds-media__figure">
+							<svg width="70" version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								 viewBox="-95 7 600 600" style="enable-background:new -95 7 600 600;" xml:space="preserve">
+							<style type="text/css">
+								.st0{fill:#0868AC;}
+							</style>
+							<g>
+								<path class="st0" d="M-45.5,160.4c-50.8,73-44.5,168.1-5.7,245.7c0.9,1.9,1.9,3.7,2.8,5.5c0.6,1.2,1.2,2.4,1.8,3.5
+									c0.4,0.7,0.8,1.4,1.1,2c0.7,1.2,1.3,2.4,2,3.6c1.2,2.1,2.4,4.2,3.7,6.4c0.7,1.2,1.4,2.3,2.1,3.5c1.4,2.3,2.8,4.5,4.3,6.7
+									c0.6,1,1.2,1.9,1.8,2.8c2,3,4.1,6,6.2,9c0.1,0.1,0.1,0.2,0.2,0.2c0.3,0.5,0.7,0.9,1,1.4c1.8,2.5,3.8,5.1,5.7,7.5
+									c0.7,0.9,1.4,1.8,2.1,2.7c1.7,2.2,3.5,4.3,5.2,6.4c0.7,0.8,1.3,1.6,2,2.4c2.4,2.8,4.8,5.6,7.3,8.4c0,0,0.1,0.1,0.1,0.1
+									c0.1,0.1,0.2,0.2,0.3,0.3c2.4,2.6,4.9,5.2,7.4,7.8c0.8,0.8,1.6,1.6,2.4,2.4c2,2,3.9,3.9,5.9,5.8c0.8,0.8,1.6,1.6,2.4,2.3
+									c2.7,2.5,5.4,5,8.1,7.4c0,0,0.1,0.1,0.1,0.1c0.5,0.4,1,0.8,1.4,1.2c2.4,2.1,4.9,4.2,7.4,6.2c1,0.8,2,1.6,3.1,2.4
+									c2,1.6,4.1,3.2,6.2,4.8c1.1,0.8,2.2,1.7,3.3,2.5c2.3,1.7,4.6,3.3,6.9,5c0.8,0.6,1.7,1.2,2.5,1.8c0.2,0.2,0.5,0.3,0.7,0.5
+									c2.2,1.5,4.5,3,6.7,4.4c1,0.6,1.9,1.3,2.9,1.9c3.5,2.2,7,4.3,10.5,6.4c1,0.6,1.9,1.1,2.9,1.6c2.6,1.5,5.2,3,7.9,4.4
+									c1.4,0.8,2.9,1.5,4.4,2.2c1.9,1,3.7,2,5.6,2.9c0.4,0.2,0.9,0.4,1.3,0.6c0.8,0.4,1.5,0.7,2.3,1.1c3,1.4,5.9,2.8,8.9,4.1
+									c0.6,0.3,1.3,0.6,1.9,0.8c3.4,1.5,6.9,2.9,10.4,4.3c0.8,0.3,1.7,0.7,2.5,1c3.2,1.3,6.5,2.5,9.8,3.6c0.4,0.1,0.8,0.3,1.2,0.4
+									c3.6,1.3,7.3,2.4,11,3.6c0.9,0.3,1.8,0.5,2.6,0.8c3.8,1.1,7.5,2.5,11.3,3.2C406.8,621.5,478.1,429,478.1,429
+									c-60,78.1-166.4,98.7-267.2,75.8c-3.8-0.9-7.5-2.1-11.3-3.2c-0.9-0.3-1.9-0.6-2.8-0.8c-3.6-1.1-7.2-2.3-10.8-3.5
+									c-0.5-0.2-1-0.4-1.5-0.5c-3.2-1.1-6.4-2.3-9.6-3.5c-0.9-0.4-1.8-0.7-2.7-1.1c-3.5-1.4-6.9-2.8-10.3-4.3c-0.7-0.3-1.4-0.6-2.1-0.9
+									c-2.9-1.3-5.8-2.7-8.7-4c-0.8-0.4-1.7-0.8-2.5-1.2c-2.3-1.1-4.5-2.3-6.7-3.4c-1.5-0.8-3-1.5-4.5-2.4c-2.7-1.5-5.4-3-8.1-4.5
+									c-0.9-0.5-1.8-1-2.7-1.5c-3.5-2.1-7-4.2-10.5-6.4c-1-0.6-1.9-1.3-2.8-1.9c-2.5-1.6-5-3.3-7.5-5c-0.8-0.6-1.6-1.1-2.4-1.7
+									c-2.4-1.7-4.7-3.4-7.1-5.1c-1.1-0.8-2.1-1.6-3.1-2.4c-2.1-1.6-4.3-3.3-6.4-5c-1-0.8-1.9-1.5-2.8-2.3c-2.7-2.2-5.3-4.4-7.9-6.7
+									c-0.3-0.2-0.6-0.5-0.9-0.7c-2.8-2.5-5.6-5-8.4-7.6c-0.8-0.8-1.6-1.5-2.4-2.3c-2-1.9-4-3.9-6-5.9c-0.8-0.8-1.6-1.6-2.4-2.4
+									c-2.5-2.6-5-5.2-7.4-7.8c-0.1-0.1-0.2-0.3-0.4-0.4c-2.5-2.8-5-5.6-7.5-8.5c-0.7-0.8-1.3-1.5-2-2.3c-1.8-2.2-3.6-4.4-5.4-6.6
+									c-0.7-0.8-1.3-1.6-2-2.5c-2.1-2.7-4.2-5.5-6.2-8.3c-56-76.4-76.1-181.7-31.4-268.2"/>
+								<path class="st0" d="M112.2,98.8c-36.8,52.9-34.8,123.7-6.1,179.6c4.8,9.4,10.2,18.5,16.3,27.1c5.5,7.9,11.6,17.3,18.9,23.6
+									c2.6,2.9,5.4,5.8,8.2,8.6c0.7,0.7,1.4,1.4,2.2,2.1c2.7,2.7,5.5,5.3,8.4,7.8c0.1,0.1,0.2,0.2,0.3,0.3c0,0,0.1,0,0.1,0.1
+									c3.2,2.8,6.5,5.5,9.8,8.1c0.7,0.6,1.5,1.2,2.2,1.7c3.4,2.6,6.8,5.1,10.3,7.5c0.1,0.1,0.2,0.1,0.3,0.2c1.5,1.1,3.1,2.1,4.7,3.1
+									c0.8,0.5,1.5,1,2.2,1.5c2.5,1.6,5,3.2,7.6,4.7c0.4,0.2,0.7,0.4,1.1,0.6c2.2,1.3,4.5,2.5,6.7,3.8c0.8,0.4,1.6,0.8,2.4,1.3
+									c1.6,0.8,3.1,1.7,4.7,2.4c0.2,0.1,0.5,0.2,0.7,0.3c3.2,1.6,6.5,3.1,9.8,4.6c0.7,0.3,1.5,0.6,2.2,0.9c2.7,1.1,5.4,2.2,8.1,3.3
+									c1.1,0.4,2.3,0.8,3.5,1.3c2.5,0.9,4.9,1.7,7.4,2.6c1.1,0.4,2.2,0.7,3.3,1.1c3.5,1.1,7,2.5,10.7,3.1
+									C448.2,431.6,492,285.5,492,285.5c-39.5,56.9-116,84-197.6,62.8c-3.6-1-7.2-2-10.7-3.1c-1.1-0.3-2.2-0.7-3.2-1
+									c-2.5-0.8-5-1.7-7.5-2.6c-1.1-0.4-2.3-0.8-3.4-1.3c-2.7-1-5.4-2.1-8.1-3.3c-0.7-0.3-1.5-0.6-2.2-0.9c-3.3-1.5-6.6-3-9.9-4.6
+									c-1.7-0.8-3.3-1.7-5-2.5c-1-0.5-1.9-1-2.9-1.5c-2.1-1.1-4.2-2.3-6.3-3.5c-0.5-0.3-1-0.6-1.5-0.8c-2.6-1.5-5.1-3.1-7.6-4.6
+									c-0.8-0.5-1.5-1-2.3-1.5c-1.7-1.1-3.3-2.2-4.9-3.3c-3.5-2.4-6.9-4.9-10.3-7.5c-0.8-0.6-1.5-1.2-2.3-1.8
+									c-35.7-28.2-64-66.7-77.5-110.5c-14.1-45.3-11.1-96.2,13.4-137.5"/>
+								<path class="st0" d="M244.9,52.9c-21.7,31.9-23.8,71.5-8.8,106.7c15.9,37.4,48.3,66.7,86.3,80.6c1.6,0.6,3.1,1.1,4.7,1.6
+									c0.7,0.2,1.4,0.4,2.1,0.7c2.2,0.7,4.5,1.5,6.8,2c104.8,20.2,133.2-53.8,140.8-64.7c-24.9,35.8-66.7,44.4-118.1,32
+									c-4.1-1-8.5-2.5-12.4-3.8c-5-1.8-10-3.8-14.7-6.1c-9.1-4.4-17.8-9.7-25.9-15.8c-45.9-34.9-74.5-101.3-44.5-155.5"/>
+							</g>
+							</svg>
+						</div>
+						<div class="slds-media__body">
+							<div class="slds-grid">
+								<h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">{{facadeDisplayName}} Components</h1>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</header>
+		</header>
 
 		<section class="slds-grid">
-			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12">
+			<aside id="component-nav" class="slds-grow slds-size--3-of-12 slds-medium-size--1-of-6 slds-large-size--3-of-12 slds-col-rule--right slds-p-vertical--large">
+				<nav class="slds-scrollable--y">
+					<p class="slds-text-heading--small slds-p-vertical--small">
+						<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="/">
+							Home
+						</a>
+					</p>
+					<p class="slds-text-heading--small slds-p-horizontal--large slds-p-vertical--small">Components</p>
+					<ul class="slds-p-bottom--small">
+						{{#each components}}
+						<li>
+							<a class="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small" href="#{{ component}}">{{ componentDisplayName }}</a>
+						</li>
+						{{/each}}
+					</ul>
+{{!-- 					<p class="slds-text-heading--small slds-p-vertical--small">
+						<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="#/home/faq">FAQ</a>
+					</p>
+ --}}
+				</nav>
+			</aside>
 
-			</div>
-
-			<div class="slds-col | slds-size--10-of-12 slds-medium-size--10-of-12 slds-large-size--10-of-12">
-				<div id="component-list" class="slds-grid slds-grid--vertical">
-
-
-					{{#each components}}
-					<div class="slds-col | slds-m-top--large | component-wrapper" id="{{component}}">
-						<!-- {{component}} -->
-						<div class="slds-grid slds-grid--vertical | component">
-							<div class="slds-col | header">
-								<div class="slds-section-title | slds-m-top--medium">
-									<div class="slds-grid">
-										<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-											<span>{{componentDisplayName}}</span>
-											<span class="slds-badge | slds-theme--shade">alpha: done</span>
-										</h2>
-										<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/{{component}}/{{component}}.html">Docs</a>
-									</div>
-								</div>
-							</div>
-							<div class="slds-col | body">
-								<div class="slds-grid | slds-wrap">
-									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type example-type--react">
-										<div class="slds-grid slds-grid--vertical | example-wrapper">
-											<div class="slds-col | example-type-heading-wrapper | facades-demo-hide">
-												<span class="slds-text-heading--label">React</span>
-											</div>
-											<div id="{{component}}-react-control" class="slds-col | example"></div>
-											<div id="{{component}}-react-demo-controls" class="slds-col | demo-controls"></div>
+			<div class="slds-col--padded | slds-size--9-of-12 slds-medium-size--9-of-12 slds-large-size--9-of-12">
+				<div id="component-list-wrapper">
+					<div id="component-list" class="slds-grid slds-grid--vertical">
+						{{#each components}}
+	<!-- {{component}} -->
+						<div class="slds-col | slds-m-top--large | component-wrapper" id="{{component}}">
+							<div class="slds-grid slds-grid--vertical | component">
+								<div class="slds-col | header">
+									<div class="slds-section-title | slds-m-top--medium">
+										<div class="slds-grid">
+											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
+												<span>{{componentDisplayName}}</span>
+												<span class="slds-badge | slds-theme--shade">alpha: done</span>
+											</h2>
+											<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/{{facade}}/{{component}}/{{component}}.html">Docs</a>
 										</div>
 									</div>
-									<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type example-type--jquery">
-										<div class="slds-grid slds-grid--vertical | example-wrapper">
-											<div class="slds-col | example-type-heading-wrapper | facades-demo-hide">
-												<span class="slds-text-heading--label">jQuery</span>
+								</div>
+								<div class="slds-col | body">
+									<div class="slds-grid | slds-wrap">
+										<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type example-type--{{facade}}">
+											<div class="slds-m-bottom--medium">
+												<div id="{{component}}-{{facade}}-control-launcher"></div>
 											</div>
-											<div id="{{component}}-jquery-control" class="slds-col | example"></div>
-											<div id="{{component}}-jquery-demo-controls" class="slds-col | demo-controls"></div>
-											<div id="{{component}}-jquery-demo-code-showcase" class="slds-col | facades-demo-code-showcase">
-												<aside class="slds-tabs--default">
-													<ul class="slds-tabs--default__nav" role="tablist">
-														<li class="slds-tabs--default__item | slds-text-heading--label | slds-active" title="Example code for {{componentDisplayName}}" role="presentation">
-															<a class="slds-tabs--default__link" href="#{{component}}-jquery-demo-code-showcase__tab-content--code__void" role="tab" tabindex="0" aria-selected="true" aria-controls="{{component}}-jquery-demo-code-showcase__tab-content--code" id="{{component}}-jquery-demo-code-showcase__tab-item--code">Example Code</a>
-														</li>
-														<li class="slds-tabs--default__item | slds-text-heading--label" title="Sample data for {{componentDisplayName}}" role="presentation">
-															<a class="slds-tabs--default__link" href="#{{component}}-jquery-demo-code-showcase__tab-content--sample-data__void" role="tab" tabindex="-1" aria-selected="false" aria-controls="{{component}}-jquery-demo-code-showcase__tab-content--sample-data" id="{{component}}-jquery-demo-code-showcase__tab-item--sample-data">Sample Data</a>
-														</li>
-													</ul>
-													<section id="{{component}}-jquery-demo-code-showcase__tab-content--code" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="{{component}}-jquery-demo-code-showcase__tab-item--code">
-														<pre style="max-height: 400px;" class="language-jsx"><code>{{code}}</code></pre>
-													</section>
-													<section id="{{component}}-jquery-demo-code-showcase__tab-content--sample-data" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="{{component}}-jquery-demo-code-showcase__tab-item--sample-data" disabled>
-														<pre style="max-height: 400px;" class="language-jsx"><code>{{sampleData}}</code></pre>
-													</section>
-												</aside>
+											<div class="slds-grid slds-grid--vertical | example-wrapper">
+												<div id="{{component}}-{{facade}}-control" class="slds-col | example"></div>
+												<div id="{{component}}-{{facade}}-demo-controls" class="slds-col | demo-controls"></div>
+												<div id="{{component}}-{{facade}}-demo-code-showcase" class="slds-col | facades-demo-code-showcase">
+													<aside class="slds-tabs--default">
+														<ul class="slds-tabs--default__nav" role="tablist">
+															<li class="slds-tabs--default__item | slds-text-heading--label | slds-active" title="Example code for {{componentDisplayName}}" role="presentation">
+																<a class="slds-tabs--default__link" href="#{{component}}-{{facade}}-demo-code-showcase__tab-content--code__void" role="tab" tabindex="0" aria-selected="true" aria-controls="{{component}}-{{facade}}-demo-code-showcase__tab-content--code" id="{{component}}-{{facade}}-demo-code-showcase__tab-item--code">Example Code</a>
+															</li>
+															<li class="slds-tabs--default__item | slds-text-heading--label" title="Sample data for {{componentDisplayName}}" role="presentation">
+																<a class="slds-tabs--default__link" href="#{{component}}-{{facade}}-demo-code-showcase__tab-content--sample-data__void" role="tab" tabindex="-1" aria-selected="false" aria-controls="{{component}}-{{facade}}-demo-code-showcase__tab-content--sample-data" id="{{component}}-{{facade}}-demo-code-showcase__tab-item--sample-data">Sample Data</a>
+															</li>
+														</ul>
+														<section id="{{component}}-{{facade}}-demo-code-showcase__tab-content--code" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="{{component}}-{{facade}}-demo-code-showcase__tab-item--code">
+															<pre style="max-height: 400px; min-height: 400px; height: 400px;" class="language-jsx"><code>{{code}}</code></pre>
+														</section>
+														<section id="{{component}}-{{facade}}-demo-code-showcase__tab-content--sample-data" class="slds-tabs--default__content slds-hide" role="tabpanel" aria-labelledby="{{component}}-{{facade}}-demo-code-showcase__tab-item--sample-data" disabled>
+															<pre style="max-height: 400px; min-height: 400px; height: 400px;" class="language-jsx"><code>{{sampleData}}</code></pre>
+														</section>
+													</aside>
+												</div>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
+
+
+
+
+
+						{{/each}}
 					</div>
-					{{/each}}
-
-
 				</div>
 			</div>
-			<div class="slds-col | slds-size--1-of-12 slds-medium-size--1-of-12 slds-large-size--1-of-12">
-
-			</div>
 		</section>
+
+
+
 		<script src="vendor/prism/prism.js"></script>
 		<script src="vendor/prism/components/prism-jsx.js"></script>
-		<script src="/assets/facades/scripts/jquery.min.js"></script>
-		<script src="build/demo-site-examples-jquery.bundle.js"></script>
+		<script src="/assets/facades/scripts/{{facade}}.min.js"></script>
+		<script src="build/demo-site-examples-{{facade}}.bundle.js"></script>
 		<script type="text/javascript">
-
 			$(function () {
 				$('[role="tablist"] [aria-controls]').each(function() {
 					$(this).click(function(event) {
@@ -182,7 +190,41 @@
 					});
 				});
 			});
+		</script>
+		<script>
+			$(function () {
+				var $window = $(window);
+				var $componentNav = $('#component-nav > nav');
+				var componentNavParentWidth = $('#component-nav').width();
+				var pos = $window.scrollTop();
+				$componentNav.width(componentNavParentWidth);
+				$('a', $componentNav).on('click', function(e){
+					$('a', $componentNav).removeClass('active');
+					$(e.currentTarget).addClass('active');
+				});
 
+				$window.scroll(function (ev) {
+					pos = $window.scrollTop();
+					componentNavParentWidth = $('#component-nav').width();
+					$componentNav.width(componentNavParentWidth);
+					if (pos >= 0) {
+						$componentNav.css({
+							'top': (205 - (pos > 205 ? 205 : pos))
+						})
+					}
+				});
+
+				$window.resize(function (ev) {
+					pos = $window.scrollTop();
+					componentNavParentWidth = $('#component-nav').width();
+					$componentNav.width(componentNavParentWidth);
+					if (pos >= 0) {
+						$componentNav.css({
+							'top': (205 - (pos > 205 ? 205 : pos))
+						})
+					}
+				});
+			});
 		</script>
 	</body>
 </html>

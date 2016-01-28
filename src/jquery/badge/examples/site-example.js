@@ -51,7 +51,7 @@ $(function () {
 				}
 			}
 		});
-		components[COMPONENT_NAME + index] = new Badge($('#' + COMPONENT_NAME + '-jquery-control ' + value.domNode), thisComponentProperties);
+		components[COMPONENT_NAME + index] = new Badge($('#' + COMPONENT_NAME + '-jquery-control ' + '#component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME + '-' + thisComponentProperties.theme), thisComponentProperties);
 		void (components[COMPONENT_NAME + index]);
 	});
 

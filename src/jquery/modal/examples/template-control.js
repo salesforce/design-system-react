@@ -11,7 +11,7 @@ function formatIt (strings, ...keys) {
 }
 
 const template = formatIt`
-	<p>This is the sample content for the jquery modal!</p>
+	<p>This is the sample content for the jQuery modal!</p>
 `;
 
 module.exports = {

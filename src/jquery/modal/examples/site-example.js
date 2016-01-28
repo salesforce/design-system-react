@@ -12,18 +12,23 @@ const COMPONENT_SAMPLE_DATA_ACCESSOR = 'modal';
 const COMPONENT_COLLECTION = sampleData[COMPONENT_SAMPLE_DATA_ACCESSOR].default.collection;
 
 $(function () {
-	$('#' + COMPONENT_NAME + '-jquery-control')
+	$('#' + COMPONENT_NAME + '-jquery-control-launcher')
 		.attr('data-component-name', COMPONENT_NAME)
 		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
 		.append(
-			controlTemplate.template({
+			controlLauncherTemplate.template({
 				componentCollection: COMPONENT_COLLECTION,
 				componentName: COMPONENT_NAME,
 				componentDisplayName: COMPONENT_DISPLAY_NAME
 			})
 		)
-		.before(
-			controlLauncherTemplate.template({
+	;
+
+	$('#' + COMPONENT_NAME + '-jquery-control')
+		.attr('data-component-name', COMPONENT_NAME)
+		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
+		.append(
+			controlTemplate.template({
 				componentCollection: COMPONENT_COLLECTION,
 				componentName: COMPONENT_NAME,
 				componentDisplayName: COMPONENT_DISPLAY_NAME

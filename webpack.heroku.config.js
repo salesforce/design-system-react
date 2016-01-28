@@ -11,10 +11,10 @@ var config = {
 	entry: {
 		'facades-demo-styles': ['./site/assets/shared/scripts/styles.js', './site/assets/demo-site/scripts/styles.js'],
 		'dev-examples-styles': ['./site/assets/facades/scripts/styles.js'],
-		// 'dev-examples-react': ['./src/react/dev-examples'],
-		'demo-site-examples-react': ['./site/src/demo-site-examples-react']
-		// 'dev-examples-jquery': ['./src/jquery/dev-examples'],
-		// 'demo-site-examples-jquery': ['./site/src/demo-site-examples-jquery']
+		'dev-examples-react': ['./src/react/dev-examples'],
+		'demo-site-examples-react': ['./site/src/demo-site-examples-react'],
+		'dev-examples-jquery': ['./src/jquery/dev-examples'],
+		'demo-site-examples-jquery': ['./site/src/demo-site-examples-jquery']
 	},
 	resolve: {
 		modulesDirectories: [
@@ -30,9 +30,9 @@ var config = {
 			'.scss'
 		],
 		alias: {
-			// 'design-system-jquery': path.join(__dirname, 'src/jquery/dist.js'),
-			'design-system-react': path.join(__dirname, 'src/react/dist.js'),
+			'design-system-jquery': path.join(__dirname, 'src/jquery/dist.js'),
 			'design-system-utilities': path.join(__dirname, 'utilities/main.js'),
+			'design-system-react': path.join(__dirname, 'src/react/dist.js'),
 			'design-system-utilities-react': path.join(__dirname, 'utilities/react.js')
 		}
 	},

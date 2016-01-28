@@ -48,12 +48,20 @@ app.get('/jquery', function (req, res) {
 	if (!jQueryCode) {
 		jQueryCode = {};
 		jQueryCode['components'] = [];
+		jQueryCode['facade'] = 'jquery';
+		jQueryCode['facadeDisplayName'] = 'jQuery';
+		jQueryCode['otherFacade'] = 'react';
+		jQueryCode['otherFacadeDisplayName'] = 'React';
 		jQueryExamples.forEach(function (example) {
 			if (example) {
 				var componentDisplayName = example.displayName;
 				var componentName = example.name;
 				jQueryCode[example.component.replace('-', '')] = example.code;
 				jQueryCode['components'].push({
+					'facade': 'jquery',
+					'facadeDisplayName': 'jQuery',
+					'otherFacade': 'react',
+					'otherFacadeDisplayName': 'React',
 					'component': example.component,
 					'componentName': componentName,
 					'componentDisplayName': componentDisplayName,
@@ -73,12 +81,20 @@ app.get('/react', function (req, res) {
 	if (!reactCode) {
 		reactCode = {};
 		reactCode['components'] = [];
+		reactCode['facade'] = 'react';
+		reactCode['facadeDisplayName'] = 'React';
+		reactCode['otherFacade'] = 'react';
+		reactCode['otherFacadeDisplayName'] = 'React';
 		reactExamples.forEach(function (example) {
 			if (example) {
 				var componentDisplayName = example.displayName;
 				var componentName = example.name;
 				reactCode[example.component.replace('-', '')] = example.code;
 				reactCode['components'].push({
+					'facade': 'react',
+					'facadeDisplayName': 'React',
+					'otherFacade': 'jquery',
+					'otherFacadeDisplayName': 'jQuery',
 					'component': example.component,
 					'componentName': componentName,
 					'componentDisplayName': componentDisplayName,
