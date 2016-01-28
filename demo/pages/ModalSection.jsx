@@ -41,7 +41,9 @@ class ModalSection extends React.Component {
         </div>
 
         <div className="demo-only">
-          <CodeMirror codeText={Samples.Modals} />
+          <section className="slds-p-bottom--x-large">
+            <CodeMirror codeText={Samples.Modals} />
+          </section>
           <PropTable component="SLDSModal" />
         </div>
       </div>

@@ -41,7 +41,9 @@ class ButtonGroupSection extends React.Component {
         </div>
 
         <div className="demo-only">
-          <CodeMirror codeText={Samples.ButtonGroups} />
+          <section className="slds-p-bottom--x-large">
+            <CodeMirror codeText={Samples.ButtonGroups} />
+          </section>
           <PropTable component="SLDSButtonGroup" />
         </div>
       </div>

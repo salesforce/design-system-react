@@ -41,7 +41,9 @@ class ButtonStatefulSection extends React.Component {
         </div>
 
         <div className="demo-only">
-          <CodeMirror codeText={Samples.StatefulButtons} />
+          <section className="slds-p-bottom--x-large">
+            <CodeMirror codeText={Samples.StatefulButtons} />
+          </section>
           <PropTable component="SLDSButtonStateful" />
         </div>
       </div>

@@ -38,8 +38,10 @@ class TooltipSection extends React.Component {
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
 
-        <div>
-          <CodeMirror codeText={Samples.Tooltips} />
+        <div className="demo-only">
+          <section className="slds-p-bottom--x-large">
+            <CodeMirror codeText={Samples.Tooltips} />
+          </section>
           <PropTable component="SLDSPopoverTooltip" />
         </div>
       </div>

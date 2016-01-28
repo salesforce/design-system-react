@@ -41,7 +41,9 @@ class IconSection extends React.Component {
         </div>
 
         <div className="demo-only">
-          <CodeMirror codeText={Samples.Icons} />
+          <section className="slds-p-bottom--x-large">
+            <CodeMirror codeText={Samples.Icons} />
+          </section>
           <PropTable component="SLDSIcon" />
         </div>
       </div>

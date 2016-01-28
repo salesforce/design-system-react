@@ -38,8 +38,10 @@ class DropdownSection extends React.Component {
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}} /> : null}
         </div>
 
-        <div>
-          <CodeMirror codeText={Samples.Dropdowns} />
+        <div className="demo-only">
+          <section className="slds-p-bottom--x-large">
+            <CodeMirror codeText={Samples.Dropdowns} />
+          </section>
           <PropTable component="SLDSMenuDropdown" />
         </div>
       </div>

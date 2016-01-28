@@ -41,7 +41,9 @@ class NotificationSection extends React.Component {
         </div>
 
         <div className="demo-only">
-          <CodeMirror codeText={Samples.Notifications} />
+          <section className="slds-p-bottom--x-large">
+            <CodeMirror codeText={Samples.Notifications} />
+          </section>
           <PropTable component="SLDSNotification" />
         </div>
       </div>
