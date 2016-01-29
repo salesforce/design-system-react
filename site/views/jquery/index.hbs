@@ -85,6 +85,16 @@
 		</div>
 	</header>
 
+	<div class="codeshare-template slds-hidden">
+		<div class="slds-box">
+			<div class="slds-section-title">
+				<div class="slds-grid">
+					<h3 class="slds-col | slds-has-flexi-truncate | slds-text-heading--small | section-heading"></h3>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="slds-grid slds-m-top--medium">
 		<div class="slds-col slds-col--padded" style="max-width: 900px;">
 
@@ -92,26 +102,38 @@
 			<div class="slds-box badge">
 				<div class="slds-section-title">
 					<div class="slds-grid">
-						<h3 id="badge" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
+						<h3 id="badge" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small | control-heading">
 							Badge
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/badge/badge.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="badge-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | slds-m-left--small" href="/docs/src/jquery/badge/badge.html">Docs</a>
 					</div>
 				</div>
-				<div id="badge-jquery-control" class="slds-m-vertical--large">
+				<div id="badge-jquery-control" class="slds-m-vertical--large | demo-html">
 					<span class="badge1"></span>
 					<span class="badge2"></span>
 					<span class="badge3"></span>
 					<span class="badge4"></span>
+					<span class="badge5"></span>
+					<span class="badge6"></span>
+					<span class="badge7"></span>
+					<span class="badge8"></span>
+					<span class="badge9"></span>
+					<span class="badge10"></span>
+					<span class="badge11"></span>
+					<span class="badge12"></span>
+					<span class="badge13"></span>
+					<span class="badge14"></span>
+					<span class="badge15"></span>
 				</div>
-				<div class="slds-section-title">
+				<div id="badge-example-code" class="slds-section-title example-code">
 					<div class="slds-grid">
-						<h4 id="badge-example-code" class="slds-col | slds-has-flexi-truncate | slds-text-heading--label">
+						<h4 class="slds-col | slds-has-flexi-truncate | slds-text-heading--label">
 							Example Code
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ badge }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ badge }}</code></pre>
 			</div>
 
 			<!-- button -->
@@ -121,10 +143,11 @@
 						<h3 id="button" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Button
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/button/button.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Button" data-section-selector=".slds-box.button" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/button/button.html">Docs</a>
 					</div>
 				</div>
-				<div id="button-jquery-control" class="slds-m-vertical--large">
+				<div id="button-jquery-control" class="slds-m-vertical--large | demo-html">
 					<div class="slds-grid slds-grid--vertical">
 						<div class="slds-col row">
 							<span class="button-neutral"></span>
@@ -173,7 +196,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ button }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ button }}</code></pre>
 			</div>
 
 			<!-- button-group -->
@@ -183,10 +206,11 @@
 						<h3 id="button-group" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Button Group
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/button-group/button-group.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/button-group/button-group.html">Docs</a>
 					</div>
 				</div>
-				<div id="button-group-jquery-control" class="slds-m-vertical--large">
+				<div id="button-group-jquery-control" class="slds-m-vertical--large | demo-html">
 				</div>
 				<div class="slds-section-title">
 					<div class="slds-grid">
@@ -195,7 +219,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ buttongroup }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ buttongroup }}</code></pre>
 			</div>
 
 			<!-- checkbox -->
@@ -205,10 +229,11 @@
 						<h3 id="checkbox" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Checkbox
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/checkbox/checkbox.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/checkbox/checkbox.html">Docs</a>
 					</div>
 				</div>
-				<div id="checkbox-jquery-control" class="slds-m-vertical--large">
+				<div id="checkbox-jquery-control" class="slds-m-vertical--large | demo-html">
 					<fieldset class="slds-form-element">
 						<legend class="slds-form-element__label slds-form-element__label--top"></legend>
 						<div class="slds-form-element__control" id="checkbox1"></div>
@@ -222,7 +247,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ checkbox }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ checkbox }}</code></pre>
 			</div>
 
 			<!-- combobox -->
@@ -232,10 +257,11 @@
 						<h3 id="combobox" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Combobox
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/combobox/combobox.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/combobox/combobox.html">Docs</a>
 					</div>
 				</div>
-				<div id="combobox-jquery-control" class="slds-m-vertical--large">
+				<div id="combobox-jquery-control" class="slds-m-vertical--large | demo-html">
 					<div class="combobox1"></div>
 				</div>
 				<div class="slds-section-title">
@@ -245,7 +271,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ combobox }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ combobox }}</code></pre>
 			</div>
 
 			<!-- data-table -->
@@ -255,10 +281,11 @@
 						<h3 id="data-table" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Data Table
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/data-table/data-table.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/data-table/data-table.html">Docs</a>
 					</div>
 				</div>
-				<div id="data-table-jquery-control" class="slds-m-vertical--large">
+				<div id="data-table-jquery-control" class="slds-m-vertical--large | demo-html">
 					<div class="dataTable1"></div>
 				</div>
 				<div class="slds-section-title">
@@ -268,7 +295,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ datatable }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ datatable }}</code></pre>
 			</div>
 
 			<!-- datepicker -->
@@ -278,10 +305,11 @@
 						<h3 id="datepicker" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Datepicker
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/datepicker/datepicker.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/datepicker/datepicker.html">Docs</a>
 					</div>
 				</div>
-				<div id="datepicker-jquery-control" class="slds-m-vertical--large">
+				<div id="datepicker-jquery-control" class="slds-m-vertical--large | demo-html">
 					<div class=""></div>
 				</div>
 				<div class="slds-section-title">
@@ -291,7 +319,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ datepicker }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ datepicker }}</code></pre>
 			</div>
 
 			<!-- dropdown -->
@@ -301,10 +329,11 @@
 						<h3 id="dropdown" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Dropdown
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/dropdown/dropdown.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/dropdown/dropdown.html">Docs</a>
 					</div>
 				</div>
-				<div id="dropdown-jquery-control" class="slds-m-vertical--large">
+				<div id="dropdown-jquery-control" class="slds-m-vertical--large | demo-html">
 					<div class="dropdown1"></div>
 				</div>
 				<div class="slds-section-title">
@@ -314,7 +343,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ dropdown }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ dropdown }}</code></pre>
 			</div>
 
 			<!-- modal -->
@@ -324,13 +353,14 @@
 						<h3 id="modal" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Modal
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/modal/modal.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/modal/modal.html">Docs</a>
 					</div>
 				</div>
-				<div class="slds-m-vertical--large">
+				<div class="slds-m-vertical--large | demo-html">
 					<button type="button" id="modal-jquery-control-launch" class="slds-button slds-button--neutral slds-button--x-small">Show</button>
 				</div>
-				<div id="modal-jquery-control" class="slds-m-vertical--large">
+				<div id="modal-jquery-control" class="slds-m-vertical--large | demo-html">
 					<p>This is the sample content for the jquery modal!</p>
 				</div>
 				<div class="slds-section-title">
@@ -340,7 +370,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ modal }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ modal }}</code></pre>
 			</div>
 
 			<!-- notification -->
@@ -350,10 +380,11 @@
 						<h3 id="notification" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Notification
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/notification/notification.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/notification/notification.html">Docs</a>
 					</div>
 				</div>
-				<div id="notification-jquery-control" class="slds-m-vertical--large">
+				<div id="notification-jquery-control" class="slds-m-vertical--large | demo-html">
 					<div class="notification1"></div>
 					<div class="notification2"></div>
 					<div class="notification3"></div>
@@ -366,7 +397,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ notification }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ notification }}</code></pre>
 			</div>
 
 			<!-- picklist -->
@@ -376,10 +407,11 @@
 						<h3 id="picklist" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Picklist
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/picklist/picklist.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/picklist/picklist.html">Docs</a>
 					</div>
 				</div>
-				<div id="picklist-jquery-control" class="slds-m-vertical--large">
+				<div id="picklist-jquery-control" class="slds-m-vertical--large | demo-html">
 					<div class="picklist1"></div>
 				</div>
 				<div class="slds-section-title">
@@ -389,7 +421,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ picklist }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ picklist }}</code></pre>
 			</div>
 
 			<!-- popover -->
@@ -399,10 +431,11 @@
 						<h3 id="pills" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Pills
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/pills/pills.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/pills/pills.html">Docs</a>
 					</div>
 				</div>
-				<div id="pills-jquery-control" class="slds-m-vertical--large">
+				<div id="pills-jquery-control" class="slds-m-vertical--large | demo-html">
 					<div class="pills1"></div>
 				</div>
 				<div class="slds-section-title">
@@ -412,7 +445,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ pills }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ pills }}</code></pre>
 			</div>
 
 			<!-- popover -->
@@ -422,10 +455,11 @@
 						<h3 id="popover" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Popover
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/popover/popover.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/popover/popover.html">Docs</a>
 					</div>
 				</div>
-				<div id="popover-jquery-control" class="slds-m-vertical--large">
+				<div id="popover-jquery-control" class="slds-m-vertical--large | demo-html">
 					<button id="popover-jquery-toggle" class="slds-button slds-button--neutral slds-button--x-small">Toggle</button>
 				</div>
 				<div class="slds-section-title">
@@ -435,7 +469,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ popover }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ popover }}</code></pre>
 			</div>
 
 			<!-- radio -->
@@ -445,10 +479,11 @@
 						<h3 id="radio" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Radio
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/radio/radio.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/radio/radio.html">Docs</a>
 					</div>
 				</div>
-				<div id="radio-jquery-control" class="slds-m-vertical--large">
+				<div id="radio-jquery-control" class="slds-m-vertical--large | demo-html">
 				</div>
 				<div class="slds-section-title">
 					<div class="slds-grid">
@@ -457,7 +492,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ radio }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ radio }}</code></pre>
 			</div>
 
 			<!-- spinner -->
@@ -467,10 +502,11 @@
 						<h3 id="spinner" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Spinner
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/spinner/spinner.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/spinner/spinner.html">Docs</a>
 					</div>
 				</div>
-				<div id="spinner-jquery-control" class="slds-m-vertical--large">
+				<div id="spinner-jquery-control" class="slds-m-vertical--large | demo-html">
 					<div class="slds-grid slds-grid--vertical">
 						<div class="slds-col slds-theme--default">
 							<div class="slds-float--left spinner">
@@ -514,7 +550,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ spinner }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ spinner }}</code></pre>
 			</div>
 
 			<!-- tooltip -->
@@ -524,10 +560,11 @@
 						<h3 id="tooltip" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Tooltip
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/tooltip/tooltip.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/tooltip/tooltip.html">Docs</a>
 					</div>
 				</div>
-				<div id="tooltip-jquery-control" class="slds-m-vertical--large">
+				<div id="tooltip-jquery-control" class="slds-m-vertical--large | demo-html">
 					<button id="tooltip-jquery-toggle" class="slds-button slds-button--neutral slds-button--x-small">Toggle</button>
 				</div>
 				<div class="slds-section-title">
@@ -537,7 +574,7 @@
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ tooltip }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ tooltip }}</code></pre>
 			</div>
 
 			<!-- tree -->
@@ -547,26 +584,36 @@
 						<h3 id="tree" class="slds-col | slds-has-flexi-truncate | slds-text-heading--small">
 							Tree
 						</h3>
-						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small" href="/docs/src/jquery/tree/tree.html">Docs</a>
+						<a href="javascript:void(0);" data-form-id="markup-form" data-control-name="Badge" data-section-selector=".slds-box.badge" class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit">Open in CodePen</a>
+						<a class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small" href="/docs/src/jquery/tree/tree.html">Docs</a>
 					</div>
 				</div>
-				<div id="tree-jquery-control" class="slds-m-vertical--large">
+				<div id="tree-jquery-control" class="slds-m-vertical--large | demo-html">
 					<div class="tree1"></div>
 				</div>
 				<div class="slds-section-title">
-					<div class="slds-grid">
+					<div class="slds-grid">  
 						<h4 id="tree-example-code" class="slds-col | slds-has-flexi-truncate | slds-text-heading--label">
 							Example Code
 						</h4>
 					</div>
 				</div>
-				<pre style="max-height: 400px;" class="language-jsx"><code>{{ tree }}</code></pre>
+				<pre style="max-height: 400px;" class="language-jsx"><code class="demo-js">{{ tree }}</code></pre>
 			</div>
 		</div>
 	</div>
-	<script src="vendor/prism/prism.js"></script>
-	<script src="vendor/prism/components/prism-jsx.js"></script>
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script>
+		globalInitialHTML = $('body').html();
+	</script>
+	<script src="/vendor/prism/prism.js"></script>
+
+	<script src="/dist/assets/scripts/facades.jquery.js"></script>
+
+	<script src="/vendor/he/he.js"></script>
+	<script src="/vendor/prism/components/prism-jsx.js"></script>
 	<script src="/assets/facades/scripts/jquery.min.js"></script>
-	<script src="build/demo-site-examples-jquery.bundle.js"></script>
+	<script src="/build/demo-site-examples-jquery.bundle.js"></script>
+	<script src="/assets/demo-site/scripts/demo-site.js"></script>
 </body>
 </html>
