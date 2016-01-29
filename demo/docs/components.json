@@ -963,10 +963,6 @@
                     "name": "enum",
                     "value": [
                         {
-                            "value": "\"\"",
-                            "computed": false
-                        },
-                        {
                             "value": "\"success\"",
                             "computed": false
                         },

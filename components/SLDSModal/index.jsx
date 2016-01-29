@@ -58,7 +58,7 @@ const propTypes = {
    */
   footer: React.PropTypes.array,
   isOpen: React.PropTypes.bool.isRequired,
-  prompt: React.PropTypes.oneOf(["", "success", "warning", "error", "wrench", "offline", "info"]),
+  prompt: React.PropTypes.oneOf(["success", "warning", "error", "wrench", "offline", "info"]),
   size: React.PropTypes.oneOf(["medium", "large"]),
   /**
    * Content underneath the title.
@@ -71,7 +71,6 @@ const defaultProps = {
   directional: false,
   dismissible: true,
   isOpen: false,
-  prompt: "",
 };
 
 /**
@@ -165,7 +164,7 @@ class SLDSModal extends React.Component {
   }
 
   isPrompt(){
-    return this.props.prompt !== "";
+    return this.props.prompt !== undefined;
   }
 
   footerComponent() {
