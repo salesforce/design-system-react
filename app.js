@@ -31,6 +31,7 @@ app.use(express.static('public'));
 
 // Third-party libraries
 app.use('/vendor/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/vendor/he', express.static(__dirname + '/node_modules/he'));
 app.use('/vendor/prism', express.static(__dirname + '/node_modules/prismjs'));
 app.use('/vendor/react', express.static(__dirname + '/node_modules/react/dist'));
 app.use('/vendor/react', express.static(__dirname + '/node_modules/react-dom/dist'));
@@ -49,6 +50,9 @@ app.get('/jquery', function (req, res) {
 		jQueryCode = {};
 		jQueryExamples.forEach(function (example) {
 			if (example) {
+				if (typeof(example.code) !== undefined) {
+					example.code = String(example.code).split('// SAMPLE CONTROL CODE -->')[1].split('// <-- SAMPLE CONTROL CODE')[0].trim();
+				}
 				jQueryCode[example.component.replace('-', '')] = example.code;
 			}
 		});
@@ -63,7 +67,7 @@ app.get('/react', function (req, res) {
 });
 
 // Serve up the built files
-app.use('/dist', express.static(__dirname + '/dist'));
+app.use('/dist', express.static(__dirname + '/.dist'));
 app.use('/build', express.static(__dirname + '/build', {'index': false}));
 app.use('/docs', express.static(__dirname + '/public/docs', {'index': ['index.html']}));
 
