@@ -56,6 +56,12 @@ class SLDSPopoverTooltip extends React.Component {
   }
 
   componentDidMount() {
+    if(this.refs.triggerDOMElem){
+      const triggerTabIndex = ReactDOM.findDOMNode(this.refs.triggerDOMElem).tabIndex;
+      if(triggerTabIndex !== 0) {
+        console.log('%c=====> ERROR: The child element of SLDSPopoverTooltip must be an anchor or button so that keyboard users can tab to it to open the Tooltip.', 'color: red');
+      }
+    }
     this.setState({
       el: ReactDOM.findDOMNode(this),
       isOpen: this.props.openByDefault
@@ -142,6 +148,7 @@ class SLDSPopoverTooltip extends React.Component {
         onFocus: this.handleMouseEnter.bind(this),
         onMouseEnter: this.handleMouseEnter.bind(this),
         onMouseLeave: this.handleMouseLeave.bind(this),
+        ref: 'triggerDOMElem',
       }, this.grandKidsWithAsstText(child));
      });
   }

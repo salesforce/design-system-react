@@ -989,11 +989,7 @@
                     ]
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"\"",
-                    "computed": false
-                }
+                "description": ""
             },
             "size": {
                 "type": {
