@@ -124,7 +124,7 @@ let Tree = Lib.merge({}, TreeCore, {
 		if (Lib.isFunction(this.props.onSelect)) {
 			this.props.onSelect(itemsToSelect, selection._data);
 		}
-		
+
 		if (Lib.isFunction(this.props.onChange)) {
 			this.props.onChange(selection._data);
 		}
@@ -134,7 +134,7 @@ let Tree = Lib.merge({}, TreeCore, {
 		if (Lib.isFunction(this.props.onDeselect)) {
 			this.props.onDeselect(itemsToDeselect, selection._data);
 		}
-		
+
 		if (Lib.isFunction(this.props.onChange)) {
 			this.props.onChange(selection._data);
 		}

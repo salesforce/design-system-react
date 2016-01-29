@@ -1,7 +1,7 @@
-const collection = [
+const badges = [
 	{
 		text: 'Base',
-		theme: ''
+		theme: 'base'
 	},
 	{
 		text: 'Default',
@@ -46,7 +46,5 @@ const collection = [
 ];
 
 module.exports = {
-	default: {
-		collection: collection
-	}
+	default: badges
 };

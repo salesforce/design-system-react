@@ -1,6 +1,6 @@
-import React from 'react';
-import {Lib, Dropdown} from 'design-system-react';
-import {sampleData} from 'design-system-utilities-react';
+import React             from 'react';
+import { Lib, Dropdown } from 'design-system-react';
+import { sampleData }    from 'design-system-utilities';
 
 export default React.createClass({
 	propTypes: {

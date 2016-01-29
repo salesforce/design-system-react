@@ -1,6 +1,6 @@
 import React from 'react';
 import {Lib, Combobox} from 'design-system-react';
-import {sampleData, ExampleEvents} from 'design-system-utilities-react';
+import {sampleData, ExampleEvents} from 'design-system-utilities';
 
 export default React.createClass({
 	propTypes: {
@@ -13,6 +13,7 @@ export default React.createClass({
 	},
 
 	getInitialState () {
+		console.log("[site-example.js:16] sampleData.combobox.default.collection:", sampleData.combobox.default.collection);
 		return {
 			model: {
 				collection: sampleData.combobox.default.collection,

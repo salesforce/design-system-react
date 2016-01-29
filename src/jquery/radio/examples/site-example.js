@@ -7,15 +7,16 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 const COMPONENT_NAME = 'radio';
 const COMPONENT_DISPLAY_NAME = 'Radio';
-const COMPONENT_SAMPLE_DATA_ACCESSOR = 'radio';
-const COMPONENT_COLLECTION = sampleData[COMPONENT_SAMPLE_DATA_ACCESSOR].default.collection;
+const SAMPLE_DATA_ACCESSOR = 'radio';
+const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
+const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
 $(function () {
 	$('#' + COMPONENT_NAME + '-jquery-control')
 		.attr('data-component-name', COMPONENT_NAME)
 		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
 		.append(controlTemplate.template({
-			componentCollection: COMPONENT_COLLECTION,
+			componentCollection: SAMPLE_DATA_DEFAULT,
 			componentName: COMPONENT_NAME,
 			componentDisplayName: COMPONENT_DISPLAY_NAME
 		})
@@ -25,7 +26,7 @@ $(function () {
 		.attr('data-component-name', COMPONENT_NAME)
 		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
 		.append(demoControlsTemplate.template({
-			componentCollection: COMPONENT_COLLECTION,
+			componentCollection: SAMPLE_DATA_DEFAULT,
 			componentName: COMPONENT_NAME,
 			componentDisplayName: COMPONENT_DISPLAY_NAME
 		})
@@ -33,7 +34,7 @@ $(function () {
 
 	const components = [];
 
-	$.each(COMPONENT_COLLECTION, function (index, value) {
+	$.each(SAMPLE_DATA_DEFAULT, function (index, value) {
 		const thisComponentProperties = {};
 		const defaultComponentProperties = [
 			'labelText',

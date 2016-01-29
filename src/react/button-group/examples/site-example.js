@@ -1,5 +1,5 @@
-import React from 'react';
-import {Button, ButtonGroup} from 'design-system-react';
+import React                   from 'react';
+import { Button, ButtonGroup } from 'design-system-react';
 
 export default React.createClass({
 	getInitialState () {

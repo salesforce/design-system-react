@@ -1,6 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {Search} from 'design-system-react';
+import React      from 'react';
+import ReactDOM   from 'react-dom';
+import { Search } from 'design-system-react';
 
 export default function () {
 	const SearchExample = React.createClass({

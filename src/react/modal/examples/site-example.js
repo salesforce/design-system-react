@@ -1,5 +1,5 @@
-import React from 'react';
-import {Modal} from 'design-system-react';
+import React     from 'react';
+import { Modal } from 'design-system-react';
 
 export default React.createClass({
 	getInitialState () {

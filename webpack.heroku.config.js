@@ -33,6 +33,7 @@ var config = {
 			'design-system-jquery': path.join(__dirname, 'src/jquery/dist.js'),
 			'design-system-utilities': path.join(__dirname, 'utilities/main.js'),
 			'design-system-react': path.join(__dirname, 'src/react/dist.js'),
+			'design-system-utilities-jquery': path.join(__dirname, 'utilities/jquery.js'),
 			'design-system-utilities-react': path.join(__dirname, 'utilities/react.js')
 		}
 	},

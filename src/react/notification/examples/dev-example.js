@@ -4,13 +4,13 @@ import { sampleData } from 'design-system-utilities-react';
 
 const COMPONENT_NAME = 'notification';
 const COMPONENT_DISPLAY_NAME = 'Notifications';
-const COMPONENT_SAMPLE_DATA_ACCESSOR = 'notification';
-const COMPONENT_COLLECTION = sampleData[COMPONENT_SAMPLE_DATA_ACCESSOR].default.collection;
+const SAMPLE_DATA_ACCESSOR = 'notification';
+const SAMPLE_DATA_DEFAULT = sampleData[SAMPLE_DATA_ACCESSOR].default.collection;
 
 
 export default React.createClass({
 	getInitialState () {
-		return COMPONENT_COLLECTION;
+		return SAMPLE_DATA_DEFAULT;
 	},
 
 	render () {

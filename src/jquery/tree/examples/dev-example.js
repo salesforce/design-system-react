@@ -7,15 +7,14 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 const COMPONENT_NAME = 'tree';
 const COMPONENT_DISPLAY_NAME = 'Tree';
-const COMPONENT_SAMPLE_DATA_ACCESSOR = 'tree';
-const COMPONENT_COLLECTION = sampleData[COMPONENT_SAMPLE_DATA_ACCESSOR].default.collection;
+const SAMPLE_DATA_ACCESSOR = 'tree';
+const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
 
 $(function () {
 	$('#' + COMPONENT_NAME + '-jquery-control')
 		.attr('data-component-name', COMPONENT_NAME)
 		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
 		.append(controlTemplate.template({
-			componentCollection: COMPONENT_COLLECTION,
 			componentName: COMPONENT_NAME,
 			componentDisplayName: COMPONENT_DISPLAY_NAME
 		})
@@ -25,26 +24,25 @@ $(function () {
 		.attr('data-component-name', COMPONENT_NAME)
 		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
 		.append(demoControlsTemplate.template({
-			componentCollection: COMPONENT_COLLECTION,
 			componentName: COMPONENT_NAME,
 			componentDisplayName: COMPONENT_DISPLAY_NAME
 		})
 	);
 
 	const components = [];
-
-	$.each(COMPONENT_COLLECTION, function (index, value) {
+	$.each(SAMPLE_DATA, function (index, value) {
 		const thisComponentProperties = {};
-		const defaultComponentProperties = [
-			'selection'
-		];
-		$.each(defaultComponentProperties, function (index2, value2) {
-			if (typeof value[value2] !== 'undefined') {
-				if (value[value2] !== '') {
-					thisComponentProperties[value2] = value[value2];
-				}
+		if (typeof value !== 'undefined') {
+			if (index === 'default') {
+				$.each(SAMPLE_DATA.default, function (index2, value2) {
+					if (typeof value2 !== 'undefined') {
+						if (index2 !== '') {
+							thisComponentProperties[index2] = value2;
+						}
+					}
+				});
 			}
-		});
+		}
 		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME), thisComponentProperties);
 		void (components[COMPONENT_NAME + index]);
 		// Log on change

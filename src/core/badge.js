@@ -20,6 +20,7 @@ const BadgeCore = Lib.merge({}, Base, {
 	},
 
 	themes: {
+		'base': '',
 		'default': 'slds-theme--default',
 		'shade': 'slds-theme--shade',
 		'inverse': 'slds-theme--inverse',

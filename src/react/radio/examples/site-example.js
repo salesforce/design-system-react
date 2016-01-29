@@ -1,6 +1,6 @@
-import React from 'react';
-import {Radio} from 'design-system-react';
-import {sampleData} from 'design-system-utilities-react';
+import React          from 'react';
+import { Radio }      from 'design-system-react';
+import { sampleData } from 'design-system-utilities';
 
 // https://www.lightningdesignsystem.com/components/forms#radio
 

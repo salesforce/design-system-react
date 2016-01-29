@@ -1,7 +1,7 @@
 // Sample data
 import badge from './sample-data/badge';
 import button from './sample-data/button';
-import buttonGroup from './sample-data-react/button-group';
+import buttonGroup from './sample-data-jquery/button-group';
 import checkbox from './sample-data/checkbox';
 import combobox from './sample-data/combobox';
 import dataTable from './sample-data/data-table';

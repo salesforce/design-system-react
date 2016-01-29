@@ -1,6 +1,6 @@
-import React from 'react';
-import {Checkbox} from 'design-system-react';
-import {ExampleEvents} from 'design-system-utilities-react';
+import React             from 'react';
+import { Checkbox }      from 'design-system-react';
+import { ExampleEvents } from 'design-system-utilities';
 
 // https://www.lightningdesignsystem.com/components/forms#checkbox
 

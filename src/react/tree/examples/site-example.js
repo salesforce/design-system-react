@@ -1,6 +1,11 @@
-import React from 'react';
-import {Tree} from 'design-system-react';
-import {sampleData} from 'design-system-utilities-react';
+import React          from 'react';
+import { Tree }       from 'design-system-react';
+import { sampleData } from 'design-system-utilities-react';
+
+const SAMPLE_DATA_ACCESSOR = 'tree';
+const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
+const SAMPLE_DATA_DEFAULT = SAMPLE_DATA_DEFAULT;
+
 
 export default React.createClass({
 	getInitialState () {
@@ -16,8 +21,8 @@ export default React.createClass({
 				folderSelect={false}
 				multiSelect={true}
 				autoOpen={false}
-				heading={sampleData.tree.default.heading}
-				collection={sampleData.tree.default.collection}
+				heading={SAMPLE_DATA_DEFAULT.heading}
+				collection={SAMPLE_DATA_DEFAULT.collection}
 				selection={this.state.selection}
 				open={this.state.open}
 				onChange={this.handleChanged}
