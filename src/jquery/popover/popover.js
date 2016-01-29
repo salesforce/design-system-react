@@ -56,11 +56,10 @@ export const PopoverMethods = {
 
 	_setElements () {
 		const triggerElement = this.getProperty('target');
-		const container = this.getProperty('container');
 		const align = this.getProperty('align');
 
 		this.elements.triggerElement = Lib.wrapElement(triggerElement || this.elements.wrapper);
-		Positionable.setContainer(this, container || this.elements.wrapper);
+		Positionable.setContainer(this, this.getProperty('container') || document.querySelector('body'));
 		Positionable.setTarget(this, align || this.elements.triggerElement);
 	},
 
