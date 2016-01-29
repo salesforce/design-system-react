@@ -2,6 +2,8 @@ import {Lib, Notification} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	// notification
 	const notification1 = new Notification($('#notification-jquery-control .notification1'), {
@@ -33,3 +35,5 @@ $(function () {
 	void(notification2);
 	void(notification3);
 });
+
+// <-- SAMPLE CONTROL CODE

@@ -3,6 +3,8 @@ import {sampleData} from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	const dataTable1 = new DataTable($('#data-table-jquery-control .dataTable1'), {
 		collection: sampleData.dataTable.default.collection,
@@ -15,3 +17,5 @@ $(function () {
 
 	void(dataTable1);
 });
+
+// <-- SAMPLE CONTROL CODE

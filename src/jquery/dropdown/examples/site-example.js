@@ -3,6 +3,8 @@ import {sampleData} from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	const dropdown = new Dropdown($('#dropdown-jquery-control .dropdown1'), {
 		collection: sampleData.dropdown.default.collection,
@@ -33,3 +35,5 @@ $(function () {
 	$('#dropdown-jquery-control .dropdown1').on('changed', function (event, data) {
 		Lib.log('changed', data);
 	}); });
+
+// <-- SAMPLE CONTROL CODE

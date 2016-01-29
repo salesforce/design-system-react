@@ -3,6 +3,8 @@ import {sampleData} from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	const picklist = new Picklist($('#picklist-jquery-control .picklist1'), {
 		collection: sampleData.picklist.default.collection,
@@ -34,3 +36,5 @@ $(function () {
 		Lib.log('changed', data);
 	});
 });
+
+// <-- SAMPLE CONTROL CODE

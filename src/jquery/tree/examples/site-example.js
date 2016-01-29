@@ -3,6 +3,8 @@ import {sampleData} from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 const options = {
 	collection: sampleData.tree.default.collection,
 	heading: sampleData.tree.default.heading,
@@ -40,3 +42,5 @@ $(function () {
 
 	void(tree);
 });
+
+// <-- SAMPLE CONTROL CODE

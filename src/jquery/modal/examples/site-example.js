@@ -2,6 +2,8 @@ import {Lib, Modal} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	const modal = new Modal($('#modal-jquery-control'), {
 		headerText: 'Modal Header',
@@ -29,3 +31,5 @@ $(function () {
 		modal.open();
 	});
 });
+
+// <-- SAMPLE CONTROL CODE

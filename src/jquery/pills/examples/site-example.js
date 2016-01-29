@@ -2,6 +2,8 @@ import {Lib, Pills} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	$('#pills-jquery-control .pills1').facades_pills({
 		selection: [
@@ -27,3 +29,4 @@ $(function () {
 	void(Pills);
 });
 
+// <-- SAMPLE CONTROL CODE

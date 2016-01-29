@@ -2,6 +2,8 @@ import { Lib, Button } from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 const buttonsProperties = [
 	{
 		assistiveText: 'button-base',
@@ -649,3 +651,5 @@ $(function () {
 		void (buttons.button16);
 	});
 });
+
+// <-- SAMPLE CONTROL CODE
