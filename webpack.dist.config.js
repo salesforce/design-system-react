@@ -28,7 +28,7 @@ var config = {
 	},
 	devtool: 'source-map',
 	output: {
-		libraryTarget: 'amd',
+		libraryTarget: 'umd',
 		path: __dirname + '/.tmp/',
 		publicPath: '/.tmp/',
 		filename: '[name].js'
