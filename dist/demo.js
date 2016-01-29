@@ -67,67 +67,71 @@
 
 	var _components = __webpack_require__(202);
 
-	var _App = __webpack_require__(284);
+	var _App = __webpack_require__(291);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _pages = __webpack_require__(288);
+	var _pages = __webpack_require__(294);
 
 	var _pages2 = _interopRequireDefault(_pages);
 
-	var _Welcome = __webpack_require__(290);
+	var _Welcome = __webpack_require__(296);
 
 	var _Welcome2 = _interopRequireDefault(_Welcome);
 
-	var _GettingStarted = __webpack_require__(291);
+	var _GettingStarted = __webpack_require__(298);
 
 	var _GettingStarted2 = _interopRequireDefault(_GettingStarted);
 
-	var _FAQ = __webpack_require__(293);
+	var _FAQ = __webpack_require__(299);
 
 	var _FAQ2 = _interopRequireDefault(_FAQ);
 
-	var _ButtonSection = __webpack_require__(294);
+	var _ButtonSection = __webpack_require__(300);
 
 	var _ButtonSection2 = _interopRequireDefault(_ButtonSection);
 
-	var _ButtonStatefulSection = __webpack_require__(307);
+	var _ButtonStatefulSection = __webpack_require__(314);
 
 	var _ButtonStatefulSection2 = _interopRequireDefault(_ButtonStatefulSection);
 
-	var _ButtonGroupSection = __webpack_require__(308);
+	var _ButtonGroupSection = __webpack_require__(315);
 
 	var _ButtonGroupSection2 = _interopRequireDefault(_ButtonGroupSection);
 
-	var _DropdownSection = __webpack_require__(309);
+	var _DateInputSection = __webpack_require__(316);
 
-	var _DropdownSection2 = _interopRequireDefault(_DropdownSection);
+	var _DateInputSection2 = _interopRequireDefault(_DateInputSection);
 
-	var _IconSection = __webpack_require__(310);
-
-	var _IconSection2 = _interopRequireDefault(_IconSection);
-
-	var _LookupSection = __webpack_require__(311);
-
-	var _LookupSection2 = _interopRequireDefault(_LookupSection);
-
-	var _ModalSection = __webpack_require__(312);
-
-	var _ModalSection2 = _interopRequireDefault(_ModalSection);
-
-	var _DatePickerSingleSelectSection = __webpack_require__(313);
+	var _DatePickerSingleSelectSection = __webpack_require__(317);
 
 	var _DatePickerSingleSelectSection2 = _interopRequireDefault(_DatePickerSingleSelectSection);
 
-	var _NotificationSection = __webpack_require__(321);
+	var _DropdownSection = __webpack_require__(318);
+
+	var _DropdownSection2 = _interopRequireDefault(_DropdownSection);
+
+	var _IconSection = __webpack_require__(319);
+
+	var _IconSection2 = _interopRequireDefault(_IconSection);
+
+	var _LookupSection = __webpack_require__(320);
+
+	var _LookupSection2 = _interopRequireDefault(_LookupSection);
+
+	var _ModalSection = __webpack_require__(321);
+
+	var _ModalSection2 = _interopRequireDefault(_ModalSection);
+
+	var _NotificationSection = __webpack_require__(322);
 
 	var _NotificationSection2 = _interopRequireDefault(_NotificationSection);
 
-	var _PicklistSection = __webpack_require__(322);
+	var _PicklistSection = __webpack_require__(323);
 
 	var _PicklistSection2 = _interopRequireDefault(_PicklistSection);
 
-	var _TooltipSection = __webpack_require__(323);
+	var _TooltipSection = __webpack_require__(324);
 
 	var _TooltipSection2 = _interopRequireDefault(_TooltipSection);
 
@@ -139,15 +143,17 @@
 	var routes = _react2.default.createElement(
 	  _reactRouter.Route,
 	  { handler: _App2.default, path: '/' },
-	  _react2.default.createElement(_reactRouter.DefaultRoute, { handler: _pages2.default }),
 	  _react2.default.createElement(
 	    _reactRouter.Route,
-	    { name: 'home', handler: _pages2.default },
+	    { name: 'home', path: '/', handler: _pages2.default },
+	    _react2.default.createElement(_reactRouter.DefaultRoute, { handler: _Welcome2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'welcome', path: 'welcome', handler: _Welcome2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'getting-started', path: 'getting-started', handler: _GettingStarted2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'button', path: 'button', handler: _ButtonSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'button-stateful', path: 'button-stateful', handler: _ButtonStatefulSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'button-group', path: 'button-group', handler: _ButtonGroupSection2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { name: 'dateinput', path: 'dateinput', handler: _DateInputSection2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { name: 'datepicker', path: 'datepicker', handler: _DatePickerSingleSelectSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'dropdown', path: 'dropdown', handler: _DropdownSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'icon', path: 'icon', handler: _IconSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'lookup', path: 'lookup', handler: _LookupSection2.default }),
@@ -155,7 +161,6 @@
 	    _react2.default.createElement(_reactRouter.Route, { name: 'notification', path: 'notification', handler: _NotificationSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'picklist', path: 'picklist', handler: _PicklistSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'tooltip', path: 'tooltip', handler: _TooltipSection2.default }),
-	    _react2.default.createElement(_reactRouter.Route, { name: 'datepicker', path: 'datepicker', handler: _DatePickerSingleSelectSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'faq', path: 'faq', handler: _FAQ2.default })
 	  )
 	);
@@ -23047,7 +23052,11 @@
 
 	var _SLDSPopoverTooltip2 = _interopRequireDefault(_SLDSPopoverTooltip);
 
-	var _SLDSSettings = __webpack_require__(283);
+	var _SLDSDatepickerSingleSelect = __webpack_require__(283);
+
+	var _SLDSDatepickerSingleSelect2 = _interopRequireDefault(_SLDSDatepickerSingleSelect);
+
+	var _SLDSSettings = __webpack_require__(290);
 
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 
@@ -23057,10 +23066,22 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+
 	module.exports = {
 	  SLDSButton: _SLDSButton2.default,
 	  SLDSButtonStateful: _SLDSButtonStateful2.default,
 	  SLDSButtonGroup: _SLDSButtonGroup2.default,
+	  SLDSDatepickerSingleSelect: _SLDSDatepickerSingleSelect2.default,
 	  SLDSIcon: _SLDSIcon2.default,
 	  SLDSLookup: _SLDSLookup2.default,
 	  SLDSMenuDropdown: _SLDSMenuDropdown2.default,
@@ -23071,16 +23092,7 @@
 	  SLDSPopoverTooltip: _SLDSPopoverTooltip2.default,
 	  SLDSSettings: _SLDSSettings2.default,
 	  SLDSUtilityIcon: _SLDSUtilityIcon2.default
-	}; /*
-	   Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	   
-	   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	   Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	   Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	   Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	   
-	   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	   */
+	};
 
 /***/ },
 /* 203 */
@@ -23186,8 +23198,7 @@
 	/**
 	 * The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.
 	 * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.
-	 * For buttons that maintain selected/unselected states, use the <a href="#/home/button-stateful">SLDSButtonStateful</a> component.
-	 * For more details on the markup, please review the Button documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons">Lightning Design System website</a>.
+	 * For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">SLDSButtonStateful</a> component.
 	 */
 
 	var SLDSButton = function (_SLDSTooltipTrigger) {
@@ -26124,7 +26135,6 @@
 	/**
 	 * The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
 	 * For icon buttons, use <code>variant="icon"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: "add", label: "Follow"}}</code>).
-	 * For more details on the markup, please review the Button > Stateful documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons#stateful">Lightning Design System website</a>.
 	 */
 
 	var SLDSButtonStateful = function (_SLDSTooltipTrigger) {
@@ -26253,7 +26263,6 @@
 
 	/**
 	 * The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).
-	 * For more details on the markup, please review the Button Group documentation on the <a href="http://www.lightningdesignsystem.com/components/button-groups">Lightning Design System website</a>.
 	 */
 
 	var SLDSButtonGroup = function (_React$Component) {
@@ -26350,9 +26359,8 @@
 	};
 
 	/**
-	 * The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href="#/home/button">SLDSButton component</a> component with <code>variant="icon"</code>.
+	 * The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href="#/button">SLDSButton component</a> component with <code>variant="icon"</code>.
 	 * The icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.
-	 * For more details on the markup, please review the Icon documentation on the <a href="http://www.lightningdesignsystem.com/components/icons">Lightning Design System website</a>.
 	 */
 
 	var SLDSIcon = function (_React$Component) {
@@ -26561,7 +26569,6 @@
 
 	/**
 	 * The SLDSLookup is the Lightning Design System Lookup base component.
-	 * For more details on the markup, please review the Lookup > Base documentation on the <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System website</a>.
 	 */
 
 	var SLDSLookup = function (_React$Component) {
@@ -30709,7 +30716,6 @@
 
 	/**
 	 * The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.
-	 * For more details on the markup, please review the Menu > Dropdown documentation on the <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightning Design System website</a>.
 	 */
 
 	var SLDSMenuDropdown = function (_React$Component) {
@@ -31645,7 +31651,6 @@
 
 	/**
 	 * The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.
-	 * For more details on the markup, please review the Menu > Picklist documentation on the <a href="http://www.lightningdesignsystem.com/components/menus#picklist">Lightning Design System website</a>.
 	 */
 
 	var SLDSMenuPicklist = function (_React$Component) {
@@ -33378,7 +33383,7 @@
 
 	/**
 	 * The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
-	 * For more details on the markup, please review the Lightning Design System website's <a href="https://www.lightningdesignsystem.com/components/modals"> Modal documentation</a> or the <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">Notification > Prompt documentation</a>.
+	 * For more details on the Prompt markup, please review the <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">Notifications > Prompt</a>.
 	 */
 
 	var SLDSModal = function (_React$Component) {
@@ -34696,9 +34701,8 @@
 	};
 
 	/**
-	 * The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href="#/home/modal">SLDSModal</a> component with <code>prompt={true}</code>.
+	 * The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href="#/modal">SLDSModal</a> component with <code>prompt={true}</code>.
 	 * The Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
-	 * For more details on the markup, please review the Notification documentation on the <a href="http://www.lightningdesignsystem.com/components/notifications">Lightning Design System website</a>.
 	 */
 
 	var SLDSNotification = function (_React$Component) {
@@ -34929,8 +34933,7 @@
 	   * Delay on Tooltip closing.
 	   */
 	  hoverCloseDelay: _react2.default.PropTypes.number,
-	  openByDefault: _react2.default.PropTypes.bool,
-	  target: _react2.default.PropTypes.any
+	  openByDefault: _react2.default.PropTypes.bool
 	};
 	var defaultProps = {
 	  align: "top",
@@ -34945,7 +34948,6 @@
 
 	/**
 	 * The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.
-	 * For more details on the markup, please review the Popover > Tooltip documentation on the <a href="http://www.lightningdesignsystem.com/components/popovers#tooltips">Lightning Design System website</a>.
 	 */
 
 	var SLDSPopoverTooltip = function (_React$Component) {
@@ -35322,6 +35324,1099 @@
 
 	/*
 	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(159);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _SLDSPopover = __webpack_require__(236);
+
+	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
+
+	var _index = __webpack_require__(284);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	var _InputIcon = __webpack_require__(245);
+
+	var _InputIcon2 = _interopRequireDefault(_InputIcon);
+
+	var _utils = __webpack_require__(239);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+	  displayName: 'exports',
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      string: '',
+	      value: new Date(),
+	      placeholder: 'Pick a Date',
+	      formatter: function formatter(date) {
+	        return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+	      },
+	      parser: function parser(str) {
+	        return new Date(str);
+	      },
+	      onDateChange: function onDateChange(date) {
+	        console.log('onDateChange should be defined');
+	      }
+	    };
+	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      isOpen: false,
+	      value: this.props.value,
+	      string: this.props.selectedDate ? this.props.formatter(this.props.selectedDate) : null
+	    };
+	  },
+	  handleChange: function handleChange(date) {
+	    this.setState({
+	      value: date,
+	      isOpen: false,
+	      string: this.props.formatter(date)
+	    });
+	    if (this.props.onDateChange) {
+	      this.props.onDateChange(date);
+	    }
+	  },
+	  handleClose: function handleClose() {
+	    this.setState({ isOpen: false });
+	    this.setFocus();
+	  },
+	  handleClick: function handleClick() {
+	    this.setState({ isOpen: true });
+	  },
+	  handleFocus: function handleFocus() {
+	    //    this.setState({isOpen:true})
+	  },
+	  handleBlur: function handleBlur() {
+	    //    this.setState({isOpen:false})
+	  },
+	  setFocus: function setFocus() {
+	    if (this.isMounted()) {
+	      _reactDom2.default.findDOMNode(this.refs.date).focus();
+	    }
+	  },
+	  popover: function popover() {
+	    if (this.state && this.state.isOpen) {
+	      return _react2.default.createElement(
+	        _SLDSPopover2.default,
+	        { className: 'slds-dropdown', targetElement: this.refs.date, onClose: this.handleClose },
+	        _react2.default.createElement(_index2.default, {
+	          onChange: this.handleChange,
+	          selected: this.state.selected,
+	          onClose: this.handleClose,
+	          selectedDate: this.state.value })
+	      );
+	    }
+	    return _react2.default.createElement('span', null);
+	  },
+	  handleInputChange: function handleInputChange() {
+	    var string = _reactDom2.default.findDOMNode(this.refs.date).value;
+	    var date = this.props.parser(string);
+	    if (date) {
+	      this.setState({
+	        value: date,
+	        string: string
+	      });
+	      if (this.props.onDateChage) {
+	        this.props.onDateChange(value);
+	      }
+	    } else {
+	      this.setState({
+	        isOpen: false
+	      });
+	    }
+	  },
+	  handleKeyDown: function handleKeyDown(event) {
+	    if (event.keyCode) {
+	      if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE || event.keyCode === _utils.KEYS.DOWN || event.keyCode === _utils.KEYS.UP) {
+	        _utils.EventUtil.trapEvent(event);
+
+	        this.setState({
+	          isOpen: true
+	        });
+	      }
+	    }
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'slds-form-element' },
+	      _react2.default.createElement(
+	        'label',
+	        { className: 'slds-form-element__label', htmlFor: 'date' },
+	        this.props.label
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'slds-form-element__control' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'slds-input-has-icon slds-input-has-icon--right' },
+	          _react2.default.createElement(_InputIcon2.default, { name: 'event' }),
+	          _react2.default.createElement('input', {
+	            name: 'date',
+	            ref: 'date',
+	            className: 'slds-input',
+	            type: 'text',
+	            placeholder: this.props.placeholder,
+	            value: this.state.value ? this.state.string : '',
+	            onKeyDown: this.handleKeyDown,
+	            onChange: this.handleInputChange,
+	            onClick: this.handleClick,
+	            onBlur: this.handleBlur,
+	            onFocus: this.handleFocus })
+	        )
+	      ),
+	      this.popover()
+	    );
+	  }
+	});
+
+/***/ },
+/* 284 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _index = __webpack_require__(285);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	var _index3 = __webpack_require__(288);
+
+	var _index4 = _interopRequireDefault(_index3);
+
+	var _utils = __webpack_require__(239);
+
+	var _utils2 = __webpack_require__(239);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+	  displayName: 'exports',
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      selectedDate: new Date(),
+	      value: new Date(),
+
+	      onChange: function onChange(date) {
+	        console.log('onChange should be defined ', date);
+	      },
+	      onDisplayedDateChange: function onDisplayedDateChange(date) {
+	        console.log('onDisplayedDateChange should be defined ', date);
+	      },
+	      onClose: function onClose() {
+	        console.log('onClose should be defined');
+	      }
+	    };
+	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      displayedDate: this.props.selectedDate,
+	      isFocused: false,
+	      isClosing: false
+	    };
+	  },
+	  handleKeyDown: function handleKeyDown(event) {
+	    if (event.keyCode) {
+	      if (event.keyCode === _utils2.KEYS.ESCAPE) {
+	        if (this.props.onClose) {
+	          this.props.onClose();
+	        }
+	      } else if (event.keyCode === _utils2.KEYS.SPACE) {} else if (event.keyCode === _utils2.KEYS.ENTER) {} else if (event.keyCode === _utils2.KEYS.TAB) {} else if (event.keyCode === _utils2.KEYS.ESCAPE) {} else {
+	        _utils.EventUtil.trapEvent(event);
+	      }
+	    }
+	  },
+	  handleClickOutside: function handleClickOutside(e) {
+	    e.preventDefault();
+	    e.stopPropagation();
+	    if (this.props.onClose) {
+	      this.props.onClose();
+	    }
+	  },
+	  handleDisplayedDateChange: function handleDisplayedDateChange(displayedDate) {
+	    if (this.props.onDisplayedDateChange) {
+	      this.props.onDisplayedDateChange(displayedDate);
+	    }
+	    this.setState({ displayedDate: displayedDate });
+	  },
+	  handleSelectDate: function handleSelectDate(selectedDate) {
+	    if (this.props.onChange) {
+	      this.props.onChange(selectedDate);
+	    }
+	  },
+	  handleCancel: function handleCancel() {
+	    if (this.props.onClose) {
+	      this.props.onClose();
+	    }
+	  },
+	  handleBGClick: function handleBGClick(event) {
+	    if (event.nativeEvent) {
+	      event.nativeEvent.preventDefault();
+	    }
+	  },
+	  handleFocus: function handleFocus() {
+	    this.setState({ isFocused: true });
+	  },
+	  handleBlur: function handleBlur() {
+	    //    this.setState({isFocused:false});
+	  },
+	  render: function render() {
+
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'ignore-react-onclickoutside' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'slds-datepicker',
+	          'aria-hidden': false,
+	          'data-selection': 'single',
+	          onMouseDown: this.handleBGClick,
+	          onKeyDown: this.handleKeyDown,
+	          onFocus: this.handleFocus,
+	          onBlur: this.handleBlur,
+	          onClick: this.handleBGClick },
+	        _react2.default.createElement(_index4.default, {
+	          onChange: this.handleDisplayedDateChange,
+	          selectedDate: this.props.selectedDate,
+	          autoFocus: true,
+	          displayedDate: this.state.displayedDate,
+	          onCancel: this.handleCancel }),
+	        _react2.default.createElement(_index2.default, {
+	          selectedDate: this.props.selectedDate,
+	          onChange: this.handleDisplayedDateChange,
+	          displayedDate: this.state.displayedDate,
+	          onSelectDate: this.handleSelectDate,
+	          onCancel: this.handleCancel }),
+	        _react2.default.createElement(
+	          'span',
+	          { id: 'bn_prev-label', className: 'slds-assistive-text' },
+	          'Go to previous month'
+	        ),
+	        _react2.default.createElement(
+	          'span',
+	          { id: 'bn_next-label', className: 'slds-assistive-text' },
+	          'Go to next month'
+	        )
+	      )
+	    );
+	  },
+	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
+	    var _this = this;
+
+	    if (!this.state.isFocused && prevState.isFocused) {
+	      this.setState({ isClosing: true });
+
+	      setTimeout(function () {
+
+	        if (_this.isMounted()) {
+	          if (_this.state.isClosing) {
+	            if (_this.state.isFocused) {
+	              _this.setState({ isClosing: false });
+	            } else {
+	              if (_this.props.onClose) {
+	                _this.props.onClose();
+	              }
+	            }
+	          }
+	        }
+	      });
+	    }
+	  }
+	});
+
+/***/ },
+/* 285 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _index = __webpack_require__(286);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	var _utils = __webpack_require__(239);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+
+	  displayName: 'SLDSCalendar',
+
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      displayedDate: new Date(),
+	      selectedDate: new Date(),
+	      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+	      abbrLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+
+	      onSelectDate: function onSelectDate(date) {
+	        console.log('onSelectDate should be defined ', date);
+	      },
+	      onCancel: function onCancel() {
+	        console.log('onCancel should be defined');
+	      }
+	    };
+	  },
+	  getInitialState: function getInitialState() {
+	    return {
+	      highlightedDate: _utils.DateUtil.firstDayOfMonth(this.props.displayedDate),
+	      hasFocus: false
+	    };
+	  },
+	  handleSelectDate: function handleSelectDate(day) {
+	    this.setState({ selected: day });
+	    if (this.props.onSelectDate) {
+	      this.props.onSelectDate(day);
+	    }
+	  },
+	  handleCancel: function handleCancel() {
+	    if (this.props.onCancel) {
+	      this.props.onCancel();
+	    }
+	  },
+	  handleChangeDisplayedDate: function handleChangeDisplayedDate(date) {
+	    if (this.props.onChange) {
+	      this.props.onChange(date);
+	    }
+	  },
+	  handlePrevDay: function handlePrevDay(date) {
+	    var prevDate = _utils.DateUtil.addDays(date, -1);
+	    if (!_utils.DateUtil.isSameMonth(prevDate, date)) {
+	      this.handleChangeDisplayedDate(prevDate);
+	    } else {
+	      this.setState({ highlightedDate: prevDate });
+	    }
+	  },
+	  handleNextDay: function handleNextDay(date) {
+	    var nextDate = _utils.DateUtil.addDays(date, 1);
+	    if (!_utils.DateUtil.isSameMonth(nextDate, date)) {
+	      this.handleChangeDisplayedDate(nextDate);
+	    } else {
+	      this.setState({ highlightedDate: nextDate });
+	    }
+	  },
+	  handlePrevWeek: function handlePrevWeek(date) {
+	    var prevDate = _utils.DateUtil.addDays(date, -7);
+	    if (!_utils.DateUtil.isSameMonth(prevDate, date)) {
+	      this.handleChangeDisplayedDate(prevDate);
+	    } else {
+	      this.setState({ highlightedDate: prevDate });
+	    }
+	  },
+	  handleNextWeek: function handleNextWeek(date) {
+	    var nextDate = _utils.DateUtil.addDays(date, 7);
+	    if (!_utils.DateUtil.isSameMonth(nextDate, date)) {
+	      this.handleChangeDisplayedDate(nextDate);
+	    } else {
+	      this.setState({ highlightedDate: nextDate });
+	    }
+	  },
+	  handleTodaySelect: function handleTodaySelect() {
+	    this.handleSelectDate(new Date());
+	  },
+	  handleFocus: function handleFocus() {
+	    this.setState({ hasFocus: true });
+	  },
+	  handleBlur: function handleBlur() {
+	    this.setState({ hasFocus: false });
+	  },
+	  handleTodayFocus: function handleTodayFocus(event) {
+	    _utils.EventUtil.trap(event);
+	    this.setState({ hasFocus: false });
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'SLDSCalendar',
+	        onFocus: this.handleFocus,
+	        onBlur: this.handleBlur
+	      },
+	      _react2.default.createElement(
+	        'table',
+	        { className: 'datepicker__month', role: 'grid', 'aria-labelledby': 'month' },
+	        _react2.default.createElement(
+	          'thead',
+	          null,
+	          _react2.default.createElement(
+	            'tr',
+	            { ref: 'weekdays' },
+	            _react2.default.createElement(
+	              'th',
+	              { ref: 'Sunday' },
+	              _react2.default.createElement(
+	                'abbr',
+	                { title: this.props.labels[0] },
+	                this.props.abbrLabels[0]
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              { ref: 'Monday' },
+	              _react2.default.createElement(
+	                'abbr',
+	                { title: this.props.labels[1] },
+	                this.props.abbrLabels[1]
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              { ref: 'Tuesday' },
+	              _react2.default.createElement(
+	                'abbr',
+	                { title: this.props.labels[2] },
+	                this.props.abbrLabels[2]
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              { ref: 'Wednesday' },
+	              _react2.default.createElement(
+	                'abbr',
+	                { title: this.props.labels[3] },
+	                this.props.abbrLabels[3]
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              { ref: 'Thursday' },
+	              _react2.default.createElement(
+	                'abbr',
+	                { title: this.props.labels[4] },
+	                this.props.abbrLabels[4]
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              { ref: 'Friday' },
+	              _react2.default.createElement(
+	                'abbr',
+	                { title: this.props.labels[5] },
+	                this.props.abbrLabels[5]
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'th',
+	              { ref: 'Saturday' },
+	              _react2.default.createElement(
+	                'abbr',
+	                { title: this.props.labels[6] },
+	                this.props.abbrLabels[6]
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'tbody',
+	          null,
+	          this.renderWeeks(),
+	          this.renderToday()
+	        )
+	      )
+	    );
+	  },
+	  renderToday: function renderToday() {
+	    return _react2.default.createElement(
+	      'tr',
+	      null,
+	      _react2.default.createElement(
+	        'td',
+	        {
+	          colSpan: '7',
+	          role: 'gridcell' },
+	        _react2.default.createElement(
+	          'a',
+	          { href: 'javascript:void(0)',
+	            onFocus: this.handleTodayFocus,
+	            tabIndex: '0',
+	            className: 'slds-show--inline-block slds-p-bottom--x-small',
+	            onClick: this.handleTodaySelect },
+	          'Today'
+	        )
+	      )
+	    );
+	  },
+	  renderWeeks: function renderWeeks() {
+	    var firstDayOfMonth = _utils.DateUtil.firstDayOfMonth(this.props.displayedDate);
+
+	    var date = firstDayOfMonth;
+	    if (firstDayOfMonth.getDay() > 0) {
+	      var prevWeek = _utils.DateUtil.addWeeks(firstDayOfMonth, -1);
+	      var nextSunday = _utils.DateUtil.nearestWeekDay(prevWeek, 0);
+	      date = nextSunday;
+	    }
+
+	    var weeks = [];
+	    var done = false;
+
+	    var monthIndex = date.getMonth();
+	    var count = 0;
+	    while (!done) {
+	      weeks.push(_react2.default.createElement(_index2.default, {
+	        key: date.toString(),
+	        date: date,
+	        month: this.props.month,
+	        onSelectDate: this.handleSelectDate,
+	        selectedDate: this.props.selectedDate,
+	        displayedDate: this.props.displayedDate,
+	        highlightedDate: this.state.highlightedDate,
+	        onPrevDay: this.handlePrevDay,
+	        onNextDay: this.handleNextDay,
+	        onPrevWeek: this.handlePrevWeek,
+	        onNextWeek: this.handleNextWeek,
+	        calendarHasFocus: this.state.hasFocus,
+	        onCancel: this.handleCancel }));
+	      date = _utils.DateUtil.addWeeks(date, 1);
+	      done = count++ > 2 && monthIndex !== date.getMonth();
+	      monthIndex = date.getMonth();
+	    }
+	    var extra = 0;
+	    while (weeks.length < 6) {
+	      weeks.push(_react2.default.createElement(
+	        'tr',
+	        { key: 'extra_' + extra++, className: 'week' },
+	        _react2.default.createElement(
+	          'td',
+	          null,
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'slds-day' },
+	            ' '
+	          )
+	        )
+	      ));
+	    }
+
+	    return weeks;
+	  },
+	  componentDidUpdate: function componentDidUpdate(prevProps) {
+	    if (!_utils.DateUtil.isEqual(this.props.displayedDate, prevProps.displayedDate)) {
+	      this.setState({ highlightedDate: this.props.displayedDate });
+	    }
+	  }
+	});
+
+/***/ },
+/* 286 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _index = __webpack_require__(287);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	var _utils = __webpack_require__(239);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+	  displayName: 'exports',
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      displayedDate: new Date(),
+	      selectedDate: new Date()
+	    };
+	  },
+	  handleSelectDate: function handleSelectDate(day) {
+	    if (this.props.onSelectDate) {
+	      this.props.onSelectDate(day);
+	    }
+	  },
+	  handleCancel: function handleCancel() {
+	    if (this.props.onCancel) {
+	      this.props.onCancel();
+	    }
+	  },
+	  handlePrevDay: function handlePrevDay(date) {
+	    if (this.props.onPrevDay) {
+	      this.props.onPrevDay(date);
+	    }
+	  },
+	  handleNextDay: function handleNextDay(date) {
+	    if (this.props.onNextDay) {
+	      this.props.onNextDay(date);
+	    }
+	  },
+	  handlePrevWeek: function handlePrevWeek(date) {
+	    if (this.props.onPrevWeek) {
+	      this.props.onPrevWeek(date);
+	    }
+	  },
+	  handleNextWeek: function handleNextWeek(date) {
+	    if (this.props.onNextWeek) {
+	      this.props.onNextWeek(date);
+	    }
+	  },
+
+	  render: function render() {
+	    var days = [];
+	    var date = this.props.date;
+	    for (var i = 0; i < 7; i++) {
+	      days.push(_react2.default.createElement(_index2.default, {
+	        key: date.toString(),
+	        date: date,
+	        month: this.props.month,
+	        selectedDate: this.props.selectedDate,
+	        onSelectDate: this.handleSelectDate,
+	        displayedDate: this.props.displayedDate,
+	        highlightedDate: this.props.highlightedDate,
+	        focused: this.props.calendarHasFocus && _utils.DateUtil.isSameDay(this.props.highlightedDate, date),
+	        calendarHasFocus: this.props.calendarHasFocus,
+	        onPrevDay: this.handlePrevDay,
+	        onNextDay: this.handleNextDay,
+	        onPrevWeek: this.handlePrevWeek,
+	        onNextWeek: this.handleNextWeek,
+	        onCancel: this.handleCancel }));
+	      date = _utils.DateUtil.addDays(date, 1);
+	    }
+
+	    return _react2.default.createElement(
+	      'tr',
+	      { className: 'week', key: days[0].toString() },
+	      days
+	    );
+	  }
+	});
+
+/***/ },
+/* 287 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _utils = __webpack_require__(239);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+	  displayName: 'exports',
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+
+	      displayedDate: new Date(),
+
+	      selectedDate: new Date(),
+
+	      calendarHasFocus: false,
+
+	      onSelectDate: function onSelectDate(date) {
+	        console.log('onSelectDate should be defined ', date);
+	      },
+	      onClick: function onClick(index) {
+	        console.log('onClick should be defined ', index);
+	      },
+	      onMoveFocus: function onMoveFocus(delta) {
+	        console.log('onMoveFocus should be defined ', delta);
+	      },
+	      onBlur: function onBlur(relatedTarget) {
+	        console.log('onBlur should be defined ', relatedTarget);
+	      },
+	      onFocus: function onFocus(index, height) {
+	        console.log('onFocus should be defined ', index, height);
+	      },
+	      onCancel: function onCancel() {
+	        console.log('onCancel should be defined');
+	      }
+	    };
+	  },
+	  handleClick: function handleClick(event) {
+	    if (this.props.onSelectDate) {
+	      this.props.onSelectDate(this.props.date);
+	    }
+	    if (event.nativeEvent) {
+	      event.nativeEvent.stopImmediatePropagation();
+	      event.nativeEvent.preventDefault();
+	    }
+	  },
+	  handleToPrevDay: function handleToPrevDay() {
+	    if (this.props.onPrevDay) {
+	      this.props.onPrevDay(this.props.date);
+	    }
+	  },
+	  handleToNextDay: function handleToNextDay() {
+	    if (this.props.onNextDay) {
+	      this.props.onNextDay(this.props.date);
+	    }
+	  },
+	  handleToPrevWeek: function handleToPrevWeek() {
+	    if (this.props.onPrevWeek) {
+	      this.props.onPrevWeek(this.props.date);
+	    }
+	  },
+	  handleToNextWeek: function handleToNextWeek() {
+	    if (this.props.onNextWeek) {
+	      this.props.onNextWeek(this.props.date);
+	    }
+	  },
+	  handleKeyDown: function handleKeyDown(event) {
+	    if (event.keyCode) {
+	      if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE) {
+	        _utils.EventUtil.trapEvent(event);
+	        if (this.props.onSelectDate) {
+	          this.props.onSelectDate(this.props.date);
+	        }
+	      } else if (event.keyCode === _utils.KEYS.ESCAPE) {
+	        _utils.EventUtil.trapEvent(event);
+	        if (this.props.onCancel) {
+	          this.props.onCancel();
+	        }
+	      } else if (event.keyCode === _utils.KEYS.TAB) {
+	        /*
+	                if(!event.shiftKey){
+	                  EventUtil.trapEvent(event);
+	                  if(this.props.onCancel){
+	                    this.props.onCancel();
+	                  }
+	                }
+	        */
+	      } else if (event.keyCode === _utils.KEYS.RIGHT) {
+	          _utils.EventUtil.trapEvent(event);
+	          this.handleToNextDay();
+	        } else if (event.keyCode === _utils.KEYS.LEFT) {
+	          _utils.EventUtil.trapEvent(event);
+	          this.handleToPrevDay();
+	        } else if (event.keyCode === _utils.KEYS.RIGHT) {
+	          _utils.EventUtil.trapEvent(event);
+	          this.handleToNextDay();
+	        } else if (event.keyCode === _utils.KEYS.UP) {
+	          _utils.EventUtil.trapEvent(event);
+	          this.handleToPrevWeek();
+	        } else if (event.keyCode === _utils.KEYS.DOWN) {
+	          _utils.EventUtil.trapEvent(event);
+	          this.handleToNextWeek();
+	        } else {
+	          _utils.EventUtil.trapEvent(event);
+	        }
+	    }
+	  },
+	  setFocus: function setFocus() {
+	    if (this.isMounted() && this.props.calendarHasFocus) {
+	      this.getDOMNode().focus();
+	    }
+	  },
+	  render: function render() {
+
+	    var isCurrentMonth = _utils.DateUtil.isSameMonth(this.props.date, this.props.displayedDate);
+	    var isToday = _utils.DateUtil.isToday(this.props.date);
+	    var isSelectedDay = _utils.DateUtil.isSameDay(this.props.date, this.props.selectedDate);
+	    var isFirstDayOfMonth = _utils.DateUtil.isFirstDayOfMonth(this.props.date);
+
+	    return _react2.default.createElement(
+	      'td',
+	      { role: 'gridcell',
+	        'aria-disabled': !isCurrentMonth,
+	        'aria-selected': isSelectedDay
+	        //        autoFocus={this.props.calendarHasFocus && this.props.focused}
+	        , tabIndex: !this.props.calendarHasFocus && isFirstDayOfMonth && isCurrentMonth ? 0 : -1,
+	        className: (isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (isSelectedDay ? ' slds-is-selected' : ''),
+	        onClick: this.handleClick,
+	        onMouseDown: this.handleClick,
+	        onKeyDown: this.handleKeyDown },
+	      _react2.default.createElement(
+	        'span',
+	        { className: 'slds-day' },
+	        this.props.date.getDate()
+	      )
+	    );
+	  },
+	  componentDidUpdate: function componentDidUpdate(prevProps) {
+	    if (this.props.focused && !prevProps.focused) {
+	      this.setFocus();
+	    }
+	  }
+	});
+
+/***/ },
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _index = __webpack_require__(289);
+
+	var _index2 = _interopRequireDefault(_index);
+
+	var _ButtonIcon = __webpack_require__(204);
+
+	var _ButtonIcon2 = _interopRequireDefault(_ButtonIcon);
+
+	var _utils = __webpack_require__(239);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+	  displayName: 'exports',
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      displayedDate: new Date(),
+	      monthLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	      onChangeMonth: function onChangeMonth() {
+	        console.log('onChangeMonth should be defined');
+	      }
+	    };
+	  },
+	  handleClick: function handleClick(event) {
+	    event.preventDefault();
+	    event.stopPropagation();
+	  },
+	  handleChange: function handleChange(displayedDate) {
+	    if (this.props.onChange) {
+	      this.props.onChange(displayedDate);
+	    }
+	  },
+	  handleCancel: function handleCancel() {
+	    if (this.props.onCancel) {
+	      this.props.onCancel();
+	    }
+	  },
+	  previousMonth: function previousMonth() {
+	    if (this.props.displayedDate && this.handleChange) {
+	      this.handleChange(_utils.DateUtil.addMonths(this.props.displayedDate, -1));
+	    }
+	  },
+	  componentDidMount: function componentDidMount() {},
+	  nextMonth: function nextMonth() {
+	    if (this.props.displayedDate && this.handleChange) {
+	      this.handleChange(_utils.DateUtil.addMonths(this.props.displayedDate, 1));
+	    }
+	  },
+	  handleYearSelect: function handleYearSelect(displayedDate) {
+	    if (this.props.onChange) {
+	      this.props.onChange(displayedDate);
+	    }
+	  },
+	  handleKeyDown: function handleKeyDown(event) {
+	    if (event.keyCode === _utils.KEYS.TAB) {
+	      if (event.shiftKey) {
+	        _utils.EventUtil.trapEvent(event);
+	        this.handleCancel();
+	      }
+	    }
+	  },
+	  getMonthLabel: function getMonthLabel() {
+	    return this.props.monthLabels[new Date(this.props.displayedDate).getMonth()];
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'slds-datepicker__filter slds-grid' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'slds-align-middle', role: 'button', 'aria-labelledby': 'bn_prev-label', tabIndex: -1 },
+	          _react2.default.createElement(
+	            'button',
+	            {
+	              ref: 'prevMonth',
+	              className: 'slds-button slds-button--icon-container',
+	              autoFocus: this.props.autoFocus,
+	              role: 'button',
+	              tabIndex: 0,
+	              onKeyDown: this.handleKeyDown,
+	              onClick: this.previousMonth },
+	            _react2.default.createElement(_ButtonIcon2.default, { name: 'left' }),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'slds-assistive-text' },
+	              'Previous Month'
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'h2',
+	          { id: 'month', className: 'slds-align-middle', role: 'heading', 'aria-live': 'assertive', 'aria-atomic': true },
+	          this.getMonthLabel()
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'slds-align-middle', role: 'button', 'aria-labelledby': 'bn_next-label', tabIndex: -1 },
+	          _react2.default.createElement(
+	            'button',
+	            {
+	              ref: 'nextMonth',
+	              className: 'slds-button slds-button--icon-container',
+	              onClick: this.nextMonth },
+	            _react2.default.createElement(_ButtonIcon2.default, { name: 'right' }),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'slds-assistive-text' },
+	              'Next Month'
+	            )
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'slds-picklist slds-picklist--fluid slds-shrink-none' },
+	        _react2.default.createElement(_index2.default, {
+	          displayedDate: this.props.displayedDate,
+	          onChange: this.handleYearSelect })
+	      )
+	    );
+	  }
+	});
+
+/***/ },
+/* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _SLDSMenuPicklist = __webpack_require__(254);
+
+	var _SLDSMenuPicklist2 = _interopRequireDefault(_SLDSMenuPicklist);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+
+	  displayName: 'SLDSYearSelector',
+
+	  getDefaultProps: function getDefaultProps() {
+	    return {
+	      displayedDate: new Date(),
+	      relativeFrom: 0,
+	      relativeTo: 5,
+	      onChange: function onChange(displayedDate) {
+	        console.log('onChange should be defined: ', displayedDate);
+	      }
+	    };
+	  },
+	  getOptions: function getOptions() {
+	    var now = new Date();
+	    var fromYear = now.getFullYear() + this.props.relativeFrom;
+	    var toYear = now.getFullYear() + this.props.relativeTo;
+	    var opts = [];
+	    for (var year = fromYear; year < toYear; year++) {
+	      opts.push({ label: year, value: year });
+	    }
+	    return opts;
+	  },
+	  handleSelect: function handleSelect(selectedValue) {
+	    if (selectedValue) {
+	      if (this.props.onChange) {
+	        this.props.onChange(new Date(this.props.displayedDate.setFullYear(parseInt(selectedValue.value))));
+	      }
+	    }
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'slds-form-element' },
+	      _react2.default.createElement(_SLDSMenuPicklist2.default, {
+	        options: this.getOptions(),
+	        label: 'Year',
+	        placeholder: 'Year',
+	        value: this.props.displayedDate.getFullYear(),
+	        onSelect: this.handleSelect,
+	        className: 'slds-picklist--fluid slds-shrink-none',
+	        initialFocus: false })
+	    );
+	  }
+	});
+
+/***/ },
+/* 290 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
@@ -35362,7 +36457,7 @@
 	};
 
 /***/ },
-/* 284 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35377,11 +36472,9 @@
 
 	var _reactRouter = __webpack_require__(160);
 
-	__webpack_require__(285);
+	__webpack_require__(292);
 
-	__webpack_require__(286);
-
-	__webpack_require__(287);
+	__webpack_require__(293);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35390,25 +36483,19 @@
 	};
 
 /***/ },
-/* 285 */
+/* 292 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 286 */
+/* 293 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 287 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 288 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -35430,7 +36517,7 @@
 
 	var _reactRouter2 = _interopRequireDefault(_reactRouter);
 
-	var _SLDSGrid = __webpack_require__(289);
+	var _SLDSGrid = __webpack_require__(295);
 
 	var _SLDSGrid2 = _interopRequireDefault(_SLDSGrid);
 
@@ -35454,32 +36541,50 @@
 	      _SLDSGrid2.default,
 	      { flavor: 'vertical', className: 'stage slds-nowrap' },
 	      _react2.default.createElement(
-	        'header',
-	        { className: 'slds-page-header slds-clearfix demo-only' },
+	        'section',
+	        { className: 'demo-only' },
 	        _react2.default.createElement(
-	          Link,
-	          { to: 'welcome', className: 'slds-float--left a-plain slds-p-vertical--x-small' },
+	          'header',
+	          { className: 'bg-lt-gray bb-gray slds-clearfix slds-p-vertical--small slds-p-horizontal--medium' },
 	          _react2.default.createElement(
-	            'div',
-	            { className: 'slds-media slds-media--center' },
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'slds-media__figure site-logo' },
-	              'Salesforce'
-	            ),
+	            Link,
+	            { to: 'welcome', className: 'slds-float--left a-plain slds-p-vertical--x-small' },
 	            _react2.default.createElement(
 	              'div',
-	              { className: 'slds-media__body' },
+	              { className: 'slds-media slds-media--center' },
 	              _react2.default.createElement(
-	                'h1',
-	                { className: 'slds-text-heading--small slds-m-right--small slds-truncate slds-align-middle', title: 'Record Title' },
-	                'design system : ',
+	                'span',
+	                { className: 'slds-media__figure site-logo' },
+	                'Salesforce'
+	              ),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'slds-media__body' },
 	                _react2.default.createElement(
-	                  'strong',
-	                  null,
-	                  'interactive accessible components for React'
+	                  'h1',
+	                  { className: 'slds-text-heading--small slds-m-right--small slds-truncate slds-align-middle', title: 'Record Title' },
+	                  _react2.default.createElement(
+	                    'span',
+	                    { className: 'site-text--bold' },
+	                    'design-system-react'
+	                  ),
+	                  ': interactive accessible components for React'
 	                )
 	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            { className: 'slds-float--right slds-p-vertical--x-small' },
+	            _react2.default.createElement(
+	              'a',
+	              { href: 'https://github.com/salesforce-ux/design-system-react', className: 'a-plain ' },
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'slds-p-right--x-small' },
+	                'View on GitHub'
+	              ),
+	              _react2.default.createElement('img', { src: '/assets/gitHubLogo.png', alt: 'GitHub Logo', width: '40', height: '40' })
 	            )
 	          )
 	        )
@@ -35490,15 +36595,6 @@
 	        _react2.default.createElement(
 	          'aside',
 	          { className: 'region region--main slds-grow slds-size--1-of-6 slds-medium-size--1-of-6 slds-large-size--2-of-12 slds-col-rule--right slds-p-vertical--large' },
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-text-heading--small slds-p-vertical--small' },
-	            _react2.default.createElement(
-	              Link,
-	              { to: 'getting-started', className: 'a-plain slds-p-horizontal--large slds-p-vertical--x-small' },
-	              'Getting Started'
-	            )
-	          ),
 	          _react2.default.createElement(
 	            'p',
 	            { className: 'slds-text-heading--small slds-p-horizontal--large slds-p-vertical--small' },
@@ -35521,6 +36617,15 @@
 	              null,
 	              _react2.default.createElement(
 	                Link,
+	                { to: 'button-group', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSButtonGroup'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                Link,
 	                { to: 'button-stateful', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
 	                'SLDSButtonStateful'
 	              )
@@ -35530,8 +36635,8 @@
 	              null,
 	              _react2.default.createElement(
 	                Link,
-	                { to: 'button-group', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSButtonGroup'
+	                { to: 'dateinput', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'SLDSDatepicker'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -35597,15 +36702,6 @@
 	                'SLDSPopoverTooltip'
 	              )
 	            )
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            { className: 'slds-text-heading--small slds-p-vertical--small' },
-	            _react2.default.createElement(
-	              Link,
-	              { to: 'faq', className: 'a-plain slds-p-horizontal--large slds-p-vertical--x-small' },
-	              'FAQ'
-	            )
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -35619,7 +36715,7 @@
 	});
 
 /***/ },
-/* 289 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35723,7 +36819,7 @@
 	module.exports = Grid;
 
 /***/ },
-/* 290 */
+/* 296 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35737,6 +36833,10 @@
 	var _reactRouter = __webpack_require__(160);
 
 	var _reactRouter2 = _interopRequireDefault(_reactRouter);
+
+	var _globalVariables = __webpack_require__(297);
+
+	var _globalVariables2 = _interopRequireDefault(_globalVariables);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -35776,23 +36876,28 @@
 	        { className: 'copy-text', style: { "maxWidth": "800px" } },
 	        _react2.default.createElement(
 	          'h1',
-	          { className: 'site-text--xl' },
+	          { className: 'slds-text-heading--large' },
 	          'Design System React'
 	        ),
 	        _react2.default.createElement(
 	          'p',
-	          { className: 'slds-text-heading--medium' },
+	          { className: 'slds-text-heading--medium slds-p-vertical--medium' },
 	          'Create the world’s best enterprise app experiences.'
 	        ),
 	        _react2.default.createElement(
-	          'p',
-	          { className: 'slds-p-vertical--small', style: { "backgroundColor": "yellow" } },
-	          'Current release: TODO -- add link to release notes'
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          { className: 'slds-p-vertical--small', style: { "backgroundColor": "yellow" } },
-	          'Github Stars: TODO -- add github stars button'
+	          'div',
+	          { className: 'slds-p-bottom--large' },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'slds-m-right--medium' },
+	            'Current release: ',
+	            _react2.default.createElement(
+	              'a',
+	              { href: 'https://github.com/salesforce-ux/design-system-react/releases/latest' },
+	              _globalVariables2.default.sldsReactVersion
+	            )
+	          ),
+	          _react2.default.createElement('iframe', { src: 'https://ghbtns.com/github-btn.html?user=salesforce-ux&repo=design-system-react&type=star&count=true&size=large', frameBorder: '0', scrolling: '0', width: '160px', height: '30px' })
 	        ),
 	        _react2.default.createElement(
 	          'p',
@@ -35810,11 +36915,11 @@
 	          { className: 'slds-p-vertical--small' },
 	          'Check out the ',
 	          _react2.default.createElement(
-	            Link,
-	            { to: 'getting-started' },
-	            'Getting Started'
+	            'a',
+	            { href: 'https://github.com/salesforce-ux/design-system-react' },
+	            'GitHub Repo'
 	          ),
-	          ' page to learn how to import Design System React into your project.'
+	          ' for a Getting Started Guide and FAQ to learn how to import Design System React into your project.'
 	        )
 	      );
 	    }
@@ -35830,7 +36935,33 @@
 	module.exports = Welcome;
 
 /***/ },
-/* 291 */
+/* 297 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+
+	exports.default = {
+	  sldsReactVersion: '0.1.0',
+	  reactVersion: 'react0.14.x',
+	  sldsVersion: 'Lightning Design System 0.12.1'
+	};
+
+/***/ },
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35841,7 +36972,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _globalVariables = __webpack_require__(292);
+	var _globalVariables = __webpack_require__(297);
 
 	var _globalVariables2 = _interopRequireDefault(_globalVariables);
 
@@ -36080,32 +37211,7 @@
 	module.exports = GettingStartedSection;
 
 /***/ },
-/* 292 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-
-	exports.default = {
-	  reactVersion: 'react0.14.x',
-	  sldsVersion: 'Lightning Design System 0.12.1'
-	};
-
-/***/ },
-/* 293 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36324,7 +37430,7 @@
 	module.exports = FAQSection;
 
 /***/ },
-/* 294 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36335,21 +37441,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(295);
+	var _CodeMirror = __webpack_require__(301);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(303);
+	var _Samples = __webpack_require__(309);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(304);
+	var _PropTable = __webpack_require__(310);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -36395,15 +37505,11 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'slds-p-around--medium' },
-	        _react2.default.createElement(
-	          'h3',
-	          { className: 'slds-text-heading--medium slds-truncate' },
-	          'SLDSButton'
-	        ),
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSButton', cmpUrl: 'http://www.lightningdesignsystem.com/components/buttons' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'copy-text' },
-	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small mw-readability' }) : null
 	        ),
 	        _react2.default.createElement(
 	          'div',
@@ -36434,22 +37540,20 @@
 	module.exports = ButtonSection;
 
 /***/ },
-/* 295 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	__webpack_require__(296);
-
-	__webpack_require__(298);
-
-	__webpack_require__(300);
-
 	__webpack_require__(302);
 
-	__webpack_require__(286);
+	__webpack_require__(304);
+
+	__webpack_require__(306);
+
+	__webpack_require__(308);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -36457,7 +37561,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var CM = __webpack_require__(297);
+	var CM = __webpack_require__(303);
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
@@ -36467,12 +37571,14 @@
 	var SLDSButtonStateful = __webpack_require__(230);
 	var SLDSButtonGroup = __webpack_require__(231);
 	var SLDSIcon = __webpack_require__(232);
+	var SLDSButtonIcon = __webpack_require__(204);
 	var SLDSLookup = __webpack_require__(233);
 	var SLDSMenuDropdown = __webpack_require__(250);
 	var SLDSMenuPicklist = __webpack_require__(254);
 	var SLDSModal = __webpack_require__(262);
 	var SLDSNotification = __webpack_require__(278);
 	var SLDSPopoverTooltip = __webpack_require__(279);
+	var SLDSDatepickerSingleSelect = __webpack_require__(283);
 
 	var displayName = 'CodeMirror';
 	var propTypes = {
@@ -36529,7 +37635,6 @@
 	        lineWrapping: false,
 	        matchBrackets: true,
 	        tabSize: 2,
-	        theme: 'solarized light',
 	        readOnly: this.props.readOnly
 	      });
 	      this.editor.on('change', this.handleChange);
@@ -36637,21 +37742,12 @@
 	        return null;
 	      }
 
-	      return React.createElement(
-	        'div',
-	        null,
-	        React.createElement(
-	          'h1',
-	          { className: 'slds-text-heading--small slds-p-vertical--small' },
-	          'Edit code to modify above examples'
-	        ),
-	        React.createElement(CodeMirrorEditor, {
-	          key: 'jsx',
-	          onChange: this.handleCodeChange.bind(this),
-	          className: 'highlight',
-	          codeText: this.state.code
-	        })
-	      );
+	      return React.createElement(CodeMirrorEditor, {
+	        key: 'jsx',
+	        onChange: this.handleCodeChange.bind(this),
+	        className: 'highlight bb-gray',
+	        codeText: this.state.code
+	      });
 	    }
 	  }, {
 	    key: 'renderExample',
@@ -36678,7 +37774,20 @@
 	          { className: 'slds-p-vertical--medium' },
 	          this.renderExample()
 	        ),
-	        React.createElement(SLDSButton, { label: this.state.showCode ? "Hide Code" : "Show Code", onClick: this.toggleEditor.bind(this) }),
+	        React.createElement(
+	          'div',
+	          { className: 'bb-gray slds-text-align--right slds-p-around--x-small' },
+	          React.createElement(
+	            'button',
+	            { onClick: this.toggleEditor.bind(this) },
+	            React.createElement(SLDSButtonIcon, { name: this.state.showCode ? "chevronup" : "chevrondown", position: 'left' }),
+	            React.createElement(
+	              'span',
+	              null,
+	              this.state.showCode ? "Hide Code" : "Show Code"
+	            )
+	          )
+	        ),
 	        this.renderEditor()
 	      );
 	    }
@@ -36694,7 +37803,7 @@
 	module.exports = CodeMirror;
 
 /***/ },
-/* 296 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -36702,7 +37811,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(297));
+	    mod(__webpack_require__(303));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -36772,7 +37881,7 @@
 
 
 /***/ },
-/* 297 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -45668,7 +46777,7 @@
 
 
 /***/ },
-/* 298 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -45676,7 +46785,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(297), __webpack_require__(299), __webpack_require__(300), __webpack_require__(301));
+	    mod(__webpack_require__(303), __webpack_require__(305), __webpack_require__(306), __webpack_require__(307));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror", "../xml/xml", "../javascript/javascript", "../css/css"], mod);
 	  else // Plain browser env
@@ -45824,7 +46933,7 @@
 
 
 /***/ },
-/* 299 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -45832,7 +46941,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(297));
+	    mod(__webpack_require__(303));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -46224,7 +47333,7 @@
 
 
 /***/ },
-/* 300 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -46234,7 +47343,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(297));
+	    mod(__webpack_require__(303));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -46972,7 +48081,7 @@
 
 
 /***/ },
-/* 301 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -46980,7 +48089,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(297));
+	    mod(__webpack_require__(303));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -47803,13 +48912,13 @@
 
 
 /***/ },
-/* 302 */
+/* 308 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 303 */
+/* 309 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -47821,18 +48930,19 @@
 	  Icons: "const iconExamples = (\n  <div>\n    <SLDSIcon\n      assistiveText=\"Favorite\"\n      category=\"custom\"\n      name=\"custom1\"\n      size=\"small\" />\n\n    <SLDSIcon\n      assistiveText=\"Accounts\"\n      category=\"standard\"\n      name=\"account\" />\n\n    <SLDSIcon\n      assistiveText=\"Announcements\"\n      category=\"action\"\n      className=\"slds-m-around--x-small\"\n      name=\"announcement\" />\n\n    <SLDSIcon\n      assistiveText=\"Approval\"\n      category=\"action\"\n      className=\"slds-m-around--x-small\"\n      name=\"approval\"\n      size=\"large\" />\n\n    <SLDSIcon\n      assistiveText=\"\"\n      category=\"utility\"\n      className=\"slds-icon-text-default\"\n      name=\"open_folder\"\n      size=\"large\" />\n      <span className=\"slds-m-left--x-small\">Documents Folder</span>\n\n  </div>\n);\n\nReactDOM.render(iconExamples, mountNode);\n",
 	  IconButtons: "const handleClick = function(buttonInstance) {\n  return function() {\n    alert(buttonInstance + \" Clicked\");\n   };\n};\nlet hintBtnParent = {backgroundColor: \"#FFB75D\", padding: \"10px 50px\", display: \"inline-block\"};\nlet inverseBtnParent = {backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"};\nlet iconBtnParent = {backgroundColor: \"#4BC076\", padding: \"10px\", display: \"inline-block\"};\nconst examples = (\n  <div className=\"slds-x-small-buttons--horizontal\">\n    <h4 className=\"slds-text-heading--medium slds-p-vertical--medium\">Icon Buttons</h4>\n    <SLDSButton\n      assistiveText=\"Icon Bare Small\"\n      iconName=\"settings\"\n      iconSize=\"small\"\n      iconVariant=\"bare\"\n      onClick={handleClick(\"Icon Bare\")} variant=\"icon\" />\n\n    <SLDSButton\n      assistiveText=\"Icon Container Small\"\n      iconName=\"settings\"\n      iconSize=\"small\"\n      iconVariant=\"container\"\n      onClick={handleClick(\"Icon Container\")}\n      variant=\"icon\" />\n\n    <div style={iconBtnParent} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon Border medium\"\n      iconName=\"settings\"\n      iconVariant=\"border\"\n      onClick={handleClick(\"Icon border\")}\n      variant=\"icon\" />\n\n    <SLDSButton\n      assistiveText=\"Icon Border-filled medium\"\n      iconName=\"settings\"\n      iconVariant=\"border-filled\"\n      onClick={handleClick(\"Icon border-filled\")}\n      variant=\"icon\" />\n    </div>\n\n    <SLDSButton\n      assistiveText=\"Icon More large\"\n      iconName=\"settings\"\n      iconSize=\"large\"\n      iconVariant=\"more\"\n      onClick={handleClick(\"Icon More\")}\n      variant=\"icon\" />\n\n    <div style={inverseBtnParent} className=\"slds-m-horizontal--small\">\n      <SLDSButton\n        assistiveText=\"Icon inverse\"\n        iconName=\"settings\"\n        iconSize=\"large\"\n        onClick={handleClick(\"Icon Inverse\")}\n        variant=\"icon-inverse\" />\n    </div>\n    <div style={hintBtnParent} className=\"slds-hint-parent slds-m-horizontal--small\">\n      <SLDSButton\n        assistiveText=\"Icon hint large\"\n        hint={true}\n        iconName=\"settings\"\n        iconSize=\"large\"\n        onClick={handleClick(\"Icon Hint\")}\n        variant=\"icon\" />\n    </div>\n  </div>\n);\n\nReactDOM.render(examples, mountNode);\n\n",
 	  Lookups: "const items = [\n  {label: \"Paddy\\\"s Pub\"},\n  {label: \"Tyrell Corp\"},\n  {label: \"Paper St. Soap Company\"},\n  {label: \"Nakatomi Investments\"},\n  {label: \"Acme Landscaping\"},\n  {label: \"Acme Construction\"}\n];\n\nclass LookupExample extends React.Component {\n\n  displayName: \"LookupExample\";\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      searchVal: null\n    };\n  }\n\n  onChange(newValue){\n    console.log(\"New search term: \", newValue);\n    this.setState({searchVal: newValue});\n  }\n\n  selectItem(item){\n    console.log(item , \" Selected\");\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSLookup\n          emptyMessage=\"No items found\"\n          footerRenderer={SLDSLookup.DefaultFooter}\n          hasError={false}\n          headerRenderer={SLDSLookup.DefaultHeader}\n          iconCategory=\"standard\"\n          iconName=\"account\"\n          label=\"Account\"\n          onChange={this.onChange.bind(this)}\n          onItemSelect={this.selectItem}\n          options={items}\n        />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<LookupExample />, mountNode);\n\n",
-	  Modals: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      modalAopen: false,\n      modalBopen:false,\n      promptOpen:false,\n    };\n  }\n\n  openModal(modalInstance) {\n    return () => {\n      this.setState({[modalInstance]: true});\n    }\n  }\n\n  closeModal(modalInstance) {\n    return () => {\n      this.setState({[modalInstance]: false});\n    }\n  }\n\n  selectItem(item){\n    console.log(item , \" Selected\");\n  }\n\n  getModalContent() {\n    return (\n      <div>\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n    <SLDSLookup\n      emptyMessage=\"No Accounts Found\"\n      label=\"Accounts\"\n      modal={true}\n      onItemSelect={this.selectItem}\n      options={[\n        {label:\"Paddy\\\"s Pub\"},\n        {label:\"Tyrell Corp\"},\n        {label:\"Paper St. Soap Company\"},\n        {label:\"Nakatomi Investments\"},\n        {label:\"Acme Landscaping\"},\n        {label:\"Acme Construction\"}\n      ]}\n      salesforceObj=\"account\"\n    />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n    <SLDSMenuPicklist\n      label=\"Contacts\"\n      modal={true}\n      onSelect={(value)=>{console.log(\"selected: \",value);}}\n      options={[\n        {label:\"A Option Option Super Super Long\",value:\"A0\"},\n        {label:\"B Option\",value:\"B0\"},\n        {label:\"C Option\",value:\"C0\"},\n        {label:\"D Option\",value:\"D0\"},\n        {label:\"E Option\",value:\"E0\"},\n        {label:\"A1 Option\",value:\"A1\"},\n        {label:\"B2 Option\",value:\"B1\"},\n        {label:\"C2 Option\",value:\"C1\"},\n        {label:\"D2 Option\",value:\"D1\"},\n        {label:\"E2 Option Super Super Long\",value:\"E1\"},\n\n      ]}\n      placeholder = \"Select a contact\"\n      value=\"C0\"\n    />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n      </div>\n    )\n  }\n\n  render(){\n    return (\n      <div>\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Bare\" onClick={this.openModal(\"modalAopen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            align=\"top\"\n            isOpen={this.state.modalAopen}\n            onRequestClose={this.closeModal(\"modalAopen\")}\n            size=\"large\">\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Standard\" onClick={this.openModal(\"modalBopen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            footer={[\n              <SLDSButton key=\"modalBCancel\" label=\"Cancel\" variant=\"neutral\" onClick={this.closeModal(\"modalBopen\").bind(this)} />,\n              <SLDSButton key=\"modalBSave\" label=\"Save\" variant=\"brand\" onClick={this.closeModal(\"modalBopen\").bind(this)} />\n            ]}\n            isOpen={this.state.modalBopen}\n            onRequestClose={this.closeModal(\"modalBopen\")}\n            tagline=\"Tagline goes here\"\n            title={<span>My Title</span>}>\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Prompt\" onClick={this.openModal(\"promptOpen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            dismissible={false}\n            footer={[ <SLDSButton key=\"promptBtn\" label=\"Got it\" variant=\"neutral\" onClick={this.closeModal(\"promptOpen\")} /> ]}\n            isOpen={this.state.promptOpen}\n            onRequestClose={this.closeModal(\"promptOpen\")}\n            prompt=\"error\"\n            size=\"medium\"\n            title={<span>Service Unavailable</span>}>\n              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.\n          </SLDSModal>\n        </div>\n\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n\n",
+	  Modals: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      modalAopen: false,\n      modalBopen:false,\n      promptOpen:false,\n    };\n  }\n\n  openModal(modalInstance) {\n    return () => {\n      this.setState({[modalInstance]: true});\n    }\n  }\n\n  closeModal(modalInstance) {\n    return () => {\n      this.setState({[modalInstance]: false});\n    }\n  }\n\n  selectItem(item){\n    console.log(item , \" Selected\");\n  }\n\n  getModalContent() {\n    return (\n      <div>\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n    <SLDSLookup\n      emptyMessage=\"No Accounts Found\"\n      label=\"Accounts\"\n      modal={true}\n      onItemSelect={this.selectItem}\n      options={[\n        {label:\"Paddy\\\"s Pub\"},\n        {label:\"Tyrell Corp\"},\n        {label:\"Paper St. Soap Company\"},\n        {label:\"Nakatomi Investments\"},\n        {label:\"Acme Landscaping\"},\n        {label:\"Acme Construction\"}\n      ]}\n      salesforceObj=\"account\"\n    />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n    <SLDSMenuPicklist\n      label=\"Contacts\"\n      modal={true}\n      onSelect={(value)=>{console.log(\"selected: \",value);}}\n      options={[\n        {label:\"A Option Option Super Super Long\",value:\"A0\"},\n        {label:\"B Option\",value:\"B0\"},\n        {label:\"C Option\",value:\"C0\"},\n        {label:\"D Option\",value:\"D0\"},\n        {label:\"E Option\",value:\"E0\"},\n        {label:\"A1 Option\",value:\"A1\"},\n        {label:\"B2 Option\",value:\"B1\"},\n        {label:\"C2 Option\",value:\"C1\"},\n        {label:\"D2 Option\",value:\"D1\"},\n        {label:\"E2 Option Super Super Long\",value:\"E1\"},\n\n      ]}\n      placeholder = \"Select a contact\"\n      value=\"C0\"\n    />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n        <SLDSDatepickerSingleSelect />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n      </div>\n    )\n  }\n\n  render(){\n    return (\n      <div>\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Bare\" onClick={this.openModal(\"modalAopen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            align=\"top\"\n            isOpen={this.state.modalAopen}\n            onRequestClose={this.closeModal(\"modalAopen\")}\n            size=\"large\">\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Standard\" onClick={this.openModal(\"modalBopen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            footer={[\n              <SLDSButton key=\"modalBCancel\" label=\"Cancel\" variant=\"neutral\" onClick={this.closeModal(\"modalBopen\").bind(this)} />,\n              <SLDSButton key=\"modalBSave\" label=\"Save\" variant=\"brand\" onClick={this.closeModal(\"modalBopen\").bind(this)} />\n            ]}\n            isOpen={this.state.modalBopen}\n            onRequestClose={this.closeModal(\"modalBopen\")}\n            tagline=\"Tagline goes here\"\n            title={<span>My Title</span>}>\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Prompt\" onClick={this.openModal(\"promptOpen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            dismissible={false}\n            footer={[ <SLDSButton key=\"promptBtn\" label=\"Got it\" variant=\"neutral\" onClick={this.closeModal(\"promptOpen\")} /> ]}\n            isOpen={this.state.promptOpen}\n            onRequestClose={this.closeModal(\"promptOpen\")}\n            prompt=\"error\"\n            size=\"medium\"\n            title={<span>Service Unavailable</span>}>\n              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.\n          </SLDSModal>\n        </div>\n\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n\n",
 	  Notifications: "class NotificationExample extends React.Component {\n\n  displayName: \"NotificationExample\";\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      modalIsOpen: false,\n      modalToastIsOpen: false,\n      alertIsOpen: false,\n      toastIsOpen: false,\n    };\n  }\n\n  getModalContent(){\n    return (\n      <div>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <SLDSButton label=\"Open Toast\" onClick={this.openModalToast.bind(this)} variant=\"neutral\" />\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n      </div>\n    )\n  }\n\n  openModal () {\n    this.setState({\n      modalIsOpen: true,\n    });\n  }\n\n  closeModal () {\n    this.setState({\n      modalIsOpen: false,\n      modalToastIsOpen: false,\n    });\n  }\n\n  handleSubmitModal () {\n    this.closeModal();\n  }\n\n  openToast(){\n    this.setState({ toastIsOpen: true });\n  }\n\n  dismissToast(){\n    this.setState({ toastIsOpen: false });\n    console.log(\"====> Dismiss Toast Message\");\n  }\n\n  openModalToast(){\n    this.setState({ modalToastIsOpen: true });\n  }\n\n  dismissModalToast(){\n    this.setState({ modalToastIsOpen: false });\n    console.log(\"====> Dismiss Modal Toast\");\n  }\n\n  openAlert(){\n    this.setState({ alertIsOpen: true });\n  }\n\n  dismissAlert(){\n    console.log(\"====> Dismiss Alert\");\n    this.setState({ alertIsOpen: false });\n  }\n\n  render() {\n    const successMsg = [\"Your new contact \", <a href=\"#\" key=\"0123\">Sara Smith</a>, \" was successfully created.\"];\n    const errorMsg = \"There was a problem updating the record.\";\n    const warnMsg = \"Oops, you've missed some required form inputs.\";\n\n    return (\n      <div className=\"slds-p-vertical--medium demo\">\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small\">Alerts</h4>\n          <SLDSButton label=\"Show Alert\" onClick={this.openAlert.bind(this)} variant=\"neutral\" />\n          <SLDSNotification\n            content={successMsg}\n            iconName=\"notification\"\n            isOpen={this.state.alertIsOpen}\n            onDismiss={this.dismissAlert.bind(this)}\n            texture={true}\n            theme=\"success\"\n            variant=\"alert\" />\n        </div>\n\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small \">Toasts</h4>\n          <SLDSButton label=\"Show Toast\" onClick={this.openToast.bind(this)} variant=\"neutral\" />\n          <SLDSNotification\n            content={errorMsg}\n            iconName=\"notification\"\n            isOpen={this.state.toastIsOpen}\n            onDismiss={this.dismissToast.bind(this)}\n            texture={true}\n            theme=\"error\"\n            variant=\"toast\"\n            />\n        </div>\n\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small\">Modal Toasts</h4>\n          <SLDSButton label=\"Show Modal Toast\" onClick={this.openModal.bind(this)} variant=\"neutral\" />\n          <SLDSModal\n            footer={[\n              <SLDSButton key=\"cancelBtn\" label=\"Cancel\" variant=\"neutral\" onClick={this.closeModal.bind(this)} />,\n              <SLDSButton key=\"saveBtn\" label=\"Save\" variant=\"brand\" onClick={this.handleSubmitModal.bind(this)} />\n            ]}\n            isOpen={this.state.modalIsOpen}\n            title={\n              <span>Lightning Design System: Style with Ease</span>\n            }\n            toast={\n              <SLDSNotification variant=\"toast\" theme=\"warning\" iconName=\"warning\" isOpen={this.state.modalToastIsOpen} content={warnMsg} onDismiss={this.dismissModalToast.bind(this)} />\n            }\n            onRequestClose={this.closeModal.bind(this)}>\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<NotificationExample />, mountNode);\n\n",
 	  Picklists: "const picklistOptions = [\n  {label: \"A Option Option Super Super Long\", value: \"A0\", title: \"Greg\"},\n  {label: \"B Option\", value: \"B0\"},\n  {label: \"C Option\", value: \"C0\"},\n  {label: \"D Option\", value: \"D0\"},\n  {label: \"E Option\", value: \"E0\"},\n  {label: \"A1 Option\", value: \"A1\"},\n  {label: \"B2 Option\", value: \"B1\"},\n  {label: \"C2 Option\", value: \"C1\"},\n  {label: \"D2 Option\", value: \"D1\"},\n  {label: \"E2 Option Super Super Long\", value: \"E1\"},\n];\n\nclass PicklistExample extends React.Component {\n\n  displayName: \"PicklistExample\";\n\n  handleOnUpdateHighlighted () {\n    console.log(\"onUpdateHighlighted should be defined\");\n  }\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistOptions}\n         placeholder = \"Select a contact\"\n         value=\"C0\"\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistExample />, mountNode);\n\n",
 	  CustomPicklists: "import CustomListItemLabel from \"./CustomListItemLabel.cjsx\";\n\nconst picklistCustomOptions = [\n  {label:\"A Option Option Super Super Long\",value:\"A0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"B Option\",value:\"B0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"C Option\",value:\"C0\",strongLabel:\"SUPER TITLE C0\"},\n  {label:\"D Option\",value:\"D0\",strongLabel:\"SUPER TITLE D0\"},\n  {label:\"E Option\",value:\"E0\",strongLabel:\"SUPER TITLE E0\"},\n  {label:\"A1 Option\",value:\"A1\",strongLabel:\"SUPER TITLE A1\"},\n  {label:\"B2 Option\",value:\"B1\",strongLabel:\"SUPER TITLE B1\"},\n  {label:\"C2 Option\",value:\"C1\",strongLabel:\"SUPER TITLE C1\"},\n  {label:\"D2 Option\",value:\"D1\",strongLabel:\"SUPER TITLE D1\"},\n  {label:\"E2 Option Super Super Long\",value:\"E1\",strongLabel:\"SUPER TITLE E1\"},\n];\n\nclass PicklistCustomExample extends React.Component {\n\n  displayName: \"PicklistCustomExample\"\n\n  handleOnUpdateHighlighted () {\n    console.log(\"onUpdateHighlighted should be defined\");\n  }\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         listItemRenderer={CustomListItemLabel}\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistCustomOptions}\n         placeholder=\"Select a contact\"\n         value=\"C0\"\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistCustomExample />, mountNode);\n\n",
 	  StatefulButtons: "let inverseBtnParent = {backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"};\nconst examples = (\n  <div className=\"slds-x-small-buttons--horizontal\">\n    <div style={inverseBtnParent} className=\"slds-m-horizontal--small\">\n      <SLDSButtonStateful\n        stateOne={{iconName: \"add\", label: \"Join\"}}\n        stateTwo={{iconName: \"check\", label: \"Member\"}}\n        stateThree={{iconName: \"close\", label: \"Leave\"}}\n        variant=\"inverse\" />\n    </div>\n\n    <SLDSButtonStateful />\n\n    <SLDSButtonStateful\n      assistiveText=\"like\"\n      iconName=\"like\"\n      iconSize=\"large\"\n      variant=\"icon\" />\n\n  </div>\n);\n\nReactDOM.render(examples, mountNode);\n\n",
-	  Tooltips: "const moreOptions = [\n  {label: \"undo\", value: \"A0\"},\n  {label: \"redo\", value: \"B0\"},\n  {label: \"activate\", value: \"C0\"},\n];\n\nclass TooltipExample extends React.Component {\n\n  displayName: \"TooltipExample\";\n\n  render(){\n    return (\n      <div>\n        <div ref=\"tooltipOnHover\" className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSPopoverTooltip\n            align=\"top\"\n            content={<span>Tooltip on top</span>}>\n              <a href=\"javascript:void(0)\">\n                <SLDSIcon assistiveText=\"info\" category=\"utility\" name=\"info\" className=\"slds-icon-text-default\" />\n              </a>\n            </SLDSPopoverTooltip>\n        </div>\n        <div className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSPopoverTooltip\n            key=\"tooltipDemo\"\n            align=\"right\"\n            content={<span>Tooltip with right alignment</span>}>\n              <SLDSButton variant=\"brand\" label=\"Hover to Open\" />\n            </SLDSPopoverTooltip>\n        </div>\n        <div className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSButtonGroup className=\"slds-p-bottom--medium\">\n            <SLDSButton\n              label=\"Refresh\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSButton\n              label=\"Edit\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom right\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSMenuDropdown\n              assistiveText=\"More Options\"\n              buttonVariant=\"icon\"\n              iconName=\"down\"\n              iconVariant=\"border-filled\"\n              openOn=\"hover\"\n              onSelect={(i) => console.log(\"selected\", i)}\n              options={moreOptions}\n              tooltip={<SLDSPopoverTooltip\n                align=\"top right\"\n                content=\"Dropdown Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n        </SLDSButtonGroup>\n        </div>\n\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<TooltipExample />, mountNode);\n\n"
+	  Tooltips: "const moreOptions = [\n  {label: \"undo\", value: \"A0\"},\n  {label: \"redo\", value: \"B0\"},\n  {label: \"activate\", value: \"C0\"},\n];\n\nclass TooltipExample extends React.Component {\n\n  displayName: \"TooltipExample\";\n\n  render(){\n    return (\n      <div>\n        <div ref=\"tooltipOnHover\" className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSPopoverTooltip\n            align=\"top\"\n            content={<span>Tooltip on top</span>}>\n              <a href=\"javascript:void(0)\">\n                <SLDSIcon assistiveText=\"info\" category=\"utility\" name=\"info\" className=\"slds-icon-text-default\" />\n              </a>\n            </SLDSPopoverTooltip>\n        </div>\n        <div className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSPopoverTooltip\n            key=\"tooltipDemo\"\n            align=\"right\"\n            content={<span>Tooltip with right alignment</span>}>\n              <SLDSButton variant=\"brand\" label=\"Hover to Open\" />\n            </SLDSPopoverTooltip>\n        </div>\n        <div className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSButtonGroup className=\"slds-p-bottom--medium\">\n            <SLDSButton\n              label=\"Refresh\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSButton\n              label=\"Edit\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom right\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSMenuDropdown\n              assistiveText=\"More Options\"\n              buttonVariant=\"icon\"\n              iconName=\"down\"\n              iconVariant=\"border-filled\"\n              openOn=\"hover\"\n              onSelect={(i) => console.log(\"selected\", i)}\n              options={moreOptions}\n              tooltip={<SLDSPopoverTooltip\n                align=\"top right\"\n                content=\"Dropdown Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n        </SLDSButtonGroup>\n        </div>\n\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<TooltipExample />, mountNode);\n\n",
+	  DatepickerSingleSelect: "\nclass SLDSDatepickerSingleSelectExample extends React.Component {\n\n  displayName: \"SLDSDatepickerSingleSelectExample\";\n\n  render(){\n    return (\n      <SLDSDatepickerSingleSelect />\n    );\n  }\n\n}\n\nReactDOM.render(<SLDSDatepickerSingleSelect />, mountNode);\n\n"
 	};
 
 	module.exports = Samples;
 
 /***/ },
-/* 304 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -47843,7 +48953,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -47934,8 +49044,10 @@
 	      for (var prop in docs) {
 	        var p = docs[prop];
 	        var propType = p.type ? p.type : null;
-
-	        var type = propType.name === 'enum' ? this.renderEnum(propType) : p.type;
+	        if (!propType) {
+	          continue;
+	        }
+	        var type = propType && propType.name === 'enum' ? this.renderEnum(propType) : p.type;
 	        var defaultProp = docs[prop].defaultValue ? docs[prop].defaultValue.value.replace(/'|"/g, "") : "";
 	        var required = docs[prop].required ? _react2.default.createElement(_SLDSIcon2.default, { name: 'check', category: 'utility', size: 'x-small', className: 'slds-icon-text-default' }) : "";
 
@@ -48039,20 +49151,20 @@
 	module.exports = PropTable;
 
 /***/ },
-/* 305 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	module.exports = __webpack_require__(306);
+	module.exports = __webpack_require__(312);
 
 /***/ },
-/* 306 */
+/* 312 */
 /***/ function(module, exports) {
 
 	module.exports = {
 		"SLDSButton": {
-			"description": "The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/home/button-stateful\">SLDSButtonStateful</a> component.\nFor more details on the markup, please review the Button documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightning Design System website</a>.",
+			"description": "The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">SLDSButtonStateful</a> component.",
 			"displayName": "SLDSButton",
 			"props": {
 				"assistiveText": {
@@ -48253,7 +49365,7 @@
 			}
 		},
 		"SLDSButtonStateful": {
-			"description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant=\"icon\"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: \"add\", label: \"Follow\"}}</code>).\nFor more details on the markup, please review the Button > Stateful documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">Lightning Design System website</a>.",
+			"description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant=\"icon\"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: \"add\", label: \"Follow\"}}</code>).",
 			"displayName": "SLDSButtonStateful",
 			"props": {
 				"assistiveText": {
@@ -48415,7 +49527,7 @@
 			}
 		},
 		"SLDSButtonGroup": {
-			"description": "The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).\nFor more details on the markup, please review the Button Group documentation on the <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">Lightning Design System website</a>.",
+			"description": "The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).",
 			"displayName": "SLDSButtonGroup",
 			"props": {
 				"children": {
@@ -48435,7 +49547,7 @@
 			}
 		},
 		"SLDSIcon": {
-			"description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/home/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details on the markup, please review the Icon documentation on the <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightning Design System website</a>.",
+			"description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.",
 			"displayName": "SLDSIcon",
 			"props": {
 				"assistiveText": {
@@ -48524,7 +49636,7 @@
 			}
 		},
 		"SLDSLookup": {
-			"description": "The SLDSLookup is the Lightning Design System Lookup base component.\nFor more details on the markup, please review the Lookup > Base documentation on the <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System website</a>.",
+			"description": "The SLDSLookup is the Lightning Design System Lookup base component.",
 			"displayName": "SLDSLookup",
 			"props": {
 				"emptyMessage": {
@@ -48665,7 +49777,7 @@
 			}
 		},
 		"SLDSMenuDropdown": {
-			"description": "The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.\nFor more details on the markup, please review the Menu > Dropdown documentation on the <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">Lightning Design System website</a>.",
+			"description": "The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.",
 			"displayName": "SLDSMenuDropdown",
 			"props": {
 				"align": {
@@ -48854,7 +49966,7 @@
 			}
 		},
 		"SLDSMenuPicklist": {
-			"description": "The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.\nFor more details on the markup, please review the Menu > Picklist documentation on the <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">Lightning Design System website</a>.",
+			"description": "The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.",
 			"displayName": "SLDSMenuPicklist",
 			"props": {
 				"disabled": {
@@ -48939,7 +50051,7 @@
 			}
 		},
 		"SLDSModal": {
-			"description": "The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the markup, please review the Lightning Design System website's <a href=\"https://www.lightningdesignsystem.com/components/modals\"> Modal documentation</a> or the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notification > Prompt documentation</a>.",
+			"description": "The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.",
 			"displayName": "SLDSModal",
 			"props": {
 				"align": {
@@ -49085,7 +50197,7 @@
 			}
 		},
 		"SLDSNotification": {
-			"description": "The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/home/modal\">SLDSModal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the markup, please review the Notification documentation on the <a href=\"http://www.lightningdesignsystem.com/components/notifications\">Lightning Design System website</a>.",
+			"description": "The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/modal\">SLDSModal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).",
 			"displayName": "SLDSNotification",
 			"props": {
 				"className": {
@@ -49201,7 +50313,7 @@
 			}
 		},
 		"SLDSPopoverTooltip": {
-			"description": "The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.\nFor more details on the markup, please review the Popover > Tooltip documentation on the <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">Lightning Design System website</a>.",
+			"description": "The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.",
 			"displayName": "SLDSPopoverTooltip",
 			"props": {
 				"align": {
@@ -49304,20 +50416,123 @@
 						"value": "false",
 						"computed": false
 					}
+				}
+			}
+		},
+		"SLDSDatepickerSingleSelect": {
+			"description": "",
+			"props": {
+				"string": {
+					"defaultValue": {
+						"value": "''",
+						"computed": false
+					}
 				},
-				"target": {
-					"type": {
-						"name": "any"
-					},
-					"required": false,
-					"description": ""
+				"value": {
+					"defaultValue": {
+						"value": "new Date()",
+						"computed": false
+					}
+				},
+				"placeholder": {
+					"defaultValue": {
+						"value": "'Pick a Date'",
+						"computed": false
+					}
+				},
+				"formatter": {
+					"defaultValue": {
+						"value": "function(date) {\n  return (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();\n}",
+						"computed": false
+					}
+				},
+				"parser": {
+					"defaultValue": {
+						"value": "function(str) {\n  return new Date(str);\n}",
+						"computed": false
+					}
+				},
+				"onDateChange": {
+					"defaultValue": {
+						"value": "function(date) {\n  console.log('onDateChange should be defined');\n}",
+						"computed": false
+					}
 				}
 			}
 		}
 	};
 
 /***/ },
-/* 307 */
+/* 313 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
+	var displayName = "ComponentHeader";
+	var propTypes = {};
+	var defaultProps = {};
+
+	var ComponentHeader = function (_React$Component) {
+	  _inherits(ComponentHeader, _React$Component);
+
+	  function ComponentHeader() {
+	    _classCallCheck(this, ComponentHeader);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ComponentHeader).apply(this, arguments));
+	  }
+
+	  _createClass(ComponentHeader, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "section",
+	        { className: "slds-clearfix mw-readability" },
+	        _react2.default.createElement(
+	          "h3",
+	          { className: "slds-text-heading--medium slds-truncate slds-float--left" },
+	          this.props.cmpName
+	        ),
+	        _react2.default.createElement(
+	          "a",
+	          { href: this.props.cmpUrl, className: "slds-float--right" },
+	          "View Markup on Lightning Design Website"
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ComponentHeader;
+	}(_react2.default.Component);
+
+	ComponentHeader.displayName = displayName;
+	ComponentHeader.propTypes = propTypes;
+	ComponentHeader.defaultProps = defaultProps;
+
+	module.exports = ComponentHeader;
+
+/***/ },
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49328,21 +50543,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(295);
+	var _CodeMirror = __webpack_require__(301);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(303);
+	var _Samples = __webpack_require__(309);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(304);
+	var _PropTable = __webpack_require__(310);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49388,11 +50607,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'slds-p-around--medium' },
-	        _react2.default.createElement(
-	          'h3',
-	          { className: 'slds-text-heading--medium slds-truncate' },
-	          'SLDSButtonStateful'
-	        ),
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSButtonStateful', cmpUrl: 'http://www.lightningdesignsystem.com/components/buttons#stateful' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'copy-text' },
@@ -49401,7 +50616,11 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.StatefulButtons }),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-bottom--x-large' },
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.StatefulButtons })
+	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSButtonStateful' })
 	        )
 	      );
@@ -49418,7 +50637,7 @@
 	module.exports = ButtonStatefulSection;
 
 /***/ },
-/* 308 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49429,21 +50648,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(295);
+	var _CodeMirror = __webpack_require__(301);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(303);
+	var _Samples = __webpack_require__(309);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(304);
+	var _PropTable = __webpack_require__(310);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49489,11 +50712,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'slds-p-around--medium' },
-	        _react2.default.createElement(
-	          'h3',
-	          { className: 'slds-text-heading--medium slds-truncate' },
-	          'SLDSButtonGroup'
-	        ),
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSButtonGroup', cmpUrl: 'http://www.lightningdesignsystem.com/components/button-groups' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'copy-text' },
@@ -49502,7 +50721,11 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.ButtonGroups }),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-bottom--x-large' },
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.ButtonGroups })
+	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSButtonGroup' })
 	        )
 	      );
@@ -49519,7 +50742,7 @@
 	module.exports = ButtonGroupSection;
 
 /***/ },
-/* 309 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49530,21 +50753,201 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(295);
+	var _CodeMirror = __webpack_require__(301);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(303);
+	var _Samples = __webpack_require__(309);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(304);
+	var _PropTable = __webpack_require__(310);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
+	var displayName = "DatepickerSingleSelectSection";
+	var propTypes = {};
+	var defaultProps = {};
+
+	var DatepickerSingleSelectSection = function (_React$Component) {
+	  _inherits(DatepickerSingleSelectSection, _React$Component);
+
+	  function DatepickerSingleSelectSection(props) {
+	    _classCallCheck(this, DatepickerSingleSelectSection);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DatepickerSingleSelectSection).call(this, props));
+
+	    _this.state = {};
+	    return _this;
+	  }
+
+	  _createClass(DatepickerSingleSelectSection, [{
+	    key: 'getDescription',
+	    value: function getDescription() {
+	      var desc = _docs2.default["DatepickerSingleSelect"].description;
+	      return { __html: desc };
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var docs = _docs2.default["DatepickerSingleSelect"] ? true : false;
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'slds-p-around--medium' },
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSDatepickerSingleSelect', cmpUrl: 'http://www.lightningdesignsystem.com/components/datepickers#single-select' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small', style: { "maxWidth": "800px" } }) : null
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'demo-only' },
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-bottom--x-large' },
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.DatepickerSingleSelect })
+	          ),
+	          _react2.default.createElement(_PropTable2.default, { component: 'DatepickerSingleSelect' })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return DatepickerSingleSelectSection;
+	}(_react2.default.Component);
+
+	DatepickerSingleSelectSection.displayName = displayName;
+	DatepickerSingleSelectSection.propTypes = propTypes;
+	DatepickerSingleSelectSection.defaultProps = defaultProps;
+
+	module.exports = DatepickerSingleSelectSection;
+
+/***/ },
+/* 317 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	*/
+
+	'use strict';
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _CodeMirror = __webpack_require__(301);
+
+	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
+
+	var _Samples = __webpack_require__(309);
+
+	var _Samples2 = _interopRequireDefault(_Samples);
+
+	var _PropTable = __webpack_require__(310);
+
+	var _PropTable2 = _interopRequireDefault(_PropTable);
+
+	var _docs = __webpack_require__(311);
+
+	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
+
+	var _SLDSMenuPicklist = __webpack_require__(254);
+
+	var _SLDSMenuPicklist2 = _interopRequireDefault(_SLDSMenuPicklist);
+
+	var _SLDSDatepickerSingleSelect = __webpack_require__(283);
+
+	var _SLDSDatepickerSingleSelect2 = _interopRequireDefault(_SLDSDatepickerSingleSelect);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = _react2.default.createClass({
+	  displayName: 'exports',
+	  getDefaultProps: function getDefaultProps() {
+	    return {};
+	  },
+	  getInitialState: function getInitialState() {
+	    return {};
+	  },
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      { className: 'slds-p-around--medium' },
+	      _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSDatepickerSingleSelect', cmpUrl: 'http://www.lightningdesignsystem.com/components/datepickers#single-select' }),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'slds-p-vertical--large' },
+	        _react2.default.createElement(_SLDSDatepickerSingleSelect2.default, null)
+	      )
+	    );
+	  }
+	});
+
+/***/ },
+/* 318 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _CodeMirror = __webpack_require__(301);
+
+	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
+
+	var _Samples = __webpack_require__(309);
+
+	var _Samples2 = _interopRequireDefault(_Samples);
+
+	var _PropTable = __webpack_require__(310);
+
+	var _PropTable2 = _interopRequireDefault(_PropTable);
+
+	var _docs = __webpack_require__(311);
+
+	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49590,11 +50993,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'slds-p-around--medium' },
-	        _react2.default.createElement(
-	          'h3',
-	          { className: 'slds-text-heading--medium slds-truncate' },
-	          'SLDSMenuDropdown'
-	        ),
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSMenuDropdown', cmpUrl: 'http://www.lightningdesignsystem.com/components/menus#dropdown' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'copy-text' },
@@ -49602,8 +51001,12 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Dropdowns }),
+	          { className: 'demo-only' },
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-bottom--x-large' },
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Dropdowns })
+	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSMenuDropdown' })
 	        )
 	      );
@@ -49620,7 +51023,7 @@
 	module.exports = DropdownSection;
 
 /***/ },
-/* 310 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49631,21 +51034,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(295);
+	var _CodeMirror = __webpack_require__(301);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(303);
+	var _Samples = __webpack_require__(309);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(304);
+	var _PropTable = __webpack_require__(310);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49691,11 +51098,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'slds-p-around--medium' },
-	        _react2.default.createElement(
-	          'h3',
-	          { className: 'slds-text-heading--medium slds-truncate' },
-	          'SLDSIcon'
-	        ),
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSIcon', cmpUrl: 'http://www.lightningdesignsystem.com/components/icons' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'copy-text' },
@@ -49704,7 +51107,11 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Icons }),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-bottom--x-large' },
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Icons })
+	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSIcon' })
 	        )
 	      );
@@ -49721,7 +51128,7 @@
 	module.exports = IconSection;
 
 /***/ },
-/* 311 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49732,21 +51139,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(295);
+	var _CodeMirror = __webpack_require__(301);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(303);
+	var _Samples = __webpack_require__(309);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(304);
+	var _PropTable = __webpack_require__(310);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49792,11 +51203,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'slds-p-around--medium' },
-	        _react2.default.createElement(
-	          'h3',
-	          { className: 'slds-text-heading--medium slds-truncate' },
-	          'SLDSLookup'
-	        ),
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSLookup', cmpUrl: 'http://www.lightningdesignsystem.com/components/lookups/#base' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'copy-text' },
@@ -49804,8 +51211,12 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Lookups }),
+	          { className: 'demo-only' },
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-bottom--x-large' },
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Lookups })
+	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSLookup' })
 	        )
 	      );
@@ -49822,7 +51233,7 @@
 	module.exports = LookupSection;
 
 /***/ },
-/* 312 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -49833,21 +51244,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(295);
+	var _CodeMirror = __webpack_require__(301);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(303);
+	var _Samples = __webpack_require__(309);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(304);
+	var _PropTable = __webpack_require__(310);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49893,11 +51308,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'slds-p-around--medium' },
-	        _react2.default.createElement(
-	          'h3',
-	          { className: 'slds-text-heading--medium slds-truncate' },
-	          'SLDSModal'
-	        ),
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSModal', cmpUrl: 'https://www.lightningdesignsystem.com/components/modals' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'copy-text' },
@@ -49906,7 +51317,11 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Modals }),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-bottom--x-large' },
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Modals })
+	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSModal' })
 	        )
 	      );
@@ -49923,1132 +51338,7 @@
 	module.exports = ModalSection;
 
 /***/ },
-/* 313 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-
-	'use strict';
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _CodeMirror = __webpack_require__(295);
-
-	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
-
-	var _Samples = __webpack_require__(303);
-
-	var _Samples2 = _interopRequireDefault(_Samples);
-
-	var _PropTable = __webpack_require__(304);
-
-	var _PropTable2 = _interopRequireDefault(_PropTable);
-
-	var _docs = __webpack_require__(305);
-
-	var _docs2 = _interopRequireDefault(_docs);
-
-	var _SLDSMenuPicklist = __webpack_require__(254);
-
-	var _SLDSMenuPicklist2 = _interopRequireDefault(_SLDSMenuPicklist);
-
-	var _SLDSDateInput = __webpack_require__(314);
-
-	var _SLDSDateInput2 = _interopRequireDefault(_SLDSDateInput);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = _react2.default.createClass({
-	  displayName: 'exports',
-	  getDefaultProps: function getDefaultProps() {
-	    return {};
-	  },
-	  getInitialState: function getInitialState() {
-	    return {};
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'slds-p-around--medium' },
-	      _react2.default.createElement(
-	        'h3',
-	        { className: 'slds-text-heading--medium slds-truncate' },
-	        _react2.default.createElement(
-	          'a',
-	          { href: 'javascript:void(0)', id: 'datepickerSection' },
-	          'Datepickers (Work in progress)'
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'slds-p-vertical--large' },
-	        _react2.default.createElement(_SLDSDateInput2.default, null)
-	      )
-	    );
-	  }
-	});
-
-/***/ },
-/* 314 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-
-	'use strict';
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(159);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _SLDSPopover = __webpack_require__(236);
-
-	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
-
-	var _index = __webpack_require__(315);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	var _InputIcon = __webpack_require__(245);
-
-	var _InputIcon2 = _interopRequireDefault(_InputIcon);
-
-	var _utils = __webpack_require__(239);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = _react2.default.createClass({
-	  displayName: 'exports',
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      string: '',
-	      value: new Date(),
-	      placeholder: 'Pick a Date',
-	      formatter: function formatter(date) {
-	        return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
-	      },
-	      parser: function parser(str) {
-	        return new Date(str);
-	      },
-	      onDateChange: function onDateChange(date) {
-	        console.log('onDateChange should be defined');
-	      }
-	    };
-	  },
-	  getInitialState: function getInitialState() {
-	    return {
-	      isOpen: false,
-	      value: this.props.value,
-	      string: this.props.selectedDate ? this.props.formatter(this.props.selectedDate) : null
-	    };
-	  },
-	  handleChange: function handleChange(date) {
-	    this.setState({
-	      value: date,
-	      isOpen: false,
-	      string: this.props.formatter(date)
-	    });
-	    if (this.props.onDateChange) {
-	      this.props.onDateChange(date);
-	    }
-	  },
-	  handleClose: function handleClose() {
-	    this.setState({ isOpen: false });
-	    this.setFocus();
-	  },
-	  handleClick: function handleClick() {
-	    this.setState({ isOpen: true });
-	  },
-	  handleFocus: function handleFocus() {
-	    //    this.setState({isOpen:true})
-	  },
-	  handleBlur: function handleBlur() {
-	    //    this.setState({isOpen:false})
-	  },
-	  setFocus: function setFocus() {
-	    if (this.isMounted()) {
-	      _reactDom2.default.findDOMNode(this.refs.date).focus();
-	    }
-	  },
-	  popover: function popover() {
-	    if (this.state && this.state.isOpen) {
-	      return _react2.default.createElement(
-	        _SLDSPopover2.default,
-	        { className: 'slds-dropdown', targetElement: this.refs.date, onClose: this.handleClose },
-	        _react2.default.createElement(_index2.default, {
-	          onChange: this.handleChange,
-	          selected: this.state.selected,
-	          onClose: this.handleClose,
-	          selectedDate: this.state.value })
-	      );
-	    }
-	    return _react2.default.createElement('span', null);
-	  },
-	  handleInputChange: function handleInputChange() {
-	    var string = _reactDom2.default.findDOMNode(this.refs.date).value;
-	    var date = this.props.parser(string);
-	    if (date) {
-	      this.setState({
-	        value: date,
-	        string: string
-	      });
-	      if (this.props.onDateChage) {
-	        this.props.onDateChange(value);
-	      }
-	    } else {
-	      this.setState({
-	        isOpen: false
-	      });
-	    }
-	  },
-	  handleKeyDown: function handleKeyDown(event) {
-	    if (event.keyCode) {
-	      if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE || event.keyCode === _utils.KEYS.DOWN || event.keyCode === _utils.KEYS.UP) {
-	        _utils.EventUtil.trapEvent(event);
-
-	        this.setState({
-	          isOpen: true
-	        });
-	      }
-	    }
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'slds-form-element' },
-	      _react2.default.createElement(
-	        'label',
-	        { className: 'slds-form-element__label', htmlFor: 'date' },
-	        this.props.label
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'slds-form-element__control' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'slds-input-has-icon slds-input-has-icon--right' },
-	          _react2.default.createElement(_InputIcon2.default, { name: 'event' }),
-	          _react2.default.createElement('input', {
-	            name: 'date',
-	            ref: 'date',
-	            className: 'slds-input',
-	            type: 'text',
-	            placeholder: this.props.placeholder,
-	            value: this.state.value ? this.state.string : '',
-	            onKeyDown: this.handleKeyDown,
-	            onChange: this.handleInputChange,
-	            onClick: this.handleClick,
-	            onBlur: this.handleBlur,
-	            onFocus: this.handleFocus })
-	        )
-	      ),
-	      this.popover()
-	    );
-	  }
-	});
-
-/***/ },
-/* 315 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-
-	'use strict';
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _index = __webpack_require__(316);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	var _index3 = __webpack_require__(319);
-
-	var _index4 = _interopRequireDefault(_index3);
-
-	var _utils = __webpack_require__(239);
-
-	var _utils2 = __webpack_require__(239);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = _react2.default.createClass({
-	  displayName: 'exports',
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      selectedDate: new Date(),
-	      value: new Date(),
-
-	      onChange: function onChange(date) {
-	        console.log('onChange should be defined ', date);
-	      },
-	      onDisplayedDateChange: function onDisplayedDateChange(date) {
-	        console.log('onDisplayedDateChange should be defined ', date);
-	      },
-	      onClose: function onClose() {
-	        console.log('onClose should be defined');
-	      }
-	    };
-	  },
-	  getInitialState: function getInitialState() {
-	    return {
-	      displayedDate: this.props.selectedDate,
-	      isFocused: false,
-	      isClosing: false
-	    };
-	  },
-	  handleKeyDown: function handleKeyDown(event) {
-	    if (event.keyCode) {
-	      if (event.keyCode === _utils2.KEYS.ESCAPE) {
-	        if (this.props.onClose) {
-	          this.props.onClose();
-	        }
-	      } else if (event.keyCode === _utils2.KEYS.SPACE) {} else if (event.keyCode === _utils2.KEYS.ENTER) {} else if (event.keyCode === _utils2.KEYS.TAB) {} else if (event.keyCode === _utils2.KEYS.ESCAPE) {} else {
-	        _utils.EventUtil.trapEvent(event);
-	      }
-	    }
-	  },
-	  handleClickOutside: function handleClickOutside(e) {
-	    e.preventDefault();
-	    e.stopPropagation();
-	    if (this.props.onClose) {
-	      this.props.onClose();
-	    }
-	  },
-	  handleDisplayedDateChange: function handleDisplayedDateChange(displayedDate) {
-	    if (this.props.onDisplayedDateChange) {
-	      this.props.onDisplayedDateChange(displayedDate);
-	    }
-	    this.setState({ displayedDate: displayedDate });
-	  },
-	  handleSelectDate: function handleSelectDate(selectedDate) {
-	    if (this.props.onChange) {
-	      this.props.onChange(selectedDate);
-	    }
-	  },
-	  handleCancel: function handleCancel() {
-	    if (this.props.onClose) {
-	      this.props.onClose();
-	    }
-	  },
-	  handleBGClick: function handleBGClick(event) {
-	    if (event.nativeEvent) {
-	      event.nativeEvent.preventDefault();
-	    }
-	  },
-	  handleFocus: function handleFocus() {
-	    this.setState({ isFocused: true });
-	  },
-	  handleBlur: function handleBlur() {
-	    this.setState({ isFocused: false });
-	  },
-	  render: function render() {
-
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'ignore-react-onclickoutside' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'slds-datepicker',
-	          'aria-hidden': false,
-	          'data-selection': 'single',
-	          onMouseDown: this.handleBGClick,
-	          onKeyDown: this.handleKeyDown,
-	          onFocus: this.handleFocus,
-	          onBlur: this.handleBlur,
-	          onClick: this.handleBGClick },
-	        _react2.default.createElement(_index4.default, {
-	          onChange: this.handleDisplayedDateChange,
-	          selectedDate: this.props.selectedDate,
-	          autoFocus: true,
-	          displayedDate: this.state.displayedDate,
-	          onCancel: this.handleCancel }),
-	        _react2.default.createElement(_index2.default, {
-	          selectedDate: this.props.selectedDate,
-	          onChange: this.handleDisplayedDateChange,
-	          displayedDate: this.state.displayedDate,
-	          onSelectDate: this.handleSelectDate,
-	          onCancel: this.handleCancel }),
-	        _react2.default.createElement(
-	          'span',
-	          { id: 'bn_prev-label', className: 'slds-assistive-text' },
-	          'Go to previous month'
-	        ),
-	        _react2.default.createElement(
-	          'span',
-	          { id: 'bn_next-label', className: 'slds-assistive-text' },
-	          'Go to next month'
-	        )
-	      )
-	    );
-	  },
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	    var _this = this;
-
-	    if (!this.state.isFocused && prevState.isFocused) {
-	      this.setState({ isClosing: true });
-
-	      setTimeout(function () {
-
-	        if (_this.isMounted()) {
-	          if (_this.state.isClosing) {
-	            if (_this.state.isFocused) {
-	              _this.setState({ isClosing: false });
-	            } else {
-	              if (_this.props.onClose) {
-	                _this.props.onClose();
-	              }
-	            }
-	          }
-	        }
-	      });
-	    }
-	  }
-	});
-
-/***/ },
-/* 316 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-	'use strict';
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _index = __webpack_require__(317);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	var _utils = __webpack_require__(239);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = _react2.default.createClass({
-
-	  displayName: 'SLDSCalendar',
-
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      displayedDate: new Date(),
-	      selectedDate: new Date(),
-	      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-	      abbrLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-
-	      onSelectDate: function onSelectDate(date) {
-	        console.log('onSelectDate should be defined ', date);
-	      },
-	      onCancel: function onCancel() {
-	        console.log('onCancel should be defined');
-	      }
-	    };
-	  },
-	  getInitialState: function getInitialState() {
-	    return {
-	      highlightedDate: _utils.DateUtil.firstDayOfMonth(this.props.displayedDate)
-	    };
-	  },
-	  handleSelectDate: function handleSelectDate(day) {
-	    this.setState({ selected: day });
-	    if (this.props.onSelectDate) {
-	      this.props.onSelectDate(day);
-	    }
-	  },
-	  handleCancel: function handleCancel() {
-	    if (this.props.onCancel) {
-	      this.props.onCancel();
-	    }
-	  },
-	  handleChangeDisplayedDate: function handleChangeDisplayedDate(date) {
-	    if (this.props.onChange) {
-	      this.props.onChange(date);
-	    }
-	  },
-	  handlePrevDay: function handlePrevDay(date) {
-	    var prevDate = _utils.DateUtil.addDays(date, -1);
-	    if (!_utils.DateUtil.isSameMonth(prevDate, date)) {
-	      this.handleChangeDisplayedDate(prevDate);
-	    } else {
-	      this.setState({ highlightedDate: prevDate });
-	    }
-	  },
-	  handleNextDay: function handleNextDay(date) {
-	    var nextDate = _utils.DateUtil.addDays(date, 1);
-	    if (!_utils.DateUtil.isSameMonth(nextDate, date)) {
-	      this.handleChangeDisplayedDate(nextDate);
-	    } else {
-	      this.setState({ highlightedDate: nextDate });
-	    }
-	  },
-	  handlePrevWeek: function handlePrevWeek(date) {
-	    var prevDate = _utils.DateUtil.addDays(date, -7);
-	    if (!_utils.DateUtil.isSameMonth(prevDate, date)) {
-	      this.handleChangeDisplayedDate(prevDate);
-	    } else {
-	      this.setState({ highlightedDate: prevDate });
-	    }
-	  },
-	  handleNextWeek: function handleNextWeek(date) {
-	    var nextDate = _utils.DateUtil.addDays(date, 7);
-	    if (!_utils.DateUtil.isSameMonth(nextDate, date)) {
-	      this.handleChangeDisplayedDate(nextDate);
-	    } else {
-	      this.setState({ highlightedDate: nextDate });
-	    }
-	  },
-	  render: function render() {
-
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'SLDSCalendar' },
-	      _react2.default.createElement(
-	        'table',
-	        { className: 'datepicker__month', role: 'grid', 'aria-labelledby': 'month' },
-	        _react2.default.createElement(
-	          'thead',
-	          null,
-	          _react2.default.createElement(
-	            'tr',
-	            { ref: 'weekdays' },
-	            _react2.default.createElement(
-	              'th',
-	              { ref: 'Sunday' },
-	              _react2.default.createElement(
-	                'abbr',
-	                { title: this.props.labels[0] },
-	                this.props.abbrLabels[0]
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              { ref: 'Monday' },
-	              _react2.default.createElement(
-	                'abbr',
-	                { title: this.props.labels[1] },
-	                this.props.abbrLabels[1]
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              { ref: 'Tuesday' },
-	              _react2.default.createElement(
-	                'abbr',
-	                { title: this.props.labels[2] },
-	                this.props.abbrLabels[2]
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              { ref: 'Wednesday' },
-	              _react2.default.createElement(
-	                'abbr',
-	                { title: this.props.labels[3] },
-	                this.props.abbrLabels[3]
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              { ref: 'Thursday' },
-	              _react2.default.createElement(
-	                'abbr',
-	                { title: this.props.labels[4] },
-	                this.props.abbrLabels[4]
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              { ref: 'Friday' },
-	              _react2.default.createElement(
-	                'abbr',
-	                { title: this.props.labels[5] },
-	                this.props.abbrLabels[5]
-	              )
-	            ),
-	            _react2.default.createElement(
-	              'th',
-	              { ref: 'Saturday' },
-	              _react2.default.createElement(
-	                'abbr',
-	                { title: this.props.labels[6] },
-	                this.props.abbrLabels[6]
-	              )
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'tbody',
-	          null,
-	          this.renderWeeks()
-	        )
-	      )
-	    );
-	  },
-	  renderWeeks: function renderWeeks() {
-	    var firstDayOfMonth = _utils.DateUtil.firstDayOfMonth(this.props.displayedDate);
-
-	    var date = firstDayOfMonth;
-	    if (firstDayOfMonth.getDay() > 0) {
-	      var prevWeek = _utils.DateUtil.addWeeks(firstDayOfMonth, -1);
-	      var nextSunday = _utils.DateUtil.nearestWeekDay(prevWeek, 0);
-	      date = nextSunday;
-	    }
-
-	    var weeks = [];
-	    var done = false;
-
-	    var monthIndex = date.getMonth();
-	    var count = 0;
-	    while (!done) {
-	      weeks.push(_react2.default.createElement(_index2.default, {
-	        key: date.toString(),
-	        date: date,
-	        month: this.props.month,
-	        onSelectDate: this.handleSelectDate,
-	        selectedDate: this.props.selectedDate,
-	        displayedDate: this.props.displayedDate,
-	        highlightedDate: this.state.highlightedDate,
-	        onPrevDay: this.handlePrevDay,
-	        onNextDay: this.handleNextDay,
-	        onPrevWeek: this.handlePrevWeek,
-	        onNextWeek: this.handleNextWeek,
-	        onCancel: this.handleCancel }));
-	      date = _utils.DateUtil.addWeeks(date, 1);
-	      done = count++ > 2 && monthIndex !== date.getMonth();
-	      monthIndex = date.getMonth();
-	    }
-	    var extra = 0;
-	    while (weeks.length < 6) {
-	      weeks.push(_react2.default.createElement(
-	        'tr',
-	        { key: 'extra_' + extra++, className: 'week' },
-	        _react2.default.createElement(
-	          'td',
-	          null,
-	          _react2.default.createElement(
-	            'span',
-	            { className: 'slds-day' },
-	            ' '
-	          )
-	        )
-	      ));
-	    }
-
-	    return weeks;
-	  },
-	  componentDidUpdate: function componentDidUpdate(prevProps) {
-	    if (!_utils.DateUtil.isEqual(this.props.displayedDate, prevProps.displayedDate)) {
-	      this.setState({ highlightedDate: this.props.displayedDate });
-	    }
-	  }
-	});
-
-/***/ },
-/* 317 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-
-	'use strict';
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _index = __webpack_require__(318);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	var _utils = __webpack_require__(239);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = _react2.default.createClass({
-	  displayName: 'exports',
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      displayedDate: new Date(),
-	      selectedDate: new Date()
-	    };
-	  },
-	  handleSelectDate: function handleSelectDate(day) {
-	    if (this.props.onSelectDate) {
-	      this.props.onSelectDate(day);
-	    }
-	  },
-	  handleCancel: function handleCancel() {
-	    if (this.props.onCancel) {
-	      this.props.onCancel();
-	    }
-	  },
-	  handlePrevDay: function handlePrevDay(date) {
-	    if (this.props.onPrevDay) {
-	      this.props.onPrevDay(date);
-	    }
-	  },
-	  handleNextDay: function handleNextDay(date) {
-	    if (this.props.onNextDay) {
-	      this.props.onNextDay(date);
-	    }
-	  },
-	  handlePrevWeek: function handlePrevWeek(date) {
-	    if (this.props.onPrevWeek) {
-	      this.props.onPrevWeek(date);
-	    }
-	  },
-	  handleNextWeek: function handleNextWeek(date) {
-	    if (this.props.onNextWeek) {
-	      this.props.onNextWeek(date);
-	    }
-	  },
-
-	  render: function render() {
-	    var days = [];
-	    var date = this.props.date;
-	    for (var i = 0; i < 7; i++) {
-	      days.push(_react2.default.createElement(_index2.default, {
-	        key: date.toString(),
-	        date: date,
-	        month: this.props.month,
-	        selectedDate: this.props.selectedDate,
-	        onSelectDate: this.handleSelectDate,
-	        displayedDate: this.props.displayedDate,
-	        highlightedDate: this.props.highlightedDate,
-	        focused: _utils.DateUtil.isSameDay(this.props.highlightedDate, date),
-	        onPrevDay: this.handlePrevDay,
-	        onNextDay: this.handleNextDay,
-	        onPrevWeek: this.handlePrevWeek,
-	        onNextWeek: this.handleNextWeek,
-	        onCancel: this.handleCancel }));
-	      date = _utils.DateUtil.addDays(date, 1);
-	    }
-
-	    return _react2.default.createElement(
-	      'tr',
-	      { className: 'week', key: days[0].toString() },
-	      days
-	    );
-	  }
-	});
-
-/***/ },
-/* 318 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-
-	'use strict';
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _utils = __webpack_require__(239);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = _react2.default.createClass({
-	  displayName: 'exports',
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-
-	      displayedDate: new Date(),
-
-	      selectedDate: new Date(),
-
-	      onSelectDate: function onSelectDate(date) {
-	        console.log('onSelectDate should be defined ', date);
-	      },
-	      onClick: function onClick(index) {
-	        console.log('onClick should be defined ', index);
-	      },
-	      onMoveFocus: function onMoveFocus(delta) {
-	        console.log('onMoveFocus should be defined ', delta);
-	      },
-	      onBlur: function onBlur(relatedTarget) {
-	        console.log('onBlur should be defined ', relatedTarget);
-	      },
-	      onFocus: function onFocus(index, height) {
-	        console.log('onFocus should be defined ', index, height);
-	      },
-	      onCancel: function onCancel() {
-	        console.log('onCancel should be defined');
-	      }
-	    };
-	  },
-	  handleClick: function handleClick(event) {
-	    if (this.props.onSelectDate) {
-	      this.props.onSelectDate(this.props.date);
-	    }
-	    if (event.nativeEvent) {
-	      event.nativeEvent.stopImmediatePropagation();
-	      event.nativeEvent.preventDefault();
-	    }
-	  },
-	  handleToPrevDay: function handleToPrevDay() {
-	    if (this.props.onPrevDay) {
-	      this.props.onPrevDay(this.props.date);
-	    }
-	  },
-	  handleToNextDay: function handleToNextDay() {
-	    if (this.props.onNextDay) {
-	      this.props.onNextDay(this.props.date);
-	    }
-	  },
-	  handleToPrevWeek: function handleToPrevWeek() {
-	    console.log('>>> handleToPrevWeek');
-	    if (this.props.onPrevWeek) {
-	      console.log('>>> this.props.onPrevWeek');
-	      this.props.onPrevWeek(this.props.date);
-	    }
-	  },
-	  handleToNextWeek: function handleToNextWeek() {
-	    console.log('>>> handleToNextWeek');
-	    if (this.props.onNextWeek) {
-	      console.log('>>> this.props.onNextWeek');
-	      this.props.onNextWeek(this.props.date);
-	    }
-	  },
-	  handleKeyDown: function handleKeyDown(event) {
-	    if (event.keyCode) {
-	      if (event.keyCode === _utils.KEYS.ENTER || event.keyCode === _utils.KEYS.SPACE) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onSelectDate) {
-	          this.props.onSelectDate(this.props.date);
-	        }
-	      } else if (event.keyCode === _utils.KEYS.ESCAPE) {
-	        _utils.EventUtil.trapEvent(event);
-	        if (this.props.onCancel) {
-	          this.props.onCancel();
-	        }
-	      } else if (event.keyCode === _utils.KEYS.TAB) {
-	        if (!event.shiftKey) {
-	          _utils.EventUtil.trapEvent(event);
-	          if (this.props.onCancel) {
-	            this.props.onCancel();
-	          }
-	        }
-	      } else if (event.keyCode === _utils.KEYS.RIGHT) {
-	        _utils.EventUtil.trapEvent(event);
-	        this.handleToNextDay();
-	      } else if (event.keyCode === _utils.KEYS.LEFT) {
-	        _utils.EventUtil.trapEvent(event);
-	        this.handleToPrevDay();
-	      } else if (event.keyCode === _utils.KEYS.RIGHT) {
-	        _utils.EventUtil.trapEvent(event);
-	        this.handleToNextDay();
-	      } else if (event.keyCode === _utils.KEYS.UP) {
-	        _utils.EventUtil.trapEvent(event);
-	        this.handleToPrevWeek();
-	      } else if (event.keyCode === _utils.KEYS.DOWN) {
-	        _utils.EventUtil.trapEvent(event);
-	        this.handleToNextWeek();
-	      } else {
-	        _utils.EventUtil.trapEvent(event);
-	      }
-	    }
-	  },
-	  setFocus: function setFocus() {
-	    this.getDOMNode().focus();
-	  },
-	  render: function render() {
-
-	    var isCurrentMonth = _utils.DateUtil.isSameMonth(this.props.date, this.props.displayedDate);
-	    var isToday = _utils.DateUtil.isToday(this.props.date);
-	    var isSelectedDay = _utils.DateUtil.isSameDay(this.props.date, this.props.selectedDate);
-	    var isFirstDayOfMonth = _utils.DateUtil.isFirstDayOfMonth(this.props.date);
-
-	    return _react2.default.createElement(
-	      'td',
-	      { role: 'gridcell',
-	        'aria-disabled': !isCurrentMonth,
-	        'aria-selected': isSelectedDay,
-	        autoFocus: this.props.focused,
-	        tabIndex: isCurrentMonth && isFirstDayOfMonth && this.props.focused ? 0 : -1,
-	        className: (isToday ? ' slds-is-today' : '') + (isCurrentMonth ? '' : ' slds-disabled-text') + (isSelectedDay ? ' slds-is-selected' : ''),
-	        onClick: this.handleClick,
-	        onMouseDown: this.handleClick,
-	        onKeyDown: this.handleKeyDown },
-	      _react2.default.createElement(
-	        'span',
-	        { className: 'slds-day' },
-	        this.props.date.getDate()
-	      )
-	    );
-	  },
-	  componentDidUpdate: function componentDidUpdate(prevProps, prevState) {
-	    if (this.props.focused && !prevProps.focused) {
-	      this.setFocus();
-	    }
-	  }
-	});
-
-/***/ },
-/* 319 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-
-	'use strict';
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _index = __webpack_require__(320);
-
-	var _index2 = _interopRequireDefault(_index);
-
-	var _ButtonIcon = __webpack_require__(204);
-
-	var _ButtonIcon2 = _interopRequireDefault(_ButtonIcon);
-
-	var _utils = __webpack_require__(239);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = _react2.default.createClass({
-	  displayName: 'exports',
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      displayedDate: new Date(),
-	      monthLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-	      onChangeMonth: function onChangeMonth() {
-	        console.log('onChangeMonth should be defined');
-	      }
-	    };
-	  },
-	  handleClick: function handleClick(event) {
-	    event.preventDefault();
-	    event.stopPropagation();
-	  },
-	  handleChange: function handleChange(displayedDate) {
-	    if (this.props.onChange) {
-	      this.props.onChange(displayedDate);
-	    }
-	  },
-	  handleCancel: function handleCancel() {
-	    if (this.props.onCancel) {
-	      this.props.onCancel();
-	    }
-	  },
-	  previousMonth: function previousMonth() {
-	    if (this.props.displayedDate && this.handleChange) {
-	      this.handleChange(_utils.DateUtil.addMonths(this.props.displayedDate, -1));
-	    }
-	  },
-	  componentDidMount: function componentDidMount() {},
-	  nextMonth: function nextMonth() {
-	    if (this.props.displayedDate && this.handleChange) {
-	      this.handleChange(_utils.DateUtil.addMonths(this.props.displayedDate, 1));
-	    }
-	  },
-	  handleYearSelect: function handleYearSelect(displayedDate) {
-	    if (this.props.onChange) {
-	      this.props.onChange(displayedDate);
-	    }
-	  },
-	  handleKeyDown: function handleKeyDown(event) {
-	    if (event.keyCode === _utils.KEYS.TAB) {
-	      if (event.shiftKey) {
-	        _utils.EventUtil.trapEvent(event);
-	        this.handleCancel();
-	      }
-	    }
-	  },
-	  getMonthLabel: function getMonthLabel() {
-	    return this.props.monthLabels[new Date(this.props.displayedDate).getMonth()];
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'slds-datepicker__filter slds-grid' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'slds-datepicker__filter--month slds-grid slds-grid--align-spread slds-size--3-of-4' },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'slds-align-middle', role: 'button', 'aria-labelledby': 'bn_prev-label', tabIndex: -1 },
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              ref: 'prevMonth',
-	              className: 'slds-button slds-button--icon-container',
-	              autoFocus: this.props.autoFocus,
-	              role: 'button',
-	              tabIndex: 0,
-	              onKeyDown: this.handleKeyDown,
-	              onClick: this.previousMonth },
-	            _react2.default.createElement(_ButtonIcon2.default, { name: 'left' }),
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'slds-assistive-text' },
-	              'Previous Month'
-	            )
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { id: 'month', className: 'slds-align-middle', role: 'heading', 'aria-live': 'assertive', 'aria-atomic': true },
-	          this.getMonthLabel()
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'slds-align-middle', role: 'button', 'aria-labelledby': 'bn_next-label', tabIndex: -1 },
-	          _react2.default.createElement(
-	            'button',
-	            {
-	              ref: 'nextMonth',
-	              className: 'slds-button slds-button--icon-container',
-	              onClick: this.nextMonth },
-	            _react2.default.createElement(_ButtonIcon2.default, { name: 'right' }),
-	            _react2.default.createElement(
-	              'span',
-	              { className: 'slds-assistive-text' },
-	              'Next Month'
-	            )
-	          )
-	        )
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'slds-picklist datepicker__filter--year slds-shrink-none' },
-	        _react2.default.createElement(_index2.default, {
-	          displayedDate: this.props.displayedDate,
-	          onChange: this.handleYearSelect })
-	      )
-	    );
-	  }
-	});
-
-/***/ },
-/* 320 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-	Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	*/
-
-	'use strict';
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _SLDSMenuPicklist = __webpack_require__(254);
-
-	var _SLDSMenuPicklist2 = _interopRequireDefault(_SLDSMenuPicklist);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	module.exports = _react2.default.createClass({
-
-	  displayName: 'SLDSYearSelector',
-
-	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      displayedDate: new Date(),
-	      relativeFrom: 0,
-	      relativeTo: 5,
-	      onChange: function onChange(displayedDate) {
-	        console.log('onChange should be defined: ', displayedDate);
-	      }
-	    };
-	  },
-	  getOptions: function getOptions() {
-	    var now = new Date();
-	    var fromYear = now.getFullYear() + this.props.relativeFrom;
-	    var toYear = now.getFullYear() + this.props.relativeTo;
-	    var opts = [];
-	    for (var year = fromYear; year < toYear; year++) {
-	      opts.push({ label: year, value: year });
-	    }
-	    return opts;
-	  },
-	  handleSelect: function handleSelect(selectedValue) {
-	    if (selectedValue) {
-	      if (this.props.onChange) {
-	        this.props.onChange(new Date(this.props.displayedDate.setFullYear(parseInt(selectedValue))));
-	      }
-	    }
-	  },
-	  render: function render() {
-	    return _react2.default.createElement(
-	      'div',
-	      { className: 'slds-form-element' },
-	      _react2.default.createElement(_SLDSMenuPicklist2.default, {
-	        options: this.getOptions(),
-	        label: 'Year',
-	        placeholder: 'Year',
-	        value: this.props.displayedDate.getFullYear(),
-	        onSelect: this.handleSelect,
-	        initialFocus: false })
-	    );
-	  }
-	});
-
-/***/ },
-/* 321 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51059,21 +51349,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(295);
+	var _CodeMirror = __webpack_require__(301);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(303);
+	var _Samples = __webpack_require__(309);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(304);
+	var _PropTable = __webpack_require__(310);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51119,11 +51413,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'slds-p-around--medium' },
-	        _react2.default.createElement(
-	          'h3',
-	          { className: 'slds-text-heading--medium slds-truncate' },
-	          'SLDSNotification'
-	        ),
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSNotification', cmpUrl: 'http://www.lightningdesignsystem.com/components/notifications' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'copy-text' },
@@ -51132,7 +51422,11 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'demo-only' },
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Notifications }),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-bottom--x-large' },
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Notifications })
+	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSNotification' })
 	        )
 	      );
@@ -51149,7 +51443,7 @@
 	module.exports = NotificationSection;
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51160,21 +51454,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(295);
+	var _CodeMirror = __webpack_require__(301);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(303);
+	var _Samples = __webpack_require__(309);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(304);
+	var _PropTable = __webpack_require__(310);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51220,11 +51518,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'slds-p-around--medium' },
-	        _react2.default.createElement(
-	          'h3',
-	          { className: 'slds-text-heading--medium slds-truncate' },
-	          'SLDSMenuPicklist'
-	        ),
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSMenuPicklist', cmpUrl: 'http://www.lightningdesignsystem.com/components/menus#picklist' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'copy-text' },
@@ -51232,8 +51526,12 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Picklists }),
+	          { className: 'demo-only' },
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-bottom--x-large' },
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Picklists })
+	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSMenuPicklist' })
 	        )
 	      );
@@ -51250,7 +51548,7 @@
 	module.exports = PicklistSection;
 
 /***/ },
-/* 323 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51261,21 +51559,25 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(295);
+	var _CodeMirror = __webpack_require__(301);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(303);
+	var _Samples = __webpack_require__(309);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(304);
+	var _PropTable = __webpack_require__(310);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(305);
+	var _docs = __webpack_require__(311);
 
 	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(313);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51321,11 +51623,7 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'slds-p-around--medium' },
-	        _react2.default.createElement(
-	          'h3',
-	          { className: 'slds-text-heading--medium slds-truncate' },
-	          'SLDSPopoverTooltip'
-	        ),
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSPopoverTooltip', cmpUrl: 'http://www.lightningdesignsystem.com/components/popovers#tooltips' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'copy-text' },
@@ -51333,8 +51631,12 @@
 	        ),
 	        _react2.default.createElement(
 	          'div',
-	          null,
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Tooltips }),
+	          { className: 'demo-only' },
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-bottom--x-large' },
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Tooltips })
+	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSPopoverTooltip' })
 	        )
 	      );
