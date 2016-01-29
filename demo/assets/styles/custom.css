@@ -6,9 +6,8 @@ html {
   color: #5876A3;
 }
 
-.site-page-header {
+.mw-readability { max-width: 800px; }
 
-}
 .site-logo {
   display: inline-block;
   background-position: center center;

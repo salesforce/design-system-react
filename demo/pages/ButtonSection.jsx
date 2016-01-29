@@ -13,6 +13,7 @@ import CodeMirror from 'demo/CodeMirror';
 import Samples from 'demo/Samples';
 import PropTable from 'demo/PropTable';
 import DOCS from 'docs';
+import ComponentHeader from 'demo/pages/components/componentHeader';
 
 const displayName = "ButtonSection";
 const propTypes = {};
@@ -34,11 +35,10 @@ class ButtonSection extends React.Component {
     const docs = DOCS["SLDSButton"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>
-          SLDSButton
-        </h3>
+        <ComponentHeader cmpName="SLDSButton" cmpUrl="http://www.lightningdesignsystem.com/components/buttons" />
+
         <div className="copy-text">
-          {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}/> : null}
+          {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small mw-readability" /> : null}
         </div>
 
         <div className="demo-only">

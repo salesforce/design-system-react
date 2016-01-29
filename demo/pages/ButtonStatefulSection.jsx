@@ -12,6 +12,7 @@ import CodeMirror from 'demo/CodeMirror';
 import Samples from 'demo/Samples';
 import PropTable from 'demo/PropTable';
 import DOCS from 'docs';
+import ComponentHeader from 'demo/pages/components/componentHeader';
 
 const displayName = "ButtonStatefulSection";
 const propTypes = {};
@@ -33,9 +34,8 @@ class ButtonStatefulSection extends React.Component {
     const docs = DOCS["SLDSButtonStateful"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>
-          SLDSButtonStateful
-        </h3>
+        <ComponentHeader cmpName="SLDSButtonStateful" cmpUrl="http://www.lightningdesignsystem.com/components/buttons#stateful" />
+
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}} /> : null}
         </div>

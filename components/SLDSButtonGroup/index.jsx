@@ -23,7 +23,6 @@ const defaultProps = {};
 
 /**
  * The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).
- * For more details on the markup, please review the Button Group documentation on the <a href="http://www.lightningdesignsystem.com/components/button-groups">Lightning Design System website</a>.
  */
 class SLDSButtonGroup extends React.Component {
   constructor(props) {

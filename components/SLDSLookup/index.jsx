@@ -94,7 +94,6 @@ const defaultProps = {
 
 /**
  * The SLDSLookup is the Lightning Design System Lookup base component.
- * For more details on the markup, please review the Lookup > Base documentation on the <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System website</a>.
  */
 class SLDSLookup extends React.Component {
   constructor(props) {

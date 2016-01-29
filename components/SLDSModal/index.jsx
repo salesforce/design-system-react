@@ -76,7 +76,7 @@ const defaultProps = {
 
 /**
  * The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).
- * For more details on the markup, please review the Lightning Design System website's <a href="https://www.lightningdesignsystem.com/components/modals"> Modal documentation</a> or the <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">Notification > Prompt documentation</a>.
+ * For more details on the Prompt markup, please review the <a href="http://www.lightningdesignsystem.com/components/notifications#prompt">Notifications > Prompt</a>.
  */
 class SLDSModal extends React.Component {
 

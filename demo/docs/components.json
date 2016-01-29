@@ -1,6 +1,6 @@
 {
     "SLDSButton": {
-        "description": "The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">SLDSButtonStateful</a> component.\nFor more details on the markup, please review the Button documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightning Design System website</a>.",
+        "description": "The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.\nEither a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.\nFor buttons that maintain selected/unselected states, use the <a href=\"#/button-stateful\">SLDSButtonStateful</a> component.",
         "displayName": "SLDSButton",
         "props": {
             "assistiveText": {
@@ -201,7 +201,7 @@
         }
     },
     "SLDSButtonStateful": {
-        "description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant=\"icon\"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: \"add\", label: \"Follow\"}}</code>).\nFor more details on the markup, please review the Button > Stateful documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons#stateful\">Lightning Design System website</a>.",
+        "description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant=\"icon\"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: \"add\", label: \"Follow\"}}</code>).",
         "displayName": "SLDSButtonStateful",
         "props": {
             "assistiveText": {
@@ -363,7 +363,7 @@
         }
     },
     "SLDSButtonGroup": {
-        "description": "The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).\nFor more details on the markup, please review the Button Group documentation on the <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">Lightning Design System website</a>.",
+        "description": "The SLDSButtonGroup component wraps other SLDS components (ie. SLDSButton, SLDSMenuDropdown, SLDSPopoverTooltip, etc).",
         "displayName": "SLDSButtonGroup",
         "props": {
             "children": {
@@ -383,7 +383,7 @@
         }
     },
     "SLDSIcon": {
-        "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.\nFor more details on the markup, please review the Icon documentation on the <a href=\"http://www.lightningdesignsystem.com/components/icons\">Lightning Design System website</a>.",
+        "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.",
         "displayName": "SLDSIcon",
         "props": {
             "assistiveText": {
@@ -472,7 +472,7 @@
         }
     },
     "SLDSLookup": {
-        "description": "The SLDSLookup is the Lightning Design System Lookup base component.\nFor more details on the markup, please review the Lookup > Base documentation on the <a href=\"http://www.lightningdesignsystem.com/components/lookups/#base\">Lightning Design System website</a>.",
+        "description": "The SLDSLookup is the Lightning Design System Lookup base component.",
         "displayName": "SLDSLookup",
         "props": {
             "emptyMessage": {
@@ -613,7 +613,7 @@
         }
     },
     "SLDSMenuDropdown": {
-        "description": "The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.\nFor more details on the markup, please review the Menu > Dropdown documentation on the <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">Lightning Design System website</a>.",
+        "description": "The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.",
         "displayName": "SLDSMenuDropdown",
         "props": {
             "align": {
@@ -802,7 +802,7 @@
         }
     },
     "SLDSMenuPicklist": {
-        "description": "The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.\nFor more details on the markup, please review the Menu > Picklist documentation on the <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">Lightning Design System website</a>.",
+        "description": "The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.",
         "displayName": "SLDSMenuPicklist",
         "props": {
             "disabled": {
@@ -887,7 +887,7 @@
         }
     },
     "SLDSModal": {
-        "description": "The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the markup, please review the Lightning Design System website's <a href=\"https://www.lightningdesignsystem.com/components/modals\"> Modal documentation</a> or the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notification > Prompt documentation</a>.",
+        "description": "The SLDSModal component is used for the Lightning Design System Modal and Notification > Prompt components. The Modal opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the Prompt markup, please review the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notifications > Prompt</a>.",
         "displayName": "SLDSModal",
         "props": {
             "align": {
@@ -1033,7 +1033,7 @@
         }
     },
     "SLDSNotification": {
-        "description": "The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/modal\">SLDSModal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).\nFor more details on the markup, please review the Notification documentation on the <a href=\"http://www.lightningdesignsystem.com/components/notifications\">Lightning Design System website</a>.",
+        "description": "The SLDSNotification component is the Alert and Toast variants of the Lightning Design System Notification component. For prompt notifications, use the <a href=\"#/modal\">SLDSModal</a> component with <code>prompt={true}</code>.\nThe Notification opens from a state change outside of the component itself (pass this state to the <code>isOpen</code> prop).",
         "displayName": "SLDSNotification",
         "props": {
             "className": {
@@ -1149,7 +1149,7 @@
         }
     },
     "SLDSPopoverTooltip": {
-        "description": "The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.\nFor more details on the markup, please review the Popover > Tooltip documentation on the <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">Lightning Design System website</a>.",
+        "description": "The SLDSPopoverTooltip component is variant of the Lightning Design System Popover component. This component wraps an element that triggers it to open. It must be a focusable child element (either a button or anchor) so that keyboard users can navigate to it.",
         "displayName": "SLDSPopoverTooltip",
         "props": {
             "align": {

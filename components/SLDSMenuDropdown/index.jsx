@@ -73,7 +73,6 @@ const defaultProps = {
 
 /**
  * The SLDSMenuDropdown component is a variant of the Ligtning Design System Menu component.
- * For more details on the markup, please review the Menu > Dropdown documentation on the <a href="http://www.lightningdesignsystem.com/components/menus#dropdown">Lightning Design System website</a>.
  */
 class SLDSMenuDropdown extends React.Component {
 

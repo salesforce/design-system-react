@@ -7,53 +7,30 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from 'react';
-import CodeMirror from 'demo/CodeMirror';
-import Samples from 'demo/Samples';
-import PropTable from 'demo/PropTable';
-import DOCS from 'docs';
-import ComponentHeader from 'demo/pages/components/componentHeader';
 
-const displayName = "ModalSection";
+import React from 'react';
+const displayName = "ComponentHeader";
 const propTypes = {};
 const defaultProps = {};
 
-class ModalSection extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  getDescription() {
-    const desc = DOCS["SLDSModal"].description;
-    return {__html: desc };
-  }
-
+class ComponentHeader extends React.Component {
   render(){
-    const docs = DOCS["SLDSModal"] ? true : false;
     return (
-      <div className='slds-p-around--medium'>
-        <ComponentHeader cmpName="SLDSModal" cmpUrl="https://www.lightningdesignsystem.com/components/modals" />
-        <div className="copy-text">
-          {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
-        </div>
-
-        <div className="demo-only">
-          <section className="slds-p-bottom--x-large">
-            <CodeMirror codeText={Samples.Modals} />
-          </section>
-          <PropTable component="SLDSModal" />
-        </div>
-      </div>
+      <section className="slds-clearfix mw-readability">
+        <h3 className='slds-text-heading--medium slds-truncate slds-float--left'>
+        {this.props.cmpName}
+        </h3>
+        <a href={this.props.cmpUrl} className="slds-float--right">
+          View Markup on Lightning Design Website
+        </a>
+      </section>
     );
   }
-
 }
 
-ModalSection.displayName = displayName;
-ModalSection.propTypes = propTypes;
-ModalSection.defaultProps = defaultProps;
+ComponentHeader.displayName = displayName;
+ComponentHeader.propTypes = propTypes;
+ComponentHeader.defaultProps = defaultProps;
 
-module.exports = ModalSection;
+module.exports = ComponentHeader;
 

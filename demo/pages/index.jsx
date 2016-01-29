@@ -57,8 +57,8 @@ module.exports = React.createClass( {
             <p className="slds-text-heading--small slds-p-horizontal--large slds-p-vertical--small">Components</p>
             <ul className="slds-p-bottom--small">
               <li><Link to="button" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButton</Link></li>
-              <li><Link to="button-stateful" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButtonStateful</Link></li>
               <li><Link to="button-group" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButtonGroup</Link></li>
+              <li><Link to="button-stateful" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButtonStateful</Link></li>
               <li><Link to="dateinput" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSDatepicker</Link></li>
 
               <li><Link to="icon" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSIcon</Link></li>

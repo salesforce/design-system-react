@@ -13,6 +13,7 @@ import CodeMirror from 'demo/CodeMirror';
 import Samples from 'demo/Samples';
 import PropTable from 'demo/PropTable';
 import DOCS from 'docs';
+import ComponentHeader from 'demo/pages/components/componentHeader';
 
 import SLDSMenuPicklist from 'components/SLDSMenuPicklist';
 import SLDSDatepickerSingleSelect from 'components/SLDSDatepickerSingleSelect';
@@ -33,12 +34,7 @@ module.exports = React.createClass( {
 
 
             <div className="slds-p-around--medium">
-
-              <h3 className="slds-text-heading--medium slds-truncate">
-                <a href="javascript:void(0)" id='datepickerSection'>
-                Datepickers (Work in progress)
-                </a>
-              </h3>
+            <ComponentHeader cmpName="SLDSDatepickerSingleSelect" cmpUrl="http://www.lightningdesignsystem.com/components/datepickers#single-select" />
 
               <div className="slds-p-vertical--large">
                 <SLDSDatepickerSingleSelect />

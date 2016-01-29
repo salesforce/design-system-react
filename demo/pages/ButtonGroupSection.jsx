@@ -12,6 +12,7 @@ import CodeMirror from 'demo/CodeMirror';
 import Samples from 'demo/Samples';
 import PropTable from 'demo/PropTable';
 import DOCS from 'docs';
+import ComponentHeader from 'demo/pages/components/componentHeader';
 
 const displayName = "ButtonGroupSection";
 const propTypes = {};
@@ -33,9 +34,8 @@ class ButtonGroupSection extends React.Component {
     const docs = DOCS["SLDSButtonGroup"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        <h3 className='slds-text-heading--medium slds-truncate'>
-          SLDSButtonGroup
-        </h3>
+        <ComponentHeader cmpName="SLDSButtonGroup" cmpUrl="http://www.lightningdesignsystem.com/components/button-groups" />
+
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small"  style={{ "maxWidth": "800px"}}/> : null}
         </div>

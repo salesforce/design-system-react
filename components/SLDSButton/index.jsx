@@ -71,7 +71,6 @@ const defaultProps = {
  * The SLDSButton component is the Lightning Design System Button component. The SLDSButton should be used for label buttons, icon buttons, or buttons that have both labels and icons.
  * Either a <code>label</code> or <code>assistiveText</code> is required; see the Prop Details table below.
  * For buttons that maintain selected/unselected states, use the <a href="#/button-stateful">SLDSButtonStateful</a> component.
- * For more details on the markup, please review the Button documentation on the <a href="http://www.lightningdesignsystem.com/components/buttons">Lightning Design System website</a>.
  */
 class SLDSButton extends SLDSTooltipTrigger {
 

@@ -51,7 +51,6 @@ const defaultProps = {
 
 /**
  * The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.
- * For more details on the markup, please review the Menu > Picklist documentation on the <a href="http://www.lightningdesignsystem.com/components/menus#picklist">Lightning Design System website</a>.
  */
 class SLDSMenuPicklist extends React.Component {
   constructor(props) {
