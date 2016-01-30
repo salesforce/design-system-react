@@ -127,6 +127,9 @@ class CodeMirror extends React.Component {
   }
 
   getCode() {
+    if(!(this.state.code && this.state.code.indexOf('<')===0)){
+      return this.state.code;
+    }
     return "\
     class Example extends React.Component {\
       render(){\
