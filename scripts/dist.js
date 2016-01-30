@@ -110,11 +110,9 @@ async.series([
    */
   (done) => {
     gulp.src([
-      path.resolve(__PATHS__.tmp, '**/*.js')
+      path.resolve(__PATHS__.tmp, '**/*.js'),
+      path.resolve(__PATHS__.tmp, '**/*.map')
     ], { base: __PATHS__.tmp })
-      .pipe(gulprename(function (path) {
-        path.basename = "facades." + path.basename;
-      }))
       .pipe(gulprename(function (path) {
         path.basename = path.basename.replace('.bundle', '');
       }))
