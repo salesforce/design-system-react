@@ -7,6 +7,8 @@ import 'demo/assets/styles/codemirror.css';
 const React = require('react');
 const ReactDOM = require('react-dom');
 const classNames = require('classnames');
+const trim = require('lodash.trim');
+
 
 const SLDSButton =  require('../components/SLDSButton');
 const SLDSButtonStateful =  require('../components/SLDSButtonStateful');
@@ -127,7 +129,7 @@ class CodeMirror extends React.Component {
   }
 
   getCode() {
-    if(!(this.state.code && this.state.code.indexOf('<')===0)){
+    if(!(this.state.code && trim(this.state.code).indexOf('<')===0)){
       return this.state.code;
     }
     return "\
