@@ -126,9 +126,19 @@ class CodeMirror extends React.Component {
     return mountNode;
   }
 
+  getCode() {
+    return "\
+    class Example extends React.Component {\
+      render(){\
+        return ("+this.state.code+");\
+      }\
+    }\
+    ReactDOM.render(<Example />, mountNode);";
+  }
+
   executeCode() {
     request('/api/transform/js', 'POST', {
-      js: this.state.code
+      js: this.getCode()
     }, (err, result) => {
       const mountNode = this.clearExample();
       if (err) {
