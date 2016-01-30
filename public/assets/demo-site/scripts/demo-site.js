@@ -1,33 +1,33 @@
 $(function () {
-	// codepen
-
 	var $codeshareTemplate = $('.codeshare-template').clone();
 	var $globalInitialHTML = $(globalInitialHTML);
 
 	$('.codepen-submit').each(function () {
-
 		var el = $(this),
-			formId = el.data('form-id'),
-			$section = $globalInitialHTML.find(el.data('section-selector')),
-			controlName = el.data('control-name'),
-			$demoHTML = $section.find('.demo-html').clone(),
+			$sectionInDOM = el.closest('.control-section'),
+			$section = $globalInitialHTML.find('#' + $sectionInDOM.attr('id')),
+			controlName = String($section.find('h3').text()).trim(),
+			formId = 'codepen-form-' + $section.attr('id'),
+			$controlHTML = $section.find('.demo-html').clone(),
 			$demoCSS = $section.find('.demo-css'),
 			$demoJS = $section.find('.demo-js'),
 			HTML = '',
 			CSS = '',
-			JS = '';
+			JS = '',
+			$demoHTML;
 
-		if ($demoHTML) {
-			$codeshareTemplate.find('.section-heading').text(controlName);
-			$codeshareTemplate.find('.slds-box').append($demoHTML);
-			HTML = $codeshareTemplate.html();
+		el.data('codepenFormId', formId);
+
+		if ($controlHTML) {
+			$demoHTML = $codeshareTemplate.clone();
+			$demoHTML.find('.section-heading').text(controlName);
+			$demoHTML.find('.slds-box').append($controlHTML);
+			HTML = $demoHTML.html();
 		}
 
 		if ($demoCSS) {
 			CSS = $demoCSS.html();
 		}
-
-		console.log($demoJS);
 
 		if ($demoJS) {
 			JS = $demoJS.html();
@@ -36,12 +36,13 @@ $(function () {
 		var js_external = [
 			'//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
 			'//cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react.min.js',
-			'http://www.fuelcdn.com/design-system-facades/0/assets/scripts/facades.jquery.js'
+			'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades.jquery.js',
+			'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades.utilities.js'
 			// 'http://design-system-facades.herokuapp.com/build/demo-site-examples-jquery.bundle.js'
 		].join(';');
 
 		var css_external = [
-			'//design-system-facades.herokuapp.com/assets/design-system/styles/salesforce-lightning-design-system.css'
+			'//www.fuelcdn.com/lightning-design-system/0.12.1/styles/salesforce-lightning-design-system.css'
 		].join(';');
 
 		var data = {
@@ -63,20 +64,16 @@ $(function () {
 			js_external        : js_external
 		};
 
-		// Quotes will messing with JSON
+		// Escape single and double quotes
 		var JSONstring = JSON.stringify(data).replace(/"/g, "&​quot;").replace(/'/g, "&apos;");
 
 		var form = '<form id='+ formId +' class="codepen-form" action="http://codepen.io/pen/define" method="POST" target="_blank">' + 
-				'<input type="hidden" name="data" value=\'' + JSONstring + '\'>' + 
-				// '<input type='image' src='http://s.cdpn.io/3/cp-arrow-right.svg' width='40' height='40' value='Create New Pen with Prefilled Data' class='codepen-mover-button'>' +
-			'</form>';
-
+				'<input type="hidden" name="data" value=\'' + JSONstring + '\'>' + '</form>';
 		el.append(form);
-
 	});
 
 	$('.codepen-submit').click(function(){
-		$( '#' + $(this).data('form-id') ).submit();
+		$( '#' + $(this).data('codepenFormId') ).submit();
 	});
 
 
