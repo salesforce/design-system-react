@@ -135,7 +135,7 @@ class CodeMirror extends React.Component {
     return "\
     class Example extends React.Component {\
       render(){\
-        return ("+this.state.code+");\
+        return (<section>"+this.state.code+"</section>);\
       }\
     }\
     ReactDOM.render(<Example />, mountNode);";
