@@ -8,8 +8,9 @@ var packageJson = require('./package.json');
 
 var config = {
 	entry: {
-		react: ['./src/react/dist.js'],
-		jquery: ['./src/jquery/dist.js']
+		'facades-react': ['./src/react/dist.js'],
+		'facades-jquery': ['./src/jquery/dist.js'],
+		'facades-utilities': ['./utilities/main.js']
 	},
 	resolve: {
 		modulesDirectories: [
