@@ -4,7 +4,6 @@
   /* Set height, width, borders, and global font properties here */
   font-size: 15px;
   font-family: monospace;
-  height: 400px;
   color: black;
   z-index: 0;
 }
