@@ -36,8 +36,8 @@ $(function () {
 		var js_external = [
 			'//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
 			'//cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react.min.js',
-			'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades.jquery.js',
-			'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades.utilities.js'
+			'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-jquery.js',
+			'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-utilities.js'
 			// 'http://design-system-facades.herokuapp.com/build/demo-site-examples-jquery.bundle.js'
 		].join(';');
 
