@@ -2,6 +2,8 @@ import {Lib, ButtonGroup, Button} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	const button1 = new Button({
 		text: 'Neutral',
@@ -79,3 +81,5 @@ $(function () {
 		buttonGroup3.getProperty('children')[1].toggle(true);
 	});
 });
+
+// <-- SAMPLE CONTROL CODE

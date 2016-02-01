@@ -3,6 +3,8 @@ import {sampleData} from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	const combobox1 = new Combobox($('#combobox-jquery-control .combobox1'), {
 		collection: sampleData.picklist.default.collection,
@@ -32,3 +34,5 @@ $(function () {
 		Lib.log('changed', data);
 	});
 });
+
+// <-- SAMPLE CONTROL CODE

@@ -2,6 +2,8 @@ import {Lib, Spinner} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	// const spinner = new Spinner($('#spinner'));
 	const spinner1 = new Spinner($('#spinner-jquery-control .spinner1'), {
@@ -53,3 +55,5 @@ $(function () {
 	void(spinner8);
 	void(spinner9);
 });
+
+// <-- SAMPLE CONTROL CODE
