@@ -9,15 +9,14 @@ const COMPONENT_NAME = 'tooltip';
 const COMPONENT_DISPLAY_NAME = 'Tooltip';
 const SAMPLE_DATA_ACCESSOR = 'tooltip';
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-// const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
-const SAMPLE_DATA_DEFAULT = sampleData[SAMPLE_DATA_ACCESSOR].default.collection;
+const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
 $(function () {
 	$('#' + COMPONENT_NAME + '-jquery-control')
 		.attr('data-component-name', COMPONENT_NAME)
 		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
 		.append(controlTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
+			componentCollection: SAMPLE_DATA_DEFAULT.collection,
 			componentName: COMPONENT_NAME,
 			componentDisplayName: COMPONENT_DISPLAY_NAME
 		})
@@ -27,7 +26,7 @@ $(function () {
 		.attr('data-component-name', COMPONENT_NAME)
 		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
 		.append(demoControlsTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
+			componentCollection: SAMPLE_DATA_DEFAULT.collection,
 			componentName: COMPONENT_NAME,
 			componentDisplayName: COMPONENT_DISPLAY_NAME
 		})
@@ -35,7 +34,7 @@ $(function () {
 
 	const components = [];
 
-	$.each(SAMPLE_DATA_DEFAULT, function (index, value) {
+	$.each(SAMPLE_DATA_DEFAULT.collection, function (index, value) {
 		const thisComponentProperties = {};
 		const defaultComponentProperties = [
 			'content',

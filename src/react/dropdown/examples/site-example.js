@@ -6,10 +6,6 @@ const SAMPLE_DATA_ACCESSOR = 'dropdown';
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
 const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
-console.log("[site-example.js:11] SAMPLE_DATA:", SAMPLE_DATA);
-console.log("[site-example.js:12] SAMPLE_DATA_DEFAULT:", SAMPLE_DATA_DEFAULT);
-
-
 export default React.createClass({
 	propTypes: {
 		models: React.PropTypes.arrayOf(React.PropTypes.object)

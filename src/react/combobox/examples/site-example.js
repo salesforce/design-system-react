@@ -2,6 +2,10 @@ import React from 'react';
 import {Lib, Combobox} from 'design-system-react';
 import {sampleData, ExampleEvents} from 'design-system-utilities';
 
+const SAMPLE_DATA_ACCESSOR = 'combobox';
+const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
+const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
+
 export default React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool,
@@ -13,11 +17,10 @@ export default React.createClass({
 	},
 
 	getInitialState () {
-		console.log("[site-example.js:16] sampleData.combobox.default.collection:", sampleData.combobox.default.collection);
 		return {
 			model: {
-				collection: sampleData.combobox.default.collection,
-				selection: sampleData.combobox.default.collection[1],
+				collection: SAMPLE_DATA_DEFAULT.collection,
+				selection: SAMPLE_DATA_DEFAULT.collection[1],
 				resize: 'auto'
 			}
 		};
@@ -46,7 +49,7 @@ export default React.createClass({
 
 	setSelection () {
 		const model = this.state.model;
-		model.selection = sampleData.combobox.default.collection[5];
+		model.selection = SAMPLE_DATA_DEFAULT.collection[5];
 		this.setState({model});
 	},
 
