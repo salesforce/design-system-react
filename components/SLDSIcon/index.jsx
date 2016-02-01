@@ -27,6 +27,10 @@ const propTypes = {
    */
   className: React.PropTypes.string,
   /**
+   * If true, icon color is white. If false, icon color is the default text color.
+   */
+  inverse: React.PropTypes.bool,
+  /**
    * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
    */
   name: React.PropTypes.string.isRequired,
@@ -34,12 +38,12 @@ const propTypes = {
 };
 const defaultProps = {
   category: 'standard',
+  inverse: true,
   size: 'medium',
 };
 
 /**
  * The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href="#/button">SLDSButton component</a> component with <code>variant="icon"</code>.
- * The icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.
  */
 class SLDSIcon extends React.Component {
 
@@ -66,6 +70,7 @@ class SLDSIcon extends React.Component {
       [`slds-icon--${this.props.size}`]: this.props.size !== "medium",
       [`slds-icon-${customName}`]: this.props.category === "custom",
       [`slds-icon-${this.props.category}-${name}`]: this.props.category === "standard",
+      [`slds-icon-text-default`]: !this.props.inverse,
     });
   }
 

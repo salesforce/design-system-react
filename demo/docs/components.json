@@ -383,7 +383,7 @@
         }
     },
     "SLDSIcon": {
-        "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.",
+        "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.",
         "displayName": "SLDSIcon",
         "props": {
             "assistiveText": {
@@ -432,6 +432,17 @@
                 },
                 "required": false,
                 "description": "CSS classes that are applied to the SVG"
+            },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, icon color is white. If false, icon color is the default text color.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
             },
             "name": {
                 "type": {
