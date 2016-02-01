@@ -8,8 +8,8 @@ import _ from 'underscore';
 const COMPONENT_NAME = 'data-table';
 const COMPONENT_DISPLAY_NAME = 'Data Table';
 const SAMPLE_DATA_ACCESSOR = 'dataTable';
-const SAMPLE_DATA_DEFAULT = sampleData[SAMPLE_DATA_ACCESSOR].default;
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
+const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
 console.log("[site-example.js:14] SAMPLE_DATA_DEFAULT:", SAMPLE_DATA_DEFAULT);
 console.log("[site-example.js:15] SAMPLE_DATA:", SAMPLE_DATA);

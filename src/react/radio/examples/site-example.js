@@ -2,6 +2,10 @@ import React          from 'react';
 import { Radio }      from 'design-system-react';
 import { sampleData } from 'design-system-utilities';
 
+const SAMPLE_DATA_ACCESSOR = 'radio';
+const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
+const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
+
 // https://www.lightningdesignsystem.com/components/forms#radio
 
 export default React.createClass({
@@ -11,13 +15,13 @@ export default React.createClass({
 		function populateRadioboxen ( element, index ) {
 			radioboxen.set('radio' + (index + 1), element);
 		}
-		sampleData.radio.default.collection.forEach(populateRadioboxen);
+		SAMPLE_DATA_DEFAULT.radios.forEach(populateRadioboxen);
 		return { radioboxen };
 	},
 
 	render () {
-		const name = sampleData.radio.default.name;
-		const labelText = sampleData.radio.default.labelText;
+		const name = SAMPLE_DATA_DEFAULT.name;
+		const labelText = SAMPLE_DATA_DEFAULT.labelText;
 		const radios = [
 			<Radio
 				checked={this.state.radioboxen.get('radio1').checked}

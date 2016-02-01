@@ -2,6 +2,14 @@ import React             from 'react';
 import { Lib, Dropdown } from 'design-system-react';
 import { sampleData }    from 'design-system-utilities';
 
+const SAMPLE_DATA_ACCESSOR = 'dropdown';
+const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
+const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
+
+console.log("[site-example.js:11] SAMPLE_DATA:", SAMPLE_DATA);
+console.log("[site-example.js:12] SAMPLE_DATA_DEFAULT:", SAMPLE_DATA_DEFAULT);
+
+
 export default React.createClass({
 	propTypes: {
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
@@ -11,9 +19,9 @@ export default React.createClass({
 		return {
 			models: [
 				{
-					collection: sampleData.dropdown.default.collection,
+					collection: SAMPLE_DATA_DEFAULT.collection,
 					disabled: false,
-					selection: sampleData.dropdown.default.collection[1]
+					selection: SAMPLE_DATA_DEFAULT.collection[SAMPLE_DATA_DEFAULT.selection.value]
 				}
 			]
 		};

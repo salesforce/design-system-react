@@ -4,7 +4,7 @@ import { sampleData } from 'design-system-utilities-react';
 
 const SAMPLE_DATA_ACCESSOR = 'tree';
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA_DEFAULT;
+const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
 
 export default React.createClass({

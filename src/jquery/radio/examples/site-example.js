@@ -33,23 +33,20 @@ $(function () {
 	);
 
 	const components = [];
-
-	$.each(SAMPLE_DATA_DEFAULT, function (index, value) {
+	$.each(SAMPLE_DATA, function (index, value) {
 		const thisComponentProperties = {};
-		const defaultComponentProperties = [
-			'labelText',
-			'name',
-			'radios'
-		];
-		$.each(defaultComponentProperties, function (index2, value2) {
-			if (typeof value[value2] !== 'undefined') {
-				if (value[value2] !== '') {
-					thisComponentProperties[value2] = value[value2];
-				}
+		if (typeof value !== 'undefined') {
+			if (index === 'default') {
+				$.each(SAMPLE_DATA.default, function (index2, value2) {
+					if (typeof value2 !== 'undefined') {
+						if (index2 !== '') {
+							thisComponentProperties[index2] = value2;
+						}
+					}
+				});
 			}
-		});
-
-		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control'), thisComponentProperties);
+		}
+		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME), thisComponentProperties);
 		void (components[COMPONENT_NAME + index]);
 		// Log on change
 		$('#component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME).on('changed', function (event, data) {
