@@ -1,6 +1,6 @@
 const collection = [
 	{
-		content: '<span>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</span>',
+		content: '<span>I should show myself on click.</span>',
 		trigger: 'click',
 		position: 'right',
 		isOpen: false,
@@ -8,7 +8,7 @@ const collection = [
 		container: document.querySelector('body')
 	},
 	{
-		content: '<span>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</span>',
+		content: '<span>I should show up on hover.</span>',
 		trigger: 'hover',
 		position: 'bottom',
 		isOpen: false,
@@ -16,7 +16,7 @@ const collection = [
 		container: document.querySelector('body')
 	},
 	{
-		content: '<span>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</span>',
+		content: '<span>I will appear on focus.</span>',
 		trigger: 'focus',
 		position: 'left',
 		isOpen: false,
