@@ -103,7 +103,7 @@ class CodeMirror extends React.Component {
     super(props);
     this.state = {
       code: props.codeText,
-      showCode: true
+      showCode: false,
     };
   }
 

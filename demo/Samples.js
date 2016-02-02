@@ -1,6 +1,7 @@
 const Samples =  {
   Buttons: require('fs').readFileSync('demo/code-snippets/ButtonExamples.js', 'utf8'),
-  ButtonGroups: require('fs').readFileSync('demo/code-snippets/ButtonGroupExamples.js', 'utf8'),
+  ButtonGroups1: require('fs').readFileSync('demo/code-snippets/ButtonGroup1Examples.js', 'utf8'),
+  ButtonGroups2: require('fs').readFileSync('demo/code-snippets/ButtonGroup2Examples.js', 'utf8'),
   Dropdowns: require('fs').readFileSync('demo/code-snippets/DropdownExamples.js', 'utf8'),
   Icons: require('fs').readFileSync('demo/code-snippets/IconExamples.js', 'utf8'),
   IconButtons: require('fs').readFileSync('demo/code-snippets/ButtonIconExamples.js', 'utf8'),
