@@ -91,47 +91,47 @@
 
 	var _ButtonSection2 = _interopRequireDefault(_ButtonSection);
 
-	var _ButtonStatefulSection = __webpack_require__(314);
+	var _ButtonStatefulSection = __webpack_require__(317);
 
 	var _ButtonStatefulSection2 = _interopRequireDefault(_ButtonStatefulSection);
 
-	var _ButtonGroupSection = __webpack_require__(315);
+	var _ButtonGroupSection = __webpack_require__(318);
 
 	var _ButtonGroupSection2 = _interopRequireDefault(_ButtonGroupSection);
 
-	var _DateInputSection = __webpack_require__(316);
+	var _DateInputSection = __webpack_require__(319);
 
 	var _DateInputSection2 = _interopRequireDefault(_DateInputSection);
 
-	var _DatePickerSingleSelectSection = __webpack_require__(317);
+	var _DatePickerSingleSelectSection = __webpack_require__(320);
 
 	var _DatePickerSingleSelectSection2 = _interopRequireDefault(_DatePickerSingleSelectSection);
 
-	var _DropdownSection = __webpack_require__(318);
+	var _DropdownSection = __webpack_require__(321);
 
 	var _DropdownSection2 = _interopRequireDefault(_DropdownSection);
 
-	var _IconSection = __webpack_require__(319);
+	var _IconSection = __webpack_require__(322);
 
 	var _IconSection2 = _interopRequireDefault(_IconSection);
 
-	var _LookupSection = __webpack_require__(320);
+	var _LookupSection = __webpack_require__(323);
 
 	var _LookupSection2 = _interopRequireDefault(_LookupSection);
 
-	var _ModalSection = __webpack_require__(321);
+	var _ModalSection = __webpack_require__(324);
 
 	var _ModalSection2 = _interopRequireDefault(_ModalSection);
 
-	var _NotificationSection = __webpack_require__(322);
+	var _NotificationSection = __webpack_require__(325);
 
 	var _NotificationSection2 = _interopRequireDefault(_NotificationSection);
 
-	var _PicklistSection = __webpack_require__(323);
+	var _PicklistSection = __webpack_require__(326);
 
 	var _PicklistSection2 = _interopRequireDefault(_PicklistSection);
 
-	var _TooltipSection = __webpack_require__(324);
+	var _TooltipSection = __webpack_require__(327);
 
 	var _TooltipSection2 = _interopRequireDefault(_TooltipSection);
 
@@ -9426,6 +9426,7 @@
 	 */
 	var EventInterface = {
 	  type: null,
+	  target: null,
 	  // currentTarget is set when dispatching; no use in copying it here
 	  currentTarget: emptyFunction.thatReturnsNull,
 	  eventPhase: null,
@@ -9459,8 +9460,6 @@
 	  this.dispatchConfig = dispatchConfig;
 	  this.dispatchMarker = dispatchMarker;
 	  this.nativeEvent = nativeEvent;
-	  this.target = nativeEventTarget;
-	  this.currentTarget = nativeEventTarget;
 
 	  var Interface = this.constructor.Interface;
 	  for (var propName in Interface) {
@@ -9471,7 +9470,11 @@
 	    if (normalize) {
 	      this[propName] = normalize(nativeEvent);
 	    } else {
-	      this[propName] = nativeEvent[propName];
+	      if (propName === 'target') {
+	        this.target = nativeEventTarget;
+	      } else {
+	        this[propName] = nativeEvent[propName];
+	      }
 	    }
 	  }
 
@@ -13320,7 +13323,10 @@
 	      }
 	    });
 
-	    nativeProps.children = content;
+	    if (content) {
+	      nativeProps.children = content;
+	    }
+
 	    return nativeProps;
 	  }
 
@@ -18793,7 +18799,7 @@
 
 	'use strict';
 
-	module.exports = '0.14.6';
+	module.exports = '0.14.7';
 
 /***/ },
 /* 148 */
@@ -26348,6 +26354,10 @@
 	   */
 	  className: _react2.default.PropTypes.string,
 	  /**
+	   * If true, icon color is white. If false, icon color is the default text color.
+	   */
+	  inverse: _react2.default.PropTypes.bool,
+	  /**
 	   * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
 	   */
 	  name: _react2.default.PropTypes.string.isRequired,
@@ -26355,12 +26365,12 @@
 	};
 	var defaultProps = {
 	  category: 'standard',
+	  inverse: true,
 	  size: 'medium'
 	};
 
 	/**
 	 * The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href="#/button">SLDSButton component</a> component with <code>variant="icon"</code>.
-	 * The icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.
 	 */
 
 	var SLDSIcon = function (_React$Component) {
@@ -26393,7 +26403,7 @@
 	      var name = this.props.name ? this.props.name.replace(/_/g, '-') : '';
 	      var customName = this.props.name ? this.props.name.replace("custom", "custom-") : null;
 
-	      return classNames(this.props.className, "slds-icon", (_classNames2 = {}, _defineProperty(_classNames2, 'slds-icon--' + this.props.size, this.props.size !== "medium"), _defineProperty(_classNames2, 'slds-icon-' + customName, this.props.category === "custom"), _defineProperty(_classNames2, 'slds-icon-' + this.props.category + '-' + name, this.props.category === "standard"), _classNames2));
+	      return classNames(this.props.className, "slds-icon", (_classNames2 = {}, _defineProperty(_classNames2, 'slds-icon--' + this.props.size, this.props.size !== "medium"), _defineProperty(_classNames2, 'slds-icon-' + customName, this.props.category === "custom"), _defineProperty(_classNames2, 'slds-icon-' + this.props.category + '-' + name, this.props.category === "standard"), _defineProperty(_classNames2, 'slds-icon-text-default', !this.props.inverse), _classNames2));
 	    }
 	  }, {
 	    key: 'render',
@@ -33365,7 +33375,7 @@
 	   */
 	  footer: _react2.default.PropTypes.array,
 	  isOpen: _react2.default.PropTypes.bool.isRequired,
-	  prompt: _react2.default.PropTypes.oneOf(["", "success", "warning", "error", "wrench", "offline", "info"]),
+	  prompt: _react2.default.PropTypes.oneOf(["success", "warning", "error", "wrench", "offline", "info"]),
 	  size: _react2.default.PropTypes.oneOf(["medium", "large"]),
 	  /**
 	   * Content underneath the title.
@@ -33377,8 +33387,7 @@
 	  align: "center",
 	  directional: false,
 	  dismissible: true,
-	  isOpen: false,
-	  prompt: ""
+	  isOpen: false
 	};
 
 	/**
@@ -33489,7 +33498,7 @@
 	  }, {
 	    key: "isPrompt",
 	    value: function isPrompt() {
-	      return this.props.prompt !== "";
+	      return this.props.prompt !== undefined;
 	    }
 	  }, {
 	    key: "footerComponent",
@@ -34968,6 +34977,12 @@
 	  _createClass(SLDSPopoverTooltip, [{
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
+	      if (this.refs.triggerDOMElem) {
+	        var triggerTabIndex = _reactDom2.default.findDOMNode(this.refs.triggerDOMElem).tabIndex;
+	        if (triggerTabIndex !== 0) {
+	          console.log('%c=====> ERROR: The child element of SLDSPopoverTooltip must be an anchor or button so that keyboard users can tab to it to open the Tooltip.', 'color: red');
+	        }
+	      }
 	      this.setState({
 	        el: _reactDom2.default.findDOMNode(this),
 	        isOpen: this.props.openByDefault
@@ -35082,7 +35097,8 @@
 	          onBlur: _this3.handleMouseLeave.bind(_this3),
 	          onFocus: _this3.handleMouseEnter.bind(_this3),
 	          onMouseEnter: _this3.handleMouseEnter.bind(_this3),
-	          onMouseLeave: _this3.handleMouseLeave.bind(_this3)
+	          onMouseLeave: _this3.handleMouseLeave.bind(_this3),
+	          ref: 'triggerDOMElem'
 	        }, _this3.grandKidsWithAsstText(child));
 	      });
 	    }
@@ -37445,19 +37461,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -37566,6 +37582,7 @@
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
 	var classNames = __webpack_require__(212);
+	var trim = __webpack_require__(309);
 
 	var SLDSButton = __webpack_require__(203);
 	var SLDSButtonStateful = __webpack_require__(230);
@@ -37710,12 +37727,26 @@
 	      return mountNode;
 	    }
 	  }, {
+	    key: 'getCode',
+	    value: function getCode() {
+	      if (!(this.state.code && trim(this.state.code).indexOf('<') === 0)) {
+	        return this.state.code;
+	      }
+	      return "\
+	    class Example extends React.Component {\
+	      render(){\
+	        return (<section>" + this.state.code + "</section>);\
+	      }\
+	    }\
+	    ReactDOM.render(<Example />, mountNode);";
+	    }
+	  }, {
 	    key: 'executeCode',
 	    value: function executeCode() {
 	      var _this4 = this;
 
 	      request('/api/transform/js', 'POST', {
-	        js: this.state.code
+	        js: this.getCode()
 	      }, function (err, result) {
 	        var mountNode = _this4.clearExample();
 	        if (err) {
@@ -48919,15 +48950,375 @@
 
 /***/ },
 /* 309 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function(global) {/**
+	 * lodash 4.0.1 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modularize exports="npm" -o ./`
+	 * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+	var charsEndIndex = __webpack_require__(310),
+	    charsStartIndex = __webpack_require__(311);
+
+	/** Used as references for various `Number` constants. */
+	var INFINITY = 1 / 0;
+
+	/** `Object#toString` result references. */
+	var symbolTag = '[object Symbol]';
+
+	/** Used to match leading and trailing whitespace. */
+	var reTrim = /^\s+|\s+$/g;
+
+	/** Used to compose unicode character classes. */
+	var rsAstralRange = '\\ud800-\\udfff',
+	    rsComboMarksRange = '\\u0300-\\u036f\\ufe20-\\ufe23',
+	    rsComboSymbolsRange = '\\u20d0-\\u20f0',
+	    rsVarRange = '\\ufe0e\\ufe0f';
+
+	/** Used to compose unicode capture groups. */
+	var rsAstral = '[' + rsAstralRange + ']',
+	    rsCombo = '[' + rsComboMarksRange + rsComboSymbolsRange + ']',
+	    rsFitz = '\\ud83c[\\udffb-\\udfff]',
+	    rsModifier = '(?:' + rsCombo + '|' + rsFitz + ')',
+	    rsNonAstral = '[^' + rsAstralRange + ']',
+	    rsRegional = '(?:\\ud83c[\\udde6-\\uddff]){2}',
+	    rsSurrPair = '[\\ud800-\\udbff][\\udc00-\\udfff]',
+	    rsZWJ = '\\u200d';
+
+	/** Used to compose unicode regexes. */
+	var reOptMod = rsModifier + '?',
+	    rsOptVar = '[' + rsVarRange + ']?',
+	    rsOptJoin = '(?:' + rsZWJ + '(?:' + [rsNonAstral, rsRegional, rsSurrPair].join('|') + ')' + rsOptVar + reOptMod + ')*',
+	    rsSeq = rsOptVar + reOptMod + rsOptJoin,
+	    rsSymbol = '(?:' + [rsNonAstral + rsCombo + '?', rsCombo, rsRegional, rsSurrPair, rsAstral].join('|') + ')';
+
+	/** Used to match [string symbols](https://mathiasbynens.be/notes/javascript-unicode). */
+	var reComplexSymbol = RegExp(rsFitz + '(?=' + rsFitz + ')|' + rsSymbol + rsSeq, 'g');
+
+	/**
+	 * Converts `string` to an array.
+	 *
+	 * @private
+	 * @param {string} string The string to convert.
+	 * @returns {Array} Returns the converted array.
+	 */
+	function stringToArray(string) {
+	  return string.match(reComplexSymbol);
+	}
+
+	/** Used for built-in method references. */
+	var objectProto = global.Object.prototype;
+
+	/**
+	 * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+	 * of values.
+	 */
+	var objectToString = objectProto.toString;
+
+	/** Built-in value references. */
+	var Symbol = global.Symbol;
+
+	/** Used to convert symbols to primitives and strings. */
+	var symbolProto = Symbol ? Symbol.prototype : undefined,
+	    symbolToString = Symbol ? symbolProto.toString : undefined;
+
+	/**
+	 * Checks if `value` is object-like. A value is object-like if it's not `null`
+	 * and has a `typeof` result of "object".
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+	 * @example
+	 *
+	 * _.isObjectLike({});
+	 * // => true
+	 *
+	 * _.isObjectLike([1, 2, 3]);
+	 * // => true
+	 *
+	 * _.isObjectLike(_.noop);
+	 * // => false
+	 *
+	 * _.isObjectLike(null);
+	 * // => false
+	 */
+	function isObjectLike(value) {
+	  return !!value && typeof value == 'object';
+	}
+
+	/**
+	 * Checks if `value` is classified as a `Symbol` primitive or object.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to check.
+	 * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+	 * @example
+	 *
+	 * _.isSymbol(Symbol.iterator);
+	 * // => true
+	 *
+	 * _.isSymbol('abc');
+	 * // => false
+	 */
+	function isSymbol(value) {
+	  return typeof value == 'symbol' ||
+	    (isObjectLike(value) && objectToString.call(value) == symbolTag);
+	}
+
+	/**
+	 * Converts `value` to a string if it's not one. An empty string is returned
+	 * for `null` and `undefined` values. The sign of `-0` is preserved.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category Lang
+	 * @param {*} value The value to process.
+	 * @returns {string} Returns the string.
+	 * @example
+	 *
+	 * _.toString(null);
+	 * // => ''
+	 *
+	 * _.toString(-0);
+	 * // => '-0'
+	 *
+	 * _.toString([1, 2, 3]);
+	 * // => '1,2,3'
+	 */
+	function toString(value) {
+	  // Exit early for strings to avoid a performance hit in some environments.
+	  if (typeof value == 'string') {
+	    return value;
+	  }
+	  if (value == null) {
+	    return '';
+	  }
+	  if (isSymbol(value)) {
+	    return Symbol ? symbolToString.call(value) : '';
+	  }
+	  var result = (value + '');
+	  return (result == '0' && (1 / value) == -INFINITY) ? '-0' : result;
+	}
+
+	/**
+	 * Removes leading and trailing whitespace or specified characters from `string`.
+	 *
+	 * @static
+	 * @memberOf _
+	 * @category String
+	 * @param {string} [string=''] The string to trim.
+	 * @param {string} [chars=whitespace] The characters to trim.
+	 * @param- {Object} [guard] Enables use as an iteratee for functions like `_.map`.
+	 * @returns {string} Returns the trimmed string.
+	 * @example
+	 *
+	 * _.trim('  abc  ');
+	 * // => 'abc'
+	 *
+	 * _.trim('-_-abc-_-', '_-');
+	 * // => 'abc'
+	 *
+	 * _.map(['  foo  ', '  bar  '], _.trim);
+	 * // => ['foo', 'bar']
+	 */
+	function trim(string, chars, guard) {
+	  string = toString(string);
+	  if (!string) {
+	    return string;
+	  }
+	  if (guard || chars === undefined) {
+	    return string.replace(reTrim, '');
+	  }
+	  chars = (chars + '');
+	  if (!chars) {
+	    return string;
+	  }
+	  var strSymbols = stringToArray(string),
+	      chrSymbols = stringToArray(chars);
+
+	  return strSymbols.slice(charsStartIndex(strSymbols, chrSymbols), charsEndIndex(strSymbols, chrSymbols) + 1).join('');
+	}
+
+	module.exports = trim;
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
+
+/***/ },
+/* 310 */
+/***/ function(module, exports) {
+
+	/**
+	 * lodash 4.0.0 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modularize exports="npm" -o ./`
+	 * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+
+	/**
+	 * The base implementation of `_.indexOf` without `fromIndex` bounds checks.
+	 *
+	 * @private
+	 * @param {Array} array The array to search.
+	 * @param {*} value The value to search for.
+	 * @param {number} fromIndex The index to search from.
+	 * @returns {number} Returns the index of the matched value, else `-1`.
+	 */
+	function baseIndexOf(array, value, fromIndex) {
+	  if (value !== value) {
+	    return indexOfNaN(array, fromIndex);
+	  }
+	  var index = fromIndex - 1,
+	      length = array.length;
+
+	  while (++index < length) {
+	    if (array[index] === value) {
+	      return index;
+	    }
+	  }
+	  return -1;
+	}
+
+	/**
+	 * Used by `_.trim` and `_.trimEnd` to get the index of the last string symbol
+	 * that is not found in the character symbols.
+	 *
+	 * @private
+	 * @param {Array} strSymbols The string symbols to inspect.
+	 * @param {Array} chrSymbols The character symbols to find.
+	 * @returns {number} Returns the index of the last unmatched string symbol.
+	 */
+	function charsEndIndex(strSymbols, chrSymbols) {
+	  var index = strSymbols.length;
+
+	  while (index-- && baseIndexOf(chrSymbols, strSymbols[index], 0) > -1) {}
+	  return index;
+	}
+
+	/**
+	 * Gets the index at which the first occurrence of `NaN` is found in `array`.
+	 *
+	 * @private
+	 * @param {Array} array The array to search.
+	 * @param {number} fromIndex The index to search from.
+	 * @param {boolean} [fromRight] Specify iterating from right to left.
+	 * @returns {number} Returns the index of the matched `NaN`, else `-1`.
+	 */
+	function indexOfNaN(array, fromIndex, fromRight) {
+	  var length = array.length,
+	      index = fromIndex + (fromRight ? 0 : -1);
+
+	  while ((fromRight ? index-- : ++index < length)) {
+	    var other = array[index];
+	    if (other !== other) {
+	      return index;
+	    }
+	  }
+	  return -1;
+	}
+
+	module.exports = charsEndIndex;
+
+
+/***/ },
+/* 311 */
+/***/ function(module, exports) {
+
+	/**
+	 * lodash 4.0.0 (Custom Build) <https://lodash.com/>
+	 * Build: `lodash modularize exports="npm" -o ./`
+	 * Copyright 2012-2016 The Dojo Foundation <http://dojofoundation.org/>
+	 * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+	 * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+	 * Available under MIT license <https://lodash.com/license>
+	 */
+
+	/**
+	 * The base implementation of `_.indexOf` without `fromIndex` bounds checks.
+	 *
+	 * @private
+	 * @param {Array} array The array to search.
+	 * @param {*} value The value to search for.
+	 * @param {number} fromIndex The index to search from.
+	 * @returns {number} Returns the index of the matched value, else `-1`.
+	 */
+	function baseIndexOf(array, value, fromIndex) {
+	  if (value !== value) {
+	    return indexOfNaN(array, fromIndex);
+	  }
+	  var index = fromIndex - 1,
+	      length = array.length;
+
+	  while (++index < length) {
+	    if (array[index] === value) {
+	      return index;
+	    }
+	  }
+	  return -1;
+	}
+
+	/**
+	 * Used by `_.trim` and `_.trimStart` to get the index of the first string symbol
+	 * that is not found in the character symbols.
+	 *
+	 * @private
+	 * @param {Array} strSymbols The string symbols to inspect.
+	 * @param {Array} chrSymbols The character symbols to find.
+	 * @returns {number} Returns the index of the first unmatched string symbol.
+	 */
+	function charsStartIndex(strSymbols, chrSymbols) {
+	  var index = -1,
+	      length = strSymbols.length;
+
+	  while (++index < length && baseIndexOf(chrSymbols, strSymbols[index], 0) > -1) {}
+	  return index;
+	}
+
+	/**
+	 * Gets the index at which the first occurrence of `NaN` is found in `array`.
+	 *
+	 * @private
+	 * @param {Array} array The array to search.
+	 * @param {number} fromIndex The index to search from.
+	 * @param {boolean} [fromRight] Specify iterating from right to left.
+	 * @returns {number} Returns the index of the matched `NaN`, else `-1`.
+	 */
+	function indexOfNaN(array, fromIndex, fromRight) {
+	  var length = array.length,
+	      index = fromIndex + (fromRight ? 0 : -1);
+
+	  while ((fromRight ? index-- : ++index < length)) {
+	    var other = array[index];
+	    if (other !== other) {
+	      return index;
+	    }
+	  }
+	  return -1;
+	}
+
+	module.exports = charsStartIndex;
+
+
+/***/ },
+/* 312 */
 /***/ function(module, exports) {
 
 	"use strict";
 
 	var Samples = {
-	  Buttons: "const handleClick = function(buttonInstance) {\n  return function() {\n    alert(buttonInstance + \" Button Clicked\");\n   };\n};\nlet inverseBtnParent = {backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"};\nconst examples = (\n  <div className=\"slds-x-small-buttons--horizontal\">\n    <h4 className=\"slds-text-heading--medium slds-p-vertical--medium\">Standard Buttons</h4>\n    <SLDSButton\n      label=\"Base\"\n      onClick={handleClick(\"Base\")} />\n\n    <SLDSButton\n      label=\"Neutral\"\n      onClick={handleClick(\"Neutral\")}\n      variant=\"neutral\" />\n\n    <SLDSButton\n      iconName=\"download\"\n      iconPosition=\"left\"\n      label=\"Neutral Icon\"\n      onClick={handleClick(\"Neutral Icon\")}\n      variant=\"neutral\" />\n\n    <SLDSButton\n      label=\"Responsive\"\n      onClick={handleClick(\"Responsive\")}\n      responsive={true}\n      variant=\"neutral\" />\n\n    <SLDSButton\n      label=\"Brand\"\n      onClick={handleClick(\"Brand\")}\n      variant=\"brand\" />\n\n    <SLDSButton\n      disabled={true}\n      label=\"Disabled\"\n      onClick={handleClick(\"Disabled\")}\n      variant=\"brand\" />\n\n    <SLDSButton\n      label=\"Destructive\"\n      onClick={handleClick(\"Destructive\")}\n      variant=\"destructive\" />\n\n    <div style={inverseBtnParent} className=\"slds-m-horizontal--small\">\n      <SLDSButton\n        label=\"Inverse\"\n        onClick={handleClick(\"Inverse\")}\n        variant=\"inverse\"/>\n    </div>\n  </div>\n);\n\nReactDOM.render(examples, mountNode);\n\n",
+	  Buttons: "<div className=\"slds-x-small-buttons--horizontal\">\n  <h4 className=\"slds-text-heading--medium slds-p-vertical--medium\">Standard Buttons</h4>\n  <SLDSButton\n    label=\"Base\"\n    onClick={function(){alert(\"Base Button Clicked\")}} />\n\n  <SLDSButton\n    label=\"Neutral\"\n    variant=\"neutral\" />\n\n  <SLDSButton\n    iconName=\"download\"\n    iconPosition=\"left\"\n    label=\"Neutral Icon\"\n    variant=\"neutral\" />\n\n  <SLDSButton\n    label=\"Responsive\"\n    responsive={true}\n    variant=\"neutral\" />\n\n  <SLDSButton\n    label=\"Brand\"\n    variant=\"brand\" />\n\n  <SLDSButton\n    disabled={true}\n    label=\"Disabled\"\n    onClick={function(){alert(\"Disabled Button Clicked\")}}\n    variant=\"brand\" />\n\n  <SLDSButton\n    label=\"Destructive\"\n    variant=\"destructive\" />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      label=\"Inverse\"\n      variant=\"inverse\"/>\n  </div>\n</div>\n",
 	  ButtonGroups: "const moreOptions = [\n  {label: \"undo\", value: \"A0\"},\n  {label: \"redo\", value: \"B0\"},\n  {label: \"activate\", value: \"C0\"},\n];\nconst sortOptions = [\n  {label: \"Sort ascending\", value: \"A0\"},\n  {label: \"Sort descending\", value: \"B0\"},\n];\nconst selectItem = function(item) {\n  console.log(item.label, \"selected\");\n};\nconst examples = (\n  <div>\n    <SLDSButtonGroup className=\"slds-p-bottom--medium\">\n      <SLDSButton\n        label=\"Refresh\"\n        variant=\"neutral\" />\n\n      <SLDSButton\n        label=\"Edit\"\n        variant=\"neutral\" />\n\n      <SLDSButton\n        label=\"Save\"\n        variant=\"neutral\" />\n\n        <SLDSMenuDropdown\n          assistiveText=\"More Options\"\n          buttonVariant=\"icon\"\n          iconName=\"down\"\n          iconVariant=\"border-filled\"\n          onSelect={selectItem}\n          openOn=\"click\"\n          options={moreOptions} />\n    </SLDSButtonGroup>\n\n    <SLDSButtonGroup className=\"slds-p-vertical--medium\">\n      <SLDSButtonStateful\n        assistiveText=\"Show Chart\"\n        buttonVariant=\"icon\"\n        iconName=\"chart\"\n        iconVariant=\"border\"\n        variant=\"icon\" />\n\n      <SLDSButtonStateful\n        assistiveText=\"Filter\"\n        iconName=\"filter\"\n        iconVariant=\"border\"\n        variant=\"icon\" />\n\n        <SLDSMenuDropdown\n          assistiveText=\"Sort\"\n          checkmark={true}\n          iconName=\"sort\"\n          iconVariant=\"more\"\n          onSelect={selectItem}\n          openOn=\"click\"\n          modal={true}\n          options={sortOptions}\n          value=\"A0\"\n          variant=\"icon\" />\n    </SLDSButtonGroup>\n  </div>\n);\n\nReactDOM.render(examples, mountNode);\n\n",
 	  Dropdowns: "const options = [\n  {label: \"A Option Option Super Super Long\", value: \"A0\"},\n  {label: \"B Option\", value: \"B0\"},\n  {label: \"C Option\", value: \"C0\"},\n  {label: \"D Option\", value: \"D0\"},\n  {label: \"E Option\", value: \"E0\"},\n  {label: \"A1 Option\", value: \"A1\"},\n  {label: \"B2 Option\", value: \"B1\"},\n  {label: \"C2 Option\", value: \"C1\"},\n  {label: \"D2 Option\", value: \"D1\"},\n  {label: \"E2 Option Super Super Long\", value: \"E1\"},\n];\n\nclass DropdownExample extends React.Component {\n\n  displayName: \"DropdownExample\";\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleMouseEnter() {\n    console.log(\"onEnter should be defined\");\n  }\n\n  handleMouseLeave() {\n    console.log(\"onLeave should be defined\");\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSMenuDropdown\n          label=\"Dropdown Click\"\n          onClick={this.handleOnClick}\n          onSelect={this.handleOnSelect}\n          options={options} />\n\n        <SLDSMenuDropdown\n          align=\"right\"\n          buttonClassName=\"green\"\n          buttonVariant=\"brand\"\n          checkmark={true}\n          label=\"Dropdown Hover\"\n          onMouseEnter={this.handleMouseEnter}\n          onMouseLeave={this.handleMouseLeave}\n          onSelect={this.handleOnSelect}\n          openOn=\"hover\"\n          options={options}\n          value=\"C0\" />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<DropdownExample />, mountNode);\n\n",
-	  Icons: "const iconExamples = (\n  <div>\n    <SLDSIcon\n      assistiveText=\"Favorite\"\n      category=\"custom\"\n      name=\"custom1\"\n      size=\"small\" />\n\n    <SLDSIcon\n      assistiveText=\"Accounts\"\n      category=\"standard\"\n      name=\"account\" />\n\n    <SLDSIcon\n      assistiveText=\"Announcements\"\n      category=\"action\"\n      className=\"slds-m-around--x-small\"\n      name=\"announcement\" />\n\n    <SLDSIcon\n      assistiveText=\"Approval\"\n      category=\"action\"\n      className=\"slds-m-around--x-small\"\n      name=\"approval\"\n      size=\"large\" />\n\n    <SLDSIcon\n      assistiveText=\"\"\n      category=\"utility\"\n      className=\"slds-icon-text-default\"\n      name=\"open_folder\"\n      size=\"large\" />\n      <span className=\"slds-m-left--x-small\">Documents Folder</span>\n\n  </div>\n);\n\nReactDOM.render(iconExamples, mountNode);\n",
+	  Icons: "<div>\n  <SLDSIcon\n    assistiveText=\"Favorite\"\n    category=\"custom\"\n    name=\"custom1\"\n    size=\"small\" />\n\n  <SLDSIcon\n    assistiveText=\"Accounts\"\n    category=\"standard\"\n    name=\"account\" />\n\n  <SLDSIcon\n    assistiveText=\"Announcements\"\n    category=\"action\"\n    className=\"slds-m-around--x-small\"\n    name=\"announcement\" />\n\n  <SLDSIcon\n    assistiveText=\"Approval\"\n    category=\"action\"\n    className=\"slds-m-around--x-small\"\n    name=\"approval\"\n    size=\"large\" />\n\n  <SLDSIcon\n    assistiveText=\"\"\n    category=\"utility\"\n    inverse={false}\n    name=\"open_folder\"\n    size=\"large\" />\n    <span className=\"slds-m-left--x-small\">Documents Folder</span>\n</div>\n",
 	  IconButtons: "const handleClick = function(buttonInstance) {\n  return function() {\n    alert(buttonInstance + \" Clicked\");\n   };\n};\nlet hintBtnParent = {backgroundColor: \"#FFB75D\", padding: \"10px 50px\", display: \"inline-block\"};\nlet inverseBtnParent = {backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"};\nlet iconBtnParent = {backgroundColor: \"#4BC076\", padding: \"10px\", display: \"inline-block\"};\nconst examples = (\n  <div className=\"slds-x-small-buttons--horizontal\">\n    <h4 className=\"slds-text-heading--medium slds-p-vertical--medium\">Icon Buttons</h4>\n    <SLDSButton\n      assistiveText=\"Icon Bare Small\"\n      iconName=\"settings\"\n      iconSize=\"small\"\n      iconVariant=\"bare\"\n      onClick={handleClick(\"Icon Bare\")} variant=\"icon\" />\n\n    <SLDSButton\n      assistiveText=\"Icon Container Small\"\n      iconName=\"settings\"\n      iconSize=\"small\"\n      iconVariant=\"container\"\n      onClick={handleClick(\"Icon Container\")}\n      variant=\"icon\" />\n\n    <div style={iconBtnParent} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon Border medium\"\n      iconName=\"settings\"\n      iconVariant=\"border\"\n      onClick={handleClick(\"Icon border\")}\n      variant=\"icon\" />\n\n    <SLDSButton\n      assistiveText=\"Icon Border-filled medium\"\n      iconName=\"settings\"\n      iconVariant=\"border-filled\"\n      onClick={handleClick(\"Icon border-filled\")}\n      variant=\"icon\" />\n    </div>\n\n    <SLDSButton\n      assistiveText=\"Icon More large\"\n      iconName=\"settings\"\n      iconSize=\"large\"\n      iconVariant=\"more\"\n      onClick={handleClick(\"Icon More\")}\n      variant=\"icon\" />\n\n    <div style={inverseBtnParent} className=\"slds-m-horizontal--small\">\n      <SLDSButton\n        assistiveText=\"Icon inverse\"\n        iconName=\"settings\"\n        iconSize=\"large\"\n        onClick={handleClick(\"Icon Inverse\")}\n        variant=\"icon-inverse\" />\n    </div>\n    <div style={hintBtnParent} className=\"slds-hint-parent slds-m-horizontal--small\">\n      <SLDSButton\n        assistiveText=\"Icon hint large\"\n        hint={true}\n        iconName=\"settings\"\n        iconSize=\"large\"\n        onClick={handleClick(\"Icon Hint\")}\n        variant=\"icon\" />\n    </div>\n  </div>\n);\n\nReactDOM.render(examples, mountNode);\n\n",
 	  Lookups: "const items = [\n  {label: \"Paddy\\\"s Pub\"},\n  {label: \"Tyrell Corp\"},\n  {label: \"Paper St. Soap Company\"},\n  {label: \"Nakatomi Investments\"},\n  {label: \"Acme Landscaping\"},\n  {label: \"Acme Construction\"}\n];\n\nclass LookupExample extends React.Component {\n\n  displayName: \"LookupExample\";\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      searchVal: null\n    };\n  }\n\n  onChange(newValue){\n    console.log(\"New search term: \", newValue);\n    this.setState({searchVal: newValue});\n  }\n\n  selectItem(item){\n    console.log(item , \" Selected\");\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSLookup\n          emptyMessage=\"No items found\"\n          footerRenderer={SLDSLookup.DefaultFooter}\n          hasError={false}\n          headerRenderer={SLDSLookup.DefaultHeader}\n          iconCategory=\"standard\"\n          iconName=\"account\"\n          label=\"Account\"\n          onChange={this.onChange.bind(this)}\n          onItemSelect={this.selectItem}\n          options={items}\n        />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<LookupExample />, mountNode);\n\n",
 	  Modals: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      modalAopen: false,\n      modalBopen:false,\n      promptOpen:false,\n    };\n  }\n\n  openModal(modalInstance) {\n    return () => {\n      this.setState({[modalInstance]: true});\n    }\n  }\n\n  closeModal(modalInstance) {\n    return () => {\n      this.setState({[modalInstance]: false});\n    }\n  }\n\n  selectItem(item){\n    console.log(item , \" Selected\");\n  }\n\n  getModalContent() {\n    return (\n      <div>\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n    <SLDSLookup\n      emptyMessage=\"No Accounts Found\"\n      label=\"Accounts\"\n      modal={true}\n      onItemSelect={this.selectItem}\n      options={[\n        {label:\"Paddy\\\"s Pub\"},\n        {label:\"Tyrell Corp\"},\n        {label:\"Paper St. Soap Company\"},\n        {label:\"Nakatomi Investments\"},\n        {label:\"Acme Landscaping\"},\n        {label:\"Acme Construction\"}\n      ]}\n      salesforceObj=\"account\"\n    />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n    <SLDSMenuPicklist\n      label=\"Contacts\"\n      modal={true}\n      onSelect={(value)=>{console.log(\"selected: \",value);}}\n      options={[\n        {label:\"A Option Option Super Super Long\",value:\"A0\"},\n        {label:\"B Option\",value:\"B0\"},\n        {label:\"C Option\",value:\"C0\"},\n        {label:\"D Option\",value:\"D0\"},\n        {label:\"E Option\",value:\"E0\"},\n        {label:\"A1 Option\",value:\"A1\"},\n        {label:\"B2 Option\",value:\"B1\"},\n        {label:\"C2 Option\",value:\"C1\"},\n        {label:\"D2 Option\",value:\"D1\"},\n        {label:\"E2 Option Super Super Long\",value:\"E1\"},\n\n      ]}\n      placeholder = \"Select a contact\"\n      value=\"C0\"\n    />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n        <SLDSDatepickerSingleSelect />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n      </div>\n    )\n  }\n\n  render(){\n    return (\n      <div>\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Bare\" onClick={this.openModal(\"modalAopen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            align=\"top\"\n            isOpen={this.state.modalAopen}\n            onRequestClose={this.closeModal(\"modalAopen\")}\n            size=\"large\">\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Standard\" onClick={this.openModal(\"modalBopen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            footer={[\n              <SLDSButton key=\"modalBCancel\" label=\"Cancel\" variant=\"neutral\" onClick={this.closeModal(\"modalBopen\").bind(this)} />,\n              <SLDSButton key=\"modalBSave\" label=\"Save\" variant=\"brand\" onClick={this.closeModal(\"modalBopen\").bind(this)} />\n            ]}\n            isOpen={this.state.modalBopen}\n            onRequestClose={this.closeModal(\"modalBopen\")}\n            tagline=\"Tagline goes here\"\n            title={<span>My Title</span>}>\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Prompt\" onClick={this.openModal(\"promptOpen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            dismissible={false}\n            footer={[ <SLDSButton key=\"promptBtn\" label=\"Got it\" variant=\"neutral\" onClick={this.closeModal(\"promptOpen\")} /> ]}\n            isOpen={this.state.promptOpen}\n            onRequestClose={this.closeModal(\"promptOpen\")}\n            prompt=\"error\"\n            size=\"medium\"\n            title={<span>Service Unavailable</span>}>\n              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.\n          </SLDSModal>\n        </div>\n\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n\n",
@@ -48935,14 +49326,14 @@
 	  Picklists: "const picklistOptions = [\n  {label: \"A Option Option Super Super Long\", value: \"A0\", title: \"Greg\"},\n  {label: \"B Option\", value: \"B0\"},\n  {label: \"C Option\", value: \"C0\"},\n  {label: \"D Option\", value: \"D0\"},\n  {label: \"E Option\", value: \"E0\"},\n  {label: \"A1 Option\", value: \"A1\"},\n  {label: \"B2 Option\", value: \"B1\"},\n  {label: \"C2 Option\", value: \"C1\"},\n  {label: \"D2 Option\", value: \"D1\"},\n  {label: \"E2 Option Super Super Long\", value: \"E1\"},\n];\n\nclass PicklistExample extends React.Component {\n\n  displayName: \"PicklistExample\";\n\n  handleOnUpdateHighlighted () {\n    console.log(\"onUpdateHighlighted should be defined\");\n  }\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistOptions}\n         placeholder = \"Select a contact\"\n         value=\"C0\"\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistExample />, mountNode);\n\n",
 	  CustomPicklists: "import CustomListItemLabel from \"./CustomListItemLabel.cjsx\";\n\nconst picklistCustomOptions = [\n  {label:\"A Option Option Super Super Long\",value:\"A0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"B Option\",value:\"B0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"C Option\",value:\"C0\",strongLabel:\"SUPER TITLE C0\"},\n  {label:\"D Option\",value:\"D0\",strongLabel:\"SUPER TITLE D0\"},\n  {label:\"E Option\",value:\"E0\",strongLabel:\"SUPER TITLE E0\"},\n  {label:\"A1 Option\",value:\"A1\",strongLabel:\"SUPER TITLE A1\"},\n  {label:\"B2 Option\",value:\"B1\",strongLabel:\"SUPER TITLE B1\"},\n  {label:\"C2 Option\",value:\"C1\",strongLabel:\"SUPER TITLE C1\"},\n  {label:\"D2 Option\",value:\"D1\",strongLabel:\"SUPER TITLE D1\"},\n  {label:\"E2 Option Super Super Long\",value:\"E1\",strongLabel:\"SUPER TITLE E1\"},\n];\n\nclass PicklistCustomExample extends React.Component {\n\n  displayName: \"PicklistCustomExample\"\n\n  handleOnUpdateHighlighted () {\n    console.log(\"onUpdateHighlighted should be defined\");\n  }\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         listItemRenderer={CustomListItemLabel}\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistCustomOptions}\n         placeholder=\"Select a contact\"\n         value=\"C0\"\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistCustomExample />, mountNode);\n\n",
 	  StatefulButtons: "let inverseBtnParent = {backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"};\nconst examples = (\n  <div className=\"slds-x-small-buttons--horizontal\">\n    <div style={inverseBtnParent} className=\"slds-m-horizontal--small\">\n      <SLDSButtonStateful\n        stateOne={{iconName: \"add\", label: \"Join\"}}\n        stateTwo={{iconName: \"check\", label: \"Member\"}}\n        stateThree={{iconName: \"close\", label: \"Leave\"}}\n        variant=\"inverse\" />\n    </div>\n\n    <SLDSButtonStateful />\n\n    <SLDSButtonStateful\n      assistiveText=\"like\"\n      iconName=\"like\"\n      iconSize=\"large\"\n      variant=\"icon\" />\n\n  </div>\n);\n\nReactDOM.render(examples, mountNode);\n\n",
-	  Tooltips: "const moreOptions = [\n  {label: \"undo\", value: \"A0\"},\n  {label: \"redo\", value: \"B0\"},\n  {label: \"activate\", value: \"C0\"},\n];\n\nclass TooltipExample extends React.Component {\n\n  displayName: \"TooltipExample\";\n\n  render(){\n    return (\n      <div>\n        <div ref=\"tooltipOnHover\" className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSPopoverTooltip\n            align=\"top\"\n            content={<span>Tooltip on top</span>}>\n              <a href=\"javascript:void(0)\">\n                <SLDSIcon assistiveText=\"info\" category=\"utility\" name=\"info\" className=\"slds-icon-text-default\" />\n              </a>\n            </SLDSPopoverTooltip>\n        </div>\n        <div className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSPopoverTooltip\n            key=\"tooltipDemo\"\n            align=\"right\"\n            content={<span>Tooltip with right alignment</span>}>\n              <SLDSButton variant=\"brand\" label=\"Hover to Open\" />\n            </SLDSPopoverTooltip>\n        </div>\n        <div className=\"slds-p-horizontal--large\" style={{ \"display\": \"inline-block\"}}>\n          <SLDSButtonGroup className=\"slds-p-bottom--medium\">\n            <SLDSButton\n              label=\"Refresh\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSButton\n              label=\"Edit\"\n              variant=\"neutral\"\n              tooltip={<SLDSPopoverTooltip\n                align=\"bottom right\"\n                content=\"Buttonbar Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n            <SLDSMenuDropdown\n              assistiveText=\"More Options\"\n              buttonVariant=\"icon\"\n              iconName=\"down\"\n              iconVariant=\"border-filled\"\n              openOn=\"hover\"\n              onSelect={(i) => console.log(\"selected\", i)}\n              options={moreOptions}\n              tooltip={<SLDSPopoverTooltip\n                align=\"top right\"\n                content=\"Dropdown Tooltip\"\n                openByDefault={false}></SLDSPopoverTooltip>}\n            />\n\n        </SLDSButtonGroup>\n        </div>\n\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<TooltipExample />, mountNode);\n\n",
-	  DatepickerSingleSelect: "\nclass SLDSDatepickerSingleSelectExample extends React.Component {\n\n  displayName: \"SLDSDatepickerSingleSelectExample\";\n\n  render(){\n    return (\n      <SLDSDatepickerSingleSelect />\n    );\n  }\n\n}\n\nReactDOM.render(<SLDSDatepickerSingleSelect />, mountNode);\n\n"
+	  Tooltips: "<SLDSPopoverTooltip\n  align=\"top\"\n  content=\"Tooltip on top\">\n    <a href=\"javascript:void(0)\">\n      <SLDSIcon\n        assistiveText=\"info\" category=\"utility\"\n        name=\"info\" \n        className=\"slds-icon-text-default\" />\n    </a>\n</SLDSPopoverTooltip>",
+	  DatepickerSingleSelect: "\n<SLDSDatepickerSingleSelect />\n"
 	};
 
 	module.exports = Samples;
 
 /***/ },
-/* 310 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -48953,7 +49344,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -49151,15 +49542,15 @@
 	module.exports = PropTable;
 
 /***/ },
-/* 311 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	module.exports = __webpack_require__(312);
+	module.exports = __webpack_require__(315);
 
 /***/ },
-/* 312 */
+/* 315 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -49547,7 +49938,7 @@
 			}
 		},
 		"SLDSIcon": {
-			"description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.\nThe icon color is white by default. Add the class, <code>slds-icon-text-default</code>, to create a text-colored fill color for utility icons.",
+			"description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.",
 			"displayName": "SLDSIcon",
 			"props": {
 				"assistiveText": {
@@ -49596,6 +49987,17 @@
 					},
 					"required": false,
 					"description": "CSS classes that are applied to the SVG"
+				},
+				"inverse": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "If true, icon color is white. If false, icon color is the default text color.",
+					"defaultValue": {
+						"value": "true",
+						"computed": false
+					}
 				},
 				"name": {
 					"type": {
@@ -50127,10 +50529,6 @@
 						"name": "enum",
 						"value": [
 							{
-								"value": "\"\"",
-								"computed": false
-							},
-							{
 								"value": "\"success\"",
 								"computed": false
 							},
@@ -50157,11 +50555,7 @@
 						]
 					},
 					"required": false,
-					"description": "",
-					"defaultValue": {
-						"value": "\"\"",
-						"computed": false
-					}
+					"description": ""
 				},
 				"size": {
 					"type": {
@@ -50463,7 +50857,7 @@
 	};
 
 /***/ },
-/* 313 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -50532,7 +50926,7 @@
 	module.exports = ComponentHeader;
 
 /***/ },
-/* 314 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50547,19 +50941,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -50637,7 +51031,7 @@
 	module.exports = ButtonStatefulSection;
 
 /***/ },
-/* 315 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50652,19 +51046,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -50742,7 +51136,7 @@
 	module.exports = ButtonGroupSection;
 
 /***/ },
-/* 316 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50757,19 +51151,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -50847,7 +51241,7 @@
 	module.exports = DatepickerSingleSelectSection;
 
 /***/ },
-/* 317 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -50869,19 +51263,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -50918,7 +51312,7 @@
 	});
 
 /***/ },
-/* 318 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50933,19 +51327,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -51023,7 +51417,7 @@
 	module.exports = DropdownSection;
 
 /***/ },
-/* 319 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51038,19 +51432,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -51128,7 +51522,7 @@
 	module.exports = IconSection;
 
 /***/ },
-/* 320 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51143,19 +51537,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -51233,7 +51627,7 @@
 	module.exports = LookupSection;
 
 /***/ },
-/* 321 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51248,19 +51642,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -51338,7 +51732,7 @@
 	module.exports = ModalSection;
 
 /***/ },
-/* 322 */
+/* 325 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51353,19 +51747,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -51443,7 +51837,7 @@
 	module.exports = NotificationSection;
 
 /***/ },
-/* 323 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51458,19 +51852,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -51548,7 +51942,7 @@
 	module.exports = PicklistSection;
 
 /***/ },
-/* 324 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51563,19 +51957,19 @@
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(309);
+	var _Samples = __webpack_require__(312);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(310);
+	var _PropTable = __webpack_require__(313);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(311);
+	var _docs = __webpack_require__(314);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(313);
+	var _componentHeader = __webpack_require__(316);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
