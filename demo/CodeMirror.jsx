@@ -66,7 +66,7 @@ class CodeMirrorEditor extends React.Component {
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this.refs.editor);
     this.editor = CM.fromTextArea(node, {
-      mode: 'javascript',
+      mode: 'htmlmixed',
       lineNumbers: true,
       lineWrapping: false,
       matchBrackets: true,
