@@ -1,45 +1,275 @@
-import { Lib, Button as Component } from 'design-system-jquery';
-import * as controlTemplate from './template-control';
-import * as demoControlsTemplate from './template-demo-controls';
-import { sampleData } from 'design-system-utilities';
+import { Lib, Button } from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const COMPONENT_NAME = 'button';
-const COMPONENT_DISPLAY_NAME = 'Buttons';
-const SAMPLE_DATA_ACCESSOR = 'button';
-const SAMPLE_DATA_DEFAULT = sampleData[SAMPLE_DATA_ACCESSOR].default.collection;
+// SAMPLE CONTROL CODE -->
+const buttonsProperties = [
+	{
+		assistiveText: 'button-base',
+		text: 'Button Base'
+	},
+	{
+		assistiveText: 'button-base-disabled',
+		disabled: true,
+		text: 'Disabled'
+	},
+	{
+		assistiveText: 'button-neutral',
+		text: 'Button Neutral',
+		theme: 'neutral'
+	},
+	{
+		assistiveText: 'button-neutral-disabled',
+		disabled: true,
+		text: 'Disabled',
+		theme: 'neutral'
+	},
+	{
+		assistiveText: 'button-neutral-small',
+		size: 'small',
+		text: 'Small',
+		theme: 'neutral'
+	},
+	{
+		assistiveText: 'button-neutral-icon-left',
+		icon: 'utility.download',
+		iconPosition: 'left',
+		text: 'Download',
+		theme: 'neutral'
+	},
+	{
+		assistiveText: 'button-neutral-icon-right',
+		icon: 'utility.download',
+		iconPosition: 'right',
+		text: 'Download',
+		theme: 'neutral'
+	},
+	{
+		assistiveText: 'button-brand',
+		text: 'Button Brand',
+		theme: 'brand'
+	},
+	{
+		assistiveText: 'button-brand-disabled',
+		disabled: true,
+		text: 'Disabled',
+		theme: 'brand'
+	},
+	{
+		assistiveText: 'button-brand-small',
+		size: 'small',
+		text: 'Small',
+		theme: 'brand'
+	},
+	{
+		assistiveText: 'button-destructive',
+		text: 'Button Destructive',
+		theme: 'destructive'
+	},
+	{
+		assistiveText: 'button-destructive-disabled',
+		disabled: true,
+		text: 'Disabled',
+		theme: 'destructive'
+	},
+	{
+		assistiveText: 'button-destructive-small',
+		size: 'small',
+		text: 'Small',
+		theme: 'destructive'
+	},
+	{
+		assistiveText: 'button-inverse',
+		text: 'Button Inverse',
+		theme: 'inverse'
+	},
+	{
+		assistiveText: 'button-inverse-disabled',
+		disabled: true,
+		text: 'Disabled',
+		theme: 'inverse'
+	},
+	{
+		assistiveText: 'button-inverse-small',
+		size: 'small',
+		text: 'Small',
+		theme: 'inverse'
+	},
+	{
+		assistiveText: 'button-stateful',
+		icon: 'utility.add',
+		text: 'Follow',
+		theme: 'neutral',
+		views: [
+			{
+				text: 'Following',
+				view: 'selected',
+				icon: 'utility.check'
+			},
+			{
+				text: 'Unfollow',
+				view: 'selectedHover',
+				icon: 'utility.close'
+			}
+		]
+	},
+	{
+		assistiveText: 'button-stateful-inverse',
+		icon: 'utility.add',
+		text: 'Follow',
+		theme: 'inverse',
+		views: [
+			{
+				text: 'Following',
+				view: 'selected',
+				icon: 'utility.check'
+			},
+			{
+				text: 'Unfollow',
+				view: 'selectedHover',
+				icon: 'utility.close'
+			}
+		]
+	},
+	{
+		assistiveText: 'button-icon-bare-x-small',
+		icon: 'utility.close',
+		iconStyle: 'icon-bare',
+		iconSize: 'x-small'
+	},
+	{
+		assistiveText: 'button-icon-bare-small',
+		icon: 'utility.close',
+		iconStyle: 'icon-bare',
+		iconSize: 'small'
+	},
+	{
+		assistiveText: 'button-icon-bare',
+		icon: 'utility.close',
+		iconStyle: 'icon-bare'
+	},
+	{
+		assistiveText: 'button-icon-bare-large',
+		icon: 'utility.close',
+		iconStyle: 'icon-bare',
+		iconSize: 'large'
+	},
+	{
+		assistiveText: 'button-icon-bare-x-small--disabled',
+		disabled: true,
+		icon: 'utility.close',
+		iconStyle: 'icon-bare',
+		iconSize: 'x-small'
+	},
+	{
+		assistiveText: 'button-icon-bare-small--disabled',
+		disabled: true,
+		icon: 'utility.close',
+		iconStyle: 'icon-bare',
+		iconSize: 'small'
+	},
+	{
+		assistiveText: 'button-icon-bare--disabled',
+		disabled: true,
+		icon: 'utility.close',
+		iconStyle: 'icon-bare'
+	},
+	{
+		assistiveText: 'button-icon-bare-large--disabled',
+		disabled: true,
+		icon: 'utility.close',
+		iconStyle: 'icon-bare',
+		iconSize: 'large'
+	},
+	{
+		assistiveText: 'button-icon-container',
+		icon: 'utility.table',
+		iconStyle: 'icon-container'
+	},
+	{
+		assistiveText: 'button-icon-container-disabled',
+		disabled: true,
+		icon: 'utility.table',
+		iconStyle: 'icon-container'
+	},
+	{
+		assistiveText: 'button-icon-border',
+		icon: 'utility.table',
+		iconStyle: 'icon-border'
+	},
+	{
+		assistiveText: 'button-icon-border-disabled',
+		disabled: true,
+		icon: 'utility.table',
+		iconStyle: 'icon-border'
+	},
+	{
+		assistiveText: 'button-icon-border-filled',
+		icon: 'utility.table',
+		iconStyle: 'icon-border-filled'
+	},
+	{
+		assistiveText: 'button-icon-border-filled-disabled',
+		disabled: true,
+		icon: 'utility.table',
+		iconStyle: 'icon-border-filled'
+	},
+	{
+		assistiveText: 'button-icon-more',
+		icon: 'utility.table',
+		iconStyle: 'icon-more'
+	},
+	{
+		assistiveText: 'button-icon-more-disabled',
+		disabled: true,
+		icon: 'utility.table',
+		iconStyle: 'icon-more'
+	},
+	{
+		assistiveText: 'button-icon-stateful',
+		icon: 'utility.like',
+		iconStyle: 'icon-border',
+		selected: false
+	},
+	{
+		assistiveText: 'button-icon-inverse',
+		icon: 'utility.close',
+		iconStyle: 'icon-inverse'
+	},
+	{
+		assistiveText: 'button-icon-inverse-disabled',
+		disabled: true,
+		icon: 'utility.close',
+		iconStyle: 'icon-inverse'
+	},
+	{
+		assistiveText: 'button-icon-bare-hint',
+		icon: 'utility.close',
+		iconStyle: 'icon-bare-hint'
+	},
+	{
+		assistiveText: 'button-icon-border-hint',
+		icon: 'utility.close',
+		iconStyle: 'icon-border-hint'
+	},
+	{
+		assistiveText: 'button-icon-border-filled-hint',
+		icon: 'utility.close',
+		iconStyle: 'icon-border-filled-hint'
+	},
+	{
+		assistiveText: 'button-icon-container-hint',
+		icon: 'utility.close',
+		iconStyle: 'icon-container-hint'
+	}
+];
 
 $(function () {
-	$('#' + COMPONENT_NAME + '-jquery-control')
-	.attr(
-		'data-component-name', COMPONENT_NAME
-	).attr(
-		'data-component-display-name', COMPONENT_DISPLAY_NAME
-	).append(
-		controlTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		}
-	));
+	const buttons = [];
+	$.each(buttonsProperties, function (index, value) {
+		const thisButtonProperties = {};
 
-	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(demoControlsTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	const components = [];
-
-
-	$.each(SAMPLE_DATA_DEFAULT, function (index, value) {
-		const thisComponentProperties = {};
-		const defaultComponentProperties = [
+		const defaultButtonProperties = [
 			'assistiveText',
 			'disabled',
 			'children',
@@ -56,51 +286,51 @@ $(function () {
 			'views'
 		];
 
-		$.each(defaultComponentProperties, function (index2, value2) {
+		$.each(defaultButtonProperties, function (index2, value2) {
 			if ( typeof value[value2] !== 'undefined') {
 				if ( value[value2] !== '' ) {
-					thisComponentProperties[value2] = value[value2];
+					thisButtonProperties[value2] = value[value2];
 				}
 			}
 		});
-		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control ' + value.domNode), thisComponentProperties);
-		void (components[COMPONENT_NAME + index]);
+		buttons['button' + index] = new Button($('#button__' + value.assistiveText), thisButtonProperties);
+		void (buttons['button' + index]);
 	});
 
-	$('#' + COMPONENT_NAME + '-jquery-set-icon').on('click', function () {
-		components.button5.renderView({
+	$('#button-jquery-set-icon').on('click', function () {
+		buttons.button5.renderView({
 			icon: 'utility.check',
 			text: 'Icon Updated!'
 		});
 	});
 
-	$('#' + COMPONENT_NAME + '-stateful-jquery-select').on('click', function () {
-		components.button16.toggle(true);
+	$('#button-stateful-jquery-select').on('click', function () {
+		buttons.button16.toggle(true);
 	});
 
-	$('#' + COMPONENT_NAME + '-stateful-jquery-deselect').on('click', function () {
-		components.button16.toggle(false);
+	$('#button-stateful-jquery-deselect').on('click', function () {
+		buttons.button16.toggle(false);
 	});
 
-	$('#' + COMPONENT_NAME + '-stateful-jquery-disable').on('click', function () {
-		components.button16.disable();
+	$('#button-stateful-jquery-disable').on('click', function () {
+		buttons.button16.disable();
 	});
 
-	$('#' + COMPONENT_NAME + '-stateful-jquery-enable').on('click', function () {
-		components.button16.enable();
+	$('#button-stateful-jquery-enable').on('click', function () {
+		buttons.button16.enable();
 	});
 
-	$('#' + COMPONENT_NAME + '-stateful-jquery-recreate').attr('disabled', true);
-	$('#' + COMPONENT_NAME + '-stateful-jquery-destroy').on('click', function () {
-		$('#' + COMPONENT_NAME + '-stateful-jquery-destroy').attr('disabled', true);
-		$('#' + COMPONENT_NAME + '-stateful-jquery-recreate').attr('disabled', false);
-		console.log(components.button16.destroy());
+	$('#button-stateful-jquery-recreate').attr('disabled', true);
+	$('#button-stateful-jquery-destroy').on('click', function () {
+		$('#button-stateful-jquery-destroy').attr('disabled', true);
+		$('#button-stateful-jquery-recreate').attr('disabled', false);
+		console.log(buttons.button16.destroy());
 	});
 
-	$('#' + COMPONENT_NAME + '-stateful-jquery-recreate').on('click', function () {
-		$('#' + COMPONENT_NAME + '-stateful-jquery-destroy').attr('disabled', false);
-		$('#' + COMPONENT_NAME + '-stateful-jquery-recreate').attr('disabled', true);
-		components.button16 = new Component($('#' + COMPONENT_NAME + '-jquery-control .button-stateful'), {
+	$('#button-stateful-jquery-recreate').on('click', function () {
+		$('#button-stateful-jquery-destroy').attr('disabled', false);
+		$('#button-stateful-jquery-recreate').attr('disabled', true);
+		buttons.button16 = new Button($('#button__button-stateful'), {
 			assistiveText: 'button-stateful',
 			disabled: false,
 			icon: 'utility.add',
@@ -119,6 +349,8 @@ $(function () {
 				}
 			]
 		});
-		void (components.button16);
+		void (buttons.button16);
 	});
 });
+
+// <-- SAMPLE CONTROL CODE

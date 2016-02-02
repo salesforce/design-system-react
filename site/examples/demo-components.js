@@ -31,6 +31,7 @@ module.exports = function (facade) {
 				component: component,
 				name: component.split('-').join(' '),
 				displayName: toTitleCase(component.split('-').join(' ')),
+				html: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.html'), 'utf8'),
 				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8'),
 				sampleData: sampleData
 			};

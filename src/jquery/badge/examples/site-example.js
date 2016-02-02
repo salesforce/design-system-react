@@ -1,72 +1,40 @@
-import { Lib, Badge as Component } from 'design-system-jquery';
-import * as controlTemplate from './template-control';
-import * as demoControlsTemplate from './template-demo-controls';
-import { sampleData } from 'design-system-utilities';
+import {Lib, Badge} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const COMPONENT_NAME = 'badge';
-const COMPONENT_DISPLAY_NAME = 'Badges';
-const SAMPLE_DATA_ACCESSOR = 'badge';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
+// SAMPLE CONTROL CODE -->
+
+const badgesProperties = [
+	{text: 'Base', theme: 'base'},
+	{text: 'Default', theme: 'default'},
+	{text: 'Shade', theme: 'shade'},
+	{text: 'Inverse', theme: 'inverse'},
+	{text: 'Alt Inverse', theme: 'alt-inverse'},
+	{text: 'Info', theme: 'info'},
+	{text: 'Success', theme: 'success'},
+	{text: 'Warning', theme: 'warning'},
+	{text: 'Error', theme: 'error'},
+	{text: 'Offline', theme: 'offline'},
+	{text: 'Shade - Alert Texture', theme: 'shade-alert-texture'}
+];
 
 $(function () {
-	$('#' + COMPONENT_NAME + '-jquery-control')
-	.attr(
-		'data-component-name', COMPONENT_NAME
-	).attr(
-		'data-component-display-name', COMPONENT_DISPLAY_NAME
-	).append(
-		controlTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		}
-	));
-
-	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(demoControlsTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	const components = [];
-
-	$.each(SAMPLE_DATA_DEFAULT, function (index, value) {
-		const thisComponentProperties = {};
-		if (typeof value !== 'undefined') {
-			if (typeof value === 'object') {
-				$.each(value, function (index2, value2) {
-					thisComponentProperties[index2] = value2;
-				});
-			}
-		}
-		components[COMPONENT_NAME + index] = new Component(
-			$(
-				'#'
-				+ COMPONENT_NAME
-				+ '-jquery-control #component-wrapper-'
-				+ COMPONENT_NAME
-				+ '__'
-				+ COMPONENT_NAME
-				+ '-'
-				+ thisComponentProperties.theme
-			),
-			thisComponentProperties
-		);
-		void (components[COMPONENT_NAME + index]);
+	const badges = [];
+	$.each(badgesProperties, function ( index, value ) {
+		badges['badge' + index] = new Badge($('#badge__badge-' + value.theme), {
+			'text': value.text,
+			'theme': value.theme
+		});
+		void(badges['badge' + index]);
 	});
-
-	// Example of instantiating without an element and subsequently appending
-	const badge15 = new Component({
-		text: 'Appended',
-		theme: 'inverse'
-	});
-	badge15.appendTo($('#badge-jquery-control .badge15'));
-	void(badge15);
 });
+
+// Example of instantiating without an element and subsequently appending
+const badge15 = new Badge({
+	text: 'Appended',
+	theme: 'inverse'
+});
+badge15.appendTo($('#badge__badge-for-appending'));
+void(badge15);
+
+// <-- SAMPLE CONTROL CODE

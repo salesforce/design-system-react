@@ -56,6 +56,18 @@ app.get('/jquery', function (req, res) {
 			if (example) {
 				var componentDisplayName = example.displayName;
 				var componentName = example.name;
+				if (typeof(example.html) === undefined) {
+					example.html = '';
+				}
+				if (typeof(example.code) !== undefined) {
+					if (typeof String(example.code).split('// SAMPLE CONTROL CODE -->')[1] !== 'undefined') {
+						if (typeof String(example.code).split('// SAMPLE CONTROL CODE -->')[1].split('// <-- SAMPLE CONTROL CODE')[0] !== 'undefined') {
+							if (typeof String(example.code).split('// SAMPLE CONTROL CODE -->')[1].split('// <-- SAMPLE CONTROL CODE')[0].trim() !== 'undefined') {
+								example.code = String(example.code).split('// SAMPLE CONTROL CODE -->')[1].split('// <-- SAMPLE CONTROL CODE')[0].trim();
+							}
+						}
+					}
+				}
 				jQueryCode[example.component.replace('-', '')] = example.code;
 				jQueryCode['components'].push({
 					'facade': 'jquery',
@@ -65,6 +77,7 @@ app.get('/jquery', function (req, res) {
 					'component': example.component,
 					'componentName': componentName,
 					'componentDisplayName': componentDisplayName,
+					'html': example.html,
 					'code': example.code,
 					'sampleData': example.sampleData
 				});
@@ -89,6 +102,18 @@ app.get('/react', function (req, res) {
 			if (example) {
 				var componentDisplayName = example.displayName;
 				var componentName = example.name;
+				if (typeof(example.html) === undefined) {
+					example.html = '';
+				}
+				if (typeof(example.code) !== undefined) {
+					if (typeof String(example.code).split('// SAMPLE CONTROL CODE -->')[1] !== 'undefined') {
+						if (typeof String(example.code).split('// SAMPLE CONTROL CODE -->')[1].split('// <-- SAMPLE CONTROL CODE')[0] !== 'undefined') {
+							if (typeof String(example.code).split('// SAMPLE CONTROL CODE -->')[1].split('// <-- SAMPLE CONTROL CODE')[0].trim() !== 'undefined') {
+								example.code = String(example.code).split('// SAMPLE CONTROL CODE -->')[1].split('// <-- SAMPLE CONTROL CODE')[0].trim();
+							}
+						}
+					}
+				}
 				reactCode[example.component.replace('-', '')] = example.code;
 				reactCode['components'].push({
 					'facade': 'react',
