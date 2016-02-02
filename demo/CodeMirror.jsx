@@ -35,6 +35,10 @@ const propTypes = {
 };
 const defaultProps = {};
 
+const isMarkup = (code) => {
+  return code && trim(code).indexOf('<')===0;
+};
+
 function request (url, method, data, callback) {
   const request = new window.XMLHttpRequest()
   request.onreadystatechange = () => {
@@ -66,7 +70,7 @@ class CodeMirrorEditor extends React.Component {
   componentDidMount() {
     const node = ReactDOM.findDOMNode(this.refs.editor);
     this.editor = CM.fromTextArea(node, {
-      mode: 'htmlmixed',
+      mode: isMarkup(this.props.codeText)?'htmlmixed':'javascript',
       lineNumbers: true,
       lineWrapping: false,
       matchBrackets: true,
@@ -128,8 +132,12 @@ class CodeMirror extends React.Component {
     return mountNode;
   }
 
+  isMarkup(){
+    return this.state.code && trim(this.state.code).indexOf('<')===0;
+  }
+
   getCode() {
-    if(!(this.state.code && trim(this.state.code).indexOf('<')===0)){
+    if(!isMarkup(this.state.code)){
       return this.state.code;
     }
     return "\
