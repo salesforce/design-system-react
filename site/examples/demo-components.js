@@ -22,16 +22,33 @@ module.exports = function (facade) {
 	return packageJSON.components.map(function (component) {
 		var sampleData;
 		try {
-			sampleData = fs.readFileSync(path.resolve((sampleCodeDir + '-' + facade), component + '.js'), 'utf8')
+			sampleData = fs.readFileSync(path.resolve((sampleCodeDir + '-' + facade), component + '.js'), 'utf8');
 		} catch (ex) {
-			sampleData = fs.readFileSync(path.resolve(sampleCodeDir, component + '.js'), 'utf8')
+			try {
+				sampleData = fs.readFileSync(path.resolve(sampleCodeDir, component + '.js'), 'utf8');
+			} catch (ex) {
+				sampleData = '';
+			}
+		}
+		var sampleHTML;
+		try {
+			sampleHTML = fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.html'), 'utf8');
+		} catch (ex) {
+			sampleHTML = '';
+		}
+		var devHTML;
+		try {
+			devHTML = fs.readFileSync(path.resolve(codeDir, component + '/examples/dev-example.html'), 'utf8');
+		} catch (ex) {
+			devHTML = '';
 		}
 		try {
 			return {
 				component: component,
 				name: component.split('-').join(' '),
 				displayName: toTitleCase(component.split('-').join(' ')),
-				html: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.html'), 'utf8'),
+				html: sampleHTML,
+				devHtml: devHTML,
 				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8'),
 				sampleData: sampleData
 			};
@@ -41,7 +58,10 @@ module.exports = function (facade) {
 				component: component,
 				name: component.split('-').join(' '),
 				displayName: toTitleCase(component.split('-').join(' ')),
-				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8')
+				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8'),
+				html: sampleHTML,
+				devHtml: devHTML,
+				sampleData: sampleData
 			};
 		}
 	});

@@ -59,6 +59,9 @@ app.get('/jquery', function (req, res) {
 				if (typeof(example.html) === undefined) {
 					example.html = '';
 				}
+				if (typeof(example.devHtml) === undefined) {
+					example.devHtml = '';
+				}
 				if (typeof(example.code) !== undefined) {
 					if (typeof String(example.code).split('// SAMPLE CONTROL CODE -->')[1] !== 'undefined') {
 						if (typeof String(example.code).split('// SAMPLE CONTROL CODE -->')[1].split('// <-- SAMPLE CONTROL CODE')[0] !== 'undefined') {
@@ -78,6 +81,7 @@ app.get('/jquery', function (req, res) {
 					'componentName': componentName,
 					'componentDisplayName': componentDisplayName,
 					'html': example.html,
+					'devHtml': example.devHtml,
 					'code': example.code,
 					'sampleData': example.sampleData
 				});
@@ -124,6 +128,7 @@ app.get('/react', function (req, res) {
 					'componentName': componentName,
 					'componentDisplayName': componentDisplayName,
 					'code': example.code,
+					'html': example.html,
 					'sampleData': example.sampleData
 				});
 			}

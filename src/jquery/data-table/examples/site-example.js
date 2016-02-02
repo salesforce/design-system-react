@@ -1,52 +1,77 @@
-import { Lib, DataTable as Component } from 'design-system-jquery';
-import * as controlTemplate from './template-control';
-import * as demoControlsTemplate from './template-demo-controls';
-import { sampleData } from 'design-system-utilities';
+import {Lib, DataTable} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const COMPONENT_NAME = 'data-table';
-const COMPONENT_DISPLAY_NAME = 'Data Table';
-const SAMPLE_DATA_ACCESSOR = 'dataTable';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
+// SAMPLE CONTROL CODE -->
 
 $(function () {
-	$('#' + COMPONENT_NAME + '-jquery-control')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(controlTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(demoControlsTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	const components = [];
-	$.each(SAMPLE_DATA, function (index, value) {
-		const thisComponentProperties = {};
-		if (typeof value !== 'undefined') {
-			if (index === 'default') {
-				$.each(SAMPLE_DATA.default, function (index2, value2) {
-					if (typeof value2 !== 'undefined') {
-						if (index2 !== '') {
-							thisComponentProperties[index2] = value2;
-						}
-					}
-				});
+	const dataTableProperties = {
+		collection: [
+			{
+				id: '8IKZHZZV80',
+				name: 'Item One',
+				count: 100976,
+				lastModified: 'Yesterday',
+				modifiedBy: 'Ashley McDougal'
+			},
+			{
+				id: '5GJOOOPWU7',
+				name: 'Item Two',
+				count: 54976,
+				lastModified: 'Today',
+				modifiedBy: 'Ashley McDougal'
+			},
+			{
+				id: 'Q8Z71ZUCEZ',
+				name: 'Item Three',
+				count: 10128,
+				lastModified: 'Today',
+				modifiedBy: 'Ashley McDougal'
+			},
+			{
+				id: 'WA0Q0XARAR',
+				name: 'Item Four',
+				count: 63616,
+				lastModified: 'Yesterday',
+				modifiedBy: 'Ashley McDougal'
+			},
+			{
+				id: 'N8M7CMNU39',
+				name: 'Item Five',
+				count: 25615,
+				lastModified: 'Yesterday',
+				modifiedBy: 'Steve Daniels'
 			}
+		],
+		columns: [
+			{
+				propertyName: 'name',
+				displayName: 'Campaign Name',
+				sortable: false,
+				hintParent: false
+			},
+			{
+				propertyName: 'count',
+				displayName: 'Count',
+				sortable: true,
+				hintParent: false
+			},
+			{
+				propertyName: 'lastModified',
+				displayName: 'Last Modified',
+				sortable: true,
+				hintParent: false
+			}
+		],
+		styles: {
+			bordered: true,
+			striped: true
 		}
-		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME), thisComponentProperties);
-		void (components[COMPONENT_NAME + index]);
-	});
+	};
+
+	const dataTable0 = new DataTable($('#dataTable__dataTable--0'), dataTableProperties);
+
+	void(dataTable0);
 });
+
+// <-- SAMPLE CONTROL CODE

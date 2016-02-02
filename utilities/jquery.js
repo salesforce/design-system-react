@@ -1,15 +1,4 @@
 // Sample data
-import badge from './sample-data/badge';
-import button from './sample-data/button';
-import buttonGroup from './sample-data-jquery/button-group';
-import checkbox from './sample-data/checkbox';
-import combobox from './sample-data/combobox';
-import dataTable from './sample-data/data-table';
-import datepicker from './sample-data/datepicker';
-import dropdown from './sample-data/dropdown';
-import lookup from './sample-data/lookup';
-import modal from './sample-data/modal';
-import notification from './sample-data/notification';
 import picklist from './sample-data/picklist';
 import pills from './sample-data/pills';
 import popover from './sample-data/popover';
@@ -25,17 +14,6 @@ import ExampleEvents from './example-events';
 import * as componentWrapperTemplate from './templates/template-component-wrapper';
 
 const sampleData = {
-	badge,
-	button,
-	buttonGroup,
-	checkbox,
-	combobox,
-	dataTable,
-	datepicker,
-	dropdown,
-	lookup,
-	modal,
-	notification,
 	picklist,
 	pills,
 	popover,

@@ -1,17 +1,38 @@
 import {Lib, Dropdown} from 'design-system-jquery';
-import {sampleData} from 'design-system-utilities';
-import * as controlTemplate from './template-control';
-import * as demoControlsTemplate from './template-demo-controls';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
-	$('#dropdown-jquery-control').append(controlTemplate.template);
-	$('#dropdown-jquery-demo-controls').append(demoControlsTemplate.template);
-	const dropdown = new Dropdown($('#dropdown-jquery-control .dropdown1'), {
-		collection: sampleData.dropdown.default.collection,
-		selection: { value: '1' }
-	});
+	const dropdownProperties = {
+		selection: {
+			value: '1'
+		},
+		collection: [
+			{
+				id: 0,
+				text: 'Menu Item One',
+				value: '1',
+				icon: 'utility.table'
+			},
+			{
+				id: 1,
+				text: 'Menu Item Two',
+				value: '2',
+				icon: 'utility.kanban'
+			},
+			{
+				id: 2,
+				text: 'Menu Item Three',
+				value: '3',
+				icon: 'utility.side_list'
+			}
+		]
+	};
+
+	const dropdown = new Dropdown($('#dropdown__dropdown--0'), dropdownProperties);
+	void (dropdown);
 
 	// sample method buttons
 	$('#dropdown-jquery-log').on('click', function () {
@@ -21,7 +42,7 @@ $(function () {
 		dropdown.setSelectionByIndex(1);
 	});
 	$('#dropdown-jquery-setByObject').on('click', function () {
-		dropdown.setSelection(sampleData.dropdown.default.collection[5]);
+		dropdown.setSelection(dropdownProperties.collection[5]);
 	});
 	$('#dropdown-jquery-enable').on('click', function () {
 		dropdown.enable();
@@ -31,10 +52,11 @@ $(function () {
 	});
 
 	// events
-	$('#dropdown-jquery-control .dropdown1').on('rendered', function (event, data) {
+	$('#dropdown__dropdown--0').on('rendered', function (event, data) {
 		Lib.log('rendered', data);
 	});
-	$('#dropdown-jquery-control .dropdown1').on('changed', function (event, data) {
+	$('#dropdown__dropdown--0').on('changed', function (event, data) {
 		Lib.log('changed', data);
-	});
-});
+	}); });
+
+// <-- SAMPLE CONTROL CODE

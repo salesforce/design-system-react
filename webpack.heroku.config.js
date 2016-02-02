@@ -76,7 +76,7 @@ var config = {
 				test: /\.js$/,
 				loaders: ['eslint-loader', StringReplacePlugin.replace({
 					replacements: [{
-						pattern: /DISABLED-assets\/icons/g,
+						pattern: /assets\/icons/g,
 						replacement: function (match, p1, offset, string) {
 							return 'assets/design-system/icons';
 						}
@@ -88,12 +88,12 @@ var config = {
 				test: /\.css$/,
 				loader: StringReplacePlugin.replace({
 					replacements: [{
-						pattern: /DISABLED-assets\/fonts\/webfonts/g,
+						pattern: /assets\/fonts\/webfonts/g,
 						replacement: function (match, p1, offset, string) {
 							return 'assets/design-system/fonts/webfonts';
 						}
 					},{
-						pattern: /DISABLED-assets\/images\/landing/g,
+						pattern: /assets\/images\/landing/g,
 						replacement: function (match, p1, offset, string) {
 							return 'assets/design-system/images/landing';
 						}

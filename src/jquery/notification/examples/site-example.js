@@ -1,52 +1,39 @@
-import { Lib, Notification as Component } from 'design-system-jquery';
-import * as controlTemplate from './template-control';
-import * as demoControlsTemplate from './template-demo-controls';
-import { sampleData } from 'design-system-utilities';
+import {Lib, Notification} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const COMPONENT_NAME = 'notification';
-const COMPONENT_DISPLAY_NAME = 'Notifications';
-const SAMPLE_DATA_ACCESSOR = 'notification';
-const SAMPLE_DATA_DEFAULT = sampleData[SAMPLE_DATA_ACCESSOR].default.collection;
+// SAMPLE CONTROL CODE -->
 
 $(function () {
-	$('#' + COMPONENT_NAME + '-jquery-control')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(controlTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(demoControlsTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	const components = [];
-
-	$.each(SAMPLE_DATA_DEFAULT, function (index, value) {
-		const thisComponentProperties = {};
-		const defaultComponentProperties = [
-			'text',
-			'theme'
-		];
-		$.each(defaultComponentProperties, function (index2, value2) {
-			if (typeof value[value2] !== 'undefined') {
-				if (value[value2] !== '') {
-					thisComponentProperties[value2] = value[value2];
-				}
-			}
-		});
-		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + index), thisComponentProperties);
-		void (components[COMPONENT_NAME + index]);
+	// notification
+	const notification0 = new Notification($('#notification__notification--0'), {
+		text: 'Base System Alert'
 	});
+	const notification1 = new Notification($('#notification__notification--1'), {
+		text: 'Scheduled Maintenance Notification: Sunday March 15, 8:00 AM-10:00 PST',
+		theme: 'success'
+	});
+	const notification2 = new Notification($('#notification__notification--2'), {
+		text: 'Your browser is currently not supported. Your Salesforce may be degraded.',
+		theme: 'error'
+	});
+	const notification3 = new Notification($('#notification__notification--3'), {
+		text: 'You are in offline mode.',
+		theme: 'offline'
+	});
+
+	// methods
+	$('#notification-jquery-hide').on('click', function () {
+		notification3.hide();
+	});
+
+	$('#notification-jquery-show').on('click', function () {
+		notification3.show();
+	});
+
+	void(notification0);
+	void(notification1);
+	void(notification2);
 });
+
+// <-- SAMPLE CONTROL CODE

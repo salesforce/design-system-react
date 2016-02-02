@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // BADGE CONTROL - REACT FACADE
 
 // Core
-import { * as Lib } from '../../lib/lib';
+import * as Lib from '../../lib/lib';
 import BadgeCore, {CONTROL} from '../../core/badge';
 
 // Framework specific
@@ -27,8 +27,8 @@ export const BadgeObject = {
 	displayName: CONTROL,
 
 	propTypes: {
-		theme: React.PropTypes.oneOf(Object.keys(BadgeCore.themes)),
-		children: React.PropTypes.oneOf(['string'])
+		children: React.PropTypes.string.isRequired,
+		theme: React.PropTypes.oneOf(Object.keys(BadgeCore.themes))
 	},
 
 	render () {

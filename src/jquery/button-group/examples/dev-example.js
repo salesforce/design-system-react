@@ -1,16 +1,15 @@
 import {Lib, ButtonGroup, Button} from 'design-system-jquery';
-import * as demoControlsTemplate from './template-demo-controls';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
-	$('#button-group-jquery-demo-controls').append(demoControlsTemplate.template);
 	const button1 = new Button({
 		text: 'Neutral',
 		theme: 'neutral'
 	});
-
-	const buttonGroup1 = new ButtonGroup($('#button-group-jquery-control'), {
+	const buttonGroup1Properties = {
 		theme: 'neutral',
 		buttons: [
 			{
@@ -31,8 +30,10 @@ $(function () {
 			}
 		],
 		children: [button1]
-	});
-	const buttonGroup2 = new ButtonGroup($('#button-group-jquery-control'), {
+	};
+	const buttonGroup1 = new ButtonGroup($('#button-group-jquery-control'), buttonGroup1Properties);
+
+	const buttonGroup2Properties = {
 		theme: 'neutral',
 		buttons: [
 			{
@@ -46,9 +47,10 @@ $(function () {
 				iconStyle: 'icon-border'
 			}
 		]
-	});
+	};
+	const buttonGroup2 = new ButtonGroup($('#button-group-jquery-control'), buttonGroup2Properties);
 
-	const buttonGroup3 = new ButtonGroup($('#button-group-jquery-control'), {
+	const buttonGroup3Properties = {
 		iconStyle: 'icon-border',
 		buttons: [
 			{
@@ -67,7 +69,8 @@ $(function () {
 				iconStyle: 'icon-more'
 			}
 		]
-	});
+	};
+	const buttonGroup3 = new ButtonGroup($('#button-group-jquery-control'), buttonGroup3Properties);
 
 	void(buttonGroup1);
 	void(buttonGroup2);
@@ -81,3 +84,5 @@ $(function () {
 		buttonGroup3.getProperty('children')[1].toggle(true);
 	});
 });
+
+// <-- SAMPLE CONTROL CODE
