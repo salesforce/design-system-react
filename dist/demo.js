@@ -26140,7 +26140,7 @@
 
 	/**
 	 * The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.
-	 * For icon buttons, use <code>variant="icon"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: "add", label: "Follow"}}</code>).
+	 * For icon buttons, use <code>variant="icon"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: "add", label: "Join"}}</code>).
 	 */
 
 	var SLDSButtonStateful = function (_SLDSTooltipTrigger) {
@@ -26984,10 +26984,16 @@
 	        "slds-hide": this.state.selectedIndex === null
 	      };
 
+	      var required = this.props.requiredField ? _react2.default.createElement(
+	        "span",
+	        { style: { color: "red" } },
+	        "* "
+	      ) : null;
 	      var inputLabel = this.props.label ? _react2.default.createElement(
 	        "label",
-	        { className: "slds-form-element__label", htmlFor: this.inputRefName() },
-	        this.props.requiredField ? "*" + this.props.label : this.props.label
+	        { className: "slds-form-element__label", htmlFor: this.inputRefName(), style: { width: "100%" } },
+	        required,
+	        this.props.label
 	      ) : null;
 
 	      return _react2.default.createElement(
@@ -30995,7 +31001,7 @@
 	          onMouseLeave: this.props.openOn === "hover" ? this.handleMouseLeave.bind(this) : null,
 	          ref: "button",
 	          style: this.props.style,
-	          tabIndex: this.state.isOpen ? "-1" : "0",
+	          tabIndex: 0,
 	          variant: this.props.buttonVariant,
 	          tooltip: this.props.tooltip
 	        },
@@ -31647,6 +31653,7 @@
 	   */
 	  options: _react2.default.PropTypes.array.isRequired,
 	  placeholder: _react2.default.PropTypes.string,
+	  requiredField: _react2.default.PropTypes.bool,
 	  /**
 	   * Current selected item.
 	   */
@@ -31654,8 +31661,8 @@
 	};
 	var defaultProps = {
 	  disabled: false,
-	  label: "Picklist",
 	  modal: false,
+	  requiredField: false,
 	  placeholder: "Select an Option"
 	};
 
@@ -31687,10 +31694,7 @@
 	    key: "componentDidMount",
 	    value: function componentDidMount() {
 	      var id = _reactDom2.default.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
-	      this.setState({
-	        triggerId: id
-	      });
-	      this.setFocus();
+	      this.setState({ triggerId: id });
 	    }
 	  }, {
 	    key: "componentWillUnmount",
@@ -31837,7 +31841,6 @@
 	        checkmark: true,
 	        highlightedIndex: this.state.highlightedIndex,
 	        itemRenderer: this.getListItemRenderer(),
-	        label: this.props.label,
 	        onCancel: this.handleCancel.bind(this),
 	        onListBlur: this.handleListBlur.bind(this),
 	        onListItemBlur: this.handleListItemBlur.bind(this),
@@ -31893,9 +31896,22 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
+	      var required = this.props.requiredField ? _react2.default.createElement(
+	        "span",
+	        { style: { color: "red" } },
+	        "*"
+	      ) : null;
+	      var inputLabel = this.props.label ? _react2.default.createElement(
+	        "label",
+	        { className: "slds-form-element__label", htmlFor: this.state.triggerId, style: { width: "100%" } },
+	        required,
+	        " ",
+	        this.props.label
+	      ) : null;
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "slds-picklist", "aria-expanded": this.state.isOpen },
+	        inputLabel,
 	        _react2.default.createElement(
 	          "button",
 	          {
@@ -32780,7 +32796,6 @@
 	  checkmark: _react2.default.PropTypes.bool,
 	  highlightedIndex: _react2.default.PropTypes.number,
 	  itemRenderer: _react2.default.PropTypes.func,
-	  label: _react2.default.PropTypes.string,
 	  options: _react2.default.PropTypes.array,
 	  onCancel: _react2.default.PropTypes.func,
 	  onListBlur: _react2.default.PropTypes.func,
@@ -32793,7 +32808,6 @@
 	  className: '',
 	  highlightedIndex: 0,
 	  itemRenderer: null,
-	  label: 'Menu',
 	  options: [],
 	  onCancel: function onCancel(delta) {
 	    console.log("onCancel should be overwritten");
@@ -35373,23 +35387,36 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	var displayName = 'SLDSDatepickerSingleSelect';
+	var propTypes = {
+	  /**
+	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
+	   */
+	  date: _react2.default.PropTypes.any
+	};
+	var defaultProps = {
+	  string: '',
+	  value: new Date(),
+	  placeholder: 'Pick a Date',
+	  formatter: function formatter(date) {
+	    return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+	  },
+	  parser: function parser(str) {
+	    return new Date(str);
+	  },
+	  onDateChange: function onDateChange(date) {
+	    console.log('onDateChange should be defined');
+	  }
+	};
+
 	module.exports = _react2.default.createClass({
 	  displayName: 'exports',
+
+	  propTypes: propTypes,
+
 	  getDefaultProps: function getDefaultProps() {
-	    return {
-	      string: '',
-	      value: new Date(),
-	      placeholder: 'Pick a Date',
-	      formatter: function formatter(date) {
-	        return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
-	      },
-	      parser: function parser(str) {
-	        return new Date(str);
-	      },
-	      onDateChange: function onDateChange(date) {
-	        console.log('onDateChange should be defined');
-	      }
-	    };
+	    return defaultProps;
 	  },
 	  getInitialState: function getInitialState() {
 	    return {
@@ -36625,7 +36652,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'button', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSButton'
+	                'Button'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -36634,7 +36661,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'button-group', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSButtonGroup'
+	                'ButtonGroup'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -36643,7 +36670,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'button-stateful', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSButtonStateful'
+	                'ButtonStateful'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -36652,7 +36679,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'dateinput', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSDatepicker'
+	                'DatepickerSingleSelect'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -36661,7 +36688,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'icon', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSIcon'
+	                'Icon'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -36670,7 +36697,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'lookup', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSLookup'
+	                'Lookup'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -36679,7 +36706,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'dropdown', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSMenuDropdown'
+	                'MenuDropdown'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -36688,7 +36715,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'picklist', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSMenuPicklist'
+	                'MenuPicklist'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -36697,7 +36724,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'modal', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSModal'
+	                'Modal'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -36706,7 +36733,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'notification', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSNotification'
+	                'Notification'
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -36715,7 +36742,7 @@
 	              _react2.default.createElement(
 	                Link,
 	                { to: 'tooltip', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
-	                'SLDSPopoverTooltip'
+	                'PopoverTooltip'
 	              )
 	            )
 	          )
@@ -37532,12 +37559,32 @@
 	          { className: 'demo-only' },
 	          _react2.default.createElement(
 	            'section',
-	            { className: 'slds-p-bottom--x-large' },
-	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Buttons })
+	            { className: 'slds-p-vertical--large' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'slds-text-heading--small' },
+	              'Neutral Buttons'
+	            ),
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Buttons1 })
 	          ),
 	          _react2.default.createElement(
 	            'section',
-	            { className: 'slds-p-top--x-large' },
+	            { className: 'slds-p-vertical--large' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'slds-text-heading--small' },
+	              'Color Buttons'
+	            ),
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Buttons2 })
+	          ),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-vertical--large' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'slds-text-heading--small' },
+	              'Icon Buttons'
+	            ),
 	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.IconButtons })
 	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSButton' })
@@ -37608,6 +37655,10 @@
 	};
 	var defaultProps = {};
 
+	var isMarkup = function isMarkup(code) {
+	  return code && trim(code).indexOf('<') === 0;
+	};
+
 	function request(url, method, data, callback) {
 	  var request = new window.XMLHttpRequest();
 	  request.onreadystatechange = function () {
@@ -37647,7 +37698,7 @@
 	    value: function componentDidMount() {
 	      var node = ReactDOM.findDOMNode(this.refs.editor);
 	      this.editor = CM.fromTextArea(node, {
-	        mode: 'javascript',
+	        mode: isMarkup(this.props.codeText) ? 'htmlmixed' : 'javascript',
 	        lineNumbers: true,
 	        lineWrapping: false,
 	        matchBrackets: true,
@@ -37695,7 +37746,7 @@
 
 	    _this2.state = {
 	      code: props.codeText,
-	      showCode: true
+	      showCode: false
 	    };
 	    return _this2;
 	  }
@@ -37727,9 +37778,14 @@
 	      return mountNode;
 	    }
 	  }, {
+	    key: 'isMarkup',
+	    value: function isMarkup() {
+	      return this.state.code && trim(this.state.code).indexOf('<') === 0;
+	    }
+	  }, {
 	    key: 'getCode',
 	    value: function getCode() {
-	      if (!(this.state.code && trim(this.state.code).indexOf('<') === 0)) {
+	      if (!isMarkup(this.state.code)) {
 	        return this.state.code;
 	      }
 	      return "\
@@ -37776,7 +37832,7 @@
 	      return React.createElement(CodeMirrorEditor, {
 	        key: 'jsx',
 	        onChange: this.handleCodeChange.bind(this),
-	        className: 'highlight bb-gray',
+	        className: 'highlight bb-gray bh-gray',
 	        codeText: this.state.code
 	      });
 	    }
@@ -37807,7 +37863,7 @@
 	        ),
 	        React.createElement(
 	          'div',
-	          { className: 'bb-gray slds-text-align--right slds-p-around--x-small' },
+	          { className: 'bb-gray slds-text-align--right slds-p-bottom--x-small' },
 	          React.createElement(
 	            'button',
 	            { onClick: this.toggleEditor.bind(this) },
@@ -49315,19 +49371,23 @@
 	"use strict";
 
 	var Samples = {
-	  Buttons: "<div className=\"slds-x-small-buttons--horizontal\">\n  <h4 className=\"slds-text-heading--medium slds-p-vertical--medium\">Standard Buttons</h4>\n  <SLDSButton\n    label=\"Base\"\n    onClick={function(){alert(\"Base Button Clicked\")}} />\n\n  <SLDSButton\n    label=\"Neutral\"\n    variant=\"neutral\" />\n\n  <SLDSButton\n    iconName=\"download\"\n    iconPosition=\"left\"\n    label=\"Neutral Icon\"\n    variant=\"neutral\" />\n\n  <SLDSButton\n    label=\"Responsive\"\n    responsive={true}\n    variant=\"neutral\" />\n\n  <SLDSButton\n    label=\"Brand\"\n    variant=\"brand\" />\n\n  <SLDSButton\n    disabled={true}\n    label=\"Disabled\"\n    onClick={function(){alert(\"Disabled Button Clicked\")}}\n    variant=\"brand\" />\n\n  <SLDSButton\n    label=\"Destructive\"\n    variant=\"destructive\" />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      label=\"Inverse\"\n      variant=\"inverse\"/>\n  </div>\n</div>\n",
-	  ButtonGroups: "const moreOptions = [\n  {label: \"undo\", value: \"A0\"},\n  {label: \"redo\", value: \"B0\"},\n  {label: \"activate\", value: \"C0\"},\n];\nconst sortOptions = [\n  {label: \"Sort ascending\", value: \"A0\"},\n  {label: \"Sort descending\", value: \"B0\"},\n];\nconst selectItem = function(item) {\n  console.log(item.label, \"selected\");\n};\nconst examples = (\n  <div>\n    <SLDSButtonGroup className=\"slds-p-bottom--medium\">\n      <SLDSButton\n        label=\"Refresh\"\n        variant=\"neutral\" />\n\n      <SLDSButton\n        label=\"Edit\"\n        variant=\"neutral\" />\n\n      <SLDSButton\n        label=\"Save\"\n        variant=\"neutral\" />\n\n        <SLDSMenuDropdown\n          assistiveText=\"More Options\"\n          buttonVariant=\"icon\"\n          iconName=\"down\"\n          iconVariant=\"border-filled\"\n          onSelect={selectItem}\n          openOn=\"click\"\n          options={moreOptions} />\n    </SLDSButtonGroup>\n\n    <SLDSButtonGroup className=\"slds-p-vertical--medium\">\n      <SLDSButtonStateful\n        assistiveText=\"Show Chart\"\n        buttonVariant=\"icon\"\n        iconName=\"chart\"\n        iconVariant=\"border\"\n        variant=\"icon\" />\n\n      <SLDSButtonStateful\n        assistiveText=\"Filter\"\n        iconName=\"filter\"\n        iconVariant=\"border\"\n        variant=\"icon\" />\n\n        <SLDSMenuDropdown\n          assistiveText=\"Sort\"\n          checkmark={true}\n          iconName=\"sort\"\n          iconVariant=\"more\"\n          onSelect={selectItem}\n          openOn=\"click\"\n          modal={true}\n          options={sortOptions}\n          value=\"A0\"\n          variant=\"icon\" />\n    </SLDSButtonGroup>\n  </div>\n);\n\nReactDOM.render(examples, mountNode);\n\n",
-	  Dropdowns: "const options = [\n  {label: \"A Option Option Super Super Long\", value: \"A0\"},\n  {label: \"B Option\", value: \"B0\"},\n  {label: \"C Option\", value: \"C0\"},\n  {label: \"D Option\", value: \"D0\"},\n  {label: \"E Option\", value: \"E0\"},\n  {label: \"A1 Option\", value: \"A1\"},\n  {label: \"B2 Option\", value: \"B1\"},\n  {label: \"C2 Option\", value: \"C1\"},\n  {label: \"D2 Option\", value: \"D1\"},\n  {label: \"E2 Option Super Super Long\", value: \"E1\"},\n];\n\nclass DropdownExample extends React.Component {\n\n  displayName: \"DropdownExample\";\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleMouseEnter() {\n    console.log(\"onEnter should be defined\");\n  }\n\n  handleMouseLeave() {\n    console.log(\"onLeave should be defined\");\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSMenuDropdown\n          label=\"Dropdown Click\"\n          onClick={this.handleOnClick}\n          onSelect={this.handleOnSelect}\n          options={options} />\n\n        <SLDSMenuDropdown\n          align=\"right\"\n          buttonClassName=\"green\"\n          buttonVariant=\"brand\"\n          checkmark={true}\n          label=\"Dropdown Hover\"\n          onMouseEnter={this.handleMouseEnter}\n          onMouseLeave={this.handleMouseLeave}\n          onSelect={this.handleOnSelect}\n          openOn=\"hover\"\n          options={options}\n          value=\"C0\" />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<DropdownExample />, mountNode);\n\n",
+	  Buttons1: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    label=\"Base\"\n    onClick={function(){alert(\"Base Button Clicked\")}} />\n\n  <SLDSButton\n    label=\"Neutral\"\n    variant=\"neutral\" />\n\n  <SLDSButton\n    iconName=\"download\"\n    iconPosition=\"left\"\n    label=\"Neutral Icon\"\n    variant=\"neutral\" />\n\n  <SLDSButton\n    label=\"Responsive\"\n    responsive={true}\n    variant=\"neutral\" />\n</div>\n",
+	  Buttons2: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    label=\"Brand\"\n    variant=\"brand\" />\n\n  <SLDSButton\n    disabled={true}\n    label=\"Disabled\"\n    onClick={function(){alert(\"Disabled Button Clicked\")}}\n    variant=\"brand\" />\n\n  <SLDSButton\n    label=\"Destructive\"\n    variant=\"destructive\" />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      label=\"Inverse\"\n      variant=\"inverse\"/>\n  </div>\n</div>\n",
+	  ButtonGroups1: "<SLDSButtonGroup>\n  <SLDSButton\n    label=\"Refresh\"\n    variant=\"neutral\" />\n\n  <SLDSButton\n    label=\"Edit\"\n    variant=\"neutral\" />\n\n  <SLDSButton\n    label=\"Save\"\n    variant=\"neutral\" />\n\n    <SLDSMenuDropdown\n      assistiveText=\"More Options\"\n      buttonVariant=\"icon\"\n      iconName=\"down\"\n      iconVariant=\"border-filled\"\n      onSelect={function(item){console.log(item.label, \"selected\")}}\n      openOn=\"click\"\n      options={[\n        {label: \"undo\", value: \"A0\"},\n        {label: \"redo\", value: \"B0\"},\n        {label: \"activate\", value: \"C0\"},\n      ]} />\n</SLDSButtonGroup>\n",
+	  ButtonGroups2: "<SLDSButtonGroup>\n  <SLDSButtonStateful\n    assistiveText=\"Show Chart\"\n    buttonVariant=\"icon\"\n    iconName=\"chart\"\n    iconVariant=\"border\"\n    variant=\"icon\" />\n\n  <SLDSButtonStateful\n    assistiveText=\"Filter\"\n    iconName=\"filter\"\n    iconVariant=\"border\"\n    variant=\"icon\" />\n\n    <SLDSMenuDropdown\n      assistiveText=\"Sort\"\n      checkmark={true}\n      iconName=\"sort\"\n      iconVariant=\"more\"\n      onSelect={function(item){console.log(item.label, \"selected\")}}\n      openOn=\"click\"\n      modal={true}\n      options={[\n        {label: \"Sort ascending\", value: \"A0\"},\n        {label: \"Sort descending\", value: \"B0\"},\n      ]}\n      value=\"A0\"\n      variant=\"icon\" />\n</SLDSButtonGroup>\n",
+	  Dropdowns1: "<SLDSMenuDropdown\n  label=\"Dropdown Click\"\n  onSelect={function(value){console.log(\"selected: \",value)}}\n  options={[\n    {label: \"A Option Option Super Super Long\", value: \"A0\"},\n    {label: \"B Option\", value: \"B0\"},\n    {label: \"C Option\", value: \"C0\"},\n    {label: \"D Option\", value: \"D0\"},\n    {label: \"E Option\", value: \"E0\"},\n    {label: \"A1 Option\", value: \"A1\"},\n    {label: \"B2 Option\", value: \"B1\"},\n    {label: \"C2 Option\", value: \"C1\"},\n    {label: \"D2 Option\", value: \"D1\"},\n    {label: \"E2 Option Super Super Long\", value: \"E1\"},\n  ]} />\n",
+	  Dropdowns2: "<SLDSMenuDropdown\n  align=\"right\"\n  buttonClassName=\"green\"\n  buttonVariant=\"brand\"\n  checkmark={true}\n  label=\"Dropdown Hover\"\n  onMouseEnter={function(){console.log('Mouse enter')}}\n  onMouseLeave={function(){console.log('Mouse leave')}}\n  onSelect={function(value){console.log(\"selected: \",value)}}\n  openOn=\"hover\"\n  options={[\n    {label: \"A Option Option Super Super Long\", value: \"A0\"},\n    {label: \"B Option\", value: \"B0\"},\n    {label: \"C Option\", value: \"C0\"},\n    {label: \"D Option\", value: \"D0\"},\n    {label: \"E Option\", value: \"E0\"},\n    {label: \"A1 Option\", value: \"A1\"},\n    {label: \"B2 Option\", value: \"B1\"},\n    {label: \"C2 Option\", value: \"C1\"},\n    {label: \"D2 Option\", value: \"D1\"},\n    {label: \"E2 Option Super Super Long\", value: \"E1\"},\n  ]}\n  value=\"C0\" />\n",
 	  Icons: "<div>\n  <SLDSIcon\n    assistiveText=\"Favorite\"\n    category=\"custom\"\n    name=\"custom1\"\n    size=\"small\" />\n\n  <SLDSIcon\n    assistiveText=\"Accounts\"\n    category=\"standard\"\n    name=\"account\" />\n\n  <SLDSIcon\n    assistiveText=\"Announcements\"\n    category=\"action\"\n    className=\"slds-m-around--x-small\"\n    name=\"announcement\" />\n\n  <SLDSIcon\n    assistiveText=\"Approval\"\n    category=\"action\"\n    className=\"slds-m-around--x-small\"\n    name=\"approval\"\n    size=\"large\" />\n\n  <SLDSIcon\n    assistiveText=\"\"\n    category=\"utility\"\n    inverse={false}\n    name=\"open_folder\"\n    size=\"large\" />\n    <span className=\"slds-m-left--x-small\">Documents Folder</span>\n</div>\n",
-	  IconButtons: "const handleClick = function(buttonInstance) {\n  return function() {\n    alert(buttonInstance + \" Clicked\");\n   };\n};\nlet hintBtnParent = {backgroundColor: \"#FFB75D\", padding: \"10px 50px\", display: \"inline-block\"};\nlet inverseBtnParent = {backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"};\nlet iconBtnParent = {backgroundColor: \"#4BC076\", padding: \"10px\", display: \"inline-block\"};\nconst examples = (\n  <div className=\"slds-x-small-buttons--horizontal\">\n    <h4 className=\"slds-text-heading--medium slds-p-vertical--medium\">Icon Buttons</h4>\n    <SLDSButton\n      assistiveText=\"Icon Bare Small\"\n      iconName=\"settings\"\n      iconSize=\"small\"\n      iconVariant=\"bare\"\n      onClick={handleClick(\"Icon Bare\")} variant=\"icon\" />\n\n    <SLDSButton\n      assistiveText=\"Icon Container Small\"\n      iconName=\"settings\"\n      iconSize=\"small\"\n      iconVariant=\"container\"\n      onClick={handleClick(\"Icon Container\")}\n      variant=\"icon\" />\n\n    <div style={iconBtnParent} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon Border medium\"\n      iconName=\"settings\"\n      iconVariant=\"border\"\n      onClick={handleClick(\"Icon border\")}\n      variant=\"icon\" />\n\n    <SLDSButton\n      assistiveText=\"Icon Border-filled medium\"\n      iconName=\"settings\"\n      iconVariant=\"border-filled\"\n      onClick={handleClick(\"Icon border-filled\")}\n      variant=\"icon\" />\n    </div>\n\n    <SLDSButton\n      assistiveText=\"Icon More large\"\n      iconName=\"settings\"\n      iconSize=\"large\"\n      iconVariant=\"more\"\n      onClick={handleClick(\"Icon More\")}\n      variant=\"icon\" />\n\n    <div style={inverseBtnParent} className=\"slds-m-horizontal--small\">\n      <SLDSButton\n        assistiveText=\"Icon inverse\"\n        iconName=\"settings\"\n        iconSize=\"large\"\n        onClick={handleClick(\"Icon Inverse\")}\n        variant=\"icon-inverse\" />\n    </div>\n    <div style={hintBtnParent} className=\"slds-hint-parent slds-m-horizontal--small\">\n      <SLDSButton\n        assistiveText=\"Icon hint large\"\n        hint={true}\n        iconName=\"settings\"\n        iconSize=\"large\"\n        onClick={handleClick(\"Icon Hint\")}\n        variant=\"icon\" />\n    </div>\n  </div>\n);\n\nReactDOM.render(examples, mountNode);\n\n",
-	  Lookups: "const items = [\n  {label: \"Paddy\\\"s Pub\"},\n  {label: \"Tyrell Corp\"},\n  {label: \"Paper St. Soap Company\"},\n  {label: \"Nakatomi Investments\"},\n  {label: \"Acme Landscaping\"},\n  {label: \"Acme Construction\"}\n];\n\nclass LookupExample extends React.Component {\n\n  displayName: \"LookupExample\";\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      searchVal: null\n    };\n  }\n\n  onChange(newValue){\n    console.log(\"New search term: \", newValue);\n    this.setState({searchVal: newValue});\n  }\n\n  selectItem(item){\n    console.log(item , \" Selected\");\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSLookup\n          emptyMessage=\"No items found\"\n          footerRenderer={SLDSLookup.DefaultFooter}\n          hasError={false}\n          headerRenderer={SLDSLookup.DefaultHeader}\n          iconCategory=\"standard\"\n          iconName=\"account\"\n          label=\"Account\"\n          onChange={this.onChange.bind(this)}\n          onItemSelect={this.selectItem}\n          options={items}\n        />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<LookupExample />, mountNode);\n\n",
-	  Modals: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      modalAopen: false,\n      modalBopen:false,\n      promptOpen:false,\n    };\n  }\n\n  openModal(modalInstance) {\n    return () => {\n      this.setState({[modalInstance]: true});\n    }\n  }\n\n  closeModal(modalInstance) {\n    return () => {\n      this.setState({[modalInstance]: false});\n    }\n  }\n\n  selectItem(item){\n    console.log(item , \" Selected\");\n  }\n\n  getModalContent() {\n    return (\n      <div>\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n    <SLDSLookup\n      emptyMessage=\"No Accounts Found\"\n      label=\"Accounts\"\n      modal={true}\n      onItemSelect={this.selectItem}\n      options={[\n        {label:\"Paddy\\\"s Pub\"},\n        {label:\"Tyrell Corp\"},\n        {label:\"Paper St. Soap Company\"},\n        {label:\"Nakatomi Investments\"},\n        {label:\"Acme Landscaping\"},\n        {label:\"Acme Construction\"}\n      ]}\n      salesforceObj=\"account\"\n    />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n    <SLDSMenuPicklist\n      label=\"Contacts\"\n      modal={true}\n      onSelect={(value)=>{console.log(\"selected: \",value);}}\n      options={[\n        {label:\"A Option Option Super Super Long\",value:\"A0\"},\n        {label:\"B Option\",value:\"B0\"},\n        {label:\"C Option\",value:\"C0\"},\n        {label:\"D Option\",value:\"D0\"},\n        {label:\"E Option\",value:\"E0\"},\n        {label:\"A1 Option\",value:\"A1\"},\n        {label:\"B2 Option\",value:\"B1\"},\n        {label:\"C2 Option\",value:\"C1\"},\n        {label:\"D2 Option\",value:\"D1\"},\n        {label:\"E2 Option Super Super Long\",value:\"E1\"},\n\n      ]}\n      placeholder = \"Select a contact\"\n      value=\"C0\"\n    />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n        <SLDSDatepickerSingleSelect />\n        <p>\n        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\n        </p>\n      </div>\n    )\n  }\n\n  render(){\n    return (\n      <div>\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Bare\" onClick={this.openModal(\"modalAopen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            align=\"top\"\n            isOpen={this.state.modalAopen}\n            onRequestClose={this.closeModal(\"modalAopen\")}\n            size=\"large\">\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Standard\" onClick={this.openModal(\"modalBopen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            footer={[\n              <SLDSButton key=\"modalBCancel\" label=\"Cancel\" variant=\"neutral\" onClick={this.closeModal(\"modalBopen\").bind(this)} />,\n              <SLDSButton key=\"modalBSave\" label=\"Save\" variant=\"brand\" onClick={this.closeModal(\"modalBopen\").bind(this)} />\n            ]}\n            isOpen={this.state.modalBopen}\n            onRequestClose={this.closeModal(\"modalBopen\")}\n            tagline=\"Tagline goes here\"\n            title={<span>My Title</span>}>\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n        <div className=\"slds-p-right--medium\" style={{\"display\": \"inline-block\"}}>\n          <SLDSButton label=\"Open Prompt\" onClick={this.openModal(\"promptOpen\").bind(this)} variant=\"brand\" />\n          <SLDSModal\n            dismissible={false}\n            footer={[ <SLDSButton key=\"promptBtn\" label=\"Got it\" variant=\"neutral\" onClick={this.closeModal(\"promptOpen\")} /> ]}\n            isOpen={this.state.promptOpen}\n            onRequestClose={this.closeModal(\"promptOpen\")}\n            prompt=\"error\"\n            size=\"medium\"\n            title={<span>Service Unavailable</span>}>\n              Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.\n          </SLDSModal>\n        </div>\n\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n\n",
-	  Notifications: "class NotificationExample extends React.Component {\n\n  displayName: \"NotificationExample\";\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      modalIsOpen: false,\n      modalToastIsOpen: false,\n      alertIsOpen: false,\n      toastIsOpen: false,\n    };\n  }\n\n  getModalContent(){\n    return (\n      <div>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <SLDSButton label=\"Open Toast\" onClick={this.openModalToast.bind(this)} variant=\"neutral\" />\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n      </div>\n    )\n  }\n\n  openModal () {\n    this.setState({\n      modalIsOpen: true,\n    });\n  }\n\n  closeModal () {\n    this.setState({\n      modalIsOpen: false,\n      modalToastIsOpen: false,\n    });\n  }\n\n  handleSubmitModal () {\n    this.closeModal();\n  }\n\n  openToast(){\n    this.setState({ toastIsOpen: true });\n  }\n\n  dismissToast(){\n    this.setState({ toastIsOpen: false });\n    console.log(\"====> Dismiss Toast Message\");\n  }\n\n  openModalToast(){\n    this.setState({ modalToastIsOpen: true });\n  }\n\n  dismissModalToast(){\n    this.setState({ modalToastIsOpen: false });\n    console.log(\"====> Dismiss Modal Toast\");\n  }\n\n  openAlert(){\n    this.setState({ alertIsOpen: true });\n  }\n\n  dismissAlert(){\n    console.log(\"====> Dismiss Alert\");\n    this.setState({ alertIsOpen: false });\n  }\n\n  render() {\n    const successMsg = [\"Your new contact \", <a href=\"#\" key=\"0123\">Sara Smith</a>, \" was successfully created.\"];\n    const errorMsg = \"There was a problem updating the record.\";\n    const warnMsg = \"Oops, you've missed some required form inputs.\";\n\n    return (\n      <div className=\"slds-p-vertical--medium demo\">\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small\">Alerts</h4>\n          <SLDSButton label=\"Show Alert\" onClick={this.openAlert.bind(this)} variant=\"neutral\" />\n          <SLDSNotification\n            content={successMsg}\n            iconName=\"notification\"\n            isOpen={this.state.alertIsOpen}\n            onDismiss={this.dismissAlert.bind(this)}\n            texture={true}\n            theme=\"success\"\n            variant=\"alert\" />\n        </div>\n\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small \">Toasts</h4>\n          <SLDSButton label=\"Show Toast\" onClick={this.openToast.bind(this)} variant=\"neutral\" />\n          <SLDSNotification\n            content={errorMsg}\n            iconName=\"notification\"\n            isOpen={this.state.toastIsOpen}\n            onDismiss={this.dismissToast.bind(this)}\n            texture={true}\n            theme=\"error\"\n            variant=\"toast\"\n            />\n        </div>\n\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small\">Modal Toasts</h4>\n          <SLDSButton label=\"Show Modal Toast\" onClick={this.openModal.bind(this)} variant=\"neutral\" />\n          <SLDSModal\n            footer={[\n              <SLDSButton key=\"cancelBtn\" label=\"Cancel\" variant=\"neutral\" onClick={this.closeModal.bind(this)} />,\n              <SLDSButton key=\"saveBtn\" label=\"Save\" variant=\"brand\" onClick={this.handleSubmitModal.bind(this)} />\n            ]}\n            isOpen={this.state.modalIsOpen}\n            title={\n              <span>Lightning Design System: Style with Ease</span>\n            }\n            toast={\n              <SLDSNotification variant=\"toast\" theme=\"warning\" iconName=\"warning\" isOpen={this.state.modalToastIsOpen} content={warnMsg} onDismiss={this.dismissModalToast.bind(this)} />\n            }\n            onRequestClose={this.closeModal.bind(this)}>\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<NotificationExample />, mountNode);\n\n",
-	  Picklists: "const picklistOptions = [\n  {label: \"A Option Option Super Super Long\", value: \"A0\", title: \"Greg\"},\n  {label: \"B Option\", value: \"B0\"},\n  {label: \"C Option\", value: \"C0\"},\n  {label: \"D Option\", value: \"D0\"},\n  {label: \"E Option\", value: \"E0\"},\n  {label: \"A1 Option\", value: \"A1\"},\n  {label: \"B2 Option\", value: \"B1\"},\n  {label: \"C2 Option\", value: \"C1\"},\n  {label: \"D2 Option\", value: \"D1\"},\n  {label: \"E2 Option Super Super Long\", value: \"E1\"},\n];\n\nclass PicklistExample extends React.Component {\n\n  displayName: \"PicklistExample\";\n\n  handleOnUpdateHighlighted () {\n    console.log(\"onUpdateHighlighted should be defined\");\n  }\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistOptions}\n         placeholder = \"Select a contact\"\n         value=\"C0\"\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistExample />, mountNode);\n\n",
-	  CustomPicklists: "import CustomListItemLabel from \"./CustomListItemLabel.cjsx\";\n\nconst picklistCustomOptions = [\n  {label:\"A Option Option Super Super Long\",value:\"A0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"B Option\",value:\"B0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"C Option\",value:\"C0\",strongLabel:\"SUPER TITLE C0\"},\n  {label:\"D Option\",value:\"D0\",strongLabel:\"SUPER TITLE D0\"},\n  {label:\"E Option\",value:\"E0\",strongLabel:\"SUPER TITLE E0\"},\n  {label:\"A1 Option\",value:\"A1\",strongLabel:\"SUPER TITLE A1\"},\n  {label:\"B2 Option\",value:\"B1\",strongLabel:\"SUPER TITLE B1\"},\n  {label:\"C2 Option\",value:\"C1\",strongLabel:\"SUPER TITLE C1\"},\n  {label:\"D2 Option\",value:\"D1\",strongLabel:\"SUPER TITLE D1\"},\n  {label:\"E2 Option Super Super Long\",value:\"E1\",strongLabel:\"SUPER TITLE E1\"},\n];\n\nclass PicklistCustomExample extends React.Component {\n\n  displayName: \"PicklistCustomExample\"\n\n  handleOnUpdateHighlighted () {\n    console.log(\"onUpdateHighlighted should be defined\");\n  }\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         listItemRenderer={CustomListItemLabel}\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistCustomOptions}\n         placeholder=\"Select a contact\"\n         value=\"C0\"\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistCustomExample />, mountNode);\n\n",
-	  StatefulButtons: "let inverseBtnParent = {backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"};\nconst examples = (\n  <div className=\"slds-x-small-buttons--horizontal\">\n    <div style={inverseBtnParent} className=\"slds-m-horizontal--small\">\n      <SLDSButtonStateful\n        stateOne={{iconName: \"add\", label: \"Join\"}}\n        stateTwo={{iconName: \"check\", label: \"Member\"}}\n        stateThree={{iconName: \"close\", label: \"Leave\"}}\n        variant=\"inverse\" />\n    </div>\n\n    <SLDSButtonStateful />\n\n    <SLDSButtonStateful\n      assistiveText=\"like\"\n      iconName=\"like\"\n      iconSize=\"large\"\n      variant=\"icon\" />\n\n  </div>\n);\n\nReactDOM.render(examples, mountNode);\n\n",
-	  Tooltips: "<SLDSPopoverTooltip\n  align=\"top\"\n  content=\"Tooltip on top\">\n    <a href=\"javascript:void(0)\">\n      <SLDSIcon\n        assistiveText=\"info\" category=\"utility\"\n        name=\"info\" \n        className=\"slds-icon-text-default\" />\n    </a>\n</SLDSPopoverTooltip>",
-	  DatepickerSingleSelect: "\n<SLDSDatepickerSingleSelect />\n"
+	  IconButtons: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    assistiveText=\"Icon Bare Small\"\n    iconName=\"settings\"\n    iconSize=\"small\"\n    iconVariant=\"bare\"\n    onClick={function(){alert(\"Icon Bare Clicked\")}} variant=\"icon\" />\n\n  <SLDSButton\n    assistiveText=\"Icon Container Small\"\n    iconName=\"settings\"\n    iconSize=\"small\"\n    iconVariant=\"container\"\n    variant=\"icon\" />\n\n  <div style={{backgroundColor: \"#4BC076\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n  <SLDSButton\n    assistiveText=\"Icon Border medium\"\n    iconName=\"settings\"\n    iconVariant=\"border\"\n    variant=\"icon\" />\n\n  <SLDSButton\n    assistiveText=\"Icon Border-filled medium\"\n    iconName=\"settings\"\n    iconVariant=\"border-filled\"\n    variant=\"icon\" />\n  </div>\n\n  <SLDSButton\n    assistiveText=\"Icon More large\"\n    iconName=\"settings\"\n    iconSize=\"large\"\n    iconVariant=\"more\"\n    variant=\"icon\" />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon inverse\"\n      iconName=\"settings\"\n      iconSize=\"large\"\n      variant=\"icon-inverse\" />\n  </div>\n  <div style={{backgroundColor: \"#FFB75D\", padding: \"10px 50px\", display: \"inline-block\"}} className=\"slds-hint-parent slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon hint large\"\n      hint={true}\n      iconName=\"settings\"\n      iconSize=\"large\"\n      variant=\"icon\" />\n  </div>\n</div>\n",
+	  Lookups: "<SLDSLookup\n  emptyMessage=\"No items found\"\n  footerRenderer={SLDSLookup.DefaultFooter}\n  hasError={false}\n  headerRenderer={SLDSLookup.DefaultHeader}\n  iconCategory=\"standard\"\n  iconName=\"account\"\n  label=\"Account\"\n  onChange={function(newValue){console.log(\"New search term: \", newValue)}}\n  onItemSelect={function(item){console.log(item , \" Selected\")}}\n  options={[\n    {label: \"Paddy\\\"s Pub\"},\n    {label: \"Tyrell Corp\"},\n    {label: \"Paper St. Soap Company\"},\n    {label: \"Nakatomi Investments\"},\n    {label: \"Acme Landscaping\"},\n    {label: \"Acme Construction\"}\n  ]}\n/>\n",
+	  Modals1: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false,\n    };\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"Open Bare\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          align=\"top\"\n          isOpen={this.state.isOpen}\n          onRequestClose={this.toggleOpen.bind(this)}\n          size=\"large\">\n\n            <h4>New Opportunity</h4>\n            <div className=\"slds-form-element\">\n              <label className=\"slds-form-element__label\" htmlFor=\"opptyName\">Opportunity Name</label>\n              <div className=\"slds-form-element__control\">\n                <input id=\"opptyName\" className=\"slds-input\" type=\"text\" placeholder=\"Enter name\" />\n              </div>\n            </div>\n\n            <SLDSLookup\n              emptyMessage=\"No Accounts Found\"\n              iconName=\"account\"\n              label=\"Account Name\"\n              modal={true}\n              onItemSelect={function(item){console.log(item , \" Selected\")}}\n              options={[\n                {label:\"Paddy\\\"s Pub\"},\n                {label:\"Tyrell Corp\"},\n                {label:\"Paper St. Soap Company\"},\n                {label:\"Nakatomi Investments\"},\n                {label:\"Acme Landscaping\"},\n                {label:\"Acme Construction\"}\n              ]}\n            />\n\n            <SLDSMenuPicklist\n              label=\"Type\"\n              modal={true}\n              onSelect={(value)=>{console.log(\"selected: \",value);}}\n              options={[\n                {label:\"Add on Business\",value:\"A0\"},\n                {label:\"Courtesy\",value:\"B0\"},\n                {label:\"New Business\",value:\"C0\"},\n                {label:\"Renewal\",value:\"D0\"},\n                {label:\"Upgrade\",value:\"E0\"},\n              ]}\n              placeholder = \"Select Opportunity Type\"\n              value=\"C0\"\n            />\n\n        </SLDSModal>\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
+	  Notifications: "class NotificationExample extends React.Component {\n\n  displayName: \"NotificationExample\";\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      modalIsOpen: false,\n      modalToastIsOpen: false,\n      alertIsOpen: false,\n      toastIsOpen: false,\n    };\n  }\n\n  getModalContent(){\n    return (\n      <div>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <SLDSButton label=\"Open Toast\" onClick={this.openModalToast.bind(this)} variant=\"neutral\" />\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n      </div>\n    )\n  }\n\n  openModal () {\n    this.setState({\n      modalIsOpen: true,\n    });\n  }\n\n  closeModal () {\n    this.setState({\n      modalIsOpen: false,\n      modalToastIsOpen: false,\n    });\n  }\n\n  handleSubmitModal () {\n    this.closeModal();\n  }\n\n  openToast(){\n    this.setState({ toastIsOpen: true });\n  }\n\n  dismissToast(){\n    this.setState({ toastIsOpen: false });\n    console.log(\"====> Dismiss Toast Message\");\n  }\n\n  openModalToast(){\n    this.setState({ modalToastIsOpen: true });\n  }\n\n  dismissModalToast(){\n    this.setState({ modalToastIsOpen: false });\n    console.log(\"====> Dismiss Modal Toast\");\n  }\n\n  openAlert(){\n    this.setState({ alertIsOpen: true });\n  }\n\n  dismissAlert(){\n    console.log(\"====> Dismiss Alert\");\n    this.setState({ alertIsOpen: false });\n  }\n\n  render() {\n    const successMsg = [\"Your new contact \", <a href=\"#\" key=\"0123\">Sara Smith</a>, \" was successfully created.\"];\n    const errorMsg = \"There was a problem updating the record.\";\n    const warnMsg = \"Oops, you've missed some required form inputs.\";\n\n    return (\n      <div className=\"slds-p-vertical--medium demo\">\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small\">Alerts</h4>\n          <SLDSButton label=\"Show Alert\" onClick={this.openAlert.bind(this)} variant=\"neutral\" />\n          <SLDSNotification\n            content={successMsg}\n            iconName=\"notification\"\n            isOpen={this.state.alertIsOpen}\n            onDismiss={this.dismissAlert.bind(this)}\n            texture={true}\n            theme=\"success\"\n            variant=\"alert\" />\n        </div>\n\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small \">Toasts</h4>\n          <SLDSButton label=\"Show Toast\" onClick={this.openToast.bind(this)} variant=\"neutral\" />\n          <SLDSNotification\n            content={errorMsg}\n            iconName=\"notification\"\n            isOpen={this.state.toastIsOpen}\n            onDismiss={this.dismissToast.bind(this)}\n            texture={true}\n            theme=\"error\"\n            variant=\"toast\"\n            />\n        </div>\n\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small\">Modal Toasts</h4>\n          <SLDSButton label=\"Show Modal Toast\" onClick={this.openModal.bind(this)} variant=\"neutral\" />\n          <SLDSModal\n            footer={[\n              <SLDSButton key=\"cancelBtn\" label=\"Cancel\" variant=\"neutral\" onClick={this.closeModal.bind(this)} />,\n              <SLDSButton key=\"saveBtn\" label=\"Save\" variant=\"brand\" onClick={this.handleSubmitModal.bind(this)} />\n            ]}\n            isOpen={this.state.modalIsOpen}\n            title={\n              <span>Lightning Design System: Style with Ease</span>\n            }\n            toast={\n              <SLDSNotification variant=\"toast\" theme=\"warning\" iconName=\"warning\" isOpen={this.state.modalToastIsOpen} content={warnMsg} onDismiss={this.dismissModalToast.bind(this)} />\n            }\n            onRequestClose={this.closeModal.bind(this)}>\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<NotificationExample />, mountNode);\n",
+	  Picklists: "<SLDSMenuPicklist\n  label=\"Contacts\"\n  modal={true}\n  onSelect={function(){console.log(\"selected: \",value)}}\n  options={[\n    {label: \"A Option Option Super Super Long\", value: \"A0\", title: \"Greg\"},\n    {label: \"B Option\", value: \"B0\"},\n    {label: \"C Option\", value: \"C0\"},\n    {label: \"D Option\", value: \"D0\"},\n    {label: \"E Option\", value: \"E0\"},\n    {label: \"A1 Option\", value: \"A1\"},\n    {label: \"B2 Option\", value: \"B1\"},\n    {label: \"C2 Option\", value: \"C1\"},\n    {label: \"D2 Option\", value: \"D1\"},\n    {label: \"E2 Option Super Super Long\", value: \"E1\"},\n  ]}\n  placeholder = \"Select a contact\"\n  value=\"C0\"\n  />\n",
+	  CustomPicklists: "import CustomListItemLabel from \"./CustomListItemLabel.cjsx\";\n\nconst picklistCustomOptions = [\n  {label:\"A Option Option Super Super Long\",value:\"A0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"B Option\",value:\"B0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"C Option\",value:\"C0\",strongLabel:\"SUPER TITLE C0\"},\n  {label:\"D Option\",value:\"D0\",strongLabel:\"SUPER TITLE D0\"},\n  {label:\"E Option\",value:\"E0\",strongLabel:\"SUPER TITLE E0\"},\n  {label:\"A1 Option\",value:\"A1\",strongLabel:\"SUPER TITLE A1\"},\n  {label:\"B2 Option\",value:\"B1\",strongLabel:\"SUPER TITLE B1\"},\n  {label:\"C2 Option\",value:\"C1\",strongLabel:\"SUPER TITLE C1\"},\n  {label:\"D2 Option\",value:\"D1\",strongLabel:\"SUPER TITLE D1\"},\n  {label:\"E2 Option Super Super Long\",value:\"E1\",strongLabel:\"SUPER TITLE E1\"},\n];\n\nclass PicklistCustomExample extends React.Component {\n\n  displayName: \"PicklistCustomExample\"\n\n  handleOnUpdateHighlighted () {\n    console.log(\"onUpdateHighlighted should be defined\");\n  }\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         listItemRenderer={CustomListItemLabel}\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistCustomOptions}\n         placeholder=\"Select a contact\"\n         value=\"C0\"\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistCustomExample />, mountNode);\n",
+	  StatefulButtons1: "<SLDSButtonStateful\n  assistiveText=\"like\"\n  iconName=\"like\"\n  iconSize=\"large\"\n  variant=\"icon\" />\n",
+	  StatefulButtons2: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButtonStateful />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButtonStateful\n      stateOne={{iconName: \"add\", label: \"Join\"}}\n      stateTwo={{iconName: \"check\", label: \"Member\"}}\n      stateThree={{iconName: \"close\", label: \"Leave\"}}\n      variant=\"inverse\" />\n  </div>\n</div>\n",
+	  Tooltips: "<SLDSPopoverTooltip\n  align=\"top\"\n  content=\"Tooltip on top\">\n    <a href=\"javascript:void(0)\">\n      <SLDSIcon\n        assistiveText=\"info\" category=\"utility\"\n        name=\"info\"\n        className=\"slds-icon-text-default\" />\n    </a>\n</SLDSPopoverTooltip>\n",
+	  DatepickerSingleSelect: "\n<SLDSDatepickerSingleSelect \n  onDateChange = {function(date){\n    console.log('>>> onDateChange ', date);\n  }}\n/>\n"
 	};
 
 	module.exports = Samples;
@@ -49756,7 +49816,7 @@
 			}
 		},
 		"SLDSButtonStateful": {
-			"description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant=\"icon\"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: \"add\", label: \"Follow\"}}</code>).",
+			"description": "The SLDSButtonStateful component is a variant of the Lightning Design System Button component. It is used for buttons that have a state of unselected or selected.\nFor icon buttons, use <code>variant=\"icon\"</code>. For buttons with labels or buttons with labels and icons, pass data to the state props (ie. <code>stateOne={{iconName: \"add\", label: \"Join\"}}</code>).",
 			"displayName": "SLDSButtonStateful",
 			"props": {
 				"assistiveText": {
@@ -50387,11 +50447,7 @@
 						"name": "string"
 					},
 					"required": false,
-					"description": "",
-					"defaultValue": {
-						"value": "\"Picklist\"",
-						"computed": false
-					}
+					"description": ""
 				},
 				"listItemRenderer": {
 					"type": {
@@ -50440,6 +50496,17 @@
 					"description": "",
 					"defaultValue": {
 						"value": "\"Select an Option\"",
+						"computed": false
+					}
+				},
+				"requiredField": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "false",
 						"computed": false
 					}
 				},
@@ -50816,6 +50883,13 @@
 		"SLDSDatepickerSingleSelect": {
 			"description": "",
 			"props": {
+				"date": {
+					"type": {
+						"name": "any"
+					},
+					"required": false,
+					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+				},
 				"string": {
 					"defaultValue": {
 						"value": "''",
@@ -50901,7 +50975,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "section",
-	        { className: "slds-clearfix mw-readability" },
+	        { className: "slds-clearfix" },
 	        _react2.default.createElement(
 	          "h3",
 	          { className: "slds-text-heading--medium slds-truncate slds-float--left" },
@@ -51012,8 +51086,28 @@
 	          { className: 'demo-only' },
 	          _react2.default.createElement(
 	            'section',
-	            { className: 'slds-p-bottom--x-large' },
-	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.StatefulButtons })
+	            { className: 'slds-p-vertical--large' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'slds-text-heading--small' },
+	              'Stateful Icon Buttons'
+	            ),
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.StatefulButtons1 })
+	          ),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-vertical--large' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'slds-text-heading--small' },
+	              'Stateful Buttons with Labels'
+	            ),
+	            _react2.default.createElement(
+	              'p',
+	              { className: 'slds-p-vertical--x-small' },
+	              '* Follow is the default label.'
+	            ),
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.StatefulButtons2 })
 	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSButtonStateful' })
 	        )
@@ -51117,8 +51211,23 @@
 	          { className: 'demo-only' },
 	          _react2.default.createElement(
 	            'section',
-	            { className: 'slds-p-bottom--x-large' },
-	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.ButtonGroups })
+	            { className: 'slds-p-vertical--large' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'slds-text-heading--small' },
+	              'Button Group with Standard Buttons'
+	            ),
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.ButtonGroups1 })
+	          ),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-vertical--large' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'slds-text-heading--small' },
+	              'Button Group with Stateful Buttons'
+	            ),
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.ButtonGroups2 })
 	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSButtonGroup' })
 	        )
@@ -51225,7 +51334,7 @@
 	            { className: 'slds-p-bottom--x-large' },
 	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.DatepickerSingleSelect })
 	          ),
-	          _react2.default.createElement(_PropTable2.default, { component: 'DatepickerSingleSelect' })
+	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSDatepickerSingleSelect' })
 	        )
 	      );
 	    }
@@ -51398,8 +51507,23 @@
 	          { className: 'demo-only' },
 	          _react2.default.createElement(
 	            'section',
-	            { className: 'slds-p-bottom--x-large' },
-	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Dropdowns })
+	            { className: 'slds-p-vertical--large' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'slds-text-heading--small' },
+	              'Dropdown Open on Click'
+	            ),
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Dropdowns1 })
+	          ),
+	          _react2.default.createElement(
+	            'section',
+	            { className: 'slds-p-vertical--large' },
+	            _react2.default.createElement(
+	              'h4',
+	              { className: 'slds-text-heading--small' },
+	              'Dropdown Open on Hover'
+	            ),
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Dropdowns2 })
 	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSMenuDropdown' })
 	        )
@@ -51714,7 +51838,7 @@
 	          _react2.default.createElement(
 	            'section',
 	            { className: 'slds-p-bottom--x-large' },
-	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Modals })
+	            _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Modals1 })
 	          ),
 	          _react2.default.createElement(_PropTable2.default, { component: 'SLDSModal' })
 	        )

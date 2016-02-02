@@ -37,6 +37,7 @@ const propTypes = {
    */
   options: React.PropTypes.array.isRequired,
   placeholder: React.PropTypes.string,
+  requiredField: React.PropTypes.bool,
   /**
    * Current selected item.
    */
@@ -44,8 +45,8 @@ const propTypes = {
 };
 const defaultProps = {
   disabled: false,
-  label: "Picklist",
   modal: false,
+  requiredField: false,
   placeholder: "Select an Option",
 };
 
@@ -68,10 +69,7 @@ class SLDSMenuPicklist extends React.Component {
 
   componentDidMount () {
     const id = ReactDOM.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
-    this.setState({
-      triggerId: id,
-    });
-    this.setFocus();
+    this.setState({ triggerId: id, });
   }
 
   componentWillUnmount(){
@@ -209,7 +207,6 @@ class SLDSMenuPicklist extends React.Component {
             checkmark={true}
             highlightedIndex={this.state.highlightedIndex}
             itemRenderer={this.getListItemRenderer()}
-            label={this.props.label}
             onCancel={this.handleCancel.bind(this)}
             onListBlur={this.handleListBlur.bind(this)}
             onListItemBlur={this.handleListItemBlur.bind(this)}
@@ -262,8 +259,11 @@ class SLDSMenuPicklist extends React.Component {
   }
 
   render() {
+    const required = this.props.requiredField ? <span style={{color:"red"}}>*</span>:null;
+    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.state.triggerId} style={{width: "100%"}}>{required} {this.props.label}</label>:null;
     return (
       <div className="slds-picklist" aria-expanded={this.state.isOpen}>
+        {inputLabel}
         <button
           aria-haspopup="true"
           className="slds-button slds-button--neutral slds-picklist__label"

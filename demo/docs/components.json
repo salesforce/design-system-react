@@ -832,11 +832,7 @@
                     "name": "string"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "\"Picklist\"",
-                    "computed": false
-                }
+                "description": ""
             },
             "listItemRenderer": {
                 "type": {
@@ -885,6 +881,17 @@
                 "description": "",
                 "defaultValue": {
                     "value": "\"Select an Option\"",
+                    "computed": false
+                }
+            },
+            "requiredField": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "false",
                     "computed": false
                 }
             },

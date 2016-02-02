@@ -445,7 +445,8 @@ class SLDSLookup extends React.Component {
       "slds-hide": this.state.selectedIndex === null,
     };
 
-    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()}>{this.props.requiredField ? `*${this.props.label}`: this.props.label}</label>:null;
+    const required = this.props.requiredField ? <span style={{color:"red"}}>* </span>:null;
+    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()} style={{width: "100%"}}>{required}{this.props.label}</label>:null;
 
     return (
       <div className={cx(componentClasses)} data-select="single" data-scope="single" data-typeahead="true">

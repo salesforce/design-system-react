@@ -19,7 +19,6 @@ const propTypes = {
   checkmark: React.PropTypes.bool,
   highlightedIndex: React.PropTypes.number,
   itemRenderer: React.PropTypes.func,
-  label: React.PropTypes.string,
   options: React.PropTypes.array,
   onCancel: React.PropTypes.func,
   onListBlur: React.PropTypes.func,
@@ -32,7 +31,6 @@ const defaultProps = {
   className: '',
   highlightedIndex: 0,
   itemRenderer: null,
-  label: 'Menu',
   options: [],
   onCancel: (delta)=>{
     console.log("onCancel should be overwritten");
