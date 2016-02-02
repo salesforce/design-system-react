@@ -159,7 +159,7 @@ const DataTableCore = Lib.merge({}, Base, {
 			Multiselectable.deselectAll(this, this.getProperty('selection'));
 		} else {
 			this.allCheckActivated = true;
-			Multiselectable.selectItems(this, this.getProperty('collection'));
+			Multiselectable.selectItems(this, this.getProperty('collection'), this.getProperty('collection'));
 		}
 	},
 
