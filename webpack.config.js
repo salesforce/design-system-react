@@ -42,7 +42,7 @@ var config = {
 	devServer: {
 		port: port
 	},
-	devtool: 'eval-source-map',
+	devtool: 'source-map',
 	output: {
 		path: __dirname + '/build/',
 		publicPath: '/build/',

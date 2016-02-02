@@ -2,6 +2,8 @@ import {Lib, Checkbox} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	// new api controls
 	const checkbox1 = new Checkbox($('#checkbox1'), {
@@ -34,3 +36,5 @@ $(function () {
 
 	void checkbox2;
 });
+
+// <-- SAMPLE CONTROL CODE

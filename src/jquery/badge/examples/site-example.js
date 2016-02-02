@@ -2,6 +2,8 @@ import {Lib, Badge} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 const badgesProperties = [
 	{text: 'Base', theme: ''},
 	{text: 'Default', theme: 'default'},
@@ -25,12 +27,14 @@ $(function () {
 		});
 		void(badges['badge' + index]);
 	});
-
-	// Example of instantiating without an element and subsequently appending
-	const badge15 = new Badge({
-		text: 'Appended',
-		theme: 'inverse'
-	});
-	badge15.appendTo($('#badge-jquery-control .badge15'));
-	void(badge15);
 });
+
+// Example of instantiating without an element and subsequently appending
+const badge15 = new Badge({
+	text: 'Appended',
+	theme: 'inverse'
+});
+badge15.appendTo($('#badge-jquery-control .badge15'));
+void(badge15);
+
+// <-- SAMPLE CONTROL CODE

@@ -2,6 +2,8 @@ import {Lib, Radios} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
+// SAMPLE CONTROL CODE -->
+
 $(function () {
 	const radios = new Radios($('#radio-jquery-control'), {
 		labelText: 'Radio Group Label',
@@ -70,3 +72,5 @@ $(function () {
 		console.log(radios.destroy());
 	});
 });
+
+// <-- SAMPLE CONTROL CODE
