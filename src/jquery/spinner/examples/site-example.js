@@ -1,52 +1,59 @@
-import { Lib, Spinner as Component } from 'design-system-jquery';
-import * as controlTemplate from './template-control';
-import * as demoControlsTemplate from './template-demo-controls';
-import { sampleData } from 'design-system-utilities';
+import {Lib, Spinner} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const COMPONENT_NAME = 'spinner';
-const COMPONENT_DISPLAY_NAME = 'Spinner';
-const SAMPLE_DATA_ACCESSOR = 'spinner';
-const SAMPLE_DATA_DEFAULT = sampleData[SAMPLE_DATA_ACCESSOR].default.collection;
+// SAMPLE CONTROL CODE -->
 
 $(function () {
-	$('#' + COMPONENT_NAME + '-jquery-control')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(controlTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(demoControlsTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	const components = [];
-
-	$.each(SAMPLE_DATA_DEFAULT, function (index, value) {
-		const thisComponentProperties = {};
-		const defaultComponentProperties = [
-			'size',
-			'theme'
-		];
-		$.each(defaultComponentProperties, function (index2, value2) {
-			if (typeof value[value2] !== 'undefined') {
-				if (value[value2] !== '') {
-					thisComponentProperties[value2] = value[value2];
-				}
-			}
-		});
-		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME + '__' + index), thisComponentProperties);
-		void (components[COMPONENT_NAME + index]);
+	// const spinner = new Spinner($('#spinner'));
+	const spinner1 = new Spinner($('#spinner__spinner--0'), {
+		size: 'large',
+		theme: 'base'
 	});
+	const spinner2 = new Spinner($('#spinner__spinner--1'), {
+		size: 'medium',
+		theme: 'base'
+	});
+	const spinner3 = new Spinner($('#spinner__spinner--2'), {
+		size: 'small',
+		theme: 'base'
+	});
+
+	const spinner4 = new Spinner($('#spinner__spinner--3'), {
+		size: 'large',
+		theme: 'brand'
+	});
+	const spinner5 = new Spinner($('#spinner__spinner--4'), {
+		size: 'medium',
+		theme: 'brand'
+	});
+	const spinner6 = new Spinner($('#spinner__spinner--5'), {
+		size: 'small',
+		theme: 'brand'
+	});
+
+	const spinner7 = new Spinner($('#spinner__spinner--6'), {
+		size: 'large',
+		theme: 'inverse'
+	});
+	const spinner8 = new Spinner($('#spinner__spinner--7'), {
+		size: 'medium',
+		theme: 'inverse'
+	});
+	const spinner9 = new Spinner($('#spinner__spinner--8'), {
+		size: 'small',
+		theme: 'inverse'
+	});
+
+	void(spinner1);
+	void(spinner2);
+	void(spinner3);
+	void(spinner4);
+	void(spinner5);
+	void(spinner6);
+	void(spinner7);
+	void(spinner8);
+	void(spinner9);
 });
+
+// <-- SAMPLE CONTROL CODE
