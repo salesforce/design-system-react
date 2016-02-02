@@ -40,8 +40,13 @@ class DropdownSection extends React.Component {
         </div>
 
         <div className="demo-only">
-          <section className="slds-p-bottom--x-large">
-            <CodeMirror codeText={Samples.Dropdowns} />
+          <section className="slds-p-vertical--large">
+            <h4 className="slds-text-heading--small">Dropdown Open on Click</h4>
+            <CodeMirror codeText={Samples.Dropdowns1} />
+          </section>
+          <section className="slds-p-vertical--large">
+            <h4 className="slds-text-heading--small">Dropdown Open on Hover</h4>
+            <CodeMirror codeText={Samples.Dropdowns2} />
           </section>
           <PropTable component="SLDSMenuDropdown" />
         </div>
