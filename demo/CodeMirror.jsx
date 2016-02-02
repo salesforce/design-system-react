@@ -175,7 +175,7 @@ class CodeMirror extends React.Component {
         <CodeMirrorEditor
           key="jsx"
           onChange={this.handleCodeChange.bind(this)}
-          className="highlight bb-gray"
+          className="highlight bb-gray bh-gray"
           codeText={this.state.code}
         />
     );

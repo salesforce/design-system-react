@@ -16,7 +16,7 @@ const defaultProps = {};
 class ComponentHeader extends React.Component {
   render(){
     return (
-      <section className="slds-clearfix mw-readability">
+      <section className="slds-clearfix">
         <h3 className='slds-text-heading--medium slds-truncate slds-float--left'>
         {this.props.cmpName}
         </h3>
