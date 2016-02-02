@@ -1,57 +1,55 @@
-import { Lib, Picklist as Component } from 'design-system-jquery';
-import * as controlTemplate from './template-control';
-import * as demoControlsTemplate from './template-demo-controls';
-import { sampleData } from 'design-system-utilities';
+import {Lib, Picklist} from 'design-system-jquery';
+import {sampleData} from 'design-system-utilities';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const COMPONENT_NAME = 'picklist';
-const COMPONENT_DISPLAY_NAME = 'Picklist';
-const SAMPLE_DATA_ACCESSOR = 'picklist';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
-const SAMPLE_DATA_COLLECTION = SAMPLE_DATA_DEFAULT.collection;
+// SAMPLE CONTROL CODE -->
 
 $(function () {
-	$('#' + COMPONENT_NAME + '-jquery-control')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(controlTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
+	const picklistProperties = {
+		resize: 'auto',
+		selection: {
+			value: 1
+		},
+		collection: [
+			{ _itemType: 'header', text: 'One thing' },
+			{ id: 0, text: 'One', value: '1', icon: 'utility.apps' },
+			{ _itemType: 'divider' },
+			{ _itemType: 'header', text: 'All the things' },
+			{ id: 1, text: 'Two', value: '2', icon: 'utility.email' },
+			{ id: 2, text: 'Three', value: '3' },
+			{ id: 3, text: 'Buzz', value: '4' },
+			{ id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar' },
+			{ id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled' }
+		]
+	};
 
-	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(demoControlsTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
+	const picklist = new Picklist($('#picklist__picklist--0'), picklistProperties);
 
-	const components = [];
-	$.each(SAMPLE_DATA, function (index, value) {
-		const thisComponentProperties = {};
-		if (typeof value !== 'undefined') {
-			if (index === 'default') {
-				$.each(SAMPLE_DATA_DEFAULT, function (index2, value2) {
-					if (typeof value2 !== 'undefined') {
-						if (index2 !== '') {
-							thisComponentProperties[index2] = value2;
-						}
-					}
-				});
-			}
-		}
-		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME), thisComponentProperties);
-		void (components[COMPONENT_NAME + index]);
-		// Log on change
-		$('#component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME).on('changed', function (event, data) {
-			Lib.log('changed', data);
-		});
+	// sample method buttons
+	$('#picklist-jquery-log').on('click', function () {
+		Lib.log(picklist.getSelection());
+	});
+	$('#picklist-jquery-setByIndex').on('click', function () {
+		picklist.setSelectionByIndex(1);
+	});
+	$('#picklist-jquery-setByObject').on('click', function () {
+		picklist.setSelection(sampleData.picklist.default.collection[5]);
+	});
+	$('#picklist-jquery-enable').on('click', function () {
+		picklist.enable();
+	});
+	$('#picklist-jquery-disable').on('click', function () {
+		picklist.disable();
+	});
+	$('#picklist-jquery-destroy').on('click', function () {
+		picklist.destroy();
+	});
+
+	// events
+	$('#picklist-jquery-control .picklist1').on('changed', function (event, data) {
+		Lib.log('changed', data);
 	});
 });
+
+// <-- SAMPLE CONTROL CODE

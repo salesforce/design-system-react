@@ -1,56 +1,29 @@
-import { Lib, Pills as Component } from 'design-system-jquery';
-import * as controlTemplate from './template-control';
-import * as demoControlsTemplate from './template-demo-controls';
-import { sampleData } from 'design-system-utilities';
+import {Lib, Pills} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const COMPONENT_NAME = 'pills';
-const COMPONENT_DISPLAY_NAME = 'Pills';
-const SAMPLE_DATA_ACCESSOR = 'pills';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
+// SAMPLE CONTROL CODE -->
 
 $(function () {
-	$('#' + COMPONENT_NAME + '-jquery-control')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(controlTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(demoControlsTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	const components = [];
-	$.each(SAMPLE_DATA, function (index, value) {
-		const thisComponentProperties = {};
-		if (typeof value !== 'undefined') {
-			if (index === 'default') {
-				$.each(SAMPLE_DATA_DEFAULT, function (index2, value2) {
-					if (typeof value2 !== 'undefined') {
-						if (index2 !== '') {
-							thisComponentProperties[index2] = value2;
-						}
-					}
-				});
+	const pillsProperties = {
+		selection: [
+			{
+				text: 'item 1',
+				value: 1
+			},
+			{
+				text: 'item 2',
+				value: 2
+			},
+			{
+				text: 'item 3',
+				value: 3
 			}
-		}
-		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME), thisComponentProperties);
-		void (components[COMPONENT_NAME + index]);
-		// Log on change
-		$('#component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME).on('changed', function (event, data) {
-			Lib.log('changed', data);
-		});
-	});
+		]
+	};
+
+	const pills = new Pills($('#pills__pills--0'), pillsProperties);
+	void (pills);
 });
+
+// <-- SAMPLE CONTROL CODE

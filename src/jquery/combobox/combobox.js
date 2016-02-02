@@ -34,7 +34,6 @@ let Combobox = function Combobox () {
 	const options = this._getOptions(arguments);
 
 	this.template = $(template);
-	console.log("[combobox.js:37] options:", options);
 	this._initialize(options);
 };
 
