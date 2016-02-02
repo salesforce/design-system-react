@@ -129,4 +129,3 @@ class ModalExample extends React.Component {
 }
 
 ReactDOM.render(<ModalExample />, mountNode);
-

@@ -50,4 +50,3 @@ class PicklistCustomExample extends React.Component {
 }
 
 ReactDOM.render(<PicklistCustomExample />, mountNode);
-

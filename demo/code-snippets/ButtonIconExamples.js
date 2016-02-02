@@ -50,4 +50,3 @@
       variant="icon" />
   </div>
 </div>
-

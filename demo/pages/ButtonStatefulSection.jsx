@@ -41,8 +41,14 @@ class ButtonStatefulSection extends React.Component {
         </div>
 
         <div className="demo-only">
-          <section className="slds-p-bottom--x-large">
-            <CodeMirror codeText={Samples.StatefulButtons} />
+          <section className="slds-p-vertical--large">
+            <h4 className="slds-text-heading--small">Stateful Icon Buttons</h4>
+            <CodeMirror codeText={Samples.StatefulButtons1} />
+          </section>
+          <section className="slds-p-vertical--large">
+            <h4 className="slds-text-heading--small">Stateful Buttons with Labels</h4>
+            <p className="slds-p-vertical--x-small">* Follow is the default label.</p>
+            <CodeMirror codeText={Samples.StatefulButtons2} />
           </section>
           <PropTable component="SLDSButtonStateful" />
         </div>

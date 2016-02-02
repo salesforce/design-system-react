@@ -27,4 +27,3 @@
       value="A0"
       variant="icon" />
 </SLDSButtonGroup>
-

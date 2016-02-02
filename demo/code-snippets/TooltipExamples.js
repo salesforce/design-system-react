@@ -8,4 +8,3 @@
         className="slds-icon-text-default" />
     </a>
 </SLDSPopoverTooltip>
-

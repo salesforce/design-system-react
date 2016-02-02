@@ -17,4 +17,3 @@
   placeholder = "Select a contact"
   value="C0"
   />
-

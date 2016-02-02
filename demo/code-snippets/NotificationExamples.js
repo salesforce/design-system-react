@@ -135,4 +135,3 @@ class NotificationExample extends React.Component {
 }
 
 ReactDOM.render(<NotificationExample />, mountNode);
-
