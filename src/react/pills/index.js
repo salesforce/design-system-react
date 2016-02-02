@@ -10,4 +10,4 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 // The <control>.js file will be deprecated in favor of index.js
-export Pills from './pills';
+export default from './pills';
