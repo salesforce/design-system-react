@@ -1,56 +1,77 @@
-import { Lib, Radios as Component } from 'design-system-jquery';
-import * as controlTemplate from './template-control';
-import * as demoControlsTemplate from './template-demo-controls';
-import { sampleData } from 'design-system-utilities';
+import {Lib, Radios} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const COMPONENT_NAME = 'radio';
-const COMPONENT_DISPLAY_NAME = 'Radio';
-const SAMPLE_DATA_ACCESSOR = 'radio';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
+// SAMPLE CONTROL CODE -->
 
 $(function () {
-	$('#' + COMPONENT_NAME + '-jquery-control')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(controlTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(demoControlsTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
-
-	const components = [];
-	$.each(SAMPLE_DATA, function (index, value) {
-		const thisComponentProperties = {};
-		if (typeof value !== 'undefined') {
-			if (index === 'default') {
-				$.each(SAMPLE_DATA.default, function (index2, value2) {
-					if (typeof value2 !== 'undefined') {
-						if (index2 !== '') {
-							thisComponentProperties[index2] = value2;
-						}
-					}
-				});
+	const radiosProperties = {
+		labelText: 'Radio Group Label',
+		name: 'rads',
+		radios: [
+			{
+				text: 'Checked',
+				value: 'value9',
+				checked: true
+			},
+			{
+				text: 'Unchecked',
+				value: 'value10',
+				checked: false
+			},
+			{
+				text: 'Unchecked Disabled',
+				value: 'value11',
+				checked: false,
+				disabled: true
 			}
-		}
-		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME), thisComponentProperties);
-		void (components[COMPONENT_NAME + index]);
-		// Log on change
-		$('#component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME).on('changed', function (event, data) {
-			Lib.log('changed', data);
-		});
+		]
+	};
+	const radios = new Radios($('#radio__radio--0'), radiosProperties);
+
+	$('#radio-jquery-checkFirst').on('click', function () {
+		console.log('check first');
+		radios.check(0);
+	});
+
+	$('#radio-jquery-checkSecond').on('click', function () {
+		console.log('check second');
+		radios.check(1);
+	});
+
+	$('#radio-jquery-disableFirst').on('click', function () {
+		console.log('disable first');
+		radios.radio(0).disable();
+	});
+
+	$('#radio-jquery-enableFirst').on('click', function () {
+		console.log('enable first');
+		radios.radio(0).enable();
+	});
+
+	$('#radio-jquery-disableAll').on('click', function () {
+		console.log('disable all');
+		radios.disable();
+	});
+
+	$('#radio-jquery-enableAll').on('click', function () {
+		console.log('enable all');
+		radios.enable();
+	});
+
+	$('#radio-jquery-logChecked').on('click', function () {
+		const checked = radios.getChecked();
+		console.log('get checked', checked);
+	});
+
+	$('#radio-jquery-logValue').on('click', function () {
+		const checkedValue = radios.getValue();
+		console.log('get value', checkedValue);
+	});
+
+	$('#radio-jquery-destroy').on('click', function () {
+		console.log(radios.destroy());
 	});
 });
+
+// <-- SAMPLE CONTROL CODE
