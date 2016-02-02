@@ -18,23 +18,35 @@ import InputIcon from '../SLDSIcon/InputIcon';
 import {KEYS,EventUtil} from '../utils';
 
 
+const displayName = 'SLDSDatepickerSingleSelect';
+const propTypes = {
+  /**
+   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
+   */
+  date: React.PropTypes.any,
+};
+const defaultProps = {
+  string:'',
+  value: new Date(),
+  placeholder: 'Pick a Date',
+  formatter (date) {
+    return (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();
+  },
+  parser (str) {
+    return new Date(str);
+  },
+  onDateChange (date) {
+    console.log('onDateChange should be defined');
+  }
+};
+
 module.exports = React.createClass( {
 
+  propTypes:propTypes,
+
   getDefaultProps(){
-    return {
-      string:'',
-      value: new Date(),
-      placeholder: 'Pick a Date',
-      formatter (date) {
-        return (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();
-      },
-      parser (str) {
-        return new Date(str);
-      },
-      onDateChange (date) {
-        console.log('onDateChange should be defined');
-      }
-    }
+    return defaultProps;
   },
 
   getInitialState(){

@@ -56,18 +56,18 @@ module.exports = React.createClass( {
             */}
             <p className="slds-text-heading--small slds-p-horizontal--large slds-p-vertical--small">Components</p>
             <ul className="slds-p-bottom--small">
-              <li><Link to="button" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButton</Link></li>
-              <li><Link to="button-group" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButtonGroup</Link></li>
-              <li><Link to="button-stateful" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSButtonStateful</Link></li>
-              <li><Link to="dateinput" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSDatepicker</Link></li>
+              <li><Link to="button" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Button</Link></li>
+              <li><Link to="button-group" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">ButtonGroup</Link></li>
+              <li><Link to="button-stateful" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">ButtonStateful</Link></li>
+              <li><Link to="dateinput" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">DatepickerSingleSelect</Link></li>
 
-              <li><Link to="icon" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSIcon</Link></li>
-              <li><Link to="lookup" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSLookup</Link></li>
-              <li><Link to="dropdown" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSMenuDropdown</Link></li>
-              <li><Link to="picklist" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSMenuPicklist</Link></li>
-              <li><Link to="modal" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSModal</Link></li>
-              <li><Link to="notification" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSNotification</Link></li>
-              <li><Link to="tooltip" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">SLDSPopoverTooltip</Link></li>
+              <li><Link to="icon" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Icon</Link></li>
+              <li><Link to="lookup" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Lookup</Link></li>
+              <li><Link to="dropdown" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">MenuDropdown</Link></li>
+              <li><Link to="picklist" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">MenuPicklist</Link></li>
+              <li><Link to="modal" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Modal</Link></li>
+              <li><Link to="notification" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Notification</Link></li>
+              <li><Link to="tooltip" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">PopoverTooltip</Link></li>
             </ul>
           </aside>
 

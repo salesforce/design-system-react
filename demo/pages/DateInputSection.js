@@ -43,7 +43,7 @@ class DatepickerSingleSelectSection extends React.Component {
           <section className="slds-p-bottom--x-large">
             <CodeMirror codeText={Samples.DatepickerSingleSelect} />
           </section>
-          <PropTable component="DatepickerSingleSelect" />
+          <PropTable component="SLDSDatepickerSingleSelect" />
         </div>
       </div>
     );

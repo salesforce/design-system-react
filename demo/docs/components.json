@@ -1261,6 +1261,13 @@
     "SLDSDatepickerSingleSelect": {
         "description": "",
         "props": {
+            "date": {
+                "type": {
+                    "name": "any"
+                },
+                "required": false,
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
+            },
             "string": {
                 "defaultValue": {
                     "value": "''",
