@@ -117,7 +117,7 @@ const Multiselectable = {
 		const selection = Multiselectable.getWrappedImmutableData(controlContext, currentSelection);
 		selection.reset(null);
 
-		Eventable.trigger(controlContext, 'deselect', [], selection);
+		Eventable.trigger(controlContext, 'deselect', null, selection);
 	},
 	
 	toggleItem (controlContext, item, currentSelection) {
