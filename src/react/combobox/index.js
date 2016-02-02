@@ -9,23 +9,5 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-export Badge from './badge';
-export Button from './button';
-export ButtonView from './button';
-export ButtonGroup from './button-group';
-export Checkbox from './checkbox';
+// The <control>.js file will be deprecated in favor of index.js
 export Combobox from './combobox';
-export DataTable from './data-table';
-export Datepicker from './datepicker';
-export Dropdown from './dropdown';
-export Lookup from './lookup';
-export Modal from './modal';
-export Notification from './notification';
-export Picklist from './picklist';
-export Pills from './pills';
-export Popover from './popover';
-export Radio from './radio';
-export Spinner from './spinner';
-export Svg from './svg';
-export Tooltip from './tooltip';
-export Tree from './tree';
