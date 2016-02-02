@@ -1,6 +1,6 @@
 
 <SLDSDatepickerSingleSelect 
-  onDateChange = {(date) => {
+  onDateChange = {function(date){
     console.log('>>> onDateChange ', date);
   }}
 />
