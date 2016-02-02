@@ -4,7 +4,8 @@
     <a href="javascript:void(0)">
       <SLDSIcon
         assistiveText="info" category="utility"
-        name="info" 
+        name="info"
         className="slds-icon-text-default" />
     </a>
 </SLDSPopoverTooltip>
+

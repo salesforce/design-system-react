@@ -21,10 +21,6 @@ class ModalExample extends React.Component {
     }
   }
 
-  selectItem(item){
-    console.log(item , " Selected");
-  }
-
   getModalContent() {
     return (
       <div>
@@ -35,7 +31,7 @@ class ModalExample extends React.Component {
       emptyMessage="No Accounts Found"
       label="Accounts"
       modal={true}
-      onItemSelect={this.selectItem}
+      onItemSelect={function(item){console.log(item , " Selected")}}
       options={[
         {label:"Paddy\"s Pub"},
         {label:"Tyrell Corp"},
