@@ -32,14 +32,14 @@ const template = formatIt`
 				id="component-wrapper-${'componentName'}__${'componentName'}-shade"
 				class="component-wrapper component-wrapper-${'componentName'}"
 			></span>
-		</div>
-		<div class="slds-col | slds-m-bottom--small">
 			<span
 				data-component-display-name="${'componentDisplayName'}"
 				data-component-name="${'componentName'}"
 				id="component-wrapper-${'componentName'}__${'componentName'}-inverse"
 				class="component-wrapper component-wrapper-${'componentName'}"
 			></span>
+		</div>
+		<div class="slds-col | slds-m-bottom--small">
 			<span
 				data-component-display-name="${'componentDisplayName'}"
 				data-component-name="${'componentName'}"
@@ -69,7 +69,7 @@ const template = formatIt`
 			<span
 				data-component-display-name="${'componentDisplayName'}"
 				data-component-name="${'componentName'}"
-				id="component-wrapper-${'componentName'}__${'componentName'}-alt-error"
+				id="component-wrapper-${'componentName'}__${'componentName'}-error"
 				class="component-wrapper component-wrapper-${'componentName'}"
 			></span>
 			<span

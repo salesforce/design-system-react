@@ -4,16 +4,14 @@ import { sampleData } from 'design-system-utilities';
 
 export default React.createClass({
 	getInitialState () {
+		console.log("[site-example.js:7] sampleData.pills.default.collection:", sampleData.pills.default);
 		return sampleData.pills.default;
 	},
 
 	render () {
 		return (
 			<div>
-				<div className="slds-col example">
-					<Pills selection={this.state.selection} onChange={this.handleChanged}/>
-				</div>
-				<div className="slds-col demo-controls"></div>
+				<Pills selection={this.state.selection} onChange={this.handleChanged}/>
 			</div>
 		);
 	},

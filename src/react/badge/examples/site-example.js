@@ -12,7 +12,7 @@ const GroupsWrapper = React.createClass({
 	},
 	render () {
 		return (
-			<div className="slds-col | slds-m-bottom--small">
+			<div>
 				{this.props.data}
 			</div>
 		);

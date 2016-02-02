@@ -20,8 +20,17 @@ export default React.createClass({
 								ExampleEvents.fireExampleEvent.bind(this,
 									{
 										control: control,
-										callbackMethod: 'enable'
-									})}>Enable</button>
+										callbackMethod: 'check'
+									})}>Check</button>
+						<button
+							type="button"
+							className="slds-button slds-button--neutral slds-button--small"
+							onClick={
+								ExampleEvents.fireExampleEvent.bind(this,
+									{
+										control: control,
+										callbackMethod: 'uncheck'
+									})}>Uncheck</button>
 						<button
 							type="button"
 							className="slds-button slds-button--neutral slds-button--small"
@@ -38,17 +47,8 @@ export default React.createClass({
 								ExampleEvents.fireExampleEvent.bind(this,
 									{
 										control: control,
-										callbackMethod: 'check'
-									})}>Check</button>
-						<button
-							type="button"
-							className="slds-button slds-button--neutral slds-button--small"
-							onClick={
-								ExampleEvents.fireExampleEvent.bind(this,
-									{
-										control: control,
-										callbackMethod: 'uncheck'
-									})}>Uncheck</button>
+										callbackMethod: 'enable'
+									})}>Enable</button>
 					</div>
 				</div>
 			</div>

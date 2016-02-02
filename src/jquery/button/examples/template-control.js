@@ -47,7 +47,9 @@ const template = formatIt`
 			<span data-component-display-name="${'componentDisplayName'}" data-component-name="${'componentName'}" id="component-wrapper-${'componentName'}__${'componentName'}-stateful" class="component-wrapper component-wrapper-${'componentName'}"></span>
 		</div>
 		<div class="slds-col | slds-m-bottom--small">
-			<div id="component-wrapper-${'componentName'}__${'componentName'}-stateful-inverse | slds-box slds-box--x-small | slds-theme--inverse"></div>
+			<div class="slds-box slds-box--x-small | slds-theme--inverse">
+				<span data-component-display-name="${'componentDisplayName'}" data-component-name="${'componentName'}" id="component-wrapper-${'componentName'}__${'componentName'}-stateful-inverse" class="component-wrapper component-wrapper-${'componentName'}"></span>
+			</div>
 		</div>
 		<div class="slds-col | slds-m-bottom--small">
 			<span data-component-display-name="${'componentDisplayName'}" data-component-name="${'componentName'}" id="component-wrapper-${'componentName'}__${'componentName'}-icon-bare-x-small" class="component-wrapper component-wrapper-${'componentName'}"></span>

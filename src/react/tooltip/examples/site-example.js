@@ -71,9 +71,9 @@ export default React.createClass({
 		}
 		return (
 			<div className="react-tooltip-example-wrap">
-				<button id="tooltip-react-toggle-1" className="slds-button slds-button--neutral slds-button--small" ref={this._buttonRendered1} onClick={this._handleClick1}>Toggle</button>
-				<button id="tooltip-react-toggle-2" className="slds-button slds-button--neutral slds-button--small" ref={this._buttonRendered2} onMouseOver={this._handleMouseOver2} onMouseOut={this._handleMouseOut2}>Toggle</button>
-				<button id="tooltip-react-toggle-3" className="slds-button slds-button--neutral slds-button--small" ref={this._buttonRendered3} onMouseDown={this._handleFocus3} onMouseUp={this._handleBlur3}>Toggle</button>
+				<button id="tooltip-react-toggle-1" className="slds-button slds-button--neutral slds-button--small" ref={this._buttonRendered1} onClick={this._handleClick1}>Toggle on click</button>
+				<button id="tooltip-react-toggle-2" className="slds-button slds-button--neutral slds-button--small" ref={this._buttonRendered2} onMouseOver={this._handleMouseOver2} onMouseOut={this._handleMouseOut2}>Toggle on hover</button>
+				<button id="tooltip-react-toggle-3" className="slds-button slds-button--neutral slds-button--small" ref={this._buttonRendered3} onMouseDown={this._handleFocus3} onMouseUp={this._handleBlur3}>Toggle on focus</button>
 				{Components}
 			</div>
 		);

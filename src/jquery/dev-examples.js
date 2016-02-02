@@ -14,7 +14,7 @@ import '../helpers/create-jquery-plugin';
 import './badge/examples/site-example';
 import './button/examples/site-example';
 import './button-group/examples/site-example';
-import './checkbox/examples/site-example';
+import './checkbox/examples/dev-example';
 import './combobox/examples/site-example';
 import './data-table/examples/site-example';
 import './datepicker/examples/site-example';

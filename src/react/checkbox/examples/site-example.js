@@ -1,6 +1,11 @@
 import React             from 'react';
 import { Checkbox }      from 'design-system-react';
 import { ExampleEvents } from 'design-system-utilities';
+import { sampleData } from 'design-system-utilities';
+
+const SAMPLE_DATA_ACCESSOR = 'checkbox';
+const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
+const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
 // https://www.lightningdesignsystem.com/components/forms#checkbox
 
@@ -10,81 +15,77 @@ export default React.createClass({
 	},
 
 	getInitialState () {
-		return {
-			model: {
-				checkbox1: {
-					disabled: false,
-					checked: true
-				},
-				checkbox2: {
-					disabled: false,
-					checked: false
-				}
-			}
-		};
+		const checkboxen = new Map();
+
+		function populateCheckboxen ( element, index ) {
+			checkboxen.set('checkbox' + (index + 1), element);
+		}
+		SAMPLE_DATA_DEFAULT.collection.forEach(populateCheckboxen);
+		return { checkboxen };
 	},
 
 	render () {
+		const checkboxenState = this.state.checkboxen;
 		return (
 			<fieldset className="slds-form-element">
 				<legend className="slds-form-element__label slds-form-element__label--top"></legend>
 				<div className="slds-form-element__control">
 					<Checkbox
-						checked={this.state.model.checkbox1.checked}
-						disabled={this.state.model.checkbox1.disabled}
-						labelText="Checked"
+						checked={checkboxenState.get('checkbox1').checked}
+						disabled={checkboxenState.get('checkbox1').disabled}
+						labelText={checkboxenState.get('checkbox1').text}
 						onChanged={this._handleChange.bind(this, 'checkbox1')}
 						onDisabled={this._handleDisable.bind(this, 'checkbox1', true)}
 						onEnabled={this._handleDisable.bind(this, 'checkbox1', false)}
-						value="checkbox"/>
+						value={checkboxenState.get('checkbox1').value}/>
 				</div>
 				<div className="slds-form-element__control">
 					<Checkbox
-						checked={this.state.model.checkbox2.checked}
-						disabled={this.state.model.checkbox2.checked.disabled}
-						labelText="Unchecked"
+						checked={checkboxenState.get('checkbox2').checked}
+						disabled={checkboxenState.get('checkbox2').disabled}
+						labelText={checkboxenState.get('checkbox2').text}
 						onChanged={this._handleChange.bind(this, 'checkbox2')}
 						onDisabled={this._handleDisable.bind(this, 'checkbox2', true)}
 						onEnabled={this._handleDisable.bind(this, 'checkbox2', false)}
-						value="checkbox2"/>
+						value={checkboxenState.get('checkbox2').value}/>
 				</div>
 			</fieldset>
 		);
 	},
 
 	_handleChange (checkboxName, checkedValue) {
-		const model = this.state.model;
-		model[checkboxName].checked = checkedValue;
-		this.setState(model);
+		const checkboxenState = this.state.checkboxen;
+		checkboxenState.get(checkboxName).checked = checkedValue;
+		this.setState(checkboxenState);
 	},
 
 	_handleDisable (checkboxName, disabledValue) {
-		const model = this.state.model;
-		model[checkboxName].disabled = disabledValue;
-		this.setState(model);
+		const checkboxenState = this.state.checkboxen;
+		checkboxenState.get(checkboxName).disabled = disabledValue;
+		this.setState(checkboxenState);
 	},
 
 	enable () {
-		const model = this.state.model;
-		model.checkbox1.disabled = false;
-		this.setState({model});
+		const checkboxenState = this.state.checkboxen;
+		checkboxenState.get('checkbox1').disabled = false;
+		this.setState(checkboxenState);
 	},
 
 	disable () {
-		const model = this.state.model;
-		model.checkbox1.disabled = true;
-		this.setState({model});
+		const checkboxenState = this.state.checkboxen;
+		checkboxenState.get('checkbox1').disabled = true;
+		this.setState(checkboxenState);
 	},
 
 	check () {
-		const model = this.state.model;
-		model.checkbox1.checked = true;
-		this.setState({model});
+		const checkboxenState = this.state.checkboxen;
+		checkboxenState.get('checkbox1').checked = true;
+		this.setState(checkboxenState);
 	},
 
 	uncheck () {
-		const model = this.state.model;
-		model.checkbox1.checked = false;
-		this.setState({model});
+		const checkboxenState = this.state.checkboxen;
+		checkboxenState.get('checkbox1').checked = false;
+		this.setState(checkboxenState);
 	}
 });

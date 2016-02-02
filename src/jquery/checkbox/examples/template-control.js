@@ -20,13 +20,13 @@ const template = formatIt`
 		<div
 			data-component-display-name="${'componentDisplayName'}"
 			data-component-name="${'componentName'}"
-			id="component-wrapper-${'componentName'}__${'componentName'}-checked"
+			id="component-wrapper-${'componentName'}__${'componentName'}--0"
 			class="slds-form-element__control"
 		></div>
 		<div
 			data-component-display-name="${'componentDisplayName'}"
 			data-component-name="${'componentName'}"
-			id="component-wrapper-${'componentName'}__${'componentName'}-unchecked"
+			id="component-wrapper-${'componentName'}__${'componentName'}--1"
 			class="slds-form-element__control"
 		></div>
 	</fieldset>

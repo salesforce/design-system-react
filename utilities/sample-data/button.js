@@ -8,8 +8,7 @@ const collection = [
 		assistiveText: 'button-base-disabled',
 		disabled: true,
 		domNode: '#component-wrapper-button__button-base-disabled',
-		text: 'Disabled',
-		theme: 'neutral'
+		text: 'Disabled'
 	},
 	{
 		assistiveText: 'button-neutral',

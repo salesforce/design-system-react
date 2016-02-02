@@ -12,8 +12,6 @@ export default React.createClass({
 
 	render () {
 		return (
-	<div>
-		<div className="slds-col example">
 			<div className="slds-grid slds-grid--vertical">
 				<div className="slds-col | slds-m-bottom--small">
 					<Button text="Base"/>
@@ -115,12 +113,6 @@ export default React.createClass({
 					</div>
 				</div>
 			</div>
-
-			<div className="slds-col | slds-m-bottom--small">
-			</div>
-
-		</div>
-	</div>
 		);
 	},
 
