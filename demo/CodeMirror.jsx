@@ -199,7 +199,7 @@ class CodeMirror extends React.Component {
         <div className="slds-p-vertical--medium">
             {this.renderExample()}
         </div>
-        <div className="bb-gray slds-text-align--right slds-p-around--x-small">
+        <div className="bb-gray slds-text-align--right slds-p-bottom--x-small">
           <button onClick={this.toggleEditor.bind(this)}>
             <SLDSButtonIcon name={this.state.showCode ? "chevronup" : "chevrondown"} position="left" />
             <span>

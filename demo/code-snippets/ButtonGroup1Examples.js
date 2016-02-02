@@ -1,4 +1,4 @@
-<SLDSButtonGroup className="slds-p-bottom--medium">
+<SLDSButtonGroup>
   <SLDSButton
     label="Refresh"
     variant="neutral" />

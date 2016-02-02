@@ -1,4 +1,4 @@
-<SLDSButtonGroup className="slds-p-vertical--medium">
+<SLDSButtonGroup>
   <SLDSButtonStateful
     assistiveText="Show Chart"
     buttonVariant="icon"

@@ -41,12 +41,12 @@ class ButtonGroupSection extends React.Component {
         </div>
 
         <div className="demo-only">
-          <section className="slds-p-vertical--x-large">
-            <h4 className="slds-text-heading--small slds-p-vertical--medium">Button Group with Standard Buttons</h4>
+          <section className="slds-p-vertical--large">
+            <h4 className="slds-text-heading--small">Button Group with Standard Buttons</h4>
             <CodeMirror codeText={Samples.ButtonGroups1} />
           </section>
-          <section className="slds-p-bottom--x-large">
-            <h4 className="slds-text-heading--small slds-p-vertical--medium">Button Group with Stateful Buttons</h4>
+          <section className="slds-p-vertical--large">
+            <h4 className="slds-text-heading--small">Button Group with Stateful Buttons</h4>
             <CodeMirror codeText={Samples.ButtonGroups2} />
           </section>
           <PropTable component="SLDSButtonGroup" />

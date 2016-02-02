@@ -1,5 +1,4 @@
 <div className="slds-x-small-buttons--horizontal">
-  <h4 className="slds-text-heading--medium slds-p-vertical--medium">Icon Buttons</h4>
   <SLDSButton
     assistiveText="Icon Bare Small"
     iconName="settings"

@@ -42,10 +42,16 @@ class ButtonSection extends React.Component {
         </div>
 
         <div className="demo-only">
-          <section className="slds-p-bottom--x-large">
-            <CodeMirror codeText={Samples.Buttons} />
+          <section className="slds-p-vertical--large">
+            <h4 className="slds-text-heading--small">Neutral Buttons</h4>
+            <CodeMirror codeText={Samples.Buttons1} />
           </section>
-          <section className="slds-p-top--x-large">
+          <section className="slds-p-vertical--large">
+            <h4 className="slds-text-heading--small">Color Buttons</h4>
+            <CodeMirror codeText={Samples.Buttons2} />
+          </section>
+          <section className="slds-p-vertical--large">
+            <h4 className="slds-text-heading--small">Icon Buttons</h4>
             <CodeMirror codeText={Samples.IconButtons} />
           </section>
           <PropTable component="SLDSButton" />
