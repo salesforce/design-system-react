@@ -50,10 +50,6 @@ describe('SLDSMenuDropdown: ', function(){
       expect(btn.innerText).to.equal("Contacts")
     })
 
-    it('preseves the className', () => {
-      expect(btn.className).to.include("dijkstrafied")
-    })
-
     it('expands the dropdown on hover', () => {
       expect(getMenu(body)).to.equal(null)
       Simulate.mouseEnter(btn, {})

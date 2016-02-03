@@ -648,12 +648,12 @@
                     "computed": false
                 }
             },
-            "buttonClassName": {
+            "assistiveText": {
                 "type": {
                     "name": "string"
                 },
                 "required": false,
-                "description": "Classes applied to the Button component."
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the Dropdown button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
             },
             "buttonVariant": {
                 "type": {
