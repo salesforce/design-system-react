@@ -2,13 +2,15 @@ import React          from 'react';
 import { Radio }      from 'design-system-react';
 import { sampleData } from 'design-system-utilities';
 
+// SAMPLE CONTROL CODE -->
+
 const SAMPLE_DATA_ACCESSOR = 'radio';
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
 const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
 // https://www.lightningdesignsystem.com/components/forms#radio
 
-export default React.createClass({
+const RadioExample = React.createClass({
 	getInitialState () {
 		const radioboxen = new Map();
 
@@ -139,3 +141,7 @@ export default React.createClass({
 		this.setState(radio);
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default RadioExample;

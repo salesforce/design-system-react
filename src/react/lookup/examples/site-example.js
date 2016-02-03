@@ -2,7 +2,9 @@ import React          from 'react';
 import { Lookup }     from 'design-system-react';
 import { sampleData } from 'design-system-utilities';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const LookupExample = React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool,
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
@@ -53,3 +55,7 @@ export default React.createClass({
 		console.log('Add an item!');
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default LookupExample;

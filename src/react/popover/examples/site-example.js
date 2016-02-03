@@ -1,7 +1,9 @@
 import React       from 'react';
 import { Popover } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const PopoverExample = React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool
 	},
@@ -43,3 +45,7 @@ export default React.createClass({
 
 
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default PopoverExample;

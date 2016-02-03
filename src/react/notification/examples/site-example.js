@@ -2,6 +2,8 @@ import React                         from 'react';
 import { Notification as Component } from 'design-system-react';
 import { sampleData }                from 'design-system-utilities';
 
+// SAMPLE CONTROL CODE -->
+
 const COMPONENT_NAME = 'notification';
 const COMPONENT_DISPLAY_NAME = 'Notifications';
 const SAMPLE_DATA_ACCESSOR = 'notification';
@@ -9,7 +11,7 @@ const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
 const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
 
-export default React.createClass({
+const NotificationExample = React.createClass({
 	getInitialState () {
 		return SAMPLE_DATA_DEFAULT;
 	},
@@ -36,3 +38,7 @@ export default React.createClass({
 		);
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default NotificationExample;

@@ -2,11 +2,13 @@ import React             from 'react';
 import { Lib, Dropdown } from 'design-system-react';
 import { sampleData }    from 'design-system-utilities';
 
+// SAMPLE CONTROL CODE -->
+
 const SAMPLE_DATA_ACCESSOR = 'dropdown';
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
 const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
-export default React.createClass({
+const DropdownExample = React.createClass({
 	propTypes: {
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
 	},
@@ -87,3 +89,7 @@ export default React.createClass({
 		this.setState({models});
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default DropdownExample;

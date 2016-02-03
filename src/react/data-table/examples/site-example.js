@@ -2,6 +2,8 @@ import React          from 'react';
 import { DataTable }  from 'design-system-react';
 import { sampleData } from 'design-system-utilities';
 
+// SAMPLE CONTROL CODE -->
+
 // Third-party
 import _ from 'underscore';
 
@@ -9,7 +11,7 @@ const SAMPLE_DATA_ACCESSOR = 'dataTable';
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
 const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
-export default React.createClass({
+const DataTableExample = React.createClass({
 	propTypes: {
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
 	},
@@ -74,3 +76,7 @@ export default React.createClass({
 		// this.setState({models});
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default DataTableExample;

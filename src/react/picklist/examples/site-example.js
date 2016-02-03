@@ -2,7 +2,9 @@ import React             from 'react';
 import { Lib, Picklist } from 'design-system-react';
 import { sampleData }    from 'design-system-utilities';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const PicklistExample = React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool
 	},
@@ -86,3 +88,7 @@ export default React.createClass({
 		this.setState({models});
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default PicklistExample;
