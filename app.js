@@ -47,8 +47,8 @@ var jsExternal = {
 		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-jquery.js',
 		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-utilities.js'],
 	react: [
-		'//cdnjs.cloudflare.com/ajax/libs/react/0.14.1/react.min.js',
-		'//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js',
+		'//fb.me/react-with-addons-0.14.7.js',
+		'//fb.me/react-dom-0.14.7.js',
 		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-react.js',
 		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-utilities.js']
 };
