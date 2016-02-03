@@ -196,7 +196,7 @@ app.get('/react', function (req, res) {
 					}
 				}
 				
-				example.code = example.code + '\n\nReactDOM.render(React.createElement(' + componentDisplayName + 's' + '), document.querySelector(\'#' + example.component + '-react-control\'));';
+				example.code = example.code + '\n\nReactDOM.render(React.createElement(' + componentDisplayName + 'Example' + '), document.querySelector(\'#' + example.component + '-react-control\'));';
 
 
 				reactCode[example.component.replace('-', '')] = example.code;
