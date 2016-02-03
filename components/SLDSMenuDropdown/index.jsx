@@ -313,7 +313,7 @@ class SLDSMenuDropdown extends React.Component {
         onMouseLeave={this.props.openOn === "hover" ? this.handleMouseLeave.bind(this):null}
         ref="button"
         style={this.props.style}
-        tabIndex={0}
+        tabIndex={this.state.isOpen ? "-1" : "0"}
         variant={this.props.buttonVariant}
         tooltip={this.props.tooltip}
         >

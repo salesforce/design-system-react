@@ -707,6 +707,13 @@
                     "computed": false
                 }
             },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
             "disabled": {
                 "type": {
                     "name": "bool"
@@ -816,6 +823,13 @@
         "description": "The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.",
         "displayName": "SLDSMenuPicklist",
         "props": {
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
             "disabled": {
                 "type": {
                     "name": "bool"

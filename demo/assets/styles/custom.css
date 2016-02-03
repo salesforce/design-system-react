@@ -27,9 +27,10 @@ html {
   background: white;
   border: none;
 }
-.demo-only .bg-lt-gray { background: rgb(244, 246, 249); }
-.demo-only .bh-gray { border-left: 1px solid	rgb(216, 221, 230); border-right: 1px solid	rgb(216, 221, 230); }
-.demo-only .bb-gray { border-bottom: 1px solid	rgb(216, 221, 230); }
+
+.bg-lt-gray { background: rgb(244, 246, 249); }
+.bh-gray { border-left: 1px solid	rgb(216, 221, 230); border-right: 1px solid	rgb(216, 221, 230); }
+.bb-gray { border-bottom: 1px solid	rgb(216, 221, 230); }
 
 
 /* Typography */
