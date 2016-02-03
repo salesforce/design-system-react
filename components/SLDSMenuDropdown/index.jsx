@@ -65,14 +65,12 @@ const propTypes = {
 };
 const defaultProps = {
   align: "left",
-  disabled: false,
+  buttonVariant: "neutral",
   checkmark: false,
+  disabled: false,
+  hoverCloseDelay: 300,
   openOn: "click",
   modal: true,
-  buttonVariant: "icon",
-  hoverCloseDelay: 300,
-  iconVariant:"border-filled",
-  iconName:"down"
 };
 
 /**

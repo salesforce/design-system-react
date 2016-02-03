@@ -1,8 +1,9 @@
 <SLDSMenuDropdown
-  align="right"
-  buttonVariant="brand"
+  assistiveText="More Options"
+  buttonVariant="icon"
   checkmark={true}
-  label="Dropdown Hover"
+  iconName="down"
+  iconVariant="border-filled"
   onMouseEnter={function(){console.log('Mouse enter')}}
   onMouseLeave={function(){console.log('Mouse leave')}}
   onSelect={function(value){console.log("selected: ",value)}}

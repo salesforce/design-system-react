@@ -1,4 +1,5 @@
 <SLDSMenuDropdown
+  align="right"
   label="Dropdown Click"
   onSelect={function(value){console.log("selected: ",value)}}
   options={[
