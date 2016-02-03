@@ -1,7 +1,7 @@
 <SLDSMenuPicklist
   label="Contacts"
   modal={true}
-  onSelect={function(){console.log("selected: ",value)}}
+  onSelect={function(value){console.log("selected: ",value)}}
   options={[
     {label: "A Option Option Super Super Long", value: "A0", title: "Greg"},
     {label: "B Option", value: "B0"},

@@ -40,12 +40,10 @@ class PicklistSection extends React.Component {
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
 
-        <div className="demo-only">
-          <section className="slds-p-bottom--x-large">
-            <CodeMirror codeText={Samples.Picklists} />
-          </section>
-          <PropTable component="SLDSMenuPicklist" />
-        </div>
+        <section className="slds-p-bottom--x-large">
+          <CodeMirror codeText={Samples.Picklists} />
+        </section>
+        <PropTable component="SLDSMenuPicklist" />
       </div>
     );
   }

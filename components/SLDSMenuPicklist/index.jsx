@@ -20,6 +20,7 @@ import ListItemLabel from "./ListItemLabel";
 
 const displayName = "SLDSMenuPicklist";
 const propTypes = {
+  className: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   label: React.PropTypes.string,
   /**
@@ -262,7 +263,7 @@ class SLDSMenuPicklist extends React.Component {
     const required = this.props.requiredField ? <span style={{color:"red"}}>*</span>:null;
     const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.state.triggerId} style={{width: "100%"}}>{required} {this.props.label}</label>:null;
     return (
-      <div className="slds-picklist" aria-expanded={this.state.isOpen}>
+      <div className={"slds-picklist " + this.props.className} aria-expanded={this.state.isOpen}>
         {inputLabel}
         <button
           aria-haspopup="true"

@@ -39,12 +39,10 @@ class NotificationSection extends React.Component {
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
 
-        <div className="demo-only">
-          <section className="slds-p-bottom--x-large">
-            <CodeMirror codeText={Samples.Notifications} />
-          </section>
-          <PropTable component="SLDSNotification" />
-        </div>
+        <section className="slds-p-bottom--x-large">
+          <CodeMirror codeText={Samples.Notifications} />
+        </section>
+        <PropTable component="SLDSNotification" />
       </div>
     );
   }

@@ -39,18 +39,15 @@ class ButtonGroupSection extends React.Component {
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small"  style={{ "maxWidth": "800px"}}/> : null}
         </div>
-
-        <div className="demo-only">
-          <section className="slds-p-vertical--large">
-            <h4 className="slds-text-heading--small">Button Group with Standard Buttons</h4>
-            <CodeMirror codeText={Samples.ButtonGroups1} />
-          </section>
-          <section className="slds-p-vertical--large">
-            <h4 className="slds-text-heading--small">Button Group with Stateful Buttons</h4>
-            <CodeMirror codeText={Samples.ButtonGroups2} />
-          </section>
-          <PropTable component="SLDSButtonGroup" />
-        </div>
+        <section className="slds-p-vertical--large">
+          <h4 className="slds-text-heading--small">Button Group with Standard Buttons</h4>
+          <CodeMirror codeText={Samples.ButtonGroups1} />
+        </section>
+        <section className="slds-p-vertical--large">
+          <h4 className="slds-text-heading--small">Button Group with Stateful Buttons</h4>
+          <CodeMirror codeText={Samples.ButtonGroups2} />
+        </section>
+        <PropTable component="SLDSButtonGroup" />
 
       </div>
     );

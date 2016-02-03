@@ -39,17 +39,15 @@ class DropdownSection extends React.Component {
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}} /> : null}
         </div>
 
-        <div className="demo-only">
-          <section className="slds-p-vertical--large">
-            <h4 className="slds-text-heading--small">Dropdown Open on Click</h4>
-            <CodeMirror codeText={Samples.Dropdowns1} />
-          </section>
-          <section className="slds-p-vertical--large">
-            <h4 className="slds-text-heading--small">Dropdown Open on Hover</h4>
-            <CodeMirror codeText={Samples.Dropdowns2} />
-          </section>
-          <PropTable component="SLDSMenuDropdown" />
-        </div>
+        <section className="slds-p-vertical--large">
+          <h4 className="slds-text-heading--small">Dropdown Open on Click</h4>
+          <CodeMirror codeText={Samples.Dropdowns1} />
+        </section>
+        <section className="slds-p-vertical--large">
+          <h4 className="slds-text-heading--small">Dropdown Open on Hover</h4>
+          <CodeMirror codeText={Samples.Dropdowns2} />
+        </section>
+        <PropTable component="SLDSMenuDropdown" />
       </div>
     );
   }
