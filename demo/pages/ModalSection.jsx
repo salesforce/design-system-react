@@ -38,9 +38,17 @@ class ModalSection extends React.Component {
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
-
         <section className="slds-p-bottom--x-large">
+          <h4 className="slds-text-heading--small">Standard Modal</h4>
           <CodeMirror codeText={Samples.Modals1} />
+        </section>
+        <section className="slds-p-bottom--x-large">
+          <h4 className="slds-text-heading--small">Large Bare Modal</h4>
+          <CodeMirror codeText={Samples.Modals2} />
+        </section>
+        <section className="slds-p-bottom--x-large">
+          <h4 className="slds-text-heading--small">Prompt Notification Modal</h4>
+          <CodeMirror codeText={Samples.Modals3} />
         </section>
         <PropTable component="SLDSModal" />
       </div>

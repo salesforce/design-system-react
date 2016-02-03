@@ -21,9 +21,10 @@ class ModalExample extends React.Component {
             <SLDSButton key="modalBCancel" label="Cancel" variant="neutral" onClick={this.toggleOpen.bind(this)} />,
             <SLDSButton key="modalBSave" label="Save" variant="brand" onClick={this.toggleOpen.bind(this)} />
           ]}
-          onRequestClose={this.toggleOpen.bind(this)}>
-
-            <h4 className="slds-text-heading--small">New Opportunity</h4>
+          onRequestClose={this.toggleOpen.bind(this)}
+          tagline="Enter in details below"
+          title="New Opportunity"
+          >
             <div className="slds-form-element slds-m-vertical--large">
               <label className="slds-form-element__label" htmlFor="opptyName">Opportunity Name</label>
               <div className="slds-form-element__control">
