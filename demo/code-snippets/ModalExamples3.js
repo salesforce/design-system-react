@@ -17,7 +17,7 @@ class ModalExample extends React.Component {
         <SLDSButton label="Open Prompt" onClick={this.toggleOpen.bind(this)} variant="brand" />
           <SLDSModal
             dismissible={false}
-            footer={[ <SLDSButton key="promptBtn" label="Got it" variant="neutral" onClick={this.toggleOpen.bind(this)} /> ]}
+            footer={[ <SLDSButton key="promptBtn" label="Got it" onClick={this.toggleOpen.bind(this)} /> ]}
             isOpen={this.state.isOpen}
             onRequestClose={this.toggleOpen.bind(this)}
             prompt="error"

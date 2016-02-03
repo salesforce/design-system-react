@@ -18,7 +18,7 @@ class ModalExample extends React.Component {
         <SLDSModal
           isOpen={this.state.isOpen}
           footer={[
-            <SLDSButton key="modalBCancel" label="Cancel" variant="neutral" onClick={this.toggleOpen.bind(this)} />,
+            <SLDSButton key="modalBCancel" label="Cancel" onClick={this.toggleOpen.bind(this)} />,
             <SLDSButton key="modalBSave" label="Save" variant="brand" onClick={this.toggleOpen.bind(this)} />
           ]}
           onRequestClose={this.toggleOpen.bind(this)}

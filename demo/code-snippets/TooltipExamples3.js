@@ -4,16 +4,14 @@
     tooltip={<SLDSPopoverTooltip
       align="bottom"
       content="Buttonbar Tooltip"
-      openByDefault={false}></SLDSPopoverTooltip>}
-    variant="neutral" />
+      openByDefault={false}></SLDSPopoverTooltip>} />
 
   <SLDSButton
     label="Edit"
     tooltip={<SLDSPopoverTooltip
       align="bottom right"
       content="Buttonbar Tooltip"
-      openByDefault={false}></SLDSPopoverTooltip>}
-    variant="neutral" />
+      openByDefault={false}></SLDSPopoverTooltip>} />
 
   <SLDSMenuDropdown
     assistiveText="More Options"

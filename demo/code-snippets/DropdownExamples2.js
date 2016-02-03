@@ -1,6 +1,5 @@
 <SLDSMenuDropdown
   align="right"
-  buttonClassName="green"
   buttonVariant="brand"
   checkmark={true}
   label="Dropdown Hover"
