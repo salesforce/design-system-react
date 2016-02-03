@@ -4,8 +4,8 @@ class NotificationExample extends React.Component {
     super(props);
     this.state = {
       modalOpen: false,
-      toastOpen: false,
-    };
+      toastOpen: false
+    }
   }
 
   toggleModal(){
@@ -36,7 +36,10 @@ class NotificationExample extends React.Component {
             <div>
               <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
               <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
-              <SLDSButton label="Open Toast" onClick={this.toggleToast.bind(this)} variant="brand" />
+              <SLDSButton
+                label="Open Toast"
+                onClick={this.toggleToast.bind(this)}
+                variant="brand" />
               <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
               <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
               <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>

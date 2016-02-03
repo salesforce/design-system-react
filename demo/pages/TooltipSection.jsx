@@ -39,9 +39,17 @@ class TooltipSection extends React.Component {
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
-
         <section className="slds-p-vertical--large">
-          <CodeMirror codeText={Samples.Tooltips} />
+          <h4 className="slds-text-heading--small">Tooltip on Top</h4>
+          <CodeMirror codeText={Samples.Tooltips1} />
+        </section>
+        <section className="slds-p-vertical--large">
+          <h4 className="slds-text-heading--small">Tooltip on Right</h4>
+          <CodeMirror codeText={Samples.Tooltips2} />
+        </section>
+        <section className="slds-p-vertical--large">
+          <h4 className="slds-text-heading--small">Tooltip on Button Group</h4>
+          <CodeMirror codeText={Samples.Tooltips3} />
         </section>
         <PropTable component="SLDSPopoverTooltip" />
       </div>

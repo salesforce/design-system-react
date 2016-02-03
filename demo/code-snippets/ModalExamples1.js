@@ -3,8 +3,8 @@ class ModalExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isOpen: false,
-    };
+      isOpen: false
+    }
   }
 
   toggleOpen(){
@@ -23,22 +23,20 @@ class ModalExample extends React.Component {
           ]}
           onRequestClose={this.toggleOpen.bind(this)}
           tagline="Enter in details below"
-          title="New Opportunity"
-          >
+          title="New Opportunity">
+
             <div className="slds-form-element slds-m-vertical--large">
               <label className="slds-form-element__label" htmlFor="opptyName">Opportunity Name</label>
               <div className="slds-form-element__control">
                 <input id="opptyName" className="slds-input" type="text" placeholder="Enter name" />
               </div>
             </div>
-
             <div className="slds-form-element">
               <label className="slds-form-element__label" htmlFor="description">Opportunity Description</label>
               <div className="slds-form-element__control">
                 <textarea id="description" className="slds-textarea" placeholder="Enter description"></textarea>
               </div>
             </div>
-
             <SLDSLookup
               className="slds-m-vertical--large"
               emptyMessage="No Accounts Found"
@@ -55,7 +53,6 @@ class ModalExample extends React.Component {
                 {label:"Acme Construction"}
               ]}
             />
-
             <SLDSMenuPicklist
               className="slds-m-vertical--large"
               label="Lead Source"
@@ -71,7 +68,6 @@ class ModalExample extends React.Component {
               placeholder = "Select Lead Source"
               value="B0"
             />
-
             <SLDSMenuPicklist
               className="slds-m-vertical--large"
               label="Type"
@@ -87,7 +83,6 @@ class ModalExample extends React.Component {
               placeholder = "Select Opportunity Type"
               value="C0"
             />
-
             <div className="slds-form-element slds-m-vertical--large">
               <label className="slds-form-element__label" htmlFor="amount">Amount</label>
               <div className="slds-form-element__control">
@@ -99,7 +94,6 @@ class ModalExample extends React.Component {
       </div>
     );
   }
-
 }
 
 ReactDOM.render(<ModalExample />, mountNode);

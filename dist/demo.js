@@ -49376,13 +49376,19 @@
 	  Icons: "<div>\n  <SLDSIcon\n    assistiveText=\"Favorite\"\n    category=\"custom\"\n    name=\"custom1\"\n    size=\"small\" />\n\n  <SLDSIcon\n    assistiveText=\"Accounts\"\n    category=\"standard\"\n    name=\"account\" />\n\n  <SLDSIcon\n    assistiveText=\"Announcements\"\n    category=\"action\"\n    className=\"slds-m-around--x-small\"\n    name=\"announcement\" />\n\n  <SLDSIcon\n    assistiveText=\"Approval\"\n    category=\"action\"\n    className=\"slds-m-around--x-small\"\n    name=\"approval\"\n    size=\"large\" />\n\n  <SLDSIcon\n    assistiveText=\"\"\n    category=\"utility\"\n    inverse={false}\n    name=\"open_folder\"\n    size=\"large\" />\n    <span className=\"slds-m-left--x-small\">Documents Folder</span>\n</div>\n",
 	  IconButtons: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    assistiveText=\"Icon Bare Small\"\n    iconName=\"settings\"\n    iconSize=\"small\"\n    iconVariant=\"bare\"\n    onClick={function(){alert(\"Icon Bare Clicked\")}} variant=\"icon\" />\n\n  <SLDSButton\n    assistiveText=\"Icon Container Small\"\n    iconName=\"settings\"\n    iconSize=\"small\"\n    iconVariant=\"container\"\n    variant=\"icon\" />\n\n  <div style={{backgroundColor: \"#4BC076\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n  <SLDSButton\n    assistiveText=\"Icon Border medium\"\n    iconName=\"settings\"\n    iconVariant=\"border\"\n    variant=\"icon\" />\n\n  <SLDSButton\n    assistiveText=\"Icon Border-filled medium\"\n    iconName=\"settings\"\n    iconVariant=\"border-filled\"\n    variant=\"icon\" />\n  </div>\n\n  <SLDSButton\n    assistiveText=\"Icon More large\"\n    iconName=\"settings\"\n    iconSize=\"large\"\n    iconVariant=\"more\"\n    variant=\"icon\" />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon inverse\"\n      iconName=\"settings\"\n      iconSize=\"large\"\n      variant=\"icon-inverse\" />\n  </div>\n  <div style={{backgroundColor: \"#FFB75D\", padding: \"10px 50px\", display: \"inline-block\"}} className=\"slds-hint-parent slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon hint large\"\n      hint={true}\n      iconName=\"settings\"\n      iconSize=\"large\"\n      variant=\"icon\" />\n  </div>\n</div>\n",
 	  Lookups: "<SLDSLookup\n  emptyMessage=\"No items found\"\n  footerRenderer={SLDSLookup.DefaultFooter}\n  hasError={false}\n  headerRenderer={SLDSLookup.DefaultHeader}\n  iconCategory=\"standard\"\n  iconName=\"account\"\n  label=\"Account\"\n  onChange={function(newValue){console.log(\"New search term: \", newValue)}}\n  onItemSelect={function(item){console.log(item , \" Selected\")}}\n  options={[\n    {label: \"Paddy\\\"s Pub\"},\n    {label: \"Tyrell Corp\"},\n    {label: \"Paper St. Soap Company\"},\n    {label: \"Nakatomi Investments\"},\n    {label: \"Acme Landscaping\"},\n    {label: \"Acme Construction\"}\n  ]}\n/>\n",
-	  Modals1: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false,\n    };\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"Open Bare\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          isOpen={this.state.isOpen}\n          onRequestClose={this.toggleOpen.bind(this)}>\n\n            <h4>New Opportunity</h4>\n            <div className=\"slds-form-element slds-m-vertical--large\">\n              <label className=\"slds-form-element__label\" htmlFor=\"opptyName\">Opportunity Name</label>\n              <div className=\"slds-form-element__control\">\n                <input id=\"opptyName\" className=\"slds-input\" type=\"text\" placeholder=\"Enter name\" />\n              </div>\n            </div>\n\n            <SLDSLookup\n              className=\"slds-m-vertical--large\"\n              emptyMessage=\"No Accounts Found\"\n              iconName=\"account\"\n              label=\"Account Name\"\n              modal={true}\n              onItemSelect={function(item){console.log(item , \" Selected\")}}\n              options={[\n                {label:\"Paddy\\\"s Pub\"},\n                {label:\"Tyrell Corp\"},\n                {label:\"Paper St. Soap Company\"},\n                {label:\"Nakatomi Investments\"},\n                {label:\"Acme Landscaping\"},\n                {label:\"Acme Construction\"}\n              ]}\n            />\n\n            <SLDSMenuPicklist\n              className=\"slds-m-vertical--large\"\n              label=\"Type\"\n              modal={true}\n              onSelect={(value)=>{console.log(\"selected: \",value);}}\n              options={[\n                {label:\"Add on Business\",value:\"A0\"},\n                {label:\"Courtesy\",value:\"B0\"},\n                {label:\"New Business\",value:\"C0\"},\n                {label:\"Renewal\",value:\"D0\"},\n                {label:\"Upgrade\",value:\"E0\"},\n              ]}\n              placeholder = \"Select Opportunity Type\"\n              value=\"C0\"\n            />\n\n        </SLDSModal>\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
-	  Notifications: "class NotificationExample extends React.Component {\n\n  displayName: \"NotificationExample\";\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      modalIsOpen: false,\n      modalToastIsOpen: false,\n      alertIsOpen: false,\n      toastIsOpen: false,\n    };\n  }\n\n  getModalContent(){\n    return (\n      <div>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <SLDSButton label=\"Open Toast\" onClick={this.openModalToast.bind(this)} variant=\"neutral\" />\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n        <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n      </div>\n    )\n  }\n\n  openModal () {\n    this.setState({\n      modalIsOpen: true,\n    });\n  }\n\n  closeModal () {\n    this.setState({\n      modalIsOpen: false,\n      modalToastIsOpen: false,\n    });\n  }\n\n  handleSubmitModal () {\n    this.closeModal();\n  }\n\n  openToast(){\n    this.setState({ toastIsOpen: true });\n  }\n\n  dismissToast(){\n    this.setState({ toastIsOpen: false });\n    console.log(\"====> Dismiss Toast Message\");\n  }\n\n  openModalToast(){\n    this.setState({ modalToastIsOpen: true });\n  }\n\n  dismissModalToast(){\n    this.setState({ modalToastIsOpen: false });\n    console.log(\"====> Dismiss Modal Toast\");\n  }\n\n  openAlert(){\n    this.setState({ alertIsOpen: true });\n  }\n\n  dismissAlert(){\n    console.log(\"====> Dismiss Alert\");\n    this.setState({ alertIsOpen: false });\n  }\n\n  render() {\n    const successMsg = [\"Your new contact \", <a href=\"#\" key=\"0123\">Sara Smith</a>, \" was successfully created.\"];\n    const errorMsg = \"There was a problem updating the record.\";\n    const warnMsg = \"Oops, you've missed some required form inputs.\";\n\n    return (\n      <div className=\"slds-p-vertical--medium demo\">\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small\">Alerts</h4>\n          <SLDSButton label=\"Show Alert\" onClick={this.openAlert.bind(this)} variant=\"neutral\" />\n          <SLDSNotification\n            content={successMsg}\n            iconName=\"notification\"\n            isOpen={this.state.alertIsOpen}\n            onDismiss={this.dismissAlert.bind(this)}\n            texture={true}\n            theme=\"success\"\n            variant=\"alert\" />\n        </div>\n\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small \">Toasts</h4>\n          <SLDSButton label=\"Show Toast\" onClick={this.openToast.bind(this)} variant=\"neutral\" />\n          <SLDSNotification\n            content={errorMsg}\n            iconName=\"notification\"\n            isOpen={this.state.toastIsOpen}\n            onDismiss={this.dismissToast.bind(this)}\n            texture={true}\n            theme=\"error\"\n            variant=\"toast\"\n            />\n        </div>\n\n        <div className=\"slds-p-horizontal--medium\" style={{\"display\": \"inline-block\"}}>\n          <h4 className=\"slds-text-heading--small\">Modal Toasts</h4>\n          <SLDSButton label=\"Show Modal Toast\" onClick={this.openModal.bind(this)} variant=\"neutral\" />\n          <SLDSModal\n            footer={[\n              <SLDSButton key=\"cancelBtn\" label=\"Cancel\" variant=\"neutral\" onClick={this.closeModal.bind(this)} />,\n              <SLDSButton key=\"saveBtn\" label=\"Save\" variant=\"brand\" onClick={this.handleSubmitModal.bind(this)} />\n            ]}\n            isOpen={this.state.modalIsOpen}\n            title={\n              <span>Lightning Design System: Style with Ease</span>\n            }\n            toast={\n              <SLDSNotification variant=\"toast\" theme=\"warning\" iconName=\"warning\" isOpen={this.state.modalToastIsOpen} content={warnMsg} onDismiss={this.dismissModalToast.bind(this)} />\n            }\n            onRequestClose={this.closeModal.bind(this)}>\n              {this.getModalContent()}\n          </SLDSModal>\n        </div>\n\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<NotificationExample />, mountNode);\n",
+	  Modals1: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"New Opportunity\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          isOpen={this.state.isOpen}\n          footer={[\n            <SLDSButton key=\"modalBCancel\" label=\"Cancel\" variant=\"neutral\" onClick={this.toggleOpen.bind(this)} />,\n            <SLDSButton key=\"modalBSave\" label=\"Save\" variant=\"brand\" onClick={this.toggleOpen.bind(this)} />\n          ]}\n          onRequestClose={this.toggleOpen.bind(this)}\n          tagline=\"Enter in details below\"\n          title=\"New Opportunity\">\n\n            <div className=\"slds-form-element slds-m-vertical--large\">\n              <label className=\"slds-form-element__label\" htmlFor=\"opptyName\">Opportunity Name</label>\n              <div className=\"slds-form-element__control\">\n                <input id=\"opptyName\" className=\"slds-input\" type=\"text\" placeholder=\"Enter name\" />\n              </div>\n            </div>\n            <div className=\"slds-form-element\">\n              <label className=\"slds-form-element__label\" htmlFor=\"description\">Opportunity Description</label>\n              <div className=\"slds-form-element__control\">\n                <textarea id=\"description\" className=\"slds-textarea\" placeholder=\"Enter description\"></textarea>\n              </div>\n            </div>\n            <SLDSLookup\n              className=\"slds-m-vertical--large\"\n              emptyMessage=\"No Accounts Found\"\n              iconName=\"account\"\n              label=\"Account Name\"\n              modal={true}\n              onItemSelect={function(item){console.log(\"selected: \", item.label)}}\n              options={[\n                {label:\"Paddy\\\"s Pub\"},\n                {label:\"Tyrell Corp\"},\n                {label:\"Paper St. Soap Company\"},\n                {label:\"Nakatomi Investments\"},\n                {label:\"Acme Landscaping\"},\n                {label:\"Acme Construction\"}\n              ]}\n            />\n            <SLDSMenuPicklist\n              className=\"slds-m-vertical--large\"\n              label=\"Lead Source\"\n              modal={true}\n              onSelect={(option)=>{console.log(\"selected: \", option.label);}}\n              options={[\n                {label:\"Third Party Program\",value:\"A0\"},\n                {label:\"Cold Call\",value:\"B0\"},\n                {label:\"LinkedIn\",value:\"C0\"},\n                {label:\"Direct Mail\",value:\"D0\"},\n                {label:\"Other\",value:\"E0\"},\n              ]}\n              placeholder = \"Select Lead Source\"\n              value=\"B0\"\n            />\n            <SLDSMenuPicklist\n              className=\"slds-m-vertical--large\"\n              label=\"Type\"\n              modal={true}\n              onSelect={(option)=>{console.log(\"selected: \", option.label);}}\n              options={[\n                {label:\"Add on Business\",value:\"A0\"},\n                {label:\"Courtesy\",value:\"B0\"},\n                {label:\"New Business\",value:\"C0\"},\n                {label:\"Renewal\",value:\"D0\"},\n                {label:\"Upgrade\",value:\"E0\"},\n              ]}\n              placeholder = \"Select Opportunity Type\"\n              value=\"C0\"\n            />\n            <div className=\"slds-form-element slds-m-vertical--large\">\n              <label className=\"slds-form-element__label\" htmlFor=\"amount\">Amount</label>\n              <div className=\"slds-form-element__control\">\n                <input id=\"amount\" className=\"slds-input\" type=\"text\" placeholder=\"Enter Amount\" />\n              </div>\n            </div>\n\n        </SLDSModal>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
+	  Modals2: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"View Text\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          align=\"top\"\n          isOpen={this.state.isOpen}\n          onRequestClose={this.toggleOpen.bind(this)}\n          size=\"large\">\n            <h4 className=\"slds-text-heading--medium\">Jack London - The Scarlet Plague</h4>\n            <p>\"He's always saying that,\" he said to Edwin. \"What is scarlet?\"</p>\n            <p>\"'The scarlet of the maples can shake me like the cry of bugles going  by,'\" the old man quoted.</p>\n            <p>\"It's red,\" Edwin answered the question. \"And you don't know it because  you come from the Chauffeur Tribe. They never did know nothing, none of  them. Scarlet is red&mdash;I know that.\"</p>\n            <p>\"Red is red, ain't it?\" Hare-Lip grumbled. \"Then what's the good of  gettin' cocky and calling it scarlet?\"</p>\n            <p>\"Granser, what for do you always say so much what nobody knows?\" he  asked. \"Scarlet ain't anything, but red is red. Why don't you say red,  then?\"</p>\n            <p>\"Red is not the right word,\" was the reply. \"The plague was scarlet.  The whole face and body turned scarlet in an hour's time. Don't I  know? Didn't I see enough of it? And I am telling you it was scarlet  because&mdash;well, because it was scarlet. There is no other word for it.\"</p>\n            <p>\"Red is good enough for me,\" Hare-Lip muttered obstinately. \"My dad  calls red red, and he ought to know. He says everybody died of the Red  Death.\"</p>\n            <p>\"Your dad is a common fellow, descended from a common fellow,\" Granser  retorted heatedly. \"Don't I know the beginnings of the Chauffeurs? Your  grandsire was a chauffeur, a servant, and without education. He worked  for other persons. But your grandmother was of good stock, only the  children did not take after her. Don't I remember when I first met them,  catching fish at Lake Temescal?\"</p>\n            <p>\"What is education?\" Edwin asked.</p>\n        </SLDSModal>\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
+	  Modals3: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"Open Prompt\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n          <SLDSModal\n            dismissible={false}\n            footer={[ <SLDSButton key=\"promptBtn\" label=\"Got it\" variant=\"neutral\" onClick={this.toggleOpen.bind(this)} /> ]}\n            isOpen={this.state.isOpen}\n            onRequestClose={this.toggleOpen.bind(this)}\n            prompt=\"error\"\n            size=\"medium\"\n            title={<span>Service Unavailable</span>}>\n              The service you're trying to reach is unavailable due to limited conectivity. Please restart the application or contact your system administrator for assistance.\n          </SLDSModal>\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
+	  Notifications1: "class NotificationExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSButton label=\"Open Alert\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n       <SLDSNotification\n         content={[\"Your new contact \", <a href=\"#\" key=\"0123\">Sara Smith</a>, \" was successfully created.\"]}\n         iconName=\"notification\"\n         isOpen={this.state.isOpen}\n         onDismiss={this.toggleOpen.bind(this)}\n         texture={true}\n         theme=\"success\"\n         variant=\"alert\" />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<NotificationExample />, mountNode);\n",
+	  Notifications2: "class NotificationExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"Open Toast\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSNotification\n          content=\"There was a problem updating the record.\"\n          iconName=\"notification\"\n          isOpen={this.state.isOpen}\n          onDismiss={this.toggleOpen.bind(this)}\n          texture={true}\n          theme=\"error\"\n          variant=\"toast\"\n          />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<NotificationExample />, mountNode);\n",
+	  Notifications3: "class NotificationExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      modalOpen: false,\n      toastOpen: false\n    }\n  }\n\n  toggleModal(){\n    this.setState({ modalOpen: !this.state.modalOpen });\n  }\n\n  toggleToast(){\n    this.setState({ toastOpen: !this.state.toastOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"Open Modal\" onClick={this.toggleModal.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          isOpen={this.state.modalOpen}\n          onRequestClose={this.toggleModal.bind(this)}\n          title=\"Lightning Design System: Style with Ease\"\n          toast={\n            <SLDSNotification\n              content=\"Oops, you've missed some required form inputs.\"\n              iconName=\"warning\"\n              isOpen={this.state.toastOpen}\n              onDismiss={this.toggleToast.bind(this)}\n              theme=\"warning\"\n              variant=\"toast\" />\n          }>\n            <div>\n              <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n              <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n              <SLDSButton\n                label=\"Open Toast\"\n                onClick={this.toggleToast.bind(this)}\n                variant=\"brand\" />\n              <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n              <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n              <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n            </div>\n\n        </SLDSModal>\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<NotificationExample />, mountNode);\n",
 	  Picklists: "<SLDSMenuPicklist\n  label=\"Contacts\"\n  modal={true}\n  onSelect={function(value){console.log(\"selected: \",value)}}\n  options={[\n    {label: \"A Option Option Super Super Long\", value: \"A0\", title: \"Greg\"},\n    {label: \"B Option\", value: \"B0\"},\n    {label: \"C Option\", value: \"C0\"},\n    {label: \"D Option\", value: \"D0\"},\n    {label: \"E Option\", value: \"E0\"},\n    {label: \"A1 Option\", value: \"A1\"},\n    {label: \"B2 Option\", value: \"B1\"},\n    {label: \"C2 Option\", value: \"C1\"},\n    {label: \"D2 Option\", value: \"D1\"},\n    {label: \"E2 Option Super Super Long\", value: \"E1\"},\n  ]}\n  placeholder = \"Select a contact\"\n  value=\"C0\"\n  />\n",
 	  CustomPicklists: "import CustomListItemLabel from \"./CustomListItemLabel.cjsx\";\n\nconst picklistCustomOptions = [\n  {label:\"A Option Option Super Super Long\",value:\"A0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"B Option\",value:\"B0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"C Option\",value:\"C0\",strongLabel:\"SUPER TITLE C0\"},\n  {label:\"D Option\",value:\"D0\",strongLabel:\"SUPER TITLE D0\"},\n  {label:\"E Option\",value:\"E0\",strongLabel:\"SUPER TITLE E0\"},\n  {label:\"A1 Option\",value:\"A1\",strongLabel:\"SUPER TITLE A1\"},\n  {label:\"B2 Option\",value:\"B1\",strongLabel:\"SUPER TITLE B1\"},\n  {label:\"C2 Option\",value:\"C1\",strongLabel:\"SUPER TITLE C1\"},\n  {label:\"D2 Option\",value:\"D1\",strongLabel:\"SUPER TITLE D1\"},\n  {label:\"E2 Option Super Super Long\",value:\"E1\",strongLabel:\"SUPER TITLE E1\"},\n];\n\nclass PicklistCustomExample extends React.Component {\n\n  displayName: \"PicklistCustomExample\"\n\n  handleOnUpdateHighlighted () {\n    console.log(\"onUpdateHighlighted should be defined\");\n  }\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         listItemRenderer={CustomListItemLabel}\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistCustomOptions}\n         placeholder=\"Select a contact\"\n         value=\"C0\"\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistCustomExample />, mountNode);\n",
 	  StatefulButtons1: "<SLDSButtonStateful\n  assistiveText=\"like\"\n  iconName=\"like\"\n  iconSize=\"large\"\n  variant=\"icon\" />\n",
 	  StatefulButtons2: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButtonStateful />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButtonStateful\n      stateOne={{iconName: \"add\", label: \"Join\"}}\n      stateTwo={{iconName: \"check\", label: \"Member\"}}\n      stateThree={{iconName: \"close\", label: \"Leave\"}}\n      variant=\"inverse\" />\n  </div>\n</div>\n",
-	  Tooltips: "<SLDSPopoverTooltip\n  align=\"top\"\n  content=\"Tooltip on top\">\n    <a href=\"javascript:void(0)\">\n      <SLDSIcon\n        assistiveText=\"info\" category=\"utility\"\n        name=\"info\"\n        className=\"slds-icon-text-default\" />\n    </a>\n</SLDSPopoverTooltip>\n",
+	  Tooltips1: "<SLDSPopoverTooltip\n  align=\"top\"\n  content=\"Tooltip on top\">\n    <a href=\"javascript:void(0)\">\n      <SLDSIcon\n        assistiveText=\"info\" category=\"utility\"\n        name=\"info\"\n        className=\"slds-icon-text-default\" />\n    </a>\n</SLDSPopoverTooltip>\n\n",
+	  Tooltips2: "<SLDSPopoverTooltip\n  align=\"right\"\n  content={<span>Tooltip with right alignment</span>}\n  key=\"tooltipDemo\">\n    <SLDSButton variant=\"brand\" label=\"Hover to Open\" />\n</SLDSPopoverTooltip>\n",
+	  Tooltips3: "<SLDSButtonGroup className=\"slds-p-bottom--medium\">\n  <SLDSButton\n    label=\"Refresh\"\n    tooltip={<SLDSPopoverTooltip\n      align=\"bottom\"\n      content=\"Buttonbar Tooltip\"\n      openByDefault={false}></SLDSPopoverTooltip>}\n    variant=\"neutral\" />\n\n  <SLDSButton\n    label=\"Edit\"\n    tooltip={<SLDSPopoverTooltip\n      align=\"bottom right\"\n      content=\"Buttonbar Tooltip\"\n      openByDefault={false}></SLDSPopoverTooltip>}\n    variant=\"neutral\" />\n\n  <SLDSMenuDropdown\n    assistiveText=\"More Options\"\n    buttonVariant=\"icon\"\n    iconName=\"down\"\n    iconVariant=\"border-filled\"\n    onSelect={(i) => console.log(\"selected\", i)}\n    openOn=\"hover\"\n    options={[\n      {label: \"A Option\", value: \"A0\"},\n      {label: \"B Option\", value: \"B0\"},\n      {label: \"C Option\", value: \"C0\"},\n    ]}\n    tooltip={<SLDSPopoverTooltip\n      align=\"top right\"\n      content=\"Dropdown Tooltip\"\n      openByDefault={false}></SLDSPopoverTooltip>} />\n</SLDSButtonGroup>\n",
 	  DatepickerSingleSelect: "\n<SLDSDatepickerSingleSelect \n  onDateChange = {function(date){\n    console.log('>>> onDateChange ', date);\n  }}\n/>\n"
 	};
 
@@ -51330,7 +51336,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'section',
-	          { className: 'slds-p-bottom--x-large' },
+	          { className: 'slds-p-vertical--large' },
 	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.DatepickerSingleSelect })
 	        ),
 	        _react2.default.createElement(_PropTable2.default, { component: 'SLDSDatepickerSingleSelect' })
@@ -51618,7 +51624,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'section',
-	          { className: 'demo-only slds-p-bottom--x-large' },
+	          { className: 'demo-only slds-p-vertical--large' },
 	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Icons })
 	        ),
 	        _react2.default.createElement(_PropTable2.default, { component: 'SLDSIcon' })
@@ -51719,7 +51725,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'section',
-	          { className: 'slds-p-bottom--x-large' },
+	          { className: 'slds-p-vertical--large' },
 	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Lookups })
 	        ),
 	        _react2.default.createElement(_PropTable2.default, { component: 'SLDSLookup' })
@@ -51820,8 +51826,33 @@
 	        ),
 	        _react2.default.createElement(
 	          'section',
-	          { className: 'slds-p-bottom--x-large' },
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'slds-text-heading--small' },
+	            'Standard Modal'
+	          ),
 	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Modals1 })
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'slds-text-heading--small' },
+	            'Large Bare Modal'
+	          ),
+	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Modals2 })
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'slds-text-heading--small' },
+	            'Prompt Notification Modal'
+	          ),
+	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Modals3 })
 	        ),
 	        _react2.default.createElement(_PropTable2.default, { component: 'SLDSModal' })
 	      );
@@ -51921,8 +51952,33 @@
 	        ),
 	        _react2.default.createElement(
 	          'section',
-	          { className: 'slds-p-bottom--x-large' },
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Notifications })
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'slds-text-heading--small' },
+	            'Alert Notification'
+	          ),
+	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Notifications1 })
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'slds-text-heading--small' },
+	            'Toast Notification'
+	          ),
+	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Notifications2 })
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'slds-text-heading--small' },
+	            'Toast Notification inside Modal'
+	          ),
+	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Notifications3 })
 	        ),
 	        _react2.default.createElement(_PropTable2.default, { component: 'SLDSNotification' })
 	      );
@@ -52022,7 +52078,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'section',
-	          { className: 'slds-p-bottom--x-large' },
+	          { className: 'slds-p-vertical--large' },
 	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Picklists })
 	        ),
 	        _react2.default.createElement(_PropTable2.default, { component: 'SLDSMenuPicklist' })
@@ -52123,8 +52179,33 @@
 	        ),
 	        _react2.default.createElement(
 	          'section',
-	          { className: 'slds-p-bottom--x-large' },
-	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Tooltips })
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'slds-text-heading--small' },
+	            'Tooltip on Top'
+	          ),
+	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Tooltips1 })
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'slds-text-heading--small' },
+	            'Tooltip on Right'
+	          ),
+	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Tooltips2 })
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(
+	            'h4',
+	            { className: 'slds-text-heading--small' },
+	            'Tooltip on Button Group'
+	          ),
+	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Tooltips3 })
 	        ),
 	        _react2.default.createElement(_PropTable2.default, { component: 'SLDSPopoverTooltip' })
 	      );

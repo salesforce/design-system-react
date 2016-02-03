@@ -18,7 +18,9 @@ const Samples =  {
   CustomPicklists: require('fs').readFileSync('demo/code-snippets/PicklistCustomExamples.js', 'utf8'),
   StatefulButtons1: require('fs').readFileSync('demo/code-snippets/ButtonStatefulExamples1.js', 'utf8'),
   StatefulButtons2: require('fs').readFileSync('demo/code-snippets/ButtonStatefulExamples2.js', 'utf8'),
-  Tooltips: require('fs').readFileSync('demo/code-snippets/TooltipExamples.js', 'utf8'),
+  Tooltips1: require('fs').readFileSync('demo/code-snippets/TooltipExamples1.js', 'utf8'),
+  Tooltips2: require('fs').readFileSync('demo/code-snippets/TooltipExamples2.js', 'utf8'),
+  Tooltips3: require('fs').readFileSync('demo/code-snippets/TooltipExamples3.js', 'utf8'),
   DatepickerSingleSelect: require('fs').readFileSync('demo/code-snippets/DateInputExample-1.js', 'utf8'),
 };
 
