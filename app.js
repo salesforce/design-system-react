@@ -145,7 +145,6 @@ app.get('/jquery', function (req, res) {
 					'html': example.html,
 					'devHtml': example.devHtml,
 					'code': example.code,
-					'sampleData': example.sampleData,
 					'codepenJSON': codepenJSON
 				});
 			}
@@ -195,7 +194,7 @@ app.get('/react', function (req, res) {
 						}
 					}
 				}
-				
+
 				example.code = example.code + '\n\nReactDOM.render(React.createElement(' + componentDisplayName + 'Example' + '), document.querySelector(\'#' + example.component + '-react-control\'));';
 
 
@@ -246,7 +245,6 @@ app.get('/react', function (req, res) {
 					'componentDisplayName': componentDisplayName,
 					'code': example.code,
 					'html': example.html,
-					'sampleData': example.sampleData,
 					'codepenJSON': codepenJSON
 				});
 			}

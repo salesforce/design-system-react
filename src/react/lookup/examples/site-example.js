@@ -1,6 +1,5 @@
 import React          from 'react';
 import { Lookup }     from 'design-system-react';
-import { sampleData } from 'design-system-utilities';
 
 // SAMPLE CONTROL CODE -->
 
@@ -11,9 +10,23 @@ const LookupExample = React.createClass({
 	},
 
 	getInitialState () {
-		return {
-			collection: sampleData.lookup.default.collection
+		const lookupSampleData = {
+			collection: [
+				{ text: 'Paddy\'s Pub', icon: 'standard.account' },
+				{ text: 'Tyrell Corporation', icon: 'standard.account' },
+				{ text: 'Paper St. Soap Company', icon: 'standard.account' },
+				{ text: 'Nakatomi Investments', icon: 'standard.account' },
+				{ text: 'Acme Landscaping', icon: 'standard.account' },
+				{ text: 'ACME Construction', icon: 'standard.account' }
+			],
+			additionalItems: [
+				{ text: 'Standard Oil', icon: 'standard.account' },
+				{ text: 'Eli Rose', icon: 'standard.account' },
+				{ text: 'Paper St. Paper Company', icon: 'standard.account' }
+			]
 		};
+
+		return lookupSampleData;
 	},
 
 	render () {
@@ -37,7 +50,7 @@ const LookupExample = React.createClass({
 
 	_addItems () {
 		this.setState({
-			collection: sampleData.lookup.default.collection.concat(sampleData.lookup.default.additionalItems)
+			collection: this.state.collection.concat(this.state.additionalItems)
 		});
 
 		window.clearTimeout(this._addItemsTimeout);

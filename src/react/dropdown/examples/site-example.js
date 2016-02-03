@@ -1,12 +1,8 @@
 import React             from 'react';
 import { Lib, Dropdown } from 'design-system-react';
-import { sampleData }    from 'design-system-utilities';
 
 // SAMPLE CONTROL CODE -->
 
-const SAMPLE_DATA_ACCESSOR = 'dropdown';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
 const DropdownExample = React.createClass({
 	propTypes: {
@@ -14,12 +10,42 @@ const DropdownExample = React.createClass({
 	},
 
 	getInitialState () {
+		const selection = {
+			value: 1
+		};
+
+		const collection = [
+			{
+				id: 0,
+				text: 'Menu Item One',
+				value: '1',
+				icon: 'utility.table'
+			},
+			{
+				id: 1,
+				text: 'Menu Item Two',
+				value: '2',
+				icon: 'utility.kanban'
+			},
+			{
+				id: 2,
+				text: 'Menu Item Three',
+				value: '3',
+				icon: 'utility.side_list'
+			}
+		];
+
+		const dropdownSampleData = {
+			selection: selection,
+			collection: collection
+		};
+
 		return {
 			models: [
 				{
-					collection: SAMPLE_DATA_DEFAULT.collection,
+					collection: dropdownSampleData.collection,
 					disabled: false,
-					selection: SAMPLE_DATA_DEFAULT.collection[SAMPLE_DATA_DEFAULT.selection.value]
+					selection: dropdownSampleData.collection[dropdownSampleData.selection.value]
 				}
 			]
 		};
@@ -73,7 +99,7 @@ const DropdownExample = React.createClass({
 
 	setSelection (index) {
 		const models = this.state.models;
-		models[index].selection = sampleData.default.Array[5];
+		models[index].selection = models.collection.Array[3];
 		this.setState({models});
 	},
 

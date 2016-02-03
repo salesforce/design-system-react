@@ -1,29 +1,55 @@
 import React          from 'react';
 import { Radio }      from 'design-system-react';
-import { sampleData } from 'design-system-utilities';
 
 // SAMPLE CONTROL CODE -->
-
-const SAMPLE_DATA_ACCESSOR = 'radio';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
 // https://www.lightningdesignsystem.com/components/forms#radio
 
 const RadioExample = React.createClass({
 	getInitialState () {
+		const labelText = 'Radio Group Label';
+		const name = 'rads';
+		const radios = [
+			{
+				text: 'Checked',
+				value: 'value9',
+				checked: true
+			},
+			{
+				text: 'Unchecked',
+				value: 'value10',
+				checked: false
+			},
+			{
+				text: 'Unchecked Disabled',
+				value: 'value11',
+				checked: false,
+				disabled: true
+			}
+		];
+
+		const radiosSampleData = {
+			labelText: labelText,
+			name: name,
+			radios: radios
+		};
+
 		const radioboxen = new Map();
 
 		function populateRadioboxen ( element, index ) {
 			radioboxen.set('radio' + (index + 1), element);
 		}
-		SAMPLE_DATA_DEFAULT.radios.forEach(populateRadioboxen);
-		return { radioboxen };
+		radiosSampleData.radios.forEach(populateRadioboxen);
+
+		return {
+			radiosSampleData,
+			radioboxen
+		};
 	},
 
 	render () {
-		const name = SAMPLE_DATA_DEFAULT.name;
-		const labelText = SAMPLE_DATA_DEFAULT.labelText;
+		const name = this.state.radiosSampleData.name;
+		const labelText = this.state.radiosSampleData.labelText;
 		const radios = [
 			<Radio
 				checked={this.state.radioboxen.get('radio1').checked}

@@ -1,13 +1,8 @@
 import React             from 'react';
 import { Checkbox }      from 'design-system-react';
 import { ExampleEvents } from 'design-system-utilities';
-import { sampleData } from 'design-system-utilities';
 
 // SAMPLE CONTROL CODE -->
-
-const SAMPLE_DATA_ACCESSOR = 'checkbox';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
 const CheckboxExample = React.createClass({
 	componentDidMount () {
@@ -15,12 +10,23 @@ const CheckboxExample = React.createClass({
 	},
 
 	getInitialState () {
+		const checkboxSampleData = [
+			{
+				text: 'Checked',
+				value: 'checkbox-value-0',
+				checked: true
+			},
+			{
+				text: 'Unchecked',
+				value: 'checkbox-value-1',
+				checked: false
+			}
+		];
 		const checkboxen = new Map();
-
 		function populateCheckboxen ( element, index ) {
 			checkboxen.set('checkbox' + (index + 1), element);
 		}
-		SAMPLE_DATA_DEFAULT.collection.forEach(populateCheckboxen);
+		checkboxSampleData.forEach(populateCheckboxen);
 		return { checkboxen };
 	},
 

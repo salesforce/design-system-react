@@ -1,38 +1,49 @@
 import React                         from 'react';
-import { Notification as Component } from 'design-system-react';
-import { sampleData }                from 'design-system-utilities';
+import { Notification } from 'design-system-react';
 
 // SAMPLE CONTROL CODE -->
 
-const COMPONENT_NAME = 'notification';
-const COMPONENT_DISPLAY_NAME = 'Notifications';
-const SAMPLE_DATA_ACCESSOR = 'notification';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
-
-
 const NotificationExample = React.createClass({
 	getInitialState () {
-		return SAMPLE_DATA_DEFAULT;
+		const collection = [
+			{
+				text: 'Base System Alert'
+			},
+			{
+				text: 'Scheduled Maintenance Notification: Sunday March 15, 8:00 AM-10:00 PST',
+				theme: 'success'
+			},
+			{
+				text: 'Your browser is currently not supported. Your Salesforce may be degraded.',
+				theme: 'error'
+			},
+			{
+				text: 'You are in offline mode.',
+				theme: 'offline'
+			}
+		];
+
+		const notificationSampleData = {
+			collection: collection
+		};
+
+		return notificationSampleData;
 	},
 
 	render () {
 		return (
-			<div
-				data-component-display-name={COMPONENT_DISPLAY_NAME}
-				data-component-name={COMPONENT_NAME}
-			>
-				<div className={'component-wrapper component-wrapper-' + COMPONENT_NAME + ' | slds-m-bottom--small'}>
-					<Component>{this.state.collection[0].text}</Component>
+			<div>
+				<div className={'slds-m-bottom--small'}>
+					<Notification>{this.state.collection[0].text}</Notification>
 				</div>
-				<div className={'component-wrapper component-wrapper-' + COMPONENT_NAME + ' | slds-m-bottom--small'}>
-					<Component theme={this.state.collection[1].theme}>{this.state.collection[1].text}</Component>
+				<div className={'slds-m-bottom--small'}>
+					<Notification theme={this.state.collection[1].theme}>{this.state.collection[1].text}</Notification>
 				</div>
-				<div className={'component-wrapper component-wrapper-' + COMPONENT_NAME + ' | slds-m-bottom--small'}>
-					<Component theme={this.state.collection[2].theme}>{this.state.collection[2].text}</Component>
+				<div className={'slds-m-bottom--small'}>
+					<Notification theme={this.state.collection[2].theme}>{this.state.collection[2].text}</Notification>
 				</div>
-				<div className={'component-wrapper component-wrapper-' + COMPONENT_NAME + ' | '}>
-					<Component theme={this.state.collection[3].theme}>{this.state.collection[3].text}</Component>
+				<div className={''}>
+					<Notification theme={this.state.collection[3].theme}>{this.state.collection[3].text}</Notification>
 				</div>
 			</div>
 		);

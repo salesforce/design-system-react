@@ -1,13 +1,7 @@
 import React       from 'react';
 import { Tooltip } from 'design-system-react';
-import { sampleData } from 'design-system-utilities';
 
 // SAMPLE CONTROL CODE -->
-
-const SAMPLE_DATA_ACCESSOR = 'tooltip';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
-const SAMPLE_DATA_COLLECTION = SAMPLE_DATA_DEFAULT.collection;
 
 const TooltipExample = React.createClass({
 	propTypes: {
@@ -15,12 +9,43 @@ const TooltipExample = React.createClass({
 	},
 
 	getInitialState () {
+		const collection = [
+			{
+				content: 'I should show myself on click.',
+				trigger: 'click',
+				position: 'right',
+				isOpen: false,
+				modal: false,
+				container: document.querySelector('body')
+			},
+			{
+				content: 'I should show up on hover.',
+				trigger: 'hover',
+				position: 'bottom',
+				isOpen: false,
+				modal: false,
+				container: document.querySelector('body')
+			},
+			{
+				content: 'I will appear on focus.',
+				trigger: 'focus',
+				position: 'left',
+				isOpen: false,
+				modal: false,
+				container: document.querySelector('body')
+			}
+		];
+
+		const tooltipSampleData = {
+			collection: collection
+		};
+
 		const tooltips = new Map();
 
 		function populateTooltips ( element, index ) {
 			tooltips.set('tooltip__' + (index + 1), element);
 		}
-		SAMPLE_DATA_COLLECTION.forEach(populateTooltips);
+		tooltipSampleData.collection.forEach(populateTooltips);
 		return { tooltips };
 	},
 

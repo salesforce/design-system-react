@@ -20,16 +20,6 @@ module.exports = function (facade) {
 	// }
 
 	return packageJSON.components.map(function (component) {
-		var sampleData;
-		try {
-			sampleData = fs.readFileSync(path.resolve((sampleCodeDir + '-' + facade), component + '.js'), 'utf8');
-		} catch (ex) {
-			try {
-				sampleData = fs.readFileSync(path.resolve(sampleCodeDir, component + '.js'), 'utf8');
-			} catch (ex) {
-				sampleData = '';
-			}
-		}
 		var sampleHTML;
 		try {
 			sampleHTML = fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.html'), 'utf8');
@@ -49,8 +39,7 @@ module.exports = function (facade) {
 				displayName: toTitleCase(component.split('-').join(' ')),
 				html: sampleHTML,
 				devHtml: devHTML,
-				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8'),
-				sampleData: sampleData
+				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8')
 			};
 		} catch (ex) {
 			console.error(ex);
@@ -60,8 +49,7 @@ module.exports = function (facade) {
 				displayName: toTitleCase(component.split('-').join(' ')),
 				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8'),
 				html: sampleHTML,
-				devHtml: devHTML,
-				sampleData: sampleData
+				devHtml: devHTML
 			};
 		}
 	});

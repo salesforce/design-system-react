@@ -1,13 +1,28 @@
 import React          from 'react';
 import { Pills }      from 'design-system-react';
-import { sampleData } from 'design-system-utilities';
 
 // SAMPLE CONTROL CODE -->
 
 const PillsExample = React.createClass({
 	getInitialState () {
-		console.log("[site-example.js:7] sampleData.pills.default.collection:", sampleData.pills.default);
-		return sampleData.pills.default;
+		const selection = [
+			{
+				text: 'item 1',
+				value: 1
+			},
+			{
+				text: 'item 2',
+				value: 2
+			},
+			{
+				text: 'item 3',
+				value: 3
+			}
+		];
+
+		return {
+			selection: selection
+		};
 	},
 
 	render () {
