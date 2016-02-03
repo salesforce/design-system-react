@@ -64,7 +64,7 @@ const defaultProps = {
   hint: false,
   iconSize: "medium",
   responsive: false,
-  variant: "base",
+  variant: "neutral",
 };
 
 /**
