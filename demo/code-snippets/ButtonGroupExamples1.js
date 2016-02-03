@@ -7,6 +7,9 @@
 
   <SLDSMenuDropdown
     assistiveText="More Options"
+    buttonVariant="icon"
+    iconName="down"
+    iconVariant="border-filled"
     onSelect={function(item){console.log(item.label, "selected")}}
     openOn="click"
     options={[
