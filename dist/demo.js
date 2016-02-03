@@ -30676,9 +30676,10 @@
 	var propTypes = {
 	  align: _react2.default.PropTypes.oneOf(["left", "right"]),
 	  /**
-	   * Classes applied to the Button component.
+	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+	   * If the Dropdown button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
 	   */
-	  buttonClassName: _react2.default.PropTypes.string,
+	  assistiveText: _react2.default.PropTypes.string,
 	  /**
 	   * Determines variant of the Button component that triggers dropdown.
 	   */
@@ -30985,7 +30986,8 @@
 	        _SLDSButton2.default,
 	        {
 	          "aria-haspopup": "true",
-	          className: this.props.buttonClassName,
+	          assistiveText: this.props.assistiveText,
+	          disabled: this.props.disabled,
 	          iconName: this.props.iconName,
 	          iconVariant: this.props.iconVariant,
 	          label: this.props.label,
@@ -50257,12 +50259,12 @@
 						"computed": false
 					}
 				},
-				"buttonClassName": {
+				"assistiveText": {
 					"type": {
 						"name": "string"
 					},
 					"required": false,
-					"description": "Classes applied to the Button component."
+					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the Dropdown button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
 				},
 				"buttonVariant": {
 					"type": {

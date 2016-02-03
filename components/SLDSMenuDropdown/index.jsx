@@ -21,9 +21,10 @@ const displayName = "SLDSMenuDropdown";
 const propTypes = {
   align: React.PropTypes.oneOf(["left", "right"]),
   /**
-   * Classes applied to the Button component.
+   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
+   * If the Dropdown button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
    */
-  buttonClassName: React.PropTypes.string,
+  assistiveText: React.PropTypes.string,
   /**
    * Determines variant of the Button component that triggers dropdown.
    */
@@ -300,7 +301,8 @@ class SLDSMenuDropdown extends React.Component {
   render(){
     return <SLDSButton
         aria-haspopup="true"
-        className={this.props.buttonClassName}
+        assistiveText={this.props.assistiveText}
+        disabled={this.props.disabled}
         iconName={this.props.iconName}
         iconVariant={this.props.iconVariant}
         label={this.props.label}
