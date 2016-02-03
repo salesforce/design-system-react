@@ -41,10 +41,38 @@ app.get('/', function (req, res) {
 	res.render('index');
 });
 
+var jsExternal = {
+	jquery: [
+		'//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
+		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-jquery.js',
+		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-utilities.js'],
+	react: [
+		'//cdnjs.cloudflare.com/ajax/libs/react/0.14.1/react.min.js',
+		'//cdnjs.cloudflare.com/ajax/libs/react/0.14.7/react-dom.min.js',
+		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-react.js',
+		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-utilities.js']
+};
+
+var cssExternal = ['//www.fuelcdn.com/lightning-design-system/0.12.1/styles/salesforce-lightning-design-system.css'];
+
 // jQuery examples
 var jQueryCode;
 app.get('/jquery', function (req, res) {
 	// needed for these examples until we make them more modular
+	var codeSandboxHTMLWrapper = {
+		HTML: '<div class="slds-box">' +
+					'	<div class="slds-section-title">' +
+					'		<div class="slds-grid">' +
+					'			<h3 class="slds-col | slds-has-flexi-truncate | slds-text-heading--small | section-heading">' + '</h3>' +
+					'		</div>' +
+					'	</div>' +
+					'	</div>' +
+					'</div>'
+		};
+	var codeSandboxHTML = '';
+	var codepenData = {};
+	var codepenJSON = '';
+
 	if (!jQueryCode) {
 		jQueryCode = {};
 		jQueryCode['components'] = [];
@@ -72,6 +100,40 @@ app.get('/jquery', function (req, res) {
 					}
 				}
 				jQueryCode[example.component.replace('-', '')] = example.code;
+
+				codeSandboxHTML =
+					'<div class="slds-m-around--large"> \n' +
+					'	<div class="slds-section-title"> \n' +
+					'		<div class="slds-grid">  \n' +
+					'			<h3 class="slds-col | slds-has-flexi-truncate | slds-text-heading--small | section-heading">' + componentDisplayName + '</h3>  \n' +
+					'		</div>  \n' +
+					'	</div>  \n' +
+					'	<div class="slds-m-vertical--large">' +
+							example.html +
+					'	</div>\n' +
+					'</div>';
+
+				codepenData = {
+					css: '',
+					css_external: cssExternal.join(';'),
+					css_pre_processor: 'none',
+					css_starter: 'neither',
+					css_prefix_free: false,
+					description: 'A developer sandbox for Salesforce Lightning Design System Facades',
+					editors: '101',
+					html: codeSandboxHTML,
+					html_pre_processor: 'none',
+					html_classes: '',
+					js: example.code,
+					js_external: jsExternal.jquery.join(';'),
+					js_pre_processor: 'babel',
+					js_modernizr: false,
+					js_library: '',
+					title: componentDisplayName + ' :: Facades :: Salesforce Lightning Design System'
+				};
+
+				codepenJSON = JSON.stringify(codepenData).replace(/"/g, "&​quot;").replace(/'/g, "&apos;");
+
 				jQueryCode['components'].push({
 					'facade': 'jquery',
 					'facadeDisplayName': 'jQuery',
@@ -83,7 +145,8 @@ app.get('/jquery', function (req, res) {
 					'html': example.html,
 					'devHtml': example.devHtml,
 					'code': example.code,
-					'sampleData': example.sampleData
+					'sampleData': example.sampleData,
+					'codepenJSON': codepenJSON
 				});
 			}
 		});
@@ -95,6 +158,20 @@ app.get('/jquery', function (req, res) {
 var reactCode;
 app.get('/react', function (req, res) {
 	// needed for these examples until we make them more modular
+	var codeSandboxHTMLWrapper = {
+		HTML: '<div class="slds-box">' +
+					'	<div class="slds-section-title">' +
+					'		<div class="slds-grid">' +
+					'			<h3 class="slds-col | slds-has-flexi-truncate | slds-text-heading--small | section-heading">' + '</h3>' +
+					'		</div>' +
+					'	</div>' +
+					'	</div>' +
+					'</div>'
+		};
+	var codeSandboxHTML = '';
+	var codepenData = {};
+	var codepenJSON = '';
+
 	if (!reactCode) {
 		reactCode = {};
 		reactCode['components'] = [];
@@ -118,7 +195,47 @@ app.get('/react', function (req, res) {
 						}
 					}
 				}
+				
+				example.code = example.code + '\n\nReactDOM.render(React.createElement(' + componentDisplayName + 's' + '), document.querySelector(\'#' + example.component + '-react-control\'));';
+
+
 				reactCode[example.component.replace('-', '')] = example.code;
+
+				codeSandboxHTML =
+					'<div class="slds-m-around--large"> \n' +
+					'	<div class="slds-section-title"> \n' +
+					'		<div class="slds-grid">  \n' +
+					'			<h3 class="slds-col | slds-has-flexi-truncate | slds-text-heading--small | section-heading">' + componentDisplayName + '</h3>  \n' +
+					'		</div>  \n' +
+					'	</div>  \n' +
+					'	<div class="slds-m-vertical--large"> \n' +
+							'<div id="' + example.component + '-react-control" class="slds-col | example"></div>' +
+					'	</div>\n' +
+					'</div>';
+
+				codepenData = {
+					css: '',
+					css_external: cssExternal.join(';'),
+					css_pre_processor: 'none',
+					css_starter: 'neither',
+					css_prefix_free: false,
+					description: 'A developer sandbox for Salesforce Lightning Design System Facades',
+					editors: '101',
+					html: codeSandboxHTML,
+					html_pre_processor: 'none',
+					html_classes: '',
+					js: example.code,
+					js_external: jsExternal.react.join(';'),
+					js_pre_processor: 'babel',
+					js_modernizr: false,
+					js_library: '',
+					title: componentDisplayName + ' :: Facades :: Salesforce Lightning Design System'
+				};
+
+				console.log(codeSandboxHTML);
+
+				codepenJSON = JSON.stringify(codepenData).replace(/"/g, "&​quot;").replace(/'/g, "&apos;");
+
 				reactCode['components'].push({
 					'facade': 'react',
 					'facadeDisplayName': 'React',
@@ -129,7 +246,8 @@ app.get('/react', function (req, res) {
 					'componentDisplayName': componentDisplayName,
 					'code': example.code,
 					'html': example.html,
-					'sampleData': example.sampleData
+					'sampleData': example.sampleData,
+					'codepenJSON': codepenJSON
 				});
 			}
 		});
