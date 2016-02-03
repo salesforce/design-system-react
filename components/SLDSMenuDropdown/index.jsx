@@ -69,8 +69,10 @@ const defaultProps = {
   checkmark: false,
   openOn: "click",
   modal: true,
-  buttonVariant: "neutral",
-  hoverCloseDelay: 300
+  buttonVariant: "icon",
+  hoverCloseDelay: 300,
+  iconVariant:"border-filled",
+  iconName:"down"
 };
 
 /**
