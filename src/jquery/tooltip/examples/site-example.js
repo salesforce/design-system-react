@@ -1,59 +1,42 @@
-import { Lib, Tooltip as Component } from 'design-system-jquery';
-import * as controlTemplate from './template-control';
-import * as demoControlsTemplate from './template-demo-controls';
-import { sampleData } from 'design-system-utilities';
+import {Lib, Tooltip} from 'design-system-jquery';
 
 const $ = Lib.global.jQuery || Lib.global.$;
 
-const COMPONENT_NAME = 'tooltip';
-const COMPONENT_DISPLAY_NAME = 'Tooltip';
-const SAMPLE_DATA_ACCESSOR = 'tooltip';
-const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
-const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
+// SAMPLE CONTROL CODE -->
 
 $(function () {
-	$('#' + COMPONENT_NAME + '-jquery-control')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(controlTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT.collection,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
+	const tooltipProperties0 = {
+		content: 'I should show myself on click.',
+		trigger: 'click',
+		position: 'right',
+		isOpen: false,
+		modal: false,
+		container: document.querySelector('body')
+	};
+	const tooltipProperties1 = {
+		content: 'I should show up on hover.',
+		trigger: 'hover',
+		position: 'bottom',
+		isOpen: false,
+		modal: false,
+		container: document.querySelector('body')
+	};
+	const tooltipProperties2 = {
+		content: 'I will appear on focus.',
+		trigger: 'focus',
+		position: 'left',
+		isOpen: false,
+		modal: false,
+		container: document.querySelector('body')
+	};
 
-	$('#' + COMPONENT_NAME + '-jquery-demo-controls')
-		.attr('data-component-name', COMPONENT_NAME)
-		.attr('data-component-display-name', COMPONENT_DISPLAY_NAME)
-		.append(demoControlsTemplate.template({
-			componentCollection: SAMPLE_DATA_DEFAULT.collection,
-			componentName: COMPONENT_NAME,
-			componentDisplayName: COMPONENT_DISPLAY_NAME
-		})
-	);
+	const tooltip0 = new Tooltip($('#tooltip__tooltip--0'), tooltipProperties0);
+	const tooltip1 = new Tooltip($('#tooltip__tooltip--1'), tooltipProperties1);
+	const tooltip2 = new Tooltip($('#tooltip__tooltip--2'), tooltipProperties2);
 
-	const components = [];
-
-	$.each(SAMPLE_DATA_DEFAULT.collection, function (index, value) {
-		const thisComponentProperties = {};
-		const defaultComponentProperties = [
-			'content',
-			'trigger',
-			'position',
-			'container'
-		];
-		$.each(defaultComponentProperties, function (index2, value2) {
-			if (typeof value[value2] !== 'undefined') {
-				if (value[value2] !== '') {
-					thisComponentProperties[value2] = value[value2];
-				}
-			}
-		});
-		components[COMPONENT_NAME + index] = new Component($('#' + COMPONENT_NAME + '-jquery-control #component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME + '__' + index), thisComponentProperties);
-		void (components[COMPONENT_NAME + index]);
-		// Log on change
-		$('#component-wrapper-' + COMPONENT_NAME + '__' + COMPONENT_NAME + '__' + index).on('changed', function (event, data) {
-			Lib.log('changed', data);
-		});
-	});
+	void(tooltip0);
+	void(tooltip1);
+	void(tooltip2);
 });
+
+// <-- SAMPLE CONTROL CODE
