@@ -27,7 +27,7 @@ export const BadgeObject = {
 	displayName: CONTROL,
 
 	propTypes: {
-		children: React.PropTypes.string.isRequired,
+		children: React.PropTypes.any.isRequired,
 		theme: React.PropTypes.oneOf(Object.keys(BadgeCore.themes))
 	},
 

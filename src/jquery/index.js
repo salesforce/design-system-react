@@ -9,10 +9,21 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import * as Lib from '../lib/lib';
-import * as react from './index';
-
-module.exports = {
-	Lib,
-	...react
-};
+export Badge from './badge/badge';
+export Button from './button/button';
+export ButtonGroup from './button-group/button-group';
+export Checkbox from './checkbox/checkbox';
+export Combobox from './combobox/combobox';
+export DataTable from './data-table/data-table';
+export Datepicker from './datepicker/datepicker';
+export Dropdown from './dropdown/dropdown';
+export Modal from './modal/modal';
+export Notification from './notification/notification';
+export Picklist from './picklist/picklist';
+export Pills from './pills/pills';
+export Popover from './popover/popover';
+export Radio from './radio/radio';
+export Radios from './radio/radios';
+export Spinner from './spinner/spinner';
+export Tooltip from './tooltip/tooltip';
+export Tree from './tree/tree';

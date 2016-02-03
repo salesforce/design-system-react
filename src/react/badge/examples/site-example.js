@@ -1,5 +1,5 @@
-import React from 'react';
-import {Badge} from 'design-system-react';
+import React     from 'react';
+import { Badge } from 'design-system-react';
 
 // SAMPLE CONTROL CODE -->
 

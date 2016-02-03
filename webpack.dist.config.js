@@ -35,15 +35,15 @@ var config = {
 		filename: '[name].js'
 	},
 	externals: {
-		react: 'react',
-		'react-dom': 'react-dom'
+		react: 'React',
+		'react-dom': 'ReactDOM'
 	},
 	module: {
 		loaders: [
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loaders: ['babel-loader?optional=runtime', StringReplacePlugin.replace({
+				loaders: ['babel', StringReplacePlugin.replace({
 					replacements: [{
 						pattern: /__VERSION__/g,
 						replacement: function (match, p1, offset, string) {

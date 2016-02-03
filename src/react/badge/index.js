@@ -9,30 +9,5 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// Framework specific
-import React from 'react';
-
-export const CONTROL = 'wizard-actions';
-
-const WizardActions = React.createClass({
-	displayName: CONTROL,
-
-	propTypes: {
-		strings: React.PropTypes.object.isRequired,
-		isLast: React.PropTypes.bool.isRequired,
-		onPrevClicked: React.PropTypes.func.isRequired,
-		onNextClicked: React.PropTypes.func.isRequired,
-		onFinished: React.PropTypes.func.isRequired
-	},
-
-	render () {
-		return (
-			<div className="actions">
-				<button type="button" className="btn btn-default btn-prev" onClick={this.props.onPrevClicked}><span className="glyphicon glyphicon-arrow-left"></span>{this.props.strings.PREV}</button>
-				<button type="button" className="btn btn-default btn-next" onClick={this.props.isLast ? this.props.onFinished : this.props.onNextClicked}>{this.props.isLast ? this.props.strings.COMPLETE : this.props.strings.NEXT}<span className="glyphicon glyphicon-arrow-right"></span></button>
-			</div>
-		);
-	}
-});
-
-export default WizardActions;
+// The <control>.js file will be deprecated in favor of index.js
+export default from './badge';

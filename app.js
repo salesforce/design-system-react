@@ -31,6 +31,7 @@ app.use(express.static('public'));
 
 // Third-party libraries
 app.use('/vendor/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/vendor/he', express.static(__dirname + '/node_modules/he'));
 app.use('/vendor/prism', express.static(__dirname + '/node_modules/prismjs'));
 app.use('/vendor/react', express.static(__dirname + '/node_modules/react/dist'));
 app.use('/vendor/react', express.static(__dirname + '/node_modules/react-dom/dist'));
@@ -231,8 +232,6 @@ app.get('/react', function (req, res) {
 					title: componentDisplayName + ' :: Facades :: Salesforce Lightning Design System'
 				};
 
-				console.log(codeSandboxHTML);
-
 				codepenJSON = JSON.stringify(codepenData).replace(/"/g, "&​quot;").replace(/'/g, "&apos;");
 
 				reactCode['components'].push({
@@ -255,7 +254,7 @@ app.get('/react', function (req, res) {
 });
 
 // Serve up the built files
-app.use('/dist', express.static(__dirname + '/dist'));
+app.use('/dist', express.static(__dirname + '/.dist'));
 app.use('/build', express.static(__dirname + '/build', {'index': false}));
 app.use('/docs', express.static(__dirname + '/public/docs', {'index': ['index.html']}));
 

@@ -49,7 +49,7 @@ var config = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loaders: ['babel-loader?optional=runtime', StringReplacePlugin.replace({
+				loaders: ['babel', StringReplacePlugin.replace({
 					replacements: [{
 						pattern: /__VERSION__/g,
 						replacement: function (match, p1, offset, string) {

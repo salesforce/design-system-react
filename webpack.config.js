@@ -53,7 +53,7 @@ var config = {
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loaders: ['react-hot', 'babel-loader?optional=runtime', StringReplacePlugin.replace({
+				loaders: ['react-hot', 'babel', StringReplacePlugin.replace({
 					replacements: [{
 						pattern: /__VERSION__/g,
 						replacement: function (match, p1, offset, string) {
