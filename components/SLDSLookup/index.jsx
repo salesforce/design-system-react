@@ -421,22 +421,17 @@ class SLDSLookup extends React.Component {
     this.refs[this.inputRefName()].focus();
   }
 
+  getClassName(){
+    return cx(this.props.className, "slds-lookup", {
+      "slds-has-selection": this.state.selectedIndex !== null,
+    });
+  }
+
   render() {
     const inputClasses = {
       "slds-input": true,
       "slds-show": this.state.selectedIndex === null,
       "slds-hide": this.state.selectedIndex !== null,
-    };
-
-    const componentClasses = {
-      "slds-lookup": true,
-      "slds-has-selection": this.state.selectedIndex !== null,
-    };
-
-    const inputContainerClasses = {
-      "slds-form-element__control": true,
-      "slds-input-has-icon": true,
-      "slds-input-has-icon--right": true
     };
 
     const pillContainerClasses = {
@@ -449,10 +444,10 @@ class SLDSLookup extends React.Component {
     const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()} style={{width: "100%"}}>{required}{this.props.label}</label>:null;
 
     return (
-      <div className={cx(componentClasses)} data-select="single" data-scope="single" data-typeahead="true">
+      <div className={this.getClassName()} data-select="single" data-scope="single" data-typeahead="true">
         <section className="slds-form-element">
           {inputLabel}
-          <div className={cx(inputContainerClasses)}>
+          <div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
             <div className={cx(pillContainerClasses)}>
             { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
             </div>

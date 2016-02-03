@@ -32,6 +32,7 @@ const propTypes = {
    * If true, renders checkmark icon on the selected Menu Item.
    */
   checkmark: React.PropTypes.bool,
+  className: React.PropTypes.string,
   disabled: React.PropTypes.bool,
   /**
    * Delay on menu closing.
@@ -272,14 +273,14 @@ class SLDSMenuDropdown extends React.Component {
   getSimplePopover(){
     return(
       !this.props.disabled && this.state.isOpen?
-        <div className="slds-dropdown slds-dropdown--menu slds-dropdown--left">
+        <div className={"slds-dropdown slds-dropdown--menu slds-dropdown--left " + this.props.className}>
           {this.getPopoverContent()}
         </div>:null
     );
   }
 
   getModalPopover(){
-    const className = "slds-dropdown slds-dropdown--menu slds-dropdown--"+this.props.align;
+    const className = "slds-dropdown slds-dropdown--menu slds-dropdown--"+this.props.align + " " + this.props.className;
     return(
       !this.props.disabled && this.state.isOpen?
         <SLDSPopover

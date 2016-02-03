@@ -16,13 +16,11 @@ class ModalExample extends React.Component {
       <div>
         <SLDSButton label="Open Bare" onClick={this.toggleOpen.bind(this)} variant="brand" />
         <SLDSModal
-          align="top"
           isOpen={this.state.isOpen}
-          onRequestClose={this.toggleOpen.bind(this)}
-          size="large">
+          onRequestClose={this.toggleOpen.bind(this)}>
 
             <h4>New Opportunity</h4>
-            <div className="slds-form-element">
+            <div className="slds-form-element slds-m-vertical--large">
               <label className="slds-form-element__label" htmlFor="opptyName">Opportunity Name</label>
               <div className="slds-form-element__control">
                 <input id="opptyName" className="slds-input" type="text" placeholder="Enter name" />
@@ -30,6 +28,7 @@ class ModalExample extends React.Component {
             </div>
 
             <SLDSLookup
+              className="slds-m-vertical--large"
               emptyMessage="No Accounts Found"
               iconName="account"
               label="Account Name"
@@ -46,6 +45,7 @@ class ModalExample extends React.Component {
             />
 
             <SLDSMenuPicklist
+              className="slds-m-vertical--large"
               label="Type"
               modal={true}
               onSelect={(value)=>{console.log("selected: ",value);}}
