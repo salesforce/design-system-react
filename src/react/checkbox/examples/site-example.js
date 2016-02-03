@@ -3,13 +3,13 @@ import { Checkbox }      from 'design-system-react';
 import { ExampleEvents } from 'design-system-utilities';
 import { sampleData } from 'design-system-utilities';
 
+// SAMPLE CONTROL CODE -->
+
 const SAMPLE_DATA_ACCESSOR = 'checkbox';
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
 const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
-// https://www.lightningdesignsystem.com/components/forms#checkbox
-
-export default React.createClass({
+const CheckboxExample = React.createClass({
 	componentDidMount () {
 		ExampleEvents.registerEventListener(this, 'checkbox', 'exampleMethod');
 	},
@@ -89,3 +89,7 @@ export default React.createClass({
 		this.setState(checkboxenState);
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default CheckboxExample;

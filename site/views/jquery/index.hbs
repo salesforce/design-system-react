@@ -139,6 +139,11 @@
 										</div>
 									</div>
 								</div>
+
+								<form id="codepen-form-{{component}}" class="codepen-form" action="http://codepen.io/pen/define" method="POST" target="_blank">
+									<input type="hidden" name="data" value="{{codepenJSON}}">
+								</form>
+
 								<div class="slds-col | body">
 									<div class="slds-grid | slds-wrap">
 										<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type example-type--{{facade}}">
@@ -202,11 +207,6 @@
 		<script src="vendor/prism/prism.js"></script>
 		<script src="vendor/prism/components/prism-jsx.js"></script>
 		<script src="build/demo-site-examples-{{facade}}.bundle.js"></script>
-		<script type="text/javascript">
-			$(function () {
-				window.globalInitialHTML = $('body').html();
-			});
-		</script>
 		<script src="/assets/demo-site/scripts/demo-site.js"></script>
 		<script type="text/javascript">
 			$(function () {

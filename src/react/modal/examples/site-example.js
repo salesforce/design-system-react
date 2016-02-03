@@ -1,7 +1,9 @@
 import React     from 'react';
 import { Modal } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const ModalExample = React.createClass({
 	getInitialState () {
 		return {
 			isOpen: false
@@ -56,3 +58,7 @@ export default React.createClass({
 		});
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default ModalExample;

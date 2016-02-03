@@ -3,7 +3,7 @@ import {Badge} from 'design-system-react';
 
 // SAMPLE CONTROL CODE -->
 
-export default React.createClass({
+const BadgeExample = React.createClass({
 	render () {
 		return (
 		<div className="slds-grid slds-grid--vertical">
@@ -30,3 +30,5 @@ export default React.createClass({
 });
 
 // <-- SAMPLE CONTROL CODE
+
+export default BadgeExample;

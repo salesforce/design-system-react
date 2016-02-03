@@ -2,11 +2,13 @@ import React from 'react';
 import {Lib, Combobox} from 'design-system-react';
 import {sampleData, ExampleEvents} from 'design-system-utilities';
 
+// SAMPLE CONTROL CODE -->
+
 const SAMPLE_DATA_ACCESSOR = 'combobox';
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
 const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
-export default React.createClass({
+const ComboboxExample = React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool,
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
@@ -65,3 +67,7 @@ export default React.createClass({
 		this.setState({model});
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default ComboboxExample;

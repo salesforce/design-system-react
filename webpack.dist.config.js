@@ -8,8 +8,9 @@ var packageJson = require('./package.json');
 
 var config = {
 	entry: {
-		react: ['./src/react/dist.js'],
-		jquery: ['./src/jquery/dist.js']
+		'facades-react': ['./src/react/dist.js'],
+		'facades-jquery': ['./src/jquery/dist.js'],
+		'facades-utilities': ['./utilities/main.js']
 	},
 	resolve: {
 		modulesDirectories: [
@@ -28,7 +29,7 @@ var config = {
 	},
 	devtool: 'source-map',
 	output: {
-		libraryTarget: 'amd',
+		libraryTarget: 'umd',
 		path: __dirname + '/.tmp/',
 		publicPath: '/.tmp/',
 		filename: '[name].js'

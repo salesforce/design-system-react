@@ -2,12 +2,14 @@ import React       from 'react';
 import { Tooltip } from 'design-system-react';
 import { sampleData } from 'design-system-utilities';
 
+// SAMPLE CONTROL CODE -->
+
 const SAMPLE_DATA_ACCESSOR = 'tooltip';
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
 const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 const SAMPLE_DATA_COLLECTION = SAMPLE_DATA_DEFAULT.collection;
 
-export default React.createClass({
+const TooltipExample = React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool
 	},
@@ -105,3 +107,7 @@ export default React.createClass({
 		this.setState(tooltipsState);
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default TooltipExample;

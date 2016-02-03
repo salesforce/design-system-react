@@ -1,7 +1,9 @@
 import React       from 'react';
 import { Spinner } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const SpinnerExample = React.createClass({
 	render () {
 		return (
 			<div>
@@ -47,3 +49,7 @@ export default React.createClass({
 		);
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default SpinnerExample;

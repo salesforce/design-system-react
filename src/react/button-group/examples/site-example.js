@@ -1,7 +1,9 @@
 import React                   from 'react';
 import { Button, ButtonGroup } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const ButtonGroupExample = React.createClass({
 	getInitialState () {
 		return {
 			chartSelected: false,
@@ -38,3 +40,7 @@ export default React.createClass({
 		this.setState(selected);
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default ButtonGroupExample;
