@@ -194,7 +194,7 @@
                 "required": false,
                 "description": "Use <code>icon-inverse</code> for white icons.",
                 "defaultValue": {
-                    "value": "\"base\"",
+                    "value": "\"neutral\"",
                     "computed": false
                 }
             }
