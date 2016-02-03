@@ -39,7 +39,7 @@ class IconSection extends React.Component {
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
 
-        <section className="demo-only slds-p-bottom--x-large">
+        <section className="demo-only slds-p-vertical--large">
           <CodeMirror codeText={Samples.Icons} />
         </section>
         <PropTable component="SLDSIcon" />

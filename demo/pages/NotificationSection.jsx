@@ -38,9 +38,17 @@ class NotificationSection extends React.Component {
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
-
-        <section className="slds-p-bottom--x-large">
-          <CodeMirror codeText={Samples.Notifications} />
+        <section className="slds-p-vertical--large">
+          <h4 className="slds-text-heading--small">Alert Notification</h4>
+          <CodeMirror codeText={Samples.Notifications1} />
+        </section>
+        <section className="slds-p-vertical--large">
+          <h4 className="slds-text-heading--small">Toast Notification</h4>
+          <CodeMirror codeText={Samples.Notifications2} />
+        </section>
+        <section className="slds-p-vertical--large">
+          <h4 className="slds-text-heading--small">Toast Notification inside Modal</h4>
+          <CodeMirror codeText={Samples.Notifications3} />
         </section>
         <PropTable component="SLDSNotification" />
       </div>

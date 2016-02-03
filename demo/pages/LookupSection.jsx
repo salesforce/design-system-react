@@ -39,7 +39,7 @@ class LookupSection extends React.Component {
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
 
-        <section className="slds-p-bottom--x-large">
+        <section className="slds-p-vertical--large">
           <CodeMirror codeText={Samples.Lookups} />
         </section>
         <PropTable component="SLDSLookup" />
