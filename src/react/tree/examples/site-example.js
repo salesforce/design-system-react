@@ -6,8 +6,9 @@ const SAMPLE_DATA_ACCESSOR = 'tree';
 const SAMPLE_DATA = sampleData[SAMPLE_DATA_ACCESSOR];
 const SAMPLE_DATA_DEFAULT = SAMPLE_DATA.default;
 
+// SAMPLE CONTROL CODE -->
 
-export default React.createClass({
+const TreeExample = React.createClass({
 	getInitialState () {
 		return {
 			selection: [],
@@ -39,3 +40,7 @@ export default React.createClass({
 		this.setState({ open });
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default TreeExample;

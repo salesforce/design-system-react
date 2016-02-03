@@ -1,7 +1,9 @@
 import React          from 'react';
 import { Datepicker } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const DatepickerExample = React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool
 	},
@@ -30,3 +32,7 @@ export default React.createClass({
 		});
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default DatepickerExample;

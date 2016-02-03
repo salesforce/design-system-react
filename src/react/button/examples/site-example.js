@@ -1,7 +1,9 @@
 import React                  from 'react';
 import { Button, ButtonView } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const ButtonExample = React.createClass({
 	getInitialState () {
 		return {
 			buttonStatefulSelected: false,
@@ -128,3 +130,7 @@ export default React.createClass({
 		this.setState({buttonIconStateful: !this.state.buttonIconStateful});
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default ButtonExample;
