@@ -94,7 +94,7 @@ describe('SLDSIcon: ',  function(){
     let cmp, icon;
 
     beforeEach(() => {
-      cmp = getIcon({assistiveText: "", category: "utility", name: "open_folder", className: "slds-icon-text-default"});
+      cmp = getIcon({assistiveText: "", category: "utility", inverse: false, name: "open_folder"});
       icon = findRenderedDOMComponentWithClass(cmp, 'slds-icon');
     })
 
