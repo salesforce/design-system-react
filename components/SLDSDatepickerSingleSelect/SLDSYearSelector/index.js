@@ -52,7 +52,6 @@ module.exports = React.createClass( {
 
         <SLDSMenuPicklist
           options={this.getOptions()}
-          label='Year'
           placeholder='Year'
           value={this.props.displayedDate.getFullYear()}
           onSelect={this.handleSelect}
