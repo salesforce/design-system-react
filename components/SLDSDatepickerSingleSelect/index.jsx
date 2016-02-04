@@ -39,6 +39,8 @@ const propTypes = {
 
   abbrWeekDayLabels: React.PropTypes.array,
 
+  monthLabels: React.PropTypes.array,
+
 };
 const defaultProps = {
   value: null,
@@ -54,6 +56,7 @@ const defaultProps = {
   },
   weekDayLabels:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
   abbrWeekDayLabels:['S','M','T','W','T','F','S'],
+  monthLabels:['January','February','March','April','May','June','July','August','September','October','November','December'],
   todayLabel: 'Today'
 };
 
@@ -114,6 +117,7 @@ module.exports = React.createClass( {
           onClose={this.handleClose}
           abbrWeekDayLabels={this.props.abbrWeekDayLabels}
           weekDayLabels={this.props.weekDayLabels}
+          monthLabels={this.props.monthLabels}
           todayLabel={this.props.todayLabel}
           selectedDate={this.state.value?this.state.value:new Date()} />
       </SLDSPopover>;

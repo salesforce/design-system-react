@@ -127,6 +127,7 @@ module.exports = React.createClass( {
             selectedDate={this.props.selectedDate}
             autoFocus={true}
             displayedDate={this.state.displayedDate}
+            monthLabels={this.props.monthLabels}
             onCancel={this.handleCancel} />
           <Calendar 
             selectedDate={this.props.selectedDate}
