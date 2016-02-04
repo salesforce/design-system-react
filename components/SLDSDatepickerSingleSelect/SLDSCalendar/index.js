@@ -20,9 +20,9 @@ module.exports = React.createClass({
     return {
       displayedDate:new Date(),
       selectedDate:new Date(),
-      labels:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
-      abbrLabels:['S','M','T','W','T','F','S'],
-
+      weekDayLabels:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+      abbrWeekDayLabels:['S','M','T','W','T','F','S'],
+      todayLabel:'Today',
       onSelectDate (date) {
         console.log('onSelectDate should be defined ',date);
       },
@@ -126,25 +126,25 @@ module.exports = React.createClass({
         <thead>
           <tr ref='weekdays'>
             <th ref='Sunday'>
-              <abbr title={this.props.labels[0]}>{this.props.abbrLabels[0]}</abbr>
+              <abbr title={this.props.weekDayLabels[0]}>{this.props.abbrWeekDayLabels[0]}</abbr>
             </th>
             <th ref='Monday'>
-              <abbr title={this.props.labels[1]}>{this.props.abbrLabels[1]}</abbr>
+              <abbr title={this.props.weekDayLabels[1]}>{this.props.abbrWeekDayLabels[1]}</abbr>
             </th>
             <th ref='Tuesday'>
-              <abbr title={this.props.labels[2]}>{this.props.abbrLabels[2]}</abbr>
+              <abbr title={this.props.weekDayLabels[2]}>{this.props.abbrWeekDayLabels[2]}</abbr>
             </th>
             <th ref='Wednesday'>
-              <abbr title={this.props.labels[3]}>{this.props.abbrLabels[3]}</abbr>
+              <abbr title={this.props.weekDayLabels[3]}>{this.props.abbrWeekDayLabels[3]}</abbr>
             </th>
             <th ref='Thursday'>
-              <abbr title={this.props.labels[4]}>{this.props.abbrLabels[4]}</abbr>
+              <abbr title={this.props.weekDayLabels[4]}>{this.props.abbrWeekDayLabels[4]}</abbr>
             </th>
             <th ref='Friday'>
-              <abbr title={this.props.labels[5]}>{this.props.abbrLabels[5]}</abbr>
+              <abbr title={this.props.weekDayLabels[5]}>{this.props.abbrWeekDayLabels[5]}</abbr>
             </th>
             <th ref='Saturday'>
-              <abbr title={this.props.labels[6]}>{this.props.abbrLabels[6]}</abbr>
+              <abbr title={this.props.weekDayLabels[6]}>{this.props.abbrWeekDayLabels[6]}</abbr>
             </th>
           </tr>
         </thead>
@@ -166,7 +166,7 @@ module.exports = React.createClass({
           tabIndex="0"
           className="slds-show--inline-block slds-p-bottom--x-small"
           onClick={this.handleTodaySelect} >
-            Today
+            {this.props.todayLabel}
           </a>
         </td>
     </tr>;

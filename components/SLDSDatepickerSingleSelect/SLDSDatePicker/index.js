@@ -23,7 +23,6 @@ module.exports = React.createClass( {
     return {
       selectedDate:new Date(),
       value:new Date(),
-
       onChange (date) {
         console.log('onChange should be defined ',date);
       },
@@ -134,6 +133,9 @@ module.exports = React.createClass( {
             onChange={this.handleDisplayedDateChange}
             displayedDate={this.state.displayedDate} 
             onSelectDate={this.handleSelectDate}
+            abbrWeekDayLabels={this.props.abbrWeekDayLabels}
+            weekDayLabels={this.props.weekDayLabels}
+            todayLabel={this.props.todayLabel}
             onCancel={this.handleCancel} />
           <span id='bn_prev-label' className='slds-assistive-text'>Go to previous month</span>
           <span id='bn_next-label' className='slds-assistive-text'>Go to next month</span>

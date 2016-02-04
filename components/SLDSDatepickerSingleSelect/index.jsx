@@ -31,7 +31,14 @@ const propTypes = {
   /**
    * Parsing date string into Date
    */
-  parser: React.PropTypes.func
+  parser: React.PropTypes.func,
+
+  todayLabel: React.PropTypes.string,
+
+  weekDayLabels: React.PropTypes.array,
+
+  abbrWeekDayLabels: React.PropTypes.array,
+
 };
 const defaultProps = {
   value: null,
@@ -44,7 +51,10 @@ const defaultProps = {
   },
   onDateChange (date) {
     console.log('onDateChange should be defined');
-  }
+  },
+  weekDayLabels:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+  abbrWeekDayLabels:['S','M','T','W','T','F','S'],
+  todayLabel: 'Today'
 };
 
 module.exports = React.createClass( {
@@ -102,6 +112,9 @@ module.exports = React.createClass( {
           onChange={this.handleChange}
           selected={this.state.selected}
           onClose={this.handleClose}
+          abbrWeekDayLabels={this.props.abbrWeekDayLabels}
+          weekDayLabels={this.props.weekDayLabels}
+          todayLabel={this.props.todayLabel}
           selectedDate={this.state.value?this.state.value:new Date()} />
       </SLDSPopover>;
     }
