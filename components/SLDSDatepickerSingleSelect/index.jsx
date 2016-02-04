@@ -24,6 +24,14 @@ const propTypes = {
    * Date defined either as Date object or a string: .
    */
   value: React.PropTypes.any,
+  /**
+   * Date formatting function .
+   */
+  formatter: React.PropTypes.func,
+  /**
+   * Parsing date string into Date
+   */
+  parser: React.PropTypes.func
 };
 const defaultProps = {
   value: null,
@@ -88,7 +96,6 @@ module.exports = React.createClass( {
   },
 
   popover() {
-    console.log('!!! this.state.value: ',this.state.value);
     if(this.state && this.state.isOpen){
       return <SLDSPopover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
         <SLDSDatePicker
