@@ -59,7 +59,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 
 	// Always use the canonical control name (set in the core) as the React display name.
 	displayName: CONTROL,
-	
+
 	propTypes: {
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
@@ -88,7 +88,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 			React.PropTypes.object
 		])
 	},
-	
+
 	// Additional default properties are shared at the core level and get mixed in via the `_defaultProperties` object, but these "default renderers" are unique to React. They provide functions that render the contents of the menu header, footer, and items as well as pills, but can be overridden by custom renderers passed in via props so that application developers have more control.
 	getDefaultProps () {
 		return DefaultRenderers;
@@ -106,14 +106,14 @@ let Lookup = Lib.merge({}, LookupCore, {
 	componentWillMount () {
 		const searchResults = this._getFilteredCollection(this._collection, this.state.searchString);
 		const navigableItems = this._configureKeyboardNavigation(searchResults);
-		
+
 		this.setState({
 			searchResults,
 			navigableItems
 		});
 
 		Positionable.setElement(this, Positionable.attachPositionedElementToBody({classes: 'slds-lookup'}));
-		
+
 		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);
 	},
@@ -122,13 +122,13 @@ let Lookup = Lib.merge({}, LookupCore, {
 		if (nextProps.collection) {
 			const searchResults = this._getFilteredCollection(this._collection, this.state.searchString);
 			const navigableItems = this._configureKeyboardNavigation(searchResults);
-			
+
 			this.setState({
 				searchResults,
 				navigableItems
 			});
 		}
-		
+
 		// Right now we simply update `this.state.autoFocusOnNewSelectedItems` to `true` after initial load so that a selection (pill) will be focused immediately.
 		this.setState({
 			autoFocusOnNewSelectedItems: true
@@ -139,7 +139,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		if (this.props.modalMenu) {
 			Positionable.removeEventListeners(this);
 		}
-		
+
 		Openable.removeEventListeners(this);
 	},
 
@@ -148,11 +148,11 @@ let Lookup = Lib.merge({}, LookupCore, {
 		// Get ids for individual child controls based on the id that was given to the lookup or the one that was auto-generated for it.
 		const inputId = this._getInputId();
 		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
-		
+
 		// Get the current selection (wrapped in a data adapter) and set a boolean based on whether it contains any items.
 		const selectedItems = this._getDataAdapter(this.props.selection);
 		const hasSelection = selectedItems.length() > 0;
-		
+
 		const isOpen = Openable.isOpen(this);
 
 		// Unlike the header and footer, the pills will always be rendered if there is a selection and there is no option to disable them by passing false to `this.props.pillRenderer`. However, it is still possible to override the contents of the pills by passing in a custom render function.
@@ -160,7 +160,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 		if (hasSelection) {
 			pills = <Pills onDeselect={this._handleDeselect} renderer={this.props.pillRenderer} selection={this.props.selection} autoFocusOnNewItems={this.state.autoFocusOnNewSelectedItems} accessors={this.accessors} bare={!this.props.multiSelect} />;
 		}
-		
+
 		// This markup should reflect the design system pattern for the control. If the dropdown menu's parent is `body` and is absolutely positioned in order to visually attach the dropdown to the input, then the dropdown menu is not rendered in this function and is rendered in `componentDidUpdate` with `_renderModalMenu`.
 		return (
 			<div className={classNames('slds-lookup', { 'slds-has-selection': hasSelection })} id={this.state.id} data-select="single" data-scope="single" data-typeahead="true">
@@ -176,11 +176,11 @@ let Lookup = Lib.merge({}, LookupCore, {
 			</div>
 		);
 	},
-	
+
 	_renderMenu () {
 		const activeDescendantId = this._getMenuItemId(this.state.focusedIndex);
 		const isOpen = Openable.isOpen(this);
-		
+
 		// The menu header can be hidden by passing `false` to `this.props.menuHeaderRenderer`. The scaffolding needed for accessibility and display of the header is defined by the `Action` child control, but the contents of the control may vary based on the renderer passed in. If a render function (that returns React elements) is passed into the props that will be used to render the header, otherwise it will render the default renderer.
 		let header;
 		if (Lib.isFunction(this.props.menuHeaderRenderer)) {
@@ -207,7 +207,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	// Modal dropdown menus' parent is `body` and are absolutely positioned in order to visually attach the dropdown to the input.
 	_renderModalMenu () {
 		const menu = this._renderMenu();
-		
+
 		ReactDOM.render(menu, Positionable.getElement(this));
 
 		Positionable.setContainer(this, document.querySelector('body'));
@@ -266,7 +266,7 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleClicked (e) {
 		Openable.open(this, e.nativeEvent);
 	},
-	
+
 	_handleSelect (item) {
 		Multiselectable.selectItem(this, item._item, this.props.selection);
 	},
@@ -275,16 +275,16 @@ let Lookup = Lib.merge({}, LookupCore, {
 	_handleDeselect (items) {
 		Multiselectable.deselectItems(this, items, this.props.selection);
 	},
-	
+
 	_onSelect (itemsToSelect, selection) {
 		if (Lib.isFunction(this.props.onSelect)) {
 			this.props.onSelect(itemsToSelect, selection._data);
 		}
-		
+
 		if (Lib.isFunction(this.props.onChange)) {
 			this.props.onChange(selection._data);
 		}
-		
+
 		this.search('');
 		Openable.close(this);
 	},
@@ -294,11 +294,11 @@ let Lookup = Lib.merge({}, LookupCore, {
 		if (Lib.isFunction(this.props.onDeselect)) {
 			this.props.onDeselect(itemsToDeselect, selection._data);
 		}
-		
+
 		if (Lib.isFunction(this.props.onChange)) {
 			this.props.onChange(selection._data);
 		}
-		
+
 		if (selection.length() <= 0) {
 			this._focusOnInput = true;
 		}

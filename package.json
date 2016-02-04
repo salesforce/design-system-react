@@ -21,6 +21,7 @@
     "clean": "grunt kill-webpack-build",
     "dev": "grunt serve",
     "dev-build": "./scripts/shell/dev-build.sh",
+    "docs": "./scripts/shell/generate-docs.sh",
     "dist": "./scripts/shell/dist.sh",
     "dist-npm": "./scripts/shell/dist-npm.sh",
     "heroku-build": "./scripts/shell/heroku-build.sh",
