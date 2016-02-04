@@ -133,6 +133,28 @@ describe('SLDSMenuDropdown: ', function(){
 
   })
 
+  describe('accessible markup', () => {
+    beforeEach(() => {
+      selected = false;
+      cmp = dropItDown({openOn: 'click', onSelect: i => selected = i })
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+    })
+
+    it('<ul> has role menu', () => {
+      Simulate.click(btn, {})
+      let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
+      expect(ulRole).to.equal('menu');
+    })
+
+    it('<a> inside <li> has role menuitem', () => {
+      Simulate.click(btn, {})
+      const items = getMenu(body).querySelectorAll('.slds-dropdown__item a')
+      let anchorRole = items[1].getAttribute('role');
+      let match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
+      expect(match).to.be.true;
+    })
+  })
+
   describe('Keyboard behavior', () => {
     beforeEach(() => {
       selected = false;
