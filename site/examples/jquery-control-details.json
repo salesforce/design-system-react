@@ -3,9 +3,9 @@
         "description": "Badges add information. For more details on the markup, please review the Badge documentation on the <a href=\"https://www.lightningdesignsystem.com/components/badges\">Lightning Design System website</a>.",
         "displayName": "SLDSButton",
         "props": {
-            "children": {
+            "text": {
                 "type": {
-                    "name": "any"
+                    "name": "string"
                 },
                 "required": false,
                 "description": "Typically text that is inserted into the badge, although it could contain icons and other visuals."

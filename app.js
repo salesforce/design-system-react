@@ -5,6 +5,7 @@ var port = process.env.PORT || 3000;
 var jQueryExamples = require('./site/examples/demo-components')('jquery');
 var reactExamples = require('./site/examples/demo-components')('react');
 var reactControlDetails = require('./site/examples/react-control-details');
+var jqueryControlDetails = require('./site/examples/jquery-control-details');
 
 // Create server
 var app = express();
@@ -146,7 +147,8 @@ app.get('/jquery', function (req, res) {
 					'html': example.html,
 					'devHtml': example.devHtml,
 					'code': example.code,
-					'codepenJSON': codepenJSON
+					'codepenJSON': codepenJSON,
+					'controlDetails': jqueryControlDetails[example.component]
 				});
 			}
 		});
@@ -154,7 +156,7 @@ app.get('/jquery', function (req, res) {
 	res.render('jquery/index', jQueryCode);
 });
 
-// jQuery examples
+// React examples
 var reactCode;
 app.get('/react', function (req, res) {
 	// needed for these examples until we make them more modular
@@ -233,8 +235,6 @@ app.get('/react', function (req, res) {
 				};
 
 				codepenJSON = JSON.stringify(codepenData).replace(/"/g, "&​quot;").replace(/'/g, "&apos;");
-
-				console.log(example.component);
 
 				reactCode['components'].push({
 					'facade': 'react',
