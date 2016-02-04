@@ -21,14 +21,12 @@ import {KEYS,EventUtil} from '../utils';
 const displayName = 'SLDSDatepickerSingleSelect';
 const propTypes = {
   /**
-   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
+   * Date defined either as Date object or a string: .
    */
-  date: React.PropTypes.any,
+  value: React.PropTypes.any,
 };
 const defaultProps = {
-  string:'',
-  value: new Date(),
+  value: null,
   placeholder: 'Pick a Date',
   formatter (date) {
     return (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();
@@ -52,16 +50,14 @@ module.exports = React.createClass( {
   getInitialState(){
     return {
       isOpen:false,
-      value:this.props.value,
-      string:this.props.selectedDate?this.props.formatter(this.props.selectedDate):null
+      value:this.props.value
     };
   },
 
   handleChange(date) {
     this.setState({
       value:date,
-      isOpen:false,
-      string:this.props.formatter(date)
+      isOpen:false
     });
     if(this.props.onDateChange){
       this.props.onDateChange(date);
@@ -92,13 +88,14 @@ module.exports = React.createClass( {
   },
 
   popover() {
+    console.log('!!! this.state.value: ',this.state.value);
     if(this.state && this.state.isOpen){
       return <SLDSPopover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
         <SLDSDatePicker
           onChange={this.handleChange}
           selected={this.state.selected}
           onClose={this.handleClose}
-          selectedDate={this.state.value} />
+          selectedDate={this.state.value?this.state.value:new Date()} />
       </SLDSPopover>;
     }
     return <span />;
@@ -151,7 +148,7 @@ module.exports = React.createClass( {
               className='slds-input'
               type='text'
               placeholder={this.props.placeholder}
-              value={this.state.value?this.state.string:''}
+              value={this.state.value?this.props.formatter(this.state.value):''}
               onKeyDown={this.handleKeyDown}
               onChange={this.handleInputChange}
               onClick={this.handleClick}
