@@ -113,6 +113,7 @@ describe('SLDSMenuDropdown: ', function(){
       setTimeout(() => done(), 600)
     })
   })
+
   describe('Expanded', () => {
     let cmp, btn, selected;
 
@@ -122,12 +123,50 @@ describe('SLDSMenuDropdown: ', function(){
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
     })
 
-    it('selects an item', () => {
+    it('selects an item on click', () => {
       Simulate.click(btn, {})
       expect(selected).to.be.false
       const items = getMenu(body).querySelectorAll('.slds-dropdown__item')
       Simulate.click(items[1].querySelector('a'), {})
       expect(selected.value).to.equal('B')
+    })
+
+  })
+
+  describe('Keyboard behavior', () => {
+    beforeEach(() => {
+      selected = false;
+      cmp = dropItDown({openOn: 'click', onSelect: i => selected = i })
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+    })
+
+    it('opens menu with enter', () => {
+      expect(getMenu(body)).to.equal(null)
+      Simulate.keyDown(btn, {key: "Enter", keyCode: 13, which: 13})
+      expect(getMenu(body)).to.not.equal(null)
+    })
+
+    it('opens menu with down arrow key', () => {
+      expect(getMenu(body)).to.equal(null)
+      Simulate.keyDown(btn, {key: "Down", keyCode: 40, which: 40})
+      expect(getMenu(body)).to.not.equal(null)
+    })
+
+    it('selects an item with keyboard', () => {
+      Simulate.click(btn, {})
+      expect(selected).to.be.false
+      let menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item')
+      Simulate.keyDown(menuItems[1].querySelector('a'), {key: "Enter", keyCode: 13, which: 13})
+      expect(selected.value).to.equal('B')
+    })
+
+    it('closes Menu on esc', () => {
+      expect(getMenu(body)).to.equal(null)
+      Simulate.click(btn, {})
+      expect(getMenu(body)).to.not.equal(null)
+      let menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item')
+      Simulate.keyDown(menuItems[1].querySelector('a'), {key: "Esc", keyCode: 27, which: 27})
+      expect(getMenu(body)).to.equal(null)
     })
 
   })
