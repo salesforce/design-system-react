@@ -21,7 +21,7 @@ import * as Lib from '../../lib/lib';
 // Use the [shared core](../../core/lookup.html), which contains logic that is the same in every facade.
 import LookupCore, {CONTROL} from '../../core/lookup';
 
-// Traits
+// ## Traits
 import Eventable from '../../traits/eventable';
 import Multiselectable from '../../traits/multiselectable';
 import Openable from '../../traits/openable';
