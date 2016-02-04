@@ -68,7 +68,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 			Positionable.setElement(this, Positionable.attachPositionedElementToBody());
 			Positionable.setContainer(this, document.querySelector('body'));
 			Positionable.setTarget(this, this.elements.formElement);
-			
+
 			this.elements.dropdown = $(Positionable.getElement(this)).append(this.elements.dropdown).find('.slds-dropdown');
 		}
 
@@ -93,10 +93,11 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 	_render () {
 		const strings = this.getState('strings');
-		
+
 		this.elements.input.attr('placeholder', strings.DATE_FORMAT);
-		
+
 		if (this.getProperty('inputLabel')) {
+			this.elements.input.attr('placeholder', this.getProperty('inputLabel'));
 			this.elements.input.attr('aria-label', this.getProperty('inputLabel'));
 		}
 
@@ -122,21 +123,21 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	_onRendered () {
 		this._bindUIEvents();
 	},
-	
+
 	_onOpened () {
 		this.setState({
 			dateViewing: this.getProperty('startDate') || new Date()
 		});
-		
+
 		this._renderDateRange();
-		
+
 		this.elements.dropdown.removeClass('slds-hidden');
 		if (this.getProperty('modalCalendar')) {
 			Positionable.position(this);
 			Positionable.show(this);
 		}
 	},
-	
+
 	_onClosed () {
 		this.elements.dropdown.addClass('slds-hidden');
 		if (this.getProperty('modalCalendar')) {
@@ -275,7 +276,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 			if (this.getProperty('multiSelect')) {
 				startDate = this.getProperty('startDate');
 				endDate = this.getProperty('endDate');
-				
+
 				if (!startDate || endDate) {
 					startDate = date;
 					endDate = undefined;
@@ -288,17 +289,17 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 			} else {
 				startDate = date;
 			}
-		
+
 			this._selectDates({
 				startDate,
 				endDate
 			});
 		}
 	},
-	
+
 	_selectDates (dates) {
 		this.setProperties(dates);
-		
+
 		this.elements.input.val(this._formatSelectedDates(this.getProperty('startDate'), this.getProperty('endDate')));
 		this._renderDateRange();
 

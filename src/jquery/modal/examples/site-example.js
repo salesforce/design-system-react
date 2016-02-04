@@ -5,13 +5,14 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // SAMPLE CONTROL CODE -->
 
 $(function () {
-	const modal = new Modal($('#modal-jquery-control'), {
+	const modalProperties = {
 		headerText: 'Modal Header',
 		headerTagline: 'This is a tagline',
 		headerTextSize: 'medium',
 		secondaryButtonText: 'Cancel',
 		primaryButtonText: 'Save'
-	});
+	};
+	const modal = new Modal($('#modal__modal-content'), modalProperties);
 
 	modal.on('close', function () {
 		$('#modal-jquery-control-launch').focus();

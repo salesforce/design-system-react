@@ -1,22 +1,56 @@
-var fs = require('fs');
-var packageJson = require('../../package.json');
+require('../../scripts/helpers/setup');
+const fs = require('fs');
+const path = require('path');
 
-function toTitleCase(str) {
-	return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+const rootPath = path.resolve.bind(path, __PATHS__.root);
+// const packageJSON = JSON.parse(fs.readFileSync(rootPath('package.json')).toString());
+const packageJSON = JSON.parse(fs.readFileSync(rootPath('package.json')));
+
+function toTitleCase (str) {
+	return str.replace(/\w\S*/g, function (txt) {
+		return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	});
 }
 
 module.exports = function (facade) {
-	var codeDir = './src/' + facade + '/';
-	
-	return packageJson.components.map(function (component) {
+	var codeDir = __PATHS__.source_files + '/' + facade;
+	var sampleCodeDir = __PATHS__.sample_data;
+	// if (facade === 'react') {
+	// 	sampleCodeDir += '-react';
+	// }
+
+	return packageJSON.components.map(function (component) {
+		var sampleHTML;
+		try {
+			sampleHTML = fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.html'), 'utf8');
+		} catch (ex) {
+			sampleHTML = '';
+		}
+		var devHTML;
+		try {
+			devHTML = fs.readFileSync(path.resolve(codeDir, component + '/examples/dev-example.html'), 'utf8');
+		} catch (ex) {
+			devHTML = '';
+		}
 		try {
 			return {
 				component: component,
-				name: toTitleCase(component.split('-').join(' ')),
-				code: fs.readFileSync(codeDir + component + '/examples/site-example.js', 'utf8')
-			}
+				name: component.split('-').join(' '),
+				displayName: toTitleCase(component.split('-').join(' ')),
+				html: sampleHTML,
+				devHtml: devHTML,
+				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8')
+			};
 		} catch (ex) {
 			console.error(ex);
+			return {
+				component: component,
+				name: component.split('-').join(' '),
+				displayName: toTitleCase(component.split('-').join(' ')),
+				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8'),
+				html: sampleHTML,
+				devHtml: devHTML
+			};
 		}
 	});
 };

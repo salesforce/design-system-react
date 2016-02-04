@@ -1,0 +1,96 @@
+aside a {
+	display: block;
+}
+
+
+#component-list {
+	margin-bottom: 30px;
+}
+
+.component-wrapper {
+	.header {
+		border-bottom: none;
+	}
+}
+
+.component .body {
+	border: none;
+
+	.example-type {
+		border-left: none;
+
+		&:first-child {
+			border-left: none;
+		}
+	}
+
+	.example-wrapper {
+		padding: 0;
+
+		.example {
+			// padding: 10px 0;
+
+		}
+
+		.type {
+			margin-top: -5px;
+		}
+	}
+}
+
+.sdls, :root {
+
+
+	#component-nav > nav {
+		position: fixed;
+		height: 100vh;
+		top: 206px;
+
+		a, a:link {
+			color: #5876A3;
+			text-decoration: none;
+			-webkit-transition: all 0.1s linear;
+			transition: all 0.1s linear;
+
+			&:hover, &:focus {
+				text-decoration: underline;
+				color: #005fb2;
+				text-decoration: none;
+				transition: all 0.1s linear;
+			}
+
+			&:focus {
+				outline: thin dotted;
+				outline: 5px auto #1589ee;
+				outline-offset: -2px;
+				-webkit-transition: all 0.1s linear;
+				transition: all 0.1s linear;
+			}
+
+			&:active {
+				color: #00396b;
+				-webkit-transition: all 0.1s linear;
+				transition: all 0.1s linear;
+			}
+
+			&.a-plain {
+				color: #5876A3;
+			}
+
+			&.a-plain:hover, &.a-plain:focus {
+				text-decoration: none !important;
+				background-color: darken(#f6f6f6, 5%);
+				-webkit-transition: all 0.1s linear;
+				transition: all 0.1s linear;
+			}
+			&.a-plain.active {
+				text-decoration: none !important;
+				background-color: #f6f6f6;
+				color: darken(#5876A3, 3%);
+				-webkit-transition: all 0.1s linear;
+				transition: all 0.1s linear;
+			}
+		}
+
+	}
+}

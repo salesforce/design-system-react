@@ -1,19 +1,52 @@
-import React from 'react';
-import {Lib, Picklist} from 'design-system-react';
-import {sampleData} from 'design-system-utilities';
+import React             from 'react';
+import { Lib, Picklist } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const PicklistExample = React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool
 	},
 
 	getInitialState () {
+		const resize = 'auto';
+		const selection = {
+			value: 1
+		};
+		const collection = [
+			{
+				_itemType: 'header', text: 'One thing'
+			}, {
+				id: 0, text: 'One', value: '1', icon: 'utility.apps'
+			}, {
+				_itemType: 'divider'
+			}, {
+				_itemType: 'header', text: 'All the things'
+			}, {
+				id: 1, text: 'Two', value: '2', icon: 'utility.email'
+			}, {
+				id: 2, text: 'Three', value: '3'
+			}, {
+				id: 3, text: 'Buzz', value: '4'
+			}, {
+				id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'
+			}, {
+				id: 5, text: 'A Disabled Item', disabled: true, value: 'disabled'
+			}
+		];
+
+		const picklistSampleData = {
+			collection: collection,
+			resize: resize,
+			selection: selection
+		};
+
 		return {
 			models: [
 				{
-					collection: sampleData.picklist.default.collection,
+					collection: picklistSampleData.collection,
 					disabled: false,
-					selection: sampleData.picklist.default.collection[1]
+					selection: picklistSampleData.collection[1]
 				}
 			]
 		};
@@ -70,7 +103,7 @@ export default React.createClass({
 
 	setSelection (index) {
 		const models = this.state.models;
-		models[index].selection = sampleData.picklist.default.defaultArray[5];
+		models[index].selection = this.state.models.collection[5];
 		this.setState({models});
 	},
 
@@ -86,3 +119,7 @@ export default React.createClass({
 		this.setState({models});
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default PicklistExample;

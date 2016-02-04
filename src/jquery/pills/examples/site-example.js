@@ -5,7 +5,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // SAMPLE CONTROL CODE -->
 
 $(function () {
-	$('#pills-jquery-control .pills1').facades_pills({
+	const pillsProperties = {
 		selection: [
 			{
 				text: 'item 1',
@@ -20,13 +20,10 @@ $(function () {
 				value: 3
 			}
 		]
-	});
+	};
 
-	$('#pills-jquery-control .pills1').on('changed', function (evt, item) {
-		console.log('pill removed', item);
-	});
-
-	void(Pills);
+	const pills = new Pills($('#pills__pills--0'), pillsProperties);
+	void (pills);
 });
 
 // <-- SAMPLE CONTROL CODE

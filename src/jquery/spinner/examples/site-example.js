@@ -6,41 +6,41 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	// const spinner = new Spinner($('#spinner'));
-	const spinner1 = new Spinner($('#spinner-jquery-control .spinner1'), {
+	const spinner1 = new Spinner($('#spinner__spinner--0'), {
 		size: 'large',
 		theme: 'base'
 	});
-	const spinner2 = new Spinner($('#spinner-jquery-control .spinner2'), {
+	const spinner2 = new Spinner($('#spinner__spinner--1'), {
 		size: 'medium',
 		theme: 'base'
 	});
-	const spinner3 = new Spinner($('#spinner-jquery-control .spinner3'), {
+	const spinner3 = new Spinner($('#spinner__spinner--2'), {
 		size: 'small',
 		theme: 'base'
 	});
 
-	const spinner4 = new Spinner($('#spinner-jquery-control .spinner4'), {
+	const spinner4 = new Spinner($('#spinner__spinner--3'), {
 		size: 'large',
 		theme: 'brand'
 	});
-	const spinner5 = new Spinner($('#spinner-jquery-control .spinner5'), {
+	const spinner5 = new Spinner($('#spinner__spinner--4'), {
 		size: 'medium',
 		theme: 'brand'
 	});
-	const spinner6 = new Spinner($('#spinner-jquery-control .spinner6'), {
+	const spinner6 = new Spinner($('#spinner__spinner--5'), {
 		size: 'small',
 		theme: 'brand'
 	});
 
-	const spinner7 = new Spinner($('#spinner-jquery-control .spinner7'), {
+	const spinner7 = new Spinner($('#spinner__spinner--6'), {
 		size: 'large',
 		theme: 'inverse'
 	});
-	const spinner8 = new Spinner($('#spinner-jquery-control .spinner8'), {
+	const spinner8 = new Spinner($('#spinner__spinner--7'), {
 		size: 'medium',
 		theme: 'inverse'
 	});
-	const spinner9 = new Spinner($('#spinner-jquery-control .spinner9'), {
+	const spinner9 = new Spinner($('#spinner__spinner--8'), {
 		size: 'small',
 		theme: 'inverse'
 	});

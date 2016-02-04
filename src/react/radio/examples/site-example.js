@@ -1,60 +1,93 @@
-import React from 'react';
-import {Radio} from 'design-system-react';
+import React          from 'react';
+import { Radio }      from 'design-system-react';
+
+// SAMPLE CONTROL CODE -->
 
 // https://www.lightningdesignsystem.com/components/forms#radio
 
-// TODO: consider creation of a Radios React component based off of this example code (as we did with jQuery)
-export default React.createClass({
+const RadioExample = React.createClass({
 	getInitialState () {
+		const labelText = 'Radio Group Label';
+		const name = 'rads';
+		const radios = [
+			{
+				text: 'Checked',
+				value: 'value9',
+				checked: true
+			},
+			{
+				text: 'Unchecked',
+				value: 'value10',
+				checked: false
+			},
+			{
+				text: 'Unchecked Disabled',
+				value: 'value11',
+				checked: false,
+				disabled: true
+			}
+		];
+
+		const radiosSampleData = {
+			labelText: labelText,
+			name: name,
+			radios: radios
+		};
+
 		const radioboxen = new Map();
 
-		radioboxen.set('radio1', {disabled: false, checked: true});
-		radioboxen.set('radio2', {disabled: false, checked: false});
-		radioboxen.set('radio3', {disabled: true, checked: false});
+		function populateRadioboxen ( element, index ) {
+			radioboxen.set('radio' + (index + 1), element);
+		}
+		radiosSampleData.radios.forEach(populateRadioboxen);
 
-		return { radioboxen };
+		return {
+			radiosSampleData,
+			radioboxen
+		};
 	},
 
 	render () {
-		const name = 'radioGroup1';
+		const name = this.state.radiosSampleData.name;
+		const labelText = this.state.radiosSampleData.labelText;
 		const radios = [
 			<Radio
 				checked={this.state.radioboxen.get('radio1').checked}
 				disabled={this.state.radioboxen.get('radio1').disabled}
 				key="1"
 				name={name}
-				labelText="Checked"
+				labelText={this.state.radioboxen.get('radio1').text}
 				onChanged={this._handleChange.bind(this, 'radio1')}
 				onDisabled={this._handleDisable.bind(this, 'radio1', true)}
 				onEnabled={this._handleDisable.bind(this, 'radio1', false)}
-				value="value1" />,
+				value={this.state.radioboxen.get('radio1').value} />,
 			<Radio
 				checked={this.state.radioboxen.get('radio2').checked}
 				disabled={this.state.radioboxen.get('radio2').disabled}
 				key="2"
 				name={name}
-				labelText="Unchecked"
+				labelText={this.state.radioboxen.get('radio2').text}
 				onChanged={this._handleChange.bind(this, 'radio2')}
 				onDisabled={this._handleDisable.bind(this, 'radio2', true)}
 				onEnabled={this._handleDisable.bind(this, 'radio2', false)}
-				value="value3" />,
+				value={this.state.radioboxen.get('radio2').value} />,
 			<Radio
 				checked={this.state.radioboxen.get('radio3').checked}
 				disabled={this.state.radioboxen.get('radio3').disabled}
 				key="3"
 				name={name}
-				labelText="Unchecked Disabled"
+				labelText={this.state.radioboxen.get('radio3').text}
 				onChanged={this._handleChange.bind(this, 'radio3')}
 				onDisabled={this._handleDisable.bind(this, 'radio3', true)}
 				onEnabled={this._handleDisable.bind(this, 'radio3', false)}
-				value="value4" />
+				value={this.state.radioboxen.get('radio3').value} />
 		];
 
 		return (
 			<div>
 				<div className="slds-col example">
 					<fieldset className="slds-form-element">
-						<legend className="slds-form-element__label slds-form-element__label--top">Opts</legend>
+						<legend className="slds-form-element__label slds-form-element__label--top">{labelText}</legend>
 						<div className="slds-form-element__control">
 							{radios}
 						</div>
@@ -134,3 +167,7 @@ export default React.createClass({
 		this.setState(radio);
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default RadioExample;

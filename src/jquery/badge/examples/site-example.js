@@ -5,7 +5,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // SAMPLE CONTROL CODE -->
 
 const badgesProperties = [
-	{text: 'Base', theme: ''},
+	{text: 'Base', theme: 'base'},
 	{text: 'Default', theme: 'default'},
 	{text: 'Shade', theme: 'shade'},
 	{text: 'Inverse', theme: 'inverse'},
@@ -21,7 +21,7 @@ const badgesProperties = [
 $(function () {
 	const badges = [];
 	$.each(badgesProperties, function ( index, value ) {
-		badges['badge' + index] = new Badge($('#badge-jquery-control .badge' + index), {
+		badges['badge' + index] = new Badge($('#badge__badge-' + value.theme), {
 			'text': value.text,
 			'theme': value.theme
 		});
@@ -34,7 +34,7 @@ const badge15 = new Badge({
 	text: 'Appended',
 	theme: 'inverse'
 });
-badge15.appendTo($('#badge-jquery-control .badge15'));
+badge15.appendTo($('#badge__badge-for-appending'));
 void(badge15);
 
 // <-- SAMPLE CONTROL CODE

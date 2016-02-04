@@ -1,7 +1,9 @@
-import React from 'react';
-import {Badge} from 'design-system-react';
+import React     from 'react';
+import { Badge } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const BadgeExample = React.createClass({
 	render () {
 		return (
 		<div className="slds-grid slds-grid--vertical">
@@ -9,9 +11,9 @@ export default React.createClass({
 				<Badge>Base</Badge>
 				<Badge theme="default">Default</Badge>
 				<Badge theme="shade">Shade</Badge>
+				<Badge theme="inverse">Inverse</Badge>
 			</div>
 			<div className="slds-col | slds-m-bottom--medium">
-				<Badge theme="inverse">Inverse</Badge>
 				<Badge theme="alt-inverse">Alt Inverse</Badge>
 				<Badge theme="info">Info</Badge>
 				<Badge theme="success">Success</Badge>
@@ -26,3 +28,7 @@ export default React.createClass({
 		);
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default BadgeExample;

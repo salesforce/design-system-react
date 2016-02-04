@@ -5,7 +5,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // SAMPLE CONTROL CODE -->
 
 $(function () {
-	const radios = new Radios($('#radio-jquery-control'), {
+	const radiosProperties = {
 		labelText: 'Radio Group Label',
 		name: 'rads',
 		radios: [
@@ -26,7 +26,8 @@ $(function () {
 				disabled: true
 			}
 		]
-	});
+	};
+	const radios = new Radios($('#radio__radio--0'), radiosProperties);
 
 	$('#radio-jquery-checkFirst').on('click', function () {
 		console.log('check first');

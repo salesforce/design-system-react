@@ -32,9 +32,8 @@ import template from './combobox-template';
 
 let Combobox = function Combobox () {
 	const options = this._getOptions(arguments);
-	
+
 	this.template = $(template);
-	
 	this._initialize(options);
 };
 
@@ -43,7 +42,7 @@ export const ComboboxObject = {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this._initElements();
 	},
-	
+
 	_initElements () {
 		this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
 		this.elements.input = this.element.find('.' + this.cssClasses.INPUT);
@@ -54,7 +53,7 @@ export const ComboboxObject = {
 		const $icon = this._renderIcon('utility.down');
 		$icon.replaceAll(this.elements.button.find('x-button-svg')[0]);
 	},
-	
+
 	_bindUIEvents () {
 		this.elements.button.on('click', this._handleClicked.bind(this));
 		this.elements.dropdownMenu.on('click', 'a', this._handleMenuItemSelected.bind(this));
@@ -76,16 +75,16 @@ export const ComboboxObject = {
 		this.elements.input.val(selection.getText());
 
 		this._renderMenu(this.elements);
-		
+
 		return this.element;
 	},
 
 	_onChanged () {
 		const item = this._getSelection();
-		
+
 		if (this.rendered) {
 			this.elements.input.val(item.getText());
-			
+
 			this._addCheckmark(this.elements);
 		}
 	},
@@ -114,7 +113,7 @@ export const ComboboxObject = {
 	_onEnabledOrDisabled () {
 		if (this.rendered) {
 			const disabled = !!this.getProperty('disabled');
-			
+
 			this.elements.input.prop('disabled', disabled);
 			this.elements.button.prop('disabled', disabled);
 		}
