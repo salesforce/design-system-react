@@ -4,6 +4,7 @@ var exphbs = require('express-handlebars');
 var port = process.env.PORT || 3000;
 var jQueryExamples = require('./site/examples/demo-components')('jquery');
 var reactExamples = require('./site/examples/demo-components')('react');
+var reactControlDetails = require('./site/examples/react-control-details');
 
 // Create server
 var app = express();
@@ -31,7 +32,6 @@ app.use(express.static('public'));
 
 // Third-party libraries
 app.use('/vendor/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
-app.use('/vendor/he', express.static(__dirname + '/node_modules/he'));
 app.use('/vendor/prism', express.static(__dirname + '/node_modules/prismjs'));
 app.use('/vendor/react', express.static(__dirname + '/node_modules/react/dist'));
 app.use('/vendor/react', express.static(__dirname + '/node_modules/react-dom/dist'));
@@ -234,6 +234,8 @@ app.get('/react', function (req, res) {
 
 				codepenJSON = JSON.stringify(codepenData).replace(/"/g, "&​quot;").replace(/'/g, "&apos;");
 
+				console.log(example.component);
+
 				reactCode['components'].push({
 					'facade': 'react',
 					'facadeDisplayName': 'React',
@@ -244,7 +246,8 @@ app.get('/react', function (req, res) {
 					'componentDisplayName': componentDisplayName,
 					'code': example.code,
 					'html': example.html,
-					'codepenJSON': codepenJSON
+					'codepenJSON': codepenJSON,
+					'controlDetails': reactControlDetails[example.component]
 				});
 			}
 		});

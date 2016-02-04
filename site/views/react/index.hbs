@@ -140,6 +140,13 @@
 								<div class="slds-col | body">
 									<div class="slds-grid | slds-wrap">
 										<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type example-type--{{facade}}">
+											{{#if controlDetails}}
+											<div class="copy-text">
+												<div class="slds-p-vertical--small || slds-m-around--large" style="max-width: 800px;">
+													{{{controlDetails.description}}}
+												</div>
+											</div>
+											{{/if}}
 											<div class="slds-m-bottom--medium">
 												<div id="{{component}}-{{facade}}-control-launcher"></div>
 											</div>
@@ -160,16 +167,46 @@
 													<textarea class="demo-js | slds-hide">{{code}}</textarea>
 													<textarea class="demo-html | slds-hide">{{{html}}}</textarea>
 												</div>
-											</div>
-										</div>
-									</div>
+							</div>
+							</div>
 								</div>
 							</div>
+</div>
 						</div>
 
 
 
+							
 
+							{{#if controlDetails}}
+							<div class="slds-scrollable--x property-details">
+								<h1 class="slds-text-heading--small slds-p-vertical--medium">Property Details</h1>
+								<table class="slds-table slds-table--bordered slds-max-medium-table--stacked slds-no-row-hover">
+									<thead>
+										<tr class="site-text-heading--label">
+											<th>NAME</th>
+											<th>Type</th>
+											<th class="site-text--center">Required</th>
+											<th>Default</th>
+											<th>Description</th>
+										</tr>
+									</thead>
+									<tbody>
+										{{#each controlDetails.props}}
+										<tr>
+											<td>{{@key}}</td>
+											<td class="mw-col-m slds-cell-wrap slds-align-top">{{this.type.name}}</td>
+											<td class="site-text--center slds-cell-wrap slds-align-top">{{this.required}}</td>
+											<td class="mw-col-m slds-cell-wrap slds-align-top">{{this.defaultValue}}</td>
+											<td class="mw-col-l slds-size--1-of-2 slds-cell-wrap slds-align-top">
+												{{{this.description}}}
+											</td>
+										</tr>
+										{{/each}}
+									</tbody>
+								</table>
+							</div>
+							{{/if}}
 
 						{{/each}}
 					</div>
