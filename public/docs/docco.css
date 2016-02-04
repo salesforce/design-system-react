@@ -60,7 +60,35 @@ body {
 	margin: 0; padding: 0;
 	height:100%;*/
 }
-/*#container { min-height: 100%; }*/
+#container {
+	height: 100vh;
+}
+
+
+.annotation.comments h1 {
+    font-weight: 300;
+    font-size: 2rem;
+    line-height: 1.25;
+    margin-bottom: 1.68rem;
+}
+.annotation.comments h2 {
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    margin-bottom: 1.26rem;
+}
+.annotation.comments h3 {
+    font-weight: 300;
+    font-size: 1.125rem;
+    line-height: 1.25;
+}
+.annotation.comments h4 {
+		font-size: 0.75rem;
+    line-height: 1.25;
+    text-transform: uppercase;
+    letter-spacing: .0625em;
+    color: #54698d;
+}
 /*
 a {
 	color: #000;
@@ -137,8 +165,28 @@ blockquote {
 	border-left: 5px solid #ccc;
 	margin: 0;
 	padding: 1px 0 1px 1em;
+
 }
-	.sections blockquote p {
+	.sections .comments blockquote {
+		margin: 0.5rem 0 1.25rem 0;
+		padding: 0.25rem 0.75rem;
+    color: #fff;
+    background-color: #54698d;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-clip: padding-box;
+    border: 1px solid #d8dde6;
+	}
+
+	.sections .comments blockquote a,
+	.sections .comments blockquote a:link,
+	.sections .comments blockquote a:visited
+	{
+    color: #fff;
+    text-decoration: underline;
+	}
+
+	.sections .code blockquote p {
 		font-family: Menlo, Consolas, Monaco, monospace;
 		font-size: 12px; line-height: 16px;
 		color: #999;

@@ -8,39 +8,41 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+// # Badge Control --- React Facade
+//
+// > See a [live example](/react/badge) of the badge component in action
+//
+//
+// Implements the [Badge design pattern](https://www.lightningdesignsystem.com/components/badges) in React.
 
-// BADGE CONTROL - REACT FACADE
+/* TODO: Add a full API description of the control here. */
 
-// Core
+// Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../../lib/lib';
+
+// Use the [shared core](../../core/badge.html), which contains logic that is the same in every facade.
 import BadgeCore, {CONTROL} from '../../core/badge';
 
-// Framework specific
+// ## Framework specific
+// React and ReactDOM are external depdencies of the project.
 import React from 'react';
 import State from '../mixins/state';
 import Events from '../mixins/events';
 import genericWillMount from '../mixins/generic-will-mount';
-
 export const BadgeObject = {
 	mixins: [State, Events, genericWillMount],
-
 	displayName: CONTROL,
-
 	propTypes: {
 		children: React.PropTypes.any.isRequired,
 		theme: React.PropTypes.oneOf(Object.keys(BadgeCore.themes))
 	},
-
 	render () {
 		return (
 			<span className={this._getClassNames()}>{this.props.children}</span>
 		);
 	}
 };
-
 let Badge = Lib.merge({}, BadgeCore, BadgeObject);
-
 Badge = Lib.runHelpers('react', CONTROL, Badge);
 Badge = React.createClass(Badge);
-
 export default Badge;
