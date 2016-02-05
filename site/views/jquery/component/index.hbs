@@ -112,7 +112,6 @@
 				<div id="component-list-wrapper">
 					<div id="component-list" class="slds-grid slds-grid--vertical">
 						{{#each thisComponentData}}
-	<!-- {{component}} -->
 						<div
 							class="slds-col | slds-m-top--large | component-wrapper"
 							id="{{component}}"
@@ -139,15 +138,6 @@
 												data-component-display-name="{{componentDisplayName}}"
 												data-component-name="{{component}}"
 											>Open in CodePen</a>
-											<span  class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small">
-												|
-											</span>
-											<a
-												class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small"
-												href="/{{otherFacade}}/{{component}}"
-												data-component-display-name="{{componentDisplayName}}"
-												data-component-name="{{component}}"
-											>See {{otherFacadeDisplayName}} Version</a>
 										</div>
 									</div>
 								</div>
@@ -159,6 +149,13 @@
 								<div class="slds-col | body">
 									<div class="slds-grid | slds-wrap">
 										<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type example-type--{{facade}}">
+											{{#if controlDetails.description}}
+											<div class="copy-text">
+												<div class="slds-p-vertical--small" style="max-width: 800px;">
+													{{{controlDetails.description}}}
+												</div>
+											</div>
+											{{/if}}
 											<div class="slds-m-bottom--medium">
 												<div id="{{component}}-{{facade}}-control-launcher"></div>
 											</div>
@@ -167,12 +164,13 @@
 												<div id="{{component}}-{{facade}}-demo-controls" class="slds-col | demo-controls">{{{devHtml}}}</div>
 												<div id="{{component}}-{{facade}}-demo-code-showcase" class="slds-col | facades-demo-code-showcase">
 													<aside class="slds-tabs--default">
-														<ul class="slds-tabs--default__nav" role="tablist">
+														<!-- <ul class="slds-tabs--default__nav" role="tablist">
 															<li class="slds-tabs--default__item | slds-text-heading--label | slds-active" title="Example code for {{componentDisplayName}}" role="presentation">
 																<a class="slds-tabs--default__link" href="#{{component}}-{{facade}}-demo-code-showcase__tab-content--code__void" role="tab" tabindex="0" aria-selected="true" aria-controls="{{component}}-{{facade}}-demo-code-showcase__tab-content--code" id="{{component}}-{{facade}}-demo-code-showcase__tab-item--code">Example Code</a>
 															</li>
-														</ul>
+														</ul> -->
 														<section id="{{component}}-{{facade}}-demo-code-showcase__tab-content--code" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="{{component}}-{{facade}}-demo-code-showcase__tab-item--code">
+															<h3 class="slds-text-heading--small">Example Code</h1>
 															<pre style="max-height: 400px; min-height: 400px; height: 400px;" class="language-jsx"><code>{{code}}</code></pre>
 														</section>
 													</aside>
@@ -186,10 +184,42 @@
 							</div>
 						</div>
 
-
-
-
-						{{/each}}
+						{{#if controlDetails.props}}
+							<div class="slds-scrollable--x property-details">
+								<h3 class="slds-text-heading--small slds-p-vertical--small">Property Details</h1>
+								<table class="slds-table slds-table--bordered slds-max-medium-table--stacked slds-no-row-hover">
+									<thead>
+										<tr class="site-text-heading--label">
+											<th>NAME</th>
+											<th>TYPE</th>
+											<th class="site-text--center">REQUIRED</th>
+											<th>DEFAULT</th>
+											<th>DESCRIPTION</th>
+										</tr>
+									</thead>
+									<tbody>
+										{{#each controlDetails.props}}
+										<tr>
+											<td class="slds-align-top">{{@key}}</td>
+											<td class="mw-col-m slds-cell-wrap slds-align-top">{{{this.type.name}}}</td>
+											<td class="site-text--center slds-cell-wrap slds-align-top">{{this.required}}</td>
+											<td class="mw-col-m slds-cell-wrap slds-align-top">
+												{{#if this.defaultValue}}
+													{{#each this.defaultValue}}
+														{{this.value}}
+													{{/each}}
+												{{/if}}
+											</td>
+											<td class="mw-col-l slds-size--1-of-2 slds-cell-wrap slds-align-top">
+												{{{this.description}}}
+											</td>
+										</tr>
+										{{/each}}
+									</tbody>
+								</table>
+							</div>
+							{{/if}}
+												{{/each}}
 					</div>
 				</div>
 			</div>
