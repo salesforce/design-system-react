@@ -12,14 +12,9 @@ const CheckboxExample = React.createClass({
 	getInitialState () {
 		const checkboxSampleData = [
 			{
-				text: 'Checked',
-				value: 'checkbox-value-0',
-				checked: true
-			},
-			{
-				text: 'Unchecked',
-				value: 'checkbox-value-1',
-				checked: false
+				text: 'Checked', value: 'checkbox-value-0', checked: true
+			}, {
+				text: 'Unchecked', value: 'checkbox-value-1', checked: false
 			}
 		];
 		const checkboxen = new Map();

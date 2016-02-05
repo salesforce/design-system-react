@@ -15,10 +15,12 @@ const ButtonExample = React.createClass({
 	render () {
 		return (
 			<div className="slds-grid slds-grid--vertical">
+
 				<div className="slds-col | slds-m-bottom--small">
 					<Button text="Base"/>
 					<Button text="Disabled" disabled/>
 				</div>
+
 				<div className="slds-col | slds-m-bottom--small">
 					<Button text="Neutral" theme="neutral" />
 					<Button text="Disabled" theme="neutral" disabled />

@@ -72,7 +72,7 @@
 						</div>
 						<div class="slds-media__body">
 							<div class="slds-grid">
-								<h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle" title="Record Title">{{facadeDisplayName}} Components</h1>
+								<h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle">{{facadeDisplayName}} Components</h1>
 							</div>
 						</div>
 					</div>
@@ -88,18 +88,23 @@
 							Home
 						</a>
 					</p>
-					<p class="slds-text-heading--small slds-p-horizontal--large slds-p-vertical--small">Components</p>
+					<p class="slds-text-heading--small slds-p-vertical--small">
+						<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="/{{otherFacade}}">
+							{{otherFacadeDisplayName}} Components
+						</a>
+					</p>
+					<p class="slds-text-heading--small slds-p-vertical--small">
+						<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="/{{facade}}">
+							{{facadeDisplayName}} Components
+						</a>
+					</p>
 					<ul class="slds-p-bottom--small">
 						{{#each components}}
 						<li>
-							<a class="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small" href="#{{ component}}">{{ componentDisplayName }}</a>
+							<a id="component-nav__{{component}}" class="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small" href="/{{facade}}/{{ component}}">{{ componentDisplayName }}</a>
 						</li>
 						{{/each}}
 					</ul>
-{{!-- 					<p class="slds-text-heading--small slds-p-vertical--small">
-						<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="#/home/faq">FAQ</a>
-					</p>
- --}}
 				</nav>
 			</aside>
 
@@ -217,10 +222,10 @@
 		</section>
 
 
-		<script src="vendor/prism/prism.js"></script>
-		<script src="vendor/prism/components/prism-jsx.js"></script>
+		<script src="/vendor/prism/prism.js"></script>
+		<script src="/vendor/prism/components/prism-jsx.js"></script>
 		<script src="/assets/facades/scripts/jquery.min.js"></script>
-		<script src="build/demo-site-examples-{{facade}}.bundle.js"></script>
+		<script src="/build/demo-site-examples-{{facade}}.bundle.js"></script>
 		<script src="/assets/demo-site/scripts/demo-site.js"></script>
 		<script type="text/javascript">
 			$(function () {

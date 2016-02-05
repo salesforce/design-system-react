@@ -6,30 +6,20 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	const buttonGroup0ChildButton0 = new Button({
-		text: 'Neutral',
-		theme: 'neutral'
+		text: 'Neutral', theme: 'neutral'
 	});
 	const buttonGroup0Properties = {
-		theme: 'neutral',
-		buttons: [
+		theme: 'neutral', buttons: [
 			{
 				text: 'Refresh'
-			},
-			{
+			}, {
 				text: 'Edit'
-			},
-			{
+			}, {
 				text: 'Save'
-			},
-			{
-				assistiveText: 'More Actions',
-				disabled: false,
-				icon: 'utility.down',
-				iconStyle: 'icon-border',
-				theme: 'icon-border'
+			}, {
+				assistiveText: 'More Actions', disabled: false, icon: 'utility.down', iconStyle: 'icon-border', theme: 'icon-border'
 			}
-		],
-		children: [buttonGroup0ChildButton0]
+		], children: [buttonGroup0ChildButton0]
 	};
 	const buttonGroup0 = new ButtonGroup($('#button-group__button-group--0'), buttonGroup0Properties);
 

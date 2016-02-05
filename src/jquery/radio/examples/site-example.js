@@ -6,24 +6,13 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	const radiosProperties = {
-		labelText: 'Radio Group Label',
-		name: 'rads',
-		radios: [
+		labelText: 'Radio Group Label', name: 'rads', radios: [
 			{
-				text: 'Checked',
-				value: 'value9',
-				checked: true
-			},
-			{
-				text: 'Unchecked',
-				value: 'value10',
-				checked: false
-			},
-			{
-				text: 'Unchecked Disabled',
-				value: 'value11',
-				checked: false,
-				disabled: true
+				text: 'Checked', value: 'value9', checked: true
+			}, {
+				text: 'Unchecked', value: 'value10', checked: false
+			}, {
+				text: 'Unchecked Disabled', value: 'value11', checked: false, disabled: true
 			}
 		]
 	};
