@@ -12,8 +12,10 @@ describe('SLDSMenuDropdown: ', function(){
 
   let body;
   const options = [
-    {label:'A super short',value:'A'},
-    {label:'B Option Super Super Long',value:'B'}
+    {label:'A super short',value:'A0'},
+    {label:'B Option Super Super Long',value:'B0'},
+    {label:'C Option',value:'C0'},
+    {label:'D Option',value:'D0'},
   ]
 
   const renderDropdown = inst => {
@@ -22,15 +24,29 @@ describe('SLDSMenuDropdown: ', function(){
     return ReactDOM.render(inst, body)
   }
 
-  const defaultProps = {label: "Contacts",
+  const defaultProps = {label: 'Contacts',
+                        openOn: 'click',
                         modal: false,
                         options: options,
                         placeholder: "Select a contact",
+                        value: 'B0'};
+
+  const iconOnlyProps = {assistiveText: 'more options',
+                        buttonVariant: 'icon',
+                        checkmark: {true},
+                        iconName: 'down',
+                        iconVariant: 'border-filled',
+                        openOn: 'click',
+                        modal: false,
+                        options: options,
+                        placeholder: "Select an Action",
                         value: 'C0'}
 
   const createDropdown = props => React.createElement(SLDSMenuDropdown, assign({}, defaultProps, props))
+  const createDropdown_icon = props => React.createElement(SLDSMenuDropdown, assign({}, iconOnlyProps, props))
 
   const dropItDown = ps => renderDropdown(createDropdown(ps))
+  const dropItDown_iconOnly = ps => renderDropdown(createDropdown_icon(ps))
 
   const getMenu = dom => dom.querySelector('.slds-dropdown--menu')
 
@@ -128,22 +144,48 @@ describe('SLDSMenuDropdown: ', function(){
       expect(selected).to.be.false
       const items = getMenu(body).querySelectorAll('.slds-dropdown__item')
       Simulate.click(items[1].querySelector('a'), {})
-      expect(selected.value).to.equal('B')
+      expect(selected.value).to.equal('B0')
     })
 
   })
 
-  describe('accessible markup', () => {
+  describe('accessible markup for label Dropdowns', () => {
     beforeEach(() => {
       selected = false;
-      cmp = dropItDown({openOn: 'click', onSelect: i => selected = i })
+      cmp = dropItDown({ onSelect: i => selected = i })
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
     })
 
-    it('<ul> has role menu', () => {
+    it('<ul> has role menu & aria-labelledby', () => {
       Simulate.click(btn, {})
       let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
+      let ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
       expect(ulRole).to.equal('menu');
+      expect(ulAria).to.equal('Contacts_Button');
+    })
+
+    it('<a> inside <li> has role menuitem', () => {
+      Simulate.click(btn, {})
+      const items = getMenu(body).querySelectorAll('.slds-dropdown__item a')
+      let anchorRole = items[1].getAttribute('role');
+      let match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
+      expect(match).to.be.true;
+    })
+  })
+
+  describe('accessible markup for Icon Only Dropdowns', () => {
+    beforeEach(() => {
+      selected = false;
+      cmp = dropItDown_iconOnly({ onSelect: i => selected = i })
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+    })
+
+    it('<ul> has role menu & aria-labelledby', () => {
+      Simulate.click(btn, {})
+      let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
+      let ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
+      expect(ulRole).to.equal('menu');
+      expect(ulAria).to.equal('moreoptions_Button');
     })
 
     it('<a> inside <li> has role menuitem', () => {
@@ -179,7 +221,7 @@ describe('SLDSMenuDropdown: ', function(){
       expect(selected).to.be.false
       let menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item')
       Simulate.keyDown(menuItems[1].querySelector('a'), {key: "Enter", keyCode: 13, which: 13})
-      expect(selected.value).to.equal('B')
+      expect(selected.value).to.equal('B0')
     })
 
     it('closes Menu on esc', () => {

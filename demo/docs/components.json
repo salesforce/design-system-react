@@ -1282,40 +1282,75 @@
     "SLDSDatepickerSingleSelect": {
         "description": "",
         "props": {
-            "date": {
+            "value": {
                 "type": {
                     "name": "any"
                 },
                 "required": false,
-                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
-            },
-            "string": {
+                "description": "Date defined either as Date object or a string: .",
                 "defaultValue": {
-                    "value": "''",
-                    "computed": false
-                }
-            },
-            "value": {
-                "defaultValue": {
-                    "value": "new Date()",
-                    "computed": false
-                }
-            },
-            "placeholder": {
-                "defaultValue": {
-                    "value": "'Pick a Date'",
+                    "value": "null",
                     "computed": false
                 }
             },
             "formatter": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Date formatting function .",
                 "defaultValue": {
                     "value": "function(date) {\n  return (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();\n}",
                     "computed": false
                 }
             },
             "parser": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Parsing date string into Date",
                 "defaultValue": {
                     "value": "function(str) {\n  return new Date(str);\n}",
+                    "computed": false
+                }
+            },
+            "todayLabel": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "'Today'",
+                    "computed": false
+                }
+            },
+            "weekDayLabels": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']",
+                    "computed": false
+                }
+            },
+            "abbrWeekDayLabels": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "['S','M','T','W','T','F','S']",
+                    "computed": false
+                }
+            },
+            "placeholder": {
+                "defaultValue": {
+                    "value": "'Pick a Date'",
                     "computed": false
                 }
             },

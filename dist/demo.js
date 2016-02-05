@@ -30748,7 +30748,10 @@
 	      isOpen: false,
 	      lastBlurredIndex: -1,
 	      lastBlurredTimeStamp: -1,
-	      selectedIndex: _this.getIndexByValue(_this.props.value)
+	      selectedIndex: _this.getIndexByValue(_this.props.value),
+	      /* triggerId is the id of the element that triggers the Menu to open.
+	      * Need this for aria-labelledby on <ul> in Menu for accessibility. */
+	      triggerId: _this.props.label ? _this.props.label.replace(/\s+/g, '') + '_Button' : _this.props.assistiveText.replace(/\s+/g, '') + '_Button'
 	    };
 	    return _this;
 	  }
@@ -30949,7 +30952,8 @@
 	        onUpdateHighlighted: this.handleUpdateHighlighted.bind(this),
 	        options: this.props.options,
 	        ref: "list",
-	        selectedIndex: this.state.selectedIndex
+	        selectedIndex: this.state.selectedIndex,
+	        triggerId: this.state.triggerId
 	      });
 	    }
 	  }, {
@@ -30990,6 +30994,7 @@
 	          disabled: this.props.disabled,
 	          iconName: this.props.iconName,
 	          iconVariant: this.props.iconVariant,
+	          id: this.state.triggerId,
 	          label: this.props.label,
 	          onBlur: this.props.openOn === "hover" ? this.handleBlur.bind(this) : null,
 	          onClick: this.props.openOn === "click" ? this.handleClick.bind(this) : null,
@@ -31685,18 +31690,14 @@
 	      lastBlurredIndex: -1,
 	      lastBlurredTimeStamp: -1,
 	      selectedIndex: _this.getIndexByValue(_this.props.value),
-	      triggerId: null
+	      /* triggerId is the id of the element that triggers the Menu to open.
+	      * Need this for aria-labelledby on <ul> in Menu for accessibility. */
+	      triggerId: _this.props.label ? _this.props.label.replace(/\s+/g, '') + '_Button' : 'Picklist_Button'
 	    };
 	    return _this;
 	  }
 
 	  _createClass(SLDSMenuPicklist, [{
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      var id = _reactDom2.default.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
-	      this.setState({ triggerId: id });
-	    }
-	  }, {
 	    key: "componentWillUnmount",
 	    value: function componentWillUnmount() {
 	      this.isUnmounting = true;
@@ -35390,14 +35391,27 @@
 	var displayName = 'SLDSDatepickerSingleSelect';
 	var propTypes = {
 	  /**
-	   * Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.
-	   * If the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop.
+	   * Date defined either as Date object or a string: .
 	   */
-	  date: _react2.default.PropTypes.any
+	  value: _react2.default.PropTypes.any,
+	  /**
+	   * Date formatting function .
+	   */
+	  formatter: _react2.default.PropTypes.func,
+	  /**
+	   * Parsing date string into Date
+	   */
+	  parser: _react2.default.PropTypes.func,
+
+	  todayLabel: _react2.default.PropTypes.string,
+
+	  weekDayLabels: _react2.default.PropTypes.array,
+
+	  abbrWeekDayLabels: _react2.default.PropTypes.array
+
 	};
 	var defaultProps = {
-	  string: '',
-	  value: new Date(),
+	  value: null,
 	  placeholder: 'Pick a Date',
 	  formatter: function formatter(date) {
 	    return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
@@ -35407,7 +35421,11 @@
 	  },
 	  onDateChange: function onDateChange(date) {
 	    console.log('onDateChange should be defined');
-	  }
+	  },
+
+	  weekDayLabels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+	  abbrWeekDayLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+	  todayLabel: 'Today'
 	};
 
 	module.exports = _react2.default.createClass({
@@ -35421,15 +35439,13 @@
 	  getInitialState: function getInitialState() {
 	    return {
 	      isOpen: false,
-	      value: this.props.value,
-	      string: this.props.selectedDate ? this.props.formatter(this.props.selectedDate) : null
+	      value: this.props.value
 	    };
 	  },
 	  handleChange: function handleChange(date) {
 	    this.setState({
 	      value: date,
-	      isOpen: false,
-	      string: this.props.formatter(date)
+	      isOpen: false
 	    });
 	    if (this.props.onDateChange) {
 	      this.props.onDateChange(date);
@@ -35462,7 +35478,10 @@
 	          onChange: this.handleChange,
 	          selected: this.state.selected,
 	          onClose: this.handleClose,
-	          selectedDate: this.state.value })
+	          abbrWeekDayLabels: this.props.abbrWeekDayLabels,
+	          weekDayLabels: this.props.weekDayLabels,
+	          todayLabel: this.props.todayLabel,
+	          selectedDate: this.state.value ? this.state.value : new Date() })
 	      );
 	    }
 	    return _react2.default.createElement('span', null);
@@ -35517,7 +35536,7 @@
 	            className: 'slds-input',
 	            type: 'text',
 	            placeholder: this.props.placeholder,
-	            value: this.state.value ? this.state.string : '',
+	            value: this.state.value ? this.props.formatter(this.state.value) : '',
 	            onKeyDown: this.handleKeyDown,
 	            onChange: this.handleInputChange,
 	            onClick: this.handleClick,
@@ -35569,7 +35588,6 @@
 	    return {
 	      selectedDate: new Date(),
 	      value: new Date(),
-
 	      onChange: function onChange(date) {
 	        console.log('onChange should be defined ', date);
 	      },
@@ -35659,6 +35677,9 @@
 	          onChange: this.handleDisplayedDateChange,
 	          displayedDate: this.state.displayedDate,
 	          onSelectDate: this.handleSelectDate,
+	          abbrWeekDayLabels: this.props.abbrWeekDayLabels,
+	          weekDayLabels: this.props.weekDayLabels,
+	          todayLabel: this.props.todayLabel,
 	          onCancel: this.handleCancel }),
 	        _react2.default.createElement(
 	          'span',
@@ -35731,9 +35752,9 @@
 	    return {
 	      displayedDate: new Date(),
 	      selectedDate: new Date(),
-	      labels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-	      abbrLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-
+	      weekDayLabels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+	      abbrWeekDayLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+	      todayLabel: 'Today',
 	      onSelectDate: function onSelectDate(date) {
 	        console.log('onSelectDate should be defined ', date);
 	      },
@@ -35830,8 +35851,8 @@
 	              { ref: 'Sunday' },
 	              _react2.default.createElement(
 	                'abbr',
-	                { title: this.props.labels[0] },
-	                this.props.abbrLabels[0]
+	                { title: this.props.weekDayLabels[0] },
+	                this.props.abbrWeekDayLabels[0]
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -35839,8 +35860,8 @@
 	              { ref: 'Monday' },
 	              _react2.default.createElement(
 	                'abbr',
-	                { title: this.props.labels[1] },
-	                this.props.abbrLabels[1]
+	                { title: this.props.weekDayLabels[1] },
+	                this.props.abbrWeekDayLabels[1]
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -35848,8 +35869,8 @@
 	              { ref: 'Tuesday' },
 	              _react2.default.createElement(
 	                'abbr',
-	                { title: this.props.labels[2] },
-	                this.props.abbrLabels[2]
+	                { title: this.props.weekDayLabels[2] },
+	                this.props.abbrWeekDayLabels[2]
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -35857,8 +35878,8 @@
 	              { ref: 'Wednesday' },
 	              _react2.default.createElement(
 	                'abbr',
-	                { title: this.props.labels[3] },
-	                this.props.abbrLabels[3]
+	                { title: this.props.weekDayLabels[3] },
+	                this.props.abbrWeekDayLabels[3]
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -35866,8 +35887,8 @@
 	              { ref: 'Thursday' },
 	              _react2.default.createElement(
 	                'abbr',
-	                { title: this.props.labels[4] },
-	                this.props.abbrLabels[4]
+	                { title: this.props.weekDayLabels[4] },
+	                this.props.abbrWeekDayLabels[4]
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -35875,8 +35896,8 @@
 	              { ref: 'Friday' },
 	              _react2.default.createElement(
 	                'abbr',
-	                { title: this.props.labels[5] },
-	                this.props.abbrLabels[5]
+	                { title: this.props.weekDayLabels[5] },
+	                this.props.abbrWeekDayLabels[5]
 	              )
 	            ),
 	            _react2.default.createElement(
@@ -35884,8 +35905,8 @@
 	              { ref: 'Saturday' },
 	              _react2.default.createElement(
 	                'abbr',
-	                { title: this.props.labels[6] },
-	                this.props.abbrLabels[6]
+	                { title: this.props.weekDayLabels[6] },
+	                this.props.abbrWeekDayLabels[6]
 	              )
 	            )
 	          )
@@ -35915,7 +35936,7 @@
 	            tabIndex: '0',
 	            className: 'slds-show--inline-block slds-p-bottom--x-small',
 	            onClick: this.handleTodaySelect },
-	          'Today'
+	          this.props.todayLabel
 	        )
 	      )
 	    );
@@ -36444,7 +36465,6 @@
 	      { className: 'slds-form-element' },
 	      _react2.default.createElement(_SLDSMenuPicklist2.default, {
 	        options: this.getOptions(),
-	        label: 'Year',
 	        placeholder: 'Year',
 	        value: this.props.displayedDate.getFullYear(),
 	        onSelect: this.handleSelect,
@@ -49369,7 +49389,7 @@
 	var Samples = {
 	  Buttons1: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    label=\"Base\"\n    onClick={function(){alert(\"Base Button Clicked\")}}\n    variant=\"base\" />\n\n  <SLDSButton\n    label=\"Neutral\" />\n\n  <SLDSButton\n    iconName=\"download\"\n    iconPosition=\"left\"\n    label=\"Neutral Icon\" />\n\n  <SLDSButton\n    label=\"Responsive\"\n    responsive={true} />\n</div>\n",
 	  Buttons2: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    label=\"Brand\"\n    variant=\"brand\" />\n\n  <SLDSButton\n    disabled={true}\n    label=\"Disabled\"\n    onClick={function(){alert(\"Disabled Button Clicked\")}}\n    variant=\"brand\" />\n\n  <SLDSButton\n    label=\"Destructive\"\n    variant=\"destructive\" />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      label=\"Inverse\"\n      variant=\"inverse\"/>\n  </div>\n</div>\n",
-	  ButtonGroups1: "<SLDSButtonGroup>\n  <SLDSButton label=\"Refresh\" />\n\n  <SLDSButton label=\"Edit\" />\n\n  <SLDSButton label=\"Save\" />\n\n  <SLDSMenuDropdown\n    assistiveText=\"More Options\"\n    onSelect={function(item){console.log(item.label, \"selected\")}}\n    openOn=\"click\"\n    options={[\n      {label: \"undo\", value: \"A0\"},\n      {label: \"redo\", value: \"B0\"},\n      {label: \"activate\", value: \"C0\"},\n    ]} />\n</SLDSButtonGroup>\n",
+	  ButtonGroups1: "<SLDSButtonGroup>\n  <SLDSButton label=\"Refresh\" />\n\n  <SLDSButton label=\"Edit\" />\n\n  <SLDSButton label=\"Save\" />\n\n  <SLDSMenuDropdown\n    assistiveText=\"More Options\"\n    buttonVariant=\"icon\"\n    iconName=\"down\"\n    iconVariant=\"border-filled\"\n    onSelect={function(item){console.log(item.label, \"selected\")}}\n    openOn=\"click\"\n    options={[\n      {label: \"undo\", value: \"A0\"},\n      {label: \"redo\", value: \"B0\"},\n      {label: \"activate\", value: \"C0\"},\n    ]} />\n</SLDSButtonGroup>\n",
 	  ButtonGroups2: "<SLDSButtonGroup>\n  <SLDSButtonStateful\n    assistiveText=\"Show Chart\"\n    buttonVariant=\"icon\"\n    iconName=\"chart\"\n    iconVariant=\"border\"\n    variant=\"icon\" />\n\n  <SLDSButtonStateful\n    assistiveText=\"Filter\"\n    iconName=\"filter\"\n    iconVariant=\"border\"\n    variant=\"icon\" />\n\n    <SLDSMenuDropdown\n      assistiveText=\"Sort\"\n      checkmark={true}\n      iconName=\"sort\"\n      iconVariant=\"more\"\n      onSelect={function(item){console.log(item.label, \"selected\")}}\n      openOn=\"click\"\n      modal={true}\n      options={[\n        {label: \"Sort ascending\", value: \"A0\"},\n        {label: \"Sort descending\", value: \"B0\"},\n      ]}\n      value=\"A0\"\n      variant=\"icon\" />\n</SLDSButtonGroup>\n",
 	  Dropdowns1: "<SLDSMenuDropdown\n  align=\"right\"\n  label=\"Dropdown Click\"\n  onSelect={function(value){console.log(\"selected: \",value)}}\n  options={[\n    {label: \"A Option Option Super Super Long\", value: \"A0\"},\n    {label: \"B Option\", value: \"B0\"},\n    {label: \"C Option\", value: \"C0\"},\n    {label: \"D Option\", value: \"D0\"},\n    {label: \"E Option\", value: \"E0\"},\n    {label: \"A1 Option\", value: \"A1\"},\n    {label: \"B2 Option\", value: \"B1\"},\n    {label: \"C2 Option\", value: \"C1\"},\n    {label: \"D2 Option\", value: \"D1\"},\n    {label: \"E2 Option Super Super Long\", value: \"E1\"},\n  ]} />\n",
 	  Dropdowns2: "<SLDSMenuDropdown\n  assistiveText=\"More Options\"\n  buttonVariant=\"icon\"\n  checkmark={true}\n  iconName=\"down\"\n  iconVariant=\"border-filled\"\n  onMouseEnter={function(){console.log('Mouse enter')}}\n  onMouseLeave={function(){console.log('Mouse leave')}}\n  onSelect={function(value){console.log(\"selected: \",value)}}\n  openOn=\"hover\"\n  options={[\n    {label: \"A Option Option Super Super Long\", value: \"A0\"},\n    {label: \"B Option\", value: \"B0\"},\n    {label: \"C Option\", value: \"C0\"},\n    {label: \"D Option\", value: \"D0\"},\n    {label: \"E Option\", value: \"E0\"},\n    {label: \"A1 Option\", value: \"A1\"},\n    {label: \"B2 Option\", value: \"B1\"},\n    {label: \"C2 Option\", value: \"C1\"},\n    {label: \"D2 Option\", value: \"D1\"},\n    {label: \"E2 Option Super Super Long\", value: \"E1\"},\n  ]}\n  value=\"C0\" />\n",
