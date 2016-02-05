@@ -111,6 +111,8 @@ module.exports = React.createClass( {
         <div className='slds-picklist slds-picklist--fluid slds-shrink-none'>
           <SLDSSelectYear 
             displayedDate={this.props.displayedDate} 
+            relativeYearFrom={this.props.relativeYearFrom}
+            relativeYearTo={this.props.relativeYearTo}
             onChange={this.handleYearSelect} />
         </div>
       </div>

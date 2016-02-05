@@ -41,6 +41,10 @@ const propTypes = {
 
   monthLabels: React.PropTypes.array,
 
+  relativeYearFrom: React.PropTypes.number,
+
+  relativeYearTo: React.PropTypes.number
+
 };
 const defaultProps = {
   value: null,
@@ -57,7 +61,9 @@ const defaultProps = {
   weekDayLabels:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
   abbrWeekDayLabels:['S','M','T','W','T','F','S'],
   monthLabels:['January','February','March','April','May','June','July','August','September','October','November','December'],
-  todayLabel: 'Today'
+  todayLabel: 'Today',
+  relativeYearFrom:-5,
+  relativeYearTo:5
 };
 
 module.exports = React.createClass( {
@@ -119,6 +125,8 @@ module.exports = React.createClass( {
           weekDayLabels={this.props.weekDayLabels}
           monthLabels={this.props.monthLabels}
           todayLabel={this.props.todayLabel}
+          relativeYearFrom={this.props.relativeYearFrom}
+          relativeYearTo={this.props.relativeYearTo}
           selectedDate={this.state.value?this.state.value:new Date()} />
       </SLDSPopover>;
     }

@@ -1371,6 +1371,28 @@
                     "computed": false
                 }
             },
+            "relativeYearFrom": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "-5",
+                    "computed": false
+                }
+            },
+            "relativeYearTo": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "5",
+                    "computed": false
+                }
+            },
             "placeholder": {
                 "defaultValue": {
                     "value": "'Pick a Date'",

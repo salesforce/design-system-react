@@ -128,6 +128,8 @@ module.exports = React.createClass( {
             autoFocus={true}
             displayedDate={this.state.displayedDate}
             monthLabels={this.props.monthLabels}
+            relativeYearFrom={this.props.relativeYearFrom}
+            relativeYearTo={this.props.relativeYearTo}
             onCancel={this.handleCancel} />
           <Calendar 
             selectedDate={this.props.selectedDate}
