@@ -17,7 +17,7 @@ describe('SLDSModal: ', function(){
     Array.prototype.forEach.call(document.body.querySelectorAll('.ReactModalPortal'), c => document.body.removeChild(c))
   })
 
-  const defaultProps = {align: "top", isOpen: false}
+  const defaultProps = {align: "top", isOpen: false, children: <div>hello</div>}
 
   const renderModal = inst => {
     body = document.createElement('div');
@@ -112,4 +112,32 @@ describe('SLDSModal: ', function(){
       expect(footer.className).to.include('slds-modal__footer')
     })
   })
+
+  describe('Keyboard behavior', () => {
+    let cmp, closed, modal;
+
+    beforeEach(() => {
+      closed = false;
+      const feet = [
+        <button className="cancel">Cancel</button>,
+        <button className="save">Save</button>
+      ]
+      cmp = getModal({isOpen: true, directional: true, footer: feet, onRequestClose: () => closed = true})
+      modal = getModalNode(document.body)
+    })
+
+    it('first tab focuses close button', () => {
+      Simulate.keyDown(modal, {key: "Tab", keyCode: 9, which: 9})
+      expect(document.activeElement.className).to.include('slds-modal__close');
+    })
+
+    it('enter on close button works', () => {
+      //TODO: simulate enter on close button and modal is undefined
+    })
+
+    it('traps focus inside Modal', () => {
+      //TODO: simulate tabbing around inside of Modal
+    })
+  })
 })
+
