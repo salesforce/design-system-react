@@ -137,10 +137,12 @@ describe('SLDSMenuPicklist: ',  function(){
       btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
     })
 
-    it('<ul> has role menu', () => {
+    it('<ul> has role menu & aria-labelledby', () => {
       Simulate.click(btn, {})
       let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
+      let ulAria = getMenu(body).querySelector('ul').getAttribute('aria-labelledby');
       expect(ulRole).to.equal('menu');
+      expect(ulAria).to.equal('Picklist_Button');
     })
 
     it('<a> inside <li> has role menuitem', () => {
