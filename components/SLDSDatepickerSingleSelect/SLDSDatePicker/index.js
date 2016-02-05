@@ -107,7 +107,7 @@ module.exports = React.createClass( {
   },
 
   handleBlur () {
-//    this.setState({isFocused:false});
+    this.setState({isFocused:false});
   },
 
   render() {

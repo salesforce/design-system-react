@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 import React from 'react';
 import Week from './SLDSCalendarWeek/index';
-import {EventUtil, DateUtil} from '../../utils';
+import {EventUtil, DateUtil, KEYS} from '../../utils';
 
 module.exports = React.createClass({
 
@@ -37,7 +37,8 @@ module.exports = React.createClass({
   getInitialState () {
     return {
       highlightedDate: DateUtil.firstDayOfMonth(this.props.displayedDate),
-      hasFocus: false
+      hasFocus: false,
+      todayFocus: false,
     };
   },
 
@@ -105,16 +106,34 @@ module.exports = React.createClass({
   },
 
   handleFocus () {
-    this.setState({hasFocus:true});
+    if(!this.state.todayFocus){
+      this.setState({hasFocus:true});
+    }
   },
 
   handleBlur () {
     this.setState({hasFocus:false});
   },
 
-  handleTodayFocus (event) {
-    EventUtil.trap(event);
-    this.setState({hasFocus:false});
+  handleTodayFocus () {
+    this.state.todayFocus = true;
+  },
+
+  handleTodayBlur () {
+    this.state.todayFocus = false;
+  },
+
+  handleKeyDown(event) {
+    if(event.keyCode){
+      if(event.keyCode === KEYS.TAB){
+        if(!event.shiftKey){
+          EventUtil.trapEvent(event);
+          if(this.props.onCancel){
+            this.props.onCancel();
+          }
+        }
+      }
+    }
   },
 
   render () {
@@ -163,7 +182,9 @@ module.exports = React.createClass({
         role="gridcell">
         <a href="javascript:void(0)"
           onFocus={this.handleTodayFocus}
+          onBlur={this.handleTodayBlur}
           tabIndex="0"
+          onKeyDown={this.handleKeyDown}
           className="slds-show--inline-block slds-p-bottom--x-small"
           onClick={this.handleTodaySelect} >
             {this.props.todayLabel}
