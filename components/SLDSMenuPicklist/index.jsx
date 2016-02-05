@@ -69,13 +69,10 @@ class SLDSMenuPicklist extends React.Component {
       lastBlurredIndex: -1,
       lastBlurredTimeStamp: -1,
       selectedIndex: this.getIndexByValue(this.props.value),
-      triggerId: null,
+      /* triggerId is the id of the element that triggers the Menu to open.
+      * Need this for aria-labelledby on <ul> in Menu for accessibility. */
+      triggerId: this.props.label ? this.props.label.replace(/\s+/g, '') + '_Button': 'Picklist_Button',
     };
-  }
-
-  componentDidMount () {
-    const id = ReactDOM.findDOMNode(this.refs.triggerbutton).getAttribute("data-reactid");
-    this.setState({ triggerId: id, });
   }
 
   componentWillUnmount(){

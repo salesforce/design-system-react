@@ -89,6 +89,9 @@ class SLDSMenuDropdown extends React.Component {
       lastBlurredIndex: -1,
       lastBlurredTimeStamp: -1,
       selectedIndex: this.getIndexByValue(this.props.value),
+      /* triggerId is the id of the element that triggers the Menu to open.
+      * Need this for aria-labelledby on <ul> in Menu for accessibility. */
+      triggerId: this.props.label ? this.props.label.replace(/\s+/g, '') + '_Button': this.props.assistiveText.replace(/\s+/g, '') + '_Button',
     };
   }
 
@@ -268,6 +271,7 @@ class SLDSMenuDropdown extends React.Component {
             options={this.props.options}
             ref="list"
             selectedIndex={this.state.selectedIndex}
+            triggerId={this.state.triggerId}
             />;
   }
 
@@ -305,6 +309,7 @@ class SLDSMenuDropdown extends React.Component {
         disabled={this.props.disabled}
         iconName={this.props.iconName}
         iconVariant={this.props.iconVariant}
+        id={this.state.triggerId}
         label={this.props.label}
         onBlur={this.props.openOn === "hover" ? this.handleBlur.bind(this):null}
         onClick={this.props.openOn === "click" ? this.handleClick.bind(this):null}
