@@ -6,28 +6,13 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	const tooltipProperties0 = {
-		content: 'I should show myself on click.',
-		trigger: 'click',
-		position: 'right',
-		isOpen: false,
-		modal: false,
-		container: document.querySelector('body')
+		content: 'I should show myself on click.', trigger: 'click', position: 'right', isOpen: false, modal: false, container: document.querySelector('body')
 	};
 	const tooltipProperties1 = {
-		content: 'I should show up on hover.',
-		trigger: 'hover',
-		position: 'bottom',
-		isOpen: false,
-		modal: false,
-		container: document.querySelector('body')
+		content: 'I should show up on hover.', trigger: 'hover', position: 'bottom', isOpen: false, modal: false, container: document.querySelector('body')
 	};
 	const tooltipProperties2 = {
-		content: 'I will appear on focus.',
-		trigger: 'focus',
-		position: 'left',
-		isOpen: false,
-		modal: false,
-		container: document.querySelector('body')
+		content: 'I will appear on focus.', trigger: 'focus', position: 'left', isOpen: false, modal: false, container: document.querySelector('body')
 	};
 
 	const tooltip0 = new Tooltip($('#tooltip__tooltip--0'), tooltipProperties0);

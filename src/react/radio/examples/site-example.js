@@ -11,20 +11,11 @@ const RadioExample = React.createClass({
 		const name = 'rads';
 		const radios = [
 			{
-				text: 'Checked',
-				value: 'value9',
-				checked: true
-			},
-			{
-				text: 'Unchecked',
-				value: 'value10',
-				checked: false
-			},
-			{
-				text: 'Unchecked Disabled',
-				value: 'value11',
-				checked: false,
-				disabled: true
+				text: 'Checked', value: 'value9', checked: true
+			}, {
+				text: 'Unchecked', value: 'value10', checked: false
+			}, {
+				text: 'Unchecked Disabled', value: 'value11', checked: false, disabled: true
 			}
 		];
 

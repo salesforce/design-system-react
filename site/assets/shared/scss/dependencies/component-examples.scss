@@ -29,3 +29,13 @@
 		}
 	}
 }
+
+
+/* Property Table */
+.property-details .slds-table th, .slds .slds-table td { 
+	white-space: inherit; 
+}
+.property-details .site-text-heading--label th {
+  text-transform: uppercase;
+  font-size: 1.1em;
+}
