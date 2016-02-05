@@ -145,7 +145,8 @@ if (!jQueryCode) {
 				'componentDisplayName': componentDisplayName,
 				'code': example.code,
 				'html': example.html,
-				'codepenJSON': codepenJSON
+				'codepenJSON': codepenJSON,
+				'controlDetails': jqueryControlDetails[example.component]
 			});
 			jQueryCode['components'].push({
 				'facade': 'jquery',
@@ -158,7 +159,8 @@ if (!jQueryCode) {
 				'html': example.html,
 				'devHtml': example.devHtml,
 				'code': example.code,
-				'codepenJSON': codepenJSON
+				'codepenJSON': codepenJSON,
+				'controlDetails': jqueryControlDetails[example.component]
 			});
 		}
 	});
@@ -260,7 +262,8 @@ if (!reactCode) {
 				'componentDisplayName': componentDisplayName,
 				'code': example.code,
 				'html': example.html,
-				'codepenJSON': codepenJSON
+				'codepenJSON': codepenJSON,
+				'controlDetails': reactControlDetails[example.component]
 			});
 			reactCode['components'].push({
 				'facade': 'react',
@@ -272,7 +275,9 @@ if (!reactCode) {
 				'componentDisplayName': componentDisplayName,
 				'code': example.code,
 				'html': example.html,
-				'codepenJSON': codepenJSON
+				'codepenJSON': codepenJSON,
+				'controlDetails': reactControlDetails[example.component]
+
 			});
 		}
 	});
