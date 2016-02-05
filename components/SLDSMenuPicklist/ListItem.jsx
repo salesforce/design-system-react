@@ -25,7 +25,7 @@ const propTypes = {
   isSelected: React.PropTypes.bool,
   label: React.PropTypes.string,
   labelRenderer: React.PropTypes.func,
-  value: React.PropTypes.string,
+  value: React.PropTypes.any,
   onBlur: React.PropTypes.func,
   onClick: React.PropTypes.func,
   onFocus: React.PropTypes.func,

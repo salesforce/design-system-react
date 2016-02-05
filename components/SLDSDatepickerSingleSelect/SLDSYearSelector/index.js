@@ -19,8 +19,8 @@ module.exports = React.createClass( {
   getDefaultProps (){
     return {
       displayedDate:new Date(),
-      relativeFrom:0,
-      relativeTo:5,
+      relativeYearFrom:-5,
+      relativeYearTo:5,
       onChange (displayedDate){
         console.log('onChange should be defined: ',displayedDate);
       }
@@ -29,9 +29,10 @@ module.exports = React.createClass( {
 
   getOptions () {
     const now = new Date();
-    const fromYear = now.getFullYear()+this.props.relativeFrom;
-    const toYear = now.getFullYear()+this.props.relativeTo;
+    const fromYear = now.getFullYear()+this.props.relativeYearFrom;
+    const toYear = now.getFullYear()+this.props.relativeYearTo;
     let opts = [];
+
     for (let year = fromYear; year < toYear; year++){
       opts.push({label:year,value:year});
     }
@@ -53,10 +54,11 @@ module.exports = React.createClass( {
         <SLDSMenuPicklist
           options={this.getOptions()}
           placeholder='Year'
+          checkmark={true}
           value={this.props.displayedDate.getFullYear()}
           onSelect={this.handleSelect}
           className='slds-picklist--fluid slds-shrink-none'
-          initialFocus={false}/>
+          initialFocus={true}/>
       </div>
     );
   }

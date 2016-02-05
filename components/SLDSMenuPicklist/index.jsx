@@ -21,6 +21,10 @@ import ListItemLabel from "./ListItemLabel";
 const displayName = "SLDSMenuPicklist";
 const propTypes = {
   className: React.PropTypes.string,
+  /**
+   * If true, renders checkmark icon on the selected Menu Item.
+   */
+  checkmark: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   label: React.PropTypes.string,
   /**
@@ -49,6 +53,7 @@ const defaultProps = {
   modal: false,
   requiredField: false,
   placeholder: "Select an Option",
+  checkmark: true
 };
 
 /**
@@ -205,7 +210,7 @@ class SLDSMenuPicklist extends React.Component {
 
   getPopoverContent() {
     return <List
-            checkmark={true}
+            checkmark={this.props.checkmark}
             highlightedIndex={this.state.highlightedIndex}
             itemRenderer={this.getListItemRenderer()}
             onCancel={this.handleCancel.bind(this)}
