@@ -65,17 +65,28 @@ class SLDSNotification extends React.Component {
   constructor(props){
     super(props);
     this.state = {};
+    this.timeout = null;
   }
 
   componentDidMount() {
     if(this.props.duration) {
-      setTimeout(() => {
+      this.timeout = setTimeout(() => {
         this.onDismiss();
       }, this.props.duration)
     }
   }
 
   componentWillReceiveProps(nextProps) {
+    if (nextProps.duration) {
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+      }
+      if (nextProps.isOpen) {
+        this.timeout = setTimeout(() => {
+          this.onDismiss();
+        }, this.props.duration);
+      }
+    }
     if(nextProps.isOpen !== this.props.isOpen){
       this.setState({ returnFocusTo: document.activeElement });
     }
@@ -119,6 +130,11 @@ class SLDSNotification extends React.Component {
   }
 
   onDismiss(){
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+      this.timeout = null;
+    }
+
     if(this.props.onDismiss) this.props.onDismiss();
     if(this.state.returnFocusTo && this.state.returnFocusTo.focus){
       this.state.returnFocusTo.focus();
@@ -195,4 +211,3 @@ SLDSNotification.propTypes = propTypes;
 SLDSNotification.defaultProps = defaultProps;
 
 module.exports = SLDSNotification;
-
