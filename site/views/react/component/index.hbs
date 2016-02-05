@@ -1,285 +1,117 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<title>{{facadeDisplayName}}: {{thisComponent}} | Examples :: Facades :: Salesforce Lightning Design System</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="/assets/demo-site/images/favicon.png" sizes="16x16" rel="icon" type="image/png">
-		<link href="/assets/design-system/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
-		<link href="/build/facades-demo-styles.css" rel="stylesheet" type="text/css">
-	</head>
-	<body class="facades-demo | {{facade}} | slds">
-		<nav class="facades-demo-main-nav slds-page-header">
-			<div class="slds-grid">
-				<a href="/" class="slds-media slds-media--center">
-					<div class="slds-media__figure">
-						<img src="/assets/demo-site/images/salesforce-logo.svg" width="40">
-					</div>
-					<div class="slds-media__body">
-						<h4 class="slds-text-heading--label">
-							Design System Facades
-						</h4>
-					</div>
-				</a>
-			</div>
-		</nav>
+{{> react/header}}
 
-		<header class="facades-demo-masthead slds-page-header | slds-theme--alt-inverse">
-			<div class="slds-grid">
-				<div class="slds-col slds-align-middle" >
-					<div class="slds-media slds-media--center" style="height:5rem;">
-						<div class="slds-media__figure">
-							<svg version="1.1" id="Layer_2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-								 viewBox="-95 7 600 600" style="enable-background:new -95 7 600 600;" xml:space="preserve" width="70">
-							<style type="text/css">
-								.st0{fill:#00D8FF;}
-							</style>
-							<g>
-								<circle class="st0" cx="204.9" cy="306.4" r="50.2"/>
-								<path class="st0" d="M456.9,256.4c-17.4-14.5-41.9-27.4-71-37.4c-5.8-2-11.9-3.9-18.1-5.7c1-4.2,2-8.3,2.8-12.3
-									c13.9-67.7,4-120.4-25.8-137.6c-14.7-8.5-34.6-8.4-57.7,0.1c-21.2,7.8-44.7,22.6-67.9,42.8c-4.7,4.1-9.3,8.3-14,12.8
-									c-3.1-3-6.2-5.9-9.3-8.6C144.2,64.6,93.6,46.8,63.8,64.1C49.1,72.6,39.2,89.9,35,114.2c-3.8,22.3-2.7,50,3.2,80.2
-									c1.2,6.1,2.6,12.3,4.2,18.6c-7.2,2-14.1,4.2-20.8,6.5c-61,21.3-97.5,53.8-97.5,86.9c0,17.3,10.2,35.2,29.4,51.6
-									c18.1,15.5,43.4,29.1,73.4,39.3c4.9,1.7,10,3.3,15.2,4.8c-1.7,6.8-3.2,13.5-4.4,20.1C25.5,485.6,35.4,533.4,64.2,550
-									c7.6,4.4,16.6,6.6,26.8,6.6c9.9,0,20.8-2.1,32.6-6.2c22.4-7.9,46.9-23.1,70.7-43.9c3.9-3.4,7.8-7,11.7-10.8
-									c5.1,4.9,10.1,9.5,15.2,13.8c35.9,30.9,70.5,47.4,97.7,47.4c9.9,0,18.8-2.2,26.4-6.6c15-8.7,25.4-26.4,30-51.3
-									c4.3-23.4,3.4-52.2-2.8-83.2c-1-4.9-2.1-9.9-3.4-15c3.6-1.1,7-2.1,10.4-3.3c65.6-21.7,106.3-56.6,106.3-91.1
-									C485.8,289.5,475.8,272.2,456.9,256.4z M295.4,85.9c16-5.9,29.3-6.5,37.5-1.8c8.7,5,15.2,17.7,18.2,35.6
-									c3.5,20.8,2.2,47.3-3.8,76.4c-0.8,3.7-1.6,7.4-2.5,11.2c-23.4-5.4-48.7-9.4-75.1-11.9c-15.5-22-31.5-42-47.5-59.3
-									c4.3-4.1,8.6-8.1,12.9-11.9C256,106,276.9,92.7,295.4,85.9z M283.3,352.1c-8.8,15.3-17.8,29.8-26.9,43.5
-									c-16.7,1.2-33.9,1.8-51.5,1.8s-34.5-0.5-50.8-1.6c-9.6-14-18.8-28.6-27.5-43.6l0,0c-8.7-15-16.7-30.1-24-45.2
-									c7.3-15.2,15.3-30.4,23.9-45.3l0,0c8.7-15,17.8-29.5,27.2-43.3c16.8-1.3,34-2,51.2-2c17.4,0,34.5,0.7,51.2,1.9
-									c9.3,13.7,18.4,28.2,27.1,43.2c8.9,15.3,16.9,30.4,24.2,45C300.2,321.7,292.1,336.9,283.3,352.1z M320.4,334.3
-									c7.5,17.2,13.9,33.7,18.9,49.5c-16.3,3.7-33.9,6.7-52.4,8.9c5.8-9.2,11.6-18.7,17.2-28.6C309.8,354.2,315.3,344.2,320.4,334.3z
-									 M205.9,461.2c-11.4-12.3-22.7-25.9-33.8-40.4c10.7,0.4,21.6,0.6,32.8,0.6c11.5,0,22.8-0.3,34-0.8
-									C227.9,435.6,216.9,449.2,205.9,461.2z M123.5,393.2c-18.5-2.1-35.8-4.8-51.8-8.3c5-16,11.1-32.7,18.2-49.6
-									c5,9.7,10.3,19.4,15.9,29l0,0C111.5,374.2,117.4,383.8,123.5,393.2z M89.9,278.8c-7-16.5-12.9-32.8-17.8-48.6
-									c16-3.6,33.1-6.5,50.9-8.7c-5.9,9.2-11.6,18.6-17.2,28.3l0,0C100.2,259.4,94.9,269.1,89.9,278.8z M205.2,153.3
-									c11.1,12,22.1,25.4,33.1,39.9c-11-0.5-22.1-0.8-33.3-0.8c-11.1,0-22.2,0.3-33.1,0.8C182.7,178.8,193.9,165.5,205.2,153.3z
-									 M304,249.6c-5.6-9.6-11.3-19-17.1-28.1c17.9,2.3,35.1,5.3,51.2,9c-4.8,15.5-10.9,31.7-18,48.4C315.1,269.1,309.7,259.4,304,249.6z
-									 M61.7,189.7c-5.4-27.4-6.4-52.1-3.1-71.5c2.9-16.8,9-28.6,17.2-33.4c8.7-5,22.9-4.3,39.9,2.1c19.8,7.4,42,21.7,64.2,41.5
-									c2.8,2.5,5.6,5.1,8.4,7.8c-16.3,17.6-32.5,37.5-47.8,59.2c-26.4,2.4-51.7,6.4-75,11.7C64.1,201.1,62.8,195.4,61.7,189.7z
-									 M34.5,374.6c-27.1-9.2-49.7-21.3-65.5-34.8c-13.5-11.6-21-23.4-21-33.4c0-24.8,40.9-50.2,81.4-64.3c6.2-2.1,12.6-4.2,19.3-6.1
-									c7,22.9,16.3,46.8,27.4,70.9c-11.3,24.5-20.6,48.8-27.7,72C43.6,377.6,39,376.2,34.5,374.6z M76.2,529.2
-									c-21.5-12.4-23-60.5-15-102.6c1.1-6,2.5-12.3,4.1-18.6c22.9,5.1,48.3,8.8,75.7,11c15.5,21.9,31.8,41.9,48.2,59.6
-									c-3.6,3.4-7.1,6.7-10.7,9.8C131.2,529.7,92.3,538.5,76.2,529.2z M348.9,420.5c12.2,61.6,0.4,99.7-15.7,109
-									c-21.5,12.4-63.9-10.2-96.4-38.2c-4.7-4-9.4-8.3-14.1-12.9c15.8-17.2,31.6-37.3,47.1-59.8c27.2-2.4,52.9-6.4,76-11.7
-									C347,411.5,348,416,348.9,420.5z M372,374.8c-3.1,1-6.2,2-9.4,2.9c-7.1-22.4-16.6-46.3-28.5-71.2c11.2-24.2,20.4-47.8,27.3-70.1
-									c5.7,1.7,11.3,3.4,16.7,5.3c26.4,9.1,48.3,20.5,63.4,33.2c13.1,10.9,20.3,22.1,20.3,31.6C461.8,325,433.7,354.3,372,374.8z"/>
-							</g>
-							</svg>
-						</div>
-						<div class="slds-media__body">
-							<div class="slds-grid">
-								<h1 class="slds-text-heading--medium slds-m-right--small slds-truncate slds-align-middle">{{facadeDisplayName}} Components</h1>
+<section class="slds-grid">
+	{{> left-nav}}
+
+	<div class="slds-col--padded | slds-size--9-of-12 slds-medium-size--9-of-12 slds-large-size--9-of-12">
+		<div id="component-list-wrapper">
+			<div id="component-list" class="slds-grid slds-grid--vertical">
+				{{#each thisComponentData}}
+				<!-- {{component}} -->
+				<div class="slds-col | slds-m-top--large | component-wrapper" id="{{component}}">
+					<div class="slds-grid slds-grid--vertical | component">
+						<div class="slds-col | header">
+							<div class="slds-section-title | slds-m-top--medium">
+								<div class="slds-grid">
+									<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
+										<span>{{componentDisplayName}}</span>
+										<span class="slds-badge | slds-theme--shade">alpha: done</span>
+									</h2>
+									<a
+										class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small"
+										href="/docs/src/{{facade}}/{{component}}/{{component}}.html"
+										data-component-display-name="{{componentDisplayName}}"
+										data-component-name="{{component}}"
+									>Docs</a>
+									<a
+										class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit"
+										href="javascript:void(0);"
+										data-component-display-name="{{componentDisplayName}}"
+										data-component-name="{{component}}"
+									>Open in CodePen</a>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</header>
 
-		<section class="slds-grid">
-			<aside id="component-nav" class="slds-grow slds-size--3-of-12 slds-medium-size--1-of-6 slds-large-size--3-of-12 slds-col-rule--right slds-p-vertical--large">
-				<nav class="slds-scrollable--y">
-					<p class="slds-text-heading--small slds-p-vertical--small">
-						<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="/">
-							Home
-						</a>
-					</p>
-					<p class="slds-text-heading--small slds-p-vertical--small">
-						<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="/{{otherFacade}}">
-							{{otherFacadeDisplayName}} Components
-						</a>
-					</p>
-					<p class="slds-text-heading--small slds-p-vertical--small">
-						<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="/{{facade}}">
-							{{facadeDisplayName}} Components
-						</a>
-					</p>
-					<ul class="slds-p-bottom--small">
-						{{#each components}}
-						<li>
-							<a id="component-nav__{{component}}" class="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small" href="/{{facade}}/{{ component}}">{{ componentDisplayName }}</a>
-						</li>
-						{{/each}}
-					</ul>
-				</nav>
-			</aside>
+						<form id="codepen-form-{{component}}" class="codepen-form" action="http://codepen.io/pen/define" method="POST" target="_blank">
+							<input type="hidden" name="data" value="{{codepenJSON}}">
+						</form>
 
-			<div class="slds-col--padded | slds-size--9-of-12 slds-medium-size--9-of-12 slds-large-size--9-of-12">
-				<div id="component-list-wrapper">
-					<div id="component-list" class="slds-grid slds-grid--vertical">
-						{{#each thisComponentData}}
-						<!-- {{component}} -->
-						<div class="slds-col | slds-m-top--large | component-wrapper" id="{{component}}">
-							<div class="slds-grid slds-grid--vertical | component">
-								<div class="slds-col | header">
-									<div class="slds-section-title | slds-m-top--medium">
-										<div class="slds-grid">
-											<h2 class="slds-col | slds-has-flexi-truncate | slds-text-heading--medium">
-												<span>{{componentDisplayName}}</span>
-												<span class="slds-badge | slds-theme--shade">alpha: done</span>
-											</h2>
-											<a
-												class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small"
-												href="/docs/src/{{facade}}/{{component}}/{{component}}.html"
-												data-component-display-name="{{componentDisplayName}}"
-												data-component-name="{{component}}"
-											>Docs</a>
-											<a
-												class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit"
-												href="javascript:void(0);"
-												data-component-display-name="{{componentDisplayName}}"
-												data-component-name="{{component}}"
-											>Open in CodePen</a>
+						<div class="slds-col | body">
+							<div class="slds-grid | slds-wrap">
+								<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type example-type--{{facade}}">
+									{{#if controlDetails.description}}
+									<div class="copy-text">
+										<div class="slds-p-vertical--small" style="max-width: 800px;">
+											{{{controlDetails.description}}}
 										</div>
 									</div>
-								</div>
+									{{/if}}
+									<div class="slds-m-bottom--medium">
+										<div id="{{component}}-{{facade}}-control-launcher"></div>
+									</div>
+									<div class="slds-grid slds-grid--vertical | example-wrapper">
+										<div id="{{component}}-{{facade}}-control" class="slds-col | example"></div>
+										<div id="{{component}}-{{facade}}-demo-controls" class="slds-col | demo-controls"></div>
+										<div id="{{component}}-{{facade}}-demo-code-showcase" class="slds-col | facades-demo-code-showcase">
+											<aside class="slds-tabs--default">
+												<!-- <ul class="slds-tabs--default__nav" role="tablist">
+													<li class="slds-tabs--default__item | slds-text-heading--label | slds-active" title="Example code for {{componentDisplayName}}" role="presentation">
+														<a class="slds-tabs--default__link" href="#{{component}}-{{facade}}-demo-code-showcase__tab-content--code__void" role="tab" tabindex="0" aria-selected="true" aria-controls="{{component}}-{{facade}}-demo-code-showcase__tab-content--code" id="{{component}}-{{facade}}-demo-code-showcase__tab-item--code">Example Code</a>
+													</li>
+												</ul> -->
+												<section id="{{component}}-{{facade}}-demo-code-showcase__tab-content--code" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="{{component}}-{{facade}}-demo-code-showcase__tab-item--code">
+													<h3 class="slds-text-heading--small">Example Code</h1>
 
-								<form id="codepen-form-{{component}}" class="codepen-form" action="http://codepen.io/pen/define" method="POST" target="_blank">
-									<input type="hidden" name="data" value="{{codepenJSON}}">
-								</form>
-
-								<div class="slds-col | body">
-									<div class="slds-grid | slds-wrap">
-										<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-1 slds-large-size--1-of-2 | example-type example-type--{{facade}}">
-											{{#if controlDetails.description}}
-											<div class="copy-text">
-												<div class="slds-p-vertical--small" style="max-width: 800px;">
-													{{{controlDetails.description}}}
-												</div>
-											</div>
-											{{/if}}
-											<div class="slds-m-bottom--medium">
-												<div id="{{component}}-{{facade}}-control-launcher"></div>
-											</div>
-											<div class="slds-grid slds-grid--vertical | example-wrapper">
-												<div id="{{component}}-{{facade}}-control" class="slds-col | example"></div>
-												<div id="{{component}}-{{facade}}-demo-controls" class="slds-col | demo-controls"></div>
-												<div id="{{component}}-{{facade}}-demo-code-showcase" class="slds-col | facades-demo-code-showcase">
-													<aside class="slds-tabs--default">
-														<!-- <ul class="slds-tabs--default__nav" role="tablist">
-															<li class="slds-tabs--default__item | slds-text-heading--label | slds-active" title="Example code for {{componentDisplayName}}" role="presentation">
-																<a class="slds-tabs--default__link" href="#{{component}}-{{facade}}-demo-code-showcase__tab-content--code__void" role="tab" tabindex="0" aria-selected="true" aria-controls="{{component}}-{{facade}}-demo-code-showcase__tab-content--code" id="{{component}}-{{facade}}-demo-code-showcase__tab-item--code">Example Code</a>
-															</li>
-														</ul> -->
-														<section id="{{component}}-{{facade}}-demo-code-showcase__tab-content--code" class="slds-tabs--default__content slds-show" role="tabpanel" aria-labelledby="{{component}}-{{facade}}-demo-code-showcase__tab-item--code">
-															<h3 class="slds-text-heading--small">Example Code</h1>
-
-															<pre style="max-height: 400px; min-height: 400px; height: 400px;" class="language-jsx"><code>{{code}}</code></pre>
-														</section>
-													</aside>
-													<textarea class="demo-js | slds-hide">{{code}}</textarea>
-													<textarea class="demo-html | slds-hide">{{{html}}}</textarea>
-												</div>
-											</div>
+													<pre style="max-height: 400px; min-height: 400px; height: 400px;" class="language-jsx"><code>{{code}}</code></pre>
+												</section>
+											</aside>
+											<textarea class="demo-js | slds-hide">{{code}}</textarea>
+											<textarea class="demo-html | slds-hide">{{{html}}}</textarea>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						{{#if controlDetails.props}}
-							<div class="slds-scrollable--x property-details">
-								<h3 class="slds-text-heading--small slds-p-vertical--small">Property Details</h1>
-								<table class="slds-table slds-table--bordered slds-max-medium-table--stacked slds-no-row-hover">
-									<thead>
-										<tr class="site-text-heading--label">
-											<th>NAME</th>
-											<th>TYPE</th>
-											<th class="site-text--center">REQUIRED</th>
-											<th>DEFAULT</th>
-											<th>DESCRIPTION</th>
-										</tr>
-									</thead>
-									<tbody>
-										{{#each controlDetails.props}}
-										<tr>
-											<td class="slds-align-top">{{@key}}</td>
-											<td class="mw-col-m slds-cell-wrap slds-align-top">{{{this.type.name}}}</td>
-											<td class="site-text--center slds-cell-wrap slds-align-top">{{this.required}}</td>
-											<td class="mw-col-m slds-cell-wrap slds-align-top">
-												{{#if this.defaultValue}}
-													{{#each this.defaultValue}}
-														{{this.value}}
-													{{/each}}
-												{{/if}}
-											</td>
-											<td class="mw-col-l slds-size--1-of-2 slds-cell-wrap slds-align-top">
-												{{{this.description}}}
-											</td>
-										</tr>
-										{{/each}}
-									</tbody>
-								</table>
-							</div>
-							{{/if}}
-						{{/each}}
 					</div>
 				</div>
+				{{#if controlDetails.props}}
+					<div class="slds-scrollable--x property-details">
+						<h3 class="slds-text-heading--small slds-p-vertical--small">Property Details</h1>
+						<table class="slds-table slds-table--bordered slds-max-medium-table--stacked slds-no-row-hover">
+							<thead>
+								<tr class="site-text-heading--label">
+									<th>NAME</th>
+									<th>TYPE</th>
+									<th class="site-text--center">REQUIRED</th>
+									<th>DEFAULT</th>
+									<th>DESCRIPTION</th>
+								</tr>
+							</thead>
+							<tbody>
+								{{#each controlDetails.props}}
+								<tr>
+									<td class="slds-align-top">{{@key}}</td>
+									<td class="mw-col-m slds-cell-wrap slds-align-top">{{{this.type.name}}}</td>
+									<td class="site-text--center slds-cell-wrap slds-align-top">{{this.required}}</td>
+									<td class="mw-col-m slds-cell-wrap slds-align-top">
+										{{#if this.defaultValue}}
+											{{#each this.defaultValue}}
+												{{this.value}}
+											{{/each}}
+										{{/if}}
+									</td>
+									<td class="mw-col-l slds-size--1-of-2 slds-cell-wrap slds-align-top">
+										{{{this.description}}}
+									</td>
+								</tr>
+								{{/each}}
+							</tbody>
+						</table>
+					</div>
+					{{/if}}
+				{{/each}}
 			</div>
-		</section>
-
-
-		<script src="/vendor/prism/prism.js"></script>
-		<script src="/vendor/prism/components/prism-jsx.js"></script>
-		<script src="/assets/facades/scripts/jquery.min.js"></script>
-		<script src="/build/demo-site-examples-{{facade}}.bundle.js"></script>
-		<script src="/assets/demo-site/scripts/demo-site.js"></script>
-		<script type="text/javascript">
-			$(function () {
-				$('[role="tablist"] [aria-controls]').each(function() {
-					$(this).click(function(event) {
-						var $thisTablist = $(this).parents('[role="tablist"]');
-						var $thisTabItem = $(this).parent('[role="presentation"]');
-						var $thisTablistWrapper = $thisTablist.parent();
-						var $tabItems = $thisTablist.find('[role="presentation"]');
-						var $contentItems = $thisTablistWrapper.find('[role="tabpanel"]');
-						var thisControlsId = $(this).attr('aria-controls');
-						$tabItems.removeClass('slds-active');
-						$thisTabItem.addClass('slds-active');
-						$contentItems.removeClass('slds-show').addClass('slds-hide');
-						$('#' + thisControlsId ).removeClass('slds-hide').addClass('slds-show');
-					});
-				});
-			});
-		</script>
-		<script>
-			$(function () {
-				var $window = $(window);
-				var $componentNav = $('#component-nav > nav');
-				var componentNavParentWidth = $('#component-nav').width();
-				var pos = $window.scrollTop();
-				$componentNav.width(componentNavParentWidth);
-				$('#component-nav__{{thisComponent}}').addClass('active');
-				$('a', $componentNav).on('click', function(e){
-					$('a', $componentNav).removeClass('active');
-					$(e.currentTarget).addClass('active');
-				});
-
-				$window.scroll(function (ev) {
-					pos = $window.scrollTop();
-					componentNavParentWidth = $('#component-nav').width();
-					$componentNav.width(componentNavParentWidth);
-					if (pos >= 0) {
-						$componentNav.css({
-							'top': (205 - (pos > 205 ? 205 : pos))
-						})
-					}
-				});
-
-				$window.resize(function (ev) {
-					pos = $window.scrollTop();
-					componentNavParentWidth = $('#component-nav').width();
-					$componentNav.width(componentNavParentWidth);
-					if (pos >= 0) {
-						$componentNav.css({
-							'top': (205 - (pos > 205 ? 205 : pos))
-						})
-					}
-				});
-			});
-		</script>
-	</body>
-</html>
+		</div>
+	</div>
+</section>

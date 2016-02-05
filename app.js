@@ -1,6 +1,7 @@
 var express = require('express');
 var compression = require('compression');
 var expressHandlebars = require('express-handlebars');
+var helpers = require('./site/helpers/hbs-helpers');
 var port = process.env.PORT || 3000;
 var jQueryExamples = require('./site/examples/demo-components')('jquery');
 var reactExamples = require('./site/examples/demo-components')('react');
@@ -11,8 +12,10 @@ var jqueryControlDetails = require('./site/examples/jquery-control-details');
 var app = express();
 // Setup handlebars
 app.engine('.hbs', expressHandlebars({
-	defaultLayout: false,
+	defaultLayout: 'main',
+	layoutsDir: './site/views/layouts/',
 	extname: '.hbs',
+	helpers: helpers,
 	partialsDir: 'site/views/'
 }));
 
