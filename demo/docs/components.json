@@ -830,6 +830,17 @@
                 "required": false,
                 "description": ""
             },
+            "checkmark": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, renders checkmark icon on the selected Menu Item.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
             "disabled": {
                 "type": {
                     "name": "bool"
@@ -1284,10 +1295,11 @@
         "props": {
             "value": {
                 "type": {
-                    "name": "any"
+                    "name": "instanceOf",
+                    "value": "Date"
                 },
                 "required": false,
-                "description": "Date defined either as Date object or a string: .",
+                "description": "Date.",
                 "defaultValue": {
                     "value": "null",
                     "computed": false
@@ -1345,6 +1357,17 @@
                 "description": "",
                 "defaultValue": {
                     "value": "['S','M','T','W','T','F','S']",
+                    "computed": false
+                }
+            },
+            "monthLabels": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "['January','February','March','April','May','June','July','August','September','October','November','December']",
                     "computed": false
                 }
             },
