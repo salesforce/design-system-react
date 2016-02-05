@@ -230,7 +230,11 @@ class SLDSMenuPicklist extends React.Component {
       !this.props.disabled && this.state.isOpen?
         <div
           className="slds-dropdown slds-dropdown--left slds-dropdown--menu"
-          style={{maxHeight: "20em"}}>
+          style={{
+            maxHeight: "20em",
+            overflowX: "hidden",
+            minWidth: "100%"
+          }}>
           {this.getPopoverContent()}
         </div>:null
     );

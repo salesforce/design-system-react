@@ -21,9 +21,9 @@ import {KEYS,EventUtil} from '../utils';
 const displayName = 'SLDSDatepickerSingleSelect';
 const propTypes = {
   /**
-   * Date defined either as Date object or a string: .
+   * Date.
    */
-  value: React.PropTypes.any,
+  value: React.PropTypes.instanceOf(Date),
   /**
    * Date formatting function .
    */
