@@ -130,5 +130,67 @@ describe('SLDSMenuPicklist: ',  function(){
     })
   })
 
+  describe('accessible markup', () => {
+    beforeEach(() => {
+      selected = false;
+      cmp = getPicklist({onSelect: i => selected = i })
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+    })
+
+    it('<ul> has role menu', () => {
+      Simulate.click(btn, {})
+      let ulRole = getMenu(body).querySelector('ul').getAttribute('role');
+      expect(ulRole).to.equal('menu');
+    })
+
+    it('<a> inside <li> has role menuitem', () => {
+      Simulate.click(btn, {})
+      const items = getMenu(body).querySelectorAll('.slds-dropdown__item a')
+      let anchorRole = items[1].getAttribute('role');
+      let match = (anchorRole === 'menuitem' || anchorRole === 'menuitemradio' || anchorRole === 'menuitemcheckbox');
+      expect(match).to.be.true;
+    })
+  })
+
+  describe('Keyboard behavior', () => {
+    let cmp, btn, selected;
+
+    beforeEach(() => {
+      selected = false;
+      cmp = getPicklist({onSelect: i => selected = i })
+      btn = findRenderedDOMComponentWithClass(cmp, 'slds-button')
+    })
+
+    it('opens menu with enter', () => {
+      expect(getMenu(body)).to.equal(null)
+      Simulate.keyDown(btn, {key: "Enter", keyCode: 13, which: 13})
+      expect(getMenu(body)).to.not.equal(null)
+    })
+
+    it('opens menu with down arrow key', () => {
+      expect(getMenu(body)).to.equal(null)
+      Simulate.keyDown(btn, {key: "Down", keyCode: 40, which: 40})
+      expect(getMenu(body)).to.not.equal(null)
+    })
+
+    it('selects an item with keyboard', () => {
+      Simulate.click(btn, {})
+      expect(selected).to.be.false
+      let menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item')
+      Simulate.keyDown(menuItems[1].querySelector('a'), {key: "Enter", keyCode: 13, which: 13})
+      expect(selected.value).to.equal('B0')
+    })
+
+    it('closes Menu on esc', () => {
+      expect(getMenu(body)).to.equal(null)
+      Simulate.click(btn, {})
+      expect(getMenu(body)).to.not.equal(null)
+      let menuItems = getMenu(body).querySelectorAll('.slds-dropdown__item')
+      Simulate.keyDown(menuItems[1].querySelector('a'), {key: "Esc", keyCode: 27, which: 27})
+      expect(getMenu(body)).to.equal(null)
+    })
+
+  })
+
 
 });
