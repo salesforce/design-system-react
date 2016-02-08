@@ -31536,7 +31536,7 @@
 	  isHighlighted: _react2.default.PropTypes.bool,
 	  isSelected: _react2.default.PropTypes.bool,
 	  label: _react2.default.PropTypes.string,
-	  value: _react2.default.PropTypes.string
+	  value: _react2.default.PropTypes.any
 	};
 	var defaultProps = {
 	  data: {},
@@ -31641,6 +31641,10 @@
 	var displayName = "SLDSMenuPicklist";
 	var propTypes = {
 	  className: _react2.default.PropTypes.string,
+	  /**
+	   * If true, renders checkmark icon on the selected Menu Item.
+	   */
+	  checkmark: _react2.default.PropTypes.bool,
 	  disabled: _react2.default.PropTypes.bool,
 	  label: _react2.default.PropTypes.string,
 	  /**
@@ -31666,9 +31670,10 @@
 	};
 	var defaultProps = {
 	  disabled: false,
-	  modal: false,
+	  modal: true,
 	  requiredField: false,
-	  placeholder: "Select an Option"
+	  placeholder: "Select an Option",
+	  checkmark: true
 	};
 
 	/**
@@ -31839,7 +31844,7 @@
 	    key: "getPopoverContent",
 	    value: function getPopoverContent() {
 	      return _react2.default.createElement(_List2.default, {
-	        checkmark: true,
+	        checkmark: this.props.checkmark,
 	        highlightedIndex: this.state.highlightedIndex,
 	        itemRenderer: this.getListItemRenderer(),
 	        onCancel: this.handleCancel.bind(this),
@@ -31860,7 +31865,11 @@
 	        "div",
 	        {
 	          className: "slds-dropdown slds-dropdown--left slds-dropdown--menu",
-	          style: { maxHeight: "20em" } },
+	          style: {
+	            maxHeight: "20em",
+	            overflowX: "hidden",
+	            minWidth: "100%"
+	          } },
 	        this.getPopoverContent()
 	      ) : null;
 	    }
@@ -33034,7 +33043,7 @@
 	  isSelected: _react2.default.PropTypes.bool,
 	  label: _react2.default.PropTypes.string,
 	  labelRenderer: _react2.default.PropTypes.func,
-	  value: _react2.default.PropTypes.string,
+	  value: _react2.default.PropTypes.any,
 	  onBlur: _react2.default.PropTypes.func,
 	  onClick: _react2.default.PropTypes.func,
 	  onFocus: _react2.default.PropTypes.func,
@@ -34738,6 +34747,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SLDSNotification).call(this, props));
 
 	    _this.state = {};
+	    _this.timeout = null;
 	    return _this;
 	  }
 
@@ -34747,7 +34757,7 @@
 	      var _this2 = this;
 
 	      if (this.props.duration) {
-	        setTimeout(function () {
+	        this.timeout = setTimeout(function () {
 	          _this2.onDismiss();
 	        }, this.props.duration);
 	      }
@@ -34755,6 +34765,18 @@
 	  }, {
 	    key: "componentWillReceiveProps",
 	    value: function componentWillReceiveProps(nextProps) {
+	      var _this3 = this;
+
+	      if (nextProps.duration) {
+	        if (this.timeout) {
+	          clearTimeout(this.timeout);
+	        }
+	        if (nextProps.isOpen) {
+	          this.timeout = setTimeout(function () {
+	            _this3.onDismiss();
+	          }, this.props.duration);
+	        }
+	      }
 	      if (nextProps.isOpen !== this.props.isOpen) {
 	        this.setState({ returnFocusTo: document.activeElement });
 	      }
@@ -34801,6 +34823,11 @@
 	  }, {
 	    key: "onDismiss",
 	    value: function onDismiss() {
+	      if (this.timeout) {
+	        clearTimeout(this.timeout);
+	        this.timeout = null;
+	      }
+
 	      if (this.props.onDismiss) this.props.onDismiss();
 	      if (this.state.returnFocusTo && this.state.returnFocusTo.focus) {
 	        this.state.returnFocusTo.focus();
@@ -35391,11 +35418,11 @@
 	var displayName = 'SLDSDatepickerSingleSelect';
 	var propTypes = {
 	  /**
-	   * Date defined either as Date object or a string: .
+	   * Date
 	   */
-	  value: _react2.default.PropTypes.any,
+	  value: _react2.default.PropTypes.instanceOf(Date),
 	  /**
-	   * Date formatting function .
+	   * Date formatting function
 	   */
 	  formatter: _react2.default.PropTypes.func,
 	  /**
@@ -35407,7 +35434,13 @@
 
 	  weekDayLabels: _react2.default.PropTypes.array,
 
-	  abbrWeekDayLabels: _react2.default.PropTypes.array
+	  abbrWeekDayLabels: _react2.default.PropTypes.array,
+
+	  monthLabels: _react2.default.PropTypes.array,
+
+	  relativeYearFrom: _react2.default.PropTypes.number,
+
+	  relativeYearTo: _react2.default.PropTypes.number
 
 	};
 	var defaultProps = {
@@ -35425,7 +35458,10 @@
 
 	  weekDayLabels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
 	  abbrWeekDayLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-	  todayLabel: 'Today'
+	  monthLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	  todayLabel: 'Today',
+	  relativeYearFrom: -5,
+	  relativeYearTo: 5
 	};
 
 	module.exports = _react2.default.createClass({
@@ -35480,7 +35516,10 @@
 	          onClose: this.handleClose,
 	          abbrWeekDayLabels: this.props.abbrWeekDayLabels,
 	          weekDayLabels: this.props.weekDayLabels,
+	          monthLabels: this.props.monthLabels,
 	          todayLabel: this.props.todayLabel,
+	          relativeYearFrom: this.props.relativeYearFrom,
+	          relativeYearTo: this.props.relativeYearTo,
 	          selectedDate: this.state.value ? this.state.value : new Date() })
 	      );
 	    }
@@ -35649,7 +35688,7 @@
 	    this.setState({ isFocused: true });
 	  },
 	  handleBlur: function handleBlur() {
-	    //    this.setState({isFocused:false});
+	    this.setState({ isFocused: false });
 	  },
 	  render: function render() {
 
@@ -35671,6 +35710,9 @@
 	          selectedDate: this.props.selectedDate,
 	          autoFocus: true,
 	          displayedDate: this.state.displayedDate,
+	          monthLabels: this.props.monthLabels,
+	          relativeYearFrom: this.props.relativeYearFrom,
+	          relativeYearTo: this.props.relativeYearTo,
 	          onCancel: this.handleCancel }),
 	        _react2.default.createElement(_index2.default, {
 	          selectedDate: this.props.selectedDate,
@@ -35766,7 +35808,8 @@
 	  getInitialState: function getInitialState() {
 	    return {
 	      highlightedDate: _utils.DateUtil.firstDayOfMonth(this.props.displayedDate),
-	      hasFocus: false
+	      hasFocus: false,
+	      todayFocus: false
 	    };
 	  },
 	  handleSelectDate: function handleSelectDate(day) {
@@ -35821,14 +35864,30 @@
 	    this.handleSelectDate(new Date());
 	  },
 	  handleFocus: function handleFocus() {
-	    this.setState({ hasFocus: true });
+	    if (!this.state.todayFocus) {
+	      this.setState({ hasFocus: true });
+	    }
 	  },
 	  handleBlur: function handleBlur() {
 	    this.setState({ hasFocus: false });
 	  },
-	  handleTodayFocus: function handleTodayFocus(event) {
-	    _utils.EventUtil.trap(event);
-	    this.setState({ hasFocus: false });
+	  handleTodayFocus: function handleTodayFocus() {
+	    this.state.todayFocus = true;
+	  },
+	  handleTodayBlur: function handleTodayBlur() {
+	    this.state.todayFocus = false;
+	  },
+	  handleKeyDown: function handleKeyDown(event) {
+	    if (event.keyCode) {
+	      if (event.keyCode === _utils.KEYS.TAB) {
+	        if (!event.shiftKey) {
+	          _utils.EventUtil.trapEvent(event);
+	          if (this.props.onCancel) {
+	            this.props.onCancel();
+	          }
+	        }
+	      }
+	    }
 	  },
 	  render: function render() {
 	    return _react2.default.createElement(
@@ -35933,7 +35992,9 @@
 	          'a',
 	          { href: 'javascript:void(0)',
 	            onFocus: this.handleTodayFocus,
+	            onBlur: this.handleTodayBlur,
 	            tabIndex: '0',
+	            onKeyDown: this.handleKeyDown,
 	            className: 'slds-show--inline-block slds-p-bottom--x-small',
 	            onClick: this.handleTodaySelect },
 	          this.props.todayLabel
@@ -36397,6 +36458,8 @@
 	        { className: 'slds-picklist slds-picklist--fluid slds-shrink-none' },
 	        _react2.default.createElement(_index2.default, {
 	          displayedDate: this.props.displayedDate,
+	          relativeYearFrom: this.props.relativeYearFrom,
+	          relativeYearTo: this.props.relativeYearTo,
 	          onChange: this.handleYearSelect })
 	      )
 	    );
@@ -36435,8 +36498,8 @@
 	  getDefaultProps: function getDefaultProps() {
 	    return {
 	      displayedDate: new Date(),
-	      relativeFrom: 0,
-	      relativeTo: 5,
+	      relativeYearFrom: -5,
+	      relativeYearTo: 5,
 	      onChange: function onChange(displayedDate) {
 	        console.log('onChange should be defined: ', displayedDate);
 	      }
@@ -36444,9 +36507,10 @@
 	  },
 	  getOptions: function getOptions() {
 	    var now = new Date();
-	    var fromYear = now.getFullYear() + this.props.relativeFrom;
-	    var toYear = now.getFullYear() + this.props.relativeTo;
+	    var fromYear = now.getFullYear() + this.props.relativeYearFrom;
+	    var toYear = now.getFullYear() + this.props.relativeYearTo;
 	    var opts = [];
+
 	    for (var year = fromYear; year < toYear; year++) {
 	      opts.push({ label: year, value: year });
 	    }
@@ -36466,10 +36530,11 @@
 	      _react2.default.createElement(_SLDSMenuPicklist2.default, {
 	        options: this.getOptions(),
 	        placeholder: 'Year',
+	        checkmark: false,
 	        value: this.props.displayedDate.getFullYear(),
 	        onSelect: this.handleSelect,
 	        className: 'slds-picklist--fluid slds-shrink-none',
-	        initialFocus: false })
+	        initialFocus: true })
 	    );
 	  }
 	});
@@ -49545,7 +49610,7 @@
 	          _react2.default.createElement(
 	            'td',
 	            { className: 'mw-col-m' },
-	            defaultProp
+	            _react2.default.createElement('span', { dangerouslySetInnerHTML: this.getMarkup(defaultProp) })
 	          ),
 	          _react2.default.createElement(
 	            'td',
@@ -50467,6 +50532,17 @@
 					"required": false,
 					"description": ""
 				},
+				"checkmark": {
+					"type": {
+						"name": "bool"
+					},
+					"required": false,
+					"description": "If true, renders checkmark icon on the selected Menu Item.",
+					"defaultValue": {
+						"value": "true",
+						"computed": false
+					}
+				},
 				"disabled": {
 					"type": {
 						"name": "bool"
@@ -50919,40 +50995,109 @@
 		"SLDSDatepickerSingleSelect": {
 			"description": "",
 			"props": {
-				"date": {
+				"value": {
 					"type": {
-						"name": "any"
+						"name": "instanceOf",
+						"value": "Date"
 					},
 					"required": false,
-					"description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nIf the button has an icon and a visible label, you can omit the <code>assistiveText</code> prop and use the <code>label</code> prop."
-				},
-				"string": {
+					"description": "Date",
 					"defaultValue": {
-						"value": "''",
+						"value": "null",
 						"computed": false
 					}
 				},
-				"value": {
+				"formatter": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "Date formatting function",
 					"defaultValue": {
-						"value": "new Date()",
+						"value": "function(date) {\n  return (date.getMonth()+1) +\n    '/'+date.getDate() +\n    '/'+date.getFullYear();\n}",
+						"computed": false
+					}
+				},
+				"parser": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "Parsing date string into Date",
+					"defaultValue": {
+						"value": "function(str) {\n  return new Date(str);\n}",
+						"computed": false
+					}
+				},
+				"todayLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "'Today'",
+						"computed": false
+					}
+				},
+				"weekDayLabels": {
+					"type": {
+						"name": "array"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "[\n  'Sunday','Monday','Tuesday',\n  'Wednesday','Thursday','Friday',\n  'Saturday'\n]",
+						"computed": false
+					}
+				},
+				"abbrWeekDayLabels": {
+					"type": {
+						"name": "array"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "['S','M','T','W','T','F','S']",
+						"computed": false
+					}
+				},
+				"monthLabels": {
+					"type": {
+						"name": "array"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "[\n  'January','February','March',\n  'April','May','June','July',\n  'August','September','October',\n  'November','December'\n]",
+						"computed": false
+					}
+				},
+				"relativeYearFrom": {
+					"type": {
+						"name": "number"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "-5",
+						"computed": false
+					}
+				},
+				"relativeYearTo": {
+					"type": {
+						"name": "number"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "5",
 						"computed": false
 					}
 				},
 				"placeholder": {
 					"defaultValue": {
 						"value": "'Pick a Date'",
-						"computed": false
-					}
-				},
-				"formatter": {
-					"defaultValue": {
-						"value": "function(date) {\n  return (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();\n}",
-						"computed": false
-					}
-				},
-				"parser": {
-					"defaultValue": {
-						"value": "function(str) {\n  return new Date(str);\n}",
 						"computed": false
 					}
 				},

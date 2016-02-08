@@ -50,7 +50,7 @@ const propTypes = {
 };
 const defaultProps = {
   disabled: false,
-  modal: false,
+  modal: true,
   requiredField: false,
   placeholder: "Select an Option",
   checkmark: true
