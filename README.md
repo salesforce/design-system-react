@@ -13,17 +13,17 @@ This project is in beta and very experimental. Please visit [Design System React
 
 ## Components
 
-* <a href="https://design-system-react.herokuapp.com/#/button">SLDSButton</a>
-* <a href="https://design-system-react.herokuapp.com/#/button-group">SLDSButtonGroup</a>
-* <a href="https://design-system-react.herokuapp.com/#/button-stateful">SLDSButtonStateful</a>
-* <a href="https://design-system-react.herokuapp.com/#/dateinput">SLDSDatePicker</a>
-* <a href="https://design-system-react.herokuapp.com/#/icon">SLDSIcon</a>
-* <a href="https://design-system-react.herokuapp.com/#/lookup">SLDSLookup</a>
-* <a href="https://design-system-react.herokuapp.com/#/dropdown">SLDSMenuDropdown</a>
-* <a href="https://design-system-react.herokuapp.com/#/picklist">SLDSMenuPicklist</a>
-* <a href="https://design-system-react.herokuapp.com/#/modal">SLDSModal</a>
-* <a href="https://design-system-react.herokuapp.com/#/notification">SLDSNotification</a>
-* <a href="https://design-system-react.herokuapp.com/#/tooltip">SLDSPopoverTooltip</a>
+* <a href="https://design-system-react.herokuapp.com/#/button">Button</a>
+* <a href="https://design-system-react.herokuapp.com/#/button-group">ButtonGroup</a>
+* <a href="https://design-system-react.herokuapp.com/#/button-stateful">ButtonStateful</a>
+* <a href="https://design-system-react.herokuapp.com/#/dateinput">DatePickerSingleSelect</a>
+* <a href="https://design-system-react.herokuapp.com/#/icon">Icon</a>
+* <a href="https://design-system-react.herokuapp.com/#/lookup">Lookup</a>
+* <a href="https://design-system-react.herokuapp.com/#/dropdown">MenuDropdown</a>
+* <a href="https://design-system-react.herokuapp.com/#/picklist">MenuPicklist</a>
+* <a href="https://design-system-react.herokuapp.com/#/modal">Modal</a>
+* <a href="https://design-system-react.herokuapp.com/#/notification">Notification</a>
+* <a href="https://design-system-react.herokuapp.com/#/tooltip">PopoverTooltip</a>
 
 
 ### Run local server
