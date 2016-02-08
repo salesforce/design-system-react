@@ -21,11 +21,11 @@ import {KEYS,EventUtil} from '../utils';
 const displayName = 'SLDSDatepickerSingleSelect';
 const propTypes = {
   /**
-   * Date.
+   * Date
    */
   value: React.PropTypes.instanceOf(Date),
   /**
-   * Date formatting function .
+   * Date formatting function
    */
   formatter: React.PropTypes.func,
   /**
@@ -50,7 +50,9 @@ const defaultProps = {
   value: null,
   placeholder: 'Pick a Date',
   formatter (date) {
-    return (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();
+    return (date.getMonth()+1) +
+      '/'+date.getDate() +
+      '/'+date.getFullYear();
   },
   parser (str) {
     return new Date(str);
@@ -58,9 +60,18 @@ const defaultProps = {
   onDateChange (date) {
     console.log('onDateChange should be defined');
   },
-  weekDayLabels:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+  weekDayLabels:[
+    'Sunday','Monday','Tuesday',
+    'Wednesday','Thursday','Friday',
+    'Saturday'
+  ],
   abbrWeekDayLabels:['S','M','T','W','T','F','S'],
-  monthLabels:['January','February','March','April','May','June','July','August','September','October','November','December'],
+  monthLabels:[
+    'January','February','March',
+    'April','May','June','July',
+    'August','September','October',
+    'November','December'
+  ],
   todayLabel: 'Today',
   relativeYearFrom:-5,
   relativeYearTo:5

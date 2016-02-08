@@ -77,7 +77,9 @@ class PropTable extends React.Component {
           <td>{prop}</td>
           <td className="mw-col-m">{type.name ? type.name : type.props.children}</td>
           <td className="site-text--center">{required}</td>
-          <td className="mw-col-m">{defaultProp}</td>
+          <td className="mw-col-m">
+            <span dangerouslySetInnerHTML={this.getMarkup(defaultProp)} />
+          </td>
           <td className="mw-col-l">
             <span dangerouslySetInnerHTML={this.getMarkup(docs[prop].description)} />
           </td>

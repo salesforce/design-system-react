@@ -1299,7 +1299,7 @@
                     "value": "Date"
                 },
                 "required": false,
-                "description": "Date.",
+                "description": "Date",
                 "defaultValue": {
                     "value": "null",
                     "computed": false
@@ -1310,9 +1310,9 @@
                     "name": "func"
                 },
                 "required": false,
-                "description": "Date formatting function .",
+                "description": "Date formatting function",
                 "defaultValue": {
-                    "value": "function(date) {\n  return (date.getMonth()+1)+'/'+date.getDate()+'/'+date.getFullYear();\n}",
+                    "value": "function(date) {\n  return (date.getMonth()+1) +\n    '/'+date.getDate() +\n    '/'+date.getFullYear();\n}",
                     "computed": false
                 }
             },
@@ -1345,7 +1345,7 @@
                 "required": false,
                 "description": "",
                 "defaultValue": {
-                    "value": "['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']",
+                    "value": "[\n  'Sunday','Monday','Tuesday',\n  'Wednesday','Thursday','Friday',\n  'Saturday'\n]",
                     "computed": false
                 }
             },
@@ -1367,7 +1367,7 @@
                 "required": false,
                 "description": "",
                 "defaultValue": {
-                    "value": "['January','February','March','April','May','June','July','August','September','October','November','December']",
+                    "value": "[\n  'January','February','March',\n  'April','May','June','July',\n  'August','September','October',\n  'November','December'\n]",
                     "computed": false
                 }
             },
