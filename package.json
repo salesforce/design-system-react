@@ -32,7 +32,7 @@
     "heroku-build-no-docs": "./scripts/shell/heroku-build.sh --no-docs",
     "Heroku-build-watch-no-docs": "./scripts/shell/heroku-build.sh --watch --no-docs",
     "heroku-start": "node app.js",
-    "menu": "./scripts/shell/menu-trial.sh",
+    "menu": "./scripts/shell/menu.sh",
     "start": "grunt serve",
     "test": "grunt test"
   },
