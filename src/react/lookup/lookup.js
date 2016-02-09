@@ -8,72 +8,96 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 // # Lookup Component --- React Facade
+//
+// Implements the [Lookup design pattern](https://www.lightningdesignsystem.com/components/lookups) in React. This is similar to both the Picklist and the Pills, but currently there is no inheritance from either control.
 //
 // > See a [live example](/react/lookup) of the lookup component in action
 //
+
+// ## API
+/* @todo Add a full API description of the control here. */
+
+
+// ## Dependancies
 //
-// Implements the Lookup [design pattern](https://www.lightningdesignsystem.com/components/lookups) in React. This is similar to both the Picklist and the Pills, but currently there is no inheritance from either control.
-/* TODO: Add a full API description of the control here. */
+
 // Bring in the [shared library functions](../lib/lib.html).
-import * as Lib from '../../lib/lib';
+import * as Lib              from '../../lib/lib';
 
 // Use the [shared core](../../core/lookup.html), which contains logic that is the same in every facade.
 import LookupCore, {CONTROL} from '../../core/lookup';
 
-// ## Traits
+// ### Traits
 
 // #### Eventable
 // * [../../traits/eventable](../../traits/eventable.html)
-import Eventable from '../../traits/eventable';
+import Eventable             from '../../traits/eventable';
 //
 
 // #### Multiselectable
 // * [../../traits/multiselectable](../../traits/multiselectable.html)
-import Multiselectable from '../../traits/multiselectable';
+import Multiselectable       from '../../traits/multiselectable';
 //
 
 // #### Openable
 // * [../../traits/openable](../../traits/openable.html)
-import Openable from '../../traits/openable';
+import Openable              from '../../traits/openable';
 //
 
 // #### Positionable
 // * [../../traits/positionable](../../traits/positionable.html)
-import Positionable from '../../traits/positionable';
+import Positionable          from '../../traits/positionable';
 //
 
 // #### KeyboardNavigable
 // * [../../traits/keyboard-navigable.html](../../traits/keyboard-navigable.html)
-import KeyboardNavigable from '../../traits/keyboard-navigable';
+import KeyboardNavigable     from '../../traits/keyboard-navigable';
 //
 
 // #### classNames
 // * [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+//
 // Facades uses `classnames`, "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
-import classNames from 'classnames';
+import classNames            from 'classnames';
 //
 
-// ## React and ReactDOM
+// ### React and ReactDOM
 // React and ReactDOM are external depdencies of the project.
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React                 from 'react';
+import ReactDOM              from 'react-dom';
 
-// [State](../mixins/state.html), [Events](../mixins/events.html), and [genericWillMount](../mixins/generic-will-mount.html) are mixins that appear in every facade and bring some consistency between how each framework deals with instantiation, events, and state.
-import State from '../mixins/state';
-import Events from '../mixins/events';
-import genericWillMount from '../mixins/generic-will-mount';
+
+// ### Mixins
+// These are mixins that appear in every Façade, bringing consistency between how each framework deals with instantiation, events, and state.
+//
+
+// #### State
+// [../mixins/state]](../mixins/state.html)
+import State                 from '../mixins/state';
+//
+
+// #### Events
+// [../mixins/events](../mixins/events.html)
+import Events                from '../mixins/events';
+//
+
+// #### Generic Will Mount
+// [../mixins/generic-will-mount](../mixins/generic-will-mount.html)
+import genericWillMount      from '../mixins/generic-will-mount';
+//
 
 // Split out some rendering logic, just to make things easier to read.
-import Action from './lookup-action';
-import MenuItems from './lookup-menu-items';
-import Pills from '../pills/pills';
+import Action                from './lookup-action';
+import MenuItems             from './lookup-menu-items';
+import Pills                 from '../pills/pills';
 
 // Provides the default renderers for items, pills, the header, and the footer.
-import DefaultRenderers from './lookup-default-renderers';
+import DefaultRenderers      from './lookup-default-renderers';
 
 // The [Svg helper](../svg/svg.html) for React provides a simple wrapper around the markup required for SVGs, and uses `Lib.getSVGPath` to convert strings in the format `sprite file`.`icon name` into full paths.
-import Svg from '../svg/svg';
+import Svg                   from '../svg/svg';
 
 // Facades **extends objects** by merging them together, rather than via the prototype chain or imititation of object-oriented inheritance. The important thing to remember is that _some methods will be available to the control which are not declared in this file_. These are not magic methods, they're not black box methods, but you do need to trace the depencies of the control to see where they are coming from. In particular, Lookup extends its [core](../../core/lookup.html), which in turn extends the base control and a series of traits.
 let Lookup = Lib.merge({}, LookupCore, {
