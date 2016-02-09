@@ -26549,8 +26549,8 @@
 	  modal: _react2.default.PropTypes.bool,
 	  onBlur: _react2.default.PropTypes.func,
 	  onChange: _react2.default.PropTypes.func,
-	  onItemSelect: _react2.default.PropTypes.func,
-	  onItemUnselect: _react2.default.PropTypes.func,
+	  onSelect: _react2.default.PropTypes.func,
+	  onUnselect: _react2.default.PropTypes.func,
 	  /**
 	   * Lookup item data.
 	   */
@@ -26558,8 +26558,12 @@
 	  /**
 	   * If true, adds asterisk next to input label to indicate it is a required field.
 	   */
-	  requiredField: _react2.default.PropTypes.bool,
-	  searchTerm: _react2.default.PropTypes.string
+	  required: _react2.default.PropTypes.bool,
+	  searchTerm: _react2.default.PropTypes.string,
+	  /**
+	   * Index of current selected item.
+	   */
+	  selectedItem: _react2.default.PropTypes.number
 	};
 
 	/**
@@ -26573,7 +26577,7 @@
 	var defaultProps = {
 	  filterWith: defaultFilter,
 	  modal: false,
-	  requiredField: false,
+	  required: false,
 	  searchTerm: ""
 	};
 
@@ -26596,7 +26600,7 @@
 	      isOpen: false,
 	      listLength: _this.props.options.length,
 	      searchTerm: _this.normalizeSearchTerm(_this.props.searchTerm),
-	      selectedIndex: null
+	      selectedIndex: _this.props.selectedItem
 	    };
 	    return _this;
 	  }
@@ -26703,8 +26707,8 @@
 	          searchTerm: ""
 	        });
 	        var data = this.state.items[index].data;
-	        if (this.props.onItemSelect) {
-	          this.props.onItemSelect(data);
+	        if (this.props.onSelect) {
+	          this.props.onSelect(data);
 	        }
 	      }
 	    }
@@ -26715,8 +26719,8 @@
 	        selectedIndex: null,
 	        isOpen: true
 	      });
-	      if (this.props.onItemUnselect) {
-	        this.props.onItemUnselect();
+	      if (this.props.onUnselect) {
+	        this.props.onUnselect();
 	      }
 	    }
 
@@ -26980,7 +26984,7 @@
 	        "slds-hide": this.state.selectedIndex === null
 	      };
 
-	      var required = this.props.requiredField ? _react2.default.createElement(
+	      var required = this.props.required ? _react2.default.createElement(
 	        "span",
 	        { style: { color: "red" } },
 	        "* "
@@ -31662,7 +31666,7 @@
 	   */
 	  options: _react2.default.PropTypes.array.isRequired,
 	  placeholder: _react2.default.PropTypes.string,
-	  requiredField: _react2.default.PropTypes.bool,
+	  required: _react2.default.PropTypes.bool,
 	  /**
 	   * Current selected item.
 	   */
@@ -31671,7 +31675,7 @@
 	var defaultProps = {
 	  disabled: false,
 	  modal: true,
-	  requiredField: false,
+	  required: false,
 	  placeholder: "Select an Option",
 	  checkmark: true
 	};
@@ -31906,16 +31910,15 @@
 	  }, {
 	    key: "render",
 	    value: function render() {
-	      var required = this.props.requiredField ? _react2.default.createElement(
+	      var required = this.props.required ? _react2.default.createElement(
 	        "span",
 	        { style: { color: "red" } },
-	        "*"
+	        "* "
 	      ) : null;
 	      var inputLabel = this.props.label ? _react2.default.createElement(
 	        "label",
 	        { className: "slds-form-element__label", htmlFor: this.state.triggerId, style: { width: "100%" } },
 	        required,
-	        " ",
 	        this.props.label
 	      ) : null;
 	      return _react2.default.createElement(
@@ -35417,55 +35420,59 @@
 
 	var displayName = 'SLDSDatepickerSingleSelect';
 	var propTypes = {
-	  /**
-	   * Date
-	   */
-	  value: _react2.default.PropTypes.instanceOf(Date),
+	  abbrWeekDayLabels: _react2.default.PropTypes.array,
+
 	  /**
 	   * Date formatting function
 	   */
 	  formatter: _react2.default.PropTypes.func,
+
+	  monthLabels: _react2.default.PropTypes.array,
+
 	  /**
 	   * Parsing date string into Date
 	   */
 	  parser: _react2.default.PropTypes.func,
 
-	  todayLabel: _react2.default.PropTypes.string,
-
-	  weekDayLabels: _react2.default.PropTypes.array,
-
-	  abbrWeekDayLabels: _react2.default.PropTypes.array,
-
-	  monthLabels: _react2.default.PropTypes.array,
-
 	  relativeYearFrom: _react2.default.PropTypes.number,
 
-	  relativeYearTo: _react2.default.PropTypes.number
+	  relativeYearTo: _react2.default.PropTypes.number,
+
+	  todayLabel: _react2.default.PropTypes.string,
+
+	  /**
+	   * Date
+	   */
+	  value: _react2.default.PropTypes.instanceOf(Date),
+
+	  weekDayLabels: _react2.default.PropTypes.array
 
 	};
 	var defaultProps = {
-	  value: null,
-	  placeholder: 'Pick a Date',
+	  abbrWeekDayLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 	  formatter: function formatter(date) {
 	    return date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+	  },
+
+	  monthLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+	  onDateChange: function onDateChange(date) {
+	    console.log('onDateChange should be defined');
 	  },
 	  parser: function parser(str) {
 	    return new Date(str);
 	  },
-	  onDateChange: function onDateChange(date) {
-	    console.log('onDateChange should be defined');
-	  },
 
-	  weekDayLabels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-	  abbrWeekDayLabels: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-	  monthLabels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-	  todayLabel: 'Today',
+	  placeholder: 'Pick a Date',
 	  relativeYearFrom: -5,
-	  relativeYearTo: 5
+	  relativeYearTo: 5,
+	  todayLabel: 'Today',
+	  value: null,
+	  weekDayLabels: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 	};
 
 	module.exports = _react2.default.createClass({
-	  displayName: 'exports',
+
+	  displayName: displayName,
 
 	  propTypes: propTypes,
 
@@ -49460,7 +49467,7 @@
 	  Dropdowns2: "<SLDSMenuDropdown\n  assistiveText=\"More Options\"\n  buttonVariant=\"icon\"\n  checkmark={true}\n  iconName=\"down\"\n  iconVariant=\"border-filled\"\n  onMouseEnter={function(){console.log('Mouse enter')}}\n  onMouseLeave={function(){console.log('Mouse leave')}}\n  onSelect={function(value){console.log(\"selected: \",value)}}\n  openOn=\"hover\"\n  options={[\n    {label: \"A Option Option Super Super Long\", value: \"A0\"},\n    {label: \"B Option\", value: \"B0\"},\n    {label: \"C Option\", value: \"C0\"},\n    {label: \"D Option\", value: \"D0\"},\n    {label: \"E Option\", value: \"E0\"},\n    {label: \"A1 Option\", value: \"A1\"},\n    {label: \"B2 Option\", value: \"B1\"},\n    {label: \"C2 Option\", value: \"C1\"},\n    {label: \"D2 Option\", value: \"D1\"},\n    {label: \"E2 Option Super Super Long\", value: \"E1\"},\n  ]}\n  value=\"C0\" />\n",
 	  Icons: "<div>\n  <SLDSIcon\n    assistiveText=\"Favorite\"\n    category=\"custom\"\n    name=\"custom1\"\n    size=\"small\" />\n\n  <SLDSIcon\n    assistiveText=\"Accounts\"\n    category=\"standard\"\n    name=\"account\" />\n\n  <SLDSIcon\n    assistiveText=\"Announcements\"\n    category=\"action\"\n    className=\"slds-m-around--x-small\"\n    name=\"announcement\" />\n\n  <SLDSIcon\n    assistiveText=\"Approval\"\n    category=\"action\"\n    className=\"slds-m-around--x-small\"\n    name=\"approval\"\n    size=\"large\" />\n\n  <SLDSIcon\n    assistiveText=\"\"\n    category=\"utility\"\n    inverse={false}\n    name=\"open_folder\"\n    size=\"large\" />\n    <span className=\"slds-m-left--x-small\">Documents Folder</span>\n</div>\n",
 	  IconButtons: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    assistiveText=\"Icon Bare Small\"\n    iconName=\"settings\"\n    iconSize=\"small\"\n    iconVariant=\"bare\"\n    onClick={function(){alert(\"Icon Bare Clicked\")}} variant=\"icon\" />\n\n  <SLDSButton\n    assistiveText=\"Icon Container Small\"\n    iconName=\"settings\"\n    iconSize=\"small\"\n    iconVariant=\"container\"\n    variant=\"icon\" />\n\n  <div style={{backgroundColor: \"#4BC076\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n  <SLDSButton\n    assistiveText=\"Icon Border medium\"\n    iconName=\"settings\"\n    iconVariant=\"border\"\n    variant=\"icon\" />\n\n  <SLDSButton\n    assistiveText=\"Icon Border-filled medium\"\n    iconName=\"settings\"\n    iconVariant=\"border-filled\"\n    variant=\"icon\" />\n  </div>\n\n  <SLDSButton\n    assistiveText=\"Icon More large\"\n    iconName=\"settings\"\n    iconSize=\"large\"\n    iconVariant=\"more\"\n    variant=\"icon\" />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon inverse\"\n      iconName=\"settings\"\n      iconSize=\"large\"\n      variant=\"icon-inverse\" />\n  </div>\n  <div style={{backgroundColor: \"#FFB75D\", padding: \"10px 50px\", display: \"inline-block\"}} className=\"slds-hint-parent slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon hint large\"\n      hint={true}\n      iconName=\"settings\"\n      iconSize=\"large\"\n      variant=\"icon\" />\n  </div>\n</div>\n",
-	  Lookups: "<SLDSLookup\n  emptyMessage=\"No items found\"\n  footerRenderer={SLDSLookup.DefaultFooter}\n  hasError={false}\n  headerRenderer={SLDSLookup.DefaultHeader}\n  iconCategory=\"standard\"\n  iconName=\"account\"\n  label=\"Account\"\n  onChange={function(newValue){console.log(\"New search term: \", newValue)}}\n  onItemSelect={function(item){console.log(item , \" Selected\")}}\n  options={[\n    {label: \"Paddy\\\"s Pub\"},\n    {label: \"Tyrell Corp\"},\n    {label: \"Paper St. Soap Company\"},\n    {label: \"Nakatomi Investments\"},\n    {label: \"Acme Landscaping\"},\n    {label: \"Acme Construction\"}\n  ]}\n/>\n",
+	  Lookups: "<SLDSLookup\n  emptyMessage=\"No items found\"\n  footerRenderer={SLDSLookup.DefaultFooter}\n  hasError={false}\n  headerRenderer={SLDSLookup.DefaultHeader}\n  iconCategory=\"standard\"\n  iconName=\"account\"\n  label=\"Account\"\n  onChange={function(newValue){console.log(\"New search term: \", newValue)}}\n  onSelect={function(item){console.log(item , \" Selected\")}}\n  options={[\n    {label: \"Paddy\\\"s Pub\"},\n    {label: \"Tyrell Corp\"},\n    {label: \"Paper St. Soap Company\"},\n    {label: \"Nakatomi Investments\"},\n    {label: \"Acme Landscaping\"},\n    {label: \"Acme Construction\"}\n  ]}\n  selectedItem={1}\n/>\n",
 	  Modals1: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"New Opportunity\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          isOpen={this.state.isOpen}\n          footer={[\n            <SLDSButton key=\"modalBCancel\" label=\"Cancel\" onClick={this.toggleOpen.bind(this)} />,\n            <SLDSButton key=\"modalBSave\" label=\"Save\" variant=\"brand\" onClick={this.toggleOpen.bind(this)} />\n          ]}\n          onRequestClose={this.toggleOpen.bind(this)}\n          tagline=\"Enter in details below\"\n          title=\"New Opportunity\">\n\n            <div className=\"slds-form-element slds-m-vertical--large\">\n              <label className=\"slds-form-element__label\" htmlFor=\"opptyName\">Opportunity Name</label>\n              <div className=\"slds-form-element__control\">\n                <input id=\"opptyName\" className=\"slds-input\" type=\"text\" placeholder=\"Enter name\" />\n              </div>\n            </div>\n            <div className=\"slds-form-element\">\n              <label className=\"slds-form-element__label\" htmlFor=\"description\">Opportunity Description</label>\n              <div className=\"slds-form-element__control\">\n                <textarea id=\"description\" className=\"slds-textarea\" placeholder=\"Enter description\"></textarea>\n              </div>\n            </div>\n            <SLDSLookup\n              className=\"slds-m-vertical--large\"\n              emptyMessage=\"No Accounts Found\"\n              iconName=\"account\"\n              label=\"Account Name\"\n              modal={true}\n              onItemSelect={function(item){console.log(\"selected: \", item.label)}}\n              options={[\n                {label:\"Paddy\\\"s Pub\"},\n                {label:\"Tyrell Corp\"},\n                {label:\"Paper St. Soap Company\"},\n                {label:\"Nakatomi Investments\"},\n                {label:\"Acme Landscaping\"},\n                {label:\"Acme Construction\"}\n              ]}\n            />\n            <SLDSMenuPicklist\n              className=\"slds-m-vertical--large\"\n              label=\"Lead Source\"\n              modal={true}\n              onSelect={(option)=>{console.log(\"selected: \", option.label);}}\n              options={[\n                {label:\"Third Party Program\",value:\"A0\"},\n                {label:\"Cold Call\",value:\"B0\"},\n                {label:\"LinkedIn\",value:\"C0\"},\n                {label:\"Direct Mail\",value:\"D0\"},\n                {label:\"Other\",value:\"E0\"},\n              ]}\n              placeholder = \"Select Lead Source\"\n              value=\"B0\"\n            />\n            <SLDSMenuPicklist\n              className=\"slds-m-vertical--large\"\n              label=\"Type\"\n              modal={true}\n              onSelect={(option)=>{console.log(\"selected: \", option.label);}}\n              options={[\n                {label:\"Add on Business\",value:\"A0\"},\n                {label:\"Courtesy\",value:\"B0\"},\n                {label:\"New Business\",value:\"C0\"},\n                {label:\"Renewal\",value:\"D0\"},\n                {label:\"Upgrade\",value:\"E0\"},\n              ]}\n              placeholder = \"Select Opportunity Type\"\n              value=\"C0\"\n            />\n            <div className=\"slds-form-element slds-m-vertical--large\">\n              <label className=\"slds-form-element__label\" htmlFor=\"amount\">Amount</label>\n              <div className=\"slds-form-element__control\">\n                <input id=\"amount\" className=\"slds-input\" type=\"text\" placeholder=\"Enter Amount\" />\n              </div>\n            </div>\n\n        </SLDSModal>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
 	  Modals2: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"View Text\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          align=\"top\"\n          isOpen={this.state.isOpen}\n          onRequestClose={this.toggleOpen.bind(this)}\n          size=\"large\">\n            <h4 className=\"slds-text-heading--medium\">Jack London - The Scarlet Plague</h4>\n            <p>\"He's always saying that,\" he said to Edwin. \"What is scarlet?\"</p>\n            <p>\"'The scarlet of the maples can shake me like the cry of bugles going  by,'\" the old man quoted.</p>\n            <p>\"It's red,\" Edwin answered the question. \"And you don't know it because  you come from the Chauffeur Tribe. They never did know nothing, none of  them. Scarlet is red&mdash;I know that.\"</p>\n            <p>\"Red is red, ain't it?\" Hare-Lip grumbled. \"Then what's the good of  gettin' cocky and calling it scarlet?\"</p>\n            <p>\"Granser, what for do you always say so much what nobody knows?\" he  asked. \"Scarlet ain't anything, but red is red. Why don't you say red,  then?\"</p>\n            <p>\"Red is not the right word,\" was the reply. \"The plague was scarlet.  The whole face and body turned scarlet in an hour's time. Don't I  know? Didn't I see enough of it? And I am telling you it was scarlet  because&mdash;well, because it was scarlet. There is no other word for it.\"</p>\n            <p>\"Red is good enough for me,\" Hare-Lip muttered obstinately. \"My dad  calls red red, and he ought to know. He says everybody died of the Red  Death.\"</p>\n            <p>\"Your dad is a common fellow, descended from a common fellow,\" Granser  retorted heatedly. \"Don't I know the beginnings of the Chauffeurs? Your  grandsire was a chauffeur, a servant, and without education. He worked  for other persons. But your grandmother was of good stock, only the  children did not take after her. Don't I remember when I first met them,  catching fish at Lake Temescal?\"</p>\n            <p>\"What is education?\" Edwin asked.</p>\n        </SLDSModal>\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
 	  Modals3: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"Open Prompt\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n          <SLDSModal\n            dismissible={false}\n            footer={[ <SLDSButton key=\"promptBtn\" label=\"Got it\" onClick={this.toggleOpen.bind(this)} /> ]}\n            isOpen={this.state.isOpen}\n            onRequestClose={this.toggleOpen.bind(this)}\n            prompt=\"error\"\n            size=\"medium\"\n            title={<span>Service Unavailable</span>}>\n              The service you're trying to reach is unavailable due to limited conectivity. Please restart the application or contact your system administrator for assistance.\n          </SLDSModal>\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
@@ -50280,14 +50287,14 @@
 					"required": false,
 					"description": ""
 				},
-				"onItemSelect": {
+				"onSelect": {
 					"type": {
 						"name": "func"
 					},
 					"required": false,
 					"description": ""
 				},
-				"onItemUnselect": {
+				"onUnselect": {
 					"type": {
 						"name": "func"
 					},
@@ -50301,7 +50308,7 @@
 					"required": true,
 					"description": "Lookup item data."
 				},
-				"requiredField": {
+				"required": {
 					"type": {
 						"name": "bool"
 					},
@@ -50322,6 +50329,13 @@
 						"value": "\"\"",
 						"computed": false
 					}
+				},
+				"selectedItem": {
+					"type": {
+						"name": "number"
+					},
+					"required": false,
+					"description": "Index of current selected item."
 				}
 			}
 		},
@@ -50575,7 +50589,7 @@
 					"required": false,
 					"description": "If true, component renders specifically to work inside Modal.",
 					"defaultValue": {
-						"value": "false",
+						"value": "true",
 						"computed": false
 					}
 				},
@@ -50611,7 +50625,7 @@
 						"computed": false
 					}
 				},
-				"requiredField": {
+				"required": {
 					"type": {
 						"name": "bool"
 					},
@@ -50994,16 +51008,16 @@
 		},
 		"SLDSDatepickerSingleSelect": {
 			"description": "",
+			"displayName": "SLDSDatepickerSingleSelect",
 			"props": {
-				"value": {
+				"abbrWeekDayLabels": {
 					"type": {
-						"name": "instanceOf",
-						"value": "Date"
+						"name": "array"
 					},
 					"required": false,
-					"description": "Date",
+					"description": "",
 					"defaultValue": {
-						"value": "null",
+						"value": "['S','M','T','W','T','F','S']",
 						"computed": false
 					}
 				},
@@ -51018,50 +51032,6 @@
 						"computed": false
 					}
 				},
-				"parser": {
-					"type": {
-						"name": "func"
-					},
-					"required": false,
-					"description": "Parsing date string into Date",
-					"defaultValue": {
-						"value": "function(str) {\n  return new Date(str);\n}",
-						"computed": false
-					}
-				},
-				"todayLabel": {
-					"type": {
-						"name": "string"
-					},
-					"required": false,
-					"description": "",
-					"defaultValue": {
-						"value": "'Today'",
-						"computed": false
-					}
-				},
-				"weekDayLabels": {
-					"type": {
-						"name": "array"
-					},
-					"required": false,
-					"description": "",
-					"defaultValue": {
-						"value": "[\n  'Sunday','Monday','Tuesday',\n  'Wednesday','Thursday','Friday',\n  'Saturday'\n]",
-						"computed": false
-					}
-				},
-				"abbrWeekDayLabels": {
-					"type": {
-						"name": "array"
-					},
-					"required": false,
-					"description": "",
-					"defaultValue": {
-						"value": "['S','M','T','W','T','F','S']",
-						"computed": false
-					}
-				},
 				"monthLabels": {
 					"type": {
 						"name": "array"
@@ -51070,6 +51040,17 @@
 					"description": "",
 					"defaultValue": {
 						"value": "[\n  'January','February','March',\n  'April','May','June','July',\n  'August','September','October',\n  'November','December'\n]",
+						"computed": false
+					}
+				},
+				"parser": {
+					"type": {
+						"name": "func"
+					},
+					"required": false,
+					"description": "Parsing date string into Date",
+					"defaultValue": {
+						"value": "function(str) {\n  return new Date(str);\n}",
 						"computed": false
 					}
 				},
@@ -51095,15 +51076,49 @@
 						"computed": false
 					}
 				},
-				"placeholder": {
+				"todayLabel": {
+					"type": {
+						"name": "string"
+					},
+					"required": false,
+					"description": "",
 					"defaultValue": {
-						"value": "'Pick a Date'",
+						"value": "'Today'",
+						"computed": false
+					}
+				},
+				"value": {
+					"type": {
+						"name": "instanceOf",
+						"value": "Date"
+					},
+					"required": false,
+					"description": "Date",
+					"defaultValue": {
+						"value": "null",
+						"computed": false
+					}
+				},
+				"weekDayLabels": {
+					"type": {
+						"name": "array"
+					},
+					"required": false,
+					"description": "",
+					"defaultValue": {
+						"value": "[\n  'Sunday','Monday','Tuesday',\n  'Wednesday','Thursday','Friday',\n  'Saturday'\n]",
 						"computed": false
 					}
 				},
 				"onDateChange": {
 					"defaultValue": {
 						"value": "function(date) {\n  console.log('onDateChange should be defined');\n}",
+						"computed": false
+					}
+				},
+				"placeholder": {
+					"defaultValue": {
+						"value": "'Pick a Date'",
 						"computed": false
 					}
 				}

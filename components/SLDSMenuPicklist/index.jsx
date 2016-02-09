@@ -42,7 +42,7 @@ const propTypes = {
    */
   options: React.PropTypes.array.isRequired,
   placeholder: React.PropTypes.string,
-  requiredField: React.PropTypes.bool,
+  required: React.PropTypes.bool,
   /**
    * Current selected item.
    */
@@ -51,7 +51,7 @@ const propTypes = {
 const defaultProps = {
   disabled: false,
   modal: true,
-  requiredField: false,
+  required: false,
   placeholder: "Select an Option",
   checkmark: true
 };
@@ -266,8 +266,8 @@ class SLDSMenuPicklist extends React.Component {
   }
 
   render() {
-    const required = this.props.requiredField ? <span style={{color:"red"}}>*</span>:null;
-    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.state.triggerId} style={{width: "100%"}}>{required} {this.props.label}</label>:null;
+    const required = this.props.required ? <span style={{color: "red"}}>* </span>:null;
+    const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.state.triggerId} style={{width: "100%"}}>{required}{this.props.label}</label>:null;
     return (
       <div className={"slds-picklist " + this.props.className} aria-expanded={this.state.isOpen}>
         {inputLabel}

@@ -6,21 +6,30 @@ import {SLDSLookup} from '../../components';
 const {Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag} = TestUtils;
 
 describe('SLDSLookup: ',  function(){
-  let items = [
-    {label:'Paddy\'s Pub'},
-    {label:'Tyrell Corp'},
-    {label:'Paper St. Soap Company'},
-    {label:'Nakatomi Investments'},
-    {label:'Acme Landscaping'},
-    {label:'Acme Construction'}
-  ];
-
   const generateLookup = function(lookupInstance) {
     let reactCmp = TestUtils.renderIntoDocument(lookupInstance);
     return React.findDOMNode(reactCmp);
   };
 
-  const defaultProps = { options: items, label: 'Leads', type: 'lead', footerRenderer: SLDSLookup.DefaultFooter }
+  const defaultProps = {
+    emptyMessage:"No items found",
+    footerRenderer:{SLDSLookup.DefaultFooter},
+    headerRenderer:{SLDSLookup.DefaultHeader},
+    iconCategory:"standard",
+    iconName:"account",
+    label:"Account",
+    onChange:{function(newValue){console.log("New search term: ", newValue)}},
+    onSelect:{function(item){console.log(item , " Selected")}},
+    options:{[
+      {label: "Paddy\"s Pub"},
+      {label: "Tyrell Corp"},
+      {label: "Paper St. Soap Company"},
+      {label: "Nakatomi Investments"},
+      {label: "Acme Landscaping"},
+      {label: "Acme Construction"}
+    ]},
+    selectedItem={1},
+  };
 
   const getLookup = (props={}) => React.createElement(SLDSLookup, assign({}, defaultProps, props))
 

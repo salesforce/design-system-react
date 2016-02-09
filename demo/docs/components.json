@@ -578,14 +578,14 @@
                 "required": false,
                 "description": ""
             },
-            "onItemSelect": {
+            "onSelect": {
                 "type": {
                     "name": "func"
                 },
                 "required": false,
                 "description": ""
             },
-            "onItemUnselect": {
+            "onUnselect": {
                 "type": {
                     "name": "func"
                 },
@@ -599,7 +599,7 @@
                 "required": true,
                 "description": "Lookup item data."
             },
-            "requiredField": {
+            "required": {
                 "type": {
                     "name": "bool"
                 },
@@ -620,6 +620,13 @@
                     "value": "\"\"",
                     "computed": false
                 }
+            },
+            "selectedItem": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "Index of current selected item."
             }
         }
     },
@@ -873,7 +880,7 @@
                 "required": false,
                 "description": "If true, component renders specifically to work inside Modal.",
                 "defaultValue": {
-                    "value": "false",
+                    "value": "true",
                     "computed": false
                 }
             },
@@ -909,7 +916,7 @@
                     "computed": false
                 }
             },
-            "requiredField": {
+            "required": {
                 "type": {
                     "name": "bool"
                 },
@@ -1292,16 +1299,16 @@
     },
     "SLDSDatepickerSingleSelect": {
         "description": "",
+        "displayName": "SLDSDatepickerSingleSelect",
         "props": {
-            "value": {
+            "abbrWeekDayLabels": {
                 "type": {
-                    "name": "instanceOf",
-                    "value": "Date"
+                    "name": "array"
                 },
                 "required": false,
-                "description": "Date",
+                "description": "",
                 "defaultValue": {
-                    "value": "null",
+                    "value": "['S','M','T','W','T','F','S']",
                     "computed": false
                 }
             },
@@ -1316,50 +1323,6 @@
                     "computed": false
                 }
             },
-            "parser": {
-                "type": {
-                    "name": "func"
-                },
-                "required": false,
-                "description": "Parsing date string into Date",
-                "defaultValue": {
-                    "value": "function(str) {\n  return new Date(str);\n}",
-                    "computed": false
-                }
-            },
-            "todayLabel": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "'Today'",
-                    "computed": false
-                }
-            },
-            "weekDayLabels": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "[\n  'Sunday','Monday','Tuesday',\n  'Wednesday','Thursday','Friday',\n  'Saturday'\n]",
-                    "computed": false
-                }
-            },
-            "abbrWeekDayLabels": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "['S','M','T','W','T','F','S']",
-                    "computed": false
-                }
-            },
             "monthLabels": {
                 "type": {
                     "name": "array"
@@ -1368,6 +1331,17 @@
                 "description": "",
                 "defaultValue": {
                     "value": "[\n  'January','February','March',\n  'April','May','June','July',\n  'August','September','October',\n  'November','December'\n]",
+                    "computed": false
+                }
+            },
+            "parser": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Parsing date string into Date",
+                "defaultValue": {
+                    "value": "function(str) {\n  return new Date(str);\n}",
                     "computed": false
                 }
             },
@@ -1393,15 +1367,49 @@
                     "computed": false
                 }
             },
-            "placeholder": {
+            "todayLabel": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
                 "defaultValue": {
-                    "value": "'Pick a Date'",
+                    "value": "'Today'",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "instanceOf",
+                    "value": "Date"
+                },
+                "required": false,
+                "description": "Date",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            },
+            "weekDayLabels": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "[\n  'Sunday','Monday','Tuesday',\n  'Wednesday','Thursday','Friday',\n  'Saturday'\n]",
                     "computed": false
                 }
             },
             "onDateChange": {
                 "defaultValue": {
                     "value": "function(date) {\n  console.log('onDateChange should be defined');\n}",
+                    "computed": false
+                }
+            },
+            "placeholder": {
+                "defaultValue": {
+                    "value": "'Pick a Date'",
                     "computed": false
                 }
             }
