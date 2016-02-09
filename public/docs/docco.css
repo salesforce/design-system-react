@@ -71,11 +71,17 @@ body {
     line-height: 1.25;
     margin-bottom: 1.68rem;
 }
+.annotation.comments h1:first-child {
+    margin-top: 1.68rem;
+}
 .annotation.comments h2 {
     font-weight: 300;
     font-size: 1.5rem;
     line-height: 1.25;
     margin-bottom: 1.26rem;
+}
+.annotation.comments .pilwrap:first-child + h2 {
+	margin-top: 1.26rem;
 }
 .annotation.comments h3 {
     font-weight: 300;
@@ -88,6 +94,12 @@ body {
     text-transform: uppercase;
     letter-spacing: .0625em;
     color: #54698d;
+}
+.annotation.comments p:last-child,
+.annotation.comments ol:last-child,
+.annotation.comments ul:last-child
+ {
+	margin-bottom: 1.2rem;
 }
 /*
 a {
@@ -184,6 +196,10 @@ blockquote {
 	{
     color: #fff;
     text-decoration: underline;
+	}
+
+	.sections .comments blockquote p:last-child {
+		margin-bottom: 0;
 	}
 
 	.sections .code blockquote p {

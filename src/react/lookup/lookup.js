@@ -22,15 +22,39 @@ import * as Lib from '../../lib/lib';
 import LookupCore, {CONTROL} from '../../core/lookup';
 
 // ## Traits
+
+// #### Eventable
+// * [../../traits/eventable](../../traits/eventable.html)
 import Eventable from '../../traits/eventable';
+//
+
+// #### Multiselectable
+// * [../../traits/multiselectable](../../traits/multiselectable.html)
 import Multiselectable from '../../traits/multiselectable';
+//
+
+// #### Openable
+// * [../../traits/openable](../../traits/openable.html)
 import Openable from '../../traits/openable';
+//
+
+// #### Positionable
+// * [../../traits/positionable](../../traits/positionable.html)
 import Positionable from '../../traits/positionable';
+//
+
+// #### KeyboardNavigable
+// * [../../traits/keyboard-navigable.html](../../traits/keyboard-navigable.html)
 import KeyboardNavigable from '../../traits/keyboard-navigable';
+//
 
-// Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
+// #### classNames
+// * [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// Facades uses `classnames`, "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
+//
 
+// ## React and ReactDOM
 // React and ReactDOM are external depdencies of the project.
 import React from 'react';
 import ReactDOM from 'react-dom';
