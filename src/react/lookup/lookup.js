@@ -12,6 +12,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // # Lookup Component --- React Facade
 //
 // Implements the [Lookup design pattern](https://www.lightningdesignsystem.com/components/lookups) in React. This is similar to both the Picklist and the Pills, but currently there is no inheritance from either control.
+// ![Lookup component example screenshot](/assets/demo-site/images/component-examples/lookup.png "Lookup component example screenshot")
+
 //
 // > See a [live example](/react/lookup) of the lookup component in action
 //
