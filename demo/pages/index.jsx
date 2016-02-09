@@ -33,7 +33,8 @@ module.exports = React.createClass( {
             <div className='slds-media slds-media--center'>
               <span className='slds-media__figure site-logo'>Salesforce</span>
               <div className='slds-media__body'>
-                <h1 className='slds-text-heading--small slds-m-right--small slds-truncate slds-align-middle' title='Record Title'><span className="site-text--bold">design-system-react</span>: interactive accessible components for React</h1>
+                <h1 className='slds-text-heading--small slds-m-right--small slds-truncate slds-align-middle' title='Record Title'>
+                interactive accessible components</h1>
               </div>
             </div>
           </Link>
