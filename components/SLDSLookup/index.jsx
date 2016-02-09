@@ -60,8 +60,8 @@ const propTypes = {
   modal: React.PropTypes.bool,
   onBlur: React.PropTypes.func,
   onChange: React.PropTypes.func,
-  onItemSelect: React.PropTypes.func,
-  onItemUnselect: React.PropTypes.func,
+  onSelect: React.PropTypes.func,
+  onUnselect: React.PropTypes.func,
   /**
    * Lookup item data.
    */
@@ -69,8 +69,12 @@ const propTypes = {
   /**
    * If true, adds asterisk next to input label to indicate it is a required field.
    */
-  requiredField: React.PropTypes.bool,
+  required: React.PropTypes.bool,
   searchTerm: React.PropTypes.string,
+  /**
+   * Index of current selected item.
+   */
+  selectedItem: React.PropTypes.number,
 };
 
 
@@ -87,7 +91,7 @@ const defaultFilter = (term, item) => {
 const defaultProps = {
   filterWith: defaultFilter,
   modal: false,
-  requiredField: false,
+  required: false,
   searchTerm: "",
 };
 
@@ -105,7 +109,7 @@ class SLDSLookup extends React.Component {
       isOpen: false,
       listLength: this.props.options.length,
       searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
-      selectedIndex: null,
+      selectedIndex: this.props.selectedItem,
     };
   }
 
@@ -196,8 +200,8 @@ class SLDSLookup extends React.Component {
         searchTerm: ""
       });
       const data = this.state.items[index].data;
-      if(this.props.onItemSelect){
-        this.props.onItemSelect(data);
+      if(this.props.onSelect){
+        this.props.onSelect(data);
       }
     }
   }
@@ -207,8 +211,8 @@ class SLDSLookup extends React.Component {
       selectedIndex: null,
       isOpen: true,
     });
-    if(this.props.onItemUnselect){
-      this.props.onItemUnselect();
+    if(this.props.onUnselect){
+      this.props.onUnselect();
     }
   }
 
@@ -440,7 +444,7 @@ class SLDSLookup extends React.Component {
       "slds-hide": this.state.selectedIndex === null,
     };
 
-    const required = this.props.requiredField ? <span style={{color:"red"}}>* </span>:null;
+    const required = this.props.required ? <span style={{color:"red"}}>* </span>:null;
     const inputLabel = this.props.label?<label className="slds-form-element__label" htmlFor={this.inputRefName()} style={{width: "100%"}}>{required}{this.props.label}</label>:null;
 
     return (

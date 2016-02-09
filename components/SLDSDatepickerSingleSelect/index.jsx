@@ -17,69 +17,73 @@ import InputIcon from '../SLDSIcon/InputIcon';
 
 import {KEYS,EventUtil} from '../utils';
 
-
 const displayName = 'SLDSDatepickerSingleSelect';
 const propTypes = {
-  /**
-   * Date
-   */
-  value: React.PropTypes.instanceOf(Date),
+  abbrWeekDayLabels: React.PropTypes.array,
+
   /**
    * Date formatting function
    */
   formatter: React.PropTypes.func,
+
+  monthLabels: React.PropTypes.array,
+
   /**
    * Parsing date string into Date
    */
   parser: React.PropTypes.func,
 
+  relativeYearFrom: React.PropTypes.number,
+
+  relativeYearTo: React.PropTypes.number,
+
   todayLabel: React.PropTypes.string,
+
+  /**
+   * Date
+   */
+  value: React.PropTypes.instanceOf(Date),
 
   weekDayLabels: React.PropTypes.array,
 
-  abbrWeekDayLabels: React.PropTypes.array,
-
-  monthLabels: React.PropTypes.array,
-
-  relativeYearFrom: React.PropTypes.number,
-
-  relativeYearTo: React.PropTypes.number
 
 };
 const defaultProps = {
-  value: null,
-  placeholder: 'Pick a Date',
+  abbrWeekDayLabels: ['S','M','T','W','T','F','S'],
   formatter (date) {
     return (date.getMonth()+1) +
       '/'+date.getDate() +
       '/'+date.getFullYear();
   },
-  parser (str) {
-    return new Date(str);
-  },
-  onDateChange (date) {
-    console.log('onDateChange should be defined');
-  },
-  weekDayLabels:[
-    'Sunday','Monday','Tuesday',
-    'Wednesday','Thursday','Friday',
-    'Saturday'
-  ],
-  abbrWeekDayLabels:['S','M','T','W','T','F','S'],
-  monthLabels:[
+  monthLabels: [
     'January','February','March',
     'April','May','June','July',
     'August','September','October',
     'November','December'
   ],
+  onDateChange (date) {
+    console.log('onDateChange should be defined');
+  },
+  parser (str) {
+    return new Date(str);
+  },
+  placeholder: 'Pick a Date',
+  relativeYearFrom: -5,
+  relativeYearTo: 5,
   todayLabel: 'Today',
-  relativeYearFrom:-5,
-  relativeYearTo:5
+  value: null,
+  weekDayLabels: [
+    'Sunday','Monday','Tuesday',
+    'Wednesday','Thursday','Friday',
+    'Saturday'
+  ],
 };
 
-module.exports = React.createClass( {
+module.exports = React.createClass({
 
-  propTypes:propTypes,
+  displayName: displayName,
+
+  propTypes: propTypes,
 
   getDefaultProps(){
     return defaultProps;

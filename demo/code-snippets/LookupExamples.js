@@ -7,7 +7,7 @@
   iconName="account"
   label="Account"
   onChange={function(newValue){console.log("New search term: ", newValue)}}
-  onItemSelect={function(item){console.log(item , " Selected")}}
+  onSelect={function(item){console.log(item , " Selected")}}
   options={[
     {label: "Paddy\"s Pub"},
     {label: "Tyrell Corp"},
@@ -16,4 +16,5 @@
     {label: "Acme Landscaping"},
     {label: "Acme Construction"}
   ]}
+  selectedItem={1}
 />
