@@ -163,7 +163,7 @@ class SLDSNotification extends React.Component {
 
   getClassName() {
     return classNames(this.props.className, "slds-notify", {
-      [`slds-transition-hide`]: !this.props.isOpen,
+      [`slds-hide`]: !this.props.isOpen,
       [`slds-notify--${this.props.variant}`]: this.props.variant,
       [`slds-theme--${this.props.theme}`]: this.props.theme,
       [`slds-theme--alert-texture-animated`]: this.props.texture,

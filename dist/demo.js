@@ -34869,7 +34869,7 @@
 	    value: function getClassName() {
 	      var _classNames;
 
-	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-transition-hide", !this.props.isOpen), _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
+	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-hide", !this.props.isOpen), _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
 	    }
 	  }, {
 	    key: "renderContent",
@@ -36698,12 +36698,7 @@
 	                _react2.default.createElement(
 	                  'h1',
 	                  { className: 'slds-text-heading--small slds-m-right--small slds-truncate slds-align-middle', title: 'Record Title' },
-	                  _react2.default.createElement(
-	                    'span',
-	                    { className: 'site-text--bold' },
-	                    'design-system-react'
-	                  ),
-	                  ': interactive accessible components for React'
+	                  'interactive accessible components'
 	                )
 	              )
 	            )
