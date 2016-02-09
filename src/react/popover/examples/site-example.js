@@ -1,7 +1,9 @@
-import React from 'react';
-import {Popover} from 'design-system-react';
+import React       from 'react';
+import { Popover } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const PopoverExample = React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool
 	},
@@ -23,14 +25,14 @@ export default React.createClass({
 					alignmentTarget={this.state.target}
 					isOpen={this.state.isOpen}
 					modal={this.props.modal}
-					positionedTargetHorizontalAttachment="right">
+					positionedTargetHorizontalAttachment="left">
 					<span>Sit nulla est ex deserunt exercitation anim occaecat. Nostrud ullamco deserunt aute id consequat veniam incididunt duis in sint irure nisi.</span>
 				</Popover>);
 		}
 		return (
 			<div className="react-popover-example-wrap">
 				<button id="popover-react-toggle" className="slds-button slds-button--neutral slds-button--small" ref={this._buttonRendered} onClick={this._handleClick}>Toggle</button>
-					{popover}
+				{popover}
 			</div>
 		);
 	},
@@ -40,4 +42,10 @@ export default React.createClass({
 			isOpen: !this.state.isOpen
 		});
 	}
+
+
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default PopoverExample;

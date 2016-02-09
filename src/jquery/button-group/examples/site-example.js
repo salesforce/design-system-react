@@ -5,34 +5,25 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // SAMPLE CONTROL CODE -->
 
 $(function () {
-	const button1 = new Button({
-		text: 'Neutral',
-		theme: 'neutral'
+	const buttonGroup0ChildButton0 = new Button({
+		text: 'Neutral', theme: 'neutral'
 	});
-
-	const buttonGroup1 = new ButtonGroup($('#button-group-jquery-control'), {
-		theme: 'neutral',
-		buttons: [
+	const buttonGroup0Properties = {
+		theme: 'neutral', buttons: [
 			{
 				text: 'Refresh'
-			},
-			{
+			}, {
 				text: 'Edit'
-			},
-			{
+			}, {
 				text: 'Save'
-			},
-			{
-				assistiveText: 'More Actions',
-				disabled: false,
-				icon: 'utility.down',
-				iconStyle: 'icon-border',
-				theme: 'icon-border'
+			}, {
+				assistiveText: 'More Actions', disabled: false, icon: 'utility.down', iconStyle: 'icon-border', theme: 'icon-border'
 			}
-		],
-		children: [button1]
-	});
-	const buttonGroup2 = new ButtonGroup($('#button-group-jquery-control'), {
+		], children: [buttonGroup0ChildButton0]
+	};
+	const buttonGroup0 = new ButtonGroup($('#button-group__button-group--0'), buttonGroup0Properties);
+
+	const buttonGroup1Properties = {
 		theme: 'neutral',
 		buttons: [
 			{
@@ -46,9 +37,10 @@ $(function () {
 				iconStyle: 'icon-border'
 			}
 		]
-	});
+	};
+	const buttonGroup1 = new ButtonGroup($('#button-group__button-group--1'), buttonGroup1Properties);
 
-	const buttonGroup3 = new ButtonGroup($('#button-group-jquery-control'), {
+	const buttonGroup2Properties = {
 		iconStyle: 'icon-border',
 		buttons: [
 			{
@@ -67,19 +59,12 @@ $(function () {
 				iconStyle: 'icon-more'
 			}
 		]
-	});
+	};
+	const buttonGroup2 = new ButtonGroup($('#button-group__button-group--2'), buttonGroup2Properties);
 
+	void(buttonGroup0);
 	void(buttonGroup1);
 	void(buttonGroup2);
-	void(buttonGroup3);
-
-	$('#button-group-jquery-button-select').on('click', function () {
-		buttonGroup3.getProperty('children')[0].toggle(true);
-	});
-
-	$('#button-group-jquery-button-deselect').on('click', function () {
-		buttonGroup3.getProperty('children')[1].toggle(true);
-	});
 });
 
 // <-- SAMPLE CONTROL CODE

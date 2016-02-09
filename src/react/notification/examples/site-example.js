@@ -1,23 +1,49 @@
-import React from 'react';
-import {Notification} from 'design-system-react';
+import React                         from 'react';
+import { Notification } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const NotificationExample = React.createClass({
+	getInitialState () {
+		const collection = [
+			{
+				text: 'Base System Alert'
+			}, {
+				text: 'Scheduled Maintenance Notification: Sunday March 15, 8:00 AM-10:00 PST', theme: 'success'
+			}, {
+				text: 'Your browser is currently not supported. Your Salesforce may be degraded.', theme: 'error'
+			}, {
+				text: 'You are in offline mode.', theme: 'offline'
+			}
+		];
+
+		const notificationSampleData = {
+			collection: collection
+		};
+
+		return notificationSampleData;
+	},
+
 	render () {
 		return (
 			<div>
-				<div className="slds-col example">
-					<Notification>Base System Alert</Notification>
-					<Notification theme="success">Scheduled Maintenance Notification: Sunday March 15, 8:00 AM-10:00 PST</Notification>
-					<Notification theme="error">Your browser is currently not supported. Your Salesforce may be degraded.</Notification>
-					<Notification theme="offline">You are in offline mode.</Notification>
+				<div className={'slds-m-bottom--small'}>
+					<Notification>{this.state.collection[0].text}</Notification>
 				</div>
-				<div className="slds-col demo-controls">
-					<div className="slds-button-group" role="group">
-						<button type="button" id="notification-react-hide" className="slds-button slds-button--neutral slds-button--small" disabled>Hide</button>
-						<button type="button" id="notification-react-show" className="slds-button slds-button--neutral slds-button--small" disabled>Show</button>
-					</div>
+				<div className={'slds-m-bottom--small'}>
+					<Notification theme={this.state.collection[1].theme}>{this.state.collection[1].text}</Notification>
+				</div>
+				<div className={'slds-m-bottom--small'}>
+					<Notification theme={this.state.collection[2].theme}>{this.state.collection[2].text}</Notification>
+				</div>
+				<div className={''}>
+					<Notification theme={this.state.collection[3].theme}>{this.state.collection[3].text}</Notification>
 				</div>
 			</div>
 		);
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default NotificationExample;

@@ -1,8 +1,10 @@
-import React from 'react';
-import {Lib, Combobox} from 'design-system-react';
-import {sampleData, ExampleEvents} from 'design-system-utilities';
+import React             from 'react';
+import { Lib, Combobox } from 'design-system-react';
+import { ExampleEvents } from 'design-system-utilities';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const ComboboxExample = React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool,
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
@@ -13,11 +15,44 @@ export default React.createClass({
 	},
 
 	getInitialState () {
+		const resize = 'auto';
+		const selection = {
+			value: '1'
+		};
+		const collection = [
+			{
+				_itemType: 'header', text: 'One thing'
+			}, {
+				id: 0, text: 'One', value: '1', icon: 'utility.apps'
+			}, {
+				_itemType: 'divider'
+			}, {
+				_itemType: 'header', text: 'All the things'
+			}, {
+				id: 1, text: 'Two', value: '2', icon: 'utility.email'
+			}, {
+				id: 2, text: 'Three', value: '3'
+			}, {
+				id: 3, text: 'Buzz', value: '4'
+			}, {
+				id: 4, text: 'Item Five', value: 'Item Five', fizz: 'buzz', foo: 'bar'
+			}, {
+				id: 5, text: 'A Disabled Item', disabled: true,
+				value: 'disabled'
+			}
+		];
+
+		const comboboxSampleData = {
+			collection: collection,
+			resize: resize,
+			selection: selection
+		};
+
 		return {
 			model: {
-				collection: sampleData.picklist.default.collection,
-				selection: sampleData.picklist.default.collection[1],
-				resize: 'auto'
+				collection: comboboxSampleData.collection,
+				selection: comboboxSampleData.selection,
+				resize: comboboxSampleData.resize
 			}
 		};
 	},
@@ -45,7 +80,7 @@ export default React.createClass({
 
 	setSelection () {
 		const model = this.state.model;
-		model.selection = sampleData.picklist.default.collection[5];
+		model.selection = model.collection[5];
 		this.setState({model});
 	},
 
@@ -61,3 +96,7 @@ export default React.createClass({
 		this.setState({model});
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default ComboboxExample;

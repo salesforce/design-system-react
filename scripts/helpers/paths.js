@@ -21,39 +21,40 @@ var app_modules = path.resolve(root, 'app_modules');
 var node_modules = path.resolve(root, 'node_modules');
 
 var paths = {
-  'app_modules': app_modules,
-  'assets': path.resolve(root, 'public/assets'),
-  'build': path.resolve(root, 'build'),
-  'content_base': path.resolve(root, 'public'),
-  'dist': path.resolve(root, '.dist'),
-  'docs': path.resolve(root, 'docs'),
-  'generated': path.resolve(root, '.generated'),
-  'node_modules': node_modules,
-  'sample_data': path.resolve(root, 'sample-data'),
-  'site': path.resolve(root, 'site'),
-  'views': path.resolve(root, 'site/views'),
-  'root': root,
-  'scripts': path.resolve(root, 'scripts'),
-  'scss': path.resolve(root, 'scss'),
-  'site_assets': path.resolve(root, 'public/assets/facades'),
-  'slds_public_assets': path.resolve(root, 'public/assets/design-system'),
-  'slds': path.resolve(node_modules, '@salesforce-ux/design-system'),
-  'slds_assets': path.resolve(node_modules, '@salesforce-ux/design-system/assets'),
-  'source_files': path.resolve(root, 'src'),
-  'tmp': path.resolve(root, '.tmp'),
-  'www': path.resolve(root, '.www')
+	'app_modules': app_modules,
+	'assets': path.resolve(root, 'public/assets'),
+	'build': path.resolve(root, 'build'),
+	'content_base': path.resolve(root, 'public'),
+	'dist': path.resolve(root, '.dist'),
+	'docs': path.resolve(root, 'docs'),
+	'generated': path.resolve(root, '.generated'),
+	'node_modules': node_modules,
+	'root': root,
+	'sample_data': path.resolve(root, 'utilities/sample-data'),
+	'scripts': path.resolve(root, 'scripts'),
+	'scss': path.resolve(root, 'scss'),
+	'site': path.resolve(root, 'site'),
+	'site_assets': path.resolve(root, 'public/assets/facades'),
+	'slds': path.resolve(node_modules, '@salesforce-ux/design-system'),
+	'slds_assets': path.resolve(node_modules, '@salesforce-ux/design-system/assets'),
+	'slds_public_assets': path.resolve(root, 'public/assets/design-system'),
+	'source_files': path.resolve(root, 'src'),
+	'tmp': path.resolve(root, '.tmp'),
+	'utilities': path.resolve(root, 'utilities'),
+	'views': path.resolve(root, 'site/views'),
+	'www': path.resolve(root, '.www')
 };
 
 module.exports = {
 
-  /**
-   * Make __PATHS__ available in all modules
-   */
-  install: function() {
-    global.__PATHS__ = paths;
-    global.__NODE_MODULES_PATTERN__ = new RegExp(
-      _.escapeRegExp(path.resolve(root, 'node_modules'))
-    );
-  }
+	/**
+	 * Make __PATHS__ available in all modules
+	 */
+	install: function () {
+		global.__PATHS__ = paths;
+		global.__NODE_MODULES_PATTERN__ = new RegExp(
+			_.escapeRegExp(path.resolve(root, 'node_modules'))
+		);
+	}
 
 };

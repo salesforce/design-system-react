@@ -1,17 +1,32 @@
-import React from 'react';
-import {Lookup} from 'design-system-react';
-import {sampleData} from 'design-system-utilities';
+import React          from 'react';
+import { Lookup }     from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const LookupExample = React.createClass({
 	propTypes: {
 		modal: React.PropTypes.bool,
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
 	},
 
 	getInitialState () {
-		return {
-			collection: sampleData.lookup.default.collection
+		const lookupSampleData = {
+			collection: [
+				{ text: 'Paddy\'s Pub', icon: 'standard.account' },
+				{ text: 'Tyrell Corporation', icon: 'standard.account' },
+				{ text: 'Paper St. Soap Company', icon: 'standard.account' },
+				{ text: 'Nakatomi Investments', icon: 'standard.account' },
+				{ text: 'Acme Landscaping', icon: 'standard.account' },
+				{ text: 'ACME Construction', icon: 'standard.account' }
+			],
+			additionalItems: [
+				{ text: 'Standard Oil', icon: 'standard.account' },
+				{ text: 'Eli Rose', icon: 'standard.account' },
+				{ text: 'Paper St. Paper Company', icon: 'standard.account' }
+			]
 		};
+
+		return lookupSampleData;
 	},
 
 	render () {
@@ -28,19 +43,19 @@ export default React.createClass({
 			</div>
 		);
 	},
-	
+
 	componentDidMount () {
 		this._addItemsTimeout = window.setTimeout(this._addItems, 4000);
 	},
-	
+
 	_addItems () {
 		this.setState({
-			collection: sampleData.lookup.default.collection.concat(sampleData.lookup.default.additionalItems)
+			collection: this.state.collection.concat(this.state.additionalItems)
 		});
-		
+
 		window.clearTimeout(this._addItemsTimeout);
 	},
-	
+
 	_filterPredicate (text, pattern) {
 		return pattern.length < 2 || text.substr(0, pattern.length).toLowerCase() === pattern;
 	},
@@ -48,8 +63,12 @@ export default React.createClass({
 	_handleModelChange (selection) {
 		this.setState({ selection });
 	},
-	
+
 	_handleAdd () {
 		console.log('Add an item!');
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default LookupExample;

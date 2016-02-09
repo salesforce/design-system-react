@@ -1,19 +1,40 @@
-import React from 'react';
-import {Lib, Dropdown} from 'design-system-react';
-import {sampleData} from 'design-system-utilities';
+import React             from 'react';
+import { Lib, Dropdown } from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+
+const DropdownExample = React.createClass({
 	propTypes: {
 		models: React.PropTypes.arrayOf(React.PropTypes.object)
 	},
 
 	getInitialState () {
+		const selection = {
+			value: 1
+		};
+
+		const collection = [
+			{
+				id: 0, text: 'Menu Item One', value: '1', icon: 'utility.table'
+			}, {
+				id: 1, text: 'Menu Item Two', value: '2', icon: 'utility.kanban'
+			}, {
+				id: 2, text: 'Menu Item Three', value: '3', icon: 'utility.side_list'
+			}
+		];
+
+		const dropdownSampleData = {
+			selection: selection,
+			collection: collection
+		};
+
 		return {
 			models: [
 				{
-					collection: sampleData.dropdown.default.collection,
+					collection: dropdownSampleData.collection,
 					disabled: false,
-					selection: sampleData.dropdown.default.collection[1]
+					selection: dropdownSampleData.collection[dropdownSampleData.selection.value]
 				}
 			]
 		};
@@ -67,7 +88,7 @@ export default React.createClass({
 
 	setSelection (index) {
 		const models = this.state.models;
-		models[index].selection = sampleData.default.Array[5];
+		models[index].selection = models.collection.Array[3];
 		this.setState({models});
 	},
 
@@ -83,3 +104,7 @@ export default React.createClass({
 		this.setState({models});
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default DropdownExample;

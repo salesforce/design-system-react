@@ -10,21 +10,21 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 export default {
-  abbreviatedName: 'DSF',
-  cssPrefix: 'slds-',
-  displayName: 'Salesforce Lightning Design System Facades',
-  filenamePrefix: 'slds',
-  analyticsHostWhitelist: [
-    'design-system-facades.herokuapp.com',
-    'salesforce.com',
-    'www.salesforce.com'
-  ],
-  moduleName: 'design-system-facades',
-  resetWrappingClass: '.slds',
-  zipName: function(version) {
-    return this.moduleName + '-' + version + '.zip';
-  },
-  downloadPath: function(version) {
-    return '/assets/downloads/' + this.zipName(version);
-  }
+	abbreviatedName: 'DSF',
+	cssPrefix: 'slds-',
+	displayName: 'Salesforce Lightning Design System Facades',
+	filenamePrefix: 'slds',
+	analyticsHostWhitelist: [
+		'design-system-facades.herokuapp.com',
+		'salesforce.com',
+		'www.salesforce.com'
+	],
+	moduleName: 'design-system-facades',
+	resetWrappingClass: '.slds',
+	zipName: function (version) {
+		return this.moduleName + '-' + version + '.zip';
+	},
+	downloadPath: function (version) {
+		return '/assets/downloads/' + this.zipName(version);
+	}
 };

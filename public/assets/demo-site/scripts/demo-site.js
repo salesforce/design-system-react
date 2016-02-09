@@ -1,80 +1,65 @@
+document.addEventListener('DOMContentLoaded', function () {
+	var codepenSubmitLinks = document.querySelectorAll('.codepen-submit');
+
+	function codepenSubmitLinkClicked (event) {
+		var componentName = event.target.dataset.componentName;
+		document.querySelector('#codepen-form-' + componentName).submit();
+	}
+
+	for (var i = 0; i < codepenSubmitLinks.length; ++i) {
+		codepenSubmitLinks[i].addEventListener('click', codepenSubmitLinkClicked, false);
+	}
+
+});
+
+
 $(function () {
-	var $codeshareTemplate = $('.codeshare-template').clone();
-	var $globalInitialHTML = $(globalInitialHTML);
-
-	$('.codepen-submit').each(function () {
-		var el = $(this),
-			$sectionInDOM = el.closest('.control-section'),
-			$section = $globalInitialHTML.find('#' + $sectionInDOM.attr('id')),
-			controlName = String($section.find('h3').text()).trim(),
-			formId = 'codepen-form-' + $section.attr('id'),
-			$controlHTML = $section.find('.demo-html').clone(),
-			$demoCSS = $section.find('.demo-css'),
-			$demoJS = $section.find('.demo-js'),
-			HTML = '',
-			CSS = '',
-			JS = '',
-			$demoHTML;
-
-		el.data('codepenFormId', formId);
-
-		if ($controlHTML) {
-			$demoHTML = $codeshareTemplate.clone();
-			$demoHTML.find('.section-heading').text(controlName);
-			$demoHTML.find('.slds-box').append($controlHTML);
-			HTML = $demoHTML.html();
-		}
-
-		if ($demoCSS) {
-			CSS = $demoCSS.html();
-		}
-
-		if ($demoJS) {
-			JS = $demoJS.html();
-		}
-		
-		var js_external = [
-			'//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
-			'//cdnjs.cloudflare.com/ajax/libs/react/0.13.0/react.min.js',
-			'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-jquery.js',
-			'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-utilities.js'
-			// 'http://design-system-facades.herokuapp.com/build/demo-site-examples-jquery.bundle.js'
-		].join(';');
-
-		var css_external = [
-			'//www.fuelcdn.com/lightning-design-system/0.12.1/styles/salesforce-lightning-design-system.css'
-		].join(';');
-
-		var data = {
-			title              : controlName + ' :: Facades :: Salesforce Lightning Design System',
-			description        : 'A developer sandbox for Salesforce Lightning Design System Facades',
-			editors            : '101',
-			html               : HTML,
-			html_pre_processor : 'none',
-			css                : CSS,
-			css_pre_processor  : 'none',
-			css_starter        : 'neither',
-			css_prefix_free    : false,
-			js                 : JS,
-			js_pre_processor   : 'babel',
-			js_modernizr       : false,
-			js_library         : '',
-			html_classes       : '',
-			css_external       : css_external,
-			js_external        : js_external
-		};
-
-		// Escape single and double quotes
-		var JSONstring = JSON.stringify(data).replace(/"/g, "&​quot;").replace(/'/g, "&apos;");
-
-		var form = '<form id='+ formId +' class="codepen-form" action="http://codepen.io/pen/define" method="POST" target="_blank">' + 
-				'<input type="hidden" name="data" value=\'' + JSONstring + '\'>' + '</form>';
-		el.append(form);
+	$('[role="tablist"] [aria-controls]').each(function() {
+		$(this).click(function(event) {
+			var $thisTablist = $(this).parents('[role="tablist"]');
+			var $thisTabItem = $(this).parent('[role="presentation"]');
+			var $thisTablistWrapper = $thisTablist.parent();
+			var $tabItems = $thisTablist.find('[role="presentation"]');
+			var $contentItems = $thisTablistWrapper.find('[role="tabpanel"]');
+			var thisControlsId = $(this).attr('aria-controls');
+			$tabItems.removeClass('slds-active');
+			$thisTabItem.addClass('slds-active');
+			$contentItems.removeClass('slds-show').addClass('slds-hide');
+			$('#' + thisControlsId ).removeClass('slds-hide').addClass('slds-show');
+		});
+	});
+});
+$(function () {
+	var $window = $(window);
+	var $componentNav = $('#component-nav > nav');
+	var componentNavParentWidth = $('#component-nav').width();
+	var pos = $window.scrollTop();
+	$componentNav.width(componentNavParentWidth);
+	$('#component-nav__' + $('.component-wrapper').attr('id')).addClass('active');
+	$('a', $componentNav).on('click', function(e){
+		$('a', $componentNav).removeClass('active');
+		$(e.currentTarget).addClass('active');
 	});
 
-	$('.codepen-submit').click(function(){
-		$( '#' + $(this).data('codepenFormId') ).submit();
+	$window.scroll(function (ev) {
+		pos = $window.scrollTop();
+		componentNavParentWidth = $('#component-nav').width();
+		$componentNav.width(componentNavParentWidth);
+		if (pos >= 0) {
+			$componentNav.css({
+				'top': (205 - (pos > 205 ? 205 : pos))
+			})
+		}
 	});
 
-
+	$window.resize(function (ev) {
+		pos = $window.scrollTop();
+		componentNavParentWidth = $('#component-nav').width();
+		$componentNav.width(componentNavParentWidth);
+		if (pos >= 0) {
+			$componentNav.css({
+				'top': (205 - (pos > 205 ? 205 : pos))
+			})
+		}
+	});
 });

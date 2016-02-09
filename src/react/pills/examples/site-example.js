@@ -1,34 +1,29 @@
-import React from 'react';
-import {Pills} from 'design-system-react';
+import React          from 'react';
+import { Pills }      from 'design-system-react';
 
-export default React.createClass({
+// SAMPLE CONTROL CODE -->
+
+const PillsExample = React.createClass({
 	getInitialState () {
+		const selection = [
+			{
+				text: 'item 1', value: 1
+			}, {
+				text: 'item 2', value: 2
+			}, {
+				text: 'item 3', value: 3
+			}
+		];
+
 		return {
-			selection: [
-				{
-					text: 'item 1',
-					value: 1
-				},
-				{
-					text: 'item 2',
-					value: 2
-				},
-				{
-					text: 'item 3',
-					value: 3
-				}
-			],
-			open: []
+			selection: selection
 		};
 	},
 
 	render () {
 		return (
 			<div>
-				<div className="slds-col example">
-					<Pills selection={this.state.selection} onChange={this.handleChanged}/>
-				</div>
-				<div className="slds-col demo-controls"></div>
+				<Pills selection={this.state.selection} onChange={this.handleChanged}/>
 			</div>
 		);
 	},
@@ -37,3 +32,8 @@ export default React.createClass({
 		this.setState({ selection });
 	}
 });
+
+
+// <-- SAMPLE CONTROL CODE
+
+export default PillsExample;

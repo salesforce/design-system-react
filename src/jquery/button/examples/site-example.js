@@ -6,560 +6,99 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 const buttonsProperties = [
 	{
-		assistiveText: 'button-base',
-		disabled: false,
-		domNode: '.button-base',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Button Base',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-base-disabled',
-		disabled: true,
-		domNode: '.button-base-disabled',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Disabled',
-		theme: 'neutral',
-		views: []
-	},
-	{
-		assistiveText: 'button-neutral',
-		disabled: false,
-		domNode: '.button-neutral',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Button Neutral',
-		theme: 'neutral',
-		views: []
-	},
-	{
-		assistiveText: 'button-neutral-disabled',
-		disabled: true,
-		domNode: '.button-neutral-disabled',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Disabled',
-		theme: 'neutral',
-		views: []
-	},
-	{
-		assistiveText: 'button-neutral-small',
-		disabled: false,
-		domNode: '.button-neutral-small',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: 'small',
-		text: 'Small',
-		theme: 'neutral',
-		views: []
-	},
-	{
-		assistiveText: 'button-neutral-icon-left',
-		disabled: false,
-		domNode: '.button-neutral-icon-left',
-		icon: 'utility.download',
-		iconPosition: 'left',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Download',
-		theme: 'neutral',
-		views: []
-	},
-	{
-		assistiveText: 'button-neutral-icon-right',
-		disabled: false,
-		domNode: '.button-neutral-icon-right',
-		icon: 'utility.download',
-		iconPosition: 'right',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Download',
-		theme: 'neutral',
-		views: []
-	},
-	{
-		assistiveText: 'button-brand',
-		disabled: false,
-		domNode: '.button-brand',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Button Brand',
-		theme: 'brand',
-		views: []
-	},
-	{
-		assistiveText: 'button-brand-disabled',
-		disabled: true,
-		domNode: '.button-brand-disabled',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Disabled',
-		theme: 'brand',
-		views: []
-	},
-	{
-		assistiveText: 'button-brand-small',
-		disabled: false,
-		domNode: '.button-brand-small',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: 'small',
-		text: 'Small',
-		theme: 'brand',
-		views: []
-	},
-	{
-		assistiveText: 'button-destructive',
-		disabled: false,
-		domNode: '.button-destructive',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Button Destructive',
-		theme: 'destructive',
-		views: []
-	},
-	{
-		assistiveText: 'button-destructive-disabled',
-		disabled: true,
-		domNode: '.button-destructive-disabled',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Disabled',
-		theme: 'destructive',
-		views: []
-	},
-	{
-		assistiveText: 'button-destructive-small',
-		disabled: false,
-		domNode: '.button-destructive-small',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: 'small',
-		text: 'Small',
-		theme: 'destructive',
-		views: []
-	},
-	{
-		assistiveText: 'button-inverse',
-		disabled: false,
-		domNode: '.button-inverse',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Button Inverse',
-		theme: 'inverse',
-		views: []
-	},
-	{
-		assistiveText: 'button-inverse-disabled',
-		disabled: true,
-		domNode: '.button-inverse-disabled',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Disabled',
-		theme: 'inverse',
-		views: []
-	},
-	{
-		assistiveText: 'button-inverse-small',
-		disabled: false,
-		domNode: '.button-inverse-small',
-		icon: '',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: 'small',
-		text: 'Small',
-		theme: 'inverse',
-		views: []
-	},
-	{
-		assistiveText: 'button-stateful',
-		disabled: false,
-		domNode: '.button-stateful',
-		icon: 'utility.add',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Follow',
-		theme: 'neutral',
-		views: [
+		assistiveText: 'button-base', text: 'Button Base'
+	}, {
+		assistiveText: 'button-base-disabled', disabled: true, text: 'Disabled'
+	}, {
+		assistiveText: 'button-neutral', text: 'Button Neutral', theme: 'neutral'
+	}, {
+		assistiveText: 'button-neutral-disabled', disabled: true, text: 'Disabled', theme: 'neutral'
+	}, {
+		assistiveText: 'button-neutral-small', size: 'small', text: 'Small', theme: 'neutral'
+	}, {
+		assistiveText: 'button-neutral-icon-left', icon: 'utility.download', iconPosition: 'left', text: 'Download', theme: 'neutral'
+	}, {
+		assistiveText: 'button-neutral-icon-right', icon: 'utility.download', iconPosition: 'right', text: 'Download', theme: 'neutral'
+	}, {
+		assistiveText: 'button-brand', text: 'Button Brand', theme: 'brand'
+	}, {
+		assistiveText: 'button-brand-disabled', disabled: true, text: 'Disabled', theme: 'brand'
+	}, {
+		assistiveText: 'button-brand-small', size: 'small', text: 'Small', theme: 'brand'
+	}, {
+		assistiveText: 'button-destructive', text: 'Button Destructive', theme: 'destructive'
+	}, {
+		assistiveText: 'button-destructive-disabled', disabled: true, text: 'Disabled', theme: 'destructive'
+	}, {
+		assistiveText: 'button-destructive-small', size: 'small', text: 'Small', theme: 'destructive'
+	}, {
+		assistiveText: 'button-inverse', text: 'Button Inverse', theme: 'inverse'
+	}, {
+		assistiveText: 'button-inverse-disabled', disabled: true, text: 'Disabled', theme: 'inverse'
+	}, {
+		assistiveText: 'button-inverse-small', size: 'small', text: 'Small', theme: 'inverse'
+	}, {
+		assistiveText: 'button-stateful', icon: 'utility.add', text: 'Follow', theme: 'neutral', views: [
 			{
-				text: 'Following',
-				view: 'selected',
-				icon: 'utility.check'
-			},
-			{
-				text: 'Unfollow',
-				view: 'selectedHover',
-				icon: 'utility.close'
+				text: 'Following', view: 'selected', icon: 'utility.check'
+			}, {
+				text: 'Unfollow', view: 'selectedHover', icon: 'utility.close'
 			}
 		]
-	},
-	{
-		assistiveText: 'button-stateful-inverse',
-		disabled: false,
-		domNode: '.button-stateful-inverse',
-		icon: 'utility.add',
-		iconPosition: '',
-		iconStyle: '',
-		iconSize: '',
-		size: '',
-		text: 'Follow',
-		theme: 'inverse',
-		views: [
+	}, {
+		assistiveText: 'button-stateful-inverse', icon: 'utility.add', text: 'Follow', theme: 'inverse', views: [
 			{
-				text: 'Following',
-				view: 'selected',
-				icon: 'utility.check'
-			},
-			{
-				text: 'Unfollow',
-				view: 'selectedHover',
-				icon: 'utility.close'
+				text: 'Following', view: 'selected', icon: 'utility.check'
+			}, {
+				text: 'Unfollow', view: 'selectedHover', icon: 'utility.close'
 			}
 		]
-	},
-	{
-		assistiveText: 'button-icon-bare-x-small',
-		disabled: false,
-		domNode: '.button-icon-bare-x-small',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare',
-		iconSize: 'x-small',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-bare-small',
-		disabled: false,
-		domNode: '.button-icon-bare-small',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare',
-		iconSize: 'small',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-bare',
-		disabled: false,
-		domNode: '.button-icon-bare',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-bare-large',
-		disabled: false,
-		domNode: '.button-icon-bare-large',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare',
-		iconSize: 'large',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-bare-x-small--disabled',
-		disabled: true,
-		domNode: '.button-icon-bare-x-small--disabled',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare',
-		iconSize: 'x-small',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-bare-small--disabled',
-		disabled: true,
-		domNode: '.button-icon-bare-small--disabled',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare',
-		iconSize: 'small',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-bare--disabled',
-		disabled: true,
-		domNode: '.button-icon-bare--disabled',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-bare-large--disabled',
-		disabled: true,
-		domNode: '.button-icon-bare-large--disabled',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare',
-		iconSize: 'large',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-container',
-		disabled: false,
-		domNode: '.button-icon-container',
-		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-container',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-container-disabled',
-		disabled: true,
-		domNode: '.button-icon-container-disabled',
-		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-container',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-border',
-		disabled: false,
-		domNode: '.button-icon-border',
-		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-border',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-border-disabled',
-		disabled: true,
-		domNode: '.button-icon-border-disabled',
-		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-border',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-border-filled',
-		disabled: false,
-		domNode: '.button-icon-border-filled',
-		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-border-filled',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-border-filled-disabled',
-		disabled: true,
-		domNode: '.button-icon-border-filled-disabled',
-		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-border-filled',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-more',
-		disabled: false,
-		domNode: '.button-icon-more',
-		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-more',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-more-disabled',
-		disabled: true,
-		domNode: '.button-icon-more-disabled',
-		icon: 'utility.table',
-		iconPosition: '',
-		iconStyle: 'icon-more',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-stateful',
-		disabled: false,
-		domNode: '.button-icon-stateful',
-		icon: 'utility.like',
-		iconPosition: '',
-		iconStyle: 'icon-border',
-		iconSize: '',
-		selected: false,
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-inverse',
-		disabled: false,
-		domNode: '.button-icon-inverse',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-inverse',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-inverse-disabled',
-		disabled: true,
-		domNode: '.button-icon-inverse-disabled',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-inverse',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-bare-hint',
-		disabled: false,
-		domNode: '.button-icon-bare-hint',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-bare-hint',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-border-hint',
-		disabled: false,
-		domNode: '.button-icon-border-hint',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-border-hint',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-border-filled-hint',
-		disabled: false,
-		domNode: '.button-icon-border-filled-hint',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-border-filled-hint',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
-	},
-	{
-		assistiveText: 'button-icon-container-hint',
-		disabled: false,
-		domNode: '.button-icon-container-hint',
-		icon: 'utility.close',
-		iconPosition: '',
-		iconStyle: 'icon-container-hint',
-		iconSize: '',
-		size: '',
-		text: '',
-		theme: '',
-		views: []
+	}, {
+		assistiveText: 'button-icon-bare-x-small', icon: 'utility.close', iconStyle: 'icon-bare', iconSize: 'x-small'
+	}, {
+		assistiveText: 'button-icon-bare-small', icon: 'utility.close', iconStyle: 'icon-bare', iconSize: 'small'
+	}, {
+		assistiveText: 'button-icon-bare', icon: 'utility.close', iconStyle: 'icon-bare'
+	}, {
+		assistiveText: 'button-icon-bare-large', icon: 'utility.close', iconStyle: 'icon-bare', iconSize: 'large'
+	}, {
+		assistiveText: 'button-icon-bare-x-small--disabled', disabled: true, icon: 'utility.close', iconStyle: 'icon-bare', iconSize: 'x-small'
+	}, {
+		assistiveText: 'button-icon-bare-small--disabled', disabled: true, icon: 'utility.close', iconStyle: 'icon-bare', iconSize: 'small'
+	}, {
+		assistiveText: 'button-icon-bare--disabled', disabled: true, icon: 'utility.close', iconStyle: 'icon-bare'
+	}, {
+		assistiveText: 'button-icon-bare-large--disabled', disabled: true, icon: 'utility.close', iconStyle: 'icon-bare', iconSize: 'large'
+	}, {
+		assistiveText: 'button-icon-container', icon: 'utility.table', iconStyle: 'icon-container'
+	}, {
+		assistiveText: 'button-icon-container-disabled', disabled: true, icon: 'utility.table', iconStyle: 'icon-container'
+	}, {
+		assistiveText: 'button-icon-border', icon: 'utility.table', iconStyle: 'icon-border'
+	}, {
+		assistiveText: 'button-icon-border-disabled', disabled: true, icon: 'utility.table', iconStyle: 'icon-border'
+	}, {
+		assistiveText: 'button-icon-border-filled', icon: 'utility.table', iconStyle: 'icon-border-filled'
+	}, {
+		assistiveText: 'button-icon-border-filled-disabled', disabled: true, icon: 'utility.table', iconStyle: 'icon-border-filled'
+	}, {
+		assistiveText: 'button-icon-more', icon: 'utility.table', iconStyle: 'icon-more'
+	}, {
+		assistiveText: 'button-icon-more-disabled', disabled: true, icon: 'utility.table', iconStyle: 'icon-more'
+	}, {
+		assistiveText: 'button-icon-stateful', icon: 'utility.like', iconStyle: 'icon-border', selected: false
+	}, {
+		assistiveText: 'button-icon-inverse', icon: 'utility.close', iconStyle: 'icon-inverse'
+	}, {
+		assistiveText: 'button-icon-inverse-disabled', disabled: true, icon: 'utility.close', iconStyle: 'icon-inverse'
+	}, {
+		assistiveText: 'button-icon-bare-hint', icon: 'utility.close', iconStyle: 'icon-bare-hint'
+	}, {
+		assistiveText: 'button-icon-border-hint', icon: 'utility.close', iconStyle: 'icon-border-hint'
+	}, {
+		assistiveText: 'button-icon-border-filled-hint', icon: 'utility.close', iconStyle: 'icon-border-filled-hint'
+	}, {
+		assistiveText: 'button-icon-container-hint', icon: 'utility.close', iconStyle: 'icon-container-hint'
 	}
 ];
 
@@ -592,7 +131,7 @@ $(function () {
 				}
 			}
 		});
-		buttons['button' + index] = new Button($('#button-jquery-control ' + value.domNode), thisButtonProperties);
+		buttons['button' + index] = new Button($('#button__' + value.assistiveText), thisButtonProperties);
 		void (buttons['button' + index]);
 	});
 
@@ -629,7 +168,7 @@ $(function () {
 	$('#button-stateful-jquery-recreate').on('click', function () {
 		$('#button-stateful-jquery-destroy').attr('disabled', false);
 		$('#button-stateful-jquery-recreate').attr('disabled', true);
-		buttons.button16 = new Button($('#button-jquery-control .button-stateful'), {
+		buttons.button16 = new Button($('#button__button-stateful'), {
 			assistiveText: 'button-stateful',
 			disabled: false,
 			icon: 'utility.add',

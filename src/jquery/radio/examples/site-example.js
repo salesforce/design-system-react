@@ -5,28 +5,18 @@ const $ = Lib.global.jQuery || Lib.global.$;
 // SAMPLE CONTROL CODE -->
 
 $(function () {
-	const radios = new Radios($('#radio-jquery-control'), {
-		labelText: 'Radio Group Label',
-		name: 'rads',
-		radios: [
+	const radiosProperties = {
+		labelText: 'Radio Group Label', name: 'rads', radios: [
 			{
-				text: 'Checked',
-				value: 'value9',
-				checked: true
-			},
-			{
-				text: 'Unchecked',
-				value: 'value10',
-				checked: false
-			},
-			{
-				text: 'Unchecked Disabled',
-				value: 'value11',
-				checked: false,
-				disabled: true
+				text: 'Checked', value: 'value9', checked: true
+			}, {
+				text: 'Unchecked', value: 'value10', checked: false
+			}, {
+				text: 'Unchecked Disabled', value: 'value11', checked: false, disabled: true
 			}
 		]
-	});
+	};
+	const radios = new Radios($('#radio__radio--0'), radiosProperties);
 
 	$('#radio-jquery-checkFirst').on('click', function () {
 		console.log('check first');

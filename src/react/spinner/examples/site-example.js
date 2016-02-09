@@ -1,11 +1,9 @@
-import React from 'react';
-import {Spinner} from 'design-system-react';
+import React       from 'react';
+import { Spinner } from 'design-system-react';
 
-// require('../../../scss/components/grid-system/flavors/automatic-sizing/index.scss');
-// require('../../../scss/components/grid-system/flavors/horizontal-alignment-spread/index.scss');
-// require('../../../scss/components/grid-system/flavors/vertical-alignment/index.scss');
+// SAMPLE CONTROL CODE -->
 
-export default React.createClass({
+const SpinnerExample = React.createClass({
 	render () {
 		return (
 			<div>
@@ -51,3 +49,7 @@ export default React.createClass({
 		);
 	}
 });
+
+// <-- SAMPLE CONTROL CODE
+
+export default SpinnerExample;

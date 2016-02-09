@@ -6,34 +6,34 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 $(function () {
 	// notification
-	const notification1 = new Notification($('#notification-jquery-control .notification1'), {
+	const notification0 = new Notification($('#notification__notification--0'), {
 		text: 'Base System Alert'
 	});
-	const notification2 = new Notification($('#notification-jquery-control .notification2'), {
+	const notification1 = new Notification($('#notification__notification--1'), {
 		text: 'Scheduled Maintenance Notification: Sunday March 15, 8:00 AM-10:00 PST',
 		theme: 'success'
 	});
-	const notification3 = new Notification($('#notification-jquery-control .notification3'), {
+	const notification2 = new Notification($('#notification__notification--2'), {
 		text: 'Your browser is currently not supported. Your Salesforce may be degraded.',
 		theme: 'error'
 	});
-	const notification4 = new Notification($('#notification-jquery-control .notification4'), {
+	const notification3 = new Notification($('#notification__notification--3'), {
 		text: 'You are in offline mode.',
 		theme: 'offline'
 	});
 
 	// methods
 	$('#notification-jquery-hide').on('click', function () {
-		notification4.hide();
+		notification3.hide();
 	});
 
 	$('#notification-jquery-show').on('click', function () {
-		notification4.show();
+		notification3.show();
 	});
 
+	void(notification0);
 	void(notification1);
 	void(notification2);
-	void(notification3);
 });
 
 // <-- SAMPLE CONTROL CODE

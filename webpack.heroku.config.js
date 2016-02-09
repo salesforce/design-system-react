@@ -31,15 +31,18 @@ var config = {
 		],
 		alias: {
 			'design-system-jquery': path.join(__dirname, 'src/jquery/dist.js'),
+			'design-system-utilities': path.join(__dirname, 'utilities/main.js'),
 			'design-system-react': path.join(__dirname, 'src/react/dist.js'),
-			'design-system-utilities': path.join(__dirname, 'utilities/main.js')
+			'design-system-utilities-jquery': path.join(__dirname, 'utilities/jquery.js'),
+			'design-system-utilities-react': path.join(__dirname, 'utilities/react.js')
 		}
 	},
 	devtool: 'source-map',
 	output: {
 		path: __dirname + '/build/',
 		publicPath: '/build/',
-		filename: '[name].bundle.js'
+		filename: '[name].bundle.js',
+		devtoolLineToLine: true
 	},
 	module: {
 		loaders: [
