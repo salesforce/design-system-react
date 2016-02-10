@@ -135,9 +135,19 @@ module.exports = React.createClass({
     }
   },
 
+  parseDate(strValue) {
+    const d = this.props.parser(strValue);
+    if ( Object.prototype.toString.call(d) === "[object Date]" ) {
+      if ( !isNaN( d.getTime() ) ) {
+        return d;
+      }
+    }
+    return new Date();
+  },
+
   popover() {
     if(this.state && this.state.isOpen){
-      const date = this.state.strValue?this.props.parser(this.state.strValue):this.state.value;
+      const date = this.state.strValue?this.parseDate(this.state.strValue):this.state.value;
       return <SLDSPopover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
         <SLDSDatePicker
           onChange={this.handleChange}
