@@ -187,13 +187,18 @@ module.exports = React.createClass({
     }
   },
 
+  getInputIcon(){
+    return <InputIcon name='event' style={{pointerEvents: 'none'}} />;
+  },
+
   render() {
     return (
       <div className='slds-form-element'>
         <label className='slds-form-element__label' htmlFor='date'>{this.props.label}</label>
         <div className='slds-form-element__control'>
           <div className='slds-input-has-icon slds-input-has-icon--right'>
-            <InputIcon name='event'/>
+
+            { this.getInputIcon() }
             <input
               name='date'
               ref='date'
