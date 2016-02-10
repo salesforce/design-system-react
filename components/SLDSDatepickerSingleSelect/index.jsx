@@ -44,6 +44,8 @@ const propTypes = {
    */
   value: React.PropTypes.instanceOf(Date),
 
+  strValue: React.PropTypes.string,
+
   weekDayLabels: React.PropTypes.array,
 
 
@@ -51,9 +53,11 @@ const propTypes = {
 const defaultProps = {
   abbrWeekDayLabels: ['S','M','T','W','T','F','S'],
   formatter (date) {
-    return (date.getMonth()+1) +
-      '/'+date.getDate() +
-      '/'+date.getFullYear();
+    if(date){
+      return (date.getMonth()+1) +
+        '/'+date.getDate() +
+        '/'+date.getFullYear();
+    }
   },
   monthLabels: [
     'January','February','March',
@@ -92,13 +96,15 @@ module.exports = React.createClass({
   getInitialState(){
     return {
       isOpen:false,
-      value:this.props.value
+      value:this.props.value,
+      strValue:this.props.strValue
     };
   },
 
   handleChange(date) {
     this.setState({
       value:date,
+      strValue:this.props.formatter(date),
       isOpen:false
     });
     if(this.props.onDateChange){
@@ -131,6 +137,7 @@ module.exports = React.createClass({
 
   popover() {
     if(this.state && this.state.isOpen){
+      const date = this.state.strValue?this.props.parser(this.state.strValue):this.state.value;
       return <SLDSPopover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
         <SLDSDatePicker
           onChange={this.handleChange}
@@ -142,22 +149,20 @@ module.exports = React.createClass({
           todayLabel={this.props.todayLabel}
           relativeYearFrom={this.props.relativeYearFrom}
           relativeYearTo={this.props.relativeYearTo}
-          selectedDate={this.state.value?this.state.value:new Date()} />
+          selectedDate={date?date:new Date()} />
       </SLDSPopover>;
     }
     return <span />;
   },
 
   handleInputChange() {
-    let string = ReactDOM.findDOMNode(this.refs.date).value;
-    let date = this.props.parser(string);
-    if(date){
+    const string = ReactDOM.findDOMNode(this.refs.date).value;
+    if(string){
       this.setState({
-        value:date,
-        string:string
+        strValue:string
       });
       if(this.props.onDateChage){
-        this.props.onDateChange(value)
+//        this.props.onDateChange(value)
       }
     }
     else{
@@ -195,7 +200,7 @@ module.exports = React.createClass({
               className='slds-input'
               type='text'
               placeholder={this.props.placeholder}
-              value={this.state.value?this.props.formatter(this.state.value):''}
+              value={this.state.strValue}
               onKeyDown={this.handleKeyDown}
               onChange={this.handleInputChange}
               onClick={this.handleClick}
