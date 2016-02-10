@@ -55,6 +55,7 @@ module.exports = React.createClass( {
           options={this.getOptions()}
           placeholder='Year'
           checkmark={false}
+          modal={false}
           value={this.props.displayedDate.getFullYear()}
           onSelect={this.handleSelect}
           className='slds-picklist--fluid slds-shrink-none'
