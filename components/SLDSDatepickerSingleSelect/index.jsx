@@ -171,8 +171,9 @@ module.exports = React.createClass({
       this.setState({
         strValue:string
       });
-      if(this.props.onDateChage){
-//        this.props.onDateChange(value)
+      if(this.props.onDateChange){
+        const d = this.props.parser(string)
+        this.props.onDateChange(d);
       }
     }
     else{
