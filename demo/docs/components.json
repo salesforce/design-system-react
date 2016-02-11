@@ -382,6 +382,26 @@
             }
         }
     },
+    "SLDSContextBar": {
+        "description": "The SLDSContextBar component ... yada yada yada",
+        "displayName": "SLDSContextBar",
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Children are expected to be components. yada yada yada"
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
     "SLDSIcon": {
         "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.",
         "displayName": "SLDSIcon",
