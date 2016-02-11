@@ -59,7 +59,7 @@
 			<% if (true) { %>
 			  <section id="title" class="slds-col--padded">
 				  <div class="annotation">
-					<h1 class="slds-text-heading--label  | slds-m-vertical--large slds-m-horizontal--medium">Design System Facades</h1>
+					<h1 class="slds-text-heading--label  | slds-m-vertical--large slds-m-horizontal--medium"><a href="/">Design System Facades</a></h1>
 					<h2 class="slds-text-heading--medium slds-hide | slds-m-vertical--large slds-m-horizontal--medium"><var><%= path.dirname(source) %>/<%= path.basename(source) %></var></h2>
 				  </div>
 			  </section>
@@ -67,7 +67,7 @@
 			<% for (var i=0, l=sections.length; i<l; i++) { %>
 			<% var section = sections[i]; %>
 			<section id="section-<%= i + 1 %>" class="slds-col">
-				<div class="slds-m-horizontal--large ">
+				<div class="slds-m-horizontal--large">
 					<div class="slds-grid slds-wrap">
 						<div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3 | annotation comments">
 						  <% heading = section.docsHtml.match(/^\s*<(h\d)>/) %>

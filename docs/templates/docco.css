@@ -343,7 +343,7 @@ blockquote {
 			top: 35px;
 		}
 
-	ul.sections > li > div.annotation:hover .pilcrow {
+	.sections .annotation:hover a.pilcrow {
 		opacity: 1;
 	}
 /*}*/

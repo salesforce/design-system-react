@@ -8,41 +8,122 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-// # Badge Control --- React Facade
-//
-// > See a [live example](/react/badge) of the badge component in action
-//
-//
+
+// # Badge Component --- React Facade
+
 // Implements the [Badge design pattern](https://www.lightningdesignsystem.com/components/badges) in React.
 
-/* TODO: Add a full API description of the control here. */
+// [![Badge component example screenshot](/assets/demo-site/images/component-examples/badge.png "See a live example of the Badge component in action")](/react/badge)
 
-// Bring in the [shared library functions](../lib/lib.html).
-import * as Lib from '../../lib/lib';
+// > See a [live example](/react/badge) of the Badge component in action
 
-// Use the [shared core](../../core/badge.html), which contains logic that is the same in every facade.
-import BadgeCore, {CONTROL} from '../../core/badge';
+// ## API
 
-// ## Framework specific
-// React and ReactDOM are external depdencies of the project.
-import React from 'react';
-import State from '../mixins/state';
-import Events from '../mixins/events';
-import genericWillMount from '../mixins/generic-will-mount';
+/* @todo Add a full API description of the control here. */
+
+// ## Dependencies
+
+// Bring in the [shared library functions](../../lib/lib.html).
+import * as Lib               from '../../lib/lib';
+
+// Use the [shared core](../../core/badge.html), which contains logic that is
+// the same in every facade.
+import BadgeCore, { CONTROL } from '../../core/badge';
+
+// ### React
+// React is an external dependencies of the project.
+import React                  from 'react';
+
+// ### Mixins
+
+// These are mixins that appear in every Façade, bringing consistency between
+// how each framework deals with instantiation, events, and state.
+
+// #### Events
+// [../mixins/events](../mixins/events.html)
+import Events                 from '../mixins/events';
+
+// #### Generic Will Mount
+// [../mixins/generic-will-mount](../mixins/generic-will-mount.html)
+import genericWillMount       from '../mixins/generic-will-mount';
+
+// #### State
+// [../mixins/state](../mixins/state.html)
+import State                  from '../mixins/state';
+
+// ## Badge Object
 export const BadgeObject = {
+	// ### Mixins
+
+	// The React facade specifically is also extended via React's standard
+	// mixin model. These three mixins hook into native React Wycliffe events
+	// and expose functionality needed for a cross-framework core. For
+	// example, some places in the core or traits a `setState` method is used.
+	//
+	// In React this is built in to the framework, and the other facades
+	// simply borrow the idea for their own use.
+	//
+	// Similarly, a `setProperties` method is available but in React it is
+	// actually a `noop` because React expects a one-way data flow, while in
+	// other Frameworks it typically does something very similar to
+	// `setState`.
 	mixins: [State, Events, genericWillMount],
+
+	// ### Display Name
+	// Always use the canonical component name (set in the core) as the React
+	// display name.
 	displayName: CONTROL,
+
+	// ### Prop Types
 	propTypes: {
 		children: React.PropTypes.any.isRequired,
 		theme: React.PropTypes.oneOf(Object.keys(BadgeCore.themes))
 	},
+
+	// ### Render
 	render () {
 		return (
 			<span className={this._getClassNames()}>{this.props.children}</span>
 		);
 	}
 };
-let Badge = Lib.merge({}, BadgeCore, BadgeObject);
+
+// ## Badge
+
+// Façades **extends objects** by merging them together, rather than via the
+// prototype chain or imitation of object-oriented inheritance. The important
+// thing to remember is that _some methods will be available to the component
+// which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Badge extends its [core](../../core/badge.html),
+// which in turn extends the base component.
+
+let Badge = Lib.merge(
+	{},
+	BadgeCore,
+	BadgeObject
+);
+
+
+// ### Run the helpers
+
+// `Helpers` are a feature of Façades that allows anyone to register code that
+// can manipulate the component before it is encapsulated in a React class.
+//
+// This allows flexibility for adding custom behavior without modifying the
+// original source, or for adding optional behavior.
+//
+// For example, the jQuery facade uses this mechanism to optionally create
+// jQuery plug-in versions of each component. Nothing in the component itself
+// should ever depend on the presence of helpers, as they are completely
+// optional.
 Badge = Lib.runHelpers('react', CONTROL, Badge);
+
+// Once everything has been merged together and all registered helpers have
+// been run we can create the React class and export the result for
+// consumption by our apps.
 Badge = React.createClass(Badge);
+
 export default Badge;

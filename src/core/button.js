@@ -9,10 +9,20 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Button Control
-// ### Core
+// # Button Component --- Core
+//
+// Implements the [Button design pattern](https://www.lightningdesignsystem.com/components/buttons) in React.
 
-// Bring in the [shared library functions](../lib/lib.html).
+// Buttons are used within many other components in this library. There are many variations, as well as stateful buttons.
+
+
+// ![Button component example screenshot](/assets/demo-site/images/component-examples/button.png "Button component example screenshot")
+
+// ## Button Façades
+// * [jQuery Button component](/jquery/button)
+// * [React Button component](/react/button)
+
+// Bring in the [shared library functions](../../lib/lib.html).
 import * as Lib from '../lib/lib';
 
 // Inherit from the [base control](base.html).
@@ -31,17 +41,17 @@ const ButtonCore = Lib.merge({}, Base, {
 
 	// Save a list of any CSS classes used within this control which will need to be used later to find specific elements or perform other operations. It's not neccessary to list every single class here as many are used only by the template or render function.
 	cssClasses: {
-		CONTROL: 'slds-button',
-		NOT_SELECTED: 'slds-not-selected',
-		SELECTED: 'slds-is-selected'
+		CONTROL                   : 'slds-button',
+		NOT_SELECTED              : 'slds-not-selected',
+		SELECTED                  : 'slds-is-selected'
 	},
 
 	// [Themes (or variants)](https://www.lightningdesignsystem.com/components/buttons) that dictate the general style of and are applied to the `<button>`.
 	themes: {
-		'neutral': 'slds-button--neutral',
-		'brand': 'slds-button--brand',
-		'destructive': 'slds-button--destructive',
-		'inverse': 'slds-button--inverse'
+		'neutral'                 : 'slds-button--neutral',
+		'brand'                   : 'slds-button--brand',
+		'destructive'             : 'slds-button--destructive',
+		'inverse'                 : 'slds-button--inverse'
 	},
 
 	// Sizes dictate height of the `<button>`.
@@ -51,33 +61,33 @@ const ButtonCore = Lib.merge({}, Base, {
 
 	// `iconButtonStyles` are styles of buttons and the class is applied to the `<button>`, not the icon or SVG.
 	iconButtonStyles: {
-		'icon-bare': 'slds-button--icon-bare',
-		'icon-bare-hint': 'slds-button--icon-bare',
-		'icon-border': 'slds-button--icon-border',
-		'icon-border-hint': 'slds-button--icon-border',
-		'icon-border-filled': 'slds-button--icon-border-filled',
-		'icon-border-filled-hint': 'slds-button--icon-border-filled',
-		'icon-container': 'slds-button--icon-container',
-		'icon-container-hint': 'slds-button--icon-container',
-		'icon-inverse': 'slds-button--icon-inverse',
-		'icon-inverse-hint': 'slds-button--icon-inverse',
-		'icon-more': 'slds-button--icon-more',
-		'icon-more-hint': 'slds-button--icon-more',
-		'icon-small': 'slds-button--icon-small',
-		'icon-small-hint': 'slds-button--icon-small',
-		'picklist-label': 'slds-picklist__label'
+		'icon-bare'               : 'slds-button--icon-bare',
+		'icon-bare-hint'          : 'slds-button--icon-bare',
+		'icon-border'             : 'slds-button--icon-border',
+		'icon-border-hint'        : 'slds-button--icon-border',
+		'icon-border-filled'      : 'slds-button--icon-border-filled',
+		'icon-border-filled-hint' : 'slds-button--icon-border-filled',
+		'icon-container'          : 'slds-button--icon-container',
+		'icon-container-hint'     : 'slds-button--icon-container',
+		'icon-inverse'            : 'slds-button--icon-inverse',
+		'icon-inverse-hint'       : 'slds-button--icon-inverse',
+		'icon-more'               : 'slds-button--icon-more',
+		'icon-more-hint'          : 'slds-button--icon-more',
+		'icon-small'              : 'slds-button--icon-small',
+		'icon-small-hint'         : 'slds-button--icon-small',
+		'picklist-label'          : 'slds-picklist__label'
 	},
 
 	_defaultProperties: {
-		iconPosition: 'left',
-		iconSize: null,
-		iconStyle: null,
-		selected: null,
-		size: null,
-		theme: null,
-		truncate: false,
-		views: [],
-		children: []
+		iconPosition              : 'left',
+		iconSize                  : null,
+		iconStyle                 : null,
+		selected                  : null,
+		size                      : null,
+		theme                     : null,
+		truncate                  : false,
+		views                     : [],
+		children                  : []
 	},
 
 	// `_canSelect` informs the trait, [SelectableBoolean](../traits/selectable-boolean.html), whether the button can be selected. Disabled controls cannot be selected.
