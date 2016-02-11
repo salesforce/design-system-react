@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus#dropdown) in React.
 
-// ![Dropdown component example screenshot](/assets/demo-site/images/component-examples/dropdown.png "Dropdown component example screenshot")
+// [![Dropdown component example screenshot](/assets/demo-site/images/component-examples/dropdown.png "Dropdown component example screenshot")](/react/dropdown)
 
 // > See a [live example](/react/dropdown) of the Dropdown component in action
 
@@ -26,7 +26,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // Bring in the [shared library functions](../../lib/lib.html).
 import * as Lib                from '../../lib/lib';
 
-// Use the [shared core](../../core/dropdown.html), which contains logic that is the same in every facade.
+// Use the [shared core](../../core/dropdown.html), which contains logic that
+// is the same in every facade.
 import DropdownCore, {CONTROL} from '../../core/dropdown';
 
 // ### Traits
@@ -40,18 +41,21 @@ import Openable                from '../../traits/openable';
 import React                   from 'react';
 
 // ### Mixins
-// These are mixins that appear in every Façade, bringing consistency between how each framework deals with instantiation, events, and state.
+
+// These are mixins that appear in every Façade, bringing consistency between
+// how each framework deals with instantiation, events, and state.
 
 // #### Is Icon
-// The [isIcon mixin](../svg/svg.html) for React to checks whether a prop provides an icon format
-import isIcon                        from '../mixins/custom-prop-types/icon.js';
+// The [isIcon mixin](../mixins/custom-prop-types/icon.html) for React to
+// checks whether a prop provides an icon format
+import isIcon                  from '../mixins/custom-prop-types/icon.js';
 
 // ### Children
 // [PicklistItems](../picklist/picklist-items.html)
-import PicklistItems from '../picklist/picklist-items';
+import PicklistItems           from '../picklist/picklist-items';
 
 // [Button](../button/button.html)
-import Button from '../button/button';
+import Button                  from '../button/button';
 
 // [PicklistObject](../picklist/picklist.html)
 import { PicklistObject }      from '../picklist/picklist';
@@ -59,31 +63,26 @@ import { PicklistObject }      from '../picklist/picklist';
 // ## DropdownObject
 export const DropdownObject = Lib.merge(PicklistObject, {
 	// ### Display Name
+	// Always use the canonical component name (set in the core) as the React
+	// display name.
 	displayName: CONTROL,
 
 	// ### Prop Types
 	propTypes: {
-		// - collection
-		// > TODO: Type of collection unknown until parsed by Data Adapter
-		collection: React.PropTypes.oneOfType([
+		// > @todo Type of collection unknown until parsed by Data Adapter
+		collection  : React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		// - disabled
-		disabled: React.PropTypes.bool,
-		// - icon
-		icon: isIcon,
-		// - id
-		id: React.PropTypes.string,
-		// - renderArrow
-		renderArrow: React.PropTypes.bool,
-		// - selection
-		selection: React.PropTypes.oneOfType([
+		disabled    : React.PropTypes.bool,
+		icon        : isIcon,
+		id          : React.PropTypes.string,
+		renderArrow : React.PropTypes.bool,
+		selection   : React.PropTypes.oneOfType([
 			React.PropTypes.string,
 			React.PropTypes.object
 		]),
-		// - swapIcon
-		swapIcon: React.PropTypes.bool
+		swapIcon    : React.PropTypes.bool
 	},
 
 	// ### Get Icon
@@ -135,15 +134,38 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 });
 
 // ## Dropdown
-let Dropdown = Lib.merge({}, DropdownCore, DropdownObject);
 
-// ### Run the helpers
-// `Helpers` are a feature of Facades that allows anyone to register code that can manipulate the component before it is encapsulated in a React class.
-// This allows flexibility for adding custom behavior without modifying the original source, or for adding optional behavior.
-// For example, the jQuery facade uses this mechanism to optionally create jQuery plug-in versions of each component. Nothing in the component itself should ever depend on the presence of helpers, as they are completely optional.
+// Façades **extends objects** by merging them together, rather than via the
+// prototype chain or imitation of object-oriented inheritance. The important
+// thing to remember is that _some methods will be available to the component
+// which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Dropdown extends its [core](../../core/dropdown.html),
+// which in turn extends the base component.
+
+let Dropdown = Lib.merge(
+	{},
+	DropdownCore,
+	DropdownObject
+);
+
+// `Helpers` are a feature of Façades that allows anyone to register code that
+// can manipulate the component before it is encapsulated in a React class.
+//
+// This allows flexibility for adding custom behavior without modifying the
+// original source, or for adding optional behavior.
+//
+// For example, the jQuery facade uses this mechanism to optionally create
+// jQuery plug-in versions of each component. Nothing in the component itself
+// should ever depend on the presence of helpers, as they are completely
+// optional.
 Dropdown = Lib.runHelpers('react', CONTROL, Dropdown);
 
-// Once everything has been merged together and all registered helpers have been run we can create the React class and export the result for consumption by our apps.
+// Once everything has been merged together and all registered helpers have
+// been run we can create the React class and export the result for
+// consumption by our apps.
 Dropdown = React.createClass(Dropdown);
 
 export default Dropdown;
