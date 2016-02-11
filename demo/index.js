@@ -38,7 +38,7 @@ const routes = (
       <Route name="button-stateful" path="button-stateful" handler={ButtonStatefulSection}/>
       <Route name="button-group" path="button-group" handler={ButtonGroupSection}/>
       <Route name="dateinput" path="dateinput" handler={DateInputSection}/>
-      <Route name="timepicker" path="datepicker" handler={TimePickerSection}/>
+      <Route name="timepicker" path="timepicker" handler={TimePickerSection}/>
       <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
       <Route name="dropdown" path="dropdown" handler={DropdownBaseSection}/>
       <Route name="icon" path="icon" handler={IconSection}/>

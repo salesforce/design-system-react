@@ -22,6 +22,7 @@ const Samples =  {
   Tooltips2: require('fs').readFileSync('demo/code-snippets/TooltipExamples2.js', 'utf8'),
   Tooltips3: require('fs').readFileSync('demo/code-snippets/TooltipExamples3.js', 'utf8'),
   DatepickerSingleSelect: require('fs').readFileSync('demo/code-snippets/DateInputExample-1.js', 'utf8'),
+  Timepicker: require('fs').readFileSync('demo/code-snippets/TimepickerExample.js', 'utf8'),
 };
 
 module.exports = Samples;

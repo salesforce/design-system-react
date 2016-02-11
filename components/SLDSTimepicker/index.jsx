@@ -71,7 +71,7 @@ const defaultProps = {
   parser (str) {
     return new Date(str);
   },
-  placeholder: 'Pick a Date',
+  placeholder: 'Pick Time',
   relativeYearFrom: -5,
   relativeYearTo: 5,
   todayLabel: 'Today',
@@ -199,7 +199,7 @@ module.exports = React.createClass({
   },
 
   getInputIcon(){
-    return <InputIcon name='event' style={{pointerEvents: 'none'}} />;
+    return <InputIcon name='clock' style={{pointerEvents: 'none'}} />;
   },
 
   render() {

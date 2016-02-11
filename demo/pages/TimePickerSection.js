@@ -34,14 +34,14 @@ class DatepickerSingleSelectSection extends React.Component {
     const docs = DOCS["DatepickerSingleSelect"] ? true : false;
     return (
       <div className='slds-p-around--medium'>
-        TIMEPICKER
+        TIME PICKER
         <ComponentHeader cmpName="SLDSDatepickerSingleSelect" cmpUrl="http://www.lightningdesignsystem.com/components/datepickers#single-select" />
         <div className="copy-text">
           {docs ? <p dangerouslySetInnerHTML={this.getDescription()} className="slds-p-vertical--small" style={{ "maxWidth": "800px"}}  /> : null}
         </div>
 
         <section className="slds-p-vertical--large">
-          <CodeMirror codeText={Samples.DatepickerSingleSelect} />
+          <CodeMirror codeText={Samples.Timepicker} />
         </section>
         <PropTable component="SLDSDatepickerSingleSelect" />
       </div>
