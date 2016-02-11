@@ -69,6 +69,8 @@ module.exports = React.createClass( {
               <li><Link to="modal" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Modal</Link></li>
               <li><Link to="notification" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Notification</Link></li>
               <li><Link to="tooltip" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">PopoverTooltip</Link></li>
+              <li><Link to="timepicker" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">TimePicker</Link></li>
+
             </ul>
           </aside>
 
