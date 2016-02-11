@@ -14,6 +14,7 @@ import ReactDOM from 'react-dom';
 import SLDSPopover from '../SLDSPopover';
 import SLDSDatePicker from './SLDSDatePicker/index';
 import InputIcon from '../SLDSIcon/InputIcon';
+import SLDSYearSelector from './SLDSYearSelector/index';
 
 import {KEYS,EventUtil} from '../utils';
 
@@ -149,6 +150,7 @@ module.exports = React.createClass({
     if(this.state && this.state.isOpen){
       const date = this.state.strValue?this.parseDate(this.state.strValue):this.state.value;
       return <SLDSPopover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
+{/*
         <SLDSDatePicker
           onChange={this.handleChange}
           selected={this.state.selected}
@@ -160,6 +162,8 @@ module.exports = React.createClass({
           relativeYearFrom={this.props.relativeYearFrom}
           relativeYearTo={this.props.relativeYearTo}
           selectedDate={date?date:new Date()} />
+*/}
+        <div>TIME SELECTOR</div>
       </SLDSPopover>;
     }
     return <span />;
