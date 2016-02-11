@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // # Button Component --- Core
 //
-// Implements the [Button design pattern](https://www.lightningdesignsystem.com/components/buttons) in React.
+// Implements the [Button design pattern](https://www.lightningdesignsystem.com/components/buttons) across several Façades.
 
 // Buttons are used within many other components in this library. There are many variations, as well as stateful buttons.
 
@@ -19,34 +19,54 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ![Button component example screenshot](/assets/demo-site/images/component-examples/button.png "Button component example screenshot")
 
 // ## Button Façades
-// * [jQuery Button component](/jquery/button)
-// * [React Button component](/react/button)
+// * [jQuery Button Component Documentation](/docs/src/jquery/button/button.html)
+// * [React Button Component Documentation](/docs/src/react/button/button.html)
 
 // Bring in the [shared library functions](../../lib/lib.html).
 import * as Lib from '../lib/lib';
 
-// Inherit from the [base control](base.html).
+// Inherit from the [base component](base.html).
 import Base from './base';
 
 // Facades uses [classNames](https://github.com/JedWatson/classnames), "a simple javascript utility for conditionally joining classNames together." Because of the small size of the library, the default build includes the entire library rather than requiring it as an external dependency.
 import classNames from 'classnames';
 
-// Export the canonical name of this control. The name specified here will be used to generate the React display name and the jQuery plugin name, among other things.
+// Export the canonical name of this component. The name specified here will be used to generate the React display name and the jQuery plugin name, among other things.
 export const CONTROL = 'Button';
 
-// Facades **extends objects** by merging them together, rather than via the prototype chain or imititation of object-oriented inheritance. The important thing to remember is that _some methods will be available to the control which are not declared in this file_. These are not magic methods, they're not black box methods, but you do need to trace the depencies of the control to see where they are coming from. Adding an empty object as the first item of the merge ensures that all of these methods don't get added to `Base`, while the methods for this specific control must be the last thing added here so that they have the potential to override anything added fist as needed.
+// Facades **extends objects** by merging them together, rather than via the
+// prototype chain or imititation of object-oriented inheritance. The
+// important thing to remember is that _some methods will be available to the
+// component which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependancies of the component to see where they are coming
+// from.
+
+// Adding an empty object as the first item of the merge ensures that all of
+// these methods don't get added to `Base`, while the methods for this
+// specific component must be the last thing added here so that they have the
+// potential to override anything added fist as needed.
+
+// ## ButtonCore
 const ButtonCore = Lib.merge({}, Base, {
-	// Add the canonical class name as a property of the control, for future reference.
+	// Add the canonical class name as a property of the component, for future
+	// reference.
 	CONTROL,
 
-	// Save a list of any CSS classes used within this control which will need to be used later to find specific elements or perform other operations. It's not neccessary to list every single class here as many are used only by the template or render function.
+	// Save a list of any CSS classes used within this component which will need
+	// to be used later to find specific elements or perform other operations.
+	// It's not neccessary to list every single class here as many are used
+	// only by the template or render function.
 	cssClasses: {
 		CONTROL                   : 'slds-button',
 		NOT_SELECTED              : 'slds-not-selected',
 		SELECTED                  : 'slds-is-selected'
 	},
 
-	// [Themes (or variants)](https://www.lightningdesignsystem.com/components/buttons) that dictate the general style of and are applied to the `<button>`.
+	// [Themes (or
+	// variants)](https://www.lightningdesignsystem.com/components/buttons)
+	// that dictate the general style of and are applied to the `<button>`.
 	themes: {
 		'neutral'                 : 'slds-button--neutral',
 		'brand'                   : 'slds-button--brand',
@@ -59,7 +79,8 @@ const ButtonCore = Lib.merge({}, Base, {
 		'small': 'slds-button--small'
 	},
 
-	// `iconButtonStyles` are styles of buttons and the class is applied to the `<button>`, not the icon or SVG.
+	// `iconButtonStyles` are styles of buttons and the class is applied to
+	// the `<button>`, not the icon or SVG.
 	iconButtonStyles: {
 		'icon-bare'               : 'slds-button--icon-bare',
 		'icon-bare-hint'          : 'slds-button--icon-bare',
@@ -90,13 +111,15 @@ const ButtonCore = Lib.merge({}, Base, {
 		children                  : []
 	},
 
-	// `_canSelect` informs the trait, [SelectableBoolean](../traits/selectable-boolean.html), whether the button can be selected. Disabled controls cannot be selected.
+	// ### Can Select
 	_canSelect () {
+		// `_canSelect` informs the trait, [SelectableBoolean](../traits/selectable-boolean.html), whether the button can be selected. Disabled components cannot be selected.
 		return !this.getProperty('disabled');
 	},
 
-	// Public method that toggles selection state (selected | not-selected) of a button. This is often caused by a user clicking the button.
+	// ### Toggle
 	toggle () {
+		// Public method that toggles selection state (selected | not-selected) of a button. This is often caused by a user clicking the button.
 		if (this.isSelected()) {
 			this.deselect();
 		} else {
@@ -104,8 +127,11 @@ const ButtonCore = Lib.merge({}, Base, {
 		}
 	},
 
-	// `_getClassNames` determines what CSS classes will be applied to `<button>`. Additional classes can be added to the button based on properties.
+	// ### Get Class Names
 	_getClassNames (additionalClasses, isStateful) {
+		// `_getClassNames` determines what CSS classes will be applied to
+		// `<button>`. Additional classes can be added to the button based on
+		// properties.
 		const selectedClasses = {};
 
 		if (isStateful) {
@@ -113,7 +139,8 @@ const ButtonCore = Lib.merge({}, Base, {
 			selectedClasses[this.cssClasses.SELECTED] = this.getProperty('selected');
 		}
 
-		// If falsey or object key/value is falsey, no classes are added for its respective property.
+		// If falsey or object key/value is falsey, no classes are added for
+		// its respective property.
 		return classNames(
 			this.cssClasses.CONTROL,
 			this.sizes[this.getProperty('size')],
@@ -123,11 +150,13 @@ const ButtonCore = Lib.merge({}, Base, {
 			additionalClasses);
 	},
 
-	// "Selectable-Boolean" methods
+	// ### Is Selected
 	isSelected () {
+		// "Selectable-Boolean" methods
 		return !!this.getProperty('selected');
 	},
 
+	// ### Set Selected
 	_setSelected (selected) {
 		if (Lib.isFunction(this._canSelect) && !this._canSelect(selected)) {
 			return false;
@@ -146,12 +175,14 @@ const ButtonCore = Lib.merge({}, Base, {
 		return true;
 	},
 
+	// ### Select
 	select () {
 		if (this._setSelected(true)) {
 			this.trigger('selected');
 		}
 	},
 
+	// ### Deselect
 	deselect () {
 		if (this._setSelected(false)) {
 			this.trigger('deselected');

@@ -31,7 +31,7 @@ import * as Lib               from '../../lib/lib';
 import BadgeCore, { CONTROL } from '../../core/badge';
 
 // ### React
-// React is an external dependencies of the project.
+// React is an external dependency of the project.
 import React                  from 'react';
 
 // ### Mixins

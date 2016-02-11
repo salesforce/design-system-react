@@ -60,7 +60,10 @@ import State                   from '../mixins/state';
 import ButtonViewCore          from '../../core/button-view';
 import isIcon                  from '../mixins/custom-prop-types/icon.js';
 
-// `ButtonView` is a child component within `Button`.
+// ### Children
+
+// #### Button View
+// [./button-view](./button-view.html)
 import ButtonView              from './button-view';
 
 // ## Button

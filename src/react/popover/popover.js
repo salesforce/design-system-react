@@ -58,7 +58,7 @@ import Events                   from '../mixins/events';
 // [../mixins/generic-will-mount](../mixins/generic-will-mount.html)
 import genericWillMount         from '../mixins/generic-will-mount';
 
-// #### Generic Will Mount
+// #### Mountable
 // [../mixins/generic-will-mount](../mixins/custom-prop-types/mountable.html)
 import mountable                from '../mixins/custom-prop-types/mountable';
 
