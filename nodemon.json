@@ -9,11 +9,13 @@
     "js": "node --harmony"
   },
   "events": {
-    "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'"
+    "crash": "osascript -e 'display notification \"App crashed due to:\n'$FILENAME'\" with title \"nodemon\"'"
   },
   "watch": [
-    "src/",
     "docs/",
+    "site/",
+    "src/",
+    "utilities/",
     "test/fixtures/",
     "test/samples/"
   ],
