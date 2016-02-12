@@ -1448,39 +1448,6 @@
                     "computed": false
                 }
             },
-            "relativeYearFrom": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "-5",
-                    "computed": false
-                }
-            },
-            "relativeYearTo": {
-                "type": {
-                    "name": "number"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "5",
-                    "computed": false
-                }
-            },
-            "todayLabel": {
-                "type": {
-                    "name": "string"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "'Today'",
-                    "computed": false
-                }
-            },
             "value": {
                 "type": {
                     "name": "instanceOf",
@@ -1499,17 +1466,6 @@
                 },
                 "required": false,
                 "description": ""
-            },
-            "weekDayLabels": {
-                "type": {
-                    "name": "array"
-                },
-                "required": false,
-                "description": "",
-                "defaultValue": {
-                    "value": "[\n  'Sunday','Monday','Tuesday',\n  'Wednesday','Thursday','Friday',\n  'Saturday'\n]",
-                    "computed": false
-                }
             },
             "onDateChange": {
                 "defaultValue": {

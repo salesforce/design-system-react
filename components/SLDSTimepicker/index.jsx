@@ -31,20 +31,15 @@ const propTypes = {
    */
   parser: React.PropTypes.func,
 
-  relativeYearFrom: React.PropTypes.number,
-
-  relativeYearTo: React.PropTypes.number,
-
-  todayLabel: React.PropTypes.string,
-
   /**
    * Date
    */
   value: React.PropTypes.instanceOf(Date),
 
+  stepInMinutes: React.PropTypes.number,
+
   strValue: React.PropTypes.string,
 
-  weekDayLabels: React.PropTypes.array,
 
 
 };
@@ -63,15 +58,8 @@ const defaultProps = {
     return new Date(dateStr+' '+timeStr);
   },
   placeholder: 'Pick Time',
-  relativeYearFrom: -5,
-  relativeYearTo: 5,
-  todayLabel: 'Today',
   value: null,
-  weekDayLabels: [
-    'Sunday','Monday','Tuesday',
-    'Wednesday','Thursday','Friday',
-    'Saturday'
-  ],
+  stepInMinutes: 30
 };
 
 module.exports = React.createClass({
@@ -93,14 +81,14 @@ module.exports = React.createClass({
     };
   },
 
-  handleChange(date) {
+  handleChange(date, strValue) {
     this.setState({
       value:date,
-      strValue:this.props.formatter(date),
+      strValue:strValue,
       isOpen:false
     });
     if(this.props.onDateChange){
-      this.props.onDateChange(date);
+      this.props.onDateChange(date, strValue);
     }
   },
 
@@ -149,9 +137,9 @@ module.exports = React.createClass({
       const formatted = this.props.formatter(curDate);
       options.push({
         label:formatted,
-        value:formatted
+        value:new Date(curDate)
       });
-      curDate.setMinutes(curDate.getMinutes()+30);
+      curDate.setMinutes(curDate.getMinutes()+this.props.stepInMinutes);
     }
     return options;
   },
@@ -168,16 +156,9 @@ module.exports = React.createClass({
   },
 
   handleSelect(index) {
-
-    const value = this.getValueByIndex(index);
-
-    this.setState({
-      value:value.value,
-      strValue:value.label,
-      isOpen:false
-    });
-    if(this.props.onChange){
-      this.props.onChange(date);
+    const val = this.getValueByIndex(index);
+    if(val && val.value){
+      this.handleChange(val.value, val.label);
     }
     this.handleClose();
   },
@@ -231,28 +212,22 @@ module.exports = React.createClass({
 
   handleInputChange() {
     const string = ReactDOM.findDOMNode(this.refs.date).value;
-    if(string){
-      this.setState({
-        strValue:string
-      });
-      if(this.props.onDateChange){
-        const d = this.props.parser(string);
-        this.props.onDateChange(d);
-      }
-    }
-    else{
-      this.setState({
-        isOpen:false
-      });
+    this.setState({
+      strValue:string
+    });
+    if(this.props.onDateChange){
+      const d = this.props.parser(string);
+      this.props.onDateChange(d, string);
     }
   },
 
   handleKeyDown(event) {
     if (event.keyCode){
-      if (event.keyCode === KEYS.ENTER ||
-          event.keyCode === KEYS.SPACE ||
+      const isShift = !!event.shiftKey;
+      if (!isShift && (event.keyCode === KEYS.ENTER ||
+//          event.keyCode === KEYS.SPACE ||
           event.keyCode === KEYS.DOWN ||
-          event.keyCode === KEYS.UP){
+          event.keyCode === KEYS.UP)){
         EventUtil.trapEvent(event);
 
         this.setState({
