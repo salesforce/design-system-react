@@ -1319,7 +1319,7 @@
                 "required": false,
                 "description": "Date formatting function",
                 "defaultValue": {
-                    "value": "function(date) {\n  return (date.getMonth()+1) +\n    '/'+date.getDate() +\n    '/'+date.getFullYear();\n}",
+                    "value": "function(date) {\n  if(date){\n    return (date.getMonth()+1) +\n      '/'+date.getDate() +\n      '/'+date.getFullYear();\n  }\n}",
                     "computed": false
                 }
             },
@@ -1390,6 +1390,13 @@
                     "computed": false
                 }
             },
+            "strValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
             "weekDayLabels": {
                 "type": {
                     "name": "array"
@@ -1410,6 +1417,109 @@
             "placeholder": {
                 "defaultValue": {
                     "value": "'Pick a Date'",
+                    "computed": false
+                }
+            }
+        }
+    },
+    "SLDSTimepicker": {
+        "description": "",
+        "displayName": "SLDSTimepicker",
+        "props": {
+            "formatter": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Time formatting function",
+                "defaultValue": {
+                    "value": "function(date) {\n  if(date){\n    return date.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});\n  }\n}",
+                    "computed": false
+                }
+            },
+            "parser": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": "Parsing date string into Date",
+                "defaultValue": {
+                    "value": "function(timeStr) {\n  const date = new Date();\n  const dateStr = date.toLocaleString(navigator.language, {year: 'numeric', month: 'numeric', day: 'numeric'});\n  return new Date(dateStr+' '+timeStr);\n}",
+                    "computed": false
+                }
+            },
+            "relativeYearFrom": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "-5",
+                    "computed": false
+                }
+            },
+            "relativeYearTo": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "5",
+                    "computed": false
+                }
+            },
+            "todayLabel": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "'Today'",
+                    "computed": false
+                }
+            },
+            "value": {
+                "type": {
+                    "name": "instanceOf",
+                    "value": "Date"
+                },
+                "required": false,
+                "description": "Date",
+                "defaultValue": {
+                    "value": "null",
+                    "computed": false
+                }
+            },
+            "strValue": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "weekDayLabels": {
+                "type": {
+                    "name": "array"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "[\n  'Sunday','Monday','Tuesday',\n  'Wednesday','Thursday','Friday',\n  'Saturday'\n]",
+                    "computed": false
+                }
+            },
+            "onDateChange": {
+                "defaultValue": {
+                    "value": "function(date) {\n  console.log('onDateChange should be defined');\n}",
+                    "computed": false
+                }
+            },
+            "placeholder": {
+                "defaultValue": {
+                    "value": "'Pick Time'",
                     "computed": false
                 }
             }
