@@ -9,7 +9,6 @@ const ReactDOM = require('react-dom');
 const classNames = require('classnames');
 const trim = require('lodash.trim');
 
-
 const SLDSButton =  require('../components/SLDSButton');
 const SLDSButtonStateful =  require('../components/SLDSButtonStateful');
 const SLDSButtonGroup =  require('../components/SLDSButtonGroup');
@@ -22,7 +21,7 @@ const SLDSModal =  require('../components/SLDSModal');
 const SLDSNotification =  require('../components/SLDSNotification');
 const SLDSPopoverTooltip =  require('../components/SLDSPopoverTooltip');
 const SLDSDatepickerSingleSelect =  require('../components/SLDSDatepickerSingleSelect');
-
+const SLDSTimepicker =  require('../components/SLDSTimepicker');
 
 const displayName = 'CodeMirror';
 const propTypes = {

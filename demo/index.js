@@ -17,6 +17,7 @@ import ButtonStatefulSection from './pages/ButtonStatefulSection';
 import ButtonGroupSection from './pages/ButtonGroupSection';
 import DateInputSection from './pages/DateInputSection';
 import DatePickerSingleSelectSection from './pages/DatePickerSingleSelectSection';
+import TimePickerSection from './pages/TimePickerSection';
 import DropdownBaseSection from './pages/DropdownSection';
 import IconSection from './pages/IconSection';
 import LookupSection from './pages/LookupSection';
@@ -37,6 +38,7 @@ const routes = (
       <Route name="button-stateful" path="button-stateful" handler={ButtonStatefulSection}/>
       <Route name="button-group" path="button-group" handler={ButtonGroupSection}/>
       <Route name="dateinput" path="dateinput" handler={DateInputSection}/>
+      <Route name="timepicker" path="timepicker" handler={TimePickerSection}/>
       <Route name="datepicker" path="datepicker" handler={DatePickerSingleSelectSection}/>
       <Route name="dropdown" path="dropdown" handler={DropdownBaseSection}/>
       <Route name="icon" path="icon" handler={IconSection}/>

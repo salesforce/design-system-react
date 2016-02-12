@@ -14,9 +14,8 @@ import isEqual from "lodash.isequal";
 import SLDSPopover from "../SLDSPopover";
 import {KEYS, EventUtil} from "../utils";
 import SLDSIcon from "../SLDSIcon";
-import List from "./List";
-import ListItem from "./ListItem";
-import ListItemLabel from "./ListItemLabel";
+import List from "../SLDSMenuList/List";
+import ListItemLabel from "../SLDSMenuList/ListItemLabel";
 
 const displayName = "SLDSMenuPicklist";
 const propTypes = {
@@ -298,6 +297,5 @@ SLDSMenuPicklist.propTypes = propTypes;
 SLDSMenuPicklist.defaultProps = defaultProps;
 
 module.exports = SLDSMenuPicklist;
-module.exports.ListItem = ListItem;
 module.exports.ListItemLabel = ListItemLabel;
 
