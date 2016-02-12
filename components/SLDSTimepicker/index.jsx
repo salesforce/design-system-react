@@ -16,7 +16,8 @@ import SLDSDatePicker from './SLDSDatePicker/index';
 import InputIcon from '../SLDSIcon/InputIcon';
 import SLDSYearSelector from './SLDSYearSelector/index';
 import SLDSMenuPicklist from '../SLDSMenuPicklist/index';
-
+import SLDSMenuList from '../SLDSMenuList';
+import ListItemLabel from '../SLDSMenuList/ListItemLabel';
 
 import {KEYS,EventUtil} from '../utils';
 
@@ -148,17 +149,42 @@ module.exports = React.createClass({
     return new Date();
   },
 
-  getOptions () {
-    const now = new Date();
-    const fromYear = now.getFullYear()-5;
-    const toYear = now.getFullYear()+5;
-    let opts = [];
-
-    for (let year = fromYear; year < toYear; year++){
-      opts.push({label:year,value:year});
-    }
-    return opts;
+  getOptions() {
+    return [
+      {label: "A Option Option Super Super Long", value: "A0", title: "Greg"},
+      {label: "B Option", value: "B0"},
+      {label: "C Option", value: "C0"},
+      {label: "D Option", value: "D0"},
+      {label: "E Option", value: "E0"},
+      {label: "A1 Option", value: "A1"},
+      {label: "B2 Option", value: "B1"},
+      {label: "C2 Option", value: "C1"},
+      {label: "D2 Option", value: "D1"},
+      {label: "E2 Option Super Super Long", value: "E1"},
+    ];
   },
+
+  getListItemRenderer() {
+    return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
+  },
+
+  getPopoverContent() {
+    return <SLDSMenuList
+//            checkmark={this.props.checkmark}
+//            highlightedIndex={this.state.highlightedIndex}
+            itemRenderer={this.getListItemRenderer()}
+//            onCancel={this.handleCancel}
+//            onListBlur={this.handleListBlur}
+//            onListItemBlur={this.handleListItemBlur}
+//            onSelect={this.handleSelect}
+//            onUpdateHighlighted={this.handleUpdateHighlighted}
+            options={this.getOptions()}
+            ref="list"
+//            selectedIndex={this.state.selectedIndex}
+//            triggerId={this.state.triggerId}
+          />;
+  },
+
 
   popover() {
     if(this.state && this.state.isOpen){
@@ -177,18 +203,7 @@ module.exports = React.createClass({
           relativeYearTo={this.props.relativeYearTo}
           selectedDate={date?date:new Date()} />
 */}
-{/*
-        <div>TIME SELECTOR</div>
-*/}
-        <SLDSMenuPicklist
-          options={this.getOptions()}
-          placeholder='Year'
-          checkmark={false}
-          modal={true}
-//          value={this.props.displayedDate.getFullYear()}
-//          onSelect={this.handleSelect}
-          className='slds-picklist--fluid slds-shrink-none'
-          initialFocus={true}/>
+        { this.getPopoverContent() }
       </SLDSPopover>;
     }
     return <span />;

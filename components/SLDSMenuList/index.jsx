@@ -7,177 +7,238 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+import isEqual from "lodash.isequal";
 
-import ListItem from "./ListItem";
-import EventUtil from '../utils/EventUtil';
+import {KEYS, EventUtil} from "../utils";
+import SLDSIcon from "../SLDSIcon";
+import List from "./List";
+import ListItemLabel from "./ListItemLabel";
 
-const displayName = "SLDSList";
+const displayName = "SLDSMenuList";
 const propTypes = {
   className: React.PropTypes.string,
+  /**
+   * If true, renders checkmark icon on the selected Menu Item.
+   */
   checkmark: React.PropTypes.bool,
-  highlightedIndex: React.PropTypes.number,
-  itemRenderer: React.PropTypes.func,
-  options: React.PropTypes.array,
-  onCancel: React.PropTypes.func,
-  onListBlur: React.PropTypes.func,
-  onListItemBlur: React.PropTypes.func,
-  onMoveFocus: React.PropTypes.func,
+  disabled: React.PropTypes.bool,
+  label: React.PropTypes.string,
+  /**
+   * Custom element that overrides the default Menu Item component.
+   */
+  listItemRenderer: React.PropTypes.node,
+  /**
+   * If true, component renders specifically to work inside Modal.
+   */
+  modal: React.PropTypes.bool,
+  onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func,
-  selectedIndex: React.PropTypes.number,
+  /**
+   * Menu item data.
+   */
+  options: React.PropTypes.array.isRequired,
+  placeholder: React.PropTypes.string,
+  required: React.PropTypes.bool,
+  /**
+   * Current selected item.
+   */
+  value: React.PropTypes.node,
 };
 const defaultProps = {
-  className: '',
-  highlightedIndex: 0,
-  itemRenderer: null,
-  options: [],
-  onCancel: (delta)=>{
-    console.log("onCancel should be overwritten");
-  },
-  onListBlur: () => {
-    console.log("onListBlur should be overwritten");
-  },
-  onListItemBlur: (listItemIndex)=>{
-    console.log("onListItemBlur should be overwritten");
-  },
-  onMoveFocus: (delta)=>{
-    console.log("onMoveFocus should be overwritten");
-  },
-  onSelect: (index)=>{
-    console.log("onSelect should be overwritten");
-  },
-  selectedIndex: -1,
+  disabled: false,
+  modal: true,
+  required: false,
+  placeholder: "Select an Option",
+  checkmark: true
 };
 
-class SLDSList extends React.Component {
-  handleMouseDown (event) {
+/**
+ * The SLDSMenuPicklist component is a variant of the Ligtning Design System Menu component.
+ */
+class SLDSMenuPicklist extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      highlightedIndex: 0,
+      isOpen: false,
+      isFocused: false,
+      lastBlurredIndex: -1,
+      lastBlurredTimeStamp: -1,
+      selectedIndex: this.getIndexByValue(this.props.value),
+      /* triggerId is the id of the element that triggers the Menu to open.
+      * Need this for aria-labelledby on <ul> in Menu for accessibility. */
+      triggerId: this.props.label ? this.props.label.replace(/\s+/g, '') + '_Button': 'Picklist_Button',
+    };
+  }
+
+  componentWillUnmount(){
+    this.isUnmounting = true;
+  }
+
+  componentDidUpdate( prevProps, prevState) {
+    if(this.state.lastBlurredTimeStamp !== prevState.lastBlurredTimeStamp){
+      if(this.state.lastBlurredIndex === this.state.highlightedIndex){
+        this.handleClose();
+      }
+    }
+    if(this.state.selectedIndex !== prevState.selectedIndex){
+      this.handleClose();
+    }
+    else if(this.state.isFocused && !prevState.isFocused){
+      this.setState({isOpen: false});
+    }
+    else if(!this.state.isFocused && prevState.isFocused){
+      if(this.refs.list){
+        if(!this.isUnmounting && this.refs.list){
+          if(ReactDOM.findDOMNode(this.refs.list).contains(document.activeElement)){
+            return;
+          }
+          this.setState({isOpen: false})
+        }
+      }
+    }
+
+    if(this.props.value !== prevProps.value ||
+        !isEqual(this.props.options, prevProps.options)){
+      var newSelectedIndex = this.getIndexByValue(this.props.value);
+      if (newSelectedIndex !== this.state.selectedIndex) {
+        this.handleSelect(newSelectedIndex);
+      }
+    }
+  }
+
+  getIndexByValue(value){
+    let foundIndex = -1;
+    if(this.props.options && this.props.options.length){
+      this.props.options.some((element, index, array)=>{
+        if(element && element.value === value){
+          foundIndex = index;
+          return true;
+        }
+        return false;
+      });
+    }
+    return foundIndex;
+  }
+
+  getValueByIndex(index){
+    const option = this.props.options[index];
+    if(option){
+      return this.props.options[index];
+    }
+  }
+
+  handleSelect(index) {
+    this.setState({selectedIndex: index})
+    this.setFocus();
+    if(this.props.onSelect){
+      this.props.onSelect(this.getValueByIndex(index));
+    }
+  }
+
+  handleClose() {
+    this.setState({isOpen: false});
+  }
+
+  handleClick() {
+    if(!this.state.isOpen){
+      this.setState({isOpen: true});
+      if(this.props.onClick) this.props.onClick();
+    }
+    else{
+      this.handleClose();
+    }
+  }
+
+  handleMouseDown(event){
     EventUtil.trapImmediate(event);
   }
 
-  handleClick (e) {
-    if(e.nativeEvent){
-      e.nativeEvent.preventDefault();
-      e.nativeEvent.stopImmediatePropagation();
-    }
-    e.preventDefault();
+  handleBlur(e) {
+    this.setState({isFocused: false});
   }
 
-  handleUpdateHighlighted (nextIndex) {
-    if(this.props.onUpdateHighlighted){
-      this.props.onUpdateHighlighted(nextIndex);
+  handleFocus() {
+    this.setState({isFocused: true});
+  }
+
+  setFocus() {
+    if(!this.isUnmounting){
+      ReactDOM.findDOMNode(this.refs.triggerbutton).focus();
     }
   }
 
-  handleListItemBlur (index, relatedTarget) {
-    if(this.props.onListItemBlur){
-      this.props.onListItemBlur(index);
+  handleKeyDown(event) {
+    if (event.keyCode){
+      if (event.keyCode === KEYS.ENTER ||
+          event.keyCode === KEYS.SPACE ||
+          event.keyCode === KEYS.DOWN ||
+          event.keyCode === KEYS.UP){
+        EventUtil.trapEvent(event);
+
+        this.setState({
+          isOpen: true,
+          highlightedIndex: 0
+        });
+
+      }
     }
-    this.setState({lastBlurredIndex:index});
   }
 
-  handleMoveFocus (delta) {
-    let newHighlightedIndex = this.props.highlightedIndex + delta;
-    if(newHighlightedIndex < 0){
-      newHighlightedIndex = this.props.options.length - 1;
-    }
-    else if(newHighlightedIndex >= this.props.options.length){
-      newHighlightedIndex = 0;
-    }
-    if(this.props.onUpdateHighlighted){
-      this.props.onUpdateHighlighted(newHighlightedIndex);
-    }
+  handleUpdateHighlighted(nextIndex){
+    this.setState({highlightedIndex: nextIndex});
+  }
+
+  handleListBlur(){
+    this.setState({isOpen: false});
   }
 
   handleCancel () {
-    if(this.props.onCancel){
-      this.props.onCancel();
-    }
+    this.setFocus();
   }
 
-  handleSelect (index) {
-    if(this.props.onSelect){
-      this.props.onSelect(index);
-    }
+  getListItemRenderer() {
+    return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
   }
 
-  handleItemFocus (itemIndex, itemHeight) {
-    if(this.refs.scroll){
-      ReactDOM.findDOMNode(this.refs.scroll).scrollTop = itemIndex * itemHeight;
-    }
+  getPlaceholder() {
+    const option = this.props.options[this.state.selectedIndex];
+    return (option && option.label)?option.label:this.props.placeholder;
   }
 
-  handleSearch (index, ch) {
-    const searchChar = ch.toLowerCase();
-    for(let i=index+1;i<this.props.options.length;i++){
-      const option = this.props.options[i];
-      if(option && option.label){
-        if(option.label.charAt(0).toLowerCase() === searchChar){
-          if(this.props.onUpdateHighlighted){
-            this.props.onUpdateHighlighted(i);
-          }
-          return;
-        }
-      }
-    }
-    for(let i=0;i<index;i++){
-      const option = this.props.options[i];
-      if(option && option.label){
-        if(option.label.charAt(0).toLowerCase() === searchChar){
-          if(this.props.onUpdateHighlighted){
-            this.props.onUpdateHighlighted(i);
-          }
-          return;
-        }
-      }
-    }
-  }
-
-  getItems () {
-    return this.props.options.map((option, index) =>{
-      return (
-        <ListItem
-          checkmark={this.props.checkmark}
-          data={option}
-          index={index}
-          isHighlighted={(index===this.props.highlightedIndex)}
-          isHover={this.props.isHover}
-          isSelected={(index===this.props.selectedIndex)}
-          key={'ListItem_'+index}
-          label={option.label}
-          labelRenderer={this.props.itemRenderer}
-          onBlur={this.handleListItemBlur.bind(this)}
-          onCancel={this.handleCancel.bind(this)}
-          onFocus={this.handleItemFocus.bind(this)}
-          onMoveFocus={this.handleMoveFocus.bind(this)}
-          onSearch={this.handleSearch.bind(this)}
-          onSelect={this.handleSelect.bind(this)}
-          onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
-          value={option.value}/>
-      );
+  handleListItemBlur (index, relatedTarget) {
+    this.setState({
+      lastBlurredIndex: index,
+      lastBlurredTimeStamp: Date.now()
     });
   }
 
-  render () {
-    return (
-      <ul
-        aria-labelledby={this.props.triggerId}
-        className={"slds-dropdown__list slds-dropdown--length-5 "+this.props.className}
-        onMouseEnter={this.props.onMouseEnter}
-        onMouseDown={this.handleMouseDown.bind(this)}
-        onMouseLeave={this.props.onMouseLeave}
-        ref="scroll"
-        role="menu"
-        >
-        {this.getItems()}
-      </ul>
-    );
+  render() {
+    return <List
+            checkmark={this.props.checkmark}
+            highlightedIndex={this.state.highlightedIndex}
+            itemRenderer={this.getListItemRenderer()}
+            onCancel={this.handleCancel.bind(this)}
+            onListBlur={this.handleListBlur.bind(this)}
+            onListItemBlur={this.handleListItemBlur.bind(this)}
+            onSelect={this.handleSelect.bind(this)}
+            onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
+            options={this.props.options}
+            ref="list"
+            selectedIndex={this.state.selectedIndex}
+            triggerId={this.state.triggerId}
+            />;
   }
+
 }
 
-SLDSList.displayName = displayName;
-SLDSList.propTypes = propTypes;
-SLDSList.defaultProps = defaultProps;
 
-module.exports = SLDSList;
+SLDSMenuPicklist.displayName = displayName;
+SLDSMenuPicklist.propTypes = propTypes;
+SLDSMenuPicklist.defaultProps = defaultProps;
+
+module.exports = SLDSMenuPicklist;
+module.exports.ListItemLabel = ListItemLabel;
 
