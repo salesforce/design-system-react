@@ -23,7 +23,6 @@ const propTypes = {
    * If true, renders checkmark icon on the selected Menu Item.
    */
   checkmark: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
   label: React.PropTypes.string,
   /**
    * Custom element that overrides the default Menu Item component.
@@ -32,25 +31,14 @@ const propTypes = {
   /**
    * If true, component renders specifically to work inside Modal.
    */
-  modal: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   onSelect: React.PropTypes.func,
   /**
    * Menu item data.
    */
   options: React.PropTypes.array.isRequired,
-  placeholder: React.PropTypes.string,
-  required: React.PropTypes.bool,
-  /**
-   * Current selected item.
-   */
-  value: React.PropTypes.node,
 };
 const defaultProps = {
-  disabled: false,
-  modal: true,
-  required: false,
-  placeholder: "Select an Option",
   checkmark: true
 };
 
@@ -65,11 +53,12 @@ class SLDSMenuPicklist extends React.Component {
       isOpen: false,
       lastBlurredIndex: -1,
       lastBlurredTimeStamp: -1,
-      selectedIndex: this.getIndexByValue(this.props.value),
+      selectedIndex: this.props.selectedIndex,
       /* triggerId is the id of the element that triggers the Menu to open.
       * Need this for aria-labelledby on <ul> in Menu for accessibility. */
       triggerId: this.props.label ? this.props.label.replace(/\s+/g, '') + '_Button': 'Picklist_Button',
     };
+
   }
 
   componentWillUnmount(){
@@ -86,45 +75,22 @@ class SLDSMenuPicklist extends React.Component {
       this.handleClose();
     }
 
-    if(this.props.value !== prevProps.value ||
+    if(this.props.selectedIndex !== prevProps.selectedIndex ||
         !isEqual(this.props.options, prevProps.options)){
-      var newSelectedIndex = this.getIndexByValue(this.props.value);
-      if (newSelectedIndex !== this.state.selectedIndex) {
-        this.handleSelect(newSelectedIndex);
+      if (this.props.selectedIndex !== this.state.selectedIndex) {
+        this.handleSelect(this.props.selectedIndex);
       }
-    }
-  }
-
-  getIndexByValue(value){
-    let foundIndex = -1;
-    if(this.props.options && this.props.options.length){
-      this.props.options.some((element, index, array)=>{
-        if(element && element.value === value){
-          foundIndex = index;
-          return true;
-        }
-        return false;
-      });
-    }
-    return foundIndex;
-  }
-
-  getValueByIndex(index){
-    const option = this.props.options[index];
-    if(option){
-      return this.props.options[index];
     }
   }
 
   handleSelect(index) {
     this.setState({selectedIndex: index})
     if(this.props.onSelect){
-      this.props.onSelect(this.getValueByIndex(index));
+      this.props.onSelect(index);
     }
   }
 
   handleClose() {
-    console.log('!!! handleClose !!!');
     if(this.props.onCancel){
       this.props.onCancel();
     }

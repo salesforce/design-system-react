@@ -179,16 +179,13 @@ module.exports = React.createClass({
 
   getPopoverContent() {
     return <SLDSMenuList
-//            checkmark={this.props.checkmark}
-//            highlightedIndex={this.state.highlightedIndex}
+            checkmark={false}
             itemRenderer={this.getListItemRenderer()}
             onCancel={this.handleCancel}
             onSelect={this.handleSelect}
-//            onUpdateHighlighted={this.handleUpdateHighlighted}
             options={this.getOptions()}
             ref="list"
-//            selectedIndex={this.state.selectedIndex}
-//            triggerId={this.state.triggerId}
+            selectedIndex={3}
           />;
   },
 
