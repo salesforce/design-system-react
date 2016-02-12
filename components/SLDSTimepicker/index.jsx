@@ -12,10 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SLDSPopover from '../SLDSPopover';
-import SLDSDatePicker from './SLDSDatePicker/index';
 import InputIcon from '../SLDSIcon/InputIcon';
-import SLDSYearSelector from './SLDSYearSelector/index';
-import SLDSMenuPicklist from '../SLDSMenuPicklist/index';
 import SLDSMenuList from '../SLDSMenuList';
 import ListItemLabel from '../SLDSMenuList/ListItemLabel';
 
@@ -23,14 +20,11 @@ import {KEYS,EventUtil} from '../utils';
 
 const displayName = 'SLDSTimepicker';
 const propTypes = {
-  abbrWeekDayLabels: React.PropTypes.array,
 
   /**
-   * Date formatting function
+   * Time formatting function
    */
   formatter: React.PropTypes.func,
-
-  monthLabels: React.PropTypes.array,
 
   /**
    * Parsing date string into Date
@@ -55,20 +49,11 @@ const propTypes = {
 
 };
 const defaultProps = {
-  abbrWeekDayLabels: ['S','M','T','W','T','F','S'],
   formatter (date) {
     if(date){
-      return (date.getMonth()+1) +
-        '/'+date.getDate() +
-        '/'+date.getFullYear();
+      return date.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
     }
   },
-  monthLabels: [
-    'January','February','March',
-    'April','May','June','July',
-    'August','September','October',
-    'November','December'
-  ],
   onDateChange (date) {
     console.log('onDateChange should be defined');
   },
@@ -101,7 +86,8 @@ module.exports = React.createClass({
     return {
       isOpen:false,
       value:this.props.value,
-      strValue:this.props.strValue
+      strValue:this.props.strValue,
+      options:this.getOptions()
     };
   },
 
@@ -150,26 +136,47 @@ module.exports = React.createClass({
   },
 
   getOptions() {
-    return [
-      {label: "A Option Option Super Super Long", value: "A0", title: "Greg"},
-      {label: "B Option", value: "B0"},
-      {label: "C Option", value: "C0"},
-      {label: "D Option", value: "D0"},
-      {label: "E Option", value: "E0"},
-      {label: "A1 Option", value: "A1"},
-      {label: "B2 Option", value: "B1"},
-      {label: "C2 Option", value: "C1"},
-      {label: "D2 Option", value: "D1"},
-      {label: "E2 Option Super Super Long", value: "E1"},
-    ];
+    const d = new Date();
+    let options = [];
+    d.setHours(0);
+    d.setMinutes(0);
+    d.setSeconds(0);
+    d.setMilliseconds(0);
+    const curDate = new Date(d);
+    while(d.getDate() === curDate.getDate()){
+      const formatted = this.props.formatter(curDate);
+      options.push({
+        label:formatted,
+        value:formatted
+      });
+      curDate.setMinutes(curDate.getMinutes()+30);
+    }
+    return options;
   },
 
   getListItemRenderer() {
     return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
   },
 
-  handleSelect(value) {
-    console.log('!!! value: ',value);
+  getValueByIndex(index){
+    const option = this.state.options[index];
+    if(option){
+      return this.state.options[index];
+    }
+  },
+
+  handleSelect(index) {
+
+    const value = this.getValueByIndex(index);
+
+    this.setState({
+      value:value.value,
+      strValue:value.label,
+      isOpen:false
+    });
+    if(this.props.onChange){
+      this.props.onChange(date);
+    }
     this.handleClose();
   },
 
@@ -183,34 +190,41 @@ module.exports = React.createClass({
             itemRenderer={this.getListItemRenderer()}
             onCancel={this.handleCancel}
             onSelect={this.handleSelect}
-            options={this.getOptions()}
+            options={this.state.options}
             ref="list"
-            selectedIndex={3}
+            triggerId={this.state.triggerId}
           />;
   },
 
+  getSimplePopover() {
+    return (
+      !this.props.disabled && this.state.isOpen?
+        <div
+          className="slds-dropdown slds-dropdown--left slds-dropdown--menu"
+          style={{
+            maxHeight: "20em",
+            overflowX: "hidden",
+            minWidth: "100%"
+          }}>
+          {this.getPopoverContent()}
+        </div>:null
+    );
+  },
 
-  popover() {
-    if(this.state && this.state.isOpen){
-      const date = this.state.strValue?this.parseDate(this.state.strValue):this.state.value;
-      return <SLDSPopover className='slds-dropdown' targetElement={this.refs.date} onClose={this.handleClose}>
-{/*
-        <SLDSDatePicker
-          onChange={this.handleChange}
-          selected={this.state.selected}
-          onClose={this.handleClose}
-          abbrWeekDayLabels={this.props.abbrWeekDayLabels}
-          weekDayLabels={this.props.weekDayLabels}
-          monthLabels={this.props.monthLabels}
-          todayLabel={this.props.todayLabel}
-          relativeYearFrom={this.props.relativeYearFrom}
-          relativeYearTo={this.props.relativeYearTo}
-          selectedDate={date?date:new Date()} />
-*/}
-        { this.getPopoverContent() }
-      </SLDSPopover>;
-    }
-    return <span />;
+  getModalPopover() {
+    return (
+      !this.props.disabled && this.state.isOpen?
+        <SLDSPopover
+          className="slds-dropdown slds-dropdown--left "
+          closeOnTabKey={true}
+          constrainToScrollParent={true}
+          dropClass="slds-picklist"
+          flippable={true}
+          onClose={this.handleCancel.bind(this)}
+          targetElement={this.refs.triggerbutton}>
+          {this.getPopoverContent()}
+        </SLDSPopover>:null
+    );
   },
 
   handleInputChange() {
@@ -272,7 +286,7 @@ module.exports = React.createClass({
               onFocus={this.handleFocus}/>
           </div>
         </div>
-        {this.popover()}
+        {this.props.modal?this.getModalPopover():this.getSimplePopover()}
       </div>
     );
   }
