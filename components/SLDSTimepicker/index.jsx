@@ -57,8 +57,10 @@ const defaultProps = {
   onDateChange (date) {
     console.log('onDateChange should be defined');
   },
-  parser (str) {
-    return new Date(str);
+  parser (timeStr) {
+    const date = new Date();
+    const dateStr = date.toLocaleString(navigator.language, {year: 'numeric', month: 'numeric', day: 'numeric'});
+    return new Date(dateStr+' '+timeStr);
   },
   placeholder: 'Pick Time',
   relativeYearFrom: -5,
@@ -234,7 +236,7 @@ module.exports = React.createClass({
         strValue:string
       });
       if(this.props.onDateChange){
-        const d = this.props.parser(string)
+        const d = this.props.parser(string);
         this.props.onDateChange(d);
       }
     }
