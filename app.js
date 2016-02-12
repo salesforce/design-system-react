@@ -52,7 +52,6 @@ app.use(compression());
 // Design system static directory
 // - Necessary because of hardcoded `/assets` path in CSS
 app.use('/assets', express.static(__dirname + '/node_modules/@salesforce-ux/design-system/assets'));
-app.use('/assets/design-system', express.static(__dirname + '/node_modules/@salesforce-ux/design-system/assets'));
 
 // Serve up public folder
 app.use(express.static('public'));
