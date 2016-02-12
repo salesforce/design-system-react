@@ -49,7 +49,8 @@ const config = {
 					}]
 				})]
 			}
-		]
+		],
+		preLoaders: []
 	},
 	plugins: [
 		new StringReplacePlugin(),
