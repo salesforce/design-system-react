@@ -65,7 +65,7 @@ const defaultProps = {
     'August','September','October',
     'November','December'
   ],
-  onDateChange (date) {
+  onDateChange (date, strValue) {
     console.log('onDateChange should be defined');
   },
   parser (str) {
@@ -167,28 +167,22 @@ module.exports = React.createClass({
 
   handleInputChange() {
     const string = ReactDOM.findDOMNode(this.refs.date).value;
-    if(string){
-      this.setState({
-        strValue:string
-      });
-      if(this.props.onDateChange){
-        const d = this.props.parser(string)
-        this.props.onDateChange(d);
-      }
-    }
-    else{
-      this.setState({
-        isOpen:false
-      });
+    this.setState({
+      strValue:string
+    });
+    if(this.props.onDateChange){
+      const d = this.props.parser(string)
+      this.props.onDateChange(d, string);
     }
   },
 
   handleKeyDown(event) {
     if (event.keyCode){
-      if (event.keyCode === KEYS.ENTER ||
-          event.keyCode === KEYS.SPACE ||
+      const isShift = !!event.shiftKey;
+      if (!isShift && (event.keyCode === KEYS.ENTER ||
+//          event.keyCode === KEYS.SPACE ||
           event.keyCode === KEYS.DOWN ||
-          event.keyCode === KEYS.UP){
+          event.keyCode === KEYS.UP)){
         EventUtil.trapEvent(event);
 
         this.setState({

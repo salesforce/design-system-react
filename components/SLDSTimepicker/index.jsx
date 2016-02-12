@@ -49,7 +49,7 @@ const defaultProps = {
       return date.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'});
     }
   },
-  onDateChange (date) {
+  onDateChange (date, strValue) {
     console.log('onDateChange should be defined');
   },
   parser (timeStr) {
