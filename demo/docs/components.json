@@ -1460,6 +1460,17 @@
                     "computed": false
                 }
             },
+            "stepInMinutes": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "30",
+                    "computed": false
+                }
+            },
             "strValue": {
                 "type": {
                     "name": "string"
