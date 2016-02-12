@@ -22,7 +22,7 @@ if (( NUM_ARGS > 0 && NUM_ARGS < 3 )); then
 	done
 fi
 
-./node_modules/.bin/webpack --config webpack.heroku.config.js $FLAG
+./node_modules/.bin/webpack --config webpack.config.site-build.js $FLAG
 
 
 if [ ! $GENERATE_DOCS ]; then
