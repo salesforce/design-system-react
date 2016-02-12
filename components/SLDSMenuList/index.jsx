@@ -63,7 +63,6 @@ class SLDSMenuPicklist extends React.Component {
     this.state = {
       highlightedIndex: 0,
       isOpen: false,
-      isFocused: false,
       lastBlurredIndex: -1,
       lastBlurredTimeStamp: -1,
       selectedIndex: this.getIndexByValue(this.props.value),
@@ -85,19 +84,6 @@ class SLDSMenuPicklist extends React.Component {
     }
     if(this.state.selectedIndex !== prevState.selectedIndex){
       this.handleClose();
-    }
-    else if(this.state.isFocused && !prevState.isFocused){
-      this.setState({isOpen: false});
-    }
-    else if(!this.state.isFocused && prevState.isFocused){
-      if(this.refs.list){
-        if(!this.isUnmounting && this.refs.list){
-          if(ReactDOM.findDOMNode(this.refs.list).contains(document.activeElement)){
-            return;
-          }
-          this.setState({isOpen: false})
-        }
-      }
     }
 
     if(this.props.value !== prevProps.value ||
@@ -132,23 +118,15 @@ class SLDSMenuPicklist extends React.Component {
 
   handleSelect(index) {
     this.setState({selectedIndex: index})
-    this.setFocus();
     if(this.props.onSelect){
       this.props.onSelect(this.getValueByIndex(index));
     }
   }
 
   handleClose() {
-    this.setState({isOpen: false});
-  }
-
-  handleClick() {
-    if(!this.state.isOpen){
-      this.setState({isOpen: true});
-      if(this.props.onClick) this.props.onClick();
-    }
-    else{
-      this.handleClose();
+    console.log('!!! handleClose !!!');
+    if(this.props.onCancel){
+      this.props.onCancel();
     }
   }
 
@@ -156,56 +134,24 @@ class SLDSMenuPicklist extends React.Component {
     EventUtil.trapImmediate(event);
   }
 
-  handleBlur(e) {
-    this.setState({isFocused: false});
-  }
-
-  handleFocus() {
-    this.setState({isFocused: true});
-  }
-
-  setFocus() {
-    if(!this.isUnmounting){
-      ReactDOM.findDOMNode(this.refs.triggerbutton).focus();
-    }
-  }
-
-  handleKeyDown(event) {
-    if (event.keyCode){
-      if (event.keyCode === KEYS.ENTER ||
-          event.keyCode === KEYS.SPACE ||
-          event.keyCode === KEYS.DOWN ||
-          event.keyCode === KEYS.UP){
-        EventUtil.trapEvent(event);
-
-        this.setState({
-          isOpen: true,
-          highlightedIndex: 0
-        });
-
-      }
-    }
-  }
-
   handleUpdateHighlighted(nextIndex){
     this.setState({highlightedIndex: nextIndex});
   }
 
   handleListBlur(){
-    this.setState({isOpen: false});
+    if(this.props.onListBlur){
+      this.props.onListBlur();
+    }
   }
 
   handleCancel () {
-    this.setFocus();
+    if(this.props.onCancel){
+      this.props.onCancel();
+    }
   }
 
   getListItemRenderer() {
     return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
-  }
-
-  getPlaceholder() {
-    const option = this.props.options[this.state.selectedIndex];
-    return (option && option.label)?option.label:this.props.placeholder;
   }
 
   handleListItemBlur (index, relatedTarget) {
@@ -228,7 +174,6 @@ class SLDSMenuPicklist extends React.Component {
             options={this.props.options}
             ref="list"
             selectedIndex={this.state.selectedIndex}
-            triggerId={this.state.triggerId}
             />;
   }
 

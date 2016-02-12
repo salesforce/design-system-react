@@ -168,15 +168,22 @@ module.exports = React.createClass({
     return this.props.listItemRenderer?this.props.listItemRenderer:ListItemLabel;
   },
 
+  handleSelect(value) {
+    console.log('!!! value: ',value);
+    this.handleClose();
+  },
+
+  handleCancel(){
+    this.handleClose();
+  },
+
   getPopoverContent() {
     return <SLDSMenuList
 //            checkmark={this.props.checkmark}
 //            highlightedIndex={this.state.highlightedIndex}
             itemRenderer={this.getListItemRenderer()}
-//            onCancel={this.handleCancel}
-//            onListBlur={this.handleListBlur}
-//            onListItemBlur={this.handleListItemBlur}
-//            onSelect={this.handleSelect}
+            onCancel={this.handleCancel}
+            onSelect={this.handleSelect}
 //            onUpdateHighlighted={this.handleUpdateHighlighted}
             options={this.getOptions()}
             ref="list"
