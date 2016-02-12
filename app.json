@@ -9,7 +9,7 @@
   "env": {
     "NODE_MODULES_CACHE": true,
     "NPM_CONFIG_PRODUCTION": false,
-    "NODE_ENV": 'production',
+    "NODE_ENV": "production",
     "TZ": "America/New_York"
   },
   "image": "heroku/node"
