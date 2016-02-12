@@ -1,3 +1,5 @@
+/* `webpack.config.dist` should be used to statically build the distributed library files. */
+
 const fs = require('fs');
 const webpack = require('webpack');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
