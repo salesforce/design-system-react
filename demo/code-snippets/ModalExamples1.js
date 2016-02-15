@@ -37,6 +37,9 @@ class ModalExample extends React.Component {
                 <textarea id="description" className="slds-textarea" placeholder="Enter description"></textarea>
               </div>
             </div>
+{/*
+
+
             <SLDSLookup
               className="slds-m-vertical--large"
               emptyMessage="No Accounts Found"
@@ -53,6 +56,7 @@ class ModalExample extends React.Component {
                 {label:"Acme Construction"}
               ]}
             />
+*/}
             <SLDSMenuPicklist
               className="slds-m-vertical--large"
               label="Lead Source"
@@ -83,6 +87,7 @@ class ModalExample extends React.Component {
               placeholder = "Select Opportunity Type"
               value="C0"
             />
+
             <div className="slds-form-element slds-m-vertical--large">
               <label className="slds-form-element__label" htmlFor="amount">Amount</label>
               <div className="slds-form-element__control">

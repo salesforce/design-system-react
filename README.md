@@ -24,7 +24,7 @@ This project is in beta and very experimental. Please visit [Design System React
 * <a href="https://design-system-react.herokuapp.com/#/modal">Modal</a>
 * <a href="https://design-system-react.herokuapp.com/#/notification">Notification</a>
 * <a href="https://design-system-react.herokuapp.com/#/tooltip">PopoverTooltip</a>
-
+* <a href="https://design-system-react.herokuapp.com/#/timepicker">Timepicker</a>
 
 ### Run local server
 

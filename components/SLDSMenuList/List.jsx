@@ -12,6 +12,7 @@ import ReactDOM from 'react-dom';
 
 import ListItem from "./ListItem";
 import EventUtil from '../utils/EventUtil';
+import KEYS from '../utils/KEYS';
 
 const displayName = "SLDSList";
 const propTypes = {
@@ -69,11 +70,14 @@ class SLDSList extends React.Component {
     }
   }
 
-  handleListItemBlur (index, relatedTarget) {
-    if(this.props.onListItemBlur){
-      this.props.onListItemBlur(index);
+  handleListItemBlur (event) {
+    if(event && event.target){
+      const indexx = parseInt(event.target.getAttribute('data-index'));
+      if(this.props.onListItemBlur){
+        this.props.onListItemBlur(indexx);
+      }
+      this.setState({lastBlurredIndex:indexx});
     }
-    this.setState({lastBlurredIndex:index});
   }
 
   handleMoveFocus (delta) {
@@ -146,11 +150,8 @@ class SLDSList extends React.Component {
           key={'ListItem_'+index}
           label={option.label}
           labelRenderer={this.props.itemRenderer}
-          onBlur={this.handleListItemBlur.bind(this)}
-          onCancel={this.handleCancel.bind(this)}
           onFocus={this.handleItemFocus.bind(this)}
-          onMoveFocus={this.handleMoveFocus.bind(this)}
-          onSearch={this.handleSearch.bind(this)}
+//          onMoveFocus={this.handleMoveFocus.bind(this)}
           onSelect={this.handleSelect.bind(this)}
           onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
           value={option.value}/>
@@ -158,14 +159,52 @@ class SLDSList extends React.Component {
     });
   }
 
+  handleKeyDown(event) {
+    if(event.keyCode){
+
+      if(event.keyCode === KEYS.DOWN){
+        EventUtil.trapEvent(event);
+        this.handleMoveFocus(1);
+      }
+      else if(event.keyCode === KEYS.UP){
+        EventUtil.trapEvent(event);
+        this.handleMoveFocus(-1);
+      }
+      else if(event.keyCode === KEYS.ENTER ||
+          event.keyCode === KEYS.SPACE ){
+        EventUtil.trapEvent(event);
+        const index = parseInt(event.target.getAttribute('data-index'));
+        this.handleSelect(index);
+      }
+      else if(event.keyCode === KEYS.ESCAPE){
+        EventUtil.trapEvent(event);
+        if(this.props.onCancel){
+          this.props.onCancel();
+        }
+      }
+      else if(event.keyCode === KEYS.TAB){
+      }
+      else{
+        EventUtil.trapEvent(event);
+        const ch = String.fromCharCode(event.keyCode);
+        const index = parseInt(event.target.getAttribute('data-index'));
+        this.handleSearch(index,ch);
+      }
+    }
+  }
+
+
+
   render () {
     return (
       <ul
         aria-labelledby={this.props.triggerId}
         className={"slds-dropdown__list slds-dropdown--length-5 "+this.props.className}
-        onMouseEnter={this.props.onMouseEnter}
-        onMouseDown={this.handleMouseDown.bind(this)}
-        onMouseLeave={this.props.onMouseLeave}
+//        onMouseEnter={this.props.onMouseEnter}
+//        onMouseDown={this.handleMouseDown.bind(this)}
+//        onMouseLeave={this.props.onMouseLeave}
+        onBlur={this.handleListItemBlur.bind(this)}
+        onKeyDown={this.handleKeyDown.bind(this)}
         ref="scroll"
         role="menu"
         >

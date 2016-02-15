@@ -18,7 +18,7 @@ const propTypes = {
   isHighlighted: React.PropTypes.bool,
   isSelected: React.PropTypes.bool,
   label: React.PropTypes.string,
-  value: React.PropTypes.string,
+  value: React.PropTypes.any,
 };
 const defaultProps = {
   data: {},

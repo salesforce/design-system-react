@@ -14,6 +14,7 @@ var componentNames = [
   'SLDSNotification',
   'SLDSPopoverTooltip',
   'SLDSDatepickerSingleSelect',
+  'SLDSTimepicker',
   //'SLDSGrid',
   //'SLDSUtilityIcon',
 ];

@@ -134,7 +134,7 @@ class SLDSListItem extends React.Component {
 
   handleBlur(e) {
     if(this.props.onBlur){
-      this.props.onBlur(this.props.index, e.relatedTarget);
+      this.props.onBlur(this.props.index, e.relatedTarget, e);
     }
   }
 
@@ -161,19 +161,21 @@ class SLDSListItem extends React.Component {
 
   render () {
     let isSelected = this.props.isSelected ? " slds-is-selected" : "";
+//    console.log('!!!ListItem render');
     return (
       <li
         className={"slds-dropdown__item" + isSelected}
-        onMouseDown={this.handleMouseDown.bind(this)}
-        onMouseEnter={this.props.onMouseEnter}
-        onMouseLeave={this.props.onMouseLeave}>
+//        onMouseDown={this.handleMouseDown.bind(this)}
+//        onMouseEnter={this.props.onMouseEnter}
+//        onMouseLeave={this.props.onMouseLeave}
+        >
           <a id={'menu-0-'+this.props.index}
             href='javascript:void(0)'
             ref='link'
+            data-index={this.props.index}
             onClick={this.handleClick.bind(this)}
-            onMouseDown={this.handleMouseDown.bind(this)}
-            onKeyDown={this.handleKeyDown.bind(this)}
-            onBlur={this.handleBlur.bind(this)}
+//            onMouseDown={this.handleMouseDown.bind(this)}
+//            onKeyDown={this.handleKeyDown.bind(this)}
             onFocus={this.handleFocus.bind(this)}
             aria-checked={this.props.isSelected}
             role='menuitemradio'
