@@ -44,7 +44,7 @@ class ContextBarSection extends React.Component {
         </div>
 
         <section className="slds-p-vertical--large">
-          <SLDSContextBar />
+          <SLDSContextBar title="My App" />
         </section>
         <PropTable component="SLDSContextBar" />
       </div>

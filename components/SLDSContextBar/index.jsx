@@ -16,10 +16,13 @@ import SLDSIcon from "../SLDSIcon";
 
 const displayName = 'SLDSContextBar';
 const propTypes = {
-  // onClick: React.PropTypes.func,
+  /**
+   * The main title shown in the bar.
+   */
+  title: React.PropTypes.string
 };
 const defaultProps = {
-  // responsive: false,
+  title: 'Title'
 };
 
 const OLD_CSS_PREFIX = 'slds-';
@@ -218,7 +221,7 @@ class SLDSContextBar extends React.Component {
           <div className={pf('context-bar__shadow')}></div>
           <div className={pf('context-bar__primary context-bar-action grid grid--vertical-align-stretch')}>
             <a href="#void" className={pf('context-bar-action__label grid grid--vertical-align-center text-link--reset p-horizontal--large text-heading--small FIX-context-bar-a')}>
-              Title
+              {this.props.title}
             </a>
           </div>
           <nav className={pf('context-bar__secondary grid')} role="navigation">
