@@ -15,6 +15,9 @@
   "image": "heroku/node",
   "buildpacks": [
       {
+        "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
+      },
+      {
         "url": "https://github.com/tweettypography/heroku-buildpack-webpack.git"
       }
     ]
