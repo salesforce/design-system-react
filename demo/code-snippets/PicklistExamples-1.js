@@ -8,9 +8,13 @@ class ListItemRenderer extends React.Component {
 
   render(){
     return (
-      <span>
-        !!! {this.props.label}
-      </span>
+      
+<SLDSPopoverTooltip
+  align="top"
+  content="Tooltip on top">
+        <span>!!! {this.props.label}</span>
+</SLDSPopoverTooltip>
+      
     );
   }
 };
@@ -25,6 +29,7 @@ class PicklistExample extends React.Component {
 
   render(){
     return (
+
         <SLDSMenuPicklist
           listItemRenderer={ListItemRenderer}
           label="Contacts"
