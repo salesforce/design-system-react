@@ -12,5 +12,10 @@
     "NODE_ENV": "production",
     "TZ": "America/New_York"
   },
-  "image": "heroku/node"
+  "image": "heroku/node",
+  "buildpacks": [
+      {
+        "url": "https://github.com/tweettypography/heroku-buildpack-webpack.git"
+      }
+    ]
 }
