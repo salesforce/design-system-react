@@ -1,4 +1,4 @@
-/* `webpack.config.site-build` should be used to statically build the website. */
+/* `webpack.heroku.config` should be used to statically build the website. */
 
 const baseConfig = require('./webpack.config.dist');
 const webpack = require('webpack');
