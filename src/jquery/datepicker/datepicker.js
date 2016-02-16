@@ -9,31 +9,79 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// DATEPICKER CONTROL - JQUERY FACADE
+// # Datepicker Component --- jQuery Facade
 
-// Core
-import * as Lib from '../../lib/lib';
-import DatepickerCore, {CONTROL} from '../../core/datepicker';
+// Implements the [Datepicker design pattern](https://www.lightningdesignsystem.com/components/datepickers) in jQuery. Provides a text input form element with a calendar. You can select a single date or date range from a popup or inline calendar.
 
-// Traits
-import Openable from '../../traits/openable';
-import Positionable from '../../traits/positionable';
+// [![Datepicker component example screenshot](/assets/demo-site/images/component-examples/datepicker.png "See a live example of the Datepicker component in action")](/jquery/datepicker)
 
-// Framework Specific
-import DOM from '../dom';
-import Events from '../events';
-import State from '../state';
-import Svg from '../svg';
+// > See a [live example](/jquery/datepicker) of the Datepicker component in action
 
-// Children
-import Picklist from '../picklist/picklist';
-import Button from '../button/button';
+// ## API
 
+/* @todo Add a full API description of the control here. */
+
+// ## Dependencies
+
+// Bring in the [shared library functions](../../lib/lib.html).
+import * as Lib                    from '../../lib/lib';
+
+// Use the [shared core](../../core/datepicker.html), which contains logic that is
+// the same in every facade.
+import DatepickerCore, { CONTROL } from '../../core/datepicker';
+
+// ### Traits
+
+// #### Openable
+// * [../../traits/openable](../../traits/openable.html)
+import Openable                    from '../../traits/openable';
+
+// #### Positionable
+// * [../../traits/positionable](../../traits/positionable.html)
+import Positionable                from '../../traits/positionable';
+
+// ### jQuery
+// jQuery is an external dependency of the project.
 const $ = Lib.global.jQuery || Lib.global.$;
 
-// Template imports
-import template from './datepicker-template';
+// ### Mixins
 
+// These are mixins that appear in every Façade, bringing consistency between
+// how each framework deals with instantiation, events, and state.
+
+// #### DOM
+// [../dom](../dom.html)
+import DOM                         from '../dom';
+
+// #### Events
+// [../mixins/events](../mixins/events.html)
+import Events                      from '../events';
+
+// #### State
+// [../mixins/state](../mixins/state.html)
+import State                       from '../state';
+
+// #### Svg
+// [../svg](../svg.html)
+import Svg                         from '../svg';
+
+// ### Children
+
+// #### Picklist
+// [../picklist/picklist](../picklist/picklist.html)
+import Picklist                    from '../picklist/picklist';
+
+// #### Button
+// [../button/button](../button/button.html)
+import Button                      from '../button/button';
+
+// #### Datepicker Template
+// [./datepicker-template](./datepicker-template.html)
+import template                    from './datepicker-template';
+
+// ## Datepicker Constructor
+// Constructors are functions that are called by the `new` keyword and is the
+// function that an options object is passed into.
 let Datepicker = function Datepicker () {
 	const options = this._getOptions(arguments);
 
@@ -46,6 +94,7 @@ let Datepicker = function Datepicker () {
 
 Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
+	// ### On Before Initialize
 	_onBeforeInitialize (options) {
 		this.elements = {};
 
@@ -57,6 +106,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this._initializeState();
 	},
 
+	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 
@@ -81,6 +131,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		$icon.replaceAll(this.elements.formElement.find('x-input-icon')[0]);
 	},
 
+	// ### Bind Ui Events
 	_bindUIEvents () {
 		this.elements.input.on('click.slds-form-element', this._triggerCalendar.bind(this));
 		this.elements.input.on('change.slds-form-element', this._manualDateInput.bind(this));
@@ -91,6 +142,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		this.elements.dropdown.on('click.slds-datepicker-form', '.slds-day', this._selectDate.bind(this));
 	},
 
+	// ### Render
 	_render () {
 		const strings = this.getState('strings');
 
@@ -120,10 +172,12 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		return this.element;
 	},
 
+	// ### On Rendered
 	_onRendered () {
 		this._bindUIEvents();
 	},
 
+	// ### On Opened
 	_onOpened () {
 		this.setState({
 			dateViewing: this.getProperty('startDate') || new Date()
@@ -138,6 +192,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		}
 	},
 
+	// ### On Closed
 	_onClosed () {
 		this.elements.dropdown.addClass('slds-hidden');
 		if (this.getProperty('modalCalendar')) {
@@ -145,20 +200,24 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		}
 	},
 
+	// ### Trigger Calendar
 	_triggerCalendar (e) {
 		Openable.open(this, e.originalEvent);
 	},
 
+	// ### Cancel Event Prop
 	_cancelEventProp (e) {
 		e.stopPropagation();
 	},
 
+	// ### Render Date Range
 	_renderDateRange () {
 		this._renderCalender();
 		this._renderMonth();
 		this._renderYearPicklist();
 	},
 
+	// ### Render Calender
 	_renderCalender () {
 		const self = this;
 		const calenderData = this._getCalendarData();
@@ -204,12 +263,14 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		});
 	},
 
+	// ### Render Month
 	_renderMonth () {
 		const monthName = this._getMonthName();
 
 		this.elements.monthName.html(monthName);
 	},
 
+	// ### Render Year Picklist
 	_renderYearPicklist () {
 		const yearRange = this._getYearRangeData();
 
@@ -222,6 +283,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		}
 	},
 
+	// ### Update Year
 	_updateYear (e, data) {
 		e.stopPropagation();
 
@@ -230,6 +292,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		}
 	},
 
+	// ### Back Month
 	_backMonth (e) {
 		e.stopPropagation();
 
@@ -238,6 +301,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		}
 	},
 
+	// ### Forward Month
 	_forwardMonth (e) {
 		e.stopPropagation();
 
@@ -246,6 +310,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		}
 	},
 
+	// ### Manual Date Input
 	_manualDateInput () {
 		const inputValue = this.elements.input.val() || '';
 		const validatedDates = this._getStartAndEndDatesFromString(inputValue);
@@ -264,6 +329,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		}
 	},
 
+	// ### Select Date
 	_selectDate (e) {
 		const dayData = $(e.currentTarget).data();
 		const date = dayData.date;
@@ -297,6 +363,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		}
 	},
 
+	// ### Select Dates
 	_selectDates (dates) {
 		this.setProperties(dates);
 
@@ -308,6 +375,20 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 		Lib.returnFocusToPopupTrigger(this);
 	}
 });
+
+
+// ### Run the helpers
+
+// `Helpers` are a feature of Façades that allows anyone to register code that
+// can manipulate the component before it is encapsulated in a React class.
+//
+// This allows flexibility for adding custom behavior without modifying the
+// original source, or for adding optional behavior.
+//
+// For example, in jQuery facade uses this mechanism to optionally create
+// jQuery plug-in versions of each component. Nothing in the component itself
+// should ever depend on the presence of helpers, as they are completely
+// optional.
 
 Datepicker = Lib.runHelpers('jquery', CONTROL, Datepicker);
 

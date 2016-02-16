@@ -16,6 +16,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // Used by [Button](./button.html).
 
 // ## API
+
 /* @todo Add a full API description of the component here. */
 
 // ## Dependencies
@@ -23,7 +24,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // Bring in the [shared library functions](../../lib/lib.html).
 import * as Lib                    from '../../lib/lib';
 
-// Use the [shared core](../../core/button-view.html), which contains logic that is the same in every facade.
+// Use the [shared core](../../core/button-view.html), which contains logic
+// that is the same in every facade.
 import ButtonViewCore, { CONTROL } from '../../core/button-view';
 
 // ### React

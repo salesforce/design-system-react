@@ -79,7 +79,6 @@ export const BadgeObject = {
 	}
 };
 
-
 // Façades **extends objects** by merging them together, rather than via the
 // prototype chain or imitation of object-oriented inheritance. The important
 // thing to remember is that _some methods will be available to the component

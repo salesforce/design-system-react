@@ -64,6 +64,8 @@ import State                   from '../state';
 import ButtonView              from './button-view';
 
 // ## Button Constructor
+// Constructors are functions that are called by the `new` keyword and is the
+// function that an options object is passed into.
 let Button = function Button () {
 	// `_getOptions` can be found in [State](../state.html) and determines if
 	// a wrapper element is passed and also merges in the default properties
@@ -96,6 +98,9 @@ let Button = function Button () {
 };
 
 // ## Button Object
+// ***Private Methods***: Although not truly private methods, methods–that
+// should only function as private–follow the convention of being prefixed
+// with `_` (an underscore).
 export const ButtonObject = {
 	// ### Initializer
 	_initializer () {
@@ -277,7 +282,6 @@ export const ButtonObject = {
 		this.element.append(this._renderViews());
 	}
 };
-
 
 // Façades **extends objects** by merging them together, rather than via the
 // prototype chain or imitation of object-oriented inheritance. The important
