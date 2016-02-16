@@ -37,8 +37,6 @@ class ModalExample extends React.Component {
                 <textarea id="description" className="slds-textarea" placeholder="Enter description"></textarea>
               </div>
             </div>
-{/*
-
 
             <SLDSLookup
               className="slds-m-vertical--large"
@@ -56,7 +54,7 @@ class ModalExample extends React.Component {
                 {label:"Acme Construction"}
               ]}
             />
-*/}
+
             <SLDSMenuPicklist
               className="slds-m-vertical--large"
               label="Lead Source"
