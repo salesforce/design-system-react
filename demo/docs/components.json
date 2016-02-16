@@ -1410,7 +1410,7 @@
             },
             "onDateChange": {
                 "defaultValue": {
-                    "value": "function(date) {\n  console.log('onDateChange should be defined');\n}",
+                    "value": "function(date, strValue) {\n  console.log('onDateChange should be defined');\n}",
                     "computed": false
                 }
             },
@@ -1480,7 +1480,7 @@
             },
             "onDateChange": {
                 "defaultValue": {
-                    "value": "function(date) {\n  console.log('onDateChange should be defined');\n}",
+                    "value": "function(date, strValue) {\n  console.log('onDateChange should be defined');\n}",
                     "computed": false
                 }
             },
