@@ -26,5 +26,5 @@ fi
 
 
 if [ ! $GENERATE_DOCS ]; then
-	./scripts/shell/generate-docs.sh
+	./scripts/shell/docs-build.sh
 fi
