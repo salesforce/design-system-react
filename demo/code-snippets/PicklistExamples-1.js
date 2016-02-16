@@ -10,9 +10,9 @@ class ListItemRenderer extends React.Component {
     return (
       
 <SLDSPopoverTooltip
-  align="top"
+  align="bottom left"
   content="Tooltip on top">
-        <span>!!! {this.props.label}</span>
+        <span>~ {this.props.label}</span>
 </SLDSPopoverTooltip>
       
     );
