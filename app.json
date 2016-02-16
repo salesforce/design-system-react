@@ -12,7 +12,7 @@
     "NODE_ENV": "production",
     "TZ": "America/New_York"
   },
-  "image": "heroku/node",
+  "image": "heroku/nodejs",
   "buildpacks": [
       {
         "url": "https://github.com/heroku/heroku-buildpack-nodejs.git"
