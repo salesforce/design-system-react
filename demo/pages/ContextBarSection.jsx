@@ -33,8 +33,29 @@ class ContextBarSection extends React.Component {
     return {__html: desc };
   }
 
+  handleSelectItem(event, menuItem, menuItemIndex) {
+    alert(`Clicked ${menuItem.label} at ${menuItemIndex}`)
+  }
+
   render(){
     const docs = DOCS["SLDSContextBar"] ? true : false;
+
+    const contextBarMenuItems = [
+      {
+        name: 'home',
+        type: 'link',
+        label: 'Home'
+      },
+      {
+        name: 'menu1',
+        type: 'menu',
+        label: 'Menu Item 1',
+        menu: [
+          // TODO: have an object here....
+        ]
+      }
+    ];
+
     return (
       <div className='slds-p-around--medium'>
         <ComponentHeader cmpName="SLDSContextBar" cmpUrl="http://www.lightningdesignsystem.com/components/buttons" />
@@ -44,7 +65,7 @@ class ContextBarSection extends React.Component {
         </div>
 
         <section className="slds-p-vertical--large">
-          <SLDSContextBar title="My App" />
+          <SLDSContextBar title="My App" menuItems={contextBarMenuItems} onSelect={this.handleSelectItem.bind(this)} />Item
         </section>
         <PropTable component="SLDSContextBar" />
       </div>

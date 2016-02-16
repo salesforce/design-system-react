@@ -193,6 +193,34 @@ class SLDSContextBar extends React.Component {
     return (mainSass + fixedSass).replace(/(\$[a-zA-Z0-9\-]+)/g, replacer);
   }
 
+  renderLinkMenuItem(menuItem, menuItemIndex) {
+    const { onSelect } = this.props;
+    const { label } = menuItem;
+    const key = `SLDSContextBar.menuItem.${menuItemIndex}.${label}`;
+
+    function onClick(event) {
+      if (onSelect) {
+        if (event.stopPropagation) { event.stopPropagation(); }
+        if (event.preventDefault) { event.preventDefault(); }
+        onSelect(event, menuItem, menuItemIndex);
+      }
+    }
+
+    return <li className={pf('context-bar-action grid')} key={key}>
+      <a href="javascript:void(0)" className={pf('context-bar-action__label text-link--reset grid grid--vertical-align-center FIX-context-bar-a')} onClick={onClick.bind(this)}>
+        {label}
+      </a>
+    </li>;
+  }
+
+  renderMenuItems() {
+    return (this.props.menuItems || []).map((menuItem, menuItemIndex) => {
+      switch (menuItem.type) {
+        case 'link': return this.renderLinkMenuItem(menuItem, menuItemIndex);
+      }
+    });
+  }
+
   render() {
     const props = omit(this.props, ["className", "label", "onClick"]);
 
@@ -227,12 +255,7 @@ class SLDSContextBar extends React.Component {
           <nav className={pf('context-bar__secondary grid')} role="navigation">
             <div className={pf('context-bar__vertical-divider')}></div>
             <ul className={pf('grid grid--vertical-stretch')}>
-              <li className={pf('context-bar-action grid')}>
-                <a href="#void" className={pf('context-bar-action__label text-link--reset grid grid--vertical-align-center FIX-context-bar-a')}>Home</a>
-                <button aria-haspopup="true" className={pf('context-bar-action__trigger button button--icon-bare')}>
-                  <SLDSIcon className={pf('context-bar-action__trigger-icon')} category="utility" name="down" size="x-small" assistiveText="Open submenu" />
-                </button>
-              </li>
+              {this.renderMenuItems()}
               <li className={pf('context-bar-action grid dropdown-trigger')}>
                 <a href="#void" className={pf('context-bar-action__label context-bar-action__label--expand text-link--reset grid grid--vertical-align-center FIX-context-bar-a')}>Menu Item 1</a>
                 <button aria-haspopup="true" className={pf('context-bar-action__trigger button button--icon-bare')}>
