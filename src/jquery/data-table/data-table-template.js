@@ -11,6 +11,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // # Data Table Template --- jQuery Facade
 
+// Helps implements the [Data Tables design pattern](http://www.lightningdesignsystem.com/components/data-tables) in jQuery.
+
 // Used by [Data Table](./data-table.html).
 
 export default String.raw`

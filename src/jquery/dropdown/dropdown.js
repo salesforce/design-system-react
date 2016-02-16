@@ -24,21 +24,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // Bring in the [shared library functions](../../lib/lib.html).
-import * as Lib                from '../../lib/lib';
+import * as Lib                  from '../../lib/lib';
 
 // Use the [shared core](../../core/dropdown.html), which contains logic that is
 // the same in every facade.
 import DropdownCore, { CONTROL } from '../../core/dropdown';
-
-// ### Traits
-
-// #### Openable
-// * [../../traits/openable](../../traits/openable.html)
-import Openable         from '../../traits/openable';
-
-// #### Positionable
-// * [../../traits/positionable](../../traits/positionable.html)
-import Positionable         from '../../traits/positionable';
 
 // ### jQuery
 // jQuery is an external dependency of the project.
@@ -51,37 +41,38 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 // #### DOM
 // [../dom](../dom.html)
-import DOM                     from '../dom';
+import DOM                       from '../dom';
 
 // #### Events
 // [../mixins/events](../mixins/events.html)
-import Events                  from '../events';
+import Events                    from '../events';
 
 // #### State
 // [../mixins/state](../mixins/state.html)
-import State                   from '../state';
+import State                     from '../state';
 
 // #### Svg
 // [../svg](../svg.html)
-import Svg                   from '../svg';
+import Svg                       from '../svg';
 
 // ### Children
 
-// #### Picklist
-// [../picklist/picklist](../picklist/picklist.html)
-import Picklist from '../picklist/picklist';
-
 // #### Button
 // [../button/button](../button/button.html)
-import Button from '../button/button';
+import Button                    from '../button/button';
+
+// #### Picklist Object
+// [../picklist/picklist](../picklist/picklist.html)
+import { PicklistObject }        from '../picklist/picklist';
 
 // #### Dropdown Template
 // [./dropdown-template](./dropdown-template.html)
-import template              from './dropdown-template';
+import template                  from './dropdown-template';
 
 // ## Dropdown Constructor
 // Constructors are functions that are called by the `new` keyword and is the
-// function that an options object is passed into.let Dropdown = function Dropdown () {
+// function that an options object is passed into.
+let Dropdown = function Dropdown () {
 	const options = this._getOptions(arguments);
 
 	this.template = $(template);
@@ -90,11 +81,13 @@ import template              from './dropdown-template';
 };
 
 export const DropdownObject = {
+	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this._initElements();
 	},
 
+	// ### Render
 	_render () {
 		// Configure the button
 		let icon;
@@ -117,7 +110,7 @@ export const DropdownObject = {
 
 		this.button.prependTo(this.element);
 
-		// Render the menu
+		// #### Render the menu
 		this._renderMenu(this.elements);
 
 		if (this._collection._data.length === 0) {
@@ -127,6 +120,7 @@ export const DropdownObject = {
 		return this.element;
 	},
 
+	// ### On Changed
 	_onChanged () {
 		const item = this._getSelection();
 
@@ -136,6 +130,7 @@ export const DropdownObject = {
 		}
 	},
 
+	// ### Swap Icon
 	_swapIcon (iconString) {
 		const icon = iconString || this.getProperty('icon');
 

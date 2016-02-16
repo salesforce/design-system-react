@@ -22,5 +22,5 @@
   "env": {
     "NODE_ENV": "development"
   },
-  "ext": "js json html scss css hbs"
+  "ext": "jst js json html scss css hbs"
 }

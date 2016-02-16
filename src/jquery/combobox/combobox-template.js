@@ -11,6 +11,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // # Combobox Template --- jQuery Facade
 
+// Helps implement the [Comboboxs design pattern](https://www.lightningdesignsystem.com/components/comboboxs) in jQuery.
+
 // Used by [Combobox](./combobox.html).
 
 export default String.raw`

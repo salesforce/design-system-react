@@ -22,7 +22,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // Bring in the [shared library functions](../../lib/lib.html).
-import * as Lib                from '../../lib/lib';
+import * as Lib                    from '../../lib/lib';
 
 // Use the [shared core](../../core/button.html), which contains logic that is
 // the same in every facade.
@@ -39,11 +39,11 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 // #### DOM
 // [../dom](../dom.html)
-import DOM                     from '../dom';
+import DOM                         from '../dom';
 
 // #### State
 // [../mixins/state](../mixins/state.html)
-import State                   from '../state';
+import State                       from '../state';
 
 // ## Button View Constructor
 // Constructors are functions that are called by the `new` keyword and is the

@@ -41,7 +41,7 @@ const $ = Lib.global.jQuery || Lib.global.$;
 
 // #### DOM
 // [../dom](../dom.html)
-import DOM                 from '../dom';
+import DOM                    from '../dom';
 
 // #### Events
 // [../mixins/events](../mixins/events.html)
@@ -53,6 +53,8 @@ import State                  from '../state';
 
 
 // ## Badge Constructor
+// Constructors are functions that are called by the `new` keyword and is the
+// function that an options object is passed into.
 let Badge = function Badge () {
 	const options = this._getOptions(arguments);
 

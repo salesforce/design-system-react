@@ -13,8 +13,22 @@
 
   <link rel="stylesheet" media="all" href="/docs/docco.css" />
 </head>
-<body>
-  <div id="container" class="slds-theme--shade slds-p-around--large">
+	<body class="facades-demo | {{facade}} | slds">
+		<nav id="top-of-page" class="facades-demo-main-nav slds-page-header">
+			<div class="slds-grid">
+				<a href="/" class="slds-media slds-media--center">
+					<div class="slds-media__figure">
+						<img src="/assets/demo-site/images/salesforce-logo.svg" width="40">
+					</div>
+					<div class="slds-media__body">
+						<h4 class="slds-text-heading--label">
+							Design System Facades
+						</h4>
+					</div>
+				</a>
+			</div>
+		</nav>
+		<div id="container" class="facades-demo-masthead slds-p-around--large">
  <% if (sources.length > 1) { %>
 	  <ul id="jump_to">
 		<li>
@@ -57,12 +71,14 @@
 	<div class="sections | slds-box | slds-theme--default">
 		<div class="slds-grid slds-grid--vertical">
 			<% if (true) { %>
+			<!--
 			  <section id="title" class="slds-col--padded">
 				  <div class="annotation">
 					<h1 class="slds-text-heading--label  | slds-m-vertical--large slds-m-horizontal--medium"><a href="/">Design System Facades</a></h1>
 					<h2 class="slds-text-heading--medium slds-hide | slds-m-vertical--large slds-m-horizontal--medium"><var><%= path.dirname(source) %>/<%= path.basename(source) %></var></h2>
 				  </div>
 			  </section>
+			 -->
 			<% } %>
 			<% for (var i=0, l=sections.length; i<l; i++) { %>
 			<% var section = sections[i]; %>
@@ -87,6 +103,11 @@
 				</div>
 			</section>
 			<% } %>
+			<footer class="slds-col--padded">
+			  <p>
+			  	<a href="#top-of-page">[back to top]</a>
+			  </p>
+			</footer>
 		</div>
 	</div>
   </div>

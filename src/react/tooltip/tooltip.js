@@ -11,7 +11,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // # Tooltip Component --- React Façade
 
-// Implements the [Tooltip design pattern](http://www.lightningdesignsystem.com/components/popovers/#tooltips) in React. This is similar to both the Picklist and the Pills, but currently there is no inheritance from either component.
+// Implements the [Tooltip design pattern](http://www.lightningdesignsystem.com/components/popovers/#tooltips) in React.
 
 // [![Tooltip component example screenshot](/assets/demo-site/images/component-examples/tooltip.png "Tooltip component example screenshot")](/react/tooltip)
 

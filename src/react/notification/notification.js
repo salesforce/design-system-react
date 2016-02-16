@@ -24,7 +24,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // ## Dependencies
 
 // Bring in the [shared library functions](../../lib/lib.html).
-import * as Lib               from '../../lib/lib';
+import * as Lib                      from '../../lib/lib';
 
 // Use the [shared core](../../core/notification.html), which contains logic that is
 // the same in every facade.
@@ -32,7 +32,7 @@ import NotificationCore, { CONTROL } from '../../core/notification';
 
 // ### React
 // React is an external dependencu of the project.
-import React                  from 'react';
+import React                         from 'react';
 
 // ### Mixins
 
@@ -41,21 +41,21 @@ import React                  from 'react';
 
 // #### Events
 // [../mixins/events](../mixins/events.html)
-import Events                 from '../mixins/events';
+import Events                        from '../mixins/events';
 
 // #### Generic Will Mount
 // [../mixins/generic-will-mount](../mixins/generic-will-mount.html)
-import genericWillMount       from '../mixins/generic-will-mount';
+import genericWillMount              from '../mixins/generic-will-mount';
 
 // #### State
 // [../mixins/state](../mixins/state.html)
-import State                  from '../mixins/state';
+import State                         from '../mixins/state';
 
 // ### Children
 
 // #### Button
 // [../button/button](../button/button.html)
-import Button           from '../button/button';
+import Button                        from '../button/button';
 
 // TODO: Internationalize
 export const NotificationObject = {

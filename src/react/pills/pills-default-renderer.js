@@ -22,12 +22,12 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // ### React
 // React is an external dependency of the project.
-import React                  from 'react';
+import React from 'react';
 
 // The [Svg helper](../svg/svg.html) for React provides a simple wrapper
 // around the markup required for SVGs, and uses `Lib.getSVGPath` to convert
 // strings in the format `sprite file`.`icon name` into full paths.
-import Svg                       from '../svg/svg';
+import Svg   from '../svg/svg';
 
 // ## Get Icon
 function getIcon (icon) {

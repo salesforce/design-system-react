@@ -22,8 +22,8 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // ### React and ReactDOM
 // React and ReactDOM are external dependencies of the project.
-import React                  from 'react';
-import ReactDOM               from 'react-dom';
+import React      from 'react';
+import ReactDOM   from 'react-dom';
 
 // #### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
@@ -31,11 +31,11 @@ import ReactDOM               from 'react-dom';
 // joining classNames together." Because of the small size of the library, the
 // default build includes the entire library rather than requiring it as an
 // external dependency.
-import classNames             from 'classnames';
+import classNames from 'classnames';
 
 // #### Button
 // [../button/button](../button/button.html)
-import Button           from '../button/button';
+import Button     from '../button/button';
 
 // Since the Pills Component is simpply collection zero or more individual items `<Pill>` in a wrapper, there is
 // no need for a common core of the `<Pill>` between Façades. Therefore we must set `CONTROL`

@@ -13,7 +13,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Radio design pattern](https://www.lightningdesignsystem.com/components/forms#radio) in React. This is similar to both the Picklist and the Pills, but currently there is no inheritance from either component.
 
-// [![Radio component example screenshot](/assets/demo-site/images/component-examples/radio.png "Radio component example screenshot")](/react/radio)
 
 // > See a [live example](/react/radio) of the Radio component in action
 
