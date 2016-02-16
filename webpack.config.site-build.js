@@ -5,7 +5,6 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
 const path = require('path');
-const packageJson = require('./package.json');
 
 const config = baseConfig;
 
