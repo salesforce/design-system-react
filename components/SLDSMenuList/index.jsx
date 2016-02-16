@@ -27,7 +27,7 @@ const propTypes = {
   /**
    * Custom element that overrides the default Menu Item component.
    */
-  listItemRenderer: React.PropTypes.node,
+  listItemRenderer: React.PropTypes.func,
   /**
    * If true, component renders specifically to work inside Modal.
    */
