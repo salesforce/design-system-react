@@ -62,11 +62,11 @@ class SLDSContextBar extends React.Component {
   }
 
   componentDidMount() {
-    super.componentDidMount()
+    // TODO: componentDidMount
   }
 
   componentWillUnmount() {
-    super.componentWillUnmount()
+    // TODO: componentWillUnmount
   }
 
   // handleClick() {
