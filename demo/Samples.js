@@ -15,6 +15,7 @@ const Samples =  {
   Notifications2: require('fs').readFileSync('demo/code-snippets/NotificationExamples2.js', 'utf8'),
   Notifications3: require('fs').readFileSync('demo/code-snippets/NotificationExamples3.js', 'utf8'),
   Picklists: require('fs').readFileSync('demo/code-snippets/PicklistExamples.js', 'utf8'),
+  Picklists1: require('fs').readFileSync('demo/code-snippets/PicklistExamples-1.js', 'utf8'),
   CustomPicklists: require('fs').readFileSync('demo/code-snippets/PicklistCustomExamples.js', 'utf8'),
   StatefulButtons1: require('fs').readFileSync('demo/code-snippets/ButtonStatefulExamples1.js', 'utf8'),
   StatefulButtons2: require('fs').readFileSync('demo/code-snippets/ButtonStatefulExamples2.js', 'utf8'),

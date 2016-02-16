@@ -43,6 +43,10 @@ class PicklistSection extends React.Component {
         <section className="slds-p-vertical--large">
           <CodeMirror codeText={Samples.Picklists} />
         </section>
+        <hr />
+        <section className="slds-p-vertical--large">
+          <CodeMirror codeText={Samples.Picklists1} />
+        </section>
         <PropTable component="SLDSMenuPicklist" />
       </div>
     );
