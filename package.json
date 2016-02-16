@@ -17,7 +17,7 @@
   "private": true,
   "scripts": {
     "build-dev": "./scripts/shell/dev-build.sh",
-    "build-heroku": "./scripts/shell/site-build.sh",
+    "build-site": "./scripts/shell/site-build.sh",
     "build-docs": "./scripts/shell/generate-docs.sh",
     "clean": "grunt kill-webpack-build",
     "dev-build": "./scripts/shell/dev-build.sh",
@@ -25,10 +25,10 @@
     "dist-npm": "./scripts/shell/dist-npm.sh",
     "docs-build": "./scripts/shell/generate-docs.sh",
     "heroku-build": "./scripts/shell/site-build.sh",
+    "site-build": "./scripts/shell/site-build.sh",
     "site-build-watch": "./scripts/shell/site-build.sh --watch",
     "site-build-no-docs": "./scripts/shell/site-build.sh --no-docs",
     "site-build-watch-no-docs": "./scripts/shell/site-build.sh --watch --no-docs",
-    "site-start": "node app.js",
     "menu": "./scripts/shell/menu-trial.sh",
     "start": "node app.js",
     "test": "scripts/test --single-run"
