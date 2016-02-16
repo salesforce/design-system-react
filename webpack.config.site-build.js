@@ -36,7 +36,6 @@ config.output = {
 	filename: '[name].bundle.js'
 };
 
-
 // Additional loaders
 config.module.loaders.push({
 	test: /\.css$/,
@@ -59,25 +58,7 @@ config.module.loaders.push({
 	loader: ExtractTextPlugin.extract('url-loader?limit=30&name=/examples/[path][name].[ext]')
 });
 
-
 // Additional preloaders
-config.module.preLoaders.push({
-	test: /\.css$/,
-	loader: StringReplacePlugin.replace({
-		replacements: [{
-			pattern: /assets\/fonts\/webfonts/g,
-			replacement: function (match, p1, offset, string) {
-				return 'assets/design-system/fonts/webfonts';
-			}
-		},
-		{
-			pattern: /assets\/images\/landing/g,
-			replacement: function (match, p1, offset, string) {
-				return 'assets/design-system/images/landing';
-			}
-		}]
-	})
-});
 config.module.preLoaders.push({
 	test: /\.scss$/,
 	loader: StringReplacePlugin.replace({
@@ -90,7 +71,6 @@ config.module.preLoaders.push({
 	})
 });
 
-
 config.plugins = [
 	new StringReplacePlugin(),
 	new ExtractTextPlugin("[name].css"),
@@ -100,6 +80,5 @@ config.plugins = [
 		}
 	})
 ];
-
 
 module.exports = config;
