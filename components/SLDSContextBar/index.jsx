@@ -12,6 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from "react";
 const classNames = require("classnames");
 import omit from "lodash.omit";
+import SLDSIcon from "../SLDSIcon";
 
 const displayName = 'SLDSContextBar';
 const propTypes = {
@@ -21,10 +22,12 @@ const defaultProps = {
   // responsive: false,
 };
 
-const CSS_PREFIX = 'slds2-';
+const OLD_CSS_PREFIX = 'slds-';
+const NEW_CSS_PREFIX = 'slds2-';
 function pf(className) {
   return className.split(/\s+/).map(c => {
-    return `${CSS_PREFIX}${c}`;
+    // Add prefix only for "context" classes
+    return c.indexOf('context') >= 0 ? `${NEW_CSS_PREFIX}${c}` : `${OLD_CSS_PREFIX}${c}`;
   }).join(' ');
 }
 
@@ -37,7 +40,15 @@ const SASS_VARIABLES = {
   '$color-context-bar-shadow': '#000',
   '$color-text-context-bar': 'rgb(255, 255, 255)',
   '$color-text-context-nav-trigger': 'rgba(#fff, 0.4)',
+  '$duration-immediately': '0.05s',
   '$height-context-bar': '2.25rem',
+  '$spacing-large': '1.5rem',
+  '$spacing-medium': '1rem',
+  '$spacing-small': '0.75rem',
+  '$spacing-x-large': '2rem',
+  '$spacing-x-small': '0.5rem',
+  '$spacing-xx-small': '0.25rem',
+  '$spacing-xxx-small': '0.125rem',
 }
 
 /**
@@ -76,7 +87,7 @@ class SLDSContextBar extends React.Component {
       return SASS_VARIABLES[p1] || p1;
     }
 
-    const css = `
+    const mainSass = `
     .slds2-context-bar {
       height: $height-context-bar;
       background-color: $color-background-context-bar;
@@ -101,17 +112,87 @@ class SLDSContextBar extends React.Component {
       overflow: hidden;
       border-left: $border-width-thin solid $color-border-context-bar-divider;
     }
-    `.replace(/(\$[a-zA-Z0-9\-]+)/g, replacer);
-    return css;
+
+    .slds2-context-bar-action {
+      position: relative;
+    }
+
+    .slds2-context-bar-action.slds2-context-bar-action {
+      display: flex;
+    }
+
+    /* height = $square-tooltip-nubbin * 0.7 */
+    .slds2-context-bar-action:hover:before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      width: 100%;
+      height: 0.7rem;
+    }
+
+    .slds2-context-bar-action__label,
+    .slds2-context-bar-action__trigger {
+      transition: background-color $duration-immediately linear;
+    }
+
+    .slds2-context-bar-action__label:hover,
+    .slds2-context-bar-action__label:focus {
+      outline: 0;
+      background-color: $color-background-context-bar-highlight;
+    }
+
+    .slds2-context-bar-action__trigger:hover,
+    .slds2-context-bar-action__trigger:focus {
+      outline: 0;
+      background-color: $color-background-context-bar-highlight;
+    }
+
+    .slds2-context-bar-action__label {
+      padding-left: $spacing-small;
+      padding-right: $spacing-small;
+    }
+
+    .slds2-context-bar-action__label--expand {
+      padding-right: $spacing-large;
+    }
+
+    .slds2-context-bar-action__trigger {
+      position: absolute;
+      right: $spacing-x-small;
+      bottom: 0;
+      top: 0;
+      pointer-events: none;
+    }
+
+    .slds2-context-bar-action__trigger,
+    .slds2-context-bar-action__trigger:focus {
+      color: $color-text-context-nav-trigger;
+    }
+
+    .slds2-context-bar-action__trigger-icon {
+      fill: currentColor;
+      height: 100%;
+    }
+
+    /* vertical-alignment-center */
+    .slds-grid--vertical-align-center {
+      align-items: center; // Single Row Alignment
+      align-content: center; // Multi Row Alignment
+    }
+    `;
+
+    const fixedSass = `
+    .slds2-FIX-context-bar-a {
+      color: $color-text-context-bar !important;
+    }
+    `;
+
+    return (mainSass + fixedSass).replace(/(\$[a-zA-Z0-9\-]+)/g, replacer);
   }
 
   render() {
     const props = omit(this.props, ["className", "label", "onClick"]);
 
-                // <button aria-haspopup="true" className={pf('context-bar-action__trigger button button--icon-bare')}>
-                //   <SvgIcon className={pf('button__icon button__icon--small context-bar-action__trigger-icon')} sprite="utility" symbol="down" />
-                //   <span className={pf('assistive-text')}>Assistive text for submenu</span>
-                // </button>
                 // <Menu className={pf('nubbin--top')}>
                 //   <Menu.List isSelectable={false}>
                 //     <Menu.Item>
@@ -130,18 +211,13 @@ class SLDSContextBar extends React.Component {
                 //   </Menu.List>
                 // </Menu>
 
-                // <button aria-haspopup="true" className={pf('context-bar-action__trigger button button--icon-bare')}>
-                //   <SvgIcon className={pf('button__icon button__icon--small context-bar-action__trigger-icon')} sprite="utility" symbol="down" />
-                //   <span className={pf('assistive-text')}>Assistive text for submenu</span>
-                // </button>
-
 
     return (
       <div className={this.getClassName()} {...props}>
         <div className={pf('context-bar grid')}>
           <div className={pf('context-bar__shadow')}></div>
           <div className={pf('context-bar__primary context-bar-action grid grid--vertical-align-stretch')}>
-            <a href="#void" className={pf('context-bar-action__label grid grid--vertical-align-center text-link--reset p-horizontal--large text-heading--small')}>
+            <a href="#void" className={pf('context-bar-action__label grid grid--vertical-align-center text-link--reset p-horizontal--large text-heading--small FIX-context-bar-a')}>
               Title
             </a>
           </div>
@@ -149,13 +225,22 @@ class SLDSContextBar extends React.Component {
             <div className={pf('context-bar__vertical-divider')}></div>
             <ul className={pf('grid grid--vertical-stretch')}>
               <li className={pf('context-bar-action grid')}>
-                <a href="#void" className={pf('context-bar-action__label text-link--reset grid grid--vertical-align-center')}>Home</a>
+                <a href="#void" className={pf('context-bar-action__label text-link--reset grid grid--vertical-align-center FIX-context-bar-a')}>Home</a>
+                <button aria-haspopup="true" className={pf('context-bar-action__trigger button button--icon-bare')}>
+                  <SLDSIcon className={pf('context-bar-action__trigger-icon')} category="utility" name="down" size="x-small" assistiveText="Open submenu" />
+                </button>
               </li>
               <li className={pf('context-bar-action grid dropdown-trigger')}>
-                <a href="#void" className={pf('context-bar-action__label context-bar-action__label--expand text-link--reset grid grid--vertical-align-center')}>Menu Item 1</a>
+                <a href="#void" className={pf('context-bar-action__label context-bar-action__label--expand text-link--reset grid grid--vertical-align-center FIX-context-bar-a')}>Menu Item 1</a>
+                <button aria-haspopup="true" className={pf('context-bar-action__trigger button button--icon-bare')}>
+                  <SLDSIcon className={pf('context-bar-action__trigger-icon')} category="utility" name="down" size="x-small" assistiveText="Open submenu" />
+                </button>
               </li>
               <li className={pf('context-bar-action grid')}>
-                <a href="#void" className={pf('context-bar-action__label context-bar-action__label--expand text-link--reset grid grid--vertical-align-center')}>Menu Item 2</a>
+                <a href="#void" className={pf('context-bar-action__label context-bar-action__label--expand text-link--reset grid grid--vertical-align-center FIX-context-bar-a')}>Menu Item 2</a>
+                <button aria-haspopup="true" className={pf('context-bar-action__trigger button button--icon-bare')}>
+                  <SLDSIcon className={pf('context-bar-action__trigger-icon')} category="utility" name="down" size="x-small" assistiveText="Open submenu" />
+                </button>
               </li>
             </ul>
           </nav>
