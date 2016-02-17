@@ -10,6 +10,7 @@ test/tests-api.js
 test/tests.js
 build/
 public/docs/src/
+public/documentation/src/
 
 # gh-pages
 _site/*
