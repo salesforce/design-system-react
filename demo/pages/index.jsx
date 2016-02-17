@@ -60,6 +60,7 @@ module.exports = React.createClass( {
               <li><Link to="button" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Button</Link></li>
               <li><Link to="button-group" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">ButtonGroup</Link></li>
               <li><Link to="button-stateful" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">ButtonStateful</Link></li>
+              <li><Link to="context-bar" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">ContextBar</Link></li>
               <li><Link to="dateinput" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">DatepickerSingleSelect</Link></li>
 
               <li><Link to="icon" className="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small">Icon</Link></li>
