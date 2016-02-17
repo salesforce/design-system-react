@@ -111,6 +111,7 @@ PRE=$'\033['
 [ -n "${STYLE_MENU_HEADER}" ] 						|| export STYLE_MENU_HEADER=${STYLE_NORM}${STYLE_BRIGHT}${COL_BLUE}
 [ -n "${STYLE_MENU_INDEX}" ] 						|| export STYLE_MENU_INDEX=${STYLE_NORM}${STYLE_BRIGHT}${COL_YELLOW}
 [ -n "${STYLE_MENU_OPTION}" ] 						|| export STYLE_MENU_OPTION=${STYLE_NORM}${COL_CYAN}
+[ -n "${STYLE_MENU_OPTION_BRIGHT}" ] 				|| export STYLE_MENU_OPTION_BRIGHT=${STYLE_BRIGHT}${COL_CYAN}
 [ -n "${STYLE_MENU_PROMPT}" ] 						|| export STYLE_MENU_PROMPT=${STYLE_NORM}${STYLE_BRIGHT}${COL_YELLOW}
 # gitscripts-specific targeted styles
 # and colors
