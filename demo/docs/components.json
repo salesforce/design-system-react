@@ -382,6 +382,33 @@
             }
         }
     },
+    "SLDSContextBar": {
+        "description": "The SLDSContextBar component provides a high-level menu for a Salesforce application. The first item in the bar is the application name or the current main context. Menu items are listed next.",
+        "displayName": "SLDSContextBar",
+        "props": {
+            "children": {
+                "type": {
+                    "name": "node"
+                },
+                "required": true,
+                "description": "Children are expected to be components."
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Additional classes."
+            },
+            "title": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "The main title shown in the bar."
+            }
+        }
+    },
     "SLDSIcon": {
         "description": "The SLDSIcon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href=\"#/button\">SLDSButton component</a> component with <code>variant=\"icon\"</code>.",
         "displayName": "SLDSIcon",
