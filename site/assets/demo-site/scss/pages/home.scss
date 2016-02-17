@@ -104,3 +104,36 @@
 	line-height: 70px;
 }
 
+
+.fill-height-or-more {
+  // min-height: 100%;
+  // display: flex;
+  // flex-direction: column;
+  > div {
+    // these are flex items
+
+    // flex: 1; same as:
+    // flex-grow: 1;
+    // flex-shrink: 1;
+    // flex-basis: auto;
+    // flex: 1 1 auto;
+    // flex: 1;
+
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    min-height: 10rem;
+    > div {
+      // also flex items
+    }
+  }
+}
+
+#components-cards .component {
+	width: 15.3rem;
+
+	> .slds-box {
+			height: 10rem;
+			overflow-y: hidden;
+		}
+}

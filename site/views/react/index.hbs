@@ -26,14 +26,41 @@
 				</p>
 
 				<p class="slds-m-vertical--small">
-					ReactJS and other React libraries are not bundled with Facades. You will first need to <a href="https://facebook.github.io/react/downloads.html">download or link to the Facebook CDN</a> in order to set up ReactJS in your project. 
+					ReactJS and other React libraries are not bundled with Facades. You will first need to <a href="https://facebook.github.io/react/downloads.html">download or link to the Facebook CDN</a> in order to set up ReactJS in your project.
 				</p>
 			</div>
 			<div class="slds-p-vertical--medium">
-					<p class="slds-p-vertical--small">
-						Have fun! If you have any questions (and we hope you do!), then please let us know via our <a href="https://github.com/salesforce-ux/design-system-facades/issues">GitHub Issues</a>.
-					</p>
-				</div>
+				<p class="slds-p-vertical--small">
+					Have fun! If you have any questions (and we hope you do!), then please let us know via our <a href="https://github.com/salesforce-ux/design-system-facades/issues">GitHub Issues</a>.
+				</p>
+			</div>
+		</div>
+
+		<div class="slds-p-around--medium">
+			<div id="components-cards" class="slds-grid slds-grid--pull-padded-large | slds-wrap">
+				{{#each components}}
+					<div class="component slds-col--padded | slds-m-bottom--large">
+						<div class="slds-box | slds-theme--default">
+							<h3 class="slds-text-heading--label slds-truncate">
+								{{ componentDisplayName }}
+							</h3>
+							<ul>
+								<li>
+									<a href="/docs/src/{{facade}}/{{component}}/{{componentGroupName}}.html">Documentation</a>
+								</li>
+								<li>
+									<a href="/{{facade}}/{{component}}">Live Example</a>
+								</li>
+								<li>
+									<a href="/{{facade}}/{{component}}">
+										<img src="/assets/demo-site/images/component-examples/{{component}}.png" style="max-height: 200px;" alt="Button Screenshot">
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				{{/each}}
+			</div>
 		</div>
 
 	</div>
