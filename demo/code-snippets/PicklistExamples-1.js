@@ -7,14 +7,13 @@ class ListItemRenderer extends React.Component {
   }
 
   render(){
-    return (
-      
+    return (      
 <SLDSPopoverTooltip
+  openByDefault={this.props.isHighlighted}
   align="bottom left"
   content="Tooltip on top">
-        <span>~ {this.props.label}</span>
+    <p className='slds-truncate'>~~ {this.props.label}</p>
 </SLDSPopoverTooltip>
-      
     );
   }
 };

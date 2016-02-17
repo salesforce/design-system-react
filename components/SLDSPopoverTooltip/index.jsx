@@ -153,6 +153,12 @@ class SLDSPopoverTooltip extends React.Component {
      });
   }
 
+  componentDidUpdate( prevProps) {
+    if(prevProps.openByDefault !== this.props.openByDefault){
+      this.setState({isOpen:this.props.openByDefault});
+    }
+  }
+
   render(){
     const containerStyles = { display: "inline" };
     return (
