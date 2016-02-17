@@ -50,7 +50,8 @@ choices[3]="${A}clean${STYLE_MENU_OPTION} - Remove all files from ${STYLE_BRANCH
 choices[4]="${A}dev${STYLE_MENU_OPTION} - Start the webpack hot dev server"${X}
 choices[5]="${A}dist${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}.tmp/${STYLE_MENU_OPTION} directory and then package it up in ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION} with a .zip file and README.md"${X}
 choices[6]="${A}dist-npm${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}.tmp/${STYLE_MENU_OPTION} directory and then package it up for distribution to NPM in ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION}"${X}
-choices[7]="${A}test${STYLE_MENU_OPTION} - Run the test suite."${X}
+choices[7]="${A}docs${STYLE_MENU_OPTION} - Generate the docco documentation."${X}
+choices[8]="${A}test${STYLE_MENU_OPTION} - Run the test suite."${X}
 
 if __menu "${choices[@]}"; then
 	echo ${X}
@@ -90,6 +91,11 @@ if __menu "${choices[@]}"; then
 		7)
 			echo "Running distribution config webpack, building to ${STYLE_BRANCH_H1}.tmp/${X} directory and then packaging it up for uploading to npm in the ${STYLE_BRANCH_H1}.dist/${X}";
 			npm run dist-npm;
+			echo;;
+
+		8)
+			echo "Generating the docco documentation...${X}";
+			npm run docs;
 			echo;;
 
 		8)

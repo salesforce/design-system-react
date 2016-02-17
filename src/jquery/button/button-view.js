@@ -9,65 +9,93 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Button View Private Control
-// ### jQuery Facade
+// # Button View --- jQuery Facade
 
-// Helps implement the Button [design pattern](https://www.lightningdesignsystem.com/components/buttons).
+// Helps implement the [Button design pattern](https://www.lightningdesignsystem.com/components/buttons) in jQuery.
 
-// This controls is meant to be used by button and not directly bound to DOM.
+// Used by [Button](./button.html).
 
-// Bring in the [shared library functions](../lib/lib.html).
-import * as Lib from '../../lib/lib';
+// ## API
 
-// Use the [shared core](../../core/button-view.html), which contains logic that is the same in every facade.
-import ButtonViewCore, {CONTROL} from '../../core/button-view';
+/* @todo Add a full API description of the control here. */
 
-// jQuery is an external dependency.
+// ## Dependencies
+
+// Bring in the [shared library functions](../../lib/lib.html).
+import * as Lib                    from '../../lib/lib';
+
+// Use the [shared core](../../core/button.html), which contains logic that is
+// the same in every facade.
+import ButtonViewCore, { CONTROL } from '../../core/button-view';
+
+// ### jQuery
+// jQuery is an external dependency of the project.
 const $ = Lib.global.jQuery || Lib.global.$;
 
-// [State](../state.html) is a mixin that appear in every facade and bring some consistency between how each framework deals with instantiation, events, and state.
-import State from '../state';
+// ### Mixins
 
-// [DOM](../dom.html) is a mixin that wraps some jQuery DOM manipulattion methods, so they can be called from the control itself and not the jQuery element connected to the control.
-import DOM from '../dom';
+// These are mixins that appear in every Façade, bringing consistency between
+// how each framework deals with instantiation, events, and state.
 
-// #### Constructor
-// Constructors are functions that are called by the `new` keyword and is the function that an options object is passed into.
+// #### DOM
+// [../dom](../dom.html)
+import DOM                         from '../dom';
+
+// #### State
+// [../mixins/state](../mixins/state.html)
+import State                       from '../state';
+
+// ## Button View Constructor
+// Constructors are functions that are called by the `new` keyword and is the
+// function that an options object is passed into.
 let ButtonView = function ButtonView () {
 	const options = this._getOptions(arguments);
 
 	this._initialize(options);
 };
 
-// #### Private Methods
-// Although not truly private methods, methods–that should only function as private–follow the convention of being prefixed with `_` (an underscore).
+// #### Button View Object
+// ***Private Methods***: Although not truly private methods, methods–that
+// should only function as private–follow the convention of being prefixed
+// with `_` (an underscore).
 export const ButtonViewObject = {
-	// Triggered by `_initialize`. See [Base](../core/base.html). Allows events to be be attached to the control before the asynchronous `render` is complete.
+	// ### Initializer
 	_initializer () {
+		// Triggered by `_initialize`. See [Base](../core/base.html). Allows
+		// events to be be attached to the control before the asynchronous
+		// `render` is complete.
 		this.element = this.$el = this.elements.control = $('<span>');
 	},
 
+	// ### Render Assistive Text
 	_renderAssistiveText () {
 		if (this.getProperty('assistiveText')) {
 			return $('<span>').addClass(this.cssClasses.ASSISTIVE_TEXT).text(this.getProperty('assistiveText'));
 		}
 	},
 
+	// ### Render Icon
 	_renderIcon (position) {
 		let $icon;
-		if (this.getProperty('icon') && this.getProperty('iconPosition') === position) {
-			$icon = $('<svg ' + 'class="' + this._getIconClassNames() + '"><use xlink:href="' + Lib.getSVGPath(this.getProperty('icon')) + '"></use></svg>')
-				.attr('aria-hidden', 'true');
-		} else if (position === 'right' && this.getProperty('iconStyle') === 'icon-more') {
-			$icon = $('<svg ' + 'class="' + this._getIconClassNames(this.buttonIconSizes['x-small']) + '"><use xlink:href="' + Lib.getSVGPath(this.moreIcon) + '"></use></svg>')
-				.attr('aria-hidden', 'true');
+		if (
+			this.getProperty('icon') &&
+			this.getProperty('iconPosition') === position
+		) {
+			$icon = $('<svg ' + 'class="' + this._getIconClassNames() + '"><use xlink:href="' + Lib.getSVGPath(this.getProperty('icon')) + '"></use></svg>').attr('aria-hidden', 'true');
+		} else if (
+			position === 'right' &&
+			this.getProperty('iconStyle'
+		) === 'icon-more') {
+			$icon = $('<svg ' + 'class="' + this._getIconClassNames(this.buttonIconSizes['x-small']) + '"><use xlink:href="' + Lib.getSVGPath(this.moreIcon) + '"></use></svg>').attr('aria-hidden', 'true');
 		}
 
 		return $icon;
 	},
 
+	// ### Render
 	_render () {
-		// Truncating text limits the width of the button and adds ellipses (...) if the text extends farther.
+		// Truncating text limits the width of the button and adds ellipses
+		// (...) if the text extends farther.
 		if (this.getProperty('truncate')) {
 			this.element.prepend('<span>').addClass(this.cssClasses.TRUNCATE).text(this.getProperty('text'));
 		} else {
@@ -86,7 +114,36 @@ export const ButtonViewObject = {
 	}
 };
 
-Lib.merge(ButtonView.prototype, ButtonViewCore, DOM, State, ButtonViewObject);
+// Façades **extends objects** by merging them together, rather than via the
+// prototype chain or imitation of object-oriented inheritance. The important
+// thing to remember is that _some methods will be available to the component
+// which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Button extends its [core](../../core/button.html),
+// which in turn extends the base component.
+
+Lib.merge(
+	ButtonView.prototype,
+	ButtonViewCore,
+	DOM,
+	State,
+	ButtonViewObject
+);
+
+// ### Run the helpers
+
+// `Helpers` are a feature of Façades that allows anyone to register code that
+// can manipulate the component before it is encapsulated in a React class.
+//
+// This allows flexibility for adding custom behavior without modifying the
+// original source, or for adding optional behavior.
+//
+// For example, in jQuery facade uses this mechanism to optionally create
+// jQuery plug-in versions of each component. Nothing in the component itself
+// should ever depend on the presence of helpers, as they are completely
+// optional.
 ButtonView = Lib.runHelpers('jquery', CONTROL, ButtonView);
 
 export default ButtonView;

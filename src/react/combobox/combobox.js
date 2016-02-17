@@ -9,47 +9,84 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// COMBOBOX CONTROL - REACT FACADE
+// # Combobox Component --- React Façade
 
-// Core
-import * as Lib from '../../lib/lib';
+// A Combobox is similiar to the [Lookup component](/react/lookup). It is a dropdown menu paired with a text input form element, but allows any input.
+
+// [![Combobox component example screenshot](/assets/demo-site/images/component-examples/combobox.png "See a live example of the Combobox component in action")](/react/combobox)
+
+// > See a [live example](/react/combobox) of the Combobox component in action
+
+// ## API
+
+/* @todo Add a full API description of the control here. */
+
+// ## Dependencies
+
+// Bring in the [shared library functions](../../lib/lib.html).
+import * as Lib                from '../../lib/lib';
+
+// Use the [shared core](../../core/combobox.html), which contains logic that
+// is the same in every façade.
 import ComboboxCore, {CONTROL} from '../../core/combobox';
 
-// Traits
-import Openable from '../../traits/openable';
-import KeyboardNavigable from '../../traits/keyboard-navigable';
-import Multiselectable from '../../traits/multiselectable';
+// ### Traits
 
-// Framework specific
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { PicklistObject } from '../picklist/picklist';
+// #### KeyboardNavigable
+// * [../../traits/keyboard-navigable.html](../../traits/keyboard-navigable.html)
+import KeyboardNavigable       from '../../traits/keyboard-navigable';
 
-// Children
-import PicklistItems from '../picklist/picklist-items';
-import Svg from '../svg/svg';
+// #### Multiselectable
+// * [../../traits/multiselectable](../../traits/multiselectable.html)
+import Multiselectable         from '../../traits/multiselectable';
+
+// #### Openable
+// * [../../traits/openable](../../traits/openable.html)
+import Openable                from '../../traits/openable';
+
+// ### React and ReactDOM
+// React and ReactDOM are external dependencies of the project.
+import React                   from 'react';
+import ReactDOM                from 'react-dom';
+
+// ### Children
+// Split out some rendering logic, just to make things easier to read.
+import { PicklistObject }      from '../picklist/picklist';
+import PicklistItems           from '../picklist/picklist-items';
+
+// The [Svg helper](../svg/svg.html) for React provides a simple wrapper
+// around the markup required for SVGs, and uses `Lib.getSVGPath` to convert
+// strings in the format `sprite file`.`icon name` into full paths.
+import Svg                     from '../svg/svg';
+
+// ## Combobox Object
 
 export const ComboboxObject = Lib.merge(PicklistObject, {
-	displayName: CONTROL,
-	
-	propTypes: {
-		collection: React.PropTypes.oneOfType([
-			React.PropTypes.array,
-			React.PropTypes.object
-		]).isRequired,
-		disabled: React.PropTypes.bool,
-		id: React.PropTypes.string,
-		onChanged: React.PropTypes.func,
-		selection: React.PropTypes.oneOfType([
-			React.PropTypes.string,
-			React.PropTypes.object
-		])
+	// ### Display Name
+	// Always use the canonical component name (set in the core) as the React
+	// display name.
+	displayName : CONTROL,
+
+	// ### Prop Types
+	propTypes   : {
+		collection  : React.PropTypes.oneOfType([
+				React.PropTypes.array,
+				React.PropTypes.object
+			]).isRequired,
+		disabled    : React.PropTypes.bool,
+		id          : React.PropTypes.string,
+		onChanged   : React.PropTypes.func,
+		selection   : React.PropTypes.oneOfType([
+				React.PropTypes.string,
+				React.PropTypes.object
+			])
 	},
 
+	// ### Render
 	render () {
-		const item = this._getSelection();
+		const item          = this._getSelection();
 		const selectionName = item.getText();
-		const isOpen = Openable.isOpen(this);
+		const isOpen        = Openable.isOpen(this);
 
 		/* TODO: Icon is currently absolute positioned due to picklist wrapper picklist, but needs centering.
 					Also, does not use Button component, because Button only supports ButtonViews as children right now. */
@@ -65,19 +102,22 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 			</div>
 		);
 	},
-	
+
+	// ### Set Input Ref
 	_setInputRef (input) {
 		this.elements.input = Lib.wrapElement(ReactDOM.findDOMNode(input));
 	},
-	
+
+	// ### Handle Changed
 	_handleChanged (e) {
 		const value = {};
-		
+
 		value[this.accessors.textProp()] = e.target.value;
 
 		Multiselectable.selectItem(this, value);
 	},
-	
+
+	// ### Handle Key Pressed
 	_handleKeyPressed (e) {
 		if (e.key && /(ArrowUp|ArrowDown|Escape|Enter)/.test(e.key)) {
 			e.preventDefault();
@@ -89,9 +129,41 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 	}
 });
 
-let Combobox = Lib.merge({}, ComboboxCore, ComboboxObject);
+// ## Combobox
 
+// Façades **extends objects** by merging them together, rather than via the
+// prototype chain or imitation of object-oriented inheritance. The important
+// thing to remember is that _some methods will be available to the component
+// which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Combobox extends its [core](../../core/combobox.html),
+// along with the ComboboxObject which itself merges the PicklistObject.
+
+let Combobox = Lib.merge(
+	{},
+	ComboboxCore,
+	ComboboxObject
+);
+
+// ### Run the helpers
+
+// `Helpers` are a feature of Façades that allows anyone to register code that
+// can manipulate the component before it is encapsulated in a React class.
+//
+// This allows flexibility for adding custom behavior without modifying the
+// original source, or for adding optional behavior.
+//
+// For example, the jQuery facade uses this mechanism to optionally create
+// jQuery plug-in versions of each component. Nothing in the component itself
+// should ever depend on the presence of helpers, as they are completely
+// optional.
 Combobox = Lib.runHelpers('react', CONTROL, Combobox);
+
+// Once everything has been merged together and all registered helpers have
+// been run we can create the React class and export the result for
+// consumption by our apps.
 Combobox = React.createClass(Combobox);
 
 export default Combobox;
