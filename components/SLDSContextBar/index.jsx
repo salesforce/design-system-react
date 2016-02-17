@@ -17,6 +17,7 @@ import SLDSIcon from "../SLDSIcon";
 import Title from "./Title";
 import Nav from "./Nav";
 import NavMenu from "./NavMenu";
+import NavMenuLink from "./NavMenuLink";
 
 import styling from "./styling";
 
@@ -166,4 +167,5 @@ ContextBar.defaultProps = defaultProps;
 ContextBar.Title = Title;
 ContextBar.Nav = Nav;
 ContextBar.NavMenu = NavMenu;
+ContextBar.NavMenuLink = NavMenuLink;
 module.exports = ContextBar;

@@ -91,7 +91,9 @@ class ContextBarSection extends React.Component {
                   {label: "E2 Option Super Super Long", value: "E1"},
                 ]}
                 value="C0"
-              >SUPER</SLDSContextBar.NavMenu>
+              >
+                <SLDSContextBar.NavMenuLink>Menu 1</SLDSContextBar.NavMenuLink>
+              </SLDSContextBar.NavMenu>
               <SLDSContextBar.NavMenu
                 assistiveText="More Options"
                 buttonVariant="icon-inverse"
@@ -115,7 +117,7 @@ class ContextBarSection extends React.Component {
                   {label: "E2 Option Super Super Long", value: "E1"},
                 ]}
                 value="C0"
-              >SUPER1</SLDSContextBar.NavMenu>
+              ><SLDSContextBar.NavMenuLink>Menu 2</SLDSContextBar.NavMenuLink></SLDSContextBar.NavMenu>
             </SLDSContextBar.Nav>
           </SLDSContextBar>
         </section>

@@ -35,14 +35,14 @@ class NavMenu extends React.Component {
   render() {
     return (
       <li className={pf('context-bar-action grid dropdown-trigger')}>
-        <a href="#void" className={pf('context-bar-action__label context-bar-action__label--expand text-link--reset grid grid--vertical-align-center FIX-context-bar-a')}>Menu Item 1</a>
+        { this.props.children }
 {/*
         <button aria-haspopup="true" className={pf('context-bar-action__trigger button button--icon-bare')}>
           <SLDSIcon className={pf('context-bar-action__trigger-icon')} category="utility" name="down" size="x-small" assistiveText="Open submenu" />
         </button>
 */}
 
-<SLDSMenuDropdown {... this.props} />
+        <SLDSMenuDropdown {... this.props} />
       </li>
     );
   }
