@@ -56,12 +56,14 @@ app.use('/assets', express.static(__dirname + '/node_modules/@salesforce-ux/desi
 // Serve up public folder
 app.use(express.static('public'));
 
+// Cache headers
+const cacheOptions = {
+	maxAge: '1d'
+};
+
 // Third-party libraries
-app.use('/vendor/jquery', express.static(__dirname + '/node_modules/jquery/dist'));
-app.use('/vendor/prism', express.static(__dirname + '/node_modules/prismjs'));
-app.use('/vendor/react', express.static(__dirname + '/node_modules/react/dist'));
-app.use('/vendor/react', express.static(__dirname + '/node_modules/react-dom/dist'));
-app.use('/vendor/require', express.static(__dirname + '/node_modules/requirejs'));
+app.use('/vendor/jquery', express.static(__dirname + '/node_modules/jquery/dist', cacheOptions));
+app.use('/vendor/prism', express.static(__dirname + '/node_modules/prismjs', cacheOptions));
 
 // Index
 app.get('/', function (req, res) {
