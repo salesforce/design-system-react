@@ -9,27 +9,71 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// COMBOBOX CONTROL - JQUERY FACADE
+// # Combobox Component --- jQuery Facade
 
-// Core
-import * as Lib from '../../lib/lib';
-import ComboboxCore, {CONTROL} from '../../core/combobox';
+// A Combobox is similiar to the [Lookup component](/jquery/lookup). It is a dropdown menu paired with a text input form element, but allows any input.
 
-// Traits
-import Multiselectable from '../../traits/multiselectable';
+// [![Combobox component example screenshot](/assets/demo-site/images/component-examples/combobox.png "See a live example of the Combobox component in action")](/jquery/combobox)
 
-// Framework specific
-import DOM from '../dom';
-import Events from '../events';
-import State from '../state';
-import Svg from '../svg';
-import { PicklistObject } from '../picklist/picklist';
+// > See a [live example](/jquery/combobox) of the Combobox component in action
 
+// ## API
+
+/* @todo Add a full API description of the control here. */
+
+// ## Dependencies
+
+// Bring in the [shared library functions](../../lib/lib.html).
+import * as Lib                  from '../../lib/lib';
+
+// Use the [shared core](../../core/combobox.html), which contains logic that is
+// the same in every facade.
+import ComboboxCore, { CONTROL } from '../../core/combobox';
+
+// ### Traits
+
+// #### Multiselectable
+// * [../../traits/multiselectable](../../traits/multiselectable.html)
+import Multiselectable           from '../../traits/multiselectable';
+
+// #### Picklist Object
+// [../picklist/picklist](../picklist/picklist.html)
+import { PicklistObject }        from '../picklist/picklist';
+
+// ### jQuery
+// jQuery is an external dependency of the project.
 const $ = Lib.global.jQuery || Lib.global.$;
 
-// Template imports
-import template from './combobox-template';
+// ### Mixins
 
+// These are mixins that appear in every Façade, bringing consistency between
+// how each framework deals with instantiation, events, and state.
+
+// #### DOM
+// [../dom](../dom.html)
+import DOM                       from '../dom';
+
+// #### Events
+// [../mixins/events](../mixins/events.html)
+import Events                    from '../events';
+
+// #### State
+// [../mixins/state](../mixins/state.html)
+import State                     from '../state';
+
+// #### Svg
+// [../svg](../svg.html)
+import Svg                       from '../svg';
+
+// ### Children
+
+// #### Combobox Template
+// [./combobox-template](./combobox-template.html)
+import template                  from './combobox-template';
+
+// ## Combobox Constructor
+// Constructors are functions that are called by the `new` keyword and is the
+// function that an options object is passed into.
 let Combobox = function Combobox () {
 	const options = this._getOptions(arguments);
 
@@ -37,12 +81,18 @@ let Combobox = function Combobox () {
 	this._initialize(options);
 };
 
+// ## Combobox Object
+// ***Private Methods***: Although not truly private methods, methods–that
+// should only function as private–follow the convention of being prefixed
+// with `_` (an underscore).
 export const ComboboxObject = {
+	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this._initElements();
 	},
 
+	// ### Init Elements
 	_initElements () {
 		this.elements.button = this.element.find('.' + this.cssClasses.TOGGLE);
 		this.elements.input = this.element.find('.' + this.cssClasses.INPUT);
@@ -54,6 +104,7 @@ export const ComboboxObject = {
 		$icon.replaceAll(this.elements.button.find('x-button-svg')[0]);
 	},
 
+	// ### Bind Ui Events
 	_bindUIEvents () {
 		this.elements.button.on('click', this._handleClicked.bind(this));
 		this.elements.dropdownMenu.on('click', 'a', this._handleMenuItemSelected.bind(this));
@@ -63,6 +114,7 @@ export const ComboboxObject = {
 		this.elements.dropdown.on('keypress', this._handleKeyPressed.bind(this));
 	},
 
+	// ### Render
 	_render () {
 		const selection = this._getSelection();
 
@@ -79,6 +131,7 @@ export const ComboboxObject = {
 		return this.element;
 	},
 
+	// ### On Changed
 	_onChanged () {
 		const item = this._getSelection();
 
@@ -89,6 +142,7 @@ export const ComboboxObject = {
 		}
 	},
 
+	// ### Enable
 	enable () {
 		this.setProperties({
 			disabled: false
@@ -100,6 +154,7 @@ export const ComboboxObject = {
 		}
 	},
 
+	// ### Disable
 	disable () {
 		this.setProperties({
 			disabled: true
@@ -110,6 +165,7 @@ export const ComboboxObject = {
 			this.elements.button.attr('disabled', 'disabled');
 		}
 	},
+	// ### On Enabled Or Disabled
 	_onEnabledOrDisabled () {
 		if (this.rendered) {
 			const disabled = !!this.getProperty('disabled');
@@ -119,12 +175,14 @@ export const ComboboxObject = {
 		}
 	},
 
+	// ### Reset Width
 	_resetWidth (width) {
 		if (this.rendered) {
 			this.elements.dropdownMenu.width(width);
 		}
 	},
 
+	// ### Handle Changed
 	_handleChanged () {
 		const value = {};
 
@@ -135,8 +193,39 @@ export const ComboboxObject = {
 	}
 };
 
-Lib.merge(Combobox.prototype, ComboboxCore, Events, DOM, State, Svg, PicklistObject, ComboboxObject);
+// Façades **extends objects** by merging them together, rather than via the
+// prototype chain or imitation of object-oriented inheritance. The important
+// thing to remember is that _some methods will be available to the component
+// which are not declared in this file_.
 
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Combobox extends its [core](../../core/combobox.html),
+// which in turn extends the base component.
+
+Lib.merge(
+	Combobox.prototype,
+	ComboboxCore,
+	Events,
+	DOM,
+	State,
+	Svg,
+	PicklistObject,
+	ComboboxObject
+);
+
+// ### Run the helpers
+
+// `Helpers` are a feature of Façades that allows anyone to register code that
+// can manipulate the component before it is encapsulated in a React class.
+//
+// This allows flexibility for adding custom behavior without modifying the
+// original source, or for adding optional behavior.
+//
+// For example, in jQuery facade uses this mechanism to optionally create
+// jQuery plug-in versions of each component. Nothing in the component itself
+// should ever depend on the presence of helpers, as they are completely
+// optional.
 
 Combobox = Lib.runHelpers('jquery', CONTROL, Combobox);
 

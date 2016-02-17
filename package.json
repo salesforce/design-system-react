@@ -23,6 +23,7 @@
     "clean": "grunt kill-webpack-build",
     "dev": "grunt serve",
     "dev-build": "./scripts/shell/dev-build.sh",
+    "docs": "./scripts/shell/generate-docs.sh",
     "dist": "./scripts/shell/dist.sh",
     "dist-npm": "./scripts/shell/dist-npm.sh",
     "docs-build": "./scripts/shell/generate-docs.sh",
@@ -31,7 +32,7 @@
     "heroku-build-no-docs": "./scripts/shell/heroku-build.sh --no-docs",
     "Heroku-build-watch-no-docs": "./scripts/shell/heroku-build.sh --watch --no-docs",
     "heroku-start": "node app.js",
-    "menu": "./scripts/shell/menu-trial.sh",
+    "menu": "./scripts/shell/menu.sh",
     "start": "grunt serve",
     "test": "grunt test"
   },

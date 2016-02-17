@@ -11,6 +11,9 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // # Badge Control
 // ### Core
+// #### Inherited by
+// - [React Façade Badge](../react/badge/badge.html).
+// - [jQuery Façade Badge](../jquery/badge/badge.html).
 
 // Bring in the [shared library functions](../lib/lib.html).
 import * as Lib from '../lib/lib';
