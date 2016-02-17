@@ -3,29 +3,23 @@ Javascript components based on [Lightning Design System](https://www.lightningde
 
 ### Setup
 * Clone the project
-* Have [Node.js](https://nodejs.org/) and [Grunt](http://gruntjs.com/) installed
+* Have [Node.js](https://nodejs.org/) installed
 * Run `npm install` via terminal in the directory where the project has been cloned
 
 ### Running
-* Run `npm start` to start a static server on port 8080. You can navigate to `http://localhost:8080/examples/` to see a simple index page with links to examples in each facade. This is will enable "hot module replacement" since ES6 modules are in used in the source
+* Run `npm start` to start an Express server on port 8080. You can navigate to `http://localhost:8080/examples/` to see a simple index page with links to examples in each facade. This is will enable "hot module replacement" since ES6 modules are in used in the source.
 
 ### Testing (currently disabled)
 * Run `npm test` to build the tests and see the results in the console. You can also run the tests in the browser by navigating to `http://localhost:8080/test/` after executing `npm start`
 * A detailed explanation of the testing design for this project is available in `docs/behavior-tests.md`
 
-### Building
-* Run `grunt build` for the default build. This will run eslint and create the dist files
-
 ### Scripts
-* Run like `npm run app-start`
+* Run like `npm run start`
 * Run `npm run menu` to see an interactive menu of available scripts.
-  - *app-start*: Start the demo application
-  - *build-dev*: See what the webpack hot-dev-server is doing. Outputs to `build/`
-  - *build-heroku*: Run production config webpack and output to `build/`
-  - *clean*: Remove all files from `build/`
-  - *dev*: Start the webpack hot dev server
-  - *dist*: Run the distribution config webpack, build to `.tmp/` directory and then package it up in `.dist/` with a .zip file and README.md
-  - *dist-npm*: Run the distribution config webpack, build to `.tmp/` directory and then package it up for distribution to NPM in `.dist/`
+  - *start*: Start the Express website app with Webpack middleware
+  - *site-build*: Build website files with Webpack and output to `./build`
+  - *dist*: Run the distribution config webpack, build to `./.tmp` directory and then package it up in `/.dist` with a .zip file and README.md
+  - *dist-npm*: Run the distribution config webpack, build to `./.tmp` directory and then package it up for distribution to NPM in `./.dist`
   - *test*: Run the test suite.
 
 

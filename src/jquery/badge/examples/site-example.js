@@ -25,7 +25,6 @@ $(function () {
 			'text': value.text,
 			'theme': value.theme
 		});
-		void(badges['badge' + index]);
 	});
 });
 
@@ -35,6 +34,5 @@ const badge15 = new Badge({
 	theme: 'inverse'
 });
 badge15.appendTo($('#badge__badge-for-appending'));
-void(badge15);
 
 // <-- SAMPLE CONTROL CODE
