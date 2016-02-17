@@ -135,5 +135,9 @@
 	> .slds-box {
 			height: 10rem;
 			overflow-y: hidden;
+
+			img {
+				max-height: 200px;
+			}
 		}
 }
