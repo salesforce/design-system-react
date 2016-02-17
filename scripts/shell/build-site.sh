@@ -25,6 +25,6 @@ fi
 ./node_modules/.bin/webpack --config webpack.config.site-build.js $FLAG
 
 
-if [ ! $GENERATE_DOCS ]; then
+if [ $GENERATE_DOCS ]; then
 	./scripts/shell/build-docs.sh
 fi
