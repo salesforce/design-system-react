@@ -155,7 +155,6 @@ class ContextBar extends React.Component {
 */}
           <style>{styling.getComponentStyles()}</style>
         </div>
-        {this.props.children}
       </div>
     )
   }

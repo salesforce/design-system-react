@@ -15,8 +15,10 @@ import styling from "./styling";
 
 const pf = styling.pf;
 
-import SLDSIcon from "../SLDSIcon";
+//import SLDSIcon from "../SLDSIcon";
 
+
+import SLDSMenuDropdown from "../SLDSMenuDropdown";
 
 const displayName = 'SLDSContextBarNavMenu';
 
@@ -34,9 +36,35 @@ class NavMenu extends React.Component {
     return (
       <li className={pf('context-bar-action grid dropdown-trigger')}>
         <a href="#void" className={pf('context-bar-action__label context-bar-action__label--expand text-link--reset grid grid--vertical-align-center FIX-context-bar-a')}>Menu Item 1</a>
+{/*
         <button aria-haspopup="true" className={pf('context-bar-action__trigger button button--icon-bare')}>
           <SLDSIcon className={pf('context-bar-action__trigger-icon')} category="utility" name="down" size="x-small" assistiveText="Open submenu" />
         </button>
+*/}
+
+<SLDSMenuDropdown
+  assistiveText="More Options"
+  buttonVariant="icon-inverse"
+  checkmark={true}
+  iconName="down"
+  iconVariant="bare"
+  onMouseEnter={function(){console.log('Mouse enter')}}
+  onMouseLeave={function(){console.log('Mouse leave')}}
+  onSelect={function(value){console.log("selected: ",value)}}
+  openOn="hover"
+  options={[
+    {label: "A Option Option Super Super Long", value: "A0"},
+    {label: "B Option", value: "B0"},
+    {label: "C Option", value: "C0"},
+    {label: "D Option", value: "D0"},
+    {label: "E Option", value: "E0"},
+    {label: "A1 Option", value: "A1"},
+    {label: "B2 Option", value: "B1"},
+    {label: "C2 Option", value: "C1"},
+    {label: "D2 Option", value: "D1"},
+    {label: "E2 Option Super Super Long", value: "E1"},
+  ]}
+  value="C0" />
       </li>
     );
   }
