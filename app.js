@@ -110,6 +110,7 @@ if (!jQueryCode) {
 	jQueryExamples.forEach(function (example) {
 		if (example) {
 			var componentDisplayName = example.displayName;
+			var componentDisplayNamePlural = example.displayNamePlural;
 			var componentName = example.name;
 			if (typeof(example.html) === undefined) {
 				example.html = '';
@@ -132,7 +133,7 @@ if (!jQueryCode) {
 				'<div class="slds-m-around--large"> \n' +
 				'	<div class="slds-section-title"> \n' +
 				'		<div class="slds-grid">  \n' +
-				'			<h3 class="slds-col | slds-has-flexi-truncate | slds-text-heading--small | section-heading">' + componentDisplayName + '</h3>  \n' +
+				'			<h3 class="slds-col | slds-has-flexi-truncate | slds-text-heading--small | section-heading">' + componentDisplayNamePlural + '</h3>  \n' +
 				'		</div>  \n' +
 				'	</div>  \n' +
 				'	<div class="slds-m-vertical--large">' +
@@ -156,7 +157,7 @@ if (!jQueryCode) {
 				js_pre_processor: 'babel',
 				js_modernizr: false,
 				js_library: '',
-				title: componentDisplayName + ' :: Facades :: Salesforce Lightning Design System'
+				title: componentDisplayNamePlural + ' :: Facades :: Salesforce Lightning Design System'
 			};
 
 			codepenJSON = JSON.stringify(codepenData).replace(/"/g, "&​quot;").replace(/'/g, "&apos;");
@@ -170,6 +171,7 @@ if (!jQueryCode) {
 				'componentName': componentName,
 				'componentGroupName': example.componentGroupName,
 				'componentDisplayName': componentDisplayName,
+				'componentDisplayNamePlural': componentDisplayNamePlural,
 				'code': example.code,
 				'html': example.html,
 				'codepenJSON': codepenJSON,
@@ -184,6 +186,7 @@ if (!jQueryCode) {
 				'componentName': componentName,
 				'componentGroupName': example.componentGroupName,
 				'componentDisplayName': componentDisplayName,
+				'componentDisplayNamePlural': componentDisplayNamePlural,
 				'html': example.html,
 				'devHtml': example.devHtml,
 				'code': example.code,
@@ -229,6 +232,7 @@ if (!reactCode) {
 	reactExamples.forEach(function (example) {
 		if (example) {
 			var componentDisplayName = example.displayName;
+			var componentDisplayNamePlural = example.displayNamePlural;
 			var componentName = example.name;
 			if (typeof(example.html) === undefined) {
 				example.html = '';
@@ -289,6 +293,7 @@ if (!reactCode) {
 				'componentName': componentName,
 				'componentGroupName': example.componentGroupName,
 				'componentDisplayName': componentDisplayName,
+				'componentDisplayNamePlural': componentDisplayNamePlural,
 				'code': example.code,
 				'html': example.html,
 				'codepenJSON': codepenJSON,
@@ -302,7 +307,7 @@ if (!reactCode) {
 				'component': example.component,
 				'componentName': componentName,
 				'componentGroupName': example.componentGroupName,
-				'componentDisplayName': componentDisplayName,
+				'componentDisplayNamePlural': componentDisplayNamePlural,
 				'code': example.code,
 				'html': example.html,
 				'codepenJSON': codepenJSON,

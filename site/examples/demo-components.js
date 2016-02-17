@@ -41,7 +41,7 @@ module.exports = function (facade) {
 		var displayName = toTitleCase(component.split('-').join(' '));
 
 		if (endsWith(displayName, 's') === false && endsWith(displayName, 'x') === false) {
-			displayName = displayName + 's';
+			displayNamePlural = displayName + 's';
 		}
 
 		// This is ugly, but it works:
@@ -60,6 +60,7 @@ module.exports = function (facade) {
 				componentGroupName: componentGroupName,
 				name: component.split('-').join(' '),
 				displayName: displayName,
+				displayNamePlural: displayNamePlural,
 				html: sampleHTML,
 				devHtml: devHTML,
 				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8')
@@ -71,6 +72,7 @@ module.exports = function (facade) {
 				componentGroupName: componentGroupName,
 				name: component.split('-').join(' '),
 				displayName: displayName,
+				displayNamePlural: displayNamePlural,
 				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8'),
 				html: sampleHTML,
 				devHtml: devHTML
