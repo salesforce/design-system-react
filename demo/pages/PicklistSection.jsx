@@ -43,7 +43,13 @@ class PicklistSection extends React.Component {
         <section className="slds-p-vertical--large">
           <CodeMirror codeText={Samples.Picklists} />
         </section>
-        <hr />
+
+        <section className="slds-clearfix">
+          <h3 className='slds-text-heading--medium slds-truncate slds-float--left'>
+            SLDSMenuPicklist with custom list item renderer
+          </h3>
+        </section>
+
         <section className="slds-p-vertical--large">
           <CodeMirror codeText={Samples.Picklists1} />
         </section>
