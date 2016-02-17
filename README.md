@@ -14,12 +14,12 @@ Javascript components based on [Lightning Design System](https://www.lightningde
 * A detailed explanation of the testing design for this project is available in `docs/behavior-tests.md`
 
 ### Scripts
-* Run like `npm run start`
+* Run like `npm run build-dist`
 * Run `npm run menu` to see an interactive menu of available scripts.
   - *start*: Start the Express website app with Webpack middleware
-  - *site-build*: Build website files with Webpack and output to `./build`
-  - *dist*: Run the distribution config webpack, build to `./.tmp` directory and then package it up in `/.dist` with a .zip file and README.md
-  - *dist-npm*: Run the distribution config webpack, build to `./.tmp` directory and then package it up for distribution to NPM in `./.dist`
+  - *build-site*: Build website files with Webpack and output to `./build`
+  - *build-dist*: Run the distribution config webpack, build to `./.tmp` directory and then package it up in `/.dist` with a .zip file and README.md
+  - *build-dist-for-npm*: Run the distribution config webpack, build to `./.tmp` directory and then package it up for distribution to NPM in `./.dist`
   - *test*: Run the test suite.
 
 
