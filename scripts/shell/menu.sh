@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# set -o errexit # Exit on error
+# Exit on error
+# set -o errexit 
 
 export GIT_VERSION=`node scripts/helpers/version.js`
 # echo "DSF version: <$GIT_VERSION>"
@@ -45,10 +46,6 @@ if ! type -t __source_all &> /dev/null; then
 fi
 __source_all -x "${app_scripts_path}/functions"
 unset fshSourceme
-
-
-# set up variables to distinguish environment. thanks functionsh!
-__get_env
 
 
 
@@ -107,5 +104,5 @@ if __menu "${choices[@]}"; then
 else
     echo
     echo ${E}"  Unable to determine menu choices --- aborting...  "${X}
-    exit 1
+    exit 0
 fi
