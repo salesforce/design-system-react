@@ -43,18 +43,18 @@ source "${app_scripts_config_path}__colors.sh"
 
 declare -a choices
 
-choices[0]="${A}start${STYLE_MENU_OPTION} - Start up the website"${X}
-choices[2]="${A}site-build${STYLE_MENU_OPTION} - Builds files for the website. Outputs to ${STYLE_BRANCH_H1}./build${STYLE_MENU_OPTION}"${X}
-choices[3]="${A}clean-build${STYLE_MENU_OPTION} - Removes the folder ${STYLE_BRANCH_H1}./build${STYLE_MENU_OPTION} and its contents"${X}
-choices[5]="${A}dist${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}.tmp/${STYLE_MENU_OPTION} directory and then package it up in ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION} with a .zip file and README.md"${X}
-choices[6]="${A}dist-npm${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}./.tmp${STYLE_MENU_OPTION} directory and then package it up for distribution to NPM in ${STYLE_BRANCH_H1}./.dist${STYLE_MENU_OPTION}"${X}
-choices[7]="${A}test${STYLE_MENU_OPTION} - Run the test suite."${X}
+choices[0]="${A}start${STYLE_MENU_OPTION} - Start the express/webpack middleware website"${X}
+choices[1]="${A}build-site${STYLE_MENU_OPTION} - Builds files for the website. Outputs to ${STYLE_BRANCH_H1}./build${STYLE_MENU_OPTION}"${X}
+choices[2]="${A}clean-build-folder${STYLE_MENU_OPTION} - Removes the folder ${STYLE_BRANCH_H1}./build${STYLE_MENU_OPTION} and its contents"${X}
+choices[3]="${A}build-dist${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}.tmp/${STYLE_MENU_OPTION} directory and then package it up in ${STYLE_BRANCH_H1}.dist/${STYLE_MENU_OPTION} with a .zip file and README.md"${X}
+choices[4]="${A}build-dist-for-npm${STYLE_MENU_OPTION} - Run the distribution config webpack, build to ${STYLE_BRANCH_H1}./.tmp${STYLE_MENU_OPTION} directory and then package it up for distribution to NPM in ${STYLE_BRANCH_H1}./.dist${STYLE_MENU_OPTION}"${X}
+choices[5]="${A}test${STYLE_MENU_OPTION} - Run the test suite."${X}
 
 if __menu "${choices[@]}"; then
 	echo ${X}
 	case $_menu_sel_index in
 		1)
-			echo ${I}"Starting up the website"${X};
+			echo ${I}"Starting up the express/webpack middleware website"${X};
 			# read commitmessage
 			# "${app_scripts_path}"commit.sh "$commitmessage" -a;;
 			npm run start;
@@ -62,25 +62,25 @@ if __menu "${choices[@]}"; then
 
 		2)
 			echo "Running production config webpack, outputting files to ${STYLE_BRANCH_H1}./build${X}";
-			npm run site-build;
+			npm run build-site;
 			echo;;
 
 		3)
 			echo "Removing the folder ${STYLE_BRANCH_H1}./build${X} and all its contents";
-			npm run clean-build;
+			npm run clean-build-folder;
+			echo;;
+
+		4)
+			echo "Running distribution config webpack, building to ${STYLE_BRANCH_H1}./.tmp${X} directory and then packaging it up in the ${STYLE_BRANCH_H1}./.dist${X} with a .zip file and README.md${X}";
+			npm run build-dist;
 			echo;;
 
 		5)
-			echo "Running distribution config webpack, building to ${STYLE_BRANCH_H1}./.tmp${X} directory and then packaging it up in the ${STYLE_BRANCH_H1}./.dist${X} with a .zip file and README.md${X}";
-			npm run dist;
+			echo "Running distribution config webpack, building to ${STYLE_BRANCH_H1}./.tmp${X} directory and then packaging it up for uploading to npm in the ${STYLE_BRANCH_H1}./.dist${X}";
+			npm run build-dist-for-npm;
 			echo;;
 
 		6)
-			echo "Running distribution config webpack, building to ${STYLE_BRANCH_H1}./.tmp${X} directory and then packaging it up for uploading to npm in the ${STYLE_BRANCH_H1}./.dist${X}";
-			npm run dist-npm;
-			echo;;
-
-		7)
 			echo "Running the test suite...${X}";
 			npm run test;
 			echo;;
