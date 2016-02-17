@@ -14,10 +14,29 @@ if [ "x${functionsh_path}" = "x" ]; then
     popd  > /dev/null
 fi
 
+# echo "functionsh_path: ${functionsh_path}";
+
+
+for file in "${functionsh_path}/functions/"*; do
+    if [ -d "$file" ]; then
+        echo "${E} DIRECTORY ${X} - will not source: ${STYLE_MENU_OPTION}${file}"${X};
+        continue
+    else
+        echo "${A}WILL SOURCE${STYLE_MENU_OPTION} - ${file}"${X};
+        source "$file";
+    fi
+done
+
+
+
 
 # source main script if it exists, and try to
 # source user script after that
-for file in "${functionsh_path}/functions/"*; do source "$file"; done
+# for file in "${functionsh_path}/functions/"*; do
+#     echo "${A}WILL SOURCE${STYLE_MENU_OPTION} - ${file}"${X}
+#     source "$file";
+# done
+
 export functionsh_reload="__source_all \"${functionsh_path}/functions\""
 if [ -f "${functionsh_path}/functions/__source_all.sh" ]; then
     $functionsh_reload
