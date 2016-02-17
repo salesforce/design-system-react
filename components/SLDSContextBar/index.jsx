@@ -14,6 +14,14 @@ const classNames = require("classnames");
 import omit from "lodash.omit";
 import SLDSIcon from "../SLDSIcon";
 
+import Title from "./Title";
+import Nav from "./Nav";
+import NavMenu from "./NavMenu";
+
+import styling from "./styling";
+
+const pf = styling.pf;
+
 const displayName = 'SLDSContextBar';
 const propTypes = {
   /**
@@ -24,7 +32,7 @@ const propTypes = {
 const defaultProps = {
   title: 'Title'
 };
-
+/*
 const OLD_CSS_PREFIX = 'slds-';
 const NEW_CSS_PREFIX = 'slds2-';
 function pf(className) {
@@ -33,31 +41,11 @@ function pf(className) {
     return c.indexOf('context') >= 0 ? `${NEW_CSS_PREFIX}${c}` : `${OLD_CSS_PREFIX}${c}`;
   }).join(' ');
 }
-
-const SASS_VARIABLES = {
-  '$border-width-thin': '1px',
-  '$color-background-context-bar': 'rgb(22, 50, 92)',
-  '$color-background-context-bar-highlight': 'rgba(#fff, 0.2)',
-  '$color-border-context-bar-divider': 'rgba(#fff, 0.2)',
-  '$color-context-bar-alt': '#fff',
-  '$color-context-bar-shadow': '#000',
-  '$color-text-context-bar': 'rgb(255, 255, 255)',
-  '$color-text-context-nav-trigger': 'rgba(#fff, 0.4)',
-  '$duration-immediately': '0.05s',
-  '$height-context-bar': '2.25rem',
-  '$spacing-large': '1.5rem',
-  '$spacing-medium': '1rem',
-  '$spacing-small': '0.75rem',
-  '$spacing-x-large': '2rem',
-  '$spacing-x-small': '0.5rem',
-  '$spacing-xx-small': '0.25rem',
-  '$spacing-xxx-small': '0.125rem',
-}
-
+*/
 /**
  * The SLDSContextBar component is the Lightning Design System Context Bar component. The SLDSContextBar is a container with dropdown menus.
  */
-class SLDSContextBar extends React.Component {
+class ContextBar extends React.Component {
 
   constructor(props) {
     super(props);
@@ -83,114 +71,6 @@ class SLDSContextBar extends React.Component {
       // [`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
       // ["slds-max-small-button--stretch"]: this.props.responsive,
     });
-  }
-
-  getComponentStyles() {
-    function replacer(match, p1) {
-      return SASS_VARIABLES[p1] || p1;
-    }
-
-    const mainSass = `
-    .slds2-context-bar {
-      height: $height-context-bar;
-      background-color: $color-background-context-bar;
-      color: $color-text-context-bar;
-    }
-    .slds2-context-bar__primary,
-    .slds2-context-bar__secondary {
-      flex: 0 0 auto;
-    }
-
-    .slds2-context-bar__shadow {
-      position: absolute;
-      top: 100%;
-      right: 0;
-      left: 0;
-      height: rem(4px);
-      background: linear-gradient(to bottom, rgba($color-context-bar-shadow, 0.25) 0, rgba($color-context-bar-shadow, 0) 100%);
-    }
-
-    .slds2-context-bar__vertical-divider {
-      width: 0;
-      overflow: hidden;
-      border-left: $border-width-thin solid $color-border-context-bar-divider;
-    }
-
-    .slds2-context-bar-action {
-      position: relative;
-    }
-
-    .slds2-context-bar-action.slds2-context-bar-action {
-      display: flex;
-    }
-
-    /* height = $square-tooltip-nubbin * 0.7 */
-    .slds2-context-bar-action:hover:before {
-      content: '';
-      position: absolute;
-      top: 100%;
-      width: 100%;
-      height: 0.7rem;
-    }
-
-    .slds2-context-bar-action__label,
-    .slds2-context-bar-action__trigger {
-      transition: background-color $duration-immediately linear;
-    }
-
-    .slds2-context-bar-action__label:hover,
-    .slds2-context-bar-action__label:focus {
-      outline: 0;
-      background-color: $color-background-context-bar-highlight;
-    }
-
-    .slds2-context-bar-action__trigger:hover,
-    .slds2-context-bar-action__trigger:focus {
-      outline: 0;
-      background-color: $color-background-context-bar-highlight;
-    }
-
-    .slds2-context-bar-action__label {
-      padding-left: $spacing-small;
-      padding-right: $spacing-small;
-    }
-
-    .slds2-context-bar-action__label--expand {
-      padding-right: $spacing-large;
-    }
-
-    .slds2-context-bar-action__trigger {
-      position: absolute;
-      right: $spacing-x-small;
-      bottom: 0;
-      top: 0;
-      pointer-events: none;
-    }
-
-    .slds2-context-bar-action__trigger,
-    .slds2-context-bar-action__trigger:focus {
-      color: $color-text-context-nav-trigger;
-    }
-
-    .slds2-context-bar-action__trigger-icon {
-      fill: currentColor;
-      height: 100%;
-    }
-
-    /* vertical-alignment-center */
-    .slds-grid--vertical-align-center {
-      align-items: center; // Single Row Alignment
-      align-content: center; // Multi Row Alignment
-    }
-    `;
-
-    const fixedSass = `
-    .slds2-FIX-context-bar-a {
-      color: $color-text-context-bar !important;
-    }
-    `;
-
-    return (mainSass + fixedSass).replace(/(\$[a-zA-Z0-9\-]+)/g, replacer);
   }
 
   renderLinkMenuItem(menuItem, menuItemIndex) {
@@ -247,6 +127,8 @@ class SLDSContextBar extends React.Component {
       <div className={this.getClassName()} {...props}>
         <div className={pf('context-bar grid')}>
           <div className={pf('context-bar__shadow')}></div>
+            { this.props.children }
+{/*
           <div className={pf('context-bar__primary context-bar-action grid grid--vertical-align-stretch')}>
             <a href="#void" className={pf('context-bar-action__label grid grid--vertical-align-center text-link--reset p-horizontal--large text-heading--small FIX-context-bar-a')}>
               {this.props.title}
@@ -270,7 +152,8 @@ class SLDSContextBar extends React.Component {
               </li>
             </ul>
           </nav>
-          <style>{this.getComponentStyles()}</style>
+*/}
+          <style>{styling.getComponentStyles()}</style>
         </div>
         {this.props.children}
       </div>
@@ -278,8 +161,10 @@ class SLDSContextBar extends React.Component {
   }
 }
 
-SLDSContextBar.displayName = displayName;
-SLDSContextBar.propTypes = propTypes;
-SLDSContextBar.defaultProps = defaultProps;
-
-module.exports = SLDSContextBar;
+ContextBar.displayName = displayName;
+ContextBar.propTypes = propTypes;
+ContextBar.defaultProps = defaultProps;
+ContextBar.Title = Title;
+ContextBar.Nav = Nav;
+ContextBar.NavMenu = NavMenu;
+module.exports = ContextBar;

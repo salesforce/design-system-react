@@ -65,7 +65,13 @@ class ContextBarSection extends React.Component {
         </div>
 
         <section className="slds-p-vertical--large">
-          <SLDSContextBar title="My App" menuItems={contextBarMenuItems} onSelect={this.handleSelectItem.bind(this)} />Item
+          <SLDSContextBar title="My App" menuItems={contextBarMenuItems} onSelect={this.handleSelectItem.bind(this)}>
+            <SLDSContextBar.Title>App Name</SLDSContextBar.Title>
+            <SLDSContextBar.Nav>
+              <SLDSContextBar.NavMenu>SUPER</SLDSContextBar.NavMenu>
+              <SLDSContextBar.NavMenu>SUPER1</SLDSContextBar.NavMenu>
+            </SLDSContextBar.Nav>
+          </SLDSContextBar>
         </section>
         <PropTable component="SLDSContextBar" />
       </div>
