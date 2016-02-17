@@ -9,50 +9,65 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+// # Lib --- All Façades
+
+// Provides shared library functions to all façades.
+
+// ## API
+
+/* @todo Add a full API description of the control here. */
+
 export const version = '__VERSION__';
 
-export const global = (typeof self === 'object' && self.self === self && self) ||
-			(typeof global === 'object' && global.global === global && global);
+export const global = (
+		typeof self      === 'object' &&
+		self.self        === self
+		&& self
+	) ||
+	(
+		typeof global    === 'object'
+		&& global.global === global
+		&& global
+);
 
-// Functions
-import partial from 'lodash/function/partial';
+// ## Functions
+import partial                  from 'lodash/function/partial';
 export { partial };
 
-import partialRight from 'lodash/function/partialRight';
+import partialRight             from 'lodash/function/partialRight';
 export { partialRight };
 
-export { default as noop } from 'lodash/utility/noop';
+export { default as noop }      from 'lodash/utility/noop';
 
-export { default as bind } from 'lodash/function/bind';
+export { default as bind }      from 'lodash/function/bind';
 
-// Type Helpers
-import isArray from 'lodash/lang/isArray';
+// ## Type Helpers
+import isArray                  from 'lodash/lang/isArray';
 export { isArray };
 
 export { default as isBoolean } from 'lodash/lang/isBoolean';
 
-import isFunction from 'lodash/lang/isFunction';
+import isFunction               from 'lodash/lang/isFunction';
 export { isFunction };
 
-export { default as isNumber } from 'lodash/lang/isNumber';
+export { default as isNumber }  from 'lodash/lang/isNumber';
 
-import isObject from 'lodash/lang/isObject';
+import isObject                 from 'lodash/lang/isObject';
 export { isObject };
 
 export function isPromise (value) {
 	return isObject(value) && isFunction(value.then);
 }
 
-export { default as isRegExp } from 'lodash/lang/isRegExp';
+export { default as isRegExp }  from 'lodash/lang/isRegExp';
 
-import isString from 'lodash/lang/isString';
+import isString                 from 'lodash/lang/isString';
 export { isString };
 
-// ===================================
-// DOM Manipulation and Calculation
-// ===================================
 
-/* `returnFocusToPopupTrigger` returns the focus to an input or button from a modal or downdown menu. */
+// ## DOM Manipulation and Calculation
+
+// `returnFocusToPopupTrigger` returns the focus to an input or button from a modal or downdown menu.
 export function returnFocusToPopupTrigger (controlContext) {
 	const trigger = controlContext.elements.control[0].querySelector('[aria-haspopup=true]');
 	if (trigger) {
@@ -141,33 +156,35 @@ export function getStyle (element, property) {
 
 /* `isStyleHidden` returns `false` if the element is invisible. */
 export function isStyleHidden (element) {
-	if (getStyle(element, 'opacity') === '0' ||
-			getStyle(element, 'display') === 'none' ||
-			getStyle(element, 'visibility') === 'hidden') {
+	if (
+			getStyle(element, 'opacity')    === '0' ||
+			getStyle(element, 'display')    === 'none' ||
+			getStyle(element, 'visibility') === 'hidden'
+		) {
 		return true;
 	}
 }
 /* When `includeMargin` is set to `true`, `outerHeight` returns the true height due to margin being counted. */
 export function outerHeight (element, includeMargin) {
 	let height = element.offsetHeight;
-	
+
 	if (includeMargin) {
 		const style = getComputedStyle(element);
 		height += parseInt(style.marginTop, 10) + parseInt(style.marginBottom, 10);
 	}
-	
+
 	return height;
 }
 
 /* When `includeMargin` is set to `true`, `outerWidth` returns the true width due to margin being counted. */
 export function outerWidth (element, includeMargin) {
 	let width = element.offsetWidth;
-	
+
 	if (includeMargin) {
 		const style = getComputedStyle(element);
 		width += parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10);
 	}
-	
+
 	return width;
 }
 
@@ -304,12 +321,12 @@ function WrappedElement (element) {
 
 export function wrapElement (element) {
 	let wrapped = element;
-	
+
 	// Don't re-wrap if this is already a jQuery $el or has already been wrapped
 	if (!isFunction(wrapped.hasClass)) {
 		wrapped = new WrappedElement(element);
 	}
-	
+
 	// Special function to check if the element is offScreen (not a jQuery method clone)
 	if (!isFunction(wrapped.isVisible)) {
 		wrapped.isVisible = partial(isVisible, wrapped[0]);
@@ -317,7 +334,7 @@ export function wrapElement (element) {
 	if (!isFunction(wrapped.isOffscreen)) {
 		wrapped.isOffscreen = partial(isOutsideBounds, wrapped[0], window);
 	}
-	
+
 	return wrapped;
 }
 
@@ -394,7 +411,7 @@ let _strings;
 
 export function registerStrings (strings) {
 	_strings = strings;
-	
+
 	if (isPromise(strings)) {
 		Promise.resolve(strings).then(resolvedStrings => {
 			_strings = resolvedStrings;
@@ -408,7 +425,7 @@ export function getStrings (callback) {
 	} else {
 		callback(_strings);
 	}
-	
+
 	return Promise.resolve(_strings);
 }
 
@@ -430,15 +447,15 @@ export function getSVGPath (iconProperty) {
 	// TODO: Evaluate best way to do this and clean this up more
 	const iconPaths = getIconPaths();
 	const icon = isString(iconProperty) && iconProperty.split('.');
-	
+
 	if (icon.length === 2) {
 		const iconPath = iconPaths[icon[0]];
-		
+
 		if (iconPath) {
 			return [iconPath, icon[1]].join('#');
 		}
 	}
-	
+
 	// TODO: For now, if an appropriate path is not found we are going to assume that we were given one
 	return iconProperty;
 }

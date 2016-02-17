@@ -9,39 +9,76 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Tree Control
-// ### jQuery Facade
+// # Tree Component --- jQuery Facade
 
-// Implements the Tree [design pattern](https://www.lightningdesignsystem.com/components/trees) in jQuery.
+// Implements the [Tree design pattern](http://www.lightningdesignsystem.com/components/trees) in jQuery.
 
-/* TODO: Add a full API description of the control here. */
+// [![Tree component example screenshot](/assets/demo-site/images/component-examples/tree.png "See a live example of the Tree component in action")](/jquery/tree)
+
+// > See a [live example](/jquery/tree) of the Tree component in action
+
+// ## API
+
+/* @todo Add a full API description of the control here. */
+
+// ## Dependencies
 
 // Bring in the [shared library functions](../../lib/lib.html).
-import * as Lib from '../../lib/lib';
-import TreeCore, {CONTROL} from '../../core/tree';
+import * as Lib              from '../../lib/lib';
 
-// Traits
-import Eventable from '../../traits/eventable';
-import Multiselectable from '../../traits/multiselectable';
+// Use the [shared core](../../core/tree.html), which contains logic that is
+// the same in every facade.
+import TreeCore, { CONTROL } from '../../core/tree';
 
-// Framework Specific
-import DOM from '../dom';
-// [State](../state.html) and [Events](../events.html) are mixins that appear in every facade and bring some consistency between how each framework deals with instantiation, events, and state.
-import State from '../state';
-import Events from '../events';
+// ### Traits
+
+// #### Eventable
+// * [../../traits/eventable](../../traits/eventable.html)
+import Eventable             from '../../traits/eventable';
+
+// #### Multiselectable
+// * [../../traits/multiselectable](../../traits/multiselectable.html)
+import Multiselectable       from '../../traits/multiselectable';
+
+// ### jQuery
+// jQuery is an external dependency of the project.
 const $ = Lib.global.jQuery || Lib.global.$;
 
-// Split out some rendering logic, just to make things easier to read, button and the template that the Tree control is built from.
-import Button from '../button/button';
+// ### Mixins
 
-// Template imports
-import template from './tree-template';
+// These are mixins that appear in every Façade, bringing consistency between
+// how each framework deals with instantiation, events, and state.
 
+// #### DOM
+// [../dom](../dom.html)
+import DOM                   from '../dom';
+
+// #### Events
+// [../mixins/events](../mixins/events.html)
+import Events                from '../events';
+
+// #### State
+// [../mixins/state](../mixins/state.html)
+import State                 from '../state';
+
+// ### Children
+
+// #### Button
+// [../button/button](../button/button.html)
+import Button                from '../button/button';
+
+// #### Tree Template
+// [./tree-template](./tree-template.html)
+import template              from './tree-template';
+
+// ## Legacy Accessors
 const legacyAccessors = {
+	// ### Get Text
 	getText (item) {
 		return item.get('name');
 	},
 
+	// ### Get Children
 	getChildren (item) {
 		return new Promise((resolve) => {
 			this.getProperty('dataSource')(item._item, (response) => {
@@ -50,32 +87,41 @@ const legacyAccessors = {
 		});
 	},
 
+	// ### Get Type
 	getType (item) {
 		return item.get('type');
 	},
 
+	// ### Get Icon Class
 	getIconClass (item) {
 		const dataAttributes = item.get('dataAttributes');
 
 		return dataAttributes && dataAttributes['data-icon'];
 	},
 
+	// ### Get Expandable
 	getExpandable (item) {
 		const dataAttributes = item.get('dataAttributes');
 
 		return dataAttributes && dataAttributes.hasChildren;
 	},
 
+	// ### Get Key
 	getKey (item) {
 		return item.get();
 	},
 
+	// ### Get Id
 	getId (item) {
 		const dataAttributes = item.get('dataAttributes');
 
 		return dataAttributes.id;
 	}
 };
+
+// ## Tree Constructor
+// Constructors are functions that are called by the `new` keyword and is the
+// function that an options object is passed into.
 
 let Tree = function Tree () {
 	const options = Lib.extend({
@@ -91,7 +137,18 @@ let Tree = function Tree () {
 	this._initialize(options);
 };
 
+// Façades **extends objects** by merging them together, rather than via the
+// prototype chain or imitation of object-oriented inheritance. The important
+// thing to remember is that _some methods will be available to the component
+// which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Pills extends its [core](../../core/trees.html),
+// which in turn extends the base component.
+
 Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
+	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
 		this.elements.list = this.element.find('.' + this.cssClasses.CONTROL);
@@ -100,6 +157,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		Eventable.on(this, 'deselect', this._onDeselect, this);
 	},
 
+	// ### On Initialized
 	_onInitialized () {
 		const strings = this.getState('strings');
 		this.setState({loading: true});
@@ -108,6 +166,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		this.element.attr('id', this._getControlContainerId());
 	},
 
+	// ### Configure Branch Select
 	_configureBranchSelect () {
 		const branchSelect = this.getProperty('folderSelect');
 
@@ -121,6 +180,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		}
 	},
 
+	// ### Render Item
 	_renderItem (item, selection, level) {
 		const $item = this.template.find('li[role="treeitem"]').last().clone();
 
@@ -136,20 +196,21 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		return $item;
 	},
 
+	// ### Render Branch
 	_renderBranch (branch, selection, level) {
-		const strings = this.getState('strings');
-		const branchId = branch.getId();
-		const domId = this._getControlNodeId(branchId);
-		const labelId = this._getControlNodeLabelId(branchId);
-		const togglerId = this._getControlNodeTogglerId(branchId);
-		const $branch = this.template.find('[aria-expanded="true"]').clone();
-		const $branchLabel = $branch.find('[role="presentation"]');
+		const strings        = this.getState('strings');
+		const branchId       = branch.getId();
+		const domId          = this._getControlNodeId(branchId);
+		const labelId        = this._getControlNodeLabelId(branchId);
+		const togglerId      = this._getControlNodeTogglerId(branchId);
+		const $branch        = this.template.find('[aria-expanded="true"]').clone();
+		const $branchLabel   = $branch.find('[role="presentation"]');
 		const $branchContent = $branch.find('[role="group"]');
-		const $button = new Button({
-			assistiveText: strings.TOGGLE_TREE_BRANCH,
-			icon: 'utility.chevronright',
-			iconSize: 'small',
-			iconStyle: 'icon-bare'
+		const $button        = new Button({
+			assistiveText : strings.TOGGLE_TREE_BRANCH,
+			icon          : 'utility.chevronright',
+			iconSize      : 'small',
+			iconStyle     : 'icon-bare'
 		});
 
 		$button.element.addClass('slds-m-right--x-small');
@@ -215,13 +276,14 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		return $branch;
 	},
 
+	// ### Render Selection
 	_renderSelection ($item, item, selection) {
 		const selected = Multiselectable.isItemSelected(item, selection);
-		// $item.toggleClass('slds-is-selected', selected);
 		$item.children('.slds-tree__item').toggleClass('slds-is-selected', selected);
 		$item.children('.slds-tree__item').attr('aria-selected', selected);
 	},
 
+	// ### Render
 	_render (level) {
 		const dataSource = this.getProperty('dataSource');
 		let _level = level || 0;
@@ -239,11 +301,13 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		return this.element;
 	},
 
+	// ### On Rendered
 	_onRendered () {
 		this._configureBranchSelect();
 		this.element.on('click', 'li[role="treeitem"]', this._handleItemClicked.bind(this));
 	},
 
+	// ### Loop Children
 	_loopChildren (children, $el, level) {
 		const self = this;
 		const elements = [];
@@ -264,6 +328,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		self.setState({loading: false});
 	},
 
+	// ### Handle Branch Clicked
 	_handleBranchClicked ($event) {
 		$event.stopPropagation();
 		const $el = $($event.currentTarget).closest('li[role="treeitem"]');
@@ -272,6 +337,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		this._toggleFolder(branch);
 	},
 
+	// ### On Folder Toggled
 	_onFolderToggled (branch) {
 		const self = this;
 		const id = branch.getId();
@@ -293,25 +359,30 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		});
 	},
 
+	// ### On Folders Closed
 	_onFoldersClosed () {
 		this.setProperties({ autoOpen: false });
 		this._render();
 	},
 
+	// ### Handle Item Clicked
 	_handleItemClicked ($event) {
 		const $el = $($event.currentTarget).closest('[role="treeitem"]');
 
 		Multiselectable.toggleItem(this, $el.data('item'), this.getProperty('selection'));
 	},
 
+	// ### Select Item
 	selectItem (item, index) {
 		Multiselectable.selectItem(this, item, this.getProperty('selection'), index);
 	},
 
+	// ### Select Items
 	selectItems (items, index) {
 		Multiselectable.selectItems(this, items, this.getProperty('selection'), index);
 	},
 
+	// ### On Select
 	_onSelect (itemsToSelect, selection) {
 		this.setProperties({ selection: selection._data });
 		this._onSelectionUpdated(selection);
@@ -320,6 +391,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		this.trigger('changed', itemsToSelect, selection._data);
 	},
 
+	// ### On Deselect
 	_onDeselect (itemsToDeselect, selection) {
 		this.setProperties({ selection: selection._data });
 		this._onSelectionUpdated(selection);
@@ -328,6 +400,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		this.trigger('changed', itemsToDeselect, selection._data);
 	},
 
+	// ### On Selection Updated
 	_onSelectionUpdated (selection) {
 		const self = this;
 		const $items = this.element.find('li[role="treeitem"]');
@@ -341,6 +414,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		});
 	},
 
+	// ### Should Auto Open
 	_shouldAutoOpen (level) {
 		const autoOpen = this.getProperty('autoOpen');
 		const autoOpenLimit = this.getProperty('autoOpenLimit');
@@ -348,6 +422,19 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 		return autoOpen && Lib.isNumber(level) && Lib.isNumber(autoOpenLimit) && level <= autoOpenLimit;
 	}
 });
+
+// ### Run the helpers
+
+// `Helpers` are a feature of Façades that allows anyone to register code that
+// can manipulate the component before it is encapsulated in a React class.
+//
+// This allows flexibility for adding custom behavior without modifying the
+// original source, or for adding optional behavior.
+//
+// For example, in jQuery facade uses this mechanism to optionally create
+// jQuery plug-in versions of each component. Nothing in the component itself
+// should ever depend on the presence of helpers, as they are completely
+// optional.
 
 Tree = Lib.runHelpers('jquery', CONTROL, Tree);
 

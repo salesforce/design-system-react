@@ -31,16 +31,14 @@ const LookupExample = React.createClass({
 
 	render () {
 		return (
-			<div className="slds-col example">
-				<Lookup label="Accounts"
-					collection={this.state.collection}
-					selection={this.state.selection}
-					onChange={this._handleModelChange}
-					filterPredicate={this._filterPredicate}
-					modalMenu={this.props.modal}
-					onAddClick={this._handleAdd}
-					isOpen={this.state.isOpen} />
-			</div>
+			<Lookup label="Accounts"
+				collection={this.state.collection}
+				selection={this.state.selection}
+				onChange={this._handleModelChange}
+				filterPredicate={this._filterPredicate}
+				modalMenu={this.props.modal}
+				onAddClick={this._handleAdd}
+				isOpen={this.state.isOpen} />
 		);
 	},
 

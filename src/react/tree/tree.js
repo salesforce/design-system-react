@@ -9,63 +9,142 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// TREE CONTROL - REACT FACADE
+// # Tree Component --- React Façade
 
-// Core
-import * as Lib from '../../lib/lib';
-import TreeCore, {CONTROL} from '../../core/tree';
+// Implements the [Tree design pattern](https://www.lightningdesignsystem.com/components/trees) in React. This is similar to both the Picklist and the Pills, but currently there is no inheritance from either component.
 
-// Traits
-import Eventable from '../../traits/eventable';
-import Multiselectable from '../../traits/multiselectable';
+// [![Tree component example screenshot](/assets/demo-site/images/component-examples/tree.png "Tree component example screenshot")](/react/tree)
 
-// Framework specific
-import React from 'react';
-import State from '../mixins/state';
-import Events from '../mixins/events';
-import genericWillMount from '../mixins/generic-will-mount';
+// > See a [live example](/react/tree) of the Tree component in action
 
-// Third party
-import classNames from 'classnames';
+// ## API
 
-// Children
+/* @todo Add a full API description of the component here. */
+
+// ## Dependencies
+
+// Bring in the [shared library functions](../../lib/lib.html).
+import * as Lib                from '../../lib/lib';
+
+// Use the [shared core](../../core/tree.html), which contains logic that is
+// the same in every façade.
+import TreeCore, { CONTROL } from '../../core/tree';
+
+// ### Traits
+
+// #### Eventable
+// [../../traits/eventable](../../traits/eventable.html)
+import Eventable               from '../../traits/eventable';
+
+// #### Multiselectable
+// [../../traits/multiselectable](../../traits/multiselectable.html)
+import Multiselectable         from '../../traits/multiselectable';
+
+// ### React
+// React is an external dependency of the project.
+import React                   from 'react';
+
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// Façades uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together." Because of the small size of the library, the
+// default build includes the entire library rather than requiring it as an
+// external dependency.
+import classNames              from 'classnames';
+
+// ### Mixins
+
+// These are mixins that appear in every Façade, bringing consistency between
+// how each framework deals with instantiation, events, and state.
+
+// #### Events
+// [../mixins/events](../mixins/events.html)
+import Events                  from '../mixins/events';
+
+// #### Generic Will Mount
+// [../mixins/generic-will-mount](../mixins/generic-will-mount.html)
+import genericWillMount        from '../mixins/generic-will-mount';
+
+// #### State
+// [../mixins/state](../mixins/state.html)
+import State                   from '../mixins/state';
+
+// ### Children
+
+// Split out some rendering logic, just to make things easier to read.
+
+// #### Tree Branch
+// [./tree-branch](./tree-branch.html)
 import TreeBranch from './tree-branch';
+// #### Tree Item
+// [./tree-item](./tree-item.html)
 import TreeItem from './tree-item';
+// #### Tree Heading
+// [./tree-heading](./tree-heading.html)
 import TreeHeading from './tree-heading';
 
-// Facades **extends objects** by merging them together, rather than via the prototype chain or imititation of object-oriented inheritance. The important thing to remember is that _some methods will be available to the control which are not declared in this file_. These are not magic methods, they're not black box methods, but you do need to trace the depencies of the control to see where they are coming from. In particular, Tree extends its [core](../../core/tree.html), which in turn extends the base control and a series of traits.
+// ## Tree
+
+// Façades **extends objects** by merging them together, rather than via the
+// prototype chain or imitation of object-oriented inheritance. The important
+// thing to remember is that _some methods will be available to the component
+// which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Tree extends its [core](../../core/tree.html),
+// which in turn extends the base component and a series of traits.
+
 let Tree = Lib.merge({}, TreeCore, {
-	// The React facade specifically is also extended via React's standard mixin model. These three mixins hook into native React lifecycle events and expose functionality needed for a cross-framework core. For example, some places in the core or traits a `setState` method is used. In React this is built in to the framework, and the other facades simply borrow the idea for their own use. Similarly, a `setProperties` method is available but in React it is actually a `noop` because React expects a one-way data flow, while in other Frameworks it typically does something very similar to `setState`.
+	// ### Mixins
+
+	// The React facade specifically is also extended via React's standard
+	// mixin model. These three mixins hook into native React Wycliffe events
+	// and expose functionality needed for a cross-framework core. For
+	// example, some places in the core or traits a `setState` method is used.
+	//
+	// In React this is built in to the framework, and the other facades
+	// simply borrow the idea for their own use.
+	//
+	// Similarly, a `setProperties` method is available but in React it is
+	// actually a `noop` because React expects a one-way data flow, while in
+	// other Frameworks it typically does something very similar to
+	// `setState`.
 	mixins: [State, Events, genericWillMount],
 
-	// Always use the canonical control name (set in the core) as the React display name.
+	// ### Display Name
+	// > Always use the canonical component name (set in the core) as the
+	// > React display name.
 	displayName: CONTROL,
 
+	// ### Prop Types
 	propTypes: {
-		autoOpen: React.PropTypes.bool,
-		autoOpenLimit: React.PropTypes.number,
-		// TODO: Type of collection unknown until parsed by Data Adapter
-		collection: React.PropTypes.oneOfType([
+		autoOpen      : React.PropTypes.bool,
+		autoOpenLimit : React.PropTypes.number,
+		/* > @todo Type of collection unknown until parsed by Data Adapter */
+		collection    : React.PropTypes.oneOfType([
 			React.PropTypes.array,
 			React.PropTypes.object
 		]).isRequired,
-		heading: React.PropTypes.string,
-		id: React.PropTypes.string,
-		disabled: React.PropTypes.bool,
-		folderSelect: React.PropTypes.bool,
-		multiSelect: React.PropTypes.bool,
-		onChanged: React.PropTypes.func,
-		onClosed: React.PropTypes.func,
-		onOpened: React.PropTypes.func,
-		open: React.PropTypes.any,
-		selection: React.PropTypes.any
+		heading       : React.PropTypes.string,
+		id            : React.PropTypes.string,
+		disabled      : React.PropTypes.bool,
+		folderSelect  : React.PropTypes.bool,
+		multiSelect   : React.PropTypes.bool,
+		onChanged     : React.PropTypes.func,
+		onClosed      : React.PropTypes.func,
+		onOpened      : React.PropTypes.func,
+		open          : React.PropTypes.any,
+		selection     : React.PropTypes.any
 	},
 
+	// ### Component Will Mount
 	componentWillMount () {
 		Eventable.on(this, 'select', this._onSelect);
 		Eventable.on(this, 'deselect', this._onDeselect);
 	},
 
+	// ### Render
 	render () {
 		const children = [];
 		let heading;
@@ -81,31 +160,37 @@ let Tree = Lib.merge({}, TreeCore, {
 			const _isItemSelected = Lib.partialRight(Multiselectable.isItemSelected, selection);
 
 			if (model.getType() === 'folder') {
-				children.push(<TreeBranch
-					id={domId}
-					key={modelId}
-					item={model}
-					getControlNodeId={this._getControlNodeId}
-					getControlNodeLabelId={this._getControlNodeLabelId}
-					getControlNodeTogglerId={this._getControlNodeTogglerId}
-					selectable={selectable}
-					strings={this.state.strings}
-					autoOpenLevel={1}
-					autoOpenLimit={this.props.autoOpen ? this.props.autoOpenLimit : 0}
-					onItemClick={this._handleItemClick}
-					onExpandClick={this._handleExpandClick}
-					_isFolderOpen={this._isFolderOpen}
-					_isItemSelected={_isItemSelected} />);
+				children.push(
+					<TreeBranch
+						id                      = {domId}
+						key                     = {modelId}
+						item                    = {model}
+						getControlNodeId        = {this._getControlNodeId}
+						getControlNodeLabelId   = {this._getControlNodeLabelId}
+						getControlNodeTogglerId = {this._getControlNodeTogglerId}
+						selectable              = {selectable}
+						strings                 = {this.state.strings}
+						autoOpenLevel           = {1}
+						autoOpenLimit           = {this.props.autoOpen ? this.props.autoOpenLimit : 0}
+						onItemClick             = {this._handleItemClick}
+						onExpandClick           = {this._handleExpandClick}
+						_isFolderOpen           = {this._isFolderOpen}
+						_isItemSelected         = {_isItemSelected}
+					/>
+				);
 			} else {
-				children.push(<TreeItem
-					id={domId}
-					key={modelId}
-					item={model}
-					getControlNodeId={this._getControlNodeId}
-					getControlNodeLabelId={this._getControlNodeLabelId}
-					autoOpenLevel={1}
-					onClick={this._handleItemClick}
-					_isItemSelected={_isItemSelected} />);
+				children.push(
+					<TreeItem
+						id                    = {domId}
+						key                   = {modelId}
+						item                  = {model}
+						getControlNodeId      = {this._getControlNodeId}
+						getControlNodeLabelId = {this._getControlNodeLabelId}
+						autoOpenLevel         = {1}
+						onClick               = {this._handleItemClick}
+						_isItemSelected       = {_isItemSelected}
+					/>
+				);
 			}
 		});
 
@@ -119,6 +204,7 @@ let Tree = Lib.merge({}, TreeCore, {
 		);
 	},
 
+	// ### Handle Item Click
 	_handleItemClick (item) {
 		if (item.getType() !== 'folder' || this.props.folderSelect) {
 			Multiselectable.toggleItem(this, item._item, this.props.selection);
@@ -127,10 +213,12 @@ let Tree = Lib.merge({}, TreeCore, {
 		}
 	},
 
+	// ### Handle Expand Click
 	_handleExpandClick (item) {
 		this._toggleFolder(item);
 	},
 
+	// ### On Select
 	_onSelect (itemsToSelect, selection) {
 		if (Lib.isFunction(this.props.onSelect)) {
 			this.props.onSelect(itemsToSelect, selection._data);
@@ -141,6 +229,7 @@ let Tree = Lib.merge({}, TreeCore, {
 		}
 	},
 
+	// ### On Deselect
 	_onDeselect (itemsToDeselect, selection) {
 		if (Lib.isFunction(this.props.onDeselect)) {
 			this.props.onDeselect(itemsToDeselect, selection._data);
@@ -152,7 +241,23 @@ let Tree = Lib.merge({}, TreeCore, {
 	}
 });
 
+// ### Run the helpers
+
+// `Helpers` are a feature of Façades that allows anyone to register code that
+// can manipulate the component before it is encapsulated in a React class.
+//
+// This allows flexibility for adding custom behavior without modifying the
+// original source, or for adding optional behavior.
+//
+// For example, the jQuery facade uses this mechanism to optionally create
+// jQuery plug-in versions of each component. Nothing in the component itself
+// should ever depend on the presence of helpers, as they are completely
+// optional.
 Tree = Lib.runHelpers('react', CONTROL, Tree);
+
+// Once everything has been merged together and all registered helpers have
+// been run we can create the React class and export the result for
+// consumption by our apps.
 Tree = React.createClass(Tree);
 
 export default Tree;

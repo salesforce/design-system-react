@@ -28,7 +28,7 @@
     "site-build-watch": "./scripts/shell/site-build.sh --watch",
     "site-build-no-docs": "./scripts/shell/site-build.sh --no-docs",
     "site-build-watch-no-docs": "./scripts/shell/site-build.sh --watch --no-docs",
-    "menu": "./scripts/shell/menu-trial.sh",
+    "menu": "./scripts/shell/menu.sh",
     "start": "node app.js",
     "test": "scripts/test --single-run"
   },
