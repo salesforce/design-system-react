@@ -115,12 +115,21 @@
 				</div>
 			</div>
 		</div>
-		<script src="/vendor/prism/prism.js"></script>
+		<script src="/vendor/prism/prism.js" data-manual></script>
 		<script src="/vendor/prism/components/prism-jsx.js"></script>
 		<script src="/vendor/jquery/jquery.min.js"></script>
 		<script>
 			
+			var fadeTheCodeIn = function(){
+				$('pre > code').addClass('rendered');
+			}
+			
 			$(function () {
+							
+				
+				// Highlighting Prism manually to prevent FOUC
+				Prism.highlightAll('true', fadeTheCodeIn);
+
 				$('a[href="' + window.location.pathname + '"]').parent().addClass('slds-theme--inverse');
 				if($('#section-1 pre code.language-jsx > .token.comment').parent().children().length === 1) {
 					$('#section-1 pre code.language-jsx > .token.comment').parent().parent().hide();
