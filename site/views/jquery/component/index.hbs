@@ -21,18 +21,24 @@
 										<span>{{componentDisplayNamePlural}}</span>
 										<span class="slds-badge | slds-theme--shade">alpha: done</span>
 									</h2>
-									<a
-										class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small"
-										href="/documentation/src/{{facade}}/{{component}}/{{componentGroupName}}.html"
-										data-component-display-name="{{componentDisplayName}}"
-										data-component-name="{{component}}"
-									>Documentation</a>
-									<a
-										class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit"
-										href="javascript:void(0);"
-										data-component-display-name="{{componentDisplayName}}"
-										data-component-name="{{component}}"
-									>Open in CodePen</a>
+									<ul class="slds-list--horizontal slds-has-dividers--right">
+										<li class="slds-list__item">
+											<a
+												class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small"
+												href="/documentation/src/{{facade}}/{{component}}/{{componentGroupName}}.html"
+												data-component-display-name="{{componentDisplayName}}"
+												data-component-name="{{component}}"
+											>Documentation</a>
+										</li>
+										<li class="slds-list__item">
+											<a
+												class="slds-col | slds-no-flex | slds-align-middle | slds-text-body--small | slds-m-left--small | codepen-submit"
+												href="javascript:void(0);"
+												data-component-display-name="{{componentDisplayName}}"
+												data-component-name="{{component}}"
+											>Open in CodePen</a>
+										</li>
+									</ul>
 								</div>
 							</div>
 						</div>

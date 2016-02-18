@@ -18,28 +18,30 @@ document.addEventListener('DOMContentLoaded', function () {
 		codepenSubmitLinks[i].addEventListener('click', codepenSubmitLinkClicked, false);
 	}
 
+	
+	// var elements = document.querySelectorAll(selector);
+	// Array.prototype.forEach.call(elements, function(el, i){
+
+	// });
 });
 
 
 $(function () {
-	$('[role="tablist"] [aria-controls]').each(function() {
-		$(this).click(function(event) {
-			var $thisTablist = $(this).parents('[role="tablist"]');
-			var $thisTabItem = $(this).parent('[role="presentation"]');
-			var $thisTablistWrapper = $thisTablist.parent();
-			var $tabItems = $thisTablist.find('[role="presentation"]');
-			var $contentItems = $thisTablistWrapper.find('[role="tabpanel"]');
-			var thisControlsId = $(this).attr('aria-controls');
-			$tabItems.removeClass('slds-active');
-			$thisTabItem.addClass('slds-active');
-			$contentItems.removeClass('slds-show').addClass('slds-hide');
-			$('#' + thisControlsId ).removeClass('slds-hide').addClass('slds-show');
-		});
-	});
-
+	
+	console.clear();
+	
 	var $window = $(window);
-	var $componentNav = $('#component-nav > nav');
-	var componentNavParentWidth = $('#component-nav').width();
+	// var $componentNav = $('#component-nav > nav');
+	var $componentNav = document.querySelectorAll('#component-nav > nav');
+	var $componentNavParent = document.querySelectorAll('#component-nav')[0];
+	
+	console.log("[demo-site.js:38] $componentNavParent:", $componentNavParent);
+	
+	var componentNavParentWidth = $componentNavParent.offsetWidth;
+	// var componentNavParentWidth = $('#component-nav').width();
+	
+	console.log("[demo-site.js:38] componentNavParentWidth:", componentNavParentWidth);
+	
 	var pos = $window.scrollTop();
 	$componentNav.width(componentNavParentWidth);
 	$('#component-nav__' + $('.component-wrapper').attr('id')).addClass('active');
