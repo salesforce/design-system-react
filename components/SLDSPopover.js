@@ -91,6 +91,18 @@ module.exports = React.createClass( {
     }
   },
 
+  handleMouseEnter (event) {
+    if(this.props.onMouseEnter){
+      this.props.onMouseEnter(event);
+    }
+  },
+
+  handleMouseLeave (event) {
+    if(this.props.onMouseLeave){
+      this.props.onMouseLeave(event);
+    }
+  },
+
   popoverComp () {
     if(!this.state.isOpen){
       return <span></span>;
@@ -113,6 +125,8 @@ module.exports = React.createClass( {
       <div className={'SLDSPopover ignore-react-onclickoutside '+this.props.className}
         style={style}
         onKeyDown={this.handleKeyDown}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
       >
 {
                 this.props.children

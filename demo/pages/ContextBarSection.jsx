@@ -74,8 +74,6 @@ class ContextBarSection extends React.Component {
                 checkmark={true}
                 iconName="down"
                 iconVariant="bare"
-                onMouseEnter={function(){console.log('Mouse enter')}}
-                onMouseLeave={function(){console.log('Mouse leave')}}
                 onSelect={function(value){console.log("selected: ",value)}}
                 openOn="hover"
                 options={[

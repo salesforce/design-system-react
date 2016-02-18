@@ -264,8 +264,8 @@ class SLDSMenuDropdown extends React.Component {
             onListBlur={this.handleListBlur.bind(this)}
             onListItemBlur={this.handleListItemBlur.bind(this)}
             onCancel={this.handleCancel.bind(this)}
-            onMouseEnter={(this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null}
-            onMouseLeave={(this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null}
+//            onMouseEnter={(this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null}
+//            onMouseLeave={(this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null}
             onSelect={this.handleSelect.bind(this)}
             onUpdateHighlighted={this.handleUpdateHighlighted.bind(this)}
             options={this.props.options}
@@ -278,7 +278,10 @@ class SLDSMenuDropdown extends React.Component {
   getSimplePopover(){
     return(
       !this.props.disabled && this.state.isOpen?
-        <div className={"slds-dropdown slds-dropdown--menu slds-dropdown--left " + this.props.className}>
+        <div className={"slds-dropdown slds-dropdown--menu slds-dropdown--left " + this.props.className}
+          onMouseEnter={(this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null}
+          onMouseLeave={(this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null}
+        >
           {this.getPopoverContent()}
         </div>:null
     );
@@ -294,6 +297,8 @@ class SLDSMenuDropdown extends React.Component {
           dropClass="slds-picklist" //TODO: in next SLDS release, remove slds-picklist class because slds-dropdown--length-5 will be active.
           horizontalAlign={this.props.align}
           flippable={true}
+          onMouseEnter={(this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null}
+          onMouseLeave={(this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null}
           onClose={this.handleCancel.bind(this)}
           targetElement={this.refs.button}
           >
