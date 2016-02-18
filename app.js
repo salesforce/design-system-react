@@ -351,7 +351,7 @@ app.get('/react/:component', function (req, res) {
 // Serve up the built files
 app.use('/dist', express.static(__dirname + '/.dist'));
 app.use('/build', express.static(__dirname + '/build', {'index': false}));
-app.use('/docs', express.static(__dirname + '/public/docs', {'index': ['index.html']}));
+app.use('/documentation', express.static(__dirname + '/public/documentation', {'index': ['index.html']}));
 
 // Listen
 var server = app.listen(port, function() {
