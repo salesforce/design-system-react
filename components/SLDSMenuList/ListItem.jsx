@@ -165,7 +165,7 @@ class SLDSListItem extends React.Component {
     return (
       <li
         className={"slds-dropdown__item" + isSelected}
-//        onMouseDown={this.handleMouseDown.bind(this)}
+        onMouseDown={this.handleMouseDown.bind(this)}
 //        onMouseEnter={this.props.onMouseEnter}
 //        onMouseLeave={this.props.onMouseLeave}
         >
