@@ -309,6 +309,7 @@ if (!reactCode) {
 				'component': example.component,
 				'componentName': componentName,
 				'componentGroupName': example.componentGroupName,
+				'componentDisplayName': componentDisplayName,
 				'componentDisplayNamePlural': componentDisplayNamePlural,
 				'code': example.code,
 				'html': example.html,
@@ -351,7 +352,7 @@ app.get('/react/:component', function (req, res) {
 // Serve up the built files
 app.use('/dist', express.static(__dirname + '/.dist'));
 app.use('/build', express.static(__dirname + '/build', {'index': false}));
-app.use('/docs', express.static(__dirname + '/public/docs', {'index': ['index.html']}));
+app.use('/documentation', express.static(__dirname + '/public/documentation', {'index': ['index.html']}));
 
 // Listen
 var server = app.listen(port, function() {

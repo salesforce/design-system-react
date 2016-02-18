@@ -55,7 +55,7 @@
     "compression": "^1.6.1",
     "connect": "^3.4.1",
     "css-loader": "^0.23.1",
-    "docco-multidir": "^1.0.0",
+    "docco-multidir": "git+https://github.com/tweettypography/docco.git",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "^5.0.0",
     "eslint-loader": "^1.2.1",

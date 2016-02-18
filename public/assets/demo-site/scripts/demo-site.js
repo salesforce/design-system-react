@@ -1,4 +1,12 @@
+var fadeTheCodeIn = function(){
+	$('pre > code').addClass('rendered');
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+	
+	// Highlighting Prism manually to prevent FOUC
+	Prism.highlightAll('true', fadeTheCodeIn);
+	
 	var codepenSubmitLinks = document.querySelectorAll('.codepen-submit');
 
 	function codepenSubmitLinkClicked (event) {
@@ -28,8 +36,7 @@ $(function () {
 			$('#' + thisControlsId ).removeClass('slds-hide').addClass('slds-show');
 		});
 	});
-});
-$(function () {
+
 	var $window = $(window);
 	var $componentNav = $('#component-nav > nav');
 	var componentNavParentWidth = $('#component-nav').width();
@@ -62,4 +69,6 @@ $(function () {
 			})
 		}
 	});
+
+
 });
