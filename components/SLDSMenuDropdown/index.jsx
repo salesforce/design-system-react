@@ -13,9 +13,10 @@ import ReactDOM from "react-dom";
 import SLDSPopover from "../SLDSPopover";
 import SLDSButton from "../SLDSButton";
 import {KEYS, EventUtil} from "../utils";
-import List from './List';
-import ListItem from './ListItem';
-import ListItemLabel from './ListItemLabel';
+import List from "../SLDSMenuList/List";
+import ListItem from "../SLDSMenuList/ListItem";
+import ListItemLabel from "../SLDSMenuList/ListItemLabel";
+
 
 const displayName = "SLDSMenuDropdown";
 const propTypes = {
