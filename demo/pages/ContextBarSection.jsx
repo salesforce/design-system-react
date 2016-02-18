@@ -92,7 +92,9 @@ class ContextBarSection extends React.Component {
                 ]}
                 value="C0"
               >
-                <SLDSContextBar.NavMenuLink>Menu 1</SLDSContextBar.NavMenuLink>
+                <SLDSContextBar.NavMenuLink
+                  onClick={()=>{alert('click')}}
+                >Menu 1</SLDSContextBar.NavMenuLink>
               </SLDSContextBar.NavMenu>
               <SLDSContextBar.NavMenu
                 assistiveText="More Options"
@@ -117,7 +119,9 @@ class ContextBarSection extends React.Component {
                   {label: "E2 Option Super Super Long", value: "E1"},
                 ]}
                 value="C0"
-              ><SLDSContextBar.NavMenuLink>Menu 2</SLDSContextBar.NavMenuLink></SLDSContextBar.NavMenu>
+              ><SLDSContextBar.NavMenuLink
+                onClick={()=>{alert('click')}}
+              >Menu 2</SLDSContextBar.NavMenuLink></SLDSContextBar.NavMenu>
             </SLDSContextBar.Nav>
           </SLDSContextBar>
         </section>
