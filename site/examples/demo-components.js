@@ -39,7 +39,7 @@ module.exports = function (facade) {
 		}
 
 		var displayName = toTitleCase(component.split('-').join(' '));
-
+		var displayNamePlural = displayName;
 		if (endsWith(displayName, 's') === false && endsWith(displayName, 'x') === false) {
 			displayNamePlural = displayName + 's';
 		}
