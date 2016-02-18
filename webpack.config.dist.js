@@ -33,11 +33,6 @@ const config = {
 	module: {
 		loaders: [
 			{
-				test: /\.(js|jsx)?$/,
-				loaders: ['babel'],
-				include: ['./src']
-			},
-			{
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loaders: ['babel', StringReplacePlugin.replace({
