@@ -9,8 +9,6 @@
 		<link href="/assets/styles/salesforce-lightning-design-system.css" rel="stylesheet" type="text/css">
 		<link href="/build/facades-demo-styles.css" rel="stylesheet" type="text/css">
 
-		<script src="/vendor/prism/prism.js"></script>
-		<script src="/vendor/prism/components/prism-jsx.js"></script>
 	</head>
 	<body class="facades-demo | {{facade}} | slds">
 		<nav class="facades-demo-main-nav slds-page-header">
@@ -34,6 +32,8 @@
 		{{#if facade}}
 		<script src="/build/demo-site-examples-{{facade}}.bundle.js"></script>
 		{{/if}}
+		<script src="/vendor/prism/prism.js" data-manual></script>
+		<script src="/vendor/prism/components/prism-jsx.js"></script>
 		<script src="/assets/demo-site/scripts/demo-site.js"></script>
 	</body>
 </html>

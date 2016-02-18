@@ -21,7 +21,6 @@ pre[class*="language-"] {
 	padding: 0 0 0 0.5rem;
 	background: #f5f2f0;
 	max-height: none;
-	// box-shadow: inset 0px 0px 3px 1px rgba(103, 100, 55, 0.17),0 0 0px 1px #dfdfdf;
 
 	&:before, &:after {
 		display: none;
@@ -29,6 +28,23 @@ pre[class*="language-"] {
 
 	code {
 		padding: 0.5rem 0rem;
+		opacity: 0;
+		-webkit-transition: all 0.3s linear;
+
+		font-family: Consolas, Monaco, 'Andale Mono', monospace;
+		line-height: 1.5;
+		-moz-tab-size: 2;
+		tab-size: 2;
+		-webkit-hyphens: none;
+		-moz-hyphens: none;
+		-ms-hyphens: none;
+		hyphens: none;
+		font-size: 0.7rem;
+
+		&.rendered {
+			opacity: 1;
+			-webkit-transition: all 0.3s linear;
+		}
 	}
 }
 

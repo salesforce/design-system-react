@@ -309,6 +309,7 @@ if (!reactCode) {
 				'component': example.component,
 				'componentName': componentName,
 				'componentGroupName': example.componentGroupName,
+				'componentDisplayName': componentDisplayName,
 				'componentDisplayNamePlural': componentDisplayNamePlural,
 				'code': example.code,
 				'html': example.html,
