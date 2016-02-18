@@ -161,9 +161,9 @@ pre, tt, code {
 		margin: 0;
 		padding: 7px 10px;
 		background: #fcfcfc;
-		-moz-box-shadow:    inset 0 0 10px rgba(0,0,0,0.1);
-		-webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-		box-shadow:         inset 0 0 10px rgba(0,0,0,0.1);
+		-moz-box-shadow:    none;
+		-webkit-box-shadow: none;
+		box-shadow:         none;
 		overflow-x: auto;
 
 	}
@@ -174,6 +174,8 @@ pre, tt, code {
 			background: transparent;
 
 		}
+
+
 
 
 blockquote {
@@ -388,12 +390,59 @@ pre[class*=language-] {
 	box-shadow: none;
 }
 
+code {
+	white-space: nowrap;
+	font-family: Consolas, Monaco, 'Andale Mono', monospace, monospace;
+	color: black;
+}
+
+pre[class*="language-"]:before, pre[class*="language-"]:after {
+	display: none;
+}
+pre[class*="language-"] code {
+	opacity: 0;
+	-webkit-transition: all 0.1s linear;
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	line-height: 1.5;
+	-moz-tab-size: 2;
+	tab-size: 2;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	font-size: 0.7rem;
+}
+pre[class*="language-"] code.rendered {
+	opacity: 1;
+	-webkit-transition: all 0.1s linear;
+}
+
+
+[data-key="design-tokens"] {
+	color: purple;
+}
+
+span.token.comment {
+  white-space: pre-line;
+}
+
+pre[class*=language-] code {
+  white-space: pre-wrap;
+}
+
+
+
+
 #section-1 {
 	// display: none;
 }
-#section-1 pre {
+#section-1 .annotation.code pre.language-jsx {
 	// display: none;
+	background: transparent;
 }
+#section-1 pre code > .hljs-comment,
+#section-1 pre code > .token.comment,
+#section-1 pre code.language-jsx.rendered > .token.comment,
 #section-1 pre code.language-jsx > .token.comment {
 	display: none;
 }
@@ -404,128 +453,128 @@ pre code {
 	background: #f8f8ff*/
 }
 
-pre .hljs-comment,
-pre .hljs-template_comment,
-pre .hljs-diff .hljs-header,
-pre .hljs-javadoc {
-	color: #408080;
-	font-style: italic
-}
+// pre .hljs-comment,
+// pre .hljs-template_comment,
+// pre .hljs-diff .hljs-header,
+// pre .hljs-javadoc {
+// 	color: #408080;
+// 	font-style: italic
+// }
 
-pre .hljs-keyword,
-pre .hljs-assignment,
-pre .hljs-literal,
-pre .hljs-css .hljs-rule .hljs-keyword,
-pre .hljs-winutils,
-pre .hljs-javascript .hljs-title,
-pre .hljs-lisp .hljs-title,
-pre .hljs-subst {
-	color: #954121;
-	/*font-weight: bold*/
-}
+// pre .hljs-keyword,
+// pre .hljs-assignment,
+// pre .hljs-literal,
+// pre .hljs-css .hljs-rule .hljs-keyword,
+// pre .hljs-winutils,
+// pre .hljs-javascript .hljs-title,
+// pre .hljs-lisp .hljs-title,
+// pre .hljs-subst {
+// 	color: #954121;
+// 	/*font-weight: bold*/
+// }
 
-pre .hljs-number,
-pre .hljs-hexcolor {
-	color: #40a070
-}
+// pre .hljs-number,
+// pre .hljs-hexcolor {
+// 	color: #40a070
+// }
 
-pre .hljs-string,
-pre .hljs-tag .hljs-value,
-pre .hljs-phpdoc,
-pre .hljs-tex .hljs-formula {
-	color: #219161;
-}
+// pre .hljs-string,
+// pre .hljs-tag .hljs-value,
+// pre .hljs-phpdoc,
+// pre .hljs-tex .hljs-formula {
+// 	color: #219161;
+// }
 
-pre .hljs-title,
-pre .hljs-id {
-	color: #19469D;
-}
-pre .hljs-params {
-	color: #00F;
-}
+// pre .hljs-title,
+// pre .hljs-id {
+// 	color: #19469D;
+// }
+// pre .hljs-params {
+// 	color: #00F;
+// }
 
-pre .hljs-javascript .hljs-title,
-pre .hljs-lisp .hljs-title,
-pre .hljs-subst {
-	font-weight: normal
-}
+// pre .hljs-javascript .hljs-title,
+// pre .hljs-lisp .hljs-title,
+// pre .hljs-subst {
+// 	font-weight: normal
+// }
 
-pre .hljs-class .hljs-title,
-pre .hljs-haskell .hljs-label,
-pre .hljs-tex .hljs-command {
-	color: #458;
-	font-weight: bold
-}
+// pre .hljs-class .hljs-title,
+// pre .hljs-haskell .hljs-label,
+// pre .hljs-tex .hljs-command {
+// 	color: #458;
+// 	font-weight: bold
+// }
 
-pre .hljs-tag,
-pre .hljs-tag .hljs-title,
-pre .hljs-rules .hljs-property,
-pre .hljs-django .hljs-tag .hljs-keyword {
-	color: #000080;
-	font-weight: normal
-}
+// pre .hljs-tag,
+// pre .hljs-tag .hljs-title,
+// pre .hljs-rules .hljs-property,
+// pre .hljs-django .hljs-tag .hljs-keyword {
+// 	color: #000080;
+// 	font-weight: normal
+// }
 
-pre .hljs-attribute,
-pre .hljs-variable,
-pre .hljs-instancevar,
-pre .hljs-lisp .hljs-body {
-	color: #008080
-}
+// pre .hljs-attribute,
+// pre .hljs-variable,
+// pre .hljs-instancevar,
+// pre .hljs-lisp .hljs-body {
+// 	color: #008080
+// }
 
-pre .hljs-regexp {
-	color: #B68
-}
+// pre .hljs-regexp {
+// 	color: #B68
+// }
 
-pre .hljs-class {
-	color: #458;
-	font-weight: bold
-}
+// pre .hljs-class {
+// 	color: #458;
+// 	font-weight: bold
+// }
 
-pre .hljs-symbol,
-pre .hljs-ruby .hljs-symbol .hljs-string,
-pre .hljs-ruby .hljs-symbol .hljs-keyword,
-pre .hljs-ruby .hljs-symbol .hljs-keymethods,
-pre .hljs-lisp .hljs-keyword,
-pre .hljs-tex .hljs-special,
-pre .hljs-input_number {
-	color: #990073
-}
+// pre .hljs-symbol,
+// pre .hljs-ruby .hljs-symbol .hljs-string,
+// pre .hljs-ruby .hljs-symbol .hljs-keyword,
+// pre .hljs-ruby .hljs-symbol .hljs-keymethods,
+// pre .hljs-lisp .hljs-keyword,
+// pre .hljs-tex .hljs-special,
+// pre .hljs-input_number {
+// 	color: #990073
+// }
 
-pre .hljs-builtin,
-pre .hljs-constructor,
-pre .hljs-built_in,
-pre .hljs-lisp .hljs-title {
-	color: #0086b3
-}
+// pre .hljs-builtin,
+// pre .hljs-constructor,
+// pre .hljs-built_in,
+// pre .hljs-lisp .hljs-title {
+// 	color: #0086b3
+// }
 
-pre .hljs-preprocessor,
-pre .hljs-pi,
-pre .hljs-doctype,
-pre .hljs-shebang,
-pre .hljs-cdata {
-	color: #999;
-	font-weight: bold
-}
+// pre .hljs-preprocessor,
+// pre .hljs-pi,
+// pre .hljs-doctype,
+// pre .hljs-shebang,
+// pre .hljs-cdata {
+// 	color: #999;
+// 	font-weight: bold
+// }
 
-pre .hljs-deletion {
-	background: #fdd
-}
+// pre .hljs-deletion {
+// 	background: #fdd
+// }
 
-pre .hljs-addition {
-	background: #dfd
-}
+// pre .hljs-addition {
+// 	background: #dfd
+// }
 
-pre .hljs-diff .hljs-change {
-	background: #0086b3
-}
+// pre .hljs-diff .hljs-change {
+// 	background: #0086b3
+// }
 
-pre .hljs-chunk {
-	color: #aaa
-}
+// pre .hljs-chunk {
+// 	color: #aaa
+// }
 
-pre .hljs-tex .hljs-formula {
-	opacity: 0.5;
-}
+// pre .hljs-tex .hljs-formula {
+// 	opacity: 0.5;
+// }
 
 
 
