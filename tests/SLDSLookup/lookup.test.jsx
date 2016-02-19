@@ -3,9 +3,11 @@ import assign from 'lodash.assign';
 import TestUtils from 'react-addons-test-utils';
 
 import {SLDSLookup} from '../../components';
+const Header = SLDSLookup.DefaultHeader;
+const Footer = SLDSLookup.DefaultFooter;
 const {Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag} = TestUtils;
 
-describe('SLDSLookup: ',  function(){
+describe.only('SLDSLookup: ',  function(){
   const generateLookup = function(lookupInstance) {
     let reactCmp = TestUtils.renderIntoDocument(lookupInstance);
     return React.findDOMNode(reactCmp);
@@ -13,32 +15,34 @@ describe('SLDSLookup: ',  function(){
 
   const defaultProps = {
     emptyMessage:"No items found",
-    footerRenderer:{SLDSLookup.DefaultFooter},
-    headerRenderer:{SLDSLookup.DefaultHeader},
+    footerRenderer:Footer,
     iconCategory:"standard",
     iconName:"account",
     label:"Account",
-    onChange:{function(newValue){console.log("New search term: ", newValue)}},
-    onSelect:{function(item){console.log(item , " Selected")}},
-    options:{[
+    onChange:function(newValue){console.log("New search term: ", newValue)},
+    onSelect:function(item){console.log(item , " Selected")},
+    options:[
       {label: "Paddy\"s Pub"},
       {label: "Tyrell Corp"},
       {label: "Paper St. Soap Company"},
       {label: "Nakatomi Investments"},
       {label: "Acme Landscaping"},
       {label: "Acme Construction"}
-    ]},
-    selectedItem={1},
+    ],
   };
 
   const getLookup = (props={}) => React.createElement(SLDSLookup, assign({}, defaultProps, props))
+  const getLookupWithHeader = (props={headerRenderer: Header}) => React.createElement(SLDSLookup, assign({}, defaultProps, props))
+  const getLookupWithSelection = (props={selectedItem: 1}) => React.createElement(SLDSLookup, assign({}, defaultProps, props))
 
   const getItems = lookup => lookup.getElementsByClassName('slds-lookup__item');
 
   describe('component renders', function() {
     it('lookup renders', function() {
       let lookup = generateLookup(getLookup());
+      let lookupWithSelection = generateLookup(getLookupWithSelection());
       expect(lookup).to.not.equal(undefined);
+      expect(lookupWithSelection).to.not.equal(undefined);
     });
   });
 
@@ -46,13 +50,25 @@ describe('SLDSLookup: ',  function(){
     it('renders label', function() {
       let lookup = generateLookup(getLookup());
       let label = lookup.getElementsByTagName("label")[0];
-      expect(label.innerText).to.equal('Leads');
+      expect(label.innerText).to.equal('Account');
+    });
+    it('LookupWithSelection - renders label', function() {
+      let lookup = generateLookup(getLookupWithSelection());
+      let label = lookup.getElementsByTagName("label")[0];
+      expect(label.innerText).to.equal('Account');
     });
   });
 
   describe('accessibility markup passes', function() {
     it('label for matches input id', function() {
       let lookup = generateLookup(getLookup());
+      let labelFor = lookup.getElementsByTagName("label")[0].getAttribute("for");
+      let inputId = lookup.getElementsByTagName("input")[0].getAttribute("id");
+      expect(labelFor).to.equal(inputId);
+    });
+
+    it('LookupWithSelection - label for matches input id', function() {
+      let lookup = generateLookup(getLookupWithSelection());
       let labelFor = lookup.getElementsByTagName("label")[0].getAttribute("for");
       let inputId = lookup.getElementsByTagName("input")[0].getAttribute("id");
       expect(labelFor).to.equal(inputId);
@@ -66,6 +82,7 @@ describe('SLDSLookup: ',  function(){
       let ariaHaspopup = lookup.getElementsByTagName("input")[0].getAttribute("aria-haspopup");
       expect(ariaHaspopup).to.equal('true');
     });
+
     it('aria-expanded is false initally', function() {
       let lookup = generateLookup(getLookup());
       let ariaExpanded = lookup.getElementsByTagName("input")[0].getAttribute("aria-expanded");
@@ -76,6 +93,14 @@ describe('SLDSLookup: ',  function(){
       let lookup = generateLookup(getLookup());
       let input = lookup.getElementsByTagName("input")[0];
       TestUtils.Simulate.click(input);
+      let ariaExpanded = lookup.getElementsByTagName("input")[0].getAttribute("aria-expanded");
+      expect(ariaExpanded).to.equal('true');
+    });
+
+    it('LookupWithSelection - aria-expanded is true when deleting selection', function() {
+      let lookup = generateLookup(getLookupWithSelection());
+      let input = lookup.getElementsByTagName("input")[0];
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 46, which: 46});
       let ariaExpanded = lookup.getElementsByTagName("input")[0].getAttribute("aria-expanded");
       expect(ariaExpanded).to.equal('true');
     });
@@ -95,7 +120,7 @@ describe('SLDSLookup: ',  function(){
     });
 
     it('with fixed header: focuses correct item', function() {
-      let lookup = generateLookup(getLookup({headerRenderer: SLDSLookup.DefaultHeader}));
+      let lookup = generateLookup(getLookupWithHeader());
       let input = lookup.getElementsByTagName("input")[0];
       TestUtils.Simulate.click(input);
       TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
@@ -104,7 +129,7 @@ describe('SLDSLookup: ',  function(){
       expect(ariaActiveDescendant).to.equal('item-0');
     });
 
-    it('selects correct item', function() {
+    it('no header: selects correct item', function() {
       let lookup = generateLookup(getLookup());
       let input = lookup.getElementsByTagName("input")[0];
       TestUtils.Simulate.click(input);
@@ -114,6 +139,18 @@ describe('SLDSLookup: ',  function(){
       TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
       let selected = lookup.getElementsByTagName("a")[0].getElementsByTagName('span')[0].innerText;
       expect(selected).to.equal('Paper St. Soap Company');
+    });
+
+    it('with header: selects correct item', function() {
+      let lookup = generateLookup(getLookupWithHeader());
+      let input = lookup.getElementsByTagName("input")[0];
+      TestUtils.Simulate.click(input);
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Down", keyCode: 40, which: 40});
+      TestUtils.Simulate.keyDown(input, {key: "Enter", keyCode: 13, which: 13});
+      let selected = lookup.getElementsByTagName("a")[0].getElementsByTagName('span')[0].innerText;
+      expect(selected).to.equal('Tyrell Corp');
     });
 
     it('closes lookup menu on esc', function() {
