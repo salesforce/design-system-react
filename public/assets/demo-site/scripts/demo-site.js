@@ -32,7 +32,7 @@ $(function () {
 	
 	var $window = $(window);
 	// var $componentNav = $('#component-nav > nav');
-	var $componentNav = document.querySelectorAll('#component-nav > nav');
+	var $componentNav = document.querySelectorAll('#component-nav > nav')[0];
 	var $componentNavParent = document.querySelectorAll('#component-nav')[0];
 	
 	console.log("[demo-site.js:38] $componentNavParent:", $componentNavParent);
@@ -43,7 +43,11 @@ $(function () {
 	console.log("[demo-site.js:38] componentNavParentWidth:", componentNavParentWidth);
 	
 	var pos = $window.scrollTop();
-	$componentNav.width(componentNavParentWidth);
+	
+	console.log("[demo-site.js:47] $componentNav:", $componentNav);
+	
+	$componentNav.width = componentNavParentWidth + 'px';
+	
 	$('#component-nav__' + $('.component-wrapper').attr('id')).addClass('active');
 	$('a', $componentNav).on('click', function(e){
 		$('a', $componentNav).removeClass('active');
@@ -53,7 +57,7 @@ $(function () {
 	$window.scroll(function (ev) {
 		pos = $window.scrollTop();
 		componentNavParentWidth = $('#component-nav').width();
-		$componentNav.width(componentNavParentWidth);
+		$componentNav.width = componentNavParentWidth + 'px';
 		if (pos >= 0) {
 			$componentNav.css({
 				'top': (205 - (pos > 205 ? 205 : pos))
