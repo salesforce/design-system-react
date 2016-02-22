@@ -200,7 +200,21 @@ if (!jQueryCode) {
 }
 
 
-// jQuery examples
+// jQuery examples for development sandbox
+var jQueryCodeMap = jQueryCode.componentData;
+var jQueryCodeArray = JSON.parse(JSON.stringify([...jQueryCodeMap]));
+var jQueryCodeObject = {};
+
+jQueryCodeArray.forEach(function (element) {
+	jQueryCodeObject[element[0]] = element[1];
+});
+
+app.get('/examples', function (req, res) {
+	res.render('examples/index', jQueryCodeObject);
+});
+
+
+// jQuery examples on main site
 var jQueryCode;
 app.get('/jquery', function (req, res) {
 	res.render('jquery/index', jQueryCode);
