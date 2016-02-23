@@ -22,8 +22,8 @@ const config = {
 	},
 	devtool: 'source-map',
 	externals: {
-		react: 'React',
-		'react-dom': 'ReactDOM'
+		react: { amd: 'react', commonjs: 'react', commonjs2: 'react', 'root': 'React' },
+		'react-dom': { amd: 'react-dom', commonjs: 'react-dom', commonjs2: 'react', 'root': 'ReactDOM' }
 	},
 	output: {
 		libraryTarget: 'umd',
