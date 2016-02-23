@@ -67,75 +67,79 @@
 
 	var _components = __webpack_require__(202);
 
-	var _App = __webpack_require__(293);
+	var _App = __webpack_require__(290);
 
 	var _App2 = _interopRequireDefault(_App);
 
-	var _pages = __webpack_require__(296);
+	var _pages = __webpack_require__(293);
 
 	var _pages2 = _interopRequireDefault(_pages);
 
-	var _Welcome = __webpack_require__(298);
+	var _Welcome = __webpack_require__(295);
 
 	var _Welcome2 = _interopRequireDefault(_Welcome);
 
-	var _GettingStarted = __webpack_require__(300);
+	var _GettingStarted = __webpack_require__(297);
 
 	var _GettingStarted2 = _interopRequireDefault(_GettingStarted);
 
-	var _FAQ = __webpack_require__(301);
+	var _FAQ = __webpack_require__(298);
 
 	var _FAQ2 = _interopRequireDefault(_FAQ);
 
-	var _ButtonSection = __webpack_require__(302);
+	var _ButtonSection = __webpack_require__(299);
 
 	var _ButtonSection2 = _interopRequireDefault(_ButtonSection);
 
-	var _ButtonStatefulSection = __webpack_require__(319);
+	var _ButtonStatefulSection = __webpack_require__(316);
 
 	var _ButtonStatefulSection2 = _interopRequireDefault(_ButtonStatefulSection);
 
-	var _ButtonGroupSection = __webpack_require__(320);
+	var _ButtonGroupSection = __webpack_require__(317);
 
 	var _ButtonGroupSection2 = _interopRequireDefault(_ButtonGroupSection);
 
-	var _DateInputSection = __webpack_require__(321);
+	var _ContextBarSection = __webpack_require__(318);
+
+	var _ContextBarSection2 = _interopRequireDefault(_ContextBarSection);
+
+	var _DateInputSection = __webpack_require__(325);
 
 	var _DateInputSection2 = _interopRequireDefault(_DateInputSection);
 
-	var _DatePickerSingleSelectSection = __webpack_require__(322);
+	var _DatePickerSingleSelectSection = __webpack_require__(326);
 
 	var _DatePickerSingleSelectSection2 = _interopRequireDefault(_DatePickerSingleSelectSection);
 
-	var _TimePickerSection = __webpack_require__(323);
+	var _TimePickerSection = __webpack_require__(327);
 
 	var _TimePickerSection2 = _interopRequireDefault(_TimePickerSection);
 
-	var _DropdownSection = __webpack_require__(324);
+	var _DropdownSection = __webpack_require__(328);
 
 	var _DropdownSection2 = _interopRequireDefault(_DropdownSection);
 
-	var _IconSection = __webpack_require__(325);
+	var _IconSection = __webpack_require__(329);
 
 	var _IconSection2 = _interopRequireDefault(_IconSection);
 
-	var _LookupSection = __webpack_require__(326);
+	var _LookupSection = __webpack_require__(330);
 
 	var _LookupSection2 = _interopRequireDefault(_LookupSection);
 
-	var _ModalSection = __webpack_require__(327);
+	var _ModalSection = __webpack_require__(331);
 
 	var _ModalSection2 = _interopRequireDefault(_ModalSection);
 
-	var _NotificationSection = __webpack_require__(328);
+	var _NotificationSection = __webpack_require__(332);
 
 	var _NotificationSection2 = _interopRequireDefault(_NotificationSection);
 
-	var _PicklistSection = __webpack_require__(329);
+	var _PicklistSection = __webpack_require__(333);
 
 	var _PicklistSection2 = _interopRequireDefault(_PicklistSection);
 
-	var _TooltipSection = __webpack_require__(330);
+	var _TooltipSection = __webpack_require__(334);
 
 	var _TooltipSection2 = _interopRequireDefault(_TooltipSection);
 
@@ -156,6 +160,7 @@
 	    _react2.default.createElement(_reactRouter.Route, { name: 'button', path: 'button', handler: _ButtonSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'button-stateful', path: 'button-stateful', handler: _ButtonStatefulSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'button-group', path: 'button-group', handler: _ButtonGroupSection2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { name: 'context-bar', path: 'context-bar', handler: _ContextBarSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'dateinput', path: 'dateinput', handler: _DateInputSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'timepicker', path: 'timepicker', handler: _TimePickerSection2.default }),
 	    _react2.default.createElement(_reactRouter.Route, { name: 'datepicker', path: 'datepicker', handler: _DatePickerSingleSelectSection2.default }),
@@ -23047,31 +23052,31 @@
 
 	var _SLDSMenuPicklist2 = _interopRequireDefault(_SLDSMenuPicklist);
 
-	var _SLDSModal = __webpack_require__(262);
+	var _SLDSModal = __webpack_require__(259);
 
 	var _SLDSModal2 = _interopRequireDefault(_SLDSModal);
 
-	var _trigger = __webpack_require__(277);
+	var _trigger = __webpack_require__(274);
 
 	var _trigger2 = _interopRequireDefault(_trigger);
 
-	var _SLDSNotification = __webpack_require__(278);
+	var _SLDSNotification = __webpack_require__(275);
 
 	var _SLDSNotification2 = _interopRequireDefault(_SLDSNotification);
 
-	var _SLDSPopoverTooltip = __webpack_require__(279);
+	var _SLDSPopoverTooltip = __webpack_require__(276);
 
 	var _SLDSPopoverTooltip2 = _interopRequireDefault(_SLDSPopoverTooltip);
 
-	var _SLDSDatepickerSingleSelect = __webpack_require__(283);
+	var _SLDSDatepickerSingleSelect = __webpack_require__(280);
 
 	var _SLDSDatepickerSingleSelect2 = _interopRequireDefault(_SLDSDatepickerSingleSelect);
 
-	var _SLDSTimepicker = __webpack_require__(290);
+	var _SLDSTimepicker = __webpack_require__(287);
 
 	var _SLDSTimepicker2 = _interopRequireDefault(_SLDSTimepicker);
 
-	var _SLDSSettings = __webpack_require__(292);
+	var _SLDSSettings = __webpack_require__(289);
 
 	var _SLDSSettings2 = _interopRequireDefault(_SLDSSettings);
 
@@ -27262,6 +27267,16 @@
 	      }
 	    }
 	  },
+	  handleMouseEnter: function handleMouseEnter(event) {
+	    if (this.props.onMouseEnter) {
+	      this.props.onMouseEnter(event);
+	    }
+	  },
+	  handleMouseLeave: function handleMouseLeave(event) {
+	    if (this.props.onMouseLeave) {
+	      this.props.onMouseLeave(event);
+	    }
+	  },
 	  popoverComp: function popoverComp() {
 	    if (!this.state.isOpen) {
 	      return _react2.default.createElement('span', null);
@@ -27282,9 +27297,11 @@
 
 	    return _react2.default.createElement(
 	      'div',
-	      { className: 'SLDSPopover ' + this.props.className,
+	      { className: 'SLDSPopover ignore-react-onclickoutside ' + this.props.className,
 	        style: style,
-	        onKeyDown: this.handleKeyDown
+	        onKeyDown: this.handleKeyDown,
+	        onMouseEnter: this.handleMouseEnter,
+	        onMouseLeave: this.handleMouseLeave
 	      },
 	      this.props.children
 	    );
@@ -30958,10 +30975,10 @@
 	        itemRenderer: this.getListItemRenderer(),
 	        onListBlur: this.handleListBlur.bind(this),
 	        onListItemBlur: this.handleListItemBlur.bind(this),
-	        onCancel: this.handleCancel.bind(this),
-	        onMouseEnter: this.props.openOn === "hover" ? this.handleMouseEnter.bind(this) : null,
-	        onMouseLeave: this.props.openOn === "hover" ? this.handleMouseLeave.bind(this) : null,
-	        onSelect: this.handleSelect.bind(this),
+	        onCancel: this.handleCancel.bind(this)
+	        //            onMouseEnter={(this.props.openOn === "hover")?this.handleMouseEnter.bind(this):null}
+	        //            onMouseLeave={(this.props.openOn === "hover")?this.handleMouseLeave.bind(this):null}
+	        , onSelect: this.handleSelect.bind(this),
 	        onUpdateHighlighted: this.handleUpdateHighlighted.bind(this),
 	        options: this.props.options,
 	        ref: "list",
@@ -30974,7 +30991,10 @@
 	    value: function getSimplePopover() {
 	      return !this.props.disabled && this.state.isOpen ? _react2.default.createElement(
 	        "div",
-	        { className: "slds-dropdown slds-dropdown--menu slds-dropdown--left " + this.props.className },
+	        { className: "slds-dropdown slds-dropdown--menu slds-dropdown--left " + this.props.className,
+	          onMouseEnter: this.props.openOn === "hover" ? this.handleMouseEnter.bind(this) : null,
+	          onMouseLeave: this.props.openOn === "hover" ? this.handleMouseLeave.bind(this) : null
+	        },
 	        this.getPopoverContent()
 	      ) : null;
 	    }
@@ -30990,6 +31010,8 @@
 	          dropClass: "slds-picklist" //TODO: in next SLDS release, remove slds-picklist class because slds-dropdown--length-5 will be active.
 	          , horizontalAlign: this.props.align,
 	          flippable: true,
+	          onMouseEnter: this.props.openOn === "hover" ? this.handleMouseEnter.bind(this) : null,
+	          onMouseLeave: this.props.openOn === "hover" ? this.handleMouseLeave.bind(this) : null,
 	          onClose: this.handleCancel.bind(this),
 	          targetElement: this.refs.button
 	        },
@@ -31062,6 +31084,10 @@
 
 	var _EventUtil2 = _interopRequireDefault(_EventUtil);
 
+	var _KEYS = __webpack_require__(243);
+
+	var _KEYS2 = _interopRequireDefault(_KEYS);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31083,7 +31109,6 @@
 	  checkmark: _react2.default.PropTypes.bool,
 	  highlightedIndex: _react2.default.PropTypes.number,
 	  itemRenderer: _react2.default.PropTypes.func,
-	  label: _react2.default.PropTypes.string,
 	  options: _react2.default.PropTypes.array,
 	  onCancel: _react2.default.PropTypes.func,
 	  onListBlur: _react2.default.PropTypes.func,
@@ -31096,7 +31121,6 @@
 	  className: '',
 	  highlightedIndex: 0,
 	  itemRenderer: null,
-	  label: 'Menu',
 	  options: [],
 	  onCancel: function onCancel(delta) {
 	    console.log("onCancel should be overwritten");
@@ -31148,11 +31172,14 @@
 	    }
 	  }, {
 	    key: 'handleListItemBlur',
-	    value: function handleListItemBlur(index, relatedTarget) {
-	      if (this.props.onListItemBlur) {
-	        this.props.onListItemBlur(index);
+	    value: function handleListItemBlur(event) {
+	      if (event && event.target) {
+	        var indexx = parseInt(event.target.getAttribute('data-index'));
+	        if (this.props.onListItemBlur) {
+	          this.props.onListItemBlur(indexx);
+	        }
+	        this.setState({ lastBlurredIndex: indexx });
 	      }
-	      this.setState({ lastBlurredIndex: index });
 	    }
 	  }, {
 	    key: 'handleMoveFocus',
@@ -31179,9 +31206,6 @@
 	    value: function handleSelect(index) {
 	      if (this.props.onSelect) {
 	        this.props.onSelect(index);
-	      }
-	      if (this.props.onUpdateHighlighted) {
-	        this.props.onUpdateHighlighted(index);
 	      }
 	    }
 	  }, {
@@ -31234,15 +31258,40 @@
 	          key: 'ListItem_' + index,
 	          label: option.label,
 	          labelRenderer: _this2.props.itemRenderer,
-	          onBlur: _this2.handleListItemBlur.bind(_this2),
-	          onCancel: _this2.handleCancel.bind(_this2),
-	          onFocus: _this2.handleItemFocus.bind(_this2),
-	          onMoveFocus: _this2.handleMoveFocus.bind(_this2),
-	          onSearch: _this2.handleSearch.bind(_this2),
-	          onSelect: _this2.handleSelect.bind(_this2),
+	          onFocus: _this2.handleItemFocus.bind(_this2)
+	          //          onMoveFocus={this.handleMoveFocus.bind(this)}
+	          , onSelect: _this2.handleSelect.bind(_this2),
 	          onUpdateHighlighted: _this2.handleUpdateHighlighted.bind(_this2),
 	          value: option.value });
 	      });
+	    }
+	  }, {
+	    key: 'handleKeyDown',
+	    value: function handleKeyDown(event) {
+	      if (event.keyCode) {
+
+	        if (event.keyCode === _KEYS2.default.DOWN) {
+	          _EventUtil2.default.trapEvent(event);
+	          this.handleMoveFocus(1);
+	        } else if (event.keyCode === _KEYS2.default.UP) {
+	          _EventUtil2.default.trapEvent(event);
+	          this.handleMoveFocus(-1);
+	        } else if (event.keyCode === _KEYS2.default.ENTER || event.keyCode === _KEYS2.default.SPACE) {
+	          _EventUtil2.default.trapEvent(event);
+	          var index = parseInt(event.target.getAttribute('data-index'));
+	          this.handleSelect(index);
+	        } else if (event.keyCode === _KEYS2.default.ESCAPE) {
+	          _EventUtil2.default.trapEvent(event);
+	          if (this.props.onCancel) {
+	            this.props.onCancel();
+	          }
+	        } else if (event.keyCode === _KEYS2.default.TAB) {} else {
+	          _EventUtil2.default.trapEvent(event);
+	          var ch = String.fromCharCode(event.keyCode);
+	          var index = parseInt(event.target.getAttribute('data-index'));
+	          this.handleSearch(index, ch);
+	        }
+	      }
 	    }
 	  }, {
 	    key: 'render',
@@ -31251,10 +31300,12 @@
 	        'ul',
 	        {
 	          'aria-labelledby': this.props.triggerId,
-	          className: "slds-dropdown__list slds-dropdown--length-5 " + this.props.className,
-	          onMouseDown: this.handleMouseDown.bind(this),
-	          onMouseEnter: this.props.onMouseEnter,
-	          onMouseLeave: this.props.onMouseLeave,
+	          className: "slds-dropdown__list slds-dropdown--length-5 " + this.props.className
+	          //        onMouseEnter={this.props.onMouseEnter}
+	          //        onMouseDown={this.handleMouseDown.bind(this)}
+	          //        onMouseLeave={this.props.onMouseLeave}
+	          , onBlur: this.handleListItemBlur.bind(this),
+	          onKeyDown: this.handleKeyDown.bind(this),
 	          ref: 'scroll',
 	          role: 'menu'
 	        },
@@ -31325,7 +31376,7 @@
 	  isSelected: _react2.default.PropTypes.bool,
 	  label: _react2.default.PropTypes.string,
 	  labelRenderer: _react2.default.PropTypes.func,
-	  value: _react2.default.PropTypes.string,
+	  value: _react2.default.PropTypes.any,
 	  onBlur: _react2.default.PropTypes.func,
 	  onClick: _react2.default.PropTypes.func,
 	  onFocus: _react2.default.PropTypes.func,
@@ -31444,7 +31495,7 @@
 	    key: 'handleBlur',
 	    value: function handleBlur(e) {
 	      if (this.props.onBlur) {
-	        this.props.onBlur(this.props.index, e.relatedTarget);
+	        this.props.onBlur(this.props.index, e.relatedTarget, e);
 	      }
 	    }
 	  }, {
@@ -31474,24 +31525,25 @@
 	    key: 'render',
 	    value: function render() {
 	      var isSelected = this.props.isSelected ? " slds-is-selected" : "";
+	      //    console.log('!!!ListItem render');
 	      return _react2.default.createElement(
 	        'li',
 	        {
 	          className: "slds-dropdown__item" + isSelected,
-	          onMouseDown: this.handleMouseDown.bind(this),
-	          onMouseEnter: this.props.onMouseEnter,
-	          onMouseLeave: this.props.onMouseLeave },
+	          onMouseDown: this.handleMouseDown.bind(this)
+	          //        onMouseEnter={this.props.onMouseEnter}
+	          //        onMouseLeave={this.props.onMouseLeave}
+	        },
 	        _react2.default.createElement(
 	          'a',
 	          { id: 'menu-0-' + this.props.index,
 	            href: 'javascript:void(0)',
 	            ref: 'link',
-	            className: 'slds-truncate',
-	            onClick: this.handleClick.bind(this),
-	            onMouseDown: this.handleMouseDown.bind(this),
-	            onKeyDown: this.handleKeyDown.bind(this),
-	            onBlur: this.handleBlur.bind(this),
-	            onFocus: this.handleFocus.bind(this),
+	            'data-index': this.props.index,
+	            onClick: this.handleClick.bind(this)
+	            //            onMouseDown={this.handleMouseDown.bind(this)}
+	            //            onKeyDown={this.handleKeyDown.bind(this)}
+	            , onFocus: this.handleFocus.bind(this),
 	            'aria-checked': this.props.isSelected,
 	            role: 'menuitemradio',
 	            tabIndex: -1 },
@@ -31578,7 +31630,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'p',
-	        null,
+	        { className: 'slds-truncate' },
 	        this.props.checkmark ? _react2.default.createElement(_SLDSIcon2.default, { name: 'check', position: 'left', category: 'utility', size: 'x-small', className: 'slds-icon--selected slds-icon-text-default slds-m-right--x-small' }) : null,
 	        this.props.label
 	      );
@@ -31624,11 +31676,11 @@
 
 	var _SLDSIcon2 = _interopRequireDefault(_SLDSIcon);
 
-	var _List = __webpack_require__(259);
+	var _List = __webpack_require__(251);
 
 	var _List2 = _interopRequireDefault(_List);
 
-	var _ListItemLabel = __webpack_require__(261);
+	var _ListItemLabel = __webpack_require__(253);
 
 	var _ListItemLabel2 = _interopRequireDefault(_ListItemLabel);
 
@@ -31659,7 +31711,7 @@
 	  /**
 	   * Custom element that overrides the default Menu Item component.
 	   */
-	  listItemRenderer: _react2.default.PropTypes.node,
+	  listItemRenderer: _react2.default.PropTypes.func,
 	  /**
 	   * If true, component renders specifically to work inside Modal.
 	   */
@@ -32772,592 +32824,6 @@
 /* 259 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(159);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _ListItem = __webpack_require__(260);
-
-	var _ListItem2 = _interopRequireDefault(_ListItem);
-
-	var _EventUtil = __webpack_require__(241);
-
-	var _EventUtil2 = _interopRequireDefault(_EventUtil);
-
-	var _KEYS = __webpack_require__(243);
-
-	var _KEYS2 = _interopRequireDefault(_KEYS);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-
-	var displayName = "SLDSList";
-	var propTypes = {
-	  className: _react2.default.PropTypes.string,
-	  checkmark: _react2.default.PropTypes.bool,
-	  highlightedIndex: _react2.default.PropTypes.number,
-	  itemRenderer: _react2.default.PropTypes.func,
-	  options: _react2.default.PropTypes.array,
-	  onCancel: _react2.default.PropTypes.func,
-	  onListBlur: _react2.default.PropTypes.func,
-	  onListItemBlur: _react2.default.PropTypes.func,
-	  onMoveFocus: _react2.default.PropTypes.func,
-	  onSelect: _react2.default.PropTypes.func,
-	  selectedIndex: _react2.default.PropTypes.number
-	};
-	var defaultProps = {
-	  className: '',
-	  highlightedIndex: 0,
-	  itemRenderer: null,
-	  options: [],
-	  onCancel: function onCancel(delta) {
-	    console.log("onCancel should be overwritten");
-	  },
-	  onListBlur: function onListBlur() {
-	    console.log("onListBlur should be overwritten");
-	  },
-	  onListItemBlur: function onListItemBlur(listItemIndex) {
-	    console.log("onListItemBlur should be overwritten");
-	  },
-	  onMoveFocus: function onMoveFocus(delta) {
-	    console.log("onMoveFocus should be overwritten");
-	  },
-	  onSelect: function onSelect(index) {
-	    console.log("onSelect should be overwritten");
-	  },
-	  selectedIndex: -1
-	};
-
-	var SLDSList = function (_React$Component) {
-	  _inherits(SLDSList, _React$Component);
-
-	  function SLDSList() {
-	    _classCallCheck(this, SLDSList);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SLDSList).apply(this, arguments));
-	  }
-
-	  _createClass(SLDSList, [{
-	    key: 'handleMouseDown',
-	    value: function handleMouseDown(event) {
-	      _EventUtil2.default.trapImmediate(event);
-	    }
-	  }, {
-	    key: 'handleClick',
-	    value: function handleClick(e) {
-	      if (e.nativeEvent) {
-	        e.nativeEvent.preventDefault();
-	        e.nativeEvent.stopImmediatePropagation();
-	      }
-	      e.preventDefault();
-	    }
-	  }, {
-	    key: 'handleUpdateHighlighted',
-	    value: function handleUpdateHighlighted(nextIndex) {
-	      if (this.props.onUpdateHighlighted) {
-	        this.props.onUpdateHighlighted(nextIndex);
-	      }
-	    }
-	  }, {
-	    key: 'handleListItemBlur',
-	    value: function handleListItemBlur(event) {
-	      if (event && event.target) {
-	        var indexx = parseInt(event.target.getAttribute('data-index'));
-	        if (this.props.onListItemBlur) {
-	          this.props.onListItemBlur(indexx);
-	        }
-	        this.setState({ lastBlurredIndex: indexx });
-	      }
-	    }
-	  }, {
-	    key: 'handleMoveFocus',
-	    value: function handleMoveFocus(delta) {
-	      var newHighlightedIndex = this.props.highlightedIndex + delta;
-	      if (newHighlightedIndex < 0) {
-	        newHighlightedIndex = this.props.options.length - 1;
-	      } else if (newHighlightedIndex >= this.props.options.length) {
-	        newHighlightedIndex = 0;
-	      }
-	      if (this.props.onUpdateHighlighted) {
-	        this.props.onUpdateHighlighted(newHighlightedIndex);
-	      }
-	    }
-	  }, {
-	    key: 'handleCancel',
-	    value: function handleCancel() {
-	      if (this.props.onCancel) {
-	        this.props.onCancel();
-	      }
-	    }
-	  }, {
-	    key: 'handleSelect',
-	    value: function handleSelect(index) {
-	      if (this.props.onSelect) {
-	        this.props.onSelect(index);
-	      }
-	    }
-	  }, {
-	    key: 'handleItemFocus',
-	    value: function handleItemFocus(itemIndex, itemHeight) {
-	      if (this.refs.scroll) {
-	        _reactDom2.default.findDOMNode(this.refs.scroll).scrollTop = itemIndex * itemHeight;
-	      }
-	    }
-	  }, {
-	    key: 'handleSearch',
-	    value: function handleSearch(index, ch) {
-	      var searchChar = ch.toLowerCase();
-	      for (var i = index + 1; i < this.props.options.length; i++) {
-	        var option = this.props.options[i];
-	        if (option && option.label) {
-	          if (option.label.charAt(0).toLowerCase() === searchChar) {
-	            if (this.props.onUpdateHighlighted) {
-	              this.props.onUpdateHighlighted(i);
-	            }
-	            return;
-	          }
-	        }
-	      }
-	      for (var i = 0; i < index; i++) {
-	        var option = this.props.options[i];
-	        if (option && option.label) {
-	          if (option.label.charAt(0).toLowerCase() === searchChar) {
-	            if (this.props.onUpdateHighlighted) {
-	              this.props.onUpdateHighlighted(i);
-	            }
-	            return;
-	          }
-	        }
-	      }
-	    }
-	  }, {
-	    key: 'getItems',
-	    value: function getItems() {
-	      var _this2 = this;
-
-	      return this.props.options.map(function (option, index) {
-	        return _react2.default.createElement(_ListItem2.default, {
-	          checkmark: _this2.props.checkmark,
-	          data: option,
-	          index: index,
-	          isHighlighted: index === _this2.props.highlightedIndex,
-	          isHover: _this2.props.isHover,
-	          isSelected: index === _this2.props.selectedIndex,
-	          key: 'ListItem_' + index,
-	          label: option.label,
-	          labelRenderer: _this2.props.itemRenderer,
-	          onFocus: _this2.handleItemFocus.bind(_this2)
-	          //          onMoveFocus={this.handleMoveFocus.bind(this)}
-	          , onSelect: _this2.handleSelect.bind(_this2),
-	          onUpdateHighlighted: _this2.handleUpdateHighlighted.bind(_this2),
-	          value: option.value });
-	      });
-	    }
-	  }, {
-	    key: 'handleKeyDown',
-	    value: function handleKeyDown(event) {
-	      if (event.keyCode) {
-
-	        if (event.keyCode === _KEYS2.default.DOWN) {
-	          _EventUtil2.default.trapEvent(event);
-	          this.handleMoveFocus(1);
-	        } else if (event.keyCode === _KEYS2.default.UP) {
-	          _EventUtil2.default.trapEvent(event);
-	          this.handleMoveFocus(-1);
-	        } else if (event.keyCode === _KEYS2.default.ENTER || event.keyCode === _KEYS2.default.SPACE) {
-	          _EventUtil2.default.trapEvent(event);
-	          var index = parseInt(event.target.getAttribute('data-index'));
-	          this.handleSelect(index);
-	        } else if (event.keyCode === _KEYS2.default.ESCAPE) {
-	          _EventUtil2.default.trapEvent(event);
-	          if (this.props.onCancel) {
-	            this.props.onCancel();
-	          }
-	        } else if (event.keyCode === _KEYS2.default.TAB) {} else {
-	          _EventUtil2.default.trapEvent(event);
-	          var ch = String.fromCharCode(event.keyCode);
-	          var index = parseInt(event.target.getAttribute('data-index'));
-	          this.handleSearch(index, ch);
-	        }
-	      }
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'ul',
-	        {
-	          'aria-labelledby': this.props.triggerId,
-	          className: "slds-dropdown__list slds-dropdown--length-5 " + this.props.className
-	          //        onMouseEnter={this.props.onMouseEnter}
-	          //        onMouseDown={this.handleMouseDown.bind(this)}
-	          //        onMouseLeave={this.props.onMouseLeave}
-	          , onBlur: this.handleListItemBlur.bind(this),
-	          onKeyDown: this.handleKeyDown.bind(this),
-	          ref: 'scroll',
-	          role: 'menu'
-	        },
-	        this.getItems()
-	      );
-	    }
-	  }]);
-
-	  return SLDSList;
-	}(_react2.default.Component);
-
-	SLDSList.displayName = displayName;
-	SLDSList.propTypes = propTypes;
-	SLDSList.defaultProps = defaultProps;
-
-	module.exports = SLDSList;
-
-/***/ },
-/* 260 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(159);
-
-	var _reactDom2 = _interopRequireDefault(_reactDom);
-
-	var _KEYS = __webpack_require__(243);
-
-	var _KEYS2 = _interopRequireDefault(_KEYS);
-
-	var _EventUtil = __webpack_require__(241);
-
-	var _EventUtil2 = _interopRequireDefault(_EventUtil);
-
-	var _ListItemLabel = __webpack_require__(261);
-
-	var _ListItemLabel2 = _interopRequireDefault(_ListItemLabel);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-
-	var displayName = "SLDSList-Item";
-	var propTypes = {
-	  data: _react2.default.PropTypes.object,
-	  checkmark: _react2.default.PropTypes.bool,
-	  index: _react2.default.PropTypes.number,
-	  inverted: _react2.default.PropTypes.bool,
-	  isHighlighted: _react2.default.PropTypes.bool,
-	  isSelected: _react2.default.PropTypes.bool,
-	  label: _react2.default.PropTypes.string,
-	  labelRenderer: _react2.default.PropTypes.func,
-	  value: _react2.default.PropTypes.any,
-	  onBlur: _react2.default.PropTypes.func,
-	  onClick: _react2.default.PropTypes.func,
-	  onFocus: _react2.default.PropTypes.func,
-	  onMoveFocus: _react2.default.PropTypes.func,
-	  onSelect: _react2.default.PropTypes.func
-	};
-	var defaultProps = {
-	  data: {},
-	  index: 0,
-	  inverted: false,
-	  isHighlighted: false,
-	  isSelected: false,
-	  label: '',
-	  labelRenderer: _ListItemLabel2.default,
-	  onBlur: function onBlur(relatedTarget) {
-	    console.log('onBlur should be defined ', relatedTarget);
-	  },
-	  onClick: function onClick(index) {
-	    console.log('onClick should be defined ', index);
-	  },
-	  onFocus: function onFocus(index, height) {
-	    console.log('onFocus should be defined ', index, height);
-	  },
-	  onMoveFocus: function onMoveFocus(delta) {
-	    console.log('onMoveFocus should be defined ', delta);
-	  },
-	  onSelect: function onSelect(index) {
-	    console.log('onSelect should be defined ', index);
-	  },
-
-	  value: null
-	};
-
-	var SLDSListItem = function (_React$Component) {
-	  _inherits(SLDSListItem, _React$Component);
-
-	  function SLDSListItem() {
-	    _classCallCheck(this, SLDSListItem);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SLDSListItem).apply(this, arguments));
-	  }
-
-	  _createClass(SLDSListItem, [{
-	    key: 'handleClick',
-	    value: function handleClick(e) {
-	      e.preventDefault();
-	      e.stopPropagation();
-	      if (this.props.onSelect) {
-	        this.props.onSelect(this.props.index);
-	      }
-	    }
-	  }, {
-	    key: 'handleMouseDown',
-	    value: function handleMouseDown(e) {
-	      if (e.nativeEvent) {
-	        e.nativeEvent.preventDefault();
-	        e.nativeEvent.stopImmediatePropagation();
-	      }
-	      e.preventDefault();
-	    }
-	  }, {
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      if (this.props.isHighlighted) {
-	        this.setFocus();
-	      }
-	    }
-	  }, {
-	    key: 'componentDidUpdate',
-	    value: function componentDidUpdate(prevProps, prevState) {
-	      if (!prevProps.isHighlighted && this.props.isHighlighted) {
-	        this.setFocus();
-	      }
-	    }
-	  }, {
-	    key: 'setFocus',
-	    value: function setFocus() {
-	      if (!this.props.isHover) {
-	        _reactDom2.default.findDOMNode(this.refs.link).focus();
-	      }
-	    }
-	  }, {
-	    key: 'handleKeyDown',
-	    value: function handleKeyDown(event) {
-	      if (event.keyCode) {
-	        if (event.keyCode === _KEYS2.default.DOWN) {
-	          _EventUtil2.default.trapEvent(event);
-	          if (this.props.onMoveFocus) {
-	            this.props.onMoveFocus(1);
-	          }
-	        } else if (event.keyCode === _KEYS2.default.UP) {
-	          _EventUtil2.default.trapEvent(event);
-	          if (this.props.onMoveFocus) {
-	            this.props.onMoveFocus(-1);
-	          }
-	        } else if (event.keyCode === _KEYS2.default.ENTER || event.keyCode === _KEYS2.default.SPACE) {
-	          _EventUtil2.default.trapEvent(event);
-	          if (this.props.onSelect) {
-	            this.props.onSelect(this.props.index);
-	          }
-	        } else if (event.keyCode === _KEYS2.default.ESCAPE) {
-	          _EventUtil2.default.trapEvent(event);
-	          if (this.props.onCancel) {
-	            this.props.onCancel();
-	          }
-	        } else if (event.keyCode === _KEYS2.default.TAB) {} else {
-	          _EventUtil2.default.trapEvent(event);
-	          var ch = String.fromCharCode(event.keyCode);
-	          if (this.props.onSearch) {
-	            this.props.onSearch(this.props.index, ch);
-	          }
-	        }
-	      }
-	    }
-	  }, {
-	    key: 'handleBlur',
-	    value: function handleBlur(e) {
-	      if (this.props.onBlur) {
-	        this.props.onBlur(this.props.index, e.relatedTarget, e);
-	      }
-	    }
-	  }, {
-	    key: 'handleFocus',
-	    value: function handleFocus() {
-	      var height = _reactDom2.default.findDOMNode(this).offsetHeight;
-	      if (height && this.props.onFocus) {
-	        this.props.onFocus(this.props.index, height);
-	      }
-	    }
-	  }, {
-	    key: 'getLabel',
-	    value: function getLabel() {
-	      var LabelComp = this.props.labelRenderer;
-	      return _react2.default.createElement(LabelComp, {
-	        checkmark: this.props.checkmark,
-	        index: this.props.index,
-	        label: this.props.label,
-	        value: this.props.value,
-	        inverted: this.props.inverted,
-	        isSelected: this.props.isSelected,
-	        isHighlighted: this.props.isHighlighted,
-	        data: this.props.data
-	      });
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var isSelected = this.props.isSelected ? " slds-is-selected" : "";
-	      //    console.log('!!!ListItem render');
-	      return _react2.default.createElement(
-	        'li',
-	        {
-	          className: "slds-dropdown__item" + isSelected
-	          //        onMouseDown={this.handleMouseDown.bind(this)}
-	          //        onMouseEnter={this.props.onMouseEnter}
-	          //        onMouseLeave={this.props.onMouseLeave}
-	        },
-	        _react2.default.createElement(
-	          'a',
-	          { id: 'menu-0-' + this.props.index,
-	            href: 'javascript:void(0)',
-	            ref: 'link',
-	            'data-index': this.props.index,
-	            onClick: this.handleClick.bind(this)
-	            //            onMouseDown={this.handleMouseDown.bind(this)}
-	            //            onKeyDown={this.handleKeyDown.bind(this)}
-	            , onFocus: this.handleFocus.bind(this),
-	            'aria-checked': this.props.isSelected,
-	            role: 'menuitemradio',
-	            tabIndex: -1 },
-	          this.getLabel()
-	        )
-	      );
-	    }
-	  }]);
-
-	  return SLDSListItem;
-	}(_react2.default.Component);
-
-	SLDSListItem.displayName = displayName;
-	SLDSListItem.propTypes = propTypes;
-	SLDSListItem.defaultProps = defaultProps;
-
-	module.exports = SLDSListItem;
-
-/***/ },
-/* 261 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _SLDSIcon = __webpack_require__(232);
-
-	var _SLDSIcon2 = _interopRequireDefault(_SLDSIcon);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
-
-	var displayName = "SLDSList-Item-Label";
-	var propTypes = {
-	  data: _react2.default.PropTypes.object,
-	  index: _react2.default.PropTypes.number,
-	  inverted: _react2.default.PropTypes.bool,
-	  isHighlighted: _react2.default.PropTypes.bool,
-	  isSelected: _react2.default.PropTypes.bool,
-	  label: _react2.default.PropTypes.string,
-	  value: _react2.default.PropTypes.any
-	};
-	var defaultProps = {
-	  data: {},
-	  index: 0,
-	  inverted: false,
-	  isHighlighted: false,
-	  isSelected: false,
-	  label: '',
-	  value: null
-	};
-
-	var SLDSListItemLabel = function (_React$Component) {
-	  _inherits(SLDSListItemLabel, _React$Component);
-
-	  function SLDSListItemLabel(props) {
-	    _classCallCheck(this, SLDSListItemLabel);
-
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SLDSListItemLabel).call(this, props));
-
-	    _this.state = {};
-	    return _this;
-	  }
-
-	  _createClass(SLDSListItemLabel, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'p',
-	        { className: 'slds-truncate' },
-	        this.props.checkmark ? _react2.default.createElement(_SLDSIcon2.default, { name: 'check', position: 'left', category: 'utility', size: 'x-small', className: 'slds-icon--selected slds-icon-text-default slds-m-right--x-small' }) : null,
-	        this.props.label
-	      );
-	    }
-	  }]);
-
-	  return SLDSListItemLabel;
-	}(_react2.default.Component);
-
-	SLDSListItemLabel.displayName = displayName;
-	SLDSListItemLabel.propTypes = propTypes;
-	SLDSListItemLabel.defaultProps = defaultProps;
-
-	module.exports = SLDSListItemLabel;
-
-/***/ },
-/* 262 */
-/***/ function(module, exports, __webpack_require__) {
-
 	"use strict";
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -33378,7 +32844,7 @@
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _reactModal = __webpack_require__(263);
+	var _reactModal = __webpack_require__(260);
 
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 
@@ -33681,23 +33147,23 @@
 	module.exports = SLDSModal;
 
 /***/ },
-/* 263 */
+/* 260 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(264);
+	module.exports = __webpack_require__(261);
 
 
 
 /***/ },
-/* 264 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
-	var ExecutionEnvironment = __webpack_require__(265);
-	var ModalPortal = React.createFactory(__webpack_require__(266));
-	var ariaAppHider = __webpack_require__(275);
-	var elementClass = __webpack_require__(276);
+	var ExecutionEnvironment = __webpack_require__(262);
+	var ModalPortal = React.createFactory(__webpack_require__(263));
+	var ariaAppHider = __webpack_require__(272);
+	var elementClass = __webpack_require__(273);
 	var renderSubtreeIntoContainer = __webpack_require__(159).unstable_renderSubtreeIntoContainer;
 
 	var SafeHTMLElement = ExecutionEnvironment.canUseDOM ? window.HTMLElement : {};
@@ -33776,7 +33242,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5)))
 
 /***/ },
-/* 265 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -33821,14 +33287,14 @@
 
 
 /***/ },
-/* 266 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var React = __webpack_require__(2);
 	var div = React.DOM.div;
-	var focusManager = __webpack_require__(267);
-	var scopeTab = __webpack_require__(269);
-	var Assign = __webpack_require__(270);
+	var focusManager = __webpack_require__(264);
+	var scopeTab = __webpack_require__(266);
+	var Assign = __webpack_require__(267);
 
 
 	// so that our CSS is statically analyzable
@@ -34025,10 +33491,10 @@
 
 
 /***/ },
-/* 267 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(268);
+	var findTabbable = __webpack_require__(265);
 	var modalElement = null;
 	var focusLaterElement = null;
 	var needToFocus = false;
@@ -34099,7 +33565,7 @@
 
 
 /***/ },
-/* 268 */
+/* 265 */
 /***/ function(module, exports) {
 
 	/*!
@@ -34155,10 +33621,10 @@
 
 
 /***/ },
-/* 269 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var findTabbable = __webpack_require__(268);
+	var findTabbable = __webpack_require__(265);
 
 	module.exports = function(node, event) {
 	  var tabbable = findTabbable(node);
@@ -34176,7 +33642,7 @@
 
 
 /***/ },
-/* 270 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34187,8 +33653,8 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseAssign = __webpack_require__(271),
-	    createAssigner = __webpack_require__(273),
+	var baseAssign = __webpack_require__(268),
+	    createAssigner = __webpack_require__(270),
 	    keys = __webpack_require__(258);
 
 	/**
@@ -34262,7 +33728,7 @@
 
 
 /***/ },
-/* 271 */
+/* 268 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34273,7 +33739,7 @@
 	 * Copyright 2009-2015 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var baseCopy = __webpack_require__(272),
+	var baseCopy = __webpack_require__(269),
 	    keys = __webpack_require__(258);
 
 	/**
@@ -34295,7 +33761,7 @@
 
 
 /***/ },
-/* 272 */
+/* 269 */
 /***/ function(module, exports) {
 
 	/**
@@ -34333,7 +33799,7 @@
 
 
 /***/ },
-/* 273 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34345,7 +33811,7 @@
 	 * Available under MIT license <https://lodash.com/license>
 	 */
 	var bindCallback = __webpack_require__(224),
-	    isIterateeCall = __webpack_require__(274),
+	    isIterateeCall = __webpack_require__(271),
 	    restParam = __webpack_require__(229);
 
 	/**
@@ -34391,7 +33857,7 @@
 
 
 /***/ },
-/* 274 */
+/* 271 */
 /***/ function(module, exports) {
 
 	/**
@@ -34529,7 +33995,7 @@
 
 
 /***/ },
-/* 275 */
+/* 272 */
 /***/ function(module, exports) {
 
 	var _element = typeof document !== 'undefined' ? document.body : null;
@@ -34576,7 +34042,7 @@
 
 
 /***/ },
-/* 276 */
+/* 273 */
 /***/ function(module, exports) {
 
 	module.exports = function(opts) {
@@ -34641,7 +34107,7 @@
 
 
 /***/ },
-/* 277 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -34665,7 +34131,7 @@
 
 	var _utils = __webpack_require__(239);
 
-	var _index = __webpack_require__(262);
+	var _index = __webpack_require__(259);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -34691,7 +34157,7 @@
 	module.exports = SLDSModalTrigger;
 
 /***/ },
-/* 278 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34909,7 +34375,7 @@
 	    value: function getClassName() {
 	      var _classNames;
 
-	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-hide", !this.props.isOpen), _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
+	      return classNames(this.props.className, "slds-notify", (_classNames = {}, _defineProperty(_classNames, "slds-notify--" + this.props.variant, this.props.variant), _defineProperty(_classNames, "slds-theme--" + this.props.theme, this.props.theme), _defineProperty(_classNames, "slds-theme--alert-texture-animated", this.props.texture), _classNames));
 	    }
 	  }, {
 	    key: "renderContent",
@@ -34945,12 +34411,13 @@
 	      //TODO: If there are multiple notifications on a page, we must 'hide' the ones that aren't open.
 	      //Need to find a better way to do this than using width:0 to override slds-notify-container.
 	      var styles = !this.props.isOpen ? { "width": "0" } : { "width": "100%" };
+	      var alertStyles = !this.props.isOpen ? { "display": "none" } : null;
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "slds-notify-container", style: styles },
 	        _react2.default.createElement(
 	          "div",
-	          { className: this.getClassName(), role: "alertdialog", "aria-labelledby": "dialogTitle" },
+	          { className: this.getClassName(), role: "alertdialog", "aria-labelledby": "dialogTitle", style: alertStyles },
 	          this.props.isOpen ? this.renderContent() : this.blankContent()
 	        )
 	      );
@@ -34967,7 +34434,7 @@
 	module.exports = SLDSNotification;
 
 /***/ },
-/* 279 */
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -34982,15 +34449,15 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _tooltip = __webpack_require__(280);
+	var _tooltip = __webpack_require__(277);
 
 	var _tooltip2 = _interopRequireDefault(_tooltip);
 
-	var _lodash = __webpack_require__(281);
+	var _lodash = __webpack_require__(278);
 
 	var _lodash2 = _interopRequireDefault(_lodash);
 
-	var _lodash3 = __webpack_require__(282);
+	var _lodash3 = __webpack_require__(279);
 
 	var _lodash4 = _interopRequireDefault(_lodash3);
 
@@ -35188,6 +34655,13 @@
 	      });
 	    }
 	  }, {
+	    key: "componentDidUpdate",
+	    value: function componentDidUpdate(prevProps) {
+	      if (prevProps.openByDefault !== this.props.openByDefault) {
+	        this.setState({ isOpen: this.props.openByDefault });
+	      }
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      var containerStyles = { display: "inline" };
@@ -35214,7 +34688,7 @@
 	module.exports = SLDSPopoverTooltip;
 
 /***/ },
-/* 280 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -35329,7 +34803,7 @@
 	};
 
 /***/ },
-/* 281 */
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35341,7 +34815,7 @@
 	 * Available under MIT license <https://lodash.com/license>
 	 */
 	var baseFlatten = __webpack_require__(221),
-	    isIterateeCall = __webpack_require__(274);
+	    isIterateeCall = __webpack_require__(271);
 
 	/**
 	 * Flattens a nested array. If `isDeep` is `true` the array is recursively
@@ -35375,7 +34849,7 @@
 
 
 /***/ },
-/* 282 */
+/* 279 */
 /***/ function(module, exports) {
 
 	/**
@@ -35420,7 +34894,7 @@
 
 
 /***/ },
-/* 283 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -35446,7 +34920,7 @@
 
 	var _SLDSPopover2 = _interopRequireDefault(_SLDSPopover);
 
-	var _index = __webpack_require__(284);
+	var _index = __webpack_require__(281);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -35651,7 +35125,7 @@
 	});
 
 /***/ },
-/* 284 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -35669,11 +35143,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _index = __webpack_require__(285);
+	var _index = __webpack_require__(282);
 
 	var _index2 = _interopRequireDefault(_index);
 
-	var _index3 = __webpack_require__(288);
+	var _index3 = __webpack_require__(285);
 
 	var _index4 = _interopRequireDefault(_index3);
 
@@ -35823,7 +35297,7 @@
 	});
 
 /***/ },
-/* 285 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -35840,7 +35314,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _index = __webpack_require__(286);
+	var _index = __webpack_require__(283);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -36125,7 +35599,7 @@
 	});
 
 /***/ },
-/* 286 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -36143,7 +35617,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _index = __webpack_require__(287);
+	var _index = __webpack_require__(284);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -36221,7 +35695,7 @@
 	});
 
 /***/ },
-/* 287 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -36382,7 +35856,7 @@
 	});
 
 /***/ },
-/* 288 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -36400,7 +35874,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _index = __webpack_require__(289);
+	var _index = __webpack_require__(286);
 
 	var _index2 = _interopRequireDefault(_index);
 
@@ -36529,7 +36003,7 @@
 	});
 
 /***/ },
-/* 289 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -36603,7 +36077,7 @@
 	});
 
 /***/ },
-/* 290 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -36633,11 +36107,11 @@
 
 	var _InputIcon2 = _interopRequireDefault(_InputIcon);
 
-	var _SLDSMenuList = __webpack_require__(291);
+	var _SLDSMenuList = __webpack_require__(288);
 
 	var _SLDSMenuList2 = _interopRequireDefault(_SLDSMenuList);
 
-	var _ListItemLabel = __webpack_require__(261);
+	var _ListItemLabel = __webpack_require__(253);
 
 	var _ListItemLabel2 = _interopRequireDefault(_ListItemLabel);
 
@@ -36880,7 +36354,7 @@
 	});
 
 /***/ },
-/* 291 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -36905,11 +36379,11 @@
 
 	var _SLDSIcon2 = _interopRequireDefault(_SLDSIcon);
 
-	var _List = __webpack_require__(259);
+	var _List = __webpack_require__(251);
 
 	var _List2 = _interopRequireDefault(_List);
 
-	var _ListItemLabel = __webpack_require__(261);
+	var _ListItemLabel = __webpack_require__(253);
 
 	var _ListItemLabel2 = _interopRequireDefault(_ListItemLabel);
 
@@ -36939,7 +36413,7 @@
 	  /**
 	   * Custom element that overrides the default Menu Item component.
 	   */
-	  listItemRenderer: _react2.default.PropTypes.node,
+	  listItemRenderer: _react2.default.PropTypes.func,
 	  /**
 	   * If true, component renders specifically to work inside Modal.
 	   */
@@ -37085,7 +36559,7 @@
 	module.exports.ListItemLabel = _ListItemLabel2.default;
 
 /***/ },
-/* 292 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -37101,7 +36575,7 @@
 
 	'use strict';
 
-	var _reactModal = __webpack_require__(263);
+	var _reactModal = __webpack_require__(260);
 
 	var _reactModal2 = _interopRequireDefault(_reactModal);
 
@@ -37130,7 +36604,7 @@
 	};
 
 /***/ },
-/* 293 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37145,9 +36619,9 @@
 
 	var _reactRouter = __webpack_require__(160);
 
-	__webpack_require__(294);
+	__webpack_require__(291);
 
-	__webpack_require__(295);
+	__webpack_require__(292);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37156,19 +36630,19 @@
 	};
 
 /***/ },
-/* 294 */
+/* 291 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 295 */
+/* 292 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 296 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -37190,7 +36664,7 @@
 
 	var _reactRouter2 = _interopRequireDefault(_reactRouter);
 
-	var _SLDSGrid = __webpack_require__(297);
+	var _SLDSGrid = __webpack_require__(294);
 
 	var _SLDSGrid2 = _interopRequireDefault(_SLDSGrid);
 
@@ -37303,6 +36777,15 @@
 	              null,
 	              _react2.default.createElement(
 	                Link,
+	                { to: 'context-bar', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
+	                'ContextBar'
+	              )
+	            ),
+	            _react2.default.createElement(
+	              'li',
+	              null,
+	              _react2.default.createElement(
+	                Link,
 	                { to: 'dateinput', className: 'a-plain slds-p-horizontal--x-large slds-p-vertical--x-small' },
 	                'DatepickerSingleSelect'
 	              )
@@ -37392,7 +36875,7 @@
 	});
 
 /***/ },
-/* 297 */
+/* 294 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37496,7 +36979,7 @@
 	module.exports = Grid;
 
 /***/ },
-/* 298 */
+/* 295 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37511,7 +36994,7 @@
 
 	var _reactRouter2 = _interopRequireDefault(_reactRouter);
 
-	var _globalVariables = __webpack_require__(299);
+	var _globalVariables = __webpack_require__(296);
 
 	var _globalVariables2 = _interopRequireDefault(_globalVariables);
 
@@ -37612,7 +37095,7 @@
 	module.exports = Welcome;
 
 /***/ },
-/* 299 */
+/* 296 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -37638,7 +37121,7 @@
 	};
 
 /***/ },
-/* 300 */
+/* 297 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37649,7 +37132,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _globalVariables = __webpack_require__(299);
+	var _globalVariables = __webpack_require__(296);
 
 	var _globalVariables2 = _interopRequireDefault(_globalVariables);
 
@@ -37888,7 +37371,7 @@
 	module.exports = GettingStartedSection;
 
 /***/ },
-/* 301 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38107,7 +37590,7 @@
 	module.exports = FAQSection;
 
 /***/ },
-/* 302 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38118,23 +37601,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -38233,20 +37716,20 @@
 	module.exports = ButtonSection;
 
 /***/ },
-/* 303 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	__webpack_require__(304);
+	__webpack_require__(301);
 
-	__webpack_require__(306);
+	__webpack_require__(303);
 
-	__webpack_require__(308);
+	__webpack_require__(305);
 
-	__webpack_require__(310);
+	__webpack_require__(307);
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -38254,12 +37737,12 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var CM = __webpack_require__(305);
+	var CM = __webpack_require__(302);
 
 	var React = __webpack_require__(2);
 	var ReactDOM = __webpack_require__(159);
 	var classNames = __webpack_require__(212);
-	var trim = __webpack_require__(311);
+	var trim = __webpack_require__(308);
 
 	var SLDSButton = __webpack_require__(203);
 	var SLDSButtonStateful = __webpack_require__(230);
@@ -38269,11 +37752,11 @@
 	var SLDSLookup = __webpack_require__(233);
 	var SLDSMenuDropdown = __webpack_require__(250);
 	var SLDSMenuPicklist = __webpack_require__(254);
-	var SLDSModal = __webpack_require__(262);
-	var SLDSNotification = __webpack_require__(278);
-	var SLDSPopoverTooltip = __webpack_require__(279);
-	var SLDSDatepickerSingleSelect = __webpack_require__(283);
-	var SLDSTimepicker = __webpack_require__(290);
+	var SLDSModal = __webpack_require__(259);
+	var SLDSNotification = __webpack_require__(275);
+	var SLDSPopoverTooltip = __webpack_require__(276);
+	var SLDSDatepickerSingleSelect = __webpack_require__(280);
+	var SLDSTimepicker = __webpack_require__(287);
 
 	var displayName = 'CodeMirror';
 	var propTypes = {
@@ -38521,7 +38004,7 @@
 	module.exports = CodeMirror;
 
 /***/ },
-/* 304 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -38529,7 +38012,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(305));
+	    mod(__webpack_require__(302));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -38599,7 +38082,7 @@
 
 
 /***/ },
-/* 305 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -47495,7 +46978,7 @@
 
 
 /***/ },
-/* 306 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -47503,7 +46986,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(305), __webpack_require__(307), __webpack_require__(308), __webpack_require__(309));
+	    mod(__webpack_require__(302), __webpack_require__(304), __webpack_require__(305), __webpack_require__(306));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror", "../xml/xml", "../javascript/javascript", "../css/css"], mod);
 	  else // Plain browser env
@@ -47651,7 +47134,7 @@
 
 
 /***/ },
-/* 307 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -47659,7 +47142,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(305));
+	    mod(__webpack_require__(302));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -48051,7 +47534,7 @@
 
 
 /***/ },
-/* 308 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -48061,7 +47544,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(305));
+	    mod(__webpack_require__(302));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -48799,7 +48282,7 @@
 
 
 /***/ },
-/* 309 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// CodeMirror, copyright (c) by Marijn Haverbeke and others
@@ -48807,7 +48290,7 @@
 
 	(function(mod) {
 	  if (true) // CommonJS
-	    mod(__webpack_require__(305));
+	    mod(__webpack_require__(302));
 	  else if (typeof define == "function" && define.amd) // AMD
 	    define(["../../lib/codemirror"], mod);
 	  else // Plain browser env
@@ -49630,13 +49113,13 @@
 
 
 /***/ },
-/* 310 */
+/* 307 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
 
 /***/ },
-/* 311 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {/**
@@ -49647,8 +49130,8 @@
 	 * Copyright 2009-2016 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
 	 * Available under MIT license <https://lodash.com/license>
 	 */
-	var charsEndIndex = __webpack_require__(312),
-	    charsStartIndex = __webpack_require__(313);
+	var charsEndIndex = __webpack_require__(309),
+	    charsStartIndex = __webpack_require__(310);
 
 	/** Used as references for various `Number` constants. */
 	var INFINITY = 1 / 0;
@@ -49839,7 +49322,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 312 */
+/* 309 */
 /***/ function(module, exports) {
 
 	/**
@@ -49917,7 +49400,7 @@
 
 
 /***/ },
-/* 313 */
+/* 310 */
 /***/ function(module, exports) {
 
 	/**
@@ -49996,7 +49479,7 @@
 
 
 /***/ },
-/* 314 */
+/* 311 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -50011,13 +49494,14 @@
 	  Icons: "<div>\n  <SLDSIcon\n    assistiveText=\"Favorite\"\n    category=\"custom\"\n    name=\"custom1\"\n    size=\"small\" />\n\n  <SLDSIcon\n    assistiveText=\"Accounts\"\n    category=\"standard\"\n    name=\"account\" />\n\n  <SLDSIcon\n    assistiveText=\"Announcements\"\n    category=\"action\"\n    className=\"slds-m-around--x-small\"\n    name=\"announcement\" />\n\n  <SLDSIcon\n    assistiveText=\"Approval\"\n    category=\"action\"\n    className=\"slds-m-around--x-small\"\n    name=\"approval\"\n    size=\"large\" />\n\n  <SLDSIcon\n    assistiveText=\"\"\n    category=\"utility\"\n    inverse={false}\n    name=\"open_folder\"\n    size=\"large\" />\n    <span className=\"slds-m-left--x-small\">Documents Folder</span>\n</div>\n",
 	  IconButtons: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButton\n    assistiveText=\"Icon Bare Small\"\n    iconName=\"settings\"\n    iconSize=\"small\"\n    iconVariant=\"bare\"\n    onClick={function(){alert(\"Icon Bare Clicked\")}} variant=\"icon\" />\n\n  <SLDSButton\n    assistiveText=\"Icon Container Small\"\n    iconName=\"settings\"\n    iconSize=\"small\"\n    iconVariant=\"container\"\n    variant=\"icon\" />\n\n  <div style={{backgroundColor: \"#4BC076\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n  <SLDSButton\n    assistiveText=\"Icon Border medium\"\n    iconName=\"settings\"\n    iconVariant=\"border\"\n    variant=\"icon\" />\n\n  <SLDSButton\n    assistiveText=\"Icon Border-filled medium\"\n    iconName=\"settings\"\n    iconVariant=\"border-filled\"\n    variant=\"icon\" />\n  </div>\n\n  <SLDSButton\n    assistiveText=\"Icon More large\"\n    iconName=\"settings\"\n    iconSize=\"large\"\n    iconVariant=\"more\"\n    variant=\"icon\" />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon inverse\"\n      iconName=\"settings\"\n      iconSize=\"large\"\n      variant=\"icon-inverse\" />\n  </div>\n  <div style={{backgroundColor: \"#FFB75D\", padding: \"10px 50px\", display: \"inline-block\"}} className=\"slds-hint-parent slds-m-horizontal--small\">\n    <SLDSButton\n      assistiveText=\"Icon hint large\"\n      hint={true}\n      iconName=\"settings\"\n      iconSize=\"large\"\n      variant=\"icon\" />\n  </div>\n</div>\n",
 	  Lookups: "<SLDSLookup\n  emptyMessage=\"No items found\"\n  footerRenderer={SLDSLookup.DefaultFooter}\n  hasError={false}\n  headerRenderer={SLDSLookup.DefaultHeader}\n  iconCategory=\"standard\"\n  iconName=\"account\"\n  label=\"Account\"\n  onChange={function(newValue){console.log(\"New search term: \", newValue)}}\n  onSelect={function(item){console.log(item , \" Selected\")}}\n  options={[\n    {label: \"Paddy\\\"s Pub\"},\n    {label: \"Tyrell Corp\"},\n    {label: \"Paper St. Soap Company\"},\n    {label: \"Nakatomi Investments\"},\n    {label: \"Acme Landscaping\"},\n    {label: \"Acme Construction\"}\n  ]}\n  selectedItem={1}\n/>\n",
-	  Modals1: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"New Opportunity\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          isOpen={this.state.isOpen}\n          footer={[\n            <SLDSButton key=\"modalBCancel\" label=\"Cancel\" onClick={this.toggleOpen.bind(this)} />,\n            <SLDSButton key=\"modalBSave\" label=\"Save\" variant=\"brand\" onClick={this.toggleOpen.bind(this)} />\n          ]}\n          onRequestClose={this.toggleOpen.bind(this)}\n          tagline=\"Enter in details below\"\n          title=\"New Opportunity\">\n\n            <div className=\"slds-form-element slds-m-vertical--large\">\n              <label className=\"slds-form-element__label\" htmlFor=\"opptyName\">Opportunity Name</label>\n              <div className=\"slds-form-element__control\">\n                <input id=\"opptyName\" className=\"slds-input\" type=\"text\" placeholder=\"Enter name\" />\n              </div>\n            </div>\n            <div className=\"slds-form-element\">\n              <label className=\"slds-form-element__label\" htmlFor=\"description\">Opportunity Description</label>\n              <div className=\"slds-form-element__control\">\n                <textarea id=\"description\" className=\"slds-textarea\" placeholder=\"Enter description\"></textarea>\n              </div>\n            </div>\n{/*\n\n\n            <SLDSLookup\n              className=\"slds-m-vertical--large\"\n              emptyMessage=\"No Accounts Found\"\n              iconName=\"account\"\n              label=\"Account Name\"\n              modal={true}\n              onItemSelect={function(item){console.log(\"selected: \", item.label)}}\n              options={[\n                {label:\"Paddy\\\"s Pub\"},\n                {label:\"Tyrell Corp\"},\n                {label:\"Paper St. Soap Company\"},\n                {label:\"Nakatomi Investments\"},\n                {label:\"Acme Landscaping\"},\n                {label:\"Acme Construction\"}\n              ]}\n            />\n*/}\n            <SLDSMenuPicklist\n              className=\"slds-m-vertical--large\"\n              label=\"Lead Source\"\n              modal={true}\n              onSelect={(option)=>{console.log(\"selected: \", option.label);}}\n              options={[\n                {label:\"Third Party Program\",value:\"A0\"},\n                {label:\"Cold Call\",value:\"B0\"},\n                {label:\"LinkedIn\",value:\"C0\"},\n                {label:\"Direct Mail\",value:\"D0\"},\n                {label:\"Other\",value:\"E0\"},\n              ]}\n              placeholder = \"Select Lead Source\"\n              value=\"B0\"\n            />\n            <SLDSMenuPicklist\n              className=\"slds-m-vertical--large\"\n              label=\"Type\"\n              modal={true}\n              onSelect={(option)=>{console.log(\"selected: \", option.label);}}\n              options={[\n                {label:\"Add on Business\",value:\"A0\"},\n                {label:\"Courtesy\",value:\"B0\"},\n                {label:\"New Business\",value:\"C0\"},\n                {label:\"Renewal\",value:\"D0\"},\n                {label:\"Upgrade\",value:\"E0\"},\n              ]}\n              placeholder = \"Select Opportunity Type\"\n              value=\"C0\"\n            />\n\n            <div className=\"slds-form-element slds-m-vertical--large\">\n              <label className=\"slds-form-element__label\" htmlFor=\"amount\">Amount</label>\n              <div className=\"slds-form-element__control\">\n                <input id=\"amount\" className=\"slds-input\" type=\"text\" placeholder=\"Enter Amount\" />\n              </div>\n            </div>\n\n        </SLDSModal>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
+	  Modals1: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"New Opportunity\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          isOpen={this.state.isOpen}\n          footer={[\n            <SLDSButton key=\"modalBCancel\" label=\"Cancel\" onClick={this.toggleOpen.bind(this)} />,\n            <SLDSButton key=\"modalBSave\" label=\"Save\" variant=\"brand\" onClick={this.toggleOpen.bind(this)} />\n          ]}\n          onRequestClose={this.toggleOpen.bind(this)}\n          tagline=\"Enter in details below\"\n          title=\"New Opportunity\">\n\n            <div className=\"slds-form-element slds-m-vertical--large\">\n              <label className=\"slds-form-element__label\" htmlFor=\"opptyName\">Opportunity Name</label>\n              <div className=\"slds-form-element__control\">\n                <input id=\"opptyName\" className=\"slds-input\" type=\"text\" placeholder=\"Enter name\" />\n              </div>\n            </div>\n            <div className=\"slds-form-element\">\n              <label className=\"slds-form-element__label\" htmlFor=\"description\">Opportunity Description</label>\n              <div className=\"slds-form-element__control\">\n                <textarea id=\"description\" className=\"slds-textarea\" placeholder=\"Enter description\"></textarea>\n              </div>\n            </div>\n\n            <SLDSLookup\n              className=\"slds-m-vertical--large\"\n              emptyMessage=\"No Accounts Found\"\n              iconName=\"account\"\n              label=\"Account Name\"\n              modal={true}\n              onItemSelect={function(item){console.log(\"selected: \", item.label)}}\n              options={[\n                {label:\"Paddy\\\"s Pub\"},\n                {label:\"Tyrell Corp\"},\n                {label:\"Paper St. Soap Company\"},\n                {label:\"Nakatomi Investments\"},\n                {label:\"Acme Landscaping\"},\n                {label:\"Acme Construction\"}\n              ]}\n            />\n\n            <SLDSMenuPicklist\n              className=\"slds-m-vertical--large\"\n              label=\"Lead Source\"\n              modal={true}\n              onSelect={(option)=>{console.log(\"selected: \", option.label);}}\n              options={[\n                {label:\"Third Party Program\",value:\"A0\"},\n                {label:\"Cold Call\",value:\"B0\"},\n                {label:\"LinkedIn\",value:\"C0\"},\n                {label:\"Direct Mail\",value:\"D0\"},\n                {label:\"Other\",value:\"E0\"},\n              ]}\n              placeholder = \"Select Lead Source\"\n              value=\"B0\"\n            />\n            <SLDSMenuPicklist\n              className=\"slds-m-vertical--large\"\n              label=\"Type\"\n              modal={true}\n              onSelect={(option)=>{console.log(\"selected: \", option.label);}}\n              options={[\n                {label:\"Add on Business\",value:\"A0\"},\n                {label:\"Courtesy\",value:\"B0\"},\n                {label:\"New Business\",value:\"C0\"},\n                {label:\"Renewal\",value:\"D0\"},\n                {label:\"Upgrade\",value:\"E0\"},\n              ]}\n              placeholder = \"Select Opportunity Type\"\n              value=\"C0\"\n            />\n\n            <div className=\"slds-form-element slds-m-vertical--large\">\n              <label className=\"slds-form-element__label\" htmlFor=\"amount\">Amount</label>\n              <div className=\"slds-form-element__control\">\n                <input id=\"amount\" className=\"slds-input\" type=\"text\" placeholder=\"Enter Amount\" />\n              </div>\n            </div>\n\n        </SLDSModal>\n      </div>\n    );\n  }\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
 	  Modals2: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"View Text\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          align=\"top\"\n          isOpen={this.state.isOpen}\n          onRequestClose={this.toggleOpen.bind(this)}\n          size=\"large\">\n            <h4 className=\"slds-text-heading--medium\">Jack London - The Scarlet Plague</h4>\n            <p>\"He's always saying that,\" he said to Edwin. \"What is scarlet?\"</p>\n            <p>\"'The scarlet of the maples can shake me like the cry of bugles going  by,'\" the old man quoted.</p>\n            <p>\"It's red,\" Edwin answered the question. \"And you don't know it because  you come from the Chauffeur Tribe. They never did know nothing, none of  them. Scarlet is red&mdash;I know that.\"</p>\n            <p>\"Red is red, ain't it?\" Hare-Lip grumbled. \"Then what's the good of  gettin' cocky and calling it scarlet?\"</p>\n            <p>\"Granser, what for do you always say so much what nobody knows?\" he  asked. \"Scarlet ain't anything, but red is red. Why don't you say red,  then?\"</p>\n            <p>\"Red is not the right word,\" was the reply. \"The plague was scarlet.  The whole face and body turned scarlet in an hour's time. Don't I  know? Didn't I see enough of it? And I am telling you it was scarlet  because&mdash;well, because it was scarlet. There is no other word for it.\"</p>\n            <p>\"Red is good enough for me,\" Hare-Lip muttered obstinately. \"My dad  calls red red, and he ought to know. He says everybody died of the Red  Death.\"</p>\n            <p>\"Your dad is a common fellow, descended from a common fellow,\" Granser  retorted heatedly. \"Don't I know the beginnings of the Chauffeurs? Your  grandsire was a chauffeur, a servant, and without education. He worked  for other persons. But your grandmother was of good stock, only the  children did not take after her. Don't I remember when I first met them,  catching fish at Lake Temescal?\"</p>\n            <p>\"What is education?\" Edwin asked.</p>\n        </SLDSModal>\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
 	  Modals3: "class ModalExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"Open Prompt\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n          <SLDSModal\n            dismissible={false}\n            footer={[ <SLDSButton key=\"promptBtn\" label=\"Got it\" onClick={this.toggleOpen.bind(this)} /> ]}\n            isOpen={this.state.isOpen}\n            onRequestClose={this.toggleOpen.bind(this)}\n            prompt=\"error\"\n            size=\"medium\"\n            title={<span>Service Unavailable</span>}>\n              The service you're trying to reach is unavailable due to limited conectivity. Please restart the application or contact your system administrator for assistance.\n          </SLDSModal>\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<ModalExample />, mountNode);\n",
 	  Notifications1: "class NotificationExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSButton label=\"Open Alert\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n       <SLDSNotification\n         content={[\"Your new contact \", <a href=\"#\" key=\"0123\">Sara Smith</a>, \" was successfully created.\"]}\n         iconName=\"notification\"\n         isOpen={this.state.isOpen}\n         onDismiss={this.toggleOpen.bind(this)}\n         texture={true}\n         theme=\"success\"\n         variant=\"alert\" />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<NotificationExample />, mountNode);\n",
 	  Notifications2: "class NotificationExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      isOpen: false\n    }\n  }\n\n  toggleOpen(){\n    this.setState({ isOpen: !this.state.isOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"Open Toast\" onClick={this.toggleOpen.bind(this)} variant=\"brand\" />\n        <SLDSNotification\n          content=\"There was a problem updating the record.\"\n          iconName=\"notification\"\n          isOpen={this.state.isOpen}\n          onDismiss={this.toggleOpen.bind(this)}\n          texture={true}\n          theme=\"error\"\n          variant=\"toast\"\n          />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<NotificationExample />, mountNode);\n",
 	  Notifications3: "class NotificationExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n      modalOpen: false,\n      toastOpen: false\n    }\n  }\n\n  toggleModal(){\n    this.setState({ modalOpen: !this.state.modalOpen });\n  }\n\n  toggleToast(){\n    this.setState({ toastOpen: !this.state.toastOpen });\n  }\n\n  render(){\n    return (\n      <div>\n        <SLDSButton label=\"Open Modal\" onClick={this.toggleModal.bind(this)} variant=\"brand\" />\n        <SLDSModal\n          isOpen={this.state.modalOpen}\n          onRequestClose={this.toggleModal.bind(this)}\n          title=\"Lightning Design System: Style with Ease\"\n          toast={\n            <SLDSNotification\n              content=\"Oops, you've missed some required form inputs.\"\n              iconName=\"warning\"\n              isOpen={this.state.toastOpen}\n              onDismiss={this.toggleToast.bind(this)}\n              theme=\"warning\"\n              variant=\"toast\" />\n          }>\n            <div>\n              <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n              <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n              <SLDSButton\n                label=\"Open Toast\"\n                onClick={this.toggleToast.bind(this)}\n                variant=\"brand\" />\n              <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n              <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n              <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>\n            </div>\n\n        </SLDSModal>\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<NotificationExample />, mountNode);\n",
 	  Picklists: "<SLDSMenuPicklist\n  label=\"Contacts\"\n  onSelect={function(value){console.log(\"selected: \",value)}}\n  options={[\n    {label: \"A Option Option Super Super Long\", value: \"A0\", title: \"Greg\"},\n    {label: \"B Option\", value: \"B0\"},\n    {label: \"C Option\", value: \"C0\"},\n    {label: \"D Option\", value: \"D0\"},\n    {label: \"E Option\", value: \"E0\"},\n    {label: \"A1 Option\", value: \"A1\"},\n    {label: \"B2 Option\", value: \"B1\"},\n    {label: \"C2 Option\", value: \"C1\"},\n    {label: \"D2 Option\", value: \"D1\"},\n    {label: \"E2 Option Super Super Long\", value: \"E1\"},\n  ]}\n  placeholder = \"Select a contact\"\n  value=\"C0\"\n  />\n",
+	  Picklists1: "class ListItemRenderer extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n    }\n  }\n\n  render(){\n    return (      \n<SLDSPopoverTooltip\n  openByDefault={this.props.isHighlighted}\n  align=\"bottom left\"\n  content=\"Tooltip on top\">\n    <p className='slds-truncate'>~~ {this.props.label}</p>\n</SLDSPopoverTooltip>\n    );\n  }\n};\n\nclass PicklistExample extends React.Component {\n\n  constructor(props) {\n    super(props);\n    this.state = {\n    }\n  }\n\n  render(){\n    return (\n\n        <SLDSMenuPicklist\n          listItemRenderer={ListItemRenderer}\n          label=\"Contacts\"\n          onSelect={function(value){console.log(\"selected: \",value)}}\n          options={[\n            {label: \"A Option Option Super Super Long\", value: \"A0\", title: \"Greg\"},\n            {label: \"B Option\", value: \"B0\"},\n            {label: \"C Option\", value: \"C0\"},\n            {label: \"D Option\", value: \"D0\"},\n            {label: \"E Option\", value: \"E0\"},\n            {label: \"A1 Option\", value: \"A1\"},\n            {label: \"B2 Option\", value: \"B1\"},\n            {label: \"C2 Option\", value: \"C1\"},\n            {label: \"D2 Option\", value: \"D1\"},\n            {label: \"E2 Option Super Super Long\", value: \"E1\"},\n          ]}\n          placeholder = \"Select a contact\"\n          value=\"C0\"\n          />\n    );\n  }\n}\n\nReactDOM.render(<PicklistExample />, mountNode);",
 	  CustomPicklists: "import CustomListItemLabel from \"./CustomListItemLabel.cjsx\";\n\nconst picklistCustomOptions = [\n  {label:\"A Option Option Super Super Long\",value:\"A0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"B Option\",value:\"B0\",strongLabel:\"SUPER TITLE B0\"},\n  {label:\"C Option\",value:\"C0\",strongLabel:\"SUPER TITLE C0\"},\n  {label:\"D Option\",value:\"D0\",strongLabel:\"SUPER TITLE D0\"},\n  {label:\"E Option\",value:\"E0\",strongLabel:\"SUPER TITLE E0\"},\n  {label:\"A1 Option\",value:\"A1\",strongLabel:\"SUPER TITLE A1\"},\n  {label:\"B2 Option\",value:\"B1\",strongLabel:\"SUPER TITLE B1\"},\n  {label:\"C2 Option\",value:\"C1\",strongLabel:\"SUPER TITLE C1\"},\n  {label:\"D2 Option\",value:\"D1\",strongLabel:\"SUPER TITLE D1\"},\n  {label:\"E2 Option Super Super Long\",value:\"E1\",strongLabel:\"SUPER TITLE E1\"},\n];\n\nclass PicklistCustomExample extends React.Component {\n\n  displayName: \"PicklistCustomExample\"\n\n  handleOnUpdateHighlighted () {\n    console.log(\"onUpdateHighlighted should be defined\");\n  }\n\n  handleOnSelect(value) {\n    console.log(\"selected: \",value);\n  }\n\n  handleOnClick() {\n    console.log(\"onClick should be defined\");\n  }\n\n  render(){\n    return (\n      <div>\n       <SLDSMenuPicklist\n         label=\"Contacts\"\n         listItemRenderer={CustomListItemLabel}\n         modal={true}\n         onClick={this.handleOnClick}\n         onSelect={this.handleOnSelect}\n         onUpdateHighlighted={this.handleOnUpdateHighlighted}\n         options={picklistCustomOptions}\n         placeholder=\"Select a contact\"\n         value=\"C0\"\n         />\n      </div>\n    );\n  }\n\n}\n\nReactDOM.render(<PicklistCustomExample />, mountNode);\n",
 	  StatefulButtons1: "<SLDSButtonStateful\n  assistiveText=\"like\"\n  iconName=\"like\"\n  iconSize=\"large\"\n  variant=\"icon\" />\n",
 	  StatefulButtons2: "<div className=\"slds-x-small-buttons--horizontal\">\n  <SLDSButtonStateful />\n\n  <div style={{backgroundColor: \"#16325c\", padding: \"10px\", display: \"inline-block\"}} className=\"slds-m-horizontal--small\">\n    <SLDSButtonStateful\n      stateOne={{iconName: \"add\", label: \"Join\"}}\n      stateTwo={{iconName: \"check\", label: \"Member\"}}\n      stateThree={{iconName: \"close\", label: \"Leave\"}}\n      variant=\"inverse\" />\n  </div>\n</div>\n",
@@ -50031,7 +49515,7 @@
 	module.exports = Samples;
 
 /***/ },
-/* 315 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -50042,7 +49526,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
@@ -50240,15 +49724,15 @@
 	module.exports = PropTable;
 
 /***/ },
-/* 316 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
-	module.exports = __webpack_require__(317);
+	module.exports = __webpack_require__(314);
 
 /***/ },
-/* 317 */
+/* 314 */
 /***/ function(module, exports) {
 
 	module.exports = {
@@ -51121,7 +50605,7 @@
 				},
 				"listItemRenderer": {
 					"type": {
-						"name": "node"
+						"name": "func"
 					},
 					"required": false,
 					"description": "Custom element that overrides the default Menu Item component."
@@ -51748,7 +51232,7 @@
 	};
 
 /***/ },
-/* 318 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51817,7 +51301,7 @@
 	module.exports = ComponentHeader;
 
 /***/ },
-/* 319 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51828,23 +51312,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -51938,7 +51422,7 @@
 	module.exports = ButtonStatefulSection;
 
 /***/ },
-/* 320 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51949,23 +51433,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -52054,7 +51538,7 @@
 	module.exports = ButtonGroupSection;
 
 /***/ },
-/* 321 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52065,23 +51549,777 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
+
+	var _componentHeader2 = _interopRequireDefault(_componentHeader);
+
+	var _SLDSContextBar = __webpack_require__(319);
+
+	var _SLDSContextBar2 = _interopRequireDefault(_SLDSContextBar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
+	var displayName = "ContextBarSection";
+	var propTypes = {};
+	var defaultProps = {};
+
+	var ContextBarSection = function (_React$Component) {
+	  _inherits(ContextBarSection, _React$Component);
+
+	  function ContextBarSection(props) {
+	    _classCallCheck(this, ContextBarSection);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ContextBarSection).call(this, props));
+
+	    _this.state = {};
+	    return _this;
+	  }
+
+	  _createClass(ContextBarSection, [{
+	    key: 'getDescription',
+	    value: function getDescription() {
+	      var desc = _docs2.default["SLDSContextBar"].description;
+	      return { __html: desc };
+	    }
+	  }, {
+	    key: 'handleSelectItem',
+	    value: function handleSelectItem(event, menuItem, menuItemIndex) {
+	      alert('Clicked ' + menuItem.label + ' at ' + menuItemIndex);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var docs = _docs2.default["SLDSContextBar"] ? true : false;
+
+	      var contextBarMenuItems = [{
+	        name: 'home',
+	        type: 'link',
+	        label: 'Home'
+	      }, {
+	        name: 'menu1',
+	        type: 'menu',
+	        label: 'Menu Item 1',
+	        menu: [
+	          // TODO: have an object here....
+	        ]
+	      }];
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'slds-p-around--medium' },
+	        _react2.default.createElement(_componentHeader2.default, { cmpName: 'SLDSContextBar', cmpUrl: 'http://www.lightningdesignsystem.com/components/buttons' }),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'copy-text' },
+	          docs ? _react2.default.createElement('p', { dangerouslySetInnerHTML: this.getDescription(), className: 'slds-p-vertical--small mw-readability' }) : null
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(
+	            _SLDSContextBar2.default,
+	            { title: 'My App', menuItems: contextBarMenuItems, onSelect: this.handleSelectItem.bind(this) },
+	            _react2.default.createElement(
+	              _SLDSContextBar2.default.Title,
+	              null,
+	              'App Name'
+	            ),
+	            _react2.default.createElement(
+	              _SLDSContextBar2.default.Nav,
+	              null,
+	              _react2.default.createElement(
+	                _SLDSContextBar2.default.NavMenu,
+	                {
+	                  assistiveText: 'More Options',
+	                  buttonVariant: 'icon-inverse',
+	                  checkmark: true,
+	                  iconName: 'down',
+	                  iconVariant: 'bare',
+	                  onSelect: function onSelect(value) {
+	                    console.log("selected: ", value);
+	                  },
+	                  openOn: 'hover',
+	                  options: [{ label: "A Option Option Super Super Long", value: "A0" }, { label: "B Option", value: "B0" }, { label: "C Option", value: "C0" }, { label: "D Option", value: "D0" }, { label: "E Option", value: "E0" }, { label: "A1 Option", value: "A1" }, { label: "B2 Option", value: "B1" }, { label: "C2 Option", value: "C1" }, { label: "D2 Option", value: "D1" }, { label: "E2 Option Super Super Long", value: "E1" }],
+	                  value: 'C0'
+	                },
+	                _react2.default.createElement(
+	                  _SLDSContextBar2.default.NavMenuLink,
+	                  {
+	                    onClick: function onClick() {
+	                      alert('click');
+	                    }
+	                  },
+	                  'Menu 1'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                _SLDSContextBar2.default.NavMenu,
+	                {
+	                  assistiveText: 'More Options',
+	                  buttonVariant: 'icon-inverse',
+	                  checkmark: true,
+	                  iconName: 'down',
+	                  iconVariant: 'bare',
+	                  onMouseEnter: function onMouseEnter() {
+	                    console.log('Mouse enter');
+	                  },
+	                  onMouseLeave: function onMouseLeave() {
+	                    console.log('Mouse leave');
+	                  },
+	                  onSelect: function onSelect(value) {
+	                    console.log("selected: ", value);
+	                  },
+	                  openOn: 'hover',
+	                  options: [{ label: "A Option Option Super Super Long", value: "A0" }, { label: "B Option", value: "B0" }, { label: "C Option", value: "C0" }, { label: "D Option", value: "D0" }, { label: "E Option", value: "E0" }, { label: "A1 Option", value: "A1" }, { label: "B2 Option", value: "B1" }, { label: "C2 Option", value: "C1" }, { label: "D2 Option", value: "D1" }, { label: "E2 Option Super Super Long", value: "E1" }],
+	                  value: 'C0'
+	                },
+	                _react2.default.createElement(
+	                  _SLDSContextBar2.default.NavMenuLink,
+	                  {
+	                    onClick: function onClick() {
+	                      alert('click');
+	                    }
+	                  },
+	                  'Menu 2'
+	                )
+	              )
+	            )
+	          )
+	        ),
+	        _react2.default.createElement(_PropTable2.default, { component: 'SLDSContextBar' })
+	      );
+	    }
+	  }]);
+
+	  return ContextBarSection;
+	}(_react2.default.Component);
+
+	ContextBarSection.displayName = displayName;
+	ContextBarSection.propTypes = propTypes;
+	ContextBarSection.defaultProps = defaultProps;
+
+	module.exports = ContextBarSection;
+
+/***/ },
+/* 319 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _lodash = __webpack_require__(214);
+
+	var _lodash2 = _interopRequireDefault(_lodash);
+
+	var _SLDSIcon = __webpack_require__(232);
+
+	var _SLDSIcon2 = _interopRequireDefault(_SLDSIcon);
+
+	var _Title = __webpack_require__(320);
+
+	var _Title2 = _interopRequireDefault(_Title);
+
+	var _Nav = __webpack_require__(322);
+
+	var _Nav2 = _interopRequireDefault(_Nav);
+
+	var _NavMenu = __webpack_require__(323);
+
+	var _NavMenu2 = _interopRequireDefault(_NavMenu);
+
+	var _NavMenuLink = __webpack_require__(324);
+
+	var _NavMenuLink2 = _interopRequireDefault(_NavMenuLink);
+
+	var _styling = __webpack_require__(321);
+
+	var _styling2 = _interopRequireDefault(_styling);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
+	var classNames = __webpack_require__(212);
+
+	var pf = _styling2.default.pf;
+
+	var displayName = 'SLDSContextBar';
+	var propTypes = {
+	  /**
+	   * The main title shown in the bar.
+	   */
+	  title: _react2.default.PropTypes.string
+	};
+	var defaultProps = {
+	  title: 'Title'
+	};
+	/*
+	const OLD_CSS_PREFIX = 'slds-';
+	const NEW_CSS_PREFIX = 'slds2-';
+	function pf(className) {
+	  return className.split(/\s+/).map(c => {
+	    // Add prefix only for "context" classes
+	    return c.indexOf('context') >= 0 ? `${NEW_CSS_PREFIX}${c}` : `${OLD_CSS_PREFIX}${c}`;
+	  }).join(' ');
+	}
+	*/
+	/**
+	 * The SLDSContextBar component is the Lightning Design System Context Bar component. The SLDSContextBar is a container with dropdown menus.
+	 */
+
+	var ContextBar = function (_React$Component) {
+	  _inherits(ContextBar, _React$Component);
+
+	  function ContextBar(props) {
+	    _classCallCheck(this, ContextBar);
+
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ContextBar).call(this, props));
+
+	    _this.state = { active: false };
+	    return _this;
+	  }
+
+	  _createClass(ContextBar, [{
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      // TODO: componentDidMount
+	    }
+	  }, {
+	    key: "componentWillUnmount",
+	    value: function componentWillUnmount() {}
+	    // TODO: componentWillUnmount
+
+	    // handleClick() {
+	    //   if(this.props.onClick) this.props.onClick();
+	    //   this.setState({ active: !this.state.active });
+	    // }
+
+	  }, {
+	    key: "getClassName",
+	    value: function getClassName() {
+	      return classNames(this.props.className, "slds2-context-bar", {
+	        // [`slds-button--${this.props.variant}`]: !base && !iconOnly,
+	        // [`slds-button--icon-${this.props.iconVariant}`]: this.props.iconVariant,
+	        // ["slds-max-small-button--stretch"]: this.props.responsive,
+	      });
+	    }
+	  }, {
+	    key: "renderLinkMenuItem",
+	    value: function renderLinkMenuItem(menuItem, menuItemIndex) {
+	      var onSelect = this.props.onSelect;
+	      var label = menuItem.label;
+
+	      var key = "SLDSContextBar.menuItem." + menuItemIndex + "." + label;
+
+	      function onClick(event) {
+	        if (onSelect) {
+	          if (event.stopPropagation) {
+	            event.stopPropagation();
+	          }
+	          if (event.preventDefault) {
+	            event.preventDefault();
+	          }
+	          onSelect(event, menuItem, menuItemIndex);
+	        }
+	      }
+
+	      return _react2.default.createElement(
+	        "li",
+	        { className: pf('context-bar-action grid'), key: key },
+	        _react2.default.createElement(
+	          "a",
+	          { href: "javascript:void(0)", className: pf('context-bar-action__label text-link--reset grid grid--vertical-align-center FIX-context-bar-a'), onClick: onClick.bind(this) },
+	          label
+	        )
+	      );
+	    }
+	  }, {
+	    key: "renderMenuItems",
+	    value: function renderMenuItems() {
+	      var _this2 = this;
+
+	      return (this.props.menuItems || []).map(function (menuItem, menuItemIndex) {
+	        switch (menuItem.type) {
+	          case 'link':
+	            return _this2.renderLinkMenuItem(menuItem, menuItemIndex);
+	        }
+	      });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      var props = (0, _lodash2.default)(this.props, ["className", "label", "onClick"]);
+
+	      // <Menu className={pf('nubbin--top')}>
+	      //   <Menu.List isSelectable={false}>
+	      //     <Menu.Item>
+	      //       <SvgIcon className={pf('icon icon--x-small icon-text-default m-right--x-small')} sprite="utility" symbol="add" />
+	      //       Main action
+	      //     </Menu.Item>
+	      //   </Menu.List>
+	      //   <hr className={pf('m-vertical--xx-small')} role="presentation" />
+	      //   <div className={pf('dropdown__header')}>
+	      //     <span className={pf('text-heading--label')}>Menu header</span>
+	      //   </div>
+	      //   <Menu.List isSelectable={false}>
+	      //     <Menu.Item>Menu Item One</Menu.Item>
+	      //     <Menu.Item>Menu Item Two</Menu.Item>
+	      //     <Menu.Item>Menu Item Three</Menu.Item>
+	      //   </Menu.List>
+	      // </Menu>
+
+	      return _react2.default.createElement(
+	        "div",
+	        _extends({ className: this.getClassName() }, props),
+	        _react2.default.createElement(
+	          "div",
+	          { className: pf('context-bar grid') },
+	          _react2.default.createElement("div", { className: pf('context-bar__shadow') }),
+	          this.props.children,
+	          _react2.default.createElement(
+	            "style",
+	            null,
+	            _styling2.default.getComponentStyles()
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return ContextBar;
+	}(_react2.default.Component);
+
+	ContextBar.displayName = displayName;
+	ContextBar.propTypes = propTypes;
+	ContextBar.defaultProps = defaultProps;
+	ContextBar.Title = _Title2.default;
+	ContextBar.Nav = _Nav2.default;
+	ContextBar.NavMenu = _NavMenu2.default;
+	ContextBar.NavMenuLink = _NavMenuLink2.default;
+	module.exports = ContextBar;
+
+/***/ },
+/* 320 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _styling = __webpack_require__(321);
+
+	var _styling2 = _interopRequireDefault(_styling);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
+	var pf = _styling2.default.pf;
+
+	var displayName = 'SLDSContextBarTitle';
+
+	/**
+	 * The SLDSContextBarTitle component is the Lightning Design System Context Bar component. The SLDSContextBar is a container with dropdown menus.
+	 */
+
+	var Title = function (_React$Component) {
+	  _inherits(Title, _React$Component);
+
+	  function Title(props) {
+	    _classCallCheck(this, Title);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Title).call(this, props));
+	  }
+
+	  _createClass(Title, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "div",
+	        { className: pf('context-bar__primary context-bar-action grid grid--vertical-align-stretch') },
+	        _react2.default.createElement(
+	          "a",
+	          { href: "#void", className: pf('context-bar-action__label grid grid--vertical-align-center text-link--reset p-horizontal--large text-heading--small FIX-context-bar-a') },
+	          this.props.children
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Title;
+	}(_react2.default.Component);
+
+	Title.displayName = displayName;
+
+	module.exports = Title;
+
+/***/ },
+/* 321 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	var OLD_CSS_PREFIX = 'slds-';
+	var NEW_CSS_PREFIX = 'slds2-';
+	var pf = function pf(className) {
+	  return className.split(/\s+/).map(function (c) {
+	    // Add prefix only for "context" classes
+	    return c.indexOf('context') >= 0 ? '' + NEW_CSS_PREFIX + c : '' + OLD_CSS_PREFIX + c;
+	  }).join(' ');
+	};
+
+	var SASS_VARIABLES = {
+	  '$border-width-thin': '1px',
+	  '$color-background-context-bar': 'rgb(22, 50, 92)',
+	  '$color-background-context-bar-highlight': 'rgba(#fff, 0.2)',
+	  '$color-border-context-bar-divider': 'rgba(#fff, 0.2)',
+	  '$color-context-bar-alt': '#fff',
+	  '$color-context-bar-shadow': '#000',
+	  '$color-text-context-bar': 'rgb(255, 255, 255)',
+	  '$color-text-context-nav-trigger': 'rgba(#fff, 0.4)',
+	  '$duration-immediately': '0.05s',
+	  '$height-context-bar': '2.25rem',
+	  '$spacing-large': '1.5rem',
+	  '$spacing-medium': '1rem',
+	  '$spacing-small': '0.75rem',
+	  '$spacing-x-large': '2rem',
+	  '$spacing-x-small': '0.5rem',
+	  '$spacing-xx-small': '0.25rem',
+	  '$spacing-xxx-small': '0.125rem'
+	};
+
+	var mainSass = '\n.slds2-context-bar {\n  height: $height-context-bar;\n  background-color: $color-background-context-bar;\n  color: $color-text-context-bar;\n}\n.slds2-context-bar__primary,\n.slds2-context-bar__secondary {\n  flex: 0 0 auto;\n}\n\n.slds2-context-bar__shadow {\n  position: absolute;\n  top: 100%;\n  right: 0;\n  left: 0;\n  height: rem(4px);\n  background: linear-gradient(to bottom, rgba($color-context-bar-shadow, 0.25) 0, rgba($color-context-bar-shadow, 0) 100%);\n}\n\n.slds2-context-bar__vertical-divider {\n  width: 0;\n  overflow: hidden;\n  border-left: $border-width-thin solid $color-border-context-bar-divider;\n}\n\n.slds2-context-bar-action {\n  position: relative;\n}\n\n.slds2-context-bar-action.slds2-context-bar-action {\n  display: flex;\n}\n\n/* height = $square-tooltip-nubbin * 0.7 */\n.slds2-context-bar-action:hover:before {\n  content: \'\';\n  position: absolute;\n  top: 100%;\n  width: 100%;\n  height: 0.7rem;\n}\n\n.slds2-context-bar-action__label,\n.slds2-context-bar-action__trigger {\n  transition: background-color $duration-immediately linear;\n}\n\n.slds2-context-bar-action__label:hover,\n.slds2-context-bar-action__label:focus {\n  outline: 0;\n  background-color: $color-background-context-bar-highlight;\n}\n\n.slds2-context-bar-action__trigger:hover,\n.slds2-context-bar-action__trigger:focus {\n  outline: 0;\n  background-color: $color-background-context-bar-highlight;\n}\n\n.slds2-context-bar-action__label {\n  padding-left: $spacing-small;\n  padding-right: $spacing-small;\n}\n\n.slds2-context-bar-action__label--expand {\n  padding-right: $spacing-large;\n}\n\n.slds2-context-bar-action__trigger {\n  position: absolute;\n  right: $spacing-x-small;\n  bottom: 0;\n  top: 0;\n  pointer-events: none;\n}\n\n.slds2-context-bar-action__trigger,\n.slds2-context-bar-action__trigger:focus {\n  color: $color-text-context-nav-trigger;\n}\n\n.slds2-context-bar-action__trigger-icon {\n  fill: currentColor;\n  height: 100%;\n}\n\n/* vertical-alignment-center */\n.slds-grid--vertical-align-center {\n  align-items: center; // Single Row Alignment\n  align-content: center; // Multi Row Alignment\n}\n';
+
+	var fixedSass = '\n.slds2-FIX-context-bar-a {\n  color: $color-text-context-bar !important;\n}\n';
+
+	var getComponentStyles = function getComponentStyles() {
+	  function replacer(match, p1) {
+	    return SASS_VARIABLES[p1] || p1;
+	  }
+
+	  return (mainSass + fixedSass).replace(/(\$[a-zA-Z0-9\-]+)/g, replacer);
+	};
+
+	module.exports = {
+	  getComponentStyles: getComponentStyles,
+	  pf: pf
+	};
+
+/***/ },
+/* 322 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _styling = __webpack_require__(321);
+
+	var _styling2 = _interopRequireDefault(_styling);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
+	var pf = _styling2.default.pf;
+
+	var displayName = 'SLDSContextBarNav';
+
+	/**
+	 * The SLDSContextBarTitle component is the Lightning Design System Context Bar component. The SLDSContextBar is a container with dropdown menus.
+	 */
+
+	var Nav = function (_React$Component) {
+	  _inherits(Nav, _React$Component);
+
+	  function Nav(props) {
+	    _classCallCheck(this, Nav);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Nav).call(this, props));
+	  }
+
+	  _createClass(Nav, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "nav",
+	        { className: pf('context-bar__secondary grid'), role: "navigation" },
+	        _react2.default.createElement("div", { className: pf('context-bar__vertical-divider') }),
+	        _react2.default.createElement(
+	          "ul",
+	          { className: pf('grid grid--vertical-stretch') },
+	          this.props.children
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Nav;
+	}(_react2.default.Component);
+
+	Nav.displayName = displayName;
+
+	module.exports = Nav;
+
+/***/ },
+/* 323 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _styling = __webpack_require__(321);
+
+	var _styling2 = _interopRequireDefault(_styling);
+
+	var _SLDSMenuDropdown = __webpack_require__(250);
+
+	var _SLDSMenuDropdown2 = _interopRequireDefault(_SLDSMenuDropdown);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
+	var pf = _styling2.default.pf;
+
+	//import SLDSIcon from "../SLDSIcon";
+
+	var displayName = 'SLDSContextBarNavMenu';
+
+	/**
+	 * The SLDSContextBarTitle component is the Lightning Design System Context Bar component. The SLDSContextBar is a container with dropdown menus.
+	 */
+
+	var NavMenu = function (_React$Component) {
+	  _inherits(NavMenu, _React$Component);
+
+	  function NavMenu(props) {
+	    _classCallCheck(this, NavMenu);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(NavMenu).call(this, props));
+	  }
+
+	  _createClass(NavMenu, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "li",
+	        { className: pf('context-bar-action grid dropdown-trigger') },
+	        this.props.children,
+	        _react2.default.createElement(_SLDSMenuDropdown2.default, this.props)
+	      );
+	    }
+	  }]);
+
+	  return NavMenu;
+	}(_react2.default.Component);
+
+	NavMenu.displayName = displayName;
+
+	module.exports = NavMenu;
+
+/***/ },
+/* 324 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _styling = __webpack_require__(321);
+
+	var _styling2 = _interopRequireDefault(_styling);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Copyright (c) 2015, salesforce.com, inc. All rights reserved.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               Neither the name of salesforce.com, inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               */
+
+	var pf = _styling2.default.pf;
+
+	var displayName = 'SLDSContextBarNavMenuLink';
+
+	/**
+	 * The NavMenuLink component is the Lightning Design System Context Bar component. The SLDSContextBar is a container with dropdown menus.
+	 */
+
+	var NavMenuLink = function (_React$Component) {
+	  _inherits(NavMenuLink, _React$Component);
+
+	  function NavMenuLink(props) {
+	    _classCallCheck(this, NavMenuLink);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(NavMenuLink).call(this, props));
+	  }
+
+	  _createClass(NavMenuLink, [{
+	    key: "render",
+	    value: function render() {
+	      return _react2.default.createElement(
+	        "a",
+	        _extends({ href: "javascript:void(0)",
+	          className: pf('context-bar-action__label context-bar-action__label--expand text-link--reset grid grid--vertical-align-center FIX-context-bar-a')
+	        }, this.props),
+	        this.props.children
+	      );
+	    }
+	  }]);
+
+	  return NavMenuLink;
+	}(_react2.default.Component);
+
+	NavMenuLink.displayName = displayName;
+
+	module.exports = NavMenuLink;
+
+/***/ },
+/* 325 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _CodeMirror = __webpack_require__(300);
+
+	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
+
+	var _Samples = __webpack_require__(311);
+
+	var _Samples2 = _interopRequireDefault(_Samples);
+
+	var _PropTable = __webpack_require__(312);
+
+	var _PropTable2 = _interopRequireDefault(_PropTable);
+
+	var _docs = __webpack_require__(313);
+
+	var _docs2 = _interopRequireDefault(_docs);
+
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -52155,7 +52393,7 @@
 	module.exports = DatepickerSingleSelectSection;
 
 /***/ },
-/* 322 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -52173,23 +52411,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -52197,7 +52435,7 @@
 
 	var _SLDSMenuPicklist2 = _interopRequireDefault(_SLDSMenuPicklist);
 
-	var _SLDSDatepickerSingleSelect = __webpack_require__(283);
+	var _SLDSDatepickerSingleSelect = __webpack_require__(280);
 
 	var _SLDSDatepickerSingleSelect2 = _interopRequireDefault(_SLDSDatepickerSingleSelect);
 
@@ -52226,7 +52464,7 @@
 	});
 
 /***/ },
-/* 323 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52237,23 +52475,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -52327,7 +52565,7 @@
 	module.exports = DatepickerSingleSelectSection;
 
 /***/ },
-/* 324 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52338,23 +52576,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -52443,7 +52681,7 @@
 	module.exports = DropdownSection;
 
 /***/ },
-/* 325 */
+/* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52454,23 +52692,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -52544,7 +52782,7 @@
 	module.exports = IconSection;
 
 /***/ },
-/* 326 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52555,23 +52793,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -52645,7 +52883,7 @@
 	module.exports = LookupSection;
 
 /***/ },
-/* 327 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52656,23 +52894,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -52771,7 +53009,7 @@
 	module.exports = ModalSection;
 
 /***/ },
-/* 328 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52782,23 +53020,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -52897,7 +53135,7 @@
 	module.exports = NotificationSection;
 
 /***/ },
-/* 329 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52908,23 +53146,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
@@ -52983,6 +53221,20 @@
 	          { className: 'slds-p-vertical--large' },
 	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Picklists })
 	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'slds-clearfix' },
+	          _react2.default.createElement(
+	            'h3',
+	            { className: 'slds-text-heading--medium slds-truncate slds-float--left' },
+	            'SLDSMenuPicklist with custom list item renderer'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'slds-p-vertical--large' },
+	          _react2.default.createElement(_CodeMirror2.default, { codeText: _Samples2.default.Picklists1 })
+	        ),
 	        _react2.default.createElement(_PropTable2.default, { component: 'SLDSMenuPicklist' })
 	      );
 	    }
@@ -52998,7 +53250,7 @@
 	module.exports = PicklistSection;
 
 /***/ },
-/* 330 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -53009,23 +53261,23 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _CodeMirror = __webpack_require__(303);
+	var _CodeMirror = __webpack_require__(300);
 
 	var _CodeMirror2 = _interopRequireDefault(_CodeMirror);
 
-	var _Samples = __webpack_require__(314);
+	var _Samples = __webpack_require__(311);
 
 	var _Samples2 = _interopRequireDefault(_Samples);
 
-	var _PropTable = __webpack_require__(315);
+	var _PropTable = __webpack_require__(312);
 
 	var _PropTable2 = _interopRequireDefault(_PropTable);
 
-	var _docs = __webpack_require__(316);
+	var _docs = __webpack_require__(313);
 
 	var _docs2 = _interopRequireDefault(_docs);
 
-	var _componentHeader = __webpack_require__(318);
+	var _componentHeader = __webpack_require__(315);
 
 	var _componentHeader2 = _interopRequireDefault(_componentHeader);
 
