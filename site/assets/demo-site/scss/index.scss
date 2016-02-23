@@ -47,3 +47,8 @@ body.jquery .example-type.example-type--react {
 .#{$app-prefix}hide {
 	display: none;
 }
+
+
+#component-nav > nav, .facades-demo-main-nav, .facades-demo-masthead {
+	-webkit-transition: all 0.1s linear;
+}

@@ -12,8 +12,8 @@
 	</head>
 	<body class="facades-demo | {{facade}} | slds">
 		<nav class="facades-demo-main-nav slds-page-header">
-			<div class="slds-grid">
-				<a href="/" class="slds-media slds-media--center">
+			<div class="slds-grid slds-grid--align-spread">
+				<a id="facades-demo-main-nav__link-to-home" href="/" class="slds-align-middle | slds-media slds-media--center">
 					<div class="slds-media__figure">
 						<img src="/assets/demo-site/images/salesforce-logo.svg" width="40">
 					</div>
@@ -23,6 +23,7 @@
 						</h4>
 					</div>
 				</a>
+				<div class="slds-align-middle | slds-text-heading--label">{{ facadeDisplayName }}</div>
 			</div>
 		</nav>
 

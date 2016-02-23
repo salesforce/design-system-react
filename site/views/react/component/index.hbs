@@ -1,14 +1,14 @@
-{{> react/header}}
+{{!-- {{> react/header}} --}}
 
 <section class="slds-grid">
 	{{> left-nav}}
 
-	<div class="slds-col--padded | slds-size--9-of-12 slds-medium-size--9-of-12 slds-large-size--9-of-12">
+	<div id="main-content" class="slds-col--padded | slds-size--9-of-12 slds-medium-size--9-of-12 slds-large-size--9-of-12">
 		<div id="component-list-wrapper">
 			<div id="component-list" class="slds-grid slds-grid--vertical">
 				{{#each thisComponentData}}
 				<!-- {{component}} -->
-				<div class="slds-col | slds-m-top--large | component-wrapper" id="{{component}}">
+				<div class="slds-col | component-wrapper" id="{{component}}">
 					<div class="slds-grid slds-grid--vertical | component">
 						<div class="slds-col | header">
 							<div class="slds-section-title | slds-m-top--medium">

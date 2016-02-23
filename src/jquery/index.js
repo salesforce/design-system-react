@@ -115,7 +115,7 @@ export Popover      from './popover';
 // * [Documentation](./radio/radio.html)
 // * [Live Example](/jquery/radio)
 // * [<img src="/assets/demo-site/images/component-examples/radio.png" style="max-height: 200px;" alt="Radio Screenshot">](/jquery/radio)
-export Radio        from './radio';
+export Radios       from './radio';
 // _______________________________________________________________________________________________________
 
 // ## Spinners

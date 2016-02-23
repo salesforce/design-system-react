@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import '../helpers/create-jquery-plugin';
-import * as Lib from '../lib/lib';
+import * as Lib    from '../lib/lib';
 import * as jquery from './index';
 
 module.exports = {
