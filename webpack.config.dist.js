@@ -26,6 +26,7 @@ const config = {
 		'react-dom': 'ReactDOM'
 	},
 	output: {
+		libraryTarget: 'umd',
 		path: './.tmp/',
 		publicPath: '/.tmp/',
 		filename: '[name].js'	// [name] is config.entry object keys
