@@ -58,22 +58,9 @@ config.module.loaders.push({
 	loader: ExtractTextPlugin.extract('url-loader?limit=30&name=/examples/[path][name].[ext]')
 });
 
-// Additional preloaders
-config.module.preLoaders.push({
-	test: /\.scss$/,
-	loader: StringReplacePlugin.replace({
-		replacements: [{
-			pattern: /assets\/images\/landing/g,
-			replacement: function (match, p1, offset, string) {
-				return 'assets/demo-site/images/landing';
-			}
-		}]
-	})
-});
-
 config.plugins = [
 	new StringReplacePlugin(),
-	new ExtractTextPlugin("[name].css"),
+	new ExtractTextPlugin('[name].css'),
 	new webpack.optimize.UglifyJsPlugin({
 		mangle: {
 			except: ['$', 'exports', 'require']
