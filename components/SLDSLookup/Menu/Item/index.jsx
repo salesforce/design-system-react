@@ -67,7 +67,7 @@ class Item extends React.Component {
       return <ListItemLabel {... this.props} />;
     }
     return [
-      <SLDSIcon category={this.props.iconCategory} className={this.props.iconClasses} key={this.props.iconName} name={this.props.iconName} size="small" />,
+      <SLDSIcon category={this.props.iconCategory} inverse={this.props.iconInverse} key={this.props.iconName} name={this.props.iconName} size="small" />,
       this.boldSearchText(this.props.children.label)
     ]
   }
