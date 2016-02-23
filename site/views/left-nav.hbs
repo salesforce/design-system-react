@@ -1,24 +1,24 @@
-	<aside id="component-nav" class="slds-grow slds-size--3-of-12 slds-medium-size--1-of-6 slds-large-size--3-of-12 slds-col-rule--right slds-p-vertical--large">
-		<nav class="slds-scrollable--y | slds-p-bottom--large">
-			<p class="slds-text-heading--small slds-p-vertical--small">
-				<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="/">
+	<aside id="component-nav" class="slds-grow slds-size--3-of-12 slds-medium-size--1-of-6 slds-large-size--3-of-12 slds-col-rule--right x-slds-p-vertical--large">
+		<nav class="slds-scrollable--y">
+			<p class="slds-text-heading--small | slds-p-vertical--small">
+				<a class="a-plain | slds-p-horizontal--large slds-p-vertical--x-small | slds-truncate" href="/">
 					Home
 				</a>
 			</p>
-			<p class="slds-text-heading--small slds-p-vertical--small">
-				<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="/{{otherFacade}}">
+			<p class="slds-text-heading--small | slds-p-vertical--small">
+				<a class="a-plain | slds-p-horizontal--large slds-p-vertical--x-small | slds-truncate" href="/{{otherFacade}}">
 					{{otherFacadeDisplayName}} Components
 				</a>
 			</p>
-			<p class="slds-text-heading--small slds-p-vertical--small">
-				<a class="a-plain slds-p-horizontal--large slds-p-vertical--x-small" href="/{{facade}}">
+			<p class="slds-text-heading--small | slds-p-vertical--small">
+				<a class="a-plain | slds-p-horizontal--large slds-p-vertical--x-small | slds-truncate" href="/{{facade}}">
 					{{facadeDisplayName}} Components
 				</a>
 			</p>
 			<ul class="slds-p-bottom--small">
 				{{#each components}}
-				<li>
-					<a id="component-nav__{{component}}" class="a-plain slds-p-horizontal--x-large slds-p-vertical--x-small" href="/{{facade}}/{{ component}}">{{ componentDisplayNamePlural }}</a>
+				<li class="">
+					<a id="component-nav__{{component}}" class="a-plain | slds-p-horizontal--x-large slds-p-vertical--x-small | slds-truncate" href="/{{facade}}/{{ component}}">{{ componentDisplayNamePlural }}</a>
 				</li>
 				{{/each}}
 			</ul>
