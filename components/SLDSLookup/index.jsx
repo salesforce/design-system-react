@@ -44,7 +44,10 @@ const propTypes = {
    * Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view categories.
    */
   iconCategory: React.PropTypes.string,
-  iconClasses: React.PropTypes.string,
+  /**
+   * If true, icon color is white. If false, icon color is the default text color.
+   */
+  iconInverse: React.PropTypes.bool,
   /**
    * Name of icon. Please refer to <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to view icon names.
    */
@@ -357,7 +360,7 @@ class SLDSLookup extends React.Component {
         getListLength={this.getListLength.bind(this)}
         header={this.getHeader()}
         iconCategory={this.props.iconCategory}
-        iconClasses={this.props.iconClasses}
+        iconInverse={this.props.iconInverse}
         iconName={this.props.iconName}
         items={this.state.items}
         label={this.props.label}
@@ -399,7 +402,7 @@ class SLDSLookup extends React.Component {
     return (
       <a href="javascript:void(0)" className="slds-pill" ref={"pill-" + this.state.selectedIndex} onKeyDown={this.handlePillKeyDown.bind(this)}>
         <span className="slds-pill__label">
-          <SLDSIcon category={this.props.iconCategory} name={this.props.iconName} className={"slds-icon slds-pill__icon " + this.props.iconClasses} />
+          <SLDSIcon category={this.props.iconCategory} className="slds-icon slds-pill__icon" inverse={this.props.iconInverse} name={this.props.iconName} />
           <span className="slds-pill__label">
             {selectedItem}
           </span>

@@ -525,12 +525,12 @@
                 "required": false,
                 "description": "Please refer to <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to view categories."
             },
-            "iconClasses": {
+            "iconInverse": {
                 "type": {
-                    "name": "string"
+                    "name": "bool"
                 },
                 "required": false,
-                "description": ""
+                "description": "If true, icon color is white. If false, icon color is the default text color."
             },
             "iconName": {
                 "type": {

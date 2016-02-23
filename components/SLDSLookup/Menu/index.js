@@ -81,7 +81,7 @@ class Menu extends React.Component {
         data={c.data}
         handleItemFocus={this.handleItemFocus.bind(this)}
         iconCategory={this.props.iconCategory}
-        iconClasses={this.props.iconClasses}
+        iconInverse={this.props.iconInverse}
         iconName={this.props.iconName}
         id={id}
         index={i}
