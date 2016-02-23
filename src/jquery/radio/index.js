@@ -16,4 +16,4 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // The `radio.js` file will be deprecated in favor of `index.js`.
 
 // Until that time, see the documentation [here](./radio.html).
-export default from './radio';
+export default from './radios';
