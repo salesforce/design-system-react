@@ -163,7 +163,6 @@ class SLDSNotification extends React.Component {
 
   getClassName() {
     return classNames(this.props.className, "slds-notify", {
-      [`slds-hide`]: !this.props.isOpen,
       [`slds-notify--${this.props.variant}`]: this.props.variant,
       [`slds-theme--${this.props.theme}`]: this.props.theme,
       [`slds-theme--alert-texture-animated`]: this.props.texture,
@@ -196,9 +195,10 @@ class SLDSNotification extends React.Component {
     //TODO: If there are multiple notifications on a page, we must 'hide' the ones that aren't open.
     //Need to find a better way to do this than using width:0 to override slds-notify-container.
     let styles = !this.props.isOpen ? { "width": "0" } : {"width": "100%"};
+    let alertStyles = !this.props.isOpen ? { "display": "none" } : null;
     return (
       <div className="slds-notify-container" style={styles}>
-        <div className={this.getClassName()} role="alertdialog" aria-labelledby="dialogTitle">
+        <div className={this.getClassName()} role="alertdialog" aria-labelledby="dialogTitle" style={alertStyles}>
         {this.props.isOpen ? this.renderContent() : this.blankContent()}
         </div>
       </div>
