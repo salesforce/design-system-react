@@ -42,7 +42,7 @@ import Positionable             from '../../traits/positionable';
 
 // ### jQuery
 // jQuery is an external dependency of the project.
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 // ### Mixins
 

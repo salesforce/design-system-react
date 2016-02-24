@@ -1,6 +1,6 @@
 import {Lib, Datepicker} from 'design-system-jquery';
 
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 // SAMPLE CONTROL CODE -->
 

@@ -17,7 +17,9 @@ config.entry = {
 	'demo-site-examples-jquery': ['./site/src/demo-site-examples-jquery']
 };
 
-config.externals = {};
+config.externals = {
+	jquery: config.externals.jquery
+};
 
 config.resolve.extensions.push('.scss');
 config.resolve.alias = {
@@ -31,6 +33,7 @@ config.resolve.alias = {
 config.devtool = 'eval-source-map';
 
 config.output = {
+	libraryTarget: 'umd',
 	path: __dirname + '/build/',
 	publicPath: '/build/',
 	filename: '[name].bundle.js'

@@ -1,7 +1,7 @@
 import {Lib, Picklist} from 'design-system-jquery';
 import {sampleData} from 'design-system-utilities';
 
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 // SAMPLE CONTROL CODE -->
 

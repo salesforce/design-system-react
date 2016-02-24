@@ -30,7 +30,7 @@ import ButtonViewCore, { CONTROL } from '../../core/button-view';
 
 // ### jQuery
 // jQuery is an external dependency of the project.
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 // ### Mixins
 

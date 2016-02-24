@@ -15,7 +15,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import * as Lib from '../lib/lib';
 
 // Framework specific
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 // Third party
 import classNames from 'classnames';

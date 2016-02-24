@@ -19,7 +19,7 @@ import SearchCore, {CONTROL} from '../../core/search';
 import Events from '../events';
 import State from '../state';
 
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 // Template import
 import template from './search-template';

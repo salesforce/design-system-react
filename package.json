@@ -27,7 +27,7 @@
 		"clean-build-folder": "node ./scripts/clean-directory ./build",
 		"heroku-build": "./scripts/shell/build-site.sh",
 		"menu": "./scripts/shell/menu.sh",
-		"start": "node app.js",
+		"start": "node --harmony app.js",
 		"test": "scripts/test --single-run"
 	},
 	"dependencies": {

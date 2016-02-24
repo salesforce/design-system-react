@@ -5,7 +5,7 @@ import * as demoControlsTemplate from './template-demo-controls';
 
 const CONTROL_NAME = 'picklist';
 
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 $(function () {
 	$('#' + CONTROL_NAME + '-jquery-control').append(controlTemplate.template);

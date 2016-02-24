@@ -16,7 +16,7 @@ import footTemplate from './modal-foot-default-template';
 
 import Button from '../button/button';
 
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 module.exports = {
 	renderHeader (options) {
