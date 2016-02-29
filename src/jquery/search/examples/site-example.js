@@ -1,6 +1,6 @@
 import {Lib, Search} from 'design-system-jquery';
 
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 $(function () {
 	$('#search')

@@ -14,7 +14,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 // Core
 import * as Lib from '../lib/lib';
 
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 const DOM = {
 	// `_onBeforeInitialize` is an optional lifecycle event that individual controls / facades may choose to implement. During this step the options are still available and still free to be modified. Initial state can be set here.

@@ -28,8 +28,8 @@
 		</nav>
 
 		<div id="container" class="facades-demo-masthead slds-p-around--large">
-			<% 
-				if (sources.length > 1) { 
+			<%
+				if (sources.length > 1) {
 			%>
 			<ul id="jump_to" class="slds-p-horizontal--medium">
 				<li>
@@ -45,14 +45,14 @@
 									var src = sources[i];
 									var directory = path.dirname(src) || 'Top Level';
 									var arr = sources_hash[directory] || [];
-								
+
 									arr.push({
 										href:'/documentation/' + directory + '/' + path.basename(src).replace('.js', '.html'),
 										label:directory + '/' + path.basename(src)
 									});
 									sources_hash[directory] = arr;
 								}
-								
+
 								for (directory in sources_hash) {
 									var files = sources_hash[directory];
 									if (directory.indexOf('example') < 0) {
@@ -65,7 +65,7 @@
 													if (file.label.indexOf('example') < 0 && file.label.indexOf('index') < 0) {
 											%>
 												<li class="slds-list__item"><a class="source" href="<%= file.href %>"><%= file.label %></a></li>
-											<% 
+											<%
 													}
 												});
 											%>
@@ -106,7 +106,7 @@
 						</div>
 					</section>
 					<% } %>
-					
+
 					<footer class="slds-col--padded">
 						<p>
 							<a href="#top-of-page">[back to top]</a>
@@ -119,28 +119,42 @@
 		<script src="/vendor/prism/components/prism-jsx.js"></script>
 		<script src="/vendor/jquery/jquery.min.js"></script>
 		<script>
-			
 			var fadeTheCodeIn = function(){
-				$('pre > code').addClass('rendered');
+				var $codeExamplesToFade = document.querySelectorAll('pre > code');
+				if ( $codeExamplesToFade.length > 0) {
+					Array.prototype.forEach.call($codeExamplesToFade, function(el, i){
+						el.classList.add('rendered');
+					});
+
+				}
 			}
-			
-			$(function () {
-							
-				
+
+
+
+			document.addEventListener('DOMContentLoaded', function () {
 				// Highlighting Prism manually to prevent FOUC
 				Prism.highlightAll('true', fadeTheCodeIn);
 
-				$('a[href="' + window.location.pathname + '"]').parent().addClass('slds-theme--inverse');
-				if($('#section-1 pre code.language-jsx > .token.comment').parent().children().length === 1) {
-					$('#section-1 pre code.language-jsx > .token.comment').parent().parent().hide();
-				}
-				var timeoutID = window.setTimeout(function(){
-					if($('#section-1 pre code.language-jsx > .token.comment').parent().children().length === 1) {
-						$('#section-1 pre code.language-jsx > .token.comment').parent().parent().hide();
-					}
-					
-				}, 10);
+				// Add the inverse theme to parent of the jump page anchor that corresponds to the URL
+				document.querySelectorAll('a[href="' + window.location.pathname + '"]')[0].parentNode.classList.add('slds-theme--inverse');
+				document.querySelectorAll('a[href="' + window.location.pathname + '"]')[0].scrollIntoView({block: "end", behavior: "smooth"});
 
+
+				// toggle the theme on click
+				var $jumpPage__componentAnchors = document.querySelectorAll('#jump_page a.source');
+				Array.prototype.forEach.call($jumpPage__componentAnchors, function(el, i){
+					el.addEventListener("click", function (event) {
+						Array.prototype.forEach.call($jumpPage__componentAnchors, function(el, i){
+							el.parentNode.classList.remove('slds-theme--inverse');
+						});
+						this.parentNode.classList.add('slds-theme--inverse');
+					}, false);
+				});
+
+				// Hide the first bit of code if there is _only_ a comment in it -- this should hide the huge SLDS license boilerplate stuff
+				if( document.querySelectorAll('#section-1 pre code.language-jsx > .token.comment')[0].parentNode.children.length === 1 ) {
+					document.querySelectorAll('#section-1 pre code.language-jsx > .token.comment')[0].parentNode.parentNode.style.display = 'none';
+				}
 			});
 		</script>
 	</body>

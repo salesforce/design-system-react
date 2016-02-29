@@ -1,6 +1,6 @@
 import {Lib, Radios} from 'design-system-jquery';
 
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 $(function () {
 	const radios = new Radios($('#radio-jquery-control'), {

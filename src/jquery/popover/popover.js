@@ -32,7 +32,7 @@ import PopoverCore, { CONTROL } from '../../core/popover';
 
 // ### jQuery
 // jQuery is an external dependency of the project.
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 // ### Traits
 

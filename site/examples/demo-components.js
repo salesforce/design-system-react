@@ -24,7 +24,7 @@ module.exports = function (facade) {
 	// 	sampleCodeDir += '-react';
 	// }
 
-	return packageJSON.components.map(function (component) {
+	return packageJSON.components[facade].map(function (component) {
 		var sampleHTML;
 		try {
 			sampleHTML = fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.html'), 'utf8');

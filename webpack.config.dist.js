@@ -22,10 +22,12 @@ const config = {
 	},
 	devtool: 'source-map',
 	externals: {
-		react: 'React',
-		'react-dom': 'ReactDOM'
+		react: { amd: 'react', commonjs: 'react', commonjs2: 'react', root: 'React' },
+		'react-dom': { amd: 'react-dom', commonjs: 'react-dom', commonjs2: 'react-dom', root: 'ReactDOM' },
+		jquery: { amd: 'jquery', commonjs: 'jquery', commonjs2: 'jquery', root: 'jQuery' }
 	},
 	output: {
+		libraryTarget: 'umd',
 		path: './.tmp/',
 		publicPath: '/.tmp/',
 		filename: '[name].js'	// [name] is config.entry object keys

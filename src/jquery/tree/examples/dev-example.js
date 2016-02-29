@@ -3,7 +3,7 @@ import * as controlTemplate from './template-control';
 import * as demoControlsTemplate from './template-demo-controls';
 import { sampleData } from 'design-system-utilities';
 
-const $ = Lib.global.jQuery || Lib.global.$;
+import $ from 'jquery';
 
 const COMPONENT_NAME = 'tree';
 const COMPONENT_DISPLAY_NAME = 'Tree';
