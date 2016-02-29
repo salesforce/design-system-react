@@ -26,6 +26,7 @@ const PicklistItems = React.createClass({
 	displayName: CONTROL,
 
 	propTypes: {
+		align: React.PropTypes.oneOf(['left', 'right']),
 		// TODO: Type of collection unknown until parsed by Data Adapter
 		collection: React.PropTypes.oneOfType([
 			React.PropTypes.array,
@@ -41,6 +42,12 @@ const PicklistItems = React.createClass({
 		show: React.PropTypes.bool.isRequired
 	},
 
+	getDefaultProps: function() {
+		return {
+			align: 'left'
+		};
+	},
+
 	_menuItems () {
 		return this.props.collection.map((item, index) => {
 			return (
@@ -51,7 +58,7 @@ const PicklistItems = React.createClass({
 
 	render () {
 		return (
-			<div className={classNames('slds-dropdown', 'slds-dropdown--left', 'slds-dropdown--menu', {'slds-hide': !this.props.show})} id={this.props.id}>
+			<div className={classNames('slds-dropdown', 'slds-dropdown--' + this.props.align, 'slds-dropdown--menu', {'slds-hide': !this.props.show})} id={this.props.id}>
 				<ul className="slds-dropdown__list" role="menu" aria-labelledby={this.props.labelledBy}>
 				{this._menuItems()}
 				</ul>
