@@ -69,6 +69,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 
 	// ### Prop Types
 	propTypes: {
+		align: React.PropTypes.oneOf(['left', 'right']),
 		// > @todo Type of collection unknown until parsed by Data Adapter
 		collection  : React.PropTypes.oneOfType([
 			React.PropTypes.array,
@@ -107,7 +108,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 		const triggerId = this._getTriggerId();
 
 		return (
-			<div className="slds-dropdown-trigger--click"
+			<div className={"slds-dropdown-trigger slds-dropdown-trigger--click"}
 					id={this.state.id}
 					aria-expanded={isOpen}
 					onKeyDown={this._handleKeyPressed}
@@ -121,6 +122,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 					onClick={this._handleClicked}
 					aria-haspopup="true" />
 				<PicklistItems
+					align={this.props.align}
 					id={this._getMenuId()}
 					labelledBy={triggerId}
 					getMenuItemId={this._getMenuItemId}
