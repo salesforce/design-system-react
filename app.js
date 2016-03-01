@@ -65,11 +65,6 @@ const cacheOptions = {
 app.use('/vendor/jquery', express.static(__dirname + '/node_modules/jquery/dist', cacheOptions));
 app.use('/vendor/prism', express.static(__dirname + '/node_modules/prismjs', cacheOptions));
 
-// Index
-app.get('/', function (req, res) {
-	res.render('index');
-});
-
 var jsExternal = {
 	jquery: [
 		'//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
@@ -348,6 +343,11 @@ app.get('/react/:component', function (req, res) {
 	res.render('react/component/index', reactCode);
 });
 
+
+// Index
+app.get('/', function (req, res) {
+	res.render('index', reactCode);
+});
 
 
 // reactExamples.forEach(function (example) {

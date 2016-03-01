@@ -1,26 +1,26 @@
-		<div class="slds-p-around--medium">
-			<div id="components-cards" class="slds-grid slds-grid--pull-padded-large | slds-wrap">
-				{{#each components}}
-					<div class="component slds-col--padded | slds-m-bottom--large">
-						<div class="slds-box | slds-theme--default">
-							<h3 class="slds-text-heading--label slds-truncate">
-								{{ componentDisplayName }}
-							</h3>
-							<ul>
-								<li>
-									<a href="/documentation/src/{{facade}}/{{component}}/{{componentGroupName}}.html">Documentation</a>
-								</li>
-								<li>
-									<a href="/{{facade}}/{{component}}">Live Example</a>
-								</li>
-								<li>
-									<a href="/{{facade}}/{{component}}">
-										<img src="/assets/demo-site/images/component-examples/{{component}}.png" alt="Button Screenshot">
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				{{/each}}
+<div class="slds-p-around--small">
+	<div id="components-cards" class="slds-grid slds-grid--pull-padded-large | slds-wrap">
+		{{#each components}}
+			<div class="component slds-col--padded | slds-m-bottom--large">
+				<div class="slds-box | slds-theme--default">
+					<h3 class="slds-text-heading--label slds-truncate">
+						{{ componentDisplayName }}
+					</h3>
+					<ul>
+						<li>
+							<a href="/{{facade}}/{{component}}">Live Example</a>
+						</li>
+						<li>
+							<a href="/documentation/src/{{facade}}/{{component}}/{{componentGroupName}}.html">Documentation</a>
+						</li>
+						<li>
+							<a href="/{{facade}}/{{component}}">
+								<img src="/assets/demo-site/images/component-examples/{{component}}.png" alt="Button Screenshot">
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
+		{{/each}}
+	</div>
+</div>

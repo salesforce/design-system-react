@@ -9,7 +9,7 @@ const path = require('path');
 const config = baseConfig;
 
 config.entry = {
-	'facades-demo-styles': ['./site/assets/shared/scripts/styles.js', './site/assets/demo-site/scripts/styles.js'],
+	'facades-demo-styles': ['./site/assets/demo-site/scripts/styles.js'],
 	'dev-examples-styles': ['./site/assets/facades/scripts/styles.js'],
 	'dev-examples-react': ['./src/react/dev-examples'],
 	'demo-site-examples-react': ['./site/src/demo-site-examples-react'],
@@ -30,7 +30,7 @@ config.resolve.alias = {
 	'design-system-utilities-jquery': path.join(__dirname, 'utilities/main.js')
 };
 
-config.devtool = 'eval-source-map';
+config.devtool = 'inline-source-map';
 
 config.output = {
 	libraryTarget: 'umd',
@@ -42,12 +42,14 @@ config.output = {
 // Additional loaders
 config.module.loaders.push({
 	test: /\.css$/,
-	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap')
+	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
 });
 config.module.loaders.push({
 	test: /\.scss$/,
+	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
+	// loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader')
 	// loaders: ["style", "css?sourceMap", "sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true"]
-	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader')
+	// loader: ExtractTextPlugin.extract('style-loader', ["css?sourceMap", "sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true"])
 });
 config.module.loaders.push({
 	test: /\.(png)$/,
@@ -64,12 +66,12 @@ config.module.loaders.push({
 
 config.plugins = [
 	new StringReplacePlugin(),
-	new ExtractTextPlugin('[name].css'),
 	new webpack.optimize.UglifyJsPlugin({
 		mangle: {
 			except: ['$', 'exports', 'require']
 		}
-	})
+	}),
+	new ExtractTextPlugin('[name].css?[hash]-stuff'),
 ];
 
 module.exports = config;

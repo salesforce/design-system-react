@@ -67,30 +67,35 @@
 				<div class="herotext | slds-text-heading--large">
 					Salesforce Lightning<br>Design System
 					<br>
-					<span class="slds-text-heading--medium">for JavaScript<span>
+					<span class="slds-text-heading--large">for JavaScript<span>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div class="section2 | slds-p-around--large">
+	<div class="section2 | slds-p-vertical--large">
 		<div class="slds-container--center slds-container--medium">
-			<div class="slds-text-heading--medium facades-demo-desc">A whole new way to build apps using Lightning Design System with jQuery or React.</div>
+			<h2 class="slds-text-heading--large">
+				SLDS for {{facadeDisplayName}}
+			</h2>
+			<p class="slds-text-heading--small | slds-m-top--small slds-m-bottom--large">
+				Create the world&rsquo;s best enterprise app experiences.
+			</p>
+
+			{{!-- <h4 class="slds-text-heading--medium facades-demo-desc">A whole new way to build apps using Lightning Design System with jQuery or React.</h4> --}}
+
+			<p class="slds-m-bottom--x-small">SLDS for React is the React.js implementation of the <a href="http://www.lightningdesignsystem.com/">Lightning Design System</a>.</p>
+			<p class="slds-m-bottom--x-small">Each SLDS for React component is a specific variant of a component from Lightning Design System.</p>
+			<p class="slds-m-bottom--x-small">For example, <a href="/react/dropdown"><code>Dropdown</code></a> represents <a href="http://www.lightningdesignsystem.com/components/menus/#dropdown">Lightning Design System Menu > Dropdown</a>, and <a href="/react/lookup"><code>Lookup</code></a> represents <a href="http://www.lightningdesignsystem.com/components/lookups/#base">Lightning Design System Lookup > Base</a>.</p>
+
+			{{> components-cards}}
+
 		</div>
 	</div>
-	<div class="section3 | slds-p-horizontal--large ">
+	<div class="section3 | slds-p-bottom--large ">
 		<div class="slds-container--center slds-container--medium">
-			<div class="slds-grid slds-grid--vertical-stretch | slds-wrap | slds-grid--align-space">
-				<div class="slds-col slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
-					<h2 class="slds-text-heading--medium | slds-m-top--large">SLDS for jQuery</h2>
-					<p class="facades-demo-framework-description">Plugins available on the $.fn namespace.</p>
-					<div class="slds-m-top--medium"><a href="jquery" class="slds-button slds-button--brand">Examples</a></div>
-				</div>
-				<div class="slds-col slds-col--padded slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2">
-					<h2 class="slds-text-heading--medium | slds-m-top--large">SLDS for React</h2>
-					<p class="facades-demo-framework-description">React components with lifecycles methods and props.</p>
-					<div class="slds-m-top--medium"><a href="react" class="slds-button slds-button--brand">Examples</a></div>
-				</div>
-			</div>
+			<h2 class="slds-text-heading--medium | slds-m-top--large">SLDS for {{ otherFacadeDisplayName}}</h2>
+			<p class="facades-demo-framework-description">Several plugins are also available on the <code>$.fn</code> namespace.</p>
+			<div class="slds-m-top--medium"><a href="jquery" class="slds-button slds-button--brand">Examples</a></div>
 		</div>
 	</div>
 </div>
