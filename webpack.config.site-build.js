@@ -46,6 +46,7 @@ config.module.loaders.push({
 });
 config.module.loaders.push({
 	test: /\.scss$/,
+	// loaders: ["style", "css?sourceMap", "sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true"]
 	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader')
 });
 config.module.loaders.push({

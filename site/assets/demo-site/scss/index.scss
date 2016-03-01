@@ -2,6 +2,7 @@
 @import "dependencies/_config";
 @import "dependencies/prism";
 @import "dependencies/prism-overrides";
+@import "dependencies/slds-enhancements";
 @import "pages/home";
 @import "pages/component-examples";
 
@@ -52,3 +53,4 @@ body.jquery .example-type.example-type--react {
 #component-nav > nav, .facades-demo-main-nav, .facades-demo-masthead {
 	-webkit-transition: all 0.1s linear;
 }
+

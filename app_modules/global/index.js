@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 export default {
 	abbreviatedName: 'DSF',
 	cssPrefix: 'slds-',
-	displayName: 'Salesforce Lightning Design System Facades',
+	displayName: 'SLDS for JavaScript',
 	filenamePrefix: 'slds',
 	analyticsHostWhitelist: [
 		'design-system-facades.herokuapp.com',
