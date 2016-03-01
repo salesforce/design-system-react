@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Datepicker Component --- jQuery Facade
+// # Datepicker Component --- SLDS for jQuery
 
 // Implements the [Datepicker design pattern](https://www.lightningdesignsystem.com/components/datepickers) in jQuery. Provides a text input form element with a calendar. You can select a single date or date range from a popup or inline calendar.
 
@@ -27,7 +27,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import * as Lib                    from '../../lib/lib';
 
 // Use the [shared core](../../core/datepicker.html), which contains logic that is
-// the same in every facade.
+// shared across SLDS for JavaScript.
 import DatepickerCore, { CONTROL } from '../../core/datepicker';
 
 // ### Traits
@@ -46,8 +46,8 @@ import $ from 'jquery';
 
 // ### Mixins
 
-// These are mixins that appear in every Façade, bringing consistency between
-// how each framework deals with instantiation, events, and state.
+// These are mixins that appear in all of SLDS for Javascript,
+// bringing consistency to instantiation, events, and state.
 
 // #### DOM
 // [../dom](../dom.html)
@@ -379,13 +379,13 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 // ### Run the helpers
 
-// `Helpers` are a feature of Façades that allows anyone to register code that
+// `Helpers` are a feature of SLDS for jQuery that allows anyone to register code that
 // can manipulate the component before it is encapsulated in a React class.
 //
 // This allows flexibility for adding custom behavior without modifying the
 // original source, or for adding optional behavior.
 //
-// For example, in jQuery facade uses this mechanism to optionally create
+// For example, SLDS for jQuery uses this mechanism to optionally create
 // jQuery plug-in versions of each component. Nothing in the component itself
 // should ever depend on the presence of helpers, as they are completely
 // optional.

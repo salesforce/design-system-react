@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 
-// # Modal Component --- jQuery Facade
+// # Modal Component --- SLDS for jQuery
 
 // Implements the [Modal design pattern](https://www.lightningdesignsystem.com/components/modals) in jQuery.
 
@@ -28,7 +28,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import * as Lib               from '../../lib/lib';
 
 // Use the [shared core](../../core/modal.html), which contains logic that is
-// the same in every facade.
+// shared across SLDS for JavaScript.
 import ModalCore, { CONTROL } from '../../core/modal';
 
 // ### Traits
@@ -43,8 +43,8 @@ import $ from 'jquery';
 
 // ### Mixins
 
-// These are mixins that appear in every Façade, bringing consistency between
-// how each framework deals with instantiation, events, and state.
+// These are mixins that appear in all of SLDS for Javascript,
+// bringing consistency to instantiation, events, and state.
 
 // #### DOM
 // [../dom](../dom.html)
@@ -84,10 +84,10 @@ let Modal = function Modal () {
 	this._initialize(options);
 };
 
-// Façades **extends objects** by merging them together, rather than via the
-// prototype chain or imitation of object-oriented inheritance. The important
-// thing to remember is that _some methods will be available to the component
-// which are not declared in this file_.
+// SLDS for jQuery **extends objects** by merging them together, rather than
+// via the prototype chain or imitation of object-oriented inheritance.
+// The important thing to remember is that _some methods will be available 
+// to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need
 // to trace the dependencies of the component to see where they are coming
@@ -183,13 +183,13 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 
 // ### Run the helpers
 
-// `Helpers` are a feature of Façades that allows anyone to register code that
+// `Helpers` are a feature of SLDS for jQuery that allows anyone to register code that
 // can manipulate the component before it is encapsulated in a React class.
 //
 // This allows flexibility for adding custom behavior without modifying the
 // original source, or for adding optional behavior.
 //
-// For example, in jQuery facade uses this mechanism to optionally create
+// For example, SLDS for jQuery uses this mechanism to optionally create
 // jQuery plug-in versions of each component. Nothing in the component itself
 // should ever depend on the presence of helpers, as they are completely
 // optional.

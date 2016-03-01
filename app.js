@@ -65,11 +65,6 @@ const cacheOptions = {
 app.use('/vendor/jquery', express.static(__dirname + '/node_modules/jquery/dist', cacheOptions));
 app.use('/vendor/prism', express.static(__dirname + '/node_modules/prismjs', cacheOptions));
 
-// Index
-app.get('/', function (req, res) {
-	res.render('index');
-});
-
 var jsExternal = {
 	jquery: [
 		'//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
@@ -149,7 +144,7 @@ if (!jQueryCode) {
 				css_pre_processor: 'none',
 				css_starter: 'neither',
 				css_prefix_free: false,
-				description: 'A developer sandbox for Salesforce Lightning Design System Facades',
+				description: 'A developer sandbox for SLDS for JavaScript',
 				editors: '101',
 				html: codeSandboxHTML,
 				html_pre_processor: 'none',
@@ -159,7 +154,7 @@ if (!jQueryCode) {
 				js_pre_processor: 'babel',
 				js_modernizr: false,
 				js_library: '',
-				title: componentDisplayNamePlural + ' :: Facades :: Salesforce Lightning Design System'
+				title: componentDisplayNamePlural + ' :: SLDS for jQuery'
 			};
 
 			codepenJSON = JSON.stringify(codepenData).replace(/"/g, "&​quot;").replace(/'/g, "&apos;");
@@ -285,7 +280,7 @@ if (!reactCode) {
 				css_pre_processor: 'none',
 				css_starter: 'neither',
 				css_prefix_free: false,
-				description: 'A developer sandbox for Salesforce Lightning Design System Facades',
+				description: 'A developer sandbox for SLDS for JavaScript',
 				editors: '101',
 				html: codeSandboxHTML,
 				html_pre_processor: 'none',
@@ -295,7 +290,7 @@ if (!reactCode) {
 				js_pre_processor: 'babel',
 				js_modernizr: false,
 				js_library: '',
-				title: componentDisplayName + ' :: Facades :: Salesforce Lightning Design System'
+				title: componentDisplayName + ' :: SLDS for React'
 			};
 
 			codepenJSON = JSON.stringify(codepenData).replace(/"/g, "&​quot;").replace(/'/g, "&apos;");
@@ -348,6 +343,11 @@ app.get('/react/:component', function (req, res) {
 	res.render('react/component/index', reactCode);
 });
 
+
+// Index
+app.get('/', function (req, res) {
+	res.render('index', reactCode);
+});
 
 
 // reactExamples.forEach(function (example) {

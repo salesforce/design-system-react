@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Pills Component --- React Façade
+// # Pills Component --- SLDS for React
 
 // Implements the [Pills design pattern](https://www.lightningdesignsystem.com/components/pills) in React.
 
@@ -27,7 +27,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import * as Lib               from '../../lib/lib';
 
 // Use the [shared core](../../core/pills.html), which contains logic that is
-// the same in every façade.
+// shared across SLDS for JavaScript.
 import PillsCore, { CONTROL } from '../../core/pills';
 
 // ### Traits
@@ -46,8 +46,8 @@ import React                  from 'react';
 
 // ### Mixins
 
-// These are mixins that appear in every Façade, bringing consistency between
-// how each framework deals with instantiation, events, and state.
+// These are mixins that appear in all of SLDS for Javascript,
+// bringing consistency to instantiation, events, and state.
 
 // #### Events
 // [../mixins/events](../mixins/events.html)
@@ -75,10 +75,10 @@ import Pill                   from './pill';
 
 // ## Pills
 
-// Façades **extends objects** by merging them together, rather than via the
-// prototype chain or imitation of object-oriented inheritance. The important
-// thing to remember is that _some methods will be available to the component
-// which are not declared in this file_.
+// SLDS for React **extends objects** by merging them together, rather than
+// via the prototype chain or imitation of object-oriented inheritance.
+// The important thing to remember is that _some methods will be available 
+// to the component which are not declared in this file_.
 
 // These are not magic methods, they're not black box methods, but you do need
 // to trace the dependencies of the component to see where they are coming
@@ -88,13 +88,13 @@ import Pill                   from './pill';
 let Pills = Lib.merge({}, PillsCore, {
 	// ### Mixins
 
-	// The React facade specifically is also extended via React's standard
+	// SLDS for React specifically is also extended via React's standard
 	// mixin model. These three mixins hook into native React Wycliffe events
 	// and expose functionality needed for a cross-framework core. For
 	// example, some places in the core or traits a `setState` method is used.
 	//
-	// In React this is built in to the framework, and the other facades
-	// simply borrow the idea for their own use.
+	// In React this is built in to the framework, while SLDS for jQuery
+	// simply borrow the idea for its own use.
 	//
 	// Similarly, a `setProperties` method is available but in React it is
 	// actually a `noop` because React expects a one-way data flow, while in
@@ -178,16 +178,14 @@ let Pills = Lib.merge({}, PillsCore, {
 
 // ### Run the helpers
 
-// `Helpers` are a feature of Façades that allows anyone to register code that
+// `Helpers` are a feature of SLDS for React that allows anyone to register code that
 // can manipulate the component before it is encapsulated in a React class.
 //
 // This allows flexibility for adding custom behavior without modifying the
 // original source, or for adding optional behavior.
 //
-// For example, the jQuery facade uses this mechanism to optionally create
-// jQuery plug-in versions of each component. Nothing in the component itself
-// should ever depend on the presence of helpers, as they are completely
-// optional.
+// Nothing in the component itself should ever depend on the presence
+// of helpers, as they are completely optional.
 Pills = Lib.runHelpers('react', CONTROL, Pills);
 
 // Once everything has been merged together and all registered helpers have

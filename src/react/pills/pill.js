@@ -9,7 +9,7 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Pills Component: Pill --- React Façade
+// # Pills Component: Pill --- SLDS for React
 
 // Renders an individual Pill item for the the [Pills Component](./pills.html)
 
@@ -27,7 +27,7 @@ import ReactDOM   from 'react-dom';
 
 // #### classNames
 // [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
-// Façades uses `classnames`, "a simple javascript utility for conditionally
+// SLDS for React uses `classnames`, "a simple javascript utility for conditionally
 // joining classNames together." Because of the small size of the library, the
 // default build includes the entire library rather than requiring it as an
 // external dependency.
@@ -38,7 +38,7 @@ import classNames from 'classnames';
 import Button     from '../button/button';
 
 // Since the Pills Component is simpply collection zero or more individual items `<Pill>` in a wrapper, there is
-// no need for a common core of the `<Pill>` between Façades. Therefore we must set `CONTROL`
+// no need for a common core of the `<Pill>` in SLDS for JavaScript. Therefore we must set `CONTROL`
 // manually here.
 export const CONTROL = 'lookup-pill';
 
