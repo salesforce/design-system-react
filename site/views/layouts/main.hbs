@@ -11,6 +11,7 @@
 
 	</head>
 	<body class="facades-demo | {{facade}} | slds">
+		{{#unless hideTopNavBar }}
 		<nav class="facades-demo-main-nav slds-page-header">
 			<div class="slds-grid slds-grid--align-spread">
 				<a id="facades-demo-main-nav__link-to-home" href="/" class="slds-align-middle | slds-media slds-media--center">
@@ -25,6 +26,7 @@
 				</a>
 			</div>
 		</nav>
+		{{/unless}}
 
 		{{{body}}}
 

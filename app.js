@@ -346,6 +346,7 @@ app.get('/react/:component', function (req, res) {
 
 // Index
 app.get('/', function (req, res) {
+	reactCode['hideTopNavBar'] = true;
 	res.render('index', reactCode);
 });
 
