@@ -65,7 +65,7 @@ import mountable                from '../mixins/custom-prop-types/mountable';
 
 // #### Popover Object
 // [./../popover/popover](./../popover/popover.html#popoverobject)
-import { PopoverObject }        from '../popover/popover';
+import { PopoverDefinition }        from '../popover/popover';
 
 // ## Tooltip
 
@@ -79,7 +79,7 @@ import { PopoverObject }        from '../popover/popover';
 // from. In particular, Tooltip extends its [core](../../core/tooltip.html),
 // which in turn extends the base component and a series of traits.
 
-let Tooltip = Lib.merge({}, TooltipCore, PopoverObject, {
+export const TooltipDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -123,7 +123,14 @@ let Tooltip = Lib.merge({}, TooltipCore, PopoverObject, {
 	render () {
 		return false;
 	}
-});
+};
+
+let Tooltip = Lib.merge(
+	{},
+	TooltipCore, 
+	PopoverDefinition,
+	TooltipDefinition
+);
 
 // ### Run the helpers
 

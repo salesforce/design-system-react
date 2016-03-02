@@ -68,7 +68,7 @@ import State                  from '../mixins/state';
 import DefaultRenderers       from './modal-default-renderers';
 
 // ## Modal Object
-export const ModalObject = {
+export const ModalDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -202,7 +202,7 @@ export const ModalObject = {
 let Modal = Lib.merge(
 	{},
 	ModalCore,
-	ModalObject
+	ModalDefinition
 );
 
 // ### Run the helpers

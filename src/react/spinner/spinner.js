@@ -57,7 +57,7 @@ import State                   from '../mixins/state';
 // from. In particular, Spinner extends its [core](../../core/spinner.html),
 // which in turn extends the base component.
 
-let Spinner = Lib.merge({}, SpinnerCore, {
+export const SpinnerDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -95,7 +95,13 @@ let Spinner = Lib.merge({}, SpinnerCore, {
 			</div>
 		);
 	}
-});
+};
+
+let Spinner = Lib.merge(
+	{},
+	SpinnerCore,
+	SpinnerDefinition
+);
 
 // ### Run the helpers
 

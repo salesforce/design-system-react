@@ -67,7 +67,7 @@ import mountable                from '../mixins/custom-prop-types/mountable';
 import State                    from '../mixins/state';
 
 // ## PopoverObject
-export const PopoverObject = {
+export const PopoverDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -190,7 +190,7 @@ export const PopoverObject = {
 let Popover = Lib.merge(
 	{},
 	PopoverCore,
-	PopoverObject
+	PopoverDefinition
 );
 
 // ### Run the helpers

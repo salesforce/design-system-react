@@ -63,7 +63,7 @@ import Dropdown         from '../dropdown/dropdown';
 export const CONTROL = 'slds-button-group';
 
 // ## Button Group Object
-export const ButtonGroupObject = {
+export const ButtonGroupDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -126,7 +126,7 @@ export const ButtonGroupObject = {
 
 let ButtonGroup = Lib.merge(
 	{},
-	ButtonGroupObject
+	ButtonGroupDefinition
 );
 
 // ### Run the helpers

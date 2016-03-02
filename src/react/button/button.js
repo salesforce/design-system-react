@@ -78,7 +78,7 @@ import ButtonView              from './button-view';
 // from. In particular, Button extends its [core](../../core/button.html),
 // which in turn extends the base component.
 
-let Button = Lib.merge({}, ButtonCore, {
+export const ButtonDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -207,7 +207,13 @@ let Button = Lib.merge({}, ButtonCore, {
 			>{views}</button>
 		);
 	}
-});
+};
+
+let Button = Lib.merge(
+	{},
+	ButtonCore,
+	ButtonDefinition
+);
 
 // ### Run the helpers
 

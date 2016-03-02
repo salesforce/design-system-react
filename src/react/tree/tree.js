@@ -95,7 +95,7 @@ import TreeHeading from './tree-heading';
 // from. In particular, Tree extends its [core](../../core/tree.html),
 // which in turn extends the base component and a series of traits.
 
-let Tree = Lib.merge({}, TreeCore, {
+export const TreeDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -239,7 +239,13 @@ let Tree = Lib.merge({}, TreeCore, {
 			this.props.onChange(selection._data);
 		}
 	}
-});
+};
+
+let Tree = Lib.merge(
+	{},
+	TreeCore, 
+	TreeDefinition
+);
 
 // ### Run the helpers
 

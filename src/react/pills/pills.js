@@ -85,7 +85,7 @@ import Pill                   from './pill';
 // from. In particular, Pills extends its [core](../../core/pills.html),
 // which in turn extends the base component.
 
-let Pills = Lib.merge({}, PillsCore, {
+export const PillsDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -174,7 +174,13 @@ let Pills = Lib.merge({}, PillsCore, {
 			this.props.onChange(selection._data);
 		}
 	}
-});
+};
+
+let Pills = Lib.merge(
+	{},
+	PillsCore,
+	PillsDefinition
+);
 
 // ### Run the helpers
 

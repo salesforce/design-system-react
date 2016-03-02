@@ -67,7 +67,7 @@ import State                      from '../mixins/state';
 import DataTableItem              from './data-table-item';
 
 // ## Data Table Object
-export const DataTableObject = {
+export const DataTableDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -265,7 +265,11 @@ export const DataTableObject = {
 // from. In particular, DataTable extends its [core](../../core/data-table.html),
 // which in turn extends the base component.
 
-let DataTable = Lib.merge({}, DataTableCore, DataTableObject);
+let DataTable = Lib.merge(
+	{}, 
+	DataTableCore, 
+	DataTableDefinition
+);
 
 // ### Run the helpers
 

@@ -93,7 +93,7 @@ import Button                    from '../button/button';
 import Svg                       from '../svg/svg';
 
 // ## Picklist Object
-export const PicklistObject = {
+export const PicklistDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -319,7 +319,7 @@ export const PicklistObject = {
 let Picklist = Lib.merge(
 	{},
 	PicklistCore,
-	PicklistObject
+	PicklistDefinition
 );
 
 // ### Run the helpers
