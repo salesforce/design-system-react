@@ -58,7 +58,6 @@ function getCombinedHeaderHeight() {
 
 var runThePositions = {
   remind: function() {
-  	console.log("Will run positionTheComponentNav...");
     positionTheComponentNav();
     this.timeoutID = undefined;
   },
@@ -167,14 +166,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	var currentComponentId;
 	var $componentNav__currentComponent;
+	var $componentNav__currentComponentListItem;
 
-	var $componentNav__componentAnchors = document.querySelectorAll('#component-nav > nav a');
+	var $componentNav__componentAnchors = document.querySelectorAll('#component-nav > nav #component-nav__list li a');
+	var $componentNav__componentListItems = document.querySelectorAll('#component-nav > nav #component-nav__list li');
 	var codepenSubmitLinks = document.querySelectorAll('.codepen-submit');
 
 	if (typeof document.querySelectorAll('.component-wrapper')[0] !== 'undefined') {
 		currentComponentId = document.querySelectorAll('.component-wrapper')[0].id;
-		$componentNav__currentComponent = document.querySelectorAll('#component-nav__' + currentComponentId)[0];
-		$componentNav__currentComponent.classList.add('active');
+		// $componentNav__currentComponent = document.querySelectorAll('#component-nav__' + currentComponentId)[0];
+		$componentNav__currentComponentListItem = document.querySelectorAll('#component-nav__list__item--' + currentComponentId)[0];
+		$componentNav__currentComponentListItem.classList.add('slds-is-selected');
+		$componentNav__currentComponentListItem.classList.add('slds-is-active');
 	}
 
 	// positionTheComponentNav();
@@ -189,9 +192,14 @@ document.addEventListener('DOMContentLoaded', function () {
 	Array.prototype.forEach.call($componentNav__componentAnchors, function(el, i){
 		el.addEventListener ("click", function () {
 			Array.prototype.forEach.call($componentNav__componentAnchors, function(el, i){
-				el.classList.remove('active');
+				var $thisComponent__listItemWrapper = el.parentNode;
+				console.log("[demo-site.js:196] $thisComponent__listItemWrapper:", $thisComponent__listItemWrapper);
+				$thisComponent__listItemWrapper.classList.remove('slds-is-selected');
+				$thisComponent__listItemWrapper.classList.remove('slds-is-active');
 			});
-			this.classList.add('active');
+			var $thisComponent__listItemWrapper = this.parentNode;
+			$thisComponent__listItemWrapper.classList.add('slds-is-selected');
+			$thisComponent__listItemWrapper.classList.add('slds-is-active');
 		}, false);
 	});
 

@@ -222,7 +222,8 @@ app.get('/jquery/:component', function (req, res) {
 	jQueryCode['thisComponentData'] = [];
 	jQueryCode['thisComponentData'].push(jQueryCode['componentData'].get(component));
 	jQueryCode['thisComponentDisplayName'] = jQueryCode['thisComponentData'][0]['componentDisplayName'];
-	jQueryCode['pageTitle'] = jQueryCode['thisComponentDisplayName'] + ' :: ' + jQueryCode['pageTitle'];
+	jQueryCode['thisComponentDisplayNamePlural'] = jQueryCode['thisComponentData'][0]['componentDisplayNamePlural'];
+	jQueryCode['pageTitle'] = jQueryCode['thisComponentDisplayNamePlural'] + ' :: SLDS for jQuery';
 	res.render('jquery/component/index', jQueryCode);
 });
 
@@ -343,7 +344,8 @@ app.get('/react/:component', function (req, res) {
 	reactCode['thisComponentData'] = [];
 	reactCode['thisComponentData'].push(reactCode['componentData'].get(component));
 	reactCode['thisComponentDisplayName'] = reactCode['thisComponentData'][0]['componentDisplayName'];
-	reactCode['pageTitle'] = reactCode['thisComponentDisplayName'] + ' :: ' + reactCode['pageTitle'];
+	reactCode['thisComponentDisplayNamePlural'] = reactCode['thisComponentData'][0]['componentDisplayNamePlural'];
+	reactCode['pageTitle'] = reactCode['thisComponentDisplayNamePlural'] + ' :: SLDS for React';
 	res.render('react/component/index', reactCode);
 });
 
