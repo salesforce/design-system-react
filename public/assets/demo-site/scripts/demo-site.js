@@ -58,7 +58,6 @@ function getCombinedHeaderHeight() {
 
 var runThePositions = {
   remind: function() {
-  	console.log("Will run positionTheComponentNav...");
     positionTheComponentNav();
     this.timeoutID = undefined;
   },
