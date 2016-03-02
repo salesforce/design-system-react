@@ -136,7 +136,6 @@ var positionTheComponentNav = function() {
 		$componentNav.style.height = newComponentNavHeight + 'px';
 		if (pos >= newComponentNavTop) {
 			newComponentNavTop = ((combinedHeaderHeight - (pos > combinedHeaderHeight ? combinedHeaderHeight : pos)) + mainNavHeight);
-			// newComponentNavTop = ((combinedHeaderHeight - (pos > combinedHeaderHeight ? combinedHeaderHeight : pos)) + mainNavHeight);
 			$componentNav.style.top = newComponentNavTop + 'px';
 		} else if (pos === 0) {
 			mainNavHeight = outerHeight($mainNav);
@@ -157,8 +156,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		$mainContent.style.marginTop = mainNavHeight + 'px';
 	}
 
-	// runThePositions.setup();
-
 	function codepenSubmitLinkClicked (event) {
 		var componentName = event.target.dataset.componentName;
 		document.querySelector('#codepen-form-' + componentName).submit();
@@ -174,13 +171,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	if (typeof document.querySelectorAll('.component-wrapper')[0] !== 'undefined') {
 		currentComponentId = document.querySelectorAll('.component-wrapper')[0].id;
-		// $componentNav__currentComponent = document.querySelectorAll('#component-nav__' + currentComponentId)[0];
 		$componentNav__currentComponentListItem = document.querySelectorAll('#component-nav__list__item--' + currentComponentId)[0];
 		$componentNav__currentComponentListItem.classList.add('slds-is-selected');
 		$componentNav__currentComponentListItem.classList.add('slds-is-active');
 	}
-
-	// positionTheComponentNav();
 
 	// Highlighting Prism manually to prevent FOUC
 	Prism.highlightAll('true', fadeTheCodeIn);
@@ -193,7 +187,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		el.addEventListener ("click", function () {
 			Array.prototype.forEach.call($componentNav__componentAnchors, function(el, i){
 				var $thisComponent__listItemWrapper = el.parentNode;
-				console.log("[demo-site.js:196] $thisComponent__listItemWrapper:", $thisComponent__listItemWrapper);
 				$thisComponent__listItemWrapper.classList.remove('slds-is-selected');
 				$thisComponent__listItemWrapper.classList.remove('slds-is-active');
 			});
