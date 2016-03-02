@@ -65,13 +65,16 @@ config.module.loaders.push({
 });
 
 config.plugins = [
+	new webpack.DefinePlugin({
+		'process.env': { NODE_ENV: JSON.stringify('production') }
+	}),
 	new StringReplacePlugin(),
 	new webpack.optimize.UglifyJsPlugin({
 		mangle: {
 			except: ['$', 'exports', 'require']
 		}
 	}),
-	new ExtractTextPlugin('[name].css?[hash]-stuff'),
+	new ExtractTextPlugin('[name].css?[hash]-stuff')
 ];
 
 module.exports = config;
