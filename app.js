@@ -212,6 +212,7 @@ app.get('/examples', function (req, res) {
 // jQuery examples on main site
 var jQueryCode;
 app.get('/jquery', function (req, res) {
+	jQueryCode['pageTitle'] = 'SLDS for jQuery';
 	res.render('jquery/index', jQueryCode);
 });
 
@@ -221,6 +222,7 @@ app.get('/jquery/:component', function (req, res) {
 	jQueryCode['thisComponentData'] = [];
 	jQueryCode['thisComponentData'].push(jQueryCode['componentData'].get(component));
 	jQueryCode['thisComponentDisplayName'] = jQueryCode['thisComponentData'][0]['componentDisplayName'];
+	jQueryCode['pageTitle'] = jQueryCode['thisComponentDisplayName'] + ' :: ' + jQueryCode['pageTitle'];
 	res.render('jquery/component/index', jQueryCode);
 });
 
@@ -331,6 +333,7 @@ if (!reactCode) {
 }
 
 app.get('/react', function (req, res) {
+	reactCode['pageTitle'] = 'SLDS for React';
 	res.render('react/index', reactCode);
 });
 
@@ -340,28 +343,14 @@ app.get('/react/:component', function (req, res) {
 	reactCode['thisComponentData'] = [];
 	reactCode['thisComponentData'].push(reactCode['componentData'].get(component));
 	reactCode['thisComponentDisplayName'] = reactCode['thisComponentData'][0]['componentDisplayName'];
+	reactCode['pageTitle'] = reactCode['thisComponentDisplayName'] + ' :: ' + reactCode['pageTitle'];
 	res.render('react/component/index', reactCode);
 });
-
 
 // Index
 app.get('/', function (req, res) {
 	res.render('index', reactCode);
 });
-
-
-// reactExamples.forEach(function (example) {
-// 	if (example) {
-// 		var componentName = example.name;
-// 		console.log("[app.js:247] componentName:", componentName);
-// 		app.get('/react/:component', function (req, res) {
-
-// 			var component = req.params['component'] || null;
-// 			res.render('react/component/index', reactCode);
-// 		});
-// 	}
-// });
-
 
 // Serve up the built files
 app.use('/dist', express.static(__dirname + '/.dist'));
