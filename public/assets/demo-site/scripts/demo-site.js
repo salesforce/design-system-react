@@ -42,7 +42,7 @@ function outerHeight(el) {
 function getCombinedHeaderHeight() {
 	var pos                      = document.body.scrollTop;
 	var $mainNav                 = document.querySelectorAll('.facades-demo-main-nav')[0];
-	var mainNavHeight            = outerHeight($mainNav);
+	var mainNavHeight            = outerHeight($mainNav) || 0;
 
 	var combinedHeaderHeight = mainNavHeight;
 	if (pos >= combinedHeaderHeight) {

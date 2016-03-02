@@ -11,22 +11,6 @@
 
 	</head>
 	<body class="facades-demo | {{facade}} | slds">
-		{{#unless hideTopNavBar }}
-		<nav class="facades-demo-main-nav slds-page-header">
-			<div class="slds-grid slds-grid--align-spread">
-				<a id="facades-demo-main-nav__link-to-home" href="/" class="slds-align-middle | slds-media slds-media--center">
-					<div class="slds-media__figure">
-						<img src="/assets/demo-site/images/salesforce-logo.svg" width="40">
-					</div>
-					<div class="slds-media__body">
-						<h4 class="slds-text-heading--label">
-							{{#unless facadeDisplayName}} SLDS for JavaScript {{/unless}} {{#if facadeDisplayName}} SLDS for {{facadeDisplayName}}{{/if}}
-						</h4>
-					</div>
-				</a>
-			</div>
-		</nav>
-		{{/unless}}
 
 		{{{body}}}
 
