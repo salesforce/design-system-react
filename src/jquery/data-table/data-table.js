@@ -87,7 +87,7 @@ let DataTable = function DataTable () {
 // ***Private Methods***: Although not truly private methods, methods–that
 // should only function as private–follow the convention of being prefixed
 // with `_` (an underscore).
-export const DataTableObject = {
+export const DataTableDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
@@ -165,7 +165,7 @@ export const DataTableObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		this._renderCollection();
 		this.element.addClass(this._getClassNames(this.getProperty('styles')));
 
@@ -330,7 +330,7 @@ Lib.merge(
 	Events,
 	DOM,
 	State,
-	DataTableObject
+	DataTableDefinition
 );
 
 // ### Run the helpers

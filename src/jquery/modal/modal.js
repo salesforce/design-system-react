@@ -84,17 +84,7 @@ let Modal = function Modal () {
 	this._initialize(options);
 };
 
-// SLDS for jQuery **extends objects** by merging them together, rather than
-// via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
-// to the component which are not declared in this file_.
-
-// These are not magic methods, they're not black box methods, but you do need
-// to trace the dependencies of the component to see where they are coming
-// from. In particular, Modal extends its [core](../../core/modal.html),
-// which in turn extends the base component.
-
-Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
+export const ModalDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
@@ -120,7 +110,7 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		const $content = this.elements.wrapper.contents().detach();
 		const $headerText = this.elements.header.find('h2');
 		$headerText.addClass(this.headerTextSize[this.getProperty('headerTextSize')]);
@@ -179,7 +169,26 @@ Lib.merge(Modal.prototype, ModalCore, Events, DOM, State, {
 			Openable.close(this);
 		}
 	}
-});
+};
+
+// SLDS for jQuery **extends objects** by merging them together, rather than
+// via the prototype chain or imitation of object-oriented inheritance.
+// The important thing to remember is that _some methods will be available 
+// to the component which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Modal extends its [core](../../core/modal.html),
+// which in turn extends the base component.
+
+Lib.merge(
+	Modal.prototype, 
+	ModalCore, 
+	Events, 
+	DOM, 
+	State, 
+	ModalDefinition
+);
 
 // ### Run the helpers
 

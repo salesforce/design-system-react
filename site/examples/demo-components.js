@@ -38,6 +38,7 @@ module.exports = function (facade) {
 			devHTML = '';
 		}
 
+		var pascalCaseName = toTitleCase(component.split('-').join(' ')).split(' ').join('');
 		var displayName = toTitleCase(component.split('-').join(' '));
 		var displayNamePlural = displayName;
 		if (endsWith(displayName, 's') === false && endsWith(displayName, 'x') === false) {
@@ -59,6 +60,7 @@ module.exports = function (facade) {
 				component: component,
 				componentGroupName: componentGroupName,
 				name: component.split('-').join(' '),
+				pascalCaseName: pascalCaseName,
 				displayName: displayName,
 				displayNamePlural: displayNamePlural,
 				html: sampleHTML,
@@ -71,6 +73,7 @@ module.exports = function (facade) {
 				component: component,
 				componentGroupName: componentGroupName,
 				name: component.split('-').join(' '),
+				pascalCaseName: pascalCaseName,
 				displayName: displayName,
 				displayNamePlural: displayNamePlural,
 				code: fs.readFileSync(path.resolve(codeDir, component + '/examples/site-example.js'), 'utf8'),

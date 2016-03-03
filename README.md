@@ -1,5 +1,5 @@
-# [Design System Facades](http://design-system-facades.herokuapp.com/)
-Javascript components based on [Lightning Design System](https://www.lightningdesignsystem.com/) with Facades for libraries and frameworks including jQuery, React, Backbone, and Angular.
+# [SLDS for Javascript](http://design-system-facades.herokuapp.com/)
+Javascript components based on [Lightning Design System](https://www.lightningdesignsystem.com/) built for React and jQuery. Note that this repo will soon be split into two separate repos for the two frameworks and one core repo containing shared code and library functions.
 
 ### Setup
 * Clone the project

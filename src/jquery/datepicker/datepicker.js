@@ -92,7 +92,7 @@ let Datepicker = function Datepicker () {
 	this._initialize(options);
 };
 
-Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
+export const DatepickerDefinition = {
 
 	// ### On Before Initialize
 	_onBeforeInitialize (options) {
@@ -143,7 +143,7 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		const strings = this.getState('strings');
 
 		this.elements.input.attr('placeholder', strings.DATE_FORMAT);
@@ -374,8 +374,17 @@ Lib.extend(Datepicker.prototype, DatepickerCore, Events, State, Svg, DOM, {
 
 		Lib.returnFocusToPopupTrigger(this);
 	}
-});
+};
 
+Lib.extend(
+	Datepicker.prototype, 
+	DatepickerCore, 
+	Events, 
+	State, 
+	Svg, 
+	DOM, 
+	DatepickerDefinition
+);
 
 // ### Run the helpers
 

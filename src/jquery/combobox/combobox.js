@@ -38,7 +38,7 @@ import Multiselectable           from '../../traits/multiselectable';
 
 // #### Picklist Object
 // [../picklist/picklist](../picklist/picklist.html)
-import { PicklistObject }        from '../picklist/picklist';
+import { PicklistDefinition }        from '../picklist/picklist';
 
 // ### jQuery
 // jQuery is an external dependency of the project.
@@ -85,7 +85,7 @@ let Combobox = function Combobox () {
 // ***Private Methods***: Although not truly private methods, methods–that
 // should only function as private–follow the convention of being prefixed
 // with `_` (an underscore).
-export const ComboboxObject = {
+export const ComboboxDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
@@ -115,7 +115,7 @@ export const ComboboxObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		const selection = this._getSelection();
 
 		if (this.getProperty('disabled')) {
@@ -210,8 +210,8 @@ Lib.merge(
 	DOM,
 	State,
 	Svg,
-	PicklistObject,
-	ComboboxObject
+	PicklistDefinition,
+	ComboboxDefinition
 );
 
 // ### Run the helpers

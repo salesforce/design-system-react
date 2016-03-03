@@ -32,7 +32,7 @@ const DOM = {
 		if (Lib.isFunction(this._onBeforeRender)) this._onBeforeRender();
 
 		if (!this.rendered) {
-			if (Lib.isFunction(this._render)) this._render();
+			if (Lib.isFunction(this.render)) this.render();
 			this.rendered = true;
 		}
 

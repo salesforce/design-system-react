@@ -73,7 +73,7 @@ let Checkbox = function Checkbox () {
 // ***Private Methods***: Although not truly private methods, methods–that
 // should only function as private–follow the convention of being prefixed
 // with `_` (an underscore).
-export const CheckboxObject = {
+export const CheckboxDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
@@ -87,7 +87,7 @@ export const CheckboxObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		this.elements.input.attr('value', this.getProperty('value'));
 		this.elements.input.attr('checked', this.getProperty('checked'));
 		this.elements.label.append(this.getProperty('text'));
@@ -148,7 +148,7 @@ Lib.merge(
 	Events,
 	DOM,
 	State,
-	CheckboxObject
+	CheckboxDefinition
 );
 
 // ### Run the helpers

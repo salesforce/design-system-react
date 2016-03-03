@@ -20,6 +20,7 @@ import combobox from './combobox/examples/dev-example';
 import dataTable from './data-table/examples/site-example';
 import datepicker from './datepicker/examples/site-example';
 import dropdown from './dropdown/examples/site-example';
+import icon from './icon/examples/site-example';
 import lookup from './lookup/examples/site-example';
 import modal from './modal/examples/site-example';
 import notification from './notification/examples/site-example';
@@ -39,6 +40,7 @@ ReactDOM.render(React.createElement(combobox), document.querySelector('#combobox
 ReactDOM.render(React.createElement(dataTable), document.querySelector('#data-table-react-control'));
 ReactDOM.render(React.createElement(datepicker), document.querySelector('#datepicker-react-control'));
 ReactDOM.render(React.createElement(dropdown), document.querySelector('#dropdown-react-control'));
+ReactDOM.render(React.createElement(icon), document.querySelector('#icon-react-control'));
 ReactDOM.render(React.createElement(lookup), document.querySelector('#lookup-react-control'));
 ReactDOM.render(React.createElement(modal), document.querySelector('#modal-react-control'));
 ReactDOM.render(React.createElement(notification), document.querySelector('#notification-react-control'));

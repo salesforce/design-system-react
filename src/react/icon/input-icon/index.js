@@ -9,11 +9,42 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Svg Component --- SLDS for React
+import React from 'react';
+import IconUtility from '../icon-utility';
 
-// ## Documentation
+const displayName = "InputIcon";
+const propTypes = {
+  category: React.PropTypes.string,
+  name: React.PropTypes.string,
+  onClick: React.PropTypes.func,
+};
+const defaultProps = {
+  category: 'utility',
+};
 
-// The `svg.js` file will be deprecated in favor of `index.js`.
+class InputIcon extends React.Component {
 
-// Until that time, see the documentation [here](./svg.html).
-export default from './svg';
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    const className = 'slds-input__icon slds-icon-text-default';
+    return <IconUtility
+              style={this.props.style}
+              aria-hidden='true'
+              category={this.props.category}
+              className={className}
+              name={this.props.name}
+              onClick={this.props.onClick}
+              />;
+  }
+}
+
+InputIcon.displayName = displayName;
+InputIcon.propTypes = propTypes;
+InputIcon.defaultProps = defaultProps;
+
+module.exports = InputIcon;
+

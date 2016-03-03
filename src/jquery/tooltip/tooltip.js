@@ -65,7 +65,7 @@ import State                    from '../state';
 
 // #### Popover Methods
 // [./../popover/popover](./../popover/popover.html#popoverobject)
-import { PopoverMethods }       from '../popover/popover';
+import { PopoverDefinition }       from '../popover/popover';
 
 // #### Tooltip Template
 // [./tooltip-template](./tooltip-template.html)
@@ -96,9 +96,9 @@ let Tooltip = function Tooltip () {
 // from. In particular, Tooltip extends its [core](../../core/tooltip.html),
 // which in turn extends the base component.
 
-Lib.merge(Tooltip.prototype, TooltipCore, Events, DOM, State, PopoverMethods, {
+export const TooltipDefinition ={
 	// ### Render
-	_render () {
+	render () {
 		const body = $(Positionable.getElement(this)).find('.slds-popover__body');
 
 		if (this.getProperty('content')) {
@@ -107,7 +107,26 @@ Lib.merge(Tooltip.prototype, TooltipCore, Events, DOM, State, PopoverMethods, {
 
 		return this.element;
 	}
-});
+};
+
+// SLDS for jQuery **extends objects** by merging them together, rather than
+// via the prototype chain or imitation of object-oriented inheritance.
+// The important thing to remember is that _some methods will be available 
+// to the component which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from.
+
+Lib.merge(
+	Tooltip.prototype, 
+	TooltipCore, 
+	Events, 
+	DOM, 
+	State, 
+	PopoverDefinition,
+	TooltipDefinition
+);
 
 // ### Run the helpers
 
