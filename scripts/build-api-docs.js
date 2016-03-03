@@ -8,16 +8,19 @@ var componentNames = packageJSON.components.react;
 var output = {};
 
 componentNames.forEach(function(componentName){
-  var inputPath = path.join(__dirname,'..','src/react',componentName,componentName + '.js');
-  var src = fs.readFileSync(inputPath,'utf8');
-  var doc = reactDocs.parse(src, resolver);
-  // In the future, we will need a custom resolver.
-  // var doc = reactDocs.parse(src, resolver);
-  output[componentName] = doc;
+	var inputPath = path.join(__dirname,'..','src/react',componentName,componentName + '.js');
+	
+	try {
+		var src = fs.readFileSync(inputPath,'utf8');
+		var doc = reactDocs.parse(src, resolver);
+		output[componentName] = doc;
+	} catch (ex) {
+		console.error('Unable to read API documentation from ', inputPath);
+	}
 });
 
 var outputPath = path.join(__dirname,'..','site','examples','react-control-details.json');
 
 fs.writeFile(outputPath, JSON.stringify(output,null, 4), function (err) {
-  if (err) return console.log(err);
+	if (err) return console.log(err);
 });
