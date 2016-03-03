@@ -15,7 +15,7 @@ componentNames.forEach(function(componentName){
 		var doc = reactDocs.parse(src, resolver);
 		output[componentName] = doc;
 	} catch (ex) {
-		console.error('Unable to read API documentation from ', inputPath);
+		console.warn('Unable to read API documentation from ', inputPath);
 	}
 });
 

@@ -1,6 +1,16 @@
+/* This module takes an abstract syntax tree (AST) path and detects 
+ * if it is the following pattern:
+ * 
+ * const ComponentObject = {
+ * 	render: function () {
+ *  }
+ * };
+ *
+ * For more information, visit https://github.com/reactjs/react-docgen
+ *
+ */
+
 var isReactModuleName = require('react-docgen/dist/utils/isReactModuleName');
-var match = require('react-docgen/dist/utils/match');
-var resolveToModule = require('react-docgen/dist/utils/resolveToModule');
 var recast = require('recast');
 
 var types = recast.types.namedTypes;
