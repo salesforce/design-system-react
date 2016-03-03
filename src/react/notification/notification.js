@@ -58,7 +58,7 @@ import State                         from '../mixins/state';
 import Button                        from '../button/button';
 
 // TODO: Internationalize
-export const NotificationObject = {
+export const NotificationDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -126,7 +126,11 @@ export const NotificationObject = {
 // from. In particular, Notification extends its [core](../../core/notification.html),
 // which in turn extends the base component.
 
-let Notification = Lib.merge({}, NotificationCore, NotificationObject);
+let Notification = Lib.merge(
+	{}, 
+	NotificationCore, 
+	NotificationDefinition
+);
 
 // ### Run the helpers
 

@@ -111,7 +111,7 @@ import Svg                     from '../svg/svg';
 // from. In particular, Lookup extends its [core](../../core/lookup.html),
 // which in turn extends the base component and a series of traits.
 
-let Lookup = Lib.merge({}, LookupCore, {
+export const LookupDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -491,7 +491,13 @@ let Lookup = Lib.merge({}, LookupCore, {
 			Openable.open(this);
 		}
 	}
-});
+};
+
+let Lookup = Lib.merge(
+	{},
+	LookupCore,
+	LookupDefinition
+);
 
 // ### Run the helpers
 

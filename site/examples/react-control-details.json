@@ -1,74 +1,1017 @@
 {
     "badge": {
-        "description": "Badges add information. For more details on the markup, please review the Badge documentation on the <a href=\"https://www.lightningdesignsystem.com/components/badges\">Lightning Design System website</a>.",
-        "displayName": "SLDSButton",
+        "description": "Badges add information. For more details on the markup, please review the Badge documentation on the <a href=\\\"https://www.lightningdesignsystem.com/components/badges\\\">Lightning Design System website</a>.",
         "props": {
             "children": {
                 "type": {
                     "name": "any"
                 },
-                "required": false,
-                "description": "Typically text that is inserted into the badge, although it could contain icons and other visuals."
+                "required": true,
+                "description": "These are standard React children and can be of any type."
             },
             "theme": {
                 "type": {
-                    "name": "<code>base</code> | <code>default</code> | <code>shade</code> | <code>inverse</code> | <code>alt-inverse</code> | <code>info</code> | <code>success</code> | <code>warning</code> | <code>error</code> | <code>offline</code> | <code>shade-alert-texture</code>"
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(BadgeCore.themes)"
                 },
                 "required": false,
-                "description": "",
-                "defaultValue": "null"
+                "description": "Please choose a theme from the following: \n           <code>base, default, shade, inverse,</code>\n           <code>alt-inverse, info, success, warning,</code>\n           <code>error, offline, shade-alert-texture</code>."
             }
         }
     },
     "button": {
-        "description": "The Button should be used for label buttons, icon buttons, or buttons that have both labels and icons. \nFor more details on the markup, please review the Button documentation on the <a href=\"http://www.lightningdesignsystem.com/components/buttons\">Lightning Design System website</a>."
+        "description": "",
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "icon": {
+                "type": {
+                    "name": "custom",
+                    "raw": "isIcon"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconPosition": {
+                "type": {
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(ButtonViewCore.iconPositions)"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconSize": {
+                "type": {
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(ButtonViewCore.buttonIconSizes)"
+                },
+                "required": false,
+                "description": ""
+            },
+            "iconStyle": {
+                "type": {
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(ButtonCore.iconButtonStyles)"
+                },
+                "required": false,
+                "description": ""
+            },
+            "selected": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "selectable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(ButtonCore.sizes)"
+                },
+                "required": false,
+                "description": ""
+            },
+            "text": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(ButtonCore.themes)"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
     },
     "button-group": {
-        "description": "For more details on the markup, please review the Button Group documentation on the <a href=\"http://www.lightningdesignsystem.com/components/button-groups\">Lightning Design System website</a>."
-    },
-    "combobox": {
-        "description": "A Combobox is similiar to the Lookup contorl. It is a dropdown menu paired with a text input form element, but allows any input."
-    },
-    "data-table": {
-        "description": "Data tables are an enhanced version of an HTML table and are used to display tabular data.\nFor more details on the markup, please review the Lookup > Base documentation on the <a href=\"http://www.lightningdesignsystem.com/components/data-tables\">Lightning Design System website</a>."
-    },
-    "lookup": {
-        "description": "Lookup is an advanced inline search form.\nFor more details on the markup, please review the Lookup > Base documentation on the <a href=\"http://www.lightningdesignsystem.com/components/lookups\">Lightning Design System website</a>."
-    },
-    "dropdown": {
-        "description": "\nFor more details on the markup, please review the Menu > Dropdown documentation on the <a href=\"http://www.lightningdesignsystem.com/components/menus#dropdown\">Lightning Design System website</a>."
-    },
-    "picklist": {
-        "description": "A picklist is a list of actionable items that is invoked by selection of a particular item. \nFor more details on the markup, please review the Menu > Picklist documentation on the <a href=\"http://www.lightningdesignsystem.com/components/menus#picklist\">Lightning Design System website</a>."
-    },
-    "modal": {
-        "description": "Modals are used to display content in a layer above the app. This paradigm is used in cases such as the creation or editing of a record, as well as various types of messaging and wizards. The Modal opens from a trigger element from outside of the control itself.\nFor more details on the markup, please review the Lightning Design System website's <a href=\"https://www.lightningdesignsystem.com/components/modals\"> Modal documentation</a> or the <a href=\"http://www.lightningdesignsystem.com/components/notifications#prompt\">Notification > Prompt documentation</a>."
-    },
-    "notification": {
-        "description": " For prompt notifications, use the Modal control.\nThe Notification is triggered by an element outside of the control itself.\nFor more details on the markup, please review the Notification documentation on the <a href=\"http://www.lightningdesignsystem.com/components/notifications\">Lightning Design System website</a>."
-    },
-    "pills": {
-        "description": "Within a form control, a pill represents an existing item in a database, as opposed to user-generated freeform text. \nFor more details on the markup, please review the Pills documentation on the <a href=\"http://www.lightningdesignsystem.com/components/pills\">Lightning Design System website</a>."
-    },
-    "popover": {
-        "description": "A popover is a non-modal dialog. \nFor more details on the markup, please review the Popover > Tooltip documentation on the <a href=\"http://www.lightningdesignsystem.com/components/popovers\">Lightning Design System website</a>."
-    },
-    "tooltip": {
-        "description": "Tooltips provide additional information about a particular input field or element on the page. The popup text appears when the user hovers or tabs into the “info” icon and disappears when the user hovers off or tabs away.\nFor more details on the markup, please review the Tooltip documentation on the <a href=\"http://www.lightningdesignsystem.com/components/popovers#tooltips\">Lightning Design System website</a>."
-    },
-    "datepicker": {
-        "description": "A datepicker is a text input form element with a calendar. You can select a single date or date range from a popup or inline calendar. \nFor more details on the markup, please review the Datepicker documentation on the <a href=\"http://www.lightningdesignsystem.com/components/popovers#datepickers\">Lightning Design System website</a>."
-    },
-    "tree": {
-        "description": "A tree is visualization of a structure hierarchy. A branch can be expanded or collapsed. \nFor more details on the markup, please review the Tree documentation on the <a href=\"http://www.lightningdesignsystem.com/components/popovers#trees\">Lightning Design System website</a>."
-    },
-    "radio": {
-        "description": "Radio buttons are shown in a group of two or more. The user can only select one radio button at a time. You should use the same name attribute on all radio buttons in the group. This ensures that if there is more than one group in the form, each one stays associated with its own group. The ability to style radio buttons with CSS varies across browsers. To ensure that radio buttons look the same everywhere, we use a custom DOM. \nFor more details on the markup, please review the Radio documentation on the <a href=\"http://www.lightningdesignsystem.com/components/forms#radio\">Lightning Design System website</a>."
+        "description": "",
+        "displayName": "slds-button-group",
+        "props": {
+            "children": {
+                "type": {
+                    "name": "custom",
+                    "raw": "function (props, propName, componentName) {\n    const prop = props[propName];\n    let error;\n    React.Children.forEach(prop, child => {\n        if (!error && ( child.type !== Button && child.type !== Dropdown ) ) {\n            error = new Error(\n                '`' + componentName + '` ' +\n                'should only contain children of the type `Button` or `Dropdown`.'\n            );\n        }\n    });\n\n    if (error) {\n        return error;\n    }\n}"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
     },
     "checkbox": {
-        "description": "The ability to style checkboxes with CSS varies across browsers. To ensure that checkboxes look the same everywhere, we use a custom DOM. \nFor more details on the markup, please review the Forms > Checkbox documentation on the <a href=\"http://www.lightningdesignsystem.com/components/forms#checkbox\">Lightning Design System website</a>."
+        "description": "",
+        "props": {
+            "checked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "labelText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": ""
+            },
+            "onChanged": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onDisabled": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onEnabled": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "combobox": {
+        "description": "",
+        "props": {
+            "collection": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        }
+                    ]
+                },
+                "required": true,
+                "description": ""
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onChanged": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "selection": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "object"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "data-table": {
+        "description": "",
+        "props": {
+            "bordered": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "collection": {
+                "type": {
+                    "name": "array"
+                },
+                "required": true,
+                "description": ""
+            },
+            "columns": {
+                "type": {
+                    "name": "arrayOf",
+                    "value": {
+                        "name": "shape",
+                        "value": {
+                            "propertyName": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "displayName": {
+                                "name": "string",
+                                "required": false
+                            },
+                            "sortable": {
+                                "name": "bool",
+                                "required": false
+                            },
+                            "hintParent": {
+                                "name": "bool",
+                                "required": false
+                            }
+                        }
+                    }
+                },
+                "required": true,
+                "description": ""
+            },
+            "selection": {
+                "type": {
+                    "name": "any"
+                },
+                "required": false,
+                "description": ""
+            },
+            "sortable": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "stacked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "stackedHorizontal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "striped": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "datepicker": {
+        "description": "",
+        "props": {
+            "inputLabel": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "modalCalendar": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "dropdown": {
+        "description": "",
+        "props": {
+            "align": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'left'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'right'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "collection": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        }
+                    ]
+                },
+                "required": true,
+                "description": ""
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "icon": {
+                "type": {
+                    "name": "custom",
+                    "raw": "isIcon"
+                },
+                "required": false,
+                "description": ""
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "renderArrow": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "selection": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "string"
+                        },
+                        {
+                            "name": "object"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "swapIcon": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "lookup": {
+        "description": "",
+        "props": {
+            "collection": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        }
+                    ]
+                },
+                "required": true,
+                "description": ""
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "label": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": ""
+            },
+            "labelPlural": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "menuFooterRenderer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "func"
+                        },
+                        {
+                            "name": "bool"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "menuHeaderRenderer": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "func"
+                        },
+                        {
+                            "name": "bool"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            },
+            "menuItemRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "modalMenu": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onAddClick": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onChanged": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onFilter": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "pillRenderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "searchIcon": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "selection": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        }
+                    ]
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "modal": {
+        "description": "",
+        "props": {
+            "headerTagline": {
+                "type": {
+                    "name": "any"
+                },
+                "required": false,
+                "description": ""
+            },
+            "headerTitle": {
+                "type": {
+                    "name": "any"
+                },
+                "required": false,
+                "description": ""
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onCancel": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onClose": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onPrimary": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "primaryButtonText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "secondaryButtonText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "triggerNode": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "notification": {
+        "description": "",
+        "props": {
+            "children": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": ""
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(NotificationCore.themes)"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "picklist": {
+        "description": "",
+        "props": {
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "modalMenu": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "selection": {
+                "type": {
+                    "name": "object"
+                },
+                "required": false,
+                "description": ""
+            },
+            "collection": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        }
+                    ]
+                },
+                "required": true,
+                "description": ""
+            }
+        }
+    },
+    "pills": {
+        "description": "",
+        "props": {
+            "autoFocusOnNewItems": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "bare": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onDeselect": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "renderer": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "selection": {
+                "type": {
+                    "name": "any"
+                },
+                "required": true,
+                "description": ""
+            }
+        }
+    },
+    "popover": {
+        "description": "",
+        "props": {
+            "alignmentTarget": {
+                "type": {
+                    "name": "custom",
+                    "raw": "mountable"
+                },
+                "required": false,
+                "description": ""
+            },
+            "autoFlip": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "container": {
+                "type": {
+                    "name": "custom",
+                    "raw": "mountable"
+                },
+                "required": false,
+                "description": ""
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "positionedTargetVerticalAttachment": {
+                "type": {
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(Positionable.attatchmentOptions)"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "radio": {
+        "description": "",
+        "props": {
+            "checked": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "labelText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": ""
+            },
+            "onChanged": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onDisabled": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onEnabled": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "value": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
     },
     "spinner": {
-        "description": "Spinners are animated GIFs that should be shown when retrieving data or performing slow computations. \nFor more details on the markup, please review the Spinners documentation on the <a href=\"http://www.lightningdesignsystem.com/components/spinners\">Lightning Design System website</a>."
+        "description": "",
+        "props": {
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(SpinnerCore.sizes)"
+                },
+                "required": false,
+                "description": ""
+            },
+            "theme": {
+                "type": {
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(SpinnerCore.fileNames)"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "tooltip": {
+        "description": "",
+        "props": {
+            "alignmentTarget": {
+                "type": {
+                    "name": "custom",
+                    "raw": "mountable"
+                },
+                "required": false,
+                "description": ""
+            },
+            "container": {
+                "type": {
+                    "name": "custom",
+                    "raw": "mountable"
+                },
+                "required": false,
+                "description": ""
+            },
+            "isOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "modal": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "positionedTargetVerticalAttachment": {
+                "type": {
+                    "name": "enum",
+                    "computed": true,
+                    "value": "Object.keys(Positionable.attatchmentOptions)"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
+    },
+    "tree": {
+        "description": "",
+        "props": {
+            "autoOpen": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "autoOpenLimit": {
+                "type": {
+                    "name": "number"
+                },
+                "required": false,
+                "description": ""
+            },
+            "collection": {
+                "type": {
+                    "name": "union",
+                    "value": [
+                        {
+                            "name": "array"
+                        },
+                        {
+                            "name": "object"
+                        }
+                    ]
+                },
+                "required": true,
+                "description": ""
+            },
+            "heading": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "id": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": ""
+            },
+            "disabled": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "folderSelect": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "multiSelect": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onChanged": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onClosed": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "onOpened": {
+                "type": {
+                    "name": "func"
+                },
+                "required": false,
+                "description": ""
+            },
+            "open": {
+                "type": {
+                    "name": "any"
+                },
+                "required": false,
+                "description": ""
+            },
+            "selection": {
+                "type": {
+                    "name": "any"
+                },
+                "required": false,
+                "description": ""
+            }
+        }
     }
 }

@@ -51,8 +51,10 @@ import genericWillMount       from '../mixins/generic-will-mount';
 // [../mixins/state](../mixins/state.html)
 import State                  from '../mixins/state';
 
-// ## Badge Object
-export const BadgeObject = {
+/**
+ * Badges add information. For more details on the markup, please review the Badge documentation on the <a href=\"https://www.lightningdesignsystem.com/components/badges\">Lightning Design System website</a>.
+ */
+export const BadgeDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -76,7 +78,16 @@ export const BadgeObject = {
 
 	// ### Prop Types
 	propTypes: {
+		/**
+	   * These are standard React children and can be of any type.
+	   */
 		children: React.PropTypes.any.isRequired,
+			/**
+		   * Please choose a theme from the following: 
+		   <code>base, default, shade, inverse,</code>
+		   <code>alt-inverse, info, success, warning,</code>
+		   <code>error, offline, shade-alert-texture</code>.
+		   */
 		theme: React.PropTypes.oneOf(Object.keys(BadgeCore.themes))
 	},
 
@@ -103,7 +114,7 @@ export const BadgeObject = {
 let Badge = Lib.merge(
 	{},
 	BadgeCore,
-	BadgeObject
+	BadgeDefinition
 );
 
 

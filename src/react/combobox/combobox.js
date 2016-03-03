@@ -51,7 +51,7 @@ import ReactDOM                from 'react-dom';
 
 // ### Children
 // Split out some rendering logic, just to make things easier to read.
-import { PicklistObject }      from '../picklist/picklist';
+import { PicklistDefinition }      from '../picklist/picklist';
 import PicklistItems           from '../picklist/picklist-items';
 
 // The [Svg helper](../svg/svg.html) for React provides a simple wrapper
@@ -61,7 +61,7 @@ import Svg                     from '../svg/svg';
 
 // ## Combobox Object
 
-export const ComboboxObject = Lib.merge(PicklistObject, {
+export const ComboboxDefinition = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
@@ -127,7 +127,7 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 			this.elements.input[0].focus();
 		}
 	}
-});
+};
 
 // ## Combobox
 
@@ -144,7 +144,8 @@ export const ComboboxObject = Lib.merge(PicklistObject, {
 let Combobox = Lib.merge(
 	{},
 	ComboboxCore,
-	ComboboxObject
+	PicklistDefinition,
+	ComboboxDefinition
 );
 
 // ### Run the helpers
