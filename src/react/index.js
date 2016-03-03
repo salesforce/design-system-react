@@ -76,6 +76,13 @@ export Datepicker   from './datepicker';
 export Dropdown     from './dropdown';
 // _______________________________________________________________________________________________________
 
+// ## Icons
+// * [Documentation](./icon/icon.html)
+// * [Live Example](/react/icon)
+// * [<img src="/assets/demo-site/images/component-examples/icon.png" style="max-height: 200px;" alt="Icon Screenshot">](/react/icon)
+export Icon     from './icon';
+// _______________________________________________________________________________________________________
+
 // ## Lookups
 // * [Documentation](./lookup/lookup.html)
 // * [Live Example](/react/lookup)
