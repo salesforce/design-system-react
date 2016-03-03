@@ -73,7 +73,7 @@ let Notification = function Notification () {
 };
 
 // ## Notification Object
-export const NotificationObject = {
+export const NotificationDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
@@ -82,7 +82,7 @@ export const NotificationObject = {
 	// TODO: Internationalize
 	// TODO: The patterns here are a little different than the rest of our controls
 	// ### Render
-	_render () {
+	render () {
 		const strings = this.getState('strings');
 		const classNames = this._getClassNames();
 
@@ -137,7 +137,7 @@ Lib.merge(
 	Events,
 	DOM,
 	State,
-	NotificationObject
+	NotificationDefinition
 );
 
 // ### Run the helpers

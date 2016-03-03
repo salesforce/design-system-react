@@ -52,7 +52,7 @@ import State                  from '../state';
 
 // #### Checkbox Object
 // [./checkbox/checkbox](./checkbox/checkbox.html)
-import { CheckboxObject }     from '../checkbox/checkbox';
+import { CheckboxDefinition }     from '../checkbox/checkbox';
 
 // #### Radio Template
 // [./radio-template](./radio-template.html)
@@ -75,17 +75,17 @@ let Radio = function Radio () {
 // ***Private Methods***: Although not truly private methods, methods–that
 // should only function as private–follow the convention of being prefixed
 // with `_` (an underscore).
-const RadioObject = {
+export const RadioDefinition = {
 	// ### Bind Ui Events
 	_bindUIEvents () {
 		this.elements.input.on('change', $.proxy(this.check, this));
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		this.elements.input.attr('name', this.getProperty('name'));
 
-		return CheckboxObject._render.call(this);
+		return CheckboxDefinition.render.call(this);
 	},
 
 	// ### On Destroy
@@ -116,8 +116,8 @@ Lib.merge(
 	Events,
 	DOM,
 	State,
-	CheckboxObject,
-	RadioObject
+	CheckboxDefinition,
+	RadioDefinition
 );
 
 // Framework setup

@@ -92,7 +92,7 @@ let ButtonGroup = function ButtonGroup () {
 // ***Private Methods***: Although not truly private methods, methods–that
 // should only function as private–follow the convention of being prefixed
 // with `_` (an underscore).
-export const ButtonGroupObject = {
+export const ButtonGroupDefinition = {
 	_defaultProperties: ButtonCore._defaultProperties,
 
 	// ### Initializer
@@ -125,7 +125,7 @@ export const ButtonGroupObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		this.element
 			.addClass('slds-button-group')
 			.append(this._renderButtons());
@@ -150,7 +150,7 @@ Lib.merge(
 	Events,
 	DOM,
 	State,
-	ButtonGroupObject
+	ButtonGroupDefinition
 );
 
 // ### Run the helpers

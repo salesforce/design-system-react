@@ -137,17 +137,7 @@ let Tree = function Tree () {
 	this._initialize(options);
 };
 
-// SLDS for jQuery **extends objects** by merging them together, rather than
-// via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available
-// to the component which are not declared in this file_.
-
-// These are not magic methods, they're not black box methods, but you do need
-// to trace the dependencies of the component to see where they are coming
-// from. In particular, Pills extends its [core](../../core/trees.html),
-// which in turn extends the base component.
-
-Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
+export const TreeDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
@@ -284,7 +274,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	},
 
 	// ### Render
-	_render (level) {
+	render (level) {
 		const dataSource = this.getProperty('dataSource');
 		let _level = level || 0;
 		_level += 1;
@@ -362,7 +352,7 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 	// ### On Folders Closed
 	_onFoldersClosed () {
 		this.setProperties({ autoOpen: false });
-		this._render();
+		this.render();
 	},
 
 	// ### Handle Item Clicked
@@ -421,7 +411,25 @@ Lib.merge(Tree.prototype, TreeCore, Events, DOM, State, {
 
 		return autoOpen && Lib.isNumber(level) && Lib.isNumber(autoOpenLimit) && level <= autoOpenLimit;
 	}
-});
+};
+
+// SLDS for jQuery **extends objects** by merging them together, rather than
+// via the prototype chain or imitation of object-oriented inheritance.
+// The important thing to remember is that _some methods will be available 
+// to the component which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from.
+
+Lib.merge(
+	Tree.prototype, 
+	TreeCore, 
+	Events, 
+	DOM, 
+	State,
+	TreeDefinition
+);
 
 // ### Run the helpers
 

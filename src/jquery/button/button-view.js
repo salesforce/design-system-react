@@ -58,7 +58,7 @@ let ButtonView = function ButtonView () {
 // ***Private Methods***: Although not truly private methods, methods–that
 // should only function as private–follow the convention of being prefixed
 // with `_` (an underscore).
-export const ButtonViewObject = {
+export const ButtonViewDefinition = {
 	// ### Initializer
 	_initializer () {
 		// Triggered by `_initialize`. See [Base](../core/base.html). Allows
@@ -93,7 +93,7 @@ export const ButtonViewObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		// Truncating text limits the width of the button and adds ellipses
 		// (...) if the text extends farther.
 		if (this.getProperty('truncate')) {
@@ -129,7 +129,7 @@ Lib.merge(
 	ButtonViewCore,
 	DOM,
 	State,
-	ButtonViewObject
+	ButtonViewDefinition
 );
 
 // ### Run the helpers

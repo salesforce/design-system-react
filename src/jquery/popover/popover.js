@@ -82,7 +82,7 @@ let Popover = function Popover () {
 };
 
 // ## Popover Methods
-export const PopoverMethods = {
+export const PopoverDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
@@ -132,6 +132,17 @@ export const PopoverMethods = {
 	// ### On Closed
 	_onClosed () {
 		Positionable.position(this);
+	},
+
+	// ### Render
+	render () {
+		const body = this.element.find('.slds-popover__body');
+
+		if (this.getProperty('content')) {
+			body.append(this.getProperty('content'));
+		}
+
+		return this.element;
 	}
 };
 
@@ -142,21 +153,17 @@ export const PopoverMethods = {
 
 // These are not magic methods, they're not black box methods, but you do need
 // to trace the dependencies of the component to see where they are coming
-// from. In particular, Pills extends its [core](../../core/pills.html),
+// from. In particular, Popover extends its [core](../../core/popover.html),
 // which in turn extends the base component.
 
-Lib.merge(Popover.prototype, PopoverCore, Events, DOM, State, PopoverMethods, {
-	// ### Render
-	_render () {
-		const body = this.element.find('.slds-popover__body');
-
-		if (this.getProperty('content')) {
-			body.append(this.getProperty('content'));
-		}
-
-		return this.element;
-	}
-});
+Lib.merge(
+	Popover.prototype, 
+	PopoverCore, 
+	Events, 
+	DOM, 
+	State, 
+	PopoverDefinition
+);
 
 // ### Run the helpers
 

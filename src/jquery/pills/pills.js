@@ -83,17 +83,7 @@ let Pills = function Pills () {
 	this._initialize(options);
 };
 
-// SLDS for jQuery **extends objects** by merging them together, rather than
-// via the prototype chain or imitation of object-oriented inheritance.
-// The important thing to remember is that _some methods will be available 
-// to the component which are not declared in this file_.
-
-// These are not magic methods, they're not black box methods, but you do need
-// to trace the dependencies of the component to see where they are coming
-// from. In particular, Pills extends its [core](../../core/pills.html),
-// which in turn extends the base component.
-
-Lib.merge(Pills.prototype, PillsCore, Events, DOM, State, {
+export const PillsDefinition = {
 	cssClasses: {
 		DISABLED: 'slds-disabled'
 	},
@@ -113,7 +103,7 @@ Lib.merge(Pills.prototype, PillsCore, Events, DOM, State, {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		const strings = this.getState('strings');
 
 		// TODO: Now that string rendering has been updated this should work
@@ -222,7 +212,26 @@ Lib.merge(Pills.prototype, PillsCore, Events, DOM, State, {
 		this.element.empty();
 		this.element.prepend(elements);
 	}
-});
+};
+
+// SLDS for jQuery **extends objects** by merging them together, rather than
+// via the prototype chain or imitation of object-oriented inheritance.
+// The important thing to remember is that _some methods will be available 
+// to the component which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Pills extends its [core](../../core/pills.html),
+// which in turn extends the base component.
+
+Lib.merge(
+	Pills.prototype, 
+	PillsCore, 
+	Events, 
+	DOM, 
+	State, 
+	PillsDefinition
+);
 
 // ### Run the helpers
 
