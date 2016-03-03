@@ -32,7 +32,7 @@
     "test": "scripts/test --single-run"
   },
   "dependencies": {
-    "@salesforce-ux/design-system": "^0.12.2",
+    "@salesforce-ux/design-system": "^1.0.0",
     "classnames": "^2.2.3",
     "jquery": "^2.2.0",
     "lodash": "^3.10.1",
