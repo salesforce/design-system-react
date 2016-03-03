@@ -279,6 +279,7 @@ class SLDSMenuPicklist extends React.Component {
           onFocus={this.handleFocus.bind(this)}
           onKeyDown={this.handleKeyDown.bind(this)}
           onMouseDown={this.handleMouseDown.bind(this)}
+          disabled={this.props.disabled}
           ref="triggerbutton"
           tabIndex={this.state.isOpen?-1:0}>
             <span className="slds-truncate">{this.getPlaceholder()}</span>
@@ -298,4 +299,3 @@ SLDSMenuPicklist.defaultProps = defaultProps;
 
 module.exports = SLDSMenuPicklist;
 module.exports.ListItemLabel = ListItemLabel;
-
