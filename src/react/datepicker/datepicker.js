@@ -92,7 +92,7 @@ import Calendar                    from './datepicker-calendar';
 import DateInput                   from './datepicker-input';
 
 // ## Date Picker Object
-export const DatepickerObject = Lib.merge({}, DatepickerCore, {
+export const DatepickerDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -271,7 +271,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 
 		Lib.returnFocusToPopupTrigger(this);
 	}
-});
+};
 
 // ## Datepicker
 
@@ -288,7 +288,7 @@ export const DatepickerObject = Lib.merge({}, DatepickerCore, {
 let Datepicker = Lib.merge(
 	{},
 	DatepickerCore,
-	DatepickerObject
+	DatepickerDefinition
 );
 
 // ### Run the helpers

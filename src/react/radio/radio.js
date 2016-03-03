@@ -22,6 +22,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // ## Dependencies
 
+// ### classNames
+// [github.com/JedWatson/classnames](https://github.com/JedWatson/classnames)
+// SLDS for React uses `classnames`, "a simple javascript utility for conditionally
+// joining classNames together." Because of the small size of the library, the
+// default build includes the entire library rather than requiring it as an
+// external dependency.
+import classNames              from 'classnames';
+
 // Bring in the [shared library functions](../../lib/lib.html).
 import * as Lib               from '../../lib/lib';
 
@@ -35,10 +43,10 @@ import React                  from 'react';
 
 // ### CheckboxObject
 // [../checkbox/checkbox](../checkbox/checkbox.html)
-import { CheckboxObject}      from '../checkbox/checkbox';
+import { CheckboxDefinition }      from '../checkbox/checkbox';
 
 // ## RadioObject
-export const RadioObject = Lib.merge(CheckboxObject, {
+export const RadioDefinition = {
 	// ### Display Name
 	// > Always use the canonical component name (set in the core) as the
 	// > React display name.
@@ -67,8 +75,19 @@ export const RadioObject = Lib.merge(CheckboxObject, {
 				onChange = {this.check}
 			/>
 		);
-	}
-});
+	},
+
+	// ### Render
+	render () {
+		return (
+			<label className={classNames(this.cssClasses.CONTROL)}>
+				{this._renderInput()}
+				<span className={classNames(this.cssClasses.FAUX)}></span>
+				{this._renderLabelText()}
+			</label>
+		);
+	},
+};
 
 // ## Radio
 
@@ -85,7 +104,8 @@ export const RadioObject = Lib.merge(CheckboxObject, {
 let Radio = Lib.merge(
 	{},
 	RadioCore,
-	RadioObject
+	CheckboxDefinition,
+	RadioDefinition
 );
 
 // ### Run the helpers

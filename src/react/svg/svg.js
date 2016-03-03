@@ -20,7 +20,7 @@ import isIcon from '../mixins/custom-prop-types/icon.js';
 
 export const CONTROL = 'svg';
 
-export const SvgObject = {
+export const SvgDefinition = {
 	displayName: CONTROL,
 
 	propTypes: {
@@ -34,6 +34,6 @@ export const SvgObject = {
 	}
 };
 
-const Svg = React.createClass(SvgObject);
+const Svg = React.createClass(SvgDefinition);
 
 export default Svg;

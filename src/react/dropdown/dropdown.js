@@ -58,10 +58,10 @@ import PicklistItems           from '../picklist/picklist-items';
 import Button                  from '../button/button';
 
 // [PicklistObject](../picklist/picklist.html)
-import { PicklistObject }      from '../picklist/picklist';
+import { PicklistDefinition }      from '../picklist/picklist';
 
 // ## DropdownObject
-export const DropdownObject = Lib.merge(PicklistObject, {
+export const DropdownDefinition = {
 	// ### Display Name
 	// Always use the canonical component name (set in the core) as the React
 	// display name.
@@ -133,7 +133,7 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 			</div>
 		);
 	}
-});
+};
 
 // ## Dropdown
 
@@ -150,7 +150,8 @@ export const DropdownObject = Lib.merge(PicklistObject, {
 let Dropdown = Lib.merge(
 	{},
 	DropdownCore,
-	DropdownObject
+	PicklistDefinition,
+	DropdownDefinition
 );
 
 // `Helpers` are a feature of SLDS for React that allows anyone to register code that

@@ -59,7 +59,7 @@ import genericWillMount          from '../mixins/generic-will-mount';
 import State                     from '../mixins/state';
 
 // ## Checkbox Object
-export const CheckboxObject = {
+export const CheckboxDefinition = {
 	// ### Mixins
 
 	// SLDS for React specifically is also extended via React's standard
@@ -141,7 +141,7 @@ export const CheckboxObject = {
 let Checkbox = Lib.merge(
 	{},
 	CheckboxCore,
-	CheckboxObject
+	CheckboxDefinition
 );
 
 // ### Run the helpers

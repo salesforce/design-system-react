@@ -18,6 +18,7 @@
   "scripts": {
     "build-dev": "./scripts/shell/build-dev.sh",
     "build-docs": "./scripts/shell/build-docs.sh",
+    "build-api-docs": "node --harmony ./scripts/build-api-docs",
     "build-dist": "./scripts/shell/build-dist.sh",
     "build-dist-for-npm": "./scripts/shell/build-dist-for-npm.sh",
     "build-site": "./scripts/shell/build-site.sh",
@@ -88,6 +89,7 @@
     "prismjs": "^1.4.1",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^0.14.7",
+    "react-docgen": "^2.7.0",
     "react-hot-loader": "^1.3.0",
     "react-router": "^2.0.0",
     "requirejs": "^2.1.22",
@@ -105,50 +107,50 @@
     "webpack": "^1.12.13",
     "webpack-dev-middleware": "^1.5.1",
     "webpack-hot-middleware": "^2.7.1"
-    },
-    "facades": [
-        "jquery",
-        "react"
+  },
+  "facades": [
+    "jquery",
+    "react"
+  ],
+  "components": {
+    "jquery": [
+      "badge",
+      "button",
+      "button-group",
+      "checkbox",
+      "combobox",
+      "data-table",
+      "datepicker",
+      "dropdown",
+      "modal",
+      "notification",
+      "picklist",
+      "pills",
+      "popover",
+      "radio",
+      "spinner",
+      "tooltip",
+      "tree"
     ],
-    "components": {
-        "jquery": [
-                "badge",
-                "button",
-                "button-group",
-                "checkbox",
-                "combobox",
-                "data-table",
-                "datepicker",
-                "dropdown",
-                "modal",
-                "notification",
-                "picklist",
-                "pills",
-                "popover",
-                "radio",
-                "spinner",
-                "tooltip",
-                "tree"
-            ],
-        "react": [
-                "badge",
-                "button",
-                "button-group",
-                "checkbox",
-                "combobox",
-                "data-table",
-                "datepicker",
-                "dropdown",
-                "lookup",
-                "modal",
-                "notification",
-                "picklist",
-                "pills",
-                "popover",
-                "radio",
-                "spinner",
-                "tooltip",
-                "tree"
-            ]
-        }
+    "react": [
+      "badge",
+      "button",
+      "button-group",
+      "checkbox",
+      "combobox",
+      "data-table",
+      "datepicker",
+      "dropdown",
+      "lookup",
+      "modal",
+      "notification",
+      "picklist",
+      "pills",
+      "popover",
+      "radio",
+      "spinner",
+      "tooltip",
+      "tree"
+    ]
+  }
 }
