@@ -426,6 +426,106 @@
             }
         }
     },
+    "icon": {
+        "description": "The Icon component is the Lightning Design System Icon component and should be used for naked icons. For icons that are buttons, use the <a href='#/button'>Button component</a> component with <code>variant='icon'</code>.",
+        "displayName": "Icon",
+        "props": {
+            "assistiveText": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "Text that is visually hidden but read aloud by screenreaders to tell the user what the icon means.\nNaked icons must have assistive text, however, if you also have visible descriptive text with the icon,\ndeclare this prop as <code>assistiveText=''</code>."
+            },
+            "category": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'action'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'custom'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'doctype'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'standard'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'utility'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "",
+                "defaultValue": {
+                    "value": "'standard'",
+                    "computed": false
+                }
+            },
+            "className": {
+                "type": {
+                    "name": "string"
+                },
+                "required": false,
+                "description": "CSS classes that are applied to the SVG"
+            },
+            "inverse": {
+                "type": {
+                    "name": "bool"
+                },
+                "required": false,
+                "description": "If true, icon color is white. If false, icon color is the default text color.",
+                "defaultValue": {
+                    "value": "true",
+                    "computed": false
+                }
+            },
+            "name": {
+                "type": {
+                    "name": "string"
+                },
+                "required": true,
+                "description": "Name of the icon. Visit <a href='http://www.lightningdesignsystem.com/resources/icons'>Lightning Design System Icons</a> to reference icon names."
+            },
+            "size": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "'x-small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'small'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'medium'",
+                            "computed": false
+                        },
+                        {
+                            "value": "'large'",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": false,
+                "description": "",
+                "defaultValue": {
+                    "value": "'medium'",
+                    "computed": false
+                }
+            }
+        }
+    },
     "lookup": {
         "description": "",
         "props": {
