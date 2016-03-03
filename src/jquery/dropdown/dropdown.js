@@ -63,7 +63,7 @@ import Button                    from '../button/button';
 
 // #### Picklist Object
 // [../picklist/picklist](../picklist/picklist.html)
-import { PicklistObject }        from '../picklist/picklist';
+import { PicklistDefinition }        from '../picklist/picklist';
 
 // #### Dropdown Template
 // [./dropdown-template](./dropdown-template.html)
@@ -80,7 +80,7 @@ let Dropdown = function Dropdown () {
 	this._initialize(options);
 };
 
-export const DropdownObject = {
+export const DropdownDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
@@ -88,7 +88,7 @@ export const DropdownObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		// Configure the button
 		let icon;
 
@@ -159,8 +159,8 @@ Lib.merge(
 	DOM,
 	State,
 	Svg,
-	PicklistObject,
-	DropdownObject
+	PicklistDefinition,
+	DropdownDefinition
 );
 
 // ### Run the helpers

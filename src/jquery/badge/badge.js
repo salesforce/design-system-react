@@ -69,7 +69,7 @@ export const BadgeObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		const className = this._getClassNames();
 
 		// TODO: Should this also use the contents of the original? It's different in jQuery becasue in React 'Children' is actually just another prop

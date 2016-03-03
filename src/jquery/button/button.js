@@ -101,7 +101,7 @@ let Button = function Button () {
 // ***Private Methods***: Although not truly private methods, methods–that
 // should only function as private–follow the convention of being prefixed
 // with `_` (an underscore).
-export const ButtonObject = {
+export const ButtonDefinition = {
 	// ### Initializer
 	_initializer () {
 		// Triggered by `_initialize`. See [Base](../core/base.html).
@@ -157,7 +157,7 @@ export const ButtonObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		// Renders are asyncronous.
 
 		// See [Base](../core/base.html) and [DOM](../dom.html) in order to
@@ -299,7 +299,7 @@ Lib.merge(
 	Events,
 	DOM,
 	State,
-	ButtonObject
+	ButtonDefinition
 );
 
 // ### Run the helpers

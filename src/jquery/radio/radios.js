@@ -86,7 +86,7 @@ let Radios = function Radios () {
 // ***Private Methods***: Although not truly private methods, methods–that
 // should only function as private–follow the convention of being prefixed
 // with `_` (an underscore).
-const RadiosObject = {
+export const RadiosDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
@@ -104,7 +104,7 @@ const RadiosObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		this.elements.label.append(this.getProperty('labelText'));
 		this.element.find('.' + this.cssClasses.CONTROL).append(this.elements.radios);
 
@@ -238,7 +238,14 @@ const RadiosObject = {
 // to trace the dependencies of the component to see where they are coming
 // from.
 
-Lib.merge(Radios.prototype, Base, Events, DOM, State, RadiosObject);
+Lib.merge(
+	Radios.prototype, 
+	Base, 
+	Events, 
+	DOM, 
+	State, 
+	RadiosDefinition
+);
 
 // ### Run the helpers
 

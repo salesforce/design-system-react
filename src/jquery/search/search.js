@@ -36,14 +36,20 @@ let Search = function Search (element, options) {
 	this._addEventListeners();
 };
 
-const SearchObject = {
+export const SearchDefinition = {
 	destroy () {
 		this._removeEventListeners();
 		return this.elements.root.outerHTML;
 	}
 };
 
-Lib.merge(Search.prototype, SearchCore, Events, State, SearchObject);
+Lib.merge(
+	Search.prototype, 
+	SearchCore, 
+	Events, 
+	State, 
+	SearchDefinition
+);
 
 Search = Lib.runHelpers('jquery', CONTROL, Search);
 

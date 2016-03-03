@@ -103,7 +103,7 @@ let Picklist = function Picklist () {
 };
 
 // ## Picklist Object
-export const PicklistObject = {
+export const PicklistDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = this.template.clone();
@@ -189,7 +189,7 @@ export const PicklistObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		const strings = this.getState('strings');
 		const selection = this._getSelection();
 		const elements = this.elements;
@@ -434,7 +434,15 @@ export const PicklistObject = {
 // from. In particular, Picklist extends its [core](../../core/picklist.html),
 // which in turn extends the base component.
 
-Lib.merge(Picklist.prototype, PicklistCore, Events, DOM, State, Svg, PicklistObject);
+Lib.merge(
+	Picklist.prototype, 
+	PicklistCore, 
+	Events, 
+	DOM, 
+	State, 
+	Svg, 
+	PicklistDefinition
+);
 
 // ### Run the helpers
 

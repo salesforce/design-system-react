@@ -57,7 +57,7 @@ let Spinner = function Spinner () {
 };
 
 // ## Spinner Object
-export const SpinnerObject = {
+export const SpinnerDefinition = {
 	// ### Initializer
 	_initializer () {
 		this.element = this.$el = this.elements.control = $('<div />', {
@@ -66,7 +66,7 @@ export const SpinnerObject = {
 	},
 
 	// ### Render
-	_render () {
+	render () {
 		const strings = this.getState('strings');
 
 		this.element
@@ -88,7 +88,7 @@ export const SpinnerObject = {
 
 // These are not magic methods, they're not black box methods, but you do need
 // to trace the dependencies of the component to see where they are coming
-// from. In particular, Pills extends its [core](../../core/pills.html),
+// from. In particular, Spinner extends its [core](../../core/spinner.html),
 // which in turn extends the base component.
 
 Lib.merge(
@@ -96,7 +96,7 @@ Lib.merge(
 	SpinnerCore,
 	DOM,
 	State,
-	SpinnerObject
+	SpinnerDefinition
 );
 
 // ### Run the helpers
