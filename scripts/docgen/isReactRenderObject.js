@@ -17,11 +17,7 @@ module.exports = function isReactRenderObject(path) {
 		node.key.name === 'render';
 	}
 
-	if (path.node && types.ObjectExpression.check(path.node) && path.node.properties.some(isRenderMethod)) {
-		console.log('path.node= ', path.node);
-	}
-	else {
-		console.log('is not ObjectExpression');
+	if (!(path.node && types.ObjectExpression.check(path.node) && path.node.properties.some(isRenderMethod))) {
 		return false;
 	}
 
