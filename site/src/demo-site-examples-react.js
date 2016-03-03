@@ -50,6 +50,12 @@ if (document.querySelector('#dropdown-react-control')) {
 	ReactDOM.render(React.createElement(dropdown), document.querySelector('#dropdown-react-control'));
 }
 
+import icon from '../../src/react/icon/examples/site-example';
+
+if (document.querySelector('#icon-react-control')) {
+	ReactDOM.render(React.createElement(icon), document.querySelector('#icon-react-control'));
+}
+
 import lookup from '../../src/react/lookup/examples/site-example';
 
 if (document.querySelector('#lookup-react-control')) {
