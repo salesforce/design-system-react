@@ -248,6 +248,7 @@ if (!reactCode) {
 			var componentDisplayName = example.displayName;
 			var componentDisplayNamePlural = example.displayNamePlural;
 			var componentName = example.name;
+			var pascalCaseName = example.pascalCaseName;
 			if (typeof(example.html) === undefined) {
 				example.html = '';
 			}
@@ -261,7 +262,7 @@ if (!reactCode) {
 				}
 			}
 
-			example.code = example.code + '\n\nReactDOM.render(React.createElement(' + componentDisplayName + 'Example' + '), document.querySelector(\'#' + example.component + '-react-control\'));';
+			example.code = example.code + '\n\nReactDOM.render(React.createElement(' + pascalCaseName + 'Example' + '), document.querySelector(\'#' + example.component + '-react-control\'));';
 
 			reactCode[example.component.replace('-', '')] = example.code;
 
