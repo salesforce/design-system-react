@@ -68,16 +68,16 @@ app.use('/vendor/prism', express.static(__dirname + '/node_modules/prismjs', cac
 var jsExternal = {
 	jquery: [
 		'//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js',
-		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-jquery.js',
-		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-utilities.js'],
+		'//www.fuelcdn.com/slds-for-jquery/0.0.15/assets/scripts/facades-jquery.js',
+		'//www.fuelcdn.com/slds-for-jquery/0.0.15/assets/scripts/facades-utilities.js'],
 	react: [
 		'//fb.me/react-with-addons-0.14.7.js',
 		'//fb.me/react-dom-0.14.7.js',
-		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-react.js',
-		'//www.fuelcdn.com/design-system-facades/0/assets/scripts/facades-utilities.js']
+		'//www.fuelcdn.com/slds-for-react/0.0.15/assets/scripts/facades-react.js',
+		'//www.fuelcdn.com/slds-for-react/0.0.15/assets/scripts/facades-utilities.js']
 };
 
-var cssExternal = ['//www.fuelcdn.com/lightning-design-system/0.12.1/styles/salesforce-lightning-design-system.css'];
+var cssExternal = ['//www.fuelcdn.com/lightning-design-system/1.0.0/styles/salesforce-lightning-design-system.css'];
 
 
 var codeSandboxHTMLWrapper = {
