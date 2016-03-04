@@ -1,7 +1,7 @@
-# [SLDS for Javascript](http://design-system-facades.herokuapp.com/)
-Javascript components based on [Lightning Design System](https://www.lightningdesignsystem.com/) built for React and jQuery. Note that this repo will soon be split into two separate repos for the two frameworks and one core repo containing shared code and library functions.
+# [SLDS for React](http://slds-for-js.herokuapp.com/)
+Interactive, accessible implementations of [Lightning Design System](https://www.lightningdesignsystem.com/) components for React
 
-### Setup
+### Setup (for contributors)
 * Clone the project
 * Have [Node.js](https://nodejs.org/) installed
 * Run `npm install` via terminal in the directory where the project has been cloned
