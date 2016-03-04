@@ -1,7 +1,7 @@
 {
-  "name": "design-system-facades",
-  "humanReadableName": "Salesforce Design System Facades",
-  "description": "Javascript components based on Lightning Design System with Facades for libraries and frameworks including jQuery, React, Backbone, and Angular",
+  "name": "slds-for-react",
+  "humanReadableName": "SLDS for React",
+  "description": "Interactive, accessible implementations of the SLDS components for React",
   "version": "0.0.15",
   "contributors": [],
   "files": [
@@ -12,7 +12,7 @@
   "license": "BSD-3-Clause",
   "repository": {
     "type": "git",
-    "url": "git@github.com:salesforce-ux/design-system-facades.git"
+    "url": "git@github.com:salesforce-ux/slds-for-react.git"
   },
   "private": true,
   "scripts": {
@@ -109,50 +109,25 @@
     "webpack-dev-middleware": "1.5.1",
     "webpack-hot-middleware": "2.7.1"
   },
-  "facades": [
-    "jquery",
-    "react"
-  ],
-  "components": {
-    "jquery": [
-      "badge",
-      "button",
-      "button-group",
-      "checkbox",
-      "combobox",
-      "data-table",
-      "datepicker",
-      "dropdown",
-      "modal",
-      "notification",
-      "picklist",
-      "pills",
-      "popover",
-      "radio",
-      "spinner",
-      "tooltip",
-      "tree"
-    ],
-    "react": [
-      "badge",
-      "button",
-      "button-group",
-      "checkbox",
-      "combobox",
-      "data-table",
-      "datepicker",
-      "dropdown",
-      "icon",
-      "lookup",
-      "modal",
-      "notification",
-      "picklist",
-      "pills",
-      "popover",
-      "radio",
-      "spinner",
-      "tooltip",
-      "tree"
-    ]
-  }
+  "components": []
+    "badge",
+    "button",
+    "button-group",
+    "checkbox",
+    "combobox",
+    "data-table",
+    "datepicker",
+    "dropdown",
+    "icon",
+    "lookup",
+    "modal",
+    "notification",
+    "picklist",
+    "pills",
+    "popover",
+    "radio",
+    "spinner",
+    "tooltip",
+    "tree"
+  ]
 }
