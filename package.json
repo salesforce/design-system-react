@@ -109,7 +109,7 @@
     "webpack-dev-middleware": "1.5.1",
     "webpack-hot-middleware": "2.7.1"
   },
-  "components": []
+  "components": [
     "badge",
     "button",
     "button-group",
