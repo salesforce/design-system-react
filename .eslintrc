@@ -1,0 +1,37 @@
+{
+	"extends": "airbnb",
+	"parser": "babel-eslint",
+	"rules": {
+		"indent": [2, "tab", {"SwitchCase": 1}],
+		"space-before-function-paren": [2, "always"],
+		"comma-dangle": [2, "never"],
+		"no-trailing-spaces": [2, { "skipBlankLines": true }],
+		"react/prop-types": 1,
+		"no-param-reassign": 1,
+		"vars-on-top": 1,
+		"func-names" : 0,
+		"max-len": [2, {
+			"code": 100, 
+			"ignoreUrls": true, 
+			ignoreComments: true,
+			"tabWidth": 4,
+			}],
+		"no-console": 0,
+		"id-length": [2, {"min": 2, "properties": "never", "exceptions": ["$", "_", "e", "i", "j", "a", "b"]}],
+		"no-undef": 1,
+		"no-multi-spaces": [2, { exceptions: { "ImportDeclaration": true } }],
+
+		//
+		// eslint-plugin-react
+		//
+		// React specific linting rules for ESLint
+		//
+		"react/display-name": 1, // Prevent missing displayName in a React component definition
+		"react/jsx-boolean-value": 0,
+		"react/jsx-no-undef": 2, // Disallow undeclared variables in JSX
+		"react/no-multi-comp": 0, // Prevent multiple component definition per file
+		"react/no-unknown-property": 2, // Prevent usage of unknown DOM property
+		"react/prop-types": 1, // Prevent missing props validation in a React component definition
+		"react/sort-comp": 0
+	}
+}

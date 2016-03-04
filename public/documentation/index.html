@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Salesforce Lightning Design System ƒor JavaScript</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/assets/demo-site/images/favicon.png" sizes="16x16" rel="icon" type="image/png">
+  <!-- dependencies -->
+  <link href="/assets/styles/salesforce-lightning-design-system.css" rel="stylesheet">
+  <link href="/build/facades-demo-styles.css" rel="stylesheet" type="text/css">
+
+  <link rel="stylesheet" media="all" href="/documentation/docco.css" />
+</head>
+  <body class="facades-demo | facades-documentation | slds">
+    <nav id="top-of-page" class="facades-demo-main-nav slds-page-header">
+      <div class="slds-grid">
+        <a href="/" class="slds-media slds-media--center">
+          <div class="slds-media__figure">
+            <img src="/assets/demo-site/images/salesforce-logo.svg" width="40">
+          </div>
+          <div class="slds-media__body">
+            <h4 class="slds-text-heading--label">
+              Design System Facades
+            </h4>
+          </div>
+        </a>
+      </div>
+    </nav>
+    <div id="container" class="facades-demo-masthead slds-p-around--large">
+      <div class="sections | slds-box | slds-theme--default">
+        <div class="slds-grid slds-grid--vertical">
+
+          <section id="section-1" class="slds-col">
+            <div class="slds-m-horizontal--large">
+              <div class="slds-grid slds-wrap">
+                <div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3 | annotation comments">
+                  <div class="pilwrap">
+                    <a class="pilcrow" href="#section-1">&#182;</a>
+                  </div>
+                  <h2>Core Files</h2>
+                  <p>These files do not make up any controls themselves, but are the shared code across all (or most) Facades</p>
+                  <p>Start with the <a href="src/core/base.html">Base core file.</a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="section-2" class="slds-col">
+            <div class="slds-m-horizontal--large">
+              <div class="slds-grid slds-wrap">
+                <div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3 | annotation comments">
+                  <div class="pilwrap">
+                    <a class="pilcrow" href="#section-2">&#182;</a>
+                  </div>
+                  <h3>React Façade</h3>
+                  <p>
+                    These files are the controls implemented using the React library.
+                  </p>
+                  <p>
+                    They are available as an AMD module at <code>build/react.bundle.js</code> in the root of this repository.
+                  </p>
+                  <p>Start with the <a href="src/react/">React index file to see what is provided.</a></p>
+                  <p>The <a href="src/react/lookup/lookup.html">Lookup React control is particularly well documented.</a></p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="section-3" class="slds-col">
+            <div class="slds-m-horizontal--large">
+              <div class="slds-grid slds-wrap">
+                <div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3 | annotation comments">
+                  <div class="pilwrap">
+                    <a class="pilcrow" href="#section-3">&#182;</a>
+                  </div>
+                  <h3>jQuery Façade</h3>
+                  <p>These files are controls for use by jQuery scripts.</p>
+                  <p>They are available as an AMD module at <code>build/jquery.bundle.js</code> in the root of this repository.</p>
+                  <p>They are also made available on the <code>$.fn</code> jQuery namespace as classic jQuery plugins.</p>
+                  <p>Start with the <a href="src/jquery/">jQuery index file to see what is provided.</ap>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="section-4" class="slds-col">
+            <div class="slds-m-horizontal--large">
+              <div class="slds-grid slds-wrap">
+                <div class="slds-col | slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-3 | annotation comments">
+                  <div class="pilwrap">
+                    <a class="pilcrow" href="#section-4">&#182;</a>
+                  </div>
+                  <h3>Miscellany</h3>
+                  <p>Some other interesting things in this project include <a href="src/data/base.html">a Data Adapter framework</a>, Traits (for example the <a href="src/traits/keyboard-navigable.html">Keyboad Navigable Trait)</a>  and <a href="src/lib/lib.html">the Library<a> that contains some cross-cutting utilities for the controls.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <footer class="slds-col--padded">
+            <p>
+              <!-- <a href="#top-of-page">[back to top]</a> -->
+            </p>
+          </footer>
+    </div>
+  </div>
+  </div>
+  <script src="/vendor/prism/prism.js"></script>
+  <script src="/vendor/prism/components/prism-jsx.js"></script>
+
+</body>
+</html>
