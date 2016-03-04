@@ -1,4 +1,4 @@
-# [SLDS for React](http://slds-for-js.herokuapp.com/)
+# [SLDS for React](http://slds-for-js.herokuapp.com/react)
 Interactive, accessible implementations of [Lightning Design System](https://www.lightningdesignsystem.com/) components for React
 
 ### Setup (for contributors)
