@@ -376,7 +376,7 @@ export const DatepickerDefinition = {
 	}
 };
 
-Lib.extend(
+Lib.merge(
 	Datepicker.prototype, 
 	DatepickerCore, 
 	Events, 
