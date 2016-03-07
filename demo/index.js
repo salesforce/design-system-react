@@ -29,7 +29,6 @@ import TooltipSection from './pages/TooltipSection';
 
 
 const routes = (
-  <Route handler={App} path="/">
     <Route name="home" path="/" handler={HomePage}>
       <DefaultRoute handler={Welcome} />
 
@@ -51,7 +50,6 @@ const routes = (
       <Route name="tooltip" path="tooltip" handler={TooltipSection}/>
       <Route name="faq" path="faq" handler={FAQ} />
     </Route>
-  </Route>
 );
 
 Router.run(routes, function (Handler) {
