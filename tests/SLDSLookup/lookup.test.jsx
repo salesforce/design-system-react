@@ -7,7 +7,7 @@ const Header = SLDSLookup.DefaultHeader;
 const Footer = SLDSLookup.DefaultFooter;
 const {Simulate, scryRenderedDOMComponentsWithClass, scryRenderedDOMComponentsWithTag} = TestUtils;
 
-describe.only('SLDSLookup: ',  function(){
+describe('SLDSLookup: ',  function(){
   const generateLookup = function(lookupInstance) {
     let reactCmp = TestUtils.renderIntoDocument(lookupInstance);
     return React.findDOMNode(reactCmp);

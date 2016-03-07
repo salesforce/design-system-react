@@ -123,10 +123,10 @@ describe('SLDSMenuPicklist: ',  function(){
       expect(getMenu(body)).to.equal(null)
     })
 
-    it('preserves click behavior', () => {
+    it('prevents click behavior', () => {
       expect(clicked).to.be.false
       Simulate.click(btn, {})
-      expect(clicked).to.be.true
+      expect(clicked).to.be.false
     })
   })
 
