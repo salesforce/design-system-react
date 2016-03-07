@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 import isFunction from 'lodash/lang/isFunction';
 
 // Use the [shared core](../../core/data-table.html), which contains logic that is shared across SLDS for JavaScript.
-import DataTableCore, { CONTROL } from 'slds-for-js-core/data-table';
+import DataTableCore, { CONTROL } from 'slds-for-js-core-components/data-table';
 
 // ### Traits
 

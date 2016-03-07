@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/dropdown.html), which contains logic that
 // is shared across SLDS for JavaScript.
-import DropdownCore, {CONTROL} from 'slds-for-js-core/dropdown';
+import DropdownCore, { CONTROL } from 'slds-for-js-core-components/dropdown';
 
 // ### Traits
 
@@ -52,7 +52,7 @@ import isIcon from '../mixins/custom-prop-types/icon.js';
 
 // ### Children
 // [PicklistItems](../picklist-items.html)
-import PicklistItems from '../picklist-items';
+import PicklistItems from '../picklist/picklist-items';
 
 // [Button](../button.html)
 import Button from '../button';

@@ -30,7 +30,7 @@ import partialRight from 'lodash/function/partialRight';
 
 // Use the [shared core](../../core/tree.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import TreeCore, { CONTROL } from 'slds-for-js-core/tree';
+import TreeCore, { CONTROL } from 'slds-for-js-core-components/tree';
 
 // ### Traits
 

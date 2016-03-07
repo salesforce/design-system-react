@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/popover.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import PopoverCore, { CONTROL } from 'slds-for-js-core/popover';
+import PopoverCore, { CONTROL } from 'slds-for-js-core-components/popover';
 
 // ### Traits
 

@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/notification.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import NotificationCore, { CONTROL } from 'slds-for-js-core/notification';
+import NotificationCore, { CONTROL } from 'slds-for-js-core-components/notification';
 
 // ### React
 // React is an external dependencu of the project.

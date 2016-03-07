@@ -33,7 +33,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/button.html), which contains logic that is shared across SLDS for JavaScript.
-import ButtonCore, { CONTROL } from 'slds-for-js-core/button';
+import ButtonCore, { CONTROL } from 'slds-for-js-core-components/button';
 
 // ### React
 // React is an external dependency of the project.
@@ -57,7 +57,7 @@ import genericWillMount from '../mixins/generic-will-mount';
 import State from '../mixins/state';
 
 // Use the [shared button view core](../../core/button-view.html) and `isIcon` to check `propTypes` passed.
-import ButtonViewCore from 'slds-for-js-core/button-view';
+import ButtonViewCore from 'slds-for-js-core-components/button-view';
 import isIcon from '../mixins/custom-prop-types/icon.js';
 
 // ### Children

@@ -31,7 +31,7 @@ export Button from './button';
 
 // ## Button Views
 // * [Documentation](./button-view/button-view.html)
-export ButtonView from './button-view';
+export ButtonView from './button/button-view';
 // _______________________________________________________________________________________________________
 
 // ## Button Groups

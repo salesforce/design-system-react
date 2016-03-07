@@ -19,7 +19,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Bring in the [shared library functions](../../lib/lib.html).
 import * as Lib from 'slds-for-js-core/lib';
-import noop from 'lodash/function/noop';
+import noop from 'lodash/utility/noop';
 import extend from 'lodash/object/extend';
 
 // ## State

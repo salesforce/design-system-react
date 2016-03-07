@@ -54,8 +54,8 @@ import State from '../mixins/state';
 import Button from '../button';
 
 // #### Dropdown
-// [../dropdown/dropdown](../dropdown/dropdown.html)
-import Dropdown from '../dropdown/dropdown';
+// [../dropdown](../dropdown.html)
+import Dropdown from '../dropdown';
 
 // Since Button Groups are just a collection of `<Button>` in a wrapper, there is
 // no need for a common core in SLDS for JavaScript. Therefore we must set `CONTROL`

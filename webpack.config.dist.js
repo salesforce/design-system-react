@@ -6,6 +6,7 @@ const StringReplacePlugin = require('string-replace-webpack-plugin');
 const packageJson = require('./package.json');
 const header = packageJson.humanReadableName + '\n' + 'v' + packageJson.version + '\n';
 const license = fs.readFileSync('./LICENSE', 'utf8');
+const path = require('path');
 
 const config = {
 	entry: {
@@ -16,7 +17,12 @@ const config = {
 			'',
 			'.js',
 			'.jsx'
-		]
+		],
+		alias: {
+			'slds-for-js-core': path.join(__dirname, 'node_modules/design-system-facades/src'),
+			'slds-for-js-core-components': path.join(__dirname, 'node_modules/design-system-facades/src/core'),
+			'utilities': path.join(__dirname, 'node_modules/design-system-facades/utilities/main.js')
+		}
 	},
 	devtool: 'source-map',
 	externals: {
@@ -34,7 +40,10 @@ const config = {
 		loaders: [
 			{
 				test: /\.js$/,
-				exclude: /node_modules/,
+				include: [
+					path.join(__dirname, 'src'),
+					path.join(__dirname, 'node_modules/design-system-facades')
+				],
 				loaders: ['babel', StringReplacePlugin.replace({
 					replacements: [{
 						pattern: /__VERSION__/g,

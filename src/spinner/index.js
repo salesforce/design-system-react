@@ -26,7 +26,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/spinner.html), which contains logic that is shared across SLDS for JavaScript.
-import SpinnerCore, { CONTROL } from 'slds-for-js-core/spinner';
+import SpinnerCore, { CONTROL } from 'slds-for-js-core-components/spinner';
 
 // ### React
 // React is an external dependency of the project.

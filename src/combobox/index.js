@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/combobox.html), which contains logic that
 // is shared across SLDS for JavaScript.
-import ComboboxCore, {CONTROL} from 'slds-for-js-core/combobox';
+import ComboboxCore, { CONTROL } from 'slds-for-js-core-components/combobox';
 
 // ### Traits
 
@@ -52,7 +52,7 @@ import ReactDOM from 'react-dom';
 // ### Children
 // Split out some rendering logic, just to make things easier to read.
 import { PicklistDefinition } from '../picklist';
-import PicklistItems from '../picklist-items';
+import PicklistItems from '../picklist/picklist-items';
 
 // The [Svg helper](../svg.html) for React provides a simple wrapper
 // around the markup required for SVGs, and uses `Lib.getSVGPath` to convert

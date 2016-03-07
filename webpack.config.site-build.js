@@ -4,7 +4,6 @@ const baseConfig = require('./webpack.config.dist');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
-const path = require('path');
 
 const config = baseConfig;
 
@@ -13,10 +12,6 @@ config.entry = {
 };
 
 config.resolve.extensions.push('.scss');
-config.resolve.alias = {
-	'slds-for-js-core': path.join(__dirname, 'node_modules/design-system-facades/src'),
-	'utilities': path.join(__dirname, 'utilities/main.js')
-};
 
 config.devtool = 'inline-source-map';
 
