@@ -12,7 +12,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 // Children
-import Button from '../button/button';
+import Button from '../button';
 
 module.exports = {
 	renderHeader (options) {

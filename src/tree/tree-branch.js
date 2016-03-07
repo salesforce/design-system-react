@@ -22,7 +22,7 @@ import classNames from 'classnames';
 
 // Children
 import TreeItem from './tree-item';
-import Button from '../button/button';
+import Button from '../button';
 
 let InnerTreeBranch;
 

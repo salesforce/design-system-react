@@ -51,13 +51,13 @@ import ReactDOM from 'react-dom';
 
 // ### Children
 // Split out some rendering logic, just to make things easier to read.
-import { PicklistDefinition } from '../picklist/picklist';
-import PicklistItems from '../picklist/picklist-items';
+import { PicklistDefinition } from '../picklist';
+import PicklistItems from '../picklist-items';
 
-// The [Svg helper](../svg/svg.html) for React provides a simple wrapper
+// The [Svg helper](../svg.html) for React provides a simple wrapper
 // around the markup required for SVGs, and uses `Lib.getSVGPath` to convert
 // strings in the format `sprite file`.`icon name` into full paths.
-import Svg from '../svg/svg';
+import Svg from '../svg';
 
 // ## Combobox Object
 

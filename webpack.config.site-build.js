@@ -9,25 +9,13 @@ const path = require('path');
 const config = baseConfig;
 
 config.entry = {
-	'facades-demo-styles': ['./site/assets/demo-site/scripts/styles.js'],
-	'dev-examples-styles': ['./site/assets/facades/scripts/styles.js'],
-	'dev-examples-react': ['./src/react/dev-examples'],
-	'demo-site-examples-react': ['./site/src/demo-site-examples-react'],
-	'dev-examples-jquery': ['./src/jquery/dev-examples'],
-	'demo-site-examples-jquery': ['./site/src/demo-site-examples-jquery']
-};
-
-config.externals = {
-	jquery: config.externals.jquery
+	'dev-examples-react': ['./src/dev-examples']
 };
 
 config.resolve.extensions.push('.scss');
 config.resolve.alias = {
-	'design-system-jquery': path.join(__dirname, 'src/jquery/dist.js'),
-	'design-system-react': path.join(__dirname, 'src/react/dist.js'),
-	'design-system-utilities': path.join(__dirname, 'utilities/main.js'),
-	'design-system-utilities-react': path.join(__dirname, 'utilities/main.js'),
-	'design-system-utilities-jquery': path.join(__dirname, 'utilities/main.js')
+	'slds-for-js-core': path.join(__dirname, 'node_modules/design-system-facades/src'),
+	'utilities': path.join(__dirname, 'utilities/main.js')
 };
 
 config.devtool = 'inline-source-map';
@@ -47,9 +35,6 @@ config.module.loaders.push({
 config.module.loaders.push({
 	test: /\.scss$/,
 	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
-	// loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader')
-	// loaders: ["style", "css?sourceMap", "sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true"]
-	// loader: ExtractTextPlugin.extract('style-loader', ["css?sourceMap", "sass?outputStyle=expanded&sourceMap=true&sourceMapContents=true"])
 });
 config.module.loaders.push({
 	test: /\.(png)$/,

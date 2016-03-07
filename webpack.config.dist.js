@@ -9,9 +9,7 @@ const license = fs.readFileSync('./LICENSE', 'utf8');
 
 const config = {
 	entry: {
-		'facades-react': ['./src/react/dist.js'],
-		'facades-jquery': ['./src/jquery/dist.js'],
-		'facades-utilities': ['./utilities/main.js']
+		'facades-react': ['./src/dist.js']
 	},
 	resolve: {
 		extensions: [

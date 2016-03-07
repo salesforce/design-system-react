@@ -17,16 +17,8 @@
   "private": true,
   "scripts": {
     "build-dev": "./scripts/shell/build-dev.sh",
-    "build-docs": "./scripts/shell/build-docs.sh",
-    "build-api-docs": "node --harmony ./scripts/build-api-docs",
     "build-dist": "./scripts/shell/build-dist.sh",
     "build-dist-for-npm": "./scripts/shell/build-dist-for-npm.sh",
-    "build-site": "./scripts/shell/build-site.sh",
-    "build-site-watch": "./scripts/shell/build-site.sh --watch",
-    "build-site-no-docs": "./scripts/shell/build-site.sh --no-docs",
-    "build-site-watch-no-docs": "./scripts/shell/build-site.sh --watch --no-docs",
-    "clean-build-folder": "node ./scripts/clean-directory ./build",
-    "heroku-build": "./scripts/shell/build-site.sh",
     "menu": "./scripts/shell/menu.sh",
     "start": "node  --harmony app.js",
     "test": "scripts/test --single-run"
@@ -34,7 +26,6 @@
   "dependencies": {
     "@salesforce-ux/design-system": "1.0.0",
     "classnames": "2.2.3",
-    "jquery": "2.2.0",
     "lodash": "3.10.1",
     "lodash.assign": "3.2.0",
     "react": "0.14.7",

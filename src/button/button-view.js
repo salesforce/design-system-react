@@ -45,8 +45,8 @@ import isIcon from '../mixins/custom-prop-types/icon.js';
 // [../mixins/state](../mixins/state.html)
 import State from '../mixins/state';
 
-// The [Svg helper](../svg/svg.html) for React provides a simple wrapper around the markup required for SVGs, and uses `Lib.getSVGPath` to convert strings in the format `sprite file`.`icon name` into full paths.
-import Svg from '../svg/svg';
+// The [Svg helper](../svg.html) for React provides a simple wrapper around the markup required for SVGs, and uses `Lib.getSVGPath` to convert strings in the format `sprite file`.`icon name` into full paths.
+import Svg from '../svg';
 
 // ## Button View Object
 export const ButtonViewObject = {

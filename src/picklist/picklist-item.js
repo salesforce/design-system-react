@@ -16,7 +16,7 @@ import isString from 'lodash/lang/isString';
 
 // Framework specific
 import React from 'react';
-import Svg from '../svg/svg';
+import Svg from '../svg';
 
 // Third party
 import classNames from 'classnames';

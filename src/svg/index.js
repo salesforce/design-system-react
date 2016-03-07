@@ -9,11 +9,31 @@ Neither the name of salesforce.com, inc. nor the names of its contributors may b
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-// # Svg Component --- SLDS for React
+// SVG COMPONENT - REACT FACADE
 
-// ## Documentation
+// Core
+import * as Lib from 'slds-for-js-core/lib';
 
-// The `svg.js` file will be deprecated in favor of `index.js`.
+// Framework specific
+import React from 'react';
+import isIcon from '../mixins/custom-prop-types/icon.js';
 
-// Until that time, see the documentation [here](./svg.html).
-export default from './svg';
+export const CONTROL = 'svg';
+
+export const SvgDefinition = {
+	displayName: CONTROL,
+
+	propTypes: {
+		icon: isIcon
+	},
+	
+	render () {
+		const { icon, ...other } = this.props;
+		
+		return <svg ariaHidden="true" {...other}><use xlinkHref={Lib.getSVGPath(this.props.icon)}></use></svg>;
+	}
+};
+
+const Svg = React.createClass(SvgDefinition);
+
+export default Svg;

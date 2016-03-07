@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Framework specific
 import React from 'react';
-import Button from '../button/button';
+import Button from '../button';
 
 export const CONTROL = 'datepicker-year';
 

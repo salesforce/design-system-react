@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Implements the [Button Groups design pattern](https://www.lightningdesignsystem.com/components/button-groups) in React.
 
-// Button Groups collect one or more [`Button`](../button/button.html) into a group.
+// Button Groups collect one or more [`Button`](../button.html) into a group.
 
 // [![Button Groups component example screenshot](/assets/demo-site/images/component-examples/button-group.png "See a live example of the Button Groups component in action")](/react/button-group)
 
@@ -50,8 +50,8 @@ import State from '../mixins/state';
 // ### Children
 
 // #### Button
-// [../button/button](../button/button.html)
-import Button from '../button/button';
+// [../button](../button.html)
+import Button from '../button';
 
 // #### Dropdown
 // [../dropdown/dropdown](../dropdown/dropdown.html)

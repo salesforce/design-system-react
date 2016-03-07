@@ -34,8 +34,8 @@ import ReactDOM from 'react-dom';
 import classNames from 'classnames';
 
 // #### Button
-// [../button/button](../button/button.html)
-import Button from '../button/button';
+// [../button](../button.html)
+import Button from '../button';
 
 // Since the Pills Component is simpply collection zero or more individual items `<Pill>` in a wrapper, there is
 // no need for a common core of the `<Pill>` in SLDS for JavaScript. Therefore we must set `CONTROL`

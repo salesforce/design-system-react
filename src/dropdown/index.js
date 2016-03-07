@@ -11,9 +11,162 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // # Dropdown Component --- SLDS for React
 
-// ## Documentation
+// Implements the [Dropdown design pattern](https://www.lightningdesignsystem.com/components/menus#dropdown) in React.
 
-// The `dropdown.js` file will be deprecated in favor of `index.js`.
+// [![Dropdown component example screenshot](/assets/demo-site/images/component-examples/dropdown.png "Dropdown component example screenshot")](/react/dropdown)
 
-// Until that time, see the documentation [here](./dropdown.html).
-export default from './dropdown';
+// > See a [live example](/react/dropdown) of the Dropdown component in action
+
+// ## API
+
+/* @todo Add a full API description of the control here. */
+
+// ## Dependencies
+
+// Bring in the [shared library functions](../../lib/lib.html).
+import * as Lib from 'slds-for-js-core/lib';
+
+// Use the [shared core](../../core/dropdown.html), which contains logic that
+// is shared across SLDS for JavaScript.
+import DropdownCore, {CONTROL} from 'slds-for-js-core/dropdown';
+
+// ### Traits
+
+// #### Openable
+// * [../../traits/openable](../../traits/openable.html)
+import Openable from 'slds-for-js-core/traits/openable';
+
+// ### React
+// React is an external dependency of the project.
+import React from 'react';
+
+// ### Mixins
+
+// These are mixins that appear in all of SLDS for Javascript,
+// bringing consistency to instantiation, events, and state.
+
+// #### Is Icon
+// The [isIcon mixin](../mixins/custom-prop-types/icon.html) for React to
+// checks whether a prop provides an icon format
+import isIcon from '../mixins/custom-prop-types/icon.js';
+
+// ### Children
+// [PicklistItems](../picklist-items.html)
+import PicklistItems from '../picklist-items';
+
+// [Button](../button.html)
+import Button from '../button';
+
+// [PicklistObject](../picklist.html)
+import { PicklistDefinition } from '../picklist';
+
+// ## DropdownObject
+export const DropdownDefinition = {
+	// ### Display Name
+	// Always use the canonical component name (set in the core) as the React
+	// display name.
+	displayName: CONTROL,
+
+	// ### Prop Types
+	propTypes: {
+		align: React.PropTypes.oneOf(['left', 'right']),
+		// > @todo Type of collection unknown until parsed by Data Adapter
+		collection  : React.PropTypes.oneOfType([
+			React.PropTypes.array,
+			React.PropTypes.object
+		]).isRequired,
+		disabled    : React.PropTypes.bool,
+		icon        : isIcon,
+		id          : React.PropTypes.string,
+		renderArrow : React.PropTypes.bool,
+		selection   : React.PropTypes.oneOfType([
+			React.PropTypes.string,
+			React.PropTypes.object
+		]),
+		swapIcon    : React.PropTypes.bool
+	},
+
+	// ### Get Icon
+	_getIcon () {
+		let icon;
+
+		if (this.props.swapIcon && this.props.selection) {
+			icon = this.props.selection.icon;
+		}
+
+		return icon || this.props.icon;
+	},
+
+	// ### Get Style
+	_getStyle () {
+		return this.props.renderArrow ? 'icon-more' : 'icon-container';
+	},
+
+	// ### Render
+	render () {
+		const isOpen = Openable.isOpen(this);
+		const triggerId = this._getTriggerId();
+
+		return (
+			<div className={"slds-dropdown-trigger slds-dropdown-trigger--click"}
+					id={this.state.id}
+					aria-expanded={isOpen}
+					onKeyDown={this._handleKeyPressed}
+					onKeyPress={this._handleKeyPressed}>
+				<Button
+					className=""
+					id={triggerId}
+					icon={this._getIcon()}
+					iconStyle={this._getStyle()}
+					disabled={this.props.disabled}
+					onClick={this._handleClicked}
+					aria-haspopup="true" />
+				<PicklistItems
+					align={this.props.align}
+					id={this._getMenuId()}
+					labelledBy={triggerId}
+					getMenuItemId={this._getMenuItemId}
+					collection={this._collection}
+					selection={this._getSelection()._item}
+					show={ isOpen && !this.props.disabled}
+					onSelected={this._handleMenuItemSelected}/>
+			</div>
+		);
+	}
+};
+
+// ## Dropdown
+
+// SLDS for React **extends objects** by merging them together, rather than
+// via the prototype chain or imitation of object-oriented inheritance.
+// The important thing to remember is that _some methods will be available 
+// to the component which are not declared in this file_.
+
+// These are not magic methods, they're not black box methods, but you do need
+// to trace the dependencies of the component to see where they are coming
+// from. In particular, Dropdown extends its [core](../../core/dropdown.html),
+// which in turn extends the base component.
+
+let Dropdown = Lib.merge(
+	{},
+	DropdownCore,
+	PicklistDefinition,
+	DropdownDefinition
+);
+
+// `Helpers` are a feature of SLDS for React that allows anyone to register code that
+// can manipulate the component before it is encapsulated in a React class.
+//
+// This allows flexibility for adding custom behavior without modifying the
+// original source, or for adding optional behavior.
+//
+// Nothing in the component itself should ever depend on the presence
+// of helpers, as they are completely optional.
+Dropdown = Lib.runHelpers('react', CONTROL, Dropdown);
+
+// Once everything has been merged together and all registered helpers have
+// been run we can create the React class and export the result for
+// consumption by our apps.
+Dropdown = React.createClass(Dropdown);
+
+export default Dropdown;

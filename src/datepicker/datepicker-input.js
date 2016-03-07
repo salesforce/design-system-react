@@ -13,7 +13,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 // Framework specific
 import React from 'react';
-import Svg from '../svg/svg';
+import Svg from '../svg';
 
 export const CONTROL = 'datepicker-input';
 

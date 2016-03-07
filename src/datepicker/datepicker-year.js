@@ -15,7 +15,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 import React from 'react';
 
 // Children
-import Picklist from '../picklist/picklist';
+import Picklist from '../picklist';
 
 export const CONTROL = 'datepicker-year';
 

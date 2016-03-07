@@ -23,7 +23,7 @@ export Badge from './badge';
 // _______________________________________________________________________________________________________
 
 // ## Buttons
-// * [Documentation](./button/button.html)
+// * [Documentation](./button.html)
 // * [Live Example](/react/button)
 // * [<img src="/assets/demo-site/images/component-examples/button.png" style="max-height: 200px;" alt="Button Screenshot">](/react/button)
 export Button from './button';
@@ -31,7 +31,7 @@ export Button from './button';
 
 // ## Button Views
 // * [Documentation](./button-view/button-view.html)
-export ButtonView from './button';
+export ButtonView from './button-view';
 // _______________________________________________________________________________________________________
 
 // ## Button Groups
@@ -105,7 +105,7 @@ export Notification from './notification';
 // _______________________________________________________________________________________________________
 
 // ## Picklists
-// * [Documentation](./picklist/picklist.html)
+// * [Documentation](./picklist.html)
 // * [Live Example](/react/picklist)
 // * [<img src="/assets/demo-site/images/component-examples/picklist.png" style="max-height: 200px;" alt="Picklist Screenshot">](/react/picklist)
 export Picklist from './picklist';
@@ -140,7 +140,7 @@ export Spinner from './spinner';
 // _______________________________________________________________________________________________________
 
 // ## Svgs
-// * [Documentation](./svg/svg.html)
+// * [Documentation](./svg.html)
 // * [Live Example](/react/svg)
 // * [<img src="/assets/demo-site/images/component-examples/svg.png" style="max-height: 200px;" alt="Svg Screenshot">](/react/svg)
 export Svg from './svg';

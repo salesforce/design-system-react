@@ -10,7 +10,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 */
 
 import React from 'react';
-import Svg from '../svg/svg';
+import Svg from '../svg';
 
 module.exports = {
 	menuItemRenderer (options) {
