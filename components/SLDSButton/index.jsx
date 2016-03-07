@@ -31,6 +31,8 @@ const propTypes = {
    * Name of the icon. Visit <a href="http://www.lightningdesignsystem.com/resources/icons">Lightning Design System Icons</a> to reference icon names.
    */
   iconName: React.PropTypes.string,
+
+  iconCategory: React.PropTypes.oneOf(["action", "custom", "doctype", "standard", "utility"]).isRequired,
   /**
    * If omitted, icon position is centered.
    */
@@ -63,6 +65,7 @@ const defaultProps = {
   disabled: false,
   hint: false,
   iconSize: "medium",
+  iconCategory: 'utility',
   responsive: false,
   variant: "neutral",
 };
@@ -110,6 +113,7 @@ class SLDSButton extends SLDSTooltipTrigger {
         <ButtonIcon
           hint={this.props.hint}
           name={name}
+          category={this.props.iconCategory}
           position={this.props.iconPosition}
           size={iconSize}
           />
