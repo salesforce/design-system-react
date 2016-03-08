@@ -112,7 +112,7 @@ class SLDSLookup extends React.Component {
       isOpen: false,
       listLength: this.props.options.length,
       searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
-      selectedIndex: this.props.selectedItem || null,
+      selectedIndex: this.props.selectedItem === undefined || false ? null : this.props.selectedItem,
     };
   }
 
