@@ -90,8 +90,10 @@ class SLDSButton extends SLDSTooltipTrigger {
     super.componentWillUnmount()
   }
 
-  handleClick() {
-    if(this.props.onClick) this.props.onClick();
+  handleClick(event) {
+    // Note that you can't read properties directly from the Synthetic event but you can read them by calling the specific property (ie. event.target, event.type, etc).
+    // http://stackoverflow.com/questions/22123055/react-keyboard-event-handlers-all-null
+    if(this.props.onClick) this.props.onClick(event);
     this.setState({ active: !this.state.active });
   }
 
@@ -142,7 +144,7 @@ class SLDSButton extends SLDSTooltipTrigger {
     if (this.props.disabled) props["disabled"] = "disabled";
 
     return (
-      <button className={this.getClassName()} onClick={this.handleClick.bind(this)} {...props}>
+      <button className={this.getClassName()} {...props} onClick={this.handleClick.bind(this)}>
         {this.props.iconPosition === "right" ? this.renderLabel(): null}
 
         {this.renderIcon(this.props.iconName)}
