@@ -87,8 +87,8 @@ class SLDSButton extends SLDSTooltipTrigger {
     super.componentWillUnmount()
   }
 
-  handleClick() {
-    if(this.props.onClick) this.props.onClick();
+  handleClick(e) {
+    if(this.props.onClick) this.props.onClick(e);
     this.setState({ active: !this.state.active });
   }
 
