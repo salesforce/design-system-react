@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/badge.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import BadgeCore, { CONTROL } from 'slds-for-js-core-components/badge';
+import BadgeCore, { CONTROL } from 'slds-for-js-core/components/badge';
 
 // ### React
 // React is an external dependency of the project.

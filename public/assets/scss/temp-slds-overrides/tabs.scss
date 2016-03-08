@@ -1,0 +1,6 @@
+.#{$css-prefix}tabs--default__item-disabled {
+	.#{$css-prefix}tabs--default__link {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}

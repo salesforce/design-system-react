@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/dropdown.html), which contains logic that
 // is shared across SLDS for JavaScript.
-import DropdownCore, { CONTROL } from 'slds-for-js-core-components/dropdown';
+import DropdownCore, { CONTROL } from 'slds-for-js-core/components/dropdown';
 
 // ### Traits
 

@@ -35,7 +35,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/radio.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import RadioCore, { CONTROL } from 'slds-for-js-core-components/radio';
+import RadioCore, { CONTROL } from 'slds-for-js-core/components/radio';
 
 // ### React
 // React is an external dependencies of the project.

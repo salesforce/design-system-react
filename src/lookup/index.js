@@ -29,7 +29,7 @@ import isFunction from 'lodash/lang/isFunction';
 
 // Use the [shared core](../../core/lookup.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import LookupCore, { CONTROL } from 'slds-for-js-core-components/lookup';
+import LookupCore, { CONTROL } from 'slds-for-js-core/components/lookup';
 
 // ### Traits
 

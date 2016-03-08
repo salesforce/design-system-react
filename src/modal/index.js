@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/modal.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import ModalCore, { CONTROL } from 'slds-for-js-core-components/modal';
+import ModalCore, { CONTROL } from 'slds-for-js-core/components/modal';
 
 // ### React and ReactDOM
 // React and ReactDOM are external dependencies of the project.

@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Lib from 'slds-for-js-core/lib';
 import Combobox from './index';
-import { ExampleEvents } from 'utilities';
+import { ExampleEvents } from 'slds-for-js-core/utilities';
 
 // SAMPLE CONTROL CODE -->
 

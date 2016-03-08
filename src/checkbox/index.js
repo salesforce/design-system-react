@@ -27,7 +27,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/checkbox.html), which contains logic that
 // is shared across SLDS for JavaScript.
-import CheckboxCore, { CONTROL } from 'slds-for-js-core-components/checkbox';
+import CheckboxCore, { CONTROL } from 'slds-for-js-core/components/checkbox';
 
 // ### React
 // React is an external dependency of the project.

@@ -28,7 +28,7 @@ import * as Lib from 'slds-for-js-core/lib';
 
 // Use the [shared core](../../core/tooltip.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import TooltipCore, { CONTROL } from 'slds-for-js-core-components/tooltip';
+import TooltipCore, { CONTROL } from 'slds-for-js-core/components/tooltip';
 
 // ### Traits
 

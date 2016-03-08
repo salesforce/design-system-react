@@ -1,0 +1,18 @@
+// MEDIUM - 768px - 48rem
+@mixin mq-medium-min {
+
+  @media (min-width: pem($mq-medium)) {
+    @content;
+  }
+}
+
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
+
+
+@mixin duration-slowly {
+  transition-duration: $duration-slowly;
+}

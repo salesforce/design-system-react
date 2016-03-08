@@ -29,7 +29,7 @@ import isFunction from 'lodash/lang/isFunction';
 
 // Use the [shared core](../../core/datepicker.html), which contains logic
 // that is shared across SLDS for JavaScript.
-import DatepickerCore, { CONTROL } from 'slds-for-js-core-components/datepicker';
+import DatepickerCore, { CONTROL } from 'slds-for-js-core/components/datepicker';
 
 // ### Traits
 

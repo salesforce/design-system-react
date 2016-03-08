@@ -29,7 +29,7 @@ import isFunction from 'lodash/lang/isFunction';
 
 // Use the [shared core](../../core/picklist.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import PicklistCore, { CONTROL } from 'slds-for-js-core-components/picklist';
+import PicklistCore, { CONTROL } from 'slds-for-js-core/components/picklist';
 
 // ### Traits
 

@@ -1,0 +1,41 @@
+#pillbox, #pillbox1, #pillbox2 {
+	height: 40px;
+}
+
+.react-popover-example-wrap, .react-tooltip-example-wrap {
+	position: relative;
+}
+
+.component {
+	.example {
+		.#{$css-prefix}button-group {
+			margin-top: 10px;
+
+			+ .#{$css-prefix}button-group {
+				margin-left: 0;
+			}
+		}
+
+		.#{$css-prefix}spinner {
+			&--small, &--medium {
+				position: relative;
+			}
+			&--small {
+				top: 18px;
+			}
+			&--medium {
+				top: 5px;
+			}
+		}
+	}
+}
+
+
+/* Property Table */
+.property-details .slds-table th, .slds .slds-table td { 
+	white-space: inherit; 
+}
+.property-details .site-text-heading--label th {
+  text-transform: uppercase;
+  font-size: 1.1em;
+}

@@ -29,7 +29,7 @@ import isFunction from 'lodash/lang/isFunction';
 
 // Use the [shared core](../../core/pills.html), which contains logic that is
 // shared across SLDS for JavaScript.
-import PillsCore, { CONTROL } from 'slds-for-js-core-components/pills';
+import PillsCore, { CONTROL } from 'slds-for-js-core/components/pills';
 
 // ### Traits
 
