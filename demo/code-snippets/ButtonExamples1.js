@@ -1,7 +1,7 @@
 <div className="slds-x-small-buttons--horizontal">
   <SLDSButton
     label="Base"
-    onClick={function(){alert("Base Button Clicked")}}
+    onClick={function(e){console.log("Base Button e.target:", e.target)}}
     variant="base" />
 
   <SLDSButton

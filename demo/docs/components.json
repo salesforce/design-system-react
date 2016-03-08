@@ -39,6 +39,39 @@
                 "required": false,
                 "description": "Name of the icon. Visit <a href=\"http://www.lightningdesignsystem.com/resources/icons\">Lightning Design System Icons</a> to reference icon names."
             },
+            "iconCategory": {
+                "type": {
+                    "name": "enum",
+                    "value": [
+                        {
+                            "value": "\"action\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"custom\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"doctype\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"standard\"",
+                            "computed": false
+                        },
+                        {
+                            "value": "\"utility\"",
+                            "computed": false
+                        }
+                    ]
+                },
+                "required": true,
+                "description": "",
+                "defaultValue": {
+                    "value": "'utility'",
+                    "computed": false
+                }
+            },
             "iconPosition": {
                 "type": {
                     "name": "enum",
