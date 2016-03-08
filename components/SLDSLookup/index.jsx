@@ -112,7 +112,7 @@ class SLDSLookup extends React.Component {
       isOpen: false,
       listLength: this.props.options.length,
       searchTerm: this.normalizeSearchTerm(this.props.searchTerm),
-      selectedIndex: this.props.selectedItem === undefined || false ? null : this.props.selectedItem,
+      selectedIndex: this.getSelectedIndex(),
     };
   }
 
@@ -149,7 +149,6 @@ class SLDSLookup extends React.Component {
         data: item
       }
     });
-
     this.setState({items: items});
   }
 
@@ -345,7 +344,11 @@ class SLDSLookup extends React.Component {
   }
 
   normalizeSearchTerm(string) {
-    return (string || '').toString().replace(/^\s+/, '').replace(/\s+$/, '');
+    return (string || '').toString().replace(/^\s+/, '');
+  }
+
+  getSelectedIndex() {
+    return this.props.selectedItem === undefined || false ? null : this.props.selectedItem;
   }
 
   //=================================================
