@@ -33,7 +33,7 @@ class NotificationExample extends React.Component {
               theme="warning"
               variant="toast" />
           }>
-            <div>
+            <div className="slds-m-around--medium">
               <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
               <p> wjefiowjefio wejoif wejiof jfiowejfo ijw </p>
               <SLDSButton

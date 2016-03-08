@@ -25,13 +25,15 @@ class ModalExample extends React.Component {
           tagline="Enter in details below"
           title="New Opportunity">
 
-            <div className="slds-form-element slds-m-vertical--large">
+            <section className="slds-p-around--large">
+
+            <div className="slds-form-element slds-m-bottom--large">
               <label className="slds-form-element__label" htmlFor="opptyName">Opportunity Name</label>
               <div className="slds-form-element__control">
                 <input id="opptyName" className="slds-input" type="text" placeholder="Enter name" />
               </div>
             </div>
-            <div className="slds-form-element">
+            <div className="slds-form-element slds-m-bottom--large">
               <label className="slds-form-element__label" htmlFor="description">Opportunity Description</label>
               <div className="slds-form-element__control">
                 <textarea id="description" className="slds-textarea" placeholder="Enter description"></textarea>
@@ -39,7 +41,7 @@ class ModalExample extends React.Component {
             </div>
 
             <SLDSLookup
-              className="slds-m-vertical--large"
+              className="slds-m-bottom--large"
               emptyMessage="No Accounts Found"
               iconName="account"
               label="Account Name"
@@ -56,7 +58,7 @@ class ModalExample extends React.Component {
             />
 
             <SLDSMenuPicklist
-              className="slds-m-vertical--large"
+              className="slds-m-bottom--large"
               label="Lead Source"
               modal={true}
               onSelect={(option)=>{console.log("selected: ", option.label);}}
@@ -93,6 +95,7 @@ class ModalExample extends React.Component {
               </div>
             </div>
 
+          </section>
         </SLDSModal>
       </div>
     );
