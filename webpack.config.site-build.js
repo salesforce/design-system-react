@@ -1,6 +1,6 @@
 /* `webpack.config.site-build` should be used to statically build the website. */
 
-const baseConfig = require('./webpack.config.dist');
+const baseConfig = require('./webpack.config.dist.min');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
@@ -16,10 +16,6 @@ config.entry = {
 config.externals = {};
 
 config.resolve.extensions.push('.scss');
-config.resolve.alias['design-system-react'] = path.join(__dirname, 'src/dist.js');
-config.resolve.alias['design-system-utilities'] = path.join(__dirname, 'node_modules/design-system-facades/utilities/main.js');
-config.resolve.alias['utilities'] = path.join(__dirname, 'node_modules/design-system-facades/utilities/main.js');
-config.resolve.alias['design-system-utilities-react'] = path.join(__dirname, 'node_modules/design-system-facades/utilities/main.js');
 
 config.devtool = 'inline-source-map';
 
@@ -48,14 +44,6 @@ config.module.loaders.push({
 	loader: ExtractTextPlugin.extract('url-loader?limit=30&name=/examples/[path][name].[ext]')
 });
 
-config.plugins = [
-	new StringReplacePlugin(),
-	new webpack.optimize.UglifyJsPlugin({
-		mangle: {
-			except: ['$', 'exports', 'require']
-		}
-	}),
-	new ExtractTextPlugin('[name].css?[hash]-stuff')
-];
+config.plugins.push(new ExtractTextPlugin('[name].css?[hash]-stuff'));
 
 module.exports = config;
