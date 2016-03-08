@@ -1,14 +1,53 @@
 /* `webpack.config` is the default webpack configuration and should be used for development and contributing. */
 
-const baseConfig = require('./webpack.config.site-build');
-const webpack = require('webpack');
+const baseConfig = require('./webpack.config.dist');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require('path');
 const StringReplacePlugin = require('string-replace-webpack-plugin');
+const webpack = require('webpack');
+
 const hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true';
 const config = baseConfig;
 
-config.entry['dev-examples-styles'].push(hotMiddlewareScript);
-config.entry['dev-examples-react'].push(hotMiddlewareScript);
+config.entry = {
+	'slds-for-react-dev-examples-styles': ['./public/assets/scripts/styles.js', hotMiddlewareScript],
+	'slds-for-react-dev-examples': ['./src/dev-examples', hotMiddlewareScript]
+};
+
+config.externals = {};
+
+config.resolve.extensions.push('.scss');
+config.resolve.alias['design-system-react'] = path.join(__dirname, 'src/dist.js');
+config.resolve.alias['design-system-utilities'] = path.join(__dirname, 'node_modules/design-system-facades/utilities/main.js');
+config.resolve.alias['utilities'] = path.join(__dirname, 'node_modules/design-system-facades/utilities/main.js');
+config.resolve.alias['design-system-utilities-react'] = path.join(__dirname, 'node_modules/design-system-facades/utilities/main.js');
+
+config.devtool = 'inline-source-map';
+
+config.output = {
+	libraryTarget: 'umd',
+	path: __dirname + '/dev-build/',
+	publicPath: '/dev-build/',
+	filename: '[name].bundle.js'
+};
+
+// Additional loaders
+config.module.loaders.push({
+	test: /\.css$/,
+	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
+});
+config.module.loaders.push({
+	test: /\.scss$/,
+	loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader?outputStyle=expanded&sourceMap=true&sourceMapContents=true')
+});
+config.module.loaders.push({
+	test: /\.(png)$/,
+	loader: ExtractTextPlugin.extract('url-loader?limit=30000000&mimetype=image/png&name=../public/assets/facades/images/[name].[ext]')
+});
+config.module.loaders.push({
+	test: /\.(eot|woff|woff2|ttf)$/,
+	loader: ExtractTextPlugin.extract('url-loader?limit=30&name=/examples/[path][name].[ext]')
+});
 
 config.plugins = [
 	new webpack.DefinePlugin({
