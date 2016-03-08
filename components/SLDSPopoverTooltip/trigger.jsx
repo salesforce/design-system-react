@@ -84,12 +84,37 @@ class Trigger extends React.Component {
     );
   }
 
+  getMouseEventTarget(){
+    return this.props.disabled?<a 
+      key='MouseEventTarget'
+      href="javascript:void(0)"
+      style={{
+        backgroundColor:'transparent',
+        width:'100%',
+        height:'100%',
+        position:'absolute',
+        left:'0',
+        top:'0'
+      }}
+      onMouseOver={this.handleTooltipMouseEnter.bind(this)}
+      onFocus={this.handleTooltipMouseEnter.bind(this)}
+      onMouseOut={this.handleTooltipMouseLeave.bind(this)}
+      onBlur={this.handleTooltipMouseLeave.bind(this)}
+    ></a>:null;
+  }
+
   getTooltip(){
-    if(this.props.tooltip && this.state.isTooltipOpen && this.state.tooltipTarget){
-      return React.cloneElement(this.props.tooltip,{
-        target:this.state.tooltipTarget,
-        openByDefault:true
-      });
+    if(this.props.tooltip){
+      if(this.state.isTooltipOpen && this.state.tooltipTarget){
+        return [this.getMouseEventTarget(),React.cloneElement(this.props.tooltip,{
+          key:'tooltip',
+          target:this.state.tooltipTarget,
+          openByDefault:true
+        })];
+      }
+      else{
+        return this.getMouseEventTarget();
+      }
     }
   }
 

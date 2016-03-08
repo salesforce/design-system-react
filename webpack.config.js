@@ -23,6 +23,7 @@ module.exports = function () {
     resolve: {
       extensions: ['', '.js', '.jsx'],
       alias: {
+        'design-system-react': __dirname + '/components',
         'components': __dirname + '/components',
         'demo': __dirname + '/demo',
         'docs': __dirname + '/demo/docs'
