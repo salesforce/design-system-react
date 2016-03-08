@@ -430,21 +430,21 @@ class SLDSLookup extends React.Component {
 
   getClassName(){
     return cx(this.props.className, "slds-lookup", {
-      "slds-has-selection": this.state.selectedIndex !== null,
+      "slds-has-selection": this.state.selectedIndex != null,
     });
   }
 
   render() {
     const inputClasses = {
       "slds-input": true,
-      "slds-show": this.state.selectedIndex === null,
-      "slds-hide": this.state.selectedIndex !== null,
+      "slds-show": this.state.selectedIndex == null,
+      "slds-hide": this.state.selectedIndex != null,
     };
 
     const pillContainerClasses = {
       "slds-pill__container": true,
-      "slds-show": this.state.selectedIndex !== null,
-      "slds-hide": this.state.selectedIndex === null,
+      "slds-show": this.state.selectedIndex != null,
+      "slds-hide": this.state.selectedIndex == null,
     };
 
     const required = this.props.required ? <span style={{color:"red"}}>* </span>:null;
@@ -456,7 +456,7 @@ class SLDSLookup extends React.Component {
           {inputLabel}
           <div className="slds-form-element__control slds-input-has-icon slds-input-has-icon--right">
             <div className={cx(pillContainerClasses)}>
-            { this.state.selectedIndex !== null ? this.renderSelectedItem() : null }
+            { this.state.selectedIndex != null ? this.renderSelectedItem() : null }
             </div>
             <InputIcon name="search" onClick={this.focusInput.bind(this)} />
             <input
