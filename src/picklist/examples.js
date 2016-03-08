@@ -1,5 +1,6 @@
 import React from 'react';
-import { Lib, Picklist } from 'design-system-react';
+import * as Lib from 'slds-for-js-core/lib';
+import Picklist from './index';
 
 // SAMPLE CONTROL CODE -->
 

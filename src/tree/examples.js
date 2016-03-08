@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tree } from 'design-system-react';
+import Tree from './index';
 
 // SAMPLE CONTROL CODE -->
 
