@@ -41,6 +41,7 @@ const gitversion = process.env.GIT_VERSION;
 ///////////////////////////////////////////////////////////////
 
 const distPath = path.resolve.bind(path, isNpm ? __PATHS__.npm : __PATHS__.dist);
+const srcOutputDir = isNpm ? '' : 'src';
 
 function copy(src, dest, options, done) {
   gulp.src(src, options)
@@ -100,7 +101,7 @@ async.series([
     gulp.src([
       path.resolve(__PATHS__.source_files, '**/*.js')
     ], { base: __PATHS__.source_files })
-      .pipe(gulp.dest(distPath(isNpm ? '' : 'src')))
+      .pipe(gulp.dest(distPath(srcOutputDir)))
       .on('error', done)
       .on('finish', done);
   },
@@ -108,8 +109,8 @@ async.series([
   /**
    * Clean get rid of extra files that are in src
    */
-  (done) => rimraf(distPath('dev-examples.js'), done),
-  (done) => rimraf(distPath('dist.js'), done),
+  (done) => rimraf(distPath(srcOutputDir, 'dev-examples.js'), done),
+  (done) => rimraf(distPath(srcOutputDir, 'dist.js'), done),
 
   /**
    * Move all the bundled script files from .tmp
