@@ -24,8 +24,6 @@ import classNames from 'classnames';
 import TreeItem from './tree-item';
 import Button from '../button';
 
-let InnerTreeBranch;
-
 export const CONTROL = 'tree-branch';
 
 const TreeBranch = React.createClass({
@@ -64,10 +62,6 @@ const TreeBranch = React.createClass({
 	},
 
 	componentWillMount () {
-		if (!InnerTreeBranch) {
-			InnerTreeBranch = require('./tree-branch');
-		}
-
 		if (this.props.autoOpenLevel <= this.props.autoOpenLimit && !this.props._isFolderOpen(this.props.item)) {
 			this._handleExpandClick(this.props.item);
 		}

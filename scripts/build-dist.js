@@ -26,6 +26,7 @@ import minimist from 'minimist';
 import rimraf from 'rimraf';
 import sass from 'node-sass';
 import through from 'through2';
+import babel from 'gulp-babel';
 
 const argv = minimist(process.argv.slice(2));
 const isNpm = argv.npm === true;
@@ -41,7 +42,6 @@ const gitversion = process.env.GIT_VERSION;
 ///////////////////////////////////////////////////////////////
 
 const distPath = path.resolve.bind(path, isNpm ? __PATHS__.npm : __PATHS__.dist);
-const srcOutputDir = isNpm ? '' : 'src';
 
 function copy(src, dest, options, done) {
   gulp.src(src, options)
@@ -98,19 +98,34 @@ async.series([
    * Move src script files to .dist
    */
   (done) => {
+    if (!isNpm) return done();
     gulp.src([
       path.resolve(__PATHS__.source_files, '**/*.js')
     ], { base: __PATHS__.source_files })
-      .pipe(gulp.dest(distPath(srcOutputDir)))
+      .pipe(gulp.dest(distPath('es')))
       .on('error', done)
       .on('finish', done);
   },
   
   /**
-   * Clean get rid of extra files that are in src
+   * Get rid of extra files that are in src
    */
-  (done) => rimraf(distPath(srcOutputDir, 'dev-examples.js'), done),
-  (done) => rimraf(distPath(srcOutputDir, 'dist.js'), done),
+  (done) => rimraf(distPath('es', 'dev-examples.js'), done),
+  (done) => rimraf(distPath('es', 'dist.js'), done),
+  
+  /**
+   * Create umd versions
+   */
+  (done) => {
+    if (!isNpm) return done();
+    gulp.src(distPath('es', '**/*.js'))
+      .pipe(babel({
+        plugins: ['transform-es2015-modules-umd']
+      }))
+      .pipe(gulp.dest(distPath('umd')))
+      .on('error', done)
+      .on('finish', done);
+  },
 
   /**
    * Move all the bundled script files from .tmp
