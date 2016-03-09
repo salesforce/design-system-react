@@ -40,7 +40,7 @@ const gitversion = process.env.GIT_VERSION;
 // Helpers
 ///////////////////////////////////////////////////////////////
 
-const distPath = path.resolve.bind(path, __PATHS__.dist);
+const distPath = path.resolve.bind(path, isNpm ? __PATHS__.npm : __PATHS__.dist);
 
 function copy(src, dest, options, done) {
   gulp.src(src, options)
@@ -58,7 +58,7 @@ async.series([
   /**
    * Clean the dist folder
    */
-  (done) => rimraf(__PATHS__.dist, done),
+  (done) => rimraf(distPath(), done),
 
   /**
    * Copy necessary root files to be included in the final module
@@ -67,11 +67,12 @@ async.series([
     const src = [
       'README-dist.txt',
       '.npmignore',
-      'package.json'
+      'package.json',
+      'LICENSE'
     ].map(function(file) {
       return path.resolve(__PATHS__.root, file);
     });
-    copy(src, __PATHS__.dist, {}, done);
+    copy(src, distPath(), {}, done);
   },
 
   /**
@@ -79,7 +80,6 @@ async.series([
    */
   (done) => {
     let packageJSON = JSON.parse(fs.readFileSync(distPath('package.json')).toString());
-    packageJSON.name = 'design-system-facades';
     delete packageJSON.scripts;
     delete packageJSON.devDependencies;
     fs.writeFile(
@@ -94,35 +94,43 @@ async.series([
   ////////////////////////////////////
 
   /**
-   * Move src script files to .dist/scripts
+   * Move src script files to .dist
    */
   (done) => {
     gulp.src([
       path.resolve(__PATHS__.source_files, '**/*.js')
     ], { base: __PATHS__.source_files })
-      .pipe(gulp.dest(path.resolve(__PATHS__.dist, 'src')))
+      .pipe(gulp.dest(distPath(isNpm ? '' : 'src')))
       .on('error', done)
       .on('finish', done);
   },
+  
+  /**
+   * Clean get rid of extra files that are in src
+   */
+  (done) => rimraf(distPath('dev-examples.js'), done),
+  (done) => rimraf(distPath('dist.js'), done),
 
   /**
-   * Move all the bundled script files to .tmp/scripts
+   * Move all the bundled script files from .tmp
    */
   (done) => {
     gulp.src([
       path.resolve(__PATHS__.tmp, '**/*.js'),
       path.resolve(__PATHS__.tmp, '**/*.map')
     ], { base: __PATHS__.tmp })
-      .pipe(gulprename(function (path) {
-        path.basename = path.basename.replace('.bundle', '');
-      }))
       // Not sure that we need the version number in each file.
       // Makes diffing versions kind of tedious
       //.pipe(gulpif(isNotVendorFile, gulpinsert.prepend(`/* ${globals.displayName} ${gitversion} */\n`)))
-      .pipe(gulp.dest(path.resolve(__PATHS__.dist, 'assets/scripts')))
+      .pipe(gulp.dest(distPath()))
       .on('error', done)
       .on('finish', done);
   },
+  
+  /**
+   * Clean the .tmp folder
+   */
+  (done) => rimraf(__PATHS__.tmp, done),
 
   /**
    * Add build date to README.txt
@@ -176,7 +184,6 @@ async.series([
       .on('error', done)
       .on('finish', done);
   }
-
 ], err => {
   if (err) throw err;
 });

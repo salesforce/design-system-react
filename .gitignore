@@ -26,6 +26,6 @@ node_modules.tar.gz
 npm-debug.log
 .esformatter
 .tmp/
+.npm/
 .dist/
 dist/
-public/assets/design-system/

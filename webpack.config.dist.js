@@ -24,8 +24,10 @@ config.resolve.alias = {
 };
 
 // Folders to check for ES6 modules
-config.module.loaders[0].include.push(path.join(__dirname, 'node_modules/design-system-facades'));
-config.module.loaders[0].include.push(path.join(__dirname, 'src'));
+config.module.loaders[0].include = [
+	coreRealPath,
+	path.join(__dirname, 'src')
+];
 
 module.exports = config;
 
